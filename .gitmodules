@@ -1,0 +1,3 @@
+[submodule "components/inkline-component-container"]
+	path = components/inkline-component-container
+	url = git@github.com:inkline/inkline-component-container.git
