@@ -1,0 +1,39 @@
+//
+// Colors
+//
+
+
+// Get color luminance as described in the W3C Relative Luminance definition
+// https://www.w3.org/WAI/GL/wiki/Relative_luminance
+//
+// @param color Text background color
+//
+luminance(color)
+    RGB = {
+        r: red(color)
+        g: green(color)
+        b: blue(color)
+    }
+
+    for k, c in RGB
+        c = c / 255.0
+        if c <= 0.03928
+            c = c / 12.92
+        else
+            c = ((c + 0.055) / 1.055) ** 2.4
+        RGB[k] = c
+
+    return 0.2126 * RGB.r + 0.7152 * RGB.g + 0.0722 * RGB.b
+
+
+// Get contrast text color for a background color by calculating the luminance
+// of the given input color
+//
+// @param color Text background color
+// @return Contrasting text color
+//
+contrastColor(color, light, dark)
+    if luminosity(color) > 0.179
+        return dark
+    else
+        return light
