@@ -2,7 +2,7 @@ import { breakpointClassValidator } from '../../validators';
 import { breakpointClass } from '../../helpers';
 
 export default {
-    name: 'Row',
+    name: 'Column',
     props: {
         noGutter: {
             type: Boolean,

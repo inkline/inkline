@@ -1,6 +1,5 @@
-import * as breakpoint from './breakpoint';
+import { validator as breakpointClassValidator } from './breakpoint-class';
 
-export default {
-    breakpoint
+export {
+    breakpointClassValidator
 };
-

@@ -1,7 +1,9 @@
 import Container from './components/container/Container';
+import Row from './components/row/Row';
 
 const components = [
-    Container
+    Container,
+    Row
 ];
 
 class Inkline {
@@ -19,7 +21,8 @@ class Inkline {
 }
 
 export {
-    Container
+    Container,
+    Row
 };
 
 export default Inkline;
