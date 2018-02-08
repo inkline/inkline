@@ -1,0 +1,14 @@
+// Breakpoints
+$breakpoints ?= {
+  xs: 30rem
+  sm: 48rem
+  md: 64rem
+  lg: 75rem
+  xl: 92.5rem
+  xxl: 115rem
+}
+
+// Magic breakpoint
+// Generates no media query, it is used for generating the blank infix in
+// responsive utility classes
+$breakpoints['_'] = 0

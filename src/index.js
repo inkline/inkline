@@ -1,4 +1,4 @@
-import Container from 'inkline-component-container';
+import Container from './components/container/Container';
 
 const components = [
     Container
