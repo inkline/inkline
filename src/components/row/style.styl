@@ -1,5 +1,5 @@
-@import '../../css/config';
-@import '../../css/mixins';
+@import '../../resources/css/config';
+@import '../../resources/css/mixins';
 
 .row
     box-sizing: border-box
@@ -37,35 +37,35 @@
     // Responsive Flex Alignments
     //
     for $breakpoint-name, $breakpoint-value in $breakpoints
-        $breakpoint = $breakpoint-name
+        $breakpoint = breakpoint-infix($breakpoint-name)
 
-        +breakpoint-up($breakpoint)
-            &.-start-{$breakpoint}
+        +breakpoint-up($breakpoint-name)
+            &.-start{$breakpoint}
                 justify-content: flex-start
                 text-align: start
 
-            &.-center-{$breakpoint}
+            &.-center{$breakpoint}
                 justify-content: center
                 text-align: center
 
-            &.-end-{$breakpoint}
+            &.-end{$breakpoint}
                 justify-content: flex-end
                 text-align: end
 
-            &.-top-{$breakpoint}
+            &.-top{$breakpoint}
                 align-items: flex-start
 
-            &.-middle-{$breakpoint}
+            &.-middle{$breakpoint}
                 align-items: center
 
-            &.-bottom-{$breakpoint}
+            &.-bottom{$breakpoint}
                 align-items: flex-end
 
-            &.-around-{$breakpoint}
+            &.-around{$breakpoint}
                 justify-content: space-around
 
-            &.-between-{$breakpoint}
+            &.-between{$breakpoint}
                 justify-content: space-between
 
-            &.-reverse-{$breakpoint}
+            &.-reverse{$breakpoint}
                 flex-direction: row-reverse

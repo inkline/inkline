@@ -1,0 +1,142 @@
+//
+// Typography
+//
+
+// Font families
+//
+$font-family-primary-base = 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Roboto, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'
+$font-family-primary-monospace = 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace
+$font-family-primary-print = 'Georgia', 'Times New Roman', 'Times', serif
+
+$font-family-secondary-base ?= $font-family-primary-base
+$font-family-secondary-print ?= $font-family-primary-print
+
+$font-family-primary ?= {
+  base: $font-family-primary-base
+  monospace: $font-family-primary-monospace
+  print: $font-family-primary-print
+}
+
+$font-family-secondary ?= {
+  base: $font-family-secondary-base
+  print: $font-family-secondary-print
+}
+
+// Tracking
+//
+$letter-spacing ?= 0
+
+// Font size
+// Assumes the browser default, typically `16px`
+//
+$font-size ?= 1.2rem
+
+// Font weight
+//
+$font-weight ?= {
+  extralight: 200
+  light: 300
+  normal: normal
+  semibold: 600
+  bold: bold
+  black: 900
+}
+
+// Line height
+//
+$line-height ?= 1.5
+
+// Muted text color
+//
+$text-muted ?= $colors['gray-60']
+
+// Headings
+//
+$headings-font-size ?= {
+  h1: 2.5 * $font-size
+  h2: 2 * $font-size
+  h3: 1.75 * $font-size
+  h4: 1.5 * $font-size
+  h5: 1.25 * $font-size
+  h6: 1 * $font-size
+}
+
+$headings-margin-bottom ?= ($spacer / 2)
+$headings-font-family ?= inherit
+$headings-font-weight ?= normal
+$headings-line-height ?= 1.1
+$headings-color ?= inherit
+
+// Displays
+//
+$displays-font-size ?= {
+  'd1': 5.5 * $font-size
+  'd2': 5 * $font-size
+  'd3': 4.5 * $font-size
+  'd4': 4 * $font-size
+  'd5': 3.5 * $font-size
+  'd6': 3 * $font-size
+}
+
+$displays-font-weight ?= $headings-font-weight
+$displays-line-height ?= $headings-line-height
+
+// Links
+//
+$link-color ?= $primary
+$link-hover-color ?= darken($primary, 20%)
+$link-decoration ?= none
+$link-hover-decoration ?= underline
+
+// Lead
+//
+$lead-font-size ?= 1.25 * $font-size
+$lead-font-weight ?= 300
+
+// Lists
+//
+$list-inline-padding ?= $spacer
+
+// Description Lists
+//
+$dt-font-weight ?= $font-weight['bold']
+
+// Emphasis
+//
+$small-font-size ?= 80% * $font-size
+
+// Blockquote
+//
+$blockquote-small-color ?= $colors['gray-60']
+$blockquote-font-size ?= $font-size * 1.25
+$blockquote-border ?= 3px solid $colors['gray-30']
+
+// Horizontal rule
+//
+$hr-border-color ?= rgba($colors['black'], 0.1)
+$hr-border-width ?= $border-width
+
+// Mark
+//
+$mark-padding ?= 0.2rem 0.4rem
+$mark-color ?= $colors['gray-80']
+$mark-background-color ?= #fcf8e3
+
+// Kbd
+//
+$kbd-box-shadow ?= inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25)
+$kbd-nested-font-weight ?= $font-weight['bold']
+$kbd-color ?= $colors['white']
+$kbd-background ?= $colors['gray-90']
+
+// Code
+//
+$code-font-size ?= 90%
+$code-padding ?= 0.2rem 0.4rem
+$code-color ?= #bd4147
+$code-background ?= $colors['gray-10']
+
+// Pre
+//
+$pre-color ?= $colors['gray-90']
+$pre-scrollable-max-height ?= 340px

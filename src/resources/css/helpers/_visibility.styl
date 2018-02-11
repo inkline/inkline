@@ -1,0 +1,32 @@
+for $breakpoint-name, $breakpoint-value in $breakpoints
+  $infix = breakpoint-infix($breakpoint-name)
+
+
+  +breakpoint($breakpoint-name)
+    ._hidden{$infix}
+      display: none
+
+    ._visible{$infix}
+      display: block
+
+
+  if $infix != ''
+    ._visible{$infix}
+    ._visible{$infix}-up
+    ._visible{$infix}-down
+      display: none;
+
+    +breakpoint-up($breakpoint-name)
+      ._hidden{$infix}-up
+        display: none
+
+      ._visible{$infix}-up
+        display: block
+
+
+    +breakpoint-down($breakpoint-name)
+      ._hidden{$infix}-down
+        display: none
+
+      ._visible{$infix}-down
+        display: block

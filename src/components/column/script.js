@@ -1,77 +1,45 @@
 import { breakpointClassValidator } from '../../validators';
-import { breakpointClass } from '../../helpers';
+import { breakpointClass, capitalizeFirst, toDashCase } from '../../helpers';
+
+const properties = {};
+const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
+for (let breakpoint of breakpoints) {
+    properties[breakpoint] = {
+        type: [Number, Boolean, String],
+        default: false
+    };
+
+    for (let property of ['offset', 'push', 'pull']) {
+        properties[property + capitalizeFirst(breakpoint)] = {
+            type: [Number, Boolean, String],
+            default: false
+        };
+    }
+}
 
 export default {
     name: 'Column',
     props: {
-        noGutter: {
-            type: Boolean,
-            default: false
-        },
-        noColapse: {
-            type: Boolean,
-            default: false
-        },
-        start: {
+        first: {
             type: [Boolean, String],
             default: false,
             validator: breakpointClassValidator
         },
-        center: {
+        last: {
             type: [Boolean, String],
             default: false,
             validator: breakpointClassValidator
         },
-        end: {
-            type: [Boolean, String],
-            default: false,
-            validator: breakpointClassValidator
-        },
-        top: {
-            type: [Boolean, String],
-            default: false,
-            validator: breakpointClassValidator
-        },
-        middle: {
-            type: [Boolean, String],
-            default: false,
-            validator: breakpointClassValidator
-        },
-        bottom: {
-            type: [Boolean, String],
-            default: false,
-            validator: breakpointClassValidator
-        },
-        around: {
-            type: [Boolean, String],
-            default: false,
-            validator: breakpointClassValidator
-        },
-        between: {
-            type: [Boolean, String],
-            default: false,
-            validator: breakpointClassValidator
-        },
-        reverse: {
-            type: [Boolean, String],
-            default: false,
-            validator: breakpointClassValidator
-        }
+
+        ...properties
     },
     computed: {
         classes: function () {
             return [
-                this.noGutter ? '-no-gutter' : '',
-                this.noColapse ? '-no-colapse' : '',
-                breakpointClass('-start', this.start),
-                breakpointClass('-center', this.center),
-                breakpointClass('-end', this.end),
-                breakpointClass('-top', this.top),
-                breakpointClass('-middle', this.middle),
-                breakpointClass('-bottom', this.bottom),
-                breakpointClass('-around', this.around),
-                breakpointClass('-between', this.between),
-                breakpointClass('-reverse', this.reverse)
+                breakpointClass('-first', this.first),
+                breakpointClass('-last', this.last),
+
+                ...Object.keys(properties).map((p) => this[p] ? `-${toDashCase(p)}-${this[p]}` : '')
             ];
         }
     }

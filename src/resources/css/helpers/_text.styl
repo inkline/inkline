@@ -1,0 +1,78 @@
+/**
+ * Text
+ */
+
+._text-justify
+  text-align: justify !important
+
+
+._text-nowrap
+  white-space: nowrap !important
+
+
+._text-truncate
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+
+// Responsive alignment
+//
+for $breakpoint-name, $breakpoint-value in $breakpoints
+  $infix = breakpoint-infix($breakpoint-name)
+
+  +breakpoint($breakpoint)
+    ._text{$infix}-left
+      text-align: left !important
+
+
+    ._text{$infix}-right
+      text-align: right !important
+
+
+    ._text{$infix}-center
+      text-align: center !important
+
+
+// Transformation
+//
+._text-lowercase
+  text-transform: lowercase !important
+
+
+._text-uppercase
+  text-transform: uppercase !important
+
+
+._text-capitalize
+  text-transform: capitalize !important
+
+
+// Weight and italics
+//
+for $font-weight-name, $font-weight-value in $font-weight
+  ._font-weight-{$font-weight-name}
+    font-weight: $font-weight-value !important
+
+
+._font-italic
+  font-style: italic !important
+
+
+
+// Contextual colors
+//
+for $color-name, $color in $colors
+  ._text-{$color-name}
+    color: $color
+
+for $color-name, $color in $brand-colors
+  ._text-{$color-name}
+    color: $color
+
+
+._text-muted
+  color: $text-muted !important
+
+._text-hide
+  text-indent: -10000px

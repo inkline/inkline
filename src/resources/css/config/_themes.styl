@@ -1,0 +1,31 @@
+//
+// Themes
+//
+// Generate color themes based on the $colors, $brand-colors and $social-colors
+// variables for components. If the color group is in the list, Inkline will
+// generate themes for the specified color group.
+//
+
+$background-themes ?= (brand social)
+$border-themes ?= (brand)
+$table-themes ?= (brand)
+$text-themes ?= (brand colors social)
+
+// Initialize theme collection
+//
+$themes ?= {
+    background: $background-themes
+    border: $border-themes
+    table: $table-themes
+    text: $text-themes
+}
+
+// Set theme colors for each enabled component
+//
+for $item, $item-theme-groups in $themes
+    $item-themes = {}
+
+    for $item-theme in $item-theme-groups
+        $item-themes = merge($item-themes, $item-theme == 'colors' ? $colors : lookup('$' + $item-theme + '-colors'))
+
+    $themes[$item] = $item-themes
