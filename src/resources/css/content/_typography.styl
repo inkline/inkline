@@ -1,0 +1,153 @@
+/**
+ * Typography
+ */
+
+
+// Document
+//
+
+
+html
+    font-family: sans-serif
+    line-height: 1.15
+    -webkit-text-size-adjust: 100%
+    -ms-text-size-adjust: 100%
+
+
+body
+    font-size: $font-size
+    font-weight: $font-weight['base']
+    font-family: $font-family-primary['base']
+    line-height: $line-height
+    letter-spacing: $letter-spacing
+    text-align: left
+    text-rendering: optimizeLegibility
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    -moz-font-feature-settings: unquote('"liga" on')
+
+
+// Heading
+//
+
+
+for $i in (1..6)
+    h{$i},
+    .h{$i},
+    .d{$i}
+        margin-top: 0
+        margin-bottom: $headings-margin-bottom
+        font-family: $headings-font-family
+        color: $headings-color
+
+    h{$i},
+    .h{$i}
+        font-size: $headings-font-size['h' + $i]
+        font-weight: $headings-font-weight
+        line-height: $headings-line-height
+
+    .d{$i}
+        font-size: $displays-font-size['d' + $i]
+        font-weight: $displays-font-weight
+        line-height: $displays-line-height
+
+
+// Paragraph
+//
+
+
+.lead
+    font-size: $lead-font-size
+    font-weight: $lead-font-weight
+
+
+.initialism
+    font-size: 90%
+    text-transform: uppercase
+
+
+// List
+//
+
+
+ul
+ol
+dl
+.list
+    &.-unstyled
+        padding-left: 0
+        list-style: none
+
+
+    &.-inline
+        padding-left: 0
+        list-style: none
+
+        > .item
+        > li
+            display: inline-block
+
+            &:not(:last-child)
+                margin-right: $list-inline-padding
+
+
+// Blockquote
+//
+
+
+blockquote
+.blockquote
+    margin: 0 0 $spacer
+    font-size: $blockquote-font-size
+
+    &.-left
+        text-align: left
+
+        &.-bordered
+            padding-left: $spacer
+            border-left: $blockquote-border
+
+    &.-center
+        text-align: center
+
+    &.-right
+        text-align: right
+
+        &.-bordered
+            padding-right: $spacer
+            border-right: $blockquote-border
+
+    > p
+        margin-bottom: 0
+
+    > footer
+    > .footer
+        display: block
+        font-size: 80%
+        color: $blockquote-small-color
+
+        &::before
+            content: '\2014 \00A0' // em dash, nbsp
+
+
+// Other
+//
+
+
+hr
+    margin: $spacer 0
+    border: none
+    border-top: $hr-border-width solid $hr-border-color
+
+
+small,
+.small
+    font-size: $small-font-size
+    font-weight: $font-weight['base']
+
+
+mark
+.mark
+    padding: $mark-padding
+    background-color: $mark-background-color
+    color: $mark-color
