@@ -1,5 +1,5 @@
 /**
- * Images and figures
+ * Image
  */
 
 
@@ -23,7 +23,7 @@
     // disproportionately sized. This fix improperly sizes other image formats,
     // so Inkline will only apply it to svg extensions
     &[src$=.svg]
-        width: 100% \9
+    width: 100% \9
 
 
     // Image thumbnails
@@ -45,17 +45,3 @@
         padding-bottom: $polaroid-padding
 
         @extend .img.-thumbnail
-
-
-// Figure
-//
-.figure
-    display: inline-block // Ensures the caption's text aligns with the image.
-
-    > .img
-        margin-bottom: ($spacer / 2)
-        line-height: 1
-
-    > .caption
-        font-size: $figure-caption-font-size
-        color: $figure-caption-color
