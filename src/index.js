@@ -1,6 +1,6 @@
-import Column from './components/column/Column';
-import Container from './components/container/Container';
-import Row from './components/row/Row';
+import Column from './components/Column';
+import Container from './components/Container';
+import Row from './components/Row';
 
 const components = [
     Column,
