@@ -5,6 +5,8 @@ const config = require('../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const packageConfig = require('../package.json');
 
+// Get assets path based on NODE_ENV
+//
 exports.assetsPath = function (_path) {
     const assetsSubDirectory = process.env.NODE_ENV === 'production'
         ? config.production.assetsSubDirectory
@@ -13,7 +15,9 @@ exports.assetsPath = function (_path) {
     return path.posix.join(assetsSubDirectory, _path);
 };
 
-exports.cssLoaders = function (options) {
+// Generate Vue style loaders for various style engines
+//
+exports.vueStyleLoaders = function (options) {
     options = options || {};
 
     const cssLoader = {
@@ -30,9 +34,19 @@ exports.cssLoaders = function (options) {
         }
     };
 
+    const stylusOptions = {
+        paths: [path.resolve('node_modules'), path.resolve('src')],
+        'include css': true,
+        'resolve url': true
+    };
+
+    const sassOptions = {
+        indentedSyntax: true
+    };
+
     // Generate loader string to be used with extract text plugin
     function generateLoaders (loader, loaderOptions) {
-        const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+        const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader];
 
         if (loader) {
             loaders.push({
@@ -50,9 +64,9 @@ exports.cssLoaders = function (options) {
                 use: loaders,
                 fallback: 'vue-style-loader'
             });
-        } else {
-            return ['vue-style-loader'].concat(loaders);
         }
+
+        return ['vue-style-loader'].concat(loaders);
     }
 
     // https://vue-loader.vuejs.org/en/configurations/extract-css.html
@@ -60,17 +74,18 @@ exports.cssLoaders = function (options) {
         css: generateLoaders(),
         postcss: generateLoaders(),
         less: generateLoaders('less'),
-        sass: generateLoaders('sass', { indentedSyntax: true }),
+        sass: generateLoaders('sass', sassOptions),
         scss: generateLoaders('sass'),
-        stylus: generateLoaders('stylus'),
-        styl: generateLoaders('stylus')
+        stylus: generateLoaders('stylus', stylusOptions),
+        styl: generateLoaders('stylus', stylusOptions)
     };
 };
 
 // Generate loaders for standalone style files (outside of .vue)
+//
 exports.styleLoaders = function (options) {
     const output = [];
-    const loaders = exports.cssLoaders(options);
+    const loaders = exports.vueStyleLoaders(options);
 
     for (const extension in loaders) {
         const loader = loaders[extension];
@@ -83,6 +98,16 @@ exports.styleLoaders = function (options) {
     return output;
 };
 
+// Generate loaders for standalone style files (outside of .vue)
+//
+exports.markdownLoader = function (options) {
+    return {
+        loader: 'commonmark-loader'
+    };
+};
+
+// Create desktop notification
+//
 exports.createNotifierCallback = () => {
     const notifier = require('node-notifier');
 

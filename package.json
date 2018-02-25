@@ -23,8 +23,7 @@
     },
     "homepage": "https://github.com/inkline/inkline#readme",
     "dependencies": {
-        "vue": "^2.5.13",
-        "inkline-component-container": "^1.0.0"
+        "vue": "^2.5.13"
     },
     "devDependencies": {
         "autoprefixer": "^7.1.2",
