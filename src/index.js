@@ -1,5 +1,10 @@
 import Column from './components/Column';
 import Container from './components/Container';
+import Layout from './components/Layout';
+import LayoutAside from './components/LayoutAside';
+import LayoutContent from './components/LayoutContent';
+import LayoutFooter from './components/LayoutFooter';
+import LayoutHeader from './components/LayoutHeader';
 import Row from './components/Row';
 
 const components = [
@@ -25,6 +30,11 @@ class Inkline {
 export {
     Column,
     Container,
+    Layout,
+    LayoutAside,
+    LayoutContent,
+    LayoutFooter,
+    LayoutHeader,
     Row,
     Inkline
 };

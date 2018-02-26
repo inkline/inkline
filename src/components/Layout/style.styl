@@ -1,0 +1,21 @@
+@import '../../resources/css/config'
+@import '../../resources/css/mixins'
+
+.layout
+    display: flex
+    flex-direction: column
+    flex: auto
+
+    &,
+    *
+        box-sizing: border-box
+
+    &.-has-aside
+        flex-direction: row
+
+        > .layout,
+        > .container
+            overflow-x: hidden
+
+    > .container
+        flex: auto
