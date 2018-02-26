@@ -7,11 +7,16 @@ import LayoutFooter from './components/LayoutFooter';
 import LayoutHeader from './components/LayoutHeader';
 import Row from './components/Row';
 
-const components = [
+const components = {
     Column,
     Container,
+    Layout,
+    LayoutAside,
+    LayoutContent,
+    LayoutFooter,
+    LayoutHeader,
     Row
-];
+};
 
 class Inkline {
     constructor () {

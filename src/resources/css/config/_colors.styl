@@ -4,33 +4,68 @@
 // Basic colors, social colors and brand colors
 //
 
-// Basic Colors
-//
-$colors ?= {
-  red: #ff3b3a
-  orange: #ff962c
-  yellow: #ffce36
-  green: #2eda6c
-  teal: #4ec7f7
-  blue: #0076fa
-  purple: #5b51d2
-  pink: #ff2c59
+$colors-red ?= #ff3b3a
+$colors-orange ?= #ff962c
+$colors-yellow ?= #ffce36
+$colors-green ?= #2eda6c
+$colors-teal ?= #4ec7f7
+$colors-blue ?= #0076fa
+$colors-purple ?= #5b51d2
+$colors-pink ?= #ff2c59
 
-  white: #ffffff
-  gray-10: #f8f9fa
-  gray-20: #e9ecef
-  gray-30: #dee2e6
-  gray-40: #ced4da
-  gray-50: #adb5bd
-  gray-60: #868e96
-  gray-70: #495057
-  gray-80: #343a40
-  gray-90: #212529
-  black: #000000
-}
+$colors-white ?= #ffffff
+$colors-gray-10 ?= #f8f9fa
+$colors-gray-20 ?= #e9ecef
+$colors-gray-30 ?= #dee2e6
+$colors-gray-40 ?= #ced4da
+$colors-gray-50 ?= #adb5bd
+$colors-gray-60 ?= #868e96
+$colors-gray-70 ?= #495057
+$colors-gray-80 ?= #343a40
+$colors-gray-90 ?= #212529
+$colors-black ?= #000000
+
+$colors-facebook ?= #3b5998
+$colors-twitter ?= #1da1f2
+$colors-google-plus ?= #dd4b39
+$colors-dribbble ?= #ea4c89
+$colors-behance ?= #1769ff
+$colors-flickr ?= #ff0084
+$colors-linkedin ?= #0077b5
+$colors-youtube ?= #cd201f
+$colors-pinterest ?= #bd081c
+$colors-github ?= #333333
+$colors-tumblr ?= #35465c
+$colors-twitch ?= #6441a5
+$colors-envato ?= #82b541
 
 $primary ?= #0B708A
 $secondary ?= #56B1BF
+
+// Basic Colors
+//
+$colors ?= {
+  red: $colors-red
+  orange: $colors-orange
+  yellow: $colors-yellow
+  green: $colors-green
+  teal: $colors-teal
+  blue: $colors-blue
+  purple: $colors-purple
+  pink: $colors-pink
+
+  white: $colors-white
+  gray-10: $colors-gray-10
+  gray-20: $colors-gray-20
+  gray-30: $colors-gray-30
+  gray-40: $colors-gray-40
+  gray-50: $colors-gray-50
+  gray-60: $colors-gray-60
+  gray-70: $colors-gray-70
+  gray-80: $colors-gray-80
+  gray-90: $colors-gray-90
+  black: $colors-black
+}
 
 // Brand Colors
 //
@@ -48,17 +83,17 @@ $brand-colors ?= {
 // Social Colors
 //
 $social-colors ?= {
-  facebook: #3b5998
-  twitter: #1da1f2
-  google-plus: #dd4b39
-  dribbble: #ea4c89
-  behance: #1769ff
-  flickr: #ff0084
-  linkedin: #0077b5
-  youtube: #cd201f
-  pinterest: #bd081c
-  github: #333333
-  tumblr: #35465c
-  twitch: #6441a5
-  envato: #82b541
+  facebook: $colors-facebook
+  twitter: $colors-twitter
+  google-plus: $colors-google-plus
+  dribbble: $colors-dribbble
+  behance: $colors-behance
+  flickr: $colors-flickr
+  linkedin: $colors-linkedin
+  youtube: $colors-youtube
+  pinterest: $colors-pinterest
+  github: $colors-github
+  tumblr: $colors-tumblr
+  twitch: $colors-twitch
+  envato: $colors-envato
 }

@@ -2,11 +2,13 @@
 @import '../../resources/css/mixins'
 
 $layout-aside-background ?= $colors['gray-10']
+$layout-aside-width ?= auto
 
 .layout-aside
     transition: all .2s
     position: relative
     background: $layout-aside-background
+    width: $layout-aside-width
 
     /* Fix firefox can't set width smaller than content on flex item */
     min-width: 0

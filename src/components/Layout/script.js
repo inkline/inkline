@@ -1,7 +1,7 @@
 export default {
     name: 'Layout',
     props: {
-        fluid: {
+        hasAside: {
             type: Boolean,
             default: false
         }
