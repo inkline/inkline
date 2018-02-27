@@ -22,7 +22,6 @@ $container-width ?= {
             padding-left: ($gutter-width / 2)
             padding-right: ($gutter-width / 2)
 
-
 .container
     for $breakpoint-name, $container-max-width in $container-width
         +breakpoint-up($breakpoint-name)

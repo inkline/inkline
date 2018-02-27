@@ -5,5 +5,12 @@ export default {
             type: Boolean,
             default: false
         }
+    },
+    computed: {
+        classes: function () {
+            return [
+                this.hasAside ? '-has-aside' : ''
+            ];
+        }
     }
 };

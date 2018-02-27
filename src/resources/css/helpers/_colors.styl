@@ -6,9 +6,9 @@
 // Background
 //
 for $color-name, $color in $themes['background']
-  ._background-{$color-name}
-    background-color: $color !important
-    color: contrastColor($color, $colors['white'], $colors['gray-80'])
+    ._background-{$color-name}
+        background-color: $color !important
+        color: contrastColor($color, $colors['white'], $colors['gray-80'])
 
 ._background-transparent
   background-color: transparent !important
@@ -17,5 +17,5 @@ for $color-name, $color in $themes['background']
 // Text
 //
 for $color-name, $color in $themes['text']
-  ._text-{$color-name}
-    color: $color !important
+    ._text-{$color-name}
+        color: $color !important
