@@ -48,7 +48,7 @@ $line-height ?= 1.5
 
 // Muted text color
 //
-$text-muted ?= $colors['gray-60']
+$text-muted ?= $colors['gray-60'][0]
 
 // Headings
 //
@@ -83,8 +83,8 @@ $displays-line-height ?= $headings-line-height
 
 // Links
 //
-$link-color ?= $primary
-$link-hover-color ?= darken($primary, 20%)
+$link-color ?= $colors-primary
+$link-hover-color ?= darken($colors-primary, 20%)
 $link-decoration ?= none
 $link-hover-decoration ?= underline
 

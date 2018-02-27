@@ -39,8 +39,15 @@ $colors-tumblr ?= #35465c
 $colors-twitch ?= #6441a5
 $colors-envato ?= #82b541
 
-$primary ?= #0B708A
-$secondary ?= #56B1BF
+$colors-primary ?= #0B708A
+$colors-secondary ?= #56B1BF
+$colors-light ?= $colors-white
+$colors-dark ?= $colors-gray-90
+$colors-success ?= $colors-green
+$colors-danger ?= $colors-red
+$colors-warning ?= $colors-orange
+$colors-info ?= $colors-blue
+
 
 // Basic Colors
 //
@@ -70,14 +77,14 @@ $colors ?= {
 // Brand Colors
 //
 $brand-colors ?= {
-  primary: $primary
-  secondary: $secondary
-  light: $colors['white']
-  dark: $colors['gray-90']
-  success: $colors['green']
-  danger: $colors['red']
-  warning: $colors['orange']
-  info: $colors['blue']
+  primary: $colors-primary
+  secondary: $colors-secondary
+  light: $colors-light
+  dark: $colors-dark
+  success: $colors-green
+  danger: $colors-red
+  warning: $colors-orange
+  info: $colors-blue
 }
 
 // Social Colors
