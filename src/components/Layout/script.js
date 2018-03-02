@@ -1,7 +1,7 @@
 export default {
     name: 'Layout',
     props: {
-        hasAside: {
+        vertical: {
             type: Boolean,
             default: false
         }
@@ -9,7 +9,7 @@ export default {
     computed: {
         classes: function () {
             return [
-                this.hasAside ? '-has-aside' : ''
+                this.vertical ? '-vertical' : ''
             ];
         }
     }
