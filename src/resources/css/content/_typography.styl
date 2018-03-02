@@ -35,7 +35,7 @@ for $i in (1..6)
     h{$i},
     .h{$i},
     .d{$i}
-        margin-top: 0
+        margin-top: $headings-margin-top
         margin-bottom: $headings-margin-bottom
         font-family: $headings-font-family
         color: $headings-color
@@ -74,10 +74,13 @@ ul
 ol
 dl
 .list
+    > .item
+    > li
+        margin-bottom: $list-item-margin-bottom
+
     &.-unstyled
         padding-left: 0
         list-style: none
-
 
     &.-inline
         padding-left: 0
