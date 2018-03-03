@@ -4,15 +4,605 @@
 // Basic colors, social colors and brand colors
 //
 
-$colors-primary ?= #0B708A
-$colors-secondary ?= #56B1BF
+$colors-evening-night ?= (#005aa7 #fffde4)
+$colors-vanusa ?= (#da4453 #89216b)
+$colors-shifty ?= (#636363 #a2ab58)
+$colors-expresso ?= (#ad5389 #3c1053)
+$colors-slight-ocean-view ?= (#a8c0ff #3f2b96)
+$colors-pure-lust ?= (#333333 #dd1818)
+$colors-moon-purple ?= (#4e54c8 #8f94fb)
+$colors-red-sunset ?= (#355c7d #6c5b7b #c06c84)
+$colors-shifter ?= (#bc4e9c #f80759)
+$colors-wedding-day-blues ?= (#40e0d0 #ff8c00 #ff0080)
+$colors-sand-to-blue ?= (#3e5151 #decba4)
+$colors-quepal ?= (#11998e #38ef7d)
+$colors-pun-yeta ?= (#108dc7 #ef8e38)
+$colors-sublime-light ?= (#fc5c7d #6a82fb)
+$colors-sublime-vivid ?= (#fc466b #3f5efb)
+$colors-bighead ?= (#c94b4b #4b134f)
+$colors-taran-tado ?= (#23074d #cc5333)
+$colors-relaxing-red ?= (#fffbd5 #b20a2c)
+$colors-lawrencium ?= (#0f0c29 #302b63 #24243e)
+$colors-ohhappiness ?= (#00b09b #96c93d)
+$colors-delicate ?= (#d3cce3 #e9e4f0)
+$colors-selenium ?= (#3c3b3f #605c3c)
+$colors-sulphur ?= (#cac531 #f3f9a7)
+$colors-pink-flavour ?= (#800080 #ffc0cb)
+$colors-rainbow-blue ?= (#00f260 #0575e6)
+$colors-orange-fun ?= (#fc4a1a #f7b733)
+$colors-velvet-sun ?= (#e1eec3 #f05053)
+$colors-digital-water ?= (#74ebd5 #acb6e5)
+$colors-lithium ?= (#6d6027 #d3cbb8)
+$colors-argon ?= (#03001e #7303c0 #ec38bc #fdeff9)
+$colors-hydrogen ?= (#667db6 #0082c8 #0082c8 #667db6)
+$colors-zinc ?= (#ada996 #f2f2f2 #dbdbdb #eaeaea)
+$colors-velvet-sun ?= (#e1eec3 #f05053)
+$colors-king-yna ?= (#1a2a6c #b21f1f #fdbb2d)
+$colors-summer ?= (#22c1c3 #fdbb2d)
+$colors-orange-coral ?= (#ff9966 #ff5e62)
+$colors-purpink ?= (#7f00ff #e100ff)
+$colors-dull ?= (#c9d6ff #e2e2e2)
+$colors-kimoby-is-the-new-blue ?= (#396afc #2948ff)
+$colors-broken-hearts ?= (#d9a7c7 #fffcdc)
+$colors-clot ?= (#070000 #4c0001 #070000)
+$colors-shift ?= (#000000 #e5008d #ff070b)
+$colors-subu ?= (#0cebeb #20e3b2 #29ffc6)
+$colors-socialive ?= (#06beb6 #48b1bf)
+$colors-crimson-tide ?= (#642b73 #c6426e)
+$colors-telegram ?= (#1c92d2 #f2fcfe)
+$colors-terminal ?= (#000000 #0f9b0f)
+$colors-scooter ?= (#36d1dc #5b86e5)
+$colors-alive ?= (#cb356b #bd3f32)
+$colors-relay ?= (#3a1c71 #d76d77 #ffaf7b)
+$colors-meridian ?= (#283c86 #45a247)
+$colors-compare-now ?= (#ef3b36 #ffffff)
+$colors-mello ?= (#c0392b #8e44ad)
+$colors-crystal-clear ?= (#159957 #155799)
+$colors-visions-of-grandeur ?= (#000046 #1cb5e0)
+$colors-chitty-chitty-bang-bang ?= (#007991 #78ffd6)
+$colors-blue-skies ?= (#56ccf2 #2f80ed)
+$colors-sunkist ?= (#f2994a #f2c94c)
+$colors-coal ?= (#eb5757 #000000)
+$colors-html ?= (#e44d26 #f16529)
+$colors-cinnamint ?= (#4ac29a #bdfff3)
+$colors-maldives ?= (#b2fefa #0ed2f7)
+$colors-mini ?= (#30e8bf #ff8235)
+$colors-sha-la-la ?= (#d66d75 #e29587)
+$colors-purplepine ?= (#20002c #cbb4d4)
+$colors-celestial ?= (#c33764 #1d2671)
+$colors-learning-and-leading ?= (#f7971e #ffd200)
+$colors-pacific-dream ?= (#34e89e #0f3443)
+$colors-venice ?= (#6190e8 #a7bfe8)
+$colors-orca ?= (#44a08d #093637)
+$colors-love-and-liberty ?= (#200122 #6f0000)
+$colors-very-blue ?= (#0575e6 #021b79)
+$colors-can-you-feel-the-love-tonight ?= (#4568dc #b06ab3)
+$colors-the-blue-lagoon ?= (#43c6ac #191654)
+$colors-under-the-lake ?= (#093028 #237a57)
+$colors-honey-dew ?= (#43c6ac #f8ffae)
+$colors-roseanna ?= (#ffafbd #ffc3a0)
+$colors-what-lies-beyond ?= (#f0f2f0 #000c40)
+$colors-rose-colored-lenses ?= (#e8cbc0 #636fa4)
+$colors-easymed ?= (#dce35b #45b649)
+$colors-cocoaa-ice ?= (#c0c0aa #1cefff)
+$colors-jodhpur ?= (#9cecfb #65c7f7 #0052d4)
+$colors-jaipur ?= (#dbe6f6 #c5796d)
+$colors-vice-city ?= (#3494e6 #ec6ead)
+$colors-mild ?= (#67b26f #4ca2cd)
+$colors-dawn ?= (#f3904f #3b4371)
+$colors-ibiza-sunset ?= (#ee0979 #ff6a00)
+$colors-radar ?= (#a770ef #cf8bf3 #fdb99b)
+$colors-80-s-purple ?= (#41295a #2f0743)
+$colors-black-rose ?= (#f4c4f3 #fc67fa)
+$colors-brady-brady-fun-fun ?= (#00c3ff #ffff1c)
+$colors-ed-s-sunset-gradient ?= (#ff7e5f #feb47b)
+$colors-snapchat ?= (#fffc00 #ffffff)
+$colors-cosmic-fusion ?= (#ff00cc #333399)
+$colors-nepal ?= (#de6161 #2657eb)
+$colors-azure-pop ?= (#ef32d9 #89fffd)
+$colors-love-couple ?= (#3a6186 #89253e)
+$colors-disco ?= (#4ecdc4 #556270)
+$colors-limeade ?= (#a1ffce #faffd1)
+$colors-dania ?= (#be93c5 #7bc6cc)
+$colors-50-shades-of-grey ?= (#bdc3c7 #2c3e50)
+$colors-dusk ?= (#ffd89b #19547b)
+$colors-iiit-delhi ?= (#808080 #3fada8)
+$colors-sun-on-the-horizon ?= (#fceabb #f8b500)
+$colors-blood-red ?= (#f85032 #e73827)
+$colors-sherbert ?= (#f79d00 #64f38c)
+$colors-firewatch ?= (#cb2d3e #ef473a)
+$colors-lush ?= (#56ab2f #a8e063)
+$colors-frost ?= (#000428 #004e92)
+$colors-mauve ?= (#42275a #734b6d)
+$colors-royal ?= (#141e30 #243b55)
+$colors-minimal-red ?= (#f00000 #dc281e)
+$colors-dusk ?= (#2c3e50 #fd746c)
+$colors-deep-sea-space ?= (#2c3e50 #4ca1af)
+$colors-grapefruit-sunset ?= (#e96443 #904e95)
+$colors-sunset ?= (#0b486b #f56217)
+$colors-solid-vault ?= (#3a7bd5 #3a6073)
+$colors-bright-vault ?= (#00d2ff #928dab)
+$colors-politics ?= (#2196f3 #f44336)
+$colors-sweet-morning ?= (#ff5f6d #ffc371)
+$colors-sylvia ?= (#ff4b1f #ff9068)
+$colors-transfile ?= (#16bffd #cb3066)
+$colors-tranquil ?= (#eecda3 #ef629f)
+$colors-red-ocean ?= (#1d4350 #a43931)
+$colors-shahabi ?= (#a80077 #66ff00)
+$colors-alihossein ?= (#f7ff00 #db36a4)
+$colors-ali ?= (#ff4b1f #1fddff)
+$colors-purple-white ?= (#ba5370 #f4e2d8)
+$colors-colors-of-sky ?= (#e0eafc #cfdef3)
+$colors-decent ?= (#4ca1af #c4e0e5)
+$colors-deep-space ?= (#000000 #434343)
+$colors-dark-skies ?= (#4b79a1 #283e51)
+$colors-suzy ?= (#834d9b #d04ed6)
+$colors-superman ?= (#0099f7 #f11712)
+$colors-nighthawk ?= (#2980b9 #2c3e50)
+$colors-forest ?= (#5a3f37 #2c7744)
+$colors-miami-dolphins ?= (#4da0b0 #d39d38)
+$colors-minnesota-vikings ?= (#5614b0 #dbd65c)
+$colors-christmas ?= (#2f7336 #aa3a38)
+$colors-joomla ?= (#1e3c72 #2a5298)
+$colors-pizelex ?= (#114357 #f29492)
+$colors-haikus ?= (#fd746c #ff9068)
+$colors-pale-wood ?= (#eacda3 #d6ae7b)
+$colors-purplin ?= (#6a3093 #a044ff)
+$colors-inbox ?= (#457fca #5691c8)
+$colors-blush ?= (#b24592 #f15f79)
+$colors-back-to-the-future ?= (#c02425 #f0cb35)
+$colors-poncho ?= (#403a3e #be5869)
+$colors-green-and-blue ?= (#c2e59c #64b3f4)
+$colors-light-orange ?= (#ffb75e #ed8f03)
+$colors-netflix ?= (#8e0e00 #1f1c18)
+$colors-little-leaf ?= (#76b852 #8dc26f)
+$colors-deep-purple ?= (#673ab7 #512da8)
+$colors-back-to-earth ?= (#00c9ff #92fe9d)
+$colors-master-card ?= (#f46b45 #eea849)
+$colors-clear-sky ?= (#005c97 #363795)
+$colors-passion ?= (#e53935 #e35d5b)
+$colors-timber ?= (#fc00ff #00dbde)
+$colors-between-night-and-day ?= (#2c3e50 #3498db)
+$colors-sage-persuasion ?= (#ccccb2 #757519)
+$colors-lizard ?= (#304352 #d7d2cc)
+$colors-piglet ?= (#ee9ca7 #ffdde1)
+$colors-dark-knight ?= (#ba8b02 #181818)
+$colors-curiosity-blue ?= (#525252 #3d72b4)
+$colors-ukraine ?= (#004ff9 #fff94c)
+$colors-green-to-dark ?= (#6a9113 #141517)
+$colors-fresh-turboscent ?= (#f1f2b5 #135058)
+$colors-koko-caramel ?= (#d1913c #ffd194)
+$colors-virgin-america ?= (#7b4397 #dc2430)
+$colors-portrait ?= (#8e9eab #eef2f3)
+$colors-turquoise-flow ?= (#136a8a #267871)
+$colors-atlas ?= (#feac5e #c779d0 #4bc0c8)
+$colors-pastel-orange-at-the-sun ?= (#ffb347 #ffcc33)
+$colors-endless-river ?= (#43cea2 #185a9d)
+$colors-predawn ?= (#ffa17f #00223e)
+$colors-purple-bliss ?= (#360033 #0b8793)
+$colors-talking-to-mice-elf ?= (#948e99 #2e1437)
+$colors-hersheys ?= (#1e130c #9a8478)
+$colors-crazy-orange-i ?= (#d38312 #a83279)
+$colors-between-the-clouds ?= (#73c8a9 #373b44)
+$colors-metallic-toad ?= (#abbaab #ffffff)
+$colors-martini ?= (#fdfc47 #24fe41)
+$colors-friday ?= (#83a4d4 #b6fbff)
+$colors-servquick ?= (#485563 #29323c)
+$colors-behongo ?= (#52c234 #061700)
+$colors-soundcloud ?= (#fe8c00 #f83600)
+$colors-facebook-messenger ?= (#00c6ff #0072ff)
+$colors-shore ?= (#70e1f5 #ffd194)
+$colors-cheer-up-emo-kid ?= (#556270 #ff6b6b)
+$colors-amethyst ?= (#9d50bb #6e48aa)
+$colors-man-of-steel ?= (#780206 #061161)
+$colors-neon-life ?= (#b3ffab #12fff7)
+$colors-teal-love ?= (#aaffa9 #11ffbd)
+$colors-red-mist ?= (#000000 #e74c3c)
+$colors-starfall ?= (#f0c27b #4b1248)
+$colors-dance-to-forget ?= (#ff4e50 #f9d423)
+$colors-parklife ?= (#add100 #7b920a)
+$colors-cherryblossoms ?= (#fbd3e9 #bb377d)
+$colors-shadow-night ?= (#000000 #53346d)
+$colors-ash ?= (#606c88 #3f4c6b)
+$colors-virgin ?= (#c9ffbf #ffafbd)
+$colors-earthly ?= (#649173 #dbd5a4)
+$colors-dirty-fog ?= (#b993d6 #8ca6db)
+$colors-the-strain ?= (#870000 #190a05)
+$colors-reef ?= (#00d2ff #3a7bd5)
+$colors-candy ?= (#d3959b #bfe6ba)
+$colors-autumn ?= (#dad299 #b0dab9)
+$colors-winter ?= (#e6dada #274046)
+$colors-forever-lost ?= (#5d4157 #a8caba)
+$colors-almost ?= (#ddd6f3 #faaca8)
+$colors-moor ?= (#616161 #9bc5c3)
+$colors-aqualicious ?= (#50c9c3 #96deda)
+$colors-misty-meadow ?= (#215f00 #e4e4d9)
+$colors-kyoto ?= (#c21500 #ffc500)
+$colors-sirius-tamed ?= (#efefbb #d4d3dd)
+$colors-jonquil ?= (#ffeeee #ddefbb)
+$colors-petrichor ?= (#666600 #999966)
+$colors-a-lost-memory ?= (#de6262 #ffb88c)
+$colors-vasily ?= (#e9d362 #333333)
+$colors-blurry-beach ?= (#d53369 #cbad6d)
+$colors-namn ?= (#a73737 #7a2828)
+$colors-day-tripper ?= (#f857a6 #ff5858)
+$colors-pinot-noir ?= (#4b6cb7 #182848)
+$colors-miaka ?= (#fc354c #0abfbc)
+$colors-army ?= (#414d0b #727a17)
+$colors-shrimpy ?= (#e43a15 #e65245)
+$colors-influenza ?= (#c04848 #480048)
+$colors-calm-darya ?= (#5f2c82 #49a09d)
+$colors-bourbon ?= (#ec6f66 #f3a183)
+$colors-stellar ?= (#7474bf #348ac7)
+$colors-clouds ?= (#ece9e6 #ffffff)
+$colors-moonrise ?= (#dae2f8 #d6a4a4)
+$colors-peach ?= (#ed4264 #ffedbc)
+$colors-dracula ?= (#dc2424 #4a569d)
+$colors-mantle ?= (#24c6dc #514a9d)
+$colors-titanium ?= (#283048 #859398)
+$colors-opa ?= (#3d7eaa #ffe47a)
+$colors-sea-blizz ?= (#1cd8d2 #93edc7)
+$colors-midnight-city ?= (#232526 #414345)
+$colors-mystic ?= (#757f9a #d7dde8)
+$colors-shroom-haze ?= (#5c258d #4389a2)
+$colors-moss ?= (#134e5e #71b280)
+$colors-bora-bora ?= (#2bc0e4 #eaecc6)
+$colors-venice-blue ?= (#085078 #85d8ce)
+$colors-electric-violet ?= (#4776e6 #8e54e9)
+$colors-kashmir ?= (#614385 #516395)
+$colors-steel-gray ?= (#1f1c2c #928dab)
+$colors-mirage ?= (#16222a #3a6073)
+$colors-juicy-orange ?= (#ff8008 #ffc837)
+$colors-mojito ?= (#1d976c #93f9b9)
+$colors-cherry ?= (#eb3349 #f45c43)
+$colors-pinky ?= (#dd5e89 #f7bb97)
+$colors-sea-weed ?= (#4cb8c4 #3cd3ad)
+$colors-stripe ?= (#1fa2ff #12d8fa #a6ffcb)
+$colors-purple-paradise ?= (#1d2b64 #f8cdda)
+$colors-sunrise ?= (#ff512f #f09819)
+$colors-aqua-marine ?= (#1a2980 #26d0ce)
+$colors-aubergine ?= (#aa076b #61045f)
+$colors-bloody-mary ?= (#ff512f #dd2476)
+$colors-mango-pulp ?= (#f09819 #edde5d)
+$colors-frozen ?= (#403b4a #e7e9bb)
+$colors-rose-water ?= (#e55d87 #5fc3e4)
+$colors-horizon ?= (#003973 #e5e5be)
+$colors-monte-carlo ?= (#cc95c0 #dbd4b4 #7aa1d2)
+$colors-lemon-twist ?= (#3ca55c #b5ac49)
+$colors-emerald-water ?= (#348f50 #56b4d3)
+$colors-intuitive-purple ?= (#da22ff #9733ee)
+$colors-green-beach ?= (#02aab0 #00cdac)
+$colors-sunny-days ?= (#ede574 #e1f5c4)
+$colors-playing-with-reds ?= (#d31027 #ea384d)
+$colors-harmonic-energy ?= (#16a085 #f4d03f)
+$colors-cool-brown ?= (#603813 #b29f94)
+$colors-noon-to-dusk ?= (#ff6e7f #bfe9ff)
+$colors-hazel ?= (#77a1d3 #79cbca #e684ae)
+$colors-nimvelo ?= (#314755 #26a0da)
+$colors-sea-blue ?= (#2b5876 #4e4376)
+$colors-blooker20 ?= (#e65c00 #f9d423)
+$colors-sexy-blue ?= (#2193b0 #6dd5ed)
+$colors-purple-love ?= (#cc2b5e #753a88)
+$colors-dimigo ?= (#ec008c #fc6767)
+$colors-skyline ?= (#1488cc #2b32b2)
+$colors-sel ?= (#00467f #a5cc82)
+$colors-sky ?= (#076585 #ffffff)
+$colors-petrol ?= (#bbd2c5 #536976)
+$colors-copper ?= (#b79891 #94716b)
+$colors-royal-blue-petrol ?= (#bbd2c5 #536976 #292e49)
+$colors-royal-blue ?= (#536976 #292e49)
+$colors-windy ?= (#acb6e5 #86fde8)
+$colors-mango ?= (#ffe259 #ffa751)
+$colors-berimbolo ?= (#02111d #037bb5 #02111d)
 
-$colors-red ?= #ff3b3a
-$colors-orange ?= #ff962c
+$colors-gradient ?= {
+    'evening-night': $colors-evening-night
+    'vanusa': $colors-vanusa
+    'shifty': $colors-shifty
+    'expresso': $colors-expresso
+    'slight-ocean-view': $colors-slight-ocean-view
+    'pure-lust': $colors-pure-lust
+    'moon-purple': $colors-moon-purple
+    'red-sunset': $colors-red-sunset
+    'shifter': $colors-shifter
+    'wedding-day-blues': $colors-wedding-day-blues
+    'sand-to-blue': $colors-sand-to-blue
+    'quepal': $colors-quepal
+    'pun-yeta': $colors-pun-yeta
+    'sublime-light': $colors-sublime-light
+    'sublime-vivid': $colors-sublime-vivid
+    'bighead': $colors-bighead
+    'taran-tado': $colors-taran-tado
+    'relaxing-red': $colors-relaxing-red
+    'lawrencium': $colors-lawrencium
+    'ohhappiness': $colors-ohhappiness
+    'delicate': $colors-delicate
+    'selenium': $colors-selenium
+    'sulphur': $colors-sulphur
+    'pink-flavour': $colors-pink-flavour
+    'rainbow-blue': $colors-rainbow-blue
+    'orange-fun': $colors-orange-fun
+    'velvet-sun': $colors-velvet-sun
+    'digital-water': $colors-digital-water
+    'lithium': $colors-lithium
+    'argon': $colors-argon
+    'hydrogen': $colors-hydrogen
+    'zinc': $colors-zinc
+    'velvet-sun': $colors-velvet-sun
+    'king-yna': $colors-king-yna
+    'summer': $colors-summer
+    'orange-coral': $colors-orange-coral
+    'purpink': $colors-purpink
+    'dull': $colors-dull
+    'kimoby-is-the-new-blue': $colors-kimoby-is-the-new-blue
+    'broken-hearts': $colors-broken-hearts
+    'clot': $colors-clot
+    'shift': $colors-shift
+    'subu': $colors-subu
+    'socialive': $colors-socialive
+    'crimson-tide': $colors-crimson-tide
+    'telegram': $colors-telegram
+    'terminal': $colors-terminal
+    'scooter': $colors-scooter
+    'alive': $colors-alive
+    'relay': $colors-relay
+    'meridian': $colors-meridian
+    'compare-now': $colors-compare-now
+    'mello': $colors-mello
+    'crystal-clear': $colors-crystal-clear
+    'visions-of-grandeur': $colors-visions-of-grandeur
+    'chitty-chitty-bang-bang': $colors-chitty-chitty-bang-bang
+    'blue-skies': $colors-blue-skies
+    'sunkist': $colors-sunkist
+    'coal': $colors-coal
+    'html': $colors-html
+    'cinnamint': $colors-cinnamint
+    'maldives': $colors-maldives
+    'mini': $colors-mini
+    'sha-la-la': $colors-sha-la-la
+    'purplepine': $colors-purplepine
+    'celestial': $colors-celestial
+    'learning-and-leading': $colors-learning-and-leading
+    'pacific-dream': $colors-pacific-dream
+    'venice': $colors-venice
+    'orca': $colors-orca
+    'love-and-liberty': $colors-love-and-liberty
+    'very-blue': $colors-very-blue
+    'can-you-feel-the-love-tonight': $colors-can-you-feel-the-love-tonight
+    'the-blue-lagoon': $colors-the-blue-lagoon
+    'under-the-lake': $colors-under-the-lake
+    'honey-dew': $colors-honey-dew
+    'roseanna': $colors-roseanna
+    'what-lies-beyond': $colors-what-lies-beyond
+    'rose-colored-lenses': $colors-rose-colored-lenses
+    'easymed': $colors-easymed
+    'cocoaa-ice': $colors-cocoaa-ice
+    'jodhpur': $colors-jodhpur
+    'jaipur': $colors-jaipur
+    'vice-city': $colors-vice-city
+    'mild': $colors-mild
+    'dawn': $colors-dawn
+    'ibiza-sunset': $colors-ibiza-sunset
+    'radar': $colors-radar
+    '80-s-purple': $colors-80-s-purple
+    'black-rose': $colors-black-rose
+    'brady-brady-fun-fun': $colors-brady-brady-fun-fun
+    'ed-s-sunset-gradient': $colors-ed-s-sunset-gradient
+    'snapchat': $colors-snapchat
+    'cosmic-fusion': $colors-cosmic-fusion
+    'nepal': $colors-nepal
+    'azure-pop': $colors-azure-pop
+    'love-couple': $colors-love-couple
+    'disco': $colors-disco
+    'limeade': $colors-limeade
+    'dania': $colors-dania
+    '50-shades-of-grey': $colors-50-shades-of-grey
+    'dusk': $colors-dusk
+    'iiit-delhi': $colors-iiit-delhi
+    'sun-on-the-horizon': $colors-sun-on-the-horizon
+    'blood-red': $colors-blood-red
+    'sherbert': $colors-sherbert
+    'firewatch': $colors-firewatch
+    'lush': $colors-lush
+    'frost': $colors-frost
+    'mauve': $colors-mauve
+    'royal': $colors-royal
+    'minimal-red': $colors-minimal-red
+    'dusk': $colors-dusk
+    'deep-sea-space': $colors-deep-sea-space
+    'grapefruit-sunset': $colors-grapefruit-sunset
+    'sunset': $colors-sunset
+    'solid-vault': $colors-solid-vault
+    'bright-vault': $colors-bright-vault
+    'politics': $colors-politics
+    'sweet-morning': $colors-sweet-morning
+    'sylvia': $colors-sylvia
+    'transfile': $colors-transfile
+    'tranquil': $colors-tranquil
+    'red-ocean': $colors-red-ocean
+    'shahabi': $colors-shahabi
+    'alihossein': $colors-alihossein
+    'ali': $colors-ali
+    'purple-white': $colors-purple-white
+    'colors-of-sky': $colors-colors-of-sky
+    'decent': $colors-decent
+    'deep-space': $colors-deep-space
+    'dark-skies': $colors-dark-skies
+    'suzy': $colors-suzy
+    'superman': $colors-superman
+    'nighthawk': $colors-nighthawk
+    'forest': $colors-forest
+    'miami-dolphins': $colors-miami-dolphins
+    'minnesota-vikings': $colors-minnesota-vikings
+    'christmas': $colors-christmas
+    'joomla': $colors-joomla
+    'pizelex': $colors-pizelex
+    'haikus': $colors-haikus
+    'pale-wood': $colors-pale-wood
+    'purplin': $colors-purplin
+    'inbox': $colors-inbox
+    'blush': $colors-blush
+    'back-to-the-future': $colors-back-to-the-future
+    'poncho': $colors-poncho
+    'green-and-blue': $colors-green-and-blue
+    'light-orange': $colors-light-orange
+    'netflix': $colors-netflix
+    'little-leaf': $colors-little-leaf
+    'deep-purple': $colors-deep-purple
+    'back-to-earth': $colors-back-to-earth
+    'master-card': $colors-master-card
+    'clear-sky': $colors-clear-sky
+    'passion': $colors-passion
+    'timber': $colors-timber
+    'between-night-and-day': $colors-between-night-and-day
+    'sage-persuasion': $colors-sage-persuasion
+    'lizard': $colors-lizard
+    'piglet': $colors-piglet
+    'dark-knight': $colors-dark-knight
+    'curiosity-blue': $colors-curiosity-blue
+    'ukraine': $colors-ukraine
+    'green-to-dark': $colors-green-to-dark
+    'fresh-turboscent': $colors-fresh-turboscent
+    'koko-caramel': $colors-koko-caramel
+    'virgin-america': $colors-virgin-america
+    'portrait': $colors-portrait
+    'turquoise-flow': $colors-turquoise-flow
+    'atlas': $colors-atlas
+    'pastel-orange-at-the-sun': $colors-pastel-orange-at-the-sun
+    'endless-river': $colors-endless-river
+    'predawn': $colors-predawn
+    'purple-bliss': $colors-purple-bliss
+    'talking-to-mice-elf': $colors-talking-to-mice-elf
+    'hersheys': $colors-hersheys
+    'crazy-orange-i': $colors-crazy-orange-i
+    'between-the-clouds': $colors-between-the-clouds
+    'metallic-toad': $colors-metallic-toad
+    'martini': $colors-martini
+    'friday': $colors-friday
+    'servquick': $colors-servquick
+    'behongo': $colors-behongo
+    'soundcloud': $colors-soundcloud
+    'facebook-messenger': $colors-facebook-messenger
+    'shore': $colors-shore
+    'cheer-up-emo-kid': $colors-cheer-up-emo-kid
+    'amethyst': $colors-amethyst
+    'man-of-steel': $colors-man-of-steel
+    'neon-life': $colors-neon-life
+    'teal-love': $colors-teal-love
+    'red-mist': $colors-red-mist
+    'starfall': $colors-starfall
+    'dance-to-forget': $colors-dance-to-forget
+    'parklife': $colors-parklife
+    'cherryblossoms': $colors-cherryblossoms
+    'shadow-night': $colors-shadow-night
+    'ash': $colors-ash
+    'virgin': $colors-virgin
+    'earthly': $colors-earthly
+    'dirty-fog': $colors-dirty-fog
+    'the-strain': $colors-the-strain
+    'reef': $colors-reef
+    'candy': $colors-candy
+    'autumn': $colors-autumn
+    'winter': $colors-winter
+    'forever-lost': $colors-forever-lost
+    'almost': $colors-almost
+    'moor': $colors-moor
+    'aqualicious': $colors-aqualicious
+    'misty-meadow': $colors-misty-meadow
+    'kyoto': $colors-kyoto
+    'sirius-tamed': $colors-sirius-tamed
+    'jonquil': $colors-jonquil
+    'petrichor': $colors-petrichor
+    'a-lost-memory': $colors-a-lost-memory
+    'vasily': $colors-vasily
+    'blurry-beach': $colors-blurry-beach
+    'namn': $colors-namn
+    'day-tripper': $colors-day-tripper
+    'pinot-noir': $colors-pinot-noir
+    'miaka': $colors-miaka
+    'army': $colors-army
+    'shrimpy': $colors-shrimpy
+    'influenza': $colors-influenza
+    'calm-darya': $colors-calm-darya
+    'bourbon': $colors-bourbon
+    'stellar': $colors-stellar
+    'clouds': $colors-clouds
+    'moonrise': $colors-moonrise
+    'peach': $colors-peach
+    'dracula': $colors-dracula
+    'mantle': $colors-mantle
+    'titanium': $colors-titanium
+    'opa': $colors-opa
+    'sea-blizz': $colors-sea-blizz
+    'midnight-city': $colors-midnight-city
+    'mystic': $colors-mystic
+    'shroom-haze': $colors-shroom-haze
+    'moss': $colors-moss
+    'bora-bora': $colors-bora-bora
+    'venice-blue': $colors-venice-blue
+    'electric-violet': $colors-electric-violet
+    'kashmir': $colors-kashmir
+    'steel-gray': $colors-steel-gray
+    'mirage': $colors-mirage
+    'juicy-orange': $colors-juicy-orange
+    'mojito': $colors-mojito
+    'cherry': $colors-cherry
+    'pinky': $colors-pinky
+    'sea-weed': $colors-sea-weed
+    'stripe': $colors-stripe
+    'purple-paradise': $colors-purple-paradise
+    'sunrise': $colors-sunrise
+    'aqua-marine': $colors-aqua-marine
+    'aubergine': $colors-aubergine
+    'bloody-mary': $colors-bloody-mary
+    'mango-pulp': $colors-mango-pulp
+    'frozen': $colors-frozen
+    'rose-water': $colors-rose-water
+    'horizon': $colors-horizon
+    'monte-carlo': $colors-monte-carlo
+    'lemon-twist': $colors-lemon-twist
+    'emerald-water': $colors-emerald-water
+    'intuitive-purple': $colors-intuitive-purple
+    'green-beach': $colors-green-beach
+    'sunny-days': $colors-sunny-days
+    'playing-with-reds': $colors-playing-with-reds
+    'harmonic-energy': $colors-harmonic-energy
+    'cool-brown': $colors-cool-brown
+    'noon-to-dusk': $colors-noon-to-dusk
+    'hazel': $colors-hazel
+    'nimvelo': $colors-nimvelo
+    'sea-blue': $colors-sea-blue
+    'blooker20': $colors-blooker20
+    'sexy-blue': $colors-sexy-blue
+    'purple-love': $colors-purple-love
+    'dimigo': $colors-dimigo
+    'skyline': $colors-skyline
+    'sel': $colors-sel
+    'sky': $colors-sky
+    'petrol': $colors-petrol
+    'copper': $colors-copper
+    'royal-blue-petrol': $colors-royal-blue-petrol
+    'royal-blue': $colors-royal-blue
+    'windy': $colors-windy
+    'mango': $colors-mango
+    'berimbolo': $colors-berimbolo
+}
+
+
+// Main Colors
+//
+$colors-primary ?= $colors-mantle
+$colors-secondary ?= $colors-celestial
+$colors-primary-mixed = mix($colors-primary[0], $colors-primary[1])
+
+// Basic Colors
+//
+$colors-red ?= (#f95d52 #cb2d3e)
+$colors-orange ?= (#eea849 #f46b45)
 $colors-yellow ?= #ffce36
-$colors-green ?= #2eda6c
+$colors-green ?= (#38ef7d #11998e)
 $colors-teal ?= #4ec7f7
-$colors-blue ?= #0076fa
+$colors-blue ?= (#43b7dc #506ee5)
 $colors-purple ?= #5b51d2
 $colors-pink ?= #ff2c59
 
@@ -30,30 +620,6 @@ $colors-gray-80 ?= #343a40
 $colors-gray-90 ?= #212529
 $colors-black ?= #000000
 
-$colors-facebook ?= #3b5998
-$colors-twitter ?= #1da1f2
-$colors-google-plus ?= #dd4b39
-$colors-dribbble ?= #ea4c89
-$colors-behance ?= #1769ff
-$colors-flickr ?= #ff0084
-$colors-linkedin ?= #0077b5
-$colors-youtube ?= #cd201f
-$colors-pinterest ?= #bd081c
-$colors-github ?= #333333
-$colors-tumblr ?= #35465c
-$colors-twitch ?= #6441a5
-$colors-envato ?= #82b541
-
-$colors-light ?= $colors-white
-$colors-dark ?= $colors-gray-90
-$colors-success ?= $colors-green
-$colors-danger ?= $colors-red
-$colors-warning ?= $colors-orange
-$colors-info ?= $colors-blue
-
-
-// Basic Colors
-//
 $colors ?= {
   red: $colors-red
   orange: $colors-orange
@@ -79,21 +645,55 @@ $colors ?= {
   black: $colors-black
 }
 
+
 // Brand Colors
 //
+$colors-light ?= ($colors-gray-10 $colors-gray-20)
+$colors-dark ?= ($colors-gray-80 $colors-gray-90)
+
+
 $brand-colors ?= {
   primary: $colors-primary
   secondary: $colors-secondary
   light: $colors-light
   dark: $colors-dark
-  success: $colors-green
-  danger: $colors-red
-  warning: $colors-orange
-  info: $colors-blue
 }
+
+
+// State Colors
+//
+$colors-success ?= $colors-green
+$colors-danger ?= $colors-red
+$colors-warning ?= $colors-orange
+$colors-info ?= $colors-blue
+
+$state-colors ?= {
+  success: $colors-success
+  danger: $colors-danger
+  warning: $colors-warning
+  info: $colors-info
+}
+
 
 // Social Colors
 //
+$colors-facebook ?= #3b5998
+$colors-twitter ?= #1da1f2
+$colors-vine ?= (#00bf8f #001510)
+$colors-flickr ?= (#ff0084 #33001b)
+$colors-instagram ?= (#833ab4 #fd1d1d #fcb045)
+$colors-google-plus ?= #dd4b39
+$colors-dribbble ?= #ea4c89
+$colors-behance ?= #1769ff
+$colors-flickr ?= #ff0084
+$colors-linkedin ?= #0077b5
+$colors-youtube ?= (#e52d27 #b31217)
+$colors-pinterest ?= #bd081c
+$colors-github ?= #333333
+$colors-tumblr ?= #35465c
+$colors-twitch ?= (#6441a5 #2a0845)
+$colors-envato ?= #82b541
+
 $social-colors ?= {
   facebook: $colors-facebook
   twitter: $colors-twitter
@@ -109,3 +709,8 @@ $social-colors ?= {
   twitch: $colors-twitch
   envato: $colors-envato
 }
+
+
+// Gradient colors direction
+//
+$gradient-direction = to bottom right

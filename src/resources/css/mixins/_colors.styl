@@ -33,7 +33,49 @@ luminance(color)
 // @return Contrasting text color
 //
 contrastColor(color, light, dark)
-    if luminosity(color) > 0.179
+    L = (red(color) * 0.299) + (green(color) * 0.587) + (blue(color) * 0.114)
+
+    if L > 186
         return dark
     else
         return light
+
+
+// Equally mix multiple colors
+//
+// @param colors The colors to be mixed
+// @return Mixed color
+//
+mixMultiple(colors)
+    mixedColor = colors[0]
+
+    for color, index in colors
+        mixedColor = mix(mixedColor, color, percentage(1 / length(colors))) if index != 0
+
+    return mixedColor
+
+
+// Helper for gradient colors. Returns a flat combined fallback color if direction parameter is set to false.
+// Returns a gradient color otherwise.
+//
+// @param color The array of gradient colors to generate a gradient for
+// @param gradient The direction of the gradient. If false, the function generates a flat color
+// @param mix If true, mix the fallback color. Alternatively, provides the index for the fallback color
+// @return A gradient or flat color
+//
+colorize(color, gradient = $gradient-direction, mix = true)
+    if length(color) > 1
+        // If the gradient parameter is set to false, return a flat fallback color mixed from specified gradient stops.
+        if !gradient
+            if mix
+                color = mixMultiple(color)
+            else
+                color = color[mix]
+
+        else
+            color = join(', ', color)
+            color = unquote(color)
+
+    if gradient
+        return linear-gradient(gradient, color)
+    return color

@@ -6,9 +6,13 @@
 // Background
 //
 for $color-name, $color in $themes['background']
+    $color-gradient = colorize($color)
+    $color-flat = colorize($color, false)
+
     ._background-{$color-name}
-        background-color: $color !important
-        color: contrastColor($color, $colors['white'], $colors['gray-80'])
+        background-color: $color-flat !important
+        background-image: $color-gradient !important
+        color: contrastColor($color-flat, $colors['white'], $colors['gray-80'])
 
 ._background-transparent
   background-color: transparent !important
@@ -17,5 +21,7 @@ for $color-name, $color in $themes['background']
 // Text
 //
 for $color-name, $color in $themes['text']
+    $color-flat = colorize($color, false)
+
     ._text-{$color-name}
-        color: $color !important
+        color: $color-flat !important
