@@ -1,13 +1,21 @@
-//
-// Other
-//
+/**
+ * Z-index
+ */
 
-$z-index ?= {
-  dropdown: 1000
-  sticky: 1020
-  fixed: 1030
-  modal-backdrop: 1040
-  modal: 1050
-  popover: 1060
-  tooltip: 1070
+--z-index-dropdown := 1000
+--z-index-sticky := 1020
+--z-index-fixed := 1030
+--z-index-modal-backdrop := 1040
+--z-index-modal := 1050
+--z-index-popover := 1060
+--z-index-tooltip := 1070
+
+--z-index := {
+  dropdown: --z-index-dropdown
+  sticky: --z-index-sticky
+  fixed: --z-index-fixed
+  modal-backdrop: --z-index-modal-backdrop
+  modal: --z-index-modal
+  popover: --z-index-popover
+  tooltip: --z-index-tooltip
 }

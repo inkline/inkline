@@ -6,27 +6,27 @@
 .table
     width: 100%
     max-width: 100%
-    margin-bottom: $spacer
+    margin-bottom: --spacer
 
     th,
     td
-        padding: $table-cell-padding
+        padding: --table-cell-padding
         vertical-align: top
-        border-top: $table-border-width solid transparent
+        border-top: --table-border-width solid transparent
 
     thead th
         vertical-align: bottom
-        border-bottom-width: (2 * $table-border-width)
+        border-bottom-width: (2 * --table-border-width)
 
     tbody + tbody
-        border-top: (2 * $table-border-width) solid transparent
+        border-top: (2 * --table-border-width) solid transparent
 
     // Condensed table w/ half padding
     //
     &.-sm
         th
         td
-            padding: $table-cell-padding-sm
+            padding: --table-cell-padding-sm
 
 
     // Bordered version
@@ -34,30 +34,30 @@
     // Add borders all around the table and between all the columns.
     //
     &.-bordered
-        border: $table-border-width solid transparent
+        border: --table-border-width solid transparent
 
         th
         td
-            border: $table-border-width solid $table-border-color
+            border: --table-border-width solid --table-border-color
 
 
 //    // Themes
 //    //
-//    for $color-name, $color in $themes['table']
-//        $border-color = contrastColor($color, lighten($color, 12%), darken($color, 12%))
-//        $hover-color = contrastColor($color, lighten($color, 4%), darken($color, 10%))
-//        $stripe-color = contrastColor($color, lighten($color, 2%), darken($color, 5%))
-//        $text-color = contrastColor($color, $colors['white'], $colors['gray-900'])
+//    for --color-name, --color in --themes['table']
+//        --border-color = contrastColor(--color, lighten(--color, 12%), darken(--color, 12%))
+//        --hover-color = contrastColor(--color, lighten(--color, 4%), darken(--color, 10%))
+//        --stripe-color = contrastColor(--color, lighten(--color, 2%), darken(--color, 5%))
+//        --text-color = contrastColor(--color, --colors['white'], --colors['gray-900'])
 //
-//        if $color-name == 'light'
-//            $hover-color = darken($color, 2%)
-//            $stripe-color = darken($color, 1%)
+//        if --color-name == 'light'
+//            --hover-color = darken(--color, 2%)
+//            --stripe-color = darken(--color, 1%)
 //
 //
-//        &.-{$color-name}
-//            background: $color
-//            border-top-color: $border-color
-//            color: $text-color
+//        &.-{--color-name}
+//            background: --color
+//            border-top-color: --border-color
+//            color: --text-color
 //
 //
 //            // Bordered table
@@ -68,7 +68,7 @@
 //                &
 //                th
 //                td
-//                    border-color: $border-color
+//                    border-color: --border-color
 //
 //
 //            // Striped Table
@@ -78,17 +78,17 @@
 //            &.-striped
 //                > tr:nth-of-type(odd)
 //                tbody > tr:nth-of-type(odd)
-//                    background-color: $stripe-color
+//                    background-color: --stripe-color
 //
 //
 //            // Hover table
 //            //
 //            // Placed here since it has to come after the potential zebra striping
 //            &.-hover tbody tr
-//                if $transition['tables']
-//                    transition: background-color $transition-duration ease
+//                if --transition['tables']
+//                    transition: background-color --transition-duration ease
 //                &:hover
-//                    background-color: $hover-color
+//                    background-color: --hover-color
 //
 //
 //            // Responsive tables
@@ -97,11 +97,11 @@
 //            // size of where your table will overflow.
 //
 //            &.-responsive
-//                for $breakpoint-name, $breakpoint-value in $breakpoints
-//                    $infix = breakpoint-infix($breakpoint-name)
+//                for --breakpoint-name, --breakpoint-value in --breakpoints
+//                    --infix = breakpoint-infix(--breakpoint-name)
 //
-//                    &{$infix}
-//                        +breakpoint-down($breakpoint-name)
+//                    &{--infix}
+//                        +breakpoint-down(--breakpoint-name)
 //                            display: block
 //                            width: 100%
 //                            overflow-x: auto
@@ -116,13 +116,13 @@
 //            th
 //            td
 //            tbody + tbody
-//                border-top-color: $border-color
+//                border-top-color: --border-color
 //
 //            thead th
-//                border-bottom-color: $border-color
+//                border-bottom-color: --border-color
 //
 //            .table
-//                background-color: $color
+//                background-color: --color
 //
 //
 //.table

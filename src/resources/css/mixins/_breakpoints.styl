@@ -9,19 +9,19 @@
 //
 breakpoint(media)
     if media == xl
-        @media screen and ( min-width: $breakpoints['lg'] ) and ( max-width: $breakpoints['xl'] - 1 )
+        @media screen and ( min-width: --breakpoints['lg'] ) and ( max-width: --breakpoints['xl'] - 1 )
             {block}
     else if media == lg
-        @media screen and ( min-width: $breakpoints['md'] ) and ( max-width: $breakpoints['lg'] - 1 )
+        @media screen and ( min-width: --breakpoints['md'] ) and ( max-width: --breakpoints['lg'] - 1 )
             {block}
     else if media == md
-        @media screen and ( min-width: $breakpoints['sm'] ) and ( max-width: $breakpoints['md'] - 1 )
+        @media screen and ( min-width: --breakpoints['sm'] ) and ( max-width: --breakpoints['md'] - 1 )
             {block}
     else if media == sm
-        @media screen and ( min-width: $breakpoints['xs'] ) and ( max-width: $breakpoints['sm'] - 1 )
+        @media screen and ( min-width: --breakpoints['xs'] ) and ( max-width: --breakpoints['sm'] - 1 )
             {block}
     else if media == xs
-        @media screen and ( max-width: $breakpoints['xs'] - 1 )
+        @media screen and ( max-width: --breakpoints['xs'] - 1 )
             {block}
     else
         {block}
@@ -33,19 +33,19 @@ breakpoint(media)
 //
 breakpoint-down(media)
     if media == xl
-        @media screen and ( max-width: $breakpoints['xl'] - 1 )
+        @media screen and ( max-width: --breakpoints['xl'] - 1 )
             {block}
     else if media == lg
-        @media screen and ( max-width: $breakpoints['lg'] - 1 )
+        @media screen and ( max-width: --breakpoints['lg'] - 1 )
             {block}
     else if media == md
-        @media screen and ( max-width: $breakpoints['md'] - 1 )
+        @media screen and ( max-width: --breakpoints['md'] - 1 )
             {block}
     else if media == sm
-        @media screen and ( max-width: $breakpoints['sm'] - 1 )
+        @media screen and ( max-width: --breakpoints['sm'] - 1 )
             {block}
     else if media == xs
-        @media screen and ( max-width: $breakpoints['xs'] - 1 )
+        @media screen and ( max-width: --breakpoints['xs'] - 1 )
             {block}
     else
         {block}
@@ -57,16 +57,16 @@ breakpoint-down(media)
 //
 breakpoint-up(media)
     if media == xl
-        @media screen and ( min-width: $breakpoints['xl'] )
+        @media screen and ( min-width: --breakpoints['xl'] )
             {block}
     else if media == lg
-        @media screen and ( min-width: $breakpoints['lg'] )
+        @media screen and ( min-width: --breakpoints['lg'] )
             {block}
     else if media == md
-        @media screen and ( min-width: $breakpoints['md'] )
+        @media screen and ( min-width: --breakpoints['md'] )
             {block}
     else if media == sm
-        @media screen and ( min-width: $breakpoints['sm'] )
+        @media screen and ( min-width: --breakpoints['sm'] )
             {block}
     else if media == xs
         @media screen and ( min-width: 0 )

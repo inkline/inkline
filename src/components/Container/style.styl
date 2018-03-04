@@ -1,13 +1,13 @@
 @import '../../resources/css/config';
 @import '../../resources/css/mixins';
 
-$container-width ?= {
+--container-width ?= {
   xs: 100%
-  sm: $breakpoints['sm']
-  md: $breakpoints['md']
-  lg: $breakpoints['lg']
-  xl: $breakpoints['xl']
-  xxl: $breakpoints['xxl']
+  sm: --breakpoints['sm']
+  md: --breakpoints['md']
+  lg: --breakpoints['lg']
+  xl: --breakpoints['xl']
+  xxl: --breakpoints['xxl']
 }
 
 .container,
@@ -17,13 +17,13 @@ $container-width ?= {
     box-sizing: border-box
     width: 100%
 
-    for $breakpoint-name, $gutter-width in $gutter
-        +breakpoint-up($breakpoint-name)
-            padding-left: ($gutter-width / 2)
-            padding-right: ($gutter-width / 2)
+    for --breakpoint-name, --gutter-width in --gutter
+        +breakpoint-up(--breakpoint-name)
+            padding-left: (--gutter-width / 2)
+            padding-right: (--gutter-width / 2)
 
 .container
-    for $breakpoint-name, $container-max-width in $container-width
-        +breakpoint-up($breakpoint-name)
-            max-width: $container-max-width
+    for --breakpoint-name, --container-max-width in --container-width
+        +breakpoint-up(--breakpoint-name)
+            max-width: --container-max-width
 

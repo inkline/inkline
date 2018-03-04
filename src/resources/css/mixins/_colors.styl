@@ -8,7 +8,7 @@
 //
 // @param color Text background color
 //
-luminance(color)
+-luminance(color)
     RGB = {
         r: red(color)
         g: green(color)
@@ -32,7 +32,7 @@ luminance(color)
 // @param color Text background color
 // @return Contrasting text color
 //
-contrastColor(color, light, dark)
+-text-color-by-luminance(color, light, dark)
     L = (red(color) * 0.299) + (green(color) * 0.587) + (blue(color) * 0.114)
 
     if L > 186
@@ -46,13 +46,23 @@ contrastColor(color, light, dark)
 // @param colors The colors to be mixed
 // @return Mixed color
 //
-mixMultiple(colors)
+-mix-multiple(colors)
     mixedColor = colors[0]
 
     for color, index in colors
         mixedColor = mix(mixedColor, color, percentage(1 / length(colors))) if index != 0
 
     return mixedColor
+
+
+// Generate a gradient background color with given colors array and gradient direction
+//
+// @param colors Colors to be added to the gradient
+// @param direction The direction of the gradient
+// @return A gradient color
+//
+-linear-gradient(colors, direction = --gradient-direction)
+    return linear-gradient(direction, unquote(join(', ', colors)))
 
 
 // Helper for gradient colors. Returns a flat combined fallback color if direction parameter is set to false.
@@ -63,19 +73,15 @@ mixMultiple(colors)
 // @param mix If true, mix the fallback color. Alternatively, provides the index for the fallback color
 // @return A gradient or flat color
 //
-colorize(color, gradient = $gradient-direction, mix = true)
+-generate-color(color, gradient-direction = --gradient-direction, mix = true)
     if length(color) > 1
         // If the gradient parameter is set to false, return a flat fallback color mixed from specified gradient stops.
-        if !gradient
+        if !gradient-direction
             if mix
-                color = mixMultiple(color)
+                color = -mix-multiple(color)
             else
                 color = color[mix]
 
-        else
-            color = join(', ', color)
-            color = unquote(color)
-
-    if gradient
-        return linear-gradient(gradient, color)
+    if gradient-direction
+        return -linear-gradient(gradient-direction, color)
     return color

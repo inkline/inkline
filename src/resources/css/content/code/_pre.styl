@@ -5,12 +5,12 @@
 
 // Blocks of code
 pre
-    font-family: $font-family-primary['monospace']
+    font-family: --font-family-primary['monospace']
     display: block
     margin-top: 0
     margin-bottom: 1rem
-    font-size: $code-font-size
-    color: $pre-color
+    font-size: --code-font-size
+    color: --pre-color
 
     // Account for some code outputs that place code tags in pre tags
     code
@@ -22,5 +22,5 @@ pre
 
     // Enable scrollable blocks of code
     &.-scrollable
-        max-height: $pre-scrollable-max-height
+        max-height: --pre-scrollable-max-height
         overflow-y: scroll

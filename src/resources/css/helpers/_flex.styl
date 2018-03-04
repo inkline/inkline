@@ -5,121 +5,121 @@
  */
 
 
-for $breakpoint-name, $breakpoint-value in $breakpoints
-  $infix = breakpoint-infix($breakpoint-name)
+for --breakpoint-name, --breakpoint-value in --breakpoints
+  --infix = breakpoint-infix(--breakpoint-name)
 
-  +breakpoint($breakpoint)
-    ._flex{$infix}-row
+  +breakpoint(--breakpoint)
+    ._flex{--infix}-row
       flex-direction: row !important
 
 
-    ._flex{$infix}-column
+    ._flex{--infix}-column
       flex-direction: column !important
 
 
-    ._flex{$infix}-row-reverse
+    ._flex{--infix}-row-reverse
       flex-direction: row-reverse !important
 
 
-    ._flex{$infix}-column-reverse
+    ._flex{--infix}-column-reverse
       flex-direction: column-reverse !important
 
 
-    ._flex{$infix}-wrap
+    ._flex{--infix}-wrap
       flex-wrap: wrap !important
 
 
-    ._flex{$infix}-nowrap
+    ._flex{--infix}-nowrap
       flex-wrap: nowrap !important
 
 
-    ._flex{$infix}-wrap-reverse
+    ._flex{--infix}-wrap-reverse
       flex-wrap: wrap-reverse !important
 
 
-    ._justify-content{$infix}-start
+    ._justify-content{--infix}-start
       justify-content: flex-start !important
 
 
-    ._justify-content{$infix}-end
+    ._justify-content{--infix}-end
       justify-content: flex-end !important
 
 
-    ._justify-content{$infix}-center
+    ._justify-content{--infix}-center
       justify-content: center !important
 
 
-    ._justify-content{$infix}-between
+    ._justify-content{--infix}-between
       justify-content: space-between !important
 
 
-    ._justify-content{$infix}-around
+    ._justify-content{--infix}-around
       justify-content: space-around !important
 
 
-    ._align-items{$infix}-start
+    ._align-items{--infix}-start
       align-items: flex-start !important
 
 
-    ._align-items{$infix}-end
+    ._align-items{--infix}-end
       align-items: flex-end !important
 
 
-    ._align-items{$infix}-center
+    ._align-items{--infix}-center
       align-items: center !important
 
 
-    ._align-items{$infix}-baseline
+    ._align-items{--infix}-baseline
       align-items: baseline !important
 
 
-    ._align-items{$infix}-stretch
+    ._align-items{--infix}-stretch
       align-items: stretch !important
 
 
-    ._align-content{$infix}-start
+    ._align-content{--infix}-start
       align-content: flex-start !important
 
 
-    ._align-content{$infix}-end
+    ._align-content{--infix}-end
       align-content: flex-end !important
 
 
-    ._align-content{$infix}-center
+    ._align-content{--infix}-center
       align-content: center !important
 
 
-    ._align-content{$infix}-between
+    ._align-content{--infix}-between
       align-content: space-between !important
 
 
-    ._align-content{$infix}-around
+    ._align-content{--infix}-around
       align-content: space-around !important
 
 
-    ._align-content{$infix}-stretch
+    ._align-content{--infix}-stretch
       align-content: stretch !important
 
 
-    ._align-self{$infix}-auto
+    ._align-self{--infix}-auto
       align-self: auto !important
 
 
-    ._align-self{$infix}-start
+    ._align-self{--infix}-start
       align-self: flex-start !important
 
 
-    ._align-self{$infix}-end
+    ._align-self{--infix}-end
       align-self: flex-end !important
 
 
-    ._align-self{$infix}-center
+    ._align-self{--infix}-center
       align-self: center !important
 
 
-    ._align-self{$infix}-baseline
+    ._align-self{--infix}-baseline
       align-self: baseline !important
 
 
-    ._align-self{$infix}-stretch
+    ._align-self{--infix}-stretch
       align-self: stretch !important

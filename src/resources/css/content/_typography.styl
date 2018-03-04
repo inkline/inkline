@@ -15,11 +15,11 @@ html
 
 
 body
-    font-size: $font-size
-    font-weight: $font-weight['normal']
-    font-family: $font-family-primary['base']
-    line-height: $line-height
-    letter-spacing: $letter-spacing
+    font-size: --font-size
+    font-weight: --font-weight['normal']
+    font-family: --font-family-primary['base']
+    line-height: --line-height
+    letter-spacing: --letter-spacing
     text-align: left
     text-rendering: optimizeLegibility
     -webkit-font-smoothing: antialiased
@@ -31,25 +31,25 @@ body
 //
 
 
-for $i in (1..6)
-    h{$i},
-    .h{$i},
-    .d{$i}
-        margin-top: $headings-margin-top
-        margin-bottom: $headings-margin-bottom
-        font-family: $headings-font-family
-        color: $headings-color
+for --i in (1..6)
+    h{--i},
+    .h{--i},
+    .d{--i}
+        margin-top: --headings-margin-top
+        margin-bottom: --headings-margin-bottom
+        font-family: --headings-font-family
+        color: --headings-color
 
-    h{$i},
-    .h{$i}
-        font-size: $headings-font-size['h' + $i]
-        font-weight: $headings-font-weight
-        line-height: $headings-line-height
+    h{--i},
+    .h{--i}
+        font-size: --headings-font-size['h' + --i]
+        font-weight: --headings-font-weight
+        line-height: --headings-line-height
 
-    .d{$i}
-        font-size: $displays-font-size['d' + $i]
-        font-weight: $displays-font-weight
-        line-height: $displays-line-height
+    .d{--i}
+        font-size: --displays-font-size['d' + --i]
+        font-weight: --displays-font-weight
+        line-height: --displays-line-height
 
 
 // Paragraph
@@ -57,8 +57,8 @@ for $i in (1..6)
 
 
 .lead
-    font-size: $lead-font-size
-    font-weight: $lead-font-weight
+    font-size: --lead-font-size
+    font-weight: --lead-font-weight
 
 
 .initialism
@@ -76,7 +76,7 @@ dl
 .list
     > .item
     > li
-        margin-bottom: $list-item-margin-bottom
+        margin-bottom: --list-item-margin-bottom
 
     &.-unstyled
         padding-left: 0
@@ -91,7 +91,7 @@ dl
             display: inline-block
 
             &:not(:last-child)
-                margin-right: $list-inline-padding
+                margin-right: --list-inline-padding
 
 
 // Blockquote
@@ -99,15 +99,15 @@ dl
 
 
 .blockquote
-    margin: 0 0 $spacer
-    font-size: $blockquote-font-size
+    margin: 0 0 --spacer
+    font-size: --blockquote-font-size
 
     &.-left
         text-align: left
 
         &.-bordered
-            padding-left: $spacer
-            border-left: $blockquote-border
+            padding-left: --spacer
+            border-left: --blockquote-border
 
     &.-center
         text-align: center
@@ -116,8 +116,8 @@ dl
         text-align: right
 
         &.-bordered
-            padding-right: $spacer
-            border-right: $blockquote-border
+            padding-right: --spacer
+            border-right: --blockquote-border
 
     > p
         margin-bottom: 0
@@ -126,7 +126,7 @@ dl
     > .footer
         display: block
         font-size: 80%
-        color: $blockquote-small-color
+        color: --blockquote-small-color
 
         &::before
             content: '\2014 \00A0' // em dash, nbsp
@@ -137,19 +137,19 @@ dl
 
 
 hr
-    margin: $spacer 0
+    margin: --spacer 0
     border: none
-    border-top: $hr-border-width solid $hr-border-color
+    border-top: --hr-border-width solid --hr-border-color
 
 
 small,
 .small
-    font-size: $small-font-size
-    font-weight: $font-weight['base']
+    font-size: --small-font-size
+    font-weight: --font-weight['base']
 
 
 mark
 .mark
-    padding: $mark-padding
-    background-color: $mark-background-color
-    color: $mark-color
+    padding: --mark-padding
+    background-color: --mark-background-color
+    color: --mark-color

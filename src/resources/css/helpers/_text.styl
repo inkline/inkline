@@ -18,19 +18,19 @@
 
 // Responsive alignment
 //
-for $breakpoint-name, $breakpoint-value in $breakpoints
-  $infix = breakpoint-infix($breakpoint-name)
+for --breakpoint-name, --breakpoint-value in --breakpoints
+  --infix = breakpoint-infix(--breakpoint-name)
 
-  +breakpoint($breakpoint)
-    ._text{$infix}-left
+  +breakpoint(--breakpoint)
+    ._text{--infix}-left
       text-align: left !important
 
 
-    ._text{$infix}-right
+    ._text{--infix}-right
       text-align: right !important
 
 
-    ._text{$infix}-center
+    ._text{--infix}-center
       text-align: center !important
 
 
@@ -50,29 +50,17 @@ for $breakpoint-name, $breakpoint-value in $breakpoints
 
 // Weight and italics
 //
-for $font-weight-name, $font-weight-value in $font-weight
-  ._font-weight-{$font-weight-name}
-    font-weight: $font-weight-value !important
+for --font-weight-name, --font-weight-value in --font-weight
+  ._font-weight-{--font-weight-name}
+    font-weight: --font-weight-value !important
 
 
 ._font-italic
   font-style: italic !important
 
 
-
-// Contextual colors
-//
-for $color-name, $color in $colors
-  ._text-{$color-name}
-    color: $color
-
-for $color-name, $color in $brand-colors
-  ._text-{$color-name}
-    color: $color
-
-
 ._text-muted
-  color: $text-muted !important
+  color: --text-muted !important
 
 ._text-hide
   text-indent: -10000px

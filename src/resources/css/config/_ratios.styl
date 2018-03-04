@@ -4,9 +4,9 @@
 
 
 // Suggested ratios
-// Source ?= http://type-scale.com/
+// Source := http://type-scale.com/
 //
-$ratio ?= {
+--ratio := {
   second: 1.067
   major-second: 1.125
   minor-third: 1.200
@@ -20,5 +20,5 @@ $ratio ?= {
 
 // Scale ratio
 //
-$scale-ratio ?= $ratio['minor-third']
-$scale-ratio-secondary ?= $ratio['perfect-fourth']
+--scale-ratio := --ratio['minor-third']
+--scale-ratio-secondary := --ratio['perfect-fourth']

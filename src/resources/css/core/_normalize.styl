@@ -45,8 +45,8 @@ html
 
 body
     margin: 0
-    color: $body-color
-    background-color: $body-background
+    color: --body-color
+    background-color: --body-background
 
 
 // IE10+ doesn't honor `<meta name='viewport'>` in some cases.
@@ -111,16 +111,16 @@ hr
 
 
 a
-    color: $link-color
-    text-decoration: $link-decoration
+    color: --link-color
+    text-decoration: --link-decoration
     -webkit-text-decoration-skip: objects
     background-color: transparent
 
     &:hover,
     &:focus,
     &:active
-        color: $link-hover-color
-        text-decoration: $link-hover-decoration
+        color: --link-hover-color
+        text-decoration: --link-hover-decoration
         outline-width: 0
 
 
@@ -192,7 +192,7 @@ ol,
 ul,
 dl
     margin-top: 0
-    margin-bottom: $spacer
+    margin-bottom: --spacer
 
 
 ol ol,
@@ -203,11 +203,11 @@ ul ol
 
 
 dt
-    font-weight: $font-weight['bold']
+    font-weight: --font-weight['bold']
 
 
 dd
-    margin-bottom: $spacers['1-2']
+    margin-bottom: --spacers['1-2']
     margin-left: 0 // Undo browser default
 
 
@@ -217,7 +217,7 @@ dd
 
 
 address
-    margin-bottom: $spacer
+    margin-bottom: --spacer
     font-style: normal
     line-height: inherit
 
@@ -232,7 +232,7 @@ pre,
 code,
 kbd,
 samp
-    font-family: $font-family-primary['monospace']
+    font-family: --font-family-primary['monospace']
     font-size: 1rem
 
 
@@ -297,7 +297,7 @@ template
 
 pre
     margin-top: 0
-    margin-bottom: $spacer
+    margin-bottom: --spacer
     overflow: auto
 
 
@@ -393,7 +393,7 @@ legend
     width: 100%
     max-width: 100%
     padding: 0
-    margin-bottom: $spacers['1-2']
+    margin-bottom: --spacers['1-2']
     font-size: 1.5rem
     line-height: inherit
     color: inherit
@@ -402,7 +402,7 @@ legend
 
 label
     display: inline-block
-    margin-bottom: $spacers['1-2']
+    margin-bottom: --spacers['1-2']
 
 textarea
     overflow: auto

@@ -1,13 +1,13 @@
 @import '../../resources/css/config'
 
-$layout-aside-background ?= $colors['transparent']
-$layout-aside-width ?= auto
+--layout-aside-background ?= --colors['transparent']
+--layout-aside-width ?= auto
 
 .layout-aside
     transition: all .2s
     position: relative
-    background: $layout-aside-background
-    width: $layout-aside-width
+    background: --layout-aside-background
+    width: --layout-aside-width
 
     /* Fix firefox can't set width smaller than content on flex item */
     min-width: 0
@@ -26,17 +26,17 @@ $layout-aside-width ?= auto
 
 
     //&.-has-trigger
-    //    padding-bottom: $layout-trigger-height
+    //    padding-bottom: --layout-trigger-height
 
     //> .layout-aside-trigger
     //    position: fixed
     //    text-align: center
     //    bottom: 0
     //    cursor: pointer
-    //    height: $layout-trigger-height
-    //    line-height: $layout-trigger-height
-    //    color: $layout-trigger-color
-    //    background: $layout-trigger-background
+    //    height: --layout-trigger-height
+    //    line-height: --layout-trigger-height
+    //    color: --layout-trigger-color
+    //    background: --layout-trigger-background
     //    z-index: 1
     //    transition: all .2s
 
@@ -46,18 +46,18 @@ $layout-aside-width ?= auto
     //
     //    > .layout-aside-trigger
     //        position: absolute
-    //        top: $layout-header-height
-    //        right: -$layout-zero-trigger-width
+    //        top: --layout-header-height
+    //        right: ---layout-zero-trigger-width
     //        text-align: center
-    //        width: $layout-zero-trigger-width
-    //        height: $layout-zero-trigger-height
-    //        line-height: $layout-zero-trigger-height
-    //        background: $layout-aside-background
+    //        width: --layout-zero-trigger-width
+    //        height: --layout-zero-trigger-height
+    //        line-height: --layout-zero-trigger-height
+    //        background: --layout-aside-background
     //        color: #fff
-    //        font-size: $layout-zero-trigger-width / 2
-    //        border-radius: 0 $border-radius-base $border-radius-base 0
+    //        font-size: --layout-zero-trigger-width / 2
+    //        border-radius: 0 --border-radius-base --border-radius-base 0
     //        cursor: pointer
     //        transition: background .3s ease
     //
     //        &:hover
-    //            background: tint($layout-aside-background, 10%)
+    //            background: tint(--layout-aside-background, 10%)

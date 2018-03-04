@@ -5,17 +5,17 @@
  */
 
 
-for $breakpoint-name, $breakpoint-value in $breakpoints
-  $infix = breakpoint-infix($breakpoint-name)
+for --breakpoint-name, --breakpoint-value in --breakpoints
+  --infix = breakpoint-infix(--breakpoint-name)
 
-  +breakpoint($breakpoint)
-    ._float{$infix}-left
+  +breakpoint(--breakpoint)
+    ._float{--infix}-left
       float: left !important
 
 
-    ._float{$infix}-right
+    ._float{--infix}-right
       float: right !important
 
 
-    ._float{$infix}-none
+    ._float{--infix}-none
       float: none !important

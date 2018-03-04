@@ -1,31 +1,41 @@
 //
 // Themes
 //
-// Generate color themes based on the $colors, $brand-colors and $social-colors
+// Generate color themes based on the --colors, --brand-colors and --social-colors
 // variables for components. If the color group is in the list, Inkline will
 // generate themes for the specified color group.
 //
 
-$background-themes ?= (brand colors social state)
-$border-themes ?= (brand state)
-$table-themes ?= (brand state)
-$text-themes ?= (brand colors social state)
+--themes-background := (basic brand neutral social state)
+--themes-border := (basic brand neutral state)
+--themes-table := (basic brand neutral state)
+--themes-text := (basic brand neutral social state)
 
-// Initialize theme collection
+// Initialize theme choice collection
 //
-$themes ?= {
-    background: $background-themes
-    border: $border-themes
-    table: $table-themes
-    text: $text-themes
+--theme-choices := {
+    background: --themes-background
+    border: --themes-border
+    table: --themes-table
+    text: --themes-text
 }
 
 // Set theme colors for each enabled component
 //
-for $item, $item-theme-groups in $themes
-    $item-themes = {}
+--themes = {}
+for --item, --item-theme-groups in --theme-choices
+    --item-themes-gradient = {}
+    --item-themes-color = {}
+    --item-themes = {}
 
-    for $item-theme in $item-theme-groups
-        $item-themes = merge($item-themes, $item-theme == 'colors' ? $colors : lookup('$' + $item-theme + '-colors'))
+    for --item-theme in --item-theme-groups
+        --item-themes-gradient = merge(--item-themes-gradient, lookup('--gradients-' + --item-theme))
+        --item-themes-color = merge(--item-themes-color, lookup('--colors-' + --item-theme))
 
-    $themes[$item] = $item-themes
+    for --item-theme-name, --item-theme-gradient in --item-themes-gradient
+        --item-themes[--item-theme-name] = {
+            gradient: --item-theme-gradient
+            color: --item-themes-color[--item-theme-name]
+        }
+
+    --themes[--item] = --item-themes

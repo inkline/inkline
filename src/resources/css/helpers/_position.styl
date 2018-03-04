@@ -3,9 +3,9 @@
  */
 
 
-for $position in (static relative absolute fixed sticky)
-  ._position-{$position}
-    position: $position !important
+for --position in (static relative absolute fixed sticky)
+  ._position-{--position}
+    position: --position !important
 
 
 ._fixed-top
@@ -13,7 +13,7 @@ for $position in (static relative absolute fixed sticky)
   top: 0
   right: 0
   left: 0
-  z-index: $z-index['fixed']
+  z-index: --z-index['fixed']
 
 
 ._fixed-bottom
@@ -21,4 +21,4 @@ for $position in (static relative absolute fixed sticky)
   right: 0
   bottom: 0
   left: 0
-  z-index: $z-index['fixed']
+  z-index: --z-index['fixed']

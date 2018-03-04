@@ -5,14 +5,12 @@
 
 // Background
 //
-for $color-name, $color in $themes['background']
-    $color-gradient = colorize($color)
-    $color-flat = colorize($color, false)
-
-    ._background-{$color-name}
-        background-color: $color-flat !important
-        background-image: $color-gradient !important
-        color: contrastColor($color-flat, $colors['white'], $colors['gray-80'])
+for --theme-name, --theme in --themes['background']
+    ._background-{--theme-name}
+        color: -text-color-by-luminance(--theme['color'], --colors['white'], --text-color)
+        background-color: --theme['color'] !important
+        if --gradient-enabled and --theme['gradient']
+            background-image: -linear-gradient(--theme['gradient']) !important
 
 ._background-transparent
   background-color: transparent !important
@@ -20,8 +18,6 @@ for $color-name, $color in $themes['background']
 
 // Text
 //
-for $color-name, $color in $themes['text']
-    $color-flat = colorize($color, false)
-
-    ._text-{$color-name}
-        color: $color-flat !important
+for --color-name, --color in --themes['text']
+    ._text-{--color-name}
+        color: --color['color'] !important

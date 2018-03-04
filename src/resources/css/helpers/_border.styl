@@ -4,55 +4,45 @@
 
 
 ._border
-  border: $border-width solid $colors['silver'] !important;
-
+    border: --border-width solid --colors['silver'] !important
 
 ._border-0
-  border: none !important;
+    border: none !important
 
+for --position in (top right bottom left)
+    ._border-{--position}-0
+        border-{--position}: none !important
 
-for $position in (top right bottom left)
-  ._border-{$position}-0
-    border-{$position}: none !important;
-
-
-for $color-name, $color in $themes['border']
-  ._border-{$color-name}
-    border-color: $color !important;
+for --theme-name, --theme in --themes['border']
+    ._border-{--theme-name}
+        border-color: --theme['color'] !important;
 
 
 /**
  * Border Radius
  */
 
-
 ._rounded
-  border-radius: $border-radius !important;
-
+    border-radius: --border-radius !important;
 
 ._rounded-top
-  border-top-left-radius: $border-radius !important;
-  border-top-right-radius: $border-radius !important;
-
+    border-top-left-radius: --border-radius !important;
+    border-top-right-radius: --border-radius !important;
 
 ._rounded-right
-  border-top-right-radius: $border-radius !important;
-  border-bottom-right-radius: $border-radius !important;
-
+    border-top-right-radius: --border-radius !important;
+    border-bottom-right-radius: --border-radius !important;
 
 ._rounded-bottom
-  border-bottom-right-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
-
+    border-bottom-right-radius: --border-radius !important;
+    border-bottom-left-radius: --border-radius !important;
 
 ._rounded-left
-  border-top-left-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
-
+    border-top-left-radius: --border-radius !important;
+    border-bottom-left-radius: --border-radius !important;
 
 ._rounded-circle
-  border-radius: 50% !important;
-
+    border-radius: 50% !important;
 
 ._rounded-0
-  border-radius: 0 !important;
+    border-radius: 0 !important;
