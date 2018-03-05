@@ -1,6 +1,6 @@
-import {toDashCase} from './index';
+import { toDashCase } from './to-dash-case';
 
-export function helper (className, breakpoint) {
+export function breakpointClass (className, breakpoint) {
     if (typeof breakpoint === 'string' && breakpoint !== '') {
         return `${toDashCase(className)}-${breakpoint}`;
     }

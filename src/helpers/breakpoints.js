@@ -1,1 +1,1 @@
-export const helper = ['', 'xs', 'sm', 'md', 'lg', 'xl'];
+export const breakpoints = ['', 'xs', 'sm', 'md', 'lg', 'xl'];

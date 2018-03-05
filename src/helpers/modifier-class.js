@@ -1,3 +1,3 @@
-export function helper (className) {
+export function modifierClass (className) {
     return '-' + className;
 }
