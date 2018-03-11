@@ -1,5 +1,5 @@
 export default {
-    name: 'Radio',
+    name: 'RadioButton',
     props: {
         label: String,
         value: String,
