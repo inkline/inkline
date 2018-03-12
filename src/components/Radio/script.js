@@ -14,7 +14,7 @@ export default {
             },
             set: function (value) {
                 if (this.isGroup) {
-                    return this.$parent.$emit('change:input', value);
+                    return this.parentGroup.$emit('change:input', value);
                 }
 
                 return this.$emit('input', value);

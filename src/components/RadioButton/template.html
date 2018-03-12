@@ -1,7 +1,6 @@
-<label class="radio-button" :class="[{ '-disabled': isDisabled }]">
+<label class="radio-button" :class="classes">
     <input
         type="radio"
-        class="radio-button-original-radio"
         v-model="model"
         :value="inputValue"
         :disabled="isDisabled"

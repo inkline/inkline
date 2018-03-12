@@ -1,55 +1,44 @@
 @import '../../resources/css/config'
 
 .radio-button
-    position: relative;
-    display: inline-block;
-    outline: none;
+    position: relative
+    display: inline-block
+    outline: none
 
-.radio-button .radio-button-inner
-    position: relative;
-    display: inline-block;
-    outline: none;
+    > input[type='radio']
+        opacity: 0
+        outline: none
+        position: absolute
 
-.radio-button:first-child .radio-button-inner
-    border-left: 1px solid #dcdfe6;
-    border-radius: 4px 0 0 4px;
-    box-shadow: none!important;
+        &:checked + .radio-button-inner
+            color: white
+            background-color: #409eff
+            border-color: #409eff
+            box-shadow: -1px 0 0 0 #409eff
 
-.radio-button:last-child .radio-button-inner
-    border-radius: 0 4px 4px 0;
+    &:first-child > .radio-button-inner
+        border-left: 1px solid #dcdfe6
+        border-radius: 4px 0 0 4px
+        box-shadow: none!important
 
-.radio-button-original-radio
-    opacity: 0;
-    outline: none;
-    position: absolute;
-    z-index: -1;
-    left: -999px;
+    &:last-child > .radio-button-inner
+        border-radius: 0 4px 4px 0
 
-.radio-button-original-radio:checked+.radio-button-inner
-    color: white;
-    background-color: #409eff;
-    border-color: #409eff;
-    box-shadow: -1px 0 0 0 #409eff;
+    &.-disabled
+        color: --text-muted
 
 .radio-button-inner
-    line-height: 1;
-    white-space: nowrap;
-    vertical-align: middle;
-    background: #fff;
-    border: 1px solid #dcdfe6;
-    font-weight: 500;
-    border-left: 0;
-    color: #606266;
-    -webkit-appearance: none;
-    text-align: center;
-    box-sizing: border-box;
-    margin: 0;
-    cursor: pointer;
-    transition: all .3s cubic-bezier(.645,.045,.355,1);
-    padding: 12px 20px;
-    font-size: 14px;
-    border-radius: 0;
-
-.is-disabled
-    color: grey;
-
+    position: relative
+    display: inline-block
+    outline: none
+    white-space: nowrap
+    vertical-align: middle
+    background: #fff
+    border: 1px solid #dcdfe6
+    border-left: 0
+    -webkit-appearance: none
+    box-sizing: border-box
+    cursor: pointer
+    transition: all .3s cubic-bezier(.645,.045,.355,1)
+    padding: --spacers['3-4'] --spacers['2']
+    border-radius: 0
