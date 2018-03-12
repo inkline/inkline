@@ -1,0 +1,11 @@
+<label class="radio button" :class="classes">
+    <input
+        type="radio"
+        v-model="model"
+        :value="inputValue"
+        :disabled="isDisabled"
+    >
+    <span class="inner">
+        <slot></slot>
+    </span>
+</label>

@@ -6,6 +6,9 @@ import LayoutContent from './components/LayoutContent';
 import LayoutFooter from './components/LayoutFooter';
 import LayoutHeader from './components/LayoutHeader';
 import Row from './components/Row';
+import Radio from './components/Radio';
+import RadioGroup from './components/RadioGroup';
+import RadioButton from './components/RadioButton';
 
 const components = {
     Column,
@@ -15,7 +18,10 @@ const components = {
     LayoutContent,
     LayoutFooter,
     LayoutHeader,
-    Row
+    Row,
+    Radio,
+    RadioGroup,
+    RadioButton
 };
 
 class Inkline {
@@ -41,6 +47,9 @@ export {
     LayoutFooter,
     LayoutHeader,
     Row,
+    Radio,
+    RadioGroup,
+    RadioButton,
     Inkline
 };
 

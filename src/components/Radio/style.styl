@@ -1,0 +1,16 @@
+@import '../../resources/css/config'
+
+.radio
+    position: relative
+    cursor: pointer
+    display: inline-block
+    white-space: nowrap
+    outline: none
+    font-size: --font-size
+
+    + .radio
+        margin-left: --spacer
+
+    &.-disabled
+        color: --text-muted
+

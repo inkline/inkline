@@ -9,7 +9,7 @@ export default {
     computed: {
         classes: function () {
             return [
-                this.vertical ? '-vertical' : ''
+                { '-vertical': this.vertical }
             ];
         }
     }
