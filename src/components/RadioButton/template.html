@@ -1,9 +1,9 @@
-<label class="radio-button" :class="[{ 'is-disabled': isDisabled }]">
+<label class="radio-button" :class="[{ '-disabled': isDisabled }]">
     <input
-        v-model="picked"
         type="radio"
         class="radio-button-original-radio"
-        :value="label"
+        v-model="model"
+        :value="inputValue"
         :disabled="isDisabled"
     >
     <span class="radio-button-inner"><slot></slot></span>

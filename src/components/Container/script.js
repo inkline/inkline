@@ -9,7 +9,7 @@ export default {
     computed: {
         classes: function () {
             return [
-                this.fluid ? '-fluid' : ''
+                { '-fluid': this.fluid }
             ];
         }
     }

@@ -1,8 +1,6 @@
-import {breakpointClass, capitalizeFirst, modifierClass} from '../../helpers';
-import {breakpoints} from '../../helpers';
+import { breakpoints, breakpointClass, capitalizeFirst, modifierClass } from '../../helpers';
 
 const properties = {};
-
 for (let breakpoint of breakpoints) {
     if (breakpoint !== '') {
         properties[breakpoint] = {
