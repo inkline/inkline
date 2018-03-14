@@ -3,49 +3,41 @@
  */
 
 ._text-justify
-  text-align: justify !important
-
-
-._text-nowrap
-  white-space: nowrap !important
-
-
-._text-truncate
-  overflow: hidden
-  text-overflow: ellipsis
-  white-space: nowrap
-
+    text-align: justify !important
 
 // Responsive alignment
 //
 for --breakpoint-name, --breakpoint-value in --breakpoints
-  --infix = breakpoint-infix(--breakpoint-name)
+    --infix = breakpoint-infix(--breakpoint-name)
 
-  +breakpoint(--breakpoint)
-    ._text{--infix}-left
-      text-align: left !important
+    +breakpoint(--breakpoint-name)
+        ._text-left{--infix}
+            text-align: left !important
 
+        ._text-right{--infix}
+            text-align: right !important
 
-    ._text{--infix}-right
-      text-align: right !important
+        ._text-center{--infix}
+            text-align: center !important
 
+        ._text-nowrap{--infix}
+            white-space: nowrap !important
 
-    ._text{--infix}-center
-      text-align: center !important
-
+        ._text-truncate{--infix}
+            overflow: hidden
+            text-overflow: ellipsis
+            white-space: nowrap
 
 // Transformation
 //
 ._text-lowercase
-  text-transform: lowercase !important
-
+    text-transform: lowercase !important
 
 ._text-uppercase
-  text-transform: uppercase !important
-
+    text-transform: uppercase !important
 
 ._text-capitalize
-  text-transform: capitalize !important
+    text-transform: capitalize !important
 
 
 // Weight and italics
