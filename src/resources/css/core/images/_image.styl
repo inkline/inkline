@@ -19,6 +19,13 @@
         // when setting a width and height attribute on the img element.
         height: auto;
 
+    &.-fluid
+        // Set the width to always be container width
+        width: 100%;
+        // Override the height to auto, otherwise images will be stretched
+        // when setting a width and height attribute on the img element.
+        height: auto;
+
     // In Internet Explorer 10, SVG images with .-responsive are
     // disproportionately sized. This fix improperly sizes other image formats,
     // so Inkline will only apply it to svg extensions
