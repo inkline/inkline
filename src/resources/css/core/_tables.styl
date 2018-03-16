@@ -23,7 +23,7 @@
 
     // Condensed table w/ half padding
     //
-    &.-sm
+    &.-small
         th
         td
             padding: --table-cell-padding-sm
@@ -41,25 +41,26 @@
             border: --table-border-width solid --table-border-color
 
 
-//    // Themes
-//    //
-//    for --color-name, --color in --themes['table']
-//        --border-color = contrastColor(--color, lighten(--color, 12%), darken(--color, 12%))
-//        --hover-color = contrastColor(--color, lighten(--color, 4%), darken(--color, 10%))
-//        --stripe-color = contrastColor(--color, lighten(--color, 2%), darken(--color, 5%))
-//        --text-color = contrastColor(--color, --colors['white'], --colors['gray-900'])
-//
-//        if --color-name == 'light'
-//            --hover-color = darken(--color, 2%)
-//            --stripe-color = darken(--color, 1%)
-//
-//
-//        &.-{--color-name}
-//            background: --color
-//            border-top-color: --border-color
-//            color: --text-color
-//
-//
+    // Themes
+    //
+    for --color-name, --color in --themes['table']
+        --border-color = -text-color-by-luminance(--color['color'], lighten(--color['color'], 12%), darken(--color['color'], 12%))
+        --text-color = -text-color-by-luminance(--color['color'], --colors['white'], --colors['gray-900'])
+        --hover-color = -text-color-by-luminance(--color['color'], lighten(--color['color'], 4%), darken(--color['color'], 10%))
+        --stripe-color = -text-color-by-luminance(--color['color'], lighten(--color['color'], 2%), darken(--color['color'], 5%))
+
+        if --color-name == 'light'
+            --hover-color = darken(--color['color'], 2%)
+            --stripe-color = darken(--color['color'], 1%)
+
+
+
+        &.-{--color-name}
+            background: --color['color']
+            border-top-color: --border-color
+            color: --text-color
+
+
 //            // Bordered table
 //            //
 //            // Add borders to all sides of the table and table cells
