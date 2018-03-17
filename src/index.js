@@ -9,6 +9,9 @@ import Row from './components/Row';
 import Radio from './components/Radio';
 import RadioGroup from './components/RadioGroup';
 import RadioButton from './components/RadioButton';
+import Checkbox from './components/Checkbox';
+import CheckboxGroup from './components/CheckboxGroup';
+import CheckboxButton from './components/CheckboxButton';
 
 const components = {
     Column,
@@ -21,7 +24,10 @@ const components = {
     Row,
     Radio,
     RadioGroup,
-    RadioButton
+    RadioButton,
+    Checkbox,
+    CheckboxGroup,
+    CheckboxButton
 };
 
 class Inkline {
@@ -50,6 +56,9 @@ export {
     Radio,
     RadioGroup,
     RadioButton,
+    Checkbox,
+    CheckboxGroup,
+    CheckboxButton,
     Inkline
 };
 
