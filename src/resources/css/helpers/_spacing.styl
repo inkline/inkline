@@ -4,9 +4,9 @@
 
 
 for --breakpoint-name, --breakpoint-value in --breakpoints
-  --infix = breakpoint-infix(--breakpoint-name)
+  --infix = -breakpoint-infix(--breakpoint-name)
 
-  +breakpoint(--breakpoint-name)
+  +-breakpoint(--breakpoint-name)
     for --property in (margin padding)
       for --size, --length in --spacers
         ._{--property}{--infix}-{--size}

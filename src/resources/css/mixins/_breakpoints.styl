@@ -7,7 +7,7 @@
 //
 // @param media Breakpoint identifier
 //
-breakpoint(media)
+-breakpoint(media)
     if media == xl
         @media screen and ( min-width: --breakpoints['lg'] )
             {block}
@@ -31,7 +31,7 @@ breakpoint(media)
 //
 // @param media Breakpoint identifier
 //
-breakpoint-down(media)
+-breakpoint-down(media)
     if media == xl
         @media screen and ( max-width: --breakpoints['xl'] - 1 )
             {block}
@@ -55,7 +55,7 @@ breakpoint-down(media)
 //
 // @param media Breakpoint identifier
 //
-breakpoint-up(media)
+-breakpoint-up(media)
     if media == xl
         @media screen and ( min-width: --breakpoints['xl'] )
             {block}
@@ -79,7 +79,7 @@ breakpoint-up(media)
 //
 // @param media Breakpoint identifier
 //
-breakpoint-infix(media)
+-breakpoint-infix(media)
     if media == '_'
         return ''
     else

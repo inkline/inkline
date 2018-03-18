@@ -9,7 +9,7 @@
     flex-wrap: wrap
 
     for --breakpoint-name, --gutter-width in --gutter
-        +breakpoint-up(--breakpoint-name)
+        +-breakpoint-up(--breakpoint-name)
             margin-left: (--gutter-width / -2)
             margin-right: (--gutter-width / -2)
 
@@ -37,9 +37,9 @@
     // Responsive Flex Alignments
     //
     for --breakpoint-name, --breakpoint-value in --breakpoints
-        --breakpoint = breakpoint-infix(--breakpoint-name)
+        --breakpoint = -breakpoint-infix(--breakpoint-name)
 
-        +breakpoint-up(--breakpoint-name)
+        +-breakpoint-up(--breakpoint-name)
             &.-start{--breakpoint}
                 justify-content: flex-start
                 text-align: start
