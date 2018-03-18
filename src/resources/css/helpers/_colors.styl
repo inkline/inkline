@@ -18,6 +18,6 @@ for --theme-name, --theme in --themes['background']
 
 // Text
 //
-for --color-name, --color in --themes['text']
-    ._text-{--color-name}
-        color: --color['color'] !important
+for --theme-name, --theme in --themes['text']
+    ._text-{--theme-name}
+        color: --theme['color'] !important

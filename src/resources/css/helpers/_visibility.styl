@@ -1,8 +1,8 @@
 for --breakpoint-name, --breakpoint-value in --breakpoints
-  --infix = breakpoint-infix(--breakpoint-name)
+  --infix = -breakpoint-infix(--breakpoint-name)
 
 
-  +breakpoint(--breakpoint-name)
+  +-breakpoint(--breakpoint-name)
     ._hidden{--infix}-only
       display: none
 
@@ -16,7 +16,7 @@ for --breakpoint-name, --breakpoint-value in --breakpoints
     ._visible{--infix}-and-down
       display: none;
 
-    +breakpoint-up(--breakpoint-name)
+    +-breakpoint-up(--breakpoint-name)
       ._hidden{--infix}-and-up
         display: none
 
@@ -24,7 +24,7 @@ for --breakpoint-name, --breakpoint-value in --breakpoints
         display: block
 
 
-    +breakpoint-down(--breakpoint-name)
+    +-breakpoint-down(--breakpoint-name)
       ._hidden{--infix}-and-down
         display: none
 

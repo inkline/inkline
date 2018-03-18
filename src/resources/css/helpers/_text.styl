@@ -8,9 +8,9 @@
 // Responsive alignment
 //
 for --breakpoint-name, --breakpoint-value in --breakpoints
-    --infix = breakpoint-infix(--breakpoint-name)
+    --infix = -breakpoint-infix(--breakpoint-name)
 
-    +breakpoint(--breakpoint-name)
+    +-breakpoint(--breakpoint-name)
         ._text-left{--infix}
             text-align: left !important
 

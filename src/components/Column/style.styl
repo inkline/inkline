@@ -15,16 +15,16 @@
     max-width: 100%
 
     for --breakpoint-name, --gutter-width in --gutter
-        +breakpoint-up(--breakpoint-name)
+        +-breakpoint-up(--breakpoint-name)
             padding-left: (--gutter-width / 2)
             padding-right: (--gutter-width / 2)
 
     // Column Responsive Sizes
     //
     for --breakpoint-name, --breakpoint-value in --breakpoints
-        --breakpoint = breakpoint-infix(--breakpoint-name)
+        --breakpoint = -breakpoint-infix(--breakpoint-name)
 
-        +breakpoint-up(--breakpoint-name)
+        +-breakpoint-up(--breakpoint-name)
             &.-first{--breakpoint}
                 order: -1
 
@@ -32,7 +32,7 @@
                 order: 1
 
         for --column-count in 1..--columns
-            +breakpoint-up(--breakpoint-name)
+            +-breakpoint-up(--breakpoint-name)
                 // Flex columns
                 //
                 &.{--breakpoint}
