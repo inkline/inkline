@@ -1,0 +1,9 @@
+<label class="checkbox" :class="classes">
+    <input
+        type="checkbox"
+        v-model="model"
+        :value="inputValue"
+        :disabled="isDisabled"
+    >
+    <slot></slot>
+</label>

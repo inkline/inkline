@@ -2,14 +2,14 @@
 
 
 // @TODO
-// Use actual button markup for radio buttons
+// Use actual button markup for checkbox buttons
 //
-.radio.button
+.checkbox.button
     position: relative
     display: inline-block
     outline: none
 
-    > input[type='radio']
+    > input[type='checkbox']
         opacity: 0
         outline: none
         position: absolute
@@ -28,11 +28,11 @@
     &:last-child > .inner
         border-radius: 0 4px 4px 0
 
+    + .checkbox
+        margin: 0
+
     &.-disabled > .inner
         cursor: default
-
-    + .radio
-        margin-left: 0
 
     > .inner
         position: relative
