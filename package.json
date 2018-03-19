@@ -1,13 +1,13 @@
 {
     "name": "inkline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "main": "src/index.js",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/inkline/inkline.git"
     },
-    "author": "grozav",
+    "author": "Alex Grozav <alex@grozav.com>",
     "scripts": {
         "dev": "webpack-dev-server --inline --progress --config config/webpack.development.config.js",
         "start": "npm run dev",
