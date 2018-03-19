@@ -28,8 +28,11 @@
     &:last-child > .inner
         border-radius: 0 4px 4px 0
 
-    &.-disabled
-        color: --text-muted
+    &.-disabled > .inner
+        cursor: default
+
+    + .radio
+        margin-left: 0
 
     > .inner
         position: relative

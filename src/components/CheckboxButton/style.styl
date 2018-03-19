@@ -28,8 +28,11 @@
     &:last-child > .inner
         border-radius: 0 4px 4px 0
 
-    &.-disabled
-        color: --text-muted
+    + .checkbox
+        margin: 0
+
+    &.-disabled > .inner
+        cursor: default
 
     > .inner
         position: relative
