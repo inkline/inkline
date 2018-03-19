@@ -6,12 +6,13 @@ import LayoutContent from './components/LayoutContent';
 import LayoutFooter from './components/LayoutFooter';
 import LayoutHeader from './components/LayoutHeader';
 import Row from './components/Row';
-import Radio from './components/Radio';
-import RadioGroup from './components/RadioGroup';
-import RadioButton from './components/RadioButton';
+
 import Checkbox from './components/Checkbox';
-import CheckboxGroup from './components/CheckboxGroup';
 import CheckboxButton from './components/CheckboxButton';
+import FormGroup from './components/FormGroup';
+import Input from './components/Input';
+import Radio from './components/Radio';
+import RadioButton from './components/RadioButton';
 
 const components = {
     Column,
@@ -22,12 +23,12 @@ const components = {
     LayoutFooter,
     LayoutHeader,
     Row,
-    Radio,
-    RadioGroup,
-    RadioButton,
     Checkbox,
-    CheckboxGroup,
-    CheckboxButton
+    CheckboxButton,
+    FormGroup,
+    Input,
+    Radio,
+    RadioButton
 };
 
 class Inkline {
@@ -53,12 +54,12 @@ export {
     LayoutFooter,
     LayoutHeader,
     Row,
-    Radio,
-    RadioGroup,
-    RadioButton,
     Checkbox,
-    CheckboxGroup,
     CheckboxButton,
+    Input,
+    Radio,
+    RadioButton,
+    FormGroup,
     Inkline
 };
 
