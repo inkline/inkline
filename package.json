@@ -1,7 +1,7 @@
 {
     "name": "inkline",
     "version": "1.0.1",
-    "description": "",
+    "description": "Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design.",
     "main": "src/index.js",
     "repository": {
         "type": "git",
