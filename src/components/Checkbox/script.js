@@ -1,7 +1,7 @@
 export default {
     name: 'Checkbox',
     props: {
-        value: {},
+        value: [Boolean, String],
         disabled: Boolean
     },
     computed: {
