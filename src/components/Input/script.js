@@ -1,23 +1,24 @@
-import BindableFormItem from '../../mixins/BindableFormItem';
+import BindableIndividualFormItem from '../../mixins/BindableIndividualFormItem';
 import DisableableFormItem from '../../mixins/DisableableFormItem';
-import FormItem from '../../mixins/FormItem';
-import GroupableFormItem from '../../mixins/GroupableFormitem';
+import FormItem from '../../mixins/InjectableFormItem';
+import GroupableFormItem from '../../mixins/GroupableFormItem';
 
 export default {
     name: 'Input',
     props: {
         value: [Boolean, String],
-        disabled: Boolean,
         type: String
     },
     mixins: [
-        BindableFormItem,
+        BindableIndividualFormItem,
         DisableableFormItem,
         FormItem,
         GroupableFormItem
     ],
     computed: {
         classes () {
+            console.log(this.cls);
+
             return [
                 { '-disabled': this.isDisabled }
             ];
