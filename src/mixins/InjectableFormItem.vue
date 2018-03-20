@@ -1,9 +1,9 @@
 <script>
 /**
- * Find a form group parent for the given form item
+ * Inject a form parent to the given form item
  */
 const inject = {
-    form: {
+    parentForm: {
         default: ''
     }
 };

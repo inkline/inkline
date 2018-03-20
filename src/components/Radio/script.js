@@ -1,16 +1,15 @@
-import BindableFormItem from '../../mixins/BindableFormItem';
+import BindableGroupedFormItem from '../../mixins/BindableGroupedFormItem';
 import DisableableFormItem from '../../mixins/DisableableFormItem';
-import FormItem from '../../mixins/FormItem';
-import GroupableFormItem from '../../mixins/GroupableFormitem';
+import FormItem from '../../mixins/InjectableFormItem';
+import GroupableFormItem from '../../mixins/GroupableFormItem';
 
 export default {
     name: 'Radio',
     props: {
-        value: String,
-        disabled: Boolean
+        value: String
     },
     mixins: [
-        BindableFormItem,
+        BindableGroupedFormItem,
         DisableableFormItem,
         FormItem,
         GroupableFormItem

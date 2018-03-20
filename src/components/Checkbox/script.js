@@ -1,17 +1,16 @@
-import BindableFormItem from '../../mixins/BindableFormItem';
+import BindableGroupedFormItem from '../../mixins/BindableGroupedFormItem';
 import DisableableFormItem from '../../mixins/DisableableFormItem';
-import FormItem from '../../mixins/FormItem';
-import GroupableFormItem from '../../mixins/GroupableFormitem';
+import FormItem from '../../mixins/InjectableFormItem';
+import GroupableFormItem from '../../mixins/GroupableFormItem';
 
 export default {
     name: 'Checkbox',
     props: {
         value: [Boolean, String],
-        disabled: Boolean,
         indeterminate: Boolean /* @TODO Implement indeterminate checkboxes */
     },
     mixins: [
-        BindableFormItem,
+        BindableGroupedFormItem,
         DisableableFormItem,
         FormItem,
         GroupableFormItem
