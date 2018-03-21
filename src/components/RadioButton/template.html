@@ -2,9 +2,8 @@
     <input
         type="radio"
         v-model="model"
-        :value="inputValue"
-        :disabled="isDisabled"
-    >
+        :value="currentValue"
+        :disabled="isDisabled">
     <span class="inner">
         <slot></slot>
     </span>

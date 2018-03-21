@@ -1,6 +1,6 @@
 <script>
 /**
- * Find a form group parent for the given form item
+ * Bind the value of an individual form item
  */
 const model = {
     get: function () {
@@ -11,8 +11,16 @@ const model = {
     }
 };
 
+/**
+ * Get the value of the individual form item
+ */
+function currentValue () {
+    return this.value;
+}
+
 export default {
     computed: {
+        currentValue,
         model
     }
 };

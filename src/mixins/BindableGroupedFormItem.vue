@@ -1,6 +1,6 @@
 <script>
 /**
- * Find a form group parent for the given form item
+ * Bind the value of a form item group or groupable form item
  */
 const model = {
     get: function () {
@@ -8,20 +8,23 @@ const model = {
     },
     set: function (value) {
         if (this.isGrouped) {
-            return this.parentGroup.$emit('change:input', value);
+            return this.parentGroup.$emit('input', value);
         }
 
         return this.$emit('input', value);
     }
 };
 
-function inputValue () {
+/**
+ * Get the value of the form item group or, if it is not grouped, get the value from the individual form item
+ */
+function currentValue () {
     return this.isGrouped ? this.value : this.$attrs.value;
 }
 
 export default {
     computed: {
-        inputValue,
+        currentValue,
         model
     }
 };

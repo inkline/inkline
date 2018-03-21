@@ -6,7 +6,7 @@ function isGrouped () {
     let parent = this.$parent;
 
     while (parent) {
-        if (parent.$options.name === 'FormGroup') {
+        if (parent.$options.name === 'InputGroup' || (parent.$options.extends || {}).name === 'InputGroup') {
             this.parentGroup = parent;
             return true;
         }

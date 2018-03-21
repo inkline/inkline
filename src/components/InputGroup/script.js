@@ -1,5 +1,5 @@
 export default {
-    name: 'FormGroup',
+    name: 'InputGroup',
     props: {
         value: {},
         disabled: Boolean

@@ -1,6 +1,12 @@
-<input
-    class="input"
-    v-model="model"
-    :type="type"
-    :disabled="isDisabled"
->
+<div class="form-input">
+    <input
+        v-bind="$attrs"
+        v-model="model"
+        :type="type"
+        :disabled="isDisabled"
+        @focus="onFocus"
+        @blur="onBlur"
+        @change="onChange">
+
+    <i class="el-input__icon el-icon-circle-close el-input__clear" @click="clear"></i>
+</div>

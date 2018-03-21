@@ -1,9 +1,8 @@
-<label class="checkbox" :class="classes">
+<label class="form-checkbox" :class="classes">
     <input
         type="checkbox"
         v-model="model"
-        :value="inputValue"
-        :disabled="isDisabled"
-    >
+        :value="currentValue"
+        :disabled="isDisabled">
     <slot></slot>
 </label>

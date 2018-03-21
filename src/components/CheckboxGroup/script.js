@@ -1,6 +1,6 @@
-import FormGroup from '../FormGroup';
+import InputGroup from '../InputGroup';
 
 export default {
     name: 'CheckboxGroup',
-    extends: FormGroup
+    extends: InputGroup
 };

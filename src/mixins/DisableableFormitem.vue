@@ -7,9 +7,9 @@ function isDisabled () {
 }
 
 export default {
-    data: () => ({
-        cls: ''
-    }),
+    created () {
+        this.classRules.push({ '-disabled': this.isDisabled });
+    },
     props: {
         disabled: {
             type: Boolean,

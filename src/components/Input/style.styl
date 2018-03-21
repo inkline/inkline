@@ -1,23 +1,76 @@
 @import '../../resources/css/config'
 
-.input
-    -webkit-appearance: none;
-    background-color: #fff;
-    background-image: none;
-    border-radius: 4px;
-    border: 1px solid #dcdfe6;
-    box-sizing: border-box;
-    color: #606266;
-    display: inline-block;
-    font-size: inherit;
-    height: 40px;
-    line-height: 40px;
-    outline: none;
-    padding: 0 15px;
-    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-    width: 100%;
+--label-margin-bottom := 0.5rem
 
-    &.-disabled
-        color: --text-muted
-        cursor: default
+--input-padding := --spacers['1-2'] --spacers['1']
+--input-line-height := --line-height
+
+--input-color := --colors['gray-70']
+--input-color-focus := --input-color
+--input-placeholder-color := --colors['gray-60']
+--input-plaintext-color := --body-color
+--input-background := --colors['white']
+--input-background-disabled := --colors['gray-20']
+--input-background-focus := --input-background
+
+--input-border-width := --border-width
+--input-border-color := --border-color
+--input-border-color-focus := lighten(--input-border-color, 15%)
+--input-border-radius := --border-radius
+
+--input-box-shadow := inset 0 1px 1px rgba(--colors['black'], 0.05)
+--input-transition := border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+
+
+.form-input
+    > input
+    > select
+    > textarea
+        display: block
+        width: 100%
+        padding: --input-padding
+        line-height: --input-line-height
+        color: --input-color
+        background-color: --input-background
+        background-clip: padding-box
+        border: --input-border-width solid --input-border-color
+
+        if --border-radius-enabled
+            border-radius: --input-border-radius
+
+        box-shadow: --input-box-shadow
+        if --transition['input']
+            transition: --input-transition
+
+        // Remove style for the caret on `<select>`s in IE10+.
+        &::-ms-expand
+            background-color: transparent
+            border: 0
+
+        // Customize the `:focus` state to imitate native WebKit styles.
+        &:focus
+            color: --input-color-focus
+            background-color: --input-background-focus
+            border-color: --input-border-color-focus
+            outline: 0;
+
+            // Avoid using mixin so we can pass custom focus shadow properly
+            if --box-shadow-enabled
+                box-shadow: --input-box-shadow, --input-box-shadow-focus
+
+        // Placeholder
+        // Override Firefox's unusual default opacity see https://github.com/twbs/bootstrap/pull/11526.
+        &::placeholder
+            color: --input-placeholder-color
+            opacity: 1
+
+        // Disabled and read-only inputs
+        //
+        // HTML5 says that controls under a fieldset > legend:first-child won't be
+        // disabled if the fieldset is disabled. Due to implementation difficulty, we
+        // don't honor that edge case we style them as disabled anyway.
+        &:disabled,
+        &[readonly]
+            background-color: --input-background-disabled
+            opacity: 1  // iOS fix for unreadable disabled content
 

@@ -1,0 +1,14 @@
+@import '../../resources/css/config'
+
+--input-group-margin := --spacer
+
+.input-group
+    display: block
+    vertical-align: middle
+
+    &.-checkbox
+    &.-radio
+        font-size: 0
+
+    + .input-group
+        margin-top: --input-group-margin
