@@ -1,9 +1,12 @@
 import BindableIndividualFormItem from '../../mixins/BindableIndividualFormItem';
 import ChangeableComponent from '../../mixins/ChangeableComponent';
+import ClearableFormItem from '../../mixins/ClearableFormItem';
 import DisableableFormItem from '../../mixins/DisableableFormItem';
-import FocusableFormItem from '../../mixins/FocusableFormItem';
+import FocusableComponent from '../../mixins/FocusableComponent';
 import FormItem from '../../mixins/InjectableFormItem';
 import GroupableFormItem from '../../mixins/GroupableFormItem';
+import HoverableComponent from '../../mixins/HoverableComponent';
+import InputableFormItem from '../../mixins/InputableFormItem';
 
 export default {
     name: 'Input',
@@ -15,22 +18,14 @@ export default {
     mixins: [
         BindableIndividualFormItem,
         ChangeableComponent,
+        ClearableFormItem,
         DisableableFormItem,
-        FocusableFormItem,
+        FocusableComponent,
         FormItem,
-        GroupableFormItem
+        GroupableFormItem,
+        HoverableComponent,
+        InputableFormItem
     ],
-    computed: {
-        classes () {
-            return [
-                { '-disabled': this.isDisabled },
-                { '-clearable': this.clearable }
-            ];
-        },
-        isClearVisible () {
-            return this.clearable && this.currentValue !== '' && (this.focused || this.hovering);
-        }
-    },
     methods: {
     }
 };

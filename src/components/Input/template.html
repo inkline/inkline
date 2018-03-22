@@ -1,4 +1,6 @@
-<div class="form-input">
+<div class="form-input"
+     @mouseenter="onMouseEnter"
+     @mouseleave="onMouseLeave">
     <input
         v-bind="$attrs"
         v-model="model"
@@ -8,5 +10,5 @@
         @blur="onBlur"
         @change="onChange">
 
-    <!--<i class="el-input__icon el-icon-circle-close el-input__clear" @click="clear"></i>-->
+    <i class="icon -close input-icon -clear" v-show="isClearable" @click="clear"></i>
 </div>

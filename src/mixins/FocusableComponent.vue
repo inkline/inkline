@@ -2,13 +2,6 @@
 export default {
     methods: {
         /**
-         * Trigger input focus state
-         */
-        focus () {
-            this.$refs.input.focus();
-        },
-
-        /**
          * Handler for focus event
          */
         onFocus (event) {

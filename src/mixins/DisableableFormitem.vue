@@ -1,15 +1,5 @@
 <script>
 export default {
-    /**
-     * Provide injectable classes for classable mixin
-     */
-    data () {
-        return {
-            injectableClasses: {
-                DisableableFormItem: { '-disabled': this.isDisabled }
-            }
-        };
-    },
     props: {
         disabled: {
             type: Boolean,
@@ -22,6 +12,13 @@ export default {
          */
         isDisabled () {
             return (this.parentForm || {}).disabled || (this.parentGroup || {}).disabled || this.disabled;
+        }
+    },
+    created () {
+        if (this.classesProvider) {
+            this.classesProvider.push(() => ({
+                '-disabled': this.isDisabled
+            }));
         }
     }
 };
