@@ -1,17 +1,15 @@
+import ClassableComponent from '../../mixins/ClassableComponent';
+import DisableableFormItem from '../../mixins/DisableableFormItem';
+import InputableFormItem from '../../mixins/InputableFormItem';
+
 export default {
     name: 'InputGroup',
+    mixins: [
+        ClassableComponent,
+        DisableableFormItem,
+        InputableFormItem
+    ],
     props: {
-        value: {},
-        disabled: Boolean
-    },
-    computed: {
-        classes: () => [
-            { '-disabled': this.disabled }
-        ]
-    },
-    created () {
-        this.$on('change:input', value => {
-            this.$emit('input', value);
-        });
+        value: {}
     }
 };

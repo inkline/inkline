@@ -1,13 +1,17 @@
 <script>
 export default {
-    beforeCreate () {
-        this.classRules = [];
-    },
     computed: {
+        /**
+         * Compute dynamically provided classes from mixins
+         */
         classes () {
             const classRules = [];
 
-            console.log('classable', this.classRules)
+            for (let classProvider in this.injectableClasses) {
+                if (this.injectableClasses.hasOwnProperty(classProvider)) {
+                    classRules.push(this.injectableClasses[classProvider]);
+                }
+            }
 
             return classRules;
         }

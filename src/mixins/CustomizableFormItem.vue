@@ -1,7 +1,14 @@
 <script>
 export default {
-    created () {
-        this.classRules.push({ '-custom': this.custom });
+    /**
+     * Provide injectable classes for classable mixin
+     */
+    data () {
+        return {
+            injectableClasses: {
+                CustomizableFormItem: { '-custom': this.custom }
+            }
+        };
     },
     props: {
         custom: {

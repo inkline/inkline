@@ -1,4 +1,5 @@
 import BindableIndividualFormItem from '../../mixins/BindableIndividualFormItem';
+import ChangeableComponent from '../../mixins/ChangeableComponent';
 import DisableableFormItem from '../../mixins/DisableableFormItem';
 import FocusableFormItem from '../../mixins/FocusableFormItem';
 import FormItem from '../../mixins/InjectableFormItem';
@@ -13,6 +14,7 @@ export default {
     },
     mixins: [
         BindableIndividualFormItem,
+        ChangeableComponent,
         DisableableFormItem,
         FocusableFormItem,
         FormItem,

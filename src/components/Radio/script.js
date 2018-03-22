@@ -15,12 +15,5 @@ export default {
         DisableableFormItem,
         FormItem,
         GroupableFormItem
-    ],
-    computed: {
-        classes () {
-            return [
-                { '-disabled': this.isDisabled }
-            ];
-        }
-    }
+    ]
 };

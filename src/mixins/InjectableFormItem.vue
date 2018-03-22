@@ -1,14 +1,12 @@
 <script>
-/**
- * Inject a form parent to the given form item
- */
-const inject = {
-    parentForm: {
-        default: ''
-    }
-};
-
 export default {
-    inject
+    /**
+     * Inject a form parent to the given form item
+     */
+    inject: {
+        parentForm: {
+            default: ''
+        }
+    }
 };
 </script>
