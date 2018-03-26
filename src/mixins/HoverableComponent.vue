@@ -1,5 +1,10 @@
 <script>
 export default {
+    data () {
+        return {
+            hovered: false
+        };
+    },
     methods: {
         /**
          * Handler for focus event

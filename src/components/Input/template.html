@@ -1,14 +1,20 @@
-<div class="form-input"
+<div class="form-input" :class="slotClasses"
      @mouseenter="onMouseEnter"
      @mouseleave="onMouseLeave">
+
+    <span class="form-input-prefix" v-if="$slots.prefix">
+        <slot name="prefix"></slot>
+    </span>
+
     <input
         v-bind="$attrs"
         v-model="model"
         :type="type"
         :disabled="isDisabled"
+        :style="slotStyles"
         @focus="onFocus"
         @blur="onBlur"
         @change="onChange">
 
-    <i class="icon -close input-icon -clear" v-show="isClearable" @click="clear"></i>
+    <i class="input-clear-icon" aria-label="Clear" v-show="isClearable" @click="clear">&times;</i>
 </div>
