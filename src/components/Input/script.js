@@ -1,5 +1,6 @@
 import BindableIndividualFormItem from '../../mixins/BindableIndividualFormItem';
 import ChangeableComponent from '../../mixins/ChangeableComponent';
+import ClassableComponent from '../../mixins/ClassableComponent';
 import ClearableFormItem from '../../mixins/ClearableFormItem';
 import DisableableFormItem from '../../mixins/DisableableFormItem';
 import FocusableComponent from '../../mixins/FocusableComponent';
@@ -11,17 +12,13 @@ import InputableFormItem from '../../mixins/InputableFormItem';
 export default {
     name: 'Input',
     props: {
-        value: [Boolean, String],
+        value: String,
         type: String
-    },
-    data () {
-        return {
-            slotStyles: []
-        };
     },
     mixins: [
         BindableIndividualFormItem,
         ChangeableComponent,
+        ClassableComponent,
         ClearableFormItem,
         DisableableFormItem,
         FocusableComponent,
@@ -30,34 +27,12 @@ export default {
         HoverableComponent,
         InputableFormItem
     ],
-    computed: {
-        slotClasses () {
-            return [
-                { '-prefixed': this.$slots.prefix },
-                { '-suffixed': this.$slots.suffix }
-            ];
+    created () {
+        if (this.classesProvider) {
+            this.classesProvider.push(() => ({
+                '-prefixed': this.$slots.prefix,
+                '-suffixed': this.$slots.suffix
+            }));
         }
-    },
-    methods: {
-        getSlotStyles () {
-            const styles = {};
-            const input = this.$el.querySelector('input');
-            const currentPadding = (input.currentStyle || window.getComputedStyle(input))['padding'];
-            const slots = {
-                'prefix': 'padding-left',
-                'suffix': 'padding-right'
-            };
-
-            for (let slot in slots) {
-                // styles.push();
-                // console.log(this.$el.querySelector(`.el-input-group__${slot}`).offsetWidth)
-                console.log(slot, currentPadding);
-            }
-
-            return styles;
-        }
-    },
-    mounted () {
-        this.slotStyles = this.getSlotStyles();
     }
 };

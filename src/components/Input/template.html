@@ -1,20 +1,24 @@
-<div class="form-input" :class="slotClasses"
+<div class="form-input"
      @mouseenter="onMouseEnter"
-     @mouseleave="onMouseLeave">
+     @mouseleave="onMouseLeave"
+     :class="classes">
 
     <span class="form-input-prefix" v-if="$slots.prefix">
         <slot name="prefix"></slot>
     </span>
 
+    <span class="form-input-suffix" v-if="$slots.suffix || clearable">
+        <i class="form-input-icon -circle" aria-label="Clear" v-show="isClearable" @click="clear">&times;</i>
+        <slot name="suffix"></slot>
+    </span>
+
     <input
         v-bind="$attrs"
         v-model="model"
+        ref="input"
         :type="type"
         :disabled="isDisabled"
-        :style="slotStyles"
         @focus="onFocus"
         @blur="onBlur"
         @change="onChange">
-
-    <i class="input-clear-icon" aria-label="Clear" v-show="isClearable" @click="clear">&times;</i>
 </div>

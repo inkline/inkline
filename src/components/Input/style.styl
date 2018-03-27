@@ -5,6 +5,8 @@
 --input-padding := --spacers['1-2'] --spacers['1']
 --input-line-height := --line-height
 
+--input-prefix-padding := --spacers['1'] * 2 + 1rem
+
 --input-color := --colors['gray-70']
 --input-color-focus := --input-color
 --input-placeholder-color := --colors['gray-60']
@@ -21,9 +23,9 @@
 --input-box-shadow := inset 0 1px 1px rgba(--colors['black'], 0.05)
 --input-transition := border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
 
---input-clear-icon-size := 1.6rem
---input-clear-icon-background := --colors['gray-50']
---input-clear-icon-background-hover := --colors['gray-60']
+--input-icon-circle-size := 1.2rem
+--input-icon-circle-background := --colors['gray-40']
+--input-icon-circle-background-hover := --colors['gray-50']
 
 .form-input
     position: relative
@@ -79,22 +81,48 @@
             background-color: --input-background-disabled
             opacity: 1  // iOS fix for unreadable disabled content
 
-    .input-clear-icon
-        position: absolute
+    &.-prefixed
+        > input
+        > select
+        > textarea
+            padding-left: --input-prefix-padding
+
+    &.-suffixed
+        > input
+        > select
+        > textarea
+            padding-right: --input-prefix-padding
+
+    .form-input-prefix
+    .form-input-suffix
         top: 50%
-        right: --spacer
+        position: absolute
         transform: translateY(-50%)
         font-style: normal
-        text-align: center
-        width: --input-clear-icon-size
-        height: --input-clear-icon-size
-        line-height: --input-clear-icon-size
-        border-radius: 100%
-        color: --input-background
-        font-weight: bold
-        cursor: pointer
-        background-color: --input-clear-icon-background
-        transition: background-color --transition-duration --transition-easing
 
-        &:hover
-            background-color: --input-clear-icon-background-hover
+    .form-input-prefix
+        left: --spacer
+
+    .form-input-suffix
+        right: --spacer
+
+
+    .form-input-icon
+        transition: background-color --transition-duration --transition-easing
+        color: --text-muted
+
+        &.-circle
+            display: inline-block
+            text-align: center
+            font-weight: bold
+            cursor: pointer
+            width: --input-icon-circle-size
+            height: --input-icon-circle-size
+            line-height: 1
+            background-color: --input-icon-circle-background
+            color: --input-background
+            border-radius: 100%
+
+            &:hover
+                background-color: --input-icon-circle-background-hover
+
