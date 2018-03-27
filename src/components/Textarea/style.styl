@@ -1,0 +1,162 @@
+@import '../../resources/css/config'
+@import '../../resources/css/mixins'
+
+--label-margin-bottom := 0.5rem
+
+--input-padding := --spacers['1-2'] --spacers['1']
+--input-line-height := --line-height
+
+--input-prefix-padding := --spacers['1'] * 2 + 1rem
+
+--input-color := --colors['gray-70']
+--input-color-focus := --input-color
+--input-placeholder-color := --colors['gray-60']
+--input-plaintext-color := --body-color
+--input-background := --colors['white']
+--input-background-disabled := --colors['gray-20']
+--input-background-focus := --input-background
+
+--input-border-width := --border-width
+--input-border-color := --border-color
+--input-border-color-focus := darken(--input-border-color, 10%)
+--input-border-radius := --border-radius
+
+--input-box-shadow := inset 0 1px 1px rgba(--colors['black'], 0.05)
+--input-transition := border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+
+--input-icon-circle-size := 1.2rem
+--input-icon-circle-background := --colors['gray-40']
+--input-icon-circle-background-hover := --colors['gray-50']
+
+--input-append-prepend-background-color := --colors['gray-30']
+--input-append-prepend-background-gradient := --gradients['gray-30']
+
+.form-input
+    position: relative
+    width: 100%
+    display: flex
+    flex-direction: row
+
+    > input
+    > select
+    > textarea
+        position: relative
+        display: flex
+        flex: 1 0 auto
+        width: 1%
+        padding: --input-padding
+        line-height: --input-line-height
+        color: --input-color
+        background-color: --input-background
+        background-clip: padding-box
+        border: --input-border-width solid --input-border-color
+
+        if --border-radius-enabled
+            border-radius: --input-border-radius
+
+        box-shadow: --input-box-shadow
+        if --transition['input']
+            transition: --input-transition
+
+        // Remove style for the caret on `<select>`s in IE10+.
+        &::-ms-expand
+            background-color: transparent
+            border: 0
+
+        // Customize the `:focus` state to imitate native WebKit styles.
+        &:focus
+            color: --input-color-focus
+            background-color: --input-background-focus
+            border-color: --input-border-color-focus
+            outline: 0
+
+            // Avoid using mixin so we can pass custom focus shadow properly
+            if --box-shadow-enabled
+                box-shadow: --input-box-shadow, --input-box-shadow-focus
+
+        // Placeholder
+        // Override Firefox's unusual default opacity see https://github.com/twbs/bootstrap/pull/11526.
+        &::placeholder
+            color: --input-placeholder-color
+            opacity: 1
+
+        // Disabled and read-only inputs
+        //
+        // HTML5 says that controls under a fieldset > legend:first-child won't be
+        // disabled if the fieldset is disabled. Due to implementation difficulty, we
+        // don't honor that edge case we style them as disabled anyway.
+        &:disabled,
+        &[readonly]
+            background-color: --input-background-disabled
+            opacity: 1  // iOS fix for unreadable disabled content
+
+    &.-prefixed
+        > input
+        > select
+        > textarea
+            padding-left: --input-prefix-padding
+
+    &.-suffixed
+        > input
+        > select
+        > textarea
+            padding-right: --input-prefix-padding
+
+    .form-input-prefix
+    .form-input-suffix
+        z-index: 1
+        top: 50%
+        position: absolute
+        transform: translateY(-50%)
+        font-style: normal
+
+    .form-input-prefix
+        left: --spacer
+
+    .form-input-suffix
+        right: --spacer
+
+    .form-input-prepend
+    .form-input-append
+        display: flex
+        padding: --input-padding
+        line-height: --input-line-height
+        background-color: --input-append-prepend-background-color
+        background-image: -linear-gradient(--input-append-prepend-background-gradient)
+        border-radius: --input-border-radius
+
+    &.-appended > input
+    &.-appended > textarea
+    &.-appended > select
+    .form-input-prepend
+    .form-input-append + .form-input-append
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+
+    &.-prepended > input
+    &.-prepended > textarea
+    &.-prepended > select
+    .form-input-append
+    .form-input-prepend + .form-input-prepend
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+    .form-input-icon
+        transition: background-color --transition-duration --transition-easing
+        color: --text-muted
+
+        &.-circle
+            display: inline-block
+            text-align: center
+            font-weight: bold
+            cursor: pointer
+            width: --input-icon-circle-size
+            height: --input-icon-circle-size
+            line-height: 1
+            background-color: --input-icon-circle-background
+            color: --input-background
+            border-radius: 100%
+
+            &:hover
+                background-color: --input-icon-circle-background-hover
+

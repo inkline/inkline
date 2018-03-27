@@ -15,6 +15,7 @@ import Input from './components/Input';
 import Radio from './components/Radio';
 import RadioButton from './components/RadioButton';
 import RadioGroup from './components/RadioGroup';
+import Textarea from './components/Textarea';
 
 const components = {
     Column,
@@ -32,7 +33,8 @@ const components = {
     Input,
     Radio,
     RadioButton,
-    RadioGroup
+    RadioGroup,
+    Textarea
 };
 
 class Inkline {
@@ -66,6 +68,7 @@ export {
     Radio,
     RadioButton,
     RadioGroup,
+    Textarea,
     Inkline
 };
 
