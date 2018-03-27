@@ -12,6 +12,10 @@
         <slot name="suffix"></slot>
     </span>
 
+    <div class="form-input-prepend" v-if="$slots.prepend">
+        <slot name="prepend"></slot>
+    </div>
+
     <input
         v-bind="$attrs"
         v-model="model"
@@ -21,4 +25,8 @@
         @focus="onFocus"
         @blur="onBlur"
         @change="onChange">
+
+    <div class="form-input-append" v-if="$slots.append">
+        <slot name="append"></slot>
+    </div>
 </div>

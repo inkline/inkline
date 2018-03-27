@@ -1,4 +1,5 @@
 @import '../../resources/css/config'
+@import '../../resources/css/mixins'
 
 --label-margin-bottom := 0.5rem
 
@@ -27,14 +28,22 @@
 --input-icon-circle-background := --colors['gray-40']
 --input-icon-circle-background-hover := --colors['gray-50']
 
+--input-append-prepend-background-color := --colors['gray-30']
+--input-append-prepend-background-gradient := --gradients['gray-30']
+
 .form-input
     position: relative
+    width: 100%
+    display: flex
+    flex-direction: row
 
     > input
     > select
     > textarea
-        display: block
-        width: 100%
+        position: relative
+        display: flex
+        flex: 1 0 auto
+        width: 1%
         padding: --input-padding
         line-height: --input-line-height
         color: --input-color
@@ -95,6 +104,7 @@
 
     .form-input-prefix
     .form-input-suffix
+        z-index: 1
         top: 50%
         position: absolute
         transform: translateY(-50%)
@@ -106,6 +116,30 @@
     .form-input-suffix
         right: --spacer
 
+    .form-input-prepend
+    .form-input-append
+        display: flex
+        padding: --input-padding
+        line-height: --input-line-height
+        background-color: --input-append-prepend-background-color
+        background-image: -linear-gradient(--input-append-prepend-background-gradient)
+        border-radius: --input-border-radius
+
+    &.-appended > input
+    &.-appended > textarea
+    &.-appended > select
+    .form-input-prepend
+    .form-input-append + .form-input-append
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+
+    &.-prepended > input
+    &.-prepended > textarea
+    &.-prepended > select
+    .form-input-append
+    .form-input-prepend + .form-input-prepend
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
 
     .form-input-icon
         transition: background-color --transition-duration --transition-easing

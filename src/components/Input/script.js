@@ -31,7 +31,9 @@ export default {
         if (this.classesProvider) {
             this.classesProvider.push(() => ({
                 '-prefixed': this.$slots.prefix,
-                '-suffixed': this.$slots.suffix
+                '-suffixed': this.$slots.suffix,
+                '-prepended': this.$slots.prepend,
+                '-appended': this.$slots.append
             }));
         }
     }
