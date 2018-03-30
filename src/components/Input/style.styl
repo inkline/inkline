@@ -6,7 +6,7 @@
 --input-padding := --spacers['1-2'] --spacers['1']
 --input-line-height := --line-height
 
---input-prefix-padding := --spacers['1'] * 2 + 1rem
+--input-prefix-padding := --spacers['1'] * 3 + 1rem
 
 --input-color := --colors['gray-70']
 --input-color-focus := --input-color
@@ -112,9 +112,13 @@
 
     .form-input-prefix
         left: --spacer
+        padding-right: --spacer
+        border-right: 1px solid --input-border-color
 
     .form-input-suffix
         right: --spacer
+        padding-left: --spacer
+        border-left: 1px solid --input-border-color
 
     .form-input-prepend
     .form-input-append
