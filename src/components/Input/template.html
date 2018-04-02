@@ -1,32 +1,38 @@
-<div class="form-input"
-     @mouseenter="onMouseEnter"
-     @mouseleave="onMouseLeave"
-     :class="classes">
+<div class="form-input-group" :class="classes">
+    <label class="form-input-label" @click="focus" :class="labelClasses" v-if="$slots.label">
+        <slot name="label"></slot>
+    </label>
 
-    <span class="form-input-prefix" v-if="$slots.prefix">
-        <slot name="prefix"></slot>
-    </span>
+    <div class="form-input"
+         @mouseenter="onMouseEnter"
+         @mouseleave="onMouseLeave">
 
-    <span class="form-input-suffix" v-if="$slots.suffix || clearable">
-        <i class="form-input-icon -circle" aria-label="Clear" v-show="isClearable" @click="clear">&times;</i>
-        <slot name="suffix"></slot>
-    </span>
+        <span class="form-input-prefix" v-if="$slots.prefix">
+            <slot name="prefix"></slot>
+        </span>
 
-    <div class="form-input-prepend" v-if="$slots.prepend">
-        <slot name="prepend"></slot>
-    </div>
+        <span class="form-input-suffix" v-if="$slots.suffix || clearable">
+            <i class="form-input-icon -circle" aria-label="Clear" v-show="isClearable" @click="clear">&times;</i>
+            <slot name="suffix"></slot>
+        </span>
 
-    <input
-        v-bind="$attrs"
-        v-model="model"
-        ref="input"
-        :type="type"
-        :disabled="isDisabled"
-        @focus="onFocus"
-        @blur="onBlur"
-        @change="onChange">
+        <div class="form-input-prepend" v-if="$slots.prepend">
+            <slot name="prepend"></slot>
+        </div>
 
-    <div class="form-input-append" v-if="$slots.append">
-        <slot name="append"></slot>
+        <component
+            v-bind="$attrs"
+            v-model="model"
+            ref="input"
+            :is="nodeName"
+            :disabled="isDisabled"
+            @focus="onFocus"
+            @blur="onBlur"
+            @change="onChange">
+        </component>
+
+        <div class="form-input-append" v-if="$slots.append">
+            <slot name="append"></slot>
+        </div>
     </div>
 </div>

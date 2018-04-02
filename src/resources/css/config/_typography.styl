@@ -30,7 +30,16 @@
 // Font size
 // Assumes the browser default, typically `16px`
 //
---font-size := 1rem
+--font-size-md := 1rem
+--font-size-sm := --font-size-md * --size-percentages['sm']
+--font-size-lg := --font-size-md * --size-percentages['lg']
+
+--font-size := {
+    'sm': --font-size-sm
+    'md': --font-size-md
+    'lg': --font-size-lg
+}
+
 
 // Font weight
 //
@@ -60,12 +69,12 @@
 
 // Headings
 //
---h1-font-size := 2.5 * --font-size
---h2-font-size := 2 * --font-size
---h3-font-size := 1.75 * --font-size
---h4-font-size := 1.5 * --font-size
---h5-font-size := 1.25 * --font-size
---h6-font-size := 1 * --font-size
+--h1-font-size := 2.5 * --font-size['md']
+--h2-font-size := 2 * --font-size['md']
+--h3-font-size := 1.75 * --font-size['md']
+--h4-font-size := 1.5 * --font-size['md']
+--h5-font-size := 1.25 * --font-size['md']
+--h6-font-size := 1 * --font-size['md']
 
 --headings-font-size := {
   h1: --h1-font-size
@@ -85,12 +94,12 @@
 
 // Displays
 //
---d1-font-size := 5.5 * --font-size
---d2-font-size := 5 * --font-size
---d3-font-size := 4.5 * --font-size
---d4-font-size := 4 * --font-size
---d5-font-size := 3.5 * --font-size
---d6-font-size := 3 * --font-size
+--d1-font-size := 5.5 * --font-size['md']
+--d2-font-size := 5 * --font-size['md']
+--d3-font-size := 4.5 * --font-size['md']
+--d4-font-size := 4 * --font-size['md']
+--d5-font-size := 3.5 * --font-size['md']
+--d6-font-size := 3 * --font-size['md']
 
 --displays-font-size := {
   d1: --d1-font-size
@@ -113,13 +122,13 @@
 
 // Lead
 //
---lead-font-size := 1.25 * --font-size
+--lead-font-size := --font-size['lg']
 --lead-font-weight := 300
 
 // Lists
 //
 --list-inline-padding := --spacer
---list-item-margin-bottom := --spacers['1-2']
+--list-item-margin-bottom := --spacers['1/2']
 
 // Description Lists
 //
@@ -127,12 +136,12 @@
 
 // Emphasis
 //
---small-font-size := 80% * --font-size
+--small-font-size := --font-size['sm']
 
 // Blockquote
 //
 --blockquote-small-color := --colors['gray-60']
---blockquote-font-size := --font-size * 1.25
+--blockquote-font-size := --font-size['lg']
 --blockquote-border := 3px solid --colors['gray-30']
 
 // Horizontal rule

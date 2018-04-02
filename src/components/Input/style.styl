@@ -3,8 +3,16 @@
 
 --label-margin-bottom := 0.5rem
 
---input-padding := --spacers['1-2'] --spacers['1']
 --input-line-height := --line-height
+
+--input-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
+--input-padding-md := --spacers['1/2'] --spacers['1']
+--input-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
+--input-padding := {
+    'sm': --input-padding-sm,
+    'md': --input-padding-md,
+    'lg': --input-padding-lg
+}
 
 --input-prefix-padding := --spacers['1'] * 3 + 1rem
 
@@ -31,20 +39,24 @@
 --input-append-prepend-background-color := --colors['gray-30']
 --input-append-prepend-background-gradient := --gradients['gray-30']
 
+-form-input-selector()
+    > input
+    > select
+    > textarea
+        {block}
+
 .form-input
     position: relative
     width: 100%
     display: flex
     flex-direction: row
 
-    > input
-    > select
-    > textarea
+    +-form-input-selector()
         position: relative
         display: flex
         flex: 1 0 auto
         width: 1%
-        padding: --input-padding
+        padding: --input-padding-md
         line-height: --input-line-height
         color: --input-color
         background-color: --input-background
@@ -91,15 +103,11 @@
             opacity: 1  // iOS fix for unreadable disabled content
 
     &.-prefixed
-        > input
-        > select
-        > textarea
+        +-form-input-selector()
             padding-left: --input-prefix-padding
 
     &.-suffixed
-        > input
-        > select
-        > textarea
+        +-form-input-selector()
             padding-right: --input-prefix-padding
 
     .form-input-prefix
@@ -123,23 +131,27 @@
     .form-input-prepend
     .form-input-append
         display: flex
-        padding: --input-padding
+        padding: --input-padding-md
         line-height: --input-line-height
         background-color: --input-append-prepend-background-color
         background-image: -linear-gradient(--input-append-prepend-background-gradient)
         border-radius: --input-border-radius
 
-    &.-appended > input
-    &.-appended > textarea
-    &.-appended > select
+    &.-appended
+        +-form-input-selector()
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0
+
+    &.-prepended
+        +-form-input-selector()
+            border-top-left-radius: 0
+            border-bottom-left-radius: 0
+
     .form-input-prepend
     .form-input-append + .form-input-append
         border-top-right-radius: 0
         border-bottom-right-radius: 0
 
-    &.-prepended > input
-    &.-prepended > textarea
-    &.-prepended > select
     .form-input-append
     .form-input-prepend + .form-input-prepend
         border-top-left-radius: 0
@@ -164,3 +176,42 @@
             &:hover
                 background-color: --input-icon-circle-background-hover
 
+
+.form-input-label
+    font-size: --font-size['md']
+
+    &.-left
+    &.-right
+        display: flex
+        flex: 1 0 auto
+        align-self: center
+        margin-bottom: 0
+
+    &.-left
+        padding-right: --input-padding['md'][0] * 2
+
+    &.-right
+        padding-left: --input-padding['md'][0] * 2
+        order: 1
+
+for size in (sm md lg)
+    .form-input-label.-{size}
+    .form-input-group.-{size} > .form-input-label
+        font-size: --font-size[size]
+
+        &.-left
+            padding-right: --input-padding[size][0] * 2
+
+        &.-right
+            padding-left: --input-padding[size][0] * 2
+
+    .form-input.-{size}
+    .form-input-group.-{size} > .form-input
+        +-form-input-selector()
+            padding: --input-padding[size]
+            font-size: --font-size[size]
+
+        .form-input-prepend
+        .form-input-append
+            padding: --input-padding[size]
+            font-size: --font-size[size]

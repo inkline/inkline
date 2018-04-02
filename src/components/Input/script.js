@@ -8,12 +8,16 @@ import FormItem from '../../mixins/InjectableFormItem';
 import GroupableFormItem from '../../mixins/GroupableFormItem';
 import HoverableComponent from '../../mixins/HoverableComponent';
 import InputableFormItem from '../../mixins/InputableFormItem';
+import LabelableFormItem from '../../mixins/LabelableFormItem';
+import SizeableComponent from '../../mixins/SizeableComponent';
 
 export default {
     name: 'Input',
-    props: {
-        value: String,
-        type: String
+    inheritAttrs: false,
+    data () {
+        return {
+            nodeName: 'input'
+        };
     },
     mixins: [
         BindableIndividualFormItem,
@@ -25,7 +29,9 @@ export default {
         FormItem,
         GroupableFormItem,
         HoverableComponent,
-        InputableFormItem
+        InputableFormItem,
+        LabelableFormItem,
+        SizeableComponent
     ],
     created () {
         if (this.classesProvider) {
