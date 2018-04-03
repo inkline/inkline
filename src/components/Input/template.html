@@ -1,9 +1,10 @@
-<div class="form-input-group" :class="classes">
+<div class="form-input-group" :class="classes['root']">
     <label class="form-input-label" @click="focus" :class="labelClasses" v-if="$slots.label">
         <slot name="label"></slot>
     </label>
 
     <div class="form-input"
+         :class="classes['child']"
          @mouseenter="onMouseEnter"
          @mouseleave="onMouseLeave">
 

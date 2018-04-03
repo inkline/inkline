@@ -7,6 +7,7 @@ import FocusableComponent from '../../mixins/FocusableComponent';
 import FormItem from '../../mixins/InjectableFormItem';
 import GroupableFormItem from '../../mixins/GroupableFormItem';
 import HoverableComponent from '../../mixins/HoverableComponent';
+import InputGroup from '../InputGroup';
 import InputableFormItem from '../../mixins/InputableFormItem';
 import LabelableFormItem from '../../mixins/LabelableFormItem';
 import SizeableComponent from '../../mixins/SizeableComponent';
@@ -14,6 +15,7 @@ import SizeableComponent from '../../mixins/SizeableComponent';
 export default {
     name: 'Input',
     inheritAttrs: false,
+    extends: InputGroup,
     data () {
         return {
             nodeName: 'input'
@@ -35,7 +37,7 @@ export default {
     ],
     created () {
         if (this.classesProvider) {
-            this.classesProvider.push(() => ({
+            this.classesProvider['child'].push(() => ({
                 '-prefixed': this.$slots.prefix,
                 '-suffixed': this.$slots.suffix,
                 '-prepended': this.$slots.prepend,

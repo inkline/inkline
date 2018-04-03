@@ -9,12 +9,19 @@
 --input-padding-md := --spacers['1/2'] --spacers['1']
 --input-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
 --input-padding := {
-    'sm': --input-padding-sm,
-    'md': --input-padding-md,
+    'sm': --input-padding-sm
+    'md': --input-padding-md
     'lg': --input-padding-lg
 }
 
---input-prefix-padding := --spacers['1'] * 3 + 1rem
+--input-prefix-padding-sm := --input-padding-sm[1] + --input-padding-sm[1] * 3
+--input-prefix-padding-md := --input-padding-md[1] + --input-padding-md[1] * 3
+--input-prefix-padding-lg := --input-padding-lg[1] + --input-padding-lg[1] * 3
+--input-prefix-padding := {
+    'sm': --input-prefix-padding-sm
+    'md': --input-prefix-padding-md
+    'lg': --input-prefix-padding-lg
+}
 
 --input-color := --colors['gray-70']
 --input-color-focus := --input-color
@@ -102,13 +109,6 @@
             background-color: --input-background-disabled
             opacity: 1  // iOS fix for unreadable disabled content
 
-    &.-prefixed
-        +-form-input-selector()
-            padding-left: --input-prefix-padding
-
-    &.-suffixed
-        +-form-input-selector()
-            padding-right: --input-prefix-padding
 
     .form-input-prefix
     .form-input-suffix
@@ -178,8 +178,6 @@
 
 
 .form-input-label
-    font-size: --font-size['md']
-
     &.-left
     &.-right
         display: flex
@@ -187,13 +185,12 @@
         align-self: center
         margin-bottom: 0
 
-    &.-left
-        padding-right: --input-padding['md'][0] * 2
-
     &.-right
-        padding-left: --input-padding['md'][0] * 2
         order: 1
 
+//
+// Form input and input group sizes
+//
 for size in (sm md lg)
     .form-input-label.-{size}
     .form-input-group.-{size} > .form-input-label
@@ -211,7 +208,22 @@ for size in (sm md lg)
             padding: --input-padding[size]
             font-size: --font-size[size]
 
+        &.-prefixed
+            +-form-input-selector()
+                padding-left: --input-prefix-padding[size]
+
+        &.-suffixed
+            +-form-input-selector()
+                padding-right: --input-prefix-padding[size]
+
         .form-input-prepend
         .form-input-append
             padding: --input-padding[size]
             font-size: --font-size[size]
+
+
+.form-input-label
+    @extend .form-input-label.-md
+
+.form-input
+    @extend .form-input.-md

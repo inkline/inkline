@@ -8,7 +8,7 @@ export default {
     },
     created () {
         if (this.classesProvider) {
-            this.classesProvider.push(() => ({
+            this.classesProvider['child'].push(() => ({
                 '-custom': this.custom
             }));
         }

@@ -8,7 +8,7 @@ import GroupableFormItem from '../../mixins/GroupableFormItem';
 export default {
     name: 'Checkbox',
     props: {
-        value: [Boolean, String],
+        value: [String, Boolean],
         indeterminate: Boolean /* @TODO Implement indeterminate checkboxes */
     },
     mixins: [

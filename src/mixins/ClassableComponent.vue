@@ -2,7 +2,10 @@
 export default {
     data () {
         return {
-            classesProvider: []
+            classesProvider: {
+                root: [],
+                child: []
+            }
         };
     },
     computed: {
@@ -10,7 +13,13 @@ export default {
          * Compute dynamically provided classes from mixins
          */
         classes () {
-            return this.classesProvider.map((classRules) => classRules());
+            const classRules = {};
+
+            Object.keys(this.classesProvider).forEach((key) => {
+                classRules[key] = this.classesProvider[key].map((classRules) => classRules());
+            });
+
+            return classRules;
         }
     }
 };
