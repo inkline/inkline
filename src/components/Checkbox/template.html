@@ -1,8 +1,8 @@
-<div class="form-checkbox" :class="classes['root']">
+<div class="form-check" :class="classes['*']">
     <input
-        type="checkbox"
         v-model="model"
         ref="input"
+        type="checkbox"
         :value="currentValue"
         :disabled="isDisabled">
     <label class="form-input-label" @click="$refs.input.click()" :class="classes['label']">

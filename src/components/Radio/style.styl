@@ -1,6 +1,17 @@
 @import '../../resources/css/config'
+@import '../../resources/css/mixins'
 
-.radio
+--form-check-color := --colors['black']
+--form-check-checked-color := --colors['white']
+--form-check-background-color := --colors['gray-30']
+--form-check-checked-background-color := --colors['info']
+--form-check-checked-background-gradient := --gradients['info']
+--form-check-size := 1rem
+--form-check-box-shadow := inset 0 .25rem .25rem rgba(--colors['black'], .1)
+--form-check-checked-box-shadow := none
+--form-check-gutter:= --form-check-size + 0.5rem
+
+.form-check
     position: relative
     cursor: pointer
     display: inline-block
@@ -8,9 +19,63 @@
     outline: none
     font-size: --font-size['md']
 
-    + .radio
+    + .form-check
         margin-left: --spacer
 
     &.-disabled
         color: --text-muted
         cursor: default
+
+    &.-custom
+        min-height: 1rem * --line-height
+        padding-left: --form-check-gutter
+
+        input
+            position: absolute
+            z-index: -1 // Put the input behind the label so it doesn't overlay text
+            opacity: 0
+
+            &:checked ~ .form-input-label::before
+                color: --form-check-checked-color
+                box-shadow: --form-check-checked-box-shadow
+                background-color: --form-check-checked-background-color
+                background-image: -linear-gradient(--form-check-checked-background-gradient)
+
+        //&:focus ~ .form-input-label::before
+        //    // the mixin is not used here to make sure there is feedback
+        //    box-shadow: $custom-control-indicator-focus-box-shadow;
+
+        //&:active ~ .form-input-label::before
+        //    color: $custom-control-indicator-active-color;
+        //    background-color: $custom-control-indicator-active-bg;
+        //    @include box-shadow($custom-control-indicator-active-box-shadow);
+
+        //&:disabled
+        //    ~ .form-input-label
+        //        color: $form-input-label-disabled-color;
+        //
+        //        &::before
+        //            background-color: $custom-control-indicator-disabled-bg;
+
+        .form-input-label
+            margin-bottom: 0
+
+            &::before
+            &::after
+                position: absolute
+                top: ((--line-height - --form-check-size) / 2)
+                left: 0
+                display: block
+                width: --form-check-size
+                height: --form-check-size
+                pointer-events: none
+                content: ""
+
+            &::before
+                user-select: none
+                background-color: --form-check-background
+                box-shadow: --form-check-box-shadow
+
+            &::after
+                background-repeat: no-repeat
+                background-position: center center
