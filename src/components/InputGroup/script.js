@@ -4,6 +4,9 @@ import InputableFormItem from '../../mixins/InputableFormItem';
 
 export default {
     name: 'InputGroup',
+    props: {
+        value: {}
+    },
     mixins: [
         ClassableComponent,
         DisableableFormItem,
