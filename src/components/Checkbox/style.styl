@@ -3,14 +3,15 @@
 @import '_variables'
 
 
-.form-check.-custom.-radio
+.form-check.-custom.-checkbox
     .form-input-label
         &::after
         &::before
             if --border-radius-enabled
-                border-radius: --form-check-radio-border-radius
+                border-radius: --form-check-checkbox-border-radius
 
     input
         &:checked ~ .form-input-label::after
-            background-image: url(--form-check-radio-icon)
+            background-image: url(--form-check-checkbox-icon)
+
 

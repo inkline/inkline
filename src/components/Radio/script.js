@@ -1,21 +1,12 @@
-import BindableGroupedFormItem from '../../mixins/BindableGroupedFormItem';
-import ClassableComponent from '../../mixins/ClassableComponent';
-import CustomizableFormItem from '../../mixins/CustomizableFormItem';
-import DisableableFormItem from '../../mixins/DisableableFormItem';
-import InjectableFormItem from '../../mixins/InjectableFormItem';
-import GroupableFormItem from '../../mixins/GroupableFormItem';
+import CheckableFormItem from '../../mixins/CheckableFormItem';
+
 
 export default {
     name: 'Radio',
+    mixins: [
+        CheckableFormItem
+    ],
     props: {
         value: String
-    },
-    mixins: [
-        BindableGroupedFormItem,
-        ClassableComponent,
-        CustomizableFormItem,
-        DisableableFormItem,
-        InjectableFormItem,
-        GroupableFormItem
-    ]
+    }
 };

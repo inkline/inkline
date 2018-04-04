@@ -1,0 +1,133 @@
+<style lang="stylus">
+@import '../resources/css/config'
+@import '../resources/css/mixins'
+
+--form-check-disabled-color := --text-muted
+
+--form-check-indicator-color := --colors['black']
+--form-check-indicator-checked-color := --colors['white']
+--form-check-indicator-active-color := --colors['white']
+--form-check-indicator-disabled-color := --colors['gray-30']
+
+--form-check-indicator-background-color := --colors['gray-10']
+--form-check-indicator-background-gradient := --gradients['gray-10']
+--form-check-indicator-checked-background-color := --colors['info']
+--form-check-indicator-checked-background-gradient := --gradients['info']
+--form-check-indicator-active-background-color := --colors['info']
+--form-check-indicator-active-background-gradient := --gradients['info']
+--form-check-indicator-disabled-background-color := --colors['gray-40']
+--form-check-indicator-disabled-background-gradient := --gradients['gray-40']
+--form-check-indicator-disabled-checked-background-color := --colors['gray-60']
+--form-check-indicator-disabled-checked-background-gradient := --gradients['gray-60']
+--form-check-indicator-background-size := 0.5rem
+
+--form-check-indicator-size := 1rem
+--form-check-indicator-gutter := --spacers['1/2']
+--form-check-indicator-margin-normalize := (--form-check-indicator-size - --line-height) / 4
+
+--form-check-indicator-box-shadow := 0 0 0 1px rgba(--colors['black'], 0.2), inset 0 .25rem .25rem rgba(--colors['black'], 0.1)
+--form-check-indicator-focused-box-shadow := 0 0 0 1px --body-background, 0 0 0.2rem 0.2rem rgba(--colors['blue'], 0.33)
+--form-check-indicator-checked-box-shadow := none
+--form-check-indicator-active-box-shadow := none
+
+.form-check
+    position: relative
+    cursor: pointer
+    display: inline-block
+    white-space: nowrap
+    outline: none
+    font-size: --font-size['md']
+
+    + .form-check
+        margin-left: --spacer
+
+    &.-disabled
+        color: --form-check-disabled-color
+        cursor: default
+
+    &.-custom
+        min-height: 1rem * --line-height
+
+        input
+            position: absolute
+            z-index: -1 // Put the input behind the label so it doesn't overlay text
+            opacity: 0
+
+            &:checked ~ .form-input-label::before
+                color: --form-check-indicator-checked-color
+                background-color: --form-check-indicator-checked-background-color
+                background-image: -linear-gradient(--form-check-indicator-checked-background-gradient)
+                box-shadow: --form-check-indicator-checked-box-shadow
+
+            &:focus ~ .form-input-label::before
+                box-shadow: --form-check-indicator-focused-box-shadow
+
+            &:active ~ .form-input-label::before
+                color: --form-check-indicator-active-color
+                background-color: --form-check-indicator-active-background-color
+                background-image: -linear-gradient(--form-check-indicator-active-background-gradient)
+                box-shadow: --form-check-indicator-active-box-shadow
+
+            &:disabled ~ .form-input-label
+                color: --form-check-disabled-color
+
+                &::before
+                    color: --form-check-indicator-disabled-color
+                    background-color: --form-check-indicator-disabled-background-color
+                    background-image: -linear-gradient(--form-check-indicator-disabled-background-gradient)
+
+            &:disabled:checked ~ .form-input-label::before
+                background-color: --form-check-indicator-disabled-checked-background-color
+                background-image: -linear-gradient(--form-check-indicator-disabled-checked-background-gradient)
+
+
+.form-input-label
+            margin-bottom: 0
+
+            &::before
+            &::after
+                cursor: pointer
+                position: relative
+                display: inline-block
+                width: --form-check-indicator-size
+                height: --form-check-indicator-size
+                pointer-events: none
+                content: ""
+                margin-bottom: --form-check-indicator-margin-normalize
+
+            &::before
+                cursor: pointer
+                user-select: none
+                background-color: --form-check-indicator-background-color
+                background-image: --form-check-indicator-background-gradient
+                box-shadow: --form-check-indicator-box-shadow
+                margin-right: --form-check-indicator-gutter
+
+            &::after
+                top: ((--line-height - --form-check-indicator-size) / 2)
+                left: 0
+                position: absolute
+                background-repeat: no-repeat
+                background-position: center center
+                background-size: --form-check-indicator-background-size
+                transition: background 0.3s ease
+</style>
+<script>
+import BindableGroupedFormItem from './BindableGroupedFormItem';
+import ClassableComponent from './ClassableComponent';
+import CustomizableFormItem from './CustomizableFormItem';
+import DisableableFormItem from './DisableableFormItem';
+import InjectableFormItem from './InjectableFormItem';
+import GroupableFormItem from './GroupableFormItem';
+
+export default {
+    mixins: [
+        BindableGroupedFormItem,
+        ClassableComponent,
+        CustomizableFormItem,
+        DisableableFormItem,
+        InjectableFormItem,
+        GroupableFormItem
+    ]
+};
+</script>

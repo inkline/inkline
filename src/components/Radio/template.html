@@ -1,10 +1,11 @@
-<div class="form-check" :class="classes['*']">
+<div class="form-check -radio" :class="classes['*']">
     <input
         v-model="model"
         ref="input"
         type="radio"
         :value="currentValue"
         :disabled="isDisabled">
+
     <label class="form-input-label" @click="$refs.input.click()" :class="classes['label']">
         <slot></slot>
     </label>

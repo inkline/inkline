@@ -1,8 +1,10 @@
-import Radio from '../Radio';
+import CheckableFormItem from '../../mixins/CheckableFormItem';
 
 export default {
     name: 'Checkbox',
-    extends: Radio,
+    mixins: [
+        CheckableFormItem
+    ],
     props: {
         value: [Boolean, String],
         indeterminate: Boolean /* @TODO Implement indeterminate checkboxes */
