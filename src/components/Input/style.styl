@@ -1,23 +1,181 @@
 @import '../../resources/css/config'
+@import '../../resources/css/mixins'
+@import '_variables'
+@import '_mixins'
 
-.input
-    -webkit-appearance: none;
-    background-color: #fff;
-    background-image: none;
-    border-radius: 4px;
-    border: 1px solid #dcdfe6;
-    box-sizing: border-box;
-    color: #606266;
-    display: inline-block;
-    font-size: inherit;
-    height: 40px;
-    line-height: 40px;
-    outline: none;
-    padding: 0 15px;
-    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-    width: 100%;
 
-    &.-disabled
+.form-input
+    position: relative
+    width: 100%
+    display: flex
+    flex-direction: row
+
+    +-form-input-selector()
+        position: relative
+        display: flex
+        flex: 1 0 auto
+        width: 1%
+        padding: --input-padding-md
+        line-height: --input-line-height
+        color: --input-color
+        background-color: --input-background
+        background-clip: padding-box
+        border: --input-border-width solid --input-border-color
+
+        if --border-radius-enabled
+            border-radius: --input-border-radius
+
+        box-shadow: --input-box-shadow
+        if --transition['input']
+            transition: --input-transition
+
+        // Remove style for the caret on `<select>`s in IE10+.
+        &::-ms-expand
+            background-color: transparent
+            border: 0
+
+        // Customize the `:focus` state to imitate native WebKit styles.
+        &:focus
+            color: --input-color-focus
+            background-color: --input-background-focus
+            border-color: --input-border-color-focus
+            outline: 0
+
+            // Avoid using mixin so we can pass custom focus shadow properly
+            if --box-shadow-enabled
+                box-shadow: --input-box-shadow, --input-box-shadow-focus
+
+        // Placeholder
+        // Override Firefox's unusual default opacity see https://github.com/twbs/bootstrap/pull/11526.
+        &::placeholder
+            color: --input-placeholder-color
+            opacity: 1
+
+        // Disabled and read-only inputs
+        //
+        // HTML5 says that controls under a fieldset > legend:first-child won't be
+        // disabled if the fieldset is disabled. Due to implementation difficulty, we
+        // don't honor that edge case we style them as disabled anyway.
+        &:disabled,
+        &[readonly]
+            background-color: --input-background-disabled
+            opacity: 1  // iOS fix for unreadable disabled content
+
+
+    .form-input-prefix
+    .form-input-suffix
+        z-index: 1
+        top: 50%
+        position: absolute
+        transform: translateY(-50%)
+        font-style: normal
+
+    .form-input-prefix
+        left: --spacer
+        padding-right: --spacer
+        border-right: 1px solid --input-border-color
+
+    .form-input-suffix
+        right: --spacer
+        padding-left: --spacer
+        border-left: 1px solid --input-border-color
+
+    .form-input-prepend
+    .form-input-append
+        display: flex
+        padding: --input-padding-md
+        line-height: --input-line-height
+        background-color: --input-append-prepend-background-color
+        background-image: -linear-gradient(--input-append-prepend-background-gradient)
+        border-radius: --input-border-radius
+
+    &.-appended
+        +-form-input-selector()
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0
+
+    &.-prepended
+        +-form-input-selector()
+            border-top-left-radius: 0
+            border-bottom-left-radius: 0
+
+    .form-input-prepend
+    .form-input-append + .form-input-append
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+
+    .form-input-append
+    .form-input-prepend + .form-input-prepend
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+    .form-input-icon
+        transition: background-color --transition-duration --transition-easing
         color: --text-muted
-        cursor: default
 
+        &.-circle
+            display: inline-block
+            text-align: center
+            font-weight: bold
+            cursor: pointer
+            width: --input-icon-circle-size
+            height: --input-icon-circle-size
+            line-height: 1
+            background-color: --input-icon-circle-background
+            color: --input-background
+            border-radius: 100%
+
+            &:hover
+                background-color: --input-icon-circle-background-hover
+
+
+.form-input-label
+    &.-left
+    &.-right
+        display: flex
+        flex: 1 0 auto
+        align-self: center
+        margin-bottom: 0
+
+    &.-right
+        order: 1
+
+//
+// Form input and input group sizes
+//
+for size in (sm md lg)
+    .form-input-label.-{size}
+    .form-input-group.-{size} > .form-input-label
+        font-size: --font-size[size]
+
+        &.-left
+            padding-right: --input-padding[size][0] * 2
+
+        &.-right
+            padding-left: --input-padding[size][0] * 2
+
+    .form-input.-{size}
+    .form-input-group.-{size} > .form-input
+        +-form-input-selector()
+            padding: --input-padding[size]
+            font-size: --font-size[size]
+
+        &.-prefixed
+            +-form-input-selector()
+                padding-left: --input-prefix-padding[size]
+
+        &.-suffixed
+            +-form-input-selector()
+                padding-right: --input-prefix-padding[size]
+
+        .form-input-prepend
+        .form-input-append
+            padding: --input-padding[size]
+            font-size: --font-size[size]
+
+
+.form-input-label
+    @extend .form-input-label.-md
+
+.form-input
+    @extend .form-input.-md

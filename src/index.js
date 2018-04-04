@@ -10,11 +10,12 @@ import Row from './components/Row';
 import Checkbox from './components/Checkbox';
 import CheckboxButton from './components/CheckboxButton';
 import CheckboxGroup from './components/CheckboxGroup';
-import FormGroup from './components/FormGroup';
+import InputGroup from './components/InputGroup';
 import Input from './components/Input';
 import Radio from './components/Radio';
 import RadioButton from './components/RadioButton';
 import RadioGroup from './components/RadioGroup';
+import Textarea from './components/Textarea';
 
 const components = {
     Column,
@@ -28,11 +29,12 @@ const components = {
     Checkbox,
     CheckboxButton,
     CheckboxGroup,
-    FormGroup,
+    InputGroup,
     Input,
     Radio,
     RadioButton,
-    RadioGroup
+    RadioGroup,
+    Textarea
 };
 
 class Inkline {
@@ -50,22 +52,23 @@ class Inkline {
 }
 
 export {
-    Column,
-    Container,
-    Layout,
-    LayoutAside,
-    LayoutContent,
-    LayoutFooter,
-    LayoutHeader,
-    Row,
-    Checkbox,
-    CheckboxButton,
-    CheckboxGroup,
-    FormGroup,
-    Input,
-    Radio,
-    RadioButton,
-    RadioGroup,
+    Column as IColumn,
+    Container as IContainer,
+    Layout as ILayout,
+    LayoutAside as ILayoutAside,
+    LayoutContent as ILayoutContent,
+    LayoutFooter as ILayoutFooter,
+    LayoutHeader as ILayoutHeader,
+    Row as IRow,
+    Checkbox as ICheckbox,
+    CheckboxButton as ICheckboxButton,
+    CheckboxGroup as ICheckboxGroup,
+    Input as IInput,
+    InputGroup as IInputGroup,
+    Radio as IRadio,
+    RadioButton as IRadioButton,
+    RadioGroup as IRadioGroup,
+    Textarea as ITextarea,
     Inkline
 };
 

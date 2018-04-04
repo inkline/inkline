@@ -1,19 +1,24 @@
 <script>
-/**
- * Find a form group parent for the given form item
- */
-const model = {
-    get: function () {
-        return this.value;
-    },
-    set: function (value) {
-        return this.$emit('input', value);
-    }
-};
-
 export default {
     computed: {
-        model
+        /**
+         * Get the value of the individual form item
+         */
+        currentValue () {
+            return this.value;
+        },
+
+        /**
+         * Bind the value of an individual form item
+         */
+        model: {
+            get () {
+                return this.value;
+            },
+            set (value) {
+                return this.onInput(value);
+            }
+        }
     }
 };
 </script>

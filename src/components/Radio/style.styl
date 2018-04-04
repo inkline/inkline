@@ -1,16 +1,16 @@
 @import '../../resources/css/config'
+@import '../../resources/css/mixins'
+@import '_variables'
 
-.radio
-    position: relative
-    cursor: pointer
-    display: inline-block
-    white-space: nowrap
-    outline: none
-    font-size: --font-size
 
-    + .radio
-        margin-left: --spacer
+.form-check.-custom.-radio
+    .form-input-label
+        &::after
+        &::before
+            if --border-radius-enabled
+                border-radius: --form-check-radio-border-radius
 
-    &.-disabled
-        color: --text-muted
-        cursor: default
+    input
+        &:checked ~ .form-input-label::after
+            background-image: url(--form-check-radio-icon)
+

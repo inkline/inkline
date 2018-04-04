@@ -4,7 +4,7 @@
 // @TODO
 // Use actual button markup for checkbox buttons
 //
-.checkbox.button
+.form-checkbox.button
     position: relative
     display: inline-block
     outline: none
@@ -28,7 +28,7 @@
     &:last-child > .inner
         border-radius: 0 4px 4px 0
 
-    + .checkbox
+    + .form-checkbox
         margin: 0
 
     &.-disabled > .inner
@@ -47,6 +47,6 @@
         box-sizing: border-box
         cursor: pointer
         transition: all .3s cubic-bezier(.645,.045,.355,1)
-        padding: --spacers['3-4'] --spacers['2']
+        padding: --spacers['3/4'] --spacers['2']
         border-radius: 0
-        font-size: --font-size
+        font-size: --font-size['md']
