@@ -1,4 +1,4 @@
-import CheckableFormItem from '../../mixins/CheckableFormItem';
+import CheckableFormItem from '../../mixins/forms/CheckableFormItem';
 
 export default {
     name: 'Checkbox',

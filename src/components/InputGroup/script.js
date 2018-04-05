@@ -1,6 +1,8 @@
-import ClassableComponent from '../../mixins/ClassableComponent';
-import DisableableFormItem from '../../mixins/DisableableFormItem';
-import InputableFormItem from '../../mixins/InputableFormItem';
+import DisableableFormItem from '../../mixins/forms/DisableableFormitem';
+import InputableFormItem from '../../mixins/forms/InputableFormItem';
+
+import ClassableComponent from '../../mixins/components/ClassableComponent';
+import SizeableComponent from '../../mixins/components/SizeableComponent';
 
 export default {
     name: 'InputGroup',
@@ -8,8 +10,10 @@ export default {
         value: {}
     },
     mixins: [
-        ClassableComponent,
         DisableableFormItem,
-        InputableFormItem
+        InputableFormItem,
+
+        ClassableComponent,
+        SizeableComponent
     ]
 };
