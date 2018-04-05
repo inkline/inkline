@@ -1,16 +1,19 @@
-import BindableIndividualFormItem from '../../mixins/BindableIndividualFormItem';
-import ChangeableComponent from '../../mixins/ChangeableComponent';
-import ClassableComponent from '../../mixins/ClassableComponent';
-import ClearableFormItem from '../../mixins/ClearableFormItem';
-import DisableableFormItem from '../../mixins/DisableableFormItem';
-import FocusableComponent from '../../mixins/FocusableComponent';
-import FormItem from '../../mixins/InjectableFormItem';
-import GroupableFormItem from '../../mixins/GroupableFormItem';
-import HoverableComponent from '../../mixins/HoverableComponent';
 import InputGroup from '../InputGroup';
-import InputableFormItem from '../../mixins/InputableFormItem';
-import LabelableFormItem from '../../mixins/LabelableFormItem';
-import SizeableComponent from '../../mixins/SizeableComponent';
+
+import BindableIndividualFormItem from '../../mixins/forms/BindableIndividualFormItem';
+import ClearableFormItem from '../../mixins/forms/ClearableFormItem';
+import DisableableFormItem from '../../mixins/forms/DisableableFormitem';
+import FocusableFormItem from '../../mixins/forms/FocusableFormItem';
+import GroupableFormItem from '../../mixins/forms/GroupableFormitem';
+import InjectableFormItem from '../../mixins/forms/InjectableFormItem';
+import InputableFormItem from '../../mixins/forms/InputableFormItem';
+import LabelableFormItem from '../../mixins/forms/LabelableFormItem';
+
+import ChangeableComponent from '../../mixins/components/ChangeableComponent';
+import ClassableComponent from '../../mixins/components/ClassableComponent';
+import FocusableComponent from '../../mixins/components/FocusableComponent';
+import HoverableComponent from '../../mixins/components/HoverableComponent';
+import SizeableComponent from '../../mixins/components/SizeableComponent';
 
 export default {
     name: 'Input',
@@ -23,16 +26,18 @@ export default {
     },
     mixins: [
         BindableIndividualFormItem,
-        ChangeableComponent,
-        ClassableComponent,
         ClearableFormItem,
         DisableableFormItem,
-        FocusableComponent,
-        FormItem,
+        FocusableFormItem,
         GroupableFormItem,
-        HoverableComponent,
+        InjectableFormItem,
         InputableFormItem,
         LabelableFormItem,
+
+        ChangeableComponent,
+        ClassableComponent,
+        FocusableComponent,
+        HoverableComponent,
         SizeableComponent
     ],
     created () {
