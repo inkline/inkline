@@ -3,7 +3,7 @@ export default {
     props: {
         size: {
             type: String,
-            default: 'md'
+            default: ''
         }
     },
     computed: {
@@ -12,7 +12,7 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
+        if (this.classesProvider && this.size != '') {
             this.classesProvider['root'].push(() => `-${this.size}`);
         }
     }

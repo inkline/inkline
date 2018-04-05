@@ -1,6 +1,6 @@
 <style lang="stylus">
-@import '../resources/css/config'
-@import '../resources/css/mixins'
+@import '../../resources/css/config'
+@import '../../resources/css/mixins'
 
 --form-check-disabled-color := --text-muted
 
@@ -36,7 +36,6 @@
     display: inline-block
     white-space: nowrap
     outline: none
-    font-size: --font-size['md']
 
     + .form-check
         margin-left: --spacer
@@ -80,8 +79,7 @@
                 background-color: --form-check-indicator-disabled-checked-background-color
                 background-image: -linear-gradient(--form-check-indicator-disabled-checked-background-gradient)
 
-
-.form-input-label
+        .form-input-label
             margin-bottom: 0
 
             &::before
@@ -89,8 +87,6 @@
                 cursor: pointer
                 position: relative
                 display: inline-block
-                width: --form-check-indicator-size
-                height: --form-check-indicator-size
                 pointer-events: none
                 content: ""
                 margin-bottom: --form-check-indicator-margin-normalize
@@ -109,25 +105,50 @@
                 position: absolute
                 background-repeat: no-repeat
                 background-position: center center
-                background-size: --form-check-indicator-background-size
                 transition: background 0.3s ease
+
+for size in (sm md lg)
+    .form-input-group.-{size} .form-check
+    .form-check.-{size}
+        font-size: --font-size[size]
+
+        &.-custom
+            .form-input-label
+                &::before
+                &::after
+                    width: --form-check-indicator-size * --size-percentages[size]
+                    height: --form-check-indicator-size * --size-percentages[size]
+
+                &::after
+                    background-size: --form-check-indicator-background-size * --size-percentages[size]
+
+.form-check
+    @extend .form-check.-md
 </style>
 <script>
 import BindableGroupedFormItem from './BindableGroupedFormItem';
-import ClassableComponent from './ClassableComponent';
+import ClickableFormItem from './ClickableFormItem';
 import CustomizableFormItem from './CustomizableFormItem';
-import DisableableFormItem from './DisableableFormItem';
+import DisableableFormItem from './DisableableFormitem';
 import InjectableFormItem from './InjectableFormItem';
-import GroupableFormItem from './GroupableFormItem';
+import GroupableFormItem from './GroupableFormitem';
+import TabableFormItem from './TabableFormItem';
+
+import ClassableComponent from '../components/ClassableComponent';
+import SizeableComponent from '../components/SizeableComponent';
 
 export default {
     mixins: [
         BindableGroupedFormItem,
-        ClassableComponent,
+        ClickableFormItem,
         CustomizableFormItem,
         DisableableFormItem,
         InjectableFormItem,
-        GroupableFormItem
+        GroupableFormItem,
+        TabableFormItem,
+
+        ClassableComponent,
+        SizeableComponent
     ]
 };
 </script>
