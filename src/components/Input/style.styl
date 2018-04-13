@@ -6,8 +6,8 @@
 
 .form-input
     position: relative
-    width: 100%
     display: flex
+    flex: 1 0 auto
     flex-direction: row
 
     +-form-input-selector()
@@ -80,35 +80,6 @@
         padding-left: --spacer
         border-left: 1px solid --input-border-color
 
-    .form-input-prepend
-    .form-input-append
-        display: flex
-        padding: --input-padding-md
-        line-height: --input-line-height
-        background-color: --input-append-prepend-background-color
-        background-image: -linear-gradient(--input-append-prepend-background-gradient)
-        border-radius: --input-border-radius
-
-    &.-appended
-        +-form-input-selector()
-            border-top-right-radius: 0
-            border-bottom-right-radius: 0
-
-    &.-prepended
-        +-form-input-selector()
-            border-top-left-radius: 0
-            border-bottom-left-radius: 0
-
-    .form-input-prepend
-    .form-input-append + .form-input-append
-        border-top-right-radius: 0
-        border-bottom-right-radius: 0
-
-    .form-input-append
-    .form-input-prepend + .form-input-prepend
-        border-top-left-radius: 0
-        border-bottom-left-radius: 0
-
     .form-input-icon
         transition: background-color --transition-duration --transition-easing
         color: --text-muted
@@ -128,12 +99,44 @@
             &:hover
                 background-color: --input-icon-circle-background-hover
 
+.form-input-group
+    &.-prepended .form-input
+        +-form-input-selector()
+            display: block
+            border-top-left-radius: 0
+            border-bottom-left-radius: 0
+
+    &.-appended .form-input
+        +-form-input-selector()
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0
+
+    > .form-input-prepend
+    > .form-input-append + .form-input-append
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+
+    > .form-input-append
+    > .form-input-prepend + .form-input-prepend
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+.form-input-prepend
+.form-input-append
+    display: flex
+    padding: 0
+    line-height: --input-line-height
+    background-color: --input-append-prepend-background-color
+    background-image: -linear-gradient(--input-append-prepend-background-gradient)
+    border-radius: --input-border-radius
 
 .form-input-label
+    flex-basis: 100%
+
     &.-left
     &.-right
         display: flex
-        flex: 1 0 auto
+        flex: 0 0 auto
         align-self: center
         margin-bottom: 0
 
@@ -168,11 +171,17 @@ for size in (sm md lg)
             +-form-input-selector()
                 padding-right: --input-prefix-padding[size]
 
-        .form-input-prepend
-        .form-input-append
-            padding: --input-padding[size]
-            font-size: --font-size[size]
+    .form-input-group.-{size}
+        > .form-input-prepend
+        > .form-input-append
+             font-size: --font-size[size]
 
+             > .form-input-prepend
+             > .form-input-append
+                padding: --input-padding[size]
+
+.form-input-group
+    @extend .form-input-group.-md
 
 .form-input-label
     @extend .form-input-label.-md

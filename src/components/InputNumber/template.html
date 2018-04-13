@@ -3,8 +3,9 @@
         <slot name="label"></slot>
     </label>
 
-    <div class="form-input-prepend" v-if="$slots.prepend">
+    <div class="form-input-prepend">
         <slot name="prepend"></slot>
+        <button class="button form-input-prepend">-</button>
     </div>
 
     <div class="form-input"
@@ -16,8 +17,7 @@
             <slot name="prefix"></slot>
         </span>
 
-        <span class="form-input-suffix" v-if="$slots.suffix || clearable">
-            <i class="form-input-icon -circle" aria-label="Clear" v-show="isClearable" @click="clear">&times;</i>
+        <span class="form-input-suffix" v-if="$slots.suffix">
             <slot name="suffix"></slot>
         </span>
 
@@ -32,7 +32,8 @@
             @change="onChange">
     </div>
 
-    <div class="form-input-append" v-if="$slots.append">
+    <div class="form-input-append">
+        <button class="button form-input-append">+</button>
         <slot name="append"></slot>
     </div>
 </div>
