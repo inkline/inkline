@@ -2,12 +2,14 @@ import InputGroup from '../InputGroup';
 
 import BindableIndividualFormItem from '../../mixins/forms/BindableIndividualFormItem';
 import ClearableFormItem from '../../mixins/forms/ClearableFormItem';
+import ClickableFormItem from '../../mixins/forms/ClickableFormItem';
 import DisableableFormItem from '../../mixins/forms/DisableableFormitem';
 import FocusableFormItem from '../../mixins/forms/FocusableFormItem';
 import GroupableFormItem from '../../mixins/forms/GroupableFormitem';
 import InjectableFormItem from '../../mixins/forms/InjectableFormItem';
 import InputableFormItem from '../../mixins/forms/InputableFormItem';
 import LabelableFormItem from '../../mixins/forms/LabelableFormItem';
+import TabableFormItem from '../../mixins/forms/TabableFormItem';
 
 import ChangeableComponent from '../../mixins/components/ChangeableComponent';
 import ClassableComponent from '../../mixins/components/ClassableComponent';
@@ -27,12 +29,14 @@ export default {
     mixins: [
         BindableIndividualFormItem,
         ClearableFormItem,
+        ClickableFormItem,
         DisableableFormItem,
         FocusableFormItem,
         GroupableFormItem,
         InjectableFormItem,
         InputableFormItem,
         LabelableFormItem,
+        TabableFormItem,
 
         ChangeableComponent,
         ClassableComponent,

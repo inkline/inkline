@@ -21,16 +21,28 @@
             <slot name="prepend"></slot>
         </div>
 
-        <component
+        <input
+            v-if="nodeName == 'input'"
             v-bind="$attrs"
             v-model="model"
             ref="input"
-            :is="nodeName"
             :disabled="isDisabled"
+            :aria-disabled="isDisabled"
             @focus="onFocus"
             @blur="onBlur"
             @change="onChange">
-        </component>
+
+        <textarea
+            v-if="nodeName == 'textarea'"
+            v-bind="$attrs"
+            v-model="model"
+            ref="input"
+            :disabled="isDisabled"
+            :aria-disabled="isDisabled"
+            @focus="onFocus"
+            @blur="onBlur"
+            @change="onChange">
+        </textarea>
 
         <div class="form-input-append" v-if="$slots.append">
             <slot name="append"></slot>
