@@ -1,5 +1,11 @@
 <script>
 export default {
+    props: {
+        value: {
+            type: String,
+            default: ''
+        }
+    },
     computed: {
         /**
          * Get the value of the individual form item
@@ -16,7 +22,7 @@ export default {
                 return this.value;
             },
             set (value) {
-                return this.onInput(value);
+                return this.$emit('input', value);
             }
         }
     }

@@ -131,6 +131,7 @@ import ClickableFormItem from './ClickableFormItem';
 import CustomizableFormItem from './CustomizableFormItem';
 import DisableableFormItem from './DisableableFormitem';
 import InjectableFormItem from './InjectableFormItem';
+import InputableFormItem from './InputableFormItem';
 import GroupableFormItem from './GroupableFormitem';
 import TabableFormItem from './TabableFormItem';
 
@@ -144,6 +145,7 @@ export default {
         CustomizableFormItem,
         DisableableFormItem,
         InjectableFormItem,
+        InputableFormItem,
         GroupableFormItem,
         TabableFormItem,
 

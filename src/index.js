@@ -10,8 +10,9 @@ import Row from './components/Row';
 import Checkbox from './components/Checkbox';
 import CheckboxButton from './components/CheckboxButton';
 import CheckboxGroup from './components/CheckboxGroup';
-import InputGroup from './components/InputGroup';
 import Input from './components/Input';
+import InputGroup from './components/InputGroup';
+import InputNumber from './components/InputNumber';
 import Radio from './components/Radio';
 import RadioButton from './components/RadioButton';
 import RadioGroup from './components/RadioGroup';
@@ -29,8 +30,9 @@ const components = {
     Checkbox,
     CheckboxButton,
     CheckboxGroup,
-    InputGroup,
     Input,
+    InputGroup,
+    InputNumber,
     Radio,
     RadioButton,
     RadioGroup,
@@ -65,6 +67,7 @@ export {
     CheckboxGroup as ICheckboxGroup,
     Input as IInput,
     InputGroup as IInputGroup,
+    InputNumber as IInputNumber,
     Radio as IRadio,
     RadioButton as IRadioButton,
     RadioGroup as IRadioGroup,

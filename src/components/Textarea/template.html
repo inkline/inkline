@@ -21,7 +21,7 @@
             <slot name="suffix"></slot>
         </span>
 
-        <input
+        <textarea
             v-bind="$attrs"
             v-model="model"
             ref="input"
@@ -30,6 +30,7 @@
             @focus="onFocus"
             @blur="onBlur"
             @change="onChange">
+        </textarea>
     </div>
 
     <div class="form-input-append" v-if="$slots.append">

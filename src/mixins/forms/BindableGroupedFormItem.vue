@@ -1,5 +1,11 @@
 <script>
 export default {
+    props: {
+        value: {
+            type: String,
+            default: ''
+        }
+    },
     computed: {
         /**
          * Get the value of the form item group or, if it is not grouped, get the value from the individual form item
@@ -20,7 +26,7 @@ export default {
                     return this.parentGroup.onInput(value);
                 }
 
-                return this.$emit('input', value);
+                return this.onInput(value);
             }
         }
     }
