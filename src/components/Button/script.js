@@ -1,19 +1,16 @@
-import BindableIndividualFormItem from '../../mixins/forms/BindableIndividualFormItem';
-import ClearableFormItem from '../../mixins/forms/ClearableFormItem';
 import ClickableFormItem from '../../mixins/forms/ClickableFormItem';
 import DisableableFormItem from '../../mixins/forms/DisableableFormitem';
 import FocusableFormItem from '../../mixins/forms/FocusableFormItem';
-import GroupableFormItem from '../../mixins/forms/GroupableFormitem';
 import InjectableFormItem from '../../mixins/forms/InjectableFormItem';
-import InputableFormItem from '../../mixins/forms/InputableFormItem';
-import LabelableFormItem from '../../mixins/forms/LabelableFormItem';
 import TabableFormItem from '../../mixins/forms/TabableFormItem';
 
-import ChangeableComponent from '../../mixins/components/ChangeableComponent';
 import ClassableComponent from '../../mixins/components/ClassableComponent';
+import ClickableComponent from '../../mixins/components/ClickableComponent';
 import FocusableComponent from '../../mixins/components/FocusableComponent';
 import HoverableComponent from '../../mixins/components/HoverableComponent';
+import LoadableComponent from '../../mixins/components/LoadableComponent';
 import SizeableComponent from '../../mixins/components/SizeableComponent';
+import ThemeableComponent from '../../mixins/components/ThemeableComponent';
 
 export default {
     name: 'Button',
@@ -25,31 +22,43 @@ export default {
         TabableFormItem,
 
         ClassableComponent,
+        ClickableComponent,
         FocusableComponent,
         HoverableComponent,
-        SizeableComponent
-    ]
-};
-
-
+        LoadableComponent,
+        SizeableComponent,
+        ThemeableComponent
+    ],
     props: {
-        type: {
-            type: String,
-            default: 'default'
-        },
-        size: String,
         icon: {
             type: String,
             default: ''
         },
-        nativeType: {
+        type: {
             type: String,
             default: 'button'
-        },
-        loading: Boolean,
-        disabled: Boolean,
-        plain: Boolean,
-        autofocus: Boolean,
-        round: Boolean,
-        circle: Boolean
+        }
     }
+};
+
+// props: {
+//     type: {
+//         type: String,
+//         default: 'default'
+//     },
+//     size: String,
+//     icon: {
+//         type: String,
+//         default: ''
+//     },
+//     nativeType: {
+//         type: String,
+//         default: 'button'
+//     },
+//     loading: Boolean,
+//     disabled: Boolean,
+//     plain: Boolean,
+//     autofocus: Boolean,
+//     round: Boolean,
+//     circle: Boolean
+// }

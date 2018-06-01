@@ -1,3 +1,181 @@
 @import '../../resources/css/config'
 @import '../../resources/css/mixins'
 @import '_variables'
+
+.button
+    display: inline-block
+    font-weight: --button-font-weight
+    text-align: center
+    white-space: nowrap
+    vertical-align: middle
+    user-select: none
+    border: --button-border-width solid transparent
+    line-height: --button-line-height
+
+    if --transition['button']
+        transition: background-color --transition-duration --transition-easing, background-position --transition-duration --transition-easing, background-size --transition-duration --transition-easing, border-color --transition-duration --transition-easing, color --transition-duration --transition-easing, box-shadow --transition-duration --transition-easing
+
+    &:hover
+    &:focus
+    &.-hovered
+    &.-focused
+        box-shadow: --button-box-shadow-focus
+        text-decoration: none
+        outline: 0
+
+    // Disabled state comes first so active can properly restyle
+    &.-disabled
+    &:disabled
+        opacity: --button-disabled-opacity
+        box-shadow: none
+
+    &:not(:disabled):not(.-disabled):active
+    &:not(:disabled):not(.-disabled).-active
+        //background-image: none
+
+        background-size: 200% 200%
+        background-position: 100% 100%
+        box-shadow: --button-box-shadow-active, --button-box-shadow-active-inset
+        &:focus
+            box-shadow: --button-box-shadow-active, --button-box-shadow-focus, --button-box-shadow-active-inset
+
+    // Add "hand" cursor to non-disabled .button elements
+    &:not(:disabled):not(.-disabled)
+        cursor: pointer
+
+    &.-block
+        display: block
+        width: 100%
+
+        + .button.-block
+            margin-top: --button-block-margin
+
+    for size in (sm md lg)
+        &.-{size}
+            border-radius: --button-border-radius[size]
+            font-size: --button-font-size[size]
+            padding: --button-padding[size]
+
+    for --theme-name, --theme in --themes['button']
+        &.-{--theme-name}
+            color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
+            background-color: --theme['color']
+            border-color: --theme['color']
+            background-repeat: repeat
+            background-position: 0 0
+            background-size: 100% 100%
+            if --gradient-enabled and --theme['gradient']
+                background-image: -linear-gradient(--theme['gradient'])
+
+            &:hover
+            &:focus
+            &.-hovered
+            &.-focused
+                background-size: 150% 150%
+                background-position: 100% 100%
+                background-color: darken(--theme['color'], --button-darken-percentage-hover)
+                border-color: darken(--theme['color'], --button-darken-percentage-hover)
+
+        &.-transparent
+            background-color: transparent
+
+
+.button
+    @extend .button.-md
+    @extend .button.-light
+
+
+// Future-proof disabling of clicks on `<a>` elements
+a.button.-disabled
+fieldset:disabled a.button
+    pointer-events: none
+
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"]
+    &.-block
+        width: 100%
+
+
+////
+//// Alternate buttons
+////
+//
+//@each $color, $value in $theme-colors
+//.btn-#{$color
+//    @include button-variant($value, $value)
+//
+//
+//
+//@each $color, $value in $theme-colors
+//.btn-outline-#{$color
+//    @include button-outline-variant($value)
+
+
+
+
+//
+// Link buttons
+//
+
+// Make a button look and behave like a link
+.btn-link
+    font-weight: $font-weight-normal
+    color: $link-color
+    background-color: transparent
+
+    @include hover
+    color: $link-hover-color
+    text-decoration: $link-hover-decoration
+    background-color: transparent
+    border-color: transparent
+//
+//
+//&:focus,
+//&.focus
+//    text-decoration: $link-hover-decoration
+//    border-color: transparent
+//    box-shadow: none
+//
+//
+//&:disabled,
+//&.disabled
+//    color: $btn-link-disabled-color
+//    pointer-events: none
+//
+//
+//// No need for an active state here
+//
+//
+//
+////
+//// Button Sizes
+////
+//
+//.btn-lg
+//    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg)
+//
+//
+//.btn-sm
+//    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-line-height-sm, $btn-border-radius-sm)
+//
+//
+//
+////
+//// Block button
+////
+//
+//.btn-block
+//    display: block
+//    width: 100%
+//
+//    // Vertically space out multiple block buttons
+//    + .btn-block
+//        margin-top: $btn-block-spacing-y
+//
+//
+//
+
+//

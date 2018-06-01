@@ -4,14 +4,19 @@
 
 
 .form-check.-custom.-checkbox
-    .form-input-label
-        &::after
-        &::before
-            if --border-radius-enabled
-                border-radius: --form-check-checkbox-border-radius
+    for size in (sm md lg)
+        &.-{size}
+            .form-input-label
+                &::after
+                &::before
+                    if --border-radius-enabled
+                        border-radius: --form-check-checkbox-border-radius[size]
 
     input
         &:checked ~ .form-input-label::after
             background-image: url(--form-check-checkbox-icon)
 
 
+if --border-radius-enabled
+    .form-check.-custom.-checkbox
+        @extend .form-check.-custom.-checkbox.-md

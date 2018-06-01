@@ -12,7 +12,7 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider && this.size != '') {
+        if (this.classesProvider && this.size !== '') {
             this.classesProvider['root'].push(() => `-${this.size}`);
         }
     }
