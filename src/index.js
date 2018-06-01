@@ -1,3 +1,4 @@
+import Button from './components/Button';
 import Column from './components/Column';
 import Container from './components/Container';
 import Layout from './components/Layout';
@@ -19,6 +20,7 @@ import RadioGroup from './components/RadioGroup';
 import Textarea from './components/Textarea';
 
 const components = {
+    Button,
     Column,
     Container,
     Layout,
@@ -27,6 +29,7 @@ const components = {
     LayoutFooter,
     LayoutHeader,
     Row,
+
     Checkbox,
     CheckboxButton,
     CheckboxGroup,
@@ -54,6 +57,7 @@ class Inkline {
 }
 
 export {
+    Button as IButton,
     Column as IColumn,
     Container as IContainer,
     Layout as ILayout,
@@ -62,6 +66,7 @@ export {
     LayoutFooter as ILayoutFooter,
     LayoutHeader as ILayoutHeader,
     Row as IRow,
+
     Checkbox as ICheckbox,
     CheckboxButton as ICheckboxButton,
     CheckboxGroup as ICheckboxGroup,

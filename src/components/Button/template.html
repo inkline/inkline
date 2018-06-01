@@ -1,10 +1,14 @@
 <button
-    class="el-button"
-    @click="handleClick"
-    :disabled="buttonDisabled || loading"
-    :autofocus="autofocus"
-    :type="nativeType"
-    :class="[
+    v-bind="$attrs"
+    class="button"
+    :type="type"
+    :class="classes['*']"
+    :disabled="isDisabled || loading"
+    @click="onClick"
+>
+    <!--
+        :autofocus="autofocus"
+        :class="[
       type ? 'el-button--' + type : '',
       buttonSize ? 'el-button--' + buttonSize : '',
       {
@@ -15,8 +19,8 @@
         'is-circle': circle
       }
     ]"
->
-    <i class="el-icon-loading" v-if="loading"></i>
+    -->
+    <i class="icon-loading" v-if="loading"></i>
     <i :class="icon" v-if="icon && !loading"></i>
     <span v-if="$slots.default"><slot></slot></span>
 </button>
