@@ -11,7 +11,7 @@
     user-select: none
     border: --button-border-width solid transparent
     line-height: --button-line-height
-
+    box-shadow: --button-box-shadow
     if --transition['button']
         transition: background-color --transition-duration --transition-easing, background-position --transition-duration --transition-easing, background-size --transition-duration --transition-easing, border-color --transition-duration --transition-easing, color --transition-duration --transition-easing, box-shadow --transition-duration --transition-easing
 
@@ -23,16 +23,16 @@
         text-decoration: none
         outline: 0
 
+    // Disabled state
     // Disabled state comes first so active can properly restyle
     &.-disabled
     &:disabled
         opacity: --button-disabled-opacity
         box-shadow: none
 
+    // Active state
     &:not(:disabled):not(.-disabled):active
     &:not(:disabled):not(.-disabled).-active
-        //background-image: none
-
         background-size: 200% 200%
         background-position: 100% 100%
         box-shadow: --button-box-shadow-active, --button-box-shadow-active-inset
@@ -43,12 +43,39 @@
     &:not(:disabled):not(.-disabled)
         cursor: pointer
 
+    // Block buttons
+    // Make buttons span the whole parent width
     &.-block
         display: block
         width: 100%
 
         + .button.-block
             margin-top: --button-block-margin
+
+    // Link buttons
+    // Make a button look and behave like a link
+    &.-link
+        color: --link-color
+        background-color: transparent
+        background-image: none
+        border-color: transparent
+        box-shadow: none
+
+        &:hover
+        &.-hovered
+        &:focus
+        &.-focused
+            color: --link-color-hover
+            text-decoration: --link-decoration-hover
+            background-color: transparent
+            background-image: none
+            border-color: transparent
+            box-shadow: none
+
+        &:disabled,
+        &.-disabled
+            color: --button-link-disabled-color
+            pointer-events: none
 
     for size in (sm md lg)
         &.-{size}
@@ -76,14 +103,35 @@
                 background-color: darken(--theme['color'], --button-darken-percentage-hover)
                 border-color: darken(--theme['color'], --button-darken-percentage-hover)
 
+            &.-outline
+                color: --theme['color']
+                background-color: transparent
+                background-position: 0 0
+                background-size: 300% 300%
+                background-image: -linear-gradient(transparent transparent (--theme['gradient'][0]) (--theme['gradient'][1]))
+                box-shadow: none
+
+
+                &:hover
+                &.-hovered
+                &:focus
+                &.-focused
+                    color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
+                    background-position: 100% 100%
+                    background-color: darken(--theme['color'], --button-darken-percentage-hover)
+                    border-color: darken(--theme['color'], --button-darken-percentage-hover)
+                    box-shadow: --button-box-shadow-focus
+
+                &:not(:disabled):not(.-disabled):active
+                &:not(:disabled):not(.-disabled).-active
+                    background-size: 400% 400%
+                    background-position: 100% 100%
+                    box-shadow: --button-box-shadow-active, --button-box-shadow-active-inset
+                    &:focus
+                        box-shadow: --button-box-shadow-active, --button-box-shadow-focus, --button-box-shadow-active-inset
+
         &.-transparent
             background-color: transparent
-
-
-.button
-    @extend .button.-md
-    @extend .button.-light
-
 
 // Future-proof disabling of clicks on `<a>` elements
 a.button.-disabled
@@ -98,84 +146,6 @@ input[type="button"]
     &.-block
         width: 100%
 
-
-////
-//// Alternate buttons
-////
-//
-//@each $color, $value in $theme-colors
-//.btn-#{$color
-//    @include button-variant($value, $value)
-//
-//
-//
-//@each $color, $value in $theme-colors
-//.btn-outline-#{$color
-//    @include button-outline-variant($value)
-
-
-
-
-//
-// Link buttons
-//
-
-// Make a button look and behave like a link
-.btn-link
-    font-weight: $font-weight-normal
-    color: $link-color
-    background-color: transparent
-
-    @include hover
-    color: $link-hover-color
-    text-decoration: $link-hover-decoration
-    background-color: transparent
-    border-color: transparent
-//
-//
-//&:focus,
-//&.focus
-//    text-decoration: $link-hover-decoration
-//    border-color: transparent
-//    box-shadow: none
-//
-//
-//&:disabled,
-//&.disabled
-//    color: $btn-link-disabled-color
-//    pointer-events: none
-//
-//
-//// No need for an active state here
-//
-//
-//
-////
-//// Button Sizes
-////
-//
-//.btn-lg
-//    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg)
-//
-//
-//.btn-sm
-//    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-line-height-sm, $btn-border-radius-sm)
-//
-//
-//
-////
-//// Block button
-////
-//
-//.btn-block
-//    display: block
-//    width: 100%
-//
-//    // Vertically space out multiple block buttons
-//    + .btn-block
-//        margin-top: $btn-block-spacing-y
-//
-//
-//
-
-//
+.button
+    @extend .button.-md
+    @extend .button.-light

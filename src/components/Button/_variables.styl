@@ -14,7 +14,8 @@
     'lg': --button-padding-lg
 }
 
---button-box-shadow-focus := --box-shadow[0] 0.5rem 0.75rem -0.5rem rgba(--colors['black'], 0.33)
+--button-box-shadow := --box-shadow[0] / 2 0.25rem 0.25rem -0.25rem rgba(--colors['black'], 0.33)
+--button-box-shadow-focus := --box-shadow[0] 0.5rem 0.75rem -0.5rem rgba(--colors['black'], 0.66)
 --button-box-shadow-active := --box-shadow[0] 0 0 0 rgba(--colors['black'], 0.33)
 --button-box-shadow-active-inset := inset 0 0 0.5rem rgba(--colors['black'], 0.1)
 
@@ -22,3 +23,5 @@
 
 --button-darken-percentage-hover := 5%
 --button-opacity-disabled := 0.75
+
+--button-link-disabled-color := --text-muted
