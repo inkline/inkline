@@ -30,13 +30,72 @@ export default {
         ThemeableComponent
     ],
     props: {
+        /**
+         * Modifiers
+         */
+        block: {
+            type: Boolean,
+            default: false
+        },
+        outline: {
+            type: Boolean,
+            default: false
+        },
+        tag: {
+            type: String,
+            default: 'button'
+        },
+
+        /**
+         * Icon
+         */
         icon: {
             type: String,
             default: ''
         },
-        type: {
-            type: String,
-            default: 'button'
+
+        /**
+         * Linking and routing
+         */
+        href: {
+            type: [String, Object],
+            default: ''
+        }
+    },
+    computed: {
+        hrefAttr () {
+            return this.href && typeof this.href === 'string' && this.tag === 'a' ? this.href : false;
+        }
+    },
+    methods: {
+        /**
+         * On click binding to make buttons behave like anchor links
+         */
+        onClickHref () {
+            if (!this.href) return;
+
+            if (typeof this.href === 'string' && /^(https?:)?\/?\//.test(this.href)) {
+                if (this.tag === 'a') return;
+
+                window.open(this.href, this.$attrs.target || '_self');
+            } else {
+                this.$router.push(this.href);
+            }
+        }
+    },
+    created () {
+        if (this.href) {
+            this.$on('click', this.onClickHref);
+        }
+
+        if (this.classesProvider) {
+            if (this.block) {
+                this.classesProvider['root'].push(() => `-block`);
+            }
+
+            if (this.outline) {
+                this.classesProvider['root'].push(() => `-outline`);
+            }
         }
     }
 };

@@ -7,7 +7,7 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
+        if (this.classesProvider && this.theme) {
             this.classesProvider['root'].push(() => `-${this.theme}`);
         }
     }
