@@ -18,7 +18,9 @@ export default {
             };
 
             Object.keys(this.classesProvider).forEach((key) => {
-                classRules[key] = this.classesProvider[key].map((classRules) => classRules());
+                if (!this.classesProvider.hasOwnProperty(key)) { return; }
+
+                classRules[key] = this.classesProvider[key].map((classRule) => classRule());
                 classRules['*'] = classRules['*'].concat(classRules[key]);
             });
 

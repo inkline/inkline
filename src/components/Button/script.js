@@ -4,6 +4,7 @@ import FocusableFormItem from '../../mixins/forms/FocusableFormItem';
 import InjectableFormItem from '../../mixins/forms/InjectableFormItem';
 import TabableFormItem from '../../mixins/forms/TabableFormItem';
 
+import AttributableComponent from '../../mixins/components/AttributableComponent';
 import ClassableComponent from '../../mixins/components/ClassableComponent';
 import ClickableComponent from '../../mixins/components/ClickableComponent';
 import FocusableComponent from '../../mixins/components/FocusableComponent';
@@ -21,6 +22,7 @@ export default {
         InjectableFormItem,
         TabableFormItem,
 
+        AttributableComponent,
         ClassableComponent,
         ClickableComponent,
         FocusableComponent,
@@ -33,6 +35,10 @@ export default {
         /**
          * Modifiers
          */
+        active: {
+            type: Boolean,
+            default: false
+        },
         block: {
             type: Boolean,
             default: false
@@ -88,7 +94,12 @@ export default {
             this.$on('click', this.onClickHref);
         }
 
-        if (this.classesProvider) {
+        if (this.classesProvider && this.attributesProvider) {
+            if (this.active) {
+                this.classesProvider['root'].push(() => `-active`);
+                this.attributesProvider['aria-pressed'] = () => this.active ? 'true' : null;
+            }
+
             if (this.block) {
                 this.classesProvider['root'].push(() => `-block`);
             }
