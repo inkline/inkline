@@ -20,6 +20,10 @@ export default {
                 '-disabled': this.isDisabled
             }));
         }
+
+        if (this.attributesProvider) {
+            this.attributesProvider.push(() => ({ 'aria-disabled': this.disabled ? 'true' : false }));
+        }
     }
 };
 </script>

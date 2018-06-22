@@ -2,23 +2,18 @@
 export default {
     data () {
         return {
-            attributesProvider: {}
+            attributesProvider: []
         };
     },
-    watch: {
-        attributesProvider: {
-            handler (value, oldValue) {
-                console.log('CHANGE', value)
-                Object.keys(this.attributesProvider).forEach((key) => {
-                    if (!this.attributesProvider.hasOwnProperty(key)) { return; }
+    computed: {
+        attributes () {
+            const attrs = {};
 
-                    this.$attrs[key] = this.attributesProvider[key]();
+            this.attributesProvider.forEach((attributeRule) => {
+                Object.assign(attrs, attributeRule());
+            });
 
-                    // attributeRules[key] = this.attributesProvider[key].map((attributeRule) => attributeRule());
-                    // attributeRules['*'] = attributeRules['*'].concat(attributeRules[key]);
-                });
-            },
-            deep: true
+            return Object.assign({}, this.$attrs, attrs);
         }
     }
 };
