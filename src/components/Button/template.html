@@ -1,5 +1,5 @@
 <button
-    v-bind="$attrs"
+    v-bind="attributes"
     class="button"
     :is="tag"
     :href="hrefAttr"
@@ -7,20 +7,6 @@
     :disabled="isDisabled || loading"
     @click="onClick"
 >
-    <!--
-        :autofocus="autofocus"
-        :class="[
-      type ? 'el-button--' + type : '',
-      buttonSize ? 'el-button--' + buttonSize : '',
-      {
-        'is-disabled': buttonDisabled,
-        'is-loading': loading,
-        'is-plain': plain,
-        'is-round': round,
-        'is-circle': circle
-      }
-    ]"
-    -->
     <i class="icon-loading" v-if="loading"></i>
     <i :class="icon" v-if="icon && !loading"></i>
     <span v-if="$slots.default"><slot></slot></span>

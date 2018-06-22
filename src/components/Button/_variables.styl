@@ -6,12 +6,21 @@
 --button-border-radius := --border-radius
 
 --button-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
---button-padding-md := --spacers['1/2'] --spacers['1']
+--button-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
 --button-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
 --button-padding := {
     'sm': --button-padding-sm
     'md': --button-padding-md
     'lg': --button-padding-lg
+}
+
+--button-circle-size-sm := --spacers['1'] * --size-percentages['sm'] * 1.6 + --button-font-size['sm']
+--button-circle-size-md := --spacers['1'] * --size-percentages['md'] * 1.6 + --button-font-size['md']
+--button-circle-size-lg := --spacers['1'] * --size-percentages['lg'] * 1.6 + --button-font-size['lg']
+--button-circle-size := {
+    'sm': --button-circle-size-sm
+    'md': --button-circle-size-md
+    'lg': --button-circle-size-lg
 }
 
 --button-box-shadow := --box-shadow[0] / 2 0.25rem 0.25rem -0.25rem rgba(--colors['black'], 0.33)

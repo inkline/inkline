@@ -43,6 +43,14 @@ export default {
             type: Boolean,
             default: false
         },
+        circle: {
+            type: Boolean,
+            default: false
+        },
+        flat: {
+            type: Boolean,
+            default: false
+        },
         outline: {
             type: Boolean,
             default: false
@@ -95,18 +103,13 @@ export default {
         }
 
         if (this.classesProvider && this.attributesProvider) {
-            if (this.active) {
-                this.classesProvider['root'].push(() => `-active`);
-                this.attributesProvider['aria-pressed'] = () => this.active ? 'true' : null;
-            }
+            this.classesProvider['root'].push(() => ({ '-active': this.active }));
+            this.classesProvider['root'].push(() => ({ '-block': this.block }));
+            this.classesProvider['root'].push(() => ({ '-circle': this.circle }));
+            this.classesProvider['root'].push(() => ({ '-flat': this.flat }));
+            this.classesProvider['root'].push(() => ({ '-outline': this.outline }));
 
-            if (this.block) {
-                this.classesProvider['root'].push(() => `-block`);
-            }
-
-            if (this.outline) {
-                this.classesProvider['root'].push(() => `-outline`);
-            }
+            this.attributesProvider.push(() => ({ 'aria-pressed': this.active ? 'true' : false }));
         }
     }
 };
