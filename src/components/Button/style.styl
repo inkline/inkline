@@ -12,36 +12,44 @@
     border: --button-border-width solid transparent
     line-height: --button-line-height
     box-shadow: --button-box-shadow
+    background-repeat: repeat
+    background-position: 0 0
+    background-size: 100% 100%
+
     if --transition['button']
         transition: background-color --transition-duration --transition-easing, background-position --transition-duration --transition-easing, background-size --transition-duration --transition-easing, border-color --transition-duration --transition-easing, color --transition-duration --transition-easing, box-shadow --transition-duration --transition-easing
 
-    &:hover
-    &:focus
-    &.-hovered
-    &.-focused
-        box-shadow: --button-box-shadow-focus
-        text-decoration: none
-        outline: 0
+    // Target non disabled buttons
+    &:not(:disabled):not(.-disabled)
+        // Add "hand" cursor to non-disabled .button elements
+        cursor: pointer
+
+        // Focus and hover state
+        &:hover
+        &:focus
+        &.-hovered
+        &.-focused
+            background-size: 150% 150%
+            background-position: 100% 100%
+            box-shadow: --button-box-shadow-focus
+            text-decoration: none
+            outline: 0
+
+        // Active state
+        &:active
+        &.-active
+            background-size: 200% 200%
+            background-position: 100% 100%
+            box-shadow: --button-box-shadow-active, --button-box-shadow-active-inset
+            &:focus
+                box-shadow: --button-box-shadow-active, --button-box-shadow-focus, --button-box-shadow-active-inset
 
     // Disabled state
     // Disabled state comes first so active can properly restyle
     &.-disabled
     &:disabled
-        opacity: --button-disabled-opacity
+        opacity: --button-opacity-disabled
         box-shadow: none
-
-    // Active state
-    &:not(:disabled):not(.-disabled):active
-    &:not(:disabled):not(.-disabled).-active
-        background-size: 200% 200%
-        background-position: 100% 100%
-        box-shadow: --button-box-shadow-active, --button-box-shadow-active-inset
-        &:focus
-            box-shadow: --button-box-shadow-active, --button-box-shadow-focus, --button-box-shadow-active-inset
-
-    // Add "hand" cursor to non-disabled .button elements
-    &:not(:disabled):not(.-disabled)
-        cursor: pointer
 
     // Block buttons
     // Make buttons span the whole parent width
@@ -61,77 +69,106 @@
         border-color: transparent
         box-shadow: none
 
-        &:hover
-        &.-hovered
-        &:focus
-        &.-focused
-            color: --link-color-hover
-            text-decoration: --link-decoration-hover
-            background-color: transparent
-            background-image: none
-            border-color: transparent
-            box-shadow: none
+        &:not(:disabled):not(.-disabled)
+            &:hover
+            &.-hovered
+            &:focus
+            &.-focused
+                color: --link-color-hover
+                text-decoration: --link-decoration-hover
+                background-color: transparent
+                background-image: none
+                border-color: transparent
+                box-shadow: none
 
         &:disabled,
         &.-disabled
             color: --button-link-disabled-color
             pointer-events: none
 
+    // Outline buttons
+    // Remove button background and add a beautiful transition on hover
+    &.-outline
+        background-color: transparent
+        background-position: 0 0
+        background-size: 300% 300%
+        box-shadow: none
+
+        &:not(:disabled):not(.-disabled)
+            &:hover
+            &.-hovered
+            &:focus
+            &.-focused
+                background-size: 300% 300%
+                background-position: 100% 100%
+                box-shadow: --button-box-shadow-focus
+
+            &:active
+            &.-active
+                background-size: 400% 400%
+                background-position: 100% 100%
+                box-shadow: --button-box-shadow-active, --button-box-shadow-active-inset
+                &:focus
+                        box-shadow: --button-box-shadow-active, --button-box-shadow-focus, --button-box-shadow-active-inset
+
+    // Circle button
+    &.-circle
+        border-radius: 100%
+
+    // Button sizes
+    // Add small, medium and large button sizes
     for size in (sm md lg)
         &.-{size}
             border-radius: --button-border-radius[size]
             font-size: --button-font-size[size]
             padding: --button-padding[size]
 
+            &.-circle
+                border-radius: 100%
+                width: --button-circle-size[size]
+                height: --button-circle-size[size]
+                padding: 0
+
+    // Button themes
+    // Add the required color themes to all button variations
     for --theme-name, --theme in --themes['button']
         &.-{--theme-name}
             color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
             background-color: --theme['color']
             border-color: --theme['color']
-            background-repeat: repeat
-            background-position: 0 0
-            background-size: 100% 100%
+
             if --gradient-enabled and --theme['gradient']
                 background-image: -linear-gradient(--theme['gradient'])
 
-            &:hover
-            &:focus
-            &.-hovered
-            &.-focused
-                background-size: 150% 150%
-                background-position: 100% 100%
-                background-color: darken(--theme['color'], --button-darken-percentage-hover)
-                border-color: darken(--theme['color'], --button-darken-percentage-hover)
-
-            &.-outline
-                color: --theme['color']
-                background-color: transparent
-                background-position: 0 0
-                background-size: 300% 300%
-                background-image: -linear-gradient(transparent transparent (--theme['gradient'][0]) (--theme['gradient'][1]))
-                box-shadow: none
-
-
+            &:not(:disabled):not(.-disabled)
                 &:hover
-                &.-hovered
                 &:focus
+                &.-hovered
                 &.-focused
-                    color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
-                    background-position: 100% 100%
                     background-color: darken(--theme['color'], --button-darken-percentage-hover)
                     border-color: darken(--theme['color'], --button-darken-percentage-hover)
-                    box-shadow: --button-box-shadow-focus
 
-                &:not(:disabled):not(.-disabled):active
-                &:not(:disabled):not(.-disabled).-active
-                    background-size: 400% 400%
-                    background-position: 100% 100%
-                    box-shadow: --button-box-shadow-active, --button-box-shadow-active-inset
+            &.-outline
+                background-color: transparent
+                color: --theme['color']
+                background-image: -linear-gradient(transparent transparent (--theme['gradient'][0]) (--theme['gradient'][1]))
+
+                &:not(:disabled):not(.-disabled)
+                    &:hover
+                    &.-hovered
                     &:focus
-                        box-shadow: --button-box-shadow-active, --button-box-shadow-focus, --button-box-shadow-active-inset
+                    &.-focused
+                        color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
+                        background-color: darken(--theme['color'], --button-darken-percentage-hover)
+                        border-color: darken(--theme['color'], --button-darken-percentage-hover)
 
-        &.-transparent
-            background-color: transparent
+            &.-link
+                color: --theme['color']
+
+    // Transparent button
+    &.-transparent
+        background-color: transparent
+        background-image: none
 
 // Future-proof disabling of clicks on `<a>` elements
 a.button.-disabled
@@ -146,6 +183,8 @@ input[type="button"]
     &.-block
         width: 100%
 
+// Button defaults
+// Set a default size and theme
 .button
     @extend .button.-md
     @extend .button.-light
