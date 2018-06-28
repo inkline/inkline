@@ -51,6 +51,10 @@ export default {
             type: Boolean,
             default: false
         },
+        link: {
+            type: Boolean,
+            default: false
+        },
         outline: {
             type: Boolean,
             default: false
@@ -107,6 +111,7 @@ export default {
             this.classesProvider['root'].push(() => ({ '-block': this.block }));
             this.classesProvider['root'].push(() => ({ '-circle': this.circle }));
             this.classesProvider['root'].push(() => ({ '-flat': this.flat }));
+            this.classesProvider['root'].push(() => ({ '-link': this.link }));
             this.classesProvider['root'].push(() => ({ '-outline': this.outline }));
 
             this.attributesProvider.push(() => ({ 'aria-pressed': this.active ? 'true' : false }));
