@@ -24,8 +24,13 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
+            // '@inkline': resolve('src'),
+            // '@components': resolve('src', 'components'),
+            // '@helpers': resolve('src', 'helpers'),
+            // '@mixins': resolve('src', 'mixins'),
+            // '@resources': resolve('src', 'resources'),
+            // '@validators': resolve('src', 'validators'),
             'vue$': 'vue/dist/vue.esm.js',
-            'inkline': resolve('src'),
         }
     },
     module: {

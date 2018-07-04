@@ -1,4 +1,5 @@
 import Button from './components/Button';
+import ButtonGroup from './components/ButtonGroup';
 import Column from './components/Column';
 import Container from './components/Container';
 import Layout from './components/Layout';
@@ -21,6 +22,7 @@ import Textarea from './components/Textarea';
 
 const components = {
     Button,
+    ButtonGroup,
     Column,
     Container,
     Layout,
@@ -58,6 +60,7 @@ class Inkline {
 
 export {
     Button as IButton,
+    ButtonGroup as IButtonGroup,
     Column as IColumn,
     Container as IContainer,
     Layout as ILayout,
