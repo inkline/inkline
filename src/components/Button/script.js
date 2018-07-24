@@ -106,14 +106,16 @@ export default {
             this.$on('click', this.onClickHref);
         }
 
-        if (this.classesProvider && this.attributesProvider) {
-            this.classesProvider['root'].push(() => ({ '-active': this.active }));
-            this.classesProvider['root'].push(() => ({ '-block': this.block }));
-            this.classesProvider['root'].push(() => ({ '-circle': this.circle }));
-            this.classesProvider['root'].push(() => ({ '-flat': this.flat }));
-            this.classesProvider['root'].push(() => ({ '-link': this.link }));
-            this.classesProvider['root'].push(() => ({ '-outline': this.outline }));
+        if (this.classesProvider) {
+            this.classesProvider['root'].push(() => ({'-active': this.active}));
+            this.classesProvider['root'].push(() => ({'-block': this.block}));
+            this.classesProvider['root'].push(() => ({'-circle': this.circle}));
+            this.classesProvider['root'].push(() => ({'-flat': this.flat}));
+            this.classesProvider['root'].push(() => ({'-link': this.link}));
+            this.classesProvider['root'].push(() => ({'-outline': this.outline}));
+        }
 
+        if (this.attributesProvider) {
             this.attributesProvider.push(() => ({ 'aria-pressed': this.active ? 'true' : false }));
         }
     }

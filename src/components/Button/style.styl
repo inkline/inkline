@@ -107,10 +107,7 @@
     // Add small, medium and large button sizes
     for size in (sm md lg)
         &.-{size}
-            border-top-left-radius: --button-border-radius[size]
-            border-top-right-radius: --button-border-radius[size]
-            border-bottom-left-radius: --button-border-radius[size]
-            border-bottom-right-radius: --button-border-radius[size]
+            border-radius: --button-border-radius[size]
             font-size: --button-font-size[size]
             padding: --button-padding[size]
 
