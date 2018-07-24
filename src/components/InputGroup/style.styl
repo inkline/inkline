@@ -1,4 +1,6 @@
 @import '../../resources/css/config'
+@import '../Input/_variables'
+@import '../Input/_mixins'
 @import '_variables'
 
 
@@ -18,3 +20,48 @@
     &.-appended
         display: flex
         flex-wrap: wrap
+
+    &.-prepended .form-input
+        +-form-input-selector()
+            display: block
+            border-top-left-radius: 0
+            border-bottom-left-radius: 0
+
+    &.-appended .form-input
+        +-form-input-selector()
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0
+
+    > .form-input-prepend
+    > .form-input-append + .form-input-append
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+
+    > .form-input-append
+    > .form-input-prepend + .form-input-prepend
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+    // Form input group sizes
+    //
+    for size in (sm md lg)
+        &.-{size} > .form-input-label
+            -form-input-label-size(size)
+
+        &.-{size} > .form-input
+            -form-input-size(size)
+
+        &.-{size}
+            > .form-input-prepend
+            > .form-input-append
+                font-size: --input-font-size[size]
+
+                if --border-radius-enabled
+                    border-radius: --input-border-radius[size]
+
+                > .form-input-prepend
+                > .form-input-append
+                    padding: --input-padding[size]
+
+.form-input-group
+    @extend .form-input-group.-md

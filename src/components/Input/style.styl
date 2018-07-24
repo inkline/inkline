@@ -96,28 +96,6 @@
             &:hover
                 background-color: --input-icon-circle-background-hover
 
-.form-input-group
-    &.-prepended .form-input
-        +-form-input-selector()
-            display: block
-            border-top-left-radius: 0
-            border-bottom-left-radius: 0
-
-    &.-appended .form-input
-        +-form-input-selector()
-            border-top-right-radius: 0
-            border-bottom-right-radius: 0
-
-    > .form-input-prepend
-    > .form-input-append + .form-input-append
-        border-top-right-radius: 0
-        border-bottom-right-radius: 0
-
-    > .form-input-append
-    > .form-input-prepend + .form-input-prepend
-        border-top-left-radius: 0
-        border-bottom-left-radius: 0
-
 .form-input-prepend
 .form-input-append
     display: flex
@@ -144,47 +122,11 @@
 //
 for size in (sm md lg)
     .form-input-label.-{size}
-    .form-input-group.-{size} > .form-input-label
-        font-size: --input-font-size[size]
-
-        &.-left
-            padding-right: --input-padding[size][0] * 2
-
-        &.-right
-            padding-left: --input-padding[size][0] * 2
+        -form-input-label-size(size)
 
     .form-input.-{size}
-    .form-input-group.-{size} > .form-input
-        +-form-input-selector()
-            padding: --input-padding[size]
-            font-size: --input-font-size[size]
+        -form-input-size(size)
 
-            if --border-radius-enabled
-                border-radius: --input-border-radius[size]
-
-        &.-prefixed
-            +-form-input-selector()
-                padding-left: --input-prefix-padding[size]
-
-        &.-suffixed
-            +-form-input-selector()
-                padding-right: --input-prefix-padding[size]
-
-    .form-input-group.-{size}
-        > .form-input-prepend
-        > .form-input-append
-             font-size: --input-font-size[size]
-
-             if --border-radius-enabled
-                 border-radius: --input-border-radius[size]
-
-
-             > .form-input-prepend
-             > .form-input-append
-                padding: --input-padding[size]
-
-.form-input-group
-    @extend .form-input-group.-md
 
 .form-input-label
     @extend .form-input-label.-md
