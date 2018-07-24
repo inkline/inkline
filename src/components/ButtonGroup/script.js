@@ -28,5 +28,19 @@ export default {
         HoverableComponent,
         LoadableComponent,
         SizeableComponent
-    ]
+    ],
+    props: {
+        /**
+         * Modifiers
+         */
+        vertical: {
+            type: Boolean,
+            default: false
+        }
+    },
+    created () {
+        if (this.classesProvider) {
+            this.classesProvider['root'].push(() => ({ '-vertical': this.vertical }));
+        }
+    }
 };
