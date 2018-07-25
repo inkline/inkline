@@ -1,10 +1,13 @@
-<label class="form-checkbox button" :class="classes['*']">
+<i-button class="-checkbox"
+          :class="classes['*']"
+          :active="checked"
+          @click="click"
+          @keydown.space.stop.prevent="click">
     <input
         type="checkbox"
+        ref="input"
         v-model="model"
         :value="currentValue"
         :disabled="isDisabled">
-    <span class="inner">
-        <slot></slot>
-    </span>
-</label>
+    <slot></slot>
+</i-button>

@@ -1,52 +1,19 @@
 @import '../../resources/css/config'
+@import '../Button/_variables'
 
-
-// @TODO
-// Use actual button markup for checkbox buttons
-//
-.form-checkbox.button
+.button.-checkbox
     position: relative
-    display: inline-block
-    outline: none
 
-    > input[type='checkbox']
+    for size in (sm md lg)
+        &.-{size}
+            font-size: --button-font-size[size]
+
+    > span > input[type='checkbox']
         opacity: 0
         outline: none
         position: absolute
+        width: 0
+        height: 0
 
-        &:checked + .inner
-            color: white
-            background-color: #409eff
-            border-color: #409eff
-            box-shadow: -1px 0 0 0 #409eff
-
-    &:first-child > .inner
-        border-left: 1px solid #dcdfe6
-        border-radius: 4px 0 0 4px
-        box-shadow: none!important
-
-    &:last-child > .inner
-        border-radius: 0 4px 4px 0
-
-    + .form-checkbox
-        margin: 0
-
-    &.-disabled > .inner
-        cursor: default
-
-    > .inner
-        position: relative
-        display: inline-block
-        outline: none
-        white-space: nowrap
-        vertical-align: middle
-        background: #fff
-        border: 1px solid #dcdfe6
-        border-left: 0
-        -webkit-appearance: none
-        box-sizing: border-box
-        cursor: pointer
-        transition: all .3s cubic-bezier(.645,.045,.355,1)
-        padding: --spacers['3/4'] --spacers['2']
-        border-radius: 0
-        font-size: --font-size['md']
+.button.-checkbox
+    @extend .button.-checkbox.-md
