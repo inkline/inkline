@@ -1,0 +1,357 @@
+@import '../../resources/css/config'
+@import '../../resources/css/mixins'
+@import '_variables'
+
+//
+// Base styles
+//
+
+.card
+    position: relative
+    display: flex
+    flex-direction: column
+    min-width: 0
+    word-wrap: break-word
+    background-clip: border-box
+    box-shadow: --card-box-shadow
+
+    > hr
+        margin-right: 0
+        margin-left: 0
+
+    > .header
+        margin-bottom: 0
+        border-width: --card-border-width
+        border-style: solid
+        border-bottom-width: 0
+
+        > h1, > h2, > h3, > h4, > h5, > h6, > p
+        > .h1, > .h2, > .h3, > .h4, > .h5, > .h6, > .p
+            margin-bottom: 0
+            margin-top: 0
+
+        + img
+        + .body
+            border-top-left-radius: 0
+            border-top-right-radius: 0
+
+        + .list-group
+            .list-group-item:first-child
+                border-top: 0
+
+    > .body
+        // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+        // as much space as possible, ensuring footers are aligned to the bottom.
+        flex: 1 1 auto
+        border-width: --card-border-width
+        border-style: solid
+
+        &:not(:first-child)
+            border-top-left-radius: 0
+            border-top-right-radius: 0
+
+        &:not(:last-child)
+            border-bottom-left-radius: 0
+            border-bottom-right-radius: 0
+
+        > .title
+            margin-top: 0
+
+        > .subtitle
+            margin-bottom: 0
+
+        > .link
+            text-decoration: none
+
+    > .footer
+        border-width: --card-border-width
+        border-style: solid
+        border-top-width: 0
+
+    > img
+        width: 100% // Required because we use flexbox and this inherently applies align-self: stretch
+
+
+    > .list-group:first-child
+        .item:first-child
+            border-top-left-radius: --card-border-radius[size]
+            border-top-right-radius: --card-border-radius[size]
+
+    > .list-group:last-child
+        .item:last-child
+            border-bottom-left-radius: --card-border-radius[size]
+            border-bottom-right-radius: --card-border-radius[size]
+
+    // Card themes
+    // Add the required color themes to all card variations
+    for --theme-name, --theme in --themes['card']
+        &.-{--theme-name}
+            color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
+            background-color: --theme['color']
+
+            if --gradient-enabled and --theme['gradient']
+                background-image: -linear-gradient(--theme['gradient'])
+
+            > .body
+                border-color: --theme['color']
+
+            > .header
+            > .footer
+                background-color: --card-background-darken
+                border-color: --theme['color']
+
+
+    // Card sizes
+    // Add the required sizes to all card variations
+    for size in (sm md lg)
+        &.-{size}
+            border-radius: --card-border-radius[size]
+            font-size: --card-font-size[size]
+
+            > .header
+                padding: --card-padding[size]
+
+                &:first-child
+                    border-top-left-radius: --card-border-radius[size]
+                    border-top-right-radius: --card-border-radius[size]
+
+            > .body
+                padding: --card-padding[size]
+                border-radius: --card-border-radius[size]
+
+                > .title
+                    margin-bottom: --card-padding[size]
+
+                > .subtitle
+                    margin-top: --card-padding[size] / 2
+
+                > .link + .link
+                    margin-left: --card-padding[size]
+
+            > .footer
+                padding: --card-padding[size]
+
+                &:last-child
+                    border-bottom-left-radius: --card-border-radius[size]
+                    border-bottom-right-radius: --card-border-radius[size]
+
+            > img
+                border-top-left-radius: --card-border-radius[size]
+                border-top-right-radius: --card-border-radius[size]
+
+                &:last-child
+                    border-bottom-left-radius: --card-border-radius[size]
+                    border-bottom-right-radius: --card-border-radius[size]
+
+
+.card
+    @extend .card.-md
+    @extend .card.-light
+
+    background-color: white
+    background-image: none
+
+    > .header
+    > .footer
+        background-color: --colors['gray-10']
+        background-image: none
+
+// Header navs
+//
+
+//.card-header-tabs
+//    margin-right: -($card-spacer-x / 2)
+//    margin-bottom: -$card-spacer-y
+//    margin-left: -($card-spacer-x / 2)
+//    border-bottom: 0
+//
+//
+//.card-header-pills
+//    margin-right: -($card-spacer-x / 2)
+//    margin-left: -($card-spacer-x / 2)
+
+
+// Card image
+//.card-img-overlay
+//    position: absolute
+//    top: 0
+//    right: 0
+//    bottom: 0
+//    left: 0
+//    padding: $card-img-overlay-padding
+
+
+// Card image caps
+//.card-img-top
+//    width: 100% // Required because we use flexbox and this inherently applies align-self: stretch
+//    @include border-top-radius($card-inner-border-radius)
+//
+//
+//.card-img-bottom
+//    width: 100% // Required because we use flexbox and this inherently applies align-self: stretch
+//    @include border-bottom-radius($card-inner-border-radius)
+
+
+
+// Card deck
+
+//.card-deck
+//    display: flex
+//    flex-direction: column
+//
+//    .card
+//        margin-bottom: $card-deck-margin
+//
+//
+//    @include media-breakpoint-up(sm)
+//    flex-flow: row wrap
+//    margin-right: -$card-deck-margin
+//    margin-left: -$card-deck-margin
+//
+//    .card
+//        display: flex
+//        // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+//        flex: 1 0 0%
+//        flex-direction: column
+//        margin-right: $card-deck-margin
+//        margin-bottom: 0 // Override the default
+//        margin-left: $card-deck-margin
+
+
+
+
+
+//
+// Card groups
+//
+
+//.card-group
+//    display: flex
+//    flex-direction: column
+//
+//    // The child selector allows nested `.card` within `.card-group`
+//    // to display properly.
+//    > .card
+//        margin-bottom: $card-group-margin
+//
+//
+//    @include media-breakpoint-up(sm)
+//    flex-flow: row wrap
+//    // The child selector allows nested `.card` within `.card-group`
+//    // to display properly.
+//    > .card
+//        // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+//        flex: 1 0 0%
+//        margin-bottom: 0
+//
+//        + .card
+//            margin-left: 0
+//            border-left: 0
+//
+//
+//        // Handle rounded corners
+//        @if $enable-rounded
+//&:first-child
+//    @include border-right-radius(0)
+//
+//    .card-img-top,
+//    .card-header
+//        border-top-right-radius: 0
+//
+//    .card-img-bottom,
+//    .card-footer
+//        border-bottom-right-radius: 0
+//
+//
+//
+//&:last-child
+//    @include border-left-radius(0)
+//
+//    .card-img-top,
+//    .card-header
+//        border-top-left-radius: 0
+//
+//    .card-img-bottom,
+//    .card-footer
+//        border-bottom-left-radius: 0
+//
+//
+//
+//&:only-child
+//    @include border-radius($card-border-radius)
+//
+//    .card-img-top,
+//    .card-header
+//        @include border-top-radius($card-border-radius)
+//
+//    .card-img-bottom,
+//    .card-footer
+//        @include border-bottom-radius($card-border-radius)
+//
+//
+//
+//&:not(:first-child):not(:last-child):not(:only-child)
+//    @include border-radius(0)
+//
+//    .card-img-top,
+//    .card-img-bottom,
+//    .card-header,
+//    .card-footer
+//        @include border-radius(0)
+
+
+
+
+
+
+
+
+//
+// Columns
+//
+
+//.card-columns
+//    .card
+//        margin-bottom: $card-columns-margin
+//
+//
+//    @include media-breakpoint-up(sm)
+//    column-count: $card-columns-count
+//    column-gap: $card-columns-gap
+//    orphans: 1
+//    widows: 1
+//
+//    .card
+//        display: inline-block // Don't let them vertically span multiple columns
+//        width: 100% // Don't let their width change
+
+
+
+
+
+//
+// Accordion
+//
+//
+//.accordion
+//    .card:not(:first-of-type):not(:last-of-type)
+//        border-bottom: 0
+//        border-radius: 0
+//
+//
+//    .card:not(:first-of-type)
+//        .card-header:first-child
+//            border-radius: 0
+//
+//
+//
+//    .card:first-of-type
+//        border-bottom: 0
+//        border-bottom-right-radius: 0
+//        border-bottom-left-radius: 0
+//
+//
+//    .card:last-of-type
+//        border-top-left-radius: 0
+//        border-top-right-radius: 0
+
