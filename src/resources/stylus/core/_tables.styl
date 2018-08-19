@@ -1,0 +1,132 @@
+/**
+ * Tables
+ */
+
+
+.table
+    width: 100%
+    max-width: 100%
+    margin-bottom: --spacer
+
+    th,
+    td
+        padding: --table-cell-padding
+        vertical-align: top
+        border-top: --table-border-width solid transparent
+
+    thead th
+        vertical-align: bottom
+        border-bottom-width: (2 * --table-border-width)
+
+    tbody + tbody
+        border-top: (2 * --table-border-width) solid transparent
+
+    // Condensed table w/ half padding
+    //
+    &.-small
+        th
+        td
+            padding: --table-cell-padding-sm
+
+
+    // Bordered version
+    //
+    // Add borders all around the table and between all the columns.
+    //
+    &.-bordered
+        border: --table-border-width solid transparent
+
+        th
+        td
+            border: --table-border-width solid --table-border-color
+
+
+    // Themes
+    //
+    for --theme-name, --theme in --themes['table']
+        --table-text-color = -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
+        --table-border-color = -text-color-by-luminance(--theme['color'], lighten(--theme['color'], 5%), darken(--theme['color'], 5%))
+        --table-hover-color = -text-color-by-luminance(--theme['color'], rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1))
+        --table-stripe-color = -text-color-by-luminance(--theme['color'], rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.05))
+
+        //if --theme-name == 'light'
+        //    --table-hover-color = darken(--theme['color'], 2%)
+        //    --table-stripe-color = darken(--theme['color'], 1%)
+
+        &.-{--theme-name}
+            background-color: --theme['color']
+            background-image: -linear-gradient(--theme['gradient'])
+            border-top-color: --table-border-color
+            color: --table-text-color
+
+
+            // Bordered table
+            //
+            // Add borders to all sides of the table and table cells
+            //
+            &.-bordered
+                &
+                th
+                td
+                    border-color: --table-border-color
+
+
+            // Striped Table
+            //
+            // Default zebra-stripe styles (alternating gray and transparent backgrounds)
+            //
+            &.-striped
+                > tr:nth-of-type(odd)
+                tbody > tr:nth-of-type(odd)
+                    background-color: --table-stripe-color
+
+
+            // Hover table
+            //
+            // Placed here since it has to come after the potential zebra striping
+            //
+            &.-hover
+            &.-hoverable
+                tbody tr
+                    if --transition-enabled and --transition['table']
+                        transition: background-color --transition-duration ease
+                    &:hover
+                        background-color: --table-hover-color
+
+
+            // Responsive tables
+            //
+            // Generate series of `.table-responsive-*` classes for configuring the screen
+            // size of where your table will overflow.
+            //
+            &.-responsive
+                for --breakpoint-name, --breakpoint-value in --breakpoints
+                    --infix = breakpoint-infix(--breakpoint-name)
+
+                    &{--infix}
+                        +breakpoint-down(--breakpoint-name)
+                            display: block
+                            width: 100%
+                            overflow-x: auto
+                            -webkit-overflow-scrolling: touch
+                            -ms-overflow-style: -ms-autohiding-scrollbar
+
+                            // Prevent double border on horizontal scroll due to use of `display: block`
+                            &.-bordered
+                                border: none
+
+
+            th
+            td
+            tbody + tbody
+                border-top-color: --border-color
+
+            thead th
+                border-bottom-color: --border-color
+
+            .table
+                background-color: --color
+
+
+.table
+    @extend .table.-light

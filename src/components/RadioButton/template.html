@@ -1,0 +1,13 @@
+<i-button class="-radio"
+          :class="classes['*']"
+          :active="checked"
+          @click="click"
+          @keydown.space.stop.prevent="click">
+    <input
+        type="radio"
+        ref="input"
+        v-model="model"
+        :value="currentValue"
+        :disabled="isDisabled">
+    <slot></slot>
+</i-button>

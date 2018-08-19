@@ -1,0 +1,175 @@
+//
+// Typography
+//
+
+// Font families
+//
+--font-family-primary-base = -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif
+
+--font-family-primary-monospace = 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace
+--font-family-primary-print = 'Georgia', 'Times New Roman', 'Times', serif
+
+--font-family-secondary-base := --font-family-primary-base
+--font-family-secondary-print := --font-family-primary-print
+
+--font-family-primary := {
+  base: --font-family-primary-base
+  monospace: --font-family-primary-monospace
+  print: --font-family-primary-print
+}
+
+--font-family-secondary := {
+  base: --font-family-secondary-base
+  print: --font-family-secondary-print
+}
+
+// Tracking
+//
+--letter-spacing := 0
+
+// Font size
+// Assumes the browser default, typically `16px`
+//
+--font-size-md := 1rem
+--font-size-sm := --font-size-md * --size-percentages['sm']
+--font-size-lg := --font-size-md * --size-percentages['lg']
+
+--font-size := {
+    'sm': --font-size-sm
+    'md': --font-size-md
+    'lg': --font-size-lg
+}
+
+
+// Font weight
+//
+--font-weight-extralight := 200
+--font-weight-light := 300
+--font-weight-normal := normal
+--font-weight-semibold := 600
+--font-weight-bold := bold
+--font-weight-black := 900
+
+--font-weight := {
+  extralight: --font-weight-extralight
+  light: --font-weight-light
+  normal: --font-weight-normal
+  semibold: --font-weight-semibold
+  bold: --font-weight-bold
+  black: --font-weight-black
+}
+
+// Line height
+//
+--line-height := 1.5
+
+// Muted text color
+//
+--text-muted := --colors['gray-60']
+
+// Headings
+//
+--h1-font-size := 2.5 * --font-size['md']
+--h2-font-size := 2 * --font-size['md']
+--h3-font-size := 1.75 * --font-size['md']
+--h4-font-size := 1.5 * --font-size['md']
+--h5-font-size := 1.25 * --font-size['md']
+--h6-font-size := 1 * --font-size['md']
+
+--headings-font-size := {
+  h1: --h1-font-size
+  h2: --h2-font-size
+  h3: --h3-font-size
+  h4: --h4-font-size
+  h5: --h5-font-size
+  h6: --h6-font-size
+}
+
+--headings-margin-top := --spacer * 2.5
+--headings-margin-bottom := --spacer
+--headings-font-family := --font-family-secondary-base
+--headings-font-weight := normal
+--headings-line-height := 1.1
+--headings-color := inherit
+
+// Displays
+//
+--d1-font-size := 5.5 * --font-size['md']
+--d2-font-size := 5 * --font-size['md']
+--d3-font-size := 4.5 * --font-size['md']
+--d4-font-size := 4 * --font-size['md']
+--d5-font-size := 3.5 * --font-size['md']
+--d6-font-size := 3 * --font-size['md']
+
+--displays-font-size := {
+  d1: --d1-font-size
+  d2: --d2-font-size
+  d3: --d3-font-size
+  d4: --d4-font-size
+  d5: --d5-font-size
+  d6: --d6-font-size
+}
+
+--displays-font-weight := --headings-font-weight
+--displays-line-height := --headings-line-height
+
+// Links
+//
+--link-color := --color-primary
+--link-color-hover := darken(--link-color, 20%)
+--link-decoration := none
+--link-decoration-hover := underline
+
+// Lead
+//
+--lead-font-size := --font-size['lg']
+--lead-font-weight := 300
+
+// Lists
+//
+--list-inline-padding := --spacer
+--list-item-margin-bottom := --spacers['1/2']
+
+// Description Lists
+//
+--dt-font-weight := --font-weight['bold']
+
+// Emphasis
+//
+--small-font-size := --font-size['sm']
+
+// Blockquote
+//
+--blockquote-small-color := --colors['gray-60']
+--blockquote-font-size := --font-size['lg']
+--blockquote-border := 3px solid --colors['gray-30']
+
+// Horizontal rule
+//
+--hr-border-color := rgba(--colors['black'], 0.1)
+--hr-border-width := --border-width
+
+// Mark
+//
+--mark-padding := 0.2rem 0.4rem
+--mark-color := --colors['gray-80']
+--mark-background-color := #fcf8e3
+
+// Kbd
+//
+--kbd-box-shadow := inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25)
+--kbd-nested-font-weight := --font-weight['bold']
+--kbd-color := --colors['white']
+--kbd-background := --colors['gray-90']
+
+// Code
+//
+--code-font-size := 90%
+--code-padding := 0.15rem 0.4rem
+--code-color := #bd4147
+--code-background := --colors['gray-10']
+
+// Pre
+//
+--pre-color := --colors['gray-90']
+--pre-scrollable-max-height := 340px

@@ -1,0 +1,16 @@
+@import '../../resources/stylus/config'
+@import '../../resources/stylus/mixins'
+@import '_variables'
+
+
+.form-check.-custom.-radio
+    .form-input-label
+        &::after
+        &::before
+            if --border-radius-enabled
+                border-radius: --form-check-radio-border-radius
+
+    input
+        &:checked ~ .form-input-label::after
+            background-image: url(--form-check-radio-icon)
+

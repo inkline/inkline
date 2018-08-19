@@ -1,0 +1,32 @@
+for --breakpoint-name, --breakpoint-value in --breakpoints
+  --infix = -breakpoint-infix(--breakpoint-name)
+
+
+  +-breakpoint(--breakpoint-name)
+    ._hidden{--infix}-only
+      display: none
+
+    ._visible{--infix}-only
+      display: block
+
+
+  if --infix != ''
+    ._visible{--infix}-only
+    ._visible{--infix}-and-up
+    ._visible{--infix}-and-down
+      display: none;
+
+    +-breakpoint-up(--breakpoint-name)
+      ._hidden{--infix}-and-up
+        display: none
+
+      ._visible{--infix}-and-up
+        display: block
+
+
+    +-breakpoint-down(--breakpoint-name)
+      ._hidden{--infix}-and-down
+        display: none
+
+      ._visible{--infix}-and-down
+        display: block

@@ -1,0 +1,18 @@
+<div class="form-check -checkbox" :class="classes['*']">
+    <input
+        v-model="model"
+        ref="input"
+        type="checkbox"
+        tabindex="-1"
+        :value="currentValue"
+        :disabled="isDisabled">
+    <label class="form-input-label"
+       :class="classes['label']"
+       :aria-checked="checked"
+       :aria-disabled="isDisabled"
+       :tabindex="tabIndex"
+       @click="click"
+       @keydown.space.stop.prevent="click">
+        <slot></slot>
+    </label>
+</div>

@@ -1,0 +1,13 @@
+/**
+ * Animations
+ */
+:root {
+    --transition-enabled: true;
+    --transition-duration: 300ms;
+    --transition-easing: ease;
+
+    --transition-button: true;
+    --transition-input: true;
+    --transition-table: true;
+}
+

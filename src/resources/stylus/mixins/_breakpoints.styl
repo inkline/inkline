@@ -1,0 +1,86 @@
+//
+// Breakpoints
+//
+
+
+// Creates a media query for a specific breakpoint interval
+//
+// @param media Breakpoint identifier
+//
+-breakpoint(media)
+    if media == xl
+        @media screen and ( min-width: --breakpoints['lg'] )
+            {block}
+    else if media == lg
+        @media screen and ( min-width: --breakpoints['md'] ) and ( max-width: --breakpoints['lg'] - 1 )
+            {block}
+    else if media == md
+        @media screen and ( min-width: --breakpoints['sm'] ) and ( max-width: --breakpoints['md'] - 1 )
+            {block}
+    else if media == sm
+        @media screen and ( min-width: --breakpoints['xs'] ) and ( max-width: --breakpoints['sm'] - 1 )
+            {block}
+    else if media == xs
+        @media screen and ( max-width: --breakpoints['xs'] - 1 )
+            {block}
+    else
+        {block}
+
+
+// Creates a media query up to the specified breakpoint
+//
+// @param media Breakpoint identifier
+//
+-breakpoint-down(media)
+    if media == xl
+        @media screen and ( max-width: --breakpoints['xl'] - 1 )
+            {block}
+    else if media == lg
+        @media screen and ( max-width: --breakpoints['lg'] - 1 )
+            {block}
+    else if media == md
+        @media screen and ( max-width: --breakpoints['md'] - 1 )
+            {block}
+    else if media == sm
+        @media screen and ( max-width: --breakpoints['sm'] - 1 )
+            {block}
+    else if media == xs
+        @media screen and ( max-width: --breakpoints['xs'] - 1 )
+            {block}
+    else
+        {block}
+
+
+// Creates a media query starting from the specified breakpoint
+//
+// @param media Breakpoint identifier
+//
+-breakpoint-up(media)
+    if media == xl
+        @media screen and ( min-width: --breakpoints['xl'] )
+            {block}
+    else if media == lg
+        @media screen and ( min-width: --breakpoints['lg'] )
+            {block}
+    else if media == md
+        @media screen and ( min-width: --breakpoints['md'] )
+            {block}
+    else if media == sm
+        @media screen and ( min-width: --breakpoints['sm'] )
+            {block}
+    else if media == xs
+        @media screen and ( min-width: 0 )
+            {block}
+    else
+        {block}
+
+
+// Get the infix name of a breakpoint
+//
+// @param media Breakpoint identifier
+//
+-breakpoint-infix(media)
+    if media == '_'
+        return ''
+    else
+        return '-' + media

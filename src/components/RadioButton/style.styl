@@ -1,0 +1,19 @@
+@import '../../resources/stylus/config'
+@import '../Button/_variables'
+
+.button.-radio
+    position: relative
+
+    for size in (sm md lg)
+        &.-{size}
+            font-size: --button-font-size[size]
+
+    > span > input[type='radio']
+        opacity: 0
+        outline: none
+        position: absolute
+        width: 0
+        height: 0
+
+.button.-radio
+    @extend .button.-radio.-md

@@ -1,0 +1,38 @@
+<div class="form-input-group" :class="classes['root']">
+    <label class="form-input-label" @click="focus" :class="classes['label']" v-if="$slots.label">
+        <slot name="label"></slot>
+    </label>
+
+    <div class="form-input-prepend" v-if="$slots.prepend">
+        <slot name="prepend"></slot>
+    </div>
+
+    <div class="form-input"
+         :class="classes['child']"
+         @mouseenter="onMouseEnter"
+         @mouseleave="onMouseLeave">
+
+        <span class="form-input-prefix" v-if="$slots.prefix">
+            <slot name="prefix"></slot>
+        </span>
+
+        <span class="form-input-suffix" v-if="$slots.suffix || clearable">
+            <i class="form-input-icon -circle" aria-label="Clear" v-show="isClearable" @click="clear">&times;</i>
+            <slot name="suffix"></slot>
+        </span>
+
+        <input
+            v-bind="$attrs"
+            v-model="model"
+            ref="input"
+            :disabled="isDisabled"
+            :aria-disabled="isDisabled"
+            @focus="onFocus"
+            @blur="onBlur"
+            @change="onChange">
+    </div>
+
+    <div class="form-input-append" v-if="$slots.append">
+        <slot name="append"></slot>
+    </div>
+</div>

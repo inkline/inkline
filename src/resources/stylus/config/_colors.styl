@@ -1,0 +1,843 @@
+//
+// Color Palette
+//
+// Basic, state, neutral, social, and brand colors
+//
+
+
+// Gradient color settings
+//
+--gradient-enabled := true
+--gradient-direction := to bottom right
+
+
+// Sample Gradients
+//
+--gradient-evening-night := (#005aa7 #fffde4)
+--gradient-vanusa := (#da4453 #89216b)
+--gradient-shifty := (#636363 #a2ab58)
+--gradient-expresso := (#ad5389 #3c1053)
+--gradient-slight-ocean-view := (#a8c0ff #3f2b96)
+--gradient-pure-lust := (#333333 #dd1818)
+--gradient-moon-purple := (#4e54c8 #8f94fb)
+--gradient-red-sunset := (#355c7d #6c5b7b #c06c84)
+--gradient-shifter := (#bc4e9c #f80759)
+--gradient-wedding-day-blues := (#40e0d0 #ff8c00 #ff0080)
+--gradient-sand-to-blue := (#3e5151 #decba4)
+--gradient-quepal := (#11998e #38ef7d)
+--gradient-pun-yeta := (#108dc7 #ef8e38)
+--gradient-sublime-light := (#fc5c7d #6a82fb)
+--gradient-sublime-vivid := (#fc466b #3f5efb)
+--gradient-bighead := (#c94b4b #4b134f)
+--gradient-taran-tado := (#23074d #cc5333)
+--gradient-relaxing-red := (#fffbd5 #b20a2c)
+--gradient-lawrencium := (#0f0c29 #302b63 #24243e)
+--gradient-ohhappiness := (#00b09b #96c93d)
+--gradient-delicate := (#d3cce3 #e9e4f0)
+--gradient-selenium := (#3c3b3f #605c3c)
+--gradient-sulphur := (#cac531 #f3f9a7)
+--gradient-pink-flavour := (#800080 #ffc0cb)
+--gradient-rainbow-blue := (#00f260 #0575e6)
+--gradient-orange-fun := (#fc4a1a #f7b733)
+--gradient-velvet-sun := (#e1eec3 #f05053)
+--gradient-digital-water := (#74ebd5 #acb6e5)
+--gradient-lithium := (#6d6027 #d3cbb8)
+--gradient-argon := (#03001e #7303c0 #ec38bc #fdeff9)
+--gradient-hydrogen := (#667db6 #0082c8 #0082c8 #667db6)
+--gradient-zinc := (#ada996 #f2f2f2 #dbdbdb #eaeaea)
+--gradient-velvet-sun := (#e1eec3 #f05053)
+--gradient-king-yna := (#1a2a6c #b21f1f #fdbb2d)
+--gradient-summer := (#22c1c3 #fdbb2d)
+--gradient-orange-coral := (#ff9966 #ff5e62)
+--gradient-purpink := (#7f00ff #e100ff)
+--gradient-dull := (#c9d6ff #e2e2e2)
+--gradient-kimoby-is-the-new-blue := (#396afc #2948ff)
+--gradient-broken-hearts := (#d9a7c7 #fffcdc)
+--gradient-clot := (#070000 #4c0001 #070000)
+--gradient-shift := (#000000 #e5008d #ff070b)
+--gradient-subu := (#0cebeb #20e3b2 #29ffc6)
+--gradient-socialive := (#06beb6 #48b1bf)
+--gradient-crimson-tide := (#642b73 #c6426e)
+--gradient-telegram := (#1c92d2 #f2fcfe)
+--gradient-terminal := (#000000 #0f9b0f)
+--gradient-scooter := (#36d1dc #5b86e5)
+--gradient-alive := (#cb356b #bd3f32)
+--gradient-relay := (#3a1c71 #d76d77 #ffaf7b)
+--gradient-meridian := (#283c86 #45a247)
+--gradient-compare-now := (#ef3b36 #ffffff)
+--gradient-mello := (#c0392b #8e44ad)
+--gradient-crystal-clear := (#159957 #155799)
+--gradient-visions-of-grandeur := (#000046 #1cb5e0)
+--gradient-chitty-chitty-bang-bang := (#007991 #78ffd6)
+--gradient-blue-skies := (#56ccf2 #2f80ed)
+--gradient-sunkist := (#f2994a #f2c94c)
+--gradient-coal := (#eb5757 #000000)
+--gradient-html := (#e44d26 #f16529)
+--gradient-cinnamint := (#4ac29a #bdfff3)
+--gradient-maldives := (#b2fefa #0ed2f7)
+--gradient-mini := (#30e8bf #ff8235)
+--gradient-sha-la-la := (#d66d75 #e29587)
+--gradient-purplepine := (#20002c #cbb4d4)
+--gradient-celestial := (#c33764 #1d2671)
+--gradient-learning-and-leading := (#f7971e #ffd200)
+--gradient-pacific-dream := (#34e89e #0f3443)
+--gradient-venice := (#6190e8 #a7bfe8)
+--gradient-orca := (#44a08d #093637)
+--gradient-love-and-liberty := (#200122 #6f0000)
+--gradient-very-blue := (#0575e6 #021b79)
+--gradient-can-you-feel-the-love-tonight := (#4568dc #b06ab3)
+--gradient-the-blue-lagoon := (#43c6ac #191654)
+--gradient-under-the-lake := (#093028 #237a57)
+--gradient-honey-dew := (#43c6ac #f8ffae)
+--gradient-roseanna := (#ffafbd #ffc3a0)
+--gradient-what-lies-beyond := (#f0f2f0 #000c40)
+--gradient-rose-colored-lenses := (#e8cbc0 #636fa4)
+--gradient-easymed := (#dce35b #45b649)
+--gradient-cocoaa-ice := (#c0c0aa #1cefff)
+--gradient-jodhpur := (#9cecfb #65c7f7 #0052d4)
+--gradient-jaipur := (#dbe6f6 #c5796d)
+--gradient-vice-city := (#3494e6 #ec6ead)
+--gradient-mild := (#67b26f #4ca2cd)
+--gradient-dawn := (#f3904f #3b4371)
+--gradient-ibiza-sunset := (#ee0979 #ff6a00)
+--gradient-radar := (#a770ef #cf8bf3 #fdb99b)
+--gradient-80-s-purple := (#41295a #2f0743)
+--gradient-black-rose := (#f4c4f3 #fc67fa)
+--gradient-brady-brady-fun-fun := (#00c3ff #ffff1c)
+--gradient-ed-s-sunset-gradient := (#ff7e5f #feb47b)
+--gradient-snapchat := (#fffc00 #ffffff)
+--gradient-cosmic-fusion := (#ff00cc #333399)
+--gradient-nepal := (#de6161 #2657eb)
+--gradient-azure-pop := (#ef32d9 #89fffd)
+--gradient-love-couple := (#3a6186 #89253e)
+--gradient-disco := (#4ecdc4 #556270)
+--gradient-limeade := (#a1ffce #faffd1)
+--gradient-dania := (#be93c5 #7bc6cc)
+--gradient-50-shades-of-grey := (#bdc3c7 #2c3e50)
+--gradient-dusk := (#ffd89b #19547b)
+--gradient-iiit-delhi := (#808080 #3fada8)
+--gradient-sun-on-the-horizon := (#fceabb #f8b500)
+--gradient-blood-red := (#f85032 #e73827)
+--gradient-sherbert := (#f79d00 #64f38c)
+--gradient-firewatch := (#cb2d3e #ef473a)
+--gradient-lush := (#56ab2f #a8e063)
+--gradient-frost := (#000428 #004e92)
+--gradient-mauve := (#42275a #734b6d)
+--gradient-royal := (#141e30 #243b55)
+--gradient-minimal-red := (#f00000 #dc281e)
+--gradient-dusk := (#2c3e50 #fd746c)
+--gradient-deep-sea-space := (#2c3e50 #4ca1af)
+--gradient-grapefruit-sunset := (#e96443 #904e95)
+--gradient-sunset := (#0b486b #f56217)
+--gradient-solid-vault := (#3a7bd5 #3a6073)
+--gradient-bright-vault := (#00d2ff #928dab)
+--gradient-politics := (#2196f3 #f44336)
+--gradient-sweet-morning := (#ff5f6d #ffc371)
+--gradient-sylvia := (#ff4b1f #ff9068)
+--gradient-transfile := (#16bffd #cb3066)
+--gradient-tranquil := (#eecda3 #ef629f)
+--gradient-red-ocean := (#1d4350 #a43931)
+--gradient-shahabi := (#a80077 #66ff00)
+--gradient-alihossein := (#f7ff00 #db36a4)
+--gradient-ali := (#ff4b1f #1fddff)
+--gradient-purple-white := (#ba5370 #f4e2d8)
+--gradient-colors-of-sky := (#e0eafc #cfdef3)
+--gradient-decent := (#4ca1af #c4e0e5)
+--gradient-deep-space := (#000000 #434343)
+--gradient-dark-skies := (#4b79a1 #283e51)
+--gradient-suzy := (#834d9b #d04ed6)
+--gradient-superman := (#0099f7 #f11712)
+--gradient-nighthawk := (#2980b9 #2c3e50)
+--gradient-forest := (#5a3f37 #2c7744)
+--gradient-miami-dolphins := (#4da0b0 #d39d38)
+--gradient-minnesota-vikings := (#5614b0 #dbd65c)
+--gradient-christmas := (#2f7336 #aa3a38)
+--gradient-joomla := (#1e3c72 #2a5298)
+--gradient-pizelex := (#114357 #f29492)
+--gradient-haikus := (#fd746c #ff9068)
+--gradient-pale-wood := (#eacda3 #d6ae7b)
+--gradient-purplin := (#6a3093 #a044ff)
+--gradient-inbox := (#457fca #5691c8)
+--gradient-blush := (#b24592 #f15f79)
+--gradient-back-to-the-future := (#c02425 #f0cb35)
+--gradient-poncho := (#403a3e #be5869)
+--gradient-green-and-blue := (#c2e59c #64b3f4)
+--gradient-light-orange := (#ffb75e #ed8f03)
+--gradient-netflix := (#8e0e00 #1f1c18)
+--gradient-little-leaf := (#76b852 #8dc26f)
+--gradient-deep-purple := (#673ab7 #512da8)
+--gradient-back-to-earth := (#00c9ff #92fe9d)
+--gradient-master-card := (#f46b45 #eea849)
+--gradient-clear-sky := (#005c97 #363795)
+--gradient-passion := (#e53935 #e35d5b)
+--gradient-timber := (#fc00ff #00dbde)
+--gradient-between-night-and-day := (#2c3e50 #3498db)
+--gradient-sage-persuasion := (#ccccb2 #757519)
+--gradient-lizard := (#304352 #d7d2cc)
+--gradient-piglet := (#ee9ca7 #ffdde1)
+--gradient-dark-knight := (#ba8b02 #181818)
+--gradient-curiosity-blue := (#525252 #3d72b4)
+--gradient-ukraine := (#004ff9 #fff94c)
+--gradient-green-to-dark := (#6a9113 #141517)
+--gradient-fresh-turboscent := (#f1f2b5 #135058)
+--gradient-koko-caramel := (#d1913c #ffd194)
+--gradient-virgin-america := (#7b4397 #dc2430)
+--gradient-portrait := (#8e9eab #eef2f3)
+--gradient-turquoise-flow := (#136a8a #267871)
+--gradient-atlas := (#feac5e #c779d0 #4bc0c8)
+--gradient-pastel-orange-at-the-sun := (#ffb347 #ffcc33)
+--gradient-endless-river := (#43cea2 #185a9d)
+--gradient-predawn := (#ffa17f #00223e)
+--gradient-purple-bliss := (#360033 #0b8793)
+--gradient-talking-to-mice-elf := (#948e99 #2e1437)
+--gradient-hersheys := (#1e130c #9a8478)
+--gradient-crazy-orange-i := (#d38312 #a83279)
+--gradient-between-the-clouds := (#73c8a9 #373b44)
+--gradient-metallic-toad := (#abbaab #ffffff)
+--gradient-martini := (#fdfc47 #24fe41)
+--gradient-friday := (#83a4d4 #b6fbff)
+--gradient-servquick := (#485563 #29323c)
+--gradient-behongo := (#52c234 #061700)
+--gradient-soundcloud := (#fe8c00 #f83600)
+--gradient-facebook-messenger := (#00c6ff #0072ff)
+--gradient-shore := (#70e1f5 #ffd194)
+--gradient-cheer-up-emo-kid := (#556270 #ff6b6b)
+--gradient-amethyst := (#9d50bb #6e48aa)
+--gradient-man-of-steel := (#780206 #061161)
+--gradient-neon-life := (#b3ffab #12fff7)
+--gradient-teal-love := (#aaffa9 #11ffbd)
+--gradient-red-mist := (#000000 #e74c3c)
+--gradient-starfall := (#f0c27b #4b1248)
+--gradient-dance-to-forget := (#ff4e50 #f9d423)
+--gradient-parklife := (#add100 #7b920a)
+--gradient-cherryblossoms := (#fbd3e9 #bb377d)
+--gradient-shadow-night := (#000000 #53346d)
+--gradient-ash := (#606c88 #3f4c6b)
+--gradient-virgin := (#c9ffbf #ffafbd)
+--gradient-earthly := (#649173 #dbd5a4)
+--gradient-dirty-fog := (#b993d6 #8ca6db)
+--gradient-the-strain := (#870000 #190a05)
+--gradient-reef := (#00d2ff #3a7bd5)
+--gradient-candy := (#d3959b #bfe6ba)
+--gradient-autumn := (#dad299 #b0dab9)
+--gradient-winter := (#e6dada #274046)
+--gradient-forever-lost := (#5d4157 #a8caba)
+--gradient-almost := (#ddd6f3 #faaca8)
+--gradient-moor := (#616161 #9bc5c3)
+--gradient-aqualicious := (#50c9c3 #96deda)
+--gradient-misty-meadow := (#215f00 #e4e4d9)
+--gradient-kyoto := (#c21500 #ffc500)
+--gradient-sirius-tamed := (#efefbb #d4d3dd)
+--gradient-jonquil := (#ffeeee #ddefbb)
+--gradient-petrichor := (#666600 #999966)
+--gradient-a-lost-memory := (#de6262 #ffb88c)
+--gradient-vasily := (#e9d362 #333333)
+--gradient-blurry-beach := (#d53369 #cbad6d)
+--gradient-namn := (#a73737 #7a2828)
+--gradient-day-tripper := (#f857a6 #ff5858)
+--gradient-pinot-noir := (#4b6cb7 #182848)
+--gradient-miaka := (#fc354c #0abfbc)
+--gradient-army := (#414d0b #727a17)
+--gradient-shrimpy := (#e43a15 #e65245)
+--gradient-influenza := (#c04848 #480048)
+--gradient-calm-darya := (#5f2c82 #49a09d)
+--gradient-bourbon := (#ec6f66 #f3a183)
+--gradient-stellar := (#7474bf #348ac7)
+--gradient-clouds := (#ece9e6 #ffffff)
+--gradient-moonrise := (#dae2f8 #d6a4a4)
+--gradient-peach := (#ed4264 #ffedbc)
+--gradient-dracula := (#dc2424 #4a569d)
+--gradient-mantle := (#24c6dc #514a9d)
+--gradient-titanium := (#283048 #859398)
+--gradient-opa := (#3d7eaa #ffe47a)
+--gradient-sea-blizz := (#1cd8d2 #93edc7)
+--gradient-midnight-city := (#232526 #414345)
+--gradient-mystic := (#757f9a #d7dde8)
+--gradient-shroom-haze := (#5c258d #4389a2)
+--gradient-moss := (#134e5e #71b280)
+--gradient-bora-bora := (#2bc0e4 #eaecc6)
+--gradient-venice-blue := (#085078 #85d8ce)
+--gradient-electric-violet := (#4776e6 #8e54e9)
+--gradient-kashmir := (#614385 #516395)
+--gradient-steel-gray := (#1f1c2c #928dab)
+--gradient-mirage := (#16222a #3a6073)
+--gradient-juicy-orange := (#ff8008 #ffc837)
+--gradient-mojito := (#1d976c #93f9b9)
+--gradient-cherry := (#eb3349 #f45c43)
+--gradient-pinky := (#dd5e89 #f7bb97)
+--gradient-sea-weed := (#4cb8c4 #3cd3ad)
+--gradient-stripe := (#1fa2ff #12d8fa #a6ffcb)
+--gradient-purple-paradise := (#1d2b64 #f8cdda)
+--gradient-sunrise := (#ff512f #f09819)
+--gradient-aqua-marine := (#1a2980 #26d0ce)
+--gradient-aubergine := (#aa076b #61045f)
+--gradient-bloody-mary := (#ff512f #dd2476)
+--gradient-mango-pulp := (#f09819 #edde5d)
+--gradient-frozen := (#403b4a #e7e9bb)
+--gradient-rose-water := (#e55d87 #5fc3e4)
+--gradient-horizon := (#003973 #e5e5be)
+--gradient-monte-carlo := (#cc95c0 #dbd4b4 #7aa1d2)
+--gradient-lemon-twist := (#3ca55c #b5ac49)
+--gradient-emerald-water := (#348f50 #56b4d3)
+--gradient-intuitive-purple := (#da22ff #9733ee)
+--gradient-green-beach := (#02aab0 #00cdac)
+--gradient-sunny-days := (#ede574 #e1f5c4)
+--gradient-playing-with-reds := (#d31027 #ea384d)
+--gradient-harmonic-energy := (#16a085 #f4d03f)
+--gradient-cool-brown := (#603813 #b29f94)
+--gradient-noon-to-dusk := (#ff6e7f #bfe9ff)
+--gradient-hazel := (#77a1d3 #79cbca #e684ae)
+--gradient-nimvelo := (#314755 #26a0da)
+--gradient-sea-blue := (#2b5876 #4e4376)
+--gradient-blooker20 := (#e65c00 #f9d423)
+--gradient-sexy-blue := (#2193b0 #6dd5ed)
+--gradient-purple-love := (#cc2b5e #753a88)
+--gradient-dimigo := (#ec008c #fc6767)
+--gradient-skyline := (#1488cc #2b32b2)
+--gradient-sel := (#00467f #a5cc82)
+--gradient-sky := (#076585 #ffffff)
+--gradient-petrol := (#bbd2c5 #536976)
+--gradient-copper := (#b79891 #94716b)
+--gradient-royal-blue-petrol := (#bbd2c5 #536976 #292e49)
+--gradient-royal-blue := (#536976 #292e49)
+--gradient-windy := (#acb6e5 #86fde8)
+--gradient-mango := (#ffe259 #ffa751)
+--gradient-berimbolo := (#02111d #037bb5 #02111d)
+
+--gradients-sample := {
+    'evening-night': --color-evening-night
+    'vanusa': --color-vanusa
+    'shifty': --color-shifty
+    'expresso': --color-expresso
+    'slight-ocean-view': --color-slight-ocean-view
+    'pure-lust': --color-pure-lust
+    'moon-purple': --color-moon-purple
+    'red-sunset': --color-red-sunset
+    'shifter': --color-shifter
+    'wedding-day-blues': --color-wedding-day-blues
+    'sand-to-blue': --color-sand-to-blue
+    'quepal': --color-quepal
+    'pun-yeta': --color-pun-yeta
+    'sublime-light': --color-sublime-light
+    'sublime-vivid': --color-sublime-vivid
+    'bighead': --color-bighead
+    'taran-tado': --color-taran-tado
+    'relaxing-red': --color-relaxing-red
+    'lawrencium': --color-lawrencium
+    'ohhappiness': --color-ohhappiness
+    'delicate': --color-delicate
+    'selenium': --color-selenium
+    'sulphur': --color-sulphur
+    'pink-flavour': --color-pink-flavour
+    'rainbow-blue': --color-rainbow-blue
+    'orange-fun': --color-orange-fun
+    'velvet-sun': --color-velvet-sun
+    'digital-water': --color-digital-water
+    'lithium': --color-lithium
+    'argon': --color-argon
+    'hydrogen': --color-hydrogen
+    'zinc': --color-zinc
+    'velvet-sun': --color-velvet-sun
+    'king-yna': --color-king-yna
+    'summer': --color-summer
+    'orange-coral': --color-orange-coral
+    'purpink': --color-purpink
+    'dull': --color-dull
+    'kimoby-is-the-new-blue': --color-kimoby-is-the-new-blue
+    'broken-hearts': --color-broken-hearts
+    'clot': --color-clot
+    'shift': --color-shift
+    'subu': --color-subu
+    'socialive': --color-socialive
+    'crimson-tide': --color-crimson-tide
+    'telegram': --color-telegram
+    'terminal': --color-terminal
+    'scooter': --color-scooter
+    'alive': --color-alive
+    'relay': --color-relay
+    'meridian': --color-meridian
+    'compare-now': --color-compare-now
+    'mello': --color-mello
+    'crystal-clear': --color-crystal-clear
+    'visions-of-grandeur': --color-visions-of-grandeur
+    'chitty-chitty-bang-bang': --color-chitty-chitty-bang-bang
+    'blue-skies': --color-blue-skies
+    'sunkist': --color-sunkist
+    'coal': --color-coal
+    'html': --color-html
+    'cinnamint': --color-cinnamint
+    'maldives': --color-maldives
+    'mini': --color-mini
+    'sha-la-la': --color-sha-la-la
+    'purplepine': --color-purplepine
+    'celestial': --color-celestial
+    'learning-and-leading': --color-learning-and-leading
+    'pacific-dream': --color-pacific-dream
+    'venice': --color-venice
+    'orca': --color-orca
+    'love-and-liberty': --color-love-and-liberty
+    'very-blue': --color-very-blue
+    'can-you-feel-the-love-tonight': --color-can-you-feel-the-love-tonight
+    'the-blue-lagoon': --color-the-blue-lagoon
+    'under-the-lake': --color-under-the-lake
+    'honey-dew': --color-honey-dew
+    'roseanna': --color-roseanna
+    'what-lies-beyond': --color-what-lies-beyond
+    'rose-colored-lenses': --color-rose-colored-lenses
+    'easymed': --color-easymed
+    'cocoaa-ice': --color-cocoaa-ice
+    'jodhpur': --color-jodhpur
+    'jaipur': --color-jaipur
+    'vice-city': --color-vice-city
+    'mild': --color-mild
+    'dawn': --color-dawn
+    'ibiza-sunset': --color-ibiza-sunset
+    'radar': --color-radar
+    '80-s-purple': --color-80-s-purple
+    'black-rose': --color-black-rose
+    'brady-brady-fun-fun': --color-brady-brady-fun-fun
+    'ed-s-sunset-gradient': --color-ed-s-sunset-gradient
+    'snapchat': --color-snapchat
+    'cosmic-fusion': --color-cosmic-fusion
+    'nepal': --color-nepal
+    'azure-pop': --color-azure-pop
+    'love-couple': --color-love-couple
+    'disco': --color-disco
+    'limeade': --color-limeade
+    'dania': --color-dania
+    '50-shades-of-grey': --color-50-shades-of-grey
+    'dusk': --color-dusk
+    'iiit-delhi': --color-iiit-delhi
+    'sun-on-the-horizon': --color-sun-on-the-horizon
+    'blood-red': --color-blood-red
+    'sherbert': --color-sherbert
+    'firewatch': --color-firewatch
+    'lush': --color-lush
+    'frost': --color-frost
+    'mauve': --color-mauve
+    'royal': --color-royal
+    'minimal-red': --color-minimal-red
+    'dusk': --color-dusk
+    'deep-sea-space': --color-deep-sea-space
+    'grapefruit-sunset': --color-grapefruit-sunset
+    'sunset': --color-sunset
+    'solid-vault': --color-solid-vault
+    'bright-vault': --color-bright-vault
+    'politics': --color-politics
+    'sweet-morning': --color-sweet-morning
+    'sylvia': --color-sylvia
+    'transfile': --color-transfile
+    'tranquil': --color-tranquil
+    'red-ocean': --color-red-ocean
+    'shahabi': --color-shahabi
+    'alihossein': --color-alihossein
+    'ali': --color-ali
+    'purple-white': --color-purple-white
+    'colors-of-sky': --color-colors-of-sky
+    'decent': --color-decent
+    'deep-space': --color-deep-space
+    'dark-skies': --color-dark-skies
+    'suzy': --color-suzy
+    'superman': --color-superman
+    'nighthawk': --color-nighthawk
+    'forest': --color-forest
+    'miami-dolphins': --color-miami-dolphins
+    'minnesota-vikings': --color-minnesota-vikings
+    'christmas': --color-christmas
+    'joomla': --color-joomla
+    'pizelex': --color-pizelex
+    'haikus': --color-haikus
+    'pale-wood': --color-pale-wood
+    'purplin': --color-purplin
+    'inbox': --color-inbox
+    'blush': --color-blush
+    'back-to-the-future': --color-back-to-the-future
+    'poncho': --color-poncho
+    'green-and-blue': --color-green-and-blue
+    'light-orange': --color-light-orange
+    'netflix': --color-netflix
+    'little-leaf': --color-little-leaf
+    'deep-purple': --color-deep-purple
+    'back-to-earth': --color-back-to-earth
+    'master-card': --color-master-card
+    'clear-sky': --color-clear-sky
+    'passion': --color-passion
+    'timber': --color-timber
+    'between-night-and-day': --color-between-night-and-day
+    'sage-persuasion': --color-sage-persuasion
+    'lizard': --color-lizard
+    'piglet': --color-piglet
+    'dark-knight': --color-dark-knight
+    'curiosity-blue': --color-curiosity-blue
+    'ukraine': --color-ukraine
+    'green-to-dark': --color-green-to-dark
+    'fresh-turboscent': --color-fresh-turboscent
+    'koko-caramel': --color-koko-caramel
+    'virgin-america': --color-virgin-america
+    'portrait': --color-portrait
+    'turquoise-flow': --color-turquoise-flow
+    'atlas': --color-atlas
+    'pastel-orange-at-the-sun': --color-pastel-orange-at-the-sun
+    'endless-river': --color-endless-river
+    'predawn': --color-predawn
+    'purple-bliss': --color-purple-bliss
+    'talking-to-mice-elf': --color-talking-to-mice-elf
+    'hersheys': --color-hersheys
+    'crazy-orange-i': --color-crazy-orange-i
+    'between-the-clouds': --color-between-the-clouds
+    'metallic-toad': --color-metallic-toad
+    'martini': --color-martini
+    'friday': --color-friday
+    'servquick': --color-servquick
+    'behongo': --color-behongo
+    'soundcloud': --color-soundcloud
+    'facebook-messenger': --color-facebook-messenger
+    'shore': --color-shore
+    'cheer-up-emo-kid': --color-cheer-up-emo-kid
+    'amethyst': --color-amethyst
+    'man-of-steel': --color-man-of-steel
+    'neon-life': --color-neon-life
+    'teal-love': --color-teal-love
+    'red-mist': --color-red-mist
+    'starfall': --color-starfall
+    'dance-to-forget': --color-dance-to-forget
+    'parklife': --color-parklife
+    'cherryblossoms': --color-cherryblossoms
+    'shadow-night': --color-shadow-night
+    'ash': --color-ash
+    'virgin': --color-virgin
+    'earthly': --color-earthly
+    'dirty-fog': --color-dirty-fog
+    'the-strain': --color-the-strain
+    'reef': --color-reef
+    'candy': --color-candy
+    'autumn': --color-autumn
+    'winter': --color-winter
+    'forever-lost': --color-forever-lost
+    'almost': --color-almost
+    'moor': --color-moor
+    'aqualicious': --color-aqualicious
+    'misty-meadow': --color-misty-meadow
+    'kyoto': --color-kyoto
+    'sirius-tamed': --color-sirius-tamed
+    'jonquil': --color-jonquil
+    'petrichor': --color-petrichor
+    'a-lost-memory': --color-a-lost-memory
+    'vasily': --color-vasily
+    'blurry-beach': --color-blurry-beach
+    'namn': --color-namn
+    'day-tripper': --color-day-tripper
+    'pinot-noir': --color-pinot-noir
+    'miaka': --color-miaka
+    'army': --color-army
+    'shrimpy': --color-shrimpy
+    'influenza': --color-influenza
+    'calm-darya': --color-calm-darya
+    'bourbon': --color-bourbon
+    'stellar': --color-stellar
+    'clouds': --color-clouds
+    'moonrise': --color-moonrise
+    'peach': --color-peach
+    'dracula': --color-dracula
+    'mantle': --color-mantle
+    'titanium': --color-titanium
+    'opa': --color-opa
+    'sea-blizz': --color-sea-blizz
+    'midnight-city': --color-midnight-city
+    'mystic': --color-mystic
+    'shroom-haze': --color-shroom-haze
+    'moss': --color-moss
+    'bora-bora': --color-bora-bora
+    'venice-blue': --color-venice-blue
+    'electric-violet': --color-electric-violet
+    'kashmir': --color-kashmir
+    'steel-gray': --color-steel-gray
+    'mirage': --color-mirage
+    'juicy-orange': --color-juicy-orange
+    'mojito': --color-mojito
+    'cherry': --color-cherry
+    'pinky': --color-pinky
+    'sea-weed': --color-sea-weed
+    'stripe': --color-stripe
+    'purple-paradise': --color-purple-paradise
+    'sunrise': --color-sunrise
+    'aqua-marine': --color-aqua-marine
+    'aubergine': --color-aubergine
+    'bloody-mary': --color-bloody-mary
+    'mango-pulp': --color-mango-pulp
+    'frozen': --color-frozen
+    'rose-water': --color-rose-water
+    'horizon': --color-horizon
+    'monte-carlo': --color-monte-carlo
+    'lemon-twist': --color-lemon-twist
+    'emerald-water': --color-emerald-water
+    'intuitive-purple': --color-intuitive-purple
+    'green-beach': --color-green-beach
+    'sunny-days': --color-sunny-days
+    'playing-with-reds': --color-playing-with-reds
+    'harmonic-energy': --color-harmonic-energy
+    'cool-brown': --color-cool-brown
+    'noon-to-dusk': --color-noon-to-dusk
+    'hazel': --color-hazel
+    'nimvelo': --color-nimvelo
+    'sea-blue': --color-sea-blue
+    'blooker20': --color-blooker20
+    'sexy-blue': --color-sexy-blue
+    'purple-love': --color-purple-love
+    'dimigo': --color-dimigo
+    'skyline': --color-skyline
+    'sel': --color-sel
+    'sky': --color-sky
+    'petrol': --color-petrol
+    'copper': --color-copper
+    'royal-blue-petrol': --color-royal-blue-petrol
+    'royal-blue': --color-royal-blue
+    'windy': --color-windy
+    'mango': --color-mango
+    'berimbolo': --color-berimbolo
+}
+
+
+// Basic Gradients
+//
+--gradient-red := (#ff7968 #cb2d3e)
+--gradient-orange := (#eea849 #f46b45)
+--gradient-yellow := (#ffe359 #ffbe21)
+--gradient-green := (#38ef7d #11998e)
+--gradient-teal := (#37f7df #00aaa1)
+--gradient-blue := (#43b7dc #506ee5)
+--gradient-purple := (#6a89d2 #4b39b9)
+--gradient-pink := (#ff7698 #ff2c59)
+
+--gradients-basic := {
+  red: --gradient-red
+  orange: --gradient-orange
+  yellow: --gradient-yellow
+  green: --gradient-green
+  teal: --gradient-teal
+  blue: --gradient-blue
+  purple: --gradient-purple
+  pink: --gradient-pink
+}
+
+
+// Basic Colors
+//
+--color-red := #cb2d3e
+--color-orange := #f46b45
+--color-yellow := #ffbe21
+--color-green := #11998e
+--color-teal := #37f7df
+--color-blue := #506ee5
+--color-purple := #4b39b9
+--color-pink := #ff2c59
+
+--colors-basic = {
+  red: --color-red
+  orange: --color-orange
+  yellow: --color-yellow
+  green: --color-green
+  teal: --color-teal
+  blue: --color-blue
+  purple: --color-purple
+  pink: --color-pink
+}
+
+
+// Neutral Gradients
+//
+--gradient-white := (#ffffff #fcfdfb)
+--gradient-gray-10 := (#fcfdfb #f8f9fa)
+--gradient-gray-20 := (#f8f9fa #e9ecef)
+--gradient-gray-30 := (#e9ecef #dee2e6)
+--gradient-gray-40 := (#dee2e6 #ced4da)
+--gradient-gray-50 := (#ced4da #adb5bd)
+--gradient-gray-60 := (#adb5bd #868e96)
+--gradient-gray-70 := (#868e96 #495057)
+--gradient-gray-80 := (#495057 #343a40)
+--gradient-gray-90 := (#343a40 #212529)
+--gradient-black := (#212529 #000000)
+
+--gradients-neutral := {
+  white: --gradient-white
+  gray-10: --gradient-gray-10
+  gray-20: --gradient-gray-20
+  gray-30: --gradient-gray-30
+  gray-40: --gradient-gray-40
+  gray-50: --gradient-gray-50
+  gray-60: --gradient-gray-60
+  gray-70: --gradient-gray-70
+  gray-80: --gradient-gray-80
+  gray-90: --gradient-gray-90
+  black: --gradient-black
+}
+
+
+// Neutral Colors
+//
+--color-transparent := transparent
+--color-white := #ffffff
+--color-gray-10 := #f8f9fa
+--color-gray-20 := #e9ecef
+--color-gray-30 := #dee2e6
+--color-gray-40 := #ced4da
+--color-gray-50 := #adb5bd
+--color-gray-60 := #868e96
+--color-gray-70 := #495057
+--color-gray-80 := #343a40
+--color-gray-90 := #212529
+--color-black := #000000
+
+--colors-neutral := {
+  transparent: --color-transparent
+  white: --color-white
+  gray-10: --color-gray-10
+  gray-20: --color-gray-20
+  gray-30: --color-gray-30
+  gray-40: --color-gray-40
+  gray-50: --color-gray-50
+  gray-60: --color-gray-60
+  gray-70: --color-gray-70
+  gray-80: --color-gray-80
+  gray-90: --color-gray-90
+  black: --color-black
+}
+
+
+// Brand Gradients
+//
+--gradient-primary := --gradient-mantle
+--gradient-secondary := --gradient-celestial
+--gradient-light := --gradient-gray-20
+--gradient-dark := --gradient-gray-90
+
+--gradients-brand := {
+  primary: --gradient-primary
+  secondary: --gradient-secondary
+  light: --gradient-light
+  dark: --gradient-dark
+}
+
+// Brand Colors
+//
+--color-primary := mix(--gradient-primary[0], --gradient-primary[1])
+--color-secondary := mix(--gradient-secondary[0], --gradient-secondary[1])
+--color-light := --color-gray-20
+--color-dark := --color-gray-90
+
+--colors-brand := {
+  primary: --color-primary
+  secondary: --color-secondary
+  light: --color-light
+  dark: --color-dark
+}
+
+
+// State Gradients
+//
+--gradient-success := --gradient-green
+--gradient-danger := --gradient-red
+--gradient-warning := --gradient-orange
+--gradient-info := --gradient-blue
+
+--gradients-state := {
+  success: --gradient-success
+  danger: --gradient-danger
+  warning: --gradient-warning
+  info: --gradient-info
+}
+
+
+// State Colors
+//
+--color-success := --color-green
+--color-danger := --color-red
+--color-warning := --color-orange
+--color-info := --color-blue
+
+--colors-state := {
+  success: --color-success
+  danger: --color-danger
+  warning: --color-warning
+  info: --color-info
+}
+
+
+// Social Gradients
+//
+--gradient-facebook := (#4a7ac9 #3b5998)
+--gradient-twitter := (#57c5ff #1c8dda)
+--gradient-google-plus := (#dd5f4b #dd3a27)
+--gradient-instagram := (#833ab4 #fd1d1d #fcb045)
+--gradient-dribbble := (#ff64a3 #d13e83)
+--gradient-behance := (#4f88ff #1769ff)
+--gradient-flickr := (#ff669c #d6006e)
+--gradient-linkedin := (#00aaff #0077b5)
+--gradient-youtube := (#e5504c #b31217)
+--gradient-pinterest := (#ff4d56 #bd081c)
+--gradient-github := (#424242 #333333)
+--gradient-tumblr := (#536884 #35465c)
+--gradient-twitch := (#8b6ccb #6441a5)
+--gradient-envato := (#b2d068 #6eb516)
+--gradient-vine := (#30d6a9 #00ae81)
+
+--gradients-social := {
+    facebook: --gradient-facebook
+    twitter: --gradient-twitter
+    google-plus: --gradient-google-plus
+    instagram: --gradient-instagram
+    dribbble: --gradient-dribbble
+    behance: --gradient-behance
+    flickr: --gradient-flickr
+    linkedin: --gradient-linkedin
+    youtube: --gradient-youtube
+    pinterest: --gradient-pinterest
+    github: --gradient-github
+    tumblr: --gradient-tumblr
+    twitch: --gradient-twitch
+    envato: --gradient-envato
+    vine: --gradient-vine
+}
+
+
+// Social Colors
+//
+--color-facebook := #3b5998
+--color-twitter := #1da1f2
+--color-google-plus := #dd4b39
+--color-instagram := #fd1d1d
+--color-dribbble := #ea4c89
+--color-behance := #1769ff
+--color-flickr := #ff0084
+--color-linkedin := #0077b5
+--color-youtube := #b31217
+--color-pinterest := #bd081c
+--color-github := #333333
+--color-tumblr := #35465c
+--color-twitch := #6441a5
+--color-envato := #82b541
+--color-vine := #00bf8f
+
+--colors-social := {
+  facebook: --color-facebook
+  twitter: --color-twitter
+  google-plus: --color-google-plus
+  instagram: --color-instagram
+  dribbble: --color-dribbble
+  behance: --color-behance
+  flickr: --color-flickr
+  linkedin: --color-linkedin
+  youtube: --color-youtube
+  pinterest: --color-pinterest
+  github: --color-github
+  tumblr: --color-tumblr
+  twitch: --color-twitch
+  envato: --color-envato
+  vine: --color-vine
+}
+
+
+// All Colors
+//
+--colors = merge(--colors-basic, --colors-brand, --colors-neutral, --colors-social, --colors-state)
+--gradients = merge(--gradients-basic, --gradients-brand, --gradients-neutral, --gradients-social, --gradients-state)

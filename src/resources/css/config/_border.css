@@ -1,0 +1,19 @@
+/**
+ * Borders
+ */
+
+:root {
+    --border-width: 1px;
+    --border-color: --colors['gray-20'];
+
+    --border-radius-enabled: true;
+
+    --border-radius-lg: 0.3rem;
+    --border-radius-md: 0.25rem;
+    --border-radius-sm: 0.2rem;
+    --border-radius: {
+        'sm': --border-radius-sm
+        'md': --border-radius-md
+        'lg': --border-radius-lg
+    };
+}
