@@ -9,13 +9,6 @@ export default {
         /**
          * Handler for focus event
          */
-        focus () {
-            this.$refs.input.focus();
-        },
-
-        /**
-         * Handler for focus event
-         */
         onFocus (event) {
             this.focused = true;
             this.$emit('focus', event);

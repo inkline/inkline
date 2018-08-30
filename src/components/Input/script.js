@@ -1,21 +1,21 @@
 import InputGroup from '../InputGroup';
 
-import BindableIndividualFormItem from '../../mixins/forms/BindableIndividualFormItem';
-import ClearableFormItem from '../../mixins/forms/ClearableFormItem';
-import ClickableFormItem from '../../mixins/forms/ClickableFormItem';
-import DisableableFormItem from '../../mixins/forms/DisableableFormitem';
-import FocusableFormItem from '../../mixins/forms/FocusableFormItem';
-import GroupableFormItem from '../../mixins/forms/GroupableFormitem';
-import InjectableFormItem from '../../mixins/forms/InjectableFormItem';
-import InputableFormItem from '../../mixins/forms/InputableFormItem';
-import LabelableFormItem from '../../mixins/forms/LabelableFormItem';
-import TabableFormItem from '../../mixins/forms/TabableFormItem';
+import BindableIndividualFormItem from '../../mixins/forms/providers/ModelProviderMixin';
+import ClearableFormItem from '../../mixins/forms/properties/ClearablePropertyMixin';
+import ClickableFormItem from '../../mixins/forms/methods/ClickMethodMixin';
+import DisableableFormItem from '../../mixins/forms/properties/DisabledPropertyMixin';
+import FocusableFormItem from '../../mixins/components/methods/OnFocusMethodMixin';
+import GroupableFormItem from '../../mixins/forms/properties/IsGroupedPropertyProvider';
+import InjectableFormItem from '../../mixins/forms/providers/InjectParentFormProviderMixin';
+import InputableFormItem from '../../mixins/components/methods/OnInputMethodMixin';
+import LabelableFormItem from '../../mixins/forms/properties/LabelPositionPropertyMixin';
+import TabableFormItem from '../../mixins/components/properties/TabIndexPropertyMixin';
 
-import ChangeableComponent from '../../mixins/components/ChangeableComponent';
-import ClassableComponent from '../../mixins/components/ClassableComponent';
-import FocusableComponent from '../../mixins/components/FocusableComponent';
-import HoverableComponent from '../../mixins/components/HoverableComponent';
-import SizeableComponent from '../../mixins/components/SizeableComponent';
+import ChangeableComponent from '../../mixins/components/methods/OnChangeMethodMixin';
+import ClassableComponent from '../../mixins/components/providers/ClassesProviderMixin';
+import FocusableComponent from '../../mixins/components/methods/OnFocusMethodMixin';
+import HoverableComponent from '../../mixins/components/methods/OnHoverMethodMixin';
+import SizeableComponent from '../../mixins/components/properties/SizePropertyMixin';
 
 export default {
     name: 'Input',

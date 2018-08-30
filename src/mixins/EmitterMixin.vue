@@ -4,7 +4,7 @@
  */
 
 /**
- * Broadcast an event with given params to specific child components
+ * Broadcast an event with given params to specific child properties
  *
  * @param componentName
  * @param eventName

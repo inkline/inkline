@@ -2,11 +2,11 @@
 export default {
     methods: {
         /**
-         * Trigger for focus event
+         * Handler for focus event
          */
         focus () {
             this.$refs.input.focus();
         }
     }
-};
+}
 </script>

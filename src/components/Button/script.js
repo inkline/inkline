@@ -1,35 +1,37 @@
-import ClickableFormItem from '../../mixins/forms/ClickableFormItem';
-import DisableableFormItem from '../../mixins/forms/DisableableFormitem';
-import FocusableFormItem from '../../mixins/forms/FocusableFormItem';
-import InjectableFormItem from '../../mixins/forms/InjectableFormItem';
-import TabableFormItem from '../../mixins/forms/TabableFormItem';
+import AttributesProviderMixin from '../../mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
+import InjectParentFormProviderMixin from '../../mixins/forms/providers/InjectParentFormProviderMixin';
 
-import AttributableComponent from '../../mixins/components/AttributableComponent';
-import ClassableComponent from '../../mixins/components/ClassableComponent';
-import ClickableComponent from '../../mixins/components/ClickableComponent';
-import FocusableComponent from '../../mixins/components/FocusableComponent';
-import HoverableComponent from '../../mixins/components/HoverableComponent';
-import LoadableComponent from '../../mixins/components/LoadableComponent';
-import SizeableComponent from '../../mixins/components/SizeableComponent';
-import ThemeableComponent from '../../mixins/components/ThemeableComponent';
+import ClickMethodMixin from '../../mixins/forms/methods/ClickMethodMixin';
+import FocusMethodMixin from '../../mixins/forms/methods/FocusMethodMixin';
+import OnClickMethodMixin from '../../mixins/components/methods/OnClickMethodMixin';
+import OnFocusMethodMixin from '../../mixins/components/methods/OnFocusMethodMixin';
+import OnHoverMethodMixin from '../../mixins/components/methods/OnHoverMethodMixin';
+
+import DisabledPropertyMixin from '../../mixins/forms/properties/DisabledPropertyMixin';
+import LoadingPropertyMixin from '../../mixins/components/properties/LoadingPropertyMixin';
+import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
+import TabIndexPropertyMixin from '../../mixins/components/properties/TabIndexPropertyMixin';
+import ThemePropertyMixin from '../../mixins/components/properties/ThemePropertyMixin';
 
 export default {
     name: 'Button',
     mixins: [
-        ClickableFormItem,
-        DisableableFormItem,
-        FocusableFormItem,
-        InjectableFormItem,
-        TabableFormItem,
+        AttributesProviderMixin,
+        ClassesProviderMixin,
+        InjectParentFormProviderMixin,
 
-        AttributableComponent,
-        ClassableComponent,
-        ClickableComponent,
-        FocusableComponent,
-        HoverableComponent,
-        LoadableComponent,
-        SizeableComponent,
-        ThemeableComponent
+        ClickMethodMixin,
+        FocusMethodMixin,
+        OnClickMethodMixin,
+        OnFocusMethodMixin,
+        OnHoverMethodMixin,
+
+        DisabledPropertyMixin,
+        LoadingPropertyMixin,
+        SizePropertyMixin,
+        TabIndexPropertyMixin,
+        ThemePropertyMixin
     ],
     props: {
         /**

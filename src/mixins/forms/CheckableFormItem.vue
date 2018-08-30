@@ -1,6 +1,6 @@
 <style lang="stylus">
-@import '../../resources/stylus/config'
-@import '../../resources/stylus/mixins'
+@import '../../resources/css/config'
+@import '../../resources/css/mixins'
 
 --form-check-disabled-color := --text-muted
 
@@ -126,17 +126,17 @@ for size in (sm md lg)
     @extend .form-check.-md
 </style>
 <script>
-import BindableGroupedFormItem from './BindableGroupedFormItem';
-import ClickableFormItem from './ClickableFormItem';
-import CustomizableFormItem from './CustomizableFormItem';
-import DisableableFormItem from './DisableableFormitem';
-import InjectableFormItem from './InjectableFormItem';
-import InputableFormItem from './InputableFormItem';
-import GroupableFormItem from './GroupableFormitem';
-import TabableFormItem from './TabableFormItem';
+import BindableGroupedFormItem from './providers/ModelGroupProviderMixin';
+import ClickableFormItem from './methods/ClickMethodMixin';
+import CustomizableFormItem from '../components/properties/CustomPropertyMixin';
+import DisableableFormItem from './properties/DisabledPropertyMixin';
+import InjectableFormItem from './providers/InjectParentFormProviderMixin';
+import InputableFormItem from '../components/methods/OnInputMethodMixin';
+import GroupableFormItem from './properties/IsGroupedPropertyProvider';
+import TabableFormItem from '../components/properties/TabIndexPropertyMixin';
 
-import ClassableComponent from '../components/ClassableComponent';
-import SizeableComponent from '../components/SizeableComponent';
+import ClassableComponent from '../components/providers/ClassesProviderMixin';
+import SizeableComponent from '../components/properties/SizePropertyMixin';
 
 export default {
     mixins: [

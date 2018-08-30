@@ -1,0 +1,23 @@
+@require '../mixins/_themes'
+
+//
+// Themes
+//
+// Generate color themes based on the --colors, --brand-colors and --social-colors
+// variables for components. If the color group is in the list, Inkline will
+// generate themes for the specified color group.
+//
+--themes = {}
+
+--themes-background := (basic brand neutral social state)
+--themes-border := (basic brand neutral state)
+--themes-card := (basic brand neutral state)
+--themes-table := (basic brand neutral state)
+--themes-text := (basic brand neutral social state)
+
+// Initialize theme choice collection
+//
+-add-theme(--themes, 'background', --themes-background)
+-add-theme(--themes, 'border', --themes-border)
+-add-theme(--themes, 'table', --themes-table)
+-add-theme(--themes, 'text', --themes-text)

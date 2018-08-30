@@ -1,15 +1,11 @@
 //
-// Color Palette
+// Theme colors
 //
-// Basic, state, neutral, social, and brand colors
-//
-
 
 // Gradient color settings
 //
 --gradient-enabled := true
 --gradient-direction := to bottom right
-
 
 // Sample Gradients
 //
@@ -597,7 +593,6 @@
     'berimbolo': --color-berimbolo
 }
 
-
 // Basic Gradients
 //
 --gradient-red := (#ff7968 #cb2d3e)
@@ -620,7 +615,6 @@
   pink: --gradient-pink
 }
 
-
 // Basic Colors
 //
 --color-red := #cb2d3e
@@ -642,7 +636,6 @@
   purple: --color-purple
   pink: --color-pink
 }
-
 
 // Neutral Gradients
 //
@@ -671,7 +664,6 @@
   gray-90: --gradient-gray-90
   black: --gradient-black
 }
-
 
 // Neutral Colors
 //
@@ -703,7 +695,6 @@
   black: --color-black
 }
 
-
 // Brand Gradients
 //
 --gradient-primary := --gradient-mantle
@@ -732,7 +723,6 @@
   dark: --color-dark
 }
 
-
 // State Gradients
 //
 --gradient-success := --gradient-green
@@ -747,9 +737,6 @@
   info: --gradient-info
 }
 
-
-// State Colors
-//
 --color-success := --color-green
 --color-danger := --color-red
 --color-warning := --color-orange
@@ -761,7 +748,6 @@
   warning: --color-warning
   info: --color-info
 }
-
 
 // Social Gradients
 //
@@ -799,7 +785,6 @@
     vine: --gradient-vine
 }
 
-
 // Social Colors
 //
 --color-facebook := #3b5998
@@ -836,8 +821,10 @@
   vine: --color-vine
 }
 
-
-// All Colors
+// Theme light and dark colors
 //
+--theme-color-light := --colors-neutral['white']
+--theme-color-dark := --colors-neutral['gray-80']
+
 --colors = merge(--colors-basic, --colors-brand, --colors-neutral, --colors-social, --colors-state)
 --gradients = merge(--gradients-basic, --gradients-brand, --gradients-neutral, --gradients-social, --gradients-state)

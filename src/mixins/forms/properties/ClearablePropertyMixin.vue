@@ -12,7 +12,6 @@ export default {
          * currently being focused or hovered.
          */
         isClearable () {
-            console.log(this.clearable, this.currentValue, this.focused, this.hovered)
             return this.clearable && this.currentValue !== '' && (this.focused || this.hovered);
         }
     },

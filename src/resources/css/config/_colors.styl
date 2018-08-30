@@ -1,0 +1,53 @@
+//
+// Color Palette
+//
+// Basic, state, neutral, social, and brand colors
+//
+
+--color-transparent := transparent
+--color-white := #ffffff
+--color-black := #000000
+
+--colors-neutral := {
+  transparent: --color-transparent
+  white: --color-white
+  black: --color-black
+}
+
+
+// Brand Colors
+//
+--color-primary := #3a88bc
+--color-secondary := #702e6a
+--color-light := #e9ecef
+--color-dark := #212529
+
+--colors-brand := {
+  primary: --color-primary
+  secondary: --color-secondary
+  light: --color-light
+  dark: --color-dark
+}
+
+// State Colors
+//
+--color-success := #11998e
+--color-danger := #cb2d3e
+--color-warning := #f46b45
+--color-info := #506ee5
+
+--colors-state := {
+  success: --color-success
+  danger: --color-danger
+  warning: --color-warning
+  info: --color-info
+}
+
+// Theme light and dark colors
+//
+--theme-color-light := #ffffff
+--theme-color-dark := #343a40
+
+// All Colors
+//
+--colors = merge(--colors-neutral --colors-brand --colors-state)

@@ -1,16 +1,16 @@
-import ClickableFormItem from '../../mixins/forms/ClickableFormItem';
-import DisableableFormItem from '../../mixins/forms/DisableableFormitem';
-import FocusableFormItem from '../../mixins/forms/FocusableFormItem';
-import InjectableFormItem from '../../mixins/forms/InjectableFormItem';
-import TabableFormItem from '../../mixins/forms/TabableFormItem';
+import ClickableFormItem from '../../mixins/forms/methods/ClickMethodMixin';
+import DisableableFormItem from '../../mixins/forms/properties/DisabledPropertyMixin';
+import FocusableFormItem from '../../mixins/components/methods/OnFocusMethodMixin';
+import InjectableFormItem from '../../mixins/forms/providers/InjectParentFormProviderMixin';
+import TabableFormItem from '../../mixins/components/properties/TabIndexPropertyMixin';
 
-import AttributableComponent from '../../mixins/components/AttributableComponent';
-import ClassableComponent from '../../mixins/components/ClassableComponent';
-import ClickableComponent from '../../mixins/components/ClickableComponent';
-import FocusableComponent from '../../mixins/components/FocusableComponent';
-import HoverableComponent from '../../mixins/components/HoverableComponent';
-import LoadableComponent from '../../mixins/components/LoadableComponent';
-import SizeableComponent from '../../mixins/components/SizeableComponent';
+import AttributableComponent from '../../mixins/components/providers/AttributesProviderMixin';
+import ClassableComponent from '../../mixins/components/providers/ClassesProviderMixin';
+import ClickableComponent from '../../mixins/components/methods/OnClickMethodMixin';
+import FocusableComponent from '../../mixins/components/methods/OnFocusMethodMixin';
+import HoverableComponent from '../../mixins/components/methods/OnHoverMethodMixin';
+import LoadableComponent from '../../mixins/components/properties/LoadingPropertyMixin';
+import SizeableComponent from '../../mixins/components/properties/SizePropertyMixin';
 
 export default {
     name: 'ButtonGroup',
