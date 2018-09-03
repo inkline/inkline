@@ -1,9 +1,9 @@
-import CheckableFormItem from '../../mixins/forms/CheckableFormItem';
+import Checkable from '../Checkable';
 
 export default {
     name: 'Checkbox',
     mixins: [
-        CheckableFormItem
+        Checkable
     ],
     props: {
         value: [Boolean, String],

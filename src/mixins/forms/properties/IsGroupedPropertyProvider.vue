@@ -2,6 +2,23 @@
 export default {
     computed: {
         /**
+         * Find and return the element's parent group
+         */
+        parentGroup() {
+            let parent = this.$parent;
+
+            while (parent) {
+                if (parent.$options.name === 'InputGroup' || (parent.$options.extends || {}).name === 'InputGroup') {
+                    return parent;
+                }
+
+                parent = parent.$parent;
+            }
+
+            return undefined;
+        },
+
+        /**
          * Find a form group parent for the given form item
          */
         isGrouped () {
@@ -9,7 +26,6 @@ export default {
 
             while (parent) {
                 if (parent.$options.name === 'InputGroup' || (parent.$options.extends || {}).name === 'InputGroup') {
-                    this.parentGroup = parent;
                     return true;
                 }
 

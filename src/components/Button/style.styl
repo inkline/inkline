@@ -1,9 +1,57 @@
-@import '../../resources/css/config'
-@import '../../resources/css/mixins'
-@import '_variables'
+@import '../../css/config'
+@import '../../css/mixins'
 
+//
+// Variables
+//
+--button-font-size := --font-size
+--button-font-weight := --font-weight['normal']
+--button-line-height := --line-height
+
+--button-border-width := --border-width
+--button-border-radius := --border-radius
+
+--button-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
+--button-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
+--button-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
+--button-padding := {
+    'sm': --button-padding-sm
+    'md': --button-padding-md
+    'lg': --button-padding-lg
+}
+
+--button-circle-size-sm := --spacers['1'] * --size-percentages['sm'] * 1.6 + --button-font-size['sm']
+--button-circle-size-md := --spacers['1'] * --size-percentages['md'] * 1.6 + --button-font-size['md']
+--button-circle-size-lg := --spacers['1'] * --size-percentages['lg'] * 1.6 + --button-font-size['lg']
+--button-circle-size := {
+    'sm': --button-circle-size-sm
+    'md': --button-circle-size-md
+    'lg': --button-circle-size-lg
+}
+
+--button-box-shadow := --box-shadow[0] / 2 0.25rem 0.25rem -0.25rem rgba(--colors['black'], 0.33)
+--button-box-shadow-focus := --box-shadow[0] 0.5rem 0.75rem -0.5rem rgba(--colors['black'], 0.66)
+--button-box-shadow-active := --box-shadow[0] 0 0 0 rgba(--colors['black'], 0.33)
+--button-box-shadow-active-inset := inset 0 0 0.5rem rgba(--colors['black'], 0.1)
+
+--button-block-margin := --spacer
+
+--button-darken-percentage-hover := 5%
+--button-opacity-disabled := 0.75
+
+--button-link-color := --link-color
+--button-link-disabled-color := --text-muted
+
+--button-themes := (brand neutral state)
+
+//
+// Themes
+//
 -add-theme(--themes, 'button', --button-themes)
 
+//
+// Styles
+//
 .button
     display: inline-block
     font-weight: --button-font-weight

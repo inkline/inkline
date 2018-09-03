@@ -1,33 +1,35 @@
-import ClickableFormItem from '../../mixins/forms/methods/ClickMethodMixin';
-import DisableableFormItem from '../../mixins/forms/properties/DisabledPropertyMixin';
-import FocusableFormItem from '../../mixins/components/methods/OnFocusMethodMixin';
-import InjectableFormItem from '../../mixins/forms/providers/InjectParentFormProviderMixin';
-import TabableFormItem from '../../mixins/components/properties/TabIndexPropertyMixin';
+import AttributesProviderMixin from '../../mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
+import InjectParentFormProviderMixin from '../../mixins/forms/providers/InjectParentFormProviderMixin';
 
-import AttributableComponent from '../../mixins/components/providers/AttributesProviderMixin';
-import ClassableComponent from '../../mixins/components/providers/ClassesProviderMixin';
-import ClickableComponent from '../../mixins/components/methods/OnClickMethodMixin';
-import FocusableComponent from '../../mixins/components/methods/OnFocusMethodMixin';
-import HoverableComponent from '../../mixins/components/methods/OnHoverMethodMixin';
-import LoadableComponent from '../../mixins/components/properties/LoadingPropertyMixin';
-import SizeableComponent from '../../mixins/components/properties/SizePropertyMixin';
+import ClickMethodMixin from '../../mixins/forms/methods/ClickMethodMixin';
+import FocusMethodMixin from '../../mixins/forms/methods/FocusMethodMixin';
+import OnClickMethodMixin from '../../mixins/components/methods/OnClickMethodMixin';
+import OnFocusMethodMixin from '../../mixins/components/methods/OnFocusMethodMixin';
+import OnHoverMethodMixin from '../../mixins/components/methods/OnHoverMethodMixin';
+
+import DisabledPropertyMixin from '../../mixins/forms/properties/DisabledPropertyMixin';
+import LoadingPropertyMixin from '../../mixins/components/properties/LoadingPropertyMixin';
+import TabIndexPropertyMixin from '../../mixins/components/properties/TabIndexPropertyMixin';
+import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
 
 export default {
     name: 'ButtonGroup',
     mixins: [
-        ClickableFormItem,
-        DisableableFormItem,
-        FocusableFormItem,
-        InjectableFormItem,
-        TabableFormItem,
+        AttributesProviderMixin,
+        ClassesProviderMixin,
+        InjectParentFormProviderMixin,
 
-        AttributableComponent,
-        ClassableComponent,
-        ClickableComponent,
-        FocusableComponent,
-        HoverableComponent,
-        LoadableComponent,
-        SizeableComponent
+        ClickMethodMixin,
+        FocusMethodMixin,
+        OnClickMethodMixin,
+        OnFocusMethodMixin,
+        OnHoverMethodMixin,
+
+        DisabledPropertyMixin,
+        LoadingPropertyMixin,
+        SizePropertyMixin,
+        TabIndexPropertyMixin
     ],
     props: {
         /**

@@ -21,40 +21,40 @@ import RadioButton from './components/RadioButton';
 import RadioGroup from './components/RadioGroup';
 import Textarea from './components/Textarea';
 
-const components = {
-    Button,
-    ButtonGroup,
-    Card,
-    Column,
-    Container,
-    Layout,
-    LayoutAside,
-    LayoutContent,
-    LayoutFooter,
-    LayoutHeader,
-    Row,
-
-    Checkbox,
-    CheckboxButton,
-    CheckboxGroup,
-    Input,
-    InputGroup,
-    InputNumber,
-    Radio,
-    RadioButton,
-    RadioGroup,
-    Textarea
-};
-
 class Inkline {
+    static components = [
+        Button,
+        ButtonGroup,
+        Card,
+        Column,
+        Container,
+        Layout,
+        LayoutAside,
+        LayoutContent,
+        LayoutFooter,
+        LayoutHeader,
+        Row,
+
+        Checkbox,
+        CheckboxButton,
+        CheckboxGroup,
+        Input,
+        InputGroup,
+        InputNumber,
+        Radio,
+        RadioButton,
+        RadioGroup,
+        Textarea
+    ];
+
     constructor () {
         if (typeof window !== 'undefined' && window.Vue) {
             this.install(window.Vue);
         }
     }
 
-    install (Vue) {
-        components.map(component => {
+    static install (Vue) {
+        this.components.map(component => {
             Vue.component(component.name, component);
         });
     }
