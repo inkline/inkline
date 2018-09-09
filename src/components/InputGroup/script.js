@@ -1,8 +1,9 @@
-import DisableableFormItem from '../../mixins/forms/properties/DisabledPropertyMixin';
-import InputableFormItem from '../../mixins/components/methods/OnInputMethodMixin';
+import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
 
-import ClassableComponent from '../../mixins/components/providers/ClassesProviderMixin';
-import SizeableComponent from '../../mixins/components/properties/SizePropertyMixin';
+import OnInputMethodMixin from '../../mixins/components/methods/OnInputMethodMixin';
+
+import DisabledPropertyMixin from '../../mixins/forms/properties/DisabledPropertyMixin';
+import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
 
 export default {
     name: 'InputGroup',
@@ -10,10 +11,11 @@ export default {
         value: {}
     },
     mixins: [
-        DisableableFormItem,
-        InputableFormItem,
+        ClassesProviderMixin,
 
-        ClassableComponent,
-        SizeableComponent
+        OnInputMethodMixin,
+
+        DisabledPropertyMixin,
+        SizePropertyMixin
     ]
 };

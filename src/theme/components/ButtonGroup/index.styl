@@ -1,0 +1,17 @@
+@import '../Button'
+
+//
+// Styles
+//
+.button-group
+    // Button themes
+    // Add the required color themes to all button variations
+    for --theme-name, --theme in --themes['button']
+        > .button.-{--theme-name}
+            if --gradient-enabled and --theme['gradient']
+                background-image: -linear-gradient(--theme['gradient'], to bottom)
+
+        &:not(.-vertical) > .button.-{--theme-name}:not(:first-child)
+            border-left-color: darken(--theme['color'], --button-darken-percentage-hover)
+        &.-vertical > .button.-{--theme-name}:not(:first-child)
+            border-top-color: darken(--theme['color'], --button-darken-percentage-hover)

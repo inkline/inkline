@@ -1,93 +1,12 @@
 @import '../../css/config'
 @import '../../css/mixins'
+@import 'css/_variables'
+@import 'css/_mixins'
+@import 'css/_sizes'
 
-//
-// Variables
-//
---label-margin-bottom := 0.5rem
-
---input-line-height := --line-height
-
---input-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
---input-padding-md := --spacers['1/2'] --spacers['1']
---input-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
---input-padding := {
-    'sm': --input-padding-sm
-    'md': --input-padding-md
-    'lg': --input-padding-lg
-}
-
---input-prefix-padding-sm := --input-padding-sm[1] + --input-padding-sm[1] * 3
---input-prefix-padding-md := --input-padding-md[1] + --input-padding-md[1] * 3
---input-prefix-padding-lg := --input-padding-lg[1] + --input-padding-lg[1] * 3
---input-prefix-padding := {
-    'sm': --input-prefix-padding-sm
-    'md': --input-prefix-padding-md
-    'lg': --input-prefix-padding-lg
-}
-
---input-font-size := --font-size
-
---input-color := --colors['gray-70']
---input-color-focus := --input-color
---input-placeholder-color := --colors['gray-60']
---input-plaintext-color := --body-color
---input-background := --colors['white']
---input-background-disabled := --colors['gray-20']
---input-background-focus := --input-background
-
---input-border-width := --border-width
---input-border-color := --border-color
---input-border-color-focus := darken(--input-border-color, 10%)
---input-border-radius := --border-radius
-
---input-box-shadow := inset 0 1px 1px rgba(--colors['black'], 0.05)
---input-transition := border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
-
---input-icon-circle-size := 1.2rem
---input-icon-circle-background := --colors['gray-40']
---input-icon-circle-background-hover := --colors['gray-50']
-
---input-append-prepend-background-color := --colors['gray-30']
---input-append-prepend-background-gradient := --gradients['gray-30']
-
-//
-// Mixins
-//
--form-input-selector()
-    > input
-    > select
-    > textarea
-        {block}
-
--form-input-label-size(size)
-    font-size: --input-font-size[size]
-
-    &.-left
-        padding-right: --input-padding[size][0] * 2
-
-    &.-right
-        padding-left: --input-padding[size][0] * 2
-
--form-input-size(size)
-    +-form-input-selector()
-        padding: --input-padding[size]
-        font-size: --input-font-size[size]
-
-        if --border-radius-enabled
-            border-radius: --input-border-radius[size]
-
-    &.-prefixed
-        +-form-input-selector()
-            padding-left: --input-prefix-padding[size]
-
-    &.-suffixed
-        +-form-input-selector()
-            padding-right: --input-prefix-padding[size]
-
-//
-// Styles
-//
+/**
+ * Input
+ */
 .form-input
     position: relative
     display: flex
@@ -150,6 +69,7 @@
         position: absolute
         transform: translateY(-50%)
         font-style: normal
+        color: --text-muted
 
     .form-input-prefix
         left: --spacer
@@ -163,7 +83,6 @@
 
     .form-input-icon
         transition: background-color --transition-duration --transition-easing
-        color: --text-muted
 
         &.-circle
             display: inline-block
@@ -180,6 +99,11 @@
             &:hover
                 background-color: --input-icon-circle-background-hover
 
+    @extend .form-input.-md
+
+/**
+ * Input Append and Prepend
+ */
 .form-input-prepend
 .form-input-append
     display: flex
@@ -188,6 +112,9 @@
     background-color: --input-append-prepend-background-color
     background-image: -linear-gradient(--input-append-prepend-background-gradient)
 
+/**
+ * Input Label
+ */
 .form-input-label
     flex-basis: 100%
 
@@ -201,19 +128,5 @@
     &.-right
         order: 1
 
-//
-// Form input and input group sizes
-//
-for size in (sm md lg)
-    .form-input-label.-{size}
-        -form-input-label-size(size)
-
-    .form-input.-{size}
-        -form-input-size(size)
-
-
-.form-input-label
     @extend .form-input-label.-md
 
-.form-input
-    @extend .form-input.-md

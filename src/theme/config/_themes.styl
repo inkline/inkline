@@ -12,9 +12,13 @@
 // Available component themes
 //
 --themes-background := (basic brand neutral social state)
---themes-button := (basic brand neutral social state)
---themes-border := (basic brand neutral state)
---themes-card := (basic brand neutral state)
---themes-table := (basic brand neutral state)
+--themes-border := (basic brand neutral social state)
+--themes-table := (brand neutral state)
 --themes-text := (basic brand neutral social state)
 
+// Initialize theme choice collection
+//
+-add-theme(--themes, 'background', --background-themes)
+-add-theme(--themes, 'border', --border-themes)
+-add-theme(--themes, 'table', --table-themes)
+-add-theme(--themes, 'text', --text-themes)

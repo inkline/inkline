@@ -1,0 +1,10 @@
+//
+// Sizes
+//
+for size in (sm md lg)
+    .form-check.-custom.-checkbox.-{size}
+        .form-input-label
+            &::after
+            &::before
+                if --border-radius-enabled
+                    border-radius: --form-check-checkbox-border-radius[size]

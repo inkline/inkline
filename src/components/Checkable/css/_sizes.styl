@@ -1,0 +1,17 @@
+//
+// Checkable sizes
+//
+for size in (sm md lg)
+    .form-input-group.-{size} .form-check
+    .form-check.-{size}
+        font-size: --font-size[size]
+
+        &.-custom
+            .form-input-label
+                &::before
+                &::after
+                    width: --form-check-indicator-size * --size-percentages[size]
+                    height: --form-check-indicator-size * --size-percentages[size]
+
+                &::after
+                    background-size: --form-check-indicator-background-size * --size-percentages[size]

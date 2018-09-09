@@ -1,0 +1,9 @@
+//
+// Button group themes
+// Add the required color themes to all button group variations
+//
+for --theme-name, --theme in --themes['button']
+    .button-group:not(.-vertical) > .button.-{--theme-name}:not(:first-child)
+        border-left-color: darken(--theme['color'], --button-darken-percentage-hover)
+    .button-group.-vertical > .button.-{--theme-name}:not(:first-child)
+        border-top-color: darken(--theme['color'], --button-darken-percentage-hover)

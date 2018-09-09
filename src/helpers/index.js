@@ -1,4 +1,3 @@
-export { breakpoints } from '../constants/breakpoints';
 export { breakpointClass } from './breakpoint-class';
 export { capitalizeFirst } from './capitalize-first';
 export { keymap } from './keymap';

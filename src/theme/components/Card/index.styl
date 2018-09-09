@@ -1,0 +1,34 @@
+//
+// Variables
+//
+--card-themes := (basic brand neutral state)
+
+--card-box-shadow := --box-shadow[0] 0.5rem 0.5rem -0.5rem rgba(--colors['black'], 0.33)
+
+//
+// Themes
+//
+-add-theme(--themes, 'card', --card-themes)
+
+//
+// Styles
+//
+.card
+    box-shadow: --card-box-shadow
+
+    // Card themes
+    // Add the required color themes to all card variations
+    for --theme-name, --theme in --themes['card']
+        &.-{--theme-name}
+            color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
+            background-color: --theme['color']
+
+            if --gradient-enabled and --theme['gradient']
+                background-image: -linear-gradient(--theme['gradient'])
+
+            > .body
+                border-color: --theme['color']
+
+            > .header
+            > .footer
+                border-color: --theme['color']

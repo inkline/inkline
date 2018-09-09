@@ -1,29 +1,14 @@
 @import '../../css/config'
 @import '../../css/mixins'
+@import 'css/_variables'
+@import 'css/_sizes'
 
-//
-// Variables
-//
---form-check-checkbox-icon := --icons['check']
---form-check-checkbox-border-radius := --border-radius
-
-//
-// Styles
-//
+/**
+ * Checkbox
+ */
 .form-check.-custom.-checkbox
-    for size in (sm md lg)
-        &.-{size}
-            .form-input-label
-                &::after
-                &::before
-                    if --border-radius-enabled
-                        border-radius: --form-check-checkbox-border-radius[size]
-
     input
         &:checked ~ .form-input-label::after
             background-image: url(--form-check-checkbox-icon)
 
-
-if --border-radius-enabled
-    .form-check.-custom.-checkbox
-        @extend .form-check.-custom.-checkbox.-md
+    @extend .form-check.-custom.-checkbox.-md

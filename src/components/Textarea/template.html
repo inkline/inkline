@@ -1,4 +1,4 @@
-<div class="form-input-group" :class="classes['root']">
+<i-input-group :class="classes['root']">
     <label class="form-input-label" @click="focus" :class="classes['label']" v-if="$slots.label">
         <slot name="label"></slot>
     </label>
@@ -36,4 +36,4 @@
     <div class="form-input-append" v-if="$slots.append">
         <slot name="append"></slot>
     </div>
-</div>
+</i-input-group>

@@ -1,15 +1,12 @@
 @import '../../css/config'
-@import '../Button/style'
+@import '../Button/css/_variables'
+@import 'css/_sizes'
 
-//
-// Styles
-//
+/**
+ * Radio Button
+ */
 .button.-radio
     position: relative
-
-    for size in (sm md lg)
-        &.-{size}
-            font-size: --button-font-size[size]
 
     > span > input[type='radio']
         opacity: 0
@@ -18,5 +15,4 @@
         width: 0
         height: 0
 
-.button.-radio
     @extend .button.-radio.-md

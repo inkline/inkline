@@ -1,0 +1,32 @@
+//
+// Sizes
+//
+for size in (sm md lg)
+    .form-input-group.-{size}
+        > .form-input-label
+            -form-input-label-size(size)
+
+        > .form-input
+            -form-input-size(size)
+
+        > .form-input-prepend
+        > .form-input-append
+            font-size: --input-font-size[size]
+
+            if --border-radius-enabled
+                border-radius: --input-border-radius[size]
+
+            > *
+                padding: --input-padding[size]
+
+        > .form-input-prepend
+        > .form-input-prepend > *
+        > .form-input-append > * + *
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0
+
+        > .form-input-append
+        > .form-input-append > *
+        > .form-input-prepend > * + *
+            border-top-left-radius: 0
+            border-bottom-left-radius: 0

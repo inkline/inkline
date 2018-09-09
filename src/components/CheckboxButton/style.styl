@@ -1,12 +1,13 @@
 @import '../../css/config'
-@import '../Button/style'
+@import '../../css/mixins'
+@import '../Button/css/_variables'
+@import 'css/_sizes'
 
+/**
+ * Checkbox buttons
+ */
 .button.-checkbox
     position: relative
-
-    for size in (sm md lg)
-        &.-{size}
-            font-size: --button-font-size[size]
 
     > span > input[type='checkbox']
         opacity: 0
@@ -15,5 +16,4 @@
         width: 0
         height: 0
 
-.button.-checkbox
     @extend .button.-checkbox.-md

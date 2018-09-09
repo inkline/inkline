@@ -1,0 +1,15 @@
+//
+// Button sizes
+// Add small, medium and large button sizes
+//
+for size in (sm md lg)
+    .button.-{size}
+        border-radius: --button-border-radius[size]
+        font-size: --button-font-size[size]
+        padding: --button-padding[size]
+
+        &.-circle
+            border-radius: 100%
+            width: --button-circle-size[size]
+            height: --button-circle-size[size]
+            padding: 0

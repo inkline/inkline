@@ -1,0 +1,33 @@
+//
+// Mixins
+//
+-form-input-selector()
+    > input
+    > select
+    > textarea
+        {block}
+
+-form-input-label-size(size)
+    font-size: --input-font-size[size]
+
+    &.-left
+        padding-right: --input-padding[size][0] * 2
+
+    &.-right
+        padding-left: --input-padding[size][0] * 2
+
+-form-input-size(size)
+    +-form-input-selector()
+        padding: --input-padding[size]
+        font-size: --input-font-size[size]
+
+        if --border-radius-enabled
+            border-radius: --input-border-radius[size]
+
+    &.-prefixed
+        +-form-input-selector()
+            padding-left: --input-prefix-padding[size]
+
+    &.-suffixed
+        +-form-input-selector()
+            padding-right: --input-prefix-padding[size]

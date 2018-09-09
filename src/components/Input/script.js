@@ -1,43 +1,49 @@
 import InputGroup from '../InputGroup';
 
-import BindableIndividualFormItem from '../../mixins/forms/providers/ModelProviderMixin';
-import ClearableFormItem from '../../mixins/forms/properties/ClearablePropertyMixin';
-import ClickableFormItem from '../../mixins/forms/methods/ClickMethodMixin';
-import DisableableFormItem from '../../mixins/forms/properties/DisabledPropertyMixin';
-import FocusableFormItem from '../../mixins/components/methods/OnFocusMethodMixin';
-import GroupableFormItem from '../../mixins/forms/properties/IsGroupedPropertyProvider';
-import InjectableFormItem from '../../mixins/forms/providers/InjectParentFormProviderMixin';
-import InputableFormItem from '../../mixins/components/methods/OnInputMethodMixin';
-import LabelableFormItem from '../../mixins/forms/properties/LabelPositionPropertyMixin';
-import TabableFormItem from '../../mixins/components/properties/TabIndexPropertyMixin';
+import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
+import InjectParentFormProviderMixin from '../../mixins/forms/providers/InjectParentFormProviderMixin';
+import ModelProviderMixin from '../../mixins/forms/providers/ModelProviderMixin';
 
-import ChangeableComponent from '../../mixins/components/methods/OnChangeMethodMixin';
-import ClassableComponent from '../../mixins/components/providers/ClassesProviderMixin';
-import FocusableComponent from '../../mixins/components/methods/OnFocusMethodMixin';
-import HoverableComponent from '../../mixins/components/methods/OnHoverMethodMixin';
-import SizeableComponent from '../../mixins/components/properties/SizePropertyMixin';
+import ClickMethodMixin from '../../mixins/forms/methods/ClickMethodMixin';
+import FocusMethodMixin from '../../mixins/forms/methods/FocusMethodMixin';
+import OnChangeMethodMixin from '../../mixins/components/methods/OnChangeMethodMixin';
+import OnClickMethodMixin from '../../mixins/components/methods/OnClickMethodMixin';
+import OnFocusMethodMixin from '../../mixins/components/methods/OnFocusMethodMixin';
+import OnHoverMethodMixin from '../../mixins/components/methods/OnHoverMethodMixin';
+import OnInputMethodMixin from '../../mixins/components/methods/OnInputMethodMixin';
+
+import ClearablePropertyMixin from '../../mixins/forms/properties/ClearablePropertyMixin';
+import DisabledPropertyMixin from '../../mixins/forms/properties/DisabledPropertyMixin';
+import IsGroupedPropertyMixin from '../../mixins/forms/properties/IsGroupedPropertyMixin';
+import LabelPositionPropertyMixin from '../../mixins/forms/properties/LabelPositionPropertyMixin';
+import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
+import TabIndexPropertyMixin from '../../mixins/components/properties/TabIndexPropertyMixin';
 
 export default {
     name: 'Input',
     inheritAttrs: false,
-    extends: InputGroup,
+    components: {
+        IInputGroup: InputGroup
+    },
     mixins: [
-        BindableIndividualFormItem,
-        ClearableFormItem,
-        ClickableFormItem,
-        DisableableFormItem,
-        FocusableFormItem,
-        GroupableFormItem,
-        InjectableFormItem,
-        InputableFormItem,
-        LabelableFormItem,
-        TabableFormItem,
+        ClassesProviderMixin,
+        InjectParentFormProviderMixin,
+        ModelProviderMixin,
 
-        ChangeableComponent,
-        ClassableComponent,
-        FocusableComponent,
-        HoverableComponent,
-        SizeableComponent
+        ClickMethodMixin,
+        FocusMethodMixin,
+        OnChangeMethodMixin,
+        OnClickMethodMixin,
+        OnFocusMethodMixin,
+        OnHoverMethodMixin,
+        OnInputMethodMixin,
+
+        ClearablePropertyMixin,
+        DisabledPropertyMixin,
+        IsGroupedPropertyMixin,
+        LabelPositionPropertyMixin,
+        SizePropertyMixin,
+        TabIndexPropertyMixin
     ],
     created () {
         if (this.classesProvider) {

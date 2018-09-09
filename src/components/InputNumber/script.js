@@ -1,26 +1,84 @@
+import Button from '../Button';
 import Input from '../Input';
+import InputGroup from '../InputGroup';
 
 export default {
     name: 'InputNumber',
     extends: Input,
+    components: {
+        IButton: Button,
+        IInputGroup: InputGroup
+    },
     data () {
         return {
             prepended: true,
-            appended: true
+            appended: true,
         };
+    },
+    props: {
+        value: {
+            type: [Number, String],
+            default: 0
+        },
+        min: {
+            type: Number,
+            default: -Infinity
+        },
+        max: {
+            type: Number,
+            default: Infinity
+        },
+        precision: {
+            type: Number,
+            default: 0
+        },
+        step: {
+            type: Number,
+            default: 1
+        }
+    },
+    methods: {
+        decrease () {
+            this.$emit('input', this.formatPrecision((Number(this.value) - this.step).toString()));
+        },
+        increase () {
+            this.$emit('input', this.formatPrecision((Number(this.value) + this.step).toString()));
+        },
+        formatPrecision (value) {
+            const parts = value.split('.');
+            let decimals = parts[1] || "";
+
+            for (let i = decimals.length; i < this.precision; i += 1) {
+                decimals += '0';
+            }
+
+            return this.precision > 0 ? `${parts[0]}.${decimals}` : parts[0];
+        },
+        onBlurFormatPrecision (event) {
+            this.$emit('input', this.formatPrecision(this.value));
+            this.onBlur(event);
+        },
     },
     watch: {
         value: {
             immediate: true,
             handler (value) {
-                let newValue = value === undefined ? value : Number(value.replace(/[^0-9]/g, ''));
+                let newValue = value === undefined ? value : value.toString()
+                    .replace(/^[^0-9-]/, '')
+                    .replace(/^(-)[^0-9]/, '$1')
+                    .replace(new RegExp(`^(-?[0-9]+)[^0-9${this.precision > 0 ? '.' : ''}]`), '$1');
 
-                if (newValue !== undefined && isNaN(newValue)) return;
-                if (newValue >= this.max) newValue = this.max;
-                if (newValue <= this.min) newValue = this.min;
+                if (this.precision > 0) {
+                    newValue = newValue
+                        .replace(/^(-?[0-9]+\.)[^0-9]/, '$1')
+                        .replace(new RegExp(`^(-?[0-9]+\\.[0-9]{0,${this.precision}}).*`), '$1');
+                }
+
+                if (parseFloat(newValue) >= this.max) newValue = this.max.toString();
+                if (parseFloat(newValue) <= this.min) newValue = this.min.toString();
 
                 this.$emit('input', newValue);
             }
         }
-    },
+    }
 };

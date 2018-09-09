@@ -1,39 +1,12 @@
 @import '../../css/config'
 @import '../../css/mixins'
+@import 'css/_variables'
+@import 'css/_sizes'
+@import 'css/_themes'
 
-//
-// Variables
-//
---card-font-size := --font-size
---card-font-weight := --font-weight['normal']
---card-line-height := --line-height
-
---card-border-width := --border-width
---card-border-radius := --border-radius
-
---card-padding-sm := --spacers['1'] * --size-percentages['sm']
---card-padding-md := --spacers['1'] * --size-percentages['md']
---card-padding-lg := --spacers['1'] * --size-percentages['lg']
---card-padding := {
-    'sm': --card-padding-sm
-    'md': --card-padding-md
-    'lg': --card-padding-lg
-}
-
---card-box-shadow := --box-shadow[0] 0.5rem 0.5rem -0.5rem rgba(--colors['black'], 0.33)
-
---card-background-darken := rgba(0, 0, 0, 0.15)
-
---card-themes := (basic brand neutral state)
-
-//
-// Themes
-//
--add-theme(--themes, 'card', --card-themes)
-
-//
-// Styles
-//
+/**
+ * Card
+ */
 .card
     position: relative
     display: flex
@@ -41,7 +14,18 @@
     min-width: 0
     word-wrap: break-word
     background-clip: border-box
-    box-shadow: --card-box-shadow
+
+    background-color: white
+    border-color: --colors['gray-20']
+
+    > .header
+    > .footer
+        background-color: --colors['gray-10']
+
+    > .header
+    > .footer
+    > .body
+        border-color: --colors['gray-20']
 
     > hr
         margin-right: 0
@@ -110,83 +94,12 @@
             border-bottom-left-radius: --card-border-radius[size]
             border-bottom-right-radius: --card-border-radius[size]
 
-    // Card themes
-    // Add the required color themes to all card variations
-    for --theme-name, --theme in --themes['card']
-        &.-{--theme-name}
-            color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
-            background-color: --theme['color']
-
-            if --gradient-enabled and --theme['gradient']
-                background-image: -linear-gradient(--theme['gradient'])
-
-            > .body
-                border-color: --theme['color']
-
-            > .header
-            > .footer
-                background-color: --card-background-darken
-                border-color: --theme['color']
-
-
-    // Card sizes
-    // Add the required sizes to all card variations
-    for size in (sm md lg)
-        &.-{size}
-            border-radius: --card-border-radius[size]
-            font-size: --card-font-size[size]
-
-            > .header
-                padding: --card-padding[size]
-
-                &:first-child
-                    border-top-left-radius: --card-border-radius[size]
-                    border-top-right-radius: --card-border-radius[size]
-
-            > .body
-                padding: --card-padding[size]
-                border-radius: --card-border-radius[size]
-
-                > .title
-                    margin-bottom: --card-padding[size]
-
-                > .subtitle
-                    margin-top: --card-padding[size] / 2
-
-                > .link + .link
-                    margin-left: --card-padding[size]
-
-            > .footer
-                padding: --card-padding[size]
-
-                &:last-child
-                    border-bottom-left-radius: --card-border-radius[size]
-                    border-bottom-right-radius: --card-border-radius[size]
-
-            > img
-                border-top-left-radius: --card-border-radius[size]
-                border-top-right-radius: --card-border-radius[size]
-
-                &:last-child
-                    border-bottom-left-radius: --card-border-radius[size]
-                    border-bottom-right-radius: --card-border-radius[size]
-
-
-.card
+    // Default card size
     @extend .card.-md
-    @extend .card.-light
 
-    background-color: white
-    background-image: none
-
-    > .header
-    > .footer
-        background-color: --colors['gray-10']
-        background-image: none
 
 // Header navs
 //
-
 //.card-header-tabs
 //    margin-right: -($card-spacer-x / 2)
 //    margin-bottom: -$card-spacer-y

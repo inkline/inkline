@@ -1,13 +1,13 @@
-@import '../Button/style'
+@import '../../css/config'
+@import '../../css/mixins'
+@import '../Button/css/_variables'
+@import 'css/_variables'
+@import 'css/_sizes'
+@import 'css/_themes'
 
-//
-// Variables
-//
---button-group-font-size := --font-size
-
-//
-// Styles
-//
+/**
+ * Button Group
+ */
 .button-group
     position: relative
     display: inline-flex
@@ -60,41 +60,6 @@
             border-top-left-radius: 0
             border-top-right-radius: 0
 
-    // Button group sizes
-    // Add small, medium and large button sizes
-    for size in (sm md lg)
-        &.-{size}
-            .button
-                font-size: --button-font-size[size]
-                padding: --button-padding[size]
-
-                &.-circle
-                    border-radius: 100%
-                    width: --button-circle-size[size]
-                    height: --button-circle-size[size]
-                    padding: 0
-
-            &:not(.-vertical)
-                > .button:last-child
-                > .button-group:last-child > .button
-                    border-top-right-radius: --button-border-radius[size]
-                    border-bottom-right-radius: --button-border-radius[size]
-                > .button:first-child
-                > .button-group:first-child > .button
-                    border-top-left-radius: --button-border-radius[size]
-                    border-bottom-left-radius: --button-border-radius[size]
-
-            &.-vertical
-                > .button:last-child
-                > .button-group:last-child > .button
-                    border-bottom-left-radius: --button-border-radius[size]
-                    border-bottom-right-radius: --button-border-radius[size]
-
-                > .button:first-child
-                > .button-group:first-child > .button
-                    border-top-left-radius: --button-border-radius[size]
-                    border-top-right-radius: --button-border-radius[size]
-
 
     // Button border accent
     //
@@ -102,15 +67,3 @@
             border-left-color: darken(--themes['button']['light']['color'], --button-darken-percentage-hover)
     &.-vertical > .button:not(:first-child)
             border-top-color: darken(--themes['button']['light']['color'], --button-darken-percentage-hover)
-
-    // Button themes
-    // Add the required color themes to all button variations
-    for --theme-name, --theme in --themes['button']
-        > .button.-{--theme-name}
-            if --gradient-enabled and --theme['gradient']
-                background-image: -linear-gradient(--theme['gradient'], to bottom)
-
-        &:not(.-vertical) > .button.-{--theme-name}:not(:first-child)
-            border-left-color: darken(--theme['color'], --button-darken-percentage-hover)
-        &.-vertical > .button.-{--theme-name}:not(:first-child)
-            border-top-color: darken(--theme['color'], --button-darken-percentage-hover)

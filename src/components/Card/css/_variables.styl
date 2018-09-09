@@ -1,0 +1,27 @@
+//
+// Variables
+//
+--card-themes := (basic brand neutral state)
+
+--card-font-size := --font-size
+--card-font-weight := --font-weight['normal']
+--card-line-height := --line-height
+
+--card-border-width := --border-width
+--card-border-radius := --border-radius
+
+--card-padding-sm := --spacers['1'] * --size-percentages['sm']
+--card-padding-md := --spacers['1'] * --size-percentages['md']
+--card-padding-lg := --spacers['1'] * --size-percentages['lg']
+--card-padding := {
+    'sm': --card-padding-sm
+    'md': --card-padding-md
+    'lg': --card-padding-lg
+}
+
+--card-background-darken := rgba(0, 0, 0, 0.15)
+
+//
+// Themes
+//
+-add-theme(--themes, 'card', --card-themes)

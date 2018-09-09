@@ -1,27 +1,32 @@
-import BindableGroupedFormItem from '../../mixins/forms/providers/ModelGroupProviderMixin';
-import ClickableFormItem from '../../mixins/forms/methods/ClickMethodMixin';
-import CustomizableFormItem from '../../mixins/components/properties/CustomPropertyMixin';
-import DisableableFormItem from '../../mixins/forms/properties/DisabledPropertyMixin';
-import InjectableFormItem from '../../mixins/forms/providers/InjectParentFormProviderMixin';
-import InputableFormItem from '../../mixins/components/methods/OnInputMethodMixin';
-import GroupableFormItem from '../../mixins/forms/properties/IsGroupedPropertyProvider';
-import TabableFormItem from '../../mixins/components/properties/TabIndexPropertyMixin';
+import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
+import InjectParentFormProviderMixin from '../../mixins/forms/providers/InjectParentFormProviderMixin';
+import ModelGroupProviderMixin from '../../mixins/forms/providers/ModelGroupProviderMixin';
 
-import ClassableComponent from '../../mixins/components/providers/ClassesProviderMixin';
-import SizeableComponent from '../../mixins/components/properties/SizePropertyMixin';
+import ClickMethodMixin from '../../mixins/forms/methods/ClickMethodMixin';
+import OnClickMethodMixin from '../../mixins/components/methods/OnClickMethodMixin';
+import OnInputMethodMixin from '../../mixins/components/methods/OnInputMethodMixin';
+
+import CustomPropertyMixin from '../../mixins/components/properties/CustomPropertyMixin';
+import DisabledPropertyMixin from '../../mixins/forms/properties/DisabledPropertyMixin';
+import IsGroupedPropertyMixin from '../../mixins/forms/properties/IsGroupedPropertyMixin';
+import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
+import TabIndexPropertyMixin from '../../mixins/components/properties/TabIndexPropertyMixin';
+
 
 export default {
     mixins: [
-        BindableGroupedFormItem,
-        ClickableFormItem,
-        CustomizableFormItem,
-        DisableableFormItem,
-        InjectableFormItem,
-        InputableFormItem,
-        GroupableFormItem,
-        TabableFormItem,
+        ClassesProviderMixin,
+        InjectParentFormProviderMixin,
+        ModelGroupProviderMixin,
 
-        ClassableComponent,
-        SizeableComponent
+        ClickMethodMixin,
+        OnClickMethodMixin,
+        OnInputMethodMixin,
+
+        CustomPropertyMixin,
+        DisabledPropertyMixin,
+        IsGroupedPropertyMixin,
+        SizePropertyMixin,
+        TabIndexPropertyMixin
     ]
 };

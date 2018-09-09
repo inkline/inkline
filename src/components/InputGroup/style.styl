@@ -1,15 +1,13 @@
 @import '../../css/config'
-@import '../Input/style'
-@import '_variables'
+@import '../../css/mixins'
+@import '../Input/css/_variables'
+@import '../Input/css/_mixins'
+@import 'css/_variables'
+@import 'css/_sizes'
 
-//
-// Variables
-//
---input-group-margin := --spacer
-
-//
-// Styles
-//
+/**
+ * Input Group
+ */
 .form-input-group
     display: block
     vertical-align: middle
@@ -39,35 +37,17 @@
             border-bottom-right-radius: 0
 
     > .form-input-prepend
-    > .form-input-append + .form-input-append
+    > .form-input-append
+        overflow: hidden
+
+    > .form-input-prepend
+    > .form-input-prepend > *
         border-top-right-radius: 0
         border-bottom-right-radius: 0
 
     > .form-input-append
-    > .form-input-prepend + .form-input-prepend
+    > .form-input-append > *
         border-top-left-radius: 0
         border-bottom-left-radius: 0
 
-    // Form input group sizes
-    //
-    for size in (sm md lg)
-        &.-{size} > .form-input-label
-            -form-input-label-size(size)
-
-        &.-{size} > .form-input
-            -form-input-size(size)
-
-        &.-{size}
-            > .form-input-prepend
-            > .form-input-append
-                font-size: --input-font-size[size]
-
-                if --border-radius-enabled
-                    border-radius: --input-border-radius[size]
-
-                > .form-input-prepend
-                > .form-input-append
-                    padding: --input-padding[size]
-
-.form-input-group
     @extend .form-input-group.-md
