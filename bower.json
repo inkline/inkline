@@ -1,0 +1,19 @@
+{
+  "name": "inkline",
+  "version": "1.0.1",
+  "description": "Inkline is a stylish, powerful and intuitive front-end framework built for hassle-free web development.",
+  "main": "src/index.js",
+  "authors": [
+    "Alex Grozav (https://pixevil.com)"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "inkline",
+    "framework",
+    "css",
+    "stylus",
+    "javascript",
+    "typescript"
+  ],
+  "homepage": "https://github.com/inkline/inkline"
+}

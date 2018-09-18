@@ -1,7 +1,18 @@
 {
   "name": "inkline",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.2.0",
+  "description": "Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkline/inkline.git"
+  },
+  "author": "Alex Grozav <alex@grozav.com>",
+  "main": "src/index.js",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inkline/inkline/issues"
+  },
+  "homepage": "http://inkline.io",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",

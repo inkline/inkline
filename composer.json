@@ -1,0 +1,13 @@
+{
+  "name": "inkline/inkline",
+  "description": "Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design.",
+  "type": "css-framework",
+  "license": "ISC",
+  "authors": [
+    {
+      "name": "Alex Grozav",
+      "email": "alex@grozav.com"
+    }
+  ],
+  "require": {}
+}
