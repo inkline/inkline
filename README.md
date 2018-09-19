@@ -4,35 +4,34 @@
   </a>
 
   <h1 align="center">Inkline</h1>
-
-  <p align="center">
-    Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design. Inkline is 
-    written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>. 
-    <br/>
-    <br/>
-    To get started, check out <http://inkline.io>!
-    <br/>
-    <br/>
-    <a href="http://inkline.io">Documentation</a>
-    ·
-    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report bug</a>
-    ·
-    <a href="https://github.com/inkline/inkline/issues/new?template=feature.md&labels=feature">Request feature</a>
-    ·
-    <a href="http://inkline.io/themes">Themes</a>
-  </p>
 </p>
 
+<p align="center">
+  Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design. Inkline is 
+  written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>. 
+  <br/>
 
-[![npm version](https://img.shields.io/npm/v/inkline.svg)](https://www.npmjs.com/package/inkline)
-![dependencies status](https://img.shields.io/david/inkline/inkline.svg?style=popout)
-![devDependencies status](https://img.shields.io/david/dev/inkline/inkline.svg?style=popout)
-[![Downloads](https://img.shields.io/npm/dm/inkline.svg)](https://www.npmjs.com/package/inkline)
+  <br/>
+  <a href="http://inkline.io">Documentation</a>
+  ·
+  <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report bug</a>
+  ·
+  <a href="https://github.com/inkline/inkline/issues/new?template=feature.md&labels=feature">Request feature</a>
+  ·
+  <a href="http://inkline.io/themes">Themes</a>
+</p>
 
+<br/>
+  
+<p align="center">
+  <a href="https://www.npmjs.com/package/inkline"><img src="https://img.shields.io/npm/v/inkline.svg" alt="npm version"></a>
+  <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="dependencies status">
+  <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="devDependencies status">
+  <a href="https://www.npmjs.com/package/inkline"><img src="https://img.shields.io/npm/dm/inkline.svg" alt="Downloads"></a>
+</a>
 
-<!--Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design. Inkline is 
-written and maintained by [@alexgrozav](https://twitter.com/alexgrozav). -->
-
+<br/>
+<br/>
 
 ## Table of contents
 
