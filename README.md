@@ -132,7 +132,7 @@ Here you can see the current progress for Inkline:
 For increased transparency and backward compatibility, 
 Inkline is maintained under [the Semantic Versioning guidelines](https://semver.org/). 
 
-## Creators
+## Creator
 
 **Alex Grozav**
 
@@ -142,5 +142,7 @@ Inkline is maintained under [the Semantic Versioning guidelines](https://semver.
 
 ## Copyright and license
 Code and documentation copyright 2017-2018 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
+
 Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/LICENSE). 
+
 Docs released under [Creative Commons](https://github.com/inkline/inkline.io/blob/master/docs/LICENSE).
