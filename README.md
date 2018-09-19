@@ -1,33 +1,29 @@
 <p align="center">
-  <a href="http://inkline.io/">
-    <img src="http://inkline.io/" alt="Inkline logo" width=72 height=72>
-  </a>
-
-  <h1 align="center">Inkline</h1>
+    <a href="http://inkline.io/">
+        <img src="http://inkline.io/" alt="Inkline logo" width=72 height=72>
+    </a>
+    <h1 align="center">Inkline</h1>
 </p>
 
 <p align="center">
-  Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design. Inkline is 
-  written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>. 
-  <br/>
-
-  <br/>
-  <a href="http://inkline.io">Documentation</a>
-  ·
-  <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report bug</a>
-  ·
-  <a href="https://github.com/inkline/inkline/issues/new?template=feature.md&labels=feature">Request feature</a>
-  ·
-  <a href="http://inkline.io/themes">Themes</a>
+    Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design. Inkline is 
+    written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>. 
+    <br/>
+    <br/>
+    <a href="http://inkline.io">Documentation</a>
+    ·
+    <a href="https://github.com/inkline/inkline/issues">Issue Tracker</a>
+    ·
+    <a href="http://inkline.io/themes">Themes</a>
 </p>
 
 <br/>
   
 <p align="center">
-  <a href="https://www.npmjs.com/package/inkline"><img src="https://img.shields.io/npm/v/inkline.svg" alt="npm version"></a>
-  <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="dependencies status">
-  <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="devDependencies status">
-  <a href="https://www.npmjs.com/package/inkline"><img src="https://img.shields.io/npm/dm/inkline.svg" alt="Downloads"></a>
+    <a href="https://www.npmjs.com/package/inkline"><img src="https://img.shields.io/npm/v/inkline.svg" alt="npm version"></a>
+    <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="dependencies status">
+    <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="devDependencies status">
+    <a href="https://www.npmjs.com/package/inkline"><img src="https://img.shields.io/npm/dm/inkline.svg" alt="Downloads"></a>
 </a>
 
 <br/>
@@ -164,6 +160,5 @@ Inkline is maintained under [the Semantic Versioning guidelines](https://semver.
 - <https://github.com/alexgrozav>
 
 ## Copyright and license
-Code and documentation copyright 2017-2018 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
+Code copyright 2017-2018 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
 Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/LICENSE). 
-Docs released under [Creative Commons](https://github.com/inkline/inkline.io/blob/master/docs/LICENSE).
