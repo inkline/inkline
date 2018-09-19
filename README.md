@@ -56,7 +56,7 @@ If your problem or idea is not addressed yet, [please open a new issue](https://
 
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/inkline/inkline/blob/master/CONTRIBUTING.md). 
+Please read through our [contributing guidelines](https://github.com/inkline/inkline/blob/master/contributing.md). 
 Included are directions for opening issues, coding standards, and notes on development.
 
 ## Community
