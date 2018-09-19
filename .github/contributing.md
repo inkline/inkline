@@ -104,7 +104,9 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 
 ## Feature requests
 
-Feature requests are welcome! Before opening a feature request, please take a moment to find out whether your idea
+Feature requests are welcome! 
+
+Before opening a feature request, please take a moment to find out whether your idea
 fits with the scope and aims of the project. It's up to *you* to make a strong
 case to convince the project's developers of the merits of this feature. Please
 provide as much detail and context as possible.
@@ -112,7 +114,7 @@ provide as much detail and context as possible.
 
 ## Pull requests
 
-Good pull requests—patches, improvements, new features—are a fantastic
+Good pull requests—patches, improvements, new features are a fantastic
 help. They should remain focused in scope and avoid containing unrelated
 commits.
 
@@ -121,25 +123,17 @@ implementing features, refactoring code, porting to a different language),
 otherwise you risk spending a lot of time working on something that the
 project's developers might not want to merge into the project.
 
-In particular, **pull requests that add new features to Inkline v3 will be
-rejected.** Inkline v3 is now in maintenance mode and is therefore closed
-off to new features, so that we can focus our efforts on Inkline v4, the
-future of the framework. Pull requests that add new features should target
-[Inkline v4 (the `v4-dev` git branch)](https://github.com/inkline/inkline/tree/v4-dev)
-instead, where they will be welcomed and duly considered.
-
 Please adhere to the [coding guidelines](#code-guidelines) used throughout the
 project (indentation, accurate comments, etc.) and any other requirements
 (such as test coverage).
 
-**Do not edit `Inkline.css`, `Inkline-theme.css`, or `Inkline.js`
+**Do not edit `inkline.css`, or `inkline.js`
 directly!** Those files are automatically generated. You should edit the
-source files in [`/Inkline/scss/`](https://github.com/inkline/inkline/tree/v4-dev/scss)
-and/or [`/Inkline/js/`](https://github.com/inkline/inkline/tree/v4-dev/js) instead.
+source files in [`/src`](https://github.com/inkline/inkline/tree/master/src) instead.
 
 Similarly, when contributing to Inkline's documentation, you should edit the
 documentation source files in
-[the `/Inkline/docs/4.0` directory of the `v4-dev` branch](https://github.com/inkline/inkline/tree/v4-dev/docs/4.0).
+[the `/docs` directory](https://github.com/inkline/inkline.io/tree/master/docs/4.0).
 **Do not edit the `gh-pages` branch.** That branch is generated from the
 documentation source files and is managed separately by the Inkline Core Team.
 
@@ -151,7 +145,7 @@ included in the project:
 
    ```bash
    # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/Inkline.git
+   git clone https://github.com/<your-username>/inkline.git
    # Navigate to the newly cloned directory
    cd Inkline
    # Assign the original repo to a remote called "upstream"
@@ -161,8 +155,8 @@ included in the project:
 2. If you cloned a while ago, get the latest changes from upstream:
 
    ```bash
-   git checkout v4-dev
-   git pull upstream v4-dev
+   git checkout dev
+   git pull upstream dev
    ```
 
 3. Create a new topic branch (off the main project development branch) to
@@ -181,7 +175,7 @@ included in the project:
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
-   git pull [--rebase] upstream v4-dev
+   git pull [--rebase] upstream dev
    ```
 
 6. Push your topic branch up to your fork:
@@ -191,23 +185,13 @@ included in the project:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-    with a clear title and description against the `v4-dev` branch.
+    with a clear title and description against the `dev` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](LICENSE) (if it
 includes code changes) and under the terms of the
 [Creative Commons Attribution 3.0 Unported License](docs/LICENSE)
 (if it includes documentation changes).
-
-### Pull request bots
-
-[@twbs-rorschach](https://github.com/twbs-rorschach) is a Inkline bot that hangs out in our GitHub issue tracker and automatically checks all pull requests for a few simple common mistakes. It's possible that Rorschach might leave a comment on your pull request and then close it. If that happens, simply fix the problem(s) mentioned in the comment (there should be link(s) in the comment explaining the problem(s) in detail) and then either:
-
-* Push the revised version to your pull request's branch and post a comment on the pull request saying that you've fixed the problem(s). One of the Inkline Core Team members will then come along and reopen your pull request.
-* Or you can just open a new pull request for your revised version.
-
-[@twbs-savage](https://github.com/twbs-savage) is a Inkline bot that automatically runs cross-browser tests (via [Sauce](https://saucelabs.com) and Travis CI) on JavaScript pull requests. Savage will leave a comment on pull requests stating whether cross-browser JS tests passed or failed, with a link to the full Travis build details. If your pull request fails, check the Travis log to see which browser + OS combinations failed. Each browser test in the Travis log includes a link to a Sauce page with details about the test. On those details pages, you can watch a screencast of the test run to see exactly which unit tests failed.
-
 
 ## Code guidelines
 
@@ -216,32 +200,27 @@ includes code changes) and under the terms of the
 [Adhere to the Code Guide.](http://codeguide.co/#html)
 
 - Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
-- Use CDNs and HTTPS for third-party JS when possible. We don't use protocol-relative URLs in this case because they break when viewing the page locally via `file://`.
 - Use [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) attributes in documentation examples to promote accessibility.
 
-### CSS
+### Stylus
 
-[Adhere to the Code Guide.](http://codeguide.co/#css)
+Adhere to the linting guidelines.
 
 - When feasible, default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
 - Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines) for more details.
 
 ### JS
 
-- No semicolons (in client-side JS)
-- 2 spaces (no tabs)
+- Use semicolons
+- 4 spaces (no tabs)
 - strict mode
-- "Attractive"
-- Don't use [jQuery event alias convenience methods](https://github.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](http://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](http://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
 
 ### Checking coding style
 
-Run `grunt test` before committing to ensure your changes follow our coding standards.
+Run `npm run dev` before committing to ensure your changes follow our coding standards.
 
 
 ## License
 
 By contributing your code, you agree to license your contribution under the [MIT License](LICENSE).
 By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](docs/LICENSE).
-
-Prior to v3.1.0, Inkline's code was released under the Apache License v2.0.
