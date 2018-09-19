@@ -22,9 +22,6 @@
   <a href="http://inkline.io/themes">Themes</a>
 </p>
 
-<br/>
-<br/>
-
 <p align="center">
   <a href="https://www.npmjs.com/package/inkline"><img src="https://img.shields.io/npm/v/inkline.svg" alt="npm version"></a>
   <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="dependencies status">
