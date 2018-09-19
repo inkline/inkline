@@ -118,9 +118,9 @@ Good pull requests—patches, improvements, new features are a fantastic
 help. They should remain focused in scope and avoid containing unrelated
 commits.
 
-**Please ask first** before embarking on any significant pull request (e.g.
+**Please ask first** before starting on any significant pull request (e.g.
 implementing features, refactoring code, porting to a different language),
-otherwise you risk spending a lot of time working on something that the
+otherwise you might spend a lot of time working on something that the
 project's developers might not want to merge into the project.
 
 Please adhere to the [coding guidelines](#code-guidelines) used throughout the
@@ -133,9 +133,7 @@ source files in [`/src`](https://github.com/inkline/inkline/tree/master/src) ins
 
 Similarly, when contributing to Inkline's documentation, you should edit the
 documentation source files in
-[the `/docs` directory](https://github.com/inkline/inkline.io/tree/master/docs/4.0).
-**Do not edit the `gh-pages` branch.** That branch is generated from the
-documentation source files and is managed separately by the Inkline Core Team.
+[the `/docs` directory](https://github.com/inkline/inkline.io/tree/master/docs).
 
 Adhering to the following process is the best way to get your work
 included in the project:
@@ -146,8 +144,10 @@ included in the project:
    ```bash
    # Clone your fork of the repo into the current directory
    git clone https://github.com/<your-username>/inkline.git
+   
    # Navigate to the newly cloned directory
-   cd Inkline
+   cd inkline
+   
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/inkline/inkline.git
    ```
@@ -166,7 +166,7 @@ included in the project:
    git checkout -b <topic-branch-name>
    ```
 
-4. Commit your changes in logical chunks. Please adhere to these [git commit
+4. Make sure your commits are logically structured. Please adhere to these [git commit
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
    or your code is unlikely to be merged into the main project. Use Git's
    [interactive rebase](https://help.github.com/articles/interactive-rebase)
@@ -187,11 +187,10 @@ included in the project:
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
     with a clear title and description against the `dev` branch.
 
-**IMPORTANT**: By submitting a patch, you agree to allow the project owners to
-license your work under the terms of the [MIT License](LICENSE) (if it
-includes code changes) and under the terms of the
+**Important!** By submitting a patch, you agree to allow the project owners to
+license your work under the terms of the [MIT License](LICENSE) (for code changes) and under the terms of the
 [Creative Commons Attribution 3.0 Unported License](docs/LICENSE)
-(if it includes documentation changes).
+(for documentation changes).
 
 ## Code guidelines
 
@@ -200,14 +199,14 @@ includes code changes) and under the terms of the
 [Adhere to the Code Guide.](http://codeguide.co/#html)
 
 - Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
-- Use [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) attributes in documentation examples to promote accessibility.
+- Use [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) attributes in documentation examples for better accessibility.
 
 ### Stylus
 
 Adhere to the linting guidelines.
 
-- When feasible, default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
-- Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines) for more details.
+- Default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
+- Don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines) for more details.
 
 ### JS
 

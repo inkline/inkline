@@ -142,7 +142,5 @@ Inkline is maintained under [the Semantic Versioning guidelines](https://semver.
 
 ## Copyright and license
 Code and documentation copyright 2017-2018 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
-
 Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/LICENSE). 
-
 Docs released under [Creative Commons](https://github.com/inkline/inkline.io/blob/master/docs/LICENSE).
