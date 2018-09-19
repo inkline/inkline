@@ -23,11 +23,15 @@
   </p>
 </p>
 
+<p align="center">
+
 [![npm version](https://img.shields.io/npm/v/inkline.svg)](https://www.npmjs.com/package/inkline)
 ![dependencies status](https://img.shields.io/david/inkline/inkline.svg?style=popout)
 ![devDependencies status](https://img.shields.io/david/dev/inkline/inkline.svg?style=popout)
 [![Downloads](https://img.shields.io/npm/dm/inkline.svg)](https://www.npmjs.com/package/inkline)
 <!--[![Coveralls](https://img.shields.io/coveralls/inkline/inkline.svg)](https://coveralls.io/github/inkline/inkline````````````)-->
+
+</p>
 
 <!--Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design. Inkline is 
 written and maintained by [@alexgrozav](https://twitter.com/alexgrozav). -->
