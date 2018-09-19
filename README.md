@@ -56,7 +56,7 @@ If your problem or idea is not addressed yet, [please open a new issue](https://
 
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/inkline/inkline/.github/contributing.md). 
+Please read through our [contributing guidelines](https://github.com/inkline/inkline/blob/master/.github/contributing.md). 
 Included are directions for opening issues, coding standards, and notes on development.
 
 ## Community
@@ -142,5 +142,5 @@ Inkline is maintained under [the Semantic Versioning guidelines](https://semver.
 
 ## Copyright and license
 Code and documentation copyright 2017-2018 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
-Code released under the [MIT License](https://github.com/inkline/inkline/.github/LICENSE). 
-Docs released under [Creative Commons](https://github.com/inkline/inkline.io/.github/docs/LICENSE).
+Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/LICENSE). 
+Docs released under [Creative Commons](https://github.com/inkline/inkline.io/blob/master/docs/LICENSE).
