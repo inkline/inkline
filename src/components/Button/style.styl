@@ -18,6 +18,9 @@
     line-height: --button-line-height
     if --transition['button']
         transition: background-color --transition-duration --transition-easing, border-color --transition-duration --transition-easing, color --transition-duration --transition-easing
+    margin-right: --button-margin
+    &:last-schild
+        margin-right: 0
 
     // Target non disabled buttons
     &:not(:disabled):not(.-disabled)
@@ -46,7 +49,8 @@
         width: 100%
 
         + .button.-block
-            margin-top: --button-block-margin
+            margin-left: 0
+            margin-top: --button-margin
 
     // Link buttons
     // Make a button look and behave like a link
