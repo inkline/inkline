@@ -1,0 +1,29 @@
+//
+// Variables
+//
+--alert-font-size := --font-size
+--alert-font-weight := --font-weight['normal']
+--alert-line-height := --line-height
+
+--alert-border-width := --border-width
+--alert-border-radius := --border-radius
+
+--alert-padding-sm := --spacers['1'] * --size-percentages['sm']
+--alert-padding-md := --spacers['1'] * --size-percentages['md']
+--alert-padding-lg := --spacers['1'] * --size-percentages['lg']
+--alert-padding := {
+    'sm': --alert-padding-sm
+    'md': --alert-padding-md
+    'lg': --alert-padding-lg
+}
+
+--alert-dismiss-size := 1rem
+
+--alert-background-darken := rgba(0, 0, 0, 0.15)
+
+--alert-themes := (brand state)
+
+//
+// Themes
+//
+-add-theme(--themes, 'alert', --alert-themes)
