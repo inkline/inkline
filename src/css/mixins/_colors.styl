@@ -46,13 +46,59 @@
 // @param colors The colors to be mixed
 // @return Mixed color
 //
--mix-multiple(colors)
+-mix-all(colors)
     mixedColor = colors[0]
 
     for color, index in colors
         mixedColor = mix(mixedColor, color, percentage(1 / length(colors))) if index != 0
 
     return mixedColor
+
+
+// Mix multiple colors with a single color
+//
+// @param colors The colors to be transparentized
+// @param mixColor The color to mix the others with
+// @param amount The transparency amount
+// @return Transparentized colors list
+//
+-mix-each(colors, mixColor, amount)
+    mixedColors = ()
+
+    for color, index in colors
+        push(mixedColors, mix(color, mixColor, amount))
+
+    return mixedColors
+
+
+// Lighten multiple colors
+//
+// @param colors The colors to be lightened
+// @param amount The lighten amount
+// @return Lightened colors list
+//
+-lighten-each(colors, amount)
+    lightenedColors = ()
+
+    for color, index in colors
+        push(lightenedColors, lighten(color, amount))
+
+    return lightenedColors
+
+
+// Transparentize multiple colors
+//
+// @param colors The colors to be transparentized
+// @param amount The transparency amount
+// @return Transparentized colors list
+//
+-transparentize-each(colors, amount)
+    transparentizedColors = ()
+
+    for color, index in colors
+        push(transparentizedColors, rgba(color, amount))
+
+    return transparentizedColors
 
 
 // Generate a gradient background color with given colors array and gradient direction
