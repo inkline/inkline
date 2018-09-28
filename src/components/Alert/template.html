@@ -2,7 +2,7 @@
      :class="classes['*']"
      v-bind="attributes"
      v-show="dismissible ? !dismissed && show : show">
-    <span class="icon">
+    <span class="icon" v-if="$slots.icon">
         <slot name="icon"></slot>
     </span>
     <div class="content">

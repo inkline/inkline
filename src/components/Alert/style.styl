@@ -11,7 +11,7 @@
 .alert
     position: relative
     display: flex
-    flex-direction: column
+    flex-direction: row
     min-width: 0
     word-wrap: break-word
     background-clip: border-box
@@ -20,15 +20,18 @@
     // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom.
     flex: 1 1 auto
+    align-items: center
 
     a
         font-weight: 600
 
     > .icon
-        flex: 0 1 auto
+        flex: 0 0 auto
+        border-right-width: 1px
+        border-right-style: solid
 
     > .content
-        flex: 0 1 auto
+        flex: 0 1 100%
 
         > hr
             margin-right: 0
@@ -46,10 +49,11 @@
             margin-bottom: 0
 
     > .dismiss
+        flex: 0 0 auto
         cursor: pointer
-        display: block
-        position: absolute
+        display: inline-block
         width: --alert-dismiss-size
+        text-align: center
 
     @extend .alert.-md
     @extend .alert.-light

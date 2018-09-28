@@ -15,8 +15,9 @@ for size in (sm md lg)
         > .link + .link
             margin-left: --alert-padding[size]
 
-        &.-dismissible
-            padding-right: --alert-padding[size] * 2 + --alert-dismiss-size
-
         > .dismiss
-            right: --alert-padding[size]
+            margin-left: --alert-padding[size]
+
+        > .icon
+            padding-right: --alert-padding[size]
+            margin-right: --alert-padding[size]
