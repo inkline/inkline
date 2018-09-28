@@ -18,6 +18,8 @@ for --theme-name, --theme in --themes['button']
 
             &:active
             &.-active
+                background-color: darken(--theme['color'], 2.5 * --button-darken-percentage-hover)
+
                 &:focus
                 &.-focused
                     outline: 1px solid rgba(--theme['color'], 0.25)

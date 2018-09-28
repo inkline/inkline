@@ -13,12 +13,14 @@ import Row from './components/Row';
 import Checkbox from './components/Checkbox';
 import CheckboxButton from './components/CheckboxButton';
 import CheckboxGroup from './components/CheckboxGroup';
+import CheckboxButtonGroup from './components/CheckboxButtonGroup';
 import Input from './components/Input';
 import InputGroup from './components/InputGroup';
 import InputNumber from './components/InputNumber';
 import Radio from './components/Radio';
 import RadioButton from './components/RadioButton';
 import RadioGroup from './components/RadioGroup';
+import RadioButtonGroup from './components/RadioButtonGroup';
 import Textarea from './components/Textarea';
 
 class Inkline {
@@ -38,12 +40,14 @@ class Inkline {
         Checkbox,
         CheckboxButton,
         CheckboxGroup,
+        CheckboxButtonGroup,
         Input,
         InputGroup,
         InputNumber,
         Radio,
         RadioButton,
         RadioGroup,
+        RadioButtonGroup,
         Textarea
     ];
 
@@ -76,12 +80,14 @@ export {
     Checkbox as ICheckbox,
     CheckboxButton as ICheckboxButton,
     CheckboxGroup as ICheckboxGroup,
+    CheckboxButtonGroup as ICheckboxButtonGroup,
     Input as IInput,
     InputGroup as IInputGroup,
     InputNumber as IInputNumber,
     Radio as IRadio,
     RadioButton as IRadioButton,
     RadioGroup as IRadioGroup,
+    RadioButtonGroup as IRadioButtonGroup,
     Textarea as ITextarea,
     Inkline
 };
