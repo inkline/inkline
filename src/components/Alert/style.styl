@@ -1,0 +1,55 @@
+/**
+ * Alert
+ */
+
+@import '../../css/config'
+@import '../../css/mixins'
+@import 'css/_variables'
+@import 'css/_themes'
+@import 'css/_sizes'
+
+.alert
+    position: relative
+    display: flex
+    flex-direction: column
+    min-width: 0
+    word-wrap: break-word
+    background-clip: border-box
+    border-width: --alert-border-width
+    border-style: solid
+    // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+    // as much space as possible, ensuring footers are aligned to the bottom.
+    flex: 1 1 auto
+
+    a
+        font-weight: 600
+
+    > .icon
+        flex: 0 1 auto
+
+    > .content
+        flex: 0 1 auto
+
+        > hr
+            margin-right: 0
+            margin-left: 0
+
+        > p:first-child
+            margin-top: 0
+        > p:last-of-type
+            margin-bottom: 0
+
+        > .title
+            margin-top: 0
+
+        > .subtitle
+            margin-bottom: 0
+
+    > .dismiss
+        cursor: pointer
+        display: block
+        position: absolute
+        width: --alert-dismiss-size
+
+    @extend .alert.-md
+    @extend .alert.-light

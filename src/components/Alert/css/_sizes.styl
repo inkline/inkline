@@ -1,0 +1,22 @@
+// Card sizes
+// Add the required sizes to all card variations
+for size in (sm md lg)
+    .alert.-{size}
+        border-radius: --alert-border-radius[size]
+        font-size: --alert-font-size[size]
+        padding: --alert-padding[size]
+
+        > .title
+            margin-bottom: --alert-padding[size]
+
+        > .subtitle
+            margin-top: --alert-padding[size] / 2
+
+        > .link + .link
+            margin-left: --alert-padding[size]
+
+        &.-dismissible
+            padding-right: --alert-padding[size] * 2 + --alert-dismiss-size
+
+        > .dismiss
+            right: --alert-padding[size]
