@@ -1,14 +1,14 @@
 <script>
 export default {
     props: {
-        theme: {
+        variant: {
             type: String,
             default: ''
         }
     },
     created () {
-        if (this.classesProvider && this.theme) {
-            this.classesProvider['root'].push(() => `-${this.theme}`);
+        if (this.classesProvider && this.variant) {
+            this.classesProvider['root'].push(() => `-${this.variant}`);
         }
     }
 };

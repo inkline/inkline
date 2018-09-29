@@ -12,7 +12,7 @@ import DisabledPropertyMixin from '../../mixins/forms/properties/DisabledPropert
 import LoadingPropertyMixin from '../../mixins/components/properties/LoadingPropertyMixin';
 import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
 import TabIndexPropertyMixin from '../../mixins/components/properties/TabIndexPropertyMixin';
-import ThemePropertyMixin from '../../mixins/components/properties/ThemePropertyMixin';
+import VariantPropertyMixin from '../../mixins/components/properties/VariantPropertyMixin';
 
 export default {
     name: 'Button',
@@ -31,7 +31,7 @@ export default {
         LoadingPropertyMixin,
         SizePropertyMixin,
         TabIndexPropertyMixin,
-        ThemePropertyMixin
+        VariantPropertyMixin
     ],
     props: {
         /**

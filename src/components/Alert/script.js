@@ -2,7 +2,7 @@ import AttributesProviderMixin from '../../mixins/components/providers/Attribute
 import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
 
 import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
-import ThemePropertyMixin from '../../mixins/components/properties/ThemePropertyMixin';
+import VariantPropertyMixin from '../../mixins/components/properties/VariantPropertyMixin';
 
 export default {
     name: 'Alert',
@@ -11,7 +11,7 @@ export default {
         ClassesProviderMixin,
 
         SizePropertyMixin,
-        ThemePropertyMixin
+        VariantPropertyMixin
     ],
     model: {
         prop: 'show',
