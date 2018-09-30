@@ -1,0 +1,19 @@
+/**
+ * Breadcrumb
+ */
+
+@import '../../css/config'
+@import '../../css/mixins'
+@import 'css/_variables'
+@import 'css/_variants'
+@import 'css/_sizes'
+
+.breadcrumb
+    display: flex
+    flex-wrap: wrap
+    margin-bottom: --breadcrumb-margin-bottom
+    list-style: none;
+    background-color: --breadcrumb-background
+
+    @extend .breadcrumb.-md
+    @extend .breadcrumb.-light
