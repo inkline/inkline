@@ -1,7 +1,7 @@
 //
 // Variables
 //
---card-themes := (basic brand neutral state)
+--card-variants := (basic brand neutral state)
 
 --card-font-size := --font-size
 --card-font-weight := --font-weight['normal']
@@ -24,4 +24,4 @@
 //
 // Themes
 //
--add-theme(--themes, 'card', --card-themes)
+--variants['card'] = -add-variant(--card-variants, { color: --color-groups })

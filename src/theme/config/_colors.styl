@@ -1,6 +1,8 @@
 //
 // Theme colors
 //
+--gradient-groups = {}
+--color-groups = {}
 
 // Gradient color settings
 //
@@ -604,7 +606,7 @@
 --gradient-purple := (#6a89d2 #4b39b9)
 --gradient-pink := (#ff7698 #ff2c59)
 
---gradients-basic := {
+--gradient-groups['basic'] = {
   red: --gradient-red
   orange: --gradient-orange
   yellow: --gradient-yellow
@@ -626,7 +628,7 @@
 --color-purple := #4b39b9
 --color-pink := #ff2c59
 
---colors-basic = {
+--color-groups['basic'] = {
   red: --color-red
   orange: --color-orange
   yellow: --color-yellow
@@ -639,6 +641,7 @@
 
 // Neutral Gradients
 //
+--gradient-transparent := (transparent transparent)
 --gradient-white := (#ffffff #fcfdfb)
 --gradient-gray-10 := (#fcfdfb #f8f9fa)
 --gradient-gray-20 := (#f8f9fa #e9ecef)
@@ -651,7 +654,8 @@
 --gradient-gray-90 := (#343a40 #212529)
 --gradient-black := (#212529 #000000)
 
---gradients-neutral := {
+--gradient-groups['neutral'] = {
+  transparent: --gradient-transparent
   white: --gradient-white
   gray-10: --gradient-gray-10
   gray-20: --gradient-gray-20
@@ -680,7 +684,7 @@
 --color-gray-90 := #212529
 --color-black := #000000
 
---colors-neutral := {
+--color-groups['neutral'] = {
   transparent: --color-transparent
   white: --color-white
   gray-10: --color-gray-10
@@ -702,7 +706,7 @@
 --gradient-light := --gradient-gray-30
 --gradient-dark := --gradient-gray-90
 
---gradients-brand := {
+--gradient-groups['brand'] = {
   primary: --gradient-primary
   secondary: --gradient-secondary
   light: --gradient-light
@@ -716,7 +720,7 @@
 --color-light := --color-gray-30
 --color-dark := --color-gray-90
 
---colors-brand := {
+--color-groups['brand'] = {
   primary: --color-primary
   secondary: --color-secondary
   light: --color-light
@@ -730,7 +734,7 @@
 --gradient-warning := --gradient-orange
 --gradient-info := --gradient-blue
 
---gradients-state := {
+--gradient-groups['state'] = {
   success: --gradient-success
   danger: --gradient-danger
   warning: --gradient-warning
@@ -742,7 +746,7 @@
 --color-warning := --color-orange
 --color-info := --color-blue
 
---colors-state := {
+--color-groups['state'] = {
   success: --color-success
   danger: --color-danger
   warning: --color-warning
@@ -767,7 +771,7 @@
 --gradient-envato := (#b2d068 #6eb516)
 --gradient-vine := (#30d6a9 #00ae81)
 
---gradients-social := {
+--gradient-groups['social'] = {
     facebook: --gradient-facebook
     twitter: --gradient-twitter
     google-plus: --gradient-google-plus
@@ -803,7 +807,7 @@
 --color-envato := #82b541
 --color-vine := #00bf8f
 
---colors-social := {
+--color-groups['social'] = {
   facebook: --color-facebook
   twitter: --color-twitter
   google-plus: --color-google-plus
@@ -823,8 +827,8 @@
 
 // Theme light and dark colors
 //
---theme-color-light := --colors-neutral['white']
---theme-color-dark := --colors-neutral['gray-80']
+--variant-color-light := --color-white
+--variant-color-dark := --color-gray-80
 
---colors = merge(--colors-basic, --colors-brand, --colors-neutral, --colors-social, --colors-state)
---gradients = merge(--gradients-basic, --gradients-brand, --gradients-neutral, --gradients-social, --gradients-state)
+--colors = merge({}, --color-groups['basic'], --color-groups['brand'], --color-groups['neutral'], --color-groups['social'], --color-groups['state'])
+--gradients = merge({}, --gradient-groups['basic'], --gradient-groups['brand'], --gradient-groups['neutral'], --gradient-groups['social'], --gradient-groups['state'])

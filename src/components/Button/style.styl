@@ -1,8 +1,8 @@
 @import '../../css/config'
 @import '../../css/mixins'
 @import 'css/_variables'
+@import 'css/_variants'
 @import 'css/_sizes'
-@import 'css/_themes'
 
 /**
  * Button
@@ -18,9 +18,6 @@
     line-height: --button-line-height
     if --transition['button']
         transition: background-color --transition-duration --transition-easing, border-color --transition-duration --transition-easing, color --transition-duration --transition-easing
-    margin-right: --button-margin
-    &:last-schild
-        margin-right: 0
 
     // Target non disabled buttons
     &:not(:disabled):not(.-disabled)
@@ -80,6 +77,10 @@
     // Transparent button
     &.-transparent
         background-color: transparent
+
+    // Flat buttons
+    &.-flat
+        background-image: none
 
     // Button defaults
     // Set a default size and theme

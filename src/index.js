@@ -1,4 +1,5 @@
 import Alert from './components/Alert';
+import Badge from './components/Badge';
 import Button from './components/Button';
 import ButtonGroup from './components/ButtonGroup';
 import Card from './components/Card';
@@ -27,6 +28,7 @@ import Textarea from './components/Textarea';
 class Inkline {
     static components = [
         Alert,
+        Badge,
         Button,
         ButtonGroup,
         Card,
@@ -68,6 +70,7 @@ class Inkline {
 
 export {
     Alert as IAlert,
+    Badge as IBadge,
     Button as IButton,
     ButtonGroup as IButtonGroup,
     Card as ICard,
