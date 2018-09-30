@@ -1,0 +1,10 @@
+// Badge sizes
+// Add the required sizes to all badge variations
+for size in (sm md lg)
+    .badge.-{size}
+        border-radius: --badge-border-radius[size]
+        font-size: --badge-font-size[size]
+        padding: --badge-padding[size]
+
+        &.-pill
+            padding: --badge-padding[size]

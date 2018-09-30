@@ -1,0 +1,24 @@
+//
+// Themes
+//
+// Generate color themes based on the --colors, --brand-colors and --social-colors
+// variables for components. If the color group is in the list, Inkline will
+// generate themes for the specified color group.
+//
+
+--variant-color-light := --colors['white']
+--variant-color-dark := --colors['gray-80']
+
+// Available component themes
+//
+--variants-background := (basic brand neutral social state)
+--variants-border := (basic brand neutral social state)
+--variants-table := (brand neutral state)
+--variants-text := (basic brand neutral social state)
+
+// Initialize theme choice collection
+//
+--variants['background'] = -add-variant(--background-variants, { color: --color-groups, gradient: --gradient-groups })
+--variants['border'] = -add-variant(--border-variants, { color: --color-groups, gradient: --gradient-groups })
+--variants['table'] = -add-variant(--table-variants, { color: --color-groups, gradient: --gradient-groups })
+--variants['text'] = -add-variant(--text-variants, { color: --color-groups, gradient: --gradient-groups })

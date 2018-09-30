@@ -1,0 +1,17 @@
+//
+// Add a new item theme to the themes collection
+//
+// @param --variant-group-names
+// @param --color-groups Various groups of variants associated to a variant type identifier
+//
+-add-variant(--variant-group-names, --variant-typed-groups)
+    --item-variants = {}
+
+    for --variant-type, --variant-group in --variant-typed-groups // { 'color': { basic: {}, brand: {}, state: {}, .. }, 'gradient': { .. }}
+        for --variant-group-type in --variant-group-names // (basic brand state ..)
+            for --variant-name, --variant-color in --variant-group[--variant-group-type] // { 'red': #ff0000, 'blue': #0000ff, .. }
+                --item-variants[--variant-name] = --item-variants[--variant-name] or {}
+                --item-variant = --item-variants[--variant-name]
+                --item-variant[--variant-type] = --variant-color
+
+    return --item-variants

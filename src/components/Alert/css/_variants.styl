@@ -1,0 +1,21 @@
+// Alert themes
+// Add the required color themes to all alert variations
+for --variant-name, --variant in --variants['alert']
+    .alert.-{--variant-name}
+        border-color: --variant['color']
+        color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+        background-color: --variant['color']
+
+        a
+            color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+
+        > .icon
+            border-color: rgba(-text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark), 0.33)
+
+        &.-faded
+            border-color: mix(#ffffff, --variant['color'], 15%)
+            color: darken(--variant['color'], 50%)
+            a
+                color: darken(--variant['color'], 50%)
+
+            background-color: mix(#ffffff, --variant['color'], 50%)
