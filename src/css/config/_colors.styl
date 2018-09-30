@@ -3,6 +3,30 @@
 //
 // Basic, state and neutral colors
 //
+--color-groups = {}
+
+
+// Basic Colors
+//
+--color-red := #ff5353
+--color-orange := #ff9700
+--color-yellow := #ffbe21
+--color-green := #4cb050
+--color-teal := #37f7df
+--color-blue := #3dbff1
+--color-purple := #4b39b9
+--color-pink := #ff2c59
+
+--color-groups['basic'] = {
+  red: --color-red
+  orange: --color-orange
+  yellow: --color-yellow
+  green: --color-green
+  teal: --color-teal
+  blue: --color-blue
+  purple: --color-purple
+  pink: --color-pink
+}
 
 // Neutral Colors
 //
@@ -19,7 +43,7 @@
 --color-gray-90 := #212529
 --color-black := #000000
 
---colors-neutral := {
+--color-groups['neutral'] = {
   transparent: --color-transparent
   white: --color-white
   gray-10: --color-gray-10
@@ -41,7 +65,7 @@
 --color-light := #e9ecef
 --color-dark := #212529
 
---colors-brand := {
+--color-groups['brand'] = {
   primary: --color-primary
   secondary: --color-secondary
   light: --color-light
@@ -55,18 +79,55 @@
 --color-warning := #ff9700
 --color-info := #3dbff1
 
---colors-state := {
+--color-groups['state'] = {
   success: --color-success
   danger: --color-danger
   warning: --color-warning
   info: --color-info
 }
 
+
+// Social Colors
+//
+--color-facebook := #3b5998
+--color-twitter := #1da1f2
+--color-google-plus := #dd4b39
+--color-instagram := #fd1d1d
+--color-dribbble := #ea4c89
+--color-behance := #1769ff
+--color-flickr := #ff0084
+--color-linkedin := #0077b5
+--color-youtube := #b31217
+--color-pinterest := #bd081c
+--color-github := #333333
+--color-tumblr := #35465c
+--color-twitch := #6441a5
+--color-envato := #82b541
+--color-vine := #00bf8f
+
+--color-groups['social'] = {
+  facebook: --color-facebook
+  twitter: --color-twitter
+  google-plus: --color-google-plus
+  instagram: --color-instagram
+  dribbble: --color-dribbble
+  behance: --color-behance
+  flickr: --color-flickr
+  linkedin: --color-linkedin
+  youtube: --color-youtube
+  pinterest: --color-pinterest
+  github: --color-github
+  tumblr: --color-tumblr
+  twitch: --color-twitch
+  envato: --color-envato
+  vine: --color-vine
+}
+
 // Theme light and dark colors
 //
---theme-color-light := #ffffff
---theme-color-dark := #343a40
+--variant-color-light := #ffffff
+--variant-color-dark := #343a40
 
 // All Colors
 //
---colors = merge(--colors-brand, --colors-state, --colors-neutral)
+--colors = merge(--color-groups['basic'], --color-groups['brand'], --color-groups['state'], --color-groups['neutral'], --color-groups['social'])

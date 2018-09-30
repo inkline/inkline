@@ -1,14 +1,14 @@
 //
 // Variables
 //
---alert-themes := (brand state)
+--alert-variants := (brand state)
 
 --alert-box-shadow := --box-shadow[0] 0.5rem 0.5rem -0.5rem rgba(--colors['black'], 0.33)
 
 //
 // Themes
 //
--add-theme(--themes, 'alert', --alert-themes)
+--variants['alert'] = -add-variant(--alert-variants, { color: --color-groups, gradient: --gradient-groups })
 
 //
 // Styles
@@ -18,23 +18,23 @@
 
   // Alert themes
   // Add the required color themes to all alert variations
-  for --theme-name, --theme in --themes['alert']
-    &.-{--theme-name}
-      border-color: --theme['color']
-      color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
-      background-color: --theme['color']
-      if --gradient-enabled and --theme['gradient']
-        background-image: -linear-gradient(--theme['gradient'])
+  for --variant-name, --variant in --variants['alert']
+    &.-{--variant-name}
+      border-color: --variant['color']
+      color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+      background-color: --variant['color']
+      if --gradient-enabled and --variant['gradient']
+        background-image: -linear-gradient(--variant['gradient'])
 
       a
-        color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
+        color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
 
       &.-faded
-        border-color: mix(#ffffff, --theme['color'], 15%)
-        color: darken(--theme['color'], 66%)
+        border-color: mix(#ffffff, --variant['color'], 15%)
+        color: darken(--variant['color'], 66%)
         a
-          color: darken(--theme['color'], 66%)
+          color: darken(--variant['color'], 66%)
 
-        background-color: mix(#ffffff, --theme['color'], 75%)
-        if --gradient-enabled and --theme['gradient']
-          background-image: -linear-gradient((rgba(--theme['gradient'][0], 0.33) rgba(--theme['gradient'][1], 0.1)))
+        background-color: mix(#ffffff, --variant['color'], 75%)
+        if --gradient-enabled and --variant['gradient']
+          background-image: -linear-gradient((rgba(--variant['gradient'][0], 0.33) rgba(--variant['gradient'][1], 0.1)))

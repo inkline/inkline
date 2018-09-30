@@ -34,9 +34,10 @@
 --button-link-color := --link-color
 --button-link-disabled-color := --text-muted
 
---button-themes := (brand state)
+--button-variants := (brand state social)
 
 //
 // Themes
 //
--add-theme(--themes, 'button', --button-themes)
+--variants['button'] = -add-variant(--button-variants, { color: --color-groups })
+//p(--variants['button'])

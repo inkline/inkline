@@ -95,7 +95,7 @@
 -transparentize-each(colors, amount)
     transparentizedColors = ()
 
-    for color, index in colors
+    for color in colors
         push(transparentizedColors, rgba(color, amount))
 
     return transparentizedColors

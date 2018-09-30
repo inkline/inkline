@@ -22,12 +22,12 @@
 
     // Button themes
     // Add the required color themes to all button variations
-    for --theme-name, --theme in --themes['button']
-        > .button.-{--theme-name}
-            if --gradient-enabled and --theme['gradient']
-                background-image: -linear-gradient(--theme['gradient'], to bottom)
+    for --variant-name, --variant in --variants['button']
+        > .button.-{--variant-name}
+            if --gradient-enabled and --variant['gradient']
+                background-image: -linear-gradient(--variant['gradient'], to bottom)
 
-        &:not(.-vertical) > .button.-{--theme-name}:not(:first-child)
-            border-left-color: darken(--theme['color'], --button-darken-percentage-hover)
-        &.-vertical > .button.-{--theme-name}:not(:first-child)
-            border-top-color: darken(--theme['color'], --button-darken-percentage-hover)
+        &:not(.-vertical) > .button.-{--variant-name}:not(:first-child)
+            border-left-color: darken(--variant['color'], --button-darken-percentage-hover)
+        &.-vertical > .button.-{--variant-name}:not(:first-child)
+            border-top-color: darken(--variant['color'], --button-darken-percentage-hover)

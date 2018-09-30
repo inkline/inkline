@@ -21,9 +21,9 @@
 
 --alert-background-darken := rgba(0, 0, 0, 0.15)
 
---alert-themes := (brand state)
+--alert-variants := (brand state)
 
 //
 // Themes
 //
--add-theme(--themes, 'alert', --alert-themes)
+--variants['alert'] = -add-variant(--alert-variants, { color: --color-groups })

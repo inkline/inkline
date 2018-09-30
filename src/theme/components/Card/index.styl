@@ -1,14 +1,14 @@
 //
 // Variables
 //
---card-themes := (basic brand neutral state)
+--card-variants := (basic brand neutral state)
 
 --card-box-shadow := --box-shadow[0] 0.5rem 0.5rem -0.5rem rgba(--colors['black'], 0.33)
 
 //
 // Themes
 //
--add-theme(--themes, 'card', --card-themes)
+--variants['card'] = -add-variant(--card-variants, { color: --color-groups })
 
 //
 // Styles
@@ -18,17 +18,17 @@
 
     // Card themes
     // Add the required color themes to all card variations
-    for --theme-name, --theme in --themes['card']
-        &.-{--theme-name}
-            color: -text-color-by-luminance(--theme['color'], --theme-color-light, --theme-color-dark)
-            background-color: --theme['color']
+    for --variant-name, --variant in --variants['card']
+        &.-{--variant-name}
+            color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+            background-color: --variant['color']
 
-            if --gradient-enabled and --theme['gradient']
-                background-image: -linear-gradient(--theme['gradient'])
+            if --gradient-enabled and --variant['gradient']
+                background-image: -linear-gradient(--variant['gradient'])
 
             > .body
-                border-color: --theme['color']
+                border-color: --variant['color']
 
             > .header
             > .footer
-                border-color: --theme['color']
+                border-color: --variant['color']
