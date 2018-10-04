@@ -81,7 +81,6 @@
     // Button themes
     // Add the required color themes to all button variations
     for --variant-name, --variant in --variants['button']
-        p(--variant-name, --variant)
         &.-{--variant-name}
             color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
             background-color: --variant['color']
@@ -108,7 +107,6 @@
             //if --gardients-enabled and --variant['gradient']
             &.-disabled
             &:disabled
-                p(--variant-name, --variant, --gradients['transparent'])
                 background-image: -linear-gradient(-transparentize-each(--variant['gradient'], 0.1))
 
             &.-outline
