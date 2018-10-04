@@ -4,5 +4,10 @@
 //
 for --variant-name, --variant in --variants['breadcrumb']
     .breadcrumb.-{--variant-name}
-        color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
-        background-color: --variant['color']
+        > .breadcrumb-item
+            + .breadcrumb-item
+                &::before
+                    color: -text-color-by-luminance(--variant['color'], transparentify(--variant-color-light, --variant['color'], 0.5), transparentify(--variant-color-dark, --variant['color'], 0.5))
+
+            &.-active
+                color: -text-color-by-luminance(--variant['color'], transparentify(--variant-color-light, --variant['color'], 0.66), transparentify(--variant-color-dark, --variant['color'], 0.66))

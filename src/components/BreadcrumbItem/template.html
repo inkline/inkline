@@ -1,5 +1,8 @@
-<div class="breadcrumb-item"
-     :class="classes['*']"
-     v-bind="attributes">
-    <slot></slot>
-</div>
+<li class="breadcrumb-item"
+    :class="classes['*']">
+    <a
+        :is="tag"
+        v-bind="attributes">
+        <slot></slot>
+    </a>
+</li>

@@ -5,9 +5,9 @@
 
 --breadcrumb-border-radius := --border-radius
 
---breadcrumb-padding-sm := --spacers['1'] * --size-percentages['sm']
---breadcrumb-padding-md := --spacers['1'] * --size-percentages['md']
---breadcrumb-padding-lg := --spacers['1'] * --size-percentages['lg']
+--breadcrumb-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
+--breadcrumb-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
+--breadcrumb-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
 --breadcrumb-padding := {
     'sm': --breadcrumb-padding-sm
     'md': --breadcrumb-padding-md
@@ -15,6 +15,8 @@
 }
 
 --breadcrumb-margin-bottom := --spacer
+
+--breadcrumb-divider := '/'
 
 //
 // Variants
