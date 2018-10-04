@@ -1,22 +1,23 @@
 import AttributesProviderMixin from '../../mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
 
+import ActivePropertyMixin from '../../mixins/components/properties/ActivePropertyMixin';
 import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
 import VariantPropertyMixin from '../../mixins/components/properties/VariantPropertyMixin';
 
 export default {
-    name: 'Breadcrumb',
+    name: 'BreadcrumbItem',
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
 
+        ActivePropertyMixin,
         SizePropertyMixin,
         VariantPropertyMixin
     ],
-    props: {
-        divider: {
-            type: String,
-            default: '/'
-        },
+    computed: {
+        tag() {
+            return this.attributes.to ? 'router-link' : 'a';
+        }
     }
 };

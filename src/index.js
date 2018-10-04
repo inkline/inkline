@@ -1,5 +1,7 @@
 import Alert from './components/Alert';
 import Badge from './components/Badge';
+import Breadcrumb from './components/Breadcrumb';
+import BreadcrumbItem from './components/BreadcrumbItem';
 import Button from './components/Button';
 import ButtonGroup from './components/ButtonGroup';
 import Card from './components/Card';
@@ -29,6 +31,8 @@ class Inkline {
     static components = [
         Alert,
         Badge,
+        Breadcrumb,
+        BreadcrumbItem,
         Button,
         ButtonGroup,
         Card,
@@ -71,6 +75,8 @@ class Inkline {
 export {
     Alert as IAlert,
     Badge as IBadge,
+    Breadcrumb as IBreadcrumb,
+    BreadcrumbItem as IBreadcrumbItem,
     Button as IButton,
     ButtonGroup as IButtonGroup,
     Card as ICard,

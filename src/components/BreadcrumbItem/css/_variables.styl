@@ -1,23 +1,11 @@
 //
 // Variables
 //
---breadcrumb-font-size := --font-size
-
---breadcrumb-border-radius := --border-radius
-
---breadcrumb-padding-sm := --spacers['1'] * --size-percentages['sm']
---breadcrumb-padding-md := --spacers['1'] * --size-percentages['md']
---breadcrumb-padding-lg := --spacers['1'] * --size-percentages['lg']
---breadcrumb-padding := {
-    'sm': --breadcrumb-padding-sm
-    'md': --breadcrumb-padding-md
-    'lg': --breadcrumb-padding-lg
+--breadcrumb-item-padding-sm := --spacers['1'] * --size-percentages['sm']
+--breadcrumb-item-padding-md := --spacers['1'] * --size-percentages['md']
+--breadcrumb-item-padding-lg := --spacers['1'] * --size-percentages['lg']
+--breadcrumb-item-padding := {
+    'sm': --breadcrumb-item-padding-sm
+    'md': --breadcrumb-item-padding-md
+    'lg': --breadcrumb-item-padding-lg
 }
-
---breadcrumb-margin-bottom := --spacer
-
-//
-// Variants
-//
---breadcrumb-variants := (brand)
---variants['breadcrumb'] = -add-variant(--breadcrumb-variants, { color: --color-groups })
