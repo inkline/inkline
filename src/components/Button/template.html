@@ -1,8 +1,8 @@
 <button
     v-bind="attributes"
     class="button"
-    :is="tag"
-    :href="hrefAttr"
+    :is="_tag"
+    :tag="tag"
     :class="classes['*']"
     :disabled="isDisabled || loading"
     @click="onClick"

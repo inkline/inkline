@@ -73,41 +73,13 @@ export default {
             type: String,
             default: ''
         },
-
-        /**
-         * Linking and routing
-         */
-        href: {
-            type: [String, Object],
-            default: ''
-        }
     },
     computed: {
-        hrefAttr () {
-            return this.href && typeof this.href === 'string' && this.tag === 'a' ? this.href : false;
-        }
-    },
-    methods: {
-        /**
-         * On click binding to make buttons behave like anchor links
-         */
-        onClickHref () {
-            if (!this.href) return;
-
-            if (typeof this.href === 'string' && /^(https?:)?\/?\//.test(this.href)) {
-                if (this.tag === 'a') return;
-
-                window.open(this.href, this.$attrs.target || '_self');
-            } else {
-                this.$router.push(this.href);
-            }
+        _tag () {
+            return this.attributes.to ? 'router-link' : this.attributes.href ? 'a' : this.tag;
         }
     },
     created () {
-        if (this.href) {
-            this.$on('click', this.onClickHref);
-        }
-
         if (this.classesProvider) {
             this.classesProvider['root'].push(() => ({'-active': this.active}));
             this.classesProvider['root'].push(() => ({'-block': this.block}));
