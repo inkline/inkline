@@ -12,9 +12,9 @@
 --badge-border-width := --border-width
 --badge-border-radius := --border-radius
 
---badge-padding-sm := --spacers['1/3'] * --size-percentages['sm']
---badge-padding-md := --spacers['1/3'] * --size-percentages['md']
---badge-padding-lg := --spacers['1/3'] * --size-percentages['lg']
+--badge-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['2/3'] * --size-percentages['sm']
+--badge-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['2/3'] * --size-percentages['md']
+--badge-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['2/3'] * --size-percentages['lg']
 --badge-padding := {
     'sm': --badge-padding-sm
     'md': --badge-padding-md
@@ -23,9 +23,10 @@
 
 --badge-pill-border-radius := 10rem
 
---badge-variants := (brand state)
 
 //
-// Themes
+// Variants
 //
+--badge-variants := (brand state)
+
 --variants['badge'] = -add-variant(--badge-variants, { color: --color-groups })
