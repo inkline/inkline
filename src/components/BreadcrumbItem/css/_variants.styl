@@ -1,13 +1,22 @@
 //
-// Breadcrumb themes
+// Breadcrumb variants
 // Add the required color variants to all breadcrumb variations
 //
 for --variant-name, --variant in --variants['breadcrumb']
     .breadcrumb.-{--variant-name}
         > .breadcrumb-item
+            if --variant-name is not 'light' and --variant-name is not 'dark'
+                > a
+                    color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+                &.-active a
+                    color: -text-color-by-luminance(--variant['color'], transparentify(--variant-color-light, --variant['color'], 0.66), transparentify(--variant-color-dark, --variant['color'], 0.66))
+
+            else
+                > a
+                    color: -text-color-by-luminance(--variant['color'], lighten(--link-color, 25%), --link-color)
+                &.-active a
+                    color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+
             + .breadcrumb-item
                 &::before
-                    color: -text-color-by-luminance(--variant['color'], transparentify(--variant-color-light, --variant['color'], 0.5), transparentify(--variant-color-dark, --variant['color'], 0.5))
-
-            &.-active
-                color: -text-color-by-luminance(--variant['color'], transparentify(--variant-color-light, --variant['color'], 0.66), transparentify(--variant-color-dark, --variant['color'], 0.66))
+                    color: -text-color-by-luminance(--variant['color'], transparentify(--variant-color-light, --variant['color'], 0.33), transparentify(--variant-color-dark, --variant['color'], 0.33))
