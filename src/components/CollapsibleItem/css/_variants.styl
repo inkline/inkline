@@ -1,0 +1,18 @@
+//
+// Alert variants
+// Add the required color variants to all alert variations
+//
+for --variant-name, --variant in --variants['collapsible']
+    .collapsible.-{--variant-name}
+        > .item
+            > .heading
+            > .content
+                border-color: -text-color-by-luminance(--variant['color'], lighten(--variant['color'], 5%), darken(--variant['color'], 5%))
+                color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+
+            > .heading
+                background-color: --variant['color']
+
+            > .content
+                background-color: #fff
+

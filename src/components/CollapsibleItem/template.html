@@ -1,0 +1,24 @@
+<div class="item" :class="classes['*']">
+    <a role="tab"
+        class="heading"
+        :aria-expanded="active"
+        :aria-controls="`collapsible-item-content-${id}`"
+        :aria-describedby="`collapsible-item-content-${id}`"
+         @click="onClick"
+         :id="`collapsible-item-heading-${id}`"
+         tabindex="0">
+        <slot name="title">{{title}}</slot>
+        <i>&gt;</i>
+    </a>
+
+    <transition-expand>
+        <div class="content"
+             v-show="active"
+             role="tabpanel"
+             :aria-hidden="!active"
+             :aria-labelledby="`collapsible-item-heading-${id}`"
+             :id="`collapsible-item-content-${id}`">
+            <slot></slot>
+        </div>
+    </transition-expand>
+</div>

@@ -1,0 +1,30 @@
+/**
+ * Alert
+ */
+
+@import '../../css/config'
+@import '../../css/mixins'
+@import '../Collapsible/css/_variables'
+@import 'css/_variants'
+
+.collapsible
+    > .item
+        position: relative
+        display: block
+
+        > .heading
+            border-width: 1px
+            border-style: solid
+            border-color: transparent
+            padding: --spacer
+            display: block
+            cursor: pointer
+
+        > .content
+            border-width: 1px
+            border-style: solid
+            border-color: transparent
+            border-top: 0
+            padding: --spacer
+
+    @extend .collapsible.-light
