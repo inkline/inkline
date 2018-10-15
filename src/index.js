@@ -5,6 +5,8 @@ import BreadcrumbItem from './components/BreadcrumbItem';
 import Button from './components/Button';
 import ButtonGroup from './components/ButtonGroup';
 import Card from './components/Card';
+import Collapsible from './components/Collapsible';
+import CollapsibleItem from './components/CollapsibleItem';
 import Column from './components/Column';
 import Container from './components/Container';
 import Layout from './components/Layout';
@@ -36,6 +38,8 @@ class Inkline {
         Button,
         ButtonGroup,
         Card,
+        Collapsible,
+        CollapsibleItem,
         Column,
         Container,
         Layout,
@@ -80,6 +84,8 @@ export {
     Button as IButton,
     ButtonGroup as IButtonGroup,
     Card as ICard,
+    Collapsible as ICollapsible,
+    CollapsibleItem as ICollapsibleItem,
     Column as IColumn,
     Container as IContainer,
     Layout as ILayout,
