@@ -62,12 +62,18 @@
 //
 --color-primary := #3a88bc
 --color-secondary := #702e6a
---color-light := #e9ecef
---color-dark := #212529
 
 --color-groups['brand'] = {
   primary: --color-primary
   secondary: --color-secondary
+}
+
+// Brand Neutral Colors
+//
+--color-light := #e9ecef
+--color-dark := #212529
+
+--color-groups['monochrome'] = {
   light: --color-light
   dark: --color-dark
 }
@@ -130,4 +136,4 @@
 
 // All Colors
 //
---colors = merge(--color-groups['basic'], --color-groups['brand'], --color-groups['state'], --color-groups['neutral'], --color-groups['social'])
+--colors = merge(--color-groups['basic'], --color-groups['brand'], --color-groups['monochrome'], --color-groups['neutral'], --color-groups['state'], --color-groups['social'])

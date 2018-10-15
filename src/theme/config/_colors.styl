@@ -703,26 +703,38 @@
 //
 --gradient-primary := --gradient-mantle
 --gradient-secondary := --gradient-celestial
---gradient-light := --gradient-gray-30
---gradient-dark := --gradient-gray-90
 
 --gradient-groups['brand'] = {
   primary: --gradient-primary
   secondary: --gradient-secondary
-  light: --gradient-light
-  dark: --gradient-dark
 }
 
 // Brand Colors
 //
 --color-primary := mix(--gradient-primary[0], --gradient-primary[1])
 --color-secondary := mix(--gradient-secondary[0], --gradient-secondary[1])
---color-light := --color-gray-30
---color-dark := --color-gray-90
 
 --color-groups['brand'] = {
   primary: --color-primary
   secondary: --color-secondary
+}
+
+// Brand Neutral Gradients
+//
+--gradient-light := --gradient-gray-30
+--gradient-dark := --gradient-gray-90
+
+--gradient-groups['monochrome'] = {
+  light: --gradient-light
+  dark: --gradient-dark
+}
+
+// Brand Neutral Colors
+//
+--color-light := --color-gray-30
+--color-dark := --color-gray-90
+
+--color-groups['monochrome'] = {
   light: --color-light
   dark: --color-dark
 }
@@ -830,5 +842,5 @@
 --variant-color-light := --color-white
 --variant-color-dark := --color-gray-80
 
---colors = merge({}, --color-groups['basic'], --color-groups['brand'], --color-groups['neutral'], --color-groups['social'], --color-groups['state'])
---gradients = merge({}, --gradient-groups['basic'], --gradient-groups['brand'], --gradient-groups['neutral'], --gradient-groups['social'], --gradient-groups['state'])
+--colors = merge({}, --color-groups['basic'], --color-groups['brand'], --color-groups['monochrome'], --color-groups['neutral'], --color-groups['social'], --color-groups['state'])
+--gradients = merge({}, --gradient-groups['basic'], --gradient-groups['brand'], --gradient-groups['monochrome'], --gradient-groups['neutral'], --gradient-groups['social'], --gradient-groups['state'])
