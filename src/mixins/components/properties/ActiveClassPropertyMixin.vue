@@ -1,10 +1,6 @@
 <script>
 export default {
     props: {
-        active: {
-            type: Boolean,
-            default: false
-        },
         activeClass: {
             type: String,
             default: '-active'
