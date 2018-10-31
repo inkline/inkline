@@ -5,6 +5,7 @@
 @import '../../css/config'
 @import '../../css/mixins'
 @import '../Collapsible/css/_variables'
+@import 'css/_variables'
 @import 'css/_variants'
 
 .collapsible
@@ -12,19 +13,38 @@
         position: relative
         display: block
 
-        > .heading
-            border-width: 1px
+        > .header
+            border-width: 0
+            border-bottom-width: 1px
             border-style: solid
-            border-color: transparent
             padding: --spacer
             display: block
             cursor: pointer
 
-        > .content
-            border-width: 1px
-            border-style: solid
-            border-color: transparent
-            border-top: 0
-            padding: --spacer
+            > .icon
+                mask: url(--collapsible-item-icon-closed) no-repeat 50% 50%
+                background-size: 100% 100%
+                display: inline-block
+                width: 14px
+                height: 8px
+                float: right
+                margin-top: (--spacer / 2)
+
+        &.-active
+            > .header > .icon
+                mask: url(--collapsible-item-icon-open) no-repeat 50% 50%
+
+
+
+        > .body
+            display: block
+            position: relative
+
+            > .content
+                padding: --spacer
+
+
+        &:last-child > .header
+            border-bottom-width: 0
 
     @extend .collapsible.-light

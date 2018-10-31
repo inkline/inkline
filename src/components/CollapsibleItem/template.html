@@ -1,6 +1,6 @@
 <div class="item" :class="classes['*']">
     <a role="tab"
-        class="heading"
+        class="header"
         :aria-expanded="active"
         :aria-controls="`collapsible-item-content-${id}`"
         :aria-describedby="`collapsible-item-content-${id}`"
@@ -8,17 +8,19 @@
          :id="`collapsible-item-heading-${id}`"
          tabindex="0">
         <slot name="title">{{title}}</slot>
-        <i>&gt;</i>
+        <i class="icon"></i>
     </a>
 
     <transition-expand>
-        <div class="content"
+        <div class="body"
              v-show="active"
              role="tabpanel"
              :aria-hidden="!active"
              :aria-labelledby="`collapsible-item-heading-${id}`"
              :id="`collapsible-item-content-${id}`">
-            <slot></slot>
+            <div class="content">
+                <slot></slot>
+            </div>
         </div>
     </transition-expand>
 </div>

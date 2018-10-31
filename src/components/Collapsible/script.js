@@ -16,16 +16,24 @@ export default {
             type: Boolean,
             default: false
         },
-        value: {
+        active: {
             type: [Array, String, Number],
             default () {
                 return [];
             }
-        }
+        },
+        iconClosed: {
+            type: String,
+            default: ''
+        },
+        iconOpen: {
+            type: String,
+            default: ''
+        },
     },
     data() {
         return {
-            active: [].concat(this.value)
+            activeItems: [].concat(this.active)
         };
     },
     provide() {
@@ -34,22 +42,22 @@ export default {
         };
     },
     watch: {
-        value (value) {
-            this.active = [].concat(value);
+        active (value) {
+            this.activeItems = [].concat(value);
         }
     },
     methods: {
         onItemClick(item) {
             if (this.accordion) {
-                return this.active = this.active.indexOf(item.id) > -1 ? [] : [item.id];
+                return this.activeItems = this.activeItems.indexOf(item.id) > -1 ? [] : [item.id];
             }
 
-            let index = this.active.indexOf(item.id);
+            let index = this.activeItems.indexOf(item.id);
 
             if (index > -1) {
-                this.active.splice(index, 1);
+                this.activeItems.splice(index, 1);
             } else {
-                this.active.push(item.id);
+                this.activeItems.push(item.id);
             }
         }
     },

@@ -5,13 +5,17 @@
 for --variant-name, --variant in --variants['collapsible']
     .collapsible.-{--variant-name}
         > .item
-            > .heading
+            > .header
             > .content
+                //border-color: black
                 border-color: -text-color-by-luminance(--variant['color'], lighten(--variant['color'], 5%), darken(--variant['color'], 5%))
                 color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
 
-            > .heading
+            > .header
                 background-color: --variant['color']
+
+                > .icon
+                    background-color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
 
             > .content
                 background-color: #fff

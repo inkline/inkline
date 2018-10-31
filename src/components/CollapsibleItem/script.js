@@ -35,7 +35,7 @@ export default {
     },
     computed: {
         active() {
-            return this.collapsible.active.indexOf(this.id) > -1;
+            return this.collapsible.activeItems.indexOf(this.id) > -1;
         },
     },
     methods: {
