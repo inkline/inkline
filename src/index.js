@@ -9,6 +9,7 @@ import Collapsible from './components/Collapsible';
 import CollapsibleItem from './components/CollapsibleItem';
 import Column from './components/Column';
 import Container from './components/Container';
+import Dropdown from './components/Dropdown';
 import Layout from './components/Layout';
 import LayoutAside from './components/LayoutAside';
 import LayoutContent from './components/LayoutContent';
@@ -42,6 +43,7 @@ class Inkline {
         CollapsibleItem,
         Column,
         Container,
+        Dropdown,
         Layout,
         LayoutAside,
         LayoutContent,
@@ -88,6 +90,7 @@ export {
     CollapsibleItem as ICollapsibleItem,
     Column as IColumn,
     Container as IContainer,
+    Dropdown as IDropdown,
     Layout as ILayout,
     LayoutAside as ILayoutAside,
     LayoutContent as ILayoutContent,
