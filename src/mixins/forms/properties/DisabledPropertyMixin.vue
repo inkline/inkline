@@ -1,11 +1,8 @@
 <script>
+import DisabledPropertyMixin from '../../components/properties/DisabledPropertyMixin';
+
 export default {
-    props: {
-        disabled: {
-            type: Boolean,
-            default: false
-        }
-    },
+    ...DisabledPropertyMixin,
     computed: {
         /**
          * Check whether the form item or one of its form parents is disabled
@@ -14,16 +11,5 @@ export default {
             return (this.parentForm || {}).disabled || (this.parentGroup || {}).disabled || this.disabled;
         }
     },
-    created () {
-        if (this.classesProvider) {
-            this.classesProvider['child'].push(() => ({
-                '-disabled': this.isDisabled
-            }));
-        }
-
-        if (this.attributesProvider) {
-            this.attributesProvider.push(() => ({ 'aria-disabled': this.disabled ? 'true' : false }));
-        }
-    }
 };
 </script>
