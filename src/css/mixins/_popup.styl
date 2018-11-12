@@ -1,0 +1,139 @@
+-popup(--popup = { margin: 5px, z-index: 2000 })
+    &:focus:hover
+        outline-width: 0
+
+    z-index: --popup['z-index']
+    position: absolute
+    word-wrap: break-word;
+
+    &[x-placement^="top"]
+        margin-bottom: --popup['margin']
+
+    &[x-placement^="bottom"]
+        margin-top: --popup['margin']
+
+    &[x-placement^="left"]
+        margin-right: --popup['margin']
+
+    &[x-placement^="right"]
+        margin-left: --popup['margin']
+
+
+-popup-arrow(--arrow = { size: 6px, margin: 5px, background: #ffffff, border-color: #f0f0f0 })
+    > .arrow,
+    > .arrow::after
+        position: absolute
+        display: block
+        width: 0
+        height: 0
+        border-color: transparent
+        border-style: solid
+
+    > .arrow::after
+        content: "";
+
+    &[x-placement^="top"] > .arrow
+        border-bottom-width: 0
+
+        &::after
+            bottom: 1px
+            border-bottom-width: 0
+
+
+    &[x-placement^="bottom"] > .arrow
+        border-top-width: 0
+
+        &::after
+            top: 1px;
+            border-top-width: 0;
+
+    &[x-placement^="right"] > .arrow
+        border-left-width: 0
+
+        &::after
+            left: 1px
+            border-left-width: 0
+
+    &[x-placement^="left"] > .arrow
+        border-right-width: 0;
+
+        &::after
+            right: 1px
+            border-right-width: 0
+
+    -popup-arrow-size({ size: --arrow['size'], margin: --arrow['margin'] })
+    -popup-arrow-variant({ background: --arrow['background'], border-color: --arrow['border-color'] })
+
+
+-popup-arrow-size(--arrow = { size: 6px, margin: 5px })
+    > .arrow
+        border-width: --arrow['size']
+
+    > .arrow::after
+        border-width: (--arrow['size'] - 1px)
+
+    &[x-placement^="top"]
+        margin-bottom: (--arrow['size'] + --arrow['margin'])
+
+        > .arrow
+            bottom: -(--arrow['size'])
+
+            &::after
+                margin-left: -(--arrow['size'] - 1px)
+
+
+    &[x-placement^="bottom"]
+        margin-top: (--arrow['size'] + --arrow['margin'])
+
+        > .arrow
+            top: -(--arrow['size'])
+
+            &::after
+                margin-left: -(--arrow['size'] - 1px)
+
+    &[x-placement^="right"]
+        margin-left: (--arrow['size'] + --arrow['margin'])
+
+        > .arrow
+            left: -(--arrow['size'])
+
+            &::after
+                bottom: -(--arrow['size'] - 1px)
+
+    &[x-placement^="left"]
+        margin-right: (--arrow['size'] + --arrow['margin'])
+
+        > .arrow
+            right: -(--arrow['size'])
+
+            &::after
+                bottom: -(--arrow['size'] - 1px)
+                margin-left: -(--arrow['size'] - 1px)
+
+
+
+-popup-arrow-variant(--arrow = { background: #ffffff, border-color: #bcbcbc })
+    &[x-placement^="top"] > .arrow
+        border-top-color: --arrow['border-color']
+
+        &::after
+            border-top-color: --arrow['background']
+
+
+    &[x-placement^="bottom"] > .arrow
+        border-bottom-color: --arrow['border-color']
+
+        &::after
+            border-bottom-color: --arrow['background']
+
+    &[x-placement^="right"] > .arrow
+        border-right-color: --arrow['border-color']
+
+        &::after
+            border-right-color: --arrow['background']
+
+    &[x-placement^="left"] > .arrow
+        border-left-color: --arrow['border-color'];
+
+        &::after
+            border-left-color: --arrow['background']
