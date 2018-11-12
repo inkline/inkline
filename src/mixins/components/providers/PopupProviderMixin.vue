@@ -1,6 +1,6 @@
 <script>
     import PopperJS from 'popper.js';
-    import PopupManager from 'inkline/helpers/popup-manager';
+    import popupManager from 'inkline/helpers/popup-manager';
 
     /**
      * @param {HTMLElement} [reference=$refs.reference] - The reference element used to position the popper.
@@ -119,7 +119,7 @@
                 }
 
                 this.popperJS = new PopperJS(this.referenceElement, this.popupElement, this.popperOptions);
-                this.popperJS.popper.style.zIndex = PopupManager.nextZIndex();
+                this.popperJS.popper.style.zIndex = popupManager.nextZIndex();
 
                 this.popupElement.addEventListener('click', (e) => e.stopPropagation());
             },
@@ -130,7 +130,7 @@
                 this.popperJS.update();
 
                 if (this.popperJS.popper) {
-                    this.popperJS.popper.style.zIndex = PopupManager.nextZIndex();
+                    this.popperJS.popper.style.zIndex = popupManager.nextZIndex();
                 }
             },
 
