@@ -1,0 +1,33 @@
+//
+// Variables
+//
+
+--dropdown-font-size := --font-size
+--dropdown-font-weight := --font-weight['normal']
+--dropdown-line-height := --line-height
+
+--dropdown-margin := --spacers['1/2']
+
+--dropdown-border-width := --border-width
+--dropdown-border-radius := --border-radius
+
+--dropdown-padding-sm := --spacers['1'] * --size-percentages['sm']
+--dropdown-padding-md := --spacers['1'] * --size-percentages['md']
+--dropdown-padding-lg := --spacers['1'] * --size-percentages['lg']
+--dropdown-padding := {
+    'sm': --dropdown-padding-sm
+    'md': --dropdown-padding-md
+    'lg': --dropdown-padding-lg
+}
+
+//
+// Variants
+//
+--dropdown-variants := (monochrome)
+--dropdown-color-groups := {
+    monochrome: {
+        light: --color-white,
+        dark: --color-gray-80
+    }
+}
+--variants['dropdown'] = -add-variant(--dropdown-variants, { color: --dropdown-color-groups })

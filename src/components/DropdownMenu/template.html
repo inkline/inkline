@@ -1,5 +1,6 @@
-<transition name="el-zoom-in-top" @after-leave="doDestroy">
-    <ul class="dropdown-menu popper" :class="classes['*']" v-show="showPopper">
+<transition name="zoom-in-top-transition" @after-leave="doDestroy">
+    <div class="dropdown-menu" v-show="visible">
+        <span class="arrow" v-if="arrow"></span>
         <slot></slot>
-    </ul>
+    </div>
 </transition>

@@ -2,12 +2,14 @@ import PopupProviderMixin from 'inkline/mixins/components/providers/PopupProvide
 
 export default {
     name: 'IDropdownMenu',
-    inject: ['dropdown'],
+    inject: [
+        'dropdown'
+    ],
     mixins: [
         PopupProviderMixin
     ],
     props: {
-        visibleArrow: {
+        arrow: {
             type: Boolean,
             default: true
         },
@@ -16,4 +18,26 @@ export default {
             default: 0
         }
     },
+    created() {
+        this.$on('updatePopper', () => {
+            if (this.visible) this.updatePopper();
+        });
+
+        this.$on('visibility-change', (value) => {
+            this.visible = value;
+        });
+    },
+    mounted() {
+        this.popupElement = this.$el;
+        this.referenceElement = this.dropdown.$el;
+        this.currentPlacement = this.dropdown.placement;
+    },
+    watch: {
+        'dropdown.placement': {
+            immediate: true,
+            handler(value) {
+                this.currentPlacement = value;
+            }
+        }
+    }
 };

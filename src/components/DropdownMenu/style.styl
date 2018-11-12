@@ -1,0 +1,23 @@
+@require '../../css/config';
+@require '../../css/mixins';
+@require 'css/_variables';
+@require 'css/_sizes';
+@require 'css/_variants';
+
+.dropdown-menu
+    -popup({
+        margin: --dropdown-margin,
+        z-index: 2000
+    })
+    -popup-arrow()
+
+    color: --body-color
+    text-align: left // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none
+    line-height: --dropdown-line-height
+    background-clip: padding-box
+    border-width: --dropdown-border-width
+    border-style: solid
+
+    @extend .dropdown-menu.-md
+    @extend .dropdown-menu.-light
