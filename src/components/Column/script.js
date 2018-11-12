@@ -1,5 +1,5 @@
-import { breakpoints } from '../../constants';
-import { breakpointClass, capitalizeFirst, modifierClass } from '../../helpers';
+import { breakpoints } from 'inkline/constants';
+import { breakpointClass, capitalizeFirst, modifierClass } from 'inkline/helpers';
 
 const properties = {};
 for (let breakpoint of breakpoints) {
@@ -26,10 +26,8 @@ for (let breakpoint of breakpoints) {
 }
 
 export default {
-    name: 'Column',
-    props: {
-        ...properties
-    },
+    name: 'IColumn',
+    props: properties,
     computed: {
         classes: function () {
             return [

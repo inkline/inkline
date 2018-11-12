@@ -19,4 +19,4 @@ export function isFocusable (element) {
     default:
         return false;
     }
-};
+}

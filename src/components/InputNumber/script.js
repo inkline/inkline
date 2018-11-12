@@ -1,13 +1,13 @@
-import Button from '../Button';
-import Input from '../Input';
-import InputGroup from '../InputGroup';
+import IButton from 'inkline/components/Button';
+import IInput from 'inkline/components/Input';
+import IInputGroup from 'inkline/components/InputGroup';
 
 export default {
-    name: 'InputNumber',
-    extends: Input,
+    name: 'IInputNumber',
+    extends: IInput,
     components: {
-        IButton: Button,
-        IInputGroup: InputGroup
+        IButton,
+        IInputGroup
     },
     data () {
         return {

@@ -1,4 +1,4 @@
-import { isFocusable } from './focusable.js';
+import { isFocusable } from './is-focusable.js';
 
 /**
  * Set Attempt to set focus on the current node.
@@ -13,6 +13,8 @@ export function focusAttempt (element) {
 
     try {
         element.focus();
+
+    // eslint-disable-next-line
     } catch (e) {}
 
     return document.activeElement === element;

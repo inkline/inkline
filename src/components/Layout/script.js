@@ -1,5 +1,5 @@
 export default {
-    name: 'Layout',
+    name: 'ILayout',
     props: {
         vertical: {
             type: Boolean,

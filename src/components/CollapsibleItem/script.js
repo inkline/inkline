@@ -1,15 +1,15 @@
-import { uid } from '../../helpers/unique-id';
+import { uid } from 'inkline/helpers/unique-id';
 
-import TransitionExpand from '../../transitions/TransitionExpand';
+import ITransitionExpand from 'inkline/transitions/TransitionExpand';
 
-import AttributesProviderMixin from '../../mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
-import EmitProviderMixin from '../../mixins/components/providers/EmitProviderMixin';
+import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
+import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
 
-import ActiveClassPropertyMixin from '../../mixins/components/properties/ActiveClassPropertyMixin';
+import ActiveClassPropertyMixin from 'inkline/mixins/components/properties/ActiveClassPropertyMixin';
 
 export default {
-    name: 'Collapsible',
+    name: 'ICollapsible',
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
@@ -18,7 +18,7 @@ export default {
         ActiveClassPropertyMixin,
     ],
     components: {
-        TransitionExpand
+        ITransitionExpand
     },
     inject: ['collapsible'],
     props: {

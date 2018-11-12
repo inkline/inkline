@@ -1,10 +1,10 @@
-import AttributesProviderMixin from '../../mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
+import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 
-import VariantPropertyMixin from '../../mixins/components/properties/VariantPropertyMixin';
+import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
 
 export default {
-    name: 'Collapsible',
+    name: 'ICollapsible',
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,

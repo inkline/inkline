@@ -1,5 +1,5 @@
 export default {
-    name: 'LayoutAside',
+    name: 'ILayoutAside',
     props: {
         fluid: {
             type: Boolean,

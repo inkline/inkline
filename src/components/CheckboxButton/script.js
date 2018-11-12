@@ -1,10 +1,10 @@
-import Button from '../Button';
-import Checkbox from '../Checkbox';
+import IButton from 'inkline/components/Button';
+import ICheckbox from 'inkline/components/Checkbox';
 
 export default {
-    name: 'CheckboxButton',
+    name: 'ICheckboxButton',
     components: {
-        IButton: Button
+        IButton
     },
-    extends: Checkbox
+    extends: ICheckbox
 };

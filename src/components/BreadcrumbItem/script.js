@@ -1,12 +1,12 @@
-import AttributesProviderMixin from '../../mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
+import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 
-import ActivePropertyMixin from '../../mixins/components/properties/ActivePropertyMixin';
-import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
-import VariantPropertyMixin from '../../mixins/components/properties/VariantPropertyMixin';
+import ActivePropertyMixin from 'inkline/mixins/components/properties/ActivePropertyMixin';
+import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
+import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
 
 export default {
-    name: 'BreadcrumbItem',
+    name: 'IBreadcrumbItem',
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,

@@ -1,29 +1,29 @@
-import InputGroup from '../InputGroup';
+import IInputGroup from 'inkline/components/InputGroup';
 
-import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
-import InjectParentFormProviderMixin from '../../mixins/forms/providers/InjectParentFormProviderMixin';
-import ModelProviderMixin from '../../mixins/forms/providers/ModelProviderMixin';
+import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
+import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
+import ModelProviderMixin from 'inkline/mixins/forms/providers/ModelProviderMixin';
 
-import ClickMethodMixin from '../../mixins/forms/methods/ClickMethodMixin';
-import FocusMethodMixin from '../../mixins/forms/methods/FocusMethodMixin';
-import OnChangeMethodMixin from '../../mixins/components/methods/OnChangeMethodMixin';
-import OnClickMethodMixin from '../../mixins/components/methods/OnClickMethodMixin';
-import OnFocusMethodMixin from '../../mixins/components/methods/OnFocusMethodMixin';
-import OnHoverMethodMixin from '../../mixins/components/methods/OnHoverMethodMixin';
-import OnInputMethodMixin from '../../mixins/components/methods/OnInputMethodMixin';
+import ClickMethodMixin from 'inkline/mixins/forms/methods/ClickMethodMixin';
+import FocusMethodMixin from 'inkline/mixins/forms/methods/FocusMethodMixin';
+import OnChangeMethodMixin from 'inkline/mixins/components/methods/OnChangeMethodMixin';
+import OnClickMethodMixin from 'inkline/mixins/components/methods/OnClickMethodMixin';
+import OnFocusMethodMixin from 'inkline/mixins/components/methods/OnFocusMethodMixin';
+import OnHoverMethodMixin from 'inkline/mixins/components/methods/OnHoverMethodMixin';
+import OnInputMethodMixin from 'inkline/mixins/components/methods/OnInputMethodMixin';
 
-import ClearablePropertyMixin from '../../mixins/forms/properties/ClearablePropertyMixin';
-import DisabledPropertyMixin from '../../mixins/forms/properties/DisabledPropertyMixin';
-import IsGroupedPropertyMixin from '../../mixins/forms/properties/IsGroupedPropertyMixin';
-import LabelPositionPropertyMixin from '../../mixins/forms/properties/LabelPositionPropertyMixin';
-import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
-import TabIndexPropertyMixin from '../../mixins/components/properties/TabIndexPropertyMixin';
+import ClearablePropertyMixin from 'inkline/mixins/forms/properties/ClearablePropertyMixin';
+import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
+import IsGroupedPropertyMixin from 'inkline/mixins/forms/properties/IsGroupedPropertyMixin';
+import LabelPositionPropertyMixin from 'inkline/mixins/forms/properties/LabelPositionPropertyMixin';
+import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
+import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndexPropertyMixin';
 
 export default {
-    name: 'Input',
+    name: 'IInput',
     inheritAttrs: false,
     components: {
-        IInputGroup: InputGroup
+        IInputGroup
     },
     mixins: [
         ClassesProviderMixin,

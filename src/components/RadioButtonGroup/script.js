@@ -1,11 +1,11 @@
-import InputGroup from '../InputGroup';
-import ButtonGroup from '../ButtonGroup';
+import IInputGroup from 'inkline/components/InputGroup';
+import IButtonGroup from 'inkline/components/ButtonGroup';
 
 export default {
-    name: 'RadioButtonGroup',
-    extends: InputGroup,
+    name: 'IRadioButtonGroup',
+    extends: IInputGroup,
     components: {
-        IButtonGroup: ButtonGroup
+        IButtonGroup
     },
     created () {
         this.$on('change', value => {

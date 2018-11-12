@@ -1,7 +1,7 @@
-import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
+import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 
 export default {
-    name: 'Container',
+    name: 'IContainer',
     mixins: [
         ClassesProviderMixin
     ],

@@ -10,7 +10,7 @@
      * @param {Boolean} [visible=false] Visibility of the popup element.
      * @param {Boolean} [visible-arrow=false] Visibility of the arrow, no style.
      */
-    export default {
+    export const PopupProviderMixin = {
         props: {
             transformOrigin: {
                 type: [Boolean, String],
@@ -209,4 +209,6 @@
             this.$options.beforeDestroy[0].call(this);
         }
     };
+
+    export default PopupProviderMixin;
 </script>

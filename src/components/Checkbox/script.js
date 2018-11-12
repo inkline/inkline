@@ -1,9 +1,9 @@
-import Checkable from '../Checkable';
+import CheckableProviderMixin from 'inkline/mixins/forms/providers/CheckableProviderMixin';
 
 export default {
-    name: 'Checkbox',
+    name: 'ICheckbox',
     mixins: [
-        Checkable
+        CheckableProviderMixin
     ],
     props: {
         value: [Boolean, String],

@@ -1,4 +1,6 @@
 // vue.config.js
+const path = require('path');
+
 module.exports = {
     pages: {
         index: {
@@ -6,5 +8,10 @@ module.exports = {
             template: 'public/index.html',
             filename: 'index.html'
         }
+    },
+    chainWebpack: (config) => {
+        config.resolve.alias
+            .set('inkline', path.resolve(__dirname, 'src'))
+            .end();
     }
 };

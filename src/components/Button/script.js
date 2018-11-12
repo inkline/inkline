@@ -1,21 +1,21 @@
-import AttributesProviderMixin from '../../mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
-import InjectParentFormProviderMixin from '../../mixins/forms/providers/InjectParentFormProviderMixin';
+import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
+import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 
-import ClickMethodMixin from '../../mixins/forms/methods/ClickMethodMixin';
-import FocusMethodMixin from '../../mixins/forms/methods/FocusMethodMixin';
-import OnClickMethodMixin from '../../mixins/components/methods/OnClickMethodMixin';
-import OnFocusMethodMixin from '../../mixins/components/methods/OnFocusMethodMixin';
-import OnHoverMethodMixin from '../../mixins/components/methods/OnHoverMethodMixin';
+import ClickMethodMixin from 'inkline/mixins/forms/methods/ClickMethodMixin';
+import FocusMethodMixin from 'inkline/mixins/forms/methods/FocusMethodMixin';
+import OnClickMethodMixin from 'inkline/mixins/components/methods/OnClickMethodMixin';
+import OnFocusMethodMixin from 'inkline/mixins/components/methods/OnFocusMethodMixin';
+import OnHoverMethodMixin from 'inkline/mixins/components/methods/OnHoverMethodMixin';
 
-import DisabledPropertyMixin from '../../mixins/forms/properties/DisabledPropertyMixin';
-import LoadingPropertyMixin from '../../mixins/components/properties/LoadingPropertyMixin';
-import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
-import TabIndexPropertyMixin from '../../mixins/components/properties/TabIndexPropertyMixin';
-import VariantPropertyMixin from '../../mixins/components/properties/VariantPropertyMixin';
+import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
+import LoadingPropertyMixin from 'inkline/mixins/components/properties/LoadingPropertyMixin';
+import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
+import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndexPropertyMixin';
+import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
 
 export default {
-    name: 'Button',
+    name: 'IButton',
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,

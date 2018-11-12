@@ -1,5 +1,5 @@
-import { breakpoints } from '../../constants';
-import { breakpointClass, capitalizeFirst, modifierClass } from '../../helpers';
+import { breakpoints } from 'inkline/constants';
+import { breakpointClass, capitalizeFirst, modifierClass } from 'inkline/helpers';
 
 const properties = {};
 for (let breakpoint of breakpoints) {
@@ -12,7 +12,7 @@ for (let breakpoint of breakpoints) {
 }
 
 export default {
-    name: 'Row',
+    name: 'IRow',
     props: {
         noGutter: {
             type: Boolean,

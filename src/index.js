@@ -1,68 +1,68 @@
-import Alert from './components/Alert';
-import Badge from './components/Badge';
-import Breadcrumb from './components/Breadcrumb';
-import BreadcrumbItem from './components/BreadcrumbItem';
-import Button from './components/Button';
-import ButtonGroup from './components/ButtonGroup';
-import Card from './components/Card';
-import Collapsible from './components/Collapsible';
-import CollapsibleItem from './components/CollapsibleItem';
-import Column from './components/Column';
-import Container from './components/Container';
-import Dropdown from './components/Dropdown';
-import Layout from './components/Layout';
-import LayoutAside from './components/LayoutAside';
-import LayoutContent from './components/LayoutContent';
-import LayoutFooter from './components/LayoutFooter';
-import LayoutHeader from './components/LayoutHeader';
-import Row from './components/Row';
+import IAlert from 'inkline/components/Alert';
+import IBadge from 'inkline/components/Badge';
+import IBreadcrumb from 'inkline/components/Breadcrumb';
+import IBreadcrumbItem from 'inkline/components/BreadcrumbItem';
+import IButton from 'inkline/components/Button';
+import IButtonGroup from 'inkline/components/ButtonGroup';
+import ICard from 'inkline/components/Card';
+import ICollapsible from 'inkline/components/Collapsible';
+import ICollapsibleItem from 'inkline/components/CollapsibleItem';
+import IColumn from 'inkline/components/Column';
+import IContainer from 'inkline/components/Container';
+import IDropdown from 'inkline/components/Dropdown';
+import ILayout from 'inkline/components/Layout';
+import ILayoutAside from 'inkline/components/LayoutAside';
+import ILayoutContent from 'inkline/components/LayoutContent';
+import ILayoutFooter from 'inkline/components/LayoutFooter';
+import ILayoutHeader from 'inkline/components/LayoutHeader';
+import IRow from 'inkline/components/Row';
 
-import Checkbox from './components/Checkbox';
-import CheckboxButton from './components/CheckboxButton';
-import CheckboxGroup from './components/CheckboxGroup';
-import CheckboxButtonGroup from './components/CheckboxButtonGroup';
-import Input from './components/Input';
-import InputGroup from './components/InputGroup';
-import InputNumber from './components/InputNumber';
-import Radio from './components/Radio';
-import RadioButton from './components/RadioButton';
-import RadioGroup from './components/RadioGroup';
-import RadioButtonGroup from './components/RadioButtonGroup';
-import Textarea from './components/Textarea';
+import ICheckbox from 'inkline/components/Checkbox';
+import ICheckboxButton from 'inkline/components/CheckboxButton';
+import ICheckboxGroup from 'inkline/components/CheckboxGroup';
+import ICheckboxButtonGroup from 'inkline/components/CheckboxButtonGroup';
+import IInput from 'inkline/components/Input';
+import IInputGroup from 'inkline/components/InputGroup';
+import IInputNumber from 'inkline/components/InputNumber';
+import IRadio from 'inkline/components/Radio';
+import IRadioButton from 'inkline/components/RadioButton';
+import IRadioGroup from 'inkline/components/RadioGroup';
+import IRadioButtonGroup from 'inkline/components/RadioButtonGroup';
+import ITextarea from 'inkline/components/Textarea';
 
 class Inkline {
     static components = [
-        Alert,
-        Badge,
-        Breadcrumb,
-        BreadcrumbItem,
-        Button,
-        ButtonGroup,
-        Card,
-        Collapsible,
-        CollapsibleItem,
-        Column,
-        Container,
-        Dropdown,
-        Layout,
-        LayoutAside,
-        LayoutContent,
-        LayoutFooter,
-        LayoutHeader,
-        Row,
+        IAlert,
+        IBadge,
+        IBreadcrumb,
+        IBreadcrumbItem,
+        IButton,
+        IButtonGroup,
+        ICard,
+        ICollapsible,
+        ICollapsibleItem,
+        IColumn,
+        IContainer,
+        IDropdown,
+        ILayout,
+        ILayoutAside,
+        ILayoutContent,
+        ILayoutFooter,
+        ILayoutHeader,
+        IRow,
 
-        Checkbox,
-        CheckboxButton,
-        CheckboxGroup,
-        CheckboxButtonGroup,
-        Input,
-        InputGroup,
-        InputNumber,
-        Radio,
-        RadioButton,
-        RadioGroup,
-        RadioButtonGroup,
-        Textarea
+        ICheckbox,
+        ICheckboxButton,
+        ICheckboxGroup,
+        ICheckboxButtonGroup,
+        IInput,
+        IInputGroup,
+        IInputNumber,
+        IRadio,
+        IRadioButton,
+        IRadioGroup,
+        IRadioButtonGroup,
+        ITextarea
     ];
 
     constructor () {
@@ -79,37 +79,38 @@ class Inkline {
 }
 
 export {
-    Alert as IAlert,
-    Badge as IBadge,
-    Breadcrumb as IBreadcrumb,
-    BreadcrumbItem as IBreadcrumbItem,
-    Button as IButton,
-    ButtonGroup as IButtonGroup,
-    Card as ICard,
-    Collapsible as ICollapsible,
-    CollapsibleItem as ICollapsibleItem,
-    Column as IColumn,
-    Container as IContainer,
-    Dropdown as IDropdown,
-    Layout as ILayout,
-    LayoutAside as ILayoutAside,
-    LayoutContent as ILayoutContent,
-    LayoutFooter as ILayoutFooter,
-    LayoutHeader as ILayoutHeader,
-    Row as IRow,
+    IAlert,
+    IBadge,
+    IBreadcrumb,
+    IBreadcrumbItem,
+    IButton,
+    IButtonGroup,
+    ICard,
+    ICollapsible,
+    ICollapsibleItem,
+    IColumn,
+    IContainer,
+    IDropdown,
+    ILayout,
+    ILayoutAside,
+    ILayoutContent,
+    ILayoutFooter,
+    ILayoutHeader,
+    IRow,
 
-    Checkbox as ICheckbox,
-    CheckboxButton as ICheckboxButton,
-    CheckboxGroup as ICheckboxGroup,
-    CheckboxButtonGroup as ICheckboxButtonGroup,
-    Input as IInput,
-    InputGroup as IInputGroup,
-    InputNumber as IInputNumber,
-    Radio as IRadio,
-    RadioButton as IRadioButton,
-    RadioGroup as IRadioGroup,
-    RadioButtonGroup as IRadioButtonGroup,
-    Textarea as ITextarea,
+    ICheckbox,
+    ICheckboxButton,
+    ICheckboxGroup,
+    ICheckboxButtonGroup,
+    IInput,
+    IInputGroup,
+    IInputNumber,
+    IRadio,
+    IRadioButton,
+    IRadioGroup,
+    IRadioButtonGroup,
+    ITextarea,
+
     Inkline
 };
 

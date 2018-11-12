@@ -1,10 +1,10 @@
-import Button from '../Button';
-import Radio from '../Radio';
+import IButton from 'inkline/components/Button';
+import IRadio from 'inkline/components/Radio';
 
 export default {
     name: 'RadioButton',
     components: {
-        IButton: Button
+        IButton
     },
-    extends: Radio
+    extends: IRadio
 };

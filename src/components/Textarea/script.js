@@ -1,8 +1,8 @@
-import Input from '../Input';
+import IInput from 'inkline/components/Input';
 
 export default {
-    name: 'Textarea',
-    extends: Input,
+    name: 'ITextarea',
+    extends: IInput,
     data () {
         return {
             nodeName: 'textarea'

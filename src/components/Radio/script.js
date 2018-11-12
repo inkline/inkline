@@ -1,9 +1,9 @@
-import Checkable from '../Checkable';
+import CheckableProviderMixin from 'inkline/mixins/forms/providers/CheckableProviderMixin';
 
 export default {
-    name: 'Radio',
+    name: 'IRadio',
     mixins: [
-        Checkable
+        CheckableProviderMixin
     ],
     computed: {
         checked () {

@@ -1,6 +1,6 @@
 import Emitter from 'inkline/mixins/Emitter';
 
-import { addClass, hasClass, removeClass, triggerEvent, keymap } from '@/helpers';
+import { addClass, hasClass, removeClass, triggerEvent, keymap } from 'inkline/helpers';
 
 class Menu {
     constructor (domNode) {

@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import { addClass } from '../../helpers/add-class';
-import { removeClass } from '../../helpers/remove-class';
+import { addClass } from './add-class';
+import { removeClass } from './remove-class';
 
 let hasModal = false;
 let hasInitZIndex = false;
@@ -34,7 +34,7 @@ const getModal = function() {
 };
 
 
-const PopupManager = {
+export const PopupManager = {
     instances: {},
 
     modalStack: [],

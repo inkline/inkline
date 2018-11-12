@@ -1,12 +1,12 @@
-import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
+import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 
-import OnInputMethodMixin from '../../mixins/components/methods/OnInputMethodMixin';
+import OnInputMethodMixin from 'inkline/mixins/components/methods/OnInputMethodMixin';
 
-import DisabledPropertyMixin from '../../mixins/forms/properties/DisabledPropertyMixin';
-import SizePropertyMixin from '../../mixins/components/properties/SizePropertyMixin';
+import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
+import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 
 export default {
-    name: 'InputGroup',
+    name: 'IInputGroup',
     props: {
         value: {}
     },

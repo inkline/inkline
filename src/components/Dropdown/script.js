@@ -1,18 +1,18 @@
-import ClickOutside from '../../directives/click-outside';
+import ClickOutside from 'inkline/directives/click-outside';
 
-import { uid } from '../../helpers/unique-id';
+import { uid } from 'inkline/helpers/unique-id';
 
 // import Emitter from 'element-ui/src/mixins/emitter';
-import AttributesProviderMixin from '../../mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '../../mixins/components/providers/ClassesProviderMixin';
+import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 
-import OnFocusMethodMixin from '../../mixins/components/methods/OnFocusMethodMixin';
+import OnFocusMethodMixin from 'inkline/mixins/components/methods/OnFocusMethodMixin';
 
-import VariantPropertyMixin from '../../mixins/components/properties/VariantPropertyMixin';
-import DisabledPropertyMixin from '../../mixins/components/properties/DisabledPropertyMixin';
+import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
+import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
 
 export default {
-    name: 'Dropdown',
+    name: 'IDropdown',
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,

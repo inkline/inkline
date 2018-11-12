@@ -1,3 +1,3 @@
 export default {
-    name: 'LayoutHeader'
+    name: 'ILayoutHeader'
 };

@@ -1,5 +1,5 @@
 export default {
-    name: 'TransitionExpand',
+    name: 'ITransitionExpand',
     functional: true,
 
     render(h, context) {
