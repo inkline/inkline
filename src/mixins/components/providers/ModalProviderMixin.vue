@@ -1,7 +1,7 @@
 <script>
     import Vue from 'vue';
     import merge from 'element-ui/src/utils/merge';
-    import PopupManager from 'element-ui/src/utils/popup/popup-manager';
+    import popupManager from 'element-ui/src/utils/popup/popup-manager';
     import getScrollBarWidth from '../scrollbar-width';
     import { getStyle, addClass, removeClass, hasClass } from '../dom';
 
@@ -55,12 +55,12 @@
 
         beforeMount() {
             this._popupId = 'popup-' + idSeed++;
-            PopupManager.register(this._popupId, this);
+            popupManager.register(this._popupId, this);
         },
 
         beforeDestroy() {
-            PopupManager.unregister(this._popupId);
-            PopupManager.closeModal(this._popupId);
+            popupManager.unregister(this._popupId);
+            popupManager.closeModal(this._popupId);
 
             this.restoreBodyStyle();
         },
@@ -131,15 +131,15 @@
 
                 const zIndex = props.zIndex;
                 if (zIndex) {
-                    PopupManager.zIndex = zIndex;
+                    popupManager.zIndex = zIndex;
                 }
 
                 if (modal) {
                     if (this._closing) {
-                        PopupManager.closeModal(this._popupId);
+                        popupManager.closeModal(this._popupId);
                         this._closing = false;
                     }
-                    PopupManager.openModal(this._popupId, PopupManager.nextZIndex(), this.modalAppendToBody ? undefined : dom, props.modalClass, props.modalFade);
+                    popupManager.openModal(this._popupId, popupManager.nextZIndex(), this.modalAppendToBody ? undefined : dom, props.modalClass, props.modalFade);
                     if (props.lockScroll) {
                         this.withoutHiddenClass = !hasClass(document.body, 'el-popup-parent--hidden');
                         if (this.withoutHiddenClass) {
@@ -160,7 +160,7 @@
                     dom.style.position = 'absolute';
                 }
 
-                dom.style.zIndex = PopupManager.nextZIndex();
+                dom.style.zIndex = popupManager.nextZIndex();
                 this.opened = true;
 
                 this.onOpen && this.onOpen();
@@ -208,7 +208,7 @@
             },
 
             doAfterClose() {
-                PopupManager.closeModal(this._popupId);
+                popupManager.closeModal(this._popupId);
                 this._closing = false;
             },
 
@@ -223,6 +223,6 @@
     };
 
     export {
-        PopupManager
+        popupManager
     };
 </script>
