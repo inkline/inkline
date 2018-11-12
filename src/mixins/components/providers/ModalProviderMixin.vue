@@ -59,7 +59,7 @@
         },
 
         beforeDestroy() {
-            PopupManager.deregister(this._popupId);
+            PopupManager.unregister(this._popupId);
             PopupManager.closeModal(this._popupId);
 
             this.restoreBodyStyle();
