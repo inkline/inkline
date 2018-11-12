@@ -1,0 +1,35 @@
+@require '../../css/config';
+@require '../../css/mixins';
+@require '../DropdownMenu/css/_variables';
+@require 'css/_sizes';
+
+.dropdown-menu > .item
+    display: block;
+    width: 100%
+    clear: both;
+    font-weight: --font-weight-normal
+    text-align: inherit // For `<button>`s
+    white-space: nowrap // prevent links from randomly breaking onto new lines
+    background-color: transparent // For `<button>`s
+    border: 0 // For `<button>`s
+
+    &:hover
+    &:focus
+        color: $dropdown-link-hover-color;
+
+
+    &.active,
+    &:active
+        color: $dropdown-link-active-color;
+        text-decoration: none;
+        @include gradient-bg($dropdown-link-active-bg);
+
+    &.disabled,
+    &:disabled
+        color: $dropdown-link-disabled-color;
+        pointer-events: none;
+        background-color: transparent;
+        // Remove CSS gradients if they're enabled
+        background-image: none;
+
+    @extend .dropdown-menu.-md > .item
