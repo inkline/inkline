@@ -1,10 +1,11 @@
+import { keymap } from 'inkline/constants';
+import { uid } from 'inkline/helpers';
+
 import ClickOutside from 'inkline/directives/click-outside';
 
-import { uid } from 'inkline/helpers/unique-id';
-
-// import Emitter from 'element-ui/src/mixins/emitter';
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
+import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
 
 import OnFocusMethodMixin from 'inkline/mixins/components/methods/OnFocusMethodMixin';
 
@@ -16,6 +17,7 @@ export default {
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
+        EmitProviderMixin,
 
         OnFocusMethodMixin,
 
@@ -33,7 +35,7 @@ export default {
     props: {
         trigger: {
             type: String,
-            default: 'click'
+            default: 'hover'
         },
         hideOnClick: {
             type: Boolean,
@@ -64,23 +66,26 @@ export default {
             id: this.$attrs.id || uid('dropdown-menu')
         };
     },
+    watch: {
+        visible(value) {
+            this.broadcast('IDropdownMenu', 'visibility-change', value);
+            this.$emit('visibility-change', value);
+        }
+    },
     methods: {
         onTriggerKeyDown(e) {
             const keyCode = e.key || e.keyIdentifier || e.keyCode;
 
-            // Key: up || down
-            if ([38, 40].indexOf(keyCode) > -1) {
+            if ([keymap.up, keymap.down].indexOf(keyCode) > -1) {
                 this.menuItems[0].focus();
 
                 e.preventDefault();
                 e.stopPropagation();
 
-            // Key: space || enter
-            } else if (keyCode === 13) {
+            } else if (keyCode === keymap.enter) {
                 this.onClick();
 
-            // Key: tab || esc
-            } else if ([9, 27].indexOf(keyCode) > -1) {
+            } else if ([keymap.tab, keymap.esc].indexOf(keyCode) > -1) {
                 this.hide();
             }
         },
@@ -92,8 +97,8 @@ export default {
             let nextIndex;
 
             // Key: up || down
-            if ([38, 40].indexOf(keyCode) > -1) {
-                if (keyCode === 38) {
+            if ([keymap.up, keymap.down].indexOf(keyCode) > -1) {
+                if (keyCode === keymap.up) {
                     nextIndex = currentIndex !== 0 ? currentIndex - 1 : 0;
                 } else {
                     nextIndex = currentIndex < max ? currentIndex + 1 : max;
@@ -103,8 +108,7 @@ export default {
                 e.preventDefault();
                 e.stopPropagation();
 
-            // Key: space || enter
-            } else if (keyCode === 13) {
+            } else if (keyCode === keymap.enter) {
                 this.triggerElement.focus();
 
                 target.click();
@@ -113,8 +117,7 @@ export default {
                     this.visible = false;
                 }
 
-            // Key: tab || esc
-            } else if ([9, 27].indexOf(keyCode) > -1) {
+            } else if ([keymap.tab, keymap.esc].indexOf(keyCode) > -1) {
                 this.hide();
 
                 this.triggerElement.focus();
@@ -150,7 +153,7 @@ export default {
         initAriaAttributes() {
             this.dropdownElement.setAttribute('id', this.id);
             this.triggerElement.setAttribute('aria-haspopup', 'list');
-            this.triggerElement.setAttribute('aria-controls', this.listId);
+            this.triggerElement.setAttribute('aria-controls', this.id);
 
             this.menuItems = this.dropdownElement.querySelectorAll('li');
             this.menuItemsArray = Array.prototype.slice.call(this.menuItems);
