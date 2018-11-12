@@ -1,6 +1,6 @@
 <script>
     import PopperJS from 'popper.js';
-    import { PopupManager } from '../../helpers/popup-manager';
+    import PopupManager from 'inkline/helpers/popup-manager';
 
     /**
      * @param {HTMLElement} [reference=$refs.reference] - The reference element used to position the popper.
@@ -10,7 +10,7 @@
      * @param {Boolean} [visible=false] Visibility of the popup element.
      * @param {Boolean} [visible-arrow=false] Visibility of the arrow, no style.
      */
-    export const PopupProviderMixin = {
+    export default {
         props: {
             transformOrigin: {
                 type: [Boolean, String],
@@ -20,38 +20,41 @@
                 type: String,
                 default: 'bottom'
             },
-            boundariesPadding: {
-                type: Number,
-                default: 5
-            },
-            reference: {},
-            popper: {},
             offset: {
                 default: 0
             },
             value: Boolean,
-            visibleArrow: Boolean,
+            arrow: {
+                type: Boolean,
+                default: true
+            },
             arrowOffset: {
                 type: Number,
                 default: 35
             },
             appendToBody: {
                 type: Boolean,
-                default: true
+                default: false
             },
             popperOptions: {
                 type: Object,
                 default() {
                     return {
-                        gpuAcceleration: false
+                        modifiers: {
+                            computeStyle: {
+                                gpuAcceleration: false
+                            }
+                        }
                     };
                 }
-            }
+            },
+            reference: {},
+            popup: {},
         },
 
         data() {
             return {
-                showPopper: false,
+                visible: false,
                 currentPlacement: ''
             };
         },
@@ -60,20 +63,20 @@
             value: {
                 immediate: true,
                 handler(val) {
-                    this.showPopper = val;
+                    this.visible = val;
 
                     this.$emit('input', val);
                 }
             },
 
-            showPopper(val) {
+            visible(value) {
                 if (this.disabled) {
                     return;
                 }
 
-                val ? this.updatePopper() : this.destroyPopper();
+                value ? this.updatePopper() : this.destroyPopper();
 
-                this.$emit('input', val);
+                this.$emit('input', value);
             }
         },
 
@@ -86,60 +89,53 @@
                     return;
                 }
 
-                const options = this.popperOptions;
-                const popper = this.popperElm = this.popperElm || this.popper || this.$refs.popper;
-                let reference = this.referenceElm = this.referenceElm || this.reference || this.$refs.reference;
+                this.popupElement = this.popupElement || this.popup || this.$refs.popup;
+                this.referenceElement = this.referenceElement || this.reference || this.$refs.reference;
 
-                if (!reference &&
+                if (!this.referenceElement &&
                     this.$slots.reference &&
                     this.$slots.reference[0]) {
-                    reference = this.referenceElm = this.$slots.reference[0].elm;
+                    this.referenceElement = this.$slots.reference[0].elm;
                 }
 
-                if (!popper || !reference) return;
+                if (!this.popupElement || !this.referenceElement) return;
 
-                if (this.visibleArrow) this.appendArrow(popper);
-                if (this.appendToBody) document.body.appendChild(this.popperElm);
+                if (this.appendToBody) document.body.appendChild(this.popupElement);
                 if (this.popperJS && this.popperJS.destroy) {
                     this.popperJS.destroy();
                 }
 
-                options.placement = this.currentPlacement;
-                options.offset = this.offset;
-                options.arrowOffset = this.arrowOffset;
+                this.popperOptions.placement = this.currentPlacement;
+                this.popperOptions.offset = this.offset;
+                this.popperOptions.arrowOffset = this.arrowOffset;
 
-                this.popperJS = new PopperJS(reference, popper, options);
-
-                this.popperJS.onCreate(() => {
+                this.popperOptions.onCreate = () => {
                     this.$emit('created', this);
                     this.resetTransformOrigin();
                     this.$nextTick(this.updatePopper);
-                });
-
-                if (typeof options.onUpdate === 'function') {
-                    this.popperJS.onUpdate(options.onUpdate);
+                };
+                if (typeof this.popperOptions.onUpdate === 'function') {
+                    this.popperJS.onUpdate(this.popperOptions.onUpdate);
                 }
 
-                this.popperJS._popper.style.zIndex = PopupManager.nextZIndex();
-                this.popperElm.addEventListener('click', (e) => e.stopPropagation());
+                this.popperJS = new PopperJS(this.referenceElement, this.popupElement, this.popperOptions);
+                this.popperJS.popper.style.zIndex = PopupManager.nextZIndex();
+
+                this.popupElement.addEventListener('click', (e) => e.stopPropagation());
             },
 
             updatePopper() {
-                const popperJS = this.popperJS;
+                if (!this.popperJS) return this.createPopper();
 
-                if (popperJS) {
-                    popperJS.update();
+                this.popperJS.update();
 
-                    if (popperJS._popper) {
-                        popperJS._popper.style.zIndex = PopupManager.nextZIndex();
-                    }
-                } else {
-                    this.createPopper();
+                if (this.popperJS.popper) {
+                    this.popperJS.popper.style.zIndex = PopupManager.nextZIndex();
                 }
             },
 
             doDestroy(forceDestroy) {
-                if (!this.popperJS || (this.showPopper && !forceDestroy)) return;
+                if (!this.popperJS || (this.visible && !forceDestroy)) return;
 
                 this.popperJS.destroy();
                 this.popperJS = null;
@@ -160,55 +156,28 @@
                     left: 'right',
                     right: 'left'
                 };
-                let placement = this.popperJS._popper.getAttribute('x-placement').split('-')[0];
+                let placement = this.popperJS.popper.getAttribute('x-placement').split('-')[0];
                 let origin = placementMap[placement];
 
-                this.popperJS._popper.style.transformOrigin = typeof this.transformOrigin === 'string'
+                this.popperJS.popper.style.transformOrigin = typeof this.transformOrigin === 'string'
                     ? this.transformOrigin
                     : ['top', 'bottom'].indexOf(placement) > -1 ? `center ${ origin }` : `${ origin } center`;
             },
-
-            appendArrow(element) {
-                let hash;
-
-                if (this.appended) {
-                    return;
-                }
-
-                this.appended = true;
-
-                for (let item in element.attributes) {
-                    if (/^_v-/.test(element.attributes[item].name)) {
-                        hash = element.attributes[item].name;
-                        break;
-                    }
-                }
-
-                const arrow = document.createElement('div');
-
-                if (hash) {
-                    arrow.setAttribute(hash, '');
-                }
-                arrow.setAttribute('x-arrow', '');
-                arrow.className = 'popper__arrow';
-                element.appendChild(arrow);
-            }
         },
 
         beforeDestroy() {
             this.doDestroy(true);
 
-            if (this.popperElm && this.popperElm.parentNode === document.body) {
-                this.popperElm.removeEventListener('click', (e) => e.stopPropagation());
-                document.body.removeChild(this.popperElm);
+            if (this.popupElement && this.popupElement.parentNode === document.body) {
+                this.popupElement.removeEventListener('click', (e) => e.stopPropagation());
+
+                document.body.removeChild(this.popupElement);
             }
         },
 
-        // call destroy in keep-alive mode
+        // Call destroy in keep-alive mode
         deactivated() {
             this.$options.beforeDestroy[0].call(this);
         }
     };
-
-    export default PopupProviderMixin;
 </script>
