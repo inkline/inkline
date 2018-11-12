@@ -1,78 +1,93 @@
 import Vue from 'vue';
-import { addClass } from './add-class';
-import { removeClass } from './remove-class';
+import { addClass, removeClass } from 'inkline/helpers';
+import { keymap } from 'inkline/constants';
 
-let hasModal = false;
-let hasInitZIndex = false;
-let zIndex = 2000;
+class PopupManager {
+    instances = {};
 
-const getModal = function() {
-    if (Vue.prototype.$isServer) {
-        return;
+    modalStack = [];
+    modalFade = true;
+
+    hasModal = false;
+    zIndex = 2000;
+    
+    constructor() {
+        if (!Vue.prototype.$isServer) {
+            // handle `esc` key when the popup is shown
+            window.addEventListener('keydown', (event) => {
+                if (event.keyCode === keymap.esc) {
+                    const topPopup = this.getTopPopup();
+
+                    if (topPopup && topPopup.closeOnPressEscape) {
+                        topPopup.handleClose
+                            ? topPopup.handleClose()
+                            : (topPopup.handleAction ? topPopup.handleAction('cancel') : topPopup.close());
+                    }
+                }
+            });
+        }
     }
 
-    let modalDom = PopupManager.modalDom;
-
-    if (modalDom) {
-        hasModal = true;
-    } else {
-        hasModal = false;
-        modalDom = document.createElement('div');
-        PopupManager.modalDom = modalDom;
-
-        modalDom.addEventListener('touchmove', function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-        });
-
-        modalDom.addEventListener('click', function() {
-            PopupManager.doOnModalClick && PopupManager.doOnModalClick();
-        });
+    getInstance(id) {
+        return this.instances[id];
     }
 
-    return modalDom;
-};
-
-
-export const PopupManager = {
-    instances: {},
-
-    modalStack: [],
-    modalFade: true,
-
-    getInstance: function(id) {
-        return PopupManager.instances[id];
-    },
-
-    register: function(id, instance) {
+    register(id, instance) {
         if (id && instance) {
-            PopupManager.instances[id] = instance;
+            this.instances[id] = instance;
         }
-    },
+    }
 
-    unregister: function(id) {
+    unregister(id) {
         if (id) {
-            PopupManager.instances[id] = null;
-            delete PopupManager.instances[id];
+            this.instances[id] = null;
+            delete this.instances[id];
         }
-    },
+    }
 
-    nextZIndex: function() {
-        return PopupManager.zIndex++;
-    },
+    nextZIndex() {
+        return this.zIndex++;
+    }
 
-    doOnModalClick: function() {
-        const topItem = PopupManager.modalStack[PopupManager.modalStack.length - 1];
+    doOnModalClick() {
+        const topItem = this.modalStack[this.modalStack.length - 1];
 
         if (!topItem) return;
 
-        const instance = PopupManager.getInstance(topItem.id);
+        const instance = this.getInstance(topItem.id);
         if (instance && instance.closeOnClickModal) {
             instance.close();
         }
-    },
+    }
 
-    openModal: function(id, zIndex, dom, modalClass, modalFade) {
+    getModal() {
+        if (Vue.prototype.$isServer) {
+            return;
+        }
+
+        let modalDom = this.modalDom;
+
+        if (modalDom) {
+            this.hasModal = true;
+        } else {
+            this.hasModal = false;
+            modalDom = document.createElement('div');
+            this.modalDom = modalDom;
+
+            modalDom.addEventListener('touchmove', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+            });
+
+            modalDom.addEventListener('click', () => {
+                this.doOnModalClick && this.doOnModalClick();
+            });
+        }
+
+        return modalDom;
+    }
+    
+    openModal(id, zIndex, dom, modalClass, modalFade) {
         if (Vue.prototype.$isServer) return;
         if (!id || zIndex === undefined) return;
         this.modalFade = modalFade;
@@ -86,11 +101,11 @@ export const PopupManager = {
             }
         }
 
-        const modalDom = getModal();
+        const modalDom = this.getModal();
 
         addClass(modalDom, 'v-modal');
 
-        if (this.modalFade && !hasModal) {
+        if (this.modalFade && !this.hasModal) {
             addClass(modalDom, 'v-modal-enter');
         }
 
@@ -117,11 +132,11 @@ export const PopupManager = {
         modalDom.style.display = '';
 
         this.modalStack.push({ id: id, zIndex: zIndex, modalClass: modalClass });
-    },
+    }
 
-    closeModal: function(id) {
+    closeModal(id) {
         const modalStack = this.modalStack;
-        const modalDom = getModal();
+        const modalDom = this.getModal();
 
         if (modalStack.length > 0) {
             const topItem = modalStack[modalStack.length - 1];
@@ -158,55 +173,27 @@ export const PopupManager = {
                     }
                     modalDom.style.display = 'none';
 
-                    PopupManager.modalDom = undefined;
+                    this.modalDom = undefined;
                 }
 
                 removeClass(modalDom, 'v-modal-leave');
             }, 200);
         }
     }
-};
 
-Object.defineProperty(PopupManager, 'zIndex', {
-    configurable: true,
-    get() {
-        if (!hasInitZIndex) {
-            zIndex = (Vue.prototype.$ELEMENT || {}).zIndex || zIndex;
-            hasInitZIndex = true;
+    getTopPopup() {
+        if (Vue.prototype.$isServer) return;
+        if (this.modalStack.length > 0) {
+            const topPopup = this.modalStack[this.modalStack.length - 1];
+
+            if (!topPopup) return;
+
+            return this.getInstance(topPopup.id);
         }
-
-        return zIndex;
-    },
-    set(value) {
-        zIndex = value;
     }
-});
-
-const getTopPopup = function() {
-    if (Vue.prototype.$isServer) return;
-    if (PopupManager.modalStack.length > 0) {
-        const topPopup = PopupManager.modalStack[PopupManager.modalStack.length - 1];
-        if (!topPopup) return;
-        const instance = PopupManager.getInstance(topPopup.id);
-
-        return instance;
-    }
-};
-
-if (!Vue.prototype.$isServer) {
-    // handle `esc` key when the popup is shown
-    window.addEventListener('keydown', function(event) {
-        if (event.keyCode === 27) {
-            const topPopup = getTopPopup();
-
-            if (topPopup && topPopup.closeOnPressEscape) {
-                topPopup.handleClose
-                    ? topPopup.handleClose()
-                    : (topPopup.handleAction ? topPopup.handleAction('cancel') : topPopup.close());
-            }
-        }
-    });
 }
 
-export default PopupManager;
+
+export const popupManager = new PopupManager();
+export default popupManager;
 

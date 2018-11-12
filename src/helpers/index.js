@@ -10,7 +10,7 @@ export { modifierClass } from './modifier-class';
 export { off } from './off';
 export { on } from './on';
 export { once } from './once';
-export { PopupManager } from './popup-manager';
+export { popupManager } from './popup-manager';
 export { removeClass } from './remove-class';
 export { toCamelCase } from './to-camel-case';
 export { toDashCase } from './to-dash-case';
