@@ -11,6 +11,7 @@ import IColumn from 'inkline/components/Column';
 import IContainer from 'inkline/components/Container';
 import IDropdown from 'inkline/components/Dropdown';
 import IDropdownMenu from 'inkline/components/DropdownMenu';
+import IDropdownItem from 'inkline/components/DropdownItem';
 import ILayout from 'inkline/components/Layout';
 import ILayoutAside from 'inkline/components/LayoutAside';
 import ILayoutContent from 'inkline/components/LayoutContent';
@@ -46,6 +47,7 @@ class Inkline {
         IContainer,
         IDropdown,
         IDropdownMenu,
+        IDropdownItem,
         ILayout,
         ILayoutAside,
         ILayoutContent,
@@ -94,6 +96,7 @@ export {
     IContainer,
     IDropdown,
     IDropdownMenu,
+    IDropdownItem,
     ILayout,
     ILayoutAside,
     ILayoutContent,

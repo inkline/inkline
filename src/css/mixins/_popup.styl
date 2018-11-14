@@ -66,11 +66,16 @@
 
 
 -popup-arrow-size(--arrow = { size: 6px, margin: 5px })
-    > .arrow
+    > .arrow,
+    > .arrow::after
         border-width: --arrow['size']
 
-    > .arrow::after
-        border-width: (--arrow['size'] - 1px)
+    &[x-placement^="top"],
+    &[x-placement^="bottom"]
+        > .arrow,
+        > .arrow::after
+            left: "calc(50% - %s)" % (--arrow['size'] / 2)
+
 
     &[x-placement^="top"]
         margin-bottom: (--arrow['size'] + --arrow['margin'])
@@ -90,6 +95,12 @@
 
             &::after
                 margin-left: -(--arrow['size'] - 1px)
+
+    &[x-placement^="right"],
+    &[x-placement^="left"]
+        > .arrow,
+        > .arrow::after
+            top: "calc(50% - %s)" % (--arrow['size'] / 2)
 
     &[x-placement^="right"]
         margin-left: (--arrow['size'] + --arrow['margin'])

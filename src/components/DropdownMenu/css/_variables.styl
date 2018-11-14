@@ -11,13 +11,22 @@
 --dropdown-border-width := --border-width
 --dropdown-border-radius := --border-radius
 
---dropdown-padding-sm := --spacers['1'] * --size-percentages['sm']
---dropdown-padding-md := --spacers['1'] * --size-percentages['md']
---dropdown-padding-lg := --spacers['1'] * --size-percentages['lg']
+--dropdown-padding-sm := --spacers['1/2'] * --size-percentages['sm'] 0
+--dropdown-padding-md := --spacers['1/2'] * --size-percentages['md'] 0
+--dropdown-padding-lg := --spacers['1/2'] * --size-percentages['lg'] 0
 --dropdown-padding := {
     'sm': --dropdown-padding-sm
     'md': --dropdown-padding-md
     'lg': --dropdown-padding-lg
+}
+
+--dropdown-item-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
+--dropdown-item-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
+--dropdown-item-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
+--dropdown-item-padding := {
+    'sm': --dropdown-item-padding-sm
+    'md': --dropdown-item-padding-md
+    'lg': --dropdown-item-padding-lg
 }
 
 //

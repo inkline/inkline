@@ -14,7 +14,7 @@ export default {
     props: {
         divider: {
             type: Boolean,
-            default: true
+            default: false
         },
     },
     methods: {

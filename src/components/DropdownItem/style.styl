@@ -2,6 +2,7 @@
 @require '../../css/mixins';
 @require '../DropdownMenu/css/_variables';
 @require 'css/_sizes';
+@require 'css/_variants';
 
 .dropdown-menu > .item
     display: block;
@@ -11,25 +12,18 @@
     text-align: inherit // For `<button>`s
     white-space: nowrap // prevent links from randomly breaking onto new lines
     background-color: transparent // For `<button>`s
-    border: 0 // For `<button>`s
-
-    &:hover
-    &:focus
-        color: $dropdown-link-hover-color;
+    border: 0
 
 
     &.active,
     &:active
-        color: $dropdown-link-active-color;
-        text-decoration: none;
-        @include gradient-bg($dropdown-link-active-bg);
+        text-decoration: none
 
     &.disabled,
     &:disabled
-        color: $dropdown-link-disabled-color;
-        pointer-events: none;
-        background-color: transparent;
-        // Remove CSS gradients if they're enabled
-        background-image: none;
+        pointer-events: none
+        background-color: transparent
+        background-image: none
 
+    @extend .dropdown-menu.-light > .item
     @extend .dropdown-menu.-md > .item
