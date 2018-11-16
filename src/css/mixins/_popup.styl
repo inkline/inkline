@@ -76,15 +76,15 @@
         > .arrow::after
             left: "calc(50% - %s)" % (--arrow['size'] / 2)
 
+        > .arrow::after
+            margin-left: -(--arrow['size'] / 2)
+
 
     &[x-placement^="top"]
         margin-bottom: (--arrow['size'] + --arrow['margin'])
 
         > .arrow
             bottom: -(--arrow['size'])
-
-            &::after
-                margin-left: -(--arrow['size'] - 1px)
 
 
     &[x-placement^="bottom"]
@@ -93,14 +93,14 @@
         > .arrow
             top: -(--arrow['size'])
 
-            &::after
-                margin-left: -(--arrow['size'] - 1px)
-
     &[x-placement^="right"],
     &[x-placement^="left"]
         > .arrow,
         > .arrow::after
             top: "calc(50% - %s)" % (--arrow['size'] / 2)
+
+        > .arrow::after
+            margin-top: -(--arrow['size'] / 2)
 
     &[x-placement^="right"]
         margin-left: (--arrow['size'] + --arrow['margin'])
@@ -108,18 +108,11 @@
         > .arrow
             left: -(--arrow['size'])
 
-            &::after
-                bottom: -(--arrow['size'] - 1px)
-
     &[x-placement^="left"]
         margin-right: (--arrow['size'] + --arrow['margin'])
 
         > .arrow
             right: -(--arrow['size'])
-
-            &::after
-                bottom: -(--arrow['size'] - 1px)
-                margin-left: -(--arrow['size'] - 1px)
 
 
 
