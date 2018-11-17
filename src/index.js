@@ -10,8 +10,9 @@ import ICollapsibleItem from 'inkline/components/CollapsibleItem';
 import IColumn from 'inkline/components/Column';
 import IContainer from 'inkline/components/Container';
 import IDropdown from 'inkline/components/Dropdown';
-import IDropdownMenu from 'inkline/components/DropdownMenu';
+import IDropdownDivider from 'inkline/components/DropdownDivider';
 import IDropdownItem from 'inkline/components/DropdownItem';
+import IDropdownMenu from 'inkline/components/DropdownMenu';
 import ILayout from 'inkline/components/Layout';
 import ILayoutAside from 'inkline/components/LayoutAside';
 import ILayoutContent from 'inkline/components/LayoutContent';
@@ -46,8 +47,9 @@ class Inkline {
         IColumn,
         IContainer,
         IDropdown,
-        IDropdownMenu,
+        IDropdownDivider,
         IDropdownItem,
+        IDropdownMenu,
         ILayout,
         ILayoutAside,
         ILayoutContent,
@@ -95,8 +97,9 @@ export {
     IColumn,
     IContainer,
     IDropdown,
-    IDropdownMenu,
+    IDropdownDivider,
     IDropdownItem,
+    IDropdownMenu,
     ILayout,
     ILayoutAside,
     ILayoutContent,

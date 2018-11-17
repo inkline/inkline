@@ -35,7 +35,7 @@ export default {
     props: {
         trigger: {
             type: String,
-            default: 'hover'
+            default: 'click'
         },
         hideOnClick: {
             type: Boolean,
@@ -43,7 +43,7 @@ export default {
         },
         placement: {
             type: String,
-            default: 'bottom-end'
+            default: 'bottom'
         },
         showTimeout: {
             type: Number,
@@ -162,8 +162,8 @@ export default {
             this.triggerElement.setAttribute('tabindex', '0');
         },
         initEvents() {
-            this.triggerElement = this.$slots.trigger[0].elm;
-            this.dropdownElement = this.$slots.default[0].elm;
+            this.triggerElement = this.$slots.default[0].elm;
+            this.dropdownElement = this.$slots.default[this.$slots.default.length - 1].elm;
 
             this.triggerElement.addEventListener('keydown', this.onTriggerKeyDown); // triggerElement keydown
             this.dropdownElement.addEventListener('keydown', this.onItemKeyDown, true); // item keydown

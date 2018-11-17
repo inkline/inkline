@@ -1,19 +1,24 @@
 //
-// Card variants
+// Dropdown variants
 // Add the required color variants to all card variations
 //
 for --variant-name, --variant in --variants['dropdown']
     .dropdown-menu.-{--variant-name} > .item
-        &:hover
-        &:focus
-            background: darken(--variant['color'], 4%)
+        color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
 
-        &.active,
-        &:active
-            color: $dropdown-link-active-color;
-            text-decoration: none;
-            @include gradient-bg($dropdown-link-active-bg);
+        &[href]
+        &[to]
+            &:hover
+            &:focus
+                background: -text-color-by-luminance(--variant['color'], darken(--variant['color'], 12%), darken(--variant['color'], 4%))
 
-        &.disabled,
+            &.-active
+            &:active
+                background: -text-color-by-luminance(--variant['color'], darken(--variant['color'], 24%), darken(--variant['color'], 8%))
+
+        &.-disabled,
         &:disabled
-            color: $dropdown-link-disabled-color;
+            color: -text-color-by-luminance(--variant['color'], darken(--variant-color-light, 40%), lighten(--variant-color-dark, 40%))
+
+        &.-divider::before
+            background-color: -text-color-by-luminance(--variant['color'], lighten(--variant['color'], 12%), darken(--variant['color'], 8%))

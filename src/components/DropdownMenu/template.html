@@ -1,5 +1,5 @@
 <transition name="zoom-in-top-transition" @after-leave="doDestroy">
-    <div class="dropdown-menu" v-show="visible">
+    <div class="dropdown-menu" :class="classes['*']" v-show="visible">
         <span class="arrow" v-if="arrow"></span>
         <slot></slot>
     </div>

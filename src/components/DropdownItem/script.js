@@ -1,5 +1,6 @@
 import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
 
+import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
 
@@ -8,14 +9,15 @@ export default {
     mixins: [
         DisabledPropertyMixin,
 
+        AttributesProviderMixin,
         ClassesProviderMixin,
         EmitProviderMixin
     ],
     props: {
-        divider: {
-            type: Boolean,
-            default: false
-        },
+        tag: {
+            type: String,
+            default: 'div'
+        }
     },
     methods: {
         onClick() {
@@ -23,15 +25,11 @@ export default {
         }
     },
     computed: {
+        _tag () {
+            return this.attributes.to ? 'router-link' : this.attributes.href ? 'a' : this.tag;
+        },
         tabindex() {
             return this.disabled ? null : -1;
-        }
-    },
-    created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                '-divider': this.divider
-            }));
         }
     }
 };

@@ -1,3 +1,7 @@
+import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
+import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
+
+import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import PopupProviderMixin from 'inkline/mixins/components/providers/PopupProviderMixin';
 
 export default {
@@ -6,6 +10,10 @@ export default {
         'dropdown'
     ],
     mixins: [
+        SizePropertyMixin,
+        VariantPropertyMixin,
+
+        ClassesProviderMixin,
         PopupProviderMixin
     ],
     props: {

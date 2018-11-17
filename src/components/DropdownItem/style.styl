@@ -13,13 +13,22 @@
     white-space: nowrap // prevent links from randomly breaking onto new lines
     background-color: transparent // For `<button>`s
     border: 0
+    cursor: default
 
+    if --transition['dropdown']
+        transition: background-color --transition-duration --transition-easing
 
-    &.active,
+    &[href]
+    &[to]
+        cursor: pointer
+
+    &:hover,
+    &:focus,
+    &.-active,
     &:active
         text-decoration: none
 
-    &.disabled,
+    &.-disabled,
     &:disabled
         pointer-events: none
         background-color: transparent

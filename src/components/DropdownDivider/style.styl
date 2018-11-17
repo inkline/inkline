@@ -1,0 +1,14 @@
+@require '../../css/config';
+@require '../../css/mixins';
+@require '../DropdownMenu/css/_variables';
+@require 'css/_sizes';
+@require 'css/_variants';
+
+.dropdown-menu > .divider
+    display: block
+    height: 1px
+    width: 100%
+    clear: both
+
+    @extend .dropdown-menu.-light > .divider
+    @extend .dropdown-menu.-md > .divider

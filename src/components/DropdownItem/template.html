@@ -2,6 +2,9 @@
     :class="classes['*']"
     :aria-disabled="disabled"
     :tabindex="tabindex"
+    :is="_tag"
+    :tag="tag"
+    v-bind="attributes"
     @click="onClick">
     <slot></slot>
 </div>
