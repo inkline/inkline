@@ -4,6 +4,7 @@
 //
 for --variant-name, --variant in --variants['dropdown']
     .dropdown-menu.-{--variant-name} > .item
+    .dropdown-menu.-{--variant-name} > .dropdown > .item
         color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
 
         &[href]

@@ -19,7 +19,7 @@
         margin-left: --popup['margin']
 
 
--popup-arrow(--arrow = { size: 6px, margin: 5px, background: #ffffff, border-color: #f0f0f0 })
+-popup-arrow(--arrow = { size: 6px, margin: 5px, offset: 15px, background: #ffffff, border-color: #f0f0f0 })
     > .arrow,
     > .arrow::after
         position: absolute
@@ -36,42 +36,33 @@
         border-bottom-width: 0
 
         &::after
-            bottom: 1px
             border-bottom-width: 0
-
 
     &[x-placement^="bottom"] > .arrow
         border-top-width: 0
 
         &::after
-            top: 1px;
             border-top-width: 0;
 
     &[x-placement^="right"] > .arrow
         border-left-width: 0
 
         &::after
-            left: 1px
             border-left-width: 0
 
     &[x-placement^="left"] > .arrow
         border-right-width: 0;
 
         &::after
-            right: 1px
             border-right-width: 0
 
-    -popup-arrow-size({ size: --arrow['size'], margin: --arrow['margin'] })
-    -popup-arrow-variant({ background: --arrow['background'], border-color: --arrow['border-color'] })
-
-
--popup-arrow-size(--arrow = { size: 6px, margin: 5px })
+-popup-arrow-size(--arrow = { size: 6px, margin: 5px, offset: 15px })
     > .arrow,
     > .arrow::after
         border-width: --arrow['size']
 
-    &[x-placement^="top"],
-    &[x-placement^="bottom"]
+    &[x-placement="top"],
+    &[x-placement="bottom"]
         > .arrow,
         > .arrow::after
             left: "calc(50% - %s)" % (--arrow['size'] / 2)
@@ -79,6 +70,23 @@
         > .arrow::after
             margin-left: -(--arrow['size'] / 2)
 
+    &[x-placement="top-start"],
+    &[x-placement="bottom-start"]
+        > .arrow,
+        > .arrow::after
+            left: --arrow['offset']
+
+        > .arrow::after
+            margin-left: -(--arrow['offset'] + --arrow['size'])
+
+    &[x-placement="top-end"],
+    &[x-placement="bottom-end"]
+        > .arrow,
+        > .arrow::after
+            right: --arrow['offset']
+
+        > .arrow::after
+            margin-right: -(--arrow['offset'] + --arrow['size'])
 
     &[x-placement^="top"]
         margin-bottom: (--arrow['size'] + --arrow['margin'])
@@ -86,6 +94,8 @@
         > .arrow
             bottom: -(--arrow['size'])
 
+            &::after
+                bottom: 1px
 
     &[x-placement^="bottom"]
         margin-top: (--arrow['size'] + --arrow['margin'])
@@ -93,8 +103,11 @@
         > .arrow
             top: -(--arrow['size'])
 
-    &[x-placement^="right"],
-    &[x-placement^="left"]
+            &::after
+                top: 1px
+
+    &[x-placement="left"]
+    &[x-placement="right"]
         > .arrow,
         > .arrow::after
             top: "calc(50% - %s)" % (--arrow['size'] / 2)
@@ -102,11 +115,23 @@
         > .arrow::after
             margin-top: -(--arrow['size'] / 2)
 
-    &[x-placement^="right"]
-        margin-left: (--arrow['size'] + --arrow['margin'])
+    &[x-placement="left-start"],
+    &[x-placement="right-start"]
+        > .arrow,
+        > .arrow::after
+            top: --arrow['offset']
 
-        > .arrow
-            left: -(--arrow['size'])
+        > .arrow::after
+            margin-top: -(--arrow['offset'] + --arrow['size'])
+
+    &[x-placement="left-end"],
+    &[x-placement="right-end"]
+        > .arrow,
+        > .arrow::after
+            bottom: --arrow['offset']
+
+        > .arrow::after
+            margin-bottom: -(--arrow['offset'] + --arrow['size'])
 
     &[x-placement^="left"]
         margin-right: (--arrow['size'] + --arrow['margin'])
@@ -114,6 +139,17 @@
         > .arrow
             right: -(--arrow['size'])
 
+            &::after
+                right: 1px
+
+    &[x-placement^="right"]
+        margin-left: (--arrow['size'] + --arrow['margin'])
+
+        > .arrow
+            left: -(--arrow['size'])
+
+            &::after
+                left: 1px
 
 
 -popup-arrow-variant(--arrow = { background: #ffffff, border-color: #bcbcbc })
