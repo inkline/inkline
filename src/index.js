@@ -19,6 +19,7 @@ import ILayoutContent from 'inkline/components/LayoutContent';
 import ILayoutFooter from 'inkline/components/LayoutFooter';
 import ILayoutHeader from 'inkline/components/LayoutHeader';
 import IRow from 'inkline/components/Row';
+import ITooltip from 'inkline/components/Tooltip';
 
 import ICheckbox from 'inkline/components/Checkbox';
 import ICheckboxButton from 'inkline/components/CheckboxButton';
@@ -56,6 +57,7 @@ class Inkline {
         ILayoutFooter,
         ILayoutHeader,
         IRow,
+        ITooltip,
 
         ICheckbox,
         ICheckboxButton,
@@ -106,6 +108,7 @@ export {
     ILayoutFooter,
     ILayoutHeader,
     IRow,
+    ITooltip,
 
     ICheckbox,
     ICheckboxButton,

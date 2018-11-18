@@ -4,23 +4,27 @@
 @require 'css/_sizes';
 @require 'css/_variants';
 
-.dropdown-menu
+.tooltip-wrapper
+    display: inline-block
+    position: relative
+
+.tooltip
     -popup({
-        margin: --dropdown-margin,
+        margin: --tooltip-margin,
         z-index: 2000
     })
 
     -popup-arrow()
     -popup-arrow-size()
 
-    color: --body-color
     text-align: left // Ensures proper alignment if parent has it changed (e.g., modal footer)
     list-style: none
-    line-height: --dropdown-line-height
+    line-height: --tooltip-line-height
     background-clip: padding-box
-    border-width: --dropdown-border-width
+    border-width: --tooltip-border-width
     border-style: solid
-    min-width: --dropdown-min-width
+    display: inline-block
+    white-space: nowrap
 
-    @extend .dropdown-menu.-md
-    @extend .dropdown-menu.-light
+    @extend .tooltip.-md
+    @extend .tooltip.-dark

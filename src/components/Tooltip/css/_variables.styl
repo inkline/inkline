@@ -1,0 +1,33 @@
+//
+// Variables
+//
+
+--tooltip-font-size := --font-size
+--tooltip-font-weight := --font-weight['normal']
+--tooltip-line-height := --line-height
+
+--tooltip-margin := --spacers['1/2']
+
+--tooltip-border-width := --border-width
+--tooltip-border-radius := --border-radius
+
+--tooltip-padding-sm := --spacers['1/4'] * --size-percentages['sm'] --spacers['1/2'] * --size-percentages['sm']
+--tooltip-padding-md := --spacers['1/4'] * --size-percentages['md'] --spacers['1/2'] * --size-percentages['md']
+--tooltip-padding-lg := --spacers['1/4'] * --size-percentages['lg'] --spacers['1/2'] * --size-percentages['lg']
+--tooltip-padding := {
+    'sm': --tooltip-padding-sm
+    'md': --tooltip-padding-md
+    'lg': --tooltip-padding-lg
+}
+
+//
+// Variants
+//
+--tooltip-variants := (monochrome)
+--tooltip-color-groups := {
+    monochrome: {
+        light: --color-white,
+        dark: --color-gray-80
+    }
+}
+--variants['tooltip'] = -add-variant(--tooltip-variants, { color: --tooltip-color-groups })
