@@ -4,7 +4,15 @@
     <transition name="zoom-in-top-transition" @after-leave="doDestroy">
         <div class="popover" ref="popover" :class="classes['*']" v-show="visible">
             <span class="arrow" v-if="arrow"></span>
-            <slot name="popover"></slot>
+            <div class="header" v-if="$slots.header">
+                <slot name="header"></slot>
+            </div>
+            <div class="body" v-if="$slots.body">
+                <slot name="body"></slot>
+            </div>
+            <div class="footer" v-if="$slots.footer">
+                <slot name="footer"></slot>
+            </div>
         </div>
     </transition>
 </div>

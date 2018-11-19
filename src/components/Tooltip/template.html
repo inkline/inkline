@@ -4,7 +4,7 @@
     <transition name="zoom-in-top-transition" @after-leave="doDestroy">
         <div class="tooltip" ref="tooltip" :class="classes['*']" v-show="visible">
             <span class="arrow" v-if="arrow"></span>
-            <slot name="tooltip"></slot>
+            <slot name="body"></slot>
         </div>
     </transition>
 </div>

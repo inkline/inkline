@@ -24,7 +24,17 @@
     border-width: --popover-border-width
     border-style: solid
     display: inline-block
-    white-space: nowrap
+    white-space: normal
+    width: --popover-width
+    max-width: 90vw
+
+    > .header
+        border-bottom-width: 1px
+        border-bottom-style: solid
+
+    > .footer
+        border-top-width: 1px
+        border-top-style: solid
 
     @extend .popover.-md
-    @extend .popover.-dark
+    @extend .popover.-light

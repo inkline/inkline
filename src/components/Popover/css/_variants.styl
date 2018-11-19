@@ -8,6 +8,13 @@ for --variant-name, --variant in --variants['popover']
         background-color: --variant['color']
         border-color: darken(--variant['color'], 10%)
 
+        > .header
+        > .footer
+            border-color: -text-color-by-luminance(--variant['color'], darken(--variant['color'], 15%), darken(--variant['color'], 10%))
+
+        > .header
+            background-color: -text-color-by-luminance(--variant['color'], darken(--variant['color'], 10%), darken(--variant['color'], 5%))
+
         -popup-arrow-variant({
             background: --variant['color'],
             border-color: darken(--variant['color'], 10%)
