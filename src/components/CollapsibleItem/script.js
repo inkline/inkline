@@ -9,7 +9,7 @@ import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderM
 import ActiveClassPropertyMixin from 'inkline/mixins/components/properties/ActiveClassPropertyMixin';
 
 export default {
-    name: 'ICollapsible',
+    name: 'ICollapsibleItem',
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
@@ -40,7 +40,7 @@ export default {
     },
     methods: {
         onClick() {
-            this.dispatch('Collapsible', 'item-click', this);
+            this.dispatch('ICollapsible', 'item-click', this);
         },
     }
 };
