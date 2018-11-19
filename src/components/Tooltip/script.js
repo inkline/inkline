@@ -11,6 +11,8 @@ import SizePropertyMixin from 'inkline/mixins/components/properties/SizeProperty
 import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
 import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
 
+import ClickOutside from 'inkline/directives/click-outside';
+
 export default {
     name: 'ITooltip',
     mixins: [
@@ -25,6 +27,9 @@ export default {
         VariantPropertyMixin,
         DisabledPropertyMixin,
     ],
+    directives: {
+        ClickOutside
+    },
     props: {
         trigger: {
             type: String,
@@ -93,13 +98,13 @@ export default {
             }
         },
         initAriaAttributes() {
-            this.tooltipElement.setAttribute('id', this.id);
+            this.popupElement.setAttribute('id', this.id);
             this.triggerElement.setAttribute('aria-haspopup', 'tooltip');
             this.triggerElement.setAttribute('aria-controls', this.id);
         },
         initEvents() {
             this.triggerElement = this.$slots.default[0].elm;
-            this.popupElement = this.tooltipElement = this.$refs.tooltip;
+            this.popupElement = this.$refs.popup;
             this.referenceElement = this.$el;
             this.currentPlacement = this.placement;
 

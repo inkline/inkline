@@ -1,8 +1,8 @@
-<div class="popover-wrapper">
+<div class="popover-wrapper" v-click-outside="hide">
     <slot />
 
     <transition name="zoom-in-top-transition" @after-leave="doDestroy">
-        <div class="popover" ref="popover" :class="classes['*']" v-show="visible">
+        <div class="popover" ref="popup" :class="classes['*']" v-show="visible">
             <span class="arrow" v-if="arrow"></span>
             <div class="header" v-if="$slots.header">
                 <slot name="header"></slot>
