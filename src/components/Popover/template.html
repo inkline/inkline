@@ -1,0 +1,10 @@
+<div class="popover-wrapper">
+    <slot />
+
+    <transition name="zoom-in-top-transition" @after-leave="doDestroy">
+        <div class="popover" ref="popover" :class="classes['*']" v-show="visible">
+            <span class="arrow" v-if="arrow"></span>
+            <slot name="popover"></slot>
+        </div>
+    </transition>
+</div>

@@ -1,0 +1,33 @@
+//
+// Variables
+//
+
+--popover-font-size := --font-size
+--popover-font-weight := --font-weight['normal']
+--popover-line-height := --line-height
+
+--popover-margin := --spacers['1/2']
+
+--popover-border-width := --border-width
+--popover-border-radius := --border-radius
+
+--popover-padding-sm := --spacers['1/4'] * --size-percentages['sm'] --spacers['1/2'] * --size-percentages['sm']
+--popover-padding-md := --spacers['1/4'] * --size-percentages['md'] --spacers['1/2'] * --size-percentages['md']
+--popover-padding-lg := --spacers['1/4'] * --size-percentages['lg'] --spacers['1/2'] * --size-percentages['lg']
+--popover-padding := {
+    'sm': --popover-padding-sm
+    'md': --popover-padding-md
+    'lg': --popover-padding-lg
+}
+
+//
+// Variants
+//
+--popover-variants := (monochrome)
+--popover-color-groups := {
+    monochrome: {
+        light: --color-white,
+        dark: --color-gray-80
+    }
+}
+--variants['popover'] = -add-variant(--popover-variants, { color: --popover-color-groups })
