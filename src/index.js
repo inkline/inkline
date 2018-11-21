@@ -18,6 +18,7 @@ import ILayoutAside from 'inkline/components/LayoutAside';
 import ILayoutContent from 'inkline/components/LayoutContent';
 import ILayoutFooter from 'inkline/components/LayoutFooter';
 import ILayoutHeader from 'inkline/components/LayoutHeader';
+import IModal from 'inkline/components/Modal';
 import IRow from 'inkline/components/Row';
 import IPopover from 'inkline/components/Popover';
 import ITooltip from 'inkline/components/Tooltip';
@@ -57,6 +58,7 @@ class Inkline {
         ILayoutContent,
         ILayoutFooter,
         ILayoutHeader,
+        IModal,
         IRow,
         IPopover,
         ITooltip,
@@ -109,6 +111,7 @@ export {
     ILayoutContent,
     ILayoutFooter,
     ILayoutHeader,
+    IModal,
     IRow,
     IPopover,
     ITooltip,

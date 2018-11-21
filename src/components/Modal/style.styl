@@ -1,0 +1,41 @@
+@require '../../css/config';
+@require '../../css/mixins';
+@require 'css/_variables';
+@require 'css/_sizes';
+@require 'css/_variants';
+
+.modal-wrapper
+    display: inline-block
+    position: relative
+
+.modal-overlay
+    background: --modal-overlay-background
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 2000
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+
+.modal
+    text-align: left // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none
+    line-height: --modal-line-height
+    border-width: --modal-border-width
+    border-style: solid
+    display: block
+    width: "calc(100% - %s)" % (--modal-margin * 2)
+
+    > .header
+        border-bottom-width: 1px
+        border-bottom-style: solid
+
+    > .footer
+        border-top-width: 1px
+        border-top-style: solid
+
+    @extend .modal.-md
+    @extend .modal.-light

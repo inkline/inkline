@@ -1,0 +1,44 @@
+//
+// Variables
+//
+
+--modal-font-size := --font-size
+--modal-font-weight := --font-weight['normal']
+--modal-line-height := --line-height
+
+--modal-margin := --spacers['1']
+
+--modal-width-sm := 320px
+--modal-width-md := 480px
+--modal-width-lg := 800px
+--modal-width := {
+    'sm': --modal-width-sm
+    'md': --modal-width-md
+    'lg': --modal-width-lg
+}
+
+--modal-border-width := --border-width
+--modal-border-radius := --border-radius
+
+--modal-overlay-background := rgba(0, 0, 0, 0.75)
+
+--modal-padding-sm := --spacers['1'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
+--modal-padding-md := --spacers['1'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
+--modal-padding-lg := --spacers['1'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
+--modal-padding := {
+    'sm': --modal-padding-sm
+    'md': --modal-padding-md
+    'lg': --modal-padding-lg
+}
+
+//
+// Variants
+//
+--modal-variants := (monochrome)
+--modal-color-groups := {
+    monochrome: {
+        light: --color-white,
+        dark: --color-gray-80
+    }
+}
+--variants['modal'] = -add-variant(--modal-variants, { color: --modal-color-groups })

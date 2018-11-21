@@ -60,10 +60,7 @@ export default {
         return {
             timeout: null,
             visible: false,
-            menuItems: null,
-            menuItemsArray: null,
             triggerElement: null,
-            tooltipElement: null,
             currentPlacement: null,
             focusing: false,
             id: this.$attrs.id || uid('tooltip')

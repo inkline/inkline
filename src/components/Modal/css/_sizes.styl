@@ -1,0 +1,12 @@
+//
+// modal sizes
+//
+for size in (sm md lg)
+    .modal.-{size}
+        border-radius: --modal-border-radius[size]
+        max-width: --modal-width[size]
+
+        > .header
+        > .body
+        > .footer
+            padding: --modal-padding[size]
