@@ -1,0 +1,31 @@
+/**
+ * Navbar Brand
+ */
+
+@import '../../css/config'
+@import '../../css/mixins'
+@import '../Navbar/css/_variables'
+@import 'css/_variants'
+
+.navbar > .container > .brand
+    display: inline-block
+    margin-right: --navbar-brand-margin
+    font-size: --navbar-brand-font-size
+    line-height: inherit
+    white-space: nowrap
+
+    &:hover
+    &:focus
+        text-decoration: none
+
+    > h1
+    > h2
+    > h3
+    > h4
+    > h5
+    > h6
+        margin-top: 0
+        margin-bottom: 0
+
+    @extend .navbar.-light > .container > .brand
+

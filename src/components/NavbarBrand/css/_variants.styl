@@ -1,0 +1,9 @@
+//
+// Navbar themes
+// Add the required color variants to all navbar variations
+//
+for --variant-name, --variant in --variants['navbar']
+    .navbar.-{--variant-name} > .container > .brand
+        color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+        background-color: --variant['color']
+
