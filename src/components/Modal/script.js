@@ -33,6 +33,10 @@ export default {
         transition: {
             type: String,
             default: 'zoom-in-center-transition'
+        },
+        fill: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -73,6 +77,13 @@ export default {
 
             this.triggerElement.addEventListener('click', this.onClick);
         },
+    },
+    created () {
+        if (this.classesProvider) {
+            this.classesProvider['root'].push(() => ({
+                '-fill': this.fill
+            }));
+        }
     },
     mounted() {
         this.initEvents();

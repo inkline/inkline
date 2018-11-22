@@ -3,10 +3,18 @@
 //
 for size in (sm md lg)
     .modal.-{size}
-        border-radius: --modal-border-radius[size]
         max-width: --modal-width[size]
+        border-radius: --modal-border-radius[size]
 
         > .header
         > .body
         > .footer
             padding: --modal-padding[size]
+
+        > .header
+            border-top-left-radius: --modal-border-radius[size]
+            border-top-right-radius: --modal-border-radius[size]
+
+        > .footer
+            border-bottom-left-radius: --modal-border-radius[size]
+            border-bottom-right-radius: --modal-border-radius[size]

@@ -24,18 +24,20 @@
     text-align: left // Ensures proper alignment if parent has it changed (e.g., modal footer)
     list-style: none
     line-height: --modal-line-height
-    border-width: --modal-border-width
-    border-style: solid
     display: block
     width: "calc(100% - %s)" % (--modal-margin * 2)
 
     > .header
-        border-bottom-width: 1px
-        border-bottom-style: solid
-
+    > .body
     > .footer
-        border-top-width: 1px
-        border-top-style: solid
+        border-width: --modal-border-width
+        border-style: solid
+
+    > .header + .body
+    > .header + .footer
+    > .body + .footer
+    > .body + .body
+        border-top-width: 0
 
     @extend .modal.-md
     @extend .modal.-light

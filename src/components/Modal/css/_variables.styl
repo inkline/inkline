@@ -19,7 +19,9 @@
 
 --modal-border-width := --border-width
 --modal-border-radius := --border-radius
+--modal-border-color := --colors['gray-30']
 
+--modal-background := --colors['white']
 --modal-overlay-background := rgba(0, 0, 0, 0.75)
 
 --modal-padding-sm := --spacers['1'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
@@ -34,11 +36,6 @@
 //
 // Variants
 //
---modal-variants := (monochrome)
---modal-color-groups := {
-    monochrome: {
-        light: --color-white,
-        dark: --color-gray-80
-    }
-}
---variants['modal'] = -add-variant(--modal-variants, { color: --modal-color-groups })
+--modal-variants := (brand monochrome state)
+
+--variants['modal'] = -add-variant(--modal-variants, { color: --color-groups })
