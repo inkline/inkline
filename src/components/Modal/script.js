@@ -3,7 +3,6 @@ import { uid } from 'inkline/helpers';
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
-import PopupProviderMixin from 'inkline/mixins/components/providers/PopupProviderMixin';
 
 import OnFocusMethodMixin from 'inkline/mixins/components/methods/OnFocusMethodMixin';
 
