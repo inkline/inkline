@@ -15,20 +15,20 @@ for --variant-name, --variant in --variants['modal']
             background-color: --modal-background
 
         &.-fill
-            background-color: --variant['color']
             color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
 
             > .header
             > .body
             > .footer
-                border-color: darken(--variant['color'], 10%)
-
-            > .header
-            > .footer
                 border-color: -text-color-by-luminance(--variant['color'], darken(--variant['color'], 15%), darken(--variant['color'], 10%))
 
             > .header
                 background-color: -text-color-by-luminance(--variant['color'], darken(--variant['color'], 10%), darken(--variant['color'], 5%))
+
+            > .body
+            > .footer
+                background-color: --variant['color']
+
 
         -popup-arrow-variant({
             background: --variant['color'],
