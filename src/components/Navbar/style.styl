@@ -1,5 +1,5 @@
 /**
- * Badge
+ * Navbar
  */
 
 @import '../../css/config'
@@ -8,24 +8,18 @@
 @import 'css/_variants'
 @import 'css/_sizes'
 
-.badge
-    display: inline-block
-    font-weight: --badge-font-weight
-    line-height: 1
-    text-align: center
-    white-space: nowrap
-    vertical-align: baseline
+.navbar
+    position: relative
+    display: flex
+    flex-wrap: wrap // allow us to do the line break for collapsing content
+    align-items: center
+    justify-content: space-between
 
-    a:hover &,
-    a:focus &
-        text-decoration: none
+    > .container
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        justify-content: space-between
 
-    .button &
-        position: relative
-        top: -1px
-
-    &.-pill
-        border-radius: --badge-pill-border-radius
-
-    @extend .badge.-md
-    @extend .badge.-light
+    @extend .navbar.-md
+    @extend .navbar.-light

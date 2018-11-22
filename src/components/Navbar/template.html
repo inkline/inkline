@@ -1,5 +1,7 @@
-<div class="badge"
+<div class="navbar"
      :class="classes['*']"
      v-bind="attributes">
-    <slot></slot>
+    <i-container :fluid="fluid">
+        <slot></slot>
+    </i-container>
 </div>

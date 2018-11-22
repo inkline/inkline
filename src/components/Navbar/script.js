@@ -1,3 +1,5 @@
+import IContainer from '../Container';
+
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 
@@ -13,15 +15,18 @@ export default {
         SizePropertyMixin,
         VariantPropertyMixin
     ],
-    props: {
+    components: {
+        IContainer
     },
-    methods: {
+    props: {
+        fluid: {
+            type: Boolean,
+            default: false
+        }
     },
     created () {
         if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                '-with-icon': this.$slots.icon
-            }));
+            this.classesProvider['root'].push(() => ({}));
         }
     }
 };

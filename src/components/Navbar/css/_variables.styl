@@ -1,31 +1,21 @@
 //
 // Variables
 //
---badge-font-size := {
-    sm: 65%
-    md: 75%
-    lg: 85%
-}
---badge-font-weight := --font-weight['bold']
---badge-line-height := --line-height
-
---badge-border-width := --border-width
---badge-border-radius := --border-radius
-
---badge-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['2/3'] * --size-percentages['sm']
---badge-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['2/3'] * --size-percentages['md']
---badge-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['2/3'] * --size-percentages['lg']
---badge-padding := {
-    'sm': --badge-padding-sm
-    'md': --badge-padding-md
-    'lg': --badge-padding-lg
+--navbar-padding-sm := --spacers['1'] * --size-percentages['sm'] 0
+--navbar-padding-md := --spacers['1'] * --size-percentages['md'] 0
+--navbar-padding-lg := --spacers['1'] * --size-percentages['lg'] 0
+--navbar-padding := {
+    'sm': --navbar-padding-sm
+    'md': --navbar-padding-md
+    'lg': --navbar-padding-lg
 }
 
---badge-pill-border-radius := 10rem
+--navbar-brand-margin := --spacer
+--navbar-brand-font-size := --font-size-lg
 
 //
 // Variants
 //
---badge-variants := (brand monochrome state)
+--navbar-variants := (brand monochrome)
 
---variants['badge'] = -add-variant(--badge-variants, { color: --color-groups })
+--variants['navbar'] = -add-variant(--navbar-variants, { color: --color-groups })
