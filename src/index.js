@@ -19,6 +19,10 @@ import ILayoutContent from 'inkline/components/LayoutContent';
 import ILayoutFooter from 'inkline/components/LayoutFooter';
 import ILayoutHeader from 'inkline/components/LayoutHeader';
 import IModal from 'inkline/components/Modal';
+import INav from 'inkline/components/Nav';
+import INavItem from 'inkline/components/NavItem';
+import INavbar from 'inkline/components/Navbar';
+import INavbarBrand from 'inkline/components/NavbarBrand';
 import IRow from 'inkline/components/Row';
 import IPopover from 'inkline/components/Popover';
 import ITooltip from 'inkline/components/Tooltip';
@@ -59,6 +63,10 @@ class Inkline {
         ILayoutFooter,
         ILayoutHeader,
         IModal,
+        INav,
+        INavItem,
+        INavbar,
+        INavbarBrand,
         IRow,
         IPopover,
         ITooltip,
@@ -112,6 +120,10 @@ export {
     ILayoutFooter,
     ILayoutHeader,
     IModal,
+    INav,
+    INavItem,
+    INavbar,
+    INavbarBrand,
     IRow,
     IPopover,
     ITooltip,
