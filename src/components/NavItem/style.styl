@@ -1,0 +1,23 @@
+/**
+ * Nav
+ */
+
+@import '../../css/config'
+@import '../../css/mixins'
+@import '../Nav/css/_variables'
+@import 'css/_sizes'
+
+.nav > .item
+    display: block
+    margin-bottom: 0
+
+    &:hover
+    &:focus
+        text-decoration: none
+
+    &.-disabled
+        color: --nav-item-disabled-color
+        pointer-events: none
+        cursor: default
+
+    @extend .nav.-md > .item

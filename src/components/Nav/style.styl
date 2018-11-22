@@ -1,0 +1,21 @@
+/**
+ * Nav
+ */
+
+@import '../../css/config'
+@import '../../css/mixins'
+@import 'css/_variables'
+@import 'css/_sizes'
+
+.nav
+    display: flex
+    flex-wrap: wrap
+    padding-left: 0
+    margin-bottom: 0
+    list-style: none
+
+    &.-vertical
+        flex-direction: column
+
+    @extend .nav.-md
+
