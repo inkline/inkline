@@ -5,6 +5,7 @@
 @import '../../css/config'
 @import '../../css/mixins'
 @import '../Navbar/css/_variables'
+@import 'css/_sizes'
 @import 'css/_variants'
 
 .navbar > .container > .brand
@@ -27,5 +28,6 @@
         margin-top: 0
         margin-bottom: 0
 
+    @extend .navbar.-md > .container > .brand
     @extend .navbar.-light > .container > .brand
 

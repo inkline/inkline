@@ -75,7 +75,7 @@ export default {
         },
     },
     computed: {
-        _tag () {
+        isTag () {
             return this.attributes.to ? 'router-link' : this.attributes.href ? 'a' : this.tag;
         }
     },

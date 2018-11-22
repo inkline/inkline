@@ -1,7 +1,7 @@
 <button
     v-bind="attributes"
     class="button"
-    :is="_tag"
+    :is="isTag"
     :tag="tag"
     :class="classes['*']"
     :disabled="isDisabled || loading"
