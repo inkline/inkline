@@ -1,2 +1,2 @@
 <script src="./script.js" />
-<style src="./style.styl" lang="stylus" scoped />
+<style src="./style.styl" lang="stylus" />

@@ -8,7 +8,7 @@ export default {
             let parent = this.$parent;
 
             while (parent) {
-                if (parent.$options.name === 'InputGroup' || (parent.$options.extends || {}).name === 'InputGroup') {
+                if (parent.$options.name === 'IInputGroup' || (parent.$options.extends || {}).name === 'IInputGroup') {
                     return parent;
                 }
 
@@ -22,17 +22,9 @@ export default {
          * Find a form group parent for the given form item
          */
         isGrouped () {
-            let parent = this.$parent;
+            let parent = this.parentGroup;
 
-            while (parent) {
-                if (parent.$options.name === 'InputGroup' || (parent.$options.extends || {}).name === 'InputGroup') {
-                    return true;
-                }
-
-                parent = parent.$parent;
-            }
-
-            return false;
+            return Boolean(parent);
         }
     }
 };
