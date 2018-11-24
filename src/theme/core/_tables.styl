@@ -2,10 +2,10 @@
     // Themes
     //
     for --variant-name, --variant in --variants['table']
-        --table-text-color = -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
-        --table-border-color = -text-color-by-luminance(--variant['color'], lighten(--variant['color'], 5%), darken(--variant['color'], 5%))
-        --table-hover-color = -text-color-by-luminance(--variant['color'], rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1))
-        --table-stripe-color = -text-color-by-luminance(--variant['color'], rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.05))
+        --table-text-color = -variant-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+        --table-border-color = -variant-color-by-luminance(--variant['color'], lighten(--variant['color'], 5%), darken(--variant['color'], 5%))
+        --table-hover-color = -variant-color-by-luminance(--variant['color'], rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1))
+        --table-stripe-color = -variant-color-by-luminance(--variant['color'], rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.05))
 
         //if --variant-name == 'light'
         //    --table-hover-color = darken(--variant['color'], 2%)

@@ -2,7 +2,7 @@
 // Colors
 //
 
-
+//
 // Get color luminance as described in the W3C Relative Luminance definition
 // https://www.w3.org/WAI/GL/wiki/Relative_luminance
 //
@@ -25,14 +25,15 @@
 
     return 0.2126 * RGB.r + 0.7152 * RGB.g + 0.0722 * RGB.b
 
-
+//
 // Get contrast text color for a background color by calculating the luminance
-// of the given input color
+// of the given input color. If the given color is dark, return a light text color, otherwise if the current variant
+// color is light, return a dark text color.
 //
 // @param color Text background color
 // @return Contrasting text color
 //
--text-color-by-luminance(color, light, dark)
+-variant-color-by-luminance(color, light, dark)
     L = (red(color) * 0.299) + (green(color) * 0.587) + (blue(color) * 0.114)
 
     if L > 186
@@ -40,7 +41,7 @@
     else
         return light
 
-
+//
 // Equally mix multiple colors
 //
 // @param colors The colors to be mixed
@@ -54,7 +55,7 @@
 
     return mixedColor
 
-
+//
 // Mix multiple colors with a single color
 //
 // @param colors The colors to be transparentized
@@ -70,7 +71,7 @@
 
     return mixedColors
 
-
+//
 // Lighten multiple colors
 //
 // @param colors The colors to be lightened
@@ -100,7 +101,7 @@
 
     return transparentizedColors
 
-
+//
 // Generate a gradient background color with given colors array and gradient direction
 //
 // @param colors Colors to be added to the gradient
@@ -110,7 +111,7 @@
 -linear-gradient(colors, direction = --gradient-direction)
     return linear-gradient(direction, unquote(join(', ', colors)))
 
-
+//
 // Helper for gradient colors. Returns a flat combined fallback color if direction parameter is set to false.
 // Returns a gradient color otherwise.
 //
@@ -119,7 +120,7 @@
 // @param mix If true, mix the fallback color. Alternatively, provides the index for the fallback color
 // @return A gradient or flat color
 //
--generate-color(color, gradient-direction = --gradient-direction, mix = true)
+-gradient-fallback-color(color, gradient-direction = --gradient-direction, mix = true)
     if length(color) > 1
         // If the gradient parameter is set to false, return a flat fallback color mixed from specified gradient stops.
         if !gradient-direction

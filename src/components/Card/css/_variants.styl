@@ -1,10 +1,9 @@
 //
 // Card variants
-// Add the required color variants to all card variations
 //
 for --variant-name, --variant in --variants['card']
     .card.-{--variant-name}
-        color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+        color: -variant-color-by-luminance(--variant['color'], --card-variant-color-light, --card-variant-color-dark)
         background-color: --variant['color']
 
         if --gradient-enabled and --variant['gradient']

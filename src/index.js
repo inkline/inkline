@@ -23,6 +23,7 @@ import INav from 'inkline/components/Nav';
 import INavItem from 'inkline/components/NavItem';
 import INavbar from 'inkline/components/Navbar';
 import INavbarBrand from 'inkline/components/NavbarBrand';
+import INavbarItems from 'inkline/components/NavbarItems';
 import IRow from 'inkline/components/Row';
 import IPopover from 'inkline/components/Popover';
 import ITooltip from 'inkline/components/Tooltip';
@@ -67,6 +68,7 @@ class Inkline {
         INavItem,
         INavbar,
         INavbarBrand,
+        INavbarItems,
         IRow,
         IPopover,
         ITooltip,
@@ -124,6 +126,7 @@ export {
     INavItem,
     INavbar,
     INavbarBrand,
+    INavbarItems,
     IRow,
     IPopover,
     ITooltip,

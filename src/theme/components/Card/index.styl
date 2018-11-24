@@ -20,7 +20,7 @@
     // Add the required color themes to all card variations
     for --variant-name, --variant in --variants['card']
         &.-{--variant-name}
-            color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+            color: -variant-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
             background-color: --variant['color']
 
             if --gradient-enabled and --variant['gradient']

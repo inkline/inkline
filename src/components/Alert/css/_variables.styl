@@ -1,5 +1,5 @@
 //
-// Variables
+// Alert variables
 //
 --alert-font-size := --font-size
 --alert-font-weight := --font-weight['normal']
@@ -21,9 +21,12 @@
 
 --alert-background-darken := rgba(0, 0, 0, 0.15)
 
---alert-variants := (brand monochrome state)
 
 //
-// Themes
+// Variants
 //
+--alert-variants := (brand monochrome state)
+--alert-variant-color-light := --variant-color-light
+--alert-variant-color-dark := --variant-color-dark
+
 --variants['alert'] = -add-variant(--alert-variants, { color: --color-groups })

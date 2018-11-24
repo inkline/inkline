@@ -1,10 +1,9 @@
 //
-// Badge themes
-// Add the required color variants to all badge variations
+// Badge variants
 //
 for --variant-name, --variant in --variants['badge']
     .badge.-{--variant-name}
-        color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+        color: -variant-color-by-luminance(--variant['color'], --badge-variant-color-light, --badge-variant-color-dark)
         background-color: --variant['color']
 
         a:hover &,

@@ -1,25 +1,24 @@
 //
-// Dropdown variants
-// Add the required color variants to all card variations
+// Dropdown Item variants
 //
 for --variant-name, --variant in --variants['dropdown']
     .dropdown-menu.-{--variant-name} > .item
     .dropdown-menu.-{--variant-name} > .dropdown > .item
-        color: -text-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+        color: -variant-color-by-luminance(--variant['color'], --dropdown-variant-color-light, --dropdown-variant-color-dark)
 
         &[href]
         &[to]
             &:hover
             &:focus
-                background: -text-color-by-luminance(--variant['color'], darken(--variant['color'], 12%), darken(--variant['color'], 4%))
+                background: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 12%), darken(--variant['color'], 4%))
 
             &.-active
             &:active
-                background: -text-color-by-luminance(--variant['color'], darken(--variant['color'], 24%), darken(--variant['color'], 8%))
+                background: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 24%), darken(--variant['color'], 8%))
 
         &.-disabled,
         &:disabled
-            color: -text-color-by-luminance(--variant['color'], darken(--variant-color-light, 40%), lighten(--variant-color-dark, 40%))
+            color: -variant-color-by-luminance(--variant['color'], darken(--dropdown-variant-color-light, 40%), lighten(--dropdown-variant-color-dark, 40%))
 
         &.-divider::before
-            background-color: -text-color-by-luminance(--variant['color'], lighten(--variant['color'], 12%), darken(--variant['color'], 8%))
+            background-color: -variant-color-by-luminance(--variant['color'], lighten(--variant['color'], 12%), darken(--variant['color'], 8%))
