@@ -2,5 +2,7 @@
 // Nav Item sizes
 //
 for size in (sm md lg)
-    .nav.-{size} > .item
-        padding: --nav-item-padding[size]
+    .nav.-{size}
+        > .item
+        > .dropdown > .item
+            padding: --nav-item-padding[size]
