@@ -100,7 +100,7 @@ export default {
             this.triggerElement.setAttribute('aria-controls', this.id);
         },
         initEvents() {
-            this.triggerElement = this.$slots.default[0].elm;
+            this.triggerElement = this.$refs.trigger || this.$slots.default[0].elm;
             this.popupElement = this.$refs.popup;
             this.referenceElement = this.$el;
             this.currentPlacement = this.placement;
@@ -135,7 +135,7 @@ export default {
     watch: {
         'placement': {
             immediate: true,
-                handler(value) {
+            handler(value) {
                 this.currentPlacement = value;
             }
         }

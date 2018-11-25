@@ -23,7 +23,6 @@
             offset: {
                 default: 0
             },
-            value: Boolean,
             arrow: {
                 type: Boolean,
                 default: true
@@ -60,15 +59,6 @@
         },
 
         watch: {
-            value: {
-                immediate: true,
-                handler(val) {
-                    this.visible = val;
-
-                    this.$emit('input', val);
-                }
-            },
-
             visible(value) {
                 if (this.disabled) {
                     return;
@@ -76,7 +66,7 @@
 
                 value ? this.updatePopper() : this.destroyPopper();
 
-                this.$emit('input', value);
+                this.$emit('visibilityChange', value);
             }
         },
 

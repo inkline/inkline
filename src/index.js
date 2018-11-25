@@ -41,6 +41,8 @@ import IRadio from 'inkline/components/Radio';
 import IRadioButton from 'inkline/components/RadioButton';
 import IRadioGroup from 'inkline/components/RadioGroup';
 import IRadioButtonGroup from 'inkline/components/RadioButtonGroup';
+import ISelect from 'inkline/components/Select';
+import ISelectOption from 'inkline/components/SelectOption';
 import ITextarea from 'inkline/components/Textarea';
 
 class Inkline {
@@ -88,6 +90,8 @@ class Inkline {
         IRadioButton,
         IRadioGroup,
         IRadioButtonGroup,
+        ISelect,
+        ISelectOption,
         ITextarea
     ];
 
@@ -148,6 +152,8 @@ export {
     IRadioButton,
     IRadioGroup,
     IRadioButtonGroup,
+    ISelect,
+    ISelectOption,
     ITextarea,
 
     Inkline

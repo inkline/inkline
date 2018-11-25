@@ -1,0 +1,21 @@
+//
+// Dropdown Item variants
+//
+for --variant-name, --variant in --variants['select']
+    .select.-{--variant-name} > .option
+        color: -variant-color-by-luminance(--variant['color'], --select-variant-color-light, --select-variant-color-dark)
+
+        &:hover
+        &:focus
+            background: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 12%), darken(--variant['color'], 4%))
+
+        &.-active
+        &:active
+            background: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 24%), darken(--variant['color'], 8%))
+
+        &.-disabled,
+        &:disabled
+            color: -variant-color-by-luminance(--variant['color'], darken(--select-variant-color-light, 40%), lighten(--select-variant-color-dark, 40%))
+
+        &.-divider::before
+            background-color: -variant-color-by-luminance(--variant['color'], lighten(--variant['color'], 12%), darken(--variant['color'], 8%))

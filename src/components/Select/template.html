@@ -1,0 +1,46 @@
+<i-input-group :class="classes['root']" :size="size" v-click-outside="hide">
+    <label class="form-input-label" @click="focus" :class="classes['label']" v-if="$slots.label">
+        <slot name="label"></slot>
+    </label>
+
+    <div class="form-input-prepend" v-if="$slots.prepend">
+        <slot name="prepend"></slot>
+    </div>
+
+    <div class="form-input -select"
+         :class="classes['child']"
+         @mouseenter="onMouseEnter"
+         @mouseleave="onMouseLeave"
+         ref="trigger">
+
+        <span class="form-input-prefix" v-if="$slots.prefix">
+            <slot name="prefix"></slot>
+        </span>
+
+        <span class="form-input-suffix" v-if="$slots.suffix">
+            <slot name="suffix"></slot>
+        </span>
+
+        <input
+            v-bind="$attrs"
+            v-model="model"
+            ref="input"
+            :disabled="isDisabled"
+            :aria-disabled="isDisabled"
+            :readonly="!filtered"
+            @focus="onFocus"
+            @blur="onBlur"
+            @change="onChange">
+    </div>
+
+    <div class="form-input-append" v-if="$slots.append">
+        <slot name="append"></slot>
+    </div>
+
+    <transition name="zoom-in-top-transition" @after-leave="doDestroy">
+        <div class="select" ref="popup" :class="classes['child']" v-show="visible">
+            <span class="arrow" v-if="arrow"></span>
+            <slot></slot>
+        </div>
+    </transition>
+</i-input-group>
