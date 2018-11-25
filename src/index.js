@@ -26,6 +26,8 @@ import INavbarBrand from 'inkline/components/NavbarBrand';
 import INavbarItems from 'inkline/components/NavbarItems';
 import IRow from 'inkline/components/Row';
 import IPopover from 'inkline/components/Popover';
+import IProgress from 'inkline/components/Progress';
+import IProgressBar from 'inkline/components/ProgressBar';
 import ITooltip from 'inkline/components/Tooltip';
 
 import ICheckbox from 'inkline/components/Checkbox';
@@ -71,6 +73,8 @@ class Inkline {
         INavbarItems,
         IRow,
         IPopover,
+        IProgress,
+        IProgressBar,
         ITooltip,
 
         ICheckbox,
@@ -129,6 +133,8 @@ export {
     INavbarItems,
     IRow,
     IPopover,
+    IProgress,
+    IProgressBar,
     ITooltip,
 
     ICheckbox,

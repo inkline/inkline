@@ -1,15 +1,21 @@
 //
-// Nav Variables
+// Progress Variables
 //
---nav-font-size := --font-size
+--progress-background := --colors['gray-30']
+--progress-border-radius := --border-radius
 
---nav-item-disabled-color := --text-muted
-
---nav-item-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
---nav-item-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
---nav-item-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
---nav-item-padding := {
-    'sm': --nav-item-padding-sm
-    'md': --nav-item-padding-md
-    'lg': --nav-item-padding-lg
+--progress-height-sm := --spacers['1/2'] * --size-percentages['sm']
+--progress-height-md := --spacers['1/2'] * --size-percentages['md']
+--progress-height-lg := --spacers['1/2'] * --size-percentages['lg']
+--progress-height := {
+    'sm': --progress-height-sm
+    'md': --progress-height-md
+    'lg': --progress-height-lg
 }
+
+//
+// Variants
+//
+--progress-variants := (monochrome)
+
+--variants['progress'] = -add-variant(--progress-variants, { color: --color-groups })

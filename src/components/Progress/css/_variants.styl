@@ -1,9 +1,7 @@
 //
-// Navbar themes
-// Add the required color variants to all navbar variations
+// Progress variants
 //
-for --variant-name, --variant in --variants['navbar']
-    .navbar.-{--variant-name}
-        color: -variant-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+for --variant-name, --variant in --variants['progress']
+    .progress.-{--variant-name}
         background-color: --variant['color']
 

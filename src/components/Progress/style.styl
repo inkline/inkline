@@ -6,17 +6,14 @@
 @import '../../css/mixins'
 @import 'css/_variables'
 @import 'css/_sizes'
+@import 'css/_variants'
 
-.nav
+.progress
+    width: 100%
     display: flex
-    flex-wrap: wrap
-    align-items: center
-    padding-left: 0
-    margin-bottom: 0
-    list-style: none
+    position: relative
+    overflow: hidden
 
-    &.-vertical
-        flex-direction: column
-
-    @extend .nav.-md
+    @extend .progress.-md
+    @extend .progress.-light
 

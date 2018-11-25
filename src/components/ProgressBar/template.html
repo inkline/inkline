@@ -1,6 +1,9 @@
-<div class="progress"
-     :class="classes['*']">
-    <span class="background"></span>
-    <span class="bar"></span>
+<div class="bar"
+     :class="classes['*']"
+     :style="style"
+     role="progressbar"
+     :aria-valuemin="min"
+     :aria-valuemax="max"
+     :aria-valuenow="progress">
     <slot></slot>
 </div>

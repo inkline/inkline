@@ -4,17 +4,17 @@
 
 @import '../../css/config'
 @import '../../css/mixins'
+@import '../Progress/css/_variables'
 @import 'css/_variables'
-@import 'css/_sizes'
 @import 'css/_variants'
 
-.progress
-    width: 100%
+.progress > .bar
     display: flex
-    position: relative
-    background: --progress-background
+    flex-direction: column
+    justify-content: center
+    text-align: center
+    white-space: nowrap
+    height: 100%
 
-
-    @extend .progress.-md
-    @extend .progress.-primary
+    @extend .progress > .bar.-primary
 
