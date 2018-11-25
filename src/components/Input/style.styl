@@ -61,7 +61,6 @@
             background-color: --input-background-disabled
             opacity: 1  // iOS fix for unreadable disabled content
 
-
     .form-input-prefix
     .form-input-suffix
         z-index: 1
@@ -105,6 +104,16 @@
                 background-color: --input-icon-circle-background-hover
 
     @extend .form-input.-md
+
+/**
+ * Select Input
+ * Special case where the input is readonly
+ */
+.select
+    > .form-input-group > .form-input
+        +-form-input-selector()
+            &[readonly]
+                background: --input-background
 
 /**
  * Input Append and Prepend

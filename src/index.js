@@ -45,6 +45,8 @@ import ISelect from 'inkline/components/Select';
 import ISelectOption from 'inkline/components/SelectOption';
 import ITextarea from 'inkline/components/Textarea';
 
+import { isMobile } from 'inkline/helpers/is-mobile';
+
 class Inkline {
     static components = [
         IAlert,
@@ -105,6 +107,8 @@ class Inkline {
         this.components.map(component => {
             Vue.component(component.name, component);
         });
+
+        Vue.prototype.$isMobile = isMobile;
     }
 }
 

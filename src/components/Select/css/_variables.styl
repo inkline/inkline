@@ -1,46 +1,18 @@
 //
-// Popover Variables
+// Select variables
 //
-
---select-font-size := --font-size
---select-font-weight := --font-weight['normal']
---select-line-height := --line-height
-
---select-margin := --spacers['1/2']
---select-width := 100%
-
---select-border-width := --border-width
---select-border-radius := --border-radius
-
---select-padding-sm := --spacers['1/2'] * --size-percentages['sm'] 0
---select-padding-md := --spacers['1/2'] * --size-percentages['md'] 0
---select-padding-lg := --spacers['1/2'] * --size-percentages['lg'] 0
---select-padding := {
-    'sm': --select-padding-sm
-    'md': --select-padding-md
-    'lg': --select-padding-lg
-}
-
---select-option-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
---select-option-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
---select-option-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
---select-option-padding := {
-    'sm': --select-option-padding-sm
-    'md': --select-option-padding-md
-    'lg': --select-option-padding-lg
-}
-
 
 //
 // Variants
 //
---select-variants := (monochrome)
---select-variant-color-light := --variant-color-light
---select-variant-color-dark := --variant-color-dark
---select-color-groups := {
+--select-dropdown-variants := (monochrome)
+--select-dropdown-variant-color-light := --variant-color-light
+--select-dropdown-variant-color-dark := --variant-color-dark
+--select-dropdown-color-groups := {
     monochrome: {
         light: --color-white,
         dark: --color-gray-80
     }
 }
---variants['select'] = -add-variant(--select-variants, { color: --select-color-groups })
+--variants['select-dropdown'] = -add-variant(--select-dropdown-variants, { color: --select-dropdown-color-groups })
+

@@ -1,6 +1,6 @@
-<div class="option"
+<div class="item option"
     :class="classes['*']"
     v-bind="attributes"
     @click="onClick">
-    <slot></slot>
+    <slot>{{ label }}</slot>
 </div>

@@ -1,6 +1,9 @@
 //
-// Select sizes
+// Sizes
 //
 for size in (sm md lg)
-    .select.-{size}
-        padding: --select-padding[size]
+    .form-input-label.-{size}
+        -form-input-label-size(size)
+
+    .form-input.-{size}
+        -form-input-size(size)
