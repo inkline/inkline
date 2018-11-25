@@ -3,7 +3,7 @@ import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesPro
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 
 export default {
-    name: 'INav',
+    name: 'INavbarBrand',
     mixins: [
         ClassesProviderMixin,
 

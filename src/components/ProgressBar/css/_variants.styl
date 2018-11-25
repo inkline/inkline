@@ -1,0 +1,9 @@
+//
+// Progress variants
+// Add the required color variants to all navbar variations
+//
+for --variant-name, --variant in --variants['navbar']
+    .progress.-{--variant-name}
+        > .bar
+            background-color: --variant['color']
+
