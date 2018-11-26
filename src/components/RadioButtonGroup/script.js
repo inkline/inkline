@@ -1,9 +1,9 @@
-import IInputGroup from 'inkline/components/InputGroup';
+import IFormGroup from 'inkline/components/FormGroup';
 import IButtonGroup from 'inkline/components/ButtonGroup';
 
 export default {
     name: 'IRadioButtonGroup',
-    extends: IInputGroup,
+    extends: IFormGroup,
     components: {
         IButtonGroup
     },

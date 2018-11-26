@@ -1,14 +1,10 @@
-<i-input-group :class="classes['root']" :size="size">
-    <label class="form-input-label" @click="focus" :class="classes['label']" v-if="$slots.label">
-        <slot name="label"></slot>
-    </label>
-
+<div class="form-input-group" :class="classes['root']">
     <div class="form-input-prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
     </div>
 
     <div class="form-input"
-         :class="classes['child']"
+         :class="classes['*']"
          @mouseenter="onMouseEnter"
          @mouseleave="onMouseLeave">
 
@@ -27,6 +23,9 @@
             ref="input"
             :disabled="isDisabled"
             :aria-disabled="isDisabled"
+            :readonly="isReadonly"
+            :aria-readonly="isReadonly"
+            @click="onClick"
             @focus="onFocus"
             @blur="onBlur"
             @change="onChange">
@@ -35,4 +34,4 @@
     <div class="form-input-append" v-if="$slots.append">
         <slot name="append"></slot>
     </div>
-</i-input-group>
+</div>

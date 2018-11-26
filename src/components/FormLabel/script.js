@@ -1,21 +1,17 @@
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
+import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 
-import OnInputMethodMixin from 'inkline/mixins/components/methods/OnInputMethodMixin';
-
-import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 
 export default {
-    name: 'IInputGroup',
+    name: 'IFormLabel',
     props: {
         value: {}
     },
     mixins: [
         ClassesProviderMixin,
+        InjectParentFormProviderMixin,
 
-        OnInputMethodMixin,
-
-        DisabledPropertyMixin,
-        SizePropertyMixin
+        SizePropertyMixin,
     ]
 };

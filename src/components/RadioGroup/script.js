@@ -1,4 +1,4 @@
-import IInputGroup from 'inkline/components/InputGroup';
+import IFormGroup from 'inkline/components/FormGroup';
 
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
@@ -11,7 +11,7 @@ import SizePropertyMixin from 'inkline/mixins/components/properties/SizeProperty
 
 export default {
     name: 'IRadioGroup',
-    extends: IInputGroup,
+    extends: IFormGroup,
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,

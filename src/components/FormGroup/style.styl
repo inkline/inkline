@@ -1,0 +1,23 @@
+@import '../../css/config'
+@import '../../css/mixins'
+@import '../Input/css/_variables'
+@import '../Input/css/_mixins'
+@import 'css/_variables'
+@import 'css/_sizes'
+
+/**
+ * Input Group
+ */
+.form-group
+    display: block
+    vertical-align: middle
+    position: relative
+
+    &.-checkbox
+    &.-radio
+        font-size: 0
+
+    + .form-group
+        margin-top: --form-group-margin
+
+    @extend .form-group.-md

@@ -34,6 +34,9 @@
             background-color: transparent
             border: 0
 
+        &:hover
+            border-color: --input-border-color-hover
+
         // Customize the `:focus` state to imitate native WebKit styles.
         &:focus
             color: --input-color-focus
@@ -60,6 +63,7 @@
         &[readonly]
             background-color: --input-background-disabled
             opacity: 1  // iOS fix for unreadable disabled content
+            cursor: default
 
     .form-input-prefix
     .form-input-suffix
@@ -106,41 +110,65 @@
     @extend .form-input.-md
 
 /**
- * Select Input
- * Special case where the input is readonly
+ * Form Input Group
+ */
+.form-input-group
+    display: block
+    vertical-align: middle
+    position: relative
+
+    &.-labelled.-side-labelled
+    &.-prepended
+    &.-appended
+        display: flex
+        flex-wrap: wrap
+
+    &.-prepended .form-input
+        +-form-input-selector()
+            display: block
+            border-top-left-radius: 0
+            border-bottom-left-radius: 0
+
+    &.-appended .form-input
+        +-form-input-selector()
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0
+
+    > .form-input-prepend
+    > .form-input-append
+        overflow: hidden
+
+    > .form-input-prepend
+    > .form-input-prepend > *
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+
+    > .form-input-append
+    > .form-input-append > *
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+    @extend .form-input-group.-md
+
+/**
+ * Select input
+ * Special case for readonly property
  */
 .select
-    > .form-input-group > .form-input
-        +-form-input-selector()
-            &[readonly]
-                background: --input-background
+    &:not([readonly]) > .form-input-group > .form-input > input[readonly]:not([disabled])
+        background-color: --input-background
 
 /**
  * Input Append and Prepend
  */
 .form-input-prepend
 .form-input-append
+    align-items: center
     display: flex
     padding: 0
     line-height: --input-line-height
     background-color: --input-append-prepend-background-color
     background-image: -linear-gradient(--input-append-prepend-background-gradient)
 
-/**
- * Input Label
- */
-.form-input-label
-    flex-basis: 100%
 
-    &.-left
-    &.-right
-        display: flex
-        flex: 0 0 auto
-        align-self: center
-        margin-bottom: 0
-
-    &.-right
-        order: 1
-
-    @extend .form-input-label.-md
 

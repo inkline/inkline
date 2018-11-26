@@ -4,6 +4,7 @@
         ref="input"
         type="radio"
         :value="currentValue"
+        :readonly="isReadonly"
         :disabled="isDisabled">
 
     <label
@@ -11,6 +12,7 @@
        :class="classes['label']"
        :aria-checked="checked"
        :aria-disabled="isDisabled"
+       :aria-readonly="isReadonly"
        :tabindex="tabIndex"
        @click="click"
        @keydown.space.stop.prevent="click">

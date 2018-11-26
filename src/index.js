@@ -35,7 +35,7 @@ import ICheckboxButton from 'inkline/components/CheckboxButton';
 import ICheckboxGroup from 'inkline/components/CheckboxGroup';
 import ICheckboxButtonGroup from 'inkline/components/CheckboxButtonGroup';
 import IInput from 'inkline/components/Input';
-import IInputGroup from 'inkline/components/InputGroup';
+import IFormGroup from 'inkline/components/FormGroup';
 import IInputNumber from 'inkline/components/InputNumber';
 import IRadio from 'inkline/components/Radio';
 import IRadioButton from 'inkline/components/RadioButton';
@@ -86,7 +86,7 @@ class Inkline {
         ICheckboxGroup,
         ICheckboxButtonGroup,
         IInput,
-        IInputGroup,
+        IFormGroup,
         IInputNumber,
         IRadio,
         IRadioButton,
@@ -108,7 +108,7 @@ class Inkline {
             Vue.component(component.name, component);
         });
 
-        Vue.prototype.$isMobile = isMobile;
+        Vue.prototype.$isMobile = isMobile();
     }
 }
 
@@ -150,7 +150,7 @@ export {
     ICheckboxGroup,
     ICheckboxButtonGroup,
     IInput,
-    IInputGroup,
+    IFormGroup,
     IInputNumber,
     IRadio,
     IRadioButton,

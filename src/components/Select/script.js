@@ -2,16 +2,15 @@ import IInput from 'inkline/components/Input';
 import IDropdown from 'inkline/components/Dropdown';
 import IDropdownMenu from 'inkline/components/DropdownMenu';
 
+import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 import ModelProviderMixin from 'inkline/mixins/forms/providers/ModelProviderMixin';
 
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
 import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
-// import IsGroupedPropertyMixin from 'inkline/mixins/forms/properties/IsGroupedPropertyMixin';
-// import LabelPositionPropertyMixin from 'inkline/mixins/forms/properties/LabelPositionPropertyMixin';
+import ParentFormGroupPropertyMixin from 'inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
-// import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndexPropertyMixin';
 
 export default {
     name: 'ISelect',
@@ -28,10 +27,12 @@ export default {
     },
     data() {
         return {
-            labelModel: ''
+            labelModel: '',
+            options: []
         }
     },
     mixins: [
+        AttributesProviderMixin,
         ClassesProviderMixin,
         InjectParentFormProviderMixin,
         ModelProviderMixin,
@@ -44,18 +45,29 @@ export default {
         // OnHoverMethodMixin,
         // OnInputMethodMixin,
 
-        // ClearablePropertyMixin,
         DisabledPropertyMixin,
-        // IsGroupedPropertyMixin,
-        // LabelPositionPropertyMixin,
+        ParentFormGroupPropertyMixin,
         ReadonlyPropertyMixin,
         SizePropertyMixin,
-        // TabIndexPropertyMixin
     ],
     created() {
         this.$on('option-click', (data) => {
             this.model = data.value;
-            this.labelModel = data.label;
         });
+
+        this.$on('option-mounted', (data) => {
+            this.options.push(data);
+        });
+
+        this.$on('option-destroyed', (data) => {
+            this.options = this.options.filter((o) => o.value !== data.value);
+        });
+    },
+    watch: {
+        model(value) {
+            const option = this.options.find((o) => o.value === value);
+
+            this.labelModel = option.label || option.value;
+        }
     }
 };

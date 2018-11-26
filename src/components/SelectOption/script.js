@@ -2,9 +2,6 @@ import AttributesProviderMixin from 'inkline/mixins/components/providers/Attribu
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
 
-
-import ModelGroupProviderMixin from 'inkline/mixins/forms/providers/ModelGroupProviderMixin';
-import IsGroupedPropertyMixin from 'inkline/mixins/forms/properties/IsGroupedPropertyMixin';
 import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
 
 export default {
@@ -28,9 +25,9 @@ export default {
     },
     computed: {
         selected () {
-            return this.parentGroup.value === this.value;
+            return this.parentFormGroup.value === this.value;
         },
-        parentGroup() {
+        parentFormGroup() {
             let parent = this.$parent;
 
             while (parent) {
@@ -45,13 +42,20 @@ export default {
         }
     },
     methods: {
+        getDispatchProps() {
+            return {
+                value: this.value,
+                label: this.label,
+                disabled: this.disabled
+            };
+        },
         onClick() {
             if (this.isDisabled) {
                 return;
             }
 
             this.dispatch('IDropdown', 'menu-item-click', this);
-            this.dispatch('ISelect', 'option-click', { value: this.value, label: this.label });
+            this.dispatch('ISelect', 'option-click', this.getDispatchProps());
         }
     },
     created() {
@@ -60,5 +64,11 @@ export default {
                 '-active': this.selected,
             }));
         }
+    },
+    mounted() {
+        this.dispatch('ISelect', 'option-mounted', this.getDispatchProps());
+    },
+    destroyed() {
+        this.dispatch('ISelect', 'option-destroyed', this.getDispatchProps());
     }
 };

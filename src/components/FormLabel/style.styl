@@ -1,0 +1,25 @@
+@import '../../css/config'
+@import '../../css/mixins'
+@import '../Input/css/_variables'
+@import '../Input/css/_mixins'
+@import 'css/_sizes'
+
+/**
+ * Form Label
+ */
+.form-label
+    position: relative
+    flex-basis: 100%
+
+    &.-left
+    &.-right
+        display: flex
+        flex: 0 0 auto
+        align-self: center
+        margin-bottom: 0
+
+    &.-right
+        order: 1
+
+
+    @extend .form-label.-md

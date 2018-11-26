@@ -1,4 +1,4 @@
-import IInputGroup from 'inkline/components/InputGroup';
+import IFormGroup from 'inkline/components/FormGroup';
 
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
@@ -14,8 +14,8 @@ import OnInputMethodMixin from 'inkline/mixins/components/methods/OnInputMethodM
 
 import ClearablePropertyMixin from 'inkline/mixins/forms/properties/ClearablePropertyMixin';
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
-import IsGroupedPropertyMixin from 'inkline/mixins/forms/properties/IsGroupedPropertyMixin';
-import LabelPositionPropertyMixin from 'inkline/mixins/forms/properties/LabelPositionPropertyMixin';
+import ParentFormGroupPropertyMixin from 'inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
+import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndexPropertyMixin';
 
@@ -23,7 +23,7 @@ export default {
     name: 'IInput',
     inheritAttrs: false,
     components: {
-        IInputGroup
+        IFormGroup
     },
     mixins: [
         ClassesProviderMixin,
@@ -40,8 +40,8 @@ export default {
 
         ClearablePropertyMixin,
         DisabledPropertyMixin,
-        IsGroupedPropertyMixin,
-        LabelPositionPropertyMixin,
+        ParentFormGroupPropertyMixin,
+        ReadonlyPropertyMixin,
         SizePropertyMixin,
         TabIndexPropertyMixin
     ],

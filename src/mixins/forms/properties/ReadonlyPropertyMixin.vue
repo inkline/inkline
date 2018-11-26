@@ -11,12 +11,12 @@ export default {
          * Check whether the form item or one of its form parents is readonly
          */
         isReadonly () {
-            return (this.parentForm || {}).readonly || (this.parentGroup || {}).readonly || this.readonly;
+            return (this.parentForm || {}).isReadonly || (this.parentFormGroup || {}).isReadonly || this.readonly;
         }
     },
     created () {
         if (this.attributesProvider) {
-            this.attributesProvider.push(() => ({ 'readonly': this.readonly }));
+            this.attributesProvider.push(() => ({ 'readonly': this.isReadonly }));
         }
     }
 };

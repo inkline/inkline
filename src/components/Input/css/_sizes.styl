@@ -2,8 +2,33 @@
 // Sizes
 //
 for size in (sm md lg)
-    .form-input-label.-{size}
-        -form-input-label-size(size)
-
+    .form.-{size} .form-input-group > .form-input
+    .form-group.-{size} .form-input-group > .form-input
+    .form.-{size} .select > .form-input-group > .form-input
+    .form-group.-{size} .select > .form-input-group > .form-input
+    .select.-{size} > .form-input-group > .form-input
     .form-input.-{size}
         -form-input-size(size)
+
+    .form-input-group.-{size}
+        > .form-input-prepend
+        > .form-input-append
+            font-size: --input-font-size[size]
+
+            if --border-radius-enabled
+                border-radius: --input-border-radius[size]
+
+            > *
+                padding: --input-padding[size]
+
+        > .form-input-prepend
+        > .form-input-prepend > *
+        > .form-input-append > * + *
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0
+
+        > .form-input-append
+        > .form-input-append > *
+        > .form-input-prepend > * + *
+            border-top-left-radius: 0
+            border-bottom-left-radius: 0

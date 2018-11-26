@@ -4,11 +4,11 @@ export default {
         /**
          * Find and return the element's parent group
          */
-        parentGroup() {
+        parentFormGroup() {
             let parent = this.$parent;
 
             while (parent) {
-                if (parent.$options.name === 'IInputGroup' || (parent.$options.extends || {}).name === 'IInputGroup') {
+                if (parent.$options.name === 'IFormGroup' || (parent.$options.extends || {}).name === 'IFormGroup') {
                     return parent;
                 }
 
@@ -22,7 +22,7 @@ export default {
          * Find a form group parent for the given form item
          */
         isGrouped () {
-            let parent = this.parentGroup;
+            let parent = this.parentFormGroup;
 
             return Boolean(parent);
         }

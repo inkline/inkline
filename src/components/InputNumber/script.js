@@ -1,13 +1,13 @@
 import IButton from 'inkline/components/Button';
 import IInput from 'inkline/components/Input';
-import IInputGroup from 'inkline/components/InputGroup';
+import IFormGroup from 'inkline/components/FormGroup';
 
 export default {
     name: 'IInputNumber',
     extends: IInput,
     components: {
         IButton,
-        IInputGroup
+        IFormGroup
     },
     data () {
         return {

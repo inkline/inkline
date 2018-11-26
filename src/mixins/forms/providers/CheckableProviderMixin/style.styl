@@ -42,6 +42,7 @@
                 box-shadow: --form-check-indicator-active-box-shadow
 
             &:disabled ~ .form-input-label
+            &[readonly] ~ .form-input-label
                 color: --form-check-disabled-color
 
             &::before
@@ -49,6 +50,7 @@
                 background-color: --form-check-indicator-disabled-background-color
 
             &:disabled:checked ~ .form-input-label::before
+            &[readonly]:checked ~ .form-input-label::before
                 background-color: --form-check-indicator-disabled-checked-background-color
 
     .form-input-label

@@ -8,7 +8,7 @@ export default {
          * Check whether the form item or one of its form parents is disabled
          */
         isDisabled () {
-            return (this.parentForm || {}).disabled || (this.parentGroup || {}).disabled || this.disabled;
+            return (this.parentForm || {}).isDisabled || (this.parentFormGroup || {}).isDisabled || this.disabled;
         }
     },
 };

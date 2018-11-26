@@ -1,15 +1,11 @@
-<i-input-group :class="classes['root']">
-    <label class="form-input-label" @click="focus" :class="classes['label']" v-if="$slots.label">
-        <slot name="label"></slot>
-    </label>
-
-    <div class="form-input-prepend">
+<div class="form-input-group" :class="classes['root']">
+    <div class="form-input-prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
         <i-button :disabled="disabled" class="form-input-button-decrease" @click="decrease">-</i-button>
     </div>
 
     <div class="form-input"
-         :class="classes['child']"
+         :class="classes['*']"
          @mouseenter="onMouseEnter"
          @mouseleave="onMouseLeave">
 
@@ -17,23 +13,28 @@
             <slot name="prefix"></slot>
         </span>
 
-        <span class="form-input-suffix" v-if="$slots.suffix">
+        <span class="form-input-suffix" v-if="$slots.suffix || clearable">
+            <i class="form-input-icon -circle" aria-label="Clear" v-show="isClearable" @click="clear">&times;</i>
             <slot name="suffix"></slot>
         </span>
 
         <input
-            v-bind="$attrs"
-            v-model="model"
-            ref="input"
-            :disabled="isDisabled"
-            :aria-disabled="isDisabled"
-            @focus="onFocus"
-            @blur="onBlurFormatPrecision"
-            @change="onChange">
+                v-bind="$attrs"
+                v-model="model"
+                ref="input"
+                :disabled="isDisabled"
+                :aria-disabled="isDisabled"
+                :readonly="isReadonly"
+                :aria-readonly="isReadonly"
+                @click="onClick"
+                @focus="onFocus"
+                @blur="onBlurFormatPrecision"
+                @change="onChange">
     </div>
 
-    <div class="form-input-append">
+    <div class="form-input-append" v-if="$slots.append">
         <i-button :disabled="disabled" class="form-input-button-increase" @click="increase">+</i-button>
         <slot name="append"></slot>
     </div>
-</i-input-group>
+</div>
+

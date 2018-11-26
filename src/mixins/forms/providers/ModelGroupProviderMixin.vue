@@ -19,11 +19,11 @@ export default {
          */
         model: {
             get () {
-                return this.isGrouped ? this.parentGroup.value : this.value;
+                return this.isGrouped ? this.parentFormGroup.value : this.value;
             },
             set (value) {
                 if (this.isGrouped) {
-                    return this.parentGroup.onInput(value);
+                    return this.parentFormGroup.onInput(value);
                 }
 
                 return this.onInput(value);
