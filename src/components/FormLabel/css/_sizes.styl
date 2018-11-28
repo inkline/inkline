@@ -4,4 +4,11 @@
 for size in (sm md lg)
     .form-group.-{size} > .form-label
     .form-label.-{size}
-        -form-input-label-size(size)
+        font-size: --label-font-size[size]
+        margin-bottom: --label-margin[size][0]
+
+    .form-group.-inline.-{size} > .form-label
+        margin-right: --label-margin[size][1]
+
+        &.-right
+            margin-left: --label-margin[size][1]

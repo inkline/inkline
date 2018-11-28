@@ -1,7 +1,6 @@
 @import '../../css/config'
 @import '../../css/mixins'
-@import '../Input/css/_variables'
-@import '../Input/css/_mixins'
+@import 'css/_variables'
 @import 'css/_sizes'
 
 /**
@@ -11,15 +10,11 @@
     position: relative
     flex-basis: 100%
 
-    &.-left
     &.-right
-        display: flex
-        flex: 0 0 auto
-        align-self: center
-        margin-bottom: 0
-
-    &.-right
+        margin-right: 0
         order: 1
 
-
     @extend .form-label.-md
+
+.form-group.-inline > .form-label
+    @extend .form-group.-inline.-md > .form-label

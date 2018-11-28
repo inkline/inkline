@@ -36,6 +36,7 @@ import ICheckboxGroup from 'inkline/components/CheckboxGroup';
 import ICheckboxButtonGroup from 'inkline/components/CheckboxButtonGroup';
 import IInput from 'inkline/components/Input';
 import IFormGroup from 'inkline/components/FormGroup';
+import IFormLabel from 'inkline/components/FormLabel';
 import IInputNumber from 'inkline/components/InputNumber';
 import IRadio from 'inkline/components/Radio';
 import IRadioButton from 'inkline/components/RadioButton';
@@ -87,6 +88,7 @@ class Inkline {
         ICheckboxButtonGroup,
         IInput,
         IFormGroup,
+        IFormLabel,
         IInputNumber,
         IRadio,
         IRadioButton,
@@ -151,6 +153,7 @@ export {
     ICheckboxButtonGroup,
     IInput,
     IFormGroup,
+    IFormLabel,
     IInputNumber,
     IRadio,
     IRadioButton,

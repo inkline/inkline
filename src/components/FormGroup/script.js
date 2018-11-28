@@ -5,7 +5,6 @@ import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/Inject
 import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMethodMixin';
 
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
-import LabelPositionPropertyMixin from 'inkline/mixins/forms/properties/LabelPositionPropertyMixin';
 import LoadingPropertyMixin from 'inkline/mixins/components/properties/LoadingPropertyMixin';
 import ParentFormGroupPropertyMixin from 'inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
@@ -15,7 +14,11 @@ import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndex
 export default {
     name: 'IFormGroup',
     props: {
-        value: {}
+        value: {},
+        inline: {
+            type: Boolean,
+            default: false
+        }
     },
     mixins: [
         AttributesProviderMixin,
@@ -25,11 +28,13 @@ export default {
         EmitInputMethodMixin,
 
         DisabledPropertyMixin,
-        LabelPositionPropertyMixin,
         LoadingPropertyMixin,
         ParentFormGroupPropertyMixin,
         ReadonlyPropertyMixin,
         SizePropertyMixin,
         TabIndexPropertyMixin
-    ]
+    ],
+    created() {
+        this.classesProvider.add(() => ({ '-inline': this.inline }));
+    }
 };
