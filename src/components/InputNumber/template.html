@@ -1,5 +1,5 @@
 <div class="form-input-group" :class="classes['root']">
-    <div class="form-input-prepend" v-if="$slots.prepend">
+    <div class="form-input-prepend">
         <slot name="prepend"></slot>
         <i-button :disabled="disabled" class="form-input-button-decrease" @click="decrease">-</i-button>
     </div>
@@ -32,7 +32,7 @@
                 @change="emitChange">
     </div>
 
-    <div class="form-input-append" v-if="$slots.append">
+    <div class="form-input-append">
         <i-button :disabled="disabled" class="form-input-button-increase" @click="increase">+</i-button>
         <slot name="append"></slot>
     </div>
