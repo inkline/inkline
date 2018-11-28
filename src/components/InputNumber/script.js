@@ -56,7 +56,7 @@ export default {
         },
         onBlurFormatPrecision (event) {
             this.$emit('input', this.formatPrecision(this.value));
-            this.onBlur(event);
+            this.emitBlur(event);
         },
     },
     watch: {

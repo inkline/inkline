@@ -7,11 +7,9 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                [this.activeClass]: this.active
-            }));
-        }
+        this.classesProvider.add(() => ({
+            [this.activeClass]: this.active
+        }));
     }
 };
 </script>

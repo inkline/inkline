@@ -2,7 +2,7 @@
     <slot />
 
     <transition name="zoom-in-top-transition" @after-leave="doDestroy">
-        <div class="tooltip" ref="popup" :class="classes['*']" v-show="visible">
+        <div class="tooltip" ref="popup" :class="classes" v-show="visible">
             <span class="arrow" v-if="arrow"></span>
             <slot name="body"></slot>
         </div>

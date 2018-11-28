@@ -1,10 +1,11 @@
+import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 import ModelGroupProviderMixin from 'inkline/mixins/forms/providers/ModelGroupProviderMixin';
 
-import ClickMethodMixin from 'inkline/mixins/forms/methods/ClickMethodMixin';
-import OnClickMethodMixin from 'inkline/mixins/components/methods/OnClickMethodMixin';
-import OnInputMethodMixin from 'inkline/mixins/components/methods/OnInputMethodMixin';
+import ClickMethodMixin from 'inkline/mixins/forms/methods/ClickInputRefMethodMixin';
+import EmitClickMethodMixin from 'inkline/mixins/components/methods/EmitClickMethodMixin';
+import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMethodMixin';
 
 import CustomPropertyMixin from 'inkline/mixins/components/properties/CustomPropertyMixin';
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
@@ -16,13 +17,14 @@ import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndex
 
 export default {
     mixins: [
+        AttributesProviderMixin,
         ClassesProviderMixin,
         InjectParentFormProviderMixin,
         ModelGroupProviderMixin,
 
         ClickMethodMixin,
-        OnClickMethodMixin,
-        OnInputMethodMixin,
+        EmitClickMethodMixin,
+        EmitInputMethodMixin,
 
         CustomPropertyMixin,
         DisabledPropertyMixin,

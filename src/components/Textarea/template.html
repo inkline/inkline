@@ -4,9 +4,9 @@
     </div>
 
     <div class="form-input"
-         :class="classes['*']"
-         @mouseenter="onMouseEnter"
-         @mouseleave="onMouseLeave">
+         :class="classes['child']"
+         @mouseenter="emitMouseEnter"
+         @mouseleave="emitMouseLeave">
 
         <span class="form-input-prefix" v-if="$slots.prefix">
             <slot name="prefix"></slot>
@@ -25,10 +25,10 @@
                 :aria-disabled="isDisabled"
                 :readonly="isReadonly"
                 :aria-readonly="isReadonly"
-                @click="onClick"
-                @focus="onFocus"
-                @blur="onBlur"
-                @change="onChange">
+                @click="emitClick"
+                @focus="emitFocus"
+                @blur="emitBlur"
+                @change="emitChange">
             <slot></slot>
         </textarea>
     </div>

@@ -23,10 +23,10 @@ export default {
             },
             set (value) {
                 if (this.isGrouped) {
-                    return this.parentFormGroup.onInput(value);
+                    return this.parentFormGroup.emitInput(value);
                 }
 
-                return this.onInput(value);
+                return this.emitInput(value);
             }
         }
     }

@@ -23,10 +23,5 @@ export default {
             type: Boolean,
             default: false
         }
-    },
-    created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({}));
-        }
     }
 };

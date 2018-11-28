@@ -7,11 +7,9 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                '-loading': this.loading
-            }));
-        }
+        this.classesProvider.add(() => ({
+            '-loading': this.loading
+        }));
     }
 };
 </script>

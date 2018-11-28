@@ -4,7 +4,7 @@ export default {
         /**
          * Handler for change event
          */
-        onInput (value) {
+        emitInput (value) {
             return this.$emit('input', value);
         }
     }

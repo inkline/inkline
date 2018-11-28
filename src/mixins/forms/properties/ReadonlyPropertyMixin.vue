@@ -15,9 +15,7 @@ export default {
         }
     },
     created () {
-        if (this.attributesProvider) {
-            this.attributesProvider.push(() => ({ 'readonly': this.isReadonly }));
-        }
+        this.attributesProvider.add(() => ({ 'readonly': this.isReadonly }));
     }
 };
 </script>

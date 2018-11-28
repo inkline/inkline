@@ -60,12 +60,10 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                '-dismissible': this.dismissible,
-                '-faded': this.faded,
-                '-with-icon': this.$slots.icon
-            }));
-        }
+        this.classesProvider.add(() => ({
+            '-dismissible': this.dismissible,
+            '-faded': this.faded,
+            '-with-icon': this.$slots.icon
+        }));
     }
 };

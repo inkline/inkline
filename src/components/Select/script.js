@@ -39,11 +39,11 @@ export default {
 
         // ClickMethodMixin,
         // FocusMethodMixin,
-        // OnChangeMethodMixin,
-        // OnClickMethodMixin,
-        // OnFocusMethodMixin,
-        // OnHoverMethodMixin,
-        // OnInputMethodMixin,
+        // EmitChangeMethodMixin,
+        // EmitClickMethodMixin,
+        // EmitFocusMethodMixin,
+        // EmitHoverMethodMixin,
+        // EmitInputMethodMixin,
 
         DisabledPropertyMixin,
         ParentFormGroupPropertyMixin,

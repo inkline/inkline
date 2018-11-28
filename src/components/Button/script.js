@@ -2,13 +2,12 @@ import AttributesProviderMixin from 'inkline/mixins/components/providers/Attribu
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 
-import ClickMethodMixin from 'inkline/mixins/forms/methods/ClickMethodMixin';
-import FocusMethodMixin from 'inkline/mixins/forms/methods/FocusMethodMixin';
-import OnClickMethodMixin from 'inkline/mixins/components/methods/OnClickMethodMixin';
-import OnFocusMethodMixin from 'inkline/mixins/components/methods/OnFocusMethodMixin';
-import OnHoverMethodMixin from 'inkline/mixins/components/methods/OnHoverMethodMixin';
+import EmitClickMethodMixin from 'inkline/mixins/components/methods/EmitClickMethodMixin';
+import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
+import EmitHoverMethodMixin from 'inkline/mixins/components/methods/EmitHoverMethodMixin';
 
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
+import ActivePropertyMixin from 'inkline/mixins/components/properties/ActivePropertyMixin';
 import LoadingPropertyMixin from 'inkline/mixins/components/properties/LoadingPropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndexPropertyMixin';
@@ -21,12 +20,11 @@ export default {
         ClassesProviderMixin,
         InjectParentFormProviderMixin,
 
-        ClickMethodMixin,
-        FocusMethodMixin,
-        OnClickMethodMixin,
-        OnFocusMethodMixin,
-        OnHoverMethodMixin,
+        EmitClickMethodMixin,
+        EmitFocusMethodMixin,
+        EmitHoverMethodMixin,
 
+        ActivePropertyMixin,
         DisabledPropertyMixin,
         LoadingPropertyMixin,
         SizePropertyMixin,
@@ -34,13 +32,6 @@ export default {
         VariantPropertyMixin
     ],
     props: {
-        /**
-         * Modifiers
-         */
-        active: {
-            type: Boolean,
-            default: false
-        },
         block: {
             type: Boolean,
             default: false
@@ -80,17 +71,14 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({'-active': this.active}));
-            this.classesProvider['root'].push(() => ({'-block': this.block}));
-            this.classesProvider['root'].push(() => ({'-circle': this.circle}));
-            this.classesProvider['root'].push(() => ({'-flat': this.flat}));
-            this.classesProvider['root'].push(() => ({'-link': this.link}));
-            this.classesProvider['root'].push(() => ({'-outline': this.outline}));
-        }
+        this.classesProvider.add(() => ({
+            '-block': this.block,
+            '-circle': this.circle,
+            '-flat': this.flat,
+            '-link': this.link,
+            '-outline': this.outline
+        }));
 
-        if (this.attributesProvider) {
-            this.attributesProvider.push(() => ({ 'aria-pressed': this.active ? 'true' : false }));
-        }
+        this.attributesProvider.add(() => ({ 'aria-pressed': this.active ? 'true' : false }));
     }
 };

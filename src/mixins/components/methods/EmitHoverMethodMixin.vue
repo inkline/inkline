@@ -9,7 +9,7 @@ export default {
         /**
          * Handler for focus event
          */
-        onMouseEnter (event) {
+        emitMouseEnter (event) {
             this.hovered = true;
             this.$emit('mouseenter', event);
         },
@@ -17,7 +17,7 @@ export default {
         /**
          * Handler for blur event
          */
-        onMouseLeave (event) {
+        emitMouseLeave (event) {
             this.hovered = false;
             this.$emit('mouseleave', event);
         }

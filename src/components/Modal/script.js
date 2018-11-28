@@ -4,7 +4,7 @@ import AttributesProviderMixin from 'inkline/mixins/components/providers/Attribu
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
 
-import OnFocusMethodMixin from 'inkline/mixins/components/methods/OnFocusMethodMixin';
+import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
 
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
@@ -19,7 +19,7 @@ export default {
         ClassesProviderMixin,
         EmitProviderMixin,
 
-        OnFocusMethodMixin,
+        EmitFocusMethodMixin,
 
         SizePropertyMixin,
         VariantPropertyMixin,
@@ -78,11 +78,9 @@ export default {
         },
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                '-fill': this.fill
-            }));
-        }
+        this.classesProvider.add('root', () => ({
+            '-fill': this.fill
+        }));
     },
     mounted() {
         this.initEvents();

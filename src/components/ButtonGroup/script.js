@@ -29,8 +29,6 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({ '-vertical': this.vertical }));
-        }
+        this.classesProvider.add(() => ({ '-vertical': this.vertical }));
     }
 };

@@ -1,4 +1,4 @@
-<i-dropdown class="select" :disabled="isDisabled || isReadonly || $isMobile" :readonly="isReadonly" :size="size" hide-on-click>
+<i-dropdown :class="classes" class="select" :disabled="isDisabled || isReadonly || $isMobile" :readonly="isReadonly" :size="size" hide-on-click>
     <i-input
             v-bind="$attrs"
             v-model="labelModel"

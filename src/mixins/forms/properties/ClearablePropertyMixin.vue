@@ -19,15 +19,13 @@ export default {
         clear () {
             this.$emit('clear');
             this.model = '';
-            this.focus();
+            this.focusInputRef();
         }
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['child'].push(() => ({
-                '-clearable': this.clearable
-            }));
-        }
+        this.classesProvider.add(() => ({
+            '-clearable': this.clearable
+        }));
     }
 };
 </script>

@@ -12,10 +12,8 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                '-fluid': this.fluid
-            }));
-        }
+        this.classesProvider.add(() => ({
+            '-fluid': this.fluid
+        }));
     }
 };

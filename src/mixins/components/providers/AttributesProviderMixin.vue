@@ -1,17 +1,30 @@
 <script>
 export default {
     data () {
+        const attributesProvider = [];
+
+        attributesProvider.add = (type, fn) => {
+            if (!fn) {
+                fn = type;
+                type = 'root';
+            }
+
+            fn.type = type;
+
+            attributesProvider.push(fn);
+        };
+
         return {
-            attributesProvider: []
+            attributesProvider
         };
     },
     computed: {
         attributes () {
-            const attrs = {};
+            const attrs = this.attributesProvider.reduce((acc, rule) => {
+                Object.assign(acc, rule());
 
-            this.attributesProvider.forEach((attributeRule) => {
-                Object.assign(attrs, attributeRule());
-            });
+                return acc;
+            }, {});
 
             return Object.assign({}, this.$attrs, attrs);
         }

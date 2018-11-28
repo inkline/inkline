@@ -7,7 +7,7 @@ import AttributesProviderMixin from 'inkline/mixins/components/providers/Attribu
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
 
-import OnFocusMethodMixin from 'inkline/mixins/components/methods/OnFocusMethodMixin';
+import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
 
 import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
 import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
@@ -19,7 +19,7 @@ export default {
         ClassesProviderMixin,
         EmitProviderMixin,
 
-        OnFocusMethodMixin,
+        EmitFocusMethodMixin,
 
         VariantPropertyMixin,
         DisabledPropertyMixin

@@ -1,4 +1,4 @@
-<div class="form-check -radio" :class="classes['*']">
+<div class="form-check -radio" :class="classes['root']">
     <input
         v-model="model"
         ref="input"
@@ -14,8 +14,8 @@
        :aria-disabled="isDisabled"
        :aria-readonly="isReadonly"
        :tabindex="tabIndex"
-       @click="click"
-       @keydown.space.stop.prevent="click">
+       @click="clickInputRef"
+       @keydown.space.stop.prevent="clickInputRef">
         <slot></slot>
     </label>
 </div>

@@ -59,11 +59,9 @@ export default {
         }
     },
     created() {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                '-active': this.selected,
-            }));
-        }
+        this.classesProvider.add('root', () => ({
+            '-active': this.selected,
+        }));
     },
     mounted() {
         this.dispatch('ISelect', 'option-mounted', this.getDispatchProps());

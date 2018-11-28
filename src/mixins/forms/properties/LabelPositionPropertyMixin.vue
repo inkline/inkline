@@ -7,15 +7,12 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                '-labelled': this.$slots.label,
-                '-side-labelled': this.labelPosition !== 'default'
-            }));
+        this.classesProvider.add('root', () => ({
+            '-labelled': Boolean(this.$slots.label),
+            '-side-labelled': this.labelPosition !== 'default'
+        }));
 
-            this.classesProvider['label'] = this.classesProvider['label'] || [];
-            this.classesProvider['label'].push(() => `-${this.labelPosition}`);
-        }
+        this.classesProvider.add('label', () => `-${this.labelPosition}`);
     }
 };
 </script>

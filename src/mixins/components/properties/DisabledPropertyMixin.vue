@@ -15,15 +15,11 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['child'].push(() => ({
-                '-disabled': this.isDisabled
-            }));
-        }
+        this.classesProvider.add('child', () => ({
+            '-disabled': this.isDisabled
+        }));
 
-        if (this.attributesProvider) {
-            this.attributesProvider.push(() => ({ 'aria-disabled': this.disabled ? 'true' : false }));
-        }
+        this.attributesProvider.add(() => ({ 'aria-disabled': this.disabled ? 'true' : false }));
     }
 };
 </script>

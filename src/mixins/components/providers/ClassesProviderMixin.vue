@@ -1,30 +1,39 @@
 <script>
 export default {
     data () {
-        return {
-            classesProvider: {
-                root: [],
-                child: []
+        const classesProvider = [];
+
+        classesProvider.add = (type, fn) => {
+            if (!fn) {
+                fn = type;
+                type = 'root';
             }
+
+            fn.type = type;
+
+            classesProvider.push(fn);
+        };
+
+        return {
+            classesProvider
         };
     },
     computed: {
         /**
          * Compute dynamically provided classes from mixins
          */
-        classes () {
-            const classRules = {
-                '*': []
-            };
+        classes() {
+            return this.classesProvider
+                .reduce((acc, fn) => {
+                    const rule = fn();
 
-            Object.keys(this.classesProvider).forEach((key) => {
-                if (!this.classesProvider.hasOwnProperty(key)) { return; }
+                    if (!acc[fn.type]) acc[fn.type] = [];
 
-                classRules[key] = this.classesProvider[key].map((classRule) => classRule());
-                classRules['*'] = classRules['*'].concat(classRules[key]);
-            });
+                    acc[fn.type].push(rule);
+                    acc.push(rule);
 
-            return classRules;
+                    return acc;
+                }, []);
         }
     }
 };

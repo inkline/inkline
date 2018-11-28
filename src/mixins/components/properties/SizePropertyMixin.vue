@@ -7,9 +7,7 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider && this.size !== '') {
-            this.classesProvider['root'].push(() => `-${this.size}`);
-        }
+        this.classesProvider.add(() => this.size ? `-${this.size}` : false);
     }
 };
 </script>

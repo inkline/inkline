@@ -4,7 +4,7 @@ export default {
         /**
          * Handler for click event
          */
-        onClick (event) {
+        emitClick (event) {
             return this.$emit('click', event);
         }
     }

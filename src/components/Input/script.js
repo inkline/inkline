@@ -1,16 +1,17 @@
 import IFormGroup from 'inkline/components/FormGroup';
 
+import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 import ModelProviderMixin from 'inkline/mixins/forms/providers/ModelProviderMixin';
 
-import ClickMethodMixin from 'inkline/mixins/forms/methods/ClickMethodMixin';
-import FocusMethodMixin from 'inkline/mixins/forms/methods/FocusMethodMixin';
-import OnChangeMethodMixin from 'inkline/mixins/components/methods/OnChangeMethodMixin';
-import OnClickMethodMixin from 'inkline/mixins/components/methods/OnClickMethodMixin';
-import OnFocusMethodMixin from 'inkline/mixins/components/methods/OnFocusMethodMixin';
-import OnHoverMethodMixin from 'inkline/mixins/components/methods/OnHoverMethodMixin';
-import OnInputMethodMixin from 'inkline/mixins/components/methods/OnInputMethodMixin';
+import ClickInputRefMethodMixin from 'inkline/mixins/forms/methods/ClickInputRefMethodMixin';
+import FocusInputRefMethodMixin from 'inkline/mixins/forms/methods/FocusInputRefMethodMixin';
+import EmitChangeMethodMixin from 'inkline/mixins/components/methods/EmitChangeMethodMixin';
+import EmitClickMethodMixin from 'inkline/mixins/components/methods/EmitClickMethodMixin';
+import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
+import EmitHoverMethodMixin from 'inkline/mixins/components/methods/EmitHoverMethodMixin';
+import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMethodMixin';
 
 import ClearablePropertyMixin from 'inkline/mixins/forms/properties/ClearablePropertyMixin';
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
@@ -26,17 +27,18 @@ export default {
         IFormGroup
     },
     mixins: [
+        AttributesProviderMixin,
         ClassesProviderMixin,
         InjectParentFormProviderMixin,
         ModelProviderMixin,
 
-        ClickMethodMixin,
-        FocusMethodMixin,
-        OnChangeMethodMixin,
-        OnClickMethodMixin,
-        OnFocusMethodMixin,
-        OnHoverMethodMixin,
-        OnInputMethodMixin,
+        ClickInputRefMethodMixin,
+        FocusInputRefMethodMixin,
+        EmitChangeMethodMixin,
+        EmitClickMethodMixin,
+        EmitFocusMethodMixin,
+        EmitHoverMethodMixin,
+        EmitInputMethodMixin,
 
         ClearablePropertyMixin,
         DisabledPropertyMixin,
@@ -46,16 +48,14 @@ export default {
         TabIndexPropertyMixin
     ],
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                '-prepended': this.$slots.prepend || this.prepended,
-                '-appended': this.$slots.append || this.appended
-            }));
+        this.classesProvider.add('root', () => ({
+            '-prepended': this.$slots.prepend || this.prepended,
+            '-appended': this.$slots.append || this.appended
+        }));
 
-            this.classesProvider['child'].push(() => ({
-                '-prefixed': this.$slots.prefix || this.prefixed,
-                '-suffixed': this.$slots.suffix || this.suffixed
-            }));
-        }
+        this.classesProvider.add('child', () => ({
+            '-prefixed': this.$slots.prefix || this.prefixed,
+            '-suffixed': this.$slots.suffix || this.suffixed
+        }));
     }
 };

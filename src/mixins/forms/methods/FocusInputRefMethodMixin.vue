@@ -4,7 +4,7 @@ export default {
         /**
          * Handler for focus event
          */
-        focus () {
+        focusInputRef () {
             this.$refs.input.focus();
         }
     }

@@ -4,7 +4,7 @@ export default {
         /**
          * Trigger for click event
          */
-        click () {
+        clickInputRef () {
             if (this.isDisabled || this.isReadonly) { return; }
 
             this.$refs.input.click();

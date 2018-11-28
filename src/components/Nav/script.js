@@ -20,11 +20,9 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider) {
-            this.classesProvider['root'].push(() => ({
-                '-tabs': this.tabs,
-                '-vertical': this.vertical
-            }));
-        }
+        this.classesProvider.add(() => ({
+            '-tabs': this.tabs,
+            '-vertical': this.vertical
+        }));
     }
 };

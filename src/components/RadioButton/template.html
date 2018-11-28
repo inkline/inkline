@@ -1,8 +1,8 @@
 <i-button class="-radio"
-          :class="classes['*']"
+          :class="classes['root']"
           :active="checked"
-          @click="click"
-          @keydown.space.stop.prevent="click">
+          @click="clickInputRef"
+          @keydown.space.stop.prevent="clickInputRef">
     <input
         type="radio"
         ref="input"

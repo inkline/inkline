@@ -9,7 +9,7 @@ export default {
     },
     created () {
         this.$on('change', value => {
-            this.onInput(value);
+            this.emitInput(value);
         });
     }
 };

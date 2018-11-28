@@ -2,7 +2,7 @@ import AttributesProviderMixin from 'inkline/mixins/components/providers/Attribu
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 
-import OnInputMethodMixin from 'inkline/mixins/components/methods/OnInputMethodMixin';
+import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMethodMixin';
 
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
 import LabelPositionPropertyMixin from 'inkline/mixins/forms/properties/LabelPositionPropertyMixin';
@@ -22,7 +22,7 @@ export default {
         ClassesProviderMixin,
         InjectParentFormProviderMixin,
 
-        OnInputMethodMixin,
+        EmitInputMethodMixin,
 
         DisabledPropertyMixin,
         LabelPositionPropertyMixin,

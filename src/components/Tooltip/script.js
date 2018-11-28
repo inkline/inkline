@@ -5,7 +5,7 @@ import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesPro
 import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
 import PopupProviderMixin from 'inkline/mixins/components/providers/PopupProviderMixin';
 
-import OnFocusMethodMixin from 'inkline/mixins/components/methods/OnFocusMethodMixin';
+import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
 
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
@@ -21,7 +21,7 @@ export default {
         EmitProviderMixin,
         PopupProviderMixin,
 
-        OnFocusMethodMixin,
+        EmitFocusMethodMixin,
 
         SizePropertyMixin,
         VariantPropertyMixin,

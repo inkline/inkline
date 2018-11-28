@@ -7,9 +7,7 @@ export default {
         }
     },
     created () {
-        if (this.classesProvider && this.variant) {
-            this.classesProvider['root'].push(() => `-${this.variant}`);
-        }
+        this.classesProvider.add(() => this.variant ? `-${this.variant}` : false);
     }
 };
 </script>

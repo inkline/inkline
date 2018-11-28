@@ -9,7 +9,7 @@ export default {
         /**
          * Handler for focus event
          */
-        onFocus (event) {
+        emitFocus (event) {
             this.focused = true;
             this.$emit('focus', event);
         },
@@ -17,7 +17,7 @@ export default {
         /**
          * Handler for blur event
          */
-        onBlur (event) {
+        emitBlur (event) {
             this.focused = false;
             this.$emit('blur', event);
         }
