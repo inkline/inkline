@@ -1,18 +1,38 @@
-<i-dropdown :class="classes" class="select" :disabled="isDisabled || isReadonly || $isMobile" :readonly="isReadonly" :size="size" hide-on-click>
+<i-dropdown
+        class="select"
+        :class="classes"
+        :disabled="isDisabled || isReadonly || $isMobile"
+        :readonly="isReadonly"
+        :size="size"
+        :tabindex="-1"
+        hide-on-click
+        ref="dropdown">
     <i-input
             v-bind="$attrs"
             v-model="labelModel"
             ref="input"
             :readonly="isReadonly || !filterable"
             :disabled="isDisabled"
-            :aria-disabled="isDisabled"></i-input>
+            :aria-disabled="isDisabled"
+            :tabindex="$isMobile ? -1 : tabIndex"
+            @click="emitClick"
+            @focus="emitFocus"
+            @blur="emitBlur"
+            @change="emitChange"
+            @keydown="emitKeydown"
+            @keyup="emitKeyup"></i-input>
 
     <select v-bind="$attrs"
             v-model="model"
             v-if="$isMobile"
             :disabled="isDisabled"
             ref="select"
-            class="form-select">
+            class="form-select"
+            @click="emitClick"
+            @focus="emitFocus"
+            @blur="emitBlur"
+            @change="emitChange"
+            @keydown.space.stop.prevent="clickInputRef">
         <option v-for="option in options"
                 :value="option.value"
                 :disabled="option.disabled">

@@ -21,6 +21,7 @@
                 v-bind="$attrs"
                 v-model="model"
                 ref="input"
+                :tabindex="tabIndex"
                 :disabled="isDisabled"
                 :aria-disabled="isDisabled"
                 :readonly="isReadonly"
@@ -28,7 +29,9 @@
                 @click="emitClick"
                 @focus="emitFocus"
                 @blur="emitBlur"
-                @change="emitChange">
+                @change="emitChange"
+                @keydown="emitKeydown"
+                @keyup="emitKeyup">
             <slot></slot>
         </textarea>
     </div>

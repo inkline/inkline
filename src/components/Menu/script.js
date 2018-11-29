@@ -1,6 +1,6 @@
 import Emitter from 'inkline/mixins/Emitter';
 
-import { addClass, hasClass, removeClass, triggerEvent, keymap } from 'inkline/helpers';
+import { addClass, hasClass, removeClass, triggerEvent, isKey } from 'inkline/helpers';
 
 class Menu {
     constructor (domNode) {
@@ -38,26 +38,27 @@ class MenuItem {
     addListeners () {
         this.domNode.addEventListener('keydown', event => {
             let prevDef = false;
-            switch (event.keyCode) {
-            case keymap.down:
+            switch (true) {
+            case isKey('down', event):
                 triggerEvent(event.currentTarget, 'mouseenter');
                 this.submenu.goToSubIndex(0);
                 prevDef = true;
                 break;
-            case keymap.up:
+            case isKey('up', event):
                 triggerEvent(event.currentTarget, 'mouseenter');
                 this.submenu.goToSubIndex(this.submenu.subMenuItems.length - 1);
                 prevDef = true;
                 break;
-            case keymap.tab:
+            case isKey('tab', event):
                 triggerEvent(event.currentTarget, 'mouseleave');
                 break;
-            case keymap.enter:
-            case keymap.space:
+            case isKey('enter', event):
+            case isKey('space', event):
                 prevDef = true;
                 event.currentTarget.click();
                 break;
             }
+
             if (prevDef) {
                 event.preventDefault();
             }
@@ -92,26 +93,25 @@ class SubMenu {
     }
 
     addListeners () {
-        const keys = keymap;
         const parentNode = this.parent.domNode;
         Array.prototype.forEach.call(this.subMenuItems, el => {
             el.addEventListener('keydown', event => {
                 let prevDef = false;
 
                 switch (event.keyCode) {
-                case keys.down:
+                case isKey('down', event):
                     this.goToSubIndex(this.subIndex + 1);
                     prevDef = true;
                     break;
-                case keys.up:
+                case isKey('up', event):
                     this.goToSubIndex(this.subIndex - 1);
                     prevDef = true;
                     break;
-                case keys.tab:
+                case isKey('tab', event):
                     triggerEvent(parentNode, 'mouseleave');
                     break;
-                case keys.enter:
-                case keys.space:
+                case isKey('enter', event):
+                case isKey('space', event):
                     prevDef = true;
                     event.currentTarget.click();
                     break;

@@ -17,11 +17,15 @@ export default {
         tag: {
             type: String,
             default: 'div'
+        },
+        action: {
+            type: String | Number | Boolean,
+            default: undefined
         }
     },
     methods: {
         onClick() {
-            this.dispatch('IDropdown', 'menu-item-click', [this.command, this]);
+            this.dispatch('IDropdown', 'menu-item-click', [this.action, this]);
         }
     },
     computed: {
@@ -31,5 +35,11 @@ export default {
         tabindex() {
             return this.disabled ? null : -1;
         }
+    },
+    mounted() {
+        this.dispatch('IDropdown', 'dropdown-item-mounted', this);
+    },
+    destroyed() {
+        this.dispatch('IDropdown', 'dropdown-item-destroyed', this);
     }
 };

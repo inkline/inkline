@@ -2,7 +2,7 @@
 export default {
     props: {
         tabindex: {
-            type: Number,
+            type: Number | String,
             default: 1
         }
     },

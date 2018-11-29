@@ -1,5 +1,4 @@
-import { keymap } from 'inkline/constants';
-import { uid } from 'inkline/helpers';
+import { uid, isKey } from 'inkline/helpers';
 
 import ClickOutside from 'inkline/directives/click-outside';
 
@@ -56,13 +55,12 @@ export default {
     },
     data() {
         return {
+            items: [],
             timeout: null,
             visible: false,
-            menuItems: null,
-            menuItemsArray: null,
             triggerElement: null,
             dropdownElement: null,
-            focusing: false,
+            focusedTrigger: false,
             id: this.$attrs.id || uid('dropdown-menu')
         };
     },
@@ -74,42 +72,44 @@ export default {
     },
     methods: {
         onTriggerKeyDown(e) {
-            const keyCode = e.key || e.keyIdentifier || e.keyCode;
+            if (isKey('up', e) || isKey('down', e)) {
+                this.show();
 
-            if ([keymap.up, keymap.down].indexOf(keyCode) > -1) {
-                this.menuItems[0].focus();
+                this.items[0].$el.focus();
 
                 e.preventDefault();
                 e.stopPropagation();
 
-            } else if (keyCode === keymap.enter) {
+            } else if (isKey('enter', e) || isKey('space', e)) {
                 this.onClick();
 
-            } else if ([keymap.tab, keymap.esc].indexOf(keyCode) > -1) {
+                e.preventDefault();
+
+            } else if (isKey('tab', e) || isKey('esc', e)) {
                 this.hide();
             }
         },
         onItemKeyDown(e) {
-            const keyCode = e.key || e.keyIdentifier || e.keyCode;
             const target = e.target;
-            const currentIndex = this.menuItemsArray.indexOf(target);
-            const max = this.menuItemsArray.length - 1;
+            const currentIndex = this.items.map((i) => i.$el).indexOf(e.target);
+            const maxIndex = this.items.length;
             let nextIndex;
 
             // Key: up || down
-            if ([keymap.up, keymap.down].indexOf(keyCode) > -1) {
-                if (keyCode === keymap.up) {
+            if (isKey('up', e) || isKey('down', e)) {
+                if (isKey('up', e)) {
                     nextIndex = currentIndex !== 0 ? currentIndex - 1 : 0;
                 } else {
-                    nextIndex = currentIndex < max ? currentIndex + 1 : max;
+                    nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
                 }
-                this.menuItems[nextIndex].focus();
+
+                this.items[nextIndex].$el.focus();
 
                 e.preventDefault();
                 e.stopPropagation();
 
-            } else if (keyCode === keymap.enter) {
-                this.triggerElement.focus();
+            } else if (isKey('enter', e) || isKey('space', e)) {
+                this.triggerElement.blur();
 
                 target.click();
 
@@ -117,7 +117,9 @@ export default {
                     this.visible = false;
                 }
 
-            } else if ([keymap.tab, keymap.esc].indexOf(keyCode) > -1) {
+                e.preventDefault();
+
+            } else if (isKey('tab', e) || isKey('esc', e)) {
                 this.hide();
 
                 this.triggerElement.focus();
@@ -154,29 +156,13 @@ export default {
             this.dropdownElement.setAttribute('id', this.id);
             this.triggerElement.setAttribute('aria-haspopup', 'list');
             this.triggerElement.setAttribute('aria-controls', this.id);
-
-            this.menuItems = this.dropdownElement.querySelectorAll('li');
-            this.menuItemsArray = Array.prototype.slice.call(this.menuItems);
-
-            this.triggerElement.setAttribute('role', 'button');
-            this.triggerElement.setAttribute('tabindex', '0');
         },
         initEvents() {
             this.triggerElement = this.$slots.default[0].elm;
             this.dropdownElement = this.$slots.default[this.$slots.default.length - 1].elm;
 
-            this.triggerElement.addEventListener('keydown', this.onTriggerKeyDown); // triggerElement keydown
-            this.dropdownElement.addEventListener('keydown', this.onItemKeyDown, true); // item keydown
-
-            this.triggerElement.addEventListener('focus', () => {
-                this.focusing = true;
-            });
-            this.triggerElement.addEventListener('blur', () => {
-                this.focusing = false;
-            });
-            this.triggerElement.addEventListener('click', () => {
-                this.focusing = false;
-            });
+            this.triggerElement.addEventListener('keydown', this.onTriggerKeyDown);
+            this.dropdownElement.addEventListener('keydown', this.onItemKeyDown, true);
 
             if (this.trigger === 'hover') {
                 this.triggerElement.addEventListener('mouseenter', this.show);
@@ -187,13 +173,22 @@ export default {
                 this.triggerElement.addEventListener('click', this.onClick);
             }
         },
-        handleMenuItemClick(command, instance) {
+        handleMenuItemClick(action, instance) {
             if (this.hideOnClick) {
                 this.visible = false;
             }
 
-            this.$emit('command', command, instance);
+            this.$emit('action', action, instance);
         },
+    },
+    created() {
+        this.$on('dropdown-item-mounted', (item) => {
+            this.items.push(item);
+        });
+
+        this.$on('dropdown-item-destroyed', (item) => {
+            this.items = this.items.filter((i) => i === item);
+        });
     },
     mounted() {
         this.$on('menu-item-click', this.handleMenuItemClick);

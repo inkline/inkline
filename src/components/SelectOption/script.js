@@ -3,6 +3,7 @@ import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesPro
 import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
 
 import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
+import EmitClickMethodMixin from 'inkline/mixins/components/methods/EmitClickMethodMixin';
 
 export default {
     name: 'ISelectOption',
@@ -10,6 +11,8 @@ export default {
         AttributesProviderMixin,
         ClassesProviderMixin,
         EmitProviderMixin,
+
+        EmitClickMethodMixin,
 
         DisabledPropertyMixin,
     ],
@@ -25,9 +28,9 @@ export default {
     },
     computed: {
         selected () {
-            return this.parentFormGroup.value === this.value;
+            return this.parentSelect.value === this.value;
         },
-        parentFormGroup() {
+        parentSelect() {
             let parent = this.$parent;
 
             while (parent) {
@@ -49,14 +52,15 @@ export default {
                 disabled: this.disabled
             };
         },
-        onClick() {
+        onClick(e) {
             if (this.isDisabled) {
                 return;
             }
 
             this.dispatch('IDropdown', 'menu-item-click', this);
             this.dispatch('ISelect', 'option-click', this.getDispatchProps());
-        }
+            this.emitClick(e);
+        },
     },
     created() {
         this.classesProvider.add('root', () => ({
@@ -65,8 +69,10 @@ export default {
     },
     mounted() {
         this.dispatch('ISelect', 'option-mounted', this.getDispatchProps());
+        this.dispatch('IDropdown', 'dropdown-item-mounted', this);
     },
     destroyed() {
         this.dispatch('ISelect', 'option-destroyed', this.getDispatchProps());
+        this.dispatch('IDropdown', 'dropdown-item-destroyed', this);
     }
 };

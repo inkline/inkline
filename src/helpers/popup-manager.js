@@ -1,6 +1,5 @@
 import Vue from 'vue';
-import { addClass, removeClass } from 'inkline/helpers';
-import { keymap } from 'inkline/constants';
+import { addClass, removeClass, isKey } from 'inkline/helpers';
 
 class PopupManager {
     instances = {};
@@ -14,8 +13,8 @@ class PopupManager {
     constructor() {
         if (!Vue.prototype.$isServer) {
             // handle `esc` key when the popup is shown
-            window.addEventListener('keydown', (event) => {
-                if (event.keyCode === keymap.esc) {
+            window.addEventListener('keydown', (e) => {
+                if (isKey('esc', e)) {
                     const topPopup = this.getTopPopup();
 
                     if (topPopup && topPopup.closeOnPressEscape) {

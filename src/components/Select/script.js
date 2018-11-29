@@ -7,10 +7,17 @@ import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesPro
 import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 import ModelProviderMixin from 'inkline/mixins/forms/providers/ModelProviderMixin';
 
+import EmitChangeMethodMixin from 'inkline/mixins/components/methods/EmitChangeMethodMixin';
+import EmitClickMethodMixin from 'inkline/mixins/components/methods/EmitClickMethodMixin';
+import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
+import EmitKeydownMethodMixin from 'inkline/mixins/components/methods/EmitKeydownMethodMixin';
+import EmitKeyupMethodMixin from 'inkline/mixins/components/methods/EmitKeyupMethodMixin';
+
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
 import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
 import ParentFormGroupPropertyMixin from 'inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
+import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndexPropertyMixin';
 
 export default {
     name: 'ISelect',
@@ -19,8 +26,34 @@ export default {
         IDropdown,
         IDropdownMenu
     },
+    mixins: [
+        AttributesProviderMixin,
+        ClassesProviderMixin,
+        InjectParentFormProviderMixin,
+        ModelProviderMixin,
+
+        // ClickMethodMixin,
+        // FocusMethodMixin,
+        EmitChangeMethodMixin,
+        EmitClickMethodMixin,
+        EmitFocusMethodMixin,
+        EmitKeydownMethodMixin,
+        EmitKeyupMethodMixin,
+        // EmitHoverMethodMixin,
+        // EmitInputMethodMixin,
+
+        DisabledPropertyMixin,
+        ParentFormGroupPropertyMixin,
+        ReadonlyPropertyMixin,
+        SizePropertyMixin,
+        TabIndexPropertyMixin
+    ],
     props: {
         filterable: {
+            type: Boolean,
+            default: false
+        },
+        native: {
             type: Boolean,
             default: false
         }
@@ -31,25 +64,31 @@ export default {
             options: []
         }
     },
-    mixins: [
-        AttributesProviderMixin,
-        ClassesProviderMixin,
-        InjectParentFormProviderMixin,
-        ModelProviderMixin,
+    methods: {
+        focusInputRef() {
+            this.$isMobile ? this.$refs.select.focus() : this.$refs.input.focusInputRef();
+        },
+        clickInputRef() {
+            if (this.$isMobile) {
+                this.$refs.select.click();
+            } else {
+                this.$refs.input.clickInputRef();
+                this.$refs.dropdown.visible ? this.$refs.dropdown.hide() : this.$refs.dropdown.show();
+            }
+        },
+        onKeydown(e) {
+            // if (isKey('space', e)) {
+            //     e.preventDefault();
+            //     this.clickInputRef();
+            // }
+            //
+            // if (isKey('up', e) || isKey('down', e)) {
+            //     console.log(this.options)
+            // }
 
-        // ClickMethodMixin,
-        // FocusMethodMixin,
-        // EmitChangeMethodMixin,
-        // EmitClickMethodMixin,
-        // EmitFocusMethodMixin,
-        // EmitHoverMethodMixin,
-        // EmitInputMethodMixin,
-
-        DisabledPropertyMixin,
-        ParentFormGroupPropertyMixin,
-        ReadonlyPropertyMixin,
-        SizePropertyMixin,
-    ],
+            this.$emit('keydown', e);
+        }
+    },
     created() {
         this.$on('option-click', (data) => {
             this.model = data.value;
