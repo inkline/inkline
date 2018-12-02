@@ -27,7 +27,7 @@ export default {
         }
     },
     computed: {
-        selected () {
+        active () {
             return this.parentSelect.value === this.value;
         },
         parentSelect() {
@@ -64,7 +64,7 @@ export default {
     },
     created() {
         this.classesProvider.add('root', () => ({
-            '-active': this.selected,
+            '-active': this.active,
         }));
     },
     mounted() {

@@ -6,6 +6,7 @@ import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMet
 
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
 import LoadingPropertyMixin from 'inkline/mixins/components/properties/LoadingPropertyMixin';
+import NamePropertyMixin from 'inkline/mixins/forms/properties/NamePropertyMixin';
 import ParentFormGroupPropertyMixin from 'inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
@@ -29,6 +30,7 @@ export default {
 
         DisabledPropertyMixin,
         LoadingPropertyMixin,
+        NamePropertyMixin,
         ParentFormGroupPropertyMixin,
         ReadonlyPropertyMixin,
         SizePropertyMixin,

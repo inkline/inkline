@@ -14,6 +14,7 @@ import EmitKeydownMethodMixin from 'inkline/mixins/components/methods/EmitKeydow
 import EmitKeyupMethodMixin from 'inkline/mixins/components/methods/EmitKeyupMethodMixin';
 
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
+import NamePropertyMixin from 'inkline/mixins/forms/properties/NamePropertyMixin';
 import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
 import ParentFormGroupPropertyMixin from 'inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
@@ -43,6 +44,7 @@ export default {
         // EmitInputMethodMixin,
 
         DisabledPropertyMixin,
+        NamePropertyMixin,
         ParentFormGroupPropertyMixin,
         ReadonlyPropertyMixin,
         SizePropertyMixin,
@@ -75,21 +77,14 @@ export default {
                 this.$refs.input.clickInputRef();
                 this.$refs.dropdown.visible ? this.$refs.dropdown.hide() : this.$refs.dropdown.show();
             }
-        },
-        onKeydown(e) {
-            // if (isKey('space', e)) {
-            //     e.preventDefault();
-            //     this.clickInputRef();
-            // }
-            //
-            // if (isKey('up', e) || isKey('down', e)) {
-            //     console.log(this.options)
-            // }
-
-            this.$emit('keydown', e);
         }
     },
     created() {
+        this.classesProvider.add('root', () => ({
+            '-prefixed': this.$slots.prefix,
+            '-suffixed': this.$slots.suffix
+        }));
+
         this.$on('option-click', (data) => {
             this.model = data.value;
         });

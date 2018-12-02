@@ -72,16 +72,27 @@ export default {
     },
     methods: {
         onTriggerKeyDown(e) {
+            let activeIndex = this.items.findIndex((e) => e.active);
+            let initialIndex = activeIndex > -1 ? activeIndex : 0;
+
             if (isKey('up', e) || isKey('down', e)) {
                 this.show();
 
-                this.items[0].$el.focus();
+                setTimeout(() => {
+                    this.items[initialIndex].$el.focus();
+                }, this.visible ? 0 : this.showTimeout);
 
                 e.preventDefault();
                 e.stopPropagation();
 
             } else if (isKey('enter', e) || isKey('space', e)) {
                 this.onClick();
+
+                if (!this.visible) {
+                    setTimeout(() => {
+                        this.items[initialIndex].$el.focus();
+                    }, this.showTimeout);
+                }
 
                 e.preventDefault();
 
@@ -92,7 +103,7 @@ export default {
         onItemKeyDown(e) {
             const target = e.target;
             const currentIndex = this.items.map((i) => i.$el).indexOf(e.target);
-            const maxIndex = this.items.length;
+            const maxIndex = this.items.length - 1;
             let nextIndex;
 
             // Key: up || down
@@ -109,9 +120,9 @@ export default {
                 e.stopPropagation();
 
             } else if (isKey('enter', e) || isKey('space', e)) {
-                this.triggerElement.blur();
-
                 target.click();
+
+                this.triggerElement.focus();
 
                 if (this.hideOnClick) {
                     this.visible = false;
@@ -152,15 +163,16 @@ export default {
                 this.show();
             }
         },
+        initElements() {
+            this.triggerElement = this.$slots.default[0].elm;
+            this.dropdownElement = this.$slots.default[this.$slots.default.length - 1].elm;
+        },
         initAriaAttributes() {
             this.dropdownElement.setAttribute('id', this.id);
             this.triggerElement.setAttribute('aria-haspopup', 'list');
             this.triggerElement.setAttribute('aria-controls', this.id);
         },
         initEvents() {
-            this.triggerElement = this.$slots.default[0].elm;
-            this.dropdownElement = this.$slots.default[this.$slots.default.length - 1].elm;
-
             this.triggerElement.addEventListener('keydown', this.onTriggerKeyDown);
             this.dropdownElement.addEventListener('keydown', this.onItemKeyDown, true);
 
@@ -193,6 +205,7 @@ export default {
     mounted() {
         this.$on('menu-item-click', this.handleMenuItemClick);
 
+        this.initElements();
         this.initEvents();
         this.initAriaAttributes();
     },

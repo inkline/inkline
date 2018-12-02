@@ -32,5 +32,10 @@ export default {
         ParentFormGroupPropertyMixin,
         SizePropertyMixin,
         TabIndexPropertyMixin
-    ]
+    ],
+    computed: {
+        name() {
+            return this.parentFormGroup.name;
+        }
+    }
 };

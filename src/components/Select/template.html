@@ -11,6 +11,7 @@
             v-bind="$attrs"
             v-model="labelModel"
             ref="input"
+            :name="name"
             :readonly="isReadonly || !filterable"
             :disabled="isDisabled"
             :aria-disabled="isDisabled"
@@ -20,7 +21,10 @@
             @blur="emitBlur"
             @change="emitChange"
             @keydown="emitKeydown"
-            @keyup="emitKeyup"></i-input>
+            @keyup="emitKeyup">
+        <slot name="prefix" slot="prefix"></slot>
+        <slot name="suffix" slot="suffix"></slot>
+    </i-input>
 
     <select v-bind="$attrs"
             v-model="model"
@@ -28,6 +32,7 @@
             :disabled="isDisabled"
             ref="select"
             class="form-select"
+            :name="name"
             @click="emitClick"
             @focus="emitFocus"
             @blur="emitBlur"

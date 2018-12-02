@@ -35,6 +35,7 @@ import ICheckboxButton from 'inkline/components/CheckboxButton';
 import ICheckboxGroup from 'inkline/components/CheckboxGroup';
 import ICheckboxButtonGroup from 'inkline/components/CheckboxButtonGroup';
 import IInput from 'inkline/components/Input';
+import IForm from 'inkline/components/Form';
 import IFormGroup from 'inkline/components/FormGroup';
 import IFormLabel from 'inkline/components/FormLabel';
 import IInputNumber from 'inkline/components/InputNumber';
@@ -46,7 +47,8 @@ import ISelect from 'inkline/components/Select';
 import ISelectOption from 'inkline/components/SelectOption';
 import ITextarea from 'inkline/components/Textarea';
 
-import { isMobile } from 'inkline/helpers/is-mobile';
+import { isMobile as $isMobile } from 'inkline/prototypes/is-mobile';
+import { form as $form } from 'inkline/prototypes/form';
 
 class Inkline {
     static components = [
@@ -87,6 +89,7 @@ class Inkline {
         ICheckboxGroup,
         ICheckboxButtonGroup,
         IInput,
+        IForm,
         IFormGroup,
         IFormLabel,
         IInputNumber,
@@ -110,7 +113,8 @@ class Inkline {
             Vue.component(component.name, component);
         });
 
-        Vue.prototype.$isMobile = isMobile();
+        Vue.prototype.$isMobile = $isMobile();
+        Vue.prototype.$form = $form;
     }
 }
 
@@ -152,6 +156,7 @@ export {
     ICheckboxGroup,
     ICheckboxButtonGroup,
     IInput,
+    IForm,
     IFormGroup,
     IFormLabel,
     IInputNumber,

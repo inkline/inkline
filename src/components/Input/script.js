@@ -17,6 +17,7 @@ import EmitKeyupMethodMixin from 'inkline/mixins/components/methods/EmitKeyupMet
 
 import ClearablePropertyMixin from 'inkline/mixins/forms/properties/ClearablePropertyMixin';
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
+import NamePropertyMixin from 'inkline/mixins/forms/properties/NamePropertyMixin';
 import ParentFormGroupPropertyMixin from 'inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
@@ -46,6 +47,7 @@ export default {
 
         ClearablePropertyMixin,
         DisabledPropertyMixin,
+        NamePropertyMixin,
         ParentFormGroupPropertyMixin,
         ReadonlyPropertyMixin,
         SizePropertyMixin,
@@ -58,8 +60,18 @@ export default {
         }));
 
         this.classesProvider.add('child', () => ({
-            '-prefixed': this.$slots.prefix || this.prefixed,
-            '-suffixed': this.$slots.suffix || this.suffixed
+            '-prefixed': this.$slots.prefix,
+            '-suffixed': this.$slots.suffix
         }));
+    },
+    mounted () {
+        if (this.parentForm) {
+            this.parentForm.add(this);
+        }
+    },
+    destroyed () {
+        if (this.parentForm) {
+            this.parentForm.remove(this);
+        }
     }
 };

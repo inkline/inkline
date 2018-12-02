@@ -2,6 +2,9 @@
 // Button sizes
 //
 for size in (sm md lg)
+    .form.-{size} > .button
+    .form.-{size} > .form-group > .button
+    .form-group.-{size} > .button
     .button.-{size}
         border-radius: --button-border-radius[size]
         font-size: --button-font-size[size]
