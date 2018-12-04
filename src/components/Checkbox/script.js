@@ -1,13 +1,22 @@
-import CheckableProviderMixin from 'inkline/mixins/forms/providers/CheckableProviderMixin';
+import Checkable from 'inkline/components/Checkable';
+import SchemaProviderMixin from 'inkline/mixins/forms/providers/SchemaProviderMixin';
+
+import NamePropertyMixin from 'inkline/mixins/forms/properties/NamePropertyMixin';
 
 export default {
     name: 'ICheckbox',
+    extends: Checkable,
     mixins: [
-        CheckableProviderMixin
+        SchemaProviderMixin,
+
+        NamePropertyMixin
     ],
     props: {
         value: [Boolean, String],
-        indeterminate: Boolean /* @TODO Implement indeterminate checkboxes */
+        indeterminate: {
+            type: Boolean,
+            default: false
+        }
     },
     computed: {
         checked () {

@@ -1,9 +1,8 @@
 <script>
 export default {
-    props: {
-        name: {
-            type: String,
-            default: ''
+    computed: {
+        name() {
+            return this.schema ? this.schema.$name : this.$attrs.name;
         }
     }
 };

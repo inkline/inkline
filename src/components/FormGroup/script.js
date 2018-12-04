@@ -15,7 +15,6 @@ import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndex
 export default {
     name: 'IFormGroup',
     props: {
-        value: {},
         inline: {
             type: Boolean,
             default: false

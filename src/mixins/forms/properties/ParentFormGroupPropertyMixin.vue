@@ -1,5 +1,10 @@
 <script>
 export default {
+    data() {
+        return {
+            parentFormGroupName: 'IFormGroup'
+        }
+    },
     computed: {
         /**
          * Find and return the element's parent group
@@ -8,7 +13,8 @@ export default {
             let parent = this.$parent;
 
             while (parent) {
-                if (parent.$options.name === 'IFormGroup' || (parent.$options.extends || {}).name === 'IFormGroup') {
+                if (parent.$options.name === this.parentFormGroupName ||
+                    (parent.$options.extends || {}).name === this.parentFormGroupName) {
                     return parent;
                 }
 

@@ -6,10 +6,12 @@ import AttributesProviderMixin from 'inkline/mixins/components/providers/Attribu
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 import ModelProviderMixin from 'inkline/mixins/forms/providers/ModelProviderMixin';
+import SchemaProviderMixin from 'inkline/mixins/forms/providers/SchemaProviderMixin';
 
 import EmitChangeMethodMixin from 'inkline/mixins/components/methods/EmitChangeMethodMixin';
 import EmitClickMethodMixin from 'inkline/mixins/components/methods/EmitClickMethodMixin';
 import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
+import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMethodMixin';
 import EmitKeydownMethodMixin from 'inkline/mixins/components/methods/EmitKeydownMethodMixin';
 import EmitKeyupMethodMixin from 'inkline/mixins/components/methods/EmitKeyupMethodMixin';
 
@@ -32,16 +34,17 @@ export default {
         ClassesProviderMixin,
         InjectParentFormProviderMixin,
         ModelProviderMixin,
+        SchemaProviderMixin,
 
         // ClickMethodMixin,
         // FocusMethodMixin,
         EmitChangeMethodMixin,
         EmitClickMethodMixin,
         EmitFocusMethodMixin,
+        EmitInputMethodMixin,
         EmitKeydownMethodMixin,
-        EmitKeyupMethodMixin,
         // EmitHoverMethodMixin,
-        // EmitInputMethodMixin,
+        EmitKeyupMethodMixin,
 
         DisabledPropertyMixin,
         NamePropertyMixin,
@@ -85,12 +88,16 @@ export default {
             '-suffixed': this.$slots.suffix
         }));
 
-        this.$on('option-click', (data) => {
-            this.model = data.value;
+        this.$on('option-click', (option) => {
+            this.model = option.value;
         });
 
-        this.$on('option-mounted', (data) => {
-            this.options.push(data);
+        this.$on('option-mounted', (option) => {
+            this.options.push(option);
+
+            if (option.value === this.model) {
+                this.labelModel = option.label || option.value;
+            }
         });
 
         this.$on('option-destroyed', (data) => {

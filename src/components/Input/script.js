@@ -4,6 +4,7 @@ import AttributesProviderMixin from 'inkline/mixins/components/providers/Attribu
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 import ModelProviderMixin from 'inkline/mixins/forms/providers/ModelProviderMixin';
+import SchemaProviderMixin from 'inkline/mixins/forms/providers/SchemaProviderMixin';
 
 import ClickInputRefMethodMixin from 'inkline/mixins/forms/methods/ClickInputRefMethodMixin';
 import FocusInputRefMethodMixin from 'inkline/mixins/forms/methods/FocusInputRefMethodMixin';
@@ -34,6 +35,7 @@ export default {
         ClassesProviderMixin,
         InjectParentFormProviderMixin,
         ModelProviderMixin,
+        SchemaProviderMixin,
 
         ClickInputRefMethodMixin,
         FocusInputRefMethodMixin,
@@ -63,15 +65,5 @@ export default {
             '-prefixed': this.$slots.prefix,
             '-suffixed': this.$slots.suffix
         }));
-    },
-    mounted () {
-        if (this.parentForm) {
-            this.parentForm.add(this);
-        }
-    },
-    destroyed () {
-        if (this.parentForm) {
-            this.parentForm.remove(this);
-        }
     }
 };

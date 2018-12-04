@@ -19,7 +19,6 @@
             @click="emitClick"
             @focus="emitFocus"
             @blur="emitBlur"
-            @change="emitChange"
             @keydown="emitKeydown"
             @keyup="emitKeyup">
         <slot name="prefix" slot="prefix"></slot>
@@ -37,6 +36,7 @@
             @focus="emitFocus"
             @blur="emitBlur"
             @change="emitChange"
+            @input="emitInput"
             @keydown.space.stop.prevent="clickInputRef">
         <option v-for="option in options"
                 :value="option.value"

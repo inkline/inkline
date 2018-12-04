@@ -1,58 +1,96 @@
 import * as validators from "inkline/validators";
 
+const defaultFormState = {
+    touched: false,
+    untouched: true,
+    dirty: false,
+    pristine: true,
+    invalid: false,
+    valid: true,
+    errors: {}
+};
+
 /**
- * Construct a basic form schema with default values
+ * Creates a form control schema
+ *
+ * @param nameNesting
+ * @param schema
+ * @returns {{$name: string, $validate: (function(*=): {valid: boolean, errors: {length: number}}), value: string, validateOn: string, touched: boolean, untouched: boolean, dirty: boolean, pristine: boolean, invalid: boolean, valid: boolean, errors: {}}}
+ * @private
  */
-export function form(schema) {
-    Object.keys(schema).forEach((name) => {
-        if (schema[name]._form || !schema.hasOwnProperty(name)) { return; }
-
-        schema[name] = {
-            touched: false,
-            untouched: true,
-            dirty: false,
-            pristine: true,
-            invalid: false,
-            valid: true,
-            validateOn: 'input',
-            errors: {},
-            value: '',
-            validate: (value) => {
-                let valid = true;
-                const errors = {
-                    length: 0
-                };
-
-                for (let validator of schema[name].validators) {
-                    if (!validators[validator.rule]) {
-                        throw new Error(`Invalid validation rule '${validator.rule}' provided.`);
-                    }
-
-                    if (!validator.disabled && !validators[validator.rule](value, validator)) {
-                        errors[validator.rule] = validator.message;
-                        errors.length += 1;
-                        valid = false;
-                    }
-                }
-
-                return {
-                    valid,
-                    errors
-                }
-            },
-            ...schema[name]
+function _formControl(nameNesting=[], schema) {
+    const name = nameNesting[nameNesting.length - 1];
+    const $name = nameNesting.join('.');
+    const $validate = (value) => {
+        let valid = true;
+        let errors = {
+            length: 0
         };
+
+        for (let validator of schema[name].validators) {
+            if (!validators[validator.rule]) {
+                throw new Error(`Invalid validation rule '${validator.rule}' provided.`);
+            }
+
+            if (!validator.disabled && !validators[validator.rule](value, validator)) {
+                errors[validator.rule] = validator.message;
+                errors.length += 1;
+                valid = false;
+            }
+        }
+
+        return {
+            valid,
+            errors
+        }
+    };
+
+    return {
+        $name,
+        $validate,
+        value: '',
+        validateOn: 'input',
+        ...defaultFormState,
+        ...schema[name]
+    }
+}
+
+/**
+ * Creates a form schema by going through all the fields
+ *
+ * @param nameNesting
+ * @param schema
+ * @returns {{$name: string, touched: boolean, untouched: boolean, dirty: boolean, pristine: boolean, invalid: boolean, valid: boolean, errors: {}}}
+ * @private
+ */
+function _form(nameNesting=[], schema) {
+    Object.keys(schema).forEach((name) => {
+        if (!schema.hasOwnProperty(name)) { return; }
+
+        schema[name] = schema[name].validators || schema[name].value || Object.keys(schema[name]).length === 0 ?
+            _formControl(nameNesting.concat(name), schema) :
+            _form(nameNesting.concat(name), schema[name])
     });
 
     return {
-        _form: true,
-        touched: false,
-        untouched: true,
-        dirty: false,
-        pristine: true,
-        invalid: false,
-        valid: true,
-        errors: [],
+        $name: nameNesting.join('.'),
+        ...defaultFormState,
         ...schema
-    };
+    }
 }
+
+/**
+ * Construct a basic form schema with default values
+ */
+export function $form(name, schema) {
+    if (typeof name !== 'string') {
+        schema = name;
+        name = '';
+    }
+
+    const nameNesting = name === '' ? [] : name.split('.');
+
+    return _form(nameNesting, schema);
+}
+
+$form.control = (name, schema) => _formControl(name.split('.'), schema);

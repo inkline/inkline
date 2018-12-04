@@ -41,55 +41,47 @@ export default {
         }
     },
     methods: {
-        getSchema(input) {
-            return input.name && input.name
-                .replace(/\[['"]?([^'"\]])['"]?]/g, '.$1')
-                .split('.')
-                .reduce((acc, key) => acc && acc[key], this.schema);
-        },
-        getInputSchema(input) {
-            const result = [];
-            const schemaTree = input.name && input.name
+        getSchemaTree(input) {
+            const parentFormGroupKeys = input.name
                 .replace(/\[['"]?([^'"\]])['"]?]/g, '.$1')
                 .split('.');
 
-            for (let i = 0; i <= schemaTree.length - 1; i++) {
-                result.push(schemaTree.slice(0, i).reduce((acc, key) => acc && acc[key], this.schema));
-            }
-
-            return result;
+            return parentFormGroupKeys.map((group, index) => parentFormGroupKeys
+                .slice(0, index)
+                .reduce((acc, key) => acc && acc[key], this.schema))
+                .concat(input.schema);
         },
         add(input) {
-            const inputSchema = this.getInputSchema(input);
+            const inputSchema = input.schema;
+            const schemaTree = this.getSchemaTree(input);
 
-            console.log(inputSchema);
-
-            if (!inputSchema) { return; }
+            if (!schemaTree) {
+                throw new Error(`Could not retrieve schema tree for input with name ${input.name}.`);
+            }
 
             input.$on('blur', () => {
-                inputSchema.touched = true;
-                inputSchema.untouched = false;
-                this.schema.touched = true;
-                this.schema.untouched = false;
+                schemaTree.forEach((schema) => {
+                    schema.touched = true;
+                    schema.untouched = false;
+                });
             });
 
             input.$on(inputSchema.validateOn, (value) => {
-                const status = inputSchema.validate(value);
+                const status = inputSchema.$validate(value);
 
-                inputSchema.errors = status.errors;
-                inputSchema.valid = status.valid;
-                inputSchema.invalid = !inputSchema.valid;
-                inputSchema.dirty = true;
-                inputSchema.pristine = false;
-
-                this.schema.valid = this.schema.valid && inputSchema.valid;
-                this.schema.invalid = !this.schema.valid;
-                this.schema.dirty = true;
-                this.schema.pristine = false;
+                schemaTree.forEach((schema) => {
+                    schema.errors = status.errors;
+                    schema.valid = status.valid;
+                    schema.invalid = !schema.valid;
+                    schema.dirty = true;
+                    schema.pristine = false;
+                });
             });
         },
         remove(input) {
-            input.$off('input');
+            const inputSchema = input.schema;
+
+            input.$off(inputSchema.validateOn);
         }
     },
     created() {
