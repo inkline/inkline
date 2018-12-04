@@ -5,6 +5,7 @@ import ModelGroupProviderMixin from 'inkline/mixins/forms/providers/ModelGroupPr
 
 import ClickMethodMixin from 'inkline/mixins/forms/methods/ClickInputRefMethodMixin';
 import EmitClickMethodMixin from 'inkline/mixins/components/methods/EmitClickMethodMixin';
+import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
 import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMethodMixin';
 
 import CustomPropertyMixin from 'inkline/mixins/components/properties/CustomPropertyMixin';
@@ -16,6 +17,7 @@ import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndex
 
 
 export default {
+    name: 'ICheckable',
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
@@ -24,6 +26,7 @@ export default {
 
         ClickMethodMixin,
         EmitClickMethodMixin,
+        EmitFocusMethodMixin,
         EmitInputMethodMixin,
 
         CustomPropertyMixin,
@@ -33,9 +36,24 @@ export default {
         SizePropertyMixin,
         TabIndexPropertyMixin
     ],
+    methods: {
+        onBlur(e) {
+            this.emitBlur(e);
+            this.parentFormGroup.emitBlur(e);
+        },
+        onFocus(e) {
+            this.emitFocus(e);
+            this.parentFormGroup.emitFocus(e);
+        }
+    },
+    data() {
+        return {
+            parentFormGroupName: 'ICheckableGroup'
+        }
+    },
     computed: {
         name() {
-            return this.parentFormGroup.name;
+            return this.isGrouped ? this.parentFormGroup.name : '';
         }
     }
 };
