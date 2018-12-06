@@ -13,7 +13,6 @@ import EmitClickMethodMixin from 'inkline/mixins/components/methods/EmitClickMet
 import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
 import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMethodMixin';
 import EmitKeydownMethodMixin from 'inkline/mixins/components/methods/EmitKeydownMethodMixin';
-import EmitKeyupMethodMixin from 'inkline/mixins/components/methods/EmitKeyupMethodMixin';
 
 import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
 import NamePropertyMixin from 'inkline/mixins/forms/properties/NamePropertyMixin';
@@ -44,7 +43,6 @@ export default {
         EmitInputMethodMixin,
         EmitKeydownMethodMixin,
         // EmitHoverMethodMixin,
-        EmitKeyupMethodMixin,
 
         DisabledPropertyMixin,
         NamePropertyMixin,

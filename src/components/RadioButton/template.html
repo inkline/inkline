@@ -1,14 +1,24 @@
 <i-button class="-radio"
           :class="classes['root']"
           :active="checked"
+          @blur="onBlur"
+          @focus="onFocus"
           @click="clickInputRef"
+          :aria-disabled="isDisabled"
+          :aria-readonly="isReadonly"
+          :readonly="isReadonly"
+          :tabindex="tabIndex"
           @keydown.space.stop.prevent="clickInputRef">
     <input
         type="radio"
         ref="input"
         v-model="model"
+        :aria-checked="checked"
         :name="name"
         :value="currentValue"
+        :aria-disabled="isDisabled"
+        :aria-readonly="isReadonly"
+        :readonly="isReadonly"
         :disabled="isDisabled">
     <slot></slot>
 </i-button>

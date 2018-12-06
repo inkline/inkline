@@ -1,4 +1,4 @@
-import Emitter from 'inkline/mixins/Emitter';
+import Emitter from 'inkline/mixins/components/providers/EmitProviderMixin';
 
 import { addClass, hasClass, removeClass, triggerEvent, isKey } from 'inkline/helpers';
 

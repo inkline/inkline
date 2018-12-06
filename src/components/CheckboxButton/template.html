@@ -2,6 +2,12 @@
           :class="classes"
           :active="checked"
           @click="clickInputRef"
+          @blur="onBlur"
+          @focus="onFocus"
+          :aria-disabled="isDisabled"
+          :aria-readonly="isReadonly"
+          :readonly="isReadonly"
+          :tabindex="tabIndex"
           @keydown.space.stop.prevent="clickInputRef">
     <input
         type="checkbox"
@@ -9,6 +15,9 @@
         v-model="model"
         :name="name"
         :value="currentValue"
+        :aria-disabled="isDisabled"
+        :aria-readonly="isReadonly"
+        :readonly="isReadonly"
         :disabled="isDisabled">
     <slot></slot>
 </i-button>
