@@ -3,16 +3,7 @@ export default {
     data () {
         const attributesProvider = [];
 
-        attributesProvider.add = (type, fn) => {
-            if (!fn) {
-                fn = type;
-                type = 'root';
-            }
-
-            fn.type = type;
-
-            attributesProvider.push(fn);
-        };
+        attributesProvider.add = attributesProvider.push;
 
         return {
             attributesProvider
