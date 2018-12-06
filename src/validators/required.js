@@ -1,6 +1,5 @@
 export function required(value, options = { invalidateFalse: false }) {
     if (value.constructor === Array) {
-        console.log("REQUIRED!")
         return !!value.length;
     }
 
