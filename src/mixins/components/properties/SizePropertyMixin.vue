@@ -3,7 +3,10 @@ export default {
     props: {
         size: {
             type: String,
-            default: ''
+            default: '',
+            validator (size) {
+                return ['', 'sm', 'md', 'lg'].indexOf(size) !== -1
+            }
         }
     },
     created () {
