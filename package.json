@@ -2,30 +2,27 @@
   "name": "inkline",
   "version": "1.4.0",
   "description": "Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/inkline/inkline.git"
-  },
   "author": "Alex Grozav <alex@grozav.com>",
-  "main": "src/index.js",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/inkline/inkline/issues"
-  },
-  "homepage": "http://inkline.io",
   "scripts": {
-    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve",
+    "test:unit": "vue-cli-service test:unit",
+    "test:unit:dev": "vue-cli-service test:unit --watch"
   },
   "dependencies": {
     "popper.js": "^1.14.5",
+    "validator": "^10.9.0",
     "vue": "^2.5.17"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-plugin-unit-jest": "^3.2.0",
     "@vue/cli-service": "^3.0.1",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "postcss-preset-env": "^5.3.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
@@ -54,5 +51,15 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/inkline/inkline/issues"
+  },
+  "homepage": "http://inkline.io",
+  "license": "MIT",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkline/inkline.git"
+  }
 }
