@@ -21,6 +21,20 @@ const defaultFormState = {
 function _formControl(nameNesting=[], schema) {
     const name = nameNesting[nameNesting.length - 1];
     const $name = nameNesting.join('.');
+
+    // Set all validators as enabled by default
+    for (let validator of schema[name].validators) {
+        if (!validator.hasOwnProperty('enabled')) {
+            validator.enabled = true;
+        }
+    }
+
+    /**
+     * Validate the current value by performing all the specified validation functions on it
+     *
+     * @param value
+     * @returns {{valid: boolean, errors: {length: number}}}
+     */
     const $validate = (value) => {
         let valid = true;
         let errors = {
@@ -32,7 +46,12 @@ function _formControl(nameNesting=[], schema) {
                 throw new Error(`Invalid validation rule '${validator.rule}' provided.`);
             }
 
-            if (!validator.disabled && !validators[validator.rule](value, validator)) {
+            // Validator enabled state can be a function
+            const validatorEnabled = typeof validator.enabled === 'function' ?
+                validator.enabled() :
+                validator.enabled;
+
+            if (validatorEnabled && !validators[validator.rule](value, validator)) {
                 errors[validator.rule] = validator.message;
                 errors.length += 1;
                 valid = false;
