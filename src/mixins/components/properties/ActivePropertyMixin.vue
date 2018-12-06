@@ -1,19 +1,13 @@
 <script>
+import ActiveClassPropertyMixin from 'inkline/mixins/components/properties/ActiveClassPropertyMixin'
+
 export default {
+    extends: ActiveClassPropertyMixin,
     props: {
         active: {
             type: Boolean,
             default: false
-        },
-        activeClass: {
-            type: String,
-            default: '-active'
         }
-    },
-    created () {
-        this.classesProvider.add(() => ({
-            [this.activeClass]: this.active
-        }));
     }
 };
 </script>
