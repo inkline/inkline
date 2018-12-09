@@ -9,8 +9,6 @@ import NamePropertyMixin from 'inkline/mixins/forms/properties/NamePropertyMixin
 import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 
-import * as validators from 'inkline/validators';
-
 export default {
     name: 'IForm',
     mixins: [

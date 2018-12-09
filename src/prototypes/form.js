@@ -11,6 +11,18 @@ const defaultFormState = {
 };
 
 /**
+ * If grouped, return a new form group. Otherwise, return a form control
+ *
+ * @param isGroup
+ * @param nameNesting
+ * @param schema
+ * @returns {*}
+ */
+const formFactory = (nameNesting, schemaName, schema, isGroup) => isGroup ?
+    form(nameNesting.concat([schemaName]), schema) :
+    formControl(nameNesting.concat([schemaName]), schema);
+
+/**
  * Creates a form control schema
  *
  * @param nameNesting
@@ -18,12 +30,11 @@ const defaultFormState = {
  * @returns {{$name: string, $validate: (function(*=): {valid: boolean, errors: {length: number}}), value: string, validateOn: string, touched: boolean, untouched: boolean, dirty: boolean, pristine: boolean, invalid: boolean, valid: boolean, errors: {}}}
  * @private
  */
-function _formControl(nameNesting=[], schema) {
-    const name = nameNesting[nameNesting.length - 1];
+function formControl(nameNesting=[], schema) {
     const $name = nameNesting.join('.');
 
     // Set all validators as enabled by default
-    for (let validator of schema[name].validators) {
+    for (let validator of schema.validators) {
         if (!validator.hasOwnProperty('enabled')) {
             validator.enabled = true;
         }
@@ -42,7 +53,7 @@ function _formControl(nameNesting=[], schema) {
             length: 0
         };
 
-        for (let validator of schema[name].validators) {
+        for (let validator of schema.validators) {
             if (!validators[validator.rule]) {
                 throw new Error(`Invalid validation rule '${validator.rule}' provided.`);
             }
@@ -72,7 +83,7 @@ function _formControl(nameNesting=[], schema) {
         value: '',
         validateOn: 'input',
         ...defaultFormState,
-        ...schema[name]
+        ...schema
     }
 }
 
@@ -84,17 +95,43 @@ function _formControl(nameNesting=[], schema) {
  * @returns {{$name: string, touched: boolean, untouched: boolean, dirty: boolean, pristine: boolean, invalid: boolean, valid: boolean, errors: {}}}
  * @private
  */
-function _form(nameNesting=[], schema) {
+function form(nameNesting=[], schema) {
+    const $name = nameNesting.join('.');
+
     Object.keys(schema).forEach((name) => {
         if (!schema.hasOwnProperty(name)) { return; }
 
-        schema[name] = schema[name].validators || schema[name].value || Object.keys(schema[name]).length === 0 ?
-            _formControl(nameNesting.concat(name), schema) :
-            _form(nameNesting.concat(name), schema[name])
+        const schemaHasFormControlProperties = schema[name].hasOwnProperty('validators') ||
+            schema[name].hasOwnProperty('value');
+        const schemaIsEmptyObject = Object.keys(schema[name]).length === 0;
+        const schemaIsArray = schema[name].constructor === Array;
+
+        // Verify if schema is a form control or a form group. Form controls can be empty objects, can have either
+        // a 'validators' or a 'value' field. Form groups are arrays or have multiple user-defined keys
+        schema[name] = formFactory(nameNesting, name, schema[name],
+            !(schemaHasFormControlProperties || schemaIsEmptyObject) || schemaIsArray);
     });
 
+    // When handling array form groups, we add the schema fields as custom array properties in order to keep the
+    // array iterator intact
+    if (schema.constructor === Array) {
+        schema.$name = $name;
+
+        schema.$push = (item, options={}) => schema
+            .push(formFactory(nameNesting, schema.length, item, options.group));
+
+        schema.$splice = (start, deleteCount, item, options={}) => schema
+            .splice(start, deleteCount, formFactory(nameNesting, start, item, options.group));
+
+        Object.keys(defaultFormState).forEach((property) => schema[property] = defaultFormState[property]);
+
+        return schema;
+    }
+
+    schema.$set = (name, item, options={}) => schema[name] = formFactory(nameNesting, name, item, options.group);
+
     return {
-        $name: nameNesting.join('.'),
+        $name,
         ...defaultFormState,
         ...schema
     }
@@ -111,7 +148,7 @@ export function $form(name, schema) {
 
     const nameNesting = name === '' ? [] : name.split('.');
 
-    return _form(nameNesting, schema);
+    return form(nameNesting, schema);
 }
 
-$form.control = (name, schema) => _formControl(name.split('.'), schema);
+// $form.control = (name, schema, parent) => formControl(parent.$name.split('.').concat(name), schema);
