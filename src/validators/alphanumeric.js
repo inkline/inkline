@@ -1,9 +1,18 @@
-import isAlphanumeric from 'validator/lib/isEmail';
+import isAlphanumeric from 'validator/lib/isAlphanumeric';
 
-export function alpha(value, options = {}) {
+export function alphanumeric(value, options = {}) {
+    const process = (v) => {
+        v = String(v);
+
+        if (options.allowDash) { v = v.replace(/-/g, ''); }
+        if (options.allowSpace) { v = v.replace(/ /g, ''); }
+
+        return v;
+    };
+
     if (value.constructor === Array) {
-        return value.every((v) => isAlphanumeric(String(v), options));
+        return value.every((v) => isAlphanumeric(process(v), options.locale));
     }
 
-    return isAlphanumeric(String(value), options);
+    return isAlphanumeric(process(value), options.locale);
 }
