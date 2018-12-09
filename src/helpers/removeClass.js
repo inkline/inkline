@@ -1,4 +1,4 @@
-import { hasClass } from './has-class';
+import { hasClass } from './hasClass';
 import { trim } from './trim';
 
 export function removeClass (element, classes) {

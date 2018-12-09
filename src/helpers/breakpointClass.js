@@ -1,4 +1,4 @@
-import { toDashCase } from './to-dash-case';
+import { toDashCase } from './toDashCase';
 
 /**
  * Convert given class name into dash case and append the given breakpoint string. Required in order to turn camel case

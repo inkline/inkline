@@ -1,4 +1,4 @@
-import { focusAttempt } from './focus-attempt';
+import { focusAttempt } from './focusAttempt';
 
 /**
  * Find the last descendant node that is focusable.

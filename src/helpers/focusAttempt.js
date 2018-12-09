@@ -1,4 +1,4 @@
-import { isFocusable } from './is-focusable.js';
+import { isFocusable } from './isFocusable.js';
 
 /**
  * Set Attempt to set focus on the current node.

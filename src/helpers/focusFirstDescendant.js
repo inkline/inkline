@@ -1,4 +1,4 @@
-import { focusAttempt } from './focus-attempt';
+import { focusAttempt } from './focusAttempt';
 
 /**
  * Set focus on descendant nodes until the first focusable element is found.

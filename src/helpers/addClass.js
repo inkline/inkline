@@ -1,4 +1,4 @@
-import { hasClass } from './has-class';
+import { hasClass } from './hasClass';
 
 /**
  * Add new classes to the given element
