@@ -1,4 +1,4 @@
-import { uid } from 'inkline/helpers/unique-id';
+import { uid } from 'inkline/helpers/uid';
 
 import ITransitionExpand from 'inkline/transitions/TransitionExpand';
 

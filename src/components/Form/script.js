@@ -67,7 +67,9 @@ export default {
             });
 
             input.$on(inputSchema.validateOn, (value) => {
-                const status = inputSchema.$validate(value);
+                const status = inputSchema.$validate(value, {
+                    getSchema: () => this.schema,
+                });
 
                 schemaTree.forEach((schema) => {
                     schema.errors = status.errors;
