@@ -16,7 +16,7 @@ export default {
         value: {}
     },
     created () {
-        this.$on('change', value => {
+        this.$on('change', (value) => {
             this.emitInput(value);
         });
     }

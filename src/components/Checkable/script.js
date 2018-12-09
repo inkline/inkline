@@ -39,11 +39,17 @@ export default {
     methods: {
         onBlur(e) {
             this.emitBlur(e);
-            this.parentFormGroup.emitBlur(e);
+
+            if (this.isGrouped) {
+                this.parentFormGroup.emitBlur(e);
+            }
         },
         onFocus(e) {
             this.emitFocus(e);
-            this.parentFormGroup.emitFocus(e);
+
+            if (this.isGrouped) {
+                this.parentFormGroup.emitFocus(e);
+            }
         }
     },
     data() {
