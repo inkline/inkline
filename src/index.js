@@ -47,7 +47,7 @@ import ISelect from 'inkline/components/Select';
 import ISelectOption from 'inkline/components/SelectOption';
 import ITextarea from 'inkline/components/Textarea';
 
-import { $isMobile } from 'inkline/prototypes/is-mobile';
+import { $isMobile } from 'inkline/prototypes/isMobile';
 import { $form } from 'inkline/prototypes/form';
 
 class Inkline {
