@@ -33,9 +33,10 @@ function _formControl(nameNesting=[], schema) {
      * Validate the current value by performing all the specified validation functions on it
      *
      * @param value
+     * @param options
      * @returns {{valid: boolean, errors: {length: number}}}
      */
-    const $validate = (value) => {
+    const $validate = (value, options) => {
         let valid = true;
         let errors = {
             length: 0
@@ -51,7 +52,8 @@ function _formControl(nameNesting=[], schema) {
                 validator.enabled() :
                 validator.enabled;
 
-            if (validatorEnabled && !validators[validator.rule](value, validator)) {
+            // Validator rule gets called with value, validator options and root schema options
+            if (validatorEnabled && !validators[validator.rule](value, validator, options)) {
                 errors[validator.rule] = validator.message;
                 errors.length += 1;
                 valid = false;
