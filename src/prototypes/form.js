@@ -1,6 +1,6 @@
 import * as validators from "inkline/validators";
 
-const defaultFormState = {
+export const defaultFormState = {
     touched: false,
     untouched: true,
     dirty: false,
@@ -18,7 +18,7 @@ const defaultFormState = {
  * @param schema
  * @returns {*}
  */
-const formFactory = (nameNesting, schemaName, schema, isGroup) => isGroup ?
+export const formFactory = (nameNesting, schemaName, schema, isGroup) => isGroup ?
     form(nameNesting.concat([schemaName]), schema) :
     formControl(nameNesting.concat([schemaName]), schema);
 
@@ -30,7 +30,7 @@ const formFactory = (nameNesting, schemaName, schema, isGroup) => isGroup ?
  * @returns {{$name: string, $validate: (function(*=): {valid: boolean, errors: {length: number}}), value: string, validateOn: string, touched: boolean, untouched: boolean, dirty: boolean, pristine: boolean, invalid: boolean, valid: boolean, errors: {}}}
  * @private
  */
-function formControl(nameNesting=[], schema) {
+export function formControl(nameNesting=[], schema) {
     const $name = nameNesting.join('.');
 
     // Set all validators as enabled by default
@@ -95,7 +95,7 @@ function formControl(nameNesting=[], schema) {
  * @returns {{$name: string, touched: boolean, untouched: boolean, dirty: boolean, pristine: boolean, invalid: boolean, valid: boolean, errors: {}}}
  * @private
  */
-function form(nameNesting=[], schema) {
+export function form(nameNesting=[], schema) {
     const $name = nameNesting.join('.');
 
     Object.keys(schema).forEach((name) => {
