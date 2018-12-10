@@ -7,8 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve",
-    "test:unit": "vue-cli-service test:unit",
-    "test:unit:dev": "vue-cli-service test:unit --watch"
+    "test": "vue-cli-service test:unit",
+    "test:dev": "vue-cli-service test:unit --watch"
   },
   "dependencies": {
     "popper.js": "^1.14.5",
