@@ -16,6 +16,8 @@ export class FormBuilder {
         validateOn: 'input'
     };
 
+    validators = validators;
+
     /**
      * If grouped, return a new form group. Otherwise, return a form control
      *
@@ -53,7 +55,7 @@ export class FormBuilder {
         const $name = nameNesting.join('.');
 
         // Set all validators as enabled by default
-        for (let validator of schema.validators) {
+        for (let validator of (schema.validators || [])) {
             if (!validator.hasOwnProperty('enabled')) {
                 validator.enabled = true;
             }
@@ -72,8 +74,8 @@ export class FormBuilder {
                 length: 0
             };
 
-            for (let validator of schema.validators) {
-                if (!validators[validator.rule]) {
+            for (let validator of (schema.validators || [])) {
+                if (!this.validators[validator.rule]) {
                     throw new Error(`Invalid validation rule '${validator.rule}' provided.`);
                 }
 
@@ -84,7 +86,7 @@ export class FormBuilder {
 
                 // Validator rule gets called with value, validator options and root schema options
                 if (validatorEnabled && !validators[validator.rule](value, validator, options)) {
-                    errors[validator.rule] = validator.message;
+                    errors[validator.rule] = validator.message || true;
                     errors.length += 1;
                     valid = false;
                 }
@@ -124,6 +126,14 @@ export class FormBuilder {
     form(nameNesting=[], schema) {
         const $name = nameNesting.join('.');
 
+        // Clone the provided schema to make sure we're working on a clean copy
+        // without modifying the provided arguments.
+        if (schema.constructor === Array) {
+            schema = schema.slice(0);
+        } else {
+            schema = { ...schema };
+        }
+
         Object.keys(schema).forEach((name) => {
             if (!schema.hasOwnProperty(name)) { return; }
 
@@ -138,32 +148,58 @@ export class FormBuilder {
                 !(schemaHasFormControlProperties || schemaIsEmptyObject) || schemaIsArray);
         });
 
-        // When handling array form groups, we add the schema fields as custom array properties in order to
-        // keep the array iterator intact
-        if (schema.constructor === Array) {
-            schema = schema.slice(0); // Clone array
-            schema.$name = $name;
+        // Set schema name
+        schema.$name = $name;
 
+        // Add schema state properties. When handling array form groups, we add the schema fields as
+        // custom array properties in order to keep the array iterator intact
+        Object.keys(this.defaultFormState)
+            .forEach((property) => schema[property] = this.defaultFormState[property]);
+
+
+        if (schema.constructor === Array) {
+
+            /**
+             * Push an item into the Array schema
+             *
+             * @param item
+             * @param options
+             */
             schema.$push = (item, options={}) => schema
                 .push(this.factory(nameNesting.concat([schema.length]), item, options.group));
 
-            schema.$splice = (start, deleteCount, item, options={}) => schema
-                .splice(start, deleteCount, this.factory(nameNesting.concat([start]), item, options.group));
+            /**
+             * Add an item into the Array schema at the given index, after removing n elements
+             *
+             * @param start
+             * @param deleteCount
+             * @param item
+             * @param options
+             */
+            schema.$splice = (start, deleteCount, item, options={}) => {
+                schema = schema.splice(
+                    start, deleteCount, this.factory(nameNesting.concat([start]), item, options.group));
 
-            Object.keys(this.defaultFormState)
-                .forEach((property) => schema[property] = this.defaultFormState[property]);
+                for (let index = start + 1; index < schema.length; index += 1) {
+                    schema[index].$name = schema[index].$name.replace(/[0-9]+$/, index);
+                }
+            };
 
             return schema;
         }
 
-        const $set = (name, item, options={}) => schema[name] = this.factory(
-            nameNesting.concat([name]), item, options.group);
+        /**
+         * Set a field with the given name and definition on the schema
+         *
+         * @param name
+         * @param item
+         * @param options
+         */
+        schema.$set = (name, item, options={}) => {
+            schema[name] = this.factory(
+                nameNesting.concat([name]), item, options.group)
+        };
 
-        return {
-            $name,
-            $set,
-            ...this.defaultFormState,
-            ...schema
-        }
+        return schema;
     }
 }
