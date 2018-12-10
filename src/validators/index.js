@@ -1,1 +1,10 @@
-export { required } from './required';
+export { alpha } from 'inkline/validators/alpha';
+export { alphanumeric } from 'inkline/validators/alphanumeric';
+export { decimal } from 'inkline/validators/decimal';
+export { email } from 'inkline/validators/email';
+export { max } from 'inkline/validators/max';
+export { maxLength } from 'inkline/validators/maxLength';
+export { min } from 'inkline/validators/min';
+export { minLength } from 'inkline/validators/minLength';
+export { required } from 'inkline/validators/required';
+export { sameAs } from 'inkline/validators/sameAs';
