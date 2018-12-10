@@ -589,13 +589,13 @@ describe('Factories', () => {
                     it('should set form name using current schema length', () => {
                         const form = formBuilder.form([], [{}, {}, {}]);
 
-                        form.$splice(1, 1, { value: 'new', validators: [] });
+                        form.$splice(1, 0, { value: 'new', validators: [] });
 
-                        expect(form.length).toEqual(3);
+                        expect(form.length).toEqual(4);
                         expect(form[0]).toEqual(expect.objectContaining({ $name: '0', value: '' }));
                         expect(form[1]).toEqual(expect.objectContaining({ $name: '1', value: 'new' }));
                         expect(form[2]).toEqual(expect.objectContaining({ $name: '2', value: '' }));
-                        // expect(form[3]).toEqual(expect.objectContaining({ $name: '3', value: '' }));
+                        expect(form[3]).toEqual(expect.objectContaining({ $name: '3', value: '' }));
                     });
 
                 });
