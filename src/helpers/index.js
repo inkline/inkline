@@ -11,7 +11,7 @@ export { modifierClass } from './modifierClass';
 export { off } from './off';
 export { on } from './on';
 export { once } from './once';
-export { popupManager } from './popupManager';
+export { popupManager } from '../factories/PopupManager';
 export { removeClass } from './removeClass';
 export { toCamelCase } from './toCamelCase';
 export { toDashCase } from './toDashCase';
