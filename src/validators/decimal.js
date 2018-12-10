@@ -1,4 +1,4 @@
-export function decimal(value, options = {}) {
+export function decimal(value) {
     const regExp = /^[-]?\d*(\.\d+)?$/;
 
     if (value.constructor === Array) {
