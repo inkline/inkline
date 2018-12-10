@@ -22,7 +22,7 @@ describe('Prototypes', () => {
         it('should call form builder factory() method', () => {
             const spy = jest.spyOn($form.builder, 'factory');
 
-            const form = $form({});
+            $form({});
 
             expect(spy).toHaveBeenCalled();
             expect(spy).toHaveBeenCalledWith([], {}, true);
@@ -31,7 +31,7 @@ describe('Prototypes', () => {
         it('should call form builder factory() method with name nesting', () => {
             const spy = jest.spyOn($form.builder, 'factory');
 
-            const form = $form('a.b.c', {});
+            $form('a.b.c', {});
 
             expect(spy).toHaveBeenCalled();
             expect(spy).toHaveBeenCalledWith(['a', 'b', 'c'], {}, true);
