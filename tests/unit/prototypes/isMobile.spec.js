@@ -1,29 +1,41 @@
-import { defaultFormState, $form } from 'inkline/prototypes/form';
+import { $isMobile } from 'inkline/prototypes/isMobile';
 
 describe('Prototypes', () => {
-    describe('$form()', () => {
-        describe('defaultFormState', () => {
-            it('should be untouched, pristine and valid', () => {
-               expect(defaultFormState.untouched).toEqual(true);
-               expect(defaultFormState.pristine).toEqual(true);
-               expect(defaultFormState.valid).toEqual(true);
-            });
+    describe('$isMobile()', () => {
+        it('should return true if navigator.userAgent matches Android', () => {
+            global.navigator.userAgent = 'androidxmobile';
 
-            it('should not be touched, dirty, invalid or have any errors', () => {
-               expect(defaultFormState.touched).toEqual(false);
-               expect(defaultFormState.dirty).toEqual(false);
-               expect(defaultFormState.invalid).toEqual(false);
-               expect(defaultFormState.errors).toEqual({});
-            });
+            expect($isMobile()).toEqual(true);
         });
 
-        // describe('formFactory()', () => {
-        //     it('should call form() if grouped', () => {
-        //         global.navigator.userAgent = 'androidxmobile';
-        //
-        //         expect($isMobile()).toEqual(true);
-        //     });
-        // });
+        it('should return true if navigator.userAgent matches iPhone', () => {
+            global.navigator.userAgent = 'iphone';
 
+            expect($isMobile()).toEqual(true);
+        });
+
+        it('should return true if navigator.vendor matches Android', () => {
+            global.navigator.vendor = 'androidxmobile';
+
+            expect($isMobile()).toEqual(true);
+        });
+
+        it('should return true if navigator.vendor matches iPhone', () => {
+            global.navigator.vendor = 'iphone';
+
+            expect($isMobile()).toEqual(true);
+        });
+
+        it('should return true if window.opera exists and matches regExp', () => {
+            global.window.opera = 'opera mini';
+
+            expect($isMobile()).toEqual(true);
+        });
+
+        it('should return false if navigator doesn\'t match regExp', () => {
+            global.navigator.userAgent = 'example';
+
+            expect($isMobile()).toEqual(false);
+        });
     });
 });

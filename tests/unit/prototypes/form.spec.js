@@ -1,41 +1,40 @@
-import { $isMobile } from 'inkline/prototypes/isMobile';
+import { $form } from 'inkline/prototypes/form';
 
-describe('Validators', () => {
-    describe('alpha()', () => {
-        it('should return true if navigator.userAgent matches Android', () => {
-            global.navigator.userAgent = 'androidxmobile';
-
-            expect($isMobile()).toEqual(true);
+describe('Prototypes', () => {
+    describe('$form()', () => {
+        beforeEach(() => {
+            $form.builder.factory = jest.fn()
+                .mockReturnValue({});
         });
 
-        it('should return true if navigator.userAgent matches iPhone', () => {
-            global.navigator.userAgent = 'iphone';
+        it('should be callable only with schema', () => {
+            const form = $form({});
 
-            expect($isMobile()).toEqual(true);
+            expect(form).toBeDefined();
         });
 
-        it('should return true if navigator.vendor matches Android', () => {
-            global.navigator.vendor = 'androidxmobile';
+        it('should be callable with name and schema', () => {
+            const form = $form('name', {});
 
-            expect($isMobile()).toEqual(true);
+            expect(form).toBeDefined();
         });
 
-        it('should return true if navigator.vendor matches iPhone', () => {
-            global.navigator.vendor = 'iphone';
+        it('should call form builder factory() method', () => {
+            const spy = jest.spyOn($form.builder, 'factory');
 
-            expect($isMobile()).toEqual(true);
+            const form = $form({});
+
+            expect(spy).toHaveBeenCalled();
+            expect(spy).toHaveBeenCalledWith([], {}, true);
         });
 
-        it('should return true if window.opera exists and matches regExp', () => {
-            global.window.opera = 'opera mini';
+        it('should call form builder factory() method with name nesting', () => {
+            const spy = jest.spyOn($form.builder, 'factory');
 
-            expect($isMobile()).toEqual(true);
-        });
+            const form = $form('a.b.c', {});
 
-        it('should return false if navigator doesn\'t match regExp', () => {
-            global.navigator.userAgent = 'example';
-
-            expect($isMobile()).toEqual(false);
+            expect(spy).toHaveBeenCalled();
+            expect(spy).toHaveBeenCalledWith(['a', 'b', 'c'], {}, true);
         });
     });
 });
