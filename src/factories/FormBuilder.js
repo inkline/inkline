@@ -138,9 +138,10 @@ export class FormBuilder {
                 !(schemaHasFormControlProperties || schemaIsEmptyObject) || schemaIsArray);
         });
 
-        // When handling array form groups, we add the schema fields as custom array properties in order to keep the
-        // array iterator intact
+        // When handling array form groups, we add the schema fields as custom array properties in order to
+        // keep the array iterator intact
         if (schema.constructor === Array) {
+            schema = schema.slice(0); // Clone array
             schema.$name = $name;
 
             schema.$push = (item, options={}) => schema
@@ -155,10 +156,12 @@ export class FormBuilder {
             return schema;
         }
 
-        schema.$set = (name, item, options={}) => schema[name] = this.factory(nameNesting.concat([name]), item, options.group);
+        const $set = (name, item, options={}) => schema[name] = this.factory(
+            nameNesting.concat([name]), item, options.group);
 
         return {
             $name,
+            $set,
             ...this.defaultFormState,
             ...schema
         }
