@@ -177,10 +177,10 @@ export class FormBuilder {
              * @param options
              */
             schema.$splice = (start, deleteCount, item, options={}) => {
-                schema = schema.splice(
+                schema.splice(
                     start, deleteCount, this.factory(nameNesting.concat([start]), item, options.group));
 
-                for (let index = start + 1; index < schema.length; index += 1) {
+                for (let index = start; index < schema.length; index += 1) {
                     schema[index].$name = schema[index].$name.replace(/[0-9]+$/, index);
                 }
             };
