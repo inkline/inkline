@@ -9,7 +9,7 @@ describe('Components', () => {
         //     wrapper = mount(CollapsibleItem);
         // });
 
-        test('should render correctly', () => {
+        it('should render correctly', () => {
             expect(true);
         });
     });

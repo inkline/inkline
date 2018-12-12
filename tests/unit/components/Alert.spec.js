@@ -9,8 +9,10 @@ describe('Components', () => {
             wrapper = mount(Alert);
         });
 
-        test('should render correctly', () => {
+        it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
+
+
     });
 });

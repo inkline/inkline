@@ -9,7 +9,7 @@ describe('Components', () => {
             wrapper = mount(Form);
         });
 
-        test('should render correctly', () => {
+        it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
     });

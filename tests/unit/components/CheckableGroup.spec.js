@@ -9,7 +9,7 @@ describe('Components', () => {
             wrapper = mount(CheckableGroup);
         });
 
-        test('should render correctly', () => {
+        it('should render correctly', () => {
             expect(true);
         });
     });

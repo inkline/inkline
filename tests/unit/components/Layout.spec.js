@@ -9,7 +9,7 @@ describe('Components', () => {
             wrapper = mount(Layout);
         });
 
-        test('should render correctly', () => {
+        it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
     });
