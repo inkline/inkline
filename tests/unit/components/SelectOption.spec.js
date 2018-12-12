@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import SelectOption from 'inkline/components/SelectOption';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('SelectOption', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(SelectOption);
         });
 
         test('should render correctly', () => {

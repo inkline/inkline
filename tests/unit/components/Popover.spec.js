@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import Popover from 'inkline/components/Popover';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('Popover', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(Popover);
         });
 
         test('should render correctly', () => {

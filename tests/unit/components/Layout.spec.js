@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import Layout from 'inkline/components/Layout';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('Layout', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(Layout);
         });
 
         test('should render correctly', () => {

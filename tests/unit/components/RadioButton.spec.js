@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import RadioButton from 'inkline/components/RadioButton';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('RadioButton', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(RadioButton);
         });
 
         test('should render correctly', () => {

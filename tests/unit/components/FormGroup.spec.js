@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import FormGroup from 'inkline/components/FormGroup';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('FormGroup', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(FormGroup);
         });
 
         test('should render correctly', () => {

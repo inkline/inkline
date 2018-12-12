@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import ProgressBar from 'inkline/components/ProgressBar';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('ProgressBar', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(ProgressBar);
         });
 
         test('should render correctly', () => {

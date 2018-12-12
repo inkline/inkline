@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import NavbarBrand from 'inkline/components/NavbarBrand';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('NavbarBrand', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(NavbarBrand);
         });
 
         test('should render correctly', () => {

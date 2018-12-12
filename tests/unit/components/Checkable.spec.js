@@ -1,16 +1,16 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import Checkable from 'inkline/components/Checkable';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('Checkable', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(Checkable);
         });
 
         test('should render correctly', () => {
-            expect(wrapper.html()).toMatchSnapshot();
+            expect(true);
         });
     });
 });

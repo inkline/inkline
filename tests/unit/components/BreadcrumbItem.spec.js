@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import BreadcrumbItem from 'inkline/components/BreadcrumbItem';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('BreadcrumbItem', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(BreadcrumbItem);
         });
 
         test('should render correctly', () => {

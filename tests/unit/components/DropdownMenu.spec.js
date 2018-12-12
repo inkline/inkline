@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import DropdownMenu from 'inkline/components/DropdownMenu';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('DropdownMenu', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(DropdownMenu);
         });
 
         test('should render correctly', () => {

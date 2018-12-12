@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import CheckboxButtonGroup from 'inkline/components/CheckboxButtonGroup';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('CheckboxButtonGroup', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(CheckboxButtonGroup);
         });
 
         test('should render correctly', () => {

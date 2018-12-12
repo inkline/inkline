@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import ButtonGroup from 'inkline/components/ButtonGroup';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('ButtonGroup', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert);
+            wrapper = mount(ButtonGroup);
         });
 
         test('should render correctly', () => {
