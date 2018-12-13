@@ -2,7 +2,7 @@
 
 exports[`Components Select should render correctly 1`] = `
 <div size="" tabindex="-1" class="dropdown select">
-  <div class="form-input-group" aria-haspopup="list" aria-controls="dropdown-menu-f26zq37i2">
+  <div class="form-input-group" aria-haspopup="list" aria-controls="dropdown-menu-6860t3y3x">
     <!---->
     <div class="form-input">
       <!---->
@@ -10,6 +10,6 @@ exports[`Components Select should render correctly 1`] = `
     <!---->
   </div>
   <!---->
-  <div class="dropdown-menu" style="display: none;" name="zoom-in-top-transition" id="dropdown-menu-f26zq37i2"><span class="arrow"></span> </div>
+  <div class="dropdown-menu" style="display: none;" name="zoom-in-top-transition" id="dropdown-menu-6860t3y3x"><span class="arrow"></span> </div>
 </div>
 `;
