@@ -7,8 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve",
-    "test": "vue-cli-service test:unit --coverage",
-    "test:dev": "vue-cli-service test:unit --watch --coverage",
+    "test": "vue-cli-service test:unit --coverage --no-cache",
+    "test:dev": "vue-cli-service test:unit --watch --coverage --no-cache",
     "test:coveralls": "npm run test && cat ./tests/coverage/lcov.info | coveralls"
   },
   "dependencies": {

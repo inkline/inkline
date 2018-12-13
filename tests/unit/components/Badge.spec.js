@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Badge from 'inkline/components/Badge';
+import Badge from '../../../src/components/Badge';
 
 describe('Components', () => {
     describe('Badge', () => {

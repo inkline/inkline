@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Components DropdownMenu should render correctly 1`] = `<div role="checkboxgroup" class="button-group form-group -checkbox"></div>`;

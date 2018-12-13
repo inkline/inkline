@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import Alert from 'inkline/components/Alert';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Alert, {
+            wrapper = shallowMount(Alert, {
                 methods: {
                     mounted: Alert.mounted,
                     created: Alert.created
@@ -15,7 +15,7 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            expect(wrapper.$el).toMatchSnapshot();
+            expect(wrapper.html()).toMatchSnapshot();
         });
 
         describe('props', () => {

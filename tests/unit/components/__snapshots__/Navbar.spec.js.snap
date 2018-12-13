@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components Navbar should render correctly 1`] = `
-<div class="alert">
-  <!---->
-  <div class="content"></div>
-  <!---->
+<div class="navbar">
+  <div class="container"></div>
 </div>
 `;

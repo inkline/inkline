@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components Card should render correctly 1`] = `<div role="checkboxgroup" class="button-group form-group -checkbox"></div>`;
+exports[`Components Card should render correctly 1`] = `
+<div class="card">
+  <!---->
+  <!---->
+  <!---->
+</div>
+`;
