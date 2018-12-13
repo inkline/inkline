@@ -5,7 +5,9 @@ for size in (sm md lg)
     .alert.-{size}
         border-radius: --alert-border-radius[size]
         font-size: --alert-font-size[size]
-        padding: --alert-padding[size]
+
+        > .content
+            padding: --alert-padding[size]
 
         > .title
             margin-bottom: --alert-padding[size]
@@ -17,8 +19,10 @@ for size in (sm md lg)
             margin-left: --alert-padding[size]
 
         > .dismiss
-            margin-left: --alert-padding[size]
+            padding: (--alert-padding[size] / 2)
+            margin-right: (--alert-padding[size] / 2)
+            margin-left: (--alert-padding[size] / 2)
 
         > .icon
+            padding-left: --alert-padding[size]
             padding-right: --alert-padding[size]
-            margin-right: --alert-padding[size]

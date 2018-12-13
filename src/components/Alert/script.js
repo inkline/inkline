@@ -34,10 +34,6 @@ export default {
         dismissLabel: {
             type: String,
             default: '×'
-        },
-        faded: {
-            type: Boolean,
-            default: false
         }
     },
     watch: {
