@@ -9,6 +9,10 @@ describe('Components', () => {
             wrapper = mount(Card);
         });
 
+        it('should be named correctly', () => {
+            expect(Card.name).toEqual('ICard');
+        });
+
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });

@@ -40,10 +40,6 @@ export default {
             type: Boolean,
             default: false
         },
-        flat: {
-            type: Boolean,
-            default: false
-        },
         link: {
             type: Boolean,
             default: false
@@ -74,7 +70,6 @@ export default {
         this.classesProvider.add(() => ({
             '-block': this.block,
             '-circle': this.circle,
-            '-flat': this.flat,
             '-link': this.link,
             '-outline': this.outline
         }));

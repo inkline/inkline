@@ -14,6 +14,10 @@ describe('Components', () => {
             });
         });
 
+        it('should be named correctly', () => {
+            expect(Alert.name).toEqual('IAlert');
+        });
+
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });

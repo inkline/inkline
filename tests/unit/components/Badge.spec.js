@@ -9,6 +9,10 @@ describe('Components', () => {
             wrapper = shallowMount(Badge);
         });
 
+        it('should be named correctly', () => {
+            expect(Badge.name).toEqual('IBadge');
+        });
+
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
