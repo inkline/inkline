@@ -9,6 +9,10 @@ describe('Components', () => {
             wrapper = mount(CheckboxButton);
         });
 
+        it('should be named correctly', () => {
+            expect(CheckboxButton.name).toEqual('ICheckboxButton');
+        });
+
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });

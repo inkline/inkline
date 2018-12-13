@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import CheckableGroup from 'inkline/components/CheckableGroup';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(CheckableGroup, {
+            wrapper = shallowMount(CheckableGroup, {
                 methods: {
                     created: CheckableGroup.created
                 }

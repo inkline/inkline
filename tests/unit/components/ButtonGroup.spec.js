@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import ButtonGroup from 'inkline/components/ButtonGroup';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(ButtonGroup, {
+            wrapper = shallowMount(ButtonGroup, {
                 methods: {
                     created: ButtonGroup.created
                 }

@@ -9,6 +9,10 @@ describe('Components', () => {
             wrapper = mount(CheckboxButtonGroup);
         });
 
+        it('should be named correctly', () => {
+            expect(CheckboxButtonGroup.name).toEqual('ICheckboxButtonGroup');
+        });
+
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });

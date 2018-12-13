@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import Breadcrumb from 'inkline/components/Breadcrumb';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Breadcrumb);
+            wrapper = shallowMount(Breadcrumb);
         });
 
         it('should be named correctly', () => {

@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import BreadcrumbItem from 'inkline/components/BreadcrumbItem';
 
 const RouterLink = {
@@ -11,7 +11,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(BreadcrumbItem, {
+            wrapper = shallowMount(BreadcrumbItem, {
                 components: {
                     RouterLink
                 }
@@ -37,7 +37,7 @@ describe('Components', () => {
                 });
 
                 it('should be <router-link> tag if "to" attribute is provided', () => {
-                    wrapper = mount(BreadcrumbItem, {
+                    wrapper = shallowMount(BreadcrumbItem, {
                         components: {
                             RouterLink
                         },
