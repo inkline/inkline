@@ -2,14 +2,104 @@
 
 exports[`Components InputNumber should render correctly 1`] = `
 <div class="form-input-group">
-  <div class="form-input-prepend"> <button tag="button" tabindex="1" class="button form-input-button-decrease">
-      <!---->
-      <!----> <span>-</span></button></div>
+  <div class="form-input-prepend">
+    <!--function (el) {
+      var obj;
+
+      var args = [], len = arguments.length - 1;
+      while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
+      if (shouldNotBeStubbed(el, stubs, modifiedComponents)) {
+        return originalCreateElement.apply(void 0, [ el ].concat( args ))
+      }
+
+      if (isConstructor(el)) {
+        if (stubAllComponents) {
+          var stub = createStubFromComponent(el, el.name || 'anonymous');
+          return originalCreateElement.apply(void 0, [ stub ].concat( args ))
+        }
+
+        var Constructor = shouldExtend(el, _Vue) ? extend(el, _Vue) : el;
+
+        return originalCreateElement.apply(void 0, [ Constructor ].concat( args ))
+      }
+
+      if (typeof el === 'string') {
+        var original = resolveComponent(el, originalComponents);
+
+        if (
+          original &&
+          original.options &&
+          original.options.$_vueTestUtils_original
+        ) {
+          original = original.options.$_vueTestUtils_original;
+        }
+
+        if (isDynamicComponent(original)) {
+          return originalCreateElement.apply(void 0, [ el ].concat( args ))
+        }
+
+        var stub$1 = createStubIfNeeded(stubAllComponents, original, _Vue, el);
+
+        if (stub$1) {
+          vm.$options.components = Object.assign({}, vm.$options.components,
+            ( obj = {}, obj[el] = stub$1, obj));
+          modifiedComponents.add(el);
+        }
+      }
+
+      return originalCreateElement.apply(void 0, [ el ].concat( args ))
+    }-->
+  </div>
   <div class="form-input">
     <!---->
     <!----> <input tabindex="1"></div>
-  <div class="form-input-append"><button tag="button" tabindex="1" class="button form-input-button-increase">
-      <!---->
-      <!----> <span>+</span></button> </div>
+  <div class="form-input-append">
+    <!--function (el) {
+      var obj;
+
+      var args = [], len = arguments.length - 1;
+      while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
+      if (shouldNotBeStubbed(el, stubs, modifiedComponents)) {
+        return originalCreateElement.apply(void 0, [ el ].concat( args ))
+      }
+
+      if (isConstructor(el)) {
+        if (stubAllComponents) {
+          var stub = createStubFromComponent(el, el.name || 'anonymous');
+          return originalCreateElement.apply(void 0, [ stub ].concat( args ))
+        }
+
+        var Constructor = shouldExtend(el, _Vue) ? extend(el, _Vue) : el;
+
+        return originalCreateElement.apply(void 0, [ Constructor ].concat( args ))
+      }
+
+      if (typeof el === 'string') {
+        var original = resolveComponent(el, originalComponents);
+
+        if (
+          original &&
+          original.options &&
+          original.options.$_vueTestUtils_original
+        ) {
+          original = original.options.$_vueTestUtils_original;
+        }
+
+        if (isDynamicComponent(original)) {
+          return originalCreateElement.apply(void 0, [ el ].concat( args ))
+        }
+
+        var stub$1 = createStubIfNeeded(stubAllComponents, original, _Vue, el);
+
+        if (stub$1) {
+          vm.$options.components = Object.assign({}, vm.$options.components,
+            ( obj = {}, obj[el] = stub$1, obj));
+          modifiedComponents.add(el);
+        }
+      }
+
+      return originalCreateElement.apply(void 0, [ el ].concat( args ))
+    }-->
+  </div>
 </div>
 `;

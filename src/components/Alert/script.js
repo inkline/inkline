@@ -4,8 +4,6 @@ import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesPro
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
 
-console.log(SizePropertyMixin)
-
 export default {
     name: 'IAlert',
     mixins: [

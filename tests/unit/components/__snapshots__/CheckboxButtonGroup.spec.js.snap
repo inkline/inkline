@@ -1,8 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components CheckboxButtonGroup should render correctly 1`] = `
-<button tag="button" tabindex="1" class="button">
-  <!---->
-  <!---->
-  <!----></button>
-`;
+exports[`Components CheckboxButtonGroup should render correctly 1`] = `<div role="checkboxgroup" class="button-group form-group -checkbox"></div>`;

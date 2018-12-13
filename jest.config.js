@@ -1,9 +1,9 @@
 module.exports = {
   moduleFileExtensions: [
-    'vue',
     'js',
     'jsx',
-    'json'
+    'json',
+    'vue'
   ],
   collectCoverage: true,
   coverageReporters: ["json", "html", "lcov"],

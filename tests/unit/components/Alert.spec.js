@@ -15,7 +15,7 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            expect(wrapper.html()).toMatchSnapshot();
+            expect(wrapper.$el).toMatchSnapshot();
         });
 
         describe('props', () => {
