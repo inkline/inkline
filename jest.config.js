@@ -9,7 +9,8 @@ module.exports = {
   coverageReporters: ["json", "html", "lcov"],
   coverageDirectory: "<rootDir>/tests/coverage",
   collectCoverageFrom: [
-      '<rootDir>/src/**/*',
+      '<rootDir>/src/**/*.vue',
+      '<rootDir>/src/(constants|directives|factories|helpers|prototypes|validators)/**/*.js',
   ],
   transform: {
     '^.+\\.vue$': 'vue-jest',
