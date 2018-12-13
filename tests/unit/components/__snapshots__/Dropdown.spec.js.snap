@@ -1,3 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components Dropdown should render correctly 1`] = `<div role="checkboxgroup" class="button-group form-group -checkbox"></div>`;
+exports[`Components Dropdown should render correctly 1`] = `
+<button tag="button" tabindex="1" class="button">
+  <!---->
+  <!---->
+  <!----></button>
+`;

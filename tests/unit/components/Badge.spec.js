@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import Badge from 'inkline/components/Badge';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Badge);
+            wrapper = shallowMount(Badge);
         });
 
         it('should render correctly', () => {

@@ -4,6 +4,8 @@ import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesPro
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
 
+console.log(SizePropertyMixin)
+
 export default {
     name: 'IAlert',
     mixins: [
@@ -58,8 +60,7 @@ export default {
     created () {
         this.classesProvider.add(() => ({
             '-dismissible': this.dismissible,
-            '-faded': this.faded,
-            '-with-icon': this.$slots.icon
+            '-with-icon': Boolean(this.$slots.icon)
         }));
     }
 };
