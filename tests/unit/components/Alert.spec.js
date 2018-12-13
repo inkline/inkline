@@ -18,7 +18,7 @@ describe('Components', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
 
-        describe.only('props', () => {
+        describe('props', () => {
            describe('show', () => {
                it('should be defined', () => {
                    expect(wrapper.vm.show).toBeDefined();
@@ -41,7 +41,7 @@ describe('Components', () => {
             });
         });
 
-        describe.only('methods', () => {
+        describe('methods', () => {
             describe('dismiss()', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.dismiss).toBeDefined();

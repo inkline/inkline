@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components BreadcrumbItem should render correctly 1`] = `<div class="badge"></div>`;
+exports[`Components BreadcrumbItem should render correctly 1`] = `
+<div class="alert">
+  <!---->
+  <div class="content"></div>
+  <!---->
+</div>
+`;
