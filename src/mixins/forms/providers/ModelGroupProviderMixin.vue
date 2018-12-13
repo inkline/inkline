@@ -8,10 +8,10 @@ export default {
     },
     computed: {
         /**
-         * Get the value of the form item group or, if it is not grouped, get the value from the individual form item
+         * Get the value of the form item
          */
         currentValue () {
-            return this.isGrouped ? this.value : this.$attrs.value;
+            return this.value;
         },
 
         /**

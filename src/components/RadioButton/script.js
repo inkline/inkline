@@ -6,5 +6,10 @@ export default {
     components: {
         IButton
     },
+    data() {
+        return {
+            parentFormGroupName: 'IRadioButtonGroup'
+        }
+    },
     extends: IRadio
 };

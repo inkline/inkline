@@ -12,7 +12,10 @@ export default {
         NamePropertyMixin
     ],
     props: {
-        value: [Boolean, String],
+        value: {
+            type: [Boolean, String],
+            default: false
+        },
         indeterminate: {
             type: Boolean,
             default: false
@@ -20,9 +23,7 @@ export default {
     },
     computed: {
         checked () {
-            if ({}.toString.call(this.model) === '[object Boolean]') {
-                return this.model;
-            } else if (Array.isArray(this.model)) {
+            if (Array.isArray(this.model)) {
                 return this.model.indexOf(this.currentValue) !== -1;
             } else if (this.model !== null && this.model !== undefined) {
                 return this.model === this.currentValue;

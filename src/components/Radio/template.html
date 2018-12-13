@@ -3,11 +3,11 @@
         v-model="model"
         ref="input"
         type="radio"
+        tabindex="-1"
         :name="name"
         :value="currentValue"
-        :readonly="isReadonly"
-        :disabled="isDisabled">
-
+        :disabled="isDisabled"
+        :readonly="isReadonly">
     <label
        class="form-input-label"
        :class="classes['label']"

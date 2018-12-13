@@ -1,15 +1,10 @@
-import IFormGroup from 'inkline/components/FormGroup';
 import IButtonGroup from 'inkline/components/ButtonGroup';
+import ICheckableGroup from "inkline/components/CheckableGroup";
 
 export default {
     name: 'ICheckboxButtonGroup',
-    extends: IFormGroup,
+    extends: ICheckableGroup,
     components: {
         IButtonGroup
-    },
-    created () {
-        this.$on('change', value => {
-            this.emitInput(value);
-        });
     }
 };
