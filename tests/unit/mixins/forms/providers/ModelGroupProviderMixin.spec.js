@@ -40,19 +40,10 @@ describe('Mixins', () => {
                     expect(wrapper.vm).toHaveProperty('currentValue');
                 });
 
-                it('should return value if grouped', () => {
-                    wrapper.setData({
-                        isGrouped: true,
-                    });
+                it('should return value', () => {
                     wrapper.setProps({
                         value: 'value'
                     });
-
-                    expect(wrapper.vm.currentValue).toEqual('value');
-                });
-
-                it('should return value attribute if not grouped', () => {
-                    wrapper.vm.$attrs.value = 'value';
 
                     expect(wrapper.vm.currentValue).toEqual('value');
                 });

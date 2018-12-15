@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components Radio should render correctly 1`] = `<div class="form-check -radio -custom"><input type="radio" name="" value=""> <label tabindex="1" class="form-input-label"></label></div>`;
+exports[`Components Radio should render correctly 1`] = `<div class="form-check -radio -custom"><input type="radio" tabindex="-1" name="" value=""> <label tabindex="1" class="form-input-label"></label></div>`;

@@ -29,9 +29,11 @@ export default {
     name: 'IColumn',
     props: properties,
     computed: {
-        classes: function () {
+        classes () {
             return [
-                ...Object.keys(properties).map((p) => this[p] ? breakpointClass(modifierClass(p), this[p]) : '')
+                ...Object.keys(properties)
+                    .map((p) => this[p] ? breakpointClass(modifierClass(p), this[p]) : '')
+                    .filter((p) => p !== '')
             ];
         }
     }

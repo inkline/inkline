@@ -12,5 +12,11 @@ describe('Components', () => {
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
+
+        // it('should return value attribute if not grouped', () => {
+        //     wrapper.vm.$attrs.value = 'value';
+        //
+        //     expect(wrapper.vm.currentValue).toEqual('value');
+        // });
     });
 });

@@ -9,9 +9,9 @@ import { toDashCase } from './toDashCase';
  * @returns {string}
  */
 export function breakpointClass (className, breakpoint) {
-    if (typeof breakpoint === 'string' && breakpoint !== '') {
+    if (['string', 'number'].indexOf(typeof breakpoint) > -1 && breakpoint !== '') {
         return `${toDashCase(className)}-${breakpoint}`;
     }
 
-    return breakpoint ? toDashCase(className) : '';
+    return toDashCase(className);
 }

@@ -39,9 +39,20 @@ describe('Components', () => {
                 });
 
                 it('should return value of "model" if Boolean', () => {
-                    wrapper.setProps({ value: true });
+                    wrapper = shallowMount(Checkbox, {
+                        computed: {
+                            currentValue() { return 'value'; }
+                        }
+                    });
+                    wrapper.setData({ value: 'value' });
                     expect(wrapper.vm.checked).toEqual(true);
-                    wrapper.setProps({ value: false });
+
+                    wrapper = shallowMount(Checkbox, {
+                        computed: {
+                            currentValue() { return 'value'; }
+                        }
+                    });
+                    wrapper.setData({ value: 'other' });
                     expect(wrapper.vm.checked).toEqual(false);
                 });
 

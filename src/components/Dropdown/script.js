@@ -60,7 +60,6 @@ export default {
             visible: false,
             triggerElement: null,
             dropdownElement: null,
-            focusedTrigger: false,
             id: this.$attrs.id || uid('dropdown-menu')
         };
     },
@@ -74,6 +73,8 @@ export default {
         onTriggerKeyDown(e) {
             let activeIndex = this.items.findIndex((e) => e.active);
             let initialIndex = activeIndex > -1 ? activeIndex : 0;
+
+            console.log(activeIndex, initialIndex)
 
             if (isKey('up', e) || isKey('down', e)) {
                 this.show();

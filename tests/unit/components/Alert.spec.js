@@ -118,44 +118,44 @@ describe('Components', () => {
             });
         });
 
-        describe('created', () => {
+        describe('created()', () => {
             it('should be defined', () => {
                 expect(Alert.created).toBeDefined();
             });
 
-            // it('should add class rules to classes provider', () => {
-            //     const spy = jest.spyOn(wrapper.vm.classesProvider, 'add');
-            //     const classRulesLength = wrapper.vm.classesProvider.length;
-            //
-            //     wrapper.vm.created();
-            //
-            //     expect(spy).toHaveBeenCalled();
-            //     expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 1);
-            // });
-            //
-            // it('should add "-dismissible" class if "dismissible"', () => {
-            //     const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length  - 1];
-            //
-            //     expect(rule()).toEqual(expect.objectContaining({
-            //         '-dismissible': false
-            //     }));
-            //
-            //     wrapper.setProps({
-            //         dismissible: true
-            //     });
-            //
-            //     expect(rule()).toEqual(expect.objectContaining({
-            //         '-dismissible': true
-            //     }));
-            // });
-            //
-            // it('should add "-with-icon" class if has icon slot', () => {
-            //     const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length  - 1];
-            //
-            //     expect(rule()).toEqual(expect.objectContaining({
-            //         '-with-icon': undefined
-            //     }));
-            // });
+            it('should add class rules to classes provider', () => {
+                const spy = jest.spyOn(wrapper.vm.classesProvider, 'add');
+                const classRulesLength = wrapper.vm.classesProvider.length;
+
+                wrapper.vm.created();
+
+                expect(spy).toHaveBeenCalled();
+                expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 1);
+            });
+
+            it('should add "-dismissible" class if "dismissible"', () => {
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length  - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({
+                    '-dismissible': false
+                }));
+
+                wrapper.setProps({
+                    dismissible: true
+                });
+
+                expect(rule()).toEqual(expect.objectContaining({
+                    '-dismissible': true
+                }));
+            });
+
+            it('should add "-with-icon" class if has icon slot', () => {
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length  - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({
+                    '-with-icon': false
+                }));
+            });
         });
     });
 });
