@@ -198,7 +198,7 @@ export default {
         });
 
         this.$on('dropdown-item-destroyed', (item) => {
-            this.items = this.items.filter((i) => i === item);
+            this.items = this.items.filter((i) => i !== item);
         });
     },
     mounted() {

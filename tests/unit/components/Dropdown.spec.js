@@ -10,6 +10,10 @@ describe('Components', () => {
                 propsData: {
                     id: 'dropdown'
                 },
+                methods: {
+                    created: Dropdown.created,
+                    mounted: Dropdown.mounted
+                },
                 slots: {
                     default: ['<button/>', '<div/>']
                 }
@@ -510,7 +514,109 @@ describe('Components', () => {
 
                     expect(spy).toHaveBeenNthCalledWith(2, 'click', wrapper.vm.onClick);
                 });
+
+                it('should add mouseenter and mouseleave events to trigger and dropdown elements if trigger is "hover"', () => {
+                    const spy1 = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
+                    const spy2 = jest.spyOn(wrapper.vm.dropdownElement, 'addEventListener');
+
+                    wrapper.setProps({ trigger: 'hover' });
+
+                    wrapper.vm.initEvents();
+
+                    expect(spy1).toHaveBeenNthCalledWith(2, 'mouseenter', wrapper.vm.show);
+                    expect(spy1).toHaveBeenNthCalledWith(3, 'mouseleave', wrapper.vm.hide);
+                    expect(spy2).toHaveBeenNthCalledWith(2, 'mouseenter', wrapper.vm.show);
+                    expect(spy2).toHaveBeenNthCalledWith(3, 'mouseleave', wrapper.vm.hide);
+                });
+            });
+
+            describe('handleMenuItemClick()', () => {
+                it('should set visible to false if hideOnClick', () => {
+                    wrapper.setProps({ hideOnClick: true });
+                    wrapper.setData({ visible: true });
+
+                    wrapper.vm.handleMenuItemClick(true, true);
+
+                    expect(wrapper.vm.visible).toEqual(false);
+                });
+
+                it('should emit "action" event', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.vm.handleMenuItemClick(true, true);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('action', true, true);
+                });
             });
         });
+
+        describe('created()', () => {
+            it('should listen to "dropdown-item-mounted" event', () => {
+                const spy = jest.spyOn(wrapper.vm, '$on');
+
+                wrapper.vm.created();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith('dropdown-item-mounted', expect.any(Function));
+            });
+
+            it('should push item to items on "dropdown-item-mounted" event', () => {
+                wrapper.vm.$emit('dropdown-item-mounted', true);
+
+                expect(wrapper.vm.items).toEqual([true]);
+            });
+
+            it('should listen to "dropdown-item-destroyed" event', () => {
+                const spy = jest.spyOn(wrapper.vm, '$on');
+
+                wrapper.vm.created();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith('dropdown-item-destroyed', expect.any(Function));
+            });
+
+            it('should remove item from items on "dropdown-item-destroyed" event', () => {
+                wrapper.vm.$emit('dropdown-item-mounted', true);
+                expect(wrapper.vm.items).toEqual([true]);
+                wrapper.vm.$emit('dropdown-item-destroyed', true);
+                expect(wrapper.vm.items).toEqual([]);
+            });
+        });
+
+        describe('mounted()', () => {
+            it('should listen to "menu-item-click" event', () => {
+                const spy = jest.spyOn(wrapper.vm, '$on');
+
+                wrapper.vm.mounted();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith('menu-item-click', expect.any(Function));
+            });
+
+            it('should initialize elements', () => {
+                const spy = jest.spyOn(wrapper.vm, 'initElements');
+
+                wrapper.vm.mounted();
+
+                expect(spy).toHaveBeenCalled();
+            });
+
+            it('should initialize events', () => {
+                const spy = jest.spyOn(wrapper.vm, 'initEvents');
+
+                wrapper.vm.mounted();
+
+                expect(spy).toHaveBeenCalled();
+            });
+
+            it('should initialize aria attributes', () => {
+                const spy = jest.spyOn(wrapper.vm, 'initAriaAttributes');
+
+                wrapper.vm.mounted();
+
+                expect(spy).toHaveBeenCalled();
+            });
+        })
     });
 });
