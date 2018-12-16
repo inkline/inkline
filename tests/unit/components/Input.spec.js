@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import Input from 'inkline/components/Input';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(Input);
+            wrapper = shallowMount(Input);
         });
 
         it('should render correctly', () => {

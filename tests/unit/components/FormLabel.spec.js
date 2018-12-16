@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import FormLabel from 'inkline/components/FormLabel';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(FormLabel);
+            wrapper = shallowMount(FormLabel);
         });
 
         it('should render correctly', () => {

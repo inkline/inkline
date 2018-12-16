@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import RadioButtonGroup from 'inkline/components/RadioButtonGroup';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(RadioButtonGroup);
+            wrapper = shallowMount(RadioButtonGroup);
         });
 
         it('should render correctly', () => {

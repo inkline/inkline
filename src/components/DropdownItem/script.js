@@ -1,4 +1,5 @@
 import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
+import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndexPropertyMixin';
 
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
@@ -8,6 +9,7 @@ export default {
     name: 'IDropdownItem',
     mixins: [
         DisabledPropertyMixin,
+        TabIndexPropertyMixin,
 
         AttributesProviderMixin,
         ClassesProviderMixin,
@@ -21,6 +23,10 @@ export default {
         action: {
             type: String | Number | Boolean,
             default: undefined
+        },
+        tabindex: {
+            type: Number | String,
+            default: -1
         }
     },
     methods: {
@@ -29,12 +35,9 @@ export default {
         }
     },
     computed: {
-        _tag () {
+        isTag () {
             return this.attributes.to ? 'router-link' : this.attributes.href ? 'a' : this.tag;
         },
-        tabindex() {
-            return this.disabled ? null : -1;
-        }
     },
     mounted() {
         this.dispatch('IDropdown', 'dropdown-item-mounted', this);

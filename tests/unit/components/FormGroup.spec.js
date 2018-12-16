@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import FormGroup from 'inkline/components/FormGroup';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(FormGroup);
+            wrapper = shallowMount(FormGroup);
         });
 
         it('should render correctly', () => {

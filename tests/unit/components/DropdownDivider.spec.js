@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import DropdownDivider from 'inkline/components/DropdownDivider';
 
 describe('Components', () => {
@@ -6,7 +6,11 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(DropdownDivider);
+            wrapper = shallowMount(DropdownDivider);
+        });
+
+        it('should be named correctly', () => {
+            expect(DropdownDivider.name).toEqual('IDropdownDivider');
         });
 
         it('should render correctly', () => {

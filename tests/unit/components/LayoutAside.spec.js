@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import LayoutAside from 'inkline/components/LayoutAside';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(LayoutAside);
+            wrapper = shallowMount(LayoutAside);
         });
 
         it('should render correctly', () => {

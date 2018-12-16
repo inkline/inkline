@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components CheckboxButton should render correctly 1`] = `
-<button tag="button" tabindex="1" aria-pressed="true" class="button -checkbox -active -custom">
-  <!---->
-  <!----> <span><input type="checkbox" tabindex="-1" value="false"> </span></button>
-`;
+exports[`Components CheckboxButton should render correctly 1`] = `<i-button-stub tag="button" icon="" active="true" tabindex="1" class="-checkbox -custom"><input type="checkbox" tabindex="-1" value="false"> </i-button-stub>`;

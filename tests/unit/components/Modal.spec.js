@@ -1,4 +1,4 @@
-// import { mount } from '@vue/test-utils';
+// import { shallowMount } from '@vue/test-utils';
 // import Modal from 'inkline/components/Modal';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         // let wrapper;
 
         beforeEach(() => {
-            // wrapper = mount(Modal);
+            // wrapper = shallowMount(Modal);
         });
 
         it('should render correctly', () => {

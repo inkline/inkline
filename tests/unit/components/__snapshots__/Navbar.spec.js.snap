@@ -2,6 +2,6 @@
 
 exports[`Components Navbar should render correctly 1`] = `
 <div class="navbar">
-  <div class="container"></div>
+  <i-container-stub></i-container-stub>
 </div>
 `;

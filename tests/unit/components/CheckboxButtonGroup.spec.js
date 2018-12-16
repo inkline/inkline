@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import CheckboxButtonGroup from 'inkline/components/CheckboxButtonGroup';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(CheckboxButtonGroup);
+            wrapper = shallowMount(CheckboxButtonGroup);
         });
 
         it('should be named correctly', () => {

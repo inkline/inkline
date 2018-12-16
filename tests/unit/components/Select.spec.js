@@ -1,4 +1,4 @@
-// import { mount } from '@vue/test-utils';
+// import { shallowMount } from '@vue/test-utils';
 // import Select from 'inkline/components/Select';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         // let wrapper;
 
         beforeEach(() => {
-            // wrapper = mount(Select);
+            // wrapper = shallowMount(Select);
         });
 
         it('should render correctly', () => {

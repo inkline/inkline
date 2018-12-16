@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import ProgressBar from 'inkline/components/ProgressBar';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(ProgressBar);
+            wrapper = shallowMount(ProgressBar);
         });
 
         it('should render correctly', () => {

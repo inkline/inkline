@@ -1,4 +1,4 @@
-// import { mount } from '@vue/test-utils';
+// import { shallowMount } from '@vue/test-utils';
 // import DropdownMenu from 'inkline/components/DropdownMenu';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         // let wrapper;
 
         beforeEach(() => {
-            // wrapper = mount(DropdownMenu);
+            // wrapper = shallowMount(DropdownMenu);
         });
 
         it('should render correctly', () => {

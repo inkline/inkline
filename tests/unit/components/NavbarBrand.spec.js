@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import NavbarBrand from 'inkline/components/NavbarBrand';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(NavbarBrand);
+            wrapper = shallowMount(NavbarBrand);
         });
 
         it('should render correctly', () => {

@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import LayoutHeader from 'inkline/components/LayoutHeader';
 
 describe('Components', () => {
@@ -6,7 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(LayoutHeader);
+            wrapper = shallowMount(LayoutHeader);
         });
 
         it('should render correctly', () => {
