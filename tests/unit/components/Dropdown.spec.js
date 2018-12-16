@@ -140,77 +140,56 @@ describe('Components', () => {
         });
 
         describe('methods', () => {
+            let e;
+            const activeItem = {
+                $el: {
+                    focus: () => {},
+                    click: () => {}
+                },
+                active: true
+            };
+
+            beforeEach(() => {
+                wrapper = shallowMount(Dropdown, {
+                    propsData: {
+                        id: 'dropdown'
+                    },
+                    data() {
+                        return {
+                            items: [
+                                { $el: { focus: () => {} } },
+                                activeItem,
+                                { $el: { focus: () => {} } },
+                            ]
+                        };
+                    },
+                    slots: {
+                        default: ['<button/>', '<div/>']
+                    }
+                });
+
+                e = {
+                    target: activeItem.$el,
+                    preventDefault: () => {},
+                    stopPropagation: () => {}
+                };
+            });
+
             describe('onTriggerKeyDown()', () => {
                 [
                     'ArrowUp',
                     'ArrowDown'
                 ].forEach((key) => {
-                    const e = {
-                        key,
-                        preventDefault: () => {},
-                        stopPropagation: () => {}
-                    };
-
-                    it.only('should call show() if "' + key + '" key pressed', () => {
+                    it('should call show() if "' + key + '" key pressed', () => {
                         const spy = jest.spyOn(wrapper.vm, 'show');
+                        e.key = key;
 
                         wrapper.vm.onTriggerKeyDown(e);
 
                         expect(spy).toHaveBeenCalled();
                     });
 
-                    it('should call focus() on item at 0 index if "' + key + '" key pressed', (done) => {
-                        wrapper = shallowMount(Dropdown, {
-                            propsData: {
-                                id: 'dropdown'
-                            },
-                            data() {
-                                return {
-                                    items: [
-                                        {
-                                            $el: { focus: () => {} }
-                                        }
-                                    ]
-                                };
-                            },
-                            slots: {
-                                default: ['<button/>', '<div/>']
-                            }
-                        });
-
-                        const spy = jest.spyOn(wrapper.vm.items[0].$el, 'focus');
-
-                        wrapper.vm.onTriggerKeyDown(e);
-
-                        setTimeout(() => {
-                            expect(spy).toHaveBeenCalled();
-                            done();
-                        }, 500);
-                    });
-
                     it('should call focus() on item at initialIndex if "' + key + '" key pressed', (done) => {
-                        wrapper = shallowMount(Dropdown, {
-                            propsData: {
-                                id: 'dropdown'
-                            },
-                            data() {
-                                return {
-                                    items: [
-                                        {
-                                            $el: { focus: () => {} }
-                                        },
-                                        {
-                                            active: true,
-                                            $el: { focus: () => {} }
-                                        }
-                                    ]
-                                };
-                            },
-                            slots: {
-                                default: ['<button/>', '<div/>']
-                            }
-                        });
-
                         const spy = jest.spyOn(wrapper.vm.items[1].$el, 'focus');
 
                         wrapper.vm.onTriggerKeyDown(e);
@@ -224,12 +203,312 @@ describe('Components', () => {
                     it('should call event preventDefault() and stopPropagation() if "' + key + '" key pressed', () => {
                         const spy1 = jest.spyOn(e, 'preventDefault');
                         const spy2 = jest.spyOn(e, 'stopPropagation');
+                        e.key = key;
 
                         wrapper.vm.onTriggerKeyDown(e);
 
                         expect(spy1).toHaveBeenCalled();
                         expect(spy2).toHaveBeenCalled();
                     });
+                });
+
+                [
+                    'Enter',
+                    'Space'
+                ].forEach((key) => {
+                    it('should call onClick() if "' + key + '" key pressed', () => {
+                        const spy = jest.spyOn(wrapper.vm, 'onClick');
+                        e.key = key;
+
+                        wrapper.vm.onTriggerKeyDown(e);
+
+                        expect(spy).toHaveBeenCalled();
+                    });
+
+
+                    it('should call focus() on item at initialIndex if "' + key + '" key pressed and not visible', (done) => {
+                        const spy = jest.spyOn(wrapper.vm.items[1].$el, 'focus');
+                        e.key = key;
+                        wrapper.setData({ visible: false });
+
+                        wrapper.vm.onTriggerKeyDown(e);
+
+                        setTimeout(() => {
+                            expect(spy).toHaveBeenCalled();
+                            done();
+                        }, 500);
+                    });
+
+                    it('should call event preventDefault() if "' + key + '" key pressed', () => {
+                        const spy = jest.spyOn(e, 'preventDefault');
+                        e.key = key;
+
+                        wrapper.vm.onTriggerKeyDown(e);
+
+                        expect(spy).toHaveBeenCalled();
+                    });
+                });
+
+                [
+                    'Tab',
+                    'Escape'
+                ].forEach((key) => {
+                    it('should call hide() if "' + key + '" key pressed', () => {
+                        const spy = jest.spyOn(wrapper.vm, 'hide');
+                        e.key = key;
+
+                        wrapper.vm.onTriggerKeyDown(e);
+
+                        expect(spy).toHaveBeenCalled();
+                    });
+                });
+            });
+
+            describe('onItemKeyDown()', () => {
+                [
+                    'ArrowUp',
+                    'ArrowDown'
+                ].forEach((key) => {
+                    it('should call event preventDefault() and stopPropagation() if "' + key + '" key pressed', () => {
+                        const spy1 = jest.spyOn(e, 'preventDefault');
+                        const spy2 = jest.spyOn(e, 'stopPropagation');
+                        e.key = key;
+
+                        wrapper.vm.onItemKeyDown(e);
+
+                        expect(spy1).toHaveBeenCalled();
+                        expect(spy2).toHaveBeenCalled();
+                    });
+                });
+
+                it('should call focus() on item at previous index if "ArrowUp" key is pressed', () => {
+                    const spy = jest.spyOn(wrapper.vm.items[0].$el, 'focus');
+                    e.key = 'ArrowUp';
+
+                    wrapper.vm.onItemKeyDown(e);
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should call focus() on item at next index if "ArrowDown" key is pressed', () => {
+                    const spy = jest.spyOn(wrapper.vm.items[2].$el, 'focus');
+                    e.key = 'ArrowDown';
+
+                    wrapper.vm.onItemKeyDown(e);
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                [
+                    'Enter',
+                    'Space'
+                ].forEach((key) => {
+                    it('should call click() on event target if "' + key + '" key pressed', () => {
+                        const spy = jest.spyOn(e.target, 'click');
+                        e.key = key;
+
+                        wrapper.vm.onItemKeyDown(e);
+
+                        expect(spy).toHaveBeenCalled();
+                    });
+
+                    it('should set visible to false if hideOnClick and "' + key + '" key pressed', () => {
+                        e.key = key;
+                        wrapper.setProps({ hideOnClick: true });
+
+                        wrapper.vm.onItemKeyDown(e);
+
+                        expect(wrapper.vm.visible).toEqual(false);
+                    });
+
+                    it('should call event preventDefault() if "' + key + '" key pressed', () => {
+                        const spy = jest.spyOn(e, 'preventDefault');
+                        e.key = key;
+
+                        wrapper.vm.onItemKeyDown(e);
+
+                        expect(spy).toHaveBeenCalled();
+                    });
+                });
+
+                [
+                    'Tab',
+                    'Escape'
+                ].forEach((key) => {
+                    it('should call hide() if "' + key + '" key pressed', () => {
+                        const spy = jest.spyOn(wrapper.vm, 'hide');
+                        e.key = key;
+
+                        wrapper.vm.onItemKeyDown(e);
+
+                        expect(spy).toHaveBeenCalled();
+                    });
+
+                    it('should call focus() on triggerElement if "' + key + '" key pressed', () => {
+                        const spy = jest.spyOn(wrapper.vm.triggerElement, 'focus');
+                        e.key = key;
+
+                        wrapper.vm.onItemKeyDown(e);
+
+                        expect(spy).toHaveBeenCalled();
+                    });
+                });
+            });
+
+            describe('show()', () => {
+                it('should set visible to true instantly if trigger is set to "click"', (done) => {
+                    wrapper.setData({ visible: false });
+
+                    wrapper.vm.show();
+
+                    setTimeout(() => {
+                        expect(wrapper.vm.visible).toEqual(true);
+                        done();
+                    }, 0);
+                });
+
+                it('should set visible to true after showTimeout if trigger is set to "hover"', (done) => {
+                    wrapper.setData({ visible: false });
+                    wrapper.setProps({ trigger: 'hover' });
+
+                    wrapper.vm.show();
+
+                    setTimeout(() => {
+                        expect(wrapper.vm.visible).toEqual(true);
+                        done();
+                    }, 500);
+                });
+
+                it('should not set visible to true if disabled', (done) => {
+                    wrapper.setData({ visible: false });
+                    wrapper.setProps({ disabled: true });
+
+                    wrapper.vm.show();
+
+                    setTimeout(() => {
+                        expect(wrapper.vm.visible).toEqual(false);
+                        done();
+                    }, 0);
+                });
+            });
+
+            describe('hide()', () => {
+                it('should set visible to false instantly if trigger is set to "click"', (done) => {
+                    wrapper.setData({ visible: true });
+
+                    wrapper.vm.hide();
+
+                    setTimeout(() => {
+                        expect(wrapper.vm.visible).toEqual(false);
+                        done();
+                    }, 0);
+                });
+
+                it('should set visible to false after showTimeout if trigger is set to "hover"', (done) => {
+                    wrapper.setData({ visible: true });
+                    wrapper.setProps({ trigger: 'hover' });
+
+                    wrapper.vm.hide();
+
+                    setTimeout(() => {
+                        expect(wrapper.vm.visible).toEqual(false);
+                        done();
+                    }, 500);
+                });
+
+                it('should not set visible to false if disabled', (done) => {
+                    wrapper.setData({ visible: true });
+                    wrapper.setProps({ disabled: true });
+
+                    wrapper.vm.hide();
+
+                    setTimeout(() => {
+                        expect(wrapper.vm.visible).toEqual(true);
+                        done();
+                    }, 0);
+                });
+            });
+
+            describe('onClick()', () => {
+                it('should call hide() if visible', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'hide');
+                    wrapper.setData({ visible: true });
+
+                    wrapper.vm.onClick();
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should call show() if not visible', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'show');
+                    wrapper.setData({ visible: false });
+
+                    wrapper.vm.onClick();
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should not execute if disabled', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'hide');
+                    wrapper.setData({ visible: true });
+                    wrapper.setProps({ disabled: true });
+
+                    wrapper.vm.onClick();
+
+                    expect(spy).not.toHaveBeenCalled();
+                });
+            });
+
+            describe('initElements()', () => {
+                it('should set triggerElement and dropdownElement', () => {
+                    wrapper.setData({ triggerElement: null, dropdownElement: null });
+
+                    wrapper.vm.initElements();
+
+                    expect(wrapper.vm.triggerElement).not.toEqual(null);
+                    expect(wrapper.vm.dropdownElement).not.toEqual(null);
+                });
+            });
+
+            describe('initAriaAttributes()', () => {
+                it('should set dropdownElement id', () => {
+                    const spy = jest.spyOn(wrapper.vm.dropdownElement, 'setAttribute');
+
+                    wrapper.vm.initAriaAttributes();
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('id', 'dropdown');
+                });
+
+                it('should set triggerElement aria-haspopup and aria-controls', () => {
+                    const spy = jest.spyOn(wrapper.vm.triggerElement, 'setAttribute');
+
+                    wrapper.vm.initAriaAttributes();
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenNthCalledWith(1, 'aria-haspopup', 'list');
+                    expect(spy).toHaveBeenNthCalledWith(2, 'aria-controls', 'dropdown');
+                });
+            });
+
+            describe('initEvents()', () => {
+                it('should add keydown events to triggerElement and dropdownElement', () => {
+                    const spy1 = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
+                    const spy2 = jest.spyOn(wrapper.vm.dropdownElement, 'addEventListener');
+
+                    wrapper.vm.initEvents();
+
+                    expect(spy1).toHaveBeenCalledWith('keydown', wrapper.vm.onTriggerKeyDown);
+                    expect(spy2).toHaveBeenCalledWith('keydown', wrapper.vm.onItemKeyDown, true);
+                });
+
+                it('should add click event to triggerElement if trigger is "click"', () => {
+                    const spy = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
+                    wrapper.setProps({ trigger: 'click' });
+
+                    wrapper.vm.initEvents();
+
+                    expect(spy).toHaveBeenNthCalledWith(2, 'click', wrapper.vm.onClick);
                 });
             });
         });

@@ -44,7 +44,7 @@ describe('Components', () => {
                             currentValue() { return 'value'; }
                         }
                     });
-                    wrapper.setData({ value: 'value' });
+                    wrapper.setProps({ value: 'value' });
                     expect(wrapper.vm.checked).toEqual(true);
 
                     wrapper = shallowMount(Checkbox, {
@@ -52,7 +52,7 @@ describe('Components', () => {
                             currentValue() { return 'value'; }
                         }
                     });
-                    wrapper.setData({ value: 'other' });
+                    wrapper.setProps({ value: 'other' });
                     expect(wrapper.vm.checked).toEqual(false);
                 });
 

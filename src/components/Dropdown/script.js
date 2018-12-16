@@ -74,8 +74,6 @@ export default {
             let activeIndex = this.items.findIndex((e) => e.active);
             let initialIndex = activeIndex > -1 ? activeIndex : 0;
 
-            console.log(activeIndex, initialIndex)
-
             if (isKey('up', e) || isKey('down', e)) {
                 this.show();
 
@@ -103,7 +101,7 @@ export default {
         },
         onItemKeyDown(e) {
             const target = e.target;
-            const currentIndex = this.items.map((i) => i.$el).indexOf(e.target);
+            const currentIndex = this.items.findIndex((i) => i.$el === e.target);
             const maxIndex = this.items.length - 1;
             let nextIndex;
 
