@@ -9,6 +9,10 @@ describe('Components', () => {
             wrapper = shallowMount(Progress);
         });
 
+        it('should be named correctly', () => {
+            expect(Progress.name).toEqual('IProgress');
+        });
+
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });

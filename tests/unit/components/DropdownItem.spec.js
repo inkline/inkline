@@ -1,15 +1,10 @@
 import {shallowMount} from '@vue/test-utils';
 import DropdownItem from 'inkline/components/DropdownItem';
-import Button from "@/components/Button/index";
+import { RouterLink } from '../mocks/RouterLink';
 
 describe('Components', () => {
     describe('DropdownItem', () => {
         let wrapper;
-
-        const RouterLink = {
-            name: 'RouterLink',
-            render() {}
-        };
 
         beforeEach(() => {
             wrapper = shallowMount(DropdownItem, {
@@ -74,7 +69,7 @@ describe('Components', () => {
                 });
 
                 it('should be <a> tag if "href" attribute is provided', () => {
-                    wrapper = shallowMount(Button, {
+                    wrapper = shallowMount(DropdownItem, {
                         propsData: {
                             href: true
                         }
@@ -84,7 +79,7 @@ describe('Components', () => {
                 });
 
                 it('should be <router-link> tag if "to" attribute is provided', () => {
-                    wrapper = shallowMount(Button, {
+                    wrapper = shallowMount(DropdownItem, {
                         components: {
                             RouterLink
                         },

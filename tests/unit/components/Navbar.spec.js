@@ -9,8 +9,21 @@ describe('Components', () => {
             wrapper = shallowMount(Navbar);
         });
 
+        it('should be named correctly', () => {
+            expect(Navbar.name).toEqual('INavbar');
+        });
+
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
+        });
+
+        describe('props', () => {
+            describe('fluid', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.fluid).toBeDefined();
+                    expect(wrapper.vm.fluid).toEqual(false);
+                });
+            });
         });
     });
 });

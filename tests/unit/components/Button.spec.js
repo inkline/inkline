@@ -1,10 +1,7 @@
 import { shallowMount } from '@vue/test-utils';
 import Button from 'inkline/components/Button';
+import { RouterLink } from '../mocks/RouterLink';
 
-const RouterLink = {
-    name: 'RouterLink',
-    render() {}
-};
 
 describe('Components', () => {
     describe('Button', () => {

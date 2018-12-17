@@ -9,6 +9,10 @@ describe('Components', () => {
             wrapper = shallowMount(RadioGroup);
         });
 
+        it('should be named correctly', () => {
+            expect(RadioGroup.name).toEqual('IRadioGroup');
+        });
+
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });

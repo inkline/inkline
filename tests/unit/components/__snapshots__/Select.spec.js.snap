@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components Select should render correctly 1`] = `
+<i-dropdown-stub hideonclick="true" placement="bottom" size="" tabindex="-1" class="select">
+  <i-input-stub readonly="true" tabindex="1"><template></template> <template></template></i-input-stub>
+  <!---->
+  <i-dropdown-menu-stub arrow="true" arrowoffset="0"></i-dropdown-menu-stub>
+</i-dropdown-stub>
+`;

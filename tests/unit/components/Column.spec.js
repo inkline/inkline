@@ -1,6 +1,7 @@
 import { shallowMount } from '@vue/test-utils';
 import Column from 'inkline/components/Column';
-import {capitalizeFirst} from "@/helpers";
+import { capitalizeFirst } from "inkline/helpers";
+import { breakpoints } from 'inkline/constants';
 
 describe('Components', () => {
     describe('Column', () => {
@@ -19,7 +20,7 @@ describe('Components', () => {
         });
 
         describe('props', () => {
-            ['xs', 'sm', 'md', 'lg', 'xl'].forEach((breakpoint) => {
+            breakpoints.slice(1).forEach((breakpoint) => {
                 describe(breakpoint, () => {
                     it('should be defined', () => {
                         expect(wrapper.vm[breakpoint]).toBeDefined();
