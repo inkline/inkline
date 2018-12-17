@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components DropdownMenu should render correctly 1`] = `<div class="dropdown-menu" style="display: none;" name="zoom-in-top-transition"><span class="arrow"></span> </div>`;

@@ -1,171 +1,80 @@
 <script>
-    import PopperJS from 'popper.js';
-    import popupManager from 'inkline/factories/PopupManager';
-
-    /**
-     * @param {HTMLElement} [reference=$refs.reference] - The reference element used to position the popper.
-     * @param {HTMLElement} [popup=$refs.popper] - The HTML element used as popper, or a configuration used to generate the popper.
-     * @param {String} [placement=button] - Placement of the popper accepted values: top(-start, -end), right(-start, -end), bottom(-start, -end), left(-start, -end)
-     * @param {Number} [offset=0] - Amount of pixels the popper will be shifted (can be negative).
-     */
     export default {
         props: {
-            transformOrigin: {
-                type: [Boolean, String],
-                default: true
-            },
-            placement: {
+            trigger: {
                 type: String,
-                default: 'bottom'
+                default: 'hover'
             },
-            offset: {
-                default: 0
-            },
-            arrow: {
-                type: Boolean,
-                default: true
-            },
-            arrowOffset: {
+            showTimeout: {
                 type: Number,
-                default: 35
+                default: 250
             },
-            appendToBody: {
-                type: Boolean,
-                default: false
-            },
-            popperOptions: {
-                type: Object,
-                default() {
-                    return {
-                        modifiers: {
-                            computeStyle: {
-                                gpuAcceleration: false
-                            }
-                        }
-                    };
-                }
-            },
-            reference: {},
-            popup: {},
+            hideTimeout: {
+                type: Number,
+                default: 150
+            }
         },
-
         data() {
             return {
                 visible: false,
-                currentPlacement: ''
+                triggerElement: null,
+                popupElement: null
             };
         },
-
-        watch: {
-            visible(value) {
-                if (this.disabled) {
-                    return;
-                }
-
-                value ? this.updatePopper() : this.destroyPopper();
-
-                this.$emit('visibilityChange', value);
-            }
-        },
-
         methods: {
-            createPopper() {
-                if (this.$isServer) return;
+            show() {
+                if (this.disabled) return;
 
-                this.currentPlacement = this.currentPlacement || this.placement;
-                if (!/^(top|bottom|left|right)(-start|-end)?$/g.test(this.currentPlacement)) {
-                    return;
-                }
+                clearTimeout(this.timeout);
 
-                this.popupElement = this.popupElement || this.popup || this.$refs.popup;
-                this.referenceElement = this.referenceElement || this.reference || this.$refs.reference;
-
-                if (!this.referenceElement &&
-                    this.$slots.reference &&
-                    this.$slots.reference[0]) {
-                    this.referenceElement = this.$slots.reference[0].elm;
-                }
-
-                if (!this.popupElement || !this.referenceElement) return;
-
-                if (this.appendToBody) document.body.appendChild(this.popupElement);
-                if (this.popperJS && this.popperJS.destroy) {
-                    this.popperJS.destroy();
-                }
-
-                this.popperOptions.placement = this.currentPlacement;
-                this.popperOptions.offset = this.offset;
-                this.popperOptions.arrowOffset = this.arrowOffset;
-
-                this.popperOptions.onCreate = () => {
-                    this.$emit('created', this);
-                    this.resetTransformOrigin();
-                    this.$nextTick(this.updatePopper);
-                };
-                if (typeof this.popperOptions.onUpdate === 'function') {
-                    this.popperJS.onUpdate(this.popperOptions.onUpdate);
-                }
-
-                this.popperJS = new PopperJS(this.referenceElement, this.popupElement, this.popperOptions);
-                this.popperJS.popper.style.zIndex = popupManager.nextZIndex();
-
-                this.popupElement.addEventListener('click', (e) => e.stopPropagation());
+                this.timeout = setTimeout(() => {
+                    this.visible = true;
+                }, this.trigger === 'click' ? 0 : this.showTimeout);
             },
+            hide() {
+                if (this.disabled) return;
 
-            updatePopper() {
-                if (!this.popperJS) return this.createPopper();
+                clearTimeout(this.timeout);
 
-                this.popperJS.update();
+                this.timeout = setTimeout(() => {
+                    this.visible = false;
+                }, this.trigger === 'click' ? 0 : this.hideTimeout);
+            },
+            onClick() {
+                if (this.disabled) return;
 
-                if (this.popperJS.popper) {
-                    this.popperJS.popper.style.zIndex = popupManager.nextZIndex();
+                if (this.visible) {
+                    this.hide();
+                } else {
+                    this.show();
                 }
             },
-
-            doDestroy(forceDestroy) {
-                if (!this.popperJS || (this.visible && !forceDestroy)) return;
-
-                this.popperJS.destroy();
-                this.popperJS = null;
-            },
-
-            destroyPopper() {
-                if (this.popperJS) {
-                    this.resetTransformOrigin();
+            initElements() {
+                if (!this.$slots.default.length > 0) {
+                    throw new Error(`${this.$options.name} component requires one child element to be used as trigger.`);
                 }
+
+                this.triggerElement = this.$refs.trigger || this.$slots.default[0].elm;
+                this.popupElement = this.$refs.popup;
             },
-
-            resetTransformOrigin() {
-                if (!this.transformOrigin) return;
-
-                let placementMap = {
-                    top: 'bottom',
-                    bottom: 'top',
-                    left: 'right',
-                    right: 'left'
-                };
-                let placement = this.popperJS.popper.getAttribute('x-placement').split('-')[0];
-                let origin = placementMap[placement];
-
-                this.popperJS.popper.style.transformOrigin = typeof this.transformOrigin === 'string'
-                    ? this.transformOrigin
-                    : ['top', 'bottom'].indexOf(placement) > -1 ? `center ${ origin }` : `${ origin } center`;
+            initAriaAttributes() {
+                this.popupElement.setAttribute('id', this.id);
+                this.triggerElement.setAttribute('aria-haspopup', this.basename);
+                this.triggerElement.setAttribute('aria-controls', this.id);
             },
-        },
-
-        beforeDestroy() {
-            this.doDestroy(true);
-
-            if (this.popupElement && this.popupElement.parentNode === document.body) {
-                this.popupElement.removeEventListener('click', (e) => e.stopPropagation());
-
-                document.body.removeChild(this.popupElement);
+            initEvents() {
+                if (this.trigger === 'hover') {
+                    this.triggerElement.addEventListener('mouseenter', this.show);
+                    this.triggerElement.addEventListener('mouseleave', this.hide);
+                } else if (this.trigger === 'click') {
+                    this.triggerElement.addEventListener('click', this.onClick);
+                }
             }
         },
-
-        // Call destroy in keep-alive mode
-        deactivated() {
-            this.$options.beforeDestroy[0].call(this);
+        mounted () {
+            this.initElements();
+            this.initEvents();
+            this.initAriaAttributes();
         }
     };
 </script>

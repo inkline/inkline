@@ -3,6 +3,7 @@ import { uid } from 'inkline/helpers';
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
+import PopupControlsProviderMixin from 'inkline/mixins/components/providers/PopupControlsProviderMixin';
 
 import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
 
@@ -18,6 +19,7 @@ export default {
         AttributesProviderMixin,
         ClassesProviderMixin,
         EmitProviderMixin,
+        PopupControlsProviderMixin,
 
         EmitFocusMethodMixin,
 
@@ -29,6 +31,10 @@ export default {
         ClickOutside
     },
     props: {
+        trigger: {
+            type: String,
+            default: 'click'
+        },
         transition: {
             type: String,
             default: 'zoom-in-center-transition'
@@ -39,10 +45,11 @@ export default {
         }
     },
     data() {
+        const basename = 'modal';
+
         return {
-            visible: false,
-            triggerElement: null,
-            id: this.$attrs.id || uid('modal')
+            id: this.$attrs.id || uid(basename),
+            basename
         };
     },
     methods: {
@@ -56,24 +63,7 @@ export default {
 
             this.visible = false;
         },
-        onClick() {
-            if (this.disabled) return;
-
-            if (this.visible) {
-                this.hide();
-            } else {
-                this.show();
-            }
-        },
-        initAriaAttributes() {
-            this.popupElement.setAttribute('id', this.id);
-            this.triggerElement.setAttribute('aria-haspopup', 'modal');
-            this.triggerElement.setAttribute('aria-controls', this.id);
-        },
         initEvents() {
-            this.triggerElement = this.$slots.default[0].elm;
-            this.popupElement = this.$refs.popup;
-
             this.triggerElement.addEventListener('click', this.onClick);
         },
     },
@@ -81,9 +71,5 @@ export default {
         this.classesProvider.add('root', () => ({
             '-fill': this.fill
         }));
-    },
-    mounted() {
-        this.initEvents();
-        this.initAriaAttributes();
     }
 };

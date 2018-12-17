@@ -5,6 +5,7 @@ import ClickOutside from 'inkline/directives/click-outside';
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
+import PopupControlsProviderMixin from 'inkline/mixins/components/providers/PopupControlsProviderMixin';
 
 import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
 
@@ -17,6 +18,7 @@ export default {
         AttributesProviderMixin,
         ClassesProviderMixin,
         EmitProviderMixin,
+        PopupControlsProviderMixin,
 
         EmitFocusMethodMixin,
 
@@ -43,24 +45,19 @@ export default {
         placement: {
             type: String,
             default: 'bottom'
-        },
-        showTimeout: {
-            type: Number,
-            default: 250
-        },
-        hideTimeout: {
-            type: Number,
-            default: 150
         }
     },
     data() {
+        const basename = 'dropdown';
+
         return {
             items: [],
             timeout: null,
             visible: false,
             triggerElement: null,
-            dropdownElement: null,
-            id: this.$attrs.id || uid('dropdown-menu')
+            popupElement: null,
+            id: this.$attrs.id || uid(basename),
+            basename
         };
     },
     watch: {
@@ -135,54 +132,14 @@ export default {
                 this.triggerElement.focus();
             }
         },
-        show() {
-            if (this.disabled) return;
-
-            clearTimeout(this.timeout);
-
-            this.timeout = setTimeout(() => {
-                this.visible = true;
-            }, this.trigger === 'click' ? 0 : this.showTimeout);
-        },
-        hide() {
-            if (this.disabled) return;
-
-            clearTimeout(this.timeout);
-
-            this.timeout = setTimeout(() => {
-                this.visible = false;
-            }, this.trigger === 'click' ? 0 : this.hideTimeout);
-        },
-        onClick() {
-            if (this.disabled) return;
-
-            if (this.visible) {
-                this.hide();
-            } else {
-                this.show();
-            }
-        },
         initElements() {
-            this.triggerElement = this.$slots.default[0].elm;
-            this.dropdownElement = this.$slots.default[this.$slots.default.length - 1].elm;
-        },
-        initAriaAttributes() {
-            this.dropdownElement.setAttribute('id', this.id);
-            this.triggerElement.setAttribute('aria-haspopup', 'list');
-            this.triggerElement.setAttribute('aria-controls', this.id);
-        },
-        initEvents() {
-            this.triggerElement.addEventListener('keydown', this.onTriggerKeyDown);
-            this.dropdownElement.addEventListener('keydown', this.onItemKeyDown, true);
-
-            if (this.trigger === 'hover') {
-                this.triggerElement.addEventListener('mouseenter', this.show);
-                this.triggerElement.addEventListener('mouseleave', this.hide);
-                this.dropdownElement.addEventListener('mouseenter', this.show);
-                this.dropdownElement.addEventListener('mouseleave', this.hide);
-            } else if (this.trigger === 'click') {
-                this.triggerElement.addEventListener('click', this.onClick);
+            if (!this.$slots.default.length > 1) {
+                throw new Error(`IDropdown component requires two child elements. 
+                The first one will be used as a trigger. The second one should be a IDropdownMenu component.`);
             }
+
+            this.triggerElement = this.$slots.default[0].elm;
+            this.popupElement = this.$slots.default[this.$slots.default.length - 1].elm;
         },
         handleMenuItemClick(action, instance) {
             if (this.hideOnClick) {
@@ -204,8 +161,7 @@ export default {
     mounted() {
         this.$on('menu-item-click', this.handleMenuItemClick);
 
-        this.initElements();
-        this.initEvents();
-        this.initAriaAttributes();
+        this.popupElement.addEventListener('mouseenter', this.show);
+        this.popupElement.addEventListener('mouseleave', this.hide);
     },
 };

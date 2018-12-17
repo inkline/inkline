@@ -9,6 +9,10 @@ describe('Components', () => {
             wrapper = shallowMount(LayoutFooter);
         });
 
+        it('should be named correctly', () => {
+            expect(LayoutFooter.name).toEqual('ILayoutFooter');
+        });
+
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });

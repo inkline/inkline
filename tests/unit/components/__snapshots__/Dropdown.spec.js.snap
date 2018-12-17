@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components Dropdown should render correctly 1`] = `
-<div id="dropdown" class="dropdown"><button aria-haspopup="list" aria-controls="dropdown"></button>
+<div id="dropdown" class="dropdown"><button aria-haspopup="dropdown" aria-controls="dropdown"></button>
   <div id="dropdown"></div>
 </div>
 `;

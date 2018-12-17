@@ -39,16 +39,30 @@ export default {
         }
     },
     methods: {
+        /**
+         * Returns an array of the input's parent schemas starting from the root, and ending with the
+         * input itself's schema.
+         *
+         * @param input
+         * @returns {string[]}
+         */
         getSchemaTree(input) {
             const parentFormGroupKeys = input.name
                 .replace(/\[['"]?([^'"\]])['"]?]/g, '.$1')
                 .split('.');
 
-            return parentFormGroupKeys.map((group, index) => parentFormGroupKeys
-                .slice(0, index)
-                .reduce((acc, key) => acc && acc[key], this.schema))
+            return parentFormGroupKeys
+                .map((group, index) => parentFormGroupKeys
+                    .slice(0, index)
+                    .reduce((acc, key) => acc && acc[key], this.schema))
                 .concat(input.schema);
         },
+
+        /**
+         * Add required schema event listeners for one of the form's child inputs
+         *
+         * @param input
+         */
         add(input) {
             const inputSchema = input.schema;
             const schemaTree = this.getSchemaTree(input);
@@ -78,9 +92,16 @@ export default {
                 });
             });
         },
+
+        /**
+         * Remove event listeners for one of the form's child inputs
+         *
+         * @param input
+         */
         remove(input) {
             const inputSchema = input.schema;
 
+            input.$off('blur');
             input.$off(inputSchema.validateOn);
         }
     },
