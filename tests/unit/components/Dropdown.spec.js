@@ -463,73 +463,6 @@ describe('Components', () => {
         //         });
         //     });
         //
-        //     describe('initElements()', () => {
-        //         it('should set triggerElement and dropdownElement', () => {
-        //             wrapper.setData({ triggerElement: null, dropdownElement: null });
-        //
-        //             wrapper.vm.initElements();
-        //
-        //             expect(wrapper.vm.triggerElement).not.toEqual(null);
-        //             expect(wrapper.vm.dropdownElement).not.toEqual(null);
-        //         });
-        //     });
-        //
-        //     describe('initAriaAttributes()', () => {
-        //         it('should set dropdownElement id', () => {
-        //             const spy = jest.spyOn(wrapper.vm.dropdownElement, 'setAttribute');
-        //
-        //             wrapper.vm.initAriaAttributes();
-        //
-        //             expect(spy).toHaveBeenCalled();
-        //             expect(spy).toHaveBeenCalledWith('id', 'dropdown');
-        //         });
-        //
-        //         it('should set triggerElement aria-haspopup and aria-controls', () => {
-        //             const spy = jest.spyOn(wrapper.vm.triggerElement, 'setAttribute');
-        //
-        //             wrapper.vm.initAriaAttributes();
-        //
-        //             expect(spy).toHaveBeenCalled();
-        //             expect(spy).toHaveBeenNthCalledWith(1, 'aria-haspopup', 'list');
-        //             expect(spy).toHaveBeenNthCalledWith(2, 'aria-controls', 'dropdown');
-        //         });
-        //     });
-        //
-        //     describe('initEvents()', () => {
-        //         it('should add keydown events to triggerElement and dropdownElement', () => {
-        //             const spy1 = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
-        //             const spy2 = jest.spyOn(wrapper.vm.dropdownElement, 'addEventListener');
-        //
-        //             wrapper.vm.initEvents();
-        //
-        //             expect(spy1).toHaveBeenCalledWith('keydown', wrapper.vm.onTriggerKeyDown);
-        //             expect(spy2).toHaveBeenCalledWith('keydown', wrapper.vm.onItemKeyDown, true);
-        //         });
-        //
-        //         it('should add click event to triggerElement if trigger is "click"', () => {
-        //             const spy = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
-        //             wrapper.setProps({ trigger: 'click' });
-        //
-        //             wrapper.vm.initEvents();
-        //
-        //             expect(spy).toHaveBeenNthCalledWith(2, 'click', wrapper.vm.onClick);
-        //         });
-        //
-        //         it('should add mouseenter and mouseleave events to trigger and dropdown elements if trigger is "hover"', () => {
-        //             const spy1 = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
-        //             const spy2 = jest.spyOn(wrapper.vm.dropdownElement, 'addEventListener');
-        //
-        //             wrapper.setProps({ trigger: 'hover' });
-        //
-        //             wrapper.vm.initEvents();
-        //
-        //             expect(spy1).toHaveBeenNthCalledWith(2, 'mouseenter', wrapper.vm.show);
-        //             expect(spy1).toHaveBeenNthCalledWith(3, 'mouseleave', wrapper.vm.hide);
-        //             expect(spy2).toHaveBeenNthCalledWith(2, 'mouseenter', wrapper.vm.show);
-        //             expect(spy2).toHaveBeenNthCalledWith(3, 'mouseleave', wrapper.vm.hide);
-        //         });
-        //     });
-        //
         //     describe('handleMenuItemClick()', () => {
         //         it('should set visible to false if hideOnClick', () => {
         //             wrapper.setProps({ hideOnClick: true });
@@ -594,28 +527,15 @@ describe('Components', () => {
         //         expect(spy).toHaveBeenCalledWith('menu-item-click', expect.any(Function));
         //     });
         //
-        //     it('should initialize elements', () => {
-        //         const spy = jest.spyOn(wrapper.vm, 'initElements');
+
+        //     it('should add keydown events to triggerElement and dropdownElement', () => {
+        //         const spy1 = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
+        //         const spy2 = jest.spyOn(wrapper.vm.dropdownElement, 'addEventListener');
         //
-        //         wrapper.vm.mounted();
+        //         wrapper.vm.initEvents();
         //
-        //         expect(spy).toHaveBeenCalled();
-        //     });
-        //
-        //     it('should initialize events', () => {
-        //         const spy = jest.spyOn(wrapper.vm, 'initEvents');
-        //
-        //         wrapper.vm.mounted();
-        //
-        //         expect(spy).toHaveBeenCalled();
-        //     });
-        //
-        //     it('should initialize aria attributes', () => {
-        //         const spy = jest.spyOn(wrapper.vm, 'initAriaAttributes');
-        //
-        //         wrapper.vm.mounted();
-        //
-        //         expect(spy).toHaveBeenCalled();
+        //         expect(spy1).toHaveBeenCalledWith('keydown', wrapper.vm.onTriggerKeyDown);
+        //         expect(spy2).toHaveBeenCalledWith('keydown', wrapper.vm.onItemKeyDown, true);
         //     });
         // });
     });

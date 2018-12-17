@@ -31,10 +31,6 @@ export default {
         ClickOutside
     },
     props: {
-        trigger: {
-            type: String,
-            default: 'click'
-        },
         transition: {
             type: String,
             default: 'zoom-in-center-transition'

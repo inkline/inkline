@@ -34,10 +34,6 @@ export default {
         };
     },
     props: {
-        trigger: {
-            type: String,
-            default: 'click'
-        },
         hideOnClick: {
             type: Boolean,
             default: true
@@ -52,10 +48,6 @@ export default {
 
         return {
             items: [],
-            timeout: null,
-            visible: false,
-            triggerElement: null,
-            popupElement: null,
             id: this.$attrs.id || uid(basename),
             basename
         };

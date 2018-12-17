@@ -33,6 +33,10 @@ export default {
         ClickOutside
     },
     props: {
+        trigger: {
+            type: String,
+            default: 'hover'
+        },
         placement: {
             type: String,
             default: 'top'
@@ -50,7 +54,6 @@ export default {
         const basename = 'tooltip';
 
         return {
-            timeout: null,
             id: this.$attrs.id || uid(basename),
             basename
         };

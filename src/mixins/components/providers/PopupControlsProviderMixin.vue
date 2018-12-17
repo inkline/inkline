@@ -3,7 +3,7 @@
         props: {
             trigger: {
                 type: String,
-                default: 'hover'
+                default: 'click'
             },
             showTimeout: {
                 type: Number,
@@ -16,9 +16,10 @@
         },
         data() {
             return {
-                visible: false,
+                timeout: null,
+                popupElement: null,
                 triggerElement: null,
-                popupElement: null
+                visible: false
             };
         },
         methods: {
@@ -50,7 +51,7 @@
                 }
             },
             initElements() {
-                if (!this.$slots.default.length > 0) {
+                if (!(this.$slots.default || []).length > 0) {
                     throw new Error(`${this.$options.name} component requires one child element to be used as trigger.`);
                 }
 
