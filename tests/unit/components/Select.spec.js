@@ -8,8 +8,10 @@ describe('Components', () => {
 
         beforeEach(() => {
             wrapper = mount(Select, {
+                attachToDocument: true,
                 propsData: {
-                    id: 'select'
+                    id: 'select',
+                    'v-model': 'value'
                 },
                 methods: {
                     created: Select.created
@@ -123,9 +125,14 @@ describe('Components', () => {
             });
         });
 
-
-
         describe('created()', () => {
+            it('should add class rules to classes provider', () => {
+                const classRulesLength = wrapper.vm.classesProvider.length;
+
+                wrapper.vm.created();
+                expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 1)
+            });
+
             it('should listen to "option-click" event', () => {
                 const spy = jest.spyOn(wrapper.vm, '$on');
 
@@ -133,6 +140,15 @@ describe('Components', () => {
 
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith('option-click', expect.any(Function));
+            });
+
+            it('should set model to event option value on "option-click"', (done) => {
+                wrapper.vm.$emit('option-click', { value: 'new' });
+
+                setTimeout(() => {
+                    expect(wrapper.emitted().input[0]).toEqual(['new']);
+                    done();
+                }, 100);
             });
 
             it('should listen to "option-mounted" event', () => {
@@ -144,6 +160,18 @@ describe('Components', () => {
                 expect(spy).toHaveBeenCalledWith('option-mounted', expect.any(Function));
             });
 
+            it('should add event option to options on "option-mounted"', (done) => {
+                expect(wrapper.vm.options.length).toEqual(0);
+
+                wrapper.vm.$emit('option-mounted', { value: 'new' });
+
+                setTimeout(() => {
+                    expect(wrapper.vm.options[0]).toEqual({ value: 'new' });
+                    expect(wrapper.vm.options.length).toEqual(1);
+                    done();
+                }, 100);
+            });
+
             it('should listen to "option-destroyed" event', () => {
                 const spy = jest.spyOn(wrapper.vm, '$on');
 
@@ -152,8 +180,41 @@ describe('Components', () => {
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith('option-destroyed', expect.any(Function));
             });
+
+            it('should remove event option from options on "option-destroyed"', (done) => {
+                wrapper.setData({
+                    options: [
+                        { value: 'delete' }
+                    ]
+                });
+
+                expect(wrapper.vm.options.length).toEqual(1);
+                wrapper.vm.$emit('option-destroyed', { value: 'delete' });
+
+                setTimeout(() => {
+                    expect(wrapper.vm.options.length).toEqual(0);
+                    done();
+                }, 100);
+            });
         });
 
-
+        // describe('watch', () => {
+        //     describe('model()', () => {
+        //         it('should set label model to option value', (done) => {
+        //             wrapper.setData({
+        //                 options: [
+        //                     { value: 'label' }
+        //                 ]
+        //             });
+        //
+        //             wrapper.vm.model = 'label';
+        //
+        //             setTimeout(() => {
+        //                 expect(wrapper.vm.options.length).toEqual(0);
+        //                 done();
+        //             }, 0);
+        //         });
+        //     });
+        // });
     });
 });

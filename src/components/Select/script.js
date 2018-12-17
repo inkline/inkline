@@ -102,8 +102,8 @@ export default {
             }
         });
 
-        this.$on('option-destroyed', (data) => {
-            this.options = this.options.filter((o) => o.value !== data.value);
+        this.$on('option-destroyed', (option) => {
+            this.options = this.options.filter((o) => o.value !== option.value);
         });
     },
     watch: {

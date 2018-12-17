@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components Select should render correctly 1`] = `
-<div size="" id="select" tabindex="-1" class="dropdown select">
+<div size="" id="select" tabindex="-1" class="dropdown select" v-model="value">
   <div class="form-input-group" aria-haspopup="dropdown" aria-controls="select">
     <!---->
     <div class="form-input">
       <!---->
-      <!----> <input tabindex="1" readonly="readonly" aria-readonly="true" id="select"></div>
+      <!----> <input tabindex="1" readonly="readonly" aria-readonly="true" id="select" v-model="value"></div>
     <!---->
   </div>
   <!---->
