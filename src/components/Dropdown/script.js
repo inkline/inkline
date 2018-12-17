@@ -125,7 +125,7 @@ export default {
             }
         },
         initElements() {
-            if (!this.$slots.default.length > 1) {
+            if ((this.$slots.default || []).length < 2) {
                 throw new Error(`IDropdown component requires two child elements. 
                 The first one will be used as a trigger. The second one should be a IDropdownMenu component.`);
             }
@@ -152,6 +152,9 @@ export default {
     },
     mounted() {
         this.$on('menu-item-click', this.handleMenuItemClick);
+
+        this.triggerElement.addEventListener('keydown', this.onTriggerKeyDown);
+        this.popupElement.addEventListener('keydown', this.onItemKeyDown, true);
 
         this.popupElement.addEventListener('mouseenter', this.show);
         this.popupElement.addEventListener('mouseleave', this.hide);

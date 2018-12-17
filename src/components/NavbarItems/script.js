@@ -8,21 +8,5 @@ export default {
         ClassesProviderMixin,
 
         SizePropertyMixin,
-    ],
-    props: {
-        tabs: {
-            type: Boolean,
-            default: false
-        },
-        vertical: {
-            type: Boolean,
-            default: false
-        }
-    },
-    created () {
-        this.classesProvider.add(() => ({
-            '-tabs': this.tabs,
-            '-vertical': this.vertical
-        }));
-    }
+    ]
 };

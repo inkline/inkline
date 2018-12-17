@@ -33,8 +33,7 @@ export default {
             return [
                 ...Object.keys(properties)
                     .map((p) => this[p] ? breakpointClass(modifierClass(p), this[p]) : '')
-                    .filter((p) => p !== '')
-            ];
+            ].filter((p) => p !== '');
         }
     }
 };

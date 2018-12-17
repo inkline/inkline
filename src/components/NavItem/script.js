@@ -16,10 +16,6 @@ export default {
         SizePropertyMixin,
     ],
     props: {
-        tabs: {
-            type: Boolean,
-            default: false
-        },
         tag: {
             type: String,
             default: 'div'

@@ -5,7 +5,7 @@ export default {
     extends: Checkable,
     computed: {
         currentValue () {
-            return this.isGrouped ? this.value : this.$attrs.value;
+            return this.isGrouped ? this.value : (this.$attrs || {}).value;
         },
         checked () {
             return this.model === this.currentValue;

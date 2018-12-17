@@ -18,20 +18,21 @@ export default {
             type: Boolean,
             default: false
         },
-        noColapse: {
+        noCollapse: {
             type: Boolean,
             default: false
         },
         ...properties
     },
     computed: {
-        classes: function () {
+        classes() {
             return [
                 this.noGutter ? '-no-gutter' : '',
-                this.noColapse ? '-no-colapse' : '',
+                this.noCollapse ? '-no-collapse' : '',
 
-                ...Object.keys(properties).map((p) => this[p] ? breakpointClass(modifierClass(p), this[p]) : '')
-            ];
+                ...Object.keys(properties)
+                    .map((p) => this[p] ? breakpointClass(modifierClass(p), this[p]) : '')
+            ].filter((p) => p !== '');
         }
     }
 };
