@@ -48,7 +48,7 @@ export default {
 
         return {
             items: [],
-            id: this.$attrs.id || uid(basename),
+            id: this.$attrs.id || uid(basename + '-menu'),
             basename
         };
     },

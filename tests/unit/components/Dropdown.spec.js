@@ -65,7 +65,7 @@ describe('Components', () => {
                         }
                     });
 
-                    expect(wrapper.vm.id).toMatch(/^dropdown-\w+/);
+                    expect(wrapper.vm.id).toMatch(/^dropdown-menu-\w+/);
                 });
             });
 

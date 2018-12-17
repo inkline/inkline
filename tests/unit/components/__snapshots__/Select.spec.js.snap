@@ -1,9 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components Select should render correctly 1`] = `
-<i-dropdown-stub hideonclick="true" placement="bottom" size="" tabindex="-1" class="select">
-  <i-input-stub readonly="true" tabindex="1"><template></template> <template></template></i-input-stub>
+<div size="" id="select" tabindex="-1" class="dropdown select">
+  <div class="form-input-group" aria-haspopup="dropdown" aria-controls="select">
+    <!---->
+    <div class="form-input">
+      <!---->
+      <!----> <input tabindex="1" readonly="readonly" aria-readonly="true" id="select"></div>
+    <!---->
+  </div>
   <!---->
+  <div class="dropdown-menu" style="display: none;" name="zoom-in-top-transition" id="select"><span class="arrow"></span> </div>
+</div>
+`;
+
+exports[`Components Select should render native correctly 1`] = `
+<i-dropdown-stub hideonclick="true" placement="bottom" disabled="true" size="" id="select" tabindex="-1" class="select">
+  <i-input-stub readonly="true" tabindex="-1" id="select"><template></template> <template></template></i-input-stub> <select id="select" class="form-select"></select>
   <i-dropdown-menu-stub arrow="true" arrowoffset="0"></i-dropdown-menu-stub>
 </i-dropdown-stub>
 `;

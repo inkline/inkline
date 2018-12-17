@@ -20,6 +20,7 @@ import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPrope
 import ParentFormGroupPropertyMixin from 'inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndexPropertyMixin';
+import {uid} from "@/helpers";
 
 export default {
     name: 'ISelect',
@@ -62,8 +63,11 @@ export default {
         }
     },
     data() {
+        const basename = 'select';
+
         return {
             labelModel: '',
+            id: this.$attrs.id || uid(basename),
             options: []
         }
     },
