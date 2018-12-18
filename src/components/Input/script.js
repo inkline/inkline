@@ -55,13 +55,13 @@ export default {
     ],
     created () {
         this.classesProvider.add('root', () => ({
-            '-prepended': this.$slots.prepend || this.prepended,
-            '-appended': this.$slots.append || this.appended
+            '-prepended': Boolean(this.$slots.prepend) || this.prepended,
+            '-appended': Boolean(this.$slots.append) || this.appended
         }));
 
         this.classesProvider.add('child', () => ({
-            '-prefixed': this.$slots.prefix,
-            '-suffixed': this.$slots.suffix
+            '-prefixed': Boolean(this.$slots.prefix),
+            '-suffixed': Boolean(this.$slots.suffix)
         }));
     }
 };

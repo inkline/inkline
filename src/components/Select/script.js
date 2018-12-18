@@ -86,8 +86,8 @@ export default {
     },
     created() {
         this.classesProvider.add('root', () => ({
-            '-prefixed': this.$slots.prefix,
-            '-suffixed': this.$slots.suffix
+            '-prefixed': Boolean(this.$slots.prefix),
+            '-suffixed': Boolean(this.$slots.suffix)
         }));
 
         this.$on('option-click', (option) => {

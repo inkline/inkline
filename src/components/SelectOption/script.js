@@ -2,8 +2,10 @@ import AttributesProviderMixin from 'inkline/mixins/components/providers/Attribu
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
 
-import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
 import EmitClickMethodMixin from 'inkline/mixins/components/methods/EmitClickMethodMixin';
+
+import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
+import ParentFormGroupPropertyMixin from 'inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
 
 export default {
     name: 'ISelectOption',
@@ -15,6 +17,7 @@ export default {
         EmitClickMethodMixin,
 
         DisabledPropertyMixin,
+        ParentFormGroupPropertyMixin
     ],
     props: {
         value: {
@@ -26,22 +29,14 @@ export default {
             default: ''
         }
     },
+    data() {
+        return {
+            parentFormGroupName: 'ISelect'
+        }
+    },
     computed: {
         active () {
-            return this.parentSelect.value === this.value;
-        },
-        parentSelect() {
-            let parent = this.$parent;
-
-            while (parent) {
-                if (parent.$options.name === 'ISelect' || (parent.$options.extends || {}).name === 'ISelect') {
-                    return parent;
-                }
-
-                parent = parent.$parent;
-            }
-
-            return undefined;
+            return (this.parentFormGroup || {}).value === this.value;
         }
     },
     methods: {

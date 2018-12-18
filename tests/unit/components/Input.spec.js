@@ -29,53 +29,53 @@ describe('Components', () => {
                 expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 2)
             });
 
-            // it('should add "-prepended" class if "prepend" slot provided', () => {
-            //     wrapper = shallowMount(Input, {
-            //         slots: {
-            //             prepend: ['<div />']
-            //         }
-            //     });
-            //
-            //     const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 2];
-            //
-            //     expect(rule()).toEqual(expect.objectContaining({ '-prepended': true }));
-            // });
+            it('should add "-prepended" class if "prepend" slot provided', () => {
+                wrapper = shallowMount(Input, {
+                    slots: {
+                        prepend: ['<div />']
+                    }
+                });
 
-        //     it('should add "-appended" class if "append" slot provided', () => {
-        //         wrapper = shallowMount(Input, {
-        //             slots: {
-        //                 append: ['<div />']
-        //             }
-        //         });
-        //
-        //         const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 2];
-        //
-        //         expect(rule()).toEqual(expect.objectContaining({ '-appended': true }));
-        //     });
-        //
-        //     it('should add "-prefixed" class if "prefix" slot provided', () => {
-        //         wrapper = shallowMount(Input, {
-        //             slots: {
-        //                 prefix: ['<div />']
-        //             }
-        //         });
-        //
-        //         const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
-        //
-        //         expect(rule()).toEqual(expect.objectContaining({ '-prefixed': true }));
-        //     });
-        //
-        //     it('should add "-suffixed" class if "suffix" slot provided', () => {
-        //         wrapper = shallowMount(Input, {
-        //             slots: {
-        //                 suffix: ['<div />']
-        //             }
-        //         });
-        //
-        //         const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
-        //
-        //         expect(rule()).toEqual(expect.objectContaining({ '-suffixed': true }));
-        //     });
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 2];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-prepended': true }));
+            });
+
+            it('should add "-appended" class if "append" slot provided', () => {
+                wrapper = shallowMount(Input, {
+                    slots: {
+                        append: ['<div />']
+                    }
+                });
+
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 2];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-appended': true }));
+            });
+
+            it('should add "-prefixed" class if "prefix" slot provided', () => {
+                wrapper = shallowMount(Input, {
+                    slots: {
+                        prefix: ['<div />']
+                    }
+                });
+
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-prefixed': true }));
+            });
+
+            it('should add "-suffixed" class if "suffix" slot provided', () => {
+                wrapper = shallowMount(Input, {
+                    slots: {
+                        suffix: ['<div />']
+                    }
+                });
+
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-suffixed': true }));
+            });
         });
     });
 });

@@ -133,6 +133,30 @@ describe('Components', () => {
                 expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 1)
             });
 
+            it('should add "-prefixed" class if "prefix" slot provided', () => {
+                wrapper = shallowMount(Select, {
+                    slots: {
+                        prefix: ['<div />']
+                    }
+                });
+
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-prefixed': true }));
+            });
+
+            it('should add "-suffixed" class if "suffix" slot provided', () => {
+                wrapper = shallowMount(Select, {
+                    slots: {
+                        suffix: ['<div />']
+                    }
+                });
+
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-suffixed': true }));
+            });
+
             it('should listen to "option-click" event', () => {
                 const spy = jest.spyOn(wrapper.vm, '$on');
 
@@ -145,10 +169,10 @@ describe('Components', () => {
             it('should set model to event option value on "option-click"', (done) => {
                 wrapper.vm.$emit('option-click', { value: 'new' });
 
-                setTimeout(() => {
+                wrapper.vm.$nextTick(() => {
                     expect(wrapper.emitted().input[0]).toEqual(['new']);
                     done();
-                }, 100);
+                });
             });
 
             it('should listen to "option-mounted" event', () => {
@@ -165,11 +189,11 @@ describe('Components', () => {
 
                 wrapper.vm.$emit('option-mounted', { value: 'new' });
 
-                setTimeout(() => {
+                wrapper.vm.$nextTick(() => {
                     expect(wrapper.vm.options[0]).toEqual({ value: 'new' });
                     expect(wrapper.vm.options.length).toEqual(1);
                     done();
-                }, 100);
+                });
             });
 
             it('should listen to "option-destroyed" event', () => {
@@ -191,30 +215,41 @@ describe('Components', () => {
                 expect(wrapper.vm.options.length).toEqual(1);
                 wrapper.vm.$emit('option-destroyed', { value: 'delete' });
 
-                setTimeout(() => {
+                wrapper.vm.$nextTick(() => {
                     expect(wrapper.vm.options.length).toEqual(0);
                     done();
-                }, 100);
+                });
             });
         });
 
-        // describe('watch', () => {
-        //     describe('model()', () => {
-        //         it('should set label model to option value', (done) => {
-        //             wrapper.setData({
-        //                 options: [
-        //                     { value: 'label' }
-        //                 ]
-        //             });
-        //
-        //             wrapper.vm.model = 'label';
-        //
-        //             setTimeout(() => {
-        //                 expect(wrapper.vm.options.length).toEqual(0);
-        //                 done();
-        //             }, 0);
-        //         });
-        //     });
-        // });
+        describe('watch', () => {
+            describe('model()', () => {
+                it('should set label model to option value', () => {
+                    wrapper.setData({
+                        options: [
+                            { value: 'label' }
+                        ]
+                    });
+
+                    expect(wrapper.vm.labelModel).toEqual('');
+                    wrapper.setProps({ value: 'label' });
+
+                    expect(wrapper.vm.labelModel).toEqual('label');
+                });
+
+                it('should set label model to option label if available', () => {
+                    wrapper.setData({
+                        options: [
+                            { value: 'value', label: 'label' }
+                        ]
+                    });
+
+                    expect(wrapper.vm.labelModel).toEqual('');
+                    wrapper.setProps({ value: 'value' });
+
+                    expect(wrapper.vm.labelModel).toEqual('label');
+                });
+            });
+        });
     });
 });
