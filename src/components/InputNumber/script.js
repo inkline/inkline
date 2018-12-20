@@ -55,7 +55,7 @@ export default {
             return this.precision > 0 ? `${parts[0]}.${decimals}` : parts[0];
         },
         onBlurFormatPrecision (event) {
-            this.$emit('input', this.formatPrecision(this.value));
+            this.$emit('input', this.formatPrecision(Number(this.value).toString()));
             this.emitBlur(event);
         },
     },
