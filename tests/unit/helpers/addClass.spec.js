@@ -15,6 +15,20 @@ describe('Helpers', () => {
                 };
             });
 
+            it('should not add class if class already exists', () => {
+                element.className = 'test';
+
+                addClass(element, 'test');
+
+                expect(element.className).toEqual('test');
+            });
+
+            it('should not add any class if classes not provided', () => {
+                addClass(element, '');
+
+                expect(element.className).toEqual('');
+            });
+
             it('should add a class', () => {
                 addClass(element, 'class');
 
@@ -37,6 +51,12 @@ describe('Helpers', () => {
                         add() {}
                     }
                 }
+            });
+
+            it('should not add any class if classes not provided', () => {
+                addClass(element, '');
+
+                expect(element.className).toEqual(undefined);
             });
 
             it('should add a class', () => {

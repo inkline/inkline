@@ -5,6 +5,7 @@
 [
     [ window.navigator, 'userAgent' ],
     [ window.navigator, 'vendor' ],
+    [ window.document, 'activeElement' ],
     [ window, 'opera' ]
 ].forEach(([object, property]) => {
     Object.defineProperty(object, property, ((value) => ({
