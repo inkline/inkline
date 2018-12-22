@@ -25,6 +25,9 @@ jest.mock('popper.js', () => {
                 destroy: () => {},
                 scheduleUpdate: () => {},
                 popper: {
+                    getAttribute() {
+                        return 'top';
+                    },
                     style: {}
                 }
             };

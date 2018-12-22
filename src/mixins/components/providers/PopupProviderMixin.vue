@@ -147,9 +147,9 @@
                 let placement = this.popperJS.popper.getAttribute('x-placement').split('-')[0];
                 let origin = placementMap[placement];
 
-                this.popperJS.popper.style.transformOrigin = typeof this.transformOrigin === 'string'
-                    ? this.transformOrigin
-                    : ['top', 'bottom'].indexOf(placement) > -1 ? `center ${ origin }` : `${ origin } center`;
+                this.popperJS.popper.style.transformOrigin = typeof this.transformOrigin === 'string' ?
+                    this.transformOrigin :
+                    ['top', 'bottom'].indexOf(placement) > -1 ? `center ${ origin }` : `${ origin } center`;
             },
         },
 
