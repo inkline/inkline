@@ -1,7 +1,7 @@
 import { once } from 'inkline/helpers/once';
 
 describe('Helpers', () => {
-    describe('once', () => {
+    describe('once()', () => {
         let element;
 
         beforeEach(() => {

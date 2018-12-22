@@ -1,7 +1,7 @@
 import { breakpointClass } from 'inkline/helpers/breakpointClass';
 
 describe('Helpers', () => {
-    describe('breakpointClass', () => {
+    describe('breakpointClass()', () => {
         it('should convert className to dash case if breakpoint not specified', () => {
             expect(breakpointClass('aB', '')).toEqual('a-b');
         });

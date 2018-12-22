@@ -1,7 +1,7 @@
 import { isKey } from 'inkline/helpers/isKey';
 
 describe('Helpers', () => {
-    describe('isKey', () => {
+    describe('isKey()', () => {
         it('should return true if key pressed using key property', () => {
             expect(isKey('enter', { key: 'Enter' })).toEqual(true);
         });

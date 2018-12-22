@@ -1,7 +1,7 @@
 import { focusAttempt } from 'inkline/helpers/focusAttempt';
 
 describe('Helpers', () => {
-    describe('focusAttempt', () => {
+    describe('focusAttempt()', () => {
         let element;
 
         beforeEach(() => {

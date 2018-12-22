@@ -1,7 +1,7 @@
 import { isFocusable } from 'inkline/helpers/isFocusable';
 
 describe('Helpers', () => {
-    describe('isFocusable', () => {
+    describe('isFocusable()', () => {
         let element;
 
         beforeEach(() => {

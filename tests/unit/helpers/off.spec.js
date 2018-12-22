@@ -1,7 +1,7 @@
 import { off } from 'inkline/helpers/off';
 
 describe('Helpers', () => {
-    describe('off', () => {
+    describe('off()', () => {
         let element;
 
         beforeEach(() => {

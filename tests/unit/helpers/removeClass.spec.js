@@ -1,7 +1,7 @@
 import { removeClass } from 'inkline/helpers/removeClass';
 
 describe('Helpers', () => {
-    describe('removeClass', () => {
+    describe('removeClass()', () => {
         it('should return if element not provided', () => {
             expect(removeClass(undefined, undefined)).toEqual(undefined);
         });

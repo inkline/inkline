@@ -1,7 +1,7 @@
 import { focusLastDescendant } from 'inkline/helpers/focusLastDescendant';
 
 describe('Helpers', () => {
-    describe('focusLastDescendant', () => {
+    describe('focusLastDescendant()', () => {
         let element;
 
         beforeEach(() => {

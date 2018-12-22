@@ -1,7 +1,7 @@
 import { on } from 'inkline/helpers/on';
 
 describe('Helpers', () => {
-    describe('on', () => {
+    describe('on()', () => {
         let element;
 
         beforeEach(() => {

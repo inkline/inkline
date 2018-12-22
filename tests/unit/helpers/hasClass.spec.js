@@ -1,7 +1,7 @@
 import { hasClass } from 'inkline/helpers/hasClass';
 
 describe('Helpers', () => {
-    describe('hasClass', () => {
+    describe('hasClass()', () => {
         it('should return false if element not defined', () => {
             expect(hasClass(undefined, 'test')).toEqual(false);
         });

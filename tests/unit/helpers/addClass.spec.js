@@ -1,7 +1,7 @@
 import { addClass } from 'inkline/helpers/addClass';
 
 describe('Helpers', () => {
-    describe('addClass', () => {
+    describe('addClass()', () => {
         it('should return if element not provided', () => {
             expect(addClass(undefined, undefined)).toEqual(undefined);
         });
