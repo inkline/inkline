@@ -22,9 +22,9 @@ function createDocumentHandler(element, binding, vnode) {
             element.contains(mouseup.target) ||
             element.contains(mousedown.target) ||
             element === mouseup.target ||
-            (vnode.context.popperElement &&
-                (vnode.context.popperElement.contains(mouseup.target) ||
-                    vnode.context.popperElement.contains(mousedown.target)))) return;
+            (vnode.context.popupElement &&
+                (vnode.context.popupElement.contains(mouseup.target) ||
+                    vnode.context.popupElement.contains(mousedown.target)))) return;
 
         if (binding.expression &&
             element[ctx].methodName &&
@@ -40,7 +40,7 @@ function createDocumentHandler(element, binding, vnode) {
  * v-click-outside
  * @example
  * ```vue
- * <div v-element-click-outside="handleClose">
+ * <div v-click-outside="handleClose">
  * ```
  */
 export default {

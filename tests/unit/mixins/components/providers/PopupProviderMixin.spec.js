@@ -114,7 +114,6 @@ describe('Mixins', () => {
             describe('visible', () => {
                 beforeEach(() => {
                     wrapper.vm.createPopper();
-                    wrapper.vm.popperJS.update = () => {};
                 });
 
                 it('should emit "visibilityChange" on change', () => {
