@@ -1,4 +1,5 @@
 import { uid } from 'inkline/helpers';
+import { popupManager } from 'inkline/factories/PopupManager';
 
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
@@ -64,8 +65,13 @@ export default {
         },
     },
     created () {
+        popupManager.register(this);
+
         this.classesProvider.add('root', () => ({
             '-fill': this.fill
         }));
+    },
+    destroyed () {
+        popupManager.unregister(this);
     }
 };

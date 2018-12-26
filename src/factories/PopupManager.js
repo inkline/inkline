@@ -31,9 +31,9 @@ class PopupManager {
         return this.instances[id];
     }
 
-    register(id, instance) {
-        if (id && instance) {
-            this.instances[id] = instance;
+    register(instance) {
+        if (instance && instance.id) {
+            this.instances[instance.id] = instance;
         }
     }
 
@@ -85,7 +85,7 @@ class PopupManager {
 
         return modalDom;
     }
-    
+
     openModal(id, zIndex, dom, modalClass, modalFade) {
         if (Vue.prototype.$isServer) return;
         if (!id || zIndex === undefined) return;
