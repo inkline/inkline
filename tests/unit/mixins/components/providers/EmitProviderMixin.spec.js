@@ -26,17 +26,26 @@ describe('Mixins', () => {
                     template: `
                         <div class="parent">
                             <slot></slot>
-                            <div class="nested">
-                                <slot name="nested"></slot>
-                            </div>
+                        </div>
+                    `
+                };
+
+                const GrandparentComponent = {
+                    name: 'Grandparent',
+                    mixins: [
+                        EmitProviderMixin,
+                    ],
+                    template: `
+                        <div class="grandparent">
+                            <slot></slot>
                         </div>
                     `
                 };
 
                 wrapper = mount(ParentComponent, {
+                    parentComponent: GrandparentComponent,
                     slots: {
                         default: [ ChildComponent ],
-                        nested: [ ChildComponent ],
                     }
                 });
             });
@@ -56,9 +65,9 @@ describe('Mixins', () => {
                 });
 
                 it('should call broadcast recursively and work with any nesting level', () => {
-                    const spy = jest.spyOn(wrapper.vm.$children[1], '$emit');
+                    const spy = jest.spyOn(wrapper.vm.$children[0], '$emit');
 
-                    wrapper.vm.broadcast('Child', 'eventName', true);
+                    wrapper.vm.$parent.broadcast('Child', 'eventName', true);
 
                     expect(spy).toHaveBeenCalled();
                     expect(spy).toHaveBeenCalledWith('eventName', true);
@@ -80,9 +89,9 @@ describe('Mixins', () => {
                 });
 
                 it('should work with any nesting level', () => {
-                    const spy = jest.spyOn(wrapper.vm, '$emit');
+                    const spy = jest.spyOn(wrapper.vm.$parent, '$emit');
 
-                    wrapper.vm.$children[1].dispatch('Parent', 'eventName', true);
+                    wrapper.vm.$children[0].dispatch('Grandparent', 'eventName', true);
 
                     expect(spy).toHaveBeenCalled();
                     expect(spy).toHaveBeenCalledWith('eventName', true);
