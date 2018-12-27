@@ -7,8 +7,14 @@
  * @param {String} name
  * @param {*} opts
  */
-export function triggerEvent (element, name, ...opts) {
+export function triggerEvent (element, name, options) {
     let eventName;
+
+    options = {
+        bubbles: false,
+        cancelable: true,
+        ...options
+    };
 
     if (/^mouse|click/.test(name)) {
         eventName = 'MouseEvents';
@@ -17,9 +23,16 @@ export function triggerEvent (element, name, ...opts) {
     } else {
         eventName = 'HTMLEvents';
     }
-    const evt = document.createEvent(eventName);
 
-    evt.initEvent(name, ...opts);
+    const evt = document.createEvent(eventName);
+    evt.initEvent(name, options.bubbles, options.cancelable);
+
+    Object.keys(options).forEach((optionName) => {
+        if (optionName !== 'bubbles' && optionName !== 'cancelable') {
+            evt[optionName] = options[optionName];
+        }
+    });
+
     element.dispatchEvent
         ? element.dispatchEvent(evt)
         : element.fireEvent('on' + name, evt);
