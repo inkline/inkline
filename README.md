@@ -30,7 +30,6 @@
         <img src="https://travis-ci.org/inkline/inkline.svg?branch=master" alt="Build">
     </a>
     <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="dependencies status">
-    <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="devDependencies status">
     <a href="https://www.npmjs.com/package/inkline">
         <img src="https://img.shields.io/npm/dm/inkline.svg" alt="Downloads">
     </a>
