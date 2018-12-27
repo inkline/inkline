@@ -9,7 +9,7 @@
     "dev": "vue-cli-service serve",
     "test": "vue-cli-service test:unit --coverage --no-cache",
     "test:dev": "vue-cli-service test:unit --watch --coverage --no-cache",
-    "coveralls": "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "cat ./tests/coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "popper.js": "^1.14.5",
