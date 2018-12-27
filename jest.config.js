@@ -6,7 +6,7 @@ module.exports = {
     'vue'
   ],
   collectCoverage: true,
-  coverageReporters: ["json", "html", "lcov"],
+  coverageReporters: ["json", "html", "text-lcov"],
   coverageDirectory: "<rootDir>/tests/coverage",
   collectCoverageFrom: [
       '<rootDir>/src/**/*.vue',
