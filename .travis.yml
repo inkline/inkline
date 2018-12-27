@@ -6,4 +6,7 @@ script:
 - npm install
 
 after_script:
-- npm run test:coveralls
+- npm run test
+
+after_success:
+- npm run coveralls
