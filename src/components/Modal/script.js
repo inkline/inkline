@@ -36,6 +36,10 @@ export default {
             type: String,
             default: 'zoom-in-center-transition'
         },
+        closeOnPressEscape: {
+            type: Boolean,
+            default: true
+        },
         fill: {
             type: Boolean,
             default: false
@@ -54,11 +58,15 @@ export default {
             if (this.disabled) return;
 
             this.visible = true;
+
+            popupManager.openModal(this.id)
         },
         hide() {
             if (this.disabled) return;
 
             this.visible = false;
+
+            popupManager.closeModal(this.id)
         },
         initEvents() {
             this.triggerElement.addEventListener('click', this.onClick);
