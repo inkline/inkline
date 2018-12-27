@@ -14,7 +14,7 @@ describe('Mixins', () => {
                     disabled: false
                 },
                 mixins: [
-                    PopupProviderMixin
+                    PopupProviderMixin,
                 ],
                 template: `<div>
                         <slot name="reference"></slot>
@@ -23,6 +23,16 @@ describe('Mixins', () => {
             };
 
             wrapper = mount(Component, {
+                data() {
+                    return {
+                        popupElement: null,
+                        triggerElement: null
+                    };
+                },
+                methods: {
+                    beforeDestroy: PopupProviderMixin.beforeDestroy,
+                    deactivated: PopupProviderMixin.deactivated
+                },
                 slots: {
                     reference: ['<div/>'],
                     popup: ['<div/>']
@@ -307,6 +317,52 @@ describe('Mixins', () => {
 
                     expect(wrapper.vm.popperJS.popper.style.transformOrigin).toEqual('center bottom');
                 });
+            });
+        });
+
+        describe('beforeDestroy()', () => {
+            it('should call doDestroy with forceDestroy set to true', () => {
+                const spy = jest.spyOn(wrapper.vm, 'doDestroy');
+
+                wrapper.vm.beforeDestroy();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith(true);
+            });
+
+            it('should remove popup element from document body', () => {
+                const spy = jest.spyOn(document.body, 'removeChild');
+
+                wrapper.setData({ popupElement: document.createElement('div') });
+                document.body.appendChild(wrapper.vm.popupElement);
+
+                wrapper.vm.beforeDestroy();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith(wrapper.vm.popupElement);
+            });
+
+            it('should remove popup element event listener', () => {
+                wrapper.setData({ popupElement: document.createElement('div') });
+                document.body.appendChild(wrapper.vm.popupElement);
+
+                const spy = jest.spyOn(wrapper.vm.popupElement, 'removeEventListener');
+
+                wrapper.vm.beforeDestroy();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith('click', expect.any(Function));
+            });
+        });
+
+
+        describe('deactivated()', () => {
+            it('should call beforeDestroy()', () => {
+                const spy = jest.spyOn(wrapper.vm.$options.beforeDestroy, '0');
+
+                wrapper.vm.deactivated();
+
+                expect(spy).toHaveBeenCalled();
             });
         });
     });

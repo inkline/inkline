@@ -15,18 +15,22 @@ describe('Prototypes', () => {
         });
 
         it('should return true if navigator.vendor matches Android', () => {
+            global.navigator.userAgent = false;
             global.navigator.vendor = 'androidxmobile';
 
             expect($isMobile()).toEqual(true);
         });
 
         it('should return true if navigator.vendor matches iPhone', () => {
+            global.navigator.userAgent = false;
             global.navigator.vendor = 'iphone';
 
             expect($isMobile()).toEqual(true);
         });
 
         it('should return true if window.opera exists and matches regExp', () => {
+            global.navigator.userAgent = false;
+            global.navigator.vendor = false;
             global.window.opera = 'opera mini';
 
             expect($isMobile()).toEqual(true);
