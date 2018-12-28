@@ -1,10 +1,11 @@
 language: node_js
 node_js:
-- "8.9.1"
-
+- 8.9.1
 script:
 - npm install
-
 after_script:
 - npm run test
 - npm run coveralls
+env:
+  global:
+  - secure: 1WG6dY5xHqGfGjio2MsMQpdH+MAyasCsmmr5q/reJQ6GMpOr7rQ0+arYjURjjBFBwlYzf2i9hxL7+/ZtlTelACMQ/zUytLh4mkFHXNt4fzudN4CZ8PQ5tGMAvIvboIdWNXWwvJHsJOnjC90+N0MYSt4wuJjdOw2ez5jS84yP+QQOHSSDC+70bj8Y/P3/G8IkhXrFCmiQRqPqczVjtblG8Nn8WcwdyS+wAT1D9V/zCwGqL0juAU9ve0DHuoNkgHPkwKT/n6nT+YtNJ28V1BY4vSdlY2TcfyTCuCTCj+9UZ6pzMAalEAmIcFCDBFW9SVABAbMRMqZtv4p5m5DEV47QxnwokvCnsVfmZKhW78gG68zu0rJI2Yhury2YVUJTuWIS/VuGbJbv6CF25IKyhtYR1BjOVnTH0Iqi1kv6QJb+GXRrSPWs1jD4tLy+yRvoLbTNjnP5XfwNAMEU+e5ZL1aRJfmoFL7Ar2DcxJwdcBaPic9FLUvNPqtzt4WLhRBJ6xrDCV6fmubd3l9ko5k4rTgRfBJHJyJ4KPo1fxxWsIqh2jgKV3kghsOnPtyk+SUp58Kl/kLXKBdLYuctXCyBWSG7hkSfklTem8nVmElZlp3xMMoZgrcleowACDTSwA6qGnRkvrqJxdZ55AFDJgpax6g0iAX77y1hZ0MRspDzyq4Ldmc=
