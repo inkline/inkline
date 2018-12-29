@@ -2,7 +2,6 @@
  * Tables
  */
 
-
 .table
     width: 100%
     max-width: 100%
@@ -52,28 +51,6 @@
                 transition: background-color --transition-duration ease
 
 
-    // Responsive tables
-    //
-    // Generate series of `.table-responsive-*` classes for configuring the screen
-    // size of where your table will overflow.
-    //
-    &.-responsive
-        for --breakpoint-name, --breakpoint-value in --breakpoints
-            --infix = breakpoint-infix(--breakpoint-name)
-
-            &{--infix}
-                +breakpoint-down(--breakpoint-name)
-                    display: block
-                    width: 100%
-                    overflow-x: auto
-                    -webkit-overflow-scrolling: touch
-                    -ms-overflow-style: -ms-autohiding-scrollbar
-
-                    // Prevent double border on horizontal scroll due to use of `display: block`
-                    &.-bordered
-                        border: none
-
-
     th
     td
     tbody + tbody
@@ -98,19 +75,18 @@
         //    --table-stripe-color = darken(--variant['color'], 1%)
 
         &.-{--variant-name}
-            background-color: --variant['color']
             border-top-color: --table-border-color
             color: --table-text-color
 
+            th, td
+                background-color: --variant['color']
 
             // Bordered table
             //
             // Add borders to all sides of the table and table cells
             //
             &.-bordered
-                &
-                th
-                td
+                &, th, td
                     border-color: --table-border-color
 
 
@@ -121,15 +97,37 @@
             &.-striped
                 > tr:nth-of-type(odd)
                 tbody > tr:nth-of-type(odd)
-                    background-color: --table-stripe-color
+                    th, td
+                        background-color: --table-stripe-color
 
             &.-hover
             &.-hoverable
                 tbody tr
                     &:hover
-                        background-color: --table-hover-color
-
-
+                        th, td
+                            background-color: --table-hover-color
 
 .table
     @extend .table.-light
+
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
+//
+.table-responsive
+    for --breakpoint-name, --breakpoint-value in --breakpoints
+        --infix = -breakpoint-infix(--breakpoint-name)
+
+        &{--infix}
+            +-breakpoint-down(--breakpoint-name)
+                display: block
+                width: 100%
+                overflow-x: auto
+                -webkit-overflow-scrolling: touch
+                -ms-overflow-style: -ms-autohiding-scrollbar
+
+                // Prevent double border on horizontal scroll due to use of `display: block`
+                .table
+                    &.-bordered
+                        border: none
