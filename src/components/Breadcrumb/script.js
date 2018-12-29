@@ -2,7 +2,6 @@ import AttributesProviderMixin from 'inkline/mixins/components/providers/Attribu
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
-import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
 
 export default {
     name: 'IBreadcrumb',
@@ -10,8 +9,7 @@ export default {
         AttributesProviderMixin,
         ClassesProviderMixin,
 
-        SizePropertyMixin,
-        VariantPropertyMixin
+        SizePropertyMixin
     ],
     props: {
         divider: {
