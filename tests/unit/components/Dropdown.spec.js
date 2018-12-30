@@ -411,9 +411,20 @@ describe('Components', () => {
                 expect(spy2).toHaveBeenCalledWith('keydown', wrapper.vm.onItemKeyDown, true);
             });
 
-            it('should add mouseenter and mouseleave events to popupElement', () => {
+            it('should not add mouseenter and mouseleave events to popupElement if trigger is not hover', () => {
                 const spy = jest.spyOn(wrapper.vm.popupElement, 'addEventListener');
 
+                wrapper.setProps({ trigger: 'click' });
+                wrapper.vm.mounted();
+
+                expect(spy).not.toHaveBeenNthCalledWith(2, 'mouseenter', wrapper.vm.show);
+                expect(spy).not.toHaveBeenNthCalledWith(3, 'mouseleave', wrapper.vm.hide);
+            });
+
+            it('should add mouseenter and mouseleave events to popupElement if trigger is hover', () => {
+                const spy = jest.spyOn(wrapper.vm.popupElement, 'addEventListener');
+
+                wrapper.setProps({ trigger: 'hover' });
                 wrapper.vm.mounted();
 
                 expect(spy).toHaveBeenNthCalledWith(2, 'mouseenter', wrapper.vm.show);
