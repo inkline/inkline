@@ -156,7 +156,9 @@ export default {
         this.triggerElement.addEventListener('keydown', this.onTriggerKeyDown);
         this.popupElement.addEventListener('keydown', this.onItemKeyDown, true);
 
-        this.popupElement.addEventListener('mouseenter', this.show);
-        this.popupElement.addEventListener('mouseleave', this.hide);
+        if (this.trigger === 'hover') {
+            this.popupElement.addEventListener('mouseenter', this.show);
+            this.popupElement.addEventListener('mouseleave', this.hide);
+        }
     },
 };
