@@ -410,17 +410,25 @@ describe('Factories', () => {
                 });
 
                 describe('$set()', () => {
+                    const instance = { $set: (target, key, value) => target[key] = value };
+
                     it('should be defined', () => {
                         const form = formBuilder.form([], {});
 
                         expect(form.$set).toBeDefined();
                     });
 
+                    it('should throw error if instance not provided', () => {
+                        const form = formBuilder.form([], {});
+
+                        expect(() => form.$set('field', {})).toThrowError();
+                    });
+
                     it('should call factory() method', () => {
                         const spy = jest.spyOn(formBuilder, 'factory');
                         const form = formBuilder.form([], {});
 
-                        form.$set('field', {});
+                        form.$set('field', {}, { instance });
 
                         expect(spy).toHaveBeenCalled();
                         expect(spy).toHaveBeenLastCalledWith(['field'], {}, undefined);
@@ -429,7 +437,7 @@ describe('Factories', () => {
                     it('should set a new form control field', () => {
                         const form = formBuilder.form([], {});
 
-                        form.$set('field', { validators: [] });
+                        form.$set('field', { validators: [] }, { instance });
 
                         expect(form.field).toBeDefined();
                         expect(form.field).toEqual(expect.objectContaining({
@@ -441,12 +449,13 @@ describe('Factories', () => {
                     it('should set a new form group field', () => {
                         const form = formBuilder.form([], {});
 
-                        form.$set('group', {}, true);
+                        form.$set('group', {}, { instance, group: true });
 
                         expect(form.group).toBeDefined();
                         expect(form.group).toEqual(expect.objectContaining({
                             $name: 'group'
                         }));
+                        expect(form.group.$set).toEqual(expect.any(Function));
                     });
                 });
             });

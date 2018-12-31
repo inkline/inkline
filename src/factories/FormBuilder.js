@@ -177,8 +177,9 @@ export class FormBuilder {
              * @param options
              */
             schema.$splice = (start, deleteCount, item, options={}) => {
-                schema.splice(
-                    start, deleteCount, this.factory(nameNesting.concat([start]), item, options.group));
+                item ?
+                    schema.splice(start, deleteCount, this.factory(nameNesting.concat([start]), item, options.group)) :
+                    schema.splice(start, deleteCount);
 
                 for (let index = start; index < schema.length; index += 1) {
                     schema[index].$name = schema[index].$name.replace(/[0-9]+$/, index);
@@ -191,13 +192,18 @@ export class FormBuilder {
         /**
          * Set a field with the given name and definition on the schema
          *
+         * @param instance
          * @param name
          * @param item
          * @param options
          */
         schema.$set = (name, item, options={}) => {
-            schema[name] = this.factory(
-                nameNesting.concat([name]), item, options.group)
+            if (!options.instance) {
+                throw new Error('Please make sure you provide the Vue instance inside the options object as options.instance.');
+            }
+
+            options.instance.$set(schema, name, this.factory(
+                nameNesting.concat([name]), item, options.group));
         };
 
         return schema;
