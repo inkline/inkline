@@ -16,22 +16,21 @@ export default {
                     const height = getComputedStyle(element).height;
                     element.style.position = null;
                     element.style.visibility = null;
-                    element.style.height = 0;
+                    element.style.height = '0px';
 
                     setTimeout(() => {
                         element.style.height = height;
-                    });
+                    }, 0);
                 },
                 afterEnter(element) {
                     element.style.height = 'auto';
                 },
                 leave(element) {
-                    const height = getComputedStyle(element).height;
-                    element.style.height = height;
+                    element.style.height = getComputedStyle(element).height;
 
                     setTimeout(() => {
-                        element.style.height = 0;
-                    });
+                        element.style.height = '0px';
+                    }, 0);
                 }
             }
         };
