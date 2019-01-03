@@ -9,21 +9,18 @@ for --variant-name, --variant in --variants['button']
         border-color: --variant['color']
 
         &:not(:disabled):not(.-disabled)
-            &:hover
-            &:focus
+            &:hover,
             &.-hovered
-            &.-focused
-                background-color: darken(--variant['color'], 2 * --button-darken-percentage-hover)
+                background-color: darken(--variant['color'], --button-darken-percentage-hover)
                 border-color: darken(--variant['color'], --button-darken-percentage-hover)
 
             &:active
             &.-active
                 background-color: darken(--variant['color'], 2.5 * --button-darken-percentage-hover)
 
-                &:focus
-                &.-focused
-                    outline: 1px solid rgba(--variant['color'], 0.25)
-                    outline-offset: 2px
+            &:focus
+            &.-focused
+                box-shadow: 0 0 0 2px rgba(--variant['color'], 0.25)
 
         &.-outline
             background-color: transparent
