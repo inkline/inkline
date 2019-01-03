@@ -19,21 +19,21 @@
         </span>
 
         <input
-                v-bind="$attrs"
-                v-model="model"
-                ref="input"
-                :name="name"
-                :tabindex="tabIndex"
-                :disabled="isDisabled"
-                :aria-disabled="isDisabled"
-                :readonly="isReadonly"
-                :aria-readonly="isReadonly"
-                @click="emitClick"
-                @focus="emitFocus"
-                @blur="onBlurFormatPrecision"
-                @change="emitChange"
-                @keydown="emitKeydown"
-                @keyup="emitKeyup">
+            v-bind="$attrs"
+            v-model="model"
+            ref="input"
+            :name="name"
+            :tabindex="tabIndex"
+            :disabled="isDisabled"
+            :aria-disabled="isDisabled"
+            :readonly="isReadonly"
+            :aria-readonly="isReadonly"
+            @click="emitClick"
+            @focus="emitFocus"
+            @blur="onBlurFormatPrecision"
+            @change="emitChange"
+            @keydown="emitKeydown"
+            @keyup="emitKeyup">
     </div>
 
     <div class="form-input-append">
