@@ -6,7 +6,7 @@ for --variant-name, --variant in --variants['alert']
         border-color: rgba(--variant['color'], 0.35)
         //color: -variant-color-by-luminance(--variant['color'], --alert-variant-color-light, --alert-variant-color-dark)
         background-color: blend(rgba(--variant['color'], 0.15))
-        color: --variant['color']
+        color: darken(--variant['color'], 15%)
 
         a
             color: --variant['color']
