@@ -15,7 +15,6 @@
 
     +-form-input-selector()
         position: relative
-        display: flex
         flex: 1 0 auto
         width: 1%
         padding: --input-padding-md
@@ -64,6 +63,10 @@
             background-color: --input-background-disabled
             opacity: 1  // iOS fix for unreadable disabled content
             cursor: default
+            //box-shadow: --input-box-shadow
+
+            &:hover
+                border-color: --input-border-color
 
     .form-input-prefix
     .form-input-suffix
