@@ -7,6 +7,7 @@ export { focusLastDescendant } from './focusLastDescendant';
 export { hasClass } from './hasClass';
 export { isFocusable } from './isFocusable';
 export { isKey } from './isKey';
+export { isVisible } from './isVisible';
 export { modifierClass } from './modifierClass';
 export { off } from './off';
 export { on } from './on';
