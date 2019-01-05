@@ -63,19 +63,30 @@
                 this.triggerElement.setAttribute('aria-haspopup', this.basename);
                 this.triggerElement.setAttribute('aria-controls', this.id);
             },
-            initEvents() {
+            addEvents() {
                 if (this.trigger === 'hover') {
                     this.triggerElement.addEventListener('mouseenter', this.show);
                     this.triggerElement.addEventListener('mouseleave', this.hide);
                 } else if (this.trigger === 'click') {
                     this.triggerElement.addEventListener('click', this.onClick);
                 }
+            },
+            removeEvents() {
+                if (this.trigger === 'hover') {
+                    this.triggerElement.removeEventListener('mouseenter', this.show);
+                    this.triggerElement.removeEventListener('mouseleave', this.hide);
+                } else if (this.trigger === 'click') {
+                    this.triggerElement.removeEventListener('click', this.onClick);
+                }
             }
         },
         mounted () {
             this.initElements();
-            this.initEvents();
             this.initAriaAttributes();
+            this.addEvents();
+        },
+        destroyed () {
+            this.removeEvents();
         }
     };
 </script>

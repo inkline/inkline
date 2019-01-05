@@ -104,12 +104,23 @@ describe('Components', () => {
                 });
             });
 
-            describe('initEvents()', () => {
+            describe('addEvents()', () => {
                 it('should add click event to triggerElement', () => {
                     const spy = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
                     wrapper.setProps({ trigger: 'click' });
 
-                    wrapper.vm.initEvents();
+                    wrapper.vm.addEvents();
+
+                    expect(spy).toHaveBeenNthCalledWith(1, 'click', wrapper.vm.onClick);
+                });
+            });
+
+            describe('removeEvents()', () => {
+                it('should add click event to triggerElement', () => {
+                    const spy = jest.spyOn(wrapper.vm.triggerElement, 'removeEventListener');
+                    wrapper.setProps({ trigger: 'click' });
+
+                    wrapper.vm.removeEvents();
 
                     expect(spy).toHaveBeenNthCalledWith(1, 'click', wrapper.vm.onClick);
                 });

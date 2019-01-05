@@ -3,7 +3,6 @@ import { popupManager } from 'inkline/factories/PopupManager';
 
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
-import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
 import PopupControlsProviderMixin from 'inkline/mixins/components/providers/PopupControlsProviderMixin';
 
 import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
@@ -19,7 +18,6 @@ export default {
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
-        EmitProviderMixin,
         PopupControlsProviderMixin,
 
         EmitFocusMethodMixin,
@@ -55,27 +53,30 @@ export default {
     },
     methods: {
         show() {
-            if (this.disabled) return;
+            if (this.disabled && !this.visible) return;
 
             this.visible = true;
 
-            popupManager.openModal(this.id)
+            popupManager.openModal(this.id);
         },
         hide() {
-            if (this.disabled) return;
+            if (this.disabled && this.visible) return;
 
             this.visible = false;
 
-            popupManager.closeModal(this.id)
+            popupManager.closeModal(this.id);
         },
-        initEvents() {
+        addEvents() {
             this.triggerElement.addEventListener('click', this.onClick);
         },
+        removeEvents() {
+            this.triggerElement.removeEventListener('click', this.onClick);
+        }
     },
     created () {
         popupManager.register(this);
 
-        this.classesProvider.add('root', () => ({
+        this.classesProvider.add(() => ({
             '-fill': this.fill
         }));
     },

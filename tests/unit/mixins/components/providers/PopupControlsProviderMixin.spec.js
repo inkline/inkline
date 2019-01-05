@@ -26,7 +26,8 @@ describe('Mixins', () => {
                     id: 'popup'
                 },
                 methods: {
-                    mounted: PopupControlsProviderMixin.mounted
+                    mounted: PopupControlsProviderMixin.mounted,
+                    destroyed: PopupControlsProviderMixin.destroyed
                 },
                 slots: {
                     default: ['<div/>']
@@ -229,12 +230,12 @@ describe('Mixins', () => {
                 });
             });
 
-            describe('initEvents()', () => {
+            describe('addEvents()', () => {
                 it('should add click event to triggerElement if trigger is "click"', () => {
                     const spy = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
                     wrapper.setProps({ trigger: 'click' });
 
-                    wrapper.vm.initEvents();
+                    wrapper.vm.addEvents();
 
                     expect(spy).toHaveBeenNthCalledWith(1, 'click', wrapper.vm.onClick);
                 });
@@ -243,7 +244,28 @@ describe('Mixins', () => {
                     const spy = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
                     wrapper.setProps({ trigger: 'hover' });
 
-                    wrapper.vm.initEvents();
+                    wrapper.vm.addEvents();
+
+                    expect(spy).toHaveBeenNthCalledWith(1, 'mouseenter', wrapper.vm.show);
+                    expect(spy).toHaveBeenNthCalledWith(2, 'mouseleave', wrapper.vm.hide);
+                });
+            });
+
+            describe('removeEvents()', () => {
+                it('should add click event to triggerElement if trigger is "click"', () => {
+                    const spy = jest.spyOn(wrapper.vm.triggerElement, 'removeEventListener');
+                    wrapper.setProps({ trigger: 'click' });
+
+                    wrapper.vm.removeEvents();
+
+                    expect(spy).toHaveBeenNthCalledWith(1, 'click', wrapper.vm.onClick);
+                });
+
+                it('should add mouseenter and mouseleave events to trigger element if trigger is "hover"', () => {
+                    const spy = jest.spyOn(wrapper.vm.triggerElement, 'removeEventListener');
+                    wrapper.setProps({ trigger: 'hover' });
+
+                    wrapper.vm.removeEvents();
 
                     expect(spy).toHaveBeenNthCalledWith(1, 'mouseenter', wrapper.vm.show);
                     expect(spy).toHaveBeenNthCalledWith(2, 'mouseleave', wrapper.vm.hide);
@@ -260,8 +282,8 @@ describe('Mixins', () => {
                 expect(spy).toHaveBeenCalled();
             });
 
-            it('should initialize events', () => {
-                const spy = jest.spyOn(wrapper.vm, 'initEvents');
+            it('should add events', () => {
+                const spy = jest.spyOn(wrapper.vm, 'addEvents');
 
                 wrapper.vm.mounted();
 
@@ -272,6 +294,17 @@ describe('Mixins', () => {
                 const spy = jest.spyOn(wrapper.vm, 'initAriaAttributes');
 
                 wrapper.vm.mounted();
+
+                expect(spy).toHaveBeenCalled();
+            });
+        });
+
+
+        describe('destroyed()', () => {
+            it('should remove events', () => {
+                const spy = jest.spyOn(wrapper.vm, 'removeEvents');
+
+                wrapper.vm.destroyed();
 
                 expect(spy).toHaveBeenCalled();
             });
