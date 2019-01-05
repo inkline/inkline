@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { on } from 'inkline/helpers/on';
+import { on, isVisible } from 'inkline/helpers';
 
 const nodeList = [];
 const ctx = '@@clickOutsideContext';
@@ -15,16 +15,19 @@ let seed = 0;
 
 function createDocumentHandler(element, binding, vnode) {
     return function(mouseup = {}, mousedown = {}) {
-        if (!vnode ||
+        if (!isVisible(element) ||
+            !vnode ||
             !vnode.context ||
             !mouseup.target ||
-            !mousedown.target ||
-            element.contains(mouseup.target) ||
-            element.contains(mousedown.target) ||
-            element === mouseup.target ||
-            (vnode.context.popupElement &&
-                (vnode.context.popupElement.contains(mouseup.target) ||
-                    vnode.context.popupElement.contains(mousedown.target)))) return;
+            !mousedown.target) { return; }
+
+        for (let targetElement of [mousedown.target, mouseup.target]) {
+            do {
+                if (targetElement === element) { return; }
+
+                targetElement = targetElement.parentNode;
+            } while (targetElement);
+        }
 
         if (binding.expression &&
             element[ctx].methodName &&

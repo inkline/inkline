@@ -7,16 +7,64 @@ describe('Directives', () => {
         let vnode;
 
         beforeEach(() => {
-            element = { contains: () => false };
+            element = { getClientRects: () => [1], parentElement: null };
             binding = { expression: 'fn', value: () => {} };
             vnode = { context: { fn: () => {} } };
         });
 
         describe('createDocumentHandler()', () => {
             it('should return if vnode not provided', () => {
-                ClickOutside.bind(element, binding, undefined);
+                const spy = jest.spyOn(vnode.context, 'fn');
 
-                expect(element['@@clickOutsideContext'].documentHandler()).toEqual(undefined);
+                ClickOutside.bind(element, binding, undefined);
+                element['@@clickOutsideContext'].documentHandler();
+
+                expect(spy).not.toHaveBeenCalled();
+            });
+
+            it('should return if vnode.context not provided', () => {
+                const spy = jest.spyOn(vnode.context, 'fn');
+
+                ClickOutside.bind(element, binding, {});
+                element['@@clickOutsideContext'].documentHandler();
+
+                expect(spy).not.toHaveBeenCalled();
+            });
+
+            it('should return if mousedown not defined', () => {
+                const spy = jest.spyOn(vnode.context, 'fn');
+
+                ClickOutside.bind(element, binding, {});
+                element['@@clickOutsideContext'].documentHandler(undefined, true);
+
+                expect(spy).not.toHaveBeenCalled();
+            });
+
+            it('should return if mouseup not defined', () => {
+                const spy = jest.spyOn(vnode.context, 'fn');
+
+                ClickOutside.bind(element, binding, {});
+                element['@@clickOutsideContext'].documentHandler(true, undefined);
+
+                expect(spy).not.toHaveBeenCalled();
+            });
+
+            it('should return if mousedown target is element', () => {
+                const spy = jest.spyOn(vnode.context, 'fn');
+
+                ClickOutside.bind(element, binding, {});
+                element['@@clickOutsideContext'].documentHandler({ target: element }, {});
+
+                expect(spy).not.toHaveBeenCalled();
+            });
+
+            it('should return if mouse target is element', () => {
+                const spy = jest.spyOn(vnode.context, 'fn');
+
+                ClickOutside.bind(element, binding, {});
+                element['@@clickOutsideContext'].documentHandler({}, { target: element });
+
+                expect(spy).not.toHaveBeenCalled();
             });
 
             it('should call binding fn from vnode', () => {
