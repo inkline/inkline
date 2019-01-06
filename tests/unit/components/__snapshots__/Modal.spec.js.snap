@@ -2,11 +2,12 @@
 
 exports[`Components Modal should render correctly 1`] = `
 <div class="modal-wrapper" id="modal">
-  <div aria-haspopup="modal" aria-controls="modal"></div>
-  <div class="modal-overlay" style="display: none;" name="fade-in-transition" id="modal">
+  <div id="modal" class="modal-overlay" style="display: none;" name="fade-in-transition">
     <div class="modal" style="display: none;" name="zoom-in-center-transition">
       <!---->
-      <!---->
+      <div class="body">
+        <div></div>
+      </div>
       <!---->
     </div>
   </div>

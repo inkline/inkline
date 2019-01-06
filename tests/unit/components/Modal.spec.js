@@ -1,4 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
+import { popupManager } from 'inkline/factories/PopupManager';
 import Modal from 'inkline/components/Modal';
 
 describe('Components', () => {
@@ -14,7 +15,8 @@ describe('Components', () => {
                     default: ['<div/>']
                 },
                 methods: {
-                    created: Modal.created
+                    created: Modal.created,
+                    destroyed: Modal.destroyed
                 }
             });
         });
@@ -31,10 +33,33 @@ describe('Components', () => {
                 });
             });
 
-            describe('fill', () => {
+            describe('closeOnPressEscape', () => {
                 it('should be defined', () => {
-                    expect(wrapper.vm.fill).toBeDefined();
-                    expect(wrapper.vm.fill).toEqual(false);
+                    expect(wrapper.vm.closeOnPressEscape).toBeDefined();
+                    expect(wrapper.vm.closeOnPressEscape).toEqual(true);
+                });
+            });
+
+            describe('value', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.value).toBeDefined();
+                    expect(wrapper.vm.value).toEqual(false);
+                });
+            });
+        });
+
+        describe('computed', () => {
+            describe('visible', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.visible).toBeDefined();
+                });
+
+                it('should equal value', () => {
+                    expect(wrapper.vm.visible).toEqual(wrapper.vm.value);
+
+                    wrapper.setProps({ value: true });
+
+                    expect(wrapper.vm.visible).toEqual(wrapper.vm.value);
                 });
             });
         });
@@ -67,62 +92,89 @@ describe('Components', () => {
 
         describe('methods', () => {
             describe('show()', () => {
-                it('should set visible to true', () => {
-                    wrapper.setData({ visible: false });
-
-                    wrapper.vm.show();
-
-                    expect(wrapper.vm.visible).toEqual(true);
+                it('should be defined', () => {
+                    expect(wrapper.vm.show).toBeDefined();
                 });
 
-                it('should not set visible to true if disabled', () => {
-                    wrapper.setData({ visible: false });
-                    wrapper.setProps({ disabled: true });
+                it('should set value to true', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
 
                     wrapper.vm.show();
 
-                    expect(wrapper.vm.visible).toEqual(false);
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('input', true);
+                });
+
+                it('should not set value to true if disabled', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.setProps({ disabled: true });
+                    wrapper.vm.show();
+
+                    expect(spy).not.toHaveBeenCalled();
+                });
+
+                it('should emit show event', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.vm.show();
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('show', wrapper.vm);
+                });
+
+                it('should call popupManager openModal', () => {
+                    const spy = jest.spyOn(popupManager, 'openModal');
+
+                    wrapper.vm.show();
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith(wrapper.vm.id);
                 });
             });
 
             describe('hide()', () => {
-                it('should set visible to false', () => {
-                    wrapper.setData({ visible: true });
+                it('should be defined', () => {
+                    expect(wrapper.vm.hide).toBeDefined();
+                });
 
+                it('should set value to false', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.setProps({ value: true });
                     wrapper.vm.hide();
 
-                    expect(wrapper.vm.visible).toEqual(false);
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('input', false);
                 });
 
-                it('should not set visible to false if disabled', () => {
-                    wrapper.setData({ visible: true });
-                    wrapper.setProps({ disabled: true });
+                it('should not set value to false if disabled', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
 
+                    wrapper.setProps({ value: true, disabled: true });
                     wrapper.vm.hide();
 
-                    expect(wrapper.vm.visible).toEqual(true);
+                    expect(spy).not.toHaveBeenCalled();
                 });
-            });
 
-            describe('addEvents()', () => {
-                it('should add click event to triggerElement', () => {
-                    const spy = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
-                    wrapper.setProps({ trigger: 'click' });
+                it('should emit hide event', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
 
-                    wrapper.vm.addEvents();
+                    wrapper.setProps({ value: true });
+                    wrapper.vm.hide();
 
-                    expect(spy).toHaveBeenNthCalledWith(1, 'click', wrapper.vm.onClick);
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenLastCalledWith('hide', wrapper.vm);
                 });
-            });
 
-            describe('removeEvents()', () => {
-                it('should add click event to triggerElement', () => {
-                    const spy = jest.spyOn(wrapper.vm.triggerElement, 'removeEventListener');
-                    wrapper.setProps({ trigger: 'click' });
+                it('should call popupManager closeModal', () => {
+                    const spy = jest.spyOn(popupManager, 'closeModal');
 
-                    wrapper.vm.removeEvents();
+                    wrapper.setProps({ value: true });
+                    wrapper.vm.hide();
 
-                    expect(spy).toHaveBeenNthCalledWith(1, 'click', wrapper.vm.onClick);
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith(wrapper.vm.id);
                 });
             });
         });
@@ -132,30 +184,13 @@ describe('Components', () => {
                 expect(Modal.created).toBeDefined();
             });
 
-            it('should add class rules to classes provider', () => {
-                const spy = jest.spyOn(wrapper.vm.classesProvider, 'add');
-                const classRulesLength = wrapper.vm.classesProvider.length;
+            it('should add register the modal to the popup manager', () => {
+                const spy = jest.spyOn(popupManager, 'register');
 
                 wrapper.vm.created();
 
                 expect(spy).toHaveBeenCalled();
-                expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 1);
-            });
-
-            it('should add "-fill" class if "fill"', () => {
-                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length  - 1];
-
-                expect(rule()).toEqual(expect.objectContaining({
-                    '-fill': false
-                }));
-
-                wrapper.setProps({
-                    fill: true
-                });
-
-                expect(rule()).toEqual(expect.objectContaining({
-                    '-fill': true
-                }));
+                expect(spy).toHaveBeenCalledWith(wrapper.vm);
             });
         });
     });

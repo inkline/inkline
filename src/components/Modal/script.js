@@ -85,10 +85,6 @@ export default {
     },
     created () {
         popupManager.register(this);
-
-        this.classesProvider.add(() => ({
-            '-fill': this.fill
-        }));
     },
     destroyed () {
         popupManager.unregister(this);

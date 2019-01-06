@@ -43,7 +43,7 @@ export class PopupManager {
 
         const modal = this.modalStack.find((m) => m.id === id);
 
-        if (modal) {
+        if (modal && modal.$el) {
             modal.$el.style.zIndex = this.nextZIndex();
         } else {
             this.modalStack.push({ id: id });
