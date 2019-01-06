@@ -179,15 +179,63 @@ describe('Components', () => {
             });
         });
 
+        describe('watch', () => {
+            describe('value()', () => {
+                it('should not call show() or hide() if disabled', () => {
+                    const spy1 = jest.spyOn(wrapper.vm, 'show');
+                    const spy2 = jest.spyOn(wrapper.vm, 'hide');
+
+                    wrapper.setProps({ disabled: true });
+                    wrapper.setProps({ value: true });
+                    wrapper.setProps({ value: false });
+
+                    expect(spy1).not.toHaveBeenCalled();
+                    expect(spy2).not.toHaveBeenCalled();
+                });
+
+                it('should call show() if value changes to true', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'show');
+
+                    wrapper.setProps({ value: true });
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should call hide() if value changes to false', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'hide');
+
+                    wrapper.setProps({ value: true });
+                    wrapper.setProps({ value: false });
+
+                    expect(spy).toHaveBeenCalled();
+                });
+            });
+        });
+
         describe('created()', () => {
             it('should be defined', () => {
                 expect(Modal.created).toBeDefined();
             });
 
-            it('should add register the modal to the popup manager', () => {
+            it('should register the modal to the popup manager', () => {
                 const spy = jest.spyOn(popupManager, 'register');
 
                 wrapper.vm.created();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith(wrapper.vm);
+            });
+        });
+
+        describe('destroyed()', () => {
+            it('should be defined', () => {
+                expect(Modal.destroyed).toBeDefined();
+            });
+
+            it('should unregister the modal from the popup manager', () => {
+                const spy = jest.spyOn(popupManager, 'unregister');
+
+                wrapper.vm.destroyed();
 
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith(wrapper.vm);
