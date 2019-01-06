@@ -3,7 +3,6 @@ import { popupManager } from 'inkline/factories/PopupManager';
 
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
-import PopupControlsProviderMixin from 'inkline/mixins/components/providers/PopupControlsProviderMixin';
 
 import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
 
@@ -18,7 +17,6 @@ export default {
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
-        PopupControlsProviderMixin,
 
         EmitFocusMethodMixin,
 
@@ -38,7 +36,7 @@ export default {
             type: Boolean,
             default: true
         },
-        fill: {
+        value: {
             type: Boolean,
             default: false
         }
@@ -53,24 +51,36 @@ export default {
     },
     methods: {
         show() {
-            if (this.disabled && !this.visible) return;
+            if (this.disabled || this.visible) return;
 
-            this.visible = true;
+            this.$emit('input', true);
+            this.$emit('show', this);
 
             popupManager.openModal(this.id);
         },
         hide() {
-            if (this.disabled && this.visible) return;
+            if (this.disabled || !this.visible) return;
 
-            this.visible = false;
+            this.$emit('input', false);
+            this.$emit('hide', this);
 
             popupManager.closeModal(this.id);
-        },
-        addEvents() {
-            this.triggerElement.addEventListener('click', this.onClick);
-        },
-        removeEvents() {
-            this.triggerElement.removeEventListener('click', this.onClick);
+        }
+    },
+    computed: {
+        visible () {
+            return this.value;
+        }
+    },
+    watch: {
+        value (visible) {
+            if (this.disabled) return;
+
+            if (visible) {
+                this.show();
+            } else {
+                this.hide();
+            }
         }
     },
     created () {
