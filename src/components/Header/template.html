@@ -1,5 +1,11 @@
 <div
-    class="container"
+    class="header"
     :class="classes">
-    <slot />
+    <i-container :fluid="fluid">
+        <i-row>
+            <i-column>
+                <slot></slot>
+            </i-column>
+        </i-row>
+    </i-container>
 </div>

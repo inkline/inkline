@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components Header should render correctly 1`] = `
+<div class="header">
+  <i-container-stub>
+    <i-row-stub>
+      <i-column-stub></i-column-stub>
+    </i-row-stub>
+  </i-container-stub>
+</div>
+`;

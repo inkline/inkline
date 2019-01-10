@@ -13,6 +13,7 @@ import IDropdown from 'inkline/components/Dropdown';
 import IDropdownDivider from 'inkline/components/DropdownDivider';
 import IDropdownItem from 'inkline/components/DropdownItem';
 import IDropdownMenu from 'inkline/components/DropdownMenu';
+import IHeader from 'inkline/components/Header';
 import ILayout from 'inkline/components/Layout';
 import ILayoutAside from 'inkline/components/LayoutAside';
 import ILayoutContent from 'inkline/components/LayoutContent';
@@ -67,6 +68,7 @@ class Inkline {
         IDropdownDivider,
         IDropdownItem,
         IDropdownMenu,
+        IHeader,
         ILayout,
         ILayoutAside,
         ILayoutContent,
@@ -134,6 +136,7 @@ export {
     IDropdownDivider,
     IDropdownItem,
     IDropdownMenu,
+    IHeader,
     ILayout,
     ILayoutAside,
     ILayoutContent,

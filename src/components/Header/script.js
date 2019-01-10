@@ -1,19 +1,35 @@
+import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
 
+import IContainer from "inkline/components/Container";
+import IRow from '../Row';
+import IColumn from '../Column';
+
 export default {
-    name: 'IContainer',
+    name: 'IHeader',
     mixins: [
+        SizePropertyMixin,
+
         ClassesProviderMixin
     ],
+    components: {
+        IContainer,
+        IRow,
+        IColumn
+    },
     props: {
         fluid: {
+            type: Boolean,
+            default: false
+        },
+        fullscreen: {
             type: Boolean,
             default: false
         }
     },
     created () {
         this.classesProvider.add(() => ({
-            '-fluid': this.fluid
+            '-fullscreen': this.fullscreen
         }));
     }
 };

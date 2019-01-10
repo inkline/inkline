@@ -1,25 +1,33 @@
 @import '../../css/config';
 @import '../../css/mixins';
 @import 'css/_variables'
-
+@import 'css/_sizes'
 
 /**
- * Container
+ * Header
  */
-.container,
-.container.-fluid
-    margin-left: auto
-    margin-right: auto
+.header
+    display: flex
     box-sizing: border-box
     width: 100%
 
-    for --breakpoint-name, --gutter-width in --gutter
-        +-breakpoint-up(--breakpoint-name)
-            padding-left: (--gutter-width / 2)
-            padding-right: (--gutter-width / 2)
+    background-color: --header-background-color
+    background-repeat: no-repeat
+    background-position: center center
+    background-attachment: unset
+    background-size: cover
 
-.container
-    for --breakpoint-name, --container-max-width in --container-width
-        +-breakpoint-up(--breakpoint-name)
-            max-width: --container-max-width
+    > .container
+        h1, h2, h3, h4, h5, h6,
+        .h1, .h2, .h3, .h4, .h5, .h6
+            margin-top: 0
 
+    &.-fullscreen
+        padding: 0
+        align-items: center
+        width: 100vw
+        height: 100vh
+        max-width: 100%
+        max-height: 100%
+
+    @extend .header.-md
