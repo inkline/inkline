@@ -2,6 +2,10 @@
      :class="classes"
      v-bind="attributes">
     <i-container :fluid="fluid">
-        <slot></slot>
+        <i-row>
+            <i-column>
+                <slot></slot>
+            </i-column>
+        </i-row>
     </i-container>
 </div>

@@ -1,4 +1,6 @@
 import IContainer from '../Container';
+import IRow from '../Row';
+import IColumn from '../Column';
 
 import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
@@ -16,7 +18,9 @@ export default {
         VariantPropertyMixin
     ],
     components: {
-        IContainer
+        IContainer,
+        IRow,
+        IColumn
     },
     props: {
         fluid: {
