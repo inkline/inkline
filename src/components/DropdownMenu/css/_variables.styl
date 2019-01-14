@@ -46,10 +46,4 @@
 --dropdown-variants := (monochrome)
 --dropdown-variant-color-light := --variant-color-light
 --dropdown-variant-color-dark := --variant-color-dark
---dropdown-color-groups := {
-    monochrome: {
-        light: --color-white,
-        dark: --color-gray-80
-    }
-}
---variants['dropdown'] = -add-variant(--dropdown-variants, { color: --dropdown-color-groups })
+--variants['dropdown'] = -add-variant(--dropdown-variants, { color: --color-groups })

@@ -1,0 +1,41 @@
+//
+// Nav Variables
+//
+--pagination-font-size := --font-size
+
+--pagination-item-disabled-color := --text-muted
+
+--pagination-item-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1/3'] * --size-percentages['sm']
+--pagination-item-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['1/3'] * --size-percentages['md']
+--pagination-item-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1/3'] * --size-percentages['lg']
+--pagination-item-padding := {
+    'sm': --pagination-item-padding-sm
+    'md': --pagination-item-padding-md
+    'lg': --pagination-item-padding-lg
+}
+
+--pagination-item-min-width-sm := 30px
+--pagination-item-min-width-md := 40px
+--pagination-item-min-width-lg := 50px
+--pagination-item-min-width := {
+    'sm': --pagination-item-min-width-sm
+    'md': --pagination-item-min-width-md
+    'lg': --pagination-item-min-width-lg
+}
+
+--pagination-item-spacing := 0.25rem
+
+--pagination-item-border-width := --border-width
+--pagination-item-border-radius := --border-radius
+
+--pagination-item-background-active := --colors['primary']
+--pagination-item-color-active := --colors['white']
+
+//
+// Themes
+//
+--pagination-variants := (monochrome)
+--pagination-variant-color-light := --variant-color-light
+--pagination-variant-color-dark := --variant-color-dark
+
+--variants['pagination'] = -add-variant(--pagination-variants, { color: --color-groups })

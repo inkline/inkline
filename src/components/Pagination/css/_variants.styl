@@ -1,0 +1,25 @@
+//
+// Pagination variants
+// Add the required color variants to all pagination variations
+//
+for --variant-name, --variant in --variants['pagination']
+    .pagination.-{--variant-name}
+        > .item
+            color: -variant-color-by-luminance(--variant['color'], --pagination-variant-color-light, --pagination-variant-color-dark)
+            background-color: --variant['color']
+            border-color: darken(--variant['color'], 5%)
+
+            &:hover:not(.-disabled),
+            &:focus:not(.-disabled)
+                background-color: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 10%), darken(--variant['color'], 5%))
+
+            &.-active
+                background-color: --pagination-item-background-active
+                border-color: darken(--pagination-item-background-active, 5%)
+
+                &:hover
+                &:focus
+                    background-color: --pagination-item-background-active
+
+            &.-disabled
+                color: -variant-color-by-luminance(--variant['color'], darken(--pagination-variant-color-light, 40%), lighten(--pagination-variant-color-dark, 40%))

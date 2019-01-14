@@ -26,6 +26,7 @@ import INavbar from 'inkline/components/Navbar';
 import INavbarBrand from 'inkline/components/NavbarBrand';
 import INavbarItems from 'inkline/components/NavbarItems';
 import IRow from 'inkline/components/Row';
+import IPagination from 'inkline/components/Pagination';
 import IPopover from 'inkline/components/Popover';
 import IProgress from 'inkline/components/Progress';
 import IProgressBar from 'inkline/components/ProgressBar';
@@ -81,6 +82,7 @@ class Inkline {
         INavbarBrand,
         INavbarItems,
         IRow,
+        IPagination,
         IPopover,
         IProgress,
         IProgressBar,
@@ -149,6 +151,7 @@ export {
     INavbarBrand,
     INavbarItems,
     IRow,
+    IPagination,
     IPopover,
     IProgress,
     IProgressBar,
