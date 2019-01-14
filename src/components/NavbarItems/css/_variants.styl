@@ -2,7 +2,7 @@
 // Navbar Items variants
 //
 for --variant-name, --variant in --variants['navbar']
-    .navbar.-{--variant-name} > .container > .items
+    .navbar.-{--variant-name} > .container > .row > .column > .items
         > .nav > .item
             color: -variant-color-by-luminance(--variant['color'], darken(--variant-color-light, 20%), lighten(--variant-color-dark, 20%))
 
