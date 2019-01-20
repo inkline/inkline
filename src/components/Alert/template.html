@@ -9,6 +9,6 @@
         <slot></slot>
     </div>
     <span class="dismiss" @click="dismiss" v-if="dismissible">
-        {{ dismissLabel }}
+        <slot name="dismiss">{{ dismissLabel }}</slot>
     </span>
 </div>

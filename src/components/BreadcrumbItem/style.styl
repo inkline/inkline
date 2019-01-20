@@ -6,7 +6,6 @@
 @import '../../css/mixins'
 @import '../Breadcrumb/css/_variables'
 @import 'css/_variables'
-@import 'css/_variants'
 @import 'css/_sizes'
 
 .breadcrumb
@@ -19,7 +18,7 @@
         // The separator between breadcrumbs (by default, a forward-slash: "/")
         + .breadcrumb-item
             &::before
-                display: inline-block; //} Suppress underlining of the separator in modern browsers
+                display: inline-block //} Suppress underlining of the separator in modern browsers
                 content: --breadcrumb-divider
 
         // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
@@ -34,8 +33,11 @@
         + .breadcrumb-item:hover::before
             text-decoration: none;
 
-        &.-active
+        a:not([href])
+            color: --breadcrumb-plain-color
+
+        &.-active a
             color: --breadcrumb-active-color
 
+
         @extend .breadcrumb.-md > .breadcrumb-item
-        @extend .breadcrumb.-light > .breadcrumb-item

@@ -2,7 +2,5 @@
 
 exports[`Components Button should render correctly 1`] = `
 <button tag="button" tabindex="1" class="button">
-  <!---->
-  <!---->
-  <!----></button>
+  <!----> </button>
 `;

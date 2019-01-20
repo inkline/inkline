@@ -61,13 +61,6 @@ describe('Components', () => {
                     expect(wrapper.vm.tag).toEqual('button');
                 });
             });
-
-            describe('icon', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.icon).toBeDefined();
-                    expect(wrapper.vm.icon).toEqual('');
-                });
-            });
         });
 
         describe('computed', () => {

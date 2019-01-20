@@ -3,7 +3,6 @@ import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesPro
 
 import ActivePropertyMixin from 'inkline/mixins/components/properties/ActivePropertyMixin';
 import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
-import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
 
 export default {
     name: 'IBreadcrumbItem',
@@ -12,8 +11,7 @@ export default {
         ClassesProviderMixin,
 
         ActivePropertyMixin,
-        SizePropertyMixin,
-        VariantPropertyMixin
+        SizePropertyMixin
     ],
     computed: {
         tag() {
