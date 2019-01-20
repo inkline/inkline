@@ -19,6 +19,8 @@ import ILayoutAside from 'inkline/components/LayoutAside';
 import ILayoutContent from 'inkline/components/LayoutContent';
 import ILayoutFooter from 'inkline/components/LayoutFooter';
 import ILayoutHeader from 'inkline/components/LayoutHeader';
+import IListGroup from 'inkline/components/ListGroup';
+import IListGroupItem from 'inkline/components/ListGroupItem';
 import IMedia from 'inkline/components/Media';
 import IModal from 'inkline/components/Modal';
 import INav from 'inkline/components/Nav';
@@ -76,6 +78,8 @@ class Inkline {
         ILayoutContent,
         ILayoutFooter,
         ILayoutHeader,
+        IListGroup,
+        IListGroupItem,
         IMedia,
         IModal,
         INav,
@@ -146,6 +150,8 @@ export {
     ILayoutContent,
     ILayoutFooter,
     ILayoutHeader,
+    IListGroup,
+    IListGroupItem,
     IMedia,
     IModal,
     INav,

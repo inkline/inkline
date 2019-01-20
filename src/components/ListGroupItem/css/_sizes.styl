@@ -1,0 +1,15 @@
+//
+// List Group Item sizes
+//
+for size in (sm md lg)
+    .list-group.-{size}
+        > .item
+            padding: --list-group-item-padding[size]
+
+            &:first-child
+                border-top-left-radius: --list-group-border-radius[size]
+                border-top-right-radius: --list-group-border-radius[size]
+
+            &:last-child
+                border-bottom-left-radius: --list-group-border-radius[size]
+                border-bottom-right-radius: --list-group-border-radius[size]
