@@ -11,6 +11,9 @@
     display: block
     margin-bottom: 0
 
+    if --transition['nav']
+        transition: background-color --transition-duration --transition-easing, border-color --transition-duration --transition-easing, color --transition-duration --transition-easing
+
     &:hover
     &:focus
         text-decoration: none
