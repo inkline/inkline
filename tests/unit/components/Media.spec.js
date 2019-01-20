@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import Card from 'inkline/components/Card';
+import Media from 'inkline/components/Media';
 
 describe('Components', () => {
-    describe('Card', () => {
+    describe('Media', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Card);
+            wrapper = shallowMount(Media);
         });
 
         it('should be named correctly', () => {
-            expect(Card.name).toEqual('ICard');
+            expect(Media.name).toEqual('IMedia');
         });
 
         it('should render correctly', () => {
