@@ -8,10 +8,10 @@
 .media
     position: relative
     display: flex
-    flex-direction: column
+    flex-direction: row
 
     > .body
-        flex: 1 1 auto
+        flex: 0 1 auto
 
         > .title,
         > .h1, > h1,
@@ -25,4 +25,7 @@
 
     > img
     > .image
+        align-self: flex-start
+        height: auto
+        flex: 0 0 auto
         margin-right: --media-image-margin-right
