@@ -10,9 +10,9 @@ for --variant-name, --variant in --variants['card']
             background-image: -linear-gradient(--variant['gradient'])
 
         > .body
-            border-color: --variant['color']
+            border-color: darken(--variant['color'], 10%)
 
         > .header
         > .footer
             background-color: --card-background-darken
-            border-color: --variant['color']
+            border-color: darken(--variant['color'], 10%)
