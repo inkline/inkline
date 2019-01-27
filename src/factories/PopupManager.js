@@ -14,7 +14,7 @@ export class PopupManager {
                     const topPopup = this.getTopPopup();
 
                     if (topPopup && topPopup.closeOnPressEscape) {
-                        topPopup.close();
+                        topPopup.hide();
                     }
                 }
             });

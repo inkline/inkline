@@ -55,7 +55,7 @@ export default {
     watch: {
         visible(value) {
             this.broadcast('IDropdownMenu', 'visibility-change', value);
-            this.$emit('visibility-change', value);
+            this.$emit('change', value);
         }
     },
     methods: {

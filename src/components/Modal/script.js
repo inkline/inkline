@@ -51,7 +51,7 @@ export default {
     },
     methods: {
         show() {
-            if (this.disabled || this.visible) return;
+            if (this.disabled) return;
 
             this.$emit('input', true);
             this.$emit('show', this);
@@ -59,7 +59,7 @@ export default {
             popupManager.openModal(this.id);
         },
         hide() {
-            if (this.disabled || !this.visible) return;
+            if (this.disabled) return;
 
             this.$emit('input', false);
             this.$emit('hide', this);

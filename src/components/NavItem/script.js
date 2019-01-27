@@ -3,7 +3,6 @@ import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesPro
 
 import ActivePropertyMixin from 'inkline/mixins/components/properties/ActivePropertyMixin';
 import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
-import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
 
 export default {
     name: 'INavItem',
@@ -13,7 +12,6 @@ export default {
 
         ActivePropertyMixin,
         DisabledPropertyMixin,
-        SizePropertyMixin,
     ],
     props: {
         tag: {

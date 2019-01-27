@@ -90,7 +90,7 @@ describe('Components', () => {
                     expect(spy).toHaveBeenCalledWith('IDropdownMenu', 'visibility-change', true);
                 });
 
-                it('should emit "visibility-change"', () => {
+                it('should emit "change" event', () => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
                     wrapper.setData({
@@ -98,7 +98,7 @@ describe('Components', () => {
                     });
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('visibility-change', true);
+                    expect(spy).toHaveBeenCalledWith('change', true);
                 });
             });
         });

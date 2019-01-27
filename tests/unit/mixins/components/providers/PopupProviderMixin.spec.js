@@ -126,13 +126,13 @@ describe('Mixins', () => {
                     wrapper.vm.createPopper();
                 });
 
-                it('should emit "visibilityChange" on change', () => {
+                it('should emit "change" on change', () => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
                     wrapper.setData({ visible: true });
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('visibilityChange', true);
+                    expect(spy).toHaveBeenCalledWith('change', true);
                 });
 
                 it('should call "updatePopper()" if visible', () => {

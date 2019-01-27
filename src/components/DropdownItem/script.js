@@ -21,11 +21,11 @@ export default {
             default: 'div'
         },
         action: {
-            type: String | Number | Boolean,
+            type: [String, Number, Boolean],
             default: undefined
         },
         tabindex: {
-            type: Number | String,
+            type: [Number, String],
             default: -1
         }
     },

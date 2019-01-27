@@ -64,7 +64,7 @@
 
                 value ? this.updatePopper() : this.destroyPopper();
 
-                this.$emit('visibilityChange', value);
+                this.$emit('change', value);
             }
         },
 
