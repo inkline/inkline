@@ -1,7 +1,7 @@
 {
   "name": "@inkline/inkline",
-  "version": "1.7.1",
-  "description": "Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design.",
+  "version": "1.7.2",
+  "description": "Inkline is a modern UI/UX framework designed for creating flawless responsive websites.",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
     "build": "vue-cli-service build",
