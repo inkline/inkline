@@ -1,13 +1,13 @@
-import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
+import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 
-import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMethodMixin';
+import EmitInputMethodMixin from '@inkline/inkline/mixins/components/methods/EmitInputMethodMixin';
 
-import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
-import LoadingPropertyMixin from 'inkline/mixins/components/properties/LoadingPropertyMixin';
-import NamePropertyMixin from 'inkline/mixins/forms/properties/NamePropertyMixin';
-import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
-import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
+import DisabledPropertyMixin from '@inkline/inkline/mixins/components/properties/DisabledPropertyMixin';
+import LoadingPropertyMixin from '@inkline/inkline/mixins/components/properties/LoadingPropertyMixin';
+import NamePropertyMixin from '@inkline/inkline/mixins/forms/properties/NamePropertyMixin';
+import ReadonlyPropertyMixin from '@inkline/inkline/mixins/forms/properties/ReadonlyPropertyMixin';
+import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/SizePropertyMixin';
 
 export default {
     name: 'IForm',

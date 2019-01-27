@@ -1,4 +1,4 @@
-import IButtonGroup from 'inkline/components/ButtonGroup';
+import IButtonGroup from '@inkline/inkline/components/ButtonGroup';
 import ICheckableGroup from "inkline/components/CheckableGroup";
 
 export default {

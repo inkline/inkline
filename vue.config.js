@@ -12,7 +12,7 @@ module.exports = {
     filenameHashing: false,
     chainWebpack: (config) => {
         config.resolve.alias
-            .set('inkline', path.resolve(__dirname, 'src'))
+            .set('@inkline/inkline', path.resolve(__dirname, 'src'))
             .end();
     }
 };

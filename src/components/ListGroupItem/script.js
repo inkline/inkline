@@ -1,8 +1,8 @@
-import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
+import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 
-import ActivePropertyMixin from 'inkline/mixins/components/properties/ActivePropertyMixin';
-import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
+import ActivePropertyMixin from '@inkline/inkline/mixins/components/properties/ActivePropertyMixin';
+import DisabledPropertyMixin from '@inkline/inkline/mixins/components/properties/DisabledPropertyMixin';
 
 export default {
     name: 'IListGroupItem',

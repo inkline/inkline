@@ -1,7 +1,7 @@
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 
-import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
-import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
+import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/SizePropertyMixin';
+import VariantPropertyMixin from '@inkline/inkline/mixins/components/properties/VariantPropertyMixin';
 
 export default {
     name: 'IPagination',

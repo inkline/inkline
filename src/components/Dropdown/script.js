@@ -1,16 +1,16 @@
-import { uid, isKey } from 'inkline/helpers';
+import { uid, isKey } from '@inkline/inkline/helpers';
 
-import ClickOutside from 'inkline/directives/click-outside';
+import ClickOutside from '@inkline/inkline/directives/click-outside';
 
-import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
-import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
-import PopupControlsProviderMixin from 'inkline/mixins/components/providers/PopupControlsProviderMixin';
+import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
+import EmitProviderMixin from '@inkline/inkline/mixins/components/providers/EmitProviderMixin';
+import PopupControlsProviderMixin from '@inkline/inkline/mixins/components/providers/PopupControlsProviderMixin';
 
-import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
+import EmitFocusMethodMixin from '@inkline/inkline/mixins/components/methods/EmitFocusMethodMixin';
 
-import VariantPropertyMixin from 'inkline/mixins/components/properties/VariantPropertyMixin';
-import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
+import VariantPropertyMixin from '@inkline/inkline/mixins/components/properties/VariantPropertyMixin';
+import DisabledPropertyMixin from '@inkline/inkline/mixins/components/properties/DisabledPropertyMixin';
 
 export default {
     name: 'IDropdown',

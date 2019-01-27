@@ -1,25 +1,25 @@
-import IInput from 'inkline/components/Input';
-import IDropdown from 'inkline/components/Dropdown';
-import IDropdownMenu from 'inkline/components/DropdownMenu';
+import IInput from '@inkline/inkline/components/Input';
+import IDropdown from '@inkline/inkline/components/Dropdown';
+import IDropdownMenu from '@inkline/inkline/components/DropdownMenu';
 
-import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
-import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
-import ModelProviderMixin from 'inkline/mixins/forms/providers/ModelProviderMixin';
-import SchemaProviderMixin from 'inkline/mixins/forms/providers/SchemaProviderMixin';
+import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
+import InjectParentFormProviderMixin from '@inkline/inkline/mixins/forms/providers/InjectParentFormProviderMixin';
+import ModelProviderMixin from '@inkline/inkline/mixins/forms/providers/ModelProviderMixin';
+import SchemaProviderMixin from '@inkline/inkline/mixins/forms/providers/SchemaProviderMixin';
 
-import EmitChangeMethodMixin from 'inkline/mixins/components/methods/EmitChangeMethodMixin';
-import EmitClickMethodMixin from 'inkline/mixins/components/methods/EmitClickMethodMixin';
-import EmitFocusMethodMixin from 'inkline/mixins/components/methods/EmitFocusMethodMixin';
-import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMethodMixin';
-import EmitKeydownMethodMixin from 'inkline/mixins/components/methods/EmitKeydownMethodMixin';
+import EmitChangeMethodMixin from '@inkline/inkline/mixins/components/methods/EmitChangeMethodMixin';
+import EmitClickMethodMixin from '@inkline/inkline/mixins/components/methods/EmitClickMethodMixin';
+import EmitFocusMethodMixin from '@inkline/inkline/mixins/components/methods/EmitFocusMethodMixin';
+import EmitInputMethodMixin from '@inkline/inkline/mixins/components/methods/EmitInputMethodMixin';
+import EmitKeydownMethodMixin from '@inkline/inkline/mixins/components/methods/EmitKeydownMethodMixin';
 
-import DisabledPropertyMixin from 'inkline/mixins/forms/properties/DisabledPropertyMixin';
-import NamePropertyMixin from 'inkline/mixins/forms/properties/NamePropertyMixin';
-import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
-import ParentFormGroupPropertyMixin from 'inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
-import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
-import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndexPropertyMixin';
+import DisabledPropertyMixin from '@inkline/inkline/mixins/forms/properties/DisabledPropertyMixin';
+import NamePropertyMixin from '@inkline/inkline/mixins/forms/properties/NamePropertyMixin';
+import ReadonlyPropertyMixin from '@inkline/inkline/mixins/forms/properties/ReadonlyPropertyMixin';
+import ParentFormGroupPropertyMixin from '@inkline/inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
+import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/SizePropertyMixin';
+import TabIndexPropertyMixin from '@inkline/inkline/mixins/components/properties/TabIndexPropertyMixin';
 import {uid} from "inkline/helpers";
 
 export default {

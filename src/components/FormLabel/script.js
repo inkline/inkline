@@ -1,7 +1,7 @@
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
-import InjectParentFormProviderMixin from 'inkline/mixins/forms/providers/InjectParentFormProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
+import InjectParentFormProviderMixin from '@inkline/inkline/mixins/forms/providers/InjectParentFormProviderMixin';
 
-import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
+import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/SizePropertyMixin';
 
 export default {
     name: 'IFormLabel',

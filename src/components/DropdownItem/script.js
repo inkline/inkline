@@ -1,9 +1,9 @@
-import DisabledPropertyMixin from 'inkline/mixins/components/properties/DisabledPropertyMixin';
-import TabIndexPropertyMixin from 'inkline/mixins/components/properties/TabIndexPropertyMixin';
+import DisabledPropertyMixin from '@inkline/inkline/mixins/components/properties/DisabledPropertyMixin';
+import TabIndexPropertyMixin from '@inkline/inkline/mixins/components/properties/TabIndexPropertyMixin';
 
-import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
-import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
+import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
+import EmitProviderMixin from '@inkline/inkline/mixins/components/providers/EmitProviderMixin';
 
 export default {
     name: 'IDropdownItem',

@@ -1,5 +1,5 @@
-import IButton from 'inkline/components/Button';
-import ICheckbox from 'inkline/components/Checkbox';
+import IButton from '@inkline/inkline/components/Button';
+import ICheckbox from '@inkline/inkline/components/Checkbox';
 
 export default {
     name: 'ICheckboxButton',

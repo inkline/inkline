@@ -1,12 +1,12 @@
-import { uid } from 'inkline/helpers/uid';
+import { uid } from '@inkline/inkline/helpers/uid';
 
-import ITransitionExpand from 'inkline/transitions/TransitionExpand';
+import ITransitionExpand from '@inkline/inkline/transitions/TransitionExpand';
 
-import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
-import EmitProviderMixin from 'inkline/mixins/components/providers/EmitProviderMixin';
+import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
+import EmitProviderMixin from '@inkline/inkline/mixins/components/providers/EmitProviderMixin';
 
-import ActiveClassPropertyMixin from 'inkline/mixins/components/properties/ActiveClassPropertyMixin';
+import ActiveClassPropertyMixin from '@inkline/inkline/mixins/components/properties/ActiveClassPropertyMixin';
 
 export default {
     name: 'ICollapsibleItem',
