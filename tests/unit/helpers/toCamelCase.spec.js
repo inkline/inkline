@@ -1,4 +1,4 @@
-import { toCamelCase } from 'inkline/helpers/toCamelCase';
+import { toCamelCase } from '@inkline/inkline/helpers/toCamelCase';
 
 describe('Helpers', () => {
     describe('toCamelCase()', () => {

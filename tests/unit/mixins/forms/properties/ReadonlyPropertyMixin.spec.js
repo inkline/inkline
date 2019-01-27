@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils'
 
-import AttributesProviderMixin from 'inkline/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
-import ReadonlyPropertyMixin from 'inkline/mixins/forms/properties/ReadonlyPropertyMixin';
+import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
+import ReadonlyPropertyMixin from '@inkline/inkline/mixins/forms/properties/ReadonlyPropertyMixin';
 
 describe('Mixins', () => {
     describe('ReadonlyPropertyMixin', () => {

@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
-import Form from 'inkline/components/Form';
-import { $form } from 'inkline/prototypes/form'
+import Form from '@inkline/inkline/components/Form';
+import { $form } from '@inkline/inkline/prototypes/form'
 
 describe('Components', () => {
     describe('Form', () => {

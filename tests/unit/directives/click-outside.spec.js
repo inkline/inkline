@@ -1,4 +1,4 @@
-import ClickOutside from 'inkline/directives/click-outside';
+import ClickOutside from '@inkline/inkline/directives/click-outside';
 
 describe('Directives', () => {
     describe('v-click-outside', () => {

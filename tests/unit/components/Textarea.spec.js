@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Textarea from 'inkline/components/Textarea';
+import Textarea from '@inkline/inkline/components/Textarea';
 
 describe('Components', () => {
     describe('Textarea', () => {

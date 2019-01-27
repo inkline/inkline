@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import LayoutFooter from 'inkline/components/LayoutFooter';
+import LayoutFooter from '@inkline/inkline/components/LayoutFooter';
 
 describe('Components', () => {
     describe('LayoutFooter', () => {

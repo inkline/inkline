@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 
-import ModelGroupProviderMixin from 'inkline/mixins/forms/providers/ModelGroupProviderMixin';
-import EmitInputMethodMixin from 'inkline/mixins/components/methods/EmitInputMethodMixin';
+import ModelGroupProviderMixin from '@inkline/inkline/mixins/forms/providers/ModelGroupProviderMixin';
+import EmitInputMethodMixin from '@inkline/inkline/mixins/components/methods/EmitInputMethodMixin';
 
 describe('Mixins', () => {
     describe('ModelGroupProviderMixin', () => {

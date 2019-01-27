@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Alert from 'inkline/components/Alert';
+import Alert from '@inkline/inkline/components/Alert';
 
 describe('Components', () => {
     describe('Alert', () => {

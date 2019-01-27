@@ -1,4 +1,4 @@
-import { triggerEvent } from 'inkline/helpers/triggerEvent';
+import { triggerEvent } from '@inkline/inkline/helpers/triggerEvent';
 
 describe('Helpers', () => {
     describe('triggerEvent()', () => {

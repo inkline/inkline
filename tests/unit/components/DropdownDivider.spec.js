@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import DropdownDivider from 'inkline/components/DropdownDivider';
+import DropdownDivider from '@inkline/inkline/components/DropdownDivider';
 
 describe('Components', () => {
     describe('DropdownDivider', () => {

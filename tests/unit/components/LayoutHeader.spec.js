@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import LayoutHeader from 'inkline/components/LayoutHeader';
+import LayoutHeader from '@inkline/inkline/components/LayoutHeader';
 
 describe('Components', () => {
     describe('LayoutHeader', () => {

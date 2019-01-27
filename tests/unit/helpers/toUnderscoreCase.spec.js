@@ -1,4 +1,4 @@
-import { toUnderscoreCase } from 'inkline/helpers/toUnderscoreCase';
+import { toUnderscoreCase } from '@inkline/inkline/helpers/toUnderscoreCase';
 
 describe('Helpers', () => {
     describe('toUnderscoreCase()', () => {

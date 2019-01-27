@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Media from 'inkline/components/Media';
+import Media from '@inkline/inkline/components/Media';
 
 describe('Components', () => {
     describe('Media', () => {

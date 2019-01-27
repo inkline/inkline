@@ -1,4 +1,4 @@
-import { hasClass } from 'inkline/helpers/hasClass';
+import { hasClass } from '@inkline/inkline/helpers/hasClass';
 
 describe('Helpers', () => {
     describe('hasClass()', () => {

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 
-import SizePropertyMixin from 'inkline/mixins/components/properties/SizePropertyMixin';
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
+import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/SizePropertyMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 
 describe('Mixins', () => {
     describe('SizePropertyMixin', () => {

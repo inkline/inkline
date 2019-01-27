@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils';
-import Row from 'inkline/components/Row';
+import Row from '@inkline/inkline/components/Row';
 import { capitalizeFirst } from "inkline/helpers";
-import { breakpoints } from 'inkline/constants';
+import { breakpoints } from '@inkline/inkline/constants';
 
 describe('Components', () => {
     describe('Row', () => {

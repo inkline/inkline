@@ -1,4 +1,4 @@
-import { isKey } from 'inkline/helpers/isKey';
+import { isKey } from '@inkline/inkline/helpers/isKey';
 
 describe('Helpers', () => {
     describe('isKey()', () => {

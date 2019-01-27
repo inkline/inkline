@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import ClickInputRefMethodMixin from 'inkline/mixins/forms/methods/ClickInputRefMethodMixin';
+import ClickInputRefMethodMixin from '@inkline/inkline/mixins/forms/methods/ClickInputRefMethodMixin';
 
 describe('Mixins', () => {
     describe('ClickInputRefMethodMixin', () => {

@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Card from 'inkline/components/Card';
+import Card from '@inkline/inkline/components/Card';
 
 describe('Components', () => {
     describe('Card', () => {

@@ -1,5 +1,5 @@
 import {shallowMount} from '@vue/test-utils';
-import DropdownItem from 'inkline/components/DropdownItem';
+import DropdownItem from '@inkline/inkline/components/DropdownItem';
 import { RouterLink } from '../mocks/RouterLink';
 
 describe('Components', () => {

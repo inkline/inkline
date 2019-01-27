@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Popover from 'inkline/components/Popover';
+import Popover from '@inkline/inkline/components/Popover';
 
 describe('Components', () => {
     describe('Popover', () => {

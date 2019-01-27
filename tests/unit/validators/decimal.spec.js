@@ -1,4 +1,4 @@
-import { decimal } from 'inkline/validators/decimal';
+import { decimal } from '@inkline/inkline/validators/decimal';
 
 describe('Validators', () => {
     describe('decimal()', () => {

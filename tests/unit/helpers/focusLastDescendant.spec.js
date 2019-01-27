@@ -1,4 +1,4 @@
-import { focusLastDescendant } from 'inkline/helpers/focusLastDescendant';
+import { focusLastDescendant } from '@inkline/inkline/helpers/focusLastDescendant';
 
 describe('Helpers', () => {
     describe('focusLastDescendant()', () => {

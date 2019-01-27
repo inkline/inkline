@@ -1,5 +1,5 @@
-import { triggerEvent } from 'inkline/helpers/triggerEvent';
-import { PopupManager } from 'inkline/factories/PopupManager';
+import { triggerEvent } from '@inkline/inkline/helpers/triggerEvent';
+import { PopupManager } from '@inkline/inkline/factories/PopupManager';
 
 describe('Factories', () => {
     describe('PopupManager', () => {

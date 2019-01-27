@@ -1,4 +1,4 @@
-import { isFocusable } from 'inkline/helpers/isFocusable';
+import { isFocusable } from '@inkline/inkline/helpers/isFocusable';
 
 describe('Helpers', () => {
     describe('isFocusable()', () => {

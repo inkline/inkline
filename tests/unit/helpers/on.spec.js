@@ -1,4 +1,4 @@
-import { on } from 'inkline/helpers/on';
+import { on } from '@inkline/inkline/helpers/on';
 
 describe('Helpers', () => {
     describe('on()', () => {

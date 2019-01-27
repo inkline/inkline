@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import EmitHoverMethodMixin from 'inkline/mixins/components/methods/EmitHoverMethodMixin';
+import EmitHoverMethodMixin from '@inkline/inkline/mixins/components/methods/EmitHoverMethodMixin';
 
 describe('mixins', () => {
     describe('EmitHoverMethodMixin', () => {

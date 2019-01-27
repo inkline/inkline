@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 
-import ActivePropertyMixin from 'inkline/mixins/components/properties/ActivePropertyMixin';
-import ClassesProviderMixin from 'inkline/mixins/components/providers/ClassesProviderMixin';
+import ActivePropertyMixin from '@inkline/inkline/mixins/components/properties/ActivePropertyMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 
 describe('Mixins', () => {
     describe('ActivePropertyMixin', () => {

@@ -1,4 +1,4 @@
-import { max } from 'inkline/validators/max';
+import { max } from '@inkline/inkline/validators/max';
 
 describe('Validators', () => {
     describe('max()', () => {
