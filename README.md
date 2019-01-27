@@ -2,8 +2,9 @@
     <a href="http://inkline.io/">
         <img src="https://raw.githubusercontent.com/inkline/inkline.io/master/src/resources/logo.png" alt="Inkline logo" width=72 height=72>
     </a>
-    <h1 align="center">Inkline</h1>
 </p>
+
+<h1 align="center">Inkline</h1>
 
 <p align="center">
     Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design. Inkline is 
@@ -20,16 +21,16 @@
 <br/>
   
 <p align="center">
-    <a href="https://www.npmjs.com/package/inkline">
-        <img src="https://img.shields.io/npm/v/inkline.svg" alt="npm version">
+    <a href="https://www.npmjs.com/package/@inkline/inkline">
+        <img src="https://img.shields.io/npm/v/@inkline/inkline.svg" alt="npm version">
     </a>
     <a href="https://travis-ci.org/inkline/inkline">
         <img src="https://travis-ci.org/inkline/inkline.svg?branch=master" alt="Build">
     </a>    
     <a href='https://coveralls.io/github/inkline/inkline?branch=master'><img src='https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master' alt='Coverage Status' /></a>
     <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="dependencies status">
-    <a href="https://www.npmjs.com/package/inkline">
-        <img src="https://img.shields.io/npm/dm/inkline.svg" alt="Downloads">
+    <a href="https://www.npmjs.com/package/@inkline/inkline">
+        <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
     </a>
 </a>
 
@@ -53,25 +54,25 @@ Read the [Getting started page](https://inkline.io/docs/getting-started/) for in
 
 - Install with [npm](https://www.npmjs.com): 
 ~~~
-npm install --save inkline
+npm install --save @inkline/inkline
 ~~~
 - Install with [yarn](https://yarnpkg.com/en/):
 ~~~
-yarn add inkline
+yarn add @inkline/inkline
 ~~~
 
 ## Usage
 First, import core styles:
 
 ~~~js
-import 'inkline/src/index.styl';
+import '@inkline/inkline/src/index.styl';
 ~~~
 
 If you already have your Webpack configuration ready for Stylus and Vue, importing the framework is as simple as:
 
 ~~~js
 import Vue from 'vue';
-import Inkline from 'inkline';
+import Inkline from '@inkline/inkline';
 
 Vue.use(Inkline);
 ~~~
@@ -79,7 +80,7 @@ Vue.use(Inkline);
 Alternatively, you can import components individually:
 
 ~~~js
-import { IButton } from 'inkline';
+import { IButton } from '@inkline/inkline';
 
 Vue.component(IButton.name, IButton);
 ~~~
