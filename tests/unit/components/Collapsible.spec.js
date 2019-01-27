@@ -35,20 +35,6 @@ describe('Components', () => {
                     expect(wrapper.vm.active).toEqual([]);
                 });
             });
-
-            describe('iconClosed', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.iconClosed).toBeDefined();
-                    expect(wrapper.vm.iconClosed).toEqual('');
-                });
-            });
-
-            describe('iconOpen', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.iconOpen).toBeDefined();
-                    expect(wrapper.vm.iconOpen).toEqual('');
-                });
-            });
         });
 
         describe('data', () => {
@@ -109,6 +95,15 @@ describe('Components', () => {
                     expect(wrapper.vm.activeItems).toEqual(['active2']);
                     wrapper.vm.onItemClick({ id: 'active2' });
                     expect(wrapper.vm.activeItems).toEqual([]);
+                });
+
+                it('should emit change event', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.vm.onItemClick({ id: 'active1' });
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('change', ['active1']);
                 });
             });
         });

@@ -21,15 +21,7 @@ export default {
             default () {
                 return [];
             }
-        },
-        iconClosed: {
-            type: String,
-            default: ''
-        },
-        iconOpen: {
-            type: String,
-            default: ''
-        },
+        }
     },
     data() {
         return {
@@ -59,6 +51,8 @@ export default {
             } else {
                 this.activeItems.push(item.id);
             }
+
+            this.$emit('change', this.activeItems);
         }
     },
     created() {
