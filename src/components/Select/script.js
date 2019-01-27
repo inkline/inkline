@@ -20,7 +20,7 @@ import ReadonlyPropertyMixin from '@inkline/inkline/mixins/forms/properties/Read
 import ParentFormGroupPropertyMixin from '@inkline/inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/SizePropertyMixin';
 import TabIndexPropertyMixin from '@inkline/inkline/mixins/components/properties/TabIndexPropertyMixin';
-import {uid} from "inkline/helpers";
+import {uid} from "@inkline/inkline/helpers";
 
 export default {
     name: 'ISelect',

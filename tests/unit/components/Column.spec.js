@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import Column from '@inkline/inkline/components/Column';
-import { capitalizeFirst } from "inkline/helpers";
+import { capitalizeFirst } from "@inkline/inkline/helpers";
 import { breakpoints } from '@inkline/inkline/constants';
 
 describe('Components', () => {

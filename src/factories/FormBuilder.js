@@ -1,4 +1,4 @@
-import * as validators from "inkline/validators";
+import * as validators from "@inkline/inkline/validators";
 
 export class FormBuilder {
     defaultFormState = {

@@ -151,7 +151,8 @@ describe('Components', () => {
                 it('should not set value to false if disabled', () => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
-                    wrapper.setProps({ value: true, disabled: true });
+                    wrapper.setProps({ disabled: true });
+                    wrapper.setProps({ value: true });
                     wrapper.vm.hide();
 
                     expect(spy).not.toHaveBeenCalled();

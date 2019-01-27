@@ -43,8 +43,8 @@ describe('Factories', () => {
             });
 
             it('should close topmost modal on pressing Escape', () => {
-                const instance = { id: 'abc', close: () => {}, closeOnPressEscape: true };
-                const spy = jest.spyOn(instance, 'close');
+                const instance = { id: 'abc', hide: () => {}, closeOnPressEscape: true };
+                const spy = jest.spyOn(instance, 'hide');
 
                 popupManager.register(instance);
                 popupManager.openModal('abc');
