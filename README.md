@@ -7,7 +7,7 @@
 <h1 align="center">Inkline</h1>
 
 <p align="center">
-    Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design. Inkline is 
+    Inkline is a modern UI/UX framework designed for creating flawless responsive websites. Inkline is 
     written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>. 
     <br/>
     <br/>
