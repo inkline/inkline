@@ -27,7 +27,7 @@
     <a href="https://travis-ci.org/inkline/inkline">
         <img src="https://travis-ci.org/inkline/inkline.svg?branch=master" alt="Build">
     </a>    
-    <a href='https://coveralls.io/github/inkline/inkline?branch=master'><img src='https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master' alt='Coverage Status' /></a>
+    <a href='https://coveralls.io/github/inkline/inkline?branch=master'><img src='https://coveralls.io/repos/github/inkline/inkline/badge.svg' alt='Coverage Status' /></a>
     <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="dependencies status">
     <a href="https://www.npmjs.com/package/@inkline/inkline">
         <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
@@ -62,13 +62,13 @@ yarn add @inkline/inkline
 ~~~
 
 ## Usage
-First, import core styles:
+First, import core styles, written in Stylus:
 
 ~~~js
 import '@inkline/inkline/src/index.styl';
 ~~~
 
-If you already have your Webpack configuration ready for Stylus and Vue, importing the framework is as simple as:
+If you already have your Webpack configuration ready for Vue, importing the framework is as simple as:
 
 ~~~js
 import Vue from 'vue';
