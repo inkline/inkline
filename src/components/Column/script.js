@@ -20,7 +20,7 @@ for (let breakpoint of breakpoints) {
     for (let property of ['offset', 'push', 'pull']) {
         properties[property + capitalizeFirst(breakpoint)] = {
             type: [String, Number],
-            default: false
+            default: ''
         };
     }
 }
