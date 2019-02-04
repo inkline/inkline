@@ -14,6 +14,7 @@ export { on } from './on';
 export { once } from './once';
 export { popupManager } from '../factories/PopupManager';
 export { removeClass } from './removeClass';
+export { slugify } from './slugify';
 export { toCamelCase } from './toCamelCase';
 export { toDashCase } from './toDashCase';
 export { toUnderscoreCase } from './toUnderscoreCase';
