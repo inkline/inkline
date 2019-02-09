@@ -1,0 +1,12 @@
+<div class="page-navigation">
+    <ol>
+        <li>
+            <span>{{title}}</span>
+            <ul>
+                <li v-for="item in items">
+                    <a @click="scrollTo(item.element)" :class="{ '-active': item.active }">{{ item.title }}</a>
+                </li>
+            </ul>
+        </li>
+    </ol>
+</div>

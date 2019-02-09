@@ -1,0 +1,46 @@
+@require '~@inkline/inkline/css/config/index'
+
+.code-preview
+    display: block
+    position: relative
+    padding: --spacer
+    border-radius: --border-radius['md']
+    border: 1px solid --colors['gray-20']
+
+    + .code-preview
+        margin-top: --spacer
+
+    > .header
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-bottom: --spacer
+
+        > .title
+            font-weight: bold
+            display: inline-block
+            margin-right: --spacer
+
+            code
+                margin-left: (--spacer / 2)
+                font-weight: normal
+
+        > .tabs
+            > .link
+                margin-left: --spacer
+
+    &.-expanded
+        padding-bottom: 0
+
+        > .panels
+            margin-left: -17px
+            margin-right: -17px
+            margin-bottom: -1px
+
+    > .panels
+        display: block
+        position: relative
+
+        .panel
+            width: 100%
+

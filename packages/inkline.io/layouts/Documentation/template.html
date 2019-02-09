@@ -1,0 +1,23 @@
+<i-container>
+    <i-row>
+        <i-column>
+            <i-layout vertical id="layout">
+                <i-layout-aside id="layout-aside-left">
+                    <div class="layout-fixed-full-height" v-match-parent-width>
+                        <site-navigation></site-navigation>
+                    </div>
+                </i-layout-aside>
+
+                <i-layout-content id="layout-content">
+                    <router-view />
+                </i-layout-content>
+
+                <i-layout-aside id="layout-aside-right">
+                    <div class="layout-fixed-full-height" v-match-parent-width>
+                        <page-navigation></page-navigation>
+                    </div>
+                </i-layout-aside>
+            </i-layout>
+        </i-column>
+    </i-row>
+</i-container>
