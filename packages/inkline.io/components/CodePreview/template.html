@@ -1,0 +1,36 @@
+<div class="code-preview" :class="{ '-expanded': expanded }">
+    <div class="header">
+        <span class="title">
+            {{title}}
+            <code v-if="markup">&lt;{{markup}}&gt;</code>
+        </span>
+        <div class="tabs">
+            <i-button-group size="sm">
+                <i-button
+                        :class="{ '-active': active === tab.id }"
+                        :key="tab.id"
+                        :variant="active === tab.id ? 'primary' : 'light'"
+                        @click="setActive(tab.id)"
+                        v-if="$slots[tab.id]"
+                        v-for="tab in tabs">
+                    {{tab.title}}
+                </i-button>
+            </i-button-group>
+            <i-button class="link" v-if="link" :href="link" target="_blank">
+                <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>
+            </i-button>
+        </div>
+    </div>
+    <div class="panels">
+        <transition-group name="fade" mode="out-in">
+            <div class="panel"
+                 :class="[`-${tab.id}`]"
+                 :key="tab.id"
+                 v-if="$slots[tab.id]"
+                 v-show="active === tab.id"
+                 v-for="tab in tabs">
+                <slot :name="tab.id"></slot>
+            </div>
+        </transition-group>
+    </div>
+</div>
