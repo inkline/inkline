@@ -134,6 +134,17 @@ describe('Components', () => {
                         expect(schema.pristine).toEqual(false);
                     });
                 });
+
+                it('should emit validate event on validateOn event', () => {
+                    const spy = jest.spyOn(inputWrapper.vm, '$emit');
+
+                    inputWrapper.setData({ name: 'group.input' });
+                    wrapper.vm.add(inputWrapper.vm);
+                    inputWrapper.vm.$emit(inputWrapper.vm.schema.validateOn, true);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('submit', expect.any(Function));
+                });
             });
 
             describe('remove()', () => {
