@@ -29,10 +29,5 @@ export default {
                 return this.model === this.currentValue;
             }
         }
-    },
-    mounted () {
-        if (this.indeterminate) {
-            this.$el.setAttribute('aria-controls', this.controls);
-        }
     }
 };

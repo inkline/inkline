@@ -7,7 +7,8 @@
         :name="name"
         :value="currentValue"
         :disabled="isDisabled"
-        :readonly="isReadonly">
+        :readonly="isReadonly"
+        :indeterminate.prop="indeterminate">
     <label
        class="form-input-label"
        :class="classes['label']"
@@ -21,4 +22,6 @@
        @keydown.space.stop.prevent="clickInputRef">
         <slot></slot>
     </label>
+
+    <i-form-error v-if="validate" :schema="schema"></i-form-error>
 </div>

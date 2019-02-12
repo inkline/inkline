@@ -11,4 +11,7 @@
         &:checked ~ .form-input-label::after
             background-image: url(--form-check-checkbox-icon)
 
+        &:indeterminate ~ .form-input-label::after
+            background-image: url(--form-check-indeterminate-icon)
+
     @extend .form-check.-custom.-checkbox.-md
