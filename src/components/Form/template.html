@@ -2,6 +2,7 @@
       role="form"
       :name="name"
       :class="classes"
-      :disabled="disabled">
+      :disabled="disabled"
+      @submit="emitSubmit">
     <slot></slot>
 </form>

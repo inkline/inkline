@@ -1,7 +1,7 @@
 import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 
-import EmitInputMethodMixin from '@inkline/inkline/mixins/components/methods/EmitInputMethodMixin';
+import EmitSubmitMethodMixin from '@inkline/inkline/mixins/components/methods/EmitSubmitMethodMixin';
 
 import DisabledPropertyMixin from '@inkline/inkline/mixins/components/properties/DisabledPropertyMixin';
 import LoadingPropertyMixin from '@inkline/inkline/mixins/components/properties/LoadingPropertyMixin';
@@ -15,7 +15,7 @@ export default {
         AttributesProviderMixin,
         ClassesProviderMixin,
 
-        EmitInputMethodMixin,
+        EmitSubmitMethodMixin,
 
         DisabledPropertyMixin,
         LoadingPropertyMixin,
@@ -90,6 +90,8 @@ export default {
                     schema.dirty = true;
                     schema.pristine = false;
                 });
+
+                this.$emit('validate', this.schema);
             });
         },
 
