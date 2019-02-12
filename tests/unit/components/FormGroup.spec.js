@@ -21,6 +21,24 @@ describe('Components', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
 
+        describe('props', () => {
+            describe('validate', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.validate).toBeDefined();
+                    expect(wrapper.vm.validate).toEqual(true);
+                });
+            });
+        });
+
+        describe('data()', () => {
+            describe('inputSchema', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm).toHaveProperty('inputSchema');
+                });
+            });
+        });
+
+
         describe('created()', () => {
             it('should add class rules to classes provider', () => {
                 const classRulesLength = wrapper.vm.classesProvider.length;
@@ -35,6 +53,14 @@ describe('Components', () => {
                 expect(rule()).toEqual(expect.objectContaining({ '-inline': false }));
                 wrapper.setProps({ inline: true });
                 expect(rule()).toEqual(expect.objectContaining({ '-inline': true }));
+            });
+
+            it('should add "-error" class if inputSchema is invalid', () => {
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-error': false }));
+                wrapper.setData({ inputSchema: { invalid: true } });
+                expect(rule()).toEqual(expect.objectContaining({ '-error': true }));
             });
         });
     });
