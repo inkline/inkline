@@ -38,8 +38,8 @@ describe('Components', () => {
             });
         });
 
-        it('should render correctly', () => {
-            expect(wrapper.html()).toMatchSnapshot();
+        it('should be named correctly', () => {
+            expect(FormLabel.name).toEqual('IFormLabel');
         });
 
         it('should render correctly', () => {
