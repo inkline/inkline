@@ -1,3 +1,5 @@
+import IFormError from '@inkline/inkline/components/FormError';
+
 import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from '@inkline/inkline/mixins/forms/providers/InjectParentFormProviderMixin';
@@ -18,6 +20,9 @@ import TabIndexPropertyMixin from '@inkline/inkline/mixins/components/properties
 
 export default {
     name: 'ICheckable',
+    components: {
+        IFormError
+    },
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
@@ -50,6 +55,12 @@ export default {
             if (this.isGrouped) {
                 this.parentFormGroup.emitFocus(e);
             }
+        }
+    },
+    props: {
+        validate: {
+            type: Boolean,
+            default: true
         }
     },
     data() {

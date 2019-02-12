@@ -27,6 +27,16 @@ describe('Components', () => {
             });
         });
 
+
+        describe('props', () => {
+            describe('validate', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.validate).toBeDefined();
+                    expect(wrapper.vm.validate).toEqual(true);
+                });
+            });
+        });
+
         describe('methods', () => {
             describe('onBlur()', () => {
                 it('should emit "blur" event', () => {

@@ -28,7 +28,8 @@
             z-index: -1 // Put the input behind the label so it doesn't overlay text
             opacity: 0
 
-            &:checked ~ .form-input-label::before
+            &:checked ~ .form-input-label::before,
+            &[type="checkbox"]:indeterminate ~ .form-input-label::before
                 color: --form-check-indicator-checked-color
                 background-color: --form-check-indicator-checked-background-color
                 box-shadow: --form-check-indicator-checked-box-shadow
