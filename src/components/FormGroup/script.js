@@ -1,3 +1,5 @@
+import IFormError from '@inkline/inkline/components/FormError';
+
 import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from '@inkline/inkline/mixins/forms/providers/InjectParentFormProviderMixin';
@@ -13,12 +15,24 @@ import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/Siz
 import TabIndexPropertyMixin from '@inkline/inkline/mixins/components/properties/TabIndexPropertyMixin';
 
 export default {
-    name: 'IFormGroupBase',
+    name: 'IFormGroup',
+    components: {
+        IFormError
+    },
     props: {
         inline: {
             type: Boolean,
             default: false
+        },
+        validate: {
+            type: Boolean,
+            default: true
         }
+    },
+    data() {
+        return {
+            inputSchema: null
+        };
     },
     mixins: [
         AttributesProviderMixin,
@@ -36,6 +50,9 @@ export default {
         TabIndexPropertyMixin
     ],
     created() {
-        this.classesProvider.add(() => ({ '-inline': this.inline }));
+        this.classesProvider.add(() => ({
+            '-inline': this.inline,
+            '-error': this.inputSchema && this.inputSchema.invalid
+        }));
     }
 };
