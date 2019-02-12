@@ -13,12 +13,22 @@ import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/Siz
 import TabIndexPropertyMixin from '@inkline/inkline/mixins/components/properties/TabIndexPropertyMixin';
 
 export default {
-    name: 'IFormGroupBase',
+    name: 'IFormGroup',
     props: {
         inline: {
             type: Boolean,
             default: false
+        },
+        validate: {
+            type: Boolean,
+            default: true
         }
+    },
+    data() {
+        return {
+            inputSchema: null,
+            errors: []
+        };
     },
     mixins: [
         AttributesProviderMixin,
@@ -36,6 +46,23 @@ export default {
         TabIndexPropertyMixin
     ],
     created() {
-        this.classesProvider.add(() => ({ '-inline': this.inline }));
+        this.classesProvider.add(() => ({
+            '-inline': this.inline,
+            '-error': this.inputSchema && this.inputSchema.invalid
+        }));
+    },
+    watch: {
+        'inputSchema.invalid' (invalid) {
+            if (this.validate && invalid) {
+                this.errors = Object.keys(this.inputSchema.errors)
+                    .filter((key) => key !== 'length')
+                    .map((key) => this.inputSchema.errors[key]);
+            }
+        }
+    },
+    methods: {
+        clearErrors () {
+            this.errors = [];
+        }
     }
 };

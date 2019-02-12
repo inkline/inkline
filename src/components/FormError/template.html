@@ -1,0 +1,11 @@
+<div class="form-group" :class="classes" role="inputgroup">
+    <slot></slot>
+
+    <transition v-if="validate && inputSchema" name="fade-in-transition" @after-leave="clearErrors()">
+        <slot name="error" v-if="inputSchema.errors.length > 0" >
+            <ul class="form-group-error">
+                <li v-for="error in errors">{{ error }}</li>
+            </ul>
+        </slot>
+    </transition>
+</div>
