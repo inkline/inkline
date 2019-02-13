@@ -1,8 +1,8 @@
-import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
+import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
 
-import ActivePropertyMixin from '@inkline/inkline/mixins/components/properties/ActivePropertyMixin';
-import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/SizePropertyMixin';
+import ActivePropertyMixin from '@inkline/inkline/src/mixins/components/properties/ActivePropertyMixin';
+import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
 
 export default {
     name: 'IBreadcrumbItem',

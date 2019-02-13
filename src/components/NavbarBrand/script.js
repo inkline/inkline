@@ -1,4 +1,4 @@
-import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
+import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
 
 export default {
     name: 'INavbarBrand',

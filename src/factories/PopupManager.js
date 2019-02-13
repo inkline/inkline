@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { isKey } from '@inkline/inkline/helpers/index';
+import { isKey } from '@inkline/inkline/src/helpers/index';
 
 export class PopupManager {
     instances = {};

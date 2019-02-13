@@ -1,6 +1,6 @@
 {
   "name": "@inkline/inkline",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "Inkline is a modern UI/UX framework designed for creating flawless responsive websites.",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {

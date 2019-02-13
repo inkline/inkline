@@ -1,4 +1,4 @@
-import { FormBuilder } from "@inkline/inkline/factories/FormBuilder";
+import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
 
 /**
  * Construct a basic form schema with default values

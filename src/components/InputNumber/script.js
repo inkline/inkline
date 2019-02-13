@@ -1,6 +1,6 @@
-import IButton from '@inkline/inkline/components/Button';
-import IInput from '@inkline/inkline/components/Input';
-import IFormGroup from '@inkline/inkline/components/FormGroup';
+import IButton from '@inkline/inkline/src/components/Button';
+import IInput from '@inkline/inkline/src/components/Input';
+import IFormGroup from '@inkline/inkline/src/components/FormGroup';
 
 export default {
     name: 'IInputNumber',

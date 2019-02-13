@@ -1,4 +1,4 @@
-import {keymap} from "@inkline/inkline/constants";
+import {keymap} from "@inkline/inkline/src/constants";
 
 /**
  * Verify if the given event is mapped to a specific key

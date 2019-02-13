@@ -1,5 +1,5 @@
 <script>
-import ActiveClassPropertyMixin from '@inkline/inkline/mixins/components/properties/ActiveClassPropertyMixin'
+import ActiveClassPropertyMixin from '@inkline/inkline/src/mixins/components/properties/ActiveClassPropertyMixin'
 
 export default {
     extends: ActiveClassPropertyMixin,

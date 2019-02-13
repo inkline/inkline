@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { on, isVisible } from '@inkline/inkline/helpers';
+import { on, isVisible } from '@inkline/inkline/src/helpers';
 
 const nodeList = [];
 const ctx = '@@clickOutsideContext';

@@ -1,4 +1,4 @@
-import { uid } from '@inkline/inkline/helpers';
+import { uid } from '@inkline/inkline/src/helpers';
 
 import Tooltip from '../Tooltip';
 
