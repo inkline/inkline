@@ -1,3 +1,5 @@
+import { getStyleProperty } from "@inkline/inkline/helpers";
+
 export default {
     name: 'ITransitionExpand',
     functional: true,
@@ -9,21 +11,21 @@ export default {
             },
             on: {
                 enter(element) {
-                    const width = getComputedStyle(element).width;
+                    const width = getStyleProperty(element, 'width');
 
                     element.style.width = width;
                     element.style.position = 'absolute';
                     element.style.visibility = 'hidden';
                     element.style.height = 'auto';
 
-                    const height = getComputedStyle(element).height;
+                    const height = getStyleProperty(element, 'height');
 
                     element.style.width = null;
                     element.style.position = null;
                     element.style.visibility = null;
                     element.style.height = 0;
 
-                    getComputedStyle(element).height; // Force rerender element to set correct height
+                    getStyleProperty(element, 'height'); // Force rerender element to set correct height
                     setTimeout(() => {
                         element.style.height = height;
                     });
@@ -32,9 +34,9 @@ export default {
                     element.style.height = 'auto';
                 },
                 leave(element) {
-                    element.style.height = getComputedStyle(element).height;
+                    element.style.height = getStyleProperty(element, 'height');
 
-                    getComputedStyle(element).height; // Force rerender element to set correct height
+                    getStyleProperty(element, 'height'); // Force rerender element to set correct height
                     setTimeout(() => {
                         element.style.height = 0;
                     });
