@@ -1,0 +1,33 @@
+import View from '@components/View';
+import { IInputNumber } from '@inkline/inkline';
+
+export default {
+    extends: View,
+    name: 'InputView',
+    layout: 'documentation',
+    components: {
+        IInputNumber
+    },
+    data () {
+        return {
+            inputValue: '',
+            disabledInputValue: '',
+            minMaxInputValue: '1',
+            stepInputValue: '',
+            precisionInputValue: '',
+            clearableInputValue: '',
+            prefixInputValue: '',
+            suffixInputValue: '',
+            prefixSuffixInputValue: '',
+            prependInputValue: '',
+            appendInputValue: '',
+            prependAppendInputValue: '',
+            smInputValue: '',
+            mdInputValue: '',
+            lgInputValue: '',
+            labelDefaultInputValue: '',
+            labelLeftInputValue: '',
+            labelRightInputValue: ''
+        };
+    }
+};

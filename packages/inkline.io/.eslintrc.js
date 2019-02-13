@@ -11,6 +11,7 @@ module.exports = {
     'plugin:vue/base'
   ],
   rules: {
-    indent: ['warn', 4]
+    'indent': ['warn', 4],
+    'no-console': 'off'
   }
 };

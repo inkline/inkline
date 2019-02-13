@@ -10,5 +10,8 @@ export default {
         IRow,
         ICodePreview,
         IApiPreview
+    },
+    mounted() {
+        this.$nuxt.$emit('viewLoaded');
     }
 };
