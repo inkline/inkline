@@ -1,6 +1,7 @@
 export { alpha } from '@inkline/inkline/validators/alpha';
 export { alphanumeric } from '@inkline/inkline/validators/alphanumeric';
-export { decimal } from '@inkline/inkline/validators/decimal';
+export { custom } from '@inkline/inkline/validators/custom';
+export { number } from '@inkline/inkline/validators/number';
 export { email } from '@inkline/inkline/validators/email';
 export { max } from '@inkline/inkline/validators/max';
 export { maxLength } from '@inkline/inkline/validators/maxLength';

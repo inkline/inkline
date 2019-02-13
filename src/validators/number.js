@@ -1,9 +1,15 @@
-export function decimal(value, options = { floatingPoint: true }) {
-    let regExp;
+export function number(value, options = { allowNegative: false, allowDecimal: false }) {
+    let regExp = "\\d+";
 
-    if (options.floatingPoint) {
-        const regExp = /^[-]?\d*(\.\d+)?$/;
+    if (options.allowNegative) {
+        regExp = "[-]?" + regExp;
     }
+
+    if (options.allowDecimal) {
+        regExp += "\\.\\d+";
+    }
+
+    regExp = new RegExp(`^${regExp}$`);
 
     if (value.constructor === Array) {
         return value.every((v) => regExp.test(v));
