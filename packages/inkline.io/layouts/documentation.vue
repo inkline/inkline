@@ -29,7 +29,7 @@ import Layout from '@components/Layout';
 import SiteNavigation from '@components/SiteNavigation';
 import PageNavigation from '@components/PageNavigation';
 import MatchParentWidth from '@directives/match-parent-width';
-import { getStyleProperty } from '@inkline/inkline/helpers'
+import { getStyleProperty } from '@inkline/inkline/src/helpers'
 
 export default {
     name: 'Documentation',

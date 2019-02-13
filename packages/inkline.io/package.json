@@ -18,7 +18,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.7.1",
     "@fortawesome/free-solid-svg-icons": "^5.7.1",
     "@fortawesome/vue-fontawesome": "^0.1.5",
-    "@inkline/inkline": "^1.8.0",
+    "@inkline/inkline": "^1.8.1",
     "@nuxtjs/pwa": "^2.6.0",
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
