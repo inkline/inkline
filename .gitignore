@@ -3,6 +3,9 @@ node_modules
 tests/coverage
 
 dist/
+!dist/css/inkline.css
+!dist/js/vendors.js
+!dist/js/inkline.js
 
 # local env files
 .env.local
