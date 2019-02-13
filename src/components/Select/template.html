@@ -22,8 +22,10 @@
             @blur="emitBlur"
             @keydown="emitKeydown"
             @keyup="emitKeyup">
+        <slot name="prepend" slot="prepend"></slot>
         <slot name="prefix" slot="prefix"></slot>
         <slot name="suffix" slot="suffix"></slot>
+        <slot name="append" slot="append"></slot>
     </i-input>
 
     <select v-bind="$attrs"
