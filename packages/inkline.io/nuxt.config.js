@@ -4,6 +4,10 @@ const path = require('path');
 module.exports = {
     mode: 'spa',
 
+    server: {
+        port: 8080
+    },
+
     /*
     ** Headers of the page
     */
@@ -94,7 +98,6 @@ module.exports = {
                 config.resolve.alias['@resources'] = path.join(__dirname, 'resources');
                 config.resolve.alias['@routes'] = path.join(__dirname, 'routes');
                 config.resolve.alias['@views'] = path.join(__dirname, 'views');
-                config.resolve.alias['@inkline/inkline'] = '@inkline/inkline/src';
             }
         },
         babel: {
