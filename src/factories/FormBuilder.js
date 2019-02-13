@@ -86,7 +86,7 @@ export class FormBuilder {
 
                 // Validator rule gets called with value, validator options and root schema options
                 if (validatorEnabled && !validators[validator.rule](value, validator, options)) {
-                    errors[validator.rule] = validator.message || true;
+                    errors[validator.rule] = validator.message || FormBuilder.getErrorMessage(value, validator);
                     errors.length += 1;
                     valid = false;
                 }
@@ -207,5 +207,86 @@ export class FormBuilder {
         };
 
         return schema;
+    }
+
+    /**
+     * Return formatted default error messages for validators
+     */
+    static getErrorMessage(value, validator) {
+        let content = '';
+        let isMultiple = Array.isArray(value);
+
+        switch (validator.rule) {
+            case 'alpha':
+                if (validator.allowDashes && validator.allowSpaces) {
+                    content = 'letters, dashes and spaces';
+                } else if (validator.allowSpaces) {
+                    content = 'letters and spaces';
+                } else if (validator.allowDashes) {
+                    content = 'letters and dashes';
+                } else {
+                    content = 'letters';
+                }
+
+                return isMultiple ?
+                    `Please select options that contain ${content} only.` :
+                    `Please enter ${content} only.`;
+            case 'alphanumeric':
+                if (validator.allowDashes && validator.allowSpaces) {
+                    content = 'letters, numbers, dashes and spaces';
+                } else if (validator.allowSpaces) {
+                    content = 'letters, numbers and spaces';
+                } else if (validator.allowDashes) {
+                    content = 'letters, numbers and dashes';
+                } else {
+                    content = 'letters and numbers';
+                }
+
+                return isMultiple ?
+                    `Please select options that contain ${content} only.` :
+                    `Please enter ${content} only.`;
+            case 'number':
+                if (validator.allowNegative && validator.allowDecimal) {
+                    content = 'positive or negative decimal numbers';
+                } else if (validator.allowNegative) {
+                    content = 'positive or negative numbers';
+                } else if (validator.allowDecimal) {
+                    content = 'decimal numbers';
+                } else {
+                    content = 'numbers';
+                }
+
+                return isMultiple ?
+                    `Please select options that contain ${content} only.` :
+                    `Please enter ${content} only.`;
+            case 'email':
+                return isMultiple ?
+                    'Please select only valid email address.' :
+                    'Please enter a valid email address.';
+            case 'max':
+                return isMultiple ?
+                    `Please select values up to a maximum of ${validator.value}.` :
+                    `Please enter a value up to a maximum of ${validator.value}.`;
+            case 'maxLength':
+                return isMultiple ?
+                    `Please select up to ${validator.value} options.` :
+                    `Please enter up to ${validator.value} characters.`;
+            case 'min':
+                return isMultiple ?
+                    `Please select values up from a minimum of ${validator.value}.` :
+                    `Please enter a value up from a minimum of ${validator.value}.`;
+            case 'minLength':
+                return isMultiple ?
+                    `Please select at least ${validator.value} options.` :
+                    `Please enter at least ${validator.value} characters.`;
+            case 'required':
+                return isMultiple ?
+                    'Please select at least one option.' :
+                    'Please enter a value for this field.';
+            case 'sameAs':
+                return `Please make sure that the two values match.`;
+            default:
+                return 'Please enter a correct value for this field.';
+        }
     }
 }
