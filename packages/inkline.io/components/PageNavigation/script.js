@@ -34,13 +34,14 @@ export default {
     },
     methods: {
         update () {
-            this.title = document.querySelector('#layout-content > article > h1').textContent;
+            this.title = (document.querySelector('#layout-content > article > h1') || {}).textContent;
             this.items = [].map.call(document.querySelectorAll('#layout-content > article > h3'), (element) => ({
                 title: element.textContent,
                 element: element,
                 active: false
             }));
-            this.items[0].active = true;
+
+            (this.items[0] || {}).active = true;
         },
         onScroll () {
             const firstVisibleIndex = findIndex(this.items, (item) => isInViewport(item.element));
@@ -55,16 +56,16 @@ export default {
             }
         },
         scrollTo (element) {
-            element.scrollIntoView(true);
+            element.scrollIntoView({
+                block: 'start',
+                behavior: 'smooth'
+            });
         }
     },
     mounted () {
         this.update();
+        this.$nuxt.$on('viewLoaded', this.update);
+
         window.addEventListener('scroll', throttle(this.onScroll, 500));
-    },
-    watch: {
-        $route () {
-            this.update()
-        }
     }
 };

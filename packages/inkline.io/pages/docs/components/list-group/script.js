@@ -1,0 +1,12 @@
+import View from '@components/View';
+import { IListGroup, IListGroupItem } from '@inkline/inkline';
+
+export default {
+    name: 'ListGroupView',
+    layout: 'documentation',
+    extends: View,
+    components: {
+        IListGroup,
+        IListGroupItem
+    }
+};

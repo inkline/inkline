@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- 8.9.1
+script:
+- npm install
+before_deploy:
+- npm run build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local-dir: docs
+  github-token:
+    secure: kt45d8oXcAyzQ2ZEv1EETJUcpGnF2KuZF3cq59z5T5Fi6sGPHMiNgYotBH5/kV/ne3gobMAcN0MViN9iAeTTovESLkUTzUrUqnwPZPT7y2MlUi2Gv/Q3Orocvh3lWkU7SiAQOTxwJ8jHwkZpRGeMgnj4UH4Hd55CDZzb2RNMfmj3Jz+CkxdHQ4CxSJak7jpjS0u21n+aLxl3nhjiMFG44bp1sNCm24YyJyrNuMlG2pUUsWeuJv83E6KvHXnwoHv6uEXf9B7xKcBOuj7jPKnp5Ix85WAUZPi6en2HLsGeIn8IEilMuvtcLKEMofmvnQiqAkwxKLCLnHPCtHaJIUT/lHBtTLeX5dIiBhmiP5PcSyDhiBXUyHMjgW7Jl58qTzlfb7Bi5gOTCZz/xeKJyEkxoXU+1rroEtFuGo++tYFMQTYlLjwOcZ83qoLSZ/S+GQ0WN5HXRX/f4jFR3lL+3D81Ds/ekKDMbeDW5SR+9N1y/Q+puq1GZPOFHJrgDt2VkGbazcAqLxPPiw/jA4a4drATNF1Zj8aocY/qcwt00cXVKTaZtUF7TwJcXXVuWHdrPck3Ex9DE71SbNb6y3zSNE3MnuGOo8tYezNaIw9eO9qt1xJrH/qKS/YE5B2IX+AJvXoAlyvqTfsCdecOTXHHUO0lJVbWPGehafBMsHatNx0qHNY=
+  keep-history: true
+  on:
+    branch: master

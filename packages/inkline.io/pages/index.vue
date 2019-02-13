@@ -19,7 +19,7 @@ import View from '@components/View';
 import SiteNavigation from '@components/SiteNavigation';
 
 export default {
-    name: 'HomeView',
+    name: 'IndexView',
     layout: 'Default',
     extends: View,
     components: {

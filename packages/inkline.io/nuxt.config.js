@@ -28,12 +28,16 @@ module.exports = {
     ** Global CSS
     */
     css: [
+        '@/css/index.styl'
     ],
 
     /*
     ** Plugins to load before mounting the App
     */
     plugins: [
+        '~/plugins/font-awesome',
+        '~/plugins/inkline',
+        '~/plugins/prism'
     ],
 
     /*
@@ -61,6 +65,26 @@ module.exports = {
                     test: /\.(js|vue)$/,
                     loader: 'eslint-loader',
                     exclude: /node_modules\/(?!@inkline)/
+                });
+
+                config.module.rules.push({
+                    test: /\.md$/i,
+                    loader: 'markdown-complete-loader',
+                    options: {
+                        configFile: path.join(__dirname, 'markdown.config.js')
+                    }
+                });
+
+                [].concat(...config.module.rules
+                    .find((e) => e.test.toString().match(/\.styl/))
+                    .oneOf
+                    .map((e) => e.use.filter(e => e.loader === 'stylus-loader'))
+                ).forEach((stylus) => {
+                    Object.assign(stylus.options, {
+                        import: [
+                            path.join(__dirname, 'css/config/index.styl')
+                        ]
+                    })
                 });
 
                 config.resolve.symlinks = true;
