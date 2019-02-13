@@ -2,10 +2,12 @@
 export default {
     methods: {
         /**
-         * Handler for change event
+         * Handler for submit event
          */
-        emitChange (event) {
-            return this.$emit('change', event.target.value);
+        emitSubmit (event) {
+            event.preventDefault();
+
+            return this.$emit('submit', event);
         }
     }
 };
