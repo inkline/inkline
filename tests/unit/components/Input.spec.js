@@ -8,7 +8,11 @@ describe('Components', () => {
         beforeEach(() => {
             wrapper = shallowMount(Input, {
                 methods: {
-                    created: Input.created
+                    created: Input.created,
+                    mounted: Input.mounted
+                },
+                parentComponent: {
+                    name: 'IFormGroup'
                 }
             });
         });
@@ -75,6 +79,14 @@ describe('Components', () => {
                 const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
 
                 expect(rule()).toEqual(expect.objectContaining({ '-suffixed': true }));
+            });
+        });
+
+        describe('mounted()', () => {
+            it('should set input schema for parent form group', () => {
+                wrapper.setProps({ schema: {} });
+                wrapper.vm.mounted();
+                expect(wrapper.vm.parentFormGroup.schema).toEqual({})
             });
         });
     });

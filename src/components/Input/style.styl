@@ -113,6 +113,14 @@
     @extend .form-input-group.-md > .form-input
 
 /**
+ * Form Group
+ */
+.form-group.-error
+    .form-input-group > .form-input
+        +-form-input-selector()
+            border-color: --colors['red']
+
+/**
  * Form Input Group
  */
 .form-input-group

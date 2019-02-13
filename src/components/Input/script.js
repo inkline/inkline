@@ -63,5 +63,10 @@ export default {
             '-prefixed': Boolean(this.$slots.prefix),
             '-suffixed': Boolean(this.$slots.suffix)
         }));
+    },
+    mounted () {
+        if (this.schema) {
+            this.$set(this.parentFormGroup, 'inputSchema', this.schema);
+        }
     }
 };
