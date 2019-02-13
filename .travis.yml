@@ -7,15 +7,18 @@ script:
 after_script:
 - npm run test
 - npm run coveralls
+- mv dist/css/index.css dist/css/inkline.css
+- mv dist/js/chunk-vendors.js dist/js/vendors.js
+- mv dist/js/index.js dist/js/inkline.js
+- rm dist/index.html
 env:
   global:
     secure: tqtY+KktpHoArTJijk9fQIOVkPSCSExmdj5uIhUX62Wt+PB2Ta1GA31/CBwCusegAp09W7nkFkF222xyX2xsE0PbTP68gZZIxHV/7Uv/CaTr75t7u4in9pHkXbOrhgiVJV70UgzzQYHHERT/Qa3YfFLE1uLjI6mOYB2Jh6uPWxW9fF9Qq9JXkrAATo9QB0idx6lYD7GHeFki8cufvPTbllP+r1x4vtGNVohdKXpro/CJllAGDqyYiXXUMatTc51qFue5EI88O8VDLz9yjQy0Ot+Hx3QlNX5LTzGxfISIerc8doTYtRKhtbzgtp8e2jKTAN/k/y+K6JkVrZu96FOeksspPxfWTSkdGN+Q06261ZaHh4xOP8xpAaesacxYXaCRgfc4fIb+2dQdmkA0VXWlPtz5ELYohYQavAjJrd7cINSwA0YLdFOMt7n5c7Bsc1hqY+rmsUzrm4uCV8XgDyNnxD+hTpg8N/hVKKbBkAkGunrFXQQeFVSuXLU/Kowx0QaqRFJI8DNTQd53GibfxVFBYc/fTD+dZpt3Ul3V1avAgOKcY7SsfQgnmgu+7o534k4aP4lMU6vVPMOX9JP5L1zkpD/uym6aaY2f17wkziqnRlnLwtTLshQHeASeXBZ9u+s6ozPk1Yy0IYXAR3YV9Cjj2W26fG0AxqSzuOp/i40uNNI=
 deploy:
   provider: releases
-  skip-cleanup: true
-  local-dir: docs
-  github-token:
-    secure: kt45d8oXcAyzQ2ZEv1EETJUcpGnF2KuZF3cq59z5T5Fi6sGPHMiNgYotBH5/kV/ne3gobMAcN0MViN9iAeTTovESLkUTzUrUqnwPZPT7y2MlUi2Gv/Q3Orocvh3lWkU7SiAQOTxwJ8jHwkZpRGeMgnj4UH4Hd55CDZzb2RNMfmj3Jz+CkxdHQ4CxSJak7jpjS0u21n+aLxl3nhjiMFG44bp1sNCm24YyJyrNuMlG2pUUsWeuJv83E6KvHXnwoHv6uEXf9B7xKcBOuj7jPKnp5Ix85WAUZPi6en2HLsGeIn8IEilMuvtcLKEMofmvnQiqAkwxKLCLnHPCtHaJIUT/lHBtTLeX5dIiBhmiP5PcSyDhiBXUyHMjgW7Jl58qTzlfb7Bi5gOTCZz/xeKJyEkxoXU+1rroEtFuGo++tYFMQTYlLjwOcZ83qoLSZ/S+GQ0WN5HXRX/f4jFR3lL+3D81Ds/ekKDMbeDW5SR+9N1y/Q+puq1GZPOFHJrgDt2VkGbazcAqLxPPiw/jA4a4drATNF1Zj8aocY/qcwt00cXVKTaZtUF7TwJcXXVuWHdrPck3Ex9DE71SbNb6y3zSNE3MnuGOo8tYezNaIw9eO9qt1xJrH/qKS/YE5B2IX+AJvXoAlyvqTfsCdecOTXHHUO0lJVbWPGehafBMsHatNx0qHNY=
-  keep-history: true
+  skip_cleanup: true
+  file_glob: true
+  file: dist/**/*
+  draft: true
   on:
-    branch: master
+    tags: true

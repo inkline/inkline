@@ -2,8 +2,7 @@
 node_modules
 tests/coverage
 
-dist/favicon.ico
-dist/index.html
+dist/
 
 # local env files
 .env.local
