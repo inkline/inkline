@@ -10,8 +10,7 @@
     "test": "vue-cli-service test:unit --coverage --no-cache",
     "test:dev": "vue-cli-service test:unit --watch --coverage --no-cache",
     "coveralls": "cat ./tests/coverage/lcov.info | coveralls",
-    "dist": "./scripts/dist.sh",
-    "prepack": "npm run build"
+    "dist": "./scripts/dist.sh"
   },
   "dependencies": {
     "popper.js": "^1.14.6",
