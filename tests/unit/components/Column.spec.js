@@ -28,12 +28,22 @@ describe('Components', () => {
                     });
                 });
 
-                ['first', 'last', 'offset', 'push', 'pull'].forEach((modifierName) => {
+                ['first', 'last'].forEach((modifierName) => {
                     const modifier = modifierName + capitalizeFirst(breakpoint);
                     describe(modifier, () => {
                         it('should be defined', () => {
                             expect(wrapper.vm[modifier]).toBeDefined();
                             expect(wrapper.vm[modifier]).toEqual(false);
+                        });
+                    });
+                });
+
+                ['offset', 'push', 'pull'].forEach((modifierName) => {
+                    const modifier = modifierName + capitalizeFirst(breakpoint);
+                    describe(modifier, () => {
+                        it('should be defined', () => {
+                            expect(wrapper.vm[modifier]).toBeDefined();
+                            expect(wrapper.vm[modifier]).toEqual('');
                         });
                     });
                 });

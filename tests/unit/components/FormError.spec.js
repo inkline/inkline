@@ -6,7 +6,14 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(FormError);
+            wrapper = shallowMount(FormError, {
+                propsData: {
+                    schema: {
+                        errors: [],
+                        invalid: false
+                    }
+                }
+            });
         });
 
         it('should be named correctly', () => {
@@ -37,12 +44,6 @@ describe('Components', () => {
         describe('watch', () => {
             describe('schema.invalid()', () => {
                 it('should add schema error messages to errors array', () => {
-                    wrapper.setProps({
-                        schema: {
-                            invalid: false
-                        }
-                    });
-
                     expect(wrapper.vm.errors).toEqual([]);
 
                     wrapper.setProps({
@@ -65,7 +66,7 @@ describe('Components', () => {
             describe('clearErrors()', () => {
                 it('should clear error messages', () => {
                     wrapper.setData({ errors: ['a', 'b', 'c'] });
-                    wrapper.clearErrors();
+                    wrapper.vm.clearErrors();
 
                     expect(wrapper.vm.errors).toEqual([]);
                 });

@@ -4,7 +4,7 @@ exports[`Components Navbar should render correctly 1`] = `
 <div class="navbar">
   <i-container-stub>
     <i-row-stub>
-      <i-column-stub xs="true"></i-column-stub>
+      <i-column-stub offset="" push="" pull="" xs="true" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" offsetmd="" pushmd="" pullmd="" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl=""></i-column-stub>
     </i-row-stub>
   </i-container-stub>
 </div>

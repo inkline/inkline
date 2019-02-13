@@ -84,9 +84,12 @@ describe('Components', () => {
 
         describe('mounted()', () => {
             it('should set input schema for parent form group', () => {
+                const spy = jest.spyOn(wrapper.vm, '$set');
+
                 wrapper.setProps({ schema: {} });
                 wrapper.vm.mounted();
-                expect(wrapper.vm.parentFormGroup.schema).toEqual({})
+
+                expect(spy).toHaveBeenCalled()
             });
         });
     });

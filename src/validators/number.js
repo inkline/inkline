@@ -6,7 +6,7 @@ export function number(value, options = { allowNegative: false, allowDecimal: fa
     }
 
     if (options.allowDecimal) {
-        regExp += "\\.\\d+";
+        regExp += "(\\.\\d+)?";
     }
 
     regExp = new RegExp(`^${regExp}$`);

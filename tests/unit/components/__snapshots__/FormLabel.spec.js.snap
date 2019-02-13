@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components FormLabel should render correctly 1`] = `<label class="form-label"></label>`;
-
-exports[`Components FormLabel should render correctly 2`] = `<label class="form-label"></label>`;

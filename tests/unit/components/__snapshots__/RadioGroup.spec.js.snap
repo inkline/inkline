@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components RadioGroup should render correctly 1`] = `<div role="radiogroup" class="form-group -radio"></div>`;
+exports[`Components RadioGroup should render correctly 1`] = `
+<div role="radiogroup" class="form-group -radio">
+  <i-form-error-stub></i-form-error-stub>
+</div>
+`;

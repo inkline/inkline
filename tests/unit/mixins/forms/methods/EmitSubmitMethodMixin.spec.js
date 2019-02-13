@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import EmitSubmitMethodMixin from '@inkline/inkline/mixins/components/methods/EmitSubmitMethodMixin';
+import EmitSubmitMethodMixin from '@inkline/inkline/mixins/forms/methods/EmitSubmitMethodMixin';
 
 describe('Mixins', () => {
     describe('EmitSubmitMethodMixin', () => {
@@ -20,11 +20,13 @@ describe('Mixins', () => {
                 });
 
                 it('should emit "input" event', () => {
-                    wrapper.vm.emitSubmit(true);
+                    const event = { preventDefault() {} };
+
+                    wrapper.vm.emitSubmit(event);
 
                     expect(wrapper.emitted().submit).toBeTruthy();
                     expect(wrapper.emitted().submit.length).toBe(1);
-                    expect(wrapper.emitted().submit[0]).toEqual([true]);
+                    expect(wrapper.emitted().submit[0]).toEqual([event]);
                 });
             });
         });

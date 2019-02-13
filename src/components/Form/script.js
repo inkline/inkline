@@ -1,7 +1,7 @@
 import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 
-import EmitSubmitMethodMixin from '@inkline/inkline/mixins/components/methods/EmitSubmitMethodMixin';
+import EmitSubmitMethodMixin from '@inkline/inkline/mixins/forms/methods/EmitSubmitMethodMixin';
 
 import DisabledPropertyMixin from '@inkline/inkline/mixins/components/properties/DisabledPropertyMixin';
 import LoadingPropertyMixin from '@inkline/inkline/mixins/components/properties/LoadingPropertyMixin';

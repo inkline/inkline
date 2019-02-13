@@ -58,7 +58,7 @@ describe('Components', () => {
             it('should add "-error" class if inputSchema is invalid', () => {
                 const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
 
-                expect(rule()).toEqual(expect.objectContaining({ '-error': false }));
+                expect(rule()).toEqual(expect.objectContaining({ '-error': null }));
                 wrapper.setData({ inputSchema: { invalid: true } });
                 expect(rule()).toEqual(expect.objectContaining({ '-error': true }));
             });

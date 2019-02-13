@@ -15,11 +15,11 @@ describe('Validators', () => {
         });
 
         it('should return true for letters and spaces if options.allowSpace enabled', () => {
-            expect(alpha('abc ABC', { allowSpace: true })).toEqual(true);
+            expect(alpha('abc ABC', { allowSpaces: true })).toEqual(true);
         });
 
         it('should return true for letters and dashes if options.allowDash enabled', () => {
-            expect(alpha('abc-ABC', { allowDash: true })).toEqual(true);
+            expect(alpha('abc-ABC', { allowDashes: true })).toEqual(true);
         });
 
         it('should return false for letters and numbers', () => {
