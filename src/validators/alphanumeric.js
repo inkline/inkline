@@ -4,8 +4,8 @@ export function alphanumeric(value, options = {}) {
     const process = (v) => {
         v = String(v);
 
-        if (options.allowDash) { v = v.replace(/-/g, ''); }
-        if (options.allowSpace) { v = v.replace(/ /g, ''); }
+        if (options.allowDashes) { v = v.replace(/-/g, ''); }
+        if (options.allowSpaces) { v = v.replace(/ /g, ''); }
 
         return v;
     };
