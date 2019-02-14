@@ -16,7 +16,12 @@
 .table-of-contents
     width: 100%
 
-#layout
+#default-layout,
+#documentation-layout
+    .layout-content
+        margin: 62px auto 0;
+
+#documentation-layout
     #layout-aside-left,
     #layout-aside-right
         flex: 1 1 auto
@@ -28,9 +33,6 @@
     #layout-aside-right .layout-aside-children
         padding-left: (--spacer * 2)
 
-    #layout-content
-        margin: 0 auto
+    .layout-content
         max-width: 48rem
-        padding-top: 62px
-
 

@@ -15,7 +15,7 @@ module.exports = {
         title: '%s - Inkline',
         meta: [
             { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' },
             { name: 'keywords', content: 'inkline, vue, vue 2, vue.js, vue components, framework, ui, ux' },
             { hid: 'description', name: 'description', content: 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications.' },
             { name: 'msapplication-TileColor', content: '#ffffff' },
