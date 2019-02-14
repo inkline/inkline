@@ -22,6 +22,9 @@ export default {
     name: 'IndexView',
     layout: 'Default',
     extends: View,
+    head: {
+        title: 'Vue.js UI/UX Framework'
+    },
     components: {
         SiteNavigation
     }

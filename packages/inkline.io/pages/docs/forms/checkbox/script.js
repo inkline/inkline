@@ -5,6 +5,9 @@ export default {
     name: 'CheckboxView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Checkbox'
+    },
     components: {
         ICheckbox,
         ICheckboxButton,

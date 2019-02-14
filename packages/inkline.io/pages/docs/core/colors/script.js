@@ -5,6 +5,9 @@ export default {
     name: 'ColorsView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Colors'
+    },
     components: {
         ColorBox
     }

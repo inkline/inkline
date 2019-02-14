@@ -295,7 +295,7 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
             <tbody>
                 <tr>
                     <td>default</td>
-                    <td>Slot for progress component's default content.</td>
+                    <td>Slot for progresss's default content.</td>
                 </tr>
             </tbody>
         </table>
@@ -357,7 +357,7 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
             <tbody>
                 <tr>
                     <td>default</td>
-                    <td>Slot for progress bar component's default content.</td>
+                    <td>Slot for progress bars's default content.</td>
                 </tr>
             </tbody>
         </table>

@@ -5,6 +5,9 @@ export default {
     name: 'NavbarView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Navbar'
+    },
     components: {
         IButton,
         INav,

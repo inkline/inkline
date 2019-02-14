@@ -5,6 +5,9 @@ export default {
     name: 'ProgressView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Progress'
+    },
     components: {
         IProgress,
         IProgressBar,

@@ -1,31 +1,37 @@
 <template>
-<i-container>
-    <i-row>
-        <i-column>
-            <i-layout vertical id="layout">
-                <i-layout-aside id="layout-aside-left">
-                    <div class="layout-fixed-full-height" v-match-parent-width>
-                        <site-navigation></site-navigation>
-                    </div>
-                </i-layout-aside>
+<i-layout>
+    <i-layout-content>
+        <navbar />
+        <i-container>
+            <i-row>
+                <i-column>
+                    <i-layout vertical id="layout">
+                        <i-layout-aside id="layout-aside-left">
+                            <div class="layout-fixed-full-height" v-match-parent-width>
+                                <site-navigation></site-navigation>
+                            </div>
+                        </i-layout-aside>
 
-                <i-layout-content id="layout-content">
-                    <nuxt />
-                </i-layout-content>
+                        <i-layout-content id="layout-content">
+                            <nuxt />
+                        </i-layout-content>
 
-                <i-layout-aside id="layout-aside-right">
-                    <div class="layout-fixed-full-height" v-match-parent-width>
-                        <page-navigation></page-navigation>
-                    </div>
-                </i-layout-aside>
-            </i-layout>
-        </i-column>
-    </i-row>
-</i-container>
+                        <i-layout-aside id="layout-aside-right">
+                            <div class="layout-fixed-full-height" v-match-parent-width>
+                                <page-navigation></page-navigation>
+                            </div>
+                        </i-layout-aside>
+                    </i-layout>
+                </i-column>
+            </i-row>
+        </i-container>
+    </i-layout-content>
+</i-layout>
 </template>
 
 <script>
 import Layout from '@components/Layout';
+import Navbar from '@components/Navbar';
 import SiteNavigation from '@components/SiteNavigation';
 import PageNavigation from '@components/PageNavigation';
 import MatchParentWidth from '@directives/match-parent-width';
@@ -34,7 +40,11 @@ import { getStyleProperty } from '@inkline/inkline/helpers'
 export default {
     name: 'Documentation',
     extends: Layout,
+    head: {
+        titleTemplate: '%s - Inkline'
+    },
     components: {
+        Navbar,
         SiteNavigation,
         PageNavigation
     },

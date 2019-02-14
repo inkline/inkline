@@ -1,4 +1,4 @@
-# Cards
+# Card
 Cards provide you with a flexible and extensible content container with multiple color variants and options.{.lead}
 
 A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, 

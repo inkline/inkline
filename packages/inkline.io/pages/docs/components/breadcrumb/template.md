@@ -1,4 +1,4 @@
-# Breadcrumbs
+# Breadcrumb
 Indicate the current page’s location depth using a navigation list that automatically adds separators using CSS.{.lead}
 
 ### Examples

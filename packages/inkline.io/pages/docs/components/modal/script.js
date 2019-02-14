@@ -5,6 +5,9 @@ export default {
     name: 'ModalView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Modal'
+    },
     components: {
         IButton,
         IModal,

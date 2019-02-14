@@ -1,4 +1,4 @@
-# Forms
+# Form
 Forms are the main wrapper components for form elements. { .lead }
 
 ### Basic Form

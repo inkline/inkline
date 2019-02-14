@@ -5,6 +5,9 @@ export default {
     name: 'ListGroupView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'List Group'
+    },
     components: {
         IListGroup,
         IListGroupItem

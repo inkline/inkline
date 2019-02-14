@@ -5,6 +5,9 @@ export default {
     extends: View,
     name: 'RadioView',
     layout: 'documentation',
+    head: {
+        title: 'Radio'
+    },
     components: {
         IRadio,
         IRadioButton,

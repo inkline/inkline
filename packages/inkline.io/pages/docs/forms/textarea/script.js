@@ -5,6 +5,9 @@ export default {
     extends: View,
     name: 'TextareaView',
     layout: 'documentation',
+    head: {
+        title: 'Textarea'
+    },
     components: {
         ITextarea
     },

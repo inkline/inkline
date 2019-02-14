@@ -5,6 +5,9 @@ export default {
     name: 'ButtonView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Button'
+    },
     components: {
         IButton
     }

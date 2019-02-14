@@ -1,4 +1,4 @@
-# Buttons
+# Button
 Inkline provides you with custom button styles with support for multiple sizes, states, and more. { .lead }
 
 ### Variants

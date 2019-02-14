@@ -1,4 +1,4 @@
-# Navs
+# Nav
 Navs are basic navigation components that provide alignment and spacing between items.{.lead}
 
 ### Example

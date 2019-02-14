@@ -5,6 +5,9 @@ export default {
     extends: View,
     name: 'FormValidationView',
     layout: 'documentation',
+    head: {
+        title: 'Form Validation'
+    },
     components: {
         IForm,
         IFormGroup,

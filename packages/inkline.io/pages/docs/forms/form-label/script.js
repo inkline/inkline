@@ -5,6 +5,9 @@ export default {
     extends: View,
     name: 'FormLabelView',
     layout: 'documentation',
+    head: {
+        title: 'Form Label'
+    },
     components: {
         IFormGroup,
         IFormLabel,

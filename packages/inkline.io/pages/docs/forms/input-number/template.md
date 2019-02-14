@@ -1,4 +1,4 @@
-# Number Inputs
+# Number Input
 
 Allow your users to input data directly from the keyboard. { .lead }
 
