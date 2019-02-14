@@ -5,6 +5,9 @@ export default {
     name: 'LayoutView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Layout'
+    },
     components: {
         ILayout,
         ILayoutHeader,

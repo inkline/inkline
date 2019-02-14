@@ -5,6 +5,9 @@ export default {
     name: 'NavView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Pagination'
+    },
     components: {
         IButton,
         INav,

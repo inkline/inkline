@@ -5,6 +5,9 @@ export default {
     extends: View,
     name: 'InputView',
     layout: 'documentation',
+    head: {
+        title: 'Number Input'
+    },
     components: {
         IInputNumber
     },

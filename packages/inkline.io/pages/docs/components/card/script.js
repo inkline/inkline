@@ -5,6 +5,9 @@ export default {
     name: 'CardView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Card'
+    },
     components: {
         ICard
     }

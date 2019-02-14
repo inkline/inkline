@@ -5,6 +5,9 @@ export default {
     name: 'CollapsibleView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Collapsible'
+    },
     data() {
         return {
             active: ['panel-1']

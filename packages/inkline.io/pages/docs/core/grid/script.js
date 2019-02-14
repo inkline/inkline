@@ -5,6 +5,9 @@ export default {
     name: 'GridView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Grid'
+    },
     components: {
         GridBox
     }

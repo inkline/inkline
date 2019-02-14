@@ -1,4 +1,4 @@
-# Textareas
+# Textarea
 
 Allow your users to input data directly from the keyboard, on multiple lines. { .lead }
 

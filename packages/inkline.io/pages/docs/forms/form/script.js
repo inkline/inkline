@@ -5,6 +5,9 @@ export default {
     extends: View,
     name: 'FormView',
     layout: 'documentation',
+    head: {
+        title: 'Form'
+    },
     components: {
         IForm,
         IFormGroup,

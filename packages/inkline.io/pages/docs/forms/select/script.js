@@ -5,6 +5,9 @@ export default {
     extends: View,
     name: 'SelectView',
     layout: 'documentation',
+    head: {
+        title: 'Select'
+    },
     components: {
         ISelect,
         ISelectOption

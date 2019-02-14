@@ -5,6 +5,9 @@ export default {
     name: 'AlertView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Alert'
+    },
     components: {
         IAlert
     },

@@ -166,7 +166,7 @@ The goal of cover background images on a website is to cover the entire browser 
             <tbody>
                 <tr>
                     <td>fluid</td>
-                    <td>Sets the <code>IContainer</code> wrapping the header component's content as fluid.</td>
+                    <td>Sets the <code>IContainer</code> wrapping the headers's content as fluid.</td>
                     <td><code>Boolean</code></td>
                     <td><code>true</code>, <code>false</code></td>
                     <td><code>false</code></td>

@@ -340,7 +340,7 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
             <tbody>
                 <tr>
                     <td>fluid</td>
-                    <td>Sets the <code>IContainer</code> wrapping the navbar component's content as fluid.</td>
+                    <td>Sets the <code>IContainer</code> wrapping the navbars's content as fluid.</td>
                     <td><code>Boolean</code></td>
                     <td><code>true</code>, <code>false</code></td>
                     <td><code>false</code></td>

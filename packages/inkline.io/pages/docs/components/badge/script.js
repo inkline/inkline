@@ -5,6 +5,9 @@ export default {
     name: 'BadgeView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Badge'
+    },
     components: {
         IBadge
     }

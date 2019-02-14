@@ -1,4 +1,4 @@
-# Button Groups
+# Button Group
 Group multiple buttons together on a single line using a button group. {.lead}
 
 ### Example

@@ -5,6 +5,9 @@ export default {
     name: 'HeaderView',
     layout: 'documentation',
     extends: View,
+    head: {
+        title: 'Header'
+    },
     components: {
         IButton,
         IHeader

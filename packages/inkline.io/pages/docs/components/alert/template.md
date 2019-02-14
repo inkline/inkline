@@ -1,4 +1,4 @@
-# Alerts
+# Alert
 Provide contextual feedback messages for typical user actions using the alert component. {.lead}
 
 ### Variants
