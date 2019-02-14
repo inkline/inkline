@@ -82,3 +82,6 @@ dist
 
 # Service worker
 sw.*
+
+# MacOS
+.DS_Store
