@@ -1,6 +1,6 @@
 {
   "name": "@inkline/inkline",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "Inkline is a modern UI/UX framework designed for creating flawless responsive websites.",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
@@ -14,16 +14,18 @@
   },
   "dependencies": {
     "popper.js": "^1.14.6",
-    "validator": "^10.10.0",
-    "vue": "^2.5.21"
+    "validator": "^10.10.0"
+  },
+  "peerDependencies": {
+    "vue": ">=2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.2.2",
     "@babel/types": "^7.2.2",
-    "@vue/cli-plugin-babel": "^3.2.2",
-    "@vue/cli-plugin-eslint": "^3.2.2",
-    "@vue/cli-plugin-unit-jest": "^3.2.3",
-    "@vue/cli-service": "^3.2.3",
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-eslint": "^3.4.0",
+    "@vue/cli-plugin-unit-jest": "^3.4.0",
+    "@vue/cli-service": "^3.4.0",
     "@vue/test-utils": "^1.0.0-beta.28",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
@@ -31,7 +33,8 @@
     "postcss-preset-env": "^5.3.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.5.21"
+    "vue": "^2.6.6",
+    "vue-template-compiler": "^2.6.6"
   },
   "eslintConfig": {
     "root": true,
