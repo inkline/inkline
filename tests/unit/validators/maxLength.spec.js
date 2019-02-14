@@ -1,4 +1,4 @@
-import { minLength } from '@inkline/inkline/src/validators/minLength';
+import { minLength } from '@inkline/inkline/validators/minLength';
 
 describe('Validators', () => {
     describe('minLength()', () => {

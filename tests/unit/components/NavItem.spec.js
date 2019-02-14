@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import NavItem from '@inkline/inkline/src/components/NavItem';
+import NavItem from '@inkline/inkline/components/NavItem';
 import { RouterLink } from "../mocks/RouterLink";
 
 describe('Components', () => {

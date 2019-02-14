@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import LayoutAside from '@inkline/inkline/src/components/LayoutAside';
+import LayoutAside from '@inkline/inkline/components/LayoutAside';
 
 describe('Components', () => {
     describe('LayoutAside', () => {

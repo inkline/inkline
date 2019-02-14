@@ -1,4 +1,4 @@
-import { modifierClass } from '@inkline/inkline/src/helpers/modifierClass';
+import { modifierClass } from '@inkline/inkline/helpers/modifierClass';
 
 describe('Helpers', () => {
     describe('modifierClass()', () => {

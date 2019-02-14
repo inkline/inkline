@@ -1,5 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils';
-import Select from '@inkline/inkline/src/components/Select';
+import Select from '@inkline/inkline/components/Select';
 
 describe('Components', () => {
     describe('Select', () => {

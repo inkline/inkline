@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import SchemaProviderMixin from '@inkline/inkline/src/mixins/forms/providers/SchemaProviderMixin';
+import SchemaProviderMixin from '@inkline/inkline/mixins/forms/providers/SchemaProviderMixin';
 
 describe('Mixins', () => {
     describe('SchemaProviderMixin', () => {

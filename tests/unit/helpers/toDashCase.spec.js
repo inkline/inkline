@@ -1,4 +1,4 @@
-import { toDashCase } from '@inkline/inkline/src/helpers/toDashCase';
+import { toDashCase } from '@inkline/inkline/helpers/toDashCase';
 
 describe('Helpers', () => {
     describe('toDashCase()', () => {

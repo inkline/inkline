@@ -1,4 +1,4 @@
-import { getStyleProperty } from '@inkline/inkline/src/helpers/getStyleProperty';
+import { getStyleProperty } from '@inkline/inkline/helpers/getStyleProperty';
 
 describe('Helpers', () => {
     describe('addClass()', () => {

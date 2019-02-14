@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Collapsible from '@inkline/inkline/src/components/Collapsible';
+import Collapsible from '@inkline/inkline/components/Collapsible';
 
 describe('Components', () => {
     describe('Collapsible', () => {

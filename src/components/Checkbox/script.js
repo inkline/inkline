@@ -1,7 +1,7 @@
-import Checkable from '@inkline/inkline/src/components/Checkable';
-import SchemaProviderMixin from '@inkline/inkline/src/mixins/forms/providers/SchemaProviderMixin';
+import Checkable from '@inkline/inkline/components/Checkable';
+import SchemaProviderMixin from '@inkline/inkline/mixins/forms/providers/SchemaProviderMixin';
 
-import NamePropertyMixin from '@inkline/inkline/src/mixins/forms/properties/NamePropertyMixin';
+import NamePropertyMixin from '@inkline/inkline/mixins/forms/properties/NamePropertyMixin';
 
 export default {
     name: 'ICheckbox',

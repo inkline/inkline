@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import NamePropertyMixin from '@inkline/inkline/src/mixins/forms/properties/NamePropertyMixin';
+import NamePropertyMixin from '@inkline/inkline/mixins/forms/properties/NamePropertyMixin';
 
 describe('Mixins', () => {
     describe('NamePropertyMixin', () => {

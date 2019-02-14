@@ -1,4 +1,4 @@
-import Checkable from '@inkline/inkline/src/components/Checkable';
+import Checkable from '@inkline/inkline/components/Checkable';
 
 export default {
     name: 'IRadio',

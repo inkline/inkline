@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import ParentFormGroupPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ParentFormGroupPropertyMixin';
+import ParentFormGroupPropertyMixin from '@inkline/inkline/mixins/forms/properties/ParentFormGroupPropertyMixin';
 
 describe('Mixins', () => {
     describe('ParentFormGroupPropertyMixin', () => {

@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import NavbarBrand from '@inkline/inkline/src/components/NavbarBrand';
+import NavbarBrand from '@inkline/inkline/components/NavbarBrand';
 import { RouterLink } from '../mocks/RouterLink';
 
 describe('Components', () => {

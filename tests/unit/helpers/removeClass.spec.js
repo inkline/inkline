@@ -1,4 +1,4 @@
-import { removeClass } from '@inkline/inkline/src/helpers/removeClass';
+import { removeClass } from '@inkline/inkline/helpers/removeClass';
 
 describe('Helpers', () => {
     describe('removeClass()', () => {

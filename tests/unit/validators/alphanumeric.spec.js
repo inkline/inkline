@@ -1,4 +1,4 @@
-import { alphanumeric } from '@inkline/inkline/src/validators/alphanumeric';
+import { alphanumeric } from '@inkline/inkline/validators/alphanumeric';
 
 describe('Validators', () => {
     describe('alphanumeric()', () => {

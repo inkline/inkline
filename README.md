@@ -65,7 +65,7 @@ yarn add @inkline/inkline
 First, import core styles, written in Stylus:
 
 ~~~js
-import '@inkline/inkline/src/index.styl';
+import '@inkline/inkline/index.styl';
 ~~~
 
 If you already have your Webpack configuration ready for Vue, importing the framework is as simple as:

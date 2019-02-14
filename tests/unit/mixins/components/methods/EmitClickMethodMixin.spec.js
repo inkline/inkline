@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import EmitClickMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitClickMethodMixin';
+import EmitClickMethodMixin from '@inkline/inkline/mixins/components/methods/EmitClickMethodMixin';
 
 describe('Mixins', () => {
     describe('EmitClickMethodMixin', () => {

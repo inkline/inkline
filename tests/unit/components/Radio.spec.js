@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Radio from '@inkline/inkline/src/components/Radio';
+import Radio from '@inkline/inkline/components/Radio';
 
 describe('Components', () => {
     describe('Radio', () => {

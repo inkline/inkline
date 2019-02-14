@@ -1,4 +1,4 @@
-import { min } from '@inkline/inkline/src/validators/min';
+import { min } from '@inkline/inkline/validators/min';
 
 describe('Validators', () => {
     describe('min()', () => {

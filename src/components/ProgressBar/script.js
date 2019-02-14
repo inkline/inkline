@@ -1,6 +1,6 @@
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 
-import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
+import VariantPropertyMixin from '@inkline/inkline/mixins/components/properties/VariantPropertyMixin';
 
 export default {
     name: 'IProgressBar',

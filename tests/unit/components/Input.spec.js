@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Input from '@inkline/inkline/src/components/Input';
+import Input from '@inkline/inkline/components/Input';
 
 describe('Components', () => {
     describe('Input', () => {

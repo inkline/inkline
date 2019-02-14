@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import EmitFocusMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitFocusMethodMixin';
+import EmitFocusMethodMixin from '@inkline/inkline/mixins/components/methods/EmitFocusMethodMixin';
 
 describe('mixins', () => {
     describe('EmitFocusMethodMixin', () => {

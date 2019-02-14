@@ -1,4 +1,4 @@
-import { capitalizeFirst } from '@inkline/inkline/src/helpers/capitalizeFirst';
+import { capitalizeFirst } from '@inkline/inkline/helpers/capitalizeFirst';
 
 describe('Helpers', () => {
     describe('capitalizeFirst()', () => {

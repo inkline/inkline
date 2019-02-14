@@ -1,8 +1,10 @@
 // vue.config.js
+const path = require('path');
+
 module.exports = {
     pages: {
         index: {
-            entry: 'src/inkline.js',
+            entry: 'src/index.js',
             template: 'public/index.html',
             filename: 'index.html'
         }
@@ -10,7 +12,7 @@ module.exports = {
     filenameHashing: false,
     chainWebpack: (config) => {
         config.resolve.alias
-            .set('@inkline/inkline', __dirname)
+            .set('@inkline/inkline', path.join(__dirname, 'src'))
             .end();
     }
 };

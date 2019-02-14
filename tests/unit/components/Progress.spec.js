@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Progress from '@inkline/inkline/src/components/Progress';
+import Progress from '@inkline/inkline/components/Progress';
 
 describe('Components', () => {
     describe('Progress', () => {

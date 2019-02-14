@@ -1,4 +1,4 @@
-import { trim } from '@inkline/inkline/src/helpers/trim';
+import { trim } from '@inkline/inkline/helpers/trim';
 
 describe('Helpers', () => {
     describe('trim()', () => {

@@ -1,4 +1,4 @@
-import { $isMobile } from '@inkline/inkline/src/prototypes/isMobile';
+import { $isMobile } from '@inkline/inkline/prototypes/isMobile';
 
 describe('Prototypes', () => {
     describe('$isMobile()', () => {

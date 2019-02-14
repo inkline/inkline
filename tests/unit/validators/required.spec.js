@@ -1,4 +1,4 @@
-import { required } from '@inkline/inkline/src/validators/required';
+import { required } from '@inkline/inkline/validators/required';
 
 describe('Validators', () => {
     describe('required()', () => {

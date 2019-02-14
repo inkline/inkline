@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import SelectOption from '@inkline/inkline/src/components/SelectOption';
+import SelectOption from '@inkline/inkline/components/SelectOption';
 
 describe('Components', () => {
     describe('SelectOption', () => {

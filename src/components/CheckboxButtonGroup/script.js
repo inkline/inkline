@@ -1,5 +1,5 @@
-import IButtonGroup from '@inkline/inkline/src/components/ButtonGroup';
-import ICheckableGroup from "@inkline/inkline/src/components/CheckableGroup";
+import IButtonGroup from '@inkline/inkline/components/ButtonGroup';
+import ICheckableGroup from "@inkline/inkline/components/CheckableGroup";
 
 export default {
     name: 'ICheckboxButtonGroup',

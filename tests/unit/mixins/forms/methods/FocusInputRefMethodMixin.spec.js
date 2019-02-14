@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import FocusInputRefMethodMixin from '@inkline/inkline/src/mixins/forms/methods/FocusInputRefMethodMixin';
+import FocusInputRefMethodMixin from '@inkline/inkline/mixins/forms/methods/FocusInputRefMethodMixin';
 
 describe('Mixins', () => {
     describe('FocusInputRefMethodMixin', () => {
