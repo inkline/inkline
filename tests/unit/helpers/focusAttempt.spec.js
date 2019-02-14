@@ -1,4 +1,4 @@
-import { focusAttempt } from '@inkline/inkline/helpers/focusAttempt';
+import { focusAttempt } from '@inkline/inkline/src/helpers/focusAttempt';
 
 describe('Helpers', () => {
     describe('focusAttempt()', () => {

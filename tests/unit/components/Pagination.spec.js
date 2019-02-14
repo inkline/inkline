@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Pagination from '@inkline/inkline/components/Pagination';
+import Pagination from '@inkline/inkline/src/components/Pagination';
 
 describe('Components', () => {
     describe('Pagination', () => {

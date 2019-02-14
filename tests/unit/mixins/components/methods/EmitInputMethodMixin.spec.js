@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import EmitInputMethodMixin from '@inkline/inkline/mixins/components/methods/EmitInputMethodMixin';
+import EmitInputMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitInputMethodMixin';
 
 describe('Mixins', () => {
     describe('EmitInputMethodMixin', () => {

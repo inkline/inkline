@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Button from '@inkline/inkline/components/Button';
+import Button from '@inkline/inkline/src/components/Button';
 import { RouterLink } from '../mocks/RouterLink';
 
 

@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import BreadcrumbItem from '@inkline/inkline/components/BreadcrumbItem';
+import BreadcrumbItem from '@inkline/inkline/src/components/BreadcrumbItem';
 
 const RouterLink = {
     name: 'RouterLink',

@@ -1,4 +1,4 @@
-import { isVisible } from '@inkline/inkline/helpers/isVisible';
+import { isVisible } from '@inkline/inkline/src/helpers/isVisible';
 
 describe('Helpers', () => {
     describe('isVisible()', () => {

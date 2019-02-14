@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
 
 describe('Mixins', () => {
     describe('ClassesProviderMixin', () => {

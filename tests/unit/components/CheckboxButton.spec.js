@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import CheckboxButton from '@inkline/inkline/components/CheckboxButton';
+import CheckboxButton from '@inkline/inkline/src/components/CheckboxButton';
 
 describe('Components', () => {
     describe('CheckboxButton', () => {

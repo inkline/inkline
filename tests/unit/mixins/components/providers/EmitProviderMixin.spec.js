@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import EmitProviderMixin from '@inkline/inkline/mixins/components/providers/EmitProviderMixin';
+import EmitProviderMixin from '@inkline/inkline/src/mixins/components/providers/EmitProviderMixin';
 
 describe('Mixins', () => {
     describe('EmitProviderMixin', () => {

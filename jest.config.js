@@ -19,7 +19,7 @@ module.exports = {
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '^@inkline/inkline/(.*)$': '<rootDir>/src/$1'
+    '^@inkline/inkline/(.*)$': '<rootDir>/$1'
   },
   snapshotSerializers: [
     'jest-serializer-vue'

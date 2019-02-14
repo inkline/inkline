@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Container from '@inkline/inkline/components/Container';
+import Container from '@inkline/inkline/src/components/Container';
 
 describe('Components', () => {
     describe('Container', () => {

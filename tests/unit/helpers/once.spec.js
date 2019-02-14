@@ -1,4 +1,4 @@
-import { once } from '@inkline/inkline/helpers/once';
+import { once } from '@inkline/inkline/src/helpers/once';
 
 describe('Helpers', () => {
     describe('once()', () => {

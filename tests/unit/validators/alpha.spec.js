@@ -1,4 +1,4 @@
-import { alpha } from '@inkline/inkline/validators/alpha';
+import { alpha } from '@inkline/inkline/src/validators/alpha';
 
 describe('Validators', () => {
     describe('alpha()', () => {
