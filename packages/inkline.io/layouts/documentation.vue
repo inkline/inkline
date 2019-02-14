@@ -1,32 +1,30 @@
 <template>
-<i-layout>
-    <i-layout-content>
-        <navbar />
-        <i-container>
-            <i-row>
-                <i-column>
-                    <i-layout vertical id="layout">
-                        <i-layout-aside id="layout-aside-left">
-                            <div class="layout-fixed-full-height" v-match-parent-width>
-                                <site-navigation></site-navigation>
-                            </div>
-                        </i-layout-aside>
+<div id="documentation-layout">
+    <navbar />
+    <i-container>
+        <i-row>
+            <i-column>
+                <i-layout vertical>
+                    <i-layout-aside id="layout-aside-left">
+                        <div class="layout-fixed-full-height" v-match-parent-width>
+                            <site-navigation></site-navigation>
+                        </div>
+                    </i-layout-aside>
 
-                        <i-layout-content id="layout-content">
-                            <nuxt />
-                        </i-layout-content>
+                    <i-layout-content>
+                        <nuxt />
+                    </i-layout-content>
 
-                        <i-layout-aside id="layout-aside-right">
-                            <div class="layout-fixed-full-height" v-match-parent-width>
-                                <page-navigation></page-navigation>
-                            </div>
-                        </i-layout-aside>
-                    </i-layout>
-                </i-column>
-            </i-row>
-        </i-container>
-    </i-layout-content>
-</i-layout>
+                    <i-layout-aside id="layout-aside-right">
+                        <div class="layout-fixed-full-height" v-match-parent-width>
+                            <page-navigation></page-navigation>
+                        </div>
+                    </i-layout-aside>
+                </i-layout>
+            </i-column>
+        </i-row>
+    </i-container>
+</div>
 </template>
 
 <script>

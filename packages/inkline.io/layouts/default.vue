@@ -1,5 +1,5 @@
 <template>
-<div id="content">
+<div id="default-layout">
     <navbar />
     <i-layout>
         <i-layout-content>

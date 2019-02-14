@@ -34,8 +34,8 @@ export default {
     },
     methods: {
         update () {
-            this.title = (document.querySelector('#layout-content > article > h1') || {}).textContent;
-            this.items = [].map.call(document.querySelectorAll('#layout-content > article > h3'), (element) => ({
+            this.title = (document.querySelector('.layout-content > article > h1') || {}).textContent;
+            this.items = [].map.call(document.querySelectorAll('.layout-content > article > h3'), (element) => ({
                 title: element.textContent,
                 element: element,
                 active: false
