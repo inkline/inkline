@@ -9,6 +9,8 @@ for --breakpoint-name, --breakpoint-value in --breakpoints
   +-breakpoint(--breakpoint-name)
     for --property in (margin padding)
       for --size, --length in --spacers
+        --size = replace('/', '-', --size)
+
         ._{--property}{--infix}-{--size}
           {--property}: --length !important
 
