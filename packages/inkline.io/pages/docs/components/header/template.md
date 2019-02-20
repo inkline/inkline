@@ -121,7 +121,7 @@ The goal of cover background images on a website is to cover the entire browser 
 
 <i-code-preview title="Header Cover Background" link="https://github.com/inkline/inkline/tree/master/src/components/Header">
 
-<i-header id="header" :cover="true" class="_text-center _text-white">
+<i-header id="cover-inkline-header" :cover="true" class="_text-center _text-white">
     <p class="h1">Cover Inkline Header</p>
     <p>This is a fullscreen header paragraph lorem ipsum dolor sit amet.</p>
     <i-button variant="primary">Button</i-button>

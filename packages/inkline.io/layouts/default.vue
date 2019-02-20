@@ -1,6 +1,6 @@
 <template>
 <div id="default-layout">
-    <navbar id="navbar" />
+    <navbar id="navbar" class="-transparent" />
     <i-layout>
         <i-layout-content>
             <nuxt />
@@ -15,7 +15,34 @@
 
 #default-layout
     .navbar
-        background: rgba(#e9ecef, 0.25)
+        .logo.-light
+            display: none;
+
+        &.-transparent
+            background: rgba(#e9ecef, 0.25)
+
+            +-breakpoint-down(md)
+                .brand
+                    color: --colors['light']
+
+                .logo
+                    &.-light
+                        display: inline-block;
+                    &.-dark
+                        display: none;
+
+            +-breakpoint-up(lg)
+                .brand
+                    color: --colors['dark']
+
+                .logo
+                    &.-light
+                        display: none;
+                    &.-dark
+                        display: inline-block;
+
+
+
 
         .nav
             > .item
