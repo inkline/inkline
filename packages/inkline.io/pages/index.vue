@@ -2,10 +2,10 @@
     <div id="index-page">
         <i-header id="header" :cover="false">
             <i-row>
-                <i-column sm="6" lg="5" xl="4">
-                    <h1 class="d1">Inkline</h1>
-                    <h2 class="h5 _text-muted">
-                        Inkline is a modern <strong>UI/UX Framework for Vue.js</strong> designed for creating flawless content-rich responsive web applications.
+                <i-column md="7" lg="6" xl="5">
+                    <h1 class="header-title">Inkline</h1>
+                    <h2 class="header-subtitle">
+                        Inkline is a modern <strong>UI/UX Framework for Vue.js</strong> designed for creating flawless responsive web applications.
                     </h2>
                     <i-button size="lg" variant="primary" class="_margin-top-2">Get Started</i-button>
                 </i-column>
@@ -30,35 +30,64 @@
 @require '~@inkline/inkline/css/mixins/index'
 
 #index-page
-    background-image: url('~static/images/pages/index-header.jpg');
+    background-image: url('~static/images/pages/index-header-large.jpg');
     background-repeat: no-repeat
     background-position: center 0
+    background-size: 1560px 675px
 
-    +-breakpoint-up(xs)
-        background-size: (1560px * 0.5) (675px * 0.5)
+    +-breakpoint(md)
+        background-size: (1560px * 0.9) (675px * 0.9)
 
-    +-breakpoint-up(sm)
-        background-size: (1560px * 0.66) (675px * 0.66)
+    +-breakpoint(lg)
+        background-size: (1560px * 0.8) (675px * 0.8)
 
-    +-breakpoint-up(md)
-        background-size: (1560px * 0.75) (675px * 0.75)
+    +-breakpoint-down(sm)
+        background-image: url('~static/images/pages/index-header-small.jpg');
+        background-size: 768px 460px
 
-    +-breakpoint-up(lg)
-        background-size: 1560px 675px
+    +-breakpoint(xs)
+        background-size: (768px * 0.8) (460px* 0.8)
 
-#header
-    background-color: transparent
+    #header
+        background-color: transparent
 
-    h1
         +-breakpoint(xs)
-            font-size: --d4-font-size
+            padding-top: 22rem
+            padding-bottom: 2rem
 
         +-breakpoint(sm)
-            font-size: --d3-font-size
+            padding-top: 27rem
+            padding-bottom: 4rem
 
         +-breakpoint(md)
-            font-size: --d2-font-size
+            padding-top: 16rem
+            padding-bottom: 6rem
 
+        +-breakpoint-up(lg)
+            padding-top: 12rem
+            padding-bottom: 10rem
+
+        .header-title
+            +-breakpoint(xs)
+                font-size: --d5-font-size
+
+            +-breakpoint(sm)
+                font-size: --d4-font-size
+
+            +-breakpoint(md)
+                font-size: --d3-font-size
+
+            +-breakpoint(lg)
+                font-size: --d2-font-size
+
+            +-breakpoint(xl)
+                font-size: --d1-font-size
+
+        .header-subtitle
+            color: --text-muted
+            margin-top: 1rem
+            margin-bottom: 0
+            font-size: --font-size-lg
 </style>
 
 <script>

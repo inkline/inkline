@@ -56,10 +56,19 @@ export default {
             }
         },
         scrollTo (element) {
-            element.scrollIntoView({
+            const clone = element.cloneNode();
+
+            clone.style.position = 'absolute';
+            clone.style.marginTop = '-50px';
+
+            element.parentNode.insertBefore(clone, element);
+
+            clone.scrollIntoView({
                 block: 'start',
                 behavior: 'smooth'
             });
+
+            element.parentNode.removeChild(clone);
         }
     },
     mounted () {
