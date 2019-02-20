@@ -3,13 +3,13 @@
 exports[`Components InputNumber should render correctly 1`] = `
 <div class="form-input-group -prepended -appended">
   <div class="form-input-prepend">
-    <i-button-stub tag="button" icon="" class="form-input-button-decrease">-</i-button-stub>
+    <i-button-stub activeclass="-active" size="" tabindex="1" variant="" tag="button" icon="" class="form-input-button-decrease">-</i-button-stub>
   </div>
   <div class="form-input">
     <!---->
     <!----> <input tabindex="1"></div>
   <div class="form-input-append">
-    <i-button-stub tag="button" icon="" class="form-input-button-increase">+</i-button-stub>
+    <i-button-stub activeclass="-active" size="" tabindex="1" variant="" tag="button" icon="" class="form-input-button-increase">+</i-button-stub>
   </div>
 </div>
 `;
