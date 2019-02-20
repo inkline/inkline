@@ -1,19 +1,26 @@
 <template>
 <div id="default-layout">
-    <navbar />
+    <navbar id="navbar" />
     <i-layout>
         <i-layout-content>
-            <i-container>
-                <i-row>
-                    <i-column>
-                        <nuxt />
-                    </i-column>
-                </i-row>
-            </i-container>
+            <nuxt />
         </i-layout-content>
     </i-layout>
 </div>
 </template>
+
+<style lang="stylus">
+@require '~@inkline/inkline/css/config/index'
+@require '~@inkline/inkline/css/mixins/index'
+
+#default-layout
+    .navbar
+        background: rgba(#e9ecef, 0.25)
+
+        .nav
+            > .item
+                color: white
+</style>
 
 <script>
 import Navbar from '@components/Navbar';
