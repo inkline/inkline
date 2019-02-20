@@ -121,7 +121,7 @@ The goal of cover background images on a website is to cover the entire browser 
 
 <i-code-preview title="Header Cover Background" link="https://github.com/inkline/inkline/tree/master/src/components/Header">
 
-<i-header id="header" class="_text-center _text-white">
+<i-header id="header" :cover="true" class="_text-center _text-white">
     <p class="h1">Cover Inkline Header</p>
     <p>This is a fullscreen header paragraph lorem ipsum dolor sit amet.</p>
     <i-button variant="primary">Button</i-button>
@@ -130,7 +130,7 @@ The goal of cover background images on a website is to cover the entire browser 
 <template slot="html">
 
 ~~~html
-<i-header id="header" class="_text-center _text-white">
+<i-header id="header" :cover="true" class="_text-center _text-white">
     <h1>Cover Inkline Header</h1>
     <p>This is a cover background header paragraph lorem ipsum dolor sit amet.</p>
     <i-button variant="primary">Button</i-button>
@@ -164,6 +164,13 @@ The goal of cover background images on a website is to cover the entire browser 
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>cover</td>
+                    <td>Sets the background image as cover, resizing itself responsively to fit the header size.</td>
+                    <td><code>Boolean</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td><code>true</code></td>
+                </tr>
                 <tr>
                     <td>fluid</td>
                     <td>Sets the <code>IContainer</code> wrapping the headers's content as fluid.</td>
