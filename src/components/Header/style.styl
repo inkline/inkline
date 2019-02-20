@@ -10,17 +10,18 @@
     display: flex
     box-sizing: border-box
     width: 100%
-
     background-color: --header-background-color
-    background-repeat: no-repeat
-    background-position: center center
-    background-attachment: unset
-    background-size: cover
 
     > .container
         h1, h2, h3, h4, h5, h6,
         .h1, .h2, .h3, .h4, .h5, .h6
             margin-top: 0
+
+    &.-cover
+        background-repeat: no-repeat
+        background-position: center center
+        background-attachment: unset
+        background-size: cover
 
     &.-fullscreen
         padding: 0

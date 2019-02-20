@@ -18,6 +18,10 @@ export default {
         IColumn
     },
     props: {
+        cover: {
+            type: Boolean,
+            default: true
+        },
         fluid: {
             type: Boolean,
             default: false
