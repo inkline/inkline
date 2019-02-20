@@ -33,6 +33,7 @@ export default {
     },
     created () {
         this.classesProvider.add(() => ({
+            '-cover': this.cover,
             '-fullscreen': this.fullscreen
         }));
     }

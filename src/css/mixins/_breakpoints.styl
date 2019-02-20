@@ -33,19 +33,18 @@
 //
 -breakpoint-down(media)
     if media == xl
+        {block}
+    else if media == lg
         @media screen and ( max-width: --breakpoints['xl'] - 1 )
             {block}
-    else if media == lg
+    else if media == md
         @media screen and ( max-width: --breakpoints['lg'] - 1 )
             {block}
-    else if media == md
+    else if media == sm
         @media screen and ( max-width: --breakpoints['md'] - 1 )
             {block}
-    else if media == sm
-        @media screen and ( max-width: --breakpoints['sm'] - 1 )
-            {block}
     else if media == xs
-        @media screen and ( max-width: --breakpoints['xs'] - 1 )
+        @media screen and ( max-width: --breakpoints['sm'] - 1 )
             {block}
     else
         {block}
