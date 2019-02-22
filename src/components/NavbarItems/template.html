@@ -1,3 +1,5 @@
-<div class="items">
-    <slot></slot>
-</div>
+<i-transition-expand>
+    <div class="items" v-show="navbar.collapsed || !collapsible">
+        <slot></slot>
+    </div>
+</i-transition-expand>

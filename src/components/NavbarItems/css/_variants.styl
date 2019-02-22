@@ -2,14 +2,21 @@
 // Navbar Items variants
 //
 for --variant-name, --variant in --variants['navbar']
-    .navbar.-{--variant-name} > .container > .row > .column > .items
-        > .nav > .item
-            color: -variant-color-by-luminance(--variant['color'], darken(--variant-color-light, 20%), lighten(--variant-color-dark, 20%))
+    .navbar.-{--variant-name}
+        > .container > .row > .column > .items
+            > .nav > .item
+                color: -variant-color-by-luminance(--variant['color'], darken(--variant-color-light, 20%), lighten(--variant-color-dark, 20%))
 
-            &.-active
-            &.-focused
-            &:focus
-            &.-hovered
-            &:hover
-                color: -variant-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+                &.-active
+                &.-focused
+                &:focus
+                &.-hovered
+                &:hover
+                    color: -variant-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
 
+        &.-collapsed
+            > .container > .row > .column > .items
+                background: darken(--variant['color'], 5%)
+
+                > .nav > .item:hover
+                    background: darken(--variant['color'], 10%)

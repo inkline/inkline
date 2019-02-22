@@ -7,6 +7,7 @@
 @import 'css/_variables'
 @import 'css/_variants'
 @import 'css/_sizes'
+@import 'css/_hamburger'
 
 .navbar
     position: relative
@@ -20,6 +21,33 @@
         flex-wrap: wrap
         align-items: center
         justify-content: space-between
+
+        > .hamburger
+            display: none
+
+    for --breakpoint in (xs sm md lg xl)
+        &.-collapse-{--breakpoint}
+            +-breakpoint-down(--breakpoint)
+                > .container > .row > .column
+                    > .items
+                        position: relative
+                        display: block
+                        width: 100%
+
+                        > .nav
+                            flex-direction: column
+                            align-items: flex-start
+
+                            > .item
+                                width: 100%
+                                display: block
+
+
+                    > .hamburger
+                        display: inline-block
+
+                        + .brand
+                            order: -1
 
     @extend .navbar.-md
     @extend .navbar.-light

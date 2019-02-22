@@ -1,9 +1,12 @@
 <div class="navbar"
-     :class="classes"
+     :class="classes['root']"
      v-bind="attributes">
     <i-container :fluid="fluid">
         <i-row>
             <i-column :xs="true">
+                <div class="hamburger" :class="classes['hamburger']" @click="toggleCollapse">
+                    <span class="bars"></span>
+                </div>
                 <slot></slot>
             </i-column>
         </i-row>
