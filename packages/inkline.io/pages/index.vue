@@ -39,7 +39,7 @@
         background-size: (1560px * 0.9) (675px * 0.9)
 
     +-breakpoint(lg)
-        background-size: (1560px * 0.8) (675px * 0.8)
+        background-size: (1560px * 0.85) (675px * 0.85)
 
     +-breakpoint-down(sm)
         background-image: url('~static/images/pages/index-header-small.jpg');
@@ -50,6 +50,9 @@
 
     #header
         background-color: transparent
+
+        +-breakpoint-down(sm)
+            text-align: center
 
         +-breakpoint(xs)
             padding-top: 22rem
@@ -87,7 +90,18 @@
             color: --text-muted
             margin-top: 1rem
             margin-bottom: 0
-            font-size: --font-size-lg
+
+            +-breakpoint-up(lg)
+                font-size: --font-size-lg
+
+            +-breakpoint-down(md)
+                font-size: --font-size-md
+
+        .button
+            +-breakpoint-down(md)
+                font-size: --font-size-md
+                border-radius: --border-radius-md
+                padding: (--spacer / 2) --spacer
 </style>
 
 <script>
