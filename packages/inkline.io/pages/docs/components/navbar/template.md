@@ -7,12 +7,12 @@ Here’s an example of the basic components included in a  `<i-navbar>` that aut
 <i-code-preview title="Navbar Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar>
-    <i-navbar-brand :to="{ name: 'docs.components.navbar' }">Navbar</i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Contact</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">About</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Contact</i-nav-item>
         </i-nav>
         <i-nav>
             <i-input placeholder="Type something.." class="_margin-right-1" />
@@ -50,34 +50,34 @@ The default size is set to `md`.
 <i-code-preview title="Navbar Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar size="sm" class="_margin-bottom-1">
-    <i-navbar-brand :to="{ name: 'docs.components.navbar' }">Navbar</i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Contact</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">About</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
 
 <i-navbar size="md" class="_margin-bottom-1">
-    <i-navbar-brand :to="{ name: 'docs.components.navbar' }">Navbar</i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Contact</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">About</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
 
 <i-navbar size="lg">
-    <i-navbar-brand :to="{ name: 'docs.components.navbar' }">Navbar</i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Contact</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">About</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -131,23 +131,23 @@ Inkline includes two predefined navbar styles. You can set the style of a `<i-na
 <i-code-preview title="Navbar Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar variant="light" class="_margin-bottom-1">
-    <i-navbar-brand :to="{ name: 'docs.components.navbar' }">Navbar</i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Contact</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">About</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
 
 <i-navbar variant="dark">
-    <i-navbar-brand :to="{ name: 'docs.components.navbar' }">Navbar</i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Contact</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">About</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -188,12 +188,12 @@ You can use an `<i-dropdown>` component inside the `<i-navbar-items>` or `<i-nav
 <i-code-preview title="Navbar Dropdown" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar>
-    <i-navbar-brand :to="{ name: 'docs.components.navbar' }">Navbar</i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Contact</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">About</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Contact</i-nav-item>
         </i-nav>
         <i-nav>
             <i-dropdown placement="bottom-end">
@@ -246,35 +246,35 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
 <i-code-preview title="Navbar Nav Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar class="_margin-bottom-1">
-    <i-navbar-brand :to="{ name: 'docs.components.navbar' }">Navbar</i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
     <i-navbar-items class="_justify-content-start">
         <i-nav>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Contact</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">About</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
 
 
 <i-navbar class="_margin-bottom-1">
-    <i-navbar-brand :to="{ name: 'docs.components.navbar' }">Navbar</i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
     <i-navbar-items class="_justify-content-center">
         <i-nav>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Contact</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">About</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
 
 <i-navbar>
-    <i-navbar-brand :to="{ name: 'docs.components.navbar' }">Navbar</i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
     <i-navbar-items class="_justify-content-end">
         <i-nav>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'docs.components.navbar' }">Contact</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">About</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
