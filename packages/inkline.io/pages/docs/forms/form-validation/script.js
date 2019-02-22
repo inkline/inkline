@@ -251,6 +251,9 @@ export default {
             this.objectForm.$set('address', {
                 value: '32 Inkline St.'
             }, { instance: this });
+        },
+        submitForm() {
+            alert('submitted')
         }
     },
     filters: {
