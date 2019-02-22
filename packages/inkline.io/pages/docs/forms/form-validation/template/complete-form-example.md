@@ -5,7 +5,7 @@ The `<i-form>` component and all input components have a `schema` property that 
 The schema object `this.form` contains the validation state of the `<i-form>`, and is updated as soon as the input changes. The object looks as seen in the Output tab: 
 
 <i-code-preview title="Complete Form Example" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js">
-<i-form :schema="form">
+<i-form :schema="form" @submit="submitForm">
     <i-form-group>
         <i-input :schema="form.input" v-model="form.input.value" placeholder="Enter your first name.." />
     </i-form-group>
@@ -36,6 +36,9 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
                 <i-radio :value="false">Decline</i-radio>
             </i-radio-group>
         </i-form-group>
+    </i-form-group>
+    <i-form-group>
+        <i-button type="submit">Submit</i-button>
     </i-form-group>
 </i-form>
 <template slot="html">
