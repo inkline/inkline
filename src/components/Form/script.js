@@ -33,30 +33,19 @@ export default {
             default: () => ({})
         }
     },
-    provide() {
+    data () {
+        return {
+            validationOptions: {
+                getSchema: () => this.schema,
+            }
+        }
+    },
+    provide () {
         return {
             parentForm: this
         }
     },
     methods: {
-        /**
-         * Returns an array of the input's parent schemas starting from the root, and ending with the
-         * input itself's schema.
-         *
-         * @param input
-         * @returns {string[]}
-         */
-        getSchemaTree(input) {
-            const parentFormGroupKeys = input.name
-                .replace(/\[['"]?([^'"\]])['"]?]/g, '.$1')
-                .split('.');
-
-            return parentFormGroupKeys
-                .map((group, index) => parentFormGroupKeys
-                    .slice(0, index)
-                    .reduce((acc, key) => acc && acc[key], this.schema))
-                .concat(input.schema);
-        },
 
         /**
          * Add required schema event listeners for one of the form's child inputs
@@ -65,31 +54,13 @@ export default {
          */
         add(input) {
             const inputSchema = input.schema;
-            const schemaTree = this.getSchemaTree(input);
-
-            if (!schemaTree) {
-                throw new Error(`Could not retrieve schema tree for input with name ${input.name}.`);
-            }
 
             input.$on('blur', () => {
-                schemaTree.forEach((schema) => {
-                    schema.touched = true;
-                    schema.untouched = false;
-                });
+                inputSchema.$touch(this.validationOptions);
             });
 
             input.$on(inputSchema.validateOn, (value) => {
-                const status = inputSchema.$validate(value, {
-                    getSchema: () => this.schema,
-                });
-
-                schemaTree.forEach((schema) => {
-                    schema.errors = status.errors;
-                    schema.valid = status.valid;
-                    schema.invalid = !schema.valid;
-                    schema.dirty = true;
-                    schema.pristine = false;
-                });
+                inputSchema.$validate(value, this.validationOptions);
 
                 this.$emit('validate', this.schema);
             });

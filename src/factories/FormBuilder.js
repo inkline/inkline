@@ -52,7 +52,13 @@ export class FormBuilder {
      * }}
      */
     formControl(nameNesting=[], schema) {
-        const $name = nameNesting.join('.');
+        schema = {
+            ...this.defaultFormControlState,
+            ...this.defaultFormState,
+            ...schema
+        };
+
+        schema.$name = nameNesting.join('.');
 
         // Set all validators as enabled by default
         for (let validator of (schema.validators || [])) {
@@ -62,13 +68,29 @@ export class FormBuilder {
         }
 
         /**
+         * set the schema and all its parent schemas as touched
+         *
+         * @param options
+         * @returns {boolean}
+         */
+        schema.$touch = (options) => {
+            const schemaList = this.getSchemaList(schema, options.getSchema());
+            schemaList.forEach((schemaListItem) => {
+                schemaListItem.touched = true;
+                schemaListItem.untouched = false;
+            });
+
+            return true;
+        };
+
+        /**
          * Validate the current value by performing all the specified validation functions on it
          *
          * @param value
          * @param options
          * @returns {{valid: boolean, errors: {length: number}}}
          */
-        const $validate = (value, options) => {
+        schema.$validate = (value, options) => {
             let valid = true;
             let errors = {
                 length: 0
@@ -92,19 +114,24 @@ export class FormBuilder {
                 }
             }
 
+            /**
+             * Set validation status for each parent schema
+             */
+            this.getSchemaList(schema, options.getSchema()).forEach((schemaListItem, index) => {
+                schemaListItem.errors = errors;
+                schemaListItem.valid = index === 0 ? valid : this.isValidFormGroupSchema(schemaListItem);
+                schemaListItem.invalid = !schemaListItem.valid;
+                schemaListItem.dirty = true;
+                schemaListItem.pristine = false;
+            });
+
             return {
                 valid,
                 errors
             }
         };
 
-        return {
-            $name,
-            $validate,
-            ...this.defaultFormControlState,
-            ...this.defaultFormState,
-            ...schema
-        }
+        return schema;
     }
 
     /**
@@ -114,6 +141,7 @@ export class FormBuilder {
      * @param schema
      * @returns {{
      *      $name: string,
+     *      $group: boolean,
      *      touched: boolean,
      *      untouched: boolean,
      *      dirty: boolean,
@@ -124,8 +152,6 @@ export class FormBuilder {
      * }}
      */
     form(nameNesting=[], schema) {
-        const $name = nameNesting.join('.');
-
         // Clone the provided schema to make sure we're working on a clean copy
         // without modifying the provided arguments.
         if (schema.constructor === Array) {
@@ -134,7 +160,14 @@ export class FormBuilder {
             schema = { ...schema };
         }
 
-        Object.keys(schema).forEach((name) => {
+        // Set schema fields
+        schema.$fields = Object.keys(schema);
+
+        // Set schema name
+        schema.$name = nameNesting.join('.');
+
+        // Recursively construct child schema fields
+        schema.$fields.forEach((name) => {
             if (!schema.hasOwnProperty(name)) { return; }
 
             const schemaHasFormControlProperties = schema[name].hasOwnProperty('validators') ||
@@ -148,25 +181,40 @@ export class FormBuilder {
                 !(schemaHasFormControlProperties || schemaIsEmptyObject) || schemaIsArray);
         });
 
-        // Set schema name
-        schema.$name = $name;
+        /**
+         * Validate the current group by performing all validation functions on its child fields
+         *
+         * @param options
+         * @returns {{valid: boolean, errors: {length: number}}}
+         */
+        schema.$validate = (options) => {
+            for (const key in schema) {
+                if (schema.hasOwnProperty(key) && schema[key] && schema[key].$validate) {
+                    if (schema[key].$fields) {
+                        schema[key].$validate(options);
+                    } else {
+                        schema[key].$validate(schema[key].value, options);
+                    }
+                }
+            }
+        };
 
         // Add schema state properties. When handling array form groups, we add the schema fields as
         // custom array properties in order to keep the array iterator intact
         Object.keys(this.defaultFormState)
             .forEach((property) => schema[property] = this.defaultFormState[property]);
 
-
         if (schema.constructor === Array) {
-
             /**
              * Push an item into the Array schema
              *
              * @param item
              * @param options
              */
-            schema.$push = (item, options={}) => schema
-                .push(this.factory(nameNesting.concat([schema.length]), item, options.group));
+            schema.$push = (item, options={}) => {
+                schema.push(this.factory(nameNesting.concat([schema.length]), item, options.group));
+                schema.$fields.push(schema.length);
+            };
 
             /**
              * Add an item into the Array schema at the given index, after removing n elements
@@ -177,9 +225,13 @@ export class FormBuilder {
              * @param options
              */
             schema.$splice = (start, deleteCount, item, options={}) => {
-                item ?
-                    schema.splice(start, deleteCount, this.factory(nameNesting.concat([start]), item, options.group)) :
+                if (item) {
+                    schema.splice(start, deleteCount, this.factory(nameNesting.concat([start]), item, options.group));
+                    schema.$fields.splice(start, deleteCount, start);
+                } else {
                     schema.splice(start, deleteCount);
+                    schema.$fields.splice(start, deleteCount);
+                }
 
                 for (let index = start; index < schema.length; index += 1) {
                     schema[index].$name = schema[index].$name.replace(/[0-9]+$/, index);
@@ -202,11 +254,56 @@ export class FormBuilder {
                 throw new Error('Please make sure you provide the Vue instance inside the options object as options.instance.');
             }
 
+            options.instance.$set(schema, '$fields', schema.$fields.concat([name]));
             options.instance.$set(schema, name, this.factory(
                 nameNesting.concat([name]), item, options.group));
         };
 
         return schema;
+    }
+
+    /**
+     * Returns an array of the input's parent schemas starting from the root, and ending with the
+     * input itself's schema.
+     *
+     * @param schema
+     * @param rootSchema
+     */
+    getSchemaList(schema, rootSchema) {
+        const parentFormGroupKeys = schema.$name
+            .replace(/\[['"]?([^'"\]])['"]?]/g, '.$1')
+            .split('.');
+
+        const parentSchemaList = parentFormGroupKeys
+            .map((group, index) => parentFormGroupKeys
+                .slice(0, index)
+                .reduce((acc, key) => acc && acc[key], rootSchema));
+
+        if (!parentSchemaList) {
+            throw new Error(`Could not retrieve schema tree for input with name ${schema.$name}.`);
+        }
+
+        parentSchemaList.reverse();
+
+        return [schema].concat(parentSchemaList);
+    }
+
+    /**
+     * Check if all child fields of the group schema are valid
+     *
+     * @param schema
+     * @returns {boolean}
+     */
+    isValidFormGroupSchema(schema) {
+        return Object.keys(schema).reduce((groupValid, key) => {
+            const schemaListItemValue = schema[key];
+
+            if (typeof schemaListItemValue === 'object' && schemaListItemValue.hasOwnProperty('valid')) {
+                groupValid = groupValid && schemaListItemValue.valid;
+            }
+
+            return groupValid;
+        }, true);
     }
 
     /**
