@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils';
 import Row from '@inkline/inkline/components/Row';
 import { capitalizeFirst } from "@inkline/inkline/helpers";
-import { breakpoints } from '@inkline/inkline/constants';
+import { breakpointKeys } from '@inkline/inkline/constants';
 
 describe('Components', () => {
     describe('Row', () => {
@@ -34,7 +34,7 @@ describe('Components', () => {
                 });
             });
 
-            breakpoints.forEach((breakpoint) => {
+            breakpointKeys.forEach((breakpoint) => {
                 ['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between', 'reverse']
                     .forEach((modifierName) => {
                         const modifier = modifierName + capitalizeFirst(breakpoint);

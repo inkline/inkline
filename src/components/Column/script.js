@@ -1,8 +1,8 @@
-import { breakpoints } from '@inkline/inkline/constants';
+import { breakpointKeys } from '@inkline/inkline/constants';
 import { breakpointClass, capitalizeFirst, modifierClass } from '@inkline/inkline/helpers';
 
 const properties = {};
-for (let breakpoint of breakpoints) {
+for (let breakpoint of breakpointKeys) {
     if (breakpoint !== '') {
         properties[breakpoint] = {
             type: [String, Boolean, Number],
