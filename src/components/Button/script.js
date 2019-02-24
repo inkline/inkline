@@ -1,3 +1,5 @@
+import Linkable from '../Linkable';
+
 import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
 import InjectParentFormProviderMixin from '@inkline/inkline/mixins/forms/providers/InjectParentFormProviderMixin';
@@ -7,7 +9,6 @@ import EmitFocusMethodMixin from '@inkline/inkline/mixins/components/methods/Emi
 import EmitHoverMethodMixin from '@inkline/inkline/mixins/components/methods/EmitHoverMethodMixin';
 
 import DisabledPropertyMixin from '@inkline/inkline/mixins/forms/properties/DisabledPropertyMixin';
-import ActivePropertyMixin from '@inkline/inkline/mixins/components/properties/ActivePropertyMixin';
 import LoadingPropertyMixin from '@inkline/inkline/mixins/components/properties/LoadingPropertyMixin';
 import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/SizePropertyMixin';
 import TabIndexPropertyMixin from '@inkline/inkline/mixins/components/properties/TabIndexPropertyMixin';
@@ -15,6 +16,7 @@ import VariantPropertyMixin from '@inkline/inkline/mixins/components/properties/
 
 export default {
     name: 'IButton',
+    extends: Linkable,
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
@@ -24,7 +26,6 @@ export default {
         EmitFocusMethodMixin,
         EmitHoverMethodMixin,
 
-        ActivePropertyMixin,
         DisabledPropertyMixin,
         LoadingPropertyMixin,
         SizePropertyMixin,
@@ -60,11 +61,6 @@ export default {
             type: String,
             default: ''
         },
-    },
-    computed: {
-        isTag () {
-            return this.attributes.to ? 'router-link' : this.attributes.href ? 'a' : this.tag;
-        }
     },
     created () {
         this.classesProvider.add(() => ({

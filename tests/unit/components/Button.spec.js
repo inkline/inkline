@@ -63,41 +63,6 @@ describe('Components', () => {
             });
         });
 
-        describe('computed', () => {
-            describe('isTag()', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.isTag).toBeDefined();
-                });
-
-                it('should be <button> tag by default', () => {
-                    expect(wrapper.vm.isTag).toEqual('button');
-                });
-
-                it('should be <a> tag if "href" attribute is provided', () => {
-                    wrapper = shallowMount(Button, {
-                        propsData: {
-                            href: true
-                        }
-                    });
-
-                    expect(wrapper.vm.isTag).toEqual('a');
-                });
-
-                it('should be <router-link> tag if "to" attribute is provided', () => {
-                    wrapper = shallowMount(Button, {
-                        components: {
-                            RouterLink
-                        },
-                        propsData: {
-                            to: true
-                        }
-                    });
-
-                    expect(wrapper.vm.isTag).toEqual('router-link');
-                });
-            });
-        });
-
         describe('created()', () => {
             it('should add class rules to classes provider', () => {
                 const classRulesLength = wrapper.vm.classesProvider.length;
