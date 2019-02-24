@@ -9,28 +9,31 @@
 @import 'css/_sizes'
 
 .breadcrumb
-    > .breadcrumb-item
+    > .item
         margin-bottom: 0
+
+        > span
+            display: inline-block
 
         &:first-child
             padding-left: 0
 
         // The separator between breadcrumbs (by default, a forward-slash: "/")
-        + .breadcrumb-item
+        + .item
             &::before
                 display: inline-block //} Suppress underlining of the separator in modern browsers
                 content: --breadcrumb-divider
 
         // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
         // without `<ul>`s. The `::before` pseudo-element generates an element
-        // *within* the .breadcrumb-item and thereby inherits the `text-decoration`.
+        // *within* the .item and thereby inherits the `text-decoration`.
         //
         // To trick IE into suppressing the underline, we give the pseudo-element an
         // underline and then immediately remove it.
-        + .breadcrumb-item:hover::before
+        + .item:hover::before
             text-decoration: underline;
 
-        + .breadcrumb-item:hover::before
+        + .item:hover::before
             text-decoration: none;
 
         a:not([href])
@@ -40,4 +43,4 @@
             color: --breadcrumb-active-color
 
 
-        @extend .breadcrumb.-md > .breadcrumb-item
+        @extend .breadcrumb.-md > .item
