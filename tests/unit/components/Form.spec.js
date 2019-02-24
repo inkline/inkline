@@ -9,7 +9,8 @@ describe('Components', () => {
         beforeEach(() => {
             wrapper = shallowMount(Form, {
                 methods: {
-                    created: Form.created
+                    created: Form.created,
+                    provide: Form.provide
                 }
             });
         });
@@ -31,6 +32,31 @@ describe('Components', () => {
                     expect(wrapper.vm.schema).toBeDefined();
                     expect(wrapper.vm.schema).toEqual({});
                 });
+            });
+        });
+
+        describe('data()', () => {
+            describe('validationOptions', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.validationOptions).toBeDefined();
+                });
+
+                it('should have getSchema() that returns form schema', () => {
+                    const schema = {
+                        input: {}
+                    };
+
+                    wrapper.setProps({ schema });
+
+                    expect(wrapper.vm.validationOptions.getSchema).toEqual(expect.any(Function));
+                    expect(wrapper.vm.validationOptions.getSchema()).toEqual(schema);
+                });
+            });
+        });
+
+        describe('provide()', () => {
+            it('should return object containing parentForm as current instance', () => {
+                expect(wrapper.vm.provide()).toEqual({ parentForm: wrapper.vm });
             });
         });
 
@@ -95,7 +121,7 @@ describe('Components', () => {
                     expect(spy).toHaveBeenCalledWith('input', expect.any(Function));
                 });
 
-                it('should set all schema tree entries as dirty and valid on validateOn event', () => {
+                it('should call inputSchema $validate() on validateOn event', () => {
                     const spy = jest.spyOn(inputWrapper.vm.schema, '$validate');
 
                     wrapper.vm.add(inputWrapper.vm);

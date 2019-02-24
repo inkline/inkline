@@ -22,6 +22,13 @@ describe('Components', () => {
         });
 
         describe('props', () => {
+            describe('inline', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.inline).toBeDefined();
+                    expect(wrapper.vm.inline).toEqual(false);
+                });
+            });
+
             describe('validate', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.validate).toBeDefined();
@@ -37,7 +44,6 @@ describe('Components', () => {
                 });
             });
         });
-
 
         describe('created()', () => {
             it('should add class rules to classes provider', () => {

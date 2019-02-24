@@ -16,6 +16,21 @@ import TabIndexPropertyMixin from '@inkline/inkline/mixins/components/properties
 
 export default {
     name: 'IFormGroup',
+    mixins: [
+        AttributesProviderMixin,
+        ClassesProviderMixin,
+        InjectParentFormProviderMixin,
+
+        EmitInputMethodMixin,
+
+        DisabledPropertyMixin,
+        LoadingPropertyMixin,
+        NamePropertyMixin,
+        ParentFormGroupPropertyMixin,
+        ReadonlyPropertyMixin,
+        SizePropertyMixin,
+        TabIndexPropertyMixin
+    ],
     components: {
         IFormError
     },
@@ -34,21 +49,6 @@ export default {
             inputSchema: null
         };
     },
-    mixins: [
-        AttributesProviderMixin,
-        ClassesProviderMixin,
-        InjectParentFormProviderMixin,
-
-        EmitInputMethodMixin,
-
-        DisabledPropertyMixin,
-        LoadingPropertyMixin,
-        NamePropertyMixin,
-        ParentFormGroupPropertyMixin,
-        ReadonlyPropertyMixin,
-        SizePropertyMixin,
-        TabIndexPropertyMixin
-    ],
     created() {
         this.classesProvider.add(() => ({
             '-inline': this.inline,
