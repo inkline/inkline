@@ -11,5 +11,11 @@ export default {
         ClassesProviderMixin,
 
         DisabledPropertyMixin,
-    ]
+    ],
+    props: {
+        tag: {
+            type: String,
+            default: 'div'
+        }
+    }
 };
