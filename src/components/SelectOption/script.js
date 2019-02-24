@@ -52,8 +52,8 @@ export default {
                 return;
             }
 
-            this.dispatch('IDropdown', 'menu-item-click', this);
             this.dispatch('ISelect', 'option-click', this.getDispatchProps());
+            this.dispatch('IDropdown', 'menu-item-click', this);
             this.emitClick(e);
         },
     },
