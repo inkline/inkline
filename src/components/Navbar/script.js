@@ -24,6 +24,26 @@ export default {
         IRow,
         IColumn
     },
+    props: {
+        collapse: {
+            type: String,
+            default: 'md'
+        },
+        fluid: {
+            type: Boolean,
+            default: false
+        },
+        toggleAnimation: {
+            type: String,
+            default: 'close'
+        }
+    },
+    data() {
+        return {
+            collapsed: false,
+            windowWidth: window.innerWidth
+        };
+    },
     provide() {
         const navbar = {};
 
@@ -38,26 +58,6 @@ export default {
         });
 
         return { navbar };
-    },
-    data() {
-        return {
-            collapsed: false,
-            windowWidth: window.innerWidth
-        };
-    },
-    props: {
-        fluid: {
-            type: Boolean,
-            default: false
-        },
-        collapse: {
-            type: String,
-            default: 'md'
-        },
-        toggleAnimation: {
-            type: String,
-            default: 'close'
-        }
     },
     methods: {
         toggleCollapse() {
