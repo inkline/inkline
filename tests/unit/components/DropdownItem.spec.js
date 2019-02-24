@@ -1,6 +1,5 @@
 import {shallowMount} from '@vue/test-utils';
 import DropdownItem from '@inkline/inkline/components/DropdownItem';
-import { RouterLink } from '../mocks/RouterLink';
 
 describe('Components', () => {
     describe('DropdownItem', () => {
@@ -24,13 +23,6 @@ describe('Components', () => {
         });
 
         describe('props', () => {
-            describe('tag', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.tag).toBeDefined();
-                    expect(wrapper.vm.tag).toEqual('div');
-                });
-            });
-
             describe('action', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm).toHaveProperty('action');
@@ -54,41 +46,6 @@ describe('Components', () => {
 
                     expect(spy).toHaveBeenCalled();
                     expect(spy).toHaveBeenCalledWith('IDropdown', 'menu-item-click', [wrapper.vm.action, wrapper.vm]);
-                });
-            });
-        });
-
-        describe('computed', () => {
-            describe('isTag()', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.isTag).toBeDefined();
-                });
-
-                it('should be <button> tag by default', () => {
-                    expect(wrapper.vm.isTag).toEqual('div');
-                });
-
-                it('should be <a> tag if "href" attribute is provided', () => {
-                    wrapper = shallowMount(DropdownItem, {
-                        propsData: {
-                            href: true
-                        }
-                    });
-
-                    expect(wrapper.vm.isTag).toEqual('a');
-                });
-
-                it('should be <router-link> tag if "to" attribute is provided', () => {
-                    wrapper = shallowMount(DropdownItem, {
-                        components: {
-                            RouterLink
-                        },
-                        propsData: {
-                            to: true
-                        }
-                    });
-
-                    expect(wrapper.vm.isTag).toEqual('router-link');
                 });
             });
         });

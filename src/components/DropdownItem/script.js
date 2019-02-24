@@ -1,3 +1,5 @@
+import Linkable from '../Linkable';
+
 import DisabledPropertyMixin from '@inkline/inkline/mixins/components/properties/DisabledPropertyMixin';
 import TabIndexPropertyMixin from '@inkline/inkline/mixins/components/properties/TabIndexPropertyMixin';
 
@@ -7,6 +9,7 @@ import EmitProviderMixin from '@inkline/inkline/mixins/components/providers/Emit
 
 export default {
     name: 'IDropdownItem',
+    extends: Linkable,
     mixins: [
         DisabledPropertyMixin,
         TabIndexPropertyMixin,
@@ -16,10 +19,6 @@ export default {
         EmitProviderMixin
     ],
     props: {
-        tag: {
-            type: String,
-            default: 'div'
-        },
         action: {
             type: [String, Number, Boolean],
             default: undefined
@@ -33,11 +32,6 @@ export default {
         onClick() {
             this.dispatch('IDropdown', 'menu-item-click', [this.action, this]);
         }
-    },
-    computed: {
-        isTag () {
-            return this.attributes.to ? 'router-link' : this.attributes.href ? 'a' : this.tag;
-        },
     },
     mounted() {
         this.dispatch('IDropdown', 'dropdown-item-mounted', this);
