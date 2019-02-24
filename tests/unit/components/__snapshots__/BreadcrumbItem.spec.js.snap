@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components BreadcrumbItem should render correctly 1`] = `<li class="breadcrumb-item"><a></a></li>`;
+exports[`Components BreadcrumbItem should render correctly 1`] = `<li class="item"><span></span></li>`;
