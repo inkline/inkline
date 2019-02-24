@@ -36,14 +36,6 @@ export default {
             default: '×'
         }
     },
-    watch: {
-        show () {
-            this.onShowChange()
-        }
-    },
-    mounted () {
-        this.onShowChange()
-    },
     methods: {
         dismiss () {
             this.dismissed = true;
@@ -54,6 +46,14 @@ export default {
         onShowChange () {
             this.dismissed = false;
         }
+    },
+    watch: {
+        show () {
+            this.onShowChange()
+        }
+    },
+    mounted () {
+        this.onShowChange()
     },
     created () {
         this.classesProvider.add(() => ({

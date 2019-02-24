@@ -22,6 +22,15 @@ describe('Components', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
 
+        describe('data', () => {
+           describe('dismissed', () => {
+               it('should be defined', () => {
+                   expect(wrapper.vm.dismissed).toBeDefined();
+                   expect(wrapper.vm.dismissed).toEqual(false);
+               });
+           });
+       });
+
         describe('props', () => {
            describe('show', () => {
                it('should be defined', () => {
