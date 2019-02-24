@@ -17,6 +17,15 @@ describe('Components', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
 
+        describe('props', () => {
+            describe('vertical', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.vertical).toBeDefined();
+                    expect(wrapper.vm.vertical).toEqual(false);
+                });
+            });
+        });
+
         describe('computed', () => {
             describe('classes()', () => {
                 it('should add "-vertical" class if "vertical" property is true', () => {
