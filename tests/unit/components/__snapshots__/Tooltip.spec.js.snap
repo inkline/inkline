@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components Popover should render correctly 1`] = `
+<div class="tooltip-wrapper" id="tooltip">
+  <div aria-haspopup="tooltip" aria-controls="tooltip"></div>
+  <div class="tooltip" style="display: none;" name="zoom-in-top-transition" id="tooltip"><span class="arrow"></span> </div>
+</div>
+`;

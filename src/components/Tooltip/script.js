@@ -58,6 +58,14 @@ export default {
             basename
         };
     },
+    watch: {
+        'placement': {
+            immediate: true,
+                handler(value) {
+                this.currentPlacement = value;
+            }
+        }
+    },
     created() {
         this.$on('updatePopper', () => {
             if (this.visible) this.updatePopper();
@@ -66,13 +74,5 @@ export default {
     mounted() {
         this.referenceElement = this.$el;
         this.currentPlacement = this.placement;
-    },
-    watch: {
-        'placement': {
-            immediate: true,
-            handler(value) {
-                this.currentPlacement = value;
-            }
-        }
     }
 };
