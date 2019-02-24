@@ -53,33 +53,12 @@ describe('Components', () => {
                             name: 'input',
                             schema: {
                                 validateOn: 'input',
+                                $touch: () => ({}),
                                 $validate: () => ({ errors: {}, valid: true })
                             }
                         }
                     },
                     render () {}
-                });
-            });
-
-            describe('getSchemaTree()', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.getSchemaTree).toBeDefined();
-                });
-
-                it('should return schema tree from input', () => {
-                    const schemaTree = wrapper.vm.getSchemaTree(inputWrapper.vm);
-
-                    expect(schemaTree).toEqual([wrapper.vm.schema, inputWrapper.vm.schema]);
-                    expect(schemaTree.length).toEqual(2);
-                });
-
-                it('should return schema tree from nested input', () => {
-                    inputWrapper.setData({ name: 'group.input' });
-
-                    const schemaTree = wrapper.vm.getSchemaTree(inputWrapper.vm);
-
-                    expect(schemaTree).toEqual([wrapper.vm.schema, wrapper.vm.schema.group, inputWrapper.vm.schema]);
-                    expect(schemaTree.length).toEqual(3);
                 });
             });
 
@@ -98,16 +77,13 @@ describe('Components', () => {
                 });
 
                 it('should set the all schema tree entries as touched on "blur"', () => {
-                    inputWrapper.setData({ name: 'group.input' });
-                    const schemaTree = wrapper.vm.getSchemaTree(inputWrapper.vm);
+                    const spy = jest.spyOn(inputWrapper.vm.schema, '$touch');
 
                     wrapper.vm.add(inputWrapper.vm);
                     inputWrapper.vm.$emit('blur');
 
-                    schemaTree.forEach((schema) => {
-                        expect(schema.touched).toEqual(true);
-                        expect(schema.untouched).toEqual(false);
-                    });
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith(wrapper.vm.validationOptions);
                 });
 
                 it('should add the input schema\'s validateOn event listener to input', () => {
@@ -120,19 +96,13 @@ describe('Components', () => {
                 });
 
                 it('should set all schema tree entries as dirty and valid on validateOn event', () => {
-                    inputWrapper.setData({ name: 'group.input' });
-                    const schemaTree = wrapper.vm.getSchemaTree(inputWrapper.vm);
+                    const spy = jest.spyOn(inputWrapper.vm.schema, '$validate');
 
                     wrapper.vm.add(inputWrapper.vm);
-                    inputWrapper.vm.$emit(inputWrapper.vm.schema.validateOn, true);
+                    inputWrapper.vm.$emit('input', 10);
 
-                    schemaTree.forEach((schema) => {
-                        expect(schema.errors).toEqual({});
-                        expect(schema.valid).toEqual(true);
-                        expect(schema.invalid).toEqual(false);
-                        expect(schema.dirty).toEqual(true);
-                        expect(schema.pristine).toEqual(false);
-                    });
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith(10, wrapper.vm.validationOptions);
                 });
             });
 

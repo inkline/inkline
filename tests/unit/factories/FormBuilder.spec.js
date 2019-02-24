@@ -119,6 +119,16 @@ describe('Factories', () => {
             });
 
             describe('$validate()', () => {
+                const validationOptions = {
+                    getSchema: () => formBuilder.factory([], {
+                        group: {
+                            input: {
+                                value: 'abc'
+                            }
+                        }
+                    }, true)
+                };
+
                 it('should be defined', () => {
                     const formControl = formBuilder.formControl([], {});
 
@@ -127,7 +137,7 @@ describe('Factories', () => {
 
                 it('should return valid and empty errors object without validators', () => {
                     const formControl = formBuilder.formControl([], {});
-                    const validation = formControl.$validate('');
+                    const validation = formControl.$validate('', validationOptions);
 
                     expect(validation).toEqual({
                         valid: true,
@@ -144,7 +154,7 @@ describe('Factories', () => {
                         ]
                     });
 
-                    expect(() => (formControl.$validate(''))).toThrow();
+                    expect(() => (formControl.$validate('', validationOptions))).toThrow();
                 });
 
                 it('should call each validator rule', () => {
@@ -160,17 +170,17 @@ describe('Factories', () => {
                             { rule: 'rule2' }
                         ]
                     });
-                    formControl.$validate('value');
+                    formControl.$validate('value', validationOptions);
 
                     expect(spy1).toHaveBeenCalled();
                     expect(spy1).toHaveBeenCalledWith('value', {
                         enabled: true, rule: "rule1"
-                    }, undefined);
+                    }, validationOptions);
 
                     expect(spy2).toHaveBeenCalled();
                     expect(spy2).toHaveBeenCalledWith('value', {
                         enabled: true, rule: "rule2"
-                    }, undefined);
+                    }, validationOptions);
                 });
 
                 it('should not call validator rule if not enabled', () => {
@@ -186,13 +196,13 @@ describe('Factories', () => {
                             { rule: 'rule2' }
                         ]
                     });
-                    formControl.$validate('value');
+                    formControl.$validate('value', validationOptions);
 
                     expect(spy1).not.toHaveBeenCalled();
                     expect(spy2).toHaveBeenCalled();
                     expect(spy2).toHaveBeenCalledWith('value', {
                         enabled: true, rule: "rule2"
-                    }, undefined);
+                    }, validationOptions);
                 });
 
                 it('should return valid if 1/1 rule is valid', () => {
@@ -204,7 +214,7 @@ describe('Factories', () => {
                             { rule: 'test' }
                         ]
                     });
-                    const validation = formControl.$validate('value');
+                    const validation = formControl.$validate('value', validationOptions);
 
                     expect(validation).toEqual({
                         valid: true,
@@ -226,7 +236,7 @@ describe('Factories', () => {
                             { rule: 'test2' }
                         ]
                     });
-                    const validation = formControl.$validate('value');
+                    const validation = formControl.$validate('value', validationOptions);
 
                     expect(validation).toEqual({
                         valid: true,
@@ -245,7 +255,7 @@ describe('Factories', () => {
                             { rule: 'test', message: 'Invalid' }
                         ]
                     });
-                    const validation = formControl.$validate('value');
+                    const validation = formControl.$validate('value', validationOptions);
 
                     expect(validation).toEqual({
                         valid: false,
@@ -268,7 +278,7 @@ describe('Factories', () => {
                             { rule: 'test2', message: 'Invalid' }
                         ]
                     });
-                    const validation = formControl.$validate('value');
+                    const validation = formControl.$validate('value', validationOptions);
 
                     expect(validation).toEqual({
                         valid: false,
@@ -291,7 +301,7 @@ describe('Factories', () => {
                             { rule: 'test2', message: 'Invalid 2' }
                         ]
                     });
-                    const validation = formControl.$validate('value');
+                    const validation = formControl.$validate('value', validationOptions);
 
                     expect(validation).toEqual({
                         valid: false,
@@ -610,5 +620,65 @@ describe('Factories', () => {
                 });
             });
         });
+
+        // describe('getSchemaTree()', () => {
+        //     it('should be defined', () => {
+        //         expect(formBuilder.getSchemaTree).toBeDefined();
+        //     });
+        //
+        //     it('should return schema tree from input', () => {
+        //         const schemaTree = formBuilder.getSchemaTree(inputWrapper.vm);
+        //
+        //         expect(schemaTree).toEqual([wrapper.vm.schema, inputWrapper.vm.schema]);
+        //         expect(schemaTree.length).toEqual(2);
+        //     });
+        //
+        //     it('should return schema tree from nested input', () => {
+        //         inputWrapper.setData({ name: 'group.input' });
+        //
+        //         const schemaTree = wrapper.vm.getSchemaTree(inputWrapper.vm);
+        //
+        //         expect(schemaTree).toEqual([wrapper.vm.schema, wrapper.vm.schema.group, inputWrapper.vm.schema]);
+        //         expect(schemaTree.length).toEqual(3);
+        //     });
+            //
+            // it('should set the all schema tree entries as touched on "blur"', () => {
+            //     inputWrapper.setData({ name: 'group.input' });
+            //     const schemaTree = wrapper.vm.getSchemaTree(inputWrapper.vm);
+            //
+            //     wrapper.vm.add(inputWrapper.vm);
+            //     inputWrapper.vm.$emit('blur');
+            //
+            //     schemaTree.forEach((schema) => {
+            //         expect(schema.touched).toEqual(true);
+            //         expect(schema.untouched).toEqual(false);
+            //     });
+            // });
+            //
+            // it('should add the input schema\'s validateOn event listener to input', () => {
+            //     const spy = jest.spyOn(inputWrapper.vm, '$on');
+            //
+            //     wrapper.vm.add(inputWrapper.vm);
+            //
+            //     expect(spy).toHaveBeenCalled();
+            //     expect(spy).toHaveBeenCalledWith('input', expect.any(Function));
+            // });
+            //
+            // it('should set all schema tree entries as dirty and valid on validateOn event', () => {
+            //     inputWrapper.setData({ name: 'group.input' });
+            //     const schemaTree = wrapper.vm.getSchemaTree(inputWrapper.vm);
+            //
+            //     wrapper.vm.add(inputWrapper.vm);
+            //     inputWrapper.vm.$emit(inputWrapper.vm.schema.validateOn, true);
+            //
+            //     schemaTree.forEach((schema) => {
+            //         expect(schema.errors).toEqual({});
+            //         expect(schema.valid).toEqual(true);
+            //         expect(schema.invalid).toEqual(false);
+            //         expect(schema.dirty).toEqual(true);
+            //         expect(schema.pristine).toEqual(false);
+            //     });
+            // });
+        // });
     });
 });
