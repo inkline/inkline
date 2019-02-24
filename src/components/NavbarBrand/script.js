@@ -1,13 +1,6 @@
-import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
+import Linkable from '../Linkable';
 
 export default {
     name: 'INavbarBrand',
-    mixins: [
-        AttributesProviderMixin
-    ],
-    computed: {
-        isTag () {
-            return this.attributes.to ? 'router-link' : 'a';
-        }
-    }
+    extends: Linkable
 };
