@@ -22,6 +22,13 @@ describe('Components', () => {
         });
 
         describe('props', () => {
+            describe('cover', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.cover).toBeDefined();
+                    expect(wrapper.vm.cover).toEqual(true);
+                });
+            });
+
             describe('fluid', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.fluid).toBeDefined();
@@ -43,6 +50,13 @@ describe('Components', () => {
 
                 wrapper.vm.created();
                 expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 1)
+            });
+
+            it('should add "-cover" class if "cover" property is true', () => {
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
+
+                wrapper.setProps({ cover: true });
+                expect(rule()).toEqual(expect.objectContaining({ '-cover': true }));
             });
 
             it('should add "-fullscreen" class if "fullscreen" property is true', () => {
