@@ -70,6 +70,17 @@ describe('Mixins', () => {
                     expect(spy).toHaveBeenCalled();
                     expect(schemaWrapper.emitted().submit).not.toBeTruthy();
                 });
+
+                it('should emit "submit" if schema is valid', () => {
+                    const spy = jest.spyOn(schemaWrapper.vm.schema, '$validate');
+                    const event = { preventDefault() {} };
+
+                    schemaWrapper.vm.schema.input.value = 'value';
+                    schemaWrapper.vm.emitSubmit(event);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(schemaWrapper.emitted().submit).toBeTruthy();
+                });
             });
         });
     });

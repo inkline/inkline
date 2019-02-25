@@ -1,19 +1,24 @@
 import Vue from 'vue';
 import { on, isVisible } from '@inkline/inkline/helpers';
 
-const nodeList = [];
-const ctx = '@@clickOutsideContext';
+export const clickOutsideHandler = {
+    nodeList: [],
+    ctx: '@@clickOutsideContext',
+    startClick: undefined,
+    seed: 0,
+    onMouseDown(e) {
+        clickOutsideHandler.startClick = e;
+    },
+    onMouseUp(e) {
+        clickOutsideHandler.nodeList
+            .forEach(node => node[clickOutsideHandler.ctx].documentHandler(e, clickOutsideHandler.startClick));
+    }
+};
 
-let startClick;
-let seed = 0;
+!Vue.prototype.$isServer && on(document, 'mousedown', clickOutsideHandler.onMouseDown);
+!Vue.prototype.$isServer && on(document, 'mouseup', clickOutsideHandler.onMouseUp);
 
-!Vue.prototype.$isServer && on(document, 'mousedown', e => (startClick = e));
-
-!Vue.prototype.$isServer && on(document, 'mouseup', e => {
-    nodeList.forEach(node => node[ctx].documentHandler(e, startClick));
-});
-
-function createDocumentHandler(element, binding, vnode) {
+export function createDocumentHandler(element, binding, vnode) {
     return function(mouseup = {}, mousedown = {}) {
         if (!isVisible(element) ||
             !vnode ||
@@ -30,11 +35,11 @@ function createDocumentHandler(element, binding, vnode) {
         }
 
         if (binding.expression &&
-            element[ctx].methodName &&
-            vnode.context[element[ctx].methodName]) {
-            vnode.context[element[ctx].methodName]();
+            element[clickOutsideHandler.ctx].methodName &&
+            vnode.context[element[clickOutsideHandler.ctx].methodName]) {
+            vnode.context[element[clickOutsideHandler.ctx].methodName]();
         } else {
-            element[ctx].bindingFn && element[ctx].bindingFn();
+            element[clickOutsideHandler.ctx].bindingFn && element[clickOutsideHandler.ctx].bindingFn();
         }
     };
 }
@@ -48,9 +53,9 @@ function createDocumentHandler(element, binding, vnode) {
  */
 export default {
     bind(element, binding, vnode) {
-        nodeList.push(element);
-        const id = seed++;
-        element[ctx] = {
+        clickOutsideHandler.nodeList.push(element);
+        const id = clickOutsideHandler.seed++;
+        element[clickOutsideHandler.ctx] = {
             id,
             documentHandler: createDocumentHandler(element, binding, vnode),
             methodName: binding.expression,
@@ -59,21 +64,21 @@ export default {
     },
 
     update(element, binding, vnode) {
-        element[ctx].documentHandler = createDocumentHandler(element, binding, vnode);
-        element[ctx].methodName = binding.expression;
-        element[ctx].bindingFn = binding.value;
+        element[clickOutsideHandler.ctx].documentHandler = createDocumentHandler(element, binding, vnode);
+        element[clickOutsideHandler.ctx].methodName = binding.expression;
+        element[clickOutsideHandler.ctx].bindingFn = binding.value;
     },
 
     unbind(element) {
-        let len = nodeList.length;
+        let len = clickOutsideHandler.nodeList.length;
 
         for (let i = 0; i < len; i++) {
-            if (nodeList[i][ctx].id === element[ctx].id) {
-                nodeList.splice(i, 1);
+            if (clickOutsideHandler.nodeList[i][clickOutsideHandler.ctx].id === element[clickOutsideHandler.ctx].id) {
+                clickOutsideHandler.nodeList.splice(i, 1);
                 break;
             }
         }
 
-        delete element[ctx];
+        delete element[clickOutsideHandler.ctx];
     }
 };

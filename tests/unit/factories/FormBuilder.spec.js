@@ -905,6 +905,15 @@ describe('Factories', () => {
                     ]
                 },
                 {
+                    rule: 'number',
+                    options: [
+                        { allowDecimal: false, allowNegative: false, expect: 'numbers' },
+                        { allowDecimal: true, allowNegative: false, expect: 'decimal numbers' },
+                        { allowDecimal: false, allowNegative: true, expect: 'positive or negative numbers' },
+                        { allowDecimal: true, allowNegative: true, expect: 'positive or negative decimal numbers' },
+                    ]
+                },
+                {
                     rule: 'max',
                     options: [
                         { value: 10, expect: 'up to a maximum of 10' }

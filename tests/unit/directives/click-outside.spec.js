@@ -1,4 +1,5 @@
 import ClickOutside from '@inkline/inkline/directives/click-outside';
+import { clickOutsideHandler, createDocumentHandler } from '@inkline/inkline/directives/click-outside';
 
 describe('Directives', () => {
     describe('v-click-outside', () => {
@@ -10,6 +11,30 @@ describe('Directives', () => {
             element = { getClientRects: () => [1], parentElement: null };
             binding = { expression: 'fn', value: () => {} };
             vnode = { context: { fn: () => {} } };
+        });
+
+        describe('onMouseDown()', () => {
+            it('should set startClick to current event', () => {
+                clickOutsideHandler.onMouseDown(true);
+
+                expect(clickOutsideHandler.startClick).toEqual(true);
+            });
+        });
+
+        describe('onMouseUp()', () => {
+            it('should call context documentHandler for each node in nodeList', () => {
+                const node = {
+                    '@@clickOutsideContext': {
+                        documentHandler: () => {}
+                    }
+                };
+                const spy = jest.spyOn(node['@@clickOutsideContext'], 'documentHandler');
+
+                clickOutsideHandler.nodeList = [ node, node ];
+                clickOutsideHandler.onMouseUp(true);
+
+                expect(spy).toHaveBeenCalled();
+            });
         });
 
         describe('createDocumentHandler()', () => {
@@ -83,6 +108,12 @@ describe('Directives', () => {
 
                 element['@@clickOutsideContext'].documentHandler({ target: {} }, { target: {} });
                 expect(spy).toHaveBeenCalled();
+            });
+
+            it('should return if element is same as event target', () => {
+                const handlerFn = createDocumentHandler(element, binding, vnode);
+
+                expect(handlerFn({ target: element }, { target: element })).toEqual(undefined);
             });
         });
 
