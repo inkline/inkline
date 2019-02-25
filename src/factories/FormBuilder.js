@@ -75,6 +75,7 @@ export class FormBuilder {
          */
         schema.$touch = (options) => {
             const schemaList = this.getSchemaList(schema, options.getSchema());
+
             schemaList.forEach((schemaListItem) => {
                 schemaListItem.touched = true;
                 schemaListItem.untouched = false;
@@ -213,7 +214,7 @@ export class FormBuilder {
              */
             schema.$push = (item, options={}) => {
                 schema.push(this.factory(nameNesting.concat([schema.length]), item, options.group));
-                schema.$fields.push(schema.length);
+                schema.$fields.push(schema.length - 1);
             };
 
             /**
@@ -235,6 +236,7 @@ export class FormBuilder {
 
                 for (let index = start; index < schema.length; index += 1) {
                     schema[index].$name = schema[index].$name.replace(/[0-9]+$/, index);
+                    schema.$fields[index] = index.toString();
                 }
             };
 
@@ -279,7 +281,7 @@ export class FormBuilder {
                 .slice(0, index)
                 .reduce((acc, key) => acc && acc[key], rootSchema));
 
-        if (!parentSchemaList) {
+        if (!parentSchemaList[parentSchemaList.length - 1].hasOwnProperty(parentFormGroupKeys[parentFormGroupKeys.length - 1])) {
             throw new Error(`Could not retrieve schema tree for input with name ${schema.$name}.`);
         }
 

@@ -118,6 +118,55 @@ describe('Factories', () => {
                 expect(formControl.$name).toEqual('a.b.c');
             });
 
+            it('should set validators as enabled by default', () => {
+                const formControl = formBuilder.formControl(['input'], {
+                    validators: [
+                        { type: 'required' },
+                        { type: 'other', enabled: false },
+                    ]
+                });
+
+                expect(formControl.validators[0].enabled).toEqual(true);
+                expect(formControl.validators[1].enabled).toEqual(false);
+            });
+
+            describe('$touch()', () => {
+                const validationOptions = {
+                    getSchema: () => formBuilder.factory([], {
+                        group: {
+                            input: {
+                                value: 'abc'
+                            }
+                        }
+                    }, true)
+                };
+
+                it('should be defined', () => {
+                    const formControl = formBuilder.formControl([], {});
+
+                    expect(formControl.$touch).toBeDefined();
+                });
+
+                it('should return truthy value', () => {
+                    const formControl = formBuilder.formControl([], {});
+
+                    expect(formControl.$touch(validationOptions)).toEqual(true);
+                });
+
+                it('should set schema list items as touched', () => {
+                    const formControl = formBuilder.formControl(['input'], {
+                        input: {
+                            value: 'abc'
+                        }
+                    });
+
+                    formControl.$touch(validationOptions);
+
+                    expect(formControl.touched).toEqual(true);
+                    expect(formControl.untouched).toEqual(false);
+                });
+            });
+
             describe('$validate()', () => {
                 const validationOptions = {
                     getSchema: () => formBuilder.factory([], {
@@ -155,6 +204,19 @@ describe('Factories', () => {
                     });
 
                     expect(() => (formControl.$validate('', validationOptions))).toThrow();
+                });
+
+                it('should check if validator is enabled and call enabled function', () => {
+                    const formControl = formBuilder.formControl([], {
+                        validators: [
+                            { rule: 'required', enabled: () => true }
+                        ]
+                    });
+                    const spy = jest.spyOn(formControl.validators[0], 'enabled');
+
+                    formControl.$validate('', validationOptions);
+
+                    expect(spy).toHaveBeenCalled();
                 });
 
                 it('should call each validator rule', () => {
@@ -312,6 +374,129 @@ describe('Factories', () => {
                         }
                     });
                 });
+
+                it('should set errors on schema list item', () => {
+                    const formControl = formBuilder.formControl([], {
+                        validators: [
+                            { rule: 'required', message: 'message' },
+                        ]
+                    });
+
+                    formControl.$validate('', validationOptions);
+
+                    expect(formControl.errors).toEqual({
+                        length: 1,
+                        required: 'message'
+                    });
+                });
+
+                it('should set valid status on schema list item', () => {
+                    const formControl = formBuilder.formControl([], {
+                        validators: [
+                            { rule: 'required', message: 'message' },
+                        ]
+                    });
+
+                    formControl.$validate('value', validationOptions);
+
+                    expect(formControl.valid).toEqual(true);
+                    expect(formControl.invalid).toEqual(false);
+                });
+
+                it('should set valid status on schema list parent item', () => {
+                    const exampleSchema = formBuilder.factory([], {
+                        group: {
+                            input: {
+                                value: 'abc'
+                            }
+                        }
+                    }, true);
+
+                    const validationOptions = {
+                        getSchema: () => exampleSchema
+                    };
+
+                    const formControl = formBuilder.formControl([], {
+                        validators: [
+                            { rule: 'required', message: 'message' },
+                        ]
+                    });
+
+                    formControl.$validate('value', validationOptions);
+
+                    expect(exampleSchema.valid).toEqual(true);
+                    expect(exampleSchema.invalid).toEqual(false);
+                });
+
+                it('should set invalid status on schema list item', () => {
+                    const formControl = formBuilder.formControl([], {
+                        validators: [
+                            { rule: 'required', message: 'message' },
+                        ]
+                    });
+
+                    formControl.$validate('', validationOptions);
+
+                    expect(formControl.valid).toEqual(false);
+                    expect(formControl.invalid).toEqual(true);
+                });
+
+                it('should set valid status on schema list parent items', () => {
+                    const formSchema = formBuilder.factory([], {
+                        group: {
+                            input: {
+                                value: 'abc',
+                                validators: [
+                                    { rule: 'required' }
+                                ]
+                            }
+                        }
+                    }, true);
+
+                    const validationOptions = {
+                        getSchema: () => formSchema
+                    };
+
+                    formSchema.group.input.$validate('value', validationOptions);
+
+                    expect(formSchema.valid).toEqual(true);
+                    expect(formSchema.invalid).toEqual(false);
+                });
+
+                it('should set invalid status on schema list parent items', () => {
+                    const formSchema = formBuilder.factory([], {
+                        group: {
+                            input: {
+                                value: 'abc',
+                                validators: [
+                                    { rule: 'required' }
+                                ]
+                            }
+                        }
+                    }, true);
+
+                    const validationOptions = {
+                        getSchema: () => formSchema
+                    };
+
+                    formSchema.group.input.$validate('', validationOptions);
+
+                    expect(formSchema.valid).toEqual(false);
+                    expect(formSchema.invalid).toEqual(true);
+                });
+
+                it('should set dirty status on schema list item', () => {
+                    const formControl = formBuilder.formControl([], {
+                        validators: [
+                            { rule: 'required', message: 'message' },
+                        ]
+                    });
+
+                    formControl.$validate('', validationOptions);
+
+                    expect(formControl.dirty).toEqual(true);
+                    expect(formControl.pristine).toEqual(false);
+                });
             });
         });
 
@@ -344,6 +529,13 @@ describe('Factories', () => {
                         const form = formBuilder.form([], schema);
 
                         expect(form).toHaveProperty('$name');
+                    });
+
+                    it('should have $fields', () => {
+                        const form = formBuilder.form([], schema);
+
+                        expect(form).toHaveProperty('$fields');
+                        expect(form.$fields).toEqual([]);
                     });
 
                     it('should construct $name based on name nesting', () => {
@@ -419,6 +611,33 @@ describe('Factories', () => {
                     expect(spy).toHaveBeenLastCalledWith(['group'], expect.objectContaining({}));
                 });
 
+                describe('$validate()', () => {
+                    it('should be defined', () => {
+                        const form = formBuilder.form([], {});
+
+                        expect(form.$validate).toBeDefined();
+                    });
+
+                    it('should iterate each key and apply $validate based on whether it\'s a field or a group', () => {
+                        const form = formBuilder.form([], {
+                            input: {},
+                            group: {
+                                input: {}
+                            }
+                        });
+
+                        const spy1 = jest.spyOn(form.input, '$validate');
+                        const spy2 = jest.spyOn(form.group, '$validate');
+                        const spy3 = jest.spyOn(form.group.input, '$validate');
+
+                        form.$validate({ getSchema: () => form });
+
+                        expect(spy1).toHaveBeenCalled();
+                        expect(spy2).toHaveBeenCalled();
+                        expect(spy3).toHaveBeenCalled();
+                    });
+                });
+
                 describe('$set()', () => {
                     const instance = { $set: (target, key, value) => target[key] = value };
 
@@ -454,6 +673,7 @@ describe('Factories', () => {
                             $name: 'field',
                             value: ''
                         }));
+                        expect(form.$fields).toEqual(['field']);
                     });
 
                     it('should set a new form group field', () => {
@@ -466,6 +686,7 @@ describe('Factories', () => {
                             $name: 'group'
                         }));
                         expect(form.group.$set).toEqual(expect.any(Function));
+                        expect(form.$fields).toEqual(['group']);
                     });
                 });
             });
@@ -561,6 +782,7 @@ describe('Factories', () => {
                             $name: '0',
                             value: ''
                         }));
+                        expect(form.$fields).toEqual([0]);
                     });
 
                     it('should push a new form group field', () => {
@@ -572,6 +794,7 @@ describe('Factories', () => {
                         expect(form[0]).toEqual(expect.objectContaining({
                             $name: '0'
                         }));
+                        expect(form.$fields).toEqual([0]);
                     });
                 });
 
@@ -603,6 +826,7 @@ describe('Factories', () => {
                             value: 'new'
                         }));
                         expect(form.length).toEqual(3);
+                        expect(form.$fields).toEqual(['0', '1', '2']);
                     });
 
                     it('should set form name using current schema length', () => {
@@ -616,69 +840,40 @@ describe('Factories', () => {
                         expect(form[2]).toEqual(expect.objectContaining({ $name: '2', value: '' }));
                         expect(form[3]).toEqual(expect.objectContaining({ $name: '3', value: '' }));
                     });
-
                 });
             });
         });
 
-        // describe('getSchemaTree()', () => {
-        //     it('should be defined', () => {
-        //         expect(formBuilder.getSchemaTree).toBeDefined();
-        //     });
-        //
-        //     it('should return schema tree from input', () => {
-        //         const schemaTree = formBuilder.getSchemaTree(inputWrapper.vm);
-        //
-        //         expect(schemaTree).toEqual([wrapper.vm.schema, inputWrapper.vm.schema]);
-        //         expect(schemaTree.length).toEqual(2);
-        //     });
-        //
-        //     it('should return schema tree from nested input', () => {
-        //         inputWrapper.setData({ name: 'group.input' });
-        //
-        //         const schemaTree = wrapper.vm.getSchemaTree(inputWrapper.vm);
-        //
-        //         expect(schemaTree).toEqual([wrapper.vm.schema, wrapper.vm.schema.group, inputWrapper.vm.schema]);
-        //         expect(schemaTree.length).toEqual(3);
-        //     });
-            //
-            // it('should set the all schema tree entries as touched on "blur"', () => {
-            //     inputWrapper.setData({ name: 'group.input' });
-            //     const schemaTree = wrapper.vm.getSchemaTree(inputWrapper.vm);
-            //
-            //     wrapper.vm.add(inputWrapper.vm);
-            //     inputWrapper.vm.$emit('blur');
-            //
-            //     schemaTree.forEach((schema) => {
-            //         expect(schema.touched).toEqual(true);
-            //         expect(schema.untouched).toEqual(false);
-            //     });
-            // });
-            //
-            // it('should add the input schema\'s validateOn event listener to input', () => {
-            //     const spy = jest.spyOn(inputWrapper.vm, '$on');
-            //
-            //     wrapper.vm.add(inputWrapper.vm);
-            //
-            //     expect(spy).toHaveBeenCalled();
-            //     expect(spy).toHaveBeenCalledWith('input', expect.any(Function));
-            // });
-            //
-            // it('should set all schema tree entries as dirty and valid on validateOn event', () => {
-            //     inputWrapper.setData({ name: 'group.input' });
-            //     const schemaTree = wrapper.vm.getSchemaTree(inputWrapper.vm);
-            //
-            //     wrapper.vm.add(inputWrapper.vm);
-            //     inputWrapper.vm.$emit(inputWrapper.vm.schema.validateOn, true);
-            //
-            //     schemaTree.forEach((schema) => {
-            //         expect(schema.errors).toEqual({});
-            //         expect(schema.valid).toEqual(true);
-            //         expect(schema.invalid).toEqual(false);
-            //         expect(schema.dirty).toEqual(true);
-            //         expect(schema.pristine).toEqual(false);
-            //     });
-            // });
-        // });
+        describe('getSchemaList()', () => {
+            it('should be defined', () => {
+                expect(formBuilder.getSchemaList).toBeDefined();
+            });
+
+            it('should return schema list for direct input', () => {
+                const inputSchema = { $name: 'input' };
+                const rootSchema = { input: inputSchema };
+                const schemaList = formBuilder.getSchemaList(inputSchema, rootSchema);
+
+                expect(schemaList).toEqual([inputSchema, rootSchema]);
+                expect(schemaList.length).toEqual(2);
+            });
+
+            it('should return schema list for nested input', () => {
+                const inputSchema = { $name: 'group.input' };
+                const groupSchema = { input: inputSchema };
+                const rootSchema = { group: groupSchema };
+                const schemaList = formBuilder.getSchemaList(inputSchema, rootSchema);
+
+                expect(schemaList).toEqual([inputSchema, groupSchema, rootSchema]);
+                expect(schemaList.length).toEqual(3);
+            });
+
+            fit('should throw error if input doesn\'t exist in root schema', () => {
+                const inputSchema = { $name: 'input' };
+                const rootSchema = {};
+
+                expect(() => formBuilder.getSchemaList(inputSchema, rootSchema)).toThrowError();
+            });
+        });
     });
 });
