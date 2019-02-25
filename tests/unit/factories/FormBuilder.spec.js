@@ -131,45 +131,49 @@ describe('Factories', () => {
             });
 
             describe('$touch()', () => {
-                const validationOptions = {
-                    getSchema: () => formBuilder.factory([], {
+                let formSchema;
+                let validationOptions;
+
+                beforeEach(() => {
+                    formSchema = formBuilder.factory([], {
                         group: {
                             input: {
                                 value: 'abc'
                             }
                         }
-                    }, true)
-                };
+                    }, true);
+
+                    validationOptions = {
+                        getSchema: () => formSchema
+                    };
+                });
 
                 it('should be defined', () => {
-                    const formControl = formBuilder.formControl([], {});
-
-                    expect(formControl.$touch).toBeDefined();
+                    expect(formSchema.group.input.$touch).toBeDefined();
                 });
 
                 it('should return truthy value', () => {
-                    const formControl = formBuilder.formControl([], {});
-
-                    expect(formControl.$touch(validationOptions)).toEqual(true);
+                    expect(formSchema.group.input.$touch(validationOptions)).toEqual(true);
                 });
 
                 it('should set schema list items as touched', () => {
-                    const formControl = formBuilder.formControl(['input'], {
-                        input: {
-                            value: 'abc'
-                        }
-                    });
+                    formSchema.group.input.$touch(validationOptions);
 
-                    formControl.$touch(validationOptions);
-
-                    expect(formControl.touched).toEqual(true);
-                    expect(formControl.untouched).toEqual(false);
+                    expect(formSchema.touched).toEqual(true);
+                    expect(formSchema.untouched).toEqual(false);
+                    expect(formSchema.group.touched).toEqual(true);
+                    expect(formSchema.group.untouched).toEqual(false);
+                    expect(formSchema.group.input.touched).toEqual(true);
+                    expect(formSchema.group.input.untouched).toEqual(false);
                 });
             });
 
             describe('$validate()', () => {
                 const validationOptions = {
                     getSchema: () => formBuilder.factory([], {
+                        input: {
+                            value: 'abc'
+                        },
                         group: {
                             input: {
                                 value: 'abc'
@@ -179,13 +183,13 @@ describe('Factories', () => {
                 };
 
                 it('should be defined', () => {
-                    const formControl = formBuilder.formControl([], {});
+                    const formControl = formBuilder.formControl(['input'], {});
 
                     expect(formControl.$validate).toBeDefined();
                 });
 
                 it('should return valid and empty errors object without validators', () => {
-                    const formControl = formBuilder.formControl([], {});
+                    const formControl = formBuilder.formControl(['input'], {});
                     const validation = formControl.$validate('', validationOptions);
 
                     expect(validation).toEqual({
@@ -197,7 +201,7 @@ describe('Factories', () => {
                 });
 
                 it('should throw error if invalid validator rule provided', () => {
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'invalidrule' }
                         ]
@@ -207,7 +211,7 @@ describe('Factories', () => {
                 });
 
                 it('should check if validator is enabled and call enabled function', () => {
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'required', enabled: () => true }
                         ]
@@ -226,7 +230,7 @@ describe('Factories', () => {
                     const spy1 = jest.spyOn(formBuilder.validators, 'rule1');
                     const spy2 = jest.spyOn(formBuilder.validators, 'rule2');
 
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'rule1' },
                             { rule: 'rule2' }
@@ -252,7 +256,7 @@ describe('Factories', () => {
                     const spy1 = jest.spyOn(formBuilder.validators, 'rule1');
                     const spy2 = jest.spyOn(formBuilder.validators, 'rule2');
 
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'rule1', enabled: false },
                             { rule: 'rule2' }
@@ -271,7 +275,7 @@ describe('Factories', () => {
                     formBuilder.validators['test'] = jest.fn()
                         .mockImplementation(() => true);
 
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'test' }
                         ]
@@ -292,7 +296,7 @@ describe('Factories', () => {
                     formBuilder.validators['test2'] = jest.fn()
                         .mockImplementation(() => true);
 
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'test1' },
                             { rule: 'test2' }
@@ -312,7 +316,7 @@ describe('Factories', () => {
                     formBuilder.validators['test'] = jest.fn()
                         .mockImplementation(() => false);
 
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'test', message: 'Invalid' }
                         ]
@@ -334,7 +338,7 @@ describe('Factories', () => {
                     formBuilder.validators['test2'] = jest.fn()
                         .mockImplementation(() => false);
 
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'test1', message: 'Valid' },
                             { rule: 'test2', message: 'Invalid' }
@@ -357,7 +361,7 @@ describe('Factories', () => {
                     formBuilder.validators['test2'] = jest.fn()
                         .mockImplementation(() => false);
 
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'test1', message: 'Invalid 1' },
                             { rule: 'test2', message: 'Invalid 2' }
@@ -376,7 +380,7 @@ describe('Factories', () => {
                 });
 
                 it('should set errors on schema list item', () => {
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'required', message: 'message' },
                         ]
@@ -391,7 +395,7 @@ describe('Factories', () => {
                 });
 
                 it('should set valid status on schema list item', () => {
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'required', message: 'message' },
                         ]
@@ -404,7 +408,7 @@ describe('Factories', () => {
                 });
 
                 it('should set valid status on schema list parent item', () => {
-                    const exampleSchema = formBuilder.factory([], {
+                    const formSchema = formBuilder.factory([], {
                         group: {
                             input: {
                                 value: 'abc'
@@ -413,23 +417,17 @@ describe('Factories', () => {
                     }, true);
 
                     const validationOptions = {
-                        getSchema: () => exampleSchema
+                        getSchema: () => formSchema
                     };
 
-                    const formControl = formBuilder.formControl([], {
-                        validators: [
-                            { rule: 'required', message: 'message' },
-                        ]
-                    });
+                    formSchema.group.input.$validate('value', validationOptions);
 
-                    formControl.$validate('value', validationOptions);
-
-                    expect(exampleSchema.valid).toEqual(true);
-                    expect(exampleSchema.invalid).toEqual(false);
+                    expect(formSchema.valid).toEqual(true);
+                    expect(formSchema.invalid).toEqual(false);
                 });
 
                 it('should set invalid status on schema list item', () => {
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'required', message: 'message' },
                         ]
@@ -486,7 +484,7 @@ describe('Factories', () => {
                 });
 
                 it('should set dirty status on schema list item', () => {
-                    const formControl = formBuilder.formControl([], {
+                    const formControl = formBuilder.formControl(['input'], {
                         validators: [
                             { rule: 'required', message: 'message' },
                         ]
@@ -868,11 +866,101 @@ describe('Factories', () => {
                 expect(schemaList.length).toEqual(3);
             });
 
-            fit('should throw error if input doesn\'t exist in root schema', () => {
+            it('should throw error if input doesn\'t exist in root schema', () => {
                 const inputSchema = { $name: 'input' };
                 const rootSchema = {};
 
                 expect(() => formBuilder.getSchemaList(inputSchema, rootSchema)).toThrowError();
+            });
+        });
+
+        describe('getErrorMessage()', () => {
+            it('should be defined', () => {
+                expect(FormBuilder.getErrorMessage).toBeDefined();
+            });
+
+            [
+                {
+                    rule: 'alpha',
+                    options: [
+                        { expect: 'letters' },
+                        { allowDashes: true, expect: 'letters and dashes' },
+                        { allowSpaces: true, expect: 'letters and spaces' },
+                        { allowDashes: true, allowSpaces: true, expect: 'letters, dashes and spaces' },
+                    ]
+                },
+                {
+                    rule: 'alphanumeric',
+                    options: [
+                        { expect: 'letters and numbers' },
+                        { allowDashes: true, expect: 'letters, numbers and dashes' },
+                        { allowSpaces: true, expect: 'letters, numbers and spaces' },
+                        { allowDashes: true, allowSpaces: true, expect: 'letters, numbers, dashes and spaces' },
+                    ]
+                },
+                {
+                    rule: 'email',
+                    options: [
+                        { expect: 'valid email address' }
+                    ]
+                },
+                {
+                    rule: 'max',
+                    options: [
+                        { value: 10, expect: 'up to a maximum of 10' }
+                    ]
+                },
+                {
+                    rule: 'maxLength',
+                    options: [
+                        { value: 10, expect: 'up to 10' }
+                    ]
+                },
+                {
+                    rule: 'min',
+                    options: [
+                        { value: 10, expect: 'up from a minimum of 10' }
+                    ]
+                },
+                {
+                    rule: 'minLength',
+                    options: [
+                        { value: 10, expect: 'at least 10' }
+                    ]
+                },
+                {
+                    rule: 'required',
+                    options: [
+                        { value: 10, expect: 'Please' }
+                    ]
+                },
+            ].forEach((entry) => {
+                it(`should return formatted error message for ${entry.rule} validator`, () => {
+                    entry.options.forEach((option) => {
+                        [ 'abc', ['a', 'b', 'c'] ].forEach((value) => {
+                            const message = FormBuilder.getErrorMessage(value, { rule: entry.rule, ...option });
+
+                            expect(message).toEqual(expect.stringContaining(option.expect));
+                            if (value.constructor === Array) {
+                                expect(message).toEqual(expect.stringContaining('select'));
+                            } else {
+                                expect(message).toEqual(expect.stringContaining('enter'));
+                            }
+                        });
+                    })
+                });
+            });
+
+            it('should return formatted error message for sameAs validator', () => {
+                const message = FormBuilder.getErrorMessage('', { rule: 'sameAs' });
+
+                expect(message).toEqual(expect.stringContaining('values match'));
+            });
+
+            it('should return formatted error message for custom validators', () => {
+                const message = FormBuilder.getErrorMessage('', { rule: 'custom' });
+
+                expect(message).toEqual(expect.stringContaining('correct value'));
             });
         });
     });
