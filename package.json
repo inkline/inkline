@@ -29,12 +29,12 @@
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
-    "coveralls": "^3.0.2",
+    "coveralls": "^3.0.3",
     "postcss-preset-env": "^5.3.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue": "^2.6.6",
-    "vue-template-compiler": "^2.6.6"
+    "vue": "^2.6.7",
+    "vue-template-compiler": "^2.6.7"
   },
   "eslintConfig": {
     "root": true,
