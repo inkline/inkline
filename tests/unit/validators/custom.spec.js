@@ -4,6 +4,10 @@ describe('Validators', () => {
     describe('custom()', () => {
         const validator = (x) => x > 0;
 
+        it('should return true by default', () => {
+            expect(custom(10)).toEqual(true);
+        });
+
         it('should apply validator function', () => {
             expect(custom(10, { validator })).toEqual(true);
             expect(custom(-10, { validator })).toEqual(false);
