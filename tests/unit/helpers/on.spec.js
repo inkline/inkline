@@ -2,14 +2,12 @@ import { on, addEventListenerBinding, attachEventBinding } from '@inkline/inklin
 
 describe('Helpers', () => {
     describe('on()', () => {
-        let element;
-
-        beforeEach(() => {
-            element = {
-                addEventListener() {},
-                attachEvent() {},
-            };
-        });
+        const element = {
+            addEventListener() {},
+            attachEvent() {},
+        };
+        const event = 'event';
+        const handler = () => {};
 
         it('should equal addEventListener binding', () => {
             const spy = jest.spyOn(element, 'addEventListener');
@@ -22,10 +20,6 @@ describe('Helpers', () => {
         });
 
         describe('addEventListenerBinding()', () => {
-            const element = { addEventListener: (e) => e };
-            const event = 'event';
-            const handler = () => {};
-
             it('should call addEventListener on element', () => {
                 const spy = jest.spyOn(element, 'addEventListener');
 
@@ -37,10 +31,6 @@ describe('Helpers', () => {
         });
 
         describe('attachEventBinding()', () => {
-            const element = { attachEvent: (e) => e };
-            const event = 'event';
-            const handler = () => {};
-
             it('should call attachEvent on element', () => {
                 const spy = jest.spyOn(element, 'attachEvent');
 

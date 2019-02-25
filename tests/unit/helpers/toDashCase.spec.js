@@ -3,7 +3,7 @@ import { toDashCase } from '@inkline/inkline/helpers/toDashCase';
 describe('Helpers', () => {
     describe('toDashCase()', () => {
         it('should convert string from camel case to dash case', () => {
-            expect(toDashCase('exampleCamelCase', 'camel')).toEqual('example-camel-case');
+            expect(toDashCase('exampleCamelCase')).toEqual('example-camel-case');
         });
 
         it('should convert string from underscore case to dash case', () => {
