@@ -4,7 +4,7 @@
     </a>
 </p>
 
-<h1 align="center">Inkline</h1>
+<h1 align="center">Inkline</h1> 
 
 <p align="center">
     Inkline is a modern UI/UX framework designed for creating flawless responsive websites. Inkline is 
