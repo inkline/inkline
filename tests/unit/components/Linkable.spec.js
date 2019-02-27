@@ -30,7 +30,7 @@ describe('Components', () => {
             describe('tag', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.tag).toBeDefined();
-                    expect(wrapper.vm.tag).toEqual('span');
+                    expect(wrapper.vm.tag).toEqual('a');
                 });
             });
         });
@@ -71,7 +71,7 @@ describe('Components', () => {
                 });
 
                 it('should be <span> tag by default', () => {
-                    expect(wrapper.vm.isTag).toEqual('span');
+                    expect(wrapper.vm.isTag).toEqual('a');
                 });
 
                 it('should be <a> tag if "href" attribute is provided', () => {
