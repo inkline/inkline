@@ -69,10 +69,17 @@ module.exports = {
     /*
     ** Nuxt.js modules
     */
-    modules: [,
-        // '@nuxtjs/pwa',
+    modules: [
+        '@nuxtjs/pwa',
         'nuxt-babel'
     ],
+
+    /**
+     * Nuxt router link
+     */
+    router: {
+        linkExactActiveClass: '-active nuxt-link-exact-active'
+    },
 
     /*
     ** Build configuration

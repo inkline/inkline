@@ -1,4 +1,5 @@
 import { findIndex, findLastIndex, throttle } from 'lodash';
+import { on, off } from "@inkline/inkline/src/helpers";
 
 function wasInViewport (element) {
     if (!element) { return; }
@@ -75,6 +76,9 @@ export default {
         this.update();
         this.$nuxt.$on('viewLoaded', this.update);
 
-        window.addEventListener('scroll', throttle(this.onScroll, 500));
+        on(window, 'scroll', throttle(this.onScroll, 250));
+    },
+    destroyed () {
+        off(window, 'scroll', throttle(this.onScroll, 250));
     }
 };

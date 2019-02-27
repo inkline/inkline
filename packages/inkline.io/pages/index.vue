@@ -7,7 +7,7 @@
                     <h2 class="header-subtitle">
                         Inkline is a modern <strong>UI/UX Framework for Vue.js</strong> designed for creating flawless responsive web applications.
                     </h2>
-                    <i-button size="lg" variant="primary" class="_margin-top-2">Get Started</i-button>
+                    <i-button size="lg" variant="primary" class="_margin-top-2" :to="{ name: 'docs-development-getting-started' }">Get Started</i-button>
                 </i-column>
             </i-row>
         </i-header>
@@ -16,7 +16,7 @@
                 <i-column>
                     <i-row>
                         <i-column xs="12">
-                            <site-navigation></site-navigation>
+
                         </i-column>
                     </i-row>
                 </i-column>
