@@ -50,7 +50,7 @@
 - [Copyright and license](#copyright-and-license)
 
 ## Installation
-Read the [Getting started page](https://inkline.io/docs/getting-started/) for information on the framework contents, templates, examples, and more.
+Read the [Getting started page](https://inkline.io/docs/introduction/getting-started/) for information on the framework contents, templates, examples, and more.
 
 - Install with [npm](https://www.npmjs.com): 
 ~~~
