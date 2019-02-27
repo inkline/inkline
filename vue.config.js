@@ -1,6 +1,4 @@
 // vue.config.js
-const path = require('path');
-
 module.exports = {
     pages: {
         index: {
@@ -11,8 +9,9 @@ module.exports = {
     },
     filenameHashing: false,
     chainWebpack: (config) => {
+        config.optimization.delete('splitChunks');
         config.resolve.alias
-            .set('@inkline/inkline', path.join(__dirname, 'src'))
+            .set('@inkline/inkline', __dirname)
             .end();
     }
 };
