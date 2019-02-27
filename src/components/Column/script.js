@@ -1,5 +1,5 @@
-import { breakpointKeys } from '@inkline/inkline/constants';
-import { breakpointClass, capitalizeFirst, modifierClass } from '@inkline/inkline/helpers';
+import { breakpointKeys } from '@inkline/inkline/src/constants';
+import { breakpointClass, capitalizeFirst, modifierClass } from '@inkline/inkline/src/helpers';
 
 const properties = {};
 for (let breakpoint of breakpointKeys) {

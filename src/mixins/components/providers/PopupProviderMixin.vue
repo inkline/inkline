@@ -1,6 +1,6 @@
 <script>
     import PopperJS from 'popper.js';
-    import popupManager from '@inkline/inkline/factories/PopupManager';
+    import popupManager from '@inkline/inkline/src/factories/PopupManager';
 
     /**
      * @param {HTMLElement} [reference=$refs.reference] - The reference element used to position the popper.

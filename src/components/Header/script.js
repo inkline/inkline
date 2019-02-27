@@ -1,7 +1,7 @@
-import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/SizePropertyMixin';
-import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
+import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
+import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
 
-import IContainer from "@inkline/inkline/components/Container";
+import IContainer from "@inkline/inkline/src/components/Container";
 import IRow from '../Row';
 import IColumn from '../Column';
 

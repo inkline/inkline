@@ -69,7 +69,7 @@
     "type": "git",
     "url": "git+https://github.com/inkline/inkline.git"
   },
-  "main": "dist/js/inkline.js",
+  "main": "src/index.js",
   "files": [
     "dist/",
     "src/",

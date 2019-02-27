@@ -2,13 +2,13 @@ import IContainer from '../Container';
 import IRow from '../Row';
 import IColumn from '../Column';
 
-import AttributesProviderMixin from '@inkline/inkline/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/mixins/components/providers/ClassesProviderMixin';
+import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
 
-import SizePropertyMixin from '@inkline/inkline/mixins/components/properties/SizePropertyMixin';
-import VariantPropertyMixin from '@inkline/inkline/mixins/components/properties/VariantPropertyMixin';
+import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
+import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
 
-import { breakpoints } from '@inkline/inkline/constants';
+import { breakpoints } from '@inkline/inkline/src/constants';
 
 export default {
     name: 'INavbar',

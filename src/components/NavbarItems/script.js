@@ -1,5 +1,5 @@
-import ITransitionExpand from '@inkline/inkline/transitions/TransitionExpand';
-import { breakpoints } from "@inkline/inkline/constants";
+import ITransitionExpand from '@inkline/inkline/src/transitions/TransitionExpand';
+import { breakpoints } from "@inkline/inkline/src/constants";
 
 export default {
     name: 'INavbarItems',

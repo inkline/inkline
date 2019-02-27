@@ -1,4 +1,4 @@
-import { getStyleProperty } from "@inkline/inkline/helpers";
+import { getStyleProperty } from "@inkline/inkline/src/helpers";
 
 export default {
     name: 'ITransitionExpand',
