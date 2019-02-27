@@ -1,6 +1,6 @@
 <template>
 <div id="default-layout">
-    <navbar id="navbar" class="-transparent" />
+    <navbar id="navbar" :class="navbarClass" />
     <i-layout>
         <i-layout-content>
             <nuxt />
@@ -15,6 +15,8 @@
 
 #default-layout
     .navbar
+        transition: background 0.3s ease;
+
         .logo.-light
             display: none;
 
@@ -31,6 +33,13 @@
                     &.-dark
                         display: none;
 
+                .items
+                    background: rgba(0, 0, 0, 0.2)
+
+                .nav > .item:hover
+                    background: rgba(0, 0, 0, 0.1)
+
+
             +-breakpoint-up(lg)
                 .brand
                     color: --colors['dark']
@@ -41,18 +50,25 @@
                     &.-dark
                         display: inline-block;
 
+            .nav
+                > .item
+                    color: white
+
+            .hamburger
+                > .bars::before,
+                > .bars,
+                > .bars::after
+                    background-color: --colors['white']
 
 
-
-        .nav
-            > .item
-                color: white
 </style>
 
 <script>
 import Navbar from '@components/Navbar';
 import Layout from "@components/Layout";
 import { IContainer, IColumn, IRow } from '@inkline/inkline';
+
+import {on} from "@inkline/inkline/src/helpers";
 
 export default {
     name: 'Default',
@@ -65,6 +81,22 @@ export default {
         IColumn,
         IRow,
         Navbar
+    },
+    data () {
+        return {
+            navbarClass: {
+                '-transparent': true
+            }
+        }
+    },
+    methods: {
+        onScroll () {
+            this.navbarClass['-transparent'] = (window.pageYOffset || document.documentElement.scrollTop) === 0;
+        }
+    },
+    created () {
+        on(window, 'scroll', this.onScroll);
+        this.onScroll();
     }
 };
 </script>
