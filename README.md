@@ -4,7 +4,7 @@
     </a>
 </p>
 
-<h1 align="center">Inkline</h1>
+<h1 align="center">Inkline</h1> 
 
 <p align="center">
     Inkline is a modern UI/UX framework designed for creating flawless responsive websites. Inkline is 
@@ -27,7 +27,7 @@
     <a href="https://travis-ci.org/inkline/inkline">
         <img src="https://travis-ci.org/inkline/inkline.svg?branch=master" alt="Build">
     </a>    
-    <a href='https://coveralls.io/github/inkline/inkline?branch=master'><img src='https://coveralls.io/repos/github/inkline/inkline/badge.svg' alt='Coverage Status' /></a>
+    <a href='https://coveralls.io/github/inkline/inkline?branch=master'><img src='https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master' alt='Coverage Status' /></a>
     <img src="https://img.shields.io/david/inkline/inkline.svg?style=popout" alt="dependencies status">
     <a href="https://www.npmjs.com/package/@inkline/inkline">
         <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
@@ -50,7 +50,7 @@
 - [Copyright and license](#copyright-and-license)
 
 ## Installation
-Read the [Getting started page](https://inkline.io/docs/getting-started/) for information on the framework contents, templates, examples, and more.
+Read the [Getting started page](https://inkline.io/docs/introduction/getting-started/) for information on the framework contents, templates, examples, and more.
 
 - Install with [npm](https://www.npmjs.com): 
 ~~~
