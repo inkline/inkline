@@ -1,5 +1,5 @@
-import ClickOutside from '@inkline/inkline/directives/click-outside';
-import { clickOutsideHandler, createDocumentHandler } from '@inkline/inkline/directives/click-outside';
+import ClickOutside from '@inkline/inkline/src/directives/click-outside';
+import { clickOutsideHandler, createDocumentHandler } from '@inkline/inkline/src/directives/click-outside';
 
 describe('Directives', () => {
     describe('v-click-outside', () => {

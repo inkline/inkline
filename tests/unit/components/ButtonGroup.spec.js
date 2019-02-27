@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import ButtonGroup from '@inkline/inkline/components/ButtonGroup';
+import ButtonGroup from '@inkline/inkline/src/components/ButtonGroup';
 
 describe('Components', () => {
     describe('ButtonGroup', () => {

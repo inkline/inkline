@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import NavbarItems from '@inkline/inkline/components/NavbarItems';
+import NavbarItems from '@inkline/inkline/src/components/NavbarItems';
 
 describe('Components', () => {
     describe('NavbarItems', () => {

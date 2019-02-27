@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Breadcrumb from '@inkline/inkline/components/Breadcrumb';
+import Breadcrumb from '@inkline/inkline/src/components/Breadcrumb';
 
 describe('Components', () => {
     describe('Breadcrumb', () => {

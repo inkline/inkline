@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import FormError from '@inkline/inkline/components/FormError';
+import FormError from '@inkline/inkline/src/components/FormError';
 
 describe('Components', () => {
     describe('FormError', () => {

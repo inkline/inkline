@@ -1,5 +1,5 @@
 import {shallowMount} from "@vue/test-utils";
-import Linkable from '@inkline/inkline/components/Linkable';
+import Linkable from '@inkline/inkline/src/components/Linkable';
 
 const RouterLink = {
     name: 'RouterLink',

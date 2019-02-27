@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import FormLabel from '@inkline/inkline/components/FormLabel';
+import FormLabel from '@inkline/inkline/src/components/FormLabel';
 
 describe('Components', () => {
     describe('FormLabel', () => {

@@ -1,4 +1,4 @@
-import { uid } from '@inkline/inkline/helpers/uid';
+import { uid } from '@inkline/inkline/src/helpers/uid';
 
 describe('Helpers', () => {
     describe('uid()', () => {

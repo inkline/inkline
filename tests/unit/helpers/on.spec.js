@@ -1,4 +1,4 @@
-import { on, addEventListenerBinding, attachEventBinding } from '@inkline/inkline/helpers/on';
+import { on, addEventListenerBinding, attachEventBinding } from '@inkline/inkline/src/helpers/on';
 
 describe('Helpers', () => {
     describe('on()', () => {

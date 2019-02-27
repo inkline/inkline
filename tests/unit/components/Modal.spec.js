@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
-import { popupManager } from '@inkline/inkline/factories/PopupManager';
-import Modal from '@inkline/inkline/components/Modal';
+import { popupManager } from '@inkline/inkline/src/factories/PopupManager';
+import Modal from '@inkline/inkline/src/components/Modal';
 
 describe('Components', () => {
     describe('Modal', () => {

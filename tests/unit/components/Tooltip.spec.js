@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Tooltip from '@inkline/inkline/components/Tooltip';
+import Tooltip from '@inkline/inkline/src/components/Tooltip';
 
 describe('Components', () => {
     describe('Popover', () => {

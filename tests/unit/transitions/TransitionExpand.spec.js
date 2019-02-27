@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import TransitionExpand from '@inkline/inkline/transitions/TransitionExpand';
+import TransitionExpand from '@inkline/inkline/src/transitions/TransitionExpand';
 
 describe('Transitions', () => {
     describe('TransitionExpand', () => {

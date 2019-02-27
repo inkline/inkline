@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import FormGroup from '@inkline/inkline/components/FormGroup';
+import FormGroup from '@inkline/inkline/src/components/FormGroup';
 
 describe('Components', () => {
     describe('FormGroup', () => {

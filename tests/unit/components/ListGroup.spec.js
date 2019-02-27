@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import ListGroup from '@inkline/inkline/components/ListGroup';
+import ListGroup from '@inkline/inkline/src/components/ListGroup';
 
 describe('Components', () => {
     describe('ListGroup', () => {

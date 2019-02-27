@@ -1,4 +1,4 @@
-import { off, removeEventListenerBinding, detachEventBinding } from '@inkline/inkline/helpers/off';
+import { off, removeEventListenerBinding, detachEventBinding } from '@inkline/inkline/src/helpers/off';
 
 describe('Helpers', () => {
     describe('off()', () => {

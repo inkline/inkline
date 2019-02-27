@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 
-import PopupControlsProviderMixin from '@inkline/inkline/mixins/components/providers/PopupControlsProviderMixin';
+import PopupControlsProviderMixin from '@inkline/inkline/src/mixins/components/providers/PopupControlsProviderMixin';
 
 describe('Mixins', () => {
     describe('PopupControlsProviderMixin', () => {

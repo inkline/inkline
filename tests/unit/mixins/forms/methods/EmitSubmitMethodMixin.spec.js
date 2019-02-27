@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 
-import EmitSubmitMethodMixin from '@inkline/inkline/mixins/forms/methods/EmitSubmitMethodMixin';
-import {FormBuilder} from "@inkline/inkline/factories/FormBuilder";
+import EmitSubmitMethodMixin from '@inkline/inkline/src/mixins/forms/methods/EmitSubmitMethodMixin';
+import {FormBuilder} from "@inkline/inkline/src/factories/FormBuilder";
 
 describe('Mixins', () => {
     describe('EmitSubmitMethodMixin', () => {

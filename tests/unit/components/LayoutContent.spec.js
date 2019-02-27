@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import LayoutContent from '@inkline/inkline/components/LayoutContent';
+import LayoutContent from '@inkline/inkline/src/components/LayoutContent';
 
 describe('Components', () => {
     describe('LayoutContent', () => {

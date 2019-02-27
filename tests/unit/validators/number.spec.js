@@ -1,4 +1,4 @@
-import { number } from '@inkline/inkline/validators/number';
+import { number } from '@inkline/inkline/src/validators/number';
 
 describe('Validators', () => {
     describe('number()', () => {

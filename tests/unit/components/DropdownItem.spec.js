@@ -1,5 +1,5 @@
 import {shallowMount} from '@vue/test-utils';
-import DropdownItem from '@inkline/inkline/components/DropdownItem';
+import DropdownItem from '@inkline/inkline/src/components/DropdownItem';
 
 describe('Components', () => {
     describe('DropdownItem', () => {

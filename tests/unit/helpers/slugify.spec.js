@@ -1,4 +1,4 @@
-import { slugify } from '@inkline/inkline/helpers/slugify';
+import { slugify } from '@inkline/inkline/src/helpers/slugify';
 
 describe('Helpers', () => {
     describe('slugify()', () => {

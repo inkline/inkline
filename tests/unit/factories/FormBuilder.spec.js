@@ -1,4 +1,4 @@
-import { FormBuilder } from "@inkline/inkline/factories/FormBuilder";
+import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
 
 describe('Factories', () => {
     describe('FormBuilder', () => {

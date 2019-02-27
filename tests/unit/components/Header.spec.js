@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import Header from '@inkline/inkline/components/Header';
+import Header from '@inkline/inkline/src/components/Header';
 
 describe('Components', () => {
     describe('Header', () => {

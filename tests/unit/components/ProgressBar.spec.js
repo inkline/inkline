@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import ProgressBar from '@inkline/inkline/components/ProgressBar';
+import ProgressBar from '@inkline/inkline/src/components/ProgressBar';
 
 describe('Components', () => {
     describe('ProgressBar', () => {

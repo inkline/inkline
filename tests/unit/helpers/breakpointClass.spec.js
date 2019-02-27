@@ -1,4 +1,4 @@
-import { breakpointClass } from '@inkline/inkline/helpers/breakpointClass';
+import { breakpointClass } from '@inkline/inkline/src/helpers/breakpointClass';
 
 describe('Helpers', () => {
     describe('breakpointClass()', () => {

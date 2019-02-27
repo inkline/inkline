@@ -1,4 +1,4 @@
-import { custom } from '@inkline/inkline/validators/custom';
+import { custom } from '@inkline/inkline/src/validators/custom';
 
 describe('Validators', () => {
     describe('custom()', () => {

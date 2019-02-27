@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import RadioGroup from '@inkline/inkline/components/RadioGroup';
+import RadioGroup from '@inkline/inkline/src/components/RadioGroup';
 
 describe('Components', () => {
     describe('RadioGroup', () => {

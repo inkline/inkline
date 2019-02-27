@@ -1,4 +1,4 @@
-import { addClass } from '@inkline/inkline/helpers/addClass';
+import { addClass } from '@inkline/inkline/src/helpers/addClass';
 
 describe('Helpers', () => {
     describe('addClass()', () => {

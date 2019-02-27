@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import CheckableGroup from '@inkline/inkline/components/CheckableGroup';
+import CheckableGroup from '@inkline/inkline/src/components/CheckableGroup';
 
 describe('Components', () => {
     describe('CheckableGroup', () => {
