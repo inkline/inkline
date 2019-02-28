@@ -5365,14 +5365,6 @@ __webpack_require__.r(__webpack_exports__);
     tag: {
       type: String,
       default: 'button'
-    },
-
-    /**
-     * Icon
-     */
-    icon: {
-      type: String,
-      default: ''
     }
   },
   created: function created() {
@@ -9858,7 +9850,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'IDropdownItem',
   extends: _Linkable__WEBPACK_IMPORTED_MODULE_1__["default"],
-  mixins: [_inkline_inkline_src_mixins_components_properties_DisabledPropertyMixin__WEBPACK_IMPORTED_MODULE_2__["default"], _inkline_inkline_src_mixins_components_properties_TabIndexPropertyMixin__WEBPACK_IMPORTED_MODULE_3__["default"], _inkline_inkline_src_mixins_components_providers_AttributesProviderMixin__WEBPACK_IMPORTED_MODULE_4__["default"], _inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_5__["default"], _inkline_inkline_src_mixins_components_providers_EmitProviderMixin__WEBPACK_IMPORTED_MODULE_6__["default"]],
+  mixins: [_inkline_inkline_src_mixins_components_properties_DisabledPropertyMixin__WEBPACK_IMPORTED_MODULE_2__["default"], _inkline_inkline_src_mixins_components_properties_TabIndexPropertyMixin__WEBPACK_IMPORTED_MODULE_3__["default"], _inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_5__["default"], _inkline_inkline_src_mixins_components_providers_EmitProviderMixin__WEBPACK_IMPORTED_MODULE_6__["default"]],
   props: {
     action: {
       type: [String, Number, Boolean],
