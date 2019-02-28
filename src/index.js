@@ -122,11 +122,9 @@ class Inkline {
     }
 }
 
-(function () {
-    if (typeof window !== 'undefined' && window.Vue) {
-        window.Vue.use(Inkline);
-    }
-})();
+if (typeof window !== 'undefined' && window.Vue) {
+    window.Vue.use(Inkline);
+}
 
 export {
     IAlert,

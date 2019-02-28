@@ -1,10 +1,22 @@
-rm dist/index.html
+rm dist/demo.html
 
-mv dist/js/index.js dist/js/inkline.js
-sed -i '' 's/index.js.map/inkline.js.map/g' 'dist/js/inkline.js'
-mv dist/js/index.js.map dist/js/inkline.js.map
-mv dist/css/index.css dist/css/inkline.css
+rm dist/Inkline.common.js
+rm dist/Inkline.common.js.map
+rm dist/Inkline.umd.min.js
+rm dist/Inkline.umd.min.js.map
+# rm dist/Inkline.umd.js
+# rm dist/Inkline.umd.js.map
 
-#git add dist/
-#git commit -m "Generated dist folder."
+mv dist/Inkline.umd.js dist/inkline.js
+mv dist/Inkline.umd.js.map dist/inkline.js.map
+sed -i '' 's/Inkline.umd.js.map/inkline.js.map/g' 'dist/inkline.js'
+
+# mv dist/Inkline.umd.min.js dist/inkline.js
+# mv dist/Inkline.umd.min.js.map dist/inkline.js.map
+# sed -i '' 's/Inkline.umd.min.js.map/inkline.js.map/g' 'dist/inkline.js'
+
+mv dist/Inkline.css dist/inkline.css
+
+# git add dist/
+# git commit -m "Generated dist folder."
 exit 0

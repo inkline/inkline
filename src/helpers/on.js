@@ -13,7 +13,7 @@ export function attachEventBinding (element, event, handler) {
 }
 
 export const on = (function() {
-    if (!Vue.prototype.$isServer && document.addEventListener) {
+    if (document && document.addEventListener) {
         return addEventListenerBinding;
     } else {
         return attachEventBinding;

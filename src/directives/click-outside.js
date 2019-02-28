@@ -15,8 +15,8 @@ export const clickOutsideHandler = {
     }
 };
 
-!Vue.prototype.$isServer && on(document, 'mousedown', clickOutsideHandler.onMouseDown);
-!Vue.prototype.$isServer && on(document, 'mouseup', clickOutsideHandler.onMouseUp);
+document && on(document, 'mousedown', clickOutsideHandler.onMouseDown);
+document && on(document, 'mouseup', clickOutsideHandler.onMouseUp);
 
 export function createDocumentHandler(element, binding, vnode) {
     return function(mouseup = {}, mousedown = {}) {
