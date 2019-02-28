@@ -1,0 +1,51 @@
+import {AttributesProviderMixin} from "./mixins/components/providers/AttributesProviderMixin";
+import {ClassesProviderMixin} from "./mixins/components/providers/ClassesProviderMixin";
+import {EmitProviderMixin} from "./mixins/components/providers/EmitProviderMixin";
+import {PopupProviderMixin} from "./mixins/components/providers/PopupProviderMixin";
+import {PopupControlsProviderMixin} from "./mixins/components/providers/PopupControlsProviderMixin";
+import {EmitFocusMethodMixin} from "./mixins/components/methods/EmitFocusMethodMixin";
+import {SizePropertyMixin} from "./mixins/components/properties/SizePropertyMixin";
+import {VariantPropertyMixin} from "./mixins/components/properties/VariantPropertyMixin";
+import {DisabledPropertyMixin} from "./mixins/components/properties/DisabledPropertyMixin";
+import {Size} from "./constants/size";
+import {MonochromeVariants} from "./constants/variants";
+
+export declare class ITooltip implements AttributesProviderMixin, ClassesProviderMixin, EmitProviderMixin, PopupProviderMixin, PopupControlsProviderMixin, EmitFocusMethodMixin, SizePropertyMixin, VariantPropertyMixin, DisabledPropertyMixin {
+    appendToBody: boolean;
+    arrow: boolean;
+    arrowOffset: number;
+    disabled: boolean;
+    hideTimeout: number;
+    offset: number;
+    placement: string;
+    popperOptions: any;
+    popup: any;
+    reference: any;
+    showTimeout: number;
+    size: Size;
+    transformOrigin: boolean | string;
+    trigger: string;
+    variant: MonochromeVariants;
+
+    addEvents(): void;
+    attributes(): { [p: string]: string };
+    beforeDestroy(): void;
+    broadcast(parentComponentName: string, eventName: string, params: any): void;
+    classes(): Array<{ [p: string]: boolean }>;
+    createPopper(): void;
+    deactivated(): void;
+    destroyPopper(): void;
+    dispatch(childComponentName: string, eventName: string, params: any): void;
+    doDestroy(): void;
+    emitBlur(event: Event): void;
+    emitFocus(event: Event): void;
+    hide(): void;
+    initAriaAttributes(): void;
+    initElements(): void;
+    isDisabled(): boolean;
+    onClick(): void;
+    removeEvents(): void;
+    resetTransformOrigin(): void;
+    show(): void;
+    updatePopper(): void;
+}

@@ -5,7 +5,7 @@ import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/provide
 import InjectParentFormProviderMixin from '@inkline/inkline/src/mixins/forms/providers/InjectParentFormProviderMixin';
 import ModelGroupProviderMixin from '@inkline/inkline/src/mixins/forms/providers/ModelGroupProviderMixin';
 
-import ClickMethodMixin from '@inkline/inkline/src/mixins/forms/methods/ClickInputRefMethodMixin';
+import ClickInputRefMethodMixin from '@inkline/inkline/src/mixins/forms/methods/ClickInputRefMethodMixin';
 import EmitClickMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitClickMethodMixin';
 import EmitFocusMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitFocusMethodMixin';
 import EmitInputMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitInputMethodMixin';
@@ -29,7 +29,7 @@ export default {
         InjectParentFormProviderMixin,
         ModelGroupProviderMixin,
 
-        ClickMethodMixin,
+        ClickInputRefMethodMixin,
         EmitClickMethodMixin,
         EmitFocusMethodMixin,
         EmitInputMethodMixin,

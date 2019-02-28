@@ -52,15 +52,7 @@ export default {
         tag: {
             type: String,
             default: 'button'
-        },
-
-        /**
-         * Icon
-         */
-        icon: {
-            type: String,
-            default: ''
-        },
+        }
     },
     created () {
         this.classesProvider.add(() => ({

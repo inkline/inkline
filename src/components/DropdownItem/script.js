@@ -14,7 +14,6 @@ export default {
         DisabledPropertyMixin,
         TabIndexPropertyMixin,
 
-        AttributesProviderMixin,
         ClassesProviderMixin,
         EmitProviderMixin
     ],
