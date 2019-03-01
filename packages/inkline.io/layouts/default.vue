@@ -52,7 +52,10 @@
 
             .nav
                 > .item
-                    color: white
+                    color: rgba(255, 255, 255, 0.85);
+
+                    &:hover
+                        color: rgba(255, 255, 255, 1);
 
             .hamburger
                 > .bars::before,

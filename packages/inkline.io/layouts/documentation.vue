@@ -55,7 +55,7 @@ export default {
                 const code = pre.querySelector('code.line-numbers');
                 const linesCount = code.innerHTML.split('\n').length - 1;
 
-                const span = code.querySelector('span').cloneNode(true);
+                const span = (code.querySelector('span') || code).cloneNode(true);
                 span.style.display = 'block';
                 span.style.visibility = 'hidden';
                 span.style.position = 'absolute';
