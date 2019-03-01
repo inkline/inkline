@@ -8,11 +8,6 @@ module.exports = {
         }
     },
     filenameHashing: false,
-    configureWebpack: {
-        output: {
-            libraryExport: 'default'
-        }
-    },
     chainWebpack: (config) => {
         config.optimization.delete('splitChunks');
         config.optimization.removeAvailableModules(false);
