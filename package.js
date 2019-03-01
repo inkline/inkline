@@ -1,7 +1,7 @@
 Package.describe({
     name: 'inkline:inkline',
-    version: "0.0.7",
-    summary: "Inkline is a UI/UX framework designed for creating flawless responsive websites, inspired by Apple.",
+    version: "1.8.13",
+    summary: "Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications",
     git: 'https://github.com/inkline/inkline.git',
     documentation: 'README.md'
 });
@@ -9,7 +9,7 @@ Package.describe({
 Package.onUse(function (api) {
     api.versionsFrom('METEOR@1.0');
     api.addFiles([
-        'dist/css/inkline.css',
-        'dist/js/inkline.js'
+        'dist/inkline.css',
+        'dist/inkline.js'
     ]);
 });

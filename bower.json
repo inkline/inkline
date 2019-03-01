@@ -1,7 +1,7 @@
 {
   "name": "inkline",
-  "version": "1.0.1",
-  "description": "Inkline is a stylish, powerful and intuitive front-end framework built for hassle-free web development.",
+  "version": "1.8.13",
+  "description": "Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications",
   "main": "src/index.js",
   "authors": [
     "Alex Grozav (https://pixevil.com)"

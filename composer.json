@@ -1,6 +1,6 @@
 {
   "name": "inkline/inkline",
-  "description": "Inkline is a UI/UX framework designed for creating flawless responsive websites, using Gradient Design.",
+  "description": "Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications",
   "type": "css-framework",
   "license": "ISC",
   "authors": [
