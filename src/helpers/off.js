@@ -1,5 +1,3 @@
-import Vue from 'vue';
-
 export function removeEventListenerBinding (element, event, handler) {
     if (element && event) {
         element.removeEventListener(event, handler, false);

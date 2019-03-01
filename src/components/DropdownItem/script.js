@@ -3,7 +3,6 @@ import Linkable from '../Linkable';
 import DisabledPropertyMixin from '@inkline/inkline/src/mixins/components/properties/DisabledPropertyMixin';
 import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
 
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
 import EmitProviderMixin from '@inkline/inkline/src/mixins/components/providers/EmitProviderMixin';
 

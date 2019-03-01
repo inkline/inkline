@@ -1,5 +1,3 @@
-import Vue from 'vue';
-
 export function addEventListenerBinding (element, event, handler) {
     if (element && event && handler) {
         element.addEventListener(event, handler, false);

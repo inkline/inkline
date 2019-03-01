@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import { on, isVisible } from '@inkline/inkline/src/helpers';
 
 export const clickOutsideHandler = {
