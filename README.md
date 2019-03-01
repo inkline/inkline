@@ -43,6 +43,7 @@
 ## Table of contents
 - [Installation](#installation)
 - [Usage](#usage)
+- [CDN](#cdn)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Contributing](#contributing)
 - [Community](#community)
@@ -55,37 +56,39 @@
 ## Installation
 Read the [Getting started page](https://inkline.io/docs/introduction/getting-started/) for information on the framework contents, templates, examples, and more.
 
-- Install with [npm](https://www.npmjs.com): 
+- Install with [npm](https://www.npmjs.com/package/@inkline/inkline): 
 ~~~
 npm install --save @inkline/inkline
 ~~~
-- Install with [yarn](https://yarnpkg.com/en/):
+- Install with [yarn](https://yarnpkg.com/en/package/@inkline/inkline):
 ~~~
 yarn add @inkline/inkline
 ~~~
-
-## Usage
-First, import core styles, written in Stylus:
-
-~~~js
-import '@inkline/inkline/index.styl';
+- Install with [composer](https://packagist.org/packages/inkline/inkline):
+~~~
+composer require inkline/inkline
 ~~~
 
-If you already have your Webpack configuration ready for Vue, importing the framework is as simple as:
+## Usage
+First, we'll import the core styles, after which we import and register the script files. If you already have your Webpack configuration ready for Vue, importing the framework is as simple as:
 
 ~~~js
 import Vue from 'vue';
+import '@inkline/inkline/dist/inkline.css';
 import Inkline from '@inkline/inkline';
 
 Vue.use(Inkline);
 ~~~
 
-Alternatively, you can import components individually:
+Next, start using the many components that Inkline has to offer.
 
-~~~js
-import { IButton } from '@inkline/inkline';
+## CDN
 
-Vue.component(IButton.name, IButton);
+If you're not using using package managers and build systems and you want to add Inkline to your project, you can import the compiled files from CDN:
+
+~~~html
+<link href="https://cdn.jsdelivr.net/npm/@inkline/inkline/dist/inkline.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@inkline/inkline/dist/inkline.js"></script>
 ~~~
 
 ## Bugs and feature requests
@@ -103,7 +106,6 @@ Get updates on Inkline's development and chat with the project maintainers and c
 
 ## Releases
 [Previous releases](https://github.com/inkline/inkline/releases) and their documentation are also available for download.
-
 
 ## Versioning
 For increased transparency and backward compatibility, 
