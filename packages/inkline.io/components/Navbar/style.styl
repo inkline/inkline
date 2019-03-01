@@ -1,4 +1,5 @@
 @import '~@inkline/inkline/css/config/index'
+@import '~@inkline/inkline/css/mixins/index'
 
 .navbar
     .brand
@@ -8,9 +9,10 @@
         img
             margin-right: (--spacer / 2)
 
-    .nav
-        margin-right: - --spacer
+    +-breakpoint-up(lg)
+        .nav
+            margin-right: - --spacer
 
-        > .item.-active
-            padding-left: --spacer - 0.3
-            padding-right: --spacer - 0.3
+            > .item.-active
+                padding-left: --spacer - 0.3
+                padding-right: --spacer - 0.3
