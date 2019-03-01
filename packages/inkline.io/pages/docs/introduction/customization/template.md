@@ -25,7 +25,7 @@ Vue.use(Inkline);
 
 ### Variables
 
-Create a new stylus file called `variables.styl`, where we'll define the values you want to use with Inkline. Let's say we want to override the primary and secondary colors for all components.
+Create a new Stylus file called `variables.styl`, where we'll define the values you want to use with Inkline. Let's say we want to override the primary and secondary colors for all components.
 
 ~~~css 
 --color-primary := #d84550
@@ -34,7 +34,7 @@ Create a new stylus file called `variables.styl`, where we'll define the values 
 
 ### Configuration
 
-Last but not least, the important part is to make sure our `variables.styl` file gets included before every stylus file that Inkline provides.
+Last but not least, the important part is to make sure our `variables.styl` file gets included before every Stylus file that Inkline provides.
 
 #### Using `@vue/cli`
 
@@ -53,6 +53,7 @@ module.exports = {
   
     // ... The rest of the configuration 
   
+    transpileDependencies: ["@inkline/inkline"],
     pluginOptions: {
         'style-resources-loader': {
             'patterns': [
@@ -65,7 +66,7 @@ module.exports = {
 
 #### Using `webpack`
 
-Make sure you have `stylus-loader`, the loader for stylus files installed and properly configured as follows in your `webpack.config.js`:
+Make sure you have `stylus-loader`, the loader for Stylus files installed and properly configured as follows in your `webpack.config.js`:
 
 ~~~js
 const path = require('path');
@@ -75,6 +76,7 @@ module.exports = {
         rules: [
             {
                 test: /\.styl$/,
+                exclude: /node_modules(?!\/@inkline\/inkline)/,
                 use: [
                     'style-loader',
                     'css-loader',
@@ -115,6 +117,9 @@ module.exports = {
   
     modules: [
         ['nuxt-stylus-resources-loader', path.resolve(__dirname, 'path/to/variables.styl')]
-    ]   
+    ],
+    build: {
+        transpile: ['@inkline/inkline']
+    }
 }
 ~~~
