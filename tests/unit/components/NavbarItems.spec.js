@@ -38,6 +38,13 @@ describe('Components', () => {
                     expect(wrapper.vm.onWindowResize).toBeDefined();
                 });
 
+                it('should return if navbar collapse breakpoint is not set', () => {
+                    window.innerWidth = 600;
+                    wrapper.vm.navbar.collapse = '';
+                    wrapper.vm.onWindowResize();
+                    expect(wrapper.vm.collapsible).toEqual(false);
+                });
+
                 it('should set collapsible to true if window.innerWidth is less than or equal to breakpoint maximum', () => {
                     window.innerWidth = 600;
                     wrapper.vm.onWindowResize();

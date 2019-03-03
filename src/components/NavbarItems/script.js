@@ -14,6 +14,8 @@ export default {
     },
     methods: {
         onWindowResize() {
+            if (!this.navbar.collapse) { return; }
+
             this.collapsible = window.innerWidth <= breakpoints[this.navbar.collapse][1];
         }
     },

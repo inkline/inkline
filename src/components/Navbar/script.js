@@ -64,6 +64,8 @@ export default {
             this.collapsed = !this.collapsed;
         },
         onWindowResize() {
+            if (!this.collapse) { return; }
+
             const windowWidth = window.innerWidth;
 
             if (this.windowWidth <= breakpoints[this.collapse][1] && windowWidth > breakpoints[this.collapse][1]) {

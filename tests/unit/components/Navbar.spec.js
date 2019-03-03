@@ -86,6 +86,15 @@ describe('Components', () => {
                     expect(wrapper.vm.onWindowResize).toBeDefined();
                 });
 
+                it('should return if collapse breakpoint is not set', () => {
+                    window.innerWidth = 100;
+                    wrapper.vm.onWindowResize();
+                    wrapper.setProps({ collapse: '' });
+                    window.innerWidth = 1000;
+                    wrapper.vm.onWindowResize();
+                    expect(wrapper.vm.windowWidth).toEqual(100);
+                });
+
                 it('should set windowWidth', () => {
                     window.innerWidth = 100;
                     wrapper.vm.onWindowResize();
