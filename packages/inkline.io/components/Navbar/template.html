@@ -1,4 +1,4 @@
-<i-navbar class="_fixed-top">
+<i-navbar id="navbar" class="_fixed-top" collapse="">
     <i-navbar-brand :to="{ name: 'index' }">
         <img class="logo -dark" src="../../static/images/logo-80.png" height="26">
         <img class="logo -light" src="../../static/images/logo-light-80.png" height="26">
@@ -7,10 +7,12 @@
     <i-navbar-items class="_justify-content-end">
         <i-nav>
             <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'docs-introduction-getting-started' }">Documentation</i-nav-item>
+            <i-nav-item :to="{ name: 'docs-introduction-getting-started' }">
+                <span class="_visible-lg-and-up">Documentation</span>
+                <span class="_visible-md-and-down">Docs</span>
+            </i-nav-item>
             <i-nav-item href="https://github.com/inkline/inkline" target="_blank">
-                <font-awesome-icon class="_visible-lg-and-up" :icon="['fab', 'github']" size="lg" />
-                <span class="_visible-md-and-down">GitHub</span>
+                <font-awesome-icon :icon="['fab', 'github']" size="lg" />
             </i-nav-item>
         </i-nav>
     </i-navbar-items>

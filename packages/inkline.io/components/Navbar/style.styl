@@ -1,18 +1,66 @@
 @import '~@inkline/inkline/css/config/index'
 @import '~@inkline/inkline/css/mixins/index'
 
-.navbar
-    .brand
-        .logo.-light
-            display: none
+#navbar
+    transition: background 0.3s ease
 
-        img
-            margin-right: (--spacer / 2)
+    > .container > .row > .column
+        > .brand
+            .logo.-light
+                display: none
 
-    +-breakpoint-up(lg)
-        .nav
+            img
+                margin-right: (--spacer / 2)
+
+
+        > .items > .nav
             margin-right: - --spacer
 
-            > .item.-active
-                padding-left: --spacer - 0.3
-                padding-right: --spacer - 0.3
+            > .item
+                border-radius: --border-radius-md
+                letter-spacing: 0.6px
+
+                &:hover
+                    background: rgba(0, 0, 0, 0.1)
+
+                &.-active
+                    letter-spacing: 0
+
+    &.-transparent
+        background: rgba(#e9ecef, 0.25)
+
+
+        > .container > .row > .column
+            > .items > .nav > .item
+                color: rgba(255, 255, 255, 0.85)
+
+                &:hover
+                    color: rgba(255, 255, 255, 1)
+
+        +-breakpoint-down(md)
+            > .container > .row > .column
+                > .brand
+                    color: --colors['light']
+
+                    .logo
+                        &.-light
+                            display: inline-block;
+                        &.-dark
+                            display: none;
+
+        +-breakpoint-up(lg)
+            > .container > .row > .column
+                > .brand
+                    color: --colors['dark']
+
+                    .logo
+                        &.-light
+                            display: none;
+                        &.-dark
+                            display: inline-block;
+
+        .hamburger
+            > .bars::before,
+            > .bars,
+            > .bars::after
+                background-color: --colors['light']
