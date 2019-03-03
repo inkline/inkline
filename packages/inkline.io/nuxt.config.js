@@ -36,8 +36,8 @@ module.exports = {
             { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.ico' },
             { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon/favicon-32x32.ico' },
             { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon/favicon-96x96.ico' },
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
-            { rel: 'manifest', href: '/manifest.json' }
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' }
+            // { rel: 'manifest', href: '/manifest.json' }
         ],
         htmlAttrs: {
             lang: 'en',
@@ -63,7 +63,8 @@ module.exports = {
     plugins: [
         '~/plugins/font-awesome',
         '~/plugins/inkline',
-        '~/plugins/prism'
+        '~/plugins/prism',
+        '~/plugins/algolia'
     ],
 
     /*
@@ -71,6 +72,7 @@ module.exports = {
     */
     modules: [
         '@nuxtjs/pwa',
+        '@nuxtjs/dotenv',
         'nuxt-babel'
     ],
 

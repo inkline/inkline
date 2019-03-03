@@ -12,58 +12,6 @@
 <style lang="stylus">
 @require '~@inkline/inkline/css/config/index'
 @require '~@inkline/inkline/css/mixins/index'
-
-#default-layout
-    .navbar
-        transition: background 0.3s ease;
-
-        .logo.-light
-            display: none;
-
-        &.-transparent
-            background: rgba(#e9ecef, 0.25)
-
-            +-breakpoint-down(md)
-                .brand
-                    color: --colors['light']
-
-                .logo
-                    &.-light
-                        display: inline-block;
-                    &.-dark
-                        display: none;
-
-                .items
-                    background: rgba(0, 0, 0, 0.2)
-
-                .nav > .item:hover
-                    background: rgba(0, 0, 0, 0.1)
-
-
-            +-breakpoint-up(lg)
-                .brand
-                    color: --colors['dark']
-
-                .logo
-                    &.-light
-                        display: none;
-                    &.-dark
-                        display: inline-block;
-
-            .nav
-                > .item
-                    color: rgba(255, 255, 255, 0.85);
-
-                    &:hover
-                        color: rgba(255, 255, 255, 1);
-
-            .hamburger
-                > .bars::before,
-                > .bars,
-                > .bars::after
-                    background-color: --colors['white']
-
-
 </style>
 
 <script>
