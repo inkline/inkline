@@ -36,13 +36,7 @@
             popperOptions: {
                 type: Object,
                 default() {
-                    return {
-                        modifiers: {
-                            computeStyle: {
-                                gpuAcceleration: false
-                            }
-                        }
-                    };
+                    return {};
                 }
             },
             reference: {},
@@ -102,11 +96,19 @@
                     this.resetTransformOrigin();
                     this.$nextTick(this.updatePopper);
                 };
+
                 if (typeof this.popperOptions.onUpdate === 'function') {
                     this.popperJS.onUpdate(this.popperOptions.onUpdate);
                 }
 
-                this.popperJS = new PopperJS(this.referenceElement, this.popupElement, this.popperOptions);
+                this.popperJS = new PopperJS(this.referenceElement, this.popupElement, Object.assign({
+                    modifiers: {
+                        computeStyle: {
+                            gpuAcceleration: false
+                        }
+                    }
+                }, this.popperOptions));
+
                 this.popperJS.popper.style.zIndex = popupManager.nextZIndex();
 
                 this.popupElement.addEventListener('click', (e) => e.stopPropagation());
