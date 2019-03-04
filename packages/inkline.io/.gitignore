@@ -85,3 +85,6 @@ sw.*
 
 # MacOS
 .DS_Store
+
+# Algolia configuration
+algolia.config.js

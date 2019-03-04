@@ -8,6 +8,7 @@ module.exports = {
         require('markdown-it-attrs'),
         require('markdown-it-emoji'),
         [require('markdown-it-include'), path.join(__dirname, 'pages')],
-        require('markdown-it-prism')
+        require('markdown-it-prism'),
+        require('markdown-it-named-headings')
     ]
 };
