@@ -1,4 +1,27 @@
 <div class="site-navigation">
+
+
+    <ais-instant-search :search-client="searchClient" index-name="inkline">
+        <ais-autocomplete>
+            <i-dropdown placement="bottom-right" slot-scope="{ currentRefinement, indices, refine }">
+                <i-input
+                    type="search"
+                    :value="currentRefinement"
+                    placeholder="Search for a product"
+                    @input="refine($event)">
+                    <font-awesome-icon icon="search" slot="prefix"></font-awesome-icon>
+                </i-input>
+                <i-dropdown-menu class="site-search" :popperOptions="popperOptions">
+                    <i-dropdown-item v-for="hit in indices[0].hits" :key="hit.objectID">
+                        <div class="title"><ais-highlight attribute="title" :hit="hit"/></div>
+                        <div class="subtitle"><ais-highlight attribute="subtitle" :hit="hit"/></div>
+                        <!--<div class="description"><ais-snippet attribute="description" :hit="hit"/></div>-->
+                    </i-dropdown-item>
+                </i-dropdown-menu>
+            </i-dropdown>
+        </ais-autocomplete>
+    </ais-instant-search>
+
     <ol>
         <li>
             <span>Introduction</span>
