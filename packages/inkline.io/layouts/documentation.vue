@@ -6,7 +6,7 @@
             <i-column>
                 <i-layout vertical>
                     <i-layout-aside id="layout-aside-left">
-                        <div class="layout-fixed-full-height" v-match-parent-width>
+                        <div class="layout-fixed-full-height">
                             <site-navigation></site-navigation>
                         </div>
                     </i-layout-aside>
