@@ -40,7 +40,7 @@ async function parsePageContent(html, url) {
     const { document } = new JSDOM(html, { runScripts: "dangerously" }).window;
     const title = document.querySelector("h1").textContent;
     let section;
-    let count = 0;
+    let order = 0;
 
     document.querySelectorAll("h1, h3, p").forEach((element) => {
         if (element.tagName === 'P') {
@@ -48,17 +48,22 @@ async function parsePageContent(html, url) {
                 return;
             }
 
-            section.description = element.textContent;
-
-            data.push(Object.assign({ objectID: slugify(`${section.title} ${count} ${section.subtitle || ''}`) }, section));
-            count += 1;
+            data[data.length - 1].description += element.textContent + '\n';
         } else {
-            section = { title, url };
+            section = {
+                title,
+                description: '',
+                order,
+                url
+            };
 
             if (element.tagName === 'H3') {
                 section.subtitle = element.textContent;
                 section.url += '#' + element.id;
             }
+
+            data.push(Object.assign({ objectID: slugify(`${section.title} ${order} ${section.subtitle || ''}`) }, section));
+            order += 1;
         }
     });
 }
@@ -87,7 +92,7 @@ markdownConfig.plugins.forEach((plugin) => {
 
 return Promise.all(promises).then(() => {
     algoliaIndex.addObjects(data);
-
+    // console.log(data);
     console.log("Search indices have been successfully added to algolia!")
 });
 
