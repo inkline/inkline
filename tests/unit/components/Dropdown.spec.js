@@ -42,6 +42,38 @@ describe('Components', () => {
                     expect(wrapper.vm.placement).toEqual('bottom');
                 });
             });
+
+            describe('keymap', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.keymap).toBeDefined();
+                    expect(wrapper.vm.keymap).toEqual({});
+                });
+            });
+        });
+
+        describe('computed', () => {
+            describe('actionKeymap()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.actionKeymap).toBeDefined();
+                    expect(wrapper.vm.actionKeymap).toEqual({
+                        navigate: ['up', 'down'],
+                        select: ['enter', 'space'],
+                        show: ['enter', 'space'],
+                        hide: ['esc', 'tab']
+                    });
+                });
+
+                it('should be extended by keymap prop', () => {
+                    wrapper.setProps({ keymap: { show: ['enter'] } });
+
+                    expect(wrapper.vm.actionKeymap).toEqual({
+                        navigate: ['up', 'down'],
+                        select: ['enter', 'space'],
+                        show: ['enter'],
+                        hide: ['esc', 'tab']
+                    });
+                });
+            });
         });
 
         describe('data', () => {

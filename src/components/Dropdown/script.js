@@ -41,6 +41,10 @@ export default {
         placement: {
             type: String,
             default: 'bottom'
+        },
+        keymap: {
+            type: Object,
+            default: () => ({})
         }
     },
     data() {
@@ -51,6 +55,18 @@ export default {
             id: this.$attrs.id || uid(basename + '-menu'),
             basename
         };
+    },
+    computed: {
+        actionKeymap() {
+            return {
+                navigate: ['up', 'down'],
+                select: ['enter', 'space'],
+                show: ['enter', 'space'],
+                hide: ['esc', 'tab'],
+
+                ...this.keymap
+            };
+        }
     },
     watch: {
         visible(value) {
@@ -63,7 +79,8 @@ export default {
             let activeIndex = this.items.findIndex((e) => e.active);
             let initialIndex = activeIndex > -1 ? activeIndex : 0;
 
-            if (isKey('up', e) || isKey('down', e)) {
+            // Default key: up or down
+            if (this.actionKeymap.navigate.some((key) => isKey(key, e))) {
                 this.show();
 
                 setTimeout(() => {
@@ -73,7 +90,8 @@ export default {
                 e.preventDefault();
                 e.stopPropagation();
 
-            } else if (isKey('enter', e) || isKey('space', e)) {
+            // Default key: enter or space
+            } else if (this.actionKeymap.show.some((key) => isKey(key, e))) {
                 this.onClick();
 
                 if (!this.visible) {
@@ -84,7 +102,8 @@ export default {
 
                 e.preventDefault();
 
-            } else if (isKey('tab', e) || isKey('esc', e)) {
+            // Default key: tab or esc
+            } else if (this.actionKeymap.hide.some((key) => isKey(key, e))) {
                 this.hide();
             }
         },
@@ -94,8 +113,8 @@ export default {
             const maxIndex = this.items.length - 1;
             let nextIndex;
 
-            // Key: up || down
-            if (isKey('up', e) || isKey('down', e)) {
+            // Default key: up or down
+            if (this.actionKeymap.navigate.some((key) => isKey(key, e))) {
                 if (isKey('up', e)) {
                     nextIndex = currentIndex !== 0 ? currentIndex - 1 : 0;
                 } else {
@@ -107,7 +126,8 @@ export default {
                 e.preventDefault();
                 e.stopPropagation();
 
-            } else if (isKey('enter', e) || isKey('space', e)) {
+            // Default key: enter or space
+            } else if (this.actionKeymap.select.some((key) => isKey(key, e))) {
                 target.click();
 
                 this.triggerElement.focus();
@@ -118,7 +138,8 @@ export default {
 
                 e.preventDefault();
 
-            } else if (isKey('tab', e) || isKey('esc', e)) {
+            // Default key: tab or esc
+            } else if (this.actionKeymap.hide.some((key) => isKey(key, e))) {
                 this.hide();
 
                 this.triggerElement.focus();
