@@ -460,6 +460,13 @@ Inkline allows you to have virtually infinite recursive dropdown submenus struct
                     <td><code>dropdown-&lt;uid&gt;</code></td>
                 </tr>
                 <tr>
+                    <td>keymap</td>
+                    <td>Sets the keymap of the dropdown component.</td>
+                    <td><code>Object</code></td>
+                    <td></td>
+                    <td><code>{ navigate: ['up', 'down'], select: ['enter', 'space'], show: ['enter', 'space'], hide: ['esc', 'tab'] }</code></td>
+                </tr>
+                <tr>
                     <td>placement</td>
                     <td>Sets the placement of the dropdown.</td>
                     <td><code>String</code></td>
