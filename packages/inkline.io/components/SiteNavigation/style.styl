@@ -40,7 +40,30 @@
                     color: --link-color
                     border-left: 1px solid --link-color
 
-.site-search
+.dropdown-menu-site-search
     max-height: 250px
     min-width: 300px
     overflow-y: auto;
+    padding: 0 0 --spacer
+
+    .category
+        font-weight: bold;
+        font-size: --font-size-sm
+        padding: (--spacer / 2) --spacer
+        border-top: 1px solid --colors['gray-30']
+        border-bottom: 1px solid --colors['gray-30']
+
+        &:first-child
+            border-top: 0
+
+    .item
+        .title
+            font-weight: bold
+            display: inline-block
+
+        .subtitle
+            display: inline-block
+
+        .description
+            display: block
+            font-size: --font-size-sm

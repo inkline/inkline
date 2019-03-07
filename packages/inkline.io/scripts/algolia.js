@@ -8,10 +8,9 @@ const JSDOM = require('jsdom').JSDOM;
 const algoliaSearch = require('algoliasearch');
 const algoliaConfig = require('../algolia.config');
 const algoliaClient = algoliaSearch(algoliaConfig.ALGOLIA_APPLICATION_ID, algoliaConfig.ALGOLIA_API_KEY);
-const algoliaIndex = algoliaClient.initIndex('inkline');
 
 const docsRoot = path.resolve(__dirname, '..', 'pages', 'docs');
-const data = [];
+const data = {};
 const promises = [];
 
 /**
@@ -35,8 +34,9 @@ function slugify (string) {
  *
  * @param html
  * @param url
+ * @param index
  */
-async function parsePageContent(html, url) {
+async function parsePageContent(html, url, index) {
     const { document } = new JSDOM(html, { runScripts: "dangerously" }).window;
     const title = document.querySelector("h1").textContent;
     let section;
@@ -48,7 +48,7 @@ async function parsePageContent(html, url) {
                 return;
             }
 
-            data[data.length - 1].description += element.textContent + '\n';
+            data[index][data[index].length - 1].description += element.textContent + '\n';
         } else {
             section = {
                 title,
@@ -59,10 +59,10 @@ async function parsePageContent(html, url) {
 
             if (element.tagName === 'H3') {
                 section.subtitle = element.textContent;
-                section.url += '#' + element.id;
+                section.hash = element.id;
             }
 
-            data.push(Object.assign({ objectID: slugify(`${section.title} ${order} ${section.subtitle || ''}`) }, section));
+            data[index].push(Object.assign({ objectID: slugify(`${section.title} ${order} ${section.subtitle || ''}`) }, section));
             order += 1;
         }
     });
@@ -83,16 +83,22 @@ markdownConfig.plugins.forEach((plugin) => {
  * Recursively descent into the documentation pages and parse the content
  */
 (dirTree(docsRoot) || { children: [] }).children.forEach((docsCategory) => {
+    const index = docsCategory.path.replace(docsRoot + '/', '');
+    data[index] = [];
     docsCategory.children.forEach((docsPage) => {
+        const url = docsPage.path.replace(docsRoot, 'docs').replace(/\//g, '-');
+
         promises.push(readFile(docsPage.path + '/template.md', 'utf8').then((response) => {
-            return parsePageContent(markdown.render(response.toString()), docsPage.path.replace(docsRoot, 'docs'));
+            return parsePageContent(markdown.render(response.toString()), url, index);
         }));
     });
 });
 
 return Promise.all(promises).then(() => {
-    algoliaIndex.addObjects(data);
-    // console.log(data);
+    Object.keys(data).forEach((index) => {
+        algoliaClient.initIndex(index).addObjects(data[index]);
+    });
+
     console.log("Search indices have been successfully added to algolia!")
 });
 
