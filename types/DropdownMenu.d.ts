@@ -26,5 +26,4 @@ export declare class IDropdownMenu implements SizePropertyMixin, VariantProperty
     doDestroy(): void;
     resetTransformOrigin(): void;
     updatePopper(): void;
-
 }

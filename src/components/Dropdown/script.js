@@ -51,8 +51,9 @@ export default {
         const basename = 'dropdown';
 
         return {
-            items: [],
             id: this.$attrs.id || uid(basename + '-menu'),
+            items: [],
+            dropdownMenu: null,
             basename
         };
     },
@@ -145,34 +146,30 @@ export default {
                 this.triggerElement.focus();
             }
         },
-        initElements() {
-            if ((this.$slots.default || []).length < 2) {
-                throw new Error(`IDropdown component requires two child elements. 
-                The first one will be used as a trigger. The second one should be a IDropdownMenu component.`);
-            }
-
-            this.triggerElement = this.$slots.default[0].elm;
-            this.popupElement = this.$slots.default[this.$slots.default.length - 1].elm;
-        },
-        handleMenuItemClick(action, instance) {
+        onItemClick(action, instance) {
+            console.log(this.hideOnClick); // eslint-disable-line
             if (this.hideOnClick) {
                 this.visible = false;
             }
 
             this.$emit('action', action, instance);
         },
-    },
-    created() {
-        this.$on('dropdown-item-mounted', (item) => {
-            this.items.push(item);
-        });
+        initElements() {
+            if ((this.$slots.default || []).length < 2) {
+                throw new Error(`IDropdown component requires two child elements. 
+                The first one will be used as a trigger. The second one should be a IDropdownMenu component.`);
+            }
 
-        this.$on('dropdown-item-destroyed', (item) => {
-            this.items = this.items.filter((i) => i !== item);
-        });
+            this.menu = this.$children.find((c) => (c.$options || {}).name === 'IDropdownMenu');
+            this.items = this.menu.$children.filter((c) => c.$options.name === 'IDropdownItem');
+
+            this.triggerElement = this.$slots.default[0].elm;
+            this.popupElement = this.menu.$el;
+        }
     },
     mounted() {
-        this.$on('menu-item-click', this.handleMenuItemClick);
+        this.$on('change', this.initElements);
+        this.$on('item-click', this.onItemClick);
 
         this.triggerElement.addEventListener('keydown', this.onTriggerKeyDown);
         this.popupElement.addEventListener('keydown', this.onItemKeyDown, true);

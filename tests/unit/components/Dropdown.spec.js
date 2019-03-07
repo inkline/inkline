@@ -369,12 +369,12 @@ describe('Components', () => {
                 });
             });
 
-            describe('handleMenuItemClick()', () => {
+            describe('onItemClick()', () => {
                 it('should set visible to false if hideOnClick', () => {
                     wrapper.setProps({ hideOnClick: true });
                     wrapper.setData({ visible: true });
 
-                    wrapper.vm.handleMenuItemClick(true, true);
+                    wrapper.vm.onItemClick(true, true);
 
                     expect(wrapper.vm.visible).toEqual(false);
                 });
@@ -382,7 +382,7 @@ describe('Components', () => {
                 it('should emit "action" event', () => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
-                    wrapper.vm.handleMenuItemClick(true, true);
+                    wrapper.vm.onItemClick(true, true);
 
                     expect(spy).toHaveBeenCalled();
                     expect(spy).toHaveBeenCalledWith('action', true, true);
