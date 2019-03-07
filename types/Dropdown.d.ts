@@ -10,9 +10,10 @@ import {MonochromeVariants} from "./constants/variants";
 export declare class IDropdown implements AttributesProviderMixin, ClassesProviderMixin, EmitProviderMixin, PopupControlsProviderMixin, EmitFocusMethodMixin, VariantPropertyMixin, DisabledPropertyMixin {
     hideOnClick: boolean;
     placement: string;
+    keymap: { [key: string]: string[] };
     onTriggerKeyDown(e: Event): void;
     onItemKeyDown(e: Event): void;
-    handleMenuItemClick(action: any, instance: any): void;
+    onItemClick(action: any, instance: any): void;
 
     disabled: boolean;
     hideTimeout: number;

@@ -61,7 +61,7 @@ export default {
     watch: {
         'placement': {
             immediate: true,
-                handler(value) {
+            handler(value) {
                 this.currentPlacement = value;
             }
         }

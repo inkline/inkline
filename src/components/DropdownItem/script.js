@@ -28,13 +28,7 @@ export default {
     },
     methods: {
         onClick() {
-            this.dispatch('IDropdown', 'menu-item-click', [this.action, this]);
+            this.dispatch('IDropdown', 'item-click', [this.action, this]);
         }
-    },
-    mounted() {
-        this.dispatch('IDropdown', 'dropdown-item-mounted', this);
-    },
-    destroyed() {
-        this.dispatch('IDropdown', 'dropdown-item-destroyed', this);
     }
 };
