@@ -119,5 +119,5 @@ Inkline is maintained under [the Semantic Versioning guidelines](https://semver.
 - <https://github.com/alexgrozav>
 
 ## Copyright and license
-Code copyright 2017-2018 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
+Code copyright 2017-2019 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
 Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/LICENSE). 
