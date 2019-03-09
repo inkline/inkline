@@ -1,14 +1,17 @@
 @require '~@inkline/inkline/css/config/index'
 
 .site-search
-    .dropdown-menu
-        max-height: 250px
+    .menu
         min-width: 300px
-        overflow-y: auto;
         padding: 0 0 --spacer
 
+        > .body
+            max-height: 250px
+            overflow-y: auto;
+
         .category
-            font-weight: bold;
+            position: sticky
+            font-weight: bold
             font-size: --font-size-sm
             padding: (--spacer / 2) --spacer
             border-top: 1px solid --colors['gray-30']
