@@ -6,12 +6,7 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(DropdownItem, {
-                methods: {
-                    mounted: DropdownItem.mounted,
-                    destroyed: DropdownItem.destroyed
-                }
-            });
+            wrapper = shallowMount(DropdownItem);
         });
 
         it('should be named correctly', () => {
@@ -39,36 +34,14 @@ describe('Components', () => {
 
         describe('methods', () => {
             describe('onClick()', () => {
-                it('should dispatch "menu-item-click" to IDropdown', () => {
+                it('should dispatch "item-click" to IDropdown', () => {
                     const spy = jest.spyOn(wrapper.vm, 'dispatch');
 
                     wrapper.vm.onClick();
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('IDropdown', 'menu-item-click', [wrapper.vm.action, wrapper.vm]);
+                    expect(spy).toHaveBeenCalledWith('IDropdown', 'item-click', [wrapper.vm.action, wrapper.vm]);
                 });
-            });
-        });
-
-        describe('mounted()', () => {
-            it('should dispatch "dropdown-item-mounted" to IDropdown', () => {
-                const spy = jest.spyOn(wrapper.vm, 'dispatch');
-
-                wrapper.vm.mounted();
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('IDropdown', 'dropdown-item-mounted', wrapper.vm);
-            });
-        });
-
-        describe('destroyed()', () => {
-            it('should dispatch "dropdown-item-destroyed" to IDropdown', () => {
-                const spy = jest.spyOn(wrapper.vm, 'dispatch');
-
-                wrapper.vm.destroyed();
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('IDropdown', 'dropdown-item-destroyed', wrapper.vm);
             });
         });
     });
