@@ -85,7 +85,7 @@ export default {
                 this.show();
 
                 setTimeout(() => {
-                    this.items[initialIndex].$el.focus();
+                    this.items[initialIndex].elm.focus();
                 }, this.visible ? 0 : this.showTimeout);
 
                 e.preventDefault();
@@ -97,7 +97,7 @@ export default {
 
                 if (!this.visible) {
                     setTimeout(() => {
-                        this.items[initialIndex].$el.focus();
+                        this.items[initialIndex].elm.focus();
                     }, this.showTimeout);
                 }
 
@@ -110,7 +110,7 @@ export default {
         },
         onItemKeyDown(e) {
             const target = e.target;
-            const currentIndex = this.items.findIndex((i) => i.$el === e.target);
+            const currentIndex = this.items.findIndex((i) => i.elm === e.target);
             const maxIndex = this.items.length - 1;
             let nextIndex;
 
@@ -122,7 +122,7 @@ export default {
                     nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
                 }
 
-                this.items[nextIndex].$el.focus();
+                this.items[nextIndex].elm.focus();
 
                 e.preventDefault();
                 e.stopPropagation();
@@ -160,11 +160,22 @@ export default {
                 The first one will be used as a trigger. The second one should be a IDropdownMenu component.`);
             }
 
-            this.menu = this.$children.find((c) => (c.$options || {}).name === 'IDropdownMenu');
-            this.items = this.menu.$children.filter((c) => c.$options.name === 'IDropdownItem');
+            this.menu = this.$slots.default
+                .find((e) => ((e.componentInstance || {}).$options || {}).name === 'IDropdownMenu' ||
+                    (((e.componentInstance || {}).$options || {}).extends || {}).name === 'IDropdownMenu');
+
+            if (!this.menu) {
+                throw new Error('Could not find child IDropdownMenu in IDropdown.')
+            }
+
+            this.items = (this.menu.componentInstance.$slots.default || [])
+                .filter((e) => ((e.componentInstance || {}).$options || {}).name === 'IDropdownItem' ||
+                    (((e.componentInstance || {}).$options || {}).extends || {}).name === 'IDropdownItem');
+
+            console.log(this.items, this.menu)
 
             this.triggerElement = this.$slots.default[0].elm;
-            this.popupElement = this.menu.$el;
+            this.popupElement = this.menu.elm;
         }
     },
     mounted() {

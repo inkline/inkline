@@ -11,11 +11,34 @@ describe('Components', () => {
                     id: 'dropdown'
                 },
                 methods: {
-                    created: Dropdown.created,
                     mounted: Dropdown.mounted
                 },
+                // mocks: {
+                //     $children: [
+                //         {
+                //             $options: {
+                //                 name: 'IDropdownMenu'
+                //             },
+                //             $children: [
+                //                 { $options: { name: 'IDropdownItem' } }
+                //             ]
+                //         }
+                //     ]
+                // },
                 slots: {
-                    default: ['<button/>', '<div/>']
+                    default: [
+                        '<button/>',
+                        {
+                            name: 'IDropdownMenu',
+                            components: {
+                                IDropdownItem: {
+                                    name: 'IDropdownItem',
+                                    template: '<div />'
+                                }
+                            },
+                            template: '<div><i-dropdown-item /><slot><i-dropdown-item /></slot></div>'
+                        }
+                    ]
                 }
             });
         });
@@ -351,7 +374,7 @@ describe('Components', () => {
                 });
             });
 
-            describe('initElements()', () => {
+            fdescribe('initElements()', () => {
                 it('should throw error if trigger or dropdown not provided', () => {
                     wrapper.vm.$slots.default = [];
 
@@ -390,47 +413,14 @@ describe('Components', () => {
             });
         });
 
-        describe('created()', () => {
-            it('should listen to "dropdown-item-mounted" event', () => {
-                const spy = jest.spyOn(wrapper.vm, '$on');
-
-                wrapper.vm.created();
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('dropdown-item-mounted', expect.any(Function));
-            });
-
-            it('should push item to items on "dropdown-item-mounted" event', () => {
-                wrapper.vm.$emit('dropdown-item-mounted', true);
-
-                expect(wrapper.vm.items).toEqual([true]);
-            });
-
-            it('should listen to "dropdown-item-destroyed" event', () => {
-                const spy = jest.spyOn(wrapper.vm, '$on');
-
-                wrapper.vm.created();
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('dropdown-item-destroyed', expect.any(Function));
-            });
-
-            it('should remove item from items on "dropdown-item-destroyed" event', () => {
-                wrapper.vm.$emit('dropdown-item-mounted', true);
-                expect(wrapper.vm.items).toEqual([true]);
-                wrapper.vm.$emit('dropdown-item-destroyed', true);
-                expect(wrapper.vm.items).toEqual([]);
-            });
-        });
-
         describe('mounted()', () => {
-            it('should listen to "menu-item-click" event', () => {
+            it('should listen to "item-click" event', () => {
                 const spy = jest.spyOn(wrapper.vm, '$on');
 
                 wrapper.vm.mounted();
 
                 expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('menu-item-click', expect.any(Function));
+                expect(spy).toHaveBeenCalledWith('item-click', expect.any(Function));
             });
 
             it('should add keydown event to triggerElement and popupElement', () => {
