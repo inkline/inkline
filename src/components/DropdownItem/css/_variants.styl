@@ -2,11 +2,10 @@
 // Dropdown Item variants
 //
 for --variant-name, --variant in --variants['dropdown']
-    .dropdown-menu.-{--variant-name} > .item
-    .dropdown-menu.-{--variant-name} > .dropdown > .item
+    .dropdown > .menu.-{--variant-name} .item
         color: -variant-color-by-luminance(--variant['color'], --dropdown-variant-color-light, --dropdown-variant-color-dark)
 
-        &[href]
+        &[href],
         &[to]
             &:hover
             &:focus

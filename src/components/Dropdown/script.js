@@ -147,7 +147,6 @@ export default {
             }
         },
         onItemClick(action, instance) {
-            console.log(this.hideOnClick); // eslint-disable-line
             if (this.hideOnClick) {
                 this.visible = false;
             }
@@ -171,8 +170,6 @@ export default {
             this.items = (this.menu.componentInstance.$slots.default || [])
                 .filter((e) => ((e.componentInstance || {}).$options || {}).name === 'IDropdownItem' ||
                     (((e.componentInstance || {}).$options || {}).extends || {}).name === 'IDropdownItem');
-
-            console.log(this.items, this.menu)
 
             this.triggerElement = this.$slots.default[0].elm;
             this.popupElement = this.menu.elm;
