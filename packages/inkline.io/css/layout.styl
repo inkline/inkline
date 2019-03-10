@@ -1,4 +1,5 @@
 @require '~@inkline/inkline/css/config/index'
+@require '~@inkline/inkline/css/mixins/index'
 
 .layout-fixed-full-height
     position: fixed
@@ -17,7 +18,7 @@
     width: 100%
 
 #documentation-layout > .container > .row > .column > .layout > .layout-content
-        margin: 62px auto 0;
+    margin: 62px auto 0;
 
 #documentation-layout
     #layout-aside-left,
@@ -26,12 +27,43 @@
         flex: 1 1 auto
         box-sizing: border-box
 
-    #layout-aside-left .layout-aside-children
-        padding-right: (--spacer * 2)
+    #layout-aside-left
+        .layout-aside-children
+            padding-right: (--spacer * 2)
 
-    #layout-aside-right .layout-aside-children
-        padding-left: (--spacer * 2)
+        +-breakpoint-down(sm)
+            position: fixed
+            padding: --spacer
+            top: 62px
+            left: 0
+            width: 16rem
+            max-width: 100%
+            border-right: 1px solid --colors['gray-30']
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.25)
+            z-index: 1
+            background-color: #ffffff
+
+            .layout-aside-children
+                padding: 0
+
+            .layout-fixed-full-height
+                position: relative
+                display: block
+                top: auto
+
+                .site-navigation
+                    padding-top: 0
+
+    #layout-aside-right
+        .layout-aside-children
+            padding-left: (--spacer * 2)
+
+        +-breakpoint-down(md)
+            display: none
 
     .layout-content
         max-width: 48rem
+
+        +-breakpoint-down(md)
+            max-width: auto
 

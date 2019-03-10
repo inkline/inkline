@@ -4,8 +4,15 @@
 #navbar
     transition: background 0.3s ease
 
+    .site-search
+        +-breakpoint-down(sm)
+            display: none
+
     > .container > .row > .column
         > .brand
+            +-breakpoint-down(sm)
+                margin-left: --spacer * 3
+
             .logo.-light
                 display: none
 
@@ -28,6 +35,21 @@
 
     &.-transparent
         background: rgba(#e9ecef, 0.25)
+
+        .site-search
+            .form-input
+                .form-input-prefix
+                    transition: color 0.3s ease
+                    color: rgba(255, 255, 255, 0.85)
+
+                input
+                    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease
+                    color: #ffffff
+                    background-color: rgba(255, 255, 255, 0.15)
+                    border-color: rgba(255, 255, 255, 0.15)
+
+                    &::placeholder
+                        color: rgba(255, 255, 255, 0.85)
 
 
         > .container > .row > .column
@@ -64,3 +86,27 @@
             > .bars,
             > .bars::after
                 background-color: --colors['light']
+
+
+.navbar-toggle
+    position: absolute
+    top: 4px
+    left: 6px
+    padding: 8px 12px
+    margin-right: --spacer * 3
+    border-radius: --border-radius-md
+    background-color: transparent
+    border: 0
+    cursor: pointer
+    transition: background-color 0.3s ease
+
+    +-breakpoint-up(md)
+        display: none
+
+    &:focus
+    &:hover
+        background-color: rgba(0, 0, 0, 0.1)
+        outline: 0
+
+    &:active
+        background-color: rgba(0, 0, 0, 0.15)

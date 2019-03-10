@@ -50,9 +50,9 @@ export default {
 
             this.items.forEach((item) => item.active = false);
 
-            if (firstVisibleIndex === -1) {
+            if (firstVisibleIndex === -1 && this.items[lastVisibleIndex]) {
                 this.items[lastVisibleIndex].active = true;
-            } else {
+            } else if (this.items[firstVisibleIndex]) {
                 this.items[firstVisibleIndex].active = true;
             }
         },
