@@ -24,10 +24,6 @@ export default {
         tabindex: {
             type: [Number, String],
             default: -1
-        },
-        tag: {
-            type: String,
-            default: 'div'
         }
     },
     methods: {

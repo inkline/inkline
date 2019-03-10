@@ -2,22 +2,26 @@
 // Dropdown Item variants
 //
 for --variant-name, --variant in --variants['dropdown']
-    .dropdown > .menu.-{--variant-name} .item
-        color: -variant-color-by-luminance(--variant['color'], --dropdown-variant-color-light, --dropdown-variant-color-dark)
-
-        &[href],
-        &[to]
-            &:hover
-            &:focus
-                background: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 12%), darken(--variant['color'], 4%))
+    .dropdown > .menu.-{--variant-name}
+        .dropdown > .item,
+        .item[href],
+        .item[to]
+            &:not(.-disabled)
+                &:hover
+                &:focus
+                    background: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 12%), darken(--variant['color'], 4%))
 
             &.-active
             &:active
                 background: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 24%), darken(--variant['color'], 8%))
 
-        &.-disabled,
-        &:disabled
-            color: -variant-color-by-luminance(--variant['color'], darken(--dropdown-variant-color-light, 40%), lighten(--dropdown-variant-color-dark, 40%))
+        .dropdown > .item
+        .item
+            color: -variant-color-by-luminance(--variant['color'], --dropdown-variant-color-light, --dropdown-variant-color-dark)
 
-        &.-divider::before
-            background-color: -variant-color-by-luminance(--variant['color'], lighten(--variant['color'], 12%), darken(--variant['color'], 8%))
+            &.-disabled,
+            &:disabled
+                color: -variant-color-by-luminance(--variant['color'], darken(--dropdown-variant-color-light, 40%), lighten(--dropdown-variant-color-dark, 40%))
+
+            &.-divider::before
+                background-color: -variant-color-by-luminance(--variant['color'], lighten(--variant['color'], 12%), darken(--variant['color'], 8%))
