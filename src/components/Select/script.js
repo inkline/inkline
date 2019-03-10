@@ -20,7 +20,7 @@ import ReadonlyPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/
 import ParentFormGroupPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
 import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
-import {uid} from "@inkline/inkline/src/helpers";
+import { querySelectorAll, uid } from "@inkline/inkline/src/helpers";
 
 export default {
     name: 'ISelect',
@@ -71,6 +71,13 @@ export default {
             options: []
         }
     },
+    watch: {
+        model(value) {
+            const option = this.options.find((o) => o.value === value);
+
+            this.labelModel = option.label || option.value;
+        }
+    },
     methods: {
         focusInputRef() {
             this.$isMobile ? this.$refs.select.focus() : this.$refs.input.focusInputRef();
@@ -82,6 +89,9 @@ export default {
                 this.$refs.input.clickInputRef();
                 this.$refs.dropdown.visible ? this.$refs.dropdown.hide() : this.$refs.dropdown.show();
             }
+        },
+        initElements() {
+            this.options = querySelectorAll(this.$children[0].$children[1].$children, 'ISelectOption');
         }
     },
     created() {
@@ -93,24 +103,9 @@ export default {
         this.$on('option-click', (option) => {
             this.model = option.value;
         });
-
-        this.$on('option-mounted', (option) => {
-            this.options.push(option);
-
-            if (option.value === this.model) {
-                this.labelModel = option.label || option.value;
-            }
-        });
-
-        this.$on('option-destroyed', (option) => {
-            this.options = this.options.filter((o) => o.value !== option.value);
-        });
     },
-    watch: {
-        model(value) {
-            const option = this.options.find((o) => o.value === value);
-
-            this.labelModel = option.label || option.value;
-        }
+    mounted() {
+        this.initElements();
+        this.$on('init', this.initElements);
     }
 };

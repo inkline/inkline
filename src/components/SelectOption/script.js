@@ -9,6 +9,7 @@ import ParentFormGroupPropertyMixin from '@inkline/inkline/src/mixins/forms/prop
 
 export default {
     name: 'ISelectOption',
+    extends: { name: 'IDropdownItem' },
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
@@ -35,7 +36,7 @@ export default {
         }
     },
     computed: {
-        active () {
+        active() {
             return (this.parentFormGroup || {}).value === this.value;
         }
     },
@@ -53,7 +54,7 @@ export default {
             }
 
             this.dispatch('ISelect', 'option-click', this.getDispatchProps());
-            this.dispatch('IDropdown', 'menu-item-click', this);
+            this.dispatch('IDropdown', 'item-click', this);
             this.emitClick(e);
         },
     },
@@ -61,13 +62,5 @@ export default {
         this.classesProvider.add('root', () => ({
             '-active': this.active,
         }));
-    },
-    mounted() {
-        this.dispatch('ISelect', 'option-mounted', this.getDispatchProps());
-        this.dispatch('IDropdown', 'dropdown-item-mounted', this);
-    },
-    destroyed() {
-        this.dispatch('ISelect', 'option-destroyed', this.getDispatchProps());
-        this.dispatch('IDropdown', 'dropdown-item-destroyed', this);
     }
 };
