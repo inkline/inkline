@@ -13,6 +13,7 @@ export { modifierClass } from './modifierClass';
 export { off } from './off';
 export { on } from './on';
 export { once } from './once';
+export { querySelector, querySelectorAll } from './query';
 export { popupManager } from '../factories/PopupManager';
 export { removeClass } from './removeClass';
 export { slugify } from './slugify';
