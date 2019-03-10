@@ -7,35 +7,38 @@
 /**
  * Dropdown Item
  */
-.dropdown > .menu .item
-    display: block;
-    width: 100%
-    clear: both;
-    font-weight: --font-weight-normal
-    text-align: inherit // For `<button>`s
-    white-space: nowrap // prevent links from randomly breaking onto new lines
-    background-color: transparent // For `<button>`s
-    border: 0
-    cursor: default
+.dropdown > .menu
+    .dropdown > .item
+    .item
+        display: block;
+        width: 100%
+        clear: both;
+        font-weight: --font-weight-normal
+        text-align: inherit // For `<button>`s
+        white-space: nowrap // prevent links from randomly breaking onto new lines
+        background-color: transparent // For `<button>`s
+        border: 0
+        cursor: default
 
-    if --transition['dropdown']
-        transition: background-color --transition-duration --transition-easing
+        if --transition['dropdown']
+            transition: background-color --transition-duration --transition-easing
 
-    &[href]
-    &[to]
+        &:hover,
+        &:focus,
+        &.-active,
+        &:active
+            text-decoration: none
+
+        &.-disabled,
+        &:disabled
+            pointer-events: none
+            background-color: transparent
+            background-image: none
+
+    .dropdown > .item,
+    .item[href],
+    .item[to]
         cursor: pointer
 
-    &:hover,
-    &:focus,
-    &.-active,
-    &:active
-        text-decoration: none
-
-    &.-disabled,
-    &:disabled
-        pointer-events: none
-        background-color: transparent
-        background-image: none
-
-    @extend .dropdown > .menu.-light .item
-    @extend .dropdown > .menu.-md .item
+    @extend .dropdown > .menu.-light
+    @extend .dropdown > .menu.-md

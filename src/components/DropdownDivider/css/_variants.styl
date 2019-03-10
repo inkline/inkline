@@ -3,5 +3,5 @@
 // Add the required color variants to all card variations
 //
 for --variant-name, --variant in --variants['dropdown']
-    .dropdown-menu.-{--variant-name} > .divider
+    .dropdown > .menu.-{--variant-name} > .divider
         background-color: -variant-color-by-luminance(--variant['color'], lighten(--variant['color'], 10%), darken(--variant['color'], 10%))

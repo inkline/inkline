@@ -1,4 +1,4 @@
-import { uid, isKey } from '@inkline/inkline/src/helpers';
+import {uid, isKey, querySelector, querySelectorAll, isVisible} from '@inkline/inkline/src/helpers';
 
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
 
@@ -53,7 +53,7 @@ export default {
         return {
             id: this.$attrs.id || uid(basename + '-menu'),
             items: [],
-            dropdownMenu: null,
+            menu: null,
             basename
         };
     },
@@ -67,6 +67,10 @@ export default {
 
                 ...this.keymap
             };
+        },
+        focusableItems() {
+            return this.items.filter((item) => !(item.disabled || (item.componentInstance || {}).disabled) &&
+                isVisible(item.elm || item.$el));
         }
     },
     watch: {
@@ -77,15 +81,18 @@ export default {
     },
     methods: {
         onTriggerKeyDown(e) {
-            let activeIndex = this.items.findIndex((e) => e.active);
+            if (!this.focusableItems.length > 0) { return; }
+
+            let activeIndex = this.focusableItems.findIndex((e) => e.active);
             let initialIndex = activeIndex > -1 ? activeIndex : 0;
+            const focusTarget = this.focusableItems[initialIndex].elm || this.focusableItems[initialIndex].$el;
 
             // Default key: up or down
             if (this.actionKeymap.navigate.some((key) => isKey(key, e))) {
                 this.show();
 
                 setTimeout(() => {
-                    this.items[initialIndex].elm.focus();
+                    focusTarget.focus();
                 }, this.visible ? 0 : this.showTimeout);
 
                 e.preventDefault();
@@ -97,7 +104,7 @@ export default {
 
                 if (!this.visible) {
                     setTimeout(() => {
-                        this.items[initialIndex].elm.focus();
+                        focusTarget.focus();
                     }, this.showTimeout);
                 }
 
@@ -109,20 +116,24 @@ export default {
             }
         },
         onItemKeyDown(e) {
+            if (!this.focusableItems.length > 0) { return; }
+
             const target = e.target;
-            const currentIndex = this.items.findIndex((i) => i.elm === e.target);
-            const maxIndex = this.items.length - 1;
-            let nextIndex;
 
             // Default key: up or down
             if (this.actionKeymap.navigate.some((key) => isKey(key, e))) {
+                const currentIndex = this.focusableItems.findIndex((i) => (i.elm || i.$el) === e.target);
+                const maxIndex = this.focusableItems.length - 1;
+                let nextIndex;
+
                 if (isKey('up', e)) {
                     nextIndex = currentIndex !== 0 ? currentIndex - 1 : 0;
                 } else {
                     nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
                 }
 
-                this.items[nextIndex].elm.focus();
+                const focusTarget = this.focusableItems[nextIndex].elm || this.focusableItems[nextIndex].$el;
+                focusTarget.focus();
 
                 e.preventDefault();
                 e.stopPropagation();
@@ -131,7 +142,11 @@ export default {
             } else if (this.actionKeymap.select.some((key) => isKey(key, e))) {
                 target.click();
 
-                this.triggerElement.focus();
+                if (target.hasAttribute('aria-haspopup')) {
+                    this.initItems();
+                } else {
+                    this.triggerElement.focus();
+                }
 
                 if (this.hideOnClick) {
                     this.visible = false;
@@ -159,24 +174,23 @@ export default {
                 The first one will be used as a trigger. The second one should be a IDropdownMenu component.`);
             }
 
-            this.menu = this.$slots.default
-                .find((e) => ((e.componentInstance || {}).$options || {}).name === 'IDropdownMenu' ||
-                    (((e.componentInstance || {}).$options || {}).extends || {}).name === 'IDropdownMenu');
+            this.menu = querySelector(this.$slots.default, 'IDropdownMenu');
 
             if (!this.menu) {
                 throw new Error('Could not find child IDropdownMenu in IDropdown.')
             }
 
-            this.items = (this.menu.componentInstance.$slots.default || [])
-                .filter((e) => ((e.componentInstance || {}).$options || {}).name === 'IDropdownItem' ||
-                    (((e.componentInstance || {}).$options || {}).extends || {}).name === 'IDropdownItem');
-
             this.triggerElement = this.$slots.default[0].elm;
             this.popupElement = this.menu.elm;
+
+            this.initItems();
+        },
+        initItems() {
+            this.items = querySelectorAll(this.menu.componentInstance.$slots.default, 'IDropdownItem');
         }
     },
     mounted() {
-        this.$on('change', this.initElements);
+        this.$on('init', this.initElements);
         this.$on('item-click', this.onItemClick);
 
         this.triggerElement.addEventListener('keydown', this.onTriggerKeyDown);
