@@ -8,7 +8,7 @@ Navigation components make use of the base `<i-nav>` component for building all 
 
 <i-nav>
     <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }">Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -18,7 +18,7 @@ Navigation components make use of the base `<i-nav>` component for building all 
 ~~~html
 <i-nav>
     <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }">Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -36,7 +36,7 @@ You can stack nav items into a vertical navigation component by setting the `ver
 
 <i-nav vertical>
     <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }">Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -46,7 +46,7 @@ You can stack nav items into a vertical navigation component by setting the `ver
 ~~~html
 <i-nav vertical>
     <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }">Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -63,21 +63,21 @@ You're able to use the `size` modifier to control the size of your navs, using o
 <div>
 <i-nav size="sm">
     <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }">Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>&nbsp;
 
 <i-nav size="md">
     <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }">Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>&nbsp;
 
 <i-nav size="lg">
     <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }">Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -88,7 +88,7 @@ You're able to use the `size` modifier to control the size of your navs, using o
 ~~~html
 <i-nav size="sm">
     <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }">Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -96,7 +96,7 @@ You're able to use the `size` modifier to control the size of your navs, using o
 ~~~html
 <i-nav size="md">
     <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }">Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -104,7 +104,7 @@ You're able to use the `size` modifier to control the size of your navs, using o
 ~~~html
 <i-nav size="lg">
     <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }">Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -121,8 +121,8 @@ You can control the active state of your `<i-nav-item>` using the `active` prope
 
 <div>
 <i-nav>
-    <i-nav-item :to="{ name: 'docs.components.nav' }" exact-active-class="-active">Active Router Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }" active>Active Link</i-nav-item>
+    <i-nav-item :to="{ name: 'docs-components-nav' }" exact-active-class="-active">Active Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }" active>Active Link</i-nav-item>
 </i-nav>
 </div>
 
@@ -130,8 +130,8 @@ You can control the active state of your `<i-nav-item>` using the `active` prope
 
 ~~~html
 <i-nav>
-    <i-nav-item :to="{ name: 'docs.components.nav' }" exact-active-class="-active">Active Router Link</i-nav-item>
-    <i-nav-item :to="{ name: 'home.index' }" active>Active Link</i-nav-item>
+    <i-nav-item :to="{ name: 'docs-components-nav' }" exact-active-class="-active">Active Router Link</i-nav-item>
+    <i-nav-item :to="{ name: 'index' }" active>Active Link</i-nav-item>
 </i-nav>
 ~~~
 

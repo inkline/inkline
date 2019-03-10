@@ -16,7 +16,7 @@ export default {
         return {
             items: [
                 { id: 0, title: 'Home', href: '/' },
-                { id: 1, title: 'Components', to: 'docs.components' },
+                { id: 1, title: 'Components', to: 'docs-components-breadcrumb' },
                 { id: 2, title: 'Breadcrumbs', active: true }
             ]
         };

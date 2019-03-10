@@ -13,7 +13,7 @@ Separators are automatically added in CSS through `::before` and `content`. You 
 
 <i-breadcrumb>
     <i-breadcrumb-item href="/">Home</i-breadcrumb-item>
-    <i-breadcrumb-item :to="{ name: 'docs' }">Library</i-breadcrumb-item>
+    <i-breadcrumb-item href="/">Library</i-breadcrumb-item>
     <i-breadcrumb-item active>Data</i-breadcrumb-item>
 </i-breadcrumb>
 
