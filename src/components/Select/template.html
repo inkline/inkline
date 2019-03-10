@@ -10,8 +10,8 @@
         ref="dropdown">
     <i-input
             v-bind="$attrs"
-            v-model="labelModel"
             ref="input"
+            :value="labelModel"
             :name="name"
             :readonly="isReadonly || !filterable"
             :disabled="isDisabled"
