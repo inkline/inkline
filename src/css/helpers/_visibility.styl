@@ -4,7 +4,7 @@ for --breakpoint-name, --breakpoint-value in --breakpoints
 
   +-breakpoint(--breakpoint-name)
     ._hidden{--infix}-only
-      display: none
+      display: none !important
 
     ._visible{--infix}-only
       display: block
@@ -14,19 +14,19 @@ for --breakpoint-name, --breakpoint-value in --breakpoints
     ._visible{--infix}-only
     ._visible{--infix}-and-up
     ._visible{--infix}-and-down
-      display: none;
+      display: none !important
 
     +-breakpoint-up(--breakpoint-name)
       ._hidden{--infix}-and-up
-        display: none
+        display: none !important
 
       ._visible{--infix}-and-up
-        display: block
+        display: block !important
 
 
     +-breakpoint-down(--breakpoint-name)
       ._hidden{--infix}-and-down
-        display: none
+        display: none !important
 
       ._visible{--infix}-and-down
-        display: block
+        display: block !important
