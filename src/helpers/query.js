@@ -48,6 +48,8 @@ export function querySelector(items, name, maxDepth = 3, currentDepth = 0) {
 export function querySelectorAll(items, name, maxDepth = 3, currentDepth = 0) {
     let results = [];
 
+    if (!items) { return results; }
+
     for (const item of items) {
         const children = item.$children || (item.componentInstance || {}).$children || item.children;
 
