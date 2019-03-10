@@ -4,10 +4,10 @@ export default {
     name: 'IRadio',
     extends: Checkable,
     computed: {
-        currentValue () {
+        currentValue() {
             return this.isGrouped ? this.value : (this.$attrs || {}).value;
         },
-        checked () {
+        checked() {
             return this.model === this.currentValue;
         }
     }

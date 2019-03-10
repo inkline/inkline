@@ -10,7 +10,7 @@ export default {
         /**
          * Return correct tab index. The tab index will be -1 if the form element is disabled.
          */
-        tabIndex () {
+        tabIndex() {
             return this.isDisabled ? -1 : this.tabindex;
         }
     }

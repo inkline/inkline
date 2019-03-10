@@ -22,7 +22,7 @@ export default {
         }
     },
     computed: {
-        checked () {
+        checked() {
             if (Array.isArray(this.model)) {
                 return this.model.indexOf(this.currentValue) !== -1;
             } else if (this.model !== null && this.model !== undefined) {

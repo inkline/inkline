@@ -10,7 +10,7 @@ export default {
         /**
          * Get the value of the form item
          */
-        currentValue () {
+        currentValue() {
             return this.value;
         },
 
@@ -18,7 +18,7 @@ export default {
          * Bind the value of a form item group or groupable form item
          */
         model: {
-            get () {
+            get() {
                 return this.isGrouped ? this.parentFormGroup.value : this.value;
             },
             set (value) {

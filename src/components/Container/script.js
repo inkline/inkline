@@ -11,7 +11,7 @@ export default {
             default: false
         }
     },
-    created () {
+    created() {
         this.classesProvider.add(() => ({
             '-fluid': this.fluid
         }));

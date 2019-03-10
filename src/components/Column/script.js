@@ -29,7 +29,7 @@ export default {
     name: 'IColumn',
     props: properties,
     computed: {
-        classes () {
+        classes() {
             return [
                 ...Object.keys(properties)
                     .map((p) => this[p] ? breakpointClass(modifierClass(p), this[p]) : '')

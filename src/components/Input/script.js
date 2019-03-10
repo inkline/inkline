@@ -53,7 +53,7 @@ export default {
         SizePropertyMixin,
         TabIndexPropertyMixin
     ],
-    created () {
+    created() {
         this.classesProvider.add('root', () => ({
             '-prepended': Boolean(this.$slots.prepend) || this.prepended,
             '-appended': Boolean(this.$slots.append) || this.appended
@@ -64,7 +64,7 @@ export default {
             '-suffixed': Boolean(this.$slots.suffix)
         }));
     },
-    mounted () {
+    mounted() {
         if (this.schema) {
             this.$set(this.parentFormGroup, 'inputSchema', this.schema);
         }

@@ -6,7 +6,7 @@ export default {
             default: true
         }
     },
-    created () {
+    created() {
         this.classesProvider.add(() => ({
             '-custom': this.custom
         }));

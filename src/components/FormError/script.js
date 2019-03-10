@@ -21,7 +21,7 @@ export default {
         }
     },
     methods: {
-        clearErrors () {
+        clearErrors() {
             this.errors = [];
         }
     }

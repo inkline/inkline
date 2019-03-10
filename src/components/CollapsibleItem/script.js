@@ -28,7 +28,7 @@ export default {
         },
         id: {
             type: String,
-            default () {
+            default() {
                 return uid('collapsible-item');
             }
         }

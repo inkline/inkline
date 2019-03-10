@@ -10,11 +10,11 @@ export default {
         /**
          * Check whether the form item or one of its form parents is disabled
          */
-        isDisabled () {
+        isDisabled() {
             return this.disabled;
         }
     },
-    created () {
+    created() {
         this.classesProvider.add('child', () => ({
             '-disabled': this.isDisabled
         }));

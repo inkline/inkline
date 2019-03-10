@@ -54,7 +54,7 @@ export default {
             default: 'button'
         }
     },
-    created () {
+    created() {
         this.classesProvider.add(() => ({
             '-block': this.block,
             '-circle': this.circle,

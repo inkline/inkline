@@ -10,7 +10,7 @@ export default {
         /**
          * Get the value of the individual form item
          */
-        currentValue () {
+        currentValue() {
             return this.value;
         },
 
@@ -18,7 +18,7 @@ export default {
          * Bind the value of an individual form item
          */
         model: {
-            get () {
+            get() {
                 return this.value;
             },
             set (value) {

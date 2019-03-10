@@ -9,7 +9,7 @@ export default {
         IButton,
         IFormGroup
     },
-    data () {
+    data() {
         return {
             prepended: true,
             appended: true,
@@ -38,10 +38,10 @@ export default {
         }
     },
     methods: {
-        decrease () {
+        decrease() {
             this.$emit('input', this.formatPrecision((Number(this.value) - this.step).toString()));
         },
-        increase () {
+        increase() {
             this.$emit('input', this.formatPrecision((Number(this.value) + this.step).toString()));
         },
         formatPrecision (value) {
