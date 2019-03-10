@@ -6,7 +6,7 @@ export default {
             default: '-active'
         }
     },
-    created () {
+    created() {
         this.classesProvider.add(() => ({
             [this.activeClass]: this.active
         }));

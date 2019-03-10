@@ -23,7 +23,7 @@ export default {
         }
     },
     computed: {
-        isTag () {
+        isTag() {
             return this.attributes.to ? this.routerComponent : this.attributes.href ? 'a' : this.tag;
         }
     }

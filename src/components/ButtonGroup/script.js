@@ -26,7 +26,7 @@ export default {
             default: false
         }
     },
-    created () {
+    created() {
         this.classesProvider.add(() => ({ '-vertical': this.vertical }));
     }
 };

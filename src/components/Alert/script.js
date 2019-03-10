@@ -17,7 +17,7 @@ export default {
         prop: 'show',
         event: 'input'
     },
-    data () {
+    data() {
         return {
             dismissed: false
         }
@@ -37,25 +37,25 @@ export default {
         }
     },
     methods: {
-        dismiss () {
+        dismiss() {
             this.dismissed = true;
 
             this.$emit('dismiss');
             this.$emit('input', false);
         },
-        onShowChange () {
+        onShowChange() {
             this.dismissed = false;
         }
     },
     watch: {
-        show () {
+        show() {
             this.onShowChange()
         }
     },
-    mounted () {
+    mounted() {
         this.onShowChange()
     },
-    created () {
+    created() {
         this.classesProvider.add(() => ({
             '-dismissible': this.dismissible,
             '-with-icon': Boolean(this.$slots.icon)

@@ -10,11 +10,11 @@ export default {
         /**
          * Check whether the form item or one of its form parents is readonly
          */
-        isReadonly () {
+        isReadonly() {
             return (this.parentForm || {}).isReadonly || (this.parentFormGroup || {}).isReadonly || this.readonly;
         }
     },
-    created () {
+    created() {
         this.attributesProvider.add(() => ({ 'readonly': this.isReadonly }));
     }
 };

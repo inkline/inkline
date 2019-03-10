@@ -33,14 +33,14 @@ export default {
             default: () => ({})
         }
     },
-    data () {
+    data() {
         return {
             validationOptions: {
                 getSchema: () => this.schema,
             }
         }
     },
-    provide () {
+    provide() {
         return {
             parentForm: this
         }

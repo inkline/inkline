@@ -1,6 +1,6 @@
 <script>
 export default {
-    data () {
+    data() {
         const attributesProvider = [];
 
         attributesProvider.add = attributesProvider.push;
@@ -10,7 +10,7 @@ export default {
         };
     },
     computed: {
-        attributes () {
+        attributes() {
             const attrs = this.attributesProvider.reduce((acc, rule) => {
                 Object.assign(acc, rule());
 

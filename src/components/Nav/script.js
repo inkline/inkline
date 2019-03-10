@@ -19,7 +19,7 @@ export default {
             default: false
         }
     },
-    created () {
+    created() {
         this.classesProvider.add(() => ({
             '-tabs': this.tabs,
             '-vertical': this.vertical

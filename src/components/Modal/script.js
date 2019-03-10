@@ -68,7 +68,7 @@ export default {
         }
     },
     computed: {
-        visible () {
+        visible() {
             return this.value;
         }
     },
@@ -83,10 +83,10 @@ export default {
             }
         }
     },
-    created () {
+    created() {
         popupManager.register(this);
     },
-    destroyed () {
+    destroyed() {
         popupManager.unregister(this);
     }
 };

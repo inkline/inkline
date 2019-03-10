@@ -1,6 +1,6 @@
 <script>
 export default {
-    data () {
+    data() {
         const classesProvider = [];
 
         classesProvider.add = (type, fn) => {

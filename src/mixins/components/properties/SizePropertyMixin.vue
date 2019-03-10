@@ -9,7 +9,7 @@ export default {
             }
         }
     },
-    created () {
+    created() {
         this.classesProvider.add(() => this.size ? `-${this.size}` : false);
     }
 };

@@ -6,12 +6,12 @@ export default {
             default: null
         }
     },
-    mounted () {
+    mounted() {
         if (this.schema && this.parentForm) {
             this.parentForm.add(this);
         }
     },
-    destroyed () {
+    destroyed() {
         if (this.schema && this.parentForm) {
             this.parentForm.remove(this);
         }

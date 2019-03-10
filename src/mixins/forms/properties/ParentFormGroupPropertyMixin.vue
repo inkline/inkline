@@ -27,7 +27,7 @@ export default {
         /**
          * Find a form group parent for the given form item
          */
-        isGrouped () {
+        isGrouped() {
             let parent = this.parentFormGroup;
 
             return Boolean(parent);

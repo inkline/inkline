@@ -6,7 +6,7 @@ export default {
             default: false
         }
     },
-    created () {
+    created() {
         this.classesProvider.add(() => ({
             '-loading': this.loading
         }));

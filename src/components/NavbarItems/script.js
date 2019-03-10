@@ -19,7 +19,7 @@ export default {
             this.collapsible = window.innerWidth <= breakpoints[this.navbar.collapse][1];
         }
     },
-    created () {
+    created() {
         window.addEventListener('resize', this.onWindowResize);
         this.onWindowResize();
     },

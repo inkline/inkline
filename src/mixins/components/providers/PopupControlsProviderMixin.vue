@@ -80,12 +80,12 @@ export default {
             }
         }
     },
-    mounted () {
+    mounted() {
         this.initElements();
         this.initAriaAttributes();
         this.addEvents();
     },
-    destroyed () {
+    destroyed() {
         this.removeEvents();
     }
 };

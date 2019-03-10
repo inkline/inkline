@@ -113,6 +113,17 @@
     @extend .form-input-group.-md > .form-input
 
 /**
+ * Select
+ */
+.form-input
+    +-form-input-selector()
+        &[readonly]:focus
+            color: --input-color-focus
+            background-color: --input-background-focus
+            border-color: --input-border-color-focus
+            outline: 0
+
+/**
  * Form Group
  */
 .form-group.-error

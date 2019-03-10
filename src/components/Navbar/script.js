@@ -75,7 +75,7 @@ export default {
             this.windowWidth = windowWidth;
         }
     },
-    created () {
+    created() {
         this.classesProvider.add(() => ({
             '-collapsed': this.collapsed,
             [`-collapse-${this.collapse}`]: Boolean(this.collapse)

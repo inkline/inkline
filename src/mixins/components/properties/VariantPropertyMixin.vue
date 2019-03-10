@@ -6,7 +6,7 @@ export default {
             default: ''
         }
     },
-    created () {
+    created() {
         this.classesProvider.add(() => this.variant ? `-${this.variant}` : false);
     }
 };

@@ -7,7 +7,7 @@ export default {
         }
     },
     computed: {
-        classes: function () {
+        classes() {
             return [
                 { '-vertical': this.vertical }
             ];

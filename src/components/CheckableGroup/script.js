@@ -15,7 +15,7 @@ export default {
     props: {
         value: {}
     },
-    created () {
+    created() {
         this.$on('change', (value) => {
             this.emitInput(value);
         });
