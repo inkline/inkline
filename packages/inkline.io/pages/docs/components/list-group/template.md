@@ -9,7 +9,7 @@ List groups support any content inside of them. Take advantage of their flexibil
 <i-list-group>
     <i-list-group-item active>Active</i-list-group-item>
     <i-list-group-item href="http://inkline.io">Link</i-list-group-item>
-    <i-list-group-item :to="{ name: 'home.index' }">Router Link</i-list-group-item>
+    <i-list-group-item :to="{ name: 'index' }">Router Link</i-list-group-item>
     <i-list-group-item>Item</i-list-group-item>
     <i-list-group-item disabled>Disabled</i-list-group-item>
 </i-list-group>
@@ -20,7 +20,7 @@ List groups support any content inside of them. Take advantage of their flexibil
 <i-list-group>
     <i-list-group-item active>Active</i-list-group-item>
     <i-list-group-item href="http://inkline.io">Link</i-list-group-item>
-    <i-list-group-item :to="{ name: 'home.index' }">Router Link</i-list-group-item>
+    <i-list-group-item :to="{ name: 'index' }">Router Link</i-list-group-item>
     <i-list-group-item>Item</i-list-group-item>
     <i-list-group-item disabled>Disabled</i-list-group-item>
 </i-list-group>
@@ -96,8 +96,8 @@ You can control the active state of your `<i-list-group-item>` using the `active
 
 <div>
 <i-list-group>
-    <i-list-group-item :to="{ name: 'docs.components.list-group' }" exact-active-class="-active">Active Router Link</i-list-group-item>
-    <i-list-group-item :to="{ name: 'home.index' }" active>Active Link</i-list-group-item>
+    <i-list-group-item :to="{ name: 'docs-components-list-group' }" exact-active-class="-active">Active Router Link</i-list-group-item>
+    <i-list-group-item :to="{ name: 'index' }" active>Active Link</i-list-group-item>
 </i-list-group>
 </div>
 
@@ -105,8 +105,8 @@ You can control the active state of your `<i-list-group-item>` using the `active
 
 ~~~html
 <i-list-group>
-    <i-list-group-item :to="{ name: 'docs.components.list-group' }" exact-active-class="-active">Active Router Link</i-list-group-item>
-    <i-list-group-item :to="{ name: 'home.index' }" active>Active Link</i-list-group-item>
+    <i-list-group-item :to="{ name: 'docs-components-list-group' }" exact-active-class="-active">Active Router Link</i-list-group-item>
+    <i-list-group-item :to="{ name: 'index' }" active>Active Link</i-list-group-item>
 </i-list-group>
 ~~~
 

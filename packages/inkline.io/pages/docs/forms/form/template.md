@@ -8,7 +8,7 @@ The `<i-form>` component is a wrapper that provides proper handling of form vali
 
 <i-code-preview title="Form" link="https://github.com/inkline/inkline/tree/master/src/components/Form">
 
-<i-form v-on:submit="onSubmit">
+<i-form>
     <i-form-group>
         <i-input v-model="input" name="input" placeholder="Type something.." />
     </i-form-group>

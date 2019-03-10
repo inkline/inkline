@@ -328,7 +328,7 @@ The `<i-button>` component is well integrated with the [Vue Router](https://rout
 
 <div>
 <i-button href="http://inkline.io">Button Link</i-button>&nbsp;
-<i-button :to="{ name: 'docs.components.button' }">Button Route</i-button>
+<i-button :to="{ name: 'docs-components-button' }">Button Route</i-button>
 </div>
 
 <template slot="html">
@@ -337,7 +337,7 @@ The `<i-button>` component is well integrated with the [Vue Router](https://rout
 <i-button href="http://inkline.io">Button Link</i-button>
 ~~~
 ~~~html
-<i-button :to="{ name: 'docs.components.button' }">Button Route</i-button>
+<i-button :to="{ name: 'docs-components-button' }">Button Route</i-button>
 ~~~
 
 </template>
