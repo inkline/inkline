@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         updateDropdown() {
-            this.$refs.dropdown.$emit('change');
+            setTimeout(() => this.$refs.dropdown.$emit('init'), 100);
         }
     }
 };

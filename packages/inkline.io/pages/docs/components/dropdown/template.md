@@ -380,7 +380,7 @@ Inkline allows you to have virtually infinite recursive dropdown submenus struct
     <i-button>Recursive Dropdown</i-button>
     <i-dropdown-menu>
         <i-dropdown placement="right-start">
-            <i-dropdown-item href>Dropdown here</i-dropdown-item>
+            <i-dropdown-item>Dropdown here</i-dropdown-item>
             <i-dropdown-menu>
                 <i-dropdown-item href>Action</i-dropdown-item>
                 <i-dropdown-item href>Another action</i-dropdown-item>

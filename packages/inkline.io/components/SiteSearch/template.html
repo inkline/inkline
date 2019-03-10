@@ -13,7 +13,10 @@
                     <div class="body">
                         <template v-if="index.hits.length > 0" v-for="index in indices">
                             <div class="category">{{ index.label }}</div>
-                            <i-dropdown-item :to="{ name: hit.url, hash: '#' + hit.hash }" v-for="(hit, hitIndex) in index.hits" :key="hit.objectID">
+                            <i-dropdown-item
+                                :to="{ name: hit.url, hash: '#' + (hit.hash || '') }"
+                                v-for="(hit, hitIndex) in index.hits"
+                                :key="hit.objectID">
                                 <div class="title"><ais-highlight attribute="title" :hit="hit"/></div>
                                 <div class="subtitle"><ais-highlight attribute="subtitle" :hit="hit"/></div>
                                 <div class="description"><ais-snippet attribute="description" :hit="hit"/></div>
