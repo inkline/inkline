@@ -1,13 +1,21 @@
 @require '~@inkline/inkline/css/config/index'
 
 .site-search
+    margin: 0 --spacer
+
     .menu
         width: 520px
-        padding: 0 0 --spacer
+        padding: 0
 
         > .body
             max-height: 250px
             overflow-y: auto;
+
+        > .footer
+            display: flex
+            justify-content: flex-end
+            padding: (--spacer / 2) --spacer
+            border-top: 1px solid --colors['gray-30']
 
         .category
             position: sticky
