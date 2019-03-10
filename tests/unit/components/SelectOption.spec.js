@@ -9,9 +9,7 @@ describe('Components', () => {
         beforeEach(() => {
             wrapper = shallowMount(SelectOption, {
                 methods: {
-                    created: SelectOption.created,
-                    mounted: SelectOption.mounted,
-                    destroyed: SelectOption.destroyed
+                    created: SelectOption.created
                 }
             });
             parentWrapper = shallowMount(SelectOption, {
@@ -119,13 +117,13 @@ describe('Components', () => {
                     expect(spy).toHaveBeenCalled();
                 });
 
-                it('should dispatch menu-item-click and option-click', () => {
+                it('should dispatch item-click and option-click', () => {
                     const spy = jest.spyOn(wrapper.vm, 'dispatch');
 
                     wrapper.vm.onClick();
 
                     expect(spy).toHaveBeenNthCalledWith(1, 'ISelect', 'option-click', wrapper.vm.getDispatchProps());
-                    expect(spy).toHaveBeenNthCalledWith(2, 'IDropdown', 'menu-item-click', wrapper.vm);
+                    expect(spy).toHaveBeenNthCalledWith(2, 'IDropdown', 'item-click', wrapper.vm);
                 });
             });
         });
@@ -151,36 +149,6 @@ describe('Components', () => {
                 expect(rule()).toEqual(expect.objectContaining({
                     '-active': false
                 }));
-            });
-        });
-
-        describe('mounted()', () => {
-            it('should be defined', () => {
-                expect(SelectOption.mounted).toBeDefined();
-            });
-
-            it('should dispatch menu-item-mounted and option-mounted', () => {
-                const spy = jest.spyOn(wrapper.vm, 'dispatch');
-
-                wrapper.vm.mounted();
-
-                expect(spy).toHaveBeenNthCalledWith(1, 'ISelect', 'option-mounted', wrapper.vm.getDispatchProps());
-                expect(spy).toHaveBeenNthCalledWith(2, 'IDropdown', 'dropdown-item-mounted', wrapper.vm);
-            });
-        });
-
-        describe('destroyed()', () => {
-            it('should be defined', () => {
-                expect(SelectOption.destroyed).toBeDefined();
-            });
-
-            it('should dispatch menu-item-destroyed and option-destroyed', () => {
-                const spy = jest.spyOn(wrapper.vm, 'dispatch');
-
-                wrapper.vm.destroyed();
-
-                expect(spy).toHaveBeenNthCalledWith(1, 'ISelect', 'option-destroyed', wrapper.vm.getDispatchProps());
-                expect(spy).toHaveBeenNthCalledWith(2, 'IDropdown', 'dropdown-item-destroyed', wrapper.vm);
             });
         });
     });

@@ -174,52 +174,6 @@ describe('Components', () => {
                     done();
                 });
             });
-
-            it('should listen to "option-mounted" event', () => {
-                const spy = jest.spyOn(wrapper.vm, '$on');
-
-                wrapper.vm.created();
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('option-mounted', expect.any(Function));
-            });
-
-            it('should add event option to options on "option-mounted"', (done) => {
-                expect(wrapper.vm.options.length).toEqual(0);
-
-                wrapper.vm.$emit('option-mounted', { value: 'new' });
-
-                wrapper.vm.$nextTick(() => {
-                    expect(wrapper.vm.options[0]).toEqual({ value: 'new' });
-                    expect(wrapper.vm.options.length).toEqual(1);
-                    done();
-                });
-            });
-
-            it('should listen to "option-destroyed" event', () => {
-                const spy = jest.spyOn(wrapper.vm, '$on');
-
-                wrapper.vm.created();
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('option-destroyed', expect.any(Function));
-            });
-
-            it('should remove event option from options on "option-destroyed"', (done) => {
-                wrapper.setData({
-                    options: [
-                        { value: 'delete' }
-                    ]
-                });
-
-                expect(wrapper.vm.options.length).toEqual(1);
-                wrapper.vm.$emit('option-destroyed', { value: 'delete' });
-
-                wrapper.vm.$nextTick(() => {
-                    expect(wrapper.vm.options.length).toEqual(0);
-                    done();
-                });
-            });
         });
 
         describe('watch', () => {

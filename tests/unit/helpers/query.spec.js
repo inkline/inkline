@@ -68,43 +68,47 @@ describe('Helpers', () => {
             { $children: [{ $children: [{ $children: [{ $options: { name: '8' } }] }] }] },
         ];
 
-        it('should return undefined if no items in array', () => {
+        it('should return empty array if items is undefined', () => {
+            expect(querySelectorAll(undefined)).toEqual([])
+        });
+
+        it('should return empty array if no items in array', () => {
             expect(querySelectorAll([])).toEqual([])
         });
 
-        it('should return item if $options.name matches given name', () => {
+        it('should return array containing item if $options.name matches given name', () => {
             expect(querySelectorAll(items, '1')).toEqual([items[1]]);
         });
 
-        it('should return item if $options.$extends.name matches given name', () => {
+        it('should return array containing item if $options.$extends.name matches given name', () => {
             expect(querySelectorAll(items, '2')).toEqual([items[2]]);
         });
 
-        it('should return item if componentInstance.$options.name matches given name', () => {
+        it('should return array containing item if componentInstance.$options.name matches given name', () => {
             expect(querySelectorAll(items, '3')).toEqual([items[3]]);
         });
 
-        it('should return item if componentInstance.$options.$extends.name matches given name', () => {
+        it('should return array containing item if componentInstance.$options.$extends.name matches given name', () => {
             expect(querySelectorAll(items, '4')).toEqual([items[4]]);
         });
 
-        it('should return item if children[0] matches given name', () => {
+        it('should return array containing item if children[0] matches given name', () => {
             expect(querySelectorAll(items, '5')).toEqual([items[5].children[0]]);
         });
 
-        it('should return item if $children[0] matches given name', () => {
+        it('should return array containing item if $children[0] matches given name', () => {
             expect(querySelectorAll(items, '6')).toEqual([items[6].$children[0]]);
         });
 
-        it('should return item if componentInstance.$children[0] matches given name', () => {
+        it('should return array containing item if componentInstance.$children[0] matches given name', () => {
             expect(querySelectorAll(items, '7')).toEqual([items[7].componentInstance.$children[0]]);
         });
 
-        it('should return undefined if item below given search depth', () => {
+        it('should return array containing undefined if item below given search depth', () => {
             expect(querySelectorAll(items, '8', 2)).toEqual([]);
         });
 
-        it('should return item if item above given search depth', () => {
+        it('should return array containing item if item above given search depth', () => {
             expect(querySelectorAll(items, '8', 3)).toEqual([{ $options: { name: '8' } }]);
         });
     });

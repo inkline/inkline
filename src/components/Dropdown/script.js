@@ -118,8 +118,6 @@ export default {
         onItemKeyDown(e) {
             if (!this.focusableItems.length > 0) { return; }
 
-            const target = e.target;
-
             // Default key: up or down
             if (this.actionKeymap.navigate.some((key) => isKey(key, e))) {
                 const currentIndex = this.focusableItems.findIndex((i) => (i.elm || i.$el) === e.target);
@@ -140,9 +138,9 @@ export default {
 
             // Default key: enter or space
             } else if (this.actionKeymap.select.some((key) => isKey(key, e))) {
-                target.click();
+                e.target.click();
 
-                if (target.hasAttribute('aria-haspopup')) {
+                if (e.target.hasAttribute('aria-haspopup')) {
                     this.initItems();
                 } else {
                     this.triggerElement.focus();
