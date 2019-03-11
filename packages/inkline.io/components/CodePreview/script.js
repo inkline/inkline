@@ -10,11 +10,11 @@ export default {
         return {
             active: this.defaultActive || 'default',
             tabs: [
-                { id: 'default', title: 'Preview' },
-                { id: 'html', title: 'HTML' },
-                { id: 'css', title: 'CSS' },
-                { id: 'js', title: 'JS' },
-                { id: 'output', title: 'Output' }
+                { id: 'default', title: 'Preview', icon: 'eye' },
+                { id: 'html', title: 'HTML', icon: ['fab', 'html5'] },
+                { id: 'css', title: 'CSS', icon: ['fab', 'css3'] },
+                { id: 'js', title: 'JS', icon: ['fab', 'js'] },
+                { id: 'output', title: 'Output', icon: 'terminal' }
             ]
         };
     },

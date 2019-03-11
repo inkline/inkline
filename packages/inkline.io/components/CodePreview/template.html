@@ -7,16 +7,19 @@
         <div class="tabs">
             <i-button-group size="sm">
                 <i-button
+                        class="tab"
                         :class="{ '-active': active === tab.id }"
                         :key="tab.id"
                         :variant="active === tab.id ? 'primary' : 'light'"
                         @click="setActive(tab.id)"
                         v-if="$slots[tab.id]"
                         v-for="tab in tabs">
-                    {{tab.title}}
+                    <font-awesome-icon :icon="tab.icon" class="icon"></font-awesome-icon>
+                    <span class="title">{{tab.title}}</span>
                 </i-button>
             </i-button-group>
-            <i-button class="link" v-if="link" :href="link" target="_blank">
+
+            <i-button size="sm" class="link" v-if="link" :href="link" target="_blank">
                 <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>
             </i-button>
         </div>
@@ -29,7 +32,9 @@
                  v-if="$slots[tab.id]"
                  v-show="active === tab.id"
                  v-for="tab in tabs">
-                <slot :name="tab.id"></slot>
+                <div class="table-responsive">
+                    <slot :name="tab.id"></slot>
+                </div>
             </div>
         </transition-group>
     </div>

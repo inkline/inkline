@@ -1,4 +1,5 @@
 @require '~@inkline/inkline/css/config/index'
+@require '~@inkline/inkline/css/mixins/index'
 
 .code-preview
     display: block
@@ -31,6 +32,24 @@
 
             > .link
                 margin-left: --spacer
+
+                +-breakpoint-down(md)
+                    padding: 0.25rem 0.8rem
+                    margin-left: (--spacer / 2)
+
+            .tab
+                > .icon
+                    display: none
+
+                > .title
+                    display: block
+
+                +-breakpoint-down(md)
+                    > .icon
+                        display: block
+
+                    > .title
+                        display: none
 
     &.-expanded
         padding-bottom: 0

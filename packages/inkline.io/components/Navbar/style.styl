@@ -10,9 +10,6 @@
 
     > .container > .row > .column
         > .brand
-            +-breakpoint-down(sm)
-                margin-left: --spacer * 3
-
             .logo.-light
                 display: none
 
@@ -87,6 +84,17 @@
             > .bars::after
                 background-color: --colors['light']
 
+    &.-docs
+        .navbar-toggle
+            display: block
+
+            +-breakpoint-up(md)
+                display: none
+
+        > .container > .row > .column
+            > .brand
+                +-breakpoint-down(sm)
+                    margin-left: --spacer * 3
 
 .navbar-toggle
     position: absolute
@@ -99,9 +107,7 @@
     border: 0
     cursor: pointer
     transition: background-color 0.3s ease
-
-    +-breakpoint-up(md)
-        display: none
+    display: none
 
     &:focus
     &:hover
