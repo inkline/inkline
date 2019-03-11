@@ -34,5 +34,5 @@
 3. Open `http://localhost:8080` in your browser.
 
 ## Copyright and license
-Homepage and documentation copyright 2017-2018 [Inkline Authors](https://github.com/inkline/inkline.io/graphs/contributors). 
+Homepage and documentation copyright 2017-2019 [Inkline Authors](https://github.com/inkline/inkline.io/graphs/contributors). 
 Docs released under [Creative Commons](https://github.com/inkline/inkline.io/blob/master/docs/LICENSE).
