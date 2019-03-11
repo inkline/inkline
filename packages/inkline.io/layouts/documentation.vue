@@ -1,15 +1,18 @@
 <template>
 <div id="documentation-layout">
-    <navbar />
+    <navbar class="-docs" @toggle="collapsed = !collapsed" />
     <i-container>
         <i-row>
             <i-column>
-                <i-layout vertical>
-                    <i-layout-aside id="layout-aside-left">
-                        <div class="layout-fixed-full-height" v-match-parent-width>
-                            <site-navigation></site-navigation>
-                        </div>
-                    </i-layout-aside>
+                <i-layout vertical ref="layout">
+                    <transition name="fade-in-transition">
+                        <i-layout-aside id="layout-aside-left" v-show="collapsed || !collapsible">
+                            <div class="layout-fixed-full-height" v-match-parent-width>
+                                <site-search class="_visible-sm-and-down"></site-search>
+                                <site-navigation></site-navigation>
+                            </div>
+                        </i-layout-aside>
+                    </transition>
 
                     <i-layout-content>
                         <nuxt />
@@ -30,10 +33,12 @@
 <script>
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
+import SiteSearch from '@components/SiteSearch';
 import SiteNavigation from '@components/SiteNavigation';
 import PageNavigation from '@components/PageNavigation';
 import MatchParentWidth from '@directives/match-parent-width';
-import { getStyleProperty } from '@inkline/inkline/helpers'
+import { getStyleProperty, on, off } from '@inkline/inkline/helpers'
+import { breakpoints } from '@inkline/inkline/constants'
 
 export default {
     name: 'Documentation',
@@ -43,11 +48,20 @@ export default {
     },
     components: {
         Navbar,
+        SiteSearch,
         SiteNavigation,
         PageNavigation
     },
     directives: {
         MatchParentWidth
+    },
+    data() {
+        return {
+            collapsed: false,
+            collapsible: false,
+            collapse: 'sm',
+            windowWidth: window.innerWidth
+        }
     },
     methods: {
         highlight() {
@@ -73,11 +87,44 @@ export default {
                     pre.appendChild(line);
                 }
             });
+        },
+        onLayoutClick(e) {
+            if (e.target.id === 'layout-aside-left') {
+                this.collapsed = false;
+            }
+        },
+        onWindowResize() {
+            if (!this.collapse) { return; }
+
+            const windowWidth = window.innerWidth;
+
+            if (this.windowWidth <= breakpoints[this.collapse][1] && windowWidth > breakpoints[this.collapse][1]) {
+                this.collapsed = false;
+            }
+
+            this.collapsible = windowWidth <= breakpoints[this.collapse][1];
+            this.windowWidth = windowWidth;
+        }
+    },
+    watch: {
+        $route() {
+            if (this.collapsible && this.collapsed) {
+                this.collapsed = false;
+            }
         }
     },
     mounted() {
+        on(this.$refs.layout.$el, 'click', this.onLayoutClick);
+
         this.highlight();
         this.$nuxt.$on('viewLoaded', this.highlight);
+
+        window.addEventListener('resize', this.onWindowResize);
+        this.onWindowResize();
+    },
+    beforeDestroy() {
+        off(this.$refs.layout.$el, 'click', this.onLayoutClick);
+        window.removeEventListener('resize', this.onWindowResize);
     }
 };
 </script>

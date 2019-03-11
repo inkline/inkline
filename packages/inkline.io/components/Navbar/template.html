@@ -1,5 +1,5 @@
 <i-navbar id="navbar" class="_fixed-top" collapse="">
-    <button class="navbar-toggle">
+    <button class="navbar-toggle" @click="$emit('toggle')">
         <font-awesome-icon icon="bars" size="lg"></font-awesome-icon>
     </button>
 
@@ -8,6 +8,7 @@
         <img class="logo -light" src="../../static/images/logo-light-80.png" height="26">
         Inkline
     </i-navbar-brand>
+
     <i-navbar-items class="_justify-content-end">
         <i-nav>
             <site-search></site-search>

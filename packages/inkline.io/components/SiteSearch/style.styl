@@ -1,11 +1,12 @@
 @require '~@inkline/inkline/css/config/index'
+@require '~@inkline/inkline/css/mixins/index'
 
 .site-search
     margin: 0 --spacer
 
     .menu
         width: 520px
-        padding: 0
+        padding: 0 !important
 
         > .body
             max-height: 250px
@@ -42,3 +43,12 @@
             .description > span
                 display: block
                 font-size: --font-size-sm
+
+    +-breakpoint-down(sm)
+        margin: --spacer 0 0
+
+        .menu
+            width: 14rem
+
+            .body
+                max-width: 100%
