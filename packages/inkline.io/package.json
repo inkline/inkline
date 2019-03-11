@@ -1,6 +1,6 @@
 {
   "name": "inkline.io",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "Inkline's documentation and homepage is built with Nuxt and publicly hosted on GitHub Pages. Inkline is a modern UI/UX framework for Vue.js, written and maintained by @alexgrozav.",
   "author": "Alex Grozav",
   "private": true,
@@ -19,7 +19,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.7.2",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/vue-fontawesome": "^0.1.5",
-    "@inkline/inkline": "^1.9.1",
+    "@inkline/inkline": "^1.9.2",
     "@nuxtjs/dotenv": "^1.3.0",
     "@nuxtjs/pwa": "^2.6.0",
     "algoliasearch": "^3.32.0",
