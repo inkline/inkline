@@ -4,9 +4,9 @@
             <i-dropdown ref="dropdown" placement="bottom-start" :keymap="searchKeymap" slot-scope="{ currentRefinement, indices, refine }">
                 <i-input
                     type="search"
-                    :value="currentRefinement"
                     placeholder="Search"
-                    @input="refine($event) && updateDropdown()">
+                    :value="currentRefinement"
+                    @input="search($event, refine) && updateDropdown()">
                     <font-awesome-icon icon="search" slot="prefix"></font-awesome-icon>
                 </i-input>
                 <i-dropdown-menu v-show="currentRefinement">
