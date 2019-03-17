@@ -1,4 +1,4 @@
-import debounce from 'lodash-es/debounce';
+import throttle from 'lodash-es/throttle';
 import algoliasearch from "algoliasearch";
 import 'instantsearch.css/themes/algolia.css';
 
@@ -20,14 +20,16 @@ export default {
         };
     },
     methods: {
-        updateDropdown() {
-            setTimeout(() => this.$refs.dropdown.$emit('init'), 100);
-        },
         search(event, callback) {
             callback(event);
+
+            setTimeout(() => this.$refs.dropdown.$emit('init'), 100);
+        },
+        hasResults(indices) {
+            return indices.some((index) => index.hits.length > 0)
         }
     },
     mounted() {
-        this.search = debounce(this.search, 500);
+        this.search = throttle(this.search, 500);
     }
 };
