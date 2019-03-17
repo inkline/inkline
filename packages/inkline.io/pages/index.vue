@@ -11,16 +11,65 @@
                 </i-column>
             </i-row>
         </i-header>
-        <i-container>
+
+        <i-container id="feautres">
             <i-row>
                 <i-column>
-                    <i-row>
-                        <i-column xs="12">
-
-                        </i-column>
-                    </i-row>
+                    <div class="feature-box">
+                        <h3>Modern</h3>
+                        <p class="_text-muted">Inkline is a versatile and modern framework, written using the Vue.js best practices.</p>
+                    </div>
+                </i-column>
+                <i-column>
+                    <div class="feature-box">
+                        <h3>Responsive</h3>
+                        <p class="_text-muted">Inkline is designed to be mobile-first. It looks great on phones, tablets, laptops and desktops.</p>
+                    </div>
+                </i-column>
+                <i-column>
+                    <div class="feature-box">
+                        <h3>Modular</h3>
+                        <p class="_text-muted">Inkline comes with over 50 components designed to give you the best development experience.</p>
+                    </div>
+                </i-column>
+                <i-column md="12" lg="4">
+                    <div class="feature-box">
+                        <h3>Modern</h3>
+                        <p class="_text-muted">Inkline is a versatile and modern framework, written using the Vue.js best practices.</p>
+                    </div>
+                </i-column>
+                <i-column md="6" lg="4">
+                    <div class="feature-box">
+                        <h3>Responsive</h3>
+                        <p class="_text-muted">Inkline is designed to be mobile-first. It looks great on phones, tablets, laptops and desktops.</p>
+                    </div>
+                </i-column>
+                <i-column md="6" lg="4">
+                    <div class="feature-box">
+                        <h3>Modular</h3>
+                        <p class="_text-muted">Inkline comes with over 50 components designed to give you the best development experience.</p>
+                    </div>
                 </i-column>
             </i-row>
+        </i-container>
+
+        <i-container fluid id="sponsors">
+            <i-container>
+                <i-row>
+                    <i-column>
+                        <i-row>
+                            <i-column>
+                                <small class="_text-muted">Sponsors</small>
+                            </i-column>
+                        </i-row>
+                        <i-row>
+                            <i-column md="2">
+                                <img src="http://placehold.it/200x200">
+                            </i-column>
+                        </i-row>
+                    </i-column>
+                </i-row>
+            </i-container>
         </i-container>
     </div>
 </template>
@@ -102,6 +151,11 @@
                 font-size: --font-size-md
                 border-radius: --border-radius-md
                 padding: (--spacer / 2) --spacer
+
+#sponsors
+    margin-top: --spacer * 4
+    padding: (--spacer * 4) 0
+    background-color: --colors['gray-20']
 </style>
 
 <script>
