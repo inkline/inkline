@@ -14,40 +14,22 @@
 
         <i-container id="feautres">
             <i-row>
-                <i-column>
-                    <div class="feature-box">
-                        <h3>Modern</h3>
-                        <p class="_text-muted">Inkline is a versatile and modern framework, written using the Vue.js best practices.</p>
-                    </div>
-                </i-column>
-                <i-column>
-                    <div class="feature-box">
-                        <h3>Responsive</h3>
-                        <p class="_text-muted">Inkline is designed to be mobile-first. It looks great on phones, tablets, laptops and desktops.</p>
-                    </div>
-                </i-column>
-                <i-column>
-                    <div class="feature-box">
-                        <h3>Modular</h3>
-                        <p class="_text-muted">Inkline comes with over 50 components designed to give you the best development experience.</p>
-                    </div>
-                </i-column>
                 <i-column md="12" lg="4">
                     <div class="feature-box">
                         <h3>Modern</h3>
-                        <p class="_text-muted">Inkline is a versatile and modern framework, written using the Vue.js best practices.</p>
+                        <p class="_text-muted">Inkline is a versatile and modern framework, written using the best Vue.js practices.</p>
                     </div>
                 </i-column>
                 <i-column md="6" lg="4">
                     <div class="feature-box">
                         <h3>Responsive</h3>
-                        <p class="_text-muted">Inkline is designed to be mobile-first. It looks great on phones, tablets, laptops and desktops.</p>
+                        <p class="_text-muted">Designed to be mobile-first, Inkline looks great on phones, tablets, laptops and desktops.</p>
                     </div>
                 </i-column>
                 <i-column md="6" lg="4">
                     <div class="feature-box">
                         <h3>Modular</h3>
-                        <p class="_text-muted">Inkline comes with over 50 components designed to give you the best development experience.</p>
+                        <p class="_text-muted">With over 50 components, Inkline is designed to give you the best development experience.</p>
                     </div>
                 </i-column>
             </i-row>
