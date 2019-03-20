@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#949ADA;}
+	.st1{fill:#6E76CD;}
+	.st2{fill:#FFDA2D;}
+	.st3{fill:#FDBF00;}
+	.st4{fill:#565FC4;}
+	.st5{fill:#3641B9;}
+	.st6{fill:#EDEEF9;}
+	.st7{fill:#CDD0EE;}
+</style>
+<path class="st0" d="M391,181v210H181v-90l75-24.9l15-5.1l30-90H391z"/>
+<path class="st1" d="M391,181v210H256V276.1l15-5.1l30-90H391z"/>
+<path class="st2" d="M301,121v60l-90,30l-30,90h-60V121H301z"/>
+<path class="st3" d="M301,121v60l-45,15v-75H301z"/>
+<path class="st4" d="M76,31h75v30H76V31z"/>
+<path class="st4" d="M181,31h30v30h-30V31z"/>
+<path class="st4" d="M241,31h30v30h-30V31z"/>
+<path class="st5" d="M301,31h30v30h-30V31z"/>
+<path class="st5" d="M361,31h75v30h-75V31z"/>
+<path class="st4" d="M76,451h75v30H76V451z"/>
+<path class="st4" d="M181,451h30v30h-30V451z"/>
+<path class="st4" d="M241,451h30v30h-30V451z"/>
+<path class="st5" d="M301,451h30v30h-30V451z"/>
+<path class="st5" d="M361,451h75v30h-75V451z"/>
+<path class="st4" d="M31,361h30v75H31V361z"/>
+<path class="st4" d="M31,301h30v30H31V301z"/>
+<path class="st4" d="M31,241h30v30H31V241z"/>
+<path class="st4" d="M31,181h30v30H31V181z"/>
+<path class="st4" d="M31,76h30v75H31V76z"/>
+<g>
+	<path class="st5" d="M451,361h30v75h-30V361z"/>
+	<path class="st5" d="M451,301h30v30h-30V301z"/>
+	<path class="st5" d="M451,241h30v30h-30V241z"/>
+	<path class="st5" d="M451,181h30v30h-30V181z"/>
+	<path class="st5" d="M451,76h30v75h-30V76z"/>
+	<path class="st5" d="M256,31h15v30h-15V31z"/>
+	<path class="st5" d="M256,451h15v30h-15V451z"/>
+</g>
+<path class="st0" d="M91,91H0V0h91V91z"/>
+<path class="st1" d="M512,91h-91V0h91V91z"/>
+<path class="st1" d="M512,512h-91v-91h91V512z"/>
+<path class="st0" d="M91,512H0v-91h91V512z"/>
+<path class="st6" d="M181,181h120v120H181V181z"/>
+<path class="st7" d="M256,181h45v120h-45V181z"/>
+</svg>

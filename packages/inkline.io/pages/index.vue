@@ -12,24 +12,27 @@
             </i-row>
         </i-header>
 
-        <i-container id="feautres">
+        <i-container id="features">
             <i-row>
+                <i-column md="6" lg="4">
+                    <div class="feature-box">
+                        <img src="/images/pages/icon-responsive.svg" alt="Modern" />
+                        <h3>Responsive</h3>
+                        <p>Designed to be mobile-first, Inkline looks great on phones, tablets, laptops and desktops.</p>
+                    </div>
+                </i-column>
+                <i-column md="6" lg="4">
+                    <div class="feature-box">
+                        <img src="/images/pages/icon-modular.svg" alt="Modern" />
+                        <h3>Modular</h3>
+                        <p>With over 50 components, Inkline is designed to give you the best development experience.</p>
+                    </div>
+                </i-column>
                 <i-column md="12" lg="4">
                     <div class="feature-box">
+                        <img src="/images/pages/icon-modern.svg" alt="Modern" />
                         <h3>Modern</h3>
-                        <p class="_text-muted">Inkline is a versatile and modern framework, written using the best Vue.js practices.</p>
-                    </div>
-                </i-column>
-                <i-column md="6" lg="4">
-                    <div class="feature-box">
-                        <h3>Responsive</h3>
-                        <p class="_text-muted">Designed to be mobile-first, Inkline looks great on phones, tablets, laptops and desktops.</p>
-                    </div>
-                </i-column>
-                <i-column md="6" lg="4">
-                    <div class="feature-box">
-                        <h3>Modular</h3>
-                        <p class="_text-muted">With over 50 components, Inkline is designed to give you the best development experience.</p>
+                        <p>Inkline is a versatile and modern framework, written using the best Vue.js practices.</p>
                     </div>
                 </i-column>
             </i-row>
@@ -133,6 +136,24 @@
                 font-size: --font-size-md
                 border-radius: --border-radius-md
                 padding: (--spacer / 2) --spacer
+
+#features
+    border-top: 1px solid --colors['gray-20']
+    margin-top: --spacer * 5
+    padding-top: --spacer * 5
+
+    .feature-box
+        text-align: center
+
+        h3
+            margin-top: --spacer * 1.5
+
+        p
+            color: --text-muted
+
+        img
+            height: 60px
+            width: auto
 
 #sponsors
     margin-top: --spacer * 4
