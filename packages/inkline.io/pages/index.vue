@@ -4,54 +4,67 @@
             <i-row>
                 <i-column md="7" lg="6" xl="5">
                     <h1 class="header-title">Inkline</h1>
-                    <h2 class="header-subtitle">
+                    <p class="header-subtitle">
                         Inkline is a modern <strong>UI/UX Framework for Vue.js</strong> designed for creating flawless responsive web applications.
-                    </h2>
+                    </p>
                     <i-button size="lg" variant="primary" class="_margin-top-2" :to="{ name: 'docs-introduction-getting-started' }">Get Started</i-button>
                 </i-column>
             </i-row>
         </i-header>
 
-        <i-container id="features">
-            <i-row>
-                <i-column md="6" lg="4">
-                    <div class="feature-box">
-                        <img src="/images/pages/icon-responsive.svg" alt="Modern" />
-                        <h3>Responsive</h3>
-                        <p>Designed to be mobile-first, Inkline looks great on phones, tablets, laptops and desktops.</p>
-                    </div>
-                </i-column>
-                <i-column md="6" lg="4">
-                    <div class="feature-box">
-                        <img src="/images/pages/icon-modular.svg" alt="Modern" />
-                        <h3>Modular</h3>
-                        <p>With over 50 components, Inkline is designed to give you the best development experience.</p>
-                    </div>
-                </i-column>
-                <i-column md="12" lg="4">
-                    <div class="feature-box">
-                        <img src="/images/pages/icon-modern.svg" alt="Modern" />
-                        <h3>Modern</h3>
-                        <p>Inkline is a versatile and modern framework, written using the best Vue.js practices.</p>
-                    </div>
-                </i-column>
-            </i-row>
+        <i-container fluid id="features">
+            <i-container>
+                <i-row>
+                    <i-column md="6" lg="4">
+                        <div class="feature-box">
+                            <img src="/images/pages/icon-responsive.svg" alt="Modern" />
+                            <h3>Responsive</h3>
+                            <p>Designed to be mobile-first, Inkline looks great on phones, tablets, laptops and desktops.</p>
+                        </div>
+                    </i-column>
+                    <i-column md="6" lg="4">
+                        <div class="feature-box">
+                            <img src="/images/pages/icon-modular.svg" alt="Modern" />
+                            <h3>Modular</h3>
+                            <p>With over 50 components, Inkline is designed to give you the best development experience.</p>
+                        </div>
+                    </i-column>
+                    <i-column md="6" lg="4">
+                        <div class="feature-box">
+                            <img src="/images/pages/icon-modern.svg" alt="Modern" />
+                            <h3>Modern</h3>
+                            <p>Inkline is a versatile and modern framework, written using the best Vue.js practices.</p>
+                        </div>
+                    </i-column>
+                    <i-column md="6" offset-lg="2" lg="4">
+                        <div class="feature-box">
+                            <img src="/images/pages/icon-form-validation.svg" alt="Form Validation" />
+                            <h3>Form Validation</h3>
+                            <p>Define a form validation schema and let Inkline take care of form validation.</p>
+                        </div>
+                    </i-column>
+                    <i-column md="12" lg="4">
+                        <div class="feature-box">
+                            <img src="/images/pages/icon-customization.svg" alt="Customization" />
+                            <h3>Customizable</h3>
+                            <p>Disover hundreds of easily accessible Vue.js and Stylus customization options.</p>
+                        </div>
+                    </i-column>
+                </i-row>
+            </i-container>
         </i-container>
 
         <i-container fluid id="sponsors">
             <i-container>
                 <i-row>
                     <i-column>
-                        <i-row>
-                            <i-column>
-                                <small class="_text-muted">Sponsors</small>
-                            </i-column>
-                        </i-row>
-                        <i-row>
-                            <i-column md="2">
-                                <img src="http://placehold.it/200x200">
-                            </i-column>
-                        </i-row>
+                        <h4>Patreon Sponsors</h4>
+                        <p class="_text-muted">Become the first sponsor of Inkline.</p>
+                    </i-column>
+                </i-row>
+                <i-row>
+                    <i-column>
+                        <i-button variant="primary" outline href="https://www.patreon.com/bePatron?u=18449490" target="_blank">Become a sponsor</i-button>
                     </i-column>
                 </i-row>
             </i-container>
@@ -138,27 +151,35 @@
                 padding: (--spacer / 2) --spacer
 
 #features
-    border-top: 1px solid --colors['gray-20']
-    margin-top: --spacer * 5
-    padding-top: --spacer * 5
+    padding: (--spacer * 3) 0 (--spacer * 6)
+    background-image: url('../static/images/pages/index-features.svg')
+    background-position: center bottom
+    background-repeat: no-repeat
 
-    .feature-box
-        text-align: center
+    +-breakpoint-up(lg)
+        .column
+            &:nth-child(4),
+            &:nth-child(5)
+                margin-top: 2rem
 
-        h3
-            margin-top: --spacer * 1.5
+.feature-box
+    text-align: center
+    padding: --spacer 0
 
-        p
-            color: --text-muted
+    h3
+        margin-top: --spacer * 1.5
 
-        img
-            height: 60px
-            width: auto
+    p
+        color: --text-muted
+
+    img
+        height: 60px
+        width: auto
 
 #sponsors
-    margin-top: --spacer * 4
     padding: (--spacer * 4) 0
     background-color: --colors['gray-20']
+    text-align: center
 </style>
 
 <script>
