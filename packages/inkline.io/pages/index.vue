@@ -58,13 +58,13 @@
             <i-container>
                 <i-row>
                     <i-column>
-                        <h4>Patreon Sponsors</h4>
-                        <p class="_text-muted">Become the first sponsor of Inkline.</p>
+                        <h3>Patreon Sponsors</h3>
+                        <p class="_text-muted">Become the first sponsor of Inkline and get awesome benefits.</p>
                     </i-column>
                 </i-row>
-                <i-row>
+                <i-row class="_margin-top-1">
                     <i-column>
-                        <i-button variant="primary" outline href="https://www.patreon.com/bePatron?u=18449490" target="_blank">Become a sponsor</i-button>
+                        <i-button variant="primary" href="https://www.patreon.com/bePatron?u=18449490" target="_blank">Become a sponsor</i-button>
                     </i-column>
                 </i-row>
             </i-container>
