@@ -15,7 +15,8 @@ export default {
                 { id: 'css', title: 'CSS', icon: ['fab', 'css3'] },
                 { id: 'js', title: 'JS', icon: ['fab', 'js'] },
                 { id: 'output', title: 'Output', icon: 'terminal' }
-            ]
+            ],
+            mode: 'code'
         };
     },
     props: {

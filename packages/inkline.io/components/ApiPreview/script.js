@@ -16,7 +16,8 @@ export default {
                 { id: 'props', title: 'Props' },
                 { id: 'slots', title: 'Slots' },
                 { id: 'events', title: 'Events' }
-            ]
+            ],
+            mode: 'api'
         };
     }
 };
