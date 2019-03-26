@@ -69,6 +69,44 @@
                 </i-row>
             </i-container>
         </i-container>
+
+        <i-container fluid id="footer">
+            <i-container>
+                <footer>
+                    <img src="~static/images/logo-light-80.png" alt="Inkline" height="60">
+                    <ul class="list -inline">
+                        <li class="footer-icon">
+                            <a href="https://github.com/inkline/inkline" target="_blank">
+                                <font-awesome-icon size="lg" :icon="['fab', 'github']"></font-awesome-icon>
+                            </a>
+                        </li>
+                        <li class="footer-icon">
+                            <a href="https://twitter.com/inklineUX" target="_blank">
+                                <font-awesome-icon size="lg" :icon="['fab', 'twitter']"></font-awesome-icon>
+                            </a>
+                        </li>
+                        <li class="footer-icon">
+                            <a href="https://discord.gg/2w5UGnK" target="_blank">
+                                <font-awesome-icon size="lg" :icon="['fab', 'discord']"></font-awesome-icon>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <p id="footer-license">
+                        Released under the  <a href="https://github.com/inkline/inkline/blob/master/LICENSE">MIT License</a>
+                    </p>
+                    <p id="footer-copyright">
+                        Copyright &copy; 2017-2019, Alex GROZAV
+                    </p>
+
+                    <ul id="footer-policies" class="list -inline">
+                        <li><a href="">Privacy Policy</a></li>
+                        <li>&middot;</li>
+                        <li><a href="">Cookie Policy</a></li>
+                    </ul>
+                </footer>
+            </i-container>
+        </i-container>
     </div>
 </template>
 
@@ -180,6 +218,34 @@
     padding: (--spacer * 4) 0
     background-color: --colors['gray-20']
     text-align: center
+
+#footer
+    padding: (--spacer * 4) 0
+    background-color: --colors['gray-80']
+    text-align: center
+    color: --colors['gray-20']
+
+    a
+        color --text-muted
+
+    .list
+        margin-top: --spacer
+
+    .footer-icon svg
+        color: --colors['gray-20']
+        transition: color 0.3s ease
+
+        &:hover
+            color: --colors['white']
+
+    #footer-license
+        a
+            color: --colors['white']
+
+    #footer-copyright,
+    #footer-policies
+        font-size: --font-size-sm
+        color: --text-muted
 </style>
 
 <script>

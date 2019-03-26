@@ -14,7 +14,7 @@
                         @click="setActive(tab.id)"
                         v-if="$slots[tab.id]"
                         v-for="tab in tabs">
-                    <font-awesome-icon :icon="tab.icon" class="icon"></font-awesome-icon>
+                    <font-awesome-icon v-if="tab.icon" :icon="tab.icon" class="icon"></font-awesome-icon>
                     <span class="title">{{tab.title}}</span>
                 </i-button>
             </i-button-group>
