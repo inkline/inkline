@@ -13,9 +13,9 @@ export default {
         return {
             active: this.defaultActive || 'props',
             tabs: [
-                { id: 'props', title: 'Props' },
-                { id: 'slots', title: 'Slots' },
-                { id: 'events', title: 'Events' }
+                { id: 'props', title: 'Props', icon: '' },
+                { id: 'slots', title: 'Slots', icon: '' },
+                { id: 'events', title: 'Events', icon: '' }
             ],
             mode: 'api'
         };
