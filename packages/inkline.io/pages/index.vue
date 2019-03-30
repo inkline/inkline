@@ -74,6 +74,7 @@
             <i-container>
                 <footer>
                     <img src="~static/images/logo-light-80.png" alt="Inkline" height="60">
+
                     <ul class="list -inline">
                         <li class="footer-icon">
                             <a href="https://github.com/inkline/inkline" target="_blank">
@@ -86,23 +87,28 @@
                             </a>
                         </li>
                         <li class="footer-icon">
-                            <a href="https://discord.gg/2w5UGnK" target="_blank">
+                            <a href="https://discord.gg/2w5UGnK" target="_blank" rel="nofollow">
                                 <font-awesome-icon size="lg" :icon="['fab', 'discord']"></font-awesome-icon>
                             </a>
                         </li>
                     </ul>
 
                     <p id="footer-license">
-                        Released under the  <a href="https://github.com/inkline/inkline/blob/master/LICENSE">MIT License</a>
+                        Designed and built with
+                        <font-awesome-icon icon="heart" size="sm" />
+                        by
+                        <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
                     </p>
                     <p id="footer-copyright">
-                        Copyright &copy; 2017-2019, Alex GROZAV
+                        Copyright &copy; 2017-2019, Inkline
                     </p>
 
                     <ul id="footer-policies" class="list -inline">
                         <li><a href="">Privacy Policy</a></li>
                         <li>&middot;</li>
                         <li><a href="">Cookie Policy</a></li>
+                        <li>&middot;</li>
+                        <li><a href="https://github.com/inkline/inkline/blob/master/LICENSE">MIT License</a></li>
                     </ul>
                 </footer>
             </i-container>
@@ -218,15 +224,20 @@
     padding: (--spacer * 4) 0
     background-color: --colors['gray-20']
     text-align: center
+    z-index: 1
 
 #footer
     padding: (--spacer * 4) 0
     background-color: --colors['gray-80']
     text-align: center
     color: --colors['gray-20']
+    position: relative
 
     a
         color --text-muted
+
+    img
+        margin-bottom: --spacer
 
     .list
         margin-top: --spacer

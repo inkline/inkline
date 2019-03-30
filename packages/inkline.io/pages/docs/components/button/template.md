@@ -4,7 +4,7 @@ Inkline provides you with custom button styles with support for multiple sizes, 
 ### Variants
 Inkline includes several predefined button styles, each serving its own semantic purpose, with a few extra variants available for more control.
 
-<i-code-preview title="Button Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Button Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 
 <div>
 <i-button variant="primary">Primary</i-button>&nbsp;
@@ -52,7 +52,7 @@ Inkline includes several predefined button styles, each serving its own semantic
 The `<i-button>` component makes use of a `<button>` element markup behind the scenes. Therefore, you can assign a type to it,
 just like with the `<button>` element.
 
-<i-code-preview title="Button Type" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Button Type" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 
 <div>
 <i-button type="button">Button</i-button>&nbsp;
@@ -77,12 +77,12 @@ just like with the `<button>` element.
 
 If you need to change the `<button>` node used to render the component, you can use the `tag` property to change it.
 
-<i-code-preview title="Button Tag" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Button Tag" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 
-<div class="_margin-bottom-1">
+<div>
 <i-button tag="a">Anchor</i-button>&nbsp;
 </div>
-<div class="_margin-bottom-1">
+<div>
 <i-button tag="button" type="button">Button</i-button>&nbsp;
 <i-button tag="button" type="submit">Submit Button</i-button>&nbsp;
 <i-button tag="button" type="reset">Reset Button</i-button>&nbsp;
@@ -117,7 +117,7 @@ If you need to change the `<button>` node used to render the component, you can 
 Sometimes, buttons should not stand out so much. Replace the default modifier classes with the `outline` property
 to remove background images and colors on any button when not interacted with.
 
-<i-code-preview title="Button Outline" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Button Outline" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 
 <div>
 <i-button outline variant="primary">Primary</i-button>&nbsp;
@@ -163,7 +163,7 @@ to remove background images and colors on any button when not interacted with.
 ### Link Style
 You can create link buttons that look the same as normal links. Link buttons will use the `variant` property to set the color of the link.
 
-<i-code-preview title="Link Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Link Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 
 <div>
 <i-button link variant="primary">Primary</i-button>&nbsp;
@@ -210,7 +210,7 @@ You can create link buttons that look the same as normal links. Link buttons wil
 Circle buttons are very common when working with icon actions. You can transform buttons into circles using the `circle`
 modifier. You're also able to use the `size` modifier to control the size of your circle buttons. 
 
-<i-code-preview title="Circle Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Circle Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 
 <div>
 <i-button circle size="sm">S</i-button>&nbsp;
@@ -237,7 +237,7 @@ modifier. You're also able to use the `size` modifier to control the size of you
 You're able to use the `size` modifier to control the size of your buttons, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Button Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Button Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 
 <div>
 <i-button size="sm">Small Button</i-button>&nbsp;
@@ -263,7 +263,7 @@ The default size is set to `md`.
 ### Block
 You can create block level buttons that span the full width of a parent by adding the `block` property.
 
-<i-code-preview title="Block Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Block Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 <i-button block>Block Button</i-button>
 
 <template slot="html">
@@ -278,7 +278,7 @@ You can create block level buttons that span the full width of a parent by addin
 ### Active State
 Buttons will appear pressed when active. You can force a button to have an active appearance with the `active` property (this will also include the aria-pressed="true" attribute).
 
-<i-code-preview title="Active Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Active Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 
 <div>
 <i-button active>Active Default Button</i-button>&nbsp;
@@ -300,7 +300,7 @@ Buttons will appear pressed when active. You can force a button to have an activ
 ### Disabled State
 You can make buttons look inactive or disabled by adding the `disabled` boolean property to an `<i-button>` element.
 
-<i-code-preview title="Disabled Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Disabled Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 
 <div>
 <i-button disabled>Disabled Default Button</i-button>&nbsp;
@@ -324,7 +324,7 @@ Buttons will be automatically converted to link anchors `<a>` when providing a `
 
 The `<i-button>` component is well integrated with the [Vue Router](https://router.vuejs.org) plugin and will be converted to a `<router-link>` when using the `to` property.
 
-<i-code-preview title="Button Linking and Routing" link="https://github.com/inkline/inkline/tree/master/src/components/Button">
+<i-code-preview title="Button Linking and Routing" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
 
 <div>
 <i-button href="http://inkline.io">Button Link</i-button>&nbsp;

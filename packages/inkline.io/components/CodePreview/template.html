@@ -8,7 +8,7 @@
             <i-button-group size="sm">
                 <i-button
                         class="tab"
-                        :class="{ '-active': active === tab.id }"
+                        :class="{ '-active': active === tab.id, '-icon': tab.icon }"
                         :key="tab.id"
                         :variant="active === tab.id ? 'primary' : 'light'"
                         @click="setActive(tab.id)"
