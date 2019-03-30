@@ -1,24 +1,22 @@
 ### State
 When displaying state information such as info, success, warning, or error messages, you will need to color your message accordingly. The state colors are:
 
-<i-code-preview title="State Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl">
+<i-code-preview title="State Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
 
 <i-row>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="info" title="Info" description="#62bec1"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="success" title="Success" description="#5fb072"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="warning" title="Warning" description="#f1ac53"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="danger" title="Danger" description="#f25f5c"></color-box>
     </i-column>
 </i-row>
-
-You can use helper classes to add state color backgrounds:
 
 <template slot="html">
 
@@ -34,7 +32,7 @@ You can use helper classes to add state color backgrounds:
 
 You can also add state text colors using text-specific helper classes:
 
-<i-code-preview title="State Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl">
+<i-code-preview title="State Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
 
 <ul class="-inline">
     <li class="_text-info">Info</li>

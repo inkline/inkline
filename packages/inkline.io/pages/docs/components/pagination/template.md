@@ -138,7 +138,7 @@ export default {
                     <td>Sets the maximum number of pagination elements to display at a time.</td>
                     <td><code>Number</code></td>
                     <td>n % 2 === 1</td>
-                    <td><code>7</code></td>
+                    <td><code>5</code></td>
                 </tr>
                 <tr>
                     <td>size</td>

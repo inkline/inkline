@@ -1,7 +1,7 @@
 ### Displays
 If you need something larger than headings, you can use displays, `.d1` through `.d6` are available.
 
-<i-code-preview title="Typography - Display" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Display" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
 
 <div class="headings-list">
     <div><span class="d1">d1. Inkline display</span></div>

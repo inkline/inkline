@@ -5,7 +5,7 @@ Documentation and examples for badges, a small component used for counting and l
 ### Variants
 Inkline includes several predefined badge styles, each serving its own semantic purpose, which you can control using the `variant` property.
 
-<i-code-preview title="Badge Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Badge">
+<i-code-preview title="Badge Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Badge" class="_padding-bottom-0">
 <i-badge variant="primary">
     Primary
 </i-badge>&nbsp; 

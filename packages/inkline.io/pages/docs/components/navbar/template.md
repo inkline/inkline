@@ -12,11 +12,12 @@ Here’s an example of the basic components included in a  `<i-navbar>` that aut
         <i-nav>
             <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
             <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
         </i-nav>
         <i-nav>
             <i-input placeholder="Type something.." class="_margin-right-1" />
-            <i-button variant="primary">Search</i-button>
+            <i-button variant="primary">
+                <font-awesome-icon icon="search" />
+            </i-button>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -30,7 +31,6 @@ Here’s an example of the basic components included in a  `<i-navbar>` that aut
         <i-nav>
             <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
             <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">Contact</i-nav-item>
         </i-nav>
         <i-nav>
             <i-input placeholder="Type something.." class="_margin-right-1" />

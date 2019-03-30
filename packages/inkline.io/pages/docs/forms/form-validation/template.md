@@ -17,5 +17,4 @@
 !!!include(docs/forms/form-validation/template/validators/required.md)!!!
 !!!include(docs/forms/form-validation/template/validators/sameAs.md)!!! 
 !!!include(docs/forms/form-validation/template/complete-form-example.md)!!!
-!!!include(docs/forms/form-validation/template/dynamically-added-fields-and-groups.md)!!!   
-
+!!!include(docs/forms/form-validation/template/dynamically-added-fields-and-groups.md)!!!

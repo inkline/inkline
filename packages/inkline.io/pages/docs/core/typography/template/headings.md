@@ -29,7 +29,7 @@ All HTML headings, `<h1>` through `<h6>`, are available.
 You can use helper classes to achieve heading styles. Classes `.h1` through `.h6` are available, for when you 
 want to match the font styling of a heading but cannot use the associated HTML element.
 
-<i-code-preview title="Typography - Heading Helpers" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Heading Helpers" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
 
 <div class="headings-list">
     <div><span class="h1">h1. Inkline heading</span></div>

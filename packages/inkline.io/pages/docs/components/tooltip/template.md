@@ -4,7 +4,7 @@ Tooltips are useful for conveying information when an user hovers over an elemen
 ### Example
 Wrap both the tooltip's trigger element (such as an `<i-button>`) and the `<template slot="body">` inside a `<i-tooltip>` component.
 
-<i-code-preview title="Tooltip Example" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip">
+<i-code-preview title="Tooltip Example" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip" class="_padding-bottom-0">
 
 <i-tooltip>
     <i-button>Tooltip</i-button>
@@ -28,7 +28,7 @@ Trigger tooltips at the `top`, `bottom`, `left` or `right` of elements by adding
 
 Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-end`, `bottom-start`, `bottom-end`, etc.) that sets the tooltip to the start or end of the placement instead of centering it. 
 
-<i-code-preview title="Tooltip Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip">
+<i-code-preview title="Tooltip Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip" class="_padding-bottom-0">
 
 <div>
 <i-tooltip placement="top">
@@ -85,7 +85,7 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 ### Freeform
 Tooltips can contain text of virtually any size. You can control the wrapping and the maximum width of the tooltip by setting `white-space: normal` and a fixed `width` property on the tooltip content.
 
-<i-code-preview title="Freeform Tooltip" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip">
+<i-code-preview title="Freeform Tooltip" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip" class="_padding-bottom-0">
 
 <div>
 <i-tooltip>
@@ -128,7 +128,7 @@ Tooltips can contain text of virtually any size. You can control the wrapping an
 ### Trigger Type
 You can use the `trigger` property to trigger the tooltip on `hover` or `click`. By default, tooltips are triggered on `hover`, a design decision made to improve user experience.
 
-<i-code-preview title="Tooltip Trigger Type" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip">
+<i-code-preview title="Tooltip Trigger Type" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip" class="_padding-bottom-0">
 
 <i-tooltip trigger="click">
     <i-button>Click Tooltip</i-button>
@@ -162,7 +162,7 @@ You can use the `trigger` property to trigger the tooltip on `hover` or `click`.
 You're able to use the `size` modifier to control the size of your tooltips, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Tooltip Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip">
+<i-code-preview title="Tooltip Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip" class="_padding-bottom-0">
 
 <div>
 <i-tooltip size="sm">
@@ -209,7 +209,7 @@ The default size is set to `md`.
 ### Variants
 Inkline includes two predefined tooltip styles, each serving its own semantic purpose. You can set the style of a `<i-tooltip>` using the `variant` property, which can have a value of `light` or `dark`. By default, tooltips use the `light` variant.
 
-<i-code-preview title="Tooltip Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip">
+<i-code-preview title="Tooltip Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip" class="_padding-bottom-0">
 
 <div>
 <i-tooltip variant="light">

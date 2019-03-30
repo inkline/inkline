@@ -5,7 +5,7 @@ target design.
 #### Unordered Lists
 When enumerating elements in no specific order, use an unordered list.
 
-<i-code-preview title="Typography - Unordered Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Unordered Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
 
 <ul>
   <li>Lorem ipsum dolor sit amet</li>
@@ -54,7 +54,7 @@ When enumerating elements in no specific order, use an unordered list.
 #### Ordered Lists
 When enumerating elements in a specific order, use an ordered list.
 
-<i-code-preview title="Typography - Ordered Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Ordered Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
 
 <ol>
   <li>Lorem ipsum dolor sit amet</li>
@@ -103,7 +103,7 @@ When enumerating elements in a specific order, use an ordered list.
 To remove the default `list-style` and `margin` on list items, use the `-unstyled` modifier. 
 This applies to immediate children list items only, meaning you will need to add the class for any nested lists as well.
 
-<i-code-preview title="Typography - Unstyled Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Unstyled Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
 
 <ul class="list -unstyled">
   <li>Lorem ipsum dolor sit amet</li>
@@ -151,7 +151,7 @@ This applies to immediate children list items only, meaning you will need to add
 #### Inline Lists
 Remove a list’s bullets and apply some light margin using the `-inline` list modifier.
 
-<i-code-preview title="Typography - Inline Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Inline Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
 
 <ul class="list -inline">
   <li>Lorem ipsum</li>
@@ -175,7 +175,7 @@ Remove a list’s bullets and apply some light margin using the `-inline` list m
 #### Description Lists
 Remove a list’s bullets and apply some light margin using the `-inline` list modifier.
 
-<i-code-preview title="Typography - Description Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Description Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
 
 <dl class="row">
   <dt class="column -sm-3">Description lists</dt>
@@ -195,7 +195,7 @@ Remove a list’s bullets and apply some light margin using the `-inline` list m
 
   <dt class="column -sm-3">Nesting</dt>
   <dd class="column -sm-9">
-    <dl class="row">
+    <dl class="row _margin-bottom-0">
       <dt class="column -sm-4">Nested definition list</dt>
       <dd class="column -sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
     </dl>
