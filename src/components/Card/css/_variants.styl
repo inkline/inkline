@@ -6,9 +6,6 @@ for --variant-name, --variant in --variants['card']
         color: -variant-color-by-luminance(--variant['color'], --card-variant-color-light, --card-variant-color-dark)
         background-color: --variant['color']
 
-        if --gradient-enabled and --variant['gradient']
-            background-image: -linear-gradient(--variant['gradient'])
-
         > .body
             border-color: darken(--variant['color'], 10%)
 
