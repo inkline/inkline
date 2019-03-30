@@ -12,9 +12,10 @@
     display: inline-block
     white-space: nowrap
     outline: none
+    margin-right: --spacer
 
-    + .form-check
-        margin-left: --spacer
+    &:last-child
+        margin-right: 0
 
     &.-disabled
         color: --form-check-disabled-color
