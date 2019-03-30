@@ -35,7 +35,7 @@ describe('Components', () => {
             describe('limit', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.limit).toBeDefined();
-                    expect(wrapper.vm.limit).toEqual(7);
+                    expect(wrapper.vm.limit).toEqual(5);
                 });
             });
 
