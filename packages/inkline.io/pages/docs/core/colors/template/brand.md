@@ -1,24 +1,22 @@
 ### Brand
 Attract your visitor's attention using brand colors. The main colors of Inkline used for branding are:
 
-<i-code-preview title="Brand Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl">
+<i-code-preview title="Brand Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
 
 <i-row>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="primary" title="Primary" description="#178bb2"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="secondary" title="Secondary" description="#5d65b9"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="light" title="Light" description="#e9ecef"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="dark" title="Dark" description="#212529"></color-box>
     </i-column>
 </i-row>
-
-You can use helper classes to add brand color backgrounds:
 
 <template slot="html">
 
@@ -34,7 +32,7 @@ You can use helper classes to add brand color backgrounds:
 
 You can also add brand text colors using text-specific helper classes:
 
-<i-code-preview title="Brand Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl">
+<i-code-preview title="Brand Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
 
 <ul class="-inline">
     <li class="_text-primary">Primary</li>

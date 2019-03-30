@@ -36,7 +36,7 @@
 
 
 #documentation-layout > .container > .row > .column > .layout > .layout-content
-    margin: 62px auto 0;
+    margin: 62px auto --spacer
 
 #documentation-layout
     #layout-aside-left,

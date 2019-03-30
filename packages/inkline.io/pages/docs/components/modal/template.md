@@ -4,7 +4,7 @@ Modals are useful for conveying information when an user hovers over an element.
 ### Example
 To create a modal, create an element (such as an `<i-button>`) as a trigger and the `v-model` on an `<i-modal>` component to control its visibility. Everything inside the `<i-modal>` is rendered as the modal body. Optionally, you can provide a modal header and footer using `slot="header"` and `slot="footer"`.
 
-<i-code-preview title="Modal Example" link="https://github.com/inkline/inkline/tree/master/src/components/Modal">
+<i-code-preview title="Modal Example" link="https://github.com/inkline/inkline/tree/master/src/components/Modal" class="_padding-bottom-0">
 
 <div>
     <i-button @click="showModal=true">Modal</i-button>
@@ -46,7 +46,7 @@ export default {
 You're able to use the `size` modifier to control the size of your modals, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Modal Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Modal">
+<i-code-preview title="Modal Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Modal" class="_padding-bottom-0">
 
 <div>
     <i-button @click="showModalSm = true">Small Modal</i-button>&nbsp;
@@ -118,7 +118,7 @@ export default {
 ### Variants
 Inkline includes two predefined modal styles, each serving its own semantic purpose. You can set the style of a `<i-modal>` using the `variant` property. By default, modals use the `light` variant.
 
-<i-code-preview title="Modal Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Modal">
+<i-code-preview title="Modal Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Modal" class="_padding-bottom-0">
 
 <div>
     <i-button variant="primary" @click="showModalPrimary = true">Primary Modal</i-button>&nbsp;

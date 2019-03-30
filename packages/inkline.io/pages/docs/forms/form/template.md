@@ -6,7 +6,7 @@ Forms are the main wrapper components for form elements. { .lead }
 The `<i-form>` component is a wrapper that provides proper handling of form validation and form grouping.
 
 
-<i-code-preview title="Form" link="https://github.com/inkline/inkline/tree/master/src/components/Form">
+<i-code-preview title="Form" link="https://github.com/inkline/inkline/tree/master/src/components/Form" class="_padding-bottom-0">
 
 <i-form>
     <i-form-group>
@@ -105,7 +105,7 @@ export default {
 Setting a form as `disabled` will cause all of its child inputs to be disabled.
 
 
-<i-code-preview title="Disabled Form" link="https://github.com/inkline/inkline/tree/master/src/components/Form">
+<i-code-preview title="Disabled Form" link="https://github.com/inkline/inkline/tree/master/src/components/Form" class="_padding-bottom-0">
 
 <i-form disabled>
     <i-form-group>
@@ -206,7 +206,7 @@ You're able to use the `size` modifier to control the size of the components ins
 All of the components inside the `<i-form>` will inherit the parent form group's size.
 
 
-<i-code-preview title="Small Form Size" link="https://github.com/inkline/inkline/tree/master/src/components/Form">
+<i-code-preview title="Small Form Size" link="https://github.com/inkline/inkline/tree/master/src/components/Form" class="_padding-bottom-0">
 
 <i-form size="sm">
     <i-form-group>
@@ -302,7 +302,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Medium Form Size" link="https://github.com/inkline/inkline/tree/master/src/components/Form">
+<i-code-preview title="Medium Form Size" link="https://github.com/inkline/inkline/tree/master/src/components/Form" class="_padding-bottom-0">
 
 <i-form size="md">
     <i-form-group>
@@ -398,7 +398,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Large Form Size" link="https://github.com/inkline/inkline/tree/master/src/components/Form">
+<i-code-preview title="Large Form Size" link="https://github.com/inkline/inkline/tree/master/src/components/Form" class="_padding-bottom-0">
 
 <i-form size="lg">
     <i-form-group>

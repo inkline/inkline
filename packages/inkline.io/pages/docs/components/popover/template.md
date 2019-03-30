@@ -4,7 +4,7 @@ Popovers are useful for conveying information when an user hovers over an elemen
 ### Example
 Wrap both the popover's trigger element (such as an `<i-button>`) and the `<template slot="body">` inside a `<i-popover>` component. Optionally, you can provide a popover header and footer using `slot="header"` and `slot="footer"`.
 
-<i-code-preview title="Popover Example" link="https://github.com/inkline/inkline/tree/master/src/components/Popover">
+<i-code-preview title="Popover Example" link="https://github.com/inkline/inkline/tree/master/src/components/Popover" class="_padding-bottom-0">
 
 <i-popover>
     <i-button>Popover</i-button>
@@ -33,7 +33,7 @@ Trigger popovers at the `top`, `bottom`, `left` or `right` of elements by adding
 
 Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-end`, `bottom-start`, `bottom-end`, etc.) that sets the popover to the start or end of the placement instead of centering it. 
 
-<i-code-preview title="Popover Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Popover">
+<i-code-preview title="Popover Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Popover" class="_padding-bottom-0">
 
 <div>
 <i-popover placement="top">
@@ -89,7 +89,7 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 ## Trigger type
 You can use the `trigger` property to trigger the popover on `hover` or `click`. By default, popovers are triggered on `click`, a design decision made to improve user experience.
 
-<i-code-preview title="Popover Trigger Type" link="https://github.com/inkline/inkline/tree/master/src/components/Popover">
+<i-code-preview title="Popover Trigger Type" link="https://github.com/inkline/inkline/tree/master/src/components/Popover" class="_padding-bottom-0">
 
 <i-popover trigger="click">
     <i-button>Click Popover</i-button>
@@ -123,7 +123,7 @@ You can use the `trigger` property to trigger the popover on `hover` or `click`.
 You're able to use the `size` modifier to control the size of your popovers, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Popover Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Popover">
+<i-code-preview title="Popover Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Popover" class="_padding-bottom-0">
 
 <div>
 <i-popover size="sm">
@@ -170,7 +170,7 @@ The default size is set to `md`.
 ### Variants
 Inkline includes two predefined popover styles, each serving its own semantic purpose. You can set the style of a `<i-popover>` using the `variant` property, which can have a value of `light` or `dark`. By default, popovers use the `light` variant.
 
-<i-code-preview title="Popover Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Popover">
+<i-code-preview title="Popover Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Popover" class="_padding-bottom-0">
 
 <div>
 <i-popover variant="light">

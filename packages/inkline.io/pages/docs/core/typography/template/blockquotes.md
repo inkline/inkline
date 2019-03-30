@@ -2,7 +2,7 @@
 To quote blocks of content from another source within your document, wrap `<blockquote class="blockquote">` around any 
 HTML as the quote.
 
-<i-code-preview title="Blockquote Alignment" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Blockquote Alignment" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
 
 <blockquote class="blockquote">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>

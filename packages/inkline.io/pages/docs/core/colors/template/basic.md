@@ -2,36 +2,36 @@
 Basic colors are useful when working with multiple colors on the same page. The following basic colors are 
 available when using the default variant.
 
-<i-code-preview title="Basic Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl">
+You can use helper classes to add state color backgrounds:
+
+<i-code-preview title="Basic Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
 
 <i-row>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="red" title="Red" description="#f25f5c"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="orange" title="Orange" description="#f1ac53"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="yellow" title="Yellow" description="#ffe066"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="green" title="Green" description="#5fb072"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="teal" title="Teal" description="#62bec1"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="blue" title="Blue" description="#178bb2"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="purple" title="Purple" description="#5d65b9"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="pink" title="Pink" description="#ff6f80"></color-box>
     </i-column>
 </i-row>
-
-You can use helper classes to add state color backgrounds:
 
 <template slot="html">
 
@@ -51,7 +51,7 @@ You can use helper classes to add state color backgrounds:
 
 You can also add state text colors using text-specific helper classes:
 
-<i-code-preview title="Basic Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl">
+<i-code-preview title="Basic Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
 
 <ul class="-inline">
     <li class="_text-red">Red</li>

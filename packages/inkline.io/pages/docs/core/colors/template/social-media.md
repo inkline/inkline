@@ -1,58 +1,57 @@
 ### Social Media
-Inkline provides social media colors from most of your favorite sites. Social media colors are available only using
-the default variant.
+Inkline provides social media colors from most of your favorite sites.
 
-<i-code-preview title="Social Media Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl">
+You can use helper classes to add social media color backgrounds:
+
+<i-code-preview title="Social Media Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
 
 <i-row>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="facebook" title="Facebook" description="#3b5998"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="twitter" title="Twitter" description="#1da1f2"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="google" title="Google" description="#dd4b39"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="instagram" title="Instagram" description="#fd1d1d"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="dribbble" title="Dribbble" description="#ea4c89"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="behance" title="Behance" description="#1769ff"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="flickr" title="Flickr" description="#ff0084"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="linkedin" title="LinkedIn" description="#0077b5"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="youtube" title="YouTube" description="#b31217"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="pinterest" title="Pinterest" description="#bd081c"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="github" title="Github" description="#333333"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="tumblr" title="Tumblr" description="#35465c"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="twitch" title="Twitch" description="#6441a5"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="envato" title="Envato" description="#82b541"></color-box>
     </i-column>
-    <i-column xs="3">
+    <i-column xs="12" sm="6" md="3">
         <color-box type="vine" title="Vine" description="#00bf8f"></color-box>
     </i-column>
 </i-row>
-
-You can use helper classes to add social media color backgrounds:
 
 <template slot="html">
 
@@ -78,7 +77,7 @@ You can use helper classes to add social media color backgrounds:
 
 You can also add social media text colors using text-specific helper classes:
 
-<i-code-preview title="Social Media Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl">
+<i-code-preview title="Social Media Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
 
 <ul class="-inline">
     <li class="_text-facebook">Facebook</li>
