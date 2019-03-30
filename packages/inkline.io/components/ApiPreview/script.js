@@ -12,10 +12,11 @@ export default {
     data() {
         return {
             active: this.defaultActive || 'props',
+            icons: false,
             tabs: [
-                { id: 'props', title: 'Props', icon: '' },
-                { id: 'slots', title: 'Slots', icon: '' },
-                { id: 'events', title: 'Events', icon: '' }
+                { id: 'props', title: 'Props' },
+                { id: 'slots', title: 'Slots' },
+                { id: 'events', title: 'Events' }
             ],
             mode: 'api'
         };
