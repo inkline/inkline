@@ -16,4 +16,7 @@ export default {
     }
 };
 </script>
-<style src="./style.styl" lang="stylus"></style>
+<style lang="stylus">
+#cover-inkline-header
+    background-image: url('~static/images/background.jpg')
+</style>
