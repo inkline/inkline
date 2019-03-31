@@ -1,3 +1,5 @@
+<template lang="md" src="./badge.md" />
+<script>
 import View from '@components/View';
 import { IBadge } from '@inkline/inkline';
 
@@ -12,3 +14,4 @@ export default {
         IBadge
     }
 };
+</script>

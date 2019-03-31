@@ -1,3 +1,5 @@
+<template lang="md" src="./breadcrumb.md" />
+<script>
 import View from '@components/View';
 import { IBreadcrumb, IBreadcrumbItem } from '@inkline/inkline';
 
@@ -22,3 +24,4 @@ export default {
         };
     }
 };
+</script>
