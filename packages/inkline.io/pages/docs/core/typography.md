@@ -1,0 +1,10 @@
+!!!include(docs/core/typography/introduction.md)!!!
+!!!include(docs/core/typography/configuration.md)!!!
+!!!include(docs/core/typography/headings.md)!!!
+!!!include(docs/core/typography/displays.md)!!!
+!!!include(docs/core/typography/lead.md)!!!
+!!!include(docs/core/typography/inline-text-elements.md)!!!
+!!!include(docs/core/typography/text-utilities.md)!!!
+!!!include(docs/core/typography/abbreviations.md)!!!
+!!!include(docs/core/typography/blockquotes.md)!!!
+!!!include(docs/core/typography/lists.md)!!!  
