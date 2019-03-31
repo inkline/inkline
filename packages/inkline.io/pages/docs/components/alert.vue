@@ -1,3 +1,5 @@
+<template src="./alert.md" lang="md"></template>
+<script>
 import View from '@components/View';
 import { IAlert } from '@inkline/inkline';
 
@@ -17,3 +19,4 @@ export default {
         };
     }
 };
+</script>

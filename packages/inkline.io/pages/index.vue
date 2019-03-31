@@ -227,10 +227,12 @@
     z-index: 1
 
 #footer
-    padding: (--spacer * 4) 0
+    background-image: url('../static/images/pages/index-footer.svg')
     background-color: --colors['gray-80']
-    text-align: center
+    background-repeat: no-repeat
     color: --colors['gray-20']
+    padding: (--spacer * 4) 0
+    text-align: center
     position: relative
 
     a
