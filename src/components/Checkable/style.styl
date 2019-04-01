@@ -1,5 +1,7 @@
 @import '../../css/config'
 @import '../../css/mixins'
+@import '../../css/icons/_variables'
+@import '../../css/icons/_mixins'
 @import 'css/_variables'
 @import 'css/_sizes'
 
@@ -75,11 +77,13 @@
             margin-right: --form-check-indicator-gutter
 
         &::after
-            top: ((--line-height - --form-check-indicator-size) / 2)
-            left: 0
+            -icon()
+
             position: absolute
-            background-repeat: no-repeat
-            background-position: center center
+            top: 0
+            left: 0
+            display: block
+            text-align: center
             transition: background 0.3s ease
 
     @extend .form-check.-md

@@ -1,5 +1,6 @@
 @import '../../css/config'
 @import '../../css/mixins'
+@import '../../css/icons/_variables'
 @import 'css/_variables'
 @import 'css/_sizes'
 
@@ -9,9 +10,11 @@
 .form-check.-custom.-checkbox
     input
         &:checked ~ .form-input-label::after
-            background-image: url(--form-check-checkbox-icon)
+            content: --icon-check
+            color: white
 
         &:indeterminate ~ .form-input-label::after
-            background-image: url(--form-check-indeterminate-icon)
+            content: --icon-minus
+            color: white
 
-    @extend .form-check.-custom.-checkbox.-md
+    @extend .form-check.-md.-custom.-checkbox

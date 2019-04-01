@@ -2,15 +2,14 @@
 // Checkbox Sizes
 //
 for size in (sm md lg)
-
     .form.-{size} .form-check
     .form-group.-{size} .form-check
     .form-check.-{size}
-        &.-custom.-checkbox
+        &.-custom.-radio
             .form-input-label
                 &::before
                     if --border-radius-enabled
-                        border-radius: --form-check-checkbox-border-radius[size]
+                        border-radius: --form-check-radio-border-radius[size]
 
                 &::after
-                    font-size: --form-check-checkbox-icon-size[size]
+                    font-size: --form-check-radio-icon-size[size]

@@ -13,6 +13,9 @@ for size in (sm md lg)
                 &::after
                     width: --form-check-indicator-size * --size-percentages[size]
                     height: --form-check-indicator-size * --size-percentages[size]
+                    line-height: --form-check-indicator-size * --size-percentages[size]
 
                 &::after
-                    background-size: --form-check-indicator-background-size * --size-percentages[size]
+                    top: (--form-check-indicator-size * --size-percentages[size] / 4)
+                    //top: (--form-check-indicator-size * --size-percentages[size] / 2)
+                    //left: (--form-check-indicator-size * --size-percentages[size] / 2)

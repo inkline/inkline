@@ -1,0 +1,50 @@
+@require '_variables'
+@require '_mixins'
+
+@font-face
+    font-family: 'inkline'
+    src: url(--inkline-font-path + 'inkline.eot?kszcvl')
+    src: url(--inkline-font-path + 'inkline.eot?kszcvl#iefix') format('embedded-opentype'), url(--inkline-font-path + 'inkline.ttf?kszcvl') format('truetype'), url(--inkline-font-path + 'inkline.woff?kszcvl') format('woff'), url(--inkline-font-path + 'inkline.svg?kszcvl#inkline') format('svg')
+    font-weight: normal
+    font-style: normal
+
+.inkline-icon
+    -icon()
+
+.inkline-icon.-circle
+    &::before
+        content: --icon-circle
+.inkline-icon.-home
+    &::before
+        content: --icon-home
+.inkline-icon.-calendar
+    &::before
+        content: --icon-calendar
+.inkline-icon.-warning
+    &::before
+        content: --icon-warning
+.inkline-icon.-danger
+    &::before
+        content: --icon-danger
+.inkline-icon.-plus
+    &::before
+        content: --icon-plus
+.inkline-icon.-minus
+    &::before
+        content: --icon-minus
+.inkline-icon.-info
+    &::before
+        content: --icon-info
+.inkline-icon.-times
+    &::before
+        content: --icon-times
+.inkline-icon.-check
+    &::before
+        content: --icon-check
+.inkline-icon.-chevron-up
+    &::before
+        content: --icon-chevron-up
+.inkline-icon.-chevron-down
+    &::before
+        content: --icon-chevron-down
+

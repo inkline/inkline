@@ -1,6 +1,8 @@
 @import '../../css/config'
 @import '../../css/mixins'
+@import '../../css/icons/_variables'
 @import 'css/_variables'
+@import 'css/_sizes'
 
 /**
  * Radio
@@ -14,5 +16,7 @@
 
     input
         &:checked ~ .form-input-label::after
-            background-image: url(--form-check-radio-icon)
+            content: --icon-circle
+            color: white
 
+    @extend .form-check.-md.-custom.-radio
