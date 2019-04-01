@@ -199,6 +199,7 @@
     background-image: url('../static/images/pages/index-features.svg')
     background-position: center bottom
     background-repeat: no-repeat
+    background-size: 100% auto
 
     +-breakpoint-up(lg)
         .column
@@ -221,7 +222,7 @@
         width: auto
 
 #sponsors
-    padding: (--spacer * 4) 0
+    padding: (--spacer * 4) 0 (--spacer * 5)
     background-color: --colors['gray-20']
     text-align: center
     z-index: 1
@@ -230,8 +231,9 @@
     background-image: url('../static/images/pages/index-footer.svg')
     background-color: --colors['gray-80']
     background-repeat: no-repeat
+    background-size: 100% auto
     color: --colors['gray-20']
-    padding: (--spacer * 4) 0
+    padding: (--spacer * 6) 0 (--spacer * 4)
     text-align: center
     position: relative
 
