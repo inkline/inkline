@@ -27,7 +27,7 @@ describe('Factories', () => {
             describe('zIndex', () => {
                 it('should be defined', () => {
                     expect(popupManager.zIndex).toBeDefined();
-                    expect(popupManager.zIndex).toEqual(2000);
+                    expect(popupManager.zIndex).toEqual(1000);
                 });
             });
         });
@@ -157,7 +157,7 @@ describe('Factories', () => {
                 popupManager.openModal('abc');
 
                 expect(popupManager.modalStack.length).toEqual(1);
-                expect(popupManager.modalStack[0].$el.style.zIndex).toEqual(2000);
+                expect(popupManager.modalStack[0].$el.style.zIndex).toEqual(1000);
             });
         });
 

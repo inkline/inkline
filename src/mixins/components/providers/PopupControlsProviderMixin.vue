@@ -2,7 +2,7 @@
 export default {
     props: {
         trigger: {
-            type: String,
+            type: [Array, String],
             default: 'click'
         },
         showTimeout: {
@@ -21,6 +21,11 @@ export default {
             triggerElement: null,
             visible: false
         };
+    },
+    computed: {
+        triggers() {
+            return this.trigger.constructor === Array ? this.trigger : [this.trigger];
+        }
     },
     methods: {
         show() {
@@ -50,6 +55,11 @@ export default {
                 this.show();
             }
         },
+        onClickOutside() {
+            if (this.value) return;
+
+            this.hide();
+        },
         initElements() {
             if (!(this.$slots.default || []).length > 0) {
                 throw new Error(`${this.$options.name} component requires one child element to be used as trigger.`);
@@ -64,20 +74,37 @@ export default {
             this.triggerElement.setAttribute('aria-controls', this.id);
         },
         addEvents() {
-            if (this.trigger === 'hover') {
-                this.triggerElement.addEventListener('mouseenter', this.show);
-                this.triggerElement.addEventListener('mouseleave', this.hide);
-            } else if (this.trigger === 'click') {
-                this.triggerElement.addEventListener('click', this.onClick);
-            }
+            this.triggers.forEach((trigger) => {
+                switch (trigger) {
+                case 'hover':
+                    this.triggerElement.addEventListener('mouseenter', this.show);
+                    this.triggerElement.addEventListener('mouseleave', this.hide);
+                    break;
+                case 'click':
+                    this.triggerElement.addEventListener('click', this.onClick);
+                    break;
+                case 'focus':
+                    this.triggerElement.addEventListener('focus', this.show);
+                    this.triggerElement.addEventListener('blur', this.hide);
+                    break;
+                }
+            });
         },
         removeEvents() {
-            if (this.trigger === 'hover') {
-                this.triggerElement.removeEventListener('mouseenter', this.show);
-                this.triggerElement.removeEventListener('mouseleave', this.hide);
-            } else if (this.trigger === 'click') {
-                this.triggerElement.removeEventListener('click', this.onClick);
-            }
+            this.triggers.forEach((trigger) => {
+                switch (trigger) {
+                case 'hover':
+                    this.triggerElement.removeEventListener('mouseenter', this.show);
+                    this.triggerElement.removeEventListener('mouseleave', this.hide);
+                    break;
+                case 'click':
+                    this.triggerElement.removeEventListener('click', this.onClick);
+                    break;
+                case 'focus':
+                    this.triggerElement.removeEventListener('focus', this.show);
+                    this.triggerElement.removeEventListener('blur', this.hide);
+                }
+            });
         }
     },
     mounted() {

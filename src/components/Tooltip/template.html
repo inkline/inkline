@@ -1,4 +1,4 @@
-<div class="tooltip-wrapper" v-click-outside="hide">
+<div class="tooltip-wrapper" v-click-outside="onClickOutside">
     <slot />
 
     <transition name="zoom-in-top-transition" @after-leave="doDestroy">

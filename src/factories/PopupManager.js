@@ -4,7 +4,7 @@ import { isKey } from '@inkline/inkline/src/helpers/index';
 export class PopupManager {
     instances = {};
     modalStack = [];
-    zIndex = 2000;
+    zIndex = 1000;
 
     constructor() {
         if (!Vue.prototype.$isServer) {

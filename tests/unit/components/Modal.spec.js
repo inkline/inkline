@@ -33,6 +33,13 @@ describe('Components', () => {
                 });
             });
 
+            describe('showClose', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.showClose).toBeDefined();
+                    expect(wrapper.vm.showClose).toEqual(true);
+                });
+            });
+
             describe('closeOnPressEscape', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.closeOnPressEscape).toBeDefined();

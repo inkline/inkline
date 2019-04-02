@@ -101,6 +101,13 @@ describe('Mixins', () => {
                   expect(wrapper.vm.appendToBody).toEqual(false);
                });
             });
+
+            describe('value', () => {
+               it('should be defined', () => {
+                  expect(wrapper.vm.value).toBeDefined();
+                  expect(wrapper.vm.value).toEqual(false);
+               });
+            });
         });
 
         describe('data', () => {
@@ -121,6 +128,17 @@ describe('Mixins', () => {
         });
 
         describe('watch', () => {
+            describe('value', () => {
+                beforeEach(() => {
+                    wrapper.vm.createPopper();
+                });
+
+                it('should set visible to equal value', () => {
+                    wrapper.setProps({ value: true });
+                    expect(wrapper.vm.visible).toEqual(true);
+                });
+            });
+
             describe('visible', () => {
                 beforeEach(() => {
                     wrapper.vm.createPopper();

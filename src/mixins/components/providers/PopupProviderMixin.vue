@@ -41,6 +41,10 @@ export default {
         },
         reference: {},
         popup: {},
+        value: {
+            type: Boolean,
+            default: false
+        }
     },
 
     data() {
@@ -51,6 +55,9 @@ export default {
     },
 
     watch: {
+        value(value) {
+            this.visible = value;
+        },
         visible(value) {
             if (this.disabled) {
                 return;

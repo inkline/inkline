@@ -7,7 +7,7 @@ export default {
     extends: Tooltip,
     props: {
         trigger: {
-            type: String,
+            type: [String, Array],
             default: 'click'
         }
     },

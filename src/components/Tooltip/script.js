@@ -34,7 +34,7 @@ export default {
     },
     props: {
         trigger: {
-            type: String,
+            type: [String, Array],
             default: 'hover'
         },
         placement: {

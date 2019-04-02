@@ -5,7 +5,8 @@ exports[`Components Textarea should render correctly 1`] = `
   <!---->
   <div class="form-input">
     <!---->
-    <!----> <textarea tabindex="1">            &lt;slot&gt;&lt;/slot&gt;
+    <!----> <textarea tabindex="1">
+            &lt;slot&gt;&lt;/slot&gt;
         </textarea></div>
   <!---->
 </div>
