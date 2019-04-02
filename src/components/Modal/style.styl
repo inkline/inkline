@@ -1,5 +1,7 @@
 @require '../../css/config';
 @require '../../css/mixins';
+@import '../../css/icons/_variables'
+@import '../../css/icons/_mixins'
 @require 'css/_variables';
 @require 'css/_sizes';
 @require 'css/_variants';
@@ -32,6 +34,39 @@
     > .footer
         border-width: --modal-border-width
         border-style: solid
+
+    > .header
+        display: flex
+        justify-content: space-between
+
+        > .close
+            display: flex
+            justify-content: center
+            align-items: center
+            height: 1.5rem
+            width: 1.5rem
+            line-height: 1.5rem
+            font-size: 0.5rem
+            cursor: pointer
+            border-radius: --border-radius['md']
+            padding: 0
+            border: 0
+            transition: background-color 0.3s ease
+            background-color: transparent
+
+            > .icon
+                &::before
+                    content: --icon-times
+                    -icon()
+
+
+            &:hover
+            &:focus
+                outline: none
+                background-color: rgba(0, 0, 0, 0.1)
+
+            &:active
+                background-color: rgba(0, 0, 0, 0.15)
 
     > .header + .body
     > .header + .footer

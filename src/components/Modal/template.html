@@ -5,6 +5,7 @@
                 <div class="modal" :class="classes" v-click-outside="hide" v-show="visible">
                     <div class="header" v-if="$slots.header">
                         <slot name="header"></slot>
+                        <button class="close" @click="hide" v-if="showClose"><slot name="close"><i class="icon"></i></slot></button>
                     </div>
                     <div class="body" v-if="$slots.default">
                         <slot></slot>

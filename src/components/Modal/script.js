@@ -32,6 +32,10 @@ export default {
             type: String,
             default: 'zoom-in-center-transition'
         },
+        showClose: {
+            type: Boolean,
+            default: true
+        },
         closeOnPressEscape: {
             type: Boolean,
             default: true
