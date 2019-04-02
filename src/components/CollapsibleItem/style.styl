@@ -4,8 +4,9 @@
 
 @import '../../css/config'
 @import '../../css/mixins'
+@import '../../css/icons/_variables'
+@import '../../css/icons/_mixins'
 @import '../Collapsible/css/_variables'
-@import 'css/_variables'
 @import 'css/_variants'
 
 .collapsible
@@ -22,19 +23,21 @@
             cursor: pointer
 
             > .icon
-                mask: url(--collapsible-item-icon-closed) no-repeat 50% 50%
-                background-size: 100% 100%
                 display: inline-block
-                width: 14px
-                height: 8px
                 float: right
-                margin-top: (--spacer / 2)
+                margin-top: 4px
+                position: relative
 
-        &.-active
-            > .header > .icon
-                mask: url(--collapsible-item-icon-open) no-repeat 50% 50%
+                &::after
+                    top: 0
+                    right: 0
+                    position: absolute
+                    transition: transform --transition-duration --transition-easing
+                    content: --icon-chevron-down
+                    -icon()
 
-
+        &.-active > .header > .icon::after
+            transform: rotate(180deg)
 
         > .body
             display: block

@@ -1,5 +1,7 @@
 @import '../../css/config'
 @import '../../css/mixins'
+@import '../../css/icons/_variables'
+@import '../../css/icons/_mixins'
 @import '../Input/css/_variables'
 @import 'css/_mixins'
 
@@ -25,18 +27,17 @@
 
     > .form-input-group
         &::after
-            position: absolute
-            right: --spacer
-            top: 50%
-            margin-top: -3px
-            content: ""
-            mask: url(--input-select-caret) no-repeat 50% 50%
-            background-size: 100% 100%
-            background: black
             display: inline-block
+            position: absolute
+            top: 50%
+            right: --spacer
+            margin-top: -8px
             width: 12px
             height: 6px
             z-index: 1
+
+            content: --icon-caret-down
+            -icon()
 
     &.-suffixed > .form-input-group::after
         right: --spacer * 4
