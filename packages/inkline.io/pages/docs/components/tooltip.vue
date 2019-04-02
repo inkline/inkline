@@ -13,6 +13,11 @@ export default {
     components: {
         IButton,
         ITooltip,
+    },
+    data() {
+        return {
+            manualTooltip: false
+        }
     }
 };
 </script>

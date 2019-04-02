@@ -140,6 +140,21 @@ You can use the `trigger` property to trigger the tooltip on `hover` or `click`.
     <template slot="body">Tooltip</template>
 </i-tooltip>&nbsp;
 
+<i-tooltip trigger="focus">
+    <i-button>Focus Tooltip</i-button>
+    <template slot="body">Tooltip</template>
+</i-tooltip>&nbsp;
+
+<i-tooltip :trigger="['focus', 'hover']">
+    <i-button>Multiple Events Tooltip</i-button>
+    <template slot="body">Tooltip</template>
+</i-tooltip>&nbsp;
+
+<i-tooltip trigger="manual" v-model="manualTooltip">
+    <i-button @click="manualTooltip = !manualTooltip">Manual Tooltip</i-button>
+    <template slot="body">Tooltip</template>
+</i-tooltip>&nbsp;
+
 <template slot="html">
 
 ~~~html
@@ -151,6 +166,24 @@ You can use the `trigger` property to trigger the tooltip on `hover` or `click`.
 ~~~html
 <i-tooltip trigger="hover">
     <i-button>Hover Tooltip</i-button>
+    <template slot="body">Tooltip</template>
+</i-tooltip>
+~~~
+~~~html
+<i-tooltip trigger="focus">
+    <i-button>Focus Tooltip</i-button>
+    <template slot="body">Tooltip</template>
+</i-tooltip>
+~~~
+~~~html
+<i-tooltip :trigger="['focus', 'hover']">
+    <i-button>Multiple Events Tooltip</i-button>
+    <template slot="body">Tooltip</template>
+</i-tooltip>&nbsp;
+~~~
+~~~html
+<i-tooltip trigger="manual" v-model="visible">
+    <i-button @click="visible = !visible">Manual Tooltip</i-button>
     <template slot="body">Tooltip</template>
 </i-tooltip>
 ~~~

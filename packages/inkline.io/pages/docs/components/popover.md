@@ -101,6 +101,21 @@ You can use the `trigger` property to trigger the popover on `hover` or `click`.
     <template slot="body">This is the popover body. Useful information goes here.</template>
 </i-popover>&nbsp;
 
+<i-popover trigger="focus">
+    <i-button>Focus Popover</i-button>
+    <template slot="body">This is the popover body. Useful information goes here.</template>
+</i-popover>&nbsp;
+
+<i-popover :trigger="['focus', 'hover']">
+    <i-button>Multiple Events Popover</i-button>
+    <template slot="body">This is the popover body. Useful information goes here.</template>
+</i-popover>&nbsp;
+
+<i-popover trigger="manual" v-model="manualPopover">
+    <i-button @click="manualPopover = !manualPopover">Manual Popover</i-button>
+    <template slot="body">This is the popover body. Useful information goes here.</template>
+</i-popover>&nbsp;
+
 <template slot="html">
 
 ~~~html
@@ -112,6 +127,24 @@ You can use the `trigger` property to trigger the popover on `hover` or `click`.
 ~~~html
 <i-popover trigger="hover">
     <i-button>Hover Popover</i-button>
+    <template slot="body">This is the popover body. Useful information goes here.</template>
+</i-popover>
+~~~
+~~~html
+<i-popover trigger="focus">
+    <i-button>Focus Popover</i-button>
+    <template slot="body">This is the popover body. Useful information goes here.</template>
+</i-popover>
+~~~
+~~~html
+<i-popover :trigger="['focus', 'hover']">
+    <i-button>Multiple Events Popover</i-button>
+    <template slot="body">This is the popover body. Useful information goes here.</template>
+</i-popover>&nbsp;
+~~~
+~~~html
+<i-popover trigger="manual" v-model="visible">
+    <i-button @click="visible = !visible">Manual Popover</i-button>
     <template slot="body">This is the popover body. Useful information goes here.</template>
 </i-popover>
 ~~~

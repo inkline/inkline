@@ -13,6 +13,11 @@ export default {
     components: {
         IButton,
         IPopover,
+    },
+    data() {
+        return {
+            manualPopover: false
+        }
     }
 };
 </script>
