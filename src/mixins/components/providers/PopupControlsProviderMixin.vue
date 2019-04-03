@@ -12,6 +12,10 @@ export default {
         hideTimeout: {
             type: Number,
             default: 150
+        },
+        value: {
+            type: Boolean,
+            default: false
         }
     },
     data() {

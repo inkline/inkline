@@ -160,6 +160,11 @@ export default {
                 this.transformOrigin :
                 ['top', 'bottom'].indexOf(placement) > -1 ? `center ${ origin }` : `${ origin } center`;
         },
+        onClickOutside() {
+            if (this.value) return;
+
+            this.hide();
+        }
     },
 
     beforeDestroy() {

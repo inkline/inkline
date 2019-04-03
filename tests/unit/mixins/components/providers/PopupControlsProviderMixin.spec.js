@@ -56,6 +56,13 @@ describe('Mixins', () => {
                   expect(wrapper.vm.hideTimeout).toEqual(150);
                });
             });
+
+            describe('value', () => {
+               it('should be defined', () => {
+                  expect(wrapper.vm.value).toBeDefined();
+                  expect(wrapper.vm.value).toEqual(false);
+               });
+            });
         });
 
         describe('data', () => {
@@ -114,6 +121,26 @@ describe('Mixins', () => {
                     wrapper.vm.onClick();
 
                     expect(spy).not.toHaveBeenCalled();
+                });
+            });
+
+            describe('onClickOutside()', () => {
+                it('should not call hide() if value is true', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'hide');
+                    wrapper.setProps({ value: true });
+
+                    wrapper.vm.onClickOutside();
+
+                    expect(spy).not.toHaveBeenCalled();
+                });
+
+                it('should call hide() if value is false', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'hide');
+                    wrapper.setProps({ value: false });
+
+                    wrapper.vm.onClickOutside();
+
+                    expect(spy).toHaveBeenCalled();
                 });
             });
 
