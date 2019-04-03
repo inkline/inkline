@@ -195,6 +195,7 @@
                 padding: (--spacer / 2) --spacer
 
 #features
+    margin-bottom: -1px
     padding: (--spacer * 3) 0 (--spacer * 6)
     background-image: url('../static/images/pages/index-features.svg')
     background-position: center bottom
@@ -232,6 +233,7 @@
     background-color: --colors['gray-80']
     background-repeat: no-repeat
     background-size: 100% auto
+    background-position: center -1px
     color: --colors['gray-20']
     padding: (--spacer * 6) 0 (--spacer * 4)
     text-align: center

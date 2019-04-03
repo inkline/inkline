@@ -240,7 +240,7 @@ The default size is set to `md`.
 
 
 ### Variants
-Inkline includes two predefined tooltip styles, each serving its own semantic purpose. You can set the style of a `<i-tooltip>` using the `variant` property, which can have a value of `light` or `dark`. By default, tooltips use the `light` variant.
+Inkline includes two predefined tooltip styles, each serving its own semantic purpose. You can set the style of a `<i-tooltip>` using the `variant` property, which can have a value of `light` or `dark`. By default, tooltips use the `dark` variant.
 
 <i-code-preview title="Tooltip Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Tooltip" class="_padding-bottom-0">
 
