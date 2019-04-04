@@ -1,6 +1,7 @@
 <template lang="md" src="./input-number.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IInputNumber } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     name: 'InputView',
     layout: 'documentation',
     head: {
-        title: 'Number Input'
+        title: title('Number Input')
     },
     components: {
         IInputNumber

@@ -1,6 +1,7 @@
 <template lang="md" src="./progress.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IProgress, IProgressBar } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     layout: 'documentation',
     extends: View,
     head: {
-        title: 'Progress'
+        title: title('Progress')
     },
     components: {
         IProgress,

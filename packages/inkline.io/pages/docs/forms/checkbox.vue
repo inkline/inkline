@@ -1,6 +1,7 @@
 <template lang="md" src="./checkbox.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { ICheckbox, ICheckboxButton, ICheckboxGroup, ICheckboxButtonGroup } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     layout: 'documentation',
     extends: View,
     head: {
-        title: 'Checkbox'
+        title: title('Checkbox')
     },
     components: {
         ICheckbox,

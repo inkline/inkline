@@ -24,9 +24,6 @@ import {on} from "@inkline/inkline/src/helpers";
 export default {
     name: 'Default',
     extends: Layout,
-    head: {
-        titleTemplate: '%s - Inkline'
-    },
     components: {
         IContainer,
         IColumn,

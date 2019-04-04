@@ -1,6 +1,7 @@
 <template lang="md" src="./input.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IInput } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     name: 'InputView',
     layout: 'documentation',
     head: {
-        title: 'Input'
+        title: title('Input')
     },
     components: {
         IInput

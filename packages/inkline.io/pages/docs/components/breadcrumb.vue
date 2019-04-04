@@ -1,6 +1,7 @@
 <template lang="md" src="./breadcrumb.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IBreadcrumb, IBreadcrumbItem } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     layout: 'documentation',
     extends: View,
     head: {
-        title: 'Breadcrumb'
+        title: title('Breadcrumb')
     },
     components: {
         IBreadcrumb,

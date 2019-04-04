@@ -1,6 +1,7 @@
 <template lang="md" src="./radio.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IRadio, IRadioButton, IRadioGroup, IRadioButtonGroup } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     name: 'RadioView',
     layout: 'documentation',
     head: {
-        title: 'Radio'
+        title: title('Radio')
     },
     components: {
         IRadio,

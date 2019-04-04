@@ -114,9 +114,6 @@ import { breakpoints } from '@inkline/inkline/constants'
 export default {
     name: 'Documentation',
     extends: Layout,
-    head: {
-        titleTemplate: '%s - Inkline'
-    },
     components: {
         Navbar,
         SiteSearch,

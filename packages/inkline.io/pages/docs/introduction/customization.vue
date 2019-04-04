@@ -1,13 +1,14 @@
 <template lang="md" src="./customization.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 
 export default {
-    name: 'InstallationView',
+    name: 'CustomizationView',
     layout: 'documentation',
     extends: View,
     head: {
-        title: 'Installation'
+        title: title('Customization')
     }
 };
 </script>
