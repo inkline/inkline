@@ -1,6 +1,7 @@
 <template lang="md" src="./form-group.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IFormGroup, IInput, ITextarea, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     name: 'FormGroupView',
     layout: 'documentation',
     head: {
-        title: 'Form Group'
+        title: title('Form Group')
     },
     components: {
         IFormGroup,

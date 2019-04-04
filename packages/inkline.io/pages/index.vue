@@ -269,6 +269,7 @@
 import { IButton, IHeader } from '@inkline/inkline'
 
 import View from '@components/View';
+import {title} from "@helpers/title";
 import SiteNavigation from '@components/SiteNavigation';
 
 export default {
@@ -276,7 +277,7 @@ export default {
     layout: 'Default',
     extends: View,
     head: {
-        title: 'Vue.js UI/UX Framework'
+        title: title('Vue.js UI/UX Framework')
     },
     components: {
         IButton,

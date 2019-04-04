@@ -1,6 +1,7 @@
 <template lang="md" src="./dropdown.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IButton, IDropdown, IDropdownDivider, IDropdownItem, IDropdownMenu } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     layout: 'documentation',
     extends: View,
     head: {
-        title: 'Dropdown'
+        title: title('Dropdown')
     },
     components: {
         IButton,

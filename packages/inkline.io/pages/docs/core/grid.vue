@@ -2,6 +2,7 @@
 
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import GridBox from '@components/GridBox';
 
 export default {
@@ -9,7 +10,7 @@ export default {
     layout: 'documentation',
     extends: View,
     head: {
-        title: 'Grid'
+        title: title('Grid')
     },
     components: {
         GridBox

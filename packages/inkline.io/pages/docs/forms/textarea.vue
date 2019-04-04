@@ -1,6 +1,7 @@
 <template lang="md" src="./textarea.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { ITextarea } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     name: 'TextareaView',
     layout: 'documentation',
     head: {
-        title: 'Textarea'
+        title: title('Textarea')
     },
     components: {
         ITextarea

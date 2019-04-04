@@ -1,6 +1,7 @@
 <template lang="md" src="./list-group.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IListGroup, IListGroupItem } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     layout: 'documentation',
     extends: View,
     head: {
-        title: 'List Group'
+        title: title('List Group')
     },
     components: {
         IListGroup,

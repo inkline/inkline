@@ -1,6 +1,7 @@
 <template lang="md" src="./form-label.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IFormGroup, IFormLabel, IInput, ITextarea, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     name: 'FormLabelView',
     layout: 'documentation',
     head: {
-        title: 'Form Label'
+        title: title('Form Label')
     },
     components: {
         IFormGroup,

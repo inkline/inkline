@@ -113,7 +113,10 @@ module.exports = {
     ** Build configuration
     */
     build: {
-        transpile: ['@inkline/inkline'],
+        transpile: [
+            '@inkline/inkline',
+            '@babel/runtime'
+        ],
 
         /*
         ** You can extend webpack config here
@@ -131,8 +134,6 @@ module.exports = {
                     }
                 });
             }
-
-
 
             // Add markdown templates support
             config.module.rules.push({
@@ -161,12 +162,12 @@ module.exports = {
             config.resolve.alias['@components'] = path.join(__dirname, 'components');
             config.resolve.alias['@directives'] = path.join(__dirname, 'directives');
             config.resolve.alias['@resources'] = path.join(__dirname, 'resources');
-            config.resolve.alias['@routes'] = path.join(__dirname, 'routes');
-            config.resolve.alias['@views'] = path.join(__dirname, 'views');
+            config.resolve.alias['@helpers'] = path.join(__dirname, 'helpers');
+            config.resolve.alias['@pages'] = path.join(__dirname, 'pages');
             config.resolve.alias['@inkline/inkline'] = '@inkline/inkline/src';
         },
         babel: {
-            babelrc: true
+            extends: '~/.babelrc'
         }
     }
 };

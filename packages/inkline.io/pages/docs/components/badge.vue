@@ -1,6 +1,7 @@
 <template lang="md" src="./badge.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IBadge } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     layout: 'documentation',
     extends: View,
     head: {
-        title: 'Badge'
+        title: title('Badge')
     },
     components: {
         IBadge

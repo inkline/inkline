@@ -1,6 +1,7 @@
 <template lang="md" src="./tooltip.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { IButton, ITooltip } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     layout: 'documentation',
     extends: View,
     head: {
-        title: 'Tooltip'
+        title: title('Tooltip')
     },
     components: {
         IButton,

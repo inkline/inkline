@@ -1,6 +1,7 @@
 <template lang="md" src="./select.md" />
 <script>
 import View from '@components/View';
+import {title} from '@helpers/title';
 import { ISelect, ISelectOption } from '@inkline/inkline';
 
 export default {
@@ -8,7 +9,7 @@ export default {
     name: 'SelectView',
     layout: 'documentation',
     head: {
-        title: 'Select'
+        title: title('Select')
     },
     components: {
         ISelect,
