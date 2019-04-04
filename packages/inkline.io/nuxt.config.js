@@ -114,8 +114,7 @@ module.exports = {
     */
     build: {
         transpile: [
-            '@inkline/inkline',
-            '@babel/runtime'
+            '@inkline/inkline'
         ],
 
         /*
