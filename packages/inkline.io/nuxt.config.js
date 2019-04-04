@@ -37,7 +37,6 @@ module.exports = {
             { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon/favicon-32x32.png' },
             { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon/favicon-96x96.png' },
             { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' }
-            // { rel: 'manifest', href: '/manifest.json' }
         ],
         htmlAttrs: {
             lang: 'en',
@@ -49,6 +48,14 @@ module.exports = {
     ** Customize the progress-bar color
     */
     loading: { color: '#fff' },
+
+    /**
+     * Manifest Configuration
+     */
+    manifest: {
+        name: 'Inkline',
+        lang: 'en'
+    },
 
     /*
     ** Global CSS
@@ -72,7 +79,9 @@ module.exports = {
     */
     modules: [
         '@nuxtjs/pwa',
-        '@nuxtjs/dotenv',
+        '@nuxtjs/sitemap',
+        ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
+        '@nuxtjs/webpackmonitor',
         'nuxt-babel'
     ],
 
@@ -81,6 +90,23 @@ module.exports = {
      */
     router: {
         linkExactActiveClass: '-active nuxt-link-exact-active'
+    },
+
+    /**
+     * Google Analytics Configuration
+     */
+    // googleAnalytics: {
+    //     id: 'UA-137703895-1',
+    //     dev: false
+    // },
+
+    /**
+     * Sitemap Configuration
+     */
+    sitemap: {
+        path: '/sitemap.xml',
+        hostname: 'https://inkline.io',
+        cacheTime: 1000 * 60 * 60 * 24
     },
 
     /*
