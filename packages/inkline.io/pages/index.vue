@@ -266,23 +266,23 @@
 </style>
 
 <script>
-import { IButton, IHeader } from '@inkline/inkline'
+// import { IButton, IHeader } from '@inkline/inkline'
 
-import View from '@components/View';
+// import View from '@components/View';
 import {title} from "@helpers/title";
-import SiteNavigation from '@components/SiteNavigation';
+// import SiteNavigation from '@components/SiteNavigation';
 
 export default {
     name: 'IndexView',
     layout: 'Default',
-    extends: View,
+    // extends: View,
     head: {
         title: title('Vue.js UI/UX Framework')
     },
-    components: {
-        IButton,
-        IHeader,
-        SiteNavigation
-    }
+    // components: {
+    //     IButton,
+    //     IHeader,
+    //     SiteNavigation
+    // }
 };
 </script>

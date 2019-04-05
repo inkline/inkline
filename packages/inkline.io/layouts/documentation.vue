@@ -102,6 +102,7 @@
 </style>
 
 <script>
+import Vue from 'vue';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
 import SiteSearch from '@components/SiteSearch';
@@ -128,7 +129,7 @@ export default {
             collapsed: false,
             collapsible: false,
             collapse: 'sm',
-            windowWidth: window.innerWidth
+            windowWidth: typeof window !== 'undefined' ? window.innerWidth : 0
         }
     },
     methods: {
@@ -187,12 +188,17 @@ export default {
         this.highlight();
         this.$nuxt.$on('viewLoaded', this.highlight);
 
-        window.addEventListener('resize', this.onWindowResize);
-        this.onWindowResize();
+        if (!Vue.$isServer && typeof window !== 'undefined') {
+            window.addEventListener('resize', this.onWindowResize);
+            this.onWindowResize();
+        }
     },
     beforeDestroy() {
         off(this.$refs.layout.$el, 'click', this.onLayoutClick);
-        window.removeEventListener('resize', this.onWindowResize);
+
+        if (!Vue.$isServer && typeof window !== 'undefined') {
+            window.removeEventListener('resize', this.onWindowResize);
+        }
     }
 };
 </script>

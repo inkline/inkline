@@ -15,19 +15,16 @@
 </style>
 
 <script>
+import Vue from 'vue';
 import Navbar from '@components/Navbar';
 import Layout from "@components/Layout";
-import { IContainer, IColumn, IRow } from '@inkline/inkline';
 
-import {on} from "@inkline/inkline/src/helpers";
+import {on} from "@inkline/inkline/helpers";
 
 export default {
     name: 'Default',
     extends: Layout,
     components: {
-        IContainer,
-        IColumn,
-        IRow,
         Navbar
     },
     data () {
@@ -43,8 +40,10 @@ export default {
         }
     },
     created () {
-        on(window, 'scroll', this.onScroll);
-        this.onScroll();
+        if (!Vue.$isServer && typeof window !== 'undefined') {
+            on(window, 'scroll', this.onScroll);
+            this.onScroll();
+        }
     }
 };
 </script>
