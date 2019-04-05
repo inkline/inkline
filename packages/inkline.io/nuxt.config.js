@@ -115,7 +115,8 @@ module.exports = {
         transpile: [
             '@inkline/inkline',
             'lodash-es',
-            'vue-instantsearch'
+            'vue-instantsearch',
+            'instantsearch.js'
         ],
 
         /*
