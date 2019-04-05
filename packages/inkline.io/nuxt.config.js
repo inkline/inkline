@@ -68,10 +68,10 @@ module.exports = {
     ** Plugins to load before mounting the App
     */
     plugins: [
-        // '~/plugins/font-awesome',
+        '~/plugins/font-awesome',
         '~/plugins/inkline',
-        // '~/plugins/prism',
-        // '~/plugins/algolia'
+        '~/plugins/prism',
+        '~/plugins/algolia'
     ],
 
     /*
@@ -113,7 +113,9 @@ module.exports = {
     */
     build: {
         transpile: [
-            '@inkline/inkline'
+            '@inkline/inkline',
+            'lodash-es',
+            'vue-instantsearch'
         ],
 
         /*

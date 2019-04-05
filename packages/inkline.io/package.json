@@ -25,7 +25,6 @@
     "cross-env": "^5.2.0",
     "instantsearch.css": "^7.2.0",
     "lodash-es": "^4.17.11",
-    "nuxt": "^2.5.1",
     "prismjs": "^1.16.0",
     "vue-instantsearch": "^2.0.1"
   },
@@ -62,6 +61,7 @@
     "markdown-it-named-headings": "^1.1.0",
     "markdown-it-prism": "^2.0.1",
     "nodemon": "^1.18.9",
+    "nuxt": "^2.6.1",
     "nuxt-babel": "^0.1.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
