@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import IContainer from '../Container';
 import IRow from '../Row';
 import IColumn from '../Column';
@@ -41,7 +42,7 @@ export default {
     data() {
         return {
             collapsed: false,
-            windowWidth: window.innerWidth
+            windowWidth: typeof window !== 'undefined' ? window.innerWidth : 0
         };
     },
     provide() {
@@ -86,10 +87,14 @@ export default {
             [`-${this.toggleAnimation}`]: true
         }));
 
-        window.addEventListener('resize', this.onWindowResize);
-        this.onWindowResize();
+        if (!Vue.$isServer && typeof window !== 'undefined') {
+            window.addEventListener('resize', this.onWindowResize);
+            this.onWindowResize();
+        }
     },
     destroyed() {
-        window.removeEventListener('resize', this.onWindowResize)
+        if (!Vue.$isServer && typeof window !== 'undefined') {
+            window.removeEventListener('resize', this.onWindowResize)
+        }
     },
 };

@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import ITransitionExpand from '@inkline/inkline/src/transitions/TransitionExpand';
 import { breakpoints } from "@inkline/inkline/src/constants";
 
@@ -20,10 +21,14 @@ export default {
         }
     },
     created() {
-        window.addEventListener('resize', this.onWindowResize);
-        this.onWindowResize();
+        if (!Vue.$isServer && typeof window !== 'undefined') {
+            window.addEventListener('resize', this.onWindowResize);
+            this.onWindowResize();
+        }
     },
     destroyed() {
-        window.removeEventListener('resize', this.onWindowResize)
+        if (!Vue.$isServer && typeof window !== 'undefined') {
+            window.removeEventListener('resize', this.onWindowResize)
+        }
     }
 };
