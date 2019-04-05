@@ -1,5 +1,5 @@
 <div class="site-search">
-    <ais-instant-search :search-client="searchClient" index-name="inkline">
+    <ais-instant-search v-if="searchClient" :search-client="searchClient" index-name="inkline">
         <ais-autocomplete :indices="searchIndices">
             <i-dropdown ref="dropdown" placement="bottom-start" :keymap="searchKeymap" slot-scope="{ currentRefinement, indices, refine }">
                 <i-input
