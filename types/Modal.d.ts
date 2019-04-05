@@ -10,6 +10,7 @@ import {Size} from "./constants/size";
 export declare class IModal implements AttributesProviderMixin, ClassesProviderMixin, EmitFocusMethodMixin, SizePropertyMixin, VariantPropertyMixin, DisabledPropertyMixin {
     transition: string;
     closeOnPressEscape: boolean;
+    showClose: boolean;
     value: boolean;
     show(): void;
     hide(): void;

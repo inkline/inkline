@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import { isFocusable } from './isFocusable.js';
 
 /**
@@ -17,5 +18,5 @@ export function focusAttempt (element) {
     // eslint-disable-next-line
     } catch (e) {}
 
-    return document.activeElement === element;
+    return !Vue.$isServer && document && document.activeElement === element;
 }

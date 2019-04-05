@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import { on, isVisible } from '@inkline/inkline/src/helpers';
 
 export const clickOutsideHandler = {
@@ -14,8 +15,10 @@ export const clickOutsideHandler = {
     }
 };
 
-document && on(document, 'mousedown', clickOutsideHandler.onMouseDown);
-document && on(document, 'mouseup', clickOutsideHandler.onMouseUp);
+if (!Vue.$isServer && document) {
+    on(document, 'mousedown', clickOutsideHandler.onMouseDown);
+    on(document, 'mouseup', clickOutsideHandler.onMouseUp);
+}
 
 export function createDocumentHandler(element, binding, vnode) {
     return function(mouseup = {}, mousedown = {}) {

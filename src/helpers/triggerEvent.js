@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 /**
  * Manually trigger an event
  *
@@ -8,6 +10,8 @@
  * @param {*} opts
  */
 export function triggerEvent (element, name, options) {
+    if (Vue.$isServer || !document) { return; }
+
     let eventName;
 
     options = {

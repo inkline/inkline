@@ -8,6 +8,7 @@ export interface PopupProviderMixin {
     popperOptions: any;
     reference: any;
     popup: any;
+    value: boolean;
 
     createPopper (): void;
     updatePopper (): void;

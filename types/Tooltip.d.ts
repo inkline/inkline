@@ -24,7 +24,8 @@ export declare class ITooltip implements AttributesProviderMixin, ClassesProvide
     showTimeout: number;
     size: Size;
     transformOrigin: boolean | string;
-    trigger: string;
+    trigger: string | string[];
+    value: boolean;
     variant: MonochromeVariants;
 
     addEvents(): void;

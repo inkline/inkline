@@ -1,4 +1,5 @@
 <script>
+import Vue from 'vue';
 import PopperJS from 'popper.js';
 import popupManager from '@inkline/inkline/src/factories/PopupManager';
 
@@ -89,7 +90,7 @@ export default {
 
             if (!this.popupElement || !this.referenceElement) return;
 
-            if (this.appendToBody) document.body.appendChild(this.popupElement);
+            if (!Vue.$isServer && document && this.appendToBody) document.body.appendChild(this.popupElement);
             if (this.popperJS && this.popperJS.destroy) {
                 this.popperJS.destroy();
             }
@@ -170,7 +171,7 @@ export default {
     beforeDestroy() {
         this.doDestroy(true);
 
-        if (this.popupElement && this.popupElement.parentNode === document.body) {
+        if (!Vue.$isServer && document && this.popupElement && this.popupElement.parentNode === document.body) {
             this.popupElement.removeEventListener('click', (e) => e.stopPropagation());
 
             document.body.removeChild(this.popupElement);
