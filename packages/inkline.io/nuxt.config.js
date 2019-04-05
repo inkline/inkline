@@ -2,7 +2,7 @@ const pkg = require('./package');
 const path = require('path');
 
 module.exports = {
-    mode: 'spa',
+    mode: 'universal',
 
     server: {
         port: 8080
@@ -68,10 +68,10 @@ module.exports = {
     ** Plugins to load before mounting the App
     */
     plugins: [
-        '~/plugins/font-awesome',
+        // '~/plugins/font-awesome',
         '~/plugins/inkline',
-        '~/plugins/prism',
-        '~/plugins/algolia'
+        // '~/plugins/prism',
+        // '~/plugins/algolia'
     ],
 
     /*
@@ -81,8 +81,7 @@ module.exports = {
         '@nuxtjs/pwa',
         '@nuxtjs/sitemap',
         ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
-        '@nuxtjs/webpackmonitor',
-        'nuxt-babel'
+        '@nuxtjs/webpackmonitor'
     ],
 
     /**
@@ -163,10 +162,13 @@ module.exports = {
             config.resolve.alias['@resources'] = path.join(__dirname, 'resources');
             config.resolve.alias['@helpers'] = path.join(__dirname, 'helpers');
             config.resolve.alias['@pages'] = path.join(__dirname, 'pages');
+
+            // if (ctx.isDev && ctx.isClient) {
             config.resolve.alias['@inkline/inkline'] = '@inkline/inkline/src';
+            // }
         },
         babel: {
-            extends: '~/.babelrc'
+            extends: path.join(__dirname, 'babel.config.js')
         }
     }
 };
