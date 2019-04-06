@@ -1,4 +1,5 @@
-// vue.config.js
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
     pages: {
         index: {
@@ -21,5 +22,12 @@ module.exports = {
         config.resolve.alias
             .set('@inkline/inkline', __dirname)
             .end();
-    }
+
+        config
+            .plugin("webpack-bundle-analyzer")
+            .use(BundleAnalyzerPlugin)
+        //     .init(Plugin => new Plugin({
+        //         analyzerMode: 'static'
+        //     }));
+    },
 };
