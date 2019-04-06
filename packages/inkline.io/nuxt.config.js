@@ -105,7 +105,8 @@ module.exports = {
     sitemap: {
         path: '/sitemap.xml',
         hostname: 'https://inkline.io',
-        cacheTime: 1000 * 60 * 60 * 24
+        cacheTime: 1000 * 60 * 60 * 24,
+        generate: true
     },
 
     /*
