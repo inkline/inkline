@@ -6,46 +6,6 @@ You will need to use the `i-radio` component together with a `i-radio-group`.
 
 ### Basic Usage
 
-<i-code-preview title="Basic Radio Input" link="https://github.com/inkline/inkline/tree/master/src/components/Radio">
-
-<i-radio v-model="selected" value="Apple">Apple</i-radio>
-<i-radio v-model="selected" value="Orange">Orange</i-radio>
-<i-radio v-model="selected" value="Banana">Banana</i-radio>
-<i-radio v-model="selected" value="Strawberry" disabled>Strawberry</i-radio>
-
-<template slot="html">
-
-~~~html
-<i-radio v-model="selected" value="Apple">Apple</i-radio>
-<i-radio v-model="selected" value="Orange">Orange</i-radio>
-<i-radio v-model="selected" value="Banana">Banana</i-radio>
-<i-radio v-model="selected" value="Strawberry" disabled>Strawberry</i-radio>
-~~~
-
-</template>
-<template slot="js">
-
-~~~js
-export default {
-  data () {
-    return {
-      selected: 'Apple'
-    };
-  }
-}
-~~~
-
-</template>
-<template slot="output">
-
-Selected value: <code>{{selected}}</code>
-
-</template>
-</i-code-preview>
-
-
-### Radio Group
-
 <i-code-preview title="Radio Group" link="https://github.com/inkline/inkline/tree/master/src/components/Radio">
 
 <i-radio-group v-model="selectedGroup">
