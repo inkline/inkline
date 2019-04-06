@@ -53,7 +53,6 @@ import ISelectOption from '@inkline/inkline/src/components/SelectOption';
 import ITextarea from '@inkline/inkline/src/components/Textarea';
 
 import { $isMobile } from '@inkline/inkline/src/prototypes/isMobile';
-import { $form } from '@inkline/inkline/src/prototypes/form';
 
 class Inkline {
     static components = [
@@ -118,7 +117,6 @@ class Inkline {
         });
 
         Vue.prototype.$isMobile = $isMobile();
-        Vue.prototype.$form = $form;
     }
 }
 

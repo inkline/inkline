@@ -23,9 +23,9 @@ module.exports = {
             .set('@inkline/inkline', __dirname)
             .end();
 
-        config
-            .plugin("webpack-bundle-analyzer")
-            .use(BundleAnalyzerPlugin)
+        // config
+        //     .plugin("webpack-bundle-analyzer")
+        //     .use(BundleAnalyzerPlugin)
         //     .init(Plugin => new Plugin({
         //         analyzerMode: 'static'
         //     }));
