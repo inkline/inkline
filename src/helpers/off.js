@@ -13,7 +13,7 @@ export function detachEventBinding (element, event, handler) {
 }
 
 export const off = (function() {
-    if (!Vue.$isServer && document && document.removeEventListener) {
+    if (!Vue.$isServer && typeof window !== 'undefined' && window.document.removeEventListener) {
         return removeEventListenerBinding;
     } else {
         return detachEventBinding;

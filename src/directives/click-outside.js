@@ -15,9 +15,9 @@ export const clickOutsideHandler = {
     }
 };
 
-if (!Vue.$isServer && document) {
-    on(document, 'mousedown', clickOutsideHandler.onMouseDown);
-    on(document, 'mouseup', clickOutsideHandler.onMouseUp);
+if (!Vue.$isServer && typeof window !== 'undefined' && window.document) {
+    on(window.document, 'mousedown', clickOutsideHandler.onMouseDown);
+    on(window.document, 'mouseup', clickOutsideHandler.onMouseUp);
 }
 
 export function createDocumentHandler(element, binding, vnode) {
