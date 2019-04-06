@@ -1,6 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
 import Form from '@inkline/inkline/src/components/Form';
-import { $form } from '@inkline/inkline/src/prototypes/form'
 
 describe('Components', () => {
     describe('Form', () => {
@@ -65,12 +64,12 @@ describe('Components', () => {
 
             beforeEach(() => {
                 wrapper.setProps({
-                    schema: $form({
+                    schema: {
                         input: {},
                         group: {
                             input: {}
                         }
-                    })
+                    }
                 });
 
                 inputWrapper = shallowMount({

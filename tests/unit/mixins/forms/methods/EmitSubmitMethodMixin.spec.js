@@ -1,7 +1,6 @@
 import { mount } from '@vue/test-utils'
 
 import EmitSubmitMethodMixin from '@inkline/inkline/src/mixins/forms/methods/EmitSubmitMethodMixin';
-import {FormBuilder} from "@inkline/inkline/src/factories/FormBuilder";
 
 describe('Mixins', () => {
     describe('EmitSubmitMethodMixin', () => {
@@ -9,13 +8,14 @@ describe('Mixins', () => {
         let schemaWrapper;
 
         beforeEach(() => {
-            const schema = (new FormBuilder()).factory([], {
+            const schema = {
+                $validate() {},
                 input: {
                     validators: [
                         { rule: 'required' }
                     ]
                 }
-            }, true);
+            };
 
             wrapper = mount({
                 render() {},
@@ -65,6 +65,7 @@ describe('Mixins', () => {
                     const spy = jest.spyOn(schemaWrapper.vm.schema, '$validate');
                     const event = { preventDefault() {} };
 
+                    schemaWrapper.vm.schema.invalid = true;
                     schemaWrapper.vm.emitSubmit(event);
 
                     expect(spy).toHaveBeenCalled();
