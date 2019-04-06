@@ -1,5 +1,6 @@
 !!!include(docs/forms/form-validation/introduction.md)!!!
-!!!include(docs/forms/form-validation/schema-example.md)!!!
+!!!include(docs/forms/form-validation/installation.md)!!!
+!!!include(docs/forms/form-validation/schema-example.md)!!! 
 !!!include(docs/forms/form-validation/input-default-value.md)!!!
 !!!include(docs/forms/form-validation/input-validation-message.md)!!!
 !!!include(docs/forms/form-validation/input-validation-event.md)!!!
