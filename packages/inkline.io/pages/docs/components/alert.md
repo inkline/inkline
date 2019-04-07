@@ -149,14 +149,22 @@ Your alerts accept any kind of content, giving you the flexibility to create goo
 </i-code-preview>
 
 ### Icon
-You can add an icon to the `<i-alert>` component by providing a icon `slot`. 
+You can add an icon to the `<i-alert>` component by providing an `icon` slot. 
 
-The following example makes use of the <a href="https://fontawesome.com/how-to-use/on-the-web/using-with/vuejs" rel="nofollow">Font Awesome</a> icons package.
+The following example makes use of the bundled Inkline icons, but you can use any icon font that you like:
 
 <i-code-preview title="Alert Icon" link="https://github.com/inkline/inkline/tree/master/src/components/Alert">
 
-<i-alert variant="info">
-    <template slot="icon"><font-awesome-icon icon="info-circle"></font-awesome-icon></template>
+<i-alert variant="info" class="_margin-bottom-1">
+    <template slot="icon"><i class="inkline-icon -info"></i></template>
+    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+</i-alert>
+<i-alert variant="warning" class="_margin-bottom-1">
+    <template slot="icon"><i class="inkline-icon -warning"></i></template>
+    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+</i-alert>
+<i-alert variant="danger">
+    <template slot="icon"><i class="inkline-icon -danger"></i></template>
     <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
 </i-alert>
 
@@ -164,7 +172,19 @@ The following example makes use of the <a href="https://fontawesome.com/how-to-u
 
 ~~~html
 <i-alert variant="info">
-    <template slot="icon"><font-awesome-icon icon="info-circle"></font-awesome-icon></template>
+    <template slot="icon"><i class="inkline-icon -info"></i></template>
+    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+</i-alert>
+~~~
+~~~html
+<i-alert variant="warning">
+    <template slot="icon"><i class="inkline-icon -warning"></i></template>
+    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+</i-alert>
+~~~
+~~~html
+<i-alert variant="danger">
+    <template slot="icon"><i class="inkline-icon -danger"></i></template>
     <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
 </i-alert>
 ~~~
