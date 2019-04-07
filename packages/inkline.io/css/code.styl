@@ -45,3 +45,12 @@ pre[class*="language-"]
             text-shadow: none
 
 
+.alert
+    &.-code
+        &.-info code
+            background-color: rgba(darken(--colors['info'], 10%), 0.15)
+            color: darken(--colors['info'], 35%)
+
+        &.-danger code
+            background-color: rgba(darken(--colors['danger'], 10%), 0.15)
+            color: darken(--colors['danger'], 35%)
