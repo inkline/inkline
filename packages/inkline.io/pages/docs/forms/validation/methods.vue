@@ -32,33 +32,33 @@ export default {
             }),
 
             objectForm: this.$form({
-                name: {}
+                fullName: {}
             }),
         };
     },
     methods: {
         addField() {
-            this.listForm.items.$push({
+            this.listForm.items.add({
                 value: 'Added Field'
             });
         },
         removeField() {
-            this.listForm.items.$splice(0, 1);
+            this.listForm.items.remove(0, 1);
         },
         replaceField() {
-            this.listForm.items.$splice(0, 1, {
+            this.listForm.items.remove(0, 1, {
                 value: 'Spliced Field'
             });
         },
         setEmail() {
-            this.objectForm.$set('email', {
+            this.objectForm.set('email', {
                 validators: [
                     { rule: 'email' }
                 ]
             }, { instance: this });
         },
         setAddress() {
-            this.objectForm.$set('address', {
+            this.objectForm.set('address', {
                 value: '32 Inkline St.'
             }, { instance: this });
         }

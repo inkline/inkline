@@ -2,14 +2,14 @@
 The form validation framework wouldn't be complete without dynamically added fields and groups. Inkline provides a simple API for adding and removing fields.
 
 ### Object Group Operations
-Just like Arrays, Objects can be manipulated and kept up to date using a custom API. You can use the `$set` method to update an object field. To enable reactivity, we'll need to also pass in the current Vue instance inside the options to take advantage of it's internal methods.
+Just like Arrays, Objects can be manipulated and kept up to date using a custom API. You can use the `set` method to update an object field. To enable reactivity, we'll need to also pass in the current Vue instance inside the options to take advantage of it's internal methods.
 
-<code>this.form.group.$set(name, item, options)</code>
+<code>this.form.group.set(name, item, options)</code>
 
 <i-code-preview title="Form Schema Object Group Operations" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js" class="_padding-bottom-0">
 <i-form :schema="objectForm">
     <i-form-group>
-        <i-input :schema="objectForm.name" v-model="objectForm.name.value" placeholder="Enter your name.." />
+        <i-input :schema="objectForm.fullName" v-model="objectForm.fullName.value" placeholder="Enter your name.." />
     </i-form-group>
     <i-form-group v-if="objectForm.email">
         <i-input :schema="objectForm.email" v-model="objectForm.email.value" placeholder="Enter your email.." />
@@ -27,7 +27,7 @@ Just like Arrays, Objects can be manipulated and kept up to date using a custom 
 ~~~html
 <i-form :schema="form">
     <i-form-group>
-        <i-input :schema="form.name" v-model="form.name.value" placeholder="Enter your name.." />
+        <i-input :schema="form.fullName" v-model="form.fullName.value" placeholder="Enter your name.." />
     </i-form-group>
     <i-form-group v-if="form.email">
         <i-input :schema="form.email" v-model="form.email.value" placeholder="Enter your email.." />
@@ -51,20 +51,20 @@ export default {
     data () {
         return {
             form: this.$form({
-                name: {}
+                fullName: {}
             })
         };
     },
     methods: {
         setEmail() {
-            this.form.$set('email', {
+            this.form.set('email', {
                 validators: [
                     { rule: 'email' }
                 ]
             }, { instance: this });
         },
         setAddress() {
-            this.form.$set('address', {
+            this.form.set('address', {
                 value: '32 Inkline St.'
             }, { instance: this });
         }
@@ -83,12 +83,13 @@ export default {
 </template>
 </i-code-preview>
 
+You can use `options.group` to specify whether the value being set is a group of fields. If not specified or set to `false`, the field will be a standalone field.
 
 ### Array Group Operations
-Inkline provides you with custom implementations for Array group operations using `$push` and`$splice`. These two methods will take care of registering events and making sure your form schema is always up to date.
+Inkline provides you with custom implementations for Array group operations using `push` and`splice`. These two methods will take care of registering events and making sure your form schema is always up to date.
 
-<code>this.form.group.$push(item, options)</code><br/>
-<code>this.form.group.$splice(index, deleteCount, item, options)</code>
+<code>this.form.group.add(item, options)</code><br/>
+<code>this.form.group.remove(index, deleteCount, item, options)</code>
 
 <i-code-preview title="Form Schema Array Group Operations" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js" class="_padding-bottom-0">
 <i-form :schema="listForm">
@@ -134,13 +135,13 @@ export default {
     },
     methods: {
         addField() {
-            this.listForm.items.$push({ value: 'Added Field' });
+            this.listForm.items.add({ value: 'Added Field' });
         },
         removeField() {
-            this.listForm.items.$splice(0, 1);
+            this.listForm.items.remove(0, 1);
         },
         replaceField() {
-            this.listForm.items.$splice(0, 1, { value: 'Spliced Field' });
+            this.listForm.items.remove(0, 1, { value: 'Spliced Field' });
         }
     }
 }
@@ -156,3 +157,5 @@ export default {
 </pre>
 </template>
 </i-code-preview>
+
+You can use `options.group` to specify whether the value being added is a group of fields. If not specified or set to `false`, the field will be a standalone field.

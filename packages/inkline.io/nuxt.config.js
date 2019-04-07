@@ -169,6 +169,7 @@ module.exports = {
 
             // if (ctx.isDev && ctx.isClient) {
             config.resolve.alias['@inkline/inkline'] = '@inkline/inkline/src';
+            config.resolve.alias['@inkline/validation'] = '@inkline/validation/src';
             // }
         },
         babel: {
