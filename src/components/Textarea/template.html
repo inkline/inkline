@@ -18,22 +18,21 @@
         </span>
 
         <textarea
-                v-bind="$attrs"
-                v-model="model"
-                ref="input"
-                :name="name"
-                :tabindex="tabIndex"
-                :disabled="isDisabled"
-                :aria-disabled="isDisabled"
-                :readonly="isReadonly"
-                :aria-readonly="isReadonly"
-                @click="emitClick"
-                @focus="emitFocus"
-                @blur="emitBlur"
-                @change="emitChange"
-                @keydown="emitKeydown"
-                @keyup="emitKeyup">
-            <slot></slot>
+            v-bind="$attrs"
+            v-model="model"
+            ref="input"
+            :name="name"
+            :tabindex="tabIndex"
+            :disabled="isDisabled"
+            :aria-disabled="isDisabled"
+            :readonly="isReadonly"
+            :aria-readonly="isReadonly"
+            @click="emitClick"
+            @focus="emitFocus"
+            @blur="emitBlur"
+            @change="emitChange"
+            @keydown="emitKeydown"
+            @keyup="emitKeyup">
         </textarea>
     </div>
 
