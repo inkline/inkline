@@ -115,6 +115,7 @@ module.exports = {
     build: {
         transpile: [
             '@inkline/inkline',
+            '@inkline/validation',
             'lodash-es',
             'vue-instantsearch',
             'instantsearch.js'
