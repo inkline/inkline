@@ -1,7 +1,7 @@
-### Dynamically Added Fields and Groups
+# Form Methods
 The form validation framework wouldn't be complete without dynamically added fields and groups. Inkline provides a simple API for adding and removing fields.
 
-##### Object Group Operations
+### Object Group Operations
 Just like Arrays, Objects can be manipulated and kept up to date using a custom API. You can use the `$set` method to update an object field. To enable reactivity, we'll need to also pass in the current Vue instance inside the options to take advantage of it's internal methods.
 
 <code>this.form.group.$set(name, item, options)</code>
@@ -84,7 +84,7 @@ export default {
 </i-code-preview>
 
 
-##### Array Group Operations
+### Array Group Operations
 Inkline provides you with custom implementations for Array group operations using `$push` and`$splice`. These two methods will take care of registering events and making sure your form schema is always up to date.
 
 <code>this.form.group.$push(item, options)</code><br/>
