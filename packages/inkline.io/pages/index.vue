@@ -223,7 +223,7 @@
         width: auto
 
 #sponsors
-    padding: (--spacer * 4) 0 (--spacer * 5)
+    padding: (--spacer * 4) 0 (--spacer * 6)
     background-color: --colors['gray-20']
     text-align: center
     z-index: 1
