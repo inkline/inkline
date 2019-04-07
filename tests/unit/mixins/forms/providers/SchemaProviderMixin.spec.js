@@ -33,8 +33,7 @@ describe('Mixins', () => {
         describe('props', () => {
             describe('schema', () => {
                 it('should be defined', () => {
-                    expect(wrapper.vm.schema).toBeDefined();
-                    expect(wrapper.vm.schema).toEqual(null);
+                    expect(wrapper.vm).toHaveProperty('schema');
                 });
             });
         });

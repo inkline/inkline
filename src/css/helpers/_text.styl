@@ -56,3 +56,10 @@ for --font-weight-name, --font-weight-value in --font-weight
 
 ._text-hide
   text-indent: -10000px
+
+
+// Font size
+//
+for --font-size-name, --font-size-value in --font-size
+    ._font-size-{--font-size-name}
+        font-size: --font-size-value

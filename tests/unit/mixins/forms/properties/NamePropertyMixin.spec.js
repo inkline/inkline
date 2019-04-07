@@ -36,7 +36,7 @@ describe('Mixins', () => {
 
                 it('should be return schema name if it exists', () => {
                     wrapper.setData({
-                        schema: { $name: 'name' }
+                        schema: { name: 'name' }
                     });
 
                     expect(wrapper.vm.name).toEqual('name');

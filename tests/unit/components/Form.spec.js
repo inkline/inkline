@@ -78,8 +78,8 @@ describe('Components', () => {
                             name: 'input',
                             schema: {
                                 validateOn: 'input',
-                                $touch: () => ({}),
-                                $validate: () => ({ errors: {}, valid: true })
+                                touch: () => ({}),
+                                validate: () => ({ errors: {}, valid: true })
                             }
                         }
                     },
@@ -102,7 +102,7 @@ describe('Components', () => {
                 });
 
                 it('should set the all schema tree entries as touched on "blur"', () => {
-                    const spy = jest.spyOn(inputWrapper.vm.schema, '$touch');
+                    const spy = jest.spyOn(inputWrapper.vm.schema, 'touch');
 
                     wrapper.vm.add(inputWrapper.vm);
                     inputWrapper.vm.$emit('blur');
@@ -120,8 +120,29 @@ describe('Components', () => {
                     expect(spy).toHaveBeenCalledWith('input', expect.any(Function));
                 });
 
-                it('should call inputSchema $validate() on validateOn event', () => {
-                    const spy = jest.spyOn(inputWrapper.vm.schema, '$validate');
+                it('should add the input schema\'s multiple validateOn event listeners to input', () => {
+                    const spy = jest.spyOn(inputWrapper.vm, '$on');
+
+                    inputWrapper.vm.schema.validateOn = ['input', 'blur'];
+                    wrapper.vm.add(inputWrapper.vm);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('input', expect.any(Function));
+                    expect(spy).toHaveBeenCalledWith('blur', expect.any(Function));
+                });
+
+                it('should add the input schema\'s custom validateOn event listener as input event', () => {
+                    const spy = jest.spyOn(inputWrapper.vm, '$on');
+
+                    inputWrapper.vm.schema.validateOn = 'custom';
+                    wrapper.vm.add(inputWrapper.vm);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('custom', expect.any(Function));
+                });
+
+                it('should call inputSchema validate() on validateOn event', () => {
+                    const spy = jest.spyOn(inputWrapper.vm.schema, 'validate');
 
                     wrapper.vm.add(inputWrapper.vm);
                     inputWrapper.vm.$emit('input', 10);

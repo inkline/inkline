@@ -8,7 +8,7 @@ export default {
             event.preventDefault();
 
             if (this.schema) {
-                this.schema.$validate(this.validationOptions);
+                this.schema.validate(this.validationOptions);
 
                 if (this.schema.invalid) {
                     return;

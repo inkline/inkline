@@ -9,7 +9,7 @@ describe('Mixins', () => {
 
         beforeEach(() => {
             const schema = {
-                $validate() {},
+                validate() {},
                 input: {
                     validators: [
                         { rule: 'required' }
@@ -53,7 +53,7 @@ describe('Mixins', () => {
                 });
 
                 it('should validate schema', () => {
-                    const spy = jest.spyOn(schemaWrapper.vm.schema, '$validate');
+                    const spy = jest.spyOn(schemaWrapper.vm.schema, 'validate');
                     const event = { preventDefault() {} };
 
                     schemaWrapper.vm.emitSubmit(event);
@@ -62,7 +62,7 @@ describe('Mixins', () => {
                 });
 
                 it('should return if schema is invalid', () => {
-                    const spy = jest.spyOn(schemaWrapper.vm.schema, '$validate');
+                    const spy = jest.spyOn(schemaWrapper.vm.schema, 'validate');
                     const event = { preventDefault() {} };
 
                     schemaWrapper.vm.schema.invalid = true;
@@ -73,7 +73,7 @@ describe('Mixins', () => {
                 });
 
                 it('should emit "submit" if schema is valid', () => {
-                    const spy = jest.spyOn(schemaWrapper.vm.schema, '$validate');
+                    const spy = jest.spyOn(schemaWrapper.vm.schema, 'validate');
                     const event = { preventDefault() {} };
 
                     schemaWrapper.vm.schema.input.value = 'value';

@@ -9,6 +9,8 @@ import NamePropertyMixin from '@inkline/inkline/src/mixins/forms/properties/Name
 import ReadonlyPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ReadonlyPropertyMixin';
 import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
 
+import { eventValueMap } from '@inkline/inkline/src/helpers/eventValueMap';
+
 export default {
     name: 'IForm',
     mixins: [
@@ -54,15 +56,22 @@ export default {
          */
         add(input) {
             const inputSchema = input.schema;
+            const validateOn = inputSchema.validateOn.constructor === Array ?
+                inputSchema.validateOn :
+                [inputSchema.validateOn];
 
             input.$on('blur', () => {
-                inputSchema.$touch(this.validationOptions);
+                inputSchema.touch(this.validationOptions);
             });
 
-            input.$on(inputSchema.validateOn, (value) => {
-                inputSchema.$validate(value, this.validationOptions);
+            validateOn.forEach((event) => {
+                const eventFn = eventValueMap.hasOwnProperty(event) ? eventValueMap[event] : eventValueMap.input;
 
-                this.$emit('validate', this.schema);
+                input.$on(event, (value) => {
+                    inputSchema.validate(eventFn(value), this.validationOptions);
+
+                    this.$emit('validate', this.schema);
+                });
             });
         },
 
