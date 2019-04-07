@@ -10,11 +10,11 @@
     Inkline's documentation and homepage is built with Nuxt and publicly hosted on GitHub Pages. Inkline is written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>. 
     <br/>
     <br/>
-    <a href="http://inkline.io">Documentation</a>
+    <a href="https://inkline.io">Homepage</a>
+    ·
+    <a href="https://inkline.io/docs/introduction/getting-started">Documentation</a>
     ·
     <a href="https://github.com/inkline/inkline/issues">Issue Tracker</a>
-    ·
-    <a href="http://inkline.io/themes">Themes</a>
 </p>
 
 <br/>
