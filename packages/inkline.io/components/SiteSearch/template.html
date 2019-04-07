@@ -20,7 +20,7 @@
                         <template v-if="index.hits.length > 0" v-for="index in indices">
                             <div class="category">{{ index.label }}</div>
                             <i-dropdown-item
-                                :to="{ name: hit.url, hash: '#' + (hit.hash || '') }"
+                                :to="{ name: hit.url, hash: hit.hash ? '#' + hit.hash : '' }"
                                 v-for="hit in index.hits"
                                 :key="hit.objectID">
                                 <div class="title"><ais-highlight attribute="title" :hit="hit"/></div>

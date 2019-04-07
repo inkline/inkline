@@ -40,7 +40,7 @@
                         <div class="feature-box">
                             <img src="/images/pages/icon-form-validation.svg" alt="Form Validation" />
                             <h3>Form Validation</h3>
-                            <p>Define a form validation schema and let Inkline take care of form validation.</p>
+                            <p>Define a form validation schema and let Inkline elegantly take care of the form validation work.</p>
                         </div>
                     </i-column>
                     <i-column md="12" lg="4">
