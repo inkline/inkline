@@ -5,7 +5,9 @@ Code-wise, the columns have a different order.
 <i-code-preview title="Grid Push / Pull" class="grid-code-preview">
 
 <i-row>
-    <i-column xs="12"></i-column>
+    <i-column xs="12">
+        <grid-box></grid-box>
+    </i-column>
 </i-row>
 <i-row>
     <i-column xs="1" push-xs="11">
