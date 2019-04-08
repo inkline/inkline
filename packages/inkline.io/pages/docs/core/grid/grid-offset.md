@@ -1,7 +1,7 @@
 ### Grid Offset
 Grid offsets are used to move a column to the right without creating an empty column next to it.
 
-<i-code-preview title="Grid Offset">
+<i-code-preview title="Grid Offset" class="grid-code-preview">
 
 <i-row>
     <i-column xs="12">

@@ -1,7 +1,7 @@
 ### Basic Layout
 Create basic grid layout using columns.
 
-<i-code-preview title="Basic Layout">
+<i-code-preview title="Basic Layout" class="grid-code-preview">
 
 <i-row>
     <i-column xs="12">

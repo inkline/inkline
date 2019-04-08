@@ -2,7 +2,7 @@
 ### Grid Push / Pull
 Code-wise, the columns have a different order.
 
-<i-code-preview title="Grid Push / Pull">
+<i-code-preview title="Grid Push / Pull" class="grid-code-preview">
 
 <i-row>
     <i-column xs="12"></i-column>

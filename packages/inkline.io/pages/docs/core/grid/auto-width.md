@@ -2,7 +2,7 @@
 ### Auto Width
 The grid will automatically fit any number of auto sizing columns to a row.
 
-<i-code-preview title="Auto Width">
+<i-code-preview title="Auto Width" class="grid-code-preview">
 
 <i-row>
     <i-column :xs="true">
