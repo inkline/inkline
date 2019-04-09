@@ -46,7 +46,7 @@ Using the most basic table markup, here’s how tables look in Inkline. All tabl
       <th>Username</th>
     </tr>
   </thead>
-  <tbody>1az    <z>`azxzz</z>
+  <tbody>
     <tr>
       <th scope="row">#</th>
       <td>Alex</td>
