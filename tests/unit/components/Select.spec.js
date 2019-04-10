@@ -21,8 +21,8 @@ describe('Components', () => {
                 propsData: {
                     id: 'select'
                 },
-                mocks: {
-                    $isMobile: true
+                data() {
+                    return { isMobile: true }
                 }
             });
         });
