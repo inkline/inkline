@@ -1,59 +1,98 @@
 /**
- * Alert
+ * Tables
  */
 
 @import '../../css/config'
 @import '../../css/mixins'
 @import 'css/_variables'
 @import 'css/_variants'
-@import 'css/_sizes'
 
-.alert
+.table
+    width: 100%
+    max-width: 100%
+    margin-bottom: --spacer
+
+    th,
+    td
+        padding: --table-cell-padding
+        vertical-align: top
+        border-top: --table-border-width solid transparent
+
+    thead th
+        vertical-align: bottom
+        border-bottom-width: (2 * --table-border-width)
+
+    tbody + tbody
+        border-top: (2 * --table-border-width) solid transparent
+
+    // Condensed table w/ half padding
+    //
+    &.-small
+        th
+        td
+            padding: --table-cell-padding-sm
+
+
+    // Bordered version
+    //
+    // Add borders all around the table and between all the columns.
+    //
+    &.-bordered
+        border: --table-border-width solid transparent
+
+        th
+        td
+            border: --table-border-width solid --table-border-color
+
+
+    // Hover table
+    //
+    // Placed here since it has to come after the potential zebra striping
+    //
+    &.-hover
+        tbody tr
+            th, td
+                if --transition-enabled and --transition['table']
+                    transition: background-color --transition-duration ease
+
+
+    th
+    td
+    tbody + tbody
+        border-top-color: --border-color
+
+    thead th
+        border-bottom-color: --border-color
+
+    .table
+        background-color: --color
+
+
+.table
+    @extend .table.-light
+
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
+//
+.table-wrapper
+    display: block
     position: relative
-    display: flex
-    flex-direction: row
-    flex: 1 1 auto
-    min-width: 0
-    word-wrap: break-word
-    background-clip: border-box
-    border-width: --alert-border-width
-    border-style: solid
-    // Enable `flex-grow: 1` for decks and groups so that card blocks take up
-    // as much space as possible, ensuring footers are aligned to the bottom.
-    align-items: center
 
-    a
-        font-weight: 600
+    &.-responsive
+        for --breakpoint-name, --breakpoint-value in --breakpoints
+            --infix = -breakpoint-infix(--breakpoint-name)
 
-    > .icon
-        flex: 1
+            &{--infix}
+                +-breakpoint-down(--breakpoint-name)
+                    display: block
+                    width: 100%
+                    overflow-x: auto
+                    -webkit-overflow-scrolling: touch
+                    -ms-overflow-style: -ms-autohiding-scrollbar
 
-    &.-dismissible > .content
-        padding-right: 0
-
-    &.-with-icon > .content
-        padding-left: 0
-
-    > .dismiss
-        flex: 0 0 auto
-        cursor: pointer
-        display: inline-block
-        text-align: center
-
-    @extend .alert.-md
-    @extend .alert.-primary
-
-
-.alert
-.alert > .content
-    flex: 0 1 100%
-
-    > hr
-        margin-right: 0
-        margin-left: 0
-
-    > *:first-child
-        margin-top: 0
-
-    > *:last-child
-        margin-bottom: 0
+                    // Prevent double border on horizontal scroll due to use of `display: block`
+                    .table
+                        &.-bordered
+                            border: none

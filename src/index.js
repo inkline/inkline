@@ -33,6 +33,7 @@ import IPagination from '@inkline/inkline/src/components/Pagination';
 import IPopover from '@inkline/inkline/src/components/Popover';
 import IProgress from '@inkline/inkline/src/components/Progress';
 import IProgressBar from '@inkline/inkline/src/components/ProgressBar';
+import ITable from '@inkline/inkline/src/components/Table';
 import ITooltip from '@inkline/inkline/src/components/Tooltip';
 
 import ICheckbox from '@inkline/inkline/src/components/Checkbox';
@@ -89,6 +90,7 @@ class Inkline {
         IPopover,
         IProgress,
         IProgressBar,
+        ITable,
         ITooltip,
 
         ICheckbox,
@@ -156,6 +158,7 @@ export {
     IPopover,
     IProgress,
     IProgressBar,
+    ITable,
     ITooltip,
 
     ICheckbox,

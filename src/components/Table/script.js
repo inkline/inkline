@@ -1,64 +1,43 @@
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
 
 import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
 import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
 
 export default {
-    name: 'IAlert',
+    name: 'ITable',
     mixins: [
-        AttributesProviderMixin,
         ClassesProviderMixin,
 
         SizePropertyMixin,
         VariantPropertyMixin
     ],
-    model: {
-        prop: 'show',
-        event: 'input'
-    },
-    data() {
-        return {
-            dismissed: false
-        }
-    },
     props: {
-        show: {
-            type: Boolean,
-            default: true
-        },
-        dismissible: {
+        bordered: {
             type: Boolean,
             default: false
         },
-        dismissLabel: {
-            type: String,
-            default: '×'
-        }
-    },
-    methods: {
-        dismiss() {
-            this.dismissed = true;
-
-            this.$emit('dismiss');
-            this.$emit('input', false);
+        striped: {
+            type: Boolean,
+            default: false
         },
-        onShowChange() {
-            this.dismissed = false;
+        hover: {
+            type: Boolean,
+            default: false
+        },
+        responsive: {
+            type: [Boolean, String],
+            default: false
         }
-    },
-    watch: {
-        show() {
-            this.onShowChange()
-        }
-    },
-    mounted() {
-        this.onShowChange()
     },
     created() {
         this.classesProvider.add(() => ({
-            '-dismissible': this.dismissible,
-            '-with-icon': Boolean(this.$slots.icon)
+            '-bordered': this.bordered,
+            '-striped': this.striped,
+            '-hover': this.hover,
+        }));
+
+        this.classesProvider.add('wrapper', () => ({
+            '-responsive': Boolean(this.responsive)
         }));
     }
 };
