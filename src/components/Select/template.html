@@ -1,7 +1,7 @@
 <i-dropdown
         class="select"
         :class="classes"
-        :disabled="isDisabled || isReadonly || $isMobile"
+        :disabled="isDisabled || isReadonly || isMobile"
         :readonly="isReadonly"
         :size="size"
         :id="id"
@@ -16,7 +16,7 @@
             :readonly="isReadonly || !filterable"
             :disabled="isDisabled"
             :aria-disabled="isDisabled"
-            :tabindex="$isMobile ? -1 : tabIndex"
+            :tabindex="isMobile ? -1 : tabIndex"
             @click="emitClick"
             @focus="emitFocus"
             @blur="emitBlur"
@@ -30,7 +30,7 @@
 
     <select v-bind="$attrs"
             v-model="model"
-            v-if="$isMobile"
+            v-if="isMobile"
             :disabled="isDisabled"
             ref="select"
             class="form-select"

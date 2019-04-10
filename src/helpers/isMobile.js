@@ -5,7 +5,7 @@ import Vue from 'vue';
  *
  * @returns {boolean}
  */
-export function $isMobile() {
+export function isMobile() {
     if (Vue.$isServer || typeof window === 'undefined') {
         return false;
     }

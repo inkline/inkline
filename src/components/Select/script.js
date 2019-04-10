@@ -20,7 +20,7 @@ import ReadonlyPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/
 import ParentFormGroupPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
 import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
-import { querySelectorAll, uid } from "@inkline/inkline/src/helpers";
+import { querySelectorAll, uid, isMobile } from "@inkline/inkline/src/helpers";
 
 export default {
     name: 'ISelect',
@@ -66,6 +66,7 @@ export default {
         const basename = 'select';
 
         return {
+            isMobile: isMobile(),
             labelModel: '',
             id: this.$attrs.id || uid(basename),
             options: []
@@ -80,10 +81,10 @@ export default {
     },
     methods: {
         focusInputRef() {
-            this.$isMobile ? this.$refs.select.focus() : this.$refs.input.focusInputRef();
+            this.isMobile ? this.$refs.select.focus() : this.$refs.input.focusInputRef();
         },
         clickInputRef() {
-            if (this.$isMobile) {
+            if (this.isMobile) {
                 this.$refs.select.click();
             } else {
                 this.$refs.input.clickInputRef();
