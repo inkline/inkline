@@ -662,5 +662,3 @@ Tables can be themed using brand modifier classes such as `.-light`, `.-dark`, `
 
 </template>
 </i-code-preview>
-
-
