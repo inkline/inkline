@@ -1,32 +1,19 @@
 //
-// Alert variables
+// Tables
 //
---alert-font-size := --font-size
---alert-font-weight := --font-weight['normal']
---alert-line-height := --line-height
 
---alert-border-width := --border-width
---alert-border-radius := --border-radius
+--table-cell-padding := .75rem
+--table-cell-padding-sm := .3rem
 
---alert-padding-sm := --spacers['1'] * --size-percentages['sm']
---alert-padding-md := --spacers['1'] * --size-percentages['md']
---alert-padding-lg := --spacers['1'] * --size-percentages['lg']
---alert-padding := {
-    'sm': --alert-padding-sm
-    'md': --alert-padding-md
-    'lg': --alert-padding-lg
-}
-
---alert-dismiss-size := 1rem
-
---alert-background-darken := rgba(0, 0, 0, 0.15)
-
+--table-border-width := --border-width
+--table-border-color := --border-color
 
 //
 // Variants
 //
---alert-variants := (brand state)
---alert-variant-color-light := --variant-color-light
---alert-variant-color-dark := --variant-color-dark
+--table-variants := (brand monochrome-white neutral state)
+--table-variant-color-light := --variant-color-light
+--table-variant-color-dark := --variant-color-dark
 
---variants['alert'] = -add-variant(--alert-variants, { color: --color-groups })
+
+--variants['table'] = -add-variant(--table-variants, { color: --color-groups })
