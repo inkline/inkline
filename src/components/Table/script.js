@@ -37,7 +37,7 @@ export default {
         }));
 
         this.classesProvider.add('wrapper', () => ({
-            '-responsive': Boolean(this.responsive)
+            [`-responsive${typeof this.responsive === "boolean" ? '' : `-${this.responsive}`}`]: Boolean(this.responsive)
         }));
     }
 };
