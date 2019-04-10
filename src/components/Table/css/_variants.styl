@@ -1,0 +1,15 @@
+//
+// Alert variants
+//
+for --variant-name, --variant in --variants['alert']
+    .alert.-{--variant-name}
+        border-color: rgba(--variant['color'], 0.35)
+        //color: -variant-color-by-luminance(--variant['color'], --alert-variant-color-light, --alert-variant-color-dark)
+        background-color: blend(rgba(--variant['color'], 0.15))
+        color: darken(--variant['color'], 15%)
+
+        a
+            color: --variant['color']
+
+        > .icon
+            border-color: rgba(-variant-color-by-luminance(--variant['color'], --alert-variant-color-light, --alert-variant-color-dark), 0.33)
