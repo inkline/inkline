@@ -1,39 +1,34 @@
 <div class="site-search">
-    <ais-instant-search v-if="searchClient" :search-client="searchClient" index-name="inkline">
-        <ais-autocomplete :indices="searchIndices">
-            <i-dropdown ref="dropdown" placement="bottom-start" :keymap="searchKeymap" slot-scope="{ currentRefinement, indices, refine }">
-                <i-input
-                    type="search"
-                    placeholder="Search"
-                    :value="currentRefinement"
-                    @input="search($event, refine)">
-                    <font-awesome-icon icon="search" slot="prefix"></font-awesome-icon>
-                </i-input>
-                <i-dropdown-menu v-show="currentRefinement">
-                    <div class="body">
-                        <template v-if="!hasResults(indices)">
-                            <i-dropdown-item>
-                                No results found
-                            </i-dropdown-item>
-                        </template>
+    <i-dropdown ref="dropdown" placement="bottom-start" :keymap="searchKeymap">
+        <i-input
+            type="search"
+            placeholder="Search"
+            v-model="searchString">
+            <font-awesome-icon icon="search" slot="prefix"></font-awesome-icon>
+        </i-input>
+        <i-dropdown-menu v-show="searchString === ''">
+            <div class="body">
+                <template v-if="!hasResults()">
+                    <i-dropdown-item>
+                        No results found
+                    </i-dropdown-item>
+                </template>
 
-                        <template v-if="index.hits.length > 0" v-for="index in indices">
-                            <div class="category">{{ index.label }}</div>
-                            <i-dropdown-item
-                                :to="{ name: hit.url, hash: hit.hash ? '#' + hit.hash : '' }"
-                                v-for="hit in index.hits"
-                                :key="hit.objectID">
-                                <div class="title"><ais-highlight attribute="title" :hit="hit"/></div>
-                                <div class="subtitle"><ais-highlight attribute="subtitle" :hit="hit"/></div>
-                                <div class="description"><ais-snippet attribute="description" :hit="hit"/></div>
-                            </i-dropdown-item>
-                        </template>
-                    </div>
-                    <div class="footer">
-                        <ais-powered-by theme="light" />
-                    </div>
-                </i-dropdown-menu>
-            </i-dropdown>
-        </ais-autocomplete>
-    </ais-instant-search>
+                <template v-if="category.items.length > 0" v-for="category in searchResults">
+                    <div class="category">{{ category.title }}</div>
+                    <i-dropdown-item
+                        :to="{ name: item.url, hash: item.hash ? '#' + item.hash : '' }"
+                        v-for="item in category.items"
+                        :key="item.objectID">
+                        <div class="title">{{item.title}}</div>
+                        <div class="subtitle">{{item.subtitle}}</div>
+                        <div class="description">{{item.description}}</div>
+                    </i-dropdown-item>
+                </template>
+            </div>
+            <!--<div class="footer">-->
+                <!--<ais-powered-by theme="light" />-->
+            <!--</div>-->
+        </i-dropdown-menu>
+    </i-dropdown>
 </div>

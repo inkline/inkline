@@ -70,8 +70,7 @@ module.exports = {
     plugins: [
         '~/plugins/font-awesome',
         '~/plugins/inkline',
-        '~/plugins/prism',
-        '~/plugins/algolia'
+        '~/plugins/prism'
     ],
 
     /*

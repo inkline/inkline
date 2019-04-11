@@ -1,36 +1,61 @@
-import throttle from 'lodash-es/throttle';
-import algoliasearch from "algoliasearch";
-import 'instantsearch.css/themes/algolia.css';
-
-const ALGOLIA_APPLICATION_ID = '20XO7MC0CB';
-const ALGOLIA_API_KEY = 'd220f0c7ea35fe42306fe72fb00f3a91';
+import { capitalizeFirst } from "@inkline/inkline/src/helpers";
+import Fuse from 'fuse.js';
+import axios from 'axios';
 
 export default {
     name: 'SiteSearch',
+    created() {
+        axios.get('/search.json')
+            .then((response) => {
+                this.searchList = response.data.entries;
+                this.searchList.forEach((category) => {
+                    this.searchClients.push(new Fuse(category.items, this.searchOptions));
+                    this.searchResults.push({
+                        title: capitalizeFirst(category.title),
+                        items: []
+                    });
+                });
+            });
+    },
     data () {
         return {
-            searchIndices: [
-                { label: 'Introduction', value: 'introduction' },
-                { label: 'Core', value: 'core' },
-                { label: 'Forms', value: 'forms' },
-                { label: 'Components', value: 'components' },
-            ],
+            searchString: '',
             searchKeymap: { show: ['enter'], hide: ['enter'] },
-            searchClient: false
+            searchList: [],
+            searchResults: [],
+            searchClients: [],
+            searchOptions: {
+                shouldSort: true,
+                threshold: 0.6,
+                location: 0,
+                distance: 100,
+                maxPatternLength: 32,
+                minMatchCharLength: 1,
+                keys: [
+                    "title",
+                    "subtitle",
+                    "description",
+                    "category"
+                ]
+            }
         };
     },
-    methods: {
-        search(event, callback) {
-            callback(event);
+    watch: {
+        searchString(value) {
+            if (!this.searchClients.length > 0) {
+                return;
+            }
+
+            this.searchClients.forEach((client, index) => {
+                this.searchResults[index].items = client.search(value);
+            });
 
             setTimeout(() => this.$refs.dropdown.$emit('init'), 100);
-        },
-        hasResults(indices) {
-            return indices.some((index) => index.hits.length > 0)
         }
     },
-    mounted() {
-        this.search = throttle(this.search, 500);
-        this.searchClient = algoliasearch(ALGOLIA_APPLICATION_ID, ALGOLIA_API_KEY);
+    methods: {
+        hasResults() {
+            return this.searchResults.some((category) => category.items.length > 0)
+        }
     }
 };
