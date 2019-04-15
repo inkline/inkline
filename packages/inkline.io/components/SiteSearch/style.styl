@@ -17,6 +17,8 @@
             justify-content: flex-end
             padding: (--spacer / 2) --spacer
             border-top: 1px solid --colors['gray-30']
+            font-size: --font-size-sm
+            color: --colors['gray-60']
 
         .category
             position: sticky
@@ -31,18 +33,24 @@
 
         .item
             .title
-            .title > span
                 font-weight: bold
                 display: inline-block
 
             .subtitle
-            .subtitle > span
                 display: inline-block
 
             .description
-            .description > span
                 display: block
                 font-size: --font-size-sm
+                overflow: hidden
+                text-overflow: ellipsis
+
+            .title,
+            .subtitle,
+            .description
+                strong
+                    font-weight: 600
+                    background: rgba(--colors['primary'], 0.15)
 
     +-breakpoint-down(sm)
         margin: --spacer 0 0

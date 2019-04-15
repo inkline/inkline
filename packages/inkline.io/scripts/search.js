@@ -102,7 +102,7 @@ markdownConfig.plugins.forEach((plugin) => {
 (dirTree(docsRoot, { extensions: /\.md/ }) || { children: [] }).children.forEach((docsCategory) => {
     const category = docsCategory.path.replace(docsRoot + '/', '');
     const entry = {
-        title: category,
+        title: category.charAt(0).toUpperCase() + category.slice(1),
         items: []
     };
 

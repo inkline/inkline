@@ -6,29 +6,53 @@
             v-model="searchString">
             <font-awesome-icon icon="search" slot="prefix"></font-awesome-icon>
         </i-input>
-        <i-dropdown-menu v-show="searchString === ''">
+        <i-dropdown-menu v-show="searchString !== ''">
             <div class="body">
-                <template v-if="!hasResults()">
-                    <i-dropdown-item>
-                        No results found
-                    </i-dropdown-item>
-                </template>
-
-                <template v-if="category.items.length > 0" v-for="category in searchResults">
+                <template v-if="!hasResults() && searchString === ''" v-for="category in searchList">
                     <div class="category">{{ category.title }}</div>
                     <i-dropdown-item
                         :to="{ name: item.url, hash: item.hash ? '#' + item.hash : '' }"
                         v-for="item in category.items"
                         :key="item.objectID">
-                        <div class="title">{{item.title}}</div>
-                        <div class="subtitle">{{item.subtitle}}</div>
-                        <div class="description">{{item.description}}</div>
+                        <div class="title" v-if="item.title">{{item.title}}</div>
+                        <div class="subtitle" v-if="item.subtitle">{{item.subtitle}}</div>
+                        <div class="description" v-if="item.description">{{item.description}}</div>
+                    </i-dropdown-item>
+                </template>
+                <template v-if="!hasResults() && searchString !== ''">
+                    <i-dropdown-item>No search results found for "{{searchString}}"</i-dropdown-item>
+                </template>
+
+                <template v-if="category.items.length > 0" v-for="category in sortedSearchResults">
+                    <div class="category">{{ category.title }}</div>
+                    <i-dropdown-item
+                        :to="{ name: item.url, hash: item.hash ? '#' + item.hash : '' }"
+                        v-for="item in category.items"
+                        :key="item.objectID">
+                        <div class="title" v-if="item.title.length > 0">
+                            <template v-for="(part, index) in item.title">
+                                <strong v-if="part.highlight" :key="index">{{part.text}}</strong>
+                                <span v-else :key="index">{{part.text}}</span>
+                            </template>
+                        </div>
+                        <div class="subtitle" v-if="item.subtitle.length > 0">
+                            <template v-for="(part, index) in item.subtitle">
+                                <strong v-if="part.highlight" :key="index">{{part.text}}</strong>
+                                <span v-else :key="index">{{part.text}}</span>
+                            </template>
+                        </div>
+                        <div class="description" v-if="item.description.length > 0">
+                            <template v-for="(part, index) in item.description">
+                                <strong v-if="part.highlight" :key="index">{{part.text}}</strong>
+                                <span v-else :key="index">{{part.text}}</span>
+                            </template>
+                        </div>
                     </i-dropdown-item>
                 </template>
             </div>
-            <!--<div class="footer">-->
-                <!--<ais-powered-by theme="light" />-->
-            <!--</div>-->
+            <div class="footer" v-show="hasResults()">
+                Found {{searchResultsCount}} search result{{ searchResultsCount > 1 ? 's' : '' }}
+            </div>
         </i-dropdown-menu>
     </i-dropdown>
 </div>
