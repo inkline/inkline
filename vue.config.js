@@ -9,6 +9,15 @@ module.exports = {
         }
     },
     filenameHashing: false,
+    css: {
+        loaderOptions: {
+            postcss: {
+                plugins: [
+                    require('postcss-preset-env')()
+                ]
+            }
+        }
+    },
     chainWebpack: (config) => {
         config.optimization.delete('splitChunks');
         config.optimization.removeAvailableModules(false);
@@ -18,6 +27,16 @@ module.exports = {
         // config.optimization.sideEffects(false)
         // config.optimization.minimize(false)
         // config.optimization.flagIncludedChunks(false)
+
+        config
+            .module
+            .rule('fonts')
+            .use('url-loader')
+            .tap((options) => {
+                console.log(options);
+
+                return options;
+            });
 
         config.resolve.alias
             .set('@inkline/inkline', __dirname)
@@ -29,5 +48,5 @@ module.exports = {
         //     .init(Plugin => new Plugin({
         //         analyzerMode: 'static'
         //     }));
-    },
+    }
 };
