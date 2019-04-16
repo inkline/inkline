@@ -15,7 +15,7 @@ By default, cards are set to have `width: 100%`, fully spanning the width of the
 <i-row>
     <i-column md="6">
         <i-card>
-            <img slot="image" src="http://placehold.it/400x200" alt="Card Image" />
+            <img slot="image" src="/images/placeholder-500x250.jpg" alt="Card Image" />
             <h4 class="title">Card Title</h4>
             <p class="subtitle">Card Subtitle</p>
             <p>
@@ -30,7 +30,7 @@ By default, cards are set to have `width: 100%`, fully spanning the width of the
 
 ~~~html
 <i-card>
-    <img slot="image" src="image.jpg" alt="Card Image" />
+    <img slot="image" src=".." alt="Card Image" />
     <h4 class="title">Card Title</h4>
     <p class="subtitle">Card Subtitle</p>
     <p>
@@ -103,7 +103,7 @@ You can provide an image at the top of the card, using the `image` slot.
 <i-row>
     <i-column md="6">
         <i-card>
-            <img slot="image" src="http://placehold.it/400x200" alt="Card Image" />
+            <img slot="image" src="/images/placeholder-500x250.jpg" alt="Card Image" />
             Some quick example text to build on the card title and make up the bulk of the card's content.
         </i-card>
     </i-column>
@@ -113,33 +113,7 @@ You can provide an image at the top of the card, using the `image` slot.
 
 ~~~html
 <i-card>
-    <img slot="image" src="image.jpg" alt="Card Image" />
-    Some quick example text to build on the card title and make up the bulk of the card's content.
-</i-card>
-~~~
-
-</template>
-</i-code-preview>
-
-### Background Image
-You can provide an image at the top of the card, using the `image` slot.
-
-<i-code-preview title="Card Background Image" link="https://github.com/inkline/inkline/tree/master/src/components/Card">
-
-<i-row>
-    <i-column md="6">
-        <i-card>
-            <img slot="image" src="http://placehold.it/400x200" alt="Card Image" />
-            Some quick example text to build on the card title and make up the bulk of the card's content.
-        </i-card>
-    </i-column>
-</i-row>
-
-<template slot="html">
-
-~~~html
-<i-card>
-    <img slot="image" src="image.jpg" alt="Card Image" />
+    <img slot="image" src=".." alt="Card Image" />
     Some quick example text to build on the card title and make up the bulk of the card's content.
 </i-card>
 ~~~
@@ -153,17 +127,21 @@ The default size is set to `md`.
 
 <i-code-preview title="Card Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Card">
 
-<i-row>
+<i-row class="_margin-bottom-1">
     <i-column md="6">
         <i-card size="sm">
             Some quick example text to build on the card title and make up the bulk of the card's content.
         </i-card>
     </i-column>
+</i-row>
+<i-row class="_margin-bottom-1">
     <i-column md="6">
         <i-card size="md">
             Some quick example text to build on the card title and make up the bulk of the card's content.
         </i-card>
     </i-column>
+</i-row>
+<i-row>
     <i-column md="6">
         <i-card size="lg">
             Some quick example text to build on the card title and make up the bulk of the card's content.
