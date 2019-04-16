@@ -1,5 +1,3 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
 module.exports = {
     pages: {
         index: {
@@ -28,23 +26,13 @@ module.exports = {
         // config.optimization.minimize(false)
         // config.optimization.flagIncludedChunks(false)
 
-        config
-            .module
-            .rule('fonts')
-            .use('url-loader')
-            .tap((options) => {
-                console.log(options);
-
-                return options;
-            });
-
         config.resolve.alias
             .set('@inkline/inkline', __dirname)
             .end();
 
         // config
         //     .plugin("webpack-bundle-analyzer")
-        //     .use(BundleAnalyzerPlugin)
+        //     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
         //     .init(Plugin => new Plugin({
         //         analyzerMode: 'static'
         //     }));
