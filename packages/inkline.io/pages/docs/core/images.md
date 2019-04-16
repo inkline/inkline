@@ -8,7 +8,7 @@ To achieve that, we apply `max-width: 100%;` and `height: auto;` to the image so
 
 <i-code-preview title="Responsive Images" link="https://github.com/inkline/inkline/tree/master/src/css/core/images">
 
-<img src="/images/pages/docs/core/images-1000.jpg" width="1000" height="400" class="image -responsive" alt="Responsive image" link="https://github.com/inkline/inkline/tree/master/src/css/core/images">
+<img src="/images/placeholder-1000x400.jpg" width="1000" height="400" class="image -responsive" alt="Responsive image" link="https://github.com/inkline/inkline/tree/master/src/css/core/images">
 
 <template slot="html">
 
@@ -29,7 +29,7 @@ Images in Inkline can be made fluid using the `.-fluid` modifier. To achieve tha
 
 <i-code-preview title="Fluid Images" link="https://github.com/inkline/inkline/tree/master/src/css/core/images">
 
-<img src="/images/pages/docs/core/images-1000.jpg" width="1000" height="400" class="image -fluid" alt="Fluid image">
+<img src="/images/placeholder-1000x400.jpg" width="1000" height="400" class="image -fluid" alt="Fluid image">
 
 <template slot="html">
 
@@ -45,7 +45,7 @@ You can use the `.-thumbnail` modifier to give an image a rounded 1px border app
 
 <i-code-preview title="Image Thumbnails" link="https://github.com/inkline/inkline/tree/master/src/css/core/images">
 
-<img src="/images/pages/docs/core/images-400.jpg" width="200" height="200" class="image -thumbnail" alt="Thumbnail">
+<img src="/images/placeholder-400x400.jpg" width="200" height="200" class="image -thumbnail" alt="Thumbnail">
 
 <template slot="html">
 
@@ -61,7 +61,7 @@ Besides thumbnails, you can opt for a retro look having a larger bottom border u
 
 <i-code-preview title="Polaroid Image" link="https://github.com/inkline/inkline/tree/master/src/css/core/images">
 
-<img src="/images/pages/docs/core/images-400.jpg" width="200" height="200" class="image -polaroid" alt="Polaroid">
+<img src="/images/placeholder-400x400.jpg" width="200" height="200" class="image -polaroid" alt="Polaroid">
 
 <template slot="html">
 
@@ -79,7 +79,7 @@ margin utility class.
 <i-code-preview title="Image Alignment - Float Left" link="https://github.com/inkline/inkline/tree/master/src/css/core/images">
 
 <div class="_clearfix">
-    <img src="/images/pages/docs/core/images-400.jpg" width="120" height="120" class="image _float-left _padding-right-1 _padding-bottom-1" alt="Left floating image">
+    <img src="/images/placeholder-400x400.jpg" width="120" height="120" class="image _float-left _padding-right-1 _padding-bottom-1" alt="Left floating image">
     Inkline is making this image float on the left side of the text. Inkline provides you with useful helper classes for positioning page elements such as images. The text will flow to the right and underneath this image, something you will find useful when adding left or right aligned images to a blog article. It is common to also add a right and bottom padding to the image. 
 </div>
 
@@ -96,7 +96,7 @@ margin utility class.
 <i-code-preview title="Image Alignment - Float Right" link="https://github.com/inkline/inkline/tree/master/src/css/core/images">
 
 <div class="_clearfix">
-    <img src="/images/pages/docs/core/images-400.jpg" width="120" height="120" class="image _float-right _padding-left-1 _padding-bottom-1" alt="Left floating image">
+    <img src="/images/placeholder-400x400.jpg" width="120" height="120" class="image _float-right _padding-left-1 _padding-bottom-1" alt="Left floating image">
     Inkline is making this image float on the right side of the text. Inkline provides you with useful helper classes for positioning page elements such as images. The text will flow to the left and underneath this image, something you will find useful when adding left or right aligned images to a blog article. It is common to also add a left and bottom padding to the image. 
 </div>
 
@@ -113,7 +113,7 @@ margin utility class.
 <i-code-preview title="Image Alignment - Text Center" link="https://github.com/inkline/inkline/tree/master/src/css/core/images">
 
 <div class="_text-center">
-    <img src="/images/pages/docs/core/images-400.jpg" width="200" height="200" alt="Centered image">
+    <img src="/images/placeholder-400x400.jpg" width="200" height="200" alt="Centered image">
 </div>
 
 <template slot="html">
@@ -129,7 +129,7 @@ margin utility class.
 
 <i-code-preview title="Image Alignment - Margin Auto" link="https://github.com/inkline/inkline/tree/master/src/css/core/images">
 
-<img src="/images/pages/docs/core/images-400.jpg" width="200" height="200" class="_display-block _margin-x-auto" alt="Centered image">
+<img src="/images/placeholder-400x400.jpg" width="200" height="200" class="_display-block _margin-x-auto" alt="Centered image">
 
 <template slot="html">
 

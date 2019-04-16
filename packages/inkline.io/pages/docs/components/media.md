@@ -7,7 +7,7 @@ Media objects are useful for repetitive components that have a media element pos
 <i-code-preview title="Media Example" link="https://github.com/inkline/inkline/tree/master/src/components/Media">
 
 <i-media>
-    <img slot="image" src="http://placehold.it/120x120" alt="Media Image" />
+    <img slot="image" src="/images/placeholder-100x100.jpg" alt="Media Image" />
     <h3>Media Titlte</h3>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -18,7 +18,7 @@ Media objects are useful for repetitive components that have a media element pos
 
 ~~~html
 <i-media>
-    <img slot="image" src="http://placehold.it/120x120" alt="Media Image" />
+    <img slot="image" src=".." alt="Media Image" />
     <h3>Media Title</h3>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -36,13 +36,13 @@ Media components can be nested inside one another to create a parent-child relat
 <i-code-preview title="Media Nesting" link="https://github.com/inkline/inkline/tree/master/src/components/Media">
 
 <i-media>
-    <img slot="image" src="http://placehold.it/120x120" alt="Media Image" />
+    <img slot="image" src="/images/placeholder-100x100.jpg" alt="Media Image" />
     <h3>Media Titlte</h3>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
     <i-media>
-        <img slot="image" src="http://placehold.it/80x80" alt="Media Image" />
+        <img slot="image" src="/images/placeholder-100x100.jpg" height="60" width="60" alt="Media Image" />
         <h3>Nested Media Titlte</h3>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -54,14 +54,14 @@ Media components can be nested inside one another to create a parent-child relat
 
 ~~~html
 <i-media>
-    <img slot="image" src="http://placehold.it/120x120" alt="Media Image" />
+    <img slot="image" src=".." alt="Media Image" />
     <h3>Media Titlte</h3>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
     
     <i-media>
-        <img slot="image" src="http://placehold.it/80x80" alt="Media Image" />
+        <img slot="image" src=".." alt="Media Image" />
         <h3>Nested Media Titlte</h3>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -79,7 +79,7 @@ The media element in a media component can be aligned with flexbox helper classe
 <i-code-preview title="Media Alignment Start" link="https://github.com/inkline/inkline/tree/master/src/components/Media">
 
 <i-media>
-    <img class="_align-self-start" slot="image" src="http://placehold.it/60x60" alt="Media Image" />
+    <img class="_align-self-start" slot="image" height="80" width="80" src="/images/placeholder-100x100.jpg" alt="Media Image" />
     <h3>Media Titlte</h3>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -90,7 +90,7 @@ The media element in a media component can be aligned with flexbox helper classe
 
 ~~~html
 <i-media>
-    <img class="_align-self-start" slot="image" src="http://placehold.it/60x60" alt="Media Image" />
+    <img class="_align-self-start" slot="image" src=".." alt="Media Image" />
     <h3>Media Titlte</h3>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -104,7 +104,7 @@ The media element in a media component can be aligned with flexbox helper classe
 <i-code-preview title="Media Alignment Center" link="https://github.com/inkline/inkline/tree/master/src/components/Media">
 
 <i-media>
-    <img class="_align-self-center" slot="image" src="http://placehold.it/60x60" alt="Media Image" />
+    <img class="_align-self-center" slot="image" height="80" width="80" src="/images/placeholder-100x100.jpg" alt="Media Image" />
     <h3>Media Titlte</h3>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -115,7 +115,7 @@ The media element in a media component can be aligned with flexbox helper classe
 
 ~~~html
 <i-media>
-    <img class="_align-self-center" slot="image" src="http://placehold.it/60x60" alt="Media Image" />
+    <img class="_align-self-center" slot="image" src=".." alt="Media Image" />
     <h3>Media Titlte</h3>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -129,7 +129,7 @@ The media element in a media component can be aligned with flexbox helper classe
 <i-code-preview title="Media Alignment End" link="https://github.com/inkline/inkline/tree/master/src/components/Media">
 
 <i-media>
-    <img class="_align-self-end" slot="image" src="http://placehold.it/60x60" alt="Media Image" />
+    <img class="_align-self-end" slot="image" height="80" width="80" src="/images/placeholder-100x100.jpg" alt="Media Image" />
     <h3>Media Titlte</h3>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -140,7 +140,7 @@ The media element in a media component can be aligned with flexbox helper classe
 
 ~~~html
 <i-media>
-    <img class="_align-self-end" slot="image" src="http://placehold.it/60x60" alt="Media Image" />
+    <img class="_align-self-end" slot="image" src=".." alt="Media Image" />
     <h3>Media Titlte</h3>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
