@@ -31,6 +31,14 @@ export default {
             return this.trigger.constructor === Array ? this.trigger : [this.trigger];
         }
     },
+    mounted() {
+        this.initElements();
+        this.initAriaAttributes();
+        this.addEvents();
+    },
+    destroyed() {
+        this.removeEvents();
+    },
     methods: {
         show() {
             if (this.disabled) return;
@@ -110,14 +118,6 @@ export default {
                 }
             });
         }
-    },
-    mounted() {
-        this.initElements();
-        this.initAriaAttributes();
-        this.addEvents();
-    },
-    destroyed() {
-        this.removeEvents();
     }
 };
 </script>

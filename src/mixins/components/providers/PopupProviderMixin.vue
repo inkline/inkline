@@ -20,6 +20,7 @@ export default {
             default: 'bottom'
         },
         offset: {
+            type: Number,
             default: 0
         },
         arrow: {
@@ -40,8 +41,14 @@ export default {
                 return {};
             }
         },
-        reference: {},
-        popup: {},
+        reference: {
+            type: null,
+            default: null
+        },
+        popup: {
+            type: null,
+            default: null
+        },
         value: {
             type: Boolean,
             default: false
@@ -68,6 +75,21 @@ export default {
 
             this.$emit('change', value);
         }
+    },
+
+    beforeDestroy() {
+        this.doDestroy(true);
+
+        if (!Vue.$isServer && document && this.popupElement && this.popupElement.parentNode === document.body) {
+            this.popupElement.removeEventListener('click', (e) => e.stopPropagation());
+
+            document.body.removeChild(this.popupElement);
+        }
+    },
+
+    // Call destroy in keep-alive mode
+    deactivated() {
+        this.$options.beforeDestroy[0].call(this);
     },
 
     methods: {
@@ -166,21 +188,6 @@ export default {
 
             this.hide();
         }
-    },
-
-    beforeDestroy() {
-        this.doDestroy(true);
-
-        if (!Vue.$isServer && document && this.popupElement && this.popupElement.parentNode === document.body) {
-            this.popupElement.removeEventListener('click', (e) => e.stopPropagation());
-
-            document.body.removeChild(this.popupElement);
-        }
-    },
-
-    // Call destroy in keep-alive mode
-    deactivated() {
-        this.$options.beforeDestroy[0].call(this);
     }
 };
 </script>

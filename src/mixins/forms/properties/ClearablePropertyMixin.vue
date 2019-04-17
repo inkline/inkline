@@ -15,17 +15,17 @@ export default {
             return this.clearable && this.currentValue !== '' && (this.focused || this.hovered);
         }
     },
+    created() {
+        this.classesProvider.add(() => ({
+            '-clearable': this.clearable
+        }));
+    },
     methods: {
         clear() {
             this.$emit('clear');
             this.model = '';
             this.focusInputRef();
         }
-    },
-    created() {
-        this.classesProvider.add(() => ({
-            '-clearable': this.clearable
-        }));
     }
 };
 </script>

@@ -18,12 +18,12 @@ describe('Components', () => {
         });
 
         describe('props', () => {
-           describe('divider', () => {
-               it('should be defined', () => {
-                   expect(wrapper.vm.divider).toBeDefined();
-                   expect(wrapper.vm.divider).toEqual('/');
-               });
-           }) ;
+            describe('divider', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.divider).toBeDefined();
+                    expect(wrapper.vm.divider).toEqual('/');
+                });
+            }) ;
         });
     });
 });

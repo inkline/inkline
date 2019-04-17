@@ -22,33 +22,33 @@ describe('Components', () => {
         });
 
         describe('props', () => {
-           describe('bordered', () => {
-               it('should be defined', () => {
-                   expect(wrapper.vm.bordered).toBeDefined();
-                   expect(wrapper.vm.bordered).toEqual(false);
-               });
-           });
+            describe('bordered', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.bordered).toBeDefined();
+                    expect(wrapper.vm.bordered).toEqual(false);
+                });
+            });
 
-           describe('striped', () => {
-               it('should be defined', () => {
-                   expect(wrapper.vm.striped).toBeDefined();
-                   expect(wrapper.vm.striped).toEqual(false);
-               });
-           });
+            describe('striped', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.striped).toBeDefined();
+                    expect(wrapper.vm.striped).toEqual(false);
+                });
+            });
 
-           describe('hover', () => {
-               it('should be defined', () => {
-                   expect(wrapper.vm.hover).toBeDefined();
-                   expect(wrapper.vm.hover).toEqual(false);
-               });
-           });
+            describe('hover', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.hover).toBeDefined();
+                    expect(wrapper.vm.hover).toEqual(false);
+                });
+            });
 
-           describe('responsive', () => {
-               it('should be defined', () => {
-                   expect(wrapper.vm.responsive).toBeDefined();
-                   expect(wrapper.vm.responsive).toEqual(false);
-               });
-           });
+            describe('responsive', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.responsive).toBeDefined();
+                    expect(wrapper.vm.responsive).toEqual(false);
+                });
+            });
         });
 
         describe('created()', () => {

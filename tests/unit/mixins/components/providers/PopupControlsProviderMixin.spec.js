@@ -37,31 +37,31 @@ describe('Mixins', () => {
 
         describe('props', () => {
             describe('trigger', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.trigger).toBeDefined();
-                  expect(wrapper.vm.trigger).toEqual('click');
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.trigger).toBeDefined();
+                    expect(wrapper.vm.trigger).toEqual('click');
+                });
             });
 
             describe('showTimeout', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.showTimeout).toBeDefined();
-                  expect(wrapper.vm.showTimeout).toEqual(250);
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.showTimeout).toBeDefined();
+                    expect(wrapper.vm.showTimeout).toEqual(250);
+                });
             });
 
             describe('hideTimeout', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.hideTimeout).toBeDefined();
-                  expect(wrapper.vm.hideTimeout).toEqual(150);
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.hideTimeout).toBeDefined();
+                    expect(wrapper.vm.hideTimeout).toEqual(150);
+                });
             });
 
             describe('value', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.value).toBeDefined();
-                  expect(wrapper.vm.value).toEqual(false);
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.value).toBeDefined();
+                    expect(wrapper.vm.value).toEqual(false);
+                });
             });
         });
 

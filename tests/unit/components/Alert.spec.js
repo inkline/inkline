@@ -23,21 +23,21 @@ describe('Components', () => {
         });
 
         describe('data', () => {
-           describe('dismissed', () => {
-               it('should be defined', () => {
-                   expect(wrapper.vm.dismissed).toBeDefined();
-                   expect(wrapper.vm.dismissed).toEqual(false);
-               });
-           });
-       });
+            describe('dismissed', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.dismissed).toBeDefined();
+                    expect(wrapper.vm.dismissed).toEqual(false);
+                });
+            });
+        });
 
         describe('props', () => {
-           describe('show', () => {
-               it('should be defined', () => {
-                   expect(wrapper.vm.show).toBeDefined();
-                   expect(wrapper.vm.show).toEqual(true);
-               });
-           });
+            describe('show', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.show).toBeDefined();
+                    expect(wrapper.vm.show).toEqual(true);
+                });
+            });
 
             describe('dismissible', () => {
                 it('should be defined', () => {

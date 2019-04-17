@@ -1,6 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
 import ListGroupItem from '@inkline/inkline/src/components/ListGroupItem';
-import { RouterLink } from "../mocks/RouterLink";
 
 describe('Components', () => {
     describe('NavItem', () => {
