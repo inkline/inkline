@@ -54,59 +54,59 @@ describe('Mixins', () => {
 
         describe('props', () => {
             describe('transformOrigin', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.transformOrigin).toBeDefined();
-                  expect(wrapper.vm.transformOrigin).toEqual(true);
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.transformOrigin).toBeDefined();
+                    expect(wrapper.vm.transformOrigin).toEqual(true);
+                });
             });
 
             describe('placement', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.placement).toBeDefined();
-                  expect(wrapper.vm.placement).toEqual('bottom');
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.placement).toBeDefined();
+                    expect(wrapper.vm.placement).toEqual('bottom');
+                });
             });
 
             describe('offset', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.offset).toBeDefined();
-                  expect(wrapper.vm.offset).toEqual(0);
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.offset).toBeDefined();
+                    expect(wrapper.vm.offset).toEqual(0);
+                });
             });
 
             describe('arrow', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.arrow).toBeDefined();
-                  expect(wrapper.vm.arrow).toEqual(true);
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.arrow).toBeDefined();
+                    expect(wrapper.vm.arrow).toEqual(true);
+                });
             });
 
             describe('arrowOffset', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.arrowOffset).toBeDefined();
-                  expect(wrapper.vm.arrowOffset).toEqual(35);
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.arrowOffset).toBeDefined();
+                    expect(wrapper.vm.arrowOffset).toEqual(35);
+                });
             });
 
             describe('appendToBody', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.appendToBody).toBeDefined();
-                  expect(wrapper.vm.appendToBody).toEqual(false);
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.appendToBody).toBeDefined();
+                    expect(wrapper.vm.appendToBody).toEqual(false);
+                });
             });
 
             describe('appendToBody', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.appendToBody).toBeDefined();
-                  expect(wrapper.vm.appendToBody).toEqual(false);
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.appendToBody).toBeDefined();
+                    expect(wrapper.vm.appendToBody).toEqual(false);
+                });
             });
 
             describe('value', () => {
-               it('should be defined', () => {
-                  expect(wrapper.vm.value).toBeDefined();
-                  expect(wrapper.vm.value).toEqual(false);
-               });
+                it('should be defined', () => {
+                    expect(wrapper.vm.value).toBeDefined();
+                    expect(wrapper.vm.value).toEqual(false);
+                });
             });
         });
 

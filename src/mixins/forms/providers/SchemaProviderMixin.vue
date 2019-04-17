@@ -1,7 +1,10 @@
 <script>
 export default {
     props: {
-        schema: {}
+        schema: {
+            type: null,
+            default: null
+        },
     },
     mounted() {
         if (this.schema && this.parentForm) {

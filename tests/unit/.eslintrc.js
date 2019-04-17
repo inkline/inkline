@@ -1,5 +1,5 @@
 module.exports = {
-  env: {
-    jest: true
-  }
+    env: {
+        jest: true
+    }
 };

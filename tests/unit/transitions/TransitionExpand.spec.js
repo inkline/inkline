@@ -11,19 +11,18 @@ describe('Transitions', () => {
         });
 
         it('should be named correctly', () => {
-           expect(TransitionExpand.name).toEqual('ITransitionExpand')
+            expect(TransitionExpand.name).toEqual('ITransitionExpand')
         });
 
         it('should render correctly', () => {
-           expect(TransitionExpand.name).toEqual('ITransitionExpand')
+            expect(TransitionExpand.name).toEqual('ITransitionExpand')
         });
 
         it('should be functional', () => {
-           expect(wrapper.html()).toMatchSnapshot()
+            expect(wrapper.html()).toMatchSnapshot()
         });
 
         describe('render()', () => {
-            let rendered;
             let renderedData;
             let element;
 
@@ -31,7 +30,7 @@ describe('Transitions', () => {
                 const h = (name, data) => renderedData = data;
                 const context = { children: [] };
 
-                rendered = TransitionExpand.render(h, context);
+                TransitionExpand.render(h, context);
                 element = document.createElement('div');
             });
 
@@ -39,7 +38,7 @@ describe('Transitions', () => {
                 const spyHelper = { h: () => {} };
                 const spy = jest.spyOn(spyHelper, 'h');
 
-                rendered = TransitionExpand.render(spyHelper.h, {});
+                TransitionExpand.render(spyHelper.h, {});
 
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith('transition', expect.any(Object), undefined);
