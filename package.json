@@ -1,15 +1,17 @@
 {
   "name": "@inkline/inkline",
-  "version": "1.12.4",
+  "version": "1.13.0",
   "description": "Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
-    "build": "vue-cli-service build --target lib --name Inkline src/index.js && npm run dist",
-    "test": "vue-cli-service test:unit --coverage --no-cache",
+    "build": "npm run build:inkline && npm run build:validation && npm run dist",
+    "build:inkline": "vue-cli-service build --target lib --name Inkline src/index.js",
+    "build:validation": "vue-cli-service build --no-clean --target lib --name InklineValidation src/validation.js",
     "lint": "vue-cli-service lint",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "dev": "vue-cli-service serve",
     "dist": "bash ./scripts/dist.sh",
+    "test": "vue-cli-service test:unit --coverage --no-cache",
     "test:dev": "vue-cli-service test:unit --watch --coverage --no-cache"
   },
   "main": "dist/inkline.js",
