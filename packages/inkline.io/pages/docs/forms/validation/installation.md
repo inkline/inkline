@@ -1,39 +1,27 @@
 # Form Validation
 Inkline provides you with powerful form validation utilities. { .lead }
 
-### Installation
-First, install Inkline Form Validation using your favorite package manager and get access to the latest source code and compiled JavaScript. 
+The Form Validation package allows you to define a form schema which you will bind to your form components. 
 
-You can install <a href="https://github.com/inkline/validation" target="_blank">Inkline Form Validation</a> using one of the following package managers:
-
-**Install using `npm`:**
-
-~~~css
-npm install --save @inkline/validation
-~~~
-
-**Install using `yarn`:**
-
-~~~css
-yarn add @inkline/validation
-~~~
-
-**Install using `composer`:**
-
-~~~css
-composer require inkline/validation
-~~~
+Behind the scenes, the validation utility will validate values using the set of rules you define, handle the displaying of error messages and provide you with useful `valid`, `invalid`, `touched`, `untouched`, `dirty` and `pristine` statuses.
 
 ### Usage
 
-Next, we import and register the script files. If you already have your Webpack configuration ready for Vue, importing the framework is as simple as:
+The validation package comes alongside Inkline, but it is opt-in by default. To add it, simply import and use the validation script:
 
 ~~~js
 import Vue from 'vue';
-import InklineValidation from '@inkline/validation';
+import InklineValidation from '@inkline/inkline/dist/validation';
 
 Vue.use(InklineValidation);
 ~~~
 
-This will make `Vue.prototype.$form` available, which will be used to create form schemas readable by Inkline's form components.
+This will make `Vue.prototype.$form` available, which will be used to create form schemas readable by Inkline's form components. The form prototype will be accessible as `this.$form` inside components and will be used to create the foundation for form validation schemas.
 
+### CDN
+
+If you're not using using package managers and build systems and you want to add Inkline Validation to your project, you can import the compiled files from CDN:
+
+~~~html
+<script src="https://cdn.jsdelivr.net/npm/@inkline/inkline/dist/validation.js"></script>
+~~~
