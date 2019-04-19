@@ -1,7 +1,4 @@
 import {BrandVariants, MonochromeVariants, StateVariants} from "./constants/variants";
-import { SizePropertyMixin } from "./mixins/components/properties/SizePropertyMixin";
-import { Size } from "./constants/size";
-import { AttributesProviderMixin } from "./mixins/components/providers/AttributesProviderMixin";
 import { ClassesProviderMixin } from "./mixins/components/providers/ClassesProviderMixin";
 import { VariantPropertyMixin } from "./mixins/components/properties/VariantPropertyMixin";
 

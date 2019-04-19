@@ -54,6 +54,7 @@ export { IRadioButtonGroup } from './RadioButtonGroup';
 export { IRow } from './Row';
 export { ISelect } from './Select';
 export { ISelectOption } from './SelectOption';
+export { ITable } from './Table';
 export { ITextarea } from './Textarea';
 export { ITooltip } from './Tooltip';
 
