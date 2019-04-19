@@ -1,4 +1,4 @@
-import { maxLength } from '@inkline/validation/src/validators/maxLength';
+import { maxLength } from '@inkline/inkline/src/validators/maxLength';
 
 describe('Validators', () => {
     describe('maxLength()', () => {

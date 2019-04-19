@@ -1,4 +1,4 @@
-import { $form } from '@inkline/validation/src/prototypes/form';
+import { $form } from '@inkline/inkline/src/prototypes/form';
 
 describe('Prototypes', () => {
     describe('$form()', () => {

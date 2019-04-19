@@ -1,4 +1,4 @@
-import { sameAs } from '@inkline/validation/src/validators/sameAs';
+import { sameAs } from '@inkline/inkline/src/validators/sameAs';
 
 describe('Validators', () => {
     describe('sameAs()', () => {

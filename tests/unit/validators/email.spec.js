@@ -1,4 +1,4 @@
-import { email } from '@inkline/validation/src/validators/email';
+import { email } from '@inkline/inkline/src/validators/email';
 
 describe('Validators', () => {
     describe('email()', () => {
