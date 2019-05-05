@@ -16,6 +16,7 @@ import IDropdownDivider from '@inkline/inkline/src/components/DropdownDivider';
 import IDropdownItem from '@inkline/inkline/src/components/DropdownItem';
 import IDropdownMenu from '@inkline/inkline/src/components/DropdownMenu';
 import IHeader from '@inkline/inkline/src/components/Header';
+import IIcon from '@inkline/inkline/src/components/Icon';
 import ILayout from '@inkline/inkline/src/components/Layout';
 import ILayoutAside from '@inkline/inkline/src/components/LayoutAside';
 import ILayoutContent from '@inkline/inkline/src/components/LayoutContent';
@@ -73,6 +74,7 @@ class Inkline {
         IDropdownItem,
         IDropdownMenu,
         IHeader,
+        IIcon,
         ILayout,
         ILayoutAside,
         ILayoutContent,
@@ -141,6 +143,7 @@ export {
     IDropdownItem,
     IDropdownMenu,
     IHeader,
+    IIcon,
     ILayout,
     ILayoutAside,
     ILayoutContent,
