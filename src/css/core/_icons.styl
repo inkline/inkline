@@ -45,3 +45,7 @@
     &::before
         content: --icon-chevron-down
 
+.inkline-icon
+    for --breakpoint-name in (sm md lg)
+        &.-{--breakpoint-name}
+            font-size: --font-size[--breakpoint-name]
