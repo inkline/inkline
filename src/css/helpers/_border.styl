@@ -4,18 +4,32 @@
 
 
 ._border
-    border: --border-width solid --colors['silver'] !important
+    border-width: --border-width !important
+    border-style: solid !important
+    border-color: --colors['silver']
 
 ._border-0
     border: none !important
 
 for --position in (top right bottom left)
+    ._border-{--position}
+        border-{--position}-width: --border-width !important
+        border-{--position}-style: solid !important
+        border-{--position}-color: --colors['silver']
+
     ._border-{--position}-0
         border-{--position}: none !important
 
+/**
+ * Border colors
+ */
 for --variant-name, --variant in --variants['border']
-    ._border-{--variant-name}
+    ._border-color-{--variant-name}
         border-color: --variant['color'] !important;
+
+    for --position in (top right bottom left)
+        ._border-{--position}-color-{--variant-name}
+            border-{--position}-color: --variant['color'] !important;
 
 
 /**
@@ -40,6 +54,18 @@ for --variant-name, --variant in --variants['border']
 ._rounded-left
     border-top-left-radius: --border-radius['md'] !important;
     border-bottom-left-radius: --border-radius['md'] !important;
+
+._rounded-top-left
+    border-top-left-radius: --border-radius['md'] !important;
+
+._rounded-top-right
+    border-top-right-radius: --border-radius['md'] !important;
+
+._rounded-bottom-left
+    border-bottom-left-radius: --border-radius['md'] !important;
+
+._rounded-bottom-right
+    border-bottom-right-radius: --border-radius['md'] !important;
 
 ._rounded-circle
     border-radius: 50% !important;
