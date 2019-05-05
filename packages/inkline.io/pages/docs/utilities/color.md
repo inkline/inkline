@@ -1,4 +1,4 @@
-# Colors
+# Color Utilities
 Inkline uses a beautiful, consistent color scheme across the framework. { .lead }
 
 ### Brand
@@ -233,6 +233,9 @@ Neutral colors are used for text, background and border colors. You can use diff
     <i-column xs="12" sm="6" md="3">
         <color-box type="black" title="Black" description="#000000"></color-box>
     </i-column>
+    <i-column xs="12" sm="6" md="3">
+        <color-box class="_text-gray-80" type="transparent" title="Transparent" description="transparent"></color-box>
+    </i-column>
 </i-row>
 
 <template slot="html">
@@ -249,6 +252,7 @@ Neutral colors are used for text, background and border colors. You can use diff
 <div class="_background-gray-80"></div>
 <div class="_background-gray-90"></div>
 <div class="_background-black"></div>
+<div class="_background-transparent"></div>
 ~~~
 
 </template>
@@ -256,7 +260,7 @@ Neutral colors are used for text, background and border colors. You can use diff
 
 You can also add neutral text colors using text-specific helper classes:
 
-<i-code-preview title="Neutral Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
+<i-code-preview title="Neutral Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/helpers" class="_padding-bottom-0">
 
 <ul class="-inline">
     <li class="_text-white _background-black">White</li>
@@ -296,7 +300,7 @@ Inkline provides social media colors from most of your favorite sites.
 
 You can use helper classes to add social media color backgrounds:
 
-<i-code-preview title="Social Media Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
+<i-code-preview title="Social Media Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/helpers" class="_padding-bottom-0">
 
 <i-row>
     <i-column xs="12" sm="6" md="3">
@@ -370,7 +374,7 @@ You can use helper classes to add social media color backgrounds:
 
 You can also add social media text colors using text-specific helper classes:
 
-<i-code-preview title="Social Media Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
+<i-code-preview title="Social Media Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/helpers" class="_padding-bottom-0">
 
 <ul class="-inline">
     <li class="_text-facebook">Facebook</li>
