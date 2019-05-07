@@ -34,16 +34,8 @@ Flexbox utilities can be applied responsively using the following helper classes
 
 - `._display-flex`
 - `._display-inline-flex`
-- `._display-xs-flex`
-- `._display-xs-inline-flex`
-- `._display-sm-flex`
-- `._display-sm-inline-flex`
-- `._display-md-flex`
-- `._display-md-inline-flex`
-- `._display-lg-flex`
-- `._display-lg-inline-flex`
-- `._display-xl-flex`
-- `._display-xl-inline-flex`
+- `._display-{xs|sm|md|lg|xl}-flex`
+- `._display-{xs|sm|md|lg|xl}-inline-flex`
 
 ### Flex Direction
 Set the direction of flex items in a flex container with direction utilities. The browser default is `flex-direction: row`, therefore the row helper won't be always necessary. However, when targeting various screen sizes, you may encounter situations where you needed to explicitly set this value.
@@ -123,26 +115,10 @@ Flexbox direction utilities can be applied responsively using the following help
 - `._flex-direction-row-reverse`
 - `._flex-direction-column`
 - `._flex-direction-column-reverse`
-- `._flex-direction-xs-row`
-- `._flex-direction-xs-row-reverse`
-- `._flex-direction-xs-column`
-- `._flex-direction-xs-column-reverse`
-- `._flex-direction-sm-row`
-- `._flex-direction-sm-row-reverse`
-- `._flex-direction-sm-column`
-- `._flex-direction-sm-column-reverse`
-- `._flex-direction-md-row`
-- `._flex-direction-md-row-reverse`
-- `._flex-direction-md-column`
-- `._flex-direction-md-column-reverse`
-- `._flex-direction-lg-row`
-- `._flex-direction-lg-row-reverse`
-- `._flex-direction-lg-column`
-- `._flex-direction-lg-column-reverse`
-- `._flex-direction-xl-row`
-- `._flex-direction-xl-row-reverse`
-- `._flex-direction-xl-column`
-- `._flex-direction-xl-column-reverse`
+- `._flex-direction-{xs|sm|md|lg|xl}-row`
+- `._flex-direction-{xs|sm|md|lg|xl}-row-reverse`
+- `._flex-direction-{xs|sm|md|lg|xl}-column`
+- `._flex-direction-{xs|sm|md|lg|xl}-column-reverse`
 
 
 ### Justify Content
@@ -229,31 +205,11 @@ Flexbox justify content utilities can be applied responsively using the followin
 - `._justify-content-center`
 - `._justify-content-space-between`
 - `._justify-content-space-around`
-- `._justify-content-xs-start`
-- `._justify-content-xs-end`
-- `._justify-content-xs-center`
-- `._justify-content-xs-space-between`
-- `._justify-content-xs-space-around`
-- `._justify-content-sm-start`
-- `._justify-content-sm-end`
-- `._justify-content-sm-center`
-- `._justify-content-sm-space-between`
-- `._justify-content-sm-space-around`
-- `._justify-content-md-start`
-- `._justify-content-md-end`
-- `._justify-content-md-center`
-- `._justify-content-md-space-between`
-- `._justify-content-md-space-around`
-- `._justify-content-lg-start`
-- `._justify-content-lg-end`
-- `._justify-content-lg-center`
-- `._justify-content-lg-space-between`
-- `._justify-content-lg-space-around`
-- `._justify-content-xl-start`
-- `._justify-content-xl-end`
-- `._justify-content-xl-center`
-- `._justify-content-xl-space-between`
-- `._justify-content-xl-space-around`
+- `._justify-content-{xs|sm|md|lg|xl}-start`
+- `._justify-content-{xs|sm|md|lg|xl}-end`
+- `._justify-content-{xs|sm|md|lg|xl}-center`
+- `._justify-content-{xs|sm|md|lg|xl}-space-between`
+- `._justify-content-{xs|sm|md|lg|xl}-space-around`
 
 ### Align Items
 Use `align-items` utilities on flexbox containers to change the alignment of flex items on the secondary axis (the y-axis if `flex-direction: row`, x-axis if `flex-direction: column`).
@@ -339,31 +295,11 @@ Flexbox align items utilities can be applied responsively using the following he
 - `._align-items-center`
 - `._align-items-baseline`
 - `._align-items-stretch`
-- `._align-items-xs-start`
-- `._align-items-xs-end`
-- `._align-items-xs-center`
-- `._align-items-xs-baseline`
-- `._align-items-xs-stretch`
-- `._align-items-sm-start`
-- `._align-items-sm-end`
-- `._align-items-sm-center`
-- `._align-items-sm-baseline`
-- `._align-items-sm-stretch`
-- `._align-items-md-start`
-- `._align-items-md-end`
-- `._align-items-md-center`
-- `._align-items-md-baseline`
-- `._align-items-md-stretch`
-- `._align-items-lg-start`
-- `._align-items-lg-end`
-- `._align-items-lg-center`
-- `._align-items-lg-baseline`
-- `._align-items-lg-stretch`
-- `._align-items-xl-start`
-- `._align-items-xl-end`
-- `._align-items-xl-center`
-- `._align-items-xl-baseline`
-- `._align-items-xl-stretch`
+- `._align-items-{xs|sm|md|lg|xl}-start`
+- `._align-items-{xs|sm|md|lg|xl}-end`
+- `._align-items-{xs|sm|md|lg|xl}-center`
+- `._align-items-{xs|sm|md|lg|xl}-baseline`
+- `._align-items-{xs|sm|md|lg|xl}-stretch`
 
 ### Align Self
 Use `align-self` utilities on a flexbox item to change the alignment of the item on the secondary axis (the y-axis if `flex-direction: row`, x-axis if `flex-direction: column`).
@@ -442,35 +378,178 @@ Use `align-self` utilities on a flexbox item to change the alignment of the item
 </template>
 </i-code-preview>
 
-Flexbox align items utilities can be applied responsively using the following helper classes:
+Flexbox align self utilities can be applied responsively using the following helper classes:
 
 - `._align-self-start`
 - `._align-self-end`
 - `._align-self-center`
 - `._align-self-baseline`
 - `._align-self-stretch`
-- `._align-self-xs-start`
-- `._align-self-xs-end`
-- `._align-self-xs-center`
-- `._align-self-xs-baseline`
-- `._align-self-xs-stretch`
-- `._align-self-sm-start`
-- `._align-self-sm-end`
-- `._align-self-sm-center`
-- `._align-self-sm-baseline`
-- `._align-self-sm-stretch`
-- `._align-self-md-start`
-- `._align-self-md-end`
-- `._align-self-md-center`
-- `._align-self-md-baseline`
-- `._align-self-md-stretch`
-- `._align-self-lg-start`
-- `._align-self-lg-end`
-- `._align-self-lg-center`
-- `._align-self-lg-baseline`
-- `._align-self-lg-stretch`
-- `._align-self-xl-start`
-- `._align-self-xl-end`
-- `._align-self-xl-center`
-- `._align-self-xl-baseline`
-- `._align-self-xl-stretch`
+- `._align-self-{xs|sm|md|lg|xl}-start`
+- `._align-self-{xs|sm|md|lg|xl}-end`
+- `._align-self-{xs|sm|md|lg|xl}-center`
+- `._align-self-{xs|sm|md|lg|xl}-baseline`
+- `._align-self-{xs|sm|md|lg|xl}-stretch`
+
+### Fill
+Use `._flex-fill` utilities on a on a series of flexbox items to force them into widths equal to their content.
+
+<i-code-preview title="Flexbox Fill Utility" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+
+<div class="flexbox-preview _display-flex">
+    <div class="flexbox-preview _flex-fill">Flex Item with a lot of content</div>
+    <div class="flexbox-preview _flex-fill">Flex Item</div>
+    <div class="flexbox-preview _flex-fill">Flex Item</div>
+</div>
+
+<template slot="html">
+
+~~~html
+<div class="_display-flex">
+    <div class="_flex-fill">Flex Item with a lot of content</div>
+    <div class="_flex-fill">Flex Item</div>
+    <div class="_flex-fill">Flex Item</div>
+</div>
+~~~
+
+</template>
+</i-code-preview>
+
+Flexbox fill utilities can be applied responsively using the following helper classes:
+
+- `._flex-fill`
+- `._flex-{xs|sm|md|lg|xl}-fill`
+
+### Grow and shrink
+Use `._flex-grow-1` and `_flex-grow-0` utilities to toggle a flex item’s ability to grow to fill available space. In the example below. A value of `1` uses all available space it can, while allowing the remaining two flex items their necessary space.
+
+<i-code-preview title="Flexbox Grow Utility" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+
+<div class="flexbox-preview _display-flex">
+    <div class="flexbox-preview _flex-grow-1">Flex Grow 1 Item</div>
+    <div class="flexbox-preview">Flex Item</div>
+    <div class="flexbox-preview">Flex Item</div>
+</div>
+
+<template slot="html">
+
+~~~html
+<div class="_display-flex">
+    <div class="_flex-grow-1">Flex Grow 1 Item</div>
+    <div>Flex Item</div>
+    <div>Flex Item</div>
+</div>
+~~~
+
+</template>
+</i-code-preview>
+
+Use the `._flex-shrink-1` and `._flex-shrink-0` utilities to toggle a flex item’s ability to shrink if necessary. This can be used together with a `width: 100%` div to make some flex items cover as little space as possible.
+
+<i-code-preview title="Flexbox Shrink Utility" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+
+<div class="flexbox-preview _display-flex">
+    <div class="flexbox-preview _width-100">Flex Item</div>
+    <div class="flexbox-preview _flex-shrink-1">Flex Shrink</div>
+</div>
+
+<template slot="html">
+
+~~~html
+<div class="_display-flex">
+    <div class="_width-100">Flex Item</div>
+    <div class="_flex-shrink-1">Flex Shrink</div>
+</div>
+~~~
+
+</template>
+</i-code-preview>
+
+Flexbox shrink and grow utilities can be applied responsively using the following helper classes:
+
+- `._flex-grow-0`
+- `._flex-grow-1`
+- `._flex-shrink-0`
+- `._flex-shrink-1`
+- `._flex-{xs|sm|md|lg|xl}-grow-0`
+- `._flex-{xs|sm|md|lg|xl}-grow-1`
+- `._flex-{xs|sm|md|lg|xl}-shrink-0`
+- `._flex-{xs|sm|md|lg|xl}-shrink-1`
+
+
+### Auto Margins
+When you mix flex alignments with auto margins you can obtain some pretty unique and useful layouts.
+
+<i-code-preview title="Flexbox Auto Margins Utility" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+
+<div class="flexbox-preview _display-flex _margin-bottom-1">
+    <div class="flexbox-preview">Flex Item</div>
+    <div class="flexbox-preview">Flex Item</div>
+    <div class="flexbox-preview">Flex Item</div>
+</div>
+
+<div class="flexbox-preview _display-flex _margin-bottom-1">
+    <div class="flexbox-preview _margin-right-auto">Flex Item</div>
+    <div class="flexbox-preview">Flex Item</div>
+    <div class="flexbox-preview">Flex Item</div>
+</div>
+
+<div class="flexbox-preview _display-flex _margin-bottom-1">
+    <div class="flexbox-preview">Flex Item</div>
+    <div class="flexbox-preview">Flex Item</div>
+    <div class="flexbox-preview _margin-left-auto">Flex Item</div>
+</div>
+
+<div class="flexbox-preview -tall-2 _display-flex _flex-direction-column _margin-bottom-1">
+    <div class="flexbox-preview _margin-bottom-auto">Flex Item</div>
+    <div class="flexbox-preview">Flex Item</div>
+    <div class="flexbox-preview">Flex Item</div>
+</div>
+
+
+<div class="flexbox-preview -tall-2 _display-flex _flex-direction-column">
+    <div class="flexbox-preview">Flex Item</div>
+    <div class="flexbox-preview">Flex Item</div>
+    <div class="flexbox-preview _margin-top-auto">Flex Item</div>
+</div>
+
+<template slot="html">
+
+~~~html
+<div class="_display-flex">
+    <div>Flex Item</div>
+    <div>Flex Item</div>
+    <div>Flex Item</div>
+</div>
+~~~
+~~~html
+<div class="_display-flex">
+    <div class="_margin-right-auto">Flex Item</div>
+    <div>Flex Item</div>
+    <div>Flex Item</div>
+</div>
+~~~
+~~~html
+<div class="_display-flex">
+    <div>Flex Item</div>
+    <div>Flex Item</div>
+    <div class="_margin-left-auto">Flex Item</div>
+</div>
+~~~
+~~~html
+<div class="_display-flex _flex-direction-column">
+    <div class="_margin-bottom-auto">Flex Item</div>
+    <div>Flex Item</div>
+    <div>Flex Item</div>
+</div>
+~~~
+~~~html
+<div class="_display-flex _flex-direction-column">
+    <div>Flex Item</div>
+    <div>Flex Item</div>
+    <div class="_margin-top-auto">Flex Item</div>
+</div>
+~~~
+
+</template>
+</i-code-preview>

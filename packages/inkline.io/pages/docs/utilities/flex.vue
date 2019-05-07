@@ -11,6 +11,9 @@
     &.-tall
         height: 100px
 
+    &.-tall-2
+        height: 200px
+
     > .flexbox-preview
         background: --colors['gray-40']
         border: 1px solid --colors['gray-50']
