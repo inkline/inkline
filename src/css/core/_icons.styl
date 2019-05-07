@@ -8,44 +8,31 @@
 .inkline-icon
     -icon()
 
-.inkline-icon.-circle
-    &::before
+    &.-circle::before
         content: --icon-circle
-.inkline-icon.-home
-    &::before
+    &.-home::before
         content: --icon-home
-.inkline-icon.-calendar
-    &::before
+    &.-calendar::before
         content: --icon-calendar
-.inkline-icon.-warning
-    &::before
+    &.-warning::before
         content: --icon-warning
-.inkline-icon.-danger
-    &::before
+    &.-danger::before
         content: --icon-danger
-.inkline-icon.-plus
-    &::before
+    &.-plus::before
         content: --icon-plus
-.inkline-icon.-minus
-    &::before
+    &.-minus::before
         content: --icon-minus
-.inkline-icon.-info
-    &::before
+    &.-info::before
         content: --icon-info
-.inkline-icon.-times
-    &::before
+    &.-times::before
         content: --icon-times
-.inkline-icon.-check
-    &::before
+    &.-check::before
         content: --icon-check
-.inkline-icon.-caret-down
-    &::before
+    &.-caret-down::before
         content: --icon-caret-down
-.inkline-icon.-chevron-down
-    &::before
+    &.-chevron-down::before
         content: --icon-chevron-down
 
-.inkline-icon
     for --breakpoint-name in (sm md lg)
         &.-{--breakpoint-name}
             font-size: --font-size[--breakpoint-name]
