@@ -405,37 +405,37 @@ Use `align-self` utilities on a flexbox item to change the alignment of the item
 
 ~~~html
 <div class="_display-flex">
-    <div>Flex Item 1</div>
-    <div class="_align-items-start">Flex Item 2</div>
-    <div>Flex Item 3</div>
+    <div>Flex Item</div>
+    <div class="_align-self-start">Aligned Flex Item</div>
+    <div>Flex Item</div>
 </div>
 ~~~
 ~~~html
 <div class="_display-flex">
-    <div>Flex Item 1</div>
-    <div class="_align-items-center">Flex Item 2</div>
-    <div>Flex Item 3</div>
+    <div>Flex Item</div>
+    <div class="_align-self-center">Aligned Flex Item</div>
+    <div>Flex Item</div>
 </div>
 ~~~
 ~~~html
 <div class="_display-flex">
-    <div>Flex Item 1</div>
-    <div class="_align-items-end">Flex Item 2</div>
-    <div>Flex Item 3</div>
+    <div>Flex Item</div>
+    <div class="_align-self-end">Aligned Flex Item</div>
+    <div>Flex Item</div>
 </div>
 ~~~
 ~~~html
 <div class="_display-flex">
-    <div>Flex Item 1</div>
-    <div class="_align-items-baseline">Flex Item 2</div>
-    <div>Flex Item 3</div>
+    <div>Flex Item</div>
+    <div class="_align-self-baseline">Aligned Flex Item</div>
+    <div>Flex Item</div>
 </div>
 ~~~
 ~~~html
 <div class="_display-flex">
-    <div>Flex Item 1</div>
-    <div class="_align-items-stretch">Flex Item 2</div>
-    <div>Flex Item 3</div>
+    <div>Flex Item</div>
+    <div class="_align-self-stretch">Aligned Flex Item</div>
+    <div>Flex Item</div>
 </div>
 ~~~
 
@@ -444,33 +444,33 @@ Use `align-self` utilities on a flexbox item to change the alignment of the item
 
 Flexbox align items utilities can be applied responsively using the following helper classes:
 
-- `._align-items-start`
-- `._align-items-end`
-- `._align-items-center`
-- `._align-items-baseline`
-- `._align-items-stretch`
-- `._align-items-xs-start`
-- `._align-items-xs-end`
-- `._align-items-xs-center`
-- `._align-items-xs-baseline`
-- `._align-items-xs-stretch`
-- `._align-items-sm-start`
-- `._align-items-sm-end`
-- `._align-items-sm-center`
-- `._align-items-sm-baseline`
-- `._align-items-sm-stretch`
-- `._align-items-md-start`
-- `._align-items-md-end`
-- `._align-items-md-center`
-- `._align-items-md-baseline`
-- `._align-items-md-stretch`
-- `._align-items-lg-start`
-- `._align-items-lg-end`
-- `._align-items-lg-center`
-- `._align-items-lg-baseline`
-- `._align-items-lg-stretch`
-- `._align-items-xl-start`
-- `._align-items-xl-end`
-- `._align-items-xl-center`
-- `._align-items-xl-baseline`
-- `._align-items-xl-stretch`
+- `._align-self-start`
+- `._align-self-end`
+- `._align-self-center`
+- `._align-self-baseline`
+- `._align-self-stretch`
+- `._align-self-xs-start`
+- `._align-self-xs-end`
+- `._align-self-xs-center`
+- `._align-self-xs-baseline`
+- `._align-self-xs-stretch`
+- `._align-self-sm-start`
+- `._align-self-sm-end`
+- `._align-self-sm-center`
+- `._align-self-sm-baseline`
+- `._align-self-sm-stretch`
+- `._align-self-md-start`
+- `._align-self-md-end`
+- `._align-self-md-center`
+- `._align-self-md-baseline`
+- `._align-self-md-stretch`
+- `._align-self-lg-start`
+- `._align-self-lg-end`
+- `._align-self-lg-center`
+- `._align-self-lg-baseline`
+- `._align-self-lg-stretch`
+- `._align-self-xl-start`
+- `._align-self-xl-end`
+- `._align-self-xl-center`
+- `._align-self-xl-baseline`
+- `._align-self-xl-stretch`
