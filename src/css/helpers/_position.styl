@@ -22,3 +22,9 @@ for --position in (static relative absolute fixed sticky)
   bottom: 0
   left: 0
   z-index: --z-index['fixed']
+
+._sticky-top
+    @supports (position: sticky)
+        position: sticky
+        top: 0
+        z-index: --z-index['sticky']
