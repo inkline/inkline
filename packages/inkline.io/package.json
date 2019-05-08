@@ -1,6 +1,6 @@
 {
   "name": "inkline.io",
-  "version": "1.12.4",
+  "version": "1.14.0",
   "description": "Inkline's documentation and homepage is built with Nuxt and publicly hosted on Netlify. Inkline is a modern Vue.js UI/UX framework, written and maintained by @alexgrozav.",
   "author": "Alex Grozav",
   "private": true,
