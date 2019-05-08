@@ -116,3 +116,13 @@ for --breakpoint-name, --breakpoint-value in --breakpoints
 
         ._align-self{--infix}-stretch
             align-self: stretch !important
+
+        for --column-count in 1..--columns
+            ._order{--infix}-{--column-count}
+                order: --column-count
+
+        ._order{--infix}-first
+            order: 1
+
+        ._order{--infix}-last
+            order: -1
