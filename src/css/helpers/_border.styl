@@ -6,7 +6,7 @@
 ._border
     border-width: --border-width !important
     border-style: solid !important
-    border-color: --colors['silver']
+    border-color: --border-color
 
 ._border-0
     border: none !important
@@ -15,9 +15,10 @@ for --position in (top right bottom left)
     ._border-{--position}
         border-{--position}-width: --border-width !important
         border-{--position}-style: solid !important
-        border-{--position}-color: --colors['silver']
+        border-{--position}-color: --border-color
 
-    ._border-{--position}-0
+for --position in (top right bottom left)
+    ._border-{--position}-{0}
         border-{--position}: none !important
 
 /**
