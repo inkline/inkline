@@ -4,11 +4,11 @@ import View from '@components/View';
 import {title} from '@helpers/title';
 
 export default {
-    name: 'PositionUtilitiesView',
+    name: 'SizingUtilitiesView',
     layout: 'documentation',
     extends: View,
     head: {
-        title: title('Position - Utilities')
+        title: title('Sizing - Utilities')
     }
 };
 </script>

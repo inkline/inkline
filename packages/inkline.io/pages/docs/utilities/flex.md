@@ -795,7 +795,7 @@ Flexbox shrink and grow utilities can be applied responsively using the followin
 - `._align-content-space-between`
 - `._align-content-space-around`
 - `._align-content-space-stretch`
-- `._align-content-{xs|sm|md|lg|xl}start`
+- `._align-content-{xs|sm|md|lg|xl}-start`
 - `._align-content-{xs|sm|md|lg|xl}-center`
 - `._align-content-{xs|sm|md|lg|xl}-end`
 - `._align-content-{xs|sm|md|lg|xl}-space-between`
