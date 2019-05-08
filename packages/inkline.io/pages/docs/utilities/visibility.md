@@ -1,4 +1,4 @@
-# Flex Utilities
+# Float Utilities
 Use flexbox utilities to modify the layout, alignment, and sizing of components and more. { .lead }
 
 ### Flex Behavior
