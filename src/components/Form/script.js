@@ -32,7 +32,7 @@ export default {
         },
         schema: {
             type: Object,
-            default: () => ({})
+            default: () => null
         }
     },
     data() {
