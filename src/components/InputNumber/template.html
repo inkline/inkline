@@ -1,7 +1,7 @@
 <div class="form-input-group" :class="classes['root']">
     <div class="form-input-prepend">
         <slot name="prepend"></slot>
-        <i-button :disabled="disabled" class="form-input-button-decrease" @click="decrease">-</i-button>
+        <i-button type="button" :disabled="disabled" class="form-input-button-decrease" @click="decrease">-</i-button>
     </div>
 
     <div class="form-input"
@@ -37,7 +37,7 @@
     </div>
 
     <div class="form-input-append">
-        <i-button :disabled="disabled" class="form-input-button-increase" @click="increase">+</i-button>
+        <i-button type="button" :disabled="disabled" class="form-input-button-increase" @click="increase">+</i-button>
         <slot name="append"></slot>
     </div>
 </div>
