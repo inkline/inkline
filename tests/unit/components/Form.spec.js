@@ -29,7 +29,7 @@ describe('Components', () => {
             describe('schema', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.schema).toBeDefined();
-                    expect(wrapper.vm.schema).toEqual({});
+                    expect(wrapper.vm.schema).toEqual(null);
                 });
             });
         });
