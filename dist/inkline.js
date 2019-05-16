@@ -12313,13 +12313,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     model: function model(value) {
+      this.setLabelModel(value);
+    }
+  },
+  methods: {
+    setLabelModel: function setLabelModel(value) {
       var option = this.options.find(function (o) {
         return o.value === value;
       });
       this.labelModel = option.label || option.value;
-    }
-  },
-  methods: {
+    },
     focusInputRef: function focusInputRef() {
       this.isMobile ? this.$refs.select.focus() : this.$refs.input.focusInputRef();
     },
@@ -12351,6 +12354,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.initElements();
     this.$on('init', this.initElements);
+
+    if (this.value) {
+      this.setLabelModel(this.value);
+    }
   }
 });
 
