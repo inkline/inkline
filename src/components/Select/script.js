@@ -74,12 +74,15 @@ export default {
     },
     watch: {
         model(value) {
-            const option = this.options.find((o) => o.value === value);
-
-            this.labelModel = option.label || option.value;
+            this.setLabelModel(value);
         }
     },
     methods: {
+        setLabelModel(value) {
+            const option = this.options.find((o) => o.value === value);
+
+            this.labelModel = option.label || option.value;
+        },
         focusInputRef() {
             this.isMobile ? this.$refs.select.focus() : this.$refs.input.focusInputRef();
         },
@@ -108,5 +111,9 @@ export default {
     mounted() {
         this.initElements();
         this.$on('init', this.initElements);
+
+        if (this.value) {
+            this.setLabelModel(this.value);
+        }
     }
 };

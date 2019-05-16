@@ -72,6 +72,36 @@ describe('Components', () => {
         });
 
         describe('methods', () => {
+            describe('setLabelModel()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.setLabelModel).toBeDefined();
+                });
+
+                it('should set label model to option value', () => {
+                    wrapper.setData({
+                        options: [
+                            { value: 'label' }
+                        ]
+                    });
+
+                    expect(wrapper.vm.labelModel).toEqual('');
+                    wrapper.vm.setLabelModel('label');
+                    expect(wrapper.vm.labelModel).toEqual('label');
+                });
+
+                it('should set label model to option label if available', () => {
+                    wrapper.setData({
+                        options: [
+                            { value: 'value', label: 'label' }
+                        ]
+                    });
+
+                    expect(wrapper.vm.labelModel).toEqual('');
+                    wrapper.vm.setLabelModel('value');
+                    expect(wrapper.vm.labelModel).toEqual('label');
+                });
+            });
+
             describe('focusInputRef()', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.focusInputRef).toBeDefined();
@@ -178,7 +208,9 @@ describe('Components', () => {
 
         describe('watch', () => {
             describe('model()', () => {
-                it('should set label model to option value', () => {
+                it('should call setLabelModel with changed value', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'setLabelModel');
+
                     wrapper.setData({
                         options: [
                             { value: 'label' }
@@ -187,21 +219,10 @@ describe('Components', () => {
 
                     expect(wrapper.vm.labelModel).toEqual('');
                     wrapper.setProps({ value: 'label' });
-
                     expect(wrapper.vm.labelModel).toEqual('label');
-                });
 
-                it('should set label model to option label if available', () => {
-                    wrapper.setData({
-                        options: [
-                            { value: 'value', label: 'label' }
-                        ]
-                    });
-
-                    expect(wrapper.vm.labelModel).toEqual('');
-                    wrapper.setProps({ value: 'value' });
-
-                    expect(wrapper.vm.labelModel).toEqual('label');
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('label');
                 });
             });
         });
