@@ -7,13 +7,14 @@ module.exports = (api, options, rootOptions) => {
 
 	// Add imports
 	api.injectImports(api.entryFile, options.stylus ?
-		`import '@inkline/inkline/dist/inkline.css'` :
-		`import '@inkline/inkline/src/index.styl'`);
-	api.injectImports(api.entryFile, `import Inkline from '@inkline/inkline'`);
+		`import '@inkline/inkline/src/index.styl'` :
+		`import '@inkline/inkline/dist/inkline.css'`);
+	api.injectImports(api.entryFile, options.treeShaking ?
+		`import Inkline from '@inkline/inkline/src/index'`:
+		`import Inkline from '@inkline/inkline'`);
 
 	api.onCreateComplete(() => {
-		const fs   = require('fs');
-		const isTs = api.hasPlugin('typescript') ? 'ts' : 'js';
+		const fs = require('fs');
 
 		// Read and get content
 		let content = fs.readFileSync(api.entryFile, { encoding: 'utf-8' });
