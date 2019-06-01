@@ -1,6 +1,6 @@
 {
 	"name": "vue-cli-plugin-inkline",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Inkline UI/UX Framework Plugin for Vue CLI",
 	"main": "index.js",
 	"author": "Manuel Tancoigne <m.tancoigne@gmail.com>",
