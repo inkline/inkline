@@ -1,9 +1,22 @@
-# Vue-cli-plugin-inkline
+# vue-cli-plugin-inkline
 
-> Adds [Inkline](https://github.com/inkline/inkline) to your [VueJS](http://vuejs.org/) project.
+[Inkline](https://github.com/inkline/inkline) UI/UX Framework Plugin for [Vue CLI 3.0](https://github.com/vuejs/vue-cli)
 
-## Usage
+## Install
 
-```sh
-vue add inkline/vue-cli-plugin-inkline
+If you haven't yet installed vue-cli 3, first follow the install instructions [here](https://github.com/vuejs/vue-cli).
+
+**Tip**: If you don't want to overwrite your current vue-cli because you still need `vue init`, [then try this](https://cli.vuejs.org/guide/creating-a-project.html#pulling-2-x-templates-legacy).
+
+Generate a project using Vue CLI 3.0
+```
+vue create my-app
+cd my-app
+```
+
+Before installing the Inkline plugin, make sure to commit or stash your changes in case you need to revert.
+
+Add Inkline:
+```
+vue add inkline
 ```
