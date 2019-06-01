@@ -1,19 +1,26 @@
 {
-  "name": "vue-cli-plugin-inkline",
-  "version": "0.0.1",
-  "description": "Vue-cli plugin to integrate Inkline in your project",
-  "main": "index.js",
-  "author": "Manuel Tancoigne <m.tancoigne@gmail.com>",
-	"homepage": "https://inkline.io",
+	"name": "vue-cli-plugin-inkline",
+	"version": "0.0.1",
+	"description": "Inkline UI/UX Framework Plugin for Vue CLI",
+	"main": "index.js",
+	"author": "Manuel Tancoigne <m.tancoigne@gmail.com>",
+	"homepage": "https://github.com/inkline/vue-cli-plugin-inkline#readme",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/inkline/vue-cli-plugin-inkline.git"
 	},
-  "license": "MIT",
-  "private": false,
+	"license": "MIT",
+	"private": false,
+	"bugs": {
+		"url": "https://github.com/inkline/vue-cli-plugin-inkline/issues"
+	},
 	"keywords": [
+		"inkline",
+		"inkline plugin",
 		"vue",
 		"vue-cli",
-		"inkline"
+		"vue-cli inkline",
+		"vue-cli-3",
+		"vue-cli-3 inkline"
 	]
 }
