@@ -56,71 +56,71 @@ import ISelect from '@inkline/inkline/src/components/Select';
 import ISelectOption from '@inkline/inkline/src/components/SelectOption';
 import ITextarea from '@inkline/inkline/src/components/Textarea';
 
-class Inkline {
-    static components = [
-        IAlert,
-        IBadge,
-        IBreadcrumb,
-        IBreadcrumbItem,
-        IButton,
-        IButtonGroup,
-        ICard,
-        ICollapsible,
-        ICollapsibleItem,
-        IColumn,
-        IContainer,
-        IDropdown,
-        IDropdownDivider,
-        IDropdownItem,
-        IDropdownMenu,
-        IHeader,
-        IIcon,
-        ILayout,
-        ILayoutAside,
-        ILayoutContent,
-        ILayoutFooter,
-        ILayoutHeader,
-        IListGroup,
-        IListGroupItem,
-        IMedia,
-        IModal,
-        INav,
-        INavItem,
-        INavbar,
-        INavbarBrand,
-        INavbarItems,
-        IRow,
-        IPagination,
-        IPopover,
-        IProgress,
-        IProgressBar,
-        ITable,
-        ITooltip,
+const components = [
+    IAlert,
+    IBadge,
+    IBreadcrumb,
+    IBreadcrumbItem,
+    IButton,
+    IButtonGroup,
+    ICard,
+    ICollapsible,
+    ICollapsibleItem,
+    IColumn,
+    IContainer,
+    IDropdown,
+    IDropdownDivider,
+    IDropdownItem,
+    IDropdownMenu,
+    IHeader,
+    IIcon,
+    ILayout,
+    ILayoutAside,
+    ILayoutContent,
+    ILayoutFooter,
+    ILayoutHeader,
+    IListGroup,
+    IListGroupItem,
+    IMedia,
+    IModal,
+    INav,
+    INavItem,
+    INavbar,
+    INavbarBrand,
+    INavbarItems,
+    IRow,
+    IPagination,
+    IPopover,
+    IProgress,
+    IProgressBar,
+    ITable,
+    ITooltip,
 
-        ICheckbox,
-        ICheckboxButton,
-        ICheckboxGroup,
-        ICheckboxButtonGroup,
-        IInput,
-        IForm,
-        IFormGroup,
-        IFormLabel,
-        IInputNumber,
-        IRadio,
-        IRadioButton,
-        IRadioGroup,
-        IRadioButtonGroup,
-        ISelect,
-        ISelectOption,
-        ITextarea
-    ];
+    ICheckbox,
+    ICheckboxButton,
+    ICheckboxGroup,
+    ICheckboxButtonGroup,
+    IInput,
+    IForm,
+    IFormGroup,
+    IFormLabel,
+    IInputNumber,
+    IRadio,
+    IRadioButton,
+    IRadioGroup,
+    IRadioButtonGroup,
+    ISelect,
+    ISelectOption,
+    ITextarea
+];
 
-    static install (Vue) {
-        this.components.map(component => {
+const Inkline = {
+    install(Vue, options = {}) {
+        (options.components || components).map(component => {
             Vue.component(component.name, component);
         });
     }
-}
+};
 
 if (typeof window !== 'undefined' && window.Vue) {
     window.Vue.use(Inkline);
