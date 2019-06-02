@@ -1,6 +1,6 @@
 {
   "name": "@inkline/inkline",
-  "version": "1.14.5",
+  "version": "1.14.6",
   "description": "Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
@@ -69,5 +69,16 @@
     "type": "git",
     "url": "git+https://github.com/inkline/inkline.git"
   },
-  "types": "types/index.d.ts"
+  "types": "types/index.d.ts",
+  "keywords": [
+    "inkline",
+    "vue",
+    "stylus",
+    "responsive",
+    "front-end",
+    "components",
+    "framework",
+    "ui",
+    "ux"
+  ]
 }
