@@ -4,6 +4,9 @@
 	"description": "Inkline UI/UX Framework Plugin for Vue CLI",
 	"main": "index.js",
 	"author": "Manuel Tancoigne <m.tancoigne@gmail.com>",
+	"contributors": [
+		"Alex Grozav <alex@grozav.com> (https://grozav.com/)"
+	],
 	"homepage": "https://github.com/inkline/vue-cli-plugin-inkline#readme",
 	"repository": {
 		"type": "git",
