@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { isKey } from '@inkline/inkline/src/helpers/index';
+import { addClass, isKey, removeClass } from '@inkline/inkline/src/helpers/index';
 
 export class PopupManager {
     instances = {};
@@ -48,12 +48,16 @@ export class PopupManager {
         } else {
             this.modalStack.push({ id: id });
         }
+
+        addClass(window.document.body, '-modal');
     }
 
     closeModal(id) {
         const modalIndex = this.modalStack.findIndex((m) => m.id === id);
 
         this.modalStack.splice(modalIndex, 1);
+
+        removeClass(window.document.body, '-modal');
     }
 
     getTopPopup() {
