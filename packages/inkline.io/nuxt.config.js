@@ -79,6 +79,7 @@ module.exports = {
     modules: [
         '@nuxtjs/pwa',
         '@nuxtjs/sitemap',
+        '@nuxtjs/robots',
         ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
         '@nuxtjs/webpackmonitor'
     ],
@@ -115,9 +116,7 @@ module.exports = {
         transpile: [
             '@inkline/inkline',
             '@inkline/validation',
-            'lodash-es',
-            'vue-instantsearch',
-            'instantsearch.js'
+            'lodash-es'
         ],
 
         /*
