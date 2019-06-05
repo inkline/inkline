@@ -158,6 +158,12 @@ describe('Factories', () => {
                 expect(popupManager.modalStack.length).toEqual(1);
                 expect(popupManager.modalStack[0].$el.style.zIndex).toEqual(1000);
             });
+
+            it('should add ".-modal" modifier class to document body', () => {
+                popupManager.openModal('abc');
+
+                expect(window.document.body.classList.contains('-modal')).toEqual(true);
+            });
         });
 
         describe('closeModal()', () => {
@@ -166,6 +172,13 @@ describe('Factories', () => {
                 popupManager.closeModal('abc');
 
                 expect(popupManager.modalStack.length).toEqual(0);
+            });
+
+            it('should remove ".-modal" modifier class from document body', () => {
+                popupManager.openModal('abc');
+                popupManager.closeModal('abc');
+
+                expect(window.document.body.classList.contains('-modal')).toEqual(false);
             });
         });
 
