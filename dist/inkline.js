@@ -10546,6 +10546,8 @@ function () {
           id: id
         });
       }
+
+      Object(_inkline_inkline_src_helpers_index__WEBPACK_IMPORTED_MODULE_6__["addClass"])(window.document.body, '-modal');
     }
   }, {
     key: "closeModal",
@@ -10554,6 +10556,7 @@ function () {
         return m.id === id;
       });
       this.modalStack.splice(modalIndex, 1);
+      Object(_inkline_inkline_src_helpers_index__WEBPACK_IMPORTED_MODULE_6__["removeClass"])(window.document.body, '-modal');
     }
   }, {
     key: "getTopPopup",
