@@ -266,23 +266,25 @@
 </style>
 
 <script>
-// import { IButton, IHeader } from '@inkline/inkline'
-
-// import View from '@components/View';
-import {title} from "@helpers/title";
-// import SiteNavigation from '@components/SiteNavigation';
+import { title as makeTitle } from "@helpers/title";
 
 export default {
     name: 'IndexView',
     layout: 'Default',
-    // extends: View,
-    head: {
-        title: title('Vue.js UI/UX Framework')
-    },
-    // components: {
-    //     IButton,
-    //     IHeader,
-    //     SiteNavigation
-    // }
+    head() {
+        const title = makeTitle('Vue.js UI/UX Framework');
+        const description = 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications.';
+
+        return {
+            title,
+            description,
+            meta: [
+                { hid: `og:title`, property: 'og:title', content: title },
+                { hid: `og:description`, property: 'og:description', content: description },
+                { hid: `og:url`, property: 'og:url', content: 'https://inkline.io' + this.$route.fullPath },
+                { hid: `og:image`, property: 'og:image', content: `https://inkline.io/images/pages/index.og.jpg` }
+            ]
+        };
+    }
 };
 </script>
