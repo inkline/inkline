@@ -21,6 +21,8 @@ module.exports = {
             { name: 'msapplication-TileColor', content: '#ffffff' },
             { name: 'msapplication-TileImage', content: '/favicon/ms-icon-144x144.png' },
             { name: 'theme-color', content: '#ffffff' },
+            { hid: `og:site_name`, property: 'og:site_name', content: 'Inkline' },
+            { hid: `og:type`, property: 'og:type', content: 'website' },
         ],
         link: [
             { rel: 'apple-touch-icon', sizes: '57x57', href: '/favicon/apple-icon-57x57.png' },
