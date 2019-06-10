@@ -8,7 +8,11 @@ export function head(meta) {
     return function () {
         return {
             title,
+            link: [
+                { rel: 'canonical', href: 'https://inkline.io' + this.$route.fullPath },
+            ],
             meta: [
+                { hid: 'description', name: 'description', content: description },
                 { hid: 'description', name: 'description', content: description },
                 { hid: `og:title`, property: 'og:title', content: title },
                 { hid: `og:description`, property: 'og:description', content: description },
