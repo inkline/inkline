@@ -17,14 +17,14 @@
                 <i-row>
                     <i-column md="6" lg="4">
                         <div class="feature-box">
-                            <img src="/images/pages/icon-responsive.svg" alt="Modern" />
+                            <img src="/images/pages/icon-responsive.svg" alt="Responsive" />
                             <h3>Responsive</h3>
                             <p>Designed to be mobile-first, Inkline looks great on phones, tablets, laptops and desktops.</p>
                         </div>
                     </i-column>
                     <i-column md="6" lg="4">
                         <div class="feature-box">
-                            <img src="/images/pages/icon-modular.svg" alt="Modern" />
+                            <img src="/images/pages/icon-modular.svg" alt="Modular" />
                             <h3>Modular</h3>
                             <p>With over 50 components, Inkline is designed to give you the best development experience.</p>
                         </div>
