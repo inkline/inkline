@@ -1,5 +1,5 @@
 # Color Utilities
-Inkline uses a beautiful, consistent color scheme across the framework. { .lead }
+## Inkline uses a beautiful, consistent color scheme across the framework. { .lead }
 
 ### Brand
 Attract your visitor's attention using brand colors. The main colors of Inkline used for branding are:

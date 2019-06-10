@@ -1,5 +1,5 @@
 # Code
-Examples for displaying inline and multi-line blocks of code with Inkline. { .lead }
+## Examples for displaying inline and multi-line blocks of code with Inkline. { .lead }
 
 ### Inline
 Wrap inline snippets of code with `<code>`. Be sure to escape HTML angle brackets.

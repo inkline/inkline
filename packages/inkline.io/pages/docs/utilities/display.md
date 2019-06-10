@@ -1,5 +1,5 @@
 # Display Utilities
-Change the display style of components responsively with display utilities. { .lead }
+## Change the display style of components responsively with display utilities. { .lead }
 
 ### How it works
 Display utility classes that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them. 

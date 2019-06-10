@@ -1,5 +1,5 @@
 # Form Validation
-Inkline provides you with powerful form validation utilities. { .lead }
+## Inkline provides you with powerful form validation utilities. { .lead }
 
 The Form Validation package allows you to define a form schema which you will bind to your form components. 
 

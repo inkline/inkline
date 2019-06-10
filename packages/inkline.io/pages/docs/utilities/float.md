@@ -1,5 +1,5 @@
 # Float Utilities
-You can use the float utility on any element, for any breakpoint.
+## You can use the float utility on any element, for any breakpoint.
 
 ### Example
 You can use the float utility classes to float an element to the left or right, or to disable floating, responsively. The utilities use the same viewport breakpoints as the grid system. 

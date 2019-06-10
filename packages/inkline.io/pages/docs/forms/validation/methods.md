@@ -1,5 +1,5 @@
 # Form Methods
-The form validation framework wouldn't be complete without dynamically added fields and groups. {.lead} 
+## The form validation framework wouldn't be complete without dynamically added fields and groups. {.lead} 
 
 Inkline provides a simple API for adding and removing fields.
 

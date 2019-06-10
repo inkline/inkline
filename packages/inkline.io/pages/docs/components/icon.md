@@ -1,5 +1,5 @@
 # Icon
-Inkline provides you with a set of commonly used icons.{.lead}
+## Inkline provides you with a set of commonly used icons.{.lead}
 
 Here’s an example of the basic icons included with the `<i-icon>` component.
 

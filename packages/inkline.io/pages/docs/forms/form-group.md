@@ -1,5 +1,5 @@
 # Form Group
-Form groups are the easiest way to add structure to form elements. { .lead }
+## Form groups are the easiest way to add structure to form elements. { .lead }
 
 ### Example
 

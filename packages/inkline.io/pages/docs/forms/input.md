@@ -1,5 +1,5 @@
 # Input
-Inputs are form components used to for inputting data directly from the keyboard. { .lead }
+## Inputs are form components used to for inputting data directly from the keyboard. { .lead }
 
 ### Example
 

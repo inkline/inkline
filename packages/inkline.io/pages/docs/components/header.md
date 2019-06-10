@@ -1,5 +1,5 @@
 # Header
-A lightweight, responsive header component used for showcasing hero unit style content.{.lead}
+## A lightweight, responsive header component used for showcasing hero unit style content.{.lead}
 
 ### Example
 Here’s an example of the basic components included in a  `<i-navbar>` that automatically collapses responsively.

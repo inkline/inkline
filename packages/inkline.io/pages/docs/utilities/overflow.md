@@ -1,5 +1,5 @@
 # Overflow Utilities
-You can use the overflow utilities for deciding how content overflows an element.{.lead}
+## You can use the overflow utilities for deciding how content overflows an element.{.lead}
 
 Overflow functionality is provided for two values by default, and they are not responsive.
 

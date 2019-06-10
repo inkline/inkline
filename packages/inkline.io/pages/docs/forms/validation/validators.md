@@ -1,5 +1,5 @@
 # Form Validators
-Validators are configurable functions used to check whether an input value matches a specific criteria.{.lead}
+## Validators are configurable functions used to check whether an input value matches a specific criteria.{.lead}
 
 There are several validation options that can be used in the `validators` field:
 

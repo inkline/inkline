@@ -4,9 +4,9 @@
             <i-row>
                 <i-column md="7" lg="6" xl="5">
                     <h1 class="header-title">Inkline</h1>
-                    <p class="header-subtitle">
+                    <h2 class="header-subtitle">
                         Inkline is a modern <strong>UI/UX Framework for Vue.js</strong> designed for creating flawless responsive web applications.
-                    </p>
+                    </h2>
                     <i-button size="lg" variant="primary" class="_margin-top-2" :to="{ name: 'docs-introduction-getting-started' }">Get Started</i-button>
                 </i-column>
             </i-row>
@@ -181,6 +181,7 @@
             color: --text-muted
             margin-top: 1rem
             margin-bottom: 0
+            line-height: 1.5
 
             +-breakpoint-up(lg)
                 font-size: --font-size-lg

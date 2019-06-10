@@ -1,5 +1,5 @@
 # Button Group
-Group multiple buttons together on a single line using a button group. {.lead}
+## Group multiple buttons together on a single line using a button group. {.lead}
 
 ### Example
 You can group a series of `<i-button>` components inside a `<i-button-group>` to display them inline, conveying additional meaning.

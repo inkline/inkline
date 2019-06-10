@@ -1,5 +1,5 @@
 # Embed Utilities
-Create responsive video embeds by keeping the aspect ratio based on the parent element width. { .lead }
+## Create responsive video embeds by keeping the aspect ratio based on the parent element width. { .lead }
 
 ### Example
 Embed styles are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` elements.

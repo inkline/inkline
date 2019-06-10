@@ -1,5 +1,5 @@
 # Images
-Documentation and examples for images, using lightweight styles and modifier classes. { .lead }
+## Documentation and examples for images, using lightweight styles and modifier classes. { .lead }
 
 ### Responsive Images
 Images in Inkline need to have the `.image` class applied and are made responsive using the `.-responsive` modifier. 

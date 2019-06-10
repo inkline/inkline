@@ -1,5 +1,5 @@
 # Border Utilities
-Use border utilities to quickly apply border styles to an element. Great for images, buttons, or any other element. { .lead }
+## Use border utilities to quickly apply border styles to an element. Great for images, buttons, or any other element. { .lead }
 
 ### Adding Border
 You can use border utilities to add borders on all sides or individually on an element.

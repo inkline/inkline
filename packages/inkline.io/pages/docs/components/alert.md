@@ -1,5 +1,5 @@
 # Alert
-Provide contextual feedback messages for typical user actions using the alert component. {.lead}
+## Provide contextual feedback messages for typical user actions using the alert component. {.lead}
 
 ### Variants
 Alerts are available for any length of text, and can have an optional dismiss button. For choosing the context of the alert,

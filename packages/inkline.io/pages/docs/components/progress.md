@@ -1,5 +1,5 @@
 # Progress
-A custom component for displaying progress with support for stacked progress bars.{.lead}
+## A custom component for displaying progress with support for stacked progress bars.{.lead}
 
 ### Example
 Progress components are built with two components: a wrapper `<i-progress>` and at least one `<i-progress-bar>`. You can set the width of a progress bar by setting its `value` property.

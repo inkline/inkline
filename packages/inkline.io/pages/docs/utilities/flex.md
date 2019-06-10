@@ -1,5 +1,5 @@
 # Flex Utilities
-Use flexbox utilities to modify the layout, alignment, and sizing of components and more. { .lead }
+## Use flexbox utilities to modify the layout, alignment, and sizing of components and more. { .lead }
 
 ### Flex Behavior
 Apply `display: flex` using CSS or the `._display-flex` helper to create a flexbox container and transform direct children elements into flex items. 
