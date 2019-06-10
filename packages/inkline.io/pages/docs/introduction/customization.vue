@@ -1,14 +1,15 @@
 <template lang="md" src="./customization.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
+import { head } from "@helpers/head";
 
 export default {
     name: 'CustomizationView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Customization')
-    }
+    head: head({
+        title: 'Customization',
+        description: 'Make Inkline your own using hundreds of configurable Stylus variables.'
+    }),
 };
 </script>

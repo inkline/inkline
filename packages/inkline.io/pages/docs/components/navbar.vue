@@ -1,23 +1,15 @@
 <template lang="md" src="./navbar.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IButton, INav, INavItem, INavbar, INavbarBrand, INavbarItems } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'NavbarView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Navbar')
-    },
-    components: {
-        IButton,
-        INav,
-        INavItem,
-        INavbar,
-        INavbarBrand,
-        INavbarItems
-    }
+    head: head({
+        title: 'Navbar',
+        description: 'A responsive navigation header that includes support for branding, navigation, forms and more.'
+    }),
 };
 </script>

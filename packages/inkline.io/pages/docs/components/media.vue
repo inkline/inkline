@@ -1,18 +1,15 @@
 <template lang="md" src="./media.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IMedia } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'CardView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Media')
-    },
-    components: {
-        IMedia
-    }
+    head: head({
+        title: 'Media',
+        description: 'Media objects provide you with a flexible component that can be easily nested and repeated.'
+    })
 };
 </script>

@@ -1,6 +1,5 @@
 # Textarea
-
-Allow your users to input data directly from the keyboard, on multiple lines. { .lead }
+Textareas are form components used to for inputting data directly from the keyboard, on multiple lines. { .lead }
 
 ### Example
 

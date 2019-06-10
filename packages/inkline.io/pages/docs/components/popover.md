@@ -1,5 +1,5 @@
 # Popover
-Popovers are useful for conveying information when an user hovers over an element.{.lead}
+Popovers are useful for conveying information when an user clicks an element.{.lead}
 
 ### Example
 Wrap both the popover's trigger element (such as an `<i-button>`) and the `<template slot="body">` inside a `<i-popover>` component. Optionally, you can provide a popover header and footer using `slot="header"` and `slot="footer"`.

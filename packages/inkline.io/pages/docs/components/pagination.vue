@@ -1,21 +1,16 @@
 <template lang="md" src="./pagination.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IButton, INav, INavItem } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
-    name: 'NavView',
+    name: 'PaginationView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Pagination')
-    },
-    components: {
-        IButton,
-        INav,
-        INavItem
-    },
+    head: head({
+        title: 'Pagination',
+        description: 'Use Inkline\'s Pagination component to provide navigation for large series of related content.'
+    }),
     data() {
         return {
             currentPage: 1,

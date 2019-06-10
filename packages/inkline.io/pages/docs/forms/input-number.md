@@ -1,6 +1,5 @@
 # Number Input
-
-Allow your users to input data directly from the keyboard. { .lead }
+Number Inputs are form components used to for inputting and manipulating numbers. { .lead }
 
 ### Example
 

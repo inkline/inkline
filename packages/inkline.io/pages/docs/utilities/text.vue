@@ -1,14 +1,15 @@
 <template lang="md" src="./text.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
+import { head } from "@helpers/head";
 
 export default {
     name: 'TextUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Text - Utilities')
-    }
+    head: head({
+        title: 'Text - Utilities',
+        description: 'Inkline provides common text utilities to control alignment, wrapping, weight, and more.'
+    }),
 };
 </script>

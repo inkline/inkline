@@ -1,19 +1,16 @@
 <template lang="md" src="./input.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IInput } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     extends: View,
     name: 'InputView',
     layout: 'documentation',
-    head: {
-        title: title('Input')
-    },
-    components: {
-        IInput
-    },
+    head: head({
+        title: 'Input',
+        description: 'Inputs are form components used to for inputting data directly from the keyboard.'
+    }),
     data () {
         return {
             inputValue: '',

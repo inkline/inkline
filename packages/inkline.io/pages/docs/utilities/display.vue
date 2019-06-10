@@ -1,14 +1,15 @@
 <template lang="md" src="./display.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
+import { head } from "@helpers/head";
 
 export default {
     name: 'DisplayUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Display - Utilities')
-    }
+    head: head({
+        title: 'Display - Utilities',
+        description: 'Change the display style of components responsively using Inkline\'s display utilities.'
+    }),
 };
 </script>

@@ -1,5 +1,7 @@
 # Form Methods
-The form validation framework wouldn't be complete without dynamically added fields and groups. Inkline provides a simple API for adding and removing fields.
+The form validation framework wouldn't be complete without dynamically added fields and groups. {.lead} 
+
+Inkline provides a simple API for adding and removing fields.
 
 ### Object Group Operations
 Just like Arrays, Objects can be manipulated and kept up to date using a custom API. You can use the `set` method to update an object field. To enable reactivity, we'll need to also pass in the current Vue instance inside the options to take advantage of it's internal methods.

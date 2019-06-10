@@ -1,20 +1,16 @@
 <template lang="md" src="./modal.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IButton, IModal } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'ModalView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Modal')
-    },
-    components: {
-        IButton,
-        IModal,
-    },
+    head: head({
+        title: 'Modal',
+        description: 'Modals are dialogs that can be used for lightboxes, user notifications, or completely custom content.'
+    }),
     data () {
         return {
             showModal: false,

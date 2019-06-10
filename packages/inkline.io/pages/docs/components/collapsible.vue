@@ -1,24 +1,20 @@
 <template lang="md" src="./collapsible.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { ICollapsible, ICollapsibleItem } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'CollapsibleView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Collapsible')
-    },
+    head: head({
+        title: 'Collapsible',
+        description: 'Use Inkline\'s Collapsible components to show and hide content using a smooth reveal transition.'
+    }),
     data() {
         return {
             active: ['panel-1']
         };
     },
-    components: {
-        ICollapsible,
-        ICollapsibleItem
-    }
 };
 </script>

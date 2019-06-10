@@ -1,27 +1,16 @@
 <template lang="md" src="./schema.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IForm, IFormGroup, IFormLabel, IInput, ITextarea, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     extends: View,
     name: 'FormValidationSchemaView',
     layout: 'documentation',
-    head: {
-        title: title('Schema - Form Validation')
-    },
-    components: {
-        IForm,
-        IFormGroup,
-        IFormLabel,
-        IInput,
-        ITextarea,
-        ICheckbox,
-        ICheckboxGroup,
-        IRadio,
-        IRadioGroup
-    },
+    head: head({
+        title: 'Schema - Form Validation',
+        description: 'Inkline\'s form validation schema defines the form input fields, groups and how they work together.'
+    }),
     data () {
         return {
             basicForm: this.$form({

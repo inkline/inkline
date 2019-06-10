@@ -1,22 +1,15 @@
 <template lang="md" src="./dropdown.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IButton, IDropdown, IDropdownDivider, IDropdownItem, IDropdownMenu } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'DropdownView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Dropdown')
-    },
-    components: {
-        IButton,
-        IDropdown,
-        IDropdownDivider,
-        IDropdownItem,
-        IDropdownMenu
-    }
+    head: head({
+        title: 'Dropdown',
+        description: 'Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.'
+    }),
 };
 </script>

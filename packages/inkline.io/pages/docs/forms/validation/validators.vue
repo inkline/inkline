@@ -1,27 +1,16 @@
 <template lang="md" src="./validators.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IForm, IFormGroup, IFormLabel, IInput, ITextarea, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     extends: View,
     name: 'FormValidationValidatorsView',
     layout: 'documentation',
-    head: {
-        title: title('Validators - Form Validation')
-    },
-    components: {
-        IForm,
-        IFormGroup,
-        IFormLabel,
-        IInput,
-        ITextarea,
-        ICheckbox,
-        ICheckboxGroup,
-        IRadio,
-        IRadioGroup
-    },
+    head: head({
+        title: 'Validators - Form Validation',
+        description: 'Inkline\'s validators are functions used to check whether an input value matches a specific criteria.'
+    }),
     data () {
         return {
             alphaValidatorForm: this.$form({

@@ -1,20 +1,16 @@
 <template lang="md" src="./breadcrumb.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IBreadcrumb, IBreadcrumbItem } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'BreadcrumbView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Breadcrumb')
-    },
-    components: {
-        IBreadcrumb,
-        IBreadcrumbItem
-    },
+    head: head({
+        title: 'Breadcrumb',
+        description: 'Indicate the current page’s location depth using a navigation list that automatically adds separators.'
+    }),
     data() {
         return {
             items: [

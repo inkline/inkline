@@ -1,27 +1,16 @@
 <template lang="md" src="./methods.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IForm, IFormGroup, IFormLabel, IInput, ITextarea, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     extends: View,
     name: 'FormValidationMethodsView',
     layout: 'documentation',
-    head: {
-        title: title('Methods - Form Validation')
-    },
-    components: {
-        IForm,
-        IFormGroup,
-        IFormLabel,
-        IInput,
-        ITextarea,
-        ICheckbox,
-        ICheckboxGroup,
-        IRadio,
-        IRadioGroup
-    },
+    head: head({
+        title: 'Methods - Form Validation',
+        description: 'Inkline\'s form validation schema can be used to dynamically add schema fields and groups with ease.'
+    }),
     data () {
         return {
             listForm: this.$form({

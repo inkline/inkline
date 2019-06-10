@@ -1,26 +1,16 @@
 <template lang="md" src="./form-label.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IFormGroup, IFormLabel, IInput, ITextarea, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     extends: View,
     name: 'FormLabelView',
     layout: 'documentation',
-    head: {
-        title: title('Form Label')
-    },
-    components: {
-        IFormGroup,
-        IFormLabel,
-        IInput,
-        ITextarea,
-        ICheckbox,
-        ICheckboxGroup,
-        IRadio,
-        IRadioGroup
-    },
+    head: head({
+        title: 'Form Label',
+        description: 'Labels are a form component used to easily add text associated to inputs.'
+    }),
     data () {
         return {
             labelInputValue: '',

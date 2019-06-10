@@ -1,19 +1,16 @@
 <template lang="md" src="./input-number.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IInputNumber } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     extends: View,
     name: 'InputView',
     layout: 'documentation',
-    head: {
-        title: title('Number Input')
-    },
-    components: {
-        IInputNumber
-    },
+    head: head({
+        title: 'Number Input',
+        description: 'Number Inputs are form components used to for inputting and manipulating numbers.'
+    }),
     data () {
         return {
             inputValue: '',

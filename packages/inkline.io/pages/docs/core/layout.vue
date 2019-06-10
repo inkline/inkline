@@ -1,4 +1,5 @@
 <template lang="md" src="./layout.md"></template>
+
 <style lang="stylus">
 @import '~@inkline/inkline/css/config/index'
 @import '~@inkline/inkline/css/mixins/index'
@@ -24,24 +25,18 @@
         background: --colors['gray-10']
         padding: 5rem 0
 </style>
+
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { ILayout, ILayoutHeader, ILayoutContent, ILayoutAside, ILayoutFooter } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'LayoutView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Layout')
-    },
-    components: {
-        ILayout,
-        ILayoutHeader,
-        ILayoutContent,
-        ILayoutAside,
-        ILayoutFooter
-    }
+    head: head({
+        title: 'Layout',
+        description: 'Build basic web application layouts using Inkline\'s built-in Layout components.'
+    }),
 };
 </script>

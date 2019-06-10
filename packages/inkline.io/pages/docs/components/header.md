@@ -1,5 +1,5 @@
 # Header
-A responsive navigation header that includes support for branding, navigation, forms and more.{.lead}
+A lightweight, responsive header component used for showcasing hero unit style content.{.lead}
 
 ### Example
 Here’s an example of the basic components included in a  `<i-navbar>` that automatically collapses responsively.

@@ -266,25 +266,17 @@
 </style>
 
 <script>
-import { title as makeTitle } from "@helpers/title";
+import { head } from "@helpers/head";
 
 export default {
     name: 'IndexView',
     layout: 'Default',
-    head() {
-        const title = makeTitle('Vue.js UI/UX Framework');
-        const description = 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications.';
-
-        return {
-            title,
-            description,
-            meta: [
-                { hid: `og:title`, property: 'og:title', content: title },
-                { hid: `og:description`, property: 'og:description', content: description },
-                { hid: `og:url`, property: 'og:url', content: 'https://inkline.io' + this.$route.fullPath },
-                { hid: `og:image`, property: 'og:image', content: `https://inkline.io/images/pages/index.og.jpg` }
-            ]
-        };
-    }
+    head: head({
+        title: 'Vue.js UI/UX Framework',
+        description: 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications.',
+        preserve: {
+            description: true
+        }
+    })
 };
 </script>

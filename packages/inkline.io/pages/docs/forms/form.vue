@@ -1,27 +1,16 @@
 <template lang="md" src="./form.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IForm, IFormGroup, IFormLabel, IInput, ITextarea, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     extends: View,
     name: 'FormView',
     layout: 'documentation',
-    head: {
-        title: title('Form')
-    },
-    components: {
-        IForm,
-        IFormGroup,
-        IFormLabel,
-        IInput,
-        ITextarea,
-        ICheckbox,
-        ICheckboxGroup,
-        IRadio,
-        IRadioGroup
-    },
+    head: head({
+        title: 'Form',
+        description: 'Inkline\'s Form components are the main wrappers for form elements, with powerful validation options.'
+    }),
     data () {
         return {
             input: '',
