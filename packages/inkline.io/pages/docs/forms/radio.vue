@@ -1,22 +1,16 @@
 <template lang="md" src="./radio.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IRadio, IRadioButton, IRadioGroup, IRadioButtonGroup } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     extends: View,
     name: 'RadioView',
     layout: 'documentation',
-    head: {
-        title: title('Radio')
-    },
-    components: {
-        IRadio,
-        IRadioButton,
-        IRadioGroup,
-        IRadioButtonGroup
-    },
+    head: head({
+        title: 'Radio',
+        description: 'Radio inputs allow the user to select one option from a set of options.'
+    }),
     data () {
         return {
             selected: 'Apple',

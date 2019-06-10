@@ -1,25 +1,16 @@
 <template lang="md" src="./form-group.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IFormGroup, IInput, ITextarea, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     extends: View,
     name: 'FormGroupView',
     layout: 'documentation',
-    head: {
-        title: title('Form Group')
-    },
-    components: {
-        IFormGroup,
-        IInput,
-        ITextarea,
-        ICheckbox,
-        ICheckboxGroup,
-        IRadio,
-        IRadioGroup
-    },
+    head: head({
+        title: 'Form Group',
+        description: 'Form Groups are the easiest way to add structure to form elements.'
+    }),
     data () {
         return {
             input: '',

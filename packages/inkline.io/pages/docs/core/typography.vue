@@ -9,14 +9,15 @@
 </style>
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
+import { head } from "@helpers/head";
 
 export default {
     name: 'TypographyView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Typography')
-    }
+    head: head({
+        title: 'Typography',
+        description: 'Examples and documentation for typography, one of the most important design elements of an application.'
+    }),
 };
 </script>

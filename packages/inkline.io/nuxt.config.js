@@ -23,6 +23,7 @@ module.exports = {
             { name: 'theme-color', content: '#ffffff' },
             { hid: `og:site_name`, property: 'og:site_name', content: 'Inkline' },
             { hid: `og:type`, property: 'og:type', content: 'website' },
+            { hid: `og:image`, property: 'og:image', content: `https://inkline.io/images/pages/index.og.jpg` }
         ],
         link: [
             { rel: 'apple-touch-icon', sizes: '57x57', href: '/favicon/apple-icon-57x57.png' },

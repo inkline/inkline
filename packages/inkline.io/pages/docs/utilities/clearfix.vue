@@ -13,14 +13,15 @@
 </style>
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
+import { head } from "@helpers/head";
 
 export default {
     name: 'ClearfixUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Clearfix - Utilities')
-    }
+    head: head({
+        title: 'Clearfix - Utilities',
+        description: 'Use Inkline\'s clearfix utility to clear floated content within a container.'
+    }),
 };
 </script>

@@ -1,23 +1,21 @@
 <template lang="md" src="./header.md" />
+
+<style lang="stylus">
+    #cover-inkline-header
+        background-image: url('~static/images/background.jpg')
+</style>
+
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IButton, IHeader } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'HeaderView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Header')
-    },
-    components: {
-        IButton,
-        IHeader
-    }
+    head: head({
+        title: 'Header',
+        description: 'Inkline\'s lightweight, responsive Header component used for showcasing hero unit style content.'
+    })
 };
 </script>
-<style lang="stylus">
-#cover-inkline-header
-    background-image: url('~static/images/background.jpg')
-</style>

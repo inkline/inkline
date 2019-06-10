@@ -1,19 +1,15 @@
 <template lang="md" src="./progress.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IProgress, IProgressBar } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'ProgressView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Progress')
-    },
-    components: {
-        IProgress,
-        IProgressBar,
-    }
+    head: head({
+        title: 'Progress',
+        description: 'Inkline\'s custom component for displaying progress with support for stacked progress bars.'
+    }),
 };
 </script>

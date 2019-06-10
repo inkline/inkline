@@ -1,19 +1,16 @@
 <template lang="md" src="./textarea.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { ITextarea } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     extends: View,
     name: 'TextareaView',
     layout: 'documentation',
-    head: {
-        title: title('Textarea')
-    },
-    components: {
-        ITextarea
-    },
+    head: head({
+        title: 'Textarea',
+        description: 'Textareas are form components used to for inputting data directly from the keyboard, on multiple lines.'
+    }),
     data () {
         const sampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 

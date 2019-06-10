@@ -1,18 +1,15 @@
 <template lang="md" src="./button.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IButton } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'ButtonView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Button')
-    },
-    components: {
-        IButton
-    }
+    head: head({
+        title: 'Button',
+        description: 'Inkline\'s Button component provides you with styles for multiple sizes, states, and more.'
+    }),
 };
 </script>

@@ -2,16 +2,17 @@
 
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
+import { head } from "@helpers/head";
 import GridBox from '@components/GridBox';
 
 export default {
     name: 'GridView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Grid')
-    },
+    head: head({
+        title: 'Grid',
+        description: 'Inkline\'s grid system is modelled as a 12 columns layout built using flexbox, with equally divided columns.'
+    }),
     components: {
         GridBox
     }

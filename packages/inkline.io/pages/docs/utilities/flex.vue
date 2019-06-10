@@ -20,14 +20,15 @@
 </style>
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
+import { head } from "@helpers/head";
 
 export default {
     name: 'FlexUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Flex - Utilities')
-    }
+    head: head({
+        title: 'Flex - Utilities',
+        description: 'Use Inkline\'s flexbox utilities to modify the layout, alignment, and sizing of components and more.'
+    }),
 };
 </script>

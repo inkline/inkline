@@ -14,14 +14,15 @@
 </style>
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
+import { head } from "@helpers/head";
 
 export default {
     name: 'BorderUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Border - Utilities')
-    }
+    head: head({
+        title: 'Border - Utilities',
+        description: 'Use Inkline\'s border utilities to quickly apply border styles to an element.'
+    }),
 };
 </script>

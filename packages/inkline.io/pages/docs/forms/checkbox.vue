@@ -1,22 +1,16 @@
 <template lang="md" src="./checkbox.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { ICheckbox, ICheckboxButton, ICheckboxGroup, ICheckboxButtonGroup } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'CheckboxView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Checkbox')
-    },
-    components: {
-        ICheckbox,
-        ICheckboxButton,
-        ICheckboxGroup,
-        ICheckboxButtonGroup
-    },
+    head: head({
+        title: 'Checkbox',
+        description: 'Checkbox inputs allow the user to select multiple options from a set.'
+    }),
     data () {
         return {
             checked: true,

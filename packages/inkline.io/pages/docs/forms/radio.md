@@ -1,6 +1,7 @@
 # Radio
-Radio inputs allow the user to select one option from a set of options. Typically, there should not be too many options. 
-Make sure you use a select input if you think the user doesn't need to see all the available options side-by-side. { .lead }
+Radio inputs allow the user to select one option from a set of options. { .lead }
+ 
+Typically, there should not be too many options. Make sure you use a select input if you think the user doesn't need to see all the available options side-by-side.
 
 You will need to use the `i-radio` component together with a `i-radio-group`.
 

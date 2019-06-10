@@ -1,14 +1,15 @@
 <template lang="md" src="./tables.md" />
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
+import { head } from "@helpers/head";
 
 export default {
     name: 'TablesView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Table')
-    }
+    head: head({
+        title: 'Table',
+        description: 'Documentation and examples for opt-in styling of tables with Inkline.'
+    }),
 };
 </script>

@@ -1,19 +1,16 @@
 <template src="./alert.md" lang="md"></template>
 <script>
 import View from '@components/View';
-import {title} from '@helpers/title';
-import { IAlert } from '@inkline/inkline';
+import { head } from "@helpers/head";
 
 export default {
     name: 'AlertView',
     layout: 'documentation',
     extends: View,
-    head: {
-        title: title('Alert')
-    },
-    components: {
-        IAlert
-    },
+    head: head({
+        title: 'Alert',
+        description: 'Provide contextual feedback messages for typical user actions using Inkline\'s Alert component.'
+    }),
     data() {
         return {
             visible: true

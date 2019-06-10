@@ -1,5 +1,4 @@
 # Checkbox
-
 Checkbox inputs allow the user to select multiple options from a set. { .lead }
 
 Using the `i-checkbox` component together with a `i-checkbox-group` allows you to control multiple values using a single binding.
