@@ -273,7 +273,7 @@ export default {
     layout: 'Default',
     head: head({
         title: 'Vue.js UI/UX Framework',
-        description: 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications.',
+        description: 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications with a focus on user experience.',
         preserve: {
             description: true
         }
