@@ -1,5 +1,5 @@
 # Vertical Align Utilities
-Change the vertical alignment of inline, inline block, inline table, and table cell elements. { .lead }
+## Change the vertical alignment of inline, inline block, inline table, and table cell elements. { .lead }
 
 ### Text Alignment
 You can use vertical align utilities to change the alignment of elements. Please note that vertical-align only affects `inline`, `inline-block`, `inline-table`, and `table-cell` elements.

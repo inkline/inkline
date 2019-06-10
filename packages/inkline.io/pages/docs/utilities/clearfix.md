@@ -1,5 +1,5 @@
 # Clearfix Utility
-Use the clearfix utility to clear floated content within a container. { .lead }
+## Use the clearfix utility to clear floated content within a container. { .lead }
 
 ### Helper Class
 You can easily clear floats by adding the `._clearfix` helper class to the parent element.

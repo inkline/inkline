@@ -1,5 +1,5 @@
 # Customization
-Make Inkline your own using hundreds of configurable Stylus variables. {.lead}
+## Make Inkline your own using hundreds of configurable Stylus variables. {.lead}
 
 ### Build Dependencies
 

@@ -1,5 +1,5 @@
 # Overlay Utilities
-Make an element overlay its container by adding overlay utilities. {.lead}
+## Make an element overlay its container by adding overlay utilities. {.lead}
 
 ### Example
 Add the `._overlay` utility class to an element to make it cover the entire containing block. The containing block refers to a parent element with `position: relative;`.

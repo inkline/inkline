@@ -1,5 +1,5 @@
 # Form Schema
-The form validation schema defines the form input fields, groups and how they work together. {.lead}
+## The form validation schema defines the form input fields, groups and how they work together. {.lead}
 
 ### Schema Example
 The `<i-form>` component and all input components have a `schema` property that can be used to provide form schema validation. The schema object provides form validation status fields such as `valid`, `invalid`, `touched`, `untouched`, `dirty`, `pristine` and `errors`.

@@ -1,5 +1,5 @@
 # Badge
-Documentation and examples for badges, a small component used for counting and labeling.{.lead}
+## Documentation and examples for badges, a small component used for counting and labeling.{.lead}
 
 
 ### Variants

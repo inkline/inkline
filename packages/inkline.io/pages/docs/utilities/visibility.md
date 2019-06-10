@@ -1,5 +1,5 @@
 # Visibility Utilities
-Control the visibility, with or without modifying the display of elements. { .lead }
+## Control the visibility, with or without modifying the display of elements. { .lead }
 
 ### Examples
 Set element visibility using visibility utilities. Content will be hidden both visually and for assistive technology/screen reader users.

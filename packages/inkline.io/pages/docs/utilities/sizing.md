@@ -1,5 +1,5 @@
 # Sizing Utilities
-Make an element as wide or as tall as you need using width and height utilities. {.lead}
+## Make an element as wide or as tall as you need using width and height utilities. {.lead}
 
 Width and height utilities provide support for `25%`, `50%`, `75%`, `100%`, and auto by default.
 

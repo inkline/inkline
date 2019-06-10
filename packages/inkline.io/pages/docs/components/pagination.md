@@ -1,5 +1,5 @@
 # Pagination
-Pagination provides navigation for large series of related content.{.lead}
+## Pagination provides navigation for large series of related content.{.lead}
 
 ### Example
 Pagination items are automatically generated based on the total item count `items` and how many items will be displayed on the page, configured using `items-per-page`, with the default value being `20`. The currently selected page is kept synchronised using `v-model`.

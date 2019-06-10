@@ -1,5 +1,5 @@
 # Navbar
-A responsive navigation header that includes support for branding, navigation, forms and more.{.lead}
+## A responsive navigation header that includes support for branding, navigation, forms and more.{.lead}
 
 ### Example
 Here’s an example of the basic components included in a  `<i-navbar>` that automatically collapses responsively.

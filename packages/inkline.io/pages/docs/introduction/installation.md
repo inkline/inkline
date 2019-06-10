@@ -1,5 +1,5 @@
 # Installation
-Install Inkline using your favorite package manager and get access to the latest source code and compiled CSS and JavaScript. {.lead}
+## Install Inkline using your favorite package manager and get access to the latest source code and compiled CSS and JavaScript. {.lead}
 
 ### Package Managers
 

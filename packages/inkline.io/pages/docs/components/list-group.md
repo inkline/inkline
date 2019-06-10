@@ -1,5 +1,5 @@
 # List Group
-List groups are flexible components used for displaying a list of related content.{.lead}
+## List groups are flexible components used for displaying a list of related content.{.lead}
 
 ### Example
 List groups support any content inside of them. Take advantage of their flexibility to display list of items properly, as well as vertical navigation.

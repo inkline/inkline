@@ -1,5 +1,5 @@
 # Tooltip
-Tooltips are useful for conveying information when an user hovers over an element.{.lead}
+## Tooltips are useful for conveying information when an user hovers over an element.{.lead}
 
 ### Example
 Wrap both the tooltip's trigger element (such as an `<i-button>`) and the `<template slot="body">` inside a `<i-tooltip>` component.

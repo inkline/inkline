@@ -1,5 +1,5 @@
 # Text Utilities
-Use common text utilities to control alignment, wrapping, weight, and more. { .lead }
+## Use common text utilities to control alignment, wrapping, weight, and more. { .lead }
 
 ### Text Alignment
 Use text alignment utilities to easily align text in components.

@@ -1,5 +1,5 @@
 # Select
-Select inputs are form components used for providing a collapsible list of options.{ .lead }
+## Select inputs are form components used for providing a collapsible list of options.{ .lead }
 
 ### Example
 

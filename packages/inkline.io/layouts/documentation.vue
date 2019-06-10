@@ -99,6 +99,11 @@
 
         +-breakpoint-down(md)
             max-width: auto
+
+        h2.lead
+            line-height: 30px
+            margin-top: 1.25rem
+            margin-bottom: 1.25rem
 </style>
 
 <script>
