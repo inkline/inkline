@@ -4,13 +4,12 @@ export function head(meta) {
 
     const title = meta.title + (meta.preserve && meta.preserve.title ? '' : titlePostamble);
     const description = meta.description + (meta.preserve && meta.preserve.description ? '' : descriptionPostamble);
-    const route = this.$route.fullPath === '/' ? '' : this.$route.fullPath;
 
     return function () {
         return {
             title,
             link: [
-                { rel: 'canonical', href: 'https://inkline.io' + route },
+                { rel: 'canonical', href: 'https://inkline.io' + this.$route.fullPath },
             ],
             meta: [
                 { hid: 'description', name: 'description', content: description },
