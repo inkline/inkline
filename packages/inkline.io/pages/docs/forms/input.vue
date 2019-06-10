@@ -9,7 +9,7 @@ export default {
     layout: 'documentation',
     head: head({
         title: 'Input',
-        description: 'Inputs are form components used to for inputting data directly from the keyboard.'
+        description: 'Inputs are form components used for inputting data directly from the keyboard.'
     }),
     data () {
         return {

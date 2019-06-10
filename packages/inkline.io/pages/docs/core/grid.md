@@ -1,5 +1,7 @@
 # Grid
-## Inkline's grid system is modelled as a 12 columns layout built using flexbox, with equally divided columns, separated by a small gutter. We've made sure to use percentage widths, so that it is usable at any nesting level. { .lead }
+## Inkline's grid system is modelled as a 12 columns layout built using flexbox, with equally divided columns, separated by a small gutter. { .lead }
+ 
+ The grid system uses percentage widths, so that it is usable at any nesting level.
 
 The grid system is defined using `<i-container>`, `<i-row>` and `<i-column>` components, with each one having specific responsive modifiers. Here's how it works:
 
