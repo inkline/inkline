@@ -9,7 +9,7 @@ export function head(meta) {
         return {
             title,
             link: [
-                { rel: 'canonical', href: 'https://inkline.io' + this.$route.fullPath },
+                { rel: 'canonical', href: 'https://inkline.io' + this.$route.fullPath.replace(/\/$/, '') },
             ],
             meta: [
                 { hid: 'description', name: 'description', content: description },
