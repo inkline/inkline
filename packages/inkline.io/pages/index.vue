@@ -17,35 +17,35 @@
                 <i-row>
                     <i-column md="6" lg="4">
                         <div class="feature-box">
-                            <img src="/images/pages/icon-responsive.svg" alt="Responsive" />
+                            <img src="/images/pages/icon-responsive.svg" alt="Inkline - Vue.js UI/UX Framework - Responsive" />
                             <h3>Responsive</h3>
                             <p>Designed to be mobile-first, Inkline looks great on phones, tablets, laptops and desktops.</p>
                         </div>
                     </i-column>
                     <i-column md="6" lg="4">
                         <div class="feature-box">
-                            <img src="/images/pages/icon-modular.svg" alt="Modular" />
+                            <img src="/images/pages/icon-modular.svg" alt="Inkline - Vue.js UI/UX Framework - Modular" />
                             <h3>Modular</h3>
                             <p>With over 50 components, Inkline is designed to give you the best development experience.</p>
                         </div>
                     </i-column>
                     <i-column md="6" lg="4">
                         <div class="feature-box">
-                            <img src="/images/pages/icon-modern.svg" alt="Modern" />
+                            <img src="/images/pages/icon-modern.svg" alt="Inkline - Vue.js UI/UX Framework - Modern" />
                             <h3>Modern</h3>
                             <p>Inkline is a versatile and modern framework, written using the best Vue.js practices.</p>
                         </div>
                     </i-column>
                     <i-column md="6" offset-lg="2" lg="4">
                         <div class="feature-box">
-                            <img src="/images/pages/icon-form-validation.svg" alt="Form Validation" />
+                            <img src="/images/pages/icon-form-validation.svg" alt="Inkline - Vue.js UI/UX Framework - Form Validation" />
                             <h3>Form Validation</h3>
                             <p>Define a form validation schema and let Inkline elegantly take care of the form validation work.</p>
                         </div>
                     </i-column>
                     <i-column md="12" lg="4">
                         <div class="feature-box">
-                            <img src="/images/pages/icon-customization.svg" alt="Customization" />
+                            <img src="/images/pages/icon-customization.svg" alt="Inkline - Vue.js UI/UX Framework - Customization" />
                             <h3>Customizable</h3>
                             <p>Disover hundreds of easily accessible Vue.js and Stylus customization options.</p>
                         </div>
@@ -64,7 +64,7 @@
                 </i-row>
                 <i-row class="_margin-top-1">
                     <i-column>
-                        <i-button variant="primary" href="https://www.patreon.com/bePatron?u=18449490" target="_blank">Become a sponsor</i-button>
+                        <i-button variant="primary" href="https://www.patreon.com/bePatron?u=18449490" target="_blank" rel="nofollow">Become a sponsor</i-button>
                     </i-column>
                 </i-row>
             </i-container>
@@ -73,7 +73,7 @@
         <i-container fluid id="footer">
             <i-container>
                 <footer>
-                    <img src="~static/images/logo-light-80.png" alt="Inkline" height="60">
+                    <img src="~static/images/logo-light-80.png" alt="Inkline - Vue.js UI/UX Framework" height="60">
 
                     <ul class="list -inline">
                         <li class="footer-icon">
@@ -97,18 +97,18 @@
                         Designed and built with
                         <font-awesome-icon icon="heart" size="sm" />
                         by
-                        <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
+                        <a href="https://twitter.com/alexgrozav" target="_blank">@alexgrozav</a>.
                     </p>
                     <p id="footer-copyright">
                         Copyright &copy; 2017-2019, Inkline
                     </p>
 
                     <ul id="footer-policies" class="list -inline">
-                        <li><a href="">Privacy Policy</a></li>
-                        <li>&middot;</li>
-                        <li><a href="">Cookie Policy</a></li>
-                        <li>&middot;</li>
-                        <li><a href="https://github.com/inkline/inkline/blob/master/LICENSE">MIT License</a></li>
+                        <!--<li><a href="">Privacy Policy</a></li>-->
+                        <!--<li>&middot;</li>-->
+                        <!--<li><a href="">Cookie Policy</a></li>-->
+                        <!--<li>&middot;</li>-->
+                        <li><a href="https://github.com/inkline/inkline/blob/master/LICENSE" target="_blank" rel="nofollow">MIT License</a></li>
                     </ul>
                 </footer>
             </i-container>
