@@ -525,7 +525,7 @@ export default {
                 </tr>
                 <tr>
                     <td>schema</td>
-                    <td>Provides a schema binding to the form component. See the <nuxt-link to="/docs/forms/form-validation">Form Validation</nuxt-link> documentation.</td>
+                    <td>Provides a schema binding to the form component. See the <nuxt-link to="/docs/forms/validation/schema">Form Validation</nuxt-link> documentation.</td>
                     <td><code>Object</code></td>
                     <td></td>
                     <td></td>
