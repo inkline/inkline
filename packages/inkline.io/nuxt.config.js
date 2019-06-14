@@ -83,7 +83,8 @@ module.exports = {
         '@nuxtjs/sitemap',
         '@nuxtjs/robots',
         ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
-        '@nuxtjs/webpackmonitor'
+        '@nuxtjs/webpackmonitor',
+        'nuxt-trailingslash-module'
     ],
 
     /**
