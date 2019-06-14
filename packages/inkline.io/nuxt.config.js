@@ -8,6 +8,8 @@ module.exports = {
         port: 8080
     },
 
+    subFolders: false,
+
     /*
     ** Headers of the page
     */
