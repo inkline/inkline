@@ -31,7 +31,6 @@
     "@nuxtjs/eslint-config": "^0.0.1",
     "@nuxtjs/google-tag-manager": "^2.2.0",
     "@nuxtjs/pwa": "^2.6.0",
-    "@nuxtjs/redirect-module": "^0.2.0",
     "@nuxtjs/robots": "^2.2.0",
     "@nuxtjs/sitemap": "^0.2.2",
     "@nuxtjs/webpackmonitor": "^0.1.0",
@@ -62,7 +61,6 @@
     "markdown-it-prism": "^2.0.2",
     "nodemon": "^1.19.1",
     "nuxt": "^2.8.1",
-    "nuxt-trailingslash-module": "^1.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-jest": "^3.0.4"

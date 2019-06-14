@@ -81,7 +81,6 @@ module.exports = {
     modules: [
         '@nuxtjs/pwa',
         '@nuxtjs/sitemap',
-        '@nuxtjs/redirect-module',
         '@nuxtjs/robots',
         ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
         '@nuxtjs/webpackmonitor'
@@ -93,26 +92,6 @@ module.exports = {
     router: {
         linkExactActiveClass: '-active nuxt-link-exact-active'
     },
-
-    /**
-     * Nuxt Redirect
-     *
-     * Add trailing slash to routes
-     */
-    redirect: [
-        {
-            from: '^[\\w\\.\\/]*(?<!\\/)(\\?.*\\=.*)*$',
-            to: (from, req) => {
-                const matches = req.url.match(/^.*(\?.*)$/);
-
-                if (matches.length > 1) {
-                    return matches[0].replace(matches[1], '') + '/' + matches[1];
-                }
-
-                return matches[0];
-            }
-        }
-    ],
 
     /**
      * Sitemap Configuration
