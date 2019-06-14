@@ -4,9 +4,10 @@ export function head(meta) {
 
     const title = meta.title + (meta.preserve && meta.preserve.title ? '' : titlePostamble);
     const description = meta.description + (meta.preserve && meta.preserve.description ? '' : descriptionPostamble);
-    const routerPath = this.$route.fullPath.replace(/\/$/, '');
 
     return function () {
+        const routerPath = this.$route.fullPath.replace(/\/$/, '');
+
         return {
             title,
             link: [

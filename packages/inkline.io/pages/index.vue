@@ -184,15 +184,15 @@
             line-height: 1.5
 
             +-breakpoint-up(lg)
-                font-size: --font-size-lg
+                font-size: --font-size['lg']
 
             +-breakpoint-down(md)
-                font-size: --font-size-md
+                font-size: --font-size['md']
 
         .button
             +-breakpoint-down(md)
-                font-size: --font-size-md
-                border-radius: --border-radius-md
+                font-size: --font-size['md']
+                border-radius: --border-radius['md']
                 padding: (--spacer / 2) --spacer
 
 #features
@@ -262,7 +262,7 @@
 
     #footer-copyright,
     #footer-policies
-        font-size: --font-size-sm
+        font-size: --font-size['sm']
         color: --text-muted
 </style>
 
