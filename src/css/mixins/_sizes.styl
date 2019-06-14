@@ -1,14 +1,17 @@
+/**
+ * Generate component size map containing xs, sm, md, lg, xl (--sizes) sizes calculated based on the given base size
+ */
 -size-map(--base-size, --multiplier-keys = --sizes, --multipliers = --size-multipliers)
     --size-map = {}
 
     for --multiplier-key in --multiplier-keys
-        if length(--base-size) === 1
+        if length(--base-size) is 1
             --size-map[--multiplier-key] = --base-size * --size-multipliers[--multiplier-key]
-        else if length(--base-size) === 2
+        else if length(--base-size) is 2
             --size-map[--multiplier-key] = --base-size[0] * --size-multipliers[--multiplier-key] --base-size[1] * --size-multipliers[--multiplier-key]
-        else if length(--base-size) === 3
+        else if length(--base-size) is 3
             --size-map[--multiplier-key] = --base-size[0] * --size-multipliers[--multiplier-key] --base-size[1] * --size-multipliers[--multiplier-key] --base-size[2] * --size-multipliers[--multiplier-key]
-        else if length(--base-size) === 4
+        else if length(--base-size) is 4
             --size-map[--multiplier-key] = --base-size[0] * --size-multipliers[--multiplier-key] --base-size[1] * --size-multipliers[--multiplier-key] --base-size[2] * --size-multipliers[--multiplier-key] --base-size[3] * --size-multipliers[--multiplier-key]
 
     return --size-map

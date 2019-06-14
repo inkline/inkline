@@ -9,4 +9,10 @@
 --border-radius-enabled := true
 
 --border-radius-base := 0.25rem
---border-radius := -size-map(--border-radius-base, --sizes, --size-multipliers)
+--border-radius := {
+    xs: --border-radius-base * --size-multipliers['xs']
+    sm: --border-radius-base * --size-multipliers['sm']
+    md: --border-radius-base * --size-multipliers['md']
+    lg: --border-radius-base * --size-multipliers['lg']
+    xl: --border-radius-base * --size-multipliers['xl']
+}

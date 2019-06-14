@@ -12,7 +12,8 @@
     "dev": "vue-cli-service serve",
     "dist": "bash ./scripts/dist.sh",
     "test": "vue-cli-service test:unit --coverage --no-cache",
-    "test:dev": "vue-cli-service test:unit --watch --coverage --no-cache"
+    "test:dev": "vue-cli-service test:unit --watch --coverage --no-cache",
+    "prepublishOnly": "npm run build"
   },
   "main": "dist/inkline.js",
   "unpkg": "dist/inkline.js",
