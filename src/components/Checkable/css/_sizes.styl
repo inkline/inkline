@@ -1,19 +1,19 @@
 //
 // CheckableProviderMixin sizes
 //
-for size in (sm md lg)
-    .form.-{size} .form-check
-    .form-group.-{size} .form-check
-    .form-check.-{size}
-        font-size: --font-size[size]
+for --size in --sizes
+    .form.-{--size} .form-check
+    .form-group.-{--size} .form-check
+    .form-check.-{--size}
+        font-size: --font-size[--size]
 
         &.-custom
             .form-input-label
-                padding-left: (--form-check-indicator-size + --form-check-indicator-gutter) * --size-percentages[size]
+                padding-left: (--form-check-indicator-size + --form-check-indicator-gutter) * --size-multipliers[--size]
 
                 &::before
                 &::after
-                    top: --form-check-indicator-margin-normalize * --size-percentages[size]
-                    width: --form-check-indicator-size * --size-percentages[size]
-                    height: --form-check-indicator-size * --size-percentages[size]
-                    line-height: --form-check-indicator-size * --size-percentages[size]
+                    top: --form-check-indicator-margin-normalize * --size-multipliers[--size]
+                    width: --form-check-indicator-size * --size-multipliers[--size]
+                    height: --form-check-indicator-size * --size-multipliers[--size]
+                    line-height: --form-check-indicator-size * --size-multipliers[--size]

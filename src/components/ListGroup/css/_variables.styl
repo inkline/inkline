@@ -5,14 +5,8 @@
 
 --list-group-item-disabled-color := --text-muted
 
---list-group-item-padding-sm := --spacers['1'] * --size-percentages['sm']
---list-group-item-padding-md := --spacers['1'] * --size-percentages['md']
---list-group-item-padding-lg := --spacers['1'] * --size-percentages['lg']
---list-group-item-padding := {
-    'sm': --list-group-item-padding-sm
-    'md': --list-group-item-padding-md
-    'lg': --list-group-item-padding-lg
-}
+--list-group-item-padding-base := --spacers['1']
+--list-group-item-padding := -size-map(--list-group-item-padding-base, --sizes, --size-multipliers)
 
 --list-group-border-width := --border-width
 --list-group-border-style := solid

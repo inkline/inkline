@@ -1,13 +1,7 @@
 //
 // Variables
 //
---header-padding-sm := 5rem
---header-padding-md := 10rem
---header-padding-lg := 15rem
---header-padding := {
-    'sm': --header-padding-sm
-    'md': --header-padding-md
-    'lg': --header-padding-lg
-}
+--header-padding-base := 10rem
+--header-padding := -size-map(--header-padding-base, --sizes, --size-multipliers)
 
 --header-background-color := --colors['gray-20']

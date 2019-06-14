@@ -1,11 +1,11 @@
 //
 // Nav sizes
 //
-for size in (sm md lg)
-    .pagination.-{size}
-        font-size: --pagination-font-size[size]
+for --size in --sizes
+    .pagination.-{--size}
+        font-size: --pagination-font-size[--size]
 
         > .item
-            border-radius: --pagination-item-border-radius[size]
-            padding: --pagination-item-padding[size]
-            min-width: --pagination-item-min-width[size]
+            border-radius: --pagination-item-border-radius[--size]
+            padding: --pagination-item-padding[--size]
+            min-width: --pagination-item-min-width[--size]

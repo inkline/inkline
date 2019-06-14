@@ -1,6 +1,6 @@
 //
 // Checkbox Button Sizes
 //
-for size in (sm md lg)
-    .button.-checkbox.-{size}
-        font-size: --button-font-size[size]
+for --size in --sizes
+    .button.-checkbox.-{--size}
+        font-size: --button-font-size[--size]

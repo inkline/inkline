@@ -11,14 +11,9 @@
 --tooltip-border-width := --border-width
 --tooltip-border-radius := --border-radius
 
---tooltip-padding-sm := --spacers['1/4'] * --size-percentages['sm'] --spacers['1/2'] * --size-percentages['sm']
---tooltip-padding-md := --spacers['1/4'] * --size-percentages['md'] --spacers['1/2'] * --size-percentages['md']
---tooltip-padding-lg := --spacers['1/4'] * --size-percentages['lg'] --spacers['1/2'] * --size-percentages['lg']
---tooltip-padding := {
-    'sm': --tooltip-padding-sm
-    'md': --tooltip-padding-md
-    'lg': --tooltip-padding-lg
-}
+--tooltip-padding-base := --spacers['1/4'] --spacers['1/2']
+--tooltip-padding := -size-map(--tooltip-padding-base, --sizes, --size-multipliers)
+
 
 //
 // Variants

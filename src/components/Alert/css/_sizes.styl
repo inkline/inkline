@@ -1,25 +1,25 @@
 //
 // Alert sizes
 //
-for size in (sm md lg)
-    .alert.-{size}
-        border-radius: --alert-border-radius[size]
-        font-size: --alert-font-size[size]
+for --size in --sizes
+    .alert.-{--size}
+        border-radius: --alert-border-radius[--size]
+        font-size: --alert-font-size[--size]
 
         > .content
-            padding: --alert-padding[size]
+            padding: --alert-padding[--size]
 
         > .title
-            margin-bottom: --alert-padding[size]
+            margin-bottom: --alert-padding[--size]
 
         > .link + .link
-            margin-left: --alert-padding[size]
+            margin-left: --alert-padding[--size]
 
         > .dismiss
-            padding: (--alert-padding[size] / 2)
-            margin-right: (--alert-padding[size] / 2)
-            margin-left: (--alert-padding[size] / 2)
+            padding: (--alert-padding[--size] / 2)
+            margin-right: (--alert-padding[--size] / 2)
+            margin-left: (--alert-padding[--size] / 2)
 
         > .icon
-            padding-left: --alert-padding[size]
-            padding-right: --alert-padding[size]
+            padding-left: --alert-padding[--size]
+            padding-right: --alert-padding[--size]

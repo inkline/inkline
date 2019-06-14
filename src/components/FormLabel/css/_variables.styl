@@ -3,13 +3,7 @@
 //
 
 
---label-margin-sm := --spacers['1/4'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
---label-margin-md := --spacers['1/4'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
---label-margin-lg := --spacers['1/4'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
---label-margin := {
-    'sm': --label-margin-sm
-    'md': --label-margin-md
-    'lg': --label-margin-lg
-}
+--label-margin-base := --spacers['1/4'] --spacers['1']
+--label-margin := -size-map(--label-margin-base, --sizes, --size-multipliers)
 
 --label-font-size := --font-size

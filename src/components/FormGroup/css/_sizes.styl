@@ -1,7 +1,7 @@
 //
 // Input Group Sizes
 //
-for size in (sm md lg)
-    .form-group.-{size}
+for --size in --sizes
+    .form-group.-{--size}
         > .form-input-label
-            -form-input-label-size(size)
+            -form-input-label-size(--size)

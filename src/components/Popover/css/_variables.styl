@@ -12,14 +12,8 @@
 --popover-border-width := --border-width
 --popover-border-radius := --border-radius
 
---popover-padding-sm := --spacers['2/3'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
---popover-padding-md := --spacers['2/3'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
---popover-padding-lg := --spacers['2/3'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
---popover-padding := {
-    'sm': --popover-padding-sm
-    'md': --popover-padding-md
-    'lg': --popover-padding-lg
-}
+--popover-padding-base := --spacers['2/3'] --spacers['1']
+--popover-padding := -size-map(--popover-padding-base, --sizes, --size-multipliers)
 
 //
 // Variants

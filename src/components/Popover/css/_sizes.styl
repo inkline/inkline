@@ -1,12 +1,12 @@
 //
 // Popover sizes
 //
-for size in (sm md lg)
-    .popover.-{size}
-        border-radius: --popover-border-radius[size]
-        font-size: --popover-font-size[size]
+for --size in --sizes
+    .popover.-{--size}
+        border-radius: --popover-border-radius[--size]
+        font-size: --popover-font-size[--size]
 
         > .header
         > .body
         > .footer
-            padding: --popover-padding[size]
+            padding: --popover-padding[--size]

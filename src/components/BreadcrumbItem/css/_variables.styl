@@ -1,11 +1,5 @@
 //
 // Breadcrumb Variables
 //
---breadcrumb-item-padding-sm := --spacers['1'] * --size-percentages['sm']
---breadcrumb-item-padding-md := --spacers['1'] * --size-percentages['md']
---breadcrumb-item-padding-lg := --spacers['1'] * --size-percentages['lg']
---breadcrumb-item-padding := {
-    'sm': --breadcrumb-item-padding-sm
-    'md': --breadcrumb-item-padding-md
-    'lg': --breadcrumb-item-padding-lg
-}
+--breadcrumb-item-padding-base := --spacers['1']
+--breadcrumb-item-padding := -size-map(--breadcrumb-item-padding-base, --sizes, --size-multipliers)

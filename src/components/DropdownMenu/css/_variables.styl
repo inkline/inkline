@@ -13,32 +13,14 @@
 
 --dropdown-min-width := 200px
 
---dropdown-padding-sm := --spacers['1/2'] * --size-percentages['sm'] 0
---dropdown-padding-md := --spacers['1/2'] * --size-percentages['md'] 0
---dropdown-padding-lg := --spacers['1/2'] * --size-percentages['lg'] 0
---dropdown-padding := {
-    'sm': --dropdown-padding-sm
-    'md': --dropdown-padding-md
-    'lg': --dropdown-padding-lg
-}
+--dropdown-padding-base := --spacers['1/2'] 0
+--dropdown-padding := -size-map(--dropdown-padding-base, --sizes, --size-multipliers)
 
---dropdown-item-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
---dropdown-item-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
---dropdown-item-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
---dropdown-item-padding := {
-    'sm': --dropdown-item-padding-sm
-    'md': --dropdown-item-padding-md
-    'lg': --dropdown-item-padding-lg
-}
+--dropdown-item-padding-base := --spacers['1/2'] --spacers['1']
+--dropdown-item-padding := -size-map(--dropdown-item-padding-base, --sizes, --size-multipliers)
 
---dropdown-divider-margin-sm := --spacers['1/2'] * --size-percentages['sm'] 0
---dropdown-divider-margin-md := --spacers['1/2'] * --size-percentages['md'] 0
---dropdown-divider-margin-lg := --spacers['1/2'] * --size-percentages['lg'] 0
---dropdown-divider-margin := {
-    'sm': --dropdown-divider-margin-sm
-    'md': --dropdown-divider-margin-md
-    'lg': --dropdown-divider-margin-lg
-}
+--dropdown-divider-margin-base := --spacers['1/2'] 0
+--dropdown-divider-margin := -size-map(--dropdown-divider-margin-base, --sizes, --size-multipliers)
 
 //
 // Variants

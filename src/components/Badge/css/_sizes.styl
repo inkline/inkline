@@ -1,11 +1,11 @@
 //
 // Badge sizes
 //
-for size in (sm md lg)
-    .badge.-{size}
-        border-radius: --badge-border-radius[size]
-        font-size: --badge-font-size[size]
-        padding: --badge-padding[size]
+for --size in --sizes
+    .badge.-{--size}
+        border-radius: --badge-border-radius[--size]
+        font-size: --badge-font-size[--size]
+        padding: --badge-padding[--size]
 
         &.-pill
-            padding: --badge-padding[size]
+            padding: --badge-padding[--size]

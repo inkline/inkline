@@ -72,16 +72,6 @@
         width: 100% // Required because we use flexbox and this inherently applies align-self: stretch
 
 
-    > .list-group:first-child
-        .item:first-child
-            border-top-left-radius: --card-border-radius[size]
-            border-top-right-radius: --card-border-radius[size]
-
-    > .list-group:last-child
-        .item:last-child
-            border-bottom-left-radius: --card-border-radius[size]
-            border-bottom-right-radius: --card-border-radius[size]
-
     // Default card size
     @extend .card.-md
     @extend .card.-light

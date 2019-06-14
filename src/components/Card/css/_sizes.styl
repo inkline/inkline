@@ -1,42 +1,52 @@
 //
 // Card sizes
 //
-for size in (sm md lg)
-    .card.-{size}
-        border-radius: --card-border-radius[size]
-        font-size: --card-font-size[size]
+for --size in --sizes
+    .card.-{--size}
+        border-radius: --card-border-radius[--size]
+        font-size: --card-font-size[--size]
 
         > .header
-            padding: --card-padding[size]
+            padding: --card-padding[--size]
 
             &:first-child
-                border-top-left-radius: --card-border-radius[size]
-                border-top-right-radius: --card-border-radius[size]
+                border-top-left-radius: --card-border-radius[--size]
+                border-top-right-radius: --card-border-radius[--size]
 
         > .body
-            padding: --card-padding[size]
-            border-radius: --card-border-radius[size]
+            padding: --card-padding[--size]
+            border-radius: --card-border-radius[--size]
 
             > .title
-                margin-bottom: --card-padding[size]
+                margin-bottom: --card-padding[--size]
 
             > .subtitle
-                margin-top: --card-padding[size] / 2
+                margin-top: --card-padding[--size] / 2
 
             > .link + .link
-                margin-left: --card-padding[size]
+                margin-left: --card-padding[--size]
 
         > .footer
-            padding: --card-padding[size]
+            padding: --card-padding[--size]
 
             &:last-child
-                border-bottom-left-radius: --card-border-radius[size]
-                border-bottom-right-radius: --card-border-radius[size]
+                border-bottom-left-radius: --card-border-radius[--size]
+                border-bottom-right-radius: --card-border-radius[--size]
 
         > img
-            border-top-left-radius: --card-border-radius[size]
-            border-top-right-radius: --card-border-radius[size]
+            border-top-left-radius: --card-border-radius[--size]
+            border-top-right-radius: --card-border-radius[--size]
 
             &:last-child
-                border-bottom-left-radius: --card-border-radius[size]
-                border-bottom-right-radius: --card-border-radius[size]
+                border-bottom-left-radius: --card-border-radius[--size]
+                border-bottom-right-radius: --card-border-radius[--size]
+
+        > .list-group:first-child
+        .item:first-child
+            border-top-left-radius: --card-border-radius[--size]
+            border-top-right-radius: --card-border-radius[--size]
+
+        > .list-group:last-child
+        .item:last-child
+            border-bottom-left-radius: --card-border-radius[--size]
+            border-bottom-right-radius: --card-border-radius[--size]

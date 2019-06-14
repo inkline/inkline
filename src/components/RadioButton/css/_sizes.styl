@@ -1,6 +1,6 @@
 //
 // Radio Button sizes
 //
-for size in (sm md lg)
-    .button.-radio.-{size}
-        font-size: --button-font-size[size]
+for --size in --sizes
+    .button.-radio.-{--size}
+        font-size: --button-font-size[--size]

@@ -33,6 +33,6 @@
     &.-chevron-down::before
         content: --icon-chevron-down
 
-    for --breakpoint-name in (sm md lg)
+    for --breakpoint-name in --sizes
         &.-{--breakpoint-name}
             font-size: --font-size[--breakpoint-name]

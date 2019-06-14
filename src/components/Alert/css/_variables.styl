@@ -8,14 +8,8 @@
 --alert-border-width := --border-width
 --alert-border-radius := --border-radius
 
---alert-padding-sm := --spacers['1'] * --size-percentages['sm']
---alert-padding-md := --spacers['1'] * --size-percentages['md']
---alert-padding-lg := --spacers['1'] * --size-percentages['lg']
---alert-padding := {
-    'sm': --alert-padding-sm
-    'md': --alert-padding-md
-    'lg': --alert-padding-lg
-}
+--alert-padding-base := --spacers['1']
+--alert-padding := -size-map(--alert-padding-base, --sizes, --size-multipliers)
 
 --alert-dismiss-size := 1rem
 

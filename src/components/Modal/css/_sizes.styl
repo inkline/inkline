@@ -1,20 +1,20 @@
 //
 // Modal sizes
 //
-for size in (sm md lg)
-    .modal.-{size}
-        max-width: --modal-width[size]
-        border-radius: --modal-border-radius[size]
+for --size in --sizes
+    .modal.-{--size}
+        max-width: --modal-width[--size]
+        border-radius: --modal-border-radius[--size]
 
         > .header
         > .body
         > .footer
-            padding: --modal-padding[size]
+            padding: --modal-padding[--size]
 
         > .header
-            border-top-left-radius: --modal-border-radius[size]
-            border-top-right-radius: --modal-border-radius[size]
+            border-top-left-radius: --modal-border-radius[--size]
+            border-top-right-radius: --modal-border-radius[--size]
 
         > .footer
-            border-bottom-left-radius: --modal-border-radius[size]
-            border-bottom-right-radius: --modal-border-radius[size]
+            border-bottom-left-radius: --modal-border-radius[--size]
+            border-bottom-right-radius: --modal-border-radius[--size]

@@ -1,25 +1,25 @@
 //
 // Sizes
 //
-for size in (sm md lg)
-    .form.-{size} .form-input-group > .form-input
-    .form-group.-{size} .form-input-group > .form-input
-    .form.-{size} .select > .form-input-group > .form-input
-    .form-group.-{size} .select > .form-input-group > .form-input
-    .select.-{size} > .form-input-group > .form-input
-    .form-input-group.-{size} > .form-input
+for --size in --sizes
+    .form.-{--size} .form-input-group > .form-input
+    .form-group.-{--size} .form-input-group > .form-input
+    .form.-{--size} .select > .form-input-group > .form-input
+    .form-group.-{--size} .select > .form-input-group > .form-input
+    .select.-{--size} > .form-input-group > .form-input
+    .form-input-group.-{--size} > .form-input
         -form-input-size(size)
 
-    .form-input-group.-{size}
+    .form-input-group.-{--size}
         > .form-input-prepend
         > .form-input-append
-            font-size: --input-font-size[size]
+            font-size: --input-font-size[--size]
 
             if --border-radius-enabled
-                border-radius: --input-border-radius[size]
+                border-radius: --input-border-radius[--size]
 
             > *
-                padding: --input-padding[size]
+                padding: --input-padding[--size]
 
         > .form-input-prepend
         > .form-input-prepend > *

@@ -8,14 +8,8 @@
 
 --modal-margin := --spacers['1']
 
---modal-width-sm := 320px
---modal-width-md := 480px
---modal-width-lg := 800px
---modal-width := {
-    'sm': --modal-width-sm
-    'md': --modal-width-md
-    'lg': --modal-width-lg
-}
+--modal-width-base := 480px
+--modal-width := -size-map(--modal-width-base, --sizes, --size-multipliers)
 
 --modal-border-width := --border-width
 --modal-border-radius := --border-radius
@@ -24,14 +18,8 @@
 --modal-background := --colors['white']
 --modal-overlay-background := rgba(0, 0, 0, 0.75)
 
---modal-padding-sm := --spacers['1'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
---modal-padding-md := --spacers['1'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
---modal-padding-lg := --spacers['1'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
---modal-padding := {
-    'sm': --modal-padding-sm
-    'md': --modal-padding-md
-    'lg': --modal-padding-lg
-}
+--modal-padding-base := --spacers['1']
+--modal-padding := -size-map(--modal-padding-base, --sizes, --size-multipliers)
 
 //
 // Variants

@@ -60,6 +60,6 @@ for --font-weight-name, --font-weight-value in --font-weight
 
 // Font size
 //
-for --font-size-name, --font-size-value in --font-size
-    ._font-size-{--font-size-name}
-        font-size: --font-size-value
+for --size in --sizes
+    ._font-size-{--size}
+        font-size: --font-size[--size]

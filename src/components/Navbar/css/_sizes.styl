@@ -1,12 +1,12 @@
 //
 // Navbar sizes
 //
-for size in (sm md lg)
-    .navbar.-{size}
-        padding: --navbar-padding[size]
+for --size in --sizes
+    .navbar.-{--size}
+        padding: --navbar-padding[--size]
 
         for --breakpoint in (xs sm md lg xl)
             &.-collapse-{--breakpoint}
                 +-breakpoint-down(--breakpoint)
                     > .container > .row > .column > .items
-                        margin-top: --navbar-padding[size][0]
+                        margin-top: --navbar-padding[--size][0]

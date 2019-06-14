@@ -1,35 +1,35 @@
 //
 // Button Group sizes
 //
-for size in (sm md lg)
-    .button-group.-{size}
+for --size in --sizes
+    .button-group.-{--size}
         .button
-            font-size: --button-font-size[size]
-            padding: --button-padding[size]
+            font-size: --button-font-size[--size]
+            padding: --button-padding[--size]
 
             &.-circle
                 border-radius: 100%
-                width: --button-circle-size[size]
-                height: --button-circle-size[size]
+                width: --button-circle-size[--size]
+                height: --button-circle-size[--size]
                 padding: 0
 
         &:not(.-vertical)
             > .button:last-child
             > .button-group:last-child > .button
-                border-top-right-radius: --button-border-radius[size]
-                border-bottom-right-radius: --button-border-radius[size]
+                border-top-right-radius: --button-border-radius[--size]
+                border-bottom-right-radius: --button-border-radius[--size]
             > .button:first-child
             > .button-group:first-child > .button
-                border-top-left-radius: --button-border-radius[size]
-                border-bottom-left-radius: --button-border-radius[size]
+                border-top-left-radius: --button-border-radius[--size]
+                border-bottom-left-radius: --button-border-radius[--size]
 
         &.-vertical
             > .button:last-child
             > .button-group:last-child > .button
-                border-bottom-left-radius: --button-border-radius[size]
-                border-bottom-right-radius: --button-border-radius[size]
+                border-bottom-left-radius: --button-border-radius[--size]
+                border-bottom-right-radius: --button-border-radius[--size]
 
             > .button:first-child
             > .button-group:first-child > .button
-                border-top-left-radius: --button-border-radius[size]
-                border-top-right-radius: --button-border-radius[size]
+                border-top-left-radius: --button-border-radius[--size]
+                border-top-right-radius: --button-border-radius[--size]

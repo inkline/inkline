@@ -1,6 +1,6 @@
 //
 // Navbar sizes
 //
-for size in (sm md lg)
-    .navbar.-{size} > .container > .row > .column > .brand
-        padding: --navbar-brand-padding[size]
+for --size in --sizes
+    .navbar.-{--size} > .container > .row > .column > .brand
+        padding: --navbar-brand-padding[--size]

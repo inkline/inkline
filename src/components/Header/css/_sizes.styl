@@ -1,7 +1,7 @@
 //
 // Header sizes
 //
-for size in (sm md lg)
-    .header.-{size}
-        padding-top: --header-padding[size]
-        padding-bottom: --header-padding[size]
+for --size in --sizes
+    .header.-{--size}
+        padding-top: --header-padding[--size]
+        padding-bottom: --header-padding[--size]

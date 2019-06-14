@@ -4,14 +4,8 @@
 --progress-background := --colors['gray-30']
 --progress-border-radius := --border-radius
 
---progress-height-sm := --spacers['1/2'] * --size-percentages['sm']
---progress-height-md := --spacers['1/2'] * --size-percentages['md']
---progress-height-lg := --spacers['1/2'] * --size-percentages['lg']
---progress-height := {
-    'sm': --progress-height-sm
-    'md': --progress-height-md
-    'lg': --progress-height-lg
-}
+--progress-height-base := --spacers['1/2']
+--progress-height := -size-map(--progress-height-base, --sizes, --size-multipliers)
 
 //
 // Variants

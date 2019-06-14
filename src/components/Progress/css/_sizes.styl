@@ -1,7 +1,7 @@
 //
 // Progress sizes
 //
-for size in (sm md lg)
-    .progress.-{size}
-        border-radius: --progress-border-radius[size]
-        height: --progress-height[size]
+for --size in --sizes
+    .progress.-{--size}
+        border-radius: --progress-border-radius[--size]
+        height: --progress-height[--size]

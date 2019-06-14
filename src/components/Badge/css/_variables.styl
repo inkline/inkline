@@ -12,14 +12,8 @@
 --badge-border-width := --border-width
 --badge-border-radius := --border-radius
 
---badge-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['2/3'] * --size-percentages['sm']
---badge-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['2/3'] * --size-percentages['md']
---badge-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['2/3'] * --size-percentages['lg']
---badge-padding := {
-    'sm': --badge-padding-sm
-    'md': --badge-padding-md
-    'lg': --badge-padding-lg
-}
+--badge-padding-base := --spacers['1/2'] --spacers['2/3']
+--badge-padding := -size-map(--badge-padding-base, --sizes, --size-multipliers)
 
 --badge-pill-border-radius := 10rem
 

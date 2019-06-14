@@ -1,11 +1,11 @@
 //
 // Breadcrumb sizes
 //
-for size in (sm md lg)
-    .breadcrumb.-{size}
+for --size in --sizes
+    .breadcrumb.-{--size}
         > .item
-            padding-left: --breadcrumb-item-padding[size]
+            padding-left: --breadcrumb-item-padding[--size]
 
             + .item
                 &::before
-                    padding-right: --breadcrumb-item-padding[size]
+                    padding-right: --breadcrumb-item-padding[--size]

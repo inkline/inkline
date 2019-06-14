@@ -1,17 +1,17 @@
 //
 // Button sizes
 //
-for size in (sm md lg)
-    .form.-{size} > .button
-    .form.-{size} > .form-group > .button
-    .form-group.-{size} > .button
-    .button.-{size}
-        border-radius: --button-border-radius[size]
-        font-size: --button-font-size[size]
-        padding: --button-padding[size]
+for --size in --sizes
+    .form.-{--size} > .button
+    .form.-{--size} > .form-group > .button
+    .form-group.-{--size} > .button
+    .button.-{--size}
+        border-radius: --button-border-radius[--size]
+        font-size: --button-font-size[--size]
+        padding: --button-padding[--size]
 
         &.-circle
             border-radius: 100%
-            width: --button-circle-size[size]
-            height: --button-circle-size[size]
+            width: --button-circle-size[--size]
+            height: --button-circle-size[--size]
             padding: 0

@@ -5,14 +5,8 @@
 
 --breadcrumb-border-radius := --border-radius
 
---breadcrumb-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
---breadcrumb-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
---breadcrumb-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
---breadcrumb-padding := {
-    'sm': --breadcrumb-padding-sm
-    'md': --breadcrumb-padding-md
-    'lg': --breadcrumb-padding-lg
-}
+--breadcrumb-padding-base := --spacers['1/2'] --spacers['1']
+--breadcrumb-padding := -size-map(--breadcrumb-padding-base, --sizes, --size-multipliers)
 
 --breadcrumb-margin-bottom := --spacer
 

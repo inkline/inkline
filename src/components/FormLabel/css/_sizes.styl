@@ -1,14 +1,14 @@
 //
 // Form Label Sizes
 //
-for size in (sm md lg)
-    .form-group.-{size} > .form-label
-    .form-label.-{size}
-        font-size: --label-font-size[size]
-        margin-bottom: --label-margin[size][0]
+for --size in --sizes
+    .form-group.-{--size} > .form-label
+    .form-label.-{--size}
+        font-size: --label-font-size[--size]
+        margin-bottom: --label-margin[--size][0]
 
-    .form-group.-inline.-{size} > .form-label
-        margin-right: --label-margin[size][1]
+    .form-group.-inline.-{--size} > .form-label
+        margin-right: --label-margin[--size][1]
 
         &.-right
-            margin-left: --label-margin[size][1]
+            margin-left: --label-margin[--size][1]

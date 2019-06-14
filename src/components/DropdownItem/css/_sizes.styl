@@ -1,8 +1,8 @@
 //
 // Dropdown Item sizes
 //
-for size in (sm md lg)
-    .dropdown > .menu.-{size}
+for --size in --sizes
+    .dropdown > .menu.-{--size}
         .item,
         .dropdown > .item
-            padding: --dropdown-item-padding[size]
+            padding: --dropdown-item-padding[--size]

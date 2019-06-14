@@ -1,8 +1,8 @@
 //
 // Tooltip sizes
 //
-for size in (sm md lg)
-    .tooltip.-{size}
-        border-radius: --tooltip-border-radius[size]
-        font-size: --tooltip-font-size[size]
-        padding: --tooltip-padding[size]
+for --size in --sizes
+    .tooltip.-{--size}
+        border-radius: --tooltip-border-radius[--size]
+        font-size: --tooltip-font-size[--size]
+        padding: --tooltip-padding[--size]

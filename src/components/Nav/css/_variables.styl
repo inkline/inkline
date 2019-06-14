@@ -5,11 +5,5 @@
 
 --nav-item-disabled-color := --text-muted
 
---nav-item-padding-sm := --spacers['1/2'] * --size-percentages['sm'] --spacers['1'] * --size-percentages['sm']
---nav-item-padding-md := --spacers['1/2'] * --size-percentages['md'] --spacers['1'] * --size-percentages['md']
---nav-item-padding-lg := --spacers['1/2'] * --size-percentages['lg'] --spacers['1'] * --size-percentages['lg']
---nav-item-padding := {
-    'sm': --nav-item-padding-sm
-    'md': --nav-item-padding-md
-    'lg': --nav-item-padding-lg
-}
+--nav-item-padding-base := --spacers['1/2'] --spacers['1']
+--nav-item-padding := -size-map(--nav-item-padding-base, --sizes, --size-multipliers)

@@ -3,11 +3,5 @@
 //
 --form-check-radio-border-radius := 100%
 
---form-check-radio-icon-size-sm := 6px
---form-check-radio-icon-size-md := 8px
---form-check-radio-icon-size-lg := 10px
---form-check-radio-icon-size := {
-    sm: --form-check-radio-icon-size-sm
-    md: --form-check-radio-icon-size-md
-    lg: --form-check-radio-icon-size-lg
-}
+--form-check-radio-icon-size-base := 8px
+--form-check-radio-icon-size := -size-map(--form-check-radio-icon-size-base, --sizes, --size-multipliers)
