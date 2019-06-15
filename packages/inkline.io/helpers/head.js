@@ -6,7 +6,7 @@ export function head(meta) {
     const description = meta.description + (meta.preserve && meta.preserve.description ? '' : descriptionPostamble);
 
     return function () {
-        const routerPath = this.$route.fullPath;
+        const routerPath = this.$route.fullPath.replace(/\/$/, '');
 
         return {
             title,
