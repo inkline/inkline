@@ -11,5 +11,10 @@ export default {
         title: 'Dropdown',
         description: 'Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.'
     }),
+    data() {
+        return {
+            manualDropdown: false
+        };
+    }
 };
 </script>
