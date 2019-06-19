@@ -185,8 +185,42 @@ You can use the `trigger` property to trigger the dropdown on `hover` or `click`
 </i-dropdown>&nbsp;
 
 <i-dropdown trigger="hover">
-    <i-button>Dropdown Hover</i-button>
+    <i-button>Hover Dropdown</i-button>
     <i-dropdown-menu>
+        <i-dropdown-item href>Action</i-dropdown-item>
+        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </i-dropdown-menu>
+</i-dropdown>&nbsp;
+
+
+<i-dropdown trigger="focus">
+    <i-button>Focus Dropdown</i-button>
+    <i-dropdown-menu>
+        <i-dropdown-item href>Action</i-dropdown-item>
+        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </i-dropdown-menu>
+</i-dropdown>&nbsp;
+
+<i-dropdown :trigger="['focus', 'hover']">
+    <i-button>Multiple Events Dropdown</i-button>
+    <i-dropdown-menu>
+        <i-dropdown-item href>Action</i-dropdown-item>
+        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </i-dropdown-menu>
+</i-dropdown>&nbsp;
+
+<i-dropdown trigger="manual">
+    <i-button @click="manualDropdown = !manualDropdown">Manual Dropdown</i-button>
+    <i-dropdown-menu v-model="manualDropdown">
         <i-dropdown-item href>Action</i-dropdown-item>
         <i-dropdown-item href>Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -199,7 +233,7 @@ You can use the `trigger` property to trigger the dropdown on `hover` or `click`
 
 ~~~html
 <i-dropdown trigger="click">
-    <i-button>Dropdown Click</i-button>
+    <i-button>Click Dropdown</i-button>
     <i-dropdown-menu>
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item :to="{ name: 'home' }">Another action</i-dropdown-item>
@@ -211,8 +245,44 @@ You can use the `trigger` property to trigger the dropdown on `hover` or `click`
 ~~~
 ~~~html
 <i-dropdown trigger="hover">
-    <i-button>Dropdown Hover</i-button>
+    <i-button>Hover Dropdown</i-button>
     <i-dropdown-menu>
+        <i-dropdown-item href="">Action</i-dropdown-item>
+        <i-dropdown-item :to="{ name: 'home' }">Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </i-dropdown-menu>
+</i-dropdown>
+~~~
+~~~html
+<i-dropdown trigger="focus">
+    <i-button>Focus Dropdown</i-button>
+    <i-dropdown-menu>
+        <i-dropdown-item href="">Action</i-dropdown-item>
+        <i-dropdown-item :to="{ name: 'home' }">Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </i-dropdown-menu>
+</i-dropdown>
+~~~
+~~~html
+<i-dropdown :trigger="['focus', 'hover']">
+    <i-button>Multiple Events Dropdown</i-button>
+    <i-dropdown-menu>
+        <i-dropdown-item href="">Action</i-dropdown-item>
+        <i-dropdown-item :to="{ name: 'home' }">Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </i-dropdown-menu>
+</i-dropdown>
+~~~
+~~~html
+<i-dropdown trigger="manual">
+    <i-button @click="visible = !visible">Manual Dropdown</i-button>
+    <i-dropdown-menu v-model="visible">
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item :to="{ name: 'home' }">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
