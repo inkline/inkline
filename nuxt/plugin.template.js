@@ -3,26 +3,22 @@ import Vue from 'vue';
 <% if (!options.treeShaking) { %>
 import Inkline from '@inkline/inkline';
 
-Vue.use(Inkline, <%= JSON.stringify(options.components || {}, undefined, 2) %>);
+Vue.use(Inkline, <%= JSON.stringify(options.inkline.components ? options.inkline : {}, undefined, 2) %>);
 <% } %>
 
-<% if (options.treeShake) { %>
+<% if (options.treeShaking) { %>
+<% if (options.inkline.components) { %>
 import {
-<%= [].concat(
-options.config ? 'InklineConfig' : null,
-options.componentPlugins,
-options.directivePlugins,
-options.components,
-options.directives
-).filter(Boolean).join(',\n  ') %>
-} from '@inkline/inkline';
+    <%= ['$form'].concat(options.inkline.components).join(',\n  ') %>
+} from '@inkline/inkline/src/index';
 
-<%   if (options.config) { %>
-Vue.use(InjlineConfigPlugin, <%= JSON.stringify(options.config, undefined, 2) %>);
-<%   } %>
+Vue.directive('$form', $form);
 
-<%= options.componentPlugins.reduce((acc, plugin) => (acc += `Vue.use(${plugin});\n` ), '') %>
-<%= options.directivePlugins.reduce((acc, plugin) => (acc += `Vue.use(${plugin});\n` ), '') %>
-<%= options.components.reduce((acc, c) => (acc += `Vue.component('${c}', ${c});\n` ), '') %>
-<%= options.directives.reduce((acc, d) => (acc += `Vue.directive('${d.replace(/^VB/, 'B')}', ${d});\n` ), '') %>
+<%= options.components.map((component) => `Vue.component('${component}', ${component})`).join('\n') %>
+<% } %>
+<% if (!options.inkline.components) { %>
+import Inkline from '@inkline/inkline/src/index';
+
+Vue.use(Inkline, <%= JSON.stringify(options.inkline, undefined, 2) %>);
+<% } %>
 <% } %>
