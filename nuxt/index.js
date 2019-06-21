@@ -2,7 +2,8 @@ const { resolve } = require('path');
 
 const defaultOptions = {
     stylus: false,
-    treeShaking: false
+    treeShaking: false,
+    validation: true
 };
 
 module.exports = function InklineNuxt(moduleOptions = {}) {
@@ -35,6 +36,7 @@ module.exports = function InklineNuxt(moduleOptions = {}) {
             fileName: 'inkline.js',
             options: {
                 inkline: inklineOptions,
+                validation: options.validation,
                 treeShaking: options.treeShaking
             }
         });
