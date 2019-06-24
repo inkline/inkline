@@ -1,34 +1,19 @@
 import Vue from 'vue';
 
-
-<% if (!options.treeShaking) { %>
-import Inkline from '@inkline/inkline';
-
-Vue.use(Inkline, <%= JSON.stringify(options.inkline.components ? options.inkline : {}, undefined, 2) %>);
-<% } else { %>
+<% if (options.validation) { %>
+import InklineValidation from <%= options.treeShaking ? `'@inkline/inkline/src/validation'` : `'@inkline/inkline/dist/validation'` %>;
+<% } %>
 <% if (options.inkline.components) { %>
 import {
-    <%= ['$form'].concat(options.inkline.components).join(',\n    ') %>
-} from '@inkline/inkline/src/index';
-<% if (options.validation) { %>
-import InklineValidation from '@inkline/inkline/dist/validation';
-import InklineValidation from '@inkline/inkline/src/validation';
-<% } %>
+    <%= options.inkline.components.join(',\n    ') %>
+} from <%= options.treeShaking ? `'@inkline/inkline/src/index'` : `'@inkline/inkline'` %>;
 
-Vue.prototype.$form = $form;
-
-<%= options.components.map((component) => `Vue.component('${component}', ${component})`).join('\n') %>
+<%= options.inkline.components.map((component) => `Vue.component('${component}', ${component})`).join('\n') %>
 <% } else { %>
-import Inkline from '@inkline/inkline/src/index';
-<% if (options.validation) { %>
-import InklineValidation from '@inkline/inkline/dist/validation';
-import InklineValidation from '@inkline/inkline/src/validation';
-<% } %>
+import Inkline from <%= options.treeShaking ? `'@inkline/inkline/src/index'` : `'@inkline/inkline'` %>;
 
-Vue.use(Inkline, <%= JSON.stringify(options.inkline, undefined, 2) %>);
+Vue.use(Inkline, <%= JSON.stringify(options.inkline ? options.inkline : {}, undefined, 4) %>);
 <% } %>
-<% } %>
-
 <% if (options.validation) { %>
 Vue.use(InklineValidation);
 <% } %>
