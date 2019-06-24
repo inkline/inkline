@@ -65,7 +65,7 @@ export default {
         }));
     },
     mounted() {
-        if (this.schema) {
+        if (this.schema && this.parentFormGroup) {
             this.$set(this.parentFormGroup, 'inputSchema', this.schema);
         }
     }
