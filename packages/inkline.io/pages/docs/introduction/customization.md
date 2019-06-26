@@ -18,7 +18,7 @@ Next, we need to make sure we're importing the source code instead of the build 
 ~~~js
 import Vue from 'vue';
 import '@inkline/inkline/src/index.styl';
-import Inkline from '@inkline/inkline/src/index.js';
+import Inkline from '@inkline/inkline/src/index';
 
 Vue.use(Inkline);
 ~~~
