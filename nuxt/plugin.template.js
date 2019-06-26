@@ -5,10 +5,15 @@ import InklineValidation from <%= options.treeShaking ? `'@inkline/inkline/src/v
 <% } %>
 <% if (options.inkline.components) { %>
 import {
+    Inkline,
     <%= options.inkline.components.join(',\n    ') %>
 } from <%= options.treeShaking ? `'@inkline/inkline/src/index'` : `'@inkline/inkline'` %>;
 
-<%= options.inkline.components.map((component) => `Vue.component('${component}', ${component})`).join('\n') %>
+Vue.use(Inkline, {
+    components: [
+        <%= options.inkline.components.join(',\n        ') %>
+    ]
+});
 <% } else { %>
 import Inkline from <%= options.treeShaking ? `'@inkline/inkline/src/index'` : `'@inkline/inkline'` %>;
 
