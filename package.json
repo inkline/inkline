@@ -28,12 +28,12 @@
     "vue.config.js"
   ],
   "dependencies": {
-    "popper.js": "^1.15.0"
+    "popper.js": "^1.15.0",
+    "validator": "^11.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/types": "^7.4.4",
-    "@inkline/validation": "^1.1.0",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-plugin-unit-jest": "^3.8.0",
