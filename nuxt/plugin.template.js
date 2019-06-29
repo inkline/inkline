@@ -1,13 +1,13 @@
 import Vue from 'vue';
 
 <% if (options.validation) { %>
-import InklineValidation from <%= options.treeShaking ? `'@inkline/inkline/src/validation'` : `'@inkline/inkline/dist/validation'` %>;
+import InklineValidation from <%= options.treeShaking ? `'@inkline/inkline/src/validation.js'` : `'@inkline/inkline/dist/validation.js'` %>;
 <% } %>
 <% if (options.inkline.components) { %>
 import {
     Inkline,
     <%= options.inkline.components.join(',\n    ') %>
-} from <%= options.treeShaking ? `'@inkline/inkline/src/index'` : `'@inkline/inkline'` %>;
+} from <%= options.treeShaking ? `'@inkline/inkline/src/index.js'` : `'@inkline/inkline/dist/inkline.js'` %>;
 
 Vue.use(Inkline, {
     components: [
@@ -15,7 +15,7 @@ Vue.use(Inkline, {
     ]
 });
 <% } else { %>
-import Inkline from <%= options.treeShaking ? `'@inkline/inkline/src/index'` : `'@inkline/inkline'` %>;
+import Inkline from <%= options.treeShaking ? `'@inkline/inkline/src/index.js'` : `'@inkline/inkline/dist/inkline.js'` %>;
 
 Vue.use(Inkline, <%= JSON.stringify(options.inkline ? options.inkline : {}, undefined, 4) %>);
 <% } %>
