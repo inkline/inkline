@@ -2,8 +2,7 @@
  * Code
  */
 
-
-@require '_code'
-@require '_kbd'
-@require '_pre'
-@require '_samp'
+@import 'code';
+@import 'kbd';
+@import 'pre';
+@import 'samp';
