@@ -15,3 +15,21 @@
 
   @error "Element '#{$subkey}' not found in submap '#{$key}' group. Did you use quotes ?";
 }
+
+// Replace `$search` with `$replace` in `$string`
+// @author Hugo Giraudel
+// @source https://css-tricks.com/snippets/sass/str-replace-function/
+//
+// @param {String} $string  - Initial string
+// @param {String} $search  - Substring to replace
+// @param {String} $replace - New value
+// @return {String} - Updated string
+@function replace($search, $replace, $string) {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return "#{str-slice($string, 1, $index - 1)}#{$replace}#{replace($search, $replace, str-slice($string, $index + str-length($search)))}";
+  }
+
+  @return $string;
+}
