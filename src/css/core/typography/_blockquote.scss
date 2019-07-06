@@ -2,35 +2,44 @@
  * Blockquote
  */
 
-.blockquote
-    margin: 0 0 --spacer
-    font-size: --blockquote-font-size
+.blockquote {
+  margin: 0 0 $spacer;
+  font-size: $blockquote-font-size;
 
-    &.-left
-        text-align: left
+  &.-left {
+    text-align: left;
 
-        &.-bordered
-            padding-left: --spacer
-            border-left: --blockquote-border
+    &.-bordered {
+      padding-left: $spacer;
+      border-left: $blockquote-border;
+    }
+  }
 
-    &.-center
-        text-align: center
+  &.-center {
+    text-align: center;
+  }
 
-    &.-right
-        text-align: right
+  &.-right {
+    text-align: right;
 
-        &.-bordered
-            padding-right: --spacer
-            border-right: --blockquote-border
+    &.-bordered {
+      padding-right: $spacer;
+      border-right: $blockquote-border;
+    }
+  }
 
-    > p
-        margin-bottom: 0
+  > p {
+    margin-bottom: 0;
+  }
 
-    > footer
-    > .footer
-        display: block
-        font-size: 80%
-        color: --blockquote-small-color
+  > footer,
+  > .footer {
+    display: block;
+    font-size: 80%;
+    color: $blockquote-small-color;
 
-        &::before
-            content: '\2014 \00A0' // em dash, nbsp
+    &::before {
+      content: '\2014 \00A0'; // em dash, nbsp
+    }
+  }
+}
