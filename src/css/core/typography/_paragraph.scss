@@ -2,10 +2,12 @@
  * Paragraph
  */
 
-.lead
-    font-size: --lead-font-size
-    font-weight: --lead-font-weight
+.lead {
+  font-size: $lead-font-size;
+  font-weight: $lead-font-weight;
+}
 
-.initialism
-    font-size: 90%
-    text-transform: uppercase
+.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
