@@ -1,23 +1,23 @@
 //
 // Card variables
 //
---card-font-size := --font-size
---card-font-weight := --font-weight['normal']
---card-line-height := --line-height
+$card-font-size:   $font-size !default;
+$card-font-weight: font-weight(normal) !default;
+$card-line-height: $line-height !default;
 
---card-border-width := --border-width
---card-border-radius := --border-radius
+$card-border-width:  $border-width !default;
+$card-border-radius: $border-radius !default;
 
---card-padding-base := --spacers['1']
---card-padding := -size-map(--card-padding-base, --sizes, --size-multipliers)
+$card-padding-base: spacers('1') !default;
+$card-padding:      size-map($card-padding-base, $sizes, $size-multipliers) !default;
 
---card-background-darken := rgba(0, 0, 0, 0.10)
+$card-background-darken: rgba(0, 0, 0, 0.1) !default;
 
 //
 // Variants
 //
---card-variants := (basic brand monochrome-white neutral state)
---card-variant-color-light := --variant-color-light
---card-variant-color-dark := --variant-color-dark
+$card-variants:            ('basic', 'brand', 'monochrome-white', 'neutral', 'state') !default;
+$card-variant-color-light: $variant-color-light !default;
+$card-variant-color-dark:  $variant-color-dark !default;
 
---variants['card'] = -add-variant(--card-variants, { color: --color-groups })
+$variants: map_merge($variants, ('card': -add-variant($card-variants, ('color': $color-groups))));
