@@ -2,18 +2,17 @@
 // Tables
 //
 
---table-cell-padding := .75rem
---table-cell-padding-sm := .3rem
+$table-cell-padding:    0.75rem !default;
+$table-cell-padding-sm: 0.3rem !default;
 
---table-border-width := --border-width
---table-border-color := --border-color
+$table-border-width: $border-width !default;
+$table-border-color: $border-color !default;
 
 //
 // Variants
 //
---table-variants := (brand monochrome-white neutral state)
---table-variant-color-light := --variant-color-light
---table-variant-color-dark := --variant-color-dark
+$table-variants:            ('brand', 'monochrome-white', 'neutral', 'state') !default;
+$table-variant-color-light: $variant-color-light !default;
+$table-variant-color-dark:  $variant-color-dark !default;
 
-
---variants['table'] = -add-variant(--table-variants, { color: --color-groups })
+$variants: map_merge($variants, ('table': -add-variant($table-variants, ('color': $color-groups))));
