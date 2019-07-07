@@ -5,8 +5,8 @@
 //
 // Variants
 //
---progress-bar-variants := (brand monochrome state)
---progress-bar-variant-color-light := --variant-color-light
---progress-bar-variant-color-dark := --variant-color-dark
+$progress-bar-variants:            ('brand', 'monochrome', 'state') !default;
+$progress-bar-variant-color-light: $variant-color-light !default;
+$progress-bar-variant-color-dark:  $variant-color-dark !default;
 
---variants['progress-bar'] = -add-variant(--progress-bar-variants, { color: --color-groups })
+$variants: map_merge($variants, ('progress-bar': -add-variant($progress-bar-variants, ('color': $color-groups))));
