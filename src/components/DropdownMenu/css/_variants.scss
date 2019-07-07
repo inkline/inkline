@@ -1,13 +1,18 @@
 //
 // Dropdown Menu variants
 //
-for --variant-name, --variant in --variants['dropdown']
-    .dropdown > .menu.-{--variant-name}
-        color: -variant-color-by-luminance(--variant['color'], --dropdown-variant-color-light, --dropdown-variant-color-dark)
-        background-color: --variant['color']
-        border-color: darken(--variant['color'], 10%)
+@mixin dropdown-menu-color-variant($color-variant) {
+  color: -variant-color-by-luminance($color-variant, $dropdown-variant-color-light, $dropdown-variant-color-dark);
+  background-color: $color-variant;
+  border-color: darken-lightness($color-variant, 10%);
 
-        -popup-arrow-variant({
-            background: --variant['color'],
-            border-color: darken(--variant['color'], 10%)
-        })
+  @include popup-arrow-variant(('background': $color-variant, 'border-color': darken-lightness($color-variant, 10%)));
+}
+
+@each $variant-name, $variant in variants('dropdown') {
+  $_variant-color: map_get($variant, 'color');
+
+  .dropdown > .menu.-#{$variant-name} {
+    @include dropdown-menu-color-variant($_variant-color);
+  }
+}

@@ -1,29 +1,27 @@
-@require '../../css/config';
-@require '../../css/mixins';
-@require 'css/_variables';
-@require 'css/_sizes';
-@require 'css/_variants';
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_sizes';
+@import 'css/_variants';
 
 /**
  * Dropdown Menu
  */
-.dropdown > .menu
-    -popup({
-        margin: --dropdown-margin,
-        z-index: 2000
-    })
+.dropdown > .menu {
+  @include popup(('margin': $dropdown-margin, 'z-index': 2000));
+  @include popup-arrow();
+  @include popup-arrow-size();
 
-    -popup-arrow()
-    -popup-arrow-size()
+  color: $body-color;
+  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  list-style: none;
+  line-height: $dropdown-line-height;
+  background-clip: padding-box;
+  border-width: $dropdown-border-width;
+  border-style: solid;
+  min-width: $dropdown-min-width;
 
-    color: --body-color
-    text-align: left // Ensures proper alignment if parent has it changed (e.g., modal footer)
-    list-style: none
-    line-height: --dropdown-line-height
-    background-clip: padding-box
-    border-width: --dropdown-border-width
-    border-style: solid
-    min-width: --dropdown-min-width
-
-    @extend .dropdown > .menu.-md
-    @extend .dropdown > .menu.-light
+  // FIXME: This is over-complicated
+  @include dropdown-menu-color-variant(map_get(map_get(map_get($variants, 'dropdown'), 'light'), 'color'));
+  @include dropdown-menu-size-variant('md');
+}
