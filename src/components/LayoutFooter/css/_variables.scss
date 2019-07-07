@@ -1,5 +1,5 @@
 //
 // Variables
 //
---layout-footer-background := --colors['gray-10']
---layout-footer-padding := --spacer
+$layout-footer-background: colors('neutral', 'gray-10') !default;
+$layout-footer-padding:    $spacer !default;

@@ -1,12 +1,15 @@
-@import '../../css/config'
-@import 'css/_variables'
+@import '../../css/config/index';
+@import 'css/_variables';
 
 /**
  * Layout Footer
  */
-.layout-footer
-    flex: 0 0 auto
-    background: --layout-footer-background
-    padding: --layout-footer-padding
-    color: --text-color
-    font-size: --font-size['md']
+.layout-footer {
+  flex: 0 0 auto;
+  background: $layout-footer-background;
+  padding: $layout-footer-padding;
+
+  // FIXME: Undefined variable
+  // color: $text-color;
+  font-size: font-size('md');
+}
