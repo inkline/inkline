@@ -1,51 +1,59 @@
 /**
  * Collapsible Item
  */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Collapsible/css/_variables';
+@import 'css/_variants';
 
-@import '../../css/config'
-@import '../../css/mixins'
-@import '../Collapsible/css/_variables'
-@import 'css/_variants'
+.collapsible {
+  > .item {
+    position: relative;
+    display: block;
 
-.collapsible
-    > .item
-        position: relative
-        display: block
+    > .header {
+      border-width: 0;
+      border-bottom-width: 1px;
+      border-style: solid;
+      padding: $spacer;
+      display: block;
+      cursor: pointer;
 
-        > .header
-            border-width: 0
-            border-bottom-width: 1px
-            border-style: solid
-            padding: --spacer
-            display: block
-            cursor: pointer
+      > .icon {
+        display: inline-block;
+        float: right;
+        margin-top: 4px;
+        position: relative;
 
-            > .icon
-                display: inline-block
-                float: right
-                margin-top: 4px
-                position: relative
+        &::after {
+          @extend %icon;
 
-                &::after
-                    top: 0
-                    right: 0
-                    position: absolute
-                    transition: transform --transition-duration --transition-easing
-                    content: --icon-chevron-down
-                    -icon()
+          top: 0;
+          right: 0;
+          position: absolute;
+          transition: transform $transition-duration $transition-easing;
+          content: $icon-chevron-down;
+        }
+      }
+    }
 
-        &.-active > .header > .icon::after
-            transform: rotate(180deg)
+    &.-active > .header > .icon::after {
+      transform: rotate(180deg);
+    }
 
-        > .body
-            display: block
-            position: relative
+    > .body {
+      display: block;
+      position: relative;
 
-            > .content
-                padding: --spacer
+      > .content {
+        padding: $spacer;
+      }
+    }
 
+    &:last-child > .header {
+      border-bottom-width: 0;
+    }
+  }
 
-        &:last-child > .header
-            border-bottom-width: 0
-
-    @extend .collapsible.-light
+  @extend .collapsible.-light;
+}
