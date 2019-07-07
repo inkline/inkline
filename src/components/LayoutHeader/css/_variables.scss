@@ -1,5 +1,5 @@
 //
 // Variables
 //
---layout-header-background := --colors['transparent']
---layout-header-padding := --spacer
+$layout-header-background: colors('neutral', 'transparent') !default;
+$layout-header-padding:    $spacer !default;
