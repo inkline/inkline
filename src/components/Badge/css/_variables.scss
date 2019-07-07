@@ -1,27 +1,27 @@
 //
 // Badge Variables
 //
---badge-font-size := {
-    sm: 65%
-    md: 75%
-    lg: 85%
-}
---badge-font-weight := --font-weight['bold']
---badge-line-height := --line-height
+$badge-font-size: (
+  'sm': 65%,
+  'md': 75%,
+  'lg': 85%,
+) !default;
+$badge-font-weight: font-weight(bold) !default;
+$badge-line-height: $line-height !default;
 
---badge-border-width := --border-width
---badge-border-radius := --border-radius
+$badge-border-width:  $border-width !default;
+$badge-border-radius: $border-radius !default;
 
---badge-padding-base := --spacers['1/2'] --spacers['2/3']
---badge-padding := -size-map(--badge-padding-base, --sizes, --size-multipliers)
+$badge-padding-base: spacers('1/2') spacers('2/3');
+$badge-padding:      size-map($badge-padding-base, $sizes, $size-multipliers);
 
---badge-pill-border-radius := 10rem
+$badge-pill-border-radius: 10rem;
 
 //
 // Variants
 //
---badge-variants := (brand monochrome state)
---badge-variant-color-light := --variant-color-light
---badge-variant-color-dark := --variant-color-dark
+$badge-variants:            ('brand', 'monochrome', 'state') !default;
+$badge-variant-color-light: $variant-color-light !default;
+$badge-variant-color-dark:  $variant-color-dark !default;
 
---variants['badge'] = -add-variant(--badge-variants, { color: --color-groups })
+$variants: map_merge($variants, ('badge': -add-variant($badge-variants, ('color': $color-groups))));
