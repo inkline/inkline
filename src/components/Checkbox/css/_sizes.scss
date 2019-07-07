@@ -1,16 +1,25 @@
 //
 // Checkbox Sizes
 //
-for --size in --sizes
+@each $size in $sizes {
+  $_border-radius: map_get($form-check-checkbox-border-radius, $size);
+  $_icon-size:     map_get($form-check-checkbox-icon-size, $size);
 
-    .form.-{--size} .form-check
-    .form-group.-{--size} .form-check
-    .form-check.-{--size}
-        &.-custom.-checkbox
-            .form-input-label
-                &::before
-                    if --border-radius-enabled
-                        border-radius: --form-check-checkbox-border-radius[--size]
+  .form.-#{$size} .form-check,
+  .form-group.-#{$size} .form-check,
+  .form-check.-#{$size} {
+    &.-custom.-checkbox {
+      .form-input-label {
+        &::before {
+          @if $border-radius-enabled {
+            border-radius: $_border-radius;
+          }
+        }
 
-                &::after
-                    font-size: --form-check-checkbox-icon-size[--size]
+        &::after {
+          font-size: $_icon-size;
+        }
+      }
+    }
+  }
+}
