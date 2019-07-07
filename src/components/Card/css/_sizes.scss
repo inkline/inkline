@@ -1,52 +1,70 @@
 //
 // Card sizes
 //
-for --size in --sizes
-    .card.-{--size}
-        border-radius: --card-border-radius[--size]
-        font-size: --card-font-size[--size]
+@each $size in $sizes {
+  $_border-radius: map_get($card-border-radius, $size);
+  $_font-size:     map_get($card-font-size, $size);
+  $_padding:       map_get($card-padding, $size);
 
-        > .header
-            padding: --card-padding[--size]
+  .card.-#{$size} {
+    border-radius: $_border-radius;
+    font-size: $_font-size;
 
-            &:first-child
-                border-top-left-radius: --card-border-radius[--size]
-                border-top-right-radius: --card-border-radius[--size]
+    > .header {
+      padding: $_padding;
 
-        > .body
-            padding: --card-padding[--size]
-            border-radius: --card-border-radius[--size]
+      &:first-child {
+        border-top-left-radius: $_border-radius;
+        border-top-right-radius: $_border-radius;
+      }
+    }
 
-            > .title
-                margin-bottom: --card-padding[--size]
+    > .body {
+      padding: $_padding;
+      border-radius: $_border-radius;
 
-            > .subtitle
-                margin-top: --card-padding[--size] / 2
+      > .title {
+        margin-bottom: $_padding;
+      }
 
-            > .link + .link
-                margin-left: --card-padding[--size]
+      > .subtitle {
+        margin-top: $_padding / 2;
+      }
 
-        > .footer
-            padding: --card-padding[--size]
+      > .link + .link {
+        margin-left: $_padding;
+      }
+    }
 
-            &:last-child
-                border-bottom-left-radius: --card-border-radius[--size]
-                border-bottom-right-radius: --card-border-radius[--size]
+    > .footer {
+      padding: $_padding;
 
-        > img
-            border-top-left-radius: --card-border-radius[--size]
-            border-top-right-radius: --card-border-radius[--size]
+      &:last-child {
+        border-bottom-left-radius: $_border-radius;
+        border-bottom-right-radius: $_border-radius;
+      }
+    }
 
-            &:last-child
-                border-bottom-left-radius: --card-border-radius[--size]
-                border-bottom-right-radius: --card-border-radius[--size]
+    > img {
+      border-top-left-radius: $_border-radius;
+      border-top-right-radius: $_border-radius;
+    }
 
-        > .list-group:first-child
-        .item:first-child
-            border-top-left-radius: --card-border-radius[--size]
-            border-top-right-radius: --card-border-radius[--size]
+    &:last-child {
+      border-bottom-left-radius: $_border-radius;
+      border-bottom-right-radius: $_border-radius;
+    }
 
-        > .list-group:last-child
-        .item:last-child
-            border-bottom-left-radius: --card-border-radius[--size]
-            border-bottom-right-radius: --card-border-radius[--size]
+    > .list-group:first-child,
+    .item:first-child {
+      border-top-left-radius: $_border-radius;
+      border-top-right-radius: $_border-radius;
+    }
+
+    > .list-group:last-child,
+    .item:last-child {
+      border-bottom-left-radius: $_border-radius;
+      border-bottom-right-radius: $_border-radius;
+    }
+  }
+}
