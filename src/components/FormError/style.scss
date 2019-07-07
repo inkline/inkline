@@ -1,13 +1,15 @@
-@import '../../css/config'
-@import '../../css/mixins'
+@import '../../css/config/index';
+@import '../../css/mixins/index';
 
-.form-group-error
-    position: relative
-    margin: (--spacer / 4) 0 0
-    padding: 0
-    list-style: none
-    color: --colors['danger']
-    font-size: --font-size['sm']
+.form-group-error {
+  position: relative;
+  margin: ($spacer / 4) 0 0;
+  padding: 0;
+  list-style: none;
+  color: colors('state', 'danger');
+  font-size: font-size('sm');
 
-    li
-        margin: 0
+  li {
+    margin: 0;
+  }
+}
