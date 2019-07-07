@@ -1,19 +1,21 @@
-@import '../../css/config'
-@import '../../css/mixins'
-@import '../Button/css/_variables'
-@import 'css/_sizes'
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Button/css/_variables';
+@import 'css/_sizes';
 
 /**
  * Checkbox Button
  */
-.button.-checkbox
-    position: relative
+.button.-checkbox {
+  position: relative;
 
-    > input[type='checkbox']
-        opacity: 0
-        outline: none
-        position: absolute
-        width: 0
-        height: 0
+  > input[type='checkbox'] {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
 
-    @extend .button.-checkbox.-md
+  @extend .button.-checkbox.-md;
+}
