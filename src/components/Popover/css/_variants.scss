@@ -1,20 +1,23 @@
 //
 // Popover variants
 //
-for --variant-name, --variant in --variants['popover']
-    .popover.-{--variant-name}
-        color: -variant-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
-        background-color: --variant['color']
-        border-color: darken(--variant['color'], 10%)
+@each $variant-name, $variant in variants('popover') {
+  $_variant-color: map_get($variant, 'color');
 
-        > .header
-        > .footer
-            border-color: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 15%), darken(--variant['color'], 10%))
+  .popover.-#{$variant-name} {
+    color: -variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
+    background-color: $_variant-color;
+    border-color: darken-lightness($_variant-color, 10%);
 
-        > .header
-            background-color: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 10%), darken(--variant['color'], 5%))
+    > .header,
+    > .footer {
+      border-color: -variant-color-by-luminance($_variant-color, darken-lightness($_variant-color, 15%), darken-lightness($_variant-color, 10%));
+    }
 
-        -popup-arrow-variant({
-            background: --variant['color'],
-            border-color: darken(--variant['color'], 10%)
-        })
+    > .header {
+      background-color: -variant-color-by-luminance($_variant-color, darken-lightness($_variant-color, 10%), darken-lightness($_variant-color, 5%));
+    }
+
+    @include popup-arrow-variant((background:$_variant-color, border-color:darken-lightness($_variant-color, 10%)));
+  }
+}
