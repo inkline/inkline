@@ -1,12 +1,20 @@
 //
 // Navbar sizes
 //
-for --size in --sizes
-    .navbar.-{--size}
-        padding: --navbar-padding[--size]
+@each $size in $sizes {
+  $_padding: map_get($navbar-padding, $size);
 
-        for --breakpoint in (xs sm md lg xl)
-            &.-collapse-{--breakpoint}
-                +-breakpoint-down(--breakpoint)
-                    > .container > .row > .column > .items
-                        margin-top: --navbar-padding[--size][0]
+  .navbar.-#{$size} {
+    padding: $_padding;
+
+    @each $breakpoint in ('xs', 'sm', 'md', 'lg', 'xl') {
+      &.-collapse-#{$breakpoint} {
+        @include breakpoint-down($breakpoint) {
+          > .container > .row > .column > .items {
+            margin-top: nth($_padding, 1);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,53 +1,63 @@
 /**
  * Navbar
  */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_variants';
+@import 'css/_sizes';
+@import 'css/_hamburger';
 
-@import '../../css/config'
-@import '../../css/mixins'
-@import 'css/_variables'
-@import 'css/_variants'
-@import 'css/_sizes'
-@import 'css/_hamburger'
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap; // allow us to do the line break for collapsing content
+  align-items: center;
+  justify-content: space-between;
 
-.navbar
-    position: relative
-    display: flex
-    flex-wrap: wrap // allow us to do the line break for collapsing content
-    align-items: center
-    justify-content: space-between
+  > .container > .row > .column {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 
-    > .container > .row > .column
-        display: flex
-        flex-wrap: wrap
-        align-items: center
-        justify-content: space-between
+    > .hamburger {
+      display: none;
+    }
+  }
 
-        > .hamburger
-            display: none
+  @each $breakpoint in ('xs', 'sm', 'md', 'lg', 'xl') {
+    &.-collapse-#{$breakpoint} {
+      @include breakpoint-down($breakpoint) {
+        > .container > .row > .column {
+          > .items {
+            position: relative;
+            display: block;
+            width: 100%;
 
-    for --breakpoint in (xs sm md lg xl)
-        &.-collapse-{--breakpoint}
-            +-breakpoint-down(--breakpoint)
-                > .container > .row > .column
-                    > .items
-                        position: relative
-                        display: block
-                        width: 100%
+            > .nav {
+              flex-direction: column;
+              align-items: flex-start;
 
-                        > .nav
-                            flex-direction: column
-                            align-items: flex-start
+              > .item {
+                width: 100%;
+                display: block;
+              }
+            }
+          }
 
-                            > .item
-                                width: 100%
-                                display: block
+          > .hamburger {
+            display: inline-block;
 
+            + .brand {
+              order: -1;
+            }
+          }
+        }
+      }
+    }
+  }
 
-                    > .hamburger
-                        display: inline-block
-
-                        + .brand
-                            order: -1
-
-    @extend .navbar.-md
-    @extend .navbar.-light
+  @extend .navbar.-md;
+  @extend .navbar.-light;
+}
