@@ -1,24 +1,29 @@
-@import '../../css/config'
-@import '../../css/mixins'
+@import '../../css/config/index';
+@import '../../css/mixins/index';
 
 /**
  * Layout
  */
-.layout
-    display: flex
-    flex-direction: column
-    flex: auto
+.layout {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
 
-    &,
-    *
-        box-sizing: border-box
+  &,
+  * {
+    box-sizing: border-box;
+  }
 
-    &.-vertical
-        flex-direction: row
+  &.-vertical {
+    flex-direction: row;
 
-        > .layout,
-        > .container
-            overflow-x: hidden
+    > .layout,
+    > .container {
+      overflow-x: hidden;
+    }
+  }
 
-    > .container
-        flex: auto
+  > .container {
+    flex: auto;
+  }
+}
