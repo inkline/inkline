@@ -1,11 +1,17 @@
 //
 // Dropdown Menu sizes
 //
-for --size in --sizes
-    .form.-{--size} .select > .dropdown > .menu
-    .form-group.-{--size} .select > .dropdown > .menu
-    .select.-{--size} > .dropdown > .menu
-    .dropdown > .menu.-{--size}
-        border-radius: --dropdown-border-radius[--size]
-        font-size: --dropdown-font-size[--size]
-        padding: --dropdown-padding[--size]
+@mixin dropdown-menu-size-variant($size) {
+  border-radius: dropdown-border-radius($size);
+  font-size: dropdown-font-size($size);
+  padding: dropdown-padding($size);
+}
+
+@each $size in $sizes {
+  .form.-#{$size} .select > .dropdown > .menu,
+  .form-group.-#{$size} .select > .dropdown > .menu,
+  .select.-#{$size} > .dropdown > .menu,
+  .dropdown > .menu.-#{$size} {
+    @include dropdown-menu-size-variant($size);
+  }
+}
