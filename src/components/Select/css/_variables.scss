@@ -5,14 +5,14 @@
 //
 // Variants
 //
---select-dropdown-variants := (monochrome)
---select-dropdown-variant-color-light := --variant-color-light
---select-dropdown-variant-color-dark := --variant-color-dark
---select-dropdown-color-groups := {
-    monochrome: {
-        light: --color-white,
-        dark: --color-gray-80
-    }
-}
---variants['select-dropdown'] = -add-variant(--select-dropdown-variants, { color: --select-dropdown-color-groups })
+$select-dropdown-variants: ('monochrome') !default;
+$select-dropdown-variant-color-light: $variant-color-light !default;
+$select-dropdown-variant-color-dark: $variant-color-dark !default;
+$select-dropdown-color-groups: (
+  'monochrome': (
+    'light': $color-white,
+    'dark': $color-gray-80
+  )
+) !default;
 
+$variants: map_merge($variants, ('select-dropdown': -add-variant($select-dropdown-variants, ('color': $select-dropdown-color-groups))));
