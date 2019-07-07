@@ -1,20 +1,29 @@
 //
 // Modal sizes
 //
-for --size in --sizes
-    .modal.-{--size}
-        max-width: --modal-width[--size]
-        border-radius: --modal-border-radius[--size]
+@each $size in $sizes {
+  .modal.-#{$size} {
+    $_width:         map_get($modal-width, $size);
+    $_border-radius: map_get($modal-border-radius, $size);
+    $_padding:       map_get($modal-padding, $size);
 
-        > .header
-        > .body
-        > .footer
-            padding: --modal-padding[--size]
+    max-width: $_width;
+    border-radius: $_border-radius;
 
-        > .header
-            border-top-left-radius: --modal-border-radius[--size]
-            border-top-right-radius: --modal-border-radius[--size]
+    > .header,
+    > .body,
+    > .footer {
+      padding: $_padding;
+    }
 
-        > .footer
-            border-bottom-left-radius: --modal-border-radius[--size]
-            border-bottom-right-radius: --modal-border-radius[--size]
+    > .header {
+      border-top-left-radius: $_border-radius;
+      border-top-right-radius: $_border-radius;
+    }
+
+    > .footer {
+      border-bottom-left-radius: $_border-radius;
+      border-bottom-right-radius: $_border-radius;
+    }
+  }
+}
