@@ -1,35 +1,51 @@
 //
 // Button Group sizes
 //
-for --size in --sizes
-    .button-group.-{--size}
-        .button
-            font-size: --button-font-size[--size]
-            padding: --button-padding[--size]
+@each $size in $sizes {
+  .button-group.-#{$size} {
+    $_border-radius: map_get($button-border-radius, $size);
+    $_font-size:     map_get($button-font-size, $size);
+    $_padding:       map_get($button-padding, $size);
+    $_circle-size:   map_get($button-circle-size, $size);
 
-            &.-circle
-                border-radius: 100%
-                width: --button-circle-size[--size]
-                height: --button-circle-size[--size]
-                padding: 0
+    .button {
+      font-size: $_font-size;
+      padding: $_padding;
 
-        &:not(.-vertical)
-            > .button:last-child
-            > .button-group:last-child > .button
-                border-top-right-radius: --button-border-radius[--size]
-                border-bottom-right-radius: --button-border-radius[--size]
-            > .button:first-child
-            > .button-group:first-child > .button
-                border-top-left-radius: --button-border-radius[--size]
-                border-bottom-left-radius: --button-border-radius[--size]
+      &.-circle {
+        border-radius: 100%;
+        width: $_circle-size;
+        height: $_circle-size;
+        padding: 0;
+      }
+    }
 
-        &.-vertical
-            > .button:last-child
-            > .button-group:last-child > .button
-                border-bottom-left-radius: --button-border-radius[--size]
-                border-bottom-right-radius: --button-border-radius[--size]
+    &:not(.-vertical) {
+      > .button:last-child,
+      > .button-group:last-child > .button {
+        border-top-right-radius: $_border-radius;
+        border-bottom-right-radius: $_border-radius;
+      }
 
-            > .button:first-child
-            > .button-group:first-child > .button
-                border-top-left-radius: --button-border-radius[--size]
-                border-top-right-radius: --button-border-radius[--size]
+      > .button:first-child,
+      > .button-group:first-child > .button {
+        border-top-left-radius: $_border-radius;
+        border-bottom-left-radius: $_border-radius;
+      }
+    }
+
+    &.-vertical {
+      > .button:last-child,
+      > .button-group:last-child > .button {
+        border-bottom-left-radius: $_border-radius;
+        border-bottom-right-radius: $_border-radius;
+      }
+
+      > .button:first-child,
+      > .button-group:first-child > .button {
+        border-top-left-radius: $_border-radius;
+        border-top-right-radius: $_border-radius;
+      }
+    }
+  }
+}
