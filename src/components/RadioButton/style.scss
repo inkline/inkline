@@ -1,18 +1,20 @@
-@import '../../css/config'
-@import '../Button/css/_variables'
-@import 'css/_sizes'
+@import '../../css/config/index';
+@import '../Button/css/_variables';
+@import 'css/_sizes';
 
 /**
  * Radio Button
  */
-.button.-radio
-    position: relative
+.button.-radio {
+  position: relative;
 
-    > input[type='radio']
-        opacity: 0
-        outline: none
-        position: absolute
-        width: 0
-        height: 0
+  > input[type='radio'] {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
 
-    @extend .button.-radio.-md
+  @extend .button.-radio.-md;
+}
