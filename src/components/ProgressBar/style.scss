@@ -1,20 +1,20 @@
 /**
  * Nav
  */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Progress/css/_variables';
+@import 'css/_variables';
+@import 'css/_variants';
 
-@import '../../css/config'
-@import '../../css/mixins'
-@import '../Progress/css/_variables'
-@import 'css/_variables'
-@import 'css/_variants'
+.progress > .bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  height: 100%;
 
-.progress > .bar
-    display: flex
-    flex-direction: column
-    justify-content: center
-    text-align: center
-    white-space: nowrap
-    height: 100%
-
-    @extend .progress > .bar.-primary
-
+  // FIXME: This is complicated
+  @include progress-bar-color-variant(map_get(map_get(map_get($variants, 'progress-bar'), 'primary'), 'color'));
+}
