@@ -1,7 +1,12 @@
 //
 // Progress sizes
 //
-for --size in --sizes
-    .progress.-{--size}
-        border-radius: --progress-border-radius[--size]
-        height: --progress-height[--size]
+@each $size in $sizes {
+  $_border-radius: map_get($progress-border-radius, $size);
+  $_height: map_get($progress-height, $size);
+
+  .progress.-#{$size} {
+    border-radius: $_border-radius;
+    height: $_height;
+  }
+}
