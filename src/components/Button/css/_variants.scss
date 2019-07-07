@@ -2,49 +2,64 @@
 // Button variants
 // Add the required color variants to all button variations
 //
-for --variant-name, --variant in --variants['button']
-    .button.-{--variant-name}
-        color: -variant-color-by-luminance(--variant['color'], --button-variant-color-light, --button-variant-color-dark)
-        background-color: --variant['color']
-        border-color: --variant['color']
+@each $variant-name, $variant in variants('button') {
+  $_color-variant: map_get($variant, 'color');
+  $_color-by-luminance: -variant-color-by-luminance($_color-variant, $button-variant-color-light, $button-variant-color-dark);
 
-        &:not(:disabled):not(.-disabled)
-            &:hover,
-            &.-hovered
-                background-color: darken(--variant['color'], --button-darken-percentage-hover)
-                border-color: darken(--variant['color'], --button-darken-percentage-hover)
+  .button.-#{$variant-name} {
+    color: $_color-by-luminance;
+    background-color: $_color-variant;
+    border-color: $_color-variant;
 
-            &:active
-            &.-active
-                background-color: darken(--variant['color'], 2.5 * --button-darken-percentage-hover)
+    &:not(:disabled):not(.-disabled) {
+      &:hover,
+      &.-hovered {
+        background-color: darken-lightness($_color-variant, $button-darken-percentage-hover);
+        border-color: darken-lightness($_color-variant, $button-darken-percentage-hover);
+      }
 
-            &:focus
-            &.-focused
-                box-shadow: 0 0 0 2px rgba(--variant['color'], 0.25)
+      &:active,
+      &.-active {
+        background-color: darken-lightness($_color-variant, 2.5 * $button-darken-percentage-hover);
+      }
 
-        &.-outline
-            background-color: transparent
-            color: --variant['color']
+      &:focus,
+      &.-focused {
+        box-shadow: 0 0 0 2px rgba($_color-variant, 0.25);
+      }
+    }
 
-            &:not(:disabled):not(.-disabled)
-                &:hover
-                &.-hovered
-                &:focus
-                &.-focused
-                    color: -variant-color-by-luminance(--variant['color'], --button-variant-color-light, --button-variant-color-dark)
-                    background-color: darken(--variant['color'], --button-darken-percentage-hover)
-                    border-color: darken(--variant['color'], --button-darken-percentage-hover)
+    &.-outline {
+      background-color: transparent;
+      color: map_get($variant, 'color');
 
-        &.-link
-            color: --variant['color']
-            background-color: transparent
-            border-color: transparent
+      &:not(:disabled):not(.-disabled) {
+        &:hover,
+        &.-hovered,
+        &:focus,
+        &.-focused {
+          color: $_color-by-luminance;
+          background-color: darken-lightness($_color-variant, $button-darken-percentage-hover);
+          border-color: darken-lightness($_color-variant, $button-darken-percentage-hover);
+        }
+      }
+    }
 
-            &:not(:disabled):not(.-disabled)
-                &:hover
-                &.-hovered
-                &:focus
-                &.-focused
-                    color: darken(--variant['color'], 5%)
-                    background-color: transparent
-                    border-color: transparent
+    &.-link {
+      color: $_color-variant;
+      background-color: transparent;
+      border-color: transparent;
+
+      &:not(:disabled):not(.-disabled) {
+        &:hover,
+        &.-hovered,
+        &:focus,
+        &.-focused {
+          color: darken-lightness($_color-variant, 5%);
+          background-color: transparent;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+}
