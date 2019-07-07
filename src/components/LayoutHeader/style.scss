@@ -1,11 +1,11 @@
-@import '../../css/config'
-@import 'css/_variables'
+@import '../../css/config/index';
+@import 'css/_variables';
 
 /**
  * Layout Header
  */
-.layout-header
-    flex: 0 0 auto
-    background: --layout-header-background
-    padding: --layout-header-padding
-
+.layout-header {
+  flex: 0 0 auto;
+  background: $layout-header-background;
+  padding: $layout-header-padding;
+}
