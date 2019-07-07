@@ -1,21 +1,27 @@
-@import '../../css/config'
-@import '../../css/mixins'
-@import 'css/_variables'
-@import 'css/_sizes'
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_sizes';
 
 /**
  * Radio
  */
-.form-check.-custom.-radio
-    .form-input-label
-        &::after
-        &::before
-            if --border-radius-enabled
-                border-radius: --form-check-radio-border-radius
+.form-check.-custom.-radio {
+  .form-input-label {
+    &::after,
+    &::before {
+      @if $border-radius-enabled {
+        border-radius: $form-check-radio-border-radius;
+      }
+    }
+  }
 
-    input
-        &:checked ~ .form-input-label::after
-            content: --icon-circle
-            color: white
+  input {
+    &:checked ~ .form-input-label::after {
+      content: $icon-circle;
+      color: white;
+    }
+  }
 
-    @extend .form-check.-md.-custom.-radio
+  @extend .form-check.-md.-custom.-radio;
+}
