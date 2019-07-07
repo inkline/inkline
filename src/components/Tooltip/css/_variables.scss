@@ -2,27 +2,27 @@
 // Tooltip Variables
 //
 
---tooltip-font-size := --font-size
---tooltip-font-weight := --font-weight['normal']
---tooltip-line-height := --line-height
+$tooltip-font-size:   $font-size !default;
+$tooltip-font-weight: font-weight('normal') !default;
+$tooltip-line-height: $line-height !default;
 
---tooltip-margin := --spacers['1/2']
+$tooltip-margin: spacers('1/2') !default;
 
---tooltip-border-width := --border-width
---tooltip-border-radius := --border-radius
+$tooltip-border-width:  $border-width !default;
+$tooltip-border-radius: $border-radius !default;
 
---tooltip-padding-base := --spacers['1/4'] --spacers['1/2']
---tooltip-padding := -size-map(--tooltip-padding-base, --sizes, --size-multipliers)
-
+$tooltip-padding-base: spacers('1/4') spacers('1/2') !default;
+$tooltip-padding:      size-map($tooltip-padding-base, $sizes, $size-multipliers) !default;
 
 //
 // Variants
 //
---tooltip-variants := (monochrome)
---tooltip-color-groups := {
-    monochrome: {
-        light: --color-white,
-        dark: --color-gray-80
-    }
-}
---variants['tooltip'] = -add-variant(--tooltip-variants, { color: --tooltip-color-groups })
+$tooltip-variants: ('monochrome') !default;
+$tooltip-color-groups: (
+  'monochrome': (
+    'light': $color-white,
+    'dark': $color-gray-80,
+  )
+) !default;
+
+$variants: map_merge($variants, ('tooltip': -add-variant($tooltip-variants, ('color': $tooltip-color-groups))));

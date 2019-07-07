@@ -1,13 +1,14 @@
 //
 // Tooltip variants
 //
-for --variant-name, --variant in --variants['tooltip']
-    .tooltip.-{--variant-name}
-        color: -variant-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
-        background-color: --variant['color']
-        border-color: darken(--variant['color'], 10%)
+@each $variant-name, $variant in variants('tooltip') {
+  $_variant-color: map_get($variant, 'color');
 
-        -popup-arrow-variant({
-            background: --variant['color'],
-            border-color: darken(--variant['color'], 10%)
-        })
+  .tooltip.-#{$variant-name} {
+    color: -variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
+    background-color: $_variant-color;
+    border-color: darken-lightness($_variant-color, 10%);
+
+    @include popup-arrow-variant(('background': $_variant-color, 'border-color': darken-lightness($_variant-color, 10%)));
+  }
+}
