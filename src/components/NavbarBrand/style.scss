@@ -1,32 +1,35 @@
-@import '../../css/config'
-@import '../../css/mixins'
-@import '../Navbar/css/_variables'
-@import 'css/_sizes'
-@import 'css/_variants'
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Navbar/css/_variables';
+@import 'css/_sizes';
+@import 'css/_variants';
 
 /**
  * Navbar Brand
  */
-.navbar > .container > .row > .column > .brand
-    display: inline-block
-    margin-right: --navbar-brand-margin
-    font-size: --navbar-brand-font-size
-    line-height: inherit
-    white-space: nowrap
+.navbar > .container > .row > .column > .brand {
+  display: inline-block;
+  margin-right: $navbar-brand-margin;
+  font-size: $navbar-brand-font-size;
+  line-height: inherit;
+  white-space: nowrap;
 
-    &:hover
-    &:focus
-        text-decoration: none
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
 
-    > h1
-    > h2
-    > h3
-    > h4
-    > h5
-    > h6
-        margin-top: 0
-        margin-bottom: 0
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
-    @extend .navbar.-md > .container > .row > .column > .brand
-    @extend .navbar.-light > .container > .row > .column > .brand
-
+  // FIXME: This seems complicated
+  @include navbar-brand-color-variant(map_get(map_get($variants, 'navbar'), 'light'));
+  @include navbar-size-variant('md');
+}
