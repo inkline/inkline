@@ -1,44 +1,51 @@
-@require '../../css/config';
-@require '../../css/mixins';
-@require '../DropdownMenu/css/_variables';
-@require 'css/_sizes';
-@require 'css/_variants';
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../DropdownMenu/css/_variables';
+@import 'css/_sizes';
+@import 'css/_variants';
 
 /**
  * Dropdown Item
  */
-.dropdown > .menu
-    .dropdown > .item
-    .item
-        display: block;
-        width: 100%
-        clear: both;
-        font-weight: --font-weight-normal
-        text-align: inherit // For `<button>`s
-        white-space: nowrap // prevent links from randomly breaking onto new lines
-        background-color: transparent // For `<button>`s
-        border: 0
-        cursor: default
+.dropdown > .menu {
+  .dropdown > .item,
+  .item {
+    display: block;
+    width: 100%;
+    clear: both;
+    font-weight: $font-weight-normal;
+    text-align: inherit; // For `<button>`s
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
+    background-color: transparent; // For `<button>`s
+    border: 0;
+    cursor: default;
 
-        if --transition['dropdown']
-            transition: background-color --transition-duration --transition-easing
+    @if transition('dropdown') {
+      transition: background-color $transition-duration $transition-easing;
+    }
 
-        &:hover,
-        &:focus,
-        &.-active,
-        &:active
-            text-decoration: none
+    &:hover,
+    &:focus,
+    &.-active,
+    &:active {
+      text-decoration: none;
+    }
 
-        &.-disabled,
-        &:disabled
-            pointer-events: none
-            background-color: transparent
-            background-image: none
+    &.-disabled,
+    &:disabled {
+      pointer-events: none;
+      background-color: transparent;
+      background-image: none;
+    }
+  }
 
-    .dropdown > .item,
-    .item[href],
-    .item[to]
-        cursor: pointer
+  .dropdown > .item,
+  .item[href],
+  .item[to] {
+    cursor: pointer;
+  }
 
-    @extend .dropdown > .menu.-light
-    @extend .dropdown > .menu.-md
+  // FIXME: This is over-complicated
+  @include dropdown-item-color-variant(map_get(map_get(map_get($variants, 'dropdown'), 'light'), 'color'));
+  @include dropdown-item-variant-size('md');
+}

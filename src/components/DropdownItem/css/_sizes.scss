@@ -1,8 +1,15 @@
 //
 // Dropdown Item sizes
 //
-for --size in --sizes
-    .dropdown > .menu.-{--size}
-        .item,
-        .dropdown > .item
-            padding: --dropdown-item-padding[--size]
+@mixin dropdown-item-variant-size($size) {
+  .item,
+  .dropdown > .item {
+    padding: dropdown-item-padding($size);
+  }
+}
+
+@each $size in $sizes {
+  .dropdown > .menu.-#{$size} {
+    @include dropdown-item-variant-size($size);
+  }
+}
