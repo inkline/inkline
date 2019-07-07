@@ -1,17 +1,25 @@
 //
 // Button sizes
 //
-for --size in --sizes
-    .form.-{--size} > .button
-    .form.-{--size} > .form-group > .button
-    .form-group.-{--size} > .button
-    .button.-{--size}
-        border-radius: --button-border-radius[--size]
-        font-size: --button-font-size[--size]
-        padding: --button-padding[--size]
+@each $size in $sizes {
+  $_border-radius: map_get($button-border-radius, $size);
+  $_font-size:     map_get($button-font-size, $size);
+  $_padding:       map_get($button-padding, $size);
+  $_circle-size:   map_get($button-circle-size, $size);
 
-        &.-circle
-            border-radius: 100%
-            width: --button-circle-size[--size]
-            height: --button-circle-size[--size]
-            padding: 0
+  .form.-#{$size} > .button,
+  .form.-#{$size} > .form-group > .button,
+  .form-group.-#{$size} > .button,
+  .button.-#{$size} {
+    border-radius: $_border-radius;
+    font-size: $_font-size;
+    padding: $_padding;
+
+    &.-circle {
+      border-radius: 100%;
+      width: $_circle-size;
+      height: $_circle-size;
+      padding: 0;
+    }
+  }
+}
