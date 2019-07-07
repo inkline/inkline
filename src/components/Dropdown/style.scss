@@ -1,10 +1,12 @@
 /**
  * Dropdown
  */
-.dropdown
-    display: inline-block
-    position: relative
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
 
-.dropdown > .menu .dropdown
-    width: 100%
-    display: block
+.dropdown > .menu .dropdown {
+  width: 100%;
+  display: block;
+}
