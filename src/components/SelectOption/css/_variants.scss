@@ -1,18 +1,29 @@
 //
 // Select Option variants
 //
-for --variant-name, --variant in --variants['select-dropdown']
-    .select > .menu.-{--variant-name} > .option
-        color: -variant-color-by-luminance(--variant['color'], --select-dropdown-variant-color-light, --select-dropdown-variant-color-dark)
+@mixin select-option-color-variant($color-variant) {
+  color: -variant-color-by-luminance($color-variant, $select-dropdown-variant-color-light, $select-dropdown-variant-color-dark);
 
-        &:hover
-        &:focus
-            background: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 12%), darken(--variant['color'], 4%))
-        
-        &.-active
-        &:active
-            background: -variant-color-by-luminance(--variant['color'], darken(--variant['color'], 24%), darken(--variant['color'], 8%))
-        
-        &.-disabled,
-        &:disabled
-            color: -variant-color-by-luminance(--variant['color'], darken(--select-dropdown-variant-color-light, 40%), lighten(--select-dropdown-variant-color-dark, 40%))
+  &:hover,
+  &:focus {
+    background: -variant-color-by-luminance($color-variant, darken-lightness($color-variant, 12%), darken-lightness($color-variant, 4%));
+  }
+
+  &.-active,
+  &:active {
+    background: -variant-color-by-luminance($color-variant, darken-lightness($color-variant, 24%), darken-lightness($color-variant, 8%));
+  }
+
+  &.-disabled,
+  &:disabled {
+    color: -variant-color-by-luminance($color-variant, darken-lightness($select-dropdown-variant-color-light, 40%), lighten-lightness($select-dropdown-variant-color-dark, 40%));
+  }
+}
+
+@each $variant-name, $variant in variants('select-dropdown') {
+  $_variant-color: map_get($variant, 'color');
+
+  .select > .menu.-#{$variant-name} > .option {
+    @include select-option-color-variant($_variant-color);
+  }
+}
