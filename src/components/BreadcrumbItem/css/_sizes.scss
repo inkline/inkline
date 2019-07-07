@@ -1,11 +1,22 @@
 //
 // Breadcrumb sizes
 //
-for --size in --sizes
-    .breadcrumb.-{--size}
-        > .item
-            padding-left: --breadcrumb-item-padding[--size]
+@mixin -breadcrumb-item-variant($size) {
+  $_item-padding: map_get($breadcrumb-item-padding, $size);
 
-            + .item
-                &::before
-                    padding-right: --breadcrumb-item-padding[--size]
+  padding-left: $_item-padding;
+
+  + .item {
+    &::before {
+      padding-right: $_item-padding;
+    }
+  }
+}
+
+@each $size in $sizes {
+  .breadcrumb.-#{$size} {
+    > .item {
+      @include -breadcrumb-item-variant($size);
+    }
+  }
+}
