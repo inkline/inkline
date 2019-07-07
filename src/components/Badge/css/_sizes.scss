@@ -1,11 +1,18 @@
 //
 // Badge sizes
 //
-for --size in --sizes
-    .badge.-{--size}
-        border-radius: --badge-border-radius[--size]
-        font-size: --badge-font-size[--size]
-        padding: --badge-padding[--size]
+@each $size in $sizes {
+  $_border-radius: map_get($badge-border-radius, $size);
+  $_font-size:     map_get($badge-font-size, $size);
+  $_padding:       map_get($badge-padding, $size);
 
-        &.-pill
-            padding: --badge-padding[--size]
+  .badge.-#{$size} {
+    border-radius: $_border-radius;
+    font-size: $_font-size;
+    padding: $_padding;
+
+    &.-pill {
+      padding: $_padding;
+    }
+  }
+}
