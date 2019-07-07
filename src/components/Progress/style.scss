@@ -1,19 +1,18 @@
 /**
  * Nav
  */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_sizes';
+@import 'css/_variants';
 
-@import '../../css/config'
-@import '../../css/mixins'
-@import 'css/_variables'
-@import 'css/_sizes'
-@import 'css/_variants'
+.progress {
+  width: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
 
-.progress
-    width: 100%
-    display: flex
-    position: relative
-    overflow: hidden
-
-    @extend .progress.-md
-    @extend .progress.-light
-
+  @extend .progress.-md;
+  @extend .progress.-light;
+}
