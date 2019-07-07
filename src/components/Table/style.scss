@@ -1,98 +1,114 @@
 /**
  * Tables
  */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_variants';
 
-@import '../../css/config'
-@import '../../css/mixins'
-@import 'css/_variables'
-@import 'css/_variants'
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $spacer;
 
-.table
-    width: 100%
-    max-width: 100%
-    margin-bottom: --spacer
+  th,
+  td {
+    padding: $table-cell-padding;
+    vertical-align: top;
+    border-top: $table-border-width solid transparent;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom-width: (2 * $table-border-width);
+    border-bottom-color: $border-color;
+  }
+
+  tbody + tbody {
+    border-top: (2 * $table-border-width) solid transparent;
+  }
+
+  // Condensed table w/ half padding
+  //
+  &.-small {
+    th,
+    td {
+      padding: $table-cell-padding-sm;
+    }
+  }
+
+  // Bordered version
+  //
+  // Add borders all around the table and between all the columns.
+  //
+  &.-bordered {
+    border: $table-border-width solid transparent;
 
     th,
-    td
-        padding: --table-cell-padding
-        vertical-align: top
-        border-top: --table-border-width solid transparent
+    td {
+      border: $table-border-width solid $table-border-color;
+    }
+  }
 
-    thead th
-        vertical-align: bottom
-        border-bottom-width: (2 * --table-border-width)
+  // Hover table
+  //
+  // Placed here since it has to come after the potential zebra striping
+  //
+  &.-hover {
+    tbody tr {
+      th,
+      td {
+        @if $transition-enabled and transition('table') {
+          transition: background-color $transition-duration ease;
+        }
+      }
+    }
+  }
 
-    tbody + tbody
-        border-top: (2 * --table-border-width) solid transparent
+  th,
+  td,
+  tbody + tbody {
+    border-top-color: $border-color;
+  }
 
-    // Condensed table w/ half padding
-    //
-    &.-small
-        th
-        td
-            padding: --table-cell-padding-sm
+  .table {
 
+    // FIXME: Missing variable
+    // background-color: $color
+  }
 
-    // Bordered version
-    //
-    // Add borders all around the table and between all the columns.
-    //
-    &.-bordered
-        border: --table-border-width solid transparent
-
-        th
-        td
-            border: --table-border-width solid --table-border-color
-
-
-    // Hover table
-    //
-    // Placed here since it has to come after the potential zebra striping
-    //
-    &.-hover
-        tbody tr
-            th, td
-                if --transition-enabled and --transition['table']
-                    transition: background-color --transition-duration ease
-
-
-    th
-    td
-    tbody + tbody
-        border-top-color: --border-color
-
-    thead th
-        border-bottom-color: --border-color
-
-    .table
-        background-color: --color
-
-
-.table
-    @extend .table.-light
+  @extend .table.-light;
+}
 
 // Responsive tables
 //
 // Generate series of `.table-responsive-*` classes for configuring the screen
 // size of where your table will overflow.
 //
-.table-wrapper
-    display: block
-    position: relative
+.table-wrapper {
+  display: block;
+  position: relative;
 
-    &.-responsive
-        for --breakpoint-name, --breakpoint-value in --breakpoints
-            --infix = -breakpoint-infix(--breakpoint-name)
+  &.-responsive {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+      $infix: breakpoint-infix($breakpoint-name);
 
-            &{--infix}
-                +-breakpoint-down(--breakpoint-name)
-                    display: block
-                    width: 100%
-                    overflow-x: auto
-                    -webkit-overflow-scrolling: touch
-                    -ms-overflow-style: -ms-autohiding-scrollbar
+      &#{$infix} {
+        @include breakpoint-down($breakpoint-name) {
+          display: block;
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          -ms-overflow-style: -ms-autohiding-scrollbar;
 
-                    // Prevent double border on horizontal scroll due to use of `display: block`
-                    .table
-                        &.-bordered
-                            border: none
+          // Prevent double border on horizontal scroll due to use of `display: block`
+          .table {
+            &.-bordered {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
