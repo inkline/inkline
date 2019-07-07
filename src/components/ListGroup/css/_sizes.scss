@@ -1,6 +1,10 @@
 //
 // List Group sizes
 //
-for --size in --sizes
-    .list-group.-{--size}
-        border-radius: --list-group-border-radius[--size]
+@each $size in $sizes {
+  $_border-radius: map_get($list-group-border-radius, $size);
+
+  .list-group.-#{$size} {
+    border-radius: $_border-radius;
+  }
+}

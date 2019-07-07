@@ -1,20 +1,19 @@
 //
 // List Group Variables
 //
---list-group-font-size := --font-size
+$list-group-font-size: $font-size !default;
 
---list-group-item-disabled-color := --text-muted
+$list-group-item-disabled-color: $text-muted !default;
 
---list-group-item-padding-base := --spacers['1']
---list-group-item-padding := -size-map(--list-group-item-padding-base, --sizes, --size-multipliers)
+$list-group-item-padding-base: spacers('1') !default;
+$list-group-item-padding:      size-map($list-group-item-padding-base, $sizes, $size-multipliers) !default;
 
---list-group-border-width := --border-width
---list-group-border-style := solid
---list-group-border-color := --colors['gray-20']
+$list-group-border-width: $border-width !default;
+$list-group-border-style: solid !default;
+$list-group-border-color: colors('neutral', 'gray-20') !default;
 
---list-group-border-radius := --border-radius
+$list-group-border-radius: $border-radius !default;
 
-
---list-group-item-active-background := --colors['primary']
---list-group-item-active-color := --colors['white']
---list-group-item-active-border-color := darken(--colors['primary'], 6%)
+$list-group-item-active-background:   colors('brand', 'primary') !default;
+$list-group-item-active-color:        colors('neutral', 'white') !default;
+$list-group-item-active-border-color: darken-lightness(colors('brand', 'primary'), 6%) !default;
