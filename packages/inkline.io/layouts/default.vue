@@ -9,9 +9,9 @@
 </div>
 </template>
 
-<style lang="stylus">
-@require '~@inkline/inkline/css/config/index'
-@require '~@inkline/inkline/css/mixins/index'
+<style lang="scss">
+@import '~@inkline/inkline/css/config/index';
+@import '~@inkline/inkline/css/mixins/index';
 </style>
 
 <script>
