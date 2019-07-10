@@ -2,6 +2,7 @@
  * Configuration
  */
 
---layout-aside-width = 16rem
+$layout-aside-width: 16rem;
 
-@require '_layout'
+// FIXME: Not a good idea to set imports at bottom
+@import '_layout';
