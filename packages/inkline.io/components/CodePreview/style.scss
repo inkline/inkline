@@ -1,96 +1,120 @@
-@require '~@inkline/inkline/css/config/index'
-@require '~@inkline/inkline/css/mixins/index'
+@import '~@inkline/inkline/css/config/index';
+@import '~@inkline/inkline/css/mixins/index';
 
-.code-preview
-    display: block
-    position: relative
-    padding: --spacer
-    border-radius: --border-radius['md']
-    border: 1px solid --colors['gray-20']
+.code-preview {
+    display: block;
+    position: relative;
+    padding: $spacer;
+    border-radius: border-radius('md');
+    border: 1px solid colors('gray-20');
 
-    +-breakpoint-down(xs)
-        border-radius: 0
-        border-left: 0
-        border-right: 0
-        margin-left: -11px
-        margin-right: -11px
+    @include -breakpoint-down(xs) {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+        margin-left: -11px;
+        margin-right: -11px;
+    }
 
-    + .code-preview
-        margin-top: --spacer
+    + .code-preview {
+        margin-top: $spacer;
+    }
 
-    > .header
-        display: flex
-        align-items: center
-        justify-content: space-between
-        margin-bottom: --spacer
+    > .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: $spacer;
 
-        > .title
-            font-weight: bold
-            display: inline-block
-            margin-right: --spacer
+        > .title {
+            font-weight: bold;
+            display: inline-block;
+            margin-right: $spacer;
 
-            code
-                margin-left: (--spacer / 2)
-                font-weight: normal
+            code {
+                margin-left: ($spacer / 2);
+                font-weight: normal;
+            }
+        }
 
-        > .tabs
-            flex: 1 0 auto
-            text-align: right
+        > .tabs {
+            flex: 1 0 auto;
+            text-align: right;
 
-            > .link
-                margin-left: --spacer
+            > .link {
+                margin-left: $spacer;
 
-                +-breakpoint-down(md)
-                    padding: 0.25rem 0.8rem
-                    margin-left: (--spacer / 2)
+                @include -breakpoint-down('md') {
+                    padding: 0.25rem 0.8rem;
+                    margin-left: ($spacer / 2);
+                }
+            }
 
-            .tab.-icon
-                > .icon
-                    display: none
+            .tab.-icon {
+                > .icon {
+                    display: none;
+                }
 
-                > .title
-                    display: block
+                > .title {
+                    display: block;
+                }
 
-                +-breakpoint-down(md)
-                    > .icon
-                        display: block
+                @include -breakpoint-down('md') {
+                    > .icon {
+                        display: block;
+                    }
+                    > .title {
+                        display: none;
+                    }
+                }
+            }
+        }
 
-                    > .title
-                        display: none
+        @include -breakpoint-down('lg') {
+            > .title {
+                display: flex;
+                flex-direction: column;
 
-        +-breakpoint-down(lg)
-            > .title
-                display: flex
-                flex-direction: column
+                code {
+                    display: block;
+                    margin-left: 0;
+                }
+            }
+        }
 
-                code
-                    display: block
-                    margin-left: 0
+        @include -breakpoint-down('xs') {
+            flex-direction: column;
+            align-items: flex-start;
 
-        +-breakpoint-down(xs)
-            flex-direction: column
-            align-items: flex-start
+            > .title {
+                margin-bottom: ($spacer / 2);
+                margin-right: 0;
+                flex-direction: row;
 
-            > .title
-                margin-bottom: (--spacer / 2)
-                margin-right: 0
-                flex-direction: row
+                code {
+                    display: block;
+                    margin-left: ($spacer / 2);
+                }
+            }
+        }
+    }
 
-                code
-                    display: block
-                    margin-left: (--spacer / 2)
+    &.-expanded {
+        padding-bottom: 0;
 
-    &.-expanded
-        padding-bottom: 0
+        > .panels {
+            margin-left: -17px;
+            margin-right: -17px;
+            margin-bottom: -1px;
+        }
+    }
 
-        > .panels
-            margin-left: -17px
-            margin-right: -17px
-            margin-bottom: -1px
+    > .panels {
+        display: block;
+        position: relative;
 
-    > .panels
-        display: block
-        position: relative
-
-        .panel
-            width: 100%
+        .panel {
+            width: 100%;
+        }
+    }
+}

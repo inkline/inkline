@@ -1,47 +1,56 @@
-@require '~@inkline/inkline/css/config/index'
+@import '~@inkline/inkline/css/config/index';
 
-.page-navigation
-    display: block
-    padding-top: (--spacer * 2.5)
-    text-align: right
+.page-navigation {
+    display: block;
+    padding-top: ($spacer * 2.5);
+    text-align: right;
 
-    ol
-        list-style: none
-        padding: 0
+    ol {
+        list-style: none;
+        padding: 0;
 
-        > li
-            > span
-                font-weight: bold
-                color: --text-muted
+        > li {
+            > span {
+                font-weight: bold;
+                color: $text-muted;
+            }
 
-            + li
-                margin-top: --spacer
+            + li {
+                margin-top: $spacer
+            }
+        }
+    }
 
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-top: ($spacer / 2);
+        margin-right: ($spacer / 2);
 
-    ul
-        list-style: none
-        padding: 0
-        margin-top: (--spacer / 2)
-        margin-right: (--spacer / 2)
+        > li {
+            margin: 0;
+            position: relative;
 
-        > li
-            margin: 0
-            position: relative
-
-            > a
+            > a {
                 display: block
-                padding-top: (--spacer / 3)
-                padding-bottom: (--spacer / 3)
-                padding-right: --spacer
-                color: --body-color
-                border-right: 1px solid --color-gray-20
-                transition: color 0.3s ease, font-weight 0.3s ease, border 0.3s ease
+                padding-top: ($spacer / 3);
+                padding-bottom: ($spacer / 3);
+                padding-right: $spacer;
+                color: $body-color;
+                border-right: 1px solid $color-gray-20;
+                transition: color 0.3s ease, font-weight 0.3s ease, border 0.3s ease;
 
                 &:hover,
-                &:focus
-                    text-decoration: underline
-                    cursor: pointer
+                &:focus {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
 
-                &.-active
-                    color: --link-color
-                    border-right: 1px solid --link-color
+                &.-active {
+                    color: $link-color;
+                    border-right: 1px solid $link-color;
+                }
+            }
+        }
+    }
+}
