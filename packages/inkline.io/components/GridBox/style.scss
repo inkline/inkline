@@ -1,23 +1,28 @@
-@require '~@inkline/inkline/css/config/index'
+@import '~@inkline/inkline/css/config/index';
 
---box-padding = 1.25rem
+$box-padding: 1.25rem;
 
-.box
-    width: 100%
-    display: block
-    text-align: center
-    border-radius: 4px
-    margin-bottom: --spacer
-    padding: (--box-padding) (--spacer / 2)
+.box {
+    width: 100%;
+    display: block;
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: $spacer;
+    padding: ($box-padding) ($spacer / 2);
 
-    &.-tall
-        padding: (--box-padding * 3) (--spacer / 2)
+    &.-tall {
+        padding: ($box-padding * 3) ($spacer / 2);
+    }
 
-    .box
-        background: rgba(255, 255, 255, 0.125) !important
-        margin-top: (--box-padding / 2)
+    .box {
+        background: rgba(255, 255, 255, 0.125) !important;
+        margin-top: ($box-padding / 2);
+    }
+}
 
-.grid-code-preview
-    .box
-        padding-left: 0
-        padding-right: 0
+.grid-code-preview {
+    .box {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
