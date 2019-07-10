@@ -30,91 +30,109 @@
 </div>
 </template>
 
-<style lang="stylus">
-@require '~@inkline/inkline/css/config/index'
-@require '~@inkline/inkline/css/mixins/index'
+<style lang="scss">
+    @import '~@inkline/inkline/css/config/index';
+    @import '~@inkline/inkline/css/mixins/index';
 
+    #documentation-layout > .container > .row > .column > .layout > .layout-content {
+        margin: 62px auto $spacer;
+    }
 
-#documentation-layout > .container > .row > .column > .layout > .layout-content
-    margin: 62px auto --spacer
+    #documentation-layout {
+        #layout-aside-left,
+        #layout-aside-right {
+            width: 20rem;
+            flex: 1 1 auto;
+            box-sizing: border-box;
+        }
 
-#documentation-layout
-    #layout-aside-left,
-    #layout-aside-right
-        width: 20rem
-        flex: 1 1 auto
-        box-sizing: border-box
+        #layout-aside-left {
+            .layout-aside-children {
+                padding-right: ($spacer * 2);
+            }
 
-    #layout-aside-left
-        .layout-aside-children
-            padding-right: (--spacer * 2)
+            @include -breakpoint-down(sm) {
+                position: fixed;
+                width: 100%;
+                padding: 0;
+                top: 62px;
+                left: 0;
+                z-index: 1029;
+                background-color: rgba(0, 0, 0, 0.25);
 
-        +-breakpoint-down(sm)
-            position: fixed
-            width: 100%
-            padding: 0
-            top: 62px
-            left: 0
-            z-index: 1029
-            background-color: rgba(0, 0, 0, 0.25)
+                &.fade-in-transition-enter
+                &.fade-in-transition-leave-to {
+                    .layout-aside-children {
+                        transform: translateX(-100%);
+                    }
+                }
 
-            &.fade-in-transition-enter
-            &.fade-in-transition-leave-to
-                .layout-aside-children
-                    transform: translateX(-100%)
+                &.fade-in-transition-enter-to
+                &.fade-in-transition-leave {
+                    .layout-aside-children {
+                        transform: translateX(0);
+                    }
+                }
 
-            &.fade-in-transition-enter-to
-            &.fade-in-transition-leave
-                .layout-aside-children
-                    transform: translateX(0)
+                .layout-aside-children {
+                    width: 16rem;
+                    max-width: 100%;
+                    background-color: #ffffff;
+                    border-right: 1px solid colors('gray-30');
+                    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+                    padding: 0;
+                    transition: transform 0.3s ease;
+                    transform: translateX(0);
+                }
 
-            .layout-aside-children
-                width: 16rem
-                max-width: 100%
-                background-color: #ffffff
-                border-right: 1px solid --colors['gray-30']
-                box-shadow: 0 0 40px rgba(0, 0, 0, 0.3)
-                padding: 0
-                transition: transform 0.3s ease
-                transform: translateX(0)
+                .layout-fixed-full-height {
+                    position: relative;
+                    display: block;
+                    top: auto;
+                    padding: 0 $spacer;
 
-            .layout-fixed-full-height
-                position: relative
-                display: block
-                top: auto
-                padding: 0 --spacer
+                    .site-navigation {
+                        padding: $spacer 0 0;
+                    }
+                }
+            }
+        }
 
-                .site-navigation
-                    padding: --spacer 0 0
+        #layout-aside-right {
+            .layout-aside-children {
+                padding-left: ($spacer * 2);
+            }
 
-    #layout-aside-right
-        .layout-aside-children
-            padding-left: (--spacer * 2)
+            @include -breakpoint-down(md) {
+                display: none;
+            }
+        }
 
-        +-breakpoint-down(md)
-            display: none
+        .layout-content {
+            max-width: 48rem;
 
-    .layout-content
-        max-width: 48rem
+            @include -breakpoint-down(md) {
+                max-width: auto;
+            }
 
-        +-breakpoint-down(md)
-            max-width: auto
-
-        h2.lead
-            line-height: 30px
-            margin-top: 1.25rem
-            margin-bottom: 1.25rem
+            h2.lead {
+                line-height: 30px;
+                margin-top: 1.25rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+    }
 </style>
 
 <script>
-import Vue from 'vue';
-import Layout from '@components/Layout';
-import Navbar from '@components/Navbar';
-import SiteSearch from '@components/SiteSearch';
-import SiteNavigation from '@components/SiteNavigation';
-import PageNavigation from '@components/PageNavigation';
-import MatchParentWidth from '@directives/match-parent-width';
-import { getStyleProperty, on, off } from '@inkline/inkline/helpers'
+import Vue from 'vue'
+import Layout from '@components/Layout'
+import Navbar from '@components/Navbar'
+import SiteSearch from '@components/SiteSearch'
+import SiteNavigation from '@components/SiteNavigation'
+import PageNavigation from '@components/PageNavigation'
+import MatchParentWidth from '@directives/match-parent-width'
+import { getStyleProperty, off, on } from '@inkline/inkline/helpers'
 import { breakpoints } from '@inkline/inkline/constants'
 
 export default {
