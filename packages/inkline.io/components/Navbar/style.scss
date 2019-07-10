@@ -10,7 +10,7 @@
     transition: background 0.3s ease;
 
     .site-search {
-        @include -breakpoint-down('sm') {
+        @include breakpoint-down('sm') {
             display: none;
         }
     }
@@ -29,9 +29,9 @@
         > .items > .nav {
             margin-right: (- $spacer);
 
-            > .item {
-                border-radius: $border-radius-md;
-                letter-spacing: 0.6px;
+        > .item {
+            border-radius: border-radius('md');
+            letter-spacing: 0.6px;
 
                 &:hover {
                     background: rgba(0, 0, 0, 0.1);
@@ -80,10 +80,10 @@
             }
         }
 
-        @include -breakpoint-down('md') {
+        @include breakpoint-down('md') {
             > .container > .row > .column {
                 > .brand {
-                    color: $colors ('light');
+                    color: colors('monochrome', 'light');
 
                     .logo {
                         &.-light {
@@ -97,10 +97,10 @@
                 }
             }
         }
-        @include -breakpoint-up(lg) {
+        @include breakpoint-up(lg) {
             > .container > .row > .column {
                 > .brand {
-                    color: $colors ('dark');
+                    color: colors('monochrome', 'dark');
 
                     .logo {
                         &.-light {
@@ -119,7 +119,7 @@
             > .bars::before,
             > .bars,
             > .bars::after {
-                background-color: $colors ('light');
+                background-color: colors('monochrome', 'light');
             }
         }
     }
@@ -128,14 +128,14 @@
         .navbar-toggle {
             display: block;
 
-            @include -breakpoint-up('md') {
+            @include breakpoint-up('md') {
                 display: none;
             }
         }
 
         > .container > .row > .column {
             > .brand {
-                @include -breakpoint-down('sm') {
+                @include breakpoint-down('sm') {
                     margin-left: $spacer * 3;
                 }
             }
@@ -155,7 +155,7 @@
     left: 6px;
     padding: 8px 12px;
     margin-right: $spacer * 3;
-    border-radius: $border-radius-md;
+    border-radius: border-radius('md');
     background-color: transparent;
     border: 0;
     cursor: pointer;

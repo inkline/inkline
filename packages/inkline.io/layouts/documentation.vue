@@ -51,7 +51,7 @@
                 padding-right: ($spacer * 2);
             }
 
-            @include -breakpoint-down(sm) {
+            @include breakpoint-down(sm) {
                 position: fixed;
                 width: 100%;
                 padding: 0;
@@ -78,7 +78,7 @@
                     width: 16rem;
                     max-width: 100%;
                     background-color: #ffffff;
-                    border-right: 1px solid colors('gray-30');
+                    border-right: 1px solid colors('neutral', 'gray-30');
                     box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
                     padding: 0;
                     transition: transform 0.3s ease;
@@ -103,7 +103,7 @@
                 padding-left: ($spacer * 2);
             }
 
-            @include -breakpoint-down(md) {
+            @include breakpoint-down(md) {
                 display: none;
             }
         }
@@ -111,7 +111,7 @@
         .layout-content {
             max-width: 48rem;
 
-            @include -breakpoint-down(md) {
+            @include breakpoint-down(md) {
                 max-width: auto;
             }
 
