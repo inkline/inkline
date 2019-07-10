@@ -7,8 +7,8 @@
         display: inline-block;
         width: 64px;
         height: 64px;
-        background: colors('gray-20');
-        border-color: colors('gray-40');
+        background: colors('neutral', 'gray-20');
+        border-color: colors('neutral', 'gray-40');
         margin-right: ($spacer / 2);
         margin-bottom: ($spacer / 2);
     }

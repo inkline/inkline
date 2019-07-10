@@ -126,57 +126,57 @@
         background-position: center 0;
         background-size: 1560px 675px;
 
-        @include -breakpoint(md) {
+        @include breakpoint(md) {
             background-size: (1560px * 0.9) (675px * 0.9);
         }
-        @include -breakpoint(lg) {
+        @include breakpoint(lg) {
             background-size: (1560px * 0.85) (675px * 0.85);
         }
-        @include -breakpoint-down(sm) {
+        @include breakpoint-down(sm) {
             background-image: url('~static/images/pages/index-header-small.jpg');
             background-size: 768px 460px;
         }
-        @include -breakpoint(xs) {
+        @include breakpoint(xs) {
             background-size: (768px * 0.8) (460px* 0.8);
         }
 
         #header {
             background-color: transparent;
 
-            @include -breakpoint-down(sm) {
+            @include breakpoint-down(sm) {
                 text-align: center;
             }
-            @include -breakpoint(xs) {
+            @include breakpoint(xs) {
                 padding-top: 22rem;
                 padding-bottom: 2rem;
             }
-            @include -breakpoint(sm) {
+            @include breakpoint(sm) {
                 padding-top: 27rem;
                 padding-bottom: 4rem;
             }
-            @include -breakpoint(md) {
+            @include breakpoint(md) {
                 padding-top: 16rem;
                 padding-bottom: 6rem;
             }
-            @include -breakpoint-up(lg) {
+            @include breakpoint-up(lg) {
                 padding-top: 12rem;
                 padding-bottom: 10rem;
             }
 
             .header-title {
-                @include -breakpoint(xs) {
+                @include breakpoint(xs) {
                     font-size: $d5-font-size
                 }
-                @include -breakpoint(sm) {
+                @include breakpoint(sm) {
                     font-size: $d4-font-size;
                 }
-                @include -breakpoint(md) {
+                @include breakpoint(md) {
                     font-size: $d3-font-size;
                 }
-                @include -breakpoint(lg) {
+                @include breakpoint(lg) {
                     font-size: $d2-font-size;
                 }
-                @include -breakpoint(xl) {
+                @include breakpoint(xl) {
                     font-size: $d1-font-size;
                 }
             }
@@ -187,15 +187,15 @@
                 margin-bottom: 0;
                 line-height: 1.5;
 
-                @include -breakpoint-up(lg) {
+                @include breakpoint-up(lg) {
                     font-size: font-size('lg');
                 }
-                @include -breakpoint-down(md) {
+                @include breakpoint-down(md) {
                     font-size: font-size('md');
                 }
 
                 .button {
-                    @include -breakpoint-down(md) {
+                    @include breakpoint-down(md) {
                         font-size: font-size('md');
                         border-radius: border-radius('md');
                         padding: ($spacer / 2) $spacer;
@@ -213,7 +213,7 @@
         background-repeat: no-repeat;
         background-size: 100% auto;
 
-        @include -breakpoint-up(lg) {
+        @include breakpoint-up(lg) {
             .column {
                 &:nth-child(4),
                 &:nth-child(5) {
@@ -243,24 +243,24 @@
 
     #sponsors {
         padding: ($spacer * 4) 0 ($spacer * 6);
-        background-color: colors('gray-20');
+        background-color: colors('neutral', 'gray-20');
         text-align: center;
         z-index: 1;
     }
 
     #footer {
         background-image: url('../static/images/pages/index-footer.svg');
-        background-color: colors('gray-80');
+        background-color: colors('neutral', 'gray-80');
         background-repeat: no-repeat;
         background-size: 100% auto;
         background-position: center -1px;
-        color: colors('gray-20');
+        color: colors('neutral', 'gray-20');
         padding: ($spacer * 6) 0 ($spacer * 4);
         text-align: center;
         position: relative;
 
         a {
-            color $text-muted;
+            color: $text-muted;
         }
 
         img {
@@ -272,17 +272,17 @@
         }
 
         .footer-icon svg {
-            color: colors('gray-20');
+            color: colors('neutral', 'gray-20');
             transition: color 0.3s ease;
 
             &:hover {
-                color: colors('white');
+                color: colors('neutral', 'white');
             }
         }
 
         #footer-license {
             a {
-                color: colors('white');
+                color: colors('neutral', 'white');
             }
         }
 

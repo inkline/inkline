@@ -9,11 +9,11 @@
 
         .layout-header,
         .layout-footer {
-            background: colors('gray-20');
+            background: colors('neutral', 'gray-20');
         }
 
         .layout-aside {
-            background: colors('gray-30');
+            background: colors('neutral', 'gray-30');
 
             .layout-aside-preview-text {
                 position: absolute;
@@ -25,7 +25,7 @@
         }
 
         .layout-content {
-            background: colors('gray-10');
+            background: colors('neutral', 'gray-10');
             padding: 5rem 0;
         }
     }

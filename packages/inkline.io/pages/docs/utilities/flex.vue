@@ -5,8 +5,8 @@
 
     .flexbox-preview {
         padding: ($spacer / 2);
-        background: colors('gray-20');
-        border: 1px solid colors('gray-30');
+        background: colors('neutral', 'gray-20');
+        border: 1px solid colors('neutral', 'gray-30');
 
         &.-tall {
             height: 100px;
@@ -17,8 +17,8 @@
         }
 
         > .flexbox-preview {
-            background: colors('gray-40');
-            border: 1px solid colors('gray-50');
+            background: colors('neutral', 'gray-40');
+            border: 1px solid colors('neutral', 'gray-50');
         }
     }
 </style>

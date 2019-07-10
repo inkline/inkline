@@ -6,9 +6,9 @@
     position: relative;
     padding: $spacer;
     border-radius: border-radius('md');
-    border: 1px solid colors('gray-20');
+    border: 1px solid colors('neutral', 'gray-20');
 
-    @include -breakpoint-down(xs) {
+    @include breakpoint-down(xs) {
         border-radius: 0;
         border-left: 0;
         border-right: 0;
@@ -44,7 +44,7 @@
             > .link {
                 margin-left: $spacer;
 
-                @include -breakpoint-down('md') {
+                @include breakpoint-down('md') {
                     padding: 0.25rem 0.8rem;
                     margin-left: ($spacer / 2);
                 }
@@ -59,7 +59,7 @@
                     display: block;
                 }
 
-                @include -breakpoint-down('md') {
+                @include breakpoint-down('md') {
                     > .icon {
                         display: block;
                     }
@@ -70,7 +70,7 @@
             }
         }
 
-        @include -breakpoint-down('lg') {
+        @include breakpoint-down('lg') {
             > .title {
                 display: flex;
                 flex-direction: column;
@@ -82,7 +82,7 @@
             }
         }
 
-        @include -breakpoint-down('xs') {
+        @include breakpoint-down('xs') {
             flex-direction: column;
             align-items: flex-start;
 
