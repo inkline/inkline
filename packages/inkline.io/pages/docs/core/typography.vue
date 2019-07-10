@@ -1,15 +1,17 @@
 <template lang="md" src="./typography.md" />
-<style lang="stylus" scoped>
-@import '~@inkline/inkline/css/config/index'
+<style lang="scss" scoped>
+    @import '~@inkline/inkline/css/config/index';
 
-.headings-list
-    > *
-        margin-top: --spacer
-        margin-bottom: --spacer
+    .headings-list {
+        > * {
+            margin-top: $spacer;
+            margin-bottom: $spacer;
+        }
+    }
 </style>
 <script>
-import View from '@components/View';
-import { head } from "@helpers/head";
+import View from '@components/View'
+import { head } from '@helpers/head'
 
 export default {
     name: 'TypographyView',
