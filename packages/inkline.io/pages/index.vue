@@ -116,158 +116,186 @@
     </div>
 </template>
 
-<style lang="stylus">
-@require '~@inkline/inkline/css/config/index'
-@require '~@inkline/inkline/css/mixins/index'
+<style lang="scss">
+    @import '~@inkline/inkline/css/config/index';
+    @import '~@inkline/inkline/css/mixins/index';
 
-#index-page
-    background-image: url('~static/images/pages/index-header-large.jpg');
-    background-repeat: no-repeat
-    background-position: center 0
-    background-size: 1560px 675px
+    #index-page {
+        background-image: url('~static/images/pages/index-header-large.jpg');
+        background-repeat: no-repeat;
+        background-position: center 0;
+        background-size: 1560px 675px;
 
-    +-breakpoint(md)
-        background-size: (1560px * 0.9) (675px * 0.9)
+        @include -breakpoint(md) {
+            background-size: (1560px * 0.9) (675px * 0.9);
+        }
+        @include -breakpoint(lg) {
+            background-size: (1560px * 0.85) (675px * 0.85);
+        }
+        @include -breakpoint-down(sm) {
+            background-image: url('~static/images/pages/index-header-small.jpg');
+            background-size: 768px 460px;
+        }
+        @include -breakpoint(xs) {
+            background-size: (768px * 0.8) (460px* 0.8);
+        }
 
-    +-breakpoint(lg)
-        background-size: (1560px * 0.85) (675px * 0.85)
+        #header {
+            background-color: transparent;
 
-    +-breakpoint-down(sm)
-        background-image: url('~static/images/pages/index-header-small.jpg');
-        background-size: 768px 460px
+            @include -breakpoint-down(sm) {
+                text-align: center;
+            }
+            @include -breakpoint(xs) {
+                padding-top: 22rem;
+                padding-bottom: 2rem;
+            }
+            @include -breakpoint(sm) {
+                padding-top: 27rem;
+                padding-bottom: 4rem;
+            }
+            @include -breakpoint(md) {
+                padding-top: 16rem;
+                padding-bottom: 6rem;
+            }
+            @include -breakpoint-up(lg) {
+                padding-top: 12rem;
+                padding-bottom: 10rem;
+            }
 
-    +-breakpoint(xs)
-        background-size: (768px * 0.8) (460px* 0.8)
+            .header-title {
+                @include -breakpoint(xs) {
+                    font-size: $d5-font-size
+                }
+                @include -breakpoint(sm) {
+                    font-size: $d4-font-size;
+                }
+                @include -breakpoint(md) {
+                    font-size: $d3-font-size;
+                }
+                @include -breakpoint(lg) {
+                    font-size: $d2-font-size;
+                }
+                @include -breakpoint(xl) {
+                    font-size: $d1-font-size;
+                }
+            }
 
-    #header
-        background-color: transparent
+            .header-subtitle {
+                color: $text-muted;
+                margin-top: 1rem;
+                margin-bottom: 0;
+                line-height: 1.5;
 
-        +-breakpoint-down(sm)
-            text-align: center
+                @include -breakpoint-up(lg) {
+                    font-size: font-size('lg');
+                }
+                @include -breakpoint-down(md) {
+                    font-size: font-size('md');
+                }
 
-        +-breakpoint(xs)
-            padding-top: 22rem
-            padding-bottom: 2rem
+                .button {
+                    @include -breakpoint-down(md) {
+                        font-size: font-size('md');
+                        border-radius: border-radius('md');
+                        padding: ($spacer / 2) $spacer;
+                    }
+                }
+            }
+        }
+    }
 
-        +-breakpoint(sm)
-            padding-top: 27rem
-            padding-bottom: 4rem
+    #features {
+        margin-bottom: -1px;
+        padding: ($spacer * 3) 0 ($spacer * 6);
+        background-image: url('../static/images/pages/index-features.svg');
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
 
-        +-breakpoint(md)
-            padding-top: 16rem
-            padding-bottom: 6rem
+        @include -breakpoint-up(lg) {
+            .column {
+                &:nth-child(4),
+                &:nth-child(5) {
+                    margin-top: 2rem
+                }
+            }
+        }
+    }
 
-        +-breakpoint-up(lg)
-            padding-top: 12rem
-            padding-bottom: 10rem
+    .feature-box {
+        text-align: center;
+        padding: $spacer 0;
 
-        .header-title
-            +-breakpoint(xs)
-                font-size: --d5-font-size
+        h3 {
+            margin-top: $spacer * 1.5;
+        }
 
-            +-breakpoint(sm)
-                font-size: --d4-font-size
+        p {
+            color: $text-muted;
+        }
 
-            +-breakpoint(md)
-                font-size: --d3-font-size
+        img {
+            height: 60px;
+            width: auto;
+        }
+    }
 
-            +-breakpoint(lg)
-                font-size: --d2-font-size
+    #sponsors {
+        padding: ($spacer * 4) 0 ($spacer * 6);
+        background-color: colors('gray-20');
+        text-align: center;
+        z-index: 1;
+    }
 
-            +-breakpoint(xl)
-                font-size: --d1-font-size
+    #footer {
+        background-image: url('../static/images/pages/index-footer.svg');
+        background-color: colors('gray-80');
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: center -1px;
+        color: colors('gray-20');
+        padding: ($spacer * 6) 0 ($spacer * 4);
+        text-align: center;
+        position: relative;
 
-        .header-subtitle
-            color: --text-muted
-            margin-top: 1rem
-            margin-bottom: 0
-            line-height: 1.5
+        a {
+            color $text-muted;
+        }
 
-            +-breakpoint-up(lg)
-                font-size: --font-size['lg']
+        img {
+            margin-bottom: $spacer;
+        }
 
-            +-breakpoint-down(md)
-                font-size: --font-size['md']
+        .list {
+            margin-top: $spacer;
+        }
 
-        .button
-            +-breakpoint-down(md)
-                font-size: --font-size['md']
-                border-radius: --border-radius['md']
-                padding: (--spacer / 2) --spacer
+        .footer-icon svg {
+            color: colors('gray-20');
+            transition: color 0.3s ease;
 
-#features
-    margin-bottom: -1px
-    padding: (--spacer * 3) 0 (--spacer * 6)
-    background-image: url('../static/images/pages/index-features.svg')
-    background-position: center bottom
-    background-repeat: no-repeat
-    background-size: 100% auto
+            &:hover {
+                color: colors('white');
+            }
+        }
 
-    +-breakpoint-up(lg)
-        .column
-            &:nth-child(4),
-            &:nth-child(5)
-                margin-top: 2rem
+        #footer-license {
+            a {
+                color: colors('white');
+            }
+        }
 
-.feature-box
-    text-align: center
-    padding: --spacer 0
-
-    h3
-        margin-top: --spacer * 1.5
-
-    p
-        color: --text-muted
-
-    img
-        height: 60px
-        width: auto
-
-#sponsors
-    padding: (--spacer * 4) 0 (--spacer * 6)
-    background-color: --colors['gray-20']
-    text-align: center
-    z-index: 1
-
-#footer
-    background-image: url('../static/images/pages/index-footer.svg')
-    background-color: --colors['gray-80']
-    background-repeat: no-repeat
-    background-size: 100% auto
-    background-position: center -1px
-    color: --colors['gray-20']
-    padding: (--spacer * 6) 0 (--spacer * 4)
-    text-align: center
-    position: relative
-
-    a
-        color --text-muted
-
-    img
-        margin-bottom: --spacer
-
-    .list
-        margin-top: --spacer
-
-    .footer-icon svg
-        color: --colors['gray-20']
-        transition: color 0.3s ease
-
-        &:hover
-            color: --colors['white']
-
-    #footer-license
-        a
-            color: --colors['white']
-
-    #footer-copyright,
-    #footer-policies
-        font-size: --font-size['sm']
-        color: --text-muted
+        #footer-copyright,
+        #footer-policies {
+            font-size: font-size('sm');
+            color: $text-muted;
+        }
+    }
 </style>
 
 <script>
-import { head } from "@helpers/head";
+import { head } from '@helpers/head'
 
 export default {
     name: 'IndexView',

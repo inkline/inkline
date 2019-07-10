@@ -1,13 +1,14 @@
 <template lang="md" src="./header.md" />
 
-<style lang="stylus">
-    #cover-inkline-header
-        background-image: url('~static/images/background.jpg')
+<style lang="scss">
+    #cover-inkline-header {
+        background-image: url('~static/images/background.jpg');
+    }
 </style>
 
 <script>
-import View from '@components/View';
-import { head } from "@helpers/head";
+import View from '@components/View'
+import { head } from '@helpers/head'
 
 export default {
     name: 'HeaderView',
