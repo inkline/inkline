@@ -63,7 +63,7 @@ module.exports = {
     ** Global CSS
     */
     css: [
-        '@/css/index.styl'
+        '@/css/index.scss'
     ],
 
     /*
@@ -139,15 +139,15 @@ module.exports = {
                 }
             });
 
-            // Add stylus config override
+            // Add scss config override
             [].concat(...config.module.rules
-                .find((e) => e.test.toString().match(/\.styl/))
+                .find((e) => e.test.toString().match(/\.scss/))
                 .oneOf
-                .map((e) => e.use.filter(e => e.loader === 'stylus-loader'))
-            ).forEach((stylus) => {
-                Object.assign(stylus.options, {
+                .map((e) => e.use.filter(e => e.loader === 'sass-loader'))
+            ).forEach((scss) => {
+                Object.assign(scss.options, {
                     import: [
-                        path.join(__dirname, 'css/config/index.styl')
+                        path.join(__dirname, 'css/config/index.scss')
                     ]
                 })
             });
