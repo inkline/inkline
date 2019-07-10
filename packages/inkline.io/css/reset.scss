@@ -1,35 +1,45 @@
-.code-preview
-    .panel
+.code-preview {
+    .panel {
         pre
-        &:first-child
-            margin-top: 0
+        &:first-child {
+            margin-top: 0;
+        }
 
         p,
         pre,
         table.table,
         .breadcrumb,
-        .d1, .d2, .d3, .d4, .d5, .d6
-        .h1, .h2, .h3, .h4, .h5, .h6
-        h1, h2, h3, h4, h5, h6
-            &:last-child
-                margin-bottom: 0
+        .d1, .d2, .d3, .d4, .d5, .d6,
+        .h1, .h2, .h3, .h4, .h5, .h6,
+        h1, h2, h3, h4, h5, h6 {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
 
-        .code-toolbar
-            &:last-child pre
-                margin-bottom: 0
+        .code-toolbar {
+            &:last-child pre {
+                margin-bottom: 0;
+            }
+        }
 
         .button,
         .badge,
         .dropdown,
         .tooltip-wrapper,
-        .popover-wrapper
-            margin-bottom: --spacer
+        .popover-wrapper {
+            margin-bottom: $spacer;
+        }
 
         .navbar,
         .dropdown,
         .tooltip-wrapper,
         .popover-wrapper,
         .button-group,
-        .form-input-group
-            .button
-                margin-bottom: 0
+        .form-input-group {
+            .button {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

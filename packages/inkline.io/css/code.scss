@@ -1,10 +1,11 @@
 code[class*="language-"],
-pre[class*="language-"]
-    font-size: 0.9rem !important
+pre[class*="language-"] {
+    font-size: 0.9rem !important;
+}
 
 :not(pre) > code[class*="language-"],
-pre[class*="language-"]
-    background-color: --colors['gray-10'] !important
+pre[class*="language-"] {
+    background-color: colors('gray-10') !important;
 
     .token.property,
     .token.tag,
@@ -12,45 +13,55 @@ pre[class*="language-"]
     .token.number,
     .token.constant,
     .token.symbol,
-    .token.deleted
-        color: --colors['primary'] !important
+    .token.deleted {
+        color: colors('primary') !important;
+    }
 
     .token.atrule,
     .token.attr-value,
-    .token.keyword
-        color: --colors['secondary'] !important
+    .token.keyword {
+        color: colors('secondary') !important;
+    }
 
-    &.line-numbers
-        position: relative
-        padding-left: 3.8rem
+    &.line-numbers {
+        position: relative;
+        padding-left: 3.8rem;
 
-        .line-number
-            position: absolute
-            left: 0
-            top: 0
-            margin-top: 1em
-            background: transparent
-            pointer-events: none
-            line-height: inherit
-            width: 3rem
-            letter-spacing: -1px
-            border-right: 1px solid --colors['gray-30']
-            padding: 0 1rem 0 0
-            text-align: right
+        .line-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin-top: 1em;
+            background: transparent;
+            pointer-events: none;
+            line-height: inherit;
+            width: 3rem;
+            letter-spacing: -1px;
+            border-right: 1px solid colors('gray-30');
+            padding: 0 1rem 0 0;
+            text-align: right;
+        }
 
-        .line-number::before
-            content: attr(data-line-number)
-            color: #999
-            font-size: 0.75rem
-            text-shadow: none
+        .line-number::before {
+            content: attr(data-line-number);
+            color: #999;
+            font-size: 0.75rem;
+            text-shadow: none;
 
+        }
+    }
+}
 
-.alert
-    &.-code
-        &.-info code
-            background-color: rgba(darken(--colors['info'], 10%), 0.15)
-            color: darken(--colors['info'], 35%)
+.alert {
+    &.-code {
+        &.-info code {
+            background-color: rgba(darken(colors('info'), 10%), 0.15);
+            color: darken(colors('info'), 35%);
+        }
 
-        &.-danger code
-            background-color: rgba(darken(--colors['danger'], 10%), 0.15)
-            color: darken(--colors['danger'], 35%)
+        &.-danger code {
+            background-color: rgba(darken(colors('danger'), 10%), 0.15);
+            color: darken(colors('danger'), 35%);
+        }
+    }
+}
