@@ -20,10 +20,10 @@
 // @author Hugo Giraudel
 // @source https://css-tricks.com/snippets/sass/str-replace-function/
 //
-// @param {String} $string  - Initial string
-// @param {String} $search  - Substring to replace
-// @param {String} $replace - New value
-// @return {String} - Updated string
+// @param $string  - Initial string
+// @param $search  - Substring to replace
+// @param $replace - New value
+// @return - Updated string
 @function replace($search, $replace, $string) {
   $index: str-index($string, $search);
 
@@ -32,4 +32,17 @@
   }
 
   @return $string;
+}
+
+// Replacement for Stylus darken().
+// Sass function darken() does not have the same behavior, so we should use scale-color()
+// @see https://sass-lang.com/documentation/functions/color#darken
+//
+// @param $color   - The color to darken
+// @param $percent - The percentage of changement.
+//
+// @return darkened color
+//
+@function darken-lightness($color, $percent) {
+  @return scale-color($color, $lightness: -$percent);
 }
