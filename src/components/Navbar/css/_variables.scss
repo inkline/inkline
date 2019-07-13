@@ -5,7 +5,7 @@ $navbar-padding-base: spacers('1/2') 0 !default;
 $navbar-padding:      size-map($navbar-padding-base, $sizes, $size-multipliers) !default;
 
 $navbar-brand-margin:    $spacer !default;
-$navbar-brand-font-size: font-size('lg') !default;
+$navbar-brand-font-size: font-size('md') !default;
 
 $navbar-brand-padding-base: spacers('1/2') 0 !default;
 $navbar-brand-padding:      size-map($navbar-brand-padding-base, $sizes, $size-multipliers) !default;
