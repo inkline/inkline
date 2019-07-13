@@ -55,13 +55,13 @@ pre[class*="language-"] {
 .alert {
     &.-code {
         &.-info code {
-            background-color: rgba(darken(colors('state', 'info'), 10%), 0.15);
-            color: darken(colors('state', 'info'), 35%);
+            background-color: rgba(darken-lightness(colors('state', 'info'), 10%), 0.15);
+            color: darken-lightness(colors('state', 'info'), 35%);
         }
 
         &.-danger code {
-            background-color: rgba(darken(colors('state', 'danger'), 10%), 0.15);
-            color: darken(colors('state', 'danger'), 35%);
+            background-color: rgba(darken-lightness(colors('state', 'danger'), 10%), 0.15);
+            color: darken-lightness(colors('state', 'danger'), 35%);
         }
     }
 }
