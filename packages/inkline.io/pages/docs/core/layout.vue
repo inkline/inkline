@@ -1,6 +1,7 @@
 <template lang="md" src="./layout.md"></template>
 
 <style lang="scss">
+    @import '../../../css/config/index';
     @import '~@inkline/inkline/css/config/index';
     @import '~@inkline/inkline/css/mixins/index';
 
@@ -14,6 +15,8 @@
 
         .layout-aside {
             background: colors('neutral', 'gray-30');
+            // FIXME: import order forces to redefine width here.
+            width: $layout-aside-width;
 
             .layout-aside-preview-text {
                 position: absolute;
