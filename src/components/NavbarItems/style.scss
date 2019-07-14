@@ -1,22 +1,30 @@
-@import '../../css/config'
-@import '../../css/mixins'
-@import '../Navbar/css/_variables'
-@import 'css/_variants'
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Navbar/css/_variables';
+@import 'css/_variants';
 
 /**
  * Navbar Items
  */
-.navbar
-    > .container > .row > .column > .items
-        display: flex
-        flex-wrap: wrap
-        flex-grow: 1
-        justify-content: space-between
-        align-items: center
+.navbar {
+  > .container > .row > .column > .items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
 
-        @extend .navbar.-light > .container > .row > .column > .items
+    > .nav > .item {
 
-    &.-collapsed > .container > .row > .column > .items
-        border-radius: --border-radius['md']
+      // FIXME: This is complicated
+      @include navbar-item-color-variant(map_get(map_get(map_get($variants, 'navbar'), 'light'), 'color'));
+    }
+  }
 
-        @extend .navbar.-light.-collapsed > .container > .row > .column > .items
+  &.-collapsed > .container > .row > .column > .items {
+    border-radius: border-radius('md');
+
+    // FIXME: This is complicated
+    @include navbar-item-collapsed-color-variant(map_get(map_get(map_get($variants, 'navbar'), 'light'), 'color'));
+  }
+}
