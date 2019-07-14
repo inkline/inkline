@@ -8,22 +8,22 @@
 //
 // @param color Text background color
 //
--luminance(color)
-    RGB = {
-        r: red(color)
-        g: green(color)
-        b: blue(color)
-    }
-
-    for k, c in RGB
-        c = c / 255.0
-        if c <= 0.03928
-            c = c / 12.92
-        else
-            c = ((c + 0.055) / 1.055) ** 2.4
-        RGB[k] = c
-
-    return 0.2126 * RGB.r + 0.7152 * RGB.g + 0.0722 * RGB.b
+// -luminance(color)
+//    RGB = {
+//        r: red(color)
+//        g: green(color)
+//        b: blue(color)
+//    }
+//
+//    for k, c in RGB
+//        c = c / 255.0
+//        if c <= 0.03928
+//            c = c / 12.92
+//        else
+//            c = ((c + 0.055) / 1.055) ** 2.4
+//        RGB[k] = c
+//
+//    return 0.2126 * RGB.r + 0.7152 * RGB.g + 0.0722 * RGB.b
 
 //
 // Get contrast text color for a background color by calculating the luminance
@@ -33,13 +33,15 @@
 // @param color Text background color
 // @return Contrasting text color
 //
--variant-color-by-luminance(color, light, dark)
-    L = (red(color) * 0.299) + (green(color) * 0.587) + (blue(color) * 0.114)
+@function -variant-color-by-luminance($color, $light, $dark) {
+  $luminance: (red($color) * 0.299) + (green($color) * 0.587) + (blue($color) * 0.114);
 
-    if L > 186
-        return dark
-    else
-        return light
+  @if $luminance > 186 {
+    @return $dark;
+  }
+
+  @return $light;
+}
 
 //
 // Equally mix multiple colors
@@ -47,13 +49,13 @@
 // @param colors The colors to be mixed
 // @return Mixed color
 //
--mix-all(colors)
-    mixedColor = colors[0]
-
-    for color, index in colors
-        mixedColor = mix(mixedColor, color, percentage(1 / length(colors))) if index != 0
-
-    return mixedColor
+// -mix-all(colors)
+//    mixedColor = colors[0]
+//
+//    for color, index in colors
+//        mixedColor = mix(mixedColor, color, percentage(1 / length(colors))) if index != 0
+//
+//    return mixedColor
 
 //
 // Mix multiple colors with a single color
@@ -63,13 +65,13 @@
 // @param amount The transparency amount
 // @return Transparentized colors list
 //
--mix-each(colors, mixColor, amount)
-    mixedColors = ()
-
-    for color, index in colors
-        push(mixedColors, mix(color, mixColor, amount))
-
-    return mixedColors
+// -mix-each(colors, mixColor, amount)
+//    mixedColors = ()
+//
+//    for color, index in colors
+//        push(mixedColors, mix(color, mixColor, amount))
+//
+//    return mixedColors
 
 //
 // Lighten multiple colors
@@ -78,14 +80,13 @@
 // @param amount The lighten amount
 // @return Lightened colors list
 //
--lighten-each(colors, amount)
-    lightenedColors = ()
-
-    for color, index in colors
-        push(lightenedColors, lighten(color, amount))
-
-    return lightenedColors
-
+// -lighten-each(colors, amount)
+//    lightenedColors = ()
+//
+//    for color, index in colors
+//        push(lightenedColors, lighten(color, amount))
+//
+//    return lightenedColors
 
 // Transparentize multiple colors
 //
@@ -93,13 +94,13 @@
 // @param amount The transparency amount
 // @return Transparentized colors list
 //
--transparentize-each(colors, amount)
-    transparentizedColors = ()
-
-    for color in colors
-        push(transparentizedColors, rgba(color, amount))
-
-    return transparentizedColors
+// -transparentize-each(colors, amount)
+//    transparentizedColors = ()
+//
+//    for color in colors
+//        push(transparentizedColors, rgba(color, amount))
+//
+//    return transparentizedColors
 
 //
 // Generate a gradient background color with given colors array and gradient direction
@@ -108,8 +109,9 @@
 // @param direction The direction of the gradient
 // @return A gradient color
 //
--linear-gradient(colors, direction = --gradient-direction)
-    return linear-gradient(direction, unquote(join(', ', colors)))
+@function -linear-gradient($colors, $direction: $gradient-direction) {
+  @return linear-gradient($direction, unquote($colors));
+}
 
 //
 // Helper for gradient colors. Returns a flat combined fallback color if direction parameter is set to false.
@@ -120,15 +122,15 @@
 // @param mix If true, mix the fallback color. Alternatively, provides the index for the fallback color
 // @return A gradient or flat color
 //
--gradient-fallback-color(color, gradient-direction = --gradient-direction, mix = true)
-    if length(color) > 1
-        // If the gradient parameter is set to false, return a flat fallback color mixed from specified gradient stops.
-        if !gradient-direction
-            if mix
-                color = -mix-multiple(color)
-            else
-                color = color[mix]
-
-    if gradient-direction
-        return -linear-gradient(gradient-direction, color)
-    return color
+// -gradient-fallback-color(color, gradient-direction = --gradient-direction, mix = true)
+//    if length(color) > 1
+//        // If the gradient parameter is set to false, return a flat fallback color mixed from specified gradient stops.
+//        if !gradient-direction
+//            if mix
+//                color = -mix-multiple(color)
+//            else
+//                color = color[mix]
+//
+//    if gradient-direction
+//        return -linear-gradient(gradient-direction, color)
+//    return color

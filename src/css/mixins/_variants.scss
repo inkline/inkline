@@ -3,15 +3,21 @@
 //
 // @param --variant-group-names Specifies groups
 // @param --color-groups Various groups of variants associated to a variant type identifier
-//
--add-variant(--variant-group-names, --variant-typed-groups)
-    --item-variants = {}
+@function -add-variant($variant-group-names, $variant-typed-groups) {
+  $item-variants: ();
 
-    for --variant-type, --variant-group in --variant-typed-groups // { 'color': { basic: {}, brand: {}, state: {}, .. }, 'gradient': { .. }}
-        for --variant-group-type in --variant-group-names // (basic brand state ..)
-            for --variant-name, --variant-color in --variant-group[--variant-group-type] // { 'red': #ff0000, 'blue': #0000ff, .. }
-                --item-variants[--variant-name] = --item-variants[--variant-name] or {}
-                --item-variant = --item-variants[--variant-name]
-                --item-variant[--variant-type] = --variant-color
+  // { 'color': { basic: {}, brand: {}, state: {}, .. }, 'gradient': { .. }}
+  @each $variant-type, $variant-group in $variant-typed-groups {
 
-    return --item-variants
+    // (basic brand state ..)
+    @each $variant-group-type in $variant-group-names {
+
+      // { 'red': #ff0000, 'blue': #0000ff, .. }
+      @each $variant-name, $variant-color in map_get($variant-group, $variant-group-type) {
+        $item-variants: map_merge($item_variants, (#{$variant-name}:(#{$variant-type}: $variant-color))); /* stylelint-disable-line scss/no-duplicate-dollar-variables */
+      }
+    }
+  }
+
+  @return $item-variants;
+}

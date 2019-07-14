@@ -1,179 +1,245 @@
--popup(--popup = { margin: 5px, z-index: 2000 })
-    &:focus:hover
-        outline-width: 0
+@mixin popup($popup :( margin: 5px, z-index: 2000 )) {
+  $_margin: map_get($popup, 'margin');
+  $_z-index: map_get($popup, 'z-index');
 
-    z-index: --popup['z-index']
-    position: absolute
-    word-wrap: break-word;
+  z-index: $_z-index;
+  position: absolute;
+  word-wrap: break-word;
 
-    &[x-placement^="top"]
-        margin-bottom: --popup['margin']
+  &:focus:hover {
+    outline-width: 0;
+  }
 
-    &[x-placement^="bottom"]
-        margin-top: --popup['margin']
+  &[x-placement^="top"] {
+    margin-bottom: $_margin;
+  }
 
-    &[x-placement^="left"]
-        margin-right: --popup['margin']
+  &[x-placement^="bottom"] {
+    margin-top: $_margin;
+  }
 
-    &[x-placement^="right"]
-        margin-left: --popup['margin']
+  &[x-placement^="left"] {
+    margin-right: $_margin;
+  }
 
+  &[x-placement^="right"] {
+    margin-left: $_margin;
+  }
+}
 
--popup-arrow(--arrow = { size: 6px, margin: 5px, offset: 15px, background: #ffffff, border-color: #f0f0f0 })
+// FIXME: Unused params
+@mixin popup-arrow($arrow: ( 'size': 6px, 'margin': 5px, 'offset': 15px, 'background': #ffffff, 'border-color': #f0f0f0 )) {
+  > .arrow,
+  > .arrow::after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  > .arrow::after {
+    content: "";
+  }
+
+  &[x-placement^="top"] > .arrow {
+    border-bottom-width: 0;
+
+    &::after {
+      border-bottom-width: 0;
+    }
+  }
+
+  &[x-placement^="bottom"] > .arrow {
+    border-top-width: 0;
+
+    &::after {
+      border-top-width: 0;
+    }
+  }
+
+  &[x-placement^="right"] > .arrow {
+    border-left-width: 0;
+
+    &::after {
+      border-left-width: 0;
+    }
+  }
+
+  &[x-placement^="left"] > .arrow {
+    border-right-width: 0;
+
+    &::after {
+      border-right-width: 0;
+    }
+  }
+}
+
+@mixin popup-arrow-size($arrow: ( 'size': 6px, 'margin': 5px, 'offset': 15px )) {
+  $_size: map_get($arrow, 'size');
+  $_margin: map_get($arrow, 'margin');
+  $_offset: map_get($arrow, 'offset');
+
+  > .arrow,
+  > .arrow::after {
+    border-width: $_size;
+  }
+
+  &[x-placement="top"],
+  &[x-placement="bottom"] {
     > .arrow,
-    > .arrow::after
-        position: absolute
-        display: block
-        width: 0
-        height: 0
-        border-color: transparent
-        border-style: solid
+    > .arrow::after {
+      left: calc(50% - #{$_size / 2});
+    }
 
-    > .arrow::after
-        content: "";
+    > .arrow::after {
+      margin-left: -($_size / 2);
+    }
+  }
 
-    &[x-placement^="top"] > .arrow
-        border-bottom-width: 0
-
-        &::after
-            border-bottom-width: 0
-
-    &[x-placement^="bottom"] > .arrow
-        border-top-width: 0
-
-        &::after
-            border-top-width: 0;
-
-    &[x-placement^="right"] > .arrow
-        border-left-width: 0
-
-        &::after
-            border-left-width: 0
-
-    &[x-placement^="left"] > .arrow
-        border-right-width: 0;
-
-        &::after
-            border-right-width: 0
-
--popup-arrow-size(--arrow = { size: 6px, margin: 5px, offset: 15px })
+  &[x-placement="top-start"],
+  &[x-placement="bottom-start"] {
     > .arrow,
-    > .arrow::after
-        border-width: --arrow['size']
+    > .arrow::after {
+      left: $_offset;
+    }
 
-    &[x-placement="top"],
-    &[x-placement="bottom"]
-        > .arrow,
-        > .arrow::after
-            left: "calc(50% - %s)" % (--arrow['size'] / 2)
+    > .arrow::after {
+      margin-left: -($_offset + $_size);
+    }
+  }
 
-        > .arrow::after
-            margin-left: -(--arrow['size'] / 2)
+  &[x-placement="top-end"],
+  &[x-placement="bottom-end"] {
+    > .arrow,
+    > .arrow::after {
+      right: $_offset;
+    }
 
-    &[x-placement="top-start"],
-    &[x-placement="bottom-start"]
-        > .arrow,
-        > .arrow::after
-            left: --arrow['offset']
+    > .arrow::after {
+      margin-right: -($_offset + $_size);
+    }
+  }
 
-        > .arrow::after
-            margin-left: -(--arrow['offset'] + --arrow['size'])
+  &[x-placement^="top"] {
+    margin-bottom: ($_size + $_margin);
 
-    &[x-placement="top-end"],
-    &[x-placement="bottom-end"]
-        > .arrow,
-        > .arrow::after
-            right: --arrow['offset']
+    > .arrow {
+      bottom: -($_size);
 
-        > .arrow::after
-            margin-right: -(--arrow['offset'] + --arrow['size'])
+      &::after {
+        bottom: 1px;
+      }
+    }
+  }
 
-    &[x-placement^="top"]
-        margin-bottom: (--arrow['size'] + --arrow['margin'])
+  &[x-placement^="bottom"] {
+    margin-top: ($_size + $_margin);
 
-        > .arrow
-            bottom: -(--arrow['size'])
+    > .arrow {
+      top: -($_size);
 
-            &::after
-                bottom: 1px
+      &::after {
+        top: 1px;
+      }
+    }
+  }
 
-    &[x-placement^="bottom"]
-        margin-top: (--arrow['size'] + --arrow['margin'])
+  &[x-placement="left"],
+  &[x-placement="right"] {
+    > .arrow,
+    > .arrow::after {
+      top: calc(50% - #{$_size / 2});
+    }
 
-        > .arrow
-            top: -(--arrow['size'])
+    > .arrow::after {
+      margin-top: -($_size / 2);
+    }
+  }
 
-            &::after
-                top: 1px
+  &[x-placement="left-start"],
+  &[x-placement="right-start"] {
+    > .arrow,
+    > .arrow::after {
+      top: $_offset;
+    }
 
-    &[x-placement="left"]
-    &[x-placement="right"]
-        > .arrow,
-        > .arrow::after
-            top: "calc(50% - %s)" % (--arrow['size'] / 2)
+    > .arrow::after {
+      margin-top: -($_offset + $_size);
+    }
+  }
 
-        > .arrow::after
-            margin-top: -(--arrow['size'] / 2)
+  &[x-placement="left-end"],
+  &[x-placement="right-end"] {
+    > .arrow,
+    > .arrow::after {
+      bottom: $_offset;
+    }
 
-    &[x-placement="left-start"],
-    &[x-placement="right-start"]
-        > .arrow,
-        > .arrow::after
-            top: --arrow['offset']
+    > .arrow::after {
+      margin-bottom: -($_offset + $_size);
+    }
+  }
 
-        > .arrow::after
-            margin-top: -(--arrow['offset'] + --arrow['size'])
+  &[x-placement^="left"] {
+    margin-right: ($_size + $_margin);
 
-    &[x-placement="left-end"],
-    &[x-placement="right-end"]
-        > .arrow,
-        > .arrow::after
-            bottom: --arrow['offset']
+    > .arrow {
+      right: -($_size);
 
-        > .arrow::after
-            margin-bottom: -(--arrow['offset'] + --arrow['size'])
+      &::after {
+        right: 1px;
+      }
+    }
+  }
 
-    &[x-placement^="left"]
-        margin-right: (--arrow['size'] + --arrow['margin'])
+  &[x-placement^="right"] {
+    margin-left: ($_size + $_margin);
 
-        > .arrow
-            right: -(--arrow['size'])
+    > .arrow {
+      left: -($_size);
 
-            &::after
-                right: 1px
+      &::after {
+        left: 1px;
+      }
+    }
+  }
+}
 
-    &[x-placement^="right"]
-        margin-left: (--arrow['size'] + --arrow['margin'])
+@mixin popup-arrow-variant($arrow:( 'background': #ffffff, 'border-color': #bcbcbc )) {
+  $_background: map_get($arrow, 'background');
+  $_border-color: map_get($arrow, 'border-color');
 
-        > .arrow
-            left: -(--arrow['size'])
+  &[x-placement^="top"] > .arrow {
+    border-top-color: $_border-color;
 
-            &::after
-                left: 1px
+    &::after {
+      border-top-color: $_background;
+    }
+  }
 
+  &[x-placement^="bottom"] > .arrow {
+    border-bottom-color: $_border-color;
 
--popup-arrow-variant(--arrow = { background: #ffffff, border-color: #bcbcbc })
-    &[x-placement^="top"] > .arrow
-        border-top-color: --arrow['border-color']
+    &::after {
+      border-bottom-color: $_background;
+    }
+  }
 
-        &::after
-            border-top-color: --arrow['background']
+  &[x-placement^="right"] > .arrow {
+    border-right-color: $_border-color;
 
+    &::after {
+      border-right-color: $_background;
+    }
+  }
 
-    &[x-placement^="bottom"] > .arrow
-        border-bottom-color: --arrow['border-color']
+  &[x-placement^="left"] > .arrow {
+    border-left-color: $_border-color;
 
-        &::after
-            border-bottom-color: --arrow['background']
-
-    &[x-placement^="right"] > .arrow
-        border-right-color: --arrow['border-color']
-
-        &::after
-            border-right-color: --arrow['background']
-
-    &[x-placement^="left"] > .arrow
-        border-left-color: --arrow['border-color'];
-
-        &::after
-            border-left-color: --arrow['background']
+    &::after {
+      border-left-color: $_background;
+    }
+  }
+}
