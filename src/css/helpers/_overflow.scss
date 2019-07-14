@@ -4,10 +4,10 @@
  * Custom styles for content overflow
  */
 
-._overflow-auto
-    overflow: auto !important
+._overflow-auto {
+  overflow: auto !important;
+}
 
-._overflow-hidden
-    overflow: hidden !important
-
-
+._overflow-hidden {
+  overflow: hidden !important;
+}
