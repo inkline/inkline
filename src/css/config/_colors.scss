@@ -3,142 +3,155 @@
 //
 // Basic, state and neutral colors
 //
---color-groups = {}
-
+@import "../functions";
 
 // Basic Colors
 //
---color-red := #f25f5c
---color-orange := #f1ac53
---color-yellow := #ffe066
---color-green := #5fb072
---color-teal := #62bec1
---color-blue := #178bb2
---color-purple := #5d65b9
---color-pink := #ff6f80
-
---color-groups['basic'] = {
-  red: --color-red
-  orange: --color-orange
-  yellow: --color-yellow
-  green: --color-green
-  teal: --color-teal
-  blue: --color-blue
-  purple: --color-purple
-  pink: --color-pink
-}
+$color-red:    #f25f5c !default;
+$color-orange: #f1ac53 !default;
+$color-yellow: #ffe066 !default;
+$color-green:  #5fb072 !default;
+$color-teal:   #62bec1 !default;
+$color-blue:   #178bb2 !default;
+$color-purple: #5d65b9 !default;
+$color-pink:   #ff6f80 !default;
 
 // Neutral Colors
 //
---color-transparent := transparent
---color-white := #ffffff
---color-gray-10 := #f8f9fa
---color-gray-20 := #e9ecef
---color-gray-30 := #dee2e6
---color-gray-40 := #ced4da
---color-gray-50 := #adb5bd
---color-gray-60 := #868e96
---color-gray-70 := #495057
---color-gray-80 := #343a40
---color-gray-90 := #212529
---color-black := #000000
-
---color-groups['neutral'] = {
-  transparent: --color-transparent
-  white: --color-white
-  gray-10: --color-gray-10
-  gray-20: --color-gray-20
-  gray-30: --color-gray-30
-  gray-40: --color-gray-40
-  gray-50: --color-gray-50
-  gray-60: --color-gray-60
-  gray-70: --color-gray-70
-  gray-80: --color-gray-80
-  gray-90: --color-gray-90
-  black: --color-black
-}
+$color-transparent : transparent !default;
+$color-white:   #ffffff !default;
+$color-gray-10: #f8f9fa !default;
+$color-gray-20: #e9ecef !default;
+$color-gray-30: #dee2e6 !default;
+$color-gray-40: #ced4da !default;
+$color-gray-50: #adb5bd !default;
+$color-gray-60: #868e96 !default;
+$color-gray-70: #495057 !default;
+$color-gray-80: #343a40 !default;
+$color-gray-90: #212529 !default;
+$color-black:   #000000 !default;
 
 // Brand Colors
 //
---color-primary := --color-blue
---color-secondary := --color-purple
-
---color-groups['brand'] = {
-  primary: --color-primary
-  secondary: --color-secondary
-}
+$color-primary:   $color-blue !default;
+$color-secondary: $color-purple !default;
 
 // Brand Neutral Colors
 //
---color-light := --color-gray-20
---color-dark := --color-gray-80
-
---color-groups['monochrome'] = {
-  light: --color-light
-  dark: --color-dark
-}
-
---color-groups['monochrome-white'] = {
-  light: --color-white
-  dark: --color-dark
-}
+$color-light: $color-gray-20 !default;
+$color-dark:  $color-gray-80 !default;
 
 // State Colors
 //
---color-success := --color-green
---color-danger := --color-red
---color-warning := --color-orange
---color-info := --color-teal
-
---color-groups['state'] = {
-  success: --color-success
-  danger: --color-danger
-  warning: --color-warning
-  info: --color-info
-}
-
+$color-success: $color-green !default;
+$color-danger:  $color-red !default;
+$color-warning: $color-orange !default;
+$color-info:    $color-teal !default;
 
 // Social Colors
 //
---color-facebook := #3b5998
---color-twitter := #1da1f2
---color-google := #dd4b39
---color-instagram := #fd1d1d
---color-dribbble := #ea4c89
---color-behance := #1769ff
---color-flickr := #ff0084
---color-linkedin := #0077b5
---color-youtube := #b31217
---color-pinterest := #bd081c
---color-github := #333333
---color-tumblr := #35465c
---color-twitch := #6441a5
---color-envato := #82b541
---color-vine := #00bf8f
-
---color-groups['social'] = {
-  facebook: --color-facebook
-  twitter: --color-twitter
-  google: --color-google
-  instagram: --color-instagram
-  dribbble: --color-dribbble
-  behance: --color-behance
-  flickr: --color-flickr
-  linkedin: --color-linkedin
-  youtube: --color-youtube
-  pinterest: --color-pinterest
-  github: --color-github
-  tumblr: --color-tumblr
-  twitch: --color-twitch
-  envato: --color-envato
-  vine: --color-vine
-}
+$color-facebook:  #3b5998;
+$color-twitter:   #1da1f2;
+$color-google:    #dd4b39;
+$color-instagram: #fd1d1d;
+$color-dribbble:  #ea4c89;
+$color-behance:   #1769ff;
+$color-flickr:    #ff0084;
+$color-linkedin:  #0077b5;
+$color-youtube:   #b31217;
+$color-pinterest: #bd081c;
+$color-github:    #333333;
+$color-tumblr:    #35465c;
+$color-twitch:    #6441a5;
+$color-envato:    #82b541;
+$color-vine:      #00bf8f;
 
 // Theme light and dark colors
 //
---variant-color-light := #ffffff
---variant-color-dark := #343a40
+$variant-color-light: #ffffff !default;
+$variant-color-dark:  #343a40 !default;
+
+// Color groups
+//
+$color-groups: (
+  'basic': (
+    'red':    $color-red,
+    'orange': $color-orange,
+    'yellow': $color-yellow,
+    'green':  $color-green,
+    'teal':   $color-teal,
+    'blue':   $color-blue,
+    'purple': $color-purple,
+    'pink':   $color-pink,
+  ),
+  'neutral': (
+    'transparent': $color-transparent,
+    'white':       $color-white,
+    'gray-10':     $color-gray-10,
+    'gray-20':     $color-gray-20,
+    'gray-30':     $color-gray-30,
+    'gray-40':     $color-gray-40,
+    'gray-50':     $color-gray-50,
+    'gray-60':     $color-gray-60,
+    'gray-70':     $color-gray-70,
+    'gray-80':     $color-gray-80,
+    'gray-90':     $color-gray-90,
+    'black':       $color-black,
+  ),
+  'brand': (
+    'primary':   $color-primary,
+    'secondary': $color-secondary,
+  ),
+  'monochrome': (
+    'light': $color-light,
+    'dark':  $color-dark,
+  ),
+  'monochrome-white': (
+    'light': $color-white,
+    'dark':  $color-dark,
+  ),
+  'state': (
+    'success': $color-success,
+    'danger':  $color-danger,
+    'warning': $color-warning,
+    'info':    $color-info,
+  ),
+  'social': (
+    'facebook':  $color-facebook,
+    'twitter':   $color-twitter,
+    'google':    $color-google,
+    'instagram': $color-instagram,
+    'dribbble':  $color-dribbble,
+    'behance':   $color-behance,
+    'flickr':    $color-flickr,
+    'linkedin':  $color-linkedin,
+    'youtube':   $color-youtube,
+    'pinterest': $color-pinterest,
+    'github':    $color-github,
+    'tumblr':    $color-tumblr,
+    'twitch':    $color-twitch,
+    'envato':    $color-envato,
+    'vine':      $color-vine,
+  )
+);
+
+// Quick accessor to a color in sub map
+@function color-group($key, $name) {
+  @return submap_get($color-groups, $key, $name);
+}
 
 // All Colors
 //
---colors = merge(--color-groups['basic'], --color-groups['brand'], --color-groups['monochrome'], --color-groups['neutral'], --color-groups['state'], --color-groups['social'])
+$colors: (
+  'basic':      map_get($color-groups, 'basic'),
+  'brand':      map_get($color-groups, 'brand'),
+  'monochrome': map_get($color-groups, 'monochrome'),
+  'neutral':    map_get($color-groups, 'neutral'),
+  'state':      map_get($color-groups, 'state'),
+  'social':     map_get($color-groups, 'social')
+);
+
+// Quick accessor to a color in sub map
+@function colors($key, $name) {
+  @return submap_get($colors, $key, $name);
+}
