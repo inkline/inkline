@@ -1,14 +1,14 @@
---inkline-font-path := "assets/icons/"
+$inkline-font-path : 'assets/icons/' !default;
 
---icon-chevron-down = "\e901"
---icon-caret-down = "\e904"
---icon-circle = "\e900"
---icon-home = "\e902"
---icon-calendar = "\e953"
---icon-warning = "\ea07"
---icon-danger = "\ea08"
---icon-plus = "\ea0a"
---icon-minus = "\ea0b"
---icon-info = "\ea0c"
---icon-times = "\ea0f"
---icon-check = "\ea10"
+$icon-chevron-down: '\e901';
+$icon-caret-down:   '\e904';
+$icon-circle:       '\e900';
+$icon-home:         '\e902';
+$icon-calendar:     '\e953';
+$icon-warning:      '\ea07';
+$icon-danger:       '\ea08';
+$icon-plus:         '\ea0a';
+$icon-minus:        '\ea0b';
+$icon-info:         '\ea0c';
+$icon-times:        '\ea0f';
+$icon-check:        '\ea10';

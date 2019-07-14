@@ -2,27 +2,31 @@
 // Animations
 //
 
-
 // Transition duration
 //
---transition-enabled := true
---transition-duration := 210ms
---transition-easing := ease
+$transition-enabled:  true !default;
+$transition-duration: 210ms !default;
+$transition-easing:   ease !default;
 
 // Enabled Transitions
 //
---transition-button := true
---transition-dropdown := true
---transition-input := true
---transition-list-group := true
---transition-nav := true
---transition-table := true
+$transition-button:     true !default;
+$transition-dropdown:   true !default;
+$transition-input:      true !default;
+$transition-list-group: true !default;
+$transition-nav:        true !default;
+$transition-table:      true !default;
 
---transition := {
-  button: --transition-button
-  dropdown: --transition-dropdown
-  list-group: --transition-list-group
-  input: --transition-input
-  nav: --transition-nav
-  table: --transition-table
+$transition: (
+  'button':     $transition-button,
+  'dropdown':   $transition-dropdown,
+  'list-group': $transition-list-group,
+  'input':      $transition-input,
+  'nav':        $transition-nav,
+  'table':      $transition-table,
+) !default;
+
+// Quick accessor to the transition map
+@function transition($key) {
+  @return map_get($transition, $key);
 }

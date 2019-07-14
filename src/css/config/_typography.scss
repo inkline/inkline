@@ -4,171 +4,200 @@
 
 // Font families
 //
---font-family-primary-base = -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif
+$font-family-primary-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 
---font-family-primary-monospace = 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace
---font-family-primary-print = 'Georgia', 'Times New Roman', 'Times', serif
+$font-family-primary-monospace: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+$font-family-primary-print:     'Georgia', 'Times New Roman', 'Times', serif;
 
---font-family-secondary-base := --font-family-primary-base
---font-family-secondary-print := --font-family-primary-print
+$font-family-secondary-base:  $font-family-primary-base !default;
+$font-family-secondary-print: $font-family-primary-print !default;
 
---font-family-primary := {
-  base: --font-family-primary-base
-  monospace: --font-family-primary-monospace
-  print: --font-family-primary-print
+$font-family-primary: (
+  'base':      $font-family-primary-base,
+  'monospace': $font-family-primary-monospace,
+  'print':     $font-family-primary-print,
+) !default;
+
+// Quick accessor to the font-family-primary map
+@function font-family-primary($key) {
+  @return map_get($font-family-primary, $key);
 }
 
---font-family-secondary := {
-  base: --font-family-secondary-base
-  print: --font-family-secondary-print
+$font-family-secondary: (
+  'base':  $font-family-secondary-base,
+  'print': $font-family-secondary-print,
+) !default;
+
+// Quick accessor to the font-family-secondary map
+@function font-family-secondary($key) {
+  @return map_get($font-family-secondary, $key);
 }
 
 // Tracking
 //
---letter-spacing := 0
+$letter-spacing: 0 !default;
 
 // Font size
 // Assumes the browser default, typically `16px`
 //
---font-size-base := 1rem
---font-size = {
-    xs: --font-size-base * --size-multipliers['xs']
-    sm: --font-size-base * --size-multipliers['sm']
-    md: --font-size-base * --size-multipliers['md']
-    lg: --font-size-base * --size-multipliers['lg']
-    xl: --font-size-base * --size-multipliers['xl']
-}
+$font-size-base: 1rem !default;
+$font-size: (
+  'xs': $font-size-base * size-multipliers(xs),
+  'sm': $font-size-base * size-multipliers(sm),
+  'md': $font-size-base * size-multipliers(md),
+  'lg': $font-size-base * size-multipliers(lg),
+  'xl': $font-size-base * size-multipliers(xl),
+);
 
+// Quick accessor to the font-size map
+@function font-size($key) {
+  @return map_get($font-size, $key);
+}
 
 // Font weight
 //
---font-weight-extralight := 200
---font-weight-light := 300
---font-weight-normal := normal
---font-weight-semibold := 600
---font-weight-bold := bold
---font-weight-black := 900
+$font-weight-extralight: 200 !default;
+$font-weight-light:      300 !default;
+$font-weight-normal:     normal !default;
+$font-weight-semibold:   600 !default;
+$font-weight-bold:       bold !default;
+$font-weight-black:      900 !default;
 
---font-weight := {
-  extralight: --font-weight-extralight
-  light: --font-weight-light
-  normal: --font-weight-normal
-  semibold: --font-weight-semibold
-  bold: --font-weight-bold
-  black: --font-weight-black
+$font-weight :(
+  'extralight': $font-weight-extralight,
+  'light':      $font-weight-light,
+  'normal':     $font-weight-normal,
+  'semibold':   $font-weight-semibold,
+  'bold':       $font-weight-bold,
+  'black':      $font-weight-black,
+) !default;
+
+// Quick accessor to the font-weight map
+@function font-weight($key) {
+  @return map_get($font-weight, $key);
 }
 
 // Line height
 //
---line-height := 1.5
+$line-height: 1.5 !default;
 
 // Muted text color
 //
---text-muted := --colors['gray-60']
+$text-muted: colors('neutral', 'gray-60') !default;
 
 // Headings
 //
---h1-font-size := 2.5 * --font-size['md']
---h2-font-size := 2 * --font-size['md']
---h3-font-size := 1.75 * --font-size['md']
---h4-font-size := 1.5 * --font-size['md']
---h5-font-size := 1.25 * --font-size['md']
---h6-font-size := 1 * --font-size['md']
+$h1-font-size: 2.5 * font-size('md') !default;
+$h2-font-size: 2 * font-size('md') !default;
+$h3-font-size: 1.75 * font-size('md') !default;
+$h4-font-size: 1.5 * font-size('md') !default;
+$h5-font-size: 1.25 * font-size('md') !default;
+$h6-font-size: 1 * font-size('md') !default;
 
---headings-font-size := {
-  h1: --h1-font-size
-  h2: --h2-font-size
-  h3: --h3-font-size
-  h4: --h4-font-size
-  h5: --h5-font-size
-  h6: --h6-font-size
+$headings-font-size: (
+  'h1': $h1-font-size,
+  'h2': $h2-font-size,
+  'h3': $h3-font-size,
+  'h4': $h4-font-size,
+  'h5': $h5-font-size,
+  'h6': $h6-font-size,
+) !default;
+
+// Quick accessor to the headings-font-size map
+@function headings-font-size($key) {
+  @return map_get($headings-font-size, $key);
 }
 
---headings-margin-top := --spacer * 2.5
---headings-margin-bottom := --spacer
---headings-font-family := --font-family-secondary-base
---headings-font-weight := normal
---headings-line-height := 1.1
---headings-color := inherit
+$headings-margin-top:    $spacer * 2.5 !default;
+$headings-margin-bottom: $spacer !default;
+$headings-font-family:   $font-family-secondary-base !default;
+$headings-font-weight:   normal !default;
+$headings-line-height:   1.1 !default;
+$headings-color:         inherit !default;
 
 // Displays
 //
---d1-font-size := 5.5 * --font-size['md']
---d2-font-size := 5 * --font-size['md']
---d3-font-size := 4.5 * --font-size['md']
---d4-font-size := 4 * --font-size['md']
---d5-font-size := 3.5 * --font-size['md']
---d6-font-size := 3 * --font-size['md']
+$d1-font-size: 5.5 * font-size('md') !default;
+$d2-font-size: 5 * font-size('md') !default;
+$d3-font-size: 4.5 * font-size('md') !default;
+$d4-font-size: 4 * font-size('md') !default;
+$d5-font-size: 3.5 * font-size('md') !default;
+$d6-font-size: 3 * font-size('md') !default;
 
---displays-font-size := {
-  d1: --d1-font-size
-  d2: --d2-font-size
-  d3: --d3-font-size
-  d4: --d4-font-size
-  d5: --d5-font-size
-  d6: --d6-font-size
+$displays-font-size: (
+  'd1': $d1-font-size,
+  'd2': $d2-font-size,
+  'd3': $d3-font-size,
+  'd4': $d4-font-size,
+  'd5': $d5-font-size,
+  'd6': $d6-font-size,
+) !default;
+
+// Quick accessor to the displays-font-size map
+@function displays-font-size($key) {
+  @return map_get($displays-font-size, $key);
 }
 
---displays-font-weight := --headings-font-weight
---displays-line-height := --headings-line-height
+$displays-font-weight: $headings-font-weight !default;
+$displays-line-height: $headings-line-height !default;
 
 // Links
 //
---link-color := --color-primary
---link-color-hover := darken(--link-color, 20%)
---link-decoration := none
---link-decoration-hover := underline
+$link-color:            $color-primary !default;
+$link-color-hover:      darken($link-color, 20%) !default;
+$link-decoration:       none !default;
+$link-decoration-hover: underline !default;
 
 // Lead
 //
---lead-font-size := --font-size['lg']
---lead-font-weight := 300
+$lead-font-size:   font-size('lg') !default;
+$lead-font-weight: 300 !default;
 
 // Lists
 //
---list-inline-padding := --spacer
---list-item-margin-bottom := --spacers['1/2']
+$list-inline-padding:     $spacer !default;
+$list-item-margin-bottom: spacers('1/2') !default;
 
 // Description Lists
 //
---dt-font-weight := --font-weight['bold']
+$dt-font-weight: font-weight('bold') !default;
 
 // Emphasis
 //
---small-font-size := --font-size['sm']
+$small-font-size: font-size('sm') !default;
 
 // Blockquote
 //
---blockquote-small-color := --colors['gray-60']
---blockquote-font-size := --font-size['lg']
---blockquote-border := 3px solid --colors['gray-30']
+$blockquote-small-color: colors('neutral', 'gray-60') !default;
+$blockquote-font-size:   font-size('lg') !default;
+$blockquote-border:      3px solid colors('neutral', 'gray-30') !default;
 
 // Horizontal rule
 //
---hr-border-color := rgba(--colors['black'], 0.1)
---hr-border-width := --border-width
+$hr-border-color: rgba(colors('neutral', 'black'), 0.1) !default;
+$hr-border-width: $border-width !default;
 
 // Mark
 //
---mark-padding := 0.2rem 0.4rem
---mark-color := --colors['gray-80']
---mark-background-color := #fcf8e3
+$mark-padding:          0.2rem 0.4rem !default;
+$mark-color:            colors('neutral', 'gray-80') !default;
+$mark-background-color: #fcf8e3 !default;
 
 // Kbd
 //
---kbd-box-shadow := inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25)
---kbd-nested-font-weight := --font-weight['bold']
---kbd-color := --colors['white']
---kbd-background := --colors['gray-90']
+$kbd-box-shadow:         inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25) !default;
+$kbd-nested-font-weight: font-weight('bold') !default;
+$kbd-color:              colors('neutral', 'white') !default;
+$kbd-background:         colors('neutral', 'gray-90') !default;
 
 // Code
 //
---code-font-size := 90%
---code-padding := 0.15rem 0.4rem
---code-color := #bd4147
---code-background := --colors['gray-10']
+$code-font-size:  90% !default;
+$code-padding:    0.15rem 0.4rem !default;
+$code-color:      #bd4147 !default;
+$code-background: colors('neutral', 'gray-10') !default;
 
 // Pre
 //
---pre-color := --colors['gray-90']
---pre-scrollable-max-height := 340px
+$pre-color:                 colors('neutral', 'gray-90') !default;
+$pre-scrollable-max-height: 340px !default;

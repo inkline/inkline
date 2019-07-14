@@ -2,6 +2,5 @@
 // Core
 //
 
-
---body-background := --colors['white']
---body-color := --colors['gray-80']
+$body-background: colors('neutral', 'white') !default;
+$body-color:      colors('neutral', 'gray-80') !default;
