@@ -1,4 +1,4 @@
-import '@inkline/inkline/src/index.styl';
+import '@inkline/inkline/src/index.scss';
 
 import IAlert from '@inkline/inkline/src/components/Alert';
 import IBadge from '@inkline/inkline/src/components/Badge';
