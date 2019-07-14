@@ -1,22 +1,40 @@
 //
 // Navbar Items variants
 //
-for --variant-name, --variant in --variants['navbar']
-    .navbar.-{--variant-name}
-        > .container > .row > .column > .items
-            > .nav > .item
-                color: -variant-color-by-luminance(--variant['color'], darken(--variant-color-light, 20%), lighten(--variant-color-dark, 20%))
+@mixin navbar-item-color-variant($color-variant) {
+  color: -variant-color-by-luminance($color-variant, darken-lightness($variant-color-light, 20%), lighten-lightness($variant-color-dark, 20%));
 
-                &.-active
-                &.-focused
-                &:focus
-                &.-hovered
-                &:hover
-                    color: -variant-color-by-luminance(--variant['color'], --variant-color-light, --variant-color-dark)
+  &.-active,
+  &.-focused,
+  &:focus,
+  &.-hovered,
+  &:hover {
+    color: -variant-color-by-luminance($color-variant, $variant-color-light, $variant-color-dark);
+  }
+}
 
-        &.-collapsed
-            > .container > .row > .column > .items
-                background: darken(--variant['color'], 5%)
+@mixin navbar-item-collapsed-color-variant($color-variant) {
+  background: darken-lightness($color-variant, 5%);
 
-                > .nav > .item:hover
-                    background: darken(--variant['color'], 10%)
+  > .nav > .item:hover {
+    background: darken-lightness($color-variant, 10%);
+  }
+}
+
+@each $variant-name, $variant in variants('navbar') {
+  $_variant_color: map_get($variant, 'color');
+
+  .navbar.-#{$variant-name} {
+    > .container > .row > .column > .items {
+      > .nav > .item {
+        @include navbar-item-color-variant($_variant_color);
+      }
+    }
+
+    &.-collapsed {
+      > .container > .row > .column > .items {
+        @include navbar-item-collapsed-color-variant($_variant_color);
+      }
+    }
+  }
+}
