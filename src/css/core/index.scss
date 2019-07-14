@@ -2,11 +2,11 @@
  * Core
  */
 
-@require '_normalize'
-@require '_print'
-@require '_modal'
-@require '_icons'
-@require 'code'
-@require 'images'
-@require 'transitions'
-@require 'typography'
+@import 'normalize';
+@import 'print';
+@import 'modal';
+@import 'icons';
+@import 'code/index';
+@import 'images/index';
+@import 'transitions/index';
+@import 'typography/index';
