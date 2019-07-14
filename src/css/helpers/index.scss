@@ -1,20 +1,18 @@
 /**
  * Mixins
  */
-
-
-@require '_align'
-@require '_border'
-@require '_clearfix'
-@require '_colors'
-@require '_display'
-@require '_embed'
-@require '_flex'
-@require '_float'
-@require '_overflow'
-@require '_overlay'
-@require '_position'
-@require '_sizing'
-@require '_spacing'
-@require '_text'
-@require '_visibility'
+@import 'align';
+@import 'border';
+@import 'clearfix';
+@import 'colors';
+@import 'display';
+@import 'embed';
+@import 'flex';
+@import 'float';
+@import 'overflow';
+@import 'overlay';
+@import 'position';
+@import 'sizing';
+@import 'spacing';
+@import 'text';
+@import 'visibility';
