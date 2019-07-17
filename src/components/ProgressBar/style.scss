@@ -15,6 +15,5 @@
   white-space: nowrap;
   height: 100%;
 
-  // FIXME: This is complicated
-  @include progress-bar-color-variant(map_get(map_get(map_get($variants, 'progress-bar'), 'primary'), 'color'));
+  @include progress-bar-color-variant(variant-element('progress-bar', 'primary', 'color'));
 }

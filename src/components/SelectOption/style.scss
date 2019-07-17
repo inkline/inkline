@@ -34,5 +34,5 @@
     font-weight: bold;
   }
 
-  @include select-option-color-variant(map_get(map_get(map_get($variants, 'select-dropdown'), 'light'), 'color'));
+  @include select-option-color-variant(variant-element('select-dropdown', 'light', 'color'));
 }

@@ -16,15 +16,13 @@
 
     > .nav > .item {
 
-      // FIXME: This is complicated
-      @include navbar-item-color-variant(map_get(map_get(map_get($variants, 'navbar'), 'light'), 'color'));
+      @include navbar-item-color-variant(variant-element('navbar', 'light', 'color'));
     }
   }
 
   &.-collapsed > .container > .row > .column > .items {
     border-radius: border-radius('md');
 
-    // FIXME: This is complicated
-    @include navbar-item-collapsed-color-variant(map_get(map_get(map_get($variants, 'navbar'), 'light'), 'color'));
+    @include navbar-item-collapsed-color-variant(variant-element('navbar', 'light', 'color'));
   }
 }
