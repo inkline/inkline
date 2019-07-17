@@ -71,12 +71,6 @@
     border-top-color: $border-color;
   }
 
-  .table {
-
-    // FIXME: Missing variable
-    // background-color: $color
-  }
-
   @extend .table.-light;
 }
 
