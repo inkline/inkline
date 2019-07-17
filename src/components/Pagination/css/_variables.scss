@@ -16,8 +16,8 @@ $pagination-item-spacing: 0.25rem !default;
 $pagination-item-border-width:  $border-width !default;
 $pagination-item-border-radius: $border-radius !default;
 
-$pagination-item-background-active: colors('brand', 'primary') !default;
-$pagination-item-color-active:      colors('neutral', 'white') !default;
+$pagination-item-background-active: colors('primary') !default;
+$pagination-item-color-active:      colors('white') !default;
 
 //
 // Themes

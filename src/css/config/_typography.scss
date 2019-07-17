@@ -83,7 +83,7 @@ $line-height: 1.5 !default;
 
 // Muted text color
 //
-$text-muted: colors('neutral', 'gray-60') !default;
+$text-muted: colors('gray-60') !default;
 
 // Headings
 //
@@ -168,36 +168,36 @@ $small-font-size: font-size('sm') !default;
 
 // Blockquote
 //
-$blockquote-small-color: colors('neutral', 'gray-60') !default;
+$blockquote-small-color: colors('gray-60') !default;
 $blockquote-font-size:   font-size('lg') !default;
-$blockquote-border:      3px solid colors('neutral', 'gray-30') !default;
+$blockquote-border:      3px solid colors('gray-30') !default;
 
 // Horizontal rule
 //
-$hr-border-color: rgba(colors('neutral', 'black'), 0.1) !default;
+$hr-border-color: rgba(colors('black'), 0.1) !default;
 $hr-border-width: $border-width !default;
 
 // Mark
 //
 $mark-padding:          0.2rem 0.4rem !default;
-$mark-color:            colors('neutral', 'gray-80') !default;
+$mark-color:            colors('gray-80') !default;
 $mark-background-color: #fcf8e3 !default;
 
 // Kbd
 //
 $kbd-box-shadow:         inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25) !default;
 $kbd-nested-font-weight: font-weight('bold') !default;
-$kbd-color:              colors('neutral', 'white') !default;
-$kbd-background:         colors('neutral', 'gray-90') !default;
+$kbd-color:              colors('white') !default;
+$kbd-background:         colors('gray-90') !default;
 
 // Code
 //
 $code-font-size:  90% !default;
 $code-padding:    0.15rem 0.4rem !default;
 $code-color:      #bd4147 !default;
-$code-background: colors('neutral', 'gray-10') !default;
+$code-background: colors('gray-10') !default;
 
 // Pre
 //
-$pre-color:                 colors('neutral', 'gray-90') !default;
+$pre-color:                 colors('gray-90') !default;
 $pre-scrollable-max-height: 340px !default;

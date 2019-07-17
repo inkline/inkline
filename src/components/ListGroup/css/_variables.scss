@@ -10,10 +10,10 @@ $list-group-item-padding:      size-map($list-group-item-padding-base, $sizes, $
 
 $list-group-border-width: $border-width !default;
 $list-group-border-style: solid !default;
-$list-group-border-color: colors('neutral', 'gray-20') !default;
+$list-group-border-color: colors('gray-20') !default;
 
 $list-group-border-radius: $border-radius !default;
 
-$list-group-item-active-background:   colors('brand', 'primary') !default;
-$list-group-item-active-color:        colors('neutral', 'white') !default;
-$list-group-item-active-border-color: darken-lightness(colors('brand', 'primary'), 6%) !default;
+$list-group-item-active-background:   colors('primary') !default;
+$list-group-item-active-color:        colors('white') !default;
+$list-group-item-active-border-color: darken-lightness(colors('primary'), 6%) !default;
