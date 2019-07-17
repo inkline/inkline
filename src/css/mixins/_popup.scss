@@ -27,8 +27,7 @@
   }
 }
 
-// FIXME: Unused params
-@mixin popup-arrow($arrow: ( 'size': 6px, 'margin': 5px, 'offset': 15px, 'background': #ffffff, 'border-color': #f0f0f0 )) {
+@mixin popup-arrow() {
   > .arrow,
   > .arrow::after {
     position: absolute;

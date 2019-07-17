@@ -48,9 +48,6 @@
 
       // Avoid using mixin so we can pass custom focus shadow properly
       @if $box-shadow-enabled {
-
-        // FIXME: $input-box-shadow-focus is not defined
-        // box-shadow: $input-box-shadow, $input-box-shadow-focus;
         box-shadow: $input-box-shadow;
       }
     }
@@ -221,7 +218,4 @@
   padding: 0;
   line-height: $input-line-height;
   background-color: $input-append-prepend-background-color;
-
-  // FIXME: Undefined variable
-  // background-image: -linear-gradient($input-append-prepend-background-gradient);
 }
