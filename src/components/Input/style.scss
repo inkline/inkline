@@ -13,7 +13,7 @@
   flex: 1 0 auto;
   flex-direction: row;
 
-  @include -form-input-selector() {
+  @include form-input-selector() {
     position: relative;
     flex: 1 0 auto;
     width: 1%;
@@ -138,7 +138,7 @@
     }
   }
 
-  @include -form-input-size('md');
+  @include form-input-size('md');
 }
 
 /**
@@ -146,7 +146,7 @@
  */
 .form-group.-error {
   .form-input-group > .form-input {
-    @include -form-input-selector() {
+    @include form-input-selector() {
       border-color: colors('basic', 'red');
     }
   }
@@ -167,7 +167,7 @@
   }
 
   &.-prepended .form-input {
-    @include -form-input-selector() {
+    @include form-input-selector() {
       display: block;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
@@ -175,7 +175,7 @@
   }
 
   &.-appended .form-input {
-    @include -form-input-selector() {
+    @include form-input-selector() {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }

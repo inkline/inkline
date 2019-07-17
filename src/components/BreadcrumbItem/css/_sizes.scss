@@ -1,7 +1,7 @@
 //
 // Breadcrumb sizes
 //
-@mixin -breadcrumb-item-variant($size) {
+@mixin breadcrumb-item-variant($size) {
   $_item-padding: map_get($breadcrumb-item-padding, $size);
 
   padding-left: $_item-padding;
@@ -16,7 +16,7 @@
 @each $size in $sizes {
   .breadcrumb.-#{$size} {
     > .item {
-      @include -breadcrumb-item-variant($size);
+      @include breadcrumb-item-variant($size);
     }
   }
 }

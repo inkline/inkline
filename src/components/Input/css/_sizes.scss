@@ -12,7 +12,7 @@
   .form-group.-#{$size} .select > .form-input-group > .form-input,
   .select.-#{$size} > .form-input-group > .form-input,
   .form-input-group.-#{$size} > .form-input {
-    @include -form-input-size($size);
+    @include form-input-size($size);
   }
 
   .form-input-group.-#{$size} {

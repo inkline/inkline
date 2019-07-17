@@ -50,6 +50,6 @@
       color: $breadcrumb-active-color;
     }
 
-    @include -breadcrumb-item-variant('md');
+    @include breadcrumb-item-variant('md');
   }
 }
