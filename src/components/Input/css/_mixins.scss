@@ -1,7 +1,7 @@
 //
 // Mixins
 //
-@mixin -form-input-selector() {
+@mixin form-input-selector() {
   > input,
   > select,
   > textarea {
@@ -9,7 +9,7 @@
   }
 }
 
-@mixin -form-input-label-size($size) {
+@mixin form-input-label-size($size) {
   $_font-size: map_get($input-font-size, $size);
   $_padding: map_get($input-padding, $size);
 
@@ -24,13 +24,13 @@
   }
 }
 
-@mixin -form-input-size($size) {
+@mixin form-input-size($size) {
   $_padding:        map_get($input-padding, $size);
   $_font-size:      map_get($input-font-size, $size);
   $_border-radius:  map_get($input-border-radius, $size);
   $_prefix-padding: map_get($input-prefix-padding, $size);
 
-  @include -form-input-selector() {
+  @include form-input-selector() {
     padding: $_padding;
     font-size: $_font-size;
 
@@ -40,13 +40,13 @@
   }
 
   &.-prefixed {
-    @include -form-input-selector() {
+    @include form-input-selector() {
       padding-left: $_prefix-padding;
     }
   }
 
   &.-suffixed {
-    @include -form-input-selector() {
+    @include form-input-selector() {
       padding-right: $_prefix-padding;
     }
   }

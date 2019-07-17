@@ -20,6 +20,6 @@
   list-style: none;
 
   > .item {
-    @include -breadcrumb-item-variant('md');
+    @include breadcrumb-item-variant('md');
   }
 }
