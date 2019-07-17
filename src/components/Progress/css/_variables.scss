@@ -12,4 +12,4 @@ $progress-height:      size-map($progress-height-base, $sizes, $size-multipliers
 //
 $progress-variants: ('monochrome') !default;
 
-$variants: map_merge($variants, ('progress': -add-variant($progress-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('progress': add-variant($progress-variants, ('color': $color-groups))));

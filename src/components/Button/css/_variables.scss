@@ -29,4 +29,4 @@ $button-variants:            ('brand', 'monochrome', 'state', 'social') !default
 $button-variant-color-light: $variant-color-light !default;
 $button-variant-color-dark:  $variant-color-dark !default;
 
-$variants: map_merge($variants, ('button': -add-variant($button-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('button': add-variant($button-variants, ('color': $color-groups))));

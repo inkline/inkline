@@ -22,4 +22,4 @@ $alert-variants:            ('brand', 'state') !default;
 $alert-variant-color-light: $variant-color-light !default;
 $alert-variant-color-dark:  $variant-color-dark !default;
 
-$variants: map_merge($variants, ('alert': -add-variant($alert-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('alert': add-variant($alert-variants, ('color': $color-groups))));

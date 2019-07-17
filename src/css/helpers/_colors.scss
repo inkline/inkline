@@ -10,11 +10,11 @@
   $_variant-gradient: map_get($variant, 'gradient');
 
   ._background-#{$variant-name} {
-    color: -variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
+    color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
     background-color: $_variant-color !important;
 
     @if --gradient-enabled and  $_variant-gradient {
-      background-image: -linear-gradient($_variant-gradient) !important;
+      background-image: linear_gradient($_variant-gradient) !important;
     }
   }
 }

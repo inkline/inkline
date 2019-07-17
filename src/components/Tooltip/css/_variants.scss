@@ -5,7 +5,7 @@
   $_variant-color: map_get($variant, 'color');
 
   .tooltip.-#{$variant-name} {
-    color: -variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
+    color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
     background-color: $_variant-color;
     border-color: darken-lightness($_variant-color, 10%);
 

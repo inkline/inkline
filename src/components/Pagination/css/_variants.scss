@@ -7,13 +7,13 @@
 
   .pagination.-#{$variant-name} {
     > .item {
-      color: -variant-color-by-luminance($_variant-color, $pagination-variant-color-light, $pagination-variant-color-dark);
+      color: variant-color-by-luminance($_variant-color, $pagination-variant-color-light, $pagination-variant-color-dark);
       background-color: $_variant-color;
       border-color: darken-lightness($_variant-color, 5%);
 
       &:hover:not(.-disabled),
       &:focus:not(.-disabled) {
-        background-color: -variant-color-by-luminance($_variant-color, darken-lightness($_variant-color, 10%), darken-lightness($_variant-color, 5%));
+        background-color: variant-color-by-luminance($_variant-color, darken-lightness($_variant-color, 10%), darken-lightness($_variant-color, 5%));
       }
 
       &.-active {
@@ -27,7 +27,7 @@
       }
 
       &.-disabled {
-        color: -variant-color-by-luminance($_variant-color, darken-lightness($pagination-variant-color-light, 40%), lighten-lightness($pagination-variant-color-dark, 40%));
+        color: variant-color-by-luminance($_variant-color, darken-lightness($pagination-variant-color-light, 40%), lighten-lightness($pagination-variant-color-dark, 40%));
       }
     }
   }

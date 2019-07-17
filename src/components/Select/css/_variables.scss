@@ -15,4 +15,4 @@ $select-dropdown-color-groups: (
   )
 ) !default;
 
-$variants: map_merge($variants, ('select-dropdown': -add-variant($select-dropdown-variants, ('color': $select-dropdown-color-groups))));
+$variants: map_merge($variants, ('select-dropdown': add-variant($select-dropdown-variants, ('color': $select-dropdown-color-groups))));

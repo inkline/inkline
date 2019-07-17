@@ -24,4 +24,4 @@ $navbar-hamburger-hover-opacity:     1 !default;
 //
 $navbar-variants: ('brand', 'monochrome') !default;
 
-$variants: map_merge($variants, ('navbar': -add-variant($navbar-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('navbar': add-variant($navbar-variants, ('color': $color-groups))));

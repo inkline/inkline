@@ -3,7 +3,7 @@
 //
 // @param --variant-group-names Specifies groups
 // @param --color-groups Various groups of variants associated to a variant type identifier
-@function -add-variant($variant-group-names, $variant-typed-groups) {
+@function add-variant($variant-group-names, $variant-typed-groups) {
   $item-variants: ();
 
   // { 'color': { basic: {}, brand: {}, state: {}, .. }, 'gradient': { .. }}
