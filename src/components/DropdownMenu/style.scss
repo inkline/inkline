@@ -21,7 +21,6 @@
   border-style: solid;
   min-width: $dropdown-min-width;
 
-  // FIXME: This is over-complicated
-  @include dropdown-menu-color-variant(map_get(map_get(map_get($variants, 'dropdown'), 'light'), 'color'));
+  @include dropdown-menu-color-variant(variant-element('dropdown', 'light', 'color'));
   @include dropdown-menu-size-variant('md');
 }

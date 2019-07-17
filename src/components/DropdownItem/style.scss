@@ -45,7 +45,6 @@
     cursor: pointer;
   }
 
-  // FIXME: This is over-complicated
-  @include dropdown-item-color-variant(map_get(map_get(map_get($variants, 'dropdown'), 'light'), 'color'));
+  @include dropdown-item-color-variant(variant-element('dropdown', 'light', 'color'));
   @include dropdown-item-variant-size('md');
 }

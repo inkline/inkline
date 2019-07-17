@@ -29,7 +29,6 @@
     margin-bottom: 0;
   }
 
-  // FIXME: This seems complicated
-  @include navbar-brand-color-variant(map_get(map_get($variants, 'navbar'), 'light'));
+  @include navbar-brand-color-variant(variant-element('navbar', 'light', 'color'));
   @include navbar-size-variant('md');
 }

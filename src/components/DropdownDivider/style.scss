@@ -13,7 +13,6 @@
   width: 100%;
   clear: both;
 
-  // FIXME: That's over-complicated
-  @include dropdown-divider-color-variant(map_get(map_get(map_get($variants, 'dropdown'), 'light'), 'color'));
+  @include dropdown-divider-color-variant(variant-element('dropdown', 'light', 'color'));
   @include dropdown-divider-size-variant('md');
 }
