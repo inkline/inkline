@@ -142,16 +142,17 @@ $color-groups: (
 
 // All Colors
 //
-$colors: (
-  'basic':      map_get($color-groups, 'basic'),
-  'brand':      map_get($color-groups, 'brand'),
-  'monochrome': map_get($color-groups, 'monochrome'),
-  'neutral':    map_get($color-groups, 'neutral'),
-  'state':      map_get($color-groups, 'state'),
-  'social':     map_get($color-groups, 'social')
-);
+/* stylelint-disable scss/no-duplicate-dollar-variables */
+$colors: ();
+$colors: map-merge($colors, map-get($color-groups, 'basic'));
+$colors: map-merge($colors, map-get($color-groups, 'brand'));
+$colors: map-merge($colors, map-get($color-groups, 'monochrome'));
+$colors: map-merge($colors, map-get($color-groups, 'neutral'));
+$colors: map-merge($colors, map-get($color-groups, 'state'));
+$colors: map-merge($colors, map-get($color-groups, 'social'));
+/* stylelint-enable scss/no-duplicate-dollar-variables */
 
-// Quick accessor to a color in sub map
-@function colors($key, $name) {
-  @return submap_get($colors, $key, $name);
+// Quick accessor to a color
+@function colors($name) {
+  @return map_get($colors, $name);
 }

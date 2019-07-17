@@ -144,7 +144,7 @@
 .form-group.-error {
   .form-input-group > .form-input {
     @include form-input-selector() {
-      border-color: colors('basic', 'red');
+      border-color: colors('red');
     }
   }
 }
