@@ -5,7 +5,7 @@
   $_variant_color: map_get($variant, 'color');
 
   .badge.-#{$variant-name} {
-    color: -variant-color-by-luminance($_variant_color, $badge-variant-color-light, $badge-variant-color-dark);
+    color: variant-color-by-luminance($_variant_color, $badge-variant-color-light, $badge-variant-color-dark);
     background-color: $_variant_color;
 
     a:hover &,

@@ -10,4 +10,4 @@ $collapsible-variants:            ('monochrome') !default;
 $collapsible-variant-color-light: $variant-color-light !default;
 $collapsible-variant-color-dark:  $variant-color-dark !default;
 
-$variants: map_merge($variants, ('collapsible': -add-variant($collapsible-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('collapsible': add-variant($collapsible-variants, ('color': $color-groups))));

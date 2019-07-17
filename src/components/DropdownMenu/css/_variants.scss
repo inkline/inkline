@@ -2,7 +2,7 @@
 // Dropdown Menu variants
 //
 @mixin dropdown-menu-color-variant($color-variant) {
-  color: -variant-color-by-luminance($color-variant, $dropdown-variant-color-light, $dropdown-variant-color-dark);
+  color: variant-color-by-luminance($color-variant, $dropdown-variant-color-light, $dropdown-variant-color-dark);
   background-color: $color-variant;
   border-color: darken-lightness($color-variant, 10%);
 

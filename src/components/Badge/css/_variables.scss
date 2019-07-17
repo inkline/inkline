@@ -24,4 +24,4 @@ $badge-variants:            ('brand', 'monochrome', 'state') !default;
 $badge-variant-color-light: $variant-color-light !default;
 $badge-variant-color-dark:  $variant-color-dark !default;
 
-$variants: map_merge($variants, ('badge': -add-variant($badge-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('badge': add-variant($badge-variants, ('color': $color-groups))));

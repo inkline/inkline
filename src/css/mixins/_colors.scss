@@ -10,7 +10,7 @@
 // @param color Text background color
 // @return Contrasting text color
 //
-@function -variant-color-by-luminance($color, $light, $dark) {
+@function variant-color-by-luminance($color, $light, $dark) {
   $luminance: (red($color) * 0.299) + (green($color) * 0.587) + (blue($color) * 0.114);
 
   @if $luminance > 186 {
@@ -27,6 +27,7 @@
 // @param direction The direction of the gradient
 // @return A gradient color
 //
-@function -linear-gradient($colors, $direction: $gradient-direction) {
+// FIXME: The name of this method don't follow other names, ideas are welcome.
+@function linear_gradient($colors, $direction: $gradient-direction) {
   @return linear-gradient($direction, unquote($colors));
 }

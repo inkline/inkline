@@ -25,4 +25,4 @@ $tooltip-color-groups: (
   )
 ) !default;
 
-$variants: map_merge($variants, ('tooltip': -add-variant($tooltip-variants, ('color': $tooltip-color-groups))));
+$variants: map_merge($variants, ('tooltip': add-variant($tooltip-variants, ('color': $tooltip-color-groups))));

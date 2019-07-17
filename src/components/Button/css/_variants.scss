@@ -4,7 +4,7 @@
 //
 @each $variant-name, $variant in variants('button') {
   $_color-variant: map_get($variant, 'color');
-  $_color-by-luminance: -variant-color-by-luminance($_color-variant, $button-variant-color-light, $button-variant-color-dark);
+  $_color-by-luminance: variant-color-by-luminance($_color-variant, $button-variant-color-light, $button-variant-color-dark);
 
   .button.-#{$variant-name} {
     color: $_color-by-luminance;

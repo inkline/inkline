@@ -26,4 +26,4 @@ $pagination-variants: ('monochrome') !default;
 $pagination-variant-color-light: $variant-color-light !default;
 $pagination-variant-color-dark:  $variant-color-dark !default;
 
-$variants: map_merge($variants, ('pagination': -add-variant($pagination-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('pagination': add-variant($pagination-variants, ('color': $color-groups))));

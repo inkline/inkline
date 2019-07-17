@@ -14,7 +14,7 @@
     }
 
     > .icon {
-      border-color: rgba(-variant-color-by-luminance($_color-variant, $alert-variant-color-light, $alert-variant-color-dark), 0.33);
+      border-color: rgba(variant-color-by-luminance($_color-variant, $alert-variant-color-light, $alert-variant-color-dark), 0.33);
     }
   }
 }

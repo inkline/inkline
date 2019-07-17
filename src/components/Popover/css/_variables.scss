@@ -26,4 +26,4 @@ $popover-color-groups: (
   )
 ) !default;
 
-$variants: map_merge($variants, ('popover': -add-variant($popover-variants, ('color': $popover-color-groups))));
+$variants: map_merge($variants, ('popover': add-variant($popover-variants, ('color': $popover-color-groups))));

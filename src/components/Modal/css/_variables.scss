@@ -26,4 +26,4 @@ $modal-padding:      size-map($modal-padding-base, $sizes, $size-multipliers) !d
 //
 $modal-variants: ('brand', 'monochrome', 'state') !default;
 
-$variants: map_merge($variants, ('modal': -add-variant($modal-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('modal': add-variant($modal-variants, ('color': $color-groups))));
