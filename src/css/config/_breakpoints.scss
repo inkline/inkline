@@ -26,3 +26,8 @@ $breakpoints: map_merge($breakpoints, ('_': 0)); /* stylelint-disable-line scss/
 @function breakpoints($key) {
   @return map_get($breakpoints, $key);
 }
+
+// Returns the available breakpoints names, without "_"
+@function breakpoints-list() {
+  @return map-keys(map_remove($breakpoints, '_'));
+}
