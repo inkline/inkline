@@ -9,39 +9,39 @@
 // @param media Breakpoint identifier
 //
 @mixin breakpoint($media) {
-  @if $media == 'xl' {
-    @media screen and (min-width: breakpoints('xl')) {
-      @content;
+    @if $media == 'xl' {
+        @media screen and (min-width: breakpoints('xl')) {
+            @content;
+        }
     }
-  }
 
-  @else if $media == 'lg' {
-    @media screen and (min-width: breakpoints('lg')) and (max-width: breakpoints('xl') - 1) {
-      @content;
+    @else if $media == 'lg' {
+        @media screen and (min-width: breakpoints('lg')) and (max-width: breakpoints('xl') - 1) {
+            @content;
+        }
     }
-  }
 
-  @else if $media == 'md' {
-    @media screen and (min-width: breakpoints('md')) and (max-width: breakpoints('lg') - 1) {
-      @content;
+    @else if $media == 'md' {
+        @media screen and (min-width: breakpoints('md')) and (max-width: breakpoints('lg') - 1) {
+            @content;
+        }
     }
-  }
 
-  @else if $media == 'sm' {
-    @media screen and (min-width: breakpoints('sm')) and (max-width: breakpoints('md') - 1) {
-      @content;
+    @else if $media == 'sm' {
+        @media screen and (min-width: breakpoints('sm')) and (max-width: breakpoints('md') - 1) {
+            @content;
+        }
     }
-  }
 
-  @else if $media == 'xs' {
-    @media screen and (max-width: breakpoints('sm') - 1) {
-      @content;
+    @else if $media == 'xs' {
+        @media screen and (max-width: breakpoints('sm') - 1) {
+            @content;
+        }
     }
-  }
 
-  @else {
-    @content;
-  }
+    @else {
+        @content;
+    }
 }
 
 // Creates a media query up to the specified breakpoint
@@ -49,37 +49,37 @@
 // @param media Breakpoint identifier
 //
 @mixin breakpoint-down($media) {
-  @if $media == 'xl' {
-    @content;
-  }
-
-  @else if $media == 'lg' {
-    @media screen and (max-width: breakpoints('xl') - 1) {
-      @content;
+    @if $media == 'xl' {
+        @content;
     }
-  }
 
-  @else if $media == 'md' {
-    @media screen and (max-width: breakpoints('lg') - 1) {
-      @content;
+    @else if $media == 'lg' {
+        @media screen and (max-width: breakpoints('xl') - 1) {
+            @content;
+        }
     }
-  }
 
-  @else if $media == 'sm' {
-    @media screen and (max-width: breakpoints('md') - 1) {
-      @content;
+    @else if $media == 'md' {
+        @media screen and (max-width: breakpoints('lg') - 1) {
+            @content;
+        }
     }
-  }
 
-  @else if $media == 'xs' {
-    @media screen and (max-width: breakpoints('sm') - 1) {
-      @content;
+    @else if $media == 'sm' {
+        @media screen and (max-width: breakpoints('md') - 1) {
+            @content;
+        }
     }
-  }
 
-  @else {
-    @content;
-  }
+    @else if $media == 'xs' {
+        @media screen and (max-width: breakpoints('sm') - 1) {
+            @content;
+        }
+    }
+
+    @else {
+        @content;
+    }
 }
 
 // Creates a media query starting from the specified breakpoint
@@ -87,39 +87,39 @@
 // @param media Breakpoint identifier
 //
 @mixin breakpoint-up($media) {
-  @if $media == 'xl' {
-    @media screen and (min-width: breakpoints('xl')) {
-      @content;
+    @if $media == 'xl' {
+        @media screen and (min-width: breakpoints('xl')) {
+            @content;
+        }
     }
-  }
 
-  @else if $media == 'lg' {
-    @media screen and (min-width: breakpoints('lg')) {
-      @content;
+    @else if $media == 'lg' {
+        @media screen and (min-width: breakpoints('lg')) {
+            @content;
+        }
     }
-  }
 
-  @else if $media == 'md' {
-    @media screen and (min-width: breakpoints('md')) {
-      @content;
+    @else if $media == 'md' {
+        @media screen and (min-width: breakpoints('md')) {
+            @content;
+        }
     }
-  }
 
-  @else if $media == 'sm' {
-    @media screen and (min-width: breakpoints('sm')) {
-      @content;
+    @else if $media == 'sm' {
+        @media screen and (min-width: breakpoints('sm')) {
+            @content;
+        }
     }
-  }
 
-  @else if $media == 'xs' {
-    @media screen and (min-width: breakpoints('xs')) {
-      @content;
+    @else if $media == 'xs' {
+        @media screen and (min-width: breakpoints('xs')) {
+            @content;
+        }
     }
-  }
 
-  @else {
-    @content;
-  }
+    @else {
+        @content;
+    }
 }
 
 // Get the infix name of a breakpoint
@@ -127,13 +127,13 @@
 // @param media Breakpoint identifier
 //
 @function breakpoint-infix($media) {
-  @if $media == '_' {
-    @return '';
-  }
+    @if $media == '_' {
+        @return '';
+    }
 
-  @else {
-    @return '-' + $media;
-  }
+    @else {
+        @return '-' + $media;
+    }
 }
 
 /* stylelint-enable scss/media-feature-value-dollar-variable */

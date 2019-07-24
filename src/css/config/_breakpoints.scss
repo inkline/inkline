@@ -9,11 +9,11 @@ $breakpoints-lg: 992px !default;
 $breakpoints-xl: 1200px !default;
 
 $breakpoints: (
-  'xs': $breakpoints-xs,
-  'sm': $breakpoints-sm,
-  'md': $breakpoints-md,
-  'lg': $breakpoints-lg,
-  'xl': $breakpoints-xl,
+    'xs': $breakpoints-xs,
+    'sm': $breakpoints-sm,
+    'md': $breakpoints-md,
+    'lg': $breakpoints-lg,
+    'xl': $breakpoints-xl,
 ) !default;
 
 // Magic breakpoint
@@ -24,10 +24,10 @@ $breakpoints: map_merge($breakpoints, ('_': 0)); /* stylelint-disable-line scss/
 
 // Quick accessor to the breakpoints map
 @function breakpoints($key) {
-  @return map_get($breakpoints, $key);
+    @return map_get($breakpoints, $key);
 }
 
 // Returns the available breakpoints names, without "_"
 @function breakpoints-list() {
-  @return map-keys(map_remove($breakpoints, '_'));
+    @return map-keys(map_remove($breakpoints, '_'));
 }
