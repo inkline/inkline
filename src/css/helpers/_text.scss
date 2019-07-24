@@ -1,79 +1,79 @@
 /**
- * Text
- */
+  * Text
+  */
 
 ._text-justify {
-  text-align: justify !important;
+    text-align: justify !important;
 }
 
 // Responsive alignment
 //
 @each $breakpoint-name, $breakpoint-value in $breakpoints {
-  $infix: breakpoint-infix($breakpoint-name);
+    $infix: breakpoint-infix($breakpoint-name);
 
-  @include breakpoint($breakpoint-name) {
-    ._text-left#{$infix} {
-      text-align: left !important;
-    }
+    @include breakpoint($breakpoint-name) {
+        ._text-left#{$infix} {
+            text-align: left !important;
+        }
 
-    ._text-right#{$infix} {
-      text-align: right !important;
-    }
+        ._text-right#{$infix} {
+            text-align: right !important;
+        }
 
-    ._text-center#{$infix} {
-      text-align: center !important;
-    }
+        ._text-center#{$infix} {
+            text-align: center !important;
+        }
 
-    ._text-nowrap#{$infix} {
-      white-space: nowrap !important;
-    }
+        ._text-nowrap#{$infix} {
+            white-space: nowrap !important;
+        }
 
-    ._text-truncate#{$infix} {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+        ._text-truncate#{$infix} {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     }
-  }
 }
 
 // Transformation
 //
 ._text-lowercase {
-  text-transform: lowercase !important;
+    text-transform: lowercase !important;
 }
 
 ._text-uppercase {
-  text-transform: uppercase !important;
+    text-transform: uppercase !important;
 }
 
 ._text-capitalize {
-  text-transform: capitalize !important;
+    text-transform: capitalize !important;
 }
 
 // Weight and italics
 //
 @each $font-weight-name, $font-weight-value in $font-weight {
-  ._font-weight-#{$font-weight-name} {
-    font-weight: $font-weight-value !important;
-  }
+    ._font-weight-#{$font-weight-name} {
+        font-weight: $font-weight-value !important;
+    }
 }
 
 ._font-italic {
-  font-style: italic !important;
+    font-style: italic !important;
 }
 
 ._text-muted {
-  color: $text-muted !important;
+    color: $text-muted !important;
 }
 
 ._text-hide {
-  text-indent: -10000px;
+    text-indent: -10000px;
 }
 
 // Font size
 //
 @each $size in $sizes {
-  ._font-size-#{$size} {
-    font-size: font-size($size);
-  }
+    ._font-size-#{$size} {
+        font-size: font-size($size);
+    }
 }

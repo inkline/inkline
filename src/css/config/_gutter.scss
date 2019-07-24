@@ -3,14 +3,14 @@
 //
 
 $gutter: (
-  'xs': 24px,
-  'sm': 26px,
-  'md': 28px,
-  'lg': 30px,
-  'xl': 32px,
+    'xs': 24px,
+    'sm': 26px,
+    'md': 28px,
+    'lg': 30px,
+    'xl': 32px,
 ) !default;
 
 // Quick accessor to the gutter map
 @function gutter($key) {
-  @return map_get($gutter, $key);
+    @return map_get($gutter, $key);
 }
