@@ -6,14 +6,14 @@
 // @param $subkey   - Sub-map key
 //
 @function submap_get($variable, $key, $subkey) {
-        $group: map_get($variable, $key);
-        $element: map_get($group, $subkey);
+  $group: map_get($variable, $key);
+  $element: map_get($group, $subkey);
 
-        @if ($element) {
-                @return $element;
-        }
+  @if ($element) {
+    @return $element;
+  }
 
-        @error "Element '#{$subkey}' not found in submap '#{$key}' group. Did you use quotes ?";
+  @error "Element '#{$subkey}' not found in submap '#{$key}' group. Did you use quotes ?";
 }
 
 //
@@ -25,7 +25,7 @@
 // @example: variant-element('dropdown', 'light', 'color')
 //
 @function variant-element($element, $variant, $type: 'color') {
-    @return map_get(map_get(map_get($variants, $element), $variant), $type);
+  @return map_get(map_get(map_get($variants, $element), $variant), $type);
 }
 
 // Replace `$search` with `$replace` in `$string`
@@ -37,13 +37,13 @@
 // @param $replace - New value
 // @return - Updated string
 @function replace($search, $replace, $string) {
-    $index: str-index($string, $search);
+  $index: str-index($string, $search);
 
-    @if $index {
-        @return "#{str-slice($string, 1, $index - 1)}#{$replace}#{replace($search, $replace, str-slice($string, $index + str-length($search)))}";
-    }
+  @if $index {
+    @return "#{str-slice($string, 1, $index - 1)}#{$replace}#{replace($search, $replace, str-slice($string, $index + str-length($search)))}";
+  }
 
-    @return $string;
+  @return $string;
 }
 
 // Replacement for Stylus darken().
@@ -56,7 +56,7 @@
 // @return darkened color
 //
 @function darken-lightness($color, $percent) {
-    @return scale-color($color, $lightness: -$percent);
+  @return scale-color($color, $lightness: -$percent);
 }
 
 // Replacement for Stylus lighten().
@@ -69,5 +69,5 @@
 // @return lightened color
 //
 @function lighten-lightness($color, $percent) {
-    @return scale-color($color, $lightness: $percent);
+  @return scale-color($color, $lightness: $percent);
 }

@@ -5,19 +5,19 @@
   */
 
 @each $breakpoint-name, $breakpoint-value in $breakpoints {
-    $infix: breakpoint-infix($breakpoint-name);
+  $infix: breakpoint-infix($breakpoint-name);
 
-    @include breakpoint($breakpoint-name) {
-        ._float#{$infix}-left {
-            float: left !important;
-        }
-
-        ._float#{$infix}-right {
-            float: right !important;
-        }
-
-        ._float#{$infix}-none {
-            float: none !important;
-        }
+  @include breakpoint($breakpoint-name) {
+    ._float#{$infix}-left {
+      float: left !important;
     }
+
+    ._float#{$infix}-right {
+      float: right !important;
+    }
+
+    ._float#{$infix}-none {
+      float: none !important;
+    }
+  }
 }

@@ -17,14 +17,14 @@ $color-purple: #5d65b9 !default;
 $color-pink: #ff6f80 !default;
 
 $color-group-basic: (
-    'red': $color-red,
-    'orange': $color-orange,
-    'yellow': $color-yellow,
-    'green': $color-green,
-    'teal': $color-teal,
-    'blue': $color-blue,
-    'purple': $color-purple,
-    'pink': $color-pink,
+  'red': $color-red,
+  'orange': $color-orange,
+  'yellow': $color-yellow,
+  'green': $color-green,
+  'teal': $color-teal,
+  'blue': $color-blue,
+  'purple': $color-purple,
+  'pink': $color-pink,
 ) !default;
 
 // Neutral Colors
@@ -43,18 +43,18 @@ $color-gray-90: #212529 !default;
 $color-black: #000000 !default;
 
 $color-group-neutral: (
-    'transparent': $color-transparent,
-    'white': $color-white,
-    'gray-10': $color-gray-10,
-    'gray-20': $color-gray-20,
-    'gray-30': $color-gray-30,
-    'gray-40': $color-gray-40,
-    'gray-50': $color-gray-50,
-    'gray-60': $color-gray-60,
-    'gray-70': $color-gray-70,
-    'gray-80': $color-gray-80,
-    'gray-90': $color-gray-90,
-    'black': $color-black,
+  'transparent': $color-transparent,
+  'white': $color-white,
+  'gray-10': $color-gray-10,
+  'gray-20': $color-gray-20,
+  'gray-30': $color-gray-30,
+  'gray-40': $color-gray-40,
+  'gray-50': $color-gray-50,
+  'gray-60': $color-gray-60,
+  'gray-70': $color-gray-70,
+  'gray-80': $color-gray-80,
+  'gray-90': $color-gray-90,
+  'black': $color-black,
 ) !default;
 
 // Brand Colors
@@ -63,8 +63,8 @@ $color-primary: $color-blue !default;
 $color-secondary: $color-purple !default;
 
 $color-group-brand: (
-    'primary': $color-primary,
-    'secondary': $color-secondary,
+  'primary': $color-primary,
+  'secondary': $color-secondary,
 ) !default;
 
 // Brand Neutral Colors
@@ -73,13 +73,13 @@ $color-light: $color-gray-20 !default;
 $color-dark: $color-gray-80 !default;
 
 $color-group-monochrome: (
-    'light': $color-light,
-    'dark': $color-dark,
+  'light': $color-light,
+  'dark': $color-dark,
 ) !default;
 
 $color-group-monochrome-white: (
-    'light': $color-white,
-    'dark': $color-dark,
+  'light': $color-white,
+  'dark': $color-dark,
 ) !default;
 
 // State Colors
@@ -90,10 +90,10 @@ $color-warning: $color-orange !default;
 $color-info: $color-teal !default;
 
 $color-group-state: (
-    'success': $color-success,
-    'danger': $color-danger,
-    'warning': $color-warning,
-    'info': $color-info,
+  'success': $color-success,
+  'danger': $color-danger,
+  'warning': $color-warning,
+  'info': $color-info,
 ) !default;
 
 // Social Colors
@@ -115,21 +115,21 @@ $color-envato: #82b541;
 $color-vine: #00bf8f;
 
 $color-group-social: (
-    'facebook': $color-facebook,
-    'twitter': $color-twitter,
-    'google': $color-google,
-    'instagram': $color-instagram,
-    'dribbble': $color-dribbble,
-    'behance': $color-behance,
-    'flickr': $color-flickr,
-    'linkedin': $color-linkedin,
-    'youtube': $color-youtube,
-    'pinterest': $color-pinterest,
-    'github': $color-github,
-    'tumblr': $color-tumblr,
-    'twitch':    $color-twitch,
-    'envato':    $color-envato,
-    'vine':      $color-vine,
+  'facebook': $color-facebook,
+  'twitter': $color-twitter,
+  'google': $color-google,
+  'instagram': $color-instagram,
+  'dribbble': $color-dribbble,
+  'behance': $color-behance,
+  'flickr': $color-flickr,
+  'linkedin': $color-linkedin,
+  'youtube': $color-youtube,
+  'pinterest': $color-pinterest,
+  'github': $color-github,
+  'tumblr': $color-tumblr,
+  'twitch':    $color-twitch,
+  'envato':    $color-envato,
+  'vine':      $color-vine,
 ) !default;
 
 // Theme light and dark colors
@@ -140,18 +140,18 @@ $variant-color-dark: #343a40 !default;
 // Color groups
 //
 $color-groups: (
-      'basic': $color-group-basic,
-      'neutral': $color-group-neutral,
-      'brand': $color-group-brand,
-      'monochrome': $color-group-monochrome,
-      'monochrome-white': $color-group-monochrome-white,
-      'state': $color-group-state,
-      'social': $color-group-social
+  'basic': $color-group-basic,
+  'neutral': $color-group-neutral,
+  'brand': $color-group-brand,
+  'monochrome': $color-group-monochrome,
+  'monochrome-white': $color-group-monochrome-white,
+  'state': $color-group-state,
+  'social': $color-group-social
 );
 
 // Quick accessor to a color in sub map
 @function color-group($key, $name) {
-      @return submap_get($color-groups, $key, $name);
+  @return submap_get($color-groups, $key, $name);
 }
 
 // All Colors
@@ -168,5 +168,5 @@ $colors: map-merge($colors, map-get($color-groups, 'social'));
 
 // Quick accessor to a color
 @function colors($name) {
-      @return map_get($colors, $name);
+  @return map_get($colors, $name);
 }

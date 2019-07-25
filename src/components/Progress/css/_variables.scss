@@ -1,11 +1,11 @@
 //
 // Progress Variables
 //
-$progress-background:    colors('gray-30') !default;
+$progress-background: colors('gray-30') !default;
 $progress-border-radius: $border-radius !default;
 
 $progress-height-base: spacers('1/2') !default;
-$progress-height:      size-map($progress-height-base, $sizes, $size-multipliers) !default;
+$progress-height: size-map($progress-height-base, $sizes, $size-multipliers) !default;
 
 //
 // Variants

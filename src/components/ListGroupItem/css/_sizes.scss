@@ -3,7 +3,7 @@
 //
 @mixin list-group-item-size-variant($size) {
   $_border-radius: map_get($list-group-border-radius, $size);
-  $_item-padding:  map_get($list-group-item-padding, $size);
+  $_item-padding: map_get($list-group-item-padding, $size);
 
   padding: $_item-padding;
 

@@ -2,22 +2,22 @@
 // Navbar Variables
 //
 $navbar-padding-base: spacers('1/2') 0 !default;
-$navbar-padding:      size-map($navbar-padding-base, $sizes, $size-multipliers) !default;
+$navbar-padding: size-map($navbar-padding-base, $sizes, $size-multipliers) !default;
 
-$navbar-brand-margin:    $spacer !default;
+$navbar-brand-margin: $spacer !default;
 $navbar-brand-font-size: font-size('md') !default;
 
 $navbar-brand-padding-base: spacers('1/2') 0 !default;
-$navbar-brand-padding:      size-map($navbar-brand-padding-base, $sizes, $size-multipliers) !default;
+$navbar-brand-padding: size-map($navbar-brand-padding-base, $sizes, $size-multipliers) !default;
 
-$navbar-hamburger-bar-width:         30px !default;
-$navbar-hamburger-bar-height:        3px !default;
+$navbar-hamburger-bar-width: 30px !default;
+$navbar-hamburger-bar-height: 3px !default;
 $navbar-hamburger-bar-border-radius: 2px !default;
-$navbar-hamburger-bar-spacing:       5px !default;
-$navbar-hamburger-bar-color:         #000000 !default;
-$navbar-hamburger-padding:           $spacer / 2 !default;
-$navbar-hamburger-opacity:           0.7 !default;
-$navbar-hamburger-hover-opacity:     1 !default;
+$navbar-hamburger-bar-spacing: 5px !default;
+$navbar-hamburger-bar-color: #000000 !default;
+$navbar-hamburger-padding: $spacer / 2 !default;
+$navbar-hamburger-opacity: 0.7 !default;
+$navbar-hamburger-hover-opacity: 1 !default;
 
 //
 // Variants
