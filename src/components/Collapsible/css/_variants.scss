@@ -2,9 +2,9 @@
 // Collapsible variants
 //
 @each $variant-name, $variant in variants('collapsible') {
-  $_variant-color: map_get($variant, 'color');
+    $_variant-color: map_get($variant, 'color');
 
-  .collapsible.-#{$variant-name} {
-    border-color: variant-color-by-luminance($_variant-color, lighten-lightness($_variant-color, 5%), darken-lightness($_variant-color, 5%));
-  }
+    .collapsible.-#{$variant-name} {
+        border-color: variant-color-by-luminance($_variant-color, lighten-lightness($_variant-color, 5%), darken-lightness($_variant-color, 5%));
+    }
 }

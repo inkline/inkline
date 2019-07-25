@@ -5,25 +5,25 @@
  * Layout
  */
 .layout {
-  display: flex;
-  flex-direction: column;
-  flex: auto;
-
-  &,
-  * {
-    box-sizing: border-box;
-  }
-
-  &.-vertical {
-    flex-direction: row;
-
-    > .layout,
-    > .container {
-      overflow-x: hidden;
-    }
-  }
-
-  > .container {
+    display: flex;
+    flex-direction: column;
     flex: auto;
-  }
+
+    &,
+   * {
+        box-sizing: border-box;
+    }
+
+    &.-vertical {
+        flex-direction: row;
+
+        > .layout,
+        > .container {
+            overflow-x: hidden;
+        }
+    }
+
+    > .container {
+        flex: auto;
+    }
 }

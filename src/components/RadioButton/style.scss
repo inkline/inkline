@@ -6,15 +6,15 @@
  * Radio Button
  */
 .button.-radio {
-  position: relative;
+    position: relative;
 
-  > input[type='radio'] {
-    opacity: 0;
-    outline: none;
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
+    > input[type='radio'] {
+        opacity: 0;
+        outline: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+    }
 
-  @extend .button.-radio.-md;
+    @extend .button.-radio.-md;
 }

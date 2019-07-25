@@ -8,27 +8,27 @@
  */
 .nav > .item,
 .nav > .dropdown > .item {
-  display: block;
-  margin-bottom: 0;
+    display: block;
+    margin-bottom: 0;
 
-  @if transition(nav) {
-    transition: background-color $transition-duration $transition-easing, border-color $transition-duration $transition-easing, color $transition-duration $transition-easing;
-  }
+    @if transition(nav) {
+        transition: background-color $transition-duration $transition-easing, border-color $transition-duration $transition-easing, color $transition-duration $transition-easing;
+    }
 
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
 
-  &.-disabled {
-    color: $nav-item-disabled-color;
-    pointer-events: none;
-    cursor: default;
-  }
+    &.-disabled {
+        color: $nav-item-disabled-color;
+        pointer-events: none;
+        cursor: default;
+    }
 
-  &.-active {
-    font-weight: bold;
-  }
+    &.-active {
+        font-weight: bold;
+    }
 
-  @include nav-item-size-variant('md');
+    @include nav-item-size-variant('md');
 }

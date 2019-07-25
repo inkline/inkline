@@ -1,146 +1,146 @@
 .hamburger {
-  opacity: $navbar-hamburger-opacity;
-  padding: $navbar-hamburger-padding;
-  width: $navbar-hamburger-bar-width;
-  height: $navbar-hamburger-bar-height * 3 + $navbar-hamburger-bar-spacing * 2;
-  display: inline-block;
-  position: relative;
-  box-sizing: content-box;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
+    opacity: $navbar-hamburger-opacity;
+    padding: $navbar-hamburger-padding;
+    width: $navbar-hamburger-bar-width;
+    height: $navbar-hamburger-bar-height * 3 + $navbar-hamburger-bar-spacing * 2;
+    display: inline-block;
+    position: relative;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
 
-  &:hover {
-    opacity: $navbar-hamburger-hover-opacity;
-  }
-
-  > .bars {
-    display: block;
-    top: 50%;
-    margin-top: $navbar-hamburger-bar-height / -2;
-
-    &,
-    &::before,
-    &::after {
-      width: $navbar-hamburger-bar-width;
-      height: $navbar-hamburger-bar-height;
-      border-radius: $navbar-hamburger-bar-border-radius;
-      position: absolute;
-      transition-property: transform;
-      transition-duration: 0.15s;
-      transition-timing-function: ease;
+    &:hover {
+        opacity: $navbar-hamburger-hover-opacity;
     }
 
-    &::before,
-    &::after {
-      content: "";
-      display: block;
-    }
-
-    &::before {
-      top: ($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height) * -1;
-    }
-
-    &::after {
-      bottom: ($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height) * -1;
-    }
-  }
-
-  &.-close {
     > .bars {
-      transition-duration: 0.22s;
-      transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        display: block;
+        top: 50%;
+        margin-top: $navbar-hamburger-bar-height / -2;
 
-      &::before {
-        transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
-      }
+        &,
+        &::before,
+        &::after {
+            width: $navbar-hamburger-bar-width;
+            height: $navbar-hamburger-bar-height;
+            border-radius: $navbar-hamburger-bar-border-radius;
+            position: absolute;
+            transition-property: transform;
+            transition-duration: 0.15s;
+            transition-timing-function: ease;
+        }
 
-      &::after {
-        transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-      }
-    }
-
-    &.-active {
-      > .bars {
-        transform: rotate(225deg);
-        transition-delay: 0.12s;
-        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        &::before,
+        &::after {
+            content: "";
+            display: block;
+        }
 
         &::before {
-          top: 0;
-          opacity: 0;
-          transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+            top: ($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height) * -1;
         }
 
         &::after {
-          bottom: 0;
-          transform: rotate(-90deg);
-          transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+            bottom: ($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height) * -1;
         }
-      }
-    }
-  }
-
-  &.-arrow-left.-active > .bars {
-    &::before {
-      transform: translate3d($navbar-hamburger-bar-width * -0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
     }
 
-    &::after {
-      transform: translate3d($navbar-hamburger-bar-width * -0.2, 0, 0) rotate(45deg) scale(0.7, 1);
-    }
-  }
+    &.-close {
+        > .bars {
+            transition-duration: 0.22s;
+            transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
-  &.-arrow-right.-active > .bars {
-    &::before {
-      transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
-    }
+            &::before {
+                transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+            }
 
-    &::after {
-      transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
-    }
-  }
+            &::after {
+                transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+        }
 
-  &.-arrow-up.-active > .bars {
-    transform: rotate(-90deg);
+        &.-active {
+            > .bars {
+                transform: rotate(225deg);
+                transition-delay: 0.12s;
+                transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 
-    &::before {
-      transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
-    }
+                &::before {
+                    top: 0;
+                    opacity: 0;
+                    transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+                }
 
-    &::after {
-      transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
-    }
-  }
-
-  &.-arrow-down.-active > .bars {
-    transform: rotate(90deg);
-
-    &::before {
-      transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
-    }
-
-    &::after {
-      transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
-    }
-  }
-
-  &.-minus.-active > .bars {
-    &::before {
-      transform: translate3d(0, $navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height, 0);
+                &::after {
+                    bottom: 0;
+                    transform: rotate(-90deg);
+                    transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+                }
+            }
+        }
     }
 
-    &::after {
-      transform: translate3d(0, -($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height), 0);
-    }
-  }
+    &.-arrow-left.-active > .bars {
+        &::before {
+            transform: translate3d($navbar-hamburger-bar-width * -0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
+        }
 
-  &.-plus.-active > .bars {
-    &::before {
-      transform: translate3d(0, $navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height, 0);
+        &::after {
+            transform: translate3d($navbar-hamburger-bar-width * -0.2, 0, 0) rotate(45deg) scale(0.7, 1);
+        }
     }
 
-    &::after {
-      transform: translate3d(0, -($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height), 0) rotate(90deg);
+    &.-arrow-right.-active > .bars {
+        &::before {
+            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
+        }
+
+        &::after {
+            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
+        }
     }
-  }
+
+    &.-arrow-up.-active > .bars {
+        transform: rotate(-90deg);
+
+        &::before {
+            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
+        }
+
+        &::after {
+            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
+        }
+    }
+
+    &.-arrow-down.-active > .bars {
+        transform: rotate(90deg);
+
+        &::before {
+            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
+        }
+
+        &::after {
+            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
+        }
+    }
+
+    &.-minus.-active > .bars {
+        &::before {
+            transform: translate3d(0, $navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height, 0);
+        }
+
+        &::after {
+            transform: translate3d(0, -($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height), 0);
+        }
+    }
+
+    &.-plus.-active > .bars {
+        &::before {
+            transform: translate3d(0, $navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height, 0);
+        }
+
+        &::after {
+            transform: translate3d(0, -($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height), 0) rotate(90deg);
+        }
+    }
 }

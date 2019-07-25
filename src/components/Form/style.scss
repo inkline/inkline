@@ -9,37 +9,37 @@
  * Input Group
  */
 .form-group {
-  display: block;
-  vertical-align: middle;
-  position: relative;
+    display: block;
+    vertical-align: middle;
+    position: relative;
 
-  &.-checkbox,
-  &.-radio {
-    font-size: 0;
-  }
-
-  + .form-group {
-    margin-top: $form-group-margin;
-  }
-
-  &.-inline {
-    display: flex;
-
-    > .form-input-group {
-      flex-basis: 100%;
+    &.-checkbox,
+    &.-radio {
+        font-size: 0;
     }
 
-    > .form-label {
-      display: flex;
-      flex: 0 0 auto;
-      align-self: center;
-      margin-bottom: 0;
-
-      &.-right {
-        margin-right: 0;
-      }
+    + .form-group {
+        margin-top: $form-group-margin;
     }
-  }
 
-  @extend .form-group.-md;
+    &.-inline {
+        display: flex;
+
+        > .form-input-group {
+            flex-basis: 100%;
+        }
+
+        > .form-label {
+            display: flex;
+            flex: 0 0 auto;
+            align-self: center;
+            margin-bottom: 0;
+
+            &.-right {
+                margin-right: 0;
+            }
+        }
+    }
+
+    @extend .form-group.-md;
 }

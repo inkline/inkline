@@ -7,15 +7,15 @@
 @import 'css/_sizes';
 
 .list-group {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 
-  &.-bordered {
-    border-width: $list-group-border-width;
-    border-style: $list-group-border-style;
-    border-color: $list-group-border-color;
-  }
+    &.-bordered {
+        border-width: $list-group-border-width;
+        border-style: $list-group-border-style;
+        border-color: $list-group-border-color;
+    }
 
-  @extend .list-group.-md;
+    @extend .list-group.-md;
 }

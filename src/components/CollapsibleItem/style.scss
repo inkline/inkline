@@ -7,53 +7,53 @@
 @import 'css/_variants';
 
 .collapsible {
-  > .item {
-    position: relative;
-    display: block;
-
-    > .header {
-      border-width: 0;
-      border-bottom-width: 1px;
-      border-style: solid;
-      padding: $spacer;
-      display: block;
-      cursor: pointer;
-
-      > .icon {
-        display: inline-block;
-        float: right;
-        margin-top: 4px;
+    > .item {
         position: relative;
+        display: block;
 
-        &::after {
-          @extend %icon;
+        > .header {
+            border-width: 0;
+            border-bottom-width: 1px;
+            border-style: solid;
+            padding: $spacer;
+            display: block;
+            cursor: pointer;
 
-          top: 0;
-          right: 0;
-          position: absolute;
-          transition: transform $transition-duration $transition-easing;
-          content: $icon-chevron-down;
+            > .icon {
+                display: inline-block;
+                float: right;
+                margin-top: 4px;
+                position: relative;
+
+                &::after {
+                    @extend %icon;
+
+                    top: 0;
+                    right: 0;
+                    position: absolute;
+                    transition: transform $transition-duration $transition-easing;
+                    content: $icon-chevron-down;
+                }
+            }
         }
-      }
+
+        &.-active > .header > .icon::after {
+            transform: rotate(180deg);
+        }
+
+        > .body {
+            display: block;
+            position: relative;
+
+            > .content {
+                padding: $spacer;
+            }
+        }
+
+        &:last-child > .header {
+            border-bottom-width: 0;
+        }
     }
 
-    &.-active > .header > .icon::after {
-      transform: rotate(180deg);
-    }
-
-    > .body {
-      display: block;
-      position: relative;
-
-      > .content {
-        padding: $spacer;
-      }
-    }
-
-    &:last-child > .header {
-      border-bottom-width: 0;
-    }
-  }
-
-  @extend .collapsible.-light;
+    @extend .collapsible.-light;
 }

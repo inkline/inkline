@@ -2,14 +2,14 @@
 // Nav Item sizes
 //
 @mixin nav-item-size-variant($size) {
-  padding: nav-item-padding($size);
+    padding: nav-item-padding($size);
 }
 
 @each $size in $sizes {
-  .nav.-#{$size} {
-    > .item,
-    > .dropdown > .item {
-      @include nav-item-size-variant($size);
+    .nav.-#{$size} {
+        > .item,
+        > .dropdown > .item {
+            @include nav-item-size-variant($size);
+        }
     }
-  }
 }

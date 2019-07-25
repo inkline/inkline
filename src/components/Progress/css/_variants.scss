@@ -2,9 +2,9 @@
 // Progress variants
 //
 @each $variant-name, $variant in variants('progress') {
-  $_variant-color: map_get($variant, 'color');
+    $_variant-color: map_get($variant, 'color');
 
-  .progress.-#{$variant-name} {
-    background-color: $_variant-color;
-  }
+    .progress.-#{$variant-name} {
+        background-color: $_variant-color;
+    }
 }

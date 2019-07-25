@@ -2,13 +2,13 @@
 // Variables
 //
 $container-width: (
-  'xs': 100%,
-  'sm': breakpoints('sm') - gutter('sm'),
-  'md': breakpoints('md') - gutter('md'),
-  'lg': breakpoints('lg') - gutter('lg'),
-  'xl': breakpoints('xl') - gutter('xl'),
+    'xs': 100%,
+    'sm': breakpoints('sm') - gutter('sm'),
+    'md': breakpoints('md') - gutter('md'),
+    'lg': breakpoints('lg') - gutter('lg'),
+    'xl': breakpoints('xl') - gutter('xl'),
 ) !default;
 
 @function container-width($key) {
-  @return map_get($container-width, $key);
+    @return map_get($container-width, $key);
 }

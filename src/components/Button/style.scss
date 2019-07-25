@@ -8,113 +8,113 @@
  * Button
  */
 .button {
-  display: inline-block;
-  font-weight: $button-font-weight;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  border: $button-border-width solid transparent;
-  line-height: $button-line-height;
+    display: inline-block;
+    font-weight: $button-font-weight;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: $button-border-width solid transparent;
+    line-height: $button-line-height;
 
-  @if transition('button') {
-    transition: background-color $transition-duration $transition-easing, border-color $transition-duration $transition-easing, color $transition-duration $transition-easing;
-  }
-
-  // Target non disabled buttons
-  &:not(:disabled):not(.-disabled) {
-
-    // Add "hand" cursor to non-disabled .button elements
-    cursor: pointer;
-
-    // Focus and hover state
-    &:hover,
-    &.-hovered,
-    &:focus,
-    &.-focused {
-      text-decoration: none;
-      outline: 0;
+    @if transition('button') {
+        transition: background-color $transition-duration $transition-easing, border-color $transition-duration $transition-easing, color $transition-duration $transition-easing;
     }
-  }
 
-  // Disabled state
-  // Disabled state comes first so active can properly restyle
-  &.-disabled,
-  &:disabled {
-    opacity: $button-opacity-disabled;
-    box-shadow: none;
-  }
-
-  // Block buttons
-  // Make buttons span the whole parent width
-  &.-block {
-    display: block;
-    width: 100%;
-
-    + .button.-block {
-      margin-left: 0;
-      margin-top: $button-margin;
-    }
-  }
-
-  // Link buttons
-  // Make a button look and behave like a link
-  &.-link {
-    box-shadow: none;
-
+    // Target non disabled buttons
     &:not(:disabled):not(.-disabled) {
-      &:hover,
-      &.-hovered,
-      &:focus,
-      &.-focused {
-        text-decoration: $link-decoration-hover;
-      }
+
+        // Add "hand" cursor to non-disabled .button elements
+        cursor: pointer;
+
+        // Focus and hover state
+        &:hover,
+        &.-hovered,
+        &:focus,
+        &.-focused {
+            text-decoration: none;
+            outline: 0;
+        }
     }
 
-    &:disabled,
-    &.-disabled {
-      pointer-events: none;
+    // Disabled state
+    // Disabled state comes first so active can properly restyle
+    &.-disabled,
+    &:disabled {
+        opacity: $button-opacity-disabled;
+        box-shadow: none;
     }
-  }
 
-  // Outline buttons
-  // Remove button background and add a beautiful transition on hover
-  &.-outline {
-    background-color: transparent;
-  }
+    // Block buttons
+    // Make buttons span the whole parent width
+    &.-block {
+        display: block;
+        width: 100%;
 
-  // Circle button
-  &.-circle {
-    border-radius: 100%;
-  }
+        + .button.-block {
+            margin-left: 0;
+            margin-top: $button-margin;
+        }
+    }
 
-  // Transparent button
-  &.-transparent {
-    background-color: transparent;
-  }
+    // Link buttons
+    // Make a button look and behave like a link
+    &.-link {
+        box-shadow: none;
 
-  // Flat buttons
-  &.-flat {
-    background-image: none;
-  }
+        &:not(:disabled):not(.-disabled) {
+            &:hover,
+            &.-hovered,
+            &:focus,
+            &.-focused {
+                text-decoration: $link-decoration-hover;
+            }
+        }
 
-  // Button defaults
-  // Set a default size and theme
-  @extend .button.-md;
-  @extend .button.-light;
+        &:disabled,
+        &.-disabled {
+            pointer-events: none;
+        }
+    }
+
+    // Outline buttons
+    // Remove button background and add a beautiful transition on hover
+    &.-outline {
+        background-color: transparent;
+    }
+
+    // Circle button
+    &.-circle {
+        border-radius: 100%;
+    }
+
+    // Transparent button
+    &.-transparent {
+        background-color: transparent;
+    }
+
+    // Flat buttons
+    &.-flat {
+        background-image: none;
+    }
+
+    // Button defaults
+    // Set a default size and theme
+    @extend .button.-md;
+    @extend .button.-light;
 }
 
 // Future-proof disabling of clicks on `<a>` elements
 a.button.-disabled,
 fieldset:disabled a.button {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 // Specificity overrides
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-  &.-block {
-    width: 100%;
-  }
+    &.-block {
+        width: 100%;
+    }
 }

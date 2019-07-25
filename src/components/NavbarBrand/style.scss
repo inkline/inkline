@@ -8,27 +8,27 @@
  * Navbar Brand
  */
 .navbar > .container > .row > .column > .brand {
-  display: inline-block;
-  margin-right: $navbar-brand-margin;
-  font-size: $navbar-brand-font-size;
-  line-height: inherit;
-  white-space: nowrap;
+    display: inline-block;
+    margin-right: $navbar-brand-margin;
+    font-size: $navbar-brand-font-size;
+    line-height: inherit;
+    white-space: nowrap;
 
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
 
-  > h1,
-  > h2,
-  > h3,
-  > h4,
-  > h5,
-  > h6 {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 
-  @include navbar-brand-color-variant(variant-element('navbar', 'light', 'color'));
-  @include navbar-size-variant('md');
+    @include navbar-brand-color-variant(variant-element('navbar', 'light', 'color'));
+    @include navbar-size-variant('md');
 }

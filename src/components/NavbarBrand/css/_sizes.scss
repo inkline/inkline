@@ -2,13 +2,13 @@
 // Navbar sizes
 //
 @mixin navbar-size-variant($size) {
-  $_padding: map_get($navbar-brand-padding, $size);
+    $_padding: map_get($navbar-brand-padding, $size);
 
-  padding: $_padding;
+    padding: $_padding;
 }
 
 @each $size in $sizes {
-  .navbar.-#{$size} > .container > .row > .column > .brand {
-    @include navbar-size-variant($size);
-  }
+    .navbar.-#{$size} > .container > .row > .column > .brand {
+        @include navbar-size-variant($size);
+    }
 }

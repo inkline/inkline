@@ -19,10 +19,10 @@ $tooltip-padding: size-map($tooltip-padding-base, $sizes, $size-multipliers) !de
 //
 $tooltip-variants: ('monochrome') !default;
 $tooltip-color-groups: (
-  'monochrome': (
-    'light': $color-white,
-    'dark': $color-gray-80,
-  )
+    'monochrome': (
+        'light': $color-white,
+        'dark': $color-gray-80,
+    )
 ) !default;
 
 $variants: map_merge($variants, ('tooltip': add-variant($tooltip-variants, ('color': $tooltip-color-groups))));
