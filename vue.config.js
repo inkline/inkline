@@ -33,5 +33,13 @@ module.exports = {
         //         analyzerMode: 'static'
         //     }));
     },
-    lintOnSave: true
+    lintOnSave: true,
+    pluginOptions: {
+        lintStyleOnBuild: true,
+        stylelint: {
+            fix: false,
+            files: ['src/**/*.{css,scss}'],
+            syntax: 'scss'
+        }
+    }
 };
