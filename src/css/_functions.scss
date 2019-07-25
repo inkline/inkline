@@ -32,9 +32,9 @@
 // @author Hugo Giraudel
 // @source https://css-tricks.com/snippets/sass/str-replace-function/
 //
-// @param $string  - Initial string
 // @param $search  - Substring to replace
 // @param $replace - New value
+// @param $string  - Initial string
 // @return - Updated string
 @function replace($search, $replace, $string) {
   $index: str-index($string, $search);
@@ -64,7 +64,7 @@
 // @see https://sass-lang.com/documentation/functions/color#lighten
 //
 // @param $color   - The color to lighten
-// @param $percent - The percentage of changement.
+// @param $percent - The percentage of change.
 //
 // @return lightened color
 //
