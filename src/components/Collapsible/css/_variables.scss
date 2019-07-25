@@ -6,8 +6,8 @@ $collapsible-border-radius: border-radius('md') !default;
 //
 // Themes
 //
-$collapsible-variants:            ('monochrome') !default;
+$collapsible-variants: ('monochrome') !default;
 $collapsible-variant-color-light: $variant-color-light !default;
-$collapsible-variant-color-dark:  $variant-color-dark !default;
+$collapsible-variant-color-dark: $variant-color-dark !default;
 
 $variants: map_merge($variants, ('collapsible': add-variant($collapsible-variants, ('color': $color-groups))));

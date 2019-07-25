@@ -3,7 +3,7 @@
 //
 @each $size in $sizes {
   $_border-radius: map_get($form-check-checkbox-border-radius, $size);
-  $_icon-size:     map_get($form-check-checkbox-icon-size, $size);
+  $_icon-size: map_get($form-check-checkbox-icon-size, $size);
 
   .form.-#{$size} .form-check,
   .form-group.-#{$size} .form-check,

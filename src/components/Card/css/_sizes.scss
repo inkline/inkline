@@ -3,8 +3,8 @@
 //
 @each $size in $sizes {
   $_border-radius: map_get($card-border-radius, $size);
-  $_font-size:     map_get($card-font-size, $size);
-  $_padding:       map_get($card-padding, $size);
+  $_font-size: map_get($card-font-size, $size);
+  $_padding: map_get($card-padding, $size);
 
   .card.-#{$size} {
     border-radius: $_border-radius;

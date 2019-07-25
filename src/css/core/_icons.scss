@@ -1,38 +1,38 @@
 @import '../mixins/icons';
 
 @font-face {
-    font-family: 'inkline';
-    src:
-        url($inkline-font-path + 'inkline.eot?kszcvl'),
-        url($inkline-font-path + 'inkline.eot?kszcvl#iefix') format('embedded-opentype'),
-        url($inkline-font-path + 'inkline.ttf?kszcvl') format('truetype'),
-        url($inkline-font-path + 'inkline.woff?kszcvl') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'inkline';
+  src:
+    url($inkline-font-path + 'inkline.eot?kszcvl'),
+    url($inkline-font-path + 'inkline.eot?kszcvl#iefix') format('embedded-opentype'),
+    url($inkline-font-path + 'inkline.ttf?kszcvl') format('truetype'),
+    url($inkline-font-path + 'inkline.woff?kszcvl') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .inkline-icon {
-    @extend %icon;
+  @extend %icon;
 
-    &.-circle::before {
-        content: $icon-circle;
+  &.-circle::before {
+    content: $icon-circle;
+  }
+
+  &.-home::before { content: $icon-home; }
+  &.-calendar::before { content: $icon-calendar; }
+  &.-warning::before { content: $icon-warning; }
+  &.-danger::before { content: $icon-danger; }
+  &.-plus::before { content: $icon-plus; }
+  &.-minus::before { content: $icon-minus; }
+  &.-info::before { content: $icon-info; }
+  &.-times::before { content: $icon-times; }
+  &.-check::before { content: $icon-check; }
+  &.-caret-down::before { content: $icon-caret-down; }
+  &.-chevron-down::before { content: $icon-chevron-down; }
+
+  @each $breakpoint-name in $sizes {
+    &.-#{$breakpoint-name} {
+      font-size: font-size($breakpoint-name);
     }
-
-    &.-home::before { content: $icon-home; }
-    &.-calendar::before { content: $icon-calendar; }
-    &.-warning::before { content: $icon-warning; }
-    &.-danger::before { content: $icon-danger; }
-    &.-plus::before { content: $icon-plus; }
-    &.-minus::before { content: $icon-minus; }
-    &.-info::before { content: $icon-info; }
-    &.-times::before { content: $icon-times; }
-    &.-check::before { content: $icon-check; }
-    &.-caret-down::before { content: $icon-caret-down; }
-    &.-chevron-down::before { content: $icon-chevron-down; }
-
-    @each $breakpoint-name in $sizes {
-        &.-#{$breakpoint-name} {
-            font-size: font-size($breakpoint-name);
-        }
-    }
+  }
 }

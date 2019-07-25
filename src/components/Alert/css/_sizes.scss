@@ -2,9 +2,9 @@
 // Alert sizes
 //
 @each $size in $sizes {
-  $_border_radius:map_get($alert-border-radius, $size);
-  $_font-size:    map_get($alert-font-size, $size);
-  $_padding:      map_get($alert-padding, $size);
+  $_border_radius: map_get($alert-border-radius, $size);
+  $_font-size: map_get($alert-font-size, $size);
+  $_padding: map_get($alert-padding, $size);
 
   .alert.-#{$size} {
     border-radius: $_border_radius;

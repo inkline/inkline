@@ -2,9 +2,9 @@
 // Sizes
 //
 @each $size in $sizes {
-  $_font-size:     map_get($input-font-size, $size);
+  $_font-size: map_get($input-font-size, $size);
   $_border-radius: map_get($input-border-radius, $size);
-  $_padding:       map_get($input-padding, $size);
+  $_padding: map_get($input-padding, $size);
 
   .form.-#{$size} .form-input-group > .form-input,
   .form-group.-#{$size} .form-input-group > .form-input,

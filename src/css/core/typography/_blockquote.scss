@@ -3,43 +3,43 @@
   */
 
 .blockquote {
-    margin: 0 0 $spacer;
-    font-size: $blockquote-font-size;
+  margin: 0 0 $spacer;
+  font-size: $blockquote-font-size;
 
-    &.-left {
-        text-align: left;
+  &.-left {
+    text-align: left;
 
-        &.-bordered {
-            padding-left: $spacer;
-            border-left: $blockquote-border;
-        }
+    &.-bordered {
+      padding-left: $spacer;
+      border-left: $blockquote-border;
     }
+  }
 
-    &.-center {
-        text-align: center;
+  &.-center {
+    text-align: center;
+  }
+
+  &.-right {
+    text-align: right;
+
+    &.-bordered {
+      padding-right: $spacer;
+      border-right: $blockquote-border;
     }
+  }
 
-    &.-right {
-        text-align: right;
+  > p {
+    margin-bottom: 0;
+  }
 
-        &.-bordered {
-            padding-right: $spacer;
-            border-right: $blockquote-border;
-        }
+  > footer,
+  > .footer {
+    display: block;
+    font-size: 80%;
+    color: $blockquote-small-color;
+
+    &::before {
+      content: '\2014 \00A0'; // em dash, nbsp
     }
-
-    > p {
-        margin-bottom: 0;
-    }
-
-    > footer,
-    > .footer {
-        display: block;
-        font-size: 80%;
-        color: $blockquote-small-color;
-
-        &::before {
-            content: '\2014 \00A0'; // em dash, nbsp
-        }
-    }
+  }
 }

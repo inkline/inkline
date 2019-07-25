@@ -23,12 +23,12 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -ms-overflow-style: scrollbar;
 }
 
 /**
@@ -41,17 +41,17 @@ html {
   */
 
 body {
-    margin: 0;
-    color: $body-color;
-    background-color: $body-background;
+  margin: 0;
+  color: $body-color;
+  background-color: $body-background;
 }
 
 // IE10+ doesn't honor `<meta name='viewport'>` in some cases.
 //
 @at-root {
-    @-ms-viewport {
-        width: device-width;
-    }
+  @-ms-viewport {
+    width: device-width;
+  }
 }
 
 /**
@@ -68,11 +68,11 @@ section,
 figcaption,
 figure,
 main {
-    display: block;
+  display: block;
 }
 
 figure {
-    margin: 0 0 1rem;
+  margin: 0 0 1rem;
 }
 
 /**
@@ -84,7 +84,7 @@ figure {
   */
 
 [tabindex='-1']:focus {
-    outline: none !important;
+  outline: none !important;
 }
 
 /**
@@ -95,9 +95,9 @@ figure {
   */
 
 hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
 }
 
 /**
@@ -105,33 +105,33 @@ hr {
   */
 
 a {
-    color: $link-color;
-    text-decoration: $link-decoration;
-    -webkit-text-decoration-skip: objects;
-    background-color: transparent;
+  color: $link-color;
+  text-decoration: $link-decoration;
+  -webkit-text-decoration-skip: objects;
+  background-color: transparent;
 
-    &:hover,
-    &:focus,
-    &:active {
-        color: $link-color-hover;
-        text-decoration: $link-decoration-hover;
-        outline-width: 0;
-    }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $link-color-hover;
+    text-decoration: $link-decoration-hover;
+    outline-width: 0;
+  }
 }
 
 a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
     color: inherit;
     text-decoration: none;
+  }
 
-    &:hover,
-    &:focus {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
 
 /**
@@ -155,7 +155,7 @@ label,
 select,
 summary,
 textarea {
-    touch-action: manipulation;
+  touch-action: manipulation;
 }
 
 /**
@@ -169,10 +169,10 @@ textarea {
 
 abbr[title],
 abbr[data-original-title] {
-    text-decoration: underline dotted;
-    -webkit-text-decoration: underline dotted;
-    cursor: help;
-    border-bottom: 0;
+  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+  cursor: help;
+  border-bottom: 0;
 }
 
 /**
@@ -182,24 +182,24 @@ abbr[data-original-title] {
 ol,
 ul,
 dl {
-    margin-top: 0;
-    margin-bottom: $spacer;
+  margin-top: 0;
+  margin-bottom: $spacer;
 }
 
 ol ol,
 ul ul,
 ol ul,
 ul ol {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 dt {
-    font-weight: font-weight(bold);
+  font-weight: font-weight(bold);
 }
 
 dd {
-    margin-bottom: spacers('1/2');
-    margin-left: 0; // Undo browser default
+  margin-bottom: spacers('1/2');
+  margin-left: 0; // Undo browser default
 }
 
 /**
@@ -207,90 +207,90 @@ dd {
   */
 
 address {
-    margin-bottom: $spacer;
-    font-style: normal;
-    line-height: inherit;
+  margin-bottom: $spacer;
+  font-style: normal;
+  line-height: inherit;
 }
 
 b,
 strong {
-    font-weight: inherit;
-    font-weight: bolder;
+  font-weight: inherit;
+  font-weight: bolder;
 }
 
 pre,
 code,
 kbd,
 samp {
-    font-family: font-family-primary(monospace);
-    font-size: 1rem;
+  font-family: font-family-primary(monospace);
+  font-size: 1rem;
 }
 
 dfn {
-    font-style: italic;
+  font-style: italic;
 }
 
 small {
-    font-size: 80%;
+  font-size: 80%;
 }
 
 audio,
 video {
-    display: inline-block;
+  display: inline-block;
 }
 
 audio {
-    &:not([controls]) {
-        display: none;
-        height: 0;
-    }
+  &:not([controls]) {
+    display: none;
+    height: 0;
+  }
 }
 
 img {
-    border-style: none;
-    vertical-align: middle;
+  border-style: none;
+  vertical-align: middle;
 }
 
 svg {
-    &:not(:root) {
-        overflow: hidden;
-    }
+  &:not(:root) {
+    overflow: hidden;
+  }
 }
 
 progress {
-    display: inline-block;
-    vertical-align: baseline;
+  display: inline-block;
+  vertical-align: baseline;
 }
 
 details,
 menu {
-    display: block;
+  display: block;
 }
 
 summary {
-    display: list-item;
+  display: list-item;
 }
 
 output {
-    display: inline-block;
+  display: inline-block;
 }
 
 canvas {
-    display: inline-block;
+  display: inline-block;
 }
 
 template {
-    display: none;
+  display: none;
 }
 
 [hidden] {
-    display: none !important;
+  display: none !important;
 }
 
 pre {
-    margin-top: 0;
-    margin-bottom: $spacer;
-    overflow: auto;
+  margin-top: 0;
+  margin-bottom: $spacer;
+  overflow: auto;
 }
 
 /**
@@ -298,16 +298,16 @@ pre {
   */
 
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 caption {
-    text-align: left;
-    caption-side: bottom;
+  text-align: left;
+  caption-side: bottom;
 }
 
 th {
-    text-align: inherit;
+  text-align: inherit;
 }
 
 /**
@@ -319,47 +319,47 @@ input,
 optgroup,
 select,
 textarea {
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 button,
 input {
-    overflow: visible;
+  overflow: visible;
 }
 
 button,
 select {
-    text-transform: none;
+  text-transform: none;
 }
 
 button,
 html [type='button'],
 [type='reset'],
 [type='submit'] {
-    -webkit-appearance: button;
+  -webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
 [type='button']::-moz-focus-inner,
 [type='reset']::-moz-focus-inner,
 [type='submit']::-moz-focus-inner {
-    border-style: none;
-    padding: 0;
+  border-style: none;
+  padding: 0;
 }
 
 button:-moz-focusring,
 [type='button']:-moz-focusring,
 [type='reset']:-moz-focusring,
 [type='submit']:-moz-focusring {
-    outline: 1px dotted ButtonText;
+  outline: 1px dotted ButtonText;
 }
 
 button:focus {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color;
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
 }
 
 input[type='date'],
@@ -367,67 +367,67 @@ input[type='time'],
 input[type='datetime-local'],
 input[type='month'] {
 
-    // Remove the default appearance of temporal inputs to avoid a Mobile Safari
-    // bug where setting a custom line-height prevents text from being vertically
-    // centered within the input.
-    // See https://bugs.webkit.org/show_bug.cgi?id=139848
-    // and https://github.com/twbs/bootstrap/issues/11266
-    -webkit-appearance: listbox;
+  // Remove the default appearance of temporal inputs to avoid a Mobile Safari
+  // bug where setting a custom line-height prevents text from being vertically
+  // centered within the input.
+  // See https://bugs.webkit.org/show_bug.cgi?id=139848
+  // and https://github.com/twbs/bootstrap/issues/11266
+  -webkit-appearance: listbox;
 }
 
 fieldset {
-    min-width: 0;
-    padding: 0;
-    margin: 0;
-    border: none;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
 legend {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-    margin-bottom: spacers('1/2');
-    font-size: 1.5rem;
-    line-height: inherit;
-    color: inherit;
-    white-space: normal;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin-bottom: spacers('1/2');
+  font-size: 1.5rem;
+  line-height: inherit;
+  color: inherit;
+  white-space: normal;
 }
 
 label {
-    display: inline-block;
-    margin-bottom: spacers('1/2');
+  display: inline-block;
+  margin-bottom: spacers('1/2');
 }
 
 textarea {
-    overflow: auto;
-    resize: vertical;
+  overflow: auto;
+  resize: vertical;
 }
 
 [type='checkbox'],
 [type='radio'] {
-    box-sizing: border-box;
-    padding: 0;
+  box-sizing: border-box;
+  padding: 0;
 }
 
 [type='number']::-webkit-inner-spin-button,
 [type='number']::-webkit-outer-spin-button {
-    height: auto;
+  height: auto;
 }
 
 [type='search'] {
-    -webkit-appearance: textfield;
-    outline-offset: -2px;
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
 }
 
 [type='search']::-webkit-search-cancel-button,
 [type='search']::-webkit-search-decoration {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 ::-webkit-file-upload-button {
-    -webkit-appearance: button;
-    font: inherit;
+  -webkit-appearance: button;
+  font: inherit;
 }
 
 /**
@@ -437,16 +437,16 @@ textarea {
 
 sub,
 sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
 sub {
-    bottom: -0.25em;
+  bottom: -0.25em;
 }
 
 sup {
-    top: -0.5em;
+  top: -0.5em;
 }

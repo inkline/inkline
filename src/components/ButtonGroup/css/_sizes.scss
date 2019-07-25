@@ -4,9 +4,9 @@
 @each $size in $sizes {
   .button-group.-#{$size} {
     $_border-radius: map_get($button-border-radius, $size);
-    $_font-size:     map_get($button-font-size, $size);
-    $_padding:       map_get($button-padding, $size);
-    $_circle-size:   map_get($button-circle-size, $size);
+    $_font-size: map_get($button-font-size, $size);
+    $_padding: map_get($button-padding, $size);
+    $_circle-size: map_get($button-circle-size, $size);
 
     .button {
       font-size: $_font-size;

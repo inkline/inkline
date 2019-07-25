@@ -25,9 +25,9 @@
 }
 
 @mixin form-input-size($size) {
-  $_padding:        map_get($input-padding, $size);
-  $_font-size:      map_get($input-font-size, $size);
-  $_border-radius:  map_get($input-border-radius, $size);
+  $_padding: map_get($input-padding, $size);
+  $_font-size: map_get($input-font-size, $size);
+  $_border-radius: map_get($input-border-radius, $size);
   $_prefix-padding: map_get($input-prefix-padding, $size);
 
   @include form-input-selector() {
