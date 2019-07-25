@@ -2,20 +2,20 @@
 // Card variants
 //
 @each $variant-name, $variant in variants('card') {
-  $_variant-color: map_get($variant, 'color');
+    $_variant-color: map_get($variant, 'color');
 
-  .card.-#{$variant-name} {
-    color: variant-color-by-luminance($_variant-color, $card-variant-color-light, $card-variant-color-dark);
-    background-color: $_variant-color;
+    .card.-#{$variant-name} {
+        color: variant-color-by-luminance($_variant-color, $card-variant-color-light, $card-variant-color-dark);
+        background-color: $_variant-color;
 
-    > .body {
-      border-color: darken-lightness($_variant-color, 10%);
+        > .body {
+            border-color: darken-lightness($_variant-color, 10%);
+        }
+
+        > .header,
+        > .footer {
+            background-color: $card-background-darken;
+            border-color: darken-lightness($_variant-color, 10%);
+        }
     }
-
-    > .header,
-    > .footer {
-      background-color: $card-background-darken;
-      border-color: darken-lightness($_variant-color, 10%);
-    }
-  }
 }

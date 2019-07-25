@@ -13,13 +13,13 @@
 @import 'css/_sizes';
 
 .breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: $breadcrumb-margin-bottom;
-  padding-left: 0;
-  list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: $breadcrumb-margin-bottom;
+    padding-left: 0;
+    list-style: none;
 
-  > .item {
-    @include breadcrumb-item-variant('md');
-  }
+    > .item {
+        @include breadcrumb-item-variant('md');
+    }
 }

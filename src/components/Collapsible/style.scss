@@ -7,11 +7,11 @@
 @import 'css/_variants';
 
 .collapsible {
-  position: relative;
-  display: block;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: $collapsible-border-radius;
+    position: relative;
+    display: block;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: $collapsible-border-radius;
 
-  @extend .collapsible.-light;
+    @extend .collapsible.-light;
 }

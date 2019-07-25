@@ -7,22 +7,22 @@
  * Navbar Items
  */
 .navbar {
-  > .container > .row > .column > .items {
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    justify-content: space-between;
-    align-items: center;
+    > .container > .row > .column > .items {
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        justify-content: space-between;
+        align-items: center;
 
-    > .nav > .item {
+        > .nav > .item {
 
-      @include navbar-item-color-variant(variant-element('navbar', 'light', 'color'));
+            @include navbar-item-color-variant(variant-element('navbar', 'light', 'color'));
+        }
     }
-  }
 
-  &.-collapsed > .container > .row > .column > .items {
-    border-radius: border-radius('md');
+    &.-collapsed > .container > .row > .column > .items {
+        border-radius: border-radius('md');
 
-    @include navbar-item-collapsed-color-variant(variant-element('navbar', 'light', 'color'));
-  }
+        @include navbar-item-collapsed-color-variant(variant-element('navbar', 'light', 'color'));
+    }
 }

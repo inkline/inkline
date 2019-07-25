@@ -8,11 +8,11 @@
 @import 'css/_variants';
 
 .progress {
-  width: 100%;
-  display: flex;
-  position: relative;
-  overflow: hidden;
+    width: 100%;
+    display: flex;
+    position: relative;
+    overflow: hidden;
 
-  @extend .progress.-md;
-  @extend .progress.-light;
+    @extend .progress.-md;
+    @extend .progress.-light;
 }

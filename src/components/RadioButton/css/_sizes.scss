@@ -2,9 +2,9 @@
 // Radio Button sizes
 //
 @each $size in $sizes {
-  $_font-size: map_get($button-font-size, $size);
+    $_font-size: map_get($button-font-size, $size);
 
-  .button.-radio.-#{$size} {
-    font-size: $_font-size;
-  }
+    .button.-radio.-#{$size} {
+        font-size: $_font-size;
+    }
 }

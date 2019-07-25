@@ -7,71 +7,71 @@
 @import 'css/_variants';
 
 .table {
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: $spacer;
-
-  th,
-  td {
-    padding: $table-cell-padding;
-    vertical-align: top;
-    border-top: $table-border-width solid transparent;
-  }
-
-  thead th {
-    vertical-align: bottom;
-    border-bottom-width: (2 * $table-border-width);
-    border-bottom-color: $border-color;
-  }
-
-  tbody + tbody {
-    border-top: (2 * $table-border-width) solid transparent;
-  }
-
-  // Condensed table w/ half padding
-  //
-  &.-small {
-    th,
-    td {
-      padding: $table-cell-padding-sm;
-    }
-  }
-
-  // Bordered version
-  //
-  // Add borders all around the table and between all the columns.
-  //
-  &.-bordered {
-    border: $table-border-width solid transparent;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: $spacer;
 
     th,
     td {
-      border: $table-border-width solid $table-border-color;
+        padding: $table-cell-padding;
+        vertical-align: top;
+        border-top: $table-border-width solid transparent;
     }
-  }
 
-  // Hover table
-  //
-  // Placed here since it has to come after the potential zebra striping
-  //
-  &.-hover {
-    tbody tr {
-      th,
-      td {
-        @if $transition-enabled and transition('table') {
-          transition: background-color $transition-duration ease;
+    thead th {
+        vertical-align: bottom;
+        border-bottom-width: (2 * $table-border-width);
+        border-bottom-color: $border-color;
+    }
+
+    tbody + tbody {
+        border-top: (2 * $table-border-width) solid transparent;
+    }
+
+    // Condensed table w/ half padding
+    //
+    &.-small {
+        th,
+        td {
+            padding: $table-cell-padding-sm;
         }
-      }
     }
-  }
 
-  th,
-  td,
-  tbody + tbody {
-    border-top-color: $border-color;
-  }
+    // Bordered version
+    //
+    // Add borders all around the table and between all the columns.
+    //
+    &.-bordered {
+        border: $table-border-width solid transparent;
 
-  @extend .table.-light;
+        th,
+        td {
+            border: $table-border-width solid $table-border-color;
+        }
+    }
+
+    // Hover table
+    //
+    // Placed here since it has to come after the potential zebra striping
+    //
+    &.-hover {
+        tbody tr {
+            th,
+            td {
+                @if $transition-enabled and transition('table') {
+                    transition: background-color $transition-duration ease;
+                }
+            }
+        }
+    }
+
+    th,
+    td,
+    tbody + tbody {
+        border-top-color: $border-color;
+    }
+
+    @extend .table.-light;
 }
 
 // Responsive tables
@@ -80,29 +80,29 @@
 // size of where your table will overflow.
 //
 .table-wrapper {
-  display: block;
-  position: relative;
+    display: block;
+    position: relative;
 
-  &.-responsive {
-    @each $breakpoint-name, $breakpoint-value in $breakpoints {
-      $infix: breakpoint-infix($breakpoint-name);
+    &.-responsive {
+        @each $breakpoint-name, $breakpoint-value in $breakpoints {
+            $infix: breakpoint-infix($breakpoint-name);
 
-      &#{$infix} {
-        @include breakpoint-down($breakpoint-name) {
-          display: block;
-          width: 100%;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-          -ms-overflow-style: -ms-autohiding-scrollbar;
+            &#{$infix} {
+                @include breakpoint-down($breakpoint-name) {
+                    display: block;
+                    width: 100%;
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                    -ms-overflow-style: -ms-autohiding-scrollbar;
 
-          // Prevent double border on horizontal scroll due to use of `display: block`
-          .table {
-            &.-bordered {
-              border: none;
+                    // Prevent double border on horizontal scroll due to use of `display: block`
+                    .table {
+                        &.-bordered {
+                            border: none;
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
 }

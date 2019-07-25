@@ -2,9 +2,9 @@
 // Nav sizes
 //
 @each $size in $sizes {
-  $_font-size: map_get($nav-font-size, $size);
+    $_font-size: map_get($nav-font-size, $size);
 
-  .nav.-#{$size} {
-    font-size: $_font-size;
-  }
+    .nav.-#{$size} {
+        font-size: $_font-size;
+    }
 }

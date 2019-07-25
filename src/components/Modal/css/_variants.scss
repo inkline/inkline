@@ -2,44 +2,44 @@
 // Modal variants
 //
 @each $variant-name, $variant in variants('modal') {
-  $_variant-color: map_get($variant, 'color');
+    $_variant-color: map_get($variant, 'color');
 
-  .modal.-#{$variant-name} {
-    > .header {
-      border-color: darken-lightness($_variant-color, 10%);
-      background-color: variant-color-by-luminance($_variant-color, darken-lightness($_variant-color, 10%), darken-lightness($_variant-color, 5%));
-      color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
+    .modal.-#{$variant-name} {
+        > .header {
+            border-color: darken-lightness($_variant-color, 10%);
+            background-color: variant-color-by-luminance($_variant-color, darken-lightness($_variant-color, 10%), darken-lightness($_variant-color, 5%));
+            color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
 
-      > .close {
-        color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
-      }
+            > .close {
+                color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
+            }
+        }
+
+        > .body,
+        > .footer {
+            border-color: $modal-border-color;
+            background-color: $modal-background;
+        }
+
+        &.-fill {
+            color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
+
+            > .header,
+            > .body,
+            > .footer {
+                border-color: variant-color-by-luminance($_variant-color, darken-lightness($_variant-color, 15%), darken-lightness($_variant-color, 10%));
+            }
+
+            > .header {
+                background-color: variant-color-by-luminance($_variant-color, darken-lightness($_variant-color, 10%), darken-lightness($_variant-color, 5%));
+            }
+
+            > .body,
+            > .footer {
+                background-color: $_variant-color;
+            }
+        }
+
+        @include popup-arrow-variant((background: $_variant-color, border-color: darken-lightness($_variant-color, 10%)));
     }
-
-    > .body,
-    > .footer {
-      border-color: $modal-border-color;
-      background-color: $modal-background;
-    }
-
-    &.-fill {
-      color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
-
-      > .header,
-      > .body,
-      > .footer {
-        border-color: variant-color-by-luminance($_variant-color, darken-lightness($_variant-color, 15%), darken-lightness($_variant-color, 10%));
-      }
-
-      > .header {
-        background-color: variant-color-by-luminance($_variant-color, darken-lightness($_variant-color, 10%), darken-lightness($_variant-color, 5%));
-      }
-
-      > .body,
-      > .footer {
-        background-color: $_variant-color;
-      }
-    }
-
-    @include popup-arrow-variant((background: $_variant-color, border-color: darken-lightness($_variant-color, 10%)));
-  }
 }

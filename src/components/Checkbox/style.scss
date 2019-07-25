@@ -7,17 +7,17 @@
  * Checkbox
  */
 .form-check.-custom.-checkbox {
-  input {
-    &:checked ~ .form-input-label::after {
-      content: $icon-check;
-      color: white;
+    input {
+        &:checked ~ .form-input-label::after {
+            content: $icon-check;
+            color: white;
+        }
+
+        &:indeterminate ~ .form-input-label::after {
+            content: $icon-minus;
+            color: white;
+        }
     }
 
-    &:indeterminate ~ .form-input-label::after {
-      content: $icon-minus;
-      color: white;
-    }
-  }
-
-  @extend .form-check.-md.-custom.-checkbox;
+    @extend .form-check.-md.-custom.-checkbox;
 }

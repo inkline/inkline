@@ -8,11 +8,11 @@
  * Dropdown Divider
  */
 .dropdown > .menu > .divider {
-  display: block;
-  height: 1px;
-  width: 100%;
-  clear: both;
+    display: block;
+    height: 1px;
+    width: 100%;
+    clear: both;
 
-  @include dropdown-divider-color-variant(variant-element('dropdown', 'light', 'color'));
-  @include dropdown-divider-size-variant('md');
+    @include dropdown-divider-color-variant(variant-element('dropdown', 'light', 'color'));
+    @include dropdown-divider-size-variant('md');
 }
