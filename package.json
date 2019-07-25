@@ -8,7 +8,7 @@
     "build:inkline": "vue-cli-service build --target lib --name Inkline src/index.js",
     "build:validation": "vue-cli-service build --no-clean --target lib --name InklineValidation src/validation.js",
     "lint": "vue-cli-service lint",
-    "lint:style": "stylelint 'src/**/*.scss' --syntax scss --formatter unix",
+    "lint:style": "vue-cli-service lint:style",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "dev": "vue-cli-service serve",
     "dist": "bash ./scripts/dist.sh",
@@ -34,6 +34,7 @@
     "validator": "^11.0.0"
   },
   "devDependencies": {
+    "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
     "@babel/core": "^7.4.5",
     "@babel/types": "^7.4.4",
     "@vue/cli-plugin-babel": "^3.8.0",

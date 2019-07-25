@@ -30,6 +30,8 @@ rules:
     # https://stylelint.io/user-guide/rules/declaration-block-single-line-max-declarations
     declaration-block-single-line-max-declarations: 1
 
+    indentation: 4
+
     # https://stylelint.io/user-guide/rules/no-descending-specificity
     # FIXME: To ensure a good coherence, this should be enabled
     no-descending-specificity: null
