@@ -11,7 +11,7 @@
     display: inline-block;
     white-space: nowrap;
     outline: none;
-    margin-right: $spacer;
+    margin-right: $form-check-margin-right;
 
     &:last-child {
         margin-right: 0;

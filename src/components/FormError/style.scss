@@ -1,9 +1,10 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
+@import './css/variables';
 
 .form-group-error {
     position: relative;
-    margin: ($spacer / 4) 0 0;
+    margin: $form-group-error-margin;
     padding: 0;
     list-style: none;
     color: colors('danger');
