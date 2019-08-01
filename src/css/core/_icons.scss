@@ -30,9 +30,9 @@
     &.-caret-down::before { content: $icon-caret-down; }
     &.-chevron-down::before { content: $icon-chevron-down; }
 
-    @each $breakpoint-name in $sizes {
-        &.-#{$breakpoint-name} {
-            font-size: font-size($breakpoint-name);
+    @each $size in $sizes {
+        &.-#{$size} {
+            font-size: font-size($size);
         }
     }
 }

@@ -185,13 +185,6 @@ $mark-padding: 0.2rem 0.4rem !default;
 $mark-color: colors('gray-80') !default;
 $mark-background-color: #fcf8e3 !default;
 
-// Kbd
-//
-$kbd-box-shadow: inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25) !default;
-$kbd-nested-font-weight: font-weight('bold') !default;
-$kbd-color: colors('white') !default;
-$kbd-background: colors('gray-90') !default;
-
 // Code
 //
 $code-font-size: 90% !default;
@@ -199,7 +192,17 @@ $code-padding: 0.15rem 0.4rem !default;
 $code-color: #bd4147 !default;
 $code-background: colors('gray-10') !default;
 
+// Kbd
+//
+$kbd-font-size: $code-font-size !default;
+$kbd-box-shadow: inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25) !default;
+$kbd-nested-font-weight: font-weight('bold') !default;
+$kbd-color: colors('white') !default;
+$kbd-background: colors('gray-90') !default;
+$kbd-padding: $code-padding !default;
+
 // Pre
 //
+$pre-font-size: $code-font-size !default;
 $pre-color: colors('gray-90') !default;
 $pre-scrollable-max-height: 340px !default;
