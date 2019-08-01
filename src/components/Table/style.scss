@@ -9,7 +9,7 @@
 .table {
     width: 100%;
     max-width: 100%;
-    margin-bottom: $spacer;
+    margin-bottom: $table-margin-bottom;
 
     th,
     td {
@@ -21,7 +21,7 @@
     thead th {
         vertical-align: bottom;
         border-bottom-width: (2 * $table-border-width);
-        border-bottom-color: $border-color;
+        border-bottom-color: $table-border-color;
     }
 
     tbody + tbody {
@@ -68,7 +68,7 @@
     th,
     td,
     tbody + tbody {
-        border-top-color: $border-color;
+        border-top-color: $table-border-color;
     }
 
     @extend .table.-light;
