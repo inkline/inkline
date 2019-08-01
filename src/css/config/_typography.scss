@@ -13,24 +13,24 @@ $font-family-secondary-base: $font-family-primary-base !default;
 $font-family-secondary-print: $font-family-primary-print !default;
 
 $font-family-primary: (
-  'base': $font-family-primary-base,
-  'monospace': $font-family-primary-monospace,
-  'print': $font-family-primary-print,
+    'base': $font-family-primary-base,
+    'monospace': $font-family-primary-monospace,
+    'print': $font-family-primary-print,
 ) !default;
 
 // Quick accessor to the font-family-primary map
 @function font-family-primary($key) {
-  @return map_get($font-family-primary, $key);
+    @return map_get($font-family-primary, $key);
 }
 
 $font-family-secondary: (
-  'base': $font-family-secondary-base,
-  'print': $font-family-secondary-print,
+    'base': $font-family-secondary-base,
+    'print': $font-family-secondary-print,
 ) !default;
 
 // Quick accessor to the font-family-secondary map
 @function font-family-secondary($key) {
-  @return map_get($font-family-secondary, $key);
+    @return map_get($font-family-secondary, $key);
 }
 
 // Tracking
@@ -42,16 +42,16 @@ $letter-spacing: 0 !default;
 //
 $font-size-base: 1rem !default;
 $font-size: (
-  'xs': $font-size-base * size-multipliers('xs'),
-  'sm': $font-size-base * size-multipliers('sm'),
-  'md': $font-size-base * size-multipliers('md'),
-  'lg': $font-size-base * size-multipliers('lg'),
-  'xl': $font-size-base * size-multipliers('xl'),
+    'xs': $font-size-base * size-multipliers('xs'),
+    'sm': $font-size-base * size-multipliers('sm'),
+    'md': $font-size-base * size-multipliers('md'),
+    'lg': $font-size-base * size-multipliers('lg'),
+    'xl': $font-size-base * size-multipliers('xl'),
 );
 
 // Quick accessor to the font-size map
 @function font-size($key) {
-  @return map_get($font-size, $key);
+    @return map_get($font-size, $key);
 }
 
 // Font weight
@@ -64,17 +64,17 @@ $font-weight-bold: bold !default;
 $font-weight-black: 900 !default;
 
 $font-weight: (
-  'extralight': $font-weight-extralight,
-  'light': $font-weight-light,
-  'normal': $font-weight-normal,
-  'semibold': $font-weight-semibold,
-  'bold': $font-weight-bold,
-  'black': $font-weight-black,
+    'extralight': $font-weight-extralight,
+    'light': $font-weight-light,
+    'normal': $font-weight-normal,
+    'semibold': $font-weight-semibold,
+    'bold': $font-weight-bold,
+    'black': $font-weight-black,
 ) !default;
 
 // Quick accessor to the font-weight map
 @function font-weight($key) {
-  @return map_get($font-weight, $key);
+    @return map_get($font-weight, $key);
 }
 
 // Line height
@@ -95,17 +95,17 @@ $h5-font-size: 1.25 * font-size('md') !default;
 $h6-font-size: 1 * font-size('md') !default;
 
 $headings-font-size: (
-  'h1': $h1-font-size,
-  'h2': $h2-font-size,
-  'h3': $h3-font-size,
-  'h4': $h4-font-size,
-  'h5': $h5-font-size,
-  'h6': $h6-font-size,
+    'h1': $h1-font-size,
+    'h2': $h2-font-size,
+    'h3': $h3-font-size,
+    'h4': $h4-font-size,
+    'h5': $h5-font-size,
+    'h6': $h6-font-size,
 ) !default;
 
 // Quick accessor to the headings-font-size map
 @function headings-font-size($key) {
-  @return map_get($headings-font-size, $key);
+    @return map_get($headings-font-size, $key);
 }
 
 $headings-margin-top: $spacer * 2.5 !default;
@@ -125,17 +125,17 @@ $d5-font-size: 3.5 * font-size('md') !default;
 $d6-font-size: 3 * font-size('md') !default;
 
 $displays-font-size: (
-  'd1': $d1-font-size,
-  'd2': $d2-font-size,
-  'd3': $d3-font-size,
-  'd4': $d4-font-size,
-  'd5': $d5-font-size,
-  'd6': $d6-font-size,
+    'd1': $d1-font-size,
+    'd2': $d2-font-size,
+    'd3': $d3-font-size,
+    'd4': $d4-font-size,
+    'd5': $d5-font-size,
+    'd6': $d6-font-size,
 ) !default;
 
 // Quick accessor to the displays-font-size map
 @function displays-font-size($key) {
-  @return map_get($displays-font-size, $key);
+    @return map_get($displays-font-size, $key);
 }
 
 $displays-font-weight: $headings-font-weight !default;
@@ -171,6 +171,8 @@ $small-font-size: font-size('sm') !default;
 $blockquote-small-color: colors('gray-60') !default;
 $blockquote-font-size: font-size('lg') !default;
 $blockquote-border: 3px solid colors('gray-30') !default;
+$blockquote-margin: $spacer !default;
+$blockquote-bordered-padding: $spacer !default;
 
 // Horizontal rule
 //

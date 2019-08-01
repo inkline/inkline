@@ -14,11 +14,11 @@ $text-variants: ('basic', 'brand', 'monochrome', 'neutral', 'state', 'social') !
 // Initialize theme choice collection
 //
 $variants: (
-  'background': add-variant($background-variants, ('color': $color-groups)),
-  'border': add-variant($border-variants, ('color': $color-groups)),
-  'text': add-variant($text-variants, ('color': $color-groups)),
+    'background': add-variant($background-variants, ('color': $color-groups)),
+    'border': add-variant($border-variants, ('color': $color-groups)),
+    'text': add-variant($text-variants, ('color': $color-groups)),
 );
 
 @function variants($key) {
-  @return map_get($variants, $key);
+    @return map_get($variants, $key);
 }

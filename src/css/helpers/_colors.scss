@@ -1,34 +1,34 @@
 /**
-  * Colors
-  */
+    * Colors
+    */
 @import '../mixins/colors';
 
 // Background
 //
 @each $variant-name, $variant in variants(background) {
-  $_variant-color: map_get($variant, 'color');
-  $_variant-gradient: map_get($variant, 'gradient');
+    $_variant-color: map_get($variant, 'color');
+    $_variant-gradient: map_get($variant, 'gradient');
 
-  ._background-#{$variant-name} {
-    color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
-    background-color: $_variant-color !important;
+    ._background-#{$variant-name} {
+        color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
+        background-color: $_variant-color !important;
 
-    @if --gradient-enabled and  $_variant-gradient {
-      background-image: linear_gradient($_variant-gradient) !important;
+        @if --gradient-enabled and  $_variant-gradient {
+            background-image: linear_gradient($_variant-gradient) !important;
+        }
     }
-  }
 }
 
 ._background-transparent {
-  background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 // Text
 //
 @each $variant-name, $variant in variants('text') {
-  $_variant-color: map_get($variant, 'color'); /* stylelint-disable-line scss/no-duplicate-dollar-variables */
+    $_variant-color: map_get($variant, 'color'); /* stylelint-disable-line scss/no-duplicate-dollar-variables */
 
-  ._text-#{$variant-name} {
-    color: $_variant-color !important;
-  }
+    ._text-#{$variant-name} {
+        color: $_variant-color !important;
+    }
 }
