@@ -6,7 +6,7 @@
     display: inline-block; // Ensures the caption's text aligns with the image.
 
     > .img {
-        margin-bottom: ($spacer / 2);
+        margin-bottom: $figure-image-margin-bottom;
         line-height: 1;
     }
 
