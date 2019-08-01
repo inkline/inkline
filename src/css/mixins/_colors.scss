@@ -11,13 +11,13 @@
 // @return Contrasting text color
 //
 @function variant-color-by-luminance($color, $light, $dark) {
-  $luminance: (red($color) * 0.299) + (green($color) * 0.587) + (blue($color) * 0.114);
+    $luminance: (red($color) * 0.299) + (green($color) * 0.587) + (blue($color) * 0.114);
 
-  @if $luminance > 186 {
-    @return $dark;
-  }
+    @if $luminance > 186 {
+        @return $dark;
+    }
 
-  @return $light;
+    @return $light;
 }
 
 //
@@ -29,5 +29,5 @@
 //
 // FIXME: The name of this method don't follow other names, ideas are welcome.
 @function linear_gradient($colors, $direction: $gradient-direction) {
-  @return linear-gradient($direction, unquote($colors));
+    @return linear-gradient($direction, unquote($colors));
 }
