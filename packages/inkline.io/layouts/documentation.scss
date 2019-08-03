@@ -27,14 +27,14 @@
       z-index: 1029;
       background-color: rgba(0, 0, 0, 0.25);
 
-      &.fade-in-transition-enter
+      &.fade-in-transition-enter,
       &.fade-in-transition-leave-to {
         .layout-aside-children {
           transform: translateX(-100%);
         }
       }
 
-      &.fade-in-transition-enter-to
+      &.fade-in-transition-enter-to,
       &.fade-in-transition-leave {
         .layout-aside-children {
           transform: translateX(0);

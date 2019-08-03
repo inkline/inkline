@@ -12,6 +12,7 @@
 
   .layout-aside {
     background: colors('gray-30');
+
     // FIXME: import order forces to redefine width here.
     width: $layout-aside-width;
 
