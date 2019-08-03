@@ -1,9 +1,6 @@
 <template lang="md" src="./header.md" />
 
-<style lang="scss">
-    #cover-inkline-header {
-        background-image: url('~static/images/background.jpg');
-    }
+<style lang="scss">@import "header";
 </style>
 
 <script>

@@ -1,17 +1,5 @@
 <template lang="md" src="./border.md" />
-<style lang="scss" scoped>
-    @import '~@inkline/inkline/css/config/index';
-    @import '~@inkline/inkline/css/mixins/index';
-
-    .border-square {
-        display: inline-block;
-        width: 64px;
-        height: 64px;
-        background: colors('gray-20');
-        border-color: colors('gray-40');
-        margin-right: ($spacer / 2);
-        margin-bottom: ($spacer / 2);
-    }
+<style lang="scss" scoped>@import "border";
 </style>
 <script>
 import View from '@components/View'
