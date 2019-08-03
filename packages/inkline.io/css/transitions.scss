@@ -1,19 +1,19 @@
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .fade-leave-active {
-    top: 0;
-    z-index: 0;
-    position: absolute;
+  top: 0;
+  z-index: 0;
+  position: absolute;
 }
 
 .fade-enter-active {
-    z-index: 1;
+  z-index: 1;
 }
 
 .fade-enter,
 .fade-leave-to {
-    opacity: 0;
+  opacity: 0;
 }

@@ -1,50 +1,50 @@
 @import '~@inkline/inkline/css/config/index';
 
 .site-navigation {
-    display: block;
-    padding-top: ($spacer * 2.5);
+  display: block;
+  padding-top: ($spacer * 2.5);
 
-    ol {
-        list-style: none;
-        padding: 0;
+  ol {
+    list-style: none;
+    padding: 0;
 
-        > li {
-            > span {
-                font-weight: bold;
-                color: $text-muted;
-            }
+    > li {
+      > span {
+        font-weight: bold;
+        color: $text-muted;
+      }
 
-            + li {
-                margin-top: $spacer;
-            }
-        }
+      + li {
+        margin-top: $spacer;
+      }
     }
+  }
 
-    ul {
-        list-style: none;
-        padding: 0;
-        margin-top: ($spacer / 2);
-        margin-left: ($spacer / 2);
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: ($spacer / 2);
+    margin-left: ($spacer / 2);
 
-        > li {
-            margin: 0;
-            position: relative;
+    > li {
+      margin: 0;
+      position: relative;
 
-            > a {
-                display: block;
-                padding-top: ($spacer / 3);
-                padding-bottom: ($spacer / 3);
-                padding-left: $spacer;
-                color: $body-color;
-                border-left: 1px solid $color-gray-20;
-                transition: color 0.3s ease, font-weight 0.3s ease, border 0.3s ease;
+      > a {
+        display: block;
+        padding-top: ($spacer / 3);
+        padding-bottom: ($spacer / 3);
+        padding-left: $spacer;
+        color: $body-color;
+        border-left: 1px solid $color-gray-20;
+        transition: color 0.3s ease, font-weight 0.3s ease, border 0.3s ease;
 
-                &.-active,
-                &.nuxt-link-active {
-                    color: $link-color;
-                    border-left: 1px solid $link-color;
-                }
-            }
+        &.-active,
+        &.nuxt-link-active {
+          color: $link-color;
+          border-left: 1px solid $link-color;
         }
+      }
     }
+  }
 }
