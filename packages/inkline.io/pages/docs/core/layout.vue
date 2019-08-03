@@ -10,11 +10,11 @@
 
         .layout-header,
         .layout-footer {
-            background: colors('neutral', 'gray-20');
+            background: colors('gray-20');
         }
 
         .layout-aside {
-            background: colors('neutral', 'gray-30');
+            background: colors('gray-30');
             // FIXME: import order forces to redefine width here.
             width: $layout-aside-width;
 
@@ -28,7 +28,7 @@
         }
 
         .layout-content {
-            background: colors('neutral', 'gray-10');
+            background: colors('gray-10');
             padding: 5rem 0;
         }
     }
