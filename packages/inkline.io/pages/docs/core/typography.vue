@@ -1,13 +1,5 @@
 <template lang="md" src="./typography.md" />
-<style lang="scss" scoped>
-    @import '~@inkline/inkline/css/config/index';
-
-    .headings-list {
-        > * {
-            margin-top: $spacer;
-            margin-bottom: $spacer;
-        }
-    }
+<style lang="scss" scoped>@import "typography";
 </style>
 <script>
 import View from '@components/View'

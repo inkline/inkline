@@ -1,19 +1,6 @@
 <template lang="md" src="./icon.md" />
 
-<style lang="scss">
-    @import '~@inkline/inkline/css/config/index';
-    @import '~@inkline/inkline/css/mixins/index';
-
-    .icon-box {
-        width: 64px;
-        height: 64px;
-        line-height: 64px;
-        text-align: center;
-        display: inline-block;
-        border: 1px solid colors('gray-40');
-        margin-right: ($spacer / 2);
-        margin-bottom: ($spacer / 2);
-    }
+<style lang="scss">@import "icon";
 </style>
 
 <script>

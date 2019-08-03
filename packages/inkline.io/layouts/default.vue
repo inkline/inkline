@@ -9,9 +9,7 @@
 </div>
 </template>
 
-<style lang="scss">
-@import '~@inkline/inkline/css/config/index';
-@import '~@inkline/inkline/css/mixins/index';
+<style lang="scss">@import "default";
 </style>
 
 <script>
