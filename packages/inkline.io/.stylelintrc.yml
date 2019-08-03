@@ -36,6 +36,10 @@ rules:
     # FIXME: To ensure a good coherence, this should be enabled
     no-descending-specificity: null
 
+    # https://stylelint.io/user-guide/rules/no-empty-source
+    # This rule will report all ".vue" files with no style, and we don't want that.
+    no-empty-source: null
+
     # https://stylelint.io/user-guide/rules/selector-class-pattern
     selector-class-pattern:
         - '^[-_a-z0-9]+(?:(-{1,2}|_{1,2})[a-z0-9]+)*$'
