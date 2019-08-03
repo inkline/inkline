@@ -5,7 +5,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-    background-color: colors('neutral', 'gray-10') !important;
+    background-color: colors('gray-10') !important;
 
     .token.property,
     .token.tag,
@@ -14,13 +14,13 @@ pre[class*="language-"] {
     .token.constant,
     .token.symbol,
     .token.deleted {
-        color: colors('brand', 'primary') !important;
+        color: colors('primary') !important;
     }
 
     .token.atrule,
     .token.attr-value,
     .token.keyword {
-        color: colors('brand', 'secondary') !important;
+        color: colors('secondary') !important;
     }
 
     &.line-numbers {
@@ -37,7 +37,7 @@ pre[class*="language-"] {
             line-height: inherit;
             width: 3rem;
             letter-spacing: -1px;
-            border-right: 1px solid colors('neutral', 'gray-30');
+            border-right: 1px solid colors('gray-30');
             padding: 0 1rem 0 0;
             text-align: right;
         }
@@ -55,13 +55,13 @@ pre[class*="language-"] {
 .alert {
     &.-code {
         &.-info code {
-            background-color: rgba(darken-lightness(colors('state', 'info'), 10%), 0.15);
-            color: darken-lightness(colors('state', 'info'), 35%);
+            background-color: rgba(darken-lightness(colors('info'), 10%), 0.15);
+            color: darken-lightness(colors('info'), 35%);
         }
 
         &.-danger code {
-            background-color: rgba(darken-lightness(colors('state', 'danger'), 10%), 0.15);
-            color: darken-lightness(colors('state', 'danger'), 35%);
+            background-color: rgba(darken-lightness(colors('danger'), 10%), 0.15);
+            color: darken-lightness(colors('danger'), 35%);
         }
     }
 }

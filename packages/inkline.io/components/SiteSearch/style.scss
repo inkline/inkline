@@ -17,9 +17,9 @@
             display: flex;
             justify-content: flex-end;
             padding: ($spacer / 2) $spacer;
-            border-top: 1px solid colors('neutral', 'gray-30');
+            border-top: 1px solid colors('gray-30');
             font-size: font-size('sm');
-            color: colors('neutral', 'gray-60');
+            color: colors('gray-60');
         }
 
         .category {
@@ -27,8 +27,8 @@
             font-weight: bold;
             font-size: font-size('sm');
             padding: ($spacer / 2) $spacer;
-            border-top: 1px solid colors('neutral', 'gray-30');
-            border-bottom: 1px solid colors('neutral', 'gray-30');
+            border-top: 1px solid colors('gray-30');
+            border-bottom: 1px solid colors('gray-30');
 
             &:first-child {
                 border-top: 0
@@ -57,7 +57,7 @@
             .description {
                 strong {
                     font-weight: 600;
-                    background: rgba(colors('brand', 'primary'), 0.15);
+                    background: rgba(colors('primary'), 0.15);
                 }
             }
         }

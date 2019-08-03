@@ -243,18 +243,18 @@
 
     #sponsors {
         padding: ($spacer * 4) 0 ($spacer * 6);
-        background-color: colors('neutral', 'gray-20');
+        background-color: colors('gray-20');
         text-align: center;
         z-index: 1;
     }
 
     #footer {
         background-image: url('../static/images/pages/index-footer.svg');
-        background-color: colors('neutral', 'gray-80');
+        background-color: colors('gray-80');
         background-repeat: no-repeat;
         background-size: 100% auto;
         background-position: center -1px;
-        color: colors('neutral', 'gray-20');
+        color: colors('gray-20');
         padding: ($spacer * 6) 0 ($spacer * 4);
         text-align: center;
         position: relative;
@@ -272,17 +272,17 @@
         }
 
         .footer-icon svg {
-            color: colors('neutral', 'gray-20');
+            color: colors('gray-20');
             transition: color 0.3s ease;
 
             &:hover {
-                color: colors('neutral', 'white');
+                color: colors('white');
             }
         }
 
         #footer-license {
             a {
-                color: colors('neutral', 'white');
+                color: colors('white');
             }
         }
 

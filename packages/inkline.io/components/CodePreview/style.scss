@@ -6,7 +6,7 @@
     position: relative;
     padding: $spacer;
     border-radius: border-radius('md');
-    border: 1px solid colors('neutral', 'gray-20');
+    border: 1px solid colors('gray-20');
 
     @include breakpoint-down(xs) {
         border-radius: 0;

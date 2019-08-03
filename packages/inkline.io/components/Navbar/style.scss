@@ -83,7 +83,7 @@
         @include breakpoint-down('md') {
             > .container > .row > .column {
                 > .brand {
-                    color: colors('monochrome', 'light');
+                    color: colors('light');
 
                     .logo {
                         &.-light {
@@ -100,7 +100,7 @@
         @include breakpoint-up(lg) {
             > .container > .row > .column {
                 > .brand {
-                    color: colors('monochrome', 'dark');
+                    color: colors('dark');
 
                     .logo {
                         &.-light {
@@ -119,7 +119,7 @@
             > .bars::before,
             > .bars,
             > .bars::after {
-                background-color: colors('monochrome', 'light');
+                background-color: colors('light');
             }
         }
     }
