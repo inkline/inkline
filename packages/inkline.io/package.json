@@ -63,6 +63,12 @@
     "markdown-it-prism": "^2.0.2",
     "nodemon": "^1.19.1",
     "nuxt": "^2.8.1",
+    "stylelint": "^10.1.0",
+    "stylelint-config-recommended": "^2.2.0",
+    "stylelint-config-recommended-scss": "^3.3.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-processor-html": "^1.0.0",
+    "stylelint-scss": "^3.9.3",
     "vue-jest": "^3.0.4"
   }
 }

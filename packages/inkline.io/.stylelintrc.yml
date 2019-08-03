@@ -1,0 +1,82 @@
+---
+processors:
+    - stylelint-processor-html
+plugins:
+    - stylelint-scss
+extends:
+    - stylelint-config-standard
+    - stylelint-config-recommended-scss
+ignoreFiles: []
+rules:
+    # https://stylelint.io/user-guide/rules/at-rule-empty-line-before
+    at-rule-empty-line-before:
+        - always
+        - ignore:
+              - after-comment
+              - first-nested
+              - blockless-after-blockless
+        - ignoreAtRules:
+              - else
+              - else if
+
+    # https://stylelint.io/user-guide/rules/block-closing-brace-newline-after
+    block-closing-brace-newline-after:
+        - always
+
+    # https://stylelint.io/user-guide/rules/color-hex-length
+    color-hex-length: long
+
+    # https://stylelint.io/user-guide/rules/font-family-name-quotes
+    font-family-name-quotes: always-unless-keyword
+
+    # https://stylelint.io/user-guide/rules/declaration-block-single-line-max-declarations
+    declaration-block-single-line-max-declarations: 1
+
+    # https://stylelint.io/user-guide/rules/no-descending-specificity
+    # FIXME: To ensure a good coherence, this should be enabled
+    no-descending-specificity: null
+
+    # https://stylelint.io/user-guide/rules/selector-class-pattern
+    selector-class-pattern:
+        - '^[-_a-z0-9]+(?:(-{1,2}|_{1,2})[a-z0-9]+)*$'
+        - resolveNestedSelectors: true
+
+    # https://stylelint.io/user-guide/rules/selector-id-pattern
+    selector-id-pattern: '^[a-z]+(?:-[a-z]*)*$'
+
+    # https://stylelint.io/user-guide/rules/selector-list-comma-newline-after
+    selector-list-comma-newline-after: always
+
+    # https://stylelint.io/user-guide/rules/selector-list-comma-newline-before
+    selector-list-comma-newline-before: never-multi-line
+
+    # https://stylelint.io/user-guide/rules/selector-list-comma-space-after
+    selector-list-comma-space-after: always-single-line
+
+    # https://stylelint.io/user-guide/rules/selector-list-comma-space-before
+    selector-list-comma-space-before: never
+
+    # https://stylelint.io/user-guide/rules/selector-type-no-unknown
+    selector-type-no-unknown:
+        - true
+
+    # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/double-slash-comment-empty-line-before/README.md
+    scss/double-slash-comment-empty-line-before:
+        - always
+        - ignore:
+              - between-comments
+              - stylelint-commands
+
+    # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/double-slash-comment-whitespace-inside/README.md
+    scss/double-slash-comment-whitespace-inside: always
+
+    # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/media-feature-value-dollar-variable/README.md
+    scss/media-feature-value-dollar-variable: always
+
+    # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/no-duplicate-dollar-variables/README.md
+    scss/no-duplicate-dollar-variables:
+        - true
+        - ignoreInsideAtRules:
+              - mixin
+              - if
+              - else
