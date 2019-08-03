@@ -144,7 +144,7 @@
 }
 
 #navbar-nav-home {
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 320px) { /* stylelint-disable-line scss/media-feature-value-dollar-variable */
     display: none;
   }
 }
