@@ -2,76 +2,76 @@
 @import '~@inkline/inkline/css/mixins/index';
 
 .site-search {
-    margin: 0 $spacer;
+  margin: 0 $spacer;
+
+  .menu {
+    width: 520px;
+    padding: 0 !important;
+
+    > .body {
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    > .footer {
+      display: flex;
+      justify-content: flex-end;
+      padding: ($spacer / 2) $spacer;
+      border-top: 1px solid colors('gray-30');
+      font-size: font-size('sm');
+      color: colors('gray-60');
+    }
+
+    .category {
+      position: sticky;
+      font-weight: bold;
+      font-size: font-size('sm');
+      padding: ($spacer / 2) $spacer;
+      border-top: 1px solid colors('gray-30');
+      border-bottom: 1px solid colors('gray-30');
+
+      &:first-child {
+        border-top: 0;
+      }
+    }
+
+    .item {
+      .title {
+        font-weight: bold;
+        display: inline-block;
+      }
+
+      .subtitle {
+        display: inline-block;
+      }
+
+      .description {
+        display: block;
+        font-size: font-size('sm');
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .title,
+      .subtitle,
+      .description {
+        strong {
+          font-weight: 600;
+          background: rgba(colors('primary'), 0.15);
+        }
+      }
+    }
+  }
+
+  @include breakpoint-down(sm) {
+    margin: $spacer 0 0;
 
     .menu {
-        width: 520px;
-        padding: 0 !important;
+      width: 14rem;
 
-        > .body {
-            max-height: 250px;
-            overflow-y: auto;;
-        }
-
-        > .footer {
-            display: flex;
-            justify-content: flex-end;
-            padding: ($spacer / 2) $spacer;
-            border-top: 1px solid colors('gray-30');
-            font-size: font-size('sm');
-            color: colors('gray-60');
-        }
-
-        .category {
-            position: sticky;
-            font-weight: bold;
-            font-size: font-size('sm');
-            padding: ($spacer / 2) $spacer;
-            border-top: 1px solid colors('gray-30');
-            border-bottom: 1px solid colors('gray-30');
-
-            &:first-child {
-                border-top: 0
-            }
-        }
-
-        .item {
-            .title {
-                font-weight: bold;
-                display: inline-block;
-            }
-
-            .subtitle {
-                display: inline-block;
-            }
-
-            .description {
-                display: block;
-                font-size: font-size('sm');
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            .title,
-            .subtitle,
-            .description {
-                strong {
-                    font-weight: 600;
-                    background: rgba(colors('primary'), 0.15);
-                }
-            }
-        }
+      .body {
+        max-width: 100%;
+      }
     }
-
-    @include breakpoint-down(sm) {
-        margin: $spacer 0 0;
-
-        .menu {
-            width: 14rem;
-
-            .body {
-                max-width: 100%;
-            }
-        }
-    }
+  }
 }
