@@ -64,7 +64,8 @@ module.exports = {
     ** Global CSS
     */
     css: [
-        '@/css/index.scss'
+        '@/css/index.scss',
+        '@fortawesome/fontawesome-svg-core/styles.css'
     ],
 
     /*
