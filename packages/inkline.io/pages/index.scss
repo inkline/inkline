@@ -10,13 +10,16 @@
   @include breakpoint(md) {
     background-size: (1560px * 0.9) (675px * 0.9);
   }
+
   @include breakpoint(lg) {
     background-size: (1560px * 0.85) (675px * 0.85);
   }
+
   @include breakpoint-down(sm) {
     background-image: url('~static/images/pages/index-header-small.jpg');
     background-size: 768px 460px;
   }
+
   @include breakpoint(xs) {
     background-size: (768px * 0.8) (460px* 0.8);
   }
@@ -27,18 +30,22 @@
     @include breakpoint-down(sm) {
       text-align: center;
     }
+
     @include breakpoint(xs) {
       padding-top: 22rem;
       padding-bottom: 2rem;
     }
+
     @include breakpoint(sm) {
       padding-top: 27rem;
       padding-bottom: 4rem;
     }
+
     @include breakpoint(md) {
       padding-top: 16rem;
       padding-bottom: 6rem;
     }
+
     @include breakpoint-up(lg) {
       padding-top: 12rem;
       padding-bottom: 10rem;
@@ -46,17 +53,21 @@
 
     .header-title {
       @include breakpoint(xs) {
-        font-size: $d5-font-size
+        font-size: $d5-font-size;
       }
+
       @include breakpoint(sm) {
         font-size: $d4-font-size;
       }
+
       @include breakpoint(md) {
         font-size: $d3-font-size;
       }
+
       @include breakpoint(lg) {
         font-size: $d2-font-size;
       }
+
       @include breakpoint(xl) {
         font-size: $d1-font-size;
       }
@@ -71,6 +82,7 @@
       @include breakpoint-up(lg) {
         font-size: font-size('lg');
       }
+
       @include breakpoint-down(md) {
         font-size: font-size('md');
       }
@@ -98,7 +110,7 @@
     .column {
       &:nth-child(4),
       &:nth-child(5) {
-        margin-top: 2rem
+        margin-top: 2rem;
       }
     }
   }
