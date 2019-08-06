@@ -2,16 +2,16 @@
 @import '~@inkline/inkline/css/mixins/index';
 
 .layout-fixed-full-height {
-  position: fixed;
-  overflow: auto;
-  top: 62px;
-  max-height: calc(100% - 62px);
-  max-height: calc(100vh - 62px);
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+    position: fixed;
+    overflow: auto;
+    top: 62px;
+    max-height: calc(100% - 62px);
+    max-height: calc(100vh - 62px);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
 }
