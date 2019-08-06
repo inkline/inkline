@@ -7,9 +7,7 @@
 }
 
 @each $variant-name, $variant in variants('dropdown') {
-    $_variant-color: map_get($variant, 'color');
-
     .dropdown > .menu.-#{$variant-name} > .divider {
-        @include dropdown-divider-color-variant($_variant-color);
+        @include dropdown-divider-color-variant($variant);
     }
 }

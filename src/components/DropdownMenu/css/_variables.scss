@@ -49,4 +49,4 @@ $dropdown-variants: ('monochrome-white') !default;
 $dropdown-variant-color-light: $variant-color-light !default;
 $dropdown-variant-color-dark: $variant-color-dark !default;
 
-$variants: map_merge($variants, ('dropdown': add-variant($dropdown-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('dropdown': add-variant($dropdown-variants, $color-groups)));

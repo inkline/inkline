@@ -10,9 +10,7 @@
 }
 
 @each $variant-name, $variant in variants('dropdown') {
-    $_variant-color: map_get($variant, 'color');
-
     .dropdown > .menu.-#{$variant-name} {
-        @include dropdown-menu-color-variant($_variant-color);
+        @include dropdown-menu-color-variant($variant);
     }
 }

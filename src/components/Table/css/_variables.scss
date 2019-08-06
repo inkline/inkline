@@ -16,4 +16,4 @@ $table-variants: ('brand', 'monochrome-white', 'neutral', 'state') !default;
 $table-variant-color-light: $variant-color-light !default;
 $table-variant-color-dark: $variant-color-dark !default;
 
-$variants: map_merge($variants, ('table': add-variant($table-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('table': add-variant($table-variants, $color-groups)));

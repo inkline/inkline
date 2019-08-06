@@ -29,6 +29,6 @@
         margin-bottom: 0;
     }
 
-    @include navbar-brand-color-variant(variant-element('navbar', 'light', 'color'));
+    @include navbar-brand-color-variant(variant-element('navbar', 'light'));
     @include navbar-size-variant('md');
 }

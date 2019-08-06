@@ -34,5 +34,5 @@
         font-weight: bold;
     }
 
-    @include select-option-color-variant(variant-element('select-dropdown', 'light', 'color'));
+    @include select-option-color-variant(variant-element('select', 'light'));
 }

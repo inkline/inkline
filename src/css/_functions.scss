@@ -20,12 +20,11 @@
 // Return the value of an element's variant
 // @param $element - The concerned element
 // @param $variant - The variant
-// @param $type    - The type of variant
 //
-// @example: variant-element('dropdown', 'light', 'color')
+// @example: variant-element('dropdown', 'light')
 //
-@function variant-element($element, $variant, $type: 'color') {
-    @return map_get(map_get(map_get($variants, $element), $variant), $type);
+@function variant-element($element, $variant) {
+    @return map_get(map_get($variants, $element), $variant);
 }
 
 // Replace `$search` with `$replace` in `$string`

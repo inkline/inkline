@@ -7,6 +7,6 @@
 
 @each $variant-name, $variant in variants('navbar') {
     .navbar.-#{$variant-name} > .container > .row > .column > .brand {
-        @include navbar-brand-color-variant(map_get($variant, 'color'));
+        @include navbar-brand-color-variant($variant);
     }
 }
