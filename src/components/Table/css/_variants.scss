@@ -2,12 +2,10 @@
 // Variants
 //
 @each $variant-name, $variant in variants('table') {
-    $_variant-color: map_get($variant, 'color');
-
-    $table-variant-text-color: variant-color-by-luminance($_variant-color, $variant-color-light, $variant-color-dark);
-    $table-variant-border-color: variant-color-by-luminance($_variant-color, lighten-lightness($_variant-color, 5%), darken-lightness($_variant-color, 5%));
-    $table-variant-hover-color: variant-color-by-luminance($_variant-color, lighten-lightness($_variant-color, 6%), darken-lightness($_variant-color, 6%));
-    $table-variant-stripe-color: variant-color-by-luminance($_variant-color, lighten-lightness($_variant-color, 3%), darken-lightness($_variant-color, 3%));
+    $table-variant-text-color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
+    $table-variant-border-color: variant-color-by-luminance($variant, lighten-lightness($variant, 5%), darken-lightness($variant, 5%));
+    $table-variant-hover-color: variant-color-by-luminance($variant, lighten-lightness($variant, 6%), darken-lightness($variant, 6%));
+    $table-variant-stripe-color: variant-color-by-luminance($variant, lighten-lightness($variant, 3%), darken-lightness($variant, 3%));
 
     .table.-#{$variant-name} {
         border-top-color: $table-variant-border-color;
@@ -15,7 +13,7 @@
 
         th,
         td {
-            background-color: $_variant-color;
+            background-color: $variant;
         }
 
         // Bordered table

@@ -1,21 +1,17 @@
 //
 // Add a new item theme to the themes collection
 //
-// @param --variant-group-names Specifies groups
-// @param --color-groups Various groups of variants associated to a variant type identifier
-@function add-variant($variant-group-names, $variant-typed-groups) {
+// @param $variant-group-names Specifies groups
+// @param $variant-groups Various groups of variants associated to a variant type identifier
+@function add-variant($variant-group-names, $variant-groups) {
     $item-variants: ();
 
-    // { 'color': { basic: {}, brand: {}, state: {}, .. }, 'gradient': { .. }}
-    @each $variant-type, $variant-group in $variant-typed-groups {
+    // @each (basic brand state ..)
+    @each $variant-group-type in $variant-group-names {
 
-        // (basic brand state ..)
-        @each $variant-group-type in $variant-group-names {
-
-            // { 'red': #ff0000, 'blue': #0000ff, .. }
-            @each $variant-name, $variant-color in map_get($variant-group, $variant-group-type) {
-                $item-variants: map_merge($item_variants, (#{$variant-name}:(#{$variant-type}: $variant-color))); /* stylelint-disable-line scss/no-duplicate-dollar-variables */
-            }
+        // @each key, value in map_get((basic: ( 'red': #ff0000, 'blue': #0000ff, .. )), basic)
+        @each $variant-name, $variant-color in map_get($variant-groups, $variant-group-type) {
+            $item-variants: map_merge($item_variants, (#{$variant-name}: $variant-color)); /* stylelint-disable-line scss/no-duplicate-dollar-variables */
         }
     }
 

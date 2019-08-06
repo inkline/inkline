@@ -31,12 +31,12 @@
  */
 @each $variant-name, $variant in variants('border') {
     ._border-color-#{$variant-name} {
-        border-color: map_get($variant, 'color') !important;
+        border-color: $variant !important;
     }
 
     @each $position in ('top', 'right', 'bottom', 'left') {
         ._border-#{$position}-color-#{$variant-name} {
-            border-#{$position}-color: map_get($variant, 'color') !important;
+            border-#{$position}-color: $variant !important;
         }
     }
 }

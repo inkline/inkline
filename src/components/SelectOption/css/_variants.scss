@@ -20,10 +20,8 @@
     }
 }
 
-@each $variant-name, $variant in variants('select-dropdown') {
-    $_variant-color: map_get($variant, 'color');
-
+@each $variant-name, $variant in variants('select') {
     .select > .menu.-#{$variant-name} > .option {
-        @include select-option-color-variant($_variant-color);
+        @include select-option-color-variant($variant);
     }
 }

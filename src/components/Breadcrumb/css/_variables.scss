@@ -22,4 +22,4 @@ $breadcrumb-variants: ('brand', 'monochrome') !default;
 $breadcrumb-variant-color-light: $variant-color-light !default;
 $breadcrumb-variant-color-dark: $variant-color-dark !default;
 
-$variants: map_merge($variants, ('breadcrumb': add-variant($breadcrumb-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('breadcrumb': add-variant($breadcrumb-variants, $color-groups)));

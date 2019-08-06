@@ -2,19 +2,17 @@
 // Alert variants
 //
 @each $variant-name, $variant in variants('alert') {
-    $_color-variant: map_get($variant, 'color');
-
     .alert.-#{$variant-name} {
-        border-color: rgba($_color-variant, 0.35);
-        background-color: rgba($_color-variant, 0.15);
-        color: darken-lightness($_color-variant, 15%);
+        border-color: rgba($variant, 0.35);
+        background-color: rgba($variant, 0.15);
+        color: darken-lightness($variant, 15%);
 
         a {
-            color: $_color-variant;
+            color: $variant;
         }
 
         > .icon {
-            border-color: rgba(variant-color-by-luminance($_color-variant, $alert-variant-color-light, $alert-variant-color-dark), 0.33);
+            border-color: rgba(variant-color-by-luminance($variant, $alert-variant-color-light, $alert-variant-color-dark), 0.33);
         }
     }
 }

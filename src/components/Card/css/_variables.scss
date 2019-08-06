@@ -20,4 +20,4 @@ $card-variants: ('basic', 'brand', 'monochrome-white', 'neutral', 'state') !defa
 $card-variant-color-light: $variant-color-light !default;
 $card-variant-color-dark: $variant-color-dark !default;
 
-$variants: map_merge($variants, ('card': add-variant($card-variants, ('color': $color-groups))));
+$variants: map_merge($variants, ('card': add-variant($card-variants, $color-groups)));

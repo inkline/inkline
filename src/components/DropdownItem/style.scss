@@ -45,6 +45,6 @@
         cursor: pointer;
     }
 
-    @include dropdown-item-color-variant(variant-element('dropdown', 'light', 'color'));
+    @include dropdown-item-color-variant(variant-element('dropdown', 'light'));
     @include dropdown-item-variant-size('md');
 }

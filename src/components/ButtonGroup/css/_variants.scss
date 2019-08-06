@@ -2,13 +2,11 @@
 // Button Group variants
 //
 @each $variant-name, $variant in variants('button') {
-    $_variant-color: map_get($variant, 'color');
-
     .button-group:not(.-vertical) > .button.-#{$variant-name}:not(:first-child) {
-        border-left-color: darken-lightness($_variant-color, $button-darken-percentage-hover);
+        border-left-color: darken-lightness($variant, $button-darken-percentage-hover);
     }
 
     .button-group.-vertical > .button.-#{$variant-name}:not(:first-child) {
-        border-top-color: darken-lightness($_variant-color, $button-darken-percentage-hover);
+        border-top-color: darken-lightness($variant, $button-darken-percentage-hover);
     }
 }

@@ -7,9 +7,7 @@
 }
 
 @each $variant-name, $variant in variants('progress-bar') {
-    $_variant-color: map_get($variant, 'color');
-
     .progress > .bar.-#{$variant-name} {
-        @include progress-bar-color-variant($_variant-color);
+        @include progress-bar-color-variant($variant);
     }
 }

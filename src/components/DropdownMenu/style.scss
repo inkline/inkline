@@ -21,6 +21,6 @@
     border-style: solid;
     min-width: $dropdown-min-width;
 
-    @include dropdown-menu-color-variant(variant-element('dropdown', 'light', 'color'));
+    @include dropdown-menu-color-variant(variant-element('dropdown', 'light'));
     @include dropdown-menu-size-variant('md');
 }

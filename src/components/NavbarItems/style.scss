@@ -16,13 +16,13 @@
 
         > .nav > .item {
 
-            @include navbar-item-color-variant(variant-element('navbar', 'light', 'color'));
+            @include navbar-item-color-variant(variant-element('navbar', 'light'));
         }
     }
 
     &.-collapsed > .container > .row > .column > .items {
         border-radius: border-radius('md');
 
-        @include navbar-item-collapsed-color-variant(variant-element('navbar', 'light', 'color'));
+        @include navbar-item-collapsed-color-variant(variant-element('navbar', 'light'));
     }
 }

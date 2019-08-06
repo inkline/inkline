@@ -22,18 +22,16 @@
 }
 
 @each $variant-name, $variant in variants('navbar') {
-    $_variant_color: map_get($variant, 'color');
-
     .navbar.-#{$variant-name} {
         > .container > .row > .column > .items {
             > .nav > .item {
-                @include navbar-item-color-variant($_variant_color);
+                @include navbar-item-color-variant($variant);
             }
         }
 
         &.-collapsed {
             > .container > .row > .column > .items {
-                @include navbar-item-collapsed-color-variant($_variant_color);
+                @include navbar-item-collapsed-color-variant($variant);
             }
         }
     }
