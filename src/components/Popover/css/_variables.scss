@@ -18,12 +18,6 @@ $popover-padding: size-map($popover-padding-base, $sizes, $size-multipliers) !de
 //
 // Variants
 //
-$popover-variants: ('monochrome') !default;
-$popover-color-groups: (
-    'monochrome': (
-        'light': $color-white,
-        'dark': $color-gray-80
-    )
-) !default;
+$popover-variants: ('monochrome-white') !default;
 
-$variants: map_merge($variants, ('popover': add-variant($popover-variants, ('color': $popover-color-groups))));
+$variants: map_merge($variants, ('popover': add-variant($popover-variants, ('color': $color-groups))));
