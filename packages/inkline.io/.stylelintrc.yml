@@ -57,7 +57,7 @@ rules:
     selector-list-comma-space-before: never
 
     # https://stylelint.io/user-guide/rules/selector-max-id
-    selector-max-id: 0
+    selector-max-id: 2
 
     # https://stylelint.io/user-guide/rules/selector-type-no-unknown
     selector-type-no-unknown:
