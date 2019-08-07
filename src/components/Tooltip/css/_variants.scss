@@ -1,8 +1,6 @@
 //
 // Tooltip variants
 //
-@debug "#{variants('tooltip')}";
-
 @each $variant-name, $variant in variants('tooltip') {
     .tooltip.-#{$variant-name} {
         color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
