@@ -87,6 +87,7 @@ module.exports = {
         ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
         '@nuxtjs/webpackmonitor',
         '@nuxtjs/stylelint-module',
+        '@nuxtjs/eslint-module',
     ],
 
     /**
@@ -120,19 +121,6 @@ module.exports = {
         ** You can extend webpack config here
         */
         extend(config, ctx) {
-            if (ctx.isDev && ctx.isClient) {
-                // Run ESLint on save
-                config.module.rules.push({
-                    enforce: 'pre',
-                    test: /\.(js|vue)$/,
-                    loader: 'eslint-loader',
-                    exclude: /node_modules/,
-                    options: {
-                        configFile: path.join(__dirname, '.eslintrc.js')
-                    }
-                });
-            }
-
             // Add markdown templates support
             config.module.rules.push({
                 test: /\.md$/i,
