@@ -85,7 +85,8 @@ module.exports = {
         '@nuxtjs/sitemap',
         '@nuxtjs/robots',
         ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
-        '@nuxtjs/webpackmonitor'
+        '@nuxtjs/webpackmonitor',
+        '@nuxtjs/stylelint-module',
     ],
 
     /**
@@ -166,14 +167,6 @@ module.exports = {
             config.resolve.alias['@inkline/inkline'] = '@inkline/inkline/src';
             config.resolve.alias['@inkline/validation'] = '@inkline/validation/src';
             // }
-
-            // Stylelint
-            config.plugins.push(
-                new StyleLintPlugin({
-                    files: ['**/*.vue', '**/*.scss'],
-                    syntax: 'scss'
-                })
-            )
         },
         babel: {
             extends: path.join(__dirname, 'babel.config.js')
