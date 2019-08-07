@@ -29,18 +29,18 @@
         .dropdown,
         .tooltip-wrapper,
         .popover-wrapper {
-      margin-bottom: $spacer;
-    }
+            margin-bottom: $spacer;
+        }
 
-    .navbar,
-    .dropdown,
-    .tooltip-wrapper,
-    .popover-wrapper,
-    .button-group,
-    .form-input-group {
-      .button {
-        margin-bottom: 0;
-      }
+        .navbar,
+        .dropdown,
+        .tooltip-wrapper,
+        .popover-wrapper,
+        .button-group,
+        .form-input-group {
+            .button {
+                margin-bottom: 0;
+            }
+        }
     }
-  }
 }
