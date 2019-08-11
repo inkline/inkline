@@ -9,7 +9,7 @@ export default {
     extends: View,
     head: head({
         title: 'Customization',
-        description: 'Make Inkline your own using hundreds of configurable Stylus variables.'
+        description: 'Make Inkline your own using hundreds of configurable Sass variables.'
     }),
 };
 </script>

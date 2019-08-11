@@ -2,7 +2,7 @@
 ## Indicate the current page’s location depth using a navigation list that automatically adds separators using CSS.{.lead}
 
 ### Examples
-Separators are automatically added in CSS through `::before` and `content`. You can change the separator by changing the `--breadcrumb-separator` stylus variable.
+Separators are automatically added in CSS through `::before` and `content`. You can change the separator by changing the `$breadcrumb-separator` Sass variable.
 
 <i-code-preview title="Breadcrumbs Example" link="https://github.com/inkline/inkline/tree/master/src/components/Breadcrumb">
 

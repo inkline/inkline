@@ -4,7 +4,7 @@
 ### Basic Table
 Using the most basic table markup, here’s how tables look in Inkline. All table styles are inherited in Inkline, meaning any nested tables will be styled in the same manner as the parent.
 
-<i-code-preview title="Basic Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.styl">
+<i-code-preview title="Basic Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.scss">
 
 <i-table>
   <thead>
@@ -78,7 +78,7 @@ Using the most basic table markup, here’s how tables look in Inkline. All tabl
 ### Bordered Table
 Add the `bordered` property for borders on all sides of the table and table cells.
 
-<i-code-preview title="Bordered Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.styl">
+<i-code-preview title="Bordered Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.scss">
 
 <i-table bordered>
   <thead>
@@ -152,7 +152,7 @@ Add the `bordered` property for borders on all sides of the table and table cell
 ### Striped Table
 Add the `striped` property to add zebra-striping to any table row within the table body.
 
-<i-code-preview title="Striped Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.styl">
+<i-code-preview title="Striped Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.scss">
 
 <i-table striped>
   <thead>
@@ -226,7 +226,7 @@ Add the `striped` property to add zebra-striping to any table row within the tab
 ### Hoverable Table
 Add the `hover` property to enable a hover state on table rows within a `<tbody>`.
 
-<i-code-preview title="Hoverable Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.styl">
+<i-code-preview title="Hoverable Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.scss">
 
 <i-table hover>
   <thead>
@@ -302,7 +302,7 @@ Enable responsiveness by adding the `responsive` property. Responsive tables scr
 
 You can target specific responsive breakpoints by setting a value to the `responsive` property: `responsive="<breakpoint>"`, where breakpoint is one of `xs`, `sm`, `md`, `lg` or `xl`.
 
-<i-code-preview title="Responsive Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.styl">
+<i-code-preview title="Responsive Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.scss">
 
 <i-table responsive>
   <thead>
@@ -400,7 +400,7 @@ You can target specific responsive breakpoints by setting a value to the `respon
 ### Variants
 Tables can be themed using the `variant` property. You can use colors such as `light`, `dark`, `primary`, `secondary`, `info`, `success`, `warning`, and `danger`. You can set a variant for the table as a whole or individual table elements. By default, tables have the `light` variant. You can use a variation of any of the above classes to create the table design you need.
 
-<i-code-preview title="Table Variants" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.styl">
+<i-code-preview title="Table Variants" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.scss">
 
 <i-table variant="light" bordered striped hover class="_margin-bottom-1">
   <thead>

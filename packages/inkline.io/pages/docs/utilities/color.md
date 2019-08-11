@@ -4,7 +4,7 @@
 ### Brand
 Attract your visitor's attention using brand colors. The main colors of Inkline used for branding are:
 
-<i-code-preview title="Brand Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
+<i-code-preview title="Brand Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.scss" class="_padding-bottom-0">
 
 <i-row>
     <i-column xs="12" sm="6" md="3">
@@ -35,7 +35,7 @@ Attract your visitor's attention using brand colors. The main colors of Inkline 
 
 You can also add brand text colors using text-specific helper classes:
 
-<i-code-preview title="Brand Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
+<i-code-preview title="Brand Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.scss" class="_padding-bottom-0">
 
 <ul class="-inline">
     <li class="_text-primary">Primary</li>
@@ -59,7 +59,7 @@ You can also add brand text colors using text-specific helper classes:
 ### State
 When displaying state information such as info, success, warning, or error messages, you will need to color your message accordingly. The state colors are:
 
-<i-code-preview title="State Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
+<i-code-preview title="State Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.scss" class="_padding-bottom-0">
 
 <i-row>
     <i-column xs="12" sm="6" md="3">
@@ -90,7 +90,7 @@ When displaying state information such as info, success, warning, or error messa
 
 You can also add state text colors using text-specific helper classes:
 
-<i-code-preview title="State Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
+<i-code-preview title="State Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.scss" class="_padding-bottom-0">
 
 <ul class="-inline">
     <li class="_text-info">Info</li>
@@ -117,7 +117,7 @@ available when using the default variant.
 
 You can use helper classes to add state color backgrounds:
 
-<i-code-preview title="Basic Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
+<i-code-preview title="Basic Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.scss" class="_padding-bottom-0">
 
 <i-row>
     <i-column xs="12" sm="6" md="3">
@@ -164,7 +164,7 @@ You can use helper classes to add state color backgrounds:
 
 You can also add state text colors using text-specific helper classes:
 
-<i-code-preview title="Basic Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
+<i-code-preview title="Basic Color Text" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.scss" class="_padding-bottom-0">
 
 <ul class="-inline">
     <li class="_text-red">Red</li>
@@ -197,7 +197,7 @@ You can also add state text colors using text-specific helper classes:
 ### Neutral
 Neutral colors are used for text, background and border colors. You can use different neutral colors to display your content:
 
-<i-code-preview title="Neutral Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.styl" class="_padding-bottom-0">
+<i-code-preview title="Neutral Color Background" link="https://github.com/inkline/inkline/blob/master/src/css/config/_colors.scss" class="_padding-bottom-0">
 
 <i-row>
     <i-column xs="12" sm="6" md="3">
