@@ -47,7 +47,7 @@
                         <div class="feature-box">
                             <img src="/images/pages/icon-customization.svg" alt="Inkline - Vue.js UI/UX Framework - Customization" />
                             <h3>Customizable</h3>
-                            <p>Disover hundreds of easily accessible Vue.js and Stylus customization options.</p>
+                            <p>Disover hundreds of easily accessible Vue.js and Sass customization options.</p>
                         </div>
                     </i-column>
                 </i-row>

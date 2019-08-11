@@ -42,7 +42,7 @@ Tree shaking means eliminating code that isn’t actually being used from the fi
 
 ~~~js
 import Vue from 'vue';
-import '@inkline/inkline/src/index.styl';
+import '@inkline/inkline/src/index.scss';
 import { Inkline, IButton, IForm, IInput } from '@inkline/inkline/src/index';
 
 Vue.use(Inkline, {
@@ -54,7 +54,7 @@ Vue.use(Inkline, {
 });
 ~~~
 
-<i-alert variant="info" class="-code"><template slot="icon"><i class="inkline-icon -info h3"></i></template>To use stylus and tree shaking, you will need to add Stylus as a dependency using `npm install -D stylus stylus-loader`.</i-alert>
+<i-alert variant="info" class="-code"><template slot="icon"><i class="inkline-icon -info h3"></i></template>To use Sass and tree shaking, you will need to add Sass as a dependency using `npm install -D node-sass sass-loader`.</i-alert>
 
 ### Nuxt.js Module
 You can easily install Inkline as a <a href="https://nuxtjs.org" rel="nofollow" target="_blank">Nuxt.js</a> module.
@@ -80,12 +80,12 @@ module.exports = {
     modules: [ '@inkline/inkline/nuxt' ],
     inkline: {
         treeShaking: true,
-        stylus: true
+        scss: true
     }
 }
 ~~~
 
-<i-alert variant="info" class="-code"><template slot="icon"><i class="inkline-icon -info h3"></i></template>To use the `stylus` and `treeShaking` options, you will need to add Stylus as a dependency using `npm install -D stylus stylus-loader`.</i-alert>
+<i-alert variant="info" class="-code"><template slot="icon"><i class="inkline-icon -info h3"></i></template>To use the `scss` and `treeShaking` options, you will need to add Sass as a dependency using `npm install -D node-sass sass-loader`.</i-alert>
 
 ##### Tree Shaking
 You can explicitly import only specific components from Inkline by setting the `components` option.
@@ -95,7 +95,7 @@ module.exports = {
     modules: [ '@inkline/inkline/nuxt' ],
     inkline: {
         treeShaking: true,
-        stylus: true,
+        scss: true,
         components: [ 'IButton', 'IForm', 'IInput' ]
     }
 }

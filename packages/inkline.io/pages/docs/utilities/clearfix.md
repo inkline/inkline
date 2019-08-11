@@ -25,12 +25,13 @@ In the following example, without adding the clearfix helper, the wrapping div w
 </template>
 </i-code-preview>
 
-### Stylus Mixin
-The clearfix utility is also available as a Stylus Mixin.
+### Sass Mixin
+The clearfix utility is also available as a Sass Mixin.
 
-~~~stylus
+~~~scss
 @require '~@inkline/inkline/src/css/mixins/_clearfix'
 
-.element
-    -clearfix()
+.element {
+    @include clearfix;
+}
 ~~~

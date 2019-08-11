@@ -22,22 +22,22 @@ Where *sides* is one of:
 
 Where *size* is one of:
 - `0` for eliminating `margin` or `padding`
-- `1` for classes setting `margin` or `padding` to `--spacer * 1`
-- `2` for classes setting `margin` or `padding` to `--spacer * 2`
-- `3` for classes setting `margin` or `padding` to `--spacer * 3`
-- `4` for classes setting `margin` or `padding` to `--spacer * 4`
-- `5` for classes setting `margin` or `padding` to `--spacer * 5`
-- `6` for classes setting `margin` or `padding` to `--spacer * 6`
-- `7` for classes setting `margin` or `padding` to `--spacer * 7`
-- `8` for classes setting `margin` or `padding` to `--spacer * 8`
-- `1-2` for classes setting `margin` or `padding` to `--spacer * 1/2`
-- `1-3` for classes setting `margin` or `padding` to `--spacer * 1/3`
-- `2-3` for classes setting `margin` or `padding` to `--spacer * 2/3`
-- `1-4` for classes setting `margin` or `padding` to `--spacer * 1/4`
-- `3-4` for classes setting `margin` or `padding` to `--spacer * 3/4`
+- `1` for classes setting `margin` or `padding` to `$spacer * 1`
+- `2` for classes setting `margin` or `padding` to `$spacer * 2`
+- `3` for classes setting `margin` or `padding` to `$spacer * 3`
+- `4` for classes setting `margin` or `padding` to `$spacer * 4`
+- `5` for classes setting `margin` or `padding` to `$spacer * 5`
+- `6` for classes setting `margin` or `padding` to `$spacer * 6`
+- `7` for classes setting `margin` or `padding` to `$spacer * 7`
+- `8` for classes setting `margin` or `padding` to `$spacer * 8`
+- `1-2` for classes setting `margin` or `padding` to `$spacer * 1/2`
+- `1-3` for classes setting `margin` or `padding` to `$spacer * 1/3`
+- `2-3` for classes setting `margin` or `padding` to `$spacer * 2/3`
+- `1-4` for classes setting `margin` or `padding` to `$spacer * 1/4`
+- `3-4` for classes setting `margin` or `padding` to `$spacer * 3/4`
 - `auto` for classes setting `margin` or `padding` to `auto`
 
-You can add more sizes by adding entries to the `--spacers` stylus variable.
+You can add more sizes by adding entries to the `$spacers` Sass variable.
 
 
 ### Examples
