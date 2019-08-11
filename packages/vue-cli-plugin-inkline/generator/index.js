@@ -6,8 +6,8 @@ module.exports = (api, options, rootOptions) => {
 	});
 
 	// Add imports
-	api.injectImports(api.entryFile, options.stylus ?
-		`import '@inkline/inkline/src/index.styl'` :
+	api.injectImports(api.entryFile, options.scss ?
+		`import '@inkline/inkline/src/index.scss'` :
 		`import '@inkline/inkline/dist/inkline.css'`);
 	api.injectImports(api.entryFile, options.treeShaking ?
 		`import Inkline from '@inkline/inkline/src/index'`:
