@@ -1,7 +1,6 @@
 <template lang="md" src="./icon.md" />
 
-<style lang="scss">@import "icon";
-</style>
+<style lang="scss" src="./icon.scss"></style>
 
 <script>
 import View from '@components/View'

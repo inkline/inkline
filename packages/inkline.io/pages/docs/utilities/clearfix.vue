@@ -1,6 +1,5 @@
 <template lang="md" src="./clearfix.md" />
-<style lang="scss" scoped>@import "clearfix";
-</style>
+<style lang="scss" scoped src="./clearfix.scss"></style>
 <script>
 import View from '@components/View'
 import { head } from '@helpers/head'

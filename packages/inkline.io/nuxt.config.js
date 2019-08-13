@@ -1,6 +1,5 @@
 const pkg = require('./package');
 const path = require('path');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
     mode: 'universal',
@@ -86,8 +85,8 @@ module.exports = {
         '@nuxtjs/robots',
         ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
         '@nuxtjs/webpackmonitor',
-        '@nuxtjs/stylelint-module',
-        '@nuxtjs/eslint-module',
+        // '@nuxtjs/stylelint-module',
+        // '@nuxtjs/eslint-module',
     ],
 
     /**

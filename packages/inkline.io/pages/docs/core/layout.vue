@@ -1,7 +1,6 @@
 <template lang="md" src="./layout.md"></template>
 
-<style lang="scss">@import "layout";
-</style>
+<style lang="scss" src="./layout.scss"></style>
 
 <script>
 import View from '@components/View'

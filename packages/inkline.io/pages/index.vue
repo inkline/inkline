@@ -116,8 +116,7 @@
     </div>
 </template>
 
-<style lang="scss">@import "index";
-</style>
+<style lang="scss" src="./index.scss"></style>
 
 <script>
 import { head } from '@helpers/head'
