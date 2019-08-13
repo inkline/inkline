@@ -1,6 +1,6 @@
 {
   "name": "@inkline/inkline",
-  "version": "1.16.0",
+  "version": "1.16.1",
   "description": "Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
@@ -30,8 +30,7 @@
     "vue.config.js"
   ],
   "dependencies": {
-    "popper.js": "^1.15.0",
-    "validator": "^11.0.0"
+    "popper.js": "^1.15.0"
   },
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",

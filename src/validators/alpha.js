@@ -1,6 +1,7 @@
-import isAlpha from 'validator/lib/isAlpha';
+import { alpha as validators } from './helpers';
 
 export function alpha(value, options = {}) {
+    const locale = options.locale || 'en-US';
     const process = (v) => {
         v = String(v);
 
@@ -11,8 +12,8 @@ export function alpha(value, options = {}) {
     };
 
     if (value.constructor === Array) {
-        return value.every((v) => isAlpha(process(v), options.locale));
+        return value.every((v) => validators[locale].test(process(v)));
     }
 
-    return isAlpha(process(value), options.locale);
+    return validators[locale].test(process(value));
 }

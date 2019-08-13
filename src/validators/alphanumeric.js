@@ -1,6 +1,7 @@
-import isAlphanumeric from 'validator/lib/isAlphanumeric';
+import { alphanumeric as validators } from './helpers';
 
 export function alphanumeric(value, options = {}) {
+    const locale = options.locale || 'en-US';
     const process = (v) => {
         v = String(v);
 
@@ -11,8 +12,8 @@ export function alphanumeric(value, options = {}) {
     };
 
     if (value.constructor === Array) {
-        return value.every((v) => isAlphanumeric(process(v), options.locale));
+        return value.every((v) => validators[locale].test(process(v)));
     }
 
-    return isAlphanumeric(process(value), options.locale);
+    return validators[locale].test(process(value));
 }
