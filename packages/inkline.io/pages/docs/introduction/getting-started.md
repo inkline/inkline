@@ -33,7 +33,7 @@ Be sure to have your pages set up with the latest design and development standar
         <i-column>
           <h1>Welcome to Inkline!</h1>
           <p>This is your starter page. Make sure to read the documentation to learn about what Inkline has to offer.</p>
-          <i-button href="http://inkline.io/docs/introduction/getting-started">Read Documentation</i-button>
+          <i-button href="https://inkline.io/docs/introduction/getting-started">Read Documentation</i-button>
         </i-column>
       </i-row>
     </i-container>
