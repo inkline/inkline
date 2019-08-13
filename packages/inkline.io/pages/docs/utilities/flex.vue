@@ -1,6 +1,5 @@
 <template lang="md" src="./flex.md" />
-<style lang="scss" scoped>@import "flex";
-</style>
+<style lang="scss" scoped src="./flex.scss"></style>
 <script>
 import View from '@components/View'
 import { head } from '@helpers/head'

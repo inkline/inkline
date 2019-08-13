@@ -1,7 +1,6 @@
 <template lang="md" src="./header.md" />
 
-<style lang="scss">@import "header";
-</style>
+<style lang="scss" src="./header.scss"></style>
 
 <script>
 import View from '@components/View'
