@@ -25,11 +25,11 @@ Vue.use(Inkline);
 
 ### Variables
 
-Create a new Sass file called `variables.scss`, where we'll define the values you want to use with Inkline. Let's say we want to override the primary and secondary colors for all components.
+Create a new Sass file called `_variables.scss`, where we'll define the values you want to use with Inkline. Let's say we want to override the primary and secondary colors for all components.
 
 ~~~scss 
-$color-primary := #d84550
-$color-secondary := #f49b4e
+$color-primary: #D84550;
+$color-secondary: #F49B4E;
 ~~~
 
 ### Configuration
