@@ -35,7 +35,7 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 
 - `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
 - `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Inkline.
-- `css` - Issues due to our compiled CSS or source Stylus files.
+- `css` - Issues due to our compiled CSS or source Sass files.
 - `js` - Issues stemming from our compiled or source JavaScript files.
 - `docs` - Issues for improving or updating our documentation.
 - `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v1.0.0` to `v1.1.0`).
@@ -201,7 +201,7 @@ license your work under the terms of the [MIT License](LICENSE) (for code change
 - Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
 - Use [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) attributes in documentation examples for better accessibility.
 
-### Stylus
+### Sass
 
 Adhere to the linting guidelines.
 
