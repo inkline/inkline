@@ -160,7 +160,11 @@
     &.-prepended,
     &.-appended {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+
+        .form-input {
+            flex-shrink: 1;
+        }
     }
 
     &.-prepended .form-input {
@@ -178,10 +182,10 @@
         }
     }
 
-    > .form-input-prepend,
-    > .form-input-append {
-        overflow: hidden;
-    }
+    //> .form-input-prepend,
+    //> .form-input-append {
+    //    overflow: hidden;
+    //}
 
     > .form-input-prepend,
     > .form-input-prepend > * {
