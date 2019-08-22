@@ -49,7 +49,3 @@ Be sure to have your pages set up with the latest design and development standar
 </body>
 </html>
 ~~~
-
-### Demo/Playground
-
-* **JSFiddle:** https://jsfiddle.net/4fvopawj
