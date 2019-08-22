@@ -91,6 +91,8 @@ If you're not using using package managers and build systems and you want to add
 <script src="https://cdn.jsdelivr.net/npm/@inkline/inkline/dist/inkline.js"></script>
 ~~~
 
+You can also try it out live on <a href="https://jsfiddle.net/alexgrozav/0dknfs6L/" rel="nofollow">JSFiddle</a>.
+
 ## Bugs and feature requests
 Have a bug or a feature request? Please first search for existing and closed issues. 
 If your problem or idea is not addressed yet, [please open a new issue](https://github.com/inkline/inkline/issues/new).
