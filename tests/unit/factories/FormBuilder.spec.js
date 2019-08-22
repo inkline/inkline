@@ -81,28 +81,28 @@ describe('Factories', () => {
             });
 
             it('should include schema', () => {
-               const formControl = formBuilder.formControl([], { value: 'abc' });
+                const formControl = formBuilder.formControl([], { value: 'abc' });
 
                 expect(formControl).toHaveProperty('value');
                 expect(formControl.value).toEqual('abc');
             });
 
             it('should include default form state', () => {
-               const formControl = formBuilder.formControl([], {});
+                const formControl = formBuilder.formControl([], {});
 
-               Object.keys(formBuilder.defaultFormState).forEach((property) => {
-                   expect(formControl).toHaveProperty(property);
-                   expect(formControl[property]).toEqual(formBuilder.defaultFormState[property]);
-               });
+                Object.keys(formBuilder.defaultFormState).forEach((property) => {
+                    expect(formControl).toHaveProperty(property);
+                    expect(formControl[property]).toEqual(formBuilder.defaultFormState[property]);
+                });
             });
 
             it('should include default form control state', () => {
-               const formControl = formBuilder.formControl([], {});
+                const formControl = formBuilder.formControl([], {});
 
-               Object.keys(formBuilder.defaultFormControlState).forEach((property) => {
-                   expect(formControl).toHaveProperty(property);
-                   expect(formControl[property]).toEqual(formBuilder.defaultFormControlState[property]);
-               });
+                Object.keys(formBuilder.defaultFormControlState).forEach((property) => {
+                    expect(formControl).toHaveProperty(property);
+                    expect(formControl[property]).toEqual(formBuilder.defaultFormControlState[property]);
+                });
             });
 
             it('should have id', () => {
