@@ -25,6 +25,7 @@ export default {
             smInputValue: '',
             mdInputValue: '',
             lgInputValue: '',
+            passwordInputValue: '',
             labelDefaultInputValue: '',
             labelLeftInputValue: '',
             labelRightInputValue: ''

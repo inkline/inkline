@@ -243,7 +243,37 @@ export default {
 </template>
 </i-code-preview>
 
+### Types
+Behind the scenes, Inkline uses a native HTML `<input>` element, meaning that you can use the `type` property to define the type of the input, such as `text`, `password`, `date`, `email`, and so on.
 
+
+<i-code-preview title="Input Type" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+
+<div>
+    <i-input type="password" v-model="passwordInputValue" placeholder="Enter your password.." />
+</div>
+
+<template slot="html">
+
+~~~html
+<i-input type="password" v-model="value" placeholder="Enter your password.." />
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+  data () {
+    return {
+      value: ''
+    };
+  }
+}
+~~~
+
+</template>
+</i-code-preview>
 
 ### API
 
@@ -301,6 +331,13 @@ export default {
                     <td><code>String</code></td>
                     <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
                     <td><code>md</code></td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>Sets the type of the input form component.</td>
+                    <td><code>String</code></td>
+                    <td><code>text</code>, <code>password</code></td>
+                    <td><code>text</code></td>
                 </tr>
                 <tr>
                     <td>value</td>
