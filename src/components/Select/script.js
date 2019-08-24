@@ -74,6 +74,7 @@ export default {
     },
     watch: {
         model(value) {
+            this.initElements(); // Reinitialize options list to handle dynamic select options
             this.setLabelModel(value);
         }
     },
@@ -81,7 +82,7 @@ export default {
         setLabelModel(value) {
             const option = this.options.find((o) => o.value === value);
 
-            this.labelModel = option.label || option.value;
+            this.labelModel = option ? option.label || option.value : value;
         },
         focusInputRef() {
             this.isMobile ? this.$refs.select.focus() : this.$refs.input.focusInputRef();
@@ -95,7 +96,7 @@ export default {
             }
         },
         initElements() {
-            this.options = querySelectorAll(this.$children[0].$children[1].$children, 'ISelectOption');
+            this.options = querySelectorAll(this.$children, 'ISelectOption');
         }
     },
     created() {
