@@ -100,6 +100,12 @@ describe('Components', () => {
                     wrapper.vm.setLabelModel('value');
                     expect(wrapper.vm.labelModel).toEqual('label');
                 });
+
+                it('should set label model to value if option not available', () => {
+                    expect(wrapper.vm.labelModel).toEqual('');
+                    wrapper.vm.setLabelModel('label');
+                    expect(wrapper.vm.labelModel).toEqual('label');
+                });
             });
 
             describe('focusInputRef()', () => {
@@ -208,14 +214,16 @@ describe('Components', () => {
 
         describe('watch', () => {
             describe('model()', () => {
+                it('should call initElements', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'initElements');
+
+                    wrapper.setProps({ value: 'label' });
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
                 it('should call setLabelModel with changed value', () => {
                     const spy = jest.spyOn(wrapper.vm, 'setLabelModel');
-
-                    wrapper.setData({
-                        options: [
-                            { value: 'label' }
-                        ]
-                    });
 
                     expect(wrapper.vm.labelModel).toEqual('');
                     wrapper.setProps({ value: 'label' });
