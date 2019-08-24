@@ -1,0 +1,25 @@
+//
+// Loading spinner sizes
+//
+@each $size in $sizes {
+    $_loading_spinner_size: map_get($loading-spinner-size, $size);
+    $_loading_spinner_item_size: map_get($loading-spinner-item-size, $size);
+
+    .loading-spinner.-#{$size} {
+        width: $_loading_spinner_size;
+        height: $_loading_spinner_size;
+
+        > .loading-spinner-item {
+            width: $_loading_spinner_item_size;
+            height: $_loading_spinner_item_size;
+
+            @for $i from 1 through $loading-spinner-item-count {
+                $rotation: ($i - 1) * (360 / $loading-spinner-item-count);
+
+                &:nth-of-type(#{$i}) {
+                    transform: rotate($rotation * 1deg) translate($_loading_spinner_size / 2) rotate($rotation * -1deg);
+                }
+            }
+        }
+    }
+}
