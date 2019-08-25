@@ -1,0 +1,28 @@
+//
+// Returns the value of a sub-map
+//
+// @param $variable - The map
+// @param $key      - Map key
+// @param $subkey   - Sub-map key
+//
+@function submap_get($variable, $key, $subkey) {
+    $group: map_get($variable, $key);
+    $element: map_get($group, $subkey);
+
+    @if ($element) {
+        @return $element;
+    }
+
+    @error "Element '#{$subkey}' not found in submap '#{$key}' group. Did you use quotes ?";
+}
+
+//
+// Return the value of an element's variant
+// @param $element - The concerned element
+// @param $variant - The variant
+//
+// @example: variant-element('dropdown', 'light')
+//
+@function variant-element($element, $variant) {
+    @return map_get(map_get($variants, $element), $variant);
+}
