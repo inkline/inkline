@@ -24,6 +24,7 @@ import ILayoutFooter from '@inkline/inkline/src/components/LayoutFooter';
 import ILayoutHeader from '@inkline/inkline/src/components/LayoutHeader';
 import IListGroup from '@inkline/inkline/src/components/ListGroup';
 import IListGroupItem from '@inkline/inkline/src/components/ListGroupItem';
+import ILoader from '@inkline/inkline/src/components/Loader';
 import IMedia from '@inkline/inkline/src/components/Media';
 import IModal from '@inkline/inkline/src/components/Modal';
 import INav from '@inkline/inkline/src/components/Nav';
@@ -81,6 +82,7 @@ const components = [
     ILayoutHeader,
     IListGroup,
     IListGroupItem,
+    ILoader,
     IMedia,
     IModal,
     INav,
@@ -151,6 +153,7 @@ export {
     ILayoutHeader,
     IListGroup,
     IListGroupItem,
+    ILoader,
     IMedia,
     IModal,
     INav,
