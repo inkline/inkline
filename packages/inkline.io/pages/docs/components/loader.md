@@ -75,9 +75,27 @@ You can set the loader size to fit the container that it is in by using the `aut
 </i-code-preview>
 
 
+### Slots
+You're able to provide some additional text by using the `default` loader slot.
+
+<i-code-preview title="Loader Default Slot" link="https://github.com/inkline/inkline/tree/master/src/components/Loader">
+
+<div>
+    <i-loader variant="dark">100%</i-loader>
+</div>
+
+<template slot="html">
+
+~~~html
+<i-loader variant="dark">100%</i-loader>
+~~~
+
+</template>
+</i-code-preview>
+
 ### API
 
-<i-api-preview title="Alert API" markup="i-alert" expanded>
+<i-api-preview title="Loader API" markup="i-loader" expanded>
     <template slot="props">
         <table class="table -bordered">
             <thead>
@@ -91,39 +109,25 @@ You can set the loader size to fit the container that it is in by using the `aut
             </thead>
             <tbody>
                 <tr>
-                    <td>dismissLabel</td>
-                    <td>Sets the dismiss lable, replaceable using the <code>dismiss</code> slot.</td>
-                    <td><code>String</code></td>
+                    <td>count</td>
+                    <td>Sets the number of elements that make up the loading spinner. To be used together with the `$loader-item-count` Sass variable.</td>
+                    <td><code>Number</code></td>
                     <td></td>
-                    <td><code>×</code></td>
-                </tr>
-                <tr>
-                    <td>dismissible</td>
-                    <td>Sets the alert as dismissible.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>show</td>
-                    <td>Sets the dismiss <code>v-model</code> for the alert component. Alert is only visible if show is <code>true</code>.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>true</code></td>
+                    <td><code>12</code></td>
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>Sets the size of the alert component.</td>
+                    <td>Sets the size of the loader component.</td>
                     <td><code>String</code></td>
                     <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
                     <td><code>md</code></td>
                 </tr>
                 <tr>
                     <td>variant</td>
-                    <td>Sets the color variant of the alert component.</td>
+                    <td>Sets the color variant of the loader component.</td>
                     <td><code>String</code></td>
-                    <td><code>primary</code>, <code>secondary</code>, <code>success</code>, <code>danger</code>, <code>warning</code>, <code>info</code></td>
-                    <td><code>primary</code></td>
+                    <td><code>light</code>, <code>dark</code></td>
+                    <td><code>light</code></td>
                 </tr>
             </tbody>
         </table>
@@ -139,15 +143,7 @@ You can set the loader size to fit the container that it is in by using the `aut
             <tbody>
                 <tr>
                     <td>default</td>
-                    <td>Slot for alert default content.</td>
-                </tr>
-                <tr>
-                    <td>dismiss</td>
-                    <td>Slot for alert dismiss button.</td>
-                </tr>
-                <tr>
-                    <td>icon</td>
-                    <td>Slot for alert icon.</td>
+                    <td>Slot for loader default content.</td>
                 </tr>
             </tbody>
         </table>
