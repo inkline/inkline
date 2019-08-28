@@ -1,7 +1,6 @@
 /**
-    * Spacing
-    */
-@import '../functions';
+ * Spacing
+ */
 
 @each $breakpoint-name, $breakpoint-value in $breakpoints {
     $infix: breakpoint-infix($breakpoint-name);

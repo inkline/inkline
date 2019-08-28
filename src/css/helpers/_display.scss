@@ -1,6 +1,6 @@
 /**
-    * Display
-    */
+ * Display
+ */
 @import '../mixins/breakpoints';
 
 @each $breakpoint-name, $breakpoint-value in $breakpoints {

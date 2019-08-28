@@ -1,8 +1,8 @@
 /**
  * Float
-    *
-    * Custom styles for additional flex alignment options.
-    */
+ *
+ * Custom styles for additional flex alignment options.
+ */
 
 @each $breakpoint-name, $breakpoint-value in $breakpoints {
     $infix: breakpoint-infix($breakpoint-name);
