@@ -1,6 +1,6 @@
 /**
-    * Position
-    */
+ * Position
+ */
 
 @each $position in ('static', 'relative', 'absolute', 'fixed', 'sticky') {
     ._position-#{$position} {

@@ -1,6 +1,6 @@
 /**
-    * Sizing
-    */
+ * Sizing
+ */
 
 @each $size, $length in $size-percentages {
     ._width-#{$size} {
