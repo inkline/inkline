@@ -1,6 +1,6 @@
 {
   "name": "inkline.io",
-  "version": "1.16.1",
+  "version": "1.16.3",
   "description": "Inkline's documentation and homepage is built with Nuxt and publicly hosted on Netlify. Inkline is a modern Vue.js UI/UX framework, written and maintained by @alexgrozav.",
   "author": "Alex Grozav",
   "private": true,
@@ -20,12 +20,12 @@
     "@fortawesome/free-brands-svg-icons": "^5.10.2",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@fortawesome/vue-fontawesome": "^0.1.6",
-    "@inkline/inkline": "^1.16.2",
+    "@inkline/inkline": "^1.16.3",
     "fuse.js": "^3.4.5",
     "lodash-es": "^4.17.15",
     "node-sass": "^4.12.0",
     "prismjs": "^1.17.1",
-    "sass-loader": "^7.2.0"
+    "sass-loader": "^7.3.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.5",
@@ -49,8 +49,8 @@
     "eslint-config-standard": "^13.0.1",
     "eslint-loader": "^2.2.1",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.15.1",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-jest": "^22.16.0",
+    "eslint-plugin-node": "^9.2.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^5.2.3",
