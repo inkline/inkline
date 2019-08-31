@@ -8,7 +8,7 @@
  * Button
  */
 .button {
-    display: inline-block;
+    display: inline-flex;
     font-weight: $button-font-weight;
     text-align: center;
     white-space: nowrap;
@@ -16,6 +16,8 @@
     user-select: none;
     border: $button-border-width solid transparent;
     line-height: $button-line-height;
+    justify-content: center;
+    align-items: center;
 
     @if transition('button') {
         transition: background-color $transition-duration $transition-easing, border-color $transition-duration $transition-easing, color $transition-duration $transition-easing;

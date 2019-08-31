@@ -8,6 +8,8 @@
     :disabled="isDisabled || loading"
     @click="emitClick"
 >
-    <slot v-if="loading" name="loading">Loading..</slot>
+    <slot v-if="loading" name="loading">
+        <i-loader size="auto" variant="dark"></i-loader>
+    </slot>
     <slot v-if="!loading"></slot>
 </button>

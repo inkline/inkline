@@ -1,4 +1,5 @@
-import Linkable from '../Linkable';
+import ILinkable from '../Linkable';
+import ILoader from '../Loader';
 
 import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
@@ -16,7 +17,10 @@ import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/propert
 
 export default {
     name: 'IButton',
-    extends: Linkable,
+    extends: ILinkable,
+    components: {
+        ILoader,
+    },
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
