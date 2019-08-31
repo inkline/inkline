@@ -21,5 +21,11 @@
             height: $_circle-size;
             padding: 0;
         }
+
+        > .loader.-auto {
+            margin: $_font-size * 0.25 0;
+            width: $_font-size;
+            height: $_font-size;
+        }
     }
 }
