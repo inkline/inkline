@@ -7,8 +7,7 @@ $loader-size: size-map($loader-size-base, $sizes, $size-multipliers) !default;
 $loader-animation-duration: 1.2s !default;
 
 $loader-item-count: 12 !default;
-$loader-item-size-base: 5px !default;
-$loader-item-size: size-map($loader-item-size-base, $sizes, $size-multipliers) !default;
+$loader-item-size: 8% !default;
 
 //
 // Variants

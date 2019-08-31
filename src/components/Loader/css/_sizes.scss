@@ -3,25 +3,9 @@
 //
 @each $size in $sizes {
     $_loader-size: map_get($loader-size, $size);
-    $_loader-item-size: map_get($loader-item-size, $size);
 
     .loader.-#{$size} {
         width: $_loader-size;
         height: $_loader-size;
-
-        > .loader-item {
-            width: $_loader-item-size;
-            height: $_loader-item-size;
-
-            @for $i from 1 through $loader-item-count {
-                $rotation: ($i - 1) * (360 / $loader-item-count);
-                $half-size: ($_loader-size - $_loader-item-size) / 2;
-
-                &:nth-of-type(#{$i}) {
-                    top: $half-size + sin($rotation * $pi / 180) * $half-size;
-                    left: $half-size + cos($rotation * $pi / 180) * $half-size;
-                }
-            }
-        }
     }
 }
