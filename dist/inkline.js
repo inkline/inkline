@@ -1230,7 +1230,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.isTag,_vm._b({tag:"button",staticClass:"button",class:_vm.classes,attrs:{"tag":_vm.tag,"tabindex":_vm.tabIndex,"disabled":_vm.isDisabled || _vm.loading},on:{"click":_vm.emitClick}},'button',_vm.attributes,false),[(_vm.loading)?_vm._t("loading",[_vm._v("Loading..")]):_vm._e(),(!_vm.loading)?_vm._t("default"):_vm._e()],2)}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.isTag,_vm._b({tag:"button",staticClass:"button",class:_vm.classes,attrs:{"tag":_vm.tag,"tabindex":_vm.tabIndex,"disabled":_vm.isDisabled || _vm.loading},on:{"click":_vm.emitClick}},'button',_vm.attributes,false),[(_vm.loading)?_vm._t("loading",[_c('i-loader',{attrs:{"size":"auto","variant":"dark"}})]):_vm._e(),(!_vm.loading)?_vm._t("default"):_vm._e()],2)}
 var staticRenderFns = []
 
 
@@ -4392,17 +4392,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es6_string_link__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("b54a");
 /* harmony import */ var core_js_modules_es6_string_link__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_string_link__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Linkable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("028b");
-/* harmony import */ var _inkline_inkline_src_mixins_components_providers_AttributesProviderMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("2d78");
-/* harmony import */ var _inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("ae22");
-/* harmony import */ var _inkline_inkline_src_mixins_forms_providers_InjectParentFormProviderMixin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("d562");
-/* harmony import */ var _inkline_inkline_src_mixins_components_methods_EmitClickMethodMixin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("2f91");
-/* harmony import */ var _inkline_inkline_src_mixins_components_methods_EmitFocusMethodMixin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("9ea3");
-/* harmony import */ var _inkline_inkline_src_mixins_components_methods_EmitHoverMethodMixin__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("04fd");
-/* harmony import */ var _inkline_inkline_src_mixins_forms_properties_DisabledPropertyMixin__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("765f");
-/* harmony import */ var _inkline_inkline_src_mixins_components_properties_LoadingPropertyMixin__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("2527");
-/* harmony import */ var _inkline_inkline_src_mixins_components_properties_SizePropertyMixin__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("a29c");
-/* harmony import */ var _inkline_inkline_src_mixins_components_properties_TabIndexPropertyMixin__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("0c82");
-/* harmony import */ var _inkline_inkline_src_mixins_components_properties_VariantPropertyMixin__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("47ae");
+/* harmony import */ var _Loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("ae8e");
+/* harmony import */ var _inkline_inkline_src_mixins_components_providers_AttributesProviderMixin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("2d78");
+/* harmony import */ var _inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("ae22");
+/* harmony import */ var _inkline_inkline_src_mixins_forms_providers_InjectParentFormProviderMixin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("d562");
+/* harmony import */ var _inkline_inkline_src_mixins_components_methods_EmitClickMethodMixin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("2f91");
+/* harmony import */ var _inkline_inkline_src_mixins_components_methods_EmitFocusMethodMixin__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("9ea3");
+/* harmony import */ var _inkline_inkline_src_mixins_components_methods_EmitHoverMethodMixin__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("04fd");
+/* harmony import */ var _inkline_inkline_src_mixins_forms_properties_DisabledPropertyMixin__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("765f");
+/* harmony import */ var _inkline_inkline_src_mixins_components_properties_LoadingPropertyMixin__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("2527");
+/* harmony import */ var _inkline_inkline_src_mixins_components_properties_SizePropertyMixin__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("a29c");
+/* harmony import */ var _inkline_inkline_src_mixins_components_properties_TabIndexPropertyMixin__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("0c82");
+/* harmony import */ var _inkline_inkline_src_mixins_components_properties_VariantPropertyMixin__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("47ae");
+
 
 
 
@@ -4419,7 +4421,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'IButton',
   extends: _Linkable__WEBPACK_IMPORTED_MODULE_1__["default"],
-  mixins: [_inkline_inkline_src_mixins_components_providers_AttributesProviderMixin__WEBPACK_IMPORTED_MODULE_2__["default"], _inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_3__["default"], _inkline_inkline_src_mixins_forms_providers_InjectParentFormProviderMixin__WEBPACK_IMPORTED_MODULE_4__["default"], _inkline_inkline_src_mixins_components_methods_EmitClickMethodMixin__WEBPACK_IMPORTED_MODULE_5__["default"], _inkline_inkline_src_mixins_components_methods_EmitFocusMethodMixin__WEBPACK_IMPORTED_MODULE_6__["default"], _inkline_inkline_src_mixins_components_methods_EmitHoverMethodMixin__WEBPACK_IMPORTED_MODULE_7__["default"], _inkline_inkline_src_mixins_forms_properties_DisabledPropertyMixin__WEBPACK_IMPORTED_MODULE_8__["default"], _inkline_inkline_src_mixins_components_properties_LoadingPropertyMixin__WEBPACK_IMPORTED_MODULE_9__["default"], _inkline_inkline_src_mixins_components_properties_SizePropertyMixin__WEBPACK_IMPORTED_MODULE_10__["default"], _inkline_inkline_src_mixins_components_properties_TabIndexPropertyMixin__WEBPACK_IMPORTED_MODULE_11__["default"], _inkline_inkline_src_mixins_components_properties_VariantPropertyMixin__WEBPACK_IMPORTED_MODULE_12__["default"]],
+  components: {
+    ILoader: _Loader__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  mixins: [_inkline_inkline_src_mixins_components_providers_AttributesProviderMixin__WEBPACK_IMPORTED_MODULE_3__["default"], _inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_4__["default"], _inkline_inkline_src_mixins_forms_providers_InjectParentFormProviderMixin__WEBPACK_IMPORTED_MODULE_5__["default"], _inkline_inkline_src_mixins_components_methods_EmitClickMethodMixin__WEBPACK_IMPORTED_MODULE_6__["default"], _inkline_inkline_src_mixins_components_methods_EmitFocusMethodMixin__WEBPACK_IMPORTED_MODULE_7__["default"], _inkline_inkline_src_mixins_components_methods_EmitHoverMethodMixin__WEBPACK_IMPORTED_MODULE_8__["default"], _inkline_inkline_src_mixins_forms_properties_DisabledPropertyMixin__WEBPACK_IMPORTED_MODULE_9__["default"], _inkline_inkline_src_mixins_components_properties_LoadingPropertyMixin__WEBPACK_IMPORTED_MODULE_10__["default"], _inkline_inkline_src_mixins_components_properties_SizePropertyMixin__WEBPACK_IMPORTED_MODULE_11__["default"], _inkline_inkline_src_mixins_components_properties_TabIndexPropertyMixin__WEBPACK_IMPORTED_MODULE_12__["default"], _inkline_inkline_src_mixins_components_properties_VariantPropertyMixin__WEBPACK_IMPORTED_MODULE_13__["default"]],
   props: {
     block: {
       type: Boolean,
