@@ -10,6 +10,6 @@ export default {
     head: head({
         title: 'Button',
         description: 'Inkline\'s Button component provides you with styles for multiple sizes, states, and more.'
-    }),
+    })
 };
 </script>

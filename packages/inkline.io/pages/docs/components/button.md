@@ -319,6 +319,43 @@ You can make buttons look inactive or disabled by adding the `disabled` boolean 
 </template>
 </i-code-preview>
 
+### Loading State
+You can add a loading state to the button by setting the `loading` boolean property to an `<i-button>` element. 
+
+By default, the button will display a standard Inkline loading spinner. You can provide custom loading state by providing a `loading` slot.
+
+<i-code-preview title="Loading Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+
+<div>
+<i-button :loading="true">Button</i-button>&nbsp;
+<i-button :loading="true">
+    Button
+    <template v-slot:loading>
+        <i-loader size="auto" variant="dark" class="_margin-right-1-2" />
+        Loading
+    </template>
+</i-button>
+</div>
+
+<template slot="html">
+
+~~~html
+<i-button :loading="true">Disabled Default Button</i-button>
+~~~
+
+~~~html
+<i-button :loading="true">
+   Button
+   <template v-slot:loading>
+       <i-loader size="auto" variant="dark" class="_margin-right-1-2" /> 
+       Loading
+   </template>
+</i-button>
+~~~
+
+</template>
+</i-code-preview>
+
 ### Linking and Routing
 Buttons will be automatically converted to link anchors `<a>` when providing a `href` property. You can also specify `target` and `rel` properties.
 
