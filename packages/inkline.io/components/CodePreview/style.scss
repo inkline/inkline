@@ -45,7 +45,6 @@
                 margin-left: $spacer;
 
                 @include breakpoint-down('md') {
-                    padding: 0.25rem 0.8rem;
                     margin-left: ($spacer / 2);
                 }
             }
