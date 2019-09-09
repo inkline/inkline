@@ -28,27 +28,27 @@
         <slot name="append" slot="append"></slot>
     </i-input>
 
-    <select v-bind="$attrs"
-            v-model="model"
+    <select v-model="model"
             v-if="isMobile"
+            :name="name"
             :disabled="isDisabled"
             ref="select"
             class="form-select"
-            :name="name"
             @click="emitClick"
             @focus="emitFocus"
             @blur="emitBlur"
             @change="emitChange"
-            @input="emitInput"
+            @input="changeInputRef"
             @keydown.space.stop.prevent="clickInputRef">
         <option v-for="option in options"
+                :key="option.id"
                 :value="option.value"
                 :disabled="option.disabled">
             {{ option.label }}
         </option>
     </select>
 
-    <i-dropdown-menu>
+    <i-dropdown-menu ref="dropdownMenu">
         <slot></slot>
     </i-dropdown-menu>
 </i-dropdown>
