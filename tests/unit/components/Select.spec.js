@@ -1,5 +1,6 @@
 import { mount, shallowMount } from '@vue/test-utils';
 import Select from '@inkline/inkline/src/components/Select';
+import { hashString } from '@inkline/inkline/src/helpers/hashString';
 
 describe('Components', () => {
     describe('Select', () => {
@@ -14,9 +15,12 @@ describe('Components', () => {
                     'v-model': 'value'
                 },
                 methods: {
-                    created: Select.created
+                    created: Select.created,
+                    mounted: Select.mounted,
+                    updated: Select.updated
                 }
             });
+
             nativeWrapper = shallowMount(Select, {
                 propsData: {
                     id: 'select'
@@ -80,7 +84,7 @@ describe('Components', () => {
                 it('should set label model to option value', () => {
                     wrapper.setData({
                         options: [
-                            { value: 'label' }
+                            { id: 0, value: 'label' }
                         ]
                     });
 
@@ -92,7 +96,7 @@ describe('Components', () => {
                 it('should set label model to option label if available', () => {
                     wrapper.setData({
                         options: [
-                            { value: 'value', label: 'label' }
+                            { id: 0, value: 'value', label: 'label' }
                         ]
                     });
 
@@ -159,6 +163,77 @@ describe('Components', () => {
                     expect(spy).toHaveBeenCalled();
                 });
             });
+
+            describe('changeInputRef()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.changeInputRef).toBeDefined();
+                });
+
+                it('should emit input event with native event target value', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.vm.changeInputRef({
+                        target: {
+                            value: 'model'
+                        }
+                    });
+
+                    expect(spy).toHaveBeenCalledWith('input', 'model');
+                });
+
+                it('should emit input event with native event target value', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.vm.changeInputRef({
+                        target: {
+                            value: 'model'
+                        }
+                    });
+
+                    expect(spy).toHaveBeenCalledWith('input', 'model');
+                });
+            });
+
+
+            describe('initElements()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.initElements).toBeDefined();
+                });
+
+                it('should set options if different options length', () => {
+                    wrapper.vm.options = [{ id: 0 }];
+
+                    wrapper.vm.initElements();
+
+                    expect(wrapper.vm.options).toEqual([]);
+                });
+
+                it('should set options from ISelectOption children if same length and different ids', () => {
+                    wrapper.vm.options = [{ id: 0 }];
+                    wrapper.vm.$refs.dropdownMenu.$children = [
+                        { value: 'abc', label: 'abc', $options: { name: 'ISelectOption' } }
+                    ];
+
+                    wrapper.vm.initElements();
+
+                    expect(wrapper.vm.options[0]).toEqual(expect.objectContaining({
+                        value: 'abc',
+                        label: 'abc'
+                    }));
+                });
+
+                it('should not set options from ISelectOption children if same length and same ids', () => {
+                    const options = [{ id: hashString('abcabc') }];
+                    wrapper.vm.options = [...options];
+                    wrapper.vm.$refs.dropdownMenu.$children = [
+                        { value: 'abc', label: 'abc', $options: { name: 'ISelectOption' } }
+                    ];
+
+                    wrapper.vm.initElements();
+
+                    expect(wrapper.vm.options).toEqual(options);
+                });
+            });
         });
 
         describe('created()', () => {
@@ -212,16 +287,53 @@ describe('Components', () => {
             });
         });
 
+        describe('mounted()', () => {
+            it('should call initElements()', () => {
+                const spy = jest.spyOn(wrapper.vm, 'initElements');
+
+                wrapper.vm.mounted();
+
+                expect(spy).toHaveBeenCalled();
+            });
+
+            it('should add listener to init event with initElements()', () => {
+                const spy = jest.spyOn(wrapper.vm, '$on');
+
+                wrapper.vm.mounted();
+
+                expect(spy).toHaveBeenCalledWith('init', wrapper.vm.initElements);
+            });
+
+            it('should call setLabelModel() if value provided', () => {
+                const spy = jest.spyOn(wrapper.vm, 'setLabelModel');
+                wrapper.setProps({ value: 'value' });
+
+                wrapper.vm.mounted();
+
+                expect(spy).toHaveBeenCalledWith('value');
+            });
+
+            it('should not call setLabelModel() if value not provided', () => {
+                const spy = jest.spyOn(wrapper.vm, 'setLabelModel');
+
+                wrapper.vm.mounted();
+
+                expect(spy).not.toHaveBeenCalled();
+            });
+        });
+
+        describe('updated()', () => {
+            it('should call initElements()', () => {
+                const spy = jest.spyOn(wrapper.vm, 'initElements');
+
+                wrapper.vm.updated();
+
+                expect(spy).toHaveBeenCalled();
+            });
+        });
+
         describe('watch', () => {
             describe('model()', () => {
-                it('should call initElements', () => {
-                    const spy = jest.spyOn(wrapper.vm, 'initElements');
-
-                    wrapper.setProps({ value: 'label' });
-
-                    expect(spy).toHaveBeenCalled();
-                });
-
                 it('should call setLabelModel with changed value', () => {
                     const spy = jest.spyOn(wrapper.vm, 'setLabelModel');
 
