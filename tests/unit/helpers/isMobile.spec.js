@@ -3,6 +3,10 @@ import { isMobile } from '@inkline/inkline/src/helpers/isMobile';
 
 describe('Helpers', () => {
     describe('isMobile()', () => {
+        afterEach(() => {
+            isMobile.cachedValue = undefined;
+        });
+
         it('should return false if SSR', () => {
             Vue.$isServer = true;
 
