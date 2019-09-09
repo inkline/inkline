@@ -7,6 +7,7 @@ export { focusFirstDescendant } from './focusFirstDescendant';
 export { focusLastDescendant } from './focusLastDescendant';
 export { getStyleProperty } from './getStyleProperty';
 export { hasClass } from './hasClass';
+export { hashString } from './hashString';
 export { isFocusable } from './isFocusable';
 export { isKey } from './isKey';
 export { isMobile } from './isMobile';
