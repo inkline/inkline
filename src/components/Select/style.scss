@@ -1,7 +1,7 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
-@import '../Input/css/_variables';
 @import '../Input/css/_mixins';
+@import './css/_variables';
 
 /**
  * Select
@@ -38,6 +38,21 @@
             width: 12px;
             height: 6px;
             z-index: 1;
+        }
+
+        /deep/ > .form-input {
+            > input[readonly] {
+                cursor: pointer;
+                border-color: $select-input-border-color;
+
+                &:hover {
+                    border-color: $select-input-border-color-hover;
+                }
+
+                &:focus {
+                    border-color: $select-input-border-color-focus;
+                }
+            }
         }
     }
 
