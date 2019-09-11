@@ -30,6 +30,10 @@ export default {
             type: String,
             default: 'md'
         },
+        collapseOnClick: {
+            type: Boolean,
+            default: true
+        },
         fluid: {
             type: Boolean,
             default: false
@@ -61,6 +65,9 @@ export default {
         return { navbar };
     },
     methods: {
+        setCollapse(value) {
+            this.collapsed = value;
+        },
         toggleCollapse() {
             this.collapsed = !this.collapsed;
         },
@@ -90,6 +97,10 @@ export default {
         if (!Vue.$isServer && typeof window !== 'undefined') {
             window.addEventListener('resize', this.onWindowResize);
             this.onWindowResize();
+        }
+
+        if (this.collapseOnClick) {
+            this.$on('item-click', () => this.setCollapse(false));
         }
     },
     destroyed() {
