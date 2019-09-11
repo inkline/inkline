@@ -20,27 +20,23 @@
         > .form-input-append {
             font-size: $_font-size;
 
-            @if $border-radius-enabled {
-                border-radius: $_border-radius;
-            }
-
-            > * {
+            > span {
                 padding: $_padding;
             }
         }
 
-        > .form-input-prepend,
-        > .form-input-prepend > *,
-        > .form-input-append > * + * {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-        }
+        @if $border-radius-enabled {
+            > .form-input-prepend,
+            > .form-input-prepend > *:first-child {
+                border-top-left-radius: $_border-radius;
+                border-bottom-left-radius: $_border-radius;
+            }
 
-        > .form-input-append,
-        > .form-input-append > *,
-        > .form-input-prepend > * + * {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
+            > .form-input-append,
+            > .form-input-append > *:last-child {
+                border-top-right-radius: $_border-radius;
+                border-bottom-right-radius: $_border-radius;
+            }
         }
     }
 }

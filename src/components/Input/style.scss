@@ -169,7 +169,6 @@
 
     &.-prepended .form-input {
         @include form-input-selector() {
-            display: block;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
@@ -183,15 +182,15 @@
     }
 
     > .form-input-prepend,
-    > .form-input-prepend > * {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
+    > .form-input-append {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
 
-    > .form-input-append,
-    > .form-input-append > * {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+        > * {
+            flex: auto 1 0;
+            border-radius: 0;
+        }
     }
 
     @extend .form-input-group.-md;
