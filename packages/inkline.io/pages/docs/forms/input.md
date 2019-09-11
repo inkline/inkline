@@ -150,7 +150,7 @@ export default {
 You can add additional content such as select fields, buttons or plain text, to either side of the input by using the prepend and append slots.
 
 
-<i-code-preview title="Input" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+<i-code-preview title="Input Text Prepend and Append" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
 
 <i-input v-model="prependInputValue" placeholder="Type something.." class="_margin-bottom-1">
     <span slot="prepend">http://</span>
@@ -171,14 +171,188 @@ You can add additional content such as select fields, buttons or plain text, to 
 <i-input v-model="value" placeholder="Type something..">
     <span slot="prepend">http://</span>
 </i-input>
-
+~~~
+~~~html
 <i-input v-model="value" placeholder="Type something..">
     <span slot="append">.com</span>
 </i-input>
-
+~~~
+~~~html
 <i-input v-model="value" placeholder="Type something..">
     <span slot="prepend">http://</span>
     <span slot="append">.com</span>
+</i-input>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+  data () {
+    return {
+      value: ''
+    };
+  }
+}
+~~~
+
+</template>
+</i-code-preview>
+
+<i-code-preview title="Input Button Prepend and Append" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+
+<i-input v-model="prependButtonInputValue" placeholder="Type something.." class="_margin-bottom-1">
+    <i-button slot="prepend">Button</i-button>
+</i-input>
+
+<i-input v-model="appendButtonInputValue" placeholder="Type something.." class="_margin-bottom-1">
+    <i-button slot="append">Button</i-button>
+</i-input>
+
+<i-input v-model="prependAppendButtonInputValue" placeholder="Type something..">
+    <i-button slot="prepend">Button</i-button>
+    <i-button slot="append">Button</i-button>
+</i-input>
+
+<template slot="html">
+
+~~~html
+<i-input v-model="value" placeholder="Type something..">
+    <i-button slot="prepend">Button</i-button>
+</i-input>
+~~~
+~~~html
+<i-input v-model="value" placeholder="Type something..">
+    <i-button slot="append">Button</i-button>
+</i-input>
+~~~
+~~~html
+<i-input v-model="value" placeholder="Type something..">
+    <i-button slot="prepend">Button</i-button>
+    <i-button slot="append">Button</i-button>
+</i-input>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+  data () {
+    return {
+      value: ''
+    };
+  }
+}
+~~~
+
+</template>
+</i-code-preview>
+
+<i-code-preview title="Input Button Prepend and Append" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+
+<i-input v-model="prependDropdownInputValue" placeholder="Type something.." class="_margin-bottom-1">
+    <i-dropdown slot="prepend">
+        <i-button>Dropdown</i-button>
+        <i-dropdown-menu>
+            <i-dropdown-item href>Action</i-dropdown-item>
+            <i-dropdown-item href>Another action</i-dropdown-item>
+            <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
+            <i-dropdown-divider />
+            <i-dropdown-item>Separated item</i-dropdown-item>
+        </i-dropdown-menu>
+    </i-dropdown>
+</i-input>
+
+<i-input v-model="appendDropdownInputValue" placeholder="Type something.." class="_margin-bottom-1">
+    <i-dropdown slot="append">
+        <i-button>Dropdown</i-button>
+        <i-dropdown-menu>
+            <i-dropdown-item href>Action</i-dropdown-item>
+            <i-dropdown-item href>Another action</i-dropdown-item>
+            <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
+            <i-dropdown-divider />
+            <i-dropdown-item>Separated item</i-dropdown-item>
+        </i-dropdown-menu>
+    </i-dropdown>
+</i-input>
+
+<i-input v-model="prependAppendDropdownInputValue" placeholder="Type something..">
+    <i-dropdown slot="prepend">
+        <i-button>Dropdown</i-button>
+        <i-dropdown-menu>
+            <i-dropdown-item href>Action</i-dropdown-item>
+            <i-dropdown-item href>Another action</i-dropdown-item>
+            <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
+            <i-dropdown-divider />
+            <i-dropdown-item>Separated item</i-dropdown-item>
+        </i-dropdown-menu>
+    </i-dropdown>
+    <i-dropdown slot="append">
+        <i-button>Dropdown</i-button>
+        <i-dropdown-menu>
+            <i-dropdown-item href>Action</i-dropdown-item>
+            <i-dropdown-item href>Another action</i-dropdown-item>
+            <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
+            <i-dropdown-divider />
+            <i-dropdown-item>Separated item</i-dropdown-item>
+        </i-dropdown-menu>
+    </i-dropdown>
+</i-input>
+
+<template slot="html">
+
+~~~html
+<i-input v-model="value" placeholder="Type something..">
+    <i-dropdown slot="prepend">
+        <i-button>Dropdown</i-button>
+        <i-dropdown-menu>
+            <i-dropdown-item href>Action</i-dropdown-item>
+            <i-dropdown-item href>Another action</i-dropdown-item>
+            <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
+            <i-dropdown-divider />
+            <i-dropdown-item>Separated item</i-dropdown-item>
+        </i-dropdown-menu>
+    </i-dropdown>
+</i-input>
+~~~
+~~~html
+<i-input v-model="value" placeholder="Type something..">
+    <i-dropdown slot="append">
+        <i-button>Dropdown</i-button>
+        <i-dropdown-menu>
+            <i-dropdown-item href>Action</i-dropdown-item>
+            <i-dropdown-item href>Another action</i-dropdown-item>
+            <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
+            <i-dropdown-divider />
+            <i-dropdown-item>Separated item</i-dropdown-item>
+        </i-dropdown-menu>
+    </i-dropdown>
+</i-input>
+~~~
+~~~html
+<i-input v-model="value" placeholder="Type something..">
+    <i-dropdown slot="prepend">
+        <i-button>Dropdown</i-button>
+        <i-dropdown-menu>
+            <i-dropdown-item href>Action</i-dropdown-item>
+            <i-dropdown-item href>Another action</i-dropdown-item>
+            <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
+            <i-dropdown-divider />
+            <i-dropdown-item>Separated item</i-dropdown-item>
+        </i-dropdown-menu>
+    </i-dropdown>
+    <i-dropdown slot="append">
+        <i-button>Dropdown</i-button>
+        <i-dropdown-menu>
+            <i-dropdown-item href>Action</i-dropdown-item>
+            <i-dropdown-item href>Another action</i-dropdown-item>
+            <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
+            <i-dropdown-divider />
+            <i-dropdown-item>Separated item</i-dropdown-item>
+        </i-dropdown-menu>
+    </i-dropdown>
 </i-input>
 ~~~
 
