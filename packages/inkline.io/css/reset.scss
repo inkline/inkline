@@ -43,8 +43,11 @@
             }
         }
 
-        .navbar .dropdown {
-            margin-bottom: 0;
+        .navbar,
+        .form-input-group {
+            .dropdown {
+                margin-bottom: 0;
+            }
         }
     }
 }
