@@ -14,10 +14,11 @@ Here’s an example of the basic components included in a  `<i-navbar>` that aut
             <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
         </i-nav>
         <i-nav>
-            <i-input placeholder="Type something.." class="_margin-right-1" />
-            <i-button variant="primary">
-                <font-awesome-icon icon="search" />
-            </i-button>
+            <i-input class="item" placeholder="Type something..">
+                <i-button variant="primary" slot="append">
+                    <font-awesome-icon icon="search" />
+                </i-button>
+            </i-input>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -33,8 +34,11 @@ Here’s an example of the basic components included in a  `<i-navbar>` that aut
             <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
         </i-nav>
         <i-nav>
-            <i-input placeholder="Type something.." class="_margin-right-1" />
-            <i-button variant="primary">Search</i-button>
+            <i-input class="item" placeholder="Type something..">
+                <i-button variant="primary" slot="append">
+                    <font-awesome-icon icon="search" />
+                </i-button>
+            </i-input>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -338,6 +342,13 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>collapseOnClick</td>
+                    <td>Collapses the navbar when clicking a navbar item.</td>
+                    <td><code>Boolean</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td><code>true</code></td>
+                </tr>
                 <tr>
                     <td>fluid</td>
                     <td>Sets the <code>IContainer</code> wrapping the navbars's content as fluid.</td>
