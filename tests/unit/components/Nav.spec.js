@@ -8,7 +8,8 @@ describe('Components', () => {
         beforeEach(() => {
             wrapper = shallowMount(Nav, {
                 methods: {
-                    created: Nav.created
+                    created: Nav.created,
+                    destroyed: Nav.destroyed
                 }
             });
         });
@@ -33,6 +34,24 @@ describe('Components', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.vertical).toBeDefined();
                     expect(wrapper.vm.vertical).toEqual(false);
+                });
+            });
+        });
+
+        describe('methods', () => {
+            describe('dispatchItemClick', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.dispatchItemClick).toBeDefined();
+                });
+
+                it('should dispatch item-click event to INavbar', () => {
+                    const e = {};
+                    const spy = jest.spyOn(wrapper.vm, 'dispatch');
+
+                    wrapper.vm.dispatchItemClick(e);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('INavbar', 'item-click', e);
                 });
             });
         });
@@ -82,6 +101,26 @@ describe('Components', () => {
                 expect(rule()).toEqual(expect.objectContaining({
                     '-vertical': true
                 }));
+            });
+
+            it('should listen to item-click event and dispatch it further', () => {
+                const spy = jest.spyOn(wrapper.vm, '$on');
+
+                wrapper.vm.created();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith('item-click', wrapper.vm.dispatchItemClick);
+            });
+        });
+
+        describe('destroyed()', () => {
+            it('should stop listening to item-click event', () => {
+                const spy = jest.spyOn(wrapper.vm, '$off');
+
+                wrapper.vm.destroyed();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith('item-click', wrapper.vm.dispatchItemClick);
             });
         });
     });

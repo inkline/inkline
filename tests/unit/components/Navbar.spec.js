@@ -31,6 +31,13 @@ describe('Components', () => {
                 });
             });
 
+            describe('collapseOnClick', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.collapseOnClick).toBeDefined();
+                    expect(wrapper.vm.collapseOnClick).toEqual(true);
+                });
+            });
+
             describe('fluid', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.fluid).toBeDefined();
@@ -69,6 +76,25 @@ describe('Components', () => {
         });
 
         describe('methods', () => {
+            describe('setCollapse()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.setCollapse).toBeDefined();
+                });
+
+                it('should set collapsed status to true', () => {
+                    expect(wrapper.vm.collapsed).toEqual(false);
+                    wrapper.vm.setCollapse(true);
+                    expect(wrapper.vm.collapsed).toEqual(true);
+                });
+
+                it('should set collapsed status to false', () => {
+                    wrapper.vm.setCollapse(true);
+                    expect(wrapper.vm.collapsed).toEqual(true);
+                    wrapper.vm.setCollapse(false);
+                    expect(wrapper.vm.collapsed).toEqual(false);
+                });
+            });
+
             describe('toggleCollapse()', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.toggleCollapse).toBeDefined();
@@ -189,6 +215,24 @@ describe('Components', () => {
                 wrapper.vm.created();
 
                 expect(spy).toHaveBeenCalled();
+            });
+
+            it('should add item-click event listener if collapseOnClick', () => {
+                const spy = jest.spyOn(wrapper.vm, '$on');
+
+                wrapper.vm.created();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith('item-click', expect.any(Function));
+            });
+
+            it('should not add item-click event listener if not collapseOnClick', () => {
+                const spy = jest.spyOn(wrapper.vm, '$on');
+
+                wrapper.setProps({ collapseOnClick: false });
+                wrapper.vm.created();
+
+                expect(spy).not.toHaveBeenCalled();
             });
         });
 

@@ -16,5 +16,22 @@ describe('Components', () => {
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
+
+        describe('methods', () => {
+            describe('onClick', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.onClick).toBeDefined();
+                });
+
+                it('should dispatch item-click event to INav', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'dispatch');
+
+                    wrapper.vm.onClick();
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('INav', 'item-click', wrapper.vm);
+                });
+            });
+        });
     });
 });
