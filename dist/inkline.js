@@ -3870,18 +3870,25 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Linkable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("028b");
 /* harmony import */ var _inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("ae22");
-/* harmony import */ var _inkline_inkline_src_mixins_components_properties_DisabledPropertyMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("5b58");
+/* harmony import */ var _inkline_inkline_src_mixins_components_providers_EmitProviderMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("c192");
+/* harmony import */ var _inkline_inkline_src_mixins_components_properties_DisabledPropertyMixin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("5b58");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'INavItem',
   extends: _Linkable__WEBPACK_IMPORTED_MODULE_0__["default"],
-  mixins: [_inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_1__["default"], _inkline_inkline_src_mixins_components_properties_DisabledPropertyMixin__WEBPACK_IMPORTED_MODULE_2__["default"]],
+  mixins: [_inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_1__["default"], _inkline_inkline_src_mixins_components_providers_EmitProviderMixin__WEBPACK_IMPORTED_MODULE_2__["default"], _inkline_inkline_src_mixins_components_properties_DisabledPropertyMixin__WEBPACK_IMPORTED_MODULE_3__["default"]],
   props: {
     tag: {
       type: String,
       default: 'div'
+    }
+  },
+  methods: {
+    onClick: function onClick() {
+      this.dispatch('INav', 'item-click', this);
     }
   }
 });
@@ -5484,6 +5491,10 @@ __webpack_require__.r(__webpack_exports__);
       type: String,
       default: 'md'
     },
+    collapseOnClick: {
+      type: Boolean,
+      default: true
+    },
     fluid: {
       type: Boolean,
       default: false
@@ -5520,6 +5531,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    setCollapse: function setCollapse(value) {
+      this.collapsed = value;
+    },
     toggleCollapse: function toggleCollapse() {
       this.collapsed = !this.collapsed;
     },
@@ -5554,6 +5568,12 @@ __webpack_require__.r(__webpack_exports__);
     if (!vue__WEBPACK_IMPORTED_MODULE_1___default.a.$isServer && typeof window !== 'undefined') {
       window.addEventListener('resize', this.onWindowResize);
       this.onWindowResize();
+    }
+
+    if (this.collapseOnClick) {
+      this.$on('item-click', function () {
+        return _this2.setCollapse(false);
+      });
     }
   },
   destroyed: function destroyed() {
@@ -6122,7 +6142,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i-dropdown',{ref:"dropdown",staticClass:"select",class:_vm.classes,attrs:{"disabled":_vm.isDisabled || _vm.isReadonly || _vm.isMobile,"readonly":_vm.isReadonly,"size":_vm.size,"id":_vm.id,"tabindex":-1,"hide-on-click":""}},[_c('i-input',_vm._b({ref:"input",attrs:{"value":_vm.labelModel,"name":_vm.name,"readonly":_vm.isReadonly || !_vm.filterable,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"tabindex":_vm.isMobile ? -1 : _vm.tabIndex},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.emitBlur,"keydown":_vm.emitKeydown,"keyup":_vm.emitKeyup}},'i-input',_vm.$attrs,false),[_vm._t("prepend",null,{"slot":"prepend"}),_vm._t("prefix",null,{"slot":"prefix"}),_vm._t("suffix",null,{"slot":"suffix"}),_vm._t("append",null,{"slot":"append"})],2),(_vm.isMobile)?_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"select",staticClass:"form-select",attrs:{"name":_vm.name,"disabled":_vm.isDisabled},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.emitBlur,"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.model=$event.target.multiple ? $$selectedVal : $$selectedVal[0]},_vm.emitChange],"input":_vm.changeInputRef,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}}},_vm._l((_vm.options),function(option){return _c('option',{key:option.id,attrs:{"disabled":option.disabled},domProps:{"value":option.value}},[_vm._v("\n            "+_vm._s(option.label)+"\n        ")])}),0):_vm._e(),_c('i-dropdown-menu',{ref:"dropdownMenu"},[_vm._t("default")],2)],1)}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i-dropdown',{ref:"dropdown",staticClass:"select",class:_vm.classes,attrs:{"disabled":_vm.isDisabled || _vm.isReadonly || _vm.isMobile,"readonly":_vm.isReadonly,"size":_vm.size,"id":_vm.id,"tabindex":-1,"hide-on-click":""}},[_c('i-input',_vm._b({ref:"input",attrs:{"value":_vm.labelModel,"name":_vm.name,"readonly":_vm.isReadonly || !_vm.filterable,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"tabindex":_vm.isMobile ? -1 : _vm.tabIndex},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.emitBlur,"keydown":_vm.emitKeydown,"keyup":_vm.emitKeyup}},'i-input',_vm.$attrs,false),[_vm._t("prepend",null,{"slot":"prepend"}),_vm._t("prefix",null,{"slot":"prefix"}),_vm._t("suffix",null,{"slot":"suffix"}),_vm._t("append",null,{"slot":"append"})],2),(_vm.isMobile)?_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"select",staticClass:"form-select",attrs:{"name":_vm.name,"disabled":_vm.isDisabled},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.emitBlur,"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.model=$event.target.multiple ? $$selectedVal : $$selectedVal[0]},_vm.emitChange],"input":_vm.changeInputRef,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}}},_vm._l((_vm.options),function(option){return _c('option',{key:option.id,attrs:{"disabled":option.disabled},domProps:{"value":option.value}},[_vm._v("\n            "+_vm._s(option.label)+"\n        ")])}),0):_vm._e(),_c('i-dropdown-menu',{ref:"dropdownMenu",attrs:{"size":_vm.size}},[_vm._t("default")],2)],1)}
 var staticRenderFns = []
 
 
@@ -11817,12 +11837,14 @@ module.exports = function (fn, that, length) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("ae22");
-/* harmony import */ var _inkline_inkline_src_mixins_components_properties_SizePropertyMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("a29c");
+/* harmony import */ var _inkline_inkline_src_mixins_components_providers_EmitProviderMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("c192");
+/* harmony import */ var _inkline_inkline_src_mixins_components_properties_SizePropertyMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("a29c");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'INav',
-  mixins: [_inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_0__["default"], _inkline_inkline_src_mixins_components_properties_SizePropertyMixin__WEBPACK_IMPORTED_MODULE_1__["default"]],
+  mixins: [_inkline_inkline_src_mixins_components_providers_ClassesProviderMixin__WEBPACK_IMPORTED_MODULE_0__["default"], _inkline_inkline_src_mixins_components_providers_EmitProviderMixin__WEBPACK_IMPORTED_MODULE_1__["default"], _inkline_inkline_src_mixins_components_properties_SizePropertyMixin__WEBPACK_IMPORTED_MODULE_2__["default"]],
   props: {
     tabs: {
       type: Boolean,
@@ -11831,6 +11853,11 @@ __webpack_require__.r(__webpack_exports__);
     vertical: {
       type: Boolean,
       default: false
+    }
+  },
+  methods: {
+    dispatchItemClick: function dispatchItemClick(e) {
+      this.dispatch('INavbar', 'item-click', e);
     }
   },
   created: function created() {
@@ -11842,6 +11869,10 @@ __webpack_require__.r(__webpack_exports__);
         '-vertical': _this.vertical
       };
     });
+    this.$on('item-click', this.dispatchItemClick);
+  },
+  destroyed: function destroyed() {
+    this.$off('item-click', this.dispatchItemClick);
   }
 });
 
@@ -12421,7 +12452,7 @@ var once = function once(el, event, fn) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.isTag,_vm._b({tag:"a",staticClass:"item",class:_vm.classes},'a',_vm.attributes,false),[_vm._t("default")],2)}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.isTag,_vm._b({tag:"a",staticClass:"item",class:_vm.classes,on:{"click":_vm.onClick}},'a',_vm.attributes,false),[_vm._t("default")],2)}
 var staticRenderFns = []
 
 
