@@ -11281,10 +11281,11 @@ var Inkline = {
     }
   }
 };
+var install = Inkline.install;
 
 Inkline.install = function (Vue) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return Inkline.install.call(Inkline, Vue, _objectSpread({
+  return install.call(Inkline, Vue, _objectSpread({
     components: _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_6__
   }, options));
 };
