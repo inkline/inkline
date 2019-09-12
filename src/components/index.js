@@ -1,5 +1,4 @@
 import IAlert from '@inkline/inkline/src/components/Alert';
-
 import IBadge from '@inkline/inkline/src/components/Badge';
 import IBreadcrumb from '@inkline/inkline/src/components/Breadcrumb';
 import IBreadcrumbItem from '@inkline/inkline/src/components/BreadcrumbItem';
