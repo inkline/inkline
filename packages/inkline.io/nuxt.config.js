@@ -112,7 +112,7 @@ module.exports = {
     build: {
         transpile: [
             '@inkline/inkline',
-            '@inkline/validation',
+            'vue-github-button',
             'lodash-es'
         ],
 

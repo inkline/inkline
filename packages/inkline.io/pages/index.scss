@@ -95,6 +95,25 @@
                 }
             }
         }
+
+        .header-button {
+            display: flex;
+            align-items: center;
+
+            @include breakpoint-up(md) {
+                .button {
+                    margin-right: $spacer;
+                }
+            }
+
+            @include breakpoint-down(sm) {
+                flex-direction: column;
+
+                .button {
+                    margin-bottom: $spacer;
+                }
+            }
+        }
     }
 }
 

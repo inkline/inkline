@@ -7,7 +7,16 @@
                     <h2 class="header-subtitle">
                         Inkline is a modern <strong>UI/UX Framework for Vue.js</strong> designed for creating flawless responsive web applications.
                     </h2>
-                    <i-button size="lg" variant="primary" class="_margin-top-2" :to="{ name: 'docs-introduction-getting-started' }">Get Started</i-button>
+                    <div class="header-button _margin-top-2">
+                        <i-button size="lg" variant="primary" class="_margin-right-md-2" :to="{ name: 'docs-introduction-getting-started' }">Get Started</i-button>
+
+                        <github-button href="https://github.com/inkline/inkline"
+                                       data-size="large"
+                                       data-show-count="true"
+                                       aria-label="Star inkline/inkline on GitHub">
+                            Star
+                        </github-button>
+                    </div>
                 </i-column>
             </i-row>
         </i-header>
@@ -120,6 +129,7 @@
 
 <script>
 import { head } from '@helpers/head'
+import GithubButton from 'vue-github-button'
 
 export default {
     name: 'IndexView',
@@ -130,6 +140,9 @@ export default {
         preserve: {
             description: true
         }
-    })
+    }),
+    components: {
+        GithubButton
+    }
 };
 </script>
