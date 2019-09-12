@@ -96,7 +96,7 @@
             }
         }
 
-        .header-button {
+        .header-buttons {
             display: flex;
             align-items: center;
 
@@ -112,6 +112,10 @@
                 .button {
                     margin-bottom: $spacer;
                 }
+            }
+
+            .github-star-button {
+                padding-top: 5px;
             }
         }
     }
