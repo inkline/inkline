@@ -10,8 +10,8 @@ export const Inkline = {
     }
 };
 
-Inkline.install = (Vue, options = {}) => Inkline.install
-    .call(Inkline, Vue, { components, ...options });
+const install = Inkline.install;
+Inkline.install = (Vue, options = {}) => install.call(Inkline, Vue, { components, ...options });
 
 if (typeof window !== 'undefined' && window.Vue) {
     window.Vue.use(Inkline);
