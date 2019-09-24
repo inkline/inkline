@@ -5,13 +5,5 @@
     .navbar.-#{$variant-name} {
         color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
         background-color: $variant;
-
-        .hamburger > .bars {
-            &,
-            &::before,
-            &::after {
-                background-color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
-            }
-        }
     }
 }
