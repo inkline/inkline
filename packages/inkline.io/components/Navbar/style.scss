@@ -17,8 +17,10 @@
 
     > .container > .row > .column {
         > .brand {
-            .logo.-light {
-                display: none;
+            .logo {
+                &.-light {
+                    display: none;
+                }
             }
 
             img {
