@@ -2,6 +2,7 @@ import Vue from 'vue';
 import IContainer from '../Container';
 import IRow from '../Row';
 import IColumn from '../Column';
+import IHamburgerMenu from '../HamburgerMenu';
 
 import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
@@ -23,7 +24,8 @@ export default {
     components: {
         IContainer,
         IRow,
-        IColumn
+        IColumn,
+        IHamburgerMenu
     },
     props: {
         collapse: {
@@ -69,6 +71,7 @@ export default {
             this.collapsed = value;
         },
         toggleCollapse() {
+            console.log("CLICKY")
             this.collapsed = !this.collapsed;
         },
         onWindowResize() {
@@ -87,11 +90,6 @@ export default {
         this.classesProvider.add(() => ({
             '-collapsed': this.collapsed,
             [`-collapse-${this.collapse}`]: Boolean(this.collapse)
-        }));
-
-        this.classesProvider.add('hamburger', () => ({
-            '-active': this.collapsed,
-            [`-${this.toggleAnimation}`]: true
         }));
 
         if (!Vue.$isServer && typeof window !== 'undefined') {

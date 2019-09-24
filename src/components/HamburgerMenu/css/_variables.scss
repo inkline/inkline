@@ -1,0 +1,18 @@
+//
+// Hamburger Variables
+//
+$hamburger-menu-bar-width: 30px !default;
+$hamburger-menu-bar-height: 3px !default;
+$hamburger-menu-bar-border-radius: 2px !default;
+$hamburger-menu-bar-spacing: 5px !default;
+$hamburger-menu-bar-color: #000000 !default;
+$hamburger-menu-padding: $spacer / 2 !default;
+$hamburger-menu-opacity: 0.7 !default;
+$hamburger-menu-hover-opacity: 1 !default;
+
+//
+// Variants
+//
+$hamburger-menu-variants: ('monochrome') !default;
+
+$variants: map_merge($variants, ('hamburger-menu': add-variant($hamburger-menu-variants, $color-groups)));

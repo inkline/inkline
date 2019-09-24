@@ -1,8 +1,16 @@
+/**
+ * Nav
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_variants';
+
 .hamburger {
-    opacity: $navbar-hamburger-opacity;
-    padding: $navbar-hamburger-padding;
-    width: $navbar-hamburger-bar-width;
-    height: $navbar-hamburger-bar-height * 3 + $navbar-hamburger-bar-spacing * 2;
+    opacity: $hamburger-menu-opacity;
+    padding: $hamburger-menu-padding;
+    width: $hamburger-menu-bar-width;
+    height: $hamburger-menu-bar-height * 3 + $hamburger-menu-bar-spacing * 2;
     display: inline-block;
     position: relative;
     box-sizing: content-box;
@@ -10,20 +18,20 @@
     transition: opacity 0.3s ease;
 
     &:hover {
-        opacity: $navbar-hamburger-hover-opacity;
+        opacity: $hamburger-menu-hover-opacity;
     }
 
     > .bars {
         display: block;
         top: 50%;
-        margin-top: $navbar-hamburger-bar-height / -2;
+        margin-top: $hamburger-menu-bar-height / -2;
 
         &,
         &::before,
         &::after {
-            width: $navbar-hamburger-bar-width;
-            height: $navbar-hamburger-bar-height;
-            border-radius: $navbar-hamburger-bar-border-radius;
+            width: $hamburger-menu-bar-width;
+            height: $hamburger-menu-bar-height;
+            border-radius: $hamburger-menu-bar-border-radius;
             position: absolute;
             transition-property: transform;
             transition-duration: 0.15s;
@@ -37,11 +45,11 @@
         }
 
         &::before {
-            top: ($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height) * -1;
+            top: ($hamburger-menu-bar-spacing + $hamburger-menu-bar-height) * -1;
         }
 
         &::after {
-            bottom: ($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height) * -1;
+            bottom: ($hamburger-menu-bar-spacing + $hamburger-menu-bar-height) * -1;
         }
     }
 
@@ -82,21 +90,21 @@
 
     &.-arrow-left.-active > .bars {
         &::before {
-            transform: translate3d($navbar-hamburger-bar-width * -0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
+            transform: translate3d($hamburger-menu-bar-width * -0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
         }
 
         &::after {
-            transform: translate3d($navbar-hamburger-bar-width * -0.2, 0, 0) rotate(45deg) scale(0.7, 1);
+            transform: translate3d($hamburger-menu-bar-width * -0.2, 0, 0) rotate(45deg) scale(0.7, 1);
         }
     }
 
     &.-arrow-right.-active > .bars {
         &::before {
-            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
+            transform: translate3d($hamburger-menu-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
         }
 
         &::after {
-            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
+            transform: translate3d($hamburger-menu-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
         }
     }
 
@@ -104,11 +112,11 @@
         transform: rotate(-90deg);
 
         &::before {
-            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
+            transform: translate3d($hamburger-menu-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
         }
 
         &::after {
-            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
+            transform: translate3d($hamburger-menu-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
         }
     }
 
@@ -116,31 +124,34 @@
         transform: rotate(90deg);
 
         &::before {
-            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
+            transform: translate3d($hamburger-menu-bar-width * 0.2, 0, 0) rotate(45deg) scale(0.7, 1);
         }
 
         &::after {
-            transform: translate3d($navbar-hamburger-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
+            transform: translate3d($hamburger-menu-bar-width * 0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
         }
     }
 
     &.-minus.-active > .bars {
         &::before {
-            transform: translate3d(0, $navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height, 0);
+            transform: translate3d(0, $hamburger-menu-bar-spacing + $hamburger-menu-bar-height, 0);
         }
 
         &::after {
-            transform: translate3d(0, -($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height), 0);
+            transform: translate3d(0, -($hamburger-menu-bar-spacing + $hamburger-menu-bar-height), 0);
         }
     }
 
     &.-plus.-active > .bars {
         &::before {
-            transform: translate3d(0, $navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height, 0);
+            transform: translate3d(0, $hamburger-menu-bar-spacing + $hamburger-menu-bar-height, 0);
         }
 
         &::after {
-            transform: translate3d(0, -($navbar-hamburger-bar-spacing + $navbar-hamburger-bar-height), 0) rotate(90deg);
+            transform: translate3d(0, -($hamburger-menu-bar-spacing + $hamburger-menu-bar-height), 0) rotate(90deg);
         }
     }
+
+    @extend .hamburger.-light;
 }
+

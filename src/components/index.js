@@ -13,6 +13,7 @@ import IDropdown from '@inkline/inkline/src/components/Dropdown';
 import IDropdownDivider from '@inkline/inkline/src/components/DropdownDivider';
 import IDropdownItem from '@inkline/inkline/src/components/DropdownItem';
 import IDropdownMenu from '@inkline/inkline/src/components/DropdownMenu';
+import IHamburgerMenu from '@inkline/inkline/src/components/HamburgerMenu';
 import IHeader from '@inkline/inkline/src/components/Header';
 import IIcon from '@inkline/inkline/src/components/Icon';
 import ILayout from '@inkline/inkline/src/components/Layout';
@@ -71,6 +72,7 @@ export {
     IDropdownDivider,
     IDropdownItem,
     IDropdownMenu,
+    IHamburgerMenu,
     IHeader,
     IIcon,
     ILayout,
