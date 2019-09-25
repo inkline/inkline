@@ -1,8 +1,9 @@
 @import '~@inkline/inkline/css/config/index';
 @import '~@inkline/inkline/css/mixins/index';
+@import '../css/config/index';
 
 #documentation-layout > .container > .row > .column > .layout > .layout-content {
-    margin: 62px auto $spacer;
+    margin: $navbar-height auto $spacer;
 }
 
 #documentation-layout {
@@ -22,7 +23,7 @@
             position: fixed;
             width: 100%;
             padding: 0;
-            top: 62px;
+            top: $navbar-height;
             left: 0;
             z-index: 1029;
             background-color: rgba(0, 0, 0, 0.25);
