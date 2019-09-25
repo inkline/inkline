@@ -1,6 +1,4 @@
 <i-navbar id="navbar" collapse="">
-    <i-hamburger-menu class="navbar-toggle" :active="sidebarOpen" @click="toggleSidebar"></i-hamburger-menu>
-
     <i-navbar-brand :to="{ name: 'index' }">
         <img class="logo -dark" src="/images/logo-80.png" height="26" alt="Inkline - Vue.js UI/UX Framework">
         <img class="logo -light" src="/images/logo-light-80.png" height="26" alt="Inkline - Vue.js UI/UX Framework">
@@ -18,6 +16,11 @@
             <i-nav-item href="https://github.com/inkline/inkline" target="_blank">
                 <font-awesome-icon :icon="['fab', 'github']" size="lg" />
             </i-nav-item>
+            <i-hamburger-menu
+                class="sidebar-toggle"
+                :active="sidebarOpen"
+                @click="toggleSidebar">
+            </i-hamburger-menu>
         </i-nav>
     </i-navbar-items>
 </i-navbar>

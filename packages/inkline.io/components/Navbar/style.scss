@@ -17,6 +17,9 @@
 
     > .container > .row > .column {
         > .brand {
+            margin-right: ($spacer / 2);
+            letter-spacing: 0.6px;
+
             .logo {
                 &.-light {
                     display: none;
@@ -29,7 +32,11 @@
         }
 
         > .items > .nav {
-            margin-right: (- $spacer);
+            margin-right: -9px;
+
+            @include breakpoint-down('sm') {
+                margin-right: 0;
+            }
 
             > .item {
                 border-radius: border-radius('md');
@@ -79,11 +86,9 @@
                     color: rgba(255, 255, 255, 1);
                 }
             }
-        }
 
-        @include breakpoint-down('md') {
-            > .container > .row > .column {
-                > .brand {
+            > .brand {
+                @include breakpoint-down('md') {
                     color: colors('light');
 
                     .logo {
@@ -96,12 +101,8 @@
                         }
                     }
                 }
-            }
-        }
 
-        @include breakpoint-up(lg) {
-            > .container > .row > .column {
-                > .brand {
+                @include breakpoint-up(lg) {
                     color: colors('dark');
 
                     .logo {
@@ -127,7 +128,7 @@
     }
 
     &.-docs {
-        .navbar-toggle {
+        .sidebar-toggle {
             display: block;
 
             @include breakpoint-up('md') {
@@ -138,14 +139,13 @@
 }
 
 #navbar-nav-home {
-    @media screen and (max-width: 320px) { /* stylelint-disable-line scss/media-feature-value-dollar-variable */
+    @media screen and (max-width: 374px) {
         display: none;
     }
 }
 
-.navbar-toggle {
-    padding: 8px 12px;
-    margin-right: $spacer;
+.hamburger.sidebar-toggle {
+    padding: 10px 12px;
     border-radius: border-radius('md');
     background-color: transparent;
     border: 0;
