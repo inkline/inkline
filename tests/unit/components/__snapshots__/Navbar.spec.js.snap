@@ -5,7 +5,7 @@ exports[`Components Navbar should render correctly 1`] = `
   <i-container-stub>
     <i-row-stub>
       <i-column-stub offset="" push="" pull="" xs="true" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" offsetmd="" pushmd="" pullmd="" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
-        <div class="hamburger -close"><span class="bars"></span></div>
+        <i-hamburger-menu-stub variant="" animation="close"><span class="bars"></span></i-hamburger-menu-stub>
       </i-column-stub>
     </i-row-stub>
   </i-container-stub>

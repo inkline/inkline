@@ -156,11 +156,11 @@ describe('Components', () => {
                 wrapper.vm.created();
 
                 expect(spy).toHaveBeenCalled();
-                expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 2);
+                expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 1);
             });
 
             it('should add "-collapsed" class if "collapsed"', () => {
-                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 2];
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
 
                 expect(rule()).toEqual(expect.objectContaining({
                     '-collapsed': false
@@ -176,7 +176,7 @@ describe('Components', () => {
             });
 
             it('should add "-collapse-md" class if "collapse"', () => {
-                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 2];
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
 
                 wrapper.setProps({
                     collapse: 'md'
@@ -184,19 +184,6 @@ describe('Components', () => {
 
                 expect(rule()).toEqual(expect.objectContaining({
                     '-collapse-md': true
-                }));
-            });
-
-            it('should add "-active" class and animation to hamburger if "collapsed"', () => {
-                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
-
-                wrapper.setData({
-                    collapsed: true
-                });
-
-                expect(rule()).toEqual(expect.objectContaining({
-                    '-active': true,
-                    '-close': true
                 }));
             });
 
