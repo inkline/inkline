@@ -71,7 +71,6 @@ export default {
             this.collapsed = value;
         },
         toggleCollapse() {
-            console.log("CLICKY")
             this.collapsed = !this.collapsed;
         },
         onWindowResize() {
