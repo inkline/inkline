@@ -1,12 +1,12 @@
 <template>
 <div id="documentation-layout">
-    <navbar class="-docs" @toggle="collapsed = !collapsed" />
+    <navbar class="-docs" @toggle="toggleSidebarOpen" ref="navbar" />
     <i-container>
         <i-row>
             <i-column>
                 <i-layout vertical ref="layout">
                     <transition name="fade-in-transition">
-                        <i-layout-aside id="layout-aside-left" v-show="collapsed || !collapsible">
+                        <i-layout-aside id="layout-aside-left" v-show="sidebarOpen || !collapsible">
                             <div class="layout-fixed-full-height" v-match-parent-width>
                                 <site-search class="_visible-sm-and-down"></site-search>
                                 <site-navigation></site-navigation>
@@ -41,7 +41,7 @@ import SiteSearch from '@components/SiteSearch'
 import SiteNavigation from '@components/SiteNavigation'
 import PageNavigation from '@components/PageNavigation'
 import MatchParentWidth from '@directives/match-parent-width'
-import { getStyleProperty, off, on } from '@inkline/inkline/helpers'
+import { getStyleProperty, off, on, dispatch } from '@inkline/inkline/helpers'
 import { breakpoints } from '@inkline/inkline/constants'
 
 export default {
@@ -58,7 +58,7 @@ export default {
     },
     data() {
         return {
-            collapsed: false,
+            sidebarOpen: false,
             collapsible: false,
             collapse: 'sm',
             windowWidth: typeof window !== 'undefined' ? window.innerWidth : 0
@@ -91,8 +91,16 @@ export default {
         },
         onLayoutClick(e) {
             if (e.target.id === 'layout-aside-left') {
-                this.collapsed = false;
+                this.setSidebarOpen(false);
             }
+        },
+        toggleSidebarOpen() {
+            this.setSidebarOpen(!this.sidebarOpen);
+        },
+        setSidebarOpen(value) {
+            this.sidebarOpen = value;
+
+            this.$refs.navbar.$emit.apply(this.$refs.navbar, ['sidebarToggle', value]);
         },
         onWindowResize() {
             if (!this.collapse) { return; }
@@ -100,7 +108,7 @@ export default {
             const windowWidth = window.innerWidth;
 
             if (this.windowWidth <= breakpoints[this.collapse][1] && windowWidth > breakpoints[this.collapse][1]) {
-                this.collapsed = false;
+                this.setSidebarOpen(false);
             }
 
             this.collapsible = windowWidth <= breakpoints[this.collapse][1];
@@ -109,8 +117,8 @@ export default {
     },
     watch: {
         $route() {
-            if (this.collapsible && this.collapsed) {
-                this.collapsed = false;
+            if (this.collapsible && this.sidebarOpen) {
+                this.setSidebarOpen(false);
             }
         }
     },
