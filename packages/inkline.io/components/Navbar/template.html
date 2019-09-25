@@ -1,5 +1,5 @@
 <i-navbar id="navbar" collapse="">
-    <i-hamburger-menu @click="$emit('toggle')"></i-hamburger-menu>
+    <i-hamburger-menu class="navbar-toggle" :active="sidebarOpen" @click="toggleSidebar"></i-hamburger-menu>
 
     <i-navbar-brand :to="{ name: 'index' }">
         <img class="logo -dark" src="/images/logo-80.png" height="26" alt="Inkline - Vue.js UI/UX Framework">
