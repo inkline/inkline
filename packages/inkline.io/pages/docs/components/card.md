@@ -173,16 +173,16 @@ The default size is set to `md`.
 ### Variants
 Inkline includes several predefined card styles that you can use within your application. You can apply a style using the `variant` property.
 
-<i-code-preview title="Card Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Card">
+<i-code-preview title="Card Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Card" class="_padding-bottom-0">
 
-<i-row class="_margin-bottom-1">
-    <i-column md="6">
+<i-row>
+    <i-column md="6" class="_margin-bottom-1">
         <i-card variant="light">
             <template slot="header">Light Card</template>
             Some quick example text to build on the card title and make up the bulk of the card's content.
         </i-card>
     </i-column>
-    <i-column md="6">
+    <i-column md="6" class="_margin-bottom-1">
         <i-card variant="dark">
             <template slot="header">Dark Card</template>
             Some quick example text to build on the card title and make up the bulk of the card's content.
@@ -190,14 +190,14 @@ Inkline includes several predefined card styles that you can use within your app
     </i-column>
 </i-row>
 
-<i-row class="_margin-bottom-1">
-    <i-column md="6">
+<i-row>
+    <i-column md="6" class="_margin-bottom-1">
         <i-card variant="primary">
             <template slot="header">Primary Card</template>
             Some quick example text to build on the card title and make up the bulk of the card's content.
         </i-card>
     </i-column>
-    <i-column md="6">
+    <i-column md="6" class="_margin-bottom-1">
         <i-card variant="secondary">
             <template slot="header">Secondary Card</template>
             Some quick example text to build on the card title and make up the bulk of the card's content.
@@ -205,14 +205,14 @@ Inkline includes several predefined card styles that you can use within your app
     </i-column>
 </i-row>
 
-<i-row class="_margin-bottom-1">
-    <i-column md="6">
+<i-row>
+    <i-column md="6" class="_margin-bottom-1">
         <i-card variant="success">
             <template slot="header">Success Card</template>
             Some quick example text to build on the card title and make up the bulk of the card's content.
         </i-card>
     </i-column>
-    <i-column md="6">
+    <i-column md="6" class="_margin-bottom-1">
         <i-card variant="danger">
             <template slot="header">Danger Card</template>
             Some quick example text to build on the card title and make up the bulk of the card's content.
@@ -221,13 +221,13 @@ Inkline includes several predefined card styles that you can use within your app
 </i-row>
 
 <i-row>
-    <i-column md="6">
+    <i-column md="6" class="_margin-bottom-1">
         <i-card variant="warning">
             <template slot="header">Warning Card</template>
             Some quick example text to build on the card title and make up the bulk of the card's content.
         </i-card>
     </i-column>
-    <i-column md="6">
+    <i-column md="6" class="_margin-bottom-1">
         <i-card variant="info">
             <template slot="header">Info Card</template>
             Some quick example text to build on the card title and make up the bulk of the card's content.
