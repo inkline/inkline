@@ -153,7 +153,7 @@ The goal of cover background images on a website is to cover the entire browser 
 
 <i-api-preview title="Header API" expanded markup="i-header" link="https://github.com/inkline/inkline/tree/master/src/components/Header">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -193,10 +193,10 @@ The goal of cover background images on a website is to cover the entire browser 
                     <td><code>md</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -209,6 +209,6 @@ The goal of cover background images on a website is to cover the entire browser 
                     <td>Slot for header default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

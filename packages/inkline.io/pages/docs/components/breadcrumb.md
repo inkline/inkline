@@ -123,7 +123,7 @@ You're able to use the `size` modifier to control the text and spacing size of y
 
 <i-api-preview title="Breadcrumb API" expanded markup="i-breadcrumb" link="https://github.com/inkline/inkline/tree/master/src/components/Breadcrumb">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -142,10 +142,10 @@ You're able to use the `size` modifier to control the text and spacing size of y
                     <td><code>md</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -158,13 +158,13 @@ You're able to use the `size` modifier to control the text and spacing size of y
                     <td>Slot for breadcrumb default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Breadcrumb Item API" expanded markup="i-breadcrumb-item" link="https://github.com/inkline/inkline/tree/master/src/components/BreadcrumbItem">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -204,10 +204,10 @@ You're able to use the `size` modifier to control the text and spacing size of y
                     <td></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -220,6 +220,6 @@ You're able to use the `size` modifier to control the text and spacing size of y
                     <td>Slot for breadcrumb item default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

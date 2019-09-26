@@ -247,7 +247,7 @@ Inkline includes two predefined popover styles, each serving its own semantic pu
 
 <i-api-preview title="Popover API" markup="i-popover" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Popover">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -331,10 +331,10 @@ Inkline includes two predefined popover styles, each serving its own semantic pu
                     <td><code>light</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -359,10 +359,10 @@ Inkline includes two predefined popover styles, each serving its own semantic pu
                     <td>Slot for popover component footer.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="events">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -377,7 +377,7 @@ Inkline includes two predefined popover styles, each serving its own semantic pu
                     <td><code>(visible: Boolean) => {}</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 

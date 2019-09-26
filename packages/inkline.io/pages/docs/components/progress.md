@@ -256,7 +256,7 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
 
 <i-api-preview title="Progress API" markup="i-progress" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Progress">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -282,10 +282,10 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
                     <td><code>light</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -298,13 +298,13 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
                     <td>Slot for progresss's default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Progress Bar API" markup="i-progress-bar" expanded link="https://github.com/inkline/inkline/tree/master/src/components/ProgressBar">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -344,10 +344,10 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
                     <td><code>primary</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -360,6 +360,6 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
                     <td>Slot for progress bars's default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

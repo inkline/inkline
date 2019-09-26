@@ -155,7 +155,7 @@ export default {
 
 <i-api-preview title="Form Label API" markup="i-form-label" expanded>
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -181,10 +181,10 @@ export default {
                     <td><code>md</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -197,6 +197,6 @@ export default {
                     <td>Slot for form label default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

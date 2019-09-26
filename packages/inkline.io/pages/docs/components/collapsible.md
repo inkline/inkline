@@ -240,7 +240,7 @@ Inkline includes basic predefined collapsible styles that you can use within you
 
 <i-api-preview title="Collapsible API" markup="i-collapsible" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Collapsible">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -273,10 +273,10 @@ Inkline includes basic predefined collapsible styles that you can use within you
                     <td><code>light</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -289,10 +289,10 @@ Inkline includes basic predefined collapsible styles that you can use within you
                     <td>Slot for collapsible default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="events">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -307,13 +307,13 @@ Inkline includes basic predefined collapsible styles that you can use within you
                     <td><code>(activeItems: String[]) => {}</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Collapsible Item API" markup="i-collapsible-item" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Collapsible">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -339,10 +339,10 @@ Inkline includes basic predefined collapsible styles that you can use within you
                     <td><code>collapsible-item-&lt;uid&gt;</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -359,6 +359,6 @@ Inkline includes basic predefined collapsible styles that you can use within you
                     <td>Slot for collapsible item title.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
