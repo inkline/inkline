@@ -4,16 +4,16 @@
 ### Variants
 Inkline includes several predefined button styles, each serving its own semantic purpose, with a few extra variants available for more control.
 
-<i-code-preview title="Button Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Button Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button variant="primary">Primary</i-button>&nbsp;
-<i-button variant="secondary">Secondary</i-button>&nbsp;
-<i-button variant="success">Success</i-button>&nbsp;
-<i-button variant="danger">Danger</i-button>&nbsp;
-<i-button variant="warning">Warning</i-button>&nbsp;
-<i-button variant="info">Info</i-button>&nbsp;
-<i-button variant="light">Light</i-button>&nbsp;
+<i-button variant="primary">Primary</i-button>
+<i-button variant="secondary">Secondary</i-button>
+<i-button variant="success">Success</i-button>
+<i-button variant="danger">Danger</i-button>
+<i-button variant="warning">Warning</i-button>
+<i-button variant="info">Info</i-button>
+<i-button variant="light">Light</i-button>
 <i-button variant="dark">Dark</i-button>
 </div>
 
@@ -52,11 +52,11 @@ Inkline includes several predefined button styles, each serving its own semantic
 The `<i-button>` component makes use of a `<button>` element markup behind the scenes. Therefore, you can assign a type to it,
 just like with the `<button>` element.
 
-<i-code-preview title="Button Type" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Button Type" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button type="button">Button</i-button>&nbsp;
-<i-button type="submit">Submit</i-button>&nbsp;
+<i-button type="button">Button</i-button>
+<i-button type="submit">Submit</i-button>
 <i-button type="reset">Reset</i-button>
 </div>
 
@@ -77,19 +77,19 @@ just like with the `<button>` element.
 
 If you need to change the `<button>` node used to render the component, you can use the `tag` property to change it.
 
-<i-code-preview title="Button Tag" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Button Tag" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button tag="a">Anchor</i-button>&nbsp;
+<i-button tag="a">Anchor</i-button>
 </div>
 <div>
-<i-button tag="button" type="button">Button</i-button>&nbsp;
-<i-button tag="button" type="submit">Submit Button</i-button>&nbsp;
-<i-button tag="button" type="reset">Reset Button</i-button>&nbsp;
+<i-button tag="button" type="button">Button</i-button>
+<i-button tag="button" type="submit">Submit Button</i-button>
+<i-button tag="button" type="reset">Reset Button</i-button>
 </div>
 <div>
-<i-button tag="input" type="button" value="Input"></i-button>&nbsp;
-<i-button tag="input" type="submit" value="Submit Input"></i-button>&nbsp;
+<i-button tag="input" type="button" value="Input"></i-button>
+<i-button tag="input" type="submit" value="Submit Input"></i-button>
 <i-button tag="input" type="reset" value="Reset Input"></i-button>
 </div>
 
@@ -117,16 +117,16 @@ If you need to change the `<button>` node used to render the component, you can 
 Sometimes, buttons should not stand out so much. Replace the default modifier classes with the `outline` property
 to remove background images and colors on any button when not interacted with.
 
-<i-code-preview title="Button Outline" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Button Outline" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button outline variant="primary">Primary</i-button>&nbsp;
-<i-button outline variant="secondary">Secondary</i-button>&nbsp;
-<i-button outline variant="success">Success</i-button>&nbsp;
-<i-button outline variant="danger">Danger</i-button>&nbsp;
-<i-button outline variant="warning">Warning</i-button>&nbsp;
-<i-button outline variant="info">Info</i-button>&nbsp;
-<i-button outline variant="light">Light</i-button>&nbsp;
+<i-button outline variant="primary">Primary</i-button>
+<i-button outline variant="secondary">Secondary</i-button>
+<i-button outline variant="success">Success</i-button>
+<i-button outline variant="danger">Danger</i-button>
+<i-button outline variant="warning">Warning</i-button>
+<i-button outline variant="info">Info</i-button>
+<i-button outline variant="light">Light</i-button>
 <i-button outline variant="dark">Dark</i-button>
 </div>
 
@@ -163,16 +163,16 @@ to remove background images and colors on any button when not interacted with.
 ### Link Style
 You can create link buttons that look the same as normal links. Link buttons will use the `variant` property to set the color of the link.
 
-<i-code-preview title="Link Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Link Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button link variant="primary">Primary</i-button>&nbsp;
-<i-button link variant="secondary">Secondary</i-button>&nbsp;
-<i-button link variant="success">Success</i-button>&nbsp;
-<i-button link variant="danger">Danger</i-button>&nbsp;
-<i-button link variant="warning">Warning</i-button>&nbsp;
-<i-button link variant="info">Info</i-button>&nbsp;
-<i-button link variant="light">Light</i-button>&nbsp;
+<i-button link variant="primary">Primary</i-button>
+<i-button link variant="secondary">Secondary</i-button>
+<i-button link variant="success">Success</i-button>
+<i-button link variant="danger">Danger</i-button>
+<i-button link variant="warning">Warning</i-button>
+<i-button link variant="info">Info</i-button>
+<i-button link variant="light">Light</i-button>
 <i-button link variant="dark">Dark</i-button>
 </div>
 
@@ -210,11 +210,11 @@ You can create link buttons that look the same as normal links. Link buttons wil
 Circle buttons are very common when working with icon actions. You can transform buttons into circles using the `circle`
 modifier. You're also able to use the `size` modifier to control the size of your circle buttons. 
 
-<i-code-preview title="Circle Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Circle Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button circle size="sm">S</i-button>&nbsp;
-<i-button circle>M</i-button>&nbsp;
+<i-button circle size="sm">S</i-button>
+<i-button circle>M</i-button>
 <i-button circle size="lg">L</i-button>
 </div>
 
@@ -237,11 +237,11 @@ modifier. You're also able to use the `size` modifier to control the size of you
 You're able to use the `size` modifier to control the size of your buttons, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Button Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Button Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button size="sm">Small Button</i-button>&nbsp;
-<i-button size="md">Medium Button</i-button>&nbsp;
+<i-button size="sm">Small Button</i-button>
+<i-button size="md">Medium Button</i-button>
 <i-button size="lg">Large Button</i-button>
 </div>
 
@@ -263,7 +263,7 @@ The default size is set to `md`.
 ### Block
 You can create block level buttons that span the full width of a parent by adding the `block` property.
 
-<i-code-preview title="Block Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Block Button" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 <i-button block>Block Button</i-button>
 
 <template slot="html">
@@ -278,10 +278,10 @@ You can create block level buttons that span the full width of a parent by addin
 ### Active State
 Buttons will appear pressed when active. You can force a button to have an active appearance with the `active` property (this will also include the aria-pressed="true" attribute).
 
-<i-code-preview title="Active Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Active Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button active>Active Default Button</i-button>&nbsp;
+<i-button active>Active Default Button</i-button>
 <i-button active variant="primary">Active Primary Button</i-button>
 </div>
 
@@ -300,10 +300,10 @@ Buttons will appear pressed when active. You can force a button to have an activ
 ### Disabled State
 You can make buttons look inactive or disabled by adding the `disabled` boolean property to an `<i-button>` element.
 
-<i-code-preview title="Disabled Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Disabled Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button disabled>Disabled Default Button</i-button>&nbsp;
+<i-button disabled>Disabled Default Button</i-button>
 <i-button disabled variant="primary">Disabled Primary Button</i-button>
 </div>
 
@@ -324,10 +324,10 @@ You can add a loading state to the button by setting the `loading` boolean prope
 
 By default, the button will display a standard Inkline loading spinner. You can provide custom loading state by providing a `loading` slot.
 
-<i-code-preview title="Loading Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Loading Button State" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button :loading="true">Button</i-button>&nbsp;
+<i-button :loading="true">Button</i-button>
 <i-button :loading="true">
     Button
     <template v-slot:loading>
@@ -361,10 +361,10 @@ Buttons will be automatically converted to link anchors `<a>` when providing a `
 
 The `<i-button>` component is well integrated with the [Vue Router](https://router.vuejs.org) plugin and will be converted to a `<router-link>` when using the `to` property.
 
-<i-code-preview title="Button Linking and Routing" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="_padding-bottom-0">
+<i-code-preview title="Button Linking and Routing" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button href="http://inkline.io">Button Link</i-button>&nbsp;
+<i-button href="http://inkline.io">Button Link</i-button>
 <i-button :to="{ name: 'docs-components-button' }">Button Route</i-button>
 </div>
 
@@ -504,21 +504,21 @@ The `<i-button>` component is well integrated with the [Vue Router](https://rout
         </i-table>
     </template>
     <template slot="events">
-            <i-table bordered responsive class="_margin-bottom-0">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Prototype</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>click</td>
-                        <td>Emitted when button component is clicked.</td>
-                        <td><code>(event: Event) => {}</code></td>
-                    </tr>
-                </tbody>
-            </i-table>
-        </template>
+        <i-table bordered responsive class="_margin-bottom-0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Prototype</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>click</td>
+                    <td>Emitted when button component is clicked.</td>
+                    <td><code>(event: Event) => {}</code></td>
+                </tr>
+            </tbody>
+        </i-table>
+    </template>
 </i-api-preview>
