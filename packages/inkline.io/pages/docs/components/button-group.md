@@ -89,10 +89,9 @@ When placing a `<i-button-group>` inside another `<i-button-group>`, you'll get 
 
 <i-button-group>
     <i-button>Button 1</i-button>
-    <i-button>Button 2</i-button>
     <i-button-group>
+        <i-button>Button 2</i-button>
         <i-button>Button 3</i-button>
-        <i-button>Button 4</i-button>
     </i-button-group>
 </i-button-group>
 
@@ -101,10 +100,9 @@ When placing a `<i-button-group>` inside another `<i-button-group>`, you'll get 
 ~~~html
 <i-button-group>
     <i-button>Button 1</i-button>
-    <i-button>Button 2</i-button>
     <i-button-group>
+        <i-button>Button 2</i-button>
         <i-button>Button 3</i-button>
-        <i-button>Button 4</i-button>
     </i-button-group>
 </i-button-group>
 ~~~
