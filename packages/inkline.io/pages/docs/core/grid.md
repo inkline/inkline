@@ -1041,7 +1041,7 @@ You can make the `<i-container>` component fill the whole width of the parent el
 
 <i-api-preview title="Container API" expanded>
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -1060,10 +1060,10 @@ You can make the `<i-container>` component fill the whole width of the parent el
                     <td><code>false</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -1076,13 +1076,13 @@ You can make the `<i-container>` component fill the whole width of the parent el
                     <td>Slot for container default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Row API" expanded>
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -1171,10 +1171,10 @@ You can make the `<i-container>` component fill the whole width of the parent el
                     <td><code>false</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -1187,14 +1187,14 @@ You can make the `<i-container>` component fill the whole width of the parent el
                     <td>Slot for row default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 
 
 <i-api-preview title="Column API" expanded>
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -1276,10 +1276,10 @@ You can make the `<i-container>` component fill the whole width of the parent el
                     <td><code>false</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -1292,7 +1292,7 @@ You can make the `<i-container>` component fill the whole width of the parent el
                     <td>Slot for column default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 

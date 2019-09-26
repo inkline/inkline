@@ -10,6 +10,7 @@
                         class="tab"
                         :class="{ '-active': active === tab.id, '-icon': tab.icon }"
                         :key="tab.id"
+                        :title="tab.title"
                         :variant="active === tab.id ? 'primary' : 'light'"
                         @click="setActive(tab.id)"
                         v-if="$slots[tab.id]"
@@ -19,7 +20,7 @@
                 </i-button>
             </i-button-group>
 
-            <i-button size="sm" class="link" v-if="link" :href="link" rel="nofollow" target="_blank">
+            <i-button title="View on GitHub" size="sm" class="link" v-if="link" :href="link" rel="nofollow" target="_blank">
                 <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>
             </i-button>
         </div>

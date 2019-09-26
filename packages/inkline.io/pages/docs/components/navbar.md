@@ -331,7 +331,7 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
 
 <i-api-preview title="Navbar API" markup="i-navbar" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -371,10 +371,10 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
                     <td><code>light</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -387,13 +387,13 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
                     <td>Slot for navbar component default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Navbar Brand API" markup="i-navbar-brand" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/src/components/NavbarBrand">
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -406,13 +406,13 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
                     <td>Slot for navbar brand component default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Navbar Items API" markup="i-navbar-items" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/src/components/NavbarItems">
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -425,6 +425,6 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
                     <td>Slot for navbar items component default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

@@ -267,7 +267,7 @@ export default {
 
 <i-api-preview title="Modal API" markup="i-modal" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Modal">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -308,10 +308,10 @@ export default {
                     <td><code>zoom-in-center-transition</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -332,10 +332,10 @@ export default {
                     <td>Slot for modal footer content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="events">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -360,6 +360,6 @@ export default {
                     <td><code>(instance: VueComponent) => {}</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

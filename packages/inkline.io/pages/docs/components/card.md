@@ -294,7 +294,7 @@ Inkline includes several predefined card styles that you can use within your app
 
 <i-api-preview markup="i-card" title="Card API" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Card">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -320,10 +320,10 @@ Inkline includes several predefined card styles that you can use within your app
                     <td><code>primary</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -336,6 +336,6 @@ Inkline includes several predefined card styles that you can use within your app
                     <td>Slot for card default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

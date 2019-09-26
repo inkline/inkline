@@ -196,7 +196,7 @@ The default size is set to `md`.
 
 <i-api-preview title="Button Group API" expanded markup="i-button-group" link="https://github.com/inkline/inkline/tree/master/src/components/ButtonGroup">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -229,10 +229,10 @@ The default size is set to `md`.
                     <td><code>false</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -245,6 +245,6 @@ The default size is set to `md`.
                     <td>Slot for button group default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

@@ -64,7 +64,7 @@ The default size is set to `md`.
 
 <i-api-preview title="Icon API" expanded markup="i-icon" link="https://github.com/inkline/inkline/tree/master/src/components/Icon">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -90,10 +90,10 @@ The default size is set to `md`.
                     <td><code>md</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -106,6 +106,6 @@ The default size is set to `md`.
                     <td>Slot for header default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

@@ -144,7 +144,7 @@ You can control the active state of your `<i-nav-item>` using the `active` prope
 
 <i-api-preview title="Nav API" expanded markup="i-nav" link="https://github.com/inkline/inkline/tree/master/src/components/Nav">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -170,10 +170,10 @@ You can control the active state of your `<i-nav-item>` using the `active` prope
                     <td><code>false</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -186,13 +186,13 @@ You can control the active state of your `<i-nav-item>` using the `active` prope
                     <td>Slot for nav default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Nav Item API" markup="i-nav-item" expanded link="https://github.com/inkline/inkline/tree/master/src/components/NavItem">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -225,10 +225,10 @@ You can control the active state of your `<i-nav-item>` using the `active` prope
                     <td><code>div</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -241,6 +241,6 @@ You can control the active state of your `<i-nav-item>` using the `active` prope
                     <td>Slot for nav item default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

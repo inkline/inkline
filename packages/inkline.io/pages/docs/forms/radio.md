@@ -277,7 +277,7 @@ export default {
 
 <i-api-preview title="Radio API" markup="i-radio" expanded>
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -338,10 +338,10 @@ export default {
                     <td></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -354,10 +354,10 @@ export default {
                     <td>Slot for radio form component label.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="events">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -387,13 +387,13 @@ export default {
                     <td><code>(value: String) => {}</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Radio Group API" markup="i-radio-group" expanded>
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -433,10 +433,10 @@ export default {
                     <td></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -449,10 +449,10 @@ export default {
                     <td>Slot for radio form group component default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="events">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -477,7 +477,7 @@ export default {
                     <td><code>(value: String) => {}</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 

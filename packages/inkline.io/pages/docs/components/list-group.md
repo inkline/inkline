@@ -215,7 +215,7 @@ The `<i-list-group-item>` accepts any type of content, allowing you to create la
 
 <i-api-preview title="List Group API" expanded markup="i-list-group" link="https://github.com/inkline/inkline/tree/master/src/components/ListGroup">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -241,10 +241,10 @@ The `<i-list-group-item>` accepts any type of content, allowing you to create la
                     <td><code>md</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -257,13 +257,13 @@ The `<i-list-group-item>` accepts any type of content, allowing you to create la
                     <td>Slot for list group default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="List Group Item API" markup="i-list-group-item" expanded link="https://github.com/inkline/inkline/tree/master/src/components/ListGroupItem">
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -296,10 +296,10 @@ The `<i-list-group-item>` accepts any type of content, allowing you to create la
                     <td><code>div</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -312,6 +312,6 @@ The `<i-list-group-item>` accepts any type of content, allowing you to create la
                     <td>Slot for list group item default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>

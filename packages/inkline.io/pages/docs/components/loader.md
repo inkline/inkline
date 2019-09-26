@@ -97,7 +97,7 @@ You're able to provide some additional text by using the `default` loader slot.
 
 <i-api-preview title="Loader API" markup="i-loader" expanded>
     <template slot="props">
-        <table class="table -bordered">
+        <i-table bordered responsive>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -130,10 +130,10 @@ You're able to provide some additional text by using the `default` loader slot.
                     <td><code>light</code></td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
     <template slot="slots">
-        <table class="table -bordered _margin-bottom-0">
+        <i-table bordered responsive class="_margin-bottom-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -146,6 +146,6 @@ You're able to provide some additional text by using the `default` loader slot.
                     <td>Slot for loader default content.</td>
                 </tr>
             </tbody>
-        </table>
+        </i-table>
     </template>
 </i-api-preview>
