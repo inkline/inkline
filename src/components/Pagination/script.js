@@ -40,7 +40,7 @@ export default {
         },
         quickLink: {
             type: Boolean,
-            default: false
+            default: true
         },
         value: {
             type: Number,
