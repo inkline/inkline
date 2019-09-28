@@ -91,7 +91,7 @@
                             </a>
                         </li>
                         <li class="footer-icon">
-                            <a href="https://twitter.com/inklineUX" target="_blank">
+                            <a href="https://twitter.com/inkline" target="_blank">
                                 <font-awesome-icon size="lg" :icon="['fab', 'twitter']"></font-awesome-icon>
                             </a>
                         </li>
