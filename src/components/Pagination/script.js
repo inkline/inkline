@@ -135,6 +135,8 @@ export default {
         if (!Vue.$isServer && typeof window !== 'undefined') {
             window.addEventListener('resize', this.debouncedOnWindowResize);
         }
+    },
+    mounted() {
         this.onWindowResize();
     },
     destroyed() {

@@ -11,6 +11,7 @@ describe('Components', () => {
             wrapper = shallowMount(Pagination, {
                 methods: {
                     created: Pagination.created,
+                    mounted: Pagination.mounted,
                     destroyed: Pagination.destroyed
                 }
             });
@@ -49,7 +50,7 @@ describe('Components', () => {
             describe('quickLink', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.quickLink).toBeDefined();
-                    expect(wrapper.vm.quickLink).toEqual(false);
+                    expect(wrapper.vm.quickLink).toEqual(true);
                 });
             });
 
@@ -354,11 +355,17 @@ describe('Components', () => {
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith('resize', wrapper.vm.debouncedOnWindowResize);
             });
+        });
+
+        describe('mounted()', () => {
+            it('should be defined', () => {
+                expect(Pagination.mounted).toBeDefined();
+            });
 
             it('should call initial onWindowResize', () => {
                 const spy = jest.spyOn(wrapper.vm, 'onWindowResize');
 
-                wrapper.vm.created();
+                wrapper.vm.mounted();
 
                 expect(spy).toHaveBeenCalled();
             });
