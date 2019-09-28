@@ -21,7 +21,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/vue-fontawesome": "^0.1.7",
-    "@inkline/inkline": "^1.16.11",
+    "@inkline/inkline": "^1.16.12",
     "fuse.js": "^3.4.5",
     "lodash-es": "^4.17.15",
     "node-sass": "^4.12.0",
