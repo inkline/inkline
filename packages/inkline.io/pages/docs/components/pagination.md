@@ -67,7 +67,7 @@ export default {
 ### Sizes
 You're able to use the `size` modifier to control the size of your pagination items, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Pagination Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
+<i-code-preview title="Pagination Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination" class="_overflow-hidden">
 
 <div>
 <i-pagination v-model="currentPageSm" size="sm" :items="100" :items-per-page="10"></i-pagination>
@@ -85,6 +85,106 @@ You're able to use the `size` modifier to control the size of your pagination it
 <i-pagination v-model="currentPage" size="md" :items="100" :items-per-page="10"></i-pagination>
 
 <i-pagination v-model="currentPage" size="lg" :items="100" :items-per-page="10"></i-pagination>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+  data () {
+    return {
+      currentPage: 1
+    };
+  }
+}
+~~~
+
+</template>
+</i-code-preview>
+
+### Limit
+You're able to use the `limit` modifier to control how many items to show besides the first and last items, including the two ellipsis pagination items. 
+
+Make sure this value is an `odd number` for best results.
+
+<i-code-preview title="Pagination Limit" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
+
+<div>
+<i-pagination v-model="currentPagePageLimit" :limit="3" :items="100" :items-per-page="10"></i-pagination>
+</div>
+
+<template slot="html">
+
+~~~html
+<i-pagination v-model="currentPage" :limit="3" :items="100" :items-per-page="10"></i-pagination>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+  data () {
+    return {
+      currentPage: 1
+    };
+  }
+}
+~~~
+
+</template>
+</i-code-preview>
+
+To make things even better, you can responsively control the number of items at each breakpoint, to make sure your design always looks great.
+
+<i-code-preview title="Pagination Responsive Limit" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
+
+<div>
+<i-pagination v-model="currentPagePageLimitResponsive" :limit="pageLimit" :items="100" :items-per-page="10"></i-pagination>
+</div>
+
+<template slot="html">
+
+~~~html
+<i-pagination v-model="currentPage" :limit="pageLimit" :items="100" :items-per-page="10"></i-pagination>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+  data () {
+    return {
+      currentPage: 1,
+      pageLimit: {
+          xs: 3,
+          sm: 5,
+          md: 7
+      }
+    };
+  }
+}
+~~~
+
+</template>
+</i-code-preview>
+
+
+### Quick Links
+You're able to use the `quickLink` modifier to allow the user to click the `…` item to quickly jump through pages, a number of items equal to `limit` at a time. 
+
+<i-code-preview title="Pagination Quick Link" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
+
+<div>
+<i-pagination v-model="currentPageQuickLink" quick-link :items="100" :items-per-page="10"></i-pagination>
+</div>
+
+<template slot="html">
+
+~~~html
+<i-pagination v-model="currentPage" quick-link :items="100" :items-per-page="10"></i-pagination>
 ~~~
 
 </template>
@@ -136,9 +236,16 @@ export default {
                 <tr>
                     <td>limit</td>
                     <td>Sets the maximum number of pagination elements to display at a time.</td>
-                    <td><code>Number</code></td>
-                    <td>n % 2 === 1</td>
-                    <td><code>5</code></td>
+                    <td><code>Number</code>, <code>Object</code></td>
+                    <td><code>n % 2 === 1</code></td>
+                    <td><code>{ xs: 3, sm: 5 }</code></td>
+                </tr>
+                <tr>
+                    <td>quickLink</td>
+                    <td>Enables pagination quick links.</td>
+                    <td><code>Boolean</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td><code>false</code></td>
                 </tr>
                 <tr>
                     <td>size</td>
