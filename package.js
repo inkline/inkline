@@ -2,7 +2,7 @@
 
 Package.describe({
     name: "inkline:inkline",
-    version: "1.16.10",
+    version: "1.16.11",
     summary:
         "Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications",
     git: "https://github.com/inkline/inkline.git",
