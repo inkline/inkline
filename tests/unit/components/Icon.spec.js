@@ -1,135 +1,45 @@
 import { shallowMount } from '@vue/test-utils';
-import Alert from '@inkline/inkline/src/components/Alert';
+import Icon from '@inkline/inkline/src/components/Icon';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('Icon', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Alert, {
+            wrapper = shallowMount(Icon, {
                 methods: {
-                    mounted: Alert.mounted,
-                    created: Alert.created
+                    created: Icon.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Alert.name).toEqual('IAlert');
+            expect(Icon.name).toEqual('IIcon');
         });
 
         it('should render correctly', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
 
-        describe('data', () => {
-            describe('dismissed', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.dismissed).toBeDefined();
-                    expect(wrapper.vm.dismissed).toEqual(false);
-                });
-            });
-        });
-
         describe('props', () => {
-            describe('show', () => {
+            describe('icon', () => {
                 it('should be defined', () => {
-                    expect(wrapper.vm.show).toBeDefined();
-                    expect(wrapper.vm.show).toEqual(true);
+                    expect(wrapper.vm.icon).toBeDefined();
+                    expect(wrapper.vm.icon).toEqual('');
                 });
             });
 
-            describe('dismissible', () => {
+            describe('size', () => {
                 it('should be defined', () => {
-                    expect(wrapper.vm.dismissible).toBeDefined();
-                    expect(wrapper.vm.dismissible).toEqual(false);
+                    expect(wrapper.vm.size).toBeDefined();
+                    expect(wrapper.vm.size).toEqual('');
                 });
-            });
-
-            describe('dismissLabel', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.dismissLabel).toBeDefined();
-                    expect(wrapper.vm.dismissLabel).toEqual('×');
-                });
-            });
-        });
-
-        describe('methods', () => {
-            describe('dismiss()', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.dismiss).toBeDefined();
-                });
-
-                it('should set dismissed to true', () => {
-                    expect(wrapper.vm.dismissed).toEqual(false);
-
-                    wrapper.vm.dismiss();
-
-                    expect(wrapper.vm.dismissed).toEqual(true);
-                });
-
-                it('should emit "dismiss" event', () => {
-                    const spy = jest.spyOn(wrapper.vm, '$emit');
-
-                    wrapper.vm.dismiss();
-
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('dismiss');
-                });
-
-                it('should emit "input" event', () => {
-                    const spy = jest.spyOn(wrapper.vm, '$emit');
-
-                    wrapper.vm.dismiss();
-
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('input', false);
-                });
-            });
-
-            describe('onShowChange()', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.dismiss).toBeDefined();
-                });
-
-                it('should set dismissed to false', () => {
-                    wrapper.setData({ dismissed: true });
-                    wrapper.vm.onShowChange();
-
-                    expect(wrapper.vm.dismissed).toEqual(false);
-                });
-            });
-        });
-
-        describe('watch', () => {
-            describe('show', () => {
-                it('should call onShowChange() when it changes', () => {
-                    const spy = jest.spyOn(wrapper.vm, 'onShowChange');
-
-                    wrapper.setProps({ show: 'newvalue' });
-
-                    expect(spy).toHaveBeenCalled();
-                });
-            });
-        });
-
-        describe('mounted', () => {
-            it('should be defined', () => {
-                expect(Alert.mounted).toBeDefined();
-            });
-
-            it('should call onShowChange() when mounted', () => {
-                const spy = jest.spyOn(wrapper.vm, 'onShowChange');
-
-                wrapper.vm.mounted();
-
-                expect(spy).toHaveBeenCalled();
             });
         });
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(Alert.created).toBeDefined();
+                expect(Icon.created).toBeDefined();
             });
 
             it('should add class rules to classes provider', () => {
@@ -142,27 +52,31 @@ describe('Components', () => {
                 expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 1);
             });
 
-            it('should add "-dismissible" class if "dismissible"', () => {
+            it('should add "-icon" class if "icon"', () => {
                 const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length  - 1];
 
                 expect(rule()).toEqual(expect.objectContaining({
-                    '-dismissible': false
+                    '-': false
                 }));
 
-                wrapper.setProps({
-                    dismissible: true
-                });
+                wrapper.setProps({ icon: 'icon' });
 
                 expect(rule()).toEqual(expect.objectContaining({
-                    '-dismissible': true
+                    '-icon': true
                 }));
             });
 
-            it('should add "-with-icon" class if has icon slot', () => {
+            it('should add "-size" class if "size"', () => {
                 const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length  - 1];
 
                 expect(rule()).toEqual(expect.objectContaining({
-                    '-with-icon': false
+                    '-': false
+                }));
+
+                wrapper.setProps({ size: 'sm' });
+
+                expect(rule()).toEqual(expect.objectContaining({
+                    '-sm': true
                 }));
             });
         });
