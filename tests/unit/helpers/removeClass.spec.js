@@ -42,6 +42,14 @@ describe('Helpers', () => {
 
                 expect(element.className).toEqual('class3');
             });
+
+            it('should ignore double spaces', () => {
+                element.className = 'class1   class2';
+
+                removeClass(element, 'class1');
+
+                expect(element.className).toEqual('class2');
+            });
         });
 
         describe('classList', () => {

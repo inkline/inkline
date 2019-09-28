@@ -205,9 +205,19 @@ describe('Mixins', () => {
                     expect(wrapperWithoutReference.vm.createPopper()).toEqual(undefined);
                 });
 
-                it('should apend to document body if appendToBody is set', () => {
+                it('should append to document body if appendToBody is set', () => {
                     const spy = jest.spyOn(document.body, 'appendChild');
                     wrapper.setProps({ appendToBody: true });
+
+                    wrapper.vm.createPopper();
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should call popperOptions.onUpdate if defined', () => {
+                    wrapper.vm.popperJS = { onUpdate: () => {} };
+                    wrapper.setProps({ popperOptions: { onUpdate: () => {} }});
+                    const spy = jest.spyOn(wrapper.vm.popperJS, 'onUpdate');
 
                     wrapper.vm.createPopper();
 
@@ -225,6 +235,35 @@ describe('Mixins', () => {
                     wrapper.vm.createPopper();
 
                     expect(wrapper.vm.popperJS).toBeDefined();
+                });
+
+                it('should set onCreate callback that emits created event', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.vm.createPopper();
+                    wrapper.vm.popperOptions.onCreate();
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('created', wrapper.vm);
+                });
+
+                it('should set onCreate callback that calls resetTransformOrigin', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'resetTransformOrigin');
+
+                    wrapper.vm.createPopper();
+                    wrapper.vm.popperOptions.onCreate();
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should set onCreate callback that calls updatePopper', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$nextTick');
+
+                    wrapper.vm.createPopper();
+                    wrapper.vm.popperOptions.onCreate();
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith(wrapper.vm.updatePopper);
                 });
             });
 
@@ -308,6 +347,40 @@ describe('Mixins', () => {
                     wrapper.vm.destroyPopper();
 
                     expect(spy).not.toHaveBeenCalled();
+                });
+            });
+
+            describe('onClickOutside()', () => {
+                it('should call hide() if popperJS value is false', () => {
+                    wrapper.vm.hide = jest.fn(() => {});
+                    const spy = jest.spyOn(wrapper.vm, 'hide');
+
+                    wrapper.vm.createPopper();
+                    wrapper.vm.onClickOutside();
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should not call hide() if popperJS value is true', () => {
+                    wrapper.vm.hide = jest.fn(() => {});
+                    const spy = jest.spyOn(wrapper.vm, 'hide');
+
+                    wrapper.setProps({ value: true });
+                    wrapper.vm.createPopper();
+                    wrapper.vm.onClickOutside();
+
+                    expect(spy).not.toHaveBeenCalled();
+                });
+            });
+
+            describe('stopOnClickPropagation()', () => {
+                it('should call event.stopPropagation()', () => {
+                    const e = { stopPropagation: () => {} };
+                    const spy = jest.spyOn(e, 'stopPropagation');
+
+                    wrapper.vm.stopOnClickPropagation(e);
+
+                    expect(spy).toHaveBeenCalled();
                 });
             });
 

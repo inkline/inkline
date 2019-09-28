@@ -23,5 +23,14 @@ describe('Helpers', () => {
 
             expect(getStyleProperty(element, 'padding')).toEqual('10px');
         });
+
+        it('should return property using getComputedStyle and getPropertyValue', () => {
+            element.style.padding = '10px';
+            global.getComputedStyle.getPropertyValue = function(p) { return this[p] };
+
+            expect(getStyleProperty(element, 'padding')).toEqual('10px');
+
+            global.getComputedStyle.getPropertyValue = undefined;
+        });
     });
 });

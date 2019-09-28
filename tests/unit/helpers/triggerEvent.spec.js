@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import { triggerEvent } from '@inkline/inkline/src/helpers/triggerEvent';
 
 describe('Helpers', () => {
@@ -6,6 +7,12 @@ describe('Helpers', () => {
 
         beforeEach(() => {
             element = document.createElement('a');
+        });
+
+        it('should return if Vue.$isServer', () => {
+            Vue.$isServer = true;
+            expect(triggerEvent(element, 'eventName')).not.toBeDefined();
+            Vue.$isServer = false;
         });
 
         describe('dispatchEvent', () => {
@@ -49,9 +56,21 @@ describe('Helpers', () => {
 
                 triggerEvent(element, eventName);
 
-
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith(event);
+            });
+
+            it('should set event options', () => {
+                const eventName = 'mousemove';
+                const eventType = 'MouseEvents';
+                const spy = jest.spyOn(element, 'dispatchEvent');
+
+                const event = document.createEvent(eventType);
+                event.initEvent(eventName);
+
+                triggerEvent(element, 'eventName', { cancelable: true, custom: true });
+
+                expect(spy).toHaveBeenCalled();
             });
         });
 
