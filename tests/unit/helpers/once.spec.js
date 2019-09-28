@@ -28,5 +28,15 @@ describe('Helpers', () => {
             expect(spy).toHaveBeenCalled();
             expect(spy).toHaveBeenCalledWith('eventName', expect.any(Function), false);
         });
+
+        it('should be callable with undefined fn', () => {
+            const spy = jest.spyOn(element, 'removeEventListener');
+            const fn = undefined;
+
+            once(element, 'eventName', fn);
+            element.dispatchEvent(new Event('eventName'));
+
+            expect(spy).toHaveBeenCalled();
+        });
     });
 });

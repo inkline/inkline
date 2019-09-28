@@ -81,7 +81,7 @@ export default {
         this.doDestroy(true);
 
         if (!Vue.$isServer && document && this.popupElement && this.popupElement.parentNode === document.body) {
-            this.popupElement.removeEventListener('click', (e) => e.stopPropagation());
+            this.popupElement.removeEventListener('click', this.stopOnClickPropagation);
 
             document.body.removeChild(this.popupElement);
         }
@@ -93,6 +93,9 @@ export default {
     },
 
     methods: {
+        stopOnClickPropagation(e) {
+            e.stopPropagation();
+        },
         createPopper() {
             if (this.$isServer) return;
 
@@ -141,7 +144,7 @@ export default {
 
             this.popperJS.popper.style.zIndex = popupManager.nextZIndex();
 
-            this.popupElement.addEventListener('click', (e) => e.stopPropagation());
+            this.popupElement.addEventListener('click', this.stopOnClickPropagation);
         },
 
         updatePopper() {
