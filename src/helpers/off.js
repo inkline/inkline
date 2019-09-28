@@ -12,10 +12,12 @@ export function detachEventBinding (element, event, handler) {
     }
 }
 
-export const off = (function() {
+export const _off = () => {
     if (!Vue.$isServer && typeof window !== 'undefined' && window.document.removeEventListener) {
         return removeEventListenerBinding;
     } else {
         return detachEventBinding;
     }
-})();
+};
+
+export const off = _off();

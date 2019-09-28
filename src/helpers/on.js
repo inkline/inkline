@@ -12,10 +12,12 @@ export function attachEventBinding (element, event, handler) {
     }
 }
 
-export const on = (function() {
+export const _on = () => {
     if (!Vue.$isServer && typeof window !== 'undefined' && window.document.addEventListener) {
         return addEventListenerBinding;
     } else {
         return attachEventBinding;
     }
-})();
+};
+
+export const on = _on();
