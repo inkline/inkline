@@ -18,7 +18,15 @@ export default {
             currentPageMd: 1,
             currentPageLg: 1,
             currentPageLight: 1,
-            currentPageDark: 1
+            currentPageDark: 1,
+            currentPagePageLimit: 1,
+            currentPagePageLimitResponsive: 1,
+            currentPageQuickLink: 1,
+            pageLimit: {
+                xs: 3,
+                sm: 5,
+                md: 7
+            }
         };
     }
 };
