@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 import { shallowMount } from '@vue/test-utils';
 import Pagination from '@inkline/inkline/src/components/Pagination';
 
@@ -6,7 +8,12 @@ describe('Components', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Pagination);
+            wrapper = shallowMount(Pagination, {
+                methods: {
+                    created: Pagination.created,
+                    destroyed: Pagination.destroyed
+                }
+            });
         });
 
         it('should be named correctly', () => {
@@ -35,7 +42,14 @@ describe('Components', () => {
             describe('limit', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.limit).toBeDefined();
-                    expect(wrapper.vm.limit).toEqual(5);
+                    expect(wrapper.vm.limit).toEqual({ xs: 3, sm: 5 });
+                });
+            });
+
+            describe('quickLink', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.quickLink).toBeDefined();
+                    expect(wrapper.vm.quickLink).toEqual(false);
                 });
             });
 
@@ -47,7 +61,7 @@ describe('Components', () => {
             });
         });
 
-        describe('computed()', () => {
+        describe('computed', () => {
             describe('pageCount()', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.pageCount).toBeDefined();
@@ -145,7 +159,7 @@ describe('Components', () => {
             });
         });
 
-        describe('computed()', () => {
+        describe('methods', () => {
             describe('next()', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.next).toBeDefined();
@@ -176,10 +190,19 @@ describe('Components', () => {
                     expect(wrapper.vm.quickNext).toBeDefined();
                 });
 
+                it('should not call onClick if quickLink not enabled', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'onClick');
+
+                    wrapper.setProps({ quickLink: false });
+                    wrapper.vm.quickNext();
+
+                    expect(spy).not.toHaveBeenCalled();
+                });
+
                 it('should call onClick jumping to currentPage + (limit - 2)', () => {
                     const spy = jest.spyOn(wrapper.vm, 'onClick');
 
-                    wrapper.setProps({ value: 1, items: 100, itemsPerPage: 10, limit: 5 });
+                    wrapper.setProps({ quickLink: true, value: 1, items: 100, itemsPerPage: 10, limit: 5 });
                     wrapper.vm.quickNext();
 
                     expect(spy).toHaveBeenCalled();
@@ -189,7 +212,7 @@ describe('Components', () => {
                 it('should call onClick jumping to last page', () => {
                     const spy = jest.spyOn(wrapper.vm, 'onClick');
 
-                    wrapper.setProps({ value: 8, items: 100, itemsPerPage: 10, limit: 5 });
+                    wrapper.setProps({ quickLink: true, value: 8, items: 100, itemsPerPage: 10, limit: 5 });
                     wrapper.vm.quickNext();
 
                     expect(spy).toHaveBeenCalled();
@@ -227,10 +250,19 @@ describe('Components', () => {
                     expect(wrapper.vm.quickPrevious).toBeDefined();
                 });
 
+                it('should not call onClick if quickLink not enabled', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'onClick');
+
+                    wrapper.setProps({ quickLink: false });
+                    wrapper.vm.quickPrevious();
+
+                    expect(spy).not.toHaveBeenCalled();
+                });
+
                 it('should call onClick jumping to currentPage - (limit - 2)', () => {
                     const spy = jest.spyOn(wrapper.vm, 'onClick');
 
-                    wrapper.setProps({ value: 5, items: 100, itemsPerPage: 10, limit: 5 });
+                    wrapper.setProps({ quickLink: true, value: 5, items: 100, itemsPerPage: 10, limit: 5 });
                     wrapper.vm.quickPrevious();
 
                     expect(spy).toHaveBeenCalled();
@@ -240,7 +272,7 @@ describe('Components', () => {
                 it('should call onClick jumping to last page', () => {
                     const spy = jest.spyOn(wrapper.vm, 'onClick');
 
-                    wrapper.setProps({ value: 2, items: 100, itemsPerPage: 10, limit: 5 });
+                    wrapper.setProps({ quickLink: true, value: 2, items: 100, itemsPerPage: 10, limit: 5 });
                     wrapper.vm.quickPrevious();
 
                     expect(spy).toHaveBeenCalled();
@@ -261,6 +293,85 @@ describe('Components', () => {
                     expect(wrapper.emitted().input[0]).toEqual([item]);
                     expect(wrapper.emitted().change[0]).toEqual([item]);
                 });
+            });
+
+            describe('onWindowResize()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.onWindowResize).toBeDefined();
+                });
+
+                it('should set pageLimit as limit if limit is number', () => {
+                    wrapper.setProps({ limit: 5 });
+
+                    wrapper.vm.onWindowResize();
+
+                    expect(wrapper.vm.pageLimit).toEqual(5);
+                });
+
+                it('should set pageLimit as last limit[breakpoint] if $isServer', () => {
+                    Vue.$isServer = true;
+
+                    wrapper.setProps({ limit: { xs: 10, sm: 10 } });
+                    wrapper.vm.onWindowResize();
+
+                    expect(wrapper.vm.pageLimit).toEqual(10);
+
+                    Vue.$isServer = false;
+                });
+
+
+                it('should set pageLimit as last limit[breakpoint]', () => {
+                    global.innerWidth = 1280;
+                    wrapper.setProps({ limit: { xs: 10, sm: 10 } });
+
+                    wrapper.vm.onWindowResize();
+
+                    expect(wrapper.vm.pageLimit).toEqual(10);
+                });
+
+                it('should set pageLimit as first limit[breakpoint]', () => {
+                    global.innerWidth = 320;
+                    wrapper.setProps({ limit: { xs: 5, sm: 10 } });
+                    wrapper.vm.onWindowResize();
+
+                    expect(wrapper.vm.pageLimit).toEqual(5);
+
+                    document.window = undefined;
+                });
+            });
+        });
+
+        describe('created()', () => {
+            it('should be defined', () => {
+                expect(Pagination.created).toBeDefined();
+            });
+
+            it('should add window resize event listener', () => {
+                const spy = jest.spyOn(window, 'addEventListener');
+
+                wrapper.vm.created();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith('resize', wrapper.vm.debouncedOnWindowResize);
+            });
+
+            it('should call initial onWindowResize', () => {
+                const spy = jest.spyOn(wrapper.vm, 'onWindowResize');
+
+                wrapper.vm.created();
+
+                expect(spy).toHaveBeenCalled();
+            });
+        });
+
+        describe('destroyed()', () => {
+            it('should remove window resize event listener', () => {
+                const spy = jest.spyOn(window, 'removeEventListener');
+
+                wrapper.vm.destroyed();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith('resize', wrapper.vm.debouncedOnWindowResize);
             });
         });
     });
