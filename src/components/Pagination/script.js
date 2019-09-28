@@ -1,7 +1,11 @@
+import Vue from 'vue';
 import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
 
 import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
 import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
+
+import { debounce } from "@inkline/inkline/src/helpers";
+import { breakpointKeys, breakpoints } from "@inkline/inkline/src/constants";
 
 export default {
     name: 'IPagination',
@@ -11,6 +15,11 @@ export default {
         SizePropertyMixin,
         VariantPropertyMixin,
     ],
+    data() {
+        return {
+            pageLimit: 5
+        }
+    },
     props: {
         itemsPerPage: {
             type: Number,
@@ -21,8 +30,17 @@ export default {
             default: 0
         },
         limit: {
-            type: Number,
-            default: 5
+            type: [Number, Object],
+            default() {
+                return {
+                    xs: 3,
+                    sm: 5
+                }
+            }
+        },
+        quickLink: {
+            type: Boolean,
+            default: false
         },
         value: {
             type: Number,
@@ -34,28 +52,28 @@ export default {
             return Math.ceil(this.items / this.itemsPerPage);
         },
         showQuickPrevious() {
-            return this.pageCount > this.limit && // Has more pages than limit
-                this.value > this.limit - (this.limit - 1) / 2; // Active page is after limit - (limit - 1) / 2
+            return this.pageCount > this.pageLimit && // Has more pages than limit
+                this.value > this.pageLimit - (this.pageLimit - 1) / 2; // Active page is after limit - (limit - 1) / 2
         },
         showQuickNext() {
-            return this.pageCount > this.limit && // Has more pages than limit
-                this.value < this.pageCount - (this.limit - 1) / 2; // Active page is before pageCount - (limit - 1) / 2
+            return this.pageCount > this.pageLimit && // Has more pages than limit
+                this.value < this.pageCount - (this.pageLimit - 1) / 2; // Active page is before pageCount - (limit - 1) / 2
         },
         pages() {
             const pages = [];
 
             if (this.showQuickPrevious && !this.showQuickNext) {
-                const startPage = this.pageCount - (this.limit - 2);
+                const startPage = this.pageCount - (this.pageLimit - 2);
 
                 for (let i = startPage; i < this.pageCount; i++) {
                     pages.push(i);
                 }
             } else if (!this.showQuickPrevious && this.showQuickNext) {
-                for (let i = 2; i < this.limit; i++) {
+                for (let i = 2; i < this.pageLimit; i++) {
                     pages.push(i);
                 }
             } else if (this.showQuickPrevious && this.showQuickNext) {
-                const offset = Math.floor(this.limit / 2) - 1;
+                const offset = Math.floor(this.pageLimit / 2) - 1;
 
                 for (let i = this.value - offset ; i <= this.value + offset; i++) {
                     pages.push(i);
@@ -76,7 +94,9 @@ export default {
             this.onClick(this.value + 1);
         },
         quickNext() {
-            const jumpTo = this.value + (this.limit - 2);
+            if (!this.quickLink) { return; }
+
+            const jumpTo = this.value + (this.pageLimit - 2);
 
             this.onClick(jumpTo > this.pageCount ? this.pageCount : jumpTo);
         },
@@ -86,13 +106,40 @@ export default {
             this.onClick(this.value - 1);
         },
         quickPrevious() {
-            const jumpTo = this.value - (this.limit - 2);
+            if (!this.quickLink) { return; }
+
+            const jumpTo = this.value - (this.pageLimit - 2);
 
             this.onClick(jumpTo < 1 ? 1 : jumpTo);
         },
         onClick(item) {
             this.$emit('input', item);
             this.$emit('change', item);
+        },
+        onWindowResize() {
+            if (typeof this.limit === 'number') {
+                return this.pageLimit = this.limit;
+            }
+
+            for (let breakpointKey of breakpointKeys.slice().reverse()) {
+                if (this.limit.hasOwnProperty(breakpointKey) && (Vue.$isServer ||
+                    !Vue.$isServer && typeof window !== 'undefined' && window.innerWidth >= breakpoints[breakpointKey][0])) {
+                    return this.pageLimit = this.limit[breakpointKey];
+                }
+            }
+        }
+    },
+    created() {
+        this.debouncedOnWindowResize = debounce(this.onWindowResize, 250);
+
+        if (!Vue.$isServer && typeof window !== 'undefined') {
+            window.addEventListener('resize', this.debouncedOnWindowResize);
+        }
+        this.onWindowResize();
+    },
+    destroyed() {
+        if (!Vue.$isServer && typeof window !== 'undefined') {
+            window.removeEventListener('resize', this.debouncedOnWindowResize)
         }
     }
 };

@@ -6,13 +6,14 @@
         @click="previous">
         <slot name="previous">&lt;</slot>
     </li>
-    <li class="item"
+    <li class="item -first"
         :class="{ '-active': value === 1 }"
         v-if="pageCount > 0"
         @click="onClick(1)">1</li>
     <li
         class="item -quick-previous"
-        v-if="this.showQuickPrevious"
+        :class="{ '-disabled': !quickLink }"
+        v-if="showQuickPrevious"
         @click="quickPrevious">&hellip;</li>
     <li class="item"
         :class="{ '-active': value === page }"
@@ -20,9 +21,10 @@
         @click="onClick(page)">{{page}}</li>
     <li
         class="item -quick-next"
-        v-if="this.showQuickNext"
+        :class="{ '-disabled': !quickLink }"
+        v-if="showQuickNext"
         @click="quickNext">&hellip;</li>
-    <li class="item"
+    <li class="item -last"
         :class="{ '-active': value === pageCount }"
         v-if="pageCount > 1"
         @click="onClick(pageCount)">{{pageCount}}</li>
