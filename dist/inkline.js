@@ -18895,7 +18895,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     quickLink: {
       type: Boolean,
-      default: false
+      default: true
     },
     value: {
       type: Number,
