@@ -1,0 +1,31 @@
+<div class="table-wrapper" :class="classes['wrapper']">
+    <table class="datatable" :class="classes['root']">
+        <thead>
+        <tr class="dtr">
+            <th class="dth" :class="columnClass(column)"
+                v-for="(column, index) in tableColumns" :key="index"
+                @click="onHeaderCellClick(column)">
+                    <span>
+                        {{column.title}}
+                        <i v-if="column.sortable"
+                           class="icon"
+                           :class="[ sortBy !== column.key ? '-sort' : `-sort-${sortDirection}` ]"></i>
+                    </span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="dtr" :class="rowClass(row)" v-for="(row, rowIndex) in tableRows" :key="row.id">
+            <slot name="row" :row="row" :index="rowIndex">
+                <td class="dtd" :class="columnClass(column, row)"
+                    v-for="(column, columnIndex) in tableColumns" :key="columnIndex">
+                        <span v-if="!column.component">
+                            {{tableRowsRendered[rowIndex][column.key]}}
+                        </span>
+                    <span v-else :is="column.component" :row="row" :column="column"></span>
+                </td>
+            </slot>
+        </tr>
+        </tbody>
+    </table>
+</div>

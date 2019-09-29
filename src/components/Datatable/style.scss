@@ -1,0 +1,112 @@
+/**
+ * Datatable
+ */
+
+@import '../../css/config';
+@import '../../css/mixins';
+@import 'css/_variables';
+@import 'css/_variants';
+
+.datatable {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: $datatable-margin-bottom;
+
+    th,
+    td {
+        padding: $datatable-cell-padding;
+        vertical-align: top;
+        border-top: $datatable-border-width solid transparent;
+    }
+
+    thead th {
+        vertical-align: bottom;
+        border-bottom-width: (2 * $datatable-border-width);
+    }
+
+    tbody + tbody {
+        border-top: (2 * $datatable-border-width) solid transparent;
+    }
+
+    // Condensed table w/ half padding
+    //
+    &.-condensed {
+        th,
+        td {
+            padding: $datatable-cell-padding-sm;
+        }
+    }
+
+    // Bordered version
+    //
+    // Add borders all around the table and between all the columns.
+    //
+    &.-bordered {
+        border: $datatable-border-width solid transparent;
+
+        th,
+        td {
+            border: $datatable-border-width solid $datatable-border-color;
+        }
+    }
+
+    // Hover table
+    //
+    // Placed here since it has to come after the potential zebra striping
+    //
+    &.-hover {
+        tbody tr {
+            th, td {
+                @if $transition-enabled and transition(datatable) {
+                    transition: background-color $transition-duration $transition-easing;
+                }
+            }
+        }
+    }
+
+    th,
+    td,
+    tbody + tbody {
+        border-top-color: $datatable-border-color;
+    }
+
+    thead th {
+        border-bottom-color: $datatable-border-color;
+    }
+
+    .dtd,
+    .dth {
+        > span {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &.-count > span {
+            justify-content: flex-end;
+        }
+
+        &.-align-left > span {
+            justify-content: flex-start;
+        }
+
+        &.-align-center > span {
+            justify-content: center;
+        }
+
+        &.-align-right > span {
+            justify-content: flex-end;
+        }
+    }
+
+    .dth {
+        .icon {
+            padding-left: ($spacer / 2);
+            margin-left: auto;
+        }
+    }
+}
+
+.datatable {
+    @extend .datatable.-light;
+}

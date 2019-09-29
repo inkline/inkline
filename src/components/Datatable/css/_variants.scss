@@ -1,0 +1,66 @@
+//
+// Variants
+//
+@each $variant-name, $variant in variants('datatable') {
+    $datatable-variant-text-color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
+    $datatable-variant-border-color: variant-color-by-luminance($variant, lighten($variant, 5%), darken($variant, 5%));
+    $datatable-variant-hover-color: variant-color-by-luminance($variant, lighten($variant, 6%), darken($variant, 6%));
+    $datatable-variant-stripe-color: variant-color-by-luminance($variant, lighten($variant, 3%), darken($variant, 3%));
+
+    .datatable.-#{$variant-name} {
+        border-top-color: $datatable-variant-border-color;
+        color: $datatable-variant-text-color;
+
+        th, td {
+            background-color: $variant;
+        }
+
+        // Bordered table
+        //
+        // Add borders to all sides of the table and table cells
+        //
+        &.-bordered {
+            &, th, td {
+                border-color: $datatable-variant-border-color;
+            }
+        }
+
+        // Striped Table
+        //
+        // Default zebra-stripe styles (alternating gray and transparent backgrounds)
+        //
+        &.-striped {
+            > tr:nth-of-type(odd) {
+                tbody > tr:nth-of-type(odd) {
+                    th, td {
+                        background-color: $datatable-variant-stripe-color;
+                    }
+                }
+            }
+
+            &.-hover {
+                tbody tr {
+                    &:hover {
+                        th, td {
+                            background-color: $datatable-variant-hover-color;
+                        }
+                    }
+                }
+            }
+
+            .dth {
+                &.-count {
+                    .icon {
+                        display: none;
+                    }
+                }
+
+                .icon {
+                    &.-sort {
+                        color: rgba($datatable-variant-text-color, 0.25);
+                    }
+                }
+            }
+        }
+    }
+}
