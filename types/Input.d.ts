@@ -1,26 +1,14 @@
-import {AttributesProviderMixin} from "./mixins/components/providers/AttributesProviderMixin";
-import {ClassesProviderMixin} from "./mixins/components/providers/ClassesProviderMixin";
-import {InjectParentFormProviderMixin} from "./mixins/forms/providers/InjectParentFormProviderMixin";
 import {ModelProviderMixin} from "./mixins/forms/providers/ModelProviderMixin";
 import {SchemaProviderMixin} from "./mixins/forms/providers/SchemaProviderMixin";
-import {ClickInputRefMethodMixin} from "./mixins/forms/methods/ClickInputRefMethodMixin";
-import {FocusInputRefMethodMixin} from "./mixins/forms/methods/FocusInputRefMethodMixin";
-import {EmitChangeMethodMixin} from "./mixins/components/methods/EmitChangeMethodMixin";
-import {EmitClickMethodMixin} from "./mixins/components/methods/EmitClickMethodMixin";
-import {EmitFocusMethodMixin} from "./mixins/components/methods/EmitFocusMethodMixin";
-import {EmitHoverMethodMixin} from "./mixins/components/methods/EmitHoverMethodMixin";
-import {EmitInputMethodMixin} from "./mixins/components/methods/EmitInputMethodMixin";
-import {EmitKeydownMethodMixin} from "./mixins/components/methods/EmitKeydownMethodMixin";
 import {ClearablePropertyMixin} from "./mixins/forms/properties/ClearablePropertyMixin";
 import {DisabledPropertyMixin} from "./mixins/forms/properties/DisabledPropertyMixin";
 import {NamePropertyMixin} from "./mixins/forms/properties/NamePropertyMixin";
-import {ParentFormGroupPropertyMixin} from "./mixins/forms/properties/ParentFormGroupPropertyMixin";
 import {ReadonlyPropertyMixin} from "./mixins/forms/properties/ReadonlyPropertyMixin";
 import {SizePropertyMixin} from "./mixins/components/properties/SizePropertyMixin";
 import {TabIndexPropertyMixin} from "./mixins/components/properties/TabIndexPropertyMixin";
 import {Size} from "./constants/size";
 
-export declare class IInput implements AttributesProviderMixin, ClassesProviderMixin, InjectParentFormProviderMixin, ModelProviderMixin, SchemaProviderMixin, ClickInputRefMethodMixin, FocusInputRefMethodMixin, EmitChangeMethodMixin, EmitClickMethodMixin, EmitFocusMethodMixin, EmitHoverMethodMixin, EmitInputMethodMixin, EmitKeydownMethodMixin, ClearablePropertyMixin, DisabledPropertyMixin, NamePropertyMixin, ParentFormGroupPropertyMixin, ReadonlyPropertyMixin, SizePropertyMixin, TabIndexPropertyMixin{
+export declare class IInput implements ModelProviderMixin, SchemaProviderMixin, ClearablePropertyMixin, DisabledPropertyMixin, NamePropertyMixin, ReadonlyPropertyMixin, SizePropertyMixin, TabIndexPropertyMixin {
     clearable: boolean;
     disabled: boolean;
     name: string;
@@ -30,26 +18,4 @@ export declare class IInput implements AttributesProviderMixin, ClassesProviderM
     size: Size;
     tabindex: number | string;
     value: string;
-    attributes(): { [p: string]: string };
-    classes(): Array<{ [p: string]: boolean }>;
-    clear(): void;
-    clickInputRef(): void;
-    currentValue(): string;
-    emitBlur(event: Event): void;
-    emitChange(event: Event): void;
-    emitClick(event: Event): void;
-    emitFocus(event: Event): void;
-    emitInput(value: any): void;
-    emitKeydown(value: any): void;
-    emitKeyup(value: any): void;
-    emitMouseEnter(event: Event): void;
-    emitMouseLeave(event: Event): void;
-    focusInputRef(): void;
-    isClearable(): boolean;
-    isDisabled(): boolean;
-    isGrouped(): boolean;
-    isReadonly(): boolean;
-    model(): string;
-    parentFormGroup(): any;
-    tabIndex(): number | string;
 }

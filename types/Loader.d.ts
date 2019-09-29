@@ -1,9 +1,10 @@
-import { BrandVariants, MonochromeVariants, StateVariants } from "./constants/variants";
+import {MonochromeVariants} from "./constants/variants";
 import { SizePropertyMixin } from "./mixins/components/properties/SizePropertyMixin";
 import { Size } from "./constants/size";
 import { VariantPropertyMixin } from "./mixins/components/properties/VariantPropertyMixin";
 
-export declare class IBadge implements SizePropertyMixin, VariantPropertyMixin {
+export declare class ILoader implements SizePropertyMixin, VariantPropertyMixin {
+    count: boolean;
     size: Size;
-    variant: BrandVariants | MonochromeVariants | StateVariants;
+    variant: MonochromeVariants;
 }

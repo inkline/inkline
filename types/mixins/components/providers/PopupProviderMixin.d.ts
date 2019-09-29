@@ -9,12 +9,4 @@ export interface PopupProviderMixin {
     reference: any;
     popup: any;
     value: boolean;
-
-    createPopper (): void;
-    updatePopper (): void;
-    doDestroy (): void;
-    destroyPopper (): void;
-    resetTransformOrigin (): void;
-    beforeDestroy (): void;
-    deactivated (): void;
 }

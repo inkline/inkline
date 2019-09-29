@@ -3,6 +3,7 @@ import IRadio from '@inkline/inkline/src/components/Radio';
 
 export default {
     name: 'IRadioButton',
+    extends: IRadio,
     components: {
         IButton
     },
@@ -10,6 +11,5 @@ export default {
         return {
             parentFormGroupName: 'IRadioButtonGroup'
         }
-    },
-    extends: IRadio
+    }
 };
