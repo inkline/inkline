@@ -39,10 +39,11 @@
             position: absolute;
             top: 50%;
             right: $spacer;
-            margin-top: -8px;
+            margin-top: -6px;
             width: 12px;
             height: 6px;
             z-index: 1;
+            font-size: 12px
         }
 
         ::v-deep > .form-input {
