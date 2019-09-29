@@ -9,6 +9,7 @@ export { default as ICollapsible } from '@inkline/inkline/src/components/Collaps
 export { default as ICollapsibleItem } from '@inkline/inkline/src/components/CollapsibleItem';
 export { default as IColumn } from '@inkline/inkline/src/components/Column';
 export { default as IContainer } from '@inkline/inkline/src/components/Container';
+export { default as IDatatable } from '@inkline/inkline/src/components/Datatable';
 export { default as IDropdown } from '@inkline/inkline/src/components/Dropdown';
 export { default as IDropdownDivider } from '@inkline/inkline/src/components/DropdownDivider';
 export { default as IDropdownItem } from '@inkline/inkline/src/components/DropdownItem';
