@@ -14,6 +14,10 @@ export default {
             type: Boolean,
             default: false
         },
+        condensed: {
+            type: Boolean,
+            default: false
+        },
         striped: {
             type: Boolean,
             default: false
@@ -24,12 +28,13 @@ export default {
         },
         responsive: {
             type: [Boolean, String],
-            default: false
+            default: true
         }
     },
     created() {
         this.classesProvider.add(() => ({
             '-bordered': this.bordered,
+            '-condensed': this.condensed,
             '-striped': this.striped,
             '-hover': this.hover,
         }));
