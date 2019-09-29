@@ -103,7 +103,7 @@ Included are directions for opening issues, coding standards, and notes on devel
 
 ## Community
 Get updates on Inkline's development and chat with the project maintainers and community members.
-- Follow [@inklineUX on Twitter](https://twitter.com/inklineUX).
+- Follow [@inkline on Twitter](https://twitter.com/inkline).
 - Developers should use the keyword `inkline` on packages which modify or add to the functionality of Inkline when distributing through [npm](https://www.npmjs.com/browse/keyword/inkline) or similar delivery mechanisms for maximum discoverability.
 
 ## Releases
