@@ -33,13 +33,14 @@ export default {
 Inkline includes two predefined pagination styles. You can set the style of a `<i-pagination>` using the `variant` property, which can have a value of `light` or `dark`. By default, pagination uses the `light` variant.
 
 <i-code-preview title="Pagination Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
-<i-pagination v-model="currentPageLight" variant="light" :items="100" :items-per-page="10"></i-pagination>
+<i-pagination v-model="currentPageLight" variant="light" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
 <i-pagination v-model="currentPageDark" variant="dark" :items="100" :items-per-page="10"></i-pagination>
 <template slot="html">
 
 ~~~html
 <i-pagination v-model="currentPage" variant="light" :items="100" :items-per-page="10"></i-pagination>
-
+~~~
+~~~html
 <i-pagination v-model="currentPage" variant="dark" :items="100" :items-per-page="10"></i-pagination>
 ~~~
 
@@ -64,17 +65,19 @@ You're able to use the `size` modifier to control the size of your pagination it
 
 <i-code-preview title="Pagination Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination" class="_overflow-hidden">
 <div>
-<i-pagination v-model="currentPageSm" size="sm" :items="100" :items-per-page="10"></i-pagination>
-<i-pagination v-model="currentPageMd" size="md" :items="100" :items-per-page="10"></i-pagination>
+<i-pagination v-model="currentPageSm" size="sm" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
+<i-pagination v-model="currentPageMd" size="md" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
 <i-pagination v-model="currentPageLg" size="lg" :items="100" :items-per-page="10"></i-pagination>
 </div>
 <template slot="html">
 
 ~~~html
 <i-pagination v-model="currentPage" size="sm" :items="100" :items-per-page="10"></i-pagination>
-
+~~~
+~~~html
 <i-pagination v-model="currentPage" size="md" :items="100" :items-per-page="10"></i-pagination>
-
+~~~
+~~~html
 <i-pagination v-model="currentPage" size="lg" :items="100" :items-per-page="10"></i-pagination>
 ~~~
 
