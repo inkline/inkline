@@ -7,9 +7,10 @@
                 @click="onHeaderCellClick(column)">
                     <span>
                         {{column.title}}
-                        <i v-if="column.sortable"
-                           class="icon"
-                           :class="[ sortBy !== column.key ? '-sort' : `-sort-${sortDirection}` ]"></i>
+                        <i-icon class="sortable-icon" v-if="column.sortable" icon="sort">
+                            <i-icon v-if="sortBy === column.key" icon="sort-asc"></i-icon>
+                            <!--<i-icon v-if="sortBy === column.key && sortDirection === 'desc'" icon="sort-desc"></i-icon>-->
+                        </i-icon>
                     </span>
             </th>
         </tr>

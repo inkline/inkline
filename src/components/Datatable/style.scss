@@ -16,16 +16,16 @@
     td {
         padding: $datatable-cell-padding;
         vertical-align: top;
-        border-top: $datatable-border-width solid transparent;
+        border-top: $datatable-border-width solid $datatable-border-color;
     }
 
     thead th {
         vertical-align: bottom;
-        border-bottom-width: (2 * $datatable-border-width);
+        border-bottom: (2 * $datatable-border-width) solid $datatable-border-color;
     }
 
     tbody + tbody {
-        border-top: (2 * $datatable-border-width) solid transparent;
+        border-top: (2 * $datatable-border-width) solid $datatable-border-color;
     }
 
     // Condensed table w/ half padding
@@ -56,22 +56,13 @@
     //
     &.-hover {
         tbody tr {
-            th, td {
+            th,
+            td {
                 @if $transition-enabled and transition(datatable) {
                     transition: background-color $transition-duration $transition-easing;
                 }
             }
         }
-    }
-
-    th,
-    td,
-    tbody + tbody {
-        border-top-color: $datatable-border-color;
-    }
-
-    thead th {
-        border-bottom-color: $datatable-border-color;
     }
 
     .dtd,
@@ -100,13 +91,19 @@
     }
 
     .dth {
-        .icon {
-            padding-left: ($spacer / 2);
+        .sortable-icon {
+            position: relative;
             margin-left: auto;
+
+            .-sort-asc,
+            .-sort-desc {
+                color: $datatable-sortable-icon-color-active;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
         }
     }
-}
 
-.datatable {
     @extend .datatable.-light;
 }
