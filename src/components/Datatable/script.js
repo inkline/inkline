@@ -1,5 +1,5 @@
 import Table from '@inkline/inkline/src/components/Table';
-import { sortBy, getValueByPath } from "@inkline/inkline/src/helpers";
+import { sortByPath, getValueByPath } from "@inkline/inkline/src/helpers";
 
 export default {
     name: 'IDatatable',
@@ -65,11 +65,11 @@ export default {
             // Sort rows based on sorting function
             const sortColumn = this.tableColumns.find((column) => column.key === this.sortBy);
             if (sortColumn) {
-                rows = sortColumn.sortFn ? rows.sort(sortColumn.sortFn) : rows.sort(sortBy(sortColumn.key));
+                rows = sortColumn.sortFn ? rows.sort(sortColumn.sortFn) : rows.sort(sortByPath(sortColumn.key));
             }
 
-            // Sort descending
-            // If sort direction is set to descending, reverse the rows array
+            // // Sort descending
+            // // If sort direction is set to descending, reverse the rows array
             if (this.sortDirection === 'desc') {
                 rows = rows.reverse();
             }

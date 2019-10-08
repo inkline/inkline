@@ -11,7 +11,8 @@
         border-top-color: $datatable-variant-border-color;
         color: $datatable-variant-text-color;
 
-        th, td {
+        th,
+        td {
             background-color: $variant;
         }
 
@@ -20,7 +21,9 @@
         // Add borders to all sides of the table and table cells
         //
         &.-bordered {
-            &, th, td {
+            &,
+            th,
+            td {
                 border-color: $datatable-variant-border-color;
             }
         }
@@ -32,34 +35,34 @@
         &.-striped {
             > tr:nth-of-type(odd) {
                 tbody > tr:nth-of-type(odd) {
-                    th, td {
+                    th,
+                    td {
                         background-color: $datatable-variant-stripe-color;
                     }
                 }
             }
+        }
 
-            &.-hover {
-                tbody tr {
-                    &:hover {
-                        th, td {
-                            background-color: $datatable-variant-hover-color;
-                        }
+        &.-hover {
+            tbody tr {
+                &:hover {
+                    th,
+                    td {
+                        background-color: $datatable-variant-hover-color;
                     }
                 }
             }
+        }
 
-            .dth {
-                &.-count {
-                    .icon {
-                        display: none;
-                    }
+        .dth {
+            &.-count {
+                .sortable-icon {
+                    display: none;
                 }
+            }
 
-                .icon {
-                    &.-sort {
-                        color: rgba($datatable-variant-text-color, 0.25);
-                    }
-                }
+            .inkline-icon {
+                color: rgba($datatable-variant-text-color, 0.25);
             }
         }
     }
