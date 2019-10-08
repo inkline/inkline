@@ -7,6 +7,6 @@
  */
 export function getValueByPath(object, path) {
     return path.split('.').reduce((acc, key) => {
-        return acc & acc[key];
+        return acc && acc[key];
     }, object);
 }
