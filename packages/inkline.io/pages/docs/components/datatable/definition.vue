@@ -15,16 +15,15 @@ export default {
         return {
             columns: [
                 { title: 'Name', key: 'name' },
-                { title: 'Email', key: 'email', type: 'string' },
-                { title: 'Date', key: 'date', type: 'date' },
-                { title: 'Age', key: 'age', type: 'number', align: 'right' }
+                { title: 'Email', key: 'email' },
+                { title: 'Age', key: 'age', align: 'right' }
             ],
             rows: [
-                { id: '1', name: 'Alice Spring', email: 'alice.spring@email.com', date: '2016/04/25', age: 26 },
-                { id: '2', name: 'Connie Tenamn', email: 'connie.tenman@email.com', date: '2019/07/07', age: 30 },
-                { id: '3', name: 'John Reid', email: 'john.reid@email.com', date: '2018/05/12', age: 28 },
-                { id: '4', name: 'Robert Smith', email: 'robert.smith@email.com', date: '2017/08/16', age: 34 },
-                { id: '5', name: 'Lisa Hendricks', email: 'lisa.hendricks@email.com', date: '2014/12/01', age: 31 }
+                { id: '1', name: 'Richard Hendricks', email: 'richard.hendricks@email.com', age: 26 },
+                { id: '2', name: 'Bertram Gilfoyle', email: 'bertram.gilfoyle@email.com', age: 30 },
+                { id: '3', name: 'Dinesh Chugtai', email: 'dinesh.chugtai@email.com', age: 30 },
+                { id: '4', name: 'Jared Dunn', email: 'jared.dunn@email.com', age: 35 },
+                { id: '5', name: 'Erlich Bachman', email: 'erlich.bachman@email.com', age: 32 }
             ],
             columnsNested: [
                 { title: 'Name', key: 'name' },
@@ -32,11 +31,11 @@ export default {
                 { title: 'Country', key: 'address.country' },
             ],
             rowsNested: [
-                { id: '1', name: 'Alice Spring', address: { city: 'Los Angeles', country: 'United States' } },
-                { id: '2', name: 'Connie Tenamn', address: { city: 'Munich', country: 'Germany' } },
-                { id: '3', name: 'John Reid', address: { city: 'Timisoara', country: 'Romania' } },
-                { id: '4', name: 'Robert Smith', address: { city: 'London', country: 'England' } },
-                { id: '5', name: 'Lisa Hendricks', address: { city: 'Melbourne', country: 'Australia' } },
+                { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },
+                { id: '2', name: 'Bertram Gilfoyle', address: { city: 'Toronto', country: 'Canada' } },
+                { id: '3', name: 'Dinesh Chugtai', address: { city: 'Lahore', country: 'Pakistan' } },
+                { id: '4', name: 'Jared Dunn', address: { city: 'Berlin', country: 'Germany' } },
+                { id: '5', name: 'Erlich Bachman', address: { city: 'Palo Alto', country: 'United States' } }
             ]
         };
     }
