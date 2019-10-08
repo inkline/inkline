@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components Table should render correctly 1`] = `
-<div class="table-wrapper">
+<div class="table-wrapper -responsive">
   <table class="table"></table>
 </div>
 `;

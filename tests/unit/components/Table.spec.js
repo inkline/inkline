@@ -46,7 +46,7 @@ describe('Components', () => {
             describe('responsive', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.responsive).toBeDefined();
-                    expect(wrapper.vm.responsive).toEqual(false);
+                    expect(wrapper.vm.responsive).toEqual(true);
                 });
             });
         });
@@ -92,15 +92,15 @@ describe('Components', () => {
                 const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length  - 1];
 
                 expect(rule()).toEqual(expect.objectContaining({
-                    '-responsive': false,
+                    '-responsive': true,
                 }));
 
                 wrapper.setProps({
-                    responsive: true,
+                    responsive: false,
                 });
 
                 expect(rule()).toEqual(expect.objectContaining({
-                    '-responsive': true,
+                    '-responsive': false,
                 }));
             });
 
@@ -108,7 +108,7 @@ describe('Components', () => {
                 const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length  - 1];
 
                 expect(rule()).toEqual(expect.objectContaining({
-                    '-responsive': false,
+                    '-responsive': true,
                 }));
 
                 wrapper.setProps({
