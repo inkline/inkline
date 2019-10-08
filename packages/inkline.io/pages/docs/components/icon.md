@@ -17,6 +17,9 @@ Here’s an example of the basic icons included with the `<i-icon>` component.
 <div class="icon-box"><i-icon icon="minus" /></div>
 <div class="icon-box"><i-icon icon="times" /></div>
 <div class="icon-box"><i-icon icon="circle" /></div>
+<div class="icon-box"><i-icon icon="sort" /></div>
+<div class="icon-box"><i-icon icon="sort-asc" /></div>
+<div class="icon-box"><i-icon icon="sort-desc" /></div>
 
 <template slot="html">
 
@@ -33,6 +36,9 @@ Here’s an example of the basic icons included with the `<i-icon>` component.
 <i-icon icon="minus" />
 <i-icon icon="times" />
 <i-icon icon="circle" />
+<i-icon icon="sort" />
+<i-icon icon="sort-asc" />
+<i-icon icon="sort-desc" />
 ~~~
 
 </template>
