@@ -1,7 +1,7 @@
 import { getStyleProperty } from '@inkline/inkline/src/helpers/getStyleProperty';
 
 describe('Helpers', () => {
-    describe('addClass()', () => {
+    describe('getStyleProperty()', () => {
         let element;
 
         beforeEach(() => {
