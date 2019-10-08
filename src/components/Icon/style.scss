@@ -6,10 +6,7 @@
 .inkline-icon {
     @extend %icon;
 
-    &.-circle::before {
-        content: $icon-circle;
-    }
-
+    &.-circle::before { content: $icon-circle; }
     &.-home::before { content: $icon-home; }
     &.-calendar::before { content: $icon-calendar; }
     &.-warning::before { content: $icon-warning; }
@@ -21,6 +18,9 @@
     &.-check::before { content: $icon-check; }
     &.-caret-down::before { content: $icon-caret-down; }
     &.-chevron-down::before { content: $icon-chevron-down; }
+    &.-sort::before { content: $icon-sort; }
+    &.-sort-asc::before { content: $icon-sort-asc; }
+    &.-sort-desc::before { content: $icon-sort-desc; }
 
     @each $size in $sizes {
         &.-#{$size} {
