@@ -18,9 +18,21 @@ export default {
     }),
     data () {
         return {
-            columns: [
+            dataKeyColumns: [
                 { title: 'Name', key: 'name' },
                 { title: 'Address', key: 'address', render: (row) => `${row.address.city}, ${row.address.country}` },
+            ],
+            renderColumns: [
+                { title: 'Name', key: 'name' },
+                { title: 'Address', key: 'address', render: (row) => `${row.address.city}, ${row.address.country}` },
+            ],
+            renderHeaderColumns: [
+                { title: 'Name', key: 'name' },
+                { title: 'Address', key: 'address', renderHeader: (column) => column.title.toUpperCase() },
+            ],
+            componentColumns: [
+                { title: 'Name', key: 'name' },
+                { title: 'Progress', key: 'progress', component: 'table-progress' },
             ],
             rows: [
                 { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },
@@ -28,10 +40,6 @@ export default {
                 { id: '3', name: 'Dinesh Chugtai', address: { city: 'Lahore', country: 'Pakistan' } },
                 { id: '4', name: 'Jared Dunn', address: { city: 'Berlin', country: 'Germany' } },
                 { id: '5', name: 'Erlich Bachman', address: { city: 'Palo Alto', country: 'United States' } }
-            ],
-            columnsComponent: [
-                { title: 'Name', key: 'name' },
-                { title: 'Progress', key: 'progress', component: 'table-progress' },
             ],
             rowsComponent: [
                 { id: '1', name: 'Richard Hendricks', progress: 82 },
