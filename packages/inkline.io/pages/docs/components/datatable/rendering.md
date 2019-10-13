@@ -2,7 +2,7 @@
 Inkline's Data Table columns and rows can be rendered using custom render helpers. {.lead}
 
 Inkline provides four ways to render data table fields:
-- Data Key (default)
+- Data Key <span class="_text-muted">(default)</span>
 - Render function
 - Custom component
 - Scoped slot
