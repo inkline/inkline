@@ -2516,7 +2516,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 /***/ }),
 
 /***/ "2b4c":
@@ -4889,6 +4888,56 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 /***/ }),
 
+/***/ "56d7":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es7_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("8e6e");
+/* harmony import */ var core_js_modules_es7_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("ac6a");
+/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("cadf");
+/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("456d");
+/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Users_alexgrozav_Workspace_inkline_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("bd86");
+/* harmony import */ var _inkline_inkline_src_index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("1e09");
+/* harmony import */ var _inkline_inkline_src_index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_inkline_inkline_src_index_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("2af9");
+/* harmony import */ var _inkline_inkline_src_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("b635");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _inkline_inkline_src_index__WEBPACK_IMPORTED_MODULE_7__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _inkline_inkline_src_index__WEBPACK_IMPORTED_MODULE_7__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { Object(_Users_alexgrozav_Workspace_inkline_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+
+var install = _inkline_inkline_src_index__WEBPACK_IMPORTED_MODULE_7__["Inkline"].install;
+
+_inkline_inkline_src_index__WEBPACK_IMPORTED_MODULE_7__["Inkline"].install = function (Vue) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return install.call(_inkline_inkline_src_index__WEBPACK_IMPORTED_MODULE_7__["Inkline"], Vue, _objectSpread({
+    components: _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_6__
+  }, options));
+};
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(_inkline_inkline_src_index__WEBPACK_IMPORTED_MODULE_7__["Inkline"]);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (_inkline_inkline_src_index__WEBPACK_IMPORTED_MODULE_7__["Inkline"]);
+
+/***/ }),
+
 /***/ "5766":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6311,6 +6360,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'IRadioButton',
+  extends: _inkline_inkline_src_components_Radio__WEBPACK_IMPORTED_MODULE_1__["default"],
   components: {
     IButton: _inkline_inkline_src_components_Button__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -6318,8 +6368,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       parentFormGroupName: 'IRadioButtonGroup'
     };
-  },
-  extends: _inkline_inkline_src_components_Radio__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }
 });
 
 /***/ }),
@@ -11285,55 +11334,18 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Inkline", function() { return Inkline; });
-/* harmony import */ var core_js_modules_es7_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("8e6e");
-/* harmony import */ var core_js_modules_es7_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("ac6a");
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("cadf");
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("456d");
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Users_alexgrozav_Workspace_inkline_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("bd86");
-/* harmony import */ var _inkline_inkline_src_index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("1e09");
-/* harmony import */ var _inkline_inkline_src_index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_inkline_inkline_src_index_scss__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("2af9");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_6__) if(["Inkline","default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_6__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-
-
-
-
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { Object(_Users_alexgrozav_Workspace_inkline_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-
+/* harmony import */ var _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2af9");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_0__) if(["Inkline","default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 var Inkline = {
   install: function install(Vue) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     for (var componentName in options.components) {
-      Vue.component(componentName, _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_6__[componentName]);
+      Vue.component(componentName, options.components[componentName]);
     }
   }
 };
-var install = Inkline.install;
-
-Inkline.install = function (Vue) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return install.call(Inkline, Vue, _objectSpread({
-    components: _inkline_inkline_src_components__WEBPACK_IMPORTED_MODULE_6__
-  }, options));
-};
-
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(Inkline);
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Inkline);
 
 /***/ }),
 
@@ -19139,7 +19151,7 @@ module.exports = document && document.documentElement;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _setPublicPath__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("1eb2");
-/* harmony import */ var _entry__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("b635");
+/* harmony import */ var _entry__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("56d7");
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _entry__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _entry__WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
