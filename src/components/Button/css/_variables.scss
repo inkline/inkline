@@ -17,6 +17,7 @@ $button-circle-size: size-map($button-circle-size-base, $sizes, $size-multiplier
 $button-margin: $spacer !default;
 
 $button-darken-percentage-hover: 5% !default;
+$button-darken-percentage-active: 12.5% !default;
 $button-opacity-disabled: 0.75 !default;
 
 $button-link-color: $link-color !default;

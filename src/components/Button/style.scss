@@ -69,6 +69,7 @@
             &.-hovered,
             &:focus,
             &.-focused {
+                box-shadow: none;
                 text-decoration: $link-decoration-hover;
             }
         }

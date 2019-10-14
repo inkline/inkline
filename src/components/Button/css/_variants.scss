@@ -19,7 +19,7 @@
 
             &:active,
             &.-active {
-                background-color: darken-lightness($variant, 2.5 * $button-darken-percentage-hover);
+                background-color: darken-lightness($variant, $button-darken-percentage-active);
             }
 
             &:focus,
@@ -40,6 +40,11 @@
                     color: $_color-by-luminance;
                     background-color: darken-lightness($variant, $button-darken-percentage-hover);
                     border-color: darken-lightness($variant, $button-darken-percentage-hover);
+                }
+
+                &:active,
+                &.-active {
+                    background-color: darken-lightness($variant, $button-darken-percentage-active);
                 }
             }
         }
