@@ -72,5 +72,10 @@ export default {
         name() {
             return this.isGrouped ? this.parentFormGroup.name : '';
         }
+    },
+    created() {
+        this.classesProvider.add(() => ({
+            '-disabled': this.isDisabled
+        }));
     }
 };

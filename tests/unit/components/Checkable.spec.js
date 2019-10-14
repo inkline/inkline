@@ -9,7 +9,10 @@ describe('Components', () => {
 
         beforeEach(() => {
             wrapper = shallowMount(Checkable, {
-                render: () => {}
+                render: () => {},
+                methods: {
+                    created: Checkable.created
+                }
             });
 
             groupedWrapper = shallowMount(Checkable, {
@@ -89,6 +92,23 @@ describe('Components', () => {
                 it('should return parent form group name if grouped', () => {
                     expect(groupedWrapper.vm.name).toEqual(undefined);
                 });
+            });
+        });
+
+        describe('created()', () => {
+            it('should add class rules to classes provider', () => {
+                const classRulesLength = wrapper.vm.classesProvider.length;
+
+                wrapper.vm.created();
+                expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 1)
+            });
+
+            it('should add "-disabled" class if "disabled" property is true', () => {
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-disabled': false }));
+                wrapper.setProps({ disabled: true });
+                expect(rule()).toEqual(expect.objectContaining({ '-disabled': true }));
             });
         });
     });
