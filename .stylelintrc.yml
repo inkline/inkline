@@ -47,6 +47,11 @@ rules:
     # https://stylelint.io/user-guide/rules/selector-list-comma-newline-after
     selector-list-comma-newline-after: always
 
+    # https://stylelint.io/user-guide/rules/selector-pseudo-element-no-unknown
+    selector-pseudo-element-no-unknown:
+        - true
+        - ignorePseudoElements: ['v-deep']
+
     # https://stylelint.io/user-guide/rules/selector-list-comma-newline-before
     selector-list-comma-newline-before: never-multi-line
 
