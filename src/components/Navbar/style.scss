@@ -20,7 +20,8 @@
         align-items: center;
         justify-content: space-between;
 
-        > .hamburger {
+
+        ::v-deep .hamburger {
             display: none;
         }
     }
@@ -29,7 +30,7 @@
         &.-collapse-#{$breakpoint} {
             @include breakpoint-down($breakpoint) {
                 > .container > .row > .column {
-                    > .items {
+                    ::v-deep .items {
                         position: relative;
                         display: block;
                         width: 100%;
@@ -44,7 +45,7 @@
                         }
                     }
 
-                    > .hamburger {
+                    ::v-deep .hamburger {
                         display: inline-block;
 
                         + .brand {

@@ -16,7 +16,7 @@
 @mixin navbar-item-collapsed-color-variant($color-variant) {
     background: darken-lightness($color-variant, 5%);
 
-    > .nav > .item:hover {
+    ::v-deep .item:hover {
         background: darken-lightness($color-variant, 10%);
     }
 }
@@ -24,7 +24,7 @@
 @each $variant-name, $variant in variants('navbar') {
     .navbar.-#{$variant-name} {
         > .container > .row > .column > .items {
-            > .nav > .item {
+            ::v-deep .item {
                 @include navbar-item-color-variant($variant);
             }
         }
