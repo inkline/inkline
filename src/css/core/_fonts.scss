@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'inkline';
+    src:
+        url($icons-font-path + 'inkline.eot?kszcvl'),
+        url($icons-font-path + 'inkline.eot?kszcvl#iefix') format('embedded-opentype'),
+        url($icons-font-path + 'inkline.ttf?kszcvl') format('truetype'),
+        url($icons-font-path + 'inkline.woff?kszcvl') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

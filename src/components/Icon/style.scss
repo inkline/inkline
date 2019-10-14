@@ -1,15 +1,7 @@
-@import '../mixins/icons';
-
-@font-face {
-    font-family: 'inkline';
-    src:
-        url($inkline-font-path + 'inkline.eot?kszcvl'),
-        url($inkline-font-path + 'inkline.eot?kszcvl#iefix') format('embedded-opentype'),
-        url($inkline-font-path + 'inkline.ttf?kszcvl') format('truetype'),
-        url($inkline-font-path + 'inkline.woff?kszcvl') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_mixins';
 
 .inkline-icon {
     @extend %icon;
