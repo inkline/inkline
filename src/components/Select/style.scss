@@ -1,7 +1,12 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
+@import '../DropdownMenu/css/_variables';
+@import '../DropdownMenu/css/_mixins';
 @import '../Input/css/_mixins';
-@import './css/_variables';
+@import '../Icon/css/_variables';
+@import '../Icon/css/_mixins';
+@import 'css/_variables';
+@import 'css/_sizes';
 
 /**
  * Select
@@ -40,19 +45,31 @@
             z-index: 1;
         }
 
-        /deep/ > .form-input {
+        ::v-deep > .form-input {
             > input[readonly] {
                 cursor: pointer;
                 border-color: $select-input-border-color;
 
-                &:hover {
-                    border-color: $select-input-border-color-hover;
+                &:disabled {
+                    cursor: default;
                 }
 
-                &:focus {
-                    border-color: $select-input-border-color-focus;
+                &:not(:disabled) {
+                    &:hover {
+                        border-color: $select-input-border-color-hover;
+                    }
+
+                    &:focus {
+                        border-color: $select-input-border-color-focus;
+                    }
                 }
             }
+        }
+    }
+
+    &[readonly] > .form-input-group ::v-deep > .form-input {
+        > input[readonly] {
+            cursor: default;
         }
     }
 
