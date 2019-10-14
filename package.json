@@ -5,7 +5,7 @@
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
     "build": "npm run build:inkline && npm run build:validation && npm run dist",
-    "build:inkline": "vue-cli-service build --target lib --name Inkline src/index.js",
+    "build:inkline": "vue-cli-service build --target lib --name Inkline src/main.js",
     "build:validation": "vue-cli-service build --no-clean --target lib --name InklineValidation src/validation.js",
     "lint": "npm run lint:script && npm run lint:style",
     "lint:script": "vue-cli-service lint",
