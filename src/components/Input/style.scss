@@ -67,6 +67,7 @@
         &:disabled,
         &[readonly] {
             background-color: $input-background-disabled;
+            color: $input-color-disabled;
             opacity: 1; // iOS fix for unreadable disabled content
             cursor: default;
 
@@ -76,11 +77,9 @@
         }
 
         /**
-                 * Select
-                 */
+         * Select
+         */
         &[readonly]:focus {
-            color: $input-color-focus;
-            background-color: $input-background-focus;
             border-color: $input-border-color-focus;
             outline: 0;
         }

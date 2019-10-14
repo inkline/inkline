@@ -15,6 +15,7 @@ $input-font-size: $font-size !default;
 
 $input-color: colors('gray-70') !default;
 $input-color-focus: $input-color !default;
+$input-color-disabled: $input-color !default;
 $input-placeholder-color: colors('gray-60') !default;
 $input-plaintext-color: $body-color !default;
 $input-background: colors('white') !default;
