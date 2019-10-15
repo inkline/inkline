@@ -129,6 +129,7 @@
 
         &::before {
             @extend %icon;
+
             font-size: 8px;
             content: $icon-times;
         }
