@@ -13,7 +13,7 @@
         </span>
 
         <span class="form-input-suffix" v-if="$slots.suffix || clearable">
-            <i class="form-input-icon -circle" aria-label="Clear" v-show="isClearable" @click="clear">&times;</i>
+            <i class="clear-input" aria-label="Clear" v-show="isClearable" @click="clear"></i>
             <slot name="suffix"></slot>
         </span>
 

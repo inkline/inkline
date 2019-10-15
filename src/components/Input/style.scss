@@ -1,5 +1,7 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
+@import '../Icon/css/_variables';
+@import '../Icon/css/_mixins';
 @import 'css/_variables';
 @import 'css/_mixins';
 @import 'css/_sizes';
@@ -113,24 +115,26 @@
         border-left: 1px solid $input-border-color;
     }
 
-    .form-input-icon {
+    .clear-input {
         transition: background-color $transition-duration $transition-easing;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: $input-icon-circle-size;
+        height: $input-icon-circle-size;
+        background-color: $input-icon-circle-background;
+        color: $input-background;
+        border-radius: 100%;
 
-        &.-circle {
-            display: inline-block;
-            text-align: center;
-            font-weight: bold;
-            cursor: pointer;
-            width: $input-icon-circle-size;
-            height: $input-icon-circle-size;
-            line-height: 1;
-            background-color: $input-icon-circle-background;
-            color: $input-background;
-            border-radius: 100%;
+        &::before {
+            @extend %icon;
+            font-size: 8px;
+            content: $icon-times;
+        }
 
-            &:hover {
-                background-color: $input-icon-circle-background-hover;
-            }
+        &:hover {
+            background-color: $input-icon-circle-background-hover;
         }
     }
 
