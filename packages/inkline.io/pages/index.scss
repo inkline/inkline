@@ -1,5 +1,6 @@
 @import '~@inkline/inkline/css/config/index';
 @import '~@inkline/inkline/css/mixins/index';
+@import '~@inkline/inkline/components/Button/css/variables';
 
 #index-page {
     background-image: url('~static/images/pages/index-header-large.jpg');
@@ -162,6 +163,31 @@
     background-color: colors('gray-20');
     text-align: center;
     z-index: 1;
+
+    .sponsors-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #patreon-button {
+        background-color: #f86754;
+        color: white;
+
+        &:hover,
+        &:focus {
+            background-color: darken(#f86754, $button-darken-percentage-hover);
+        }
+
+        &:active {
+            background-color: darken(#f86754, $button-darken-percentage-active);
+        }
+
+        img {
+            width: 16px;
+            margin-right: $spacer;
+        }
+    }
 }
 
 #footer {

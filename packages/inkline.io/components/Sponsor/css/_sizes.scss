@@ -1,0 +1,18 @@
+//
+// Sponsor sizes
+//
+@each $size in $sizes {
+    $_size: map_get($sponsor-size, $size);
+    $_border-radius: map_get($border-radius, $size);
+    $_padding: map_get($sponsor-padding, $size);
+
+    .sponsor.-#{$size} {
+        border-radius: $_border-radius;
+
+        > .content {
+            padding: $_padding;
+            width: $_size;
+            height: $_size;
+        }
+    }
+}

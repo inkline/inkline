@@ -1,0 +1,6 @@
+<a class="sponsor" :href="data.url" :title="data.title" :class="classes" rel="noopener noreferrer">
+    <div class="content">
+        <img :src="data.image" :alt="data.title" v-if="data.image" />
+        <i-icon icon="plus" v-if="!data.image"></i-icon>
+    </div>
+</a>
