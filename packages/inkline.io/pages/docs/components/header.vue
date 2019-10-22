@@ -3,7 +3,7 @@
 <style lang="scss" src="./header.scss"></style>
 
 <script>
-import View from '@components/View'
+import View from '@components/docs/View'
 import { head } from '@helpers/head'
 
 export default {

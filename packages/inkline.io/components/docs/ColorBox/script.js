@@ -1,4 +1,4 @@
-import GridBox from '@components/GridBox';
+import GridBox from '@components/docs/GridBox';
 
 export default {
     name: 'ColorBox',
