@@ -1,5 +1,7 @@
-import { findIndex, findLastIndex, throttle } from 'lodash';
-import { on, off } from "@inkline/inkline/src/helpers";
+import findIndex from 'lodash-es/findIndex';
+import findLastIndex from 'lodash-es/findLastIndex';
+import throttle from 'lodash-es/throttle';
+import { on, off } from "@inkline/inkline/src/helpers/index";
 
 function wasInViewport (element) {
     if (!element) { return; }

@@ -1,9 +1,9 @@
 <template lang="md" src="./grid.md"></template>
 
 <script>
-import View from '@components/View';
+import View from '@components/docs/View';
+import GridBox from '@components/docs/GridBox';
 import { head } from "@helpers/head";
-import GridBox from '@components/GridBox';
 
 export default {
     name: 'GridView',

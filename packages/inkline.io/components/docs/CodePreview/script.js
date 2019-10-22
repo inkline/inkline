@@ -1,11 +1,5 @@
-import { IButton, IButtonGroup } from '@inkline/inkline';
-
 export default {
     name: 'ICodePreview',
-    components: {
-        IButton,
-        IButtonGroup
-    },
     data() {
         return {
             active: this.defaultActive || 'default',

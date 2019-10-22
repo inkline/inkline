@@ -1,6 +1,6 @@
 <template lang="md" src="./installation.md" />
 <script>
-import View from '@components/View';
+import View from '@components/docs/View';
 import { head } from "@helpers/head";
 
 export default {

@@ -1,14 +1,8 @@
-import View from '@components/View';
-// import { ILayout, ILayoutAside, ILayoutContent, ILayoutFooter, ILayoutHeader } from '@inkline/inkline';
+import Navbar from '@components/Navbar';
 
 export default {
     name: 'Layout',
-    extends: View,
-    // components: {
-    //     ILayout,
-    //     ILayoutAside,
-    //     ILayoutContent,
-    //     ILayoutFooter,
-    //     ILayoutHeader
-    // }
+    components: {
+        Navbar
+    }
 };

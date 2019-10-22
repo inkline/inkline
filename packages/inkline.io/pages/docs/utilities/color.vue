@@ -1,8 +1,8 @@
 <template lang="md" src="./color.md" />
 <script>
-import View from '@components/View';
 import { head } from "@helpers/head";
-import ColorBox from '@components/ColorBox';
+import View from '@components/docs/View';
+import ColorBox from '@components/docs/ColorBox';
 
 export default {
     name: 'ColorUtilitiesView',
