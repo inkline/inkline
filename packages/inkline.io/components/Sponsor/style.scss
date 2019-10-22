@@ -1,0 +1,56 @@
+@import '~@inkline/inkline/src/css/config/index';
+@import '~@inkline/inkline/src/css/mixins/index';
+@import 'css/variables';
+@import 'css/sizes';
+
+.sponsor {
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid $color-gray-40;
+    background: rgba($color-white, 0.75);
+    cursor: pointer;
+    transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+
+    > .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $color-gray-60;
+        transition: color 0.3s ease;
+
+        img {
+            height: auto;
+            width: 100%;
+        }
+    }
+
+    &:hover,
+    &:focus {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        background: $color-white;
+        transform: translateY(-5px);
+        text-decoration: none;
+    }
+
+    &.-placeholder {
+        border-style: dashed;
+        background: transparent;
+
+        &:hover,
+        &:focus {
+            background: rgba($color-white, 0.5);
+            border-style: solid;
+
+            > .content {
+                color: $color-gray-70;
+            }
+        }
+    }
+
+    + .sponsor {
+        margin-left: $spacer;
+    }
+
+    @extend .sponsor.-md;
+}

@@ -1,0 +1,5 @@
+$sponsor-size-base: 5rem !default;
+$sponsor-size: size-map($sponsor-size-base, $sizes, $size-multipliers) !default;
+
+$sponsor-padding-base: spacers('1') !default;
+$sponsor-padding: size-map($sponsor-padding-base, $sizes, $size-multipliers) !default;
