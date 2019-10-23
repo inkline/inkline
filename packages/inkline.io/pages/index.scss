@@ -168,6 +168,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
+
+        .sponsor {
+            margin-right: $spacer / 4;
+            margin-left: $spacer / 4;
+            margin-bottom: $spacer;
+        }
     }
 
     #patreon-button {
