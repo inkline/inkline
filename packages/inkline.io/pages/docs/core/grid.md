@@ -1295,14 +1295,3 @@ You can make the `<i-container>` component fill the whole width of the parent el
         </i-table>
     </template>
 </i-api-preview>
-
-
-
-
-
-
-
-
-
-
-

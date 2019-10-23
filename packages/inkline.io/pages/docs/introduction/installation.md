@@ -76,7 +76,12 @@ import Inkline from '@inkline/inkline/src/index';
 Vue.use(Inkline);
 ~~~
 
-<i-alert variant="info" class="-code"><template slot="icon"><i class="inkline-icon -info h3"></i></template>To use Sass and tree shaking, you will need to add Sass as a dependency using `npm install -D node-sass sass-loader`.</i-alert>
+<i-alert variant="info" class="-code">
+<template slot="icon"><i class="inkline-icon -info h3"></i></template>
+    
+To use Sass and tree shaking, you will need to add Sass as a dependency using `npm install -D node-sass sass-loader`.
+
+</i-alert>
 
 ### Nuxt.js Module
 You can easily install Inkline as a <a href="https://nuxtjs.org" rel="nofollow" target="_blank">Nuxt.js</a> module.
@@ -107,7 +112,12 @@ module.exports = {
 }
 ~~~
 
-<i-alert variant="info" class="-code"><template slot="icon"><i class="inkline-icon -info h3"></i></template>To use the `scss` and `treeShaking` options, you will need to add Sass as a dependency using `npm install -D node-sass sass-loader`.</i-alert>
+<i-alert variant="info" class="-code">
+<template slot="icon"><i class="inkline-icon -info h3"></i></template>
+    
+To use the `scss` and `treeShaking` options, you will need to add Sass as a dependency using `npm install -D node-sass sass-loader`.
+    
+</i-alert>
 
 ##### Tree Shaking
 You can explicitly import only specific components from Inkline by setting the `components` option.

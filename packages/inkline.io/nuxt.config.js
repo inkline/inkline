@@ -93,6 +93,7 @@ module.exports = {
      * Nuxt router link
      */
     router: {
+        routeNameSplitter: '.',
         linkExactActiveClass: '-active nuxt-link-exact-active'
     },
 

@@ -480,4 +480,3 @@ export default {
         </i-table>
     </template>
 </i-api-preview>
-

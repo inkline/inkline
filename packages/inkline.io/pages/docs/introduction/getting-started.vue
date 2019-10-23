@@ -10,6 +10,6 @@ export default {
     head: head({
         title: 'Getting Started',
         description: 'Get started with Inkline and experience well written, designed and tested front end code.'
-    }),
+    })
 };
 </script>

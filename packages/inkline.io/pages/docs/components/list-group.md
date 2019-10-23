@@ -96,7 +96,7 @@ You can control the active state of your `<i-list-group-item>` using the `active
 
 <div>
 <i-list-group>
-    <i-list-group-item :to="{ name: 'docs-components-list-group' }" exact-active-class="-active">Active Router Link</i-list-group-item>
+    <i-list-group-item :to="{ name: 'docs.components.list-group' }" exact-active-class="-active">Active Router Link</i-list-group-item>
     <i-list-group-item :to="{ name: 'index' }" active>Active Link</i-list-group-item>
 </i-list-group>
 </div>
@@ -105,7 +105,7 @@ You can control the active state of your `<i-list-group-item>` using the `active
 
 ~~~html
 <i-list-group>
-    <i-list-group-item :to="{ name: 'docs-components-list-group' }" exact-active-class="-active">Active Router Link</i-list-group-item>
+    <i-list-group-item :to="{ name: 'docs.components.list-group' }" exact-active-class="-active">Active Router Link</i-list-group-item>
     <i-list-group-item :to="{ name: 'index' }" active>Active Link</i-list-group-item>
 </i-list-group>
 ~~~
