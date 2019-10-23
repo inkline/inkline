@@ -8,8 +8,6 @@ The layout components are used for scaffolding the basic structure of the page:
 - `<i-layout-content>` is the main content container
 - `<i-layout-footer>` is a container for footer elements
 
-
-
 ### Common Layouts
 
 The previewed layouts are styled for documentation purposes only. When using the components, they will only 
@@ -542,4 +540,3 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
         </i-table>
     </template>
 </i-api-preview>
-

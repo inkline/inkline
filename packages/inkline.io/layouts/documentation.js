@@ -3,6 +3,7 @@ import Layout from '@components/Layout'
 import SiteSearch from '@components/SiteSearch'
 import SiteNavigation from '@components/docs/SiteNavigation'
 import PageNavigation from '@components/docs/PageNavigation'
+import FooterNavigation from '@components/docs/FooterNavigation';
 import MatchParentWidth from '@directives/match-parent-width'
 import { getStyleProperty, off, on, dispatch } from '@inkline/inkline/helpers'
 import { breakpoints } from '@inkline/inkline/constants'
@@ -13,7 +14,8 @@ export default {
     components: {
         SiteSearch,
         SiteNavigation,
-        PageNavigation
+        PageNavigation,
+        FooterNavigation
     },
     directives: {
         MatchParentWidth

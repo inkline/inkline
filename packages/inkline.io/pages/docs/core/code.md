@@ -92,4 +92,3 @@ You can use the `<samp>` for indicating sample output from a program.
 
 </template>
 </i-code-preview>
-
