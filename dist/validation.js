@@ -664,11 +664,15 @@ module.exports = function (it) {
 
 var fails = __webpack_require__("d039");
 var wellKnownSymbol = __webpack_require__("b622");
+var V8_VERSION = __webpack_require__("60ae");
 
 var SPECIES = wellKnownSymbol('species');
 
 module.exports = function (METHOD_NAME) {
-  return !fails(function () {
+  // We can't use this feature detection in V8 since it causes
+  // deoptimization and serious performance degradation
+  // https://github.com/zloirock/core-js/issues/677
+  return V8_VERSION >= 51 || !fails(function () {
     var array = [];
     var constructor = array.constructor = {};
     constructor[SPECIES] = function () {
@@ -1615,6 +1619,30 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 /***/ }),
 
+/***/ "4963":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("3ac6");
+var userAgent = __webpack_require__("c4b8");
+
+var process = global.process;
+var versions = process && process.versions;
+var v8 = versions && versions.v8;
+var match, version;
+
+if (v8) {
+  match = v8.split('.');
+  version = match[0] + match[1];
+} else if (userAgent) {
+  match = userAgent.match(/Chrome\/(\d+)/);
+  if (match) version = match[1];
+}
+
+module.exports = version && +version;
+
+
+/***/ }),
+
 /***/ "498a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1984,7 +2012,7 @@ var store = __webpack_require__("c6cd");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.3.2',
+  version: '3.3.4',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
@@ -2090,6 +2118,30 @@ module.exports = function (bitmap, value) {
     value: value
   };
 };
+
+
+/***/ }),
+
+/***/ "60ae":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var userAgent = __webpack_require__("b39a");
+
+var process = global.process;
+var versions = process && process.versions;
+var v8 = versions && versions.v8;
+var match, version;
+
+if (v8) {
+  match = v8.split('.');
+  version = match[0] + match[1];
+} else if (userAgent) {
+  match = userAgent.match(/Chrome\/(\d+)/);
+  if (match) version = match[1];
+}
+
+module.exports = version && +version;
 
 
 /***/ }),
@@ -3731,11 +3783,15 @@ module.exports = function (NAME) {
 
 var fails = __webpack_require__("06fa");
 var wellKnownSymbol = __webpack_require__("0363");
+var V8_VERSION = __webpack_require__("4963");
 
 var SPECIES = wellKnownSymbol('species');
 
 module.exports = function (METHOD_NAME) {
-  return !fails(function () {
+  // We can't use this feature detection in V8 since it causes
+  // deoptimization and serious performance degradation
+  // https://github.com/zloirock/core-js/issues/677
+  return V8_VERSION >= 51 || !fails(function () {
     var array = [];
     var constructor = array.constructor = {};
     constructor[SPECIES] = function () {
@@ -4738,6 +4794,16 @@ module.exports = function (object, names) {
 
 /***/ }),
 
+/***/ "b39a":
+/***/ (function(module, exports, __webpack_require__) {
+
+var getBuiltIn = __webpack_require__("d066");
+
+module.exports = getBuiltIn('navigator', 'userAgent') || '';
+
+
+/***/ }),
+
 /***/ "b5f1":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4986,6 +5052,16 @@ module.exports = false;
 /***/ (function(module, exports) {
 
 module.exports = function () { /* empty */ };
+
+
+/***/ }),
+
+/***/ "c4b8":
+/***/ (function(module, exports, __webpack_require__) {
+
+var getBuiltIn = __webpack_require__("9883");
+
+module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 
 /***/ }),
@@ -5370,7 +5446,7 @@ var store = __webpack_require__("7685");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.3.2',
+  version: '3.3.4',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
@@ -5441,14 +5517,21 @@ module.exports = function (KEY, length, exec, sham) {
     // Symbol-named RegExp methods call .exec
     var execCalled = false;
     var re = /a/;
-    re.exec = function () { execCalled = true; return null; };
 
     if (KEY === 'split') {
+      // We can't use real regex here since it causes deoptimization
+      // and serious performance degradation in V8
+      // https://github.com/zloirock/core-js/issues/306
+      re = {};
       // RegExp[@@split] doesn't call the regex's exec method, but first creates
       // a new one. We need to return the patched regex when creating the new one.
       re.constructor = {};
       re.constructor[SPECIES] = function () { return re; };
+      re.flags = '';
+      re[SYMBOL] = /./[SYMBOL];
     }
+
+    re.exec = function () { execCalled = true; return null; };
 
     re[SYMBOL]('');
     return !execCalled;
