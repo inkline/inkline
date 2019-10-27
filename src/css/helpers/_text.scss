@@ -24,6 +24,10 @@
             text-align: center !important;
         }
 
+        ._text-wrap#{$infix} {
+            white-space: normal !important;
+        }
+
         ._text-nowrap#{$infix} {
             white-space: nowrap !important;
         }
@@ -68,6 +72,23 @@
 
 ._text-hide {
     text-indent: -10000px;
+}
+
+._text-break {
+    word-break: break-word!important;
+    overflow-wrap: break-word!important;
+}
+
+._text-monospace {
+    font-family: $font-family-primary-monospace;
+}
+
+._text-reset {
+    color: inherit!important;
+}
+
+._text-decoration-none {
+    text-decoration: none!important;
 }
 
 // Font size

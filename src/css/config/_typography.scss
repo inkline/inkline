@@ -62,13 +62,17 @@ $font-weight-normal: normal !default;
 $font-weight-semibold: 600 !default;
 $font-weight-bold: bold !default;
 $font-weight-black: 900 !default;
+$font-weight-lighter: lighter !default;
+$font-weight-bolder: bolder !default;
 
 $font-weight: (
     'extralight': $font-weight-extralight,
     'light': $font-weight-light,
+    'lighter': $font-weight-lighter,
     'normal': $font-weight-normal,
     'semibold': $font-weight-semibold,
     'bold': $font-weight-bold,
+    'bolder': $font-weight-bolder,
     'black': $font-weight-black,
 ) !default;
 
