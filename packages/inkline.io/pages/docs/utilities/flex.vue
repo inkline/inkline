@@ -8,9 +8,6 @@ export default {
     name: 'FlexUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Flex - Utilities',
-        description: 'Use Inkline\'s flexbox utilities to modify the layout, alignment, and sizing of components and more.'
-    }),
+    head: head('docs-utilities-flex'),
 };
 </script>

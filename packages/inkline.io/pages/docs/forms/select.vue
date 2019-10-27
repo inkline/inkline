@@ -2,15 +2,18 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { ISelect, ISelectOption, IFormGroup } from "@inkline/inkline/src/components";
 
 export default {
     extends: View,
     name: 'SelectView',
     layout: 'documentation',
-    head: head({
-        title: 'Select',
-        description: 'Select inputs are form components used for providing a collapsible list of options.'
-    }),
+    head: head('docs-forms-select'),
+    components: {
+        ISelect,
+        ISelectOption,
+        IFormGroup
+    },
     data () {
         return {
             selectValue: '',

@@ -2,14 +2,16 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IButton, ILoader } from "@inkline/inkline/src/components";
 
 export default {
     name: 'ButtonView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Button',
-        description: 'Inkline\'s Button component provides you with styles for multiple sizes, states, and more.'
-    })
+    head: head('docs-components-button'),
+    components: {
+        IButton,
+        ILoader
+    }
 };
 </script>

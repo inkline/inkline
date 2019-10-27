@@ -8,9 +8,6 @@ export default {
     name: 'BorderUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Border - Utilities',
-        description: 'Use Inkline\'s border utilities to quickly apply border styles to an element.'
-    }),
+    head: head('docs-utilities-border'),
 };
 </script>

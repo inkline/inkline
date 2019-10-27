@@ -7,9 +7,6 @@ export default {
     name: 'SpacingUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Spacing - Utilities',
-        description: 'Inkline provides a wide range of responsive margin and padding utility classes to modify an element’s appearance.'
-    }),
+    head: head('docs-utilities-spacing'),
 };
 </script>

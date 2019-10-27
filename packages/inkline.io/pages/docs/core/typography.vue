@@ -8,9 +8,6 @@ export default {
     name: 'TypographyView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Typography',
-        description: 'Examples and documentation for typography, one of the most important design elements of an application.'
-    }),
+    head: head('docs-core-typography'),
 };
 </script>

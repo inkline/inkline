@@ -2,14 +2,16 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IListGroup, IListGroupItem } from "@inkline/inkline/src/components";
 
 export default {
     name: 'ListGroupView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'List Group',
-        description: 'List Groups are flexible components used for displaying a list of related content.'
-    }),
+    head: head('docs-components-list-group'),
+    components: {
+        IListGroup,
+        IListGroupItem
+    }
 };
 </script>

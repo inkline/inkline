@@ -2,14 +2,16 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { INav, INavItem } from "@inkline/inkline/src/components";
 
 export default {
     name: 'NavView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Nav',
-        description: 'Navs are basic navigation components that provide alignment and spacing between items.'
-    }),
+    head: head('docs-components-nav'),
+    components: {
+        INav,
+        INavItem
+    }
 };
 </script>

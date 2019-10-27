@@ -1,227 +1,293 @@
 const pages = [
     {
-        id: 'docs.introduction.getting-started',
-        title: 'Getting Started'
+        id: 'index',
+        title: 'Vue.js UI/UX Framework',
+        description: 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications with a focus on user experience.'
     },
     {
-        id: 'docs.introduction.installation',
-        title: 'Installation'
+        id: 'docs-introduction-getting-started',
+        title: 'Getting Started',
+        description: 'Get started with Inkline and experience well written, designed and tested front end code.'
     },
     {
-        id: 'docs.introduction.customization',
-        title: 'Customization'
+        id: 'docs-introduction-installation',
+        title: 'Installation',
+        description: 'Install Inkline using your favorite package manager and get access to the latest source code.'
     },
     {
-        id: 'docs.core.grid',
-        title: 'Grid'
+        id: 'docs-introduction-customization',
+        title: 'Customization',
+        description: 'Make Inkline your own using hundreds of configurable Sass variables.'
     },
     {
-        id: 'docs.core.layout',
-        title: 'Layout'
+        id: 'docs-core-grid',
+        title: 'Grid',
+        description: 'Inkline\'s grid system is modelled as a 12 columns layout built using flexbox, with equally divided columns.'
     },
     {
-        id: 'docs.core.typography',
-        title: 'Typography'
+        id: 'docs-core-layout',
+        title: 'Layout',
+        description: 'Build basic web application layouts using Inkline\'s built-in Layout components.'
     },
     {
-        id: 'docs.core.images',
-        title: 'Images'
+        id: 'docs-core-typography',
+        title: 'Typography',
+        description: 'Examples and documentation for typography, one of the most important design elements of an application.'
     },
     {
-        id: 'docs.core.tables',
-        title: 'Tables'
+        id: 'docs-core-images',
+        title: 'Images',
+        description: 'Documentation and examples for images, using lightweight styles and modifier classes.'
     },
     {
-        id: 'docs.core.code',
-        title: 'Code'
+        id: 'docs-core-tables',
+        title: 'Tables',
+        description: 'Documentation and examples for opt-in styling of tables with Inkline.'
     },
     {
-        id: 'docs.forms.checkbox',
-        title: 'Checkbox'
+        id: 'docs-core-code',
+        title: 'Code',
+        description: 'Examples for displaying inline and multi-line blocks of code with Inkline.'
     },
     {
-        id: 'docs.forms.input',
-        title: 'Input'
+        id: 'docs-forms-checkbox',
+        title: 'Checkbox',
+        description: 'Checkbox inputs allow the user to select multiple options from a set.'
     },
     {
-        id: 'docs.forms.input-number',
-        title: 'Number Input'
+        id: 'docs-forms-input',
+        title: 'Input',
+        description: 'Inputs are form components used for inputting data directly from the keyboard.'
     },
     {
-        id: 'docs.forms.radio',
-        title: 'Radio'
+        id: 'docs-forms-input-number',
+        title: 'Number Input',
+        description: 'Number Inputs are form components used to for inputting and manipulating numbers.'
     },
     {
-        id: 'docs.forms.select',
-        title: 'Select'
+        id: 'docs-forms-radio',
+        title: 'Radio',
+        description: 'Radio inputs allow the user to select one option from a set of options.'
     },
     {
-        id: 'docs.forms.textarea',
-        title: 'Textarea'
+        id: 'docs-forms-select',
+        title: 'Select',
+        description: 'Select inputs are form components used for providing a collapsible list of options.'
     },
     {
-        id: 'docs.forms.form',
-        title: 'Form'
+        id: 'docs-forms-textarea',
+        title: 'Textarea',
+        description: 'Textareas are form components used for inputting data directly from the keyboard, on multiple lines.'
     },
     {
-        id: 'docs.forms.form-group',
-        title: 'Form Group'
+        id: 'docs-forms-form',
+        title: 'Form',
+        description: 'Inkline\'s Form components are the main wrappers for form elements, with powerful validation options.'
     },
     {
-        id: 'docs.forms.form-label',
-        title: 'Form Label'
+        id: 'docs-forms-form-group',
+        title: 'Form Group',
+        description: 'Form Groups are the easiest way to add structure to form elements.'
     },
     {
-        id: 'docs.forms.validation.installation',
-        title: 'Installation'
+        id: 'docs-forms-form-label',
+        title: 'Form Label',
+        description: 'Labels are a form component used to easily add text associated to inputs.'
     },
     {
-        id: 'docs.forms.validation.schema',
-        title: 'Schema'
+        id: 'docs-forms-validation-installation',
+        title: 'Installation - Form Validation',
+        description: 'Install and take advantage of the powerful form validation utilities provided by Inkline.'
     },
     {
-        id: 'docs.forms.validation.validators',
-        title: 'Validators'
+        id: 'docs-forms-validation-schema',
+        title: 'Schema - Form Validation',
+        description: 'Inkline\'s form validation schema defines the form input fields, groups and how they work together.'
     },
     {
-        id: 'docs.forms.validation.methods',
-        title: 'Methods'
+        id: 'docs-forms-validation-validators',
+        title: 'Validators - Form Validation',
+        description: 'Inkline\'s validators are functions used to check whether an input value matches a specific criteria.'
     },
     {
-        id: 'docs.components.alert',
-        title: 'Alert'
+        id: 'docs-forms-validation-methods',
+        title: 'Methods - Form Validation',
+        description: 'Inkline\'s form validation schema can be used to dynamically add schema fields and groups with ease.'
     },
     {
-        id: 'docs.components.badge',
-        title: 'Badge'
+        id: 'docs-components-alert',
+        title: 'Alert',
+        description: 'Provide contextual feedback messages for typical user actions using Inkline\'s Alert component.'
     },
     {
-        id: 'docs.components.breadcrumb',
-        title: 'Breadcrumb'
+        id: 'docs-components-badge',
+        title: 'Badge',
+        description: 'Documentation and examples for badges, a small Inkline component used for counting and labeling.'
     },
     {
-        id: 'docs.components.button',
-        title: 'Button'
+        id: 'docs-components-breadcrumb',
+        title: 'Breadcrumb',
+        description: 'Indicate the current page’s location depth using a navigation list that automatically adds separators.'
     },
     {
-        id: 'docs.components.button-group',
-        title: 'Button Group'
+        id: 'docs-components-button',
+        title: 'Button',
+        description: 'Inkline\'s Button component provides you with styles for multiple sizes, states, and more.'
     },
     {
-        id: 'docs.components.card',
-        title: 'Card'
+        id: 'docs-components-button-group',
+        title: 'Button Group',
+        description: 'Group multiple buttons together on a single line using Inkline\'s Button Group component.'
     },
     {
-        id: 'docs.components.collapsible',
-        title: 'Collapsible'
+        id: 'docs-components-card',
+        title: 'Card',
+        description: 'Cards provide you with a flexible and extensible content container with multiple color variants and options.'
     },
     {
-        id: 'docs.components.dropdown',
-        title: 'Dropdown'
+        id: 'docs-components-collapsible',
+        title: 'Collapsible',
+        description: 'Use Inkline\'s Collapsible components to show and hide content using a smooth reveal transition.'
     },
     {
-        id: 'docs.components.header',
-        title: 'Header'
+        id: 'docs-components-dropdown',
+        title: 'Dropdown',
+        description: 'Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.'
     },
     {
-        id: 'docs.components.icon',
-        title: 'Icon'
+        id: 'docs-components-header',
+        title: 'Header',
+        description: 'Inkline\'s lightweight, responsive Header component used for showcasing hero unit style content.'
     },
     {
-        id: 'docs.components.list-group',
-        title: 'List Group'
+        id: 'docs-components-icon',
+        title: 'Icon',
+        description: 'Inkline provides you with a set of icons which are commonly used within web applications.'
     },
     {
-        id: 'docs.components.loader',
-        title: 'Loader'
+        id: 'docs-components-list-group',
+        title: 'List Group',
+        description: 'List Groups are flexible components used for displaying a list of related content.'
     },
     {
-        id: 'docs.components.media',
-        title: 'Media'
+        id: 'docs-components-loader',
+        title: 'Loader',
+        description: 'Provide a loading state for a component or page using Inkline\'s customizable loading spinner.'
     },
     {
-        id: 'docs.components.modal',
-        title: 'Modal'
+        id: 'docs-components-media',
+        title: 'Media',
+        description: 'Media objects provide you with a flexible component that can be easily nested and repeated.'
     },
     {
-        id: 'docs.components.nav',
-        title: 'Nav'
+        id: 'docs-components-modal',
+        title: 'Modal',
+        description: 'Modals are dialogs that can be used for lightboxes, user notifications, or completely custom content.'
     },
     {
-        id: 'docs.components.navbar',
-        title: 'Navbar'
+        id: 'docs-components-nav',
+        title: 'Nav',
+        description: 'Navs are basic navigation components that provide alignment and spacing between items.'
     },
     {
-        id: 'docs.components.pagination',
-        title: 'Pagination'
+        id: 'docs-components-navbar',
+        title: 'Navbar',
+        description: 'A responsive navigation header that includes support for branding, navigation, forms and more.'
     },
     {
-        id: 'docs.components.popover',
-        title: 'Popover'
+        id: 'docs-components-pagination',
+        title: 'Pagination',
+        description: 'Use Inkline\'s Pagination component to provide navigation for large series of related content.'
     },
     {
-        id: 'docs.components.progress',
-        title: 'Progress'
+        id: 'docs-components-popover',
+        title: 'Popover',
+        description: 'Popovers are useful for conveying information when an user clicks an element.'
     },
     {
-        id: 'docs.components.tooltip',
-        title: 'Tooltip'
+        id: 'docs-components-progress',
+        title: 'Progress',
+        description: 'Inkline\'s custom component for displaying progress with support for stacked progress bars.'
     },
     {
-        id: 'docs.utilities.border',
-        title: 'Border'
+        id: 'docs-components-tooltip',
+        title: 'Tooltip',
+        description: 'Tooltips are useful for conveying information when an user hovers over an element.'
     },
     {
-        id: 'docs.utilities.clearfix',
-        title: 'Clearfix'
+        id: 'docs-utilities-border',
+        title: 'Border',
+        description: 'Use Inkline\'s border utilities to quickly apply border styles to an element.'
     },
     {
-        id: 'docs.utilities.color',
-        title: 'Color'
+        id: 'docs-utilities-clearfix',
+        title: 'Clearfix',
+        description: 'Use Inkline\'s clearfix utility to clear floated content within a container.'
     },
     {
-        id: 'docs.utilities.display',
-        title: 'Display'
+        id: 'docs-utilities-color',
+        title: 'Color',
+        description: 'Use Inkline\'s color utilities to provide a beautiful, consistent color scheme across your web application.'
     },
     {
-        id: 'docs.utilities.embed',
-        title: 'Embed'
+        id: 'docs-utilities-display',
+        title: 'Display',
+        description: 'Change the display style of components responsively using Inkline\'s display utilities.'
     },
     {
-        id: 'docs.utilities.flex',
-        title: 'Flex'
+        id: 'docs-utilities-embed',
+        title: 'Embed',
+        description: 'Create responsive video embeds by keeping the aspect ratio based on the parent element width.'
     },
     {
-        id: 'docs.utilities.float',
-        title: 'Float'
+        id: 'docs-utilities-flex',
+        title: 'Flex',
+        description: 'Use Inkline\'s flexbox utilities to modify the layout, alignment, and sizing of components and more.'
     },
     {
-        id: 'docs.utilities.overflow',
-        title: 'Overflow'
+        id: 'docs-utilities-float',
+        title: 'Float',
+        description: 'You can use Inkline\'s float utilities to float any element, for any breakpoint.'
     },
     {
-        id: 'docs.utilities.overlay',
-        title: 'Overlay'
+        id: 'docs-utilities-overflow',
+        title: 'Overflow',
+        description: 'You can use Inkline\'s overflow utilities for deciding how content overflows an element.'
     },
     {
-        id: 'docs.utilities.position',
-        title: 'Position'
+        id: 'docs-utilities-overlay',
+        title: 'Overlay',
+        description: 'Make an element overlay its container by adding one of Inkline\'s overlay utilities.'
     },
     {
-        id: 'docs.utilities.sizing',
-        title: 'Sizing'
+        id: 'docs-utilities-position',
+        title: 'Position',
+        description: 'Use Inkline\'s position utilities for quickly setting the position of an element.'
     },
     {
-        id: 'docs.utilities.spacing',
-        title: 'Spacing'
+        id: 'docs-utilities-sizing',
+        title: 'Sizing',
+        description: 'Make an element as wide or as tall as you need using Inkline\'s width and height utilities.'
     },
     {
-        id: 'docs.utilities.vertical-align',
-        title: 'Vertical Align'
+        id: 'docs-utilities-spacing',
+        title: 'Spacing',
+        description: 'Inkline provides a wide range of responsive margin and padding utility classes to modify an element’s appearance.'
     },
     {
-        id: 'docs.utilities.visibility',
-        title: 'Visibility'
+        id: 'docs-utilities-text',
+        title: 'Text',
+        description: 'Inkline provides common text utilities to control alignment, wrapping, weight, and more.'
+    },
+    {
+        id: 'docs-utilities-vertical-align',
+        title: 'Vertical Align',
+        description: 'Use Inkline\'s vertical alignment utilities for inline, inline block, inline table, and table cell elements.'
+    },
+    {
+        id: 'docs-utilities-visibility',
+        title: 'Visibility',
+        description: 'Inkline\'s utilities allow you to control the visibility, with or without modifying the display of elements.'
     }
 ];
 

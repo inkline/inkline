@@ -8,9 +8,6 @@ export default {
     extends: View,
     name: 'FormValidationInstallationView',
     layout: 'documentation',
-    head: head({
-        title: 'Installation - Form Validation',
-        description: 'Install and take advantage of the powerful form validation utilities provided by Inkline.'
-    }),
+    head: head('docs-forms-validation-installation'),
 };
 </script>

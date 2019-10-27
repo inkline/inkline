@@ -2,15 +2,16 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IPagination } from "@inkline/inkline/src/components";
 
 export default {
     name: 'PaginationView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Pagination',
-        description: 'Use Inkline\'s Pagination component to provide navigation for large series of related content.'
-    }),
+    head: head('docs-components-pagination'),
+    components: {
+        IPagination
+    },
     data() {
         return {
             currentPage: 1,

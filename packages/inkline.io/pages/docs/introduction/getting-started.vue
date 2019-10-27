@@ -7,9 +7,6 @@ export default {
     name: 'GettingStartedView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Getting Started',
-        description: 'Get started with Inkline and experience well written, designed and tested front end code.'
-    })
+    head: head('docs-introduction-getting-started')
 };
 </script>

@@ -2,14 +2,16 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IButton, IButtonGroup } from "@inkline/inkline/src/components";
 
 export default {
     name: 'ButtonGroupView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Button Group',
-        description: 'Group multiple buttons together on a single line using Inkline\'s Button Group component.'
-    }),
+    head: head('docs-components-button-group'),
+    components: {
+        IButtonGroup,
+        IButton
+    }
 };
 </script>

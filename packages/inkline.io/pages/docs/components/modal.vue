@@ -2,15 +2,17 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IButton, IModal } from "@inkline/inkline/src/components";
 
 export default {
     name: 'ModalView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Modal',
-        description: 'Modals are dialogs that can be used for lightboxes, user notifications, or completely custom content.'
-    }),
+    head: head('docs-components-modal'),
+    components: {
+        IButton,
+        IModal
+    },
     data () {
         return {
             showModal: false,

@@ -5,14 +5,19 @@
 <script>
 import View from '@components/docs/View'
 import { head } from '@helpers/head'
+import { ILayout, ILayoutAside, ILayoutContent, ILayoutHeader, ILayoutFooter } from "@inkline/inkline/src/components";
 
 export default {
     name: 'LayoutView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Layout',
-        description: 'Build basic web application layouts using Inkline\'s built-in Layout components.'
-    }),
+    head: head('docs-core-layout'),
+    components: {
+        ILayout,
+        ILayoutAside,
+        ILayoutContent,
+        ILayoutHeader,
+        ILayoutFooter
+    }
 };
 </script>

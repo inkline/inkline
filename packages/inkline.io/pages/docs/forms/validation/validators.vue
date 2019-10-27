@@ -2,15 +2,18 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IInput, IForm, IFormGroup } from "@inkline/inkline/src/components";
 
 export default {
     extends: View,
     name: 'FormValidationValidatorsView',
     layout: 'documentation',
-    head: head({
-        title: 'Validators - Form Validation',
-        description: 'Inkline\'s validators are functions used to check whether an input value matches a specific criteria.'
-    }),
+    head: head('docs-forms-validation-validators'),
+    components: {
+        IInput,
+        IForm,
+        IFormGroup
+    },
     data () {
         return {
             alphaValidatorForm: this.$form({

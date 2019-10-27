@@ -2,14 +2,13 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IBadge } from "@inkline/inkline/src/index";
 
 export default {
     name: 'BadgeView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Badge',
-        description: 'Documentation and examples for badges, a small Inkline component used for counting and labeling.'
-    })
+    head: head('docs-components-badge'),
+    components: { IBadge },
 };
 </script>

@@ -2,15 +2,26 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IFormGroup, IFormLabel, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup, IInput, ISelect, ISelectOption, ITextarea, IButton } from "@inkline/inkline/src/components";
 
 export default {
     extends: View,
     name: 'FormGroupView',
     layout: 'documentation',
-    head: head({
-        title: 'Form Group',
-        description: 'Form Groups are the easiest way to add structure to form elements.'
-    }),
+    head: head('docs-forms-form-group'),
+    components: {
+        IFormGroup,
+        IFormLabel,
+        ICheckbox,
+        IRadio,
+        IInput,
+        ISelect,
+        ISelectOption,
+        ITextarea,
+        IButton,
+        ICheckboxGroup,
+        IRadioGroup
+    },
     data () {
         return {
             input: '',

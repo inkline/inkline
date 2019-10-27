@@ -2,15 +2,19 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { ICheckbox, ICheckboxGroup, ICheckboxButton, ICheckboxButtonGroup } from "@inkline/inkline/src/components";
 
 export default {
     name: 'CheckboxView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Checkbox',
-        description: 'Checkbox inputs allow the user to select multiple options from a set.'
-    }),
+    head: head('docs-forms-checkbox'),
+    components: {
+        ICheckbox,
+        ICheckboxGroup,
+        ICheckboxButton,
+        ICheckboxButtonGroup
+    },
     data () {
         return {
             checked: true,

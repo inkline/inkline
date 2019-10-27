@@ -1,5 +1,8 @@
+import { IIcon } from "@inkline/inkline/src/index";
+
 export default {
     name: 'Sponsor',
+    components: { IIcon },
     props: {
         data: {
             type: Object,
