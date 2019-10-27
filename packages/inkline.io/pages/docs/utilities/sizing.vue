@@ -7,9 +7,6 @@ export default {
     name: 'SizingUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Sizing - Utilities',
-        description: 'Make an element as wide or as tall as you need using Inkline\'s width and height utilities.'
-    }),
+    head: head('docs-utilities-sizing'),
 };
 </script>

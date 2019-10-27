@@ -2,14 +2,17 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { ICard, IRow, IColumn } from "@inkline/inkline/src/components";
 
 export default {
     name: 'CardView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Card',
-        description: 'Cards provide you with a flexible and extensible content container with multiple color variants and options.'
-    }),
+    head: head('docs-components-card'),
+    components: {
+        ICard,
+        IRow,
+        IColumn
+    }
 };
 </script>

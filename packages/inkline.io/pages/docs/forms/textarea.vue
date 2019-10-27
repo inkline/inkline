@@ -2,15 +2,16 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { ITextarea } from "@inkline/inkline/src/components";
 
 export default {
     extends: View,
     name: 'TextareaView',
     layout: 'documentation',
-    head: head({
-        title: 'Textarea',
-        description: 'Textareas are form components used for inputting data directly from the keyboard, on multiple lines.'
-    }),
+    head: head('docs-forms-textarea'),
+    components: {
+        ITextarea
+    },
     data () {
         const sampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 

@@ -1,3 +1,5 @@
+import { IDropdown, IDropdownMenu, IDropdownItem, IInput } from '@inkline/inkline/src/index';
+
 import Fuse from 'fuse.js';
 import axios from 'axios';
 
@@ -45,6 +47,12 @@ function highlight(resultItem) {
 
 export default {
     name: 'SiteSearch',
+    components: {
+        IDropdown,
+        IDropdownMenu,
+        IDropdownItem,
+        IInput
+    },
     created() {
         axios.get('/search.json')
             .then((response) => {

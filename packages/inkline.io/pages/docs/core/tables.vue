@@ -7,9 +7,6 @@ export default {
     name: 'TablesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Table',
-        description: 'Documentation and examples for opt-in styling of tables with Inkline.'
-    }),
+    head: head('docs-core-tables'),
 };
 </script>

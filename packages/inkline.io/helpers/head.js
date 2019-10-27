@@ -1,9 +1,12 @@
-export function head(meta) {
+import pages from '@/pages.config';
+
+export function head(id, options = {}) {
+    const page = pages.byId[id];
     const titlePostamble = ' - Inkline';
     const descriptionPostamble = ' Inkline is a modern UI/UX framework for Vue.js.';
 
-    const title = meta.title + (meta.preserve && meta.preserve.title ? '' : titlePostamble);
-    const description = meta.description + (meta.preserve && meta.preserve.description ? '' : descriptionPostamble);
+    const title = page.title + (options.preserve && options.preserve.title ? '' : titlePostamble);
+    const description = page.description + (options.preserve && options.preserve.description ? '' : descriptionPostamble);
 
     return function () {
         const routerPath = this.$route.fullPath.replace(/\/$/, '');

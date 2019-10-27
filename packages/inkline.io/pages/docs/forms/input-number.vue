@@ -2,15 +2,17 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IInputNumber, IFormGroup } from "@inkline/inkline/src/components";
 
 export default {
     extends: View,
     name: 'InputView',
     layout: 'documentation',
-    head: head({
-        title: 'Number Input',
-        description: 'Number Inputs are form components used to for inputting and manipulating numbers.'
-    }),
+    head: head('docs-forms-input-number'),
+    components: {
+        IInputNumber,
+        IFormGroup
+    },
     data () {
         return {
             inputValue: '',

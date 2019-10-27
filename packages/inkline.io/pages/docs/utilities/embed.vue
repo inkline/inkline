@@ -7,9 +7,6 @@ export default {
     name: 'EmbedUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Embed - Utilities',
-        description: 'Create responsive video embeds by keeping the aspect ratio based on the parent element width.'
-    }),
+    head: head('docs-utilities-embed'),
 };
 </script>

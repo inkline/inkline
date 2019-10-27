@@ -2,15 +2,19 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IInput, IButton, IForm, IFormGroup } from "@inkline/inkline/src/components";
 
 export default {
     extends: View,
     name: 'FormValidationMethodsView',
     layout: 'documentation',
-    head: head({
-        title: 'Methods - Form Validation',
-        description: 'Inkline\'s form validation schema can be used to dynamically add schema fields and groups with ease.'
-    }),
+    head: head('docs-forms-validation-methods'),
+    components: {
+        IInput,
+        IButton,
+        IForm,
+        IFormGroup
+    },
     data () {
         return {
             listForm: this.$form({

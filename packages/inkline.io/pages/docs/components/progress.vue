@@ -2,14 +2,16 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IProgress, IProgressBar } from "@inkline/inkline/src/components";
 
 export default {
     name: 'ProgressView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Progress',
-        description: 'Inkline\'s custom component for displaying progress with support for stacked progress bars.'
-    }),
+    head: head('docs-components-progress'),
+    components: {
+        IProgress,
+        IProgressBar
+    }
 };
 </script>

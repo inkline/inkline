@@ -3,14 +3,15 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { ILoader } from "@inkline/inkline/src/components";
 
 export default {
     name: 'LoaderView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Loader',
-        description: 'Provide a loading state for a component or page using Inkline\'s customizable loading spinner.'
-    })
+    head: head('docs-components-loader'),
+    components: {
+        ILoader
+    }
 };
 </script>

@@ -7,9 +7,6 @@ export default {
     name: 'ImagesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Images',
-        description: 'Documentation and examples for images, using lightweight styles and modifier classes.'
-    }),
+    head: head('docs-core-images'),
 };
 </script>

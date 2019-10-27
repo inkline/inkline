@@ -1,6 +1,7 @@
 <template src="./index.html"></template>
 <style lang="scss" src="./index.scss"></style>
 <script>
+import { IHeader, IContainer, IRow, IColumn, IButton } from "@inkline/inkline/src/index";
 import { head } from '@helpers/head'
 import Sponsor from '@components/Sponsor';
 import GithubButton from 'vue-github-button'
@@ -8,14 +9,17 @@ import GithubButton from 'vue-github-button'
 export default {
     name: 'IndexView',
     layout: 'Default',
-    head: head({
-        title: 'Vue.js UI/UX Framework',
-        description: 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications with a focus on user experience.',
+    head: head('index', {
         preserve: {
             description: true
         }
     }),
     components: {
+        IHeader,
+        IContainer,
+        IRow,
+        IColumn,
+        IButton,
         GithubButton,
         Sponsor
     },

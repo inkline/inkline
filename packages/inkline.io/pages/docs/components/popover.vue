@@ -2,15 +2,17 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IButton, IPopover } from "@inkline/inkline/src/components";
 
 export default {
     name: 'PopoverView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Popover',
-        description: 'Popovers are useful for conveying information when an user clicks an element.'
-    }),
+    head: head('docs-components-popover'),
+    components: {
+        IButton,
+        IPopover
+    },
     data() {
         return {
             manualPopover: false

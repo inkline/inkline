@@ -2,15 +2,28 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IAlert, IForm, IFormGroup, IFormLabel, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup, IInput, ISelect, ISelectOption, ITextarea, IButton } from "@inkline/inkline/src/components";
 
 export default {
     extends: View,
     name: 'FormValidationSchemaView',
     layout: 'documentation',
-    head: head({
-        title: 'Schema - Form Validation',
-        description: 'Inkline\'s form validation schema defines the form input fields, groups and how they work together.'
-    }),
+    head: head('docs-forms-validation-schema'),
+    components: {
+        IAlert,
+        IForm,
+        IFormGroup,
+        IFormLabel,
+        ICheckbox,
+        IRadio,
+        IInput,
+        ISelect,
+        ISelectOption,
+        ITextarea,
+        IButton,
+        ICheckboxGroup,
+        IRadioGroup
+    },
     data () {
         return {
             basicForm: this.$form({

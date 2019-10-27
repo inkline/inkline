@@ -2,15 +2,20 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IButton, IDropdown, IDropdownMenu, IDropdownItem, IDropdownDivider } from "@inkline/inkline/src/components";
 
 export default {
     name: 'DropdownView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Dropdown',
-        description: 'Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.'
-    }),
+    head: head('docs-components-dropdown'),
+    components: {
+        IButton,
+        IDropdown,
+        IDropdownMenu,
+        IDropdownItem,
+        IDropdownDivider
+    },
     data() {
         return {
             manualDropdown: false

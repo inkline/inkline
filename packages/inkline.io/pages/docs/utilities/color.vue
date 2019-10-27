@@ -3,17 +3,17 @@
 import { head } from "@helpers/head";
 import View from '@components/docs/View';
 import ColorBox from '@components/docs/ColorBox';
+import { IRow, IColumn } from "@inkline/inkline/src/components";
 
 export default {
     name: 'ColorUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Color - Utilities',
-        description: 'Use Inkline\'s color utilities to provide a beautiful, consistent color scheme across your web application.'
-    }),
+    head: head('docs-utilities-color'),
     components: {
-        ColorBox
+        ColorBox,
+        IRow,
+        IColumn
     }
 };
 </script>

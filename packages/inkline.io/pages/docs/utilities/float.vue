@@ -2,14 +2,15 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IAlert } from "@inkline/inkline/src/components";
 
 export default {
     name: 'FloatUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Float - Utilities',
-        description: 'You can use Inkline\'s float utilities to float any element, for any breakpoint.'
-    }),
+    head: head('docs-utilities-float'),
+    components: {
+        IAlert
+    }
 };
 </script>

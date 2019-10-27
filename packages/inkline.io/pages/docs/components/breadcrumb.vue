@@ -2,15 +2,17 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IBreadcrumb, IBreadcrumbItem } from "@inkline/inkline/src/components";
 
 export default {
     name: 'BreadcrumbView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Breadcrumb',
-        description: 'Indicate the current page’s location depth using a navigation list that automatically adds separators.'
-    }),
+    head: head('docs-components-breadcrumb'),
+    components: {
+        IBreadcrumb,
+        IBreadcrumbItem
+    },
     data() {
         return {
             items: [

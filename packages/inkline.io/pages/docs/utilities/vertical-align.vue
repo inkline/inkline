@@ -7,9 +7,6 @@ export default {
     name: 'VerticalAlignUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Vertical Align - Utilities',
-        description: 'Use Inkline\'s vertical alignment utilities for inline, inline block, inline table, and table cell elements.'
-    }),
+    head: head('docs-utilities-vertical-align'),
 };
 </script>

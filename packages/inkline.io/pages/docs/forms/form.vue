@@ -2,15 +2,27 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IForm, IFormGroup, IFormLabel, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup, IInput, ISelect, ISelectOption, ITextarea, IButton } from "@inkline/inkline/src/components";
 
 export default {
     extends: View,
     name: 'FormView',
     layout: 'documentation',
-    head: head({
-        title: 'Form',
-        description: 'Inkline\'s Form components are the main wrappers for form elements, with powerful validation options.'
-    }),
+    head: head('docs-forms-form'),
+    components: {
+        IForm,
+        IFormGroup,
+        IFormLabel,
+        ICheckbox,
+        IRadio,
+        IInput,
+        ISelect,
+        ISelectOption,
+        ITextarea,
+        IButton,
+        ICheckboxGroup,
+        IRadioGroup
+    },
     data () {
         return {
             input: '',

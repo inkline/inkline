@@ -2,14 +2,15 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IMedia } from "@inkline/inkline/src/components";
 
 export default {
-    name: 'CardView',
+    name: 'MediaView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Media',
-        description: 'Media objects provide you with a flexible component that can be easily nested and repeated.'
-    })
+    head: head('docs-components-media'),
+    components: {
+        IMedia
+    }
 };
 </script>

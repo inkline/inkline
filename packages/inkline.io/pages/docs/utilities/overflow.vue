@@ -7,9 +7,6 @@ export default {
     name: 'OverflowUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Overflow - Utilities',
-        description: 'You can use Inkline\'s overflow utilities for deciding how content overflows an element.'
-    }),
+    head: head('docs-utilities-overflow'),
 };
 </script>

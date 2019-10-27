@@ -5,14 +5,13 @@
 <script>
 import View from '@components/docs/View'
 import { head } from '@helpers/head'
+import { IButton, IHeader } from "@inkline/inkline/src/components";
 
 export default {
     name: 'HeaderView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Header',
-        description: 'Inkline\'s lightweight, responsive Header component used for showcasing hero unit style content.'
-    })
+    head: head('docs-components-header'),
+    components: { IButton, IHeader }
 };
 </script>

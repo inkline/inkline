@@ -7,9 +7,6 @@ export default {
     name: 'TextUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Text - Utilities',
-        description: 'Inkline provides common text utilities to control alignment, wrapping, weight, and more.'
-    }),
+    head: head('docs-utilities-text'),
 };
 </script>

@@ -7,9 +7,6 @@ export default {
     name: 'PositionUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Position - Utilities',
-        description: 'Use Inkline\'s position utilities for quickly setting the position of an element.'
-    }),
+    head: head('docs-utilities-position'),
 };
 </script>

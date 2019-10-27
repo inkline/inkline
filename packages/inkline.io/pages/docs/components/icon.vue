@@ -5,14 +5,15 @@
 <script>
 import View from '@components/docs/View'
 import { head } from '@helpers/head'
+import { IIcon } from "@inkline/inkline/src/components";
 
 export default {
     name: 'IconView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Icon',
-        description: 'Inkline provides you with a set of icons which are commonly used within web applications.'
-    }),
+    head: head('docs-components-icon'),
+    components: {
+        IIcon
+    }
 };
 </script>

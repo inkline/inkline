@@ -7,9 +7,6 @@ export default {
     name: 'CodeView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Code',
-        description: 'Examples for displaying inline and multi-line blocks of code with Inkline.'
-    }),
+    head: head('docs-core-code'),
 };
 </script>

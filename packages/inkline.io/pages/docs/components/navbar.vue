@@ -2,14 +2,25 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { INavbar, INavbarBrand, INavbarItems, INav, INavItem, IDropdown, IDropdownMenu, IDropdownItem, IDropdownDivider, IButton, IInput } from "@inkline/inkline/src/components";
 
 export default {
     name: 'NavbarView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Navbar',
-        description: 'A responsive navigation header that includes support for branding, navigation, forms and more.'
-    }),
+    head: head('docs-components-navbar'),
+    components: {
+        INavbar,
+        INavbarBrand,
+        INavbarItems,
+        INav,
+        INavItem,
+        IDropdown,
+        IDropdownMenu,
+        IDropdownItem,
+        IDropdownDivider,
+        IButton,
+        IInput
+    }
 };
 </script>

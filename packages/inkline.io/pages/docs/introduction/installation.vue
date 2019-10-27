@@ -2,14 +2,15 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IAlert } from "@inkline/inkline/src/components";
 
 export default {
     name: 'InstallationView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Installation',
-        description: 'Install Inkline using your favorite package manager and get access to the latest source code.'
-    }),
+    head: head('docs-introduction-installation'),
+    components: {
+        IAlert
+    }
 };
 </script>

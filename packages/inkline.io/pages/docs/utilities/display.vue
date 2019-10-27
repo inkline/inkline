@@ -7,9 +7,6 @@ export default {
     name: 'DisplayUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head({
-        title: 'Display - Utilities',
-        description: 'Change the display style of components responsively using Inkline\'s display utilities.'
-    }),
+    head: head('docs-utilities-display'),
 };
 </script>
