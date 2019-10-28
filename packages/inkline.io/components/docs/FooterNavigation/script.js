@@ -1,5 +1,7 @@
 import pages from '@/pages.config';
 
+const docsPagesIds = pages.allIds.filter((pageId) => pageId.indexOf('docs') === 0);
+
 export default {
     name: 'FooterNavigation',
     data() {
@@ -11,9 +13,9 @@ export default {
     },
     methods: {
         update() {
-            const currentIndex = pages.allIds.indexOf(this.$nuxt.$route.name);
-            const previousPageId = pages.allIds[currentIndex - 1];
-            const nextPageId = pages.allIds[currentIndex + 1];
+            const currentIndex = docsPagesIds.indexOf(this.$nuxt.$route.name);
+            const previousPageId = docsPagesIds[currentIndex - 1];
+            const nextPageId = docsPagesIds[currentIndex + 1];
 
             this.previous = pages.byId[previousPageId];
             this.next = pages.byId[nextPageId];
