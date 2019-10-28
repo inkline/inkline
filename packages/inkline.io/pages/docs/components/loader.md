@@ -110,7 +110,7 @@ You're able to provide some additional text by using the `default` loader slot.
             <tbody>
                 <tr>
                     <td>count</td>
-                    <td>Sets the number of elements that make up the loading spinner. To be used together with the `$loader-item-count` Sass variable.</td>
+                    <td>Sets the number of elements that make up the loading spinner. To be used together with the <code>$loader-item-count</code> Sass variable.</td>
                     <td><code>Number</code></td>
                     <td></td>
                     <td><code>12</code></td>
