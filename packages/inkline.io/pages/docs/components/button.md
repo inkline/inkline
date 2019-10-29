@@ -275,6 +275,37 @@ You can create block level buttons that span the full width of a parent by addin
 </template>
 </i-code-preview>
 
+### Button Icon
+You can easily use the `i-button` component together with any icon component (i.e. FontAwesome, IcoMoon), including any of the <nuxt-link :to="{ name: 'docs-components-icon' }">list of icons</nuxt-link> of the `i-icon` component.
+
+<i-code-preview title="Button Icon" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
+<i-button><i-icon icon="home" class="_margin-right-1-2"></i-icon> Button Icon</i-button>
+<i-button>Button Icon <i-icon icon="home" class="_margin-left-1-2"></i-icon></i-button>
+<i-button><i-icon icon="home" class="_margin-right-1-2"></i-icon> Button Icon <i-icon icon="caret-down" class="_margin-left-1-2"></i-icon></i-button>
+
+<template slot="html">
+
+~~~html
+<i-button>
+    <i-icon icon="home" class="_margin-right-1-2"></i-icon> Button Icon
+</i-button>
+~~~
+~~~html
+<i-button>
+    Button Icon <i-icon icon="home" class="_margin-left-1-2"></i-icon>
+</i-button>
+~~~
+~~~html
+<i-button>
+    <i-icon icon="home" class="_margin-right-1-2"></i-icon>
+    Button Icon
+    <i-icon icon="caret-down" class="_margin-left-1-2"></i-icon>
+</i-button>
+~~~
+
+</template>
+</i-code-preview>
+
 ### Active State
 Buttons will appear pressed when active. You can force a button to have an active appearance with the `active` property (this will also include the aria-pressed="true" attribute).
 

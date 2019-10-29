@@ -2,7 +2,7 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
-import { IButton, ILoader } from "@inkline/inkline/src/components";
+import { IButton, IIcon, ILoader } from "@inkline/inkline/src/components";
 
 export default {
     name: 'ButtonView',
@@ -11,6 +11,7 @@ export default {
     head: head('docs-components-button'),
     components: {
         IButton,
+        IIcon,
         ILoader
     }
 };
