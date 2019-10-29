@@ -1,22 +1,24 @@
 <template lang="md" src="./definition.md" />
 <script>
-import View from '@components/View';
+import View from '@components/docs/View';
 import { head } from "@helpers/head";
+import { IDatatable, IAlert } from '@inkline/inkline/src/index';
 
 export default {
     extends: View,
     name: 'DataTableDefinitionView',
     layout: 'documentation',
-    head: head({
-        title: 'Definition - Data Table',
-        description: 'Provide contextual feedback messages for typical user actions using Inkline\'s Alert component.'
-    }),
+    head: head('docs-components-datatable-definition'),
+    components: {
+        IDatatable,
+        IAlert
+    },
     data () {
         return {
             columns: [
-                { title: 'Name', key: 'name' },
-                { title: 'Email', key: 'email' },
-                { title: 'Age', key: 'age', align: 'right' }
+                { title: 'Name', path: 'name' },
+                { title: 'Email', path: 'email' },
+                { title: 'Age', path: 'age', align: 'right' }
             ],
             rows: [
                 { id: '1', name: 'Richard Hendricks', email: 'richard.hendricks@email.com', age: 26 },
@@ -26,9 +28,9 @@ export default {
                 { id: '5', name: 'Erlich Bachman', email: 'erlich.bachman@email.com', age: 32 }
             ],
             columnsNested: [
-                { title: 'Name', key: 'name' },
-                { title: 'City', key: 'address.city' },
-                { title: 'Country', key: 'address.country' },
+                { title: 'Name', path: 'name' },
+                { title: 'City', path: 'address.city' },
+                { title: 'Country', path: 'address.country' },
             ],
             rowsNested: [
                 { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },
