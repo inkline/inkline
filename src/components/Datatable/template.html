@@ -2,17 +2,19 @@
     <table class="datatable" :class="classes['root']">
         <thead>
         <tr class="dtr">
-            <th class="dth" :class="columnClass(column)"
-                v-for="(column, index) in tableColumns" :key="index"
-                @click="onHeaderCellClick(column)">
-                    <span>
-                        {{column.title}}
+            <slot name="row" :sortBy="sortBy">
+                <th class="dth" :class="columnClass(column)"
+                    v-for="(column, index) in tableColumns" :key="index"
+                    @click="onHeaderCellClick(column)">
+                    <span v-if="!column.headerComponent">
+                        {{tableColumnsRendered[column.path]}}
                         <i-icon class="sortable-icon" v-if="column.sortable" icon="sort">
-                            <i-icon v-if="sortBy === column.key" icon="sort-asc"></i-icon>
-                            <!--<i-icon v-if="sortBy === column.key && sortDirection === 'desc'" icon="sort-desc"></i-icon>-->
+                            <i-icon v-if="sortBy === column.path" icon="sort-asc"></i-icon>
                         </i-icon>
                     </span>
-            </th>
+                    <span v-else :is="column.headerComponent" :column="column" :index="index" :sort-by="sortBy"></span>
+                </th>
+            </slot>
         </tr>
         </thead>
         <tbody>
@@ -20,9 +22,9 @@
             <slot name="row" :row="row" :index="rowIndex">
                 <td class="dtd" :class="columnClass(column, row)"
                     v-for="(column, columnIndex) in tableColumns" :key="columnIndex">
-                        <span v-if="!column.component">
-                            {{tableRowsRendered[rowIndex][column.key]}}
-                        </span>
+                    <span v-if="!column.component">
+                        {{tableRowsRendered[rowIndex][column.path]}}
+                    </span>
                     <span v-else :is="column.component" :row="row" :column="column"></span>
                 </td>
             </slot>
