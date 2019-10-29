@@ -439,7 +439,6 @@ Inkline includes two predefined dropdown styles, each serving its own semantic p
 </template>
 </i-code-preview>
 
-
 ### Recursive Dropdowns
 Inkline allows you to have virtually infinite recursive dropdown submenus structure by defining another `<i-dropdown>` inside of a `<i-dropdown-menu>`. This awesome feature gives you great design flexibility.
 

@@ -9,9 +9,9 @@ export default {
     data() {
         return {
             columns: [
-                { title: 'Name', key: 'name' },
-                { title: 'Email', key: 'email' },
-                { title: 'Age', key: 'age', align: 'right' }
+                { title: 'Name', path: 'name' },
+                { title: 'Email', path: 'email' },
+                { title: 'Age', path: 'age', align: 'right' }
             ]
         }
     }
@@ -64,9 +64,9 @@ export default {
     data() {
         return {
             columns: [
-                { title: 'Name', key: 'name' },
-                { title: 'Email', key: 'email' },
-                { title: 'Age', key: 'age', align: 'right' }
+                { title: 'Name', path: 'name' },
+                { title: 'Email', path: 'email' },
+                { title: 'Age', path: 'age', align: 'right' }
             ],
             rows: [
                 { id: '1', name: 'Richard Hendricks', email: 'richard.hendricks@email.com', age: 26 },
@@ -91,9 +91,9 @@ export default {
     data() {
         return {
             columns: [
-                { title: 'Name', key: 'name' },
-                { title: 'City', key: 'address.city' },
-                { title: 'Country', key: 'address.country' },
+                { title: 'Name', path: 'name' },
+                { title: 'City', path: 'address.city' },
+                { title: 'Country', path: 'address.country' },
             ],
             rows: [
                 { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },
@@ -123,9 +123,9 @@ export default {
     data() {
         return {
             columns: [
-                { title: 'Name', key: 'name' },
-                { title: 'City', key: 'address.city' },
-                { title: 'Country', key: 'address.country' },
+                { title: 'Name', path: 'name' },
+                { title: 'City', path: 'address.city' },
+                { title: 'Country', path: 'address.country' },
             ],
             rows: [
                 { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },

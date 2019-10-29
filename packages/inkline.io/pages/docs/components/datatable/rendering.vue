@@ -1,38 +1,45 @@
 <template lang="md" src="./rendering.md" />
 <script>
-import View from '@components/View';
-import { head } from "@helpers/head";
-
 import Vue from 'vue';
-import TableProgress from '@components/TableProgress';
-
-Vue.component(TableProgress.name, TableProgress);
+import View from '@components/docs/View';
+import { head } from "@helpers/head";
+import { IDatatable, IAlert, IIcon } from '@inkline/inkline/src/index';
+import TableProgress from '@components/docs/TableProgress';
+import TableHeaderComponent from '@components/docs/TableHeaderComponent';
 
 export default {
     extends: View,
     name: 'DataTableRenderingView',
     layout: 'documentation',
-    head: head({
-        title: 'Rendering - Data Table',
-        description: 'Provide contextual feedback messages for typical user actions using Inkline\'s Alert component.'
-    }),
+    head: head('docs-components-datatable-rendering'),
+    components: {
+        IDatatable,
+        IAlert,
+        IIcon,
+        TableProgress,
+        TableHeaderComponent
+    },
     data () {
         return {
-            dataKeyColumns: [
-                { title: 'Name', key: 'name' },
-                { title: 'Address', key: 'address', render: (row) => `${row.address.city}, ${row.address.country}` },
+            dataPathColumns: [
+                { title: 'Name', path: 'name' },
+                { title: 'Country', path: 'address.country' },
             ],
             renderColumns: [
-                { title: 'Name', key: 'name' },
-                { title: 'Address', key: 'address', render: (row) => `${row.address.city}, ${row.address.country}` },
+                { title: 'Name', path: 'name' },
+                { title: 'Address', path: 'address', render: (row) => `${row.address.city}, ${row.address.country}` },
             ],
             renderHeaderColumns: [
-                { title: 'Name', key: 'name' },
-                { title: 'Address', key: 'address', renderHeader: (column) => column.title.toUpperCase() },
+                { title: 'Name', path: 'name' },
+                { title: 'Country', path: 'address.country', renderHeader: (column) => column.title.toUpperCase() },
             ],
             componentColumns: [
-                { title: 'Name', key: 'name' },
-                { title: 'Progress', key: 'progress', component: 'table-progress' },
+                { title: 'Name', path: 'name' },
+                { title: 'Progress', path: 'progress', component: TableProgress },
+            ],
+            headerComponentColumns: [
+                { title: 'Name', path: 'name' },
+                { title: 'Country', path: 'address.country', headerComponent: TableHeaderComponent },
             ],
             rows: [
                 { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },
@@ -41,7 +48,7 @@ export default {
                 { id: '4', name: 'Jared Dunn', address: { city: 'Berlin', country: 'Germany' } },
                 { id: '5', name: 'Erlich Bachman', address: { city: 'Palo Alto', country: 'United States' } }
             ],
-            rowsComponent: [
+            componentRows: [
                 { id: '1', name: 'Richard Hendricks', progress: 82 },
                 { id: '2', name: 'Bertram Gilfoyle', progress: 55 },
                 { id: '3', name: 'Dinesh Chugtai', progress: 70 },

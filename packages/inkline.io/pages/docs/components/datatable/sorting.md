@@ -9,9 +9,9 @@ export default {
     data() {
         return {
             columns: [
-                { title: 'Name', key: 'name', sortable: true },
-                { title: 'Email', key: 'email', sortable: true },
-                { title: 'Age', key: 'age', sortable: true }
+                { title: 'Name', path: 'name', sortable: true },
+                { title: 'Email', path: 'email', sortable: true },
+                { title: 'Age', path: 'age', sortable: true }
             ],
             rows: [ ... ]
         }
@@ -39,9 +39,9 @@ export default {
     data() {
         return {
             columns: [
-                { title: 'Name', key: 'name', sortable: true },
-                { title: 'Email', key: 'email', sortable: true },
-                { title: 'Age', key: 'age', sortable: true }
+                { title: 'Name', path: 'name', sortable: true },
+                { title: 'Email', path: 'email', sortable: true },
+                { title: 'Age', path: 'age', sortable: true }
             ],
             rows: [
                 { id: '1', name: 'Richard Hendricks', email: 'richard.hendricks@email.com', age: 26 },
@@ -80,9 +80,9 @@ export default {
     data() {
         return {
             columns: [
-                { title: 'Name', key: 'name', sortable: true, sortFn: customSort },
-                { title: 'Email', key: 'email' },
-                { title: 'Age', key: 'age' }
+                { title: 'Name', path: 'name', sortable: true, sortFn: customSort },
+                { title: 'Email', path: 'email' },
+                { title: 'Age', path: 'age' }
             ],
             rows: [ ... ]
         }
@@ -108,9 +108,9 @@ export default {
     data() {
         return {
             columns: [
-                { title: 'Name', key: 'name', sortable: true, sortFn: customSort },
-                { title: 'Email', key: 'email' },
-                { title: 'Age', key: 'age' }
+                { title: 'Name', path: 'name', sortable: true, sortFn: customSort },
+                { title: 'Email', path: 'email' },
+                { title: 'Age', path: 'age' }
             ],
             rows: [
                 { id: '1', name: 'Richard Hendricks', email: 'richard.hendricks@email.com', age: 26 },
