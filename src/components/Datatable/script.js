@@ -1,5 +1,4 @@
-import ITable from '@inkline/inkline/src/components/Table';
-import IIcon from '@inkline/inkline/src/components/Icon';
+import { ITable, IIcon } from '@inkline/inkline/src/components/index';
 import { sortByPath, getValueByPath } from "@inkline/inkline/src/helpers";
 
 export default {
