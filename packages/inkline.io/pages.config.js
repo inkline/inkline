@@ -220,6 +220,21 @@ const pages = [
         description: 'Tooltips are useful for conveying information when an user hovers over an element.'
     },
     {
+        id: 'docs-components-datatable-definition',
+        title: 'Definition - Data Table',
+        description: 'Provide contextual feedback messages for typical user actions using Inkline\'s Alert component.'
+    },
+    {
+        id: 'docs-components-datatable-sorting',
+        title: 'Sorting - Data Table',
+        description: 'Provide contextual feedback messages for typical user actions using Inkline\'s Alert component.'
+    },
+    {
+        id: 'docs-components-datatable-rendering',
+        title: 'Rendering - Data Table',
+        description: 'Provide contextual feedback messages for typical user actions using Inkline\'s Alert component.'
+    },
+    {
         id: 'docs-utilities-border',
         title: 'Border',
         description: 'Use Inkline\'s border utilities to quickly apply border styles to an element.'
