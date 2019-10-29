@@ -1,9 +1,13 @@
-import Table from '@inkline/inkline/src/components/Table';
+import ITable from '@inkline/inkline/src/components/Table';
+import IIcon from '@inkline/inkline/src/components/Icon';
 import { sortByPath, getValueByPath } from "@inkline/inkline/src/helpers";
 
 export default {
     name: 'IDatatable',
-    extends: Table,
+    extends: ITable,
+    components: {
+        IIcon
+    },
     props: {
         columns: {
             type: Array,
@@ -33,7 +37,7 @@ export default {
             let columns = [
                 {
                     title: '#',
-                    key: '#',
+                    path: '#',
                     classes: '-count',
                     align: 'right',
                     sortable: true,
@@ -63,9 +67,9 @@ export default {
 
             // Sort
             // Sort rows based on sorting function
-            const sortColumn = this.tableColumns.find((column) => column.key === this.sortBy);
+            const sortColumn = this.tableColumns.find((column) => column.path === this.sortBy);
             if (sortColumn) {
-                rows = sortColumn.sortFn ? rows.sort(sortColumn.sortFn) : rows.sort(sortByPath(sortColumn.key));
+                rows = sortColumn.sortFn ? rows.sort(sortColumn.sortFn) : rows.sort(sortByPath(sortColumn.path));
             }
 
             // // Sort descending
@@ -76,12 +80,21 @@ export default {
 
             return rows;
         },
+        tableColumnsRendered() {
+            return this.tableColumns.reduce((renderedColumn, column, index) => {
+                renderedColumn[column.path] = column.renderHeader ?
+                    column.renderHeader(column, index) :
+                    column.title;
+
+                return renderedColumn;
+            }, {});
+        },
         tableRowsRendered() {
             return this.tableRows.map((row, index) => this.tableColumns
                 .reduce((renderedRow, column) => {
-                    renderedRow[column.key] = column.render ?
+                    renderedRow[column.path] = column.render ?
                         column.render(row, column, index) :
-                        getValueByPath(row, column.key);
+                        getValueByPath(row, column.path);
 
                     return renderedRow;
                 }, {}));
@@ -90,8 +103,8 @@ export default {
     methods: {
         onHeaderCellClick(column) {
             if (column.sortable) {
-                if (this.sortBy !== column.key) {
-                    this.sortBy = column.key;
+                if (this.sortBy !== column.path) {
+                    this.sortBy = column.path;
                     this.sortDirection = 'asc';
                 } else {
                     this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
@@ -112,8 +125,8 @@ export default {
             }
 
             // Add row specific classes for current column
-            if (row && row.config && row.config.columnClass && row.config.columnClass[column.key]) {
-                classes = classes.concat(row.config.columnClass[column.key]);
+            if (row && row.config && row.config.columnClass && row.config.columnClass[column.path]) {
+                classes = classes.concat(row.config.columnClass[column.path]);
             }
 
             return classes;
