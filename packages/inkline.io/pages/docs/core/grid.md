@@ -7,7 +7,7 @@ The grid system is defined using `<i-container>`, `<i-row>` and `<i-column>` com
 
 - First, we define a row with a set of columns inside of it.
 - Your content elements should be placed directly in a `<i-column>`, and only `<i-column>` should be placed directly inside an `<i-row>` component
-- The column width takes a value of 1-12 at each responsive breakpoint (`xs`, `sm`, `md`, `lg`, `xlg`).
+- The column width takes a value of 1-12 at each responsive breakpoint (`xs`, `sm`, `md`, `lg`, `xl`).
 - If the sum of `column` widths in a row is more than 12, then the overflowing column will start on a new line.
 
 ### Basic Layout
@@ -1234,7 +1234,7 @@ You can make the `<i-container>` component fill the whole width of the parent el
                     <td><code>false</code></td>
                 </tr>
                 <tr>
-                    <td>xlg</td>
+                    <td>xl</td>
                     <td>Sets the number of columns for extra large screens (screen width lower than <code>92.5rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on extra large screens.</td>
                     <td><code>Number</code>, <code>Boolean</code></td>
                     <td><code>1-12</code>, <code>true</code>, <code>false</code></td>
