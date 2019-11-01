@@ -75,7 +75,9 @@ Using the most basic table markup, here’s how tables look in Inkline. All tabl
 </template>
 </i-code-preview>
 
-### Bordered Table
+If your tables require more features such as sorting, filtering and rendering, you might want to take a look at the <nuxt-link :to="{ name: 'docs-components-datatable-definition' }">Data Table</nuxt-link> component.
+
+### Bordered Table****
 Add the `bordered` property for borders on all sides of the table and table cells.
 
 <i-code-preview title="Bordered Table" link="https://github.com/inkline/inkline/blob/master/src/css/core/_tables.scss">
