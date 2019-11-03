@@ -120,7 +120,7 @@ module.exports = {
         ['@nuxtjs/style-resources']
     ],
     styleResources: {
-        scss: path.resolve(__dirname, 'path/to/variables.scss')
+        scss: ['~/assets/variables.scss']
     },
     build: {
         transpile: ['@inkline/inkline']
