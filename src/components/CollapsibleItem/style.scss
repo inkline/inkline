@@ -18,28 +18,26 @@
             border-bottom-width: 1px;
             border-style: solid;
             padding: $collapsible-item-padding;
-            display: block;
+            display: flex;
             cursor: pointer;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
 
             > .icon {
                 display: inline-block;
-                float: right;
-                margin-top: 4px;
                 position: relative;
+                transition: transform $transition-duration $transition-easing;
 
                 &::after {
                     @extend %icon;
 
-                    top: 0;
-                    right: 0;
-                    position: absolute;
-                    transition: transform $transition-duration $transition-easing;
                     content: $icon-chevron-down;
                 }
             }
         }
 
-        &.-active > .header > .icon::after {
+        &.-active > .header > .icon {
             transform: rotate(180deg);
         }
 
