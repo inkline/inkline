@@ -15,7 +15,7 @@ Vue.use(Inkline, {
     ]
 });
 <% } else { %>
-import Inkline from <%= options.treeShaking ? `'@inkline/inkline/src/index.js'` : `'@inkline/inkline/dist/inkline.js'` %>;
+import Inkline from <%= options.treeShaking ? `'@inkline/inkline/src/main.js'` : `'@inkline/inkline/dist/inkline.js'` %>;
 
 Vue.use(Inkline, <%= JSON.stringify(options.inkline ? options.inkline : {}, undefined, 4) %>);
 <% } %>
