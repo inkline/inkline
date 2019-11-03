@@ -2,7 +2,7 @@
     <table class="datatable" :class="classes['root']">
         <thead>
         <tr class="dtr">
-            <slot name="row" :sortBy="sortBy">
+            <slot name="header" :sortBy="sortBy">
                 <th class="dth" :class="columnClass(column)"
                     v-for="(column, index) in tableColumns" :key="index"
                     @click="onHeaderCellClick(column)">
