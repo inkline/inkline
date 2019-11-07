@@ -232,6 +232,19 @@ Inkline includes basic predefined collapsible styles that you can use within you
 </i-collapsible>
 ~~~
 
+~~~html
+<i-collapsible variant="unstyled">
+    <i-collapsible-item title="Item 1">
+        Item 1 content
+    </i-collapsible-item>
+    <i-collapsible-item title="Item 2">
+        Item 2 content
+    </i-collapsible-item>
+    <i-collapsible-item title="Item 3">
+        Item 3 content
+    </i-collapsible-item>
+</i-collapsible>
+~~~
 </template>
 </i-code-preview>
 
@@ -269,7 +282,7 @@ Inkline includes basic predefined collapsible styles that you can use within you
                     <td>variant</td>
                     <td>Sets the color variant of the collapsible component.</td>
                     <td><code>String</code></td>
-                    <td><code>light</code>, <code>dark</code></td>
+                    <td><code>light</code>, <code>dark</code>, <code>unstyled</code></td>
                     <td><code>light</code></td>
                 </tr>
             </tbody>
