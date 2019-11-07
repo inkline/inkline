@@ -23,7 +23,9 @@ export default {
     },
     methods: {
         dispatchItemClick(e) {
-            this.dispatch('INavbar', 'item-click', e);
+            ['INavbar', 'ISidebar'].forEach((componentName) => {
+                this.dispatch(componentName, 'item-click', e);
+            });
         }
     },
     created() {
