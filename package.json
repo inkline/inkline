@@ -10,7 +10,7 @@
     "build:validation": "vue-cli-service build --no-clean --target lib --name InklineValidation src/validation.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "dev": "vue-cli-service serve",
-    "dist": "bash ./scripts/dist.sh",
+    "dist": "node ./scripts/dist.js",
     "lint:script": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style",
     "prepublishOnly": "npm run build",
