@@ -61,6 +61,10 @@ export { ITable } from './Table';
 export { ITextarea } from './Textarea';
 export { ITooltip } from './Tooltip';
 
+export class InklineValidation {
+    static install (vue: typeof Vue, options: {}): void;
+}
+
 export class Inkline {
     static components: any[];
     static install (vue: typeof Vue, options: {}): void;
