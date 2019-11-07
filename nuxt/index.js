@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 
 const defaultOptions = {
-    stylus: false,
+    scss: false,
     treeShaking: false,
     validation: true
 };
@@ -15,20 +15,21 @@ module.exports = function InklineNuxt(moduleOptions = {}) {
         };
 
         this.options.css = [].concat(this.options.css || []);
-        if (options.stylus) {
-            this.options.css.unshift('@inkline/inkline/src/index.styl');
+        if (options.scss) {
+            this.options.css.unshift('@inkline/inkline/src/index.scss');
         } else {
             this.options.css.unshift('@inkline/inkline/dist/inkline.css');
         }
 
         this.options.build.transpile = [].concat(this.options.build.transpile || []);
-        if (options.stylus || options.treeShaking) {
+        if (options.scss || options.treeShaking) {
             this.options.build.transpile.push('@inkline/inkline');
         }
 
         const inklineOptions = { ...options };
-        delete inklineOptions.stylus;
+        delete inklineOptions.scss;
         delete inklineOptions.treeShaking;
+        delete inklineOptions.validation;
 
         // Register plugin, passing options to plugin template
         this.addPlugin({
