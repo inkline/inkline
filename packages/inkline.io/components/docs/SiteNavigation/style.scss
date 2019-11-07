@@ -30,6 +30,7 @@
             margin: 0;
             position: relative;
 
+            ::v-deep .collapsible > .item > a,
             > a {
                 display: block;
                 padding-top: ($spacer / 3);
@@ -43,6 +44,53 @@
                 &.nuxt-link-active {
                     color: $link-color;
                     border-left: 1px solid $link-color;
+                }
+            }
+
+            ul {
+                margin-top: 0;
+                margin-left: 0;
+
+                > li {
+                    > a {
+                        font-size: 90%;
+                        padding-left: $spacer * 2;
+                    }
+                }
+            }
+        }
+    }
+
+    ::v-deep .collapsible {
+        border: 0;
+
+        &.-active {
+            > .item {
+                > .header {
+                    border-left-color: $color-primary;
+                    color: $color-primary;
+                }
+            }
+        }
+
+        > .item {
+            > .header {
+                background: transparent;
+                display: flex;
+                justify-content: flex-start;
+
+                .icon {
+                    font-size: 75%;
+                    margin-left: spacers('1/2');
+                    color: $color-gray-40;
+                }
+            }
+
+            .body > .content {
+                padding: 0;
+
+                ul li a {
+                    border-left-color: $color-primary;
                 }
             }
         }
