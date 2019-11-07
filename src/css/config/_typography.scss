@@ -4,10 +4,10 @@
 
 // Font families
 //
-$font-family-primary-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+$font-family-primary-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !default;
 
-$font-family-primary-monospace: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-$font-family-primary-print: 'Georgia', 'Times New Roman', 'Times', serif;
+$font-family-primary-monospace: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+$font-family-primary-print: 'Georgia', 'Times New Roman', 'Times', serif !default;
 
 $font-family-secondary-base: $font-family-primary-base !default;
 $font-family-secondary-print: $font-family-primary-print !default;
