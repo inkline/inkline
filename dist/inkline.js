@@ -18132,4 +18132,4 @@ module.exports = {
 
 /******/ });
 });
-//# sourceMappingURL=Inkline.umd.js.map
+//# sourceMappingURL=inkline.js.map
