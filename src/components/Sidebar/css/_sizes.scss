@@ -1,0 +1,22 @@
+//
+// Sidebar sizes
+//
+@each $size in $sizes {
+    $_padding: map_get($sidebar-padding, $size);
+
+    .sidebar.-#{$size} {
+        .sidebar-children {
+            padding: $_padding;
+        }
+
+        @each $breakpoint in ('xs', 'sm', 'md', 'lg', 'xl') {
+            &.-collapse-#{$breakpoint} {
+                @include breakpoint-down($breakpoint) {
+                    > .container > .row > .column > .items {
+                        margin-top: nth($_padding, 1);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+/**
+ * Sidebar
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_variants';
+@import 'css/_sizes';
+
+//@mixin sidebar-collapse {
+//    > .container > .row > .column {
+//        ::v-deep .items {
+//            position: relative;
+//            display: block;
+//            width: 100%;
+//
+//            > .nav {
+//                flex-direction: column;
+//                align-items: flex-start;
+//
+//                > .item {
+//                    width: 100%;
+//                }
+//            }
+//        }
+//
+//        ::v-deep .hamburger {
+//            display: inline-block;
+//
+//            + .brand {
+//                order: -1;
+//            }
+//        }
+//    }
+//}
+
+.sidebar {
+    transition: all 0.2s;
+    position: relative;
+    width: $sidebar-width;
+    flex: 0 0 $sidebar-width;
+    height: 100%;
+
+    /* Fix firefox can't set width smaller than content on flex item */
+    min-width: 0;
+
+    &-children {
+        height: 100%;
+
+        // Hack for fixing margin collapse bug
+        // https://github.com/ant-design/ant-design/issues/7967
+        // solution from https://stackoverflow.com/a/33132624/3040605
+        padding-top: 0.1px;
+        margin-top: -0.1px;
+    }
+
+    &.-right {
+        order: 1;
+    }
+
+    //> .container > .row > .column {
+    //    display: flex;
+    //    flex-wrap: wrap;
+    //    align-items: center;
+    //    justify-content: space-between;
+    //
+    //    ::v-deep .hamburger {
+    //        display: none;
+    //    }
+    //}
+    //
+    //@each $breakpoint in (breakpoints-list()) {
+    //    &.-collapse-#{$breakpoint} {
+    //        @include breakpoint-down($breakpoint) {
+    //            @include sidebar-collapse;
+    //        }
+    //    }
+    //}
+    //
+    //&.-collapse-true {
+    //    @include sidebar-collapse;
+    //}
+
+    @extend .sidebar.-md;
+    @extend .sidebar.-light;
+}

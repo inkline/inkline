@@ -36,6 +36,7 @@ export { default as IPagination } from '@inkline/inkline/src/components/Paginati
 export { default as IPopover } from '@inkline/inkline/src/components/Popover';
 export { default as IProgress } from '@inkline/inkline/src/components/Progress';
 export { default as IProgressBar } from '@inkline/inkline/src/components/ProgressBar';
+export { default as ISidebar } from '@inkline/inkline/src/components/Sidebar';
 export { default as ITable } from '@inkline/inkline/src/components/Table';
 export { default as ITooltip } from '@inkline/inkline/src/components/Tooltip';
 
