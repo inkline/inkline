@@ -1,0 +1,20 @@
+//
+// Sidebar Variables
+//
+$sidebar-width: 14rem;
+
+$sidebar-padding-base: spacers('1/2') !default;
+$sidebar-padding: size-map($sidebar-padding-base, $sizes, $size-multipliers) !default;
+
+$sidebar-brand-margin: $spacer !default;
+$sidebar-brand-font-size: font-size('md') !default;
+
+$sidebar-brand-padding-base: spacers('1/2') 0 !default;
+$sidebar-brand-padding: size-map($sidebar-brand-padding-base, $sizes, $size-multipliers) !default;
+
+//
+// Variants
+//
+$sidebar-variants: ('monochrome') !default;
+
+$variants: map_merge($variants, ('sidebar': add-variant($sidebar-variants, $color-groups)));
