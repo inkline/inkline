@@ -5,7 +5,7 @@ import CollapsibleProviderMixin from '@inkline/inkline/src/mixins/components/pro
 import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
 import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
 
-import ITransitionExpand from '@inkline/inkline/src/transitions/TransitionExpand';
+import ITransitionSidebar from '@inkline/inkline/src/transitions/TransitionSidebar';
 
 export default {
     name: 'ISidebar',
@@ -18,7 +18,7 @@ export default {
         VariantPropertyMixin
     ],
     components: {
-        ITransitionExpand
+        ITransitionSidebar
     },
     props: {
         collapseOnClick: {
