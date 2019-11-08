@@ -8,12 +8,12 @@ Here’s an example of the basic components included in a  `<i-sidebar>` that au
 
 <div style="height: 400px">
     <i-layout vertical>
-        <i-sidebar collapse-position="absolute">
+        <i-sidebar collapse-position="absolute" v-model="collapsed">
             This is a sidebar
         </i-sidebar>
         <i-layout>
             <i-layout-content>
-                Content
+                <i-button v-on:click="collapsed = !collapsed">Toggle Collapsed</i-button>
             </i-layout-content>
         </i-layout>
     </i-layout>
