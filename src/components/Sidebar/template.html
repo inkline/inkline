@@ -1,7 +1,10 @@
-<div class="sidebar"
-     :class="classes['root']"
-     v-bind="attributes">
-    <div class="sidebar-children">
-        <slot></slot>
+<i-transition-expand>
+    <div class="sidebar"
+         :class="classes['root']"
+         v-bind="attributes"
+         v-show="collapsed || !collapsible">
+        <div class="sidebar-children">
+            <slot></slot>
+        </div>
     </div>
-</div>
+</i-transition-expand>

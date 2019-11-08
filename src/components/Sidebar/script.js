@@ -5,6 +5,7 @@ import CollapsibleProviderMixin from '@inkline/inkline/src/mixins/components/pro
 import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
 import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
 
+import ITransitionExpand from '@inkline/inkline/src/transitions/TransitionExpand';
 
 export default {
     name: 'ISidebar',
@@ -16,15 +17,26 @@ export default {
         SizePropertyMixin,
         VariantPropertyMixin
     ],
+    components: {
+        ITransitionExpand
+    },
     props: {
         collapseOnClick: {
             type: Boolean,
             default: true
+        },
+        collapsePosition: {
+            type: String,
+            default: 'fixed'
         }
     },
     created() {
         this.$on('item-click', () => {
             this.setCollapse(false);
         });
+
+        this.classesProvider.add(() => ({
+            [`-collapse-${this.collapsePosition}`]: true
+        }));
     }
 };
