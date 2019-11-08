@@ -17,7 +17,7 @@ export default {
         return {
             collapsed: false,
             collapsible: false,
-            windowWidth: typeof window !== 'undefined' ? window.innerWidth : 0
+            windowWidth: !Vue.$isServer && typeof window !== 'undefined' ? window.innerWidth : 0
         };
     },
     provide() {
@@ -46,10 +46,12 @@ export default {
         }
     },
     created() {
-        this.classesProvider.add(() => ({
-            '-collapsed': this.collapsed || this.value,
-            [`-collapse-${this.collapse}`]: Boolean(this.collapse)
-        }));
+        if (this.classesProvider) {
+            this.classesProvider.add(() => ({
+                '-collapsed': this.collapsed || this.value,
+                [`-collapse-${this.collapse}`]: Boolean(this.collapse)
+            }));
+        }
 
         if (!Vue.$isServer && typeof window !== 'undefined') {
             window.addEventListener('resize', this.onWindowResize);
