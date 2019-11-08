@@ -144,7 +144,6 @@ Inkline includes two predefined navbar styles. You can set the style of a `<i-na
         </i-nav>
     </i-navbar-items>
 </i-navbar>
-
 <i-navbar variant="dark">
     <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
     <i-navbar-items>
@@ -189,7 +188,7 @@ Inkline includes two predefined navbar styles. You can set the style of a `<i-na
 ### Dropdown
 You can use an `<i-dropdown>` component inside the `<i-navbar-items>` or `<i-nav>` component to create a contextual navbar menu. 
 
-<i-code-preview title="Navbar Dropdown" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Navbar Dropdown" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar" style="z-index: 2;">
 
 <i-navbar>
     <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
@@ -201,7 +200,7 @@ You can use an `<i-dropdown>` component inside the `<i-navbar-items>` or `<i-nav
         </i-nav>
         <i-nav>
             <i-dropdown placement="bottom-end">
-                <i-button variant="primary">Dropdown</i-button>
+                <i-nav-item>Dropdown</i-nav-item>
                 <i-dropdown-menu>
                     <i-dropdown-item href>Action</i-dropdown-item>
                     <i-dropdown-item href>Another action</i-dropdown-item>
@@ -259,8 +258,6 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
         </i-nav>
     </i-navbar-items>
 </i-navbar>
-
-
 <i-navbar class="_margin-bottom-1">
     <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
     <i-navbar-items class="_justify-content-center">
@@ -271,7 +268,6 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
         </i-nav>
     </i-navbar-items>
 </i-navbar>
-
 <i-navbar>
     <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
     <i-navbar-items class="_justify-content-end">
@@ -327,6 +323,143 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
 </i-code-preview>
 
 
+### Collapse Breakpoint
+You can control what breakpoint your navbar will collapse at using the `collapse` property. By default, the navbar will collapse on the `md` screen size.
+
+<i-code-preview title="Collapse Breakpoint Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+
+<i-navbar collapse="lg">
+    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-items>
+        <i-nav>
+            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+        </i-nav>
+    </i-navbar-items>
+</i-navbar>
+
+<template slot="html">
+
+~~~html
+<i-navbar collapse="lg">
+    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-items>
+        <i-nav>
+            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+        </i-nav>
+    </i-navbar-items>
+</i-navbar>
+~~~
+
+</template>
+</i-code-preview>
+
+##### Always or Never Collapsed
+
+Besides the breakpoint values, you can use a boolean value to set your navbar to be always collapsed, or never collapsed.
+
+Setting a `collapse` value of `true` will set the navbar to be always collapsed.
+
+<i-code-preview title="Always Collapsed Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+
+<i-navbar :collapse="true">
+    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-items>
+        <i-nav>
+            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+        </i-nav>
+    </i-navbar-items>
+</i-navbar>
+
+<template slot="html">
+
+~~~html
+<i-navbar :collapse="true">
+    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-items>
+        <i-nav>
+            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+        </i-nav>
+    </i-navbar-items>
+</i-navbar>
+~~~
+
+</template>
+</i-code-preview>
+
+Setting a `collapse` value of `false` will set the navbar to never collapse.
+
+<i-code-preview title="Never Collapsed Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+
+<i-navbar :collapse="false">
+    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-items>
+        <i-nav>
+            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+        </i-nav>
+    </i-navbar-items>
+</i-navbar>
+
+<template slot="html">
+
+~~~html
+<i-navbar :collapse="false">
+    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-items>
+        <i-nav>
+            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+        </i-nav>
+    </i-navbar-items>
+</i-navbar>
+~~~
+
+</template>
+</i-code-preview>
+
+##### Manual Collapse
+
+Sometimes, it's necessary to control whether the Navbar is collapsed or not programmatically. You can use the `v-model` directive to control whether the Navbar should be collapsed or not.
+
+<i-code-preview title="Manual Navbar Collapse Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+
+<i-button v-on:click="collapsed = !collapsed">
+    Toggle Collapsed
+</i-button>
+<i-navbar :collapse="true" v-model="collapsed">
+    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-items>
+        <i-nav>
+            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+        </i-nav>
+    </i-navbar-items>
+</i-navbar>
+
+<template slot="html">
+
+~~~html
+<i-button @click="collapsed = !collapsed">Toggle Collapsed</i-button>
+
+<i-navbar :collapse="true">
+    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-items>
+        <i-nav>
+            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
+        </i-nav>
+    </i-navbar-items>
+</i-navbar>
+~~~
+
+</template>
+</i-code-preview>
+
+
 ### API
 
 <i-api-preview title="Navbar API" markup="i-navbar" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
@@ -342,6 +475,13 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>collapse</td>
+                    <td>Specifies the breakpoint at which to collapse the navbar.</td>
+                    <td><code>String</code></td>
+                    <td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code></td>
+                    <td><code>md</code></td>
+                </tr>
                 <tr>
                     <td>collapseOnClick</td>
                     <td>Collapses the navbar when clicking a navbar item.</td>
@@ -362,6 +502,13 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
                     <td><code>String</code></td>
                     <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
                     <td><code>md</code></td>
+                </tr>
+                <tr>
+                    <td>value</td>
+                    <td>Provides a way to collapse the navbar programmatically. Should be used as part of <code>v-model</code> directive.</td>
+                    <td><code>Boolean</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td><code>false</code></td>
                 </tr>
                 <tr>
                     <td>variant</td>

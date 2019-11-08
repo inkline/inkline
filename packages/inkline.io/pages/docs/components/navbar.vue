@@ -21,6 +21,11 @@ export default {
         IDropdownDivider,
         IButton,
         IInput
+    },
+    data() {
+        return {
+            collapsed: false
+        };
     }
 };
 </script>
