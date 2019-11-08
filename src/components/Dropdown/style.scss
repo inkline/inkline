@@ -4,9 +4,13 @@
 .dropdown {
     display: inline-block;
     position: relative;
-}
 
-.dropdown > .menu .dropdown {
-    width: 100%;
-    display: block;
+    > *:first-child {
+        cursor: pointer;
+    }
+
+    > .menu .dropdown {
+        width: 100%;
+        display: block;
+    }
 }
