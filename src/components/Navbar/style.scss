@@ -7,6 +7,33 @@
 @import 'css/_variants';
 @import 'css/_sizes';
 
+@mixin navbar-collapse {
+    > .container > .row > .column {
+        ::v-deep .items {
+            position: relative;
+            display: block;
+            width: 100%;
+
+            > .nav {
+                flex-direction: column;
+                align-items: flex-start;
+
+                > .item {
+                    width: 100%;
+                }
+            }
+        }
+
+        ::v-deep .hamburger {
+            display: inline-block;
+
+            + .brand {
+                order: -1;
+            }
+        }
+    }
+}
+
 .navbar {
     position: relative;
     display: flex;
@@ -28,32 +55,13 @@
     @each $breakpoint in (breakpoints-list()) {
         &.-collapse-#{$breakpoint} {
             @include breakpoint-down($breakpoint) {
-                > .container > .row > .column {
-                    ::v-deep .items {
-                        position: relative;
-                        display: block;
-                        width: 100%;
-
-                        > .nav {
-                            flex-direction: column;
-                            align-items: flex-start;
-
-                            > .item {
-                                width: 100%;
-                            }
-                        }
-                    }
-
-                    ::v-deep .hamburger {
-                        display: inline-block;
-
-                        + .brand {
-                            order: -1;
-                        }
-                    }
-                }
+                @include navbar-collapse;
             }
         }
+    }
+
+    &.-collapse-true {
+        @include navbar-collapse;
     }
 
     @extend .navbar.-md;

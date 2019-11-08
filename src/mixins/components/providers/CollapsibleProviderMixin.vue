@@ -5,7 +5,7 @@ import { breakpoints } from '@inkline/inkline/src/constants';
 export default {
     props: {
         collapse: {
-            type: String,
+            type: [String, Boolean],
             default: 'md'
         },
         value: {
@@ -32,14 +32,22 @@ export default {
 
         Object.defineProperty(collapsible, 'collapsed', {
             enumerable: true,
-            get: () => this.value || this.collapsed
+            get: () => this.collapsed || this.value
         });
 
         return { collapsible };
     },
+    watch: {
+        value(value) {
+            this.collapsed = value;
+        },
+        collapsed(value) {
+            this.$emit('input', value);
+        }
+    },
     created() {
         this.classesProvider.add(() => ({
-            '-collapsed': this.value || this.collapsed,
+            '-collapsed': this.collapsed || this.value,
             [`-collapse-${this.collapse}`]: Boolean(this.collapse)
         }));
 
@@ -59,14 +67,17 @@ export default {
     methods: {
         setCollapse(value) {
             this.collapsed = value;
-            this.$emit('input', this.collapsed);
         },
         toggleCollapse() {
-            this.collapsed = !this.collapsed;
-            this.$emit('input', this.collapsed);
+            this.collapsed = !(this.collapsed || this.value);
         },
         onWindowResize() {
-            if (!this.collapse) { return; }
+            if (this.collapse === true) {
+                this.collapsible = true;
+                return;
+            } else if (this.collapse === false) {
+                return;
+            }
 
             const windowWidth = window.innerWidth;
 
