@@ -7,32 +7,30 @@
 @import 'css/_variants';
 @import 'css/_sizes';
 
-//@mixin sidebar-collapse {
-//    > .container > .row > .column {
-//        ::v-deep .items {
-//            position: relative;
-//            display: block;
-//            width: 100%;
-//
-//            > .nav {
-//                flex-direction: column;
-//                align-items: flex-start;
-//
-//                > .item {
-//                    width: 100%;
-//                }
-//            }
-//        }
-//
-//        ::v-deep .hamburger {
-//            display: inline-block;
-//
-//            + .brand {
-//                order: -1;
-//            }
-//        }
-//    }
-//}
+@mixin sidebar-collapse {
+    &.-collapse-fixed {
+        position: fixed;
+    }
+
+    &.-collapse-absolute {
+        position: absolute;
+    }
+
+    ::v-deep .items {
+        position: relative;
+        display: block;
+        width: 100%;
+
+        > .nav {
+            flex-direction: column;
+            align-items: flex-start;
+
+            > .item {
+                width: 100%;
+            }
+        }
+    }
+}
 
 .sidebar {
     transition: all 0.2s;
@@ -58,28 +56,17 @@
         order: 1;
     }
 
-    //> .container > .row > .column {
-    //    display: flex;
-    //    flex-wrap: wrap;
-    //    align-items: center;
-    //    justify-content: space-between;
-    //
-    //    ::v-deep .hamburger {
-    //        display: none;
-    //    }
-    //}
-    //
-    //@each $breakpoint in (breakpoints-list()) {
-    //    &.-collapse-#{$breakpoint} {
-    //        @include breakpoint-down($breakpoint) {
-    //            @include sidebar-collapse;
-    //        }
-    //    }
-    //}
-    //
-    //&.-collapse-true {
-    //    @include sidebar-collapse;
-    //}
+    @each $breakpoint in (breakpoints-list()) {
+        &.-collapse-#{$breakpoint} {
+            @include breakpoint-down($breakpoint) {
+                @include sidebar-collapse;
+            }
+        }
+    }
+
+    &.-collapse-true {
+        @include sidebar-collapse;
+    }
 
     @extend .sidebar.-md;
     @extend .sidebar.-light;
