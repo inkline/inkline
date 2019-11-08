@@ -9,8 +9,9 @@
 .navbar {
     > .container > .row > .column > .items {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         flex-grow: 1;
+        flex-shrink: 1;
         justify-content: space-between;
         align-items: center;
 
