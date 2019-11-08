@@ -210,6 +210,11 @@ const pages = [
         description: 'Inkline\'s custom component for displaying progress with support for stacked progress bars.'
     },
     {
+        id: 'docs-components-sidebar',
+        title: 'Sidebar',
+        description: 'A responsive navigation sidebar that includes support for branding, navigation, forms and more.'
+    },
+    {
         id: 'docs-components-tooltip',
         title: 'Tooltip',
         description: 'Tooltips are useful for conveying information when an user hovers over an element.'
