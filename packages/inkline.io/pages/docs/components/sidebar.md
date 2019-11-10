@@ -6,18 +6,21 @@ Here’s an example of the basic components included in a  `<i-sidebar>` that au
 
 <i-code-preview title="Sidebar Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
-<div style="height: 400px">
+<i-layout style="height: 24rem;">
+    <i-layout-header>
+        <i-navbar>
+            Header
+            <i-hamburger-menu :active="collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
     <i-layout vertical>
-        <i-sidebar collapse-position="absolute" v-model="collapsed">
+        <i-sidebar :collapse="true" collapse-position="absolute" v-model="collapsed">
             This is a sidebar
         </i-sidebar>
-        <i-layout>
-            <i-layout-content>
-                <i-button v-on:click="collapsed = !collapsed">Toggle Collapsed</i-button>
-            </i-layout-content>
-        </i-layout>
+        <i-layout-content class="_display-flex _justify-content-center _align-items-center">
+        </i-layout-content>
     </i-layout>
-</div>
+</i-layout>
 
 <template slot="html">
 
@@ -50,36 +53,12 @@ The default size is set to `md`.
 <i-code-preview title="Sidebar Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
 <i-sidebar size="sm" class="_margin-bottom-1">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
 </i-sidebar>
 
 <i-sidebar size="md" class="_margin-bottom-1">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
 </i-sidebar>
 
 <i-sidebar size="lg">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
 </i-sidebar>
 
 
@@ -131,24 +110,6 @@ Inkline includes two predefined sidebar styles. You can set the style of a `<i-s
 <i-code-preview title="Sidebar Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
 <i-sidebar variant="light" class="_margin-bottom-1">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
-<i-sidebar variant="dark">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
 </i-sidebar>
 
 <template slot="html">
@@ -187,26 +148,6 @@ You can use an `<i-dropdown>` component inside the `<i-sidebar-items>` or `<i-na
 <i-code-preview title="Sidebar Dropdown" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar" style="z-index: 2;">
 
 <i-sidebar>
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
-        </i-nav>
-        <i-nav>
-            <i-dropdown placement="bottom-end">
-                <i-nav-item>Dropdown</i-nav-item>
-                <i-dropdown-menu>
-                    <i-dropdown-item href>Action</i-dropdown-item>
-                    <i-dropdown-item href>Another action</i-dropdown-item>
-                    <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
-                </i-dropdown-menu>
-            </i-dropdown>
-        </i-nav>
-    </i-sidebar-items>
 </i-sidebar>
 
 <template slot="html">
@@ -245,34 +186,6 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
 <i-code-preview title="Sidebar Nav Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
 <i-sidebar class="_margin-bottom-1">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items class="_justify-content-start">
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
-<i-sidebar class="_margin-bottom-1">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items class="_justify-content-center">
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
-<i-sidebar>
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items class="_justify-content-end">
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
 </i-sidebar>
 
 <template slot="html">
@@ -325,13 +238,6 @@ You can control what breakpoint your sidebar will collapse at using the `collaps
 <i-code-preview title="Collapse Breakpoint Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
 <i-sidebar collapse="lg">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
 </i-sidebar>
 
 <template slot="html">
@@ -360,13 +266,6 @@ Setting a `collapse` value of `true` will set the sidebar to be always collapsed
 <i-code-preview title="Always Collapsed Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
 <i-sidebar :collapse="true">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
 </i-sidebar>
 
 <template slot="html">
@@ -391,13 +290,6 @@ Setting a `collapse` value of `false` will set the sidebar to never collapse.
 <i-code-preview title="Never Collapsed Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
 <i-sidebar :collapse="false">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
 </i-sidebar>
 
 <template slot="html">
@@ -426,14 +318,6 @@ Sometimes, it's necessary to control whether the Sidebar is collapsed or not pro
 <i-button v-on:click="collapsed = !collapsed">
     Toggle Collapsed
 </i-button>
-<i-sidebar :collapse="true" v-model="collapsed">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
 </i-sidebar>
 
 <template slot="html">
