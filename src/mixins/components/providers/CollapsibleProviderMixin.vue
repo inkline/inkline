@@ -32,7 +32,7 @@ export default {
 
         Object.defineProperty(collapsible, 'collapsed', {
             enumerable: true,
-            get: () => this.collapsed || this.value
+            get: () => this.collapsed
         });
 
         return { collapsible };
@@ -48,7 +48,7 @@ export default {
     created() {
         if (this.classesProvider) {
             this.classesProvider.add(() => ({
-                '-collapsed': this.collapsed || this.value,
+                '-collapsed': this.collapsed,
                 [`-collapse-${this.collapse}`]: Boolean(this.collapse)
             }));
         }
@@ -71,7 +71,7 @@ export default {
             this.collapsed = value;
         },
         toggleCollapse() {
-            this.collapsed = !(this.collapsed || this.value);
+            this.collapsed = !this.collapsed;
         },
         onWindowResize() {
             if (this.collapse === true) {
