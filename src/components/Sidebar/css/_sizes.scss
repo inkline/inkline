@@ -2,18 +2,30 @@
 // Sidebar sizes
 //
 @each $size in $sizes {
+    $_width: map_get($sidebar-width, $size);
     $_padding: map_get($sidebar-padding, $size);
 
-    .sidebar.-#{$size} {
-        .sidebar-children {
-            padding: $_padding;
+    .sidebar-wrapper.-#{$size} {
+        width: $_width;
+
+        &.sidebar-wrapper-transition-enter-to,
+        &.sidebar-wrapper-transition-leave {
+            width: $_width;
         }
 
-        @each $breakpoint in ('xs', 'sm', 'md', 'lg', 'xl') {
-            &.-collapse-#{$breakpoint} {
-                @include breakpoint-down($breakpoint) {
-                    > .container > .row > .column > .items {
-                        margin-top: nth($_padding, 1);
+        .sidebar {
+            width: $_width;
+
+            .sidebar-children {
+                padding: $_padding;
+            }
+
+            @each $breakpoint in ('xs', 'sm', 'md', 'lg', 'xl') {
+                &.-collapse-#{$breakpoint} {
+                    @include breakpoint-down($breakpoint) {
+                        > .container > .row > .column > .items {
+                            margin-top: nth($_padding, 1);
+                        }
                     }
                 }
             }

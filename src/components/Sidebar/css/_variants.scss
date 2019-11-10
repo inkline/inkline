@@ -2,8 +2,11 @@
 // Sidebar variants
 //
 @each $variant-name, $variant in variants('sidebar') {
-    .sidebar.-#{$variant-name} {
+    .sidebar-wrapper.-#{$variant-name} {
         color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
-        background-color: $variant;
+
+        .sidebar {
+            background-color: $variant;
+        }
     }
 }

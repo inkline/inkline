@@ -1,10 +1,20 @@
-<i-transition-expand>
-    <div class="sidebar"
-         :class="classes['root']"
-         v-bind="attributes"
+<transition :name="sidebarWrapperTransition">
+    <div class="sidebar-wrapper" :class="classes"
+         ref="wrapper"
          v-show="collapsed || !collapsible">
-        <div class="sidebar-children">
-            <slot></slot>
-        </div>
+        <transition :name="sidebarTransition">
+            <div class="sidebar"
+                 v-show="collapsePosition === 'relative' || collapsed || !collapsible">
+                <div class="sidebar-children">
+                    <slot></slot>
+                </div>
+            </div>
+        </transition>
+        <transition name="sidebar-overlay-transition">
+            <div class="sidebar-overlay"
+                 @click="onClickOverlay()"
+                 v-if="collapsePosition !== 'relative'"
+                 v-show="collapsed"></div>
+        </transition>
     </div>
-</i-transition-expand>
+</transition>
