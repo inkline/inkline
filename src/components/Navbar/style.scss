@@ -24,7 +24,7 @@
             }
         }
 
-        ::v-deep .hamburger {
+        ::v-deep .collapse-toggle {
             display: inline-block;
 
             + .brand {
@@ -47,7 +47,7 @@
         align-items: center;
         justify-content: space-between;
 
-        ::v-deep .hamburger {
+        ::v-deep .collapse-toggle {
             display: none;
         }
     }
