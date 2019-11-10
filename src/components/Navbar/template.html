@@ -4,7 +4,7 @@
     <i-container :fluid="fluid">
         <i-row>
             <i-column :xs="true">
-                <i-hamburger-menu :active="collapsed || value" :animation="toggleAnimation" :variant="variant" @click="toggleCollapse">
+                <i-hamburger-menu :active="collapsed" :animation="toggleAnimation" :variant="variant" @click="toggleCollapse">
                     <span class="bars"></span>
                 </i-hamburger-menu>
                 <slot></slot>
