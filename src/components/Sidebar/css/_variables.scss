@@ -1,16 +1,22 @@
 //
 // Sidebar Variables
 //
-$sidebar-width: 14rem;
+$sidebar-width-base: 14rem !default;
+$sidebar-width: size-map($sidebar-width-base, $sizes, $size-multipliers) !default;
 
 $sidebar-padding-base: spacers('1/2') !default;
 $sidebar-padding: size-map($sidebar-padding-base, $sizes, $size-multipliers) !default;
 
-$sidebar-brand-margin: $spacer !default;
-$sidebar-brand-font-size: font-size('md') !default;
+$sidebar-wrapper-transition-duration: $transition-duration !default;
+$sidebar-wrapper-transition-easing: $transition-easing !default;
 
-$sidebar-brand-padding-base: spacers('1/2') 0 !default;
-$sidebar-brand-padding: size-map($sidebar-brand-padding-base, $sizes, $size-multipliers) !default;
+$sidebar-transition-duration: $transition-duration !default;
+$sidebar-transition-easing: $transition-easing !default;
+
+$sidebar-overlay-transition-duration: $transition-duration !default;
+$sidebar-overlay-transition-easing: $transition-easing !default;
+
+$sidebar-overlay-background: rgba(0, 0, 0, 0.5) !default;
 
 //
 // Variants
