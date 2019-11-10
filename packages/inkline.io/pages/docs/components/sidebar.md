@@ -7,10 +7,10 @@ Here’s an example of the basic components included in a  `<i-sidebar>` that au
 <i-code-preview title="Sidebar Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
 <i-layout style="height: 24rem;">
-    <i-layout-header>
-        <i-navbar>
-            Header
-            <i-hamburger-menu :active="collapsed"></i-hamburger-menu>
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Navbar</i-navbar-brand>
+            <i-hamburger-menu :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
         </i-navbar>
     </i-layout-header>
     <i-layout vertical>
@@ -25,22 +25,26 @@ Here’s an example of the basic components included in a  `<i-sidebar>` that au
 <template slot="html">
 
 ~~~html
-<i-sidebar>
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-        </i-nav>
-        <i-nav>
-            <i-input class="item" placeholder="Type something..">
-                <i-button variant="primary" slot="append">
-                    <font-awesome-icon icon="search" />
-                </i-button>
-            </i-input>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+<i-layout style="height: 24rem;">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Navbar</i-navbar-brand>
+            <i-hamburger-menu 
+                :active="collapsed" 
+                @click="collapsed = !collapsed">
+            </i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar 
+            :collapse="true" 
+            collapse-position="absolute" 
+            v-model="collapsed">
+            This is a sidebar
+        </i-sidebar>
+        <i-layout-content>...</i-layout-content>
+    </i-layout>
+</i-layout>
 ~~~
 
 </template>
