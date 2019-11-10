@@ -2,7 +2,7 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
-import { ISidebar, INav, INavItem, ILayout, ILayoutHeader, ILayoutAside, ILayoutContent, IButton, IHamburgerMenu } from "@inkline/inkline/src/components";
+import { ISidebar, INavbar, INavbarBrand, INav, INavItem, ILayout, ILayoutHeader, ILayoutAside, ILayoutContent, IButton, IHamburgerMenu } from "@inkline/inkline/src/components";
 
 export default {
     name: 'SidebarView',
@@ -18,7 +18,9 @@ export default {
         ILayoutAside,
         ILayoutContent,
         IButton,
-        IHamburgerMenu
+        IHamburgerMenu,
+        INavbar,
+        INavbarBrand
     },
     data() {
         return {
