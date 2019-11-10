@@ -29,11 +29,9 @@ export function createDocumentHandler(element, binding, vnode) {
             !mousedown.target) { return; }
 
         for (let targetElement of [mousedown.target, mouseup.target]) {
-            do {
-                if (targetElement === element) { return; }
-
-                targetElement = targetElement.parentNode;
-            } while (targetElement);
+            if (element === targetElement || element.contains(targetElement)) {
+                return;
+            }
         }
 
         if (binding.expression &&
