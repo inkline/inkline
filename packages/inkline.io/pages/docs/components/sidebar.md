@@ -2,49 +2,64 @@
 ## A responsive navigation sidebar that includes support for branding, navigation, forms and more.{.lead}
 
 ### Example
-Here’s an example of the basic components included in a  `<i-sidebar>` that automatically collapses responsively.
+Here’s an example on how to use the `<i-sidebar>` inside a dashboard layout. The sidebar automatically collapses responsively.
 
 <i-code-preview title="Sidebar Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
-<i-layout style="height: 24rem;">
+<i-layout class="sidebar-layout-example -lg">
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
             <i-navbar-brand>Navbar</i-navbar-brand>
-            <i-hamburger-menu :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
         </i-navbar>
     </i-layout-header>
     <i-layout vertical>
-        <i-sidebar :collapse="true" collapse-position="absolute" v-model="collapsed">
-            This is a sidebar
+        <i-sidebar v-model="collapsed" collapse-position="absolute">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
         </i-sidebar>
-        <i-layout-content class="_display-flex _justify-content-center _align-items-center">
-        </i-layout-content>
+        <i-layout-content></i-layout-content>
     </i-layout>
 </i-layout>
 
 <template slot="html">
 
 ~~~html
-<i-layout style="height: 24rem;">
+<i-layout>
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
             <i-navbar-brand>Navbar</i-navbar-brand>
-            <i-hamburger-menu 
-                :active="collapsed" 
-                @click="collapsed = !collapsed">
-            </i-hamburger-menu>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
         </i-navbar>
     </i-layout-header>
     <i-layout vertical>
-        <i-sidebar 
-            :collapse="true" 
-            collapse-position="absolute" 
-            v-model="collapsed">
-            This is a sidebar
+        <i-sidebar v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
         </i-sidebar>
-        <i-layout-content>...</i-layout-content>
+        <i-layout-content></i-layout-content>
     </i-layout>
 </i-layout>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    name: 'DashboardLayout',
+    data() {
+        return {
+            collapsed: false
+        };
+    }
+}
 ~~~
 
 </template>
@@ -56,53 +71,139 @@ The default size is set to `md`.
 
 <i-code-preview title="Sidebar Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
-<i-sidebar size="sm" class="_margin-bottom-1">
-</i-sidebar>
+<i-layout class="sidebar-layout-example -sm">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Small Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsedSizesSm" @click="collapsedSizesSm = !collapsedSizesSm"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar size="sm" collapse-position="absolute" v-model="collapsedSizesSm">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 
-<i-sidebar size="md" class="_margin-bottom-1">
-</i-sidebar>
+<i-layout class="sidebar-layout-example -sm _margin-top-1">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Medium Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsedSizesMd" @click="collapsedSizesMd = !collapsedSizesMd"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar size="md" collapse-position="absolute" v-model="collapsedSizesMd">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 
-<i-sidebar size="lg">
-</i-sidebar>
+<i-layout class="sidebar-layout-example -sm _margin-top-1">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Large Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsedSizesLg" @click="collapsedSizesLg = !collapsedSizesLg"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar size="lg" collapse-position="absolute" v-model="collapsedSizesLg">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 
 
 <template slot="html">
 
 ~~~html
-<i-sidebar size="sm">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+<i-layout>
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Small Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar size="sm" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 ~~~
 ~~~html
-<i-sidebar size="md">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+<i-layout>
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Small Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar size="md" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 ~~~
 ~~~html
-<i-sidebar size="lg">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+<i-layout>
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Small Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar size="lg" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    name: 'DashboardLayout',
+    data() {
+        return {
+            collapsed: false
+        };
+    }
+}
 ~~~
 
 </template>
@@ -113,34 +214,203 @@ Inkline includes two predefined sidebar styles. You can set the style of a `<i-s
 
 <i-code-preview title="Sidebar Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
-<i-sidebar variant="light" class="_margin-bottom-1">
-</i-sidebar>
+<i-layout class="sidebar-layout-example">
+    <i-layout-header class="_padding-0">
+        <i-navbar variant="light" :collapse="false">
+            <i-navbar-brand>Light Sidebar</i-navbar-brand>
+            <i-hamburger-menu variant="light" class="_visible-md-and-down" :active="collapsedVariantsLight" @click="collapsedVariantsLight = !collapsedVariantsLight"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar variant="light" collapse-position="absolute" v-model="collapsedVariantsLight">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
+
+<i-layout class="sidebar-layout-example _margin-top-1">
+    <i-layout-header class="_padding-0">
+        <i-navbar variant="dark" :collapse="false">
+            <i-navbar-brand>Dark Sidebar</i-navbar-brand>
+            <i-hamburger-menu variant="dark" class="_visible-md-and-down" :active="collapsedVariantsDark" @click="collapsedVariantsDark = !collapsedVariantsDark"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar variant="dark" collapse-position="absolute" v-model="collapsedVariantsDark">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+    </i-layout>
+</i-layout>
 
 <template slot="html">
 
 ~~~html
-<i-sidebar variant="light">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+<i-layout>
+    <i-layout-header class="_padding-0">
+        <i-navbar variant="light" :collapse="false">
+            <i-navbar-brand>Light Sidebar</i-navbar-brand>
+            <i-hamburger-menu variant="light" class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar variant="light" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 ~~~
 ~~~html
-<i-sidebar variant="dark">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+<i-layout>
+    <i-layout-header class="_padding-0">
+        <i-navbar variant="dark" :collapse="false">
+            <i-navbar-brand>Dark Sidebar</i-navbar-brand>
+            <i-hamburger-menu variant="dark" class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar variant="dark" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    name: 'DashboardLayout',
+    data() {
+        return {
+            collapsed: false
+        };
+    }
+}
+~~~
+
+</template>
+</i-code-preview>
+
+
+### Placement
+You can easily place your sidebar on the right side of a layout by setting the `placement` property to `right`. By default, sidebars are on the left side.
+
+<i-code-preview title="Sidebar Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+
+<i-layout class="sidebar-layout-example">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Left Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsedPlacementLeft" @click="collapsedPlacementLeft = !collapsedPlacementLeft"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar collapse-position="absolute" placement="left" v-model="collapsedPlacementLeft">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
+
+<i-layout class="sidebar-layout-example _margin-top-1">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Right Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsedPlacementRight" @click="collapsedPlacementRight = !collapsedPlacementRight"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-layout-content></i-layout-content>
+        <i-sidebar collapse-position="absolute" placement="right" v-model="collapsedPlacementRight">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+    </i-layout>
+</i-layout>
+
+<template slot="html">
+
+~~~html
+<i-layout">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Left Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar placement="left" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
+~~~
+
+~~~html
+<i-layout">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Right Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-layout-content></i-layout-content>
+        <i-sidebar placement="right" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+    </i-layout>
+</i-layout>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    name: 'DashboardLayout',
+    data() {
+        return {
+            collapsed: false
+        };
+    }
+}
 ~~~
 
 </template>
@@ -179,6 +449,20 @@ You can use an `<i-dropdown>` component inside the `<i-sidebar-items>` or `<i-na
         </i-nav>
     </i-sidebar-items>
 </i-sidebar>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    name: 'DashboardLayout',
+    data() {
+        return {
+            collapsed: false
+        };
+    }
+}
 ~~~
 
 </template>
