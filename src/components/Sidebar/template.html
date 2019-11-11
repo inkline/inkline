@@ -5,14 +5,14 @@
         <transition :name="sidebarTransition">
             <div class="sidebar"
                  v-show="collapsePosition === 'relative' || collapsed || !collapsible">
-                <div class="sidebar-children">
+                <div class="sidebar-content">
                     <slot></slot>
                 </div>
             </div>
         </transition>
         <transition name="sidebar-overlay-transition">
             <div class="sidebar-overlay"
-                 @click="onClickOverlay()"
+                 @click="onOverlayClick()"
                  v-if="collapsePosition !== 'relative'"
                  v-show="collapsed"></div>
         </transition>

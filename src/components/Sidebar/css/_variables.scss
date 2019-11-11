@@ -4,7 +4,7 @@
 $sidebar-width-base: 14rem !default;
 $sidebar-width: size-map($sidebar-width-base, $sizes, $size-multipliers) !default;
 
-$sidebar-padding-base: $spacer !default;
+$sidebar-padding-base: 0 !default;
 $sidebar-padding: size-map($sidebar-padding-base, $sizes, $size-multipliers) !default;
 
 $sidebar-wrapper-transition-duration: $transition-duration !default;

@@ -27,6 +27,10 @@ export default {
         collapsePosition: {
             type: String,
             default: 'fixed'
+        },
+        placement: {
+            type: String,
+            default: 'left'
         }
     },
     computed: {
@@ -42,22 +46,26 @@ export default {
         }
     },
     created() {
-        this.$on('item-click', this.onClickOutside);
+        this.$on('item-click', this.onItemClick);
 
         this.classesProvider.add(() => ({
-            [`-collapse-${this.collapsePosition}`]: true
+            [`-collapse-${this.collapsePosition}`]: true,
+            [`-placement-${this.placement}`]: true
         }));
     },
     beforeDestroy() {
-        this.$off('item-click', this.onClickOutside);
+        this.$off('item-click', this.onItemClick);
     },
     methods: {
-        onClickOverlay() {
-            if (!this.collapseOnClickOverlay || !this.collapsed) {
-                return;
+        onItemClick() {
+            if (this.collapseOnClick && this.collapsed) {
+                this.setCollapse(false);
             }
-
-            this.setCollapse(false);
+        },
+        onOverlayClick() {
+            if (this.collapseOnClickOverlay && this.collapsed) {
+                this.setCollapse(false);
+            }
         }
     }
 };
