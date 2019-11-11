@@ -1,4 +1,20 @@
 <template lang="md" src="./sidebar.md" />
+<style lang="scss">
+@import '~@inkline/inkline/src/css/config';
+
+.sidebar-layout-example {
+    height: 20rem;
+    border: 1px solid $color-gray-20;
+
+    &.-lg {
+        height: 24rem;
+    }
+
+    &.-sm {
+        height: 16rem;
+    }
+}
+</style>
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
@@ -24,7 +40,14 @@ export default {
     },
     data() {
         return {
-            collapsed: false
+            collapsed: false,
+            collapsedSizesSm: false,
+            collapsedSizesMd: false,
+            collapsedSizesLg: false,
+            collapsedVariantsLight: false,
+            collapsedVariantsDark: false,
+            collapsedPlacementLeft: false,
+            collapsedPlacementRight: false,
         };
     }
 };
