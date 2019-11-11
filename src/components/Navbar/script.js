@@ -41,9 +41,17 @@ export default {
             default: 'close'
         }
     },
+    methods: {
+        onItemClick() {
+            if (this.collapseOnClick && this.collapsed) {
+                this.setCollapse(false);
+            }
+        }
+    },
     created() {
-        this.$on('item-click', () => {
-            this.setCollapse(false);
-        });
+        this.$on('item-click', this.onItemClick);
+    },
+    beforeDestroy() {
+        this.$off('item-click', this.onItemClick);
     }
 };

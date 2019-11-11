@@ -47,12 +47,12 @@
     .sidebar {
         position: absolute;
         height: 100%;
-        overflow: auto;
         z-index: 1;
 
         &-content {
             height: 100%;
             width: 100%;
+            overflow: auto;
 
             // Hack for fixing margin collapse bug
             // https://github.com/ant-design/ant-design/issues/7967
@@ -62,8 +62,25 @@
         }
     }
 
-    &.-collapse-relative .sidebar {
-        right: 0;
+    &.-collapse-relative {
+        &.-placement-left .sidebar {
+            right: 0;
+        }
+
+        &.-placement-right .sidebar {
+            left: 0;
+        }
+    }
+
+    &.-collapse-absolute,
+    &.-collapse-fixed {
+        &.-placement-left .sidebar {
+            left: 0;
+        }
+
+        &.-placement-right .sidebar {
+            right: 0;
+        }
     }
 
     .sidebar-overlay {
@@ -71,10 +88,6 @@
         height: 100%;
         z-index: 0;
         background: $sidebar-overlay-background;
-    }
-
-    &.-right {
-        order: 1;
     }
 
     @each $breakpoint in (breakpoints-list()) {
@@ -132,6 +145,18 @@
 .sidebar-transition-enter-to,
 .sidebar-transition-leave {
     transform: translateX(0);
+}
+
+.sidebar-wrapper.-placement-right {
+    .sidebar-transition-enter-active,
+    .sidebar-transition-leave-active {
+        transform-origin: right;
+    }
+
+    .sidebar-transition-enter,
+    .sidebar-transition-leave-to {
+        transform: translateX(100%);
+    }
 }
 
 //
