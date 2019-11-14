@@ -58,6 +58,12 @@ describe('Components', () => {
 
                     expect(wrapper.vm.progress).toEqual(50);
                 });
+
+                it('should return percentage based on custom minimum and maximum value passed as strings', () => {
+                    wrapper.setProps({ value: '5', min: '0', max: '10' });
+
+                    expect(wrapper.vm.progress).toEqual(50);
+                });
             });
 
             describe('progress()', () => {

@@ -38,25 +38,31 @@ describe('Components', () => {
                     expect(wrapper.vm.checked).toBeDefined();
                 });
 
-                it('should return value of "model" if Boolean', () => {
+                it('should return true if model is equal to currentValue if Boolean', () => {
                     wrapper = shallowMount(Checkbox, {
                         computed: {
-                            currentValue() { return 'value'; }
+                            currentValue() { return 'value'; },
+                            model() { return 'value'; }
                         }
                     });
+
                     wrapper.setProps({ value: 'value' });
                     expect(wrapper.vm.checked).toEqual(true);
+                });
 
+                it('should return false if model and is not equal to currentValue if Boolean', () => {
                     wrapper = shallowMount(Checkbox, {
                         computed: {
-                            currentValue() { return 'value'; }
+                            currentValue() { return 'value'; },
+                            model() { return 'othervalue'; }
                         }
                     });
-                    wrapper.setProps({ value: 'other' });
+
+                    wrapper.setProps({ value: 'value' });
                     expect(wrapper.vm.checked).toEqual(false);
                 });
 
-                it('should return if value found in "model" if Array', () => {
+                it('should return if value found in model if Array', () => {
                     wrapper = shallowMount(Checkbox, {
                         computed: {
                             currentValue() { return 'value1' }
@@ -73,6 +79,18 @@ describe('Components', () => {
                     });
                     wrapper.setProps({ value: ['value1', 'value2'] });
                     expect(wrapper.vm.checked).toEqual(false);
+                });
+
+                it('should return if model is not defined', () => {
+                    wrapper = shallowMount(Checkbox, {
+                        computed: {
+                            currentValue() { return 'value'; },
+                            model() { return null; }
+                        }
+                    });
+
+                    wrapper.setProps({ value: 'value' });
+                    expect(wrapper.vm.checked).toEqual(undefined);
                 });
             });
         });

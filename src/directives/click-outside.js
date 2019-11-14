@@ -15,9 +15,11 @@ export const clickOutsideHandler = {
     }
 };
 
-if (!Vue.$isServer && typeof window !== 'undefined' && window.document) {
-    on(window.document, 'mousedown', clickOutsideHandler.onMouseDown);
-    on(window.document, 'mouseup', clickOutsideHandler.onMouseUp);
+export function bindClickOutsideHandler() {
+    if (!Vue.$isServer && typeof window !== 'undefined' && window.document) {
+        on(window.document, 'mousedown', clickOutsideHandler.onMouseDown);
+        on(window.document, 'mouseup', clickOutsideHandler.onMouseUp);
+    }
 }
 
 export function createDocumentHandler(element, binding, vnode) {
@@ -82,3 +84,5 @@ export default {
         delete element[clickOutsideHandler.ctx];
     }
 };
+
+bindClickOutsideHandler();

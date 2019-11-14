@@ -12,7 +12,8 @@ describe('Components', () => {
                 },
                 methods: {
                     created: Tooltip.created,
-                    mounted: Tooltip.mounted
+                    mounted: Tooltip.mounted,
+                    beforeDestroy: Tooltip.beforeDestroy
                 },
                 slots: {
                     default: ['<div/>']
@@ -84,6 +85,32 @@ describe('Components', () => {
             });
         });
 
+        describe('methods', () => {
+            describe('onUpdatePopper()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.onUpdatePopper).toBeDefined();
+                });
+
+                it('should call updatePopper() if visible', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'updatePopper');
+
+                    wrapper.setData({ visible: true });
+                    wrapper.vm.onUpdatePopper();
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should not call updatePopper() if not visible', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'updatePopper');
+
+                    wrapper.setData({ visible: false });
+                    wrapper.vm.onUpdatePopper();
+
+                    expect(spy).not.toHaveBeenCalled();
+                });
+            });
+        });
+
         describe('created()', () => {
             it('should add updatePopper event listener', () => {
                 const spy = jest.spyOn(wrapper.vm, '$on');
@@ -91,7 +118,7 @@ describe('Components', () => {
                 wrapper.vm.created();
 
                 expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('updatePopper', expect.any(Function));
+                expect(spy).toHaveBeenCalledWith('updatePopper', wrapper.vm.onUpdatePopper);
             });
         });
 
@@ -102,6 +129,17 @@ describe('Components', () => {
                 wrapper.vm.mounted();
 
                 expect(wrapper.vm.referenceElement).toEqual('new');
+            });
+        });
+
+        describe('beforeDestroy()', () => {
+            it('should remove updatePopper event listener', () => {
+                const spy = jest.spyOn(wrapper.vm, '$off');
+
+                wrapper.vm.beforeDestroy();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenCalledWith('updatePopper', wrapper.vm.onUpdatePopper);
             });
         });
 

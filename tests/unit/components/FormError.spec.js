@@ -59,6 +59,28 @@ describe('Components', () => {
 
                     expect(wrapper.vm.errors).toEqual(['a', 'b']);
                 });
+
+                it('should not affect anything if schema is not invalid', () => {
+                    expect(wrapper.vm.errors).toEqual([]);
+
+                    wrapper.setProps({
+                        schema: {
+                            errors: {
+                                errorA: 'a'
+                            },
+                            invalid: true
+                        }
+                    });
+
+                    wrapper.setProps({
+                        schema: {
+                            errors: {},
+                            invalid: false
+                        }
+                    });
+
+                    expect(wrapper.vm.errors).toEqual([]);
+                });
             });
         });
 

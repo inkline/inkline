@@ -1,5 +1,6 @@
+import Vue from 'Vue';
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
-import { clickOutsideHandler, createDocumentHandler } from '@inkline/inkline/src/directives/click-outside';
+import { clickOutsideHandler, createDocumentHandler, bindClickOutsideHandler } from '@inkline/inkline/src/directives/click-outside';
 
 describe('Directives', () => {
     describe('v-click-outside', () => {
@@ -34,6 +35,30 @@ describe('Directives', () => {
                 clickOutsideHandler.onMouseUp(true);
 
                 expect(spy).toHaveBeenCalled();
+            });
+        });
+
+        describe('bindClickOutsideHandler()', () => {
+            it('should bind mousedown and mouseup events on window.document', () => {
+                const spy = jest.spyOn(window.document, 'addEventListener');
+
+                bindClickOutsideHandler();
+
+                expect(spy).toHaveBeenCalled();
+                expect(spy).toHaveBeenNthCalledWith(1, 'mousedown', clickOutsideHandler.onMouseDown, false);
+                expect(spy).toHaveBeenNthCalledWith(2, 'mouseup', clickOutsideHandler.onMouseUp, false);
+            });
+
+            it('should not bind mousedown and mouseup events if Vue.$isServer', () => {
+                Vue.$isServer = true;
+
+                const spy = jest.spyOn(window.document, 'addEventListener');
+
+                bindClickOutsideHandler();
+
+                expect(spy).not.toHaveBeenCalledTimes(5);
+
+                Vue.$isServer = false;
             });
         });
 

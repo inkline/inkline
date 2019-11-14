@@ -355,6 +355,18 @@ describe('Components', () => {
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith('resize', wrapper.vm.debouncedOnWindowResize);
             });
+
+            it('should not add window resize event listener if Vue.$isServer', () => {
+                Vue.$isServer = true;
+
+                const spy = jest.spyOn(window, 'addEventListener');
+
+                wrapper.vm.created();
+
+                expect(spy).not.toHaveBeenCalledTimes(3);
+
+                Vue.$isServer = false;
+            });
         });
 
         describe('mounted()', () => {
@@ -379,6 +391,18 @@ describe('Components', () => {
 
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith('resize', wrapper.vm.debouncedOnWindowResize);
+            });
+
+            it('should not remove window resize event listener if Vue.$isServer', () => {
+                Vue.$isServer = true;
+
+                const spy = jest.spyOn(window, 'removeEventListener');
+
+                wrapper.vm.destroyed();
+
+                expect(spy).not.toHaveBeenCalledTimes(3);
+
+                Vue.$isServer = false;
             });
         });
     });

@@ -509,7 +509,7 @@ describe('Factories', () => {
                         [field]: {}
                     };
 
-                    expect(() => formBuilder.factory(schema)).toThrowError();
+                    expect(() => formBuilder.form([], schema)).toThrowError(`The field name "${field}" is a reserved Inkline Form Validation field name.`);
                 });
             });
 

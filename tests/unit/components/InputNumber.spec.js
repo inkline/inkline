@@ -201,6 +201,28 @@ describe('Components', () => {
                         done();
                     });
                 });
+
+                it('should set value to min if input is less than min', (done) => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.setProps({ min: '10', value: '8' });
+
+                    wrapper.vm.$nextTick(() => {
+                        expect(spy).toHaveBeenLastCalledWith('input', '10');
+                        done();
+                    });
+                });
+
+                it('should set value to max if input is greater than max', (done) => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.setProps({ max: '10', value: '11' });
+
+                    wrapper.vm.$nextTick(() => {
+                        expect(spy).toHaveBeenLastCalledWith('input', '10');
+                        done();
+                    });
+                });
             });
         });
     });

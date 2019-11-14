@@ -50,6 +50,14 @@ describe('Helpers', () => {
 
                 expect(element.className).toEqual('class2');
             });
+
+            it('should continue if empty string given', () => {
+                element.className = 'class1 class2';
+
+                removeClass(element, ' ');
+
+                expect(element.className).toEqual('class1 class2');
+            });
         });
 
         describe('classList', () => {

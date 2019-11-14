@@ -66,13 +66,21 @@ export default {
             }
         }
     },
+    methods: {
+        onUpdatePopper() {
+            if (this.visible) {
+                this.updatePopper();
+            }
+        }
+    },
     created() {
-        this.$on('updatePopper', () => {
-            if (this.visible) this.updatePopper();
-        });
+        this.$on('updatePopper', this.onUpdatePopper);
     },
     mounted() {
         this.referenceElement = this.$el;
         this.currentPlacement = this.placement;
+    },
+    beforeDestroy() {
+        this.$off('updatePopper', this.onUpdatePopper);
     }
 };

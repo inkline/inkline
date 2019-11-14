@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 import { PopupManager } from '@inkline/inkline/src/factories/PopupManager';
 
 describe('Factories', () => {
@@ -41,6 +43,18 @@ describe('Factories', () => {
                 expect(spy).toHaveBeenCalledWith('keydown', expect.any(Function));
             });
 
+            it('should not add keydown event listener if Vue.$isServer', () => {
+                Vue.$isServer = true;
+
+                const spy = jest.spyOn(window, 'addEventListener');
+
+                popupManager = new PopupManager();
+
+                expect(spy).not.toHaveBeenCalledTimes(4);
+
+                Vue.$isServer = false;
+            });
+
             it('should close topmost modal on pressing Escape', () => {
                 const instance = { id: 'abc', hide: () => {}, closeOnPressEscape: true };
                 const spy = jest.spyOn(instance, 'hide');
@@ -54,6 +68,21 @@ describe('Factories', () => {
                 window.dispatchEvent(event);
 
                 expect(spy).toHaveBeenCalled();
+            });
+
+            it('should not react to other key other than Escape', () => {
+                const instance = { id: 'abc', hide: () => {}, closeOnPressEscape: true };
+                const spy = jest.spyOn(instance, 'hide');
+
+                popupManager.register(instance);
+                popupManager.openModal('abc');
+
+                const event = new KeyboardEvent('keydown', {
+                    key: 'None'
+                });
+                window.dispatchEvent(event);
+
+                expect(spy).not.toHaveBeenCalled();
             });
 
             it('should not close topmost modal on pressing Escape if closeOnPressEscape is false', () => {
@@ -138,6 +167,16 @@ describe('Factories', () => {
         });
 
         describe('openModal()', () => {
+            it('should return if Vue.$isServer', () => {
+                Vue.$isServer = true;
+
+                popupManager.openModal('abc');
+
+                expect(popupManager.modalStack.length).toEqual(0);
+
+                Vue.$isServer = false;
+            });
+
             it('should add modal to modal stack if not already open', () => {
                 popupManager.openModal('abc');
 
@@ -183,14 +222,30 @@ describe('Factories', () => {
         });
 
         describe('getTopPopup()', () => {
+            it('should return if Vue.$isServer', () => {
+                Vue.$isServer = true;
+
+                expect(popupManager.getTopPopup()).not.toBeDefined();
+
+                Vue.$isServer = false;
+            });
+
             it('should return instance of topmost open modal', () => {
                 popupManager.register({ id: 'abc' });
                 popupManager.register({ id: 'def' });
-
                 popupManager.openModal('abc');
                 popupManager.openModal('def');
 
                 expect(popupManager.getTopPopup()).toEqual({ id: 'def' });
+            });
+
+            it('should return undefined if instance is undefined', () => {
+                popupManager.register({ id: 'abc' });
+                popupManager.openModal('abc');
+
+                popupManager.modalStack.push(undefined);
+
+                expect(popupManager.getTopPopup()).not.toBeDefined();
             });
 
             it('should return undefined if no open modals', () => {

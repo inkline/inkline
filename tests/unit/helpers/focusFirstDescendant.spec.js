@@ -14,6 +14,13 @@ describe('Helpers', () => {
             expect(focusFirstDescendant(element)).toEqual(false);
         });
 
+        it('should return false if element has no focusable children', () => {
+            element.childNodes.push({ tabIndex: -1, childNodes: [] }, { tabIndex: -1, childNodes: [] });
+            document.activeElement = element.childNodes[0];
+
+            expect(focusFirstDescendant(element)).toEqual(false);
+        });
+
         it('should return true if element has focusable child', () => {
             element.childNodes.push({ tabIndex: 1, childNodes: [] }, { tabIndex: 1, childNodes: [] });
             document.activeElement = element.childNodes[0];
