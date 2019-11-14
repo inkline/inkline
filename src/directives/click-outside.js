@@ -16,7 +16,7 @@ export const clickOutsideHandler = {
 };
 
 export function bindClickOutsideHandler() {
-    if (!Vue.$isServer && typeof window !== 'undefined' && window.document) {
+    if (!Vue.prototype.$isServer && typeof window !== 'undefined' && window.document) {
         on(window.document, 'mousedown', clickOutsideHandler.onMouseDown);
         on(window.document, 'mouseup', clickOutsideHandler.onMouseUp);
     }
