@@ -97,7 +97,7 @@ export default {
             e.stopPropagation();
         },
         createPopper() {
-            if (this.$isServer) return;
+            if (Vue.$isServer) return;
 
             this.currentPlacement = this.currentPlacement || this.placement;
             if (!/^(top|bottom|left|right)(-start|-end)?$/g.test(this.currentPlacement)) {

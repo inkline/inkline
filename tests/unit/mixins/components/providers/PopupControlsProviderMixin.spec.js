@@ -93,6 +93,30 @@ describe('Mixins', () => {
             });
         });
 
+        describe('computed', () => {
+            describe('triggers', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.triggers).toBeDefined();
+                });
+
+                it('should equal to trigger if trigger is array', () => {
+                    wrapper.setProps({
+                        trigger: ['focus']
+                    });
+
+                    expect(wrapper.vm.triggers).toEqual(wrapper.vm.trigger);
+                });
+
+                it('should equal to [trigger] if trigger is not array', () => {
+                    wrapper.setProps({
+                        trigger: 'focus'
+                    });
+
+                    expect(wrapper.vm.triggers).toEqual([wrapper.vm.trigger]);
+                });
+            });
+        });
+
         describe('methods', () => {
             describe('onClick()', () => {
                 it('should call hide() if visible', () => {
@@ -226,6 +250,13 @@ describe('Mixins', () => {
                         .toThrowError('Popup component requires one child element');
                 });
 
+                it('should throw error if default slot not provided', () => {
+                    wrapper.vm.$slots.default = undefined;
+
+                    expect(() => wrapper.vm.initElements())
+                        .toThrowError('Popup component requires one child element');
+                });
+
                 it('should set triggerElement and dropdownElement', () => {
                     wrapper.setData({ triggerElement: null, popupElement: null });
 
@@ -276,6 +307,16 @@ describe('Mixins', () => {
                     expect(spy).toHaveBeenNthCalledWith(1, 'mouseenter', wrapper.vm.show);
                     expect(spy).toHaveBeenNthCalledWith(2, 'mouseleave', wrapper.vm.hide);
                 });
+
+                it('should add focus and blur events to trigger element if trigger is "focus"', () => {
+                    const spy = jest.spyOn(wrapper.vm.triggerElement, 'addEventListener');
+                    wrapper.setProps({ trigger: 'focus' });
+
+                    wrapper.vm.addEvents();
+
+                    expect(spy).toHaveBeenNthCalledWith(1, 'focus', wrapper.vm.show);
+                    expect(spy).toHaveBeenNthCalledWith(2, 'blur', wrapper.vm.hide);
+                });
             });
 
             describe('removeEvents()', () => {
@@ -296,6 +337,16 @@ describe('Mixins', () => {
 
                     expect(spy).toHaveBeenNthCalledWith(1, 'mouseenter', wrapper.vm.show);
                     expect(spy).toHaveBeenNthCalledWith(2, 'mouseleave', wrapper.vm.hide);
+                });
+
+                it('should remove focus and blur events to trigger element if trigger is "focus"', () => {
+                    const spy = jest.spyOn(wrapper.vm.triggerElement, 'removeEventListener');
+                    wrapper.setProps({ trigger: 'focus' });
+
+                    wrapper.vm.removeEvents();
+
+                    expect(spy).toHaveBeenNthCalledWith(1, 'focus', wrapper.vm.show);
+                    expect(spy).toHaveBeenNthCalledWith(2, 'blur', wrapper.vm.hide);
                 });
             });
         });

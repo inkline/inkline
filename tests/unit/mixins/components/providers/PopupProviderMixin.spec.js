@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import { mount } from '@vue/test-utils'
 
 import PopupProviderMixin from '@inkline/inkline/src/mixins/components/providers/PopupProviderMixin';
@@ -191,6 +192,14 @@ describe('Mixins', () => {
 
         describe('methods', () => {
             describe('createPopper()', () => {
+                it('should return if Vue.$isServer', () => {
+                    Vue.$isServer = true;
+
+                    expect(wrapper.vm.createPopper()).toEqual(undefined);
+
+                    Vue.$isServer = false;
+                });
+
                 it('should return if currentPlacement is invalid', () => {
                     wrapper.setProps({ placement: 'any' });
 
@@ -276,15 +285,31 @@ describe('Mixins', () => {
                     expect(spy).toHaveBeenCalled();
                 });
 
-                it('should update popperJS element', () => {
+                it('should skip zIndex assignment if not popper set', () => {
                     wrapper.vm.createPopper();
                     wrapper.vm.popperJS.update = () => {};
+                    wrapper.vm.popperJS.popper = undefined;
 
                     const spy = jest.spyOn(wrapper.vm.popperJS, 'update');
 
                     wrapper.vm.updatePopper();
 
                     expect(spy).toHaveBeenCalled();
+                });
+
+                it('should update popperJS element', () => {
+                    wrapper.vm.createPopper();
+                    wrapper.vm.popperJS.update = () => {};
+                    wrapper.vm.popperJS.popper = {
+                        style: {}
+                    };
+
+                    const spy = jest.spyOn(wrapper.vm.popperJS, 'update');
+
+                    wrapper.vm.updatePopper();
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(wrapper.vm.popperJS.popper.style.zIndex).toBeGreaterThanOrEqual(1000);
                 });
             });
 

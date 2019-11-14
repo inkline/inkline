@@ -7,7 +7,7 @@ export class PopupManager {
     zIndex = 1000;
 
     constructor() {
-        if (!Vue.prototype.$isServer) {
+        if (!Vue.$isServer) {
             // Handle `esc` key when the popup is shown
             window.addEventListener('keydown', (e) => {
                 if (isKey('esc', e)) {
@@ -39,7 +39,7 @@ export class PopupManager {
     }
 
     openModal(id) {
-        if (Vue.prototype.$isServer) return;
+        if (Vue.$isServer) return;
 
         const modal = this.modalStack.find((m) => m.id === id);
 
@@ -61,7 +61,7 @@ export class PopupManager {
     }
 
     getTopPopup() {
-        if (Vue.prototype.$isServer) return;
+        if (Vue.$isServer) return;
 
         if (this.modalStack.length > 0) {
             const topPopup = this.modalStack[this.modalStack.length - 1];

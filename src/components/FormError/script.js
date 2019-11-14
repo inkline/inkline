@@ -17,6 +17,8 @@ export default {
                 this.errors = Object.keys(this.schema.errors)
                     .filter((key) => key !== 'length')
                     .map((key) => this.schema.errors[key]);
+            } else {
+                this.errors = [];
             }
         }
     },

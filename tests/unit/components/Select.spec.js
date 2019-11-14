@@ -157,6 +157,16 @@ describe('Components', () => {
 
                 it('should call dropdown.show() if not $isMobile and dropdown is not visible', () => {
                     const spy = jest.spyOn(wrapper.vm.$refs.dropdown, 'show');
+                    wrapper.vm.$refs.dropdown.visible = false;
+
+                    wrapper.vm.clickInputRef();
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should call dropdown.hide() if not $isMobile and dropdown not visible', () => {
+                    const spy = jest.spyOn(wrapper.vm.$refs.dropdown, 'hide');
+                    wrapper.vm.$refs.dropdown.visible = true;
 
                     wrapper.vm.clickInputRef();
 

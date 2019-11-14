@@ -88,6 +88,17 @@ describe('Mixins', () => {
                     expect(spy).toHaveBeenCalledWith('eventName', true);
                 });
 
+                it('should call $emit on root', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.vm.$children[0].$root = wrapper.vm.$children[0].$parent;
+                    wrapper.vm.$children[0].$parent = undefined;
+                    wrapper.vm.$children[0].dispatch('Parent', 'eventName', true);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('eventName', true);
+                });
+
                 it('should work with any nesting level', () => {
                     const spy = jest.spyOn(wrapper.vm.$parent, '$emit');
 

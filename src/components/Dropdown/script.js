@@ -125,7 +125,7 @@ export default {
                 let nextIndex;
 
                 if (isKey('up', e)) {
-                    nextIndex = currentIndex !== 0 ? currentIndex - 1 : 0;
+                    nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
                 } else {
                     nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
                 }
