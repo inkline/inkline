@@ -58,13 +58,16 @@ export default {
             this.onWindowResize();
         }
 
-        this.$on('collapse', (e) => this.setCollapse(e));
-        this.$on('toggle-collapse', () => this.toggleCollapse());
+        this.$on('collapse', this.setCollapse);
+        this.$on('toggle-collapse', this.toggleCollapse);
     },
-    destroyed() {
+    beforeDestroy() {
         if (!Vue.$isServer && typeof window !== 'undefined') {
             window.removeEventListener('resize', this.onWindowResize)
         }
+
+        this.$off('collapse', this.setCollapse);
+        this.$off('toggle-collapse', this.toggleCollapse);
     },
     methods: {
         setCollapse(value) {
