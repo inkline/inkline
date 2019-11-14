@@ -8,7 +8,7 @@ describe('Directives', () => {
         let vnode;
 
         beforeEach(() => {
-            element = { getClientRects: () => [1], parentElement: null };
+            element = { getClientRects: () => [1], parentElement: null, contains: () => {} };
             binding = { expression: 'fn', value: () => {} };
             vnode = { context: { fn: () => {} } };
         });

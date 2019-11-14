@@ -42,7 +42,7 @@ export default {
         sidebarTransition() {
             return this.collapsePosition !== 'relative' ?
                 'sidebar-transition' :
-                'none';
+                'sidebar-none-transition';
         }
     },
     created() {
