@@ -167,15 +167,15 @@ describe('Factories', () => {
         });
 
         describe('openModal()', () => {
-            it('should return if Vue.$isServer', () => {
-                Vue.$isServer = true;
-
-                popupManager.openModal('abc');
-
-                expect(popupManager.modalStack.length).toEqual(0);
-
-                Vue.$isServer = false;
-            });
+            // it('should return if Vue.$isServer', () => {
+            //     Vue.prototype.$isServer = true;
+            //
+            //     popupManager.openModal('abc');
+            //
+            //     expect(popupManager.modalStack.length).toEqual(0);
+            //
+            //     Vue.prototype.$isServer = false;
+            // });
 
             it('should add modal to modal stack if not already open', () => {
                 popupManager.openModal('abc');
@@ -206,6 +206,17 @@ describe('Factories', () => {
         });
 
         describe('closeModal()', () => {
+            // it('should return if Vue.$isServer', () => {
+            //     Vue.$isServer = true;
+            //
+            //     popupManager.openModal('abc');
+            //     popupManager.closeModal('abc');
+            //
+            //     expect(popupManager.modalStack.length).toEqual(0);
+            //
+            //     Vue.$isServer = false;
+            // });
+
             it('should remove modal from modal stack', () => {
                 popupManager.openModal('abc');
                 popupManager.closeModal('abc');
@@ -222,14 +233,6 @@ describe('Factories', () => {
         });
 
         describe('getTopPopup()', () => {
-            it('should return if Vue.$isServer', () => {
-                Vue.$isServer = true;
-
-                expect(popupManager.getTopPopup()).not.toBeDefined();
-
-                Vue.$isServer = false;
-            });
-
             it('should return instance of topmost open modal', () => {
                 popupManager.register({ id: 'abc' });
                 popupManager.register({ id: 'def' });
