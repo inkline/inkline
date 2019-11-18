@@ -355,13 +355,13 @@ You can control what breakpoint your navbar will collapse at using the `collapse
 </template>
 </i-code-preview>
 
-##### Always or Never Collapsed
+##### Always or Never Collapsible
 
-Besides the breakpoint values, you can use a boolean value to set your navbar to be always collapsed, or never collapsed.
+Besides the breakpoint values, you can use a boolean value to set your navbar to be always collapsible, or never collapsible.
 
-Setting a `collapse` value of `true` will set the navbar to be always collapsed.
+Setting a `collapse` value of `true` will set the navbar to be always collapsible.
 
-<i-code-preview title="Always Collapsed Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Always Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar :collapse="true">
     <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
@@ -390,9 +390,9 @@ Setting a `collapse` value of `true` will set the navbar to be always collapsed.
 </template>
 </i-code-preview>
 
-Setting a `collapse` value of `false` will set the navbar to never collapse.
+Setting a `collapse` value of `false` will set the navbar to never be collapsible.
 
-<i-code-preview title="Never Collapsed Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Never Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar :collapse="false">
     <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
@@ -478,8 +478,8 @@ Sometimes, it's necessary to control whether the Navbar is collapsed or not prog
                 <tr>
                     <td>collapse</td>
                     <td>Specifies the breakpoint at which to collapse the navbar.</td>
-                    <td><code>String</code></td>
-                    <td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code></td>
+                    <td><code>String</code>, <code>Boolean</code></td>
+                    <td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>true</code>, <code>false</code></td>
                     <td><code>md</code></td>
                 </tr>
                 <tr>
