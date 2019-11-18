@@ -4,12 +4,14 @@
 ### Example
 Here’s an example on how to use the `<i-sidebar>` inside a dashboard layout. The sidebar automatically collapses responsively.
 
+To control the visibility of the sidebar when collapsed, we will use the `v-model` directive.
+
 <i-code-preview title="Sidebar Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
 <i-layout class="sidebar-layout-example -lg">
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
-            <i-navbar-brand>Navbar</i-navbar-brand>
+            <i-navbar-brand>Sidebar</i-navbar-brand>
             <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
         </i-navbar>
     </i-layout-header>
@@ -416,39 +418,51 @@ export default {
 </template>
 </i-code-preview>
 
-### Dropdown
-You can use an `<i-dropdown>` component inside the `<i-sidebar-items>` or `<i-nav>` component to create a contextual sidebar menu. 
+### Collapse Breakpoint
+You can control what breakpoint your sidebar will collapse at using the `collapse` property. By default, the sidebar will collapse on the `md` screen size.
 
-<i-code-preview title="Sidebar Dropdown" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar" style="z-index: 2;">
+<i-code-preview title="Collapse Breakpoint Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
-<i-sidebar>
-</i-sidebar>
+<i-layout class="sidebar-layout-example">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-lg-and-down" :active="collapsedBreakpointLg" @click="collapsedBreakpointLg = !collapsedBreakpointLg"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar collapse-position="absolute" collapse="lg" v-model="collapsedBreakpointLg">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 
 <template slot="html">
 
 ~~~html
-<i-sidebar>
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">Contact</i-nav-item>
-        </i-nav>
-        <i-nav>
-            <i-dropdown placement="bottom-end">
-                <i-button variant="primary">Dropdown</i-button>
-                <i-dropdown-menu>
-                    <i-dropdown-item href>Action</i-dropdown-item>
-                    <i-dropdown-item href>Another action</i-dropdown-item>
-                    <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
-                </i-dropdown-menu>
-            </i-dropdown>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+<i-layout">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-lg-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar collapse="lg" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 ~~~
 
 </template>
@@ -468,165 +482,280 @@ export default {
 </template>
 </i-code-preview>
 
-### Nav Placement
-You can position the `<i-nav>` component to the `start`, `end`, or `center` of the `<i-sidebar-items>` component using flexbox utilities.
+##### Always or Never Collapsible
 
-<i-code-preview title="Sidebar Nav Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+Besides the breakpoint values, you can use a boolean value to set your sidebar to be always collapsible, or never collapsible.
 
-<i-sidebar class="_margin-bottom-1">
-</i-sidebar>
+Setting a `collapse` value of `true` will set the sidebar to be always collapsible.
+
+<i-code-preview title="Always Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+
+<i-layout class="sidebar-layout-example">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Sidebar</i-navbar-brand>
+            <i-hamburger-menu :active="collapsedBreakpointAlways" @click="collapsedBreakpointAlways = !collapsedBreakpointAlways"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar collapse-position="absolute" :collapse="true" v-model="collapsedBreakpointAlways">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 
 <template slot="html">
 
 ~~~html
+<i-layout">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Sidebar</i-navbar-brand>
+            <i-hamburger-menu :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar :collapse="true" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
+~~~
 
-<i-sidebar>
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items class="_justify-content-start">
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
-~~~
-~~~html
-<i-sidebar>
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items class="_justify-content-center">
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
-~~~
-~~~html
-<i-sidebar>
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items class="_justify-content-end">
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">Contact</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    name: 'DashboardLayout',
+    data() {
+        return {
+            collapsed: false
+        };
+    }
+}
 ~~~
 
 </template>
 </i-code-preview>
 
+Setting a `collapse` value of `false` will set the sidebar to never be collapsible.
 
-### Collapse Breakpoint
-You can control what breakpoint your sidebar will collapse at using the `collapse` property. By default, the sidebar will collapse on the `md` screen size.
+<i-code-preview title="Never Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
-<i-code-preview title="Collapse Breakpoint Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
-
-<i-sidebar collapse="lg">
-</i-sidebar>
+<i-layout class="sidebar-layout-example">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Sidebar</i-navbar-brand>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar collapse-position="absolute" :collapse="false">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 
 <template slot="html">
 
 ~~~html
-<i-sidebar collapse="lg">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+<i-layout">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Sidebar</i-navbar-brand>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar :collapse="false">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    name: 'DashboardLayout',
+    data() {
+        return {
+            collapsed: false
+        };
+    }
+}
 ~~~
 
 </template>
 </i-code-preview>
 
-##### Always or Never Collapsed
+### Collapse Position
+You can set the collapsed sidebar position to `relative`, `absolute` or `fixed` using the `collapse-position` property. 
 
-Besides the breakpoint values, you can use a boolean value to set your sidebar to be always collapsed, or never collapsed.
+This property allows you to control whether the sidebar will affect the content that it is besides to when reaching the collapse breakpoint. 
 
-Setting a `collapse` value of `true` will set the sidebar to be always collapsed.
+<i-code-preview title="Sidebar Collapse Position" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
 
-<i-code-preview title="Always Collapsed Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+<i-layout class="sidebar-layout-example">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Relative Position Sidebar</i-navbar-brand>
+            <i-hamburger-menu :active="collapsedPositionRelative" @click="collapsedPositionRelative = !collapsedPositionRelative"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar :collapse="true" collapse-position="relative" v-model="collapsedPositionRelative">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content class="_display-flex _justify-content-center _align-items-center">Layout content</i-layout-content>
+    </i-layout>
+</i-layout>
 
-<i-sidebar :collapse="true">
-</i-sidebar>
+
+<i-layout class="sidebar-layout-example _margin-top-1">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Absolute Position Sidebar</i-navbar-brand>
+            <i-hamburger-menu :active="collapsedPositionAbsolute" @click="collapsedPositionAbsolute = !collapsedPositionAbsolute"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar :collapse="true" collapse-position="absolute" v-model="collapsedPositionAbsolute">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content class="_display-flex _justify-content-center _align-items-center">Layout content</i-layout-content>
+    </i-layout>
+</i-layout>
+
+<i-layout class="sidebar-layout-example _margin-top-1">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Fixed Position Sidebar</i-navbar-brand>
+            <i-hamburger-menu :active="collapsedPositionFixed" @click="collapsedPositionFixed = !collapsedPositionFixed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar :collapse="true" collapse-position="absolute" v-model="collapsedPositionFixed">
+            <i-nav vertical>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content class="_display-flex _justify-content-center _align-items-center">Layout content</i-layout-content>
+    </i-layout>
+</i-layout>
 
 <template slot="html">
 
 ~~~html
-<i-sidebar :collapse="true">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+<i-layout">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Relative Position Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar collapse-position="relative" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 ~~~
-
-</template>
-</i-code-preview>
-
-Setting a `collapse` value of `false` will set the sidebar to never collapse.
-
-<i-code-preview title="Never Collapsed Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
-
-<i-sidebar :collapse="false">
-</i-sidebar>
-
-<template slot="html">
 
 ~~~html
-<i-sidebar :collapse="false">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+<i-layout">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Absolute Position Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar collapse-position="absolute" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
 ~~~
-
-</template>
-</i-code-preview>
-
-##### Manual Collapse
-
-Sometimes, it's necessary to control whether the Sidebar is collapsed or not programmatically. You can use the `v-model` directive to control whether the Sidebar should be collapsed or not.
-
-<i-code-preview title="Manual Sidebar Collapse Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
-
-<i-button v-on:click="collapsed = !collapsed">
-    Toggle Collapsed
-</i-button>
-</i-sidebar>
-
-<template slot="html">
 
 ~~~html
-<i-button @click="collapsed = !collapsed">Toggle Collapsed</i-button>
+<i-layout">
+    <i-layout-header class="_padding-0">
+        <i-navbar :collapse="false">
+            <i-navbar-brand>Fixed Position Sidebar</i-navbar-brand>
+            <i-hamburger-menu class="_visible-md-and-down" :active="collapsed" @click="collapsed = !collapsed"></i-hamburger-menu>
+        </i-navbar>
+    </i-layout-header>
+    <i-layout vertical>
+        <i-sidebar collapse-position="fixed" v-model="collapsed">
+            <i-nav vertical>
+                <i-nav-item to="/">Home</i-nav-item>
+                <i-nav-item to="/about">About</i-nav-item>
+                <i-nav-item to="/contact">Contact</i-nav-item>
+            </i-nav>
+        </i-sidebar>
+        <i-layout-content></i-layout-content>
+    </i-layout>
+</i-layout>
+~~~
 
-<i-sidebar :collapse="true">
-    <i-sidebar-brand :to="{ name: 'index' }">Sidebar</i-sidebar-brand>
-    <i-sidebar-items>
-        <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
-        </i-nav>
-    </i-sidebar-items>
-</i-sidebar>
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    name: 'DashboardLayout',
+    data() {
+        return {
+            collapsed: false
+        };
+    }
+}
 ~~~
 
 </template>
 </i-code-preview>
-
 
 ### API
 
@@ -646,8 +775,8 @@ Sometimes, it's necessary to control whether the Sidebar is collapsed or not pro
                 <tr>
                     <td>collapse</td>
                     <td>Specifies the breakpoint at which to collapse the sidebar.</td>
-                    <td><code>String</code></td>
-                    <td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code></td>
+                    <td><code>String</code>, <code>Boolean</code></td>
+                    <td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>true</code>, <code>false</code></td>
                     <td><code>md</code></td>
                 </tr>
                 <tr>
@@ -658,11 +787,25 @@ Sometimes, it's necessary to control whether the Sidebar is collapsed or not pro
                     <td><code>true</code></td>
                 </tr>
                 <tr>
-                    <td>fluid</td>
-                    <td>Sets the <code>IContainer</code> wrapping the sidebars's content as fluid.</td>
+                    <td>collapseOnClickOverlay</td>
+                    <td>Collapses the sidebar when clicking the sidebar overlay. The overlay appears only for <code>absolute</code> and <code>fixed</code> collapse positions.</td>
                     <td><code>Boolean</code></td>
                     <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
+                    <td><code>true</code></td>
+                </tr>
+                <tr>
+                    <td>collapsePosition</td>
+                    <td>Sets the position of the sidebar when collapsed.</td>
+                    <td><code>String</code></td>
+                    <td><code>relative</code>, <code>absolute</code>, <code>fixed</code></td>
+                    <td><code>fixed</code></td>
+                </tr>
+                <tr>
+                    <td>placement</td>
+                    <td>Sets the placement of the sidebar to the left or to the right.</td>
+                    <td><code>String</code></td>
+                    <td><code>relative</code>, <code>absolute</code>, <code>fixed</code></td>
+                    <td><code>fixed</code></td>
                 </tr>
                 <tr>
                     <td>size</td>
@@ -700,44 +843,6 @@ Sometimes, it's necessary to control whether the Sidebar is collapsed or not pro
                 <tr>
                     <td>default</td>
                     <td>Slot for sidebar component default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
-    </template>
-</i-api-preview>
-
-<i-api-preview title="Sidebar Brand API" markup="i-sidebar-brand" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/src/components/SidebarBrand">
-    <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for sidebar brand component default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
-    </template>
-</i-api-preview>
-
-<i-api-preview title="Sidebar Items API" markup="i-sidebar-items" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/src/components/SidebarItems">
-    <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for sidebar items component default content.</td>
                 </tr>
             </tbody>
         </i-table>

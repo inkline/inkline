@@ -48,6 +48,12 @@ export default {
             collapsedVariantsDark: false,
             collapsedPlacementLeft: false,
             collapsedPlacementRight: false,
+            collapsedPositionRelative: false,
+            collapsedPositionAbsolute: false,
+            collapsedPositionFixed: false,
+            collapsedBreakpointLg: false,
+            collapsedBreakpointAlways: false,
+            collapsedBreakpointNever: false,
         };
     }
 };
