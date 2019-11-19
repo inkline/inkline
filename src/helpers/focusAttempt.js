@@ -18,5 +18,5 @@ export function focusAttempt (element) {
     // eslint-disable-next-line
     } catch (e) {}
 
-    return !Vue.$isServer && document && document.activeElement === element;
+    return !Vue.prototype.$isServer && document && document.activeElement === element;
 }

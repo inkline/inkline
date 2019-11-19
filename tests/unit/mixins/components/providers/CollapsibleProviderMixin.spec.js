@@ -1,9 +1,8 @@
-import Vue from 'vue';
 import { mount } from '@vue/test-utils'
 
 import CollapsibleProviderMixin from '@inkline/inkline/src/mixins/components/providers/CollapsibleProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import Navbar from "@/components/Navbar/index";
+import {isServer} from "@inkline/inkline/tests/unit/utilities/isServer";
 
 describe('Mixins', () => {
     describe('CollapsibleProviderMixin', () => {
@@ -11,9 +10,9 @@ describe('Mixins', () => {
         const createWrapper = () => mount({
             render () {},
             mixins: [
-                ClassesProviderMixin,
-                CollapsibleProviderMixin,
+                CollapsibleProviderMixin
             ],
+            data: ClassesProviderMixin.data,
             methods: {
                 created: CollapsibleProviderMixin.created,
                 beforeDestroy: CollapsibleProviderMixin.beforeDestroy,
@@ -23,6 +22,10 @@ describe('Mixins', () => {
 
         beforeEach(() => {
             wrapper = createWrapper();
+        });
+
+        afterEach(() => {
+            jest.clearAllMocks();
         });
 
         describe('data', () => {
@@ -50,9 +53,11 @@ describe('Mixins', () => {
                 });
 
                 it('should equal 0 if window is not defined', () => {
-                    Vue.$isServer = true;
+                    isServer(true);
+
                     expect(createWrapper().vm.windowWidth).toEqual(0);
-                    Vue.$isServer = false;
+
+                    isServer(false);
                 });
             });
         });
@@ -114,7 +119,7 @@ describe('Mixins', () => {
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(Navbar.created).toBeDefined();
+                expect(CollapsibleProviderMixin.created).toBeDefined();
             });
 
             it('should add class rules to classes provider', () => {
@@ -163,19 +168,21 @@ describe('Mixins', () => {
             });
 
             it('should not add window resize event listener if $isServer', () => {
-                Vue.$isServer = true;
+                isServer(true, wrapper.vm);
 
                 const spy = jest.spyOn(window, 'addEventListener');
+                jest.clearAllMocks();
 
                 wrapper.vm.created();
 
                 expect(spy).not.toHaveBeenCalled();
 
-                Vue.$isServer = false;
+                isServer(false, wrapper.vm);
             });
 
             it('should add window resize event listener', () => {
                 const spy = jest.spyOn(window, 'addEventListener');
+                jest.clearAllMocks();
 
                 wrapper.vm.created();
 
@@ -185,6 +192,7 @@ describe('Mixins', () => {
 
             it('should call initial onWindowResize', () => {
                 const spy = jest.spyOn(wrapper.vm, 'onWindowResize');
+                jest.clearAllMocks();
 
                 wrapper.vm.created();
 
@@ -193,6 +201,7 @@ describe('Mixins', () => {
 
             it('should add collapse event listener', () => {
                 const spy = jest.spyOn(wrapper.vm, '$on');
+                jest.clearAllMocks();
 
                 wrapper.vm.created();
 
@@ -212,7 +221,7 @@ describe('Mixins', () => {
 
         describe('beforeDestroy()', () => {
             it('should not remove window resize event listener if $isServer', () => {
-                Vue.$isServer = true;
+                isServer(true, wrapper.vm);
 
                 const spy = jest.spyOn(window, 'removeEventListener');
 
@@ -220,7 +229,7 @@ describe('Mixins', () => {
 
                 expect(spy).not.toHaveBeenCalled();
 
-                Vue.$isServer = false;
+                isServer(false, wrapper.vm);
             });
 
             it('should remove window resize event listener', () => {

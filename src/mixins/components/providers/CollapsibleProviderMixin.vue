@@ -17,7 +17,7 @@ export default {
         return {
             collapsed: false,
             collapsible: false,
-            windowWidth: !Vue.$isServer && typeof window !== 'undefined' ? window.innerWidth : 0
+            windowWidth: !Vue.prototype.$isServer && typeof window !== 'undefined' ? window.innerWidth : 0
         };
     },
     provide() {
@@ -53,7 +53,7 @@ export default {
             }));
         }
 
-        if (!Vue.$isServer && typeof window !== 'undefined') {
+        if (!this.$isServer && typeof window !== 'undefined') {
             window.addEventListener('resize', this.onWindowResize);
             this.onWindowResize();
         }
@@ -62,7 +62,7 @@ export default {
         this.$on('toggle-collapse', this.toggleCollapse);
     },
     beforeDestroy() {
-        if (!Vue.$isServer && typeof window !== 'undefined') {
+        if (!this.$isServer && typeof window !== 'undefined') {
             window.removeEventListener('resize', this.onWindowResize)
         }
 

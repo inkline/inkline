@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import { off, _off, removeEventListenerBinding, detachEventBinding } from '@inkline/inkline/src/helpers/off';
+import {isServer} from "@inkline/inkline/tests/unit/utilities/isServer";
 
 describe('Helpers', () => {
     describe('off()', () => {
@@ -34,7 +35,7 @@ describe('Helpers', () => {
         });
 
         it('should be a function calling detachEventBinding on element', () => {
-            Vue.$isServer = true;
+            isServer(true);
 
             const spy = jest.spyOn(element, 'detachEvent');
             const fn = () => {};
@@ -44,11 +45,11 @@ describe('Helpers', () => {
             expect(spy).toHaveBeenCalled();
             expect(spy).toHaveBeenCalledWith('oneventName', fn);
 
-            Vue.$isServer = false;
+            isServer(false);
         });
 
         it('should not call removeEventListener on element if event not specified', () => {
-            Vue.$isServer = true;
+            isServer(true);
 
             const spy = jest.spyOn(element, 'detachEvent');
             const fn = () => {};
@@ -57,7 +58,7 @@ describe('Helpers', () => {
 
             expect(spy).not.toHaveBeenCalled();
 
-            Vue.$isServer = false;
+            isServer(false);
         });
 
         describe('removeEventListenerBinding()', () => {

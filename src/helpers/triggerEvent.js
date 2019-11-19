@@ -10,7 +10,7 @@ import Vue from 'vue';
  * @param {*} opts
  */
 export function triggerEvent (element, name, options) {
-    if (Vue.$isServer || !document) { return; }
+    if (Vue.prototype.$isServer || !document) { return; }
 
     let eventName;
 

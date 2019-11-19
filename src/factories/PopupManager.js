@@ -39,7 +39,7 @@ export class PopupManager {
     }
 
     openModal(id) {
-        if (Vue.prototype.$isServer && !window) { return; }
+        if (Vue.prototype.$isServer || !window) { return; }
 
         const modal = this.modalStack.find((m) => m.id === id);
 
@@ -53,7 +53,7 @@ export class PopupManager {
     }
 
     closeModal(id) {
-        if (Vue.prototype.$isServer && !window) { return; }
+        if (Vue.prototype.$isServer || !window) { return; }
 
         const modalIndex = this.modalStack.findIndex((m) => m.id === id);
 

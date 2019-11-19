@@ -1,5 +1,5 @@
-import Vue from 'vue';
 import { triggerEvent } from '@inkline/inkline/src/helpers/triggerEvent';
+import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
 
 describe('Helpers', () => {
     describe('triggerEvent()', () => {
@@ -10,9 +10,9 @@ describe('Helpers', () => {
         });
 
         it('should return if Vue.$isServer', () => {
-            Vue.$isServer = true;
+            isServer(true);
             expect(triggerEvent(element, 'eventName')).not.toBeDefined();
-            Vue.$isServer = false;
+            isServer(false);
         });
 
         describe('dispatchEvent', () => {
