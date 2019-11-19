@@ -122,8 +122,8 @@ export default {
             }
 
             for (let breakpointKey of breakpointKeys.slice().reverse()) {
-                if (this.limit.hasOwnProperty(breakpointKey) && (Vue.$isServer ||
-                    !Vue.$isServer && typeof window !== 'undefined' && window.innerWidth >= breakpoints[breakpointKey][0])) {
+                if (this.limit.hasOwnProperty(breakpointKey) && (this.$isServer ||
+                    !this.$isServer && typeof window !== 'undefined' && window.innerWidth >= breakpoints[breakpointKey][0])) {
                     return this.pageLimit = this.limit[breakpointKey];
                 }
             }
@@ -132,7 +132,7 @@ export default {
     created() {
         this.debouncedOnWindowResize = debounce(this.onWindowResize, 250);
 
-        if (!Vue.$isServer && typeof window !== 'undefined') {
+        if (!this.$isServer && typeof window !== 'undefined') {
             window.addEventListener('resize', this.debouncedOnWindowResize);
         }
     },
@@ -140,7 +140,7 @@ export default {
         this.onWindowResize();
     },
     destroyed() {
-        if (!Vue.$isServer && typeof window !== 'undefined') {
+        if (!this.$isServer && typeof window !== 'undefined') {
             window.removeEventListener('resize', this.debouncedOnWindowResize)
         }
     }

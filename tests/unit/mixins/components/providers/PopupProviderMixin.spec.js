@@ -1,6 +1,5 @@
-import Vue from 'vue';
 import { mount } from '@vue/test-utils'
-
+import { isServer } from '@inkline/inkline/tests/unit/utilities/isServer';
 import PopupProviderMixin from '@inkline/inkline/src/mixins/components/providers/PopupProviderMixin';
 
 describe('Mixins', () => {
@@ -193,11 +192,11 @@ describe('Mixins', () => {
         describe('methods', () => {
             describe('createPopper()', () => {
                 it('should return if Vue.$isServer', () => {
-                    Vue.$isServer = true;
+                    isServer(true);
 
                     expect(wrapper.vm.createPopper()).toEqual(undefined);
 
-                    Vue.$isServer = false;
+                    isServer(false);
                 });
 
                 it('should return if currentPlacement is invalid', () => {

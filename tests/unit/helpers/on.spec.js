@@ -1,5 +1,5 @@
-import Vue from 'vue';
 import { on, _on, addEventListenerBinding, attachEventBinding } from '@inkline/inkline/src/helpers/on';
+import {isServer} from "@inkline/inkline/tests/unit/utilities/isServer";
 
 describe('Helpers', () => {
     describe('on()', () => {
@@ -34,7 +34,7 @@ describe('Helpers', () => {
         });
 
         it('should be a function calling attachEvent binding', () => {
-            Vue.$isServer = true;
+            isServer(true);
 
             const spy = jest.spyOn(element, 'attachEvent');
             const fn = () => {};
@@ -44,11 +44,11 @@ describe('Helpers', () => {
             expect(spy).toHaveBeenCalled();
             expect(spy).toHaveBeenCalledWith('oneventName', fn);
 
-            Vue.$isServer = false;
+            isServer(false);
         });
 
         it('should not call attachEvent binding if event not specified', () => {
-            Vue.$isServer = true;
+            isServer(true);
 
             const spy = jest.spyOn(element, 'addEventListener');
             const fn = () => {};
@@ -57,7 +57,7 @@ describe('Helpers', () => {
 
             expect(spy).not.toHaveBeenCalled();
 
-            Vue.$isServer = false;
+            isServer(false);
         });
 
         describe('addEventListenerBinding()', () => {

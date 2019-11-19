@@ -80,7 +80,7 @@ export default {
     beforeDestroy() {
         this.doDestroy(true);
 
-        if (!Vue.$isServer && document && this.popupElement && this.popupElement.parentNode === document.body) {
+        if (!this.$isServer && document && this.popupElement && this.popupElement.parentNode === document.body) {
             this.popupElement.removeEventListener('click', this.stopOnClickPropagation);
 
             document.body.removeChild(this.popupElement);
@@ -97,7 +97,7 @@ export default {
             e.stopPropagation();
         },
         createPopper() {
-            if (Vue.$isServer) return;
+            if (this.$isServer) return;
 
             this.currentPlacement = this.currentPlacement || this.placement;
             if (!/^(top|bottom|left|right)(-start|-end)?$/g.test(this.currentPlacement)) {
@@ -115,7 +115,7 @@ export default {
 
             if (!this.popupElement || !this.referenceElement) return;
 
-            if (!Vue.$isServer && document && this.appendToBody) document.body.appendChild(this.popupElement);
+            if (!this.$isServer && document && this.appendToBody) document.body.appendChild(this.popupElement);
             if (this.popperJS && this.popperJS.destroy) {
                 this.popperJS.destroy();
             }

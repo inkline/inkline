@@ -2,6 +2,7 @@ import Vue from 'vue';
 
 import { shallowMount } from '@vue/test-utils';
 import Pagination from '@inkline/inkline/src/components/Pagination';
+import {isServer} from "@inkline/inkline/tests/unit/utilities/isServer";
 
 describe('Components', () => {
     describe('Pagination', () => {
@@ -310,14 +311,14 @@ describe('Components', () => {
                 });
 
                 it('should set pageLimit as last limit[breakpoint] if $isServer', () => {
-                    Vue.$isServer = true;
+                    isServer(true, wrapper.vm);
 
                     wrapper.setProps({ limit: { xs: 10, sm: 10 } });
                     wrapper.vm.onWindowResize();
 
                     expect(wrapper.vm.pageLimit).toEqual(10);
 
-                    Vue.$isServer = false;
+                    isServer(false, wrapper.vm);
                 });
 
 
@@ -357,7 +358,7 @@ describe('Components', () => {
             });
 
             it('should not add window resize event listener if Vue.$isServer', () => {
-                Vue.$isServer = true;
+                isServer(true, wrapper.vm);
 
                 const spy = jest.spyOn(window, 'addEventListener');
 
@@ -365,7 +366,7 @@ describe('Components', () => {
 
                 expect(spy).not.toHaveBeenCalledTimes(3);
 
-                Vue.$isServer = false;
+                isServer(false, wrapper.vm);
             });
         });
 
@@ -394,7 +395,7 @@ describe('Components', () => {
             });
 
             it('should not remove window resize event listener if Vue.$isServer', () => {
-                Vue.$isServer = true;
+                isServer(true, wrapper.vm);
 
                 const spy = jest.spyOn(window, 'removeEventListener');
 
@@ -402,7 +403,7 @@ describe('Components', () => {
 
                 expect(spy).not.toHaveBeenCalledTimes(3);
 
-                Vue.$isServer = false;
+                isServer(false, wrapper.vm);
             });
         });
     });
