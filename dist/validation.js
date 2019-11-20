@@ -910,6 +910,7 @@ var test = [1, 2];
 // https://bugs.webkit.org/show_bug.cgi?id=188794
 $({ target: 'Array', proto: true, forced: String(test) === String(test.reverse()) }, {
   reverse: function reverse() {
+    // eslint-disable-next-line no-self-assign
     if (isArray(this)) this.length = this.length;
     return nativeReverse.call(this);
   }
@@ -2012,7 +2013,7 @@ var store = __webpack_require__("c6cd");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.3.4',
+  version: '3.4.1',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
@@ -2137,8 +2138,11 @@ if (v8) {
   match = v8.split('.');
   version = match[0] + match[1];
 } else if (userAgent) {
-  match = userAgent.match(/Chrome\/(\d+)/);
-  if (match) version = match[1];
+  match = userAgent.match(/Edge\/(\d+)/);
+  if (!match || match[1] >= 74) {
+    match = userAgent.match(/Chrome\/(\d+)/);
+    if (match) version = match[1];
+  }
 }
 
 module.exports = version && +version;
@@ -3664,12 +3668,16 @@ var createProperty = __webpack_require__("8418");
 var arraySpeciesCreate = __webpack_require__("65f0");
 var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
 var wellKnownSymbol = __webpack_require__("b622");
+var V8_VERSION = __webpack_require__("60ae");
 
 var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
 var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
 var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
 
-var IS_CONCAT_SPREADABLE_SUPPORT = !fails(function () {
+// We can't use this feature detection in V8 since it causes
+// deoptimization and serious performance degradation
+// https://github.com/zloirock/core-js/issues/679
+var IS_CONCAT_SPREADABLE_SUPPORT = V8_VERSION >= 51 || !fails(function () {
   var array = [];
   array[IS_CONCAT_SPREADABLE] = false;
   return array.concat()[0] !== array;
@@ -4044,6 +4052,7 @@ $({ target: 'Array', proto: true, forced: !arrayMethodHasSpeciesSupport('splice'
 
 var $ = __webpack_require__("23e7");
 var global = __webpack_require__("da84");
+var getBuiltIn = __webpack_require__("d066");
 var IS_PURE = __webpack_require__("c430");
 var DESCRIPTORS = __webpack_require__("83ab");
 var NATIVE_SYMBOL = __webpack_require__("4930");
@@ -4085,8 +4094,7 @@ var setInternalState = InternalStateModule.set;
 var getInternalState = InternalStateModule.getterFor(SYMBOL);
 var ObjectPrototype = Object[PROTOTYPE];
 var $Symbol = global.Symbol;
-var JSON = global.JSON;
-var nativeJSONStringify = JSON && JSON.stringify;
+var $stringify = getBuiltIn('JSON', 'stringify');
 var nativeGetOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
 var nativeDefineProperty = definePropertyModule.f;
 var nativeGetOwnPropertyNames = getOwnPropertyNamesExternal.f;
@@ -4307,30 +4315,35 @@ $({ target: 'Object', stat: true, forced: fails(function () { getOwnPropertySymb
 
 // `JSON.stringify` method behavior with symbols
 // https://tc39.github.io/ecma262/#sec-json.stringify
-JSON && $({ target: 'JSON', stat: true, forced: !NATIVE_SYMBOL || fails(function () {
-  var symbol = $Symbol();
-  // MS Edge converts symbol values to JSON as {}
-  return nativeJSONStringify([symbol]) != '[null]'
-    // WebKit converts symbol values to JSON as null
-    || nativeJSONStringify({ a: symbol }) != '{}'
-    // V8 throws on boxed symbols
-    || nativeJSONStringify(Object(symbol)) != '{}';
-}) }, {
-  stringify: function stringify(it) {
-    var args = [it];
-    var index = 1;
-    var replacer, $replacer;
-    while (arguments.length > index) args.push(arguments[index++]);
-    $replacer = replacer = args[1];
-    if (!isObject(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
-    if (!isArray(replacer)) replacer = function (key, value) {
-      if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
-      if (!isSymbol(value)) return value;
-    };
-    args[1] = replacer;
-    return nativeJSONStringify.apply(JSON, args);
-  }
-});
+if ($stringify) {
+  var FORCED_JSON_STRINGIFY = !NATIVE_SYMBOL || fails(function () {
+    var symbol = $Symbol();
+    // MS Edge converts symbol values to JSON as {}
+    return $stringify([symbol]) != '[null]'
+      // WebKit converts symbol values to JSON as null
+      || $stringify({ a: symbol }) != '{}'
+      // V8 throws on boxed symbols
+      || $stringify(Object(symbol)) != '{}';
+  });
+
+  $({ target: 'JSON', stat: true, forced: FORCED_JSON_STRINGIFY }, {
+    // eslint-disable-next-line no-unused-vars
+    stringify: function stringify(it, replacer, space) {
+      var args = [it];
+      var index = 1;
+      var $replacer;
+      while (arguments.length > index) args.push(arguments[index++]);
+      $replacer = replacer;
+      if (!isObject(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
+      if (!isArray(replacer)) replacer = function (key, value) {
+        if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
+        if (!isSymbol(value)) return value;
+      };
+      args[1] = replacer;
+      return $stringify.apply(null, args);
+    }
+  });
+}
 
 // `Symbol.prototype[@@toPrimitive]` method
 // https://tc39.github.io/ecma262/#sec-symbol.prototype-@@toprimitive
