@@ -1,8 +1,6 @@
-import Vue from 'vue';
-
 import { shallowMount } from '@vue/test-utils';
 import Pagination from '@inkline/inkline/src/components/Pagination';
-import {isServer} from "@inkline/inkline/tests/unit/utilities/isServer";
+import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
 
 describe('Components', () => {
     describe('Pagination', () => {

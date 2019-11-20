@@ -1,6 +1,6 @@
-import Vue from 'Vue';
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
 import { clickOutsideHandler, createDocumentHandler, bindClickOutsideHandler } from '@inkline/inkline/src/directives/click-outside';
+import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
 
 describe('Directives', () => {
     describe('v-click-outside', () => {
@@ -50,7 +50,7 @@ describe('Directives', () => {
             });
 
             it('should not bind mousedown and mouseup events if Vue.$isServer', () => {
-                Vue.$isServer = true;
+                isServer(true);
 
                 const spy = jest.spyOn(window.document, 'addEventListener');
 
@@ -58,7 +58,7 @@ describe('Directives', () => {
 
                 expect(spy).not.toHaveBeenCalledTimes(5);
 
-                Vue.$isServer = false;
+                isServer(false);
             });
         });
 

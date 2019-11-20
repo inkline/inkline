@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 
 import CollapsibleProviderMixin from '@inkline/inkline/src/mixins/components/providers/CollapsibleProviderMixin';
 import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import {isServer} from "@inkline/inkline/tests/unit/utilities/isServer";
+import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
 
 describe('Mixins', () => {
     describe('CollapsibleProviderMixin', () => {
