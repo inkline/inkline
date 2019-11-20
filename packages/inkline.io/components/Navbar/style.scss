@@ -119,6 +119,8 @@
         }
 
         .hamburger {
+            display: none;
+
             > .bars::before,
             > .bars,
             > .bars::after {
@@ -128,7 +130,7 @@
     }
 
     &.-docs {
-        .sidebar-toggle {
+        .hamburger.sidebar-toggle {
             display: block;
 
             @include breakpoint-up('md') {
