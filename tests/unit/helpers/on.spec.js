@@ -1,5 +1,5 @@
 import { on, _on, addEventListenerBinding, attachEventBinding } from '@inkline/inkline/src/helpers/on';
-import {isServer} from "@inkline/inkline/tests/unit/utilities/isServer";
+import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
 
 describe('Helpers', () => {
     describe('on()', () => {

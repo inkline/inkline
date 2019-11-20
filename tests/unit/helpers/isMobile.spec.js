@@ -1,5 +1,5 @@
-import Vue from 'vue';
 import { isMobile } from '@inkline/inkline/src/helpers/isMobile';
+import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
 
 describe('Helpers', () => {
     describe('isMobile()', () => {
@@ -8,11 +8,11 @@ describe('Helpers', () => {
         });
 
         it('should return false if SSR', () => {
-            Vue.$isServer = true;
+            isServer(true);
 
             expect(isMobile()).toEqual(false);
 
-            Vue.$isServer = false;
+            isServer(false);
         });
 
         it('should return false if window not defined', () => {
