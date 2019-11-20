@@ -1,5 +1,4 @@
 <script>
-import Vue from 'vue';
 import PopperJS from 'popper.js';
 import popupManager from '@inkline/inkline/src/factories/PopupManager';
 
