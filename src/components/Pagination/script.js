@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
 
 import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
