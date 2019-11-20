@@ -1,6 +1,6 @@
 {
   "name": "inkline.io",
-  "version": "1.17.3",
+  "version": "1.18.0",
   "description": "Inkline's documentation and homepage is built with Nuxt and publicly hosted on Netlify. Inkline is a modern Vue.js UI/UX framework, written and maintained by @alexgrozav.",
   "author": "Alex Grozav",
   "private": true,
@@ -20,9 +20,9 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@fortawesome/vue-fontawesome": "^0.1.7",
-    "@inkline/inkline": "^1.17.3",
-    "fuse.js": "^3.4.5",
+    "@fortawesome/vue-fontawesome": "^0.1.8",
+    "@inkline/inkline": "^1.18.0",
+    "fuse.js": "^3.4.6",
     "lodash-es": "^4.17.15",
     "node-sass": "^4.13.0",
     "prismjs": "^1.17.1",
@@ -30,11 +30,11 @@
     "vue-github-button": "^1.1.2"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/eslint-config": "^0.0.1",
     "@nuxtjs/eslint-module": "^1.1.0",
-    "@nuxtjs/google-tag-manager": "^2.3.0",
+    "@nuxtjs/google-tag-manager": "^2.3.1",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/robots": "^2.4.2",
     "@nuxtjs/sitemap": "^0.2.2",
@@ -72,7 +72,7 @@
     "stylelint-config-recommended-scss": "^3.3.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-processor-html": "^1.0.0",
-    "stylelint-scss": "^3.12.0",
+    "stylelint-scss": "^3.12.1",
     "stylelint-webpack-plugin": "^0.10.5",
     "vue-jest": "^3.0.5"
   }
