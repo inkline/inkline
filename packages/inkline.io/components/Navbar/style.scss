@@ -119,14 +119,16 @@
         }
 
         .hamburger {
-            display: none;
-
             > .bars::before,
             > .bars,
             > .bars::after {
                 background-color: colors('light');
             }
         }
+    }
+
+    .hamburger.sidebar-toggle {
+        display: none;
     }
 
     &.-docs {
