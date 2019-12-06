@@ -66,12 +66,12 @@ Vue.use(Inkline, {
 });
 ~~~
 
-Alternatively, you can allow Webpack to handle the tree shaking for you:
+You can also import default from the source files:
 
 ~~~js
 import Vue from 'vue';
 import '@inkline/inkline/src/index.scss';
-import Inkline from '@inkline/inkline/src/index';
+import Inkline from '@inkline/inkline/src/main';
 
 Vue.use(Inkline);
 ~~~
