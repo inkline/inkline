@@ -31,22 +31,22 @@
     "vue.config.js"
   ],
   "dependencies": {
-    "core-js": "^3.4.1",
+    "core-js": "^3.6.0",
     "popper.js": "^1.16.0"
   },
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
-    "@babel/core": "^7.7.2",
-    "@babel/types": "^7.7.2",
-    "@vue/cli-plugin-babel": "^4.0.5",
-    "@vue/cli-plugin-eslint": "^4.0.5",
-    "@vue/cli-plugin-unit-jest": "^4.0.5",
-    "@vue/cli-service": "^4.0.5",
-    "@vue/test-utils": "^1.0.0-beta.29",
+    "@babel/core": "^7.7.7",
+    "@babel/types": "^7.7.4",
+    "@vue/cli-plugin-babel": "^4.1.1",
+    "@vue/cli-plugin-eslint": "^4.1.1",
+    "@vue/cli-plugin-unit-jest": "^4.1.1",
+    "@vue/cli-service": "^4.1.1",
+    "@vue/test-utils": "^1.0.0-beta.30",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^23.6.0",
-    "coveralls": "^3.0.7",
+    "coveralls": "^3.0.9",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
     "node-sass": "^4.13.0",
@@ -56,13 +56,17 @@
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-recommended-scss": "^3.3.0",
     "stylelint-config-standard": "^18.3.0",
-    "stylelint-scss": "^3.12.1",
-    "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10",
+    "stylelint-scss": "^3.13.0",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11",
     "webpack-bundle-analyzer": "^3.6.0"
   },
   "peerDependencies": {
     "vue": ">=2.0"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/inkline"
   },
   "browserslist": [
     "> 1%",
