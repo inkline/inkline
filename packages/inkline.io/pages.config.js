@@ -160,6 +160,11 @@ const pages = [
         description: 'Inkline\'s Data Table columns are easily sortable, in both ascending and descending order.'
     },
     {
+        id: 'docs-components-datatable-pagination',
+        title: 'Pagination - Data Table',
+        description: 'Inkline\'s Data Table can be easily paginated with smart lazy loading capabilities.'
+    },
+    {
         id: 'docs-components-datatable-rendering',
         title: 'Rendering - Data Table',
         description: 'Inkline\'s Data Table columns, rows and headers can be rendered using custom render helpers.'
