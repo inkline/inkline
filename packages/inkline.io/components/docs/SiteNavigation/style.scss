@@ -70,6 +70,12 @@
                     border-left-color: $color-primary;
                     color: $color-primary;
                 }
+
+                .body > .content {
+                    ul li a {
+                        border-left-color: $color-primary;
+                    }
+                }
             }
         }
 
@@ -78,6 +84,7 @@
                 background: transparent;
                 display: flex;
                 justify-content: flex-start;
+                outline: none;
 
                 .icon {
                     font-size: 75%;
@@ -88,10 +95,6 @@
 
             .body > .content {
                 padding: 0;
-
-                ul li a {
-                    border-left-color: $color-primary;
-                }
             }
         }
     }
