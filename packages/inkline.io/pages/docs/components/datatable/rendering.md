@@ -353,7 +353,7 @@ export default {
 ~~~
 
 ~~~js
-import MyCustomComponent from '@ccomponents/MyCustomComponent';
+import MyCustomComponent from '@components/MyCustomComponent';
 
 export default {
     data() {
@@ -447,7 +447,7 @@ By providing a scoped `header` slot, you can render the datatable header as you 
 ~~~html
 <i-datatable :columns="columns" :rows="rows">
     <template v-slot:header="{ sortBy }">
-        <td align="right">No.</td>
+        <td class="_text-right">No.</td>
         <td>Name</td>
         <td>Country</td>
     </template>
@@ -460,10 +460,10 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
 
 <i-code-preview title="Data Table Scoped Slot" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="dataPathColumns" :rows="rows">
-    <template v-slot:row="{ row, index }">
-        <td align="right">{{index + 1}}</td>
-        <td>{{row.name}}</td>
-        <td>{{row.address.city}}, {{row.address.country}}</td>
+    <template v-slot:header="{ sortBy }">
+        <th class="_text-right">No.</th>
+        <th>Name</th>
+        <th>Country</th>
     </template>
 </i-datatable>
 <template v-slot:html>
@@ -472,7 +472,7 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
 ~~~html
 <i-datatable :columns="columns" :rows="rows">
     <template v-slot:row="{ row, index }">
-        <td align="right">{{index + 1}}</td>
+        <td class="_text-right">{{index + 1}}</td>
         <td>{{row.name}}</td>
         <td>{{row.address.city}}, {{row.address.country}}</td>
     </template>
