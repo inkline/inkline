@@ -150,6 +150,21 @@ const pages = [
         description: 'Use Inkline\'s Collapsible components to show and hide content using a smooth reveal transition.'
     },
     {
+        id: 'docs-components-datatable-definition',
+        title: 'Definition - Data Table',
+        description: 'Create UX-friendly tables with advanced interaction controls using the Data Table component.'
+    },
+    {
+        id: 'docs-components-datatable-sorting',
+        title: 'Sorting - Data Table',
+        description: 'Inkline\'s Data Table columns are easily sortable, in both ascending and descending order.'
+    },
+    {
+        id: 'docs-components-datatable-rendering',
+        title: 'Rendering - Data Table',
+        description: 'Inkline\'s Data Table columns, rows and headers can be rendered using custom render helpers.'
+    },
+    {
         id: 'docs-components-dropdown',
         title: 'Dropdown',
         description: 'Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.'
@@ -218,21 +233,6 @@ const pages = [
         id: 'docs-components-tooltip',
         title: 'Tooltip',
         description: 'Tooltips are useful for conveying information when an user hovers over an element.'
-    },
-    {
-        id: 'docs-components-datatable-definition',
-        title: 'Definition - Data Table',
-        description: 'Provide contextual feedback messages for typical user actions using Inkline\'s Alert component.'
-    },
-    {
-        id: 'docs-components-datatable-sorting',
-        title: 'Sorting - Data Table',
-        description: 'Provide contextual feedback messages for typical user actions using Inkline\'s Alert component.'
-    },
-    {
-        id: 'docs-components-datatable-rendering',
-        title: 'Rendering - Data Table',
-        description: 'Provide contextual feedback messages for typical user actions using Inkline\'s Alert component.'
     },
     {
         id: 'docs-utilities-border',
