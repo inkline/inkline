@@ -44,7 +44,6 @@
         </li>
         <li>
             <span>Components</span>
-            {{subroutes}}
             <ul>
                 <li><nuxt-link :to="{ name: 'docs-components-alert' }">Alert</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-components-badge' }">Badge</nuxt-link></li>
@@ -55,7 +54,8 @@
                 <li><nuxt-link :to="{ name: 'docs-components-collapsible' }">Collapsible</nuxt-link></li>
 
                 <li>
-                    <i-collapsible :class="{ '-active': isSubroute('docs-components-datatable') }" :active="isSubroute('docs-components-datatable')">
+                    <i-collapsible :class="{ '-active': subroutes['docs-components-datatable'] }"
+                                   :active="isNavCollapsed('docs-components-datatable')">
                         <i-collapsible-item title="DataTable" id="docs-components-datatable">
                             <ul>
                                 <li><nuxt-link :to="{ name: 'docs-components-datatable-definition' }">Definition</nuxt-link></li>
