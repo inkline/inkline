@@ -20,18 +20,13 @@ export default {
                 { title: 'Email', path: 'email', sortable: true },
                 { title: 'Age', path: 'age', align: 'right', sortable: true }
             ],
-            customSortColumns: [
-                { title: 'Name', path: 'name', sortable: true },
-                { title: 'Email', path: 'email' },
-                { title: 'Age', path: 'age', align: 'right' }
-            ],
-            rows: [
-                { id: '1', name: 'Richard Hendricks', email: 'richard.hendricks@email.com', age: 26 },
-                { id: '2', name: 'Bertram Gilfoyle', email: 'bertram.gilfoyle@email.com', age: 30 },
-                { id: '3', name: 'Dinesh Chugtai', email: 'dinesh.chugtai@email.com', age: 30 },
-                { id: '4', name: 'Jared Dunn', email: 'jared.dunn@email.com', age: 35 },
-                { id: '5', name: 'Erlich Bachman', email: 'erlich.bachman@email.com', age: 32 }
-            ]
+            rows: [...Array(200).keys()].map((item, index) => [
+                { id: index, name: 'Richard Hendricks', email: 'richard.hendricks@email.com', age: 26 },
+                { id: index, name: 'Bertram Gilfoyle', email: 'bertram.gilfoyle@email.com', age: 30 },
+                { id: index, name: 'Dinesh Chugtai', email: 'dinesh.chugtai@email.com', age: 30 },
+                { id: index, name: 'Jared Dunn', email: 'jared.dunn@email.com', age: 35 },
+                { id: index, name: 'Erlich Bachman', email: 'erlich.bachman@email.com', age: 32 },
+            ][index % 5])
         };
     }
 };
