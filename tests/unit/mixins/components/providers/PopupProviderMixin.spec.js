@@ -210,11 +210,11 @@ describe('Mixins', () => {
         describe('methods', () => {
             describe('createPopper()', () => {
                 it('should return if Vue.$isServer', () => {
-                    isServer(true);
+                    isServer(true, wrapper.vm);
 
                     expect(wrapper.vm.createPopper()).toEqual(undefined);
 
-                    isServer(false);
+                    isServer(false, wrapper.vm);
                 });
 
                 it('should return if currentPlacement is invalid', () => {
@@ -244,6 +244,15 @@ describe('Mixins', () => {
                     wrapper.vm.popperJS = { onUpdate: () => {} };
                     wrapper.setProps({ popperOptions: { onUpdate: () => {} }});
                     const spy = jest.spyOn(wrapper.vm.popperJS, 'onUpdate');
+
+                    wrapper.vm.createPopper();
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should call popperOptions.destroy if defined', () => {
+                    wrapper.vm.popperJS = { destroy: () => {} };
+                    const spy = jest.spyOn(wrapper.vm.popperJS, 'destroy');
 
                     wrapper.vm.createPopper();
 

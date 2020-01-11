@@ -8,8 +8,21 @@ describe('Helpers', () => {
             element = document.createElement('div');
         });
 
-        it('should return if element or property not provided', () => {
+        it('should return if element not provided', () => {
             expect(getStyleProperty(undefined, undefined)).toEqual(undefined);
+        });
+
+        it('should return if property not provided', () => {
+            expect(getStyleProperty(element, undefined)).toEqual(undefined);
+        });
+
+        it('should return if window not defined', () => {
+            const tmp = global.window;
+            global.window = undefined;
+
+            expect(getStyleProperty(element, 'property')).toEqual(undefined);
+
+            global.window = tmp;
         });
 
         it('should return currentStyle if element currentStyle exists', () => {

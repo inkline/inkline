@@ -21,11 +21,11 @@ export default {
             default: 0
         },
         min: {
-            type: Number,
+            type: [Number, String],
             default: -Infinity
         },
         max: {
-            type: Number,
+            type: [Number, String],
             default: Infinity
         },
         precision: {
@@ -74,8 +74,8 @@ export default {
                         .replace(new RegExp(`^(-?[0-9]+\\.[0-9]{0,${this.precision}}).*`), '$1');
                 }
 
-                if (parseFloat(newValue) >= this.max) newValue = this.max.toString();
-                if (parseFloat(newValue) <= this.min) newValue = this.min.toString();
+                if (parseFloat(newValue) >= parseFloat(this.max)) newValue = this.max.toString();
+                if (parseFloat(newValue) <= parseFloat(this.min)) newValue = this.min.toString();
 
                 this.$emit('input', newValue);
             }
