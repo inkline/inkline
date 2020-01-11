@@ -3,10 +3,12 @@
 exports[`Components Popover should render correctly 1`] = `
 <div class="popover-wrapper" id="popover">
   <div aria-haspopup="popover" aria-controls="popover"></div>
-  <div class="popover" style="display: none;" name="zoom-in-top-transition" id="popover"><span class="arrow"></span>
-    <!---->
-    <!---->
-    <!---->
-  </div>
+  <transition-stub name="zoom-in-top-transition">
+    <div class="popover" style="display: none;" id="popover"><span class="arrow"></span>
+      <!---->
+      <!---->
+      <!---->
+    </div>
+  </transition-stub>
 </div>
 `;

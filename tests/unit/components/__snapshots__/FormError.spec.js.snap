@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components FormError should render correctly 1`] = `undefined`;
+exports[`Components FormError should render correctly 1`] = `
+<transition-stub name="fade-in-transition">
+  <!---->
+</transition-stub>
+`;

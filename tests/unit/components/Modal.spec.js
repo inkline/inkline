@@ -189,7 +189,7 @@ describe('Components', () => {
 
         describe('watch', () => {
             describe('value()', () => {
-                it('should not call show() or hide() if disabled', () => {
+                it('should not call show() or hide() if disabled', (done) => {
                     const spy1 = jest.spyOn(wrapper.vm, 'show');
                     const spy2 = jest.spyOn(wrapper.vm, 'hide');
 
@@ -197,25 +197,37 @@ describe('Components', () => {
                     wrapper.setProps({ value: true });
                     wrapper.setProps({ value: false });
 
-                    expect(spy1).not.toHaveBeenCalled();
-                    expect(spy2).not.toHaveBeenCalled();
+                    wrapper.vm.$nextTick(() => {
+                        expect(spy1).not.toHaveBeenCalled();
+                        expect(spy2).not.toHaveBeenCalled();
+                        done();
+                    });
                 });
 
-                it('should call show() if value changes to true', () => {
+                it('should call show() if value changes to true', (done) => {
                     const spy = jest.spyOn(wrapper.vm, 'show');
 
                     wrapper.setProps({ value: true });
 
-                    expect(spy).toHaveBeenCalled();
+                    wrapper.vm.$nextTick(() => {
+                        expect(spy).toHaveBeenCalled();
+                        done();
+                    });
                 });
 
-                it('should call hide() if value changes to false', () => {
+                it('should call hide() if value changes to false', (done) => {
                     const spy = jest.spyOn(wrapper.vm, 'hide');
 
                     wrapper.setProps({ value: true });
-                    wrapper.setProps({ value: false });
 
-                    expect(spy).toHaveBeenCalled();
+                    wrapper.vm.$nextTick(() => {
+                        wrapper.setProps({ value: false });
+
+                        wrapper.vm.$nextTick(() => {
+                            expect(spy).toHaveBeenCalled();
+                            done();
+                        });
+                    });
                 });
             });
         });

@@ -76,43 +76,61 @@ describe('Mixins', () => {
 
         describe('watch', () => {
             describe('value()', () => {
-                it('should set collapsed to true if value is set to true', () => {
+                it('should set collapsed to true if value is set to true', (done) => {
                     expect(wrapper.vm.collapsed).toEqual(false);
                     expect(wrapper.vm.value).toEqual(false);
+
                     wrapper.setProps({ value: true });
-                    expect(wrapper.vm.collapsed).toEqual(true);
+
+                    wrapper.vm.$nextTick(() => {
+                        expect(wrapper.vm.collapsed).toEqual(true);
+                        done();
+                    });
                 });
 
-                it('should set collapsed to false if value is set to false', () => {
+                it('should set collapsed to false if value is set to false', (done) => {
                     wrapper.setData({ collapsed: true });
                     wrapper.setProps({ value: true });
 
-                    expect(wrapper.vm.collapsed).toEqual(true);
-                    expect(wrapper.vm.value).toEqual(true);
-                    wrapper.setProps({ value: false });
-                    expect(wrapper.vm.collapsed).toEqual(false);
+                    wrapper.vm.$nextTick(() => {
+                        expect(wrapper.vm.collapsed).toEqual(true);
+                        expect(wrapper.vm.value).toEqual(true);
+
+                        wrapper.setProps({ value: false });
+
+                        wrapper.vm.$nextTick(() => {
+                            expect(wrapper.vm.collapsed).toEqual(false);
+                            done();
+                        });
+                    });
                 });
             });
 
             describe('collapsed()', () => {
-                it('should emit input event with false if collapsed is set to false', () => {
+                it('should emit input event with true if collapsed is set to true', (done) => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
                     wrapper.setData({ collapsed: true });
-                    wrapper.setData({ collapsed: false });
 
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('input', false);
+                    wrapper.vm.$nextTick(() => {
+                        expect(spy).toHaveBeenCalledWith('input', true);
+                        done();
+                    });
                 });
 
-                it('should emit input event with true if collapsed is set to true', () => {
+                it('should emit input event with false if collapsed is set to false', (done) => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
-                    wrapper.setData({ collapsed: false });
                     wrapper.setData({ collapsed: true });
 
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('input', true);
+                    wrapper.vm.$nextTick(() => {
+                        wrapper.setData({ collapsed: false });
+
+                        wrapper.vm.$nextTick(() => {
+                            expect(spy).toHaveBeenCalledWith('input', false);
+                            done();
+                        });
+                    });
                 });
             });
         });

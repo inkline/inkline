@@ -103,12 +103,15 @@ describe('Components', () => {
 
         describe('watch', () => {
             describe('show', () => {
-                it('should call onShowChange() when it changes', () => {
+                it('should call onShowChange() when it changes', (done) => {
                     const spy = jest.spyOn(wrapper.vm, 'onShowChange');
 
                     wrapper.setProps({ show: 'newvalue' });
 
-                    expect(spy).toHaveBeenCalled();
+                    wrapper.vm.$nextTick(() => {
+                        expect(spy).toHaveBeenCalled();
+                        done();
+                    });
                 });
             });
         });

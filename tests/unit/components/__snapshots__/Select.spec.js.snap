@@ -10,7 +10,7 @@ exports[`Components Select should render correctly 1`] = `
     <!---->
   </div>
   <!---->
-  <div class="menu" style="display: none;" name="zoom-in-top-transition" id="select"><span class="arrow"></span> </div>
+  <div class="menu" style="display: none;" id="select"><span class="arrow"></span> </div>
 </div>
 `;
 

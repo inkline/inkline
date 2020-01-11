@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 import Dropdown from '@inkline/inkline/src/components/Dropdown';
 import DropdownMenu from '@inkline/inkline/src/components/DropdownMenu';
 import DropdownItem from '@inkline/inkline/src/components/DropdownItem';
-import {isVisible} from "@/helpers";
+import {isVisible} from "@inkline/inkline/src/helpers";
 
 describe('Components', () => {
     describe('Dropdown', () => {
@@ -153,26 +153,32 @@ describe('Components', () => {
 
         describe('watch', () => {
             describe('visible', () => {
-                it('should broadcast "visibility-change" to IDropdownMenu', () => {
+                it('should broadcast "visibility-change" to IDropdownMenu', (done) => {
                     const spy = jest.spyOn(wrapper.vm, 'broadcast');
 
                     wrapper.setData({
                         visible: true
                     });
 
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('IDropdownMenu', 'visibility-change', true);
+                    wrapper.vm.$nextTick(() => {
+                        expect(spy).toHaveBeenCalled();
+                        expect(spy).toHaveBeenCalledWith('IDropdownMenu', 'visibility-change', true);
+                        done();
+                    });
                 });
 
-                it('should emit "change" event', () => {
+                it('should emit "change" event', (done) => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
                     wrapper.setData({
                         visible: true
                     });
 
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('change', true);
+                    wrapper.vm.$nextTick(() => {
+                        expect(spy).toHaveBeenCalled();
+                        expect(spy).toHaveBeenCalledWith('change', true);
+                        done();
+                    });
                 });
             });
         });
