@@ -1,12 +1,16 @@
 import ITable from '@inkline/inkline/src/components/Table';
 import IIcon from '@inkline/inkline/src/components/Icon';
+import ISelect from '@inkline/inkline/src/components/Select';
+import ISelectOption from '@inkline/inkline/src/components/SelectOption';
 import { sortByPath, getValueByPath } from "@inkline/inkline/src/helpers";
 
 export default {
     name: 'IDatatable',
     extends: ITable,
     components: {
-        IIcon
+        IIcon,
+        ISelect,
+        ISelectOption
     },
     props: {
         columns: {
