@@ -107,3 +107,17 @@
 
     @extend .datatable.-light;
 }
+
+.datatable-wrapper {
+    .pagination-selector {
+        display: flex;
+        align-items: center;
+        margin-bottom: $spacer;
+
+        .select {
+            margin-bottom: $spacer;
+            max-width: 100px;
+            margin-bottom: 0;
+        }
+    }
+}

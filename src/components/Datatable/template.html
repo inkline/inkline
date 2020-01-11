@@ -1,4 +1,11 @@
-<div class="table-wrapper" :class="classes['wrapper']">
+<div class="datatable-wrapper table-wrapper" :class="classes['wrapper']">
+    <div class="pagination-selector">
+        Show
+        <i-select size="sm">
+            <i-select-option>1</i-select-option>
+        </i-select>
+        entries
+    </div>
     <table class="datatable" :class="classes['root']">
         <thead>
         <tr class="dtr">
