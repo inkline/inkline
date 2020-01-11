@@ -62,7 +62,7 @@ describe('Components', () => {
                     });
                 });
 
-                it('should not affect anything if schema is not invalid', () => {
+                it('should not affect anything if schema is not invalid', (done) => {
                     expect(wrapper.vm.errors).toEqual([]);
 
                     wrapper.setProps({
@@ -74,14 +74,19 @@ describe('Components', () => {
                         }
                     });
 
-                    wrapper.setProps({
-                        schema: {
-                            errors: {},
-                            invalid: false
-                        }
-                    });
+                    wrapper.vm.$nextTick(() => {
+                        wrapper.setProps({
+                            schema: {
+                                errors: {},
+                                invalid: false
+                            }
+                        });
 
-                    expect(wrapper.vm.errors).toEqual([]);
+                        wrapper.vm.$nextTick(() => {
+                            expect(wrapper.vm.errors).toEqual([]);
+                            done();
+                        });
+                    });
                 });
             });
         });

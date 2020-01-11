@@ -1,6 +1,6 @@
 {
   "name": "@inkline/inkline",
-  "version": "1.18.1",
+  "version": "1.18.2",
   "description": "Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
@@ -15,7 +15,7 @@
     "lint:style": "vue-cli-service lint:style",
     "prepublishOnly": "npm run build",
     "test": "vue-cli-service test:unit --coverage --no-cache",
-    "test:dev": "vue-cli-service test:unit --watch --coverage --no-cache"
+    "test:dev": "vue-cli-service test:unit --watch"
   },
   "main": "dist/inkline.js",
   "unpkg": "dist/inkline.js",
@@ -49,6 +49,7 @@
     "coveralls": "^3.0.9",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
+    "handlebars": "^4.5.0",
     "node-sass": "^4.13.0",
     "postcss-preset-env": "^5.3.0",
     "sass-loader": "^8.0.1",

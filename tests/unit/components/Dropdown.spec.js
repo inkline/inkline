@@ -224,16 +224,18 @@ describe('Components', () => {
             });
 
             describe('onTriggerKeyDown()', () => {
-                it('should return if no focusable items', () => {
-                    const spy = jest.spyOn(e, 'preventDefault');
+                it('should return if there are no focusable items', (done) => {
+                    const spy = jest.spyOn(e, 'stopPropagation');
                     e.key = 'None';
 
-                    wrapper.setData({
-                        items: []
-                    });
-                    wrapper.vm.onTriggerKeyDown(e);
+                    Object.defineProperty(wrapper.vm, 'focusableItems', { value: [] });
 
-                    expect(spy).not.toHaveBeenCalled();
+                    wrapper.vm.$nextTick(() => {
+                        wrapper.vm.onTriggerKeyDown(e);
+
+                        expect(spy).not.toHaveBeenCalled();
+                        done();
+                    });
                 });
 
                 it('should set activeIndex to 0 if no active item found', () => {
@@ -370,6 +372,20 @@ describe('Components', () => {
             });
 
             describe('onItemKeyDown()', () => {
+                it('should return if there are no focusable items', (done) => {
+                    const spy = jest.spyOn(e, 'stopPropagation');
+                    e.key = 'None';
+
+                    Object.defineProperty(wrapper.vm, 'focusableItems', { value: [] });
+
+                    wrapper.vm.$nextTick(() => {
+                        wrapper.vm.onItemKeyDown(e);
+
+                        expect(spy).not.toHaveBeenCalled();
+                        done();
+                    });
+                });
+
                 describe('ArrowUp', () => {
                     it('should call event preventDefault() and stopPropagation()', () => {
                         const spy1 = jest.spyOn(e, 'preventDefault');
