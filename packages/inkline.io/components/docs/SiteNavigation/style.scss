@@ -38,12 +38,29 @@
                 padding-left: $spacer;
                 color: $body-color;
                 border-left: 1px solid $color-gray-20;
-                transition: color 0.3s ease, font-weight 0.3s ease, border 0.3s ease;
+                transition: color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
+
+                &::before {
+                    opacity: 0;
+                    transition: opacity $transition-duration $transition-easing;
+                    content: '';
+                    display: block;
+                    height: 100%;
+                    width: 3px;
+                    background: $link-color;
+                    position: absolute;
+                    left: -1px;
+                    top: 0;
+                }
 
                 &.-active,
                 &.nuxt-link-active {
                     color: $link-color;
-                    border-left: 1px solid $link-color;
+                    font-weight: $font-weight-semibold;
+
+                    &::before {
+                        opacity: 1;
+                    }
                 }
             }
 
