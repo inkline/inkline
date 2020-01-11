@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 import Tooltip from '@inkline/inkline/src/components/Tooltip';
 
 describe('Components', () => {
-    describe('Popover', () => {
+    describe('Tooltip', () => {
         let wrapper;
 
         beforeEach(() => {
@@ -145,10 +145,14 @@ describe('Components', () => {
 
         describe('watch', () => {
             describe('placement', () => {
-                it('should set current placement to updated placement value', () => {
+                it('should set current placement to updated placement value', (done) => {
                     expect(wrapper.vm.currentPlacement).toEqual('top');
                     wrapper.setProps({ placement: 'new' });
-                    expect(wrapper.vm.currentPlacement).toEqual('new');
+
+                    wrapper.vm.$nextTick(() => {
+                        expect(wrapper.vm.currentPlacement).toEqual('new');
+                        done();
+                    });
                 });
             });
         });

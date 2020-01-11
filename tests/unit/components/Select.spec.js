@@ -344,15 +344,18 @@ describe('Components', () => {
 
         describe('watch', () => {
             describe('model()', () => {
-                it('should call setLabelModel with changed value', () => {
+                it('should call setLabelModel with changed value', (done) => {
                     const spy = jest.spyOn(wrapper.vm, 'setLabelModel');
 
                     expect(wrapper.vm.labelModel).toEqual('');
                     wrapper.setProps({ value: 'label' });
-                    expect(wrapper.vm.labelModel).toEqual('label');
 
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('label');
+                    wrapper.vm.$nextTick(() => {
+                        expect(wrapper.vm.labelModel).toEqual('label');
+                        expect(spy).toHaveBeenCalled();
+                        expect(spy).toHaveBeenCalledWith('label');
+                        done();
+                    });
                 });
             });
         });

@@ -133,9 +133,13 @@ describe('Mixins', () => {
                     wrapper.vm.createPopper();
                 });
 
-                it('should set visible to equal value', () => {
+                it('should set visible to equal value', (done) => {
                     wrapper.setProps({ value: true });
-                    expect(wrapper.vm.visible).toEqual(true);
+
+                    wrapper.vm.$nextTick(() => {
+                        expect(wrapper.vm.visible).toEqual(true);
+                        done();
+                    });
                 });
             });
 
@@ -144,34 +148,45 @@ describe('Mixins', () => {
                     wrapper.vm.createPopper();
                 });
 
-                it('should emit "change" on change', () => {
+                it('should emit "change" on change', (done) => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
                     wrapper.setData({ visible: true });
 
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('change', true);
+                    wrapper.vm.$nextTick(() => {
+                        expect(spy).toHaveBeenCalled();
+                        expect(spy).toHaveBeenCalledWith('change', true);
+                        done();
+                    });
                 });
 
-                it('should call "updatePopper()" if visible', () => {
+                it('should call "updatePopper()" if visible', (done) => {
                     const spy = jest.spyOn(wrapper.vm, 'updatePopper');
 
                     wrapper.setData({ visible: true });
 
-                    expect(spy).toHaveBeenCalled();
+                    wrapper.vm.$nextTick(() => {
+                        expect(spy).toHaveBeenCalled();
+                        done();
+                    });
                 });
 
-                it('should call "destroyPopper()" if not visible', () => {
+                it('should call "destroyPopper()" if not visible', (done) => {
                     const spy = jest.spyOn(wrapper.vm, 'destroyPopper');
 
                     wrapper.setData({ visible: true });
 
-                    wrapper.setData({ visible: false });
+                    wrapper.vm.$nextTick(() => {
+                        wrapper.setData({ visible: false });
 
-                    expect(spy).toHaveBeenCalled();
+                        wrapper.vm.$nextTick(() => {
+                            expect(spy).toHaveBeenCalled();
+                            done();
+                        });
+                    });
                 });
 
-                it('should not make changes if disabled', () => {
+                it('should not make changes if disabled', (done) => {
                     const emitSpy = jest.spyOn(wrapper.vm, '$emit');
                     const updateSpy = jest.spyOn(wrapper.vm, 'updatePopper');
 
@@ -179,12 +194,15 @@ describe('Mixins', () => {
                         disabled: true
                     });
 
-                    wrapper.setData({
-                        visible: true
-                    });
+                    wrapper.vm.$nextTick(() => {
+                        wrapper.setData({ visible: true });
 
-                    expect(emitSpy).not.toHaveBeenCalled();
-                    expect(updateSpy).not.toHaveBeenCalled();
+                        wrapper.vm.$nextTick(() => {
+                            expect(emitSpy).not.toHaveBeenCalled();
+                            expect(updateSpy).not.toHaveBeenCalled();
+                            done();
+                        });
+                    });
                 });
             });
         });

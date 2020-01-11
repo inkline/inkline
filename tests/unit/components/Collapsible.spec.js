@@ -58,12 +58,15 @@ describe('Components', () => {
 
         describe('watch', () => {
             describe('active', () => {
-                it('should update active items on change', () => {
+                it('should update active items on change', (done) => {
                     expect(wrapper.vm.activeItems).toEqual([]);
 
                     wrapper.setProps({ active: ['active'] });
 
-                    expect(wrapper.vm.activeItems).toEqual(['active']);
+                    wrapper.vm.$nextTick(() => {
+                        expect(wrapper.vm.activeItems).toEqual(['active']);
+                        done();
+                    });
                 });
             });
         });

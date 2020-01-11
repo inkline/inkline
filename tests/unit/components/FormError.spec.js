@@ -43,7 +43,7 @@ describe('Components', () => {
 
         describe('watch', () => {
             describe('schema.invalid()', () => {
-                it('should add schema error messages to errors array', () => {
+                it('should add schema error messages to errors array', (done) => {
                     expect(wrapper.vm.errors).toEqual([]);
 
                     wrapper.setProps({
@@ -56,8 +56,10 @@ describe('Components', () => {
                         }
                     });
 
-
-                    expect(wrapper.vm.errors).toEqual(['a', 'b']);
+                    wrapper.vm.$nextTick(() => {
+                        expect(wrapper.vm.errors).toEqual(['a', 'b']);
+                        done();
+                    });
                 });
 
                 it('should not affect anything if schema is not invalid', () => {
