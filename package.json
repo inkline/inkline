@@ -31,17 +31,17 @@
     "vue.config.js"
   ],
   "dependencies": {
-    "core-js": "^3.6.0",
+    "core-js": "^3.6.3",
     "popper.js": "^1.16.0"
   },
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
     "@babel/core": "^7.7.7",
     "@babel/types": "^7.7.4",
-    "@vue/cli-plugin-babel": "^4.1.1",
-    "@vue/cli-plugin-eslint": "^4.1.1",
-    "@vue/cli-plugin-unit-jest": "^4.1.1",
-    "@vue/cli-service": "^4.1.1",
+    "@vue/cli-plugin-babel": "^4.1.2",
+    "@vue/cli-plugin-eslint": "^4.1.2",
+    "@vue/cli-plugin-unit-jest": "^4.1.2",
+    "@vue/cli-service": "^4.1.2",
     "@vue/test-utils": "^1.0.0-beta.30",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.3",
@@ -51,7 +51,7 @@
     "eslint-plugin-vue": "^5.2.3",
     "node-sass": "^4.13.0",
     "postcss-preset-env": "^5.3.0",
-    "sass-loader": "^8.0.0",
+    "sass-loader": "^8.0.1",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-recommended-scss": "^3.3.0",
