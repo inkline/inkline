@@ -24,7 +24,13 @@ Use text alignment utilities to easily align text in components.
 <template slot="html">
 
 ~~~html
-<p class="_text-justify">Ambitioni dedisse scripsisse iudicaretur...</p>
+<p class="_text-left">This text is left aligned.</p>
+~~~
+~~~html
+<p class="_text-center">This text is center aligned.</p>
+~~~
+~~~html
+<p class="_text-right">This text is right aligned.</p>
 ~~~
 
 </template>
