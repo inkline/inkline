@@ -41,8 +41,8 @@
                 transition: color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
 
                 &::before {
-                    opacity: 0;
-                    transition: opacity $transition-duration $transition-easing;
+                    opacity: 1;
+                    transition: opacity $transition-duration $transition-easing, transform $transition-duration $transition-easing;
                     content: '';
                     display: block;
                     height: 100%;
@@ -51,6 +51,7 @@
                     position: absolute;
                     left: -1px;
                     top: 0;
+                    transform: scaleX(0);
                 }
 
                 &.-active,
@@ -60,6 +61,7 @@
 
                     &::before {
                         opacity: 1;
+                        transform: scaleX(1);
                     }
                 }
             }
