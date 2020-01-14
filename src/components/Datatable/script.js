@@ -4,6 +4,12 @@ import ISelect from '@inkline/inkline/src/components/Select';
 import ISelectOption from '@inkline/inkline/src/components/SelectOption';
 import { sortByPath, getValueByPath } from "@inkline/inkline/src/helpers";
 
+const defaultPaginationConfig = {
+    total: null,
+    itemsPerPage: [10, 50, 100],
+    defaultItemsPerPage: 10
+};
+
 export default {
     name: 'IDatatable',
     extends: ITable,
@@ -28,6 +34,10 @@ export default {
         defaultSortKey: {
             type: String,
             default: '#'
+        },
+        pagination: {
+            type: [Boolean, Object],
+            default: true
         }
     },
     data() {
@@ -102,6 +112,12 @@ export default {
 
                     return renderedRow;
                 }, {}));
+        },
+        paginationConfig() {
+            return {
+                enabled: Boolean(this.pagination),
+                ...defaultPaginationConfig
+            };
         }
     },
     methods: {
