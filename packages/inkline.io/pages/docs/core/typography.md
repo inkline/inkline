@@ -16,7 +16,7 @@ only on `:hover`. The defaults for these global variables are defined in `config
 To learn more about style configuration, please read the [Customization](/docs/introduction/customization) section.
 
 ### Headings
-All HTML headings, `<h1>` through `<h6>`, are available.
+All HTML headings, `<h1>` through `<h6>`, have their size calculated based on the specified `$font-size-base`.
 
 <i-code-preview title="Typography - Headings" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
 

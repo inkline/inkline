@@ -20,8 +20,5 @@ export default {
         isNavCollapsed(routeName) {
             return this.subroutes[routeName] ? [routeName] : [];
         }
-    },
-    mounted() {
-        console.log(this.$nuxt);
     }
 };
