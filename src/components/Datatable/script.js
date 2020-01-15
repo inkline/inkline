@@ -2,12 +2,14 @@ import ITable from '@inkline/inkline/src/components/Table';
 import IIcon from '@inkline/inkline/src/components/Icon';
 import ISelect from '@inkline/inkline/src/components/Select';
 import ISelectOption from '@inkline/inkline/src/components/SelectOption';
+import IPagination from '@inkline/inkline/src/components/Pagination';
 import { sortByPath, getValueByPath } from "@inkline/inkline/src/helpers";
 
 const defaultPaginationConfig = {
-    total: null,
-    itemsPerPage: [10, 50, 100],
-    defaultItemsPerPage: 10
+    items: null,
+    async: false,
+    itemsPerPageOptions: [10, 25, 50, 100],
+    itemsPerPage: 10
 };
 
 export default {
@@ -16,7 +18,8 @@ export default {
     components: {
         IIcon,
         ISelect,
-        ISelectOption
+        ISelectOption,
+        IPagination
     },
     props: {
         columns: {
@@ -43,7 +46,9 @@ export default {
     data() {
         return {
             sortBy: this.defaultSortKey,
-            sortDirection: 'asc'
+            sortDirection: 'asc',
+            itemsPerPage: 0,
+            page: 1
         }
     },
     computed: {
@@ -55,7 +60,12 @@ export default {
                     classes: '-count',
                     align: 'right',
                     sortable: true,
-                    render: (row, column, index) => index + 1,
+                    render: (row, column, index) => {
+                        const page = parseInt(this.page, 10);
+                        const itemsPerPage = parseInt(this.itemsPerPage, 10);
+
+                        return (page - 1) * itemsPerPage + index + 1
+                    },
                     ...this.countColumn
                 },
                 ...this.columns
@@ -92,6 +102,13 @@ export default {
                 rows = rows.reverse();
             }
 
+            if (this.pagination && !this.paginationConfig.async) {
+                const page = parseInt(this.page, 10);
+                const itemsPerPage = parseInt(this.itemsPerPage);
+
+                rows = rows.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+            }
+
             return rows;
         },
         tableColumnsRendered() {
@@ -114,10 +131,15 @@ export default {
                 }, {}));
         },
         paginationConfig() {
-            return {
-                enabled: Boolean(this.pagination),
-                ...defaultPaginationConfig
-            };
+            const config = this.pagination && this.pagination !== true ?
+                { ...this.pagination, ...defaultPaginationConfig } :
+                { ...defaultPaginationConfig };
+
+            config.items = config.items || this.rows.length;
+            config.itemsPerPage = config.itemsPerPage.toString();
+            config.itemsPerPageOptions = config.itemsPerPageOptions.map((v) => v.toString());
+
+            return config;
         }
     },
     methods: {
@@ -161,5 +183,8 @@ export default {
 
             return classes;
         }
+    },
+    created() {
+        this.itemsPerPage = this.paginationConfig.itemsPerPage.toString();
     }
 };

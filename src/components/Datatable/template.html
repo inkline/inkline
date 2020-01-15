@@ -1,8 +1,10 @@
 <div class="datatable-wrapper table-wrapper" :class="classes['wrapper']">
     <div class="pagination-selector">
         Show
-        <i-select size="sm">
-            <i-select-option>1</i-select-option>
+        <i-select v-model="itemsPerPage" size="sm">
+            <i-select-option v-for="(item, index) in paginationConfig.itemsPerPageOptions" :value="item" :key="index">
+                {{ item }}
+            </i-select-option>
         </i-select>
         entries
     </div>
@@ -38,4 +40,6 @@
         </tr>
         </tbody>
     </table>
+
+    <i-pagination v-model="page" :items="paginationConfig.items" :items-per-page="itemsPerPage" />
 </div>
