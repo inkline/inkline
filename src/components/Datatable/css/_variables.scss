@@ -13,6 +13,10 @@ $datatable-border-color: $border-color !default;
 $datatable-sortable-icon-color: $color-gray-50 !default;
 $datatable-sortable-icon-color-active: $color-primary !default;
 
+$datatable-pagination-selector-margin-bottom: $spacer !default;
+$datatable-pagination-selector-margin-left: spacers('1/2') !default;
+$datatable-pagination-selector-margin-right: spacers('1/2') !default;
+
 //
 // Enable datatable transitions
 //

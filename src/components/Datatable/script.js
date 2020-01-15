@@ -6,10 +6,14 @@ import IPagination from '@inkline/inkline/src/components/Pagination';
 import { sortByPath, getValueByPath } from "@inkline/inkline/src/helpers";
 
 const defaultPaginationConfig = {
-    items: null,
+    rowsCount: null,
+    rowsPerPage: 10,
+    rowsPerPageOptions: [10, 25, 50, 100],
     async: false,
-    itemsPerPageOptions: [10, 25, 50, 100],
-    itemsPerPage: 10
+    messages: {
+        rowsPerPage: 'Show {rowsPerPage} entries',
+        range: 'Showing {rowsFrom} to {rowsTo} of {rowsCount} entries'
+    }
 };
 
 export default {
@@ -47,7 +51,7 @@ export default {
         return {
             sortBy: this.defaultSortKey,
             sortDirection: 'asc',
-            itemsPerPage: 0,
+            rowsPerPage: 1,
             page: 1
         }
     },
@@ -60,12 +64,7 @@ export default {
                     classes: '-count',
                     align: 'right',
                     sortable: true,
-                    render: (row, column, index) => {
-                        const page = parseInt(this.page, 10);
-                        const itemsPerPage = parseInt(this.itemsPerPage, 10);
-
-                        return (page - 1) * itemsPerPage + index + 1
-                    },
+                    render: (row, column, index) => (this.page - 1) * this.rowsPerPage + index + 1,
                     ...this.countColumn
                 },
                 ...this.columns
@@ -103,10 +102,7 @@ export default {
             }
 
             if (this.pagination && !this.paginationConfig.async) {
-                const page = parseInt(this.page, 10);
-                const itemsPerPage = parseInt(this.itemsPerPage);
-
-                rows = rows.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+                rows = rows.slice(this.rowsFrom, this.rowsTo);
             }
 
             return rows;
@@ -132,14 +128,36 @@ export default {
         },
         paginationConfig() {
             const config = this.pagination && this.pagination !== true ?
-                { ...this.pagination, ...defaultPaginationConfig } :
+                {
+                    ...defaultPaginationConfig,
+                    ...this.pagination,
+                    messages: {
+                        ...defaultPaginationConfig.messages,
+                        ...(this.pagination.messages || {})
+                    }
+                } :
                 { ...defaultPaginationConfig };
+            const messagesRegEx = /{[a-zA-Z]+}/;
 
-            config.items = config.items || this.rows.length;
-            config.itemsPerPage = config.itemsPerPage.toString();
-            config.itemsPerPageOptions = config.itemsPerPageOptions.map((v) => v.toString());
+
+            config.rowsPerPage = config.rowsPerPage.toString();
+            config.rowsPerPageOptions = config.rowsPerPageOptions.map((v) => v.toString());
+
+            if (config.messages) {
+                config.messages.rowsPerPage = config.messages.rowsPerPage.split(messagesRegEx);
+                config.messages.range = config.messages.range.split(messagesRegEx);
+            }
 
             return config;
+        },
+        rowsCount() {
+            return this.paginationConfig.rowsCount || this.rows.length;
+        },
+        rowsFrom() {
+            return (this.page - 1) * this.rowsPerPage;
+        },
+        rowsTo() {
+            return this.page * this.rowsPerPage;
         }
     },
     methods: {
@@ -184,7 +202,12 @@ export default {
             return classes;
         }
     },
+    watch: {
+        rowsPerPage(value) {
+            this.rowsPerPage = parseInt(value, 10);
+        }
+    },
     created() {
-        this.itemsPerPage = this.paginationConfig.itemsPerPage.toString();
+        this.rowsPerPage = parseInt(this.paginationConfig.rowsPerPage, 10);
     }
 };
