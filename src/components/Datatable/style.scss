@@ -91,6 +91,10 @@
     }
 
     .dth {
+        &.-sortable {
+            cursor: pointer;
+        }
+
         .sortable-icon {
             position: relative;
             margin-left: auto;
@@ -109,14 +113,22 @@
 }
 
 .datatable-wrapper {
-    .pagination-selector {
+    .pagination-select {
         display: flex;
         align-items: center;
-        margin-bottom: $spacer;
+        margin-bottom: $datatable-pagination-selector-margin-bottom;
 
         .select {
             max-width: 100px;
             margin-bottom: 0;
+            margin-left: $datatable-pagination-selector-margin-left;
+            margin-right: $datatable-pagination-selector-margin-right;
         }
+    }
+
+    .pagination-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }

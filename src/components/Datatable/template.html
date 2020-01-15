@@ -1,13 +1,14 @@
 <div class="datatable-wrapper table-wrapper" :class="classes['wrapper']">
-    <div class="pagination-selector">
+    <div class="pagination-select">
         Show
-        <i-select v-model="itemsPerPage" size="sm">
-            <i-select-option v-for="(item, index) in paginationConfig.itemsPerPageOptions" :value="item" :key="index">
+        <i-select v-model="rowsPerPage" size="sm">
+            <i-select-option v-for="(item, index) in paginationConfig.rowsPerPageOptions" :value="item" :key="index">
                 {{ item }}
             </i-select-option>
         </i-select>
         entries
     </div>
+
     <table class="datatable" :class="classes['root']">
         <thead>
         <tr class="dtr">
@@ -18,7 +19,7 @@
                     <span v-if="!column.headerComponent">
                         {{tableColumnsRendered[column.path]}}
                         <i-icon class="sortable-icon" v-if="column.sortable" icon="sort">
-                            <i-icon v-if="sortBy === column.path" icon="sort-asc"></i-icon>
+                            <i-icon v-if="sortBy === column.path" :icon="`sort-${sortDirection}`"></i-icon>
                         </i-icon>
                     </span>
                     <span v-else :is="column.headerComponent" :column="column" :index="index" :sort-by="sortBy"></span>
@@ -41,5 +42,12 @@
         </tbody>
     </table>
 
-    <i-pagination v-model="page" :items="paginationConfig.items" :items-per-page="itemsPerPage" />
+    <div class="pagination-wrapper">
+        <div class="pagination-range">
+            Showing {{ rowsFrom + 1 }} to {{ rowsTo }} of {{ rowsCount }} entries
+        </div>
+        <slot name="pagination" :page="page" :rows-per-page="rowsPerPage" :rows-count="rowsCount">
+            <i-pagination size="sm" v-model="page" :items-per-page="rowsPerPage" :items="rowsCount"></i-pagination>
+        </slot>
+    </div>
 </div>
