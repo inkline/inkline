@@ -1,12 +1,13 @@
 <div class="datatable-wrapper table-wrapper" :class="classes['wrapper']">
-    <div class="pagination-select">
-        Show
-        <i-select v-model="rowsPerPage" size="sm">
-            <i-select-option v-for="(item, index) in paginationConfig.rowsPerPageOptions" :value="item" :key="index">
-                {{ item }}
-            </i-select-option>
-        </i-select>
-        entries
+    <div class="pagination-select" v-if="pagination">
+        <template v-for="part in paginationConfig.i18n.rowsPerPage">
+            <i-select v-model="rowsPerPage" :size="paginationConfig.size" v-if="part === 'rowsPerPage'">
+                <i-select-option v-for="(item, index) in paginationConfig.rowsPerPageOptions" :value="item" :key="index">
+                    {{ item }}
+                </i-select-option>
+            </i-select>
+            <template v-else> {{part}} </template>
+        </template>
     </div>
 
     <table class="datatable" :class="classes['root']">
@@ -42,12 +43,20 @@
         </tbody>
     </table>
 
-    <div class="pagination-wrapper">
+    <div class="pagination-wrapper" v-if="pagination">
         <div class="pagination-range">
-            Showing {{ rowsFrom + 1 }} to {{ rowsTo }} of {{ rowsCount }} entries
+            <template v-for="part in paginationConfig.i18n.range">
+                <template v-if="part === 'rowsFrom'">{{ rowsFrom + 1 }}</template>
+                <template v-else-if="part === 'rowsTo'">{{ rowsTo }}</template>
+                <template v-else-if="part === 'rowsCount'">{{ rowsCount }}</template>
+                <template v-else> {{ part }} </template>
+            </template>
         </div>
         <slot name="pagination" :page="page" :rows-per-page="rowsPerPage" :rows-count="rowsCount">
-            <i-pagination size="sm" v-model="page" :items-per-page="rowsPerPage" :items="rowsCount"></i-pagination>
+            <i-pagination
+                v-model="page"
+                :size="paginationConfig.size" :limit="paginationConfig.limit" :variant="paginationConfig.variant"
+                :items-per-page="rowsPerPage" :items="rowsCount"/>
         </slot>
     </div>
 </div>

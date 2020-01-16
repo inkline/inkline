@@ -1,16 +1,20 @@
+import Fuse from 'fuse.js';
 import ITable from '@inkline/inkline/src/components/Table';
 import IIcon from '@inkline/inkline/src/components/Icon';
 import ISelect from '@inkline/inkline/src/components/Select';
 import ISelectOption from '@inkline/inkline/src/components/SelectOption';
 import IPagination from '@inkline/inkline/src/components/Pagination';
-import { sortByPath, getValueByPath } from "@inkline/inkline/src/helpers";
+import { sortByPath, getValueByPath } from '@inkline/inkline/src/helpers';
 
 const defaultPaginationConfig = {
+    limit: { xs: 3, sm: 5 },
+    size: 'md',
+    variant: 'light',
     rowsCount: null,
     rowsPerPage: 10,
     rowsPerPageOptions: [10, 25, 50, 100],
     async: false,
-    messages: {
+    i18n: {
         rowsPerPage: 'Show {rowsPerPage} entries',
         range: 'Showing {rowsFrom} to {rowsTo} of {rowsCount} entries'
     }
@@ -131,22 +135,19 @@ export default {
                 {
                     ...defaultPaginationConfig,
                     ...this.pagination,
-                    messages: {
-                        ...defaultPaginationConfig.messages,
-                        ...(this.pagination.messages || {})
+                    i18n: {
+                        ...defaultPaginationConfig.i18n,
+                        ...(this.pagination.i18n || {})
                     }
                 } :
                 { ...defaultPaginationConfig };
-            const messagesRegEx = /{[a-zA-Z]+}/;
-
 
             config.rowsPerPage = config.rowsPerPage.toString();
             config.rowsPerPageOptions = config.rowsPerPageOptions.map((v) => v.toString());
 
-            if (config.messages) {
-                config.messages.rowsPerPage = config.messages.rowsPerPage.split(messagesRegEx);
-                config.messages.range = config.messages.range.split(messagesRegEx);
-            }
+            const messagesRegEx = / *[{}] */;
+            config.i18n.rowsPerPage = String.prototype.split.apply(config.i18n.rowsPerPage, [messagesRegEx]);
+            config.i18n.range = String.prototype.split.apply(config.i18n.range, [messagesRegEx]);
 
             return config;
         },

@@ -32,6 +32,7 @@
   ],
   "dependencies": {
     "core-js": "^3.6.3",
+    "fuse.js": "^3.4.6",
     "popper.js": "^1.16.0"
   },
   "devDependencies": {
