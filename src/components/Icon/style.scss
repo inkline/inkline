@@ -21,6 +21,7 @@
     &.-sort::before { content: $icon-sort; }
     &.-sort-asc::before { content: $icon-sort-asc; }
     &.-sort-desc::before { content: $icon-sort-desc; }
+    &.-search::before { content: $icon-search; }
 
     @each $size in $sizes {
         &.-#{$size} {
