@@ -2,7 +2,7 @@
 Data tables (or data grids) are tables that have advanced interaction controls such as custom data types, pagination and sorting. {.lead}
 
 ### Columns definition
-First, you need to define the column titles, keys, types and how they're ordered.
+First, you need to define the column titles, paths, types and how they're ordered.
 
 ~~~js
 export default {
@@ -19,7 +19,7 @@ export default {
 ~~~
 
 ### Rows definition
-The `rows` array represents your data. The `key` field in `columns` corresponds to a value field name in `rows`. 
+The `rows` array represents your data. The `path` field in `columns` corresponds to a value field name in `rows`. 
 
 ~~~js
 export default {
@@ -39,7 +39,7 @@ export default {
 ~~~
 
 <i-alert variant="info" class="-code">
-<template v-slot:icon><i class="icon -info h3"></i></template>
+<template v-slot:icon><i-icon icon="info"></i-icon></template>
 
 Each data row should also have a unique `id` field, which will be used internally for identifying the row during rendering.
 
@@ -84,7 +84,7 @@ export default {
 </i-code-preview>
 
 ### Nested Properties
-Great news! You don't need to change your data structure to have it working. You can specify keys under the form `prop.nestedProp` to target nested properties.
+Great news! You don't need to change your data structure to have it working. You can specify column paths under the form `prop.nestedProp` to target nested properties.
 
 ~~~js
 export default {
@@ -108,7 +108,7 @@ export default {
 ~~~
 
 <i-code-preview title="Data Table Property Nesting" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
-<i-datatable :columns="columnsNested" :rows="rowsNested" />
+<i-datatable :columns="columnsNested" :rows="rows" />
 <template v-slot:html>
 
 ~~~html
