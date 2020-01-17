@@ -162,8 +162,8 @@ export default {
                     }
                 };
 
-            config.rowsPerPage = config.rowsPerPage.toString();
-            config.rowsPerPageOptions = config.rowsPerPageOptions.map((v) => v.toString());
+            // config.rowsPerPage = config.rowsPerPage.toString();
+            // config.rowsPerPageOptions = config.rowsPerPageOptions.map((v) => v.toString());
 
             const messagesRegEx = / *[{}] */;
             config.i18n.rowsPerPage = String.prototype.split.apply(config.i18n.rowsPerPage, [messagesRegEx]);
@@ -227,10 +227,22 @@ export default {
     },
     watch: {
         rowsPerPage(value) {
-            this.rowsPerPage = parseInt(value, 10);
+            value = parseInt(value, 10);
+
+            this.rowsPerPage = value;
+
+            const maxPage = Math.ceil(this.rowsCount / value);
+            if (this.page > maxPage) {
+                this.page = maxPage;
+            } else {
+                this.$emit('pagination', this.page, value);
+            }
+        },
+        page(value) {
+            this.$emit('pagination', value, this.rowsPerPage);
         }
     },
     created() {
-        this.rowsPerPage = parseInt(this.paginationConfig.rowsPerPage, 10);
+        this.rowsPerPage = this.paginationConfig.rowsPerPage;
     }
 };
