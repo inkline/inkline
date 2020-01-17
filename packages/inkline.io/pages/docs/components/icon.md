@@ -20,6 +20,7 @@ Here’s an example of the basic icons included with the `<i-icon>` component.
 <div class="icon-box"><i-icon icon="sort" /></div>
 <div class="icon-box"><i-icon icon="sort-asc" /></div>
 <div class="icon-box"><i-icon icon="sort-desc" /></div>
+<div class="icon-box"><i-icon icon="search" /></div>
 
 <template slot="html">
 
@@ -39,6 +40,7 @@ Here’s an example of the basic icons included with the `<i-icon>` component.
 <i-icon icon="sort" />
 <i-icon icon="sort-asc" />
 <i-icon icon="sort-desc" />
+<i-icon icon="search" />
 ~~~
 
 </template>
