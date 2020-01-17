@@ -220,27 +220,27 @@ const pages = [
         description: 'Tooltips are useful for conveying information when an user hovers over an element.'
     },
     {
-        id: 'docs-dashboard-datatable-definition',
+        id: 'docs-components-dashboard-datatable-definition',
         title: 'Definition - Data Table',
         description: 'Create UX-friendly tables with advanced interaction controls using the Data Table component.'
     },
     {
-        id: 'docs-dashboard-datatable-sorting',
+        id: 'docs-components-dashboard-datatable-sorting',
         title: 'Sorting - Data Table',
         description: 'Inkline\'s Data Table columns are easily sortable, in both ascending and descending order.'
     },
     {
-        id: 'docs-dashboard-datatable-filtering',
+        id: 'docs-components-dashboard-datatable-filtering',
         title: 'Filtering - Data Table',
         description: 'Inkline\'s Data Table rows are easily and efficiently filtered using a fuzzy search algorithm.'
     },
     {
-        id: 'docs-dashboard-datatable-pagination',
+        id: 'docs-components-dashboard-datatable-pagination',
         title: 'Pagination - Data Table',
         description: 'Inkline\'s Data Table can be easily paginated with smart lazy loading capabilities.'
     },
     {
-        id: 'docs-dashboard-datatable-rendering',
+        id: 'docs-components-dashboard-datatable-rendering',
         title: 'Rendering - Data Table',
         description: 'Inkline\'s Data Table columns, rows and headers can be rendered using custom render helpers.'
     },

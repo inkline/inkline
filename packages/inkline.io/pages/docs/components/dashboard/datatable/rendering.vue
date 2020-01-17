@@ -11,7 +11,7 @@ export default {
     extends: View,
     name: 'DataTableRenderingView',
     layout: 'documentation',
-    head: head('docs-dashboard-datatable-rendering'),
+    head: head('docs-components-dashboard-datatable-rendering'),
     components: {
         IDatatable,
         IAlert,
