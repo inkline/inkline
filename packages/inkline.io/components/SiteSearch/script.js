@@ -79,9 +79,10 @@ export default {
                 includeScore: true,
                 threshold: 0.25,
                 location: 0,
-                distance: 100,
+                distance: 50,
+                tokenize: true,
                 maxPatternLength: 32,
-                minMatchCharLength: 1,
+                minMatchCharLength: 3,
                 keys: [
                     { name: "title", weight: 0.4 },
                     { name: "subtitle", weight: 0.3 },
