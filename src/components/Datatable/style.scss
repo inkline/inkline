@@ -4,66 +4,12 @@
 
 @import '../../css/config';
 @import '../../css/mixins';
+@import '../Table/style';
 @import 'css/_variables';
 @import 'css/_variants';
 
 .datatable {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: $datatable-margin-bottom;
-
-    th,
-    td {
-        padding: $datatable-cell-padding;
-        vertical-align: top;
-        border-top: $datatable-border-width solid $datatable-border-color;
-    }
-
-    thead th {
-        vertical-align: bottom;
-        border-bottom: (2 * $datatable-border-width) solid $datatable-border-color;
-    }
-
-    tbody + tbody {
-        border-top: (2 * $datatable-border-width) solid $datatable-border-color;
-    }
-
-    // Condensed table w/ half padding
-    //
-    &.-condensed {
-        th,
-        td {
-            padding: $datatable-cell-padding-sm;
-        }
-    }
-
-    // Bordered version
-    //
-    // Add borders all around the table and between all the columns.
-    //
-    &.-bordered {
-        border: $datatable-border-width solid transparent;
-
-        th,
-        td {
-            border: $datatable-border-width solid $datatable-border-color;
-        }
-    }
-
-    // Hover table
-    //
-    // Placed here since it has to come after the potential zebra striping
-    //
-    &.-hover {
-        tbody tr {
-            th,
-            td {
-                @if $transition-enabled and transition(datatable) {
-                    transition: background-color $transition-duration $transition-easing;
-                }
-            }
-        }
-    }
+    margin-bottom: 0;
 
     .dtd,
     .dth {
@@ -109,26 +55,44 @@
         }
     }
 
+    @extend .table;
+    @extend .table.-light;
     @extend .datatable.-light;
 }
 
 .datatable-wrapper {
-    .pagination-select {
-        display: flex;
-        align-items: center;
-        margin-bottom: $datatable-pagination-selector-margin-bottom;
-
-        .select {
-            max-width: 100px;
-            margin-bottom: 0;
-            margin-left: $datatable-pagination-selector-margin-left;
-            margin-right: $datatable-pagination-selector-margin-right;
-        }
-    }
-
-    .pagination-wrapper {
+    .header-wrapper,
+    .footer-wrapper {
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    .header-wrapper {
+        margin-bottom: $datatable-header-margin-bottom;
+
+        .pagination-select {
+            display: flex;
+            align-items: center;
+
+            .select {
+                max-width: 100px;
+                margin-bottom: 0;
+                margin-left: $datatable-pagination-selector-margin-left;
+                margin-right: $datatable-pagination-selector-margin-right;
+            }
+        }
+    }
+
+    .footer-wrapper {
+        margin-top: $datatable-footer-margin-top;
+
+        @include breakpoint-down(sm) {
+            flex-direction: column-reverse;
+
+            .pagination {
+                margin-bottom: $datatable-pagination-margin-bottom;
+            }
+        }
     }
 }
