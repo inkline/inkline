@@ -49,6 +49,20 @@ export default {
         pagination: {
             type: [Boolean, Object],
             default: true
+        },
+        searchOptions: {
+            type: Object,
+            default: () => ({
+                shouldSort: false,
+                includeMatches: true,
+                includeScore: true,
+                threshold: 0.25,
+                location: 0,
+                distance: 50,
+                tokenize: true,
+                maxPatternLength: 32,
+                minMatchCharLength: 2
+            })
         }
     },
     data() {
@@ -56,7 +70,8 @@ export default {
             sortBy: this.defaultSortKey,
             sortDirection: 'asc',
             rowsPerPage: 1,
-            page: 1
+            page: 1,
+            search: new Fuse([], {})
         }
     },
     computed: {
@@ -140,7 +155,12 @@ export default {
                         ...(this.pagination.i18n || {})
                     }
                 } :
-                { ...defaultPaginationConfig };
+                {
+                    ...defaultPaginationConfig,
+                    i18n: {
+                        ...defaultPaginationConfig.i18n
+                    }
+                };
 
             config.rowsPerPage = config.rowsPerPage.toString();
             config.rowsPerPageOptions = config.rowsPerPageOptions.map((v) => v.toString());
@@ -158,7 +178,9 @@ export default {
             return (this.page - 1) * this.rowsPerPage;
         },
         rowsTo() {
-            return this.page * this.rowsPerPage;
+            const to = this.page * this.rowsPerPage;
+
+            return to > this.rowsCount ? this.rowsCount : to;
         }
     },
     methods: {
