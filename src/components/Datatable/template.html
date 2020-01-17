@@ -1,49 +1,57 @@
-<div class="datatable-wrapper table-wrapper" :class="classes['wrapper']">
-    <div class="pagination-select" v-if="pagination">
-        <template v-for="part in paginationConfig.i18n.rowsPerPage">
-            <i-select v-model="rowsPerPage" :size="paginationConfig.size" v-if="part === 'rowsPerPage'">
-                <i-select-option v-for="(item, index) in paginationConfig.rowsPerPageOptions" :value="item" :key="index">
-                    {{ item }}
-                </i-select-option>
-            </i-select>
-            <template v-else>{{part}}</template>
-        </template>
+<div class="datatable-wrapper">
+    <div class="header-wrapper">
+        <div class="pagination-select" v-if="pagination">
+            <template v-for="part in paginationConfig.i18n.rowsPerPage">
+                <i-select v-model="rowsPerPage" :size="paginationConfig.size" v-if="part === 'rowsPerPage'">
+                    <i-select-option v-for="(item, index) in paginationConfig.rowsPerPageOptions" :value="item" :key="index">
+                        {{ item }}
+                    </i-select-option>
+                </i-select>
+                <template v-else>{{part}}</template>
+            </template>
+        </div>
+        <div class="filter">
+            <i-input v-model="filter" placeholder="Type something..">
+                <i-icon icon="search" slot="suffix"></i-icon>
+            </i-input>
+        </div>
     </div>
-
-    <table class="datatable" :class="classes['root']">
-        <thead>
-        <tr class="dtr">
-            <slot name="header" :sortBy="sortBy">
-                <th class="dth" :class="columnClass(column)"
-                    v-for="(column, index) in tableColumns" :key="index"
-                    @click="onHeaderCellClick(column)">
-                    <span v-if="!column.headerComponent">
-                        {{tableColumnsRendered[column.path]}}
-                        <i-icon class="sortable-icon" v-if="column.sortable" icon="sort">
-                            <i-icon v-if="sortBy === column.path" :icon="`sort-${sortDirection}`"></i-icon>
-                        </i-icon>
-                    </span>
-                    <span v-else :is="column.headerComponent" :column="column" :index="index" :sort-by="sortBy"></span>
-                </th>
-            </slot>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="dtr" :class="rowClass(row)" v-for="(row, rowIndex) in tableRows" :key="row.id">
-            <slot name="row" :row="row" :index="rowIndex">
-                <td class="dtd" :class="columnClass(column, row)"
-                    v-for="(column, columnIndex) in tableColumns" :key="columnIndex">
-                    <span v-if="!column.component">
-                        {{tableRowsRendered[rowIndex][column.path]}}
-                    </span>
-                    <span v-else :is="column.component" :row="row" :column="column"></span>
-                </td>
-            </slot>
-        </tr>
-        </tbody>
-    </table>
-
-    <div class="pagination-wrapper" v-if="pagination">
+    {{filterableColumns}}
+    <div class="table-wrapper" :class="classes['wrapper']">
+        <table class="datatable" :class="classes['root']">
+            <thead>
+            <tr class="dtr">
+                <slot name="header" :sortBy="sortBy">
+                    <th class="dth" :class="columnClass(column)"
+                        v-for="(column, index) in tableColumns" :key="index"
+                        @click="onHeaderCellClick(column)">
+                        <span v-if="!column.headerComponent">
+                            {{tableColumnsRendered[column.path]}}
+                            <i-icon class="sortable-icon" v-if="column.sortable" icon="sort">
+                                <i-icon v-if="sortBy === column.path" :icon="`sort-${sortDirection}`"></i-icon>
+                            </i-icon>
+                        </span>
+                        <span v-else :is="column.headerComponent" :column="column" :index="index" :sort-by="sortBy"></span>
+                    </th>
+                </slot>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="dtr" :class="rowClass(row)" v-for="(row, rowIndex) in tableRows" :key="row.id">
+                <slot name="row" :row="row" :index="rowIndex">
+                    <td class="dtd" :class="columnClass(column, row)"
+                        v-for="(column, columnIndex) in tableColumns" :key="columnIndex">
+                        <span v-if="!column.component">
+                            {{tableRowsRendered[rowIndex][column.path]}}
+                        </span>
+                        <span v-else :is="column.component" :row="row" :column="column"></span>
+                    </td>
+                </slot>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="footer-wrapper" v-if="pagination">
         <div class="pagination-range">
             <template v-for="part in paginationConfig.i18n.range">
                 <template v-if="part === 'rowsFrom'">{{ rowsFrom + 1 }}</template>

@@ -1,6 +1,7 @@
 import Fuse from 'fuse.js';
 import ITable from '@inkline/inkline/src/components/Table';
 import IIcon from '@inkline/inkline/src/components/Icon';
+import IInput from '@inkline/inkline/src/components/Input';
 import ISelect from '@inkline/inkline/src/components/Select';
 import ISelectOption from '@inkline/inkline/src/components/SelectOption';
 import IPagination from '@inkline/inkline/src/components/Pagination';
@@ -20,11 +21,30 @@ const defaultPaginationConfig = {
     }
 };
 
+const defaultFilteringConfig = {
+    size: 'md',
+    variant: 'light',
+    async: false,
+    i18n: {
+        search: 'Search'
+    },
+    shouldSort: false,
+    includeMatches: true,
+    includeScore: true,
+    threshold: 0.25,
+    location: 0,
+    distance: 50,
+    tokenize: true,
+    maxPatternLength: 32,
+    minMatchCharLength: 2
+};
+
 export default {
     name: 'IDatatable',
     extends: ITable,
     components: {
         IIcon,
+        IInput,
         ISelect,
         ISelectOption,
         IPagination
@@ -46,23 +66,13 @@ export default {
             type: String,
             default: '#'
         },
-        pagination: {
+        filtering: {
             type: [Boolean, Object],
             default: true
         },
-        searchOptions: {
-            type: Object,
-            default: () => ({
-                shouldSort: false,
-                includeMatches: true,
-                includeScore: true,
-                threshold: 0.25,
-                location: 0,
-                distance: 50,
-                tokenize: true,
-                maxPatternLength: 32,
-                minMatchCharLength: 2
-            })
+        pagination: {
+            type: [Boolean, Object],
+            default: true
         }
     },
     data() {
@@ -71,6 +81,7 @@ export default {
             sortDirection: 'asc',
             rowsPerPage: 1,
             page: 1,
+            filter: '',
             search: new Fuse([], {})
         }
     },
@@ -124,6 +135,10 @@ export default {
                 rows = rows.slice(this.rowsFrom, this.rowsTo);
             }
 
+            if (this.filtering && !this.filteringConfig.async) {
+                rows = rows.slice(this.rowsFrom, this.rowsTo);
+            }
+
             return rows;
         },
         tableColumnsRendered() {
@@ -148,22 +163,30 @@ export default {
         paginationConfig() {
             const config = this.pagination && this.pagination !== true ?
                 {
-                    ...defaultPaginationConfig,
-                    ...this.pagination,
-                    i18n: {
-                        ...defaultPaginationConfig.i18n,
-                        ...(this.pagination.i18n || {})
-                    }
+                    ...defaultPaginationConfig, ...this.pagination,
+                    i18n: { ...defaultPaginationConfig.i18n, ...(this.pagination.i18n || {}) }
                 } :
                 {
                     ...defaultPaginationConfig,
-                    i18n: {
-                        ...defaultPaginationConfig.i18n
-                    }
+                    i18n: { ...defaultPaginationConfig.i18n }
                 };
 
-            // config.rowsPerPage = config.rowsPerPage.toString();
-            // config.rowsPerPageOptions = config.rowsPerPageOptions.map((v) => v.toString());
+            const messagesRegEx = / *[{}] */;
+            config.i18n.rowsPerPage = String.prototype.split.apply(config.i18n.rowsPerPage, [messagesRegEx]);
+            config.i18n.range = String.prototype.split.apply(config.i18n.range, [messagesRegEx]);
+
+            return config;
+        },
+        filteringConfig() {
+            const config = this.filtering && this.filtering !== true ?
+                {
+                    ...defaultFilteringConfig, ...this.filtering,
+                    i18n: { ...defaultFilteringConfig.i18n, ...(this.filtering.i18n || {}) }
+                } :
+                {
+                    ...defaultFilteringConfig,
+                    i18n: { ...defaultFilteringConfig.i18n }
+                };
 
             const messagesRegEx = / *[{}] */;
             config.i18n.rowsPerPage = String.prototype.split.apply(config.i18n.rowsPerPage, [messagesRegEx]);
@@ -181,6 +204,11 @@ export default {
             const to = this.page * this.rowsPerPage;
 
             return to > this.rowsCount ? this.rowsCount : to;
+        },
+        filterableColumns() {
+            let columns = this.tableColumns.filter((column) => column.filterable);
+
+            return (columns.length === 0 ? this.tableColumns : columns).map((column) => column.path);
         }
     },
     methods: {
