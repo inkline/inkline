@@ -150,26 +150,6 @@ const pages = [
         description: 'Use Inkline\'s Collapsible components to show and hide content using a smooth reveal transition.'
     },
     {
-        id: 'docs-components-datatable-definition',
-        title: 'Definition - Data Table',
-        description: 'Create UX-friendly tables with advanced interaction controls using the Data Table component.'
-    },
-    {
-        id: 'docs-components-datatable-sorting',
-        title: 'Sorting - Data Table',
-        description: 'Inkline\'s Data Table columns are easily sortable, in both ascending and descending order.'
-    },
-    {
-        id: 'docs-components-datatable-pagination',
-        title: 'Pagination - Data Table',
-        description: 'Inkline\'s Data Table can be easily paginated with smart lazy loading capabilities.'
-    },
-    {
-        id: 'docs-components-datatable-rendering',
-        title: 'Rendering - Data Table',
-        description: 'Inkline\'s Data Table columns, rows and headers can be rendered using custom render helpers.'
-    },
-    {
         id: 'docs-components-dropdown',
         title: 'Dropdown',
         description: 'Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.'
@@ -238,6 +218,31 @@ const pages = [
         id: 'docs-components-tooltip',
         title: 'Tooltip',
         description: 'Tooltips are useful for conveying information when an user hovers over an element.'
+    },
+    {
+        id: 'docs-dashboard-datatable-definition',
+        title: 'Definition - Data Table',
+        description: 'Create UX-friendly tables with advanced interaction controls using the Data Table component.'
+    },
+    {
+        id: 'docs-dashboard-datatable-sorting',
+        title: 'Sorting - Data Table',
+        description: 'Inkline\'s Data Table columns are easily sortable, in both ascending and descending order.'
+    },
+    {
+        id: 'docs-dashboard-datatable-filtering',
+        title: 'Filtering - Data Table',
+        description: 'Inkline\'s Data Table rows are easily and efficiently filtered using a fuzzy search algorithm.'
+    },
+    {
+        id: 'docs-dashboard-datatable-pagination',
+        title: 'Pagination - Data Table',
+        description: 'Inkline\'s Data Table can be easily paginated with smart lazy loading capabilities.'
+    },
+    {
+        id: 'docs-dashboard-datatable-rendering',
+        title: 'Rendering - Data Table',
+        description: 'Inkline\'s Data Table columns, rows and headers can be rendered using custom render helpers.'
     },
     {
         id: 'docs-utilities-border',

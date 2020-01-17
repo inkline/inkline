@@ -3,7 +3,7 @@
 import Vue from 'vue';
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
-import { IDatatable, IAlert, IIcon } from '@inkline/inkline/src/index';
+import { IDatatable, IAlert, IIcon } from '@inkline/inkline/src';
 import TableProgress from '@components/docs/TableProgress';
 import TableHeaderComponent from '@components/docs/TableHeaderComponent';
 
@@ -11,7 +11,7 @@ export default {
     extends: View,
     name: 'DataTableRenderingView',
     layout: 'documentation',
-    head: head('docs-components-datatable-rendering'),
+    head: head('docs-dashboard-datatable-rendering'),
     components: {
         IDatatable,
         IAlert,

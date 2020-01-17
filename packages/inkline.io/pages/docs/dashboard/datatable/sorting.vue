@@ -3,7 +3,7 @@
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
 import { generateDataRows } from "@helpers/generateDataRows";
-import { IDatatable, IAlert } from '@inkline/inkline/src/index';
+import { IDatatable, IAlert } from '@inkline/inkline/src';
 
 const customSort = (a, b) => {
     if (a.name < b.name) {
@@ -19,7 +19,7 @@ export default {
     extends: View,
     name: 'DataTableSortingView',
     layout: 'documentation',
-    head: head('docs-components-datatable-sorting'),
+    head: head('docs-dashboard-datatable-sorting'),
     components: {
         IDatatable,
         IAlert
