@@ -1,19 +1,18 @@
-<template lang="md" src="./definition.md" />
+<template lang="md" src="./filtering.md" />
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
 import { generateDataRows } from "@helpers/generateDataRows";
-import { IDatatable, IAlert, IIcon } from '@inkline/inkline/src';
+import { IDatatable, IAlert } from '@inkline/inkline/src';
 
 export default {
     extends: View,
-    name: 'DataTableDefinitionView',
+    name: 'DataTableFilteringView',
     layout: 'documentation',
-    head: head('docs-components-datatable-definition'),
+    head: head('docs-dashboard-datatable-filtering'),
     components: {
         IDatatable,
-        IAlert,
-        IIcon
+        IAlert
     },
     data () {
         return {
@@ -22,12 +21,12 @@ export default {
                 { title: 'Email', path: 'email' },
                 { title: 'Age', path: 'age', align: 'right' }
             ],
-            rows: generateDataRows(25),
-            columnsNested: [
-                { title: 'Name', path: 'name' },
-                { title: 'City', path: 'address.city' },
-                { title: 'Country', path: 'address.country' },
-            ]
+            selectiveFilteringColumns: [
+                { title: 'Name', path: 'name', filterable: true },
+                { title: 'Email', path: 'email' },
+                { title: 'Age', path: 'age', align: 'right' }
+            ],
+            rows: generateDataRows(25)
         };
     }
 };
