@@ -9,7 +9,7 @@ export default {
     extends: View,
     name: 'DataTablePaginationView',
     layout: 'documentation',
-    head: head('docs-dashboard-datatable-pagination'),
+    head: head('docs-components-dashboard-datatable-pagination'),
     components: {
         IDatatable,
         IAlert,

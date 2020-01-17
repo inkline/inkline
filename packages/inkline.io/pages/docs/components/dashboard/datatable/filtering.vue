@@ -9,7 +9,7 @@ export default {
     extends: View,
     name: 'DataTableFilteringView',
     layout: 'documentation',
-    head: head('docs-dashboard-datatable-filtering'),
+    head: head('docs-components-dashboard-datatable-filtering'),
     components: {
         IDatatable,
         IAlert
@@ -18,7 +18,7 @@ export default {
         return {
             columns: [
                 { title: 'Name', path: 'name' },
-                { title: 'Email', path: 'email' },
+                { title: 'Country', path: 'address.country' },
                 { title: 'Age', path: 'age', align: 'right' }
             ],
             selectiveFilteringColumns: [
