@@ -11,12 +11,11 @@
             </template>
         </div>
         <div class="filter">
-            <i-input v-model="filter" placeholder="Type something..">
+            <i-input v-model="search" :placeholder="filteringConfig.i18n.search">
                 <i-icon icon="search" slot="suffix"></i-icon>
             </i-input>
         </div>
     </div>
-    {{filterableColumns}}
     <div class="table-wrapper" :class="classes['wrapper']">
         <table class="datatable" :class="classes['root']">
             <thead>
@@ -49,6 +48,19 @@
                 </slot>
             </tr>
             </tbody>
+            <tfoot>
+            <tr class="dtr">
+                <slot name="footer">
+                    <th class="dth" :class="columnClass(column)"
+                        v-for="(column, index) in tableColumns" :key="index">
+                        <span v-if="!column.footerComponent">
+                            {{tableColumnsRendered[column.path]}}
+                        </span>
+                        <span v-else :is="column.footerComponent" :column="column" :index="index"></span>
+                    </th>
+                </slot>
+            </tr>
+            </tfoot>
         </table>
     </div>
     <div class="footer-wrapper" v-if="pagination">
@@ -64,7 +76,7 @@
             <i-pagination
                 v-model="page"
                 :size="paginationConfig.size" :limit="paginationConfig.limit" :variant="paginationConfig.variant"
-                :items-per-page="rowsPerPage" :items="rowsCount"/>
+                :items-per-page="rowsPerPage" :items="rowsCount"></i-pagination>
         </slot>
     </div>
 </div>
