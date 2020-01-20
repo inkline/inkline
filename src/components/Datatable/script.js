@@ -7,36 +7,48 @@ import ISelectOption from '@inkline/inkline/src/components/SelectOption';
 import IPagination from '@inkline/inkline/src/components/Pagination';
 import { sortByPath, getValueByPath } from '@inkline/inkline/src/helpers';
 
-const defaultPaginationConfig = {
-    limit: { xs: 3, sm: 5 },
-    size: 'md',
-    variant: 'light',
-    rowsCount: null,
-    rowsPerPage: 10,
-    rowsPerPageOptions: [10, 25, 50, 100],
-    async: false,
-    i18n: {
-        rowsPerPage: 'Show {rowsPerPage} entries',
-        range: 'Showing {rowsFrom} to {rowsTo} of {rowsCount} entries'
+export const defaults = {
+    pagination: {
+        limit: { xs: 3, sm: 5 },
+        size: 'md',
+        variant: 'light',
+        rowsCount: null,
+        rowsPerPage: 10,
+        rowsPerPageOptions: [10, 25, 50, 100],
+        async: false,
+        i18n: {
+            rowsPerPage: 'Show {rowsPerPage} entries',
+            range: 'Showing {rowsFrom} to {rowsTo} of {rowsCount} entries'
+        }
+    },
+    filtering: {
+        size: 'md',
+        variant: 'light',
+        async: false,
+        i18n: {
+            search: 'Search'
+        },
+        fuse: {
+            shouldSort: false,
+            includeMatches: true,
+            includeScore: true,
+            threshold: 0.25,
+            location: 0,
+            distance: 50,
+            tokenize: true,
+            maxPatternLength: 32,
+            minMatchCharLength: 2
+        }
     }
 };
 
-const defaultFilteringConfig = {
-    size: 'md',
-    variant: 'light',
-    async: false,
-    i18n: {
-        search: 'Search'
-    },
-    shouldSort: false,
-    includeMatches: true,
-    includeScore: true,
-    threshold: 0.25,
-    location: 0,
-    distance: 50,
-    tokenize: true,
-    maxPatternLength: 32,
-    minMatchCharLength: 2
+export const countColumn = {
+    title: '#',
+    path: '#',
+    classes: '-count',
+    align: 'right',
+    sortable: true,
+    render: (row, column, index) => (this.page - 1) * this.rowsPerPage + index + 1
 };
 
 export default {
@@ -73,6 +85,10 @@ export default {
         pagination: {
             type: [Boolean, Object],
             default: true
+        },
+        footer: {
+            type: Boolean,
+            default: true
         }
     },
     data() {
@@ -81,22 +97,15 @@ export default {
             sortDirection: 'asc',
             rowsPerPage: 1,
             page: 1,
-            filter: '',
-            search: new Fuse([], {})
+            search: '',
+            tableRows: [],
+            fuse: new Fuse([], {})
         }
     },
     computed: {
         tableColumns() {
             let columns = [
-                {
-                    title: '#',
-                    path: '#',
-                    classes: '-count',
-                    align: 'right',
-                    sortable: true,
-                    render: (row, column, index) => (this.page - 1) * this.rowsPerPage + index + 1,
-                    ...this.countColumn
-                },
+                { ...countColumn, ...this.countColumn },
                 ...this.columns
             ];
 
@@ -106,38 +115,15 @@ export default {
 
             // Type
             // Set string as default column type
-            columns = columns.map((column) => ({
-                align: 'left',
-                ...column
-            }));
+            columns = columns.map((column) => ({ align: 'left', ...column }));
 
             return columns;
         },
         tableRows() {
-            let rows = [
-                ...this.rows
-            ];
+            let rows = [ ...this.rows ];
 
-            // Sort
-            // Sort rows based on sorting function
-            const sortColumn = this.tableColumns.find((column) => column.path === this.sortBy);
-            if (sortColumn) {
-                rows = sortColumn.sortFn ? rows.sort(sortColumn.sortFn) : rows.sort(sortByPath(sortColumn.path));
-            }
-
-            // // Sort descending
-            // // If sort direction is set to descending, reverse the rows array
-            if (this.sortDirection === 'desc') {
-                rows = rows.reverse();
-            }
-
-            if (this.pagination && !this.paginationConfig.async) {
-                rows = rows.slice(this.rowsFrom, this.rowsTo);
-            }
-
-            if (this.filtering && !this.filteringConfig.async) {
-                rows = rows.slice(this.rowsFrom, this.rowsTo);
-            }
+            rows = this.sortRows(rows);
+            rows = this.filterRows(rows);
 
             return rows;
         },
@@ -161,15 +147,7 @@ export default {
                 }, {}));
         },
         paginationConfig() {
-            const config = this.pagination && this.pagination !== true ?
-                {
-                    ...defaultPaginationConfig, ...this.pagination,
-                    i18n: { ...defaultPaginationConfig.i18n, ...(this.pagination.i18n || {}) }
-                } :
-                {
-                    ...defaultPaginationConfig,
-                    i18n: { ...defaultPaginationConfig.i18n }
-                };
+            const config = this.getConfig('pagination');
 
             const messagesRegEx = / *[{}] */;
             config.i18n.rowsPerPage = String.prototype.split.apply(config.i18n.rowsPerPage, [messagesRegEx]);
@@ -178,38 +156,28 @@ export default {
             return config;
         },
         filteringConfig() {
-            const config = this.filtering && this.filtering !== true ?
-                {
-                    ...defaultFilteringConfig, ...this.filtering,
-                    i18n: { ...defaultFilteringConfig.i18n, ...(this.filtering.i18n || {}) }
-                } :
-                {
-                    ...defaultFilteringConfig,
-                    i18n: { ...defaultFilteringConfig.i18n }
-                };
+            const config = this.getConfig('filtering');
 
-            const messagesRegEx = / *[{}] */;
-            config.i18n.rowsPerPage = String.prototype.split.apply(config.i18n.rowsPerPage, [messagesRegEx]);
-            config.i18n.range = String.prototype.split.apply(config.i18n.range, [messagesRegEx]);
+            config.fuse = { ...defaults.filtering.fuse, ...(this.filtering.fuse || {}) };
 
             return config;
         },
-        rowsCount() {
-            return this.paginationConfig.rowsCount || this.rows.length;
-        },
-        rowsFrom() {
-            return (this.page - 1) * this.rowsPerPage;
-        },
-        rowsTo() {
-            const to = this.page * this.rowsPerPage;
-
-            return to > this.rowsCount ? this.rowsCount : to;
-        },
         filterableColumns() {
-            let columns = this.tableColumns.filter((column) => column.filterable);
-
-            return (columns.length === 0 ? this.tableColumns : columns).map((column) => column.path);
-        }
+            return this.filteringConfig.fuse.keys || this.tableColumns.map((column) => column.path);
+        },
+        // rowsCount() {
+        //     return this.paginationConfig.rowsCount ||
+        //         this.filter !== '' && !this.filteringConfig.async && this.tableRows.length ||
+        //         this.rows.length;
+        // },
+        // rowsFrom() {
+        //     return (this.page - 1) * this.rowsPerPage;
+        // },
+        // rowsTo() {
+        //     const to = this.page * this.rowsPerPage;
+        //
+        //     return to > this.rowsCount ? this.rowsCount : to;
+        // }
     },
     methods: {
         onHeaderCellClick(column) {
@@ -251,6 +219,76 @@ export default {
             }
 
             return classes;
+        },
+        /**
+         * Sort rows based on sorting direction and sorting function
+         *
+         * @param rows
+         * @returns {*}
+         */
+        sortRows(rows) {
+            const sortColumn = this.tableColumns.find((column) => column.path === this.sortBy);
+
+            if (sortColumn) {
+                rows = sortColumn.sortFn ? rows.sort(sortColumn.sortFn) : rows.sort(sortByPath(sortColumn.path));
+            }
+
+            // If sort direction is set to descending, reverse the rows array
+            if (this.sortDirection === 'desc') {
+                rows = rows.reverse();
+            }
+
+            return rows;
+        },
+        /**
+         * Find rows that match the given search string
+         *
+         * @param rows
+         * @returns {*}
+         */
+        filterRows(rows) {
+            if (this.filter === '') { return rows }
+
+            if (this.filtering && !this.filteringConfig.async) {
+                const fuse = new Fuse(rows, { ...this.filteringConfig.fuse, keys: this.filterableColumns });
+
+                rows = fuse.search(this.filter).map((result) => result.item);
+            }
+
+            return rows;
+        },
+        /**
+         * Slice rows to display current page
+         *
+         * @param rows
+         * @returns {*}
+         */
+        paginateRows(rows) {
+            if (this.pagination && !this.paginationConfig.async) {
+                const from = (this.page - 1) * this.rowsPerPage;
+                const to = this.page * this.rowsPerPage;
+
+                rows = rows.slice(from, to > rows.length ? rows.length : to);
+            }
+
+            return rows
+        },
+        /**
+         * Extend default configuration object with provided override values
+         *
+         * @param key
+         * @returns {*}
+         */
+        getConfig(key) {
+            return this[key] && this[key] !== true ?
+                {
+                    ...defaults[key], ...this[key],
+                    i18n: { ...defaults[key].i18n, ...(this[key].i18n || {}) }
+                } :
+                {
+                    ...defaults[key],
+                    i18n: { ...defaults[key].i18n }
+                };
         }
     },
     watch: {
