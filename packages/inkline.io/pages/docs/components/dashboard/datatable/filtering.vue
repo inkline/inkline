@@ -22,10 +22,15 @@ export default {
                 { title: 'Age', path: 'age', align: 'right' }
             ],
             selectiveFilteringColumns: [
-                { title: 'Name', path: 'name', filterable: true },
+                { title: 'Name', path: 'name' },
                 { title: 'Email', path: 'email' },
                 { title: 'Age', path: 'age', align: 'right' }
             ],
+            filteringConfig: {
+                fuse: {
+                    keys: ['name']
+                }
+            },
             rows: generateDataRows(25)
         };
     }
