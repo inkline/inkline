@@ -49,8 +49,13 @@ By setting the `filterable` column property to `true`, you can easily add filter
 export default {
     data() {
         return {
+            filteringConfig: {
+                fuse: {
+                    keys: ['name']
+                }
+            },
             columns: [
-                { title: 'Name', path: 'name', filterable: true },
+                { title: 'Name', path: 'name' },
                 { title: 'Email', path: 'email' },
                 { title: 'Age', path: 'age' }
             ],
@@ -62,7 +67,7 @@ export default {
 
 <i-code-preview title="Data Table Selective Filtering" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 
-<i-datatable :columns="selectiveFilteringColumns" :rows="rows" />
+<i-datatable :columns="selectiveFilteringColumns" :rows="rows" :filtering="filteringConfig" />
 
 <template v-slot:html>
 
