@@ -10,8 +10,8 @@
                 <template v-else>{{part}}</template>
             </template>
         </div>
-        <div class="filter">
-            <i-input v-model="search" :placeholder="filteringConfig.i18n.search">
+        <div class="filtering-input">
+            <i-input v-model="search" :placeholder="filteringConfig.i18n.placeholder">
                 <i-icon icon="search" slot="suffix"></i-icon>
             </i-input>
         </div>
@@ -19,47 +19,54 @@
     <div class="table-wrapper" :class="classes['wrapper']">
         <table class="datatable" :class="classes['root']">
             <thead>
-            <tr class="dtr">
-                <slot name="header" :sortBy="sortBy">
-                    <th class="dth" :class="columnClass(column)"
-                        v-for="(column, index) in tableColumns" :key="index"
-                        @click="onHeaderCellClick(column)">
-                        <span v-if="!column.headerComponent">
-                            {{tableColumnsRendered[column.path]}}
-                            <i-icon class="sortable-icon" v-if="column.sortable" icon="sort">
-                                <i-icon v-if="sortBy === column.path" :icon="`sort-${sortDirection}`"></i-icon>
-                            </i-icon>
-                        </span>
-                        <span v-else :is="column.headerComponent" :column="column" :index="index" :sort-by="sortBy"></span>
-                    </th>
-                </slot>
-            </tr>
+                <tr class="dtr">
+                    <slot name="header" :sortBy="sortBy">
+                        <th class="dth" :class="columnClass(column)"
+                            v-for="(column, index) in tableColumns" :key="index"
+                            @click="onHeaderCellClick(column)">
+                            <span v-if="!column.headerComponent">
+                                {{tableColumnsRendered[column.path]}}
+                                <i-icon class="sortable-icon" v-if="column.sortable" icon="sort">
+                                    <i-icon v-if="sortBy === column.path" :icon="`sort-${sortDirection}`"></i-icon>
+                                </i-icon>
+                            </span>
+                            <span v-else :is="column.headerComponent" :column="column" :index="index" :sort-by="sortBy"></span>
+                        </th>
+                    </slot>
+                </tr>
             </thead>
             <tbody>
-            <tr class="dtr" :class="rowClass(row)" v-for="(row, rowIndex) in tableRows" :key="row.id">
-                <slot name="row" :row="row" :index="rowIndex">
-                    <td class="dtd" :class="columnClass(column, row)"
-                        v-for="(column, columnIndex) in tableColumns" :key="columnIndex">
-                        <span v-if="!column.component">
-                            {{tableRowsRendered[rowIndex][column.path]}}
-                        </span>
-                        <span v-else :is="column.component" :row="row" :column="column"></span>
+                <tr class="dtr" :class="rowClass(row)" v-for="(row, rowIndex) in tableRowsRendered" :key="row.id">
+                    <slot name="row" :row="tableRows[row.indexRef]" :index="row.indexRef">
+                        <td class="dtd" :class="columnClass(column, row)"
+                            v-for="(column, columnIndex) in tableColumns" :key="columnIndex">
+                            <span v-if="!column.component">
+                                {{row[column.path]}}
+                            </span>
+                            <span v-else :is="column.component" :row="row" :column="column"></span>
+                        </td>
+                    </slot>
+                </tr>
+                <tr class="dtr" v-if="tableRows.length === 0">
+                    <td class="dtd" :colspan="tableColumns.length">
+                        <slot name="filtering-no-results" v-if="search">
+                            <div class="_text-center">{{ filteringConfig.i18n.noResultsFound }}</div>
+                        </slot>
                     </td>
-                </slot>
-            </tr>
+                </tr>
             </tbody>
             <tfoot>
-            <tr class="dtr">
-                <slot name="footer">
-                    <th class="dth" :class="columnClass(column)"
-                        v-for="(column, index) in tableColumns" :key="index">
-                        <span v-if="!column.footerComponent">
-                            {{tableColumnsRendered[column.path]}}
-                        </span>
-                        <span v-else :is="column.footerComponent" :column="column" :index="index"></span>
-                    </th>
-                </slot>
-            </tr>
+                <tr class="dtr">
+                    <slot name="footer">
+                        <th class="dth" :class="columnClass(column)"
+                            v-for="(column, index) in tableColumns" :key="index">
+                            <span v-if="!column.footerComponent">
+                                {{tableColumnsRendered[column.path]}}
+                            </span>
+                            <span v-else :is="column.footerComponent" :column="column" :index="index"></span>
+                        </th>
+                    </slot>
+                </tr>
             </tfoot>
         </table>
     </div>

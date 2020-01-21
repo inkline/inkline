@@ -26,7 +26,8 @@ export const defaults = {
         variant: 'light',
         async: false,
         i18n: {
-            search: 'Search'
+            placeholder: 'Search',
+            noResultsFound: 'No matching records found',
         },
         fuse: {
             shouldSort: false,
@@ -34,10 +35,10 @@ export const defaults = {
             includeScore: true,
             threshold: 0.25,
             location: 0,
-            distance: 50,
+            distance: 75,
             tokenize: true,
             maxPatternLength: 32,
-            minMatchCharLength: 2
+            minMatchCharLength: 1
         }
     }
 };
@@ -48,7 +49,9 @@ export const countColumn = {
     classes: '-count',
     align: 'right',
     sortable: true,
-    render: (row, column, index) => (this.page - 1) * this.rowsPerPage + index + 1
+    render(row, column, index) {
+        return (this.page - 1) * this.rowsPerPage + index + 1;
+    }
 };
 
 export default {
@@ -71,7 +74,7 @@ export default {
             default: () => []
         },
         countColumn: {
-            type: Object,
+            type: [Boolean, Object],
             default: () => ({})
         },
         defaultSortKey: {
@@ -97,35 +100,17 @@ export default {
             sortDirection: 'asc',
             rowsPerPage: 1,
             page: 1,
-            search: '',
-            tableRows: [],
-            fuse: new Fuse([], {})
+            search: ''
         }
     },
     computed: {
         tableColumns() {
-            let columns = [
-                { ...countColumn, ...this.countColumn },
-                ...this.columns
-            ];
+            let columns = [...this.columns];
 
-            // Filter
-            // Discard hidden columns
-            columns = columns.filter((column) => !column.hidden);
-
-            // Type
-            // Set string as default column type
-            columns = columns.map((column) => ({ align: 'left', ...column }));
+            columns = this.addCountColumn(columns);
+            columns = this.filterColumns(columns);
 
             return columns;
-        },
-        tableRows() {
-            let rows = [ ...this.rows ];
-
-            rows = this.sortRows(rows);
-            rows = this.filterRows(rows);
-
-            return rows;
         },
         tableColumnsRendered() {
             return this.tableColumns.reduce((renderedColumn, column, index) => {
@@ -136,12 +121,25 @@ export default {
                 return renderedColumn;
             }, {});
         },
+        tableRows() {
+            let rows = [ ...this.rows ];
+
+            rows = this.sortRows(rows);
+            rows = this.filterRows(rows);
+
+            return rows;
+        },
         tableRowsRendered() {
-            return this.tableRows.map((row, index) => this.tableColumns
+            let rows = this.tableRows;
+
+            rows = this.paginateRows(rows);
+
+            return rows.map((row, index) => this.tableColumns
                 .reduce((renderedRow, column) => {
                     renderedRow[column.path] = column.render ?
-                        column.render(row, column, index) :
+                        column.render.call(this, row, column, index) :
                         getValueByPath(row, column.path);
+                    renderedRow.indexRef = index;
 
                     return renderedRow;
                 }, {}));
@@ -165,21 +163,26 @@ export default {
         filterableColumns() {
             return this.filteringConfig.fuse.keys || this.tableColumns.map((column) => column.path);
         },
-        // rowsCount() {
-        //     return this.paginationConfig.rowsCount ||
-        //         this.filter !== '' && !this.filteringConfig.async && this.tableRows.length ||
-        //         this.rows.length;
-        // },
-        // rowsFrom() {
-        //     return (this.page - 1) * this.rowsPerPage;
-        // },
-        // rowsTo() {
-        //     const to = this.page * this.rowsPerPage;
-        //
-        //     return to > this.rowsCount ? this.rowsCount : to;
-        // }
+        rowsCount() {
+            return this.paginationConfig.rowsCount ||
+                // this.filter !== '' && !this.filteringConfig.async && this.tableRows.length ||
+                this.tableRows.length;
+        },
+        rowsFrom() {
+            return (this.page - 1) * this.rowsPerPage;
+        },
+        rowsTo() {
+            const to = this.page * this.rowsPerPage;
+
+            return to > this.rowsCount ? this.rowsCount : to;
+        }
     },
     methods: {
+        /**
+         * Click handler for header cell that triggers sorting and toggles sort direction
+         *
+         * @param column
+         */
         onHeaderCellClick(column) {
             if (column.sortable) {
                 if (this.sortBy !== column.path) {
@@ -190,8 +193,15 @@ export default {
                 }
             }
         },
+        /**
+         * Compute class names for the given column
+         *
+         * @param column
+         * @param row
+         * @returns {string[]}
+         */
         columnClass(column, row) {
-            let classes = [`-align-${column.align}`];
+            let classes = [`-align-${column.align || 'left'}`];
 
             if (!row && column.sortable) {
                 classes = classes.concat('-sortable');
@@ -210,6 +220,12 @@ export default {
 
             return classes;
         },
+        /**
+         * Compute class names for the given row
+         *
+         * @param row
+         * @returns {Array}
+         */
         rowClass(row) {
             let classes = [];
 
@@ -221,6 +237,28 @@ export default {
             return classes;
         },
         /**
+         * Add an extended count column if enabled
+         *
+         * @param columns
+         * @returns {*}
+         */
+        addCountColumn(columns) {
+            if (this.countColumn) {
+                columns.unshift({ ...countColumn, ...this.countColumn });
+            }
+
+            return columns;
+        },
+        /**
+         * Remove hidden columns from the columns array
+         *
+         * @param columns
+         * @returns {*}
+         */
+        filterColumns(columns) {
+            return columns.filter((column) => !column.hidden);
+        },
+        /**
          * Sort rows based on sorting direction and sorting function
          *
          * @param rows
@@ -230,7 +268,9 @@ export default {
             const sortColumn = this.tableColumns.find((column) => column.path === this.sortBy);
 
             if (sortColumn) {
-                rows = sortColumn.sortFn ? rows.sort(sortColumn.sortFn) : rows.sort(sortByPath(sortColumn.path));
+                rows = sortColumn.sortFn ?
+                    rows.sort(sortColumn.sortFn) :
+                    rows.sort(sortByPath(sortColumn.path));
             }
 
             // If sort direction is set to descending, reverse the rows array
@@ -247,15 +287,17 @@ export default {
          * @returns {*}
          */
         filterRows(rows) {
-            if (this.filter === '') { return rows }
-
-            if (this.filtering && !this.filteringConfig.async) {
-                const fuse = new Fuse(rows, { ...this.filteringConfig.fuse, keys: this.filterableColumns });
-
-                rows = fuse.search(this.filter).map((result) => result.item);
+            if (!this.filtering || this.search === '' || this.filteringConfig.async) {
+                return rows;
             }
 
-            return rows;
+            const keys = this.filterableColumns;
+            const fuse = new Fuse(rows, {
+                ...this.filteringConfig.fuse,
+                keys
+            });
+
+            return fuse.search(this.search).map((result) => result.item);
         },
         /**
          * Slice rows to display current page
@@ -264,14 +306,11 @@ export default {
          * @returns {*}
          */
         paginateRows(rows) {
-            if (this.pagination && !this.paginationConfig.async) {
-                const from = (this.page - 1) * this.rowsPerPage;
-                const to = this.page * this.rowsPerPage;
-
-                rows = rows.slice(from, to > rows.length ? rows.length : to);
+            if (!this.pagination || this.paginationConfig.async) {
+                return rows;
             }
 
-            return rows
+            return rows.slice(this.rowsFrom, this.rowsTo);
         },
         /**
          * Extend default configuration object with provided override values
@@ -306,6 +345,10 @@ export default {
         },
         page(value) {
             this.$emit('pagination', value, this.rowsPerPage);
+        },
+        search(value) {
+            this.page = 1;
+            this.$emit('filtering', value, this.rowsPerPage);
         }
     },
     created() {
