@@ -79,7 +79,7 @@ export default {
                 includeScore: true,
                 threshold: 0.25,
                 location: 0,
-                distance: 50,
+                distance: 75,
                 tokenize: true,
                 maxPatternLength: 32,
                 minMatchCharLength: 3,
