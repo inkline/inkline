@@ -50,6 +50,17 @@
         }
     }
 
+    // No wrap
+    //
+    // Set table cell white-space to nowrap
+    //
+    &.-nowrap {
+        th,
+        td {
+            white-space: nowrap;
+        }
+    }
+
     // Hover table
     //
     // Placed here since it has to come after the potential zebra striping
