@@ -29,6 +29,10 @@ export default {
         responsive: {
             type: [Boolean, String],
             default: true
+        },
+        nowrap: {
+            type: Boolean,
+            default: false
         }
     },
     created() {
@@ -37,6 +41,7 @@ export default {
             '-condensed': this.condensed,
             '-striped': this.striped,
             '-hover': this.hover,
+            '-nowrap': this.nowrap,
         }));
 
         this.classesProvider.add('wrapper', () => ({

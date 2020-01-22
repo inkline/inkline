@@ -1,7 +1,7 @@
 <div class="datatable-wrapper">
     <div class="header-wrapper">
         <div class="pagination-select" v-if="pagination">
-            <template v-for="part in paginationConfig.i18n.rowsPerPage">
+            <template v-for="part in i18nConfig.pagination.rowsPerPage">
                 <i-select v-model="rowsPerPage" :size="paginationConfig.size" v-if="part === 'rowsPerPage'">
                     <i-select-option v-for="(item, index) in paginationConfig.rowsPerPageOptions" :value="item" :key="index">
                         {{ item }}
@@ -11,7 +11,7 @@
             </template>
         </div>
         <div class="filtering-input">
-            <i-input v-model="search" :placeholder="filteringConfig.i18n.placeholder">
+            <i-input v-model="search" :placeholder="i18nConfig.filtering.inputPlaceholder">
                 <i-icon icon="search" slot="suffix"></i-icon>
             </i-input>
         </div>
@@ -21,11 +21,11 @@
             <thead>
                 <tr class="dtr">
                     <slot name="header" :sortBy="sortBy">
-                        <th class="dth" :class="columnClass(column)"
-                            v-for="(column, index) in tableColumns" :key="index"
+                        <th class="dth" :class="columnClass(column)" :style="columnStyle(column)"
+                            v-for="(column, index) in tableColumns" :key="index" :ref="tableColumns"
                             @click="onHeaderCellClick(column)">
                             <span v-if="!column.headerComponent">
-                                {{tableColumnsRendered[column.path]}}
+                                {{tableColumnsHeaderRendered[column.path]}}
                                 <i-icon class="sortable-icon" v-if="column.sortable" icon="sort">
                                     <i-icon v-if="sortBy === column.path" :icon="`sort-${sortDirection}`"></i-icon>
                                 </i-icon>
@@ -36,21 +36,28 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="dtr" :class="rowClass(row)" v-for="(row, rowIndex) in tableRowsRendered" :key="row.id">
-                    <slot name="row" :row="tableRows[row.indexRef]" :index="row.indexRef">
-                        <td class="dtd" :class="columnClass(column, row)"
-                            v-for="(column, columnIndex) in tableColumns" :key="columnIndex">
-                            <span v-if="!column.component">
-                                {{row[column.path]}}
-                            </span>
-                            <span v-else :is="column.component" :row="row" :column="column"></span>
-                        </td>
-                    </slot>
-                </tr>
+                <template v-for="(row, rowIndex) in tableRowsRendered">
+                    <tr class="dtr" :class="rowClass(row)" :key="row.id">
+                        <slot name="row" :row="tableRows[row.indexRef]" :index="row.indexRef">
+                            <td class="dtd" :class="columnClass(column, row)"  :style="columnStyle(column, row)"
+                                v-for="(column, columnIndex) in tableColumns" :key="columnIndex">
+                                <span v-if="!column.component">
+                                    {{row[column.path]}}
+                                </span>
+                                <span v-else-if="column.expand">Expand</span>
+                                <span v-else :is="column.component" :row="row" :column="column"></span>
+                            </td>
+                        </slot>
+                    </tr>
+                    <tr class="dtr" :class="rowClass(row)" :key="row.id + '-expand'" v-if="$scopedSlots.expand">
+                        <slot name="expand" :columns="tableColumns" :row="row"></slot>
+                    </tr>
+                </template>
+
                 <tr class="dtr" v-if="tableRows.length === 0">
                     <td class="dtd" :colspan="tableColumns.length">
                         <slot name="filtering-no-results" v-if="search">
-                            <div class="_text-center">{{ filteringConfig.i18n.noResultsFound }}</div>
+                            <div class="_text-center">{{ i18nConfig.filtering.noResultsFound }}</div>
                         </slot>
                     </td>
                 </tr>
@@ -58,10 +65,10 @@
             <tfoot>
                 <tr class="dtr">
                     <slot name="footer">
-                        <th class="dth" :class="columnClass(column)"
+                        <th class="dth" :class="columnClass(column)" :style="columnStyle(column)"
                             v-for="(column, index) in tableColumns" :key="index">
                             <span v-if="!column.footerComponent">
-                                {{tableColumnsRendered[column.path]}}
+                                {{tableColumnsFooterRendered[column.path]}}
                             </span>
                             <span v-else :is="column.footerComponent" :column="column" :index="index"></span>
                         </th>
@@ -72,18 +79,21 @@
     </div>
     <div class="footer-wrapper" v-if="pagination">
         <div class="pagination-range">
-            <template v-for="part in paginationConfig.i18n.range">
+            <template v-for="part in i18nConfig.pagination.rowsRange">
                 <template v-if="part === 'rowsFrom'">{{ rowsFrom + 1 }}</template>
                 <template v-else-if="part === 'rowsTo'">{{ rowsTo }}</template>
-                <template v-else-if="part === 'rowsCount'">{{ rowsCount }}</template>
+                <template v-else-if="part === 'rowsCount'">{{ rowsLength }}</template>
                 <template v-else> {{ part }} </template>
             </template>
         </div>
-        <slot name="pagination" :page="page" :rows-per-page="rowsPerPage" :rows-count="rowsCount">
+        <slot name="pagination" :page="page" :rows-per-page="rowsPerPage" :rows-count="rowsLength">
             <i-pagination
-                v-model="page"
-                :size="paginationConfig.size" :limit="paginationConfig.limit" :variant="paginationConfig.variant"
-                :items-per-page="rowsPerPage" :items="rowsCount"></i-pagination>
+                :items="rowsLength"
+                :items-per-page="rowsPerPage"
+                :limit="paginationConfig.limit"
+                :size="paginationConfig.size"
+                :variant="paginationConfig.variant"
+                v-model="page"></i-pagination>
         </slot>
     </div>
 </div>

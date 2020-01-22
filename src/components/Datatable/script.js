@@ -12,23 +12,12 @@ export const defaults = {
         limit: { xs: 3, sm: 5 },
         size: 'md',
         variant: 'light',
-        rowsCount: null,
         rowsPerPage: 10,
-        rowsPerPageOptions: [10, 25, 50, 100],
-        async: false,
-        i18n: {
-            rowsPerPage: 'Show {rowsPerPage} entries',
-            range: 'Showing {rowsFrom} to {rowsTo} of {rowsCount} entries'
-        }
+        rowsPerPageOptions: [10, 25, 50, 100]
     },
     filtering: {
         size: 'md',
         variant: 'light',
-        async: false,
-        i18n: {
-            placeholder: 'Search',
-            noResultsFound: 'No matching records found',
-        },
         fuse: {
             shouldSort: false,
             includeMatches: true,
@@ -40,7 +29,17 @@ export const defaults = {
             maxPatternLength: 32,
             minMatchCharLength: 1
         }
-    }
+    },
+    i18n: {
+        pagination: {
+            rowsPerPage: 'Show {rowsPerPage} entries',
+            rowsRange: 'Showing {rowsFrom} to {rowsTo} of {rowsCount} entries'
+        },
+        filtering: {
+            inputPlaceholder: 'Search',
+            noResultsFound: 'No matching records found',
+        }
+    },
 };
 
 export const countColumn = {
@@ -54,6 +53,14 @@ export const countColumn = {
     }
 };
 
+export const expandColumn = {
+    title: '',
+    path: '^',
+    classes: '-expand',
+    expand: true,
+    component: true
+};
+
 export default {
     name: 'IDatatable',
     extends: ITable,
@@ -65,17 +72,29 @@ export default {
         IPagination
     },
     props: {
-        columns: {
-            type: Array,
-            default: () => []
+        async: {
+            type: Boolean,
+            default: false
         },
-        rows: {
+        columns: {
             type: Array,
             default: () => []
         },
         countColumn: {
             type: [Boolean, Object],
             default: () => ({})
+        },
+        expandColumn: {
+            type: [Boolean, Object],
+            default: () => ({})
+        },
+        rows: {
+            type: Array,
+            default: () => []
+        },
+        rowsCount: {
+            type: Number,
+            default: null
         },
         defaultSortKey: {
             type: String,
@@ -92,13 +111,17 @@ export default {
         footer: {
             type: Boolean,
             default: true
+        },
+        i18n: {
+            type: Object,
+            default: () => ({})
         }
     },
     data() {
         return {
             sortBy: this.defaultSortKey,
             sortDirection: 'asc',
-            rowsPerPage: 1,
+            rowsPerPage: 0,
             page: 1,
             search: ''
         }
@@ -108,18 +131,16 @@ export default {
             let columns = [...this.columns];
 
             columns = this.addCountColumn(columns);
+            columns = this.addExpandColumn(columns);
             columns = this.filterColumns(columns);
 
             return columns;
         },
-        tableColumnsRendered() {
-            return this.tableColumns.reduce((renderedColumn, column, index) => {
-                renderedColumn[column.path] = column.renderHeader ?
-                    column.renderHeader(column, index) :
-                    column.title;
-
-                return renderedColumn;
-            }, {});
+        tableColumnsHeaderRendered() {
+            return this.renderColumns(this.tableColumns, 'renderHeader');
+        },
+        tableColumnsFooterRendered() {
+            return this.renderColumns(this.tableColumns, 'renderFooter');
         },
         tableRows() {
             let rows = [ ...this.rows ];
@@ -133,25 +154,12 @@ export default {
             let rows = this.tableRows;
 
             rows = this.paginateRows(rows);
+            rows = this.renderRows(rows);
 
-            return rows.map((row, index) => this.tableColumns
-                .reduce((renderedRow, column) => {
-                    renderedRow[column.path] = column.render ?
-                        column.render.call(this, row, column, index) :
-                        getValueByPath(row, column.path);
-                    renderedRow.indexRef = index;
-
-                    return renderedRow;
-                }, {}));
+            return rows;
         },
         paginationConfig() {
-            const config = this.getConfig('pagination');
-
-            const messagesRegEx = / *[{}] */;
-            config.i18n.rowsPerPage = String.prototype.split.apply(config.i18n.rowsPerPage, [messagesRegEx]);
-            config.i18n.range = String.prototype.split.apply(config.i18n.range, [messagesRegEx]);
-
-            return config;
+            return this.getConfig('pagination');
         },
         filteringConfig() {
             const config = this.getConfig('filtering');
@@ -160,11 +168,23 @@ export default {
 
             return config;
         },
+        i18nConfig() {
+            const config = {
+                pagination: { ...defaults.i18n.pagination, ...this.i18n.pagination },
+                filtering: { ...defaults.i18n.filtering, ...this.i18n.filtering },
+            };
+
+            Object.keys(config.pagination).forEach((key) => {
+                config.pagination[key] = String.prototype.split.apply(config.pagination[key], [/ *[{}] */]);
+            });
+
+            return config;
+        },
         filterableColumns() {
             return this.filteringConfig.fuse.keys || this.tableColumns.map((column) => column.path);
         },
-        rowsCount() {
-            return this.paginationConfig.rowsCount ||
+        rowsLength() {
+            return this.rowsCount ||
                 // this.filter !== '' && !this.filteringConfig.async && this.tableRows.length ||
                 this.tableRows.length;
         },
@@ -174,7 +194,7 @@ export default {
         rowsTo() {
             const to = this.page * this.rowsPerPage;
 
-            return to > this.rowsCount ? this.rowsCount : to;
+            return to > this.rowsLength ? this.rowsLength : to;
         }
     },
     methods: {
@@ -194,6 +214,22 @@ export default {
             }
         },
         /**
+         * Return rendered column header values
+         *
+         * @param columns
+         * @param renderMethod
+         * @returns {*}
+         */
+        renderColumns(columns, renderMethod) {
+            return columns.reduce((renderedColumn, column, index) => {
+                renderedColumn[column.path] = column[renderMethod] ?
+                    column[renderMethod](column, index) :
+                    column.title;
+
+                return renderedColumn;
+            }, {});
+        },
+        /**
          * Compute class names for the given column
          *
          * @param column
@@ -205,6 +241,10 @@ export default {
 
             if (!row && column.sortable) {
                 classes = classes.concat('-sortable');
+            }
+
+            if (column.sticky) {
+                classes = classes.concat('-sticky');
             }
 
             // Add column specific classes
@@ -219,6 +259,17 @@ export default {
             }
 
             return classes;
+        },
+        /**
+         * Compute style for the given column
+         *
+         * @param column
+         * @param row
+         */
+        columnStyle(column, row) {
+            const style = { ...column.style, ...(row || {}).style };
+
+            return Object.keys(style).length > 0 && style;
         },
         /**
          * Compute class names for the given row
@@ -250,6 +301,19 @@ export default {
             return columns;
         },
         /**
+         * Add the expand handler column
+         *
+         * @param columns
+         * @returns {*}
+         */
+        addExpandColumn(columns) {
+            if (this.$scopedSlots.expand) {
+                columns.push({ ...expandColumn, ...this.expandColumn });
+            }
+
+            return columns;
+        },
+        /**
          * Remove hidden columns from the columns array
          *
          * @param columns
@@ -257,6 +321,23 @@ export default {
          */
         filterColumns(columns) {
             return columns.filter((column) => !column.hidden);
+        },
+        /**
+         * Return rows array with rendered row values
+         *
+         * @param rows
+         * @returns {*}
+         */
+        renderRows(rows) {
+            return rows.map((row, index) => this.tableColumns
+                .reduce((renderedRow, column) => {
+                    renderedRow[column.path] = column.render ?
+                        column.render.call(this, row, column, index) :
+                        getValueByPath(row, column.path);
+                    renderedRow.indexRef = index;
+
+                    return renderedRow;
+                }, {}));
         },
         /**
          * Sort rows based on sorting direction and sorting function
@@ -287,7 +368,7 @@ export default {
          * @returns {*}
          */
         filterRows(rows) {
-            if (!this.filtering || this.search === '' || this.filteringConfig.async) {
+            if (!this.filtering || this.async || this.search === '') {
                 return rows;
             }
 
@@ -306,7 +387,7 @@ export default {
          * @returns {*}
          */
         paginateRows(rows) {
-            if (!this.pagination || this.paginationConfig.async) {
+            if (!this.pagination || this.async) {
                 return rows;
             }
 
@@ -320,14 +401,22 @@ export default {
          */
         getConfig(key) {
             return this[key] && this[key] !== true ?
-                {
-                    ...defaults[key], ...this[key],
-                    i18n: { ...defaults[key].i18n, ...(this[key].i18n || {}) }
-                } :
-                {
-                    ...defaults[key],
-                    i18n: { ...defaults[key].i18n }
-                };
+                { ...defaults[key], ...this[key] } :
+                { ...defaults[key] };
+        },
+        /**
+         * Emit an extended update event
+         *
+         * @param event
+         * @returns {*}
+         */
+        emitUpdate(event) {
+            this.$emit('update', {
+                page: this.page,
+                rowsPerPage: this.rowsPerPage,
+                filter: this.search,
+                ...event
+            });
         }
     },
     watch: {
@@ -336,19 +425,19 @@ export default {
 
             this.rowsPerPage = value;
 
-            const maxPage = Math.ceil(this.rowsCount / value);
+            const maxPage = Math.ceil(this.rowsLength / value);
             if (this.page > maxPage) {
                 this.page = maxPage;
             } else {
-                this.$emit('pagination', this.page, value);
+                this.emitUpdate({ rowsPerPage: value });
             }
         },
         page(value) {
-            this.$emit('pagination', value, this.rowsPerPage);
+            this.emitUpdate({ page: value });
         },
         search(value) {
             this.page = 1;
-            this.$emit('filtering', value, this.rowsPerPage);
+            this.emitUpdate({ page: 1, filter: value });
         }
     },
     created() {
