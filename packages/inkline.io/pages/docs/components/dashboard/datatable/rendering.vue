@@ -1,11 +1,11 @@
 <template lang="md" src="./rendering.md" />
 <script>
-import Vue from 'vue';
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
 import { IDatatable, IAlert, IIcon } from '@inkline/inkline/src';
 import TableProgress from '@components/docs/TableProgress';
 import TableHeaderComponent from '@components/docs/TableHeaderComponent';
+import TableFooterComponent from '@components/docs/TableFooterComponent';
 
 export default {
     extends: View,
@@ -33,6 +33,10 @@ export default {
                 { title: 'Name', path: 'name' },
                 { title: 'Country', path: 'address.country', renderHeader: (column) => column.title.toUpperCase() },
             ],
+            renderFooterColumns: [
+                { title: 'Name', path: 'name' },
+                { title: 'Country', path: 'address.country', renderFooter: (column) => column.title.toUpperCase() },
+            ],
             componentColumns: [
                 { title: 'Name', path: 'name' },
                 { title: 'Progress', path: 'progress', component: TableProgress },
@@ -40,6 +44,10 @@ export default {
             headerComponentColumns: [
                 { title: 'Name', path: 'name' },
                 { title: 'Country', path: 'address.country', headerComponent: TableHeaderComponent },
+            ],
+            footerComponentColumns: [
+                { title: 'Name', path: 'name' },
+                { title: 'Country', path: 'address.country', footerComponent: TableFooterComponent },
             ],
             rows: [
                 { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },

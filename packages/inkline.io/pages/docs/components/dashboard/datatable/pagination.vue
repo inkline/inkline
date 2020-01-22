@@ -24,17 +24,17 @@ export default {
             ],
             rows: generateDataRows(200),
             rowsShort: generateDataRows(10),
-            rowsAsync: [],
-            paginationConfig: {
-                async: true,
-                rowsCount: 200
-            }
+            asyncRows: [],
+            rowsCount: 0
         };
     },
     methods: {
-        onPageChange(page, rowsPerPage) {
-            this.rowsAsync = this.rows.slice((page - 1) * rowsPerPage, page * rowsPerPage);
+        onUpdate(event) {
+            this.asyncRows = this.rows.slice((event.page - 1) * event.rowsPerPage, event.page * event.rowsPerPage);
         }
+    },
+    mounted() {
+        this.rowsCount = 200;
     }
 };
 </script>

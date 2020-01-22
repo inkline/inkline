@@ -86,38 +86,43 @@ Pagination can be configured by providing an object for the `pagination` attribu
 
 ~~~js
 export default {
-   limit: { xs: 3, sm: 5 },
-   size: 'md',
-   variant: 'light',
-   rowsCount: null,
-   rowsPerPage: 10,
-   rowsPerPageOptions: [10, 25, 50, 100],
-   async: false,
-   i18n: {
-       rowsPerPage: 'Show {rowsPerPage} entries',
-       range: 'Showing {rowsFrom} to {rowsTo} of {rowsCount} entries'
-   }
-};
+    ...
+    data() {
+        return {
+            pagination: {
+                limit: { xs: 3, sm: 5 },
+                size: 'md',
+                variant: 'light',
+                rowsPerPage: 10,
+                rowsPerPageOptions: [10, 25, 50, 100]
+            }
+        };
+    }
+}       
+~~~
+
+~~~html
+<i-datatable :columns="columns" :rows="rows" :pagination="pagination" />
 ~~~
 
 ### Async Pagination
-Pagination can be handled asynchronously by setting the `pagination.async` attribute to `true` and providing an appropriate `pagination.rowsCount`. 
+Pagination can be handled asynchronously by setting the `async` attribute to `true` and providing an appropriate `rows-count` attribute.
 
-This will tell the DataTable component to only display the rows and let the pagination handling be done externally. 
+This will tell the DataTable component to only display the rows and let the pagination handling be done asynchronously and externally using the `update` event. 
 
 <i-alert variant="info" class="-code">
 <template v-slot:icon><i-icon icon="info"></i-icon></template>
 
-The first `pagination` event occurs when the DataTable is `created`.
+The first `update` event occurs when the DataTable is `created`.
 
 </i-alert>
 
 <i-code-preview title="Data Table Async Pagination" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
-<i-datatable :columns="columns" :rows="rowsAsync" :pagination="paginationConfig" @pagination="onPageChange"></i-datatable>
+<i-datatable async :columns="columns" :rows="asyncRows" :rows-count="rowsCount" @update="onUpdate"></i-datatable>
 <template v-slot:html>
 
 ~~~html
-<i-datatable :columns="columns" :rows="rows" :pagination="pagination" @pagination="onPageChange" />
+<i-datatable async :columns="columns" :rows="rows" :rows-count="rowsCount" @update="onUpdate" />
 ~~~
 
 </template>
@@ -133,16 +138,14 @@ export default {
                 { title: 'Age', path: 'age', sortable: true }
             ],
             rows: [],
-            pagination: {
-                async: true,
-                rowsCount: 200
-            }
+            rowsCount: 0
         }
     },
     methods: {
-        onPageChange(page, rowsPerPage) {
-            getRowsAsync(page, rowsPerPage).then((response) => {
-                this.rows = response.data;
+        onUpdate(event) {
+            getRowsAsync(event.page, event.rowsPerPage).then((response) => {
+                this.rows = response.data.rows;
+                this.rowsCount = response.data.rowsCount;
             });
         }       
     }
