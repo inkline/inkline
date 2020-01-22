@@ -3,7 +3,7 @@
 @import '~@inkline/inkline/components/Button/css/variables';
 
 #index-page {
-    background-image: url('~static/images/pages/index-header-christmas-large.jpg');
+    background-image: url('~static/images/pages/index-header-large.jpg');
     background-repeat: no-repeat;
     background-position: center 0;
     background-size: 1560px 675px;
@@ -17,7 +17,7 @@
     }
 
     @include breakpoint-down(sm) {
-        background-image: url('~static/images/pages/index-header-christmas-small.jpg');
+        background-image: url('~static/images/pages/index-header-small.jpg');
         background-size: 768px 460px;
     }
 
