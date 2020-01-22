@@ -240,6 +240,16 @@ const pages = [
         description: 'Inkline\'s Data Table can be easily paginated with smart lazy loading capabilities.'
     },
     {
+        id: 'docs-components-dashboard-datatable-scrolling',
+        title: 'Scrolling - Data Table',
+        description: 'Inkline\'s Data Table supports a large number of columns easily using horizontal scrolling and sticky columns.'
+    },
+    {
+        id: 'docs-components-dashboard-datatable-expanding',
+        title: 'Expanding - Data Table',
+        description: 'Inkline\'s Data Table allows you to expand a row to easily show more details about the entry.'
+    },
+    {
         id: 'docs-components-dashboard-datatable-rendering',
         title: 'Rendering - Data Table',
         description: 'Inkline\'s Data Table columns, rows and headers can be rendered using custom render helpers.'

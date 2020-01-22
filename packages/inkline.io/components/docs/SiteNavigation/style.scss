@@ -1,5 +1,8 @@
 @import '~@inkline/inkline/css/config/index';
 
+$site-navigation-border-left-color: $color-gray-20 !default;
+$site-navigation-border-left-color-active: $color-primary !default;
+
 .site-navigation {
     display: block;
     padding-top: ($spacer * 2.5);
@@ -37,7 +40,7 @@
                 padding-bottom: ($spacer / 3);
                 padding-left: $spacer;
                 color: $body-color;
-                border-left: 1px solid $color-gray-20;
+                border-left: 1px solid $site-navigation-border-left-color;
                 transition: color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
 
                 &::before {
@@ -86,13 +89,29 @@
         &.-active {
             > .item {
                 > .header {
-                    border-left-color: $color-primary;
+                    border-left-color: $site-navigation-border-left-color;
                     color: $color-primary;
+                    font-weight: $font-weight-semibold;
+
+                    &::before {
+                        opacity: 1;
+                        transform: scaleX(1);
+                    }
+                }
+
+                &.-active > .header {
+                    font-weight: $font-weight-normal;
+                    border-left-color: $site-navigation-border-left-color-active;
+
+                    &::before {
+                        opacity: 0;
+                        transform: scaleX(0);
+                    }
                 }
 
                 .body > .content {
                     ul li a {
-                        border-left-color: $color-primary;
+                        border-left-color: $site-navigation-border-left-color-active;
                     }
                 }
             }
