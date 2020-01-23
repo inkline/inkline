@@ -283,7 +283,7 @@ export default {
          * @param row
          */
         columnStyle(column, row) {
-            const style = { ...column.style, ...(row || {}).style };
+            const style = { ...column.style, ...((row || {}).config || {}).style };
 
             return Object.keys(style).length > 0 && style;
         },
@@ -298,7 +298,8 @@ export default {
 
             // Add row specific classes
             if (row && row.config && row.config.rowClass) {
-                classes = classes.concat(row.config.rowClass);
+                classes = classes.concat(row.config.rowClass.constructor === Array ?
+                    row.config.rowClass : [row.config.rowClass]);
             }
 
             return classes;
