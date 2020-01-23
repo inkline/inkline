@@ -7,17 +7,27 @@ To be able to expand a Data Table entry, you will need to provide an `expand` sc
 <i-code-preview title="Data Table Expanding" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 
 <i-datatable :columns="columns" :rows="rows">
-    <template v-slot:expand="{ row, columns }">
-        <td :colspan="columns.length">{{row}}</td>
+    <template v-slot:expand="{ row, columns, expanded }">
+        <td :colspan="columns.length">
+            {{row.name}} occupies the {{row.position}} position at Pied Piper, a fictional company based in Silicon Valley, California.
+        </td>
     </template>
 </i-datatable>
 
 <template v-slot:html>
+<div v-pre>
 
 ~~~html
-<i-datatable :columns="columns" :rows="rows" nowrap />
+<i-datatable :columns="columns" :rows="rows">
+    <template v-slot:expand="{ row, columns, expanded }">
+        <td :colspan="columns.length">
+            {{row.name}} occupies the {{row.position}} position at Pied Piper, a fictional company based in Silicon Valley, California.
+        </td>
+    </template>
+</i-datatable>
 ~~~
 
+</div>
 </template>
 <template v-slot:js>
 
