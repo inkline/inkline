@@ -5,6 +5,7 @@ import IInput from '@inkline/inkline/src/components/Input';
 import ISelect from '@inkline/inkline/src/components/Select';
 import ISelectOption from '@inkline/inkline/src/components/SelectOption';
 import IPagination from '@inkline/inkline/src/components/Pagination';
+import ITransitionExpand from '@inkline/inkline/src/transitions/TransitionExpand';
 import { sortByPath, getValueByPath } from '@inkline/inkline/src/helpers';
 
 export const defaults = {
@@ -42,6 +43,12 @@ export const defaults = {
     },
 };
 
+export const idColumn = {
+    title: '',
+    path: 'id',
+    custom: true
+};
+
 export const countColumn = {
     title: '#',
     path: '#',
@@ -57,8 +64,7 @@ export const expandColumn = {
     title: '',
     path: '^',
     classes: '-expand',
-    expand: true,
-    component: true
+    custom: true
 };
 
 export default {
@@ -69,7 +75,8 @@ export default {
         IInput,
         ISelect,
         ISelectOption,
-        IPagination
+        IPagination,
+        ITransitionExpand
     },
     props: {
         async: {
@@ -112,6 +119,10 @@ export default {
             type: Boolean,
             default: true
         },
+        singleExpand: {
+            type: Boolean,
+            default: false
+        },
         i18n: {
             type: Object,
             default: () => ({})
@@ -123,7 +134,8 @@ export default {
             sortDirection: 'asc',
             rowsPerPage: 0,
             page: 1,
-            search: ''
+            search: '',
+            expanded: {}
         }
     },
     computed: {
@@ -131,6 +143,7 @@ export default {
             let columns = [...this.columns];
 
             columns = this.addCountColumn(columns);
+            columns = this.addIdColumn(columns);
             columns = this.addExpandColumn(columns);
             columns = this.filterColumns(columns);
 
@@ -195,6 +208,9 @@ export default {
             const to = this.page * this.rowsPerPage;
 
             return to > this.rowsLength ? this.rowsLength : to;
+        },
+        hasExpandableRows() {
+            return Boolean(this.$slots.expand) || Boolean(this.$scopedSlots.expand);
         }
     },
     methods: {
@@ -293,6 +309,17 @@ export default {
          * @param columns
          * @returns {*}
          */
+        addIdColumn(columns) {
+            columns.unshift({ ...idColumn });
+
+            return columns;
+        },
+        /**
+         * Add an extended count column if enabled
+         *
+         * @param columns
+         * @returns {*}
+         */
         addCountColumn(columns) {
             if (this.countColumn) {
                 columns.unshift({ ...countColumn, ...this.countColumn });
@@ -307,7 +334,7 @@ export default {
          * @returns {*}
          */
         addExpandColumn(columns) {
-            if (this.$scopedSlots.expand) {
+            if (this.hasExpandableRows && this.expandColumn) {
                 columns.push({ ...expandColumn, ...this.expandColumn });
             }
 
@@ -417,6 +444,13 @@ export default {
                 filter: this.search,
                 ...event
             });
+        },
+        onClickExpand(rowId) {
+            if (this.singleExpand) {
+                return this.expanded = this.expanded[rowId] ? {} : { [rowId]: true };
+            }
+
+            this.expanded = { ...this.expanded, [rowId]: !this.expanded[rowId] };
         }
     },
     watch: {

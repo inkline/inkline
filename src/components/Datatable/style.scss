@@ -5,6 +5,8 @@
 @import '../../css/config';
 @import '../../css/mixins';
 @import '../Table/style';
+@import '../Icon/css/_variables';
+@import '../Icon/css/_mixins';
 @import 'css/_variables';
 @import 'css/_variants';
 
@@ -56,6 +58,35 @@
                 position: absolute;
                 top: 0;
                 left: 0;
+            }
+        }
+    }
+
+    .dtd {
+        > .expand-row {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+
+            &:active,
+            &:focus {
+                outline: 0;
+            }
+
+            > .icon {
+                display: inline-block;
+                position: relative;
+                transition: transform $transition-duration $transition-easing;
+
+                &::after {
+                    @extend %icon;
+
+                    content: $icon-chevron-down;
+                }
+            }
+
+            &.-active > .icon {
+                transform: rotate(180deg);
             }
         }
     }
