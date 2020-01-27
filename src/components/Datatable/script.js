@@ -134,7 +134,7 @@ export default {
             sortDirection: 'asc',
             rowsPerPage: 0,
             page: 1,
-            search: '',
+            filter: '',
             expanded: {}
         }
     },
@@ -380,23 +380,23 @@ export default {
                 rows = sortColumn.sortFn ?
                     rows.sort(sortColumn.sortFn) :
                     rows.sort(sortByPath(sortColumn.path));
-            }
 
-            // If sort direction is set to descending, reverse the rows array
-            if (this.sortDirection === 'desc') {
-                rows = rows.reverse();
+                // If sort direction is set to descending, reverse the rows array
+                if (this.sortDirection === 'desc') {
+                    rows = rows.reverse();
+                }
             }
 
             return rows;
         },
         /**
-         * Find rows that match the given search string
+         * Find rows that match the given filter string
          *
          * @param rows
          * @returns {*}
          */
         filterRows(rows) {
-            if (!this.filtering || this.async || this.search === '') {
+            if (!this.filtering || this.async || this.filter === '') {
                 return rows;
             }
 
@@ -406,7 +406,7 @@ export default {
                 keys
             });
 
-            return fuse.search(this.search).map((result) => result.item);
+            return fuse.search(this.filter).map((result) => result.item);
         },
         /**
          * Slice rows to display current page
@@ -442,10 +442,16 @@ export default {
             this.$emit('update', {
                 page: this.page,
                 rowsPerPage: this.rowsPerPage,
-                filter: this.search,
+                filter: this.filter,
                 ...event
             });
         },
+        /**
+         * Toggle expand for the row with the given id
+         *
+         * @param rowId
+         * @returns {{}}
+         */
         onClickExpand(rowId) {
             if (this.singleExpand) {
                 return this.expanded = this.expanded[rowId] ? {} : { [rowId]: true };
@@ -460,7 +466,9 @@ export default {
 
             this.rowsPerPage = value;
 
-            const maxPage = Math.ceil(this.rowsLength / value);
+            let maxPage = Math.ceil(this.rowsLength / value);
+            maxPage = maxPage === 0 ? 1 : maxPage;
+
             if (this.page > maxPage) {
                 this.page = maxPage;
             } else {
@@ -470,7 +478,7 @@ export default {
         page(value) {
             this.emitUpdate({ page: value });
         },
-        search(value) {
+        filter(value) {
             this.page = 1;
             this.emitUpdate({ page: 1, filter: value });
         }

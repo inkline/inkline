@@ -11,7 +11,7 @@
             </template>
         </div>
         <div class="filtering-input">
-            <i-input v-model="search" :placeholder="i18nConfig.filtering.inputPlaceholder">
+            <i-input v-model="filter" :placeholder="i18nConfig.filtering.inputPlaceholder">
                 <i-icon icon="search" slot="suffix"></i-icon>
             </i-input>
         </div>
@@ -71,7 +71,7 @@
 
                 <tr class="dtr" v-if="tableRows.length === 0">
                     <td class="dtd" :colspan="tableColumns.length">
-                        <slot name="filtering-no-results" v-if="search">
+                        <slot name="filtering-no-results" v-if="filter">
                             <div class="_text-center">{{ i18nConfig.filtering.noResultsFound }}</div>
                         </slot>
                     </td>
