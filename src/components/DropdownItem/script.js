@@ -25,9 +25,9 @@ export default {
         }
     },
     methods: {
-        onClick(event) {
+        onClick() {
             this.dispatch('IDropdown', 'item-click', [this.action, this]);
-            this.$emit('click', event);
+            this.$emit('click');
         }
     }
 };
