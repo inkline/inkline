@@ -22,7 +22,7 @@ yarn add @inkline/inkline
 composer require inkline/inkline
 ~~~
 
-##### Basic Usage
+### Vue CLI
 First, we'll import the core styles, after which we import and register the script files. If you already have your Webpack configuration ready for Vue, importing the framework is as simple as:
 
 ~~~js
@@ -48,6 +48,13 @@ module.exports = {
 }
 ~~~
 
+<i-alert variant="info" class="-code">
+<template slot="icon"><i-icon icon="info" class="h4"></i-icon></template>
+    
+Inkline uses Sass, so you will need to install it as a dependency:<br/> `npm install -D node-sass sass-loader`
+
+</i-alert>
+
 Next, you can import Inkline directly from the source files:
 
 ~~~js
@@ -58,17 +65,10 @@ import Inkline from '@inkline/inkline/src/main';
 Vue.use(Inkline);
 ~~~
 
-<i-alert variant="info" class="-code">
-<template slot="icon"><i class="inkline-icon -info h3"></i></template>
-    
-To use Sass, you will need to add Sass as a dependency using `npm install -D node-sass sass-loader`.
-
-</i-alert>
-
 ##### Tree Shaking
-Tree shaking means eliminating code that isn’t actually being used from the final bundle. First, we need to make sure that Inkline's source files are being compiled. 
+Tree shaking means eliminating code that isn’t actually being used from the final bundle. First, make sure you followed the steps in the <a href="#configuration">Configuration</a> section. 
 
-Next, to take advantage of tree shaking, you can import Inkline's components individually from the source files:
+To take advantage of tree shaking, you can import Inkline's components individually from the source files:
 
 ~~~js
 import Vue from 'vue';
@@ -76,20 +76,16 @@ import '@inkline/inkline/src/index.scss';
 import { Inkline, IButton, IForm, IInput } from '@inkline/inkline/src/index';
 
 Vue.use(Inkline, {
-    components: [
+    components: {
         IButton,
         IForm,
         IInput
-    ]
+    }
 });
 ~~~
 
 ### Nuxt.js Module
-You can easily install Inkline as a <a href="https://nuxtjs.org" rel="nofollow" target="_blank">Nuxt.js</a> module.
-
-~~~css
-npm install --save @inkline/inkline
-~~~
+Inkline comes bundled together with an easy to use <a href="https://nuxtjs.org" rel="nofollow" target="_blank">Nuxt.js</a> module.
 
 ##### Basic Usage
 Next, add `@inkline/inkline/nuxt` to the modules section of your `nuxt.config.js`. This contains the precompiled CSS and JS by default.
@@ -114,14 +110,14 @@ module.exports = {
 ~~~
 
 <i-alert variant="info" class="-code">
-<template slot="icon"><i class="inkline-icon -info h3"></i></template>
+<template slot="icon"><i-icon icon="info" class="h4"></i-icon></template>
     
-To use the `scss` and `treeShaking` options, you will need to add Sass as a dependency using `npm install -D node-sass sass-loader`.
-    
+Inkline uses Sass, so you will need to install it as a dependency:<br/> `npm install -D node-sass sass-loader`
+
 </i-alert>
 
 ##### Tree Shaking
-You can explicitly import only specific components from Inkline by setting the `components` option.
+You can explicitly import only specific components from Inkline adding them to the `components` option.
 
 ~~~js
 module.exports = {

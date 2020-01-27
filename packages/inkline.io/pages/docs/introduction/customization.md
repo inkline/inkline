@@ -6,9 +6,7 @@
 To customize Inkline, we'll need to make sure we import the source code instead of the compiled files. This comes with a new set of dependencies:
 
 ~~~html
-npm install --save-dev node-sass
-npm install --save-dev sass-loader
-npm install --save-dev postcss-preset-env
+npm install --save-dev node-sass sass-loader postcss-preset-env
 ~~~
 
 ### Update Imports
@@ -18,7 +16,7 @@ Next, we need to make sure we're importing the source code instead of the build 
 ~~~js
 import Vue from 'vue';
 import '@inkline/inkline/src/index.scss';
-import Inkline from '@inkline/inkline/src/index';
+import Inkline from '@inkline/inkline/src/main';
 
 Vue.use(Inkline);
 ~~~
