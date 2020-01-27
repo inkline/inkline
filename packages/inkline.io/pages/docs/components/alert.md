@@ -11,32 +11,32 @@ By default, alerts are set to have `width: 100%`, fully spanning the width of th
 
 <div class="_margin-bottom-1">
     <i-alert variant="primary">
-        <p>A simple primary alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+        <p>A simple primary alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
     </i-alert>
 </div>
 <div class="_margin-bottom-1">
     <i-alert variant="secondary">
-        <p>A simple secondary alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+        <p>A simple secondary alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
     </i-alert>
 </div>
 <div class="_margin-bottom-1">
     <i-alert variant="success">
-        <p>A simple success alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+        <p>A simple success alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
     </i-alert>
 </div>
 <div class="_margin-bottom-1">
     <i-alert variant="danger">
-        <p>A simple danger alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+        <p>A simple danger alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
     </i-alert>
 </div>
 <div class="_margin-bottom-1">
     <i-alert variant="warning">
-        <p>A simple warning alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+        <p>A simple warning alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
     </i-alert>
 </div>
 <div>
     <i-alert variant="info">
-        <p>A simple info alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+        <p>A simple info alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
     </i-alert>
 </div>
 
@@ -44,32 +44,32 @@ By default, alerts are set to have `width: 100%`, fully spanning the width of th
 
 ~~~html
 <i-alert variant="primary">
-    <p>A simple primary alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+    <p>A simple primary alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
 </i-alert>
 ~~~
 ~~~html
 <i-alert variant="secondary">
-    <p>A simple secondary alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+    <p>A simple secondary alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
 </i-alert>
 ~~~
 ~~~html
 <i-alert variant="success">
-    <p>A simple success alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+    <p>A simple success alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
 </i-alert>
 ~~~
 ~~~html
 <i-alert variant="danger">
-    <p>A simple danger alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+    <p>A simple danger alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
 </i-alert>
 ~~~
 ~~~html
 <i-alert variant="warning">
-    <p>A simple warning alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+    <p>A simple warning alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
 </i-alert>
 ~~~
 ~~~html
 <i-alert variant="info">
-    <p>A simple info alert with an <a href="http://inkline.io">example link</a>. It's clickable!</p>
+    <p>A simple info alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
 </i-alert>
 ~~~
 
@@ -195,7 +195,7 @@ The following example makes use of the bundled Inkline icons, but you can use an
 ### Dismissible
 You can dismiss alerts using a combination of the provided `dismissible` and `show` properties. The `dismissible` property will be used to show the dismiss icon. The `show` property will show or hide the alert, resetting dismissed alerts when needed.
 
-<i-code-preview title="Alert Icon" link="https://github.com/inkline/inkline/tree/master/src/components/Alert">
+<i-code-preview title="Dismissible Alert" link="https://github.com/inkline/inkline/tree/master/src/components/Alert">
 
 <i-alert dismissible :show="visible" variant="primary">
     <p>Whoa! Nicely done.</p>

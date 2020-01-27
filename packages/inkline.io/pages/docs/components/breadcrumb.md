@@ -7,13 +7,13 @@ Separators are automatically added in CSS through `::before` and `content`. You 
 <i-code-preview title="Breadcrumbs Example" link="https://github.com/inkline/inkline/tree/master/src/components/Breadcrumb">
 
 <i-breadcrumb>
-    <i-breadcrumb-item>Home</i-breadcrumb-item>
+    <i-breadcrumb-item onclick="return false;">Home</i-breadcrumb-item>
     <i-breadcrumb-item active>Breadcrumbs</i-breadcrumb-item>
 </i-breadcrumb>
 
 <i-breadcrumb>
-    <i-breadcrumb-item href="/">Home</i-breadcrumb-item>
-    <i-breadcrumb-item href="/">Library</i-breadcrumb-item>
+    <i-breadcrumb-item href="https://inkline.io" onclick="return false;">Home</i-breadcrumb-item>
+    <i-breadcrumb-item href="https://inkline.io" onclick="return false;">Library</i-breadcrumb-item>
     <i-breadcrumb-item active>Data</i-breadcrumb-item>
 </i-breadcrumb>
 
@@ -42,7 +42,7 @@ You can generate and bind breadcrumbs from your JS data using a combination of `
 <i-code-preview title="Dynamically Generated Breadcrumbs" link="https://github.com/inkline/inkline/tree/master/src/components/Breadcrumb">
 
 <i-breadcrumb>
-    <i-breadcrumb-item v-bind="item" v-for="item in items" :key="item.title">{{item.title}}</i-breadcrumb-item>
+    <i-breadcrumb-item v-bind="item" v-for="item in items" :key="item.title" onclick="return false;">{{item.title}}</i-breadcrumb-item>
 </i-breadcrumb>
 
 <template slot="html">
@@ -82,15 +82,15 @@ You're able to use the `size` modifier to control the text and spacing size of y
 <i-code-preview title="Breadcrumbs Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Breadcrumb">
 
 <i-breadcrumb size="sm">
-    <i-breadcrumb-item href="/">Sizes</i-breadcrumb-item>
+    <i-breadcrumb-item href="/" onclick="return false;">Sizes</i-breadcrumb-item>
     <i-breadcrumb-item active>Small</i-breadcrumb-item>
 </i-breadcrumb>
 <i-breadcrumb size="md">
-    <i-breadcrumb-item href="/">Sizes</i-breadcrumb-item>
+    <i-breadcrumb-item href="/" onclick="return false;">Sizes</i-breadcrumb-item>
     <i-breadcrumb-item active>Medium</i-breadcrumb-item>
 </i-breadcrumb>
 <i-breadcrumb size="lg">
-    <i-breadcrumb-item href="/">Sizes</i-breadcrumb-item>
+    <i-breadcrumb-item href="/" onclick="return false;">Sizes</i-breadcrumb-item>
     <i-breadcrumb-item active>Large</i-breadcrumb-item>
 </i-breadcrumb>
 

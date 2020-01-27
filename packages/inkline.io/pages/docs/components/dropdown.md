@@ -9,8 +9,8 @@ Wrap both the dropdown's trigger element (such as an `<i-button>`) and the `<i-d
 <i-dropdown>
     <i-button>Dropdown</i-button>
     <i-dropdown-menu>
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -46,8 +46,8 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 <i-dropdown placement="top">
     <i-button>Dropdown Top</i-button>
     <i-dropdown-menu>
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -57,8 +57,8 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 <i-dropdown placement="bottom">
     <i-button>Dropdown Bottom</i-button>
     <i-dropdown-menu>
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -68,8 +68,8 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 <i-dropdown placement="left">
     <i-button>Dropdown Left</i-button>
     <i-dropdown-menu>
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -79,8 +79,8 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 <i-dropdown placement="right">
     <i-button>Dropdown Right</i-button>
     <i-dropdown-menu>
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -176,8 +176,8 @@ You can use the `trigger` property to trigger the dropdown on `hover` or `click`
 <i-dropdown trigger="click">
     <i-button>Dropdown Click</i-button>
     <i-dropdown-menu>
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -187,8 +187,8 @@ You can use the `trigger` property to trigger the dropdown on `hover` or `click`
 <i-dropdown trigger="hover">
     <i-button>Hover Dropdown</i-button>
     <i-dropdown-menu>
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -199,8 +199,8 @@ You can use the `trigger` property to trigger the dropdown on `hover` or `click`
 <i-dropdown trigger="focus">
     <i-button>Focus Dropdown</i-button>
     <i-dropdown-menu>
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -210,8 +210,8 @@ You can use the `trigger` property to trigger the dropdown on `hover` or `click`
 <i-dropdown :trigger="['focus', 'hover']">
     <i-button>Multiple Events Dropdown</i-button>
     <i-dropdown-menu>
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -221,8 +221,8 @@ You can use the `trigger` property to trigger the dropdown on `hover` or `click`
 <i-dropdown trigger="manual">
     <i-button @click="manualDropdown = !manualDropdown">Manual Dropdown</i-button>
     <i-dropdown-menu v-model="manualDropdown">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -305,8 +305,8 @@ The default size is set to `md`.
 <i-dropdown>
     <i-button>Dropdown Small</i-button>
     <i-dropdown-menu size="sm">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -316,8 +316,8 @@ The default size is set to `md`.
 <i-dropdown>
     <i-button>Dropdown Medium</i-button>
     <i-dropdown-menu size="md">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -327,8 +327,8 @@ The default size is set to `md`.
 <i-dropdown>
     <i-button>Dropdown Large</i-button>
     <i-dropdown-menu size="lg">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -342,8 +342,8 @@ The default size is set to `md`.
 <i-dropdown>
     <i-button>Dropdown Small</i-button>
     <i-dropdown-menu size="sm">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href="">Action</i-dropdown-item>
+        <i-dropdown-item href="">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -354,8 +354,8 @@ The default size is set to `md`.
 <i-dropdown>
     <i-button>Dropdown Medium</i-button>
     <i-dropdown-menu size="md">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href="">Action</i-dropdown-item>
+        <i-dropdown-item href="">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -366,8 +366,8 @@ The default size is set to `md`.
 <i-dropdown>
     <i-button>Dropdown Large</i-button>
     <i-dropdown-menu size="lg">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href="">Action</i-dropdown-item>
+        <i-dropdown-item href="">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -388,8 +388,8 @@ Inkline includes two predefined dropdown styles, each serving its own semantic p
 <i-dropdown>
     <i-button variant="light">Dropdown Light</i-button>
     <i-dropdown-menu variant="light">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -399,8 +399,8 @@ Inkline includes two predefined dropdown styles, each serving its own semantic p
 <i-dropdown>
     <i-button variant="dark">Dropdown Dark</i-button>
     <i-dropdown-menu variant="dark">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -414,8 +414,8 @@ Inkline includes two predefined dropdown styles, each serving its own semantic p
 <i-dropdown>
     <i-button variant="light">Dropdown Light</i-button>
     <i-dropdown-menu variant="light">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href="">Action</i-dropdown-item>
+        <i-dropdown-item href="">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -427,8 +427,8 @@ Inkline includes two predefined dropdown styles, each serving its own semantic p
 <i-dropdown>
     <i-button variant="dark">Dropdown Dark</i-button>
     <i-dropdown-menu variant="dark">
-        <i-dropdown-item href>Action</i-dropdown-item>
-        <i-dropdown-item href>Another action</i-dropdown-item>
+        <i-dropdown-item href="">Action</i-dropdown-item>
+        <i-dropdown-item href="">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
         <i-dropdown-divider />
         <i-dropdown-item>Separated item</i-dropdown-item>
@@ -451,15 +451,15 @@ Inkline allows you to have virtually infinite recursive dropdown submenus struct
         <i-dropdown placement="right-start">
             <i-dropdown-item>Dropdown here</i-dropdown-item>
             <i-dropdown-menu>
-                <i-dropdown-item href>Action</i-dropdown-item>
-                <i-dropdown-item href>Another action</i-dropdown-item>
+                <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+                <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
                 <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
                 <i-dropdown-divider />
                 <i-dropdown-item>Separated item</i-dropdown-item>
             </i-dropdown-menu>
         </i-dropdown>
         <i-dropdown-divider />
-        <i-dropdown-item href>Some action</i-dropdown-item>
+        <i-dropdown-item href onclick="return false;">Some action</i-dropdown-item>
         <i-dropdown-item disabled>Something else here</i-dropdown-item>
     </i-dropdown-menu>
 </i-dropdown>
@@ -472,17 +472,17 @@ Inkline allows you to have virtually infinite recursive dropdown submenus struct
     <i-button>Dropdown</i-button>
     <i-dropdown-menu>
         <i-dropdown placement="right-start">
-            <i-dropdown-item href>Dropdown here</i-dropdown-item>
+            <i-dropdown-item href="">Dropdown here</i-dropdown-item>
             <i-dropdown-menu>
-                <i-dropdown-item href>Action</i-dropdown-item>
-                <i-dropdown-item href>Another action</i-dropdown-item>
+                <i-dropdown-item href="">Action</i-dropdown-item>
+                <i-dropdown-item href="">Another action</i-dropdown-item>
                 <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
                 <i-dropdown-divider />
                 <i-dropdown-item>Separated item</i-dropdown-item>
             </i-dropdown-menu>
         </i-dropdown>
         <i-dropdown-divider />
-        <i-dropdown-item href>Some action</i-dropdown-item>
+        <i-dropdown-item href="">Some action</i-dropdown-item>
         <i-dropdown-item disabled>Something else here</i-dropdown-item>
     </i-dropdown-menu>
 </i-dropdown>
