@@ -2,7 +2,7 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
-import { IAlert } from "@inkline/inkline/src/components";
+import { IAlert, IIcon } from "@inkline/inkline/src/components";
 
 export default {
     name: 'InstallationView',
@@ -10,7 +10,8 @@ export default {
     extends: View,
     head: head('docs-introduction-installation'),
     components: {
-        IAlert
+        IAlert,
+        IIcon
     }
 };
 </script>

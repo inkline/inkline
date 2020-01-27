@@ -1,7 +1,12 @@
 # Getting Started
 ## Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications. { .lead }
 
-The quickest way to get started is to add the files from a CDN, with minimal setup. If you're looking to use Inkline with Vue CLI, Webpack or a build system of choice, please read the <nuxt-link :to="{ name: 'docs-introduction-installation' }">Installation</nuxt-link> section.
+The quickest way to get started is to add the files from a CDN, with minimal setup. 
+
+<i-alert variant="info">
+    <template slot="icon"><i-icon icon="info" class="h4"></i-icon></template>
+    <p>If you're looking to use Inkline with Vue CLI, Nuxt.js, Webpack, or any other build system, please head to the <nuxt-link :to="{ name: 'docs-introduction-installation' }">Installation</nuxt-link> section.</p>
+</i-alert>
 
 ### CDN
 
