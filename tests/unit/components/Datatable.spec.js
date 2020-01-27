@@ -198,6 +198,17 @@ describe('Components', () => {
                     expect(wrapper.vm.sortBy).toEqual(columns[0].path);
                     expect(wrapper.vm.sortDirection).toEqual('desc');
                 });
+
+                it('should sort rows by column key in ascending order if order is descending', () => {
+                    const column = { ...columns[0], sortable: true };
+
+                    wrapper.vm.onHeaderCellClick(column);
+                    wrapper.vm.onHeaderCellClick(column);
+                    wrapper.vm.onHeaderCellClick(column);
+
+                    expect(wrapper.vm.sortBy).toEqual(columns[0].path);
+                    expect(wrapper.vm.sortDirection).toEqual('asc');
+                });
             });
 
             describe('renderColumns()', () => {

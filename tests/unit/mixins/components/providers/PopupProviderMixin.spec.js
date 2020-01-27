@@ -248,7 +248,7 @@ describe('Mixins', () => {
                     expect(spy).toHaveBeenCalled();
                 });
 
-                it('should call popperOptions.destroy if defined', () => {
+                it('should call popperJS.destroy if defined', () => {
                     wrapper.vm.popperJS = { destroy: () => {} };
                     const spy = jest.spyOn(wrapper.vm.popperJS, 'destroy');
 
