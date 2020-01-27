@@ -1,7 +1,6 @@
 import Linkable from '../Linkable';
 
 import DisabledPropertyMixin from '@inkline/inkline/src/mixins/components/properties/DisabledPropertyMixin';
-import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
 
 import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
 import EmitProviderMixin from '@inkline/inkline/src/mixins/components/providers/EmitProviderMixin';
@@ -11,7 +10,6 @@ export default {
     extends: Linkable,
     mixins: [
         DisabledPropertyMixin,
-        TabIndexPropertyMixin,
 
         ClassesProviderMixin,
         EmitProviderMixin
@@ -27,8 +25,9 @@ export default {
         }
     },
     methods: {
-        onClick() {
+        onClick(event) {
             this.dispatch('IDropdown', 'item-click', [this.action, this]);
+            this.$emit('click', event);
         }
     }
 };
