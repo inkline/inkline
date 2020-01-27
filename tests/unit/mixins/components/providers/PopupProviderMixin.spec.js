@@ -175,10 +175,8 @@ describe('Mixins', () => {
                     const spy = jest.spyOn(wrapper.vm, 'destroyPopper');
 
                     wrapper.setData({ visible: true });
-
                     wrapper.vm.$nextTick(() => {
                         wrapper.setData({ visible: false });
-
                         wrapper.vm.$nextTick(() => {
                             expect(spy).toHaveBeenCalled();
                             done();
