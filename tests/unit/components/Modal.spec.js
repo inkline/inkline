@@ -194,13 +194,19 @@ describe('Components', () => {
                     const spy2 = jest.spyOn(wrapper.vm, 'hide');
 
                     wrapper.setProps({ disabled: true });
-                    wrapper.setProps({ value: true });
-                    wrapper.setProps({ value: false });
 
                     wrapper.vm.$nextTick(() => {
-                        expect(spy1).not.toHaveBeenCalled();
-                        expect(spy2).not.toHaveBeenCalled();
-                        done();
+                        wrapper.setProps({ value: true });
+
+                        wrapper.vm.$nextTick(() => {
+                            wrapper.setProps({ value: false });
+
+                            wrapper.vm.$nextTick(() => {
+                                expect(spy1).not.toHaveBeenCalled();
+                                expect(spy2).not.toHaveBeenCalled();
+                                done();
+                            });
+                        });
                     });
                 });
 
@@ -219,10 +225,8 @@ describe('Components', () => {
                     const spy = jest.spyOn(wrapper.vm, 'hide');
 
                     wrapper.setProps({ value: true });
-
                     wrapper.vm.$nextTick(() => {
                         wrapper.setProps({ value: false });
-
                         wrapper.vm.$nextTick(() => {
                             expect(spy).toHaveBeenCalled();
                             done();

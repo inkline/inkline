@@ -53,8 +53,8 @@ exports[`Components Datatable should render correctly 1`] = `
     </table>
   </div>
   <div class="footer-wrapper">
-    <div class="pagination-range"> Showing -9 to 0 of 0 entries </div>
-    <i-pagination-stub size="md" variant="light" itemsperpage="10" items="0" limit="[object Object]" quicklink="true" value="0"></i-pagination-stub>
+    <div class="pagination-range"> Showing 1 to 0 of 0 entries </div>
+    <i-pagination-stub size="md" variant="light" itemsperpage="10" items="0" limit="[object Object]" quicklink="true" value="1"></i-pagination-stub>
   </div>
 </div>
 `;
