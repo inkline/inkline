@@ -33,6 +33,13 @@ describe('Components', () => {
                     expect(wrapper.vm.tag).toEqual('a');
                 });
             });
+
+            describe('tabindex', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.tabindex).toBeDefined();
+                    expect(wrapper.vm.tabindex).toEqual(-1);
+                });
+            });
         });
 
         describe('data()', () => {
@@ -65,7 +72,7 @@ describe('Components', () => {
         });
 
         describe('computed', () => {
-            describe('isTag()', () => {
+            describe('isTag', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.isTag).toBeDefined();
                 });
@@ -84,6 +91,24 @@ describe('Components', () => {
                     wrapper.vm.$attrs.to = true;
 
                     expect(wrapper.vm.isTag).toEqual('router-link');
+                });
+            });
+
+            describe('isComponent', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.isComponent).toBeDefined();
+                });
+
+                it('should return true if tag is equal to routerComponent', () => {
+                    wrapper.setProps({ tag: 'router-link' });
+
+                    expect(wrapper.vm.isComponent).toEqual(true);
+                });
+
+                it('should return false if tag is not equal to routerComponent', () => {
+                    wrapper.setProps({ tag: 'div' });
+
+                    expect(wrapper.vm.isComponent).toEqual(false);
                 });
             });
         });

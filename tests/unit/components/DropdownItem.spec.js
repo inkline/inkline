@@ -42,6 +42,15 @@ describe('Components', () => {
                     expect(spy).toHaveBeenCalled();
                     expect(spy).toHaveBeenCalledWith('IDropdown', 'item-click', [wrapper.vm.action, wrapper.vm]);
                 });
+
+                it('should emit "click" event', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.vm.onClick();
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('click', undefined);
+                });
             });
         });
     });
