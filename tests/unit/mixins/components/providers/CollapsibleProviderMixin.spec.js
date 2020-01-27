@@ -81,7 +81,6 @@ describe('Mixins', () => {
                     expect(wrapper.vm.value).toEqual(false);
 
                     wrapper.setProps({ value: true });
-
                     wrapper.vm.$nextTick(() => {
                         expect(wrapper.vm.collapsed).toEqual(true);
                         done();
@@ -97,7 +96,6 @@ describe('Mixins', () => {
                         expect(wrapper.vm.value).toEqual(true);
 
                         wrapper.setProps({ value: false });
-
                         wrapper.vm.$nextTick(() => {
                             expect(wrapper.vm.collapsed).toEqual(false);
                             done();
@@ -111,7 +109,6 @@ describe('Mixins', () => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
                     wrapper.setData({ collapsed: true });
-
                     wrapper.vm.$nextTick(() => {
                         expect(spy).toHaveBeenCalledWith('input', true);
                         done();
@@ -122,11 +119,10 @@ describe('Mixins', () => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
                     wrapper.setData({ collapsed: true });
-
                     wrapper.vm.$nextTick(() => {
                         wrapper.setData({ collapsed: false });
-
                         wrapper.vm.$nextTick(() => {
+                            expect(spy).toHaveBeenCalled();
                             expect(spy).toHaveBeenCalledWith('input', false);
                             done();
                         });

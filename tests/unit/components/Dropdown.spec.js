@@ -156,9 +156,7 @@ describe('Components', () => {
                 it('should broadcast "visibility-change" to IDropdownMenu', (done) => {
                     const spy = jest.spyOn(wrapper.vm, 'broadcast');
 
-                    wrapper.setData({
-                        visible: true
-                    });
+                    wrapper.setData({ visible: true });
 
                     wrapper.vm.$nextTick(() => {
                         expect(spy).toHaveBeenCalled();
@@ -170,9 +168,7 @@ describe('Components', () => {
                 it('should emit "change" event', (done) => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
-                    wrapper.setData({
-                        visible: true
-                    });
+                    wrapper.setData({ visible: true });
 
                     wrapper.vm.$nextTick(() => {
                         expect(spy).toHaveBeenCalled();

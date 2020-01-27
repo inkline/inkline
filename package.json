@@ -14,7 +14,7 @@
     "lint:script": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style",
     "prepublishOnly": "npm run build",
-    "test": "vue-cli-service test:unit --coverage --no-cache",
+    "test": "vue-cli-service test:unit --coverage",
     "test:dev": "vue-cli-service test:unit --watch"
   },
   "main": "dist/inkline.js",
