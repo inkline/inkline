@@ -18,9 +18,9 @@ To control the visibility of the sidebar when collapsed, we will use the `v-mode
     <i-layout vertical>
         <i-sidebar v-model="collapsed" collapse-position="absolute">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content></i-layout-content>
@@ -83,9 +83,9 @@ The default size is set to `md`.
     <i-layout vertical>
         <i-sidebar size="sm" collapse-position="absolute" v-model="collapsedSizesSm">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content></i-layout-content>
@@ -102,9 +102,9 @@ The default size is set to `md`.
     <i-layout vertical>
         <i-sidebar size="md" collapse-position="absolute" v-model="collapsedSizesMd">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content></i-layout-content>
@@ -121,9 +121,9 @@ The default size is set to `md`.
     <i-layout vertical>
         <i-sidebar size="lg" collapse-position="absolute" v-model="collapsedSizesLg">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content></i-layout-content>
@@ -226,9 +226,9 @@ Inkline includes two predefined sidebar styles. You can set the style of a `<i-s
     <i-layout vertical>
         <i-sidebar variant="light" collapse-position="absolute" v-model="collapsedVariantsLight">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content></i-layout-content>
@@ -245,9 +245,9 @@ Inkline includes two predefined sidebar styles. You can set the style of a `<i-s
     <i-layout vertical>
         <i-sidebar variant="dark" collapse-position="absolute" v-model="collapsedVariantsDark">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
     </i-layout>
@@ -329,9 +329,9 @@ You can easily place your sidebar on the right side of a layout by setting the `
     <i-layout vertical>
         <i-sidebar collapse-position="absolute" placement="left" v-model="collapsedPlacementLeft">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content></i-layout-content>
@@ -349,9 +349,9 @@ You can easily place your sidebar on the right side of a layout by setting the `
         <i-layout-content></i-layout-content>
         <i-sidebar collapse-position="absolute" placement="right" v-model="collapsedPlacementRight">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
     </i-layout>
@@ -433,9 +433,9 @@ You can control what breakpoint your sidebar will collapse at using the `collaps
     <i-layout vertical>
         <i-sidebar collapse-position="absolute" collapse="lg" v-model="collapsedBreakpointLg">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content></i-layout-content>
@@ -500,9 +500,9 @@ Setting a `collapse` value of `true` will set the sidebar to be always collapsib
     <i-layout vertical>
         <i-sidebar collapse-position="absolute" :collapse="true" v-model="collapsedBreakpointAlways">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content></i-layout-content>
@@ -562,9 +562,9 @@ Setting a `collapse` value of `false` will set the sidebar to never be collapsib
     <i-layout vertical>
         <i-sidebar collapse-position="absolute" :collapse="false">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content></i-layout-content>
@@ -627,9 +627,9 @@ This property allows you to control whether the sidebar will affect the content 
     <i-layout vertical>
         <i-sidebar :collapse="true" collapse-position="relative" v-model="collapsedPositionRelative">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content class="_display-flex _justify-content-center _align-items-center">Layout content</i-layout-content>
@@ -647,9 +647,9 @@ This property allows you to control whether the sidebar will affect the content 
     <i-layout vertical>
         <i-sidebar :collapse="true" collapse-position="absolute" v-model="collapsedPositionAbsolute">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content class="_display-flex _justify-content-center _align-items-center">Layout content</i-layout-content>
@@ -666,9 +666,9 @@ This property allows you to control whether the sidebar will affect the content 
     <i-layout vertical>
         <i-sidebar :collapse="true" collapse-position="absolute" v-model="collapsedPositionFixed">
             <i-nav vertical>
-                <i-nav-item :to="{ name: 'docs-components-sidebar' }">Home</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-                <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+                <i-nav-item :to="{ name: 'docs-components-sidebar' }" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
             </i-nav>
         </i-sidebar>
         <i-layout-content class="_display-flex _justify-content-center _align-items-center">Layout content</i-layout-content>

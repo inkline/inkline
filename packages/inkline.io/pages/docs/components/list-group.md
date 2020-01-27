@@ -8,8 +8,8 @@ List groups support any content inside of them. Take advantage of their flexibil
 
 <i-list-group>
     <i-list-group-item active>Active</i-list-group-item>
-    <i-list-group-item href="http://inkline.io">Link</i-list-group-item>
-    <i-list-group-item :to="{ name: 'index' }">Router Link</i-list-group-item>
+    <i-list-group-item href="https://inkline.io" onclick="return false;">Link</i-list-group-item>
+    <i-list-group-item href="https://inkline.io" onclick="return false;">Router Link</i-list-group-item>
     <i-list-group-item>Item</i-list-group-item>
     <i-list-group-item disabled>Disabled</i-list-group-item>
 </i-list-group>
@@ -19,7 +19,7 @@ List groups support any content inside of them. Take advantage of their flexibil
 ~~~html
 <i-list-group>
     <i-list-group-item active>Active</i-list-group-item>
-    <i-list-group-item href="http://inkline.io">Link</i-list-group-item>
+    <i-list-group-item href="https://inkline.io">Link</i-list-group-item>
     <i-list-group-item :to="{ name: 'index' }">Router Link</i-list-group-item>
     <i-list-group-item>Item</i-list-group-item>
     <i-list-group-item disabled>Disabled</i-list-group-item>

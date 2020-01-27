@@ -395,14 +395,14 @@ The `<i-button>` component is well integrated with the [Vue Router](https://rout
 <i-code-preview title="Button Linking and Routing" link="https://github.com/inkline/inkline/tree/master/src/components/Button" class="-button-code-preview _padding-bottom-0">
 
 <div>
-<i-button href="http://inkline.io">Button Link</i-button>
+<i-button href="https://inkline.io">Button Link</i-button>
 <i-button :to="{ name: 'docs-components-button' }">Button Route</i-button>
 </div>
 
 <template slot="html">
 
 ~~~html
-<i-button href="http://inkline.io">Button Link</i-button>
+<i-button href="https://inkline.io">Button Link</i-button>
 ~~~
 ~~~html
 <i-button :to="{ name: 'docs-components-button' }">Button Route</i-button>

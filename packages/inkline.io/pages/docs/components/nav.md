@@ -7,8 +7,8 @@ Navigation components make use of the base `<i-nav>` component for building all 
 <i-code-preview title="Nav Example" link="https://github.com/inkline/inkline/tree/master/src/components/Nav">
 
 <i-nav>
-    <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
+    <i-nav-item href="https://inkline.io" onclick="return false;">Link</i-nav-item>
+    <i-nav-item href="https://inkline.io" onclick="return false;">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -17,7 +17,7 @@ Navigation components make use of the base `<i-nav>` component for building all 
 
 ~~~html
 <i-nav>
-    <i-nav-item href="http://inkline.io">Link</i-nav-item>
+    <i-nav-item href="https://inkline.io">Link</i-nav-item>
     <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
@@ -35,8 +35,8 @@ You can stack nav items into a vertical navigation component by setting the `ver
 <i-code-preview title="Vertical Nav" link="https://github.com/inkline/inkline/tree/master/src/components/Nav">
 
 <i-nav vertical>
-    <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
+    <i-nav-item href="https://inkline.io" onclick="return false;">Link</i-nav-item>
+    <i-nav-item href="https://inkline.io" onclick="return false;">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -45,7 +45,7 @@ You can stack nav items into a vertical navigation component by setting the `ver
 
 ~~~html
 <i-nav vertical>
-    <i-nav-item href="http://inkline.io">Link</i-nav-item>
+    <i-nav-item href="https://inkline.io">Link</i-nav-item>
     <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
@@ -62,22 +62,22 @@ You're able to use the `size` modifier to control the size of your navs, using o
 
 <div>
 <i-nav size="sm">
-    <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
+    <i-nav-item href="https://inkline.io" onclick="return false;">Link</i-nav-item>
+    <i-nav-item href="https://inkline.io" onclick="return false;">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>&nbsp;
 
 <i-nav size="md">
-    <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
+    <i-nav-item href="https://inkline.io" onclick="return false;">Link</i-nav-item>
+    <i-nav-item href="https://inkline.io" onclick="return false;">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>&nbsp;
 
 <i-nav size="lg">
-    <i-nav-item href="http://inkline.io">Link</i-nav-item>
-    <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
+    <i-nav-item href="https://inkline.io" onclick="return false;">Link</i-nav-item>
+    <i-nav-item href="https://inkline.io" onclick="return false;">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
 </i-nav>
@@ -87,7 +87,7 @@ You're able to use the `size` modifier to control the size of your navs, using o
 
 ~~~html
 <i-nav size="sm">
-    <i-nav-item href="http://inkline.io">Link</i-nav-item>
+    <i-nav-item href="https://inkline.io">Link</i-nav-item>
     <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
@@ -95,7 +95,7 @@ You're able to use the `size` modifier to control the size of your navs, using o
 ~~~
 ~~~html
 <i-nav size="md">
-    <i-nav-item href="http://inkline.io">Link</i-nav-item>
+    <i-nav-item href="https://inkline.io">Link</i-nav-item>
     <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>
@@ -103,7 +103,7 @@ You're able to use the `size` modifier to control the size of your navs, using o
 ~~~
 ~~~html
 <i-nav size="lg">
-    <i-nav-item href="http://inkline.io">Link</i-nav-item>
+    <i-nav-item href="https://inkline.io">Link</i-nav-item>
     <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
     <i-nav-item>Item</i-nav-item>
     <i-nav-item disabled>Disabled</i-nav-item>

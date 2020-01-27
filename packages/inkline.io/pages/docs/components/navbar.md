@@ -7,11 +7,11 @@ Here’s an example of the basic components included in a  `<i-navbar>` that aut
 <i-code-preview title="Navbar Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar>
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
         </i-nav>
         <i-nav>
             <i-input class="item" placeholder="Type something..">
@@ -54,34 +54,34 @@ The default size is set to `md`.
 <i-code-preview title="Navbar Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar size="sm" class="_margin-bottom-1">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
 
 <i-navbar size="md" class="_margin-bottom-1">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
 
 <i-navbar size="lg">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -135,22 +135,22 @@ Inkline includes two predefined navbar styles. You can set the style of a `<i-na
 <i-code-preview title="Navbar Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar variant="light" class="_margin-bottom-1">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
 <i-navbar variant="dark">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -191,19 +191,19 @@ You can use an `<i-dropdown>` component inside the `<i-navbar-items>` or `<i-nav
 <i-code-preview title="Navbar Dropdown" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar" style="z-index: 2;">
 
 <i-navbar>
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
         </i-nav>
         <i-nav>
             <i-dropdown placement="bottom-end">
                 <i-nav-item>Dropdown</i-nav-item>
                 <i-dropdown-menu>
-                    <i-dropdown-item href>Action</i-dropdown-item>
-                    <i-dropdown-item href>Another action</i-dropdown-item>
+                    <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+                    <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
                     <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
                     <i-dropdown-divider />
                     <i-dropdown-item>Separated item</i-dropdown-item>
@@ -228,9 +228,9 @@ You can use an `<i-dropdown>` component inside the `<i-navbar-items>` or `<i-nav
             <i-dropdown placement="bottom-end">
                 <i-button variant="primary">Dropdown</i-button>
                 <i-dropdown-menu>
-                    <i-dropdown-item href>Action</i-dropdown-item>
-                    <i-dropdown-item href>Another action</i-dropdown-item>
-                    <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
+                    <i-dropdown-item href="">Action</i-dropdown-item>
+                    <i-dropdown-item href="">Another action</i-dropdown-item>
+                    <i-dropdown-item href="" disabled>Something disabled here</i-dropdown-item>
                     <i-dropdown-divider />
                     <i-dropdown-item>Separated item</i-dropdown-item>
                 </i-dropdown-menu>
@@ -249,32 +249,32 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
 <i-code-preview title="Navbar Nav Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar class="_margin-bottom-1">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items class="_justify-content-start">
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
 <i-navbar class="_margin-bottom-1">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items class="_justify-content-center">
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
 <i-navbar>
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items class="_justify-content-end">
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">Contact</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -329,11 +329,11 @@ You can control what breakpoint your navbar will collapse at using the `collapse
 <i-code-preview title="Collapse Breakpoint Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar collapse="lg">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -364,11 +364,11 @@ Setting a `collapse` value of `true` will set the navbar to be always collapsibl
 <i-code-preview title="Always Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar :collapse="true">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -395,11 +395,11 @@ Setting a `collapse` value of `false` will set the navbar to never be collapsibl
 <i-code-preview title="Never Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
 
 <i-navbar :collapse="false">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>
@@ -431,11 +431,11 @@ Sometimes, it's necessary to control whether the Navbar is collapsed or not prog
     Toggle Collapsed
 </i-button>
 <i-navbar :collapse="true" v-model="collapsed">
-    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
-            <i-nav-item :to="{ name: 'index' }">About</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
         </i-nav>
     </i-navbar-items>
 </i-navbar>

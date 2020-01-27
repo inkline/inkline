@@ -21,7 +21,7 @@ By default, cards are set to have `width: 100%`, fully spanning the width of the
             <p>
                 Some quick example text to build on the card title and make up the bulk of the card's content.
             </p>
-            <a class="link" href="http://inkline.io">Example Link</a>
+            <a class="link" href="https://inkline.io" onclick="return false;">Example Link</a>
         </i-card>
     </i-column>
 </i-row>
@@ -36,7 +36,7 @@ By default, cards are set to have `width: 100%`, fully spanning the width of the
     <p>
         Some quick example text to build on the card title and make up the bulk of the card's content.
     </p>
-    <a class="link" href="http://inkline.io">Example Link</a>
+    <a class="link" href="https://inkline.io">Example Link</a>
 </i-card>
 ~~~
 
