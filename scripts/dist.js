@@ -88,38 +88,6 @@ const sed = (entry) => {
 ].forEach(sed);
 
 /**
- * Inkline Validation
- */
-
-// rm ./dist/InklineValidation.common.js
-// rm ./dist/InklineValidation.common.js.map
-// rm ./dist/InklineValidation.umd.min.js
-// rm ./dist/InklineValidation.umd.min.js.map
-//
-[
-    path.resolve(DIST_PATH, 'InklineValidation.common.js'),
-    path.resolve(DIST_PATH, 'InklineValidation.common.js.map'),
-    path.resolve(DIST_PATH, 'InklineValidation.umd.min.js'),
-    path.resolve(DIST_PATH, 'InklineValidation.umd.min.js.map'),
-].forEach(rm);
-
-// mv ./dist/InklineValidation.umd.js dist/validation.js
-// mv ./dist/InklineValidation.umd.js.map dist/validation.js.map
-//
-[
-    { from: path.resolve(DIST_PATH, 'InklineValidation.umd.js'), to: path.resolve(DIST_PATH, 'validation.js') },
-    { from: path.resolve(DIST_PATH, 'InklineValidation.umd.js.map'), to: path.resolve(DIST_PATH, 'validation.js.map') },
-].forEach(mv);
-
-// sed -i '' 's/InklineValidation.umd.js.map/validation.js.map/g' './dist/validation.js'
-// sed -i '' 's/InklineValidation.umd.js/validation.js/g' './dist/validation.js.map'
-//
-[
-    { search: /InklineValidation\.umd\.js\.map/g, replace: 'validation.js.map', file: path.resolve(DIST_PATH, 'validation.js') },
-    { search: /InklineValidation\.umd\.js/g, replace: 'validation.js', file: path.resolve(DIST_PATH, 'validation.js.map') },
-].forEach(sed);
-
-/**
  * Save and exit
  */
 try {
