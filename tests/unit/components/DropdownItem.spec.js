@@ -49,7 +49,7 @@ describe('Components', () => {
                     wrapper.vm.onClick();
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('click', undefined);
+                    expect(spy).toHaveBeenCalledWith('click');
                 });
             });
         });
