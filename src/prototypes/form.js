@@ -3,7 +3,7 @@ import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
 /**
  * Construct a basic form schema with default values
  */
-export function $form(name, schema) {
+export function form(name, schema) {
     if (typeof name !== 'string') {
         schema = name;
         name = '';
@@ -11,7 +11,7 @@ export function $form(name, schema) {
 
     const nameNesting = name === '' ? [] : name.split('.');
 
-    return $form.builder.factory(nameNesting, schema, true);
+    return form.builder.factory(nameNesting, schema, true);
 }
 
-$form.builder = new FormBuilder();
+form.builder = new FormBuilder();
