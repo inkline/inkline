@@ -2,8 +2,7 @@ const { resolve } = require('path');
 
 const defaultOptions = {
     scss: false,
-    treeShaking: false,
-    validation: true
+    treeShaking: false
 };
 
 module.exports = function InklineNuxt(moduleOptions = {}) {
@@ -29,7 +28,6 @@ module.exports = function InklineNuxt(moduleOptions = {}) {
         const inklineOptions = { ...options };
         delete inklineOptions.scss;
         delete inklineOptions.treeShaking;
-        delete inklineOptions.validation;
 
         // Register plugin, passing options to plugin template
         this.addPlugin({
@@ -37,7 +35,6 @@ module.exports = function InklineNuxt(moduleOptions = {}) {
             fileName: 'inkline.js',
             options: {
                 inkline: inklineOptions,
-                validation: options.validation,
                 treeShaking: options.treeShaking
             }
         });
