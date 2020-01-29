@@ -38,7 +38,7 @@ There are several validation options that can be used in the `validators` field:
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'alpha' }
@@ -106,7 +106,7 @@ export default {
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'alphanumeric' }
@@ -163,7 +163,7 @@ export default {
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'email' }
@@ -210,7 +210,7 @@ export default {
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'max', value: 100 }
@@ -257,7 +257,7 @@ export default {
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'min', value: 10 }
@@ -304,7 +304,7 @@ export default {
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'maxLength', value: 12 }
@@ -351,7 +351,7 @@ export default {
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'minLength', value: 6 }
@@ -410,7 +410,7 @@ export default {
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'number' }
@@ -467,7 +467,7 @@ export default {
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'required' }
@@ -520,7 +520,7 @@ export default {
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 password: {},
                 passwordConfirmation: {
                     validators: [
@@ -572,7 +572,7 @@ You can provide a custom validation function that will be applied on the value o
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'custom', validator: (v) => /inkline/.test(v) }

@@ -17,14 +17,14 @@ export default {
     },
     data () {
         return {
-            listForm: this.$form({
+            listForm: this.$inkline.form({
                 items: [
                     { value: 'Existing Field' },
                     { value: 'Existing Field' }
                 ]
             }),
 
-            objectForm: this.$form({
+            objectForm: this.$inkline.form({
                 fullName: {}
             }),
         };

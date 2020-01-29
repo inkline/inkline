@@ -2,9 +2,11 @@
 ## The form validation schema defines the form input fields, groups and how they work together. {.lead}
 
 ### Schema Example
-The `<i-form>` component and all input components have a `schema` property that can be used to provide form schema validation. The schema object provides form validation status fields such as `valid`, `invalid`, `touched`, `untouched`, `dirty`, `pristine` and `errors`.
+The `<i-form>` component and all input components have a `schema` property that can be used to provide form schema validation. From the <nuxt-link :to="{ name: 'docs-forms-validation-schema' }">Introduction</nuxt-link> page we've learned:
 
-The `<i-form>` component needs to take the form itself as a `schema`. Each input needs to take the `form.inputName` as a schema and `form.inputName.value` as a model. This will ensure that form validation is working properly.
+- The schema object provides form validation status fields such as `valid`, `invalid`, `touched`, `untouched`, `dirty`, `pristine` and `errors`. 
+- The `<i-form>` component needs to receive the `form` object as a `schema`
+- Each child input needs to receive the `form.inputName` as a `schema` and `form.inputName.value` as a `v-model` 
 
 Using the `validators` field, you can specify an array of validators to be used on the input.
 
@@ -31,7 +33,7 @@ Using the `validators` field, you can specify an array of validators to be used 
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     value: 'John Doe',
                     validators: [
@@ -83,7 +85,7 @@ Providing a default value for a schema field can be done using the `value` field
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     value: 'Default Value'
                 }
@@ -131,7 +133,7 @@ Each validator accepts a custom error message using the `message` field. This al
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'required', message: 'Input is required' }
@@ -186,7 +188,7 @@ By using the `validateOn` field you can specify the event that triggers the vali
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input1: {
                     validateOn: 'input',
                     validators: [
@@ -252,7 +254,7 @@ Objects that aren't empty and don't have a `value` or `validators` field are tre
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {},
                 group: {
                     input: {}
@@ -300,7 +302,7 @@ Form groups can be an `Array` of fields, allowing you to loop over them using `v
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 group: [
                     { value: 'First Field' },
                     { value: 'Second Field' }
@@ -409,7 +411,7 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'required', message: 'Input is required.' }
