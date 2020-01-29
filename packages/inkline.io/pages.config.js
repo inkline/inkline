@@ -95,8 +95,8 @@ const pages = [
         description: 'Labels are a form component used to easily add text associated to inputs.'
     },
     {
-        id: 'docs-forms-validation-installation',
-        title: 'Installation - Form Validation',
+        id: 'docs-forms-validation-introduction',
+        title: 'Introduction - Form Validation',
         description: 'Install and take advantage of the powerful form validation utilities provided by Inkline.'
     },
     {

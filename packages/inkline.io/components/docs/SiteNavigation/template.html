@@ -31,15 +31,19 @@
                 <li><nuxt-link :to="{ name: 'docs-forms-form' }">Form</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-forms-form-group' }">Form Group</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-forms-form-label' }">Form Label</nuxt-link></li>
-            </ul>
-        </li>
-        <li>
-            <span>Form Validation</span>
-            <ul>
-                <li><nuxt-link :to="{ name: 'docs-forms-validation-installation' }">Installation</nuxt-link></li>
-                <li><nuxt-link :to="{ name: 'docs-forms-validation-schema' }">Schema</nuxt-link></li>
-                <li><nuxt-link :to="{ name: 'docs-forms-validation-validators' }">Validators</nuxt-link></li>
-                <li><nuxt-link :to="{ name: 'docs-forms-validation-methods' }">Methods</nuxt-link></li>
+                <li>
+                    <i-collapsible :class="{ '-active': subroutes['docs-forms-validation'] }"
+                                   :active="isNavCollapsed('docs-forms-validation')">
+                        <i-collapsible-item title="Form Validation" id="docs-forms-validation">
+                            <ul>
+                                <li><nuxt-link :to="{ name: 'docs-forms-validation-introduction' }">Introduction</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-forms-validation-schema' }">Schema</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-forms-validation-validators' }">Validators</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-forms-validation-methods' }">Methods</nuxt-link></li>
+                            </ul>
+                        </i-collapsible-item>
+                    </i-collapsible>
+                </li>
             </ul>
         </li>
         <li>
