@@ -1337,6 +1337,26 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 /***/ }),
 
+/***/ "498a":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $trim = __webpack_require__("58a8").trim;
+var forcedStringTrimMethod = __webpack_require__("c8d2");
+
+// `String.prototype.trim` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.trim
+$({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
+  trim: function trim() {
+    return $trim(this);
+  }
+});
+
+
+/***/ }),
+
 /***/ "4a67":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3327,6 +3347,32 @@ exports.BROKEN_CARET = fails(function () {
 
 /***/ }),
 
+/***/ "a15b":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var IndexedObject = __webpack_require__("44ad");
+var toIndexedObject = __webpack_require__("fc6a");
+var arrayMethodIsStrict = __webpack_require__("a640");
+
+var nativeJoin = [].join;
+
+var ES3_STRINGS = IndexedObject != Object;
+var STRICT_METHOD = arrayMethodIsStrict('join', ',');
+
+// `Array.prototype.join` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.join
+$({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
+  join: function join(separator) {
+    return nativeJoin.call(toIndexedObject(this), separator === undefined ? ',' : separator);
+  }
+});
+
+
+/***/ }),
+
 /***/ "a434":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4556,6 +4602,25 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ "c8d2":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+var whitespaces = __webpack_require__("5899");
+
+var non = '\u200B\u0085\u180E';
+
+// check that a method works with the correct list
+// of whitespaces and has a correct name
+module.exports = function (METHOD_NAME) {
+  return fails(function () {
+    return !!whitespaces[METHOD_NAME]() || non[METHOD_NAME]() != non || whitespaces[METHOD_NAME].name !== METHOD_NAME;
+  });
+};
 
 
 /***/ }),
@@ -8373,6 +8438,19 @@ __webpack_require__.d(components_namespaceObject, "IRadioButtonGroup", function(
 __webpack_require__.d(components_namespaceObject, "ISelect", function() { return Select; });
 __webpack_require__.d(components_namespaceObject, "ISelectOption", function() { return SelectOption; });
 __webpack_require__.d(components_namespaceObject, "ITextarea", function() { return Textarea; });
+var validators_namespaceObject = {};
+__webpack_require__.r(validators_namespaceObject);
+__webpack_require__.d(validators_namespaceObject, "alpha", function() { return alpha_alpha; });
+__webpack_require__.d(validators_namespaceObject, "alphanumeric", function() { return alphanumeric_alphanumeric; });
+__webpack_require__.d(validators_namespaceObject, "custom", function() { return custom; });
+__webpack_require__.d(validators_namespaceObject, "number", function() { return number; });
+__webpack_require__.d(validators_namespaceObject, "email", function() { return email; });
+__webpack_require__.d(validators_namespaceObject, "max", function() { return max; });
+__webpack_require__.d(validators_namespaceObject, "maxLength", function() { return maxLength; });
+__webpack_require__.d(validators_namespaceObject, "min", function() { return min; });
+__webpack_require__.d(validators_namespaceObject, "minLength", function() { return minLength; });
+__webpack_require__.d(validators_namespaceObject, "required", function() { return required; });
+__webpack_require__.d(validators_namespaceObject, "sameAs", function() { return sameAs; });
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
@@ -16384,12 +16462,883 @@ var Textarea_component = normalizeComponent(
 
 
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
+var es_array_join = __webpack_require__("a15b");
+
+// CONCATENATED MODULE: ./src/validators/helpers.js
+
+
+/**
+ * Validation helpers and constants
+ *
+ * @author Anthony Nandaa @ validator.js
+ */
+var alpha = {
+  'en-US': /^[A-Z]+$/i,
+  'bg-BG': /^[А-Я]+$/i,
+  'cs-CZ': /^[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]+$/i,
+  'da-DK': /^[A-ZÆØÅ]+$/i,
+  'de-DE': /^[A-ZÄÖÜß]+$/i,
+  'el-GR': /^[Α-ω]+$/i,
+  'es-ES': /^[A-ZÁÉÍÑÓÚÜ]+$/i,
+  'fr-FR': /^[A-ZÀÂÆÇÉÈÊËÏÎÔŒÙÛÜŸ]+$/i,
+  'it-IT': /^[A-ZÀÉÈÌÎÓÒÙ]+$/i,
+  'nb-NO': /^[A-ZÆØÅ]+$/i,
+  'nl-NL': /^[A-ZÁÉËÏÓÖÜÚ]+$/i,
+  'nn-NO': /^[A-ZÆØÅ]+$/i,
+  'hu-HU': /^[A-ZÁÉÍÓÖŐÚÜŰ]+$/i,
+  'pl-PL': /^[A-ZĄĆĘŚŁŃÓŻŹ]+$/i,
+  'pt-PT': /^[A-ZÃÁÀÂÇÉÊÍÕÓÔÚÜ]+$/i,
+  'ru-RU': /^[А-ЯЁ]+$/i,
+  'sl-SI': /^[A-ZČĆĐŠŽ]+$/i,
+  'sk-SK': /^[A-ZÁČĎÉÍŇÓŠŤÚÝŽĹŔĽÄÔ]+$/i,
+  'sr-RS@latin': /^[A-ZČĆŽŠĐ]+$/i,
+  'sr-RS': /^[А-ЯЂЈЉЊЋЏ]+$/i,
+  'sv-SE': /^[A-ZÅÄÖ]+$/i,
+  'tr-TR': /^[A-ZÇĞİıÖŞÜ]+$/i,
+  'uk-UA': /^[А-ЩЬЮЯЄIЇҐі]+$/i,
+  'ku-IQ': /^[ئابپتجچحخدرڕزژسشعغفڤقکگلڵمنوۆھەیێيطؤثآإأكضصةظذ]+$/i,
+  ar: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]+$/
+};
+var alphanumeric = {
+  'en-US': /^[0-9A-Z]+$/i,
+  'bg-BG': /^[0-9А-Я]+$/i,
+  'cs-CZ': /^[0-9A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]+$/i,
+  'da-DK': /^[0-9A-ZÆØÅ]+$/i,
+  'de-DE': /^[0-9A-ZÄÖÜß]+$/i,
+  'el-GR': /^[0-9Α-ω]+$/i,
+  'es-ES': /^[0-9A-ZÁÉÍÑÓÚÜ]+$/i,
+  'fr-FR': /^[0-9A-ZÀÂÆÇÉÈÊËÏÎÔŒÙÛÜŸ]+$/i,
+  'it-IT': /^[0-9A-ZÀÉÈÌÎÓÒÙ]+$/i,
+  'hu-HU': /^[0-9A-ZÁÉÍÓÖŐÚÜŰ]+$/i,
+  'nb-NO': /^[0-9A-ZÆØÅ]+$/i,
+  'nl-NL': /^[0-9A-ZÁÉËÏÓÖÜÚ]+$/i,
+  'nn-NO': /^[0-9A-ZÆØÅ]+$/i,
+  'pl-PL': /^[0-9A-ZĄĆĘŚŁŃÓŻŹ]+$/i,
+  'pt-PT': /^[0-9A-ZÃÁÀÂÇÉÊÍÕÓÔÚÜ]+$/i,
+  'ru-RU': /^[0-9А-ЯЁ]+$/i,
+  'sl-SI': /^[0-9A-ZČĆĐŠŽ]+$/i,
+  'sk-SK': /^[0-9A-ZÁČĎÉÍŇÓŠŤÚÝŽĹŔĽÄÔ]+$/i,
+  'sr-RS@latin': /^[0-9A-ZČĆŽŠĐ]+$/i,
+  'sr-RS': /^[0-9А-ЯЂЈЉЊЋЏ]+$/i,
+  'sv-SE': /^[0-9A-ZÅÄÖ]+$/i,
+  'tr-TR': /^[0-9A-ZÇĞİıÖŞÜ]+$/i,
+  'uk-UA': /^[0-9А-ЩЬЮЯЄIЇҐі]+$/i,
+  'ku-IQ': /^[٠١٢٣٤٥٦٧٨٩0-9ئابپتجچحخدرڕزژسشعغفڤقکگلڵمنوۆھەیێيطؤثآإأكضصةظذ]+$/i,
+  'ar': /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]+$/
+};
+var decimal = {
+  'en-US': '.',
+  ar: '٫'
+};
+var arabicLocales = ['AE', 'BH', 'DZ', 'EG', 'IQ', 'JO', 'KW', 'LB', 'LY', 'MA', 'QM', 'QA', 'SA', 'SD', 'SY', 'TN', 'YE'];
+var englishLocales = ['AU', 'GB', 'HK', 'IN', 'NZ', 'ZA', 'ZM']; // Source: https://en.wikipedia.org/wiki/Decimal_mark
+
+var dotDecimal = ['ar-EG', 'ar-LB', 'ar-LY'];
+var commaDecimal = ['bg-BG', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'en-ZM', 'es-ES', 'fr-FR', 'it-IT', 'ku-IQ', 'hu-HU', 'nb-NO', 'nn-NO', 'nl-NL', 'pl-PL', 'pt-PT', 'ru-RU', 'sl-SI', 'sr-RS@latin', 'sr-RS', 'sv-SE', 'tr-TR', 'uk-UA'];
+englishLocales.forEach(function (locale) {
+  alpha["en-".concat(locale)] = alpha['en-US'];
+  alphanumeric["en-".concat(locale)] = alphanumeric['en-US'];
+  decimal["en-".concat(locale)] = decimal['en-US'];
+});
+arabicLocales.forEach(function (locale) {
+  alpha["ar-".concat(locale)] = alpha['ar'];
+  alphanumeric["ar-".concat(locale)] = alphanumeric['ar'];
+  decimal["ar-".concat(locale)] = decimal['ar'];
+});
+dotDecimal.forEach(function (locale) {
+  decimal[locale] = decimal['en-US'];
+});
+commaDecimal.forEach(function (locale) {
+  commaDecimal[locale] = decimal['ar'];
+});
+alpha['pt-BR'] = alpha['pt-PT'];
+alphanumeric['pt-BR'] = alphanumeric['pt-PT'];
+decimal['pt-BR'] = decimal['pt-PT'];
+alpha['pl-Pl'] = alpha['pl-PL'];
+alphanumeric['pl-Pl'] = alphanumeric['pl-PL'];
+decimal['pl-Pl'] = decimal['pl-PL'];
+// CONCATENATED MODULE: ./src/validators/alpha.js
+
+
+
+
+function alpha_alpha(value) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var locale = options.locale || 'en-US';
+
+  var process = function process(v) {
+    v = String(v);
+
+    if (options.allowDashes) {
+      v = v.replace(/-/g, '');
+    }
+
+    if (options.allowSpaces) {
+      v = v.replace(/ /g, '');
+    }
+
+    return v;
+  };
+
+  if (value.constructor === Array) {
+    return value.every(function (v) {
+      return alpha[locale].test(process(v));
+    });
+  }
+
+  return alpha[locale].test(process(value));
+}
+// CONCATENATED MODULE: ./src/validators/alphanumeric.js
+
+
+
+
+function alphanumeric_alphanumeric(value) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var locale = options.locale || 'en-US';
+
+  var process = function process(v) {
+    v = String(v);
+
+    if (options.allowDashes) {
+      v = v.replace(/-/g, '');
+    }
+
+    if (options.allowSpaces) {
+      v = v.replace(/ /g, '');
+    }
+
+    return v;
+  };
+
+  if (value.constructor === Array) {
+    return value.every(function (v) {
+      return alphanumeric[locale].test(process(v));
+    });
+  }
+
+  return alphanumeric[locale].test(process(value));
+}
+// CONCATENATED MODULE: ./src/validators/custom.js
+
+function custom(value) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    validator: function validator() {
+      return true;
+    }
+  };
+
+  if (value.constructor === Array) {
+    return value.every(function (v) {
+      return options.validator(v);
+    });
+  }
+
+  return options.validator(value);
+}
+// CONCATENATED MODULE: ./src/validators/number.js
+
+
+
+
+function number(value) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    allowNegative: false,
+    allowDecimal: false
+  };
+  var regExp = "\\d+";
+
+  if (options.allowNegative) {
+    regExp = "[-]?" + regExp;
+  }
+
+  if (options.allowDecimal) {
+    regExp += "([\\.\\,]\\d+)?";
+  }
+
+  regExp = new RegExp("^".concat(regExp, "$"));
+
+  if (value.constructor === Array) {
+    return value.every(function (v) {
+      return regExp.test(v);
+    });
+  }
+
+  return regExp.test(value);
+}
+// CONCATENATED MODULE: ./src/validators/email.js
+
+var email_validator = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+function email(value) {
+  if (value.constructor === Array) {
+    return value.every(function (v) {
+      return email_validator.test(String(v));
+    });
+  }
+
+  return email_validator.test(String(value));
+}
+// CONCATENATED MODULE: ./src/validators/max.js
+
+
+function max(value) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    value: 0
+  };
+
+  if (value === undefined || value === null) {
+    return false;
+  }
+
+  var process = function process(v) {
+    return Number(v);
+  };
+
+  if (Array.isArray(value)) {
+    return value.every(function (v) {
+      return process(v) <= options.value;
+    });
+  }
+
+  return process(value) <= options.value;
+}
+// CONCATENATED MODULE: ./src/validators/maxLength.js
+
+
+function maxLength(value) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    value: 0
+  };
+
+  if (value === undefined || value === null) {
+    return false;
+  }
+
+  if (value.constructor === Array) {
+    return value.length <= options.value;
+  }
+
+  if (_typeof(value) === 'object') {
+    return Object.keys(value).length <= options.value;
+  }
+
+  return String(value).length <= options.value;
+}
+// CONCATENATED MODULE: ./src/validators/min.js
+
+
+function min(value) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    value: 0
+  };
+
+  if (value === undefined || value === null) {
+    return false;
+  }
+
+  var process = function process(v) {
+    return Number(v);
+  };
+
+  if (Array.isArray(value)) {
+    return value.every(function (v) {
+      return process(v) >= options.value;
+    });
+  }
+
+  return process(value) >= options.value;
+}
+// CONCATENATED MODULE: ./src/validators/minLength.js
+
+
+function minLength(value) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    value: 0
+  };
+
+  if (value === undefined || value === null) {
+    return false;
+  }
+
+  if (value.constructor === Array) {
+    return value.length >= options.value;
+  }
+
+  if (_typeof(value) === 'object') {
+    return Object.keys(value).length >= options.value;
+  }
+
+  return String(value).length >= options.value;
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
+var es_string_trim = __webpack_require__("498a");
+
+// CONCATENATED MODULE: ./src/validators/required.js
+
+
+function required(value) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    invalidateFalse: false
+  };
+
+  if (value === undefined || value === null) {
+    return false;
+  }
+
+  if (value.constructor === Array) {
+    return !!value.length;
+  } // For checkboxes, false value means unchecked
+
+
+  if (_typeof(value) === _typeof(true)) {
+    return options.invalidateFalse ? value : true;
+  }
+
+  return !!String(value).trim().length;
+}
+// CONCATENATED MODULE: ./src/validators/sameAs.js
+
+
+
+function sameAs(value) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var schemaOptions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  if (!options.target) {
+    return false;
+  }
+
+  var schema = schemaOptions.getSchema();
+  var targetSchema = options.target.split('.').reduce(function (acc, key) {
+    return acc && acc[key];
+  }, schema);
+
+  if (!targetSchema) {
+    throw new Error("Could not find target with name '".concat(options.target, "' in 'sameAs' validator."));
+  }
+
+  return value === targetSchema.value;
+}
+// CONCATENATED MODULE: ./src/validators/index.js
+
+
+
+
+
+
+
+
+
+
+
+// CONCATENATED MODULE: ./src/factories/FormBuilder.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function FormBuilder_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FormBuilder_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FormBuilder_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FormBuilder_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+var FormBuilder_FormBuilder =
+/*#__PURE__*/
+function () {
+  function FormBuilder() {
+    _classCallCheck(this, FormBuilder);
+
+    _defineProperty(this, "defaultFormState", {
+      touched: false,
+      untouched: true,
+      dirty: false,
+      pristine: true,
+      invalid: false,
+      valid: true,
+      errors: {}
+    });
+
+    _defineProperty(this, "defaultFormControlState", {
+      value: '',
+      validateOn: 'input'
+    });
+
+    _defineProperty(this, "reservedSchemaFields", ['name', 'fields', 'validate', 'validateOn', 'validators', 'invalid', 'valid', 'touch', 'touched', 'untouched', 'dirty', 'pristine', 'set', 'add', 'remove', 'errors']);
+
+    _defineProperty(this, "validators", validators_namespaceObject);
+  }
+
+  _createClass(FormBuilder, [{
+    key: "factory",
+
+    /**
+     * If grouped, return a new form group. Otherwise, return a form control
+     *
+     * @param isGroup
+     * @param nameNesting
+     * @param schema
+     * @returns {*}
+     */
+    value: function factory(nameNesting, schema, isGroup) {
+      return isGroup ? this.form(nameNesting, schema) : this.formControl(nameNesting, schema);
+    }
+    /**
+     * Creates a form control schema
+     *
+     * @param nameNesting
+     * @param schema
+     * @returns {{
+     *      name: string,
+     *      validate: (function(*=): {valid: boolean, errors: {length: number}}),
+     *      value: string,
+     *      validateOn: string,
+     *      touched: boolean,
+     *      untouched: boolean,
+     *      dirty: boolean,
+     *      pristine: boolean,
+     *      invalid: boolean,
+     *      valid: boolean,
+     *      errors: {}
+     * }}
+     */
+
+  }, {
+    key: "formControl",
+    value: function formControl(nameNesting, schema) {
+      var _this = this;
+
+      schema = FormBuilder_objectSpread({}, this.defaultFormControlState, {}, this.defaultFormState, {}, schema);
+      schema.name = nameNesting.join('.'); // Set all validators as enabled by default
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = (schema.validators || [])[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var validator = _step.value;
+
+          if (!validator.hasOwnProperty('enabled')) {
+            validator.enabled = true;
+          }
+        }
+        /**
+         * set the schema and all its parent schemas as touched
+         *
+         * @param options
+         * @returns {boolean}
+         */
+
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      schema.touch = function (options) {
+        var schemaList = _this.getSchemaList(schema, options.getSchema());
+
+        schemaList.forEach(function (schemaListItem) {
+          schemaListItem.touched = true;
+          schemaListItem.untouched = false;
+        });
+        return true;
+      };
+      /**
+       * Validate the current value by performing all the specified validation functions on it
+       *
+       * @param value
+       * @param options
+       * @returns {{valid: boolean, errors: {length: number}}}
+       */
+
+
+      schema.validate = function (value, options) {
+        var valid = true;
+        var errors = {
+          length: 0
+        };
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = (schema.validators || [])[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var validator = _step2.value;
+
+            if (!_this.validators[validator.rule]) {
+              throw new Error("Invalid validation rule '".concat(validator.rule, "' provided."));
+            } // Validator enabled state can be a function
+
+
+            var validatorEnabled = typeof validator.enabled === 'function' ? validator.enabled() : validator.enabled; // Validator rule gets called with value, validator options and root schema options
+
+            if (validatorEnabled && !validators_namespaceObject[validator.rule](value, validator, options)) {
+              errors[validator.rule] = validator.message || FormBuilder.getErrorMessage(value, validator);
+              errors.length += 1;
+              valid = false;
+            }
+          }
+          /**
+           * Set validation status for each parent schema
+           */
+
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+
+        _this.getSchemaList(schema, options.getSchema()).forEach(function (schemaListItem, index) {
+          schemaListItem.errors = errors;
+          schemaListItem.valid = index === 0 ? valid : _this.isValidFormGroupSchema(schemaListItem);
+          schemaListItem.invalid = !schemaListItem.valid;
+          schemaListItem.dirty = true;
+          schemaListItem.pristine = false;
+        });
+
+        return {
+          valid: valid,
+          errors: errors
+        };
+      };
+
+      return schema;
+    }
+    /**
+     * Creates a form schema by going through all the fields
+     *
+     * @param nameNesting
+     * @param schema
+     * @returns {{
+     *      id: string,
+     *      group: boolean,
+     *      touched: boolean,
+     *      untouched: boolean,
+     *      dirty: boolean,
+     *      pristine: boolean,
+     *      invalid: boolean,
+     *      valid: boolean,
+     *      errors: {}
+     * }}
+     */
+
+  }, {
+    key: "form",
+    value: function form(nameNesting, schema) {
+      var _this2 = this;
+
+      // Clone the provided schema to make sure we're working on a clean copy
+      // without modifying the provided arguments.
+      if (schema.constructor === Array) {
+        schema = schema.slice(0);
+      } else {
+        schema = FormBuilder_objectSpread({}, schema);
+      } // Set schema fields
+
+
+      schema.fields = Object.keys(schema);
+      schema.fields.forEach(function (name) {
+        if (_this2.reservedSchemaFields.indexOf(name) !== -1) {
+          throw new Error("The field name \"".concat(name, "\" is a reserved Inkline Form Validation field name. Please provide a different name."));
+        }
+      }); // Set schema id
+
+      schema.name = nameNesting.join('.'); // Recursively construct child schema fields
+
+      schema.fields.forEach(function (name) {
+        var schemaHasFormControlProperties = schema[name].hasOwnProperty('validators') || schema[name].hasOwnProperty('value');
+        var schemaIsEmptyObject = Object.keys(schema[name]).length === 0;
+        var schemaIsArray = schema[name].constructor === Array; // Verify if schema is a form control or a form group. Form controls can be empty objects, can have either
+        // a 'validators' or a 'value' field. Form groups are arrays or have multiple user-defined keys
+
+        schema[name] = _this2.factory(nameNesting.concat([name]), schema[name], !(schemaHasFormControlProperties || schemaIsEmptyObject) || schemaIsArray);
+      });
+      /**
+       * Validate the current group by performing all validation functions on its child fields
+       *
+       * @param options
+       * @returns {{valid: boolean, errors: {length: number}}}
+       */
+
+      schema.validate = function (options) {
+        for (var key in schema) {
+          if (schema.hasOwnProperty(key) && schema[key] && schema[key].validate) {
+            if (schema[key].fields) {
+              schema[key].validate(options);
+            } else {
+              schema[key].validate(schema[key].value, options);
+            }
+          }
+        }
+      }; // Add schema state properties. When handling array form groups, we add the schema fields as
+      // custom array properties in order to keep the array iterator intact
+
+
+      Object.keys(this.defaultFormState).forEach(function (property) {
+        return schema[property] = _this2.defaultFormState[property];
+      });
+
+      if (schema.constructor === Array) {
+        /**
+         * Push an item into the Array schema
+         *
+         * @param item
+         * @param options
+         */
+        schema.add = function (item) {
+          var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+          schema.push(_this2.factory(nameNesting.concat([schema.length]), item, options.group));
+          schema.fields.push(schema.length - 1);
+        };
+        /**
+         * Add an item into the Array schema at the given index, after removing n elements
+         *
+         * @param start
+         * @param deleteCount
+         * @param item
+         * @param options
+         */
+
+
+        schema.remove = function (start, deleteCount, item) {
+          var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+          if (item) {
+            schema.splice(start, deleteCount, _this2.factory(nameNesting.concat([start]), item, options.group));
+            schema.fields.splice(start, deleteCount, start);
+          } else {
+            schema.splice(start, deleteCount);
+            schema.fields.splice(start, deleteCount);
+          }
+
+          for (var index = start; index < schema.length; index += 1) {
+            schema[index].name = schema[index].name.replace(/[0-9]+$/, index);
+            schema.fields[index] = index.toString();
+          }
+        };
+
+        return schema;
+      }
+      /**
+       * Set a field with the given name and definition on the schema
+       *
+       * @param instance
+       * @param name
+       * @param item
+       * @param options
+       */
+
+
+      schema.set = function (name, item) {
+        var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+        if (!options.instance) {
+          throw new Error('Please make sure you provide the Vue instance inside the options object as options.instance.');
+        }
+
+        options.instance.$set(schema, 'fields', schema.fields.concat([name]));
+        options.instance.$set(schema, name, _this2.factory(nameNesting.concat([name]), item, options.group));
+      };
+
+      return schema;
+    }
+    /**
+     * Returns an array of the input's parent schemas starting from the root, and ending with the
+     * input itself's schema.
+     *
+     * @param schema
+     * @param rootSchema
+     */
+
+  }, {
+    key: "getSchemaList",
+    value: function getSchemaList(schema, rootSchema) {
+      var parentFormGroupKeys = schema.name.replace(/\[['"]?([^'"\]])['"]?]/g, '.$1').split('.');
+      var parentSchemaList = parentFormGroupKeys.map(function (group, index) {
+        return parentFormGroupKeys.slice(0, index).reduce(function (acc, key) {
+          return acc && acc[key];
+        }, rootSchema);
+      });
+
+      if (!parentSchemaList[parentSchemaList.length - 1].hasOwnProperty(parentFormGroupKeys[parentFormGroupKeys.length - 1])) {
+        throw new Error("Could not retrieve schema tree for input with name ".concat(schema.name, "."));
+      }
+
+      parentSchemaList.reverse();
+      return [schema].concat(parentSchemaList);
+    }
+    /**
+     * Check if all child fields of the group schema are valid
+     *
+     * @param schema
+     * @returns {boolean}
+     */
+
+  }, {
+    key: "isValidFormGroupSchema",
+    value: function isValidFormGroupSchema(schema) {
+      return Object.keys(schema).reduce(function (groupValid, key) {
+        var schemaListItemValue = schema[key];
+
+        if (_typeof(schemaListItemValue) === 'object' && schemaListItemValue.hasOwnProperty('valid')) {
+          groupValid = groupValid && schemaListItemValue.valid;
+        }
+
+        return groupValid;
+      }, true);
+    }
+    /**
+     * Return formatted default error messages for validators
+     */
+
+  }], [{
+    key: "getErrorMessage",
+    value: function getErrorMessage(value, validator) {
+      var content = '';
+      var isMultiple = Array.isArray(value);
+
+      switch (validator.rule) {
+        case 'alpha':
+          if (validator.allowDashes && validator.allowSpaces) {
+            content = 'letters, dashes and spaces';
+          } else if (validator.allowSpaces) {
+            content = 'letters and spaces';
+          } else if (validator.allowDashes) {
+            content = 'letters and dashes';
+          } else {
+            content = 'letters';
+          }
+
+          return isMultiple ? "Please select options that contain ".concat(content, " only.") : "Please enter ".concat(content, " only.");
+
+        case 'alphanumeric':
+          if (validator.allowDashes && validator.allowSpaces) {
+            content = 'letters, numbers, dashes and spaces';
+          } else if (validator.allowSpaces) {
+            content = 'letters, numbers and spaces';
+          } else if (validator.allowDashes) {
+            content = 'letters, numbers and dashes';
+          } else {
+            content = 'letters and numbers';
+          }
+
+          return isMultiple ? "Please select options that contain ".concat(content, " only.") : "Please enter ".concat(content, " only.");
+
+        case 'number':
+          if (validator.allowNegative && validator.allowDecimal) {
+            content = 'positive or negative decimal numbers';
+          } else if (validator.allowNegative) {
+            content = 'positive or negative numbers';
+          } else if (validator.allowDecimal) {
+            content = 'decimal numbers';
+          } else {
+            content = 'numbers';
+          }
+
+          return isMultiple ? "Please select options that contain ".concat(content, " only.") : "Please enter ".concat(content, " only.");
+
+        case 'email':
+          return isMultiple ? 'Please select only valid email address.' : 'Please enter a valid email address.';
+
+        case 'max':
+          return isMultiple ? "Please select values up to a maximum of ".concat(validator.value, ".") : "Please enter a value up to a maximum of ".concat(validator.value, ".");
+
+        case 'maxLength':
+          return isMultiple ? "Please select up to ".concat(validator.value, " options.") : "Please enter up to ".concat(validator.value, " characters.");
+
+        case 'min':
+          return isMultiple ? "Please select values up from a minimum of ".concat(validator.value, ".") : "Please enter a value up from a minimum of ".concat(validator.value, ".");
+
+        case 'minLength':
+          return isMultiple ? "Please select at least ".concat(validator.value, " options.") : "Please enter at least ".concat(validator.value, " characters.");
+
+        case 'required':
+          return isMultiple ? 'Please select at least one option.' : 'Please enter a value for this field.';
+
+        case 'sameAs':
+          return "Please make sure that the two values match.";
+
+        default:
+          return 'Please enter a correct value for this field.';
+      }
+    }
+  }]);
+
+  return FormBuilder;
+}();
+// CONCATENATED MODULE: ./src/prototypes/form.js
+
+
+
+/**
+ * Construct a basic form schema with default values
+ */
+
+function form_form(name, schema) {
+  if (typeof name !== 'string') {
+    schema = name;
+    name = '';
+  }
+
+  var nameNesting = name === '' ? [] : name.split('.');
+  return form_form.builder.factory(nameNesting, schema, true);
+}
+form_form.builder = new FormBuilder_FormBuilder();
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 var Inkline = {
   install: function install(Vue) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    Vue.prototype.$inkline = {
+      form: form_form
+    };
 
     for (var componentIndex in options.components) {
       Vue.component(options.components[componentIndex].name, options.components[componentIndex]);
@@ -16414,11 +17363,11 @@ function main_objectSpread(target) { for (var i = 1; i < arguments.length; i++) 
 
 
 
-var install = Inkline.install;
+var main_install = Inkline.install;
 
 Inkline.install = function (Vue) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return install.call(Inkline, Vue, main_objectSpread({
+  return main_install.call(Inkline, Vue, main_objectSpread({
     components: components_namespaceObject
   }, options));
 };
