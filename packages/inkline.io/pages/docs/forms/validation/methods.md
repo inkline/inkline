@@ -52,7 +52,7 @@ Just like Arrays, Objects can be manipulated and kept up to date using a custom 
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 fullName: {}
             })
         };
@@ -127,7 +127,7 @@ Inkline provides you with custom implementations for Array group operations usin
 export default {
     data () {
         return {
-            form: this.$form({
+            form: this.$inkline.form({
                 items: [
                     { value: 'Existing Field' },
                     { value: 'Existing Field' }

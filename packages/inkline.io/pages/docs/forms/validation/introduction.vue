@@ -1,4 +1,4 @@
-<template lang="md" src="./installation.md" />
+<template lang="md" src="./introduction.md" />
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
@@ -6,8 +6,8 @@ import { IForm, IFormGroup, IFormLabel, IInput, ITextarea, ICheckbox, ICheckboxG
 
 export default {
     extends: View,
-    name: 'FormValidationInstallationView',
+    name: 'FormValidationIntroductionView',
     layout: 'documentation',
-    head: head('docs-forms-validation-installation'),
+    head: head('docs-forms-validation-introduction'),
 };
 </script>

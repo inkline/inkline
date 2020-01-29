@@ -26,7 +26,7 @@ export default {
     },
     data () {
         return {
-            basicForm: this.$form({
+            basicForm: this.$inkline.form({
                 input: {
                     value: 'John Doe',
                     validators: [
@@ -34,19 +34,19 @@ export default {
                     ]
                 }
             }),
-            defaultValueForm: this.$form({
+            defaultValueForm: this.$inkline.form({
                 input: {
                     value: 'Default Value'
                 }
             }),
-            validateValueForm: this.$form({
+            validateValueForm: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'required', message: 'Input is required' }
                     ]
                 }
             }),
-            validateOnForm: this.$form({
+            validateOnForm: this.$inkline.form({
                 input1: {
                     validateOn: 'input',
                     validators: [
@@ -60,19 +60,19 @@ export default {
                     ]
                 }
             }),
-            groupedValueForm: this.$form({
+            groupedValueForm: this.$inkline.form({
                 input: {},
                 group: {
                     input: {}
                 }
             }),
-            arrayValueForm: this.$form({
+            arrayValueForm: this.$inkline.form({
                 group: [
                     { value: 'First Field' },
                     { value: 'Second Field' }
                 ]
             }),
-            form: this.$form({
+            form: this.$inkline.form({
                 input: {
                     validators: [
                         { rule: 'required', message: 'Input is required.' }
