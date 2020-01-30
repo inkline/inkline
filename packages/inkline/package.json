@@ -5,16 +5,16 @@
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
     "build": "npm run build:inkline && npm run dist",
-    "build:inkline": "../../node_modules/.bin/vue-cli-service build --target lib --name Inkline src/main.js",
+    "build:inkline": "vue-cli-service build --target lib --name Inkline src/main.js",
     "lint": "npm run lint:script && npm run lint:style",
     "coveralls": "cat ../../coverage/lcov.info | coveralls",
-    "dev": "../../node_modules/.bin/vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "dist": "node ./scripts/dist.js",
-    "lint:script": "../../node_modules/.bin/vue-cli-service lint",
-    "lint:style": "../../node_modules/.bin/vue-cli-service lint:style",
+    "lint:script": "vue-cli-service lint",
+    "lint:style": "vue-cli-service lint:style",
     "prepublishOnly": "npm run build",
-    "test": "../../node_modules/.bin/vue-cli-service test:unit --coverage",
-    "test:dev": "../../node_modules/.bin/vue-cli-service test:unit --watch"
+    "test": "vue-cli-service test:unit --coverage",
+    "test:dev": "vue-cli-service test:unit --watch"
   },
   "main": "dist/inkline.js",
   "unpkg": "dist/inkline.js",
