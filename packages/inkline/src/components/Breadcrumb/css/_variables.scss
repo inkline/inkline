@@ -1,0 +1,25 @@
+//
+// Breadcrumb Variables
+//
+$breadcrumb-font-size: $font-size !default;
+
+$breadcrumb-border-radius: $border-radius !default;
+
+$breadcrumb-padding-base: spacers('1/2') spacers('1') !default;
+$breadcrumb-padding: size-map($breadcrumb-padding-base, $sizes, $size-multipliers) !default;
+
+$breadcrumb-margin-bottom: $spacer !default;
+
+$breadcrumb-divider: '/' !default;
+
+$breadcrumb-active-color: $body-color !default;
+$breadcrumb-plain-color: $text-muted !default;
+
+//
+// Variants
+//
+$breadcrumb-variants: ('brand', 'monochrome') !default;
+$breadcrumb-variant-color-light: $variant-color-light !default;
+$breadcrumb-variant-color-dark: $variant-color-dark !default;
+
+$variants: map_merge($variants, ('breadcrumb': add-variant($breadcrumb-variants, $color-groups)));

@@ -1,0 +1,28 @@
+/**
+    * Pre-formatted Text
+    */
+
+// Blocks of code
+pre {
+    font-family: font-family-primary('monospace');
+    display: block;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: $pre-font-size;
+    color: $pre-color;
+
+    // Account for some code outputs that place code tags in pre tags
+    code {
+        padding: 0;
+        font-size: inherit;
+        color: inherit;
+        background-color: transparent;
+        border-radius: 0;
+    }
+
+    // Enable scrollable blocks of code
+    &.-scrollable {
+        max-height: $pre-scrollable-max-height;
+        overflow-y: scroll;
+    }
+}

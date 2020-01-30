@@ -1,0 +1,68 @@
+/**
+ * Alert
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/variables';
+@import 'css/variants';
+@import 'css/sizes';
+
+.alert {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-width: $alert-border-width;
+    border-style: solid;
+
+    // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+    // as much space as possible, ensuring footers are aligned to the bottom.
+    align-items: center;
+
+    a {
+        font-weight: 600;
+    }
+
+    > .icon {
+        flex: 1;
+    }
+
+    &.-dismissible > .content {
+        padding-right: 0;
+    }
+
+    &.-with-icon > .content {
+        padding-left: 0;
+    }
+
+    > .dismiss {
+        flex: 0 0 auto;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+    }
+
+    @extend .alert.-md;
+    @extend .alert.-primary;
+}
+
+.alert,
+.alert > .content {
+    flex: 0 1 100%;
+
+    > hr {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    > *:first-child {
+        margin-top: 0;
+    }
+
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}

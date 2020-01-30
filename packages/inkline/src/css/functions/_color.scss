@@ -1,0 +1,25 @@
+// Replacement for Stylus darken().
+// Sass function darken() does not have the same behavior, so we should use scale-color()
+// @see https://sass-lang.com/documentation/functions/color#darken
+//
+// @param $color   - The color to darken
+// @param $percent - The percentage of changement.
+//
+// @return darkened color
+//
+@function darken-lightness($color, $percent) {
+    @return scale-color($color, $lightness: -$percent);
+}
+
+// Replacement for Stylus lighten().
+// Sass function lighten() does not have the same behavior, so we should use scale-color()
+// @see https://sass-lang.com/documentation/functions/color#lighten
+//
+// @param $color   - The color to lighten
+// @param $percent - The percentage of change.
+//
+// @return lightened color
+//
+@function lighten-lightness($color, $percent) {
+    @return scale-color($color, $lightness: $percent);
+}

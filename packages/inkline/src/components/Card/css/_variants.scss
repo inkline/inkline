@@ -1,0 +1,19 @@
+//
+// Card variants
+//
+@each $variant-name, $variant in variants('card') {
+    .card.-#{$variant-name} {
+        color: variant-color-by-luminance($variant, $card-variant-color-light, $card-variant-color-dark);
+        background-color: $variant;
+
+        > .body {
+            border-color: darken-lightness($variant, 10%);
+        }
+
+        > .header,
+        > .footer {
+            background-color: $card-background-darken;
+            border-color: darken-lightness($variant, 10%);
+        }
+    }
+}

@@ -1,0 +1,55 @@
+/**
+ * Breadcrumb
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Breadcrumb/css/_variables';
+@import 'css/_variables';
+@import 'css/_sizes';
+
+.breadcrumb {
+    > .item {
+        margin-bottom: 0;
+
+        > span {
+            display: inline-block;
+        }
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        // The separator between breadcrumbs (by default, a forward-slash: "/")
+        + .item {
+            &::before {
+                display: inline-block; // } Suppress underlining of the separator in modern browsers
+                content: $breadcrumb-divider;
+            }
+        }
+
+        // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
+        // without `<ul>`s. The `::before` pseudo-element generates an element
+        // *within* the .item and thereby inherits the `text-decoration`.
+        //
+        // To trick IE into suppressing the underline, we give the pseudo-element an
+        // underline and then immediately remove it.
+        + .item:hover::before {
+            text-decoration: underline;
+        }
+
+        // Check the above for duplication
+        + .item:hover::before { /* stylelint-disable-line no-duplicate-selectors */
+            text-decoration: none;
+        }
+
+        a:not([href]) {
+            color: $breadcrumb-plain-color;
+        }
+
+        &.-active a {
+            color: $breadcrumb-active-color;
+        }
+
+        @include breadcrumb-item-variant('md');
+    }
+}

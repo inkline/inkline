@@ -1,8 +1,0 @@
-//
-// Progress variants
-//
-@each $variant-name, $variant in variants('progress') {
-    .progress.-#{$variant-name} {
-        background-color: $variant;
-    }
-}

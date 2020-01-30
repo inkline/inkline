@@ -1,0 +1,33 @@
+/**
+    * Lists
+    */
+
+ul,
+ol,
+dl,
+.list {
+    > .item,
+    > li {
+        margin-bottom: $list-item-margin-bottom;
+    }
+
+    &.-unstyled {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    &.-inline {
+        padding-left: 0;
+        list-style: none;
+
+        > .item,
+        > li {
+            display: inline-block;
+            margin-bottom: 0;
+
+            &:not(:last-child) {
+                margin-right: $list-inline-padding;
+            }
+        }
+    }
+}

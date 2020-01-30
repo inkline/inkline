@@ -1,0 +1,30 @@
+/**
+ * Generate component size map containing xs, sm, md, lg, xl ($sizes) sizes calculated based on the given base size
+ */
+@function size-map($base-size, $multiplier-keys: $sizes, $multipliers: $size-multipliers) {
+    $size-map: ();
+
+    @each $multiplier-key in $multiplier-keys {
+        @if length($base-size) == 1 {
+            $value: $base-size * map_get($size-multipliers, $multiplier-key);
+            $size-map: map_merge($size-map, ($multiplier-key: $value));
+        }
+
+        @else if length($base-size) == 2 {
+            $value: nth($base-size, 1) * map_get($size-multipliers, $multiplier-key) nth($base-size, 2) * map_get($size-multipliers, $multiplier-key);
+            $size-map: map_merge($size-map, ($multiplier-key: $value));
+        }
+
+        @else if length($base-size) == 3 {
+            $value: nth($base-size, 1) * map_get($size-multipliers, $multiplier-key) nth($base-size, 2) * map_get($size-multipliers, $multiplier-key) nth($base-size, 3) * map_get($size-multipliers, $multiplier-key);
+            $size-map: map_merge($size-map, ($multiplier-key: $value));
+        }
+
+        @else if length($base-size) == 4 {
+            $value: nth($base-size, 1) * map_get($size-multipliers, $multiplier-key) nth($base-size, 2) * map_get($size-multipliers, $multiplier-key) nth($base-size, 3) * map_get($size-multipliers, $multiplier-key) nth($base-size, 4) * map_get($size-multipliers, $multiplier-key);
+            $size-map: map_merge($size-map, ($multiplier-key: $value));
+        }
+    }
+
+    @return $size-map;
+}

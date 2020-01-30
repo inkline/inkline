@@ -1,0 +1,33 @@
+//
+// Variables
+//
+$button-font-size: $font-size !default;
+$button-font-weight: font-weight('normal') !default;
+$button-line-height: $line-height !default;
+
+$button-border-width: $border-width !default;
+$button-border-radius: $border-radius !default;
+
+$button-padding-base: spacers('1/2') spacers('1') !default;
+$button-padding: size-map($button-padding-base, $sizes, $size-multipliers) !default;
+
+$button-circle-size-base: spacers('1') * 1.6 + map_get($button-font-size, 'md') !default;
+$button-circle-size: size-map($button-circle-size-base, $sizes, $size-multipliers) !default;
+
+$button-margin: $spacer !default;
+
+$button-darken-percentage-hover: 5% !default;
+$button-darken-percentage-active: 12.5% !default;
+$button-opacity-disabled: 0.75 !default;
+
+$button-link-color: $link-color !default;
+$button-link-disabled-color: $text-muted !default;
+
+//
+// Themes
+//
+$button-variants: ('brand', 'monochrome', 'state', 'social') !default;
+$button-variant-color-light: $variant-color-light !default;
+$button-variant-color-dark: $variant-color-dark !default;
+
+$variants: map_merge($variants, ('button': add-variant($button-variants, $color-groups)));

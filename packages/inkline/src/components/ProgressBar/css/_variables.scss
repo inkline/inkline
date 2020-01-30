@@ -1,0 +1,12 @@
+//
+// Progress Bar variables
+//
+
+//
+// Variants
+//
+$progress-bar-variants: ('brand', 'monochrome', 'state') !default;
+$progress-bar-variant-color-light: $variant-color-light !default;
+$progress-bar-variant-color-dark: $variant-color-dark !default;
+
+$variants: map_merge($variants, ('progress-bar': add-variant($progress-bar-variants, $color-groups)));

@@ -1,0 +1,16 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import './css/variables';
+
+.form-group-error {
+    position: relative;
+    margin: $form-group-error-margin;
+    padding: 0;
+    list-style: none;
+    color: colors('danger');
+    font-size: font-size('sm');
+
+    li {
+        margin: 0;
+    }
+}

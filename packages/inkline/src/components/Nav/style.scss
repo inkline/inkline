@@ -1,0 +1,23 @@
+/**
+ * Nav
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_sizes';
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    &.-vertical {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    @extend .nav.-md;
+}

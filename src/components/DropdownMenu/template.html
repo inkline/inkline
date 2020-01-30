@@ -1,8 +1,0 @@
-<transition name="zoom-in-top-transition" @after-leave="doDestroy">
-    <div class="menu"
-         :class="classes"
-         v-show="visible">
-        <span class="arrow" v-if="arrow"></span>
-        <slot></slot>
-    </div>
-</transition>

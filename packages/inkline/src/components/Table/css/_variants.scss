@@ -1,0 +1,56 @@
+//
+// Variants
+//
+@each $variant-name, $variant in variants('table') {
+    $table-variant-text-color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
+    $table-variant-border-color: variant-color-by-luminance($variant, lighten-lightness($variant, 5%), darken-lightness($variant, 5%));
+    $table-variant-hover-color: variant-color-by-luminance($variant, lighten-lightness($variant, 6%), darken-lightness($variant, 6%));
+    $table-variant-stripe-color: variant-color-by-luminance($variant, lighten-lightness($variant, 3%), darken-lightness($variant, 3%));
+
+    .table.-#{$variant-name} {
+        border-top-color: $table-variant-border-color;
+        color: $table-variant-text-color;
+
+        th,
+        td {
+            background-color: $variant;
+        }
+
+        // Bordered table
+        //
+        // Add borders to all sides of the table and table cells
+        //
+        &.-bordered {
+            &,
+            th,
+            td {
+                border-color: $table-variant-border-color;
+            }
+        }
+
+        // Striped Table
+        //
+        // Default zebra-stripe styles (alternating gray and transparent backgrounds)
+        //
+        &.-striped {
+            > tr:nth-of-type(odd),
+            tbody > tr:nth-of-type(odd) {
+                th,
+                td {
+                    background-color: $table-variant-stripe-color;
+                }
+            }
+        }
+
+        &.-hover {
+            tbody tr {
+                &:hover {
+                    th,
+                    td {
+                        background-color: $table-variant-hover-color;
+                    }
+                }
+            }
+        }
+    }
+}

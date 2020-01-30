@@ -1,0 +1,28 @@
+// Basic width and height utility sizes
+//
+
+$size-percentages: (
+    '25': 25%,
+    '50': 50%,
+    '75': 75%,
+    '100': 100%,
+) !default;
+
+// Quick accessor to the size-percentages map
+@function size-percentages($key) {
+    @return map_get($size-percentages, $key);
+}
+
+$sizes: ('sm', 'md', 'lg') !default;
+$size-multipliers: (
+    'xs': 0.6,
+    'sm': 0.8,
+    'md': 1,
+    'lg': 1.2,
+    'xl': 1.4,
+) !default;
+
+// Quick accessor to the size-multipliers map
+@function size-multipliers($key) {
+    @return map_get($size-multipliers, $key);
+}

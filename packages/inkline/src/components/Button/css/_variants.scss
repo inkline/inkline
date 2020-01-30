@@ -1,0 +1,69 @@
+//
+// Button variants
+// Add the required color variants to all button variations
+//
+@each $variant-name, $variant in variants('button') {
+    $_color-by-luminance: variant-color-by-luminance($variant, $button-variant-color-light, $button-variant-color-dark);
+
+    .button.-#{$variant-name} {
+        color: $_color-by-luminance;
+        background-color: $variant;
+        border-color: $variant;
+
+        &:not(:disabled):not(.-disabled) {
+            &:hover,
+            &.-hovered {
+                background-color: darken-lightness($variant, $button-darken-percentage-hover);
+                border-color: darken-lightness($variant, $button-darken-percentage-hover);
+            }
+
+            &:active,
+            &.-active {
+                background-color: darken-lightness($variant, $button-darken-percentage-active);
+            }
+
+            &:focus,
+            &.-focused {
+                box-shadow: 0 0 0 2px rgba($variant, 0.25);
+            }
+        }
+
+        &.-outline {
+            background-color: transparent;
+            color: $variant;
+
+            &:not(:disabled):not(.-disabled) {
+                &:hover,
+                &.-hovered,
+                &:focus,
+                &.-focused {
+                    color: $_color-by-luminance;
+                    background-color: darken-lightness($variant, $button-darken-percentage-hover);
+                    border-color: darken-lightness($variant, $button-darken-percentage-hover);
+                }
+
+                &:active,
+                &.-active {
+                    background-color: darken-lightness($variant, $button-darken-percentage-active);
+                }
+            }
+        }
+
+        &.-link {
+            color: $variant;
+            background-color: transparent;
+            border-color: transparent;
+
+            &:not(:disabled):not(.-disabled) {
+                &:hover,
+                &.-hovered,
+                &:focus,
+                &.-focused {
+                    color: darken-lightness($variant, 5%);
+                    background-color: transparent;
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Navbar/css/_variables';
+@import 'css/_variants';
+
+/**
+ * Navbar Items
+ */
+.navbar {
+    > .container > .row > .column > .items {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+        flex-shrink: 1;
+        justify-content: space-between;
+        align-items: center;
+
+        ::v-deep .item {
+            @include navbar-item-color-variant(variant-element('navbar', 'light'));
+        }
+    }
+
+    &.-collapsed > .container > .row > .column > .items {
+        border-radius: border-radius('md');
+
+        @include navbar-item-collapsed-color-variant(variant-element('navbar', 'light'));
+    }
+}

@@ -1,0 +1,22 @@
+//
+// Tooltip Variables
+//
+
+$tooltip-font-size: $font-size !default;
+$tooltip-font-weight: font-weight('normal') !default;
+$tooltip-line-height: $line-height !default;
+
+$tooltip-margin: spacers('1/2') !default;
+
+$tooltip-border-width: $border-width !default;
+$tooltip-border-radius: $border-radius !default;
+
+$tooltip-padding-base: spacers('1/4') spacers('1/2') !default;
+$tooltip-padding: size-map($tooltip-padding-base, $sizes, $size-multipliers) !default;
+
+//
+// Variants
+//
+$tooltip-variants: ('monochrome-white') !default;
+
+$variants: map_merge($variants, ('tooltip': add-variant($tooltip-variants, $color-groups)));

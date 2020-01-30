@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Components Media should render correctly 1`] = `
-<div class="media">
-  <div class="body"></div>
-</div>
-`;

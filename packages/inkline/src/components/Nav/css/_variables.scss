@@ -1,0 +1,13 @@
+//
+// Nav Variables
+//
+$nav-font-size: $font-size !default;
+
+$nav-item-disabled-color: $text-muted !default;
+
+$nav-item-padding-base: spacers('1/2') spacers('1') !default;
+$nav-item-padding: size-map($nav-item-padding-base, $sizes, $size-multipliers) !default;
+
+@function nav-item-padding($key) {
+    @return map_get($nav-item-padding, $key);
+}

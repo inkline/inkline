@@ -1,0 +1,27 @@
+//
+// Type Scale
+//
+
+// Suggested ratios
+// Source := http://type-scale.com/
+//
+$ratio: (
+    'second': 1.067,
+    'major-second': 1.125,
+    'minor-third': 1.2,
+    'major-third': 1.25,
+    'perfect-fourth': 1.333,
+    'augmented-fourth': 1.414,
+    'perfect-fifth': 1.5,
+    'golden': 1.618,
+) !default;
+
+// Quick accessor to the ratio map
+@function ratio($key) {
+    @return map_get($ratio, $key);
+}
+
+// Scale ratio
+//
+$scale-ratio: ratio('minor-third') !default;
+$scale-ratio-secondary: ratio('perfect-fourth') !default;

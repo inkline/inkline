@@ -1,0 +1,94 @@
+/**
+ * Border
+ */
+
+._border {
+    border-width: $border-width !important;
+    border-style: solid !important;
+    border-color: $border-color;
+}
+
+._border-0 {
+    border: none !important;
+}
+
+@each $position in ('top', 'right', 'bottom', 'left') {
+    ._border-#{$position} {
+        border-#{$position}-width: $border-width !important;
+        border-#{$position}-style: solid !important;
+        border-#{$position}-color: $border-color;
+    }
+}
+
+@each $position in ('top', 'right', 'bottom', 'left') {
+    ._border-#{$position}-0 {
+        border-#{$position}: none !important;
+    }
+}
+
+/**
+ * Border colors
+ */
+@each $variant-name, $variant in variants('border') {
+    ._border-color-#{$variant-name} {
+        border-color: $variant !important;
+    }
+
+    @each $position in ('top', 'right', 'bottom', 'left') {
+        ._border-#{$position}-color-#{$variant-name} {
+            border-#{$position}-color: $variant !important;
+        }
+    }
+}
+
+/**
+ * Border Radius
+ */
+
+._rounded {
+    border-radius: border-radius('md') !important;
+}
+
+._rounded-top {
+    border-top-left-radius: border-radius('md') !important;
+    border-top-right-radius: border-radius('md') !important;
+}
+
+._rounded-right {
+    border-top-right-radius: border-radius('md') !important;
+    border-bottom-right-radius: border-radius('md') !important;
+}
+
+._rounded-bottom {
+    border-bottom-right-radius: border-radius('md') !important;
+    border-bottom-left-radius: border-radius('md') !important;
+}
+
+._rounded-left {
+    border-top-left-radius: border-radius('md') !important;
+    border-bottom-left-radius: border-radius('md') !important;
+}
+
+._rounded-top-left {
+    border-top-left-radius: border-radius('md') !important;
+}
+
+._rounded-top-right {
+    border-top-right-radius: border-radius('md') !important;
+}
+
+._rounded-bottom-left {
+    border-bottom-left-radius: border-radius('md') !important;
+}
+
+._rounded-bottom-right {
+    border-bottom-right-radius: border-radius('md') !important;
+}
+
+._rounded-circle {
+    border-radius: 50% !important;
+}
+
+._rounded-0 {
+    border-radius: 0 !important;
+}

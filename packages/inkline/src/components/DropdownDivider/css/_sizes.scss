@@ -1,0 +1,12 @@
+//
+// Dropdown Divider sizes
+//
+@mixin dropdown-divider-size-variant($size) {
+    margin: dropdown-divider-margin($size);
+}
+
+@each $size in $sizes {
+    .dropdown > .menu.-#{$size} > .divider {
+        @include dropdown-divider-size-variant($size);
+    }
+}

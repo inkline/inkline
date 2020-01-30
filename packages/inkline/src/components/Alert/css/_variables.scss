@@ -1,0 +1,25 @@
+//
+// Alert variables
+//
+$alert-font-size: $font-size !default;
+$alert-font-weight: font-weight(normal) !default;
+$alert-line-height: $line-height !default;
+
+$alert-border-width: $border-width !default;
+$alert-border-radius: $border-radius !default;
+
+$alert-padding-base: spacers('1') !default;
+$alert-padding: size-map($alert-padding-base, $sizes, $size-multipliers) !default;
+
+$alert-dismiss-size: 1rem !default;
+
+$alert-background-darken: rgba(0, 0, 0, 0.15) !default;
+
+//
+// Variants
+//
+$alert-variants: ('brand', 'state') !default;
+$alert-variant-color-light: $variant-color-light !default;
+$alert-variant-color-dark: $variant-color-dark !default;
+
+$variants: map_merge($variants, ('alert': add-variant($alert-variants, $color-groups)));

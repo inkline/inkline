@@ -1,0 +1,40 @@
+/* stylelint-disable scss/no-duplicate-dollar-variables */
+
+// Calculates exponential for given base and power
+//
+// @param $base
+// @param $exp
+//
+@function pow($base, $exp) {
+    $value: $base;
+
+    @if $exp > 1 {
+        @for $i from 2 through $exp {
+            $value: $value * $base;
+        }
+    }
+
+    @if $exp < 1 {
+        @for $i from 0 through -$exp {
+            $value: $value / $base;
+        }
+    }
+
+    @return $value;
+}
+
+// Calculates factorial value for given number
+//
+// @param $num
+//
+@function factorial($num) {
+    $factorial: 1;
+
+    @if $num > 0 {
+        @for $i from 1 through $num {
+            $factorial: $factorial * $i;
+        }
+    }
+
+    @return $factorial;
+}

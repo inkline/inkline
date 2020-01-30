@@ -1,0 +1,23 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_sizes';
+
+/**
+ * Form Label
+ */
+.form-label {
+    position: relative;
+    flex-basis: 100%;
+
+    &.-right {
+        margin-right: 0;
+        order: 1;
+    }
+
+    @extend .form-label.-md;
+}
+
+.form-group.-inline > .form-label {
+    @include form-label-inline-size-variant('md');
+}

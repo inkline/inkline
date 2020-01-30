@@ -1,0 +1,37 @@
+<ul class="pagination"
+     :class="classes">
+    <li class="item -previous"
+        :class="{ '-disabled': value === 1 }"
+        v-if="pageCount > 0"
+        @click="previous">
+        <slot name="previous">&lt;</slot>
+    </li>
+    <li class="item -first"
+        :class="{ '-active': value === 1 }"
+        v-if="pageCount > 0"
+        @click="onClick(1)">1</li>
+    <li
+        class="item -quick-previous"
+        :class="{ '-disabled': !quickLink }"
+        v-if="showQuickPrevious"
+        @click="quickPrevious">&hellip;</li>
+    <li class="item"
+        :class="{ '-active': value === page }"
+        v-for="page in pages"
+        @click="onClick(page)">{{page}}</li>
+    <li
+        class="item -quick-next"
+        :class="{ '-disabled': !quickLink }"
+        v-if="showQuickNext"
+        @click="quickNext">&hellip;</li>
+    <li class="item -last"
+        :class="{ '-active': value === pageCount }"
+        v-if="pageCount > 1"
+        @click="onClick(pageCount)">{{pageCount}}</li>
+    <li class="item -next"
+        :class="{ '-disabled': value === pageCount }"
+        v-if="pageCount > 0"
+        @click="next">
+        <slot name="next">&gt;</slot>
+    </li>
+</ul>

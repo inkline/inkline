@@ -1,0 +1,47 @@
+// FIXME: Content identical to Form/style.scss
+
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Input/css/_variables';
+@import '../Input/css/_mixins';
+@import 'css/_variables';
+@import 'css/_sizes';
+
+/**
+ * Input Group
+ */
+.form-group {
+    display: block;
+    vertical-align: middle;
+    position: relative;
+
+    &.-checkbox,
+    &.-radio {
+        font-size: 0;
+    }
+
+    + .form-group {
+        margin-top: $form-group-margin;
+    }
+
+    &.-inline {
+        display: flex;
+
+        > .form-input-group {
+            flex-basis: 100%;
+        }
+
+        > .form-label {
+            display: flex;
+            flex: 0 0 auto;
+            align-self: center;
+            margin-bottom: 0;
+
+            &.-right {
+                margin-right: 0;
+            }
+        }
+    }
+
+    @extend .form-group.-md;
+}

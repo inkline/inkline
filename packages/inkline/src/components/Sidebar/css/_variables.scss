@@ -1,0 +1,26 @@
+//
+// Sidebar Variables
+//
+$sidebar-width-base: 14rem !default;
+$sidebar-width: size-map($sidebar-width-base, $sizes, $size-multipliers) !default;
+
+$sidebar-padding-base: 0 !default;
+$sidebar-padding: size-map($sidebar-padding-base, $sizes, $size-multipliers) !default;
+
+$sidebar-wrapper-transition-duration: $transition-duration !default;
+$sidebar-wrapper-transition-easing: $transition-easing !default;
+
+$sidebar-transition-duration: $transition-duration !default;
+$sidebar-transition-easing: $transition-easing !default;
+
+$sidebar-overlay-transition-duration: $transition-duration !default;
+$sidebar-overlay-transition-easing: $transition-easing !default;
+
+$sidebar-overlay-background: rgba(0, 0, 0, 0.5) !default;
+
+//
+// Variants
+//
+$sidebar-variants: ('monochrome') !default;
+
+$variants: map_merge($variants, ('sidebar': add-variant($sidebar-variants, $color-groups)));

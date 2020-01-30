@@ -1,0 +1,24 @@
+@import '../mixins/_variants';
+
+//
+// Themes
+//
+// Generate color themes based on the --colors, --brand-colors and --social-colors
+// variables for components. If the color group is in the list, Inkline will
+// generate themes for the specified color group.
+//
+$background-variants: ('basic', 'brand', 'monochrome', 'neutral', 'state', 'social') !default;
+$border-variants: ('brand', 'monochrome', 'neutral', 'state') !default;
+$text-variants: ('basic', 'brand', 'monochrome', 'neutral', 'state', 'social') !default;
+
+// Initialize theme choice collection
+//
+$variants: (
+    'background': add-variant($background-variants, $color-groups),
+    'border': add-variant($border-variants, $color-groups),
+    'text': add-variant($text-variants, $color-groups),
+);
+
+@function variants($key) {
+    @return map_get($variants, $key);
+}

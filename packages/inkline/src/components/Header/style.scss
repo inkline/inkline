@@ -1,0 +1,50 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_sizes';
+
+/**
+ * Header
+ */
+.header {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: $header-background-color;
+
+    /* stylelint-disable selector-list-comma-newline-after */
+    > .container,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        margin-top: 0;
+    }
+    /* stylelint-enable */
+
+    &.-cover {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: unset;
+        background-size: cover;
+    }
+
+    &.-fullscreen {
+        padding: 0;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    @extend .header.-md;
+}

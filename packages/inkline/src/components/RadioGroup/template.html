@@ -1,0 +1,5 @@
+<div class="form-group -radio" :class="classes" role="radiogroup">
+    <slot></slot>
+
+    <i-form-error v-if="validate" :schema="schema"></i-form-error>
+</div>
