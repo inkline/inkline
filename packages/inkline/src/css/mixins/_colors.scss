@@ -1,0 +1,33 @@
+//
+// Colors
+//
+
+//
+// Get contrast text color for a background color by calculating the luminance
+// of the given input color. If the given color is dark, return a light text color, otherwise if the current variant
+// color is light, return a dark text color.
+//
+// @param color Text background color
+// @return Contrasting text color
+//
+@function variant-color-by-luminance($color, $light, $dark) {
+    $luminance: (red($color) * 0.299) + (green($color) * 0.587) + (blue($color) * 0.114);
+
+    @if $luminance > 186 {
+        @return $dark;
+    }
+
+    @return $light;
+}
+
+//
+// Generate a gradient background color with given colors array and gradient direction
+//
+// @param colors Colors to be added to the gradient
+// @param direction The direction of the gradient
+// @return A gradient color
+//
+// FIXME: The name of this method don't follow other names, ideas are welcome.
+@function linear_gradient($colors, $direction: $gradient-direction) {
+    @return linear-gradient($direction, unquote($colors));
+}

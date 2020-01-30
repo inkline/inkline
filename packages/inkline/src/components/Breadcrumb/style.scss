@@ -1,0 +1,25 @@
+/**
+ * Breadcrumb
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+
+// FIXME: Starting to create spaghetti code
+@import '../BreadcrumbItem/css/_variables';
+
+// FIXME: Starting to create spaghetti code
+@import '../BreadcrumbItem/css/_sizes';
+@import 'css/_variables';
+@import 'css/_sizes';
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: $breadcrumb-margin-bottom;
+    padding-left: 0;
+    list-style: none;
+
+    > .item {
+        @include breadcrumb-item-variant('md');
+    }
+}

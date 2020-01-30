@@ -1,0 +1,25 @@
+//
+// Variables
+//
+$form-check-disabled-color: $text-muted !default;
+$form-check-margin-right: $spacer !default;
+
+$form-check-indicator-color: colors('black') !default;
+$form-check-indicator-checked-color: colors('white') !default;
+$form-check-indicator-active-color: colors('white') !default;
+$form-check-indicator-disabled-color: colors('gray-30') !default;
+$form-check-indicator-background-color: colors('gray-10') !default;
+$form-check-indicator-checked-background-color: #3a88bc !default;
+$form-check-indicator-active-background-color: #3a88bc !default;
+$form-check-indicator-disabled-background-color: colors('gray-40') !default;
+$form-check-indicator-disabled-checked-background-color: colors('gray-60') !default;
+
+$form-check-indicator-size: 1rem !default;
+$form-check-indicator-gutter: spacers('1/2') !default;
+$form-check-indicator-margin-normalize: $form-check-indicator-size / 4 !default;
+
+$form-check-indicator-box-shadow: 0 0 0 1px rgba(colors('black'), 0.2), inset 0 0.25rem 0.25rem rgba(colors('black'), 0.1) !default;
+$form-check-indicator-focused-box-shadow: 0 0 0 1px $body-background, 0 0 0.2rem 0.2rem rgba(#506ee5, 0.33) !default;
+$form-check-indicator-checked-box-shadow: none !default;
+$form-check-indicator-active-box-shadow: none !default;
+$form-check-indicator-background-size: 0.5rem !default;

@@ -1,0 +1,89 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Icon/css/_variables';
+@import '../Icon/css/_mixins';
+@import 'css/_variables';
+@import 'css/_sizes';
+@import 'css/_variants';
+
+.modal-wrapper {
+    display: block;
+    position: relative;
+}
+
+.modal-overlay {
+    background: $modal-overlay-background;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    line-height: $modal-line-height;
+    display: block;
+    width: calc(100% - #{$modal-margin * 2});
+
+    > .header,
+    > .body,
+    > .footer {
+        border-width: $modal-border-width;
+        border-style: solid;
+    }
+
+    > .header {
+        display: flex;
+        justify-content: space-between;
+
+        > .close {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1.5rem;
+            width: 1.5rem;
+            line-height: 1.5rem;
+            font-size: 0.5rem;
+            cursor: pointer;
+            border-radius: border-radius(md);
+            padding: 0;
+            border: 0;
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+
+            > .icon {
+                &::before {
+                    @extend %icon;
+
+                    content: $icon-times;
+                }
+            }
+
+            &:hover,
+            &:focus {
+                outline: none;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            &:active {
+                background-color: rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
+
+    > .header + .body,
+    > .header + .footer,
+    > .body + .footer,
+    > .body + .body {
+        border-top-width: 0;
+    }
+
+    @extend .modal.-md;
+    @extend .modal.-light;
+}

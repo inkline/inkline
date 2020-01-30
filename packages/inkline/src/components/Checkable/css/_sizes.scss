@@ -1,0 +1,26 @@
+//
+// CheckableProviderMixin sizes
+//
+@each $size in $sizes {
+    $_size-multiplier: size-multipliers($size);
+
+    .form.-#{$size} .form-check,
+    .form-group.-#{$size} .form-check,
+    .form-check.-#{$size} {
+        font-size: font-size($size);
+
+        &.-custom {
+            .form-input-label {
+                padding-left: ($form-check-indicator-size + $form-check-indicator-gutter) * $_size-multiplier;
+
+                &::before,
+                &::after {
+                    top: $form-check-indicator-margin-normalize * $_size-multiplier;
+                    width: $form-check-indicator-size * $_size-multiplier;
+                    height: $form-check-indicator-size * $_size-multiplier;
+                    line-height: $form-check-indicator-size * $_size-multiplier;
+                }
+            }
+        }
+    }
+}

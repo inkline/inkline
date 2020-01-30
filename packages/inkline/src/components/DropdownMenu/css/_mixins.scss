@@ -1,0 +1,8 @@
+//
+// Dropdown Menu mixins
+//
+@mixin dropdown-menu-size-variant($size) {
+    border-radius: dropdown-border-radius($size);
+    font-size: dropdown-font-size($size);
+    padding: dropdown-padding($size);
+}

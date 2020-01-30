@@ -1,0 +1,23 @@
+//
+// Card variables
+//
+$card-font-size: $font-size !default;
+$card-font-weight: font-weight(normal) !default;
+$card-line-height: $line-height !default;
+
+$card-border-width: $border-width !default;
+$card-border-radius: $border-radius !default;
+
+$card-padding-base: spacers('1') !default;
+$card-padding: size-map($card-padding-base, $sizes, $size-multipliers) !default;
+
+$card-background-darken: rgba(0, 0, 0, 0.1) !default;
+
+//
+// Variants
+//
+$card-variants: ('basic', 'brand', 'monochrome-white', 'neutral', 'state') !default;
+$card-variant-color-light: $variant-color-light !default;
+$card-variant-color-dark: $variant-color-dark !default;
+
+$variants: map_merge($variants, ('card': add-variant($card-variants, $color-groups)));

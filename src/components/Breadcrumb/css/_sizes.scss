@@ -1,9 +1,0 @@
-//
-// Breadcrumb sizes
-//
-@each $size in $sizes {
-    .breadcrumb.-#{$size} {
-        border-radius: map_get($breadcrumb-border-radius, $size);
-        font-size: map_get($breadcrumb-font-size, $size);
-    }
-}

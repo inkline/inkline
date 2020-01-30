@@ -1,0 +1,38 @@
+//
+// Input variables
+//
+$label-margin-bottom: 0.5rem !default;
+
+$input-line-height: $line-height !default;
+
+$input-padding-base: spacers('1/2') spacers('1') !default;
+$input-padding: size-map($input-padding-base, $sizes, $size-multipliers) !default;
+
+$input-prefix-padding-base: nth($input-padding-base, 2) * 4 !default;
+$input-prefix-padding: size-map($input-prefix-padding-base, $sizes, $size-multipliers) !default;
+
+$input-font-size: $font-size !default;
+
+$input-color: colors('gray-70') !default;
+$input-color-focus: $input-color !default;
+$input-color-disabled: $input-color !default;
+$input-placeholder-color: colors('gray-60') !default;
+$input-plaintext-color: $body-color !default;
+$input-background: colors('white') !default;
+$input-background-disabled: colors('gray-20') !default;
+$input-background-focus: $input-background !default;
+
+$input-border-width: $border-width !default;
+$input-border-color: $border-color !default;
+$input-border-color-hover: darken-lightness($input-border-color, 10%) !default;
+$input-border-color-focus: colors('primary') !default;
+$input-border-radius: $border-radius !default;
+
+$input-box-shadow: inset 0 1px 1px rgba(colors('black'), 0.05) !default;
+$input-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
+
+$input-icon-circle-size: 1.2rem !default;
+$input-icon-circle-background: colors('gray-40') !default;
+$input-icon-circle-background-hover: colors('gray-50') !default;
+
+$input-append-prepend-background-color: colors('gray-30') !default;

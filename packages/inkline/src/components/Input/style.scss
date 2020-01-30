@@ -1,0 +1,223 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Icon/css/_variables';
+@import '../Icon/css/_mixins';
+@import 'css/_variables';
+@import 'css/_mixins';
+@import 'css/_sizes';
+
+/**
+ * Input
+ */
+.form-input {
+    position: relative;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: row;
+
+    @include form-input-selector() {
+        position: relative;
+        flex: 1 0 auto;
+        width: 1%;
+        padding: $input-padding-base;
+        line-height: $input-line-height;
+        color: $input-color;
+        background-color: $input-background;
+        background-clip: padding-box;
+        border: $input-border-width solid $input-border-color;
+        box-shadow: $input-box-shadow;
+
+        @if transition(input) {
+            transition: $input-transition;
+        }
+
+        // Remove style for the caret on `<select>`s in IE10+.
+        &::-ms-expand {
+            background-color: transparent;
+            border: 0;
+        }
+
+        &:hover {
+            border-color: $input-border-color-hover;
+        }
+
+        // Customize the `:focus` state to imitate native WebKit styles.
+        &:focus {
+            color: $input-color-focus;
+            background-color: $input-background-focus;
+            border-color: $input-border-color-focus;
+            outline: 0;
+
+            // Avoid using mixin so we can pass custom focus shadow properly
+            @if $box-shadow-enabled {
+                box-shadow: $input-box-shadow;
+            }
+        }
+
+        // Placeholder
+        // Override Firefox's unusual default opacity see https://github.com/twbs/bootstrap/pull/11526.
+        &::placeholder {
+            color: $input-placeholder-color;
+            opacity: 1;
+        }
+
+        // Disabled and read-only inputs
+        //
+        // HTML5 says that controls under a fieldset > legend:first-child won't be
+        // disabled if the fieldset is disabled. Due to implementation difficulty, we
+        // don't honor that edge case we style them as disabled anyway.
+        &:disabled,
+        &[readonly] {
+            background-color: $input-background-disabled;
+            color: $input-color-disabled;
+            opacity: 1; // iOS fix for unreadable disabled content
+            cursor: default;
+
+            &:hover {
+                border-color: $input-border-color;
+            }
+        }
+
+        /**
+         * Select
+         */
+        &[readonly]:focus {
+            border-color: $input-border-color-focus;
+            outline: 0;
+        }
+    }
+
+    .form-input-prefix,
+    .form-input-suffix {
+        z-index: 1;
+        top: 50%;
+        position: absolute;
+        transform: translateY(-50%);
+        font-style: normal;
+        color: $text-muted;
+
+        > button {
+            background: transparent;
+            border: 0;
+            color: $body-color;
+        }
+    }
+
+    .form-input-prefix {
+        left: $spacer;
+        padding-right: $spacer;
+        border-right: 1px solid $input-border-color;
+    }
+
+    .form-input-suffix {
+        right: $spacer;
+        padding-left: $spacer;
+        border-left: 1px solid $input-border-color;
+    }
+
+    .clear-input {
+        transition: background-color $transition-duration $transition-easing;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: $input-icon-circle-size;
+        height: $input-icon-circle-size;
+        background-color: $input-icon-circle-background;
+        color: $input-background;
+        border-radius: 100%;
+
+        &::before {
+            @extend %icon;
+
+            font-size: 8px;
+            content: $icon-times;
+        }
+
+        &:hover {
+            background-color: $input-icon-circle-background-hover;
+        }
+    }
+
+    @include form-input-size('md');
+}
+
+/**
+ * Form Group
+ */
+.form-group.-error {
+    .form-input-group > .form-input {
+        @include form-input-selector() {
+            border-color: colors('red');
+        }
+    }
+}
+
+/**
+ * Form Input Group
+ */
+.form-input-group {
+    display: block;
+    vertical-align: middle;
+    position: relative;
+
+    &.-prepended,
+    &.-appended {
+        display: flex;
+        flex-wrap: nowrap;
+
+        .form-input {
+            flex-shrink: 1;
+        }
+    }
+
+    &.-prepended .form-input {
+        @include form-input-selector() {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    &.-appended .form-input {
+        @include form-input-selector() {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    > .form-input-prepend,
+    > .form-input-append {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+
+        > * {
+            flex: auto 1 0;
+            border-radius: 0;
+        }
+    }
+
+    @extend .form-input-group.-md;
+}
+
+/**
+ * Select input
+ * Special case for readonly property
+ */
+.select {
+    &:not([readonly]) > .form-input-group > .form-input > input[readonly]:not([disabled]) {
+        background-color: $input-background;
+    }
+}
+
+/**
+ * Input Append and Prepend
+ */
+.form-input-prepend,
+.form-input-append {
+    align-items: center;
+    display: flex;
+    padding: 0;
+    line-height: $input-line-height;
+    background-color: $input-append-prepend-background-color;
+}

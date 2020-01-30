@@ -1,0 +1,14 @@
+$zoom-in-center-transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1) !default;
+
+.zoom-in-center-transition-enter-active,
+.zoom-in-center-transition-leave-active {
+    opacity: 1;
+    transition: $zoom-in-center-transition;
+    transform-origin: center center;
+}
+
+.zoom-in-center-transition-enter,
+.zoom-in-center-transition-leave-active {
+    opacity: 0;
+    transform: scale(0, 0);
+}

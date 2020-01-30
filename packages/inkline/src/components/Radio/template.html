@@ -1,0 +1,24 @@
+<div class="form-check -radio" :class="classes['root']">
+    <input
+        v-model="model"
+        ref="input"
+        type="radio"
+        tabindex="-1"
+        :name="name"
+        :value="currentValue"
+        :disabled="isDisabled"
+        :readonly="isReadonly">
+    <label
+       class="form-input-label"
+       :class="classes['label']"
+       :aria-checked="checked"
+       :aria-disabled="isDisabled"
+       :aria-readonly="isReadonly"
+       :tabindex="tabIndex"
+       @blur="onBlur"
+       @focus="onFocus"
+       @click="clickInputRef"
+       @keydown.space.stop.prevent="clickInputRef">
+        <slot></slot>
+    </label>
+</div>

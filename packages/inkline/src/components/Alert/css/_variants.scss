@@ -1,0 +1,21 @@
+//
+// Alert variants
+//
+@each $variant-name, $variant in variants('alert') {
+    $_color: darken-lightness($variant, 40%);
+    $_link-color: darken-lightness($variant, 20%);
+
+    .alert.-#{$variant-name} {
+        border-color: rgba($variant, 0.35);
+        background-color: rgba($variant, 0.15);
+        color: $_color;
+
+        a {
+            color: $_link-color;
+        }
+
+        > .icon {
+            border-color: rgba(variant-color-by-luminance($variant, $alert-variant-color-light, $alert-variant-color-dark), 0.33);
+        }
+    }
+}

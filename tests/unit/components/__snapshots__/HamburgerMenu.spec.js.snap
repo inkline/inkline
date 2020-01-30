@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Components HamburgerMenu should render correctly 1`] = `<div class="hamburger -close"><span class="bars"></span></div>`;

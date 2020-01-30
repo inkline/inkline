@@ -1,0 +1,31 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_mixins';
+
+.inkline-icon {
+    @extend %icon;
+
+    &.-circle::before { content: $icon-circle; }
+    &.-home::before { content: $icon-home; }
+    &.-calendar::before { content: $icon-calendar; }
+    &.-warning::before { content: $icon-warning; }
+    &.-danger::before { content: $icon-danger; }
+    &.-plus::before { content: $icon-plus; }
+    &.-minus::before { content: $icon-minus; }
+    &.-info::before { content: $icon-info; }
+    &.-times::before { content: $icon-times; }
+    &.-check::before { content: $icon-check; }
+    &.-caret-down::before { content: $icon-caret-down; }
+    &.-chevron-down::before { content: $icon-chevron-down; }
+    &.-sort::before { content: $icon-sort; }
+    &.-sort-asc::before { content: $icon-sort-asc; }
+    &.-sort-desc::before { content: $icon-sort-desc; }
+    &.-search::before { content: $icon-search; }
+
+    @each $size in $sizes {
+        &.-#{$size} {
+            font-size: font-size($size);
+        }
+    }
+}

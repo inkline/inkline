@@ -1,0 +1,19 @@
+//
+// Nav sizes
+//
+@each $size in $sizes {
+    $_font-size: map_get($pagination-font-size, $size);
+    $_item-border-radius: map_get($pagination-item-border-radius, $size);
+    $_item-padding: map_get($pagination-item-padding, $size);
+    $_item-min-width: map_get($pagination-item-min-width, $size);
+
+    .pagination.-#{$size} {
+        font-size: $_font-size;
+
+        > .item {
+            border-radius: $_item-border-radius;
+            padding: $_item-padding;
+            min-width: $_item-min-width;
+        }
+    }
+}

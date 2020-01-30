@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components CheckboxButtonGroup should render correctly 1`] = `<i-button-group-stub size="" tabindex="1" role="checkboxgroup" class="form-group -checkbox"></i-button-group-stub>`;

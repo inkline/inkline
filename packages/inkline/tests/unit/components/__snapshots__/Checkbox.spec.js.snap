@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components Checkbox should render correctly 1`] = `
+<div class="form-check -checkbox -custom"><input type="checkbox" tabindex="-1" value="false"> <label aria-checked="true" tabindex="1" class="form-input-label"></label>
+  <i-form-error-stub></i-form-error-stub>
+</div>
+`;

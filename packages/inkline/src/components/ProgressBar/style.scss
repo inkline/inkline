@@ -1,0 +1,19 @@
+/**
+ * Nav
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Progress/css/_variables';
+@import 'css/_variables';
+@import 'css/_variants';
+
+.progress > .bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    height: 100%;
+
+    @include progress-bar-color-variant(variant-element('progress-bar', 'primary'));
+}

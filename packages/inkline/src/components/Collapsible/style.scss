@@ -1,0 +1,17 @@
+/**
+ * Collapsible
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_variants';
+
+.collapsible {
+    position: relative;
+    display: block;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: $collapsible-border-radius;
+
+    @extend .collapsible.-light;
+}

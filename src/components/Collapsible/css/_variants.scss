@@ -1,8 +1,0 @@
-//
-// Collapsible variants
-//
-@each $variant-name, $variant in variants('collapsible') {
-    .collapsible.-#{$variant-name} {
-        border-color: variant-color-by-luminance($variant, lighten-lightness($variant, 5%), darken-lightness($variant, 5%));
-    }
-}

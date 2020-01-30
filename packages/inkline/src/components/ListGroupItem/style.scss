@@ -1,0 +1,52 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../ListGroup/css/_variables';
+@import 'css/_sizes';
+
+/**
+ * List Group Item
+ */
+.list-group {
+    > .item {
+        display: block;
+        margin-bottom: 0;
+        border-bottom-width: $list-group-border-width;
+        border-bottom-style: $list-group-border-style;
+        border-bottom-color: $list-group-border-color;
+
+        @if transition('list-group') {
+            transition: background-color $transition-duration $transition-easing, border-color $transition-duration $transition-easing, color $transition-duration $transition-easing;
+        }
+
+        &:last-child {
+            border-bottom-width: 0;
+        }
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+
+        &.-disabled {
+            color: $list-group-item-disabled-color;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        &.-active {
+            background: $list-group-item-active-background;
+            color: $list-group-item-active-color;
+            border-bottom-color: $list-group-item-active-border-color;
+        }
+
+        @include list-group-item-size-variant('md');
+    }
+}

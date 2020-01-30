@@ -1,0 +1,31 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_sizes';
+@import 'css/_variants';
+
+/**
+ * Tooltip
+ */
+.tooltip-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.tooltip {
+    @include popup(('margin': $tooltip-margin, 'z-index': 2000));
+    @include popup-arrow();
+    @include popup-arrow-size();
+
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    line-height: $tooltip-line-height;
+    background-clip: padding-box;
+    border-width: $tooltip-border-width;
+    border-style: solid;
+    display: inline-block;
+    white-space: nowrap;
+
+    @extend .tooltip.-md;
+    @extend .tooltip.-dark;
+}

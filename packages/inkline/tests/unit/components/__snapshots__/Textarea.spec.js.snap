@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components Textarea should render correctly 1`] = `
+<div class="form-input-group">
+  <!---->
+  <div class="form-input">
+    <!---->
+    <!----> <textarea tabindex="1"></textarea></div>
+  <!---->
+</div>
+`;

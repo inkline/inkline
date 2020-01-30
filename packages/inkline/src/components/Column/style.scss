@@ -1,0 +1,116 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+
+// Prevent columns from becoming too narrow when at smaller grid tiers by
+// always setting `width: 100%`. This works because we use `flex` values
+// later on to override this initial width.
+//
+@mixin column-full-width() {
+    flex-grow: 0;
+    flex-basis: 100%;
+    width: 100%;
+}
+
+// Create a flexible column that takes up the space it can
+//
+@mixin column-flexible() {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+}
+
+// Add a `max-width` to ensure content within each column does not blow out
+// the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+// do not appear to require this.
+//
+@mixin column-fixed-width($columns, $columns-count) {
+    flex-grow: 1;
+    flex-basis: percentage($columns-count / $columns);
+    max-width: percentage($columns-count / $columns);
+}
+
+/**
+ * Column
+ */
+.col,
+.column {
+    @include column-flexible();
+
+    box-sizing: border-box;
+    min-height: 1px;
+    position: relative;
+
+    @each $breakpoint-name, $gutter-width in $gutter {
+        @include breakpoint-up($breakpoint-name) {
+            padding-left: ($gutter-width / 2);
+            padding-right: ($gutter-width / 2);
+        }
+    }
+
+    // Column Responsive Sizes
+    //
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        $breakpoint: breakpoint-infix($breakpoint-name);
+
+        // FIXME: Does this needs to be generated for empty breakpoints ?
+        // This was previously ignored by stylus.
+        @if str_length($breakpoint) > 0 {
+            &.#{$breakpoint},
+            &.#{$breakpoint}-auto {
+                @include column-full-width();
+            }
+
+            @include breakpoint-up($breakpoint-name) {
+                &.#{$breakpoint} {
+                    @include column-flexible();
+                }
+
+                &.#{$breakpoint}-auto {
+                    flex: 1 0 auto;
+                    max-width: auto;
+                }
+
+                &.-first#{$breakpoint} {
+                    order: -1;
+                }
+
+                &.-last#{$breakpoint} {
+                    order: 1;
+                }
+            }
+
+            @for $column-count from 1 through $columns {
+                &.#{$breakpoint}-#{$column-count} {
+                    @include column-full-width();
+                }
+
+                @include breakpoint-up($breakpoint-name) {
+
+                    // Column width
+                    //
+                    &.#{$breakpoint}-#{$column-count} {
+                        @include column-fixed-width($columns, $column-count);
+                    }
+
+                    // Column offset
+                    //
+                    &.-offset#{$breakpoint}-#{$column-count} {
+                        margin-left: percentage($column-count / $columns);
+                    }
+
+                    // Column push
+                    //
+                    &.-push#{$breakpoint}-#{$column-count} {
+                        left: percentage($column-count / $columns);
+                    }
+
+                    // Column pull
+                    //
+                    &.-pull#{$breakpoint}-#{$column-count} {
+                        right: percentage($column-count / $columns);
+                    }
+                }
+            }
+        }
+    }
+}

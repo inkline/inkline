@@ -1,0 +1,45 @@
+/**
+ * Display
+ */
+@import '../mixins/breakpoints';
+
+@each $breakpoint-name, $breakpoint-value in $breakpoints {
+    $infix: breakpoint-infix($breakpoint-name);
+
+    @include breakpoint($breakpoint-name) {
+        ._display#{$infix}-none { display: none !important; }
+        ._display#{$infix}-inline { display: inline !important; }
+        ._display#{$infix}-inline-block { display: inline-block !important; }
+        ._display#{$infix}-block { display: block !important; }
+        ._display#{$infix}-table { display: table !important; }
+        ._display#{$infix}-table-cell { display: table-cell !important; }
+        ._display#{$infix}-flex { display: flex !important; }
+        ._display#{$infix}-inline-flex { display: inline-flex !important; }
+    }
+}
+
+/**
+    * Print Display
+    */
+
+._display-print-block {
+    display: none !important;
+
+    @media print { display: block !important; }
+}
+
+._display-print-inline {
+    display: none !important;
+
+    @media print { display: inline !important; }
+}
+
+._display-print-inline-block {
+    display: none !important;
+
+    @media print { display: inline-block !important; }
+}
+
+._display-print-none {
+    @media print { display: none !important; }
+}

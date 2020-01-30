@@ -1,0 +1,174 @@
+/**
+ * Sidebar
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_variants';
+@import 'css/_sizes';
+
+@mixin sidebar-wrapper-collapse {
+    ::v-deep .items {
+        position: relative;
+        display: block;
+        width: 100%;
+
+        > .nav {
+            flex-direction: column;
+            align-items: flex-start;
+
+            > .item {
+                width: 100%;
+            }
+        }
+    }
+
+    &.-collapse-fixed {
+        position: fixed;
+    }
+
+    &.-collapse-absolute {
+        position: absolute;
+    }
+
+    &.-collapse-fixed,
+    &.-collapse-absolute {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.sidebar-wrapper {
+    position: relative;
+    height: 100%;
+    min-width: 0;
+    overflow: hidden;
+
+    .sidebar {
+        position: absolute;
+        height: 100%;
+        z-index: 1;
+
+        &-content {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+
+            // Hack for fixing margin collapse bug
+            // https://github.com/ant-design/ant-design/issues/7967
+            // solution from https://stackoverflow.com/a/33132624/3040605
+            padding-top: 0.1px;
+            margin-top: -0.1px;
+        }
+    }
+
+    &.-collapse-relative {
+        &.-placement-left .sidebar {
+            right: 0;
+        }
+
+        &.-placement-right .sidebar {
+            left: 0;
+        }
+    }
+
+    &.-collapse-absolute,
+    &.-collapse-fixed {
+        &.-placement-left .sidebar {
+            left: 0;
+        }
+
+        &.-placement-right .sidebar {
+            right: 0;
+        }
+    }
+
+    .sidebar-overlay {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background: $sidebar-overlay-background;
+    }
+
+    @each $breakpoint in (breakpoints-list()) {
+        &.-collapse-#{$breakpoint} {
+            @include breakpoint-down($breakpoint) {
+                @include sidebar-wrapper-collapse;
+            }
+        }
+    }
+
+    &.-collapse-true {
+        @include sidebar-wrapper-collapse;
+    }
+
+    @extend .sidebar-wrapper.-md;
+    @extend .sidebar-wrapper.-light;
+}
+
+/**
+ * Sidebar animation
+ */
+
+//
+// Sidebar Wrapper
+//
+.sidebar-wrapper-transition-enter-active,
+.sidebar-wrapper-transition-leave-active {
+    transition: width $sidebar-wrapper-transition-duration $sidebar-wrapper-transition-easing;
+}
+
+.sidebar-wrapper-none-transition-enter-active,
+.sidebar-wrapper-none-transition-leave-active {
+    transition: none $sidebar-transition-duration $sidebar-transition-easing;
+}
+
+.sidebar-wrapper-transition-enter,
+.sidebar-wrapper-transition-leave-to {
+    width: 0;
+}
+
+//
+// Sidebar
+//
+.sidebar-transition-enter-active,
+.sidebar-transition-leave-active {
+    transition: transform $sidebar-transition-duration $sidebar-transition-easing;
+    transform-origin: left;
+}
+
+.sidebar-transition-enter,
+.sidebar-transition-leave-to {
+    transform: translateX(-100%);
+}
+
+.sidebar-transition-enter-to,
+.sidebar-transition-leave {
+    transform: translateX(0);
+}
+
+.sidebar-wrapper.-placement-right {
+    .sidebar-transition-enter-active,
+    .sidebar-transition-leave-active {
+        transform-origin: right;
+    }
+
+    .sidebar-transition-enter,
+    .sidebar-transition-leave-to {
+        transform: translateX(100%);
+    }
+}
+
+//
+// Sidebar Overlay
+//
+.sidebar-overlay-transition-enter-active,
+.sidebar-overlay-transition-leave-active {
+    transition: opacity $sidebar-overlay-transition-duration $sidebar-overlay-transition-easing;
+}
+
+.sidebar-overlay-transition-enter,
+.sidebar-overlay-transition-leave,
+.sidebar-overlay-transition-leave-active {
+    opacity: 0;
+}

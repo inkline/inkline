@@ -1,0 +1,123 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Icon/css/_variables';
+@import '../Icon/css/_mixins';
+@import 'css/_variables';
+@import 'css/_sizes';
+
+/**
+ * CheckableProviderMixin
+ */
+.form-check {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    outline: none;
+    margin-right: $form-check-margin-right;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &.-disabled {
+        color: $form-check-disabled-color;
+        cursor: default;
+
+        .form-input-label {
+            &::before,
+            &::after {
+                cursor: default;
+            }
+        }
+    }
+
+    &.-custom {
+        cursor: pointer;
+
+        input {
+            top: 0;
+            left: 0;
+            position: absolute;
+            z-index: 0; // Put the input behind the label so it doesn't overlay text
+            opacity: 0;
+
+            &:checked ~ .form-input-label,
+            &[type="checkbox"]:indeterminate ~ .form-input-label {
+                &::before {
+                    color: $form-check-indicator-checked-color;
+                    background-color: $form-check-indicator-checked-background-color;
+                    box-shadow: $form-check-indicator-checked-box-shadow;
+                }
+
+                &::after {
+                    transform: scale(1);
+                }
+            }
+
+            &:focus ~ .form-input-label::before {
+                box-shadow: $form-check-indicator-focused-box-shadow;
+            }
+
+            &:active ~ .form-input-label::before {
+                color: $form-check-indicator-active-color;
+                background-color: $form-check-indicator-active-background-color;
+                box-shadow: $form-check-indicator-active-box-shadow;
+            }
+
+            &:disabled ~ .form-input-label,
+            &[readonly] ~ .form-input-label {
+                color: $form-check-disabled-color;
+            }
+
+            &::before {
+                color: $form-check-indicator-disabled-color;
+                background-color: $form-check-indicator-disabled-background-color;
+            }
+
+            &:disabled:checked ~ .form-input-label::before,
+            &[readonly]:checked ~ .form-input-label::before {
+                background-color: $form-check-indicator-disabled-checked-background-color;
+            }
+        }
+
+        .form-input-label {
+            &::before,
+            &::after {
+                display: inline-block;
+            }
+        }
+    }
+
+    .form-input-label {
+        margin-bottom: 0;
+
+        &::before,
+        &::after {
+            cursor: pointer;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        &::before {
+            content: "";
+            cursor: pointer;
+            user-select: none;
+            background-color: $form-check-indicator-background-color;
+            box-shadow: $form-check-indicator-box-shadow;
+            transition: background-color $transition-duration $transition-easing;
+        }
+
+        &::after {
+            @extend %icon;
+
+            text-align: center;
+            transition: transform $transition-duration $transition-easing;
+            transform: scale(0);
+        }
+    }
+
+    @extend .form-check.-md;
+}

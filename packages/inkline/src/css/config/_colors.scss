@@ -1,0 +1,171 @@
+//
+// Color Palette
+//
+// Basic, state and neutral colors
+//
+
+// Basic Colors
+//
+$color-red: #f25f5c !default;
+$color-orange: #f1ac53 !default;
+$color-yellow: #ffe066 !default;
+$color-green: #5fb072 !default;
+$color-teal: #62bec1 !default;
+$color-blue: #178bb2 !default;
+$color-purple: #5d65b9 !default;
+$color-pink: #ff6f80 !default;
+
+$color-group-basic: (
+    'red': $color-red,
+    'orange': $color-orange,
+    'yellow': $color-yellow,
+    'green': $color-green,
+    'teal': $color-teal,
+    'blue': $color-blue,
+    'purple': $color-purple,
+    'pink': $color-pink,
+) !default;
+
+// Neutral Colors
+//
+$color-transparent: transparent !default;
+$color-white: #ffffff !default;
+$color-gray-10: #f8f9fa !default;
+$color-gray-20: #e9ecef !default;
+$color-gray-30: #dee2e6 !default;
+$color-gray-40: #ced4da !default;
+$color-gray-50: #adb5bd !default;
+$color-gray-60: #868e96 !default;
+$color-gray-70: #495057 !default;
+$color-gray-80: #343a40 !default;
+$color-gray-90: #212529 !default;
+$color-black: #000000 !default;
+
+$color-group-neutral: (
+    'transparent': $color-transparent,
+    'white': $color-white,
+    'gray-10': $color-gray-10,
+    'gray-20': $color-gray-20,
+    'gray-30': $color-gray-30,
+    'gray-40': $color-gray-40,
+    'gray-50': $color-gray-50,
+    'gray-60': $color-gray-60,
+    'gray-70': $color-gray-70,
+    'gray-80': $color-gray-80,
+    'gray-90': $color-gray-90,
+    'black': $color-black,
+) !default;
+
+// Brand Colors
+//
+$color-primary: $color-blue !default;
+$color-secondary: $color-purple !default;
+
+$color-group-brand: (
+    'primary': $color-primary,
+    'secondary': $color-secondary,
+) !default;
+
+// Brand Neutral Colors
+//
+$color-light: $color-gray-20 !default;
+$color-dark: $color-gray-80 !default;
+
+$color-group-monochrome: (
+    'light': $color-light,
+    'dark': $color-dark,
+) !default;
+
+$color-group-monochrome-white: (
+    'light': $color-white,
+    'dark': $color-dark,
+) !default;
+
+// State Colors
+//
+$color-success: $color-green !default;
+$color-danger: $color-red !default;
+$color-warning: $color-orange !default;
+$color-info: $color-teal !default;
+
+$color-group-state: (
+    'success': $color-success,
+    'danger': $color-danger,
+    'warning': $color-warning,
+    'info': $color-info,
+) !default;
+
+// Social Colors
+//
+$color-facebook: #3b5998;
+$color-twitter: #1da1f2;
+$color-google: #dd4b39;
+$color-instagram: #fd1d1d;
+$color-dribbble: #ea4c89;
+$color-behance: #1769ff;
+$color-flickr: #ff0084;
+$color-linkedin: #0077b5;
+$color-youtube: #b31217;
+$color-pinterest: #bd081c;
+$color-github: #333333;
+$color-tumblr: #35465c;
+$color-twitch: #6441a5;
+$color-envato: #82b541;
+$color-vine: #00bf8f;
+
+$color-group-social: (
+    'facebook': $color-facebook,
+    'twitter': $color-twitter,
+    'google': $color-google,
+    'instagram': $color-instagram,
+    'dribbble': $color-dribbble,
+    'behance': $color-behance,
+    'flickr': $color-flickr,
+    'linkedin': $color-linkedin,
+    'youtube': $color-youtube,
+    'pinterest': $color-pinterest,
+    'github': $color-github,
+    'tumblr': $color-tumblr,
+    'twitch':    $color-twitch,
+    'envato':    $color-envato,
+    'vine':      $color-vine,
+) !default;
+
+// Theme light and dark colors
+//
+$variant-color-light: #ffffff !default;
+$variant-color-dark: #343a40 !default;
+
+// Color groups
+//
+$color-groups: (
+    'basic': $color-group-basic,
+    'neutral': $color-group-neutral,
+    'brand': $color-group-brand,
+    'monochrome': $color-group-monochrome,
+    'monochrome-white': $color-group-monochrome-white,
+    'state': $color-group-state,
+    'social': $color-group-social
+) !default;
+
+// Quick accessor to a color in sub map
+@function color-group($key, $name) {
+    @return submap_get($color-groups, $key, $name);
+}
+
+// All Colors
+//
+/* stylelint-disable scss/no-duplicate-dollar-variables */
+$colors: ();
+$colors: map-merge($colors, map-get($color-groups, 'basic'));
+$colors: map-merge($colors, map-get($color-groups, 'brand'));
+$colors: map-merge($colors, map-get($color-groups, 'monochrome'));
+$colors: map-merge($colors, map-get($color-groups, 'neutral'));
+$colors: map-merge($colors, map-get($color-groups, 'state'));
+$colors: map-merge($colors, map-get($color-groups, 'social'));
+/* stylelint-enable scss/no-duplicate-dollar-variables */
+
+// Quick accessor to a color
+@function colors($name) {
+    @return map_get($colors, $name);
+}

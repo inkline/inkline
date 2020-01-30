@@ -1,0 +1,29 @@
+//
+// Modal Variables
+//
+
+$modal-font-size: $font-size !default;
+$modal-font-weight: font-weight('normal') !default;
+$modal-line-height: $line-height !default;
+
+$modal-margin: spacers('1') !default;
+
+$modal-width-base: 480px !default;
+$modal-width: size-map($modal-width-base, $sizes, $size-multipliers) !default;
+
+$modal-border-width: $border-width !default;
+$modal-border-radius: $border-radius !default;
+$modal-border-color: colors('gray-30') !default;
+
+$modal-background: colors('white') !default;
+$modal-overlay-background: rgba(0, 0, 0, 0.75) !default;
+
+$modal-padding-base: spacers('1') !default;
+$modal-padding: size-map($modal-padding-base, $sizes, $size-multipliers) !default;
+
+//
+// Variants
+//
+$modal-variants: ('brand', 'monochrome', 'state') !default;
+
+$variants: map_merge($variants, ('modal': add-variant($modal-variants, $color-groups)));

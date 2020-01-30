@@ -1,0 +1,19 @@
+//
+// List Group Variables
+//
+$list-group-font-size: $font-size !default;
+
+$list-group-item-disabled-color: $text-muted !default;
+
+$list-group-item-padding-base: spacers('1') !default;
+$list-group-item-padding: size-map($list-group-item-padding-base, $sizes, $size-multipliers) !default;
+
+$list-group-border-width: $border-width !default;
+$list-group-border-style: solid !default;
+$list-group-border-color: colors('gray-20') !default;
+
+$list-group-border-radius: $border-radius !default;
+
+$list-group-item-active-background: colors('primary') !default;
+$list-group-item-active-color: colors('white') !default;
+$list-group-item-active-border-color: darken-lightness(colors('primary'), 6%) !default;

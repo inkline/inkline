@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components ButtonGroup should render correctly 1`] = `<div role="group" class="button-group"></div>`;

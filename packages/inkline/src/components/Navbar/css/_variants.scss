@@ -1,0 +1,9 @@
+//
+// Navbar variants
+//
+@each $variant-name, $variant in variants('navbar') {
+    .navbar.-#{$variant-name} {
+        color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
+        background-color: $variant;
+    }
+}

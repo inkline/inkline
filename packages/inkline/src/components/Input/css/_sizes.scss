@@ -1,0 +1,42 @@
+//
+// Sizes
+//
+@each $size in $sizes {
+    $_font-size: map_get($input-font-size, $size);
+    $_border-radius: map_get($input-border-radius, $size);
+    $_padding: map_get($input-padding, $size);
+
+    .form.-#{$size} .form-input-group > .form-input,
+    .form-group.-#{$size} .form-input-group > .form-input,
+    .form.-#{$size} .select > .form-input-group > .form-input,
+    .form-group.-#{$size} .select > .form-input-group > .form-input,
+    .select.-#{$size} > .form-input-group > .form-input,
+    .form-input-group.-#{$size} > .form-input {
+        @include form-input-size($size);
+    }
+
+    .form-input-group.-#{$size} {
+        > .form-input-prepend,
+        > .form-input-append {
+            font-size: $_font-size;
+
+            > span {
+                padding: $_padding;
+            }
+        }
+
+        @if $border-radius-enabled {
+            > .form-input-prepend,
+            > .form-input-prepend > *:first-child {
+                border-top-left-radius: $_border-radius;
+                border-bottom-left-radius: $_border-radius;
+            }
+
+            > .form-input-append,
+            > .form-input-append > *:last-child {
+                border-top-right-radius: $_border-radius;
+                border-bottom-right-radius: $_border-radius;
+            }
+        }
+    }
+}

@@ -1,0 +1,104 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_variants';
+@import 'css/_sizes';
+
+/**
+ * Card
+ */
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+
+    > hr {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    > .header {
+        margin-bottom: 0;
+        border-width: $card-border-width;
+        border-style: solid;
+        border-bottom-width: 0;
+
+        > h1,
+        > h2,
+        > h3,
+        > h4,
+        > h5,
+        > h6,
+        > p,
+        > .h1,
+        > .h2,
+        > .h3,
+        > .h4,
+        > .h5,
+        > .h6,
+        > .p {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        + img,
+        + .body {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        + .list-group {
+            .list-group-item:first-child {
+                border-top: 0;
+            }
+        }
+    }
+
+    > .body {
+
+        // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+        // as much space as possible, ensuring footers are aligned to the bottom.
+        flex: 1 1 auto;
+        border-width: $card-border-width;
+        border-style: solid;
+
+        &:not(:first-child) {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        &:not(:last-child) {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        > .title {
+            margin-top: 0;
+        }
+
+        > .subtitle {
+            margin-bottom: 0;
+        }
+
+        > .link {
+            text-decoration: none;
+        }
+    }
+
+    > .footer {
+        border-width: $card-border-width;
+        border-style: solid;
+        border-top-width: 0;
+    }
+
+    > img {
+        width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+    }
+
+    // Default card size
+    @extend .card.-md;
+    @extend .card.-light;
+}

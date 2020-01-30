@@ -1,0 +1,31 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+
+/**
+ * Layout Aside
+ */
+.layout-aside {
+    transition: all 0.2s;
+    position: relative;
+    background: $layout-aside-background;
+    width: $layout-aside-width;
+    flex: 0 0 $layout-aside-width;
+
+    /* Fix firefox can't set width smaller than content on flex item */
+    min-width: 0;
+
+    &-children {
+        height: 100%;
+
+        // Hack for fixing margin collapse bug
+        // https://github.com/ant-design/ant-design/issues/7967
+        // solution from https://stackoverflow.com/a/33132624/3040605
+        padding-top: 0.1px;
+        margin-top: -0.1px;
+    }
+
+    &.-right {
+        order: 1;
+    }
+}

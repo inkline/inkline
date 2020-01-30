@@ -1,0 +1,17 @@
+<div class="navbar"
+     :class="classes['root']"
+     v-bind="attributes">
+    <i-container :fluid="fluid">
+        <i-row>
+            <i-column :xs="true">
+                <i-hamburger-menu class="collapse-toggle"
+                    :active="collapsed"
+                    :animation="toggleAnimation"
+                    :variant="variant"
+                    @click="toggleCollapse">
+                </i-hamburger-menu>
+                <slot></slot>
+            </i-column>
+        </i-row>
+    </i-container>
+</div>

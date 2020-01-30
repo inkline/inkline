@@ -1,0 +1,19 @@
+/**
+    * Inline code
+    */
+
+code {
+    font-family: font-family-primary(monospace);
+    padding: $code-padding;
+    font-size: $code-font-size;
+    color: $code-color;
+    background-color: $code-background;
+    border-radius: border-radius(md);
+
+    // Streamline the style when inside anchors to avoid broken underline and more
+    a > & {
+        padding: 0;
+        color: inherit;
+        background-color: inherit;
+    }
+}

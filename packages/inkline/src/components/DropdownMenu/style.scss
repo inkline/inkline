@@ -1,0 +1,27 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_mixins';
+@import 'css/_sizes';
+@import 'css/_variants';
+
+/**
+ * Dropdown Menu
+ */
+.dropdown > .menu {
+    @include popup(('margin': $dropdown-margin, 'z-index': 2000));
+    @include popup-arrow();
+    @include popup-arrow-size();
+
+    color: $body-color;
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    line-height: $dropdown-line-height;
+    background-clip: padding-box;
+    border-width: $dropdown-border-width;
+    border-style: solid;
+    min-width: $dropdown-min-width;
+
+    @include dropdown-menu-color-variant(variant-element('dropdown', 'light'));
+    @include dropdown-menu-size-variant('md');
+}

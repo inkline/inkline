@@ -1,0 +1,17 @@
+@import '../../Input/css/_variables';
+
+//
+// Select variables
+//
+$select-input-border-color: $input-border-color !default;
+$select-input-border-color-hover: $input-border-color-hover !default;
+$select-input-border-color-focus: $input-border-color-focus !default;
+
+//
+// Variants
+//
+$select-dropdown-variants: ('monochrome-white') !default;
+$select-dropdown-variant-color-light: $variant-color-light !default;
+$select-dropdown-variant-color-dark: $variant-color-dark !default;
+
+$variants: map_merge($variants, ('select': add-variant($select-dropdown-variants, $color-groups)));

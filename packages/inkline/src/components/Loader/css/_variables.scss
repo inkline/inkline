@@ -1,0 +1,17 @@
+//
+// Loading spinner variables
+//
+$loader-size-base: 64px !default;
+$loader-size: size-map($loader-size-base, $sizes, $size-multipliers) !default;
+
+$loader-animation-duration: 1.2s !default;
+
+$loader-item-count: 12 !default;
+$loader-item-size: 8% !default;
+
+//
+// Variants
+//
+$loader-variants: ('monochrome-white') !default;
+
+$variants: map_merge($variants, ('loader': add-variant($loader-variants, $color-groups)));

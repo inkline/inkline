@@ -1,0 +1,23 @@
+//
+// Popover Variables
+//
+
+$popover-font-size: $font-size !default;
+$popover-font-weight: font-weight(normal) !default;
+$popover-line-height: $line-height !default;
+
+$popover-margin: spacers('1/2') !default;
+$popover-width: 280px !default;
+
+$popover-border-width: $border-width !default;
+$popover-border-radius: $border-radius !default;
+
+$popover-padding-base: spacers('2/3') spacers('1') !default;
+$popover-padding: size-map($popover-padding-base, $sizes, $size-multipliers) !default;
+
+//
+// Variants
+//
+$popover-variants: ('monochrome-white') !default;
+
+$variants: map_merge($variants, ('popover': add-variant($popover-variants, $color-groups)));

@@ -1,0 +1,19 @@
+//
+// Tables
+//
+$table-margin-bottom: $spacer !default;
+
+$table-cell-padding: 0.75rem !default;
+$table-cell-padding-sm: 0.3rem !default;
+
+$table-border-width: $border-width !default;
+$table-border-color: $border-color !default;
+
+//
+// Variants
+//
+$table-variants: ('brand', 'monochrome-white', 'neutral', 'state') !default;
+$table-variant-color-light: $variant-color-light !default;
+$table-variant-color-dark: $variant-color-dark !default;
+
+$variants: map_merge($variants, ('table': add-variant($table-variants, $color-groups)));

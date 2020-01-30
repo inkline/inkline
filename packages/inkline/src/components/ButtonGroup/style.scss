@@ -1,0 +1,86 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../Button/css/_variables';
+@import 'css/_variables';
+@import 'css/_sizes';
+@import 'css/_variants';
+
+/**
+ * Button Group
+ */
+.button-group {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+
+    > .button {
+        position: relative;
+        flex: 0 1 auto;
+        z-index: 0;
+        margin-right: 0;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &.-active {
+            z-index: 1;
+        }
+    }
+
+    > .button:first-child {
+        margin-left: 0;
+    }
+
+    &:not(.-vertical) {
+
+        // Reset rounded corners
+        > .button:not(:last-child),
+        > .button-group:not(:last-child) > .button {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: 0;
+        }
+
+        > .button:not(:first-child),
+        > .button-group:not(:first-child) > .button {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    &.-vertical {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        .button,
+        .button-group {
+            width: 100%;
+        }
+
+        > .button:not(:last-child),
+        > .button-group:not(:last-child) > .button {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom: 0;
+        }
+
+        > .button:not(:first-child),
+        > .button-group:not(:first-child) > .button {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+
+    // Button border accent
+    //
+    $_color-accent-base: variant-element('button', 'light');
+
+    &:not(.-vertical) > .button:not(:first-child) {
+        border-left-color: darken-lightness($_color-accent-base, $button-darken-percentage-hover);
+    }
+
+    &.-vertical > .button:not(:first-child) {
+        border-top-color: darken-lightness($_color-accent-base, $button-darken-percentage-hover);
+    }
+}
