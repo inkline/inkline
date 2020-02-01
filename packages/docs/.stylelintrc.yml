@@ -8,18 +8,18 @@ ignoreFiles: []
 rules:
     # https://stylelint.io/user-guide/rules/at-rule-empty-line-before
     at-rule-empty-line-before:
-    - always
-    - ignore:
-      - after-comment
-      - first-nested
-      - blockless-after-blockless
-    - ignoreAtRules:
-      - else
-      - else if
+        - always
+        - ignore:
+            - after-comment
+            - first-nested
+            - blockless-after-blockless
+        - ignoreAtRules:
+            - else
+            - else if
 
     # https://stylelint.io/user-guide/rules/block-closing-brace-newline-after
     block-closing-brace-newline-after:
-    - always
+        - always
 
     # https://stylelint.io/user-guide/rules/color-hex-length
     color-hex-length: long
@@ -59,16 +59,21 @@ rules:
     # https://stylelint.io/user-guide/rules/selector-max-id
     selector-max-id: 2
 
+    # https://stylelint.io/user-guide/rules/selector-pseudo-class-no-unknown
+    selector-pseudo-element-no-unknown:
+        - true
+        - ignorePseudoElements: ["v-deep"]
+
     # https://stylelint.io/user-guide/rules/selector-type-no-unknown
     selector-type-no-unknown:
-    - true
+        - true
 
     # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/double-slash-comment-empty-line-before/README.md
     scss/double-slash-comment-empty-line-before:
-    - always
-    - ignore:
-      - between-comments
-      - stylelint-commands
+        - always
+        - ignore:
+            - between-comments
+            - stylelint-commands
 
     # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/double-slash-comment-whitespace-inside/README.md
     scss/double-slash-comment-whitespace-inside: always
@@ -78,8 +83,8 @@ rules:
 
     # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/no-duplicate-dollar-variables/README.md
     scss/no-duplicate-dollar-variables:
-    - true
-    - ignoreInsideAtRules:
-      - mixin
-      - if
-      - else
+        - true
+        - ignoreInsideAtRules:
+            - mixin
+            - if
+            - else

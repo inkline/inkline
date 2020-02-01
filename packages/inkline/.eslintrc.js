@@ -7,11 +7,11 @@ module.exports = {
         parser: "babel-eslint"
     },
     extends: [
-        "plugin:vue/recommended",
-        "eslint:recommended"
+        "plugin:vue/recommended"
     ],
     rules: {
-        "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
-        indent: [2, 4]
+        'indent': ['warn', 4],
+        'no-debugger': process.env.NODE_ENV === "production" ? 2 : 0,
+        'no-prototype-builtins': 'off'
     }
 };
