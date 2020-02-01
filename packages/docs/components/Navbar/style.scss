@@ -143,7 +143,7 @@
 }
 
 #navbar-nav-home {
-    @media screen and (max-width: 374px) {
+    @media screen and (max-width: 374px) { // stylelint-disable-line
         display: none;
     }
 }

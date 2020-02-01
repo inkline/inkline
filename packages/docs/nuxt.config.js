@@ -158,6 +158,17 @@ module.exports = {
         },
         babel: {
             extends: path.join(__dirname, 'babel.config.js')
+            // presets({ isServer }) {
+            //     return [
+            //         [
+            //             require.resolve('@nuxt/babel-preset-app'),
+            //             {
+            //                 buildTarget: isServer ? 'server' : 'client',
+            //                 corejs: { version: 3 }
+            //             }
+            //         ]
+            //     ]
+            // }
         }
     }
 };

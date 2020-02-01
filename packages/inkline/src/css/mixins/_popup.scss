@@ -89,7 +89,7 @@
     &[x-placement="bottom"] {
         > .arrow,
         > .arrow::after {
-            left: calc(50% - #{$_size / 2});
+            left: calc(50% - #{$_size / 2}); // stylelint-disable-line
         }
 
         > .arrow::after {
@@ -149,7 +149,7 @@
     &[x-placement="right"] {
         > .arrow,
         > .arrow::after {
-            top: calc(50% - #{$_size / 2});
+            top: calc(50% - #{$_size / 2}); // stylelint-disable-line
         }
 
         > .arrow::after {

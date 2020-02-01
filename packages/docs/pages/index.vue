@@ -1,4 +1,4 @@
-<template src="./index.html"></template>
+<template src="./index.html" />
 <style lang="scss" src="./index.scss"></style>
 <script>
 import { IHeader, IContainer, IRow, IColumn, IButton } from "@inkline/inkline/src/index";

@@ -1,6 +1,11 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "lint": "lerna run --scope @inkline/inkline lint",
+    "test": "lerna run --scope @inkline/inkline test"
+  },
   "devDependencies": {
     "lerna": "^3.20.2"
   }
