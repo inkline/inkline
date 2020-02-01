@@ -1,2 +1,2 @@
-<script src="./script.js" />
 <template src="./template.html" />
+<script src="./script.js" />
