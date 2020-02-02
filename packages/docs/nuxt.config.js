@@ -84,7 +84,7 @@ module.exports = {
         '@nuxtjs/sitemap',
         '@nuxtjs/robots',
         ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
-        '@nuxtjs/webpackmonitor',
+        // '@nuxtjs/webpackmonitor',
         // '@nuxtjs/stylelint-module',
         // '@nuxtjs/eslint-module',
     ],
@@ -136,9 +136,11 @@ module.exports = {
                 .map((e) => e.use.filter(e => e.loader === 'sass-loader'))
             ).forEach((scss) => {
                 Object.assign(scss.options, {
-                    import: [
-                        path.join(__dirname, 'css/config/index.scss')
-                    ]
+                    sassOptions: {
+                        import: [
+                            path.join(__dirname, 'css/config/index.scss')
+                        ]
+                    }
                 })
             });
 
@@ -153,7 +155,15 @@ module.exports = {
             config.resolve.alias['@inkline/inkline'] = '@inkline/inkline/src';
         },
         babel: {
-            extends: path.join(__dirname, 'babel.config.js')
+            extends: path.join(__dirname, 'babel.config.js'),
+            presets: ({ isServer }) => [
+                [
+                    "@nuxt/babel-preset-app", {
+                        buildTarget: isServer ? 'server' : 'client',
+                        corejs: { version: 3 }
+                    }
+                ]
+            ],
         }
     }
 };
