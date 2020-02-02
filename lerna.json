@@ -1,6 +1,7 @@
 {
-  "packages": [
-    "packages/*"
-  ],
-  "version": "0.0.0"
+    "packages": [
+        "packages/*"
+    ],
+    "stream": true,
+    "version": "0.0.0"
 }

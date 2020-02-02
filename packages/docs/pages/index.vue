@@ -5,6 +5,7 @@ import { IHeader, IContainer, IRow, IColumn, IButton } from "@inkline/inkline/sr
 import { head } from '@helpers/head'
 import Sponsor from '@components/Sponsor';
 import GithubButton from 'vue-github-button'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
     name: 'IndexView',
@@ -21,7 +22,8 @@ export default {
         IColumn,
         IButton,
         GithubButton,
-        Sponsor
+        Sponsor,
+        FontAwesomeIcon
     },
     data() {
         const defaultSponsor = {

@@ -16,6 +16,8 @@ module.exports = {
         "^.+\\.jsx?$": "babel-jest"
     },
     moduleNameMapper: {
+        '^@helpers/(.*)$': '<rootDir>/helpers/$1',
+        '^@components/(.*)$': '<rootDir>/components/$1',
         '^@/(.*)$': '<rootDir>/$1',
         '^~/(.*)$': '<rootDir>/$1',
         '^vue$': 'vue/dist/vue.common.js'
@@ -27,6 +29,6 @@ module.exports = {
     testURL: "http://localhost/",
     verbose: true,
     transformIgnorePatterns: [
-        "node_modules/(?!@inkline/inkline|@babel|core-js)"
+        "node_modules/(?!@inkline/inkline|vue-github-button)"
     ]
 };
