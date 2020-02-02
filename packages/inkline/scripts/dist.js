@@ -97,4 +97,17 @@ try {
     console.log('Bundled files are the same. Nothing to commit.'); // eslint-disable-line no-console
 }
 
+/**
+ * Copy README.md for publishing
+ */
+try {
+    console.log('Copying README.md.'); // eslint-disable-line no-console
+
+    fs.copyFileSync(path.resolve(__dirname, '..', '..', '..', 'README.md'), path.resolve(__dirname, '..', 'README.md'));
+} catch (err) {
+    console.error(err);
+}
+
+console.log("Ready to publish!");
+
 process.exit();

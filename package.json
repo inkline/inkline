@@ -4,7 +4,8 @@
   "scripts": {
     "postinstall": "npm run bootstrap",
     "bootstrap": "lerna exec npm install && lerna link",
-    "dev": "lerna run dev --parallel"
+    "dev": "lerna run dev --parallel",
+    "generate": "lerna run generate --scope @inkline/docs"
   },
   "devDependencies": {
     "lerna": "^3.20.2"
