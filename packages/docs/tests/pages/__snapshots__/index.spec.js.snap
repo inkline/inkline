@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IndexView is should render correctly 1`] = `
+<div id="index-page">
+  <i-header-stub size="" variant="" show="true" dismisslabel="×" id="header">
+    <i-row-stub data="[object Object]" size="">
+      <i-column-stub data="[object Object]" size="" md="7" lg="6" xl="5">
+        <h1 class="header-title">Inkline</h1>
+        <h2 class="header-subtitle">
+          Inkline is a modern <strong>UI/UX Framework for Vue.js</strong> designed for creating flawless responsive web applications.
+        </h2>
+        <div class="header-buttons _margin-top-2">
+          <i-button-stub size="lg" variant="primary" show="true" dismisslabel="×" to="[object Object]" class="_margin-right-md-2">Get Started</i-button-stub>
+          <github-button-stub datashowcount="true" datasize="large" arialabel="Star inkline/inkline on GitHub" href="https://github.com/inkline/inkline" class="github-star-button">
+            Star
+          </github-button-stub>
+        </div>
+      </i-column-stub>
+    </i-row-stub>
+  </i-header-stub>
+  <i-container-stub data="[object Object]" size="" fluid="" id="features">
+    <i-container-stub data="[object Object]" size="">
+      <i-row-stub data="[object Object]" size="">
+        <i-column-stub data="[object Object]" size="" md="6" lg="4">
+          <div class="feature-box"><img src="/images/pages/icon-responsive.svg" alt="Inkline - Vue.js UI/UX Framework - Responsive">
+            <h3>Responsive</h3>
+            <p>Designed to be mobile-first, Inkline looks great on phones, tablets, laptops and desktops.</p>
+          </div>
+        </i-column-stub>
+        <i-column-stub data="[object Object]" size="" md="6" lg="4">
+          <div class="feature-box"><img src="/images/pages/icon-modular.svg" alt="Inkline - Vue.js UI/UX Framework - Modular">
+            <h3>Modular</h3>
+            <p>With over 50 components, Inkline is designed to give you the best development experience.</p>
+          </div>
+        </i-column-stub>
+        <i-column-stub data="[object Object]" size="" md="6" lg="4">
+          <div class="feature-box"><img src="/images/pages/icon-modern.svg" alt="Inkline - Vue.js UI/UX Framework - Modern">
+            <h3>Modern</h3>
+            <p>Inkline is a versatile and modern framework, written using the best Vue.js practices.</p>
+          </div>
+        </i-column-stub>
+        <i-column-stub data="[object Object]" size="" md="6" offset-lg="2" lg="4">
+          <div class="feature-box"><img src="/images/pages/icon-form-validation.svg" alt="Inkline - Vue.js UI/UX Framework - Form Validation">
+            <h3>Form Validation</h3>
+            <p>Define a form validation schema and let Inkline elegantly take care of the form validation work.</p>
+          </div>
+        </i-column-stub>
+        <i-column-stub data="[object Object]" size="" md="12" lg="4">
+          <div class="feature-box"><img src="/images/pages/icon-customization.svg" alt="Inkline - Vue.js UI/UX Framework - Customization">
+            <h3>Customizable</h3>
+            <p>Disover hundreds of easily accessible Vue.js and Sass customization options.</p>
+          </div>
+        </i-column-stub>
+      </i-row-stub>
+    </i-container-stub>
+  </i-container-stub>
+  <i-container-stub data="[object Object]" size="" fluid="" id="sponsors">
+    <i-container-stub data="[object Object]" size="">
+      <i-row-stub data="[object Object]" size="">
+        <i-column-stub data="[object Object]" size="">
+          <h3>Patreon Sponsors</h3>
+          <p class="_text-muted">Sponsorships help Inkline evolve and get the attention and care it deserves.</p>
+        </i-column-stub>
+      </i-row-stub>
+      <i-row-stub data="[object Object]" size="" class="_margin-top-1">
+        <i-column-stub data="[object Object]" size="">
+          <ul class="sponsors-wrapper list -inline">
+            <li>
+              <sponsor-stub data="[object Object]" size="lg"></sponsor-stub>
+            </li>
+            <li>
+              <sponsor-stub data="[object Object]" size="lg"></sponsor-stub>
+            </li>
+            <li>
+              <sponsor-stub data="[object Object]" size="lg"></sponsor-stub>
+            </li>
+            <li>
+              <sponsor-stub data="[object Object]" size="lg"></sponsor-stub>
+            </li>
+            <li>
+              <sponsor-stub data="[object Object]" size="lg"></sponsor-stub>
+            </li>
+          </ul>
+        </i-column-stub>
+      </i-row-stub>
+      <i-row-stub data="[object Object]" size="">
+        <i-column-stub data="[object Object]" size="">
+          <i-button-stub size="" variant="patreon" show="true" dismisslabel="×" id="patreon-button" href="https://www.patreon.com/bePatron?u=18449490" target="_blank" rel="nofollow"><img src="~static/images/patreon-logo.png" alt="Patreon Logo">
+            Become a sponsor
+          </i-button-stub>
+        </i-column-stub>
+      </i-row-stub>
+    </i-container-stub>
+  </i-container-stub>
+  <i-container-stub data="[object Object]" size="" fluid="" id="footer">
+    <i-container-stub data="[object Object]" size="">
+      <footer><img src="~static/images/logo-light-80.png" alt="Inkline - Vue.js UI/UX Framework" height="60">
+        <ul class="list -inline">
+          <li class="footer-icon"><a href="https://github.com/inkline/inkline" target="_blank">
+              <font-awesome-icon-stub icon="fab,github" size="lg"></font-awesome-icon-stub>
+            </a></li>
+          <li class="footer-icon"><a href="https://twitter.com/inkline" target="_blank">
+              <font-awesome-icon-stub icon="fab,twitter" size="lg"></font-awesome-icon-stub>
+            </a></li>
+          <li class="footer-icon"><a href="https://discord.gg/2w5UGnK" target="_blank" rel="nofollow">
+              <font-awesome-icon-stub icon="fab,discord" size="lg"></font-awesome-icon-stub>
+            </a></li>
+        </ul>
+        <p id="footer-license">
+          Designed and built with
+          <font-awesome-icon-stub icon="heart" size="sm"></font-awesome-icon-stub>
+          by
+          <a href="https://twitter.com/alexgrozav" target="_blank">@alexgrozav</a>.
+        </p>
+        <p id="footer-copyright">
+          Copyright © 2017-2019, Inkline
+        </p>
+        <ul id="footer-policies" class="list -inline">
+          <li><a href="https://github.com/inkline/inkline/blob/master/LICENSE" target="_blank" rel="nofollow">MIT License</a></li>
+        </ul>
+      </footer>
+    </i-container-stub>
+  </i-container-stub>
+</div>
+`;
