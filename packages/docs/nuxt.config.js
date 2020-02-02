@@ -103,8 +103,7 @@ module.exports = {
     sitemap: {
         path: '/sitemap.xml',
         hostname: 'https://inkline.io',
-        cacheTime: 1000 * 60 * 60 * 24,
-        generate: true
+        cacheTime: 1000 * 60 * 60 * 24
     },
 
     /*
@@ -151,24 +150,10 @@ module.exports = {
             config.resolve.alias['@helpers'] = path.join(__dirname, 'helpers');
             config.resolve.alias['@pages'] = path.join(__dirname, 'pages');
 
-            // if (ctx.isDev && ctx.isClient) {
             config.resolve.alias['@inkline/inkline'] = '@inkline/inkline/src';
-            config.resolve.alias['@inkline/validation'] = '@inkline/validation/src';
-            // }
         },
         babel: {
             extends: path.join(__dirname, 'babel.config.js')
-            // presets({ isServer }) {
-            //     return [
-            //         [
-            //             require.resolve('@nuxt/babel-preset-app'),
-            //             {
-            //                 buildTarget: isServer ? 'server' : 'client',
-            //                 corejs: { version: 3 }
-            //             }
-            //         ]
-            //     ]
-            // }
         }
     }
 };
