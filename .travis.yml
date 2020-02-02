@@ -3,7 +3,8 @@ node_js:
 - 12.14.1
 install:
 - npm install
-- lerna bootstrap
+- lerna exec npm install
+- lerna link
 script:
 - lerna run lint --stream
 - lerna run build --stream
