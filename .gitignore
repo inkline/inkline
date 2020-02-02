@@ -84,9 +84,6 @@ typings/
 # nuxt.js build output
 .nuxt
 
-# Nuxt generate
-dist
-
 # vuepress build output
 .vuepress/dist
 
@@ -102,5 +99,12 @@ sw.*
 # Algolia configuration
 algolia.config.js
 
-# Inkline README
+# packages/docs
+
+# Nuxt generate
+packages/docs/dist
+
+# packages/inkline
+
+# README
 packages/inkline/README.md
