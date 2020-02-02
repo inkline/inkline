@@ -14,6 +14,9 @@ module.exports = {
             }
         }
     },
+    devServer: {
+        port: 8081
+    },
     chainWebpack: config => {
         config.resolve.alias.set("@inkline/inkline", __dirname).end();
 
