@@ -41,4 +41,4 @@ module.exports = function InklineNuxt(moduleOptions = {}) {
     });
 };
 
-module.exports.meta = require('../packages/inkline/package.json');
+module.exports.meta = require('../package.json');

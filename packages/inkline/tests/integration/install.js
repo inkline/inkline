@@ -26,6 +26,6 @@ async function createNuxtApp(version) {
     });
 }
 
-['2.11', '2.10', '2.9', '2.8', '2.7', '2.6', '2.5', '2.4', '2.3', '2.2', '2.1', '2.0'].forEach((version) => {
+['2.11', '2.10', '2.9', '2.8'].forEach((version) => {
     createNuxtApp(version);
 });
