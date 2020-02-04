@@ -1,7 +1,7 @@
 module.exports = {
     pages: {
         index: {
-            entry: "src/main.js",
+            entry: "src/inkline.js",
             template: "public/index.html",
             filename: "index.html"
         }
@@ -19,7 +19,20 @@ module.exports = {
     },
     chainWebpack: config => {
         config.resolve.alias.set("@inkline/inkline", __dirname).end();
-        config.output.libraryExport('Inkline');
+
+        config.output.library('Inkline');
+        config.output.libraryTarget('umd');
+        config.output.libraryExport('default');
+        config.output.globalObject('this');
+
+        config.externals({
+            vue: {
+                commonjs: 'vue',
+                commonjs2: 'vue',
+                amd: 'vue',
+                root: 'Vue'
+            }
+        });
 
         // config.optimization.delete("splitChunks");
         // config.optimization.removeAvailableModules(false);
