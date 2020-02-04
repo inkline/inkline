@@ -23498,6 +23498,7 @@ var Inkline = {
     }
   }
 };
+/* harmony default export */ var src = (Inkline);
 // CONCATENATED MODULE: ./src/inkline.js
 
 
