@@ -1323,26 +1323,6 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 /***/ }),
 
-/***/ "498a":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var $trim = __webpack_require__("58a8").trim;
-var forcedStringTrimMethod = __webpack_require__("c8d2");
-
-// `String.prototype.trim` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.trim
-$({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
-  trim: function trim() {
-    return $trim(this);
-  }
-});
-
-
-/***/ }),
-
 /***/ "4a67":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3261,32 +3241,6 @@ exports.BROKEN_CARET = fails(function () {
 
 /***/ }),
 
-/***/ "a15b":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var IndexedObject = __webpack_require__("44ad");
-var toIndexedObject = __webpack_require__("fc6a");
-var arrayMethodIsStrict = __webpack_require__("a640");
-
-var nativeJoin = [].join;
-
-var ES3_STRINGS = IndexedObject != Object;
-var STRICT_METHOD = arrayMethodIsStrict('join', ',');
-
-// `Array.prototype.join` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.join
-$({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
-  join: function join(separator) {
-    return nativeJoin.call(toIndexedObject(this), separator === undefined ? ',' : separator);
-  }
-});
-
-
-/***/ }),
-
 /***/ "a434":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4494,25 +4448,6 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
-
-
-/***/ }),
-
-/***/ "c8d2":
-/***/ (function(module, exports, __webpack_require__) {
-
-var fails = __webpack_require__("d039");
-var whitespaces = __webpack_require__("5899");
-
-var non = '\u200B\u0085\u180E';
-
-// check that a method works with the correct list
-// of whitespaces and has a correct name
-module.exports = function (METHOD_NAME) {
-  return fails(function () {
-    return !!whitespaces[METHOD_NAME]() || non[METHOD_NAME]() != non || whitespaces[METHOD_NAME].name !== METHOD_NAME;
-  });
-};
 
 
 /***/ }),
@@ -16418,9 +16353,6 @@ var once_once = function once(el, event, fn) {
 
   on(el, event, listener);
 };
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
-var es_function_name = __webpack_require__("b0c0");
-
 // CONCATENATED MODULE: ./src/helpers/query.js
 
 
@@ -23485,20 +23417,6 @@ form_form.builder = new FormBuilder_FormBuilder();
 // CONCATENATED MODULE: ./src/index.js
 
 
-
-var Inkline = {
-  install: function install(Vue) {
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    Vue.prototype.$inkline = {
-      form: form_form
-    };
-
-    for (var componentIndex in options.components) {
-      Vue.component(options.components[componentIndex].name, options.components[componentIndex]);
-    }
-  }
-};
-/* harmony default export */ var src = (Inkline);
 // CONCATENATED MODULE: ./src/inkline.js
 
 
@@ -23517,11 +23435,11 @@ function inkline_objectSpread(target) { for (var i = 1; i < arguments.length; i+
 
 
 
-var inkline_install = Inkline.install;
+var install = Inkline.install;
 
 Inkline.install = function (Vue) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return inkline_install.call(Inkline, Vue, inkline_objectSpread({
+  return install.call(Inkline, Vue, inkline_objectSpread({
     components: components_namespaceObject
   }, options));
 };
@@ -23532,6 +23450,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 /* harmony default export */ var src_inkline = (Inkline);
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+/* concated harmony reexport Inkline */__webpack_require__.d(__webpack_exports__, "Inkline", function() { return Inkline; });
 /* concated harmony reexport IAlert */__webpack_require__.d(__webpack_exports__, "IAlert", function() { return Alert; });
 /* concated harmony reexport IBadge */__webpack_require__.d(__webpack_exports__, "IBadge", function() { return Badge; });
 /* concated harmony reexport IBreadcrumb */__webpack_require__.d(__webpack_exports__, "IBreadcrumb", function() { return Breadcrumb; });
@@ -23590,7 +23509,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 /* concated harmony reexport ISelect */__webpack_require__.d(__webpack_exports__, "ISelect", function() { return Select; });
 /* concated harmony reexport ISelectOption */__webpack_require__.d(__webpack_exports__, "ISelectOption", function() { return SelectOption; });
 /* concated harmony reexport ITextarea */__webpack_require__.d(__webpack_exports__, "ITextarea", function() { return Textarea; });
-/* concated harmony reexport Inkline */__webpack_require__.d(__webpack_exports__, "Inkline", function() { return Inkline; });
 
 
 /* harmony default export */ var entry_lib = __webpack_exports__["default"] = (src_inkline);
