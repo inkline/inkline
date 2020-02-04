@@ -60,7 +60,7 @@ Next, you can import Inkline directly from the source files:
 ~~~js
 import Vue from 'vue';
 import '@inkline/inkline/src/index.scss';
-import Inkline from '@inkline/inkline/src/main';
+import Inkline from '@inkline/inkline/src/inkline';
 
 Vue.use(Inkline);
 ~~~
