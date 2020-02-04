@@ -15,7 +15,7 @@ module.exports = function InklineNuxt(moduleOptions = {}) {
 
         this.options.css = [].concat(this.options.css || []);
         if (options.scss) {
-            this.options.css.unshift('@inkline/inkline/src/index.scss');
+            this.options.css.unshift('@inkline/inkline/src/inkline.scss');
         } else {
             this.options.css.unshift('@inkline/inkline/dist/inkline.css');
         }
@@ -31,7 +31,7 @@ module.exports = function InklineNuxt(moduleOptions = {}) {
 
         // Register plugin, passing options to plugin template
         this.addPlugin({
-            src: resolve(__dirname, 'plugin.template.js'),
+            src: resolve(__dirname, 'generator', 'index.js'),
             fileName: 'inkline.js',
             options: {
                 inkline: inklineOptions,

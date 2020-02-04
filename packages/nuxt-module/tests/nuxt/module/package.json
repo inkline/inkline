@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "nuxt": "^2.0.0",
-    "@inkline/inkline": "file:../../../../../inkline"
+    "@inkline/nuxt": "file:../../../../nuxt-module"
   },
   "devDependencies": {}
 }
