@@ -1,6 +1,7 @@
-import '@inkline/inkline/src/index.scss';
+import '@inkline/inkline/src/inkline.scss';
+import { Inkline } from '@inkline/inkline/src/plugin';
 import * as components from '@inkline/inkline/src/components';
-import { Inkline } from '@inkline/inkline/src/index';
+
 export * from '@inkline/inkline/src/index';
 
 const install = Inkline.install;
