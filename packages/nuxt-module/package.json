@@ -1,0 +1,17 @@
+{
+  "name": "@inkline/nuxt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "plugin.template.js",
+    "README.md"
+  ],
+  "dependencies": {
+    "@inkline/inkline": "^1.20.0"
+  },
+  "peerDependencies": {
+    "node-sass": "*",
+    "sass-loader": "*"
+  }
+}
