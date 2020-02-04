@@ -1,6 +1,6 @@
 <p align="center">
     <a href="http://inkline.io/">
-        <img src="https://raw.githubusercontent.com/inkline/inkline.io/master/static/images/logo.png" alt="Inkline logo" width=72 height=72>
+        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/logo.png" alt="Inkline logo" width=72 height=72>
     </a>
 </p>
 
@@ -20,8 +20,7 @@
 <br/>
   
 <p align="center">
-    <a href="https://travis-ci.org/inkline/inkline.io"><img src="https://travis-ci.org/inkline/inkline.io.svg?branch=master" alt="Build"></a>
-    <img src="https://img.shields.io/david/inkline/inkline.io.svg?style=popout" alt="devDependencies status">
+    <a href="https://travis-ci.org/inkline/inkline"><img src="https://travis-ci.org/inkline/inkline.svg?branch=master" alt="Build"></a>
 </p>
 
 <br/>
