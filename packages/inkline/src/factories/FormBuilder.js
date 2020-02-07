@@ -111,6 +111,8 @@ export class FormBuilder {
          * @returns {{valid: boolean, errors: {length: number}}}
          */
         schema.validate = (value, options) => {
+            options = { getSchema: () => schema, ...options };
+
             let valid = true;
             let errors = {
                 length: 0
@@ -212,6 +214,8 @@ export class FormBuilder {
          * @returns {{valid: boolean, errors: {length: number}}}
          */
         schema.validate = (options) => {
+            options = { getSchema: () => schema, ...options };
+
             for (const key in schema) {
                 if (schema.hasOwnProperty(key) && schema[key] && schema[key].validate) {
                     if (schema[key].fields) {
@@ -295,6 +299,8 @@ export class FormBuilder {
      * @param rootSchema
      */
     getSchemaList(schema, rootSchema) {
+        if (schema === rootSchema) { return [schema]; }
+
         const parentFormGroupKeys = schema.name
             .replace(/\[['"]?([^'"\]])['"]?]/g, '.$1')
             .split('.');
