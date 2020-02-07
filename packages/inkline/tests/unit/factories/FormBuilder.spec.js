@@ -426,6 +426,16 @@ describe('Factories', () => {
                     expect(formSchema.invalid).toEqual(false);
                 });
 
+                it('should be callable without getSchema option', () => {
+                    const formControl = formBuilder.formControl(['input'], {
+                        validators: [
+                            { rule: 'required', message: 'message' },
+                        ]
+                    });
+
+                    expect(() => formControl.validate('')).not.toThrow();
+                });
+
                 it('should set invalid status on schema list item', () => {
                     const formControl = formBuilder.formControl(['input'], {
                         validators: [
@@ -624,6 +634,17 @@ describe('Factories', () => {
                         const form = formBuilder.form([], {});
 
                         expect(form.validate).toBeDefined();
+                    });
+
+                    it('should be callable without getSchema option', () => {
+                        const form = formBuilder.form([], {
+                            input: {},
+                            group: {
+                                input: {}
+                            }
+                        });
+
+                        expect(() => form.validate()).not.toThrow();
                     });
 
                     it('should iterate each key and apply validate based on whether it\'s a field or a group', () => {
@@ -857,6 +878,13 @@ describe('Factories', () => {
         describe('getSchemaList()', () => {
             it('should be defined', () => {
                 expect(formBuilder.getSchemaList).toBeDefined();
+            });
+
+            it('should return schema for standalone validation', () => {
+                const inputSchema = { name: 'input' };
+                const schemaList = formBuilder.getSchemaList(inputSchema, inputSchema);
+
+                expect(schemaList).toEqual([inputSchema]);
             });
 
             it('should return schema list for direct input', () => {
