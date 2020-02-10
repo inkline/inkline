@@ -1,12 +1,11 @@
-export function sameAs(value, options = {}, schemaOptions = {}) {
+export function sameAs(value, options = {}, rootSchema = {}) {
     if (!options.target) {
         return false;
     }
 
-    const schema = schemaOptions.getSchema();
     const targetSchema = options.target
         .split('.')
-        .reduce((acc, key) => acc && acc[key], schema);
+        .reduce((acc, key) => acc && acc[key], rootSchema);
 
     if (!targetSchema) {
         throw new Error(`Could not find target with name '${options.target}' in 'sameAs' validator.`);
