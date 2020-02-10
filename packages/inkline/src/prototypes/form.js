@@ -1,4 +1,4 @@
-import { buildForm } from "@inkline/inkline/src/factories/FormBuilder";
+import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
 
 /**
  * Construct a basic form schema with default values
@@ -9,5 +9,5 @@ export function form(name, schema) {
         name = '';
     }
 
-    return buildForm(name, schema, { group: true, root: true });
+    return FormBuilder.build(name, schema, { group: true, root: true });
 }
