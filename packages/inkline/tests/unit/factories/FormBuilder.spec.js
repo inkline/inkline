@@ -1,133 +1,126 @@
+import * as validators from "@inkline/inkline/src/validators";
 import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
 
 describe('Factories', () => {
     describe('FormBuilder', () => {
-        let formBuilder;
-
-        beforeEach(() => {
-            formBuilder = new FormBuilder();
+        afterEach(() => {
+            jest.clearAllMocks();
         });
 
         describe('defaultFormState', () => {
             it('should be defined', () => {
-                expect(formBuilder.defaultFormState).toBeDefined();
+                expect(FormBuilder.defaultFormState).toBeDefined();
             });
 
             it('should be untouched, pristine and valid', () => {
-                expect(formBuilder.defaultFormState.untouched).toEqual(true);
-                expect(formBuilder.defaultFormState.pristine).toEqual(true);
-                expect(formBuilder.defaultFormState.valid).toEqual(true);
+                expect(FormBuilder.defaultFormState.untouched).toEqual(true);
+                expect(FormBuilder.defaultFormState.pristine).toEqual(true);
+                expect(FormBuilder.defaultFormState.valid).toEqual(true);
             });
 
             it('should not be touched, dirty and invalid', () => {
-                expect(formBuilder.defaultFormState.touched).toEqual(false);
-                expect(formBuilder.defaultFormState.dirty).toEqual(false);
-                expect(formBuilder.defaultFormState.invalid).toEqual(false);
+                expect(FormBuilder.defaultFormState.touched).toEqual(false);
+                expect(FormBuilder.defaultFormState.dirty).toEqual(false);
+                expect(FormBuilder.defaultFormState.invalid).toEqual(false);
             });
 
             it('should have no errors', () => {
-                expect(formBuilder.defaultFormState.errors).toEqual({});
+                expect(FormBuilder.defaultFormState.errors).toEqual({});
             });
         });
 
         describe('defaultFormControlState', () => {
             it('should be defined', () => {
-                expect(formBuilder.defaultFormControlState).toBeDefined();
+                expect(FormBuilder.defaultFormControlState).toBeDefined();
             });
 
             it('should validate on input', () => {
-                expect(formBuilder.defaultFormControlState.validateOn).toEqual('input');
+                expect(FormBuilder.defaultFormControlState.validateOn).toEqual('input');
             });
 
             it('should have empty value field', () => {
-                expect(formBuilder.defaultFormControlState).toHaveProperty('value');
-                expect(formBuilder.defaultFormControlState.value).toEqual('');
+                expect(FormBuilder.defaultFormControlState).toHaveProperty('value');
+                expect(FormBuilder.defaultFormControlState.value).toEqual('');
             });
         });
 
-        describe('validators', () => {
+        describe('build()', () => {
             it('should be defined', () => {
-                expect(formBuilder.validators).toBeDefined();
-            });
-        });
-
-        describe('factory()', () => {
-            it('should be defined', () => {
-                expect(formBuilder.factory).toBeDefined();
+                expect(FormBuilder.build).toBeDefined();
             });
 
-            it('should create a new form if isGroup', () => {
-                const spy = jest.spyOn(formBuilder, 'form');
+            it('should create a new form if is group', () => {
+                const spy = jest.spyOn(FormBuilder, 'form');
 
-                formBuilder.factory([], {}, true);
+                FormBuilder.build('', {}, { group: true, root: true });
 
                 expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith([], {});
+                expect(spy).toHaveBeenCalledWith('', {}, { group: true, root: true });
             });
 
-            it('should create a new form control if not isGroup', () => {
-                const spy = jest.spyOn(formBuilder, 'formControl');
+            it('should create a new form control if is not group', () => {
+                const spy = jest.spyOn(FormBuilder, 'formControl');
 
-                formBuilder.factory([], {}, false);
+                FormBuilder.build('', {}, { group: false });
 
                 expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith([], {});
+                expect(spy).toHaveBeenCalledWith('', {}, { group: false });
             });
         });
 
         describe('formControl()', () => {
             it('should be defined', () => {
-                expect(formBuilder.formControl).toBeDefined();
+                expect(FormBuilder.formControl).toBeDefined();
             });
 
             it('should include schema', () => {
-                const formControl = formBuilder.formControl([], { value: 'abc' });
+                const formSchema = FormBuilder.formControl('', { value: 'abc' });
 
-                expect(formControl).toHaveProperty('value');
-                expect(formControl.value).toEqual('abc');
+                expect(formSchema).toHaveProperty('value');
+                expect(formSchema.value).toEqual('abc');
             });
 
             it('should include default form state', () => {
-                const formControl = formBuilder.formControl([], {});
+                const formSchema = FormBuilder.formControl('', {});
 
-                Object.keys(formBuilder.defaultFormState).forEach((property) => {
-                    expect(formControl).toHaveProperty(property);
-                    expect(formControl[property]).toEqual(formBuilder.defaultFormState[property]);
+                Object.keys(FormBuilder.defaultFormState).forEach((property) => {
+                    expect(formSchema).toHaveProperty(property);
+                    expect(formSchema[property]).toEqual(FormBuilder.defaultFormState[property]);
                 });
             });
 
             it('should include default form control state', () => {
-                const formControl = formBuilder.formControl([], {});
+                const formSchema = FormBuilder.formControl('', {});
 
-                Object.keys(formBuilder.defaultFormControlState).forEach((property) => {
-                    expect(formControl).toHaveProperty(property);
-                    expect(formControl[property]).toEqual(formBuilder.defaultFormControlState[property]);
+                Object.keys(FormBuilder.defaultFormControlState).forEach((property) => {
+                    expect(formSchema).toHaveProperty(property);
+                    expect(formSchema[property]).toEqual(FormBuilder.defaultFormControlState[property]);
                 });
             });
 
             it('should have id', () => {
-                const formControl = formBuilder.formControl([], {});
+                const formSchema = FormBuilder.formControl('', {});
 
-                expect(formControl).toHaveProperty('name');
+                expect(formSchema).toHaveProperty('name');
             });
 
             it('should construct id based on name nesting', () => {
-                const formControl = formBuilder.formControl(['a', 'b', 'c'], {});
+                const formSchema = FormBuilder.formControl('a.b.c', {});
 
-                expect(formControl).toHaveProperty('name');
-                expect(formControl.name).toEqual('a.b.c');
+                expect(formSchema).toHaveProperty('name');
+                expect(formSchema.name).toEqual('a.b.c');
             });
 
             it('should set validators as enabled by default', () => {
-                const formControl = formBuilder.formControl(['input'], {
+                const formSchema = FormBuilder.formControl('input', {
                     validators: [
-                        { type: 'required' },
-                        { type: 'other', enabled: false },
+                        { rule: 'required' },
+                        { rule: 'other', enabled: false },
                     ]
                 });
 
-                expect(formControl.validators[0].enabled).toEqual(true);
-                expect(formControl.validators[1].enabled).toEqual(false);
+                expect(formSchema.validators[0].enabled).toEqual(true);
+                expect(formSchema.validators[1].enabled).toEqual(false);
             });
 
             describe('touch()', () => {
@@ -135,13 +128,13 @@ describe('Factories', () => {
                 let validationOptions;
 
                 beforeEach(() => {
-                    formSchema = formBuilder.factory([], {
+                    formSchema = FormBuilder.build('', {
                         group: {
                             input: {
                                 value: 'abc'
                             }
                         }
-                    }, true);
+                    }, { group: true, root: true });
 
                     validationOptions = {
                         getSchema: () => formSchema
@@ -154,6 +147,10 @@ describe('Factories', () => {
 
                 it('should return truthy value', () => {
                     expect(formSchema.group.input.touch(validationOptions)).toEqual(true);
+                });
+
+                it('should be callable without getSchema', () => {
+                    expect(formSchema.group.input.touch()).toEqual(true);
                 });
 
                 it('should set schema list items as touched', () => {
@@ -170,7 +167,7 @@ describe('Factories', () => {
 
             describe('validate()', () => {
                 const validationOptions = {
-                    getSchema: () => formBuilder.factory([], {
+                    getSchema: () => FormBuilder.build('', {
                         input: {
                             value: 'abc'
                         },
@@ -179,18 +176,18 @@ describe('Factories', () => {
                                 value: 'abc'
                             }
                         }
-                    }, true)
+                    }, { group: true, root: true })
                 };
 
                 it('should be defined', () => {
-                    const formControl = formBuilder.formControl(['input'], {});
+                    const formSchema = FormBuilder.formControl('input', {});
 
-                    expect(formControl.validate).toBeDefined();
+                    expect(formSchema.validate).toBeDefined();
                 });
 
                 it('should return valid and empty errors object without validators', () => {
-                    const formControl = formBuilder.formControl(['input'], {});
-                    const validation = formControl.validate('', validationOptions);
+                    const formSchema = FormBuilder.formControl('input', {});
+                    const validation = formSchema.validate('', validationOptions);
 
                     expect(validation).toEqual({
                         valid: true,
@@ -201,86 +198,90 @@ describe('Factories', () => {
                 });
 
                 it('should throw error if invalid validator rule provided', () => {
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'invalidrule' }
                         ]
                     });
 
-                    expect(() => (formControl.validate('', validationOptions))).toThrow();
+                    expect(() => (formSchema.validate('', validationOptions))).toThrow();
                 });
 
                 it('should check if validator is enabled and call enabled function', () => {
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'required', enabled: () => true }
                         ]
                     });
-                    const spy = jest.spyOn(formControl.validators[0], 'enabled');
+                    const spy = jest.spyOn(formSchema.validators[0], 'enabled');
 
-                    formControl.validate('', validationOptions);
+                    formSchema.validate('', validationOptions);
 
                     expect(spy).toHaveBeenCalled();
                 });
 
                 it('should call each validator rule', () => {
-                    formBuilder.validators['rule1'] = jest.fn();
-                    formBuilder.validators['rule2'] = jest.fn();
+                    validators['rule1'] = jest.fn();
+                    validators['rule2'] = jest.fn();
 
-                    const spy1 = jest.spyOn(formBuilder.validators, 'rule1');
-                    const spy2 = jest.spyOn(formBuilder.validators, 'rule2');
+                    const spy1 = jest.spyOn(validators, 'rule1');
+                    const spy2 = jest.spyOn(validators, 'rule2');
 
-                    const formControl = formBuilder.formControl(['input'], {
-                        validators: [
-                            { rule: 'rule1' },
-                            { rule: 'rule2' }
-                        ]
-                    });
-                    formControl.validate('value', validationOptions);
+                    const formSchema = FormBuilder.build('', {
+                        input: {
+                            validators: [
+                                { rule: 'rule1' },
+                                { rule: 'rule2' }
+                            ]
+                        }
+                    }, { group: true, root: true });
+                    formSchema.input.validate('value', { getSchema: () => formSchema });
 
                     expect(spy1).toHaveBeenCalled();
                     expect(spy1).toHaveBeenCalledWith('value', {
                         enabled: true, rule: "rule1"
-                    }, validationOptions);
+                    }, formSchema);
 
                     expect(spy2).toHaveBeenCalled();
                     expect(spy2).toHaveBeenCalledWith('value', {
                         enabled: true, rule: "rule2"
-                    }, validationOptions);
+                    }, formSchema);
                 });
 
                 it('should not call validator rule if not enabled', () => {
-                    formBuilder.validators['rule1'] = jest.fn();
-                    formBuilder.validators['rule2'] = jest.fn();
+                    validators['rule1'] = jest.fn();
+                    validators['rule2'] = jest.fn();
 
-                    const spy1 = jest.spyOn(formBuilder.validators, 'rule1');
-                    const spy2 = jest.spyOn(formBuilder.validators, 'rule2');
+                    const spy1 = jest.spyOn(validators, 'rule1');
+                    const spy2 = jest.spyOn(validators, 'rule2');
 
-                    const formControl = formBuilder.formControl(['input'], {
-                        validators: [
-                            { rule: 'rule1', enabled: false },
-                            { rule: 'rule2' }
-                        ]
-                    });
-                    formControl.validate('value', validationOptions);
+                    const formSchema = FormBuilder.build('', {
+                        input: {
+                            validators: [
+                                { rule: 'rule1', enabled: false },
+                                { rule: 'rule2' }
+                            ]
+                        }
+                    }, { root: true, group: true });
+                    formSchema.input.validate('value');
 
                     expect(spy1).not.toHaveBeenCalled();
                     expect(spy2).toHaveBeenCalled();
                     expect(spy2).toHaveBeenCalledWith('value', {
                         enabled: true, rule: "rule2"
-                    }, validationOptions);
+                    }, formSchema);
                 });
 
                 it('should return valid if 1/1 rule is valid', () => {
-                    formBuilder.validators['test'] = jest.fn()
+                    validators['test'] = jest.fn()
                         .mockImplementation(() => true);
 
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'test' }
                         ]
                     });
-                    const validation = formControl.validate('value', validationOptions);
+                    const validation = formSchema.validate('value', validationOptions);
 
                     expect(validation).toEqual({
                         valid: true,
@@ -291,18 +292,18 @@ describe('Factories', () => {
                 });
 
                 it('should return valid if n/n rules are valid', () => {
-                    formBuilder.validators['test1'] = jest.fn()
+                    validators['test1'] = jest.fn()
                         .mockImplementation(() => true);
-                    formBuilder.validators['test2'] = jest.fn()
+                    validators['test2'] = jest.fn()
                         .mockImplementation(() => true);
 
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'test1' },
                             { rule: 'test2' }
                         ]
                     });
-                    const validation = formControl.validate('value', validationOptions);
+                    const validation = formSchema.validate('value', validationOptions);
 
                     expect(validation).toEqual({
                         valid: true,
@@ -313,15 +314,15 @@ describe('Factories', () => {
                 });
 
                 it('should return invalid if 1/1 rule is invalid', () => {
-                    formBuilder.validators['test'] = jest.fn()
+                    validators['test'] = jest.fn()
                         .mockImplementation(() => false);
 
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'test', message: 'Invalid' }
                         ]
                     });
-                    const validation = formControl.validate('value', validationOptions);
+                    const validation = formSchema.validate('value', validationOptions);
 
                     expect(validation).toEqual({
                         valid: false,
@@ -333,18 +334,18 @@ describe('Factories', () => {
                 });
 
                 it('should return invalid if 1/n rules is invalid', () => {
-                    formBuilder.validators['test1'] = jest.fn()
+                    validators['test1'] = jest.fn()
                         .mockImplementation(() => true);
-                    formBuilder.validators['test2'] = jest.fn()
+                    validators['test2'] = jest.fn()
                         .mockImplementation(() => false);
 
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'test1', message: 'Valid' },
                             { rule: 'test2', message: 'Invalid' }
                         ]
                     });
-                    const validation = formControl.validate('value', validationOptions);
+                    const validation = formSchema.validate('value', validationOptions);
 
                     expect(validation).toEqual({
                         valid: false,
@@ -356,18 +357,18 @@ describe('Factories', () => {
                 });
 
                 it('should return invalid if n/n rules are invalid', () => {
-                    formBuilder.validators['test1'] = jest.fn()
+                    validators['test1'] = jest.fn()
                         .mockImplementation(() => false);
-                    formBuilder.validators['test2'] = jest.fn()
+                    validators['test2'] = jest.fn()
                         .mockImplementation(() => false);
 
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'test1', message: 'Invalid 1' },
                             { rule: 'test2', message: 'Invalid 2' }
                         ]
                     });
-                    const validation = formControl.validate('value', validationOptions);
+                    const validation = formSchema.validate('value', validationOptions);
 
                     expect(validation).toEqual({
                         valid: false,
@@ -380,41 +381,41 @@ describe('Factories', () => {
                 });
 
                 it('should set errors on schema list item', () => {
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'required', message: 'message' },
                         ]
                     });
 
-                    formControl.validate('', validationOptions);
+                    formSchema.validate('', validationOptions);
 
-                    expect(formControl.errors).toEqual({
+                    expect(formSchema.errors).toEqual({
                         length: 1,
                         required: 'message'
                     });
                 });
 
                 it('should set valid status on schema list item', () => {
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'required', message: 'message' },
                         ]
                     });
 
-                    formControl.validate('value', validationOptions);
+                    formSchema.validate('value', validationOptions);
 
-                    expect(formControl.valid).toEqual(true);
-                    expect(formControl.invalid).toEqual(false);
+                    expect(formSchema.valid).toEqual(true);
+                    expect(formSchema.invalid).toEqual(false);
                 });
 
                 it('should set valid status on schema list parent item', () => {
-                    const formSchema = formBuilder.factory([], {
+                    const formSchema = FormBuilder.build('', {
                         group: {
                             input: {
                                 value: 'abc'
                             }
                         }
-                    }, true);
+                    }, { group: true, root: true });
 
                     const validationOptions = {
                         getSchema: () => formSchema
@@ -427,30 +428,32 @@ describe('Factories', () => {
                 });
 
                 it('should be callable without getSchema option', () => {
-                    const formControl = formBuilder.formControl(['input'], {
-                        validators: [
-                            { rule: 'required', message: 'message' },
-                        ]
-                    });
+                    const formSchema = FormBuilder.build('', {
+                        input: {
+                            validators: [
+                                { rule: 'required', message: 'message' },
+                            ]
+                        }
+                    }, { root: true, group: true });
 
-                    expect(() => formControl.validate('')).not.toThrow();
+                    expect(() => formSchema.input.validate('')).not.toThrow();
                 });
 
                 it('should set invalid status on schema list item', () => {
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'required', message: 'message' },
                         ]
                     });
 
-                    formControl.validate('', validationOptions);
+                    formSchema.validate('', validationOptions);
 
-                    expect(formControl.valid).toEqual(false);
-                    expect(formControl.invalid).toEqual(true);
+                    expect(formSchema.valid).toEqual(false);
+                    expect(formSchema.invalid).toEqual(true);
                 });
 
                 it('should set valid status on schema list parent items', () => {
-                    const formSchema = formBuilder.factory([], {
+                    const formSchema = FormBuilder.build('', {
                         group: {
                             input: {
                                 value: 'abc',
@@ -459,7 +462,7 @@ describe('Factories', () => {
                                 ]
                             }
                         }
-                    }, true);
+                    }, { group: true, root: true });
 
                     const validationOptions = {
                         getSchema: () => formSchema
@@ -472,7 +475,7 @@ describe('Factories', () => {
                 });
 
                 it('should set invalid status on schema list parent items', () => {
-                    const formSchema = formBuilder.factory([], {
+                    const formSchema = FormBuilder.build('', {
                         group: {
                             input: {
                                 value: 'abc',
@@ -481,7 +484,7 @@ describe('Factories', () => {
                                 ]
                             }
                         }
-                    }, true);
+                    }, { group: true, root: true });
 
                     const validationOptions = {
                         getSchema: () => formSchema
@@ -494,32 +497,32 @@ describe('Factories', () => {
                 });
 
                 it('should set dirty status on schema list item', () => {
-                    const formControl = formBuilder.formControl(['input'], {
+                    const formSchema = FormBuilder.formControl('input', {
                         validators: [
                             { rule: 'required', message: 'message' },
                         ]
                     });
 
-                    formControl.validate('', validationOptions);
+                    formSchema.validate('', validationOptions);
 
-                    expect(formControl.dirty).toEqual(true);
-                    expect(formControl.pristine).toEqual(false);
+                    expect(formSchema.dirty).toEqual(true);
+                    expect(formSchema.pristine).toEqual(false);
                 });
             });
         });
 
         describe('form()', () => {
             it('should be defined', () => {
-                expect(formBuilder.form).toBeDefined();
+                expect(FormBuilder.form).toBeDefined();
             });
 
-            (new FormBuilder()).reservedSchemaFields.forEach((field) => {
+            FormBuilder.reservedSchemaFields.forEach((field) => {
                 it(`should throw error if schema.${field} is specified`, () => {
                     const schema = {
                         [field]: {}
                     };
 
-                    expect(() => formBuilder.form([], schema)).toThrowError(`The field name "${field}" is a reserved Inkline Form Validation field name.`);
+                    expect(() => FormBuilder.form('', schema)).toThrowError(`The field name "${field}" is a reserved Inkline Form Validation field name.`);
                 });
             });
 
@@ -529,53 +532,53 @@ describe('Factories', () => {
             ].forEach(({ description, schema }) => {
                 describe(description, () => {
                     it('should return an object', () => {
-                        const form = formBuilder.form([], schema);
+                        const formSchema = FormBuilder.form('', schema);
 
-                        expect(form.constructor).toEqual(schema.constructor);
+                        expect(formSchema.constructor).toEqual(schema.constructor);
                     });
 
                     it('should include default form state', () => {
-                        const form = formBuilder.form([], schema);
+                        const formSchema = FormBuilder.form('', schema);
 
-                        Object.keys(formBuilder.defaultFormState).forEach((property) => {
-                            expect(form).toHaveProperty(property);
-                            expect(form[property]).toEqual(formBuilder.defaultFormState[property]);
+                        Object.keys(FormBuilder.defaultFormState).forEach((property) => {
+                            expect(formSchema).toHaveProperty(property);
+                            expect(formSchema[property]).toEqual(FormBuilder.defaultFormState[property]);
                         });
                     });
 
                     it('should have name', () => {
-                        const form = formBuilder.form([], schema);
+                        const formSchema = FormBuilder.form('', schema);
 
-                        expect(form).toHaveProperty('name');
+                        expect(formSchema).toHaveProperty('name');
                     });
 
                     it('should have fields', () => {
-                        const form = formBuilder.form([], schema);
+                        const formSchema = FormBuilder.form('', schema);
 
-                        expect(form).toHaveProperty('fields');
-                        expect(form.fields).toEqual([]);
+                        expect(formSchema).toHaveProperty('fields');
+                        expect(formSchema.fields).toEqual([]);
                     });
 
                     it('should construct id based on name nesting', () => {
-                        const form = formBuilder.form(['a', 'b', 'c'], schema);
+                        const formSchema = FormBuilder.form('a.b.c', schema);
 
-                        expect(form).toHaveProperty('name');
-                        expect(form.name).toEqual('a.b.c');
+                        expect(formSchema).toHaveProperty('name');
+                        expect(formSchema.name).toEqual('a.b.c');
                     });
                 });
             });
 
             describe('Object schema', () => {
                 it('should include schema', () => {
-                    const form = formBuilder.form([], { value: {} });
+                    const formSchema = FormBuilder.form('', { value: {} });
 
-                    expect(form).toHaveProperty('value');
+                    expect(formSchema).toHaveProperty('value');
                 });
 
-                it('should call factory() for each form property', () => {
-                    const spy = jest.spyOn(formBuilder, 'factory');
+                it('should call FormBuilder.build() for each form property', () => {
+                    const spy = jest.spyOn(FormBuilder, 'build');
 
-                    formBuilder.form([], {
+                    FormBuilder.form('', {
                         field: {},
                         group: {
                             field: {}
@@ -584,82 +587,82 @@ describe('Factories', () => {
 
                     expect(spy).toHaveBeenCalled();
                     expect(spy).toHaveBeenNthCalledWith(1,
-                        ['field'], {}, false);
+                        'field', {}, { group: false });
                     expect(spy).toHaveBeenNthCalledWith(2,
-                        ['group'], expect.objectContaining({}), true);
+                        'group', expect.objectContaining({}), { group: true });
                     expect(spy).toHaveBeenNthCalledWith(3,
-                        ['group', 'field'], {}, false);
+                        'group.field', {}, { group: false });
                 });
 
-                it('should call factory() -> formControl() for empty objects', () => {
-                    const spy = jest.spyOn(formBuilder, 'formControl');
+                it('should call FormBuilder.build() -> formControl() for empty objects', () => {
+                    const spy = jest.spyOn(FormBuilder, 'formControl');
 
-                    formBuilder.form([], {
+                    FormBuilder.form('', {
                         field: {},
                     });
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith(['field'], {});
+                    expect(spy).toHaveBeenCalledWith('field', {}, { group: false });
                 });
 
 
-                it('should call factory() -> formControl() for objects with "validators" property', () => {
-                    const spy = jest.spyOn(formBuilder, 'formControl');
+                it('should call FormBuilder.build() -> formControl() for objects with "validators" property', () => {
+                    const spy = jest.spyOn(FormBuilder, 'formControl');
 
-                    formBuilder.form([], {
+                    FormBuilder.form('', {
                         field: {
                             validators: []
                         },
                     });
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith(['field'], { validators: [] });
+                    expect(spy).toHaveBeenCalledWith('field', { validators: [] }, { group: false });
                 });
 
-                it('should call factory() -> from() for group objects', () => {
-                    const spy = jest.spyOn(formBuilder, 'form');
+                it('should call FormBuilder.build() -> from() for group objects', () => {
+                    const spy = jest.spyOn(FormBuilder, 'form');
 
-                    formBuilder.form([], {
+                    FormBuilder.form('', {
                         group: {
                             field: {}
                         },
                     });
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenLastCalledWith(['group'], expect.objectContaining({}));
+                    expect(spy).toHaveBeenLastCalledWith('group', expect.objectContaining({}), { group: true });
                 });
 
                 describe('validate()', () => {
                     it('should be defined', () => {
-                        const form = formBuilder.form([], {});
+                        const formSchema = FormBuilder.form('', {});
 
-                        expect(form.validate).toBeDefined();
+                        expect(formSchema.validate).toBeDefined();
                     });
 
                     it('should be callable without getSchema option', () => {
-                        const form = formBuilder.form([], {
+                        const formSchema = FormBuilder.form('', {
                             input: {},
                             group: {
                                 input: {}
                             }
-                        });
+                        }, { root: true });
 
-                        expect(() => form.validate()).not.toThrow();
+                        expect(() => formSchema.validate()).not.toThrow();
                     });
 
                     it('should iterate each key and apply validate based on whether it\'s a field or a group', () => {
-                        const form = formBuilder.form([], {
+                        const formSchema = FormBuilder.form('', {
                             input: {},
                             group: {
                                 input: {}
                             }
                         });
 
-                        const spy1 = jest.spyOn(form.input, 'validate');
-                        const spy2 = jest.spyOn(form.group, 'validate');
-                        const spy3 = jest.spyOn(form.group.input, 'validate');
+                        const spy1 = jest.spyOn(formSchema.input, 'validate');
+                        const spy2 = jest.spyOn(formSchema.group, 'validate');
+                        const spy3 = jest.spyOn(formSchema.group.input, 'validate');
 
-                        form.validate({ getSchema: () => form });
+                        formSchema.validate({ getSchema: () => formSchema });
 
                         expect(spy1).toHaveBeenCalled();
                         expect(spy2).toHaveBeenCalled();
@@ -671,66 +674,66 @@ describe('Factories', () => {
                     const instance = { $set: (target, key, value) => target[key] = value };
 
                     it('should be defined', () => {
-                        const form = formBuilder.form([], {});
+                        const formSchema = FormBuilder.form('', {});
 
-                        expect(form.set).toBeDefined();
+                        expect(formSchema.set).toBeDefined();
                     });
 
                     it('should throw error if instance not provided', () => {
-                        const form = formBuilder.form([], {});
+                        const formSchema = FormBuilder.form('', {});
 
-                        expect(() => form.set('field', {})).toThrowError();
+                        expect(() => formSchema.set('field', {})).toThrowError();
                     });
 
-                    it('should call factory() method', () => {
-                        const spy = jest.spyOn(formBuilder, 'factory');
-                        const form = formBuilder.form([], {});
+                    it('should call FormBuilder.build() method', () => {
+                        const spy = jest.spyOn(FormBuilder, 'build');
+                        const formSchema = FormBuilder.form('', {});
 
-                        form.set('field', {}, { instance });
+                        formSchema.set('field', {}, { instance });
 
                         expect(spy).toHaveBeenCalled();
-                        expect(spy).toHaveBeenLastCalledWith(['field'], {}, undefined);
+                        expect(spy).toHaveBeenLastCalledWith('field', {}, expect.any(Object));
                     });
 
                     it('should set a new form control field', () => {
-                        const form = formBuilder.form([], {});
+                        const formSchema = FormBuilder.form('', {});
 
-                        form.set('field', { validators: [] }, { instance });
+                        formSchema.set('field', { validators: [] }, { instance });
 
-                        expect(form.field).toBeDefined();
-                        expect(form.field).toEqual(expect.objectContaining({
+                        expect(formSchema.field).toBeDefined();
+                        expect(formSchema.field).toEqual(expect.objectContaining({
                             name: 'field',
                             value: ''
                         }));
-                        expect(form.fields).toEqual(['field']);
+                        expect(formSchema.fields).toEqual(['field']);
                     });
 
                     it('should set a new form group field', () => {
-                        const form = formBuilder.form([], {});
+                        const formSchema = FormBuilder.form('', {});
 
-                        form.set('group', {}, { instance, group: true });
+                        formSchema.set('group', {}, { instance, group: true });
 
-                        expect(form.group).toBeDefined();
-                        expect(form.group).toEqual(expect.objectContaining({
+                        expect(formSchema.group).toBeDefined();
+                        expect(formSchema.group).toEqual(expect.objectContaining({
                             name: 'group'
                         }));
-                        expect(form.group.set).toEqual(expect.any(Function));
-                        expect(form.fields).toEqual(['group']);
+                        expect(formSchema.group.set).toEqual(expect.any(Function));
+                        expect(formSchema.fields).toEqual(['group']);
                     });
                 });
             });
 
             describe('Array schema', () => {
                 it('should include schema', () => {
-                    const form = formBuilder.form([], [{}]);
+                    const formSchema = FormBuilder.form('', [{}]);
 
-                    expect(form.length).toEqual(1);
+                    expect(formSchema.length).toEqual(1);
                 });
 
-                it('should call factory() for each form property', () => {
-                    const spy = jest.spyOn(formBuilder, 'factory');
+                it('should call FormBuilder.build() for each form property', () => {
+                    const spy = jest.spyOn(FormBuilder, 'build');
 
-                    formBuilder.form([], [
+                    FormBuilder.form('', [
                         {},
                         [
                             {}
@@ -739,137 +742,137 @@ describe('Factories', () => {
 
                     expect(spy).toHaveBeenCalled();
                     expect(spy).toHaveBeenNthCalledWith(1,
-                        ['0'], {}, false);
+                        '0', {}, { group: false });
                     expect(spy).toHaveBeenNthCalledWith(2,
-                        ['1'], expect.arrayContaining([]), true);
+                        '1', expect.arrayContaining([]), { group: true });
                     expect(spy).toHaveBeenNthCalledWith(3,
-                        ['1', '0'], {}, false);
+                        '1.0', {}, { group: false });
                 });
 
-                it('should call factory() -> formControl() for empty objects', () => {
-                    const spy = jest.spyOn(formBuilder, 'formControl');
+                it('should call FormBuilder.build() -> formControl() for empty objects', () => {
+                    const spy = jest.spyOn(FormBuilder, 'formControl');
 
-                    formBuilder.form([], [
+                    FormBuilder.form('', [
                         {}
                     ]);
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith(['0'], {});
+                    expect(spy).toHaveBeenCalledWith('0', {}, { group: false });
                 });
 
 
-                it('should call factory() -> formControl() for objects with "validators" property', () => {
-                    const spy = jest.spyOn(formBuilder, 'formControl');
+                it('should call FormBuilder.build() -> formControl() for objects with "validators" property', () => {
+                    const spy = jest.spyOn(FormBuilder, 'formControl');
 
-                    formBuilder.form([], [
+                    FormBuilder.form('', [
                         {
                             validators: []
                         },
                     ]);
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith(['0'], { validators: [] });
+                    expect(spy).toHaveBeenCalledWith('0', { validators: [] }, { group: false });
                 });
 
-                it('should call factory() -> from() for group objects', () => {
-                    const spy = jest.spyOn(formBuilder, 'form');
+                it('should call FormBuilder.build() -> from() for group objects', () => {
+                    const spy = jest.spyOn(FormBuilder, 'form');
 
-                    formBuilder.form([], [
+                    FormBuilder.form('', [
                         {
                             field: {}
                         }
                     ]);
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenLastCalledWith(['0'], expect.objectContaining({}));
+                    expect(spy).toHaveBeenLastCalledWith('0', expect.objectContaining({ field: {} }), { group: true });
                 });
 
                 describe('add()', () => {
                     it('should be defined', () => {
-                        const form = formBuilder.form([], []);
+                        const formSchema = FormBuilder.form('', []);
 
-                        expect(form.add).toBeDefined();
+                        expect(formSchema.add).toBeDefined();
                     });
 
-                    it('should call factory() method', () => {
-                        const spy = jest.spyOn(formBuilder, 'factory');
-                        const form = formBuilder.form([], []);
+                    it('should call FormBuilder.build() method', () => {
+                        const spy = jest.spyOn(FormBuilder, 'build');
+                        const formSchema = FormBuilder.form('', []);
 
-                        form.add({});
+                        formSchema.add({});
 
                         expect(spy).toHaveBeenCalled();
-                        expect(spy).toHaveBeenLastCalledWith([0], {}, undefined);
+                        expect(spy).toHaveBeenLastCalledWith('0', {}, {});
                     });
 
                     it('should push a new form control field', () => {
-                        const form = formBuilder.form([], []);
+                        const formSchema = FormBuilder.form('', []);
 
-                        form.add({ validators: [] });
+                        formSchema.add({ validators: [] });
 
-                        expect(form[0]).toBeDefined();
-                        expect(form[0]).toEqual(expect.objectContaining({
+                        expect(formSchema[0]).toBeDefined();
+                        expect(formSchema[0]).toEqual(expect.objectContaining({
                             name: '0',
                             value: ''
                         }));
-                        expect(form.fields).toEqual([0]);
+                        expect(formSchema.fields).toEqual(['0']);
                     });
 
                     it('should push a new form group field', () => {
-                        const form = formBuilder.form([], []);
+                        const formSchema = FormBuilder.form('', []);
 
-                        form.add({}, true);
+                        formSchema.add({}, true);
 
-                        expect(form[0]).toBeDefined();
-                        expect(form[0]).toEqual(expect.objectContaining({
+                        expect(formSchema[0]).toBeDefined();
+                        expect(formSchema[0]).toEqual(expect.objectContaining({
                             name: '0'
                         }));
-                        expect(form.fields).toEqual([0]);
+                        expect(formSchema.fields).toEqual(['0']);
                     });
                 });
 
                 describe('remove()', () => {
                     it('should be defined', () => {
-                        const form = formBuilder.form([], []);
+                        const formSchema = FormBuilder.form('', []);
 
-                        expect(form.remove).toBeDefined();
+                        expect(formSchema.remove).toBeDefined();
                     });
 
-                    it('should call factory() method', () => {
-                        const spy = jest.spyOn(formBuilder, 'factory');
-                        const form = formBuilder.form([], []);
+                    it('should call FormBuilder.build() method', () => {
+                        const spy = jest.spyOn(FormBuilder, 'build');
+                        const formSchema = FormBuilder.form('', []);
 
-                        form.remove(0, 0, {});
+                        formSchema.remove(0, 0, {});
 
                         expect(spy).toHaveBeenCalled();
-                        expect(spy).toHaveBeenLastCalledWith([0], {}, undefined);
+                        expect(spy).toHaveBeenLastCalledWith('0', {}, {});
                     });
 
                     it('should add a new form control field at given index', () => {
-                        const form = formBuilder.form([], [{}, {}]);
+                        const formSchema = FormBuilder.form('', [{}, {}]);
 
-                        form.remove(1, 0, { value: 'new', validators: [] });
+                        formSchema.remove(1, 0, { value: 'new', validators: [] });
 
-                        expect(form[1]).toBeDefined();
-                        expect(form[1]).toEqual(expect.objectContaining({ name: '1', value: 'new' }));
-                        expect(form.length).toEqual(3);
+                        expect(formSchema[1]).toBeDefined();
+                        expect(formSchema[1]).toEqual(expect.objectContaining({ name: '1', value: 'new' }));
+                        expect(formSchema.length).toEqual(3);
                     });
 
                     it('should add a new form control field name at given index', () => {
-                        const form = formBuilder.form([], [{}, {}]);
+                        const formSchema = FormBuilder.form('', [{}, {}]);
 
-                        form.remove(1, 0, { value: 'new', validators: [] });
+                        formSchema.remove(1, 0, { value: 'new', validators: [] });
 
-                        expect(form.fields.length).toEqual(3);
-                        expect(form.fields).toEqual(['0', '1', '2']);
+                        expect(formSchema.fields.length).toEqual(3);
+                        expect(formSchema.fields).toEqual(['0', '1', '2']);
                     });
 
                     it('should delete a form control field at given index', () => {
-                        const form = formBuilder.form([], [{}, {}, {}]);
+                        const formSchema = FormBuilder.form('', [{}, {}, {}]);
 
-                        form.remove(1, 1);
+                        formSchema.remove(1, 1);
 
-                        expect(form.length).toEqual(2);
-                        expect(form.fields).toEqual(['0', '1']);
+                        expect(formSchema.length).toEqual(2);
+                        expect(formSchema.fields).toEqual(['0', '1']);
                     });
                 });
             });
@@ -877,12 +880,12 @@ describe('Factories', () => {
 
         describe('getSchemaList()', () => {
             it('should be defined', () => {
-                expect(formBuilder.getSchemaList).toBeDefined();
+                expect(FormBuilder.getSchemaList).toBeDefined();
             });
 
             it('should return schema for standalone validation', () => {
                 const inputSchema = { name: 'input' };
-                const schemaList = formBuilder.getSchemaList(inputSchema, inputSchema);
+                const schemaList = FormBuilder.getSchemaList(inputSchema, inputSchema);
 
                 expect(schemaList).toEqual([inputSchema]);
             });
@@ -890,7 +893,7 @@ describe('Factories', () => {
             it('should return schema list for direct input', () => {
                 const inputSchema = { name: 'input' };
                 const rootSchema = { input: inputSchema };
-                const schemaList = formBuilder.getSchemaList(inputSchema, rootSchema);
+                const schemaList = FormBuilder.getSchemaList(inputSchema, rootSchema);
 
                 expect(schemaList).toEqual([inputSchema, rootSchema]);
                 expect(schemaList.length).toEqual(2);
@@ -900,7 +903,7 @@ describe('Factories', () => {
                 const inputSchema = { name: 'group.input' };
                 const groupSchema = { input: inputSchema };
                 const rootSchema = { group: groupSchema };
-                const schemaList = formBuilder.getSchemaList(inputSchema, rootSchema);
+                const schemaList = FormBuilder.getSchemaList(inputSchema, rootSchema);
 
                 expect(schemaList).toEqual([inputSchema, groupSchema, rootSchema]);
                 expect(schemaList.length).toEqual(3);
@@ -910,7 +913,7 @@ describe('Factories', () => {
                 const inputSchema = { name: 'input' };
                 const rootSchema = {};
 
-                expect(() => formBuilder.getSchemaList(inputSchema, rootSchema)).toThrowError();
+                expect(() => FormBuilder.getSchemaList(inputSchema, rootSchema)).toThrowError();
             });
         });
 

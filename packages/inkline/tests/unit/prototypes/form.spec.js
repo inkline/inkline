@@ -1,12 +1,8 @@
 import { form } from '@inkline/inkline/src/prototypes/form';
+import { FormBuilder } from '@inkline/inkline/src/factories/FormBuilder';
 
 describe('Prototypes', () => {
     describe('form()', () => {
-        beforeEach(() => {
-            form.builder.factory = jest.fn()
-                .mockReturnValue({});
-        });
-
         it('should be callable only with schema', () => {
             const formSchema = form({});
 
@@ -19,22 +15,22 @@ describe('Prototypes', () => {
             expect(formSchema).toBeDefined();
         });
 
-        it('should call form builder factory() method', () => {
-            const spy = jest.spyOn(form.builder, 'factory');
+        it('should call build() function', () => {
+            const spy = jest.spyOn(FormBuilder, 'build');
 
             form({});
 
             expect(spy).toHaveBeenCalled();
-            expect(spy).toHaveBeenCalledWith([], {}, true);
+            expect(spy).toHaveBeenCalledWith('', {}, { group: true, root: true });
         });
 
-        it('should call form builder factory() method with name nesting', () => {
-            const spy = jest.spyOn(form.builder, 'factory');
+        it('should call build() function with name nesting', () => {
+            const spy = jest.spyOn(FormBuilder, 'build');
 
             form('a.b.c', {});
 
             expect(spy).toHaveBeenCalled();
-            expect(spy).toHaveBeenCalledWith(['a', 'b', 'c'], {}, true);
+            expect(spy).toHaveBeenCalledWith('a.b.c', {}, { group: true, root: true });
         });
     });
 });
