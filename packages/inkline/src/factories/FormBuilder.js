@@ -343,7 +343,7 @@ export class FormBuilder {
          * Validate the current group by performing all validation functions on its child fields
          *
          * @param options
-         * @returns {{valid: boolean, errors: {length: number}}}
+         * @returns {{valid: boolean}}
          */
         schema.validate = (options = {}) => {
             for (const key in schema) {
@@ -355,6 +355,10 @@ export class FormBuilder {
                     }
                 }
             }
+
+            return {
+                valid: schema.valid
+            };
         };
 
         if (schema.constructor === Array) {
