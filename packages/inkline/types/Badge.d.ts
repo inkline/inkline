@@ -4,6 +4,6 @@ import { Size } from "./constants/size";
 import { VariantPropertyMixin } from "./mixins/components/properties/VariantPropertyMixin";
 
 export declare class IBadge implements SizePropertyMixin, VariantPropertyMixin {
-    size: Size;
-    variant: BrandVariants | MonochromeVariants | StateVariants;
+    size?: Size;
+    variant?: BrandVariants | MonochromeVariants | StateVariants;
 }

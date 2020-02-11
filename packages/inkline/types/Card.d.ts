@@ -4,6 +4,6 @@ import { VariantPropertyMixin } from "./mixins/components/properties/VariantProp
 import { Size } from "./constants/size";
 
 export declare class ICard implements SizePropertyMixin, VariantPropertyMixin {
-    variant: BasicVariants | BrandVariants | MonochromeVariants | NeutralVariants | StateVariants;
-    size: Size;
+    variant?: BasicVariants | BrandVariants | MonochromeVariants | NeutralVariants | StateVariants;
+    size?: Size;
 }

@@ -6,11 +6,11 @@ import {NamePropertyMixin} from "./mixins/forms/properties/NamePropertyMixin";
 import {Size} from "./constants/size";
 
 export declare class IForm implements DisabledPropertyMixin, LoadingPropertyMixin, ReadonlyPropertyMixin, SizePropertyMixin, NamePropertyMixin {
-    inline: boolean;
-    schema: any;
-    disabled: boolean;
-    loading: boolean;
-    name: string;
-    readonly: boolean;
-    size: Size;
+    inline?: boolean;
+    schema?: any;
+    disabled?: boolean;
+    loading?: boolean;
+    name?: string;
+    readonly?: boolean;
+    size?: Size;
 }

@@ -2,6 +2,6 @@ import {SizePropertyMixin} from "./mixins/components/properties/SizePropertyMixi
 import {Size} from "./constants/size";
 
 export declare class IListGroup implements SizePropertyMixin {
-    bordered: boolean;
-    size: Size;
+    bordered?: boolean;
+    size?: Size;
 }

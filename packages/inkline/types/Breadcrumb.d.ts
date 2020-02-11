@@ -2,6 +2,6 @@ import { SizePropertyMixin } from "./mixins/components/properties/SizePropertyMi
 import { Size } from "./constants/size";
 
 export declare class IBreadcrumb implements SizePropertyMixin {
-    size: Size;
-    divider: string;
+    size?: Size;
+    divider?: string;
 }

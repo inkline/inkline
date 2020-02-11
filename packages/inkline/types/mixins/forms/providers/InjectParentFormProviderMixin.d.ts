@@ -1,3 +1,3 @@
 export interface InjectParentFormProviderMixin {
-    parentForm: any;
+    parentForm?: any;
 }

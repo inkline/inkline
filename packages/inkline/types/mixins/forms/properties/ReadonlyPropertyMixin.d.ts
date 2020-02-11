@@ -1,3 +1,3 @@
 export interface ReadonlyPropertyMixin {
-    readonly: boolean;
+    readonly?: boolean;
 }

@@ -2,7 +2,7 @@ import {VariantPropertyMixin} from "./mixins/components/properties/VariantProper
 import {MonochromeVariants} from "./constants/variants";
 
 export declare class ICollapsible implements VariantPropertyMixin {
-    accordion: boolean;
-    active: number[] | string[] | string | number;
-    variant: MonochromeVariants;
+    accordion?: boolean;
+    active?: number[] | string[] | string | number;
+    variant?: MonochromeVariants;
 }

@@ -7,11 +7,11 @@ import {TabIndexPropertyMixin} from "./mixins/components/properties/TabIndexProp
 import {Size} from "./constants/size";
 
 export declare class ICheckable implements ModelGroupProviderMixin, CustomPropertyMixin, DisabledPropertyMixin, ReadonlyPropertyMixin, SizePropertyMixin, TabIndexPropertyMixin {
-    custom: boolean;
-    disabled: boolean;
-    parentForm: any;
-    readonly: boolean;
-    size: Size;
-    tabindex: number | string;
+    custom?: boolean;
+    disabled?: boolean;
+    parentForm?: any;
+    readonly?: boolean;
+    size?: Size;
+    tabindex?: number | string;
     value: Array<string | boolean> | boolean | string;
 }
