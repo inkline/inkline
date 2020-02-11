@@ -1,3 +1,3 @@
 export interface TabIndexPropertyMixin {
-    tabindex: number | string;
+    tabindex?: number | string;
 }

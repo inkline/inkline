@@ -4,8 +4,8 @@ import { TabIndexPropertyMixin } from "./mixins/components/properties/TabIndexPr
 import { Size } from "./constants/size";
 
 export declare class IButtonGroup implements DisabledPropertyMixin, SizePropertyMixin, TabIndexPropertyMixin {
-    vertical: boolean;
-    disabled: boolean;
-    size: Size;
-    tabindex: number | string;
+    vertical?: boolean;
+    disabled?: boolean;
+    size?: Size;
+    tabindex?: number | string;
 }

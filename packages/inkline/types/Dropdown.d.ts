@@ -4,13 +4,13 @@ import {DisabledPropertyMixin} from "./mixins/components/properties/DisabledProp
 import {MonochromeVariants} from "./constants/variants";
 
 export declare class IDropdown implements PopupControlsProviderMixin, VariantPropertyMixin, DisabledPropertyMixin {
-    hideOnClick: boolean;
-    placement: string;
-    keymap: { [key: string]: string[] };
-    disabled: boolean;
-    hideTimeout: number;
-    showTimeout: number;
-    trigger: string;
-    variant: MonochromeVariants;
-    value: boolean;
+    hideOnClick?: boolean;
+    placement?: string;
+    keymap?: { [key: string]: string[] };
+    disabled?: boolean;
+    hideTimeout?: number;
+    showTimeout?: number;
+    trigger?: string;
+    variant?: MonochromeVariants;
+    value?: boolean;
 }

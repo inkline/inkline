@@ -1,3 +1,3 @@
 export interface DisabledPropertyMixin {
-    disabled: boolean;
+    disabled?: boolean;
 }

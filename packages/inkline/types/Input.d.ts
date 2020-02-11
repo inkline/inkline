@@ -9,13 +9,13 @@ import {TabIndexPropertyMixin} from "./mixins/components/properties/TabIndexProp
 import {Size} from "./constants/size";
 
 export declare class IInput implements ModelProviderMixin, SchemaProviderMixin, ClearablePropertyMixin, DisabledPropertyMixin, NamePropertyMixin, ReadonlyPropertyMixin, SizePropertyMixin, TabIndexPropertyMixin {
-    clearable: boolean;
-    disabled: boolean;
-    name: string;
-    parentForm: any;
-    readonly: boolean;
-    schema: any;
-    size: Size;
-    tabindex: number | string;
+    clearable?: boolean;
+    disabled?: boolean;
+    name?: string;
+    parentForm?: any;
+    readonly?: boolean;
+    schema?: any;
+    size?: Size;
+    tabindex?: number | string;
     value: string;
 }

@@ -8,14 +8,14 @@ import {TabIndexPropertyMixin} from "./mixins/components/properties/TabIndexProp
 import {Size} from "./constants/size";
 
 export declare class ISelect implements ModelProviderMixin, SchemaProviderMixin, DisabledPropertyMixin, NamePropertyMixin,ReadonlyPropertyMixin, SizePropertyMixin, TabIndexPropertyMixin {
-    filterable: boolean;
-    native: boolean;
-    disabled: boolean;
-    name: string;
-    parentForm: any;
-    readonly: boolean;
-    schema: any;
-    size: Size;
-    tabindex: number | string;
+    filterable?: boolean;
+    native?: boolean;
+    disabled?: boolean;
+    name?: string;
+    parentForm?: any;
+    readonly?: boolean;
+    schema?: any;
+    size?: Size;
+    tabindex?: number | string;
     value: string;
 }

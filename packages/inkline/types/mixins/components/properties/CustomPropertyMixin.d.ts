@@ -1,3 +1,3 @@
 export interface CustomPropertyMixin {
-    custom: boolean;
+    custom?: boolean;
 }

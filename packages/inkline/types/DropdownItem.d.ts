@@ -3,7 +3,7 @@ import {TabIndexPropertyMixin} from "./mixins/components/properties/TabIndexProp
 import {DisabledPropertyMixin} from "./mixins/components/properties/DisabledPropertyMixin";
 
 export declare class IDropdownItem extends ILinkable implements DisabledPropertyMixin, TabIndexPropertyMixin {
-    action: string | number | boolean;
-    disabled: boolean;
-    tabindex: number | string;
+    action?: string | number | boolean;
+    disabled?: boolean;
+    tabindex?: number | string;
 }

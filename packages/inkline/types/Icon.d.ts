@@ -2,6 +2,6 @@ import {SizePropertyMixin} from "./mixins/components/properties/SizePropertyMixi
 import {Size} from "./constants/size";
 
 export declare class IIcon implements SizePropertyMixin {
-    icon: string;
-    size: Size;
+    icon?: string;
+    size?: Size;
 }

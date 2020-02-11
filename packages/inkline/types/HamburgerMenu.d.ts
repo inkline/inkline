@@ -2,7 +2,7 @@ import {VariantPropertyMixin} from "./mixins/components/properties/VariantProper
 import {MonochromeVariants} from "./constants/variants";
 
 export declare class IHamburgerMenu implements VariantPropertyMixin {
-    active: boolean;
-    animation: string;
-    variant: MonochromeVariants;
+    active?: boolean;
+    animation?: string;
+    variant?: MonochromeVariants;
 }

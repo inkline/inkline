@@ -5,10 +5,10 @@ import {Breakpoint} from "./constants/breakpoint";
 import {MonochromeVariants} from "./constants/variants";
 
 export declare class INavbar implements SizePropertyMixin, VariantPropertyMixin {
-    collapse: Breakpoint;
-    collapseOnClick: boolean;
-    fluid: boolean;
-    toggleAnimation: string;
-    size: Size;
-    variant: MonochromeVariants;
+    collapse?: Breakpoint;
+    collapseOnClick?: boolean;
+    fluid?: boolean;
+    toggleAnimation?: string;
+    size?: Size;
+    variant?: MonochromeVariants;
 }

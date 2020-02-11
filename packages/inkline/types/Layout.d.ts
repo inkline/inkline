@@ -1,3 +1,3 @@
 export declare class ILayout {
-    vertical: boolean;
+    vertical?: boolean;
 }

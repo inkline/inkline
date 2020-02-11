@@ -4,7 +4,7 @@ import {SchemaProviderMixin} from "./mixins/forms/providers/SchemaProviderMixin"
 
 export declare class ICheckbox extends ICheckable implements NamePropertyMixin, SchemaProviderMixin {
     value: boolean | string;
-    indeterminate: boolean;
-    name: string;
-    schema: any;
+    indeterminate?: boolean;
+    name?: string;
+    schema?: any;
 }

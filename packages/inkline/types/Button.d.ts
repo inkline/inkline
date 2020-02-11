@@ -8,14 +8,14 @@ import { DisabledPropertyMixin } from "./mixins/forms/properties/DisabledPropert
 import { Size } from "./constants/size";
 
 export declare class IButton extends ILinkable implements DisabledPropertyMixin, LoadingPropertyMixin, SizePropertyMixin, TabIndexPropertyMixin, VariantPropertyMixin {
-    block: boolean;
-    circle: boolean;
-    link: boolean;
-    outline: boolean;
-    tag: string;
-    disabled: boolean;
-    loading: boolean;
-    size: Size;
-    tabindex: number | string;
-    variant: Variants;
+    block?: boolean;
+    circle?: boolean;
+    link?: boolean;
+    outline?: boolean;
+    tag?: string;
+    disabled?: boolean;
+    loading?: boolean;
+    size?: Size;
+    tabindex?: number | string;
+    variant?: Variants;
 }

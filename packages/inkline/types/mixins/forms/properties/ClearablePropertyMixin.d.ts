@@ -1,3 +1,3 @@
 export interface ClearablePropertyMixin {
-    clearable: boolean;
+    clearable?: boolean;
 }

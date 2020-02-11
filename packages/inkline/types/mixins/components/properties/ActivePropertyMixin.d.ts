@@ -1,4 +1,4 @@
 export interface ActivePropertyMixin {
-    active: boolean;
-    activeClass: string;
+    active?: boolean;
+    activeClass?: string;
 }

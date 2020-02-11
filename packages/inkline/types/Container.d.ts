@@ -1,3 +1,3 @@
 export declare class IContainer{
-    fluid: boolean;
+    fluid?: boolean;
 }

@@ -3,5 +3,5 @@ import { SizePropertyMixin } from "./mixins/components/properties/SizePropertyMi
 import { Size } from "./constants/size";
 
 export declare class IBreadcrumbItem extends ILinkable implements SizePropertyMixin {
-    size: Size;
+    size?: Size;
 }

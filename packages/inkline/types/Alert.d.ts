@@ -4,9 +4,9 @@ import { Size } from "./constants/size";
 import { VariantPropertyMixin } from "./mixins/components/properties/VariantPropertyMixin";
 
 export declare class IAlert implements SizePropertyMixin, VariantPropertyMixin {
-    dismissible: boolean;
-    dismissLabel: string;
-    show: boolean;
-    size: Size;
-    variant: BrandVariants | StateVariants;
+    dismissible?: boolean;
+    dismissLabel?: string;
+    show?: boolean;
+    size?: Size;
+    variant?: BrandVariants | StateVariants;
 }

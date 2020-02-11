@@ -5,11 +5,11 @@ import {BrandVariants, MonochromeVariants, StateVariants} from "./constants/vari
 import {Size} from "./constants/size";
 
 export declare class IModal implements SizePropertyMixin, VariantPropertyMixin, DisabledPropertyMixin {
-    transition: string;
-    closeOnPressEscape: boolean;
-    showClose: boolean;
-    value: boolean;
-    disabled: boolean;
-    size: Size;
-    variant: BrandVariants | MonochromeVariants | StateVariants;
+    transition?: string;
+    closeOnPressEscape?: boolean;
+    showClose?: boolean;
+    value?: boolean;
+    disabled?: boolean;
+    size?: Size;
+    variant?: BrandVariants | MonochromeVariants | StateVariants;
 }

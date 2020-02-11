@@ -7,13 +7,13 @@ import {TabIndexPropertyMixin} from "./mixins/components/properties/TabIndexProp
 import {Size} from "./constants/size";
 
 export declare class IFormGroup implements DisabledPropertyMixin, LoadingPropertyMixin, NamePropertyMixin, ReadonlyPropertyMixin, SizePropertyMixin, TabIndexPropertyMixin {
-    inline: boolean;
-    validate: boolean;
-    disabled: boolean;
-    loading: boolean;
-    name: string;
-    parentForm: any;
-    readonly: boolean;
-    size: Size;
-    tabindex: number | string;
+    inline?: boolean;
+    validate?: boolean;
+    disabled?: boolean;
+    loading?: boolean;
+    name?: string;
+    parentForm?: any;
+    readonly?: boolean;
+    size?: Size;
+    tabindex?: number | string;
 }

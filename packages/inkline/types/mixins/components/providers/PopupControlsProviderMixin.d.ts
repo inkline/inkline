@@ -1,6 +1,6 @@
 export interface PopupControlsProviderMixin {
-    trigger: string | string[];
-    showTimeout: number;
-    hideTimeout: number;
-    value: boolean;
+    trigger?: string | string[];
+    showTimeout?: number;
+    hideTimeout?: number;
+    value?: boolean;
 }

@@ -7,20 +7,20 @@ import {Size} from "./constants/size";
 import {MonochromeVariants} from "./constants/variants";
 
 export declare class ITooltip implements PopupProviderMixin, PopupControlsProviderMixin, SizePropertyMixin, VariantPropertyMixin, DisabledPropertyMixin {
-    appendToBody: boolean;
-    arrow: boolean;
-    arrowOffset: number;
-    disabled: boolean;
-    hideTimeout: number;
-    offset: number;
-    placement: string;
-    popperOptions: any;
-    popup: any;
-    reference: any;
-    showTimeout: number;
-    size: Size;
-    transformOrigin: boolean | string;
-    trigger: string | string[];
-    value: boolean;
-    variant: MonochromeVariants;
+    appendToBody?: boolean;
+    arrow?: boolean;
+    arrowOffset?: number;
+    disabled?: boolean;
+    hideTimeout?: number;
+    offset?: number;
+    placement?: string;
+    popperOptions?: any;
+    popup?: any;
+    reference?: any;
+    showTimeout?: number;
+    size?: Size;
+    transformOrigin?: boolean | string;
+    trigger?: string | string[];
+    value?: boolean;
+    variant?: MonochromeVariants;
 }

@@ -17,6 +17,7 @@ export { ICollapsible } from './Collapsible';
 export { ICollapsibleItem } from './CollapsibleItem';
 export { IColumn } from './Column';
 export { IContainer } from './Container';
+export { IDatatable } from './Datatable';
 export { IDropdown } from './Dropdown';
 export { IDropdownDivider } from './DropdownDivider';
 export { IDropdownItem } from './DropdownItem';

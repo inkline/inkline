@@ -2,6 +2,6 @@ import {SizePropertyMixin} from "./mixins/components/properties/SizePropertyMixi
 import {Size} from "./constants/size";
 
 export declare class IFormLabel implements SizePropertyMixin {
-    placement: string;
-    size: Size;
+    placement?: string;
+    size?: Size;
 }

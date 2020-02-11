@@ -4,11 +4,11 @@ import {MonochromeVariants} from "./constants/variants";
 import {Size} from "./constants/size";
 
 export declare class IPagination implements SizePropertyMixin, VariantPropertyMixin {
-    itemsPerPage: number;
+    itemsPerPage?: number;
     items: number;
-    limit: number | { [key: string]: number };
+    limit?: number | { [key: string]: number };
     value: number;
-    quickLink: boolean;
-    size: Size;
-    variant: MonochromeVariants;
+    quickLink?: boolean;
+    size?: Size;
+    variant?: MonochromeVariants;
 }
