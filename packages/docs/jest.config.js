@@ -22,6 +22,7 @@ module.exports = {
         '^@components/(.*)$': '<rootDir>/components/$1',
         '^@/(.*)$': '<rootDir>/$1',
         '^~/(.*)$': '<rootDir>/$1',
+        '^@inkline/inkline/(.*)$': '<rootDir>/node_modules/@inkline/inkline/$1',
         '^vue$': 'vue/dist/vue.common.js'
     },
     snapshotSerializers: ["jest-serializer-vue"],
