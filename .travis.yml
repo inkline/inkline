@@ -5,10 +5,9 @@ install:
 - npm install
 - lerna exec npm install
 - lerna link
+- lerna run build
 script:
-- lerna run lint --stream
-- lerna run build --stream
-after_script:
+- lerna run lint
 - lerna run test
 - lerna run coveralls --scope @inkline/inkline
 env:
