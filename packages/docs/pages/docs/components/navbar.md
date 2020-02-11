@@ -430,7 +430,7 @@ Sometimes, it's necessary to control whether the Navbar is collapsed or not prog
 <i-button v-on:click="collapsed = !collapsed">
     Toggle Collapsed
 </i-button>
-<i-navbar :collapse="true" v-model="collapsed">
+<i-navbar :collapse="true" v-model="collapsed" :collapse-on-click-outside="false">
     <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
@@ -445,7 +445,7 @@ Sometimes, it's necessary to control whether the Navbar is collapsed or not prog
 ~~~html
 <i-button @click="collapsed = !collapsed">Toggle Collapsed</i-button>
 
-<i-navbar :collapse="true">
+<i-navbar :collapse="true" v-model="collapsed" :collapse-on-click-outside="false">
     <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
     <i-navbar-items>
         <i-nav>
@@ -484,7 +484,14 @@ Sometimes, it's necessary to control whether the Navbar is collapsed or not prog
                 </tr>
                 <tr>
                     <td>collapseOnClick</td>
-                    <td>Collapses the navbar when clicking a navbar item.</td>
+                    <td>Toggles collapsing the navbar when clicking a navbar item if collapsed.</td>
+                    <td><code>Boolean</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td><code>true</code></td>
+                </tr>
+                <tr>
+                    <td>collapseOnClickOutside</td>
+                    <td>Toggles collapsing the navbar when clicking outside the navbar if collapsed.</td>
                     <td><code>Boolean</code></td>
                     <td><code>true</code>, <code>false</code></td>
                     <td><code>true</code></td>
