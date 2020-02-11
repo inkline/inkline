@@ -7,7 +7,7 @@
     "build": "npm run build:inkline && npm run dist",
     "build:inkline": "vue-cli-service build --target lib --name Inkline src/main.js",
     "lint": "npm run lint:script && npm run lint:style",
-    "coveralls": "cat ../../coverage/lcov.info | coveralls",
+    "coveralls": "cat coverage/lcov.info | coveralls",
     "dev": "vue-cli-service serve",
     "dist": "node ./scripts/dist.js",
     "lint:script": "vue-cli-service lint",
