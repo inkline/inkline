@@ -30,6 +30,13 @@ describe('Components', () => {
                 });
             });
 
+            describe('collapseOnClickOutside', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.collapseOnClickOutside).toBeDefined();
+                    expect(wrapper.vm.collapseOnClickOutside).toEqual(true);
+                });
+            });
+
             describe('fluid', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.fluid).toBeDefined();
@@ -46,9 +53,9 @@ describe('Components', () => {
         });
 
         describe('methods', () => {
-            describe('onItemClick()', () => {
+            describe('onClickItem()', () => {
                 it('should be defined', () => {
-                    expect(wrapper.vm.onItemClick).toBeDefined();
+                    expect(wrapper.vm.onClickItem).toBeDefined();
                 });
 
                 it('should not set collapsed to false if not collapseOnClick and collapsed', () => {
@@ -57,7 +64,7 @@ describe('Components', () => {
                     wrapper.setProps({ collapseOnClick: false });
                     wrapper.setData({ collapsed: false });
 
-                    wrapper.vm.onItemClick();
+                    wrapper.vm.onClickItem();
 
                     expect(spy).not.toHaveBeenCalled();
                 });
@@ -68,7 +75,36 @@ describe('Components', () => {
                     wrapper.setProps({ collapseOnClick: true });
                     wrapper.setData({ collapsed: true });
 
-                    wrapper.vm.onItemClick();
+                    wrapper.vm.onClickItem();
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith(false);
+                });
+            });
+
+            describe('onClickOutside()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.onClickOutside).toBeDefined();
+                });
+
+                it('should not set collapsed to false if not collapseOnClick and collapsed', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'setCollapse');
+
+                    wrapper.setProps({ collapseOnClickOutside: false });
+                    wrapper.setData({ collapsed: false });
+
+                    wrapper.vm.onClickOutside();
+
+                    expect(spy).not.toHaveBeenCalled();
+                });
+
+                it('should set collapsed to false if collapseOnClick and collapsed', () => {
+                    const spy = jest.spyOn(wrapper.vm, 'setCollapse');
+
+                    wrapper.setProps({ collapseOnClickOutside: true });
+                    wrapper.setData({ collapsed: true });
+
+                    wrapper.vm.onClickOutside();
 
                     expect(spy).toHaveBeenCalled();
                     expect(spy).toHaveBeenCalledWith(false);
@@ -83,7 +119,7 @@ describe('Components', () => {
                 wrapper.vm.created();
 
                 expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('item-click', wrapper.vm.onItemClick);
+                expect(spy).toHaveBeenCalledWith('item-click', wrapper.vm.onClickItem);
             });
         });
 
@@ -94,7 +130,7 @@ describe('Components', () => {
                 wrapper.vm.beforeDestroy();
 
                 expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('item-click', wrapper.vm.onItemClick);
+                expect(spy).toHaveBeenCalledWith('item-click', wrapper.vm.onClickItem);
             });
         });
     });
