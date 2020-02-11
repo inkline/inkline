@@ -7,6 +7,7 @@ import {MonochromeVariants} from "./constants/variants";
 export declare class INavbar implements SizePropertyMixin, VariantPropertyMixin {
     collapse?: Breakpoint;
     collapseOnClick?: boolean;
+    collapseOnClickOutside?: boolean;
     fluid?: boolean;
     toggleAnimation?: string;
     size?: Size;
