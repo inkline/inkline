@@ -16,8 +16,8 @@ export default {
             type: Boolean,
             default: false
         },
-        active: {
-            type: [Array, String, Number],
+        value: {
+            type: [Array],
             default () {
                 return [];
             }
@@ -34,7 +34,7 @@ export default {
         };
     },
     watch: {
-        active (value) {
+        value(value) {
             this.activeItems = [].concat(value);
         }
     },
@@ -52,7 +52,7 @@ export default {
                 this.activeItems.push(item.id);
             }
 
-            this.$emit('change', this.activeItems);
+            this.$emit('input', this.activeItems);
         }
     },
     created() {
