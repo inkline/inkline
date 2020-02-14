@@ -29,10 +29,10 @@ describe('Components', () => {
                 });
             });
 
-            describe('active', () => {
+            describe('value', () => {
                 it('should be defined', () => {
-                    expect(wrapper.vm.active).toBeDefined();
-                    expect(wrapper.vm.active).toEqual([]);
+                    expect(wrapper.vm.value).toBeDefined();
+                    expect(wrapper.vm.value).toEqual([]);
                 });
             });
         });
@@ -47,7 +47,7 @@ describe('Components', () => {
                 it('should be concatenated with active prop', () => {
                     wrapper = shallowMount(Collapsible, {
                         propsData: {
-                            active: ['active']
+                            value: ['active']
                         }
                     });
 
@@ -57,11 +57,11 @@ describe('Components', () => {
         });
 
         describe('watch', () => {
-            describe('active', () => {
+            describe('value', () => {
                 it('should update active items on change', (done) => {
                     expect(wrapper.vm.activeItems).toEqual([]);
 
-                    wrapper.setProps({ active: ['active'] });
+                    wrapper.setProps({ value: ['active'] });
 
                     wrapper.vm.$nextTick(() => {
                         expect(wrapper.vm.activeItems).toEqual(['active']);
@@ -100,13 +100,13 @@ describe('Components', () => {
                     expect(wrapper.vm.activeItems).toEqual([]);
                 });
 
-                it('should emit change event', () => {
+                it('should emit input event', () => {
                     const spy = jest.spyOn(wrapper.vm, '$emit');
 
                     wrapper.vm.onItemClick({ id: 'active1' });
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('change', ['active1']);
+                    expect(spy).toHaveBeenCalledWith('input', ['active1']);
                 });
             });
         });

@@ -17,7 +17,7 @@ export default {
             default: false
         },
         value: {
-            type: [Array],
+            type: Array,
             default () {
                 return [];
             }
@@ -25,7 +25,7 @@ export default {
     },
     data() {
         return {
-            activeItems: [].concat(this.active)
+            activeItems: [].concat(this.value)
         };
     },
     provide() {
