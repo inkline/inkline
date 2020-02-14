@@ -220,8 +220,8 @@ const pages = [
         description: 'Tooltips are useful for conveying information when an user hovers over an element.'
     },
     {
-        id: 'docs-components-dashboard-datatable-definition',
-        title: 'Definition - Data Table',
+        id: 'docs-components-dashboard-datatable-introduction',
+        title: 'Introduction - Data Table',
         description: 'Create UX-friendly tables with advanced interaction controls using the Data Table component.'
     },
     {

@@ -1,4 +1,4 @@
-<template lang="md" src="./definition.md" />
+<template lang="md" src="./introduction.md" />
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
@@ -7,9 +7,9 @@ import { IDatatable, IAlert, IIcon } from '@inkline/inkline/src';
 
 export default {
     extends: View,
-    name: 'DataTableDefinitionView',
+    name: 'DataTableIntroductionView',
     layout: 'documentation',
-    head: head('docs-components-dashboard-datatable-definition'),
+    head: head('docs-components-dashboard-datatable-introduction'),
     components: {
         IDatatable,
         IAlert,
