@@ -283,6 +283,36 @@ Grid offsets are used to move a column to the right without creating an empty co
 </template>
 </i-code-preview>
 
+You may need to use `offset-{breakpoint}="0"` to clear an offset. See this in action in the grid example below.
+
+<i-code-preview title="Grid Offset Reset" class="grid-code-preview">
+
+<i-row>
+    <i-column md="5" lg="6">
+        <grid-box></grid-box>
+    </i-column>
+    <i-column md="5" offset-md="2" lg="6" offset-lg="0">
+        <grid-box></grid-box>
+    </i-column>
+</i-row>
+
+<template slot="html">
+
+~~~html
+<i-container>
+    <i-row>
+        <i-column sm="5" md="6">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column sm="5" offset-sm="2" md="6" offset-md="0">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-container>
+~~~
+
+</template>
+</i-code-preview>
 
 ### Grid Push / Pull
 Code-wise, the columns have a different order.
