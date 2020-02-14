@@ -80,5 +80,25 @@
     "stylelint-scss": "^3.13.0",
     "stylelint-webpack-plugin": "^1.2.1",
     "vue-jest": "^3.0.5"
-  }
+  },
+  "files": [
+    "components/",
+    "css/",
+    "directives/",
+    "helpers/",
+    "layouts/",
+    "pages/",
+    "plugins/",
+    "scripts/",
+    "static/",
+    ".editorconfig",
+    ".eslintrc.js",
+    ".stylelintrc.yml",
+    "babel.config.js",
+    "markdown.config.js",
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "pages.config.js"
+  ]
 }
