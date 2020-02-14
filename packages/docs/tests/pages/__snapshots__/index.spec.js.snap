@@ -28,27 +28,29 @@ exports[`IndexView is should render correctly 1`] = `
           </div>
         </i-column-stub>
         <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" md="6" offsetmd="" pushmd="" pullmd="" lg="4" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
-          <div class="feature-box"><img src="/images/pages/icon-modular.svg" alt="Inkline - Vue.js UI/UX Framework - Modular">
-            <h3>Modular</h3>
-            <p>With over 50 components, Inkline is designed to give you the best development experience.</p>
+          <div class="feature-box"><img src="/images/pages/icon-modular.svg" alt="Inkline - Vue.js UI/UX Framework - 50+ Components">
+            <h3>50+ Components</h3>
+            <p>With over 50 components, Inkline is designed for efficient tree shaking and optimization.</p>
           </div>
         </i-column-stub>
         <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" md="6" offsetmd="" pushmd="" pullmd="" lg="4" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
-          <div class="feature-box"><img src="/images/pages/icon-modern.svg" alt="Inkline - Vue.js UI/UX Framework - Modern">
-            <h3>Modern</h3>
-            <p>Inkline is a versatile and modern framework, written using the best Vue.js practices.</p>
+          <div class="feature-box"><img src="/images/pages/icon-customization.svg" alt="Inkline - Vue.js UI/UX Framework - Customization">
+            <h3>Customizable</h3>
+            <p>Disover hundreds of easily accessible Vue.js and Sass customization options.</p>
           </div>
         </i-column-stub>
         <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" md="6" offsetmd="" pushmd="" pullmd="" lg="4" offsetlg="2" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
           <div class="feature-box"><img src="/images/pages/icon-form-validation.svg" alt="Inkline - Vue.js UI/UX Framework - Form Validation">
-            <h3>Form Validation</h3>
-            <p>Define a form validation schema and let Inkline elegantly take care of the form validation work.</p>
+            <div>
+              <h3>Form Validation</h3>
+              <p>Define a form validation schema and let Inkline take care of the form validation work.</p>
+            </div>
           </div>
         </i-column-stub>
-        <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" md="12" offsetmd="" pushmd="" pullmd="" lg="4" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
-          <div class="feature-box"><img src="/images/pages/icon-customization.svg" alt="Inkline - Vue.js UI/UX Framework - Customization">
-            <h3>Customizable</h3>
-            <p>Disover hundreds of easily accessible Vue.js and Sass customization options.</p>
+        <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" md="6" offsetmd="3" pushmd="" pullmd="" lg="4" offsetlg="0" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
+          <div class="feature-box"><img src="/images/pages/icon-datatable.svg" alt="Inkline - Vue.js UI/UX Framework - Data Tables">
+            <h3>Data Tables</h3>
+            <p>Use Inkline's Data Tables to add advanced interaction controls to your tables.</p>
           </div>
         </i-column-stub>
       </i-row-stub>
@@ -58,7 +60,7 @@ exports[`IndexView is should render correctly 1`] = `
     <i-container-stub>
       <i-row-stub>
         <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" offsetmd="" pushmd="" pullmd="" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
-          <h3>Patreon Sponsors</h3>
+          <h3>Sponsors</h3>
           <p class="_text-muted">Sponsorships help Inkline evolve and get the attention and care it deserves.</p>
         </i-column-stub>
       </i-row-stub>
@@ -94,7 +96,14 @@ exports[`IndexView is should render correctly 1`] = `
   </i-container-stub>
   <i-container-stub fluid="true" id="footer">
     <i-container-stub>
-      <footer><img src="~static/images/logo-light-80.png" alt="Inkline - Vue.js UI/UX Framework" height="60">
+      <footer>
+        <i-row-stub id="osawards">
+          <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" md="12" offsetmd="" pushmd="" pullmd="" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
+            <i-tooltip-stub transformorigin="true" placement="top" offset="0" arrow="true" arrowoffset="0" popperoptions="[object Object]" trigger="hover" showtimeout="250" hidetimeout="150" size="" variant="light"><a id="osawards-container" href="https://osawards.com/vue/" rel="nofollow">
+                <h4>OS Awards</h4> <img width="200" src="/images/pages/osawards.svg" alt="Open Source Awards - Vue.js London 2019 - Inkline Nominee" class="_margin-auto">
+              </a> <template></template></i-tooltip-stub>
+          </i-column-stub>
+        </i-row-stub>
         <ul class="list -inline">
           <li class="footer-icon"><a href="https://github.com/inkline/inkline" target="_blank">
               <font-awesome-icon-stub icon="fab,github" size="lg"></font-awesome-icon-stub>
@@ -113,7 +122,7 @@ exports[`IndexView is should render correctly 1`] = `
           <a href="https://twitter.com/alexgrozav" target="_blank">@alexgrozav</a>.
         </p>
         <p id="footer-copyright">
-          Copyright © 2017-2019, Inkline
+          Copyright © 2017-2020, Inkline
         </p>
         <ul id="footer-policies" class="list -inline">
           <li><a href="https://github.com/inkline/inkline/blob/master/LICENSE" target="_blank" rel="nofollow">MIT License</a></li>
