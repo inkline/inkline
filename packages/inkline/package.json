@@ -97,5 +97,6 @@
     "type": "git",
     "url": "git+https://github.com/inkline/inkline.git"
   },
-  "types": "types/index.d.ts"
+  "types": "types/index.d.ts",
+  "gitHead": "83ab81a74ec6b9b715d3a04917248c58e9870d46"
 }
