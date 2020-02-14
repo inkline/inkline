@@ -54,7 +54,7 @@ export default {
                 </tr>
                 <tr>
                     <td>columns</td>
-                    <td>An array of column definition objects. See the <nuxt-link :to="{ name: 'docs-components-dashboard-datatable-definition' }">DataTable Definition</nuxt-link> page.</td>
+                    <td>An array of column definition objects. See the <nuxt-link :to="{ name: 'docs-components-dashboard-datatable-introduction' }">DataTable Introduction</nuxt-link> page.</td>
                     <td><code>Array&lt;Object&gt;</code></td>
                     <td></td>
                     <td><code>[]</code></td>
@@ -75,7 +75,7 @@ export default {
                 </tr>
                 <tr>
                     <td>rows</td>
-                    <td>An array of row definition objects. See the <nuxt-link :to="{ name: 'docs-components-dashboard-datatable-definition' }">DataTable Definition</nuxt-link> page.</td>
+                    <td>An array of row definition objects. See the <nuxt-link :to="{ name: 'docs-components-dashboard-datatable-introduction' }">DataTable Introduction</nuxt-link> page.</td>
                     <td><code>Array&lt;Object&gt;</code></td>
                     <td></td>
                     <td><code>[]</code></td>

@@ -1,4 +1,4 @@
-# Data Table Definition
+# Data Table
 Data tables (or data grids) are tables that have advanced interaction controls such as custom data types, pagination and sorting. {.lead}
 
 ### Columns definition
