@@ -80,11 +80,11 @@ You can use the `title` slot to provide a custom title for the collapsible panel
 </i-code-preview>
 
 ### Default Open Panels
-Panels can be opened by default, on page load, using the `active` field of the `<i-collapsible>` component. First, you'll need to assign an `id` to the `<i-collapsible-item>` components which will identify the open panels.
+Panels can be opened by default, on page load, using the `v-model` directive of the `<i-collapsible>` component. First, you'll need to assign an `id` to the `<i-collapsible-item>` components which will identify the open panels.
  
  <i-code-preview title="Default Open Collapsible Panel" link="https://github.com/inkline/inkline/tree/master/src/components/Collapsible">
 
-<i-collapsible :active="active">
+<i-collapsible v-model="active">
     <i-collapsible-item id="panel-1">
         <template slot="title">Item 1</template>
         Item 1 content
@@ -102,7 +102,7 @@ Panels can be opened by default, on page load, using the `active` field of the `
 <template slot="html">
 
 ~~~html
-<i-collapsible :active="active">
+<i-collapsible v-model="active">
     <i-collapsible-item id="panel-1">
         <template slot="title">Item 1</template>
         Item 1 content
@@ -272,8 +272,8 @@ Inkline includes basic predefined collapsible styles that you can use within you
                     <td><code>false</code></td>
                 </tr>
                 <tr>
-                    <td>active</td>
-                    <td>Sets the default active collapsible item.</td>
+                    <td>value</td>
+                    <td>Sets the default active collapsible item and stores opened collapsible panels. To be used together with the <code>v-model</code> directive.</td>
                     <td>Array</td>
                     <td></td>
                     <td><code>[]</code></td>
@@ -315,7 +315,7 @@ Inkline includes basic predefined collapsible styles that you can use within you
             </thead>
             <tbody>
                 <tr>
-                    <td>change</td>
+                    <td>input</td>
                     <td>Emitted when collapsible items are opened or closed.</td>
                     <td><code>(activeItems: String[]) => {}</code></td>
                 </tr>
