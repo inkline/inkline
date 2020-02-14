@@ -33,7 +33,7 @@
                 <li><nuxt-link :to="{ name: 'docs-forms-form-label' }">Form Label</nuxt-link></li>
                 <li>
                     <i-collapsible :class="{ '-active': subroutes['docs-forms-validation'] }"
-                                   :active="isNavCollapsed('docs-forms-validation')">
+                                   v-model="menu['docs-forms-validation']">
                         <i-collapsible-item title="Form Validation" id="docs-forms-validation">
                             <ul>
                                 <li><nuxt-link :to="{ name: 'docs-forms-validation-introduction' }">Introduction</nuxt-link></li>
@@ -77,7 +77,7 @@
             <ul>
                 <li>
                     <i-collapsible :class="{ '-active': subroutes['docs-components-dashboard-datatable'] }"
-                                   :active="isNavCollapsed('docs-components-dashboard-datatable')">
+                                   v-model="menu['docs-components-dashboard-datatable']">
                         <i-collapsible-item title="DataTable" id="docs-components-dashboard-datatable">
                             <ul>
                                 <li><nuxt-link :to="{ name: 'docs-components-dashboard-datatable-introduction' }">Introduction</nuxt-link></li>

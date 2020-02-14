@@ -6,6 +6,14 @@ export default {
         ICollapsible,
         ICollapsibleItem
     },
+    data() {
+        return {
+            menu: {
+                'docs-components-dashboard-datatable': [],
+                'docs-forms-validation': []
+            }
+        }
+    },
     computed: {
         subroutes() {
             const routeParts = this.$nuxt.$route.name.split('-');
@@ -16,9 +24,9 @@ export default {
                 }, {});
         }
     },
-    methods: {
-        isNavCollapsed(routeName) {
-            return this.subroutes[routeName] ? [routeName] : [];
-        }
+    mounted() {
+        Object.keys(this.menu).forEach((routeName) => {
+            this.menu[routeName] = this.subroutes[routeName] ? [routeName] : []
+        });
     }
 };
