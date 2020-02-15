@@ -38,7 +38,7 @@ export default {
 }
 ~~~
 
-<i-alert variant="info" class="-code">
+<i-alert variant="info" class="-code _margin-top-1">
 <template v-slot:icon><i-icon icon="info"></i-icon></template>
 
 Each data row should also have a unique `id` field, which will be used internally for identifying the row during rendering.
