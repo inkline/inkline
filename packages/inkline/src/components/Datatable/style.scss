@@ -102,6 +102,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @include breakpoint-down(xs) {
+            flex-direction: column;
+        }
     }
 
     .header-wrapper {
@@ -121,6 +125,23 @@
 
         .filtering-input {
             margin-left: auto;
+        }
+
+        @include breakpoint-down(lg) {
+            .filtering-input {
+                margin-left: $spacer;
+            }
+        }
+
+        @include breakpoint-down(xs) {
+            .pagination-select {
+                margin-bottom: $spacer;
+            }
+
+            .filtering-input {
+                margin-left: 0;
+                width: 100%;
+            }
         }
     }
 
