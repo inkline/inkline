@@ -38,12 +38,11 @@ export default {
 }
 ~~~
 
-<i-alert variant="info" class="-code _margin-top-1">
-<template v-slot:icon><i-icon icon="info"></i-icon></template>
-
-Each data row should also have a unique `id` field, which will be used internally for identifying the row during rendering.
-
+<i-alert variant="info" class="_margin-top-1">
+    <template slot="icon"><i-icon icon="info" class="h4"></i-icon></template>
+    <p>Each data row should also have a unique <code>id</code> field, which will be used internally for identifying the row during rendering.</p>
 </i-alert>
+
 
 ### Usage
 Let's put it all together. The `columns` defined above, together with the `rows` data will render the following data table:
