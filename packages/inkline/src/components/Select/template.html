@@ -12,6 +12,7 @@
             ref="input"
             :value="labelModel"
             :name="name"
+            :placeholder="placeholder"
             :readonly="isReadonly || !filterable"
             :disabled="isDisabled"
             :aria-disabled="isDisabled"
@@ -29,6 +30,7 @@
 
     <select v-model="model"
             v-show="isMobile"
+            :placeholder="placeholder"
             :name="name"
             :readonly="!isMobile"
             :disabled="isDisabled"

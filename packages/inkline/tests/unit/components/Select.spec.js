@@ -12,6 +12,7 @@ describe('Components', () => {
                 attachToDocument: true,
                 propsData: {
                     id: 'select',
+                    placeholder: 'Please select a value',
                     'v-model': 'value'
                 },
                 methods: {
@@ -55,6 +56,13 @@ describe('Components', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.native).toBeDefined();
                     expect(wrapper.vm.native).toEqual(false);
+                });
+            });
+
+            describe('placeholder', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.placeholder).toBeDefined();
+                    expect(wrapper.vm.placeholder).toEqual('');
                 });
             });
         });

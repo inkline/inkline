@@ -60,6 +60,10 @@ export default {
         native: {
             type: Boolean,
             default: false
+        },
+        placeholder: {
+            type: String,
+            default: ''
         }
     },
     data() {
