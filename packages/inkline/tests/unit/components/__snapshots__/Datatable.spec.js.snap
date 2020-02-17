@@ -4,18 +4,10 @@ exports[`Components Datatable should render correctly 1`] = `
 <div class="datatable-wrapper">
   <div class="header-wrapper">
     <div class="pagination-select">Show<i-select-stub value="10" size="md" tabindex="1">
-        <i-select-option-stub value="10" label="">
-          10
-        </i-select-option-stub>
-        <i-select-option-stub value="25" label="">
-          25
-        </i-select-option-stub>
-        <i-select-option-stub value="50" label="">
-          50
-        </i-select-option-stub>
-        <i-select-option-stub value="100" label="">
-          100
-        </i-select-option-stub>
+        <i-select-option-stub value="10" label="10"></i-select-option-stub>
+        <i-select-option-stub value="25" label="25"></i-select-option-stub>
+        <i-select-option-stub value="50" label="50"></i-select-option-stub>
+        <i-select-option-stub value="100" label="100"></i-select-option-stub>
       </i-select-stub>entries</div>
     <div class="filtering-input">
       <i-input-stub value="" size="" tabindex="1" placeholder="Search">
