@@ -62,7 +62,7 @@ describe('Components', () => {
             describe('placeholder', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.placeholder).toBeDefined();
-                    expect(wrapper.vm.placeholder).toEqual('');
+                    expect(wrapper.vm.placeholder).toEqual('Please select a value');
                 });
             });
         });

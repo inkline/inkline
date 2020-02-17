@@ -3,7 +3,7 @@
 exports[`Components Datatable should render correctly 1`] = `
 <div class="datatable-wrapper">
   <div class="header-wrapper">
-    <div class="pagination-select">Show<i-select-stub value="10" size="md" tabindex="1">
+    <div class="pagination-select">Show<i-select-stub value="10" size="md" tabindex="1" placeholder="">
         <i-select-option-stub value="10" label="10"></i-select-option-stub>
         <i-select-option-stub value="25" label="25"></i-select-option-stub>
         <i-select-option-stub value="50" label="50"></i-select-option-stub>
