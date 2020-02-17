@@ -9,7 +9,6 @@
         hide-on-click
         ref="dropdown">
     <i-input
-            v-bind="$attrs"
             ref="input"
             :value="labelModel"
             :name="name"
@@ -29,8 +28,9 @@
     </i-input>
 
     <select v-model="model"
-            v-if="isMobile"
+            v-show="isMobile"
             :name="name"
+            :readonly="!isMobile"
             :disabled="isDisabled"
             ref="select"
             class="form-select"
