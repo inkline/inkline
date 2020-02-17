@@ -14,7 +14,7 @@ To be able to expand a Data Table entry, you will need to provide an `expand` sc
     </template>
 </i-datatable>
 
-<template v-slot:html>
+<template slot="html">
 <div v-pre>
 
 ~~~html
@@ -29,7 +29,7 @@ To be able to expand a Data Table entry, you will need to provide an `expand` sc
 
 </div>
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {

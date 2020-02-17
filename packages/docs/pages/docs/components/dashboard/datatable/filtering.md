@@ -5,17 +5,15 @@ Inkline's Data Table rows are easily and efficiently filtered using a fuzzy sear
 Filtering is enabled by default and can be changed using the `filterable` attribute if needed.
 
 <i-code-preview title="Data Table Default Filtering" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
-
 <i-datatable :columns="columns" :rows="rows" />
-
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -66,17 +64,15 @@ export default {
 ~~~
 
 <i-code-preview title="Data Table Selective Filtering" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
-
 <i-datatable :columns="selectiveFilteringColumns" :rows="rows" :filtering="filteringConfig" />
-
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" :filtering="filtering" />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -111,7 +107,7 @@ export default {
 Filtering can be configured by providing an object for the `filtering` attribute. Inkline uses <a href="https://fusejs.io" rel="nofollow">Fuse.js</a> for providing a fuzzy search implementation. 
 
 <i-alert variant="info" class="-code">
-<template v-slot:icon><i-icon icon="info"></i-icon></template>
+<template slot="icon"><i-icon icon="info"></i-icon></template>
 
 The <a href="https://fusejs.io" rel="nofollow">Fuse.js Configuration</a> can be fine-tuned using the `fuse` field in the filtering configuration.
 
@@ -155,7 +151,7 @@ Filtering can be handled asynchronously by setting the `async` attribute to `tru
 This will tell the DataTable component to only display the rows and let the pagination and filtering handling be done externally using the `update` event. 
 
 <i-alert variant="info" class="-code">
-<template v-slot:icon><i-icon icon="info"></i-icon></template>
+<template slot="icon"><i-icon icon="info"></i-icon></template>
 
 The `filtering` event occurs whenever the search input is updated.
 
@@ -164,14 +160,14 @@ The `filtering` event occurs whenever the search input is updated.
 
 <i-code-preview title="Data Table Async Filtering" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="columns" :rows="rowsAsync" :rows-count="rowsCount" @update="onUpdate"></i-datatable>
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rowsAsync" :rows-count="rowsCount" @update="onUpdate" />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
