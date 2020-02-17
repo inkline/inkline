@@ -1,11 +1,11 @@
 /* eslint-disable */
+const packageJSON = require('./package.json');
 
 Package.describe({
     name: "inkline:inkline",
-    version: "1.20.8",
-    summary:
-        "Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications",
-    git: "https://github.com/inkline/inkline.git",
+    version: packageJSON.version,
+    summary: packageJSON.description,
+    git: packageJSON.repository.url,
     documentation: "README.md"
 });
 

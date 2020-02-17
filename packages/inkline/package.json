@@ -9,7 +9,7 @@
     "lint": "npm run lint:script && npm run lint:style",
     "coveralls": "cat coverage/lcov.info | coveralls",
     "dev": "vue-cli-service serve",
-    "dist": "node ./scripts/dist.js",
+    "dist": "node ./scripts/dist.js && node ./scripts/bower.js",
     "lint:script": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style",
     "prepublishOnly": "npm run build",
