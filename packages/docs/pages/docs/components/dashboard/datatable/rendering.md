@@ -32,14 +32,14 @@ export default {
 
 <i-code-preview title="Data Table Path" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="dataPathColumns" :rows="rows" />
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -91,14 +91,14 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
 
 <i-code-preview title="Data Table Render Function" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="renderColumns" :rows="rows" />
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -164,7 +164,7 @@ Here's an example for how to display a progress bar component on each row:
 
 <i-code-preview title="Data Table Custom Component" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="componentColumns" :rows="componentRows"></i-datatable>
-<template v-slot:html>
+<template slot="html">
 <div v-pre>
 
 ~~~html
@@ -173,7 +173,7 @@ Here's an example for how to display a progress bar component on each row:
 
 </div>
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -244,7 +244,7 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
         <td>{{row.address.city}}, {{row.address.country}}</td>
     </template>
 </i-datatable>
-<template v-slot:html>
+<template slot="html">
 <div v-pre>
 
 ~~~html
@@ -259,7 +259,7 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
 
 </div>
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -304,14 +304,14 @@ export default {
 
 <i-code-preview title="Data Table Render Header Function" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="renderHeaderColumns" :rows="rows" />
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -380,7 +380,7 @@ Here's a practical example where the header component contains a dropdown:
 
 <i-code-preview title="Data Table Custom Header Component" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="headerComponentColumns" :rows="rows"></i-datatable>
-<template v-slot:html>
+<template slot="html">
 <div v-pre>
 
 ~~~html
@@ -389,7 +389,7 @@ Here's a practical example where the header component contains a dropdown:
 
 </div>
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -466,7 +466,7 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
         <th>Country</th>
     </template>
 </i-datatable>
-<template v-slot:html>
+<template slot="html">
 <div v-pre>
 
 ~~~html
@@ -481,7 +481,7 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
 
 </div>
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -526,14 +526,14 @@ export default {
 
 <i-code-preview title="Data Table Render Header Function" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="renderFooterColumns" :rows="rows" />
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -602,7 +602,7 @@ Here's a practical example where the header component contains a dropdown:
 
 <i-code-preview title="Data Table Custom Footer Component" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="footerComponentColumns" :rows="rows"></i-datatable>
-<template v-slot:html>
+<template slot="html">
 <div v-pre>
 
 ~~~html
@@ -611,7 +611,7 @@ Here's a practical example where the header component contains a dropdown:
 
 </div>
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -668,7 +668,7 @@ By providing a scoped `footer` slot, you can render the datatable footer as you 
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows">
-    <template v-slot:footer>
+    <template slot="footer">
         <td class="_text-right">No.</td>
         <td>Name</td>
         <td>Country</td>
@@ -682,13 +682,13 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
 
 <i-code-preview title="Data Table Scoped Footer Slot" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="dataPathColumns" :rows="rows">
-    <template v-slot:footer>
+    <template slot="footer">
         <th class="_text-right">No.</th>
         <th>Name</th>
         <th>Country</th>
     </template>
 </i-datatable>
-<template v-slot:html>
+<template slot="html">
 <div v-pre>
 
 ~~~html
@@ -703,7 +703,7 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
 
 </div>
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {

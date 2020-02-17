@@ -43,20 +43,19 @@ export default {
     <p>Each data row should also have a unique <code>id</code> field, which will be used internally for identifying the row during rendering.</p>
 </i-alert>
 
-
 ### Usage
 Let's put it all together. The `columns` defined above, together with the `rows` data will render the following data table:
 
 <i-code-preview title="Data Table Example" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="columns" :rows="rows" />
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -108,14 +107,14 @@ export default {
 
 <i-code-preview title="Data Table Property Nesting" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="columnsNested" :rows="rows" />
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {

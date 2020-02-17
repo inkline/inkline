@@ -6,14 +6,14 @@ Pagination is enabled by default and can be changed using the `pagination` attri
 
 <i-code-preview title="Data Table Default Pagination" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="columns" :rows="rows" pagination></i-datatable>
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" pagination />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -46,14 +46,14 @@ Pagination can be disabled by setting the `pagination` attribute to `false`.
 
 <i-code-preview title="Data Table Disabled Pagination" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable :columns="columns" :rows="rowsShort" :pagination="false"></i-datatable>
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" :pagination="false" >
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -111,7 +111,7 @@ Pagination can be handled asynchronously by setting the `async` attribute to `tr
 This will tell the DataTable component to only display the rows and let the pagination handling be done asynchronously and externally using the `update` event. 
 
 <i-alert variant="info" class="-code">
-<template v-slot:icon><i-icon icon="info"></i-icon></template>
+<template slot="icon"><i-icon icon="info"></i-icon></template>
 
 The first `update` event occurs when the DataTable is `created`.
 
@@ -119,14 +119,14 @@ The first `update` event occurs when the DataTable is `created`.
 
 <i-code-preview title="Data Table Async Pagination" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
 <i-datatable async :columns="columns" :rows="asyncRows" :rows-count="rowsCount" @update="onUpdate"></i-datatable>
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable async :columns="columns" :rows="rows" :rows-count="rowsCount" @update="onUpdate" />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {

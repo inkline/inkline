@@ -22,17 +22,15 @@ export default {
 By default, sorting for the `string`, `number` and `Date` value types is supported natively. 
 
 <i-code-preview title="Data Table Default Scrolling" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
-
 <i-datatable :columns="columns" :rows="rows" nowrap />
-
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" nowrap />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
@@ -82,17 +80,15 @@ export default {
 
 
 <i-code-preview title="Data Table Default Scrolling" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
-
 <i-datatable :columns="columnsSticky" :rows="rows" :count-column="countColumn" nowrap />
-
-<template v-slot:html>
+<template slot="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" :count-column="countColumn" nowrap />
 ~~~
 
 </template>
-<template v-slot:js>
+<template slot="js">
 
 ~~~js
 export default {
