@@ -3,16 +3,14 @@
         <div class="pagination-select" v-if="pagination">
             <template v-for="part in i18nConfig.pagination.rowsPerPage">
                 <i-select v-model="rowsPerPage" :size="paginationConfig.size" v-if="part === 'rowsPerPage'">
-                    <i-select-option v-for="(item, index) in paginationConfig.rowsPerPageOptions" :value="item" :key="index">
-                        {{ item }}
-                    </i-select-option>
+                    <i-select-option v-for="(item, index) in paginationConfig.rowsPerPageOptions" :value="item" :label="'' + item" :key="index" />
                 </i-select>
                 <template v-else>{{part}}</template>
             </template>
         </div>
         <div class="filtering-input">
             <i-input v-model="filter" :placeholder="i18nConfig.filtering.inputPlaceholder">
-                <i-icon icon="search" slot="suffix"></i-icon>
+                <i-icon icon="search" slot="suffix" />
             </i-input>
         </div>
     </div>
@@ -27,13 +25,13 @@
                             <span v-if="!column.headerComponent">
                                 {{tableColumnsHeaderRendered[column.path]}}
                                 <i-icon class="sortable-icon" v-if="column.sortable" icon="sort">
-                                    <i-icon v-if="sortBy === column.path" :icon="`sort-${sortDirection}`"></i-icon>
+                                    <i-icon v-if="sortBy === column.path" :icon="`sort-${sortDirection}`" />
                                 </i-icon>
                             </span>
-                            <span v-else :is="column.headerComponent" :column="column" :index="index" :sort-by="sortBy"></span>
+                            <span v-else :is="column.headerComponent" :column="column" :index="index" :sort-by="sortBy" />
                         </th>
                     </slot>
-                    <th class="dth" v-if="hasExpandableRows"></th>
+                    <th class="dth" v-if="hasExpandableRows" />
                 </tr>
             </thead>
             <tbody>
@@ -45,7 +43,7 @@
                                 <span v-if="!column.component">
                                     {{row[column.path]}}
                                 </span>
-                                <span v-else :is="column.component" :row="row" :column="column"></span>
+                                <span v-else :is="column.component" :row="row" :column="column" />
                             </td>
                         </slot>
                         <td class="dtd" v-if="hasExpandableRows">
@@ -56,7 +54,7 @@
                                :aria-describedby="`expandable-row-${row.id}`"
                                @click="onClickExpand(row.id)"
                                tabindex="0">
-                                <i class="icon"></i>
+                                <i class="icon" />
                             </span>
                         </td>
                     </tr>
@@ -65,7 +63,7 @@
                         :id="`expandable-row-${row.id}`" :key="row.id + '-expandable'"
                         :aria-hidden="!expanded[row.id]"
                         :aria-labelledby="`expand-row-${row.id}`">
-                            <slot name="expand" :columns="tableColumns" :row="row" :expaned="expanded[row.id]"></slot>
+                            <slot name="expand" :columns="tableColumns" :row="row" :expaned="expanded[row.id]" />
                     </tr>
                 </template>
 
@@ -109,7 +107,7 @@
                 :limit="paginationConfig.limit"
                 :size="paginationConfig.size"
                 :variant="paginationConfig.variant"
-                v-model="page"></i-pagination>
+                v-model="page" />
         </slot>
     </div>
 </div>

@@ -210,8 +210,7 @@ export default {
             return to > this.rowsLength ? this.rowsLength : to;
         },
         hasExpandableRows() {
-            return Boolean(this.$slots && this.$slots.expand) ||
-                Boolean(this.$scopedSlots && this.$scopedSlots.expand);
+            return Boolean(this.$slots.expand || this.$scopedSlots.expand);
         }
     },
     methods: {
