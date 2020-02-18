@@ -1,4 +1,3 @@
-
 export default {
     mode: 'universal',
     head: {
@@ -16,7 +15,9 @@ export default {
     css: [],
     plugins: [],
     buildModules: [],
-    modules: [],
+    modules: [
+        '@inkline/inkline/nuxt'
+    ],
     build: {
         extend (config, ctx) {}
     }
