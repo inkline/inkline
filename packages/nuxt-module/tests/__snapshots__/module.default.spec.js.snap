@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nuxt.js Module should build module with default config 1`] = `
+"import Vue from 'vue';
+
+import Inkline from '@inkline/inkline';
+
+Vue.use(Inkline);
+"
+`;
