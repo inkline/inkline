@@ -1,5 +1,5 @@
 import { isMobile } from '@inkline/inkline/src/helpers/isMobile';
-import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
+import { isServer } from "@inkline/inkline/tests/utilities/isServer";
 
 describe('Helpers', () => {
     describe('isMobile()', () => {

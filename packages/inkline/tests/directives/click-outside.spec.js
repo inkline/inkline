@@ -1,6 +1,6 @@
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
 import { clickOutsideHandler, createDocumentHandler, bindClickOutsideHandler } from '@inkline/inkline/src/directives/click-outside';
-import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
+import { isServer } from "@inkline/inkline/tests/utilities/isServer";
 
 describe('Directives', () => {
     describe('v-click-outside', () => {

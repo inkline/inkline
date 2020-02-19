@@ -1,5 +1,5 @@
 import { off, _off, removeEventListenerBinding, detachEventBinding } from '@inkline/inkline/src/helpers/off';
-import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
+import { isServer } from "@inkline/inkline/tests/utilities/isServer";
 
 describe('Helpers', () => {
     describe('off()', () => {

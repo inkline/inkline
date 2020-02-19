@@ -1,5 +1,5 @@
 import { PopupManager } from '@inkline/inkline/src/factories/PopupManager';
-import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
+import { isServer } from "@inkline/inkline/tests/utilities/isServer";
 
 describe('Factories', () => {
     describe('PopupManager', () => {
