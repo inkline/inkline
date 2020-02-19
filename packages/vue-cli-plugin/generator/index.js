@@ -7,11 +7,15 @@ module.exports = (api, options, rootOptions) => {
 
 	// Add imports
 	api.injectImports(api.entryFile, options.scss ?
-		`import '@inkline/inkline/src/index.scss'` :
+		`import '@inkline/inkline/src/inkline.scss'` :
 		`import '@inkline/inkline/dist/inkline.css'`);
-	api.injectImports(api.entryFile, options.treeShaking ?
-		`import Inkline from '@inkline/inkline/src/index'`:
-		`import Inkline from '@inkline/inkline'`);
+
+	if (options.treeShaking) {
+        api.injectImports(api.entryFile, `import { Inkline } from '@inkline/inkline/src'`);
+        api.injectImports(api.entryFile, `import * as components from '@inkline/inkline/src/components'`);
+    } else {
+	    api.injectImports(api.entryFile, `import Inkline from '@inkline/inkline'`);
+    }
 
 	api.onCreateComplete(() => {
 		const fs = require('fs');
@@ -22,7 +26,12 @@ module.exports = (api, options, rootOptions) => {
 
 		// Inject imports
 		const lastImportIndex = lines.findIndex(line => line.match(/^import/));
-		lines[lastImportIndex] += `\n\nVue.use(Inkline);`;
+
+		if (options.treeShaking) {
+            lines[lastImportIndex] += `\n\nVue.use(Inkline, { components });`;
+        } else {
+            lines[lastImportIndex] += `\n\nVue.use(Inkline);`;
+        }
 
 		// Write back
 		content = lines.reverse().join(`\n`);

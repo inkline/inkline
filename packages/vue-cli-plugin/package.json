@@ -1,29 +1,59 @@
 {
-	"name": "vue-cli-plugin-inkline",
-	"version": "0.0.3",
-	"description": "Inkline UI/UX Framework Plugin for Vue CLI",
-	"main": "index.js",
-	"author": "Manuel Tancoigne <m.tancoigne@gmail.com>",
-	"contributors": [
-		"Alex Grozav <alex@grozav.com> (https://grozav.com/)"
-	],
-	"homepage": "https://github.com/inkline/vue-cli-plugin-inkline#readme",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/inkline/vue-cli-plugin-inkline.git"
-	},
-	"license": "MIT",
-	"private": false,
-	"bugs": {
-		"url": "https://github.com/inkline/vue-cli-plugin-inkline/issues"
-	},
-	"keywords": [
-		"inkline",
-		"inkline plugin",
-		"vue",
-		"vue-cli",
-		"vue-cli inkline",
-		"vue-cli-3",
-		"vue-cli-3 inkline"
-	]
+    "name": "@inkline/vue-cli-plugin-inkline",
+    "version": "1.0.0",
+    "description": "Inkline UI/UX Framework Plugin for Vue CLI",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "test:dev": "jest --watch",
+        "prepare": "cd tests/app && npm install"
+    },
+    "dependencies": {
+        "@inkline/inkline": "^1.0.0"
+    },
+    "peerDependencies": {
+        "vue": "^2.0.0",
+        "node-sass": "*",
+        "sass-loader": "*"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.8.4",
+        "@babel/preset-env": "^7.8.4",
+        "@vue/test-utils": "^1.0.0-beta.31",
+        "babel-jest": "^25.1.0",
+        "jest": "^25.1.0",
+        "jest-serializer-vue": "^2.0.2",
+        "jest-transform-stub": "^2.0.0",
+        "rimraf": "^3.0.2",
+        "vue-jest": "^3.0.5"
+    },
+    "files": [
+        "index.js",
+        "generator/",
+        "README.md",
+        "LICENSE"
+    ],
+    "author": "Alex Grozav <alex@grozav.com> (https://grozav.com/)",
+    "contributors": [
+        "Manuel Tancoigne <m.tancoigne@gmail.com>"
+    ],
+    "homepage": "https://github.com/inkline/vue-cli-plugin-inkline#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/vue-cli-plugin-inkline.git"
+    },
+    "license": "MIT",
+    "private": false,
+    "bugs": {
+        "url": "https://github.com/inkline/vue-cli-plugin-inkline/issues"
+    },
+    "keywords": [
+        "inkline",
+        "inkline plugin",
+        "vue",
+        "vue-cli",
+        "vue-cli inkline",
+        "vue-cli-3",
+        "vue-cli-3 inkline"
+    ]
 }
