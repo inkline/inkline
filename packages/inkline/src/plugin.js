@@ -1,3 +1,5 @@
+import { form } from "@inkline/inkline/src/prototypes/form";
+
 export const Inkline = {
     install(Vue, options = {}) {
         Vue.prototype.$inkline = { form };

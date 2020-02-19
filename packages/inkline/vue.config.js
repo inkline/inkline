@@ -34,12 +34,6 @@ module.exports = {
             }
         });
 
-        // config.optimization.delete("splitChunks");
-        // config.optimization.removeAvailableModules(false);
-        // config.optimization.concatenateModules(false);
-        // config.optimization.providedExports(false);
-        // config.optimization.usedExports(false);
-
         // config
         //     .plugin("webpack-bundle-analyzer")
         //     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
