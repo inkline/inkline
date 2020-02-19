@@ -1,22 +1,25 @@
 import Vue from 'vue';
-import Inkline from <%= options.treeShaking ? `'@inkline/inkline/src'` : `'@inkline/inkline'` %>;
-
 <% if (options.treeShaking) { %>
+import { Inkline } from '@inkline/inkline/src';
 <% if (options.inkline.components) { %>
-import { <%= options.inkline.components.join(',\n    ') %> } from '@inkline/inkline/src/components';
+import {
+    <%= options.inkline.components.join(',\n    ') %>
+} from '@inkline/inkline/src/components';
 <% } else { %>
 import components from '@inkline/inkline/src/components';
 <% } %>
-<% } %>
 
-<% if (options.treeShaking) { %>
 Vue.use(Inkline, {
 <% if (options.inkline.components) { %>
-    components: <%= options.inkline.components.join(',\n    ') %>
+    components: {
+        <%= options.inkline.components.join(',\n        ') %>
+    }
 <% } else {%>
     components
 <% } %>
 });
 <% } else { %>
+import Inkline from '@inkline/inkline';
+
 Vue.use(Inkline);
 <% } %>
