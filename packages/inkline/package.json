@@ -80,7 +80,6 @@
     "url": "https://github.com/inkline/inkline/issues"
   },
   "homepage": "http://inkline.io",
-  "jsdelivr": "dist/inkline.js",
   "keywords": [
     "inkline",
     "vue",
