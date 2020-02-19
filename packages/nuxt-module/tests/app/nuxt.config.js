@@ -15,10 +15,10 @@ export default {
     css: [],
     plugins: [],
     buildModules: [],
-    modules: [
-        '@inkline/inkline/nuxt'
-    ],
     build: {
-        extend (config, ctx) {}
+        extend (config, ctx) {},
+        babel: {
+            compact: false
+        }
     }
 }
