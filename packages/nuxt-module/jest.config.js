@@ -1,26 +1,25 @@
 module.exports = {
     moduleFileExtensions: ["js", "jsx", "json", "vue"],
-    collectCoverage: true,
-    coverageReporters: ["json", "html", "lcov"],
-    coverageDirectory: "<rootDir>/coverage",
-    collectCoverageFrom: [
-        "<rootDir>/src/**/*.vue",
-        "<rootDir>/src/(constants|directives|factories|helpers|prototypes|validators)/**/*.js",
-        "!<rootDir>/node_modules/**"
-    ],
+    collectCoverage: false,
     transform: {
         "^.+\\.vue$": "vue-jest",
         ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
         "^.+\\.jsx?$": "babel-jest"
     },
+    transformIgnorePatterns: [
+        "node_modules/(?!@inkline/inkline)"
+    ],
     moduleNameMapper: {
-        "^@/(.*)$": "<rootDir>/src/$1",
-        "^@inkline/inkline/(.*)$": "<rootDir>/$1"
+        '^@/(.*)$': '<rootDir>/$1',
+        '^~/(.*)$': '<rootDir>/$1',
+        '^vue$': 'vue/dist/vue.common.js'
     },
     snapshotSerializers: ["jest-serializer-vue"],
-    setupFiles: ["<rootDir>/tests/jest/setup.js"],
     testMatch: [
         "**/tests/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+    ],
+    setupFilesAfterEnv: [
+        "./tests/jest/setup.js"
     ],
     testURL: "http://localhost/",
     verbose: true

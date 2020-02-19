@@ -1,5 +1,5 @@
 import { triggerEvent } from '@inkline/inkline/src/helpers/triggerEvent';
-import { isServer } from "@inkline/inkline/tests/unit/utilities/isServer";
+import { isServer } from "@inkline/inkline/tests/utilities/isServer";
 
 describe('Helpers', () => {
     describe('triggerEvent()', () => {
