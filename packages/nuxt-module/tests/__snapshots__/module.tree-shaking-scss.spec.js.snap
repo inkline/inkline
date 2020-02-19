@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nuxt.js Module should build module with tree shaking and scss enabled 1`] = `
+"import Vue from 'vue';
+
+import { Inkline } from '@inkline/inkline/src';
+
+import components from '@inkline/inkline/src/components';
+
+Vue.use(Inkline, {
+    components
+});
+"
+`;
