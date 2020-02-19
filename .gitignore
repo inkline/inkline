@@ -103,6 +103,7 @@ algolia.config.js
 
 # Nuxt generate
 packages/docs/dist
+packages/nuxt-module/dist*
 
 # packages/inkline
 
