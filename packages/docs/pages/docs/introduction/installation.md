@@ -22,6 +22,12 @@ yarn add @inkline/inkline
 composer require inkline/inkline
 ~~~
 
+**Install using `@vue/cli`:**
+
+~~~css
+vue add @inkline/inkline
+~~~
+
 ### Vue CLI
 First, we'll import the core styles, after which we import and register the script files. If you already have your Webpack configuration ready for Vue, importing the framework is as simple as:
 
@@ -38,7 +44,7 @@ The code above will import and register all of Inkline's components by default.
 **You're all set!** Start using the many components and utilities that Inkline has to offer.
 
 ##### Configuration
-When using `@vue/cli`, add Inkline to the transpiled dependencies array, inside of your `vue.config.js` file:
+To configure Inkline when using `@vue/cli`, add Inkline to the transpiled dependencies array, inside of your `vue.config.js` file:
 
 ~~~js
 // vue.config.js
@@ -59,10 +65,11 @@ Next, you can import Inkline directly from the source files:
 
 ~~~js
 import Vue from 'vue';
-import '@inkline/inkline/src/index.scss';
-import Inkline from '@inkline/inkline/src/inkline';
+import '@inkline/inkline/src/inkline.scss';
+import { Inkline } from '@inkline/inkline/src';
+import * as components from '@inkline/inkline/src/components';
 
-Vue.use(Inkline);
+Vue.use(Inkline, { components });
 ~~~
 
 ##### Tree Shaking
@@ -72,8 +79,9 @@ To take advantage of tree shaking, you can import Inkline's components individua
 
 ~~~js
 import Vue from 'vue';
-import '@inkline/inkline/src/index.scss';
-import { Inkline, IButton, IForm, IInput } from '@inkline/inkline/src/index';
+import '@inkline/inkline/src/inkline.scss';
+import { Inkline } from '@inkline/inkline/src';
+import { IButton, IForm, IInput } from '@inkline/inkline/src/components';
 
 Vue.use(Inkline, {
     components: {
@@ -84,15 +92,20 @@ Vue.use(Inkline, {
 });
 ~~~
 
+
 ### Nuxt.js Module
 Inkline comes bundled together with an easy to use <a href="https://nuxtjs.org" rel="nofollow" target="_blank">Nuxt.js</a> module.
 
+~~~css
+npm install --save @inkline/nuxt
+~~~
+
 ##### Basic Usage
-Next, add `@inkline/inkline/nuxt` to the modules section of your `nuxt.config.js`. This contains the precompiled CSS and JS by default.
+Next, add `@inkline/nuxt` to the modules section of your `nuxt.config.js`. This provides the precompiled CSS and JS by default.
 
 ~~~js
 module.exports = {
-    modules: [ '@inkline/inkline/nuxt' ]
+    modules: [ '@inkline/nuxt' ]
 }
 ~~~
 
@@ -101,7 +114,7 @@ Optionally, you can configure your Inkline Nuxt.js Module using the following co
  
 ~~~js
 module.exports = {
-    modules: [ '@inkline/inkline/nuxt' ],
+    modules: [ '@inkline/nuxt' ],
     inkline: {
         treeShaking: true,
         scss: true
@@ -121,7 +134,7 @@ You can explicitly import only specific components from Inkline adding them to t
 
 ~~~js
 module.exports = {
-    modules: [ '@inkline/inkline/nuxt' ],
+    modules: [ '@inkline/nuxt' ],
     inkline: {
         treeShaking: true,
         scss: true,
