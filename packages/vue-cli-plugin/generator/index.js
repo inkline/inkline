@@ -1,7 +1,7 @@
 module.exports = (api, options, rootOptions) => {
 	api.extendPackage({
 		dependencies: {
-			'@inkline/inkline': '^1.14'
+			'@inkline/inkline': '^1.0.0'
 		}
 	});
 

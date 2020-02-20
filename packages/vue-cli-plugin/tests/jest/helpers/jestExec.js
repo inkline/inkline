@@ -17,9 +17,9 @@ export const jestExec = async (command, options, callback, done) => {
         done.fail(processError(e));
     }
 
-   if (callback) {
-       callback();
-   }
+    if (callback) {
+        callback();
+    }
 
     done();
 };
