@@ -5,9 +5,43 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "main.default": "vue-cli-service build src/main.default.js"
+    "main.default": "vue-cli-service build src/main.default.js --dest dist-default",
+    "main.tree-shaking-scss": "vue-cli-service build src/main.tree-shaking-scss.js --dest dist-tree-shaking-scss",
+    "main.components": "vue-cli-service build src/main.components.js --dest dist-components"
   },
   "dependencies": {
-    "@inkline/inkline": "^1.14"
-  }
+    "@inkline/inkline": "^1.0.0",
+    "core-js": "^3.6.4",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-service": "~4.2.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.1.2",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
