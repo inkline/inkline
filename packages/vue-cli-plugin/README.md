@@ -1,6 +1,6 @@
 # vue-cli-plugin-inkline
 
-[Inkline](https://github.com/inkline/inkline) UI/UX Framework Plugin for [Vue CLI 3.0](https://github.com/vuejs/vue-cli)
+[Inkline](https://github.com/inkline/inkline) UI/UX Framework Plugin for [Vue CLI](https://github.com/vuejs/vue-cli)
 
 ## Install
 
@@ -18,5 +18,5 @@ Before installing the Inkline plugin, make sure to commit or stash your changes 
 
 Add Inkline:
 ```
-vue add inkline
+vue add @inkline/inkline
 ```
