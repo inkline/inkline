@@ -15,10 +15,11 @@ Next, we need to make sure we're importing the source code instead of the build 
 
 ~~~js
 import Vue from 'vue';
-import '@inkline/inkline/src/index.scss';
-import Inkline from '@inkline/inkline/src/inkline';
+import '@inkline/inkline/src/inkline.scss';
+import { Inkline } from '@inkline/inkline/src';
+import * as components from '@inkline/inkline/src/components';
 
-Vue.use(Inkline);
+Vue.use(Inkline, { components });
 ~~~
 
 ### Variables
@@ -116,12 +117,14 @@ module.exports = {
   
     modules: [
         ['@nuxtjs/style-resources']
+        ['@inkline/nuxt']
     ],
     styleResources: {
         scss: ['~/assets/variables.scss']
     },
-    build: {
-        transpile: ['@inkline/inkline']
+    inkline: {
+        treeShaking: true,
+        scss: true
     }
 }
 ~~~
