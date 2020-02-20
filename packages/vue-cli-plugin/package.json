@@ -1,6 +1,6 @@
 {
     "name": "@inkline/vue-cli-plugin-inkline",
-    "version": "1.0.0",
+    "version": "1.21.0",
     "description": "Inkline UI/UX Framework Plugin for Vue CLI",
     "main": "index.js",
     "scripts": {
@@ -9,12 +9,12 @@
         "prepare": "cd tests/app && npm install"
     },
     "dependencies": {
-        "@inkline/inkline": "^1.0.0"
+        "@inkline/inkline": "^1.21.0"
     },
     "peerDependencies": {
-        "vue": "^2.0.0",
         "node-sass": "*",
-        "sass-loader": "*"
+        "sass-loader": "*",
+        "vue": "^2.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.8.4",

@@ -1,6 +1,6 @@
 {
   "name": "@inkline/nuxt",
-  "version": "1.0.0",
+  "version": "1.21.0",
   "description": "Nuxt.js module for Inkline, the UI/UX Framework for Vue.js.",
   "main": "index.js",
   "scripts": {
@@ -15,12 +15,12 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@inkline/inkline": "^1.0.0"
+    "@inkline/inkline": "^1.21.0"
   },
   "peerDependencies": {
-    "vue": "^2.0.0",
     "node-sass": "*",
-    "sass-loader": "*"
+    "sass-loader": "*",
+    "vue": "^2.0.0"
   },
   "repository": {
     "type": "git",
