@@ -116,7 +116,7 @@ module.exports = {
     // ... The rest of the configuration 
   
     modules: [
-        ['@nuxtjs/style-resources']
+        ['@nuxtjs/style-resources'],
         ['@inkline/nuxt']
     ],
     styleResources: {
