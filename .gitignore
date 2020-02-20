@@ -104,6 +104,7 @@ algolia.config.js
 # Nuxt generate
 packages/docs/dist
 packages/nuxt-module/tests/app/dist*
+packages/vue-cli-plugin/tests/app/dist*
 
 # packages/inkline
 

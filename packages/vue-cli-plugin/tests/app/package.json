@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "main.default": "vue-cli-service build main.default",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "main.default": "vue-cli-service build src/main.default.js"
   },
   "dependencies": {
     "@inkline/inkline": "^1.14"
