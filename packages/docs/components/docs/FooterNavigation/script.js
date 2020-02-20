@@ -19,7 +19,7 @@ export default {
 
             this.previous = pages.byId[previousPageId];
             this.next = pages.byId[nextPageId];
-            this.githubUrl = 'https://github.com/inkline/inkline.io/tree/master/pages' + this.$nuxt.$route.path + '.md';
+            this.githubUrl = 'https://github.com/inkline/inkline/tree/master/packages/docs/pages' + this.$nuxt.$route.path + '.md';
         }
     },
     created() {
