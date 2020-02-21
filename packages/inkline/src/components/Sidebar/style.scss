@@ -43,6 +43,7 @@
     height: 100%;
     min-width: 0;
     overflow: hidden;
+    z-index: $sidebar-z-index;
 
     .sidebar {
         position: absolute;
