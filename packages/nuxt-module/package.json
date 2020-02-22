@@ -43,5 +43,6 @@
     "rimraf": "^3.0.2",
     "vue-jest": "^3.0.5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "b590fab2d3ecb9cbffcd4f4e991306dc9bfad795"
 }
