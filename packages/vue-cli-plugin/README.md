@@ -1,22 +1,34 @@
-# vue-cli-plugin-inkline
+# Inkline - Vue CLI Plugin
 
 [Inkline](https://github.com/inkline/inkline) UI/UX Framework Plugin for [Vue CLI](https://github.com/vuejs/vue-cli)
 
 ## Install
 
-If you haven't yet installed vue-cli 3, first follow the install instructions [here](https://github.com/vuejs/vue-cli).
+If you haven't yet installed Vue CLI, first follow the install instructions [here](https://github.com/vuejs/vue-cli).
 
-**Tip**: If you don't want to overwrite your current vue-cli because you still need `vue init`, [then try this](https://cli.vuejs.org/guide/creating-a-project.html#pulling-2-x-templates-legacy).
+If you haven't created a project yet, generate a project using Vue CLI:
 
-Generate a project using Vue CLI 3.0
 ```
 vue create my-app
 cd my-app
 ```
 
-Before installing the Inkline plugin, make sure to commit or stash your changes in case you need to revert.
+Next, add Inkline. Before installing the Inkline plugin, make sure to commit or stash your changes in case you need to revert.
 
-Add Inkline:
 ```
 vue add @inkline/inkline
 ```
+
+## Configuration
+Optionally, you can configure your Inkline Vue CLI Plugin using the following installation options.
+
+First of all, Inkline uses Sass, so you will need to install it as a dependency:
+
+`npm install -D node-sass sass-loader`
+
+### Tree Shaking and SCSS
+To install a tree-shaking and SCSS ready Inkline setup:
+```
+vue add @inkline/inkline --treeShaking --scss
+```
+
