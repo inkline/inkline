@@ -40,7 +40,7 @@ Last but not least, the important part is to make sure our `variables.scss` file
 First, install the utility plugin to easily import style resources. 
 
 ~~~html
-npm install --save-dev vue-cli-plugin-style-resources-loader
+npm install --save-dev style-resources-loader vue-cli-plugin-style-resources-loader
 ~~~
 
 Add the following to the `pluginOptions` field in your `vue.config.js`:
