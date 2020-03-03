@@ -1,0 +1,24 @@
+name: Inkline
+on: [push]
+jobs:
+    build:
+        runs-on: ubuntu-16.04
+        strategy:
+            matrix:
+                node: [ '12', '10', '8' ]
+        name: Node ${{ matrix.node }}
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup node
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node }}
+            - run: npm install
+            - run: lerna exec npm install
+            - run: lerna link
+            - run: lerna run build
+            - run: lerna run lint
+            - run: lerna run test
+            - run: lerna run coveralls --scope @inkline/inkline
+              env:
+                  github-token: ${{ secrets.Coveralls }}
