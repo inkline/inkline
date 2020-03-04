@@ -1,16 +1,16 @@
-name: Inkline
+name: Build Inkline
 on: [ 'push', 'pull_request' ]
 jobs:
     build:
         runs-on: ubuntu-16.04
         strategy:
             matrix:
-                node: [ '12' ]
+                node: [ '12', '10', '8' ]
         name: Node ${{ matrix.node }}
         steps:
-            -   name: Setup repository
+            -   name: Set up repository
                 uses: actions/checkout@v2
-            -   name: Setup node
+            -   name: Set up node
                 uses: actions/setup-node@v1
                 with:
                     node-version: ${{ matrix.node }}
