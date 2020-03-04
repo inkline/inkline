@@ -25,7 +25,7 @@
         <img src="https://img.shields.io/npm/v/@inkline/inkline.svg" alt="npm version">
     </a>
     <a href="https://travis-ci.org/inkline/inkline">
-        <img src="https://travis-ci.org/inkline/inkline.svg?branch=master" alt="Build">
+        <img src="https://github.com/inkline/inkline/workflows/Build/badge.svg" alt="Build">
     </a>    
     <a href='https://coveralls.io/github/inkline/inkline?branch=master'><img src='https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master' alt='Coverage Status' /></a>
     <a href="https://www.npmjs.com/package/@inkline/inkline">
