@@ -57,3 +57,4 @@ export { default as IRadioButtonGroup } from '@inkline/inkline/src/components/Ra
 export { default as ISelect } from '@inkline/inkline/src/components/Select';
 export { default as ISelectOption } from '@inkline/inkline/src/components/SelectOption';
 export { default as ITextarea } from '@inkline/inkline/src/components/Textarea';
+export { default as IToggle } from '@inkline/inkline/src/components/Toggle';
