@@ -1,0 +1,23 @@
+//
+// Toggle variables
+//
+$toggle-width-base: 40px !default;
+$toggle-width: size-map($toggle-width-base, $sizes, $size-multipliers) !default;
+$toggle-height-base: 20px !default;
+$toggle-height: size-map($toggle-height-base, $sizes, $size-multipliers) !default;
+$toggle-background: $color-gray-40 !default;
+$toggle-background-active: $color-primary !default;
+$toggle-background-disabled: $color-gray-40 !default;
+$toggle-background-active-disabled: mix($toggle-background-active, $toggle-background-disabled, 40%) !default;
+$toggle-border-radius-base: $toggle-height-base !default;
+$toggle-border-radius: size-map($toggle-border-radius-base, $sizes, $size-multipliers) !default;
+$toggle-transition-duration: $transition-duration !default;
+
+$toggle-indicator-size-base: 16px !default;
+$toggle-indicator-size: size-map($toggle-indicator-size-base, $sizes, $size-multipliers) !default;
+$toggle-indicator-border-radius-base: $toggle-indicator-size-base !default;
+$toggle-indicator-border-radius: size-map($toggle-indicator-border-radius-base, $sizes, $size-multipliers) !default;
+$toggle-indicator-background: $color-white !default;
+$toggle-indicator-background-active: $color-white !default;
+$toggle-indicator-background-disabled: $color-gray-20 !default;
+$toggle-indicator-background-active-disabled: $color-gray-20 !default;

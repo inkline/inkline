@@ -1,0 +1,33 @@
+//
+// Checkbox Sizes
+//
+@each $size in $sizes {
+    $_toggle-border-radius: map_get($toggle-border-radius, $size);
+    $_toggle-width: map_get($toggle-width, $size);
+    $_toggle-height: map_get($toggle-height, $size);
+    $_indicator-size: map_get($toggle-indicator-size, $size);
+    $_indicator-border-radius: map_get($toggle-indicator-border-radius, $size);
+    $_indicator-margin: ($_toggle-height - $_indicator-size) / 2;
+
+    .form.-#{$size} .toggle,
+    .form-group.-#{$size} .toggle,
+    .toggle.-#{$size} {
+        width: $_toggle-width;
+        height: $_toggle-height;
+
+        .toggle-input:checked + .indicator::before {
+            transform: translate(($_toggle-width / 2) - $_indicator-margin, -50%);
+        }
+
+        .indicator {
+            border-radius: $_toggle-border-radius;
+
+            &::before {
+                height: $_indicator-size;
+                width: $_indicator-size;
+                left: $_indicator-margin;
+                border-radius: $_indicator-border-radius;
+            }
+        }
+    }
+}
