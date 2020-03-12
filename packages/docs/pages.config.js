@@ -80,6 +80,11 @@ const pages = [
         description: 'Textareas are form components used for inputting data directly from the keyboard, on multiple lines.'
     },
     {
+        id: 'docs-forms-toggle',
+        title: 'Toggle',
+        description: 'Toggles are boolean form components used for easily enabling or disabling features.'
+    },
+    {
         id: 'docs-forms-form',
         title: 'Form',
         description: 'Inkline\'s Form components are the main wrappers for form elements, with powerful validation options.'
