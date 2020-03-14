@@ -8,7 +8,7 @@ $toggle-height: size-map($toggle-height-base, $sizes, $size-multipliers) !defaul
 $toggle-background: $color-gray-40 !default;
 $toggle-background-active: $color-primary !default;
 $toggle-background-disabled: $color-gray-40 !default;
-$toggle-background-active-disabled: mix($toggle-background-active, $toggle-background-disabled, 40%) !default;
+$toggle-background-active-disabled: mix($toggle-background-active, $toggle-background-disabled, 25%) !default;
 $toggle-border-radius-base: $toggle-height-base !default;
 $toggle-border-radius: size-map($toggle-border-radius-base, $sizes, $size-multipliers) !default;
 $toggle-transition-duration: $transition-duration !default;
