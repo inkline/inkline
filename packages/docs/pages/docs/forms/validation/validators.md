@@ -3,7 +3,7 @@
 
 There are several validation options that can be used in the `validators` field:
 
-<i-code-preview title="Alpha Validator" markup="alpha" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Alpha Validator" markup="alpha">
 <i-form :schema="alphaValidatorForm">
     <i-form-group>
         <i-input :schema="alphaValidatorForm.input" v-model="alphaValidatorForm.input.value" placeholder="This field should contain only letters" />
@@ -71,7 +71,7 @@ export default {
 </template>
 </i-code-preview>
 
-<i-code-preview title="Alphanumeric Validator" markup="alphanumeric" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Alphanumeric Validator" markup="alphanumeric">
 <i-form :schema="alphaValidatorForm">
     <i-form-group>
         <i-input :schema="alphanumericValidatorForm.input" v-model="alphanumericValidatorForm.input.value" placeholder="This field should contain only letters and numbers" />
@@ -140,7 +140,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Email Validator" markup="email" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Email Validator" markup="email">
 <i-form :schema="emailValidatorForm">
     <i-form-group>
         <i-input :schema="emailValidatorForm.input" v-model="emailValidatorForm.input.value" placeholder="This field an is email" />
@@ -187,7 +187,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Max Validator" markup="max" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Max Validator" markup="max">
 <i-form :schema="maxValidatorForm">
     <i-form-group>
         <i-input :schema="maxValidatorForm.input" v-model="maxValidatorForm.input.value" placeholder="This field accepts a maximum value of 100." />
@@ -234,7 +234,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Min Validator" markup="min" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Min Validator" markup="min">
 <i-form :schema="minValidatorForm">
     <i-form-group>
         <i-input :schema="minValidatorForm.input" v-model="minValidatorForm.input.value" placeholder="This field accepts a minimum value of 10." />
@@ -281,7 +281,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Max Length Validator" markup="maxLength" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Max Length Validator" markup="maxLength">
 <i-form :schema="maxLengthValidatorForm">
     <i-form-group>
         <i-input :schema="maxLengthValidatorForm.input" v-model="maxLengthValidatorForm.input.value" placeholder="This field accepts up to 12 characters." />
@@ -328,7 +328,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Min Length Validator" markup="minLength" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Min Length Validator" markup="minLength">
 <i-form :schema="minLengthValidatorForm">
     <i-form-group>
         <i-input :schema="minLengthValidatorForm.input" v-model="minLengthValidatorForm.input.value" placeholder="This field requires at least 6 characters." />
@@ -375,7 +375,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Number Validator" markup="number" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Number Validator" markup="number">
 <i-form :schema="numberValidatorForm">
     <i-form-group>
         <i-input :schema="numberValidatorForm.input" v-model="numberValidatorForm.input.value" placeholder="This field should contain positive numbers" />
@@ -444,7 +444,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Required Validator" markup="required" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Required Validator" markup="required">
 <i-form :schema="requiredValidatorForm">
     <i-form-group>
         <i-input :schema="requiredValidatorForm.input" v-model="requiredValidatorForm.input.value" placeholder="This field is required" />
@@ -491,7 +491,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Same As Validator" markup="sameAs" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Same As Validator" markup="sameAs">
 <i-form :schema="sameAsValidatorForm">
     <i-form-group>
         <i-input :schema="sameAsValidatorForm.password" v-model="sameAsValidatorForm.password.value" type="password" placeholder="Password" />
@@ -549,7 +549,7 @@ export default {
 
 You can provide a custom validation function that will be applied on the value of the input using the `custom` validator.
 
-<i-code-preview title="Custom Validator" markup="custom" link="https://github.com/inkline/inkline/blob/master/src/validators">
+<i-code-preview title="Custom Validator" markup="custom">
 <i-form :schema="customValidatorForm">
     <i-form-group>
         <i-input :schema="customValidatorForm.input" v-model="customValidatorForm.input.value" placeholder="This field is custom validated. It needs to contain 'inkline'" />

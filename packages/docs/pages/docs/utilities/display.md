@@ -36,7 +36,7 @@ The media queries affect screen widths with the given breakpoint. For example, `
 
 ### Examples
 
-<i-code-preview title="Display Inline Utility Example" link="https://github.com/inkline/inkline/blob/master/src/css/helpers">
+<i-code-preview title="Display Inline Utility Example">
 
 <div class="_background-primary _padding-1-2 _display-inline">Inline</div>
 <div class="_background-dark _padding-1-2 _display-inline">Inline</div>
@@ -53,7 +53,7 @@ The media queries affect screen widths with the given breakpoint. For example, `
 
 
 
-<i-code-preview title="Display Block Utility Example" link="https://github.com/inkline/inkline/blob/master/src/css/helpers">
+<i-code-preview title="Display Block Utility Example">
 
 <div class="_background-primary _padding-1-2 _display-block">Block</div>
 <div class="_background-dark _padding-1-2 _display-block">Block</div>

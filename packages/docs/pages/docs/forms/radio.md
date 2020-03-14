@@ -7,7 +7,7 @@ You will need to use the `i-radio` component together with a `i-radio-group`.
 
 ### Basic Usage
 
-<i-code-preview title="Radio Group" link="https://github.com/inkline/inkline/tree/master/src/components/Radio">
+<i-code-preview title="Radio Group">
 
 <i-radio-group v-model="selectedGroup">
     <i-radio value="Football">Football</i-radio>
@@ -53,7 +53,7 @@ Selected value: <code>{{selectedGroup}}</code>
 You're able to use the `size` property to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
 
 
-<i-code-preview title="Radio Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Radio">
+<i-code-preview title="Radio Sizes">
 
 <i-radio-group v-model="selectedSize">
     <i-radio size="sm" value="Football">Football</i-radio>
@@ -90,7 +90,7 @@ export default {
 Applying the size `size` property to a `i-radio-group` will set the chosen size to all of its child inputs.
 
 
-<i-code-preview title="Radio Group Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Radio">
+<i-code-preview title="Radio Group Sizes">
 
 <i-radio-group size="sm" v-model="selectedSizeGroupSm" class="_margin-bottom-1">
     <i-radio value="Football">Football</i-radio>
@@ -161,7 +161,7 @@ export default {
 ### Custom vs. Native
 Inkline uses custom radio designs by setting the `custom` property to `true` by default. 
 
-<i-code-preview title="Custon Radio Input" link="https://github.com/inkline/inkline/tree/master/src/components/Radio">
+<i-code-preview title="Custon Radio Input">
 
 <i-radio-group v-model="selectedCustomTrue">
     <i-radio :custom="true" value="Football">Football</i-radio>
@@ -198,7 +198,7 @@ export default {
 By setting the `custom` property to `false`, the radios use the browser's default design. 
 
 
-<i-code-preview title="Native Radio Input" link="https://github.com/inkline/inkline/tree/master/src/components/Radio">
+<i-code-preview title="Native Radio Input">
 
 <i-radio-group v-model="selectedCustomFalse">
     <i-radio :custom="false" value="Football">Football</i-radio>
@@ -236,7 +236,7 @@ export default {
 
 You can display your radio inputs as toggleable buttons using the provided `<i-radio-button>` and `<i-radio-button-group>` components.
 
-<i-code-preview title="Radio Button Group" link="https://github.com/inkline/inkline/tree/master/src/components/RadioButton">
+<i-code-preview title="Radio Button Group">
 
 <i-radio-button-group v-model="selectedButton">
     <i-radio-button value="Earth">Earth</i-radio-button>

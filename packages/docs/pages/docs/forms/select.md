@@ -3,7 +3,7 @@
 
 ### Example
 
-<i-code-preview title="Basic Select" link="https://github.com/inkline/inkline/tree/master/src/components/Select">
+<i-code-preview title="Basic Select">
 
 <i-select v-model="selectValue" placeholder="Choose an option">
     <i-select-option value="a" label="Option A" />
@@ -46,7 +46,7 @@ Selected value: <code>{{selectValue}}</code>
 
 ### Disabled State
 
-<i-code-preview title="Disabled Select" link="https://github.com/inkline/inkline/tree/master/src/components/Select">
+<i-code-preview title="Disabled Select">
 
 <i-select v-model="disabledSelectValue" placeholder="Choose an option" disabled>
     <i-select-option value="a" label="Option A" />
@@ -86,7 +86,7 @@ export default {
 Inkline allows you to easily add a prefix or suffix to your inputs. Using prefixes and suffixes you can, indicate 
 your input type using an icon or text. 
 
-<i-code-preview title="Select Prefix and Suffix" link="https://github.com/inkline/inkline/tree/master/src/components/Select">
+<i-code-preview title="Select Prefix and Suffix">
 
 <i-select v-model="prefixSelectValue" placeholder="Choose an option" class="_margin-bottom-1">
     <i slot="prefix">@</i>
@@ -163,7 +163,7 @@ export default {
 ### Sizes
 You're able to use the `size` modifier to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Select Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Select">
+<i-code-preview title="Select Sizes">
 
 <i-form-group class="_margin-bottom-1">
     <i-select v-model="smSelectValue" size="sm" placeholder="Choose an option">

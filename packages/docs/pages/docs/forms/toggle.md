@@ -3,7 +3,7 @@
 
 ### Basic Usage
 
-<i-code-preview title="Basic Toggle" link="https://github.com/inkline/inkline/tree/master/src/components/Toggle">
+<i-code-preview title="Basic Toggle">
 <i-toggle v-model="toggled"></i-toggle>
 <template slot="html">
 
@@ -35,7 +35,7 @@ Checked: <code>{{toggled}}</code>
 ### Sizes
 You're able to use the `size` property to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
 
-<i-code-preview title="Toggle Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Toggle">
+<i-code-preview title="Toggle Sizes">
 <i-toggle size="sm" v-model="toggledSizeSm"></i-toggle>
 <i-toggle size="md" v-model="toggledSizeMd"></i-toggle>
 <i-toggle size="lg" v-model="toggledSizeLg"></i-toggle>
@@ -73,7 +73,7 @@ Applying the size `size` property to an `i-form-group` will also set the chosen 
 ### Readonly State
 You can set the toggle input to be readonly by using the `readonly` property.
 
-<i-code-preview title="Readonly Toggle" link="https://github.com/inkline/inkline/tree/master/src/components/Toggle">
+<i-code-preview title="Readonly Toggle">
 <i-toggle v-model="toggledReadonlyFalse" readonly></i-toggle>
 <i-toggle v-model="toggledReadonlyTrue" readonly></i-toggle>
 <template slot="html">
@@ -105,7 +105,7 @@ export default {
 ### Disabled State
 You can set the toggle input to be disabled by using the `disabled` property.
 
-<i-code-preview title="Disabled Toggle" link="https://github.com/inkline/inkline/tree/master/src/components/Toggle">
+<i-code-preview title="Disabled Toggle">
 <i-toggle v-model="toggledDisabledFalse" disabled></i-toggle>
 <i-toggle v-model="toggledDisabledTrue" disabled></i-toggle>
 <template slot="html">

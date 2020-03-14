@@ -4,7 +4,7 @@
 ### Text Alignment
 You can use vertical align utilities to change the alignment of elements. Please note that vertical-align only affects `inline`, `inline-block`, `inline-table`, and `table-cell` elements.
 
-<i-code-preview title="Vertical Alignment Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Vertical Alignment Utility Example">
 
 <span class="_align-baseline">baseline</span>
 <span class="_align-top">top</span>
@@ -40,7 +40,7 @@ You can use vertical align utilities to change the alignment of elements. Please
 ### Table Cell Alignment
 You can use vertical align utilities to change the alignment of table cells.
 
-<i-code-preview title="Vertical Alignment Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Vertical Alignment Utility Example">
 
 <table class="table -bordered" style="height: 100px;">
   <tbody>

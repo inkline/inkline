@@ -4,7 +4,7 @@ Inkline's Data Table allows you to expand a row to easily show more details abou
 ### Basic Expandable Rows
 To be able to expand a Data Table entry, you will need to provide an `expand` scoped slot to be rendered for each row.
 
-<i-code-preview title="Data Table Expanding" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Expanding">
 
 <i-datatable :columns="columns" :rows="rows">
     <template v-slot:expand="{ row, columns, expanded }">

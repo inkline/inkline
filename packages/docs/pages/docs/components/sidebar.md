@@ -6,7 +6,7 @@ Here’s an example on how to use the `<i-sidebar>` inside a dashboard layout. T
 
 To control the visibility of the sidebar when collapsed, we will use the `v-model` directive.
 
-<i-code-preview title="Sidebar Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+<i-code-preview title="Sidebar Example">
 
 <i-layout class="sidebar-layout-example -lg">
     <i-layout-header class="_padding-0">
@@ -71,7 +71,7 @@ export default {
 You're able to use the `size` modifier to control the size of your sidebar, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Sidebar Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+<i-code-preview title="Sidebar Sizes">
 
 <i-layout class="sidebar-layout-example -sm">
     <i-layout-header class="_padding-0">
@@ -214,7 +214,7 @@ export default {
 ### Variants
 Inkline includes two predefined sidebar styles. You can set the style of a `<i-sidebar>` using the `variant` property, which can have a value of `light` or `dark`. By default, modals use the `light` variant.
 
-<i-code-preview title="Sidebar Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+<i-code-preview title="Sidebar Variants">
 
 <i-layout class="sidebar-layout-example">
     <i-layout-header class="_padding-0">
@@ -317,7 +317,7 @@ export default {
 ### Placement
 You can easily place your sidebar on the right side of a layout by setting the `placement` property to `right`. By default, sidebars are on the left side.
 
-<i-code-preview title="Sidebar Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+<i-code-preview title="Sidebar Placement">
 
 <i-layout class="sidebar-layout-example">
     <i-layout-header class="_padding-0">
@@ -421,7 +421,7 @@ export default {
 ### Collapse Breakpoint
 You can control what breakpoint your sidebar will collapse at using the `collapse` property. By default, the sidebar will collapse on the `md` screen size.
 
-<i-code-preview title="Collapse Breakpoint Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+<i-code-preview title="Collapse Breakpoint Example">
 
 <i-layout class="sidebar-layout-example">
     <i-layout-header class="_padding-0">
@@ -488,7 +488,7 @@ Besides the breakpoint values, you can use a boolean value to set your sidebar t
 
 Setting a `collapse` value of `true` will set the sidebar to be always collapsible.
 
-<i-code-preview title="Always Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+<i-code-preview title="Always Collapsible Example">
 
 <i-layout class="sidebar-layout-example">
     <i-layout-header class="_padding-0">
@@ -551,7 +551,7 @@ export default {
 
 Setting a `collapse` value of `false` will set the sidebar to never be collapsible.
 
-<i-code-preview title="Never Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+<i-code-preview title="Never Collapsible Example">
 
 <i-layout class="sidebar-layout-example">
     <i-layout-header class="_padding-0">
@@ -615,7 +615,7 @@ You can set the collapsed sidebar position to `relative`, `absolute` or `fixed` 
 
 This property allows you to control whether the sidebar will affect the content that it is besides to when reaching the collapse breakpoint. 
 
-<i-code-preview title="Sidebar Collapse Position" link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+<i-code-preview title="Sidebar Collapse Position">
 
 <i-layout class="sidebar-layout-example">
     <i-layout-header class="_padding-0">
@@ -759,7 +759,7 @@ export default {
 
 ### API
 
-<i-api-preview title="Sidebar API" markup="i-sidebar" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Sidebar">
+<i-api-preview title="Sidebar API" markup="i-sidebar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Sidebar">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

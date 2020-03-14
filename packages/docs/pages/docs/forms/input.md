@@ -3,7 +3,7 @@
 
 ### Example
 
-<i-code-preview title="Input" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+<i-code-preview title="Input">
 
 <i-input v-model="inputValue" placeholder="Type something.." />
 
@@ -37,7 +37,7 @@ Value: <code>{{inputValue}}</code>
 ### Disabled State
 
 
-<i-code-preview title="Disabled Input" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+<i-code-preview title="Disabled Input">
 
 <i-input v-model="disabledInputValue" placeholder="Type something.." disabled />
 
@@ -65,7 +65,7 @@ export default {
 
 ### Clearable Input
 
-<i-code-preview title="Input" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+<i-code-preview title="Input">
 
 <i-input v-model="clearableInputValue" placeholder="Type something.." clearable />
 
@@ -96,7 +96,7 @@ Inkline allows you to easily add a prefix or suffix to your inputs. Using prefix
 your input type using an icon or text. 
 
 
-<i-code-preview title="Input" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+<i-code-preview title="Input">
 
 <i-input v-model="prefixInputValue" placeholder="Type something.." class="_margin-bottom-1">
     <i slot="prefix">@</i>
@@ -150,7 +150,7 @@ export default {
 You can add additional content such as select fields, buttons or plain text, to either side of the input by using the prepend and append slots.
 
 
-<i-code-preview title="Input Text Prepend and Append" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+<i-code-preview title="Input Text Prepend and Append">
 
 <i-input v-model="prependInputValue" placeholder="Type something.." class="_margin-bottom-1">
     <span slot="prepend">http://</span>
@@ -200,7 +200,7 @@ export default {
 </template>
 </i-code-preview>
 
-<i-code-preview title="Input Button Prepend and Append" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+<i-code-preview title="Input Button Prepend and Append">
 
 <i-input v-model="prependButtonInputValue" placeholder="Type something.." class="_margin-bottom-1">
     <i-button slot="prepend">Button</i-button>
@@ -250,7 +250,7 @@ export default {
 </template>
 </i-code-preview>
 
-<i-code-preview title="Input Button Prepend and Append" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+<i-code-preview title="Input Button Prepend and Append">
 
 <i-input v-model="prependDropdownInputValue" placeholder="Type something.." class="_margin-bottom-1">
     <i-dropdown slot="prepend">
@@ -375,7 +375,7 @@ export default {
 ### Sizes
 You're able to use the `size` modifier to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Input Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+<i-code-preview title="Input Sizes">
 
 <div class="_margin-bottom-1">
     <i-input size="sm" v-model="smInputValue" placeholder="Type something small.." />
@@ -421,7 +421,7 @@ export default {
 Behind the scenes, Inkline uses a native HTML `<input>` element, meaning that you can use the `type` property to define the type of the input, such as `text`, `password`, `date`, `email`, and so on.
 
 
-<i-code-preview title="Input Type" link="https://github.com/inkline/inkline/tree/master/src/components/Input">
+<i-code-preview title="Input Type">
 
 <div>
     <i-input type="password" v-model="passwordInputValue" placeholder="Enter your password.." />

@@ -4,7 +4,7 @@
 ### Example
 Media objects are useful for repetitive components that have a media element positioned alongside them, such as an user image or blog post image.
 
-<i-code-preview title="Media Example" link="https://github.com/inkline/inkline/tree/master/src/components/Media">
+<i-code-preview title="Media Example">
 
 <i-media>
     <img slot="image" src="/images/placeholder-100x100.jpg" alt="Media Image" />
@@ -33,7 +33,7 @@ Media objects are useful for repetitive components that have a media element pos
 ### Nesting
 Media components can be nested inside one another to create a parent-child relationship between related components.
 
-<i-code-preview title="Media Nesting" link="https://github.com/inkline/inkline/tree/master/src/components/Media">
+<i-code-preview title="Media Nesting">
 
 <i-media>
     <img slot="image" src="/images/placeholder-100x100.jpg" alt="Media Image" />
@@ -76,7 +76,7 @@ Media components can be nested inside one another to create a parent-child relat
 ### Alignment
 The media element in a media component can be aligned with flexbox helper classes to the top (default), middle, or end of the `.body` content.
 
-<i-code-preview title="Media Alignment Start" link="https://github.com/inkline/inkline/tree/master/src/components/Media">
+<i-code-preview title="Media Alignment Start">
 
 <i-media>
     <img class="_align-self-start" slot="image" height="80" width="80" src="/images/placeholder-100x100.jpg" alt="Media Image" />
@@ -101,7 +101,7 @@ The media element in a media component can be aligned with flexbox helper classe
 </template>
 </i-code-preview>
 
-<i-code-preview title="Media Alignment Center" link="https://github.com/inkline/inkline/tree/master/src/components/Media">
+<i-code-preview title="Media Alignment Center">
 
 <i-media>
     <img class="_align-self-center" slot="image" height="80" width="80" src="/images/placeholder-100x100.jpg" alt="Media Image" />
@@ -126,7 +126,7 @@ The media element in a media component can be aligned with flexbox helper classe
 </template>
 </i-code-preview>
 
-<i-code-preview title="Media Alignment End" link="https://github.com/inkline/inkline/tree/master/src/components/Media">
+<i-code-preview title="Media Alignment End">
 
 <i-media>
     <img class="_align-self-end" slot="image" height="80" width="80" src="/images/placeholder-100x100.jpg" alt="Media Image" />
@@ -154,7 +154,7 @@ The media element in a media component can be aligned with flexbox helper classe
 
 ### API
 
-<i-api-preview title="Media API" default-active="slots" markup="i-media" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Media">
+<i-api-preview title="Media API" default-active="slots" markup="i-media" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Media">
     <template slot="slots">
         <i-table bordered responsive class="_margin-bottom-0">
             <thead>

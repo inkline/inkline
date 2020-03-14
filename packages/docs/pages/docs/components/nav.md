@@ -4,7 +4,7 @@
 ### Example
 Navigation components make use of the base `<i-nav>` component for building all types of navigation styles. 
 
-<i-code-preview title="Nav Example" link="https://github.com/inkline/inkline/tree/master/src/components/Nav">
+<i-code-preview title="Nav Example">
 
 <i-nav>
     <i-nav-item href="https://inkline.io" onclick="return false;">Link</i-nav-item>
@@ -32,7 +32,7 @@ Behind the scenes, the `<i-nav-item>` is converted into a `<router-link>` if it 
 ### Vertical
 You can stack nav items into a vertical navigation component by setting the `vertical` property on your `<i-nav>`.
 
-<i-code-preview title="Vertical Nav" link="https://github.com/inkline/inkline/tree/master/src/components/Nav">
+<i-code-preview title="Vertical Nav">
 
 <i-nav vertical>
     <i-nav-item href="https://inkline.io" onclick="return false;">Link</i-nav-item>
@@ -58,7 +58,7 @@ You can stack nav items into a vertical navigation component by setting the `ver
 ### Sizes
 You're able to use the `size` modifier to control the size of your navs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Nav Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Nav">
+<i-code-preview title="Nav Sizes">
 
 <div>
 <i-nav size="sm">
@@ -117,7 +117,7 @@ You're able to use the `size` modifier to control the size of your navs, using o
 ### Active State
 You can control the active state of your `<i-nav-item>` using the `active` property. If you're providing a `:to` property, converting it into a `router-link`, you can use the `active-class` and `exact-active-class` properties and set them to `-active`.
 
-<i-code-preview title="Nav Active State" link="https://github.com/inkline/inkline/tree/master/src/components/Nav">
+<i-code-preview title="Nav Active State">
 
 <div>
 <i-nav>
@@ -142,7 +142,7 @@ You can control the active state of your `<i-nav-item>` using the `active` prope
 
 ### API
 
-<i-api-preview title="Nav API" expanded markup="i-nav" link="https://github.com/inkline/inkline/tree/master/src/components/Nav">
+<i-api-preview title="Nav API" expanded markup="i-nav" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Nav">
     <template slot="props">
         <i-table bordered responsive>
             <thead>
@@ -190,7 +190,7 @@ You can control the active state of your `<i-nav-item>` using the `active` prope
     </template>
 </i-api-preview>
 
-<i-api-preview title="Nav Item API" markup="i-nav-item" expanded link="https://github.com/inkline/inkline/tree/master/src/components/NavItem">
+<i-api-preview title="Nav Item API" markup="i-nav-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/NavItem">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

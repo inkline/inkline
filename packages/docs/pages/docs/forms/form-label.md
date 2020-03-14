@@ -4,7 +4,7 @@
 ## Example
 You can add a label to your input by grouping an `<i-form-label>` and any input component inside an `<i-form-group>`. 
 
-<i-code-preview title="Basic Form Label" link="https://github.com/inkline/inkline/tree/master/src/components/FormLabel">
+<i-code-preview title="Basic Form Label">
 
 <i-form-group>
     <i-form-label>Input Label Default</i-form-label>
@@ -39,7 +39,7 @@ export default {
 ### Position
 You can add labels to either side of your input using the `label` slot, together with the optional `label-position` property.
 
-<i-code-preview title="Form Label Position" link="https://github.com/inkline/inkline/tree/master/src/components/FormLabel">
+<i-code-preview title="Form Label Position">
 
 <i-form-group>
     <i-form-label>Input Label Default</i-form-label>
@@ -96,7 +96,7 @@ export default {
 ### Size
 You're able to use the `size` property to control the size of your form labels, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. Setting the size on a `<i-form-group>` will also affect form labels.
 
-<i-code-preview title="Form Label Size" link="https://github.com/inkline/inkline/tree/master/src/components/FormLabel">
+<i-code-preview title="Form Label Size">
 
 <i-form-group>
     <i-form-label size="sm">Input Label Small</i-form-label>

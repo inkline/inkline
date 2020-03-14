@@ -5,7 +5,7 @@ Width and height utilities provide support for `25%`, `50%`, `75%`, `100%`, and 
 
 ### Width
 
-<i-code-preview title="Width Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Width Utility Example">
 
 <div class="_width-25 _padding-1 _background-gray-20">25% Width</div>
 <div class="_width-50 _padding-1 _background-gray-20">50% Width</div>
@@ -36,7 +36,7 @@ Width and height utilities provide support for `25%`, `50%`, `75%`, `100%`, and 
 
 ### Height
 
-<i-code-preview title="Height Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Height Utility Example">
 
 <div style="height: 200px;" class="_display-flex">
 <div class="_height-25 _padding-1 _background-gray-20" style="width: 20%;">25% Height</div>
@@ -69,7 +69,7 @@ Width and height utilities provide support for `25%`, `50%`, `75%`, `100%`, and 
 
 ### Max Width
 
-<i-code-preview title="Max Width Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Max Width Utility Example">
 
 <div class="_max-width-100 _padding-1 _background-gray-20">100% Max Width</div>
 
@@ -84,7 +84,7 @@ Width and height utilities provide support for `25%`, `50%`, `75%`, `100%`, and 
 
 ### Max Height
 
-<i-code-preview title="Max Height Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Max Height Utility Example">
 
 <div style="height: 200px;" class="_display-flex">
 <div class="_max-height-100 _padding-1 _background-gray-20" style="width: 25%;">100% Max Height</div>

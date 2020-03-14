@@ -4,7 +4,7 @@
 ### Example
 Here’s an example of the basic components included in a  `<i-navbar>` that automatically collapses responsively.
 
-<i-code-preview title="Navbar Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Navbar Example">
 
 <i-navbar>
     <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
@@ -51,7 +51,7 @@ Here’s an example of the basic components included in a  `<i-navbar>` that aut
 You're able to use the `size` modifier to control the size of your navbar, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Navbar Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Navbar Sizes">
 
 <i-navbar size="sm" class="_margin-bottom-1">
     <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
@@ -132,7 +132,7 @@ The default size is set to `md`.
 ### Variants
 Inkline includes two predefined navbar styles. You can set the style of a `<i-navbar>` using the `variant` property, which can have a value of `light` or `dark`. By default, modals use the `light` variant.
 
-<i-code-preview title="Navbar Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Navbar Variants">
 
 <i-navbar variant="light" class="_margin-bottom-1">
     <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
@@ -188,7 +188,7 @@ Inkline includes two predefined navbar styles. You can set the style of a `<i-na
 ### Dropdown
 You can use an `<i-dropdown>` component inside the `<i-navbar-items>` or `<i-nav>` component to create a contextual navbar menu. 
 
-<i-code-preview title="Navbar Dropdown" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar" style="z-index: 2;">
+<i-code-preview title="Navbar Dropdown">
 
 <i-navbar>
     <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
@@ -246,7 +246,7 @@ You can use an `<i-dropdown>` component inside the `<i-navbar-items>` or `<i-nav
 ### Nav Placement
 You can position the `<i-nav>` component to the `start`, `end`, or `center` of the `<i-navbar-items>` component using flexbox utilities.
 
-<i-code-preview title="Navbar Nav Placement" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Navbar Nav Placement">
 
 <i-navbar class="_margin-bottom-1">
     <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
@@ -326,7 +326,7 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
 ### Collapse Breakpoint
 You can control what breakpoint your navbar will collapse at using the `collapse` property. By default, the navbar will collapse on the `md` screen size.
 
-<i-code-preview title="Collapse Breakpoint Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Collapse Breakpoint Example">
 
 <i-navbar collapse="lg">
     <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
@@ -361,7 +361,7 @@ Besides the breakpoint values, you can use a boolean value to set your navbar to
 
 Setting a `collapse` value of `true` will set the navbar to be always collapsible.
 
-<i-code-preview title="Always Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Always Collapsible Example">
 
 <i-navbar :collapse="true">
     <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
@@ -392,7 +392,7 @@ Setting a `collapse` value of `true` will set the navbar to be always collapsibl
 
 Setting a `collapse` value of `false` will set the navbar to never be collapsible.
 
-<i-code-preview title="Never Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Never Collapsible Example">
 
 <i-navbar :collapse="false">
     <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
@@ -425,7 +425,7 @@ Setting a `collapse` value of `false` will set the navbar to never be collapsibl
 
 Sometimes, it's necessary to control whether the Navbar is collapsed or not programmatically. You can use the `v-model` directive to control whether the Navbar should be collapsed or not.
 
-<i-code-preview title="Manual Navbar Collapse Example" link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-code-preview title="Manual Navbar Collapse Example">
 
 <i-button v-on:click="collapsed = !collapsed">
     Toggle Collapsed
@@ -462,7 +462,7 @@ Sometimes, it's necessary to control whether the Navbar is collapsed or not prog
 
 ### API
 
-<i-api-preview title="Navbar API" markup="i-navbar" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Navbar">
+<i-api-preview title="Navbar API" markup="i-navbar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Navbar">
     <template slot="props">
         <i-table bordered responsive>
             <thead>
@@ -545,7 +545,7 @@ Sometimes, it's necessary to control whether the Navbar is collapsed or not prog
     </template>
 </i-api-preview>
 
-<i-api-preview title="Navbar Brand API" markup="i-navbar-brand" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/src/components/NavbarBrand">
+<i-api-preview title="Navbar Brand API" markup="i-navbar-brand" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/NavbarBrand">
     <template slot="slots">
         <i-table bordered responsive class="_margin-bottom-0">
             <thead>
@@ -564,7 +564,7 @@ Sometimes, it's necessary to control whether the Navbar is collapsed or not prog
     </template>
 </i-api-preview>
 
-<i-api-preview title="Navbar Items API" markup="i-navbar-items" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/src/components/NavbarItems">
+<i-api-preview title="Navbar Items API" markup="i-navbar-items" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/NavbarItems">
     <template slot="slots">
         <i-table bordered responsive class="_margin-bottom-0">
             <thead>

@@ -4,7 +4,7 @@
 ### Adding Border
 You can use border utilities to add borders on all sides or individually on an element.
 
-<i-code-preview title="Border Addition Utilities" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Border Addition Utilities">
 
 <div class="border-square _border"></div>
 <div class="border-square _border-top"></div>
@@ -28,7 +28,7 @@ You can use border utilities to add borders on all sides or individually on an e
 ### Removing Border
 You can use border utilities to remove borders on all sides or individually on an element.
 
-<i-code-preview title="Border Removal Utilities" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Border Removal Utilities">
 
 <div class="border-square _border _border-0"></div>
 <div class="border-square _border _border-top-0"></div>
@@ -53,7 +53,7 @@ You can use border utilities to remove borders on all sides or individually on a
 ### Border Color
 You can use border addition and removal utilities together with border color utilities to set their color.
 
-<i-code-preview title="Border Removal Utilities" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Border Removal Utilities">
 
 <div><strong><small>Brand</small></strong></div>
 <div class="border-square _border _border-color-primary"></div>
@@ -115,7 +115,7 @@ Position specific border colors are also available. Use `._border-{position}-col
 ### Border Radius
 You can use border radius utilities to add rounded corners to your elements.
 
-<i-code-preview title="Border Radius Utilities" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Border Radius Utilities">
 
 <div class="border-square _border _rounded"></div>
 <div class="border-square _border _rounded-top"></div>

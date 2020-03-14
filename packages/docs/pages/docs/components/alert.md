@@ -7,7 +7,7 @@ use the `variant` property.
 
 By default, alerts are set to have `width: 100%`, fully spanning the width of the parent container.
 
-<i-code-preview title="Alert Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Alert">
+<i-code-preview title="Alert Variants">
 
 <div class="_margin-bottom-1">
     <i-alert variant="primary">
@@ -81,7 +81,7 @@ You're able to use the `size` modifier to control the text and spacing size of y
 
 The default size is set to `md`.
 
-<i-code-preview title="Alert Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Alert">
+<i-code-preview title="Alert Sizes">
 
 <div class="_margin-bottom-1">
     <i-alert size="sm">
@@ -123,7 +123,7 @@ The default size is set to `md`.
 ### Elements
 Your alerts accept any kind of content, giving you the flexibility to create good looking contextual messages.
 
-<i-code-preview title="Alert Elements" link="https://github.com/inkline/inkline/tree/master/src/components/Alert">
+<i-code-preview title="Alert Elements">
 
 <div>
     <i-alert>
@@ -153,7 +153,7 @@ You can add an icon to the `<i-alert>` component by providing an `icon` slot.
 
 The following example makes use of the bundled Inkline icons, but you can use any icon font that you like:
 
-<i-code-preview title="Alert Icon" link="https://github.com/inkline/inkline/tree/master/src/components/Alert">
+<i-code-preview title="Alert Icon">
 
 <i-alert variant="info" class="_margin-bottom-1">
     <template slot="icon"><i class="inkline-icon -info"></i></template>
@@ -195,7 +195,7 @@ The following example makes use of the bundled Inkline icons, but you can use an
 ### Dismissible
 You can dismiss alerts using a combination of the provided `dismissible` and `show` properties. The `dismissible` property will be used to show the dismiss icon. The `show` property will show or hide the alert, resetting dismissed alerts when needed.
 
-<i-code-preview title="Dismissible Alert" link="https://github.com/inkline/inkline/tree/master/src/components/Alert">
+<i-code-preview title="Dismissible Alert">
 
 <i-alert dismissible :show="visible" variant="primary">
     <p>Whoa! Nicely done.</p>

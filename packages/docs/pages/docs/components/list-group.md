@@ -4,7 +4,7 @@
 ### Example
 List groups support any content inside of them. Take advantage of their flexibility to display list of items properly, as well as vertical navigation.
 
-<i-code-preview title="List Group Example" link="https://github.com/inkline/inkline/tree/master/src/components/ListGroup">
+<i-code-preview title="List Group Example">
 
 <i-list-group>
     <i-list-group-item active>Active</i-list-group-item>
@@ -34,7 +34,7 @@ Behind the scenes, the `<i-list-group-item>` is converted into a `<router-link>`
 ### Sizes
 You're able to use the `size` modifier to control the padding of your list groups, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="List Group Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/ListGroup">
+<i-code-preview title="List Group Sizes">
 
 <div>
 <i-list-group size="sm">
@@ -92,7 +92,7 @@ You're able to use the `size` modifier to control the padding of your list group
 ### Active State
 You can control the active state of your `<i-list-group-item>` using the `active` property. If you're providing a `:to` property, converting it into a `router-link`, you can use the `active-class` and `exact-active-class` properties and set them to `-active`.
 
-<i-code-preview title="List Group Active State" link="https://github.com/inkline/inkline/tree/master/src/components/ListGroup">
+<i-code-preview title="List Group Active State">
 
 <div>
 <i-list-group>
@@ -117,7 +117,7 @@ You can control the active state of your `<i-list-group-item>` using the `active
 ### Disabled State
 You can control the disabled state of your `<i-list-group-item>` using the `disabled` property. 
 
-<i-code-preview title="List Group Disabled State" link="https://github.com/inkline/inkline/tree/master/src/components/ListGroup">
+<i-code-preview title="List Group Disabled State">
 
 <div>
 <i-list-group>
@@ -141,7 +141,7 @@ You can control the disabled state of your `<i-list-group-item>` using the `disa
 ### List Group Border
 You can disable the border of your list group by setting the `bordered` property to false. 
 
-<i-code-preview title="List Group Border" link="https://github.com/inkline/inkline/tree/master/src/components/ListGroup">
+<i-code-preview title="List Group Border">
 
 <div>
 <i-list-group :bordered="false">
@@ -169,7 +169,7 @@ You can disable the border of your list group by setting the `bordered` property
 ### Item Content
 The `<i-list-group-item>` accepts any type of content, allowing you to create large sized list group items.
 
-<i-code-preview title="List Group Item Content" link="https://github.com/inkline/inkline/tree/master/src/components/ListGroup">
+<i-code-preview title="List Group Item Content">
 
 <div>
 <i-list-group>
@@ -213,7 +213,7 @@ The `<i-list-group-item>` accepts any type of content, allowing you to create la
 
 ### API
 
-<i-api-preview title="List Group API" expanded markup="i-list-group" link="https://github.com/inkline/inkline/tree/master/src/components/ListGroup">
+<i-api-preview title="List Group API" expanded markup="i-list-group" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ListGroup">
     <template slot="props">
         <i-table bordered responsive>
             <thead>
@@ -261,7 +261,7 @@ The `<i-list-group-item>` accepts any type of content, allowing you to create la
     </template>
 </i-api-preview>
 
-<i-api-preview title="List Group Item API" markup="i-list-group-item" expanded link="https://github.com/inkline/inkline/tree/master/src/components/ListGroupItem">
+<i-api-preview title="List Group Item API" markup="i-list-group-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ListGroupItem">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

@@ -8,7 +8,7 @@ Just like Arrays, Objects can be manipulated and kept up to date using a custom 
 
 <code>this.form.group.set(name, item, options)</code>
 
-<i-code-preview title="Form Schema Object Group Operations" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js" class="_padding-bottom-0">
+<i-code-preview title="Form Schema Object Group Operations">
 <i-form :schema="objectForm">
     <i-form-group>
         <i-input :schema="objectForm.fullName" v-model="objectForm.fullName.value" placeholder="Enter your name.." />
@@ -93,7 +93,7 @@ Inkline provides you with custom implementations for Array group operations usin
 <code>this.form.group.add(item, options)</code><br/>
 <code>this.form.group.remove(index, deleteCount, item, options)</code>
 
-<i-code-preview title="Form Schema Array Group Operations" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js" class="_padding-bottom-0">
+<i-code-preview title="Form Schema Array Group Operations">
 <i-form :schema="listForm">
     <i-form-group v-for="item in listForm.items" :key="item.name">
         <i-input :schema="item" v-model="item.value" placeholder="Type something.." />

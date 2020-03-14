@@ -10,7 +10,7 @@ They are based on flexbox, offering easy alignment and mixing well with other co
 
 By default, cards are set to have `width: 100%`, fully spanning the width of the parent container. 
 
-<i-code-preview title="Card Example" link="https://github.com/inkline/inkline/tree/master/src/components/Card">
+<i-code-preview title="Card Example">
 
 <i-row>
     <i-column md="6">
@@ -46,7 +46,7 @@ By default, cards are set to have `width: 100%`, fully spanning the width of the
 ### Body
 The building block of a card is the card body. All the content placed in the default component slot will be placed inside the body.
 
-<i-code-preview title="Card Body" link="https://github.com/inkline/inkline/tree/master/src/components/Card">
+<i-code-preview title="Card Body">
 
 <i-row>
     <i-column md="6">
@@ -70,7 +70,7 @@ The building block of a card is the card body. All the content placed in the def
 ### Header and Footer
 Optionally, you can provide a header or a footer for your cards.
 
-<i-code-preview title="Card Header and Footer" link="https://github.com/inkline/inkline/tree/master/src/components/Card">
+<i-code-preview title="Card Header and Footer">
 
 <i-row>
     <i-column md="6">
@@ -98,7 +98,7 @@ Optionally, you can provide a header or a footer for your cards.
 ### Card Images
 You can provide an image at the top of the card, using the `image` slot.
 
-<i-code-preview title="Card Image" link="https://github.com/inkline/inkline/tree/master/src/components/Card">
+<i-code-preview title="Card Image">
 
 <i-row>
     <i-column md="6">
@@ -125,7 +125,7 @@ You can provide an image at the top of the card, using the `image` slot.
 You're able to use the `size` modifier to control the text and spacing size of your cards, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Card Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Card">
+<i-code-preview title="Card Sizes">
 
 <i-row class="_margin-bottom-1">
     <i-column md="6">
@@ -173,7 +173,7 @@ The default size is set to `md`.
 ### Variants
 Inkline includes several predefined card styles that you can use within your application. You can apply a style using the `variant` property.
 
-<i-code-preview title="Card Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Card" class="_padding-bottom-0">
+<i-code-preview title="Card Variants">
 
 <i-row>
     <i-column md="6" class="_margin-bottom-1">
@@ -292,7 +292,7 @@ Inkline includes several predefined card styles that you can use within your app
 
 ### API
 
-<i-api-preview markup="i-card" title="Card API" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Card">
+<i-api-preview markup="i-card" title="Card API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Card">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

@@ -46,7 +46,7 @@ export default {
 ### Usage
 Let's put it all together. The `columns` defined above, together with the `rows` data will render the following data table:
 
-<i-code-preview title="Data Table Example" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Example">
 <i-datatable :columns="columns" :rows="rows" />
 <template slot="html">
 
@@ -105,7 +105,7 @@ export default {
 }
 ~~~
 
-<i-code-preview title="Data Table Property Nesting" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Property Nesting">
 <i-datatable :columns="columnsNested" :rows="rows" />
 <template slot="html">
 
