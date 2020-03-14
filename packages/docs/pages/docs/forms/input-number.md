@@ -4,7 +4,7 @@
 ### Example
 
 
-<i-code-preview title="Number Input" link="https://github.com/inkline/inkline/tree/master/src/components/InputNumber">
+<i-code-preview title="Number Input">
 
 <i-input-number v-model="inputValue" placeholder="Type something.." />
 
@@ -38,7 +38,7 @@ Value: <code>{{inputValue}}</code>
 ### Disabled State
 
 
-<i-code-preview title="Disabled Number Input" link="https://github.com/inkline/inkline/tree/master/src/components/InputNumber">
+<i-code-preview title="Disabled Number Input">
 
 <i-input-number v-model="disabledInputValue" placeholder="Type something.." disabled />
 
@@ -68,7 +68,7 @@ export default {
 ### Minimum and Maximum Value
 
 
-<i-code-preview title="Number Input Minimum and Maximum Value" link="https://github.com/inkline/inkline/tree/master/src/components/InputNumber">
+<i-code-preview title="Number Input Minimum and Maximum Value">
 
 <i-input-number v-model="minMaxInputValue" :min="1" :max="10" placeholder="Type something.." />
 
@@ -104,7 +104,7 @@ Value: <code>{{minMaxInputValue}}</code>
 You can set the increment / decrement step by using the `step` property. The step is `1` by default.
 
 
-<i-code-preview title="Number Input Step Size" link="https://github.com/inkline/inkline/tree/master/src/components/InputNumber">
+<i-code-preview title="Number Input Step Size">
 
 <i-input-number v-model="stepInputValue" :step="10" placeholder="Type something.." />
 
@@ -140,7 +140,7 @@ Value: <code>{{stepInputValue}}</code>
 You can set the number precision using the `precision` property, allowing you to enter floating point numbers into the input.
 
 
-<i-code-preview title="Number Input Precision" link="https://github.com/inkline/inkline/tree/master/src/components/InputNumber">
+<i-code-preview title="Number Input Precision">
 
 <i-input-number v-model="precisionInputValue" :precision="2" placeholder="Type something.." />
 
@@ -176,7 +176,7 @@ Inkline allows you to easily add a prefix or suffix to your inputs. Using prefix
 your input type using an icon or text. 
 
 
-<i-code-preview title="Number Input Prefix and Suffix" link="https://github.com/inkline/inkline/tree/master/src/components/InputNumber">
+<i-code-preview title="Number Input Prefix and Suffix">
 
 <i-input-number v-model="prefixInputValue" placeholder="Type something.." class="_margin-bottom-1">
     <i slot="prefix" class="form-input-icon">@</i>
@@ -233,7 +233,7 @@ export default {
 You can add additional content such as select fields, buttons or plain text, to either side of the input by using the prepend and append slots.
 
 
-<i-code-preview title="Number Input Prepend" link="https://github.com/inkline/inkline/tree/master/src/components/InputNumber">
+<i-code-preview title="Number Input Prepend">
 
 <i-input-number v-model="prependInputValue" placeholder="Type something.." class="_margin-bottom-1">
     <span slot="prepend" class="form-input-prepend">http://</span>
@@ -288,7 +288,7 @@ export default {
 ### Sizes
 You're able to use the `size` modifier to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Number Input Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/InputNumber">
+<i-code-preview title="Number Input Sizes">
 
 <i-form-group>
     <i-input-number size="sm" v-model="smInputValue" placeholder="Type something small.." />

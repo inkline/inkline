@@ -4,7 +4,7 @@
 ### Examples
 Separators are automatically added in CSS through `::before` and `content`. You can change the separator by changing the `$breadcrumb-separator` Sass variable.
 
-<i-code-preview title="Breadcrumbs Example" link="https://github.com/inkline/inkline/tree/master/src/components/Breadcrumb">
+<i-code-preview title="Breadcrumbs Example">
 
 <i-breadcrumb>
     <i-breadcrumb-item onclick="return false;">Home</i-breadcrumb-item>
@@ -39,7 +39,7 @@ Separators are automatically added in CSS through `::before` and `content`. You 
 ### Dynamically Generated
 You can generate and bind breadcrumbs from your JS data using a combination of `v-for` and `v-bind` as follows:
 
-<i-code-preview title="Dynamically Generated Breadcrumbs" link="https://github.com/inkline/inkline/tree/master/src/components/Breadcrumb">
+<i-code-preview title="Dynamically Generated Breadcrumbs">
 
 <i-breadcrumb>
     <i-breadcrumb-item v-bind="item" v-for="item in items" :key="item.title" onclick="return false;">{{item.title}}</i-breadcrumb-item>
@@ -79,7 +79,7 @@ export default {
 ### Sizes
 You're able to use the `size` modifier to control the text and spacing size of your breadcrumb, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Breadcrumbs Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Breadcrumb">
+<i-code-preview title="Breadcrumbs Sizes">
 
 <i-breadcrumb size="sm">
     <i-breadcrumb-item href="/" onclick="return false;">Sizes</i-breadcrumb-item>
@@ -121,7 +121,7 @@ You're able to use the `size` modifier to control the text and spacing size of y
 
 ### API
 
-<i-api-preview title="Breadcrumb API" expanded markup="i-breadcrumb" link="https://github.com/inkline/inkline/tree/master/src/components/Breadcrumb">
+<i-api-preview title="Breadcrumb API" expanded markup="i-breadcrumb" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Breadcrumb">
     <template slot="props">
         <i-table bordered responsive>
             <thead>
@@ -162,7 +162,7 @@ You're able to use the `size` modifier to control the text and spacing size of y
     </template>
 </i-api-preview>
 
-<i-api-preview title="Breadcrumb Item API" expanded markup="i-breadcrumb-item" link="https://github.com/inkline/inkline/tree/master/src/components/BreadcrumbItem">
+<i-api-preview title="Breadcrumb Item API" expanded markup="i-breadcrumb-item" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/BreadcrumbItem">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

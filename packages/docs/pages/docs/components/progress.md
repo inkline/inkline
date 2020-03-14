@@ -4,7 +4,7 @@
 ### Example
 Progress components are built with two components: a wrapper `<i-progress>` and at least one `<i-progress-bar>`. You can set the width of a progress bar by setting its `value` property.
 
-<i-code-preview title="Progress Example" link="https://github.com/inkline/inkline/tree/master/src/components/Progress">
+<i-code-preview title="Progress Example">
 
 <i-progress>
     <i-progress-bar value="65" />
@@ -25,7 +25,7 @@ Progress components are built with two components: a wrapper `<i-progress>` and 
 You're able to use the `size` modifier to control the size of your progress, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Progress Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Progress">
+<i-code-preview title="Progress Sizes">
 
 <div class="_margin-bottom-1">
     <i-progress size="sm">
@@ -70,7 +70,7 @@ The default size is set to `md`.
 ### Variants
 Inkline includes multiple progress styles. You can change the style of a`<i-progress>` to set the background using the `variant` property.
 
-<i-code-preview title="Progress Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Progress">
+<i-code-preview title="Progress Variants">
 
 <div class="_margin-bottom-1">
     <i-progress variant="light">
@@ -104,7 +104,7 @@ Inkline includes multiple progress styles. You can change the style of a`<i-prog
 ### Bar Variants
 Inkline includes multiple progress styles. You can change the style of a `<i-progress-bar>` to set the bar color using the `variant` property.
 
-<i-code-preview title="Progress Bar Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Progress">
+<i-code-preview title="Progress Bar Variants">
 
 <div class="_margin-bottom-1">
     <i-progress>
@@ -206,7 +206,7 @@ Inkline includes multiple progress styles. You can change the style of a `<i-pro
 ### Value
 Inkline allows you to set a `min` and `max` modifier to calculate the progress based on a meaningful value. The new `min` will represent `0%` and the `max` will represent `100%`.
 
-<i-code-preview title="Progress Value" link="https://github.com/inkline/inkline/tree/master/src/components/Progress">
+<i-code-preview title="Progress Value">
 
 <div class="_margin-bottom-1">
     <i-progress>
@@ -228,7 +228,7 @@ Inkline allows you to set a `min` and `max` modifier to calculate the progress b
 ### Stacked Bars
 You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to stack them, adding them up to a `100%` percentage.
 
-<i-code-preview title="Stacked Progress Bars Example" link="https://github.com/inkline/inkline/tree/master/src/components/Progress">
+<i-code-preview title="Stacked Progress Bars Example">
 
 <div class="_margin-bottom-1">
     <i-progress>
@@ -254,7 +254,7 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
 
 ### API
 
-<i-api-preview title="Progress API" markup="i-progress" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Progress">
+<i-api-preview title="Progress API" markup="i-progress" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Progress">
     <template slot="props">
         <i-table bordered responsive>
             <thead>
@@ -302,7 +302,7 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
     </template>
 </i-api-preview>
 
-<i-api-preview title="Progress Bar API" markup="i-progress-bar" expanded link="https://github.com/inkline/inkline/tree/master/src/components/ProgressBar">
+<i-api-preview title="Progress Bar API" markup="i-progress-bar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ProgressBar">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

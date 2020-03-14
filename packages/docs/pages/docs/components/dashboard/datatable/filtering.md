@@ -4,7 +4,7 @@ Inkline's Data Table rows are easily and efficiently filtered using a fuzzy sear
 ### Default Filtering
 Filtering is enabled by default and can be changed using the `filterable` attribute if needed.
 
-<i-code-preview title="Data Table Default Filtering" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Default Filtering">
 <i-datatable :columns="columns" :rows="rows" />
 <template slot="html">
 
@@ -63,7 +63,7 @@ export default {
 }
 ~~~
 
-<i-code-preview title="Data Table Selective Filtering" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Selective Filtering">
 <i-datatable :columns="selectiveFilteringColumns" :rows="rows" :filtering="filteringConfig" />
 <template slot="html">
 
@@ -158,7 +158,7 @@ The `filtering` event occurs whenever the search input is updated.
 </i-alert>
 
 
-<i-code-preview title="Data Table Async Filtering" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Async Filtering">
 <i-datatable :columns="columns" :rows="rowsAsync" :rows-count="rowsCount" @update="onUpdate"></i-datatable>
 <template slot="html">
 

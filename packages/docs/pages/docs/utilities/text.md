@@ -4,7 +4,7 @@
 ### Text Alignment
 Use text alignment utilities to easily align text in components.
 
-<i-code-preview title="Justify Alignment Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Justify Alignment Example">
 <p class="_text-justify">
     Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
 </p>
@@ -17,7 +17,7 @@ Use text alignment utilities to easily align text in components.
 </template>
 </i-code-preview>
 
-<i-code-preview title="Text Alignment Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Text Alignment Example">
 <p class="_text-left">This text is left aligned.</p>
 <p class="_text-center">This text is center aligned.</p>
 <p class="_text-right">This text is right aligned.</p>
@@ -38,7 +38,7 @@ Use text alignment utilities to easily align text in components.
 
 `For left, right, and center alignment, Inkline provides you with responsive classes that use the same breakpoints as the grid system.
 
-<i-code-preview title="Responsive Text Alignment Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Responsive Text Alignment Example">
 <p class="_text-center-xs">Center aligned text on xs viewport size.</p>
 <p class="_text-center-sm">Center aligned text on sm viewport size.</p>
 <p class="_text-center-md">Center aligned text on md viewport size.</p>
@@ -60,7 +60,7 @@ Use text alignment utilities to easily align text in components.
 ### Text wrapping and overflow
 You can wrap text using the `._text-wrap` utility class.
 
-<i-code-preview title="Text Wrap Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Text Wrap Example">
 <p class="_background-gray-30 _text-wrap" style="width: 100px;">This text should wrap.</p>
 <template slot="html">
 
@@ -73,7 +73,7 @@ You can wrap text using the `._text-wrap` utility class.
 
 You can also prevent text from wrapping with a `._text-nowrap` utility class.
 
-<i-code-preview title="Text No Wrap Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Text No Wrap Example">
 <p class="_background-gray-30 _text-nowrap" style="width: 100px;">This text should overflow the parent.</p>
 <template slot="html">
 
@@ -88,7 +88,7 @@ Text wrapping utilities also come with breakpoint-specific classes, same as text
 
 For longer content, adding the `._text-truncate` utility class will truncate the text with an ellipsis. Truncation requires `display: inline-block` or `display: block`.
 
-<i-code-preview title="Text Truncation Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Text Truncation Example">
 <div class="_display-block _text-truncate" style="max-width: 180px;">
 This block text is truncated.
 </div>
@@ -114,7 +114,7 @@ This inline text is truncated.
 ### Word break
 Prevent long strings of text from breaking your layout by using `._text-break`. Behind the scenes, it uses `overflow-wrap: break-word` and `word-break: break-word` for IE & Edge compatibility.
 
-<i-code-preview title="Word Break Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Word Break Example">
 <p class="_text-break">Thisisaverylongwordwhichwillbreakourlayoutifwedonotusethetextbreakutilityclass</p>
 <template slot="html">
 
@@ -128,7 +128,7 @@ Prevent long strings of text from breaking your layout by using `._text-break`. 
 ### Text transform
 You can transform text in components using text capitalization classes.
 
-<i-code-preview title="Text Transform Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Text Transform Example">
 <p class="_text-lowercase">This text is lowercase.</p>
 <p class="_text-uppercase">This text is uppercase.</p>
 <p class="_text-capitalize">This text is capitalized.</p>
@@ -150,7 +150,7 @@ You can transform text in components using text capitalization classes.
 ### Font weights and italics
 You can change the weight (boldness) of your text italicize it using these utility classes.
 
-<i-code-preview title="Font Weight Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Font Weight Example">
 <p class="_font-weight-extralight">Extralight text.</p>
 <p class="_font-weight-light">Light text.</p>
 <p class="_font-weight-normal">Normal text.</p>
@@ -181,7 +181,7 @@ You can change the weight (boldness) of your text italicize it using these utili
 </template>
 </i-code-preview>
 
-<i-code-preview title="Relative Font Weight Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Relative Font Weight Example">
 <p class="_font-weight-lighter">Lighter weight text (relative to the parent element).</p>
 <p class="_font-weight-bolder">Bolder weight text (relative to the parent element).</p>
 <template slot="html">
@@ -196,7 +196,7 @@ You can change the weight (boldness) of your text italicize it using these utili
 </template>
 </i-code-preview>
 
-<i-code-preview title="Italic Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Italic Example">
 <p class="_font-italic">Italic text.</p>
 <template slot="html">
 
@@ -210,7 +210,7 @@ You can change the weight (boldness) of your text italicize it using these utili
 ### Monospace
 Change your text to be monospaced using the `._text-monospace` utility.
 
-<i-code-preview title="Monospace Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Monospace Example">
 <p class="_text-monospace">This text is monospace.</p>
 <template slot="html">
 
@@ -224,7 +224,7 @@ Change your text to be monospaced using the `._text-monospace` utility.
 ### Text decoration
 Remove text decoration using the `._text-decoration-none` utility.
 
-<i-code-preview title="Text Decoration Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Text Decoration Example">
 <a class="_text-decoration-none" href="https://inkline.io">This link is not underlined.</a>
 <template slot="html">
 
@@ -238,7 +238,7 @@ Remove text decoration using the `._text-decoration-none` utility.
 ### Muted text
 Make your text stand out less using the `._text-muted` utility.
 
-<i-code-preview title="Text Muted Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Text Muted Example">
 <p class="_text-muted">This text is muted.</p>
 <template slot="html">
 
@@ -252,7 +252,7 @@ Make your text stand out less using the `._text-muted` utility.
 ### Text reset
 Make your text or link inherit the parent's color using the `._text-reset` utility.
 
-<i-code-preview title="Text Reset Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Text Reset Example">
 <p class="_text-muted">This text is muted and has a <a class="_text-reset" href="https://inkline.io">reset link</a>.</p>
 <template slot="html">
 

@@ -3,7 +3,7 @@
 
 Here’s an example of the basic icons included with the `<i-icon>` component.
 
-<i-code-preview title="Icon Example" link="https://github.com/inkline/inkline/tree/master/src/components/Icon">
+<i-code-preview title="Icon Example">
 
 <div class="icon-box"><i-icon icon="check" /></div>
 <div class="icon-box"><i-icon icon="info" /></div>
@@ -50,7 +50,7 @@ Here’s an example of the basic icons included with the `<i-icon>` component.
 You're able to use the `size` modifier to control the size of your icon, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Icon Size" link="https://github.com/inkline/inkline/tree/master/src/components/Icon">
+<i-code-preview title="Icon Size">
 
 <div class="icon-box"><i-icon icon="home" size="sm" /></div>
 <div class="icon-box"><i-icon icon="home" size="md" /></div>
@@ -70,7 +70,7 @@ The default size is set to `md`.
 
 ### API
 
-<i-api-preview title="Icon API" expanded markup="i-icon" link="https://github.com/inkline/inkline/tree/master/src/components/Icon">
+<i-api-preview title="Icon API" expanded markup="i-icon" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Icon">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

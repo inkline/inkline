@@ -18,7 +18,7 @@ To learn more about style configuration, please read the [Customization](/docs/i
 ### Headings
 All HTML headings, `<h1>` through `<h6>`, have their size calculated based on the specified `$font-size-base`.
 
-<i-code-preview title="Typography - Headings" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Headings">
 
 <div class="headings-list">
     <h1>h1. Inkline heading</h1>
@@ -46,7 +46,7 @@ All HTML headings, `<h1>` through `<h6>`, have their size calculated based on th
 You can use helper classes to achieve heading styles. Classes `.h1` through `.h6` are available, for when you 
 want to match the font styling of a heading but cannot use the associated HTML element.
 
-<i-code-preview title="Typography - Heading Helpers" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
+<i-code-preview title="Typography - Heading Helpers">
 
 <div class="headings-list">
     <div><span class="h1">h1. Inkline heading</span></div>
@@ -74,7 +74,7 @@ want to match the font styling of a heading but cannot use the associated HTML e
 ### Displays
 If you need something larger than headings, you can use displays, `.d1` through `.d6` are available.
 
-<i-code-preview title="Typography - Display" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
+<i-code-preview title="Typography - Display">
 
 <div class="headings-list">
     <div><span class="d1">d1. Inkline display</span></div>
@@ -102,7 +102,7 @@ If you need something larger than headings, you can use displays, `.d1` through 
 ### Lead
 Make a paragraph stand out by adding `.lead`.
 
-<i-code-preview title="Typography - Lead" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Lead">
 
 <p class="lead">
     Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
@@ -122,7 +122,7 @@ Make a paragraph stand out by adding `.lead`.
 ### Inline Text Elements
 Inkline provides basic styling for all common HTML5 inline text elements.
 
-<i-code-preview title="Typography - Inline Text Elements" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Inline Text Elements">
 
 <p>You can use the mark tag to <mark>highlight</mark> text.</p>
 <p><del>This line of text is meant to be treated as deleted text.</del></p>
@@ -175,7 +175,7 @@ You can change text alignment, transform, style, weight, and color with text uti
 #### Text Alignment
 You can easily realign text to components with text alignment classes.
 
-<i-code-preview title="Typography - Justified Text Alignment" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Justified Text Alignment">
 
 <p class="_text-justify">
     Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
@@ -192,7 +192,7 @@ You can easily realign text to components with text alignment classes.
 </template>
 </i-code-preview>
 
-<i-code-preview title="Typography - Left, Center and Right Text Alignment" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Left, Center and Right Text Alignment">
 
 <p class="_text-left">
     This text is left aligned.
@@ -222,7 +222,7 @@ You can easily realign text to components with text alignment classes.
 #### Text Wrapping
 You can easily realign text to components with text alignment classes.
 
-<i-code-preview title="Typography - Text Wrapping" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Text Wrapping">
 
 <div class="_text-nowrap _background-light" style="width: 8rem;">
     This text should overflow the parent.
@@ -243,7 +243,7 @@ You can easily realign text to components with text alignment classes.
 
 You can align, wrap or truncate text responsively for any given `xs`, `sm`, `md`, `lg`, or `xl` breakpoint by adding the breakpoint suffix:
 
-<i-code-preview title="Typography - Responsive Text Alignment" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Responsive Text Alignment">
 
 <p class="_text-center-xs">This text is centered on extra-small screens.</p>
 <p class="_text-center-sm">This text is centered on small screens.</p>
@@ -277,7 +277,7 @@ The HTML `<abbr>` element for abbreviations and acronyms is styled to show the e
 Abbreviations have a default underline and gain a help cursor to provide additional context on hover and to users of 
 assistive technologies.
 
-<i-code-preview title="Typography - Abbreviations" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography">
+<i-code-preview title="Typography - Abbreviations">
 
 <abbr title="attribute">attr</abbr>
 
@@ -299,7 +299,7 @@ assistive technologies.
 To quote blocks of content from another source within your document, wrap `<blockquote class="blockquote">` around any 
 HTML as the quote.
 
-<i-code-preview title="Blockquote Alignment" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
+<i-code-preview title="Blockquote Alignment">
 
 <blockquote class="blockquote">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -347,7 +347,7 @@ target design.
 #### Unordered Lists
 When enumerating elements in no specific order, use an unordered list.
 
-<i-code-preview title="Typography - Unordered Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
+<i-code-preview title="Typography - Unordered Lists">
 
 <ul>
   <li>Lorem ipsum dolor sit amet</li>
@@ -396,7 +396,7 @@ When enumerating elements in no specific order, use an unordered list.
 #### Ordered Lists
 When enumerating elements in a specific order, use an ordered list.
 
-<i-code-preview title="Typography - Ordered Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
+<i-code-preview title="Typography - Ordered Lists">
 
 <ol>
   <li>Lorem ipsum dolor sit amet</li>
@@ -445,7 +445,7 @@ When enumerating elements in a specific order, use an ordered list.
 To remove the default `list-style` and `margin` on list items, use the `-unstyled` modifier. 
 This applies to immediate children list items only, meaning you will need to add the class for any nested lists as well.
 
-<i-code-preview title="Typography - Unstyled Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
+<i-code-preview title="Typography - Unstyled Lists">
 
 <ul class="list -unstyled">
   <li>Lorem ipsum dolor sit amet</li>
@@ -493,7 +493,7 @@ This applies to immediate children list items only, meaning you will need to add
 #### Inline Lists
 Remove a list’s bullets and apply some light margin using the `-inline` list modifier.
 
-<i-code-preview title="Typography - Inline Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
+<i-code-preview title="Typography - Inline Lists">
 
 <ul class="list -inline">
   <li>Lorem ipsum</li>
@@ -517,7 +517,7 @@ Remove a list’s bullets and apply some light margin using the `-inline` list m
 #### Description Lists
 Remove a list’s bullets and apply some light margin using the `-inline` list modifier.
 
-<i-code-preview title="Typography - Description Lists" link="https://github.com/inkline/inkline/tree/master/src/css/core/typography" class="_padding-bottom-0">
+<i-code-preview title="Typography - Description Lists">
 
 <dl class="row">
   <dt class="column -sm-3">Description lists</dt>

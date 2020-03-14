@@ -4,7 +4,7 @@
 ### Example
 Here’s an example of the basic components included in a  `<i-navbar>` that automatically collapses responsively.
 
-<i-code-preview title="Header Example" link="https://github.com/inkline/inkline/tree/master/src/components/Header">
+<i-code-preview title="Header Example">
 
 <i-header class="_text-center">
     <p class="h1">Inkline Header</p>
@@ -29,7 +29,7 @@ Here’s an example of the basic components included in a  `<i-navbar>` that aut
 You're able to use the `size` modifier to control the size of your header, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Header Small Size" link="https://github.com/inkline/inkline/tree/master/src/components/Header">
+<i-code-preview title="Header Small Size">
 
 <i-header size="sm" class="_text-center">
     <p class="h1">Small Inkline Header</p>
@@ -50,7 +50,7 @@ The default size is set to `md`.
 </template>
 </i-code-preview>
 
-<i-code-preview title="Header Medium Size" link="https://github.com/inkline/inkline/tree/master/src/components/Header">
+<i-code-preview title="Header Medium Size">
 
 <i-header size="md" class="_text-center">
     <p class="h1">Medium Inkline Header</p>
@@ -71,7 +71,7 @@ The default size is set to `md`.
 </template>
 </i-code-preview>
 
-<i-code-preview title="Header Large Size" link="https://github.com/inkline/inkline/tree/master/src/components/Header">
+<i-code-preview title="Header Large Size">
 
 <i-header size="lg" class="_text-center">
     <p class="h1">Large Inkline Header</p>
@@ -95,7 +95,7 @@ The default size is set to `md`.
 ### Fullscreen
 You can make headers cover the whole screen width and height (using `vw` and `vh`) by adding the `fullscreen` property. The width and height do not overflow the size of the parent container.
 
-<i-code-preview title="Fullescreen Header" link="https://github.com/inkline/inkline/tree/master/src/components/Header">
+<i-code-preview title="Fullescreen Header">
 
 <i-header fullscreen class="_text-center">
     <p class="h1">Fullscreen Inkline Header</p>
@@ -119,7 +119,7 @@ You can make headers cover the whole screen width and height (using `vw` and `vh
 ### Cover Background
 The goal of cover background images on a website is to cover the entire browser window at all times. Simply set a background for the header
 
-<i-code-preview title="Header Cover Background" link="https://github.com/inkline/inkline/tree/master/src/components/Header">
+<i-code-preview title="Header Cover Background">
 
 <i-header id="cover-inkline-header" :cover="true" class="_text-center _text-white">
     <p class="h1">Cover Inkline Header</p>
@@ -151,7 +151,7 @@ The goal of cover background images on a website is to cover the entire browser 
 
 ### API
 
-<i-api-preview title="Header API" expanded markup="i-header" link="https://github.com/inkline/inkline/tree/master/src/components/Header">
+<i-api-preview title="Header API" expanded markup="i-header" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Header">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

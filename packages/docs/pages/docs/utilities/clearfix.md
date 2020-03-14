@@ -6,7 +6,7 @@ You can easily clear floats by adding the `._clearfix` helper class to the paren
 
 In the following example, without adding the clearfix helper, the wrapping div would display the two buttons on separate lines, which would cause a broken layout.
 
-<i-code-preview title="Clearfix Utility" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Clearfix Utility">
 
 <div class="_clearfix _background-gray-40 _rounded">
     <i-button class="_float-left _margin-bottom-0">Floating Left Button</i-button>

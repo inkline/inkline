@@ -220,6 +220,11 @@ const pages = [
         description: 'A responsive navigation sidebar that includes support for branding, navigation, forms and more.'
     },
     {
+        id: 'docs-components-tabs',
+        title: 'Tabs',
+        description: 'Tab elements are used to switch between multiple sections of related content.'
+    },
+    {
         id: 'docs-components-tooltip',
         title: 'Tooltip',
         description: 'Tooltips are useful for conveying information when an user hovers over an element.'

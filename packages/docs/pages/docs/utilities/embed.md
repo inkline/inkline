@@ -4,7 +4,7 @@
 ### Example
 Embed styles are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` elements.
 
-<i-code-preview title="Embed Utility Example" link="https://github.com/inkline/inkline/blob/master/src/css/helpers">
+<i-code-preview title="Embed Utility Example">
 
 <div class="_embed _embed-16by9"> 
     <iframe src="https://www.youtube.com/embed/_oIDt3dRgro" allowfullscreen></iframe>

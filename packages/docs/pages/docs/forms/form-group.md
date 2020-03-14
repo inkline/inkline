@@ -5,7 +5,7 @@
 
 The `<i-form-group>` component is a wrapper that provides proper grouping of labels, input, help text, and form validation messaging. By default, form groups add a `margin-bottom` to provide spacing between form groups.
 
-<i-code-preview title="Basic Form Group" link="https://github.com/inkline/inkline/tree/master/src/components/FormGroup">
+<i-code-preview title="Basic Form Group">
 
 <i-form-group>
     <i-input v-model="input" placeholder="Type something.." />
@@ -93,7 +93,7 @@ export default {
 Setting a form group as `disabled` will cause all of its child inputs to be disabled.
 
 
-<i-code-preview title="Disabled Form Group" link="https://github.com/inkline/inkline/tree/master/src/components/FormGroup">
+<i-code-preview title="Disabled Form Group">
 
 <i-form-group disabled>
     <i-input v-model="inputDisabled" placeholder="Type something.." />
@@ -186,7 +186,7 @@ You're able to use the `size` modifier to control the size of the components ins
 
 All of the components inside the `<i-form-group>` will inherit the parent form group's size.
 
-<i-code-preview title="Small Form Group" link="https://github.com/inkline/inkline/tree/master/src/components/FormGroup">
+<i-code-preview title="Small Form Group">
 
 <i-form-group size="sm">
     <i-input v-model="inputSizeSm" placeholder="Type something.." />
@@ -274,7 +274,7 @@ export default {
 </template>
 </i-code-preview>
 
-<i-code-preview title="Medium Form Group" link="https://github.com/inkline/inkline/tree/master/src/components/FormGroup">
+<i-code-preview title="Medium Form Group">
 
 <i-form-group size="md">
     <i-input v-model="inputSizeMd" placeholder="Type something.." />
@@ -362,7 +362,7 @@ export default {
 </template>
 </i-code-preview>
 
-<i-code-preview title="Large Form Group" link="https://github.com/inkline/inkline/tree/master/src/components/FormGroup">
+<i-code-preview title="Large Form Group">
 
 <i-form-group size="lg">
     <i-input v-model="inputSizeLg" placeholder="Type something.." />
@@ -453,7 +453,7 @@ export default {
 ### Form Group Nesting
 You can nest form groups in order to control the `disabled`, `readonly` and `size` properties of multiple inputs at once. All the child inputs of the parent form group will inherit the property. 
 
-<i-code-preview title="Disabled Form Group Nesting" link="https://github.com/inkline/inkline/tree/master/src/components/FormGroup">
+<i-code-preview title="Disabled Form Group Nesting">
 
 <i-form-group disabled>
     <i-form-group>
@@ -499,7 +499,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Readonly Form Group Nesting" link="https://github.com/inkline/inkline/tree/master/src/components/FormGroup">
+<i-code-preview title="Readonly Form Group Nesting">
 
 <i-form-group readonly>
     <i-form-group>
@@ -553,7 +553,7 @@ export default {
 </i-code-preview>
 
 
-<i-code-preview title="Sized Form Group Nesting" link="https://github.com/inkline/inkline/tree/master/src/components/FormGroup">
+<i-code-preview title="Sized Form Group Nesting">
 
 <i-form-group size="lg">
     <i-checkbox-group v-model="checkboxNested">

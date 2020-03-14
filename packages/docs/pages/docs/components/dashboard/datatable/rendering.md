@@ -30,7 +30,7 @@ export default {
 }
 ~~~
 
-<i-code-preview title="Data Table Path" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Path">
 <i-datatable :columns="dataPathColumns" :rows="rows" />
 <template slot="html">
 
@@ -89,7 +89,7 @@ export default {
 
 Keep in mind that, by providing a custom `render` function, you will need to provide a custom `sort` function as well.
 
-<i-code-preview title="Data Table Render Function" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Render Function">
 <i-datatable :columns="renderColumns" :rows="rows" />
 <template slot="html">
 
@@ -162,7 +162,7 @@ export default {
 
 Here's an example for how to display a progress bar component on each row:
 
-<i-code-preview title="Data Table Custom Component" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Custom Component">
 <i-datatable :columns="componentColumns" :rows="componentRows"></i-datatable>
 <template slot="html">
 <div v-pre>
@@ -236,7 +236,7 @@ By providing a scoped `row` slot, you can render rows as you see fit.
 
 Keep in mind that, by providing a custom `render` function, you will need to provide a custom `sort` function as well.
 
-<i-code-preview title="Data Table Scoped Slot" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Scoped Slot">
 <i-datatable :columns="renderColumns" :rows="rows">
     <template v-slot:row="{ row, index }">
         <td align="right">{{index + 1}}</td>
@@ -302,7 +302,7 @@ export default {
 }
 ~~~
 
-<i-code-preview title="Data Table Render Header Function" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Render Header Function">
 <i-datatable :columns="renderHeaderColumns" :rows="rows" />
 <template slot="html">
 
@@ -378,7 +378,7 @@ export default {
 
 Here's a practical example where the header component contains a dropdown:
 
-<i-code-preview title="Data Table Custom Header Component" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Custom Header Component">
 <i-datatable :columns="headerComponentColumns" :rows="rows"></i-datatable>
 <template slot="html">
 <div v-pre>
@@ -458,7 +458,7 @@ By providing a scoped `header` slot, you can render the datatable header as you 
 
 Keep in mind that, by providing a custom `render` function, you will need to provide a custom `sort` function as well.
 
-<i-code-preview title="Data Table Scoped Header Slot" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Scoped Header Slot">
 <i-datatable :columns="dataPathColumns" :rows="rows">
     <template v-slot:header="{ sortBy }">
         <th class="_text-right">No.</th>
@@ -524,7 +524,7 @@ export default {
 }
 ~~~
 
-<i-code-preview title="Data Table Render Header Function" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Render Header Function">
 <i-datatable :columns="renderFooterColumns" :rows="rows" />
 <template slot="html">
 
@@ -600,7 +600,7 @@ export default {
 
 Here's a practical example where the header component contains a dropdown:
 
-<i-code-preview title="Data Table Custom Footer Component" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Custom Footer Component">
 <i-datatable :columns="footerComponentColumns" :rows="rows"></i-datatable>
 <template slot="html">
 <div v-pre>
@@ -680,7 +680,7 @@ By providing a scoped `footer` slot, you can render the datatable footer as you 
 
 Keep in mind that, by providing a custom `render` function, you will need to provide a custom `sort` function as well.
 
-<i-code-preview title="Data Table Scoped Footer Slot" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Scoped Footer Slot">
 <i-datatable :columns="dataPathColumns" :rows="rows">
     <template slot="footer">
         <th class="_text-right">No.</th>

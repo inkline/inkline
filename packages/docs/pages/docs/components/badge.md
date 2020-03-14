@@ -5,7 +5,7 @@
 ### Variants
 Inkline includes several predefined badge styles, each serving its own semantic purpose, which you can control using the `variant` property.
 
-<i-code-preview title="Badge Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Badge" class="_padding-bottom-0">
+<i-code-preview title="Badge Variants">
 <i-badge variant="primary">
     Primary
 </i-badge>&nbsp; 
@@ -65,7 +65,7 @@ Inkline includes several predefined badge styles, each serving its own semantic 
 
 You're able to use the `size` modifier to control the text and spacing size of your badges, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Badge Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Badge" class="_padding-bottom-0">
+<i-code-preview title="Badge Sizes">
 <i-badge size="sm">
     Small
 </i-badge>&nbsp; 
@@ -93,7 +93,7 @@ You're able to use the `size` modifier to control the text and spacing size of y
 
 Badges always match the size of the immediate parent element by using relative font sizing and `em` units.
 
-<i-code-preview title="Badge Heading Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Badge" class="_padding-bottom-0">
+<i-code-preview title="Badge Heading Sizes">
 <h1 class="_margin-top-0">Heading 1 <i-badge variant="primary">New</i-badge></h1>
 <h2 class="_margin-top-0">Heading 2 <i-badge variant="primary">New</i-badge></h2>
 <h3 class="_margin-top-0">Heading 3 <i-badge variant="primary">New</i-badge></h3>
@@ -128,7 +128,7 @@ Badges always match the size of the immediate parent element by using relative f
 
 ### API
 
-<i-api-preview title="Badge API" expanded markup="i-badge" link="https://github.com/inkline/inkline/tree/master/src/components/Badge">
+<i-api-preview title="Badge API" expanded markup="i-badge" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Badge">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

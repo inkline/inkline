@@ -4,7 +4,7 @@
 ### Example
 Pagination items are automatically generated based on the total item count `items` and how many items will be displayed on the page, configured using `items-per-page`, with the default value being `20`. The currently selected page is kept synchronised using `v-model`.
 
-<i-code-preview title="Pagination Example" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
+<i-code-preview title="Pagination Example">
 <i-pagination v-model="currentPage" :items="300" :items-per-page="20"></i-pagination>
 <template slot="html">
 
@@ -32,7 +32,7 @@ export default {
 ### Variants
 Inkline includes two predefined pagination styles. You can set the style of a `<i-pagination>` using the `variant` property, which can have a value of `light` or `dark`. By default, pagination uses the `light` variant.
 
-<i-code-preview title="Pagination Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
+<i-code-preview title="Pagination Variants">
 <i-pagination v-model="currentPageLight" variant="light" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
 <i-pagination v-model="currentPageDark" variant="dark" :items="100" :items-per-page="10"></i-pagination>
 <template slot="html">
@@ -63,7 +63,7 @@ export default {
 ### Sizes
 You're able to use the `size` modifier to control the size of your pagination items, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Pagination Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination" class="_overflow-hidden">
+<i-code-preview title="Pagination Sizes">
 <div>
 <i-pagination v-model="currentPageSm" size="sm" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
 <i-pagination v-model="currentPageMd" size="md" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
@@ -102,7 +102,7 @@ You're able to use the `limit` modifier to control how many items to show beside
 
 Make sure this value is an `odd number` for best results.
 
-<i-code-preview title="Pagination Limit" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
+<i-code-preview title="Pagination Limit">
 <div>
 <i-pagination v-model="currentPagePageLimit" :limit="3" :items="100" :items-per-page="10"></i-pagination>
 </div>
@@ -130,7 +130,7 @@ export default {
 
 To make things even better, you can responsively control the number of items at each breakpoint, to make sure your design always looks great.
 
-<i-code-preview title="Pagination Responsive Limit" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
+<i-code-preview title="Pagination Responsive Limit">
 <div>
 <i-pagination v-model="currentPagePageLimitResponsive" :limit="pageLimit" :items="100" :items-per-page="10"></i-pagination>
 </div>
@@ -165,7 +165,7 @@ export default {
 ### Quick Links
 You're able to use the `quickLink` modifier to allow the user to click the `…` item to quickly jump through pages, a number of items equal to `limit` at a time. 
 
-<i-code-preview title="Pagination Quick Link" link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
+<i-code-preview title="Pagination Quick Link">
 <div>
 <i-pagination v-model="currentPageQuickLink" quick-link :items="100" :items-per-page="10"></i-pagination>
 </div>
@@ -194,7 +194,7 @@ export default {
 
 ### API
 
-<i-api-preview title="Pagination API" markup="i-pagination" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Pagination">
+<i-api-preview title="Pagination API" markup="i-pagination" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Pagination">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

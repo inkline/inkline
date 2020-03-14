@@ -4,7 +4,7 @@
 ### Example
 You can group a series of `<i-button>` components inside a `<i-button-group>` to display them inline, conveying additional meaning.
 
-<i-code-preview title="Button Group Example" link="https://github.com/inkline/inkline/tree/master/src/components/ButtonGroup">
+<i-code-preview title="Button Group Example">
 
 <i-button-group>
     <i-button>Left</i-button>
@@ -29,7 +29,7 @@ You can group a series of `<i-button>` components inside a `<i-button-group>` to
 You're able to use the `size` modifier to control the size of your buttons, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Button Group Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/ButtonGroup">
+<i-code-preview title="Button Group Sizes">
 
 <div class="_margin-bottom-1">
     <i-button-group size="sm">
@@ -85,7 +85,7 @@ The default size is set to `md`.
 ### Nesting
 When placing a `<i-button-group>` inside another `<i-button-group>`, you'll get a mixed series of buttons.
 
-<i-code-preview title="Button Group Nesting" link="https://github.com/inkline/inkline/tree/master/src/components/ButtonGroup">
+<i-code-preview title="Button Group Nesting">
 
 <i-button-group>
     <i-button>Button 1</i-button>
@@ -113,7 +113,7 @@ When placing a `<i-button-group>` inside another `<i-button-group>`, you'll get 
 ### Vertical
 Using the `vertical` property, you can stack a set of buttons vertically rather than horizontally.
 
-<i-code-preview title="Vertical Button Group" link="https://github.com/inkline/inkline/tree/master/src/components/ButtonGroup">
+<i-code-preview title="Vertical Button Group">
 
 <i-button-group vertical>
     <i-button>Button 1</i-button>
@@ -138,7 +138,7 @@ Using the `vertical` property, you can stack a set of buttons vertically rather 
 Just like horizontal button groups, the size of vertical button groups can also be controlled using the `size` modifier. 
 The default size is set to `md`.
 
-<i-code-preview title="Vertical Button Group Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/ButtonGroup">
+<i-code-preview title="Vertical Button Group Sizes">
 
 <div class="_clearfix">
     <div class="_float-left _margin-right-1">
@@ -194,7 +194,7 @@ The default size is set to `md`.
 
 ### API
 
-<i-api-preview title="Button Group API" expanded markup="i-button-group" link="https://github.com/inkline/inkline/tree/master/src/components/ButtonGroup">
+<i-api-preview title="Button Group API" expanded markup="i-button-group" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ButtonGroup">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

@@ -4,7 +4,7 @@
 ### Example
 Add the `._overlay` utility class to an element to make it cover the entire containing block. The containing block refers to a parent element with `position: relative;`.
 
-<i-code-preview title="Overlay Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Overlay Utility Example">
 
 <div style="width: 100%; height: 60px;" class="_position-relative _padding-1">
 This text is covered by an element with an overlay helper class.
@@ -31,7 +31,7 @@ This text is covered by an element with an overlay helper class.
 
 Add the `._overlay-link` utility class to a link to make the entire containing block clickable using a `::after` pseudo element. In most cases, the containing block refers to the parent element with `position: relative;`.
 
-<i-code-preview title="Link Overlay Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Link Overlay Utility Example">
 
 <i-row>
     <i-column md="6">

@@ -4,7 +4,7 @@
 ### Variants
 The loader component is available in a `light` or `dark` color, which you can choose using the `variant` property.
 
-<i-code-preview title="Loader Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Loader">
+<i-code-preview title="Loader Variants">
 
 <div>
     <div id="light-loader-example">
@@ -30,7 +30,7 @@ You're able to use the `size` modifier to control the size of your loader compon
 
 By default, loaders are set to have a `64px` width and height.
 
-<i-code-preview title="Loader Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Loader">
+<i-code-preview title="Loader Sizes">
 
 <div>
     <i-loader size="sm" variant="dark" class="_margin-right-1" />
@@ -57,7 +57,7 @@ By default, loaders are set to have a `64px` width and height.
 
 You can set the loader size to fit the container that it is in by using the `auto` size property. Make sure to use the same height and width to keep the correct aspect ratio.
 
-<i-code-preview title="Loader Auto Size" link="https://github.com/inkline/inkline/tree/master/src/components/Loader">
+<i-code-preview title="Loader Auto Size">
 
 <div style="width: 100px; height: 100px;">
     <i-loader size="auto" variant="dark" />
@@ -78,7 +78,7 @@ You can set the loader size to fit the container that it is in by using the `aut
 ### Slots
 You're able to provide some additional text by using the `default` loader slot.
 
-<i-code-preview title="Loader Default Slot" link="https://github.com/inkline/inkline/tree/master/src/components/Loader">
+<i-code-preview title="Loader Default Slot">
 
 <div>
     <i-loader variant="dark">100%</i-loader>

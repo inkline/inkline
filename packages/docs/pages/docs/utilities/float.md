@@ -4,7 +4,7 @@
 ### Example
 You can use the float utility classes to float an element to the left or right, or to disable floating, responsively. The utilities use the same viewport breakpoints as the grid system. 
 
-<i-code-preview title="Float Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Float Utility Example">
 
 <div class="_position-relative">
     <div class="_float-left">I'm floating left.</div>
@@ -48,7 +48,7 @@ Float utilities can be applied responsively using the following helper classes:
 - `._float-{xs|sm|md|lg|xl}-none`
 
 
-<i-code-preview title="Responsive Float Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Responsive Float Utility Example">
 
 <div class="_position-relative">
     <div class="_float-xs-right">I'm floating right on extra small screens.</div>

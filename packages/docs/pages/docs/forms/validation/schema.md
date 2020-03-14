@@ -10,7 +10,7 @@ The `<i-form>` component and all input components have a `schema` property that 
 
 Using the `validators` field, you can specify an array of validators to be used on the input.
 
-<i-code-preview title="Form Schema Example" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js">
+<i-code-preview title="Form Schema Example">
 <i-form :schema="basicForm">
     <i-form-group>
         <i-input :schema="basicForm.input" v-model="basicForm.input.value" placeholder="Enter your first name.." />
@@ -62,7 +62,7 @@ export default {
 ### Input Default Value
 Providing a default value for a schema field can be done using the `value` field as follows:
 
-<i-code-preview title="Form Schema Input Default Value" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js">
+<i-code-preview title="Form Schema Input Default Value">
 <i-form :schema="defaultValueForm">
     <i-form-group>
         <i-input :schema="defaultValueForm.input" v-model="defaultValueForm.input.value" placeholder="Enter your first name.." />
@@ -110,7 +110,7 @@ export default {
 ### Input Validation Message
 Each validator accepts a custom error message using the `message` field. This allows you to use i18n to display error messages.
 
-<i-code-preview title="Input Validation Message" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js">
+<i-code-preview title="Input Validation Message">
 <i-form :schema="validateValueForm">
     <i-form-group>
         <i-input :schema="validateValueForm.input" v-model="validateValueForm.input.value" placeholder="Enter your first name.." />
@@ -159,7 +159,7 @@ export default {
 ### Input Validation Event
 By using the `validateOn` field you can specify the event that triggers the validation. The most common events are `input` and `blur`.
 
-<i-code-preview title="Input Validation Events" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js">
+<i-code-preview title="Input Validation Events">
 <i-form :schema="validateOnForm">
     <i-form-group>
         <i-input :schema="validateOnForm.input1" v-model="validateOnForm.input1.value" placeholder="This field is validated on input" />
@@ -225,7 +225,7 @@ You can define schema groups to determine the validation of a group of inputs.
 ##### Object Form Groups
 Objects that aren't empty and don't have a `value` or `validators` field are treated as form groups. Form groups can be used to see the validation status of specific fields.
 
-<i-code-preview title="Form Schema Form Groups" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js">
+<i-code-preview title="Form Schema Form Groups">
 <i-form :schema="groupedValueForm">
     <i-form-group>
         <i-input :schema="groupedValueForm.input" v-model="groupedValueForm.input.value" placeholder="Enter your first name.." />
@@ -279,7 +279,7 @@ export default {
 ##### Array Form Groups
 Form groups can be an `Array` of fields, allowing you to loop over them using `v-for`.
 
-<i-code-preview title="Form Schema Array Form Groups" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js">
+<i-code-preview title="Form Schema Array Form Groups">
 <i-form :schema="arrayValueForm">
     <i-form-group v-for="field in arrayValueForm.group" :key="field.name">
         <i-input :schema="field" v-model="field.value" placeholder="Type something.." />
@@ -330,7 +330,7 @@ The `<i-form>` component and all input components have a `schema` property that 
 
 The schema object `this.form` contains the validation state of the `<i-form>`, and is updated as soon as the input changes. The object looks as seen in the Output tab: 
 
-<i-code-preview title="Complete Form Example" link="https://github.com/inkline/inkline/blob/master/src/factories/FormBuilder.js" class="_padding-bottom-0">
+<i-code-preview title="Complete Form Example">
 <i-form :schema="form" @submit="submitForm">
     <i-form-group>
         <i-input :schema="form.input" v-model="form.input.value" placeholder="Enter your first name.." />

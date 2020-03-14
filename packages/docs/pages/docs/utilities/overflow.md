@@ -3,7 +3,7 @@
 
 Overflow functionality is provided for two values by default, and they are not responsive.
 
-<i-code-preview title="Overflow Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Overflow Utility Example">
 
 <div class="_overflow-auto _background-gray-10 _padding-x-1 _display-inline-block" style="width: 250px; height: 100px;">
 

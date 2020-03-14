@@ -21,7 +21,7 @@ export default {
 
 By default, sorting for the `string`, `number` and `Date` value types is supported natively. 
 
-<i-code-preview title="Data Table Default Sorting" link="https://github.com/inkline/inkline/tree/master/src/components/Datatable/index.vue">
+<i-code-preview title="Data Table Default Sorting">
 <i-datatable :columns="columns" :rows="rows" />
 <template slot="html">
 

@@ -5,7 +5,7 @@ Using the `i-checkbox` component together with a `i-checkbox-group` allows you t
 
 ### Basic Usage
 
-<i-code-preview title="Basic Checkbox" link="https://github.com/inkline/inkline/tree/master/src/components/Checkbox">
+<i-code-preview title="Basic Checkbox">
 <i-checkbox v-model="checked">Apple</i-checkbox>
 <template slot="html">
 
@@ -36,7 +36,7 @@ Checked: <code>{{checked}}</code>
 
 ### Checkbox Group
 
-<i-code-preview title="Checkbox Group" link="https://github.com/inkline/inkline/tree/master/src/components/Checkbox">
+<i-code-preview title="Checkbox Group">
 <i-checkbox-group v-model="checkedGroup">
     <i-checkbox value="Football">Football</i-checkbox>
     <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -79,7 +79,7 @@ Checked values: <code>{{checkedGroup}}</code>
 ### Sizes
 You're able to use the `size` property to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
 
-<i-code-preview title="Checkbox Sizes" link="https://github.com/inkline/inkline/tree/master/src/components/Checkbox">
+<i-code-preview title="Checkbox Sizes">
 <i-checkbox-group v-model="checkedSize">
     <i-checkbox size="sm" value="Football">Football</i-checkbox>
     <i-checkbox size="md" value="Volleyball">Tennis</i-checkbox>
@@ -113,7 +113,7 @@ export default {
 
 Applying the size `size` property to a `i-checkbox-group` will set the chosen size to all of its child inputs.
 
-<i-code-preview title="Checkbox Group Size" link="https://github.com/inkline/inkline/tree/master/src/components/Checkbox">
+<i-code-preview title="Checkbox Group Size">
 <i-checkbox-group size="sm" v-model="checkedSizeGroupSm" class="_margin-bottom-1">
     <i-checkbox value="Football">Football</i-checkbox>
     <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -178,7 +178,7 @@ export default {
 ### Custom vs. Native
 Inkline uses custom checkbox designs by setting the `custom` property to `true` by default. 
 
-<i-code-preview title="Custom Checkbox" link="https://github.com/inkline/inkline/tree/master/src/components/Checkbox">
+<i-code-preview title="Custom Checkbox">
 <i-checkbox-group v-model="checkedCustomTrue">
     <i-checkbox :custom="true" value="Football">Football</i-checkbox>
     <i-checkbox :custom="true" value="Volleyball">Tennis</i-checkbox>
@@ -213,7 +213,7 @@ export default {
 ### Indeterminate
 You can set the state of a `<i-checkbox>` to be indeterminate by setting the `indeterminate` property to `true`. 
 
-<i-code-preview title="Indeterminate Checkbox" link="https://github.com/inkline/inkline/tree/master/src/components/Checkbox">
+<i-code-preview title="Indeterminate Checkbox">
 <i-checkbox :indeterminate="true">Football</i-checkbox>
 <template slot="html">
 
@@ -242,7 +242,7 @@ export default {
 
 You can display your checkbox inputs as toggleable buttons using the provided `<i-checkbox-button>` and `<i-checkbox-button-group>` components.
 
-<i-code-preview title="Checkbox Buttons" link="https://github.com/inkline/inkline/tree/master/src/components/CheckboxButton">
+<i-code-preview title="Checkbox Buttons">
 <i-checkbox-button-group v-model="checkedButton">
     <i-checkbox-button value="Earth">Earth</i-checkbox-button>
     <i-checkbox-button value="Mars">Mars</i-checkbox-button>

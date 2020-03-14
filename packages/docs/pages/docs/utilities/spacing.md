@@ -61,7 +61,7 @@ Here are some examples of these utility classes:
 ### Horizontal Centering
 You can set a `left` and `right` margin using the `x` side parameter, such as `._margin-x-auto`. The `._margin-x-auto` class is useful for horizontally centering fixed-width block level content.
 
-<i-code-preview title="Horizontal Centering Utility Example" link="https://github.com/inkline/inkline/tree/master/src/css/helpers">
+<i-code-preview title="Horizontal Centering Utility Example">
 
 <div class="_width-50 _margin-x-auto _padding-1 _background-gray-20 _text-center">Horizontally Centered</div>
 

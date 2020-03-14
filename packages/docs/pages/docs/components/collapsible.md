@@ -4,7 +4,7 @@
 ### Example
 Collapsing an element will animate the height from zero to its default value. This component is useful for creating clearly separated content sections such as FAQ pages.
 
-<i-code-preview title="Collapsible Example" link="https://github.com/inkline/inkline/tree/master/src/components/Collapsible">
+<i-code-preview title="Collapsible Example">
 
 <i-collapsible>
     <i-collapsible-item title="Item 1">
@@ -40,7 +40,7 @@ Collapsing an element will animate the height from zero to its default value. Th
 ### Item Title
 You can use the `title` slot to provide a custom title for the collapsible panel's heading. 
 
-<i-code-preview title="Collapsible Title" link="https://github.com/inkline/inkline/tree/master/src/components/Collapsible">
+<i-code-preview title="Collapsible Title">
 
 <i-collapsible>
     <i-collapsible-item>
@@ -82,7 +82,7 @@ You can use the `title` slot to provide a custom title for the collapsible panel
 ### Default Open Panels
 Panels can be opened by default, on page load, using the `v-model` directive of the `<i-collapsible>` component. First, you'll need to assign an `id` to the `<i-collapsible-item>` components which will identify the open panels.
  
- <i-code-preview title="Default Open Collapsible Panel" link="https://github.com/inkline/inkline/tree/master/src/components/Collapsible">
+ <i-code-preview title="Default Open Collapsible Panel">
 
 <i-collapsible v-model="active">
     <i-collapsible-item id="panel-1">
@@ -137,7 +137,7 @@ export default {
 ### Accordion
 Accordion collapsible groups can have only one content panel open at a single time. This behaviour can be set using the `accordion` property.
 
-<i-code-preview title="Collapsible Accordion" link="https://github.com/inkline/inkline/tree/master/src/components/Collapsible">
+<i-code-preview title="Collapsible Accordion">
 
 <i-collapsible accordion>
     <i-collapsible-item title="Item 1">
@@ -174,7 +174,7 @@ Accordion collapsible groups can have only one content panel open at a single ti
 ### Color Variants
 Inkline includes basic predefined collapsible styles that you can use within your application. You can apply a style using the `variant` property.
 
-<i-code-preview title="Collapsible Variants" link="https://github.com/inkline/inkline/tree/master/src/components/Collapsible">
+<i-code-preview title="Collapsible Variants">
 
 <i-collapsible variant="light">
     <i-collapsible-item title="Item 1">
@@ -251,7 +251,7 @@ Inkline includes basic predefined collapsible styles that you can use within you
 
 ### API
 
-<i-api-preview title="Collapsible API" markup="i-collapsible" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Collapsible">
+<i-api-preview title="Collapsible API" markup="i-collapsible" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Collapsible">
     <template slot="props">
         <i-table bordered responsive>
             <thead>
@@ -324,7 +324,7 @@ Inkline includes basic predefined collapsible styles that you can use within you
     </template>
 </i-api-preview>
 
-<i-api-preview title="Collapsible Item API" markup="i-collapsible-item" expanded link="https://github.com/inkline/inkline/tree/master/src/components/Collapsible">
+<i-api-preview title="Collapsible Item API" markup="i-collapsible-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Collapsible">
     <template slot="props">
         <i-table bordered responsive>
             <thead>

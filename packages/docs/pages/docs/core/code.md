@@ -4,7 +4,7 @@
 ### Inline
 Wrap inline snippets of code with `<code>`. Be sure to escape HTML angle brackets.
 
-<i-code-preview title="Inline Code" link="https://github.com/inkline/inkline/tree/master/src/css/core/code">
+<i-code-preview title="Inline Code">
 
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
@@ -21,7 +21,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 We use `<pre>` for multiple lines of code. Once again, be sure to escape any angle brackets in the code for proper 
 rendering. You may optionally add the `.-scrollable` modifier, which will set a max-height and provide a y-axis scrollbar.
 
-<i-code-preview title="Code Block" link="https://github.com/inkline/inkline/tree/master/src/css/core/code">
+<i-code-preview title="Code Block">
 
 <pre>
 <code>&lt;p&gt;Sample text here...&lt;/p&gt;
@@ -45,7 +45,7 @@ rendering. You may optionally add the `.-scrollable` modifier, which will set a 
 ### Variables
 For indicating variables use the HTML5 `<var>` tag.
 
-<i-code-preview title="Variables" link="https://github.com/inkline/inkline/tree/master/src/css/core/code">
+<i-code-preview title="Variables">
 
 <var>y</var> = <var>m</var><var>x</var> + <var>b</var>
 
@@ -61,7 +61,7 @@ For indicating variables use the HTML5 `<var>` tag.
 ### User Input
 You can use the `<kbd>` to indicate input that is typically entered via keyboard.
 
-<i-code-preview title="User Input" link="https://github.com/inkline/inkline/tree/master/src/css/core/code">
+<i-code-preview title="User Input">
 
 To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
 To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
@@ -80,7 +80,7 @@ To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
 
 You can use the `<samp>` for indicating sample output from a program.
 
-<i-code-preview title="Sample Output" link="https://github.com/inkline/inkline/tree/master/src/css/core/code">
+<i-code-preview title="Sample Output">
 
 <samp>This text is meant to be treated as sample output from a computer program.</samp>
 
