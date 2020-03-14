@@ -51,7 +51,7 @@ export default {
         initElements() {
             this.tabs = this.$children.filter((tab) => tab.$options.name === 'ITab');
 
-            if (!this.active) {
+            if (!this.active && this.tabs.length > 0) {
                 if (this.value) {
                     return this.active = this.value;
                 }
