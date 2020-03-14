@@ -39,6 +39,8 @@ export { default as IProgress } from '@inkline/inkline/src/components/Progress';
 export { default as IProgressBar } from '@inkline/inkline/src/components/ProgressBar';
 export { default as ISidebar } from '@inkline/inkline/src/components/Sidebar';
 export { default as ITable } from '@inkline/inkline/src/components/Table';
+export { default as ITabs } from '@inkline/inkline/src/components/Tabs';
+export { default as ITab } from '@inkline/inkline/src/components/Tab';
 export { default as ITooltip } from '@inkline/inkline/src/components/Tooltip';
 
 export { default as ICheckbox } from '@inkline/inkline/src/components/Checkbox';
