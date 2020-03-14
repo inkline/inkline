@@ -1,0 +1,11 @@
+//
+// Collapsible Item variants
+//
+@each $variant-name, $variant in variants('tabs') {
+    .tabs.-#{$variant-name} {
+        > .tab {
+            border-color: variant-color-by-luminance($variant, lighten-lightness($variant, 5%), darken-lightness($variant, 5%));
+            background-color: #ffffff;
+        }
+    }
+}
