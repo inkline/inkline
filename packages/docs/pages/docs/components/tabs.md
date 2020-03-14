@@ -68,7 +68,9 @@ You can use the `header` scoped slot to provide a custom heading for the tab ite
     </i-tab>
 </i-tabs>
 
-<template slot="html" v-pre>
+<template slot="html">
+
+<div v-pre>
 
 ~~~html
 <i-tabs custom>
@@ -92,6 +94,8 @@ You can use the `header` scoped slot to provide a custom heading for the tab ite
     </i-tab>
 </i-tabs>
 ~~~
+
+</div>
 
 </template>
 </i-code-preview>
