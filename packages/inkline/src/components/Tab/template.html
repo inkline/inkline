@@ -1,0 +1,10 @@
+<div role="tabpanel" class="tab"
+     :class="classes"
+     v-show="active"
+     :aria-hidden="!active"
+     :aria-labelledby="`tab-heading-${id}`"
+     :id="`tab-content-${id}`">
+    <div class="body">
+        <slot></slot>
+    </div>
+</div>
