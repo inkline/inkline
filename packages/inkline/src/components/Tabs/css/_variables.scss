@@ -1,0 +1,14 @@
+//
+// Tab Variables
+//
+$tabs-border-radius: border-radius('md') !default;
+$tabs-body-padding: $spacer !default;
+
+//
+// Themes
+//
+$tabs-variants: ('monochrome') !default;
+$tabs-variant-color-light: $variant-color-light !default;
+$tabs-variant-color-dark: $variant-color-dark !default;
+
+$variants: map_merge($variants, ('tabs': add-variant($tabs-variants, $color-groups)));
