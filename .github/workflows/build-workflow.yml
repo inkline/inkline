@@ -15,8 +15,8 @@ jobs:
                 with:
                     node-version: ${{ matrix.node }}
             -   run: npm install
-            -   run: npm install -g lerna @vue/cli
-            # -   run: npm run test:install
+            -   run: npm install -g lerna
+            -   run: npm run test:install
             -   run: lerna link
             -   run: lerna run build
             -   run: lerna run lint
