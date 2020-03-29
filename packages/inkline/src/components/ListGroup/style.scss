@@ -5,17 +5,19 @@
 @import '../../css/mixins/index';
 @import 'css/_variables';
 @import 'css/_sizes';
+@import 'css/_variants';
 
 .list-group {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    transition: background-color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
 
     &.-bordered {
         border-width: $list-group-border-width;
         border-style: $list-group-border-style;
-        border-color: $list-group-border-color;
     }
 
+    @extend .list-group.-light;
     @extend .list-group.-md;
 }

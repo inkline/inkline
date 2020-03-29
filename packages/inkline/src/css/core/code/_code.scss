@@ -9,6 +9,7 @@ code {
     color: $code-color;
     background-color: $code-background;
     border-radius: border-radius(md);
+    transition: background-color $transition-duration $transition-easing, color $transition-duration $transition-easing;
 
     // Streamline the style when inside anchors to avoid broken underline and more
     a > & {
@@ -16,4 +17,9 @@ code {
         color: inherit;
         background-color: inherit;
     }
+}
+
+.inkline.-dark code {
+    background-color: $code-background-dark;
+    color: $code-color-dark;
 }

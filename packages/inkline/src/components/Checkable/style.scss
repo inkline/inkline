@@ -4,6 +4,7 @@
 @import '../Icon/css/_mixins';
 @import 'css/_variables';
 @import 'css/_sizes';
+@import 'css/_variants';
 
 /**
  * CheckableProviderMixin
@@ -73,11 +74,6 @@
                 color: $form-check-indicator-disabled-color;
                 background-color: $form-check-indicator-disabled-background-color;
             }
-
-            &:disabled:checked ~ .form-input-label::before,
-            &[readonly]:checked ~ .form-input-label::before {
-                background-color: $form-check-indicator-disabled-checked-background-color;
-            }
         }
 
         .form-input-label {
@@ -105,7 +101,6 @@
             content: "";
             cursor: pointer;
             user-select: none;
-            background-color: $form-check-indicator-background-color;
             box-shadow: $form-check-indicator-box-shadow;
             transition: background-color $transition-duration $transition-easing;
         }
@@ -119,5 +114,6 @@
         }
     }
 
+    @extend .form-check.-light;
     @extend .form-check.-md;
 }

@@ -16,6 +16,7 @@
         padding: $table-cell-padding;
         vertical-align: top;
         border-top: $table-border-width solid transparent;
+        transition: color $transition-duration $transition-easing, background-color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
     }
 
     thead th {

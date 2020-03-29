@@ -21,6 +21,10 @@ export default {
         value: {
             type: String | Number,
             default: 0
+        },
+        variant: {
+            type: String,
+            default: 'primary'
         }
     },
     computed: {

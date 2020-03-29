@@ -26,3 +26,12 @@ pre {
         overflow-y: scroll;
     }
 }
+
+.inkline.-dark pre {
+    color: $pre-color-dark;
+
+    code {
+        color: inherit;
+        background-color: transparent;
+    }
+}

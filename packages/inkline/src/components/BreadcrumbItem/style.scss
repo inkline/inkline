@@ -11,6 +11,10 @@
     > .item {
         margin-bottom: 0;
 
+        > a {
+            transition: color $transition-duration $transition-easing;
+        }
+
         > span {
             display: inline-block;
         }
@@ -43,13 +47,25 @@
         }
 
         a:not([href]) {
-            color: $breadcrumb-plain-color;
+            color: $breadcrumb-plain-color-light;
         }
 
         &.-active a {
-            color: $breadcrumb-active-color;
+            color: $breadcrumb-active-color-light;
         }
 
         @include breadcrumb-item-variant('md');
+    }
+}
+
+.inkline.-dark .breadcrumb {
+    > .item {
+        a:not([href]) {
+            color: $breadcrumb-plain-color-dark;
+        }
+
+        &.-active a {
+            color: $breadcrumb-active-color-dark;
+        }
     }
 }

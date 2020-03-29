@@ -21,7 +21,8 @@ export default {
         }
     },
     methods: {
-        onClick() {
+        onClick(event) {
+            this.$emit('click', event);
             this.dispatch('INav', 'item-click', this);
         }
     }

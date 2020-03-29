@@ -15,5 +15,5 @@
     white-space: nowrap;
     height: 100%;
 
-    @include progress-bar-color-variant(variant-element('progress-bar', 'primary'));
+    @extend .bar.-primary;
 }

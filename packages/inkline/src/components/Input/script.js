@@ -22,6 +22,7 @@ import ParentFormGroupPropertyMixin from '@inkline/inkline/src/mixins/forms/prop
 import ReadonlyPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ReadonlyPropertyMixin';
 import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
 import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
+import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
 
 export default {
     name: 'IInput',
@@ -51,7 +52,8 @@ export default {
         ParentFormGroupPropertyMixin,
         ReadonlyPropertyMixin,
         SizePropertyMixin,
-        TabIndexPropertyMixin
+        TabIndexPropertyMixin,
+        VariantPropertyMixin
     ],
     created() {
         this.classesProvider.add('root', () => ({

@@ -17,6 +17,7 @@
     background-clip: border-box;
     border-width: $alert-border-width;
     border-style: solid;
+    transition: background-color $transition-duration $transition-easing, color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
 
     // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom.
@@ -24,6 +25,7 @@
 
     a {
         font-weight: 600;
+        transition: color $transition-duration $transition-easing;
     }
 
     > .icon {
