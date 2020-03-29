@@ -16,7 +16,7 @@ exports[`Components Datatable should render correctly 1`] = `
     </div>
   </div>
   <div class="table-wrapper -responsive">
-    <table class="datatable -undefined">
+    <table class="datatable">
       <thead>
         <tr class="dtr">
           <!---->

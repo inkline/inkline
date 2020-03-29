@@ -5,7 +5,7 @@ exports[`Components Modal should render correctly 1`] = `
   <transition-stub name="fade-in-transition">
     <div id="modal" class="modal-overlay" style="display: none;">
       <transition-stub name="zoom-in-center-transition">
-        <div class="modal -undefined" style="display: none;">
+        <div class="modal" style="display: none;">
           <!---->
           <div class="body">
             <div></div>

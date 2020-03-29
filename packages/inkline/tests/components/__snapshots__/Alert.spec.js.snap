@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components Alert should render correctly 1`] = `
-<div class="alert -undefined">
+<div class="alert">
   <!---->
   <div class="content"></div>
   <!---->
