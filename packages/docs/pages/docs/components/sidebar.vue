@@ -4,7 +4,7 @@
 
 .sidebar-layout-example {
     height: 20rem;
-    border: 1px solid $color-gray-20;
+    border: 1px solid $border-color-light;
 
     &.-lg {
         height: 24rem;
@@ -13,6 +13,10 @@
     &.-sm {
         height: 16rem;
     }
+}
+
+.inkline.-dark .sidebar-layout-example {
+    border: 1px solid $border-color-dark;
 }
 </style>
 <script>

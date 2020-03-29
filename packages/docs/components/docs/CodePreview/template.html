@@ -1,4 +1,4 @@
-<div class="code-preview" :class="{ '-expanded': expanded }">
+<div class="code-preview" :class="classes">
     <div class="header">
         <span class="title">
             {{title}}
@@ -12,7 +12,7 @@
                         :class="{ '-active': active === tab.id, '-icon': tab.icon }"
                         :key="tab.id"
                         :title="tab.title"
-                        :variant="active === tab.id ? 'primary' : 'light'"
+                        :variant="active === tab.id ? 'primary' : null"
                         @click="setActive(tab.id)"
                         v-if="$slots[tab.id]"
                         v-for="tab in tabs">

@@ -49,6 +49,10 @@
                 &.-active {
                     letter-spacing: 0;
                 }
+
+                i {
+                    line-height: inherit;
+                }
             }
         }
     }
@@ -148,6 +152,10 @@
     }
 }
 
+#toggle-dark-mode {
+    cursor: pointer;
+}
+
 .hamburger.sidebar-toggle {
     padding: 10px 12px;
     border-radius: border-radius('md');
@@ -165,5 +173,43 @@
 
     &:active {
         background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+.inkline.-dark .navbar#navbar {
+    > .container > .row > .column {
+        > .brand {
+            color: $body-color-dark;
+
+            .logo {
+                &.-light {
+                    display: inline-block;
+                }
+
+                &.-dark {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &.-transparent {
+        > .container > .row > .column {
+            > .brand {
+                @include breakpoint-down('md') {
+                    color: colors('light');
+
+                    .logo {
+                        &.-light {
+                            display: inline-block;
+                        }
+
+                        &.-dark {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-@import '~@inkline/inkline/css/config/index';
+@import '~@inkline/inkline/src/css/config/index';
 
 .footer-navigation {
     margin: $spacer 0;
@@ -29,5 +29,11 @@
 
     > .contribute {
         font-size: font-size(sm);
+    }
+}
+
+.inkline.-dark .footer-navigation {
+    > .pagination {
+        border-bottom: 1px solid $border-color-dark;
     }
 }

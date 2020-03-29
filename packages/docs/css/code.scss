@@ -17,6 +17,14 @@ pre[class*="language-"] {
         color: colors('primary') !important;
     }
 
+    .token.attr-name {
+        color: colors('success') !important;
+    }
+
+    .token.operator {
+        background-color: transparent !important;
+    }
+
     .token.atrule,
     .token.attr-value,
     .token.keyword {
@@ -51,16 +59,49 @@ pre[class*="language-"] {
     }
 }
 
-.alert {
-    &.-code {
-        &.-info code {
-            background-color: rgba(darken-lightness(colors('info'), 10%), 0.15);
-            color: darken-lightness(colors('info'), 35%);
+.inkline.-dark {
+    :not(pre) > code[class*="language-"],
+    pre[class*="language-"] {
+        background-color: colors('gray-80') !important;
+        color: white;
+
+        .token.property,
+        .token.tag,
+        .token.boolean,
+        .token.number,
+        .token.constant,
+        .token.symbol,
+        .token.deleted {
+            color: lighten(colors('primary'), 10%) !important;
         }
 
-        &.-danger code {
-            background-color: rgba(darken-lightness(colors('danger'), 10%), 0.15);
-            color: darken-lightness(colors('danger'), 35%);
+        .token.operator {
+            color: lighten(colors('danger'), 10%) !important;
         }
+
+        .token.punctuation {
+            color: lighten(colors('gray-60'), 10%) !important;
+        }
+
+        .token.attr-name {
+            color: lighten(colors('success'), 10%) !important;
+        }
+
+        .token.atrule,
+        .token.attr-value,
+        .token.keyword {
+            color: lighten(colors('secondary'), 10%) !important;
+        }
+
+        &.line-numbers {
+            .line-number {
+                border-right: 1px solid colors('gray-70');
+            }
+        }
+    }
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: 0 1px colors('gray-90') !important;
     }
 }

@@ -58,7 +58,45 @@ Selected value: <code>{{selectValue}}</code>
 <template slot="html">
 
 ~~~html
-<i-select v-model="value" placeholder="Choose an option">
+<i-select v-model="value" placeholder="Choose an option" disabled>
+    <i-select-option value="a" label="Option A" />
+    <i-select-option value="b" label="Option B" />
+    <i-select-option value="c" label="Option C" />
+    <i-select-option value="d" label="Option D" disabled />
+</i-select>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+  data () {
+    return {
+      value: ''
+    };
+  }
+}
+~~~
+
+</template>
+</i-code-preview>
+
+### Readonly State
+
+<i-code-preview title="Readonly Select">
+
+<i-select v-model="readonlySelectValue" placeholder="Choose an option" readonly>
+    <i-select-option value="a" label="Option A" />
+    <i-select-option value="b" label="Option B" />
+    <i-select-option value="c" label="Option C" />
+    <i-select-option value="d" label="Option D" disabled />
+</i-select>
+
+<template slot="html">
+
+~~~html
+<i-select v-model="value" placeholder="Choose an option" readonly>
     <i-select-option value="a" label="Option A" />
     <i-select-option value="b" label="Option B" />
     <i-select-option value="c" label="Option C" />

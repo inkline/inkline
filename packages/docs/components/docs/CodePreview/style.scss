@@ -7,6 +7,7 @@
     padding: $spacer;
     border-radius: border-radius('md');
     border: 1px solid colors('gray-20');
+    transition: border-color $transition-duration $transition-easing;
 
     @include breakpoint-down(xs) {
         border-radius: 0;
@@ -127,5 +128,9 @@
             margin-left: 2px;
             margin-right: 2px;
         }
+    }
+
+    &.-dark {
+        border: 1px solid colors('gray-80');
     }
 }

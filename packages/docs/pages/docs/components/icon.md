@@ -3,24 +3,178 @@
 
 Here’s an example of the basic icons included with the `<i-icon>` component.
 
-<i-code-preview title="Icon Example">
+<i-code-preview title="Icon Example" id="icons">
 
-<div class="icon-box"><i-icon icon="check" /></div>
-<div class="icon-box"><i-icon icon="info" /></div>
-<div class="icon-box"><i-icon icon="warning" /></div>
-<div class="icon-box"><i-icon icon="danger" /></div>
-<div class="icon-box"><i-icon icon="home" /></div>
-<div class="icon-box"><i-icon icon="calendar" /></div>
-<div class="icon-box"><i-icon icon="chevron-down" /></div>
-<div class="icon-box"><i-icon icon="caret-down" /></div>
-<div class="icon-box"><i-icon icon="plus" /></div>
-<div class="icon-box"><i-icon icon="minus" /></div>
-<div class="icon-box"><i-icon icon="times" /></div>
-<div class="icon-box"><i-icon icon="circle" /></div>
-<div class="icon-box"><i-icon icon="sort" /></div>
-<div class="icon-box"><i-icon icon="sort-asc" /></div>
-<div class="icon-box"><i-icon icon="sort-desc" /></div>
-<div class="icon-box"><i-icon icon="search" /></div>
+<i-tooltip>
+    <div class="icon-box">
+        <i-icon icon="check" />
+    </div>
+    <template slot="body">&lt;i-icon icon="check" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="circle" /></div>
+    <template slot="body">&lt;i-icon icon="circle" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="chevron-down" /></div>
+    <template slot="body">&lt;i-icon icon="chevron-down" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="caret-down" /></div>
+    <template slot="body">&lt;i-icon icon="caret-down" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="home" /></div>
+    <template slot="body">&lt;i-icon icon="home" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="calendar" /></div>
+    <template slot="body">&lt;i-icon icon="calendar" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="warning" /></div>
+    <template slot="body">&lt;i-icon icon="warning" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="danger" /></div>
+    <template slot="body">&lt;i-icon icon="danger" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="plus" /></div>
+    <template slot="body">&lt;i-icon icon="plus" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="minus" /></div>
+    <template slot="body">&lt;i-icon icon="minus" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="info" /></div>
+    <template slot="body">&lt;i-icon icon="info" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="times" /></div>
+    <template slot="body">&lt;i-icon icon="times" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="check" /></div>
+    <template slot="body">&lt;i-icon icon="check" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="sort-asc" /></div>
+    <template slot="body">&lt;i-icon icon="sort-asc" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="sort-desc" /></div>
+    <template slot="body">&lt;i-icon icon="sort-desc" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="sort" /></div>
+    <template slot="body">&lt;i-icon icon="sort" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="search" /></div>
+    <template slot="body">&lt;i-icon icon="search" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="book" /></div>
+    <template slot="body">&lt;i-icon icon="book" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="file" /></div>
+    <template slot="body">&lt;i-icon icon="file" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="stack" /></div>
+    <template slot="body">&lt;i-icon icon="stack" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="folder" /></div>
+    <template slot="body">&lt;i-icon icon="folder" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="cart" /></div>
+    <template slot="body">&lt;i-icon icon="cart" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="phone" /></div>
+    <template slot="body">&lt;i-icon icon="phone" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="envelope" /></div>
+    <template slot="body">&lt;i-icon icon="envelope" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="location" /></div>
+    <template slot="body">&lt;i-icon icon="location" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="clock" /></div>
+    <template slot="body">&lt;i-icon icon="clock" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="user" /></div>
+    <template slot="body">&lt;i-icon icon="user" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="key" /></div>
+    <template slot="body">&lt;i-icon icon="key" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="lock" /></div>
+    <template slot="body">&lt;i-icon icon="lock" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="settings" /></div>
+    <template slot="body">&lt;i-icon icon="settings" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="magic" /></div>
+    <template slot="body">&lt;i-icon icon="magic" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="dashboard" /></div>
+    <template slot="body">&lt;i-icon icon="dashboard" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="earth" /></div>
+    <template slot="body">&lt;i-icon icon="earth" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="link" /></div>
+    <template slot="body">&lt;i-icon icon="link" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="attachment" /></div>
+    <template slot="body">&lt;i-icon icon="attachment" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="light" /></div>
+    <template slot="body">&lt;i-icon icon="light" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="dark" /></div>
+    <template slot="body">&lt;i-icon icon="dark" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="star-empty" /></div>
+    <template slot="body">&lt;i-icon icon="star-empty" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="star-half" /></div>
+    <template slot="body">&lt;i-icon icon="star-half" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="star-full" /></div>
+    <template slot="body">&lt;i-icon icon="star-full" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="heart" /></div>
+    <template slot="body">&lt;i-icon icon="heart" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="code" /></div>
+    <template slot="body">&lt;i-icon icon="code" /&gt;</template>
+</i-tooltip>
 
 <template slot="html">
 

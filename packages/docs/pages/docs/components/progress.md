@@ -143,7 +143,7 @@ Inkline includes multiple progress styles. You can change the style of a `<i-pro
 </div>
 
 <div class="_margin-bottom-1">
-    <i-progress>
+    <i-progress variant="light">
         <i-progress-bar variant="dark" value="65" />
     </i-progress>
 </div>
@@ -188,7 +188,7 @@ Inkline includes multiple progress styles. You can change the style of a `<i-pro
 ~~~
 
 ~~~html
-<i-progress>
+<i-progress variant="light">
     <i-progress-bar variant="dark" value="65" />
 </i-progress>
 ~~~

@@ -2,6 +2,8 @@ import findIndex from 'lodash-es/findIndex';
 import findLastIndex from 'lodash-es/findLastIndex';
 import throttle from 'lodash-es/throttle';
 import { on, off } from "@inkline/inkline/src/helpers/index";
+import ClassesProviderMixin from "@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin";
+import VariantPropertyMixin from "@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin";
 
 function wasInViewport (element) {
     if (!element) { return; }
@@ -29,6 +31,10 @@ function isInViewport (element) {
 
 export default {
     name: 'PageNavigation',
+    mixins: [
+        ClassesProviderMixin,
+        VariantPropertyMixin
+    ],
     data () {
         return {
             title: '',
