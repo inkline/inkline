@@ -2,6 +2,6 @@
 
 exports[`Components Table should render correctly 1`] = `
 <div class="table-wrapper -responsive">
-  <table class="table"></table>
+  <table class="table -undefined"></table>
 </div>
 `;
