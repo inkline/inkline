@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components Dropdown should render correctly 1`] = `
-<div id="dropdown" class="dropdown"><button aria-haspopup="dropdown" aria-controls="dropdown"></button>
+<div id="dropdown" class="dropdown -undefined"><button aria-haspopup="dropdown" aria-controls="dropdown"></button>
   <transition-stub name="zoom-in-top-transition" id="dropdown">
-    <div class="menu" style="display: none;"><span class="arrow"></span> </div>
+    <div class="menu -undefined" style="display: none;"><span class="arrow"></span> </div>
   </transition-stub>
 </div>
 `;
