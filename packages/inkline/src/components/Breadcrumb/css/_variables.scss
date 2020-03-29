@@ -12,8 +12,11 @@ $breadcrumb-margin-bottom: $spacer !default;
 
 $breadcrumb-divider: '/' !default;
 
-$breadcrumb-active-color: $body-color !default;
-$breadcrumb-plain-color: $text-muted !default;
+$breadcrumb-plain-color-light: colors('gray-60') !default;
+$breadcrumb-active-color-light: colors('gray-80') !default;
+
+$breadcrumb-plain-color-dark: colors('gray-60') !default;
+$breadcrumb-active-color-dark: colors('gray-40') !default;
 
 //
 // Variants

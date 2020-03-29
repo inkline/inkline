@@ -21,7 +21,8 @@
             @focus="emitFocus"
             @blur="emitBlur"
             @keydown="emitKeydown"
-            @keyup="emitKeyup">
+            @keyup="emitKeyup"
+            @keydown.space.stop.prevent="clickInputRef">
         <slot name="prepend" slot="prepend"></slot>
         <slot name="prefix" slot="prefix"></slot>
         <slot name="suffix" slot="suffix"></slot>

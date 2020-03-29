@@ -46,6 +46,17 @@ body {
     background-color: $body-background;
 }
 
+body.inkline {
+    transition: background-color $transition-duration $transition-easing, color $transition-duration $transition-easing;
+
+    @each $variant-name, $variant in $body-variants {
+        &.-#{$variant-name} {
+            color: map_get($variant, 'color');
+            background-color: map_get($variant, 'background');
+        }
+    }
+}
+
 // IE10+ doesn't honor `<meta name='viewport'>` in some cases.
 //
 @at-root {

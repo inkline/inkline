@@ -4,7 +4,7 @@
 @each $variant-name, $variant in variants('modal') {
     .modal.-#{$variant-name} {
         > .header {
-            border-color: darken-lightness($variant, 10%);
+            border-color: $modal-border-color-light;
             background-color: variant-color-by-luminance($variant, darken-lightness($variant, 10%), darken-lightness($variant, 5%));
             color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
 
@@ -15,8 +15,8 @@
 
         > .body,
         > .footer {
-            border-color: $modal-border-color;
-            background-color: $modal-background;
+            border-color: $modal-border-color-light;
+            background-color: $modal-background-light;
         }
 
         &.-fill {
@@ -39,5 +39,17 @@
         }
 
         @include popup-arrow-variant((background: $variant, border-color: darken-lightness($variant, 10%)));
+    }
+
+    .inkline.-dark .modal.-#{$variant-name} {
+        > .header {
+            border-color: $modal-border-color-dark;
+        }
+
+        > .body,
+        > .footer {
+            border-color: $modal-border-color-dark;
+            background-color: $modal-background-dark;
+        }
     }
 }

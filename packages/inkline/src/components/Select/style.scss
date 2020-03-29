@@ -47,27 +47,6 @@
             z-index: 1;
             font-size: 12px;
         }
-
-        ::v-deep > .form-input {
-            > input[readonly] {
-                cursor: pointer;
-                border-color: $select-input-border-color;
-
-                &:disabled {
-                    cursor: default;
-                }
-
-                &:not(:disabled) {
-                    &:hover {
-                        border-color: $select-input-border-color-hover;
-                    }
-
-                    &:focus {
-                        border-color: $select-input-border-color-focus;
-                    }
-                }
-            }
-        }
     }
 
     &[readonly] > .form-input-group ::v-deep > .form-input {

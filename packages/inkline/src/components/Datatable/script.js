@@ -12,13 +12,13 @@ export const defaults = {
     pagination: {
         limit: { xs: 3, sm: 5 },
         size: 'md',
-        variant: 'light',
+        variant: null,
         rowsPerPage: 10,
         rowsPerPageOptions: [10, 25, 50, 100]
     },
     filtering: {
         size: 'md',
-        variant: 'light',
+        variant: null,
         fuse: {
             shouldSort: false,
             includeMatches: true,

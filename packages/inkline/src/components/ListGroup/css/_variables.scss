@@ -10,10 +10,31 @@ $list-group-item-padding: size-map($list-group-item-padding-base, $sizes, $size-
 
 $list-group-border-width: $border-width !default;
 $list-group-border-style: solid !default;
-$list-group-border-color: colors('gray-20') !default;
+
+$list-group-background-color-light: $body-background-light !default;
+$list-group-border-color-light: $border-color-light !default;
+
+$list-group-background-color-dark: $body-background-dark !default;
+$list-group-border-color-dark: $border-color-dark !default;
 
 $list-group-border-radius: $border-radius !default;
 
 $list-group-item-active-background: colors('primary') !default;
 $list-group-item-active-color: colors('white') !default;
 $list-group-item-active-border-color: darken-lightness(colors('primary'), 6%) !default;
+
+//
+// Variants
+//
+$list-group-variants: (
+    'light': (
+        'background-color': $list-group-background-color-light,
+        'border-color': $list-group-border-color-light
+    ),
+    'dark': (
+        'background-color': $list-group-background-color-dark,
+        'border-color': $list-group-border-color-dark
+    )
+) !default;
+
+$variants: map_merge($variants, ('list-group': $list-group-variants));

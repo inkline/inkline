@@ -1,5 +1,5 @@
 //
-// Collapsible variants
+// Tabs variants
 //
 @each $variant-name, $variant in variants('tabs') {
     .tabs.-#{$variant-name} {

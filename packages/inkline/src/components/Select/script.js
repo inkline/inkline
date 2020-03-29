@@ -20,6 +20,7 @@ import ReadonlyPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/
 import ParentFormGroupPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ParentFormGroupPropertyMixin';
 import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
 import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
+import VariantPropertyMixin from "@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin";
 import { hashString, querySelectorAll, uid, isMobile } from "@inkline/inkline/src/helpers";
 
 export default {
@@ -50,7 +51,8 @@ export default {
         ParentFormGroupPropertyMixin,
         ReadonlyPropertyMixin,
         SizePropertyMixin,
-        TabIndexPropertyMixin
+        TabIndexPropertyMixin,
+        VariantPropertyMixin
     ],
     props: {
         filterable: {

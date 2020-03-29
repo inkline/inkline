@@ -5,7 +5,8 @@
     .tabs.-#{$variant-name} {
         > .tab {
             border-color: variant-color-by-luminance($variant, lighten-lightness($variant, 5%), darken-lightness($variant, 5%));
-            background-color: #ffffff;
+            color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
+            background-color: $variant;
         }
     }
 }

@@ -1,4 +1,6 @@
 <script>
+import Vue from 'vue';
+
 export default {
     props: {
         variant: {
@@ -7,7 +9,7 @@ export default {
         }
     },
     created() {
-        this.classesProvider.add(() => this.variant ? `-${this.variant}` : false);
+        this.classesProvider.add(() => this.variant ? `-${this.variant}` : `-${this.$inkline?.config?.variant}`);
     }
 };
 </script>

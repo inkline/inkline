@@ -1,0 +1,27 @@
+//
+// Card variants
+//
+@each $variant-name, $variant in variants('checkable') {
+    $_checked-disabled-dark: $form-check-indicator-disabled-checked-background-color-dark;
+    $_checked-disabled-light: $form-check-indicator-disabled-checked-background-color-light;
+    $_checked-disabled-background: variant-color-by-luminance($variant, $_checked-disabled-dark, $_checked-disabled-light);
+
+    .form-check.-#{$variant-name} {
+        .form-input-label {
+            &::before {
+                background-color: $variant;
+            }
+        }
+
+        &.-custom {
+            cursor: pointer;
+
+            input {
+                &:disabled:checked ~ .form-input-label::before,
+                &[readonly]:checked ~ .form-input-label::before {
+                    background-color: $_checked-disabled-background;
+                }
+            }
+        }
+    }
+}

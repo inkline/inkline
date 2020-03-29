@@ -13,9 +13,12 @@ $modal-width: size-map($modal-width-base, $sizes, $size-multipliers) !default;
 
 $modal-border-width: $border-width !default;
 $modal-border-radius: $border-radius !default;
-$modal-border-color: colors('gray-30') !default;
 
-$modal-background: colors('white') !default;
+$modal-border-color-light: $border-color-light !default;
+$modal-background-light: colors('white') !default;
+$modal-border-color-dark: $border-color-dark !default;
+$modal-background-dark: colors('dark') !default;
+
 $modal-overlay-background: rgba(0, 0, 0, 0.75) !default;
 
 $modal-padding-base: spacers('1') !default;

@@ -13,7 +13,12 @@ $alert-padding: size-map($alert-padding-base, $sizes, $size-multipliers) !defaul
 
 $alert-dismiss-size: 1rem !default;
 
-$alert-background-darken: rgba(0, 0, 0, 0.15) !default;
+$alert-background-mix-percentage: 60% !default;
+$alert-border-darken-lighten-percentage: 10% !default;
+$alert-code-color-darken-lighten-percentage: 10% !default;
+$alert-code-background-color-darken-lighten-percentage: 7% !default;
+$alert-color-darken-lighten-percentage: 30% !default;
+$alert-link-color-darken-lighten-percentage: 35% !default;
 
 //
 // Variants

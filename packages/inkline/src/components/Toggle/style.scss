@@ -2,6 +2,7 @@
 @import '../../css/mixins/index';
 @import 'css/_variables';
 @import 'css/_sizes';
+@import 'css/_variants';
 
 /**
  * Checkbox
@@ -16,30 +17,9 @@
         width: 0;
         height: 0;
 
-        &:checked + .indicator {
-            background-color: $toggle-background-active;
-        }
-
-        &:focus + .indicator {
-            box-shadow: 0 0 1px $toggle-background-active;
-        }
-
         &:disabled + .indicator,
         &:read-only + .indicator {
-            background-color: $toggle-background-disabled;
-
-            &::before {
-                background-color: $toggle-indicator-background-disabled;
-            }
-        }
-
-        &:checked:disabled + .indicator,
-        &:checked:read-only + .indicator {
-            background-color: $toggle-background-active-disabled;
-
-            &::before {
-                background-color: $toggle-indicator-background-active-disabled;
-            }
+            cursor: default;
         }
     }
 
@@ -50,7 +30,6 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: $toggle-background;
         transition: $toggle-transition-duration;
 
         &::before {
@@ -59,10 +38,10 @@
             display: block;
             top: 50%;
             transform: translate(0, -50%);
-            background-color: $toggle-indicator-background;
             transition: $toggle-transition-duration;
         }
     }
 
+    @extend .toggle.-light;
     @extend .toggle.-md;
 }

@@ -3,4 +3,22 @@
 //
 
 $body-background: colors('white') !default;
-$body-color: colors('gray-80') !default;
+
+$body-background-light: $body-background !default;
+$body-color-light: colors('gray-80') !default;
+
+$body-background-dark: colors('gray-90') !default;
+$body-color-dark: colors('gray-10') !default;
+
+$body-color: $body-color-light !default;
+
+$body-variants: (
+    'dark': (
+        'background': $body-background-dark,
+        'color': $body-color-dark,
+    ),
+    'light': (
+        'background': $body-background-light,
+        'color': $body-color-light,
+    )
+);

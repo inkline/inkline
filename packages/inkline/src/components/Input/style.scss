@@ -5,6 +5,7 @@
 @import 'css/_variables';
 @import 'css/_mixins';
 @import 'css/_sizes';
+@import 'css/_variants';
 
 /**
  * Input
@@ -21,10 +22,9 @@
         width: 1%;
         padding: $input-padding-base;
         line-height: $input-line-height;
-        color: $input-color;
-        background-color: $input-background;
         background-clip: padding-box;
-        border: $input-border-width solid $input-border-color;
+        border-width: $input-border-width;
+        border-style: solid;
         box-shadow: $input-box-shadow;
 
         @if transition(input) {
@@ -37,15 +37,8 @@
             border: 0;
         }
 
-        &:hover {
-            border-color: $input-border-color-hover;
-        }
-
         // Customize the `:focus` state to imitate native WebKit styles.
         &:focus {
-            color: $input-color-focus;
-            background-color: $input-background-focus;
-            border-color: $input-border-color-focus;
             outline: 0;
 
             // Avoid using mixin so we can pass custom focus shadow properly
@@ -57,7 +50,6 @@
         // Placeholder
         // Override Firefox's unusual default opacity see https://github.com/twbs/bootstrap/pull/11526.
         &::placeholder {
-            color: $input-placeholder-color;
             opacity: 1;
         }
 
@@ -68,21 +60,14 @@
         // don't honor that edge case we style them as disabled anyway.
         &:disabled,
         &[readonly] {
-            background-color: $input-background-disabled;
-            color: $input-color-disabled;
             opacity: 1; // iOS fix for unreadable disabled content
             cursor: default;
-
-            &:hover {
-                border-color: $input-border-color;
-            }
         }
 
         /**
          * Select
          */
         &[readonly]:focus {
-            border-color: $input-border-color-focus;
             outline: 0;
         }
     }
@@ -95,6 +80,7 @@
         transform: translateY(-50%);
         font-style: normal;
         color: $text-muted;
+        transition: border-color $transition-duration $transition-easing;
 
         > button {
             background: transparent;
@@ -106,13 +92,15 @@
     .form-input-prefix {
         left: $spacer;
         padding-right: $spacer;
-        border-right: 1px solid $input-border-color;
+        border-right-width: $input-prefix-border-width;
+        border-right-style: solid;
     }
 
     .form-input-suffix {
         right: $spacer;
         padding-left: $spacer;
-        border-left: 1px solid $input-border-color;
+        border-left-width: $input-prefix-border-width;
+        border-left-style: solid;
     }
 
     .clear-input {
@@ -123,8 +111,6 @@
         cursor: pointer;
         width: $input-icon-circle-size;
         height: $input-icon-circle-size;
-        background-color: $input-icon-circle-background;
-        color: $input-background;
         border-radius: 100%;
 
         &::before {
@@ -132,10 +118,6 @@
 
             font-size: 8px;
             content: $icon-times;
-        }
-
-        &:hover {
-            background-color: $input-icon-circle-background-hover;
         }
     }
 
@@ -197,17 +179,8 @@
         }
     }
 
+    @extend .form-input-group.-light;
     @extend .form-input-group.-md;
-}
-
-/**
- * Select input
- * Special case for readonly property
- */
-.select {
-    &:not([readonly]) > .form-input-group > .form-input > input[readonly]:not([disabled]) {
-        background-color: $input-background;
-    }
 }
 
 /**
@@ -219,5 +192,5 @@
     display: flex;
     padding: 0;
     line-height: $input-line-height;
-    background-color: $input-append-prepend-background-color;
+    transition: background-color $transition-duration $transition-easing;
 }

@@ -10,7 +10,8 @@
     display: flex;
     box-sizing: border-box;
     width: 100%;
-    background-color: $header-background-color;
+    background-color: $header-background-color-light;
+    transition: background-color $transition-duration $transition-easing;
 
     /* stylelint-disable selector-list-comma-newline-after */
     > .container,
@@ -47,4 +48,8 @@
     }
 
     @extend .header.-md;
+}
+
+.inkline.-dark .header {
+    background-color: $header-background-color-dark;
 }

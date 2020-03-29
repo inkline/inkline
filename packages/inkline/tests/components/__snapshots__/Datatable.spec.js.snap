@@ -3,20 +3,20 @@
 exports[`Components Datatable should render correctly 1`] = `
 <div class="datatable-wrapper">
   <div class="header-wrapper">
-    <div class="pagination-select">Show<i-select-stub value="10" size="md" tabindex="1" placeholder="">
+    <div class="pagination-select">Show<i-select-stub value="10" size="md" tabindex="1" variant="" placeholder="">
         <i-select-option-stub value="10" label="10"></i-select-option-stub>
         <i-select-option-stub value="25" label="25"></i-select-option-stub>
         <i-select-option-stub value="50" label="50"></i-select-option-stub>
         <i-select-option-stub value="100" label="100"></i-select-option-stub>
       </i-select-stub>entries</div>
     <div class="filtering-input">
-      <i-input-stub value="" size="" tabindex="1" placeholder="Search">
+      <i-input-stub value="" size="" tabindex="1" variant="" placeholder="Search">
         <i-icon-stub icon="search" size=""></i-icon-stub>
       </i-input-stub>
     </div>
   </div>
   <div class="table-wrapper -responsive">
-    <table class="datatable">
+    <table class="datatable -undefined">
       <thead>
         <tr class="dtr">
           <!---->
@@ -46,7 +46,7 @@ exports[`Components Datatable should render correctly 1`] = `
   </div>
   <div class="footer-wrapper">
     <div class="pagination-range"> Showing 1 to 0 of 0 entries </div>
-    <i-pagination-stub size="md" variant="light" itemsperpage="10" items="0" limit="[object Object]" quicklink="true" value="1"></i-pagination-stub>
+    <i-pagination-stub size="md" itemsperpage="10" items="0" limit="[object Object]" quicklink="true" value="1"></i-pagination-stub>
   </div>
 </div>
 `;
