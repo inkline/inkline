@@ -4,7 +4,7 @@ exports[`Components Tooltip should render correctly 1`] = `
 <div class="tooltip-wrapper" id="tooltip">
   <div aria-haspopup="tooltip" aria-controls="tooltip"></div>
   <transition-stub name="zoom-in-top-transition">
-    <div class="tooltip -undefined" style="display: none;" id="tooltip"><span class="arrow"></span> </div>
+    <div class="tooltip" style="display: none;" id="tooltip"><span class="arrow"></span> </div>
   </transition-stub>
 </div>
 `;

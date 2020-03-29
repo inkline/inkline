@@ -2,6 +2,6 @@
 
 exports[`Components DropdownMenu should render correctly 1`] = `
 <transition-stub name="zoom-in-top-transition">
-  <div class="menu -undefined" style="display: none;"><span class="arrow"></span> </div>
+  <div class="menu" style="display: none;"><span class="arrow"></span> </div>
 </transition-stub>
 `;
