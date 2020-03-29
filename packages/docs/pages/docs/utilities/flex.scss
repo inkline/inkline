@@ -19,3 +19,13 @@
         border: 1px solid colors('gray-50');
     }
 }
+
+.inkline.-dark .flexbox-preview {
+    background: colors('gray-80');
+    border: 1px solid colors('gray-70');
+
+    > .flexbox-preview {
+        background: colors('gray-70');
+        border: 1px solid colors('gray-80');
+    }
+}

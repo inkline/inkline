@@ -1,7 +1,13 @@
 import { IButton, IButtonGroup } from '@inkline/inkline/src/index';
+import ClassesProviderMixin from "@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin";
+import VariantPropertyMixin from "@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin";
 
 export default {
     name: 'ICodePreview',
+    mixins: [
+        ClassesProviderMixin,
+        VariantPropertyMixin
+    ],
     components: {
         IButton,
         IButtonGroup
@@ -45,5 +51,8 @@ export default {
         setActive(id) {
             this.active = id;
         }
+    },
+    created() {
+        this.classesProvider.add(() => ({ '-expanded': this.expanded }));
     }
 };

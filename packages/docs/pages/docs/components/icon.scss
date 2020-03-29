@@ -1,13 +1,30 @@
 @import '~@inkline/inkline/css/config/index';
 @import '~@inkline/inkline/css/mixins/index';
 
+#icons {
+    .panel:first-child {
+        .panel-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    }
+
+    .tooltip-wrapper {
+        margin-bottom: 0;
+    }
+}
+
 .icon-box {
     width: 60px;
     height: 60px;
     line-height: 60px;
     text-align: center;
     display: inline-block;
-    border: 1px solid colors('gray-40');
-    margin-right: ($spacer / 2);
+    border: 1px solid $border-color-light;
     margin-bottom: ($spacer / 2);
+}
+
+.inkline.-dark .icon-box {
+    border-color: $border-color-dark;
 }

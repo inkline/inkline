@@ -63,6 +63,34 @@ export default {
 </template>
 </i-code-preview>
 
+### Readonly State
+
+<i-code-preview title="Readonly Input">
+
+<i-input v-model="readonlyInputValue" placeholder="Type something.." readonly />
+
+<template slot="html">
+
+~~~html
+<i-input v-model="value" placeholder="Type something.." readonly />
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+  data () {
+    return {
+      value: ''
+    };
+  }
+}
+~~~
+
+</template>
+</i-code-preview>
+
 ### Clearable Input
 
 <i-code-preview title="Input">

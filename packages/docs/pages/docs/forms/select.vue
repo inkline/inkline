@@ -18,6 +18,7 @@ export default {
         return {
             selectValue: '',
             disabledSelectValue: '',
+            readonlySelectValue: '',
             clearableSelectValue: '',
             prefixSelectValue: '',
             suffixSelectValue: '',

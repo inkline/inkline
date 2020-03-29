@@ -22,6 +22,7 @@ export default {
         return {
             inputValue: '',
             disabledInputValue: '',
+            readonlyInputValue: '',
             clearableInputValue: '',
             prefixInputValue: '',
             suffixInputValue: '',

@@ -15,6 +15,7 @@ $site-navigation-border-left-color-active: $color-primary !default;
             > span {
                 font-weight: bold;
                 color: $color-gray-80;
+                transition: color $transition-duration $transition-easing;
             }
 
             + li {
@@ -77,6 +78,7 @@ $site-navigation-border-left-color-active: $color-primary !default;
                     > a {
                         font-size: 90%;
                         padding-left: $spacer * 2;
+                        transition: color $transition-duration $transition-easing;
                     }
                 }
             }
@@ -112,6 +114,7 @@ $site-navigation-border-left-color-active: $color-primary !default;
                 .body > .content {
                     ul li a {
                         border-left-color: $site-navigation-border-left-color-active;
+                        transition: color $transition-duration $transition-easing;
                     }
                 }
             }
@@ -128,11 +131,70 @@ $site-navigation-border-left-color-active: $color-primary !default;
                     font-size: 75%;
                     margin-left: spacers('1/2');
                     color: $color-gray-40;
+                    transition: color $transition-duration $transition-easing, transform $transition-duration $transition-easing;
                 }
             }
 
             .body > .content {
                 padding: 0;
+            }
+        }
+    }
+
+    &.-dark {
+        ol {
+            > li {
+                > span {
+                    color: colors('white');
+                }
+            }
+        }
+
+        ul {
+            > li {
+                ::v-deep .collapsible > .item > a,
+                > a {
+                    color: colors('gray-40');
+                    border-left: 1px solid colors('gray-70');
+
+                    &::before {
+                        background: $link-color;
+                    }
+
+                    &.-active,
+                    &.nuxt-link-active {
+                        color: $link-color;
+                    }
+                }
+            }
+        }
+
+        ::v-deep .collapsible {
+            &.-active {
+                > .item {
+                    > .header {
+                        border-left-color: $border-color-dark;
+                        color: $color-primary;
+                    }
+
+                    &.-active > .header {
+                        border-left-color: $site-navigation-border-left-color-active;
+                    }
+
+                    .body > .content {
+                        ul li a {
+                            border-left-color: $site-navigation-border-left-color-active;
+                        }
+                    }
+                }
+            }
+
+            > .item {
+                > .header {
+                    .icon {
+                        color: $color-gray-60;
+                    }
+                }
             }
         }
     }

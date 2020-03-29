@@ -10,7 +10,9 @@ The loader component is available in a `light` or `dark` color, which you can ch
     <div id="light-loader-example">
         <i-loader variant="light" />
     </div>
-    <i-loader variant="dark" />
+    <div id="dark-loader-example">
+        <i-loader variant="dark" />
+    </div>
 </div>
 
 <template slot="html">
@@ -30,7 +32,7 @@ You're able to use the `size` modifier to control the size of your loader compon
 
 By default, loaders are set to have a `64px` width and height.
 
-<i-code-preview title="Loader Sizes">
+<i-code-preview title="Loader Sizes" class="themed">
 
 <div>
     <i-loader size="sm" variant="dark" class="_margin-right-1" />
@@ -57,7 +59,7 @@ By default, loaders are set to have a `64px` width and height.
 
 You can set the loader size to fit the container that it is in by using the `auto` size property. Make sure to use the same height and width to keep the correct aspect ratio.
 
-<i-code-preview title="Loader Auto Size">
+<i-code-preview title="Loader Auto Size" class="themed">
 
 <div style="width: 100px; height: 100px;">
     <i-loader size="auto" variant="dark" />
@@ -78,7 +80,7 @@ You can set the loader size to fit the container that it is in by using the `aut
 ### Slots
 You're able to provide some additional text by using the `default` loader slot.
 
-<i-code-preview title="Loader Default Slot">
+<i-code-preview title="Loader Default Slot" class="themed">
 
 <div>
     <i-loader variant="dark">100%</i-loader>

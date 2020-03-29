@@ -3,7 +3,7 @@
 @import '~@inkline/inkline/components/Button/css/variables';
 
 #index-page {
-    background-image: url('~static/images/pages/index-header-large.jpg');
+    background-image: url('~static/images/pages/index-header-large.svg');
     background-repeat: no-repeat;
     background-position: center 0;
     background-size: 1560px 675px;
@@ -17,7 +17,7 @@
     }
 
     @include breakpoint-down(sm) {
-        background-image: url('~static/images/pages/index-header-small.jpg');
+        background-image: url('~static/images/pages/index-header-small.svg');
         background-size: 768px 460px;
     }
 
@@ -163,6 +163,11 @@
     }
 }
 
+.inkline.-dark #features {
+    background-image: url('../static/images/pages/index-features-dark.svg');
+}
+
+
 $osawards-size: 125px;
 
 #osawards {
@@ -215,6 +220,7 @@ $osawards-size: 125px;
     background-color: colors('gray-20');
     text-align: center;
     z-index: 1;
+    margin-top: -2px;
 
     .sponsors-wrapper {
         display: flex;
@@ -247,6 +253,10 @@ $osawards-size: 125px;
             margin-right: $spacer;
         }
     }
+}
+
+.inkline.-dark #sponsors {
+    background-color: colors('gray-70');
 }
 
 #footer {
@@ -292,4 +302,8 @@ $osawards-size: 125px;
         font-size: font-size('sm');
         color: $text-muted;
     }
+}
+
+.inkline.-dark #footer {
+    background-image: url('../static/images/pages/index-footer-dark.svg');
 }

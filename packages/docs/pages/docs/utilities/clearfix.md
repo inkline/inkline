@@ -8,7 +8,7 @@ In the following example, without adding the clearfix helper, the wrapping div w
 
 <i-code-preview title="Clearfix Utility">
 
-<div class="_clearfix _background-gray-40 _rounded">
+<div class="clearfix-preview _clearfix _rounded">
     <i-button class="_float-left _margin-bottom-0">Floating Left Button</i-button>
     <i-button class="_float-right _margin-bottom-0">Floating Right Button</i-button>
 </div>
