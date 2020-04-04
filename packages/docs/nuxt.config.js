@@ -110,6 +110,11 @@ module.exports = {
     ** Build configuration
     */
     build: {
+        filenames: {
+            app: ({ isDev }) => isDev ? '[name].[hash].js' : '[chunkhash].js',
+            chunk: ({ isDev }) => isDev ? '[name].[hash].js' : '[chunkhash].js'
+        },
+
         transpile: [
             '@inkline/inkline',
             'vue-github-button',
