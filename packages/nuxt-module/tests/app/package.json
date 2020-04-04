@@ -11,8 +11,8 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
-    "@inkline/nuxt": "file:../../../nuxt-module"
+    "@inkline/nuxt": "file:../../../nuxt-module",
+    "nuxt": "^2.12.2"
   },
   "devDependencies": {
     "merge": "^1.2.1",
