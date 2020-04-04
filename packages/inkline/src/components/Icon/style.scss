@@ -48,6 +48,36 @@
     &.-heart::before { content: $icon-heart; }
     &.-code::before { content: $icon-code; }
 
+    &.-chevron-up::before {
+        content: $icon-chevron-down;
+        transform: rotate(180deg);
+    }
+
+    &.-chevron-left::before {
+        content: $icon-chevron-down;
+        transform: rotate(90deg);
+    }
+
+    &.-chevron-right::before {
+        content: $icon-chevron-down;
+        transform: rotate(-90deg);
+    }
+
+    &.-caret-up::before {
+        content: $icon-caret-down;
+        transform: rotate(180deg);
+    }
+
+    &.-caret-left::before {
+        content: $icon-caret-down;
+        transform: rotate(90deg);
+    }
+
+    &.-caret-right::before {
+        content: $icon-caret-down;
+        transform: rotate(-90deg);
+    }
+
     @each $size in $sizes {
         &.-#{$size} {
             font-size: font-size($size);

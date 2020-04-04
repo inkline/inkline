@@ -12,16 +12,40 @@ Here’s an example of the basic icons included with the `<i-icon>` component.
     <template slot="body">&lt;i-icon icon="check" /&gt;</template>
 </i-tooltip>
 <i-tooltip>
-    <div class="icon-box"><i-icon icon="circle" /></div>
-    <template slot="body">&lt;i-icon icon="circle" /&gt;</template>
+    <div class="icon-box"><i-icon icon="chevron-up" /></div>
+    <template slot="body">&lt;i-icon icon="chevron-up" /&gt;</template>
 </i-tooltip>
 <i-tooltip>
     <div class="icon-box"><i-icon icon="chevron-down" /></div>
     <template slot="body">&lt;i-icon icon="chevron-down" /&gt;</template>
 </i-tooltip>
 <i-tooltip>
+    <div class="icon-box"><i-icon icon="chevron-left" /></div>
+    <template slot="body">&lt;i-icon icon="chevron-left" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="chevron-right" /></div>
+    <template slot="body">&lt;i-icon icon="chevron-right" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="caret-up" /></div>
+    <template slot="body">&lt;i-icon icon="caret-up" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
     <div class="icon-box"><i-icon icon="caret-down" /></div>
     <template slot="body">&lt;i-icon icon="caret-down" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="caret-left" /></div>
+    <template slot="body">&lt;i-icon icon="caret-left" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="caret-right" /></div>
+    <template slot="body">&lt;i-icon icon="caret-right" /&gt;</template>
+</i-tooltip>
+<i-tooltip>
+    <div class="icon-box"><i-icon icon="circle" /></div>
+    <template slot="body">&lt;i-icon icon="circle" /&gt;</template>
 </i-tooltip>
 <i-tooltip>
     <div class="icon-box"><i-icon icon="home" /></div>

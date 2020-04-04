@@ -7,7 +7,7 @@ Wrap both the dropdown's trigger element (such as an `<i-button>`) and the `<i-d
 <i-code-preview title="Dropdown Example">
 
 <i-dropdown>
-    <i-button>Dropdown</i-button>
+    <i-button>Dropdown <i-icon icon="caret-down" class="_margin-left-1-2" /></i-button>
     <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
@@ -44,7 +44,7 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 
 <div>
 <i-dropdown placement="top">
-    <i-button>Dropdown Top</i-button>
+    <i-button>Dropdown Top <i-icon icon="caret-up" class="_margin-left-1-2" /></i-button>
     <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
@@ -55,7 +55,7 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 </i-dropdown>&nbsp;
 
 <i-dropdown placement="bottom">
-    <i-button>Dropdown Bottom</i-button>
+    <i-button>Dropdown Bottom <i-icon icon="caret-down" class="_margin-left-1-2" /></i-button>
     <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
@@ -66,7 +66,7 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 </i-dropdown>&nbsp;
 
 <i-dropdown placement="left">
-    <i-button>Dropdown Left</i-button>
+    <i-button>Dropdown Left <i-icon icon="caret-left" class="_margin-right-1-2" /></i-button>
     <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
@@ -77,7 +77,7 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 </i-dropdown>&nbsp;
 
 <i-dropdown placement="right">
-    <i-button>Dropdown Right</i-button>
+    <i-button>Dropdown Right <i-icon icon="caret-right" class="_margin-left-1-2" /></i-button>
     <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
