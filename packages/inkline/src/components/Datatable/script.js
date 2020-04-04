@@ -20,6 +20,7 @@ export const defaults = {
         size: 'md',
         variant: null,
         fuse: {
+            isCaseSensitive: false,
             shouldSort: false,
             includeMatches: true,
             includeScore: true,
