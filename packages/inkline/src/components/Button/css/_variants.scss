@@ -10,6 +10,11 @@
         background-color: $variant;
         border-color: $variant;
 
+        &.-disabled,
+        &:disabled {
+            opacity: $button-opacity-disabled-light;
+        }
+
         &:not(:disabled):not(.-disabled) {
             &:hover,
             &.-hovered {
@@ -70,6 +75,13 @@
             > .loader-item {
                 background-color: variant-color-by-luminance($variant, colors('white'), colors('gray-80')) !important;
             }
+        }
+    }
+
+    .inkline.-dark .button.-#{$variant-name} {
+        &.-disabled,
+        &:disabled {
+            opacity: $button-opacity-disabled-dark;
         }
     }
 }

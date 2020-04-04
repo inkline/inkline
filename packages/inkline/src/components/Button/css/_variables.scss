@@ -18,7 +18,9 @@ $button-margin: $spacer !default;
 
 $button-darken-percentage-hover: 5% !default;
 $button-darken-percentage-active: 12.5% !default;
-$button-opacity-disabled: 0.75 !default;
+
+$button-opacity-disabled-light: 0.75 !default;
+$button-opacity-disabled-dark: 0.66 !default;
 
 $button-link-color: $link-color !default;
 $button-link-disabled-color: $text-muted !default;
