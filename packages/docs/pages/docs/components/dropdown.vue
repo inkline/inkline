@@ -2,7 +2,7 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
-import { IButton, IDropdown, IDropdownMenu, IDropdownItem, IDropdownDivider } from "@inkline/inkline/src/components";
+import { IButton, IDropdown, IDropdownMenu, IDropdownItem, IDropdownDivider, IIcon } from "@inkline/inkline/src/components";
 
 export default {
     name: 'DropdownView',
@@ -14,7 +14,8 @@ export default {
         IDropdown,
         IDropdownMenu,
         IDropdownItem,
-        IDropdownDivider
+        IDropdownDivider,
+        IIcon
     },
     data() {
         return {
