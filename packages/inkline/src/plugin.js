@@ -8,9 +8,8 @@ export const Inkline = {
          * Checks if default inkline variant has been stored in localStorage.
          * If not, fallback to light variant.
          */
-        const storedVariant = !(Vue.prototype.$isServer || typeof window === 'undefined') &&
+        const variant = !(Vue.prototype.$isServer || typeof window === 'undefined') &&
             window.localStorage.getItem('inkline-variant');
-        const variant = storedVariant || 'light';
 
         /**
          * Register $inkline prototype in Vue components
@@ -30,6 +29,13 @@ export const Inkline = {
 
                         window.localStorage.setItem('inkline-variant', value);
                     }
+                },
+                /**
+                 *
+                 */
+                created() {
+                    this.config.variant = false;
+                    setTimeout(() => this.config.variant = variant, 0);
                 }
             }),
 
@@ -37,7 +43,7 @@ export const Inkline = {
              * Config getter used for accessing and setting reactive values
              * inside components using this.$inkline.config
              */
-            get config() { return this._vm.$data.config },
+            get config() { return this._vm?.$data.config },
 
             /**
              * Form builder wrapper used to create a root form schema
@@ -60,7 +66,11 @@ export const Inkline = {
          * Add inkline base class to body
          */
         if (!(Vue.prototype.$isServer || typeof window === 'undefined')) {
-            addClass(document.body, `inkline -${variant}`);
+            addClass(document.body, 'inkline');
+
+            if (variant) {
+                addClass(document.body, `-${variant}`);
+            }
         }
 
         /**
