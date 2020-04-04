@@ -45,6 +45,25 @@ function highlight(resultItem) {
     });
 }
 
+
+const searchOptions = {
+    shouldSort: true,
+    includeMatches: true,
+    includeScore: true,
+    threshold: 0.25,
+    location: 0,
+    distance: 75,
+    tokenize: true,
+    maxPatternLength: 32,
+    minMatchCharLength: 3,
+    keys: [
+        { name: "title", weight: 0.4 },
+        { name: "subtitle", weight: 0.3 },
+        { name: "description", weight: 0.2 },
+        { name: "category", weight: 0.1 }
+    ]
+};
+
 export default {
     name: 'SiteSearch',
     components: {
@@ -53,17 +72,28 @@ export default {
         IDropdownItem,
         IInput
     },
-    created() {
-        axios.get('/search.json')
+    asyncData() {
+        return axios.get('/search.json')
             .then((response) => {
-                this.searchList = response.data.entries;
-                this.searchList.forEach((category) => {
-                    this.searchClients.push(new Fuse(category.items, this.searchOptions));
-                    this.searchResults.push({
+                const searchList = response.data.entries;
+                const searchResults = [];
+                const searchClients = [];
+
+                searchList.forEach((category) => {
+                    searchClients.push(new Fuse(category.items, searchOptions));
+                    searchResults.push({
                         title: category.title,
                         items: []
                     });
                 });
+
+                console.log(searchList, searchResults, searchClients)
+
+                return {
+                    searchList,
+                    searchResults,
+                    searchClients
+                }
             });
     },
     data () {
@@ -72,24 +102,7 @@ export default {
             searchKeymap: { show: ['enter'], hide: ['enter'] },
             searchList: [],
             searchResults: [],
-            searchClients: [],
-            searchOptions: {
-                shouldSort: true,
-                includeMatches: true,
-                includeScore: true,
-                threshold: 0.25,
-                location: 0,
-                distance: 75,
-                tokenize: true,
-                maxPatternLength: 32,
-                minMatchCharLength: 3,
-                keys: [
-                    { name: "title", weight: 0.4 },
-                    { name: "subtitle", weight: 0.3 },
-                    { name: "description", weight: 0.2 },
-                    { name: "category", weight: 0.1 }
-                ]
-            }
+            searchClients: []
         };
     },
     computed: {
