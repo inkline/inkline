@@ -43,7 +43,6 @@
     // Disabled state comes first so active can properly restyle
     &.-disabled,
     &:disabled {
-        opacity: $button-opacity-disabled;
         box-shadow: none;
     }
 
