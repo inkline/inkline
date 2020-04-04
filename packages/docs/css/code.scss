@@ -1,6 +1,7 @@
 code[class*="language-"],
 pre[class*="language-"] {
     font-size: 0.9rem !important;
+    transition: background-color $transition-duration $transition-easing, color $transition-duration $transition-easing, text-shadow $transition-duration $transition-easing;
 }
 
 :not(pre) > code[class*="language-"],
@@ -48,6 +49,7 @@ pre[class*="language-"] {
             border-right: 1px solid colors('gray-30');
             padding: 0 1rem 0 0;
             text-align: right;
+            transition: border-color $transition-duration $transition-easing;
         }
 
         .line-number::before {
