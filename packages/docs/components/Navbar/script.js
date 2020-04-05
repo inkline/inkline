@@ -21,7 +21,7 @@ export default {
     },
     computed: {
         variantIcon() {
-            return this.$inkline.config?.variant || 'light';
+            return this.$inkline.config.variant || 'light';
         }
     },
     methods: {
