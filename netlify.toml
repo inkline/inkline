@@ -1,6 +1,6 @@
 [build]
     base = "packages/docs/"
-    publish = "packages/docs/dist/"
+    publish = "dist/"
     command = "npm run link && npm run build && npm run generate"
 
 [context.production]
