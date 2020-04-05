@@ -13,7 +13,8 @@
     "lint:style": "stylelint --syntax scss '(components|css|directives|helpers|layouts|pages)/**/*.scss'",
     "precommit": "npm run lint",
     "test": "jest",
-    "search": "node scripts/search.js"
+    "search": "node scripts/search.js",
+    "link": "npm link ../inkline"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
