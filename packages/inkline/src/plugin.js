@@ -4,12 +4,21 @@ import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
 
 export const Inkline = {
     install(Vue, options = {}) {
+        options = {
+            config: {
+                variant: 'light',
+                autodetectVariant: false,
+                ...options.config
+            },
+            ...options
+        };
+
         /**
          * Checks if default inkline variant has been stored in localStorage.
          * If not, fallback to light variant.
          */
         const variant = !(Vue.prototype.$isServer || typeof window === 'undefined') &&
-            window.localStorage.getItem('inkline-variant');
+            window.localStorage.getItem('inkline-variant') || options.config?.variant;
 
         /**
          * Register $inkline prototype in Vue components
@@ -20,22 +29,37 @@ export const Inkline = {
              */
             _vm: new Vue({
                 data: () => ({
-                    config: { variant }
+                    config: options.config
                 }),
                 watch: {
                     'config.variant'(value, oldValue) {
-                        removeClass(document.body, `-${oldValue}`);
-                        addClass(document.body, `-${value}`);
+                        if (oldValue) {
+                            removeClass(document.body, `-${oldValue}`);
+                        }
 
-                        window.localStorage.setItem('inkline-variant', value);
+                        if (value) {
+                            addClass(document.body, `-${value}`);
+                            window.localStorage.setItem('inkline-variant', value);
+                        } else {
+                            window.localStorage.removeItem('inkline-variant');
+                        }
                     }
                 },
                 /**
                  *
                  */
                 created() {
-                    this.config.variant = false;
-                    setTimeout(() => this.config.variant = variant, 0);
+                    let setVariant;
+
+                    this.config.variant = null;
+
+                    if (this.config.autodetectVariant) {
+                        setVariant = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    } else {
+                        setVariant = variant;
+                    }
+
+                    setTimeout(() => this.config.variant = setVariant, 0);
                 }
             }),
 
@@ -66,7 +90,7 @@ export const Inkline = {
          * Add inkline base class to body
          */
         if (!(Vue.prototype.$isServer || typeof window === 'undefined')) {
-            addClass(document.body, 'inkline');
+            addClass(document.body, `inkline`);
 
             if (variant) {
                 addClass(document.body, `-${variant}`);

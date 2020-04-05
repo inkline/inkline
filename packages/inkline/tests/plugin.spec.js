@@ -34,13 +34,16 @@ describe('Plugin', () => {
 
             Inkline.install(localVue);
 
-            expect(spy).toHaveBeenCalledWith(document.body, 'inkline -light');
+            expect(spy).toHaveBeenCalledWith(document.body, 'inkline');
+            expect(spy).toHaveBeenCalledWith(document.body, '-light');
         });
 
         describe('$inkline', () => {
             let vm;
 
             beforeEach(() => {
+                window.localStorage.removeItem('inkline-variant');
+
                 Inkline.install(localVue);
 
                 vm = localVue.prototype.$inkline._vm;
@@ -53,9 +56,12 @@ describe('Plugin', () => {
 
                 describe('data', () => {
                     it('should be defined', () => {
-                        expect(vm.$data).toEqual({ config: { variant: 'light' } });
+                        expect(vm.$data).toEqual({
+                            config: { variant: null, autodetectVariant: false }
+                        });
                     });
                 });
+
                 describe('watch', () => {
                     describe('config', () => {
                         it('should set body class to new variant', (done) => {
@@ -68,6 +74,46 @@ describe('Plugin', () => {
                                 done();
                             });
                         });
+                    });
+                });
+
+                describe('created', () => {
+                    it('should reset variant to make sure components are updated', (done) => {
+                        setTimeout(() => {
+                            expect(vm.$data.config.variant).toEqual('light');
+                            done();
+                        });
+                    });
+
+                    it('should set variant to light if autodetectVariant is true', (done) => {
+                        Inkline.install(localVue, {
+                            config: {
+                                autodetectVariant: true
+                            }
+                        });
+
+                        setTimeout(() => {
+                            expect(vm.$data.config.variant).toEqual('light');
+                            done();
+                        });
+                    });
+
+                    it('should set variant to dark if autodetectVariant is true', (done) => {
+                        let matchMedia = window.matchMedia;
+                        window.matchMedia = () => ({ matches: [] });
+
+                        Inkline.install(localVue, {
+                            config: {
+                                autodetectVariant: true
+                            }
+                        });
+
+                        setTimeout(() => {
+                            expect(localVue.prototype.$inkline._vm.$data.config.variant).toEqual('dark');
+                            done();
+                        });
+
+                        window.matchMedia = matchMedia;
                     });
                 });
             });
