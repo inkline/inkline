@@ -112,5 +112,22 @@ describe('Components', () => {
                 });
             });
         });
+
+        describe('methods', () => {
+            describe('onClick', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.onClick).toBeDefined();
+                });
+
+                it('should emit click event', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+                    const e = {};
+
+                    wrapper.vm.onClick(e);
+
+                    expect(spy).toHaveBeenCalledWith('click', e);
+                });
+            });
+        });
     });
 });
