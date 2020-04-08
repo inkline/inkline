@@ -64,6 +64,95 @@ export default {
 </template>
 </i-code-preview>
 
+
+### Styling
+You can provide classes and inline styles for both columns and rows. Column specific styles and classes will be applied to all `<td>` table data cells that are under a specific column:
+
+~~~js
+export default {
+    data() {
+        return {
+            columns: [
+                { title: 'Name', path: 'name', class: 'column-class' },
+                { title: 'Country', path: 'address.country', style: { background: 'red' } },
+            ],
+            rows: [
+                { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },
+                { id: '2', name: 'Bertram Gilfoyle', address: { city: 'Toronto', country: 'Canada' } },
+                { id: '3', name: 'Dinesh Chugtai', address: { city: 'Lahore', country: 'Pakistan' } },
+                { id: '4', name: 'Jared Dunn', address: { city: 'Berlin', country: 'Germany' } },
+                { id: '5', name: 'Erlich Bachman', address: { city: 'Palo Alto', country: 'United States' } }
+            ]
+        }
+    }
+}
+~~~
+
+Row styles and classes will be applied to the `<tr>` wrapper if specified using the `row.config` property. 
+
+You can also apply column specific classes and styles to a `<td>` table data cell of a row using `row.config.columns[column.path]`. A column path of `*` will apply to all child table data cells of the row.
+
+~~~js
+export default {
+    data() {
+        return {
+            columns: [
+                { title: 'Name', path: 'name' },
+                { title: 'Country', path: 'address.country' },
+            ],
+            rows: [
+                { 
+                    id: '1', 
+                    name: 'Richard Hendricks', 
+                    address: { city: 'Cupertino', country: 'United States' },
+                    config: {
+                        class: 'row-class'
+                    }
+                },
+                { 
+                    id: '2', 
+                    name: 'Bertram Gilfoyle', 
+                    address: { city: 'Toronto', country: 'Canada' },
+                    config: {
+                        style: { 'font-weight': 'bold' }
+                    }
+                },
+                { 
+                    id: '3', 
+                    name: 'Dinesh Chugtai', 
+                    address: { city: 'Lahore', country: 'Pakistan' },
+                    config: {
+                        columns: {
+                            '*': { class: [ 'column-class-a', 'column-class-b' ] }
+                        }   
+                    }
+                },
+                { 
+                    id: '4', 
+                    name: 'Jared Dunn', 
+                    address: { city: 'Berlin', country: 'Germany' },
+                    config: {
+                        columns: {
+                            name: { class: [ 'name-column-class' ] }
+                        }   
+                    }
+                },
+                { 
+                    id: '5', 
+                    name: 'Erlich Bachman', 
+                    address: { city: 'Palo Alto', country: 'United States' },
+                    config: {
+                        columns: {
+                            name: { style: { background: 'red' } }
+                        }   
+                    } 
+                }
+            ]
+        }
+    }
+}
+~~~
+
 ### Render Function
 By adding a function in the `render` property of the column definition, you can easily provide a way to manipulate data or display it differently. This is the simplest option, the perfect choice when working with simple strings.
 
@@ -506,6 +595,80 @@ export default {
 </template>
 </i-code-preview>
 
+### Header Wrapper Slot
+By providing a scoped `header-wrapper` slot, you can render the datatable search, entries selector and pagination as you see fit.
+
+<div v-pre>
+
+~~~html
+<i-datatable :columns="columns" :rows="rows">
+    <template v-slot:header-wrapper="{ rowsFrom, rowsTo, rowsCount, page, rowsPerPage, filter, onPageChange, onRowsPerPageChange, onFilterChange }">
+        <i-input @input="onFilterChange" placeholder="Search.." />
+        <div>
+            <i-button :active="rowsPerPage === 10" @click="onRowsPerPageChange(10)">10</i-button>
+            <i-button :active="rowsPerPage === 25" @click="onRowsPerPageChange(25)">25</i-button>
+            <i-button :active="rowsPerPage === 50" @click="onRowsPerPageChange(50)">50</i-button>
+        </div>
+    </template>
+</i-datatable>
+~~~
+
+</div>
+
+<i-code-preview title="Data Table Header Wrapper Slot">
+<i-datatable :columns="dataPathColumns" :rows="wrapperRows">
+    <template v-slot:header-wrapper="{ rowsFrom, rowsTo, rowsCount, page, rowsPerPage, filter, onPageChange, onRowsPerPageChange, onFilterChange }">
+        <i-input :value="filter" @input="onFilterChange" placeholder="Search.." />
+        <div>
+            <i-button class="_margin-0" :active="rowsPerPage === 10" @click="onRowsPerPageChange(10)">10</i-button>
+            <i-button class="_margin-0" :active="rowsPerPage === 25" @click="onRowsPerPageChange(25)">25</i-button>
+            <i-button class="_margin-0" :active="rowsPerPage === 50" @click="onRowsPerPageChange(50)">50</i-button>
+        </div>
+    </template>
+</i-datatable>
+<template slot="html">
+<div v-pre>
+
+~~~html
+<i-datatable :columns="columns" :rows="rows">
+    <template v-slot:header-wrapper="{ rowsFrom, rowsTo, rowsCount, page, rowsPerPage, filter, onPageChange, onRowsPerPageChange, onFilterChange }">
+        <i-input @input="onFilterChange" placeholder="Search.." />
+        <div>
+            <i-button :active="rowsPerPage === 10" @click="onRowsPerPageChange(10)">10</i-button>
+            <i-button :active="rowsPerPage === 25" @click="onRowsPerPageChange(25)">25</i-button>
+            <i-button :active="rowsPerPage === 50" @click="onRowsPerPageChange(50)">50</i-button>
+        </div>
+    </template>
+</i-datatable>
+~~~
+
+</div>
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    data() {
+        return {
+            columns: [
+                { title: 'Name', path: 'name' },
+                { title: 'Address', path: 'address', render: (row) => `${row.address.city}, ${row.address.country}` },
+            ],
+            rows: [
+                { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },
+                { id: '2', name: 'Bertram Gilfoyle', address: { city: 'Toronto', country: 'Canada' } },
+                { id: '3', name: 'Dinesh Chugtai', address: { city: 'Lahore', country: 'Pakistan' } },
+                { id: '4', name: 'Jared Dunn', address: { city: 'Berlin', country: 'Germany' } },
+                { id: '5', name: 'Erlich Bachman', address: { city: 'Palo Alto', country: 'United States' } }
+            ]
+        }
+    }
+}
+~~~
+
+</template>
+</i-code-preview>
+
 
 ### Render Footer Function
 By adding a function in the `renderFooter` property of the column definition, you can easily manipulate table footers. This is the simplest option, the perfect choice when working with simple strings.
@@ -697,6 +860,82 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
         <td class="_text-right">{{index + 1}}</td>
         <td>{{row.name}}</td>
         <td>{{row.address.city}}, {{row.address.country}}</td>
+    </template>
+</i-datatable>
+~~~
+
+</div>
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    data() {
+        return {
+            columns: [
+                { title: 'Name', path: 'name' },
+                { title: 'Address', path: 'address', render: (row) => `${row.address.city}, ${row.address.country}` },
+            ],
+            rows: [
+                { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },
+                { id: '2', name: 'Bertram Gilfoyle', address: { city: 'Toronto', country: 'Canada' } },
+                { id: '3', name: 'Dinesh Chugtai', address: { city: 'Lahore', country: 'Pakistan' } },
+                { id: '4', name: 'Jared Dunn', address: { city: 'Berlin', country: 'Germany' } },
+                { id: '5', name: 'Erlich Bachman', address: { city: 'Palo Alto', country: 'United States' } }
+            ]
+        }
+    }
+}
+~~~
+
+</template>
+</i-code-preview>
+
+### Footer Wrapper Slot
+By providing a scoped `footer-wrapper` slot, you can render the datatable search, entries selector and pagination as you see fit.
+
+<div v-pre>
+
+~~~html
+<i-datatable :columns="columns" :rows="rows">
+    <template v-slot:footer-wrapper="{ rowsFrom, rowsTo, rowsCount, page, rowsPerPage, filter, onPageChange, onRowsPerPageChange, onFilterChange }">
+        <i-input @input="onFilterChange" placeholder="Search.." />
+        <div>
+            <i-button :active="rowsPerPage === 10" @click="onRowsPerPageChange(10)">10</i-button>
+            <i-button :active="rowsPerPage === 25" @click="onRowsPerPageChange(25)">25</i-button>
+            <i-button :active="rowsPerPage === 50" @click="onRowsPerPageChange(50)">50</i-button>
+        </div>
+    </template>
+</i-datatable>
+~~~
+
+</div>
+
+<i-code-preview title="Data Table Footer Wrapper Slot">
+<i-datatable :columns="dataPathColumns" :rows="wrapperRows">
+    <template v-slot:footer-wrapper="{ rowsFrom, rowsTo, rowsCount, page, rowsPerPage, filter, onPageChange, onRowsPerPageChange, onFilterChange }">
+        <div>{{ rowsFrom }} to {{ rowsTo }} out of {{ rowsCount }}</div>
+        <i-pagination
+            :items="rowsCount"
+            :items-per-page="rowsPerPage"
+            :limit="3"
+            :value="page"
+            @input="onPageChange" />
+    </template>
+</i-datatable>
+<template slot="html">
+<div v-pre>
+
+~~~html
+<i-datatable :columns="columns" :rows="rows">
+    <template v-slot:footer-wrapper="{ rowsFrom, rowsTo, rowsCount, page, rowsPerPage, filter, onPageChange, onRowsPerPageChange, onFilterChange }">
+        <div>{{ rowsFrom }} to {{ rowsTo }} out of {{ rowsCount }}</div>
+        <i-pagination
+            :items="rowsCount"
+            :items-per-page="rowsPerPage"
+            :limit="3"
+            :value="page"
+            @input="onPageChange" />
     </template>
 </i-datatable>
 ~~~
