@@ -2,10 +2,18 @@
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
-import { IDatatable, IAlert, IIcon } from '@inkline/inkline/src';
+import {
+    IDatatable,
+    IAlert,
+    IIcon,
+    IInput,
+    IPagination,
+    IButton
+} from '@inkline/inkline/src';
 import TableProgress from '@components/docs/TableProgress';
 import TableHeaderComponent from '@components/docs/TableHeaderComponent';
 import TableFooterComponent from '@components/docs/TableFooterComponent';
+import {generateDataRows} from "@helpers/generateDataRows";
 
 export default {
     extends: View,
@@ -16,6 +24,9 @@ export default {
         IDatatable,
         IAlert,
         IIcon,
+        IInput,
+        IButton,
+        IPagination,
         TableProgress,
         TableHeaderComponent
     },
@@ -63,6 +74,7 @@ export default {
                 { id: '4', name: 'Jared Dunn', progress: 36 },
                 { id: '5', name: 'Erlich Bachman', progress: 95 }
             ],
+            wrapperRows: generateDataRows(50)
         };
     }
 };
