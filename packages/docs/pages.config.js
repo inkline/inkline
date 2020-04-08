@@ -260,6 +260,11 @@ const pages = [
         description: 'Inkline\'s Data Table allows you to expand a row to easily show more details about the entry.'
     },
     {
+        id: 'docs-components-dashboard-datatable-events',
+        title: 'Events - Data Table',
+        description: 'Inkline\'s Data Table offers various events that you can use to interact with your data.'
+    },
+    {
         id: 'docs-components-dashboard-datatable-api',
         title: 'API - Data Table',
         description: 'Inkline\'s Data Table has a very intuitive and comprehensive component API for all your customization needs.'
