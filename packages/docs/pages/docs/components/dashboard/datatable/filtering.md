@@ -39,6 +39,44 @@ export default {
 </template>
 </i-code-preview>
 
+### Disable Filtering
+Filtering can be disabled by setting the `filtering` attribute to `false`.
+
+<i-code-preview title="Data Table Default Filtering">
+<i-datatable :columns="columns" :rows="rows" :filtering="false" />
+<template slot="html">
+
+~~~html
+<i-datatable :columns="columns" :rows="rows" :filtering="false" />
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    data() {
+        return {
+            columns: [
+                { title: 'Name', path: 'name' },
+                { title: 'Email', path: 'email' },
+                { title: 'Age', path: 'age' }
+            ],
+            rows: [
+                { id: '1', name: 'Richard Hendricks', email: 'richard.hendricks@email.com', age: 26 },
+                { id: '2', name: 'Bertram Gilfoyle', email: 'bertram.gilfoyle@email.com', age: 30 },
+                { id: '3', name: 'Dinesh Chugtai', email: 'dinesh.chugtai@email.com', age: 30 },
+                { id: '4', name: 'Jared Dunn', email: 'jared.dunn@email.com', age: 35 },
+                { id: '5', name: 'Erlich Bachman', email: 'erlich.bachman@email.com', age: 32 }
+            ]
+        }
+    }
+}
+~~~
+
+</template>
+</i-code-preview>
+
 
 ### Selective Filtering
 By setting the `filterable` column property to `true`, you can easily add filtering support to specific table columns. 
