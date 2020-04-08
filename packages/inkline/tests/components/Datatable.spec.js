@@ -164,9 +164,11 @@ describe('Components', () => {
         });
 
         describe('methods', () => {
-            describe('onHeaderCellClick()', () => {
+            describe('onTableHeadingClick()', () => {
+                const event = {};
+
                 it('should be defined', () => {
-                    expect(wrapper.vm.onHeaderCellClick).toBeDefined();
+                    expect(wrapper.vm.onTableHeadingClick).toBeDefined();
                 });
 
                 it('should not do anything if column is not sortable', () => {
@@ -174,7 +176,7 @@ describe('Components', () => {
                     const sortDirection = wrapper.vm.sortDirection;
                     const column = columns[0];
 
-                    wrapper.vm.onHeaderCellClick(column);
+                    wrapper.vm.onTableHeadingClick(event, column);
 
                     expect(wrapper.vm.sortBy).toEqual(sortBy);
                     expect(wrapper.vm.sortDirection).toEqual(sortDirection);
@@ -183,7 +185,7 @@ describe('Components', () => {
                 it('should sort rows by column key in ascending order', () => {
                     const column = { ...columns[0], sortable: true };
 
-                    wrapper.vm.onHeaderCellClick(column);
+                    wrapper.vm.onTableHeadingClick(event, column);
 
                     expect(wrapper.vm.sortBy).toEqual(columns[0].path);
                     expect(wrapper.vm.sortDirection).toEqual('asc');
@@ -192,8 +194,8 @@ describe('Components', () => {
                 it('should sort rows by column key in descending order on second call', () => {
                     const column = { ...columns[0], sortable: true };
 
-                    wrapper.vm.onHeaderCellClick(column);
-                    wrapper.vm.onHeaderCellClick(column);
+                    wrapper.vm.onTableHeadingClick(event, column);
+                    wrapper.vm.onTableHeadingClick(event, column);
 
                     expect(wrapper.vm.sortBy).toEqual(columns[0].path);
                     expect(wrapper.vm.sortDirection).toEqual('desc');
@@ -202,12 +204,79 @@ describe('Components', () => {
                 it('should sort rows by column key in ascending order if order is descending', () => {
                     const column = { ...columns[0], sortable: true };
 
-                    wrapper.vm.onHeaderCellClick(column);
-                    wrapper.vm.onHeaderCellClick(column);
-                    wrapper.vm.onHeaderCellClick(column);
+                    wrapper.vm.onTableHeadingClick(event, column);
+                    wrapper.vm.onTableHeadingClick(event, column);
+                    wrapper.vm.onTableHeadingClick(event, column);
 
                     expect(wrapper.vm.sortBy).toEqual(columns[0].path);
                     expect(wrapper.vm.sortDirection).toEqual('asc');
+                });
+
+                it('should emit th-click with event, column and index', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+                    const column = { ...columns[0], sortable: true, indexRef: 0 };
+
+                    wrapper.setProps({ columns });
+                    wrapper.vm.onTableHeadingClick(event, column);
+
+                    expect(spy).toHaveBeenCalledWith('th-click', event, wrapper.vm.columns[column.indexRef], column.indexRef);
+                });
+
+                it('should emit th-click with event, column without index', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+                    const column = { ...columns[0], sortable: true };
+
+                    wrapper.setProps({ columns });
+                    wrapper.vm.onTableHeadingClick(event, column);
+
+                    expect(spy).toHaveBeenCalledWith('th-click', event, column, undefined);
+                });
+            });
+
+            describe('onTableRowClick()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.onTableRowClick).toBeDefined();
+                });
+
+                it('should call tr-click event with event, row at index and index', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+                    const event = {};
+                    const renderedRow = { indexRef: 0 };
+
+                    wrapper.setProps({ columns, rows });
+                    wrapper.vm.onTableRowClick(event, renderedRow);
+
+                    expect(spy).toHaveBeenCalledWith('tr-click', event, wrapper.vm.tableRows[renderedRow.indexRef], renderedRow.indexRef);
+                });
+            });
+
+            describe('onTableDataClick()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.onTableDataClick).toBeDefined();
+                });
+
+                it('should call td-click event with event, column, row and index', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+                    const event = {};
+                    const renderedColumn = { indexRef: 0 };
+                    const renderedRow = { indexRef: 0 };
+
+                    wrapper.setProps({ columns, rows });
+                    wrapper.vm.onTableDataClick(event, renderedColumn, renderedRow);
+
+                    expect(spy).toHaveBeenCalledWith('td-click', event, wrapper.vm.columns[renderedColumn.indexRef], renderedColumn.indexRef, wrapper.vm.tableRows[renderedRow.indexRef], renderedRow.indexRef);
+                });
+
+                it('should call td-click event with event, column, row and no index if internally specified column', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+                    const event = {};
+                    const renderedColumn = {};
+                    const renderedRow = { indexRef: 0 };
+
+                    wrapper.setProps({ columns, rows });
+                    wrapper.vm.onTableDataClick(event, renderedColumn, renderedRow);
+
+                    expect(spy).toHaveBeenCalledWith('td-click', event, renderedColumn, undefined, wrapper.vm.tableRows[renderedRow.indexRef], renderedRow.indexRef);
                 });
             });
 
@@ -277,25 +346,45 @@ describe('Components', () => {
                     expect(columnClasses).toContain('-sticky');
                 });
 
-                it('should return concatenated column classes string', () => {
-                    const column = { ...columns[0], classes: 'class' };
+                it('should return concatenated column class string', () => {
+                    const column = { ...columns[0], class: 'class' };
                     const row = undefined;
                     const columnClasses = wrapper.vm.columnClass(column, row);
 
                     expect(columnClasses).toContain('class');
                 });
 
-                it('should return concatenated column classes array', () => {
-                    const column = { ...columns[0], classes: ['class'] };
+                it('should return concatenated column class array', () => {
+                    const column = { ...columns[0], class: ['class'] };
                     const row = undefined;
                     const columnClasses = wrapper.vm.columnClass(column, row);
 
                     expect(columnClasses).toContain('class');
                 });
 
-                it('should return added row column class', () => {
+                it('should return added row specific column class', () => {
                     const column = { ...columns[0] };
-                    const row = { config: { columnClass: { name: 'class' }}};
+                    const row = {
+                        config: {
+                            columns: {
+                                [columns[0].path]: { class: 'class' }
+                            }
+                        }
+                    };
+                    const columnClasses = wrapper.vm.columnClass(column, row);
+
+                    expect(columnClasses).toContain('class');
+                });
+
+                it('should return added row general column class', () => {
+                    const column = { ...columns[0] };
+                    const row = {
+                        config: {
+                            columns: {
+                                '*': { class: 'class' }
+                            }
+                        }
+                    };
                     const columnClasses = wrapper.vm.columnClass(column, row);
 
                     expect(columnClasses).toContain('class');
@@ -331,9 +420,29 @@ describe('Components', () => {
                     expect(columnStyle).toEqual({ padding: '10px' });
                 });
 
-                it('should return style object if column style and row style specified', () => {
+                it('should return style object if column style and row column style specified', () => {
                     const column = { ...columns[0], style: { padding: '10px' } };
-                    const row = { config: { style: { margin: '15px' } } };
+                    const row = {
+                        config: {
+                            columns: {
+                                [columns[0].path]: { style: { margin: '15px' } }
+                            }
+                        }
+                    };
+                    const columnStyle = wrapper.vm.columnStyle(column, row);
+
+                    expect(columnStyle).toEqual({ padding: '10px', margin: '15px' });
+                });
+
+                it('should return style object if column style and row general column style specified', () => {
+                    const column = { ...columns[0], style: { padding: '10px' } };
+                    const row = {
+                        config: {
+                            columns: {
+                                '*': { style: { margin: '15px' } }
+                            }
+                        }
+                    };
                     const columnStyle = wrapper.vm.columnStyle(column, row);
 
                     expect(columnStyle).toEqual({ padding: '10px', margin: '15px' });
@@ -367,17 +476,51 @@ describe('Components', () => {
                 });
 
                 it('should return array with appended rowClass if rowClass is string', () => {
-                    const row = { config: { rowClass: 'class' } };
+                    const row = { config: { class: 'class' } };
                     const rowClass = wrapper.vm.rowClass(row);
 
                     expect(rowClass).toEqual(['class']);
                 });
 
                 it('should return array with concatenated rowClass if rowClass is array', () => {
-                    const row = { config: { rowClass: ['class'] } };
+                    const row = { config: { class: ['class'] } };
                     const rowClass = wrapper.vm.rowClass(row);
 
                     expect(rowClass).toEqual(['class']);
+                });
+            });
+
+            describe('rowStyle()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.rowStyle).toBeDefined();
+                });
+
+                it('should return false if row not provided', () => {
+                    const row = null;
+                    const rowStyle = wrapper.vm.rowStyle(row);
+
+                    expect(rowStyle).toEqual(false);
+                });
+
+                it('should return false if row config not provided', () => {
+                    const row = {};
+                    const rowStyle = wrapper.vm.rowStyle(row);
+
+                    expect(rowStyle).toEqual(false);
+                });
+
+                it('should return false if row config style not provided', () => {
+                    const row = { config: {} };
+                    const rowStyle = wrapper.vm.rowStyle(row);
+
+                    expect(rowStyle).toEqual(false);
+                });
+
+                it('should return object with merged style if config.style is object', () => {
+                    const row = { config: { style: { background: 'red' } } };
+                    const rowStyle = wrapper.vm.rowStyle(row);
+
+                    expect(rowStyle).toEqual({ background: 'red' });
                 });
             });
 
@@ -390,6 +533,20 @@ describe('Components', () => {
                     const newColumns = wrapper.vm.addIdColumn([ ...columns ]);
 
                     expect(newColumns[0]).toEqual(idColumn);
+                });
+            });
+
+            describe('addColumnIndexRef()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.addColumnIndexRef).toBeDefined();
+                });
+
+                it('should add id column to start of array', () => {
+                    const newColumns = wrapper.vm.addColumnIndexRef([ ...columns ]);
+
+                    newColumns.forEach((column, index) => {
+                        expect(column.indexRef).toEqual(index);
+                    });
                 });
             });
 
@@ -812,6 +969,22 @@ describe('Components', () => {
                     expect(Object.keys(wrapper.vm.expanded).length).toEqual(1);
                 });
             });
+
+            describe('setValueCallback()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.setValueCallback).toBeDefined();
+                });
+
+                it('should return a function for changing the given field', () => {
+                    const fn = wrapper.vm.setValueCallback('filter');
+
+                    expect(fn).toEqual(expect.any(Function));
+
+                    fn('abc');
+
+                    expect(wrapper.vm.filter).toEqual('abc');
+                });
+            });
         });
 
         describe('watch()', () => {
@@ -906,6 +1079,7 @@ describe('Components', () => {
                 });
 
                 it('should call add count, id and expand columns', (done) => {
+                    const spyAddColumnIndexRef = jest.spyOn(wrapper.vm, 'addColumnIndexRef');
                     const spyAddCountColumn = jest.spyOn(wrapper.vm, 'addCountColumn');
                     const spyAddIdColumn = jest.spyOn(wrapper.vm, 'addIdColumn');
                     const spyAddExpandColumn = jest.spyOn(wrapper.vm, 'addExpandColumn');
@@ -913,6 +1087,7 @@ describe('Components', () => {
                     wrapper.setProps({ columns });
 
                     wrapper.vm.$nextTick(() => {
+                        expect(spyAddColumnIndexRef).toHaveBeenCalled();
                         expect(spyAddCountColumn).toHaveBeenCalled();
                         expect(spyAddIdColumn).toHaveBeenCalled();
                         expect(spyAddExpandColumn).toHaveBeenCalled();

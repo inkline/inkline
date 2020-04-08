@@ -53,7 +53,7 @@ export const idColumn = {
 export const countColumn = {
     title: '#',
     path: '#',
-    classes: '-count',
+    class: '-count',
     align: 'right',
     sortable: true,
     render(row, column, index) {
@@ -141,8 +141,9 @@ export default {
     },
     computed: {
         tableColumns() {
-            let columns = [...this.columns];
+            let columns = [ ...this.columns ];
 
+            columns = this.addColumnIndexRef(columns);
             columns = this.addCountColumn(columns);
             columns = this.addIdColumn(columns);
             columns = this.addExpandColumn(columns);
@@ -216,21 +217,6 @@ export default {
     },
     methods: {
         /**
-         * Click handler for header cell that triggers sorting and toggles sort direction
-         *
-         * @param column
-         */
-        onHeaderCellClick(column) {
-            if (column.sortable) {
-                if (this.sortBy !== column.path) {
-                    this.sortBy = column.path;
-                    this.sortDirection = 'asc';
-                } else {
-                    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-                }
-            }
-        },
-        /**
          * Return rendered column header values
          *
          * @param columns
@@ -265,14 +251,19 @@ export default {
             }
 
             // Add column specific classes
-            if (column.classes) {
-                classes = classes.concat(column.classes.constructor === Array ?
-                    column.classes : [column.classes]);
+            if (column.class) {
+                classes = classes.concat(column.class.constructor === Array ?
+                    column.class : [column.class]);
             }
 
             // Add row specific classes for current column
-            if (row && row.config && row.config.columnClass && row.config.columnClass[column.path]) {
-                classes = classes.concat(row.config.columnClass[column.path]);
+            if (row?.config?.columns?.[column.path]?.class) {
+                classes = classes.concat(row.config.columns[column.path].class);
+            }
+
+            // Add row specific classes for all columns
+            if (row?.config?.columns?.['*']?.class) {
+                classes = classes.concat(row.config.columns['*'].class);
             }
 
             return classes;
@@ -284,7 +275,11 @@ export default {
          * @param row
          */
         columnStyle(column, row) {
-            const style = { ...column.style, ...((row || {}).config || {}).style };
+            const style = {
+                ...column.style,
+                ...(row?.config?.columns?.[column.path]?.style || {}),
+                ...(row?.config?.columns?.['*']?.style || {})
+            };
 
             return Object.keys(style).length > 0 && style;
         },
@@ -298,12 +293,22 @@ export default {
             let classes = [];
 
             // Add row specific classes
-            if (row && row.config && row.config.rowClass) {
-                classes = classes.concat(row.config.rowClass.constructor === Array ?
-                    row.config.rowClass : [row.config.rowClass]);
+            if (row?.config?.class) {
+                classes = classes.concat(row.config.class.constructor === Array ?
+                    row.config.class : [row.config.class]);
             }
 
             return classes;
+        },
+        /**
+         * Compute style for the given row
+         *
+         * @param row
+         */
+        rowStyle(row) {
+            const style = { ...row?.config?.style };
+
+            return Object.keys(style).length > 0 && style;
         },
         /**
          * Add an extended count column if enabled
@@ -315,6 +320,17 @@ export default {
             columns.unshift({ ...idColumn });
 
             return columns;
+        },
+        /**
+         * Add a reference to column index
+         *
+         * @param columns
+         * @returns {*}
+         */
+        addColumnIndexRef(columns) {
+            return columns.map((column, index) => ({
+                ...column, indexRef: index
+            }));
         },
         /**
          * Add an extended count column if enabled
@@ -459,6 +475,55 @@ export default {
             }
 
             this.expanded = { ...this.expanded, [rowId]: !this.expanded[rowId] };
+        },
+        /**
+         * Click handler for header cell that triggers sorting and toggles sort direction
+         *
+         * @param event
+         * @param column
+         */
+        onTableHeadingClick(event, column) {
+            if (column.sortable) {
+                if (this.sortBy !== column.path) {
+                    this.sortBy = column.path;
+                    this.sortDirection = 'asc';
+                } else {
+                    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+                }
+            }
+
+            this.$emit('th-click', event, this.columns[column.indexRef] || column, column.indexRef)
+        },
+        /**
+         * Toggle row click event
+         *
+         * @param event
+         * @param row
+         */
+        onTableRowClick(event, row) {
+            this.$emit('tr-click', event,
+                this.tableRows[row.indexRef], row.indexRef);
+        },
+        /**
+         * Toggle cell click event
+         *
+         * @param event
+         * @param column
+         * @param row
+         */
+        onTableDataClick(event, column, row) {
+            this.$emit('td-click', event,
+                this.columns[column.indexRef] || column, column.indexRef,
+                this.tableRows[row.indexRef], row.indexRef);
+        },
+        /**
+         * Return a callback for setting a specific datatable field
+         *
+         * @param field
+         * @returns {function(*): *}
+         */
+        setValueCallback(field) {
+            return (value) => this[field] = value;
         }
     },
     watch: {
