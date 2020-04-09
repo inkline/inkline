@@ -93,6 +93,7 @@ const sed = (entry) => {
 try {
     execSync('git add ./dist/');
     execSync('git commit -m "Generated dist folder."');
+    execSync('git push');
 } catch (e) {
     console.log('Bundled files are the same. Nothing to commit.'); // eslint-disable-line no-console
 }
