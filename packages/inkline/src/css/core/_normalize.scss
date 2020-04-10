@@ -47,7 +47,9 @@ body {
 }
 
 body.inkline {
-    transition: background-color $transition-duration $transition-easing, color $transition-duration $transition-easing;
+    transition-property: background-color, color;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-easing;
 
     @each $variant-name, $variant in $body-variants {
         &.-#{$variant-name} {
