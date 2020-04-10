@@ -279,128 +279,100 @@ Inkline includes two predefined tooltip styles, each serving its own semantic pu
 
 <i-api-preview title="Tooltip API" markup="i-tooltip" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Tooltip">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>arrow</td>
-                    <td>Sets whether to attach an arrow to the tooltip.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>true</code></td>
-                </tr>
-                <tr>
-                    <td>disabled</td>
-                    <td>Sets the tooltip state as disabled.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>id</td>
-                    <td>Sets the identifier of the tooltip.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td><code>tooltip-&lt;uid&gt;</code></td>
-                </tr>
-                <tr>
-                    <td>placement</td>
-                    <td>Sets the placement of the tooltip.</td>
-                    <td><code>String</code></td>
-                    <td>
-                        <code>top</code>, 
-                        <code>top-start</code>,
-                        <code>top-end</code>,
-                        <code>bottom</code>, 
-                        <code>bottom-start</code>,
-                        <code>bottom-end</code>,
-                        <code>left</code>, 
-                        <code>left-start</code>,
-                        <code>left-end</code>,
-                        <code>right</code>, 
-                        <code>right-start</code>,
-                        <code>right-end</code>
-                    </td>
-                    <td><code>top</code></td>
-                </tr>
-                <tr>
-                    <td>popperOptions</td>
-                    <td>Sets custom options for the Popper.js plugin.</td>
-                    <td><code>Object</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>trigger</td>
-                    <td>Sets the trigger event of the tooltip.</td>
-                    <td><code>String</code></td>
-                    <td><code>click</code>, <code>hover</code></td>
-                    <td><code>hover</code></td>
-                </tr>
-                <tr>
-                    <td>transformOrigin</td>
-                    <td>Sets the transform origin of the tooltip.</td>
-                    <td>
-                        <code>Boolean</code>, 
-                        <code>String</code> 
-                    </td>
-                    <td></td>
-                    <td><code>true</code></td>
-                </tr>
-                <tr>
-                    <td>variant</td>
-                    <td>Sets the color variant of the popover.</td>
-                    <td><code>String</code></td>
-                    <td><code>light</code>, <code>dark</code></td>
-                    <td><code>light</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">arrow</template>
+                <template slot="description">Sets whether to attach an arrow to the tooltip.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">disabled</template>
+                <template slot="description">Sets the tooltip state as disabled.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">id</template>
+                <template slot="description">Sets the identifier of the tooltip.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>tooltip-&lt;uid&gt;</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">placement</template>
+                <template slot="description">Sets the placement of the tooltip.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values">
+                    <code>top</code>, 
+                    <code>top-start</code>,
+                    <code>top-end</code>,
+                    <code>bottom</code>, 
+                    <code>bottom-start</code>,
+                    <code>bottom-end</code>,
+                    <code>left</code>, 
+                    <code>left-start</code>,
+                    <code>left-end</code>,
+                    <code>right</code>, 
+                    <code>right-start</code>,
+                    <code>right-end</code>
+                </template>
+                <template slot=""><code>top</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">popperOptions</template>
+                <template slot="description">Sets custom options for the Popper.js plugin.</template>
+                <template slot="type"><code>Object</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">trigger</template>
+                <template slot="description">Sets the trigger event of the tooltip.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>click</code>, <code>hover</code></template>
+                <template slot="default"><code>hover</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">transformOrigin</template>
+                <template slot="description">Sets the transform origin of the tooltip.</template>
+                <template slot="type">
+                    <code>Boolean</code>, 
+                    <code>String</code> 
+                </template>
+                <template slot=""></template>
+                <template slot=""><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the popover.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>light</code>, <code>dark</code></template>
+                <template slot="default"><code>light</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for tooltip component trigger.</td>
-                </tr>
-                <tr>
-                    <td>body</td>
-                    <td>Slot for tooltip component body.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for tooltip component trigger.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">body</template>
+                <template slot="description">Slot for tooltip component body.</template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="events">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Prototype</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>change</td>
-                    <td>Emitted when visibility changes.</td>
-                    <td><code>(visible: Boolean) => {}</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="event">change</template>
+                <template slot="description">Emitted when visibility changes.</template>
+                <template slot="type"><code>(visible: Boolean) => {}</code></template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

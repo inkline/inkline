@@ -271,132 +271,85 @@ Inkline includes basic predefined tabs styles that you can use within your appli
 
 <i-api-preview title="Tabs API" markup="i-tabs" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Tabs">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>custom</td>
-                    <td>Sets the tabs to have a custom design.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>stretch</td>
-                    <td>Sets the tabs header to be stretched across the whole tabs body width.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>value</td>
-                    <td>Sets the default active tab. To be used together with the <code>v-model</code> directive.</td>
-                    <td>String</td>
-                    <td></td>
-                    <td><code>null</code></td>
-                </tr>
-                <tr>
-                    <td>variant</td>
-                    <td>Sets the color variant of the tabs component.</td>
-                    <td><code>String</code></td>
-                    <td><code>light</code>, <code>dark</code>, <code>unstyled</code></td>
-                    <td><code>light</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">custom</template>
+                <template slot="description">Sets the tabs to have a custom design.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">stretch</template>
+                <template slot="description">Sets the tabs header to be stretched across the whole tabs body width.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">value</template>
+                <template slot="description">Sets the default active tab. To be used together with the <code>v-model</code> directive.</template>
+                <template slot="type">String</template>
+                <template slot="values"></template>
+                <template slot="default"><code>null</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the tabs component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>light</code>, <code>dark</code>, <code>unstyled</code></template>
+                <template slot="default"><code>light</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for tabs default content.</td>
-                </tr>
-                <tr>
-                    <td>header</td>
-                    <td>Scoped slot for tabs header.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for tabs default content.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">header</template>
+                <template slot="description">Scoped slot for tabs header.</template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="events">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Prototype</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>input</td>
-                    <td>Emitted when a tab is selected.</td>
-                    <td><code>(active: String) => {}</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="event">input</template>
+                <template slot="description">Emitted when a tab is selected.</template>
+                <template slot="type"><code>(active: String) => {}</code></template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Tab Item API" markup="i-tab" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Tab">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>title</td>
-                    <td>Sets the title of the tab.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>id</td>
-                    <td>Sets the identifier of the tab.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td><code>tab-&lt;uid&gt;</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">title</template>
+                <template slot="description">Sets the title of the tab.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">id</template>
+                <template slot="description">Sets the identifier of the tab.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>tab-&lt;uid&gt;</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for tabdefault content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for tabdefault content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

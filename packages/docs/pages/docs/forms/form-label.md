@@ -155,48 +155,29 @@ export default {
 
 <i-api-preview title="Form Label API" markup="i-form-label" expanded>
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>placement</td>
-                    <td>Sets the placement of the form label component.</td>
-                    <td><code>String</code></td>
-                    <td><code>left</code>, <code>default</code>, <code>right</code></td>
-                    <td><code>default</code></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the form label component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">placement</template>
+                <template slot="description">Sets the placement of the form label component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>left</code>, <code>default</code>, <code>right</code></template>
+                <template slot="default"><code>default</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the form label component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for form label default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for form label default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

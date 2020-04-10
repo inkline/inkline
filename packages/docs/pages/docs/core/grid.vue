@@ -3,6 +3,8 @@
 <script>
 import View from '@components/docs/View';
 import GridBox from '@components/docs/GridBox';
+import ApiTable from '@components/docs/ApiTable';
+import ApiTableRow from '@components/docs/ApiTableRow';
 import { head } from "@helpers/head";
 import { IContainer, IRow, IColumn } from "@inkline/inkline/src/components";
 
@@ -12,6 +14,8 @@ export default {
     extends: View,
     head: head('docs-core-grid'),
     components: {
+        ApiTable,
+        ApiTableRow,
         GridBox,
         IContainer,
         IRow,

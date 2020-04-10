@@ -253,125 +253,78 @@ Inkline includes basic predefined collapsible styles that you can use within you
 
 <i-api-preview title="Collapsible API" markup="i-collapsible" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Collapsible">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>accordion</td>
-                    <td>Sets the collapsible in accordion mode.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>value</td>
-                    <td>Sets the default active collapsible item and stores opened collapsible panels. To be used together with the <code>v-model</code> directive.</td>
-                    <td>Array</td>
-                    <td></td>
-                    <td><code>[]</code></td>
-                </tr>
-                <tr>
-                    <td>variant</td>
-                    <td>Sets the color variant of the collapsible component.</td>
-                    <td><code>String</code></td>
-                    <td><code>light</code>, <code>dark</code>, <code>unstyled</code></td>
-                    <td><code>light</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">accordion</template>
+                <template slot="description">Sets the collapsible in accordion mode.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">value</template>
+                <template slot="description">Sets the default active collapsible item and stores opened collapsible panels. To be used together with the <code>v-model</code> directive.</template>
+                <template slot="type">Array</template>
+                <template slot="values"></template>
+                <template slot="default"><code>[]</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the collapsible component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>light</code>, <code>dark</code>, <code>unstyled</code></template>
+                <template slot="default"><code>light</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for collapsible default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for collapsible default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="events">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Prototype</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>input</td>
-                    <td>Emitted when collapsible items are opened or closed.</td>
-                    <td><code>(activeItems: String[]) => {}</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="event">input</template>
+                <template slot="description">Emitted when collapsible items are opened or closed.</template>
+                <template slot="type"><code>(activeItems: String[]) => {}</code></template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Collapsible Item API" markup="i-collapsible-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Collapsible">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>title</td>
-                    <td>Sets the title of the collapsible panel. Replaceable using the <code>title</code> slot.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>id</td>
-                    <td>Sets the identifier of the collapsible item.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td><code>collapsible-item-&lt;uid&gt;</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">title</template>
+                <template slot="description">Sets the title of the collapsible panel. Replaceable using the <code>title</code> slot.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">id</template>
+                <template slot="description">Sets the identifier of the collapsible item.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>collapsible-item-&lt;uid&gt;</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for collapsible item default content.</td>
-                </tr>
-                <tr>
-                    <td>title</td>
-                    <td>Slot for collapsible item title.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for collapsible item default content.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">title</template>
+                <template slot="description">Slot for collapsible item title.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

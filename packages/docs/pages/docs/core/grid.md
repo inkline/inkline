@@ -1071,257 +1071,200 @@ You can make the `<i-container>` component fill the whole width of the parent el
 
 <i-api-preview title="Container API" expanded>
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>fluid</td>
-                    <td>Sets the container to cover 100% of the parent's width.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">fluid</template>
+                <template slot="description">Sets the container to cover 100% of the parent's width.</template>
+                <template slot="type">Boolean</template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for container default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for container default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Row API" expanded>
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>noGutter</td>
-                    <td>Sets whether the row and child columns have a gutter width.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>noCollapse</td>
-                    <td>Sets the flex flow to be <code>row nowrap</code>.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>start</td>
-                    <td>Aligns the content to the start of the row. The alignment can be applied responsively by adding one of the responsive properties <code>startXs</code>, <code>startSm</code>, <code>startMd</code>, <code>startLg</code>, <code>startXl</code> (e.g. will be used as <code>&lt;i-row start-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>center</td>
-                    <td>Aligns the content to the center of the row. The alignment can be applied responsively by adding one of the responsive properties <code>centerXs</code>, <code>centerSm</code>, <code>centerMd</code>, <code>centerLg</code>, <code>centerXl</code> (e.g. will be used as <code>&lt;i-row center-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>end</td>
-                    <td>Aligns the content to the end of the row. The alignment can be applied responsively by adding one of the responsive properties <code>endXs</code>, <code>endSm</code>, <code>endMd</code>, <code>endLg</code>, <code>endXl</code> (e.g. will be used as <code>&lt;i-row end-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>top</td>
-                    <td>Aligns the content to the top of the row. The alignment can be applied responsively by adding one of the responsive properties <code>topXs</code>, <code>topSm</code>, <code>topMd</code>, <code>topLg</code>, <code>topXl</code> (e.g. will be used as <code>&lt;i-row top-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>middle</td>
-                    <td>Aligns the content to the middle of the row. The alignment can be applied responsively by adding one of the responsive properties <code>middleXs</code>, <code>middleSm</code>, <code>middleMd</code>, <code>middleLg</code>, <code>middleXl</code> (e.g. will be used as <code>&lt;i-row middle-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>bottom</td>
-                    <td>Aligns the content to the bottom of the row. The alignment can be applied responsively by adding one of the responsive properties <code>bottomXs</code>, <code>bottomSm</code>, <code>bottomMd</code>, <code>bottomLg</code>, <code>bottomXl</code> (e.g. will be used as <code>&lt;i-row bottom-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>around</td>
-                    <td>Justifies the content position to have space around. The content justifying can be applied responsively by adding one of the responsive properties <code>aroundXs</code>, <code>aroundSm</code>, <code>aroundMd</code>, <code>aroundLg</code>, <code>aroundXl</code> (e.g. will be used as <code>&lt;i-row around-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>between</td>
-                    <td>Justifies the content position to have space between. The content justifying can be applied responsively by adding one of the responsive properties <code>betweenXs</code>, <code>betweenSm</code>, <code>betweenMd</code>, <code>betweenLg</code>, <code>betweenXl</code> (e.g. will be used as <code>&lt;i-row between-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>reverse</td>
-                    <td>Reverses the order of the row content. The content justifying can be applied responsively by adding one of the responsive properties <code>reverseXs</code>, <code>reverseSm</code>, <code>reverseMd</code>, <code>reverseLg</code>, <code>reverseXl</code> (e.g. will be used as <code>&lt;i-row reverse-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">no-gutter</template>
+                <template slot="description">Sets whether the row and child columns have a gutter width.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">no-collapse</template>
+                <template slot="description">Sets the flex flow to be <code>row nowrap</code>.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">start</template>
+                <template slot="description">Aligns the content to the start of the row. The alignment can be applied responsively by adding one of the responsive properties <code>start-xs</code>, <code>start-sm</code>, <code>start-md</code>, <code>start-lg</code>, <code>start-xl</code> (e.g. will be used as <code>&lt;i-row start-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">center</template>
+                <template slot="description">Aligns the content to the center of the row. The alignment can be applied responsively by adding one of the responsive properties <code>center-xs</code>, <code>center-sm</code>, <code>center-md</code>, <code>center-lg</code>, <code>center-xl</code> (e.g. will be used as <code>&lt;i-row center-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">end</template>
+                <template slot="description">Aligns the content to the end of the row. The alignment can be applied responsively by adding one of the responsive properties <code>end-xs</code>, <code>end-sm</code>, <code>end-md</code>, <code>end-lg</code>, <code>end-xl</code> (e.g. will be used as <code>&lt;i-row end-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">top</template>
+                <template slot="description">Aligns the content to the top of the row. The alignment can be applied responsively by adding one of the responsive properties <code>top-xs</code>, <code>top-sm</code>, <code>top-md</code>, <code>top-lg</code>, <code>top-xl</code> (e.g. will be used as <code>&lt;i-row top-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">middle</template>
+                <template slot="description">Aligns the content to the middle of the row. The alignment can be applied responsively by adding one of the responsive properties <code>middle-xs</code>, <code>middle-sm</code>, <code>middle-md</code>, <code>middle-lg</code>, <code>middle-xl</code> (e.g. will be used as <code>&lt;i-row middle-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">bottom</template>
+                <template slot="description">Aligns the content to the bottom of the row. The alignment can be applied responsively by adding one of the responsive properties <code>bottom-xs</code>, <code>bottom-sm</code>, <code>bottom-md</code>, <code>bottom-lg</code>, <code>bottom-xl</code> (e.g. will be used as <code>&lt;i-row bottom-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">around</template>
+                <template slot="description">Justifies the content position to have space around. The content justifying can be applied responsively by adding one of the responsive properties <code>around-xs</code>, <code>around-sm</code>, <code>around-md</code>, <code>around-lg</code>, <code>around-xl</code> (e.g. will be used as <code>&lt;i-row around-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">between</template>
+                <template slot="description">Justifies the content position to have space between. The content justifying can be applied responsively by adding one of the responsive properties <code>between-xs</code>, <code>between-sm</code>, <code>between-md</code>, <code>between-lg</code>, <code>between-xl</code> (e.g. will be used as <code>&lt;i-row between-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">reverse</template>
+                <template slot="description">Reverses the order of the row content. The content justifying can be applied responsively by adding one of the responsive properties <code>reverse-xs</code>, <code>reverse-sm</code>, <code>reverse-md</code>, <code>reverse-lg</code>, <code>reverse-xl</code> (e.g. will be used as <code>&lt;i-row reverse-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for row default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table class="_margin-bottom-0">
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for row default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 
 <i-api-preview title="Column API" expanded>
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>xs</td>
-                    <td>Sets the number of columns for extra small screens (screen width lower than <code>30rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on extra small screens.</td>
-                    <td><code>Number</code>, <code>Boolean</code></td>
-                    <td><code>1-12</code>, <code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>sm</td>
-                    <td>Sets the number of columns for small screens (screen width lower than <code>48rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on small screens.</td>
-                    <td><code>Number</code>, <code>Boolean</code></td>
-                    <td><code>1-12</code>, <code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>md</td>
-                    <td>Sets the number of columns for medium screens (screen width lower than <code>64rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on medium screens.</td>
-                    <td><code>Number</code>, <code>Boolean</code></td>
-                    <td><code>1-12</code>, <code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>lg</td>
-                    <td>Sets the number of columns for large screens (screen width lower than <code>75rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on large screens.</td>
-                    <td><code>Number</code>, <code>Boolean</code></td>
-                    <td><code>1-12</code>, <code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>xl</td>
-                    <td>Sets the number of columns for extra large screens (screen width lower than <code>92.5rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on extra large screens.</td>
-                    <td><code>Number</code>, <code>Boolean</code></td>
-                    <td><code>1-12</code>, <code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>first</td>
-                    <td>Orders the column to be first. The order can be applied responsively by adding one of the responsive properties <code>firstXs</code>, <code>firstSm</code>, <code>firstMd</code>, <code>firstLg</code>, <code>firstXl</code> (e.g. will be used as <code>&lt;i-column first-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>last</td>
-                    <td>Orders the column to be last. The order can be applied responsively by adding one of the responsive properties <code>lastXs</code>, <code>lastSm</code>, <code>lastMd</code>, <code>lastLg</code>, <code>lastXl</code> (e.g. will be used as <code>&lt;i-column last-xs&gt;</code> in template).</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>offset</td>
-                    <td>Offsets the column by a number of columns. The offset can be applied responsively by adding one of the responsive properties <code>offsetXs</code>, <code>offsetSm</code>, <code>offsetMd</code>, <code>offsetLg</code>, <code>offsetXl</code> (e.g. will be used as <code>&lt;i-column offset-xs="4"&gt;</code> in template).</td>
-                    <td><code>Number</code>, <code>Boolean</code></td>
-                    <td><code>1-12</code>, <code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>push</td>
-                    <td>Pushes the column by a number of columns. This is useful for keeping the markup order while changing the display order of the columns. The push can be applied responsively by adding one of the responsive properties <code>pushXs</code>, <code>pushSm</code>, <code>pushMd</code>, <code>pushLg</code>, <code>pushXl</code> (e.g. will be used as <code>&lt;i-column push-xs="4"&gt;</code> in template).</td>
-                    <td><code>Number</code>, <code>Boolean</code></td>
-                    <td><code>1-12</code>, <code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>pull</td>
-                    <td>Pulls the column by a number of columns. This is useful for keeping the markup order while changing the display order of the columns. The pull can be applied responsively by adding one of the responsive properties <code>pullXs</code>, <code>pullSm</code>, <code>pullMd</code>, <code>pullLg</code>, <code>pullXl</code> (e.g. will be used as <code>&lt;i-column pull-xs="4"&gt;</code> in template).</td>
-                    <td><code>Number</code>, <code>Boolean</code></td>
-                    <td><code>1-12</code>, <code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">xs</template>
+                <template slot="description">Sets the number of columns for extra small screens (screen width lower than <code>30rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on extra small screens.</template>
+                <template slot="type"><code>Number</code>, <code>Boolean</code></template>
+                <template slot="values"><code>1-12</code>, <code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">sm</template>
+                <template slot="description">Sets the number of columns for small screens (screen width lower than <code>48rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on small screens.</template>
+                <template slot="type"><code>Number</code>, <code>Boolean</code></template>
+                <template slot="values"><code>1-12</code>, <code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">md</template>
+                <template slot="description">Sets the number of columns for medium screens (screen width lower than <code>64rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on medium screens.</template>
+                <template slot="type"><code>Number</code>, <code>Boolean</code></template>
+                <template slot="values"><code>1-12</code>, <code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">lg</template>
+                <template slot="description">Sets the number of columns for large screens (screen width lower than <code>75rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on large screens.</template>
+                <template slot="type"><code>Number</code>, <code>Boolean</code></template>
+                <template slot="values"><code>1-12</code>, <code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">xl</template>
+                <template slot="description">Sets the number of columns for extra large screens (screen width lower than <code>92.5rem</code>). A <code>true</code> value will cause it to occupy as much space as it can on extra large screens.</template>
+                <template slot="type"><code>Number</code>, <code>Boolean</code></template>
+                <template slot="values"><code>1-12</code>, <code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">first</template>
+                <template slot="description">Orders the column to be first. The order can be applied responsively by adding one of the responsive properties <code>first-xs</code>, <code>first-sm</code>, <code>first-md</code>, <code>first-lg</code>, <code>first-xl</code> (e.g. will be used as <code>&lt;i-column first-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">last</template>
+                <template slot="description">Orders the column to be last. The order can be applied responsively by adding one of the responsive properties <code>last-xs</code>, <code>last-sm</code>, <code>last-md</code>, <code>last-lg</code>, <code>last-xl</code> (e.g. will be used as <code>&lt;i-column last-xs&gt;</code> in template).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">offset</template>
+                <template slot="description">Offsets the column by a number of columns. The offset can be applied responsively by adding one of the responsive properties <code>offset-xs</code>, <code>offset-sm</code>, <code>offset-md</code>, <code>offset-lg</code>, <code>offset-xl</code> (e.g. will be used as <code>&lt;i-column offset-xs="4"&gt;</code> in template).</template>
+                <template slot="type"><code>Number</code>, <code>Boolean</code></template>
+                <template slot="values"><code>1-12</code>, <code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">push</template>
+                <template slot="description">Pushes the column by a number of columns. This is useful for keeping the markup order while changing the display order of the columns. The push can be applied responsively by adding one of the responsive properties <code>push-xs</code>, <code>push-sm</code>, <code>push-md</code>, <code>push-lg</code>, <code>push-xl</code> (e.g. will be used as <code>&lt;i-column push-xs="4"&gt;</code> in template).</template>
+                <template slot="type"><code>Number</code>, <code>Boolean</code></template>
+                <template slot="values"><code>1-12</code>, <code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">pull</template>
+                <template slot="description">Pulls the column by a number of columns. This is useful for keeping the markup order while changing the display order of the columns. The pull can be applied responsively by adding one of the responsive properties <code>pull-xs</code>, <code>pull-sm</code>, <code>pull-md</code>, <code>pull-lg</code>, <code>pull-xl</code> (e.g. will be used as <code>&lt;i-column pull-xs="4"&gt;</code> in template).</template>
+                <template slot="type"><code>Number</code>, <code>Boolean</code></template>
+                <template slot="values"><code>1-12</code>, <code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for column default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table class="_margin-bottom-0">
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for column default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
