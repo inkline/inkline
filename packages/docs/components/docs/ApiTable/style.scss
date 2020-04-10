@@ -1,0 +1,20 @@
+@import '~@inkline/inkline/css/config/index';
+@import '~@inkline/inkline/css/mixins/index';
+
+.api-table {
+    display: block;
+    position: relative;
+    transition-property: background-color;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-easing;
+}
+
+.inkline {
+    &.-light .api-table {
+        background-color: $color-white;
+    }
+
+    &.-dark .api-table {
+        background-color: darken($color-dark, 5%);
+    }
+}
