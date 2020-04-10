@@ -13,6 +13,9 @@
         border-width: 1px;
         border-style: solid;
         border-radius: $tabs-border-radius;
+        transition-property: background-color, border-color, color;
+        transition-duration: $transition-duration;
+        transition-timing-function: $transition-easing;
 
         > .body {
             display: block;
