@@ -99,55 +99,36 @@ You're able to provide some additional text by using the `default` loader slot.
 
 <i-api-preview title="Loader API" markup="i-loader" expanded>
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>count</td>
-                    <td>Sets the number of elements that make up the loading spinner. To be used together with the <code>$loader-item-count</code> Sass variable.</td>
-                    <td><code>Number</code></td>
-                    <td></td>
-                    <td><code>12</code></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the loader component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-                <tr>
-                    <td>variant</td>
-                    <td>Sets the color variant of the loader component.</td>
-                    <td><code>String</code></td>
-                    <td><code>light</code>, <code>dark</code></td>
-                    <td><code>light</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">count</template>
+                <template slot="description">Sets the number of elements that make up the loading spinner. To be used together with the <code>$loader-item-count</code> Sass variable.</template>
+                <template slot="type"><code>Number</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>12</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the loader component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the loader component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>light</code>, <code>dark</code></template>
+                <template slot="default"><code>light</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for loader default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for loader default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

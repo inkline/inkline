@@ -496,229 +496,174 @@ Inkline allows you to have virtually infinite recursive dropdown submenus struct
 
 <i-api-preview title="Dropdown API" expanded markup="i-dropdown" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Dropdown">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>disabled</td>
-                    <td>Sets the dropdown state as disabled.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>hideOnClick</td>
-                    <td>Determines whether to hide the dropdown when clicking it.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>id</td>
-                    <td>Sets the identifier of the dropdown.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td><code>dropdown-&lt;uid&gt;</code></td>
-                </tr>
-                <tr>
-                    <td>keymap</td>
-                    <td>Sets the keymap of the dropdown component.</td>
-                    <td><code>Object</code></td>
-                    <td></td>
-                    <td><code>{ navigate: ['up', 'down'], select: ['enter', 'space'], show: ['enter', 'space'], hide: ['esc', 'tab'] }</code></td>
-                </tr>
-                <tr>
-                    <td>placement</td>
-                    <td>Sets the placement of the dropdown.</td>
-                    <td><code>String</code></td>
-                    <td>
-                        <code>top</code>, 
-                        <code>top-start</code>,
-                        <code>top-end</code>,
-                        <code>bottom</code>, 
-                        <code>bottom-start</code>,
-                        <code>bottom-end</code>,
-                        <code>left</code>, 
-                        <code>left-start</code>,
-                        <code>left-end</code>,
-                        <code>right</code>, 
-                        <code>right-start</code>,
-                        <code>right-end</code>
-                    </td>
-                    <td><code>bottom</code></td>
-                </tr>
-                <tr>
-                    <td>variant</td>
-                    <td>Sets the color variant of the collapsible component.</td>
-                    <td><code>String</code></td>
-                    <td><code>light</code>, <code>dark</code></td>
-                    <td><code>light</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">disabled</template>
+                <template slot="description">Sets the dropdown state as disabled.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">hide-on-click</template>
+                <template slot="description">Determines whether to hide the dropdown when clicking it.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">id</template>
+                <template slot="description">Sets the identifier of the dropdown.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>dropdown-&lt;uid&gt;</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">keymap</template>
+                <template slot="description">Sets the keymap of the dropdown component.</template>
+                <template slot="type"><code>Object</code></template>
+                <template slot="values"></template>
+<template slot="default-row">
+                
+~~~js
+{ 
+    navigate: ['up', 'down'], 
+    select: ['enter', 'space'], 
+    show: ['enter', 'space'], 
+    hide: ['esc', 'tab'] 
+}
+~~~
+
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">placement</template>
+                <template slot="description">Sets the placement of the dropdown.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values">
+                    <code>top</code>, 
+                    <code>top-start</code>,
+                    <code>top-end</code>,
+                    <code>bottom</code>, 
+                    <code>bottom-start</code>,
+                    <code>bottom-end</code>,
+                    <code>left</code>, 
+                    <code>left-start</code>,
+                    <code>left-end</code>,
+                    <code>right</code>, 
+                    <code>right-start</code>,
+                    <code>right-end</code>
+                </template>
+                <template slot=""><code>bottom</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the collapsible component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>light</code>, <code>dark</code></template>
+                <template slot="default"><code>light</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for dropdown component trigger and dropdown menu. The first direct child represents the trigger, the second direct child represents the dropdown menu.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">default</template>
+                <template slot="description">Slot for dropdown component trigger and dropdown menu. The first direct child represents the trigger, the second direct child represents the dropdown menu.</template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="events">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Prototype</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>action</td>
-                    <td>Emitted when dropdown item with action is clicked.</td>
-                    <td><code>(action: String | Number | Boolean, instance: VueComponent) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>change</td>
-                    <td>Emitted when visibility changes.</td>
-                    <td><code>(visible: Boolean) => {}</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="event">action</template>
+                <template slot="description">Emitted when dropdown item with action is clicked.</template>
+                <template slot="type"><code>(action: String | Number | Boolean, instance: VueComponent) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">change</template>
+                <template slot="description">Emitted when visibility changes.</template>
+                <template slot="type"><code>(visible: Boolean) => {}</code></template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Dropdown Menu API" markup="i-dropdown-menu" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/DropdownMenu">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>arrow</td>
-                    <td>Sets whether to attach an arrow to the dropdown menu.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>true</code></td>
-                </tr>
-                <tr>
-                    <td>transformOrigin</td>
-                    <td>Sets the transform origin of the dropdown menu.</td>
-                    <td>
-                        <code>Boolean</code>, 
-                        <code>String</code> 
-                    </td>
-                    <td></td>
-                    <td><code>true</code></td>
-                </tr>
-                <tr>
-                    <td>popperOptions</td>
-                    <td>Sets custom options for the Popper.js plugin.</td>
-                    <td><code>Object</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">arrow</template>
+                <template slot="description">Sets whether to attach an arrow to the dropdown menu.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">transform-origin</template>
+                <template slot="description">Sets the transform origin of the dropdown menu.</template>
+                <template slot="type">
+                    <code>Boolean</code>, 
+                    <code>String</code> 
+                </template>
+                <template slot=""></template>
+                <template slot=""><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">popper-options</template>
+                <template slot="description">Sets custom options for the Popper.js plugin.</template>
+                <template slot="type"><code>Object</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for dropdown menu default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for dropdown menu default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Dropdown Item API" markup="i-dropdown-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/DropdownItem">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>action</td>
-                    <td>Set an action to be emitted by the <code>IDropdown</code> parent when the dropdown item is clicked.</td>
-                    <td>
-                        <code>String</code>, 
-                        <code>Number</code>, 
-                        <code>Boolean</code> 
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>disabled</td>
-                    <td>Set the state of the dropdown item component as disabled.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>tag</td>
-                    <td>Sets the tag to be used for the component. If <code>to</code> or <code>href</code> attribute is provided, an <code>a</code> tag will be used.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td><code>div</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">action</template>
+                <template slot="description">Set an action to be emitted by the <code>i-dropdown</code> parent when the dropdown item is clicked.</template>
+                <template slot="type">
+                    <code>String</code>, 
+                    <code>Number</code>, 
+                    <code>Boolean</code> 
+                </template>
+                <template slot=""></template>
+                <template slot=""></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">disabled</template>
+                <template slot="description">Set the state of the dropdown item component as disabled.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">tag</template>
+                <template slot="description">Sets the tag to be used for the component. If <code>to</code> or <code>href</code> attribute is provided, an <code>a</code> tag will be used.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>div</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for dropdown item default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for dropdown item default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

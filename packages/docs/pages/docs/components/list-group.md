@@ -215,103 +215,65 @@ The `<i-list-group-item>` accepts any type of content, allowing you to create la
 
 <i-api-preview title="List Group API" expanded markup="i-list-group" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ListGroup">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>bordered</td>
-                    <td>Sets the list group component style to be bordered.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>true</code></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the list group component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">bordered</template>
+                <template slot="description">Sets the list group component style to be bordered.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the list group component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for list group default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for list group default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="List Group Item API" markup="i-list-group-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ListGroupItem">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>active</td>
-                    <td>Sets the list group item state as active.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>disabled</td>
-                    <td>Sets the list group item state as disabled.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>tag</td>
-                    <td>Sets the tag to be used for the component. If <code>to</code> or <code>href</code> attribute is provided, an <code>a</code> tag will be used.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td><code>div</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">active</template>
+                <template slot="description">Sets the list group item state as active.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">disabled</template>
+                <template slot="description">Sets the list group item state as disabled.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">tag</template>
+                <template slot="description">Sets the tag to be used for the component. If <code>to</code> or <code>href</code> attribute is provided, an <code>a</code> tag will be used.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>div</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for list group item default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for list group item default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

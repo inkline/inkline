@@ -196,114 +196,86 @@ export default {
 
 <i-api-preview title="Pagination API" markup="i-pagination" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Pagination">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>items</td>
-                    <td>Sets the total number of items to paginate.</td>
-                    <td><code>Number</code></td>
-                    <td></td>
-                    <td><code>0</code></td>
-                </tr>
-                <tr>
-                    <td>itemsPerPage</td>
-                    <td>Sets the number of items per pagination entry.</td>
-                    <td><code>Number</code></td>
-                    <td></td>
-                    <td><code>20</code></td>
-                </tr>
-                <tr>
-                    <td>limit</td>
-                    <td>Sets the maximum number of pagination elements to display at a time.</td>
-                    <td><code>Number</code>, <code>Object</code></td>
-                    <td><code>n % 2 === 1</code></td>
-                    <td><code>{ xs: 3, sm: 5 }</code></td>
-                </tr>
-                <tr>
-                    <td>quickLink</td>
-                    <td>Enables pagination quick links.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the pagination component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-                <tr>
-                    <td>value</td>
-                    <td>Sets the currently selected pagination entry.</td>
-                    <td><code>Number</code></td>
-                    <td></td>
-                    <td><code>1</code></td>
-                </tr>
-                <tr>
-                    <td>variant</td>
-                    <td>Sets the color variant of the pagination component.</td>
-                    <td><code>String</code></td>
-                    <td><code>light</code>, <code>dark</code></td>
-                    <td><code>light</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">items</template>
+                <template slot="description">Sets the total number of items to paginate.</template>
+                <template slot="type"><code>Number</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>0</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">items-per-page</template>
+                <template slot="description">Sets the number of items per pagination entry.</template>
+                <template slot="type"><code>Number</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>20</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">limit</template>
+                <template slot="description">Sets the maximum number of pagination elements to display at a time.</template>
+                <template slot="type"><code>Number</code>, <code>Object</code></template>
+                <template slot="values"><code>n % 2 === 1</code></template>
+                <template slot="default"><code>{ xs: 3, sm: 5 }</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">quick-link</template>
+                <template slot="description">Enables pagination quick links.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the pagination component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">value</template>
+                <template slot="description">Sets the currently selected pagination entry.</template>
+                <template slot="type"><code>Number</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>1</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the pagination component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>light</code>, <code>dark</code></template>
+                <template slot="default"><code>light</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for pagination component default content.</td>
-                </tr>
-                <tr>
-                    <td>next</td>
-                    <td>Slot for pagination component next button content.</td>
-                </tr>
-                <tr>
-                    <td>previous</td>
-                    <td>Slot for pagination component previous button content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for pagination component default content.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">next</template>
+                <template slot="description">Slot for pagination component next button content.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">previous</template>
+                <template slot="description">Slot for pagination component previous button content.</template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="events">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Prototype</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>change</td>
-                    <td>Emitted when active item changes.</td>
-                    <td><code>(item: Number) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>input</td>
-                    <td>Emitted when active item changes. Used together with <code>v-model</code>.</td>
-                    <td><code>(item: Number) => {}</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="event">change</template>
+                <template slot="description">Emitted when active item changes.</template>
+                <template slot="type"><code>(item: Number) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">input</template>
+                <template slot="description">Emitted when active item changes. Used together with <code>v-model</code>.</template>
+                <template slot="type"><code>(item: Number) => {}</code></template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

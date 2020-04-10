@@ -153,62 +153,43 @@ The goal of cover background images on a website is to cover the entire browser 
 
 <i-api-preview title="Header API" expanded markup="i-header" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Header">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>cover</td>
-                    <td>Sets the background image as cover, resizing itself responsively to fit the header size.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>true</code></td>
-                </tr>
-                <tr>
-                    <td>fluid</td>
-                    <td>Sets the <code>IContainer</code> wrapping the headers's content as fluid.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>fullscreen</td>
-                    <td>Sets the Header component to cover the whole screen width and height.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the header component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">cover</template>
+                <template slot="description">Sets the background image as cover, resizing itself responsively to fit the header size.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">fluid</template>
+                <template slot="description">Sets the <code>IContainer</code> wrapping the headers's content as fluid.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">fullscreen</template>
+                <template slot="description">Sets the Header component to cover the whole screen width and height.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the header component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for header default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for header default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

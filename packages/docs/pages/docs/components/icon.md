@@ -250,48 +250,29 @@ The default size is set to `md`.
 
 <i-api-preview title="Icon API" expanded markup="i-icon" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Icon">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>icon</td>
-                    <td>Sets the icon to be displayed.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the icon component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">icon</template>
+                <template slot="description">Sets the icon to be displayed.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the icon component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for header default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for header default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

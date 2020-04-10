@@ -761,90 +761,71 @@ export default {
 
 <i-api-preview title="Sidebar API" markup="i-sidebar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Sidebar">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>collapse</td>
-                    <td>Specifies the breakpoint at which to collapse the sidebar.</td>
-                    <td><code>String</code>, <code>Boolean</code></td>
-                    <td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>true</code>, <code>false</code></td>
-                    <td><code>md</code></td>
-                </tr>
-                <tr>
-                    <td>collapseOnClick</td>
-                    <td>Collapses the sidebar when clicking a sidebar item.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>true</code></td>
-                </tr>
-                <tr>
-                    <td>collapseOnClickOverlay</td>
-                    <td>Collapses the sidebar when clicking the sidebar overlay. The overlay appears only for <code>absolute</code> and <code>fixed</code> collapse positions.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>true</code></td>
-                </tr>
-                <tr>
-                    <td>collapsePosition</td>
-                    <td>Sets the position of the sidebar when collapsed.</td>
-                    <td><code>String</code></td>
-                    <td><code>relative</code>, <code>absolute</code>, <code>fixed</code></td>
-                    <td><code>fixed</code></td>
-                </tr>
-                <tr>
-                    <td>placement</td>
-                    <td>Sets the placement of the sidebar to the left or to the right.</td>
-                    <td><code>String</code></td>
-                    <td><code>relative</code>, <code>absolute</code>, <code>fixed</code></td>
-                    <td><code>fixed</code></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the sidebar component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-                <tr>
-                    <td>value</td>
-                    <td>Provides a way to collapse the sidebar programmatically. Should be used as part of <code>v-model</code> directive.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>variant</td>
-                    <td>Sets the color variant of the sidebar component.</td>
-                    <td><code>String</code></td>
-                    <td><code>light</code>, <code>dark</code></td>
-                    <td><code>light</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">collapse</template>
+                <template slot="description">Specifies the breakpoint at which to collapse the sidebar.</template>
+                <template slot="type"><code>String</code>, <code>Boolean</code></template>
+                <template slot="values"><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>true</code>, <code>false</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">collapse-on-click</template>
+                <template slot="description">Collapses the sidebar when clicking a sidebar item.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">collapse-on-click-overlay</template>
+                <template slot="description">Collapses the sidebar when clicking the sidebar overlay. The overlay appears only for <code>absolute</code> and <code>fixed</code> collapse positions.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">collapse-position</template>
+                <template slot="description">Sets the position of the sidebar when collapsed.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>relative</code>, <code>absolute</code>, <code>fixed</code></template>
+                <template slot="default"><code>fixed</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">placement</template>
+                <template slot="description">Sets the placement of the sidebar to the left or to the right.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>relative</code>, <code>absolute</code>, <code>fixed</code></template>
+                <template slot="default"><code>fixed</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the sidebar component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">value</template>
+                <template slot="description">Provides a way to collapse the sidebar programmatically. Should be used as part of <code>v-model</code> directive.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the sidebar component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>light</code>, <code>dark</code></template>
+                <template slot="default"><code>light</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for sidebar component default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for sidebar component default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

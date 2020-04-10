@@ -235,143 +235,115 @@ export default {
 
 <i-api-preview title="Textarea API" markup="i-textarea" expanded>
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>clearable</td>
-                    <td>Sets the textarea as clearable. Clearable textareas have a clear icon when value a is provided.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>disabled</td>
-                    <td>Sets the state of the textarea form component as disabled.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>placeholder</td>
-                    <td>Sets the placeholder of the textarea form component.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>readonly</td>
-                    <td>Sets the state of the textarea form component as readonly.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>schema</td>
-                    <td>Provides a schema binding to the textarea form component. See the <nuxt-link to="/docs/forms/form-validation">Form Validation</nuxt-link> documentation.</td>
-                    <td><code>Object</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the textarea form component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-                <tr>
-                    <td>value</td>
-                    <td>Sets the value of the textarea form component. To be provided using the <code>v-model</code> directive.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">clearable</template>
+                <template slot="description">Sets the textarea as clearable. Clearable textareas have a clear icon when value a is provided.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">disabled</template>
+                <template slot="description">Sets the state of the textarea form component as disabled.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">placeholder</template>
+                <template slot="description">Sets the placeholder of the textarea form component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">readonly</template>
+                <template slot="description">Sets the state of the textarea form component as readonly.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">schema</template>
+                <template slot="description">Provides a schema binding to the textarea form component. See the <nuxt-link to="/docs/forms/form-validation">Form Validation</nuxt-link> documentation.</template>
+                <template slot="type"><code>Object</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the textarea form component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">value</template>
+                <template slot="description">Sets the value of the textarea form component. To be provided using the <code>v-model</code> directive.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>prepend</td>
-                    <td>Slot for textarea prepend content. Prepended content appears before the textarea inside a button-like container.</td>
-                </tr>
-                <tr>
-                    <td>append</td>
-                    <td>Slot for textarea append content. Appended content appears after the textarea inside a button-like container.</td>
-                </tr>
-                <tr>
-                    <td>prefix</td>
-                    <td>Slot for textarea prefix content. The prefix content appears inside the textarea field, on the left side.</td>
-                </tr>
-                <tr>
-                    <td>suffix</td>
-                    <td>Slot for textarea suffix content. The suffix content appears inside the textarea field, on the right side.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">prepend</template>
+                <template slot="description">Slot for textarea prepend content. Prepended content appears before the textarea inside a button-like container.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">append</template>
+                <template slot="description">Slot for textarea append content. Appended content appears after the textarea inside a button-like container.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">prefix</template>
+                <template slot="description">Slot for textarea prefix content. The prefix content appears inside the textarea field, on the left side.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">suffix</template>
+                <template slot="description">Slot for textarea suffix content. The suffix content appears inside the textarea field, on the right side.</template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="events">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Prototype</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>click</td>
-                    <td>Emitted when textarea form component is clicked.</td>
-                    <td><code>(event: Event) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>focus</td>
-                    <td>Emitted when textarea form component is focused.</td>
-                    <td><code>(event: Event) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>blur</td>
-                    <td>Emitted when textarea form component is blurred.</td>
-                    <td><code>(event: Event) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>change</td>
-                    <td>Emitted when textarea form component value changes.</td>
-                    <td><code>(value: String) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>input</td>
-                    <td>Emitted when textarea form component value changes.</td>
-                    <td><code>(value: String) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>mouseenter</td>
-                    <td>Emitted when textarea form component is hovered.</td>
-                    <td><code>(value: String) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>mouseleave</td>
-                    <td>Emitted when textarea form component is not hovered anymore.</td>
-                    <td><code>(value: String) => {}</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="event">click</template>
+                <template slot="description">Emitted when textarea form component is clicked.</template>
+                <template slot="type"><code>(event: Event) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">focus</template>
+                <template slot="description">Emitted when textarea form component is focused.</template>
+                <template slot="type"><code>(event: Event) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">blur</template>
+                <template slot="description">Emitted when textarea form component is blurred.</template>
+                <template slot="type"><code>(event: Event) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">change</template>
+                <template slot="description">Emitted when textarea form component value changes.</template>
+                <template slot="type"><code>(value: String) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">input</template>
+                <template slot="description">Emitted when textarea form component value changes.</template>
+                <template slot="type"><code>(value: String) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">mouseenter</template>
+                <template slot="description">Emitted when textarea form component is hovered.</template>
+                <template slot="type"><code>(value: String) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">mouseleave</template>
+                <template slot="description">Emitted when textarea form component is not hovered anymore.</template>
+                <template slot="type"><code>(value: String) => {}</code></template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

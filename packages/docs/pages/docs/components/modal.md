@@ -267,99 +267,71 @@ export default {
 
 <i-api-preview title="Modal API" markup="i-modal" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Modal">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>closeOnPressEscape</td>
-                    <td>Sets whether to hide the modal component when pressing escape.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>true</code></td>
-                </tr>
-                <tr>
-                    <td>value</td>
-                    <td>Sets the visibility of the modal component.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>transition</td>
-                    <td>Sets the transition of the modal component.</td>
-                    <td><code>String</code></td>
-                    <td>
-                        <code>fade-in-transition</code>, 
-                        <code>fade-in-linear-transition</code>, 
-                        <code>zoom-in-top-transition</code>, 
-                        <code>zoom-in-bottom-transition</code>, 
-                        <code>zoom-in-center-transition</code>, 
-                        <code>zoom-in-left-transition</code>,
-                        <code>zoom-in-right-transition</code>
-                    </td>
-                    <td><code>zoom-in-center-transition</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">close-on-press-escape</template>
+                <template slot="description">Sets whether to hide the modal component when pressing escape.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">value</template>
+                <template slot="description">Sets the visibility of the modal component.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">transition</template>
+                <template slot="description">Sets the transition of the modal component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values">
+                    <code>fade-in-transition</code>, 
+                    <code>fade-in-linear-transition</code>, 
+                    <code>zoom-in-top-transition</code>, 
+                    <code>zoom-in-bottom-transition</code>, 
+                    <code>zoom-in-center-transition</code>, 
+                    <code>zoom-in-left-transition</code>,
+                    <code>zoom-in-right-transition</code>
+                </template>
+                <template slot=""><code>zoom-in-center-transition</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for modal default content.</td>
-                </tr>
-                <tr>
-                    <td>header</td>
-                    <td>Slot for modal header content.</td>
-                </tr>
-                <tr>
-                    <td>footer</td>
-                    <td>Slot for modal footer content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for modal default content.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">header</template>
+                <template slot="description">Slot for modal header content.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">footer</template>
+                <template slot="description">Slot for modal footer content.</template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="events">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Prototype</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>input</td>
-                    <td>Emitted when visibility changes.</td>
-                    <td><code>(visible: Boolean) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>show</td>
-                    <td>Emitted when modal is shown.</td>
-                    <td><code>(instance: VueComponent) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>hide</td>
-                    <td>Emitted when modal is hidden.</td>
-                    <td><code>(instance: VueComponent) => {}</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="event">input</template>
+                <template slot="description">Emitted when visibility changes.</template>
+                <template slot="type"><code>(visible: Boolean) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">show</template>
+                <template slot="description">Emitted when modal is shown.</template>
+                <template slot="type"><code>(instance: VueComponent) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">hide</template>
+                <template slot="description">Emitted when modal is hidden.</template>
+                <template slot="type"><code>(instance: VueComponent) => {}</code></template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

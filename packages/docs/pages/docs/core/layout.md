@@ -426,117 +426,66 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 
 <i-api-preview title="Layout API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Layout">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>vertical</td>
-                    <td>Sets the orientation of the layout to vertical. Used for achieving layout columns.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">vertical</template>
+                <template slot="description">Sets the orientation of the layout to vertical. Used for achieving layout columns.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for layout default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for layout default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Layout Header API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/LayoutHeader" default-active='slots'>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for layout header default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for layout header default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Layout Content API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/LayoutContent" default-active='slots'>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for layout content default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for layout content default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Layout Footer API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/LayoutFooter" default-active='slots'>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for layout footer default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for layout footer default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Layout Aside API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/LayoutAside" default-active='slots'>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for layout aside default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for layout aside default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

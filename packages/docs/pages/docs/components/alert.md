@@ -229,77 +229,58 @@ export default {
 
 <i-api-preview title="Alert API" markup="i-alert" expanded>
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>dismissLabel</td>
-                    <td>Sets the dismiss lable, replaceable using the <code>dismiss</code> slot.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td><code>×</code></td>
-                </tr>
-                <tr>
-                    <td>dismissible</td>
-                    <td>Sets the alert as dismissible.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>show</td>
-                    <td>Sets the dismiss <code>v-model</code> for the alert component. Alert is only visible if show is <code>true</code>.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>true</code></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the alert component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-                <tr>
-                    <td>variant</td>
-                    <td>Sets the color variant of the alert component.</td>
-                    <td><code>String</code></td>
-                    <td><code>primary</code>, <code>secondary</code>, <code>success</code>, <code>danger</code>, <code>warning</code>, <code>info</code></td>
-                    <td><code>primary</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">dismissLabel</template>
+                <template slot="description">Sets the dismiss lable, replaceable using the <code>dismiss</code> slot.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"><code>×</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">dismissible</template>
+                <template slot="description">Sets the alert as dismissible.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">show</template>
+                <template slot="description">Sets the dismiss <code>v-model</code> for the alert component. Alert is only visible if show is <code>true</code>.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the alert component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the alert component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>primary</code>, <code>secondary</code>, <code>success</code>, <code>danger</code>, <code>warning</code>, <code>info</code></template>
+                <template slot="default"><code>primary</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for alert default content.</td>
-                </tr>
-                <tr>
-                    <td>dismiss</td>
-                    <td>Slot for alert dismiss button.</td>
-                </tr>
-                <tr>
-                    <td>icon</td>
-                    <td>Slot for alert icon.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for alert default content.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">dismiss</template>
+                <template slot="description">Slot for alert dismiss button.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">icon</template>
+                <template slot="description">Slot for alert icon.</template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

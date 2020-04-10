@@ -138,176 +138,128 @@ export default {
 
 <i-api-preview title="Toggle API" markup="i-toggle" expanded>
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>disabled</td>
-                    <td>Sets the state of the toggle input form component as disabled.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>readonly</td>
-                    <td>Sets the state of the toggle input form component as readonly.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>schema</td>
-                    <td>Provides a schema binding to the toggle input form component. See the <nuxt-link to="/docs/forms/form-validation">Form Validation</nuxt-link> documentation.</td>
-                    <td><code>Object</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the toggle input form component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-                <tr>
-                    <td>value</td>
-                    <td>Sets the value of the toggle input form component. Can be also provided using a <code>v-model</code> directive when the toggle input isn't grouped.</td>
-                    <td><code>Boolean</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">disabled</template>
+                <template slot="description">Sets the state of the toggle input form component as disabled.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">readonly</template>
+                <template slot="description">Sets the state of the toggle input form component as readonly.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">schema</template>
+                <template slot="description">Provides a schema binding to the toggle input form component. See the <nuxt-link to="/docs/forms/form-validation">Form Validation</nuxt-link> documentation.</template>
+                <template slot="type"><code>Object</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the toggle input form component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">value</template>
+                <template slot="description">Sets the value of the toggle input form component. Can be also provided using a <code>v-model</code> directive when the toggle input isn't grouped.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="events">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Prototype</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>click</td>
-                    <td>Emitted when toggle input form component is clicked.</td>
-                    <td><code>(event: Event) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>focus</td>
-                    <td>Emitted when toggle input form component is focused.</td>
-                    <td><code>(event: Event) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>blur</td>
-                    <td>Emitted when toggle input form component is blurred.</td>
-                    <td><code>(event: Event) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>input</td>
-                    <td>Emitted when toggle input form component value changes.</td>
-                    <td><code>(value: Boolean | String) => {}</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="event">click</template>
+                <template slot="description">Emitted when toggle input form component is clicked.</template>
+                <template slot="type"><code>(event: Event) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">focus</template>
+                <template slot="description">Emitted when toggle input form component is focused.</template>
+                <template slot="type"><code>(event: Event) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">blur</template>
+                <template slot="description">Emitted when toggle input form component is blurred.</template>
+                <template slot="type"><code>(event: Event) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">input</template>
+                <template slot="description">Emitted when toggle input form component value changes.</template>
+                <template slot="type"><code>(value: Boolean | String) => {}</code></template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
 
 <i-api-preview title="Toggle Group API" markup="i-form-group" expanded>
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>disabled</td>
-                    <td>Sets the state of the toggle input form group component as disabled.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>readonly</td>
-                    <td>Sets the state of the toggle input form group component as readonly.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the toggle input form group component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-                <tr>
-                    <td>value</td>
-                    <td>Sets the value of the toggle input form group component. To be provided using the <code>v-model</code> directive.</td>
-                    <td><code>Array&lt;String&gt;</code></td>
-                    <td></td>
-                    <td><code>[]</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">disabled</template>
+                <template slot="description">Sets the state of the toggle input form group component as disabled.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">readonly</template>
+                <template slot="description">Sets the state of the toggle input form group component as readonly.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the toggle input form group component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">value</template>
+                <template slot="description">Sets the value of the toggle input form group component. To be provided using the <code>v-model</code> directive.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for toggle input form group component default content.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">default</template>
+                <template slot="description">Slot for toggle input form group component default content.</template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="events">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Prototype</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>focus</td>
-                    <td>Emitted when a child toggle input form component is focused.</td>
-                    <td><code>(event: Event) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>blur</td>
-                    <td>Emitted when a child toggle input form component is blurred.</td>
-                    <td><code>(event: Event) => {}</code></td>
-                </tr>
-                <tr>
-                    <td>input</td>
-                    <td>Emitted when toggle input form group component value changes.</td>
-                    <td><code>(value: Boolean | String) => {}</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="event">focus</template>
+                <template slot="description">Emitted when a child toggle input form component is focused.</template>
+                <template slot="type"><code>(event: Event) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">blur</template>
+                <template slot="description">Emitted when a child toggle input form component is blurred.</template>
+                <template slot="type"><code>(event: Event) => {}</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="event">input</template>
+                <template slot="description">Emitted when toggle input form group component value changes.</template>
+                <template slot="type"><code>(value: Boolean | String) => {}</code></template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>

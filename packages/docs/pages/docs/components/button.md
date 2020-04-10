@@ -416,140 +416,112 @@ The `<i-button>` component is well integrated with the [Vue Router](https://rout
 
 <i-api-preview title="Button API" expanded markup="i-button" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Button">
     <template slot="props">
-        <i-table bordered responsive>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Accepted</th>
-                    <th>Default</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>active</td>
-                    <td>Sets the button component state as active.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>block</td>
-                    <td>Sets the button component style to span the whole parent width.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>circle</td>
-                    <td>Sets the button component style to be a circle.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>disabled</td>
-                    <td>Sets the button component state as disabled.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>href</td>
-                    <td>Treats the button component as an anchor.</td>
-                    <td><code>String</code></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>link</td>
-                    <td>Sets the button component style to be a plain link.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>loading</td>
-                    <td>Sets the button loading state. To be used together with the <code>loading</code> slot.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>outline</td>
-                    <td>Sets the button component style to be an outline.</td>
-                    <td><code>Boolean</code></td>
-                    <td><code>true</code>, <code>false</code></td>
-                    <td><code>false</code></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>Sets the size of the button component.</td>
-                    <td><code>String</code></td>
-                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-                    <td><code>md</code></td>
-                </tr>
-                <tr>
-                    <td>tag</td>
-                    <td>Sets the tag used to render the button component.</td>
-                    <td><code>String</code></td>
-                    <td><code>a</code>, <code>button</code>, <code>input</code></td>
-                    <td><code>button</code></td>
-                </tr>
-                <tr>
-                    <td>to</td>
-                    <td>Treats the button component as a <code>router-link</code>.</td>
-                    <td>Object</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>variant</td>
-                    <td>Sets the color variant of the button component.</td>
-                    <td><code>String</code></td>
-                    <td><code>primary</code>, <code>secondary</code>, <code>light</code>, <code>dark</code>, <code>success</code>, <code>danger</code>, <code>warning</code>, <code>info</code></td>
-                    <td><code>light</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="property">active</template>
+                <template slot="description">Sets the button component state as active.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">block</template>
+                <template slot="description">Sets the button component style to span the whole parent width.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">circle</template>
+                <template slot="description">Sets the button component style to be a circle.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">disabled</template>
+                <template slot="description">Sets the button component state as disabled.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">href</template>
+                <template slot="description">Treats the button component as an anchor.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">link</template>
+                <template slot="description">Sets the button component style to be a plain link.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">loading</template>
+                <template slot="description">Sets the button loading state. To be used together with the <code>loading</code> slot.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">outline</template>
+                <template slot="description">Sets the button component style to be an outline.</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">size</template>
+                <template slot="description">Sets the size of the button component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
+                <template slot="default"><code>md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">tag</template>
+                <template slot="description">Sets the tag used to render the button component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>a</code>, <code>button</code>, <code>input</code></template>
+                <template slot="default"><code>button</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">to</template>
+                <template slot="description">Treats the button component as a <code>router-link</code>.</template>
+                <template slot="type">Object</template>
+                <template slot="values"></template>
+                <template slot="default"></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the button component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>primary</code>, <code>secondary</code>, <code>light</code>, <code>dark</code>, <code>success</code>, <code>danger</code>, <code>warning</code>, <code>info</code></template>
+                <template slot="default"><code>light</code></template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="slots">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>default</td>
-                    <td>Slot for button default content.</td>
-                </tr>
-                <tr>
-                    <td>loading</td>
-                    <td>Slot for button loading state.</td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="slot">default</template>
+                <template slot="description">Slot for button default content.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">loading</template>
+                <template slot="description">Slot for button loading state.</template>
+            </api-table-row>
+        </api-table>
     </template>
     <template slot="events">
-        <i-table bordered responsive class="_margin-bottom-0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Prototype</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>click</td>
-                    <td>Emitted when button component is clicked.</td>
-                    <td><code>(event: Event) => {}</code></td>
-                </tr>
-            </tbody>
-        </i-table>
+        <api-table>
+            <api-table-row>
+                <template slot="event">click</template>
+                <template slot="description">Emitted when button component is clicked.</template>
+                <template slot="type"><code>(event: Event) => {}</code></template>
+            </api-table-row>
+        </api-table>
     </template>
 </i-api-preview>
