@@ -10,6 +10,9 @@ pre {
     margin-bottom: 1rem;
     font-size: $pre-font-size;
     color: $pre-color;
+    transition-property: background-color, color, text-shadow;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-easing;
 
     // Account for some code outputs that place code tags in pre tags
     code {
@@ -18,6 +21,7 @@ pre {
         color: inherit;
         background-color: transparent;
         border-radius: 0;
+        transition-property: none;
     }
 
     // Enable scrollable blocks of code

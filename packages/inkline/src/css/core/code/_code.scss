@@ -9,7 +9,9 @@ code {
     color: $code-color;
     background-color: $code-background;
     border-radius: border-radius(md);
-    transition: background-color $transition-duration $transition-easing, color $transition-duration $transition-easing;
+    transition-property: background-color, color, text-shadow;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-easing;
 
     // Streamline the style when inside anchors to avoid broken underline and more
     a > & {
