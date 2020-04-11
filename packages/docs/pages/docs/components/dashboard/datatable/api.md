@@ -51,7 +51,7 @@ export default {
             </api-table-row>
             <api-table-row>
                 <template slot="property">count-column</template>
-                <template slot="description">Column definition override for the count column. You can set the value tp `false` to disable the count column.</template>
+                <template slot="description">Column definition override for the count column. You can set the value to <code>false</code> to disable the count column.</template>
                 <template slot="type"><code>Object</code>, <code>Boolean</code></template>
                 <template slot="values"></template>
 <template slot="default-row">
@@ -73,7 +73,7 @@ export default {
             </api-table-row>
             <api-table-row>
                 <template slot="property">expand-column</template>
-                <template slot="description">Column definition override for the expand column. You can set the value tp `false` to disable the expand column.</template>
+                <template slot="description">Column definition override for the expand column. You can set the value to <code>false</code> to disable the expand column.</template>
                 <template slot="type"><code>Object</code>, <code>Boolean</code></template>
                 <template slot="values"></template>
 <template slot="default-row">
@@ -105,7 +105,7 @@ export default {
             </api-table-row>
             <api-table-row>
                 <template slot="property">default-sort-key</template>
-                <template slot="description">Sets the key to use for sorting by default. The `#` refers to the count column.</template>
+                <template slot="description">Sets the key to use for sorting by default. The <code>#</code> refers to the count column.</template>
                 <template slot="type"><code>String</code></template>
                 <template slot="values"></template>
                 <template slot="default"><code>#</code></template>
