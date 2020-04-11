@@ -128,7 +128,7 @@ export default {
         }
     },
     mounted() {
-        return axios.get('/search.json')
+        axios.get('/search.json')
             .then((response) => {
                 const searchList = response.data.entries;
                 const searchResults = [];
