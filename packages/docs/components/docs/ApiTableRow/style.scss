@@ -18,9 +18,9 @@
         .td {
             flex-grow: 1;
             flex-shrink: 1;
+            flex-basis: 25%;
             padding: $spacer / 2;
             max-width: 100%;
-            flex: 25%;
 
             .label {
                 font-weight: $font-weight-semibold;
