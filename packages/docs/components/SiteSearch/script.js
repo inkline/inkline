@@ -72,30 +72,6 @@ export default {
         IDropdownItem,
         IInput
     },
-    asyncData() {
-        return axios.get('/search.json')
-            .then((response) => {
-                const searchList = response.data.entries;
-                const searchResults = [];
-                const searchClients = [];
-
-                searchList.forEach((category) => {
-                    searchClients.push(new Fuse(category.items, searchOptions));
-                    searchResults.push({
-                        title: category.title,
-                        items: []
-                    });
-                });
-
-                console.log(searchList, searchResults, searchClients)
-
-                return {
-                    searchList,
-                    searchResults,
-                    searchClients
-                }
-            });
-    },
     data () {
         return {
             searchString: '',
@@ -150,6 +126,26 @@ export default {
 
             setTimeout(() => this.$refs.dropdown.$emit('init'), 100);
         }
+    },
+    mounted() {
+        return axios.get('/search.json')
+            .then((response) => {
+                const searchList = response.data.entries;
+                const searchResults = [];
+                const searchClients = [];
+
+                searchList.forEach((category) => {
+                    searchClients.push(new Fuse(category.items, searchOptions));
+                    searchResults.push({
+                        title: category.title,
+                        items: []
+                    });
+                });
+
+                this.searchList = searchList;
+                this.searchResults = searchResults;
+                this.searchClients = searchClients;
+            });
     },
     methods: {
         hasResults() {
