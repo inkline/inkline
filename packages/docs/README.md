@@ -18,12 +18,6 @@
 </p>
 
 <br/>
-  
-<p align="center">
-    <a href="https://travis-ci.org/inkline/inkline"><img src="https://travis-ci.org/inkline/inkline.svg?branch=master" alt="Build"></a>
-</p>
-
-<br/>
 <br/>
 
 ## Running documentation locally
