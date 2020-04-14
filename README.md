@@ -66,6 +66,10 @@ yarn add @inkline/inkline
 ~~~
 composer require inkline/inkline
 ~~~
+- Install with [@vue/cli](https://cli.vuejs.org):
+~~~
+vue add @inkline/inkline
+~~~
 
 ## Usage
 First, we'll import the core styles, after which we import and register the script files. If you already have your Webpack configuration ready for Vue, importing the framework is as simple as:
