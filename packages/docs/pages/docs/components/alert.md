@@ -225,7 +225,8 @@ export default {
 </template>
 </i-code-preview>
 
-### API
+### Component API
+Here you can find a list of the various customization options you can use for the alert component as props, as well as available slots.
 
 <i-api-preview title="Alert API" markup="i-alert" expanded>
     <template slot="props">

@@ -274,7 +274,8 @@ export default {
 </i-code-preview>
 
 
-### API
+### Component API
+Here you can find a list of the various customization options you can use for the select components as props, as well as available slots and events.
 
 <i-api-preview title="Select API" markup="i-select" expanded>
     <template slot="props">

@@ -757,7 +757,9 @@ export default {
 </template>
 </i-code-preview>
 
-### API
+
+### Component API
+Here you can find a list of the various customization options you can use for the sidebar components as props, as well as available slots and events.
 
 <i-api-preview title="Sidebar API" markup="i-sidebar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Sidebar">
     <template slot="props">

@@ -134,7 +134,8 @@ export default {
 </template>
 </i-code-preview>
 
-### API
+### Component API
+Here you can find a list of the various customization options you can use for the toggle component as props, as well as available slots and events.
 
 <i-api-preview title="Toggle API" markup="i-toggle" expanded>
     <template slot="props">
@@ -196,68 +197,6 @@ export default {
             <api-table-row>
                 <template slot="event">input</template>
                 <template slot="description">Emitted when toggle input form component value changes.</template>
-                <template slot="type"><code>(value: Boolean | String) => {}</code></template>
-            </api-table-row>
-        </api-table>
-    </template>
-</i-api-preview>
-
-<i-api-preview title="Toggle Group API" markup="i-form-group" expanded>
-    <template slot="props">
-        <api-table>
-            <api-table-row>
-                <template slot="property">disabled</template>
-                <template slot="description">Sets the state of the toggle input form group component as disabled.</template>
-                <template slot="type"><code>Boolean</code></template>
-                <template slot="values"><code>true</code>, <code>false</code></template>
-                <template slot="default"><code>false</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">readonly</template>
-                <template slot="description">Sets the state of the toggle input form group component as readonly.</template>
-                <template slot="type"><code>Boolean</code></template>
-                <template slot="values"><code>true</code>, <code>false</code></template>
-                <template slot="default"><code>false</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">size</template>
-                <template slot="description">Sets the size of the toggle input form group component.</template>
-                <template slot="type"><code>String</code></template>
-                <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
-                <template slot="default"><code>md</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">value</template>
-                <template slot="description">Sets the value of the toggle input form group component. To be provided using the <code>v-model</code> directive.</template>
-                <template slot="type"><code>Boolean</code></template>
-                <template slot="values"><code>true</code>, <code>false</code></template>
-                <template slot="default"><code>false</code></template>
-            </api-table-row>
-        </api-table>
-    </template>
-    <template slot="slots">
-        <api-table>
-            <api-table-row>
-                <template slot="property">default</template>
-                <template slot="description">Slot for toggle input form group component default content.</template>
-            </api-table-row>
-        </api-table>
-    </template>
-    <template slot="events">
-        <api-table>
-            <api-table-row>
-                <template slot="event">focus</template>
-                <template slot="description">Emitted when a child toggle input form component is focused.</template>
-                <template slot="type"><code>(event: Event) => {}</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="event">blur</template>
-                <template slot="description">Emitted when a child toggle input form component is blurred.</template>
-                <template slot="type"><code>(event: Event) => {}</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="event">input</template>
-                <template slot="description">Emitted when toggle input form group component value changes.</template>
                 <template slot="type"><code>(value: Boolean | String) => {}</code></template>
             </api-table-row>
         </api-table>

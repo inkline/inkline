@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { library as fontAwesomeLibrary } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faHeart, faCog, faLayerGroup, faExchangeAlt, faInfoCircle, faSearch, faTerminal, faEye, faAdjust } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faTwitter, faDiscord, faHtml5, faCss3, faJs } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faTwitter, faDiscord, faHtml5, faCss3, faJs, faSass } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 fontAwesomeLibrary.add(faBars);
@@ -14,6 +14,7 @@ fontAwesomeLibrary.add(faSearch);
 fontAwesomeLibrary.add(faGithub);
 fontAwesomeLibrary.add(faTwitter);
 fontAwesomeLibrary.add(faDiscord);
+fontAwesomeLibrary.add(faSass);
 fontAwesomeLibrary.add(faEye);
 fontAwesomeLibrary.add(faHtml5);
 fontAwesomeLibrary.add(faCss3);

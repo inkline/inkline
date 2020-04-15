@@ -139,8 +139,8 @@ You can control the active state of your `<i-nav-item>` using the `active` prope
 </i-code-preview>
 
 
-
-### API
+### Component API
+Here you can find a list of the various customization options you can use for the nav components as props, as well as available slots.
 
 <i-api-preview title="Nav API" expanded markup="i-nav" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Nav">
     <template slot="props">

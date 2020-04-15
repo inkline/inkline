@@ -252,7 +252,8 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
 </i-code-preview>
 
 
-### API
+### Component API
+Here you can find a list of the various customization options you can use for the progress components as props, as well as available slots.
 
 <i-api-preview title="Progress API" markup="i-progress" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Progress">
     <template slot="props">

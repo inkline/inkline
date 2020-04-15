@@ -30,7 +30,8 @@ export default {
 <i-datatable :columns="columns" :rows="rows" :i18n="i18n" />
 ~~~
 
-### API
+### Component API
+Here you can find a list of the various customization options you can use for the datatable component as props, as well as available slots and events.
 
 <i-api-preview title="Data Table API" markup="i-datatable" expanded>
     <template slot="props">

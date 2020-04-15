@@ -152,7 +152,8 @@ The media element in a media component can be aligned with flexbox helper classe
 </i-code-preview>
 
 
-### API
+### Component API
+Here you can find the slot options for the media component.
 
 <i-api-preview title="Media API" default-active="slots" markup="i-media" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Media">
     <template slot="slots">
