@@ -276,7 +276,9 @@ export default {
 </template>
 </i-code-preview>
 
-### API
+
+### Component API
+Here you can find a list of the various customization options you can use for the checkbox components as props, as well as available slots and events.
 
 <i-api-preview title="Checkbox API" markup="i-checkbox" expanded>
     <template slot="props">

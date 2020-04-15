@@ -95,7 +95,8 @@ You're able to provide some additional text by using the `default` loader slot.
 </template>
 </i-code-preview>
 
-### API
+### Component API
+Here you can find a list of the various customization options you can use for the loader component as props, as well as available slots.
 
 <i-api-preview title="Loader API" markup="i-loader" expanded>
     <template slot="props">

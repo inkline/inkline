@@ -31,7 +31,7 @@
             <slot name="default-row" />
         </div>
     </div>
-    <div class="tr">
+    <div class="tr" v-if="$slots['description']">
         <div class="td -description">
             <span class="label">Description</span>
             <slot name="description" />

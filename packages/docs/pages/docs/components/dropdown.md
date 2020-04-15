@@ -492,7 +492,8 @@ Inkline allows you to have virtually infinite recursive dropdown submenus struct
 </i-code-preview>
 
 
-### API
+### Components API
+Here you can find a list of the various customization options you can use for the dropdown components as props, as well as available slots and events.
 
 <i-api-preview title="Dropdown API" expanded markup="i-dropdown" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Dropdown">
     <template slot="props">

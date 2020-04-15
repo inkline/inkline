@@ -126,7 +126,8 @@ Badges always match the size of the immediate parent element by using relative f
 </i-code-preview>
 
 
-### API
+### Component API
+Here you can find a list of the customization options you can use for the badge component as props, as well as available slots.
 
 <i-api-preview title="Badge API" expanded markup="i-badge" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Badge">
     <template slot="props">

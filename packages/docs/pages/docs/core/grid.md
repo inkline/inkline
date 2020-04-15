@@ -1067,7 +1067,8 @@ You can make the `<i-container>` component fill the whole width of the parent el
 </i-code-preview>
 
 
-### API
+### Components API
+Here you can find a list of the various customization options you can use for the grid components as props, as well as available slots and events.
 
 <i-api-preview title="Container API" expanded>
     <template slot="props">
@@ -1268,3 +1269,73 @@ You can make the `<i-container>` component fill the whole width of the parent el
         </api-table>
     </template>
 </i-api-preview>
+
+
+### Sass Variables
+
+<i-scss-preview title="Container" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$container-width-xs</template>
+                <template slot="default"><code>100%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$container-width-sm</template>
+                <template slot="default"><code>$breakpoints-sm - $gutter-sm</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$container-width-md</template>
+                <template slot="default"><code>$breakpoints-md - $gutter-md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$container-width-lg</template>
+                <template slot="default"><code>$breakpoints-lg - $gutter-lg</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$container-width-xl</template>
+                <template slot="default"><code>$breakpoints-xl - $gutter-xl</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>
+
+
+<i-scss-preview title="Column" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$columns</template>
+                <template slot="default"><code>12</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>
+
+
+<i-scss-preview title="Common" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$gutter-xs</template>
+                <template slot="default"><code>24px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$gutter-sm</template>
+                <template slot="default"><code>26px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$gutter-md</template>
+                <template slot="default"><code>28px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$gutter-lg</template>
+                <template slot="default"><code>30px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$gutter-xl</template>
+                <template slot="default"><code>32px</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>

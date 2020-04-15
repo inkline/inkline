@@ -117,6 +117,14 @@
 
         .panel {
             width: 100%;
+
+            &.-scss {
+                ::v-deep .api-table-row {
+                    .td.-default code {
+                        font-size: font-size('sm');
+                    }
+                }
+            }
         }
     }
 

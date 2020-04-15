@@ -477,7 +477,8 @@ export default {
 </template>
 </i-code-preview>
 
-### API
+### Component API
+Here you can find a list of the various customization options you can use for the input component as props, as well as available slots and events.
 
 <i-api-preview title="Input API" markup="i-input" expanded>
     <template slot="props">

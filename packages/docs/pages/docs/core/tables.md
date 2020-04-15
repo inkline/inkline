@@ -665,7 +665,9 @@ Tables can be themed using the `variant` property. You can use colors such as `l
 </template>
 </i-code-preview>
 
-### API
+
+### Component API
+Here you can find a list of the various customization options you can use for the table components as props, as well as available slots.
 
 <i-api-preview title="Table API" expanded markup="i-table">
     <template slot="props">
