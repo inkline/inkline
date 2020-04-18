@@ -1,7 +1,7 @@
 //
 // Checkbox variables
 //
-$form-check-checkbox-border-radius: $border-radius;
+$form-check-checkbox-border-radius: $border-radius !default;
 
-$form-check-checkbox-icon-size-base: 8px;
-$form-check-checkbox-icon-size: size-map($form-check-checkbox-icon-size-base, $sizes, $size-multipliers);
+$form-check-checkbox-icon-size-base: 8px !default;
+$form-check-checkbox-icon-size: size-map($form-check-checkbox-icon-size-base, $sizes, $size-multipliers) !default;

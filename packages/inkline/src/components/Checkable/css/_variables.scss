@@ -27,6 +27,6 @@ $form-check-indicator-background-size: 0.5rem !default;
 //
 // Variants
 //
-$checkable-variants: ('monochrome-white') !default;
+$form-check-variants: ('monochrome-white') !default;
 
-$variants: map_merge($variants, ('checkable': add-variant($checkable-variants, $color-groups)));
+$variants: map_merge($variants, ('checkable': add-variant($form-check-variants, $color-groups)));
