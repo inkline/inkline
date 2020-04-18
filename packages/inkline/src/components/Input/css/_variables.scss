@@ -10,7 +10,7 @@ $input-padding: size-map($input-padding-base, $sizes, $size-multipliers) !defaul
 
 $input-prefix-padding-base: nth($input-padding-base, 2) * 4 !default;
 $input-prefix-padding: size-map($input-prefix-padding-base, $sizes, $size-multipliers) !default;
-$input-prefix-border-width: 1px;
+$input-prefix-border-width: 1px !default;
 
 $input-font-size: $font-size !default;
 

@@ -12,10 +12,10 @@ $badge-line-height: $line-height !default;
 $badge-border-width: $border-width !default;
 $badge-border-radius: $border-radius !default;
 
-$badge-padding-base: spacers('1/2') spacers('2/3');
-$badge-padding: size-map($badge-padding-base, $sizes, $size-multipliers);
+$badge-padding-base: spacers('1/2') spacers('2/3') !default;
+$badge-padding: size-map($badge-padding-base, $sizes, $size-multipliers) !default;
 
-$badge-pill-border-radius: 10rem;
+$badge-pill-border-radius: 10rem !default;
 
 //
 // Variants
