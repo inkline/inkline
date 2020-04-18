@@ -3,9 +3,9 @@
 //
 
 $border-width: 1px !default;
-$border-color-light: colors('gray-20') !default;
+$border-color: colors('gray-20') !default;
+$border-color-light: $border-color !default;
 $border-color-dark: colors('gray-70') !default;
-$border-color: $border-color-light !default;
 
 $border-radius-enabled: true !default;
 
