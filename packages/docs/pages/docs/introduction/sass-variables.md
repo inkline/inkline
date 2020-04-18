@@ -13,16 +13,16 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>1px</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$border-color</template>
+                <template slot="default"><code>$color-gray-20</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$border-color-light</template>
-                <template slot="default"><code>colors('gray-20')</code></template>
+                <template slot="default"><code>$border-color</code></template>
             </api-table-row>
             <api-table-row>
                 <template slot="property">$border-color-dark</template>
-                <template slot="default"><code>colors('gray-70')</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$border-color</template>
-                <template slot="default"><code>$border-color-light</code></template>
+                <template slot="default"><code>$color-gray-70</code></template>
             </api-table-row>
             <api-table-row>
                 <template slot="property">$border-radius-enabled</template>
