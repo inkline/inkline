@@ -7,21 +7,35 @@
 //
 
 $spacer: 1rem !default;
+$spacer-1-2: $spacer * 1 / 2 !default;
+$spacer-1-3: $spacer * 1 / 3 !default;
+$spacer-2-3: $spacer * 2 / 3 !default;
+$spacer-1-4: $spacer * 1 / 4 !default;
+$spacer-3-4: $spacer * 3 / 4 !default;
+$spacer-0: $spacer * 0 !default;
+$spacer-1: $spacer * 1 !default;
+$spacer-2: $spacer * 2 !default;
+$spacer-3: $spacer * 3 !default;
+$spacer-4: $spacer * 4 !default;
+$spacer-5: $spacer * 5 !default;
+$spacer-6: $spacer * 6 !default;
+$spacer-7: $spacer * 7 !default;
+$spacer-8: $spacer * 8 !default;
 $spacers: (
-    '1/2': $spacer * 1 / 2,
-    '1/3': $spacer * 1 / 3,
-    '2/3': $spacer * 2 / 3,
-    '1/4': $spacer * 1 / 4,
-    '3/4': $spacer * 3 / 4,
-    '0': $spacer * 0,
-    '1': $spacer * 1,
-    '2': $spacer * 2,
-    '3': $spacer * 3,
-    '4': $spacer * 4,
-    '5': $spacer * 5,
-    '6': $spacer * 6,
-    '7': $spacer * 7,
-    '8': $spacer * 8,
+    '1/2': $spacer-1-2,
+    '1/3': $spacer-1-3,
+    '2/3': $spacer-2-3,
+    '1/4': $spacer-1-4,
+    '3/4': $spacer-3-4,
+    '0': $spacer-0,
+    '1': $spacer-1,
+    '2': $spacer-2,
+    '3': $spacer-3,
+    '4': $spacer-4,
+    '5': $spacer-5,
+    '6': $spacer-6,
+    '7': $spacer-7,
+    '8': $spacer-8,
 ) !default;
 
 @function spacers($key) {

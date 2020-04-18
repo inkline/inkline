@@ -133,8 +133,8 @@ $color-group-social: (
 
 // Theme light and dark colors
 //
-$variant-color-light: #ffffff !default;
-$variant-color-dark: #343a40 !default;
+$variant-color-light: $color-white !default;
+$variant-color-dark: $color-gray-80 !default;
 
 // Color groups
 //
