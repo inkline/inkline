@@ -1,7 +1,7 @@
 # Customization
-## Make Inkline your own using hundreds of configurable Sass variables. {.lead}
+## Prepare Inkline for tree shaking and Sass variables customization. {.lead}
 
-### Build Dependencies
+### Install Dependencies
 
 To customize Inkline, we'll need to make sure we import the source code instead of the compiled files. This comes with a new set of dependencies:
 
@@ -9,7 +9,7 @@ To customize Inkline, we'll need to make sure we import the source code instead 
 npm install --save-dev node-sass sass-loader
 ~~~
 
-### Update Imports
+### Update Imports {._padding-0}
 
 Next, we need to make sure we're importing the source code instead of the build files. This will allow us to recompile the Inkline styles whenever we change something in the project.
 
@@ -22,9 +22,9 @@ import * as components from '@inkline/inkline/src/components';
 Vue.use(Inkline, { components });
 ~~~
 
-### Variables
+### Sass Variables
 
-Create a new Sass file called `_variables.scss`, where we'll define the values you want to use with Inkline. Let's say we want to override the primary and secondary colors for all components.
+Create a new Sass file called `variables.scss`, where we'll define the values you want to use with Inkline. Let's say we want to override the primary and secondary colors for all components.
 
 ~~~scss 
 $color-primary: #D84550;
