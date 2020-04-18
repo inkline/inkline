@@ -186,3 +186,82 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the breadcrumb components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Breadcrumb" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$breadcrumb-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-padding-base</template>
+                <template slot="default"><code>$spacer-1-2 $spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-padding</template>
+                <template slot="default"><code>size-map($breadcrumb-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-margin-bottom</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-divider</template>
+                <template slot="default"><code>'/'</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-plain-color-light</template>
+                <template slot="default"><code>$color-gray-60</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-active-color-light</template>
+                <template slot="default"><code>$color-gray-80</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-plain-color-dark</template>
+                <template slot="default"><code>$color-gray-60</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-active-color-dark</template>
+                <template slot="default"><code>$color-gray-40</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-variants</template>
+                <template slot="default"><code>('brand', 'monochrome')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-variant-color-light</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-variant-color-dark</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 
+
+<i-scss-preview title="Breadcrumb Item" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$breadcrumb-item-padding-base</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-item-padding</template>
+                <template slot="default"><code>size-map($breadcrumb-item-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

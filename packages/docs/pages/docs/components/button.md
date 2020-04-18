@@ -526,3 +526,91 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the button components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Button" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$button-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-font-weight</template>
+                <template slot="default"><code>$font-weight-normal</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-line-height</template>
+                <template slot="default"><code>$line-height</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-padding-base</template>
+                <template slot="default"><code>$spacer-1-2 $spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-padding</template>
+                <template slot="default"><code>size-map($button-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-circle-size-base</template>
+                <template slot="default"><code>$spacer * 1.6 + map_get($button-font-size, 'md')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-circle-size</template>
+                <template slot="default"><code>size-map($button-circle-size-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-margin</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-darken-percentage-hover</template>
+                <template slot="default"><code>5%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-darken-percentage-active</template>
+                <template slot="default"><code>12.5%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-opacity-disabled-light</template>
+                <template slot="default"><code>0.75</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-opacity-disabled-dark</template>
+                <template slot="default"><code>0.66</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-link-color</template>
+                <template slot="default"><code>$link-color</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-link-disabled-color</template>
+                <template slot="default"><code>$text-muted</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-variants</template>
+                <template slot="default"><code>('brand', 'monochrome', 'state', 'social')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-variant-color-light</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-variant-color-dark</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

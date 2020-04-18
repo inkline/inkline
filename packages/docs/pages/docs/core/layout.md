@@ -422,7 +422,9 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 </template>
 </i-code-preview>
 
-### API
+
+### Components API
+Here you can find a list of the various customization options you can use for the layout components as props, as well as available slots.
 
 <i-api-preview title="Layout API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Layout">
     <template slot="props">
@@ -489,3 +491,52 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
         </api-table>
     </template>
 </i-api-preview>
+
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the layout components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Layout Aside" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$layout-aside-background</template>
+                <template slot="default"><code>$color-transparent</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$layout-aside-width</template>
+                <template slot="default"><code>auto</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>
+
+<i-scss-preview title="Layout Header" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$layout-header-background</template>
+                <template slot="default"><code>$color-transparent</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$layout-header-padding</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>
+
+<i-scss-preview title="Layout Footer" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$layout-footer-background</template>
+                <template slot="default"><code>$color-gray-10</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$layout-footer-padding</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>

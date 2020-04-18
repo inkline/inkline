@@ -601,3 +601,198 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the input components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Input" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$label-margin-bottom</template>
+                <template slot="default"><code>0.5rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-line-height</template>
+                <template slot="default"><code>$line-height</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-padding-base</template>
+                <template slot="default"><code>spacers('1/2') spacers('1')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-padding</template>
+                <template slot="default"><code>size-map($input-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-prefix-padding-base</template>
+                <template slot="default"><code>nth($input-padding-base, 2) * 4</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-prefix-padding</template>
+                <template slot="default"><code>size-map($input-prefix-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-prefix-border-width</template>
+                <template slot="default"><code>1px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-color-light</template>
+                <template slot="default"><code>$body-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-color-focus-light</template>
+                <template slot="default"><code>$input-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-color-disabled-light</template>
+                <template slot="default"><code>$input-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-placeholder-color-light</template>
+                <template slot="default"><code>colors('gray-60')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-plaintext-color-light</template>
+                <template slot="default"><code>$input-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-background-light</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-background-disabled-light</template>
+                <template slot="default"><code>colors('gray-20')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-background-focus-light</template>
+                <template slot="default"><code>$input-background-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-border-color-light</template>
+                <template slot="default"><code>$border-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-border-color-hover-light</template>
+                <template slot="default"><code>darken-lightness($input-border-color-light, 10%)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-border-color-focus-light</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-icon-circle-background-light</template>
+                <template slot="default"><code>$color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-icon-circle-background-hover-light</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-icon-circle-color-light</template>
+                <template slot="default"><code>$color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-icon-circle-color-hover-light</template>
+                <template slot="default"><code>$input-icon-circle-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-append-prepend-background-light</template>
+                <template slot="default"><code>$color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-color-dark</template>
+                <template slot="default"><code>$body-color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-color-focus-dark</template>
+                <template slot="default"><code>$input-color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-color-disabled-dark</template>
+                <template slot="default"><code>$input-color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-placeholder-color-dark</template>
+                <template slot="default"><code>colors('gray-40')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-plaintext-color-dark</template>
+                <template slot="default"><code>$input-color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-background-dark</template>
+                <template slot="default"><code>darken($color-dark, 3%)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-background-disabled-dark</template>
+                <template slot="default"><code>$color-gray-70</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-background-focus-dark</template>
+                <template slot="default"><code>$input-background-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-border-color-dark</template>
+                <template slot="default"><code>$border-color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-border-color-hover-dark</template>
+                <template slot="default"><code>lighten-lightness($input-border-color-dark, 10%)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-border-color-focus-dark</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-icon-circle-background-dark</template>
+                <template slot="default"><code>$color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-icon-circle-background-hover-dark</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-icon-circle-color-dark</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-icon-circle-color-hover-dark</template>
+                <template slot="default"><code>$input-icon-circle-color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-append-prepend-background-dark</template>
+                <template slot="default"><code>$color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-box-shadow</template>
+                <template slot="default"><code>inset 0 1px 1px rgba($color-black, 0.05)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-transition</template>
+                <template slot="default"><code>background-color $transition-duration $transition-easing, color $transition-duration $transition-easing, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-icon-circle-size</template>
+                <template slot="default"><code>1.2rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-variants</template>
+                <template slot="default"><code>(...)</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>

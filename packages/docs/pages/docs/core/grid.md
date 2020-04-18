@@ -1272,6 +1272,7 @@ Here you can find a list of the various customization options you can use for th
 
 
 ### Sass Variables
+Here you can find a list of the Sass variables you can use for the grid components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
 
 <i-scss-preview title="Container" expanded>
     <template slot="scss">
@@ -1312,30 +1313,3 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-scss-preview>
 
-
-<i-scss-preview title="Common" expanded>
-    <template slot="scss">
-        <api-table>
-            <api-table-row>
-                <template slot="property">$gutter-xs</template>
-                <template slot="default"><code>24px</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$gutter-sm</template>
-                <template slot="default"><code>26px</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$gutter-md</template>
-                <template slot="default"><code>28px</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$gutter-lg</template>
-                <template slot="default"><code>30px</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$gutter-xl</template>
-                <template slot="default"><code>32px</code></template>
-            </api-table-row>
-        </api-table>
-    </template>
-</i-scss-preview>

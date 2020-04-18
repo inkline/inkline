@@ -206,3 +206,29 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the nav components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Nav" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$nav-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$nav-item-disabled-color</template>
+                <template slot="default"><code>$text-muted</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$nav-item-padding-base</template>
+                <template slot="default"><code>$spacer-1-2 $spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$nav-item-padding</template>
+                <template slot="default"><code>size-map($nav-item-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

@@ -17,6 +17,11 @@ const pages = [
     {
         id: 'docs-introduction-customization',
         title: 'Customization',
+        description: 'Get Inkline ready for tree shaking and Sass variables customization.'
+    },
+    {
+        id: 'docs-introduction-sass-variables',
+        title: 'Sass Variables',
         description: 'Make Inkline your own using hundreds of configurable Sass variables.'
     },
     {
@@ -158,6 +163,11 @@ const pages = [
         id: 'docs-components-dropdown',
         title: 'Dropdown',
         description: 'Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.'
+    },
+    {
+        id: 'docs-components-hamburger-menu',
+        title: 'Hamburger Menu',
+        description: 'Inkline\'s hamburger menu is used to control opening and closing elements using various animation options.'
     },
     {
         id: 'docs-components-header',

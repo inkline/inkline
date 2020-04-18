@@ -6,9 +6,7 @@ Here’s an example of the basic icons included with the `<i-icon>` component.
 <i-code-preview title="Icon Example" id="icons">
 
 <i-tooltip>
-    <div class="icon-box">
-        <i-icon icon="check" />
-    </div>
+    <div class="icon-box"><i-icon icon="check" /></div>
     <template slot="body">&lt;i-icon icon="check" /&gt;</template>
 </i-tooltip>
 <i-tooltip>
@@ -78,10 +76,6 @@ Here’s an example of the basic icons included with the `<i-icon>` component.
 <i-tooltip>
     <div class="icon-box"><i-icon icon="times" /></div>
     <template slot="body">&lt;i-icon icon="times" /&gt;</template>
-</i-tooltip>
-<i-tooltip>
-    <div class="icon-box"><i-icon icon="check" /></div>
-    <template slot="body">&lt;i-icon icon="check" /&gt;</template>
 </i-tooltip>
 <i-tooltip>
     <div class="icon-box"><i-icon icon="sort-asc" /></div>

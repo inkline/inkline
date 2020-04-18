@@ -377,3 +377,49 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the tooltip components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Tooltip" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$tooltip-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tooltip-font-weight</template>
+                <template slot="default"><code>$font-weight-normal</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tooltip-line-height</template>
+                <template slot="default"><code>$line-height</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tooltip-margin</template>
+                <template slot="default"><code>spacers('1/2')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tooltip-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tooltip-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tooltip-padding-base</template>
+                <template slot="default"><code>spacers('1/4') spacers('1/2')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tooltip-padding</template>
+                <template slot="default"><code>size-map($tooltip-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tooltip-variants</template>
+                <template slot="default"><code>('monochrome-white')</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

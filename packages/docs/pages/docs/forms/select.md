@@ -424,3 +424,39 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+
+### Sass Variables
+Modifying the <nuxt-link :to="{ name: 'docs-forms-input' }">Input Component</nuxt-link> and the <nuxt-link :to="{ name: 'docs-components-dropdown' }">Dropdown Component</nuxt-link> Sass Variables will also change the Select component. 
+
+Here you can find a list of the Sass variables you can use for the select components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Select" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$select-dropdown-variants</template>
+                <template slot="default"><code>('monochrome-white')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$select-dropdown-variant-color-light</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$select-dropdown-variant-color-dark</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>  
+
+<i-scss-preview title="Select Option" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$select-option-padding</template>
+                <template slot="default"><code>$spacer-1-2 * size-multipliers('md') $spacer * size-multipliers('md')</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>  

@@ -133,3 +133,37 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the loader components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Loader" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$loader-size-base</template>
+                <template slot="default"><code>64px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$loader-size</template>
+                <template slot="default"><code>size-map($loader-size-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$loader-animation-duration</template>
+                <template slot="default"><code>1.2s</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$loader-item-count</template>
+                <template slot="default"><code>12</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$loader-item-size</template>
+                <template slot="default"><code>8%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$loader-variants</template>
+                <template slot="default"><code>('monochrome-white')</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

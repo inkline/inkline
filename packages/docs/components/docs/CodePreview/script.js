@@ -38,6 +38,10 @@ export default {
             type: String,
             default: ''
         },
+        header: {
+            type: Boolean,
+            default: true
+        },
         expanded: {
             type: Boolean,
             default: false
@@ -53,6 +57,9 @@ export default {
         }
     },
     created() {
-        this.classesProvider.add(() => ({ '-expanded': this.expanded }));
+        this.classesProvider.add(() => ({
+            '-expanded': this.expanded,
+            '-no-header': this.header === false
+        }));
     }
 };

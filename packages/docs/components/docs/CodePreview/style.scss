@@ -31,6 +31,9 @@
             font-weight: bold;
             display: inline-block;
             margin-right: $spacer;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: font-size('md');
 
             code {
                 margin-left: ($spacer / 2);
@@ -108,6 +111,10 @@
             margin-left: -17px;
             margin-right: -17px;
             margin-bottom: -1px;
+        }
+
+        &.-no-header > .panels {
+            margin-top: -17px;
         }
     }
 

@@ -326,3 +326,33 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the progress components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Progress" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$progress-background</template>
+                <template slot="default"><code>$color-gray-30</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$progress-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$progress-height-base</template>
+                <template slot="default"><code>spacers('1/2')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$progress-height</template>
+                <template slot="default"><code>size-map($progress-height-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$progress-variants</template>
+                <template slot="default"><code>('monochrome')</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

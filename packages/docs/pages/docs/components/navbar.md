@@ -548,3 +548,41 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the navbar components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Navbar" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$navbar-padding-base</template>
+                <template slot="default"><code>$spacer-1-2 0</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$navbar-padding</template>
+                <template slot="default"><code>size-map($navbar-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$navbar-brand-margin</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$navbar-brand-font-size</template>
+                <template slot="default"><code>$font-size-md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$navbar-brand-padding-base</template>
+                <template slot="default"><code>$spacer-1-2 0</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$navbar-brand-padding</template>
+                <template slot="default"><code>size-map($navbar-brand-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$navbar-variants</template>
+                <template slot="default"><code>('brand', 'monochrome')</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 
