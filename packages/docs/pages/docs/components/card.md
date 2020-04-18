@@ -321,3 +321,57 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the card components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Card" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$card-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-font-weight</template>
+                <template slot="default"><code>$font-weight-normal</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-line-height</template>
+                <template slot="default"><code>$line-height</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-padding-base</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-padding</template>
+                <template slot="default"><code>size-map($card-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-background-darken</template>
+                <template slot="default"><code>rgba(0, 0, 0, 0.1)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-variants</template>
+                <template slot="default"><code>('basic', 'brand', 'monochrome-white', 'neutral', 'state')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-variant-color-light</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-variant-color-dark</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

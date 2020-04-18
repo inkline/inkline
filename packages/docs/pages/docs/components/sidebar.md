@@ -831,3 +831,65 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the sidebar components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Sidebar" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$sidebar-width-base</template>
+                <template slot="default"><code>14rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-width</template>
+                <template slot="default"><code>size-map($sidebar-width-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-padding-base</template>
+                <template slot="default"><code>0</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-padding</template>
+                <template slot="default"><code>size-map($sidebar-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-wrapper-transition-duration</template>
+                <template slot="default"><code>$transition-duration</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-wrapper-transition-easing</template>
+                <template slot="default"><code>$transition-easing</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-transition-duration</template>
+                <template slot="default"><code>$transition-duration</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-transition-easing</template>
+                <template slot="default"><code>$transition-easing</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-overlay-transition-duration</template>
+                <template slot="default"><code>$transition-duration</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-overlay-transition-easing</template>
+                <template slot="default"><code>$transition-easing</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-overlay-background</template>
+                <template slot="default"><code>rgba(0, 0, 0, 0.5)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-z-index</template>
+                <template slot="default"><code>$z-index-fixed</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-variants</template>
+                <template slot="default"><code>('monochrome')</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

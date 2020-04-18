@@ -273,3 +273,79 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the datatable component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Datatable" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$datatable-cell-padding</template>
+                <template slot="default"><code>0.75rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-cell-padding-sm</template>
+                <template slot="default"><code>0.3rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-header-margin-bottom</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-footer-margin-top</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-border-color</template>
+                <template slot="default"><code>$border-color</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-sortable-icon-color</template>
+                <template slot="default"><code>$color-gray-50</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-sortable-icon-color-active</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-pagination-selector-margin-bottom</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-pagination-selector-margin-left</template>
+                <template slot="default"><code>$spacers-1-2</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-pagination-selector-margin-right</template>
+                <template slot="default"><code>$spacer-1-2</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-pagination-margin-bottom</template>
+                <template slot="default"><code>$spacer-1-2</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$transition-datatable</template>
+                <template slot="default"><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-variants</template>
+                <template slot="default"><code>('monochrome-white')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-variant-color-light</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-variant-color-dark</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 
+

@@ -575,3 +575,273 @@ Remove a list’s bullets and apply some light margin using the `-inline` list m
 
 </template>
 </i-code-preview>
+
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for typography. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+
+<i-scss-preview title="Typography" expanded :header="false">
+    <template slot="scss">
+        <api-table-row>
+            <template slot="property">$font-family-primary-base</template>
+            <template slot="default"><code>-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-family-primary-monospace</template>
+            <template slot="default"><code>'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-family-primary-print</template>
+            <template slot="default"><code>'Georgia', 'Times New Roman', 'Times', serif</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-family-primary</template>
+            <template slot="default"><code>(...)</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-family-secondary-base</template>
+            <template slot="default"><code>$font-family-primary-base</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-family-secondary-print</template>
+            <template slot="default"><code>$font-family-primary-print</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-family-secondary</template>
+            <template slot="default"><code>(...)</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$letter-spacing</template>
+            <template slot="default"><code>0</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-size-base</template>
+            <template slot="default"><code>1rem</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-size-xs</template>
+            <template slot="default"><code>$font-size-base * $size-multiplier-xs</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-size-sm</template>
+            <template slot="default"><code>$font-size-base * $size-multiplier-sm</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-size-md</template>
+            <template slot="default"><code>$font-size-base * $size-multiplier-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-size-lg</template>
+            <template slot="default"><code>$font-size-base * $size-multiplier-lg</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-size-xl</template>
+            <template slot="default"><code>$font-size-base * $size-multiplier-xl</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-size</template>
+            <template slot="default"><code>(...)</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-weight-extralight</template>
+            <template slot="default"><code>200</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-weight-light</template>
+            <template slot="default"><code>300</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-weight-normal</template>
+            <template slot="default"><code>normal</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-weight-semibold</template>
+            <template slot="default"><code>600</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-weight-bold</template>
+            <template slot="default"><code>bold</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-weight-black</template>
+            <template slot="default"><code>900</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-weight-lighter</template>
+            <template slot="default"><code>lighter</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-weight-bolder</template>
+            <template slot="default"><code>bolder</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$font-weight</template>
+            <template slot="default"><code>(...)</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$line-height</template>
+            <template slot="default"><code>1.5</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$text-muted</template>
+            <template slot="default"><code>$color-gray-60</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$h1-font-size</template>
+            <template slot="default"><code>2.5 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$h2-font-size</template>
+            <template slot="default"><code>2 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$h3-font-size</template>
+            <template slot="default"><code>1.75 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$h4-font-size</template>
+            <template slot="default"><code>1.5 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$h5-font-size</template>
+            <template slot="default"><code>1.25 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$h6-font-size</template>
+            <template slot="default"><code>1 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$headings-font-size</template>
+            <template slot="default"><code>(...)</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$headings-margin-top</template>
+            <template slot="default"><code>$spacer * 2.5</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$headings-margin-bottom</template>
+            <template slot="default"><code>$spacer</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$headings-font-family</template>
+            <template slot="default"><code>$font-family-secondary-base</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$headings-font-weight</template>
+            <template slot="default"><code>normal</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$headings-line-height</template>
+            <template slot="default"><code>1.1</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$headings-color</template>
+            <template slot="default"><code>inherit</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$d1-font-size</template>
+            <template slot="default"><code>5.5 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$d2-font-size</template>
+            <template slot="default"><code>5 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$d3-font-size</template>
+            <template slot="default"><code>4.5 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$d4-font-size</template>
+            <template slot="default"><code>4 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$d5-font-size</template>
+            <template slot="default"><code>3.5 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$d6-font-size</template>
+            <template slot="default"><code>3 * $font-size-md</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$displays-font-size</template>
+            <template slot="default"><code>(...)</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$displays-font-weight</template>
+            <template slot="default"><code>$headings-font-weight</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$displays-line-height</template>
+            <template slot="default"><code>$headings-line-height</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$link-color</template>
+            <template slot="default"><code>$color-primary</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$link-color-hover</template>
+            <template slot="default"><code>darken-lightness($link-color, 20%)</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$link-decoration</template>
+            <template slot="default"><code>none</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$link-decoration-hover</template>
+            <template slot="default"><code>underline</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$lead-font-size</template>
+            <template slot="default"><code>$font-size-lg</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$lead-font-weight</template>
+            <template slot="default"><code>300</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$list-inline-padding</template>
+            <template slot="default"><code>$spacer</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$list-item-margin-bottom</template>
+            <template slot="default"><code>$spacers-1-2</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$dt-font-weight</template>
+            <template slot="default"><code>$font-weight-bold</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$small-font-size</template>
+            <template slot="default"><code>$font-size-sm</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$blockquote-small-color</template>
+            <template slot="default"><code>$color-gray-60</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$blockquote-font-size</template>
+            <template slot="default"><code>$font-size-lg</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$blockquote-border</template>
+            <template slot="default"><code>3px solid $color-gray-30</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$blockquote-margin</template>
+            <template slot="default"><code>$spacer</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$blockquote-bordered-padding</template>
+            <template slot="default"><code>$spacer</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$hr-border-color</template>
+            <template slot="default"><code>rgba($colors-black, 0.1)</code></template>
+        </api-table-row>
+        <api-table-row>
+            <template slot="property">$hr-border-width</template>
+            <template slot="default"><code>$border-width</code></template>
+        </api-table-row>
+    </template>
+</i-scss-preview>

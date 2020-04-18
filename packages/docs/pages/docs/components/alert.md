@@ -285,3 +285,82 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the alert component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Alert" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$alert-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-font-weight</template>
+                <template slot="default"><code>font-weight(normal)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-line-height</template>
+                <template slot="default"><code>$line-height</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-padding-base</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-padding</template>
+                <template slot="default"><code>size-map($alert-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-dismiss-size</template>
+                <template slot="default"><code>1rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-background-mix-percentage</template>
+                <template slot="default"><code>60%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-border-darken-lighten-percentage</template>
+                <template slot="default"><code>10%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-code-color-darken-lighten-percentage</template>
+                <template slot="default"><code>10%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-code-background-color-darken-lighten-percentage</template>
+                <template slot="default"><code>7%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-color-darken-lighten-percentage</template>
+                <template slot="default"><code>30%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-link-color-darken-lighten-percentage</template>
+                <template slot="default"><code>35%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-variants</template>
+                <template slot="default"><code>('brand', 'state')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-variant-color-light</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$alert-variant-color-dark</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 
+

@@ -280,3 +280,69 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the pagination components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Pagination" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$pagination-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-item-disabled-color</template>
+                <template slot="default"><code>$text-muted</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-item-padding-base</template>
+                <template slot="default"><code>$spacer-1-2 $spacer-1-3</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-item-padding</template>
+                <template slot="default"><code>size-map($pagination-item-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-item-min-width-base</template>
+                <template slot="default"><code>40px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-item-min-width</template>
+                <template slot="default"><code>size-map($pagination-item-min-width-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-item-spacing</template>
+                <template slot="default"><code>0.25rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-item-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-item-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-item-background-active</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-item-color-active</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-variants</template>
+                <template slot="default"><code>('monochrome')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-variant-color-light</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-variant-color-dark</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

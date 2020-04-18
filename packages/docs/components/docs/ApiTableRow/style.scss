@@ -7,6 +7,7 @@
     padding: $spacer / 2;
     border-width: 1px;
     border-style: solid;
+    border-color: $border-color-light;
     transition-property: border-color;
     transition-duration: $transition-duration;
     transition-timing-function: $transition-easing;

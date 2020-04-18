@@ -354,3 +354,52 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the popover components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Popover" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$popover-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-font-weight</template>
+                <template slot="default"><code>$font-weight-normal</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-line-height</template>
+                <template slot="default"><code>$line-height</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-margin</template>
+                <template slot="default"><code>spacers('1/2')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-width</template>
+                <template slot="default"><code>280px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-padding-base</template>
+                <template slot="default"><code>spacers('2/3') $spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-padding</template>
+                <template slot="default"><code>size-map($popover-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-variants</template>
+                <template slot="default"><code>('monochrome-white')</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

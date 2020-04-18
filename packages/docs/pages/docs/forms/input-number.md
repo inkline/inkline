@@ -469,3 +469,6 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Modifying the <nuxt-link :to="{ name: 'docs-forms-input' }">Input Component</nuxt-link> Sass Variables will also change the Number Input component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.

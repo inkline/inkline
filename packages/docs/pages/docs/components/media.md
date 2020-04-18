@@ -165,3 +165,17 @@ Here you can find the slot options for the media component.
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the media components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Media" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$media-image-margin-right</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

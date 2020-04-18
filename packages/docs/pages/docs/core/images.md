@@ -156,3 +156,58 @@ the `.image` classes to the `<img>` and not to the `<picture>` tag.
 
 </template>
 </i-code-preview>
+
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for images. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Images" expanded :header="false">
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$thumbnail-padding</template>
+                <template slot="default"><code>$spacer / 2</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$thumbnail-background</template>
+                <template slot="default"><code>$body-background</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$thumbnail-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$thumbnail-border-color</template>
+                <template slot="default"><code>$color-gray-40</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$thumbnail-border-radius</template>
+                <template slot="default"><code>$border-radius-md</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$thumbnail-box-shadow</template>
+                <template slot="default"><code>0 1px 2px rgba($color-black, 0.075)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$thumbnail-transition</template>
+                <template slot="default"><code>all 0.2s ease-in-out</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$polaroid-padding</template>
+                <template slot="default"><code>$spacer * 3</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$figure-caption-font-size</template>
+                <template slot="default"><code>90%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$figure-caption-color</template>
+                <template slot="default"><code>$color-gray-60</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$figure-image-margin-bottom</template>
+                <template slot="default"><code>$spacer / 2</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>

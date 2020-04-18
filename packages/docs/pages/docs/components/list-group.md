@@ -278,3 +278,73 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the list group components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="List Group" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$list-group-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-item-disabled-color</template>
+                <template slot="default"><code>$text-muted</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-item-padding-base</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-item-padding</template>
+                <template slot="default"><code>size-map($list-group-item-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-border-style</template>
+                <template slot="default"><code>solid</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-background-color-light</template>
+                <template slot="default"><code>$body-background-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-border-color-light</template>
+                <template slot="default"><code>$border-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-background-color-dark</template>
+                <template slot="default"><code>$body-background-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-border-color-dark</template>
+                <template slot="default"><code>$border-color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-item-active-background</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-item-active-color</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-item-active-border-color</template>
+                <template slot="default"><code>darken-lightness($color-primary, 6%)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-variants</template>
+                <template slot="default"><code>(...)</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

@@ -718,3 +718,46 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the table components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Table" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$table-margin-bottom</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$table-cell-padding</template>
+                <template slot="default"><code>0.75rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$table-cell-padding-sm</template>
+                <template slot="default"><code>0.3rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$table-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$table-border-color</template>
+                <template slot="default"><code>$border-color</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$table-variants</template>
+                <template slot="default"><code>('brand', 'monochrome-white', 'state')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$table-variant-color-light</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$table-variant-color-dark</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>

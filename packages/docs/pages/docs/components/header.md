@@ -194,3 +194,29 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the header components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Header" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$header-padding-base</template>
+                <template slot="default"><code>10rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$header-padding</template>
+                <template slot="default"><code>size-map($header-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$header-background-color-light</template>
+                <template slot="default"><code>$color-gray-20</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$header-background-color-dark</template>
+                <template slot="default"><code>$color-gray-80</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

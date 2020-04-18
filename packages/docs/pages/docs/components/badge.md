@@ -157,3 +157,58 @@ Here you can find a list of the customization options you can use for the badge 
         </api-table>
     </template>
 </i-api-preview>
+
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the badge component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Badge" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$badge-font-size: ('sm': 65%, 'md': 75%, 'lg'</template>
+                <template slot="default"><code>85%)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-font-weight</template>
+                <template slot="default"><code>font-weight(bold)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-line-height</template>
+                <template slot="default"><code>$line-height</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-padding-base</template>
+                <template slot="default"><code>$spacer-1-2 $spacer-2-3</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-padding</template>
+                <template slot="default"><code>size-map($badge-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-pill-border-radius</template>
+                <template slot="default"><code>10rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-variants</template>
+                <template slot="default"><code>('brand', 'monochrome', 'state')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-variant-color-light</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-variant-color-dark</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

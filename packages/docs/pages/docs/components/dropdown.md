@@ -668,3 +668,77 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the dropdown components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Dropdown" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$dropdown-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-font-weight</template>
+                <template slot="default"><code>$font-weight-normal</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-line-height</template>
+                <template slot="default"><code>$line-height</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-margin</template>
+                <template slot="default"><code>$spacer-1-2</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-min-width</template>
+                <template slot="default"><code>200px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-padding-base</template>
+                <template slot="default"><code>$spacer-1-2 0</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-padding</template>
+                <template slot="default"><code>size-map($dropdown-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-item-padding-base</template>
+                <template slot="default"><code>$spacer-1-2 $spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-item-padding</template>
+                <template slot="default"><code>size-map($dropdown-item-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-divider-margin-base</template>
+                <template slot="default"><code>$spacer-1-2 0</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-divider-margin</template>
+                <template slot="default"><code>size-map($dropdown-divider-margin-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-variants</template>
+                <template slot="default"><code>('monochrome-white')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-variant-color-light</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-variant-color-dark</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

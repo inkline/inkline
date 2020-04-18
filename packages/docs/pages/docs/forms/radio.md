@@ -425,3 +425,112 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the checkbox and radio components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Radio" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$form-check-radio-border-radius </template>
+                <template slot="default"><code>100%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-radio-icon-size-base </template>
+                <template slot="default"><code>8px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-radio-icon-size </template>
+                <template slot="default"><code>size-map($form-check-radio-icon-size-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>  
+<i-scss-preview title="Checkable" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$form-check-disabled-color</template>
+                <template slot="default"><code>$text-muted</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-margin-right</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-color</template>
+                <template slot="default"><code>$color-black</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-checked-color</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-active-color</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-disabled-color</template>
+                <template slot="default"><code>$color-gray-30</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-checked-background-color</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-active-background-color</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-disabled-background-color</template>
+                <template slot="default"><code>$color-gray-40</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-disabled-checked-background-color-light</template>
+                <template slot="default"><code>$color-gray-40</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-disabled-checked-background-color-dark</template>
+                <template slot="default"><code>$color-gray-60</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-size</template>
+                <template slot="default"><code>1rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-gutter</template>
+                <template slot="default"><code>spacers('1/2')</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-margin-normalize</template>
+                <template slot="default"><code>$form-check-indicator-size / 4</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-box-shadow</template>
+                <template slot="default"><code>0 0 0 1px rgba($color-black, 0.2), inset 0 0.25rem 0.25rem rgba($color-black, 0.1)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-focused-box-shadow</template>
+                <template slot="default"><code>0 0 0 1px $body-background, 0 0 0.2rem 0.2rem rgba($color-primary, 0.33)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-checked-box-shadow</template>
+                <template slot="default"><code>none</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-active-box-shadow</template>
+                <template slot="default"><code>none</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-indicator-background-size</template>
+                <template slot="default"><code>0.5rem</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$form-check-variants</template>
+                <template slot="default"><code>('monochrome-white')</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview>

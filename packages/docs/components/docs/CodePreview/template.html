@@ -1,9 +1,11 @@
 <div class="code-preview" :class="classes">
-    <div class="header">
-        <span class="title">
-            {{title}}
-            <code v-if="markup">&lt;{{markup}}&gt;</code>
-        </span>
+    <div class="header" v-if="header">
+        <slot name="title">
+            <span class="title">
+                {{title}}
+                <code v-if="markup">&lt;{{markup}}&gt;</code>
+            </span>
+        </slot>
         <div class="tabs">
             <i-button-group size="sm">
                 <i-button

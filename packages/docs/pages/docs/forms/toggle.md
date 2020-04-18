@@ -175,6 +175,13 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="values"></template>
                 <template slot="default"></template>
             </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the toggle component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>light</code>, <code>dark</code></template>
+                <template slot="default"><code>light</code></template>
+            </api-table-row>
         </api-table>
     </template>
     <template slot="events">
@@ -202,3 +209,125 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the toggle component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Radio" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$toggle-width-base</template>
+                <template slot="default"><code>40px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-width</template>
+                <template slot="default"><code>size-map($toggle-width-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-height-base</template>
+                <template slot="default"><code>20px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-height</template>
+                <template slot="default"><code>size-map($toggle-height-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-border-radius-base</template>
+                <template slot="default"><code>$toggle-height-base</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-border-radius</template>
+                <template slot="default"><code>size-map($toggle-border-radius-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-transition-duration</template>
+                <template slot="default"><code>$transition-duration</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-size-base</template>
+                <template slot="default"><code>16px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-size</template>
+                <template slot="default"><code>size-map($toggle-indicator-size-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-border-radius-base</template>
+                <template slot="default"><code>$toggle-indicator-size-base</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-border-radius</template>
+                <template slot="default"><code>size-map($toggle-indicator-border-radius-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-background-light</template>
+                <template slot="default"><code>$color-gray-40</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-background-light</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-background-active-light</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-background-active-light</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-background-disabled-light</template>
+                <template slot="default"><code>$color-gray-40</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-background-disabled-light</template>
+                <template slot="default"><code>$color-gray-20</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-background-active-disabled-light</template>
+                <template slot="default"><code>mix($toggle-background-active-light, $toggle-background-disabled-light, 25%)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-background-active-disabled-light</template>
+                <template slot="default"><code>$color-gray-20</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-background-dark</template>
+                <template slot="default"><code>$color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-background-dark</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-background-active-dark</template>
+                <template slot="default"><code>$color-primary</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-background-active-dark</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-background-disabled-dark</template>
+                <template slot="default"><code>$color-gray-60</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-background-disabled-dark</template>
+                <template slot="default"><code>$color-gray-20</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-background-active-disabled-dark</template>
+                <template slot="default"><code>mix($toggle-background-active-dark, $toggle-background-disabled-dark, 25%)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-indicator-background-active-disabled-dark</template>
+                <template slot="default"><code>$color-gray-20</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-variants</template>
+                <template slot="default"><code>(...)</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 

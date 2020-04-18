@@ -336,3 +336,77 @@ Here you can find a list of the various customization options you can use for th
         </api-table>
     </template>
 </i-api-preview>
+
+### Sass Variables
+Here you can find a list of the Sass variables you can use for the modal components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+
+<i-scss-preview title="Modal" expanded>
+    <template slot="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$modal-font-size</template>
+                <template slot="default"><code>$font-size</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-font-weight</template>
+                <template slot="default"><code>$font-weight-normal</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-line-height</template>
+                <template slot="default"><code>$line-height</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-margin</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-width-base</template>
+                <template slot="default"><code>480px</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-width</template>
+                <template slot="default"><code>size-map($modal-width-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-border-width</template>
+                <template slot="default"><code>$border-width</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-border-radius</template>
+                <template slot="default"><code>$border-radius</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-border-color-light</template>
+                <template slot="default"><code>$border-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-background-light</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-border-color-dark</template>
+                <template slot="default"><code>$border-color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-background-dark</template>
+                <template slot="default"><code>$color-dark</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-overlay-background</template>
+                <template slot="default"><code>rgba(0, 0, 0, 0.75)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-padding-base</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-padding</template>
+                <template slot="default"><code>size-map($modal-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-variants</template>
+                <template slot="default"><code>('brand', 'monochrome', 'state')</code></template>
+            </api-table-row>
+        </api-table>
+    </template>
+</i-scss-preview> 
