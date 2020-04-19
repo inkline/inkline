@@ -9,7 +9,7 @@ To customize Inkline, we'll need to make sure we import the source code instead 
 npm install --save-dev node-sass sass-loader
 ~~~
 
-### Update Imports {._padding-0}
+### Update Imports
 
 Next, we need to make sure we're importing the source code instead of the build files. This will allow us to recompile the Inkline styles whenever we change something in the project.
 

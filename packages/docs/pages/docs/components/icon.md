@@ -242,7 +242,7 @@ The default size is set to `md`.
 
 
 ### Component API
-Here you can find a list of the various customization options you can use for the icon component as props, as well as available slots.
+Here you can find a list of the various customization options you can use for the icon component as props.
 
 <i-api-preview title="Icon API" expanded markup="i-icon" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Icon">
     <template slot="props">
@@ -260,14 +260,6 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>String</code></template>
                 <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
                 <template slot="default"><code>md</code></template>
-            </api-table-row>
-        </api-table>
-    </template>
-    <template slot="slots">
-        <api-table>
-            <api-table-row>
-                <template slot="slot">default</template>
-                <template slot="description">Slot for header default content.</template>
             </api-table-row>
         </api-table>
     </template>
