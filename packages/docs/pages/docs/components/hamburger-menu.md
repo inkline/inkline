@@ -66,7 +66,7 @@ export default {
 </i-code-preview>
 
 ### Component API
-Here you can find a list of the various customization options you can use for the header component as props, as well as available slots.
+Here you can find a list of the various customization options you can use for the hamburger menu component as props.
 
 <i-api-preview title="Hamburger Menu API" expanded markup="i-hamburger-menu" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/HamburgerMenu">
     <template slot="props">
@@ -106,7 +106,7 @@ Here you can find a list of the various customization options you can use for th
 </i-api-preview>
 
 ### Sass Variables
-Here you can find a list of the Sass variables you can use for the header components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+Here you can find a list of the Sass variables you can use for the hamburger menu component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
 
 <i-scss-preview title="Header" expanded>
     <template slot="scss">

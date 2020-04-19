@@ -98,7 +98,7 @@ You can use the `<samp>` for indicating sample output from a program.
 Here you can find a list of the Sass variables you can use for code elements. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
 
 
-<i-scss-preview title="Typography" expanded :header="false">
+<i-scss-preview title="Code" expanded :header="false">
     <template slot="scss">
         <api-table-row>
             <template slot="property">$mark-padding</template>
