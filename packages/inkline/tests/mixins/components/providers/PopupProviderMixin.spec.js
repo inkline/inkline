@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { isServer } from '@inkline/inkline/tests/utilities/isServer';
-import PopupProviderMixin from '@inkline/inkline/src/mixins/components/providers/PopupProviderMixin';
+import PopupProviderMixin from '@inkline/inkline/src/mixins/providers/PopupProviderMixin';
 
 describe('Mixins', () => {
     describe('PopupProviderMixin', () => {

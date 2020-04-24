@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils'
 
-import ClearablePropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ClearablePropertyMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import FocusInputRefMethodMixin from '@inkline/inkline/src/mixins/forms/methods/FocusInputRefMethodMixin';
+import ClearablePropertyMixin from '@inkline/inkline/src/mixins/properties/ClearablePropertyMixin';
+import ClassesProviderMixin from '@inkline/inkline/src/mixins/providers/ClassesProviderMixin';
+import FocusInputRefMethodMixin from '@inkline/inkline/src/mixins/methods/FocusInputRefMethodMixin';
 
 describe('Mixins', () => {
     describe('ClearablePropertyMixin', () => {
