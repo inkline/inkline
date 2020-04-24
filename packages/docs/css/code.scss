@@ -17,6 +17,7 @@ pre[class*="language-"] {
         color: colors('primary') !important;
     }
 
+    .token.string,
     .token.attr-name {
         color: colors('success') !important;
     }

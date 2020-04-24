@@ -1,6 +1,8 @@
 import { ICollapsible, ICollapsibleItem } from "@inkline/inkline/src/components";
-import ClassesProviderMixin from "@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin";
-import VariantPropertyMixin from "@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin";
+import {
+    ClassesProviderMixin,
+    VariantPropertyMixin
+} from "@inkline/inkline/src/mixins";
 
 export default {
     name: 'SiteNavigation',
