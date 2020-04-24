@@ -1,6 +1,8 @@
 import { IButton, IButtonGroup } from '@inkline/inkline/src/index';
-import ClassesProviderMixin from "@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin";
-import VariantPropertyMixin from "@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin";
+import {
+    ClassesProviderMixin,
+    VariantPropertyMixin
+} from "@inkline/inkline/src/mixins";
 
 export default {
     name: 'ICodePreview',
