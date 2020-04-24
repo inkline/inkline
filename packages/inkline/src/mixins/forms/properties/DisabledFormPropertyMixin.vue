@@ -1,5 +1,5 @@
 <script>
-import DisabledPropertyMixin from '../../components/properties/DisabledPropertyMixin';
+import DisabledPropertyMixin from '@inkline/inkline/src/mixins/properties/DisabledPropertyMixin';
 
 export default {
     ...DisabledPropertyMixin,
