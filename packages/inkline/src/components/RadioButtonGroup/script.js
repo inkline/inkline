@@ -1,5 +1,5 @@
-import ICheckableGroup from '@inkline/inkline/src/components/CheckableGroup';
-import IButtonGroup from '@inkline/inkline/src/components/ButtonGroup';
+import ICheckableGroup from '@inkline/inkline/src/components/ICheckableGroup';
+import IButtonGroup from '@inkline/inkline/src/components/IButtonGroup';
 
 export default {
     name: 'IRadioButtonGroup',

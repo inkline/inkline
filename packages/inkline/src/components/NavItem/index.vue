@@ -1,3 +1,3 @@
-<template src="../Linkable/template.html" />
+<template src="../ILinkable/template.html" />
 <script src="./script.js" />
 <style src="./style.scss" lang="scss" scoped />

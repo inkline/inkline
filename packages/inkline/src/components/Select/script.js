@@ -1,26 +1,25 @@
-import IInput from '@inkline/inkline/src/components/Input';
-import IDropdown from '@inkline/inkline/src/components/Dropdown';
-import IDropdownMenu from '@inkline/inkline/src/components/DropdownMenu';
-
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import InjectParentFormProviderMixin from '@inkline/inkline/src/mixins/forms/providers/InjectParentFormProviderMixin';
-import ModelProviderMixin from '@inkline/inkline/src/mixins/forms/providers/ModelProviderMixin';
-import SchemaProviderMixin from '@inkline/inkline/src/mixins/forms/providers/SchemaProviderMixin';
-
-import EmitChangeMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitChangeMethodMixin';
-import EmitClickMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitClickMethodMixin';
-import EmitFocusMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitFocusMethodMixin';
-import EmitInputMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitInputMethodMixin';
-import EmitKeydownMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitKeydownMethodMixin';
-
-import DisabledPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/DisabledPropertyMixin';
-import NamePropertyMixin from '@inkline/inkline/src/mixins/forms/properties/NamePropertyMixin';
-import ReadonlyPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ReadonlyPropertyMixin';
-import ParentFormGroupPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ParentFormGroupPropertyMixin';
-import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
-import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
-import VariantPropertyMixin from "@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin";
+import IInput from '@inkline/inkline/src/components/IInput';
+import IDropdown from '@inkline/inkline/src/components/IDropdown';
+import IDropdownMenu from '@inkline/inkline/src/components/IDropdownMenu';
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+    InjectParentFormProviderMixin,
+    ModelProviderMixin,
+    SchemaProviderMixin,
+    EmitChangeMethodMixin,
+    EmitClickMethodMixin,
+    EmitFocusMethodMixin,
+    EmitInputMethodMixin,
+    EmitKeydownMethodMixin,
+    DisabledFormPropertyMixin,
+    NamePropertyMixin,
+    ReadonlyPropertyMixin,
+    ParentFormGroupPropertyMixin,
+    SizePropertyMixin,
+    TabIndexPropertyMixin,
+    VariantPropertyMixin,
+} from '@inkline/inkline/src/mixins';
 import { hashString, querySelectorAll, uid, isMobile } from "@inkline/inkline/src/helpers";
 
 export default {
@@ -46,7 +45,7 @@ export default {
         EmitKeydownMethodMixin,
         // EmitHoverMethodMixin,
 
-        DisabledPropertyMixin,
+        DisabledFormPropertyMixin,
         NamePropertyMixin,
         ParentFormGroupPropertyMixin,
         ReadonlyPropertyMixin,

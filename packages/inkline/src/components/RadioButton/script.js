@@ -1,5 +1,5 @@
-import IButton from '@inkline/inkline/src/components/Button';
-import IRadio from '@inkline/inkline/src/components/Radio';
+import IButton from '@inkline/inkline/src/components/IButton';
+import IRadio from '@inkline/inkline/src/components/IRadio';
 
 export default {
     name: 'IRadioButton',

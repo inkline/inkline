@@ -1,10 +1,10 @@
-import IButtonGroup from '@inkline/inkline/src/components/ButtonGroup';
-import IButton from '@inkline/inkline/src/components/Button';
-
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-
-import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
+import IButtonGroup from '@inkline/inkline/src/components/IButtonGroup';
+import IButton from '@inkline/inkline/src/components/IButton';
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+    VariantPropertyMixin
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'ITabs',

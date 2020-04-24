@@ -1,4 +1,4 @@
-import Linkable from '../Linkable';
+import Linkable from '@inkline/inkline/src/components/ILinkable';
 
 export default {
     name: 'INavbarBrand',

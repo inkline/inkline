@@ -1,8 +1,8 @@
-import Checkable from '@inkline/inkline/src/components/Checkable';
+import ICheckable from '@inkline/inkline/src/components/ICheckable';
 
 export default {
     name: 'IRadio',
-    extends: Checkable,
+    extends: ICheckable,
     computed: {
         currentValue() {
             return this.isGrouped ? this.value : (this.$attrs || {}).value;

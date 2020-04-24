@@ -1,4 +1,4 @@
-import IInput from '@inkline/inkline/src/components/Input';
+import IInput from '@inkline/inkline/src/components/IInput';
 
 export default {
     name: 'ITextarea',

@@ -1,22 +1,21 @@
-import IFormError from '@inkline/inkline/src/components/FormError';
-
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import InjectParentFormProviderMixin from '@inkline/inkline/src/mixins/forms/providers/InjectParentFormProviderMixin';
-import ModelGroupProviderMixin from '@inkline/inkline/src/mixins/forms/providers/ModelGroupProviderMixin';
-
-import ClickInputRefMethodMixin from '@inkline/inkline/src/mixins/forms/methods/ClickInputRefMethodMixin';
-import EmitClickMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitClickMethodMixin';
-import EmitFocusMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitFocusMethodMixin';
-import EmitInputMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitInputMethodMixin';
-
-import CustomPropertyMixin from '@inkline/inkline/src/mixins/components/properties/CustomPropertyMixin';
-import DisabledPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/DisabledPropertyMixin';
-import ParentFormGroupPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ParentFormGroupPropertyMixin';
-import ReadonlyPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ReadonlyPropertyMixin';
-import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
-import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
-import VariantPropertyMixin from "@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin";
+import IFormError from '@inkline/inkline/src/components/IFormError';
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+    InjectParentFormProviderMixin,
+    ModelGroupProviderMixin,
+    ClickInputRefMethodMixin,
+    EmitClickMethodMixin,
+    EmitFocusMethodMixin,
+    EmitInputMethodMixin,
+    CustomPropertyMixin,
+    DisabledFormPropertyMixin,
+    ParentFormGroupPropertyMixin,
+    ReadonlyPropertyMixin,
+    SizePropertyMixin,
+    TabIndexPropertyMixin,
+    VariantPropertyMixin
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'ICheckable',
@@ -35,7 +34,7 @@ export default {
         EmitInputMethodMixin,
 
         CustomPropertyMixin,
-        DisabledPropertyMixin,
+        DisabledFormPropertyMixin,
         ReadonlyPropertyMixin,
         ParentFormGroupPropertyMixin,
         SizePropertyMixin,

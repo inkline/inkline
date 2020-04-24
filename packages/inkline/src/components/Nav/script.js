@@ -1,7 +1,8 @@
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import EmitProviderMixin from '@inkline/inkline/src/mixins/components/providers/EmitProviderMixin';
-
-import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
+import {
+    ClassesProviderMixin,
+    EmitProviderMixin,
+    SizePropertyMixin,
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'INav',

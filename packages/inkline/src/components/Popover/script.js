@@ -1,10 +1,10 @@
 import { uid } from '@inkline/inkline/src/helpers';
 
-import Tooltip from '../Tooltip';
+import ITooltip from '@inkline/inkline/src/components/ITooltip';
 
 export default {
     name: 'IPopover',
-    extends: Tooltip,
+    extends: ITooltip,
     props: {
         trigger: {
             type: [String, Array],

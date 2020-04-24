@@ -1,8 +1,8 @@
-import IFormGroup from '@inkline/inkline/src/components/FormGroup';
-
-import SchemaProviderMixin from '@inkline/inkline/src/mixins/forms/providers/SchemaProviderMixin';
-
-import EmitFocusMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitFocusMethodMixin';
+import IFormGroup from '@inkline/inkline/src/components/IFormGroup';
+import {
+    SchemaProviderMixin,
+    EmitFocusMethodMixin
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'ICheckableGroup',

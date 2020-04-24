@@ -1,9 +1,11 @@
-import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
+import {
+    SizePropertyMixin,
+    ClassesProviderMixin,
+} from '@inkline/inkline/src/mixins';
 
-import IContainer from "@inkline/inkline/src/components/Container";
-import IRow from '../Row';
-import IColumn from '../Column';
+import IContainer from "@inkline/inkline/src/components/IContainer";
+import IRow from '@inkline/inkline/src/components/IRow';
+import IColumn from '@inkline/inkline/src/components/IColumn';
 
 export default {
     name: 'IHeader',

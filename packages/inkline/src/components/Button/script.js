@@ -1,19 +1,19 @@
-import ILinkable from '../Linkable';
-import ILoader from '../Loader';
+import ILinkable from '@inkline/inkline/src/components/ILinkable';
+import ILoader from '@inkline/inkline/src/components/ILoader';
 
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import InjectParentFormProviderMixin from '@inkline/inkline/src/mixins/forms/providers/InjectParentFormProviderMixin';
-
-import EmitClickMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitClickMethodMixin';
-import EmitFocusMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitFocusMethodMixin';
-import EmitHoverMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitHoverMethodMixin';
-
-import DisabledPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/DisabledPropertyMixin';
-import LoadingPropertyMixin from '@inkline/inkline/src/mixins/components/properties/LoadingPropertyMixin';
-import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
-import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
-import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+    InjectParentFormProviderMixin,
+    EmitClickMethodMixin,
+    EmitFocusMethodMixin,
+    EmitHoverMethodMixin,
+    DisabledFormPropertyMixin,
+    LoadingPropertyMixin,
+    SizePropertyMixin,
+    TabIndexPropertyMixin,
+    VariantPropertyMixin
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IButton',
@@ -30,7 +30,7 @@ export default {
         EmitFocusMethodMixin,
         EmitHoverMethodMixin,
 
-        DisabledPropertyMixin,
+        DisabledFormPropertyMixin,
         LoadingPropertyMixin,
         SizePropertyMixin,
         TabIndexPropertyMixin,

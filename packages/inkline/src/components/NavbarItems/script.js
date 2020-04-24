@@ -1,7 +1,8 @@
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-
-import ITransitionExpand from '@inkline/inkline/src/transitions/TransitionExpand';
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+} from '@inkline/inkline/src/mixins';
+import ITransitionExpand from '@inkline/inkline/src/transitions/ITransitionExpand';
 
 export default {
     name: 'INavbarItems',
