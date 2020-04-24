@@ -6,4 +6,10 @@ describe('Vue CLI Module', () => {
         treeShaking: true,
         scss: true
     }));
+
+    it('should build typescript plugin with tree shaking and scss config enabled', vueCLIBuild('main.tree-shaking-scss', generator, {
+        treeShaking: true,
+        scss: true,
+        typescript: true
+    }));
 });
