@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import CheckboxButton from '@inkline/inkline/src/components/CheckboxButton';
+import { ICheckboxButton } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('CheckboxButton', () => {
+    describe('ICheckboxButton', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(CheckboxButton);
+            wrapper = shallowMount(ICheckboxButton);
         });
 
         it('should be named correctly', () => {
-            expect(CheckboxButton.name).toEqual('ICheckboxButton');
+            expect(ICheckboxButton.name).toEqual('ICheckboxButton');
         });
 
         it('should render correctly', () => {

@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import Button from '@inkline/inkline/src/components/Button';
+import { IButton } from '@inkline/inkline/src/components';
 import { RouterLink } from '../mocks/RouterLink';
 
 
 describe('Components', () => {
-    describe('Button', () => {
+    describe('IButton', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Button, {
+            wrapper = shallowMount(IButton, {
                 methods: {
-                    created: Button.created
+                    created: IButton.created
                 },
                 components: {
                     RouterLink
@@ -19,7 +19,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(Button.name).toEqual('IButton');
+            expect(IButton.name).toEqual('IButton');
         });
 
         it('should render correctly', () => {

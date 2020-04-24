@@ -1,15 +1,15 @@
 import { shallowMount } from '@vue/test-utils';
-import Input from '@inkline/inkline/src/components/Input';
+import { IInput } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Input', () => {
+    describe('IInput', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Input, {
+            wrapper = shallowMount(IInput, {
                 methods: {
-                    created: Input.created,
-                    mounted: Input.mounted
+                    created: IInput.created,
+                    mounted: IInput.mounted
                 },
                 parentComponent: {
                     name: 'IFormGroup'
@@ -18,7 +18,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(Input.name).toEqual('IInput');
+            expect(IInput.name).toEqual('IInput');
         });
 
         it('should render correctly', () => {
@@ -34,7 +34,7 @@ describe('Components', () => {
             });
 
             it('should add "-prepended" class if "prepend" slot provided', () => {
-                wrapper = shallowMount(Input, {
+                wrapper = shallowMount(IInput, {
                     slots: {
                         prepend: ['<div />']
                     }
@@ -46,7 +46,7 @@ describe('Components', () => {
             });
 
             it('should add "-appended" class if "append" slot provided', () => {
-                wrapper = shallowMount(Input, {
+                wrapper = shallowMount(IInput, {
                     slots: {
                         append: ['<div />']
                     }
@@ -58,7 +58,7 @@ describe('Components', () => {
             });
 
             it('should add "-prefixed" class if "prefix" slot provided', () => {
-                wrapper = shallowMount(Input, {
+                wrapper = shallowMount(IInput, {
                     slots: {
                         prefix: ['<div />']
                     }
@@ -70,7 +70,7 @@ describe('Components', () => {
             });
 
             it('should add "-suffixed" class if "suffix" slot provided', () => {
-                wrapper = shallowMount(Input, {
+                wrapper = shallowMount(IInput, {
                     slots: {
                         suffix: ['<div />']
                     }

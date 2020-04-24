@@ -1,21 +1,21 @@
 import { shallowMount } from '@vue/test-utils';
-import HamburgerMenu from '@inkline/inkline/src/components/HamburgerMenu';
+import { IHamburgerMenu } from '@inkline/inkline/src/components';
 
 
 describe('Components', () => {
-    describe('HamburgerMenu', () => {
+    describe('IHamburgerMenu', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(HamburgerMenu, {
+            wrapper = shallowMount(IHamburgerMenu, {
                 methods: {
-                    created: HamburgerMenu.created
+                    created: IHamburgerMenu.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(HamburgerMenu.name).toEqual('IHamburgerMenu');
+            expect(IHamburgerMenu.name).toEqual('IHamburgerMenu');
         });
 
         it('should render correctly', () => {

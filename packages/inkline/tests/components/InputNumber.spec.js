@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import InputNumber from '@inkline/inkline/src/components/InputNumber';
+import { IInputNumber } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('InputNumber', () => {
+    describe('IInputNumber', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(InputNumber);
+            wrapper = shallowMount(IInputNumber);
         });
 
         it('should be named correctly', () => {
-            expect(InputNumber.name).toEqual('IInputNumber');
+            expect(IInputNumber.name).toEqual('IInputNumber');
         });
 
         it('should render correctly', () => {

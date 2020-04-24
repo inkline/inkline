@@ -1,20 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
-import CheckableGroup from '@inkline/inkline/src/components/CheckableGroup';
+import { ICheckableGroup } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('CheckableGroup', () => {
+    describe('ICheckableGroup', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(CheckableGroup, {
+            wrapper = shallowMount(ICheckableGroup, {
                 methods: {
-                    created: CheckableGroup.created
+                    created: ICheckableGroup.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(CheckableGroup.name).toEqual('ICheckableGroup');
+            expect(ICheckableGroup.name).toEqual('ICheckableGroup');
         });
 
         describe('props', () => {

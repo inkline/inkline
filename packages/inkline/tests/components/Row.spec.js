@@ -1,18 +1,18 @@
 import { shallowMount } from '@vue/test-utils';
-import Row from '@inkline/inkline/src/components/Row';
+import { IRow } from '@inkline/inkline/src/components';
 import { capitalizeFirst } from "@inkline/inkline/src/helpers";
 import { breakpointKeys } from '@inkline/inkline/src/constants';
 
 describe('Components', () => {
-    describe('Row', () => {
+    describe('IRow', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Row);
+            wrapper = shallowMount(IRow);
         });
 
         it('should be named correctly', () => {
-            expect(Row.name).toEqual('IRow');
+            expect(IRow.name).toEqual('IRow');
         });
 
         it('should render correctly', () => {

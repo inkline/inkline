@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import Checkbox from '@inkline/inkline/src/components/Checkbox';
+import { ICheckbox } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Checkbox', () => {
+    describe('ICheckbox', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Checkbox);
+            wrapper = shallowMount(ICheckbox);
         });
 
         it('should be named correctly', () => {
-            expect(Checkbox.name).toEqual('ICheckbox');
+            expect(ICheckbox.name).toEqual('ICheckbox');
         });
 
         it('should render correctly', () => {
@@ -39,7 +39,7 @@ describe('Components', () => {
                 });
 
                 it('should return true if model is equal to currentValue if Boolean', () => {
-                    wrapper = shallowMount(Checkbox, {
+                    wrapper = shallowMount(ICheckbox, {
                         computed: {
                             currentValue() { return 'value'; },
                             model() { return 'value'; }
@@ -51,7 +51,7 @@ describe('Components', () => {
                 });
 
                 it('should return false if model and is not equal to currentValue if Boolean', () => {
-                    wrapper = shallowMount(Checkbox, {
+                    wrapper = shallowMount(ICheckbox, {
                         computed: {
                             currentValue() { return 'value'; },
                             model() { return 'othervalue'; }
@@ -63,7 +63,7 @@ describe('Components', () => {
                 });
 
                 it('should return if value found in model if Array', () => {
-                    wrapper = shallowMount(Checkbox, {
+                    wrapper = shallowMount(ICheckbox, {
                         computed: {
                             currentValue() { return 'value1' }
                         }
@@ -72,7 +72,7 @@ describe('Components', () => {
                     expect(wrapper.vm.checked).toEqual(true);
 
 
-                    wrapper = shallowMount(Checkbox, {
+                    wrapper = shallowMount(ICheckbox, {
                         computed: {
                             currentValue() { return 'value3' }
                         }
@@ -82,7 +82,7 @@ describe('Components', () => {
                 });
 
                 it('should return if model is not defined', () => {
-                    wrapper = shallowMount(Checkbox, {
+                    wrapper = shallowMount(ICheckbox, {
                         computed: {
                             currentValue() { return 'value'; },
                             model() { return null; }

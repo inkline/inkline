@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import Loader from '@inkline/inkline/src/components/Loader';
+import { ILoader } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Loader', () => {
+    describe('ILoader', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Loader);
+            wrapper = shallowMount(ILoader);
         });
 
         it('should be named correctly', () => {
-            expect(Loader.name).toEqual('ILoader');
+            expect(ILoader.name).toEqual('ILoader');
         });
 
         it('should render correctly', () => {

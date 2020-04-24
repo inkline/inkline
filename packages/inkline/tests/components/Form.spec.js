@@ -1,15 +1,15 @@
 import { shallowMount } from '@vue/test-utils';
-import Form from '@inkline/inkline/src/components/Form';
+import { IForm } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Form', () => {
+    describe('IForm', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Form, {
+            wrapper = shallowMount(IForm, {
                 methods: {
-                    created: Form.created,
-                    provide: Form.provide
+                    created: IForm.created,
+                    provide: IForm.provide
                 }
             });
         });

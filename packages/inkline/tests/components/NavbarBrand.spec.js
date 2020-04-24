@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import NavbarBrand from '@inkline/inkline/src/components/NavbarBrand';
+import { INavbarBrand } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('NavbarBrand', () => {
+    describe('INavbarBrand', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(NavbarBrand);
+            wrapper = shallowMount(INavbarBrand);
         });
 
         it('should be named correctly', () => {
-            expect(NavbarBrand.name).toEqual('INavbarBrand');
+            expect(INavbarBrand.name).toEqual('INavbarBrand');
         });
 
         it('should render correctly', () => {

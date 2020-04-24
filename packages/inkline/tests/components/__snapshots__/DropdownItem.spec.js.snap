@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Components DropdownItem should render correctly 1`] = `<a class="item"></a>`;

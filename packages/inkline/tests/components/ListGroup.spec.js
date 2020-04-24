@@ -1,20 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
-import ListGroup from '@inkline/inkline/src/components/ListGroup';
+import { IListGroup } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('ListGroup', () => {
+    describe('IListGroup', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(ListGroup, {
+            wrapper = shallowMount(IListGroup, {
                 methods: {
-                    created: ListGroup.created
+                    created: IListGroup.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(ListGroup.name).toEqual('IListGroup');
+            expect(IListGroup.name).toEqual('IListGroup');
         });
 
         it('should render correctly', () => {
@@ -32,7 +32,7 @@ describe('Components', () => {
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(ListGroup.created).toBeDefined();
+                expect(IListGroup.created).toBeDefined();
             });
 
             it('should add class rules to classes provider', () => {

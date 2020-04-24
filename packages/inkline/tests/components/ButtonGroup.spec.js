@@ -1,20 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
-import ButtonGroup from '@inkline/inkline/src/components/ButtonGroup';
+import { IButtonGroup } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('ButtonGroup', () => {
+    describe('IButtonGroup', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(ButtonGroup, {
+            wrapper = shallowMount(IButtonGroup, {
                 methods: {
-                    created: ButtonGroup.created
+                    created: IButtonGroup.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(ButtonGroup.name).toEqual('IButtonGroup');
+            expect(IButtonGroup.name).toEqual('IButtonGroup');
         });
 
         it('should render correctly', () => {

@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import ProgressBar from '@inkline/inkline/src/components/ProgressBar';
+import { IProgressBar } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('ProgressBar', () => {
+    describe('IProgressBar', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(ProgressBar);
+            wrapper = shallowMount(IProgressBar);
         });
 
         it('should be named correctly', () => {
-            expect(ProgressBar.name).toEqual('IProgressBar');
+            expect(IProgressBar.name).toEqual('IProgressBar');
         });
 
         it('should render correctly', () => {

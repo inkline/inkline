@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
-import FormError from '@inkline/inkline/src/components/FormError';
+import { IFormError } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('FormError', () => {
+    describe('IFormError', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(FormError, {
+            wrapper = shallowMount(IFormError, {
                 propsData: {
                     schema: {
                         errors: [],
@@ -17,7 +17,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(FormError.name).toEqual('IFormError');
+            expect(IFormError.name).toEqual('IFormError');
         });
 
         it('should render correctly', () => {

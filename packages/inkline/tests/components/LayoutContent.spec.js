@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import LayoutContent from '@inkline/inkline/src/components/LayoutContent';
+import { ILayoutContent } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('LayoutContent', () => {
+    describe('ILayoutContent', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(LayoutContent);
+            wrapper = shallowMount(ILayoutContent);
         });
 
         it('should be named correctly', () => {
-            expect(LayoutContent.name).toEqual('ILayoutContent');
+            expect(ILayoutContent.name).toEqual('ILayoutContent');
         });
 
         it('should render correctly', () => {

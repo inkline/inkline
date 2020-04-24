@@ -1,35 +1,34 @@
 import { shallowMount } from '@vue/test-utils';
-import Tabs from '@inkline/inkline/src/components/Tabs';
-import Tab from '@inkline/inkline/src/components/Tab';
+import { ITabs, ITab } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Tabs', () => {
+    describe('ITabs', () => {
         let wrapper, wrapperWithChildren;
 
         beforeEach(() => {
-            wrapper = shallowMount(Tabs, {
+            wrapper = shallowMount(ITabs, {
                 methods: {
-                    created: Tabs.created,
-                    mounted: Tabs.mounted
+                    created: ITabs.created,
+                    mounted: ITabs.mounted
                 }
             });
 
-            wrapperWithChildren = shallowMount(Tabs, {
+            wrapperWithChildren = shallowMount(ITabs, {
                 stubs: {
-                    Tab
+                    ITab
                 },
                 slots: {
                     default: [
-                        '<tab id="tab1" />',
-                        '<tab id="tab2" />',
-                        '<tab id="tab3" />'
+                        '<i-tab id="tab1" />',
+                        '<i-tab id="tab2" />',
+                        '<i-tab id="tab3" />'
                     ]
                 }
             })
         });
 
         it('should be named correctly', () => {
-            expect(Tabs.name).toEqual('ITabs');
+            expect(ITabs.name).toEqual('ITabs');
         });
 
         it('should render correctly', () => {

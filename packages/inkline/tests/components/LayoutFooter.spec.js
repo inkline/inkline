@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import LayoutFooter from '@inkline/inkline/src/components/LayoutFooter';
+import { ILayoutFooter } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('LayoutFooter', () => {
+    describe('ILayoutFooter', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(LayoutFooter);
+            wrapper = shallowMount(ILayoutFooter);
         });
 
         it('should be named correctly', () => {
-            expect(LayoutFooter.name).toEqual('ILayoutFooter');
+            expect(ILayoutFooter.name).toEqual('ILayoutFooter');
         });
 
         it('should render correctly', () => {

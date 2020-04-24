@@ -1,20 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
-import Container from '@inkline/inkline/src/components/Container';
+import { IContainer } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Container', () => {
+    describe('IContainer', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Container, {
+            wrapper = shallowMount(IContainer, {
                 methods: {
-                    created: Container.created
+                    created: IContainer.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Container.name).toEqual('IContainer');
+            expect(IContainer.name).toEqual('IContainer');
         });
 
         it('should render correctly', () => {
@@ -32,7 +32,7 @@ describe('Components', () => {
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(Container.created).toBeDefined();
+                expect(IContainer.created).toBeDefined();
             });
 
             it('should add class rules to classes provider', () => {

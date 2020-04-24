@@ -1,21 +1,21 @@
 import { shallowMount } from '@vue/test-utils';
-import Navbar from '@inkline/inkline/src/components/Navbar';
+import { INavbar } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Navbar', () => {
+    describe('INavbar', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Navbar, {
+            wrapper = shallowMount(INavbar, {
                 methods: {
-                    created: Navbar.created,
-                    beforeDestroy: Navbar.beforeDestroy
+                    created: INavbar.created,
+                    beforeDestroy: INavbar.beforeDestroy
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Navbar.name).toEqual('INavbar');
+            expect(INavbar.name).toEqual('INavbar');
         });
 
         it('should render correctly', () => {

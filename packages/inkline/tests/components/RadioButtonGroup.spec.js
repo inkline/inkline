@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import RadioButtonGroup from '@inkline/inkline/src/components/RadioButtonGroup';
+import { IRadioButtonGroup } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('RadioButtonGroup', () => {
+    describe('IRadioButtonGroup', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(RadioButtonGroup);
+            wrapper = shallowMount(IRadioButtonGroup);
         });
 
         it('should be named correctly', () => {
-            expect(RadioButtonGroup.name).toEqual('IRadioButtonGroup');
+            expect(IRadioButtonGroup.name).toEqual('IRadioButtonGroup');
         });
 
         it('should render correctly', () => {

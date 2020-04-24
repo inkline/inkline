@@ -1,13 +1,13 @@
 import { shallowMount } from '@vue/test-utils';
 import { popupManager } from '@inkline/inkline/src/factories/PopupManager';
-import Modal from '@inkline/inkline/src/components/Modal';
+import { IModal } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Modal', () => {
+    describe('IModal', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Modal, {
+            wrapper = shallowMount(IModal, {
                 propsData: {
                     id: 'modal'
                 },
@@ -15,8 +15,8 @@ describe('Components', () => {
                     default: ['<div/>']
                 },
                 methods: {
-                    created: Modal.created,
-                    destroyed: Modal.destroyed
+                    created: IModal.created,
+                    destroyed: IModal.destroyed
                 }
             });
         });
@@ -86,7 +86,7 @@ describe('Components', () => {
                 });
 
                 it('should be randomly generated if not defined', () => {
-                    wrapper = shallowMount(Modal, {
+                    wrapper = shallowMount(IModal, {
                         slots: {
                             default: ['<div/>']
                         }
@@ -238,7 +238,7 @@ describe('Components', () => {
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(Modal.created).toBeDefined();
+                expect(IModal.created).toBeDefined();
             });
 
             it('should register the modal to the popup manager', () => {
@@ -253,7 +253,7 @@ describe('Components', () => {
 
         describe('destroyed()', () => {
             it('should be defined', () => {
-                expect(Modal.destroyed).toBeDefined();
+                expect(IModal.destroyed).toBeDefined();
             });
 
             it('should unregister the modal from the popup manager', () => {

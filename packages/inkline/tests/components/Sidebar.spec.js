@@ -1,21 +1,21 @@
 import { shallowMount } from '@vue/test-utils';
-import Sidebar from '@inkline/inkline/src/components/Sidebar';
+import { ISidebar } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Sidebar', () => {
+    describe('ISidebar', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Sidebar, {
+            wrapper = shallowMount(ISidebar, {
                 methods: {
-                    created: Sidebar.created,
-                    beforeDestroy: Sidebar.beforeDestroy
+                    created: ISidebar.created,
+                    beforeDestroy: ISidebar.beforeDestroy
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Sidebar.name).toEqual('ISidebar');
+            expect(ISidebar.name).toEqual('ISidebar');
         });
 
         it('should render correctly', () => {

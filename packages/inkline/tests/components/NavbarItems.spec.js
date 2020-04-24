@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
-import NavbarItems from '@inkline/inkline/src/components/NavbarItems';
+import { INavbarItems } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('NavbarItems', () => {
+    describe('INavbarItems', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(NavbarItems, {
+            wrapper = shallowMount(INavbarItems, {
                 provide: {
                     collapsible: {
                         collapsed: false,

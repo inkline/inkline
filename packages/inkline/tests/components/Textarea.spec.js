@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import Textarea from '@inkline/inkline/src/components/Textarea';
+import { ITextarea } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Textarea', () => {
+    describe('ITextarea', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Textarea);
+            wrapper = shallowMount(ITextarea);
         });
 
         it('should be named correctly', () => {
-            expect(Textarea.name).toEqual('ITextarea');
+            expect(ITextarea.name).toEqual('ITextarea');
         });
 
         it('should render correctly', () => {

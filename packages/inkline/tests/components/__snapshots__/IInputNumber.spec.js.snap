@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components IInputNumber should render correctly 1`] = `
+<div class="form-input-group -prepended -appended">
+  <div class="form-input-prepend">
+    <i-button-stub activeclass="-active" tabindex="1" tag="button" size="" variant="" type="button" class="form-input-button-decrease">-</i-button-stub>
+  </div>
+  <div class="form-input">
+    <!---->
+    <!----> <input tabindex="1"></div>
+  <div class="form-input-append">
+    <i-button-stub activeclass="-active" tabindex="1" tag="button" size="" variant="" type="button" class="form-input-button-increase">+</i-button-stub>
+  </div>
+</div>
+`;

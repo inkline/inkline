@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Components RadioButtonGroup should render correctly 1`] = `<i-button-group-stub size="" tabindex="1" role="radiogroup" class="form-group -radio"></i-button-group-stub>`;

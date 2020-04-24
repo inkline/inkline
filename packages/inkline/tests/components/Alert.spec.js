@@ -1,21 +1,21 @@
 import { shallowMount } from '@vue/test-utils';
-import Alert from '@inkline/inkline/src/components/Alert';
+import { IAlert } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Alert', () => {
+    describe('IAlert', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Alert, {
+            wrapper = shallowMount(IAlert, {
                 methods: {
-                    mounted: Alert.mounted,
-                    created: Alert.created
+                    mounted: IAlert.mounted,
+                    created: IAlert.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Alert.name).toEqual('IAlert');
+            expect(IAlert.name).toEqual('IAlert');
         });
 
         it('should render correctly', () => {
@@ -118,7 +118,7 @@ describe('Components', () => {
 
         describe('mounted', () => {
             it('should be defined', () => {
-                expect(Alert.mounted).toBeDefined();
+                expect(IAlert.mounted).toBeDefined();
             });
 
             it('should call onShowChange() when mounted', () => {
@@ -132,7 +132,7 @@ describe('Components', () => {
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(Alert.created).toBeDefined();
+                expect(IAlert.created).toBeDefined();
             });
 
             it('should add class rules to classes provider', () => {

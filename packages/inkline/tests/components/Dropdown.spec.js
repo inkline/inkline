@@ -1,32 +1,32 @@
 import { shallowMount } from '@vue/test-utils';
-import Dropdown from '@inkline/inkline/src/components/Dropdown';
-import DropdownMenu from '@inkline/inkline/src/components/DropdownMenu';
-import DropdownItem from '@inkline/inkline/src/components/DropdownItem';
+import { IDropdown } from '@inkline/inkline/src/components';
+import { IDropdownMenu } from '@inkline/inkline/src/components';
+import { IDropdownItem } from '@inkline/inkline/src/components';
 import {isVisible} from "@inkline/inkline/src/helpers";
 
 describe('Components', () => {
-    describe('Dropdown', () => {
+    describe('IDropdown', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Dropdown, {
+            wrapper = shallowMount(IDropdown, {
                 propsData: {
                     id: 'dropdown'
                 },
                 methods: {
-                    mounted: Dropdown.mounted
+                    mounted: IDropdown.mounted
                 },
                 slots: {
                     default: [
                         '<button />',
-                        DropdownMenu
+                        IDropdownMenu
                     ]
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Dropdown.name).toEqual('IDropdown');
+            expect(IDropdown.name).toEqual('IDropdown');
         });
 
         it('should render correctly', () => {
@@ -133,9 +133,9 @@ describe('Components', () => {
                 });
 
                 it('should be randomly generated if not defined', () => {
-                    wrapper = shallowMount(Dropdown, {
+                    wrapper = shallowMount(IDropdown, {
                         slots: {
-                            default: ['<button/>', DropdownMenu]
+                            default: ['<button/>', IDropdownMenu]
                         }
                     });
 
@@ -195,7 +195,7 @@ describe('Components', () => {
             ];
 
             beforeEach(() => {
-                wrapper = shallowMount(Dropdown, {
+                wrapper = shallowMount(IDropdown, {
                     propsData: {
                         id: 'dropdown'
                     },
@@ -208,7 +208,7 @@ describe('Components', () => {
                         }
                     },
                     slots: {
-                        default: ['<button/>', DropdownMenu]
+                        default: ['<button/>', IDropdownMenu]
                     }
                 });
 
@@ -590,7 +590,7 @@ describe('Components', () => {
                 });
 
                 it('should update items', () => {
-                    const dropdownItem = shallowMount(DropdownItem).vm;
+                    const dropdownItem = shallowMount(IDropdownItem).vm;
 
                     wrapper.vm.menu.componentInstance.$slots.default = [dropdownItem.$vnode, dropdownItem.$vnode];
                     wrapper.vm.initItems();

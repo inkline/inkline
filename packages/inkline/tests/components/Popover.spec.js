@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
-import Popover from '@inkline/inkline/src/components/Popover';
+import { IPopover } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Popover', () => {
+    describe('IPopover', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Popover, {
+            wrapper = shallowMount(IPopover, {
                 propsData: {
                     id: 'popover'
                 },
@@ -17,7 +17,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(Popover.name).toEqual('IPopover');
+            expect(IPopover.name).toEqual('IPopover');
         });
 
         it('should render correctly', () => {
@@ -48,7 +48,7 @@ describe('Components', () => {
                 });
 
                 it('should be randomly generated if not defined', () => {
-                    wrapper = shallowMount(Popover, {
+                    wrapper = shallowMount(IPopover, {
                         slots: {
                             default: ['<div/>']
                         }

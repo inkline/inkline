@@ -1,20 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
-import Icon from '@inkline/inkline/src/components/Icon';
+import { IIcon } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Icon', () => {
+    describe('IIcon', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Icon, {
+            wrapper = shallowMount(IIcon, {
                 methods: {
-                    created: Icon.created
+                    created: IIcon.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Icon.name).toEqual('IIcon');
+            expect(IIcon.name).toEqual('IIcon');
         });
 
         it('should render correctly', () => {
@@ -39,7 +39,7 @@ describe('Components', () => {
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(Icon.created).toBeDefined();
+                expect(IIcon.created).toBeDefined();
             });
 
             it('should add class rules to classes provider', () => {

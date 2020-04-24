@@ -1,18 +1,18 @@
 import { shallowMount } from '@vue/test-utils';
-import SelectOption from '@inkline/inkline/src/components/SelectOption';
+import { ISelectOption } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('SelectOption', () => {
+    describe('ISelectOption', () => {
         let wrapper;
         let parentWrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(SelectOption, {
+            wrapper = shallowMount(ISelectOption, {
                 methods: {
-                    created: SelectOption.created
+                    created: ISelectOption.created
                 }
             });
-            parentWrapper = shallowMount(SelectOption, {
+            parentWrapper = shallowMount(ISelectOption, {
                 parentComponent: {
                     name: 'ISelect',
                     data() {
@@ -24,7 +24,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(SelectOption.name).toEqual('ISelectOption');
+            expect(ISelectOption.name).toEqual('ISelectOption');
         });
 
         it('should render correctly', () => {
@@ -130,7 +130,7 @@ describe('Components', () => {
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(SelectOption.created).toBeDefined();
+                expect(ISelectOption.created).toBeDefined();
             });
 
             it('should add class rules to classes provider', () => {
