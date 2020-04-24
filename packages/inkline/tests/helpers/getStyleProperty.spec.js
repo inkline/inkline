@@ -1,4 +1,5 @@
 import { getStyleProperty } from '@inkline/inkline/src/helpers/getStyleProperty';
+import { isServer } from "@inkline/inkline/tests/utilities/isServer";
 
 describe('Helpers', () => {
     describe('getStyleProperty()', () => {
@@ -14,6 +15,14 @@ describe('Helpers', () => {
 
         it('should return if property not provided', () => {
             expect(getStyleProperty(element, undefined)).toEqual(undefined);
+        });
+
+        it('should return if isServer', () => {
+            isServer(true);
+
+            expect(getStyleProperty(element, 'property')).toEqual(undefined);
+
+            isServer(false);
         });
 
         it('should return if window not defined', () => {
