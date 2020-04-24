@@ -1,5 +1,5 @@
 import {shallowMount} from "@vue/test-utils";
-import Linkable from '@inkline/inkline/src/components/Linkable';
+import { ILinkable } from '@inkline/inkline/src/components';
 
 const RouterLink = {
     name: 'RouterLink',
@@ -7,14 +7,14 @@ const RouterLink = {
 };
 
 describe('Components', () => {
-    describe('Linkable', () => {
+    describe('ILinkable', () => {
         let wrapper;
 
         beforeEach(() => {
             wrapper = shallowMount({
                 name: 'LinkableComponent',
                 template: '<div/>',
-                extends: Linkable
+                extends: ILinkable
             }, {
                 components: {
                     RouterLink
@@ -23,7 +23,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(Linkable.name).toEqual('ILinkable');
+            expect(ILinkable.name).toEqual('ILinkable');
         });
 
         describe('props', () => {
@@ -56,7 +56,7 @@ describe('Components', () => {
                     wrapper = shallowMount({
                         name: 'LinkableComponent',
                         template: '<div/>',
-                        extends: Linkable
+                        extends: ILinkable
                     }, {
                         components: {
                             RouterLink

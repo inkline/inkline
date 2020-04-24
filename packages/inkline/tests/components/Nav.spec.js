@@ -1,21 +1,21 @@
 import { shallowMount } from '@vue/test-utils';
-import Nav from '@inkline/inkline/src/components/Nav';
+import { INav } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Nav', () => {
+    describe('INav', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Nav, {
+            wrapper = shallowMount(INav, {
                 methods: {
-                    created: Nav.created,
-                    destroyed: Nav.destroyed
+                    created: INav.created,
+                    destroyed: INav.destroyed
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Nav.name).toEqual('INav');
+            expect(INav.name).toEqual('INav');
         });
 
         it('should render correctly', () => {
@@ -58,7 +58,7 @@ describe('Components', () => {
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(Nav.created).toBeDefined();
+                expect(INav.created).toBeDefined();
             });
 
             it('should add class rules to classes provider', () => {

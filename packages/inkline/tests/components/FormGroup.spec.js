@@ -1,20 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
-import FormGroup from '@inkline/inkline/src/components/FormGroup';
+import { IFormGroup } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('FormGroup', () => {
+    describe('IFormGroup', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(FormGroup, {
+            wrapper = shallowMount(IFormGroup, {
                 methods: {
-                    created: FormGroup.created
+                    created: IFormGroup.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(FormGroup.name).toEqual('IFormGroup');
+            expect(IFormGroup.name).toEqual('IFormGroup');
         });
 
         it('should render correctly', () => {

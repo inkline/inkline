@@ -1,20 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
-import Header from '@inkline/inkline/src/components/Header';
+import { IHeader } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Header', () => {
+    describe('IHeader', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Header, {
+            wrapper = shallowMount(IHeader, {
                 methods: {
-                    created: Header.created
+                    created: IHeader.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Header.name).toEqual('IHeader');
+            expect(IHeader.name).toEqual('IHeader');
         });
 
         it('should render correctly', () => {

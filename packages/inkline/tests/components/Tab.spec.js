@@ -1,18 +1,18 @@
 import { shallowMount } from '@vue/test-utils';
-import Tab from '@inkline/inkline/src/components/Tab';
+import { ITab } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Tab', () => {
+    describe('ITab', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Tab, {
+            wrapper = shallowMount(ITab, {
                 propsData: {
                     id: 'tab'
                 },
                 methods: {
-                    mounted: Tab.mounted,
-                    destroyed: Tab.destroyed,
+                    mounted: ITab.mounted,
+                    destroyed: ITab.destroyed,
                 },
                 provide: {
                     tabs: {
@@ -23,7 +23,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(Tab.name).toEqual('ITab');
+            expect(ITab.name).toEqual('ITab');
         });
 
         it('should render correctly', () => {
@@ -45,7 +45,7 @@ describe('Components', () => {
                 });
 
                 it('should be randomly generated if not defined', () => {
-                    wrapper = shallowMount(Tab, {
+                    wrapper = shallowMount(ITab, {
                         provide: {
                             tabs: {
                                 active: null
@@ -69,7 +69,7 @@ describe('Components', () => {
                 });
 
                 it('should return true if current item is active', () => {
-                    wrapper = shallowMount(Tab, {
+                    wrapper = shallowMount(ITab, {
                         propsData: {
                             id: 'item1'
                         },

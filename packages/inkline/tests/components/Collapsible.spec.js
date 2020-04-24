@@ -1,20 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
-import Collapsible from '@inkline/inkline/src/components/Collapsible';
+import { ICollapsible } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Collapsible', () => {
+    describe('ICollapsible', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Collapsible, {
+            wrapper = shallowMount(ICollapsible, {
                 methods: {
-                    created: Collapsible.created
+                    created: ICollapsible.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Collapsible.name).toEqual('ICollapsible');
+            expect(ICollapsible.name).toEqual('ICollapsible');
         });
 
         it('should render correctly', () => {
@@ -45,7 +45,7 @@ describe('Components', () => {
                 });
 
                 it('should be concatenated with active prop', () => {
-                    wrapper = shallowMount(Collapsible, {
+                    wrapper = shallowMount(ICollapsible, {
                         propsData: {
                             value: ['active']
                         }

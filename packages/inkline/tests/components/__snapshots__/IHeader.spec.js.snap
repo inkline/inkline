@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components IHeader should render correctly 1`] = `
+<header class="header -cover">
+  <i-container-stub>
+    <i-row-stub>
+      <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" offsetmd="" pushmd="" pullmd="" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl=""></i-column-stub>
+    </i-row-stub>
+  </i-container-stub>
+</header>
+`;

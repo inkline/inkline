@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import ListGroupItem from '@inkline/inkline/src/components/ListGroupItem';
+import { IListGroupItem } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('NavItem', () => {
+    describe('INavItem', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(ListGroupItem);
+            wrapper = shallowMount(IListGroupItem);
         });
 
         it('should be named correctly', () => {
-            expect(ListGroupItem.name).toEqual('IListGroupItem');
+            expect(IListGroupItem.name).toEqual('IListGroupItem');
         });
 
         it('should render correctly', () => {

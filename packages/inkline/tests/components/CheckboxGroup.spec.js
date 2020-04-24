@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import CheckboxGroup from '@inkline/inkline/src/components/CheckboxGroup';
+import { ICheckboxGroup } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('CheckboxGroup', () => {
+    describe('ICheckboxGroup', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(CheckboxGroup);
+            wrapper = shallowMount(ICheckboxGroup);
         });
 
         it('should render correctly', () => {
-            expect(CheckboxGroup.name).toEqual('ICheckboxGroup');
+            expect(ICheckboxGroup.name).toEqual('ICheckboxGroup');
         });
 
         it('should render correctly', () => {

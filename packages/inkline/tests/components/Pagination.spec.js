@@ -1,23 +1,23 @@
 import { shallowMount } from '@vue/test-utils';
-import Pagination from '@inkline/inkline/src/components/Pagination';
+import { IPagination } from '@inkline/inkline/src/components';
 import { isServer } from "@inkline/inkline/tests/utilities/isServer";
 
 describe('Components', () => {
-    describe('Pagination', () => {
+    describe('IPagination', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Pagination, {
+            wrapper = shallowMount(IPagination, {
                 methods: {
-                    created: Pagination.created,
-                    mounted: Pagination.mounted,
-                    destroyed: Pagination.destroyed
+                    created: IPagination.created,
+                    mounted: IPagination.mounted,
+                    destroyed: IPagination.destroyed
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Pagination.name).toEqual('IPagination');
+            expect(IPagination.name).toEqual('IPagination');
         });
 
         it('should render correctly', () => {
@@ -343,7 +343,7 @@ describe('Components', () => {
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(Pagination.created).toBeDefined();
+                expect(IPagination.created).toBeDefined();
             });
 
             it('should add window resize event listener', () => {
@@ -370,7 +370,7 @@ describe('Components', () => {
 
         describe('mounted()', () => {
             it('should be defined', () => {
-                expect(Pagination.mounted).toBeDefined();
+                expect(IPagination.mounted).toBeDefined();
             });
 
             it('should call initial onWindowResize', () => {

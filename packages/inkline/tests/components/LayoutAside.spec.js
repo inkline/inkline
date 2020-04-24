@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import LayoutAside from '@inkline/inkline/src/components/LayoutAside';
+import { ILayoutAside } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('LayoutAside', () => {
+    describe('ILayoutAside', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(LayoutAside);
+            wrapper = shallowMount(ILayoutAside);
         });
 
         it('should be named correctly', () => {
-            expect(LayoutAside.name).toEqual('ILayoutAside');
+            expect(ILayoutAside.name).toEqual('ILayoutAside');
         });
 
         it('should render correctly', () => {

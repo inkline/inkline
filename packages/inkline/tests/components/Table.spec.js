@@ -1,20 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
-import Table from '@inkline/inkline/src/components/Table';
+import { ITable } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Table', () => {
+    describe('ITable', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Table, {
+            wrapper = shallowMount(ITable, {
                 methods: {
-                    created: Table.created
+                    created: ITable.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Table.name).toEqual('ITable');
+            expect(ITable.name).toEqual('ITable');
         });
 
         it('should render correctly', () => {
@@ -53,7 +53,7 @@ describe('Components', () => {
 
         describe('created()', () => {
             it('should be defined', () => {
-                expect(Table.created).toBeDefined();
+                expect(ITable.created).toBeDefined();
             });
 
             it('should add class rules to classes provider', () => {

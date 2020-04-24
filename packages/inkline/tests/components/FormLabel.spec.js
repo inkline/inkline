@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
-import FormLabel from '@inkline/inkline/src/components/FormLabel';
+import { IFormLabel } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('FormLabel', () => {
+    describe('IFormLabel', () => {
         let wrapper;
         let parentWrapper;
         let inverseOrderParentWrapper;
@@ -19,27 +19,27 @@ describe('Components', () => {
         };
 
         beforeEach(() => {
-            wrapper = shallowMount(FormLabel, {
+            wrapper = shallowMount(IFormLabel, {
                 methods: {
-                    created: FormLabel.created
+                    created: IFormLabel.created
                 }
             });
 
             parentWrapper = shallowMount(ParentComponent, {
                 slots: {
-                    default: [FormLabel, InputComponent]
+                    default: [IFormLabel, InputComponent]
                 }
             });
 
             inverseOrderParentWrapper = shallowMount(ParentComponent, {
                 slots: {
-                    default: [InputComponent, FormLabel]
+                    default: [InputComponent, IFormLabel]
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(FormLabel.name).toEqual('IFormLabel');
+            expect(IFormLabel.name).toEqual('IFormLabel');
         });
 
         it('should render correctly', () => {

@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import Media from '@inkline/inkline/src/components/Media';
+import { IMedia } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Media', () => {
+    describe('IMedia', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Media);
+            wrapper = shallowMount(IMedia);
         });
 
         it('should be named correctly', () => {
-            expect(Media.name).toEqual('IMedia');
+            expect(IMedia.name).toEqual('IMedia');
         });
 
         it('should render correctly', () => {

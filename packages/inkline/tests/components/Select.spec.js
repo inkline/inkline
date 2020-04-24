@@ -1,14 +1,14 @@
 import { mount, shallowMount } from '@vue/test-utils';
-import Select from '@inkline/inkline/src/components/Select';
+import { ISelect } from '@inkline/inkline/src/components';
 import { hashString } from '@inkline/inkline/src/helpers/hashString';
 
 describe('Components', () => {
-    describe('Select', () => {
+    describe('ISelect', () => {
         let wrapper;
         let nativeWrapper;
 
         beforeEach(() => {
-            wrapper = mount(Select, {
+            wrapper = mount(ISelect, {
                 attachToDocument: true,
                 propsData: {
                     id: 'select',
@@ -16,13 +16,13 @@ describe('Components', () => {
                     'v-model': 'value'
                 },
                 methods: {
-                    created: Select.created,
-                    mounted: Select.mounted,
-                    updated: Select.updated
+                    created: ISelect.created,
+                    mounted: ISelect.mounted,
+                    updated: ISelect.updated
                 }
             });
 
-            nativeWrapper = shallowMount(Select, {
+            nativeWrapper = shallowMount(ISelect, {
                 propsData: {
                     id: 'select'
                 },
@@ -33,7 +33,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(Select.name).toEqual('ISelect');
+            expect(ISelect.name).toEqual('ISelect');
         });
 
         it('should render correctly', () => {
@@ -263,7 +263,7 @@ describe('Components', () => {
             });
 
             it('should add "-prefixed" class if "prefix" slot provided', () => {
-                wrapper = shallowMount(Select, {
+                wrapper = shallowMount(ISelect, {
                     slots: {
                         prefix: ['<div />']
                     }
@@ -275,7 +275,7 @@ describe('Components', () => {
             });
 
             it('should add "-suffixed" class if "suffix" slot provided', () => {
-                wrapper = shallowMount(Select, {
+                wrapper = shallowMount(ISelect, {
                     slots: {
                         suffix: ['<div />']
                     }

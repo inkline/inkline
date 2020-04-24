@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import DropdownDivider from '@inkline/inkline/src/components/DropdownDivider';
+import { IDropdownDivider } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('DropdownDivider', () => {
+    describe('IDropdownDivider', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(DropdownDivider);
+            wrapper = shallowMount(IDropdownDivider);
         });
 
         it('should be named correctly', () => {
-            expect(DropdownDivider.name).toEqual('IDropdownDivider');
+            expect(IDropdownDivider.name).toEqual('IDropdownDivider');
         });
 
         it('should render correctly', () => {

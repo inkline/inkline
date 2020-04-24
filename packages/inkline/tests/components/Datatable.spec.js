@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
-import Datatable from '@inkline/inkline/src/components/Datatable';
-import {defaults as defaultConfig, countColumn, idColumn} from "@inkline/inkline/src/components/Datatable/script";
+import { IDatatable } from '@inkline/inkline/src/components';
+import { defaults as defaultConfig, countColumn, idColumn } from "@inkline/inkline/src/components/IDatatable/script";
 
 const columns = [
     { title: 'Name', path: 'name' },
@@ -14,19 +14,19 @@ const rows = [
 ];
 
 describe('Components', () => {
-    describe('Datatable', () => {
+    describe('IDatatable', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Datatable, {
+            wrapper = shallowMount(IDatatable, {
                 methods: {
-                    created: Datatable.created
+                    created: IDatatable.created
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(Datatable.name).toEqual('IDatatable');
+            expect(IDatatable.name).toEqual('IDatatable');
         });
 
         it('should render correctly', () => {
@@ -583,7 +583,7 @@ describe('Components', () => {
                 let expandWrapper;
 
                 beforeEach(() => {
-                    expandWrapper = shallowMount(Datatable, {
+                    expandWrapper = shallowMount(IDatatable, {
                         slots: {
                             expand: '<div/>'
                         }
@@ -1358,13 +1358,13 @@ describe('Components', () => {
                 let scopedExpandWrapper;
 
                 beforeEach(() => {
-                    expandWrapper = shallowMount(Datatable, {
+                    expandWrapper = shallowMount(IDatatable, {
                         slots: {
                             expand: '<div/>'
                         }
                     });
 
-                    scopedExpandWrapper = shallowMount(Datatable, {
+                    scopedExpandWrapper = shallowMount(IDatatable, {
                         scopedSlots: {
                             expand: '<div/>'
                         }

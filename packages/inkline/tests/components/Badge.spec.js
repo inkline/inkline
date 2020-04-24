@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import Badge from '@inkline/inkline/src/components/Badge';
+import { IBadge } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Badge', () => {
+    describe('IBadge', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Badge);
+            wrapper = shallowMount(IBadge);
         });
 
         it('should be named correctly', () => {
-            expect(Badge.name).toEqual('IBadge');
+            expect(IBadge.name).toEqual('IBadge');
         });
 
         it('should render correctly', () => {

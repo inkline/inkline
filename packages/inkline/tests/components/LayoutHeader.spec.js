@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import LayoutHeader from '@inkline/inkline/src/components/LayoutHeader';
+import { ILayoutHeader } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('LayoutHeader', () => {
+    describe('ILayoutHeader', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(LayoutHeader);
+            wrapper = shallowMount(ILayoutHeader);
         });
 
         it('should be named correctly', () => {
-            expect(LayoutHeader.name).toEqual('ILayoutHeader');
+            expect(ILayoutHeader.name).toEqual('ILayoutHeader');
         });
 
         it('should render correctly', () => {

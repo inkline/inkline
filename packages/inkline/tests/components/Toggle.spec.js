@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import Toggle from '@inkline/inkline/src/components/Toggle';
+import { IToggle } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Toggle', () => {
+    describe('IToggle', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Toggle);
+            wrapper = shallowMount(IToggle);
         });
 
         it('should be named correctly', () => {
-            expect(Toggle.name).toEqual('IToggle');
+            expect(IToggle.name).toEqual('IToggle');
         });
 
         it('should render correctly', () => {

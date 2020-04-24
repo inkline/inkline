@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
-import DropdownMenu from '@inkline/inkline/src/components/DropdownMenu';
+import { IDropdownMenu } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('DropdownMenu', () => {
+    describe('IDropdownMenu', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(DropdownMenu, {
+            wrapper = shallowMount(IDropdownMenu, {
                 provide: {
                     dropdown: {
                         $el: {},
@@ -14,14 +14,14 @@ describe('Components', () => {
                     }
                 },
                 methods: {
-                    created: DropdownMenu.created,
-                    mounted: DropdownMenu.mounted
+                    created: IDropdownMenu.created,
+                    mounted: IDropdownMenu.mounted
                 }
             });
         });
 
         it('should be named correctly', () => {
-            expect(DropdownMenu.name).toEqual('IDropdownMenu');
+            expect(IDropdownMenu.name).toEqual('IDropdownMenu');
         });
 
         it('should render correctly', () => {

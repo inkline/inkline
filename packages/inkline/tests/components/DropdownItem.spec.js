@@ -1,16 +1,16 @@
 import {shallowMount} from '@vue/test-utils';
-import DropdownItem from '@inkline/inkline/src/components/DropdownItem';
+import { IDropdownItem } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('DropdownItem', () => {
+    describe('IDropdownItem', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(DropdownItem);
+            wrapper = shallowMount(IDropdownItem);
         });
 
         it('should be named correctly', () => {
-            expect(DropdownItem.name).toEqual('IDropdownItem');
+            expect(IDropdownItem.name).toEqual('IDropdownItem');
         });
 
         it('should render correctly', () => {

@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import RadioButton from '@inkline/inkline/src/components/RadioButton';
+import { IRadioButton } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('RadioButton', () => {
+    describe('IRadioButton', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(RadioButton);
+            wrapper = shallowMount(IRadioButton);
         });
 
         it('should be named correctly', () => {
-            expect(RadioButton.name).toEqual('IRadioButton');
+            expect(IRadioButton.name).toEqual('IRadioButton');
         });
 
         it('should render correctly', () => {

@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import NavItem from '@inkline/inkline/src/components/NavItem';
+import { INavItem } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('NavItem', () => {
+    describe('INavItem', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(NavItem);
+            wrapper = shallowMount(INavItem);
         });
 
         it('should be named correctly', () => {
-            expect(NavItem.name).toEqual('INavItem');
+            expect(INavItem.name).toEqual('INavItem');
         });
 
         it('should render correctly', () => {

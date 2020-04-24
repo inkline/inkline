@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components IPopover should render correctly 1`] = `
+<div class="popover-wrapper" id="popover">
+  <div aria-haspopup="popover" aria-controls="popover"></div>
+  <transition-stub name="zoom-in-top-transition">
+    <div class="popover" style="display: none;" id="popover"><span class="arrow"></span>
+      <!---->
+      <!---->
+      <!---->
+    </div>
+  </transition-stub>
+</div>
+`;

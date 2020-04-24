@@ -1,18 +1,18 @@
 import { shallowMount } from '@vue/test-utils';
-import Column from '@inkline/inkline/src/components/Column';
+import { IColumn } from '@inkline/inkline/src/components';
 import { capitalizeFirst } from "@inkline/inkline/src/helpers";
 import { breakpointKeys } from '@inkline/inkline/src/constants';
 
 describe('Components', () => {
-    describe('Column', () => {
+    describe('IColumn', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Column);
+            wrapper = shallowMount(IColumn);
         });
 
         it('should be named correctly', () => {
-            expect(Column.name).toEqual('IColumn');
+            expect(IColumn.name).toEqual('IColumn');
         });
 
         it('should render correctly', () => {

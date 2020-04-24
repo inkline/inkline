@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
-import CollapsibleItem from '@inkline/inkline/src/components/CollapsibleItem';
+import { ICollapsibleItem } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('CollapsibleItem', () => {
+    describe('ICollapsibleItem', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(CollapsibleItem, {
+            wrapper = shallowMount(ICollapsibleItem, {
                 propsData: {
                     id: 'item'
                 },
@@ -19,7 +19,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(CollapsibleItem.name).toEqual('ICollapsibleItem');
+            expect(ICollapsibleItem.name).toEqual('ICollapsibleItem');
         });
 
         it('should render correctly', () => {
@@ -41,7 +41,7 @@ describe('Components', () => {
                 });
 
                 it('should be randomly generated if not defined', () => {
-                    wrapper = shallowMount(CollapsibleItem, {
+                    wrapper = shallowMount(ICollapsibleItem, {
                         provide: {
                             collapsible: {
                                 activeItems: []
@@ -65,7 +65,7 @@ describe('Components', () => {
                 });
 
                 it('should return true if current item is active', () => {
-                    wrapper = shallowMount(CollapsibleItem, {
+                    wrapper = shallowMount(ICollapsibleItem, {
                         propsData: {
                             id: 'item1'
                         },

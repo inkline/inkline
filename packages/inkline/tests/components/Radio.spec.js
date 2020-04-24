@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
-import Radio from '@inkline/inkline/src/components/Radio';
+import { IRadio } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Radio', () => {
+    describe('IRadio', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Radio, {
+            wrapper = shallowMount(IRadio, {
                 props: {
                     isGroupedOverride: {
                         type: Boolean,
@@ -23,7 +23,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(Radio.name).toEqual('IRadio');
+            expect(IRadio.name).toEqual('IRadio');
         });
 
         it('should render correctly', () => {

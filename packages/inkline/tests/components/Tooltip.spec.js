@@ -1,19 +1,19 @@
 import { shallowMount } from '@vue/test-utils';
-import Tooltip from '@inkline/inkline/src/components/Tooltip';
+import { ITooltip } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Tooltip', () => {
+    describe('ITooltip', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Tooltip, {
+            wrapper = shallowMount(ITooltip, {
                 propsData: {
                     id: 'tooltip'
                 },
                 methods: {
-                    created: Tooltip.created,
-                    mounted: Tooltip.mounted,
-                    beforeDestroy: Tooltip.beforeDestroy
+                    created: ITooltip.created,
+                    mounted: ITooltip.mounted,
+                    beforeDestroy: ITooltip.beforeDestroy
                 },
                 slots: {
                     default: ['<div/>']
@@ -22,7 +22,7 @@ describe('Components', () => {
         });
 
         it('should be named correctly', () => {
-            expect(Tooltip.name).toEqual('ITooltip');
+            expect(ITooltip.name).toEqual('ITooltip');
         });
 
         it('should render correctly', () => {
@@ -74,7 +74,7 @@ describe('Components', () => {
                 });
 
                 it('should be randomly generated if not defined', () => {
-                    wrapper = shallowMount(Tooltip, {
+                    wrapper = shallowMount(ITooltip, {
                         slots: {
                             default: ['<div/>']
                         }

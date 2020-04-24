@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import Breadcrumb from '@inkline/inkline/src/components/Breadcrumb';
+import { IBreadcrumb } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Breadcrumb', () => {
+    describe('IBreadcrumb', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Breadcrumb);
+            wrapper = shallowMount(IBreadcrumb);
         });
 
         it('should be named correctly', () => {
-            expect(Breadcrumb.name).toEqual('IBreadcrumb');
+            expect(IBreadcrumb.name).toEqual('IBreadcrumb');
         });
 
         it('should render correctly', () => {

@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import Progress from '@inkline/inkline/src/components/Progress';
+import { IProgress } from '@inkline/inkline/src/components';
 
 describe('Components', () => {
-    describe('Progress', () => {
+    describe('IProgress', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = shallowMount(Progress);
+            wrapper = shallowMount(IProgress);
         });
 
         it('should be named correctly', () => {
-            expect(Progress.name).toEqual('IProgress');
+            expect(IProgress.name).toEqual('IProgress');
         });
 
         it('should render correctly', () => {
