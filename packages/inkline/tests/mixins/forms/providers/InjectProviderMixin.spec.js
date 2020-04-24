@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import InjectParentFormProviderMixin from '@inkline/inkline/src/mixins/forms/providers/InjectParentFormProviderMixin';
+import InjectParentFormProviderMixin from '@inkline/inkline/src/mixins/providers/InjectParentFormProviderMixin';
 
 describe('Mixins', () => {
     describe('InjectProviderMixin', () => {

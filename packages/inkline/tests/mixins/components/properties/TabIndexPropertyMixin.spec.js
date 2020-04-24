@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils'
 
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import DisabledPropertyMixin from '@inkline/inkline/src/mixins/components/properties/DisabledPropertyMixin';
-import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
+import AttributesProviderMixin from '@inkline/inkline/src/mixins/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/src/mixins/providers/ClassesProviderMixin';
+import DisabledPropertyMixin from '@inkline/inkline/src/mixins/properties/DisabledPropertyMixin';
+import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/properties/TabIndexPropertyMixin';
 
 describe('Mixins', () => {
     describe('TabIndexPropertyMixin', () => {

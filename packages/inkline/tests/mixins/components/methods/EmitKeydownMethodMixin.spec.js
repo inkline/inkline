@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import EmitKeydownMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitKeydownMethodMixin';
+import EmitKeydownMethodMixin from '@inkline/inkline/src/mixins/methods/EmitKeydownMethodMixin';
 
 describe('Mixins', () => {
     describe('EmitKeydownMethodMixin', () => {

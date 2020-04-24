@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
 
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import DisabledPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/DisabledPropertyMixin';
+import AttributesProviderMixin from '@inkline/inkline/src/mixins/providers/AttributesProviderMixin';
+import ClassesProviderMixin from '@inkline/inkline/src/mixins/providers/ClassesProviderMixin';
+import DisabledFormPropertyMixin from '@inkline/inkline/src/mixins/properties/DisabledFormPropertyMixin';
 
 describe('Mixins', () => {
-    describe('DisabledPropertyMixin', () => {
+    describe('DisabledFormPropertyMixin', () => {
         let wrapper;
 
         beforeEach(() => {
@@ -24,7 +24,7 @@ describe('Mixins', () => {
                 mixins: [
                     AttributesProviderMixin,
                     ClassesProviderMixin,
-                    DisabledPropertyMixin
+                    DisabledFormPropertyMixin
                 ]
             });
         });

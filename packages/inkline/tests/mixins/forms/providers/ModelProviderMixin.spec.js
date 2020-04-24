@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import ModelProviderMixin from '@inkline/inkline/src/mixins/forms/providers/ModelProviderMixin';
+import ModelProviderMixin from '@inkline/inkline/src/mixins/providers/ModelProviderMixin';
 
 describe('Mixins', () => {
     describe('ModelProviderMixin', () => {
