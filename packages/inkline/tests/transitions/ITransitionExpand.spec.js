@@ -1,21 +1,21 @@
 import { mount } from '@vue/test-utils'
 
-import TransitionExpand from '@inkline/inkline/src/transitions/TransitionExpand';
+import ITransitionExpand from '@inkline/inkline/src/transitions/ITransitionExpand';
 
 describe('Transitions', () => {
-    describe('TransitionExpand', () => {
+    describe('ITransitionExpand', () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = mount(TransitionExpand);
+            wrapper = mount(ITransitionExpand);
         });
 
         it('should be named correctly', () => {
-            expect(TransitionExpand.name).toEqual('ITransitionExpand')
+            expect(ITransitionExpand.name).toEqual('ITransitionExpand')
         });
 
         it('should render correctly', () => {
-            expect(TransitionExpand.name).toEqual('ITransitionExpand')
+            expect(ITransitionExpand.name).toEqual('ITransitionExpand')
         });
 
         it('should be functional', () => {
@@ -30,7 +30,7 @@ describe('Transitions', () => {
                 const h = (name, data) => renderedData = data;
                 const context = { children: [] };
 
-                TransitionExpand.render(h, context);
+                ITransitionExpand.render(h, context);
                 element = document.createElement('div');
             });
 
@@ -38,7 +38,7 @@ describe('Transitions', () => {
                 const spyHelper = { h: () => {} };
                 const spy = jest.spyOn(spyHelper, 'h');
 
-                TransitionExpand.render(spyHelper.h, {});
+                ITransitionExpand.render(spyHelper.h, {});
 
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith('transition', expect.any(Object), undefined);
