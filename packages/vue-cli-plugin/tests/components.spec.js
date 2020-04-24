@@ -24,4 +24,6 @@ const generator = (api) => {
 
 describe('Vue CLI Module', () => {
     it('should build plugin with components config enabled', vueCLIBuild('main.components', generator));
+
+    it('should build typescript plugin with components config enabled', vueCLIBuild('main.components', generator, { typescript: true }));
 });

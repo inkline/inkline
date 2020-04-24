@@ -6,7 +6,9 @@
     "scripts": {
         "test": "jest",
         "test:dev": "jest --watch",
-        "test:install": "cd tests/app && npm install"
+        "test:install": "npm run test:install:js && npm run test:install:ts",
+        "test:install:js": "cd tests/app && npm install",
+        "test:install:ts": "cd tests/app-ts && npm install"
     },
     "dependencies": {
         "@inkline/inkline": "^1.22.3"
