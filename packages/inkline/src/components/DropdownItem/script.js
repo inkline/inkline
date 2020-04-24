@@ -1,9 +1,9 @@
-import Linkable from '../Linkable';
-
-import DisabledPropertyMixin from '@inkline/inkline/src/mixins/components/properties/DisabledPropertyMixin';
-
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import EmitProviderMixin from '@inkline/inkline/src/mixins/components/providers/EmitProviderMixin';
+import Linkable from '@inkline/inkline/src/components/ILinkable';
+import {
+    ClassesProviderMixin,
+    EmitProviderMixin,
+    DisabledPropertyMixin
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IDropdownItem',

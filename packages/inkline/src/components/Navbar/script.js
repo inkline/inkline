@@ -1,16 +1,15 @@
-import IContainer from '../Container';
-import IRow from '../Row';
-import IColumn from '../Column';
-import IHamburgerMenu from '../HamburgerMenu';
-
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import CollapsibleProviderMixin from '@inkline/inkline/src/mixins/components/providers/CollapsibleProviderMixin';
-
+import IContainer from '@inkline/inkline/src/components/IContainer';
+import IRow from '@inkline/inkline/src/components/IRow';
+import IColumn from '@inkline/inkline/src/components/IColumn';
+import IHamburgerMenu from '@inkline/inkline/src/components/IHamburgerMenu';
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+    CollapsibleProviderMixin,
+    SizePropertyMixin,
+    VariantPropertyMixin,
+} from '@inkline/inkline/src/mixins';
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
-
-import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
-import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
 
 
 export default {

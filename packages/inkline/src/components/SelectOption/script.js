@@ -1,11 +1,11 @@
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import EmitProviderMixin from '@inkline/inkline/src/mixins/components/providers/EmitProviderMixin';
-
-import EmitClickMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitClickMethodMixin';
-
-import DisabledPropertyMixin from '@inkline/inkline/src/mixins/components/properties/DisabledPropertyMixin';
-import ParentFormGroupPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/ParentFormGroupPropertyMixin';
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+    EmitProviderMixin,
+    EmitClickMethodMixin,
+    DisabledPropertyMixin,
+    ParentFormGroupPropertyMixin,
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'ISelectOption',

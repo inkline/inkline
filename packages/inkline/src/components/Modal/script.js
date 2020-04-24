@@ -1,15 +1,13 @@
 import { uid } from '@inkline/inkline/src/helpers';
 import { popupManager } from '@inkline/inkline/src/factories/PopupManager';
-
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-
-import EmitFocusMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitFocusMethodMixin';
-
-import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
-import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
-import DisabledPropertyMixin from '@inkline/inkline/src/mixins/components/properties/DisabledPropertyMixin';
-
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+    EmitFocusMethodMixin,
+    VariantPropertyMixin,
+    SizePropertyMixin,
+    DisabledPropertyMixin,
+} from '@inkline/inkline/src/mixins';
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
 
 export default {

@@ -3,12 +3,8 @@
  */
 @import '../../css/config/index';
 @import '../../css/mixins/index';
-
-// FIXME: Starting to create spaghetti code
-@import '../BreadcrumbItem/css/_variables';
-
-// FIXME: Starting to create spaghetti code
-@import '../BreadcrumbItem/css/_sizes';
+@import '../IBreadcrumbItem/css/_variables';
+@import '../IBreadcrumbItem/css/_sizes';
 @import 'css/_variables';
 @import 'css/_sizes';
 

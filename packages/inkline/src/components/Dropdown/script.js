@@ -1,16 +1,14 @@
-import {uid, isKey, querySelector, querySelectorAll, isVisible} from '@inkline/inkline/src/helpers';
-
+import { uid, isKey, querySelector, querySelectorAll, isVisible } from '@inkline/inkline/src/helpers';
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
-
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import EmitProviderMixin from '@inkline/inkline/src/mixins/components/providers/EmitProviderMixin';
-import PopupControlsProviderMixin from '@inkline/inkline/src/mixins/components/providers/PopupControlsProviderMixin';
-
-import EmitFocusMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitFocusMethodMixin';
-
-import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
-import DisabledPropertyMixin from '@inkline/inkline/src/mixins/components/properties/DisabledPropertyMixin';
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+    EmitProviderMixin,
+    PopupControlsProviderMixin,
+    EmitFocusMethodMixin,
+    VariantPropertyMixin,
+    DisabledPropertyMixin
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IDropdown',
@@ -168,7 +166,7 @@ export default {
         },
         initElements() {
             if ((this.$slots.default || []).length < 2) {
-                throw new Error(`IDropdown component requires two child elements. 
+                throw new Error(`IDropdown component requires two child elements.
                 The first one will be used as a trigger. The second one should be a IDropdownMenu component.`);
             }
 

@@ -1,6 +1,7 @@
-import Linkable from '../Linkable';
-
-import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
+import Linkable from '@inkline/inkline/src/components/ILinkable';
+import {
+    SizePropertyMixin
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IBreadcrumbItem',

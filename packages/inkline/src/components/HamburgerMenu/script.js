@@ -1,6 +1,8 @@
-import VariantPropertyMixin from '@inkline/inkline/src/mixins/components/properties/VariantPropertyMixin';
-import EmitClickMethodMixin from '@inkline/inkline/src/mixins/components/methods/EmitClickMethodMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
+import {
+    VariantPropertyMixin,
+    EmitClickMethodMixin,
+    ClassesProviderMixin,
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IHamburgerMenu',

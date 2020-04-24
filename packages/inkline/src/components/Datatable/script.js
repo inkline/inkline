@@ -1,11 +1,11 @@
 import Fuse from 'fuse.js';
-import ITable from '@inkline/inkline/src/components/Table';
-import IIcon from '@inkline/inkline/src/components/Icon';
-import IInput from '@inkline/inkline/src/components/Input';
-import ISelect from '@inkline/inkline/src/components/Select';
-import ISelectOption from '@inkline/inkline/src/components/SelectOption';
-import IPagination from '@inkline/inkline/src/components/Pagination';
-import ITransitionExpand from '@inkline/inkline/src/transitions/TransitionExpand';
+import ITable from '@inkline/inkline/src/components/ITable';
+import IIcon from '@inkline/inkline/src/components/IIcon';
+import IInput from '@inkline/inkline/src/components/IInput';
+import ISelect from '@inkline/inkline/src/components/ISelect';
+import ISelectOption from '@inkline/inkline/src/components/ISelectOption';
+import IPagination from '@inkline/inkline/src/components/IPagination';
+import ITransitionExpand from '@inkline/inkline/src/transitions/ITransitionExpand';
 import { sortByPath, getValueByPath } from '@inkline/inkline/src/helpers';
 
 export const defaults = {

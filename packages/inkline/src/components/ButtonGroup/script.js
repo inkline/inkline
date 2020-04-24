@@ -1,10 +1,11 @@
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import InjectParentFormProviderMixin from '@inkline/inkline/src/mixins/forms/providers/InjectParentFormProviderMixin';
-
-import DisabledPropertyMixin from '@inkline/inkline/src/mixins/forms/properties/DisabledPropertyMixin';
-import TabIndexPropertyMixin from '@inkline/inkline/src/mixins/components/properties/TabIndexPropertyMixin';
-import SizePropertyMixin from '@inkline/inkline/src/mixins/components/properties/SizePropertyMixin';
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+    InjectParentFormProviderMixin,
+    DisabledFormPropertyMixin,
+    SizePropertyMixin,
+    TabIndexPropertyMixin,
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IButtonGroup',
@@ -13,7 +14,7 @@ export default {
         ClassesProviderMixin,
         InjectParentFormProviderMixin,
 
-        DisabledPropertyMixin,
+        DisabledFormPropertyMixin,
         SizePropertyMixin,
         TabIndexPropertyMixin
     ],

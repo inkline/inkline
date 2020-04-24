@@ -1,12 +1,10 @@
 import { uid } from '@inkline/inkline/src/helpers/uid';
-
-import ITransitionExpand from '@inkline/inkline/src/transitions/TransitionExpand';
-
-import AttributesProviderMixin from '@inkline/inkline/src/mixins/components/providers/AttributesProviderMixin';
-import ClassesProviderMixin from '@inkline/inkline/src/mixins/components/providers/ClassesProviderMixin';
-import EmitProviderMixin from '@inkline/inkline/src/mixins/components/providers/EmitProviderMixin';
-
-import ActiveClassPropertyMixin from '@inkline/inkline/src/mixins/components/properties/ActiveClassPropertyMixin';
+import {
+    AttributesProviderMixin,
+    ClassesProviderMixin,
+    EmitProviderMixin,
+    ActiveClassPropertyMixin,
+} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'ITab',
@@ -17,9 +15,6 @@ export default {
 
         ActiveClassPropertyMixin,
     ],
-    components: {
-        ITransitionExpand
-    },
     inject: ['tabs'],
     props: {
         title: {
