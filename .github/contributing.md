@@ -21,14 +21,6 @@ restrictions:
   Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)
   instead. We reserve the right to delete comments which violate this rule.
 
-* Please **do not** open issues or pull requests regarding the code in
-  [`Normalize`](https://github.com/necolas/normalize.css) (open them in
-  their respective repositories).
-
-* Please **do not** open issues regarding the official themes offered on <http://inkline.io/themes/>.
-  Instead, please email any questions or feedback regarding those themes to `themes AT inkline DOT io`.
-
-
 ## Issues and labels
 
 Our bug tracker utilizes several labels to help organize and identify issues. Here's what they represent and how we use them:
@@ -52,25 +44,19 @@ Good bug reports are extremely helpful, so thanks!
 
 Guidelines for bug reports:
 
-0. **Validate and lint your code** &mdash; [validate your HTML](http://html5.validator.nu)
-   and lint your HTML to ensure your problem isn't caused by a simple error in your own code.
+1. Provide a clear title and description of the issue.
+2. Share the version of Inkline you are using.
+3. Add code examples to demonstrate the issue. You can also provide a complete repository to reproduce the issue quickly.
 
-1. **Use the GitHub issue search** &mdash; check if the issue has already been
-   reported.
+A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report: 
 
-2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
-   latest `master` or development branch in the repository.
+- What is your environment? 
+- What steps will reproduce the issue? 
+- What browser(s) and OS experience the problem? 
+- Do other browsers show the bug differently? 
+- What would you expect to be the outcome? 
 
-3. **Isolate the problem** &mdash; ideally create a [reduced test
-   case](https://css-tricks.com/reduced-test-cases/) and a live example.
-
-
-A good bug report shouldn't leave others needing to chase you up for more
-information. Please try to be as detailed as possible in your report. What is
-your environment? What steps will reproduce the issue? What browser(s) and OS
-experience the problem? Do other browsers show the bug differently? What
-would you expect to be the outcome? All these details will help people to fix
-any potential bugs.
+All these details will help us fix any potential bugs. Remember, fixing bugs takes time. We're doing our best!
 
 Example:
 
@@ -104,13 +90,16 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 
 ## Feature requests
 
-Feature requests are welcome! 
+Feature requests are welcome! When opening a feature request, it's up to *you* to make a strong case to convince the project's developers of the merits of this feature. Please provide as much detail and context as possible.
 
-Before opening a feature request, please take a moment to find out whether your idea
-fits with the scope and aims of the project. It's up to *you* to make a strong
-case to convince the project's developers of the merits of this feature. Please
-provide as much detail and context as possible.
+When adding a new feature to the framework, make sure you update the documentation package as well.
 
+### Testing
+Before providing a pull request be sure to test the feature you are adding. Inkline's target code coverage is 100% and we're proudly consistent with that.
+
+<a href="https://coveralls.io/github/inkline/inkline?branch=master" rel="nofollow">
+    <img src="https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master" alt="Coverage Status" data-canonical-src="https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master" style="max-width:100%;">
+</a>
 
 ## Pull requests
 

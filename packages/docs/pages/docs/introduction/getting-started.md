@@ -1,5 +1,5 @@
 # Getting Started
-## Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications. { .lead }
+## Get started with Inkline and experience well written, designed and tested front end code. { .lead }
 
 The quickest way to get started is to add the files from a CDN, with minimal setup. 
 

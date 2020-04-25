@@ -5,6 +5,21 @@ const pages = [
         description: 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications with a focus on user experience.'
     },
     {
+        id: 'docs-preface-about-inkline',
+        title: 'About Inkline',
+        description: 'Read about how Inkline was written, designed and tested to be what it is today.'
+    },
+    {
+        id: 'docs-preface-concepts',
+        title: 'Concepts',
+        description: 'Learn more about the concepts used throughout the framework and Inkline\'s design decisions.'
+    },
+    {
+        id: 'docs-preface-contribution-guide',
+        title: 'Contribution Guide',
+        description: 'Actively participate in the development and the future of Inkline by contributing regularly.'
+    },
+    {
         id: 'docs-introduction-getting-started',
         title: 'Getting Started',
         description: 'Get started with Inkline and experience well written, designed and tested front end code.'

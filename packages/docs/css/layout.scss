@@ -16,3 +16,19 @@
         height: 0;
     }
 }
+
+.docs-feature-list {
+    ul {
+        li {
+            h6 {
+                font-weight: $font-weight-semibold;
+                margin-top: 0;
+                margin-bottom: $spacer / 2;
+            }
+
+            p {
+                margin-top: 0;
+            }
+        }
+    }
+}
