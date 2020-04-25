@@ -94,6 +94,7 @@ $site-navigation-border-left-color-active: $color-primary !default;
                     border-left-color: $site-navigation-border-left-color;
                     color: $color-primary;
                     font-weight: $font-weight-semibold;
+                    background-color: transparent !important;
 
                     &::before {
                         opacity: 1;

@@ -1,6 +1,14 @@
 <div class="site-navigation" :class="classes">
     <ol>
         <li>
+            <span>Preface</span>
+            <ul>
+                <li><nuxt-link :to="{ name: 'docs-preface-about-inkline' }">About Inkline</nuxt-link></li>
+                <li><nuxt-link :to="{ name: 'docs-preface-concepts' }">Concepts</nuxt-link></li>
+                <li><nuxt-link :to="{ name: 'docs-preface-contribution-guide' }">Contribution Guide</nuxt-link></li>
+            </ul>
+        </li>
+        <li>
             <span>Introduction</span>
             <ul>
                 <li><nuxt-link :to="{ name: 'docs-introduction-getting-started' }">Getting Started</nuxt-link></li>
