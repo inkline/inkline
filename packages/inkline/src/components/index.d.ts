@@ -1,4 +1,4 @@
-export { default as IAlert } from './Alert';
+export { default as IAlert } from './IAlert';
 export { default as IBadge } from './IBadge';
 export { default as IBreadcrumb } from './IBreadcrumb';
 export { default as IBreadcrumbItem } from './IBreadcrumbItem';
