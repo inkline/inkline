@@ -59,9 +59,13 @@ exports[`IndexView is should render correctly 1`] = `
   <i-container-stub fluid="true" id="sponsors">
     <i-container-stub>
       <i-row-stub>
-        <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" offsetmd="" pushmd="" pullmd="" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
-          <h3>Sponsors</h3>
-          <p class="_text-muted">Sponsorships help Inkline evolve and get the attention and care it deserves.</p>
+        <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" offsetmd="" pushmd="" pullmd="" lg="6" offsetlg="3" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
+          <h3 class="h1">Sponsors</h3>
+          <p class="_text-muted">
+            Inkline is an MIT licensed open source project and is completely free to use.
+            Therefore, Inkline only grows thanks to the help and support of its sponsors and backers.
+            Please, consider supporting us!
+          </p>
         </i-column-stub>
       </i-row-stub>
       <i-row-stub class="_margin-top-1">
@@ -87,7 +91,7 @@ exports[`IndexView is should render correctly 1`] = `
       </i-row-stub>
       <i-row-stub>
         <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" offsetmd="" pushmd="" pullmd="" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
-          <i-button-stub activeclass="-active" tabindex="1" tag="button" size="" variant="patreon" id="patreon-button" href="https://www.patreon.com/bePatron?u=18449490" target="_blank" rel="nofollow"><img src="~static/images/patreon-logo.png" alt="Patreon Logo">
+          <i-button-stub activeclass="-active" tabindex="1" tag="button" size="lg" variant="patreon" id="patreon-button" href="https://www.patreon.com/bePatron?u=18449490" target="_blank" rel="nofollow"><img src="~static/images/patreon-logo.png" alt="Patreon Logo">
             Become a sponsor
           </i-button-stub>
         </i-column-stub>
