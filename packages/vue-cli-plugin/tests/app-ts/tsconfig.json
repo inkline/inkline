@@ -20,6 +20,9 @@
         "types": [
             "@types/node",
             "@inkline/inkline"
+        ],
+        "typeRoots": [
+            "./types"
         ]
     },
     "exclude": [
