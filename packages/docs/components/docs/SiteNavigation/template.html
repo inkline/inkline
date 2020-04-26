@@ -13,8 +13,17 @@
             <ul>
                 <li><nuxt-link :to="{ name: 'docs-introduction-getting-started' }">Getting Started</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-introduction-installation' }">Installation</nuxt-link></li>
-                <li><nuxt-link :to="{ name: 'docs-introduction-customization' }">Customization</nuxt-link></li>
-                <li><nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link></li>
+                <li>
+                    <i-collapsible :class="{ '-active': subroutes['docs-introduction-guides'] }"
+                                   v-model="menu['docs-introduction-guides']">
+                        <i-collapsible-item title="Guides" id="docs-introduction-guides">
+                            <ul>
+                                <li><nuxt-link :to="{ name: 'docs-introduction-guides-customization' }">Customization</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-introduction-guides-dark-mode' }">Dark Mode</nuxt-link></li>
+                            </ul>
+                        </i-collapsible-item>
+                    </i-collapsible>
+                </li>
             </ul>
         </li>
         <li>
@@ -26,6 +35,7 @@
                 <li><nuxt-link :to="{ name: 'docs-core-images' }">Images</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-core-tables' }">Tables</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-core-code' }">Code</nuxt-link></li>
+                <li><nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link></li>
             </ul>
         </li>
         <li>
