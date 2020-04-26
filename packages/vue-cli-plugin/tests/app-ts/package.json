@@ -11,7 +11,7 @@
     "main.components": "vue-cli-service build src/main.components.ts --dest dist-components"
   },
   "dependencies": {
-    "@inkline/inkline": "^1.22.3",
+    "@inkline/inkline": "file:../../../inkline",
     "core-js": "^3.6.4",
     "vue": "^2.6.11"
   },

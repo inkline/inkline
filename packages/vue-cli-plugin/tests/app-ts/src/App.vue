@@ -52,23 +52,25 @@
     </i-container>
 </template>
 
-<script>
-    export default {
-        name: 'App',
-        data() {
-            return {
-                form: this.$inkline.form({
-                    input: {
-                        validators: [
-                            { rule: 'required' }
-                        ]
-                    },
-                    textarea: {},
-                    select: {},
-                    checkbox: {},
-                    radio: {}
-                })
-            };
-        }
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
+    name: 'App',
+    data() {
+        return {
+            form: this.$inkline.form({
+                input: {
+                    validators: [
+                        { rule: 'required' }
+                    ]
+                },
+                textarea: {},
+                select: {},
+                checkbox: {},
+                radio: {}
+            })
+        };
     }
+});
 </script>
