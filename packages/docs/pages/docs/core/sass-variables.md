@@ -3,6 +3,11 @@
 
 This page lists the common Sass Variables that are used throughout the framework. Each component has its own specific Sass variables documented.
 
+<i-alert variant="info">
+    <template slot="icon"><i-icon icon="info" class="h4"></i-icon></template>
+    <p>If you're wondering how to override the Sass variables properly, please head to the <nuxt-link :to="{ name: 'docs-introduction-guides-customization' }">Customization</nuxt-link> guide.</p>
+</i-alert>
+
 ### Border
 
 <i-scss-preview title="Border" expanded :header="false">

@@ -30,14 +30,14 @@ const pages = [
         description: 'Install Inkline using your favorite package manager and get access to the latest source code.'
     },
     {
-        id: 'docs-introduction-customization',
-        title: 'Customization',
+        id: 'docs-introduction-guides-customization',
+        title: 'Customization Guide',
         description: 'Get Inkline ready for tree shaking and Sass variables customization.'
     },
     {
-        id: 'docs-introduction-sass-variables',
-        title: 'Sass Variables',
-        description: 'Make Inkline your own using hundreds of configurable Sass variables.'
+        id: 'docs-introduction-guides-dark-mode',
+        title: 'Dark Mode Guide',
+        description: 'Easily change the theme of your application to light or dark programmatically.'
     },
     {
         id: 'docs-core-grid',
@@ -68,6 +68,11 @@ const pages = [
         id: 'docs-core-code',
         title: 'Code',
         description: 'Examples for displaying inline and multi-line blocks of code with Inkline.'
+    },
+    {
+        id: 'docs-core-sass-variables',
+        title: 'Sass Variables',
+        description: 'Make Inkline your own using hundreds of configurable Sass variables.'
     },
     {
         id: 'docs-forms-checkbox',

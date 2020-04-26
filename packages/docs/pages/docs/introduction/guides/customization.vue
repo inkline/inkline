@@ -8,7 +8,7 @@ export default {
     name: 'CustomizationView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-introduction-customization'),
+    head: head('docs-introduction-guides-customization'),
     components: {
         IAlert
     }

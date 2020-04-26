@@ -8,7 +8,7 @@ export default {
     name: 'SassVariablesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-introduction-sass-variables'),
+    head: head('docs-core-sass-variables'),
     components: {
         IAlert,
         IIcon
