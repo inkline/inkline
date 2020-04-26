@@ -6,9 +6,7 @@ const processError = (stderr) => stderr.toString().replace('-  Building for prod
 
 export const jestExec = async (command, options, callback, done) => {
     try {
-        const { stdout, stderr } = await exec(command, options);
-
-        console.log(stdout);
+        const { stderr } = await exec(command, options);
 
         if (processError(stderr)) {
             done.fail(stderr);
