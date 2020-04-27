@@ -1,4 +1,4 @@
-import { jestExec } from './jestExec';
+import { jestSpawn } from './jestSpawn';
 import { extendPackage, injectImports, onCreateComplete } from './generatorFunctions';
 import fs from 'fs';
 import rimraf from 'rimraf';
@@ -21,7 +21,7 @@ export const vueCLIBuild = (mainFile, generator, options = {}) => async (done) =
         onCreateComplete
     }, options);
 
-    await jestExec(`npm run ${mainFile}`, { cwd }, () => {
+    await jestSpawn('npm', ['run', mainFile], { cwd }, () => {
         rimraf.sync(dist);
     }, done);
 };
