@@ -141,39 +141,31 @@ included in the project:
    git remote add upstream https://github.com/inkline/inkline.git
    ```
 
-2. If you cloned a while ago, get the latest changes from upstream:
-
-   ```bash
-   git checkout dev
-   git pull upstream dev
-   ```
-
-3. Create a new topic branch (off the main project development branch) to
+2. Create a new topic branch (off the main project master branch) to
    contain your feature, change, or fix:
 
    ```bash
    git checkout -b <topic-branch-name>
    ```
 
-4. Make sure your commits are logically structured. Please adhere to these [git commit
-   message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-   or your code is unlikely to be merged into the main project. Use Git's
+3. Make sure your commits are logically structured. Please adhere to these [git commit
+   message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html). Use Git's
    [interactive rebase](https://help.github.com/articles/interactive-rebase)
    feature to tidy up your commits before making them public.
 
-5. Locally merge (or rebase) the upstream development branch into your topic branch:
+4. Locally rebsase the upstream development branch into your topic branch:
 
    ```bash
-   git pull [--rebase] upstream dev
+   git pull --rebase upstream master
    ```
 
-6. Push your topic branch up to your fork:
+5. Push your topic branch up to your fork:
 
    ```bash
    git push origin <topic-branch-name>
    ```
 
-7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
+6. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
     with a clear title and description against the `dev` branch.
 
 **Important!** By submitting a patch, you agree to allow the project owners to
@@ -203,10 +195,21 @@ Adhere to the linting guidelines.
 - 4 spaces (no tabs)
 - strict mode
 
-### Checking coding style
+## Local Development
 
-Run `npm run dev` before committing to ensure your changes follow our coding standards.
+1. First, fork the repository and create a branch as specified in the [Pull Request Guidelines](#pull-requests) above.
 
+2. You'll find a structured [lerna](https://lerna.js.org) project. The folder structure is as follows:
+- `packages/inkline` contains the UI Framework
+- `packages/docs` contains the Documentation
+- `packages/vue-cli-plugin` contains the Vue CLI integration
+- `packages/nuxt-module` contains the Nuxt integration
+
+3. Run `npm install` to install all dependencies. The four child projects dependencies will be automatically installed and linked as well.
+
+4. To start developing, run `npm run dev` in your command line to run both inkline and the docs in development mode. The documentation will be automatically linked to the ui framework updates and will react to changes in the framework code.
+
+5. To test, go to `packages/inkline` and run `npm run test:dev` to run the UI Framework tests in development mode. Make sure you run `npm run test` to run all the tests once (ui framework, docs, integrations) before creating a pull request.
 
 ## License
 
