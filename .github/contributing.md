@@ -153,7 +153,7 @@ included in the project:
    [interactive rebase](https://help.github.com/articles/interactive-rebase)
    feature to tidy up your commits before making them public.
 
-4. Locally rebsase the upstream development branch into your topic branch:
+4. Locally rebsase the upstream master branch into your topic branch:
 
    ```bash
    git pull --rebase upstream master
@@ -166,7 +166,7 @@ included in the project:
    ```
 
 6. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-    with a clear title and description against the `dev` branch.
+    with a clear title and description against the `master` branch.
 
 **Important!** By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](LICENSE) (for code changes) and under the terms of the
@@ -177,23 +177,33 @@ license your work under the terms of the [MIT License](LICENSE) (for code change
 
 ### HTML
 
-[Adhere to the Code Guide.](http://codeguide.co/#html)
+Adhere to the linting and [Code](http://codeguide.co/#html) guidelines.
 
 - Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
 - Use [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) attributes in documentation examples for better accessibility.
 
 ### Sass
 
-Adhere to the linting guidelines.
+Adhere to the linting and [RSCSS](https://rscss.io) guidelines.
 
 - Default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
 - Don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines) for more details.
 
 ### JS
 
+Adhere to the linting guidelines.
+
 - Use semicolons
 - 4 spaces (no tabs)
 - strict mode
+
+### Vue
+
+Adhere to the linting and [Concepts](https://inkline.io/docs/preface/concepts) guidelines.
+
+- Prefix Inkline components with the `I` character
+- Provide multiple customization options
+- Use mixins where applicable
 
 ## Local Development
 
