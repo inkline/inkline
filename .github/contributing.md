@@ -118,11 +118,11 @@ project (indentation, accurate comments, etc.) and any other requirements
 
 **Do not edit `inkline.css`, or `inkline.js`
 directly!** Those files are automatically generated. You should edit the
-source files in [`/src`](https://github.com/inkline/inkline/tree/master/src) instead.
+source files in [`/packages/inkline/src`](https://github.com/inkline/inkline/tree/master/packages/inkline/src) instead.
 
 Similarly, when contributing to Inkline's documentation, you should edit the
 documentation source files in
-[the `/docs` directory](https://github.com/inkline/inkline.io/tree/master/docs).
+[the `/packages/docs` directory](https://github.com/inkline/inkline/tree/master/packages/docs).
 
 Adhering to the following process is the best way to get your work
 included in the project:
