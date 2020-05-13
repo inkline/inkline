@@ -213,5 +213,5 @@ Adhere to the linting guidelines.
 
 ## License
 
-By contributing your code, you agree to license your contribution under the [MIT License](LICENSE).
-By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](docs/LICENSE).
+By contributing your code, you agree to license your contribution under the [MIT License](https://github.com/inkline/inkline/tree/master/packages/inkline/LICENSE).
+By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](https://github.com/inkline/inkline/tree/master/packages/docs/LICENSE).
