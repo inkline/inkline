@@ -25,9 +25,16 @@ export default {
         vertical: {
             type: Boolean,
             default: false
+        },
+        block: {
+            type: Boolean,
+            default: false
         }
     },
     created() {
-        this.classesProvider.add(() => ({ '-vertical': this.vertical }));
+        this.classesProvider.add(() => ({ 
+            '-vertical': this.vertical,
+            '-block': this.block,
+        }));
     }
 };
