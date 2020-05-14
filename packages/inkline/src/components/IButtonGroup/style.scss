@@ -31,6 +31,15 @@
         margin-left: 0;
     }
 
+    &.-block {
+        display: flex;
+        width: 100%;
+
+        > .button {
+            flex-basis: 100%;
+        }
+    }
+
     &:not(.-vertical) {
 
         // Reset rounded corners
