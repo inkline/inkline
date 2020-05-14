@@ -41,6 +41,7 @@ $site-navigation-border-left-color-active: $color-primary !default;
                 padding-bottom: ($spacer / 3);
                 padding-left: $spacer;
                 color: $body-color;
+                background-color: transparent !important;
                 border-left: 1px solid $site-navigation-border-left-color;
                 transition: color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
 
