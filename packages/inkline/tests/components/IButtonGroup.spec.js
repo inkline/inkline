@@ -28,6 +28,12 @@ describe('Components', () => {
                     expect(wrapper.vm.vertical).toEqual(false);
                 });
             });
+            describe('block', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.block).toBeDefined();
+                    expect(wrapper.vm.block).toEqual(false);
+                });
+            });
         });
 
         describe('created()', () => {
@@ -44,6 +50,14 @@ describe('Components', () => {
                 expect(rule()).toEqual(expect.objectContaining({ '-vertical': false }));
                 wrapper.setProps({ vertical: true });
                 expect(rule()).toEqual(expect.objectContaining({ '-vertical': true }));
+            });
+
+            it('should add "-block" class if "block" property is true', () => {
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-block': false }));
+                wrapper.setProps({ block: true });
+                expect(rule()).toEqual(expect.objectContaining({ '-block': true }));
             });
         });
     });
