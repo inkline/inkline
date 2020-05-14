@@ -110,6 +110,30 @@ When placing a `<i-button-group>` inside another `<i-button-group>`, you'll get 
 </template>
 </i-code-preview>
 
+### Block
+You can create block button groups that span the full width of a parent by adding the `block` property.
+
+<i-code-preview title="Block Button Group">
+
+<i-button-group block>
+    <i-button>Left</i-button>
+    <i-button>Middle</i-button>
+    <i-button>Right</i-button>
+</i-button-group>
+
+<template slot="html">
+
+~~~html
+<i-button-group block>
+    <i-button>Left</i-button>
+    <i-button>Middle</i-button>
+    <i-button>Right</i-button>
+</i-button-group>
+~~~
+
+</template>
+</i-code-preview>
+
 ### Vertical
 Using the `vertical` property, you can stack a set of buttons vertically rather than horizontally.
 
@@ -191,6 +215,57 @@ The default size is set to `md`.
 </template>
 </i-code-preview>
 
+### Block Vertical
+Just like horizontal block button groups. You can also set vertical button groups to span full width of its parent by adding the property `block`.
+
+<i-code-preview title="Block Button Group">
+
+<i-button-group block vertical>
+    <i-button>Left</i-button>
+    <i-button>Middle</i-button>
+    <i-button>Right</i-button>
+</i-button-group>
+
+<template slot="html">
+
+~~~html
+<i-button-group block vertical>
+    <i-button>Left</i-button>
+    <i-button>Middle</i-button>
+    <i-button>Right</i-button>
+</i-button-group>
+~~~
+
+</template>
+</i-code-preview>
+
+### Block Nested
+You can create nested button group with `block` property.
+
+<i-code-preview title="Block Button Group">
+
+<i-button-group block>
+    <i-button>Button 1</i-button>
+    <i-button-group block>
+        <i-button>Button 2</i-button>
+        <i-button>Button 3</i-button>
+    </i-button-group>
+</i-button-group>
+
+<template slot="html">
+
+~~~html
+<i-button-group block>
+    <i-button>Button 1</i-button>
+    <i-button-group block>
+        <i-button>Button 2</i-button>
+        <i-button>Button 3</i-button>
+    </i-button-group>
+</i-button-group>
+~~~
+
+</template>
+</i-code-preview>
 
 ### Component API
 Here you can find a list of the various customization options you can use for the button group component as props, as well as available slots.
