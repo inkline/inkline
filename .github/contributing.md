@@ -1,6 +1,6 @@
 # Contributing to Inkline
 
-## Actively participate in the development and the future of Inkline by contributing regularly.
+### Actively participate in the development and the future of Inkline by contributing regularly.
 
 Open Source projects are maintained and backed by a **wonderful community** of users and collaborators.
 
