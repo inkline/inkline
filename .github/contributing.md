@@ -1,9 +1,18 @@
 # Contributing to Inkline
 
-Contributing to Inkline is very straightforward. **Here's how you can help.**
+## Actively participate in the development and the future of Inkline by contributing regularly.
 
-Please review this document in order to make the contribution
-process easy and effective for everyone involved.
+Open Source projects are maintained and backed by a **wonderful community** of users and collaborators.
+
+We encourage you to actively participate in the development and future of Inkline by contributing to the source code, improving documentation, reporting potential bugs or testing new features.
+
+### Channels
+
+There are many ways to taking part in the Inkline community.
+
+1. <a href="https://github.com/inkline/inkline" rel="nofollow" target="_blank">Github Repositories</a>: Report bugs or create feature requests against the dedicated Inkline repository.
+2. <a href="https://discord.gg/2w5UGnK" rel="nofollow" target="_blank">Discord</a>: Join the Discord Server to chat instantly with other developers in the Inkline community.
+3. <a href="https://twitter.com/inkline" rel="nofollow" target="_blank">Twitter</a>: Stay in touch with the progress we make and learn about the awesome things happening around Inkline.
 
 ## Using the issue tracker
 
@@ -35,7 +44,6 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 - `meta` - Issues with the project itself or our GitHub repository.
 
 For a complete look at our labels, see the [project labels page](https://github.com/inkline/inkline/labels).
-
 
 ## Bug reports
 
@@ -89,7 +97,6 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 | Microsoft     | Edge                         | EdgeHTML         | https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/                 |                                                          |
 
 ## Feature requests
-
 Feature requests are welcome! When opening a feature request, it's up to *you* to make a strong case to convince the project's developers of the merits of this feature. Please provide as much detail and context as possible.
 
 When adding a new feature to the framework, make sure you update the documentation package as well.
