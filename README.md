@@ -141,8 +141,6 @@ Thanks goes to these wonderful people:
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
-
 ## Copyright and license
 Code copyright 2017-2020 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
 Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/LICENSE). 
