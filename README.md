@@ -99,10 +99,6 @@ You can also try it out live on <a href="https://jsfiddle.net/alexgrozav/0dknfs6
 Have a bug or a feature request? Please first search for existing and closed issues. 
 If your problem or idea is not addressed yet, [please open a new issue](https://github.com/inkline/inkline/issues/new).
 
-## Contributing
-Please read through our [contributing guidelines](https://github.com/inkline/inkline/blob/master/.github/contributing.md). 
-Included are directions for opening issues, coding standards, and notes on development.
-
 ## Community
 Get updates on Inkline's development and chat with the project maintainers and community members.
 - Follow [@inkline on Twitter](https://twitter.com/inkline).
@@ -122,6 +118,30 @@ Inkline is maintained under [the Semantic Versioning guidelines](https://semver.
 - <https://twitter.com/alexgrozav>
 - <https://facebook.com/alexgrozav>
 - <https://github.com/alexgrozav>
+
+## Contributing
+Please read through our [contributing guidelines](https://github.com/inkline/inkline/blob/master/.github/contributing.md). 
+Included are directions for opening issues, coding standards, and notes on development.
+
+Thanks goes to these wonderful people:
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://grozav.com"><img class="avatar" src="https://avatars3.githubusercontent.com/u/6179477?v=4" width="50px;" alt=""/></a></td>
+    <td align="center"><a href="https://experimentslabs.com"><img class="avatar" src="https://avatars3.githubusercontent.com/u/1732268?v=4" width="50px;" alt=""/></a></td>
+    <td align="center"><a href="https://github.com/renielDev"><img class="avatar" src="https://avatars1.githubusercontent.com/u/14147493?v=4" width="50px;" alt=""/></a></td>
+    <td align="center"><a href="http://TheJaredWilcurt.com"><img class="avatar" src="https://avatars1.githubusercontent.com/u/4629794?v=4" width="50px;" alt=""/></a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
 
 ## Copyright and license
 Code copyright 2017-2020 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
