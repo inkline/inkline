@@ -9,15 +9,15 @@ Just like Arrays, Objects can be manipulated and kept up to date using a custom 
 <code>this.form.group.set(name, item, options)</code>
 
 <i-code-preview title="Form Schema Object Group Operations">
-<i-form :schema="objectForm">
+<i-form v-model="objectForm">
     <i-form-group>
-        <i-input :schema="objectForm.fullName" v-model="objectForm.fullName.value" placeholder="Enter your name.." />
+        <i-input :schema="objectForm.fullName" placeholder="Enter your name.." />
     </i-form-group>
     <i-form-group v-if="objectForm.email">
-        <i-input :schema="objectForm.email" v-model="objectForm.email.value" placeholder="Enter your email.." />
+        <i-input :schema="objectForm.email" placeholder="Enter your email.." />
     </i-form-group>
     <i-form-group v-if="objectForm.address">
-        <i-input :schema="objectForm.address" v-model="objectForm.address.value" placeholder="Enter your address.." />
+        <i-input :schema="objectForm.address" placeholder="Enter your address.." />
     </i-form-group>
     <i-form-group>
         <i-button @click="setEmail" type="button">Set Email</i-button>&nbsp;
@@ -27,15 +27,15 @@ Just like Arrays, Objects can be manipulated and kept up to date using a custom 
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.fullName" v-model="form.fullName.value" placeholder="Enter your name.." />
+        <i-input :schema="form.fullName" placeholder="Enter your name.." />
     </i-form-group>
     <i-form-group v-if="form.email">
-        <i-input :schema="form.email" v-model="form.email.value" placeholder="Enter your email.." />
+        <i-input :schema="form.email" placeholder="Enter your email.." />
     </i-form-group>
     <i-form-group v-if="form.address">
-        <i-input :schema="form.address" v-model="form.address.value" placeholder="Enter your address.." />
+        <i-input :schema="form.address" placeholder="Enter your address.." />
     </i-form-group>
     
     <i-form-group>
@@ -94,9 +94,9 @@ Inkline provides you with custom implementations for Array group operations usin
 <code>this.form.group.remove(index, deleteCount, item, options)</code>
 
 <i-code-preview title="Form Schema Array Group Operations">
-<i-form :schema="listForm">
+<i-form v-model="listForm">
     <i-form-group v-for="item in listForm.items" :key="item.name">
-        <i-input :schema="item" v-model="item.value" placeholder="Type something.." />
+        <i-input :schema="item" placeholder="Type something.." />
     </i-form-group>
     <i-form-group>
         <i-button @click="addField" type="button">Add</i-button>&nbsp;
@@ -107,9 +107,9 @@ Inkline provides you with custom implementations for Array group operations usin
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group v-for="item in form.items" :key="item.name">
-        <i-input :schema="item" v-model="item.value" placeholder="Type something.." />
+        <i-input :schema="item" placeholder="Type something.." />
     </i-form-group>
     
     <i-form-group>
@@ -137,13 +137,13 @@ export default {
     },
     methods: {
         addField() {
-            this.listForm.items.add({ value: 'Added Field' });
+            this.form.items.add({ value: 'Added Field' });
         },
         removeField() {
-            this.listForm.items.remove(0, 1);
+            this.form.items.remove(0, 1);
         },
         replaceField() {
-            this.listForm.items.remove(0, 1, { value: 'Spliced Field' });
+            this.form.items.remove(0, 1, { value: 'Spliced Field' });
         }
     }
 }

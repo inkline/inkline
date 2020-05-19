@@ -4,29 +4,29 @@
 There are several validation options that can be used in the `validators` field:
 
 <i-code-preview title="Alpha Validator" markup="alpha">
-<i-form :schema="alphaValidatorForm">
+<i-form v-model="alphaValidatorForm">
     <i-form-group>
-        <i-input :schema="alphaValidatorForm.input" v-model="alphaValidatorForm.input.value" placeholder="This field should contain only letters" />
+        <i-input :schema="alphaValidatorForm.input" placeholder="This field should contain only letters" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="alphaValidatorForm.inputSpaces" v-model="alphaValidatorForm.inputSpaces.value" placeholder="This field should contain only letters and spaces" />
+        <i-input :schema="alphaValidatorForm.inputSpaces" placeholder="This field should contain only letters and spaces" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="alphaValidatorForm.inputDashes" v-model="alphaValidatorForm.inputDashes.value" placeholder="This field should contain only letters and dashes" />
+        <i-input :schema="alphaValidatorForm.inputDashes" placeholder="This field should contain only letters and dashes" />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="This field should contain only letters" />
+        <i-input :schema="form.input" placeholder="This field should contain only letters" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="form.inputSpaces" v-model="form.inputSpaces.value" placeholder="This field should contain only letters and spaces" />
+        <i-input :schema="form.inputSpaces" placeholder="This field should contain only letters and spaces" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="form.inputDashes" v-model="form.inputDashes.value" placeholder="This field should contain only letters and dashes" />
+        <i-input :schema="form.inputDashes" placeholder="This field should contain only letters and dashes" />
     </i-form-group>
 </i-form>
 ~~~
@@ -72,29 +72,29 @@ export default {
 </i-code-preview>
 
 <i-code-preview title="Alphanumeric Validator" markup="alphanumeric">
-<i-form :schema="alphaValidatorForm">
+<i-form v-model="alphaValidatorForm">
     <i-form-group>
-        <i-input :schema="alphanumericValidatorForm.input" v-model="alphanumericValidatorForm.input.value" placeholder="This field should contain only letters and numbers" />
+        <i-input :schema="alphanumericValidatorForm.input" placeholder="This field should contain only letters and numbers" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="alphanumericValidatorForm.inputSpaces" v-model="alphanumericValidatorForm.inputSpaces.value" placeholder="This field should contain only letters, numbers and spaces" />
+        <i-input :schema="alphanumericValidatorForm.inputSpaces" placeholder="This field should contain only letters, numbers and spaces" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="alphanumericValidatorForm.inputDashes" v-model="alphanumericValidatorForm.inputDashes.value" placeholder="This field should contain only letters, numbers and dashes" />
+        <i-input :schema="alphanumericValidatorForm.inputDashes" placeholder="This field should contain only letters, numbers and dashes" />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="This field should contain only letters and numbers" />
+        <i-input :schema="form.input" placeholder="This field should contain only letters and numbers" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="form.inputSpaces" v-model="form.inputSpaces.value" placeholder="This field should contain only letters, numbers and spaces" />
+        <i-input :schema="form.inputSpaces" placeholder="This field should contain only letters, numbers and spaces" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="form.inputDashes" v-model="form.inputDashes.value" placeholder="This field should contain only letters, numbers and dashes" />
+        <i-input :schema="form.inputDashes" placeholder="This field should contain only letters, numbers and dashes" />
     </i-form-group>
 </i-form>
 ~~~
@@ -141,17 +141,17 @@ export default {
 
 
 <i-code-preview title="Email Validator" markup="email">
-<i-form :schema="emailValidatorForm">
+<i-form v-model="emailValidatorForm">
     <i-form-group>
-        <i-input :schema="emailValidatorForm.input" v-model="emailValidatorForm.input.value" placeholder="This field an is email" />
+        <i-input :schema="emailValidatorForm.input" placeholder="This field an is email" />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="This field is an email" />
+        <i-input :schema="form.input" placeholder="This field is an email" />
     </i-form-group>
 </i-form>
 ~~~
@@ -188,17 +188,17 @@ export default {
 
 
 <i-code-preview title="Max Validator" markup="max">
-<i-form :schema="maxValidatorForm">
+<i-form v-model="maxValidatorForm">
     <i-form-group>
-        <i-input :schema="maxValidatorForm.input" v-model="maxValidatorForm.input.value" placeholder="This field accepts a maximum value of 100." />
+        <i-input :schema="maxValidatorForm.input" placeholder="This field accepts a maximum value of 100." />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="This field accepts a maximum value of 100." />
+        <i-input :schema="form.input" placeholder="This field accepts a maximum value of 100." />
     </i-form-group>
 </i-form>
 ~~~
@@ -235,17 +235,17 @@ export default {
 
 
 <i-code-preview title="Min Validator" markup="min">
-<i-form :schema="minValidatorForm">
+<i-form v-model="minValidatorForm">
     <i-form-group>
-        <i-input :schema="minValidatorForm.input" v-model="minValidatorForm.input.value" placeholder="This field accepts a minimum value of 10." />
+        <i-input :schema="minValidatorForm.input" placeholder="This field accepts a minimum value of 10." />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="This field accepts a minimum value of 10." />
+        <i-input :schema="form.input" placeholder="This field accepts a minimum value of 10." />
     </i-form-group>
 </i-form>
 ~~~
@@ -282,17 +282,17 @@ export default {
 
 
 <i-code-preview title="Max Length Validator" markup="maxLength">
-<i-form :schema="maxLengthValidatorForm">
+<i-form v-model="maxLengthValidatorForm">
     <i-form-group>
-        <i-input :schema="maxLengthValidatorForm.input" v-model="maxLengthValidatorForm.input.value" placeholder="This field accepts up to 12 characters." />
+        <i-input :schema="maxLengthValidatorForm.input" placeholder="This field accepts up to 12 characters." />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="This field accepts up to 12 characters." />
+        <i-input :schema="form.input" placeholder="This field accepts up to 12 characters." />
     </i-form-group>
 </i-form>
 ~~~
@@ -329,17 +329,17 @@ export default {
 
 
 <i-code-preview title="Min Length Validator" markup="minLength">
-<i-form :schema="minLengthValidatorForm">
+<i-form v-model="minLengthValidatorForm">
     <i-form-group>
-        <i-input :schema="minLengthValidatorForm.input" v-model="minLengthValidatorForm.input.value" placeholder="This field requires at least 6 characters." />
+        <i-input :schema="minLengthValidatorForm.input" placeholder="This field requires at least 6 characters." />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="This field requires at least 6 characters." />
+        <i-input :schema="form.input" placeholder="This field requires at least 6 characters." />
     </i-form-group>
 </i-form>
 ~~~
@@ -376,29 +376,29 @@ export default {
 
 
 <i-code-preview title="Number Validator" markup="number">
-<i-form :schema="numberValidatorForm">
+<i-form v-model="numberValidatorForm">
     <i-form-group>
-        <i-input :schema="numberValidatorForm.input" v-model="numberValidatorForm.input.value" placeholder="This field should contain positive numbers" />
+        <i-input :schema="numberValidatorForm.input" placeholder="This field should contain positive numbers" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="numberValidatorForm.inputNegative" v-model="numberValidatorForm.inputNegative.value" placeholder="This field should contain positive or negative numbers" />
+        <i-input :schema="numberValidatorForm.inputNegative" placeholder="This field should contain positive or negative numbers" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="numberValidatorForm.inputNegativeDecimal" v-model="numberValidatorForm.inputNegativeDecimal.value" placeholder="This field should contain positive or negative decimal numbers" />
+        <i-input :schema="numberValidatorForm.inputNegativeDecimal" placeholder="This field should contain positive or negative decimal numbers" />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="This field should contain only numbers" />
+        <i-input :schema="form.input" placeholder="This field should contain only numbers" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="form.inputNegative" v-model="form.inputNegative.value" placeholder="This field should contain positive or negative numbers" />
+        <i-input :schema="form.inputNegative" placeholder="This field should contain positive or negative numbers" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="form.inputNegativeDecimal" v-model="form.inputNegativeDecimal.value" placeholder="This field should contain positive or negative decimal numbers" />
+        <i-input :schema="form.inputNegativeDecimal" placeholder="This field should contain positive or negative decimal numbers" />
     </i-form-group>
 </i-form>
 ~~~
@@ -445,17 +445,17 @@ export default {
 
 
 <i-code-preview title="Required Validator" markup="required">
-<i-form :schema="requiredValidatorForm">
+<i-form v-model="requiredValidatorForm">
     <i-form-group>
-        <i-input :schema="requiredValidatorForm.input" v-model="requiredValidatorForm.input.value" placeholder="This field is required" />
+        <i-input :schema="requiredValidatorForm.input" placeholder="This field is required" />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="This field is required" />
+        <i-input :schema="form.input" placeholder="This field is required" />
     </i-form-group>
 </i-form>
 ~~~
@@ -492,23 +492,23 @@ export default {
 
 
 <i-code-preview title="Same As Validator" markup="sameAs">
-<i-form :schema="sameAsValidatorForm">
+<i-form v-model="sameAsValidatorForm">
     <i-form-group>
-        <i-input :schema="sameAsValidatorForm.password" v-model="sameAsValidatorForm.password.value" type="password" placeholder="Password" />
+        <i-input :schema="sameAsValidatorForm.password" type="password" placeholder="Password" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="sameAsValidatorForm.passwordConfirmation" v-model="sameAsValidatorForm.passwordConfirmation.value" type="password" placeholder="Password Confirmation" />
+        <i-input :schema="sameAsValidatorForm.passwordConfirmation" type="password" placeholder="Password Confirmation" />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.password" v-model="form.password.value" placeholder="Password" />
+        <i-input :schema="form.password" placeholder="Password" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="form.passwordConfirmation" v-model="form.passwordConfirmation.value" placeholder="Password Confirmation" />
+        <i-input :schema="form.passwordConfirmation" placeholder="Password Confirmation" />
     </i-form-group>
 </i-form>
 ~~~
@@ -550,17 +550,17 @@ export default {
 You can provide a custom validation function that will be applied on the value of the input using the `custom` validator.
 
 <i-code-preview title="Custom Validator" markup="custom">
-<i-form :schema="customValidatorForm">
+<i-form v-model="customValidatorForm">
     <i-form-group>
-        <i-input :schema="customValidatorForm.input" v-model="customValidatorForm.input.value" placeholder="This field is custom validated. It needs to contain 'inkline'" />
+        <i-input :schema="customValidatorForm.input" placeholder="This field is custom validated. It needs to contain 'inkline'" />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="This field is custom validated. It needs to contain 'inkline'." />
+        <i-input :schema="form.input" placeholder="This field is custom validated. It needs to contain 'inkline'." />
     </i-form-group>
 </i-form>
 ~~~

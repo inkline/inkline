@@ -11,17 +11,17 @@ The `<i-form>` component and all input components have a `schema` property that 
 Using the `validators` field, you can specify an array of validators to be used on the input.
 
 <i-code-preview title="Form Schema Example">
-<i-form :schema="basicForm">
+<i-form v-model="basicForm">
     <i-form-group>
-        <i-input :schema="basicForm.input" v-model="basicForm.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="basicForm.input" placeholder="Enter your first name.." />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="form.input" placeholder="Enter your first name.." />
     </i-form-group>
 </i-form>
 ~~~
@@ -63,17 +63,17 @@ export default {
 Providing a default value for a schema field can be done using the `value` field as follows:
 
 <i-code-preview title="Form Schema Input Default Value">
-<i-form :schema="defaultValueForm">
+<i-form v-model="defaultValueForm">
     <i-form-group>
-        <i-input :schema="defaultValueForm.input" v-model="defaultValueForm.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="defaultValueForm.input" placeholder="Enter your first name.." />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="form.input" placeholder="Enter your first name.." />
     </i-form-group>
 </i-form>
 ~~~
@@ -111,17 +111,17 @@ export default {
 Each validator accepts a custom error message using the `message` field. This allows you to use i18n to display error messages.
 
 <i-code-preview title="Input Validation Message">
-<i-form :schema="validateValueForm">
+<i-form v-model="validateValueForm">
     <i-form-group>
-        <i-input :schema="validateValueForm.input" v-model="validateValueForm.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="validateValueForm.input" placeholder="Enter your first name.." />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="form.input" placeholder="Enter your first name.." />
     </i-form-group>
 </i-form>
 ~~~
@@ -160,23 +160,23 @@ export default {
 By using the `validateOn` field you can specify the event that triggers the validation. The most common events are `input` and `blur`.
 
 <i-code-preview title="Input Validation Events">
-<i-form :schema="validateOnForm">
+<i-form v-model="validateOnForm">
     <i-form-group>
-        <i-input :schema="validateOnForm.input1" v-model="validateOnForm.input1.value" placeholder="This field is validated on input" />
+        <i-input :schema="validateOnForm.input1" placeholder="This field is validated on input" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="validateOnForm.input2" v-model="validateOnForm.input2.value" placeholder="This field is validated on blur" />
+        <i-input :schema="validateOnForm.input2" placeholder="This field is validated on blur" />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input1" v-model="form.input1.value" placeholder="This field is validated on input" />
+        <i-input :schema="form.input1" placeholder="This field is validated on input" />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="form.input2" v-model="form.input2.value" placeholder="This field is validated on blur" />
+        <i-input :schema="form.input2" placeholder="This field is validated on blur" />
     </i-form-group>
 </i-form>
 ~~~
@@ -226,23 +226,23 @@ You can define schema groups to determine the validation of a group of inputs.
 Objects that aren't empty and don't have a `value` or `validators` field are treated as form groups. Form groups can be used to see the validation status of specific fields.
 
 <i-code-preview title="Form Schema Form Groups">
-<i-form :schema="groupedValueForm">
+<i-form v-model="groupedValueForm">
     <i-form-group>
-        <i-input :schema="groupedValueForm.input" v-model="groupedValueForm.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="groupedValueForm.input" placeholder="Enter your first name.." />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="groupedValueForm.group.input" v-model="groupedValueForm.group.input.value" placeholder="Enter your address.." />
+        <i-input :schema="groupedValueForm.group.input" placeholder="Enter your address.." />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="form.input" placeholder="Enter your first name.." />
     </i-form-group>
     <i-form-group>
-        <i-input :schema="form.group.input" v-model="form.group.input.value" placeholder="Enter your address.." />
+        <i-input :schema="form.group.input" placeholder="Enter your address.." />
     </i-form-group>
 </i-form>
 ~~~
@@ -280,17 +280,17 @@ export default {
 Form groups can be an `Array` of fields, allowing you to loop over them using `v-for`.
 
 <i-code-preview title="Form Schema Array Form Groups">
-<i-form :schema="arrayValueForm">
+<i-form v-model="arrayValueForm">
     <i-form-group v-for="field in arrayValueForm.group" :key="field.name">
-        <i-input :schema="field" v-model="field.value" placeholder="Type something.." />
+        <i-input :schema="field" placeholder="Type something.." />
     </i-form-group>
 </i-form>
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group v-for="field in form.group" :key="field.name">
-        <i-input :schema="field" v-model="field.value" placeholder="Type something.." />
+        <i-input :schema="field" placeholder="Type something.." />
     </i-form-group>
 </i-form>
 ~~~
@@ -331,33 +331,33 @@ The `<i-form>` component and all input components have a `schema` property that 
 The schema object `this.form` contains the validation state of the `<i-form>`, and is updated as soon as the input changes. The object looks as seen in the Output tab: 
 
 <i-code-preview title="Complete Form Example">
-<i-form :schema="form" @submit="submitForm">
+<i-form v-model="form" @submit="submitForm">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="form.input" placeholder="Enter your first name.." />
     </i-form-group>
     <i-form-group>
-        <i-textarea :schema="form.textarea" v-model="form.textarea.value" placeholder="Write a comment.." />
+        <i-textarea :schema="form.textarea" placeholder="Write a comment.." />
     </i-form-group>
     <i-form-group>
         <i-form-group>
-            <i-select :schema="form.group.select" v-model="form.group.select.value" placeholder="Choose an option">
+            <i-select :schema="form.group.select" placeholder="Choose an option">
                 <i-select-option value="a" label="Option A" />
                 <i-select-option value="b" label="Option B" />
                 <i-select-option value="c" label="Option C" disabled />
             </i-select>
         </i-form-group>
         <i-form-group>
-            <i-checkbox :schema="form.group.checked" v-model="form.group.checked.value">I agree</i-checkbox>
+            <i-checkbox :schema="form.group.checked">I agree</i-checkbox>
         </i-form-group>
         <i-form-group>
-            <i-checkbox-group :schema="form.group.checkbox" v-model="form.group.checkbox.value">
+            <i-checkbox-group :schema="form.group.checkbox">
                 <i-checkbox value="Football">Football</i-checkbox>
                 <i-checkbox value="Volleyball">Volleyball</i-checkbox>
                 <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
             </i-checkbox-group>
         </i-form-group>
         <i-form-group>
-            <i-radio-group :schema="form.group.radio" v-model="form.group.radio.value">
+            <i-radio-group :schema="form.group.radio">
                 <i-radio :value="true">Accept</i-radio>
                 <i-radio :value="false">Decline</i-radio>
             </i-radio-group>
@@ -370,32 +370,32 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
 <template slot="html">
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="form.input" placeholder="Enter your first name.." />
     </i-form-group>
     
     <i-form-group>
-        <i-textarea :schema="form.textarea" v-model="form.textarea.value" placeholder="Write a comment.." />
+        <i-textarea :schema="form.textarea" placeholder="Write a comment.." />
     </i-form-group>
     
     <i-form-group>
         <i-form-group>
-            <i-select :schema="form.group.select" v-model="form.group.select.value" placeholder="Choose an option">
+            <i-select :schema="form.group.select" placeholder="Choose an option">
                 <i-select-option value="a" label="Option A" />
                 <i-select-option value="b" label="Option B" />
                 <i-select-option value="c" label="Option C" disabled />
             </i-select>
         </i-form-group>
         <i-form-group>
-            <i-checkbox-group :schema="form.group.checkbox" v-model="form.group.checkbox.value">
+            <i-checkbox-group :schema="form.group.checkbox">
                 <i-checkbox value="Football">Football</i-checkbox>
                 <i-checkbox value="Volleyball">Volleyball</i-checkbox>
                 <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
             </i-checkbox-group>
         </i-form-group>
         <i-form-group>
-            <i-radio-group :schema="form.group.radio" v-model="form.group.radio.value">
+            <i-radio-group :schema="form.group.radio">
                 <i-radio :value="true">Accept</i-radio>
                 <i-radio :value="false">Decline</i-radio>
             </i-radio-group>
