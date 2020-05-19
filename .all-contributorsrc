@@ -1,0 +1,64 @@
+{
+  "projectName": "inkline",
+  "projectOwner": "alexgrozav",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 50,
+  "commit": false,
+  "commitConvention": "none",
+  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img class=\"avatar\" src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"<%= contributor.name %>\"/></a>",
+  "contributors": [
+    {
+      "login": "alexgrozav",
+      "name": "Alex Grozav",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6179477?v=4",
+      "profile": "https://github.com/alexgrozav",
+      "contributions": [
+        "code",
+        "doc",
+        "a11y",
+        "test",
+        "design",
+        "content",
+        "business",
+        "review",
+        "security"
+      ]
+    },
+    {
+      "login": "mtancoigne",
+      "name": "Manuel Tancoigne",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1732268?v=4",
+      "profile": "https://github.com/mtancoigne",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
+    },
+    {
+      "login": "renielDev",
+      "name": "Reniel Salvador",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/14147493?v=4",
+      "profile": "https://github.com/renielDev",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
+    },
+    {
+      "login": "TheJaredWilcurt",
+      "name": "The Jared Wilcurt",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4629794?v=4",
+      "profile": "http://TheJaredWilcurt.com",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 10
+}
