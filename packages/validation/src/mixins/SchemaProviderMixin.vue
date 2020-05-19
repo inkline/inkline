@@ -2,8 +2,8 @@
 export default {
     props: {
         schema: {
-            type: null,
-            default: null
+            type: Object,
+            default: () => null
         },
     },
     mounted() {

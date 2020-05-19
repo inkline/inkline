@@ -13,6 +13,23 @@ There are many ways to taking part in the Inkline community.
 2. <a href="https://discord.gg/2w5UGnK" rel="nofollow" target="_blank">Discord</a>: Join the Discord Server to chat instantly with other developers in the Inkline community.
 3. <a href="https://twitter.com/inkline" rel="nofollow" target="_blank">Twitter</a>: Stay in touch with the progress we make and learn about the awesome things happening around Inkline.
 
+### Using the issue tracker
+
+The [issue tracker](https://github.com/inkline/inkline/issues) is
+the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests)
+and [submitting pull requests](#pull-requests), but please respect the following
+restrictions:
+
+* Please **do not** use the issue tracker for personal support requests. 
+
+* Please **do not** get off track in issues. Keep the discussion on topic and
+  respect the opinions of others.
+
+* Please **do not** post comments consisting solely of "+1" or ":thumbsup:".
+  Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)
+  instead. We reserve the right to delete comments which violate this rule.
+
+
 ### Bug Reports
 
 A bug is a _demonstrable problem_ that is caused by the code in the repository.
@@ -48,6 +65,79 @@ Before providing a pull request be sure to test the feature you are adding. Inkl
     <img src="https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master" alt="Coverage Status" data-canonical-src="https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master" style="max-width:100%;">
 </a>
 
-## License
-By contributing your code, you agree to license your contribution under the <a href="https://github.com/inkline/inkline/blob/master/packages/inkline/LICENSE" rel="nofollow" target="_blank">MIT License</a>.
-By contributing to the documentation, you agree to license your contribution under the <a href="https://github.com/inkline/inkline/blob/master/packages/docs/LICENSE" rel="nofollow" target="_blank">Creative Commons Attribution 3.0 Unported License</a>.
+
+### Pull requests
+
+Good pull requests — patches, improvements, new features are a fantastic help. They should remain focused in scope and avoid containing unrelated commits.
+
+**Please ask first** before starting on any significant pull request (e.g. implementing features, refactoring code, porting to a different language), otherwise you might spend a lot of time working on something that the project's developers might not want to merge into the project.
+
+Please adhere to the [coding guidelines](#code-guidelines) used throughout the project (indentation, accurate comments, etc.) and any other requirements (such as test coverage).
+
+**Do not edit `inkline.css`, or `inkline.js`
+directly!** Those files are automatically generated. You should edit the source files in [`/packages/inkline/src`](https://github.com/inkline/inkline/tree/master/packages/inkline/src) instead.
+
+Similarly, when contributing to Inkline's documentation, you should edit the documentation source files in
+[the `/packages/docs` directory](https://github.com/inkline/inkline/tree/master/packages/docs).
+
+Adhering to the following process is the best way to get your work included in the project:
+
+1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
+   and configure the remotes:
+
+   ```bash
+   # Clone your fork of the repo into the current directory
+   git clone https://github.com/<your-username>/inkline.git
+   
+   # Navigate to the newly cloned directory
+   cd inkline
+   
+   # Assign the original repo to a remote called "upstream"
+   git remote add upstream https://github.com/inkline/inkline.git
+   ```
+
+2. Create a new topic branch (off the main project master branch) to
+   contain your feature, change, or fix:
+
+   ```bash
+   git checkout -b <topic-branch-name>
+   ```
+
+3. Make sure your commits are logically structured. Please adhere to these [git commit
+   message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html). Use Git's
+   [interactive rebase](https://help.github.com/articles/interactive-rebase)
+   feature to tidy up your commits before making them public.
+
+4. Locally rebsase the upstream master branch into your topic branch:
+
+   ```bash
+   git pull --rebase upstream master
+   ```
+
+5. Push your topic branch up to your fork:
+
+   ```bash
+   git push origin <topic-branch-name>
+   ```
+
+6. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
+    with a clear title and description against the `master` branch.
+
+### Local Development
+
+1. First, fork the repository and create a branch as specified in the [Pull Request Guidelines](#pull-requests) above.
+
+2. You'll find a structured [lerna](https://lerna.js.org) project. The folder structure is as follows:
+- `packages/inkline` contains the UI Framework
+- `packages/docs` contains the Documentation
+- `packages/vue-cli-plugin` contains the Vue CLI integration
+- `packages/nuxt-module` contains the Nuxt integration
+
+3. Run `npm install` to install all dependencies. The four child projects dependencies will be automatically installed and linked as well.
+
+4. To start developing, run `npm run dev` in your command line to run both inkline and the docs in development mode. The documentation will be automatically linked to the ui framework updates and will react to changes in the framework code.
+
+5. To test, go to `packages/inkline` and run `npm run test:dev` to run the UI Framework tests in development mode. Make sure you run `npm run test` to run all the tests once (ui framework, docs, integrations) before creating a pull request.
+
+### License
+By contributing your code, you agree to license your contribution under the <a href="https://github.com/inkline/inkline/blob/master/packages/inkline/LICENSE" rel="nofollow" target="_blank">MIT License</a>. By contributing to the documentation, you agree to license your contribution under the <a href="https://github.com/inkline/inkline/blob/master/packages/docs/LICENSE" rel="nofollow" target="_blank">Creative Commons Attribution 3.0 Unported License</a>.

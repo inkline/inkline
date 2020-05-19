@@ -1,0 +1,2 @@
+import '../types/vue.prototype';
+
