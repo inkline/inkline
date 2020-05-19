@@ -8,17 +8,14 @@ export default {
     },
     computed: {
         /**
-         * Get the value of the individual form item
-         */
-        currentValue() {
-            return this.value;
-        },
-
-        /**
          * Bind the value of an individual form item
          */
         model: {
             get() {
+                if (this.schema) {
+                    return this.schema.value;
+                }
+
                 return this.value;
             },
             set (value) {
