@@ -322,6 +322,15 @@ describe('Components', () => {
                 expect(spy).toHaveBeenCalledWith('init', wrapper.vm.initElements);
             });
 
+            it('should call setLabelModel() if schema provided', () => {
+                const spy = jest.spyOn(wrapper.vm, 'setLabelModel');
+                wrapper.setProps({ schema: { value: 'value' } });
+
+                wrapper.vm.mounted();
+
+                expect(spy).toHaveBeenCalledWith('value');
+            });
+
             it('should call setLabelModel() if value provided', () => {
                 const spy = jest.spyOn(wrapper.vm, 'setLabelModel');
                 wrapper.setProps({ value: 'value' });

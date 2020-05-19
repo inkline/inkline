@@ -5,12 +5,23 @@ describe('Components', () => {
     describe('IForm', () => {
         let wrapper;
 
+        const $inkline = {
+            config: {
+                validation: {
+                    on: ['input']
+                }
+            }
+        };
+
         beforeEach(() => {
             wrapper = shallowMount(IForm, {
                 methods: {
                     created: IForm.created,
                     provide: IForm.provide
-                }
+                },
+                mocks: {
+                    $inkline
+                },
             });
         });
 
@@ -117,6 +128,17 @@ describe('Components', () => {
                     expect(spy).toHaveBeenCalledWith('input', expect.any(Function));
                 });
 
+                it('should set the global validate.on configuration to input', () => {
+                    const spy = jest.spyOn(inputWrapper.vm, '$on');
+
+                    inputWrapper.vm.schema.validateOn = null;
+                    wrapper.vm.add(inputWrapper.vm);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('input', expect.any(Function));
+                    expect(spy).toHaveBeenCalledWith('blur', expect.any(Function));
+                });
+
                 it('should add the input schema\'s multiple validateOn event listeners to input', () => {
                     const spy = jest.spyOn(inputWrapper.vm, '$on');
 
@@ -126,6 +148,16 @@ describe('Components', () => {
                     expect(spy).toHaveBeenCalled();
                     expect(spy).toHaveBeenCalledWith('input', expect.any(Function));
                     expect(spy).toHaveBeenCalledWith('blur', expect.any(Function));
+                });
+
+                it('should add the input schema\'s custom event listeners to input', () => {
+                    const spy = jest.spyOn(inputWrapper.vm, '$on');
+
+                    inputWrapper.vm.schema.validateOn = ['custom'];
+                    wrapper.vm.add(inputWrapper.vm);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(spy).toHaveBeenCalledWith('custom', expect.any(Function));
                 });
 
                 it('should call inputSchema validate() on validateOn event', () => {

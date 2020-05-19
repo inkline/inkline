@@ -27,7 +27,8 @@ describe('Components', () => {
         describe('props', () => {
             describe('schema', () => {
                 it('should be defined', () => {
-                    expect(wrapper.vm).toHaveProperty('schema');
+                    wrapper = shallowMount(IFormError);
+                    expect(wrapper.vm.schema).toEqual(null);
                 });
             });
         });
