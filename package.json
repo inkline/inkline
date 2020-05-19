@@ -8,8 +8,9 @@
     "test:install": "lerna exec npm run test:install --scope @inkline/nuxt --scope @inkline/vue-cli-plugin-inkline --parallel",
     "lint": "lerna run lint --parallel",
     "dev": "lerna run dev --parallel",
-    "build": "npm run build:inkline && npm run build:docs",
+    "build": "npm run build:inkline && npm run build:validation && npm run build:docs",
     "build:inkline": "lerna run build --scope @inkline/inkline",
+    "build:validation": "lerna run build --scope @inkline/validation",
     "build:docs": "lerna run generate --scope @inkline/docs"
   },
   "devDependencies": {
