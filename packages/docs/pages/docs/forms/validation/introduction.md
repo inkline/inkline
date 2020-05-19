@@ -34,9 +34,9 @@ The `$inkline.form()` method call will bootstrap the `formSchema` object, so tha
 Each property inside the schema should have a corresponding form input in your template, such as the `form.input` above:
 
 ~~~html
-<i-form :schema="form">
+<i-form v-model="form">
     <i-form-group>
-        <i-input :schema="form.input" v-model="form.input.value" placeholder="Enter your first name.." />
+        <i-input :schema="form.input" placeholder="Enter your first name.." />
     </i-form-group>
 </i-form>
 ~~~
@@ -57,3 +57,137 @@ These fields will be set to `true` when:
 - `pristine` - the input has not been changed
 
 To learn more about defining a form schema, head to the <nuxt-link :to="{ name: 'docs-forms-validation-schema' }">next page</nuxt-link>.
+
+
+### Example
+
+The schema object `this.form` contains the validation state of the `<i-form>`, and is updated as soon as the input changes. The object looks as seen in the Output tab: 
+
+<i-code-preview title="Form Example">
+<i-form v-model="form" @submit="submitForm">
+    <i-form-group>
+        <i-input :schema="form.input" placeholder="Enter your first name.." />
+    </i-form-group>
+    <i-form-group>
+        <i-textarea :schema="form.textarea" placeholder="Write a comment.." />
+    </i-form-group>
+    <i-form-group>
+        <i-form-group>
+            <i-select :schema="form.group.select" placeholder="Choose an option">
+                <i-select-option value="a" label="Option A" />
+                <i-select-option value="b" label="Option B" />
+                <i-select-option value="c" label="Option C" disabled />
+            </i-select>
+        </i-form-group>
+        <i-form-group>
+            <i-checkbox :schema="form.group.checked">I agree</i-checkbox>
+        </i-form-group>
+        <i-form-group>
+            <i-checkbox-group :schema="form.group.checkbox">
+                <i-checkbox value="Football">Football</i-checkbox>
+                <i-checkbox value="Volleyball">Volleyball</i-checkbox>
+                <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
+            </i-checkbox-group>
+        </i-form-group>
+        <i-form-group>
+            <i-radio-group :schema="form.group.radio">
+                <i-radio :value="true">Accept</i-radio>
+                <i-radio :value="false">Decline</i-radio>
+            </i-radio-group>
+        </i-form-group>
+    </i-form-group>
+    <i-form-group>
+        <i-button type="submit">Submit</i-button>
+    </i-form-group>
+</i-form>
+<template slot="html">
+
+~~~html
+<i-form v-model="form" @submit="submitForm">
+    <i-form-group>
+        <i-input :schema="form.input" placeholder="Enter your first name.." />
+    </i-form-group>
+    
+    <i-form-group>
+        <i-textarea :schema="form.textarea" placeholder="Write a comment.." />
+    </i-form-group>
+    
+    <i-form-group>
+        <i-form-group>
+            <i-select :schema="form.group.select" placeholder="Choose an option">
+                <i-select-option value="a" label="Option A" />
+                <i-select-option value="b" label="Option B" />
+                <i-select-option value="c" label="Option C" disabled />
+            </i-select>
+        </i-form-group>
+        <i-form-group>
+            <i-checkbox-group :schema="form.group.checkbox">
+                <i-checkbox value="Football">Football</i-checkbox>
+                <i-checkbox value="Volleyball">Volleyball</i-checkbox>
+                <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
+            </i-checkbox-group>
+        </i-form-group>
+        <i-form-group>
+            <i-radio-group :schema="form.group.radio">
+                <i-radio :value="true">Accept</i-radio>
+                <i-radio :value="false">Decline</i-radio>
+            </i-radio-group>
+        </i-form-group>
+    </i-form-group>
+</i-form>
+~~~
+
+</template>
+<template slot="js">
+
+~~~js
+export default {
+    data () {
+        return {
+            form: this.$inkline.form({
+                input: {
+                    validators: [
+                        { rule: 'required', message: 'Input is required.' }
+                    ]
+                },
+                textarea: {
+                    validators: [
+                        { rule: 'required', message: 'Textarea is required.' }
+                    ]
+                },
+                group: {
+                    select: {
+                        value: 'a',
+                        validators: [
+                            { rule: 'required', message: 'Select is required.' }
+                        ]
+                    },
+                    checkbox: {
+                        value: ['Football'],
+                        validators: [
+                            { rule: 'minLength', value: 1, message: 'At least one checkbox is required.' }
+                        ]
+                    },
+                    radio: {
+                        value: true,
+                        validators: [
+                            { rule: 'required', message: 'Radio is required.', invalidateFalse: true }
+                        ]
+                    }
+                }
+            })
+        };
+    }
+}
+~~~
+
+</template>
+<template slot="output">
+<span class="_text-muted">// console.log(this.form);</span>
+<pre>
+<code>
+{{ form | prettify }}
+</code>
+</pre>
+</template>
+</i-code-preview>
