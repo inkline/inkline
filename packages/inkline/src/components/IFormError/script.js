@@ -3,7 +3,7 @@ export default {
     props: {
         schema: {
             type: Object,
-            default: null
+            default: () => null
         }
     },
     data() {

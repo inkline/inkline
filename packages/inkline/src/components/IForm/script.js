@@ -1,4 +1,3 @@
-import { eventValueMap } from '@inkline/inkline/src/helpers/eventValueMap';
 import {
     AttributesProviderMixin,
     ClassesProviderMixin,
@@ -9,6 +8,7 @@ import {
     ReadonlyPropertyMixin,
     SizePropertyMixin,
 } from '@inkline/inkline/src/mixins';
+import { eventValueMap } from "@inkline/inkline/src/constants";
 
 export default {
     name: 'IForm',
@@ -29,16 +29,9 @@ export default {
             type: Boolean,
             default: false
         },
-        schema: {
+        value: {
             type: Object,
             default: () => null
-        }
-    },
-    data() {
-        return {
-            validationOptions: {
-                getSchema: () => this.schema,
-            }
         }
     },
     provide() {
@@ -46,7 +39,16 @@ export default {
             parentForm: this
         }
     },
+    created() {
+        this.classesProvider.add(() => ({ '-inline': this.inline }));
+    },
     methods: {
+        /**
+         * Retrieve form schema
+         */
+        getSchema() {
+            return this.value;
+        },
 
         /**
          * Add required schema event listeners for one of the form's child inputs
@@ -55,19 +57,30 @@ export default {
          */
         add(input) {
             const inputSchema = input.schema;
-            const validateOn = inputSchema.validateOn.constructor === Array ?
-                inputSchema.validateOn :
-                [inputSchema.validateOn];
+            let validateOn = [];
+
+            if (inputSchema.validateOn) {
+                validateOn = inputSchema.validateOn.constructor === Array ?
+                    inputSchema.validateOn : [inputSchema.validateOn];
+            } else {
+                validateOn = this.$inkline.validation.on;
+            }
+
+            input.$on('input', (value) => {
+                inputSchema.value = value;
+
+                this.$emit('input', this.value);
+            });
 
             input.$on('blur', () => {
-                inputSchema.touch(this.validationOptions);
+                inputSchema.touch({ getSchema: this.getSchema });
             });
 
             validateOn.forEach((event) => {
                 const eventFn = eventValueMap.hasOwnProperty(event) ? eventValueMap[event] : eventValueMap.input;
 
                 input.$on(event, (value) => {
-                    inputSchema.validate(eventFn(value), this.validationOptions);
+                    inputSchema.validate(eventFn(value), { getSchema: this.getSchema });
 
                     this.$emit('validate', this.schema);
                 });
@@ -84,9 +97,8 @@ export default {
 
             input.$off('blur');
             input.$off(inputSchema.validateOn);
+
+            this.$emit('input', this.value);
         }
-    },
-    created() {
-        this.classesProvider.add(() => ({ '-inline': this.inline }));
     },
 };

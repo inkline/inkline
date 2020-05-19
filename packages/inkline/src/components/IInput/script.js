@@ -4,7 +4,6 @@ import {
     ClassesProviderMixin,
     InjectParentFormProviderMixin,
     ModelProviderMixin,
-    SchemaProviderMixin,
     ClickInputRefMethodMixin,
     FocusInputRefMethodMixin,
     EmitChangeMethodMixin,
@@ -21,6 +20,7 @@ import {
     SizePropertyMixin,
     TabIndexPropertyMixin,
     VariantPropertyMixin,
+    SchemaProviderMixin
 } from '@inkline/inkline/src/mixins';
 
 export default {
@@ -64,10 +64,5 @@ export default {
             '-prefixed': Boolean(this.$slots.prefix),
             '-suffixed': Boolean(this.$slots.suffix)
         }));
-    },
-    mounted() {
-        if (this.schema && this.parentFormGroup) {
-            this.$set(this.parentFormGroup, 'inputSchema', this.schema);
-        }
     }
 };

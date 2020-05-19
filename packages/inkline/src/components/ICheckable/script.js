@@ -16,6 +16,7 @@ import {
     TabIndexPropertyMixin,
     VariantPropertyMixin
 } from '@inkline/inkline/src/mixins';
+import { SchemaProviderMixin } from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'ICheckable',
@@ -27,6 +28,7 @@ export default {
         ClassesProviderMixin,
         InjectParentFormProviderMixin,
         ModelGroupProviderMixin,
+        SchemaProviderMixin,
 
         ClickInputRefMethodMixin,
         EmitClickMethodMixin,

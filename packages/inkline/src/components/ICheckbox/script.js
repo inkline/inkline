@@ -1,6 +1,5 @@
 import ICheckable from '@inkline/inkline/src/components/ICheckable';
 import {
-    SchemaProviderMixin,
     NamePropertyMixin
 } from '@inkline/inkline/src/mixins';
 
@@ -8,8 +7,6 @@ export default {
     name: 'ICheckbox',
     extends: ICheckable,
     mixins: [
-        SchemaProviderMixin,
-
         NamePropertyMixin
     ],
     props: {

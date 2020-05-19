@@ -6,7 +6,6 @@ import {
     ClassesProviderMixin,
     InjectParentFormProviderMixin,
     ModelProviderMixin,
-    SchemaProviderMixin,
     EmitChangeMethodMixin,
     EmitClickMethodMixin,
     EmitFocusMethodMixin,
@@ -20,6 +19,7 @@ import {
     TabIndexPropertyMixin,
     VariantPropertyMixin,
 } from '@inkline/inkline/src/mixins';
+import { SchemaProviderMixin } from '@inkline/inkline/src/mixins';
 import { hashString, querySelectorAll, uid, isMobile } from "@inkline/inkline/src/helpers";
 
 export default {
@@ -133,7 +133,9 @@ export default {
         this.initElements();
         this.$on('init', this.initElements);
 
-        if (this.value) {
+        if (this.schema) {
+            this.setLabelModel(this.schema.value);
+        } else if (this.value) {
             this.setLabelModel(this.value);
         }
     },
