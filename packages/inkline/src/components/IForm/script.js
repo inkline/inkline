@@ -63,7 +63,7 @@ export default {
                 validateOn = inputSchema.validateOn.constructor === Array ?
                     inputSchema.validateOn : [inputSchema.validateOn];
             } else {
-                validateOn = this.$inkline.validation.on;
+                validateOn = this.$inkline.config.validation.on;
             }
 
             input.$on('input', (value) => {
