@@ -338,7 +338,7 @@ Here you can find a list of the various customization options you can use for th
 </i-api-preview>
 
 ### Sass Variables
-Here you can find a list of the Sass variables you can use for the modal components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+Here you can find a list of the Sass variables you can use for the modal components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
 <i-scss-preview title="Modal" expanded>
     <template slot="scss">

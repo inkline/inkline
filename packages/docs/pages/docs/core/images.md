@@ -159,7 +159,7 @@ the `.image` classes to the `<img>` and not to the `<picture>` tag.
 
 
 ### Sass Variables
-Here you can find a list of the Sass variables you can use for images. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-introduction-sass-variables' }">Sass Variables</nuxt-link> page.
+Here you can find a list of the Sass variables you can use for images. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
 <i-scss-preview title="Images" expanded :header="false">
     <template slot="scss">
