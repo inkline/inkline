@@ -1,18 +1,13 @@
 import ICheckable from '@inkline/inkline/src/components/ICheckable';
 import {
-    SchemaProviderMixin,
-    NamePropertyMixin,
-    VariantPropertyMixin
+    NamePropertyMixin
 } from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IToggle',
     extends: ICheckable,
     mixins: [
-        SchemaProviderMixin,
-
-        NamePropertyMixin,
-        VariantPropertyMixin
+        NamePropertyMixin
     ],
     props: {
         value: {
