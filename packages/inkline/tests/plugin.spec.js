@@ -57,7 +57,13 @@ describe('Plugin', () => {
                 describe('data', () => {
                     it('should be defined', () => {
                         expect(vm.$data).toEqual({
-                            config: { variant: null, autodetectVariant: false }
+                            config: {
+                                variant: null,
+                                autodetectVariant: false,
+                                validation: {
+                                    on: ['input']
+                                }
+                            }
                         });
                     });
                 });

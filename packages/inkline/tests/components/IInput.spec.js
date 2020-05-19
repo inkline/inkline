@@ -8,8 +8,7 @@ describe('Components', () => {
         beforeEach(() => {
             wrapper = shallowMount(IInput, {
                 methods: {
-                    created: IInput.created,
-                    mounted: IInput.mounted
+                    created: IInput.created
                 },
                 parentComponent: {
                     name: 'IFormGroup'
@@ -79,17 +78,6 @@ describe('Components', () => {
                 const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
 
                 expect(rule()).toEqual(expect.objectContaining({ '-suffixed': true }));
-            });
-        });
-
-        describe('mounted()', () => {
-            it('should set input schema for parent form group', () => {
-                const spy = jest.spyOn(wrapper.vm, '$set');
-
-                wrapper.setProps({ schema: {} });
-                wrapper.vm.mounted();
-
-                expect(spy).toHaveBeenCalled()
             });
         });
     });

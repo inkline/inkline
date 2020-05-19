@@ -26,29 +26,10 @@ describe('Components', () => {
                 });
             });
 
-            describe('schema', () => {
+            describe('value', () => {
                 it('should be defined', () => {
-                    expect(wrapper.vm.schema).toBeDefined();
-                    expect(wrapper.vm.schema).toEqual(null);
-                });
-            });
-        });
-
-        describe('data()', () => {
-            describe('validationOptions', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.validationOptions).toBeDefined();
-                });
-
-                it('should have getSchema() that returns form schema', () => {
-                    const schema = {
-                        input: {}
-                    };
-
-                    wrapper.setProps({ schema });
-
-                    expect(wrapper.vm.validationOptions.getSchema).toEqual(expect.any(Function));
-                    expect(wrapper.vm.validationOptions.getSchema()).toEqual(schema);
+                    expect(wrapper.vm.value).toBeDefined();
+                    expect(wrapper.vm.value).toEqual(null);
                 });
             });
         });
@@ -64,7 +45,7 @@ describe('Components', () => {
 
             beforeEach(() => {
                 wrapper.setProps({
-                    schema: {
+                    value: {
                         input: {},
                         group: {
                             input: {}
@@ -84,6 +65,22 @@ describe('Components', () => {
                         }
                     },
                     render () {}
+                });
+            });
+
+            describe('getSchema()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.getSchema).toBeDefined();
+                });
+
+                it('should return form schema', () => {
+                    const schema = {
+                        input: {}
+                    };
+
+                    wrapper.setProps({ value: schema });
+
+                    expect(wrapper.vm.getSchema()).toEqual(schema);
                 });
             });
 
@@ -108,7 +105,7 @@ describe('Components', () => {
                     inputWrapper.vm.$emit('blur');
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith(wrapper.vm.validationOptions);
+                    expect(spy).toHaveBeenCalledWith({ getSchema: wrapper.vm.getSchema });
                 });
 
                 it('should add the input schema\'s validateOn event listener to input', () => {
@@ -131,16 +128,6 @@ describe('Components', () => {
                     expect(spy).toHaveBeenCalledWith('blur', expect.any(Function));
                 });
 
-                it('should add the input schema\'s custom validateOn event listener as input event', () => {
-                    const spy = jest.spyOn(inputWrapper.vm, '$on');
-
-                    inputWrapper.vm.schema.validateOn = 'custom';
-                    wrapper.vm.add(inputWrapper.vm);
-
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('custom', expect.any(Function));
-                });
-
                 it('should call inputSchema validate() on validateOn event', () => {
                     const spy = jest.spyOn(inputWrapper.vm.schema, 'validate');
 
@@ -148,7 +135,7 @@ describe('Components', () => {
                     inputWrapper.vm.$emit('input', 10);
 
                     expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith(10, wrapper.vm.validationOptions);
+                    expect(spy).toHaveBeenCalledWith(10, { getSchema: wrapper.vm.getSchema });
                 });
             });
 

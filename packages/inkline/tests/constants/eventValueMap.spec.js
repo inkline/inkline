@@ -1,4 +1,4 @@
-import { eventValueMap } from '@inkline/inkline/src/helpers/eventValueMap';
+import { eventValueMap } from '@inkline/inkline/src/constants/eventValueMap';
 
 describe('Helpers', () => {
     describe('eventValueMap()', () => {
