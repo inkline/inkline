@@ -4,13 +4,14 @@ import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
 
 export const Inkline = {
     install(Vue, options = {}) {
-        options = {
-            config: {
-                variant: 'light',
-                autodetectVariant: false,
-                ...options.config
+        const config = {
+            validation: {
+                on: ['input'],
+                ...options.config?.validation
             },
-            ...options
+            variant: 'light',
+            autodetectVariant: false,
+            ...options.config
         };
 
         /**
@@ -18,7 +19,7 @@ export const Inkline = {
          * If not, fallback to light variant.
          */
         const variant = !(Vue.prototype.$isServer || typeof window === 'undefined') &&
-            window.localStorage.getItem('inkline-variant') || options.config?.variant;
+            window.localStorage.getItem('inkline-variant') || config?.variant;
 
         /**
          * Register $inkline prototype in Vue components
@@ -28,9 +29,7 @@ export const Inkline = {
              * Inkline reactive global state
              */
             _vm: new Vue({
-                data: () => ({
-                    config: options.config
-                }),
+                data: () => ({ config }),
                 watch: {
                     'config.variant'(value, oldValue) {
                         if (oldValue) {
