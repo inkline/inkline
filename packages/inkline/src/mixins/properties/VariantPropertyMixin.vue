@@ -9,7 +9,8 @@ export default {
         }
     },
     created() {
-        this.classesProvider.add(() => this.variant ? `-${this.variant}` : this.$inkline?.config?.variant && `-${this.$inkline.config.variant}`);
+        this.classesProvider.add(() => this.variant ?
+            `-${this.variant}` : this.$inkline?.config?.variant && `-${this.$inkline.config.variant}`);
     }
 };
 </script>
