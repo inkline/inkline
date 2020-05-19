@@ -19,14 +19,16 @@ export default {
          */
         model: {
             get() {
-                return this.isGrouped ? this.parentFormGroup.value : this.value;
+                const target = this.isGrouped ? this.parentFormGroup : this;
+
+                return target.schema ? target.schema.value : target.value;
             },
             set (value) {
                 if (this.isGrouped) {
-                    return this.parentFormGroup.emitInput(value);
+                    return this.parentFormGroup.$emit('input', value);
                 }
 
-                return this.emitInput(value);
+                return this.$emit('input', value);
             }
         }
     }
