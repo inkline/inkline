@@ -1,7 +1,6 @@
 import { mount } from '@vue/test-utils'
 
 import ModelGroupProviderMixin from '@inkline/inkline/src/mixins/providers/ModelGroupProviderMixin';
-import EmitInputMethodMixin from '@inkline/inkline/src/mixins/methods/EmitInputMethodMixin';
 
 describe('Mixins', () => {
     describe('ModelGroupProviderMixin', () => {
@@ -10,6 +9,12 @@ describe('Mixins', () => {
         beforeEach(() => {
             const Component = {
                 render() {},
+                props: {
+                    schema: {
+                        type: Object,
+                        default: () => null
+                    }
+                },
                 data() {
                     return {
                         isGrouped: false,
@@ -17,8 +22,7 @@ describe('Mixins', () => {
                     }
                 },
                 mixins: [
-                    ModelGroupProviderMixin,
-                    EmitInputMethodMixin
+                    ModelGroupProviderMixin
                 ]
             };
 
@@ -35,20 +39,6 @@ describe('Mixins', () => {
         });
 
         describe('computed', () => {
-            describe('currentValue()', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm).toHaveProperty('currentValue');
-                });
-
-                it('should return value', () => {
-                    wrapper.setProps({
-                        value: 'value'
-                    });
-
-                    expect(wrapper.vm.currentValue).toEqual('value');
-                });
-            });
-
             describe('model()', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.model).toBeDefined();
@@ -66,9 +56,32 @@ describe('Mixins', () => {
                         expect(wrapper.vm.model).toEqual('value');
                     });
 
+                    it('should return parent form schema value if grouped', () => {
+                        wrapper.setData({
+                            isGrouped: true,
+                            parentFormGroup: {
+                                schema: {
+                                    value: 'value'
+                                }
+                            }
+                        });
+
+                        expect(wrapper.vm.model).toEqual('value');
+                    });
+
                     it('should return value if not grouped', () => {
                         wrapper.setProps({
                             value: 'value'
+                        });
+
+                        expect(wrapper.vm.model).toEqual('value');
+                    });
+
+                    it('should return schema value if not grouped', () => {
+                        wrapper.setProps({
+                            schema: {
+                                value: 'value'
+                            }
                         });
 
                         expect(wrapper.vm.model).toEqual('value');
@@ -77,14 +90,14 @@ describe('Mixins', () => {
 
                 describe('set()', () => {
                     it('should emit "input" event with set value if not grouped', () => {
-                        const spy = jest.spyOn(wrapper.vm, 'emitInput');
+                        const spy = jest.spyOn(wrapper.vm, '$emit');
                         const spyEmit = jest.spyOn(wrapper.vm, '$emit');
 
                         wrapper.vm.model = 'value';
 
                         expect(spy).toHaveBeenCalled();
                         expect(spyEmit).toHaveBeenCalled();
-                        expect(spy).toHaveBeenCalledWith('value');
+                        expect(spy).toHaveBeenCalledWith('input', 'value');
                         expect(spyEmit).toHaveBeenCalledWith('input', 'value');
                     });
 
@@ -92,16 +105,16 @@ describe('Mixins', () => {
                         wrapper.setData({
                             isGrouped: true,
                             parentFormGroup: {
-                                emitInput: () => {}
+                                $emit: () => {}
                             }
                         });
 
-                        const spy = jest.spyOn(wrapper.vm.parentFormGroup, 'emitInput');
+                        const spy = jest.spyOn(wrapper.vm.parentFormGroup, '$emit');
 
                         wrapper.vm.model = 'value';
 
                         expect(spy).toHaveBeenCalled();
-                        expect(spy).toHaveBeenCalledWith('value');
+                        expect(spy).toHaveBeenCalledWith('input', 'value');
                     });
                 });
             });

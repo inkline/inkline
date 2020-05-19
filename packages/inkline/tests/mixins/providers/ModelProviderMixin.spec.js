@@ -9,6 +9,12 @@ describe('Mixins', () => {
         beforeEach(() => {
             const Component = {
                 render() {},
+                props: {
+                    schema: {
+                        type: Object,
+                        default: () => null
+                    }
+                },
                 mixins: [
                     ModelProviderMixin,
                 ]
@@ -27,21 +33,6 @@ describe('Mixins', () => {
         });
 
         describe('computed', () => {
-            describe('currentValue()', () => {
-                it('should be defined', () => {
-                    expect(wrapper.vm.currentValue).toBeDefined();
-                    expect(wrapper.vm.currentValue).toEqual(wrapper.vm.value);
-                });
-
-                it('should return current value', () => {
-                    wrapper.setProps({
-                        value: 'value'
-                    });
-
-                    expect(wrapper.vm.currentValue).toEqual('value');
-                });
-            });
-
             describe('model()', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.model).toBeDefined();
@@ -51,6 +42,16 @@ describe('Mixins', () => {
                     it('should return value', () => {
                         wrapper.setProps({
                             value: 'value'
+                        });
+
+                        expect(wrapper.vm.model).toEqual('value');
+                    });
+
+                    it('should return schema value', () => {
+                        wrapper.setProps({
+                            schema: {
+                                value: 'value'
+                            }
                         });
 
                         expect(wrapper.vm.model).toEqual('value');

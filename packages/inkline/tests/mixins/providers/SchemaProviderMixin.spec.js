@@ -15,6 +15,11 @@ describe('Mixins', () => {
                             add() {},
                             remove() {}
                         })
+                    },
+                    parentFormGroup: {
+                        default: () => ({
+                            $set() {}
+                        })
                     }
                 },
                 mixins: [
@@ -56,6 +61,16 @@ describe('Mixins', () => {
                 wrapper.vm.mounted();
 
                 expect(spy).not.toHaveBeenCalled();
+            });
+
+            it('should set input schema for parent form group', () => {
+                const spy = jest.spyOn(wrapper.vm, '$set');
+                const schema = {};
+
+                wrapper.setProps({ schema });
+                wrapper.vm.mounted();
+
+                expect(spy).toHaveBeenCalledWith(wrapper.vm.parentFormGroup, 'inputSchema', schema)
             });
         });
 

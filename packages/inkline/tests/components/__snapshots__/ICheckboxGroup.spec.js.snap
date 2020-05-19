@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components ICheckboxGroup should render correctly 1`] = `
-<div role="checkboxgroup" class="form-group -checkbox">
-  <i-form-error-stub></i-form-error-stub>
-</div>
-`;
+exports[`Components ICheckboxGroup should render correctly 1`] = `<div role="checkboxgroup" class="form-group -checkbox"></div>`;
