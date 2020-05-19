@@ -2,7 +2,6 @@ export { addClass } from './addClass';
 export { breakpointClass } from './breakpointClass';
 export { capitalizeFirst } from './capitalizeFirst';
 export { debounce } from './debounce';
-export { eventValueMap } from './eventValueMap';
 export { focusAttempt } from './focusAttempt';
 export { focusFirstDescendant } from './focusFirstDescendant';
 export { focusLastDescendant } from './focusLastDescendant';
