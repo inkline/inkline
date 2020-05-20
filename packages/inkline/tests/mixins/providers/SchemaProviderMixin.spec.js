@@ -54,6 +54,15 @@ describe('Mixins', () => {
                 expect(spy).toHaveBeenCalledWith(wrapper.vm);
             });
 
+            it('should not add component to parent form if parent form not provided', () => {
+                const spy = jest.spyOn(wrapper.vm.parentForm, 'add');
+
+                wrapper.setProps({ schema: true, parentForm: false });
+                wrapper.vm.mounted();
+
+                expect(spy).not.toHaveBeenCalled();
+            });
+
             it('should not add component if schema not provided', () => {
                 const spy = jest.spyOn(wrapper.vm.parentForm, 'add');
 
@@ -70,7 +79,17 @@ describe('Mixins', () => {
                 wrapper.setProps({ schema });
                 wrapper.vm.mounted();
 
-                expect(spy).toHaveBeenCalledWith(wrapper.vm.parentFormGroup, 'inputSchema', schema)
+                expect(spy).toHaveBeenCalledWith(wrapper.vm.parentFormGroup, 'inputSchema', schema);
+            });
+
+            it('should not set input schema if parent form group not provided', () => {
+                const spy = jest.spyOn(wrapper.vm, '$set');
+                const schema = {};
+
+                wrapper.setProps({ schema, parentFormGroup: false });
+                wrapper.vm.mounted();
+
+                expect(spy).not.toHaveBeenCalled();
             });
         });
 
