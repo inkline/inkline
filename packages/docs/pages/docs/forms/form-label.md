@@ -37,7 +37,7 @@ export default {
 </i-code-preview>
 
 ### Position
-You can add labels to either side of your input using the `label` slot, together with the optional `label-position` property.
+You can add labels to either side of your input, and position it using the optional `inline` and `placement` properties.
 
 <i-code-preview title="Form Label Position">
 
