@@ -121,7 +121,7 @@ Inkline is maintained under [the Semantic Versioning guidelines](https://semver.
 
 ## Contributing
 Please read through our [contributing guidelines](https://github.com/inkline/inkline/blob/master/.github/contributing.md). 
-Included are directions for opening issues, coding standards, and notes on development.
+There you can find directions for opening issues, feature requests, coding standards, and how to setup a local development environment.
 
 Thanks goes to these wonderful people:
 
