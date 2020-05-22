@@ -41,6 +41,7 @@
             > .item {
                 border-radius: border-radius('md');
                 letter-spacing: 0.6px;
+                display: inline-flex;
 
                 &:hover {
                     background: rgba(0, 0, 0, 0.1);
@@ -52,6 +53,33 @@
 
                 i {
                     line-height: inherit;
+                }
+            }
+
+            @include breakpoint-down('sm') {
+                > .item,
+                > .hamburger {
+                    width: 45px;
+                    height: 45px;
+                    padding: 0;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                #navbar-nav-home,
+                #navbar-nav-docs {
+                    padding-left: 0.75rem;
+                    padding-right: 0.75rem;
+                    width: auto;
+                }
+            }
+
+            @include breakpoint-down('xs') {
+                #navbar-nav-home,
+                #navbar-nav-docs {
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
+                    width: auto;
                 }
             }
         }
@@ -137,7 +165,7 @@
 
     &.-docs {
         .hamburger.sidebar-toggle {
-            display: block;
+            display: inline-flex;
 
             @include breakpoint-up('md') {
                 display: none;
@@ -148,7 +176,7 @@
 
 #navbar-nav-home {
     @media screen and (max-width: 374px) { // stylelint-disable-line
-        display: none;
+        display: none !important;
     }
 }
 
