@@ -69,7 +69,9 @@ import '@inkline/inkline/src/inkline.scss';
 import { Inkline } from '@inkline/inkline/src';
 import * as components from '@inkline/inkline/src/components';
 
-Vue.use(Inkline, { components });
+Vue.use(Inkline, { 
+    components
+});
 ~~~
 
 ##### Tree Shaking
@@ -92,16 +94,37 @@ Vue.use(Inkline, {
 });
 ~~~
 
+##### Plugin Options
+You can configure some of Inkline's behaviour globally using the `config` field. Here are the default configuration options:
+
+~~~js
+Vue.use(Inkline, {
+    components: {},
+    config: {
+        validation: {
+            on: ['input']
+        },
+        variant: 'light',
+        autodetectVariant: false
+    }
+});
+~~~
+
 
 ### Nuxt.js Module
-Inkline comes bundled together with an easy to use <a href="https://nuxtjs.org" rel="nofollow" target="_blank">Nuxt.js</a> module.
+Inkline provides you with an easy to use <a href="https://nuxtjs.org" rel="nofollow" target="_blank">Nuxt.js</a> module. Inkline uses Sass, so you will need to install it as a dependency as well:
+
 
 ~~~css
-npm install --save @inkline/nuxt
+npm install --save-dev @inkline/nuxt node-sass sass-loader
 ~~~
 
 ##### Basic Usage
-Next, add `@inkline/nuxt` to the modules section of your `nuxt.config.js`. This provides the precompiled CSS and JS by default.
+Next, add `@inkline/nuxt` to the modules section of your `nuxt.config.js`. This provides you with some amazing features out of the box:
+
+- Easy setup with best practices
+- Dynamic component imports integration using <a href="https://github.com/nuxt/components" rel="nofollow noreferrer">@nuxt/components</a>
+- Perfectly optimized and automatic tree shaking
 
 ~~~js
 module.exports = {
@@ -110,35 +133,15 @@ module.exports = {
 ~~~
 
 ##### Configuration
-Optionally, you can configure your Inkline Nuxt.js Module using the following configuration options:
+Optionally, you can configure your Inkline Nuxt.js Module using the plugin configuration options seen [here](#plugin-options):
  
 ~~~js
 module.exports = {
     modules: [ '@inkline/nuxt' ],
     inkline: {
-        treeShaking: true,
-        scss: true
-    }
-}
-~~~
-
-<i-alert variant="info" class="-code">
-<template slot="icon"><i-icon icon="info" class="h4"></i-icon></template>
-    
-Inkline uses Sass, so you will need to install it as a dependency:<br/> `npm install -D node-sass sass-loader`
-
-</i-alert>
-
-##### Tree Shaking
-You can explicitly import only specific components from Inkline adding them to the `components` option.
-
-~~~js
-module.exports = {
-    modules: [ '@inkline/nuxt' ],
-    inkline: {
-        treeShaking: true,
-        scss: true,
-        components: [ 'IButton', 'IForm', 'IInput' ]
+        config: {
+            variant: 'dark'
+        }   
     }
 }
 ~~~
