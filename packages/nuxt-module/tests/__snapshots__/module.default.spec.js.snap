@@ -4,6 +4,6 @@ exports[`Nuxt.js Module should build module with default config 1`] = `
 "import Vue from 'vue';
 import { Inkline } from '@inkline/inkline/src';
 
-Vue.use(Inkline, {});
+Vue.use(Inkline);
 "
 `;
