@@ -1,11 +1,14 @@
 const { resolve, join } = require('path');
 
-const defaultOptions = {
-    scss: false,
-    treeShaking: false
-};
+const defaultOptions = {};
 
 module.exports = function InklineNuxt(moduleOptions = {}) {
+    if (!this.options.components) {
+        this.options.components = { dirs: [] }
+    }
+
+    this.requireModule('@nuxt/components');
+
     this.nuxt.hook('build:before', () => {
         const options = {
             ...defaultOptions,
@@ -14,36 +17,27 @@ module.exports = function InklineNuxt(moduleOptions = {}) {
         };
 
         this.options.css = [].concat(this.options.css || []);
-        if (options.scss) {
-            this.options.css.unshift('@inkline/inkline/src/inkline.scss');
-        } else {
-            this.options.css.unshift('@inkline/inkline/dist/inkline.css');
-        }
+        this.options.css.unshift('@inkline/inkline/src/inkline.scss');
 
         this.options.build.transpile = [].concat(this.options.build.transpile || []);
-        if (options.scss || options.treeShaking) {
-            this.options.build.transpile.push('@inkline/inkline');
-        }
-
-        this.nuxt.hook('components:dirs', (dirs) => {
-            dirs.push({
-                path: join(__dirname, '..', 'inkline', 'src', 'components')
-            })
-        });
-
-        const inklineOptions = { ...options };
-        delete inklineOptions.scss;
-        delete inklineOptions.treeShaking;
+        this.options.build.transpile.push('@inkline/inkline');
 
         // Register plugin, passing options to plugin template
         this.addPlugin({
-            src: resolve(__dirname, 'generator', 'index.js'),
+            src: resolve(__dirname, 'generator', 'index.ejs'),
             fileName: 'inkline.js',
             options: {
-                inkline: inklineOptions,
-                treeShaking: options.treeShaking
+                inkline: Object.keys(options).length > 0 ? options : null
             }
         });
+    });
+
+    this.nuxt.hook('components:dirs', (dirs) => {
+        dirs.push({
+            path: join(__dirname, '..', 'inkline', 'src', 'components'),
+            pattern: '*',
+            transpile: true
+        })
     });
 };
 

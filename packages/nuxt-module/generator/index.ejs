@@ -1,0 +1,4 @@
+import Vue from 'vue';
+import { Inkline } from '@inkline/inkline/src';
+
+Vue.use(Inkline<% if (options.inkline) { %>, <%= JSON.stringify(options.inkline, 4) %><% } %>);
