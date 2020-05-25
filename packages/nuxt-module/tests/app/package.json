@@ -15,6 +15,7 @@
     "nuxt": "^2.12.2"
   },
   "devDependencies": {
+    "@nuxt/components": "^0.2.5",
     "merge": "^1.2.1",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2"
