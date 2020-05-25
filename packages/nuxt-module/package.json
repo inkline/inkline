@@ -15,7 +15,8 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@inkline/inkline": "^2.1.0"
+    "@inkline/inkline": "^2.1.0",
+    "@nuxt/components": "^0.3.0"
   },
   "peerDependencies": {
     "node-sass": "*",
