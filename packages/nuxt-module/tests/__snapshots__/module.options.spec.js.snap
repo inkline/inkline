@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nuxt.js Module should build module with plugin options 1`] = `
+"import Vue from 'vue';
+import { Inkline } from '@inkline/inkline/src';
+
+Vue.use(Inkline, {\\"config\\":{\\"variant\\":\\"dark\\"}});
+"
+`;
