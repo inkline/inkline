@@ -11,17 +11,17 @@
             <i-column>
                 <h1>Form</h1>
                 <p>This is a simple Inkline forms test.</p>
-                <i-form :schema="form">
+                <i-form v-model="form">
                     <i-form-group>
-                        <i-input :schema="form.input" v-model="form.input.value" placeholder="Type something.." />
+                        <i-input :schema="form.input" placeholder="Type something.." />
                     </i-form-group>
 
                     <i-form-group>
-                        <i-textarea :schema="form.textarea" v-model="form.textarea.value" placeholder="Write a comment.." />
+                        <i-textarea :schema="form.textarea" placeholder="Write a comment.." />
                     </i-form-group>
 
                     <i-form-group>
-                        <i-select :schema="form.select" v-model="form.select.value" placeholder="Choose an option">
+                        <i-select :schema="form.select" placeholder="Choose an option">
                             <i-select-option value="a" label="Option A" />
                             <i-select-option value="b" label="Option B" />
                             <i-select-option value="c" label="Option C" disabled />
@@ -29,7 +29,7 @@
                     </i-form-group>
 
                     <i-form-group>
-                        <i-checkbox-group :schema="form.checkbox" v-model="form.checkbox.value">
+                        <i-checkbox-group :schema="form.checkbox">
                             <i-checkbox value="Football">Football</i-checkbox>
                             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
                             <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
@@ -37,7 +37,7 @@
                     </i-form-group>
 
                     <i-form-group>
-                        <i-radio-group :schema="form.radio" v-model="form.radio.value">
+                        <i-radio-group :schema="form.radio">
                             <i-radio value="Accept">Accept</i-radio>
                             <i-radio value="Decline">Decline</i-radio>
                         </i-radio-group>
