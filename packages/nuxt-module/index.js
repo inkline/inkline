@@ -1,4 +1,4 @@
-const { resolve } = require('path');
+const { resolve, join } = require('path');
 
 const defaultOptions = {
     scss: false,
@@ -24,6 +24,12 @@ module.exports = function InklineNuxt(moduleOptions = {}) {
         if (options.scss || options.treeShaking) {
             this.options.build.transpile.push('@inkline/inkline');
         }
+
+        this.nuxt.hook('components:dirs', (dirs) => {
+            dirs.push({
+                path: join(__dirname, '..', 'inkline', 'src', 'components')
+            })
+        });
 
         const inklineOptions = { ...options };
         delete inklineOptions.scss;
