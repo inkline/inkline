@@ -64,6 +64,35 @@ module.exports = {
 }
 ~~~
 
+#### Using `nuxt`
+
+First, install the utility plugin to easily import style resources. 
+
+~~~html
+npm install --save-dev @nuxtjs/style-resources
+~~~
+
+Add the following to the `modules` field in your `nuxt.config.js`:
+
+~~~js
+const path = require('path');
+
+module.exports = {
+  
+    // ... The rest of the configuration 
+  
+    modules: [
+        '@nuxtjs/style-resources',
+        '@inkline/nuxt'
+    ],
+    styleResources: {
+        scss: ['~/assets/variables.scss']
+    }
+}
+~~~
+
+
+
 #### Using `webpack`
 
 Make sure you have `sass-loader`, the loader for Sass files installed and properly configured as follows in your `webpack.config.js`:
@@ -97,34 +126,3 @@ module.exports = {
 
 **Note:** Inkline's source code will need to be compiled as well, so make sure that you don't exclude the entire `node_modules` folder.
 
-
-#### Using `nuxt`
-
-First, install the utility plugin to easily import style resources. 
-
-~~~html
-npm install --save-dev @nuxtjs/style-resources
-~~~
-
-Add the following to the `modules` field in your `nuxt.config.js`:
-
-~~~js
-const path = require('path');
-
-module.exports = {
-  
-    // ... The rest of the configuration 
-  
-    modules: [
-        ['@nuxtjs/style-resources'],
-        ['@inkline/nuxt']
-    ],
-    styleResources: {
-        scss: ['~/assets/variables.scss']
-    },
-    inkline: {
-        treeShaking: true,
-        scss: true
-    }
-}
-~~~
