@@ -1,7 +1,7 @@
 # Form Label
 ## Form component used to add text labels to inputs. { .lead }
 
-## Example
+### Example
 You can add a label to your input by grouping an `<i-form-label>` and any input component inside an `<i-form-group>`. 
 
 <i-code-preview title="Basic Form Label">

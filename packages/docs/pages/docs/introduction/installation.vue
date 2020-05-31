@@ -8,7 +8,7 @@ export default {
     name: 'InstallationView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-introduction-installation'),
+    head: head(),
     components: {
         IAlert,
         IIcon

@@ -11,7 +11,7 @@ export default {
     name: 'HeaderView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-header'),
+    head: head(),
     components: { IButton, IHeader }
 };
 </script>

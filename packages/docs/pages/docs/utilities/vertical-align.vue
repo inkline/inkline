@@ -7,6 +7,6 @@ export default {
     name: 'VerticalAlignUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-vertical-align'),
+    head: head(),
 };
 </script>

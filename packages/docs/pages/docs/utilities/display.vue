@@ -7,6 +7,6 @@ export default {
     name: 'DisplayUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-display'),
+    head: head(),
 };
 </script>

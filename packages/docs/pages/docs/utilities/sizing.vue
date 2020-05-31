@@ -7,6 +7,6 @@ export default {
     name: 'SizingUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-sizing'),
+    head: head(),
 };
 </script>

@@ -8,6 +8,6 @@ export default {
     name: 'TypographyView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-core-typography'),
+    head: head(),
 };
 </script>

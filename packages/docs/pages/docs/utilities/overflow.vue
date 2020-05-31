@@ -7,6 +7,6 @@ export default {
     name: 'OverflowUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-overflow'),
+    head: head(),
 };
 </script>

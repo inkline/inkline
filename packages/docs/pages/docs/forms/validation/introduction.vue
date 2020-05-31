@@ -8,7 +8,7 @@ export default {
     extends: View,
     name: 'FormValidationIntroductionView',
     layout: 'documentation',
-    head: head('docs-forms-validation-introduction'),
+    head: head(),
     components: {
         IAlert,
         IForm,

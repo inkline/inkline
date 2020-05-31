@@ -8,7 +8,7 @@ export default {
     name: 'FloatUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-float'),
+    head: head(),
     components: {
         IAlert
     }

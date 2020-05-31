@@ -9,7 +9,7 @@ export default {
     name: 'HamburgerMenuView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-hamburger-menu'),
+    head: head(),
     components: { IHamburgerMenu },
     data() {
         return {

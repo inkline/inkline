@@ -12,7 +12,7 @@ export default {
     name: 'GridView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-core-grid'),
+    head: head(),
     components: {
         ApiTable,
         ApiTableRow,

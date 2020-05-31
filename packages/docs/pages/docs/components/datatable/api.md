@@ -45,7 +45,7 @@ Here you can find a list of the various customization options you can use for th
             </api-table-row>
             <api-table-row>
                 <template slot="property">columns</template>
-                <template slot="description">An array of column definition objects. See the <nuxt-link :to="{ name: 'docs-components-dashboard-datatable-introduction' }">DataTable Introduction</nuxt-link> page.</template>
+                <template slot="description">An array of column definition objects. See the <nuxt-link :to="{ name: 'docs-components-datatable-introduction' }">DataTable Introduction</nuxt-link> page.</template>
                 <template slot="type"><code>Array&lt;Object&gt;</code></template>
                 <template slot="values"></template>
                 <template slot="default"><code>[]</code></template>
@@ -92,7 +92,7 @@ Here you can find a list of the various customization options you can use for th
             </api-table-row>
             <api-table-row>
                 <template slot="property">rows</template>
-                <template slot="description">An array of row definition objects. See the <nuxt-link :to="{ name: 'docs-components-dashboard-datatable-introduction' }">DataTable Introduction</nuxt-link> page.</template>
+                <template slot="description">An array of row definition objects. See the <nuxt-link :to="{ name: 'docs-components-datatable-introduction' }">DataTable Introduction</nuxt-link> page.</template>
                 <template slot="type"><code>Array&lt;Object&gt;</code></template>
                 <template slot="values"></template>
                 <template slot="default"><code>[]</code></template>
@@ -113,7 +113,7 @@ Here you can find a list of the various customization options you can use for th
             </api-table-row>
             <api-table-row>
                 <template slot="property">filtering</template>
-                <template slot="description">Used to enable, disable and configure filtering. See the <nuxt-link :to="{ name: 'docs-components-dashboard-datatable-filtering' }">DataTable Filtering</nuxt-link> page.</template>
+                <template slot="description">Used to enable, disable and configure filtering. See the <nuxt-link :to="{ name: 'docs-components-datatable-filtering' }">DataTable Filtering</nuxt-link> page.</template>
                 <template slot="type"><code>Boolean</code>, <code>Object</code></template>
                 <template slot="values"><code>true</code>, <code>false</code>, <code>Object</code></template>
 <template slot="default-row">
@@ -141,7 +141,7 @@ Here you can find a list of the various customization options you can use for th
             </api-table-row>
             <api-table-row>
                 <template slot="property">pagination</template>
-                <template slot="description">Used to enable, disable and configure pagination. See the <nuxt-link :to="{ name: 'docs-components-dashboard-datatable-pagination' }">DataTable Pagination</nuxt-link> page.</template>
+                <template slot="description">Used to enable, disable and configure pagination. See the <nuxt-link :to="{ name: 'docs-components-datatable-pagination' }">DataTable Pagination</nuxt-link> page.</template>
                 <template slot="type"><code>Boolean</code>, <code>Object</code></template>
                 <template slot="values"><code>true</code>, <code>false</code>, <code>Object</code></template>
 <template slot="default-row">

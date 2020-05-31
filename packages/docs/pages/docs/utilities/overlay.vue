@@ -8,7 +8,7 @@ export default {
     name: 'OverlayUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-overlay'),
+    head: head(),
     components: {
         IRow,
         IColumn,

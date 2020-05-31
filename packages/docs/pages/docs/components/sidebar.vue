@@ -28,7 +28,7 @@ export default {
     name: 'SidebarView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-sidebar'),
+    head: head(),
     components: {
         ISidebar,
         INav,

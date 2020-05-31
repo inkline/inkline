@@ -8,7 +8,7 @@ export default {
     extends: View,
     name: 'FormGroupView',
     layout: 'documentation',
-    head: head('docs-forms-form-group'),
+    head: head(),
     components: {
         IFormGroup,
         IFormLabel,

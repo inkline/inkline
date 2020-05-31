@@ -10,12 +10,15 @@ The `<i-form>` component is a wrapper that provides proper handling of form vali
 
 <i-form>
     <i-form-group>
+        <i-form-label>Input</i-form-label>
         <i-input v-model="input" name="input" placeholder="Type something.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Textarea</i-form-label>
         <i-textarea v-model="textarea" name="textarea" placeholder="Write a comment.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Select</i-form-label>
         <i-select v-model="select" name="select" placeholder="Choose an option">
             <i-select-option value="a" label="Option A" />
             <i-select-option value="b" label="Option B" />
@@ -23,6 +26,7 @@ The `<i-form>` component is a wrapper that provides proper handling of form vali
         </i-select>
     </i-form-group>
     <i-form-group>
+        <i-form-label>Checkbox</i-form-label>
         <i-checkbox-group v-model="checkbox" name="checkbox">
             <i-checkbox value="Football">Football</i-checkbox>
             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -30,6 +34,7 @@ The `<i-form>` component is a wrapper that provides proper handling of form vali
         </i-checkbox-group>
     </i-form-group>
     <i-form-group>
+        <i-form-label>Radio</i-form-label>
         <i-radio-group v-model="radio" name="radio">
             <i-radio value="Accept">Accept</i-radio>
             <i-radio value="Decline">Decline</i-radio>
@@ -45,14 +50,17 @@ The `<i-form>` component is a wrapper that provides proper handling of form vali
 ~~~html
 <i-form>
     <i-form-group>
+        <i-form-label>Input</i-form-label>
         <i-input v-model="input" placeholder="Type something.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Textarea</i-form-label>
         <i-textarea v-model="textarea" placeholder="Write a comment.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Select</i-form-label>
         <i-select v-model="select" placeholder="Choose an option">
             <i-select-option value="a" label="Option A" />
             <i-select-option value="b" label="Option B" />
@@ -61,6 +69,7 @@ The `<i-form>` component is a wrapper that provides proper handling of form vali
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Checkbox</i-form-label>
         <i-checkbox-group v-model="checkbox">
             <i-checkbox value="Football">Football</i-checkbox>
             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -69,6 +78,7 @@ The `<i-form>` component is a wrapper that provides proper handling of form vali
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Radio</i-form-label>
         <i-radio-group v-model="radio">
             <i-radio value="Accept">Accept</i-radio>
             <i-radio value="Decline">Decline</i-radio>
@@ -109,12 +119,15 @@ Setting a form as `disabled` will cause all of its child inputs to be disabled.
 
 <i-form disabled>
     <i-form-group>
+        <i-form-label>Disabled Input</i-form-label>
         <i-input v-model="inputDisabled" placeholder="Type something.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Disabled Textarea</i-form-label>
         <i-textarea v-model="textareaDisabled" placeholder="Write a comment.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Disabled Select</i-form-label>
         <i-select v-model="selectDisabled" placeholder="Choose an option">
             <i-select-option value="a" label="Option A" />
             <i-select-option value="b" label="Option B" />
@@ -122,6 +135,7 @@ Setting a form as `disabled` will cause all of its child inputs to be disabled.
         </i-select>
     </i-form-group>
     <i-form-group>
+        <i-form-label>Disabled Checkbox</i-form-label>
         <i-checkbox-group v-model="checkboxDisabled">
             <i-checkbox value="Football">Football</i-checkbox>
             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -129,6 +143,7 @@ Setting a form as `disabled` will cause all of its child inputs to be disabled.
         </i-checkbox-group>
     </i-form-group>
     <i-form-group>
+        <i-form-label>Disabled Radio</i-form-label>
         <i-radio-group v-model="radioDisabled">
             <i-radio value="Accept">Accept</i-radio>
             <i-radio value="Decline">Decline</i-radio>
@@ -144,14 +159,17 @@ Setting a form as `disabled` will cause all of its child inputs to be disabled.
 ~~~html
 <i-form disabled>
     <i-form-group>
+        <i-form-label>Disabled Input</i-form-label>
         <i-input v-model="input" placeholder="Type something.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Disabled Textarea</i-form-label>
         <i-textarea v-model="textarea" placeholder="Write a comment.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Disabled Select</i-form-label>
         <i-select v-model="select" placeholder="Choose an option">
             <i-select-option value="a" label="Option A" />
             <i-select-option value="b" label="Option B" />
@@ -160,6 +178,7 @@ Setting a form as `disabled` will cause all of its child inputs to be disabled.
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Disabled Checkbox</i-form-label>
         <i-checkbox-group v-model="checkbox">
             <i-checkbox value="Football">Football</i-checkbox>
             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -168,6 +187,7 @@ Setting a form as `disabled` will cause all of its child inputs to be disabled.
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Disabled Radio</i-form-label>
         <i-radio-group v-model="radio">
             <i-radio value="Accept">Accept</i-radio>
             <i-radio value="Decline">Decline</i-radio>
@@ -210,12 +230,15 @@ All of the components inside the `<i-form>` will inherit the parent form group's
 
 <i-form size="sm">
     <i-form-group>
+        <i-form-label>Input</i-form-label>
         <i-input v-model="inputSizeSm" placeholder="Type something.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Textarea</i-form-label>
         <i-textarea v-model="textareaSizeSm" placeholder="Write a comment.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Select</i-form-label>
         <i-select v-model="selectSizeSm" placeholder="Choose an option">
             <i-select-option value="a" label="Option A" />
             <i-select-option value="b" label="Option B" />
@@ -223,6 +246,7 @@ All of the components inside the `<i-form>` will inherit the parent form group's
         </i-select>
     </i-form-group>
     <i-form-group>
+        <i-form-label>Checkbox</i-form-label>
         <i-checkbox-group v-model="checkboxSizeSm">
             <i-checkbox value="Football">Football</i-checkbox>
             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -230,6 +254,7 @@ All of the components inside the `<i-form>` will inherit the parent form group's
         </i-checkbox-group>
     </i-form-group>
     <i-form-group>
+        <i-form-label>Radio</i-form-label>
         <i-radio-group v-model="radioSizeSm">
             <i-radio value="Accept">Accept</i-radio>
             <i-radio value="Decline">Decline</i-radio>
@@ -245,14 +270,17 @@ All of the components inside the `<i-form>` will inherit the parent form group's
 ~~~html
 <i-form size="sm">
     <i-form-group>
+        <i-form-label>Input</i-form-label>
         <i-input v-model="input" placeholder="Type something.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Textarea</i-form-label>
         <i-textarea v-model="textarea" placeholder="Write a comment.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Select</i-form-label>
         <i-select v-model="select" placeholder="Choose an option">
             <i-select-option value="a" label="Option A" />
             <i-select-option value="b" label="Option B" />
@@ -261,6 +289,7 @@ All of the components inside the `<i-form>` will inherit the parent form group's
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Checkbox</i-form-label>
         <i-checkbox-group v-model="checkbox">
             <i-checkbox value="Football">Football</i-checkbox>
             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -269,6 +298,7 @@ All of the components inside the `<i-form>` will inherit the parent form group's
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Radio</i-form-label>
         <i-radio-group v-model="radio">
             <i-radio value="Accept">Accept</i-radio>
             <i-radio value="Decline">Decline</i-radio>
@@ -306,12 +336,15 @@ export default {
 
 <i-form size="md">
     <i-form-group>
+        <i-form-label>Input</i-form-label>
         <i-input v-model="inputSizeMd" placeholder="Type something.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Textarea</i-form-label>
         <i-textarea v-model="textareaSizeMd" placeholder="Write a comment.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Select</i-form-label>
         <i-select v-model="selectSizeMd" placeholder="Choose an option">
             <i-select-option value="a" label="Option A" />
             <i-select-option value="b" label="Option B" />
@@ -319,6 +352,7 @@ export default {
         </i-select>
     </i-form-group>
     <i-form-group>
+        <i-form-label>Checkbox</i-form-label>
         <i-checkbox-group v-model="checkboxSizeMd">
             <i-checkbox value="Football">Football</i-checkbox>
             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -326,6 +360,7 @@ export default {
         </i-checkbox-group>
     </i-form-group>
     <i-form-group>
+        <i-form-label>Radio</i-form-label>
         <i-radio-group v-model="radioSizeMd">
             <i-radio value="Accept">Accept</i-radio>
             <i-radio value="Decline">Decline</i-radio>
@@ -341,14 +376,17 @@ export default {
 ~~~html
 <i-form size="md">
     <i-form-group>
+        <i-form-label>Input</i-form-label>
         <i-input v-model="input" placeholder="Type something.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Textarea</i-form-label>
         <i-textarea v-model="textarea" placeholder="Write a comment.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Select</i-form-label>
         <i-select v-model="select" placeholder="Choose an option">
             <i-select-option value="a" label="Option A" />
             <i-select-option value="b" label="Option B" />
@@ -357,6 +395,7 @@ export default {
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Checkbox</i-form-label>
         <i-checkbox-group v-model="checkbox">
             <i-checkbox value="Football">Football</i-checkbox>
             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -365,6 +404,7 @@ export default {
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Radio</i-form-label>
         <i-radio-group v-model="radio">
             <i-radio value="Accept">Accept</i-radio>
             <i-radio value="Decline">Decline</i-radio>
@@ -402,12 +442,15 @@ export default {
 
 <i-form size="lg">
     <i-form-group>
+        <i-form-label>Input</i-form-label>
         <i-input v-model="inputSizeLg" placeholder="Type something.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Textarea</i-form-label>
         <i-textarea v-model="textareaSizeLg" placeholder="Write a comment.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Select</i-form-label>
         <i-select v-model="selectSizeLg" placeholder="Choose an option">
             <i-select-option value="a" label="Option A" />
             <i-select-option value="b" label="Option B" />
@@ -415,6 +458,7 @@ export default {
         </i-select>
     </i-form-group>
     <i-form-group>
+        <i-form-label>Checkbox</i-form-label>
         <i-checkbox-group v-model="checkboxSizeLg">
             <i-checkbox value="Football">Football</i-checkbox>
             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -422,6 +466,7 @@ export default {
         </i-checkbox-group>
     </i-form-group>
     <i-form-group>
+        <i-form-label>Radio</i-form-label>
         <i-radio-group v-model="radioSizeLg">
             <i-radio value="Accept">Accept</i-radio>
             <i-radio value="Decline">Decline</i-radio>
@@ -437,14 +482,17 @@ export default {
 ~~~html
 <i-form size="lg">
     <i-form-group>
+        <i-form-label>Input</i-form-label>
         <i-input v-model="input" placeholder="Type something.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Textarea</i-form-label>
         <i-textarea v-model="textarea" placeholder="Write a comment.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Select</i-form-label>
         <i-select v-model="select" placeholder="Choose an option">
             <i-select-option value="a" label="Option A" />
             <i-select-option value="b" label="Option B" />
@@ -453,6 +501,7 @@ export default {
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Checkbox</i-form-label>
         <i-checkbox-group v-model="checkbox">
             <i-checkbox value="Football">Football</i-checkbox>
             <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -461,6 +510,7 @@ export default {
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Radio</i-form-label>
         <i-radio-group v-model="radio">
             <i-radio value="Accept">Accept</i-radio>
             <i-radio value="Decline">Decline</i-radio>

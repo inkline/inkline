@@ -7,6 +7,6 @@ export default {
     name: 'PositionUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-position'),
+    head: head(),
 };
 </script>

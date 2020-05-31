@@ -8,7 +8,7 @@ export default {
     name: 'DarkModeView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-introduction-guides-dark-mode'),
+    head: head(),
     components: {
         IAlert,
         IIcon,

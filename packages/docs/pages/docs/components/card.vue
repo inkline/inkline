@@ -8,7 +8,7 @@ export default {
     name: 'CardView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-card'),
+    head: head(),
     components: {
         ICard,
         IRow,

@@ -8,7 +8,7 @@ export default {
     name: 'NavView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-nav'),
+    head: head(),
     components: {
         INav,
         INavItem

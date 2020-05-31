@@ -8,7 +8,7 @@ export default {
     name: 'MediaView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-media'),
+    head: head(),
     components: {
         IMedia
     }

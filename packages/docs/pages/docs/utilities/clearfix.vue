@@ -9,7 +9,7 @@ export default {
     name: 'ClearfixUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-clearfix'),
+    head: head(),
     components: {
         IButton
     }

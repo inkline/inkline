@@ -8,7 +8,7 @@ export default {
     name: 'TablesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-core-tables'),
+    head: head(),
     components: { IAlert, IIcon }
 };
 </script>

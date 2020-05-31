@@ -1,5 +1,5 @@
 # About Inkline
-## Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications. { .lead }
+## Inkline is a modern UI/UX Library for Vue.js, designed for creating flawless content-rich responsive web applications. { .lead }
 
 Inkline is the Vue.js UI Framework that favors not only **User Interface** and **User Experience**, but also **Developer Experience**, using a consistent and expressive API. 
 

@@ -8,7 +8,7 @@ export default {
     name: 'ButtonGroupView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-button-group'),
+    head: head(),
     components: {
         IButtonGroup,
         IButton

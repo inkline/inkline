@@ -8,7 +8,7 @@ export default {
     name: 'ProgressView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-progress'),
+    head: head(),
     components: {
         IProgress,
         IProgressBar

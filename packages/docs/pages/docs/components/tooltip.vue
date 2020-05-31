@@ -8,7 +8,7 @@ export default {
     name: 'TooltipView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-tooltip'),
+    head: head(),
     components: {
         IButton,
         ITooltip

@@ -8,7 +8,7 @@ export default {
     name: 'PaginationView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-pagination'),
+    head: head(),
     components: {
         IPagination
     },

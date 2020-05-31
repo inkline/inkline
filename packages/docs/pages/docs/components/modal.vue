@@ -8,7 +8,7 @@ export default {
     name: 'ModalView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-modal'),
+    head: head(),
     components: {
         IButton,
         IModal

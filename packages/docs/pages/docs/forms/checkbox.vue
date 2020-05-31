@@ -8,7 +8,7 @@ export default {
     name: 'CheckboxView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-forms-checkbox'),
+    head: head(),
     components: {
         ICheckbox,
         ICheckboxGroup,

@@ -8,7 +8,7 @@ export default {
     extends: View,
     name: 'FormValidationMethodsView',
     layout: 'documentation',
-    head: head('docs-forms-validation-methods'),
+    head: head(),
     components: {
         IInput,
         IButton,

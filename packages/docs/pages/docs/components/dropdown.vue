@@ -8,7 +8,7 @@ export default {
     name: 'DropdownView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-dropdown'),
+    head: head(),
     components: {
         IButton,
         IDropdown,
