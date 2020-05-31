@@ -11,7 +11,7 @@ export default {
     name: 'IconView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-icon'),
+    head: head(),
     components: {
         IIcon,
         ITooltip

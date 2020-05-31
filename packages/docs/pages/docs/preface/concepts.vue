@@ -8,7 +8,7 @@ export default {
     name: 'ConceptsView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-preface-concepts'),
+    head: head(),
     components: {
         IAlert,
         IIcon

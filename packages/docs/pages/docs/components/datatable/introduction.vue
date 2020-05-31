@@ -9,7 +9,7 @@ export default {
     extends: View,
     name: 'DataTableIntroductionView',
     layout: 'documentation',
-    head: head('docs-components-dashboard-datatable-introduction'),
+    head: head(),
     components: {
         IDatatable,
         IAlert,

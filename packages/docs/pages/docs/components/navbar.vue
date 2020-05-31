@@ -8,7 +8,7 @@ export default {
     name: 'NavbarView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-navbar'),
+    head: head(),
     components: {
         INavbar,
         INavbarBrand,

@@ -11,7 +11,7 @@ export default {
     name: 'LayoutView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-core-layout'),
+    head: head(),
     components: {
         ILayout,
         ILayoutAside,

@@ -8,7 +8,7 @@ export default {
     name: 'ToggleView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-forms-toggle'),
+    head: head(),
     components: {
         IToggle,
         IFormGroup

@@ -9,7 +9,7 @@ export default {
     extends: View,
     name: 'DataTableExpandingView',
     layout: 'documentation',
-    head: head('docs-components-dashboard-datatable-expanding'),
+    head: head(),
     components: {
         IDatatable,
         IAlert

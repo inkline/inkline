@@ -8,7 +8,7 @@ export default {
     extends: View,
     name: 'SelectView',
     layout: 'documentation',
-    head: head('docs-forms-select'),
+    head: head(),
     components: {
         ISelect,
         ISelectOption,

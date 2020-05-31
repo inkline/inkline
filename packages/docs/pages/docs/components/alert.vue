@@ -8,7 +8,7 @@ export default {
     name: 'AlertView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-alert'),
+    head: head(),
     components: { IAlert },
     data() {
         return {

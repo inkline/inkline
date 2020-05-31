@@ -19,7 +19,7 @@ export default {
     extends: View,
     name: 'DataTableSortingView',
     layout: 'documentation',
-    head: head('docs-components-dashboard-datatable-sorting'),
+    head: head(),
     components: {
         IDatatable,
         IAlert

@@ -8,7 +8,7 @@ export default {
     extends: View,
     name: 'InputView',
     layout: 'documentation',
-    head: head('docs-forms-input'),
+    head: head(),
     components: {
         IInput,
         IFormGroup,

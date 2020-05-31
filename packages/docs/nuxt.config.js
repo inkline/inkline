@@ -16,14 +16,43 @@ module.exports = {
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
-            { name: 'keywords', content: 'inkline, vue, vue 2, vue.js, vue components, framework, ui, ux' },
-            { hid: 'description', name: 'description', content: 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications.' },
+            { name: 'keywords', content: 'inkline, vue, vue 2, vue 3, vue.js, vue components, customizable, components, framework, ui, ux' },
+            { hid: 'description', name: 'description', content: 'Inkline is the customizable Vue.js UI/UX Library, designed for creating flawless content-rich responsive web applications.' },
             { name: 'msapplication-TileColor', content: '#ffffff' },
             { name: 'msapplication-TileImage', content: '/favicon/ms-icon-144x144.png' },
             { name: 'theme-color', content: '#ffffff' },
-            { hid: `og:site_name`, property: 'og:site_name', content: 'Inkline' },
-            { hid: `og:type`, property: 'og:type', content: 'website' },
-            { hid: `og:image`, property: 'og:image', content: `https://inkline.io/images/pages/index.og.jpg` }
+            { hid: 'og:type', property: 'og:type', content: 'website' },
+            { hid: 'og:site_name', property: 'og:site_name', content: 'Inkline' },
+            { hid: 'og:type', property: 'og:type', content: 'website' },
+            { hid: 'og:image', property: 'og:image', content: 'https://inkline.io/images/pages/index.og.jpg' },
+            { hid: 'twitter:creator', property: 'twitter:creator', content: '@inkline' },
+            {
+                type: 'application/ld+json',
+                json: {
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "Inkline - Vue.js UI/UX Library",
+                        "url": "https://inkline.io/",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": {
+                                "@type": "ImageObject",
+                                "url": "https://inkline.io/images/logo-80.png",
+                                "width": 67,
+                                "height": 80
+                            }
+                        }
+                    },
+                    "url": "https://inkline.io/",
+                    "mainEntityOfPage": {
+                        "@type": "WebPage",
+                        "@id": "https://inkline.io/"
+                    },
+                    "description": "Inkline is the customizable Vue.js UI/UX Library, designed for creating flawless content-rich responsive web applications."
+                }
+            }
         ],
         link: [
             { rel: 'apple-touch-icon', sizes: '57x57', href: '/favicon/apple-icon-57x57.png' },

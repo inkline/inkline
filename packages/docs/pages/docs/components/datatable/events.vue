@@ -9,7 +9,7 @@ export default {
     extends: View,
     name: 'DataTableEventsView',
     layout: 'documentation',
-    head: head('docs-components-dashboard-datatable-events'),
+    head: head(),
     components: {
         IDatatable,
         IAlert,

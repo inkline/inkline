@@ -4,7 +4,7 @@
             <i-column md="7" lg="6" xl="5">
                 <h1 class="header-title">Inkline</h1>
                 <h2 class="header-subtitle">
-                    Inkline is a modern <strong>UI/UX Framework for Vue.js</strong> designed for creating flawless responsive web applications.
+                    Inkline is the customizable <strong>Vue.js UI/UX Library</strong> designed for creating flawless responsive web applications.
                 </h2>
                 <div class="header-buttons _margin-top-2">
                     <i-button size="lg" variant="primary" class="_margin-right-md-2" :to="{ name: 'docs-introduction-getting-started' }">Get Started</i-button>
@@ -24,40 +24,88 @@
             <i-row>
                 <i-column md="6" lg="4">
                     <div class="feature-box">
-                        <img src="/images/pages/icon-responsive.svg" alt="Inkline - Vue.js UI/UX Framework - Responsive" />
-                        <h3>Responsive</h3>
+                        <img src="/images/pages/icon-ui.svg" alt="Inkline - Vue.js UI/UX Library - User Interface" />
+                        <h3>User Interface</h3>
                         <p>Designed to be mobile-first, Inkline looks great on phones, tablets, laptops and desktops.</p>
                     </div>
                 </i-column>
                 <i-column md="6" lg="4">
                     <div class="feature-box">
-                        <img src="/images/pages/icon-modular.svg" alt="Inkline - Vue.js UI/UX Framework - 50+ Components" />
-                        <h3>50+ Components</h3>
-                        <p>With over 50 components, Inkline is designed for efficient tree shaking and optimization.</p>
+                        <img src="/images/pages/icon-ux.svg" alt="Inkline - Vue.js UI/UX Library - User Experience" />
+                        <h3>User Experience</h3>
+                        <p>Out of the box accessibility, WAI-ARIA standards and beautiful user experience design.</p>
                     </div>
                 </i-column>
                 <i-column md="6" lg="4">
                     <div class="feature-box">
-                        <img src="/images/pages/icon-customization.svg" alt="Inkline - Vue.js UI/UX Framework - Customization" />
-                        <h3>Customizable</h3>
-                        <p>Disover hundreds of easily accessible Vue.js and Sass customization options.</p>
+                        <img src="/images/pages/icon-dx.svg" alt="Inkline - Vue.js UI/UX Library - Developer Experience" />
+                        <h3>Developer Experience</h3>
+                        <p>The code base is designed to be intuitive, easy to use, clean, and consistent to the core.</p>
                     </div>
                 </i-column>
                 <i-column md="6" offset-lg="2" lg="4">
                     <div class="feature-box">
-                        <img src="/images/pages/icon-form-validation.svg" alt="Inkline - Vue.js UI/UX Framework - Form Validation" />
-                        <div>
-                            <h3>Form Validation</h3>
-                            <p>Define a form validation schema and let Inkline take care of the form validation work.</p>
-                        </div>
+                        <img src="/images/pages/icon-modular.svg" alt="Inkline - Vue.js UI/UX Library - 50+ Components" />
+                        <h3>50+ Components</h3>
+                        <p>With over 50 components, Inkline is designed for efficient tree shaking and optimization.</p>
                     </div>
                 </i-column>
                 <i-column md="6" offset-md="3" lg="4" offset-lg="0">
                     <div class="feature-box">
-                        <img src="/images/pages/icon-datatable.svg" alt="Inkline - Vue.js UI/UX Framework - Data Tables" />
-                        <h3>Data Tables</h3>
-                        <p>Use Inkline's Data Tables to add advanced interaction controls to your tables.</p>
+                        <img src="/images/pages/icon-customization.svg" alt="Inkline - Vue.js UI/UX Library - Customization" />
+                        <h3>Customizable</h3>
+                        <p>Disover hundreds of easily accessible Vue.js and Sass customization options.</p>
                     </div>
+                </i-column>
+            </i-row>
+        </i-container>
+    </i-container>
+
+    <i-container fluid id="frontend-features">
+        <i-container>
+            <i-row class="_text-center">
+                <i-column lg="8" offset-lg="2">
+                    <h3 class="h1"><strong>Powerful</strong> Front-end Development</h3>
+                    <p class="_text-muted">
+                        Inkline is an MIT licensed open source project and is completely free to use.
+                        Therefore, Inkline only grows thanks to the help and support of its sponsors and backers.
+                        Please, consider supporting us!
+                    </p>
+                </i-column>
+            </i-row>
+            <i-row class="_margin-top-4">
+                <i-column>
+                    <nuxt-link class="feature-box-link" :to="{ name: 'docs-components-datatable-introduction' }">
+                        <i-card class="feature-box">
+                            <img class="image -responsive" slot="image"
+                                 src="https://placehold.it/400x400"
+                                 alt="Inkline - Vue.js UI/UX Library - Data Components" />
+                            <h3>Data Components</h3>
+                            <p>Use Inkline's Data Tables to add advanced interaction controls to your tables.</p>
+                        </i-card>
+                    </nuxt-link>
+                </i-column>
+                <i-column>
+                    <nuxt-link class="feature-box-link" :to="{ name: 'docs-forms-validation-introduction' }">
+                        <i-card class="feature-box">
+                            <img class="image -responsive" slot="image"
+                                 src="https://placehold.it/400x400"
+                                 alt="Inkline - Vue.js UI/UX Library - Form Validation" />
+                            <h3>Form Validation</h3>
+                            <p>Define a form validation schema and let Inkline take care of the form validation work.</p>
+                        </i-card>
+                    </nuxt-link>
+                </i-column>
+                <i-column>
+                    <nuxt-link class="feature-box-link" :to="{ name: 'docs-utilities-color' }">
+                        <i-card class="feature-box">
+                            <img class="image -responsive" slot="image"
+                                 src="https://placehold.it/400x400"
+                                 alt="Inkline - Vue.js UI/UX Library - Utility Classes" />
+                            <h3>Utility Classes</h3>
+                            <p>Use hundreds of utility classes when you need more control over your components.</p>
+                        </i-card>
+                    </nuxt-link>
                 </i-column>
             </i-row>
         </i-container>
@@ -86,7 +134,7 @@
             </i-row>
             <i-row>
                 <i-column>
-                    <i-button id="patreon-button" size="lg" variant="patreon" href="https://www.patreon.com/bePatron?u=18449490" target="_blank" rel="nofollow">
+                    <i-button id="patreon-button" size="lg" variant="danger" href="https://www.patreon.com/bePatron?u=18449490" target="_blank" rel="nofollow">
                         <img src="~static/images/patreon-logo.png" alt="Patreon Logo">
                         Become a sponsor
                     </i-button>
@@ -117,7 +165,7 @@
                     </i-column>
                 </i-row>
 
-                <!--<img src="~static/images/logo-light-80.png" alt="Inkline - Vue.js UI/UX Framework" height="60">-->
+                <!--<img src="~static/images/logo-light-80.png" alt="Inkline - Vue.js UI/UX Library" height="60">-->
 
                 <ul class="list -inline">
                     <li class="footer-icon">

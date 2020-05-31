@@ -8,7 +8,7 @@ export default {
     name: 'CollapsibleView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-collapsible'),
+    head: head(),
     components: {
         ICollapsible,
         ICollapsibleItem

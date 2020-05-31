@@ -8,7 +8,7 @@ export default {
     name: 'ContributionGuideView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-preface-contribution-guide'),
+    head: head(),
     components: {
         IAlert,
         IIcon

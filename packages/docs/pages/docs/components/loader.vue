@@ -9,7 +9,7 @@ export default {
     name: 'LoaderView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-loader'),
+    head: head(),
     components: {
         ILoader
     }

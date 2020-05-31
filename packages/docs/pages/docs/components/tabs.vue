@@ -8,7 +8,7 @@ export default {
     name: 'TabsView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-tabs'),
+    head: head(),
     components: {
         ITabs,
         ITab,

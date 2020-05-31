@@ -8,7 +8,7 @@ export default {
     extends: View,
     name: 'FormValidationValidatorsView',
     layout: 'documentation',
-    head: head('docs-forms-validation-validators'),
+    head: head(),
     components: {
         IInput,
         IForm,

@@ -9,7 +9,7 @@ export default {
     extends: View,
     name: 'DataTableScrollingView',
     layout: 'documentation',
-    head: head('docs-components-dashboard-datatable-scrolling'),
+    head: head(),
     components: {
         IDatatable,
         IAlert

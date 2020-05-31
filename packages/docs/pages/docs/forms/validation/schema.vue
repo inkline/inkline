@@ -8,7 +8,7 @@ export default {
     extends: View,
     name: 'FormValidationSchemaView',
     layout: 'documentation',
-    head: head('docs-forms-validation-schema'),
+    head: head(),
     components: {
         IAlert,
         IForm,

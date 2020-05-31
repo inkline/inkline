@@ -7,6 +7,6 @@ export default {
     name: 'ImagesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-core-images'),
+    head: head(),
 };
 </script>

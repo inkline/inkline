@@ -333,13 +333,16 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
 <i-code-preview title="Complete Form Example">
 <i-form v-model="form" @submit="submitForm">
     <i-form-group>
+        <i-form-label>Input</i-form-label>
         <i-input :schema="form.input" placeholder="Enter your first name.." />
     </i-form-group>
     <i-form-group>
+        <i-form-label>Textarea</i-form-label>
         <i-textarea :schema="form.textarea" placeholder="Write a comment.." />
     </i-form-group>
     <i-form-group>
         <i-form-group>
+            <i-form-label>Select</i-form-label>
             <i-select :schema="form.group.select" placeholder="Choose an option">
                 <i-select-option value="a" label="Option A" />
                 <i-select-option value="b" label="Option B" />
@@ -347,9 +350,11 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
             </i-select>
         </i-form-group>
         <i-form-group>
+            <i-form-label>Boolean</i-form-label><br />
             <i-checkbox :schema="form.group.checked">I agree</i-checkbox>
         </i-form-group>
         <i-form-group>
+            <i-form-label>Checkbox</i-form-label>
             <i-checkbox-group :schema="form.group.checkbox">
                 <i-checkbox value="Football">Football</i-checkbox>
                 <i-checkbox value="Volleyball">Volleyball</i-checkbox>
@@ -357,6 +362,7 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
             </i-checkbox-group>
         </i-form-group>
         <i-form-group>
+            <i-form-label>Radio</i-form-label>
             <i-radio-group :schema="form.group.radio">
                 <i-radio :value="true">Accept</i-radio>
                 <i-radio :value="false">Decline</i-radio>
@@ -370,31 +376,43 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
 <template slot="html">
 
 ~~~html
-<i-form v-model="form">
+<i-form v-model="form" @submit="submitForm">
     <i-form-group>
+        <i-form-label>Input</i-form-label>
         <i-input :schema="form.input" placeholder="Enter your first name.." />
     </i-form-group>
     
     <i-form-group>
+        <i-form-label>Textarea</i-form-label>
         <i-textarea :schema="form.textarea" placeholder="Write a comment.." />
     </i-form-group>
     
     <i-form-group>
         <i-form-group>
+            <i-form-label>Select</i-form-label>
             <i-select :schema="form.group.select" placeholder="Choose an option">
                 <i-select-option value="a" label="Option A" />
                 <i-select-option value="b" label="Option B" />
                 <i-select-option value="c" label="Option C" disabled />
             </i-select>
         </i-form-group>
+
         <i-form-group>
+            <i-form-label>Boolean</i-form-label><br />
+            <i-checkbox :schema="form.group.checked">I agree</i-checkbox>
+        </i-form-group>
+
+        <i-form-group>
+            <i-form-label>Checkbox</i-form-label>
             <i-checkbox-group :schema="form.group.checkbox">
                 <i-checkbox value="Football">Football</i-checkbox>
                 <i-checkbox value="Volleyball">Volleyball</i-checkbox>
                 <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
             </i-checkbox-group>
         </i-form-group>
+
         <i-form-group>
+            <i-form-label>Radio</i-form-label>
             <i-radio-group :schema="form.group.radio">
                 <i-radio :value="true">Accept</i-radio>
                 <i-radio :value="false">Decline</i-radio>
@@ -427,6 +445,12 @@ export default {
                         value: 'a',
                         validators: [
                             { rule: 'required', message: 'Select is required.' }
+                        ]
+                    },
+                    checked: {
+                        value: true,
+                        validators: [
+                            { rule: 'required', message: 'Checkbox is required.', invalidateFalse: true }
                         ]
                     },
                     checkbox: {

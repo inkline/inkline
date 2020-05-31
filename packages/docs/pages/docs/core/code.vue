@@ -7,6 +7,6 @@ export default {
     name: 'CodeView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-core-code'),
+    head: head(),
 };
 </script>

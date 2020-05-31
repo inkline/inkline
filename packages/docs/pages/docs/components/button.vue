@@ -8,7 +8,7 @@ export default {
     name: 'ButtonView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-button'),
+    head: head(),
     components: {
         IButton,
         IIcon,

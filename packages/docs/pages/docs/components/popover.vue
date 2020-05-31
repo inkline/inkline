@@ -8,7 +8,7 @@ export default {
     name: 'PopoverView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-popover'),
+    head: head(),
     components: {
         IButton,
         IPopover

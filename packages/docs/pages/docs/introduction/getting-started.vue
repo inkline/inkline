@@ -8,7 +8,7 @@ export default {
     name: 'GettingStartedView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-introduction-getting-started'),
+    head: head(),
     components: {
         IAlert,
         IIcon

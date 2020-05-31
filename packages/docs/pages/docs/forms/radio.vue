@@ -8,7 +8,7 @@ export default {
     extends: View,
     name: 'RadioView',
     layout: 'documentation',
-    head: head('docs-forms-radio'),
+    head: head(),
     components: {
         IRadio,
         IRadioGroup,

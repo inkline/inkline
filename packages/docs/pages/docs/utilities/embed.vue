@@ -7,6 +7,6 @@ export default {
     name: 'EmbedUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-embed'),
+    head: head(),
 };
 </script>

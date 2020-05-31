@@ -8,7 +8,7 @@ export default {
     name: 'BadgeView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-badge'),
+    head: head(),
     components: { IBadge },
 };
 </script>

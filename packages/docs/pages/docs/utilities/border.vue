@@ -8,6 +8,6 @@ export default {
     name: 'BorderUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-border'),
+    head: head(),
 };
 </script>

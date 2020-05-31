@@ -9,7 +9,7 @@ export default {
     name: 'ColorUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-color'),
+    head: head(),
     components: {
         ColorBox,
         IRow,

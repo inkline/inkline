@@ -7,6 +7,6 @@ export default {
     name: 'TextUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-text'),
+    head: head(),
 };
 </script>

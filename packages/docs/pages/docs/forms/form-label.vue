@@ -8,7 +8,7 @@ export default {
     extends: View,
     name: 'FormLabelView',
     layout: 'documentation',
-    head: head('docs-forms-form-label'),
+    head: head(),
     components: {
         IInput,
         IFormGroup,

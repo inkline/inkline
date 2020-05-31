@@ -9,7 +9,7 @@ export default {
     extends: View,
     name: 'DataTableApiView',
     layout: 'documentation',
-    head: head('docs-components-dashboard-datatable-api'),
+    head: head(),
     components: {
         IDatatable,
         IAlert,

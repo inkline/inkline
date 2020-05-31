@@ -8,6 +8,6 @@ export default {
     name: 'FlexUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-flex'),
+    head: head(),
 };
 </script>

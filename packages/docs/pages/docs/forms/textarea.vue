@@ -8,7 +8,7 @@ export default {
     extends: View,
     name: 'TextareaView',
     layout: 'documentation',
-    head: head('docs-forms-textarea'),
+    head: head(),
     components: {
         ITextarea
     },

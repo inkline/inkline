@@ -7,6 +7,6 @@ export default {
     name: 'SpacingUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-spacing'),
+    head: head(),
 };
 </script>

@@ -77,7 +77,7 @@ Using the most basic table markup, here’s how tables look in Inkline. All tabl
 
 <i-alert variant="info" class="_margin-top-1">
     <template slot="icon"><i-icon icon="info" class="h4"></i-icon></template>
-    <p>If your tables require more features such as sorting, filtering and rendering, you might want to take a look at the <nuxt-link :to="{ name: 'docs-components-dashboard-datatable-introduction' }">Data Table</nuxt-link> component.</p>
+    <p>If your tables require more features such as sorting, filtering and rendering, you might want to take a look at the <nuxt-link :to="{ name: 'docs-components-datatable-introduction' }">Data Table</nuxt-link> component.</p>
 </i-alert>
 
 

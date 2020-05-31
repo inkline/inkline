@@ -8,7 +8,7 @@ export default {
     name: 'BreadcrumbView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-breadcrumb'),
+    head: head(),
     components: {
         IBreadcrumb,
         IBreadcrumbItem

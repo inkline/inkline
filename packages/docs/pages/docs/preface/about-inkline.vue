@@ -8,7 +8,7 @@ export default {
     name: 'AboutInklineView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-preface-about-inkline'),
+    head: head(),
     components: {
         IAlert,
         IIcon

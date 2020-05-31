@@ -9,7 +9,7 @@ export default {
     extends: View,
     name: 'DataTableFilteringView',
     layout: 'documentation',
-    head: head('docs-components-dashboard-datatable-filtering'),
+    head: head(),
     components: {
         IDatatable,
         IAlert,

@@ -7,6 +7,6 @@ export default {
     name: 'VisibilityUtilitiesView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-utilities-visibility'),
+    head: head(),
 };
 </script>

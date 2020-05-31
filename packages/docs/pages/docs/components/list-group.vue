@@ -8,7 +8,7 @@ export default {
     name: 'ListGroupView',
     layout: 'documentation',
     extends: View,
-    head: head('docs-components-list-group'),
+    head: head(),
     components: {
         IListGroup,
         IListGroupItem
