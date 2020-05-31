@@ -1,8 +1,8 @@
 const pages = [
     {
         id: 'index',
-        title: 'Vue.js UI/UX Framework',
-        description: 'Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications with a focus on user experience.'
+        title: 'Vue.js UI/UX Library',
+        description: 'Inkline is the customizable Vue.js UI/UX Library, designed for creating flawless responsive web applications with the best user and developer experience.'
     },
     {
         id: 'docs-preface-about-inkline',
@@ -180,6 +180,51 @@ const pages = [
         description: 'Use Inkline\'s Collapsible components to show and hide content using a smooth reveal transition.'
     },
     {
+        id: 'docs-components-datatable-introduction',
+        title: 'Introduction - Data Table',
+        description: 'Create UX-friendly tables with advanced interaction controls using the Data Table component.'
+    },
+    {
+        id: 'docs-components-datatable-sorting',
+        title: 'Sorting - Data Table',
+        description: 'Inkline\'s Data Table columns are easily sortable, in both ascending and descending order.'
+    },
+    {
+        id: 'docs-components-datatable-filtering',
+        title: 'Filtering - Data Table',
+        description: 'Inkline\'s Data Table rows are easily and efficiently filtered using a fuzzy search algorithm.'
+    },
+    {
+        id: 'docs-components-datatable-pagination',
+        title: 'Pagination - Data Table',
+        description: 'Inkline\'s Data Table can be easily paginated with smart lazy loading capabilities.'
+    },
+    {
+        id: 'docs-components-datatable-scrolling',
+        title: 'Scrolling - Data Table',
+        description: 'Inkline\'s Data Table supports a large number of columns easily using horizontal scrolling and sticky columns.'
+    },
+    {
+        id: 'docs-components-datatable-expanding',
+        title: 'Expanding - Data Table',
+        description: 'Inkline\'s Data Table allows you to expand a row to easily show more details about the entry.'
+    },
+    {
+        id: 'docs-components-datatable-events',
+        title: 'Events - Data Table',
+        description: 'Inkline\'s Data Table offers various events that you can use to interact with your data.'
+    },
+    {
+        id: 'docs-components-datatable-api',
+        title: 'API - Data Table',
+        description: 'Inkline\'s Data Table has a very intuitive and comprehensive component API for all your customization needs.'
+    },
+    {
+        id: 'docs-components-datatable-rendering',
+        title: 'Rendering - Data Table',
+        description: 'Inkline\'s Data Table columns, rows and headers can be rendered using custom render helpers.'
+    },
+    {
         id: 'docs-components-dropdown',
         title: 'Dropdown',
         description: 'Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.'
@@ -258,51 +303,6 @@ const pages = [
         id: 'docs-components-tooltip',
         title: 'Tooltip',
         description: 'Tooltips are useful for conveying information when an user hovers over an element.'
-    },
-    {
-        id: 'docs-components-dashboard-datatable-introduction',
-        title: 'Introduction - Data Table',
-        description: 'Create UX-friendly tables with advanced interaction controls using the Data Table component.'
-    },
-    {
-        id: 'docs-components-dashboard-datatable-sorting',
-        title: 'Sorting - Data Table',
-        description: 'Inkline\'s Data Table columns are easily sortable, in both ascending and descending order.'
-    },
-    {
-        id: 'docs-components-dashboard-datatable-filtering',
-        title: 'Filtering - Data Table',
-        description: 'Inkline\'s Data Table rows are easily and efficiently filtered using a fuzzy search algorithm.'
-    },
-    {
-        id: 'docs-components-dashboard-datatable-pagination',
-        title: 'Pagination - Data Table',
-        description: 'Inkline\'s Data Table can be easily paginated with smart lazy loading capabilities.'
-    },
-    {
-        id: 'docs-components-dashboard-datatable-scrolling',
-        title: 'Scrolling - Data Table',
-        description: 'Inkline\'s Data Table supports a large number of columns easily using horizontal scrolling and sticky columns.'
-    },
-    {
-        id: 'docs-components-dashboard-datatable-expanding',
-        title: 'Expanding - Data Table',
-        description: 'Inkline\'s Data Table allows you to expand a row to easily show more details about the entry.'
-    },
-    {
-        id: 'docs-components-dashboard-datatable-events',
-        title: 'Events - Data Table',
-        description: 'Inkline\'s Data Table offers various events that you can use to interact with your data.'
-    },
-    {
-        id: 'docs-components-dashboard-datatable-api',
-        title: 'API - Data Table',
-        description: 'Inkline\'s Data Table has a very intuitive and comprehensive component API for all your customization needs.'
-    },
-    {
-        id: 'docs-components-dashboard-datatable-rendering',
-        title: 'Rendering - Data Table',
-        description: 'Inkline\'s Data Table columns, rows and headers can be rendered using custom render helpers.'
     },
     {
         id: 'docs-utilities-border',

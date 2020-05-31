@@ -76,6 +76,24 @@
                 <li><nuxt-link :to="{ name: 'docs-components-button-group' }">Button Group</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-components-card' }">Card</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-components-collapsible' }">Collapsible</nuxt-link></li>
+                <li>
+                    <i-collapsible :class="{ '-active': subroutes['docs-components-datatable'] }"
+                                   v-model="menu['docs-components-datatable']">
+                        <i-collapsible-item title="DataTable" id="docs-components-datatable">
+                            <ul>
+                                <li><nuxt-link :to="{ name: 'docs-components-datatable-introduction' }">Introduction</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-components-datatable-sorting' }">Sorting</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-components-datatable-filtering' }">Filtering</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-components-datatable-pagination' }">Pagination</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-components-datatable-scrolling' }">Scrolling</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-components-datatable-expanding' }">Expanding</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-components-datatable-events' }">Events</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-components-datatable-rendering' }">Rendering</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-components-datatable-api' }">API & Variables</nuxt-link></li>
+                            </ul>
+                        </i-collapsible-item>
+                    </i-collapsible>
+                </li>
                 <li><nuxt-link :to="{ name: 'docs-components-dropdown' }">Dropdown</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-components-hamburger-menu' }">Hamburger</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-components-header' }">Header</nuxt-link></li>
@@ -92,29 +110,6 @@
                 <li><nuxt-link :to="{ name: 'docs-components-sidebar' }">Sidebar</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-components-tabs' }">Tabs</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-components-tooltip' }">Tooltip</nuxt-link></li>
-            </ul>
-        </li>
-        <li>
-            <span>Dashboard Components</span>
-            <ul>
-                <li>
-                    <i-collapsible :class="{ '-active': subroutes['docs-components-dashboard-datatable'] }"
-                                   v-model="menu['docs-components-dashboard-datatable']">
-                        <i-collapsible-item title="DataTable" id="docs-components-dashboard-datatable">
-                            <ul>
-                                <li><nuxt-link :to="{ name: 'docs-components-dashboard-datatable-introduction' }">Introduction</nuxt-link></li>
-                                <li><nuxt-link :to="{ name: 'docs-components-dashboard-datatable-sorting' }">Sorting</nuxt-link></li>
-                                <li><nuxt-link :to="{ name: 'docs-components-dashboard-datatable-filtering' }">Filtering</nuxt-link></li>
-                                <li><nuxt-link :to="{ name: 'docs-components-dashboard-datatable-pagination' }">Pagination</nuxt-link></li>
-                                <li><nuxt-link :to="{ name: 'docs-components-dashboard-datatable-scrolling' }">Scrolling</nuxt-link></li>
-                                <li><nuxt-link :to="{ name: 'docs-components-dashboard-datatable-expanding' }">Expanding</nuxt-link></li>
-                                <li><nuxt-link :to="{ name: 'docs-components-dashboard-datatable-events' }">Events</nuxt-link></li>
-                                <li><nuxt-link :to="{ name: 'docs-components-dashboard-datatable-rendering' }">Rendering</nuxt-link></li>
-                                <li><nuxt-link :to="{ name: 'docs-components-dashboard-datatable-api' }">API & Variables</nuxt-link></li>
-                            </ul>
-                        </i-collapsible-item>
-                    </i-collapsible>
-                </li>
             </ul>
         </li>
         <li>
