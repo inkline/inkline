@@ -17,7 +17,7 @@ export default {
     data() {
         return {
             menu: {
-                'docs-components-dashboard-datatable': [],
+                'docs-components-datatable': [],
                 'docs-forms-validation': []
             }
         }
