@@ -1,6 +1,6 @@
 # Inkline - Vue CLI Plugin
 
-[Inkline](https://github.com/inkline/inkline) UI/UX Framework Plugin for [Vue CLI](https://github.com/vuejs/vue-cli)
+[Vue CLI](https://github.com/vuejs/vue-cli) Plugin for [Inkline](https://github.com/inkline/inkline), the customizable Vue.js UI/UX Library.
 
 ## Install
 

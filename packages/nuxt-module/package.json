@@ -1,7 +1,7 @@
 {
   "name": "@inkline/nuxt",
   "version": "2.1.1",
-  "description": "Nuxt.js module for Inkline, the UI/UX Framework for Vue.js.",
+  "description": "Nuxt.js Module for Inkline, the customizable Vue.js UI/UX Library.",
   "main": "index.js",
   "scripts": {
     "test": "jest",

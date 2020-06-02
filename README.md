@@ -82,7 +82,11 @@ import Inkline from '@inkline/inkline';
 Vue.use(Inkline);
 ~~~
 
-Next, start using the many components that Inkline has to offer.
+For detailed usage options, refer to the following: 
+- [Vue CLI](https://inkline.io/docs/introduction/installation#vue-cli)
+- [Nuxt.js Module](https://inkline.io/docs/introduction/installation#nuxt-js-module)
+
+Next, start using the many components that Inkline has to offer. [Read the documentation](https://inkline.io/docs/preface/about-inkline).
 
 ## CDN
 
