@@ -139,7 +139,7 @@
 
 .feature-box-link {
     .feature-box {
-        transition: box-shadow 0.3s ease;
+        transition: box-shadow $transition-duration $transition-easing, background-color $transition-duration $transition-easing;
     }
 
     &:hover {
@@ -188,8 +188,47 @@
     background-color: colors('gray-20');
 
     .feature-box {
+        &:hover {
+            background-color: $color-primary;
+            color: $color-white;
+
+            .body {
+                border-color: $color-primary;
+            }
+
+            p {
+                color: rgba($color-white, 0.75);
+            }
+        }
+
         p {
             margin-bottom: $spacer * 1.5;
+        }
+
+        @include breakpoint(md) {
+            flex-direction: row;
+            align-items: center;
+
+            img {
+                width: 33%;
+                height: 33%;
+            }
+
+            .body {
+                border: 0;
+            }
+        }
+    }
+
+    .column {
+        @include breakpoint-down(md) {
+            .feature-box {
+                margin-bottom: $spacer;
+            }
+
+            &:last-child .feature-box {
+                margin-bottom: 0;
+            }
         }
     }
 }
