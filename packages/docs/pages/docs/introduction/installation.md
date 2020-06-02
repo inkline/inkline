@@ -102,7 +102,26 @@ Vue.use(Inkline, {
     components: {},
     config: {
         validation: {
-            on: ['input']
+            on: ['input'],
+            keys: {
+                VALUE: 'value',
+                NAME: 'name',
+                FIELDS: 'fields',
+                VALIDATE: 'validate',
+                VALIDATE_ON: 'validateOn',
+                VALIDATORS: 'validators',
+                INVALID: 'invalid',
+                VALID: 'valid',
+                TOUCH: 'touch',
+                TOUCHED: 'touched',
+                UNTOUCHED: 'untouched',
+                DIRTY: 'dirty',
+                PRISTINE: 'pristine',
+                SET: 'set',
+                ADD: 'add',
+                REMOVE: 'remove',
+                ERRORS: 'errors'
+            }       
         },
         variant: 'light',
         autodetectVariant: false
