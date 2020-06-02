@@ -12,6 +12,7 @@ import {
     SizePropertyMixin,
     TabIndexPropertyMixin
 } from '@inkline/inkline/src/mixins';
+import { FormBuilder } from '@inkline/inkline/src/factories/FormBuilder';
 
 export default {
     name: 'IFormGroup',
@@ -51,7 +52,7 @@ export default {
     created() {
         this.classesProvider.add(() => ({
             '-inline': this.inline,
-            '-error': this.inputSchema && this.inputSchema.invalid
+            '-error': this.inputSchema && this.inputSchema[FormBuilder.keys.INVALID]
         }));
     }
 };

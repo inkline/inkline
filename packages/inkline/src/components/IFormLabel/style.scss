@@ -9,6 +9,7 @@
 .form-label {
     position: relative;
     flex-basis: 100%;
+    transition: color $transition-easing $transition-duration;
 
     &.-right {
         margin-right: 0;
@@ -16,6 +17,10 @@
     }
 
     @extend .form-label.-md;
+}
+
+.form-group.-error > .form-label {
+    color: $label-error-color;
 }
 
 .form-group.-inline > .form-label {

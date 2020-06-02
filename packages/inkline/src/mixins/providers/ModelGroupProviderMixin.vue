@@ -1,4 +1,6 @@
 <script>
+import { FormBuilder } from '@inkline/inkline/src/factories/FormBuilder';
+
 export default {
     props: {
         value: {
@@ -21,7 +23,7 @@ export default {
             get() {
                 const target = this.isGrouped ? this.parentFormGroup : this;
 
-                return target.schema ? target.schema.value : target.value;
+                return target.schema ? target.schema[FormBuilder.keys.VALUE] : target.value;
             },
             set (value) {
                 if (this.isGrouped) {

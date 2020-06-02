@@ -6,7 +6,8 @@ export const Inkline = {
     install(Vue, options = {}) {
         const config = {
             validation: {
-                on: ['input'],
+                validateOn: ['input'],
+                keys: {},
                 ...options.config?.validation
             },
             variant: 'light',
@@ -45,11 +46,12 @@ export const Inkline = {
                     }
                 },
                 /**
-                 *
+                 * Set up variant and form configuration on create
                  */
                 created() {
+                    // Configure variant
+                    //
                     let setVariant;
-
                     this.config.variant = null;
 
                     if (this.config.autodetectVariant) {
@@ -59,6 +61,10 @@ export const Inkline = {
                     }
 
                     setTimeout(() => this.config.variant = setVariant, 0);
+
+                    // Configure form builder
+                    //
+                    FormBuilder.configure(config.validation);
                 }
             }),
 
@@ -66,7 +72,9 @@ export const Inkline = {
              * Config getter used for accessing and setting reactive values
              * inside components using this.$inkline.config
              */
-            get config() { return this._vm?.$data.config },
+            get config() {
+                return this._vm?.$data.config
+            },
 
             /**
              * Form builder wrapper used to create a root form schema

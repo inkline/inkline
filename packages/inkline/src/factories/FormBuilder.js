@@ -1,6 +1,9 @@
 import * as validators from "@inkline/inkline/src/validators";
 
 export class FormBuilder {
+    /**
+     * Default form validation state that will be assigned to each field
+     */
     static defaultFormState = {
         touched: false,
         untouched: true,
@@ -11,9 +14,35 @@ export class FormBuilder {
         errors: {}
     };
 
+    /**
+     * Default form control state that will be assigned to each value field
+     */
     static defaultFormControlState = {
         value: '',
         validateOn: 'input'
+    };
+
+    /**
+     * Validation field keywords
+     */
+    static keys = {
+        VALUE: 'value',
+        NAME: 'name',
+        FIELDS: 'fields',
+        VALIDATE: 'validate',
+        VALIDATE_ON: 'validateOn',
+        VALIDATORS: 'validators',
+        INVALID: 'invalid',
+        VALID: 'valid',
+        TOUCH: 'touch',
+        TOUCHED: 'touched',
+        UNTOUCHED: 'untouched',
+        DIRTY: 'dirty',
+        PRISTINE: 'pristine',
+        SET: 'set',
+        ADD: 'add',
+        REMOVE: 'remove',
+        ERRORS: 'errors',
     };
 
     /**
@@ -22,6 +51,7 @@ export class FormBuilder {
      * @type {string[]}
      */
     static reservedSchemaFields = [
+        'value',
         'name',
         'fields',
         'validate',
@@ -40,6 +70,30 @@ export class FormBuilder {
         'errors'
     ];
 
+    /**
+     * Configure form validation fields and behaviour
+     *
+     * @param options
+     */
+    static configure(options = {}) {
+        FormBuilder.keys = { ...FormBuilder.keys, ...options.keys };
+        FormBuilder.reservedSchemaFields = Object.values(FormBuilder.keys);
+
+        FormBuilder.defaultFormControlState = {
+            [FormBuilder.keys.VALUE]: FormBuilder.defaultFormControlState.value,
+            [FormBuilder.keys.VALIDATE_ON]: options.validateOn || FormBuilder.defaultFormControlState.validateOn
+        };
+
+        FormBuilder.defaultFormState = {
+            [FormBuilder.keys.TOUCHED]: false,
+            [FormBuilder.keys.UNTOUCHED]: true,
+            [FormBuilder.keys.DIRTY]: false,
+            [FormBuilder.keys.PRISTINE]: true,
+            [FormBuilder.keys.INVALID]: false,
+            [FormBuilder.keys.VALID]: true,
+            [FormBuilder.keys.ERRORS]: {}
+        };
+    }
 
     /**
      * Returns an array of the input's parent schemas starting from the root, and ending with the
@@ -51,7 +105,7 @@ export class FormBuilder {
     static getSchemaList(schema, rootSchema) {
         if (schema === rootSchema) { return [schema]; }
 
-        const parentFormGroupKeys = schema.name
+        const parentFormGroupKeys = schema[FormBuilder.keys.NAME]
             .replace(/\[['"]?([^'"\]])['"]?]/g, '.$1')
             .split('.');
 
@@ -61,7 +115,7 @@ export class FormBuilder {
                 .reduce((acc, key) => acc && acc[key], rootSchema));
 
         if (!parentSchemaList[parentSchemaList.length - 1].hasOwnProperty(parentFormGroupKeys[parentFormGroupKeys.length - 1])) {
-            throw new Error(`Could not retrieve schema tree for input with name ${schema.name}.`);
+            throw new Error(`Could not retrieve schema tree for input with name ${schema[FormBuilder.keys.NAME]}.`);
         }
 
         parentSchemaList.reverse();
@@ -197,12 +251,12 @@ export class FormBuilder {
             ...FormBuilder.defaultFormControlState,
             ...FormBuilder.defaultFormState,
             ...schema,
-            name,
-            validators: schema.validators || []
+            [FormBuilder.keys.NAME]: name,
+            [FormBuilder.keys.VALIDATORS]: schema[FormBuilder.keys.VALIDATORS] || []
         };
 
         // Set all validators as enabled by default
-        for (let validator of schema.validators) {
+        for (let validator of schema[FormBuilder.keys.VALIDATORS]) {
             if (!validator.hasOwnProperty('enabled')) {
                 validator.enabled = true;
             }
@@ -218,12 +272,12 @@ export class FormBuilder {
              * @param options
              * @returns {boolean}
              */
-            touch(options = {}) {
+            [FormBuilder.keys.TOUCH](options = {}) {
                 const rootSchema = options.getSchema ? options.getSchema() : buildOptions.getSchema();
 
                 FormBuilder.getSchemaList(schema, rootSchema).forEach((schemaListItem) => {
-                    schemaListItem.touched = true;
-                    schemaListItem.untouched = false;
+                    schemaListItem[FormBuilder.keys.TOUCHED] = true;
+                    schemaListItem[FormBuilder.keys.UNTOUCHED] = false;
                 });
 
                 return true;
@@ -236,7 +290,7 @@ export class FormBuilder {
              * @param options
              * @returns {{valid: boolean, errors: {length: number}}}
              */
-            validate(value, options = {}) {
+            [FormBuilder.keys.VALIDATE](value, options = {}) {
                 const rootSchema = options.getSchema ? options.getSchema() : buildOptions.getSchema();
 
                 let valid = true;
@@ -244,7 +298,7 @@ export class FormBuilder {
                     length: 0
                 };
 
-                for (let validator of schema.validators) {
+                for (let validator of schema[FormBuilder.keys.VALIDATORS]) {
                     if (!validators[validator.rule]) {
                         throw new Error(`Invalid validation rule '${validator.rule}' provided.`);
                     }
@@ -265,16 +319,16 @@ export class FormBuilder {
                  * Set validation status for each parent schema
                  */
                 FormBuilder.getSchemaList(schema, rootSchema).forEach((schemaListItem, index) => {
-                    schemaListItem.errors = errors;
-                    schemaListItem.valid = index === 0 ? valid : FormBuilder.isValidFormGroupSchema(schemaListItem);
-                    schemaListItem.invalid = !schemaListItem.valid;
-                    schemaListItem.dirty = true;
-                    schemaListItem.pristine = false;
+                    schemaListItem[FormBuilder.keys.ERRORS] = errors;
+                    schemaListItem[FormBuilder.keys.VALID] = index === 0 ? valid : FormBuilder.isValidFormGroupSchema(schemaListItem);
+                    schemaListItem[FormBuilder.keys.INVALID] = !schemaListItem[FormBuilder.keys.VALID];
+                    schemaListItem[FormBuilder.keys.DIRTY] = true;
+                    schemaListItem[FormBuilder.keys.PRISTINE] = false;
                 });
 
                 return {
-                    valid,
-                    errors
+                    [FormBuilder.keys.VALID]: valid,
+                    [FormBuilder.keys.ERRORS]: errors
                 }
             }
         });
@@ -307,8 +361,8 @@ export class FormBuilder {
         schema = schema.constructor === Array ? schema.slice(0) : { ...schema };
 
         // Set schema fields
-        schema.name = name;
-        schema.fields = fields;
+        schema[FormBuilder.keys.NAME] = name;
+        schema[FormBuilder.keys.FIELDS] = fields;
 
         // Set current form as root schema
         const buildOptions = options.getSchema || options.root ? {
@@ -322,7 +376,7 @@ export class FormBuilder {
             }
 
             const fieldSchema = schema[fieldName];
-            const schemaHasFormControlProperties = ['validators', 'value'].some((key) => fieldSchema.hasOwnProperty(key));
+            const schemaHasFormControlProperties = [FormBuilder.keys.VALIDATORS, FormBuilder.keys.VALUE].some((key) => fieldSchema.hasOwnProperty(key));
             const schemaIsEmptyObject = Object.keys(fieldSchema).length === 0;
             const schemaIsArray = fieldSchema.constructor === Array;
             const schemaIsGroup = !(schemaHasFormControlProperties || schemaIsEmptyObject) || schemaIsArray;
@@ -345,19 +399,19 @@ export class FormBuilder {
          * @param options
          * @returns {{valid: boolean}}
          */
-        schema.validate = (options = {}) => {
+        schema[FormBuilder.keys.VALIDATE] = (options = {}) => {
             for (const key in schema) {
-                if (schema.hasOwnProperty(key) && schema[key] && schema[key].validate) {
-                    if (schema[key].fields) {
-                        schema[key].validate({ ...buildOptions, ...options });
+                if (schema.hasOwnProperty(key) && schema[key] && schema[key][FormBuilder.keys.VALIDATE]) {
+                    if (schema[key][FormBuilder.keys.FIELDS]) {
+                        schema[key][FormBuilder.keys.VALIDATE]({ ...buildOptions, ...options });
                     } else {
-                        schema[key].validate(schema[key].value, { ...buildOptions, ...options });
+                        schema[key][FormBuilder.keys.VALIDATE](schema[key][FormBuilder.keys.VALUE], { ...buildOptions, ...options });
                     }
                 }
             }
 
             return {
-                valid: schema.valid
+                [FormBuilder.keys.VALID]: schema[FormBuilder.keys.VALID]
             };
         };
 
@@ -369,11 +423,11 @@ export class FormBuilder {
                  * @param item
                  * @param options
                  */
-                add(item, options = {}) {
+                [FormBuilder.keys.ADD](item, options = {}) {
                     schema.push(FormBuilder.build(nameNesting.concat([schema.length]).join('.'), item, {
                         ...buildOptions, ...options
                     }));
-                    schema.fields.push((schema.length - 1).toString());
+                    schema[FormBuilder.keys.FIELDS].push((schema.length - 1).toString());
                 },
 
                 /**
@@ -384,20 +438,20 @@ export class FormBuilder {
                  * @param item
                  * @param options
                  */
-                remove(start, deleteCount, item, options = {}) {
+                [FormBuilder.keys.REMOVE](start, deleteCount, item, options = {}) {
                     if (item) {
                         schema.splice(start, deleteCount, FormBuilder.build(nameNesting.concat([start]).join('.'), item, {
                             ...buildOptions, ...options
                         }));
-                        schema.fields.splice(start, deleteCount, start);
+                        schema[FormBuilder.keys.FIELDS].splice(start, deleteCount, start);
                     } else {
                         schema.splice(start, deleteCount);
-                        schema.fields.splice(start, deleteCount);
+                        schema[FormBuilder.keys.FIELDS].splice(start, deleteCount);
                     }
 
                     for (let index = start; index < schema.length; index += 1) {
-                        schema[index].name = schema[index].name.replace(/[0-9]+$/, index);
-                        schema.fields[index] = index.toString();
+                        schema[index][FormBuilder.keys.NAME] = schema[index][FormBuilder.keys.NAME].replace(/[0-9]+$/, index);
+                        schema[FormBuilder.keys.FIELDS][index] = index.toString();
                     }
                 }
             });
@@ -411,12 +465,12 @@ export class FormBuilder {
              * @param item
              * @param options
              */
-            set(name, item, options={}) {
+            [FormBuilder.keys.SET](name, item, options={}) {
                 if (!options.instance) {
                     throw new Error('Please make sure you provide the Vue instance inside the options object as options.instance.');
                 }
 
-                options.instance.$set(schema, 'fields', schema.fields.concat([name]));
+                options.instance.$set(schema, FormBuilder.keys.FIELDS, schema[FormBuilder.keys.FIELDS].concat([name]));
                 options.instance.$set(schema, name, FormBuilder.build(nameNesting.concat([name]).join('.'), item, {
                     ...buildOptions, ...options
                 }));
