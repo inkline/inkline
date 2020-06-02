@@ -66,44 +66,41 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
 <i-code-preview title="Form Example">
 <i-form v-model="form" @submit="submitForm">
     <i-form-group>
-        <i-form-label>Input</i-form-label>
-        <i-input :schema="form.input" placeholder="Enter your first name.." />
+        <i-form-label>Project Title</i-form-label>
+        <i-input :schema="form.title" placeholder="Enter a project title.." />
     </i-form-group>
     <i-form-group>
-        <i-form-label>Textarea</i-form-label>
-        <i-textarea :schema="form.textarea" placeholder="Write a comment.." />
+        <i-form-label>Project Description</i-form-label>
+        <i-textarea :schema="form.description" placeholder="Write a project description.." />
     </i-form-group>
     <i-form-group>
         <i-form-group>
-            <i-form-label>Select</i-form-label>
-            <i-select :schema="form.group.select" placeholder="Choose an option">
-                <i-select-option value="a" label="Option A" />
-                <i-select-option value="b" label="Option B" />
-                <i-select-option value="c" label="Option C" disabled />
+            <i-form-label>Project Type</i-form-label>
+            <i-select :schema="form.details.type" placeholder="Choose an option">
+                <i-select-option value="a" label="Admin Dashboard" />
+                <i-select-option value="b" label="eCommerce" />
+                <i-select-option value="c" label="Portfolio" />
+                <i-select-option value="d" label="Blog" disabled />
             </i-select>
         </i-form-group>
         <i-form-group>
-            <i-form-label>Boolean</i-form-label><br />
-            <i-checkbox :schema="form.group.checked">I agree</i-checkbox>
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Checkbox</i-form-label>
-            <i-checkbox-group :schema="form.group.checkbox">
-                <i-checkbox value="Football">Football</i-checkbox>
-                <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-                <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
+            <i-form-label>Project Labels</i-form-label>
+            <i-checkbox-group :schema="form.details.labels">
+                <i-checkbox value="Design">Design</i-checkbox>
+                <i-checkbox value="Development">Development</i-checkbox>
+                <i-checkbox value="Testing" disabled>Testing</i-checkbox>
             </i-checkbox-group>
         </i-form-group>
         <i-form-group>
-            <i-form-label>Radio</i-form-label>
-            <i-radio-group :schema="form.group.radio">
-                <i-radio :value="true">Accept</i-radio>
-                <i-radio :value="false">Decline</i-radio>
+            <i-form-label>Publish</i-form-label>
+            <i-radio-group :schema="form.details.published">
+                <i-radio :value="true">Published</i-radio>
+                <i-radio :value="false">Unpublished</i-radio>
             </i-radio-group>
         </i-form-group>
     </i-form-group>
     <i-form-group>
-        <i-button type="submit">Submit</i-button>
+        <i-button type="submit">Create Project</i-button>
     </i-form-group>
 </i-form>
 <template slot="html">
@@ -111,46 +108,41 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
 ~~~html
 <i-form v-model="form" @submit="submitForm">
     <i-form-group>
-        <i-form-label>Input</i-form-label>
-        <i-input :schema="form.input" placeholder="Enter your first name.." />
+        <i-form-label>Project Title</i-form-label>
+        <i-input :schema="form.title" placeholder="Enter a project title.." />
     </i-form-group>
-    
     <i-form-group>
-        <i-form-label>Textarea</i-form-label>
-        <i-textarea :schema="form.textarea" placeholder="Write a comment.." />
+        <i-form-label>Project Description</i-form-label>
+        <i-textarea :schema="form.description" placeholder="Write a project description.." />
     </i-form-group>
-    
     <i-form-group>
         <i-form-group>
-            <i-form-label>Select</i-form-label>
-            <i-select :schema="form.group.select" placeholder="Choose an option">
-                <i-select-option value="a" label="Option A" />
-                <i-select-option value="b" label="Option B" />
-                <i-select-option value="c" label="Option C" disabled />
+            <i-form-label>Project Type</i-form-label>
+            <i-select :schema="form.details.type" placeholder="Choose a project type">
+                <i-select-option value="a" label="Admin Dashboard" />
+                <i-select-option value="b" label="eCommerce" />
+                <i-select-option value="c" label="Portfolio" />
+                <i-select-option value="d" label="Blog" disabled />
             </i-select>
         </i-form-group>
-
         <i-form-group>
-            <i-form-label>Boolean</i-form-label><br />
-            <i-checkbox :schema="form.group.checked">I agree</i-checkbox>
-        </i-form-group>
-
-        <i-form-group>
-            <i-form-label>Checkbox</i-form-label>
-            <i-checkbox-group :schema="form.group.checkbox">
-                <i-checkbox value="Football">Football</i-checkbox>
-                <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-                <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
+            <i-form-label>Project Labels</i-form-label>
+            <i-checkbox-group :schema="form.details.labels">
+                <i-checkbox value="Design">Design</i-checkbox>
+                <i-checkbox value="Development">Development</i-checkbox>
+                <i-checkbox value="Testing" disabled>Testing</i-checkbox>
             </i-checkbox-group>
         </i-form-group>
-
         <i-form-group>
-            <i-form-label>Radio</i-form-label>
-            <i-radio-group :schema="form.group.radio">
-                <i-radio :value="true">Accept</i-radio>
-                <i-radio :value="false">Decline</i-radio>
+            <i-form-label>Publish</i-form-label>
+            <i-radio-group :schema="form.details.published">
+                <i-radio :value="true">Published</i-radio>
+                <i-radio :value="false">Unpublished</i-radio>
             </i-radio-group>
         </i-form-group>
+    </i-form-group>
+    <i-form-group>
+        <i-button type="submit">Create Project</i-button>
     </i-form-group>
 </i-form>
 ~~~
@@ -163,40 +155,46 @@ export default {
     data () {
         return {
             form: this.$inkline.form({
-                input: {
+                name: {
                     validators: [
-                        { rule: 'required', message: 'Input is required.' }
+                        { rule: 'required', message: 'The project name cannot be empty.' }
                     ]
                 },
-                textarea: {
+                description: {
                     validators: [
-                        { rule: 'required', message: 'Textarea is required.' }
+                        { rule: 'required', message: 'The project description is required.' }
                     ]
                 },
-                group: {
-                    select: {
-                        value: 'a',
+                details: {
+                    title: {
                         validators: [
-                            { rule: 'required', message: 'Select is required.' }
+                            { rule: 'required', message: 'Please provide a project title.' }
                         ]
                     },
-                    checked: {
-                        value: true,
+                    description: {
                         validators: [
-                            { rule: 'required', message: 'Checkbox is required.', invalidateFalse: true }
+                            { rule: 'required', message: 'Please write a project description.' }
                         ]
                     },
-                    checkbox: {
-                        value: ['Football'],
-                        validators: [
-                            { rule: 'minLength', value: 1, message: 'At least one checkbox is required.' }
-                        ]
-                    },
-                    radio: {
-                        value: true,
-                        validators: [
-                            { rule: 'required', message: 'Radio is required.', invalidateFalse: true }
-                        ]
+                    details: {
+                        type: {
+                            value: 'a',
+                            validators: [
+                                { rule: 'required', message: 'The project type is required.' }
+                            ]
+                        },
+                        labels: {
+                            value: ['Design', 'Testing'],
+                            validators: [
+                                { rule: 'minLength', value: 2, message: 'At least two labels are required.' }
+                            ]
+                        },
+                        published: {
+                            value: true,
+                            validators: [
+                                { rule: 'required', message: 'Publishing is required.', invalidateFalse: true }
+                            ]
+                        }
                     }
                 }
             })

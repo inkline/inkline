@@ -57,7 +57,9 @@ export default {
 </template>
 </i-code-preview>
 
-<i-alert variant="info" class="-code"><template slot="icon"><i class="inkline-icon -info h3"></i></template>The following keywords are reserved for validation purpopses and cannot be used as field names:<div class="_margin-top-1-2"></div>`name`, `fields`, `validate`, `validateOn`, `validators`, `invalid`, `valid`, `touch`, `touched`, `untouched`, `dirty`, `pristine`, `set`, `add`, `remove`, `errors`.</i-alert> 
+<i-alert variant="info" class="-code"><template slot="icon"><i class="inkline-icon -info h3"></i></template>The following keywords are reserved for validation purpopses and cannot be used as field names:<div class="_margin-top-1-2"></div>`name`, `value`, `fields`, `validate`, `validateOn`, `validators`, `invalid`, `valid`, `touch`, `touched`, `untouched`, `dirty`, `pristine`, `set`, `add`, `remove`, `errors`.</i-alert> 
+
+If needed, you can change the reserved validation keywords / field names by updating the <nuxt-link :to="{ name: 'docs-introduction-installation' }">Plugin Options</nuxt-link>.
 
 ### Input Default Value
 Providing a default value for a schema field can be done using the `value` field as follows:

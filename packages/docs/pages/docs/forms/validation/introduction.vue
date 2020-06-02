@@ -27,39 +27,33 @@ export default {
     data() {
         return {
             form: this.$inkline.form({
-                input: {
+                title: {
                     validators: [
-                        { rule: 'required', message: 'Input is required.' }
+                        { rule: 'required', message: 'Please provide a project title.' }
                     ]
                 },
-                textarea: {
+                description: {
                     validators: [
-                        { rule: 'required', message: 'Textarea is required.' }
+                        { rule: 'required', message: 'Please write a project description.' }
                     ]
                 },
-                group: {
-                    select: {
+                details: {
+                    type: {
                         value: 'a',
                         validators: [
-                            { rule: 'required', message: 'Select is required.' }
+                            { rule: 'required', message: 'The project type is required.' }
                         ]
                     },
-                    checked: {
+                    labels: {
+                        value: ['Design', 'Testing'],
+                        validators: [
+                            { rule: 'minLength', value: 2, message: 'At least two labels are required.' }
+                        ]
+                    },
+                    published: {
                         value: true,
                         validators: [
-                            { rule: 'required', message: 'Checkbox is required.', invalidateFalse: true }
-                        ]
-                    },
-                    checkbox: {
-                        value: ['Football'],
-                        validators: [
-                            { rule: 'minLength', value: 1, message: 'At least one checkbox is required.' }
-                        ]
-                    },
-                    radio: {
-                        value: true,
-                        validators: [
-                            { rule: 'required', message: 'Radio is required.', invalidateFalse: true }
+                            { rule: 'required', message: 'Publishing is required.', invalidateFalse: true }
                         ]
                     }
                 }
