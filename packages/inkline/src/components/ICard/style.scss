@@ -14,6 +14,7 @@
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
+    transition: background-color $transition-duration $transition-easing;
 
     > hr {
         margin-right: 0;
@@ -64,6 +65,7 @@
         flex: 1 1 auto;
         border-width: $card-border-width;
         border-style: solid;
+        transition: border-color $transition-duration $transition-easing;
 
         &:not(:first-child) {
             border-top-left-radius: 0;
@@ -96,6 +98,11 @@
 
     > img {
         width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+    }
+
+    > .header,
+    > .footer {
+        transition: background-color $transition-duration $transition-easing;
     }
 
     // Default card size

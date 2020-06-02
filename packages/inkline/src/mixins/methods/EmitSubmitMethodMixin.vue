@@ -1,4 +1,6 @@
 <script>
+import { FormBuilder } from '@inkline/inkline/src/factories/FormBuilder';
+
 export default {
     methods: {
         /**
@@ -8,9 +10,9 @@ export default {
             event.preventDefault();
 
             if (this.schema) {
-                this.schema.validate(this.validationOptions);
+                this.schema[FormBuilder.keys.VALIDATE](this.validationOptions);
 
-                if (this.schema.invalid) {
+                if (this.schema[FormBuilder.keys.INVALID]) {
                     return;
                 }
             }

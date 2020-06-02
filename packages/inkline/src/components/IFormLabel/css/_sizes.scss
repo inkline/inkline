@@ -15,6 +15,7 @@
     $_margin: map_get($label-margin, $size);
     $_font-size: map_get($label-font-size, $size);
 
+    .form.-#{$size} .form-label,
     .form-group.-#{$size} > .form-label,
     .form-label.-#{$size} {
         font-size: $_font-size;

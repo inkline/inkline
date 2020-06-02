@@ -21,6 +21,7 @@ import {
 } from '@inkline/inkline/src/mixins';
 import { SchemaProviderMixin } from '@inkline/inkline/src/mixins';
 import { hashString, querySelectorAll, uid, isMobile } from "@inkline/inkline/src/helpers";
+import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
 
 export default {
     name: 'ISelect',
@@ -134,7 +135,7 @@ export default {
         this.$on('init', this.initElements);
 
         if (this.schema) {
-            this.setLabelModel(this.schema.value);
+            this.setLabelModel(this.schema[FormBuilder.keys.VALUE]);
         } else if (this.value) {
             this.setLabelModel(this.value);
         }
