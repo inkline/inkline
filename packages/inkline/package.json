@@ -1,7 +1,7 @@
 {
   "name": "@inkline/inkline",
   "version": "2.1.1",
-  "description": "Inkline is a modern UI/UX framework for Vue.js, designed for creating flawless content-rich responsive web applications",
+  "description": "Inkline is the customizable Vue.js UI/UX Library, designed for creating flawless content-rich responsive web applications",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
     "build": "npm run build:inkline",

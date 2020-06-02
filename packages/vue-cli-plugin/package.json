@@ -1,7 +1,7 @@
 {
     "name": "@inkline/vue-cli-plugin-inkline",
     "version": "2.1.1",
-    "description": "Inkline UI/UX Framework Plugin for Vue CLI",
+    "description": "Vue CLI Plugin for Inkline, the customizable Vue.js UI/UX Library",
     "main": "index.js",
     "scripts": {
         "test": "jest",

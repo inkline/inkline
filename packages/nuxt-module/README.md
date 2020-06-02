@@ -1,6 +1,6 @@
 # Inkline - Nuxt Module
 
-Get the best out of your [Nuxt.js](https://github.com/nuxt/nuxt.js) application using the [Inkline](https://github.com/inkline/inkline) UI/UX Framework Module.
+Get the best out of your [Nuxt.js](https://github.com/nuxt/nuxt.js) application using the [Inkline](https://github.com/inkline/inkline) UI/UX Library Nuxt Module.
 
 ## Installation
 
@@ -31,8 +31,13 @@ Optionally, you can configure your Inkline Nuxt.js Module using the following co
 module.exports = {
     modules: [ '@inkline/nuxt' ],
     inkline: {
-        treeShaking: true,
-        scss: true
+        config: {
+            validation: {
+                on: ['input']
+            },
+            variant: 'light',
+            autodetectVariant: false
+        }
     }
 }
 ```
@@ -42,15 +47,4 @@ Inkline uses Sass, so you will need to install it as a dependency:
 `npm install -D node-sass sass-loader`
 
 ### Tree Shaking
-You can explicitly import only specific components from Inkline adding them to the `components` option.
-
-```js
-module.exports = {
-    modules: [ '@inkline/nuxt' ],
-    inkline: {
-        treeShaking: true,
-        scss: true,
-        components: [ 'IButton', 'IForm', 'IInput' ]
-    }
-}
-```
+Inkline automatically takes care of tree shaking using `@nuxt/component`, therefore you don't need to worry about importing anything.
