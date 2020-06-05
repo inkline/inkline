@@ -44,6 +44,16 @@ describe('Factories', () => {
             });
         });
 
+        describe('configure()', () => {
+            it('should be defined', () => {
+                expect(FormBuilder.configure).toBeDefined();
+            });
+
+            it('should set form validation keys', () => {
+                expect(() => FormBuilder.configure()).not.toThrow();
+            });
+        });
+
         describe('build()', () => {
             it('should be defined', () => {
                 expect(FormBuilder.build).toBeDefined();

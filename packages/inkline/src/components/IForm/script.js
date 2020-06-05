@@ -53,10 +53,12 @@ export default {
 
         /**
          * Callback on form control input event
+         *
+         * @param formControl
          */
-        onFormControlInput(input) {
+        onFormControlInput(formControl) {
             return (value) => {
-                input.schema[FormBuilder.keys.VALUE] = value;
+                formControl.schema[FormBuilder.keys.VALUE] = value;
 
                 this.$emit('input', this.value);
             };
@@ -64,41 +66,44 @@ export default {
 
         /**
          * Callback on form control input event
+         *
+         * @param formControl
          */
-        onFormControlBlur(input) {
+        onFormControlBlur(formControl) {
             return () => {
-                input.schema[FormBuilder.keys.TOUCH]({ getSchema: this.getSchema });
+                formControl.schema[FormBuilder.keys.TOUCH]({ getSchema: this.getSchema });
             };
         },
 
         /**
          * Callback on form control input event
+         *
+         * @param formControl
          */
-        onFormControlValidate(input, event) {
+        onFormControlValidate(formControl, event) {
             const eventFn = eventValueMap[event] ? eventValueMap[event] : eventValueMap.input;
 
             return (value) => {
-                input.schema[FormBuilder.keys.VALIDATE](eventFn(value), { getSchema: this.getSchema });
+                formControl.schema[FormBuilder.keys.VALIDATE](eventFn(value), { getSchema: this.getSchema });
 
-                this.$emit('validate', this.schema);
+                this.$emit('validate', this.value);
             };
         },
 
         /**
          * Retrieve validateOn field based as array of events, also taking the validation config into account
          *
-         * @param input
-         * @returns {*}
+         * @param formControl
          */
-        getFormControlValidationEvents(input) {
+        getFormControlValidationEvents(formControl) {
             let validateOn = [];
 
-            if (input.schema[FormBuilder.keys.VALIDATE_ON]) {
-                validateOn = input.schema[FormBuilder.keys.VALIDATE_ON].constructor === Array ?
-                    input.schema[FormBuilder.keys.VALIDATE_ON] :
-                    [input.schema[FormBuilder.keys.VALIDATE_ON]];
+            if (formControl.schema[FormBuilder.keys.VALIDATE_ON]) {
+                validateOn = formControl.schema[FormBuilder.keys.VALIDATE_ON].constructor === Array ?
+                    formControl.schema[FormBuilder.keys.VALIDATE_ON] :
+                    [formControl.schema[FormBuilder.keys.VALIDATE_ON]];
             } else {
-                validateOn = this.$inkline.config.validation.on;
+                validateOn = this.$inkline.config.validation.validateOn;
             }
 
             return validateOn;
@@ -107,28 +112,28 @@ export default {
         /**
          * Add required schema event listeners for one of the form's child inputs
          *
-         * @param input
+         * @param formControl
          */
-        add(input) {
-            input.$on('input', this.onFormControlInput(input));
-            input.$on('blur', this.onFormControlBlur(input));
+        add(formControl) {
+            formControl.$on('input', this.onFormControlInput(formControl));
+            formControl.$on('blur', this.onFormControlBlur(formControl));
 
-            this.getFormControlValidationEvents(input).forEach((event) => {
-                input.$on(event, this.onFormControlValidate(input, event));
+            this.getFormControlValidationEvents(formControl).forEach((event) => {
+                formControl.$on(event, this.onFormControlValidate(formControl, event));
             });
         },
 
         /**
          * Remove event listeners for one of the form's child inputs
          *
-         * @param input
+         * @param formControl
          */
-        remove(input) {
-            input.$off('input', this.onFormControlInput(input));
-            input.$off('blur', this.onFormControlBlur(input));
+        remove(formControl) {
+            formControl.$off('input', this.onFormControlInput(formControl));
+            formControl.$off('blur', this.onFormControlBlur(formControl));
 
-            this.getFormControlValidationEvents(input).forEach((event) => {
-                input.$off(event, this.onFormControlValidate(input, event));
+            this.getFormControlValidationEvents(formControl).forEach((event) => {
+                formControl.$off(event, this.onFormControlValidate(formControl, event));
             });
 
             this.$emit('input', this.value);

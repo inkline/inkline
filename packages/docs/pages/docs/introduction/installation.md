@@ -101,8 +101,10 @@ You can configure some of Inkline's behaviour globally using the `config` field.
 Vue.use(Inkline, {
     components: {},
     config: {
+        variant: 'light',
+        autodetectVariant: false,
         validation: {
-            on: ['input'],
+            validateOn: ['input'],
             keys: {
                 VALUE: 'value',
                 NAME: 'name',
@@ -122,9 +124,7 @@ Vue.use(Inkline, {
                 REMOVE: 'remove',
                 ERRORS: 'errors'
             }       
-        },
-        variant: 'light',
-        autodetectVariant: false
+        }
     }
 });
 ~~~

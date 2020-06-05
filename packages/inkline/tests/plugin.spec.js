@@ -61,7 +61,8 @@ describe('Plugin', () => {
                                 variant: null,
                                 autodetectVariant: false,
                                 validation: {
-                                    on: ['input']
+                                    keys: {},
+                                    validateOn: ['input']
                                 }
                             }
                         });
