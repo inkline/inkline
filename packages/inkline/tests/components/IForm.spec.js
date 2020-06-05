@@ -55,9 +55,15 @@ describe('Components', () => {
             let inputWrapper;
 
             beforeEach(() => {
+                jest.clearAllMocks();
+
                 wrapper.setProps({
                     value: {
-                        input: {},
+                        input: {
+                            validateOn: 'input',
+                            touch: () => ({}),
+                            validate: () => ({ errors: {}, valid: true })
+                        },
                         group: {
                             input: {}
                         }
@@ -68,14 +74,10 @@ describe('Components', () => {
                     data () {
                         return {
                             name: 'input',
-                            schema: {
-                                validateOn: 'input',
-                                touch: () => ({}),
-                                validate: () => ({ errors: {}, valid: true })
-                            }
+                            schema: wrapper.vm.value.input
                         }
                     },
-                    render () {}
+                    render () {},
                 });
             });
 
@@ -95,19 +97,182 @@ describe('Components', () => {
                 });
             });
 
+            describe('onFormControlInput()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.onFormControlInput).toBeDefined();
+                });
+
+                it('should return a function', () => {
+                    expect(wrapper.vm.onFormControlInput(inputWrapper.vm)).toEqual(expect.any(Function));
+                });
+
+                it('should set form control schema value', () => {
+                    const callback = wrapper.vm.onFormControlInput(inputWrapper.vm);
+                    const value = 'abc';
+
+                    callback(value);
+
+                    expect(inputWrapper.vm.schema.value).toEqual(value);
+                    expect(wrapper.vm.value.input.value).toEqual('abc');
+                });
+
+                it('should emit input event', () => {
+                    const callback = wrapper.vm.onFormControlInput(inputWrapper.vm);
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    callback('abc');
+
+                    expect(spy).toHaveBeenCalledWith('input', wrapper.vm.value);
+                });
+            });
+
+            describe('onFormControlBlur()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.onFormControlBlur).toBeDefined();
+                });
+
+                it('should return a function', () => {
+                    expect(wrapper.vm.onFormControlBlur(inputWrapper.vm)).toEqual(expect.any(Function));
+                });
+
+                it('should emit input event', () => {
+                    const callback = wrapper.vm.onFormControlBlur(inputWrapper.vm);
+                    const spy = jest.spyOn(inputWrapper.vm.schema, 'touch');
+
+                    callback('abc');
+
+                    expect(spy).toHaveBeenCalledWith({ getSchema: wrapper.vm.getSchema });
+                });
+            });
+
+            describe('onFormControlValidate()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.onFormControlValidate).toBeDefined();
+                });
+
+                it('should return a function with existing event', () => {
+                    expect(wrapper.vm.onFormControlValidate(inputWrapper.vm, 'input')).toEqual(expect.any(Function));
+                });
+
+                it('should return a function custom event', () => {
+                    expect(wrapper.vm.onFormControlValidate(inputWrapper.vm, 'custom')).toEqual(expect.any(Function));
+                });
+
+                it('should call form control validate function', () => {
+                    const callback = wrapper.vm.onFormControlValidate(inputWrapper.vm);
+                    const spy = jest.spyOn(inputWrapper.vm.schema, 'validate');
+                    const value = 'abc';
+
+                    callback(value);
+
+                    expect(spy).toHaveBeenCalledWith(value, { getSchema: wrapper.vm.getSchema });
+                });
+
+                it('should emit validate event', () => {
+                    const callback = wrapper.vm.onFormControlValidate(inputWrapper.vm);
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    callback('abc');
+
+                    expect(spy).toHaveBeenCalledWith('validate', wrapper.vm.value);
+                });
+            });
+
+            describe('getFormControlValidationEvents()', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.getFormControlValidationEvents).toBeDefined();
+                });
+
+                it('should return a form control validation event as array', () => {
+                    const validateOn = 'input';
+
+                    inputWrapper.setProps({
+                        schema: {
+                            validateOn
+                        }
+                    });
+
+                    const events = wrapper.vm.getFormControlValidationEvents(inputWrapper.vm);
+
+                    expect(events).toEqual([validateOn]);
+                });
+
+                it('should return a form control\'s multiple validation events as array', () => {
+                    const validateOn = ['input', 'blur'];
+
+                    inputWrapper.setData({
+                        schema: {
+                            validateOn
+                        }
+                    });
+
+                    const events = wrapper.vm.getFormControlValidationEvents(inputWrapper.vm);
+
+                    expect(events).toEqual(validateOn);
+                });
+
+                it('should return default validation event if validateOn not specified', (done) => {
+                    inputWrapper.setData({
+                        schema: {
+                            validateOn: null
+                        }
+                    });
+
+                    inputWrapper.vm.$inkline = {
+                        config: {
+                            validation: {
+                                validateOn: ['input']
+                            }
+                        }
+                    };
+
+                    inputWrapper.vm.$nextTick(() => {
+                        const events = wrapper.vm.getFormControlValidationEvents(inputWrapper.vm);
+
+                        expect(events).toEqual(wrapper.vm.$inkline.config.validation.validateOn);
+
+                        done();
+                    });
+                });
+            });
+
             describe('add()', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.add).toBeDefined();
                 });
 
-                it('should add "blur" event listener to input', () => {
-                    const spy = jest.spyOn(inputWrapper.vm, '$on');
+                it('should add "input" event listener to form control', () => {
+                    const formSpy = jest.spyOn(wrapper.vm, 'onFormControlInput');
+                    const inputSpy = jest.spyOn(inputWrapper.vm, '$on');
 
                     wrapper.vm.add(inputWrapper.vm);
 
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('blur', expect.any(Function));
+                    expect(formSpy).toHaveBeenCalled();
+                    expect(inputSpy).toHaveBeenNthCalledWith(1, 'input', expect.any(Function));
                 });
+
+                it('should add "blur" event listener to form control', () => {
+                    const formSpy = jest.spyOn(wrapper.vm, 'onFormControlBlur');
+                    const inputSpy = jest.spyOn(inputWrapper.vm, '$on');
+
+                    wrapper.vm.add(inputWrapper.vm);
+
+                    expect(formSpy).toHaveBeenCalled();
+                    expect(inputSpy).toHaveBeenNthCalledWith(2, 'blur', expect.any(Function));
+                });
+
+                it('should add validation event listener to form control', () => {
+                    const formSpy1 = jest.spyOn(wrapper.vm, 'getFormControlValidationEvents');
+                    const formSpy2 = jest.spyOn(wrapper.vm, 'onFormControlValidate');
+                    const inputSpy = jest.spyOn(inputWrapper.vm, '$on');
+
+                    wrapper.vm.add(inputWrapper.vm);
+
+                    expect(formSpy1).toHaveBeenCalled();
+                    expect(formSpy2).toHaveBeenCalled();
+                    expect(inputSpy).toHaveBeenNthCalledWith(1, 'input', expect.any(Function));
+                });
+
 
                 it('should set the all schema tree entries as touched on "blur"', () => {
                     const spy = jest.spyOn(inputWrapper.vm.schema, 'touch');
@@ -126,17 +291,6 @@ describe('Components', () => {
 
                     expect(spy).toHaveBeenCalled();
                     expect(spy).toHaveBeenCalledWith('input', expect.any(Function));
-                });
-
-                it('should set the global validate.on configuration to input', () => {
-                    const spy = jest.spyOn(inputWrapper.vm, '$on');
-
-                    inputWrapper.vm.schema.validateOn = null;
-                    wrapper.vm.add(inputWrapper.vm);
-
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenCalledWith('input', expect.any(Function));
-                    expect(spy).toHaveBeenCalledWith('blur', expect.any(Function));
                 });
 
                 it('should add the input schema\'s multiple validateOn event listeners to input', () => {
@@ -176,14 +330,36 @@ describe('Components', () => {
                     expect(wrapper.vm.remove).toBeDefined();
                 });
 
-                it('should add "blur" event listener to input', () => {
-                    const spy = jest.spyOn(inputWrapper.vm, '$off');
+                it('should remove "input" event listener to form control', () => {
+                    const formSpy = jest.spyOn(wrapper.vm, 'onFormControlInput');
+                    const inputSpy = jest.spyOn(inputWrapper.vm, '$off');
 
                     wrapper.vm.remove(inputWrapper.vm);
 
-                    expect(spy).toHaveBeenCalled();
-                    expect(spy).toHaveBeenNthCalledWith(1, 'blur');
-                    expect(spy).toHaveBeenNthCalledWith(2, inputWrapper.vm.schema.validateOn);
+                    expect(formSpy).toHaveBeenCalled();
+                    expect(inputSpy).toHaveBeenNthCalledWith(1, 'input', expect.any(Function));
+                });
+
+                it('should remove "blur" event listener to form control', () => {
+                    const formSpy = jest.spyOn(wrapper.vm, 'onFormControlBlur');
+                    const inputSpy = jest.spyOn(inputWrapper.vm, '$off');
+
+                    wrapper.vm.remove(inputWrapper.vm);
+
+                    expect(formSpy).toHaveBeenCalled();
+                    expect(inputSpy).toHaveBeenNthCalledWith(2, 'blur', expect.any(Function));
+                });
+
+                it('should remove validation event listener to form control', () => {
+                    const formSpy1 = jest.spyOn(wrapper.vm, 'getFormControlValidationEvents');
+                    const formSpy2 = jest.spyOn(wrapper.vm, 'onFormControlValidate');
+                    const inputSpy = jest.spyOn(inputWrapper.vm, '$off');
+
+                    wrapper.vm.remove(inputWrapper.vm);
+
+                    expect(formSpy1).toHaveBeenCalled();
+                    expect(formSpy2).toHaveBeenCalled();
+                    expect(inputSpy).toHaveBeenNthCalledWith(1, 'input', expect.any(Function));
                 });
             });
         });

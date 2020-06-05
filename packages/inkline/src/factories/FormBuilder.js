@@ -51,7 +51,6 @@ export class FormBuilder {
      * @type {string[]}
      */
     static reservedSchemaFields = [
-        'value',
         'name',
         'fields',
         'validate',
@@ -77,7 +76,8 @@ export class FormBuilder {
      */
     static configure(options = {}) {
         FormBuilder.keys = { ...FormBuilder.keys, ...options.keys };
-        FormBuilder.reservedSchemaFields = Object.values(FormBuilder.keys);
+        FormBuilder.reservedSchemaFields = Object.values(FormBuilder.keys)
+            .filter((k) => k !== 'value');
 
         FormBuilder.defaultFormControlState = {
             [FormBuilder.keys.VALUE]: FormBuilder.defaultFormControlState.value,
