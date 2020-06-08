@@ -35,7 +35,7 @@ module.exports = function InklineNuxt(moduleOptions = {}) {
     this.nuxt.hook('components:dirs', (dirs) => {
         dirs.push({
             path: join(__dirname, '..', 'inkline', 'src', 'components'),
-            pattern: '*',
+            pattern: '**/*.vue',
             transpile: true
         })
     });
