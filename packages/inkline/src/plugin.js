@@ -8,7 +8,7 @@ export const Inkline = {
             validation: {
                 validateOn: ['input'],
                 keys: {},
-                ...options.config?.validation
+                ...(options.config || {}).validation
             },
             variant: 'light',
             autodetectVariant: false,
@@ -20,7 +20,7 @@ export const Inkline = {
          * If not, fallback to light variant.
          */
         const variant = !(Vue.prototype.$isServer || typeof window === 'undefined') &&
-            window.localStorage.getItem('inkline-variant') || config?.variant;
+            window.localStorage.getItem('inkline-variant') || config.variant;
 
         /**
          * Register $inkline prototype in Vue components
@@ -55,7 +55,7 @@ export const Inkline = {
                     this.config.variant = null;
 
                     if (this.config.autodetectVariant) {
-                        setVariant = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                        setVariant = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                     } else {
                         setVariant = variant;
                     }
@@ -73,7 +73,7 @@ export const Inkline = {
              * inside components using this.$inkline.config
              */
             get config() {
-                return this._vm?.$data.config
+                return this._vm.$data.config
             },
 
             /**
