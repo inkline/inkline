@@ -245,6 +245,23 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
 
 /***/ }),
 
+/***/ "07ac":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__("23e7");
+var $values = __webpack_require__("6f53").values;
+
+// `Object.values` method
+// https://tc39.github.io/ecma262/#sec-object.values
+$({ target: 'Object', stat: true }, {
+  values: function values(O) {
+    return $values(O);
+  }
+});
+
+
+/***/ }),
+
 /***/ "0ca6":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2328,6 +2345,45 @@ var TEMPLATE = String(String).split('String');
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "6f53":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var objectKeys = __webpack_require__("df75");
+var toIndexedObject = __webpack_require__("fc6a");
+var propertyIsEnumerable = __webpack_require__("d1e7").f;
+
+// `Object.{ entries, values }` methods implementation
+var createMethod = function (TO_ENTRIES) {
+  return function (it) {
+    var O = toIndexedObject(it);
+    var keys = objectKeys(O);
+    var length = keys.length;
+    var i = 0;
+    var result = [];
+    var key;
+    while (length > i) {
+      key = keys[i++];
+      if (!DESCRIPTORS || propertyIsEnumerable.call(O, key)) {
+        result.push(TO_ENTRIES ? [key, O[key]] : O[key]);
+      }
+    }
+    return result;
+  };
+};
+
+module.exports = {
+  // `Object.entries` method
+  // https://tc39.github.io/ecma262/#sec-object.entries
+  entries: createMethod(true),
+  // `Object.values` method
+  // https://tc39.github.io/ecma262/#sec-object.values
+  values: createMethod(false)
+};
+
 
 /***/ }),
 
@@ -8575,7 +8631,7 @@ function ownKeys(object, enumerableOnly) {
   return keys;
 }
 
-function _objectSpread2(target) {
+function objectSpread2_objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
 
@@ -8698,6 +8754,9 @@ function removeClass(element, classes) {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
+var es_array_iterator = __webpack_require__("e260");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
 var es_array_join = __webpack_require__("a15b");
 
@@ -8722,8 +8781,14 @@ var es_object_assign = __webpack_require__("cca6");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
 var es_object_to_string = __webpack_require__("d3b7");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.values.js
+var es_object_values = __webpack_require__("07ac");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
 var es_regexp_to_string = __webpack_require__("25f0");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__("ddb0");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
 var es_symbol_description = __webpack_require__("e01a");
@@ -8731,14 +8796,8 @@ var es_symbol_description = __webpack_require__("e01a");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
 var es_symbol_iterator = __webpack_require__("d28b");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
-var es_array_iterator = __webpack_require__("e260");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
 var es_string_iterator = __webpack_require__("3ca3");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
-var web_dom_collections_iterator = __webpack_require__("ddb0");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
 var es_array_from = __webpack_require__("a630");
@@ -9280,13 +9339,28 @@ function sameAs(value) {
 
 
 
+
+
+
 var FormBuilder_FormBuilder = /*#__PURE__*/function () {
   function FormBuilder() {
     _classCallCheck(this, FormBuilder);
   }
 
   _createClass(FormBuilder, null, [{
-    key: "getSchemaList",
+    key: "configure",
+
+    /**
+     * Default form validation state that will be assigned to each field
+     */
+
+    /**
+     * Default form control state that will be assigned to each value field
+     */
+
+    /**
+     * Validation field keywords
+     */
 
     /**
      * Array of reserved schema field names
@@ -9295,18 +9369,37 @@ var FormBuilder_FormBuilder = /*#__PURE__*/function () {
      */
 
     /**
+     * Configure form validation fields and behaviour
+     *
+     * @param options
+     */
+    value: function configure() {
+      var _FormBuilder$defaultF, _FormBuilder$defaultF2;
+
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      FormBuilder.keys = objectSpread2_objectSpread2({}, FormBuilder.keys, {}, options.keys);
+      FormBuilder.reservedSchemaFields = Object.values(FormBuilder.keys).filter(function (k) {
+        return k !== 'value';
+      });
+      FormBuilder.defaultFormControlState = (_FormBuilder$defaultF = {}, _defineProperty(_FormBuilder$defaultF, FormBuilder.keys.VALUE, FormBuilder.defaultFormControlState.value), _defineProperty(_FormBuilder$defaultF, FormBuilder.keys.VALIDATE_ON, options.validateOn || FormBuilder.defaultFormControlState.validateOn), _FormBuilder$defaultF);
+      FormBuilder.defaultFormState = (_FormBuilder$defaultF2 = {}, _defineProperty(_FormBuilder$defaultF2, FormBuilder.keys.TOUCHED, false), _defineProperty(_FormBuilder$defaultF2, FormBuilder.keys.UNTOUCHED, true), _defineProperty(_FormBuilder$defaultF2, FormBuilder.keys.DIRTY, false), _defineProperty(_FormBuilder$defaultF2, FormBuilder.keys.PRISTINE, true), _defineProperty(_FormBuilder$defaultF2, FormBuilder.keys.INVALID, false), _defineProperty(_FormBuilder$defaultF2, FormBuilder.keys.VALID, true), _defineProperty(_FormBuilder$defaultF2, FormBuilder.keys.ERRORS, {}), _FormBuilder$defaultF2);
+    }
+    /**
      * Returns an array of the input's parent schemas starting from the root, and ending with the
      * input itself's schema.
      *
      * @param schema
      * @param rootSchema
      */
+
+  }, {
+    key: "getSchemaList",
     value: function getSchemaList(schema, rootSchema) {
       if (schema === rootSchema) {
         return [schema];
       }
 
-      var parentFormGroupKeys = schema.name.replace(/\[['"]?([^'"\]])['"]?]/g, '.$1').split('.');
+      var parentFormGroupKeys = schema[FormBuilder.keys.NAME].replace(/\[['"]?([^'"\]])['"]?]/g, '.$1').split('.');
       var parentSchemaList = parentFormGroupKeys.map(function (group, index) {
         return parentFormGroupKeys.slice(0, index).reduce(function (acc, key) {
           return acc && acc[key];
@@ -9314,7 +9407,7 @@ var FormBuilder_FormBuilder = /*#__PURE__*/function () {
       });
 
       if (!parentSchemaList[parentSchemaList.length - 1].hasOwnProperty(parentFormGroupKeys[parentFormGroupKeys.length - 1])) {
-        throw new Error("Could not retrieve schema tree for input with name ".concat(schema.name, "."));
+        throw new Error("Could not retrieve schema tree for input with name ".concat(schema[FormBuilder.keys.NAME], "."));
       }
 
       parentSchemaList.reverse();
@@ -9443,13 +9536,12 @@ var FormBuilder_FormBuilder = /*#__PURE__*/function () {
   }, {
     key: "formControl",
     value: function formControl(name, schema) {
-      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-      schema = _objectSpread2({}, FormBuilder.defaultFormControlState, {}, FormBuilder.defaultFormState, {}, schema, {
-        name: name,
-        validators: schema.validators || []
-      }); // Set all validators as enabled by default
+      var _objectSpread2, _Object$assign;
 
-      var _iterator = _createForOfIteratorHelper(schema.validators),
+      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      schema = objectSpread2_objectSpread2({}, FormBuilder.defaultFormControlState, {}, FormBuilder.defaultFormState, {}, schema, (_objectSpread2 = {}, _defineProperty(_objectSpread2, FormBuilder.keys.NAME, name), _defineProperty(_objectSpread2, FormBuilder.keys.VALIDATORS, schema[FormBuilder.keys.VALIDATORS] || []), _objectSpread2)); // Set all validators as enabled by default
+
+      var _iterator = _createForOfIteratorHelper(schema[FormBuilder.keys.VALIDATORS]),
           _step;
 
       try {
@@ -9470,81 +9562,63 @@ var FormBuilder_FormBuilder = /*#__PURE__*/function () {
       var buildOptions = options.getSchema ? {
         getSchema: options.getSchema
       } : {};
-      return Object.assign(schema, {
-        /**
-         * set the schema and all its parent schemas as touched
-         *
-         * @param options
-         * @returns {boolean}
-         */
-        touch: function touch() {
-          var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-          var rootSchema = options.getSchema ? options.getSchema() : buildOptions.getSchema();
-          FormBuilder.getSchemaList(schema, rootSchema).forEach(function (schemaListItem) {
-            schemaListItem.touched = true;
-            schemaListItem.untouched = false;
-          });
-          return true;
-        },
+      return Object.assign(schema, (_Object$assign = {}, _defineProperty(_Object$assign, FormBuilder.keys.TOUCH, function () {
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+        var rootSchema = options.getSchema ? options.getSchema() : buildOptions.getSchema();
+        FormBuilder.getSchemaList(schema, rootSchema).forEach(function (schemaListItem) {
+          schemaListItem[FormBuilder.keys.TOUCHED] = true;
+          schemaListItem[FormBuilder.keys.UNTOUCHED] = false;
+        });
+        return true;
+      }), _defineProperty(_Object$assign, FormBuilder.keys.VALIDATE, function (value) {
+        var _ref;
 
-        /**
-         * Validate the current value by performing all the specified validation functions on it
-         *
-         * @param value
-         * @param options
-         * @returns {{valid: boolean, errors: {length: number}}}
-         */
-        validate: function validate(value) {
-          var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-          var rootSchema = options.getSchema ? options.getSchema() : buildOptions.getSchema();
-          var valid = true;
-          var errors = {
-            length: 0
-          };
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+        var rootSchema = options.getSchema ? options.getSchema() : buildOptions.getSchema();
+        var valid = true;
+        var errors = {
+          length: 0
+        };
 
-          var _iterator2 = _createForOfIteratorHelper(schema.validators),
-              _step2;
+        var _iterator2 = _createForOfIteratorHelper(schema[FormBuilder.keys.VALIDATORS]),
+            _step2;
 
-          try {
-            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-              var validator = _step2.value;
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var validator = _step2.value;
 
-              if (!validators_namespaceObject[validator.rule]) {
-                throw new Error("Invalid validation rule '".concat(validator.rule, "' provided."));
-              } // Validator enabled state can be a function
+            if (!validators_namespaceObject[validator.rule]) {
+              throw new Error("Invalid validation rule '".concat(validator.rule, "' provided."));
+            } // Validator enabled state can be a function
 
 
-              var validatorEnabled = typeof validator.enabled === 'function' ? validator.enabled() : validator.enabled; // Validator rule gets called with value, validator options and root schema options
+            var validatorEnabled = typeof validator.enabled === 'function' ? validator.enabled() : validator.enabled; // Validator rule gets called with value, validator options and root schema options
 
-              if (validatorEnabled && !validators_namespaceObject[validator.rule](value, validator, rootSchema)) {
-                errors[validator.rule] = validator.message || FormBuilder.getErrorMessage(value, validator);
-                errors.length += 1;
-                valid = false;
-              }
+            if (validatorEnabled && !validators_namespaceObject[validator.rule](value, validator, rootSchema)) {
+              errors[validator.rule] = validator.message || FormBuilder.getErrorMessage(value, validator);
+              errors.length += 1;
+              valid = false;
             }
-            /**
-             * Set validation status for each parent schema
-             */
-
-          } catch (err) {
-            _iterator2.e(err);
-          } finally {
-            _iterator2.f();
           }
+          /**
+           * Set validation status for each parent schema
+           */
 
-          FormBuilder.getSchemaList(schema, rootSchema).forEach(function (schemaListItem, index) {
-            schemaListItem.errors = errors;
-            schemaListItem.valid = index === 0 ? valid : FormBuilder.isValidFormGroupSchema(schemaListItem);
-            schemaListItem.invalid = !schemaListItem.valid;
-            schemaListItem.dirty = true;
-            schemaListItem.pristine = false;
-          });
-          return {
-            valid: valid,
-            errors: errors
-          };
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
         }
-      });
+
+        FormBuilder.getSchemaList(schema, rootSchema).forEach(function (schemaListItem, index) {
+          schemaListItem[FormBuilder.keys.ERRORS] = errors;
+          schemaListItem[FormBuilder.keys.VALID] = index === 0 ? valid : FormBuilder.isValidFormGroupSchema(schemaListItem);
+          schemaListItem[FormBuilder.keys.INVALID] = !schemaListItem[FormBuilder.keys.VALID];
+          schemaListItem[FormBuilder.keys.DIRTY] = true;
+          schemaListItem[FormBuilder.keys.PRISTINE] = false;
+        });
+        return _ref = {}, _defineProperty(_ref, FormBuilder.keys.VALID, valid), _defineProperty(_ref, FormBuilder.keys.ERRORS, errors), _ref;
+      }), _Object$assign));
     }
     /**
      * Creates a form schema by going through all the fields
@@ -9573,10 +9647,10 @@ var FormBuilder_FormBuilder = /*#__PURE__*/function () {
       var fields = Object.keys(schema); // Clone the provided schema to make sure we're working on a clean copy
       // without modifying the provided arguments.
 
-      schema = schema.constructor === Array ? schema.slice(0) : _objectSpread2({}, schema); // Set schema fields
+      schema = schema.constructor === Array ? schema.slice(0) : objectSpread2_objectSpread2({}, schema); // Set schema fields
 
-      schema.name = name;
-      schema.fields = fields; // Set current form as root schema
+      schema[FormBuilder.keys.NAME] = name;
+      schema[FormBuilder.keys.FIELDS] = fields; // Set current form as root schema
 
       var buildOptions = options.getSchema || options.root ? {
         getSchema: options.root ? function () {
@@ -9590,7 +9664,7 @@ var FormBuilder_FormBuilder = /*#__PURE__*/function () {
         }
 
         var fieldSchema = schema[fieldName];
-        var schemaHasFormControlProperties = ['validators', 'value'].some(function (key) {
+        var schemaHasFormControlProperties = [FormBuilder.keys.VALIDATORS, FormBuilder.keys.VALUE].some(function (key) {
           return fieldSchema.hasOwnProperty(key);
         });
         var schemaIsEmptyObject = Object.keys(fieldSchema).length === 0;
@@ -9598,7 +9672,7 @@ var FormBuilder_FormBuilder = /*#__PURE__*/function () {
         var schemaIsGroup = !(schemaHasFormControlProperties || schemaIsEmptyObject) || schemaIsArray; // Verify if schema is a form control or a form group. Form controls can be empty objects, can have either
         // a 'validators' or a 'value' field. Form groups are arrays or have multiple user-defined keys
 
-        schema[fieldName] = FormBuilder.build(nameNesting.concat([fieldName]).join('.'), fieldSchema, _objectSpread2({}, buildOptions, {
+        schema[fieldName] = FormBuilder.build(nameNesting.concat([fieldName]).join('.'), fieldSchema, objectSpread2_objectSpread2({}, buildOptions, {
           group: schemaIsGroup
         }));
       }); // Add schema state properties. When handling array form groups, we add the schema fields as
@@ -9614,84 +9688,57 @@ var FormBuilder_FormBuilder = /*#__PURE__*/function () {
        * @returns {{valid: boolean}}
        */
 
-      schema.validate = function () {
+      schema[FormBuilder.keys.VALIDATE] = function () {
         var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
         for (var key in schema) {
-          if (schema.hasOwnProperty(key) && schema[key] && schema[key].validate) {
-            if (schema[key].fields) {
-              schema[key].validate(_objectSpread2({}, buildOptions, {}, options));
+          if (schema.hasOwnProperty(key) && schema[key] && schema[key][FormBuilder.keys.VALIDATE]) {
+            if (schema[key][FormBuilder.keys.FIELDS]) {
+              schema[key][FormBuilder.keys.VALIDATE](objectSpread2_objectSpread2({}, buildOptions, {}, options));
             } else {
-              schema[key].validate(schema[key].value, _objectSpread2({}, buildOptions, {}, options));
+              schema[key][FormBuilder.keys.VALIDATE](schema[key][FormBuilder.keys.VALUE], objectSpread2_objectSpread2({}, buildOptions, {}, options));
             }
           }
         }
 
-        return {
-          valid: schema.valid
-        };
+        return _defineProperty({}, FormBuilder.keys.VALID, schema[FormBuilder.keys.VALID]);
       };
 
       if (schema.constructor === Array) {
-        return Object.assign(schema, {
-          /**
-           * Push an item into the Array schema
-           *
-           * @param item
-           * @param options
-           */
-          add: function add(item) {
-            var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-            schema.push(FormBuilder.build(nameNesting.concat([schema.length]).join('.'), item, _objectSpread2({}, buildOptions, {}, options)));
-            schema.fields.push((schema.length - 1).toString());
-          },
+        var _Object$assign2;
 
-          /**
-           * Add an item into the Array schema at the given index, after removing n elements
-           *
-           * @param start
-           * @param deleteCount
-           * @param item
-           * @param options
-           */
-          remove: function remove(start, deleteCount, item) {
-            var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+        return Object.assign(schema, (_Object$assign2 = {}, _defineProperty(_Object$assign2, FormBuilder.keys.ADD, function (item) {
+          var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+          schema.push(FormBuilder.build(nameNesting.concat([schema.length]).join('.'), item, objectSpread2_objectSpread2({}, buildOptions, {}, options)));
+          schema[FormBuilder.keys.FIELDS].push((schema.length - 1).toString());
+        }), _defineProperty(_Object$assign2, FormBuilder.keys.REMOVE, function (start, deleteCount, item) {
+          var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
-            if (item) {
-              schema.splice(start, deleteCount, FormBuilder.build(nameNesting.concat([start]).join('.'), item, _objectSpread2({}, buildOptions, {}, options)));
-              schema.fields.splice(start, deleteCount, start);
-            } else {
-              schema.splice(start, deleteCount);
-              schema.fields.splice(start, deleteCount);
-            }
-
-            for (var index = start; index < schema.length; index += 1) {
-              schema[index].name = schema[index].name.replace(/[0-9]+$/, index);
-              schema.fields[index] = index.toString();
-            }
+          if (item) {
+            schema.splice(start, deleteCount, FormBuilder.build(nameNesting.concat([start]).join('.'), item, objectSpread2_objectSpread2({}, buildOptions, {}, options)));
+            schema[FormBuilder.keys.FIELDS].splice(start, deleteCount, start);
+          } else {
+            schema.splice(start, deleteCount);
+            schema[FormBuilder.keys.FIELDS].splice(start, deleteCount);
           }
-        });
+
+          for (var index = start; index < schema.length; index += 1) {
+            schema[index][FormBuilder.keys.NAME] = schema[index][FormBuilder.keys.NAME].replace(/[0-9]+$/, index);
+            schema[FormBuilder.keys.FIELDS][index] = index.toString();
+          }
+        }), _Object$assign2));
       }
 
-      return Object.assign(schema, {
-        /**
-         * Set a field with the given name and definition on the schema
-         *
-         * @param name
-         * @param item
-         * @param options
-         */
-        set: function set(name, item) {
-          var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      return Object.assign(schema, _defineProperty({}, FormBuilder.keys.SET, function (name, item) {
+        var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
-          if (!options.instance) {
-            throw new Error('Please make sure you provide the Vue instance inside the options object as options.instance.');
-          }
-
-          options.instance.$set(schema, 'fields', schema.fields.concat([name]));
-          options.instance.$set(schema, name, FormBuilder.build(nameNesting.concat([name]).join('.'), item, _objectSpread2({}, buildOptions, {}, options)));
+        if (!options.instance) {
+          throw new Error('Please make sure you provide the Vue instance inside the options object as options.instance.');
         }
-      });
+
+        options.instance.$set(schema, FormBuilder.keys.FIELDS, schema[FormBuilder.keys.FIELDS].concat([name]));
+        options.instance.$set(schema, name, FormBuilder.build(nameNesting.concat([name]).join('.'), item, objectSpread2_objectSpread2({}, buildOptions, {}, options)));
+      }));
     }
     /**
      * If grouped, return a new form group. Otherwise, return a form control
@@ -9727,6 +9774,26 @@ _defineProperty(FormBuilder_FormBuilder, "defaultFormControlState", {
   validateOn: 'input'
 });
 
+_defineProperty(FormBuilder_FormBuilder, "keys", {
+  VALUE: 'value',
+  NAME: 'name',
+  FIELDS: 'fields',
+  VALIDATE: 'validate',
+  VALIDATE_ON: 'validateOn',
+  VALIDATORS: 'validators',
+  INVALID: 'invalid',
+  VALID: 'valid',
+  TOUCH: 'touch',
+  TOUCHED: 'touched',
+  UNTOUCHED: 'untouched',
+  DIRTY: 'dirty',
+  PRISTINE: 'pristine',
+  SET: 'set',
+  ADD: 'add',
+  REMOVE: 'remove',
+  ERRORS: 'errors'
+});
+
 _defineProperty(FormBuilder_FormBuilder, "reservedSchemaFields", ['name', 'fields', 'validate', 'validateOn', 'validators', 'invalid', 'valid', 'touch', 'touched', 'untouched', 'dirty', 'pristine', 'set', 'add', 'remove', 'errors']);
 // CONCATENATED MODULE: ./src/plugin.js
 
@@ -9736,14 +9803,13 @@ _defineProperty(FormBuilder_FormBuilder, "reservedSchemaFields", ['name', 'field
 
 var Inkline = {
   install: function install(Vue) {
-    var _options$config;
-
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    var config = _objectSpread2({
-      validation: _objectSpread2({
-        on: ['input']
-      }, (_options$config = options.config) === null || _options$config === void 0 ? void 0 : _options$config.validation),
+    var config = objectSpread2_objectSpread2({
+      validation: objectSpread2_objectSpread2({
+        validateOn: ['input'],
+        keys: {}
+      }, (options.config || {}).validation),
       variant: 'light',
       autodetectVariant: false
     }, options.config);
@@ -9753,7 +9819,7 @@ var Inkline = {
      */
 
 
-    var variant = !(Vue.prototype.$isServer || typeof window === 'undefined') && window.localStorage.getItem('inkline-variant') || (config === null || config === void 0 ? void 0 : config.variant);
+    var variant = !(Vue.prototype.$isServer || typeof window === 'undefined') && window.localStorage.getItem('inkline-variant') || config.variant;
     /**
      * Register $inkline prototype in Vue components
      */
@@ -9784,25 +9850,28 @@ var Inkline = {
         },
 
         /**
-         *
+         * Set up variant and form configuration on create
          */
         created: function created() {
           var _this = this;
 
+          // Configure variant
+          //
           var setVariant;
           this.config.variant = null;
 
           if (this.config.autodetectVariant) {
-            var _window$matchMedia, _window;
-
-            setVariant = ((_window$matchMedia = (_window = window).matchMedia) === null || _window$matchMedia === void 0 ? void 0 : _window$matchMedia.call(_window, '(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+            setVariant = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
           } else {
             setVariant = variant;
           }
 
           setTimeout(function () {
             return _this.config.variant = setVariant;
-          }, 0);
+          }, 0); // Configure form builder
+          //
+
+          FormBuilder_FormBuilder.configure(config.validation);
         }
       }),
 
@@ -9811,9 +9880,7 @@ var Inkline = {
        * inside components using this.$inkline.config
        */
       get config() {
-        var _this$_vm;
-
-        return (_this$_vm = this._vm) === null || _this$_vm === void 0 ? void 0 : _this$_vm.$data.config;
+        return this._vm.$data.config;
       },
 
       /**
@@ -9856,7 +9923,7 @@ var Inkline = {
     }
   }
 };
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IAlert/template.html?vue&type=template&id=4af84504&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IAlert/template.html?vue&type=template&id=4af84504&scoped=true&
 var templatevue_type_template_id_4af84504_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',_vm._b({directives:[{name:"show",rawName:"v-show",value:(_vm.dismissible ? !_vm.dismissed && _vm.show : _vm.show),expression:"dismissible ? !dismissed && show : show"}],staticClass:"alert",class:_vm.classes},'div',_vm.attributes,false),[(_vm.$slots.icon)?_c('span',{staticClass:"icon"},[_vm._t("icon")],2):_vm._e(),_c('div',{staticClass:"content"},[_vm._t("default")],2),(_vm.dismissible)?_c('span',{staticClass:"dismiss",on:{"click":_vm.dismiss}},[_vm._t("dismiss",[_vm._v(_vm._s(_vm.dismissLabel))])],2):_vm._e()])}
 var staticRenderFns = []
 
@@ -10229,6 +10296,10 @@ var EmitKeydownMethodMixin_component = normalizeComponent(
 
 /* harmony default export */ var EmitKeydownMethodMixin = (EmitKeydownMethodMixin_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/mixins/methods/EmitSubmitMethodMixin.vue?vue&type=script&lang=js&
+
+
+
+
 /* harmony default export */ var EmitSubmitMethodMixinvue_type_script_lang_js_ = ({
   methods: {
     /**
@@ -10238,9 +10309,9 @@ var EmitKeydownMethodMixin_component = normalizeComponent(
       event.preventDefault();
 
       if (this.schema) {
-        this.schema.validate(this.validationOptions);
+        this.schema[FormBuilder_FormBuilder.keys.VALIDATE](this.validationOptions);
 
-        if (this.schema.invalid) {
+        if (this.schema[FormBuilder_FormBuilder.keys.INVALID]) {
           return;
         }
       }
@@ -10528,7 +10599,7 @@ var DisabledPropertyMixin_component = normalizeComponent(
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/mixins/properties/DisabledFormPropertyMixin.vue?vue&type=script&lang=js&
 
 
-/* harmony default export */ var DisabledFormPropertyMixinvue_type_script_lang_js_ = (_objectSpread2({}, DisabledPropertyMixin, {
+/* harmony default export */ var DisabledFormPropertyMixinvue_type_script_lang_js_ = (objectSpread2_objectSpread2({}, DisabledPropertyMixin, {
   computed: {
     /**
      * Check whether the form item or one of its form parents is disabled
@@ -10602,10 +10673,14 @@ var LoadingPropertyMixin_component = normalizeComponent(
 /* harmony default export */ var LoadingPropertyMixin = (LoadingPropertyMixin_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/mixins/properties/NamePropertyMixin.vue?vue&type=script&lang=js&
 
+
+
+
+
 /* harmony default export */ var NamePropertyMixinvue_type_script_lang_js_ = ({
   computed: {
     name: function name() {
-      return this.schema ? this.schema.name : this.$attrs.name;
+      return this.schema ? this.schema[FormBuilder_FormBuilder.keys.NAME] : this.$attrs.name;
     }
   }
 });
@@ -10834,10 +10909,9 @@ var external_commonjs_vue_commonjs2_vue_amd_vue_root_Vue_default = /*#__PURE__*/
   created: function created() {
     var _this = this;
 
+    var variant = ((this.$inkline || {}).config || {}).variant;
     this.classesProvider.add(function () {
-      var _this$$inkline, _this$$inkline$config;
-
-      return _this.variant ? "-".concat(_this.variant) : ((_this$$inkline = _this.$inkline) === null || _this$$inkline === void 0 ? void 0 : (_this$$inkline$config = _this$$inkline.config) === null || _this$$inkline$config === void 0 ? void 0 : _this$$inkline$config.variant) && "-".concat(_this.$inkline.config.variant);
+      return _this.variant ? "-".concat(_this.variant) : variant && "-".concat(variant);
     });
   }
 });
@@ -11262,6 +11336,10 @@ var InjectParentFormProviderMixin_component = normalizeComponent(
 
 /* harmony default export */ var InjectParentFormProviderMixin = (InjectParentFormProviderMixin_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/mixins/providers/ModelGroupProviderMixin.vue?vue&type=script&lang=js&
+
+
+
+
 /* harmony default export */ var ModelGroupProviderMixinvue_type_script_lang_js_ = ({
   props: {
     value: {
@@ -11283,7 +11361,7 @@ var InjectParentFormProviderMixin_component = normalizeComponent(
     model: {
       get: function get() {
         var target = this.isGrouped ? this.parentFormGroup : this;
-        return target.schema ? target.schema.value : target.value;
+        return target.schema ? target.schema[FormBuilder_FormBuilder.keys.VALUE] : target.value;
       },
       set: function set(value) {
         if (this.isGrouped) {
@@ -11319,6 +11397,10 @@ var ModelGroupProviderMixin_component = normalizeComponent(
 /* harmony default export */ var ModelGroupProviderMixin = (ModelGroupProviderMixin_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/mixins/providers/ModelProviderMixin.vue?vue&type=script&lang=js&
 
+
+
+
+
 /* harmony default export */ var ModelProviderMixinvue_type_script_lang_js_ = ({
   props: {
     value: {
@@ -11333,7 +11415,7 @@ var ModelGroupProviderMixin_component = normalizeComponent(
     model: {
       get: function get() {
         if (this.schema) {
-          return this.schema.value;
+          return this.schema[FormBuilder_FormBuilder.keys.VALUE];
         }
 
         return this.value;
@@ -12007,7 +12089,7 @@ function triggerEvent(element, name, options) {
   }
 
   var eventName;
-  options = _objectSpread2({
+  options = objectSpread2_objectSpread2({
     bubbles: false,
     cancelable: true
   }, options);
@@ -12546,7 +12628,7 @@ var IAlert_component = normalizeComponent(
 )
 
 /* harmony default export */ var IAlert = (IAlert_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IBadge/template.html?vue&type=template&id=b6c4aa52&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IBadge/template.html?vue&type=template&id=b6c4aa52&scoped=true&
 var templatevue_type_template_id_b6c4aa52_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',_vm._b({staticClass:"badge",class:_vm.classes},'div',_vm.attributes,false),[_vm._t("default")],2)}
 var templatevue_type_template_id_b6c4aa52_scoped_true_staticRenderFns = []
 
@@ -12585,7 +12667,7 @@ var IBadge_component = normalizeComponent(
 )
 
 /* harmony default export */ var IBadge = (IBadge_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IBreadcrumb/template.html?vue&type=template&id=7329bd35&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IBreadcrumb/template.html?vue&type=template&id=7329bd35&scoped=true&
 var templatevue_type_template_id_7329bd35_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ol',_vm._b({staticClass:"breadcrumb",class:_vm.classes},'ol',_vm.attributes,false),[_vm._t("default")],2)}
 var templatevue_type_template_id_7329bd35_scoped_true_staticRenderFns = []
 
@@ -12630,14 +12712,14 @@ var IBreadcrumb_component = normalizeComponent(
 )
 
 /* harmony default export */ var IBreadcrumb = (IBreadcrumb_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IBreadcrumbItem/template.html?vue&type=template&id=5f52c422&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IBreadcrumbItem/template.html?vue&type=template&id=5f52c422&scoped=true&
 var templatevue_type_template_id_5f52c422_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"item",class:_vm.classes},[_c(_vm.isTag,_vm._b({tag:"a"},'a',_vm.attributes,false),[_vm._t("default")],2)],1)}
 var templatevue_type_template_id_5f52c422_scoped_true_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/IBreadcrumbItem/template.html?vue&type=template&id=5f52c422&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILinkable/template.html?vue&type=template&id=1c9b96ae&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILinkable/template.html?vue&type=template&id=1c9b96ae&
 var templatevue_type_template_id_1c9b96ae_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.isComponent)?_c(_vm.isTag,_vm._b({tag:"component",staticClass:"item",class:_vm.classes,attrs:{"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled},nativeOn:{"click":function($event){return _vm.onClick($event)}}},'component',_vm.attributes,false),[_vm._t("default")],2):_c(_vm.isTag,_vm._b({tag:"component",staticClass:"item",class:_vm.classes,attrs:{"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled},on:{"click":_vm.onClick}},'component',_vm.attributes,false),[_vm._t("default")],2)}
 var templatevue_type_template_id_1c9b96ae_staticRenderFns = []
 
@@ -12735,7 +12817,7 @@ var IBreadcrumbItem_component = normalizeComponent(
 )
 
 /* harmony default export */ var IBreadcrumbItem = (IBreadcrumbItem_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IButton/template.html?vue&type=template&id=cf9737b4&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IButton/template.html?vue&type=template&id=cf9737b4&scoped=true&
 var templatevue_type_template_id_cf9737b4_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.isTag,_vm._b({tag:"button",staticClass:"button",class:_vm.classes,attrs:{"tag":_vm.tag,"tabindex":_vm.tabIndex,"disabled":_vm.isDisabled || _vm.loading},on:{"click":_vm.emitClick}},'button',_vm.$attrs,false),[(_vm.loading)?_vm._t("loading",[_c('i-loader',{attrs:{"size":"auto"}})]):_vm._e(),(!_vm.loading)?_vm._t("default"):_vm._e()],2)}
 var templatevue_type_template_id_cf9737b4_scoped_true_staticRenderFns = []
 
@@ -12745,7 +12827,7 @@ var templatevue_type_template_id_cf9737b4_scoped_true_staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.link.js
 var es_string_link = __webpack_require__("9911");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILoader/template.html?vue&type=template&id=6c9ea2a5&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILoader/template.html?vue&type=template&id=6c9ea2a5&scoped=true&
 var templatevue_type_template_id_6c9ea2a5_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"loader",class:_vm.classes},[(_vm.$slots.default)?_c('div',{staticClass:"loader-content"},[_vm._t("default")],2):_vm._e(),_vm._l((_vm.count),function(item){return _c('span',{key:item,staticClass:"loader-item"})})],2)}
 var templatevue_type_template_id_6c9ea2a5_scoped_true_staticRenderFns = []
 
@@ -12873,7 +12955,7 @@ var IButton_component = normalizeComponent(
 )
 
 /* harmony default export */ var IButton = (IButton_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IButtonGroup/template.html?vue&type=template&id=7a15550a&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IButtonGroup/template.html?vue&type=template&id=7a15550a&scoped=true&
 var templatevue_type_template_id_7a15550a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"button-group",class:_vm.classes,attrs:{"role":"group"}},[_vm._t("default")],2)}
 var templatevue_type_template_id_7a15550a_scoped_true_staticRenderFns = []
 
@@ -12939,7 +13021,7 @@ var IButtonGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var IButtonGroup = (IButtonGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICard/template.html?vue&type=template&id=4ce0bd48&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICard/template.html?vue&type=template&id=4ce0bd48&scoped=true&
 var templatevue_type_template_id_4ce0bd48_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',_vm._b({staticClass:"card",class:_vm.classes},'div',_vm.attributes,false),[(_vm.$slots.header)?_c('header',{staticClass:"header"},[_vm._t("header")],2):_vm._e(),_vm._t("image"),(_vm.$slots.default)?_c('div',{staticClass:"body"},[_vm._t("default")],2):_vm._e(),(_vm.$slots.footer)?_c('footer',{staticClass:"footer"},[_vm._t("footer")],2):_vm._e()],2)}
 var templatevue_type_template_id_4ce0bd48_scoped_true_staticRenderFns = []
 
@@ -12978,7 +13060,7 @@ var ICard_component = normalizeComponent(
 )
 
 /* harmony default export */ var ICard = (ICard_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICollapsible/template.html?vue&type=template&id=136e6950&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICollapsible/template.html?vue&type=template&id=136e6950&scoped=true&
 var templatevue_type_template_id_136e6950_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"collapsible",class:_vm.classes,attrs:{"role":"tablist","aria-multiselectable":"true"}},[_vm._t("default")],2)}
 var templatevue_type_template_id_136e6950_scoped_true_staticRenderFns = []
 
@@ -13067,7 +13149,7 @@ var ICollapsible_component = normalizeComponent(
 )
 
 /* harmony default export */ var ICollapsible = (ICollapsible_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICollapsibleItem/template.html?vue&type=template&id=92442a86&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICollapsibleItem/template.html?vue&type=template&id=92442a86&scoped=true&
 var templatevue_type_template_id_92442a86_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item",class:_vm.classes},[_c('a',{staticClass:"header",attrs:{"role":"tab","aria-expanded":_vm.active,"aria-controls":("collapsible-item-content-" + _vm.id),"aria-describedby":("collapsible-item-content-" + _vm.id),"id":("collapsible-item-heading-" + _vm.id),"tabindex":"0"},on:{"click":_vm.onClick}},[_vm._t("title",[_vm._v(_vm._s(_vm.title))]),_c('i',{staticClass:"icon"})],2),_c('i-transition-expand',[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.active),expression:"active"}],staticClass:"body",attrs:{"role":"tabpanel","aria-hidden":!_vm.active,"aria-labelledby":("collapsible-item-heading-" + _vm.id),"id":("collapsible-item-content-" + _vm.id)}},[_c('div',{staticClass:"content"},[_vm._t("default")],2)])])],1)}
 var templatevue_type_template_id_92442a86_scoped_true_staticRenderFns = []
 
@@ -13205,7 +13287,7 @@ var ICollapsibleItem_component = normalizeComponent(
 )
 
 /* harmony default export */ var ICollapsibleItem = (ICollapsibleItem_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IColumn/template.html?vue&type=template&id=7ae3cac4&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IColumn/template.html?vue&type=template&id=7ae3cac4&
 var templatevue_type_template_id_7ae3cac4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"column",class:_vm.classes},[_vm._t("default")],2)}
 var templatevue_type_template_id_7ae3cac4_staticRenderFns = []
 
@@ -13329,7 +13411,7 @@ var IColumn_component = normalizeComponent(
 )
 
 /* harmony default export */ var IColumn = (IColumn_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IContainer/template.html?vue&type=template&id=933b9526&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IContainer/template.html?vue&type=template&id=933b9526&
 var templatevue_type_template_id_933b9526_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container",class:_vm.classes},[_vm._t("default")],2)}
 var templatevue_type_template_id_933b9526_staticRenderFns = []
 
@@ -13383,7 +13465,7 @@ var IContainer_component = normalizeComponent(
 )
 
 /* harmony default export */ var IContainer = (IContainer_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IDatatable/template.html?vue&type=template&id=90f88860&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IDatatable/template.html?vue&type=template&id=90f88860&
 var templatevue_type_template_id_90f88860_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"datatable-wrapper"},[_c('div',{staticClass:"header-wrapper"},[_vm._t("header-wrapper",[(_vm.pagination)?_c('div',{staticClass:"pagination-select"},[_vm._l((_vm.i18nConfig.pagination.rowsPerPage),function(part){return [(part === 'rowsPerPage')?_c('i-select',{attrs:{"size":_vm.paginationConfig.size},model:{value:(_vm.rowsPerPage),callback:function ($$v) {_vm.rowsPerPage=$$v},expression:"rowsPerPage"}},_vm._l((_vm.paginationConfig.rowsPerPageOptions),function(item,index){return _c('i-select-option',{key:index,attrs:{"value":item,"label":'' + item}})}),1):[_vm._v(_vm._s(part))]]})],2):_vm._e(),(_vm.filtering)?_c('div',{staticClass:"filtering-input"},[_c('i-input',{attrs:{"placeholder":_vm.i18nConfig.filtering.inputPlaceholder},model:{value:(_vm.filter),callback:function ($$v) {_vm.filter=$$v},expression:"filter"}},[_c('i-icon',{attrs:{"slot":"suffix","icon":"search"},slot:"suffix"})],1)],1):_vm._e()],{"rowsFrom":_vm.rowsFrom + 1,"rowsTo":_vm.rowsTo,"rowsCount":_vm.rowsLength,"page":_vm.page,"rowsPerPage":_vm.rowsPerPage,"filter":_vm.filter,"onPageChange":_vm.setValueCallback('page'),"onRowsPerPageChange":_vm.setValueCallback('rowsPerPage'),"onFilterChange":_vm.setValueCallback('filter')})],2),_c('div',{staticClass:"table-wrapper",class:_vm.classes['wrapper']},[_c('table',{staticClass:"datatable",class:_vm.classes['root']},[_c('thead',[_c('tr',{staticClass:"dtr"},[_vm._t("header",_vm._l((_vm.tableColumns),function(column,index){return (!column.custom)?_c('th',{key:index,ref:_vm.tableColumns,refInFor:true,staticClass:"dth",class:_vm.columnClass(column),style:(_vm.columnStyle(column)),on:{"click":function($event){return _vm.onTableHeadingClick($event, column)}}},[(!column.headerComponent)?_c('span',[_vm._v(" "+_vm._s(_vm.tableColumnsHeaderRendered[column.path])+" "),(column.sortable)?_c('i-icon',{staticClass:"sortable-icon",attrs:{"icon":"sort"}},[(_vm.sortBy === column.path)?_c('i-icon',{attrs:{"icon":("sort-" + _vm.sortDirection)}}):_vm._e()],1):_vm._e()],1):_c(column.headerComponent,{tag:"span",attrs:{"column":column,"index":index,"sort-by":_vm.sortBy}})],1):_vm._e()}),{"sortBy":_vm.sortBy}),(_vm.hasExpandableRows)?_c('th',{staticClass:"dth"}):_vm._e()],2)]),_c('tbody',[_vm._l((_vm.tableRowsRendered),function(row,rowIndex){return [_c('tr',{key:row.id,staticClass:"dtr",class:_vm.rowClass(_vm.tableRows[row.indexRef]),style:(_vm.rowStyle(_vm.tableRows[row.indexRef])),on:{"click":function($event){return _vm.onTableRowClick($event, row)}}},[_vm._t("row",_vm._l((_vm.tableColumns),function(column,columnIndex){return (!column.custom)?_c('td',{key:row.id + '-' + columnIndex,staticClass:"dtd",class:_vm.columnClass(column, _vm.tableRows[row.indexRef]),style:(_vm.columnStyle(column, _vm.tableRows[row.indexRef])),on:{"click":function($event){return _vm.onTableDataClick($event, column, row)}}},[(!column.component)?_c('span',[_vm._v(" "+_vm._s(row[column.path])+" ")]):_c(column.component,{tag:"span",attrs:{"row":row,"column":column}})],1):_vm._e()}),{"row":_vm.tableRows[row.indexRef],"index":row.indexRef}),(_vm.hasExpandableRows)?_c('td',{staticClass:"dtd"},[_c('span',{staticClass:"expand-row",class:{ '-active': _vm.expanded[row.id] },attrs:{"role":"tab","id":("expand-row-" + (row.id)),"aria-expanded":_vm.expanded[row.id],"aria-controls":("expandable-row-" + (row.id)),"aria-describedby":("expandable-row-" + (row.id)),"tabindex":"0"},on:{"click":function($event){return _vm.onClickExpand(row.id)}}},[_c('i',{staticClass:"icon"})])]):_vm._e()],2),(_vm.hasExpandableRows)?_c('tr',{directives:[{name:"show",rawName:"v-show",value:(_vm.expanded[row.id]),expression:"expanded[row.id]"}],key:row.id + '-expandable',staticClass:"dtr",class:_vm.rowClass(row),attrs:{"role":"tabpanel","id":("expandable-row-" + (row.id)),"aria-hidden":!_vm.expanded[row.id],"aria-labelledby":("expand-row-" + (row.id))}},[_vm._t("expand",null,{"columns":_vm.tableColumns,"row":row,"expaned":_vm.expanded[row.id]})],2):_vm._e()]}),(_vm.tableRows.length === 0)?_c('tr',{staticClass:"dtr"},[_c('td',{staticClass:"dtd",attrs:{"colspan":_vm.tableColumns.length}},[(_vm.filter)?_vm._t("filtering-no-results",[_c('div',{staticClass:"_text-center"},[_vm._v(_vm._s(_vm.i18nConfig.filtering.noResultsFound))])]):_vm._e()],2)]):_vm._e()],2),(_vm.footer)?_c('tfoot',[_c('tr',{staticClass:"dtr"},[_vm._t("footer",_vm._l((_vm.tableColumns),function(column,index){return (!column.custom)?_c('th',{key:index,staticClass:"dth",class:_vm.columnClass(column),style:(_vm.columnStyle(column))},[(!column.footerComponent)?_c('span',[_vm._v(" "+_vm._s(_vm.tableColumnsFooterRendered[column.path])+" ")]):_c(column.footerComponent,{tag:"span",attrs:{"column":column,"index":index}})],1):_vm._e()})),(_vm.hasExpandableRows)?_c('th',{staticClass:"dth"}):_vm._e()],2)]):_vm._e()])]),(_vm.pagination)?_c('div',{staticClass:"footer-wrapper"},[_vm._t("footer-wrapper",[_c('div',{staticClass:"pagination-range"},[_vm._l((_vm.i18nConfig.pagination.rowsRange),function(part){return [(part === 'rowsFrom')?[_vm._v(_vm._s(_vm.rowsFrom + 1))]:(part === 'rowsTo')?[_vm._v(_vm._s(_vm.rowsTo))]:(part === 'rowsCount')?[_vm._v(_vm._s(_vm.rowsLength))]:[_vm._v(" "+_vm._s(part)+" ")]]})],2),_vm._t("pagination",[_c('i-pagination',{attrs:{"items":_vm.rowsLength,"items-per-page":_vm.rowsPerPage,"limit":_vm.paginationConfig.limit,"size":_vm.paginationConfig.size,"variant":_vm.paginationConfig.variant},model:{value:(_vm.page),callback:function ($$v) {_vm.page=$$v},expression:"page"}})],{"page":_vm.page,"rowsPerPage":_vm.rowsPerPage,"rowsCount":_vm.rowsLength})],{"rowsFrom":_vm.rowsFrom + 1,"rowsTo":_vm.rowsTo,"rowsCount":_vm.rowsLength,"page":_vm.page,"rowsPerPage":_vm.rowsPerPage,"filter":_vm.filter,"onPageChange":_vm.setValueCallback('page'),"onRowsPerPageChange":_vm.setValueCallback('rowsPerPage'),"onFilterChange":_vm.setValueCallback('filter')})],2):_vm._e()])}
 var templatevue_type_template_id_90f88860_staticRenderFns = []
 
@@ -13395,478 +13477,13 @@ var es_string_search = __webpack_require__("841c");
 
 // CONCATENATED MODULE: ./node_modules/fuse.js/dist/fuse.esm.js
 /**
- * Fuse.js v5.1.0 - Lightweight fuzzy-search (http://fusejs.io)
+ * Fuse.js v5.2.3 - Lightweight fuzzy-search (http://fusejs.io)
  *
  * Copyright (c) 2020 Kiro Risk (http://kiro.me)
  * All Rights Reserved. Apache Software License 2.0
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  */
-
-function bitapScore(
-  pattern,
-  { errors = 0, currentLocation = 0, expectedLocation = 0, distance = 100 }
-) {
-  const accuracy = errors / pattern.length;
-  const proximity = Math.abs(expectedLocation - currentLocation);
-
-  if (!distance) {
-    // Dodge divide by zero error.
-    return proximity ? 1.0 : accuracy
-  }
-
-  return accuracy + proximity / distance
-}
-
-function matchedIndiced(matchmask = [], minMatchCharLength = 1) {
-  let matchedIndices = [];
-  let start = -1;
-  let end = -1;
-  let i = 0;
-
-  for (let len = matchmask.length; i < len; i += 1) {
-    let match = matchmask[i];
-    if (match && start === -1) {
-      start = i;
-    } else if (!match && start !== -1) {
-      end = i - 1;
-      if (end - start + 1 >= minMatchCharLength) {
-        matchedIndices.push([start, end]);
-      }
-      start = -1;
-    }
-  }
-
-  // (i-1 - start) + 1 => i - start
-  if (matchmask[i - 1] && i - start >= minMatchCharLength) {
-    matchedIndices.push([start, i - 1]);
-  }
-
-  return matchedIndices
-}
-
-function bitapSearch(
-  text,
-  pattern,
-  patternAlphabet,
-  {
-    location = 0,
-    distance = 100,
-    threshold = 0.6,
-    findAllMatches = false,
-    minMatchCharLength = 1,
-    includeMatches = false
-  }
-) {
-  const patternLen = pattern.length;
-  // Set starting location at beginning text and initialize the alphabet.
-  const textLen = text.length;
-  // Handle the case when location > text.length
-  const expectedLocation = Math.max(0, Math.min(location, textLen));
-  // Highest score beyond which we give up.
-  let currentThreshold = threshold;
-  // Is there a nearby exact match? (speedup)
-  let bestLocation = text.indexOf(pattern, expectedLocation);
-
-  // a mask of the matches
-  const matchMask = [];
-  for (let i = 0; i < textLen; i += 1) {
-    matchMask[i] = 0;
-  }
-
-  if (bestLocation !== -1) {
-    let score = bitapScore(pattern, {
-      errors: 0,
-      currentLocation: bestLocation,
-      expectedLocation,
-      distance
-    });
-    currentThreshold = Math.min(score, currentThreshold);
-
-    // What about in the other direction? (speed up)
-    bestLocation = text.lastIndexOf(pattern, expectedLocation + patternLen);
-
-    if (bestLocation !== -1) {
-      let score = bitapScore(pattern, {
-        errors: 0,
-        currentLocation: bestLocation,
-        expectedLocation,
-        distance
-      });
-      currentThreshold = Math.min(score, currentThreshold);
-    }
-  }
-
-  // Reset the best location
-  bestLocation = -1;
-
-  let lastBitArr = [];
-  let finalScore = 1;
-  let binMax = patternLen + textLen;
-
-  const mask = 1 << (patternLen <= 31 ? patternLen - 1 : 30);
-
-  for (let i = 0; i < patternLen; i += 1) {
-    // Scan for the best match; each iteration allows for one more error.
-    // Run a binary search to determine how far from the match location we can stray
-    // at this error level.
-    let binMin = 0;
-    let binMid = binMax;
-
-    while (binMin < binMid) {
-      const score = bitapScore(pattern, {
-        errors: i,
-        currentLocation: expectedLocation + binMid,
-        expectedLocation,
-        distance
-      });
-
-      if (score <= currentThreshold) {
-        binMin = binMid;
-      } else {
-        binMax = binMid;
-      }
-
-      binMid = Math.floor((binMax - binMin) / 2 + binMin);
-    }
-
-    // Use the result from this iteration as the maximum for the next.
-    binMax = binMid;
-
-    let start = Math.max(1, expectedLocation - binMid + 1);
-    let finish = findAllMatches
-      ? textLen
-      : Math.min(expectedLocation + binMid, textLen) + patternLen;
-
-    // Initialize the bit array
-    let bitArr = Array(finish + 2);
-
-    bitArr[finish + 1] = (1 << i) - 1;
-
-    for (let j = finish; j >= start; j -= 1) {
-      let currentLocation = j - 1;
-      let charMatch = patternAlphabet[text.charAt(currentLocation)];
-
-      if (charMatch) {
-        matchMask[currentLocation] = 1;
-      }
-
-      // First pass: exact match
-      bitArr[j] = ((bitArr[j + 1] << 1) | 1) & charMatch;
-
-      // Subsequent passes: fuzzy match
-      if (i !== 0) {
-        bitArr[j] |=
-          ((lastBitArr[j + 1] | lastBitArr[j]) << 1) | 1 | lastBitArr[j + 1];
-      }
-
-      if (bitArr[j] & mask) {
-        finalScore = bitapScore(pattern, {
-          errors: i,
-          currentLocation,
-          expectedLocation,
-          distance
-        });
-
-        // This match will almost certainly be better than any existing match.
-        // But check anyway.
-        if (finalScore <= currentThreshold) {
-          // Indeed it is
-          currentThreshold = finalScore;
-          bestLocation = currentLocation;
-
-          // Already passed `loc`, downhill from here on in.
-          if (bestLocation <= expectedLocation) {
-            break
-          }
-
-          // When passing `bestLocation`, don't exceed our current distance from `expectedLocation`.
-          start = Math.max(1, 2 * expectedLocation - bestLocation);
-        }
-      }
-    }
-
-    // No hope for a (better) match at greater error levels.
-    const score = bitapScore(pattern, {
-      errors: i + 1,
-      currentLocation: expectedLocation,
-      expectedLocation,
-      distance
-    });
-
-    if (score > currentThreshold) {
-      break
-    }
-
-    lastBitArr = bitArr;
-  }
-
-  let result = {
-    isMatch: bestLocation >= 0,
-    // Count exact matches (those with a score of 0) to be "almost" exact
-    score: !finalScore ? 0.001 : finalScore
-  };
-
-  if (includeMatches) {
-    result.matchedIndices = matchedIndiced(matchMask, minMatchCharLength);
-  }
-
-  return result
-}
-
-function patternAlphabet(pattern) {
-  let mask = {};
-  let len = pattern.length;
-
-  for (let i = 0; i < len; i += 1) {
-    mask[pattern.charAt(i)] = 0;
-  }
-
-  for (let i = 0; i < len; i += 1) {
-    mask[pattern.charAt(i)] |= 1 << (len - i - 1);
-  }
-
-  return mask
-}
-
-// Machine word size
-const MAX_BITS = 32;
-
-class BitapSearch {
-  constructor(
-    pattern,
-    {
-      // Approximately where in the text is the pattern expected to be found?
-      location = 0,
-      // Determines how close the match must be to the fuzzy location (specified above).
-      // An exact letter match which is 'distance' characters away from the fuzzy location
-      // would score as a complete mismatch. A distance of '0' requires the match be at
-      // the exact location specified, a threshold of '1000' would require a perfect match
-      // to be within 800 characters of the fuzzy location to be found using a 0.8 threshold.
-      distance = 100,
-      // At what point does the match algorithm give up. A threshold of '0.0' requires a perfect match
-      // (of both letters and location), a threshold of '1.0' would match anything.
-      threshold = 0.6,
-      // Indicates whether comparisons should be case sensitive.
-      isCaseSensitive = false,
-      // When true, the algorithm continues searching to the end of the input even if a perfect
-      // match is found before the end of the same input.
-      findAllMatches = false,
-      // Minimum number of characters that must be matched before a result is considered a match
-      minMatchCharLength = 1,
-
-      includeMatches = false
-    }
-  ) {
-    this.options = {
-      location,
-      distance,
-      threshold,
-      isCaseSensitive,
-      findAllMatches,
-      includeMatches,
-      minMatchCharLength
-    };
-
-    if (pattern.length > MAX_BITS) {
-      throw new Error(`Pattern length exceeds max of ${MAX_BITS}.`)
-    }
-
-    this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
-    this.patternAlphabet = patternAlphabet(this.pattern);
-  }
-
-  searchIn(value) {
-    let text = value.$;
-    return this.searchInString(text)
-  }
-
-  searchInString(text) {
-    const { isCaseSensitive, includeMatches } = this.options;
-
-    if (!isCaseSensitive) {
-      text = text.toLowerCase();
-    }
-
-    // Exact match
-    if (this.pattern === text) {
-      let result = {
-        isMatch: true,
-        score: 0
-      };
-
-      if (includeMatches) {
-        result.matchedIndices = [[0, text.length - 1]];
-      }
-
-      return result
-    }
-
-    // Otherwise, use Bitap algorithm
-    const {
-      location,
-      distance,
-      threshold,
-      findAllMatches,
-      minMatchCharLength
-    } = this.options;
-    return bitapSearch(text, this.pattern, this.patternAlphabet, {
-      location,
-      distance,
-      threshold,
-      findAllMatches,
-      minMatchCharLength,
-      includeMatches
-    })
-  }
-}
-
-// Token: 'file
-// Match type: exact-match
-// Description: Items that include `file`
-
-const isForPattern = (pattern) => pattern.charAt(0) == "'";
-
-const sanitize = (pattern) => pattern.substr(1);
-
-const match = (pattern, text) => {
-  const sanitizedPattern = sanitize(pattern);
-  const index = text.indexOf(sanitizedPattern);
-  const isMatch = index > -1;
-
-  return {
-    isMatch,
-    score: 0
-  }
-};
-
-var exactMatch = {
-  isForPattern,
-  sanitize,
-  match
-};
-
-// Token: !fire
-// Match type: inverse-exact-match
-// Description: Items that do not include `fire`
-
-const isForPattern$1 = (pattern) => pattern.charAt(0) == '!';
-
-const sanitize$1 = (pattern) => pattern.substr(1);
-
-const match$1 = (pattern, text) => {
-  const sanitizedPattern = sanitize$1(pattern);
-  const isMatch = text.indexOf(sanitizedPattern) === -1;
-
-  return {
-    isMatch,
-    score: 0
-  }
-};
-
-var inverseExactMatch = {
-  isForPattern: isForPattern$1,
-  sanitize: sanitize$1,
-  match: match$1
-};
-
-// Token: ^file
-// Match type: prefix-exact-match
-// Description: Items that start with `file`
-
-const isForPattern$2 = (pattern) => pattern.charAt(0) == '^';
-
-const sanitize$2 = (pattern) => pattern.substr(1);
-
-const match$2 = (pattern, text) => {
-  const sanitizedPattern = sanitize$2(pattern);
-  const isMatch = text.startsWith(sanitizedPattern);
-
-  return {
-    isMatch,
-    score: 0
-  }
-};
-
-var prefixExactMatch = {
-  isForPattern: isForPattern$2,
-  sanitize: sanitize$2,
-  match: match$2
-};
-
-// Token: !^fire
-// Match type: inverse-prefix-exact-match
-// Description: Items that do not start with `fire`
-
-const isForPattern$3 = (pattern) =>
-  pattern.charAt(0) == '!' && pattern.charAt(1) == '^';
-
-const sanitize$3 = (pattern) => pattern.substr(2);
-
-const match$3 = (pattern, text) => {
-  const sanitizedPattern = sanitize$3(pattern);
-  const isMatch = !text.startsWith(sanitizedPattern);
-
-  return {
-    isMatch,
-    score: 0
-  }
-};
-
-var inversePrefixExactMatch = {
-  isForPattern: isForPattern$3,
-  sanitize: sanitize$3,
-  match: match$3
-};
-
-// Token: .file$
-// Match type: suffix-exact-match
-// Description: Items that end with `.file`
-
-const isForPattern$4 = (pattern) => pattern.charAt(pattern.length - 1) == '$';
-
-const sanitize$4 = (pattern) => pattern.substr(0, pattern.length - 1);
-
-const match$4 = (pattern, text) => {
-  const sanitizedPattern = sanitize$4(pattern);
-  const isMatch = text.endsWith(sanitizedPattern);
-
-  return {
-    isMatch,
-    score: 0
-  }
-};
-
-var suffixExactMatch = {
-  isForPattern: isForPattern$4,
-  sanitize: sanitize$4,
-  match: match$4
-};
-
-// Token: !.file$
-// Match type: inverse-suffix-exact-match
-// Description: Items that do not end with `.file`
-
-const isForPattern$5 = (pattern) =>
-  pattern.charAt(0) == '!' && pattern.charAt(pattern.length - 1) == '$';
-
-const sanitize$5 = (pattern) => pattern.substring(1, pattern.length - 1);
-
-const match$5 = (pattern, text) => {
-  const sanitizedPattern = sanitize$5(pattern);
-  const isMatch = !text.endsWith(sanitizedPattern);
-
-  return {
-    isMatch,
-    score: 0
-  }
-};
-
-var inverseSuffixExactMatch = {
-  isForPattern: isForPattern$5,
-  sanitize: sanitize$5,
-  match: match$5
-};
 
 const INFINITY = 1 / 0;
 
@@ -13894,249 +13511,9 @@ const isNumber = (value) => typeof value === 'number';
 
 const isDefined = (value) => value !== undefined && value !== null;
 
-// Return a 2D array representation of the query, for simpler parsing.
-// Example:
-// "^core go$ | rb$ | py$ xy$" => [["^core", "go$"], ["rb$"], ["py$", "xy$"]]
-const queryfy = (pattern) =>
-  pattern.split('|').map((item) => item.trim().split(/ +/g));
+const isBlank = (value) => !value.trim().length;
 
-/**
- * Command-like searching
- * ======================
- *
- * Given multiple search terms delimited by spaces.e.g. `^jscript .python$ ruby !java`,
- * search in a given text.
- *
- * Search syntax:
- *
- * | Token       | Match type                 | Description                            |
- * | ----------- | -------------------------- | -------------------------------------- |
- * | `jscript`   | fuzzy-match                | Items that match `jscript`             |
- * | `'python`   | exact-match                | Items that include `python`            |
- * | `!ruby`     | inverse-exact-match        | Items that do not include `ruby`       |
- * | `^java`     | prefix-exact-match         | Items that start with `java`           |
- * | `!^earlang` | inverse-prefix-exact-match | Items that do not start with `earlang` |
- * | `.js$`      | suffix-exact-match         | Items that end with `.js`              |
- * | `!.go$`     | inverse-suffix-exact-match | Items that do not end with `.go`       |
- *
- * A single pipe character acts as an OR operator. For example, the following
- * query matches entries that start with `core` and end with either`go`, `rb`,
- * or`py`.
- *
- * ```
- * ^core go$ | rb$ | py$
- * ```
- */
-class ExtendedSearch {
-  constructor(pattern, options) {
-    const { isCaseSensitive } = options;
-    this.query = null;
-    this.options = options;
-    // A <pattern>:<BitapSearch> key-value pair for optimizing searching
-    this._fuzzyCache = {};
-
-    if (isString(pattern) && pattern.trim().length > 0) {
-      this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
-      this.query = queryfy(this.pattern);
-    }
-  }
-
-  searchIn(value) {
-    const query = this.query;
-
-    if (!this.query) {
-      return {
-        isMatch: false,
-        score: 1
-      }
-    }
-
-    let text = value.$;
-
-    text = this.options.isCaseSensitive ? text : text.toLowerCase();
-
-    let matchFound = false;
-
-    for (let i = 0, qLen = query.length; i < qLen; i += 1) {
-      const parts = query[i];
-      let result = null;
-      matchFound = true;
-
-      for (let j = 0, pLen = parts.length; j < pLen; j += 1) {
-        let token = parts[j];
-        result = this._search(token, text);
-        if (!result.isMatch) {
-          // AND condition, short-circuit and move on to next part
-          matchFound = false;
-          break
-        }
-      }
-
-      // OR condition, so if TRUE, return
-      if (matchFound) {
-        return result
-      }
-    }
-
-    // Nothing was matched
-    return {
-      isMatch: false,
-      score: 1
-    }
-  }
-
-  _search(pattern, text) {
-    if (exactMatch.isForPattern(pattern)) {
-      return exactMatch.match(pattern, text)
-    } else if (prefixExactMatch.isForPattern(pattern)) {
-      return prefixExactMatch.match(pattern, text)
-    } else if (inversePrefixExactMatch.isForPattern(pattern)) {
-      return inversePrefixExactMatch.match(pattern, text)
-    } else if (inverseSuffixExactMatch.isForPattern(pattern)) {
-      return inverseSuffixExactMatch.match(pattern, text)
-    } else if (suffixExactMatch.isForPattern(pattern)) {
-      return suffixExactMatch.match(pattern, text)
-    } else if (inverseExactMatch.isForPattern(pattern)) {
-      return inverseExactMatch.match(pattern, text)
-    } else {
-      let searcher = this._fuzzyCache[pattern];
-      if (!searcher) {
-        searcher = new BitapSearch(pattern, this.options);
-        this._fuzzyCache[pattern] = searcher;
-      }
-      return searcher.searchInString(text)
-    }
-  }
-}
-
-const NGRAM_LEN = 3;
-
-function ngram(
-  text,
-  { n = NGRAM_LEN, pad = true, sort = false }
-) {
-  let nGrams = [];
-
-  if (text === null || text === undefined) {
-    return nGrams
-  }
-
-  text = text.toLowerCase();
-  if (pad) {
-    text = ` ${text} `;
-  }
-
-  let index = text.length - n + 1;
-  if (index < 1) {
-    return nGrams
-  }
-
-  while (index--) {
-    nGrams[index] = text.substr(index, n);
-  }
-
-  if (sort) {
-    nGrams.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1));
-  }
-
-  return nGrams
-}
-
-// Assumes arrays are sorted
-function union (arr1, arr2) {
-  let result = [];
-  let i = 0;
-  let j = 0;
-
-  while (i < arr1.length && j < arr2.length) {
-    let item1 = arr1[i];
-    let item2 = arr2[j];
-
-    if (item1 < item2) {
-      result.push(item1);
-      i += 1;
-    } else if (item2 < item1) {
-      result.push(item2);
-      j += 1;
-    } else {
-      result.push(item2);
-      i += 1;
-      j += 1;
-    }
-  }
-
-  while (i < arr1.length) {
-    result.push(arr1[i]);
-    i += 1;
-  }
-
-  while (j < arr2.length) {
-    result.push(arr2[j]);
-    j += 1;
-  }
-
-  return result
-}
-
-// Assumes arrays are sorted
-function intersection(arr1, arr2) {
-  let result = [];
-  let i = 0;
-  let j = 0;
-
-  while (i < arr1.length && j < arr2.length) {
-    let item1 = arr1[i];
-    let item2 = arr2[j];
-
-    if (item1 == item2) {
-      result.push(item1);
-      i += 1;
-      j += 1;
-    } else if (item1 < item2) {
-      i += 1;
-    } else if (item1 > item2) {
-      j += 1;
-    } else {
-      i += 1;
-      j += 1;
-    }
-  }
-
-  return result
-}
-
-function jaccardDistance(nGram1, nGram2) {
-  let nGramUnion = union(nGram1, nGram2);
-  let nGramIntersection = intersection(nGram1, nGram2);
-
-  return 1 - nGramIntersection.length / nGramUnion.length
-}
-
-class NGramSearch {
-  constructor(pattern, options = { threshold: 0.6 }) {
-    // Create the ngram, and sort it
-    this.options = options;
-    this.patternNgram = ngram(pattern, { sort: true });
-  }
-  searchIn(value) {
-    let textNgram = value.ng;
-    if (!textNgram) {
-      textNgram = ngram(value.$, { sort: true });
-      value.ng = textNgram;
-    }
-
-    let jacardResult = jaccardDistance(this.patternNgram, textNgram);
-
-    const isMatch = jacardResult < this.options.threshold;
-
-    return {
-      score: isMatch ? jacardResult : 1,
-      isMatch
-    }
-  }
-}
-
-function get(obj, path) {
+function fuse_esm_get(obj, path) {
   let list = [];
   let arr = false;
 
@@ -14183,11 +13560,848 @@ function get(obj, path) {
   return list[0]
 }
 
-function createIndex(
-  keys,
-  list,
-  { getFn = get, ngrams = false } = {}
+const MatchOptions = {
+  // Whether the matches should be included in the result set. When true, each record in the result
+  // set will include the indices of the matched characters.
+  // These can consequently be used for highlighting purposes.
+  includeMatches: false,
+  // When true, the matching function will continue to the end of a search pattern even if
+  // a perfect match has already been located in the string.
+  findAllMatches: false,
+  // Minimum number of characters that must be matched before a result is considered a match
+  minMatchCharLength: 1
+};
+
+const BasicOptions = {
+  // When true, the algorithm continues searching to the end of the input even if a perfect
+  // match is found before the end of the same input.
+  isCaseSensitive: false,
+  // When true, the matching function will continue to the end of a search pattern even if
+  includeScore: false,
+  // List of properties that will be searched. This also supports nested properties.
+  keys: [],
+  // Whether to sort the result list, by score
+  shouldSort: true,
+  // Default sort function: sort by ascending score, ascending index
+  sortFn: (a, b) =>
+    a.score === b.score ? (a.idx < b.idx ? -1 : 1) : a.score < b.score ? -1 : 1
+};
+
+const FuzzyOptions = {
+  // Approximately where in the text is the pattern expected to be found?
+  location: 0,
+  // At what point does the match algorithm give up. A threshold of '0.0' requires a perfect match
+  // (of both letters and location), a threshold of '1.0' would match anything.
+  threshold: 0.6,
+  // Determines how close the match must be to the fuzzy location (specified above).
+  // An exact letter match which is 'distance' characters away from the fuzzy location
+  // would score as a complete mismatch. A distance of '0' requires the match be at
+  // the exact location specified, a threshold of '1000' would require a perfect match
+  // to be within 800 characters of the fuzzy location to be found using a 0.8 threshold.
+  distance: 100
+};
+
+const AdvancedOptions = {
+  // When true, it enables the use of unix-like search commands
+  useExtendedSearch: false,
+  // The get function to use when fetching an object's properties.
+  // The default will search nested paths *ie foo.bar.baz*
+  getFn: fuse_esm_get
+};
+
+var Config = {
+  ...BasicOptions,
+  ...MatchOptions,
+  ...FuzzyOptions,
+  ...AdvancedOptions
+};
+
+function computeScore(
+  pattern,
+  {
+    errors = 0,
+    currentLocation = 0,
+    expectedLocation = 0,
+    distance = Config.distance
+  } = {}
 ) {
+  const accuracy = errors / pattern.length;
+  const proximity = Math.abs(expectedLocation - currentLocation);
+
+  if (!distance) {
+    // Dodge divide by zero error.
+    return proximity ? 1.0 : accuracy
+  }
+
+  return accuracy + proximity / distance
+}
+
+function convertMaskToIndices(
+  matchmask = [],
+  minMatchCharLength = Config.minMatchCharLength
+) {
+  let matchedIndices = [];
+  let start = -1;
+  let end = -1;
+  let i = 0;
+
+  for (let len = matchmask.length; i < len; i += 1) {
+    let match = matchmask[i];
+    if (match && start === -1) {
+      start = i;
+    } else if (!match && start !== -1) {
+      end = i - 1;
+      if (end - start + 1 >= minMatchCharLength) {
+        matchedIndices.push([start, end]);
+      }
+      start = -1;
+    }
+  }
+
+  // (i-1 - start) + 1 => i - start
+  if (matchmask[i - 1] && i - start >= minMatchCharLength) {
+    matchedIndices.push([start, i - 1]);
+  }
+
+  return matchedIndices
+}
+
+// Machine word size
+const MAX_BITS = 32;
+
+function search(
+  text,
+  pattern,
+  patternAlphabet,
+  {
+    location = Config.location,
+    distance = Config.distance,
+    threshold = Config.threshold,
+    findAllMatches = Config.findAllMatches,
+    minMatchCharLength = Config.minMatchCharLength,
+    includeMatches = Config.includeMatches
+  } = {}
+) {
+  if (pattern.length > MAX_BITS) {
+    throw new Error(`Pattern length exceeds max of ${MAX_BITS}.`)
+  }
+
+  const patternLen = pattern.length;
+  // Set starting location at beginning text and initialize the alphabet.
+  const textLen = text.length;
+  // Handle the case when location > text.length
+  const expectedLocation = Math.max(0, Math.min(location, textLen));
+  // Highest score beyond which we give up.
+  let currentThreshold = threshold;
+  // Is there a nearby exact match? (speedup)
+  let bestLocation = expectedLocation;
+
+  // A mask of the matches, used for building the indices
+  const matchMask = [];
+
+  if (includeMatches) {
+    for (let i = 0; i < textLen; i += 1) {
+      matchMask[i] = 0;
+    }
+  }
+
+  let index;
+
+  // Get all exact matches, here for speed up
+  while ((index = text.indexOf(pattern, bestLocation)) > -1) {
+    let score = computeScore(pattern, {
+      currentLocation: index,
+      expectedLocation,
+      distance
+    });
+
+    currentThreshold = Math.min(score, currentThreshold);
+    bestLocation = index + patternLen;
+
+    if (includeMatches) {
+      let i = 0;
+      while (i < patternLen) {
+        matchMask[index + i] = 1;
+        i += 1;
+      }
+    }
+  }
+
+  // Reset the best location
+  bestLocation = -1;
+
+  let lastBitArr = [];
+  let finalScore = 1;
+  let binMax = patternLen + textLen;
+
+  const mask = 1 << (patternLen <= MAX_BITS - 1 ? patternLen - 1 : MAX_BITS - 2);
+
+  for (let i = 0; i < patternLen; i += 1) {
+    // Scan for the best match; each iteration allows for one more error.
+    // Run a binary search to determine how far from the match location we can stray
+    // at this error level.
+    let binMin = 0;
+    let binMid = binMax;
+
+    while (binMin < binMid) {
+      const score = computeScore(pattern, {
+        errors: i,
+        currentLocation: expectedLocation + binMid,
+        expectedLocation,
+        distance
+      });
+
+      if (score <= currentThreshold) {
+        binMin = binMid;
+      } else {
+        binMax = binMid;
+      }
+
+      binMid = Math.floor((binMax - binMin) / 2 + binMin);
+    }
+
+    // Use the result from this iteration as the maximum for the next.
+    binMax = binMid;
+
+    let start = Math.max(1, expectedLocation - binMid + 1);
+    let finish = findAllMatches
+      ? textLen
+      : Math.min(expectedLocation + binMid, textLen) + patternLen;
+
+    // Initialize the bit array
+    let bitArr = Array(finish + 2);
+
+    bitArr[finish + 1] = (1 << i) - 1;
+
+    for (let j = finish; j >= start; j -= 1) {
+      let currentLocation = j - 1;
+      let charMatch = patternAlphabet[text.charAt(currentLocation)];
+
+      if (charMatch && includeMatches) {
+        matchMask[currentLocation] = 1;
+      }
+
+      // First pass: exact match
+      bitArr[j] = ((bitArr[j + 1] << 1) | 1) & charMatch;
+
+      // Subsequent passes: fuzzy match
+      if (i !== 0) {
+        bitArr[j] |=
+          ((lastBitArr[j + 1] | lastBitArr[j]) << 1) | 1 | lastBitArr[j + 1];
+      }
+
+      if (bitArr[j] & mask) {
+        finalScore = computeScore(pattern, {
+          errors: i,
+          currentLocation,
+          expectedLocation,
+          distance
+        });
+
+        // This match will almost certainly be better than any existing match.
+        // But check anyway.
+        if (finalScore <= currentThreshold) {
+          // Indeed it is
+          currentThreshold = finalScore;
+          bestLocation = currentLocation;
+
+          // Already passed `loc`, downhill from here on in.
+          if (bestLocation <= expectedLocation) {
+            break
+          }
+
+          // When passing `bestLocation`, don't exceed our current distance from `expectedLocation`.
+          start = Math.max(1, 2 * expectedLocation - bestLocation);
+        }
+      }
+    }
+
+    // No hope for a (better) match at greater error levels.
+    const score = computeScore(pattern, {
+      errors: i + 1,
+      currentLocation: expectedLocation,
+      expectedLocation,
+      distance
+    });
+
+    if (score > currentThreshold) {
+      break
+    }
+
+    lastBitArr = bitArr;
+  }
+
+  let result = {
+    isMatch: bestLocation >= 0,
+    // Count exact matches (those with a score of 0) to be "almost" exact
+    score: !finalScore ? 0.001 : finalScore
+  };
+
+  if (includeMatches) {
+    result.matchedIndices = convertMaskToIndices(matchMask, minMatchCharLength);
+  }
+
+  return result
+}
+
+function createPatternAlphabet(pattern) {
+  let mask = {};
+  let len = pattern.length;
+
+  for (let i = 0; i < len; i += 1) {
+    mask[pattern.charAt(i)] = 0;
+  }
+
+  for (let i = 0; i < len; i += 1) {
+    mask[pattern.charAt(i)] |= 1 << (len - i - 1);
+  }
+
+  return mask
+}
+
+class BitapSearch {
+  constructor(
+    pattern,
+    {
+      location = Config.location,
+      threshold = Config.threshold,
+      distance = Config.distance,
+      includeMatches = Config.includeMatches,
+      findAllMatches = Config.findAllMatches,
+      minMatchCharLength = Config.minMatchCharLength,
+      isCaseSensitive = Config.isCaseSensitive
+    } = {}
+  ) {
+    this.options = {
+      location,
+      threshold,
+      distance,
+      includeMatches,
+      findAllMatches,
+      minMatchCharLength,
+      isCaseSensitive
+    };
+
+    this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
+
+    this.chunks = [];
+
+    let index = 0;
+    while (index < this.pattern.length) {
+      let pattern = this.pattern.substring(index, index + MAX_BITS);
+      this.chunks.push({
+        pattern,
+        alphabet: createPatternAlphabet(pattern)
+      });
+      index += MAX_BITS;
+    }
+  }
+
+  searchIn(value) {
+    let text = value.$;
+    return this.searchInString(text)
+  }
+
+  searchInString(text) {
+    const { isCaseSensitive, includeMatches } = this.options;
+
+    if (!isCaseSensitive) {
+      text = text.toLowerCase();
+    }
+
+    // Exact match
+    if (this.pattern === text) {
+      let result = {
+        isMatch: true,
+        score: 0
+      };
+
+      if (includeMatches) {
+        result.matchedIndices = [[0, text.length - 1]];
+      }
+
+      return result
+    }
+
+    // Otherwise, use Bitap algorithm
+    const {
+      location,
+      distance,
+      threshold,
+      findAllMatches,
+      minMatchCharLength
+    } = this.options;
+
+    let allMatchedIndices = [];
+    let totalScore = 0;
+    let hasMatches = false;
+
+    for (let i = 0, len = this.chunks.length; i < len; i += 1) {
+      let { pattern, alphabet } = this.chunks[i];
+
+      let result = search(text, pattern, alphabet, {
+        location: location + MAX_BITS * i,
+        distance,
+        threshold,
+        findAllMatches,
+        minMatchCharLength,
+        includeMatches
+      });
+
+      const { isMatch, score, matchedIndices } = result;
+
+      if (isMatch) {
+        hasMatches = true;
+      }
+
+      totalScore += score;
+
+      if (isMatch && matchedIndices) {
+        allMatchedIndices = [...allMatchedIndices, ...matchedIndices];
+      }
+    }
+
+    let result = {
+      isMatch: hasMatches,
+      score: hasMatches ? totalScore / this.chunks.length : 1
+    };
+
+    if (hasMatches && includeMatches) {
+      result.matchedIndices = allMatchedIndices;
+    }
+
+    return result
+  }
+}
+
+class BaseMatch {
+  constructor(pattern) {
+    this.pattern = pattern;
+  }
+  static isMultiMatch(pattern) {
+    return getMatch(pattern, this.multiRegex)
+  }
+  static isSingleMatch(pattern) {
+    return getMatch(pattern, this.singleRegex)
+  }
+  search(/*text*/) {}
+}
+
+function getMatch(pattern, exp) {
+  const matches = pattern.match(exp);
+  return matches ? matches[1] : null
+}
+
+// Token: 'file
+
+class ExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'exact'
+  }
+  static get multiRegex() {
+    return /^'"(.*)"$/
+  }
+  static get singleRegex() {
+    return /^'(.*)$/
+  }
+  search(text) {
+    let location = 0;
+    let index;
+
+    const matchedIndices = [];
+    const patternLen = this.pattern.length;
+
+    // Get all exact matches
+    while ((index = text.indexOf(this.pattern, location)) > -1) {
+      location = index + patternLen;
+      matchedIndices.push([index, location - 1]);
+    }
+
+    const isMatch = !!matchedIndices.length;
+
+    return {
+      isMatch,
+      score: isMatch ? 1 : 0,
+      matchedIndices
+    }
+  }
+}
+
+// Token: !fire
+
+class InverseExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'inverse-exact'
+  }
+  static get multiRegex() {
+    return /^!"(.*)"$/
+  }
+  static get singleRegex() {
+    return /^!(.*)$/
+  }
+  search(text) {
+    const index = text.indexOf(this.pattern);
+    const isMatch = index === -1;
+
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      matchedIndices: [0, text.length - 1]
+    }
+  }
+}
+
+// Token: ^file
+
+class PrefixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'prefix-exact'
+  }
+  static get multiRegex() {
+    return /^\^"(.*)"$/
+  }
+  static get singleRegex() {
+    return /^\^(.*)$/
+  }
+  search(text) {
+    const isMatch = text.startsWith(this.pattern);
+
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      matchedIndices: [0, this.pattern.length - 1]
+    }
+  }
+}
+
+// Token: !^fire
+
+class InversePrefixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'inverse-prefix-exact'
+  }
+  static get multiRegex() {
+    return /^!\^"(.*)"$/
+  }
+  static get singleRegex() {
+    return /^!\^(.*)$/
+  }
+  search(text) {
+    const isMatch = !text.startsWith(this.pattern);
+
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      matchedIndices: [0, text.length - 1]
+    }
+  }
+}
+
+// Token: .file$
+
+class SuffixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'suffix-exact'
+  }
+  static get multiRegex() {
+    return /^"(.*)"\$$/
+  }
+  static get singleRegex() {
+    return /^(.*)\$$/
+  }
+  search(text) {
+    const isMatch = text.endsWith(this.pattern);
+
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      matchedIndices: [text.length - this.pattern.length, text.length - 1]
+    }
+  }
+}
+
+// Token: !.file$
+
+class InverseSuffixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'inverse-suffix-exact'
+  }
+  static get multiRegex() {
+    return /^!"(.*)"\$$/
+  }
+  static get singleRegex() {
+    return /^!(.*)\$$/
+  }
+  search(text) {
+    const isMatch = !text.endsWith(this.pattern);
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      matchedIndices: [0, text.length - 1]
+    }
+  }
+}
+
+class FuzzyMatch extends BaseMatch {
+  constructor(
+    pattern,
+    {
+      location = Config.location,
+      threshold = Config.threshold,
+      distance = Config.distance,
+      includeMatches = Config.includeMatches,
+      findAllMatches = Config.findAllMatches,
+      minMatchCharLength = Config.minMatchCharLength,
+      isCaseSensitive = Config.isCaseSensitive
+    } = {}
+  ) {
+    super(pattern);
+    this._bitapSearch = new BitapSearch(pattern, {
+      location,
+      threshold,
+      distance,
+      includeMatches,
+      findAllMatches,
+      minMatchCharLength,
+      isCaseSensitive
+    });
+  }
+  static get type() {
+    return 'fuzzy'
+  }
+  static get multiRegex() {
+    return /^"(.*)"$/
+  }
+  static get singleRegex() {
+    return /^(.*)$/
+  }
+  search(text) {
+    return this._bitapSearch.searchInString(text)
+  }
+}
+
+// ❗Order is important. DO NOT CHANGE.
+const searchers = [
+  ExactMatch,
+  PrefixExactMatch,
+  InversePrefixExactMatch,
+  InverseSuffixExactMatch,
+  SuffixExactMatch,
+  InverseExactMatch,
+  FuzzyMatch
+];
+
+const searchersLen = searchers.length;
+
+// Regex to split by spaces, but keep anything in quotes together
+const SPACE_RE = / +(?=([^\"]*\"[^\"]*\")*[^\"]*$)/;
+const OR_TOKEN = '|';
+
+// Return a 2D array representation of the query, for simpler parsing.
+// Example:
+// "^core go$ | rb$ | py$ xy$" => [["^core", "go$"], ["rb$"], ["py$", "xy$"]]
+function parseQuery(pattern, options = {}) {
+  return pattern.split(OR_TOKEN).map((item) => {
+    let query = item
+      .trim()
+      .split(SPACE_RE)
+      .filter((item) => item && !!item.trim());
+
+    let results = [];
+    for (let i = 0, len = query.length; i < len; i += 1) {
+      const queryItem = query[i];
+
+      // 1. Handle multiple query match (i.e, once that are quoted, like `"hello world"`)
+      let found = false;
+      let idx = -1;
+      while (!found && ++idx < searchersLen) {
+        const searcher = searchers[idx];
+        let token = searcher.isMultiMatch(queryItem);
+        if (token) {
+          results.push(new searcher(token, options));
+          found = true;
+        }
+      }
+
+      if (found) {
+        continue
+      }
+
+      // 2. Handle single query matches (i.e, once that are *not* quoted)
+      idx = -1;
+      while (++idx < searchersLen) {
+        const searcher = searchers[idx];
+        let token = searcher.isSingleMatch(queryItem);
+        if (token) {
+          results.push(new searcher(token, options));
+          break
+        }
+      }
+    }
+
+    return results
+  })
+}
+
+// These extended matchers can return an array of matches, as opposed
+// to a singl match
+const MultiMatchSet = new Set([FuzzyMatch.type, ExactMatch.type]);
+
+/**
+ * Command-like searching
+ * ======================
+ *
+ * Given multiple search terms delimited by spaces.e.g. `^jscript .python$ ruby !java`,
+ * search in a given text.
+ *
+ * Search syntax:
+ *
+ * | Token       | Match type                 | Description                            |
+ * | ----------- | -------------------------- | -------------------------------------- |
+ * | `jscript`   | fuzzy-match                | Items that match `jscript`             |
+ * | `'python`   | exact-match                | Items that include `python`            |
+ * | `!ruby`     | inverse-exact-match        | Items that do not include `ruby`       |
+ * | `^java`     | prefix-exact-match         | Items that start with `java`           |
+ * | `!^earlang` | inverse-prefix-exact-match | Items that do not start with `earlang` |
+ * | `.js$`      | suffix-exact-match         | Items that end with `.js`              |
+ * | `!.go$`     | inverse-suffix-exact-match | Items that do not end with `.go`       |
+ *
+ * A single pipe character acts as an OR operator. For example, the following
+ * query matches entries that start with `core` and end with either`go`, `rb`,
+ * or`py`.
+ *
+ * ```
+ * ^core go$ | rb$ | py$
+ * ```
+ */
+class ExtendedSearch {
+  constructor(
+    pattern,
+    {
+      isCaseSensitive = Config.isCaseSensitive,
+      includeMatches = Config.includeMatches,
+      minMatchCharLength = Config.minMatchCharLength,
+      findAllMatches = Config.findAllMatches,
+      location = Config.location,
+      threshold = Config.threshold,
+      distance = Config.distance
+    } = {}
+  ) {
+    this.query = null;
+    this.options = {
+      isCaseSensitive,
+      includeMatches,
+      minMatchCharLength,
+      findAllMatches,
+      location,
+      threshold,
+      distance
+    };
+
+    this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
+    this.query = parseQuery(this.pattern, this.options);
+  }
+
+  static condition(_, options) {
+    return options.useExtendedSearch
+  }
+
+  searchIn(value) {
+    const query = this.query;
+
+    if (!query) {
+      return {
+        isMatch: false,
+        score: 1
+      }
+    }
+
+    let text = value.$;
+
+    const { includeMatches, isCaseSensitive } = this.options;
+
+    text = isCaseSensitive ? text : text.toLowerCase();
+
+    let numMatches = 0;
+    let indices = [];
+    let totalScore = 0;
+
+    // ORs
+    for (let i = 0, qLen = query.length; i < qLen; i += 1) {
+      const searchers = query[i];
+
+      // Reset indices
+      indices.length = 0;
+      numMatches = 0;
+
+      // ANDs
+      for (let j = 0, pLen = searchers.length; j < pLen; j += 1) {
+        const searcher = searchers[j];
+        const { isMatch, matchedIndices, score } = searcher.search(text);
+
+        if (isMatch) {
+          numMatches += 1;
+          totalScore += score;
+          if (includeMatches) {
+            const type = searcher.constructor.type;
+            if (MultiMatchSet.has(type)) {
+              indices = [...indices, ...matchedIndices];
+            } else {
+              indices.push(matchedIndices);
+            }
+          }
+        } else {
+          totalScore = 0;
+          numMatches = 0;
+          indices.length = 0;
+          break
+        }
+      }
+
+      // OR condition, so if TRUE, return
+      if (numMatches) {
+        let result = {
+          isMatch: true,
+          score: totalScore / numMatches
+        };
+
+        if (includeMatches) {
+          result.matchedIndices = indices;
+        }
+
+        return result
+      }
+    }
+
+    // Nothing was matched
+    return {
+      isMatch: false,
+      score: 1
+    }
+  }
+}
+
+const SPACE = /[^ ]+/g;
+
+function createIndex(keys, list, { getFn = Config.getFn } = {}) {
   let indexedList = [];
 
   // List is Array<String>
@@ -14196,19 +14410,12 @@ function createIndex(
     for (let i = 0, len = list.length; i < len; i += 1) {
       const value = list[i];
 
-      if (isDefined(value)) {
-        // if (!isCaseSensitive) {
-        //   value = value.toLowerCase()
-        // }
-
+      if (isDefined(value) && !isBlank(value)) {
         let record = {
           $: value,
-          idx: i
+          idx: i,
+          t: value.match(SPACE).length
         };
-
-        if (ngrams) {
-          record.ng = ngram(value, { sort: true });
-        }
 
         indexedList.push(record);
       }
@@ -14242,17 +14449,12 @@ function createIndex(
               continue
             }
 
-            if (isString(value)) {
-              // if (!isCaseSensitive) {
-              //   v = v.toLowerCase()
-              // }
-
-              let subRecord = { $: value, idx: arrayIndex };
-
-              if (ngrams) {
-                subRecord.ng = ngram(value, { sort: true });
-              }
-
+            if (isString(value) && !isBlank(value)) {
+              let subRecord = {
+                $: value,
+                idx: arrayIndex,
+                t: value.match(SPACE).length
+              };
               subRecords.push(subRecord);
             } else if (isArray(value)) {
               for (let k = 0, arrLen = value.length; k < arrLen; k += 1) {
@@ -14264,16 +14466,11 @@ function createIndex(
             }
           }
           record.$[key] = subRecords;
-        } else {
-          // if (!isCaseSensitive) {
-          //   value = value.toLowerCase()
-          // }
-
-          let subRecord = { $: value };
-
-          if (ngrams) {
-            subRecord.ng = ngram(value, { sort: true });
-          }
+        } else if (!isBlank(value)) {
+          let subRecord = {
+            $: value,
+            t: value.match(SPACE).length
+          };
 
           record.$[key] = subRecord;
         }
@@ -14391,58 +14588,15 @@ function transformScore(result, data) {
   data.score = result.score;
 }
 
-const BasicOptions = {
-  // When true, the algorithm continues searching to the end of the input even if a perfect
-  // match is found before the end of the same input.
-  isCaseSensitive: false,
-  // Minimum number of characters that must be matched before a result is considered a match
-  findAllMatches: false,
-  includeMatches: false,
-  includeScore: false,
-  // List of properties that will be searched. This also supports nested properties.
-  keys: [],
-  // Minimum number of characters that must be matched before a result is considered a match
-  minMatchCharLength: 1,
-  // Whether to sort the result list, by score
-  shouldSort: true,
-  // Default sort function
-  sortFn: (a, b) => a.score - b.score
-};
+const registeredSearchers = [];
 
-const FuzzyOptions = {
-  // Approximately where in the text is the pattern expected to be found?
-  location: 0,
-  // At what point does the match algorithm give up. A threshold of '0.0' requires a perfect match
-  // (of both letters and location), a threshold of '1.0' would match anything.
-  threshold: 0.6,
-  // Determines how close the match must be to the fuzzy location (specified above).
-  // An exact letter match which is 'distance' characters away from the fuzzy location
-  // would score as a complete mismatch. A distance of '0' requires the match be at
-  // the exact location specified, a threshold of '1000' would require a perfect match
-  // to be within 800 characters of the fuzzy location to be found using a 0.8 threshold.
-  distance: 100
-};
-
-const AdvancedOptions = {
-  // Enabled extended-searching
-  useExtendedSearch: false,
-  // The get function to use when fetching an object's properties.
-  // The default will search nested paths *ie foo.bar.baz*
-  getFn: get
-};
-
-const defaultOptions = {
-  ...BasicOptions,
-  ...FuzzyOptions,
-  ...AdvancedOptions
-};
+function register(...args) {
+  registeredSearchers.push(...args);
+}
 
 class Fuse {
-  constructor(list, options = defaultOptions, index = null) {
-    this.options = { ...defaultOptions, ...options };
-    // `caseSensitive` is deprecated, use `isCaseSensitive` instead
-    this.options.isCaseSensitive = options.caseSensitive;
-    delete this.options.caseSensitive;
+  constructor(list, options = {}, index = null) {
+    this.options = { ...Config, ...options };
 
     this._processKeys(this.options.keys);
     this.setCollection(list, index);
@@ -14474,15 +14628,25 @@ class Fuse {
   }
 
   search(pattern, opts = { limit: false }) {
-    const { useExtendedSearch, shouldSort } = this.options;
+    pattern = pattern.trim();
+
+    if (!pattern.length) {
+      return []
+    }
+
+    const { shouldSort } = this.options;
 
     let searcher = null;
 
-    if (useExtendedSearch) {
-      searcher = new ExtendedSearch(pattern, this.options);
-    } else if (pattern.length > MAX_BITS) {
-      searcher = new NGramSearch(pattern, this.options);
-    } else {
+    for (let i = 0, len = registeredSearchers.length; i < len; i += 1) {
+      let searcherClass = registeredSearchers[i];
+      if (searcherClass.condition(pattern, this.options)) {
+        searcher = new searcherClass(pattern, this.options);
+        break
+      }
+    }
+
+    if (!searcher) {
       searcher = new BitapSearch(pattern, this.options);
     }
 
@@ -14511,7 +14675,7 @@ class Fuse {
       // Iterate over every string in the list
       for (let i = 0, len = list.length; i < len; i += 1) {
         let value = list[i];
-        let { $: text, idx } = value;
+        let { $: text, idx, t } = value;
 
         if (!isDefined(text)) {
           continue
@@ -14525,7 +14689,7 @@ class Fuse {
           continue
         }
 
-        let match = { score, value: text };
+        let match = { score, value: text, t };
 
         if (includeMatches) {
           match.indices = searchResult.matchedIndices;
@@ -14563,8 +14727,7 @@ class Fuse {
           if (isArray(value)) {
             for (let k = 0, len = value.length; k < len; k += 1) {
               let arrItem = value[k];
-              let text = arrItem.$;
-              let idx = arrItem.idx;
+              const { $: text, idx, t } = arrItem;
 
               if (!isDefined(text)) {
                 continue
@@ -14578,7 +14741,7 @@ class Fuse {
                 continue
               }
 
-              let match = { score, key, value: text, idx };
+              let match = { score, key, value: text, idx, t };
 
               if (includeMatches) {
                 match.indices = searchResult.matchedIndices;
@@ -14587,7 +14750,8 @@ class Fuse {
               matches.push(match);
             }
           } else {
-            let text = value.$;
+            const { $: text, t } = value;
+
             let searchResult = searcher.searchIn(value);
 
             const { isMatch, score } = searchResult;
@@ -14596,7 +14760,7 @@ class Fuse {
               continue
             }
 
-            let match = { score, key, value: text };
+            let match = { score, key, value: text, t };
 
             if (includeMatches) {
               match.indices = searchResult.matchedIndices;
@@ -14619,26 +14783,33 @@ class Fuse {
     return results
   }
 
+  // Practical scoring function
   _computeScore(results) {
-    for (let i = 0, len = results.length; i < len; i += 1) {
+    const resultsLen = results.length;
+
+    for (let i = 0; i < resultsLen; i += 1) {
       const result = results[i];
       const matches = result.matches;
-      const scoreLen = matches.length;
+      const numMatches = matches.length;
 
-      let totalWeightedScore = 1;
+      let totalScore = 1;
 
-      for (let j = 0; j < scoreLen; j += 1) {
-        const item = matches[j];
-        const key = item.key;
+      for (let j = 0; j < numMatches; j += 1) {
+        const match = matches[j];
+        const { key, t } = match;
+
         const keyWeight = this._keyStore.get(key, 'weight');
         const weight = keyWeight > -1 ? keyWeight : 1;
         const score =
-          item.score === 0 && keyWeight > -1 ? Number.EPSILON : item.score;
+          match.score === 0 && keyWeight > -1 ? Number.EPSILON : match.score;
 
-        totalWeightedScore *= Math.pow(score, weight);
+        // Field-length norm: the shorter the field, the higher the weight.
+        const norm = 1 / Math.sqrt(t);
+
+        totalScore *= Math.pow(score, weight * norm);
       }
 
-      result.score = totalWeightedScore;
+      result.score = totalScore;
     }
   }
 
@@ -14678,13 +14849,15 @@ class Fuse {
   }
 }
 
-Fuse.version = '5.1.0';
+register(ExtendedSearch);
+
+Fuse.version = '5.2.3';
 Fuse.createIndex = createIndex;
-Fuse.defaultOptions = defaultOptions;
+Fuse.config = Config;
 
 /* harmony default export */ var fuse_esm = (Fuse);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ITable/template.html?vue&type=template&id=c985e868&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ITable/template.html?vue&type=template&id=c985e868&scoped=true&
 var templatevue_type_template_id_c985e868_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"table-wrapper",class:_vm.classes['wrapper']},[_c('table',{staticClass:"table",class:_vm.classes['root']},[_vm._t("default")],2)])}
 var templatevue_type_template_id_c985e868_scoped_true_staticRenderFns = []
 
@@ -14766,7 +14939,7 @@ var ITable_component = normalizeComponent(
 )
 
 /* harmony default export */ var ITable = (ITable_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IIcon/template.html?vue&type=template&id=22d54eb2&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IIcon/template.html?vue&type=template&id=22d54eb2&
 var templatevue_type_template_id_22d54eb2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i',{staticClass:"inkline-icon",class:_vm.classes},[_vm._t("default")],2)}
 var templatevue_type_template_id_22d54eb2_staticRenderFns = []
 
@@ -14825,28 +14998,33 @@ var IIcon_component = normalizeComponent(
 )
 
 /* harmony default export */ var IIcon = (IIcon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IInput/template.html?vue&type=template&id=2da9bb60&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IInput/template.html?vue&type=template&id=2da9bb60&scoped=true&
 var templatevue_type_template_id_2da9bb60_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-input-group",class:_vm.classes['root']},[(_vm.$slots.prepend)?_c('div',{staticClass:"form-input-prepend"},[_vm._t("prepend")],2):_vm._e(),_c('div',{staticClass:"form-input",class:_vm.classes['child'],on:{"mouseenter":_vm.emitMouseEnter,"mouseleave":_vm.emitMouseLeave}},[(_vm.$slots.prefix)?_c('span',{staticClass:"form-input-prefix"},[_vm._t("prefix")],2):_vm._e(),(_vm.$slots.suffix || _vm.clearable)?_c('span',{staticClass:"form-input-suffix"},[_c('i',{directives:[{name:"show",rawName:"v-show",value:(_vm.isClearable),expression:"isClearable"}],staticClass:"clear-input",attrs:{"aria-label":"Clear"},on:{"click":_vm.clear}}),_vm._t("suffix")],2):_vm._e(),(((_vm.$attrs).type)==='checkbox')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"name":_vm.name,"tabindex":_vm.tabIndex,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"readonly":_vm.isReadonly,"aria-readonly":_vm.isReadonly,"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.model)?_vm._i(_vm.model,null)>-1:(_vm.model)},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.emitBlur,"change":[function($event){var $$a=_vm.model,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.model=$$a.concat([$$v]))}else{$$i>-1&&(_vm.model=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.model=$$c}},_vm.emitChange],"keydown":_vm.emitKeydown,"keyup":_vm.emitKeyup}},'input',_vm.$attrs,false)):(((_vm.$attrs).type)==='radio')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"name":_vm.name,"tabindex":_vm.tabIndex,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"readonly":_vm.isReadonly,"aria-readonly":_vm.isReadonly,"type":"radio"},domProps:{"checked":_vm._q(_vm.model,null)},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.emitBlur,"change":[function($event){_vm.model=null},_vm.emitChange],"keydown":_vm.emitKeydown,"keyup":_vm.emitKeyup}},'input',_vm.$attrs,false)):_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"name":_vm.name,"tabindex":_vm.tabIndex,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"readonly":_vm.isReadonly,"aria-readonly":_vm.isReadonly,"type":(_vm.$attrs).type},domProps:{"value":(_vm.model)},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.emitBlur,"change":_vm.emitChange,"keydown":_vm.emitKeydown,"keyup":_vm.emitKeyup,"input":function($event){if($event.target.composing){ return; }_vm.model=$event.target.value}}},'input',_vm.$attrs,false))]),(_vm.$slots.append)?_c('div',{staticClass:"form-input-append"},[_vm._t("append")],2):_vm._e()])}
 var templatevue_type_template_id_2da9bb60_scoped_true_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/IInput/template.html?vue&type=template&id=2da9bb60&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IFormGroup/template.html?vue&type=template&id=1ee2a6df&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IFormGroup/template.html?vue&type=template&id=1ee2a6df&scoped=true&
 var templatevue_type_template_id_1ee2a6df_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-group",class:_vm.classes,attrs:{"role":"inputgroup"}},[_vm._t("default"),(_vm.validate)?_c('i-form-error',{attrs:{"schema":_vm.inputSchema}}):_vm._e()],2)}
 var templatevue_type_template_id_1ee2a6df_scoped_true_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/IFormGroup/template.html?vue&type=template&id=1ee2a6df&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IFormError/template.html?vue&type=template&id=5bc0ec94&scoped=true&
-var templatevue_type_template_id_5bc0ec94_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.schema)?_c('transition',{attrs:{"name":"fade-in-transition"},on:{"after-leave":function($event){return _vm.clearErrors()}}},[(_vm.schema.errors && _vm.schema.errors.length > 0)?_c('ul',{staticClass:"form-group-error"},_vm._l((_vm.errors),function(error){return _c('li',[_vm._v(_vm._s(error))])}),0):_vm._e()]):_vm._e()}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IFormError/template.html?vue&type=template&id=5bc0ec94&scoped=true&
+var templatevue_type_template_id_5bc0ec94_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.schema)?_c('transition',{attrs:{"name":"fade-in-transition"},on:{"after-leave":function($event){return _vm.clearErrors()}}},[(_vm.hasErrors)?_c('ul',{staticClass:"form-group-error"},_vm._l((_vm.errors),function(error){return _c('li',[_vm._v(_vm._s(error))])}),0):_vm._e()]):_vm._e()}
 var templatevue_type_template_id_5bc0ec94_scoped_true_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/IFormError/template.html?vue&type=template&id=5bc0ec94&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/eslint-loader??ref--13-0!./src/components/IFormError/script.js?vue&type=script&lang=js&
+
+
+
+
+
 
 
 
@@ -14865,19 +15043,22 @@ var templatevue_type_template_id_5bc0ec94_scoped_true_staticRenderFns = []
       errors: []
     };
   },
-  watch: {
-    'schema.invalid': function schemaInvalid(invalid) {
-      var _this = this;
+  watch: _defineProperty({}, 'schema.' + FormBuilder_FormBuilder.keys.INVALID, function (invalid) {
+    var _this = this;
 
-      if (invalid) {
-        this.errors = Object.keys(this.schema.errors).filter(function (key) {
-          return key !== 'length';
-        }).map(function (key) {
-          return _this.schema.errors[key];
-        });
-      } else {
-        this.errors = [];
-      }
+    if (invalid) {
+      this.errors = Object.keys(this.schema[FormBuilder_FormBuilder.keys.ERRORS]).filter(function (key) {
+        return key !== 'length';
+      }).map(function (key) {
+        return _this.schema[FormBuilder_FormBuilder.keys.ERRORS][key];
+      });
+    } else {
+      this.errors = [];
+    }
+  }),
+  computed: {
+    hasErrors: function hasErrors() {
+      return this.schema[FormBuilder_FormBuilder.keys.ERRORS] && this.schema[FormBuilder_FormBuilder.keys.ERRORS].length > 0;
     }
   },
   methods: {
@@ -14915,6 +15096,10 @@ var IFormError_component = normalizeComponent(
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/eslint-loader??ref--13-0!./src/components/IFormGroup/script.js?vue&type=script&lang=js&
 
 
+
+
+
+
 /* harmony default export */ var IFormGroup_scriptvue_type_script_lang_js_ = ({
   name: 'IFormGroup',
   mixins: [AttributesProviderMixin, ClassesProviderMixin, InjectParentFormProviderMixin, EmitInputMethodMixin, DisabledFormPropertyMixin, LoadingPropertyMixin, NamePropertyMixin, ParentFormGroupPropertyMixin, ReadonlyPropertyMixin, SizePropertyMixin, TabIndexPropertyMixin],
@@ -14942,7 +15127,7 @@ var IFormError_component = normalizeComponent(
     this.classesProvider.add(function () {
       return {
         '-inline': _this.inline,
-        '-error': _this.inputSchema && _this.inputSchema.invalid
+        '-error': _this.inputSchema && _this.inputSchema[FormBuilder_FormBuilder.keys.INVALID]
       };
     });
   }
@@ -15026,14 +15211,14 @@ var IInput_component = normalizeComponent(
 )
 
 /* harmony default export */ var IInput = (IInput_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ISelect/template.html?vue&type=template&id=7b09b430&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ISelect/template.html?vue&type=template&id=7b09b430&scoped=true&
 var templatevue_type_template_id_7b09b430_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i-dropdown',{ref:"dropdown",staticClass:"select",class:_vm.classes,attrs:{"disabled":_vm.isDisabled || _vm.isReadonly || _vm.isMobile,"readonly":_vm.isReadonly,"size":_vm.size,"id":_vm.id,"tabindex":-1,"hide-on-click":""}},[_c('i-input',{ref:"input",attrs:{"value":_vm.labelModel,"name":_vm.name,"placeholder":_vm.placeholder,"readonly":_vm.isReadonly || !_vm.filterable,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"tabindex":_vm.isMobile ? -1 : _vm.tabIndex},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.emitBlur,"keydown":[_vm.emitKeydown,function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}],"keyup":_vm.emitKeyup}},[_vm._t("prepend",null,{"slot":"prepend"}),_vm._t("prefix",null,{"slot":"prefix"}),_vm._t("suffix",null,{"slot":"suffix"}),_vm._t("append",null,{"slot":"append"})],2),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"},{name:"show",rawName:"v-show",value:(_vm.isMobile),expression:"isMobile"}],ref:"select",staticClass:"form-select",attrs:{"placeholder":_vm.placeholder,"name":_vm.name,"readonly":!_vm.isMobile,"disabled":_vm.isDisabled},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.emitBlur,"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.model=$event.target.multiple ? $$selectedVal : $$selectedVal[0]},_vm.emitChange],"input":_vm.changeInputRef,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}}},_vm._l((_vm.options),function(option){return _c('option',{key:option.id,attrs:{"disabled":option.disabled},domProps:{"value":option.value}},[_vm._v(" "+_vm._s(option.label)+" ")])}),0),_c('i-dropdown-menu',{ref:"dropdownMenu",attrs:{"size":_vm.size}},[_vm._t("default")],2)],1)}
 var templatevue_type_template_id_7b09b430_scoped_true_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ISelect/template.html?vue&type=template&id=7b09b430&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IDropdown/template.html?vue&type=template&id=58c7cfb2&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IDropdown/template.html?vue&type=template&id=58c7cfb2&scoped=true&
 var templatevue_type_template_id_58c7cfb2_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',_vm._b({directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.hide),expression:"hide"}],staticClass:"dropdown",class:_vm.classes},'div',_vm.attributes,false),[_vm._t("default")],2)}
 var templatevue_type_template_id_58c7cfb2_scoped_true_staticRenderFns = []
 
@@ -15174,7 +15359,7 @@ bindClickOutsideHandler();
   },
   computed: {
     actionKeymap: function actionKeymap() {
-      return _objectSpread2({
+      return objectSpread2_objectSpread2({
         navigate: ['up', 'down'],
         select: ['enter', 'space'],
         show: ['enter', 'space'],
@@ -15344,7 +15529,7 @@ var IDropdown_component = normalizeComponent(
 )
 
 /* harmony default export */ var IDropdown = (IDropdown_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IDropdownMenu/template.html?vue&type=template&id=68e53c48&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IDropdownMenu/template.html?vue&type=template&id=68e53c48&scoped=true&
 var templatevue_type_template_id_68e53c48_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"zoom-in-top-transition"},on:{"after-leave":_vm.doDestroy}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.visible),expression:"visible"}],staticClass:"menu",class:_vm.classes},[(_vm.arrow)?_c('span',{staticClass:"arrow"}):_vm._e(),_vm._t("default")],2)])}
 var templatevue_type_template_id_68e53c48_scoped_true_staticRenderFns = []
 
@@ -15419,6 +15604,10 @@ var IDropdownMenu_component = normalizeComponent(
 
 /* harmony default export */ var IDropdownMenu = (IDropdownMenu_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/eslint-loader??ref--13-0!./src/components/ISelect/script.js?vue&type=script&lang=js&
+
+
+
+
 
 
 
@@ -15528,7 +15717,7 @@ var IDropdownMenu_component = normalizeComponent(
     this.$on('init', this.initElements);
 
     if (this.schema) {
-      this.setLabelModel(this.schema.value);
+      this.setLabelModel(this.schema[FormBuilder_FormBuilder.keys.VALUE]);
     } else if (this.value) {
       this.setLabelModel(this.value);
     }
@@ -15567,7 +15756,7 @@ var ISelect_component = normalizeComponent(
 )
 
 /* harmony default export */ var ISelect = (ISelect_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ISelectOption/template.html?vue&type=template&id=03084027&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ISelectOption/template.html?vue&type=template&id=03084027&scoped=true&
 var templatevue_type_template_id_03084027_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',_vm._b({staticClass:"item option",class:_vm.classes,attrs:{"tabindex":"-1"},on:{"click":_vm.onClick}},'div',_vm.attributes,false),[_vm._t("default",[_vm._v(_vm._s(_vm.label))])],2)}
 var templatevue_type_template_id_03084027_scoped_true_staticRenderFns = []
 
@@ -15657,7 +15846,7 @@ var ISelectOption_component = normalizeComponent(
 )
 
 /* harmony default export */ var ISelectOption = (ISelectOption_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IPagination/template.html?vue&type=template&id=acc0f984&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IPagination/template.html?vue&type=template&id=acc0f984&scoped=true&
 var templatevue_type_template_id_acc0f984_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"pagination",class:_vm.classes},[(_vm.pageCount > 0)?_c('li',{staticClass:"item -previous",class:{ '-disabled': _vm.value === 1 },on:{"click":_vm.previous}},[_vm._t("previous",[_vm._v("<")])],2):_vm._e(),(_vm.pageCount > 0)?_c('li',{staticClass:"item -first",class:{ '-active': _vm.value === 1 },on:{"click":function($event){return _vm.onClick(1)}}},[_vm._v("1")]):_vm._e(),(_vm.showQuickPrevious)?_c('li',{staticClass:"item -quick-previous",class:{ '-disabled': !_vm.quickLink },on:{"click":_vm.quickPrevious}},[_vm._v("…")]):_vm._e(),_vm._l((_vm.pages),function(page){return _c('li',{staticClass:"item",class:{ '-active': _vm.value === page },on:{"click":function($event){return _vm.onClick(page)}}},[_vm._v(_vm._s(page))])}),(_vm.showQuickNext)?_c('li',{staticClass:"item -quick-next",class:{ '-disabled': !_vm.quickLink },on:{"click":_vm.quickNext}},[_vm._v("…")]):_vm._e(),(_vm.pageCount > 1)?_c('li',{staticClass:"item -last",class:{ '-active': _vm.value === _vm.pageCount },on:{"click":function($event){return _vm.onClick(_vm.pageCount)}}},[_vm._v(_vm._s(_vm.pageCount))]):_vm._e(),(_vm.pageCount > 0)?_c('li',{staticClass:"item -next",class:{ '-disabled': _vm.value === _vm.pageCount },on:{"click":_vm.next}},[_vm._t("next",[_vm._v(">")])],2):_vm._e()],2)}
 var templatevue_type_template_id_acc0f984_scoped_true_staticRenderFns = []
 
@@ -16050,13 +16239,13 @@ var expandColumn = {
     },
     filteringConfig: function filteringConfig() {
       var config = this.getConfig('filtering');
-      config.fuse = _objectSpread2({}, defaults.filtering.fuse, {}, this.filtering.fuse || {});
+      config.fuse = objectSpread2_objectSpread2({}, defaults.filtering.fuse, {}, this.filtering.fuse || {});
       return config;
     },
     i18nConfig: function i18nConfig() {
       var config = {
-        pagination: _objectSpread2({}, defaults.i18n.pagination, {}, this.i18n.pagination),
-        filtering: _objectSpread2({}, defaults.i18n.filtering, {}, this.i18n.filtering)
+        pagination: objectSpread2_objectSpread2({}, defaults.i18n.pagination, {}, this.i18n.pagination),
+        filtering: objectSpread2_objectSpread2({}, defaults.i18n.filtering, {}, this.i18n.filtering)
       };
       Object.keys(config.pagination).forEach(function (key) {
         config.pagination[key] = String.prototype.split.apply(config.pagination[key], [/ *[{}] */]);
@@ -16145,7 +16334,7 @@ var expandColumn = {
     columnStyle: function columnStyle(column, row) {
       var _row$config3, _row$config3$columns, _row$config3$columns$, _row$config4, _row$config4$columns, _row$config4$columns$;
 
-      var style = _objectSpread2({}, column.style, {}, (row === null || row === void 0 ? void 0 : (_row$config3 = row.config) === null || _row$config3 === void 0 ? void 0 : (_row$config3$columns = _row$config3.columns) === null || _row$config3$columns === void 0 ? void 0 : (_row$config3$columns$ = _row$config3$columns[column.path]) === null || _row$config3$columns$ === void 0 ? void 0 : _row$config3$columns$.style) || {}, {}, (row === null || row === void 0 ? void 0 : (_row$config4 = row.config) === null || _row$config4 === void 0 ? void 0 : (_row$config4$columns = _row$config4.columns) === null || _row$config4$columns === void 0 ? void 0 : (_row$config4$columns$ = _row$config4$columns['*']) === null || _row$config4$columns$ === void 0 ? void 0 : _row$config4$columns$.style) || {});
+      var style = objectSpread2_objectSpread2({}, column.style, {}, (row === null || row === void 0 ? void 0 : (_row$config3 = row.config) === null || _row$config3 === void 0 ? void 0 : (_row$config3$columns = _row$config3.columns) === null || _row$config3$columns === void 0 ? void 0 : (_row$config3$columns$ = _row$config3$columns[column.path]) === null || _row$config3$columns$ === void 0 ? void 0 : _row$config3$columns$.style) || {}, {}, (row === null || row === void 0 ? void 0 : (_row$config4 = row.config) === null || _row$config4 === void 0 ? void 0 : (_row$config4$columns = _row$config4.columns) === null || _row$config4$columns === void 0 ? void 0 : (_row$config4$columns$ = _row$config4$columns['*']) === null || _row$config4$columns$ === void 0 ? void 0 : _row$config4$columns$.style) || {});
 
       return Object.keys(style).length > 0 && style;
     },
@@ -16176,7 +16365,7 @@ var expandColumn = {
     rowStyle: function rowStyle(row) {
       var _row$config6;
 
-      var style = _objectSpread2({}, row === null || row === void 0 ? void 0 : (_row$config6 = row.config) === null || _row$config6 === void 0 ? void 0 : _row$config6.style);
+      var style = objectSpread2_objectSpread2({}, row === null || row === void 0 ? void 0 : (_row$config6 = row.config) === null || _row$config6 === void 0 ? void 0 : _row$config6.style);
 
       return Object.keys(style).length > 0 && style;
     },
@@ -16188,7 +16377,7 @@ var expandColumn = {
      * @returns {*}
      */
     addIdColumn: function addIdColumn(columns) {
-      columns.unshift(_objectSpread2({}, idColumn));
+      columns.unshift(objectSpread2_objectSpread2({}, idColumn));
       return columns;
     },
 
@@ -16200,7 +16389,7 @@ var expandColumn = {
      */
     addColumnIndexRef: function addColumnIndexRef(columns) {
       return columns.map(function (column, index) {
-        return _objectSpread2({}, column, {
+        return objectSpread2_objectSpread2({}, column, {
           indexRef: index
         });
       });
@@ -16214,7 +16403,7 @@ var expandColumn = {
      */
     addCountColumn: function addCountColumn(columns) {
       if (this.countColumn) {
-        columns.unshift(_objectSpread2({}, countColumn, {}, this.countColumn));
+        columns.unshift(objectSpread2_objectSpread2({}, countColumn, {}, this.countColumn));
       }
 
       return columns;
@@ -16228,7 +16417,7 @@ var expandColumn = {
      */
     addExpandColumn: function addExpandColumn(columns) {
       if (this.hasExpandableRows && this.expandColumn) {
-        columns.push(_objectSpread2({}, expandColumn, {}, this.expandColumn));
+        columns.push(objectSpread2_objectSpread2({}, expandColumn, {}, this.expandColumn));
       }
 
       return columns;
@@ -16300,7 +16489,7 @@ var expandColumn = {
       }
 
       var keys = this.filterableColumns;
-      var fuse = new fuse_esm(rows, _objectSpread2({}, this.filteringConfig.fuse, {
+      var fuse = new fuse_esm(rows, objectSpread2_objectSpread2({}, this.filteringConfig.fuse, {
         keys: keys
       }));
       return fuse.search(this.filter).map(function (result) {
@@ -16329,7 +16518,7 @@ var expandColumn = {
      * @returns {*}
      */
     getConfig: function getConfig(key) {
-      return this[key] && this[key] !== true ? _objectSpread2({}, defaults[key], {}, this[key]) : _objectSpread2({}, defaults[key]);
+      return this[key] && this[key] !== true ? objectSpread2_objectSpread2({}, defaults[key], {}, this[key]) : objectSpread2_objectSpread2({}, defaults[key]);
     },
 
     /**
@@ -16339,7 +16528,7 @@ var expandColumn = {
      * @returns {*}
      */
     emitUpdate: function emitUpdate(event) {
-      this.$emit('update', _objectSpread2({
+      this.$emit('update', objectSpread2_objectSpread2({
         page: this.page,
         rowsPerPage: this.rowsPerPage,
         filter: this.filter
@@ -16357,7 +16546,7 @@ var expandColumn = {
         return this.expanded = this.expanded[rowId] ? {} : _defineProperty({}, rowId, true);
       }
 
-      this.expanded = _objectSpread2({}, this.expanded, _defineProperty({}, rowId, !this.expanded[rowId]));
+      this.expanded = objectSpread2_objectSpread2({}, this.expanded, _defineProperty({}, rowId, !this.expanded[rowId]));
     },
 
     /**
@@ -16472,7 +16661,7 @@ var IDatatable_component = normalizeComponent(
 )
 
 /* harmony default export */ var IDatatable = (IDatatable_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IDropdownDivider/template.html?vue&type=template&id=e8528f5c&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IDropdownDivider/template.html?vue&type=template&id=e8528f5c&scoped=true&
 var templatevue_type_template_id_e8528f5c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"divider"})}
 var templatevue_type_template_id_e8528f5c_scoped_true_staticRenderFns = []
 
@@ -16509,7 +16698,7 @@ var IDropdownDivider_component = normalizeComponent(
 )
 
 /* harmony default export */ var IDropdownDivider = (IDropdownDivider_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILinkable/template.html?vue&type=template&id=06514a7e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILinkable/template.html?vue&type=template&id=06514a7e&scoped=true&
 var templatevue_type_template_id_06514a7e_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.isComponent)?_c(_vm.isTag,_vm._b({tag:"component",staticClass:"item",class:_vm.classes,attrs:{"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled},nativeOn:{"click":function($event){return _vm.onClick($event)}}},'component',_vm.attributes,false),[_vm._t("default")],2):_c(_vm.isTag,_vm._b({tag:"component",staticClass:"item",class:_vm.classes,attrs:{"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled},on:{"click":_vm.onClick}},'component',_vm.attributes,false),[_vm._t("default")],2)}
 var templatevue_type_template_id_06514a7e_scoped_true_staticRenderFns = []
 
@@ -16567,7 +16756,7 @@ var IDropdownItem_component = normalizeComponent(
 )
 
 /* harmony default export */ var IDropdownItem = (IDropdownItem_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IHamburgerMenu/template.html?vue&type=template&id=58cb655c&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IHamburgerMenu/template.html?vue&type=template&id=58cb655c&scoped=true&
 var templatevue_type_template_id_58cb655c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"hamburger",class:_vm.classes,on:{"click":_vm.emitClick}},[_c('span',{staticClass:"bars"})])}
 var templatevue_type_template_id_58cb655c_scoped_true_staticRenderFns = []
 
@@ -16626,14 +16815,14 @@ var IHamburgerMenu_component = normalizeComponent(
 )
 
 /* harmony default export */ var IHamburgerMenu = (IHamburgerMenu_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IHeader/template.html?vue&type=template&id=e82d282a&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IHeader/template.html?vue&type=template&id=e82d282a&scoped=true&
 var templatevue_type_template_id_e82d282a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('header',{staticClass:"header",class:_vm.classes},[_c('i-container',{attrs:{"fluid":_vm.fluid}},[_c('i-row',[_c('i-column',[_vm._t("default")],2)],1)],1)],1)}
 var templatevue_type_template_id_e82d282a_scoped_true_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/IHeader/template.html?vue&type=template&id=e82d282a&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IRow/template.html?vue&type=template&id=c6d480f4&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IRow/template.html?vue&type=template&id=c6d480f4&
 var templatevue_type_template_id_c6d480f4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"row",class:_vm.classes},[_vm._t("default")],2)}
 var templatevue_type_template_id_c6d480f4_staticRenderFns = []
 
@@ -16675,7 +16864,7 @@ try {
 
 /* harmony default export */ var IRow_scriptvue_type_script_lang_js_ = ({
   name: 'IRow',
-  props: _objectSpread2({
+  props: objectSpread2_objectSpread2({
     noGutter: {
       type: Boolean,
       default: false
@@ -16787,7 +16976,7 @@ var IHeader_component = normalizeComponent(
 )
 
 /* harmony default export */ var IHeader = (IHeader_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILayout/template.html?vue&type=template&id=f70715a4&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILayout/template.html?vue&type=template&id=f70715a4&scoped=true&
 var templatevue_type_template_id_f70715a4_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('main',{staticClass:"layout",class:_vm.classes},[_vm._t("default")],2)}
 var templatevue_type_template_id_f70715a4_scoped_true_staticRenderFns = []
 
@@ -16837,7 +17026,7 @@ var ILayout_component = normalizeComponent(
 )
 
 /* harmony default export */ var ILayout = (ILayout_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILayoutAside/template.html?vue&type=template&id=417b62a8&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILayoutAside/template.html?vue&type=template&id=417b62a8&scoped=true&
 var templatevue_type_template_id_417b62a8_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('aside',{staticClass:"layout-aside"},[_c('div',{staticClass:"layout-aside-children"},[_vm._t("default")],2)])}
 var templatevue_type_template_id_417b62a8_scoped_true_staticRenderFns = []
 
@@ -16874,7 +17063,7 @@ var ILayoutAside_component = normalizeComponent(
 )
 
 /* harmony default export */ var ILayoutAside = (ILayoutAside_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILayoutContent/template.html?vue&type=template&id=1e410fea&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILayoutContent/template.html?vue&type=template&id=1e410fea&scoped=true&
 var templatevue_type_template_id_1e410fea_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',{staticClass:"layout-content"},[_vm._t("default")],2)}
 var templatevue_type_template_id_1e410fea_scoped_true_staticRenderFns = []
 
@@ -16911,7 +17100,7 @@ var ILayoutContent_component = normalizeComponent(
 )
 
 /* harmony default export */ var ILayoutContent = (ILayoutContent_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILayoutFooter/template.html?vue&type=template&id=65b032d3&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILayoutFooter/template.html?vue&type=template&id=65b032d3&scoped=true&
 var templatevue_type_template_id_65b032d3_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('footer',{staticClass:"layout-footer"},[_vm._t("default")],2)}
 var templatevue_type_template_id_65b032d3_scoped_true_staticRenderFns = []
 
@@ -16948,7 +17137,7 @@ var ILayoutFooter_component = normalizeComponent(
 )
 
 /* harmony default export */ var ILayoutFooter = (ILayoutFooter_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILayoutHeader/template.html?vue&type=template&id=5d9f56a1&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILayoutHeader/template.html?vue&type=template&id=5d9f56a1&scoped=true&
 var templatevue_type_template_id_5d9f56a1_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('header',{staticClass:"layout-header"},[_vm._t("default")],2)}
 var templatevue_type_template_id_5d9f56a1_scoped_true_staticRenderFns = []
 
@@ -16985,7 +17174,7 @@ var ILayoutHeader_component = normalizeComponent(
 )
 
 /* harmony default export */ var ILayoutHeader = (ILayoutHeader_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IListGroup/template.html?vue&type=template&id=fb64aa8e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IListGroup/template.html?vue&type=template&id=fb64aa8e&scoped=true&
 var templatevue_type_template_id_fb64aa8e_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"list-group",class:_vm.classes},[_vm._t("default")],2)}
 var templatevue_type_template_id_fb64aa8e_scoped_true_staticRenderFns = []
 
@@ -17039,7 +17228,7 @@ var IListGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var IListGroup = (IListGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILinkable/template.html?vue&type=template&id=558bfca8&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILinkable/template.html?vue&type=template&id=558bfca8&scoped=true&
 var templatevue_type_template_id_558bfca8_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.isComponent)?_c(_vm.isTag,_vm._b({tag:"component",staticClass:"item",class:_vm.classes,attrs:{"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled},nativeOn:{"click":function($event){return _vm.onClick($event)}}},'component',_vm.attributes,false),[_vm._t("default")],2):_c(_vm.isTag,_vm._b({tag:"component",staticClass:"item",class:_vm.classes,attrs:{"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled},on:{"click":_vm.onClick}},'component',_vm.attributes,false),[_vm._t("default")],2)}
 var templatevue_type_template_id_558bfca8_scoped_true_staticRenderFns = []
 
@@ -17086,7 +17275,7 @@ var IListGroupItem_component = normalizeComponent(
 )
 
 /* harmony default export */ var IListGroupItem = (IListGroupItem_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IMedia/template.html?vue&type=template&id=161a81f6&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IMedia/template.html?vue&type=template&id=161a81f6&scoped=true&
 var templatevue_type_template_id_161a81f6_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"media"},[_vm._t("image"),_c('div',{staticClass:"body"},[_vm._t("default")],2)],2)}
 var templatevue_type_template_id_161a81f6_scoped_true_staticRenderFns = []
 
@@ -17123,7 +17312,7 @@ var IMedia_component = normalizeComponent(
 )
 
 /* harmony default export */ var IMedia = (IMedia_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IModal/template.html?vue&type=template&id=738a2d8d&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IModal/template.html?vue&type=template&id=738a2d8d&scoped=true&
 var templatevue_type_template_id_738a2d8d_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"modal-wrapper"},[_c('transition',{attrs:{"name":"fade-in-transition"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.visible),expression:"visible"}],ref:"popup",staticClass:"modal-overlay",attrs:{"id":_vm.id}},[_c('transition',{attrs:{"name":_vm.transition}},[_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.hide),expression:"hide"},{name:"show",rawName:"v-show",value:(_vm.visible),expression:"visible"}],staticClass:"modal",class:_vm.classes},[(_vm.$slots.header)?_c('div',{staticClass:"header"},[_vm._t("header"),(_vm.showClose)?_c('button',{staticClass:"close",on:{"click":_vm.hide}},[_vm._t("close",[_c('i',{staticClass:"icon"})])],2):_vm._e()],2):_vm._e(),(_vm.$slots.default)?_c('div',{staticClass:"body"},[_vm._t("default")],2):_vm._e(),(_vm.$slots.footer)?_c('div',{staticClass:"footer"},[_vm._t("footer")],2):_vm._e()])])],1)])],1)}
 var templatevue_type_template_id_738a2d8d_scoped_true_staticRenderFns = []
 
@@ -17229,7 +17418,7 @@ var IModal_component = normalizeComponent(
 )
 
 /* harmony default export */ var IModal = (IModal_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/INav/template.html?vue&type=template&id=785a14d2&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/INav/template.html?vue&type=template&id=785a14d2&scoped=true&
 var templatevue_type_template_id_785a14d2_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"nav",class:_vm.classes},[_vm._t("default")],2)}
 var templatevue_type_template_id_785a14d2_scoped_true_staticRenderFns = []
 
@@ -17302,7 +17491,7 @@ var INav_component = normalizeComponent(
 )
 
 /* harmony default export */ var INav = (INav_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILinkable/template.html?vue&type=template&id=7fb5df0e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ILinkable/template.html?vue&type=template&id=7fb5df0e&scoped=true&
 var templatevue_type_template_id_7fb5df0e_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.isComponent)?_c(_vm.isTag,_vm._b({tag:"component",staticClass:"item",class:_vm.classes,attrs:{"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled},nativeOn:{"click":function($event){return _vm.onClick($event)}}},'component',_vm.attributes,false),[_vm._t("default")],2):_c(_vm.isTag,_vm._b({tag:"component",staticClass:"item",class:_vm.classes,attrs:{"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled},on:{"click":_vm.onClick}},'component',_vm.attributes,false),[_vm._t("default")],2)}
 var templatevue_type_template_id_7fb5df0e_scoped_true_staticRenderFns = []
 
@@ -17355,7 +17544,7 @@ var INavItem_component = normalizeComponent(
 )
 
 /* harmony default export */ var INavItem = (INavItem_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/INavbar/template.html?vue&type=template&id=06013c88&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/INavbar/template.html?vue&type=template&id=06013c88&scoped=true&
 var templatevue_type_template_id_06013c88_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',_vm._b({directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.onClickOutside),expression:"onClickOutside"}],staticClass:"navbar",class:_vm.classes['root']},'div',_vm.attributes,false),[_c('i-container',{attrs:{"fluid":_vm.fluid}},[_c('i-row',[_c('i-column',{attrs:{"xs":true}},[_c('i-hamburger-menu',{staticClass:"collapse-toggle",attrs:{"active":_vm.collapsed,"animation":_vm.toggleAnimation,"variant":_vm.variant},on:{"click":_vm.toggleCollapse}}),_vm._t("default")],2)],1)],1)],1)}
 var templatevue_type_template_id_06013c88_scoped_true_staticRenderFns = []
 
@@ -17444,7 +17633,7 @@ var INavbar_component = normalizeComponent(
 )
 
 /* harmony default export */ var INavbar = (INavbar_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/INavbarBrand/template.html?vue&type=template&id=5d44f83a&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/INavbarBrand/template.html?vue&type=template&id=5d44f83a&scoped=true&
 var templatevue_type_template_id_5d44f83a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.isTag,_vm._b({tag:"a",staticClass:"brand"},'a',_vm.attributes,false),[_vm._t("default")],2)}
 var templatevue_type_template_id_5d44f83a_scoped_true_staticRenderFns = []
 
@@ -17483,7 +17672,7 @@ var INavbarBrand_component = normalizeComponent(
 )
 
 /* harmony default export */ var INavbarBrand = (INavbarBrand_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/INavbarItems/template.html?vue&type=template&id=46abf80a&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/INavbarItems/template.html?vue&type=template&id=46abf80a&scoped=true&
 var templatevue_type_template_id_46abf80a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i-transition-expand',[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.collapsible.collapsed || !_vm.collapsible.collapsible),expression:"collapsible.collapsed || !collapsible.collapsible"}],staticClass:"items"},[_vm._t("default")],2)])}
 var templatevue_type_template_id_46abf80a_scoped_true_staticRenderFns = []
 
@@ -17527,14 +17716,14 @@ var INavbarItems_component = normalizeComponent(
 )
 
 /* harmony default export */ var INavbarItems = (INavbarItems_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IPopover/template.html?vue&type=template&id=4a961356&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IPopover/template.html?vue&type=template&id=4a961356&scoped=true&
 var templatevue_type_template_id_4a961356_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.onClickOutside),expression:"onClickOutside"}],staticClass:"popover-wrapper"},[_vm._t("default"),_c('transition',{attrs:{"name":"zoom-in-top-transition"},on:{"after-leave":_vm.doDestroy}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.visible),expression:"visible"}],ref:"popup",staticClass:"popover",class:_vm.classes},[(_vm.arrow)?_c('span',{staticClass:"arrow"}):_vm._e(),(_vm.$slots.header)?_c('div',{staticClass:"header"},[_vm._t("header")],2):_vm._e(),(_vm.$slots.body)?_c('div',{staticClass:"body"},[_vm._t("body")],2):_vm._e(),(_vm.$slots.footer)?_c('div',{staticClass:"footer"},[_vm._t("footer")],2):_vm._e()])])],2)}
 var templatevue_type_template_id_4a961356_scoped_true_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/IPopover/template.html?vue&type=template&id=4a961356&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ITooltip/template.html?vue&type=template&id=70658237&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ITooltip/template.html?vue&type=template&id=70658237&scoped=true&
 var templatevue_type_template_id_70658237_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.onClickOutside),expression:"onClickOutside"}],staticClass:"tooltip-wrapper"},[_vm._t("default"),_c('transition',{attrs:{"name":"zoom-in-top-transition"},on:{"after-leave":_vm.doDestroy}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.visible),expression:"visible"}],ref:"popup",staticClass:"tooltip",class:_vm.classes},[(_vm.arrow)?_c('span',{staticClass:"arrow"}):_vm._e(),_vm._t("body")],2)])],2)}
 var templatevue_type_template_id_70658237_scoped_true_staticRenderFns = []
 
@@ -17675,7 +17864,7 @@ var IPopover_component = normalizeComponent(
 )
 
 /* harmony default export */ var IPopover = (IPopover_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IProgress/template.html?vue&type=template&id=59b4f88b&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IProgress/template.html?vue&type=template&id=59b4f88b&scoped=true&
 var templatevue_type_template_id_59b4f88b_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"progress",class:_vm.classes},[_vm._t("default")],2)}
 var templatevue_type_template_id_59b4f88b_scoped_true_staticRenderFns = []
 
@@ -17714,7 +17903,7 @@ var IProgress_component = normalizeComponent(
 )
 
 /* harmony default export */ var IProgress = (IProgress_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IProgressBar/template.html?vue&type=template&id=b0101d98&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IProgressBar/template.html?vue&type=template&id=b0101d98&scoped=true&
 var templatevue_type_template_id_b0101d98_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"bar",class:_vm.classes,style:(_vm.style),attrs:{"role":"progressbar","aria-valuemin":_vm.min,"aria-valuemax":_vm.max,"aria-valuenow":_vm.value}},[_vm._t("default")],2)}
 var templatevue_type_template_id_b0101d98_scoped_true_staticRenderFns = []
 
@@ -17785,7 +17974,7 @@ var IProgressBar_component = normalizeComponent(
 )
 
 /* harmony default export */ var IProgressBar = (IProgressBar_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ISidebar/template.html?vue&type=template&id=30e73984&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ISidebar/template.html?vue&type=template&id=30e73984&scoped=true&
 var templatevue_type_template_id_30e73984_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":_vm.sidebarWrapperTransition}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.collapsed || !_vm.collapsible),expression:"collapsed || !collapsible"}],ref:"wrapper",staticClass:"sidebar-wrapper",class:_vm.classes},[_c('transition',{attrs:{"name":_vm.sidebarTransition}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.collapsePosition === 'relative' || _vm.collapsed || !_vm.collapsible),expression:"collapsePosition === 'relative' || collapsed || !collapsible"}],staticClass:"sidebar"},[_c('div',{staticClass:"sidebar-content"},[_vm._t("default")],2)])]),_c('transition',{attrs:{"name":"sidebar-overlay-transition"}},[(_vm.collapsePosition !== 'relative')?_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.collapsed),expression:"collapsed"}],staticClass:"sidebar-overlay",on:{"click":function($event){return _vm.onOverlayClick()}}}):_vm._e()])],1)])}
 var templatevue_type_template_id_30e73984_scoped_true_staticRenderFns = []
 
@@ -17876,7 +18065,7 @@ var ISidebar_component = normalizeComponent(
 )
 
 /* harmony default export */ var ISidebar = (ISidebar_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ITabs/template.html?vue&type=template&id=2df04fcc&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ITabs/template.html?vue&type=template&id=2df04fcc&scoped=true&
 var templatevue_type_template_id_2df04fcc_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"tabs",class:_vm.classes,attrs:{"role":"tablist","aria-multiselectable":"true"}},[_c('div',{staticClass:"header"},[_vm._t("header",[_c('i-button-group',_vm._l((_vm.tabs),function(tab){return _c('i-button',{key:tab.id,attrs:{"role":"tab","variant":_vm.variant,"active":_vm.active === tab.id,"aria-expanded":_vm.active === tab.id,"aria-controls":("tab-content-" + (tab.id)),"aria-describedby":("tab-content-" + (tab.id)),"id":("tab-heading-" + (tab.id)),"tabindex":"0"},on:{"click":function($event){return _vm.onHeadingClick(tab)}}},[_vm._v(" "+_vm._s(tab.title)+" ")])}),1)],{"tabs":_vm.tabs,"active":_vm.active,"setActive":_vm.onHeadingClick})],2),_vm._t("default")],2)}
 var templatevue_type_template_id_2df04fcc_scoped_true_staticRenderFns = []
 
@@ -17987,7 +18176,7 @@ var ITabs_component = normalizeComponent(
 )
 
 /* harmony default export */ var ITabs = (ITabs_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ITab/template.html?vue&type=template&id=42843fe5&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ITab/template.html?vue&type=template&id=42843fe5&scoped=true&
 var templatevue_type_template_id_42843fe5_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.active),expression:"active"}],staticClass:"tab",class:_vm.classes,attrs:{"role":"tabpanel","aria-hidden":!_vm.active,"aria-labelledby":("tab-heading-" + _vm.id),"id":("tab-content-" + _vm.id)}},[_c('div',{staticClass:"body"},[_vm._t("default")],2)])}
 var templatevue_type_template_id_42843fe5_scoped_true_staticRenderFns = []
 
@@ -18171,7 +18360,7 @@ var ICheckableGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var ICheckableGroup = (ICheckableGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICheckbox/template.html?vue&type=template&id=00b5e531&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICheckbox/template.html?vue&type=template&id=00b5e531&scoped=true&
 var templatevue_type_template_id_00b5e531_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-check -checkbox",class:_vm.classes['root']},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"type":"checkbox","tabindex":"-1","name":_vm.name,"disabled":_vm.isDisabled,"readonly":_vm.isReadonly},domProps:{"value":_vm.currentValue,"indeterminate":_vm.indeterminate,"checked":Array.isArray(_vm.model)?_vm._i(_vm.model,_vm.currentValue)>-1:(_vm.model)},on:{"change":function($event){var $$a=_vm.model,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=_vm.currentValue,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.model=$$a.concat([$$v]))}else{$$i>-1&&(_vm.model=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.model=$$c}}}}),_c('label',{staticClass:"form-input-label",class:_vm.classes['label'],attrs:{"aria-checked":_vm.checked,"aria-disabled":_vm.isDisabled,"aria-readonly":_vm.isReadonly,"tabindex":_vm.tabIndex},on:{"blur":_vm.onBlur,"focus":_vm.onFocus,"click":_vm.clickInputRef,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}}},[_vm._t("default")],2),(_vm.validate)?_c('i-form-error',{attrs:{"schema":_vm.schema}}):_vm._e()],1)}
 var templatevue_type_template_id_00b5e531_scoped_true_staticRenderFns = []
 
@@ -18236,7 +18425,7 @@ var ICheckbox_component = normalizeComponent(
 )
 
 /* harmony default export */ var ICheckbox = (ICheckbox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICheckboxButton/template.html?vue&type=template&id=753f5cba&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICheckboxButton/template.html?vue&type=template&id=753f5cba&scoped=true&
 var templatevue_type_template_id_753f5cba_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i-button',{staticClass:"-checkbox",class:_vm.classes,attrs:{"active":_vm.checked,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"aria-readonly":_vm.isReadonly,"readonly":_vm.isReadonly,"tabindex":_vm.tabIndex},on:{"click":_vm.clickInputRef,"blur":_vm.onBlur,"focus":_vm.onFocus,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"type":"checkbox","tabindex":"-1","name":_vm.name,"aria-disabled":_vm.isDisabled,"aria-readonly":_vm.isReadonly,"readonly":_vm.isReadonly,"disabled":_vm.isDisabled},domProps:{"value":_vm.currentValue,"checked":Array.isArray(_vm.model)?_vm._i(_vm.model,_vm.currentValue)>-1:(_vm.model)},on:{"change":function($event){var $$a=_vm.model,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=_vm.currentValue,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.model=$$a.concat([$$v]))}else{$$i>-1&&(_vm.model=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.model=$$c}}}}),_vm._t("default")],2)}
 var templatevue_type_template_id_753f5cba_scoped_true_staticRenderFns = []
 
@@ -18279,7 +18468,7 @@ var ICheckboxButton_component = normalizeComponent(
 )
 
 /* harmony default export */ var ICheckboxButton = (ICheckboxButton_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICheckboxGroup/template.html?vue&type=template&id=2d96b544&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICheckboxGroup/template.html?vue&type=template&id=2d96b544&scoped=true&
 var templatevue_type_template_id_2d96b544_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-group -checkbox",class:_vm.classes['root'],attrs:{"role":"checkboxgroup"}},[_vm._t("default")],2)}
 var templatevue_type_template_id_2d96b544_scoped_true_staticRenderFns = []
 
@@ -18318,7 +18507,7 @@ var ICheckboxGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var ICheckboxGroup = (ICheckboxGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICheckboxButtonGroup/template.html?vue&type=template&id=0e1641b0&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ICheckboxButtonGroup/template.html?vue&type=template&id=0e1641b0&scoped=true&
 var templatevue_type_template_id_0e1641b0_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i-button-group',{staticClass:"form-group -checkbox",class:_vm.classes['*'],attrs:{"role":"checkboxgroup"}},[_vm._t("default")],2)}
 var templatevue_type_template_id_0e1641b0_scoped_true_staticRenderFns = []
 
@@ -18361,7 +18550,7 @@ var ICheckboxButtonGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var ICheckboxButtonGroup = (ICheckboxButtonGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IForm/template.html?vue&type=template&id=cf76d1b0&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IForm/template.html?vue&type=template&id=cf76d1b0&scoped=true&
 var templatevue_type_template_id_cf76d1b0_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',{staticClass:"form",class:_vm.classes,attrs:{"role":"form","name":_vm.name,"disabled":_vm.disabled},on:{"submit":_vm.emitSubmit}},[_vm._t("default")],2)}
 var templatevue_type_template_id_cf76d1b0_scoped_true_staticRenderFns = []
 
@@ -18369,6 +18558,10 @@ var templatevue_type_template_id_cf76d1b0_scoped_true_staticRenderFns = []
 // CONCATENATED MODULE: ./src/components/IForm/template.html?vue&type=template&id=cf76d1b0&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/eslint-loader??ref--13-0!./src/components/IForm/script.js?vue&type=script&lang=js&
+
+
+
+
 
 
 
@@ -18411,53 +18604,98 @@ var templatevue_type_template_id_cf76d1b0_scoped_true_staticRenderFns = []
     },
 
     /**
-     * Add required schema event listeners for one of the form's child inputs
+     * Callback on form control input event
      *
-     * @param input
+     * @param formControl
      */
-    add: function add(input) {
+    onFormControlInput: function onFormControlInput(formControl) {
       var _this2 = this;
 
-      var inputSchema = input.schema;
-      var validateOn = [];
-
-      if (inputSchema.validateOn) {
-        validateOn = inputSchema.validateOn.constructor === Array ? inputSchema.validateOn : [inputSchema.validateOn];
-      } else {
-        validateOn = this.$inkline.config.validation.on;
-      }
-
-      input.$on('input', function (value) {
-        inputSchema.value = value;
+      return function (value) {
+        formControl.schema[FormBuilder_FormBuilder.keys.VALUE] = value;
 
         _this2.$emit('input', _this2.value);
-      });
-      input.$on('blur', function () {
-        inputSchema.touch({
-          getSchema: _this2.getSchema
-        });
-      });
-      validateOn.forEach(function (event) {
-        var eventFn = eventValueMap.hasOwnProperty(event) ? eventValueMap[event] : eventValueMap.input;
-        input.$on(event, function (value) {
-          inputSchema.validate(eventFn(value), {
-            getSchema: _this2.getSchema
-          });
+      };
+    },
 
-          _this2.$emit('validate', _this2.schema);
+    /**
+     * Callback on form control input event
+     *
+     * @param formControl
+     */
+    onFormControlBlur: function onFormControlBlur(formControl) {
+      var _this3 = this;
+
+      return function () {
+        formControl.schema[FormBuilder_FormBuilder.keys.TOUCH]({
+          getSchema: _this3.getSchema
         });
+      };
+    },
+
+    /**
+     * Callback on form control input event
+     *
+     * @param formControl
+     */
+    onFormControlValidate: function onFormControlValidate(formControl, event) {
+      var _this4 = this;
+
+      var eventFn = eventValueMap[event] ? eventValueMap[event] : eventValueMap.input;
+      return function (value) {
+        formControl.schema[FormBuilder_FormBuilder.keys.VALIDATE](eventFn(value), {
+          getSchema: _this4.getSchema
+        });
+
+        _this4.$emit('validate', _this4.value);
+      };
+    },
+
+    /**
+     * Retrieve validateOn field based as array of events, also taking the validation config into account
+     *
+     * @param formControl
+     */
+    getFormControlValidationEvents: function getFormControlValidationEvents(formControl) {
+      var validateOn = [];
+
+      if (formControl.schema[FormBuilder_FormBuilder.keys.VALIDATE_ON]) {
+        validateOn = formControl.schema[FormBuilder_FormBuilder.keys.VALIDATE_ON].constructor === Array ? formControl.schema[FormBuilder_FormBuilder.keys.VALIDATE_ON] : [formControl.schema[FormBuilder_FormBuilder.keys.VALIDATE_ON]];
+      } else {
+        validateOn = this.$inkline.config.validation.validateOn;
+      }
+
+      return validateOn;
+    },
+
+    /**
+     * Add required schema event listeners for one of the form's child inputs
+     *
+     * @param formControl
+     */
+    add: function add(formControl) {
+      var _this5 = this;
+
+      formControl.$on('input', this.onFormControlInput(formControl));
+      formControl.$on('blur', this.onFormControlBlur(formControl));
+      this.getFormControlValidationEvents(formControl).forEach(function (event) {
+        formControl.$on(event, _this5.onFormControlValidate(formControl, event));
       });
     },
 
     /**
      * Remove event listeners for one of the form's child inputs
      *
-     * @param input
+     * @param formControl
      */
-    remove: function remove(input) {
-      var inputSchema = input.schema;
-      input.$off('blur');
-      input.$off(inputSchema.validateOn);
+    remove: function remove(formControl) {
+      var _this6 = this;
+
+      formControl.$off('input', this.onFormControlInput(formControl));
+      formControl.$off('blur', this.onFormControlBlur(formControl));
+      this.getFormControlValidationEvents(formControl).forEach(function (event) {
+        formControl.$off(event, _this6.onFormControlValidate(formControl, event));
+      });
       this.$emit('input', this.value);
     }
   }
@@ -18492,7 +18730,7 @@ var IForm_component = normalizeComponent(
 )
 
 /* harmony default export */ var IForm = (IForm_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IFormLabel/template.html?vue&type=template&id=ab3b8d6c&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IFormLabel/template.html?vue&type=template&id=ab3b8d6c&scoped=true&
 var templatevue_type_template_id_ab3b8d6c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"form-label",class:_vm.classes,on:{"click":_vm.focusInput}},[_vm._t("default")],2)}
 var templatevue_type_template_id_ab3b8d6c_scoped_true_staticRenderFns = []
 
@@ -18560,7 +18798,7 @@ var IFormLabel_component = normalizeComponent(
 )
 
 /* harmony default export */ var IFormLabel = (IFormLabel_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IInputNumber/template.html?vue&type=template&id=00edb476&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IInputNumber/template.html?vue&type=template&id=00edb476&scoped=true&
 var templatevue_type_template_id_00edb476_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-input-group",class:_vm.classes['root']},[_c('div',{staticClass:"form-input-prepend"},[_vm._t("prepend"),_c('i-button',{staticClass:"form-input-button-decrease",attrs:{"type":"button","disabled":_vm.disabled},on:{"click":_vm.decrease}},[_vm._v("-")])],2),_c('div',{staticClass:"form-input",class:_vm.classes['child'],on:{"mouseenter":_vm.emitMouseEnter,"mouseleave":_vm.emitMouseLeave}},[(_vm.$slots.prefix)?_c('span',{staticClass:"form-input-prefix"},[_vm._t("prefix")],2):_vm._e(),(_vm.$slots.suffix || _vm.clearable)?_c('span',{staticClass:"form-input-suffix"},[_c('i',{directives:[{name:"show",rawName:"v-show",value:(_vm.isClearable),expression:"isClearable"}],staticClass:"form-input-icon -circle",attrs:{"aria-label":"Clear"},on:{"click":_vm.clear}},[_vm._v("×")]),_vm._t("suffix")],2):_vm._e(),(((_vm.$attrs).type)==='checkbox')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"name":_vm.name,"tabindex":_vm.tabIndex,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"readonly":_vm.isReadonly,"aria-readonly":_vm.isReadonly,"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.model)?_vm._i(_vm.model,null)>-1:(_vm.model)},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.onBlurFormatPrecision,"change":[function($event){var $$a=_vm.model,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.model=$$a.concat([$$v]))}else{$$i>-1&&(_vm.model=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.model=$$c}},_vm.emitChange],"keydown":_vm.emitKeydown,"keyup":_vm.emitKeyup}},'input',_vm.$attrs,false)):(((_vm.$attrs).type)==='radio')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"name":_vm.name,"tabindex":_vm.tabIndex,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"readonly":_vm.isReadonly,"aria-readonly":_vm.isReadonly,"type":"radio"},domProps:{"checked":_vm._q(_vm.model,null)},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.onBlurFormatPrecision,"change":[function($event){_vm.model=null},_vm.emitChange],"keydown":_vm.emitKeydown,"keyup":_vm.emitKeyup}},'input',_vm.$attrs,false)):_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"name":_vm.name,"tabindex":_vm.tabIndex,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"readonly":_vm.isReadonly,"aria-readonly":_vm.isReadonly,"type":(_vm.$attrs).type},domProps:{"value":(_vm.model)},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.onBlurFormatPrecision,"change":_vm.emitChange,"keydown":_vm.emitKeydown,"keyup":_vm.emitKeyup,"input":function($event){if($event.target.composing){ return; }_vm.model=$event.target.value}}},'input',_vm.$attrs,false))]),_c('div',{staticClass:"form-input-append"},[_c('i-button',{staticClass:"form-input-button-increase",attrs:{"type":"button","disabled":_vm.disabled},on:{"click":_vm.increase}},[_vm._v("+")]),_vm._t("append")],2)])}
 var templatevue_type_template_id_00edb476_scoped_true_staticRenderFns = []
 
@@ -18679,7 +18917,7 @@ var IInputNumber_component = normalizeComponent(
 )
 
 /* harmony default export */ var IInputNumber = (IInputNumber_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IRadio/template.html?vue&type=template&id=08c9670a&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IRadio/template.html?vue&type=template&id=08c9670a&scoped=true&
 var templatevue_type_template_id_08c9670a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-check -radio",class:_vm.classes['root']},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"type":"radio","tabindex":"-1","name":_vm.name,"disabled":_vm.isDisabled,"readonly":_vm.isReadonly},domProps:{"value":_vm.currentValue,"checked":_vm._q(_vm.model,_vm.currentValue)},on:{"change":function($event){_vm.model=_vm.currentValue}}}),_c('label',{staticClass:"form-input-label",class:_vm.classes['label'],attrs:{"aria-checked":_vm.checked,"aria-disabled":_vm.isDisabled,"aria-readonly":_vm.isReadonly,"tabindex":_vm.tabIndex},on:{"blur":_vm.onBlur,"focus":_vm.onFocus,"click":_vm.clickInputRef,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}}},[_vm._t("default")],2)])}
 var templatevue_type_template_id_08c9670a_scoped_true_staticRenderFns = []
 
@@ -18730,7 +18968,7 @@ var IRadio_component = normalizeComponent(
 )
 
 /* harmony default export */ var IRadio = (IRadio_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IRadioButton/template.html?vue&type=template&id=6907f46d&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IRadioButton/template.html?vue&type=template&id=6907f46d&scoped=true&
 var templatevue_type_template_id_6907f46d_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i-button',{staticClass:"-radio",class:_vm.classes['root'],attrs:{"active":_vm.checked,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"aria-readonly":_vm.isReadonly,"readonly":_vm.isReadonly,"tabindex":_vm.tabIndex},on:{"click":_vm.clickInputRef,"blur":_vm.onBlur,"focus":_vm.onFocus,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"type":"radio","aria-checked":_vm.checked,"name":_vm.name,"aria-disabled":_vm.isDisabled,"aria-readonly":_vm.isReadonly,"readonly":_vm.isReadonly,"disabled":_vm.isDisabled},domProps:{"value":_vm.currentValue,"checked":_vm._q(_vm.model,_vm.currentValue)},on:{"change":function($event){_vm.model=_vm.currentValue}}}),_vm._t("default")],2)}
 var templatevue_type_template_id_6907f46d_scoped_true_staticRenderFns = []
 
@@ -18778,7 +19016,7 @@ var IRadioButton_component = normalizeComponent(
 )
 
 /* harmony default export */ var IRadioButton = (IRadioButton_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IRadioGroup/template.html?vue&type=template&id=20088154&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IRadioGroup/template.html?vue&type=template&id=20088154&scoped=true&
 var templatevue_type_template_id_20088154_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-group -radio",class:_vm.classes,attrs:{"role":"radiogroup"}},[_vm._t("default")],2)}
 var templatevue_type_template_id_20088154_scoped_true_staticRenderFns = []
 
@@ -18817,7 +19055,7 @@ var IRadioGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var IRadioGroup = (IRadioGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IRadioButtonGroup/template.html?vue&type=template&id=6496cd26&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IRadioButtonGroup/template.html?vue&type=template&id=6496cd26&scoped=true&
 var templatevue_type_template_id_6496cd26_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i-button-group',{staticClass:"form-group -radio",class:_vm.classes,attrs:{"role":"radiogroup"}},[_vm._t("default")],2)}
 var templatevue_type_template_id_6496cd26_scoped_true_staticRenderFns = []
 
@@ -18860,7 +19098,7 @@ var IRadioButtonGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var IRadioButtonGroup = (IRadioButtonGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ITextarea/template.html?vue&type=template&id=5d639a1c&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/ITextarea/template.html?vue&type=template&id=5d639a1c&scoped=true&
 var templatevue_type_template_id_5d639a1c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-input-group",class:_vm.classes['root']},[(_vm.$slots.prepend)?_c('div',{staticClass:"form-input-prepend"},[_vm._t("prepend")],2):_vm._e(),_c('div',{staticClass:"form-input",class:_vm.classes['child'],on:{"mouseenter":_vm.emitMouseEnter,"mouseleave":_vm.emitMouseLeave}},[(_vm.$slots.prefix)?_c('span',{staticClass:"form-input-prefix"},[_vm._t("prefix")],2):_vm._e(),(_vm.$slots.suffix || _vm.clearable)?_c('span',{staticClass:"form-input-suffix"},[_c('i',{directives:[{name:"show",rawName:"v-show",value:(_vm.isClearable),expression:"isClearable"}],staticClass:"form-input-icon -circle",attrs:{"aria-label":"Clear"},on:{"click":_vm.clear}},[_vm._v("×")]),_vm._t("suffix")],2):_vm._e(),_c('textarea',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.model),expression:"model"}],ref:"input",attrs:{"name":_vm.name,"tabindex":_vm.tabIndex,"disabled":_vm.isDisabled,"aria-disabled":_vm.isDisabled,"readonly":_vm.isReadonly,"aria-readonly":_vm.isReadonly},domProps:{"value":(_vm.model)},on:{"click":_vm.emitClick,"focus":_vm.emitFocus,"blur":_vm.emitBlur,"change":_vm.emitChange,"keydown":_vm.emitKeydown,"keyup":_vm.emitKeyup,"input":function($event){if($event.target.composing){ return; }_vm.model=$event.target.value}}},'textarea',_vm.$attrs,false))]),(_vm.$slots.append)?_c('div',{staticClass:"form-input-append"},[_vm._t("append")],2):_vm._e()])}
 var templatevue_type_template_id_5d639a1c_scoped_true_staticRenderFns = []
 
@@ -18899,7 +19137,7 @@ var ITextarea_component = normalizeComponent(
 )
 
 /* harmony default export */ var ITextarea = (ITextarea_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"36ce9aaa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IToggle/template.html?vue&type=template&id=d7af3a78&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1073e066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IToggle/template.html?vue&type=template&id=d7af3a78&scoped=true&
 var templatevue_type_template_id_d7af3a78_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"toggle",class:_vm.classes,attrs:{"tabindex":_vm.tabIndex},on:{"blur":_vm.onBlur,"focus":_vm.onFocus,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}}},[_c('input',{ref:"input",staticClass:"toggle-input",attrs:{"type":"checkbox","disabled":_vm.isDisabled || _vm.isReadonly,"readonly":_vm.isReadonly,"aria-checked":_vm.value,"aria-disabled":_vm.isDisabled,"aria-readonly":_vm.isReadonly,"name":_vm.name},domProps:{"checked":_vm.value,"value":_vm.value},on:{"change":_vm.onChange}}),_c('span',{staticClass:"indicator"})])}
 var templatevue_type_template_id_d7af3a78_scoped_true_staticRenderFns = []
 
@@ -19032,7 +19270,7 @@ var inkline_install = Inkline.install;
 
 Inkline.install = function (Vue) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return inkline_install.call(Inkline, Vue, _objectSpread2({
+  return inkline_install.call(Inkline, Vue, objectSpread2_objectSpread2({
     components: components_namespaceObject
   }, options));
 };
