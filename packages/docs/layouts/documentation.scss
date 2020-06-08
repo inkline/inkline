@@ -90,3 +90,16 @@
         }
     }
 }
+
+.inkline.-dark {
+    #documentation-layout {
+        #layout-aside-left {
+            @include breakpoint-down(sm) {
+                .layout-aside-children {
+                    background-color: $color-gray-90;
+                    border-right-color: $color-gray-80;
+                }
+            }
+        }
+    }
+}
