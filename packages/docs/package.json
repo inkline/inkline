@@ -74,7 +74,7 @@
     "nodemon": "^2.0.4",
     "nuxt": "^2.12.2",
     "sass-loader": "^8.0.2",
-    "stylelint": "^13.5.0",
+    "stylelint": "^13.3.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-config-standard": "^20.0.0",
