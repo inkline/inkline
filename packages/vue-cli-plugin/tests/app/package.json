@@ -10,14 +10,14 @@
   },
   "dependencies": {
     "@inkline/inkline": "file:../../../inkline",
-    "core-js": "^3.6.4",
+    "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@vue/cli-plugin-babel": "^4.2.3",
-    "@vue/cli-service": "^4.2.3",
-    "node-sass": "^4.13.1",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@vue/cli-plugin-babel": "^4.4.1",
+    "@vue/cli-service": "^4.4.1",
+    "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   },
