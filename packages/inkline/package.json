@@ -1,6 +1,6 @@
 {
   "name": "@inkline/inkline",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Inkline is the customizable Vue.js UI/UX Library, designed for creating flawless content-rich responsive web applications",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
