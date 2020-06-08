@@ -5,7 +5,7 @@ jobs:
         runs-on: ubuntu-16.04
         strategy:
             matrix:
-                node: [ '12', '10', '8' ]
+                node: [ '14', '12', '10' ]
         name: Node ${{ matrix.node }}
         steps:
             -   name: Set up repository
