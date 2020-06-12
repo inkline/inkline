@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "default": "vue-cli-service build srcset/default/src/main.js --dest dist-default",
-    "customizable": "vue-cli-service build srcset/customizable/src/main.js --dest dist-customizable"
+    "serve": "vue-cli-service serve",
+    "components": "vue-cli-service build template/components/main.js --dest dist-components",
+    "default": "vue-cli-service build template/default/main.js --dest dist-default",
+    "tree-shaking-scss": "vue-cli-service build template/tree-shaking-scss/main.js --dest dist-tree-shaking-scss"
   },
   "dependencies": {
     "@inkline/inkline": "^2.0.0",
