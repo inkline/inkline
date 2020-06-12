@@ -1,18 +1,17 @@
-<template lang="md" src="./getting-started.md" />
+<template lang="md" src="./vue-cli.md" />
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
-import { IAlert, IIcon, ICard } from "@inkline/inkline/src/components";
+import { IAlert, IIcon } from "@inkline/inkline/src/components";
 
 export default {
-    name: 'GettingStartedView',
+    name: 'InstallationView',
     layout: 'documentation',
     extends: View,
     head: head(),
     components: {
         IAlert,
-        IIcon,
-        ICard
+        IIcon
     }
 };
 </script>
