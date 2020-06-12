@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "default": "vue-cli-service build srcset/default/src/main.ts --dest dist-default",
-    "customizable": "vue-cli-service build srcset/customizable/src/main.ts --dest dist-customizable"
+    "components": "vue-cli-service build srcset/main.components.ts --dest dist-components",
+    "default": "vue-cli-service build srcset/main.default.ts --dest dist-default",
+    "tree-shaking-scss": "vue-cli-service build srcset/main.tree-shaking-scss.ts --dest dist-tree-shaking-scss"
   },
   "dependencies": {
     "@inkline/inkline": "^2.0.0",
@@ -18,8 +19,6 @@
     "@vue/cli-plugin-typescript": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
     "@vue/eslint-config-typescript": "^5.0.2",
-    "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.2",
     "typescript": "~3.8.3",
     "vue-template-compiler": "^2.6.11"
   }
