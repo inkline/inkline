@@ -1,4 +1,4 @@
-<template lang="md" src="./installation.md" />
+<template lang="md" src="./index.md" />
 <script>
 import View from '@components/docs/View';
 import { head } from "@helpers/head";
