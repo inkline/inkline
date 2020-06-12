@@ -1,0 +1,56 @@
+.link-card {
+    display: block;
+    position: relative;
+
+    .card {
+        width: 100%;
+        margin-bottom: $spacer;
+
+        .body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin-right: $spacer;
+
+            img {
+                width: 30px;
+                height: auto;
+            }
+
+            .fa-globe {
+                font-size: 28px;
+            }
+        }
+
+        span {
+            flex: 100%;
+        }
+
+        .inkline-icon {
+            padding-right: $spacer;
+            transition: padding 0.3s ease;
+        }
+    }
+
+    &:hover {
+        text-decoration: none;
+
+        .body {
+            border-color: $color-gray-50 !important;
+        }
+
+        .inkline-icon {
+            padding-left: $spacer;
+            padding-right: 0;
+        }
+    }
+}

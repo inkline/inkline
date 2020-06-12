@@ -25,9 +25,14 @@ const pages = [
         description: 'Get started with Inkline and experience well written, designed and tested front end code.'
     },
     {
-        id: 'docs-introduction-installation',
-        title: 'Installation',
-        description: 'Install Inkline using your favorite package manager and get access to the latest source code.'
+        id: 'docs-introduction-installation-vue-cli',
+        title: 'Vue CLI Installation',
+        description: 'Install Inkline using the official Vue CLI integration. All of our integrations a'
+    },
+    {
+        id: 'docs-introduction-installation-cdn',
+        title: 'CDN Installation',
+        description: 'Install Inkline using the official JSDelivr CDN integration. The content delivery network (CDN) provides super fast asset delivery from a server that is closest to you.'
     },
     {
         id: 'docs-introduction-guides-customization',

@@ -1,14 +1,14 @@
 # About Inkline
 ## Inkline is a modern UI/UX Library for Vue.js, designed for creating flawless content-rich responsive web applications. { .lead }
 
-Inkline is the Vue.js UI Framework that favors not only **User Interface** and **User Experience**, but also **Developer Experience**, using a consistent and expressive API. 
+Inkline is the customizable Vue.js UI Library that favors not only **User Interface** and **User Experience**, but also **Developer Experience**, using a consistent and expressive API. Inkline has been designed for creating flawless responsive web applications.
 
 In October 2019, Inkline has been selected as a finalist for the <a href="https://osawards.com/vue/" rel="nofollow">Vue.js London 2019 Open Source Awards</a>, for the Developer Experience category.
 
 ### Getting started
 The only prerequisite for using Inkline is having a basic understanding of Vue.js. If you are new to Vue.js, the best way to learn is reading through the <a href="https://vuejs.org/v2/guide/" rel="nofollow" target="_blank">Official Vue.js Documentation</a>.
 
-Finally, make sure to read through the <nuxt-link :to="{ name: 'docs-introduction-installation' }">Installation</nuxt-link> guide and discover everything Inkline has to offer.
+Finally, make sure to read through the <nuxt-link :to="{ name: 'docs-introduction-getting-started' }">Getting Started</nuxt-link> guide and discover everything Inkline has to offer.
 
 ### Core Values
 When designing Inkline as a framework, there were 3 core values that the whole code base revolved around: UI, UX and DX.
