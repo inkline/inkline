@@ -9,7 +9,9 @@ exports[`Components ISelect should render correctly 1`] = `
       <!----> <input tabindex="1" readonly="readonly" aria-readonly="true" placeholder="Please select a value"></div>
     <!---->
   </div> <select placeholder="Please select a value" readonly="readonly" class="form-select" style="display: none;"></select>
-  <div class="menu" style="display: none;" id="select"><span class="arrow"></span> </div>
+  <transition-stub name="zoom-in-top-transition" id="select">
+    <div class="menu" style="display: none;"><span class="arrow"></span> </div>
+  </transition-stub>
 </div>
 `;
 
