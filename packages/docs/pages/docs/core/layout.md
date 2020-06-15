@@ -426,7 +426,7 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 ### Components API
 Here you can find a list of the various customization options you can use for the layout components as props, as well as available slots.
 
-<i-api-preview title="Layout API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Layout">
+<i-api-preview title="Layout API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayout">
     <template slot="props">
         <api-table>
             <api-table-row>
@@ -448,7 +448,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="Layout Header API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/LayoutHeader" default-active='slots'>
+<i-api-preview title="Layout Header API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutHeader" default-active='slots'>
     <template slot="slots">
         <api-table>
             <api-table-row>
@@ -459,7 +459,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="Layout Content API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/LayoutContent" default-active='slots'>
+<i-api-preview title="Layout Content API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutContent" default-active='slots'>
     <template slot="slots">
         <api-table>
             <api-table-row>
@@ -470,7 +470,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="Layout Footer API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/LayoutFooter" default-active='slots'>
+<i-api-preview title="Layout Footer API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutFooter" default-active='slots'>
     <template slot="slots">
         <api-table>
             <api-table-row>
@@ -481,7 +481,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="Layout Aside API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/LayoutAside" default-active='slots'>
+<i-api-preview title="Layout Aside API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutAside" default-active='slots'>
     <template slot="slots">
         <api-table>
             <api-table-row>
