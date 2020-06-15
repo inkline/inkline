@@ -13,7 +13,7 @@ When configuring the Sass files, change the `$font-family-primary-base`, `$font-
 as our typographic base applied to the `<body>`. Set the global link color via `$link-color` and apply link underlines 
 only on `:hover`. The defaults for these global variables are defined in `config/_typography.scss`. 
 
-To learn more about style configuration, please read the <nuxt-link :to="{ name: 'docs-introduction-guides-customization' }">Customization</nuxt-link> section.
+To learn more about style configuration, please make sure you followed the Customization part of your <nuxt-link :to="{ name: 'docs-introduction-getting-started' }">installation</nuxt-link>.
 
 ### Headings
 All HTML headings, `<h1>` through `<h6>`, have their size calculated based on the specified `$font-size-base`.

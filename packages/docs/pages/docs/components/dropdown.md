@@ -495,7 +495,7 @@ Inkline allows you to have virtually infinite recursive dropdown submenus struct
 ### Components API
 Here you can find a list of the various customization options you can use for the dropdown components as props, as well as available slots and events.
 
-<i-api-preview title="Dropdown API" expanded markup="i-dropdown" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Dropdown">
+<i-api-preview title="Dropdown API" expanded markup="i-dropdown" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IDropdown">
     <template slot="props">
         <api-table>
             <api-table-row>
@@ -590,7 +590,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="Dropdown Menu API" markup="i-dropdown-menu" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/DropdownMenu">
+<i-api-preview title="Dropdown Menu API" markup="i-dropdown-menu" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IDropdownMenu">
     <template slot="props">
         <api-table>
             <api-table-row>
@@ -629,7 +629,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="Dropdown Item API" markup="i-dropdown-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/DropdownItem">
+<i-api-preview title="Dropdown Item API" markup="i-dropdown-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IDropdownItem">
     <template slot="props">
         <api-table>
             <api-table-row>

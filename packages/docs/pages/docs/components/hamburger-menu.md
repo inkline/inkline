@@ -68,7 +68,7 @@ export default {
 ### Component API
 Here you can find a list of the various customization options you can use for the hamburger menu component as props.
 
-<i-api-preview title="Hamburger Menu API" expanded markup="i-hamburger-menu" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/HamburgerMenu">
+<i-api-preview title="Hamburger Menu API" expanded markup="i-hamburger-menu" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IHamburgerMenu">
     <template slot="props">
         <api-table>
             <api-table-row>

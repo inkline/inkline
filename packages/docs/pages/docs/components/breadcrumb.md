@@ -122,7 +122,7 @@ You're able to use the `size` modifier to control the text and spacing size of y
 ### Components API
 Here you can find a list of the various customization options you can use for the breadcrumb components as props, as well as available slots.
 
-<i-api-preview title="Breadcrumb API" expanded markup="i-breadcrumb" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Breadcrumb">
+<i-api-preview title="Breadcrumb API" expanded markup="i-breadcrumb" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IBreadcrumb">
     <template slot="props">
         <api-table>
             <api-table-row>
@@ -144,7 +144,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="Breadcrumb Item API" expanded markup="i-breadcrumb-item" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/BreadcrumbItem">
+<i-api-preview title="Breadcrumb Item API" expanded markup="i-breadcrumb-item" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IBreadcrumbItem">
     <template slot="props">
         <api-table>
             <api-table-row>

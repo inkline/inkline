@@ -270,7 +270,7 @@ Inkline includes basic predefined tabs styles that you can use within your appli
 ### Component API
 Here you can find a list of the various customization options you can use for the tabs components as props, as well as available slots and events.
 
-<i-api-preview title="Tabs API" markup="i-tabs" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Tabs">
+<i-api-preview title="Tabs API" markup="i-tabs" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ITabs">
     <template slot="props">
         <api-table>
             <api-table-row>
@@ -326,7 +326,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="Tab Item API" markup="i-tab" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Tab">
+<i-api-preview title="Tab Item API" markup="i-tab" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ITab">
     <template slot="props">
         <api-table>
             <api-table-row>

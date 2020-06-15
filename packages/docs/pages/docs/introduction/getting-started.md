@@ -22,9 +22,9 @@ Inkline offers official integrations for Vue CLI and Nuxt.js, but can be easily 
     </i-card>
 </nuxt-link>
 
-<nuxt-link class="link-card" :to="{ name: 'docs-introduction-installation-npm' }">
+<nuxt-link class="link-card" :to="{ name: 'docs-introduction-installation-custom' }">
     <i-card>
-        <div class="image"><img src="/images/webpack.svg" alt="NPM" /></div>
+        <div class="image"><img src="/images/webpack.svg" alt="WebPack" /></div>
         <span>Custom Installation</span>
         <i-icon icon="chevron-right"></i-icon>
     </i-card>

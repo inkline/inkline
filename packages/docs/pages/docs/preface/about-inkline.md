@@ -62,5 +62,5 @@ Here is a list of frequently asked questions. If you think a common question is 
 2. **What was the inspiration when creating Inkline?**
     <p>Inkline is inspired by some of the well-established UI Frameworks out there, but we took our own approach in everything. Inkline aims to be as developer-friendly as possible. The main design inspirations are Bootstrap and Bulma.</p>
 3. **Does Inkline support tree-shaking?**
-    <p>It does, and it does it very well! You can find how to set Inkline up for tree shaking in the <nuxt-link :to="{ name: 'docs-introduction-installation' }">Installation</nuxt-link> guide.</p>
+    <p>It does, and it does it very well! You can find how to set Inkline up for tree shaking in the <nuxt-link :to="{ name: 'docs-introduction-getting-started' }">Getting Started</nuxt-link> guide.</p>
 

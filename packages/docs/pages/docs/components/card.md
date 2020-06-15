@@ -293,7 +293,7 @@ Inkline includes several predefined card styles that you can use within your app
 ### Component API
 Here you can find a list of the various customization options you can use for the card component as props, as well as available slots.
 
-<i-api-preview markup="i-card" title="Card API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Card">
+<i-api-preview markup="i-card" title="Card API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ICard">
     <template slot="props">
         <api-table>
             <api-table-row>

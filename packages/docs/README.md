@@ -28,4 +28,4 @@
 
 ## Copyright and license
 Homepage and documentation copyright 2017-2020 [Inkline Authors](https://github.com/inkline/inkline.io/graphs/contributors). 
-Docs released under [Creative Commons](https://github.com/inkline/inkline.io/blob/master/docs/LICENSE).
+Docs released under [MIT License](https://github.com/inkline/inkline/blob/master/packages/docs/LICENSE).

@@ -5,7 +5,7 @@ This page lists the common Sass Variables that are used throughout the framework
 
 <i-alert variant="info">
     <template slot="icon"><i-icon icon="info" class="h4"></i-icon></template>
-    <p>If you're wondering how to override the Sass variables properly, please head to the <nuxt-link :to="{ name: 'docs-introduction-guides-customization' }">Customization</nuxt-link> guide.</p>
+    <p>To be able to override the Sass variables, please follow the Customization part of your <nuxt-link :to="{ name: 'docs-introduction-getting-started' }">installation</nuxt-link>.</p>
 </i-alert>
 
 ### Border

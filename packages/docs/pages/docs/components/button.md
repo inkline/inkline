@@ -415,7 +415,7 @@ The `<i-button>` component is well integrated with the [Vue Router](https://rout
 ### Component API
 Here you can find a list of the various customization options you can use for the button component as props, as well as available slots and events.
 
-<i-api-preview title="Button API" expanded markup="i-button" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Button">
+<i-api-preview title="Button API" expanded markup="i-button" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IButton">
     <template slot="props">
         <api-table>
             <api-table-row>

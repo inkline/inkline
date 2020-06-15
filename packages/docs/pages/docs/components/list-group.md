@@ -214,7 +214,7 @@ The `<i-list-group-item>` accepts any type of content, allowing you to create la
 ### Component API
 Here you can find a list of the various customization options you can use for the list group components as props, as well as available slots.
 
-<i-api-preview title="List Group API" expanded markup="i-list-group" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ListGroup">
+<i-api-preview title="List Group API" expanded markup="i-list-group" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IListGroup">
     <template slot="props">
         <api-table>
             <api-table-row>
@@ -243,7 +243,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="List Group Item API" markup="i-list-group-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ListGroupItem">
+<i-api-preview title="List Group Item API" markup="i-list-group-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IListGroupItem">
     <template slot="props">
         <api-table>
             <api-table-row>

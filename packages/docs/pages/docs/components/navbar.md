@@ -463,7 +463,7 @@ Sometimes, it's necessary to control whether the Navbar is collapsed or not prog
 ### Component API
 Here you can find a list of the various customization options you can use for the navbar components as props, as well as available slots and events.
 
-<i-api-preview title="Navbar API" markup="i-navbar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/Navbar">
+<i-api-preview title="Navbar API" markup="i-navbar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/INavbar">
     <template slot="props">
         <api-table>
             <api-table-row>
@@ -527,7 +527,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="Navbar Brand API" markup="i-navbar-brand" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/NavbarBrand">
+<i-api-preview title="Navbar Brand API" markup="i-navbar-brand" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/INavbarBrand">
     <template slot="slots">
         <api-table>
             <api-table-row>
@@ -538,7 +538,7 @@ Here you can find a list of the various customization options you can use for th
     </template>
 </i-api-preview>
 
-<i-api-preview title="Navbar Items API" markup="i-navbar-items" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/NavbarItems">
+<i-api-preview title="Navbar Items API" markup="i-navbar-items" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/INavbarItems">
     <template slot="slots">
         <api-table>
             <api-table-row>
