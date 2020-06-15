@@ -19,17 +19,19 @@
                             <ul>
                                 <li><nuxt-link :to="{ name: 'docs-introduction-installation-vue-cli' }">Vue CLI</nuxt-link></li>
                                 <li><nuxt-link :to="{ name: 'docs-introduction-installation-nuxt' }">Nuxt.js</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-introduction-installation-custom' }">Custom</nuxt-link></li>
                                 <li><nuxt-link :to="{ name: 'docs-introduction-installation-cdn' }">CDN</nuxt-link></li>
                             </ul>
                         </i-collapsible-item>
                     </i-collapsible>
                 </li>
+                <li><nuxt-link :to="{ name: 'docs-introduction-plugin-options' }">Plugin Options</nuxt-link></li>
                 <li>
                     <i-collapsible :class="{ '-active': subroutes['docs-introduction-guides'] }"
                                    v-model="menu['docs-introduction-guides']">
                         <i-collapsible-item title="Guides" id="docs-introduction-guides">
                             <ul>
-                                <li><nuxt-link :to="{ name: 'docs-introduction-guides-first-steps' }">Usage</nuxt-link></li>
+                                <li><nuxt-link :to="{ name: 'docs-introduction-guides-first-use' }">First Use</nuxt-link></li>
                                 <li><nuxt-link :to="{ name: 'docs-introduction-guides-dark-mode' }">Dark Mode</nuxt-link></li>
                             </ul>
                         </i-collapsible-item>
