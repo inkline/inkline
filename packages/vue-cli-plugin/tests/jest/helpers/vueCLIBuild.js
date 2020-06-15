@@ -52,14 +52,21 @@ export const vueCLIBuild = (mainFolder, apply, options = {}) => async (done) => 
     await generator.generate();
 
     const newPkg = JSON.parse(fs.readFileSync(packageGenerated, 'utf-8'));
-    const newMain = fs.readFileSync(mainGenerated, 'utf-8');
-    const newVueConfig = fs.readFileSync(vueConfigGenerated, 'utf-8');
-
     expect(newPkg).toMatchSnapshot();
+
+    const newMain = fs.readFileSync(mainGenerated, 'utf-8');
     expect(newMain).toMatchSnapshot();
-    expect(newVueConfig).toMatchSnapshot();
+
+    if (options.customizable) {
+        const newVueConfig = fs.readFileSync(vueConfigGenerated, 'utf-8');
+        expect(newVueConfig).toMatchSnapshot();
+    }
 
     await jestSpawn('npm', ['run', mainFolder], { cwd }, () => {
         rimraf.sync(dist);
+
+        if (options.customizable) {
+            rimraf.sync(vueConfigGenerated);
+        }
     }, done);
 };

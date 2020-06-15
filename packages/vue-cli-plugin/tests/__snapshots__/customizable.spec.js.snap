@@ -46,6 +46,14 @@ new Vue({
 "
 `;
 
+exports[`Vue CLI Module should build plugin with customizable flag enabled 3`] = `
+"module.exports = {
+    transpileDependencies: [
+        '@inkline/inkline'
+    ]
+};"
+`;
+
 exports[`Vue CLI Module should build typescript plugin with customizable flag enabled 1`] = `
 Object {
   "dependencies": Object {
@@ -89,4 +97,12 @@ new Vue({
     render: h => h(App),
 }).$mount('#app');
 "
+`;
+
+exports[`Vue CLI Module should build typescript plugin with customizable flag enabled 3`] = `
+"module.exports = {
+    transpileDependencies: [
+        '@inkline/inkline'
+    ]
+};"
 `;
