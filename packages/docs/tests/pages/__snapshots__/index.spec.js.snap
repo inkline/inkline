@@ -165,7 +165,7 @@ exports[`IndexView is should render correctly 1`] = `
           Copyright © 2017-2020, Inkline
         </p>
         <ul id="footer-policies" class="list -inline">
-          <li><a href="https://github.com/inkline/inkline/blob/master/LICENSE" target="_blank" rel="nofollow">MIT License</a></li>
+          <li><a href="https://github.com/inkline/inkline/blob/master/packages/inkline/LICENSE" target="_blank" rel="nofollow">MIT License</a></li>
         </ul>
       </footer>
     </i-container-stub>
