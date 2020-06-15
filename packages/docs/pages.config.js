@@ -50,16 +50,6 @@ const pages = [
         description: 'Make Inkline your own by changing its various Vue Plugin global configuration options.'
     },
     {
-        id: 'docs-introduction-guides-first-use',
-        title: 'First Use',
-        description: 'Get Inkline ready for tree shaking and Sass variables customization.'
-    },
-    {
-        id: 'docs-introduction-guides-dark-mode',
-        title: 'Dark Mode Guide',
-        description: 'Easily change the theme of your application to light or dark programmatically.'
-    },
-    {
         id: 'docs-core-grid',
         title: 'Grid',
         description: 'Inkline\'s grid system is modelled as a 12 columns layout built using flexbox, with equally divided columns.'
@@ -398,7 +388,12 @@ const pages = [
         id: 'docs-utilities-visibility',
         title: 'Visibility',
         description: 'Inkline\'s utilities allow you to control the visibility, with or without modifying the display of elements.'
-    }
+    },
+    {
+        id: 'docs-advanced-dark-mode',
+        title: 'Dark Mode',
+        description: 'Easily change the theme of your application to light or dark programmatically.'
+    },
 ];
 
 module.exports = {

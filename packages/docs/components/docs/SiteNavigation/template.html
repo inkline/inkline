@@ -26,17 +26,6 @@
                     </i-collapsible>
                 </li>
                 <li><nuxt-link :to="{ name: 'docs-introduction-plugin-options' }">Plugin Options</nuxt-link></li>
-                <li>
-                    <i-collapsible :class="{ '-active': subroutes['docs-introduction-guides'] }"
-                                   v-model="menu['docs-introduction-guides']">
-                        <i-collapsible-item title="Guides" id="docs-introduction-guides">
-                            <ul>
-                                <li><nuxt-link :to="{ name: 'docs-introduction-guides-first-use' }">First Use</nuxt-link></li>
-                                <li><nuxt-link :to="{ name: 'docs-introduction-guides-dark-mode' }">Dark Mode</nuxt-link></li>
-                            </ul>
-                        </i-collapsible-item>
-                    </i-collapsible>
-                </li>
             </ul>
         </li>
         <li>
@@ -143,6 +132,12 @@
                 <li><nuxt-link :to="{ name: 'docs-utilities-text' }">Text</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-utilities-vertical-align' }">Vertical Align</nuxt-link></li>
                 <li><nuxt-link :to="{ name: 'docs-utilities-visibility' }">Visibility</nuxt-link></li>
+            </ul>
+        </li>
+        <li>
+            <span>Advanced</span>
+            <ul>
+                <li><nuxt-link :to="{ name: 'docs-advanced-dark-mode' }">Dark Mode</nuxt-link></li>
             </ul>
         </li>
     </ol>
