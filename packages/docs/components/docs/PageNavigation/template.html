@@ -1,6 +1,6 @@
 <div class="page-navigation" :class="classes">
     <ol>
-        <li>
+        <li v-show="items.length > 0">
             <span>{{title}}</span>
             <ul>
                 <li v-for="item in items">
