@@ -1,5 +1,5 @@
-# Customization
-## Prepare Inkline for tree shaking and Sass variables customization. {.lead}
+# First Use
+## Here's how to take your first steps in an Inkline Vue.js Application {.lead}
 
 ### Install Dependencies
 

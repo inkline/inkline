@@ -1,36 +1,77 @@
 # Nuxt.js Installation
-## Install Inkline using your favorite package manager and get access to the latest source code and compiled CSS and JavaScript. {.lead}
+## Install Inkline using the official Nuxt.js module and get Inkline automatically set up for you. {.lead}
 
-Inkline provides you with an easy to use <a href="https://nuxtjs.org" rel="nofollow" target="_blank">Nuxt.js</a> module. Inkline uses Sass, so you will need to install it as a dependency as well:
+### Installation
+After you've [created a Nuxt.js Project](https://nuxtjs.org/guide/installation/), install Inkline using the following command:
 
-
-~~~css
-npm install --save-dev @inkline/nuxt node-sass sass-loader
+~~~bash
+npm install --save-dev @inkline/nuxt
 ~~~
 
-##### Basic Usage
-Next, add `@inkline/nuxt` to the modules section of your `nuxt.config.js`. This provides you with some amazing features out of the box:
-
-- Easy setup with best practices
-- Dynamic component imports integration using <a href="https://github.com/nuxt/components" rel="nofollow noreferrer">@nuxt/components</a>
-- Perfectly optimized and automatic tree shaking
+Next, add `@inkline/nuxt` to the `modules` section of your `nuxt.config.js` file:
 
 ~~~js
 module.exports = {
+    // ... The rest of the configuration 
+
     modules: [ '@inkline/nuxt' ]
 }
 ~~~
 
-##### Configuration
-Optionally, you can configure your Inkline Nuxt.js Module using the plugin configuration options seen [here](#plugin-options):
+### Integration
+By following the steps above, you have added Inkline to your Nuxt.js project. This provides you with some amazing features out of the box:
+
+- Easy setup with best practices
+- Dynamic component imports integration using <a href="https://github.com/nuxt/components" rel="nofollow noreferrer">@nuxt/components</a>
+- Perfectly optimized automatic tree shaking
+
+### Plugin Options
+Optionally, you can configure your <nuxt-link :to="{ name: 'docs-introduction-plugin-options' }">Plugin Options</nuxt-link> through the Nuxt.js Module by using the `inkline` field:
  
 ~~~js
 module.exports = {
+    // ... The rest of the configuration 
+
     modules: [ '@inkline/nuxt' ],
     inkline: {
         config: {
             variant: 'dark'
         }   
+    }
+}
+~~~
+
+### Customization
+Customizing Inkline is very straightforward. First, install a utility plugin to easily import our variables file:
+
+~~~bash
+npm install --save-dev @nuxtjs/style-resources
+~~~
+
+Next, create a `variables.scss` file inside of your `assets` folder. The important part is to make sure our `variables.scss` file gets included before every Sass file that Inkline provides.
+
+~~~scss
+// assets/variables.scss
+
+$color-primary: #178bb2;
+$color-secondary: #5d65b9;
+~~~
+
+
+Add the `@nuxtjs/style-resources` entry to the `modules` field in your `nuxt.config.js` file, and configure it to import our `assets/variables.scss` file:
+
+~~~js
+const path = require('path');
+
+module.exports = {
+    // ... The rest of the configuration 
+  
+    modules: [
+        '@nuxtjs/style-resources',
+        '@inkline/nuxt'
+    ],
+    styleResources: {
+        scss: ['~/assets/variables.scss']
     }
 }
 ~~~

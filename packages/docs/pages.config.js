@@ -27,7 +27,17 @@ const pages = [
     {
         id: 'docs-introduction-installation-vue-cli',
         title: 'Vue CLI Installation',
-        description: 'Install Inkline using the official Vue CLI integration. All of our integrations a'
+        description: 'Install Inkline using the official Vue CLI plugin and get Inkline automatically set up for you.'
+    },
+    {
+        id: 'docs-introduction-installation-nuxt',
+        title: 'Nuxt.js Installation',
+        description: 'Install Inkline using the official Nuxt.js module and get Inkline automatically set up for you.'
+    },
+    {
+        id: 'docs-introduction-installation-custom',
+        title: 'Custom Installation',
+        description: 'Take control of the process and install Inkline manually using an application bundler of your choice.'
     },
     {
         id: 'docs-introduction-installation-cdn',
@@ -35,8 +45,13 @@ const pages = [
         description: 'Install Inkline using the official JSDelivr CDN integration. The content delivery network (CDN) provides super fast asset delivery from a server that is closest to you.'
     },
     {
-        id: 'docs-introduction-guides-customization',
-        title: 'Customization Guide',
+        id: 'docs-introduction-plugin-options',
+        title: 'Plugin Options',
+        description: 'Make Inkline your own by changing its various Vue Plugin global configuration options.'
+    },
+    {
+        id: 'docs-introduction-guides-first-use',
+        title: 'First Use',
         description: 'Get Inkline ready for tree shaking and Sass variables customization.'
     },
     {
