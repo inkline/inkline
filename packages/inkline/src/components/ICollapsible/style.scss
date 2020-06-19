@@ -13,5 +13,9 @@
     border-style: solid;
     border-radius: $collapsible-border-radius;
 
+    &.-unstyled {
+        border: 0;
+    }
+
     @extend .collapsible.-light;
 }
