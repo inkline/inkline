@@ -1,5 +1,10 @@
+---
+title: Data Table Scrolling
+description: Inkline's Data Table supports a large number of columns easily using horizontal scrolling and sticky columns. 
+---
+
 # Data Table Scrolling
-Inkline's Data Table supports a large number of columns easily using horizontal scrolling and sticky columns. {.lead}
+## Inkline's Data Table supports a large number of columns easily using horizontal scrolling and sticky columns. 
 
 ~~~js
 export default {
@@ -21,16 +26,18 @@ export default {
 
 By default, sorting for the `string`, `number` and `Date` value types is supported natively. 
 
-<i-code-preview title="Data Table Default Scrolling">
-<i-datatable :columns="columns" :rows="rows" nowrap />
-<template slot="html">
+<i-code title="Data Table Default Scrolling">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rows" nowrap />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" nowrap />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -55,8 +62,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Sticky Columns
@@ -79,16 +86,18 @@ export default {
 ~~~
 
 
-<i-code-preview title="Data Table Default Scrolling">
-<i-datatable :columns="columnsSticky" :rows="rows" :count-column="countColumn" nowrap />
-<template slot="html">
+<i-code title="Data Table Default Scrolling">
+<i-tab type="preview">
+    <i-datatable :columns="columnsSticky" :rows="rows" :count-column="countColumn" nowrap />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" :count-column="countColumn" nowrap />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -112,8 +121,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 

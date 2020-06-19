@@ -1,20 +1,27 @@
+---
+title: Checkbox
+description: Checkbox inputs allow the user to select multiple options from a set. 
+---
+
 # Checkbox
-## Checkbox inputs allow the user to select multiple options from a set. { .lead }
+## Checkbox inputs allow the user to select multiple options from a set. 
 
 Using the `i-checkbox` component together with a `i-checkbox-group` allows you to control multiple values using a single binding.
 
 ### Basic Usage
 
-<i-code-preview title="Basic Checkbox">
-<i-checkbox v-model="checked">Apple</i-checkbox>
-<template slot="html">
+<i-code title="Basic Checkbox">
+<i-tab type="preview">
+    <i-checkbox v-model="checked">Apple</i-checkbox>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-checkbox v-model="checked">Apple</i-checkbox>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -26,25 +33,27 @@ export default {
 }
 ~~~
 
-</template>
-<template slot="output">
+</i-tab>
+<i-tab type="output">
 
 Checked: <code>{{checked}}</code>
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Checkbox Group
 
-<i-code-preview title="Checkbox Group">
-<i-checkbox-group v-model="checkedGroup">
-    <i-checkbox value="Football">Football</i-checkbox>
-    <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-    <i-checkbox value="Basketball">Basketball</i-checkbox>
-    <i-checkbox value="Snowboarding">Snowboarding</i-checkbox>
-    <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-</i-checkbox-group>
-<template slot="html">
+<i-code title="Checkbox Group">
+<i-tab type="preview">
+    <i-checkbox-group v-model="checkedGroup">
+        <i-checkbox value="Football">Football</i-checkbox>
+        <i-checkbox value="Volleyball">Volleyball</i-checkbox>
+        <i-checkbox value="Basketball">Basketball</i-checkbox>
+        <i-checkbox value="Snowboarding">Snowboarding</i-checkbox>
+        <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
+    </i-checkbox-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-checkbox-group v-model="checked">
@@ -56,8 +65,8 @@ Checked: <code>{{checked}}</code>
 </i-checkbox-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -69,23 +78,25 @@ export default {
 }
 ~~~
 
-</template>
-<template slot="output">
-Checked values: <code>{{checkedGroup}}</code>
-</template>
-</i-code-preview>
+</i-tab>
+<i-tab type="output">
+    Checked values: <code>{{checkedGroup}}</code>
+</i-tab>
+</i-code>
 
 
 ### Sizes
 You're able to use the `size` property to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
 
-<i-code-preview title="Checkbox Sizes">
-<i-checkbox-group v-model="checkedSize">
-    <i-checkbox size="sm" value="Football">Football</i-checkbox>
-    <i-checkbox size="md" value="Volleyball">Tennis</i-checkbox>
-    <i-checkbox size="lg" value="Basketball">Basketball</i-checkbox>
-</i-checkbox-group>
-<template slot="html">
+<i-code title="Checkbox Sizes">
+<i-tab type="preview">
+    <i-checkbox-group v-model="checkedSize">
+        <i-checkbox size="sm" value="Football">Football</i-checkbox>
+        <i-checkbox size="md" value="Volleyball">Tennis</i-checkbox>
+        <i-checkbox size="lg" value="Basketball">Basketball</i-checkbox>
+    </i-checkbox-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-checkbox-group v-model="checked">
@@ -95,8 +106,8 @@ You're able to use the `size` property to control the size of your inputs, using
 </i-checkbox-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -108,31 +119,33 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Applying the size `size` property to a `i-checkbox-group` will set the chosen size to all of its child inputs.
 
-<i-code-preview title="Checkbox Group Size">
-<i-checkbox-group size="sm" v-model="checkedSizeGroupSm" class="_margin-bottom-1">
-    <i-checkbox value="Football">Football</i-checkbox>
-    <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-    <i-checkbox value="Basketball">Basketball</i-checkbox>
-    <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-</i-checkbox-group>
-<i-checkbox-group size="md" v-model="checkedSizeGroupMd" class="_margin-bottom-1">
-    <i-checkbox value="Football">Football</i-checkbox>
-    <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-    <i-checkbox value="Basketball">Basketball</i-checkbox>
-    <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-</i-checkbox-group>
-<i-checkbox-group size="lg" v-model="checkedSizeGroupLg">
-    <i-checkbox value="Football">Football</i-checkbox>
-    <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-    <i-checkbox value="Basketball">Basketball</i-checkbox>
-    <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-</i-checkbox-group>
-<template slot="html">
+<i-code title="Checkbox Group Size">
+<i-tab type="preview">
+    <i-checkbox-group size="sm" v-model="checkedSizeGroupSm" class="_margin-bottom-1">
+        <i-checkbox value="Football">Football</i-checkbox>
+        <i-checkbox value="Volleyball">Volleyball</i-checkbox>
+        <i-checkbox value="Basketball">Basketball</i-checkbox>
+        <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
+    </i-checkbox-group>
+    <i-checkbox-group size="md" v-model="checkedSizeGroupMd" class="_margin-bottom-1">
+        <i-checkbox value="Football">Football</i-checkbox>
+        <i-checkbox value="Volleyball">Volleyball</i-checkbox>
+        <i-checkbox value="Basketball">Basketball</i-checkbox>
+        <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
+    </i-checkbox-group>
+    <i-checkbox-group size="lg" v-model="checkedSizeGroupLg">
+        <i-checkbox value="Football">Football</i-checkbox>
+        <i-checkbox value="Volleyball">Volleyball</i-checkbox>
+        <i-checkbox value="Basketball">Basketball</i-checkbox>
+        <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
+    </i-checkbox-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-checkbox-group size="sm" v-model="checked">
@@ -159,8 +172,8 @@ Applying the size `size` property to a `i-checkbox-group` will set the chosen si
 </i-checkbox-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -172,19 +185,21 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Custom vs. Native
 Inkline uses custom checkbox designs by setting the `custom` property to `true` by default. 
 
-<i-code-preview title="Custom Checkbox">
-<i-checkbox-group v-model="checkedCustomTrue">
-    <i-checkbox :custom="true" value="Football">Football</i-checkbox>
-    <i-checkbox :custom="true" value="Volleyball">Tennis</i-checkbox>
-    <i-checkbox :custom="true" value="Basketball">Basketball</i-checkbox>    
-</i-checkbox-group>
-<template slot="html">
+<i-code title="Custom Checkbox">
+<i-tab type="preview">
+    <i-checkbox-group v-model="checkedCustomTrue">
+        <i-checkbox :custom="true" value="Football">Football</i-checkbox>
+        <i-checkbox :custom="true" value="Volleyball">Tennis</i-checkbox>
+        <i-checkbox :custom="true" value="Basketball">Basketball</i-checkbox>    
+    </i-checkbox-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-checkbox-group v-model="checkedCustomTrue">
@@ -194,8 +209,8 @@ Inkline uses custom checkbox designs by setting the `custom` property to `true` 
 </i-checkbox-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -207,22 +222,24 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Indeterminate
 You can set the state of a `<i-checkbox>` to be indeterminate by setting the `indeterminate` property to `true`. 
 
-<i-code-preview title="Indeterminate Checkbox">
-<i-checkbox :indeterminate="true">Football</i-checkbox>
-<template slot="html">
+<i-code title="Indeterminate Checkbox">
+<i-tab type="preview">
+    <i-checkbox :indeterminate="true">Football</i-checkbox>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-checkbox :indeterminate="true">Football</i-checkbox>
 ~~~
 
-</template>
-<template slot="js"> 
+</i-tab>
+<i-tab type="js"> 
 
 ~~~js
 export default {
@@ -234,22 +251,24 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Checkbox Buttons
 
 You can display your checkbox inputs as toggleable buttons using the provided `<i-checkbox-button>` and `<i-checkbox-button-group>` components.
 
-<i-code-preview title="Checkbox Buttons">
-<i-checkbox-button-group v-model="checkedButton">
-    <i-checkbox-button value="Earth">Earth</i-checkbox-button>
-    <i-checkbox-button value="Mars">Mars</i-checkbox-button>
-    <i-checkbox-button value="Jupiter">Jupiter</i-checkbox-button>
-    <i-checkbox-button value="Venus" disabled>Venus</i-checkbox-button>
-</i-checkbox-button-group>
-<template slot="html">
+<i-code title="Checkbox Buttons">
+<i-tab type="preview">
+    <i-checkbox-button-group v-model="checkedButton">
+        <i-checkbox-button value="Earth">Earth</i-checkbox-button>
+        <i-checkbox-button value="Mars">Mars</i-checkbox-button>
+        <i-checkbox-button value="Jupiter">Jupiter</i-checkbox-button>
+        <i-checkbox-button value="Venus" disabled>Venus</i-checkbox-button>
+    </i-checkbox-button-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-checkbox-button-group v-model="checked">
@@ -260,8 +279,8 @@ You can display your checkbox inputs as toggleable buttons using the provided `<
 </i-checkbox-button-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -273,15 +292,15 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the checkbox components as props, as well as available slots and events.
 
-<i-api-preview title="Checkbox API" markup="i-checkbox" expanded>
-    <template slot="props">
+<i-code title="Checkbox API" markup="i-checkbox" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">custom</template>
@@ -313,7 +332,7 @@ Here you can find a list of the various customization options you can use for th
             </api-table-row>
             <api-table-row>
                 <template slot="property">schema</template>
-                <template slot="description">Provides a schema binding to the checkbox form component. See the <nuxt-link :to="{ name: 'docs-forms-form-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
+                <template slot="description">Provides a schema binding to the checkbox form component. See the <nuxt-link :to="{ name: 'docs-forms-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
                 <template slot="type"><code>Object</code></template>
                 <template slot="values"></template>
                 <template slot="default"></template>
@@ -333,16 +352,16 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for checkbox form component label.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">click</template>
@@ -365,11 +384,11 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(value: Boolean | String) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Checkbox Group API" markup="i-checkbox-group" expanded>
-    <template slot="props">
+<i-code title="Checkbox Group API" markup="i-checkbox-group" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">disabled</template>
@@ -400,16 +419,16 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>[]</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for checkbox form group component default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">focus</template>
@@ -427,15 +446,15 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(value: Boolean | String) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the checkbox and radio components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Checkbox" expanded>
-    <template slot="scss">
+<i-code title="Checkbox" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$form-check-checkbox-border-radius</template>
@@ -450,10 +469,11 @@ Here you can find a list of the Sass variables you can use for the checkbox and 
                 <template slot="default"><code>size-map($form-check-checkbox-icon-size-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>  
-<i-scss-preview title="Checkable" expanded>
-    <template slot="scss">
+    </i-tab>
+</i-code>  
+
+<i-code title="Checkable" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$form-check-disabled-color</template>
@@ -536,5 +556,5 @@ Here you can find a list of the Sass variables you can use for the checkbox and 
                 <template slot="default"><code>('monochrome-white')</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>

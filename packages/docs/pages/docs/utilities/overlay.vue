@@ -1,18 +1,8 @@
-<template lang="md" src="./overlay.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IRow, IColumn, ICard } from "@inkline/inkline/src/components";
+import View from '~/components/docs/NuxtContentView';
 
 export default {
     name: 'OverlayUtilitiesView',
-    layout: 'documentation',
-    extends: View,
-    head: head(),
-    components: {
-        IRow,
-        IColumn,
-        ICard
-    }
+    extends: View
 };
 </script>

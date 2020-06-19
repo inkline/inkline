@@ -1,17 +1,23 @@
+---
+title: Tooltip
+description: Tooltips are useful for conveying information when an user hovers over an element.
+---
+
 # Tooltip
-## Tooltips are useful for conveying information when an user hovers over an element.{.lead}
+## Tooltips are useful for conveying information when an user hovers over an element.
 
 ### Example
 Wrap both the tooltip's trigger element (such as an `<i-button>`) and the `<template slot="body">` inside a `<i-tooltip>` component.
 
-<i-code-preview title="Tooltip Example">
-
+<i-code title="Tooltip Example">
+<i-tab type="preview">
 <i-tooltip>
     <i-button>Tooltip</i-button>
     <template slot="body">Tooltip</template>
 </i-tooltip>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-tooltip>
@@ -20,16 +26,16 @@ Wrap both the tooltip's trigger element (such as an `<i-button>`) and the `<temp
 </i-tooltip>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Placement
 Trigger tooltips at the `top`, `bottom`, `left` or `right` of elements by adding the `placement` property to the `<i-tooltip>` element. 
 
 Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-end`, `bottom-start`, `bottom-end`, etc.) that sets the tooltip to the start or end of the placement instead of centering it. 
 
-<i-code-preview title="Tooltip Placement">
-
+<i-code title="Tooltip Placement">
+<i-tab type="preview">
 <div>
 <i-tooltip placement="top">
     <i-button>Top Tooltip</i-button>
@@ -52,7 +58,8 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 </i-tooltip>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-tooltip placement="top">
@@ -79,14 +86,14 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 </i-tooltip>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Freeform
 Tooltips can contain text of virtually any size. You can control the wrapping and the maximum width of the tooltip by setting `white-space: normal` and a fixed `width` property on the tooltip content.
 
-<i-code-preview title="Freeform Tooltip">
-
+<i-code title="Freeform Tooltip">
+<i-tab type="preview">
 <div>
 <i-tooltip>
     <i-button>Normal Tooltip</i-button>
@@ -103,7 +110,8 @@ Tooltips can contain text of virtually any size. You can control the wrapping an
 </i-tooltip>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-tooltip>
@@ -122,14 +130,14 @@ Tooltips can contain text of virtually any size. You can control the wrapping an
 </i-tooltip>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Trigger Type
 You can use the `trigger` property to trigger the tooltip on `hover` or `click`. By default, tooltips are triggered on `hover`, a design decision made to improve user experience.
 
-<i-code-preview title="Tooltip Trigger Type">
-
+<i-code title="Tooltip Trigger Type">
+<i-tab type="preview">
 <i-tooltip trigger="click">
     <i-button>Click Tooltip</i-button>
     <template slot="body">Tooltip</template>
@@ -155,7 +163,8 @@ You can use the `trigger` property to trigger the tooltip on `hover` or `click`.
     <template slot="body">Tooltip</template>
 </i-tooltip>&nbsp;
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-tooltip trigger="click">
@@ -188,15 +197,15 @@ You can use the `trigger` property to trigger the tooltip on `hover` or `click`.
 </i-tooltip>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your tooltips, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Tooltip Sizes">
-
+<i-code title="Tooltip Sizes">
+<i-tab type="preview">
 <div>
 <i-tooltip size="sm">
     <i-button>Small Tooltip</i-button>
@@ -214,7 +223,8 @@ The default size is set to `md`.
 </i-tooltip>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-tooltip size="sm">
@@ -235,15 +245,15 @@ The default size is set to `md`.
 </i-tooltip>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Variants
 Inkline includes two predefined tooltip styles, each serving its own semantic purpose. You can set the style of a `<i-tooltip>` using the `variant` property, which can have a value of `light` or `dark`. By default, tooltips use the `dark` variant.
 
-<i-code-preview title="Tooltip Variants">
-
+<i-code title="Tooltip Variants">
+<i-tab type="preview">
 <div>
 <i-tooltip variant="light">
     <i-button variant="light">Light Tooltip</i-button>
@@ -256,7 +266,8 @@ Inkline includes two predefined tooltip styles, each serving its own semantic pu
 </i-tooltip>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-tooltip variant="light">
@@ -271,15 +282,15 @@ Inkline includes two predefined tooltip styles, each serving its own semantic pu
 </i-tooltip>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the tooltip components as props, as well as available slots and events.
 
-<i-api-preview title="Tooltip API" markup="i-tooltip" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ITooltip">
-    <template slot="props">
+<i-code title="Tooltip API" markup="i-tooltip" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ITooltip">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">arrow</template>
@@ -354,8 +365,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
@@ -366,8 +377,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for tooltip component body.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">change</template>
@@ -375,14 +386,14 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(visible: Boolean) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the tooltip components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Tooltip" expanded>
-    <template slot="scss">
+<i-code title="Tooltip" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$tooltip-font-size</template>
@@ -421,5 +432,5 @@ Here you can find a list of the Sass variables you can use for the tooltip compo
                 <template slot="default"><code>('monochrome-white')</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

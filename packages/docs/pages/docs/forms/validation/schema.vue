@@ -1,29 +1,10 @@
 <template lang="md" src="./schema.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IAlert, IForm, IFormGroup, IFormLabel, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup, IInput, ISelect, ISelectOption, ITextarea, IButton } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     extends: View,
     name: 'FormValidationSchemaView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IAlert,
-        IForm,
-        IFormGroup,
-        IFormLabel,
-        ICheckbox,
-        IRadio,
-        IInput,
-        ISelect,
-        ISelectOption,
-        ITextarea,
-        IButton,
-        ICheckboxGroup,
-        IRadioGroup
-    },
     data () {
         return {
             basicForm: this.$inkline.form({
@@ -114,7 +95,7 @@ export default {
     },
     methods: {
         submitForm() {
-            alert('Form submitted!')
+            alert('Form submitted!');
         }
     },
     filters: {

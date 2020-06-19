@@ -1,19 +1,24 @@
+---
+title: Popover
+description: Popovers are useful for conveying information when an user clicks or hovers an element.
+---
+
 # Popover
-## Popovers are useful for conveying information when an user clicks or hovers an element.{.lead}
+## Popovers are useful for conveying information when an user clicks or hovers an element.
 
 ### Example
 Wrap both the popover's trigger element (such as an `<i-button>`) and the `<template slot="body">` inside a `<i-popover>` component. Optionally, you can provide a popover header and footer using `slot="header"` and `slot="footer"`.
 
-<i-code-preview title="Popover Example">
-
-<i-popover>
-    <i-button>Popover</i-button>
-    <template slot="header">Popover Header</template>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-    <template slot="footer">Popover Footer</template>
-</i-popover>
-
-<template slot="html">
+<i-code title="Popover Example">
+<i-tab type="preview">
+    <i-popover>
+        <i-button>Popover</i-button>
+        <template slot="header">Popover Header</template>
+        <template slot="body">This is the popover body. Useful information goes here.</template>
+        <template slot="footer">Popover Footer</template>
+    </i-popover>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-popover>
@@ -25,39 +30,36 @@ Wrap both the popover's trigger element (such as an `<i-button>`) and the `<temp
 
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Placement
 Trigger popovers at the `top`, `bottom`, `left` or `right` of elements by adding the `placement` property to the `<i-popover>` element. 
 
 Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-end`, `bottom-start`, `bottom-end`, etc.) that sets the popover to the start or end of the placement instead of centering it. 
 
-<i-code-preview title="Popover Placement">
-
-<div>
-<i-popover placement="top">
-    <i-button>Top Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>&nbsp;
-
-<i-popover placement="bottom">
-    <i-button>Bottom Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>&nbsp;
-
-<i-popover placement="left">
-    <i-button>Left Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>&nbsp;
-
-<i-popover placement="right">
-    <i-button>Right Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>
-</div>
-
-<template slot="html">
+<i-code title="Popover Placement">
+<i-tab type="preview">
+    <div>
+        <i-popover placement="top">
+            <i-button>Top Popover</i-button>
+            <template slot="body">This is the popover body. Useful information goes here.</template>
+        </i-popover>&nbsp;
+        <i-popover placement="bottom">
+            <i-button>Bottom Popover</i-button>
+            <template slot="body">This is the popover body. Useful information goes here.</template>
+        </i-popover>&nbsp;
+        <i-popover placement="left">
+            <i-button>Left Popover</i-button>
+            <template slot="body">This is the popover body. Useful information goes here.</template>
+        </i-popover>&nbsp;
+        <i-popover placement="right">
+            <i-button>Right Popover</i-button>
+            <template slot="body">This is the popover body. Useful information goes here.</template>
+        </i-popover>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-popover placement="top">
@@ -83,40 +85,36 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 </i-popover>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ## Trigger type
 You can use the `trigger` property to trigger the popover on `hover` or `click`. By default, popovers are triggered on `click`, a design decision made to improve user experience.
 
-<i-code-preview title="Popover Trigger Type">
-
-<i-popover trigger="click">
-    <i-button>Click Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>&nbsp;
-
-<i-popover trigger="hover">
-    <i-button>Hover Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>&nbsp;
-
-<i-popover trigger="focus">
-    <i-button>Focus Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>&nbsp;
-
-<i-popover :trigger="['focus', 'hover']">
-    <i-button>Multiple Events Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>&nbsp;
-
-<i-popover trigger="manual" v-model="manualPopover">
-    <i-button @click="manualPopover = !manualPopover">Manual Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>&nbsp;
-
-<template slot="html">
+<i-code title="Popover Trigger Type">
+<i-tab type="preview">
+    <i-popover trigger="click">
+        <i-button>Click Popover</i-button>
+        <template slot="body">This is the popover body. Useful information goes here.</template>
+    </i-popover>&nbsp;
+    <i-popover trigger="hover">
+        <i-button>Hover Popover</i-button>
+        <template slot="body">This is the popover body. Useful information goes here.</template>
+    </i-popover>&nbsp;
+    <i-popover trigger="focus">
+        <i-button>Focus Popover</i-button>
+        <template slot="body">This is the popover body. Useful information goes here.</template>
+    </i-popover>&nbsp;
+    <i-popover :trigger="['focus', 'hover']">
+        <i-button>Multiple Events Popover</i-button>
+        <template slot="body">This is the popover body. Useful information goes here.</template>
+    </i-popover>&nbsp;
+    <i-popover trigger="manual" v-model="manualPopover">
+        <i-button @click="manualPopover = !manualPopover">Manual Popover</i-button>
+        <template slot="body">This is the popover body. Useful information goes here.</template>
+    </i-popover>&nbsp;
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-popover trigger="click">
@@ -149,33 +147,31 @@ You can use the `trigger` property to trigger the popover on `hover` or `click`.
 </i-popover>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your popovers, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Popover Sizes">
-
-<div>
-<i-popover size="sm">
-    <i-button>Small Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>&nbsp;
-
-<i-popover size="md">
-    <i-button>Medium Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>&nbsp;
-
-<i-popover size="lg">
-    <i-button>Large Popover</i-button>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-</i-popover>
-</div>
-
-<template slot="html">
+<i-code title="Popover Sizes">
+<i-tab type="preview">
+    <div>
+        <i-popover size="sm">
+            <i-button>Small Popover</i-button>
+            <template slot="body">This is the popover body. Useful information goes here.</template>
+        </i-popover>&nbsp;
+        <i-popover size="md">
+            <i-button>Medium Popover</i-button>
+            <template slot="body">This is the popover body. Useful information goes here.</template>
+        </i-popover>&nbsp;
+        <i-popover size="lg">
+            <i-button>Large Popover</i-button>
+            <template slot="body">This is the popover body. Useful information goes here.</template>
+        </i-popover>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-popover size="sm">
@@ -196,32 +192,31 @@ The default size is set to `md`.
 </i-popover>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Variants
 Inkline includes two predefined popover styles, each serving its own semantic purpose. You can set the style of a `<i-popover>` using the `variant` property, which can have a value of `light` or `dark`. By default, popovers use the `light` variant.
 
-<i-code-preview title="Popover Variants">
-
-<div>
-<i-popover variant="light">
-    <i-button variant="light">Light Popover</i-button>
-    <template slot="header">Popover Header</template>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-    <template slot="footer">Popover Footer</template>
-</i-popover>&nbsp;
-
-<i-popover variant="dark">
-    <i-button variant="dark">Dark Popover</i-button>
-    <template slot="header">Popover Header</template>
-    <template slot="body">This is the popover body. Useful information goes here.</template>
-    <template slot="footer">Popover Footer</template>
-</i-popover>
-</div>
-
-<template slot="html">
+<i-code title="Popover Variants">
+<i-tab type="preview">
+    <div>
+        <i-popover variant="light">
+            <i-button variant="light">Light Popover</i-button>
+            <template slot="header">Popover Header</template>
+            <template slot="body">This is the popover body. Useful information goes here.</template>
+            <template slot="footer">Popover Footer</template>
+        </i-popover>&nbsp;
+        <i-popover variant="dark">
+            <i-button variant="dark">Dark Popover</i-button>
+            <template slot="header">Popover Header</template>
+            <template slot="body">This is the popover body. Useful information goes here.</template>
+            <template slot="footer">Popover Footer</template>
+        </i-popover>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-popover variant="light">
@@ -240,14 +235,14 @@ Inkline includes two predefined popover styles, each serving its own semantic pu
 </i-popover>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Component API
 Here you can find a list of the various customization options you can use for the popover component as props, as well as available slots and events.
 
-<i-api-preview title="Popover API" markup="i-popover" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IPopover">
-    <template slot="props">
+<i-code title="Popover API" markup="i-popover" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IPopover">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">arrow</template>
@@ -322,8 +317,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
@@ -342,8 +337,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for popover component footer.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">change</template>
@@ -351,14 +346,14 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(visible: Boolean) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the popover components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Popover" expanded>
-    <template slot="scss">
+<i-code title="Popover" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$popover-font-size</template>
@@ -401,5 +396,5 @@ Here you can find a list of the Sass variables you can use for the popover compo
                 <template slot="default"><code>('monochrome-white')</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

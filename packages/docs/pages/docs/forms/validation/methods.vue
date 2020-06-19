@@ -1,20 +1,10 @@
 <template lang="md" src="./methods.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IInput, IButton, IForm, IFormGroup } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     extends: View,
     name: 'FormValidationMethodsView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IInput,
-        IButton,
-        IForm,
-        IFormGroup
-    },
     data () {
         return {
             listForm: this.$inkline.form({
@@ -26,7 +16,7 @@ export default {
 
             objectForm: this.$inkline.form({
                 fullName: {}
-            }),
+            })
         };
     },
     methods: {

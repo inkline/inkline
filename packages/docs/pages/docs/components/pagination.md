@@ -1,19 +1,26 @@
+---
+title: Pagination
+description: Pagination provides navigation for large series of related content.
+---
+
 # Pagination
-## Pagination provides navigation for large series of related content.{.lead}
+## Pagination provides navigation for large series of related content.
 
 ### Example
 Pagination items are automatically generated based on the total item count `items` and how many items will be displayed on the page, configured using `items-per-page`, with the default value being `20`. The currently selected page is kept synchronised using `v-model`.
 
-<i-code-preview title="Pagination Example">
-<i-pagination v-model="currentPage" :items="300" :items-per-page="20"></i-pagination>
-<template slot="html">
+<i-code title="Pagination Example">
+<i-tab type="preview">
+    <i-pagination v-model="currentPage" :items="300" :items-per-page="20"></i-pagination>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-pagination v-model="currentPage" :items="300" :items-per-page="20"></i-pagination>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -25,17 +32,19 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Variants
 Inkline includes two predefined pagination styles. You can set the style of a `<i-pagination>` using the `variant` property, which can have a value of `light` or `dark`. By default, pagination uses the `light` variant.
 
-<i-code-preview title="Pagination Variants">
-<i-pagination v-model="currentPageLight" variant="light" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
-<i-pagination v-model="currentPageDark" variant="dark" :items="100" :items-per-page="10"></i-pagination>
-<template slot="html">
+<i-code title="Pagination Variants">
+<i-tab type="preview">
+    <i-pagination v-model="currentPageLight" variant="light" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
+    <i-pagination v-model="currentPageDark" variant="dark" :items="100" :items-per-page="10"></i-pagination>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-pagination v-model="currentPage" variant="light" :items="100" :items-per-page="10"></i-pagination>
@@ -44,8 +53,8 @@ Inkline includes two predefined pagination styles. You can set the style of a `<
 <i-pagination v-model="currentPage" variant="dark" :items="100" :items-per-page="10"></i-pagination>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -57,19 +66,21 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your pagination items, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Pagination Sizes">
-<div>
-<i-pagination v-model="currentPageSm" size="sm" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
-<i-pagination v-model="currentPageMd" size="md" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
-<i-pagination v-model="currentPageLg" size="lg" :items="100" :items-per-page="10"></i-pagination>
-</div>
-<template slot="html">
+<i-code title="Pagination Sizes">
+<i-tab type="preview">
+    <div>
+        <i-pagination v-model="currentPageSm" size="sm" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
+        <i-pagination v-model="currentPageMd" size="md" :items="100" :items-per-page="10" class="_margin-bottom-1"></i-pagination>
+        <i-pagination v-model="currentPageLg" size="lg" :items="100" :items-per-page="10"></i-pagination>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-pagination v-model="currentPage" size="sm" :items="100" :items-per-page="10"></i-pagination>
@@ -81,8 +92,8 @@ You're able to use the `size` modifier to control the size of your pagination it
 <i-pagination v-model="currentPage" size="lg" :items="100" :items-per-page="10"></i-pagination>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -94,26 +105,28 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Limit
 You're able to use the `limit` modifier to control how many items to show besides the first and last items, including the two ellipsis pagination items. 
 
 Make sure this value is an `odd number` for best results.
 
-<i-code-preview title="Pagination Limit">
-<div>
-<i-pagination v-model="currentPagePageLimit" :limit="3" :items="100" :items-per-page="10"></i-pagination>
-</div>
-<template slot="html">
+<i-code title="Pagination Limit">
+<i-tab type="preview">
+    <div>
+        <i-pagination v-model="currentPagePageLimit" :limit="3" :items="100" :items-per-page="10"></i-pagination>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-pagination v-model="currentPage" :limit="3" :items="100" :items-per-page="10"></i-pagination>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -125,23 +138,25 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 To make things even better, you can responsively control the number of items at each breakpoint, to make sure your design always looks great.
 
-<i-code-preview title="Pagination Responsive Limit">
-<div>
-<i-pagination v-model="currentPagePageLimitResponsive" :limit="pageLimit" :items="100" :items-per-page="10"></i-pagination>
-</div>
-<template slot="html">
+<i-code title="Pagination Responsive Limit">
+<i-tab type="preview">
+    <div>
+        <i-pagination v-model="currentPagePageLimitResponsive" :limit="pageLimit" :items="100" :items-per-page="10"></i-pagination>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-pagination v-model="currentPage" :limit="pageLimit" :items="100" :items-per-page="10"></i-pagination>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -158,25 +173,27 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Quick Links
 You're able to use the `quickLink` modifier to allow the user to click the `…` item to quickly jump through pages, a number of items equal to `limit` at a time. 
 
-<i-code-preview title="Pagination Quick Link">
-<div>
-<i-pagination v-model="currentPageQuickLink" quick-link :items="100" :items-per-page="10"></i-pagination>
-</div>
-<template slot="html">
+<i-code title="Pagination Quick Link">
+<i-tab type="preview">
+    <div>
+        <i-pagination v-model="currentPageQuickLink" quick-link :items="100" :items-per-page="10"></i-pagination>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-pagination v-model="currentPage" quick-link :items="100" :items-per-page="10"></i-pagination>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -188,15 +205,15 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the pagination component as props, as well as available slots and events.
 
-<i-api-preview title="Pagination API" markup="i-pagination" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IPagination">
-    <template slot="props">
+<i-code title="Pagination API" markup="i-pagination" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IPagination">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">items</template>
@@ -248,8 +265,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
@@ -264,8 +281,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for pagination component previous button content.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">change</template>
@@ -278,14 +295,14 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(item: Number) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the pagination components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Pagination" expanded>
-    <template slot="scss">
+<i-code title="Pagination" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$pagination-font-size</template>
@@ -344,5 +361,5 @@ Here you can find a list of the Sass variables you can use for the pagination co
                 <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

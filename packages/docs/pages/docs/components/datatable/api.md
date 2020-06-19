@@ -1,5 +1,10 @@
+---
+title: Data Table API
+description: The Data Table has a very intuitive and comprehensive component API for all your customization needs. 
+---
+
 # Data Table API
-The Data Table has a very intuitive and comprehensive component API for all your customization needs. {.lead}
+## The Data Table has a very intuitive and comprehensive component API for all your customization needs. 
 
 ### Configuring i18n
 You can provide an object with already translated internationalization strings using the `i18n` property. 
@@ -33,8 +38,8 @@ export default {
 ### Component API
 Here you can find a list of the various customization options you can use for the datatable component as props, as well as available slots and events.
 
-<i-api-preview title="Data Table API" markup="i-datatable" expanded>
-    <template slot="props">
+<i-code title="Data Table API" markup="i-datatable" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">async</template>
@@ -230,8 +235,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">update</template>
@@ -239,8 +244,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>({ page: Number, rowsPerPage: Number, filter: String }) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">header</template>
@@ -271,15 +276,15 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for replacing filtering message when there are no results.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the datatable component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Datatable" expanded>
-    <template slot="scss">
+<i-code title="Datatable" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$datatable-cell-padding</template>
@@ -346,6 +351,6 @@ Here you can find a list of the Sass variables you can use for the datatable com
                 <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 
 

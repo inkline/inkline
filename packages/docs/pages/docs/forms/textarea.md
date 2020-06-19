@@ -1,20 +1,26 @@
+---
+title: Textarea
+description: Form components used for inputting data directly from the keyboard, on multiple lines. 
+---
+
 # Textarea
-## Form components used for inputting data directly from the keyboard, on multiple lines. { .lead }
+## Form components used for inputting data directly from the keyboard, on multiple lines. 
 
 ### Example
 
-<i-code-preview title="Basic Textarea">
+<i-code title="Basic Textarea">
+<i-tab type="preview">
+    <i-textarea v-model="textareaValue" placeholder="Type something.." />
 
-<i-textarea v-model="textareaValue" placeholder="Type something.." />
-
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-textarea v-model="value" placeholder="Type something.." />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -26,23 +32,23 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Disabled State
 
-<i-code-preview title="Disabled Textarea">
-
-<i-textarea v-model="disabledTextareaValue" placeholder="Type something.." disabled />
-
-<template slot="html">
+<i-code title="Disabled Textarea">
+<i-tab type="preview">
+    <i-textarea v-model="disabledTextareaValue" placeholder="Type something.." disabled />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-textarea v-model="value" placeholder="Type something.." disabled />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -54,23 +60,24 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Clearable Textarea
 
-<i-code-preview title="Clearable Textarea">
-
+<i-code title="Clearable Textarea">
+<i-tab type="preview">
 <i-textarea v-model="clearableTextareaValue" placeholder="Type something.." clearable />
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-textarea v-model="value" placeholder="Type something.." clearable />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -82,15 +89,15 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Prefix and Suffix
 Inkline allows you to easily add a prefix or suffix to your Textareas. Using prefixes and suffixes you can, indicate 
 your Textarea type using an icon or text. 
 
-<i-code-preview title="Textarea Prefix and Suffix">
-
+<i-code title="Textarea Prefix and Suffix">
+<i-tab type="preview">
 <i-textarea v-model="prefixTextareaValue" placeholder="Type something.." class="_margin-bottom-1">
     <i slot="prefix" class="form-input-icon">@</i>
 </i-textarea>
@@ -104,7 +111,8 @@ your Textarea type using an icon or text.
     <i slot="suffix" class="form-input-icon">@</i>
 </i-textarea>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-textarea v-model="value" placeholder="Type something..">
@@ -123,8 +131,8 @@ your Textarea type using an icon or text.
 </i-textarea>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -136,14 +144,14 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Prepend and Append
 You can add additional content such as select fields, buttons or plain text, to either side of the Textarea by using the prepend and append slots.
 
-<i-code-preview title="Textarea Prepend and Append">
-
+<i-code title="Textarea Prepend and Append">
+<i-tab type="preview">
 <i-textarea v-model="prependTextareaValue" placeholder="Type something.." class="_margin-bottom-1">
     <span slot="prepend" class="form-input-prepend">http://</span>
 </i-textarea>
@@ -157,7 +165,8 @@ You can add additional content such as select fields, buttons or plain text, to 
     <span slot="append" class="form-input-append">.com</span>
 </i-textarea>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-textarea v-model="value" placeholder="Type something..">
@@ -176,8 +185,8 @@ You can add additional content such as select fields, buttons or plain text, to 
 </i-textarea>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -189,20 +198,21 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your textareas, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Textarea Sizes">
-
+<i-code title="Textarea Sizes">
+<i-tab type="preview">
 <i-textarea size="sm" v-model="smTextareaValue" placeholder="Type something small.." class="_margin-bottom-1" />
 <i-textarea size="md" v-model="mdTextareaValue" placeholder="Type something medium.." class="_margin-bottom-1" />
 <i-textarea size="lg" v-model="lgTextareaValue" placeholder="Type something large.." />
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-textarea size="sm" v-model="value" placeholder="Type something small.." />
@@ -214,8 +224,8 @@ You're able to use the `size` modifier to control the size of your textareas, us
 <i-textarea size="lg" v-model="value" placeholder="Type something large.." />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -227,15 +237,15 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the textarea component as props, as well as available slots and events.
 
-<i-api-preview title="Textarea API" markup="i-textarea" expanded>
-    <template slot="props">
+<i-code title="Textarea API" markup="i-textarea" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">clearable</template>
@@ -267,7 +277,7 @@ Here you can find a list of the various customization options you can use for th
             </api-table-row>
             <api-table-row>
                 <template slot="property">schema</template>
-                <template slot="description">Provides a schema binding to the textarea form component. See the <nuxt-link :to="{ name: 'docs-forms-form-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
+                <template slot="description">Provides a schema binding to the textarea form component. See the <nuxt-link :to="{ name: 'docs-forms-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
                 <template slot="type"><code>Object</code></template>
                 <template slot="values"></template>
                 <template slot="default"></template>
@@ -287,8 +297,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">prepend</template>
@@ -307,8 +317,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for textarea suffix content. The suffix content appears inside the textarea field, on the right side.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">click</template>
@@ -346,8 +356,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(value: String) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sass Variables

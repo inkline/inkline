@@ -1,22 +1,14 @@
 <template lang="md" src="./tooltip.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IButton, ITooltip } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     name: 'TooltipView',
-    layout: 'documentation',
     extends: View,
-    head: head(),
-    components: {
-        IButton,
-        ITooltip
-    },
     data() {
         return {
             manualTooltip: false
-        }
+        };
     }
 };
 </script>

@@ -1,20 +1,25 @@
-# Input
-## Form component used for inputting data directly from the keyboard. { .lead }
+---
+title: Input
+description: Form component used for inputting data directly from the keyboard. 
+---
+
+#  Input
+##  Form component used for inputting data directly from the keyboard. 
 
 ### Example
 
-<i-code-preview title="Input">
-
-<i-input v-model="inputValue" placeholder="Type something.." />
-
-<template slot="html">
+<i-code title="Input">
+<i-tab type="preview">
+    <i-input v-model="inputValue" placeholder="Type something.." />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-input v-model="value" placeholder="Type something.." />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -26,29 +31,29 @@ export default {
 }
 ~~~
 
-</template>
-<template slot="output">
+</i-tab>
+<i-tab type="output">
 
 Value: <code>{{inputValue}}</code>
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Disabled State
 
 
-<i-code-preview title="Disabled Input">
-
-<i-input v-model="disabledInputValue" placeholder="Type something.." disabled />
-
-<template slot="html">
+<i-code title="Disabled Input">
+<i-tab type="preview">
+    <i-input v-model="disabledInputValue" placeholder="Type something.." disabled />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-input v-model="value" placeholder="Type something.." disabled />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -60,23 +65,23 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Readonly State
 
-<i-code-preview title="Readonly Input">
-
-<i-input v-model="readonlyInputValue" placeholder="Type something.." readonly />
-
-<template slot="html">
+<i-code title="Readonly Input">
+<i-tab type="preview">
+    <i-input v-model="readonlyInputValue" placeholder="Type something.." readonly />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-input v-model="value" placeholder="Type something.." readonly />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -88,23 +93,23 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Clearable Input
 
-<i-code-preview title="Input">
-
-<i-input v-model="clearableInputValue" placeholder="Type something.." clearable />
-
-<template slot="html">
+<i-code title="Input">
+<i-tab type="preview">
+    <i-input v-model="clearableInputValue" placeholder="Type something.." clearable />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-input v-model="value" placeholder="Type something.." clearable />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -116,30 +121,28 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Prefix and Suffix
 Inkline allows you to easily add a prefix or suffix to your inputs. Using prefixes and suffixes you can, indicate 
 your input type using an icon or text. 
 
 
-<i-code-preview title="Input">
-
-<i-input v-model="prefixInputValue" placeholder="Type something.." class="_margin-bottom-1">
-    <i slot="prefix">@</i>
-</i-input>
-
-<i-input v-model="suffixInputValue" placeholder="Type something.." class="_margin-bottom-1">
-    <i slot="suffix">@</i>
-</i-input>
-
-<i-input v-model="prefixSuffixInputValue" placeholder="Type something..">
-    <i slot="prefix">@</i>
-    <i slot="suffix">@</i>
-</i-input>
-
-<template slot="html">
+<i-code title="Input">
+<i-tab type="preview">
+    <i-input v-model="prefixInputValue" placeholder="Type something.." class="_margin-bottom-1">
+        <i slot="prefix">@</i>
+    </i-input>
+    <i-input v-model="suffixInputValue" placeholder="Type something.." class="_margin-bottom-1">
+        <i slot="suffix">@</i>
+    </i-input>
+    <i-input v-model="prefixSuffixInputValue" placeholder="Type something..">
+        <i slot="prefix">@</i>
+        <i slot="suffix">@</i>
+    </i-input>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-input v-model="value" placeholder="Type something..">
@@ -158,8 +161,8 @@ your input type using an icon or text.
 </i-input>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -171,29 +174,26 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Prepend and Append
 You can add additional content such as select fields, buttons or plain text, to either side of the input by using the prepend and append slots.
 
-
-<i-code-preview title="Input Text Prepend and Append">
-
-<i-input v-model="prependInputValue" placeholder="Type something.." class="_margin-bottom-1">
-    <span slot="prepend">http://</span>
-</i-input>
-
-<i-input v-model="appendInputValue" placeholder="Type something.." class="_margin-bottom-1">
-    <span slot="append">http://</span>
-</i-input>
-
-<i-input v-model="prependAppendInputValue" placeholder="Type something..">
-    <span slot="prepend">http://</span>
-    <span slot="append">.com</span>
-</i-input>
-
-<template slot="html">
+<i-code title="Input Text Prepend and Append">
+<i-tab type="preview">
+    <i-input v-model="prependInputValue" placeholder="Type something.." class="_margin-bottom-1">
+        <span slot="prepend">http://</span>
+    </i-input>
+    <i-input v-model="appendInputValue" placeholder="Type something.." class="_margin-bottom-1">
+        <span slot="append">http://</span>
+    </i-input>
+    <i-input v-model="prependAppendInputValue" placeholder="Type something..">
+        <span slot="prepend">http://</span>
+        <span slot="append">.com</span>
+    </i-input>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-input v-model="value" placeholder="Type something..">
@@ -212,8 +212,8 @@ You can add additional content such as select fields, buttons or plain text, to 
 </i-input>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -225,25 +225,23 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
-<i-code-preview title="Input Button Prepend and Append">
-
-<i-input v-model="prependButtonInputValue" placeholder="Type something.." class="_margin-bottom-1">
-    <i-button slot="prepend">Button</i-button>
-</i-input>
-
-<i-input v-model="appendButtonInputValue" placeholder="Type something.." class="_margin-bottom-1">
-    <i-button slot="append">Button</i-button>
-</i-input>
-
-<i-input v-model="prependAppendButtonInputValue" placeholder="Type something..">
-    <i-button slot="prepend">Button</i-button>
-    <i-button slot="append">Button</i-button>
-</i-input>
-
-<template slot="html">
+<i-code title="Input Button Prepend and Append">
+<i-tab type="preview">
+    <i-input v-model="prependButtonInputValue" placeholder="Type something.." class="_margin-bottom-1">
+        <i-button slot="prepend">Button</i-button>
+    </i-input>
+    <i-input v-model="appendButtonInputValue" placeholder="Type something.." class="_margin-bottom-1">
+        <i-button slot="append">Button</i-button>
+    </i-input>
+    <i-input v-model="prependAppendButtonInputValue" placeholder="Type something..">
+        <i-button slot="prepend">Button</i-button>
+        <i-button slot="append">Button</i-button>
+    </i-input>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-input v-model="value" placeholder="Type something..">
@@ -262,8 +260,8 @@ export default {
 </i-input>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -275,11 +273,11 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
-<i-code-preview title="Input Button Prepend and Append">
-
+<i-code title="Input Button Prepend and Append">
+<i-tab type="preview">
 <i-input v-model="prependDropdownInputValue" placeholder="Type something.." class="_margin-bottom-1">
     <i-dropdown slot="prepend">
         <i-button>Dropdown</i-button>
@@ -329,7 +327,8 @@ export default {
     </i-dropdown>
 </i-input>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-input v-model="value" placeholder="Type something..">
@@ -384,8 +383,8 @@ export default {
 </i-input>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -397,27 +396,25 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Input Sizes">
-
-<div class="_margin-bottom-1">
-    <i-input size="sm" v-model="smInputValue" placeholder="Type something small.." />
-</div>
-
-<div class="_margin-bottom-1">
-    <i-input size="md" v-model="mdInputValue" placeholder="Type something medium.." />
-</div>
-
-<div>
-    <i-input size="lg" v-model="lgInputValue" placeholder="Type something large.." />
-</div>
-
-<template slot="html">
+<i-code title="Input Sizes">
+<i-tab type="preview">
+    <div class="_margin-bottom-1">
+        <i-input size="sm" v-model="smInputValue" placeholder="Type something small.." />
+    </div>
+    <div class="_margin-bottom-1">
+        <i-input size="md" v-model="mdInputValue" placeholder="Type something medium.." />
+    </div>
+    <div>
+        <i-input size="lg" v-model="lgInputValue" placeholder="Type something large.." />
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-input size="sm" v-model="value" placeholder="Type something small.." />
@@ -429,8 +426,8 @@ You're able to use the `size` modifier to control the size of your inputs, using
 <i-input size="lg" v-model="value" placeholder="Type something large.." />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -442,27 +439,27 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Types
 Behind the scenes, Inkline uses a native HTML `<input>` element, meaning that you can use the `type` property to define the type of the input, such as `text`, `password`, `date`, `email`, and so on.
 
 
-<i-code-preview title="Input Type">
-
-<div>
-    <i-input type="password" v-model="passwordInputValue" placeholder="Enter your password.." />
-</div>
-
-<template slot="html">
+<i-code title="Input Type">
+<i-tab type="preview">
+    <div>
+        <i-input type="password" v-model="passwordInputValue" placeholder="Enter your password.." />
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-input type="password" v-model="value" placeholder="Enter your password.." />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -474,14 +471,14 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Component API
 Here you can find a list of the various customization options you can use for the input component as props, as well as available slots and events.
 
-<i-api-preview title="Input API" markup="i-input" expanded>
-    <template slot="props">
+<i-code title="Input API" markup="i-input" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">clearable</template>
@@ -513,7 +510,7 @@ Here you can find a list of the various customization options you can use for th
             </api-table-row>
             <api-table-row>
                 <template slot="property">schema</template>
-                <template slot="description">Provides a schema binding to the input form component. See the <nuxt-link :to="{ name: 'docs-forms-form-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
+                <template slot="description">Provides a schema binding to the input form component. See the <nuxt-link :to="{ name: 'docs-forms-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
                 <template slot="type"><code>Object</code></template>
                 <template slot="values"></template>
                 <template slot="default"></template>
@@ -540,8 +537,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">prepend</template>
@@ -560,8 +557,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for input suffix content. The suffix content appears inside the input field, on the right side.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">click</template>
@@ -599,15 +596,15 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(value: String) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the input components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Input" expanded>
-    <template slot="scss">
+<i-code title="Input" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$label-margin-bottom</template>
@@ -794,5 +791,5 @@ Here you can find a list of the Sass variables you can use for the input compone
                 <template slot="default"><code>(...)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>

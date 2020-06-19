@@ -1,18 +1,10 @@
 <template lang="md" src="./input-number.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IInputNumber, IFormGroup } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     extends: View,
-    name: 'InputView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IInputNumber,
-        IFormGroup
-    },
+    name: 'InputNumberView',
     data () {
         return {
             inputValue: '',

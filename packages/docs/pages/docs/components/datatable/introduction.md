@@ -1,5 +1,10 @@
+---
+title: Data Table
+description: Data tables (or data grids) are tables that have advanced interaction controls such as custom data types, pagination and sorting. 
+---
+
 # Data Table
-Data tables (or data grids) are tables that have advanced interaction controls such as custom data types, pagination and sorting. {.lead}
+## Data tables (or data grids) are tables that have advanced interaction controls such as custom data types, pagination and sorting. 
 
 ### Columns definition
 First, you need to define the column titles, paths, types and how they're ordered.
@@ -46,16 +51,18 @@ export default {
 ### Usage
 Let's put it all together. The `columns` defined above, together with the `rows` data will render the following data table:
 
-<i-code-preview title="Data Table Example">
-<i-datatable :columns="columns" :rows="rows" />
-<template slot="html">
+<i-code title="Data Table Example">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rows" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -78,8 +85,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Nested Properties
 Great news! You don't need to change your data structure to have it working. You can specify column paths under the form `prop.nestedProp` to target nested properties.
@@ -105,16 +112,18 @@ export default {
 }
 ~~~
 
-<i-code-preview title="Data Table Property Nesting">
-<i-datatable :columns="columnsNested" :rows="rows" />
-<template slot="html">
+<i-code title="Data Table Property Nesting">
+<i-tab type="preview">
+    <i-datatable :columns="columnsNested" :rows="rows" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -137,5 +146,5 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>

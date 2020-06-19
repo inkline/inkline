@@ -1,19 +1,10 @@
 <template lang="md" src="./form-label.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IInput, IFormGroup, IFormLabel } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     extends: View,
     name: 'FormLabelView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IInput,
-        IFormGroup,
-        IFormLabel
-    },
     data () {
         return {
             labelInputValue: '',
@@ -22,7 +13,7 @@ export default {
             labelRightInputValue: '',
             labelSmInputValue: '',
             labelMdInputValue: '',
-            labelLgInputValue: '',
+            labelLgInputValue: ''
         };
     }
 };

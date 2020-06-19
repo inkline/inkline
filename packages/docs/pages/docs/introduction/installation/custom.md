@@ -1,5 +1,7 @@
-# Custom Installation
-## Take control of the process and install Inkline manually using an application bundler of your choice. {.lead}
+---
+title: Custom Installation
+description: Take control of the process and install Inkline manually using an application bundler of your choice. 
+---
 
 ### Installation
 

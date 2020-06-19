@@ -1,18 +1,10 @@
 <template lang="md" src="./toggle.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IToggle, IFormGroup } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     name: 'ToggleView',
-    layout: 'documentation',
     extends: View,
-    head: head(),
-    components: {
-        IToggle,
-        IFormGroup
-    },
     data () {
         return {
             toggled: false,

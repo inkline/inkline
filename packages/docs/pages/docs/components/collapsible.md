@@ -1,24 +1,29 @@
+---
+title: Collapsible
+description: Collapsible elements are used to show and hide content using a smooth reveal transition. 
+---
+
 # Collapsible
-## Collapsible elements are used to show and hide content using a smooth reveal transition. {.lead}
+## Collapsible elements are used to show and hide content using a smooth reveal transition. 
 
 ### Example
 Collapsing an element will animate the height from zero to its default value. This component is useful for creating clearly separated content sections such as FAQ pages.
 
-<i-code-preview title="Collapsible Example">
-
-<i-collapsible>
-    <i-collapsible-item title="Item 1">
-        Item 1 content
-    </i-collapsible-item>
-    <i-collapsible-item title="Item 2">
-        Item 2 content
-    </i-collapsible-item>
-    <i-collapsible-item title="Item 3">
-        Item 3 content
-    </i-collapsible-item>
-</i-collapsible>
-
-<template slot="html">
+<i-code title="Collapsible Example">
+<i-tab type="preview">
+    <i-collapsible>
+        <i-collapsible-item title="Item 1">
+            Item 1 content
+        </i-collapsible-item>
+        <i-collapsible-item title="Item 2">
+            Item 2 content
+        </i-collapsible-item>
+        <i-collapsible-item title="Item 3">
+            Item 3 content
+        </i-collapsible-item>
+    </i-collapsible>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-collapsible>
@@ -34,30 +39,30 @@ Collapsing an element will animate the height from zero to its default value. Th
 </i-collapsible>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Item Title
 You can use the `title` slot to provide a custom title for the collapsible panel's heading. 
 
-<i-code-preview title="Collapsible Title">
-
-<i-collapsible>
-    <i-collapsible-item>
-        <template slot="title">Item 1</template>
-        Item 1 content
-    </i-collapsible-item>
-    <i-collapsible-item>
-        <template slot="title">Item 2</template>
-        Item 2 content
-    </i-collapsible-item>
-    <i-collapsible-item>
-        <template slot="title">Item 3</template>
-        Item 3 content
-    </i-collapsible-item>
-</i-collapsible>
-
-<template slot="html">
+<i-code title="Collapsible Title">
+<i-tab type="preview">
+    <i-collapsible>
+        <i-collapsible-item>
+            <template slot="title">Item 1</template>
+            Item 1 content
+        </i-collapsible-item>
+        <i-collapsible-item>
+            <template slot="title">Item 2</template>
+            Item 2 content
+        </i-collapsible-item>
+        <i-collapsible-item>
+            <template slot="title">Item 3</template>
+            Item 3 content
+        </i-collapsible-item>
+    </i-collapsible>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-collapsible>
@@ -76,30 +81,30 @@ You can use the `title` slot to provide a custom title for the collapsible panel
 </i-collapsible>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Default Open Panels
 Panels can be opened by default, on page load, using the `v-model` directive of the `<i-collapsible>` component. First, you'll need to assign an `id` to the `<i-collapsible-item>` components which will identify the open panels.
  
- <i-code-preview title="Default Open Collapsible Panel">
-
-<i-collapsible v-model="active">
-    <i-collapsible-item id="panel-1">
-        <template slot="title">Item 1</template>
-        Item 1 content
-    </i-collapsible-item>
-    <i-collapsible-item id="panel-2">
-        <template slot="title">Item 2</template>
-        Item 2 content
-    </i-collapsible-item>
-    <i-collapsible-item id="panel-3">
-        <template slot="title">Item 3</template>
-        Item 3 content
-    </i-collapsible-item>
-</i-collapsible>
-
-<template slot="html">
+<i-code title="Default Open Collapsible Panel">
+<i-tab type="preview">
+    <i-collapsible v-model="active">
+        <i-collapsible-item id="panel-1">
+            <template slot="title">Item 1</template>
+            Item 1 content
+        </i-collapsible-item>
+        <i-collapsible-item id="panel-2">
+            <template slot="title">Item 2</template>
+            Item 2 content
+        </i-collapsible-item>
+        <i-collapsible-item id="panel-3">
+            <template slot="title">Item 3</template>
+            Item 3 content
+        </i-collapsible-item>
+    </i-collapsible>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-collapsible v-model="active">
@@ -118,8 +123,8 @@ Panels can be opened by default, on page load, using the `v-model` directive of 
 </i-collapsible>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -131,27 +136,27 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Accordion
 Accordion collapsible groups can have only one content panel open at a single time. This behaviour can be set using the `accordion` property.
 
-<i-code-preview title="Collapsible Accordion">
-
-<i-collapsible accordion>
-    <i-collapsible-item title="Item 1">
-        Item 1 content
-    </i-collapsible-item>
-    <i-collapsible-item title="Item 2">
-        Item 2 content
-    </i-collapsible-item>
-    <i-collapsible-item title="Item 3">
-        Item 3 content
-    </i-collapsible-item>
-</i-collapsible>
-
-<template slot="html">
+<i-code title="Collapsible Accordion">
+<i-tab type="preview">
+    <i-collapsible accordion>
+        <i-collapsible-item title="Item 1">
+            Item 1 content
+        </i-collapsible-item>
+        <i-collapsible-item title="Item 2">
+            Item 2 content
+        </i-collapsible-item>
+        <i-collapsible-item title="Item 3">
+            Item 3 content
+        </i-collapsible-item>
+    </i-collapsible>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-collapsible accordion>
@@ -167,29 +172,16 @@ Accordion collapsible groups can have only one content panel open at a single ti
 </i-collapsible>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Color Variants
 Inkline includes basic predefined collapsible styles that you can use within your application. You can apply a style using the `variant` property.
 
-<i-code-preview title="Collapsible Variants">
-
-<i-collapsible variant="light">
-    <i-collapsible-item title="Item 1">
-        Item 1 content
-    </i-collapsible-item>
-    <i-collapsible-item title="Item 2">
-        Item 2 content
-    </i-collapsible-item>
-    <i-collapsible-item title="Item 3">
-        Item 3 content
-    </i-collapsible-item>
-</i-collapsible>
-
-<div class="_margin-top-1">
-    <i-collapsible variant="dark">
+<i-code title="Collapsible Variants">
+<i-tab type="preview">
+    <i-collapsible variant="light">
         <i-collapsible-item title="Item 1">
             Item 1 content
         </i-collapsible-item>
@@ -200,9 +192,34 @@ Inkline includes basic predefined collapsible styles that you can use within you
             Item 3 content
         </i-collapsible-item>
     </i-collapsible>
-</div>
-
-<template slot="html">
+    <div class="_margin-top-1">
+        <i-collapsible variant="dark">
+            <i-collapsible-item title="Item 1">
+                Item 1 content
+            </i-collapsible-item>
+            <i-collapsible-item title="Item 2">
+                Item 2 content
+            </i-collapsible-item>
+            <i-collapsible-item title="Item 3">
+                Item 3 content
+            </i-collapsible-item>
+        </i-collapsible>
+    </div>
+    <div class="_margin-top-1">
+        <i-collapsible variant="unstyled">
+            <i-collapsible-item title="Item 1">
+                Item 1 content
+            </i-collapsible-item>
+            <i-collapsible-item title="Item 2">
+                Item 2 content
+            </i-collapsible-item>
+            <i-collapsible-item title="Item 3">
+                Item 3 content
+            </i-collapsible-item>
+        </i-collapsible>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-collapsible variant="light">
@@ -245,15 +262,15 @@ Inkline includes basic predefined collapsible styles that you can use within you
     </i-collapsible-item>
 </i-collapsible>
 ~~~
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the collapsible component as props, as well as available slots and events.
 
-<i-api-preview title="Collapsible API" markup="i-collapsible" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ICollapsible">
-    <template slot="props">
+<i-code title="Collapsible API" markup="i-collapsible" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ICollapsible">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">accordion</template>
@@ -277,16 +294,16 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for collapsible default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">input</template>
@@ -294,11 +311,11 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(activeItems: String[]) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Collapsible Item API" markup="i-collapsible-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ICollapsible">
-    <template slot="props">
+<i-code title="Collapsible Item API" markup="i-collapsible-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ICollapsible">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">title</template>
@@ -315,8 +332,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>collapsible-item-&lt;uid&gt;</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
@@ -327,14 +344,14 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for collapsible item title.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the collapsible components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Collapsible" expanded>
-    <template slot="scss">
+<i-code title="Collapsible" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$collapsible-border-radius</template>
@@ -349,13 +366,21 @@ Here you can find a list of the Sass variables you can use for the collapsible c
                 <template slot="default"><code>('monochrome')</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$collapsible-variant-color-light</template>
+                <template slot="property">$collapsible-color-light</template>
                 <template slot="default"><code>$variant-color-light</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$collapsible-variant-color-dark</template>
+                <template slot="property">$collapsible-color-dark</template>
                 <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
+            <api-table-row>
+                <template slot="property">$collapsible-background-color-light</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$collapsible-background-color-dark</template>
+                <template slot="default"><code>$color-gray-90</code></template>
+            </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

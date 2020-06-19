@@ -1,19 +1,10 @@
 <template lang="md" src="./validators.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IInput, IForm, IFormGroup } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     extends: View,
     name: 'FormValidationValidatorsView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IInput,
-        IForm,
-        IFormGroup
-    },
     data () {
         return {
             alphaValidatorForm: this.$inkline.form({
@@ -165,7 +156,7 @@ export default {
             }, { instance: this });
         },
         submitForm() {
-            alert('submitted')
+            alert('submitted');
         }
     },
     filters: {

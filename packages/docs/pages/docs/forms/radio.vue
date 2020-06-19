@@ -1,20 +1,10 @@
 <template lang="md" src="./radio.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IRadio, IRadioGroup, IRadioButton, IRadioButtonGroup } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     extends: View,
     name: 'RadioView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IRadio,
-        IRadioGroup,
-        IRadioButton,
-        IRadioButtonGroup
-    },
     data () {
         return {
             selected: 'Apple',

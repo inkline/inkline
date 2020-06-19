@@ -1,27 +1,28 @@
-# Color Utilities
-## Inkline uses a beautiful, consistent color scheme across the framework. { .lead }
-
+---
+title: Color Utilities
+description: Inkline uses a beautiful, consistent color scheme across the framework. 
+---
 ### Brand
 Attract your visitor's attention using brand colors. The main colors of Inkline used for branding are:
 
-<i-code-preview title="Brand Color Background">
-
-<i-row>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="primary" title="Primary" description="#178bb2"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="secondary" title="Secondary" description="#5d65b9"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="light" title="Light" description="#e9ecef"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="dark" title="Dark" description="#212529"></color-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Brand Color Background">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="primary" title="Primary" description="#178bb2"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="secondary" title="Secondary" description="#5d65b9"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="light" title="Light" description="#e9ecef"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="dark" title="Dark" description="#212529"></color-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_background-primary"></div>
@@ -30,21 +31,21 @@ Attract your visitor's attention using brand colors. The main colors of Inkline 
 <div class="_background-dark"></div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 You can also add brand text colors using text-specific helper classes:
 
-<i-code-preview title="Brand Color Text">
-
-<ul class="-inline">
-    <li class="_text-primary">Primary</li>
-    <li class="_text-secondary">Secondary</li>
-    <li class="_text-light">Light</li>
-    <li class="_text-dark">Dark</li>
-</ul>
-
-<template slot="html">
+<i-code title="Brand Color Text">
+<i-tab type="preview">
+    <ul class="-inline">
+        <li class="_text-primary">Primary</li>
+        <li class="_text-secondary">Secondary</li>
+        <li class="_text-light">Light</li>
+        <li class="_text-dark">Dark</li>
+    </ul>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <p class="_text-primary"></p>
@@ -53,30 +54,30 @@ You can also add brand text colors using text-specific helper classes:
 <p class="_text-dark"></p>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### State
 When displaying state information such as info, success, warning, or error messages, you will need to color your message accordingly. The state colors are:
 
-<i-code-preview title="State Color Background">
-
-<i-row>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="info" title="Info" description="#62bec1"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="success" title="Success" description="#5fb072"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="warning" title="Warning" description="#f1ac53"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="danger" title="Danger" description="#f25f5c"></color-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="State Color Background">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="info" title="Info" description="#62bec1"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="success" title="Success" description="#5fb072"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="warning" title="Warning" description="#f1ac53"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="danger" title="Danger" description="#f25f5c"></color-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_background-info"></div>
@@ -85,21 +86,21 @@ When displaying state information such as info, success, warning, or error messa
 <div class="_background-danger"></div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 You can also add state text colors using text-specific helper classes:
 
-<i-code-preview title="State Color Text">
-
-<ul class="-inline">
-    <li class="_text-info">Info</li>
-    <li class="_text-success">Success</li>
-    <li class="_text-warning">Warning</li>
-    <li class="_text-danger">Danger</li>
-</ul>
-
-<template slot="html">
+<i-code title="State Color Text">
+<i-tab type="preview">
+    <ul class="-inline">
+        <li class="_text-info">Info</li>
+        <li class="_text-success">Success</li>
+        <li class="_text-warning">Warning</li>
+        <li class="_text-danger">Danger</li>
+    </ul>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <p class="_text-info"></p>
@@ -108,8 +109,8 @@ You can also add state text colors using text-specific helper classes:
 <p class="_text-danger"></p>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Basic
 Basic colors are useful when working with multiple colors on the same page. The following basic colors are 
@@ -117,36 +118,36 @@ available when using the default variant.
 
 You can use helper classes to add state color backgrounds:
 
-<i-code-preview title="Basic Color Background">
-
-<i-row>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="red" title="Red" description="#f25f5c"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="orange" title="Orange" description="#f1ac53"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="yellow" title="Yellow" description="#ffe066"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="green" title="Green" description="#5fb072"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="teal" title="Teal" description="#62bec1"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="blue" title="Blue" description="#178bb2"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="purple" title="Purple" description="#5d65b9"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="pink" title="Pink" description="#ff6f80"></color-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Basic Color Background">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="red" title="Red" description="#f25f5c"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="orange" title="Orange" description="#f1ac53"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="yellow" title="Yellow" description="#ffe066"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="green" title="Green" description="#5fb072"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="teal" title="Teal" description="#62bec1"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="blue" title="Blue" description="#178bb2"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="purple" title="Purple" description="#5d65b9"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="pink" title="Pink" description="#ff6f80"></color-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_background-red"></div>
@@ -159,25 +160,25 @@ You can use helper classes to add state color backgrounds:
 <div class="_background-pink"></div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 You can also add state text colors using text-specific helper classes:
 
-<i-code-preview title="Basic Color Text">
-
-<ul class="-inline">
-    <li class="_text-red">Red</li>
-    <li class="_text-orange">Orange</li>
-    <li class="_text-yellow">Yellow</li>
-    <li class="_text-green">Green</li>
-    <li class="_text-teal">Teal</li>
-    <li class="_text-blue">Blue</li>
-    <li class="_text-purple">Purple</li>
-    <li class="_text-pink">Pink</li>
-</ul>
-
-<template slot="html">
+<i-code title="Basic Color Text">
+<i-tab type="preview">
+    <ul class="-inline">
+        <li class="_text-red">Red</li>
+        <li class="_text-orange">Orange</li>
+        <li class="_text-yellow">Yellow</li>
+        <li class="_text-green">Green</li>
+        <li class="_text-teal">Teal</li>
+        <li class="_text-blue">Blue</li>
+        <li class="_text-purple">Purple</li>
+        <li class="_text-pink">Pink</li>
+    </ul>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <p class="_text-red"></p>
@@ -190,55 +191,55 @@ You can also add state text colors using text-specific helper classes:
 <p class="_text-pink"></p>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Neutral
 Neutral colors are used for text, background and border colors. You can use different neutral colors to display your content:
 
-<i-code-preview title="Neutral Color Background">
-
-<i-row>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="white" title="White" description="#ffffff"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="gray-10" title="10% Gray" description="#f8f9fa"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="gray-20" title="20% Gray" description="#e9ecef"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="gray-30" title="30% Gray" description="#dee2e6"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="gray-40" title="40% Gray" description="#ced4da"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="gray-50" title="50% Gray" description="#adb5bd"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="gray-60" title="60% Gray" description="#868e96"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="gray-70" title="70% Gray" description="#495057"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="gray-80" title="80% Gray" description="#343a40"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="gray-90" title="90% Gray" description="#212529"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="black" title="Black" description="#000000"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box class="_text-gray-80" type="transparent" title="Transparent" description="transparent"></color-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Neutral Color Background">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="white" title="White" description="#ffffff"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="gray-10" title="10% Gray" description="#f8f9fa"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="gray-20" title="20% Gray" description="#e9ecef"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="gray-30" title="30% Gray" description="#dee2e6"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="gray-40" title="40% Gray" description="#ced4da"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="gray-50" title="50% Gray" description="#adb5bd"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="gray-60" title="60% Gray" description="#868e96"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="gray-70" title="70% Gray" description="#495057"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="gray-80" title="80% Gray" description="#343a40"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="gray-90" title="90% Gray" description="#212529"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="black" title="Black" description="#000000"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box class="_text-gray-80" type="transparent" title="Transparent" description="transparent"></color-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_background-white"></div>
@@ -255,28 +256,28 @@ Neutral colors are used for text, background and border colors. You can use diff
 <div class="_background-transparent"></div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 You can also add neutral text colors using text-specific helper classes:
 
-<i-code-preview title="Neutral Color Text">
-
-<ul class="-inline">
-    <li class="_text-white _background-black">White</li>
-    <li class="_text-gray-10">10% Gray</li>
-    <li class="_text-gray-20">20% Gray</li>
-    <li class="_text-gray-30">30% Gray</li>
-    <li class="_text-gray-40">40% Gray</li>
-    <li class="_text-gray-50">50% Gray</li>
-    <li class="_text-gray-60">60% Gray</li>
-    <li class="_text-gray-70">70% Gray</li>
-    <li class="_text-gray-80">80% Gray</li>
-    <li class="_text-gray-90">90% Gray</li>
-    <li class="_text-black">Black</li>
-</ul>
-
-<template slot="html">
+<i-code title="Neutral Color Text">
+<i-tab type="preview">
+    <ul class="-inline">
+        <li class="_text-white _background-black">White</li>
+        <li class="_text-gray-10">10% Gray</li>
+        <li class="_text-gray-20">20% Gray</li>
+        <li class="_text-gray-30">30% Gray</li>
+        <li class="_text-gray-40">40% Gray</li>
+        <li class="_text-gray-50">50% Gray</li>
+        <li class="_text-gray-60">60% Gray</li>
+        <li class="_text-gray-70">70% Gray</li>
+        <li class="_text-gray-80">80% Gray</li>
+        <li class="_text-gray-90">90% Gray</li>
+        <li class="_text-black">Black</li>
+    </ul>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <p class="_text-white"></p>
@@ -292,65 +293,65 @@ You can also add neutral text colors using text-specific helper classes:
 <p class="_text-black"></p>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Social Media
 Inkline provides social media colors from most of your favorite sites.
 
 You can use helper classes to add social media color backgrounds:
 
-<i-code-preview title="Social Media Color Background">
-
-<i-row>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="facebook" title="Facebook" description="#3b5998"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="twitter" title="Twitter" description="#1da1f2"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="google" title="Google" description="#dd4b39"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="instagram" title="Instagram" description="#fd1d1d"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="dribbble" title="Dribbble" description="#ea4c89"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="behance" title="Behance" description="#1769ff"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="flickr" title="Flickr" description="#ff0084"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="linkedin" title="LinkedIn" description="#0077b5"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="youtube" title="YouTube" description="#b31217"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="pinterest" title="Pinterest" description="#bd081c"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="github" title="Github" description="#333333"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="tumblr" title="Tumblr" description="#35465c"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="twitch" title="Twitch" description="#6441a5"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="envato" title="Envato" description="#82b541"></color-box>
-    </i-column>
-    <i-column xs="12" sm="6" md="3">
-        <color-box type="vine" title="Vine" description="#00bf8f"></color-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Social Media Color Background">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="facebook" title="Facebook" description="#3b5998"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="twitter" title="Twitter" description="#1da1f2"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="google" title="Google" description="#dd4b39"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="instagram" title="Instagram" description="#fd1d1d"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="dribbble" title="Dribbble" description="#ea4c89"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="behance" title="Behance" description="#1769ff"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="flickr" title="Flickr" description="#ff0084"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="linkedin" title="LinkedIn" description="#0077b5"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="youtube" title="YouTube" description="#b31217"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="pinterest" title="Pinterest" description="#bd081c"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="github" title="Github" description="#333333"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="tumblr" title="Tumblr" description="#35465c"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="twitch" title="Twitch" description="#6441a5"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="envato" title="Envato" description="#82b541"></color-box>
+        </i-column>
+        <i-column xs="12" sm="6" md="3">
+            <color-box type="vine" title="Vine" description="#00bf8f"></color-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_background-facebook"></div>
@@ -369,31 +370,31 @@ You can use helper classes to add social media color backgrounds:
 <div class="_background-vine"></div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 You can also add social media text colors using text-specific helper classes:
 
-<i-code-preview title="Social Media Color Text">
-
-<ul class="-inline">
-    <li class="_text-facebook">Facebook</li>
-    <li class="_text-twitter">Twitter</li>
-    <li class="_text-google-plus">Google Plus</li>
-    <li class="_text-instagram">Instagram</li>
-    <li class="_text-dribbble">Dribbble</li>
-    <li class="_text-flickr">Flickr</li>
-    <li class="_text-linkedin">LinkedIn</li>
-    <li class="_text-youtube">YouTube</li>
-    <li class="_text-pinterest">Pinterest</li>
-    <li class="_text-github">GitHub</li>
-    <li class="_text-tumblr">Tumblr</li>
-    <li class="_text-twitch">Twitch</li>
-    <li class="_text-envato">Envato</li>
-    <li class="_text-vine">Vine</li>
-</ul>
-
-<template slot="html">
+<i-code title="Social Media Color Text">
+<i-tab type="preview">
+    <ul class="-inline">
+        <li class="_text-facebook">Facebook</li>
+        <li class="_text-twitter">Twitter</li>
+        <li class="_text-google-plus">Google Plus</li>
+        <li class="_text-instagram">Instagram</li>
+        <li class="_text-dribbble">Dribbble</li>
+        <li class="_text-flickr">Flickr</li>
+        <li class="_text-linkedin">LinkedIn</li>
+        <li class="_text-youtube">YouTube</li>
+        <li class="_text-pinterest">Pinterest</li>
+        <li class="_text-github">GitHub</li>
+        <li class="_text-tumblr">Tumblr</li>
+        <li class="_text-twitch">Twitch</li>
+        <li class="_text-envato">Envato</li>
+        <li class="_text-vine">Vine</li>
+    </ul>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <p class="_text-facebook"></p>
@@ -412,6 +413,6 @@ You can also add social media text colors using text-specific helper classes:
 <p class="_text-vine"></p>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 

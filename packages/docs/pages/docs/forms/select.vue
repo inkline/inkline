@@ -1,19 +1,10 @@
 <template lang="md" src="./select.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { ISelect, ISelectOption, IFormGroup } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     extends: View,
     name: 'SelectView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        ISelect,
-        ISelectOption,
-        IFormGroup
-    },
     data () {
         return {
             selectValue: '',

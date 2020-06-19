@@ -1,5 +1,10 @@
+---
+title: Data Table Sorting
+description: Inkline's Data Table columns are easily sortable (orderable), in both ascending and descending order. 
+---
+
 # Data Table Sorting
-Inkline's Data Table columns are easily sortable (orderable), in both ascending and descending order. {.lead}
+## Inkline's Data Table columns are easily sortable (orderable), in both ascending and descending order. 
 
 ### Default Sorting
 By setting the `sortable` column property to `true`, you can easily add sorting support to a data table column.
@@ -21,16 +26,18 @@ export default {
 
 By default, sorting for the `string`, `number` and `Date` value types is supported natively. 
 
-<i-code-preview title="Data Table Default Sorting">
-<i-datatable :columns="columns" :rows="rows" />
-<template slot="html">
+<i-code title="Data Table Default Sorting">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rows" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -53,5 +60,5 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>

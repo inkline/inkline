@@ -1,19 +1,26 @@
+---
+title: Data Table Pagination
+description: Inkline's Data Table provides you with efficient automated pagination features. 
+---
+
 # Data Table Pagination
-Inkline's Data Table provides you with efficient automated pagination features. {.lead}
+## Inkline's Data Table provides you with efficient automated pagination features. 
 
 ### Basic Pagination
 Pagination is enabled by default and can be changed using the `pagination` attribute if needed.
 
-<i-code-preview title="Data Table Default Pagination">
-<i-datatable :columns="columns" :rows="rows" pagination></i-datatable>
-<template slot="html">
+<i-code title="Data Table Default Pagination">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rows" pagination></i-datatable>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" pagination />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -38,22 +45,24 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Disable Pagination
 Pagination can be disabled by setting the `pagination` attribute to `false`.
 
-<i-code-preview title="Data Table Disabled Pagination">
-<i-datatable :columns="columns" :rows="rowsShort" :pagination="false"></i-datatable>
-<template slot="html">
+<i-code title="Data Table Disabled Pagination">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rowsShort" :pagination="false"></i-datatable>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" :pagination="false" >
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -78,8 +87,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Pagination Configuration
 Pagination can be configured by providing an object for the `pagination` attribute. The default configuration is as follows:
@@ -117,16 +126,18 @@ The first `update` event occurs when the DataTable is `created`.
 
 </i-alert>
 
-<i-code-preview title="Data Table Async Pagination">
-<i-datatable async :columns="columns" :rows="asyncRows" :rows-count="rowsCount" @update="onUpdate"></i-datatable>
-<template slot="html">
+<i-code title="Data Table Async Pagination">
+<i-tab type="preview">
+    <i-datatable async :columns="columns" :rows="asyncRows" :rows-count="rowsCount" @update="onUpdate"></i-datatable>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable async :columns="columns" :rows="rows" :rows-count="rowsCount" @update="onUpdate" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -152,5 +163,5 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>

@@ -1,18 +1,23 @@
+---
+title: Select
+description: Select inputs are form components used for providing a collapsible list of options.
+---
+
 # Select
-## Select inputs are form components used for providing a collapsible list of options.{ .lead }
+## Select inputs are form components used for providing a collapsible list of options.
 
 ### Example
 
-<i-code-preview title="Basic Select">
-
-<i-select v-model="selectValue" placeholder="Choose an option">
-    <i-select-option value="a" label="Option A" />
-    <i-select-option value="b" label="Option B" />
-    <i-select-option value="c" label="Option C" />
-    <i-select-option value="d" label="Option D" disabled />
-</i-select>
-
-<template slot="html">
+<i-code title="Basic Select">
+<i-tab type="preview">
+    <i-select v-model="selectValue" placeholder="Choose an option">
+        <i-select-option value="a" label="Option A" />
+        <i-select-option value="b" label="Option B" />
+        <i-select-option value="c" label="Option C" />
+        <i-select-option value="d" label="Option D" disabled />
+    </i-select>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-select v-model="value" placeholder="Choose an option">
@@ -23,8 +28,8 @@
 </i-select>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -36,26 +41,24 @@ export default {
 }
 ~~~
 
-</template>
-<template slot="output">
-
-Selected value: <code>{{selectValue}}</code>
-
-</template>
-</i-code-preview>
+</i-tab>
+<i-tab type="output">
+    Selected value: <code>{{selectValue}}</code>
+</i-tab>
+</i-code>
 
 ### Disabled State
 
-<i-code-preview title="Disabled Select">
-
-<i-select v-model="disabledSelectValue" placeholder="Choose an option" disabled>
-    <i-select-option value="a" label="Option A" />
-    <i-select-option value="b" label="Option B" />
-    <i-select-option value="c" label="Option C" />
-    <i-select-option value="d" label="Option D" disabled />
-</i-select>
-
-<template slot="html">
+<i-code title="Disabled Select">
+<i-tab type="preview">
+    <i-select v-model="disabledSelectValue" placeholder="Choose an option" disabled>
+        <i-select-option value="a" label="Option A" />
+        <i-select-option value="b" label="Option B" />
+        <i-select-option value="c" label="Option C" />
+        <i-select-option value="d" label="Option D" disabled />
+    </i-select>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-select v-model="value" placeholder="Choose an option" disabled>
@@ -66,8 +69,8 @@ Selected value: <code>{{selectValue}}</code>
 </i-select>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -79,21 +82,21 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Readonly State
 
-<i-code-preview title="Readonly Select">
-
-<i-select v-model="readonlySelectValue" placeholder="Choose an option" readonly>
-    <i-select-option value="a" label="Option A" />
-    <i-select-option value="b" label="Option B" />
-    <i-select-option value="c" label="Option C" />
-    <i-select-option value="d" label="Option D" disabled />
-</i-select>
-
-<template slot="html">
+<i-code title="Readonly Select">
+<i-tab type="preview">
+    <i-select v-model="readonlySelectValue" placeholder="Choose an option" readonly>
+        <i-select-option value="a" label="Option A" />
+        <i-select-option value="b" label="Option B" />
+        <i-select-option value="c" label="Option C" />
+        <i-select-option value="d" label="Option D" disabled />
+    </i-select>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-select v-model="value" placeholder="Choose an option" readonly>
@@ -104,8 +107,8 @@ export default {
 </i-select>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -117,41 +120,39 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Prefix and Suffix
 Inkline allows you to easily add a prefix or suffix to your inputs. Using prefixes and suffixes you can, indicate 
 your input type using an icon or text. 
 
-<i-code-preview title="Select Prefix and Suffix">
-
-<i-select v-model="prefixSelectValue" placeholder="Choose an option" class="_margin-bottom-1">
-    <i slot="prefix">@</i>
-    <i-select-option value="a" label="Option A" />
-    <i-select-option value="b" label="Option B" />
-    <i-select-option value="c" label="Option C" />
-    <i-select-option value="d" label="Option D" disabled />
-</i-select>
-
-<i-select v-model="suffixSelectValue" placeholder="Choose an option" class="_margin-bottom-1">
-    <i slot="suffix">@</i>
-    <i-select-option value="a" label="Option A" />
-    <i-select-option value="b" label="Option B" />
-    <i-select-option value="c" label="Option C" />
-    <i-select-option value="d" label="Option D" disabled />
-</i-select>
-
-<i-select v-model="prefixSuffixSelectValue" placeholder="Choose an option">
-    <i slot="suffix">@</i>
-    <i-select-option value="a" label="Option A" />
-    <i-select-option value="b" label="Option B" />
-    <i-select-option value="c" label="Option C" />
-    <i-select-option value="d" label="Option D" disabled />
-    <i slot="prefix">@</i>
-</i-select>
-
-<template slot="html">
+<i-code title="Select Prefix and Suffix">
+<i-tab type="preview">
+    <i-select v-model="prefixSelectValue" placeholder="Choose an option" class="_margin-bottom-1">
+        <i slot="prefix">@</i>
+        <i-select-option value="a" label="Option A" />
+        <i-select-option value="b" label="Option B" />
+        <i-select-option value="c" label="Option C" />
+        <i-select-option value="d" label="Option D" disabled />
+    </i-select>
+    <i-select v-model="suffixSelectValue" placeholder="Choose an option" class="_margin-bottom-1">
+        <i slot="suffix">@</i>
+        <i-select-option value="a" label="Option A" />
+        <i-select-option value="b" label="Option B" />
+        <i-select-option value="c" label="Option C" />
+        <i-select-option value="d" label="Option D" disabled />
+    </i-select>
+    <i-select v-model="prefixSuffixSelectValue" placeholder="Choose an option">
+        <i slot="suffix">@</i>
+        <i-select-option value="a" label="Option A" />
+        <i-select-option value="b" label="Option B" />
+        <i-select-option value="c" label="Option C" />
+        <i-select-option value="d" label="Option D" disabled />
+        <i slot="prefix">@</i>
+    </i-select>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-select v-model="value" placeholder="Choose an option">
@@ -182,8 +183,8 @@ your input type using an icon or text.
 </i-select>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -195,42 +196,40 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Select Sizes">
-
-<i-form-group class="_margin-bottom-1">
-    <i-select v-model="smSelectValue" size="sm" placeholder="Choose an option">
-        <i-select-option value="a" label="Option A" />
-        <i-select-option value="b" label="Option B" />
-        <i-select-option value="c" label="Option C" />
-        <i-select-option value="d" label="Option D" disabled />
-    </i-select>
-</i-form-group>
-
-<i-form-group class="_margin-bottom-1">
-    <i-select v-model="mdSelectValue" size="md" placeholder="Choose an option">
-        <i-select-option value="a" label="Option A" />
-        <i-select-option value="b" label="Option B" />
-        <i-select-option value="c" label="Option C" />
-        <i-select-option value="d" label="Option D" disabled />
-    </i-select>
-</i-form-group>
-
-<i-form-group>
-    <i-select v-model="lgSelectValue" size="lg" placeholder="Choose an option">
-        <i-select-option value="a" label="Option A" />
-        <i-select-option value="b" label="Option B" />
-        <i-select-option value="c" label="Option C" />
-        <i-select-option value="d" label="Option D" disabled />
-    </i-select>
-</i-form-group>
-
-<template slot="html">
+<i-code title="Select Sizes">
+<i-tab type="preview">
+    <i-form-group class="_margin-bottom-1">
+        <i-select v-model="smSelectValue" size="sm" placeholder="Choose an option">
+            <i-select-option value="a" label="Option A" />
+            <i-select-option value="b" label="Option B" />
+            <i-select-option value="c" label="Option C" />
+            <i-select-option value="d" label="Option D" disabled />
+        </i-select>
+    </i-form-group>
+    <i-form-group class="_margin-bottom-1">
+        <i-select v-model="mdSelectValue" size="md" placeholder="Choose an option">
+            <i-select-option value="a" label="Option A" />
+            <i-select-option value="b" label="Option B" />
+            <i-select-option value="c" label="Option C" />
+            <i-select-option value="d" label="Option D" disabled />
+        </i-select>
+    </i-form-group>
+    <i-form-group>
+        <i-select v-model="lgSelectValue" size="lg" placeholder="Choose an option">
+            <i-select-option value="a" label="Option A" />
+            <i-select-option value="b" label="Option B" />
+            <i-select-option value="c" label="Option C" />
+            <i-select-option value="d" label="Option D" disabled />
+        </i-select>
+    </i-form-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-select v-model="value" size="sm" placeholder="Choose an option">
@@ -257,8 +256,8 @@ You're able to use the `size` modifier to control the size of your inputs, using
 </i-select>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -270,15 +269,15 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the select components as props, as well as available slots and events.
 
-<i-api-preview title="Select API" markup="i-select" expanded>
-    <template slot="props">
+<i-code title="Select API" markup="i-select" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">disabled</template>
@@ -303,7 +302,7 @@ Here you can find a list of the various customization options you can use for th
             </api-table-row>
             <api-table-row>
                 <template slot="property">schema</template>
-                <template slot="description">Provides a schema binding to the select form component. See the <nuxt-link :to="{ name: 'docs-forms-form-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
+                <template slot="description">Provides a schema binding to the select form component. See the <nuxt-link :to="{ name: 'docs-forms-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
                 <template slot="type"><code>Object</code></template>
                 <template slot="values"></template>
                 <template slot="default"></template>
@@ -323,8 +322,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
@@ -347,8 +346,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for select suffix content. The suffix content appears inside the select field, on the right side.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">click</template>
@@ -386,11 +385,11 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(value: String) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Select Option API" markup="i-select-option" expanded>
-    <template slot="props">
+<i-code title="Select Option API" markup="i-select-option" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">disabled</template>
@@ -414,16 +413,16 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for select default content. To be populated with select option components.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sass Variables
@@ -431,8 +430,8 @@ Modifying the <nuxt-link :to="{ name: 'docs-forms-input' }">Input Component</nux
 
 Here you can find a list of the Sass variables you can use for the select components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Select" expanded>
-    <template slot="scss">
+<i-code title="Select" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$select-dropdown-variants</template>
@@ -447,16 +446,16 @@ Here you can find a list of the Sass variables you can use for the select compon
                 <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>  
+    </i-tab>
+</i-code>  
 
-<i-scss-preview title="Select Option" expanded>
-    <template slot="scss">
+<i-code title="Select Option" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$select-option-padding</template>
                 <template slot="default"><code>$spacer-1-2 * size-multipliers('md') $spacer * size-multipliers('md')</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>  
+    </i-tab>
+</i-code>  

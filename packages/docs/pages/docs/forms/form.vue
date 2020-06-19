@@ -1,28 +1,10 @@
 <template lang="md" src="./form.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IForm, IFormGroup, IFormLabel, ICheckbox, ICheckboxGroup, IRadio, IRadioGroup, IInput, ISelect, ISelectOption, ITextarea, IButton } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     extends: View,
     name: 'FormView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IForm,
-        IFormGroup,
-        IFormLabel,
-        ICheckbox,
-        IRadio,
-        IInput,
-        ISelect,
-        ISelectOption,
-        ITextarea,
-        IButton,
-        ICheckboxGroup,
-        IRadioGroup
-    },
     data () {
         return {
             input: '',
@@ -55,7 +37,7 @@ export default {
             textareaNested: '',
             selectNested: '',
             checkboxNested: ['Football'],
-            radioNested: 'Decline',
+            radioNested: 'Decline'
         };
     }
 };

@@ -1,5 +1,7 @@
-# CDN Installation
-## Install Inkline using the official JSDelivr CDN integration. The content delivery network (CDN) provides super fast asset delivery from a server that is closest to you. { .lead }
+---
+title: CDN Installation
+description: Install Inkline using the official JSDelivr CDN integration. The content delivery network (CDN) provides super fast asset delivery from a server that is closest to you. 
+---
 
 The quickest way to get started, with minimal setup, is to add the files from a CDN. 
 

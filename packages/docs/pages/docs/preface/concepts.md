@@ -1,6 +1,7 @@
-# Concepts
-## Learn more about the concepts used throughout the framework and Inkline's design decisions. { .lead }
-
+---
+title: Concepts
+description: Learn more about the concepts used throughout the framework and Inkline's design decisions. 
+---
 ### Component Naming Convention
 When designing Inkline, component names and prop names were chosen to be as intuitive as possible. The naming rules are:
 

@@ -1,21 +1,26 @@
+---
+title: Modal
+description: Modals are dialogs that can be used for lightboxes, user notifications, or completely custom content.
+---
+
 # Modal
-## Modals are dialogs that can be used for lightboxes, user notifications, or completely custom content.{.lead}
+## Modals are dialogs that can be used for lightboxes, user notifications, or completely custom content.
 
 ### Example
 To create a modal, create an element (such as an `<i-button>`) as a trigger and the `v-model` on an `<i-modal>` component to control its visibility. Everything inside the `<i-modal>` is rendered as the modal body. Optionally, you can provide a modal header and footer using `slot="header"` and `slot="footer"`.
 
-<i-code-preview title="Modal Example">
-
-<div>
-    <i-button @click="showModal=true">Modal</i-button>
-    <i-modal v-model="showModal">
-        <template slot="header">Modal Header</template>
-        This is the modal body. Useful information goes here.
-        <template slot="footer">Modal Footer</template>
-    </i-modal>
-</div>
-
-<template slot="html">
+<i-code title="Modal Example">
+<i-tab type="preview">
+    <div>
+        <i-button @click="showModal=true">Modal</i-button>
+        <i-modal v-model="showModal">
+            <template slot="header">Modal Header</template>
+            This is the modal body. Useful information goes here.
+            <template slot="footer">Modal Footer</template>
+        </i-modal>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button @click="visible = true">Modal</i-button>
@@ -26,8 +31,8 @@ To create a modal, create an element (such as an `<i-button>`) as a trigger and 
 </i-modal>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -39,40 +44,37 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your modals, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Modal Sizes">
-
-<div>
-    <i-button @click="showModalSm = true">Small Modal</i-button>&nbsp;
-    <i-button @click="showModalMd = true">Medium Modal</i-button>&nbsp;
-    <i-button @click="showModalLg = true">Large Modal</i-button>
-</div>
-
-<i-modal v-model="showModalSm" size="sm">
-    <template slot="header">Modal Header</template>
-    This is the modal body. Useful information goes here.
-    <template slot="footer">Modal Footer</template>
-</i-modal>
-
-<i-modal v-model="showModalMd" size="md">
-    <template slot="header">Modal Header</template>
-    This is the modal body. Useful information goes here.
-    <template slot="footer">Modal Footer</template>
-</i-modal>
-
-<i-modal v-model="showModalLg" size="lg">
-    <template slot="header">Modal Header</template>
-    This is the modal body. Useful information goes here.
-    <template slot="footer">Modal Footer</template>
-</i-modal>
-
-<template slot="html">
+<i-code title="Modal Sizes">
+<i-tab type="preview">
+    <div>
+        <i-button @click="showModalSm = true">Small Modal</i-button>&nbsp;
+        <i-button @click="showModalMd = true">Medium Modal</i-button>&nbsp;
+        <i-button @click="showModalLg = true">Large Modal</i-button>
+    </div>
+    <i-modal v-model="showModalSm" size="sm">
+        <template slot="header">Modal Header</template>
+        This is the modal body. Useful information goes here.
+        <template slot="footer">Modal Footer</template>
+    </i-modal>
+    <i-modal v-model="showModalMd" size="md">
+        <template slot="header">Modal Header</template>
+        This is the modal body. Useful information goes here.
+        <template slot="footer">Modal Footer</template>
+    </i-modal>
+    <i-modal v-model="showModalLg" size="lg">
+        <template slot="header">Modal Header</template>
+        This is the modal body. Useful information goes here.
+        <template slot="footer">Modal Footer</template>
+    </i-modal>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button @click="visible = true">Small Modal</i-button>
@@ -99,8 +101,8 @@ The default size is set to `md`.
 </i-modal>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -112,14 +114,14 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Variants
 Inkline includes two predefined modal styles, each serving its own semantic purpose. You can set the style of a `<i-modal>` using the `variant` property. By default, modals use the `light` variant.
 
-<i-code-preview title="Modal Variants">
-
+<i-code title="Modal Variants">
+<i-tab type="preview">
 <div>
     <i-button variant="primary" @click="showModalPrimary = true">Primary Modal</i-button>&nbsp;
     <i-button variant="secondary" @click="showModalSecondary = true">Secondary Modal</i-button>&nbsp;
@@ -178,8 +180,8 @@ Inkline includes two predefined modal styles, each serving its own semantic purp
     This is the modal body. Useful information goes here.
     <template slot="footer">Modal Footer</template>
 </i-modal>
-
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button variant="primary" @click="visible = true">Primary Modal</i-button>
@@ -246,8 +248,8 @@ Inkline includes two predefined modal styles, each serving its own semantic purp
 </i-modal>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -259,15 +261,15 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the modal component as props, as well as available slots and events.
 
-<i-api-preview title="Modal API" markup="i-modal" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IModal">
-    <template slot="props">
+<i-code title="Modal API" markup="i-modal" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IModal">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">close-on-press-escape</template>
@@ -299,8 +301,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot=""><code>zoom-in-center-transition</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
@@ -315,8 +317,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for modal footer content.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">input</template>
@@ -334,14 +336,14 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(instance: VueComponent) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the modal components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Modal" expanded>
-    <template slot="scss">
+<i-code title="Modal" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$modal-font-size</template>
@@ -408,5 +410,5 @@ Here you can find a list of the Sass variables you can use for the modal compone
                 <template slot="default"><code>('brand', 'monochrome', 'state')</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

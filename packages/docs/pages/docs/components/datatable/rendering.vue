@@ -1,64 +1,50 @@
 <template lang="md" src="./rendering.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import {
-    IDatatable,
-    IAlert,
-    IIcon,
-    IInput,
-    IPagination,
-    IButton
-} from '@inkline/inkline/src';
-import TableProgress from '@components/docs/TableProgress';
-import TableHeaderComponent from '@components/docs/TableHeaderComponent';
-import TableFooterComponent from '@components/docs/TableFooterComponent';
-import {generateDataRows} from "@helpers/generateDataRows";
+import View from '~/components/docs/View';
+
+import TableProgress from '~/components/docs/TableProgress';
+import TableHeaderComponent from '~/components/docs/TableHeaderComponent';
+import TableFooterComponent from '~/components/docs/TableFooterComponent';
+import { generateDataRows } from '~/helpers/generateDataRows';
 
 export default {
     extends: View,
     name: 'DataTableRenderingView',
     layout: 'documentation',
-    head: head(),
     components: {
-        IDatatable,
-        IAlert,
-        IIcon,
-        IInput,
-        IButton,
-        IPagination,
         TableProgress,
-        TableHeaderComponent
+        TableHeaderComponent,
+        TableFooterComponent
     },
     data () {
         return {
             dataPathColumns: [
                 { title: 'Name', path: 'name' },
-                { title: 'Country', path: 'address.country' },
+                { title: 'Country', path: 'address.country' }
             ],
             renderColumns: [
                 { title: 'Name', path: 'name' },
-                { title: 'Address', path: 'address', render: (row) => `${row.address.city}, ${row.address.country}` },
+                { title: 'Address', path: 'address', render: (row) => `${row.address.city}, ${row.address.country}` }
             ],
             renderHeaderColumns: [
                 { title: 'Name', path: 'name' },
-                { title: 'Country', path: 'address.country', renderHeader: (column) => column.title.toUpperCase() },
+                { title: 'Country', path: 'address.country', renderHeader: (column) => column.title.toUpperCase() }
             ],
             renderFooterColumns: [
                 { title: 'Name', path: 'name' },
-                { title: 'Country', path: 'address.country', renderFooter: (column) => column.title.toUpperCase() },
+                { title: 'Country', path: 'address.country', renderFooter: (column) => column.title.toUpperCase() }
             ],
             componentColumns: [
                 { title: 'Name', path: 'name' },
-                { title: 'Progress', path: 'progress', component: TableProgress },
+                { title: 'Progress', path: 'progress', component: TableProgress }
             ],
             headerComponentColumns: [
                 { title: 'Name', path: 'name' },
-                { title: 'Country', path: 'address.country', headerComponent: TableHeaderComponent },
+                { title: 'Country', path: 'address.country', headerComponent: TableHeaderComponent }
             ],
             footerComponentColumns: [
                 { title: 'Name', path: 'name' },
-                { title: 'Country', path: 'address.country', footerComponent: TableFooterComponent },
+                { title: 'Country', path: 'address.country', footerComponent: TableFooterComponent }
             ],
             rows: [
                 { id: '1', name: 'Richard Hendricks', address: { city: 'Cupertino', country: 'United States' } },

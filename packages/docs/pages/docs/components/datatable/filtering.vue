@@ -1,20 +1,11 @@
 <template lang="md" src="./filtering.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { generateDataRows } from "@helpers/generateDataRows";
-import { IDatatable, IAlert, IIcon } from '@inkline/inkline/src';
+import View from '~/components/docs/View';
+import { generateDataRows } from '~/helpers/generateDataRows';
 
 export default {
     extends: View,
     name: 'DataTableFilteringView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IDatatable,
-        IAlert,
-        IIcon
-    },
     data () {
         return {
             columns: [
@@ -40,15 +31,15 @@ export default {
     methods: {
         onUpdate(event) {
             const mapData = (row) => Object.keys(row)
-                .map((key) => typeof row[key] === 'object' ?
-                    mapData(row[key]) :
-                    row[key]);
+                .map((key) => typeof row[key] === 'object'
+                    ? mapData(row[key])
+                    : row[key]);
 
             const filteredRows = this.rows
                 .filter((row) => {
                     if (!event.filter) { return true; }
 
-                    return JSON.stringify(mapData(row)).toLowerCase().indexOf(event.filter.toLowerCase()) !== -1;
+                    return JSON.stringify(mapData(row)).toLowerCase().includes(event.filter.toLowerCase());
                 });
 
             this.rowsAsync = filteredRows.slice((event.page - 1) * event.rowsPerPage, event.page * event.rowsPerPage);

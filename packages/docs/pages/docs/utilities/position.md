@@ -1,6 +1,7 @@
-# Position Utilities
-## Use position utilities for quickly setting the position of an element.{.lead}
-
+---
+title: Position Utilities
+description: Use position utilities for quickly setting the position of an element.
+---
 The most common positioning classes are available:
 
 ~~~html

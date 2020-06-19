@@ -1,5 +1,10 @@
+---
+title: Form Methods
+description: The form validation framework wouldn't be complete without dynamically added fields and groups.  
+---
+
 # Form Methods
-## The form validation framework wouldn't be complete without dynamically added fields and groups. {.lead} 
+## The form validation framework wouldn't be complete without dynamically added fields and groups.  
 
 Inkline provides a simple API for adding and removing fields.
 
@@ -8,23 +13,25 @@ Just like Arrays, Objects can be manipulated and kept up to date using a custom 
 
 <code>this.form.group.set(name, item, options)</code>
 
-<i-code-preview title="Form Schema Object Group Operations">
-<i-form v-model="objectForm">
-    <i-form-group>
-        <i-input :schema="objectForm.fullName" placeholder="Enter your name.." />
-    </i-form-group>
-    <i-form-group v-if="objectForm.email">
-        <i-input :schema="objectForm.email" placeholder="Enter your email.." />
-    </i-form-group>
-    <i-form-group v-if="objectForm.address">
-        <i-input :schema="objectForm.address" placeholder="Enter your address.." />
-    </i-form-group>
-    <i-form-group>
-        <i-button @click="setEmail" type="button">Set Email</i-button>&nbsp;
-        <i-button @click="setAddress" type="button">Set Address</i-button>&nbsp;
-    </i-form-group>
-</i-form>
-<template slot="html">
+<i-code title="Form Schema Object Group Operations">
+<i-tab type="preview">
+    <i-form v-model="objectForm">
+        <i-form-group>
+            <i-input :schema="objectForm.fullName" placeholder="Enter your name.." />
+        </i-form-group>
+        <i-form-group v-if="objectForm.email">
+            <i-input :schema="objectForm.email" placeholder="Enter your email.." />
+        </i-form-group>
+        <i-form-group v-if="objectForm.address">
+            <i-input :schema="objectForm.address" placeholder="Enter your address.." />
+        </i-form-group>
+        <i-form-group>
+            <i-button @click="setEmail" type="button">Set Email</i-button>&nbsp;
+            <i-button @click="setAddress" type="button">Set Address</i-button>&nbsp;
+        </i-form-group>
+    </i-form>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-form v-model="form">
@@ -45,8 +52,8 @@ Just like Arrays, Objects can be manipulated and kept up to date using a custom 
 </i-form>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -74,16 +81,16 @@ export default {
 }
 ~~~
 
-</template>
-<template slot="output">
+</i-tab>
+<i-tab type="output">
 <span class="_text-muted">// console.log(this.form);</span>
 <pre>
 <code>
 {{ objectForm | prettify }}
 </code>
 </pre>
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 You can use `options.group` to specify whether the value being set is a group of fields. If not specified or set to `false`, the field will be a standalone field.
 
@@ -93,18 +100,20 @@ Inkline provides you with custom implementations for Array group operations usin
 <code>this.form.group.add(item, options)</code><br/>
 <code>this.form.group.remove(index, deleteCount, item, options)</code>
 
-<i-code-preview title="Form Schema Array Group Operations">
-<i-form v-model="listForm">
-    <i-form-group v-for="item in listForm.items" :key="item.name">
-        <i-input :schema="item" placeholder="Type something.." />
-    </i-form-group>
-    <i-form-group>
-        <i-button @click="addField" type="button">Add</i-button>&nbsp;
-        <i-button @click="removeField" type="button">Remove First</i-button>&nbsp;
-        <i-button @click="replaceField" type="button">Replace First</i-button>
-    </i-form-group>
-</i-form>
-<template slot="html">
+<i-code title="Form Schema Array Group Operations">
+<i-tab type="preview">
+    <i-form v-model="listForm">
+        <i-form-group v-for="item in listForm.items" :key="item.name">
+            <i-input :schema="item" placeholder="Type something.." />
+        </i-form-group>
+        <i-form-group>
+            <i-button @click="addField" type="button">Add</i-button>&nbsp;
+            <i-button @click="removeField" type="button">Remove First</i-button>&nbsp;
+            <i-button @click="replaceField" type="button">Replace First</i-button>
+        </i-form-group>
+    </i-form>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-form v-model="form">
@@ -120,8 +129,8 @@ Inkline provides you with custom implementations for Array group operations usin
 </i-form>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -149,15 +158,15 @@ export default {
 }
 ~~~
 
-</template>
-<template slot="output">
+</i-tab>
+<i-tab type="output">
 <span class="_text-muted">// console.log(this.form);</span>
 <pre>
 <code>
 {{ listForm | prettify }}
 </code>
 </pre>
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 You can use `options.group` to specify whether the value being added is a group of fields. If not specified or set to `false`, the field will be a standalone field.

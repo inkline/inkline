@@ -1,46 +1,100 @@
+---
+title: Alert
+description: Provide contextual feedback messages for typical user actions using the alert component. 
+---
+
 # Alert
-## Provide contextual feedback messages for typical user actions using the alert component. {.lead}
+## Provide contextual feedback messages for typical user actions using the alert component. 
+
+### Examples
+Alerts are available for any length of text, and can have an optional dismiss button. 
+
+<i-code title="Alert Examples">
+<i-tab type="preview">
+    <i-alert variant="info" class="_margin-bottom-1">
+        <template slot="icon"><i-icon icon="info"></i-icon></template>
+        <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+    </i-alert>
+    <i-alert variant="success" class="_margin-bottom-1">
+        <template slot="icon"><i-icon icon="check"></i-icon></template>
+        <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+    </i-alert>
+    <i-alert variant="warning" class="_margin-bottom-1">
+        <template slot="icon"><i-icon icon="warning"></i-icon></template>
+        <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+    </i-alert>
+    <i-alert variant="danger">
+        <template slot="icon"><i-icon icon="danger"></i-icon></template>
+        <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+    </i-alert>
+</i-tab>
+<i-tab type="html">
+
+~~~html
+<i-alert variant="info">
+    <template slot="icon"><i-icon icon="info"></i-icon></template>
+    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+</i-alert>
+~~~
+~~~html
+<i-alert variant="success">
+    <template slot="icon"><i-icon icon="success"></i-icon></template>
+    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+</i-alert>
+~~~
+~~~html
+<i-alert variant="warning">
+    <template slot="icon"><i-icon icon="warning"></i-icon></template>
+    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+</i-alert>
+~~~
+~~~html
+<i-alert variant="danger">
+    <template slot="icon"><i-icon icon="danger"></i-icon></template>
+    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+</i-alert>
+~~~
+
+</i-tab>
+</i-code>
 
 ### Variants
-Alerts are available for any length of text, and can have an optional dismiss button. For choosing the context of the alert,
-use the `variant` property.
+By default, alerts are set to have `width: 100%`, fully spanning the width of the parent container. For choosing the context of the alert, use the `variant` property.
 
-By default, alerts are set to have `width: 100%`, fully spanning the width of the parent container.
-
-<i-code-preview title="Alert Variants">
-
-<div class="_margin-bottom-1">
-    <i-alert variant="primary">
-        <p>A simple primary alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
-    </i-alert>
-</div>
-<div class="_margin-bottom-1">
-    <i-alert variant="secondary">
-        <p>A simple secondary alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
-    </i-alert>
-</div>
-<div class="_margin-bottom-1">
-    <i-alert variant="success">
-        <p>A simple success alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
-    </i-alert>
-</div>
-<div class="_margin-bottom-1">
-    <i-alert variant="danger">
-        <p>A simple danger alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
-    </i-alert>
-</div>
-<div class="_margin-bottom-1">
-    <i-alert variant="warning">
-        <p>A simple warning alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
-    </i-alert>
-</div>
-<div>
-    <i-alert variant="info">
-        <p>A simple info alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
-    </i-alert>
-</div>
-
-<template slot="html">
+<i-code title="Alert Variants">
+<i-tab type="preview">
+    <div class="_margin-bottom-1">
+        <i-alert variant="primary">
+            <p>A simple primary alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
+        </i-alert>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-alert variant="secondary">
+            <p>A simple secondary alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
+        </i-alert>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-alert variant="success">
+            <p>A simple success alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
+        </i-alert>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-alert variant="danger">
+            <p>A simple danger alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
+        </i-alert>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-alert variant="warning">
+            <p>A simple warning alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
+        </i-alert>
+    </div>
+    <div>
+        <i-alert variant="info">
+            <p>A simple info alert with an <a href="https://inkline.io" onclick="return false;">example link</a>. It's clickable!</p>
+        </i-alert>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-alert variant="primary">
@@ -73,33 +127,33 @@ By default, alerts are set to have `width: 100%`, fully spanning the width of th
 </i-alert>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the text and spacing size of your alerts, using one of the available sizes: `sm`, `md`, and `lg`. 
 
 The default size is set to `md`.
 
-<i-code-preview title="Alert Sizes">
-
-<div class="_margin-bottom-1">
-    <i-alert size="sm">
-        Some quick example text to build on the alert title and make up the bulk of the alert's content.
-    </i-alert>
-</div>
-<div class="_margin-bottom-1">
-    <i-alert size="md">
-        Some quick example text to build on the alert title and make up the bulk of the alert's content.
-    </i-alert>
-</div>
-<div>
-    <i-alert size="lg">
-        Some quick example text to build on the alert title and make up the bulk of the alert's content.
-    </i-alert>
-</div>
-
-<template slot="html">
+<i-code title="Alert Sizes">
+<i-tab type="preview">
+    <div class="_margin-bottom-1">
+        <i-alert size="sm">
+            Some quick example text to build on the alert title and make up the bulk of the alert's content.
+        </i-alert>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-alert size="md">
+            Some quick example text to build on the alert title and make up the bulk of the alert's content.
+        </i-alert>
+    </div>
+    <div>
+        <i-alert size="lg">
+            Some quick example text to build on the alert title and make up the bulk of the alert's content.
+        </i-alert>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-alert size="sm">
@@ -117,24 +171,24 @@ The default size is set to `md`.
 </i-alert>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Elements
 Your alerts accept any kind of content, giving you the flexibility to create good looking contextual messages.
 
-<i-code-preview title="Alert Elements">
-
-<div>
-    <i-alert>
-        <h4>Alert Title</h4>
-        <p>
-            Some quick example text to build on the alert and make up the bulk of the alert's content.
-        </p>
-    </i-alert>
-</div>
-
-<template slot="html">
+<i-code title="Alert Elements">
+<i-tab type="preview">
+    <div>
+        <i-alert>
+            <h4>Alert Title</h4>
+            <p>
+                Some quick example text to build on the alert and make up the bulk of the alert's content.
+            </p>
+        </i-alert>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-alert>
@@ -145,63 +199,43 @@ Your alerts accept any kind of content, giving you the flexibility to create goo
 </i-alert>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Icon
 You can add an icon to the `<i-alert>` component by providing an `icon` slot. 
 
 The following example makes use of the bundled Inkline icons, but you can use any icon font that you like:
 
-<i-code-preview title="Alert Icon">
-
-<i-alert variant="info" class="_margin-bottom-1">
-    <template slot="icon"><i class="inkline-icon -info"></i></template>
-    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
-</i-alert>
-<i-alert variant="warning" class="_margin-bottom-1">
-    <template slot="icon"><i class="inkline-icon -warning"></i></template>
-    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
-</i-alert>
-<i-alert variant="danger">
-    <template slot="icon"><i class="inkline-icon -danger"></i></template>
-    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
-</i-alert>
-
-<template slot="html">
+<i-code title="Alert Icon">
+<i-tab type="preview">
+    <i-alert variant="info" class="_margin-bottom-1">
+        <template slot="icon"><i-icon icon="info"></i-icon></template>
+        <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
+    </i-alert>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-alert variant="info">
-    <template slot="icon"><i class="inkline-icon -info"></i></template>
-    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
-</i-alert>
-~~~
-~~~html
-<i-alert variant="warning">
-    <template slot="icon"><i class="inkline-icon -warning"></i></template>
-    <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
-</i-alert>
-~~~
-~~~html
-<i-alert variant="danger">
-    <template slot="icon"><i class="inkline-icon -danger"></i></template>
+    <template slot="icon"><i-icon icon="info"></i-icon></template>
     <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
 </i-alert>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Dismissible
 You can dismiss alerts using a combination of the provided `dismissible` and `show` properties. The `dismissible` property will be used to show the dismiss icon. The `show` property will show or hide the alert, resetting dismissed alerts when needed.
 
-<i-code-preview title="Dismissible Alert">
-
-<i-alert dismissible :show="visible" variant="primary">
-    <p>Whoa! Nicely done.</p>
-</i-alert>
-
-<template slot="html">
+<i-code title="Dismissible Alert">
+<i-tab type="preview">
+    <i-alert dismissible :show="visible" variant="primary">
+        <p>Whoa! Nicely done.</p>
+    </i-alert>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-alert dismissible :show="visible" variant="primary">
@@ -209,8 +243,8 @@ You can dismiss alerts using a combination of the provided `dismissible` and `sh
 </i-alert>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -222,14 +256,14 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Component API
 Here you can find a list of the various customization options you can use for the alert component as props, as well as available slots.
 
-<i-api-preview title="Alert API" markup="i-alert" expanded>
-    <template slot="props">
+<i-code title="Alert API" markup="i-alert" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">dismissLabel</template>
@@ -267,8 +301,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>primary</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
@@ -283,14 +317,14 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for alert icon.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the alert component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Alert" expanded>
-    <template slot="scss">
+<i-code title="Alert" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$alert-font-size</template>
@@ -361,6 +395,6 @@ Here you can find a list of the Sass variables you can use for the alert compone
                 <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 
 

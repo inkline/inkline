@@ -1,6 +1,7 @@
-# Contribution Guide
-## Actively participate in the development and the future of Inkline by contributing regularly. { .lead }
-
+---
+title: Contribution Guide
+description: Actively participate in the development and the future of Inkline by contributing regularly. 
+---
 Open Source projects are maintained and backed by a **wonderful community** of users and collaborators.
 
 We encourage you to actively participate in the development and future of Inkline by contributing to the source code, improving documentation, reporting potential bugs or testing new features.

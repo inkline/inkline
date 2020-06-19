@@ -1,6 +1,6 @@
-@import '../../../css/config/index';
-@import '~@inkline/inkline/css/config/index';
-@import '~@inkline/inkline/css/mixins/index';
+@import '../../../assets/config';
+@import '~@inkline/inkline/src/css/config/index';
+@import '~@inkline/inkline/src/css/mixins/index';
 
 .layout.-preview {
     text-align: center;

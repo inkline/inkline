@@ -1,7 +1,12 @@
+---
+title: Grid
+description: Inkline's grid system is modelled as a 12 columns layout built using flexbox, with equally divided columns, separated by a small gutter. 
+---
+
 # Grid
-## Inkline's grid system is modelled as a 12 columns layout built using flexbox, with equally divided columns, separated by a small gutter. { .lead }
+## Inkline's grid system is modelled as a 12 columns layout built using flexbox, with equally divided columns, separated by a small gutter. 
  
- The grid system uses percentage widths, so that it is usable at any nesting level.
+The grid system uses percentage widths, so that it is usable at any nesting level.
 
 The grid system is defined using `<i-container>`, `<i-row>` and `<i-column>` components, with each one having specific responsive modifiers. Here's how it works:
 
@@ -13,108 +18,110 @@ The grid system is defined using `<i-container>`, `<i-row>` and `<i-column>` com
 ### Basic Layout
 Create basic grid layout using columns.
 
-<i-code-preview title="Basic Layout" class="grid-code-preview">
+<i-code title="Basic Layout" class="grid-code-preview">
 
-<i-row>
-    <i-column xs="12">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="1">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="11">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="2">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="10">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="3">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="9">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="4">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="8">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="5">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="7">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="6">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="6">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="7">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="5">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="8">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="4">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="9">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="10">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="2">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="11">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="1">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="12">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="12">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="1">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="11">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="2">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="10">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="3">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="9">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="4">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="8">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="5">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="7">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="6">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="6">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="7">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="5">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="8">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="4">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="9">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="10">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="2">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="11">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="1">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="12">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
 
-<template slot="html">
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -171,76 +178,76 @@ Create basic grid layout using columns.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Grid Offset
 Grid offsets are used to move a column to the right without creating an empty column next to it.
 
-<i-code-preview title="Grid Offset" class="grid-code-preview">
-
-<i-row>
-    <i-column xs="12">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="11" offset-xs="1">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="10" offset-xs="2">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="9" offset-xs="3">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="8" offset-xs="4">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="7" offset-xs="5">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="6" offset-xs="6">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="5" offset-xs="7">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="4" offset-xs="8">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="3" offset-xs="9">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="2" offset-xs="10">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="1" offset-xs="11">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Grid Offset" class="grid-code-preview">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="12">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="11" offset-xs="1">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="10" offset-xs="2">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="9" offset-xs="3">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="8" offset-xs="4">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="7" offset-xs="5">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="6" offset-xs="6">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="5" offset-xs="7">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="4" offset-xs="8">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="3" offset-xs="9">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="2" offset-xs="10">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="1" offset-xs="11">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -280,23 +287,23 @@ Grid offsets are used to move a column to the right without creating an empty co
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 You may need to use `offset-{breakpoint}="0"` to clear an offset. See this in action in the grid example below.
 
-<i-code-preview title="Grid Offset Reset" class="grid-code-preview">
-
-<i-row>
-    <i-column md="5" lg="6">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column md="5" offset-md="2" lg="6" offset-lg="0">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Grid Offset Reset" class="grid-code-preview">
+<i-tab type="preview">
+    <i-row>
+        <i-column md="5" lg="6">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column md="5" offset-md="2" lg="6" offset-lg="0">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -311,114 +318,114 @@ You may need to use `offset-{breakpoint}="0"` to clear an offset. See this in ac
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Grid Push / Pull
 Code-wise, the columns have a different order.
 
-<i-code-preview title="Grid Push / Pull" class="grid-code-preview">
-
-<i-row>
-    <i-column xs="12">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="1" push-xs="11">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="11" pull-xs="1">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="2" push-xs="10">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="10" pull-xs="2">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="3" push-xs="9">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="9" pull-xs="3">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="4" push-xs="8">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="8" pull-xs="4">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="5" push-xs="7">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="7" pull-xs="5">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="6" push-xs="6">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="6" pull-xs="6">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="7" push-xs="5">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="5" pull-xs="7">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="8" push-xs="4">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="4" pull-xs="8">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="9" push-xs="3">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="3" pull-xs="9">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="10" push-xs="2">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="2" pull-xs="10">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="11" push-xs="1">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="1" pull-xs="11">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column xs="12">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Grid Push / Pull" class="grid-code-preview">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="12">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="1" push-xs="11">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="11" pull-xs="1">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="2" push-xs="10">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="10" pull-xs="2">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="3" push-xs="9">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="9" pull-xs="3">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="4" push-xs="8">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="8" pull-xs="4">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="5" push-xs="7">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="7" pull-xs="5">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="6" push-xs="6">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="6" pull-xs="6">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="7" push-xs="5">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="5" pull-xs="7">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="8" push-xs="4">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="4" pull-xs="8">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="9" push-xs="3">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="3" pull-xs="9">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="10" push-xs="2">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="2" pull-xs="10">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="11" push-xs="1">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="1" pull-xs="11">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column xs="12">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -469,92 +476,92 @@ Code-wise, the columns have a different order.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Auto Width
 The grid will automatically fit any number of auto sizing columns to a row.
 
-<i-code-preview title="Auto Width" class="grid-code-preview">
-
-<i-row>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column :xs="true">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Auto Width" class="grid-code-preview">
+<i-tab type="preview">
+    <i-row>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column :xs="true">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -594,8 +601,8 @@ The grid will automatically fit any number of auto sizing columns to a row.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Nested Grid
@@ -603,42 +610,42 @@ Inkline allows you to nest up to 12 columns inside a row. Row can also be nested
 giving you virtually endless layout possibilities. You can place rows only inside a container or a column, 
 while you can place columns only inside a row.
 
-<i-code-preview title="Nested Grid">
-
-<i-row>
-    <i-column xs="8">
-        <grid-box>
-            <i-row>
-                <i-column xs="3">
-                    <grid-box></grid-box>
-                </i-column>
-                <i-column xs="3">
-                    <grid-box></grid-box>
-                </i-column>
-                <i-column xs="3">
-                    <grid-box></grid-box>
-                </i-column>
-                <i-column xs="3">
-                    <grid-box></grid-box>
-                </i-column>
-            </i-row>
-        </grid-box>
-    </i-column>
-    <i-column xs="4">
-        <grid-box>
-            <i-row>
-                <i-column xs="6">
-                    <grid-box></grid-box>
-                </i-column>
-                <i-column xs="6">
-                    <grid-box></grid-box>
-                </i-column>
-            </i-row>
-        </grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Nested Grid">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="8">
+            <grid-box>
+                <i-row>
+                    <i-column xs="3">
+                        <grid-box></grid-box>
+                    </i-column>
+                    <i-column xs="3">
+                        <grid-box></grid-box>
+                    </i-column>
+                    <i-column xs="3">
+                        <grid-box></grid-box>
+                    </i-column>
+                    <i-column xs="3">
+                        <grid-box></grid-box>
+                    </i-column>
+                </i-row>
+            </grid-box>
+        </i-column>
+        <i-column xs="4">
+            <grid-box>
+                <i-row>
+                    <i-column xs="6">
+                        <grid-box></grid-box>
+                    </i-column>
+                    <i-column xs="6">
+                        <grid-box></grid-box>
+                    </i-column>
+                </i-row>
+            </grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -661,8 +668,8 @@ while you can place columns only inside a row.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Horizontal Alignment
@@ -670,15 +677,15 @@ You can align columns horizontally to the start, center, or end of a row.
 
 #### start-*
 
-<i-code-preview title="Horizontal Alignment - Start">
-
-<i-row start-xs>
-    <i-column xs="4">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Horizontal Alignment - Start">
+<i-tab type="preview">
+    <i-row start-xs>
+        <i-column xs="4">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -688,20 +695,20 @@ You can align columns horizontally to the start, center, or end of a row.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### center-*
 
-<i-code-preview title="Horizontal Alignment - Center">
-
-<i-row center-xs>
-    <i-column xs="4">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Horizontal Alignment - Center">
+<i-tab type="preview">
+    <i-row center-xs>
+        <i-column xs="4">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -711,20 +718,20 @@ You can align columns horizontally to the start, center, or end of a row.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### end-*
 
-<i-code-preview title="Horizontal Alignment - End">
-
-<i-row end-xs>
-    <i-column xs="4">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Horizontal Alignment - End">
+<i-tab type="preview">
+    <i-row end-xs>
+        <i-column xs="4">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -734,8 +741,8 @@ You can align columns horizontally to the start, center, or end of a row.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Vertical Alignment
@@ -743,18 +750,18 @@ You can align columns vertically to the top, middle or bottom of the row.
 
 #### top-*
 
-<i-code-preview title="Vertical Alignment - Top">
-
-<i-row top-xs>
-    <i-column xs="6">
-        <grid-box tall></grid-box>
-    </i-column>
-    <i-column xs="6">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Vertical Alignment - Top">
+<i-tab type="preview">
+    <i-row top-xs>
+        <i-column xs="6">
+            <grid-box tall></grid-box>
+        </i-column>
+        <i-column xs="6">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -765,23 +772,23 @@ You can align columns vertically to the top, middle or bottom of the row.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### middle-*
 
-<i-code-preview title="Vertical Alignment - Middle">
-
-<i-row middle-xs>
-    <i-column xs="6">
-        <grid-box tall></grid-box>
-    </i-column>
-    <i-column xs="6">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Vertical Alignment - Middle">
+<i-tab type="preview">
+    <i-row middle-xs>
+        <i-column xs="6">
+            <grid-box tall></grid-box>
+        </i-column>
+        <i-column xs="6">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -792,23 +799,23 @@ You can align columns vertically to the top, middle or bottom of the row.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### bottom-*
 
-<i-code-preview title="Vertical Alignment - Bottom">
-
-<i-row bottom-xs>
-    <i-column xs="6">
-        <grid-box tall></grid-box>
-    </i-column>
-    <i-column xs="6">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Vertical Alignment - Bottom">
+<i-tab type="preview">
+    <i-row bottom-xs>
+        <i-column xs="6">
+            <grid-box tall></grid-box>
+        </i-column>
+        <i-column xs="6">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -819,8 +826,8 @@ You can align columns vertically to the top, middle or bottom of the row.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Distribution
@@ -828,21 +835,21 @@ Distribute the spacing between the columns of a row.
 
 #### around-*
 
-<i-code-preview title="Distribution - Around">
-
-<i-row around-xs>
-    <i-column xs="3">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Distribution - Around">
+<i-tab type="preview">
+    <i-row around-xs>
+        <i-column xs="3">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -854,26 +861,26 @@ Distribute the spacing between the columns of a row.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### between-*
 
-<i-code-preview title="Distribution - Between">
-
-<i-row between-xs>
-    <i-column xs="3">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Distribution - Between">
+<i-tab type="preview">
+    <i-row between-xs>
+        <i-column xs="3">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -885,32 +892,32 @@ Distribute the spacing between the columns of a row.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Reordering
 Reorder columns using helper classes.
 
 #### reverse-*
 
-<i-code-preview title="Reordering - Reverse">
-
-<i-row reverse-xs>
-    <i-column xs="3">
-        <grid-box>1</grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box>2</grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box>3</grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box>4</grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Reordering - Reverse">
+<i-tab type="preview">
+    <i-row reverse-xs>
+        <i-column xs="3">
+            <grid-box>1</grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box>2</grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box>3</grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box>4</grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -923,29 +930,29 @@ Reorder columns using helper classes.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### first-*
 
-<i-code-preview title="Reordering - First">
-
-<i-row>
-    <i-column xs="3">
-        <grid-box>1</grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box>2</grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box>3</grid-box>
-    </i-column>
-    <i-column xs="3" first-xs>
-        <grid-box>4</grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Reordering - First">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="3">
+            <grid-box>1</grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box>2</grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box>3</grid-box>
+        </i-column>
+        <i-column xs="3" first-xs>
+            <grid-box>4</grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -958,29 +965,29 @@ Reorder columns using helper classes.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### last-*
 
-<i-code-preview title="Reordering - Last">
-
-<i-row>
-    <i-column xs="3" last-xs>
-        <grid-box>1</grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box>2</grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box>3</grid-box>
-    </i-column>
-    <i-column xs="3">
-        <grid-box>4</grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Reordering - Last">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs="3" last-xs>
+            <grid-box>1</grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box>2</grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box>3</grid-box>
+        </i-column>
+        <i-column xs="3">
+            <grid-box>4</grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -993,32 +1000,32 @@ Reorder columns using helper classes.
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Responsive Width
 You can specify column counts for each breakpoint. Try to resize your browser window!
 
-<i-code-preview title="Responsive Grid Width">
-
-<i-row>
-    <i-column xl="3" lg="6" md="6" sm="8" xs="12">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xl="3" lg="6" md="6" sm="4" xs="6">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xl="6" lg="4" md="6" sm="6" xs="3">
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xl="12" lg="8" md="6" sm="6" xs="3">
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-<i-row/>
-
-<template slot="html">
+<i-code title="Responsive Grid Width">
+<i-tab type="preview">
+    <i-row>
+        <i-column xl="3" lg="6" md="6" sm="8" xs="12">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xl="3" lg="6" md="6" sm="4" xs="6">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xl="6" lg="4" md="6" sm="6" xs="3">
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xl="12" lg="8" md="6" sm="6" xs="3">
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+    <i-row></i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container>
@@ -1031,27 +1038,27 @@ You can specify column counts for each breakpoint. Try to resize your browser wi
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Fluid Container
 You can make the `<i-container>` component fill the whole width of the parent element using the `fluid` property. 
 
-<i-code-preview title="Fluid Container">
-
-<i-row>
-    <i-column xs>
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs>
-        <grid-box></grid-box>
-    </i-column>
-    <i-column xs>
-        <grid-box></grid-box>
-    </i-column>
-</i-row>
-
-<template slot="html">
+<i-code title="Fluid Container">
+<i-tab type="preview">
+    <i-row>
+        <i-column xs>
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs>
+            <grid-box></grid-box>
+        </i-column>
+        <i-column xs>
+            <grid-box></grid-box>
+        </i-column>
+    </i-row>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-container fluid>
@@ -1063,15 +1070,15 @@ You can make the `<i-container>` component fill the whole width of the parent el
 </i-container>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Components API
 Here you can find a list of the various customization options you can use for the grid components as props, as well as available slots and events.
 
-<i-api-preview title="Container API" expanded>
-    <template slot="props">
+<i-code api title="Container API" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">fluid</template>
@@ -1081,19 +1088,19 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>false</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for container default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Row API" expanded>
-    <template slot="props">
+<i-code api title="Row API" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">no-gutter</template>
@@ -1173,20 +1180,20 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>false</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table class="_margin-bottom-0">
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for row default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
-<i-api-preview title="Column API" expanded>
-    <template slot="props">
+<i-code api title="Column API" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">xs</template>
@@ -1259,23 +1266,23 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>false</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table class="_margin-bottom-0">
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for column default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the grid components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Container" expanded>
-    <template slot="scss">
+<i-code scss title="Container" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$container-width-xs</template>
@@ -1298,18 +1305,18 @@ Here you can find a list of the Sass variables you can use for the grid componen
                 <template slot="default"><code>$breakpoints-xl - $gutter-xl</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 
-<i-scss-preview title="Column" expanded>
-    <template slot="scss">
+<i-code scss title="Column" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$columns</template>
                 <template slot="default"><code>12</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 

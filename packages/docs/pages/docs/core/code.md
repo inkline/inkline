@@ -1,34 +1,43 @@
+---
+title: Code
+description: Examples for displaying inline and multi-line blocks of code. 
+---
+
 # Code
-## Examples for displaying inline and multi-line blocks of code. { .lead }
+## Examples for displaying inline and multi-line blocks of code.
 
 ### Inline
 Wrap inline snippets of code with `<code>`. Be sure to escape HTML angle brackets.
 
-<i-code-preview title="Inline Code">
+<i-code title="Inline Code">
+<i-tab type="preview">
 
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Block
 We use `<pre>` for multiple lines of code. Once again, be sure to escape any angle brackets in the code for proper 
 rendering. You may optionally add the `.-scrollable` modifier, which will set a max-height and provide a y-axis scrollbar.
 
-<i-code-preview title="Code Block">
+<i-code title="Code Block">
+<i-tab type="preview">
 
 <pre>
 <code>&lt;p&gt;Sample text here...&lt;/p&gt;
 &lt;p&gt;And another line of sample text here...&lt;/p&gt;</code>
 </pre>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <pre>
@@ -39,67 +48,73 @@ rendering. You may optionally add the `.-scrollable` modifier, which will set a 
 </pre>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Variables
 For indicating variables use the HTML5 `<var>` tag.
 
-<i-code-preview title="Variables">
+<i-code title="Variables">
+<i-tab type="preview">
 
 <var>y</var> = <var>m</var><var>x</var> + <var>b</var>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <var>y</var> = <var>m</var><var>x</var> + <var>b</var>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### User Input
 You can use the `<kbd>` to indicate input that is typically entered via keyboard.
 
-<i-code-preview title="User Input">
+<i-code title="User Input">
+<i-tab type="preview">
 
 To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
 To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
 To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sample Output
 
 You can use the `<samp>` for indicating sample output from a program.
 
-<i-code-preview title="Sample Output">
+<i-code title="Sample Output">
+<i-tab type="preview">
 
 <samp>This text is meant to be treated as sample output from a computer program.</samp>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <samp>This text is meant to be treated as sample output from a computer program.</samp>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for code elements. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
 
-<i-scss-preview title="Code" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Code" expanded :header="false">
+    <i-tab type="scss">
         <api-table-row>
             <template slot="property">$mark-padding</template>
             <template slot="default"><code>0.2rem 0.4rem</code></template>
@@ -176,5 +191,5 @@ Here you can find a list of the Sass variables you can use for code elements. If
             <template slot="property">$pre-scrollable-max-height</template>
             <template slot="default"><code>340px</code></template>
         </api-table-row>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>

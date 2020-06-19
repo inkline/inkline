@@ -1,5 +1,10 @@
+---
+title: Dark Mode
+description: Easily change the theme of your application to light or dark programmatically.
+---
+
 # Dark Mode
-## Easily change the theme of your application to light or dark programmatically. {.lead}
+## Easily change the theme of your application to light or dark programmatically.
 
 Dark mode is natively supported in Inkline by changing the default component `variant` property value. The variant can be configured through the `$inkline` global prototype available in every component:
 
@@ -15,10 +20,11 @@ this.$inkline.config.variant = 'dark';
 ### How to Toggle Dark Mode
 Dark mode can be toggled easily by changing the default component configuration `variant` value as follows:
 
-<i-code-preview title="Toggle Dark Mode">
-<i-button @click="toggleVariant"><i-icon icon="light" /></i-button>
-
-<template slot="html">
+<i-code title="Toggle Dark Mode">
+<i-tab type="preview">
+    <i-button @click="toggleVariant"><i-icon icon="light" /></i-button>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button @click="toggleDarkMode">
@@ -26,8 +32,8 @@ Dark mode can be toggled easily by changing the default component configuration 
 </i-button>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -39,8 +45,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### The `inkline` Class
@@ -62,12 +68,13 @@ The `.inkline` class gives you theme awareness and control over general page des
 ### The `variant` Property
 Changing the default variant of Inkline components will cause every component to transition to the new color theme. 
 
-<i-code-preview title="Variant Property">
-<i-button class="_margin-right-1" @click="toggleVariant"><i-icon icon="light" /></i-button>
-<i-button>Default Variant</i-button> 
-<i-button variant="light">Light Variant</i-button> 
-
-<template slot="html">
+<i-code title="Variant Property">
+<i-tab type="preview">
+    <i-button class="_margin-right-1" @click="toggleVariant"><i-icon icon="light" /></i-button>
+    <i-button>Default Variant</i-button> 
+    <i-button variant="light">Light Variant</i-button> 
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button>Default Variant</i-button> 
@@ -77,8 +84,8 @@ Changing the default variant of Inkline components will cause every component to
 <i-button variant="light">Light Variant</i-button> 
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Notice how the `<i-button variant="light">` doesn't change? If the `variant` property is set explicitly, components will not be affected.
 
@@ -93,7 +100,7 @@ During the `created()` lifecycle, the variant property mixin adds a rule to the 
     <div class="my-component" :class="classes">
         <slot>I support dark mode.</slot>
     </div>
-</template>
+</i-tab>
 
 <style lang="scss">
 .my-component {

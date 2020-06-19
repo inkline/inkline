@@ -1,34 +1,35 @@
-# Flex Utilities
-## Use flexbox utilities to modify the layout, alignment, and sizing of components and more. { .lead }
-
+---
+title: Flex Utilities
+description: Use flexbox utilities to modify the layout, alignment, and sizing of components and more. 
+---
 ### Flex Behavior
 Apply `display: flex` using CSS or the `._display-flex` helper to create a flexbox container and transform direct children elements into flex items. 
 
-<i-code-preview title="Flexbox Utility Example">
-
-<div class="flexbox-preview _display-flex">I'm a flexbox container</div>
-
-<template slot="html">
+<i-code title="Flexbox Utility Example">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex">I'm a flexbox container</div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex">I'm a flexbox container</div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
-<i-code-preview title="Inline Flexbox Utility Example">
-
-<div class="flexbox-preview _display-inline-flex">I'm an inline flexbox container</div>
-
-<template slot="html">
+<i-code title="Inline Flexbox Utility Example">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-inline-flex">I'm an inline flexbox container</div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-inline-flex">I'm an inline flexbox container</div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Flexbox utilities can be applied responsively using the following helper classes:
 
@@ -43,19 +44,18 @@ Set the direction of flex items in a flex container with direction utilities. Th
 #### Row Direction
 Setting a row direction will cause the flexbox items to flow horizontally.
 
-<i-code-preview title="Flexbox Row Direction Utility">
-
-<div class="flexbox-preview _display-flex _flex-direction-row _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-</div>
-
-<div class="flexbox-preview _display-flex _flex-direction-row-reverse">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-</div>
-
-<template slot="html">
+<i-code title="Flexbox Row Direction Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex _flex-direction-row _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+    </div>
+    <div class="flexbox-preview _display-flex _flex-direction-row-reverse">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex _flex-direction-row">
@@ -71,25 +71,24 @@ Setting a row direction will cause the flexbox items to flow horizontally.
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### Column Direction
 Setting a column direction will cause the flexbox items to flow vertically.
 
-<i-code-preview title="Flexbox Column Direction Utility">
-
-<div class="flexbox-preview _display-flex _flex-direction-column _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-</div>
-
-<div class="flexbox-preview _display-flex _flex-direction-column-reverse">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-</div>
-
-<template slot="html">
+<i-code title="Flexbox Column Direction Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex _flex-direction-column _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+    </div>
+    <div class="flexbox-preview _display-flex _flex-direction-column-reverse">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex _flex-direction-column">
@@ -105,8 +104,8 @@ Setting a column direction will cause the flexbox items to flow vertically.
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 Flexbox direction utilities can be applied responsively using the following helper classes:
@@ -124,40 +123,35 @@ Flexbox direction utilities can be applied responsively using the following help
 ### Justify Content
 Use `justify-content` utilities on flexbox containers to change the alignment of flex items on the main axis (the x-axis if `flex-direction: row`, y-axis if `flex-direction: column`).
 
-<i-code-preview title="Flexbox Justify Content Utility">
-
-<div class="flexbox-preview _display-flex _justify-content-start _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-<div class="flexbox-preview _display-flex _justify-content-center _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-<div class="flexbox-preview _display-flex _justify-content-end _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-<div class="flexbox-preview _display-flex _justify-content-space-between _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-<div class="flexbox-preview _display-flex _justify-content-space-around">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-
-<template slot="html">
+<i-code title="Flexbox Justify Content Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex _justify-content-start _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+    <div class="flexbox-preview _display-flex _justify-content-center _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+    <div class="flexbox-preview _display-flex _justify-content-end _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+    <div class="flexbox-preview _display-flex _justify-content-space-between _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+    <div class="flexbox-preview _display-flex _justify-content-space-around">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex _justify-content-start">
@@ -195,8 +189,8 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Flexbox justify content utilities can be applied responsively using the following helper classes:
 
@@ -214,40 +208,35 @@ Flexbox justify content utilities can be applied responsively using the followin
 ### Align Items
 Use `align-items` utilities on flexbox containers to change the alignment of flex items on the secondary axis (the y-axis if `flex-direction: row`, x-axis if `flex-direction: column`).
 
-<i-code-preview title="Flexbox Align Items Utility">
-
-<div class="flexbox-preview -tall _display-flex _align-items-start _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-<div class="flexbox-preview -tall _display-flex _align-items-center _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-<div class="flexbox-preview -tall _display-flex _align-items-end _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-<div class="flexbox-preview -tall _display-flex _align-items-baseline _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-<div class="flexbox-preview -tall _display-flex _align-items-stretch">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-
-<template slot="html">
+<i-code title="Flexbox Align Items Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview -tall _display-flex _align-items-start _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+    <div class="flexbox-preview -tall _display-flex _align-items-center _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+    <div class="flexbox-preview -tall _display-flex _align-items-end _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+    <div class="flexbox-preview -tall _display-flex _align-items-baseline _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+    <div class="flexbox-preview -tall _display-flex _align-items-stretch">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex _align-items-start">
@@ -285,8 +274,8 @@ Use `align-items` utilities on flexbox containers to change the alignment of fle
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Flexbox align items utilities can be applied responsively using the following helper classes:
 
@@ -304,40 +293,35 @@ Flexbox align items utilities can be applied responsively using the following he
 ### Align Self
 Use `align-self` utilities on a flexbox item to change the alignment of the item on the secondary axis (the y-axis if `flex-direction: row`, x-axis if `flex-direction: column`).
 
-<i-code-preview title="Flexbox Align Self Utility">
-
-<div class="flexbox-preview -tall _display-flex _align-items-stretch _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview _align-self-start">Aligned Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview -tall _display-flex _align-items-stretch _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview _align-self-center">Aligned Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview -tall _display-flex _align-items-stretch _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview _align-self-end">Aligned Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview -tall _display-flex _align-items-stretch _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview _align-self-baseline">Aligned Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview -tall _display-flex _align-items-stretch">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview _align-self-stretch">Aligned Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-
-<template slot="html">
+<i-code title="Flexbox Align Self Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview -tall _display-flex _align-items-stretch _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview _align-self-start">Aligned Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall _display-flex _align-items-stretch _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview _align-self-center">Aligned Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall _display-flex _align-items-stretch _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview _align-self-end">Aligned Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall _display-flex _align-items-stretch _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview _align-self-baseline">Aligned Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall _display-flex _align-items-stretch">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview _align-self-stretch">Aligned Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex">
@@ -375,8 +359,8 @@ Use `align-self` utilities on a flexbox item to change the alignment of the item
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Flexbox align self utilities can be applied responsively using the following helper classes:
 
@@ -394,15 +378,15 @@ Flexbox align self utilities can be applied responsively using the following hel
 ### Fill
 Use `._flex-fill` utilities on a on a series of flexbox items to force them into widths equal to their content.
 
-<i-code-preview title="Flexbox Fill Utility">
-
-<div class="flexbox-preview _display-flex">
-    <div class="flexbox-preview _flex-fill">Flex Item with a lot of content</div>
-    <div class="flexbox-preview _flex-fill">Flex Item</div>
-    <div class="flexbox-preview _flex-fill">Flex Item</div>
-</div>
-
-<template slot="html">
+<i-code title="Flexbox Fill Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex">
+        <div class="flexbox-preview _flex-fill">Flex Item with a lot of content</div>
+        <div class="flexbox-preview _flex-fill">Flex Item</div>
+        <div class="flexbox-preview _flex-fill">Flex Item</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex">
@@ -412,8 +396,8 @@ Use `._flex-fill` utilities on a on a series of flexbox items to force them into
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Flexbox fill utilities can be applied responsively using the following helper classes:
 
@@ -423,15 +407,15 @@ Flexbox fill utilities can be applied responsively using the following helper cl
 ### Grow and shrink
 Use `._flex-grow-1` and `_flex-grow-0` utilities to toggle a flex item’s ability to grow to fill available space. In the example below. A value of `1` uses all available space it can, while allowing the remaining two flex items their necessary space.
 
-<i-code-preview title="Flexbox Grow Utility">
-
-<div class="flexbox-preview _display-flex">
-    <div class="flexbox-preview _flex-grow-1">Flex Grow 1 Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<template slot="html">
+<i-code title="Flexbox Grow Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex">
+        <div class="flexbox-preview _flex-grow-1">Flex Grow 1 Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex">
@@ -441,19 +425,19 @@ Use `._flex-grow-1` and `_flex-grow-0` utilities to toggle a flex item’s abili
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Use the `._flex-shrink-1` and `._flex-shrink-0` utilities to toggle a flex item’s ability to shrink if necessary. This can be used together with a `width: 100%` div to make some flex items cover as little space as possible.
 
-<i-code-preview title="Flexbox Shrink Utility">
-
-<div class="flexbox-preview _display-flex">
-    <div class="flexbox-preview _width-100">Flex Item</div>
-    <div class="flexbox-preview _flex-shrink-1">Flex Shrink</div>
-</div>
-
-<template slot="html">
+<i-code title="Flexbox Shrink Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex">
+        <div class="flexbox-preview _width-100">Flex Item</div>
+        <div class="flexbox-preview _flex-shrink-1">Flex Shrink</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex">
@@ -462,8 +446,8 @@ Use the `._flex-shrink-1` and `._flex-shrink-0` utilities to toggle a flex item�
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Flexbox shrink and grow utilities can be applied responsively using the following helper classes:
 
@@ -476,38 +460,33 @@ Flexbox shrink and grow utilities can be applied responsively using the followin
 - `._flex-{xs|sm|md|lg|xl}-shrink-0`
 - `._flex-{xs|sm|md|lg|xl}-shrink-1`
 
-
 ### Auto Margins
 When you mix flex alignments with auto margins you can obtain some pretty unique and useful layouts.
 
-<i-code-preview title="Flexbox Auto Margins Utility">
-
-<div class="flexbox-preview _display-flex _margin-bottom-1">
-    <div class="flexbox-preview _margin-right-auto">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview _display-flex _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview _margin-left-auto">Flex Item</div>
-</div>
-
-<div class="flexbox-preview -tall-2 _display-flex _flex-direction-column _margin-bottom-1">
-    <div class="flexbox-preview _margin-bottom-auto">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-
-<div class="flexbox-preview -tall-2 _display-flex _flex-direction-column">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview _margin-top-auto">Flex Item</div>
-</div>
-
-<template slot="html">
+<i-code title="Flexbox Auto Margins Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex _margin-bottom-1">
+        <div class="flexbox-preview _margin-right-auto">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview _display-flex _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview _margin-left-auto">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall-2 _display-flex _flex-direction-column _margin-bottom-1">
+        <div class="flexbox-preview _margin-bottom-auto">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall-2 _display-flex _flex-direction-column">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview _margin-top-auto">Flex Item</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex">
@@ -538,24 +517,24 @@ When you mix flex alignments with auto margins you can obtain some pretty unique
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Wrapping
 Change how flex items wrap in a flex container. To have wrapping disabled (browser default) use `._flex-nowrap`. To enable wrapping, use `._flex-wrap`, or reverse wrapping with `._flex-wrap-reverse`.
 
-<i-code-preview title="Flexbox No Wrap Utility">
-
-<div class="flexbox-preview _display-flex _flex-nowrap" style="width: 180px;">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<template slot="html">
+<i-code title="Flexbox No Wrap Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex _flex-nowrap" style="width: 180px;">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex _flex-nowrap" style="width: 180px;">
@@ -563,34 +542,33 @@ Change how flex items wrap in a flex container. To have wrapping disabled (brows
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
-<i-code-preview title="Flexbox Wrap Utility">
-
-<div class="flexbox-preview _display-flex _flex-wrap _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview _display-flex _flex-wrap-reverse">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<template slot="html">
+<i-code title="Flexbox Wrap Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex _flex-wrap _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview _display-flex _flex-wrap-reverse">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex _flex-wrap">
@@ -604,8 +582,8 @@ Change how flex items wrap in a flex container. To have wrapping disabled (brows
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Flexbox shrink and grow utilities can be applied responsively using the following helper classes:
 
@@ -619,27 +597,25 @@ Flexbox shrink and grow utilities can be applied responsively using the followin
 ### Order
 You can change the order of flex items with a handful of order utilities. You can use `._order-first` to make an item first or `._order-last` to make an item last. You can use `_order-{value}` (where value can be a number from `1` to `12`) to change the order of elements to a specific position.
 
-<i-code-preview title="Flexbox Order Utility">
-
-<div class="flexbox-preview _display-flex">
-    <div class="flexbox-preview">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview _order-first">Flex Item 3</div>
-</div>
-
-<div class="flexbox-preview _display-flex">
-    <div class="flexbox-preview _order-last">Flex Item 1</div>
-    <div class="flexbox-preview">Flex Item 2</div>
-    <div class="flexbox-preview">Flex Item 3</div>
-</div>
-
-<div class="flexbox-preview _display-flex">
-    <div class="flexbox-preview _order-3">Flex Item 1</div>
-    <div class="flexbox-preview _order-2">Flex Item 2</div>
-    <div class="flexbox-preview _order-1">Flex Item 3</div>
-</div>
-
-<template slot="html">
+<i-code title="Flexbox Order Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview _display-flex">
+        <div class="flexbox-preview">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview _order-first">Flex Item 3</div>
+    </div>
+    <div class="flexbox-preview _display-flex">
+        <div class="flexbox-preview _order-last">Flex Item 1</div>
+        <div class="flexbox-preview">Flex Item 2</div>
+        <div class="flexbox-preview">Flex Item 3</div>
+    </div>
+    <div class="flexbox-preview _display-flex">
+        <div class="flexbox-preview _order-3">Flex Item 1</div>
+        <div class="flexbox-preview _order-2">Flex Item 2</div>
+        <div class="flexbox-preview _order-1">Flex Item 3</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex">
@@ -663,8 +639,8 @@ You can change the order of flex items with a handful of order utilities. You ca
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 Flexbox shrink and grow utilities can be applied responsively using the following helper classes:
@@ -682,75 +658,70 @@ Use `align-content` utilities on flexbox containers to align flex content on the
 
 For demo purposes, the examples are enforced to have `flex-wrap: wrap` using `._flex-wrap` and have an increased `height` and number of items.
 
-<i-code-preview title="Flexbox Align Content Utility">
-
-<div class="flexbox-preview -tall-2 _display-flex _align-content-start _flex-wrap _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview -tall-2 _display-flex _align-content-center _flex-wrap _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview -tall-2 _display-flex _align-content-end _flex-wrap _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview -tall-2 _display-flex _align-content-space-between _flex-wrap _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview -tall-2 _display-flex _align-content-space-around _flex-wrap _margin-bottom-1">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<div class="flexbox-preview -tall-2 _display-flex _align-content-stretch _flex-wrap">
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-    <div class="flexbox-preview">Flex Item</div>
-</div>
-
-<template slot="html">
+<i-code title="Flexbox Align Content Utility">
+<i-tab type="preview">
+    <div class="flexbox-preview -tall-2 _display-flex _align-content-start _flex-wrap _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall-2 _display-flex _align-content-center _flex-wrap _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall-2 _display-flex _align-content-end _flex-wrap _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall-2 _display-flex _align-content-space-between _flex-wrap _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall-2 _display-flex _align-content-space-around _flex-wrap _margin-bottom-1">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+    <div class="flexbox-preview -tall-2 _display-flex _align-content-stretch _flex-wrap">
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+        <div class="flexbox-preview">Flex Item</div>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-flex _align-content-start">
@@ -783,8 +754,8 @@ For demo purposes, the examples are enforced to have `flex-wrap: wrap` using `._
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 Flexbox shrink and grow utilities can be applied responsively using the following helper classes:

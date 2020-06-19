@@ -1,17 +1,10 @@
 <template src="./loader.md" lang="md"></template>
 <style src="./loader.scss" lang="scss"></style>
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { ILoader } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     name: 'LoaderView',
-    layout: 'documentation',
-    extends: View,
-    head: head(),
-    components: {
-        ILoader
-    }
+    extends: View
 };
 </script>

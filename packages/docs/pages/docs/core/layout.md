@@ -1,5 +1,10 @@
+---
+title: Layout
+description: Build basic layouts using Inkline's built-in layout components. 
+---
+
 # Layout
-## Build basic layouts using Inkline's built-in layout components. { .lead }
+## Build basic layouts using Inkline's built-in layout components. 
 
 The layout components are used for scaffolding the basic structure of the page:
 - `<i-layout>` is the main layout wrapper in which `i-layout-header`, `i-layout-aside`, `i-layout-content`, `i-layout-footer`, or `i-layout` itself can be nested, and can be placed in any parent container.
@@ -15,7 +20,8 @@ provide the correct element positioning without colors and paddings.
 
 Layouts are based on flexbox, so please make sure your browser fully supports it. 
 
-<i-code-preview title="Content With Header">
+<i-code title="Content With Header">
+<i-tab type="preview">
 
 <i-layout class="-preview">
     <i-layout-header>
@@ -26,7 +32,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
     </i-layout-content>
 </i-layout>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-layout>
@@ -40,10 +47,11 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 </i-layout>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
    
-<i-code-preview title="Content With Header and Footer">
+<i-code title="Content With Header and Footer">
+<i-tab type="preview">
 
 <i-layout class="-preview">
     <i-layout-header>
@@ -57,7 +65,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
     </i-layout-footer>
 </i-layout>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-layout>
@@ -75,10 +84,11 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 </i-layout>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
-<i-code-preview title="Content With Left Aside">
+<i-code title="Content With Left Aside">
+<i-tab type="preview">
 
 <i-layout class="-preview">
     <i-layout-header>
@@ -97,7 +107,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
     </i-layout-footer>
 </i-layout>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-layout>
@@ -121,8 +132,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 </i-layout>
 ~~~   
 
-</template>
-<template slot="css">
+</i-tab>
+<i-tab type="css">
 
 ~~~css
 .layout-aside {
@@ -130,10 +141,11 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
-<i-code-preview title="Content With Right Aside">
+<i-code title="Content With Right Aside">
+<i-tab type="preview">
 
 <i-layout class="-preview">
     <i-layout-header>
@@ -152,7 +164,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
     </i-layout-footer>
 </i-layout>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-layout>
@@ -176,8 +189,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 </i-layout>
 ~~~
 
-</template>
-<template slot="css">
+</i-tab>
+<i-tab type="css">
 
 ~~~css
 .layout-aside {
@@ -185,10 +198,11 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
-<i-code-preview title="Content With Left and Right Asides">
+<i-code title="Content With Left and Right Asides">
+<i-tab type="preview">
 
 <i-layout class="-preview">
     <i-layout-header>
@@ -210,7 +224,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
     </i-layout-footer>
 </i-layout>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-layout>
@@ -238,8 +253,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 </i-layout>
 ~~~
 
-</template>
-<template slot="css">
+</i-tab>
+<i-tab type="css">
 
 ~~~css
 .layout-aside {
@@ -247,10 +262,11 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
-<i-code-preview title="Layout with Left Aside">
+<i-code title="Layout with Left Aside">
+<i-tab type="preview">
 
 <i-layout vertical class="-preview">
     <i-layout-aside>
@@ -269,7 +285,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
     </i-layout>
 </i-layout>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-layout vertical>
@@ -293,8 +310,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 </i-layout>
 ~~~
 
-</template>
-<template slot="css">
+</i-tab>
+<i-tab type="css">
 
 ~~~css
 .layout-aside {
@@ -302,10 +319,11 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
-<i-code-preview title="Layout with Right Aside">
+<i-code title="Layout with Right Aside">
+<i-tab type="preview">
 
 <i-layout vertical class="-preview">
     <i-layout>
@@ -324,7 +342,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
     </i-layout-aside>
 </i-layout>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-layout vertical>
@@ -348,19 +367,20 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 </i-layout>
 ~~~
 
-</template>
-<template slot="css">
+</i-tab>
+<i-tab type="css">
 
 ~~~css
 .layout-aside {
     width: 16rem;
 }
 ~~~
-</template>
+</i-tab>
 
-</i-code-preview>
+</i-code>
 
-<i-code-preview title="Layout with Left and Right Asides">
+<i-code title="Layout with Left and Right Asides">
+<i-tab type="preview">
 
 <i-layout vertical class="-preview">
     <i-layout-aside>
@@ -382,7 +402,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
     </i-layout-aside>
 </i-layout>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-layout vertical>
@@ -410,8 +431,8 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 </i-layout>
 ~~~
 
-</template>
-<template slot="css">
+</i-tab>
+<i-tab type="css">
 
 ~~~css
 .layout-aside {
@@ -419,15 +440,15 @@ Layouts are based on flexbox, so please make sure your browser fully supports it
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Components API
 Here you can find a list of the various customization options you can use for the layout components as props, as well as available slots.
 
-<i-api-preview title="Layout API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayout">
-    <template slot="props">
+<i-code api title="Layout API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayout">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">vertical</template>
@@ -437,67 +458,67 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>false</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for layout default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Layout Header API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutHeader" default-active='slots'>
-    <template slot="slots">
+<i-code api title="Layout Header API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutHeader" default-active='slots'>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for layout header default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Layout Content API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutContent" default-active='slots'>
-    <template slot="slots">
+<i-code api title="Layout Content API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutContent" default-active='slots'>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for layout content default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Layout Footer API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutFooter" default-active='slots'>
-    <template slot="slots">
+<i-code api title="Layout Footer API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutFooter" default-active='slots'>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for layout footer default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Layout Aside API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutAside" default-active='slots'>
-    <template slot="slots">
+<i-code api title="Layout Aside API" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ILayoutAside" default-active='slots'>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for layout aside default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the layout components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Layout Aside" expanded>
-    <template slot="scss">
+<i-code scss title="Layout Aside" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$layout-aside-background</template>
@@ -508,11 +529,11 @@ Here you can find a list of the Sass variables you can use for the layout compon
                 <template slot="default"><code>auto</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
-<i-scss-preview title="Layout Header" expanded>
-    <template slot="scss">
+<i-code scss title="Layout Header" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$layout-header-background</template>
@@ -523,11 +544,11 @@ Here you can find a list of the Sass variables you can use for the layout compon
                 <template slot="default"><code>$spacer</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
-<i-scss-preview title="Layout Footer" expanded>
-    <template slot="scss">
+<i-code scss title="Layout Footer" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$layout-footer-background</template>
@@ -538,5 +559,5 @@ Here you can find a list of the Sass variables you can use for the layout compon
                 <template slot="default"><code>$spacer</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>

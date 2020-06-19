@@ -1,5 +1,10 @@
+---
+title: Data Table Rendering
+description: Inkline's Data Table columns and rows can be rendered using custom render helpers. 
+---
+
 # Data Table Rendering
-Inkline's Data Table columns and rows can be rendered using custom render helpers. {.lead}
+## Inkline's Data Table columns and rows can be rendered using custom render helpers. 
 
 Inkline provides four ways to render data table fields:
 - Data Path <span class="_text-muted">(default)</span>
@@ -30,16 +35,18 @@ export default {
 }
 ~~~
 
-<i-code-preview title="Data Table Path">
-<i-datatable :columns="dataPathColumns" :rows="rows" />
-<template slot="html">
+<i-code title="Data Table Path">
+<i-tab type="preview">
+    <i-datatable :columns="dataPathColumns" :rows="rows" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -61,8 +68,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Styling
@@ -178,16 +185,18 @@ export default {
 
 Keep in mind that, by providing a custom `render` function, you will need to provide a custom `sort` function as well.
 
-<i-code-preview title="Data Table Render Function">
-<i-datatable :columns="renderColumns" :rows="rows" />
-<template slot="html">
+<i-code title="Data Table Render Function">
+<i-tab type="preview">
+    <i-datatable :columns="renderColumns" :rows="rows" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -209,8 +218,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Custom Component
@@ -251,9 +260,11 @@ export default {
 
 Here's an example for how to display a progress bar component on each row:
 
-<i-code-preview title="Data Table Custom Component">
-<i-datatable :columns="componentColumns" :rows="componentRows"></i-datatable>
-<template slot="html">
+<i-code title="Data Table Custom Component">
+<i-tab type="preview">
+    <i-datatable :columns="componentColumns" :rows="componentRows"></i-datatable>
+</i-tab>
+<i-tab type="html">
 <div v-pre>
 
 ~~~html
@@ -261,8 +272,8 @@ Here's an example for how to display a progress bar component on each row:
 ~~~
 
 </div>
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -296,8 +307,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 <i-alert variant="info" class="-code _margin-top-1">
 <i-icon icon="info" size="lg" slot="icon"></i-icon>
@@ -325,15 +336,17 @@ By providing a scoped `row` slot, you can render rows as you see fit.
 
 Keep in mind that, by providing a custom `render` function, you will need to provide a custom `sort` function as well.
 
-<i-code-preview title="Data Table Scoped Slot">
-<i-datatable :columns="renderColumns" :rows="rows">
-    <template v-slot:row="{ row, index }">
-        <td align="right">{{index + 1}}</td>
-        <td>{{row.name}}</td>
-        <td>{{row.address.city}}, {{row.address.country}}</td>
-    </template>
-</i-datatable>
-<template slot="html">
+<i-code title="Data Table Scoped Slot">
+<i-tab type="preview">
+    <i-datatable :columns="renderColumns" :rows="rows">
+        <template v-slot:row="{ row, index }">
+            <td align="right">{{index + 1}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.address.city}}, {{row.address.country}}</td>
+        </template>
+    </i-datatable>
+</i-tab>
+<i-tab type="html">
 <div v-pre>
 
 ~~~html
@@ -347,8 +360,8 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
 ~~~
 
 </div>
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -370,8 +383,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Render Header Function
@@ -391,16 +404,18 @@ export default {
 }
 ~~~
 
-<i-code-preview title="Data Table Render Header Function">
-<i-datatable :columns="renderHeaderColumns" :rows="rows" />
-<template slot="html">
+<i-code title="Data Table Render Header Function">
+<i-tab type="preview">
+    <i-datatable :columns="renderHeaderColumns" :rows="rows" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -422,8 +437,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Custom Header Component
@@ -467,9 +482,11 @@ export default {
 
 Here's a practical example where the header component contains a dropdown:
 
-<i-code-preview title="Data Table Custom Header Component">
-<i-datatable :columns="headerComponentColumns" :rows="rows"></i-datatable>
-<template slot="html">
+<i-code title="Data Table Custom Header Component">
+<i-tab type="preview">
+    <i-datatable :columns="headerComponentColumns" :rows="rows"></i-datatable>
+</i-tab>
+<i-tab type="html">
 <div v-pre>
 
 ~~~html
@@ -477,8 +494,8 @@ Here's a practical example where the header component contains a dropdown:
 ~~~
 
 </div>
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -518,8 +535,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 <i-alert variant="info" class="-code _margin-top-1">
 <i-icon icon="info" size="lg" slot="icon"></i-icon>
@@ -547,15 +564,17 @@ By providing a scoped `header` slot, you can render the datatable header as you 
 
 Keep in mind that, by providing a custom `render` function, you will need to provide a custom `sort` function as well.
 
-<i-code-preview title="Data Table Scoped Header Slot">
-<i-datatable :columns="dataPathColumns" :rows="rows">
-    <template v-slot:header="{ sortBy }">
-        <th class="_text-right">No.</th>
-        <th>Name</th>
-        <th>Country</th>
-    </template>
-</i-datatable>
-<template slot="html">
+<i-code title="Data Table Scoped Header Slot">
+<i-tab type="preview">
+    <i-datatable :columns="dataPathColumns" :rows="rows">
+        <template v-slot:header="{ sortBy }">
+            <th class="_text-right">No.</th>
+            <th>Name</th>
+            <th>Country</th>
+        </template>
+    </i-datatable>
+</i-tab>
+<i-tab type="html">
 <div v-pre>
 
 ~~~html
@@ -569,8 +588,8 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
 ~~~
 
 </div>
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -592,8 +611,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Header Wrapper Slot
 By providing a scoped `header-wrapper` slot, you can render the datatable search, entries selector and pagination as you see fit.
@@ -615,18 +634,20 @@ By providing a scoped `header-wrapper` slot, you can render the datatable search
 
 </div>
 
-<i-code-preview title="Data Table Header Wrapper Slot">
-<i-datatable :columns="dataPathColumns" :rows="wrapperRows">
-    <template v-slot:header-wrapper="{ rowsFrom, rowsTo, rowsCount, page, rowsPerPage, filter, onPageChange, onRowsPerPageChange, onFilterChange }">
-        <i-input :value="filter" @input="onFilterChange" placeholder="Search.." />
-        <div>
-            <i-button class="_margin-0" :active="rowsPerPage === 10" @click="onRowsPerPageChange(10)">10</i-button>
-            <i-button class="_margin-0" :active="rowsPerPage === 25" @click="onRowsPerPageChange(25)">25</i-button>
-            <i-button class="_margin-0" :active="rowsPerPage === 50" @click="onRowsPerPageChange(50)">50</i-button>
-        </div>
-    </template>
-</i-datatable>
-<template slot="html">
+<i-code title="Data Table Header Wrapper Slot">
+<i-tab type="preview">
+    <i-datatable :columns="dataPathColumns" :rows="wrapperRows">
+        <template v-slot:header-wrapper="{ rowsFrom, rowsTo, rowsCount, page, rowsPerPage, filter, onPageChange, onRowsPerPageChange, onFilterChange }">
+            <i-input :value="filter" @input="onFilterChange" placeholder="Search.." />
+            <div>
+                <i-button class="_margin-0" :active="rowsPerPage === 10" @click="onRowsPerPageChange(10)">10</i-button>
+                <i-button class="_margin-0" :active="rowsPerPage === 25" @click="onRowsPerPageChange(25)">25</i-button>
+                <i-button class="_margin-0" :active="rowsPerPage === 50" @click="onRowsPerPageChange(50)">50</i-button>
+            </div>
+        </template>
+    </i-datatable>
+</i-tab>
+<i-tab type="html">
 <div v-pre>
 
 ~~~html
@@ -643,8 +664,8 @@ By providing a scoped `header-wrapper` slot, you can render the datatable search
 ~~~
 
 </div>
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -666,8 +687,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Render Footer Function
@@ -687,16 +708,18 @@ export default {
 }
 ~~~
 
-<i-code-preview title="Data Table Render Header Function">
-<i-datatable :columns="renderFooterColumns" :rows="rows" />
-<template slot="html">
+<i-code title="Data Table Render Header Function">
+<i-tab type="preview">
+    <i-datatable :columns="renderFooterColumns" :rows="rows" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -718,8 +741,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Custom Footer Component
@@ -763,9 +786,11 @@ export default {
 
 Here's a practical example where the header component contains a dropdown:
 
-<i-code-preview title="Data Table Custom Footer Component">
-<i-datatable :columns="footerComponentColumns" :rows="rows"></i-datatable>
-<template slot="html">
+<i-code title="Data Table Custom Footer Component">
+<i-tab type="preview">
+    <i-datatable :columns="footerComponentColumns" :rows="rows"></i-datatable>
+</i-tab>
+<i-tab type="html">
 <div v-pre>
 
 ~~~html
@@ -773,8 +798,8 @@ Here's a practical example where the header component contains a dropdown:
 ~~~
 
 </div>
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -814,8 +839,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 <i-alert variant="info" class="-code _margin-top-1">
 <i-icon icon="info" size="lg" slot="icon"></i-icon>
@@ -843,15 +868,17 @@ By providing a scoped `footer` slot, you can render the datatable footer as you 
 
 Keep in mind that, by providing a custom `render` function, you will need to provide a custom `sort` function as well.
 
-<i-code-preview title="Data Table Scoped Footer Slot">
-<i-datatable :columns="dataPathColumns" :rows="rows">
-    <template slot="footer">
-        <th class="_text-right">No.</th>
-        <th>Name</th>
-        <th>Country</th>
-    </template>
-</i-datatable>
-<template slot="html">
+<i-code title="Data Table Scoped Footer Slot">
+<i-tab type="preview">
+    <i-datatable :columns="dataPathColumns" :rows="rows">
+        <template slot="footer">
+            <th class="_text-right">No.</th>
+            <th>Name</th>
+            <th>Country</th>
+        </template>
+    </i-datatable>
+</i-tab>
+<i-tab type="html">
 <div v-pre>
 
 ~~~html
@@ -865,8 +892,8 @@ Keep in mind that, by providing a custom `render` function, you will need to pro
 ~~~
 
 </div>
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -888,8 +915,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Footer Wrapper Slot
 By providing a scoped `footer-wrapper` slot, you can render the datatable search, entries selector and pagination as you see fit.
@@ -911,19 +938,21 @@ By providing a scoped `footer-wrapper` slot, you can render the datatable search
 
 </div>
 
-<i-code-preview title="Data Table Footer Wrapper Slot">
-<i-datatable :columns="dataPathColumns" :rows="wrapperRows">
-    <template v-slot:footer-wrapper="{ rowsFrom, rowsTo, rowsCount, page, rowsPerPage, filter, onPageChange, onRowsPerPageChange, onFilterChange }">
-        <div>{{ rowsFrom }} to {{ rowsTo }} out of {{ rowsCount }}</div>
-        <i-pagination
-            :items="rowsCount"
-            :items-per-page="rowsPerPage"
-            :limit="3"
-            :value="page"
-            @input="onPageChange" />
-    </template>
-</i-datatable>
-<template slot="html">
+<i-code title="Data Table Footer Wrapper Slot">
+<i-tab type="preview">
+    <i-datatable :columns="dataPathColumns" :rows="wrapperRows">
+        <template v-slot:footer-wrapper="{ rowsFrom, rowsTo, rowsCount, page, rowsPerPage, filter, onPageChange, onRowsPerPageChange, onFilterChange }">
+            <div>{{ rowsFrom }} to {{ rowsTo }} out of {{ rowsCount }}</div>
+            <i-pagination
+                :items="rowsCount"
+                :items-per-page="rowsPerPage"
+                :limit="3"
+                :value="page"
+                @input="onPageChange" />
+        </template>
+    </i-datatable>
+</i-tab>
+<i-tab type="html">
 <div v-pre>
 
 ~~~html
@@ -941,8 +970,8 @@ By providing a scoped `footer-wrapper` slot, you can render the datatable search
 ~~~
 
 </div>
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -964,5 +993,5 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
