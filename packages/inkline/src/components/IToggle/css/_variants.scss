@@ -22,7 +22,7 @@
             }
 
             &:disabled + .indicator,
-            &:read-only + .indicator {
+            &[readonly] + .indicator {
                 background-color: $_background-disabled;
 
                 &::before {
@@ -30,8 +30,8 @@
                 }
             }
 
-            &:checked:disabled + .indicator,
-            &:checked:read-only + .indicator {
+            &:disabled:checked + .indicator,
+            &[readonly]:checked + .indicator {
                 background-color: $_background-active-disabled;
 
                 &::before {

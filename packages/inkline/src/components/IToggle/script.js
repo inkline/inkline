@@ -17,7 +17,8 @@ export default {
     },
     methods: {
         onChange(event) {
-            if (this.readonly || this.disabled) { return; }
+            console.log(this.isReadonly, this.isDisabled)
+            if (this.isReadonly || this.isDisabled) { return; }
 
             this.$emit('input', event.target.checked);
         }
