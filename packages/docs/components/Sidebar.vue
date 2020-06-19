@@ -1,0 +1,707 @@
+<template>
+    <div class="site-navigation" :class="classes">
+        <slot name="header" />
+        <ol>
+            <li>
+                <span>Preface</span>
+                <ul>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-preface-about-inkline' }">
+                            About Inkline
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-preface-concepts' }">
+                            Concepts
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-preface-contribution-guide' }">
+                            Contribution Guide
+                        </nuxt-link>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>Introduction</span>
+                <ul>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-introduction-getting-started' }">
+                            Getting Started
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <i-collapsible
+                            v-model="menu['docs-introduction-installation']"
+                            :class="{ '-active': subroutes['docs-introduction-installation'] }">
+                            <i-collapsible-item id="docs-introduction-installation" title="Installation">
+                                <ul>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-introduction-installation-vue-cli' }">
+                                            Vue CLI
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-introduction-installation-nuxt' }">
+                                            Nuxt.js
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-introduction-installation-custom' }">
+                                            Custom
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-introduction-installation-cdn' }">
+                                            CDN
+                                        </nuxt-link>
+                                    </li>
+                                </ul>
+                            </i-collapsible-item>
+                        </i-collapsible>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-introduction-plugin-options' }">
+                            Plugin Options
+                        </nuxt-link>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>Core</span>
+                <ul>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-core-grid' }">
+                            Grid
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-core-layout' }">
+                            Layout
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-core-typography' }">
+                            Typography
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-core-images' }">
+                            Images
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-core-tables' }">
+                            Tables
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-core-code' }">
+                            Code
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-core-sass-variables' }">
+                            Sass Variables
+                        </nuxt-link>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>Forms</span>
+                <ul>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-forms-checkbox' }">
+                            Checkbox
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-forms-input' }">
+                            Input
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-forms-input-number' }">
+                            Number Input
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-forms-radio' }">
+                            Radio
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-forms-select' }">
+                            Select
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-forms-textarea' }">
+                            Textarea
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-forms-toggle' }">
+                            Toggle
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-forms-form' }">
+                            Form
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-forms-form-group' }">
+                            Form Group
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-forms-form-label' }">
+                            Form Label
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <i-collapsible
+                            v-model="menu['docs-forms-validation']"
+                            :class="{ '-active': subroutes['docs-forms-validation'] }">
+                            <i-collapsible-item id="docs-forms-validation" title="Form Validation">
+                                <ul>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-forms-validation-introduction' }">
+                                            Introduction
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-forms-validation-schema' }">
+                                            Schema
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-forms-validation-validators' }">
+                                            Validators
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-forms-validation-methods' }">
+                                            Methods
+                                        </nuxt-link>
+                                    </li>
+                                </ul>
+                            </i-collapsible-item>
+                        </i-collapsible>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>Components</span>
+                <ul>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-alert' }">
+                            Alert
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-badge' }">
+                            Badge
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-breadcrumb' }">
+                            Breadcrumb
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-button' }">
+                            Button
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-button-group' }">
+                            Button Group
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-card' }">
+                            Card
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-collapsible' }">
+                            Collapsible
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <i-collapsible
+                            v-model="menu['docs-components-datatable']"
+                            :class="{ '-active': subroutes['docs-components-datatable'] }">
+                            <i-collapsible-item id="docs-components-datatable" title="DataTable">
+                                <ul>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-components-datatable-introduction' }">
+                                            Introduction
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-components-datatable-sorting' }">
+                                            Sorting
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-components-datatable-filtering' }">
+                                            Filtering
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-components-datatable-pagination' }">
+                                            Pagination
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-components-datatable-scrolling' }">
+                                            Scrolling
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-components-datatable-expanding' }">
+                                            Expanding
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-components-datatable-events' }">
+                                            Events
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-components-datatable-rendering' }">
+                                            Rendering
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{ name: 'docs-components-datatable-api' }">
+                                            API & Variables
+                                        </nuxt-link>
+                                    </li>
+                                </ul>
+                            </i-collapsible-item>
+                        </i-collapsible>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-dropdown' }">
+                            Dropdown
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-hamburger-menu' }">
+                            Hamburger
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-header' }">
+                            Header
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-icon' }">
+                            Icon
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-list-group' }">
+                            List Group
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-loader' }">
+                            Loader
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-media' }">
+                            Media
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-modal' }">
+                            Modal
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-nav' }">
+                            Nav
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-navbar' }">
+                            Navbar
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-pagination' }">
+                            Pagination
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-popover' }">
+                            Popover
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-progress' }">
+                            Progress
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-sidebar' }">
+                            Sidebar
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-tabs' }">
+                            Tabs
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-components-tooltip' }">
+                            Tooltip
+                        </nuxt-link>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>Utilities</span>
+                <ul>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-border' }">
+                            Border
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-clearfix' }">
+                            Clearfix
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-color' }">
+                            Color
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-display' }">
+                            Display
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-embed' }">
+                            Embed
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-flex' }">
+                            Flex
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-float' }">
+                            Float
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-overflow' }">
+                            Overflow
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-overlay' }">
+                            Overlay
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-position' }">
+                            Position
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-sizing' }">
+                            Sizing
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-spacing' }">
+                            Spacing
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-text' }">
+                            Text
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-vertical-align' }">
+                            Vertical Align
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-utilities-visibility' }">
+                            Visibility
+                        </nuxt-link>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>Advanced</span>
+                <ul>
+                    <li>
+                        <nuxt-link :to="{ name: 'docs-advanced-dark-mode' }">
+                            Dark Mode
+                        </nuxt-link>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+</template>
+
+<script>
+import {
+    ClassesProviderMixin,
+    VariantPropertyMixin
+} from '@inkline/inkline/src/mixins';
+
+export default {
+    name: 'Sidebar',
+    mixins: [
+        ClassesProviderMixin,
+        VariantPropertyMixin
+    ],
+    data() {
+        return {
+            menu: {
+                'docs-components-datatable': [],
+                'docs-forms-validation': []
+            }
+        };
+    },
+    computed: {
+        subroutes() {
+            const routeParts = this.$nuxt.$route.name.split('-');
+            return routeParts
+                .reduce((acc, part, index) => {
+                    acc[routeParts.slice(0, index + 1).join('-')] = true;
+                    return acc;
+                }, {});
+        }
+    },
+    mounted() {
+        Object.keys(this.menu).forEach((routeName) => {
+            this.menu[routeName] = this.subroutes[routeName] ? [routeName] : [];
+        });
+    }
+};
+</script>
+
+<style lang="scss" scoped>
+@import '~@inkline/inkline/src/css/config/index';
+
+$site-navigation-border-left-color: $color-gray-20 !default;
+$site-navigation-border-left-color-active: $color-primary !default;
+
+.site-navigation {
+    position: relative;
+    display: block;
+    padding-top: ($spacer * 2.5);
+
+    ol {
+        list-style: none;
+        padding: 0;
+
+        > li {
+            > span {
+                font-weight: bold;
+                color: $color-gray-80;
+                transition: color $transition-duration $transition-easing;
+            }
+
+            + li {
+                margin-top: $spacer;
+            }
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-top: ($spacer / 2);
+        margin-left: ($spacer / 2);
+
+        > li {
+            margin: 0;
+            position: relative;
+
+            ::v-deep .collapsible > .item > a,
+            > a {
+                display: block;
+                padding-top: ($spacer / 3);
+                padding-bottom: ($spacer / 3);
+                padding-left: $spacer;
+                color: $body-color;
+                background-color: transparent !important;
+                border-left: 1px solid $site-navigation-border-left-color;
+                transition: color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
+
+                &::before {
+                    opacity: 1;
+                    transition: opacity $transition-duration $transition-easing, transform $transition-duration $transition-easing;
+                    content: '';
+                    display: block;
+                    height: 100%;
+                    width: 3px;
+                    background: $link-color;
+                    position: absolute;
+                    left: -1px;
+                    top: 0;
+                    transform: scaleX(0);
+                }
+
+                &.-active,
+                &.nuxt-link-active {
+                    color: $link-color;
+                    font-weight: $font-weight-semibold;
+
+                    &::before {
+                        opacity: 1;
+                        transform: scaleX(1);
+                    }
+                }
+            }
+
+            ul {
+                margin-top: 0;
+                margin-left: 0;
+
+                > li {
+                    > a {
+                        font-size: 90%;
+                        padding-left: $spacer * 2;
+                        transition: color $transition-duration $transition-easing;
+                    }
+                }
+            }
+        }
+    }
+
+    ::v-deep .collapsible {
+        border: 0;
+
+        &.-active {
+            > .item {
+                > .header {
+                    border-left-color: $site-navigation-border-left-color;
+                    color: $color-primary;
+                    font-weight: $font-weight-semibold;
+                    background-color: transparent !important;
+
+                    &::before {
+                        opacity: 1;
+                        transform: scaleX(1);
+                    }
+                }
+
+                &.-active > .header {
+                    font-weight: $font-weight-normal;
+                    border-left-color: $site-navigation-border-left-color-active;
+
+                    &::before {
+                        opacity: 0;
+                        transform: scaleX(0);
+                    }
+                }
+
+                .body > .content {
+                    ul li a {
+                        border-left-color: $site-navigation-border-left-color-active;
+                        transition: color $transition-duration $transition-easing;
+                    }
+                }
+            }
+        }
+
+        > .item {
+            > .header {
+                background: transparent;
+                display: flex;
+                justify-content: flex-start;
+                outline: none;
+
+                .icon {
+                    font-size: 75%;
+                    margin-left: spacers('1/2');
+                    color: $color-gray-40;
+                    transition: color $transition-duration $transition-easing, transform $transition-duration $transition-easing;
+                }
+            }
+
+            .body > .content {
+                padding: 0;
+            }
+        }
+    }
+
+    &.-dark {
+        ol {
+            > li {
+                > span {
+                    color: colors('white');
+                }
+            }
+        }
+
+        ul {
+            > li {
+                ::v-deep .collapsible > .item > a,
+                > a {
+                    color: colors('gray-40');
+                    border-left: 1px solid colors('gray-70');
+
+                    &::before {
+                        background: $link-color;
+                    }
+
+                    &.-active,
+                    &.nuxt-link-active {
+                        color: $link-color;
+                    }
+                }
+            }
+        }
+
+        ::v-deep .collapsible {
+            &.-active {
+                > .item {
+                    > .header {
+                        border-left-color: $border-color-dark;
+                        color: $color-primary;
+                    }
+
+                    &.-active > .header {
+                        border-left-color: $site-navigation-border-left-color-active;
+                    }
+
+                    .body > .content {
+                        ul li a {
+                            border-left-color: $site-navigation-border-left-color-active;
+                        }
+                    }
+                }
+            }
+
+            > .item {
+                > .header {
+                    .icon {
+                        color: $color-gray-60;
+                    }
+                }
+            }
+        }
+    }
+}
+</style>
