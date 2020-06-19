@@ -1,20 +1,25 @@
+---
+title: Data Table Expanding
+description: Inkline's Data Table allows you to expand a row to easily show more details about the entry. 
+---
+
 # Data Table Expanding
-Inkline's Data Table allows you to expand a row to easily show more details about the entry. {.lead}
+## Inkline's Data Table allows you to expand a row to easily show more details about the entry. 
 
 ### Basic Expandable Rows
 To be able to expand a Data Table entry, you will need to provide an `expand` scoped slot to be rendered for each row.
 
-<i-code-preview title="Data Table Expanding">
-
-<i-datatable :columns="columns" :rows="rows">
-    <template v-slot:expand="{ row, columns, expanded }">
-        <td :colspan="columns.length">
-            {{row.name}} occupies the {{row.position}} position at Pied Piper, a fictional company based in Silicon Valley, California.
-        </td>
-    </template>
-</i-datatable>
-
-<template slot="html">
+<i-code title="Data Table Expanding">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rows">
+        <template v-slot:expand="{ row, columns, expanded }">
+            <td :colspan="columns.length">
+                {{row.name}} occupies the {{row.position}} position at Pied Piper, a fictional company based in Silicon Valley, California.
+            </td>
+        </template>
+    </i-datatable>
+</i-tab>
+<i-tab type="html">
 <div v-pre>
 
 ~~~html
@@ -28,8 +33,8 @@ To be able to expand a Data Table entry, you will need to provide an `expand` sc
 ~~~
 
 </div>
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -54,6 +59,6 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 

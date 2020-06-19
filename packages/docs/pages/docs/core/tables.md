@@ -1,43 +1,48 @@
+---
+title: Tables
+description: Documentation and examples for opt-in styling of tables with Inkline. 
+---
+
 # Tables
-## Documentation and examples for opt-in styling of tables with Inkline. { .lead }
+## Documentation and examples for opt-in styling of tables with Inkline. 
 
 ### Basic Table
 Using the most basic table markup, here’s how tables look in Inkline. All table styles are inherited in Inkline, meaning any nested tables will be styled in the same manner as the parent.
 
-<i-code-preview title="Basic Table">
-
-<i-table>
-  <thead>
-    <tr>
-      <th># </th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Alex</td>
-      <td>Grozav</td>
-      <td>@alexgrozav</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>@johndoe</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Alice</td>
-      <td>Cooper</td>
-      <td>@alicecooper</td>
-    </tr>
-  </tbody>
-</i-table>
-
-<template slot="html">
+<i-code title="Basic Table">
+<i-tab type="preview">
+    <i-table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Alex</td>
+                <td>Grozav</td>
+                <td>@alexgrozav</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>John</td>
+                <td>Doe</td>
+                <td>@johndoe</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Alice</td>
+                <td>Cooper</td>
+                <td>@alicecooper</td>
+            </tr>
+        </tbody>
+    </i-table>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-table>
@@ -72,8 +77,8 @@ Using the most basic table markup, here’s how tables look in Inkline. All tabl
 </i-table>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 <i-alert variant="info" class="_margin-top-1">
     <template slot="icon"><i-icon icon="info" class="h4"></i-icon></template>
@@ -84,7 +89,8 @@ Using the most basic table markup, here’s how tables look in Inkline. All tabl
 ### Bordered Table
 Add the `bordered` property for borders on all sides of the table and table cells.
 
-<i-code-preview title="Bordered Table">
+<i-code title="Bordered Table">
+<i-tab type="preview">
 
 <i-table bordered>
   <thead>
@@ -117,7 +123,8 @@ Add the `bordered` property for borders on all sides of the table and table cell
   </tbody>
 </i-table>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-table bordered>
@@ -152,13 +159,14 @@ Add the `bordered` property for borders on all sides of the table and table cell
 </i-table>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Striped Table
 Add the `striped` property to add zebra-striping to any table row within the table body.
 
-<i-code-preview title="Striped Table">
+<i-code title="Striped Table">
+<i-tab type="preview">
 
 <i-table striped>
   <thead>
@@ -191,7 +199,8 @@ Add the `striped` property to add zebra-striping to any table row within the tab
   </tbody>
 </i-table>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-table striped>
@@ -226,14 +235,14 @@ Add the `striped` property to add zebra-striping to any table row within the tab
 </i-table>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Hoverable Table
 Add the `hover` property to enable a hover state on table rows within a `<tbody>`.
 
-<i-code-preview title="Hoverable Table">
-
+<i-code title="Hoverable Table">
+<i-tab type="preview">
 <i-table hover>
   <thead>
     <tr>
@@ -265,7 +274,8 @@ Add the `hover` property to enable a hover state on table rows within a `<tbody>
   </tbody>
 </i-table>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-table hover>
@@ -300,15 +310,16 @@ Add the `hover` property to enable a hover state on table rows within a `<tbody>
 </i-table>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Responsive Table
 Enable responsiveness by adding the `responsive` property. Responsive tables scroll horizontally on small devices. When viewing on anything larger, you will not see any difference in these tables.
 
 You can target specific responsive breakpoints by setting a value to the `responsive` property: `responsive="<breakpoint>"`, where breakpoint is one of `xs`, `sm`, `md`, `lg` or `xl`.
 
-<i-code-preview title="Responsive Table">
+<i-code title="Responsive Table">
+<i-tab type="preview">
 
 <i-table responsive>
   <thead>
@@ -353,7 +364,8 @@ You can target specific responsive breakpoints by setting a value to the `respon
   </tbody>
 </i-table>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-table responsive>
@@ -400,13 +412,14 @@ You can target specific responsive breakpoints by setting a value to the `respon
 </i-table>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Variants
 Tables can be themed using the `variant` property. You can use colors such as `light`, `dark`, `primary`, `secondary`, `info`, `success`, `warning`, and `danger`. You can set a variant for the table as a whole or individual table elements. By default, tables have the `light` variant. You can use a variation of any of the above classes to create the table design you need.
 
-<i-code-preview title="Table Variants">
+<i-code title="Table Variants">
+<i-tab type="preview">
 
 <i-table variant="light" bordered striped hover class="_margin-bottom-1">
   <thead>
@@ -468,6 +481,7 @@ Tables can be themed using the `variant` property. You can use colors such as `l
     </tr>
   </tbody>
 </i-table>
+
 <i-table variant="primary" bordered striped hover class="_margin-bottom-1">
   <thead>
     <tr>
@@ -649,7 +663,8 @@ Tables can be themed using the `variant` property. You can use colors such as `l
   </tbody>
 </i-table>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-table variant="light"> .. </i-table>
@@ -662,15 +677,15 @@ Tables can be themed using the `variant` property. You can use colors such as `l
 <i-table variant="danger"> .. </i-table>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the table components as props, as well as available slots.
 
-<i-api-preview title="Table API" expanded markup="i-table">
-    <template slot="props">
+<i-code api title="Table API" expanded markup="i-table">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">bordered</template>
@@ -708,23 +723,23 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="property">default</template>
                 <template slot="description">Slot for table default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the table components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Table" expanded>
-    <template slot="scss">
+<i-code scss title="Table" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$table-margin-bottom</template>
@@ -759,5 +774,5 @@ Here you can find a list of the Sass variables you can use for the table compone
                 <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>

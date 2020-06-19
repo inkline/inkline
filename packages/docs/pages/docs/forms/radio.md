@@ -1,5 +1,10 @@
+---
+title: Radio
+description: Radio inputs allow the user to select one option from a set of options. 
+---
+
 # Radio
-## Radio inputs allow the user to select one option from a set of options. { .lead }
+## Radio inputs allow the user to select one option from a set of options. 
  
 Typically, there should not be too many options. Make sure you use a select input if you think the user doesn't need to see all the available options side-by-side.
 
@@ -7,16 +12,16 @@ You will need to use the `i-radio` component together with a `i-radio-group`.
 
 ### Basic Usage
 
-<i-code-preview title="Radio Group">
-
-<i-radio-group v-model="selectedGroup">
-    <i-radio value="Football">Football</i-radio>
-    <i-radio value="Voleyball">Voleyball</i-radio>
-    <i-radio value="Basketball">Basketball</i-radio>
-    <i-radio value="Tennis" disabled>Tennis</i-radio>
-</i-radio-group>
-
-<template slot="html">
+<i-code title="Radio Group">
+<i-tab type="preview">
+    <i-radio-group v-model="selectedGroup">
+        <i-radio value="Football">Football</i-radio>
+        <i-radio value="Voleyball">Voleyball</i-radio>
+        <i-radio value="Basketball">Basketball</i-radio>
+        <i-radio value="Tennis" disabled>Tennis</i-radio>
+    </i-radio-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-radio-group v-model="selected">
@@ -27,8 +32,8 @@ You will need to use the `i-radio` component together with a `i-radio-group`.
 </i-radio-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -40,28 +45,26 @@ export default {
 }
 ~~~
 
-</template>
-<template slot="output">
-
-Selected value: <code>{{selectedGroup}}</code>
-
-</template>
-</i-code-preview>
+</i-tab>
+<i-tab type="output">
+    Selected value: <code>{{selectedGroup}}</code>
+</i-tab>
+</i-code>
 
 
 ### Sizes
 You're able to use the `size` property to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
 
 
-<i-code-preview title="Radio Sizes">
-
-<i-radio-group v-model="selectedSize">
-    <i-radio size="sm" value="Football">Football</i-radio>
-    <i-radio size="md" value="Volleyball">Tennis</i-radio>
-    <i-radio size="lg" value="Basketball">Basketball</i-radio>
-</i-radio-group>
-
-<template slot="html">
+<i-code title="Radio Sizes">
+<i-tab type="preview">
+    <i-radio-group v-model="selectedSize">
+        <i-radio size="sm" value="Football">Football</i-radio>
+        <i-radio size="md" value="Volleyball">Tennis</i-radio>
+        <i-radio size="lg" value="Basketball">Basketball</i-radio>
+    </i-radio-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-radio-group v-model="selected">
@@ -71,8 +74,8 @@ You're able to use the `size` property to control the size of your inputs, using
 </i-radio-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -84,37 +87,34 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Applying the size `size` property to a `i-radio-group` will set the chosen size to all of its child inputs.
 
 
-<i-code-preview title="Radio Group Sizes">
-
-<i-radio-group size="sm" v-model="selectedSizeGroupSm" class="_margin-bottom-1">
-    <i-radio value="Football">Football</i-radio>
-    <i-radio value="Volleyball">Tennis</i-radio>
-    <i-radio value="Basketball">Basketball</i-radio>
-    <i-radio value="Tennis" disabled>Tennis</i-radio>
-</i-radio-group>
-
-<i-radio-group size="md" v-model="selectedSizeGroupMd" class="_margin-bottom-1">
-    <i-radio value="Football">Football</i-radio>
-    <i-radio value="Volleyball">Tennis</i-radio>
-    <i-radio value="Basketball">Basketball</i-radio>
-    <i-radio value="Tennis" disabled>Tennis</i-radio>
-</i-radio-group>
-
-<i-radio-group size="lg" v-model="selectedSizeGroupLg">
-    <i-radio value="Football">Football</i-radio>
-    <i-radio value="Volleyball">Tennis</i-radio>
-    <i-radio value="Basketball">Basketball</i-radio>
-    <i-radio value="Tennis" disabled>Tennis</i-radio>
-</i-radio-group>
-
-
-<template slot="html">
+<i-code title="Radio Group Sizes">
+<i-tab type="preview">
+    <i-radio-group size="sm" v-model="selectedSizeGroupSm" class="_margin-bottom-1">
+        <i-radio value="Football">Football</i-radio>
+        <i-radio value="Volleyball">Tennis</i-radio>
+        <i-radio value="Basketball">Basketball</i-radio>
+        <i-radio value="Tennis" disabled>Tennis</i-radio>
+    </i-radio-group>
+    <i-radio-group size="md" v-model="selectedSizeGroupMd" class="_margin-bottom-1">
+        <i-radio value="Football">Football</i-radio>
+        <i-radio value="Volleyball">Tennis</i-radio>
+        <i-radio value="Basketball">Basketball</i-radio>
+        <i-radio value="Tennis" disabled>Tennis</i-radio>
+    </i-radio-group>
+    <i-radio-group size="lg" v-model="selectedSizeGroupLg">
+        <i-radio value="Football">Football</i-radio>
+        <i-radio value="Volleyball">Tennis</i-radio>
+        <i-radio value="Basketball">Basketball</i-radio>
+        <i-radio value="Tennis" disabled>Tennis</i-radio>
+    </i-radio-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-radio-group size="sm" v-model="selected">
@@ -141,8 +141,8 @@ Applying the size `size` property to a `i-radio-group` will set the chosen size 
 </i-radio-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -154,22 +154,22 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Custom vs. Native
 Inkline uses custom radio designs by setting the `custom` property to `true` by default. 
 
-<i-code-preview title="Custon Radio Input">
-
-<i-radio-group v-model="selectedCustomTrue">
-    <i-radio :custom="true" value="Football">Football</i-radio>
-    <i-radio :custom="true" value="Volleyball">Tennis</i-radio>
-    <i-radio :custom="true" value="Basketball">Basketball</i-radio>    
-</i-radio-group>
-
-<template slot="html">
+<i-code title="Custon Radio Input">
+<i-tab type="preview">
+    <i-radio-group v-model="selectedCustomTrue">
+        <i-radio :custom="true" value="Football">Football</i-radio>
+        <i-radio :custom="true" value="Volleyball">Tennis</i-radio>
+        <i-radio :custom="true" value="Basketball">Basketball</i-radio>    
+    </i-radio-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-radio-group v-model="selectedCustomTrue">
@@ -179,8 +179,8 @@ Inkline uses custom radio designs by setting the `custom` property to `true` by 
 </i-radio-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -192,21 +192,21 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 By setting the `custom` property to `false`, the radios use the browser's default design. 
 
 
-<i-code-preview title="Native Radio Input">
-
-<i-radio-group v-model="selectedCustomFalse">
-    <i-radio :custom="false" value="Football">Football</i-radio>
-    <i-radio :custom="false" value="Volleyball">Tennis</i-radio>
-    <i-radio :custom="false" value="Basketball">Basketball</i-radio>
-</i-radio-group>
-
-<template slot="html">
+<i-code title="Native Radio Input">
+<i-tab type="preview">
+    <i-radio-group v-model="selectedCustomFalse">
+        <i-radio :custom="false" value="Football">Football</i-radio>
+        <i-radio :custom="false" value="Volleyball">Tennis</i-radio>
+        <i-radio :custom="false" value="Basketball">Basketball</i-radio>
+    </i-radio-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-radio-group v-model="selected">
@@ -216,8 +216,8 @@ By setting the `custom` property to `false`, the radios use the browser's defaul
 </i-radio-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -229,23 +229,23 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Radio Buttons
 
 You can display your radio inputs as toggleable buttons using the provided `<i-radio-button>` and `<i-radio-button-group>` components.
 
-<i-code-preview title="Radio Button Group">
-
-<i-radio-button-group v-model="selectedButton">
-    <i-radio-button value="Earth">Earth</i-radio-button>
-    <i-radio-button value="Mars">Mars</i-radio-button>
-    <i-radio-button value="Jupiter">Jupiter</i-radio-button>
-    <i-radio-button value="Venus" disabled>Venus</i-radio-button>
-</i-radio-button-group>
-
-<template slot="html">
+<i-code title="Radio Button Group">
+<i-tab type="preview">
+    <i-radio-button-group v-model="selectedButton">
+        <i-radio-button value="Earth">Earth</i-radio-button>
+        <i-radio-button value="Mars">Mars</i-radio-button>
+        <i-radio-button value="Jupiter">Jupiter</i-radio-button>
+        <i-radio-button value="Venus" disabled>Venus</i-radio-button>
+    </i-radio-button-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-radio-button-group v-model="selected">
@@ -256,8 +256,8 @@ You can display your radio inputs as toggleable buttons using the provided `<i-r
 </i-radio-button-group>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -269,15 +269,15 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the radio components as props, as well as available slots and events.
 
-<i-api-preview title="Radio API" markup="i-radio" expanded>
-    <template slot="props">
+<i-code title="Radio API" markup="i-radio" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">custom</template>
@@ -309,7 +309,7 @@ Here you can find a list of the various customization options you can use for th
             </api-table-row>
             <api-table-row>
                 <template slot="property">schema</template>
-                <template slot="description">Provides a schema binding to the radio form component. See the <nuxt-link :to="{ name: 'docs-forms-form-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
+                <template slot="description">Provides a schema binding to the radio form component. See the <nuxt-link :to="{ name: 'docs-forms-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
                 <template slot="type"><code>Object</code></template>
                 <template slot="values"></template>
                 <template slot="default"></template>
@@ -329,16 +329,16 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for radio form component label.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">click</template>
@@ -361,11 +361,11 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(value: String) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Radio Group API" markup="i-radio-group" expanded>
-    <template slot="props">
+<i-code title="Radio Group API" markup="i-radio-group" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">disabled</template>
@@ -396,16 +396,16 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for radio form group component default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">focus</template>
@@ -423,15 +423,15 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(value: String) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the checkbox and radio components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Radio" expanded>
-    <template slot="scss">
+<i-code title="Radio" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$form-check-radio-border-radius </template>
@@ -446,10 +446,10 @@ Here you can find a list of the Sass variables you can use for the checkbox and 
                 <template slot="default"><code>size-map($form-check-radio-icon-size-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>  
-<i-scss-preview title="Checkable" expanded>
-    <template slot="scss">
+    </i-tab>
+</i-code>  
+<i-code title="Checkable" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$form-check-disabled-color</template>
@@ -532,5 +532,5 @@ Here you can find a list of the Sass variables you can use for the checkbox and 
                 <template slot="default"><code>('monochrome-white')</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>

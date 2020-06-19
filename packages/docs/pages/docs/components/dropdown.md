@@ -1,11 +1,16 @@
+---
+title: Dropdown
+description: Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.
+---
+
 # Dropdown
-## Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.{.lead}
+## Dropdowns are contextual overlays toggled through clicking or hovering, used for displaying a list of links.
 
 ### Example
 Wrap both the dropdown's trigger element (such as an `<i-button>`) and the `<i-dropdown-menu>` inside a `<i-dropdown>` component. The dropdown component will always choose the first child element as a trigger and the last child element as the defined dropdown menu.
 
-<i-code-preview title="Dropdown Example">
-
+<i-code title="Dropdown Example">
+<i-tab type="preview">
 <i-dropdown>
     <i-button>Dropdown <i-icon icon="caret-down" class="_margin-left-1-2" /></i-button>
     <i-dropdown-menu>
@@ -17,7 +22,8 @@ Wrap both the dropdown's trigger element (such as an `<i-button>`) and the `<i-d
     </i-dropdown-menu>
 </i-dropdown>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-dropdown>
@@ -32,16 +38,16 @@ Wrap both the dropdown's trigger element (such as an `<i-button>`) and the `<i-d
 </i-dropdown>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Placement
 Trigger dropdown menus at the `top`, `bottom`, `left` or `right` of elements by adding the `placement` property to the parent `<i-dropdown>` element. 
 
 Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-end`, `bottom-start`, `bottom-end`, etc.) that sets the dropdown to the start or end of the placement instead of centering it. 
 
-<i-code-preview title="Dropdown Placement">
-
+<i-code title="Dropdown Placement">
+<i-tab type="preview">
 <div>
 <i-dropdown placement="top">
     <i-button>Dropdown Top <i-icon icon="caret-up" class="_margin-left-1-2" /></i-button>
@@ -66,7 +72,7 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 </i-dropdown>&nbsp;
 
 <i-dropdown placement="left">
-    <i-button>Dropdown Left <i-icon icon="caret-left" class="_margin-right-1-2" /></i-button>
+    <i-button><i-icon icon="caret-left" class="_margin-right-1-2" /> Dropdown Left</i-button>
     <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
@@ -88,11 +94,12 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 </i-dropdown>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-dropdown placement="top">
-    <i-button>Dropdown</i-button>
+    <i-button>Dropdown <i-icon icon="caret-up" class="_margin-left-1-2" /></i-button>
     <i-dropdown-menu>
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item :to="{ name: 'home' }">Another action</i-dropdown-item>
@@ -104,7 +111,7 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 ~~~
 ~~~html
 <i-dropdown placement="bottom">
-    <i-button>Dropdown</i-button>
+    <i-button>Dropdown <i-icon icon="caret-down" class="_margin-left-1-2" /></i-button>
     <i-dropdown-menu>
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item :to="{ name: 'home' }">Another action</i-dropdown-item>
@@ -116,7 +123,7 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 ~~~
 ~~~html
 <i-dropdown placement="left">
-    <i-button>Dropdown</i-button>
+    <i-button><i-icon icon="caret-left" class="_margin-right-1-2" /> Dropdown</i-button>
     <i-dropdown-menu>
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item :to="{ name: 'home' }">Another action</i-dropdown-item>
@@ -128,7 +135,7 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 ~~~
 ~~~html
 <i-dropdown placement="right">
-    <i-button>Dropdown</i-button>
+    <i-button>Dropdown <i-icon icon="caret-right" class="_margin-left-1-2" /></i-button>
     <i-dropdown-menu>
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item :to="{ name: 'home' }">Another action</i-dropdown-item>
@@ -139,14 +146,14 @@ Each of the positions also has a `-start` or `-end` variant (`top-start`, `top-e
 </i-dropdown>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Freeform Dropdown
 You're not required to use any dropdown-specific components inside of `<i-dropdown-menu>`. You can add your own HTML markup without any issues. You might need additional size styles to constrain the content width
 
-<i-code-preview title="Freeform Dropdown">
-
+<i-code title="Freeform Dropdown">
+<i-tab type="preview">
 <i-dropdown>
     <i-button>Dropdown</i-button>
     <i-dropdown-menu>
@@ -154,7 +161,8 @@ You're not required to use any dropdown-specific components inside of `<i-dropdo
     </i-dropdown-menu>
 </i-dropdown>&nbsp;
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-dropdown>
@@ -165,14 +173,14 @@ You're not required to use any dropdown-specific components inside of `<i-dropdo
 </i-dropdown>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Trigger type
 You can use the `trigger` property to trigger the dropdown on `hover` or `click`. By default, dropdowns are triggered on `click`, a design decision made to improve user experience.
 
-<i-code-preview title="Dropdown Trigger">
-
+<i-code title="Dropdown Trigger">
+<i-tab type="preview">
 <i-dropdown trigger="click">
     <i-button>Dropdown Click</i-button>
     <i-dropdown-menu>
@@ -229,7 +237,8 @@ You can use the `trigger` property to trigger the dropdown on `hover` or `click`
     </i-dropdown-menu>
 </i-dropdown>&nbsp;
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-dropdown trigger="click">
@@ -292,15 +301,15 @@ You can use the `trigger` property to trigger the dropdown on `hover` or `click`
 </i-dropdown>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your dropdown menus, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Dropdown Sizes">
-
+<i-code title="Dropdown Sizes">
+<i-tab type="preview">
 <div>
 <i-dropdown>
     <i-button>Dropdown Small</i-button>
@@ -336,7 +345,8 @@ The default size is set to `md`.
 </i-dropdown>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-dropdown>
@@ -375,15 +385,15 @@ The default size is set to `md`.
 </i-dropdown>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Variants
 Inkline includes two predefined dropdown styles, each serving its own semantic purpose. You can set the style of a `<i-dropdown-menu>` using the `variant` property, which can have a value of `light` or `dark`. By default, dropdown menus use the `light` variant.
 
-<i-code-preview title="Dropdown Variants">
-
+<i-code title="Dropdown Variants">
+<i-tab type="preview">
 <div>
 <i-dropdown>
     <i-button variant="light">Dropdown Light</i-button>
@@ -408,7 +418,8 @@ Inkline includes two predefined dropdown styles, each serving its own semantic p
 </i-dropdown>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-dropdown>
@@ -436,14 +447,14 @@ Inkline includes two predefined dropdown styles, each serving its own semantic p
 </i-dropdown>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Recursive Dropdowns
 Inkline allows you to have virtually infinite recursive dropdown submenus structure by defining another `<i-dropdown>` inside of a `<i-dropdown-menu>`. This awesome feature gives you great design flexibility.
 
-<i-code-preview title="Recursive Dropdown">
-
+<i-code title="Recursive Dropdown">
+<i-tab type="preview">
 <div>
 <i-dropdown :hide-on-click="false">
     <i-button>Recursive Dropdown</i-button>
@@ -465,7 +476,8 @@ Inkline allows you to have virtually infinite recursive dropdown submenus struct
 </i-dropdown>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-dropdown :hide-on-click="false">
@@ -488,15 +500,15 @@ Inkline allows you to have virtually infinite recursive dropdown submenus struct
 </i-dropdown>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Components API
 Here you can find a list of the various customization options you can use for the dropdown components as props, as well as available slots and events.
 
-<i-api-preview title="Dropdown API" expanded markup="i-dropdown" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IDropdown">
-    <template slot="props">
+<i-code title="Dropdown API" expanded markup="i-dropdown" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IDropdown">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">disabled</template>
@@ -565,16 +577,16 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="property">default</template>
                 <template slot="description">Slot for dropdown component trigger and dropdown menu. The first direct child represents the trigger, the second direct child represents the dropdown menu.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">action</template>
@@ -587,11 +599,11 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(visible: Boolean) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Dropdown Menu API" markup="i-dropdown-menu" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IDropdownMenu">
-    <template slot="props">
+<i-code title="Dropdown Menu API" markup="i-dropdown-menu" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IDropdownMenu">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">arrow</template>
@@ -618,19 +630,19 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for dropdown menu default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Dropdown Item API" markup="i-dropdown-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IDropdownItem">
-    <template slot="props">
+<i-code title="Dropdown Item API" markup="i-dropdown-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IDropdownItem">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">action</template>
@@ -658,22 +670,22 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>div</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for dropdown item default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the dropdown components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Dropdown" expanded>
-    <template slot="scss">
+<i-code title="Dropdown" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$dropdown-font-size</template>
@@ -740,5 +752,5 @@ Here you can find a list of the Sass variables you can use for the dropdown comp
                 <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

@@ -1,20 +1,11 @@
 <template lang="md" src="./pagination.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { generateDataRows } from "@helpers/generateDataRows";
-import { IDatatable, IAlert, IIcon } from '@inkline/inkline/src';
+import View from '~/components/docs/View';
+import { generateDataRows } from '~/helpers/generateDataRows';
 
 export default {
     extends: View,
     name: 'DataTablePaginationView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IDatatable,
-        IAlert,
-        IIcon
-    },
     data () {
         return {
             columns: [

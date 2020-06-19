@@ -1,19 +1,26 @@
+---
+title: Data Table Filtering
+description: Inkline's Data Table rows are easily and efficiently filtered using a fuzzy search algorithm. 
+---
+
 # Data Table Filtering
-Inkline's Data Table rows are easily and efficiently filtered using a fuzzy search algorithm. {.lead}
+## Inkline's Data Table rows are easily and efficiently filtered using a fuzzy search algorithm. 
 
 ### Default Filtering
 Filtering is enabled by default and can be changed using the `filterable` attribute if needed.
 
-<i-code-preview title="Data Table Default Filtering">
-<i-datatable :columns="columns" :rows="rows" />
-<template slot="html">
+<i-code title="Data Table Default Filtering">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rows" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -36,22 +43,24 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Disable Filtering
 Filtering can be disabled by setting the `filtering` attribute to `false`.
 
-<i-code-preview title="Data Table Default Filtering">
-<i-datatable :columns="columns" :rows="rows" :filtering="false" />
-<template slot="html">
+<i-code title="Data Table Default Filtering">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rows" :filtering="false" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" :filtering="false" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -74,8 +83,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Selective Filtering
@@ -101,16 +110,18 @@ export default {
 }
 ~~~
 
-<i-code-preview title="Data Table Selective Filtering">
-<i-datatable :columns="selectiveFilteringColumns" :rows="rows" :filtering="filteringConfig" />
-<template slot="html">
+<i-code title="Data Table Selective Filtering">
+<i-tab type="preview">
+    <i-datatable :columns="selectiveFilteringColumns" :rows="rows" :filtering="filteringConfig" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" :filtering="filtering" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -138,8 +149,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Filtering Configuration
 Filtering can be configured by providing an object for the `filtering` attribute. Inkline uses <a href="https://fusejs.io" rel="nofollow">Fuse.js</a> for providing a fuzzy search implementation. 
@@ -188,24 +199,25 @@ Filtering can be handled asynchronously by setting the `async` attribute to `tru
 
 This will tell the DataTable component to only display the rows and let the pagination and filtering handling be done externally using the `update` event. 
 
-<i-alert variant="info" class="-code">
+<i-alert variant="info" class="-code _margin-bottom-1">
 <template slot="icon"><i-icon icon="info"></i-icon></template>
 
-The `filtering` event occurs whenever the search input is updated.
+The `update` event occurs whenever the search input is updated.
 
 </i-alert>
 
-
-<i-code-preview title="Data Table Async Filtering">
-<i-datatable :columns="columns" :rows="rowsAsync" :rows-count="rowsCount" @update="onUpdate"></i-datatable>
-<template slot="html">
+<i-code title="Data Table Async Filtering">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rowsAsync" :rows-count="rowsCount" @update="onUpdate"></i-datatable>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rowsAsync" :rows-count="rowsCount" @update="onUpdate" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -231,5 +243,5 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>

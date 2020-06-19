@@ -1,12 +1,8 @@
-<template lang="md" src="./position.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
+import View from '~/components/docs/NuxtContentView';
 
 export default {
     name: 'PositionUtilitiesView',
-    layout: 'documentation',
-    extends: View,
-    head: head(),
+    extends: View
 };
 </script>

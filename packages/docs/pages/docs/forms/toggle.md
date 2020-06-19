@@ -1,18 +1,25 @@
+---
+title: Toggle
+description: Toggles are boolean form components used for easily enabling or disabling features. 
+---
+
 # Toggle
-## Toggles are boolean form components used for easily enabling or disabling features. { .lead }
+## Toggles are boolean form components used for easily enabling or disabling features. 
 
 ### Basic Usage
 
-<i-code-preview title="Basic Toggle">
-<i-toggle v-model="toggled"></i-toggle>
-<template slot="html">
+<i-code title="Basic Toggle">
+<i-tab type="preview">
+    <i-toggle v-model="toggled"></i-toggle>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-toggle v-model="toggled"></i-toggle>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -24,22 +31,22 @@ export default {
 }
 ~~~
 
-</template>
-<template slot="output">
-
-Checked: <code>{{toggled}}</code>
-
-</template>
-</i-code-preview>
+</i-tab>
+<i-tab type="output">
+    Checked: <code>{{toggled}}</code>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` property to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
 
-<i-code-preview title="Toggle Sizes">
-<i-toggle size="sm" v-model="toggledSizeSm"></i-toggle>
-<i-toggle size="md" v-model="toggledSizeMd"></i-toggle>
-<i-toggle size="lg" v-model="toggledSizeLg"></i-toggle>
-<template slot="html">
+<i-code title="Toggle Sizes">
+<i-tab type="preview">
+    <i-toggle size="sm" v-model="toggledSizeSm"></i-toggle>
+    <i-toggle size="md" v-model="toggledSizeMd"></i-toggle>
+    <i-toggle size="lg" v-model="toggledSizeLg"></i-toggle>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-toggle size="sm" v-model="toggled"></i-toggle>
@@ -51,8 +58,8 @@ You're able to use the `size` property to control the size of your inputs, using
 <i-toggle size="lg" v-model="toggled"></i-toggle>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -64,8 +71,8 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Applying the size `size` property to an `i-form-group` will also set the chosen size to all of its `i-toggle` inputs.
 
@@ -73,10 +80,12 @@ Applying the size `size` property to an `i-form-group` will also set the chosen 
 ### Readonly State
 You can set the toggle input to be readonly by using the `readonly` property.
 
-<i-code-preview title="Readonly Toggle">
-<i-toggle v-model="toggledReadonlyFalse" readonly></i-toggle>
-<i-toggle v-model="toggledReadonlyTrue" readonly></i-toggle>
-<template slot="html">
+<i-code title="Readonly Toggle">
+<i-tab type="preview">
+    <i-toggle v-model="toggledReadonlyFalse" readonly></i-toggle>
+    <i-toggle v-model="toggledReadonlyTrue" readonly></i-toggle>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-toggle v-model="toggledFalse" readonly></i-toggle>
@@ -85,8 +94,8 @@ You can set the toggle input to be readonly by using the `readonly` property.
 <i-toggle v-model="toggledTrue" readonly></i-toggle>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -99,16 +108,18 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Disabled State
 You can set the toggle input to be disabled by using the `disabled` property.
 
-<i-code-preview title="Disabled Toggle">
-<i-toggle v-model="toggledDisabledFalse" disabled></i-toggle>
-<i-toggle v-model="toggledDisabledTrue" disabled></i-toggle>
-<template slot="html">
+<i-code title="Disabled Toggle">
+<i-tab type="preview">
+    <i-toggle v-model="toggledDisabledFalse" disabled></i-toggle>
+    <i-toggle v-model="toggledDisabledTrue" disabled></i-toggle>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-toggle v-model="toggledFalse" readonly></i-toggle>
@@ -117,8 +128,8 @@ You can set the toggle input to be disabled by using the `disabled` property.
 <i-toggle v-model="toggledTrue" readonly></i-toggle>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -131,14 +142,14 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Component API
 Here you can find a list of the various customization options you can use for the toggle component as props, as well as available slots and events.
 
-<i-api-preview title="Toggle API" markup="i-toggle" expanded>
-    <template slot="props">
+<i-code title="Toggle API" markup="i-toggle" expanded>
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">disabled</template>
@@ -156,7 +167,7 @@ Here you can find a list of the various customization options you can use for th
             </api-table-row>
             <api-table-row>
                 <template slot="property">schema</template>
-                <template slot="description">Provides a schema binding to the toggle input form component. See the <nuxt-link :to="{ name: 'docs-forms-form-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
+                <template slot="description">Provides a schema binding to the toggle input form component. See the <nuxt-link :to="{ name: 'docs-forms-validation-introduction' }">Form Validation</nuxt-link> documentation.</template>
                 <template slot="type"><code>Object</code></template>
                 <template slot="values"></template>
                 <template slot="default"></template>
@@ -183,8 +194,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">click</template>
@@ -207,14 +218,14 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(value: Boolean | String) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the toggle component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Radio" expanded>
-    <template slot="scss">
+<i-code title="Radio" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$toggle-width-base</template>
@@ -329,5 +340,5 @@ Here you can find a list of the Sass variables you can use for the toggle compon
                 <template slot="default"><code>(...)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

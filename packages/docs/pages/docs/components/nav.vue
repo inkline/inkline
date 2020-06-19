@@ -1,17 +1,9 @@
 <template lang="md" src="./nav.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { INav, INavItem } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     name: 'NavView',
-    layout: 'documentation',
-    extends: View,
-    head: head(),
-    components: {
-        INav,
-        INavItem
-    }
+    extends: View
 };
 </script>

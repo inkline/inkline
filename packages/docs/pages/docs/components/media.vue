@@ -1,16 +1,9 @@
 <template lang="md" src="./media.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IMedia } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     name: 'MediaView',
-    layout: 'documentation',
-    extends: View,
-    head: head(),
-    components: {
-        IMedia
-    }
+    extends: View
 };
 </script>

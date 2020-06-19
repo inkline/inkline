@@ -1,16 +1,21 @@
+---
+title: Progress
+description: A custom component for displaying progress with support for stacked progress bars.
+---
+
 # Progress
-## A custom component for displaying progress with support for stacked progress bars.{.lead}
+## A custom component for displaying progress with support for stacked progress bars.
 
 ### Example
 Progress components are built with two components: a wrapper `<i-progress>` and at least one `<i-progress-bar>`. You can set the width of a progress bar by setting its `value` property.
 
-<i-code-preview title="Progress Example">
-
-<i-progress>
-    <i-progress-bar value="65" />
-</i-progress>
-
-<template slot="html">
+<i-code title="Progress Example">
+<i-tab type="preview">
+    <i-progress>
+        <i-progress-bar value="65" />
+    </i-progress>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-progress>
@@ -18,34 +23,32 @@ Progress components are built with two components: a wrapper `<i-progress>` and 
 </i-progress>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your progress, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Progress Sizes">
-
-<div class="_margin-bottom-1">
-    <i-progress size="sm">
-        <i-progress-bar value="65" />
-    </i-progress>
-</div>
-
-<div class="_margin-bottom-1">
-    <i-progress size="md" class="_margin-bottom-1">
-        <i-progress-bar value="65" />
-    </i-progress>
-</div>
-
-<div class="_margin-bottom-1">
-    <i-progress size="lg">
-        <i-progress-bar value="65" />
-    </i-progress>
-</div>
-
-<template slot="html">
+<i-code title="Progress Sizes">
+<i-tab type="preview">
+    <div class="_margin-bottom-1">
+        <i-progress size="sm">
+            <i-progress-bar value="65" />
+        </i-progress>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-progress size="md" class="_margin-bottom-1">
+            <i-progress-bar value="65" />
+        </i-progress>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-progress size="lg">
+            <i-progress-bar value="65" />
+        </i-progress>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-progress size="sm">
@@ -63,29 +66,27 @@ The default size is set to `md`.
 </i-progress>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Variants
 Inkline includes multiple progress styles. You can change the style of a`<i-progress>` to set the background using the `variant` property.
 
-<i-code-preview title="Progress Variants">
-
-<div class="_margin-bottom-1">
-    <i-progress variant="light">
-        <i-progress-bar value="65" />
-    </i-progress>
-</div>
-
-<div class="_margin-bottom-1">
-    <i-progress variant="dark">
-        <i-progress-bar value="65" />
-    </i-progress>
-</div>
-
-
-<template slot="html">
+<i-code title="Progress Variants">
+<i-tab type="preview">
+    <div class="_margin-bottom-1">
+        <i-progress variant="light">
+            <i-progress-bar value="65" />
+        </i-progress>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-progress variant="dark">
+            <i-progress-bar value="65" />
+        </i-progress>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-progress variant="light">
@@ -98,63 +99,56 @@ Inkline includes multiple progress styles. You can change the style of a`<i-prog
 </i-progress>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Bar Variants
 Inkline includes multiple progress styles. You can change the style of a `<i-progress-bar>` to set the bar color using the `variant` property.
 
-<i-code-preview title="Progress Bar Variants">
-
-<div class="_margin-bottom-1">
-    <i-progress>
-        <i-progress-bar variant="primary" value="65" />
-    </i-progress>
-</div>
-
-<div class="_margin-bottom-1">
-    <i-progress>
-        <i-progress-bar variant="secondary" value="65" />
-    </i-progress>
-</div>
-
-<div class="_margin-bottom-1">
-    <i-progress>
-        <i-progress-bar variant="info" value="65" />
-    </i-progress>
-</div>
-
-<div class="_margin-bottom-1">
-    <i-progress>
-        <i-progress-bar variant="success" value="65" />
-    </i-progress>
-</div>
-
-<div class="_margin-bottom-1">
-    <i-progress>
-        <i-progress-bar variant="warning" value="65" />
-    </i-progress>
-</div>
-
-<div class="_margin-bottom-3">
-    <i-progress>
-        <i-progress-bar variant="danger" value="65" />
-    </i-progress>
-</div>
-
-<div class="_margin-bottom-1">
-    <i-progress variant="light">
-        <i-progress-bar variant="dark" value="65" />
-    </i-progress>
-</div>
-
-<div>
-    <i-progress variant="dark">
-        <i-progress-bar variant="light" value="65" />
-    </i-progress>
-</div>
-
-<template slot="html">
+<i-code title="Progress Bar Variants">
+<i-tab type="preview">
+    <div class="_margin-bottom-1">
+        <i-progress>
+            <i-progress-bar variant="primary" value="65" />
+        </i-progress>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-progress>
+            <i-progress-bar variant="secondary" value="65" />
+        </i-progress>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-progress>
+            <i-progress-bar variant="info" value="65" />
+        </i-progress>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-progress>
+            <i-progress-bar variant="success" value="65" />
+        </i-progress>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-progress>
+            <i-progress-bar variant="warning" value="65" />
+        </i-progress>
+    </div>
+    <div class="_margin-bottom-3">
+        <i-progress>
+            <i-progress-bar variant="danger" value="65" />
+        </i-progress>
+    </div>
+    <div class="_margin-bottom-1">
+        <i-progress variant="light">
+            <i-progress-bar variant="dark" value="65" />
+        </i-progress>
+    </div>
+    <div>
+        <i-progress variant="dark">
+            <i-progress-bar variant="light" value="65" />
+        </i-progress>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-progress>
@@ -199,22 +193,22 @@ Inkline includes multiple progress styles. You can change the style of a `<i-pro
 </i-progress>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Value
 Inkline allows you to set a `min` and `max` modifier to calculate the progress based on a meaningful value. The new `min` will represent `0%` and the `max` will represent `100%`.
 
-<i-code-preview title="Progress Value">
-
-<div class="_margin-bottom-1">
-    <i-progress>
-        <i-progress-bar min="100" max="200" value="150" />
-    </i-progress>
-</div>
-
-<template slot="html">
+<i-code title="Progress Value">
+<i-tab type="preview">
+    <div class="_margin-bottom-1">
+        <i-progress>
+            <i-progress-bar min="100" max="200" value="150" />
+        </i-progress>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-progress>
@@ -222,23 +216,23 @@ Inkline allows you to set a `min` and `max` modifier to calculate the progress b
 </i-progress>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Stacked Bars
 You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to stack them, adding them up to a `100%` percentage.
 
-<i-code-preview title="Stacked Progress Bars Example">
-
-<div class="_margin-bottom-1">
-    <i-progress>
-        <i-progress-bar variant="success" value="40" />
-        <i-progress-bar variant="warning" value="20" />
-        <i-progress-bar variant="danger" value="10" />
-    </i-progress>
-</div>
-
-<template slot="html">
+<i-code title="Stacked Progress Bars Example">
+<i-tab type="preview">
+    <div class="_margin-bottom-1">
+        <i-progress>
+            <i-progress-bar variant="success" value="40" />
+            <i-progress-bar variant="warning" value="20" />
+            <i-progress-bar variant="danger" value="10" />
+        </i-progress>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-progress>
@@ -248,15 +242,15 @@ You can add multiple `<i-progress-bar>` inside the `<i-progress>` component to s
 </i-progress>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the progress components as props, as well as available slots.
 
-<i-api-preview title="Progress API" markup="i-progress" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IProgress">
-    <template slot="props">
+<i-code title="Progress API" markup="i-progress" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IProgress">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">size</template>
@@ -273,19 +267,19 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for progresss's default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Progress Bar API" markup="i-progress-bar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IProgressBar">
-    <template slot="props">
+<i-code title="Progress Bar API" markup="i-progress-bar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IProgressBar">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">value</template>
@@ -316,22 +310,22 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>primary</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for progress bars's default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the progress components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Progress" expanded>
-    <template slot="scss">
+<i-code title="Progress" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$progress-background</template>
@@ -343,7 +337,7 @@ Here you can find a list of the Sass variables you can use for the progress comp
             </api-table-row>
             <api-table-row>
                 <template slot="property">$progress-height-base</template>
-                <template slot="default"><code>spacers('1/2')</code></template>
+                <template slot="default"><code>$spacer-1-2</code></template>
             </api-table-row>
             <api-table-row>
                 <template slot="property">$progress-height</template>
@@ -354,5 +348,5 @@ Here you can find a list of the Sass variables you can use for the progress comp
                 <template slot="default"><code>('monochrome')</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

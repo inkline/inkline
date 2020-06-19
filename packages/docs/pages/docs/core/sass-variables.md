@@ -1,5 +1,10 @@
+---
+title: Sass Variables
+description: Make Inkline your own using hundreds of configurable Sass variables. 
+---
+
 # Sass Variables
-## Make Inkline your own using hundreds of configurable Sass variables. { .lead }
+## Make Inkline your own using hundreds of configurable Sass variables. 
 
 This page lists the common Sass Variables that are used throughout the framework. Each component has its own specific Sass variables documented.
 
@@ -8,10 +13,47 @@ This page lists the common Sass Variables that are used throughout the framework
     <p>To be able to override the Sass variables, please follow the Customization part of your <nuxt-link :to="{ name: 'docs-introduction-getting-started' }">installation</nuxt-link>.</p>
 </i-alert>
 
+### Core
+
+<i-code scss title="Core" expanded :header="false">
+    <i-tab type="scss">
+        <api-table>
+            <api-table-row>
+                <template slot="property">$body-background</template>
+                <template slot="default"><code>$color-white</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$body-color</template>
+                <template slot="default"><code>$color-gray-80</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$body-background-light</template>
+                <template slot="default"><code>$body-background</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$body-color-light</template>
+                <template slot="default"><code>$body-color</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$body-background-dark</template>
+                <template slot="default"><code>$color-gray-90</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$body-color-dark</template>
+                <template slot="default"><code>$color-gray-10</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$body-variants</template>
+                <template slot="default"><code>(...)</code></template>
+            </api-table-row>
+        </api-table>
+    </i-tab>
+</i-code>
+
 ### Border
 
-<i-scss-preview title="Border" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Border" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$border-width</template>
@@ -62,13 +104,13 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>(...)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 ### Breakpoints
 
-<i-scss-preview title="Breakpoints" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Breakpoints" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$breakpoints-xs</template>
@@ -95,13 +137,13 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>(...)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 ### Colors
 
-<i-scss-preview title="Colors" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Colors" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$color-red</template>
@@ -316,50 +358,13 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>(...)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
-
-### Core
-
-<i-scss-preview title="Core" expanded :header="false">
-    <template slot="scss">
-        <api-table>
-            <api-table-row>
-                <template slot="property">$body-background</template>
-                <template slot="default"><code>$color-white</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$body-color</template>
-                <template slot="default"><code>$color-gray-80</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$body-background-light</template>
-                <template slot="default"><code>$body-background</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$body-color-light</template>
-                <template slot="default"><code>$body-color</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$body-background-dark</template>
-                <template slot="default"><code>$color-gray-90</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$body-color-dark</template>
-                <template slot="default"><code>$color-gray-10</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$body-variants</template>
-                <template slot="default"><code>(...)</code></template>
-            </api-table-row>
-        </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 ### Gutter
 
-<i-scss-preview title="Gutter" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Gutter" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$gutter-xs</template>
@@ -386,26 +391,26 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>(...)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 ### Print
 
-<i-scss-preview title="Print" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Print" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$print</template>
                 <template slot="default"><code>true</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 ### Ratios
 
-<i-scss-preview title="Ratio" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Ratio" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$ratio-second</template>
@@ -452,14 +457,14 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>$ratio-perfect-fourth</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 
 ### Shadow
 
-<i-scss-preview title="Shadow" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Shadow" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$box-shadow-enabled</template>
@@ -470,14 +475,14 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>0 1rem 1rem -1rem rgba(0, 0, 0, 1)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sizes
 
-<i-scss-preview title="Sizes" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Sizes" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$size-percentages</template>
@@ -512,13 +517,13 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>(...)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 ### Spacing
 
-<i-scss-preview title="Spacing" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Spacing" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$spacer</template>
@@ -585,13 +590,13 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>(...)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 ### Transitions
 
-<i-scss-preview title="Transitions" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Transitions" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$transition-enabled</template>
@@ -606,13 +611,13 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>ease</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>
 
 ### Z-index
 
-<i-scss-preview title="Z-index" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Z-index" expanded :header="false">
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$z-index-dropdown</template>
@@ -643,5 +648,5 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>1070</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>

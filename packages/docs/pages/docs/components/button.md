@@ -1,26 +1,31 @@
+---
+title: Button
+description: Inkline provides you with custom button styles with support for multiple sizes, states, and more. 
+---
+
 # Button
-## Inkline provides you with custom button styles with support for multiple sizes, states, and more. { .lead }
+## Inkline provides you with custom button styles with support for multiple sizes, states, and more. 
 
 ### Variants
 Inkline includes several predefined button styles, each serving its own semantic purpose, with a few extra variants available for more control.
 
-<i-code-preview title="Button Variants">
+<i-code title="Button Variants">
+<i-tab type="preview">
+    <div>
+        <i-button variant="primary">Primary</i-button>
+        <i-button variant="secondary">Secondary</i-button>
+        <i-button variant="success">Success</i-button>
+        <i-button variant="danger">Danger</i-button>
+        <i-button variant="warning">Warning</i-button>
+        <i-button variant="info">Info</i-button>
+        <i-button variant="light">Light</i-button>
+        <i-button variant="dark">Dark</i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
-<div>
+~~~html
 <i-button variant="primary">Primary</i-button>
-<i-button variant="secondary">Secondary</i-button>
-<i-button variant="success">Success</i-button>
-<i-button variant="danger">Danger</i-button>
-<i-button variant="warning">Warning</i-button>
-<i-button variant="info">Info</i-button>
-<i-button variant="light">Light</i-button>
-<i-button variant="dark">Dark</i-button>
-</div>
-
-<template slot="html">
-
-~~~html
-<i-button variant="primary">Primary</i-button>
 ~~~
 ~~~html
 <i-button variant="secondary">Secondary</i-button>
@@ -44,23 +49,23 @@ Inkline includes several predefined button styles, each serving its own semantic
 <i-button variant="dark">Dark</i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Button Type
 The `<i-button>` component makes use of a `<button>` element markup behind the scenes. Therefore, you can assign a type to it,
 just like with the `<button>` element.
 
-<i-code-preview title="Button Type">
-
-<div>
-<i-button type="button">Button</i-button>
-<i-button type="submit">Submit</i-button>
-<i-button type="reset">Reset</i-button>
-</div>
-
-<template slot="html">
+<i-code title="Button Type">
+<i-tab type="preview">
+    <div>
+        <i-button type="button">Button</i-button>
+        <i-button type="submit">Submit</i-button>
+        <i-button type="reset">Reset</i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button type="button">Button</i-button>
@@ -72,28 +77,28 @@ just like with the `<button>` element.
 <i-button type="reset">Reset</i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 If you need to change the `<button>` node used to render the component, you can use the `tag` property to change it.
 
-<i-code-preview title="Button Tag">
-
-<div>
-<i-button tag="a">Anchor</i-button>
-</div>
-<div>
-<i-button tag="button" type="button">Button</i-button>
-<i-button tag="button" type="submit">Submit Button</i-button>
-<i-button tag="button" type="reset">Reset Button</i-button>
-</div>
-<div>
-<i-button tag="input" type="button" value="Input"></i-button>
-<i-button tag="input" type="submit" value="Submit Input"></i-button>
-<i-button tag="input" type="reset" value="Reset Input"></i-button>
-</div>
-
-<template slot="html">
+<i-code title="Button Tag">
+<i-tab type="preview">
+    <div>
+        <i-button tag="a">Anchor</i-button>
+    </div>
+    <div>
+        <i-button tag="button" type="button">Button</i-button>
+        <i-button tag="button" type="submit">Submit Button</i-button>
+        <i-button tag="button" type="reset">Reset Button</i-button>
+    </div>
+    <div>
+        <i-button tag="input" type="button" value="Input"></i-button>
+        <i-button tag="input" type="submit" value="Submit Input"></i-button>
+        <i-button tag="input" type="reset" value="Reset Input"></i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button tag="a">Link Button</i-button>
@@ -109,31 +114,31 @@ If you need to change the `<button>` node used to render the component, you can 
 <i-button tag="input" type="reset" value="Reset Input"></i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Outline Style
 Sometimes, buttons should not stand out so much. Replace the default modifier classes with the `outline` property
 to remove background images and colors on any button when not interacted with.
 
-<i-code-preview title="Button Outline">
+<i-code title="Button Outline">
+<i-tab type="preview">
+    <div>
+        <i-button outline variant="primary">Primary</i-button>
+        <i-button outline variant="secondary">Secondary</i-button>
+        <i-button outline variant="success">Success</i-button>
+        <i-button outline variant="danger">Danger</i-button>
+        <i-button outline variant="warning">Warning</i-button>
+        <i-button outline variant="info">Info</i-button>
+        <i-button outline variant="light">Light</i-button>
+        <i-button outline variant="dark">Dark</i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
-<div>
+~~~html
 <i-button outline variant="primary">Primary</i-button>
-<i-button outline variant="secondary">Secondary</i-button>
-<i-button outline variant="success">Success</i-button>
-<i-button outline variant="danger">Danger</i-button>
-<i-button outline variant="warning">Warning</i-button>
-<i-button outline variant="info">Info</i-button>
-<i-button outline variant="light">Light</i-button>
-<i-button outline variant="dark">Dark</i-button>
-</div>
-
-<template slot="html">
-
-~~~html
-<i-button outline variant="primary">Primary</i-button>
 ~~~
 ~~~html
 <i-button outline variant="secondary">Secondary</i-button>
@@ -157,29 +162,29 @@ to remove background images and colors on any button when not interacted with.
 <i-button outline variant="dark">Dark</i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Link Style
 You can create link buttons that look the same as normal links. Link buttons will use the `variant` property to set the color of the link.
 
-<i-code-preview title="Link Button">
+<i-code title="Link Button">
+<i-tab type="preview">
+    <div>
+        <i-button link variant="primary">Primary</i-button>
+        <i-button link variant="secondary">Secondary</i-button>
+        <i-button link variant="success">Success</i-button>
+        <i-button link variant="danger">Danger</i-button>
+        <i-button link variant="warning">Warning</i-button>
+        <i-button link variant="info">Info</i-button>
+        <i-button link variant="light">Light</i-button>
+        <i-button link variant="dark">Dark</i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
-<div>
+~~~html
 <i-button link variant="primary">Primary</i-button>
-<i-button link variant="secondary">Secondary</i-button>
-<i-button link variant="success">Success</i-button>
-<i-button link variant="danger">Danger</i-button>
-<i-button link variant="warning">Warning</i-button>
-<i-button link variant="info">Info</i-button>
-<i-button link variant="light">Light</i-button>
-<i-button link variant="dark">Dark</i-button>
-</div>
-
-<template slot="html">
-
-~~~html
-<i-button link variant="primary">Primary</i-button>
 ~~~
 ~~~html
 <i-button link variant="secondary">Secondary</i-button>
@@ -203,22 +208,22 @@ You can create link buttons that look the same as normal links. Link buttons wil
 <i-button link variant="dark">Dark</i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Circle Style
 Circle buttons are very common when working with icon actions. You can transform buttons into circles using the `circle`
 modifier. You're also able to use the `size` modifier to control the size of your circle buttons. 
 
-<i-code-preview title="Circle Button">
-
-<div>
-<i-button circle size="sm">S</i-button>
-<i-button circle>M</i-button>
-<i-button circle size="lg">L</i-button>
-</div>
-
-<template slot="html">
+<i-code title="Circle Button">
+<i-tab type="preview">
+    <div>
+        <i-button circle size="sm">S</i-button>
+        <i-button circle>M</i-button>
+        <i-button circle size="lg">L</i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button circle size="sm">S</i-button>
@@ -230,22 +235,22 @@ modifier. You're also able to use the `size` modifier to control the size of you
 <i-button circle size="lg">L</i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your buttons, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Button Sizes">
-
-<div>
-<i-button size="sm">Small Button</i-button>
-<i-button size="md">Medium Button</i-button>
-<i-button size="lg">Large Button</i-button>
-</div>
-
-<template slot="html">
+<i-code title="Button Sizes">
+<i-tab type="preview">
+    <div>
+        <i-button size="sm">Small Button</i-button>
+        <i-button size="md">Medium Button</i-button>
+        <i-button size="lg">Large Button</i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button size="sm">Small Button</i-button>
@@ -257,66 +262,75 @@ The default size is set to `md`.
 <i-button size="lg">Large Button</i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Block
 You can create block level buttons that span the full width of a parent by adding the `block` property.
 
-<i-code-preview title="Block Button">
-<i-button block>Block Button</i-button>
-
-<template slot="html">
+<i-code title="Block Button">
+<i-tab type="preview">
+    <i-button block>Block Button</i-button>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button block>Block Button</i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Button Icon
 You can easily use the `i-button` component together with any icon component (i.e. FontAwesome, IcoMoon), including any of the <nuxt-link :to="{ name: 'docs-components-icon' }">list of icons</nuxt-link> of the `i-icon` component.
 
-<i-code-preview title="Button Icon">
-<i-button><i-icon icon="home" class="_margin-right-1-2"></i-icon> Button Icon</i-button>
-<i-button>Button Icon <i-icon icon="home" class="_margin-left-1-2"></i-icon></i-button>
-<i-button><i-icon icon="home" class="_margin-right-1-2"></i-icon> Button Icon <i-icon icon="caret-down" class="_margin-left-1-2"></i-icon></i-button>
-
-<template slot="html">
+<i-code title="Button Icon">
+<i-tab type="preview">
+    <i-button>
+        <i-icon icon="star-full" class="_margin-right-1-2"></i-icon> Button Icon
+    </i-button>
+    <i-button>
+        Button Icon <i-icon icon="star-full" class="_margin-left-1-2"></i-icon></i-button>
+    <i-button>
+        <i-icon icon="star-full" class="_margin-right-1-2"></i-icon> 
+        Button Icon 
+        <i-icon icon="star-full" class="_margin-left-1-2"></i-icon>
+    </i-button>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button>
-    <i-icon icon="home" class="_margin-right-1-2"></i-icon> Button Icon
+    <i-icon icon="star-full" class="_margin-right-1-2"></i-icon> Button Icon
 </i-button>
 ~~~
 ~~~html
 <i-button>
-    Button Icon <i-icon icon="home" class="_margin-left-1-2"></i-icon>
+    Button Icon <i-icon icon="star-full" class="_margin-left-1-2"></i-icon>
 </i-button>
 ~~~
 ~~~html
 <i-button>
-    <i-icon icon="home" class="_margin-right-1-2"></i-icon>
+    <i-icon icon="star-full" class="_margin-right-1-2"></i-icon>
     Button Icon
-    <i-icon icon="caret-down" class="_margin-left-1-2"></i-icon>
+    <i-icon icon="star-full" class="_margin-left-1-2"></i-icon>
 </i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Active State
 Buttons will appear pressed when active. You can force a button to have an active appearance with the `active` property (this will also include the aria-pressed="true" attribute).
 
-<i-code-preview title="Active Button State">
-
-<div>
-<i-button active>Active Default Button</i-button>
-<i-button active variant="primary">Active Primary Button</i-button>
-</div>
-
-<template slot="html">
+<i-code title="Active Button State">
+<i-tab type="preview">
+    <div>
+        <i-button active>Active Default Button</i-button>
+        <i-button active variant="primary">Active Primary Button</i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button active>Active Default Button</i-button>
@@ -325,20 +339,20 @@ Buttons will appear pressed when active. You can force a button to have an activ
 <i-button active variant="primary">Active Primary Button</i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Disabled State
 You can make buttons look inactive or disabled by adding the `disabled` boolean property to an `<i-button>` element.
 
-<i-code-preview title="Disabled Button State">
-
-<div>
-<i-button disabled>Disabled Default Button</i-button>
-<i-button disabled variant="primary">Disabled Primary Button</i-button>
-</div>
-
-<template slot="html">
+<i-code title="Disabled Button State">
+<i-tab type="preview">
+    <div>
+        <i-button disabled>Disabled Default Button</i-button>
+        <i-button disabled variant="primary">Disabled Primary Button</i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button active>Active Default Button</i-button>
@@ -347,28 +361,28 @@ You can make buttons look inactive or disabled by adding the `disabled` boolean 
 <i-button active variant="primary">Active Primary Button</i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Loading State
 You can add a loading state to the button by setting the `loading` boolean property to an `<i-button>` element. 
 
 By default, the button will display a standard Inkline loading spinner. You can provide custom loading state by providing a `loading` slot.
 
-<i-code-preview title="Loading Button State">
-
-<div>
-<i-button :loading="true">Button</i-button>
-<i-button :loading="true">
-    Button
-    <template v-slot:loading>
-        <i-loader size="auto" variant="dark" class="_margin-right-1-2" />
-        Loading
-    </template>
-</i-button>
-</div>
-
-<template slot="html">
+<i-code title="Loading Button State">
+<i-tab type="preview">
+    <div>
+        <i-button :loading="true">Button</i-button>
+        <i-button :loading="true">
+            Button
+            <template v-slot:loading>
+                <i-loader size="auto" variant="dark" class="_margin-right-1-2" />
+                Loading
+            </template>
+        </i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button :loading="true">Disabled Default Button</i-button>
@@ -384,22 +398,22 @@ By default, the button will display a standard Inkline loading spinner. You can 
 </i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Linking and Routing
 Buttons will be automatically converted to link anchors `<a>` when providing a `href` property. You can also specify `target` and `rel` properties.
 
 The `<i-button>` component is well integrated with the [Vue Router](https://router.vuejs.org) plugin and will be converted to a `<router-link>` when using the `to` property.
 
-<i-code-preview title="Button Linking and Routing">
-
-<div>
-<i-button href="https://inkline.io">Button Link</i-button>
-<i-button :to="{ name: 'docs-components-button' }">Button Route</i-button>
-</div>
-
-<template slot="html">
+<i-code title="Button Linking and Routing">
+<i-tab type="preview">
+    <div>
+        <i-button href="https://inkline.io">Button Link</i-button>
+        <i-button :to="{ name: 'docs-components-button' }">Button Route</i-button>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button href="https://inkline.io">Button Link</i-button>
@@ -408,15 +422,15 @@ The `<i-button>` component is well integrated with the [Vue Router](https://rout
 <i-button :to="{ name: 'docs-components-button' }">Button Route</i-button>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the button component as props, as well as available slots and events.
 
-<i-api-preview title="Button API" expanded markup="i-button" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IButton">
-    <template slot="props">
+<i-code title="Button API" expanded markup="i-button" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IButton">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">active</template>
@@ -503,8 +517,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
@@ -515,8 +529,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Slot for button loading state.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">click</template>
@@ -524,16 +538,16 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(event: Event) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the button components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Button" expanded>
-    <template slot="scss">
+<i-code title="Button" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$button-font-size</template>
@@ -612,5 +626,5 @@ Here you can find a list of the Sass variables you can use for the button compon
                 <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

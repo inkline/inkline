@@ -20,28 +20,11 @@
 }
 </style>
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { ISidebar, INavbar, INavbarBrand, INav, INavItem, ILayout, ILayoutHeader, ILayoutAside, ILayoutContent, IButton, IHamburgerMenu } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     name: 'SidebarView',
-    layout: 'documentation',
     extends: View,
-    head: head(),
-    components: {
-        ISidebar,
-        INav,
-        INavItem,
-        ILayout,
-        ILayoutHeader,
-        ILayoutAside,
-        ILayoutContent,
-        IButton,
-        IHamburgerMenu,
-        INavbar,
-        INavbarBrand
-    },
     data() {
         return {
             collapsed: false,
@@ -57,7 +40,7 @@ export default {
             collapsedPositionFixed: false,
             collapsedBreakpointLg: false,
             collapsedBreakpointAlways: false,
-            collapsedBreakpointNever: false,
+            collapsedBreakpointNever: false
         };
     }
 };

@@ -1,20 +1,25 @@
+---
+title: List Group
+description: List groups are flexible components used for displaying a list of related content.
+---
+
 # List Group
-## List groups are flexible components used for displaying a list of related content.{.lead}
+## List groups are flexible components used for displaying a list of related content.
 
 ### Example
 List groups support any content inside of them. Take advantage of their flexibility to display list of items properly, as well as vertical navigation.
 
-<i-code-preview title="List Group Example">
-
-<i-list-group>
-    <i-list-group-item active>Active</i-list-group-item>
-    <i-list-group-item href="https://inkline.io" onclick="return false;">Link</i-list-group-item>
-    <i-list-group-item href="https://inkline.io" onclick="return false;">Router Link</i-list-group-item>
-    <i-list-group-item>Item</i-list-group-item>
-    <i-list-group-item disabled>Disabled</i-list-group-item>
-</i-list-group>
-
-<template slot="html">
+<i-code title="List Group Example">
+<i-tab type="preview">
+    <i-list-group>
+        <i-list-group-item active>Active</i-list-group-item>
+        <i-list-group-item href="https://inkline.io" onclick="return false;">Link</i-list-group-item>
+        <i-list-group-item href="https://inkline.io" onclick="return false;">Router Link</i-list-group-item>
+        <i-list-group-item>Item</i-list-group-item>
+        <i-list-group-item disabled>Disabled</i-list-group-item>
+    </i-list-group>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-list-group>
@@ -26,40 +31,38 @@ List groups support any content inside of them. Take advantage of their flexibil
 </i-list-group>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Behind the scenes, the `<i-list-group-item>` is converted into a `<router-link>` if it has the `:to` property, or a plain `<a>` tag if it has a `href` property. Otherwise, it uses a simple `<div>` tag.
 
 ### Sizes
 You're able to use the `size` modifier to control the padding of your list groups, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="List Group Sizes">
-
-<div>
-<i-list-group size="sm">
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-</i-list-group>&nbsp;
-
-<i-list-group size="md">
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-</i-list-group>&nbsp;
-
-<i-list-group size="lg">
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-</i-list-group>
-</div>
-
-<template slot="html">
+<i-code title="List Group Sizes">
+<i-tab type="preview">
+    <div>
+        <i-list-group size="sm">
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+        </i-list-group>&nbsp;
+        <i-list-group size="md">
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+        </i-list-group>&nbsp;
+        <i-list-group size="lg">
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+        </i-list-group>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-list-group size="sm">
@@ -86,22 +89,22 @@ You're able to use the `size` modifier to control the padding of your list group
 </i-list-group>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Active State
 You can control the active state of your `<i-list-group-item>` using the `active` property. If you're providing a `:to` property, converting it into a `router-link`, you can use the `active-class` and `exact-active-class` properties and set them to `-active`.
 
-<i-code-preview title="List Group Active State">
-
-<div>
-<i-list-group>
-    <i-list-group-item :to="{ name: 'docs-components-list-group' }" exact-active-class="-active">Active Router Link</i-list-group-item>
-    <i-list-group-item :to="{ name: 'index' }" active>Active Link</i-list-group-item>
-</i-list-group>
-</div>
-
-<template slot="html">
+<i-code title="List Group Active State">
+<i-tab type="preview">
+    <div>
+        <i-list-group>
+            <i-list-group-item :to="{ name: 'docs-components-list-group' }" exact-active-class="-active">Active Router Link</i-list-group-item>
+            <i-list-group-item :to="{ name: 'index' }" active>Active Link</i-list-group-item>
+        </i-list-group>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-list-group>
@@ -110,23 +113,23 @@ You can control the active state of your `<i-list-group-item>` using the `active
 </i-list-group>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Disabled State
 You can control the disabled state of your `<i-list-group-item>` using the `disabled` property. 
 
-<i-code-preview title="List Group Disabled State">
-
-<div>
-<i-list-group>
-    <i-list-group-item disabled>Disabled List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-</i-list-group>
-</div>
-
-<template slot="html">
+<i-code title="List Group Disabled State">
+<i-tab type="preview">
+    <div>
+        <i-list-group>
+            <i-list-group-item disabled>Disabled List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+        </i-list-group>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-list-group>
@@ -135,24 +138,24 @@ You can control the disabled state of your `<i-list-group-item>` using the `disa
 </i-list-group>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### List Group Border
 You can disable the border of your list group by setting the `bordered` property to false. 
 
-<i-code-preview title="List Group Border">
-
-<div>
-<i-list-group :bordered="false">
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-    <i-list-group-item>List Group Item</i-list-group-item>
-</i-list-group>
-</div>
-
-<template slot="html">
+<i-code title="List Group Border">
+<i-tab type="preview">
+    <div>
+        <i-list-group :bordered="false">
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+            <i-list-group-item>List Group Item</i-list-group-item>
+        </i-list-group>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-list-group :bordered="false">
@@ -163,32 +166,32 @@ You can disable the border of your list group by setting the `bordered` property
 </i-list-group>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Item Content
 The `<i-list-group-item>` accepts any type of content, allowing you to create large sized list group items.
 
-<i-code-preview title="List Group Item Content">
-
-<div>
-<i-list-group>
-    <i-list-group-item>
-        <h4>List Group Heading</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </i-list-group-item>
-    <i-list-group-item>
-        <h4>List Group Heading</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </i-list-group-item>
-    <i-list-group-item>
-        <h4>List Group Heading</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </i-list-group-item>
-</i-list-group>
-</div>
-
-<template slot="html">
+<i-code title="List Group Item Content">
+<i-tab type="preview">
+    <div>
+        <i-list-group>
+            <i-list-group-item>
+                <h4>List Group Heading</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </i-list-group-item>
+            <i-list-group-item>
+                <h4>List Group Heading</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </i-list-group-item>
+            <i-list-group-item>
+                <h4>List Group Heading</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </i-list-group-item>
+        </i-list-group>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-list-group>
@@ -207,15 +210,15 @@ The `<i-list-group-item>` accepts any type of content, allowing you to create la
 </i-list-group>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the list group components as props, as well as available slots.
 
-<i-api-preview title="List Group API" expanded markup="i-list-group" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IListGroup">
-    <template slot="props">
+<i-code title="List Group API" expanded markup="i-list-group" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IListGroup">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">bordered</template>
@@ -232,19 +235,19 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>md</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for list group default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="List Group Item API" markup="i-list-group-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IListGroupItem">
-    <template slot="props">
+<i-code title="List Group Item API" markup="i-list-group-item" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IListGroupItem">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">active</template>
@@ -268,22 +271,22 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>div</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for list group item default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the list group components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="List Group" expanded>
-    <template slot="scss">
+<i-code title="List Group" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$list-group-font-size</template>
@@ -346,5 +349,5 @@ Here you can find a list of the Sass variables you can use for the list group co
                 <template slot="default"><code>(...)</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

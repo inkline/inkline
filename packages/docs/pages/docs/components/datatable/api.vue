@@ -1,20 +1,10 @@
 <template lang="md" src="./api.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { generateDataRows } from "@helpers/generateDataRows";
-import { IDatatable, IAlert, IIcon } from '@inkline/inkline/src';
+import View from '~/components/docs/View';
 
 export default {
     extends: View,
     name: 'DataTableApiView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IDatatable,
-        IAlert,
-        IIcon
-    },
     data () {
         return {};
     }

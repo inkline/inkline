@@ -1,5 +1,7 @@
-# Getting Started
-## Get started with Inkline and experience well written, designed and tested front end code. { .lead }
+---
+title: Getting Started
+description: Get started with Inkline and experience well written, designed and tested front end code. 
+---
 
 Inkline is the customizable Vue.js UI Library that favors not only **User Interface** and **User Experience**, but also **Developer Experience**, using a consistent and expressive API. Inkline has been designed for creating flawless responsive web applications.
 

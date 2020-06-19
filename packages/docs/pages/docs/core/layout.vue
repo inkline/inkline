@@ -1,17 +1,13 @@
 <template lang="md" src="./layout.md"></template>
-
 <style lang="scss" src="./layout.scss"></style>
-
 <script>
-import View from '@components/docs/View'
-import { head } from '@helpers/head'
-import { ILayout, ILayoutAside, ILayoutContent, ILayoutHeader, ILayoutFooter } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
+import { ILayout, ILayoutAside, ILayoutContent, ILayoutHeader, ILayoutFooter } from '@inkline/inkline/src/components';
 
 export default {
     name: 'LayoutView',
     layout: 'documentation',
     extends: View,
-    head: head(),
     components: {
         ILayout,
         ILayoutAside,

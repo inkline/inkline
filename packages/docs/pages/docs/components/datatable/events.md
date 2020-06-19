@@ -1,19 +1,26 @@
+---
+title: Data Table Events
+description: Data tables (or data grids) are tables that have advanced interaction controls such as custom data types, pagination and sorting. 
+---
+
 # Data Table Events
-Data tables (or data grids) are tables that have advanced interaction controls such as custom data types, pagination and sorting. {.lead}
+## Data tables (or data grids) are tables that have advanced interaction controls such as custom data types, pagination and sorting. 
 
 ### Table Row
 You can add a table row click event using the `tr-click` event handler as follows:
 
-<i-code-preview title="Table Row Click Event">
-<i-datatable :columns="columns" :rows="rowsTr" @tr-click="onTableRowClick" />
-<template slot="html">
+<i-code title="Table Row Click Event">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rowsTr" @tr-click="onTableRowClick" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" @tr-click="onTableRowClick" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -45,22 +52,24 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Table Data
 You can add a table data click event using the `td-click` event handler as follows:
 
-<i-code-preview title="Table Data Click Event">
-<i-datatable :columns="columns" :rows="rowsTd" @td-click="onTableDataClick" />
-<template slot="html">
+<i-code title="Table Data Click Event">
+<i-tab type="preview">
+    <i-datatable :columns="columns" :rows="rowsTd" @td-click="onTableDataClick" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" @tr-click="onTableRowClick" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -94,22 +103,24 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Table Heading
 You can add a table heading click event using the `th-click` event handler as follows:
 
-<i-code-preview title="Table Header Click Event">
-<i-datatable :columns="columnsTh" :rows="rowsTh" @th-click="onTableHeadingClick" />
-<template slot="html">
+<i-code title="Table Header Click Event">
+<i-tab type="preview">
+    <i-datatable :columns="columnsTh" :rows="rowsTh" @th-click="onTableHeadingClick" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-datatable :columns="columns" :rows="rows" @th-click="onTableHeadingClick" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -139,6 +150,6 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 

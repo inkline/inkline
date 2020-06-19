@@ -2,7 +2,8 @@
 import View from '~/components/docs/NuxtContentView';
 
 export default {
-    name: 'FloatUtilitiesView',
+    name: 'ExamplesView',
+    layout: 'documentation',
     extends: View
 };
 </script>

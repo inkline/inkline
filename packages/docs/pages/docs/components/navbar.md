@@ -1,29 +1,34 @@
+---
+title: Navbar
+description: A responsive navigation header that includes support for branding, navigation, forms and more.
+---
+
 # Navbar
-## A responsive navigation header that includes support for branding, navigation, forms and more.{.lead}
+## A responsive navigation header that includes support for branding, navigation, forms and more.
 
 ### Example
 Here’s an example of the basic components included in a  `<i-navbar>` that automatically collapses responsively.
 
-<i-code-preview title="Navbar Example">
-
-<i-navbar>
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-        </i-nav>
-        <i-nav>
-            <i-input class="item" placeholder="Type something..">
-                <i-button variant="primary" slot="append">
-                    <font-awesome-icon icon="search" />
-                </i-button>
-            </i-input>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-<template slot="html">
+<i-code title="Navbar Example">
+<i-tab type="preview">
+    <i-navbar>
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            </i-nav>
+            <i-nav>
+                <i-input class="item" placeholder="Type something..">
+                    <i-button variant="primary" slot="append">
+                        <font-awesome-icon icon="search" />
+                    </i-button>
+                </i-input>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-navbar>
@@ -44,50 +49,47 @@ Here’s an example of the basic components included in a  `<i-navbar>` that aut
 </i-navbar>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 You're able to use the `size` modifier to control the size of your navbar, using one of the available sizes: `sm`, `md`, and `lg`. 
 The default size is set to `md`.
 
-<i-code-preview title="Navbar Sizes">
-
-<i-navbar size="sm" class="_margin-bottom-1">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-<i-navbar size="md" class="_margin-bottom-1">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-<i-navbar size="lg">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-
-<template slot="html">
+<i-code title="Navbar Sizes">
+<i-tab type="preview">
+    <i-navbar size="sm" class="_margin-bottom-1">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+    <i-navbar size="md" class="_margin-bottom-1">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+    <i-navbar size="lg">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-navbar size="sm">
@@ -126,36 +128,36 @@ The default size is set to `md`.
 </i-navbar>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Variants
 Inkline includes two predefined navbar styles. You can set the style of a `<i-navbar>` using the `variant` property, which can have a value of `light` or `dark`. By default, modals use the `light` variant.
 
-<i-code-preview title="Navbar Variants">
-
-<i-navbar variant="light" class="_margin-bottom-1">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-<i-navbar variant="dark">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-<template slot="html">
+<i-code title="Navbar Variants">
+<i-tab type="preview">
+    <i-navbar variant="light" class="_margin-bottom-1">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+    <i-navbar variant="dark">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-navbar variant="light">
@@ -182,38 +184,38 @@ Inkline includes two predefined navbar styles. You can set the style of a `<i-na
 </i-navbar>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Dropdown
 You can use an `<i-dropdown>` component inside the `<i-navbar-items>` or `<i-nav>` component to create a contextual navbar menu. 
 
-<i-code-preview title="Navbar Dropdown">
-
-<i-navbar>
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
-        </i-nav>
-        <i-nav>
-            <i-dropdown placement="bottom-end">
-                <i-nav-item>Dropdown</i-nav-item>
-                <i-dropdown-menu>
-                    <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
-                    <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
-                    <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
-                </i-dropdown-menu>
-            </i-dropdown>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-<template slot="html">
+<i-code title="Navbar Dropdown">
+<i-tab type="preview">
+    <i-navbar>
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
+            </i-nav>
+            <i-nav>
+                <i-dropdown placement="bottom-end">
+                    <i-nav-item>Dropdown</i-nav-item>
+                    <i-dropdown-menu>
+                        <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
+                        <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
+                        <i-dropdown-item href disabled>Something disabled here</i-dropdown-item>
+                        <i-dropdown-divider />
+                        <i-dropdown-item>Separated item</i-dropdown-item>
+                    </i-dropdown-menu>
+                </i-dropdown>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-navbar>
@@ -240,46 +242,46 @@ You can use an `<i-dropdown>` component inside the `<i-navbar-items>` or `<i-nav
 </i-navbar>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Nav Placement
 You can position the `<i-nav>` component to the `start`, `end`, or `center` of the `<i-navbar-items>` component using flexbox utilities.
 
-<i-code-preview title="Navbar Nav Placement">
-
-<i-navbar class="_margin-bottom-1">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items class="_justify-content-start">
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-<i-navbar class="_margin-bottom-1">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items class="_justify-content-center">
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-<i-navbar>
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items class="_justify-content-end">
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-<template slot="html">
+<i-code title="Navbar Nav Placement">
+<i-tab type="preview">
+    <i-navbar class="_margin-bottom-1">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items class="_justify-content-start">
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+    <i-navbar class="_margin-bottom-1">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items class="_justify-content-center">
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+    <i-navbar>
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items class="_justify-content-end">
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Contact</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 
@@ -319,26 +321,26 @@ You can position the `<i-nav>` component to the `start`, `end`, or `center` of t
 </i-navbar>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Collapse Breakpoint
 You can control what breakpoint your navbar will collapse at using the `collapse` property. By default, the navbar will collapse on the `md` screen size.
 
-<i-code-preview title="Collapse Breakpoint Example">
-
-<i-navbar collapse="lg">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-<template slot="html">
+<i-code title="Collapse Breakpoint Example">
+<i-tab type="preview">
+    <i-navbar collapse="lg">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-navbar collapse="lg">
@@ -352,8 +354,8 @@ You can control what breakpoint your navbar will collapse at using the `collapse
 </i-navbar>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ##### Always or Never Collapsible
 
@@ -361,19 +363,19 @@ Besides the breakpoint values, you can use a boolean value to set your navbar to
 
 Setting a `collapse` value of `true` will set the navbar to be always collapsible.
 
-<i-code-preview title="Always Collapsible Example">
-
-<i-navbar :collapse="true">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-<template slot="html">
+<i-code title="Always Collapsible Example">
+<i-tab type="preview">
+    <i-navbar :collapse="true">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-navbar :collapse="true">
@@ -387,24 +389,24 @@ Setting a `collapse` value of `true` will set the navbar to be always collapsibl
 </i-navbar>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Setting a `collapse` value of `false` will set the navbar to never be collapsible.
 
-<i-code-preview title="Never Collapsible Example">
-
-<i-navbar :collapse="false">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-<template slot="html">
+<i-code title="Never Collapsible Example">
+<i-tab type="preview">
+    <i-navbar :collapse="false">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-navbar :collapse="false">
@@ -418,29 +420,29 @@ Setting a `collapse` value of `false` will set the navbar to never be collapsibl
 </i-navbar>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ##### Manual Collapse
 
 Sometimes, it's necessary to control whether the Navbar is collapsed or not programmatically. You can use the `v-model` directive to control whether the Navbar should be collapsed or not.
 
-<i-code-preview title="Manual Navbar Collapse Example">
-
-<i-button v-on:click="collapsed = !collapsed">
-    Toggle Collapsed
-</i-button>
-<i-navbar :collapse="true" v-model="collapsed" :collapse-on-click-outside="false">
-    <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
-    <i-navbar-items>
-        <i-nav>
-            <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
-            <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
-        </i-nav>
-    </i-navbar-items>
-</i-navbar>
-
-<template slot="html">
+<i-code title="Manual Navbar Collapse Example">
+<i-tab type="preview">
+    <i-button v-on:click="collapsed = !collapsed">
+        Toggle Collapsed
+    </i-button>
+    <i-navbar :collapse="true" v-model="collapsed" :collapse-on-click-outside="false">
+        <i-navbar-brand href="https://inkline.io" onclick="return false;">Navbar</i-navbar-brand>
+        <i-navbar-items>
+            <i-nav>
+                <i-nav-item href="https://inkline.io" onclick="return false;">Home</i-nav-item>
+                <i-nav-item href="https://inkline.io" onclick="return false;">About</i-nav-item>
+            </i-nav>
+        </i-navbar-items>
+    </i-navbar>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-button @click="collapsed = !collapsed">Toggle Collapsed</i-button>
@@ -456,15 +458,15 @@ Sometimes, it's necessary to control whether the Navbar is collapsed or not prog
 </i-navbar>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the navbar components as props, as well as available slots and events.
 
-<i-api-preview title="Navbar API" markup="i-navbar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/INavbar">
-    <template slot="props">
+<i-code title="Navbar API" markup="i-navbar" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/INavbar">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">collapse</template>
@@ -516,44 +518,44 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for navbar component default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Navbar Brand API" markup="i-navbar-brand" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/INavbarBrand">
-    <template slot="slots">
+<i-code title="Navbar Brand API" markup="i-navbar-brand" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/INavbarBrand">
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for navbar brand component default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Navbar Items API" markup="i-navbar-items" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/INavbarItems">
-    <template slot="slots">
+<i-code title="Navbar Items API" markup="i-navbar-items" default-active="slots" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/INavbarItems">
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for navbar items component default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the navbar components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Navbar" expanded>
-    <template slot="scss">
+<i-code title="Navbar" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$navbar-padding-base</template>
@@ -584,5 +586,5 @@ Here you can find a list of the Sass variables you can use for the navbar compon
                 <template slot="default"><code>('brand', 'monochrome')</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

@@ -1,18 +1,10 @@
 <template lang="md" src="./breadcrumb.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IBreadcrumb, IBreadcrumbItem } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     name: 'BreadcrumbView',
-    layout: 'documentation',
     extends: View,
-    head: head(),
-    components: {
-        IBreadcrumb,
-        IBreadcrumbItem
-    },
     data() {
         return {
             items: [

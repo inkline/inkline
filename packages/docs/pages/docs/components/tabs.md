@@ -1,11 +1,16 @@
+---
+title: Tabs
+description: Tab elements are used to switch between multiple sections of related content. 
+---
+
 # Tabs
-## Tab elements are used to switch between multiple sections of related content. {.lead}
+## Tab elements are used to switch between multiple sections of related content. 
 
 ### Example
 Switching between tabs fade in the content associated to the selected tab. 
 
-<i-code-preview title="Tabs Example">
-
+<i-code title="Tabs Example">
+<i-tab type="preview">
 <i-tabs>
     <i-tab title="Tab 1">
         Tab 1 content
@@ -18,7 +23,8 @@ Switching between tabs fade in the content associated to the selected tab.
     </i-tab>
 </i-tabs>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-tabs>
@@ -34,8 +40,8 @@ Switching between tabs fade in the content associated to the selected tab.
 </i-tabs>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Custom Heading
 You can use the `header` scoped slot to provide a custom heading for the tab items. 
@@ -45,30 +51,30 @@ You can use the `header` scoped slot to provide a custom heading for the tab ite
     <p>Adding the <code>custom</code> property will disable the merged tab and header design.</p>
 </i-alert>
 
-<i-code-preview title="Custom Tabs Heading">
-
-<i-tabs custom>
-    <template v-slot:header="{ tabs, active, setActive }">
-        <ul class="list -inline">
-            <li v-for="tab in tabs" :key="tab.id">
-                <i-button :active="tab.id === active" @click="setActive(tab)" class="_margin-bottom-0">
-                    {{ tab.title }}
-                </i-button>
-            </li>
-        </ul>
-    </template>
-    <i-tab title="Tab 1">
-        Tab 1 content
-    </i-tab>
-    <i-tab title="Tab 2">
-        Tab 2 content
-    </i-tab>
-    <i-tab title="Tab 3">
-        Tab 3 content
-    </i-tab>
-</i-tabs>
-
-<template slot="html">
+<i-code title="Custom Tabs Heading">
+<i-tab type="preview">
+    <i-tabs custom>
+        <template v-slot:header="{ tabs, active, setActive }">
+            <ul class="list -inline">
+                <li v-for="tab in tabs" :key="tab.id">
+                    <i-button :active="tab.id === active" @click="setActive(tab)" class="_margin-bottom-0">
+                        {{ tab.title }}
+                    </i-button>
+                </li>
+            </ul>
+        </template>
+        <i-tab title="Tab 1">
+            Tab 1 content
+        </i-tab>
+        <i-tab title="Tab 2">
+            Tab 2 content
+        </i-tab>
+        <i-tab title="Tab 3">
+            Tab 3 content
+        </i-tab>
+    </i-tabs>
+</i-tab>
+<i-tab type="html">
 
 <div v-pre>
 
@@ -82,7 +88,7 @@ You can use the `header` scoped slot to provide a custom heading for the tab ite
                 </i-button>
             </li>
         </ul>
-    </template>
+    </i-tab>
     <i-tab title="Tab 1">
         Tab 1 content
     </i-tab>
@@ -97,27 +103,27 @@ You can use the `header` scoped slot to provide a custom heading for the tab ite
 
 </div>
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Default Open Tab
 A specific tab can be opened by default, on page load, using the `v-model` directive of the `<i-tabs>` component. First, you'll need to assign an `id` to the `<i-tab>` components which will identify the open panels.
  
- <i-code-preview title="Default Open Tab">
-
-<i-tabs v-model="active">
-    <i-tab id="tab-1" title="Tab 1">
-        Tab 1 content
-    </i-tab>
-    <i-tab id="tab-2" title="Tab 2">
-        Tab 2 content
-    </i-tab>
-    <i-tab id="tab-3" title="Tab 3">
-        Tab 3 content
-    </i-tab>
-</i-tabs>
-
-<template slot="html">
+<i-code title="Default Open Tab">
+<i-tab type="preview">
+    <i-tabs v-model="active">
+        <i-tab id="tab-1" title="Tab 1">
+            Tab 1 content
+        </i-tab>
+        <i-tab id="tab-2" title="Tab 2">
+            Tab 2 content
+        </i-tab>
+        <i-tab id="tab-3" title="Tab 3">
+            Tab 3 content
+        </i-tab>
+    </i-tabs>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-tabs v-model="active">
@@ -136,8 +142,8 @@ A specific tab can be opened by default, on page load, using the `v-model` direc
 </i-tabs>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -149,27 +155,27 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Stretch Header
 You can have a full width tabs header using the `stretch` property. Make sure you use it only when having a small number of tabs.
 
-<i-code-preview title="Stretch Tabs Header Example">
-
-<i-tabs stretch>
-    <i-tab title="Tab 1">
-        Tab 1 content
-    </i-tab>
-    <i-tab title="Tab 2">
-        Tab 2 content
-    </i-tab>
-    <i-tab title="Tab 3">
-        Tab 3 content
-    </i-tab>
-</i-tabs>
-
-<template slot="html">
+<i-code title="Stretch Tabs Header Example">
+<i-tab type="preview">
+    <i-tabs stretch>
+        <i-tab title="Tab 1">
+            Tab 1 content
+        </i-tab>
+        <i-tab title="Tab 2">
+            Tab 2 content
+        </i-tab>
+        <i-tab title="Tab 3">
+            Tab 3 content
+        </i-tab>
+    </i-tabs>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-tabs stretch>
@@ -185,29 +191,16 @@ You can have a full width tabs header using the `stretch` property. Make sure yo
 </i-tabs>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Color Variants
 Inkline includes basic predefined tabs styles that you can use within your application. You can apply a style using the `variant` property.
 
-<i-code-preview title="Tab Variants">
-
-<i-tabs variant="light">
-    <i-tab title="Tab 1">
-        Tab 1 content
-    </i-tab>
-    <i-tab title="Tab 2">
-        Tab 2 content
-    </i-tab>
-    <i-tab title="Tab 3">
-        Tab 3 content
-    </i-tab>
-</i-tabs>
-
-<div class="_margin-top-1">
-    <i-tabs variant="dark">
+<i-code title="Tab Variants">
+<i-tab type="preview">
+    <i-tabs variant="light">
         <i-tab title="Tab 1">
             Tab 1 content
         </i-tab>
@@ -218,9 +211,21 @@ Inkline includes basic predefined tabs styles that you can use within your appli
             Tab 3 content
         </i-tab>
     </i-tabs>
-</div>
-
-<template slot="html">
+    <div class="_margin-top-1">
+        <i-tabs variant="dark">
+            <i-tab title="Tab 1">
+                Tab 1 content
+            </i-tab>
+            <i-tab title="Tab 2">
+                Tab 2 content
+            </i-tab>
+            <i-tab title="Tab 3">
+                Tab 3 content
+            </i-tab>
+        </i-tabs>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-tabs variant="light">
@@ -263,15 +268,15 @@ Inkline includes basic predefined tabs styles that you can use within your appli
     </i-tab>
 </i-tabs>
 ~~~
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the various customization options you can use for the tabs components as props, as well as available slots and events.
 
-<i-api-preview title="Tabs API" markup="i-tabs" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ITabs">
-    <template slot="props">
+<i-code title="Tabs API" markup="i-tabs" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ITabs">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">custom</template>
@@ -302,8 +307,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
@@ -314,8 +319,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description">Scoped slot for tabs header.</template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">input</template>
@@ -323,11 +328,11 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>(active: String) => {}</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
-<i-api-preview title="Tab Item API" markup="i-tab" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ITab">
-    <template slot="props">
+<i-code title="Tab Item API" markup="i-tab" expanded link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/ITab">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">title</template>
@@ -344,22 +349,22 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>tab-&lt;uid&gt;</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for tabdefault content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the tabs components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Tabs" expanded>
-    <template slot="scss">
+<i-code title="Tabs" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$tabs-border-radius</template>
@@ -382,5 +387,5 @@ Here you can find a list of the Sass variables you can use for the tabs componen
                 <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

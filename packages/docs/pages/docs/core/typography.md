@@ -1,5 +1,10 @@
+---
+title: Typography
+description: Examples and documentation for typography, one of the most important design elements of an application. 
+---
+
 # Typography
-## Examples and documentation for typography, one of the most important design elements of an application. { .lead }
+## Examples and documentation for typography, one of the most important design elements of an application. 
 
 Inkline provides you with basic elements, typography, and link styles. It uses a native font stack that selects the best 
 font family for each OS and device. The base font size is `1rem`, so visitors can customize their font size as needed 
@@ -18,7 +23,8 @@ To learn more about style configuration, please make sure you followed the Custo
 ### Headings
 All HTML headings, `<h1>` through `<h6>`, have their size calculated based on the specified `$font-size-base`.
 
-<i-code-preview title="Typography - Headings">
+<i-code title="Typography - Headings">
+<i-tab type="preview">
 
 <div class="headings-list">
     <h1>h1. Inkline heading</h1>
@@ -29,7 +35,8 @@ All HTML headings, `<h1>` through `<h6>`, have their size calculated based on th
     <h6>h6. Inkline heading</h6>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <h1>h1. Inkline heading</h1>
@@ -40,13 +47,14 @@ All HTML headings, `<h1>` through `<h6>`, have their size calculated based on th
 <h6>h6. Inkline heading</h6>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 You can use helper classes to achieve heading styles. Classes `.h1` through `.h6` are available, for when you 
 want to match the font styling of a heading but cannot use the associated HTML element.
 
-<i-code-preview title="Typography - Heading Helpers">
+<i-code title="Typography - Heading Helpers">
+<i-tab type="preview">
 
 <div class="headings-list">
     <div><span class="h1">h1. Inkline heading</span></div>
@@ -57,7 +65,8 @@ want to match the font styling of a heading but cannot use the associated HTML e
     <div><span class="h6">h6. Inkline heading</span></div>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <span class="h1">h1. Inkline heading</span>
@@ -68,13 +77,14 @@ want to match the font styling of a heading but cannot use the associated HTML e
 <span class="h6">h6. Inkline heading</span>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Displays
 If you need something larger than headings, you can use displays, `.d1` through `.d6` are available.
 
-<i-code-preview title="Typography - Display">
+<i-code title="Typography - Display">
+<i-tab type="preview">
 
 <div class="headings-list">
     <div><span class="d1">d1. Inkline display</span></div>
@@ -85,7 +95,8 @@ If you need something larger than headings, you can use displays, `.d1` through 
     <div><span class="d6">d6. Inkline display</span></div>
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <span class="d1">d1. Inkline display</span>
@@ -96,19 +107,21 @@ If you need something larger than headings, you can use displays, `.d1` through 
 <span class="d6">d6. Inkline display</span>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Lead
 Make a paragraph stand out by adding `.lead`.
 
-<i-code-preview title="Typography - Lead">
+<i-code title="Typography - Lead">
+<i-tab type="preview">
 
 <p class="lead">
     Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
 </p>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <p class="lead">
@@ -116,13 +129,14 @@ Make a paragraph stand out by adding `.lead`.
 </p>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Inline Text Elements
 Inkline provides basic styling for all common HTML5 inline text elements.
 
-<i-code-preview title="Typography - Inline Text Elements">
+<i-code title="Typography - Inline Text Elements">
+<i-tab type="preview">
 
 <p>You can use the mark tag to <mark>highlight</mark> text.</p>
 <p><del>This line of text is meant to be treated as deleted text.</del></p>
@@ -133,7 +147,8 @@ Inkline provides basic styling for all common HTML5 inline text elements.
 <p><strong>This line rendered as bold text.</strong></p>
 <p><em>This line rendered as italicized text.</em></p>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html 
 <p>You can use the mark tag to <mark>highlight</mark> text.</p>
@@ -160,8 +175,8 @@ Inkline provides basic styling for all common HTML5 inline text elements.
 <p><em>This line rendered as italicized text.</em></p>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 To avoid any unwanted semantic implications that the tags would bring, `.mark` and `.small` classes are also 
 available to apply the same styles as `<mark>` and `<small>`.
@@ -175,13 +190,15 @@ You can change text alignment, transform, style, weight, and color with text uti
 #### Text Alignment
 You can easily realign text to components with text alignment classes.
 
-<i-code-preview title="Typography - Justified Text Alignment">
+<i-code title="Typography - Justified Text Alignment">
+<i-tab type="preview">
 
 <p class="_text-justify">
     Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
 </p>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <p class="_text-justify">
@@ -189,10 +206,11 @@ You can easily realign text to components with text alignment classes.
 </p>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
-<i-code-preview title="Typography - Left, Center and Right Text Alignment">
+<i-code title="Typography - Left, Center and Right Text Alignment">
+<i-tab type="preview">
 
 <p class="_text-left">
     This text is left aligned.
@@ -204,7 +222,8 @@ You can easily realign text to components with text alignment classes.
     This text is right aligned.
 </p>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <p class="_text-left">This text is left aligned.</p>
@@ -216,19 +235,21 @@ You can easily realign text to components with text alignment classes.
 <p class="_text-right">This text is right aligned.</p>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### Text Wrapping
 You can easily realign text to components with text alignment classes.
 
-<i-code-preview title="Typography - Text Wrapping">
+<i-code title="Typography - Text Wrapping">
+<i-tab type="preview">
 
 <div class="_text-nowrap _background-light" style="width: 8rem;">
     This text should overflow the parent.
 </div>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_text-nowrap" style="width: 8rem;">
@@ -236,14 +257,15 @@ You can easily realign text to components with text alignment classes.
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### Responsive Utilities
 
 You can align, wrap or truncate text responsively for any given `xs`, `sm`, `md`, `lg`, or `xl` breakpoint by adding the breakpoint suffix:
 
-<i-code-preview title="Typography - Responsive Text Alignment">
+<i-code title="Typography - Responsive Text Alignment">
+<i-tab type="preview">
 
 <p class="_text-center-xs">This text is centered on extra-small screens.</p>
 <p class="_text-center-sm">This text is centered on small screens.</p>
@@ -251,7 +273,8 @@ You can align, wrap or truncate text responsively for any given `xs`, `sm`, `md`
 <p class="_text-center-lg">This text is centered on large screens.</p>
 <p class="_text-center-xl">This text is centered on extra-large screens.</p>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <p class="_text-center-xs">This text is centered on extra-small screens.</p>
@@ -269,21 +292,23 @@ You can align, wrap or truncate text responsively for any given `xs`, `sm`, `md`
 <p class="_text-center-xl">This text is centered on extra-large screens.</p>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Abbreviations
 The HTML `<abbr>` element for abbreviations and acronyms is styled to show the expanded version on hover. 
 Abbreviations have a default underline and gain a help cursor to provide additional context on hover and to users of 
 assistive technologies.
 
-<i-code-preview title="Typography - Abbreviations">
+<i-code title="Typography - Abbreviations">
+<i-tab type="preview">
 
 <abbr title="attribute">attr</abbr>
 
 <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <abbr title="attribute">attr</abbr>
@@ -292,14 +317,15 @@ assistive technologies.
 <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Blockquotes
 To quote blocks of content from another source within your document, wrap `<blockquote class="blockquote">` around any 
 HTML as the quote.
 
-<i-code-preview title="Blockquote Alignment">
+<i-code title="Blockquote Alignment">
+<i-tab type="preview">
 
 <blockquote class="blockquote">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -316,7 +342,8 @@ HTML as the quote.
   <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <blockquote class="blockquote">
@@ -337,8 +364,8 @@ HTML as the quote.
 </blockquote>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Lists
 To enumerate a sequence of elements, you can use lists. Inkline provides you with multiple variations to achieve your 
@@ -347,7 +374,8 @@ target design.
 #### Unordered Lists
 When enumerating elements in no specific order, use an unordered list.
 
-<i-code-preview title="Typography - Unordered Lists">
+<i-code title="Typography - Unordered Lists">
+<i-tab type="preview">
 
 <ul>
   <li>Lorem ipsum dolor sit amet</li>
@@ -367,7 +395,8 @@ When enumerating elements in no specific order, use an unordered list.
   <li>Eget porttitor lorem</li>
 </ul>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <ul>
@@ -389,14 +418,15 @@ When enumerating elements in no specific order, use an unordered list.
 </ul>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 #### Ordered Lists
 When enumerating elements in a specific order, use an ordered list.
 
-<i-code-preview title="Typography - Ordered Lists">
+<i-code title="Typography - Ordered Lists">
+<i-tab type="preview">
 
 <ol>
   <li>Lorem ipsum dolor sit amet</li>
@@ -416,7 +446,8 @@ When enumerating elements in a specific order, use an ordered list.
   <li>Eget porttitor lorem</li>
 </ol>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <ol>
@@ -438,14 +469,15 @@ When enumerating elements in a specific order, use an ordered list.
 </ol>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### Unstyled Lists
 To remove the default `list-style` and `margin` on list items, use the `-unstyled` modifier. 
 This applies to immediate children list items only, meaning you will need to add the class for any nested lists as well.
 
-<i-code-preview title="Typography - Unstyled Lists">
+<i-code title="Typography - Unstyled Lists">
+<i-tab type="preview">
 
 <ul class="list -unstyled">
   <li>Lorem ipsum dolor sit amet</li>
@@ -465,7 +497,8 @@ This applies to immediate children list items only, meaning you will need to add
   <li>Eget porttitor lorem</li>
 </ul>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <ul class="list -unstyled">
@@ -487,13 +520,14 @@ This applies to immediate children list items only, meaning you will need to add
 </ul>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### Inline Lists
 Remove a list’s bullets and apply some light margin using the `-inline` list modifier.
 
-<i-code-preview title="Typography - Inline Lists">
+<i-code title="Typography - Inline Lists">
+<i-tab type="preview">
 
 <ul class="list -inline">
   <li>Lorem ipsum</li>
@@ -501,7 +535,8 @@ Remove a list’s bullets and apply some light margin using the `-inline` list m
   <li>Nulla volutpat</li>
 </ul>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <ul class="list -inline">
@@ -511,13 +546,14 @@ Remove a list’s bullets and apply some light margin using the `-inline` list m
 </ul>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 #### Description Lists
 Remove a list’s bullets and apply some light margin using the `-inline` list modifier.
 
-<i-code-preview title="Typography - Description Lists">
+<i-code title="Typography - Description Lists">
+<i-tab type="preview">
 
 <dl class="row">
   <dt class="column -sm-3">Description lists</dt>
@@ -544,7 +580,8 @@ Remove a list’s bullets and apply some light margin using the `-inline` list m
   </dd>
 </dl>
 
-<template slot="html">
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <dl class="row">
@@ -573,16 +610,16 @@ Remove a list’s bullets and apply some light margin using the `-inline` list m
 </dl>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for typography. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
 
-<i-scss-preview title="Typography" expanded :header="false">
-    <template slot="scss">
+<i-code scss title="Typography" expanded :header="false">
+    <i-tab type="scss">
         <api-table-row>
             <template slot="property">$font-family-primary-base</template>
             <template slot="default"><code>-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif</code></template>
@@ -843,5 +880,5 @@ Here you can find a list of the Sass variables you can use for typography. If yo
             <template slot="property">$hr-border-width</template>
             <template slot="default"><code>$border-width</code></template>
         </api-table-row>
-    </template>
-</i-scss-preview>
+    </i-tab>
+</i-code>

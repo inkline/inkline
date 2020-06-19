@@ -1,5 +1,5 @@
 # Spacing Utilities
-## You can use a wide range of responsive margin and padding utility classes to modify an element’s appearance. {.lead}
+## You can use a wide range of responsive margin and padding utility classes to modify an element’s appearance. 
 
 ### Notation
 
@@ -61,15 +61,17 @@ Here are some examples of these utility classes:
 ### Horizontal Centering
 You can set a `left` and `right` margin using the `x` side parameter, such as `._margin-x-auto`. The `._margin-x-auto` class is useful for horizontally centering fixed-width block level content.
 
-<i-code-preview title="Horizontal Centering Utility Example">
-
-<div class="_width-50 _margin-x-auto _padding-1 _background-gray-20 _text-center">Horizontally Centered</div>
-
-<template slot="html">
+<i-code title="Horizontal Centering Utility Example">
+<i-tab type="preview">
+    <div class="_width-50 _margin-x-auto _padding-1 _background-gray-20 _text-center">
+        Horizontally Centered
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_margin-x-auto">Horizontally Centered</div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>

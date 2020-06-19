@@ -1,37 +1,42 @@
-# Badge
-## Documentation and examples for badges, a small component used for counting and labeling.{.lead}
+---
+title: Badge
+description: Documentation and examples for badges, a small component used for counting and labeling.
+---
 
+# Badge
+## Documentation and examples for badges, a small component used for counting and labeling.
 
 ### Variants
 Inkline includes several predefined badge styles, each serving its own semantic purpose, which you can control using the `variant` property.
 
-<i-code-preview title="Badge Variants">
-<i-badge variant="primary">
-    Primary
-</i-badge>&nbsp; 
-<i-badge variant="secondary">
-    Secondary
-</i-badge>&nbsp; 
-<i-badge variant="light">
-    Light
-</i-badge>&nbsp; 
-<i-badge variant="dark">
-    Dark
-</i-badge>&nbsp; 
-<i-badge variant="info">
-    Info
-</i-badge>&nbsp; 
-<i-badge variant="success">
-    Sucess
-</i-badge>&nbsp; 
-<i-badge variant="warning">
-    Warning
-</i-badge>&nbsp; 
-<i-badge variant="danger">
-    Danger
-</i-badge>
-    
-<template slot="html">
+<i-code title="Badge Variants">
+<i-tab type="preview">
+    <i-badge variant="primary">
+        Primary
+    </i-badge>&nbsp; 
+    <i-badge variant="secondary">
+        Secondary
+    </i-badge>&nbsp; 
+    <i-badge variant="light">
+        Light
+    </i-badge>&nbsp; 
+    <i-badge variant="dark">
+        Dark
+    </i-badge>&nbsp; 
+    <i-badge variant="info">
+        Info
+    </i-badge>&nbsp; 
+    <i-badge variant="success">
+        Sucess
+    </i-badge>&nbsp; 
+    <i-badge variant="warning">
+        Warning
+    </i-badge>&nbsp; 
+    <i-badge variant="danger">
+        Danger
+    </i-badge>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-badge variant="primary">Primary</i-badge>
@@ -58,25 +63,26 @@ Inkline includes several predefined badge styles, each serving its own semantic 
 <i-badge variant="danger">Danger</i-badge>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Sizes
 
 You're able to use the `size` modifier to control the text and spacing size of your badges, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`.
 
-<i-code-preview title="Badge Sizes">
-<i-badge size="sm">
-    Small
-</i-badge>&nbsp; 
-<i-badge size="md">
-    Medium
-</i-badge>&nbsp; 
-<i-badge size="lg">
-    Large
-</i-badge>
-
-<template slot="html">
+<i-code title="Badge Sizes">
+<i-tab type="preview">
+    <i-badge size="sm">
+        Small
+    </i-badge>&nbsp; 
+    <i-badge size="md">
+        Medium
+    </i-badge>&nbsp; 
+    <i-badge size="lg">
+        Large
+    </i-badge>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-badge size="sm">Small</i-badge>
@@ -88,20 +94,21 @@ You're able to use the `size` modifier to control the text and spacing size of y
 <i-badge size="lg">Large</i-badge>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 Badges always match the size of the immediate parent element by using relative font sizing and `em` units.
 
-<i-code-preview title="Badge Heading Sizes">
-<h1 class="_margin-top-0">Heading 1 <i-badge variant="primary">New</i-badge></h1>
-<h2 class="_margin-top-0">Heading 2 <i-badge variant="primary">New</i-badge></h2>
-<h3 class="_margin-top-0">Heading 3 <i-badge variant="primary">New</i-badge></h3>
-<h4 class="_margin-top-0">Heading 4 <i-badge variant="primary">New</i-badge></h4>
-<h5 class="_margin-top-0">Heading 5 <i-badge variant="primary">New</i-badge></h5>
-<h6 class="_margin-top-0">Heading 6 <i-badge variant="primary">New</i-badge></h6>
-
-<template slot="html">
+<i-code title="Badge Heading Sizes">
+<i-tab type="preview">
+    <h1 class="_margin-top-0">Heading 1 <i-badge variant="primary">New</i-badge></h1>
+    <h2 class="_margin-top-0">Heading 2 <i-badge variant="primary">New</i-badge></h2>
+    <h3 class="_margin-top-0">Heading 3 <i-badge variant="primary">New</i-badge></h3>
+    <h4 class="_margin-top-0">Heading 4 <i-badge variant="primary">New</i-badge></h4>
+    <h5 class="_margin-top-0">Heading 5 <i-badge variant="primary">New</i-badge></h5>
+    <h6 class="_margin-top-0">Heading 6 <i-badge variant="primary">New</i-badge></h6>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <h1>Heading 1 <i-badge variant="primary">New</i-badge></h1>
@@ -122,15 +129,15 @@ Badges always match the size of the immediate parent element by using relative f
 <h6>Heading 6 <i-badge variant="primary">New</i-badge></h6>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 ### Component API
 Here you can find a list of the customization options you can use for the badge component as props, as well as available slots.
 
-<i-api-preview title="Badge API" expanded markup="i-badge" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IBadge">
-    <template slot="props">
+<i-code title="Badge API" expanded markup="i-badge" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IBadge">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">size</template>
@@ -147,27 +154,27 @@ Here you can find a list of the customization options you can use for the badge 
                 <template slot="default"><code>primary</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="slots">
+    </i-tab>
+    <i-tab type="slots">
         <api-table>
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for badge default content.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the badge component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Badge" expanded>
-    <template slot="scss">
+<i-code title="Badge" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
-                <template slot="property">$badge-font-size: ('sm': 65%, 'md': 75%, 'lg'</template>
-                <template slot="default"><code>85%)</code></template>
+                <template slot="property">$badge-font-size</template>
+                <template slot="default"><code>('sm': 65%, 'md': 75%, 'lg': 85%)</code></template>
             </api-table-row>
             <api-table-row>
                 <template slot="property">$badge-font-weight</template>
@@ -210,5 +217,5 @@ Here you can find a list of the Sass variables you can use for the badge compone
                 <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

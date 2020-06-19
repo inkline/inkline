@@ -1,5 +1,10 @@
+---
+title: Form Validation
+description: Inkline provides you with powerful form validation utilities. 
+---
+
 # Form Validation
-## Inkline provides you with powerful form validation utilities. { .lead }
+## Inkline provides you with powerful form validation utilities. 
 
 The built-in Form Validation package allows you to define a form validation schema which you will bind to your form components. 
 
@@ -63,47 +68,49 @@ To learn more about defining a form schema, head to the <nuxt-link :to="{ name: 
 
 The schema object `this.form` contains the validation state of the `<i-form>`, and is updated as soon as the input changes. The object looks as seen in the Output tab: 
 
-<i-code-preview title="Form Example">
-<i-form v-model="form" @submit="submitForm">
-    <i-form-group>
-        <i-form-label>Project Title</i-form-label>
-        <i-input :schema="form.title" placeholder="Enter a project title.." />
-    </i-form-group>
-    <i-form-group>
-        <i-form-label>Project Description</i-form-label>
-        <i-textarea :schema="form.description" placeholder="Write a project description.." />
-    </i-form-group>
-    <i-form-group>
+<i-code title="Form Example">
+<i-tab type="preview">
+    <i-form v-model="form" @submit="submitForm">
         <i-form-group>
-            <i-form-label>Project Type</i-form-label>
-            <i-select :schema="form.details.type" placeholder="Choose an option">
-                <i-select-option value="a" label="Admin Dashboard" />
-                <i-select-option value="b" label="eCommerce" />
-                <i-select-option value="c" label="Portfolio" />
-                <i-select-option value="d" label="Blog" disabled />
-            </i-select>
+            <i-form-label>Project Title</i-form-label>
+            <i-input :schema="form.title" placeholder="Enter a project title.." />
         </i-form-group>
         <i-form-group>
-            <i-form-label>Project Labels</i-form-label>
-            <i-checkbox-group :schema="form.details.labels">
-                <i-checkbox value="Design">Design</i-checkbox>
-                <i-checkbox value="Development">Development</i-checkbox>
-                <i-checkbox value="Testing" disabled>Testing</i-checkbox>
-            </i-checkbox-group>
+            <i-form-label>Project Description</i-form-label>
+            <i-textarea :schema="form.description" placeholder="Write a project description.." />
         </i-form-group>
         <i-form-group>
-            <i-form-label>Publish</i-form-label>
-            <i-radio-group :schema="form.details.published">
-                <i-radio :value="true">Published</i-radio>
-                <i-radio :value="false">Unpublished</i-radio>
-            </i-radio-group>
+            <i-form-group>
+                <i-form-label>Project Type</i-form-label>
+                <i-select :schema="form.details.type" placeholder="Choose an option">
+                    <i-select-option value="a" label="Admin Dashboard" />
+                    <i-select-option value="b" label="eCommerce" />
+                    <i-select-option value="c" label="Portfolio" />
+                    <i-select-option value="d" label="Blog" disabled />
+                </i-select>
+            </i-form-group>
+            <i-form-group>
+                <i-form-label>Project Labels</i-form-label>
+                <i-checkbox-group :schema="form.details.labels">
+                    <i-checkbox value="Design">Design</i-checkbox>
+                    <i-checkbox value="Development">Development</i-checkbox>
+                    <i-checkbox value="Testing" disabled>Testing</i-checkbox>
+                </i-checkbox-group>
+            </i-form-group>
+            <i-form-group>
+                <i-form-label>Publish</i-form-label>
+                <i-radio-group :schema="form.details.published">
+                    <i-radio :value="true">Published</i-radio>
+                    <i-radio :value="false">Unpublished</i-radio>
+                </i-radio-group>
+            </i-form-group>
         </i-form-group>
-    </i-form-group>
-    <i-form-group>
-        <i-button type="submit">Create Project</i-button>
-    </i-form-group>
-</i-form>
-<template slot="html">
+        <i-form-group>
+            <i-button type="submit">Create Project</i-button>
+        </i-form-group>
+    </i-form>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-form v-model="form" @submit="submitForm">
@@ -147,8 +154,8 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
 </i-form>
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -203,13 +210,13 @@ export default {
 }
 ~~~
 
-</template>
-<template slot="output">
+</i-tab>
+<i-tab type="output">
 <span class="_text-muted">// console.log(this.form);</span>
 <pre>
 <code>
 {{ form | prettify }}
 </code>
 </pre>
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>

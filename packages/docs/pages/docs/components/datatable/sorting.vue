@@ -1,9 +1,7 @@
 <template lang="md" src="./sorting.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { generateDataRows } from "@helpers/generateDataRows";
-import { IDatatable, IAlert } from '@inkline/inkline/src';
+import View from '~/components/docs/View';
+import { generateDataRows } from '~/helpers/generateDataRows';
 
 const customSort = (a, b) => {
     if (a.name < b.name) {
@@ -18,12 +16,6 @@ const customSort = (a, b) => {
 export default {
     extends: View,
     name: 'DataTableSortingView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IDatatable,
-        IAlert
-    },
     data () {
         return {
             columns: [

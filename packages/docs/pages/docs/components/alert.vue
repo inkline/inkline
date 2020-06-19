@@ -1,15 +1,10 @@
 <template src="./alert.md" lang="md"></template>
 <script>
-import View from '@components/docs/View';
-import { IAlert } from '@inkline/inkline/src/index';
-import { head } from "@helpers/head";
+import View from '~/components/docs/View';
 
 export default {
     name: 'AlertView',
-    layout: 'documentation',
     extends: View,
-    head: head(),
-    components: { IAlert },
     data() {
         return {
             visible: true

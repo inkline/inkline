@@ -1,20 +1,26 @@
+---
+title: Hamburger Menu
+description: Inkline's hamburger menu is used to control opening and closing elements using various animation options.
+---
+
 # Hamburger Menu
-## Inkline's hamburger menu is used to control opening and closing elements using various animation options.{.lead}
+## Inkline's hamburger menu is used to control opening and closing elements using various animation options.
 
 ### Example
 Here’s an example of a basic use case for the `<i-hamburger-menu>` component. This component is usually used together with the <nuxt-link :to="{ name: 'docs-components-navbar' }">Navbar Component</nuxt-link> and <nuxt-link :to="{ name: 'docs-components-sidebar' }">Sidebar Component</nuxt-link> to control their collapsed state.
 
-<i-code-preview title="Hamburger Menu Example">
-<i-hamburger-menu :active="value" @click="value = !value" />
-
-<template slot="html">
+<i-code title="Hamburger Menu Example">
+<i-tab type="preview">
+    <i-hamburger-menu :active="value" @click="value = !value" />
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-hamburger-menu :active="active" @click="active = !active" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -26,20 +32,22 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Variants
 You can set the style of a `<i-hamburger-menu>` using the `variant` property, which can have a value of `light` or `dark`. By default, hamburger menus use the `light` variant.
 
-<i-code-preview title="Hamburger Menu Example">
-<div class="_background-light _display-inline-flex _padding-1">
-    <i-hamburger-menu variant="light" :active="valueLight" @click="valueLight = !valueLight" />
-</div>
-<div class="_background-dark _display-inline-flex _padding-1">
-    <i-hamburger-menu variant="dark" :active="valueDark" @click="valueDark = !valueDark" />
-</div>
-<template slot="html">
+<i-code title="Hamburger Menu Example">
+<i-tab type="preview">
+    <div class="_background-light _display-inline-flex _padding-1">
+        <i-hamburger-menu variant="light" :active="valueLight" @click="valueLight = !valueLight" />
+    </div>
+    <div class="_background-dark _display-inline-flex _padding-1">
+        <i-hamburger-menu variant="dark" :active="valueDark" @click="valueDark = !valueDark" />
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <i-hamburger-menu variant="light" :active="active" @click="active = !active" />
@@ -49,8 +57,8 @@ You can set the style of a `<i-hamburger-menu>` using the `variant` property, wh
 <i-hamburger-menu variant="dark" :active="active" @click="active = !active" />
 ~~~
 
-</template>
-<template slot="js">
+</i-tab>
+<i-tab type="js">
 
 ~~~js
 export default {
@@ -62,14 +70,14 @@ export default {
 }
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Component API
 Here you can find a list of the various customization options you can use for the hamburger menu component as props.
 
-<i-api-preview title="Hamburger Menu API" expanded markup="i-hamburger-menu" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IHamburgerMenu">
-    <template slot="props">
+<i-code title="Hamburger Menu API" expanded markup="i-hamburger-menu" link="https://github.com/inkline/inkline/tree/master/packages/inkline/src/components/IHamburgerMenu">
+    <i-tab type="props">
         <api-table>
             <api-table-row>
                 <template slot="property">active</template>
@@ -93,8 +101,8 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="default"><code>light</code></template>
             </api-table-row>
         </api-table>
-    </template>
-    <template slot="events">
+    </i-tab>
+    <i-tab type="events">
         <api-table>
             <api-table-row>
                 <template slot="event">click</template>
@@ -102,14 +110,14 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="description-row">Emitted when hamburger menu component is clicked.</template>
             </api-table-row>
         </api-table>
-    </template>
-</i-api-preview>
+    </i-tab>
+</i-code>
 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the hamburger menu component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-scss-preview title="Header" expanded>
-    <template slot="scss">
+<i-code title="Header" expanded>
+    <i-tab type="scss">
         <api-table>
             <api-table-row>
                 <template slot="property">$hamburger-menu-bar-width</template>
@@ -148,5 +156,5 @@ Here you can find a list of the Sass variables you can use for the hamburger men
                 <template slot="default"><code>('monochrome')</code></template>
             </api-table-row>
         </api-table>
-    </template>
-</i-scss-preview> 
+    </i-tab>
+</i-code> 

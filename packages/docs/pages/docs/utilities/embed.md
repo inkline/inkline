@@ -1,16 +1,17 @@
-# Embed Utilities
-## Create responsive video embeds by keeping the aspect ratio based on the parent element width. { .lead }
-
+---
+title: Embed Utilities
+description: Create responsive video embeds by keeping the aspect ratio based on the parent element width. 
+---
 ### Example
 Embed styles are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` elements.
 
-<i-code-preview title="Embed Utility Example">
-
-<div class="_embed _embed-16by9"> 
-    <iframe src="https://www.youtube.com/embed/_oIDt3dRgro" allowfullscreen></iframe>
-</div>
-
-<template slot="html">
+<i-code title="Embed Utility Example">
+<i-tab type="preview">
+    <div class="_embed _embed-16by9"> 
+        <iframe src="https://www.youtube.com/embed/_oIDt3dRgro" allowfullscreen></iframe>
+    </div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_embed _embed-16by9">
@@ -18,8 +19,8 @@ Embed styles are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<obj
 </div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Aspect Ratios
 Aspect ratios can be customized with embed helper classes. The following aspect ratio classes are available:

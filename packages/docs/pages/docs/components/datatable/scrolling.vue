@@ -1,19 +1,12 @@
 <template lang="md" src="./scrolling.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { generateDataRows } from "@helpers/generateDataRows";
-import { IDatatable, IAlert } from '@inkline/inkline/src';
+import View from '~/components/docs/View';
+
+import { generateDataRows } from '~/helpers/generateDataRows';
 
 export default {
     extends: View,
     name: 'DataTableScrollingView',
-    layout: 'documentation',
-    head: head(),
-    components: {
-        IDatatable,
-        IAlert
-    },
     data () {
         return {
             columns: [

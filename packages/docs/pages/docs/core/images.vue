@@ -1,12 +1,10 @@
 <template lang="md" src="./images.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
+import View from '~/components/docs/View';
 
 export default {
     name: 'ImagesView',
     layout: 'documentation',
-    extends: View,
-    head: head(),
+    extends: View
 };
 </script>

@@ -1,18 +1,9 @@
-<template lang="md" src="./getting-started.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IAlert, IIcon, ICard } from "@inkline/inkline/src/components";
+import View from '~/components/docs/NuxtContentView';
 
 export default {
     name: 'GettingStartedView',
     layout: 'documentation',
-    extends: View,
-    head: head(),
-    components: {
-        IAlert,
-        IIcon,
-        ICard
-    }
+    extends: View
 };
 </script>

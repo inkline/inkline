@@ -1,6 +1,7 @@
-# Plugin Options
-## Make Inkline your own by changing its various Vue Plugin global configuration options. { .lead }
-
+---
+title: Plugin Options
+description: Make Inkline your own by changing its various Vue Plugin global configuration options. 
+---
 
 You can configure some of Inkline's behaviour globally using the `config` field of the Vue Plugin integration. Here are the default configuration options:
 

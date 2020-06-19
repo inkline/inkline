@@ -1,6 +1,7 @@
-# Vue CLI Installation
-## Install Inkline using the official Vue CLI plugin and get Inkline automatically set up for you. {.lead}
-
+---
+title: Vue CLI Installation
+description: Install Inkline using the official Vue CLI plugin and get Inkline automatically set up for you. 
+---
 ### Installation
 After you've [created a Vue CLI Project](https://cli.vuejs.org/guide/creating-a-project.html), install Inkline using the following command: 
 

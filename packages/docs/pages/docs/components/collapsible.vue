@@ -1,22 +1,14 @@
 <template lang="md" src="./collapsible.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { ICollapsible, ICollapsibleItem } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     name: 'CollapsibleView',
-    layout: 'documentation',
     extends: View,
-    head: head(),
-    components: {
-        ICollapsible,
-        ICollapsibleItem
-    },
     data() {
         return {
             active: ['panel-1']
         };
-    },
+    }
 };
 </script>

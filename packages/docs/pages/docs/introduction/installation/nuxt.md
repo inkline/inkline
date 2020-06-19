@@ -1,6 +1,7 @@
-# Nuxt.js Installation
-## Install Inkline using the official Nuxt.js module and get Inkline automatically set up for you. {.lead}
-
+---
+title: Nuxt.js Installation
+description: Install Inkline using the official Nuxt.js module and get Inkline automatically set up for you. 
+---
 ### Installation
 After you've [created a Nuxt.js Project](https://nuxtjs.org/guide/installation/), install Inkline using the following command:
 

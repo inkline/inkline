@@ -1,6 +1,7 @@
-# Visibility Utilities
-## Control the visibility, with or without modifying the display of elements. { .lead }
-
+---
+title: Visibility Utilities
+description: Control the visibility, with or without modifying the display of elements. 
+---
 ### Examples
 Set element visibility using visibility utilities. Content will be hidden both visually and for assistive technology/screen reader users.
 
@@ -10,6 +11,7 @@ Set element visibility using visibility utilities. Content will be hidden both v
 ~~~
 
 Without modifying the element's display:
+
 ~~~html
 <div class="_visibility-hidden">...</div>
 <div class="_visibility-visible">...</div>

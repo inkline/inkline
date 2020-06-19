@@ -1,17 +1,9 @@
 <template lang="md" src="./list-group.md" />
 <script>
-import View from '@components/docs/View';
-import { head } from "@helpers/head";
-import { IListGroup, IListGroupItem } from "@inkline/inkline/src/components";
+import View from '~/components/docs/View';
 
 export default {
     name: 'ListGroupView',
-    layout: 'documentation',
-    extends: View,
-    head: head(),
-    components: {
-        IListGroup,
-        IListGroupItem
-    }
+    extends: View
 };
 </script>

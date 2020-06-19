@@ -1,5 +1,7 @@
-# Display Utilities
-## Change the display style of components responsively with display utilities. { .lead }
+---
+title: Display Utilities
+description: Change the display style of components responsively with display utilities. 
+---
 
 ### How it works
 Display utility classes that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them. 
@@ -36,37 +38,37 @@ The media queries affect screen widths with the given breakpoint. For example, `
 
 ### Examples
 
-<i-code-preview title="Display Inline Utility Example">
-
-<div class="_background-primary _padding-1-2 _display-inline">Inline</div>
-<div class="_background-dark _padding-1-2 _display-inline">Inline</div>
-
-<template slot="html">
+<i-code title="Display Inline Utility Example">
+<i-tab type="preview">
+    <div class="_background-primary _padding-1-2 _display-inline">Inline</div>
+    <div class="_background-dark _padding-1-2 _display-inline">Inline</div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-inline">Inline</div>
 <div class="_display-inline">Inline</div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 
 
-<i-code-preview title="Display Block Utility Example">
-
-<div class="_background-primary _padding-1-2 _display-block">Block</div>
-<div class="_background-dark _padding-1-2 _display-block">Block</div>
-
-<template slot="html">
+<i-code title="Display Block Utility Example">
+<i-tab type="preview">
+    <div class="_background-primary _padding-1-2 _display-block">Block</div>
+    <div class="_background-dark _padding-1-2 _display-block">Block</div>
+</i-tab>
+<i-tab type="html">
 
 ~~~html
 <div class="_display-block">Inline Block</div>
 <div class="_display-block">Inline Block</div>
 ~~~
 
-</template>
-</i-code-preview>
+</i-tab>
+</i-code>
 
 ### Print
 Change the display value of elements when printing with the print display utility classes.
