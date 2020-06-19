@@ -1,4 +1,4 @@
-import pages from '@/pages.config';
+import pages from '~/pages.config';
 
 export function head(options = {}) {
     return function () {
@@ -15,14 +15,14 @@ export function head(options = {}) {
         return {
             title,
             link: [
-                { rel: 'canonical', href: 'https://inkline.io' + routerPath },
+                { rel: 'canonical', href: 'https://inkline.io' + routerPath }
             ],
             meta: [
                 { hid: 'description', name: 'description', content: description },
                 { hid: 'og:title', property: 'og:title', content: title },
                 { hid: 'og:description', property: 'og:description', content: description },
-                { hid: 'og:url', property: 'og:url', content: 'https://inkline.io' + routerPath },
+                { hid: 'og:url', property: 'og:url', content: 'https://inkline.io' + routerPath }
             ]
-        }
+        };
     };
 }

@@ -19,4 +19,4 @@ export default {
     unbind(el) {
         window.removeEventListener('resize', () => matchParentWidth(el));
     }
-}
+};
