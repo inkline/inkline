@@ -117,15 +117,23 @@ export default {
     ** Nuxt.js modules
     */
     modules: [
+        // Doc: https://content.nuxtjs.org
         '@nuxt/content',
+        // Doc: https://pwa.nuxtjs.org
         '@nuxtjs/pwa',
+        // Doc: https://github.com/nuxt-community/sitemap-module
         '@nuxtjs/sitemap',
+        // Doc: https://github.com/nuxt-community/robots-module
         '@nuxtjs/robots',
+        // Doc: https://github.com/nuxt-community/style-resources-module
+        '@nuxtjs/style-resources',
+        // Doc: https://github.com/nuxt-community/gtm-module
         ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
     ],
 
     /**
      * Nuxt content configuration
+     * See https://content.nuxtjs.org
      */
     content: {
         dir: 'pages'
@@ -133,11 +141,20 @@ export default {
 
     /**
      * Sitemap Configuration
+     * See https://github.com/nuxt-community/sitemap-module
      */
     sitemap: {
         path: '/sitemap.xml',
         hostname: 'https://inkline.io',
         cacheTime: 1000 * 60 * 60 * 24
+    },
+
+    /**
+     * Style resources configuration
+     * See https://github.com/nuxt-community/style-resources-module
+     */
+    styleResources: {
+        scss: ['~/assets/config/index.scss']
     },
 
     /**
