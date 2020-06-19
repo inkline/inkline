@@ -19,11 +19,11 @@ const promises = [];
 function slugify (string) {
     return string
         .toLowerCase()
-        .replace(/\s+/g, '-')               // Replace spaces with -
-        .replace(/[^\w-]+/g, '')            // Remove all non-word chars
-        .replace(/--+/g, '-')               // Replace multiple - with single -
-        .replace(/^-+/, '')                 // Trim - from start of text
-        .replace(/-+$/, '');                // Trim - from end of text
+        .replace(/\s+/g, '-') // Replace spaces with -
+        .replace(/[^\w-]+/g, '') // Remove all non-word chars
+        .replace(/--+/g, '-') // Replace multiple - with single -
+        .replace(/^-+/, '') // Trim - from start of text
+        .replace(/-+$/, ''); // Trim - from end of text
 }
 
 /**
@@ -34,12 +34,12 @@ function slugify (string) {
  * @param category
  */
 async function parsePageContent(html, url, category) {
-    const { document } = new JSDOM(html, { runScripts: "dangerously" }).window;
-    const title = document.querySelector("h1").textContent;
+    const { document } = new JSDOM(html, { runScripts: 'dangerously' }).window;
+    const title = document.querySelector('h1').textContent;
     let section;
     let order = 0;
 
-    document.querySelectorAll("h1, h3, p").forEach((element) => {
+    document.querySelectorAll('h1, h3, p').forEach((element) => {
         if (element.tagName === 'P') {
             if (element.textContent[0] === '<') {
                 return;
@@ -115,7 +115,6 @@ return Promise.all(promises).then(() => {
     fs.writeFile(path.join(__dirname, '..', 'static', 'search.json'), JSON.stringify({ entries: data }), (err) => {
         if (err) { console.log(err); }
 
-        console.log("Search indices have been successfully generated!")
+        console.log('Search indices have been successfully generated!');
     });
 });
-

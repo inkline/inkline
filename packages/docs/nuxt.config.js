@@ -1,7 +1,6 @@
-const pkg = require('./package');
-const path = require('path');
+import path from 'path';
 
-module.exports = {
+export default {
     mode: 'universal',
 
     server: {
@@ -29,28 +28,28 @@ module.exports = {
             {
                 type: 'application/ld+json',
                 json: {
-                    "@context": "https://schema.org",
-                    "@type": "WebSite",
-                    "publisher": {
-                        "@type": "Organization",
-                        "name": "Inkline - Vue.js UI/UX Library",
-                        "url": "https://inkline.io/",
-                        "logo": {
-                            "@type": "ImageObject",
-                            "url": {
-                                "@type": "ImageObject",
-                                "url": "https://inkline.io/images/logo-80.png",
-                                "width": 67,
-                                "height": 80
+                    '@context': 'https://schema.org',
+                    '@type': 'WebSite',
+                    publisher: {
+                        '@type': 'Organization',
+                        name: 'Inkline - Vue.js UI/UX Library',
+                        url: 'https://inkline.io/',
+                        logo: {
+                            '@type': 'ImageObject',
+                            url: {
+                                '@type': 'ImageObject',
+                                url: 'https://inkline.io/images/logo-80.png',
+                                width: 67,
+                                height: 80
                             }
                         }
                     },
-                    "url": "https://inkline.io/",
-                    "mainEntityOfPage": {
-                        "@type": "WebPage",
-                        "@id": "https://inkline.io/"
+                    url: 'https://inkline.io/',
+                    mainEntityOfPage: {
+                        '@type': 'WebPage',
+                        '@id': 'https://inkline.io/'
                     },
-                    "description": "Inkline is the customizable Vue.js UI/UX Library, designed for creating flawless content-rich responsive web applications."
+                    description: 'Inkline is the customizable Vue.js UI/UX Library, designed for creating flawless content-rich responsive web applications.'
                 }
             }
         ],
@@ -92,7 +91,7 @@ module.exports = {
     ** Global CSS
     */
     css: [
-        '@/css/index.scss',
+        '~/assets/index.scss',
         '@fortawesome/fontawesome-svg-core/styles.css'
     ],
 
@@ -100,30 +99,36 @@ module.exports = {
     ** Plugins to load before mounting the App
     */
     plugins: [
-        '~/plugins/font-awesome',
         '~/plugins/inkline',
-        '~/plugins/prism'
+        '~/plugins/font-awesome'
+    ],
+
+    /*
+    ** Nuxt.js dev-modules
+    */
+    buildModules: [
+        // Doc: https://github.com/nuxt-community/eslint-module
+        '@nuxtjs/eslint-module',
+        // Doc: https://github.com/nuxt-community/stylelint-module
+        '@nuxtjs/stylelint-module'
     ],
 
     /*
     ** Nuxt.js modules
     */
     modules: [
+        '@nuxt/content',
         '@nuxtjs/pwa',
         '@nuxtjs/sitemap',
         '@nuxtjs/robots',
         ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
-        // '@nuxtjs/webpackmonitor',
-        // '@nuxtjs/stylelint-module',
-        // '@nuxtjs/eslint-module',
     ],
 
     /**
-     * Nuxt router link
+     * Nuxt content configuration
      */
-    router: {
-        routeNameSplitter: '-',
-        linkExactActiveClass: '-active nuxt-link-exact-active'
+    content: {
+        dir: 'pages'
     },
 
     /**
@@ -133,6 +138,14 @@ module.exports = {
         path: '/sitemap.xml',
         hostname: 'https://inkline.io',
         cacheTime: 1000 * 60 * 60 * 24
+    },
+
+    /**
+     * Nuxt router link
+     */
+    router: {
+        routeNameSplitter: '-',
+        linkExactActiveClass: '-active nuxt-link-exact-active'
     },
 
     /*
@@ -145,16 +158,15 @@ module.exports = {
         },
 
         transpile: [
-            '@inkline/inkline',
-            '@inkline/validation',
             'vue-github-button',
-            'lodash-es'
+            'lodash-es',
+            '@inkline/inkline'
         ],
 
         /*
         ** You can extend webpack config here
         */
-        extend(config, ctx) {
+        extend (config, ctx) {
             // Add markdown templates support
             config.module.rules.push({
                 test: /\.md$/i,
@@ -163,42 +175,18 @@ module.exports = {
                     configFile: path.join(__dirname, 'markdown.config.js')
                 }
             });
-
-            // Add scss config override
-            [].concat(...config.module.rules
-                .find((e) => e.test.toString().match(/\.scss/))
-                .oneOf
-                .map((e) => e.use.filter(e => e.loader === 'sass-loader'))
-            ).forEach((scss) => {
-                Object.assign(scss.options, {
-                    sassOptions: {
-                        import: [
-                            path.join(__dirname, 'css/config/index.scss')
-                        ]
-                    }
-                })
-            });
-
-            config.resolve.symlinks = true;
-
-            config.resolve.alias['@components'] = path.join(__dirname, 'components');
-            config.resolve.alias['@directives'] = path.join(__dirname, 'directives');
-            config.resolve.alias['@resources'] = path.join(__dirname, 'resources');
-            config.resolve.alias['@helpers'] = path.join(__dirname, 'helpers');
-            config.resolve.alias['@pages'] = path.join(__dirname, 'pages');
-
-            config.resolve.alias['@inkline/inkline'] = '@inkline/inkline/src';
         },
+
         babel: {
             extends: path.join(__dirname, 'babel.config.js'),
             presets: ({ isServer }) => [
                 [
-                    "@nuxt/babel-preset-app", {
+                    '@nuxt/babel-preset-app', {
                         buildTarget: isServer ? 'server' : 'client',
                         corejs: { version: 3 }
                     }
                 ]
-            ],
+            ]
         }
     }
 };
