@@ -18,8 +18,6 @@ module.exports = {
         'node_modules/(?!@inkline/inkline|vue-github-button)'
     ],
     moduleNameMapper: {
-        '^@helpers/(.*)$': '<rootDir>/helpers/$1',
-        '^@components/(.*)$': '<rootDir>/components/$1',
         '^@/(.*)$': '<rootDir>/$1',
         '^~/(.*)$': '<rootDir>/$1',
         '^@inkline/inkline/(.*)$': '<rootDir>/node_modules/@inkline/inkline/$1',
@@ -30,5 +28,6 @@ module.exports = {
         '**/tests/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'
     ],
     testURL: 'http://localhost/',
-    verbose: true
+    verbose: true,
+    setupFilesAfterEnv: ['./jest.setup.js']
 };
