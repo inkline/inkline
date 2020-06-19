@@ -56,5 +56,16 @@
         }
     }
 
+    &.-unstyled {
+        > .item {
+            > .header,
+            > .body {
+                border: 0;
+                background-color: unset;
+                color: inherit;
+            }
+        }
+    }
+
     @extend .collapsible.-light;
 }
