@@ -19154,7 +19154,7 @@ var ITextarea_component = normalizeComponent(
 
 /* harmony default export */ var ITextarea = (ITextarea_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"70213686-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./src/components/IToggle/template.html?vue&type=template&id=d7af3a78&scoped=true&
-var templatevue_type_template_id_d7af3a78_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"toggle",class:_vm.classes,attrs:{"tabindex":_vm.tabIndex},on:{"blur":_vm.onBlur,"focus":_vm.onFocus,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}}},[_c('input',{ref:"input",staticClass:"toggle-input",attrs:{"type":"checkbox","disabled":_vm.isDisabled || _vm.isReadonly,"readonly":_vm.isReadonly,"aria-checked":_vm.value,"aria-disabled":_vm.isDisabled,"aria-readonly":_vm.isReadonly,"name":_vm.name},domProps:{"checked":_vm.value,"value":_vm.value},on:{"change":_vm.onChange}}),_c('span',{staticClass:"indicator"})])}
+var templatevue_type_template_id_d7af3a78_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"toggle",class:_vm.classes,attrs:{"tabindex":_vm.tabIndex},on:{"blur":_vm.onBlur,"focus":_vm.onFocus,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"space",32,$event.key,[" ","Spacebar"])){ return null; }$event.stopPropagation();$event.preventDefault();return _vm.clickInputRef($event)}}},[_c('input',{ref:"input",staticClass:"toggle-input",attrs:{"type":"checkbox","disabled":_vm.isDisabled,"readonly":_vm.isReadonly,"aria-checked":_vm.value,"aria-disabled":_vm.isDisabled,"aria-readonly":_vm.isReadonly,"name":_vm.name},domProps:{"checked":_vm.value,"value":_vm.value},on:{"change":_vm.onChange}}),_c('span',{staticClass:"indicator"})])}
 var templatevue_type_template_id_d7af3a78_scoped_true_staticRenderFns = []
 
 
@@ -19175,7 +19175,9 @@ var templatevue_type_template_id_d7af3a78_scoped_true_staticRenderFns = []
   },
   methods: {
     onChange: function onChange(event) {
-      if (this.readonly || this.disabled) {
+      console.log(this.isReadonly, this.isDisabled);
+
+      if (this.isReadonly || this.isDisabled) {
         return;
       }
 
