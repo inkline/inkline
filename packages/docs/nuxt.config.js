@@ -110,8 +110,19 @@ export default {
         // Doc: https://github.com/nuxt-community/eslint-module
         '@nuxtjs/eslint-module',
         // Doc: https://github.com/nuxt-community/stylelint-module
-        '@nuxtjs/stylelint-module'
+        '@nuxtjs/stylelint-module',
+        // Doc: https://github.com/nuxt-community/gtm-module
+        '@nuxtjs/gtm'
     ],
+
+    /**
+     * Google tag manager configuration
+     * See https://github.com/nuxt-community/gtm-module
+     */
+    gtm: {
+        id: 'GTM-KD44VC3',
+        pageTracking: true
+    },
 
     /*
     ** Nuxt.js modules
@@ -126,9 +137,7 @@ export default {
         // Doc: https://github.com/nuxt-community/robots-module
         '@nuxtjs/robots',
         // Doc: https://github.com/nuxt-community/style-resources-module
-        '@nuxtjs/style-resources',
-        // Doc: https://github.com/nuxt-community/gtm-module
-        ['@nuxtjs/google-tag-manager', { id: 'GTM-KD44VC3', pageTracking: true }],
+        '@nuxtjs/style-resources'
     ],
 
     /**
