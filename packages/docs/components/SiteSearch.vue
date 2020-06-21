@@ -1,68 +1,45 @@
 <template>
     <div class="site-search">
-        <i-dropdown ref="dropdown" placement="bottom-start" :keymap="searchKeymap">
+        <i-dropdown ref="dropdown" placement="bottom-start" :disabled="searchString === ''" :keymap="searchKeymap">
             <i-input v-model="searchString" type="search" placeholder="Search">
                 <font-awesome-icon slot="prefix" icon="search" />
             </i-input>
             <i-dropdown-menu v-show="searchString !== ''">
                 <div class="body">
-                    <div v-for="(category, categoryIndex) in searchList" v-if="!hasResults() && searchString === ''" :key="categoryIndex">
-                        <div class="category">
-                            {{ category.title }}
-                        </div>
-                        <i-dropdown-item
-                            v-for="item in category.items"
-                            :key="item.objectID"
-                            :to="{ name: item.url, hash: item.hash ? '#' + item.hash : '' }">
-                            <div v-if="item.title" class="title">
-                                {{ item.title }}
-                            </div>
-                            <div v-if="item.subtitle" class="subtitle">
-                                {{ item.subtitle }}
-                            </div>
-                            <div v-if="item.description" class="description">
-                                {{ item.description }}
-                            </div>
-                        </i-dropdown-item>
-                    </div>
-
-                    <div v-if="!hasResults() && searchString !== ''">
+                    <div v-if="searchResults.length === 0 && searchString !== ''">
                         <i-dropdown-item>
                             No search results found for "{{ searchString }}"
                         </i-dropdown-item>
                     </div>
 
-                    <div v-for="(category, categoryIndex) in sortedSearchResults" v-if="category.items.length > 0" :key="categoryIndex">
-                        <div class="category">
-                            {{ category.title }}
+                    <i-dropdown-item
+                        v-for="item in searchResults"
+                        :key="item.id"
+                        :to="item.path">
+                        <div v-if="item.title.length > 0" class="title">
+                            <template v-for="(part, index) in item.title">
+                                <strong v-if="part.highlight" :key="index">{{ part.text }}</strong>
+                                <span v-else :key="index">{{ part.text }}</span>
+                            </template>
                         </div>
-                        <i-dropdown-item
-                            v-for="item in category.items"
-                            :key="item.objectID"
-                            :to="{ name: item.url, hash: item.hash ? '#' + item.hash : '' }">
-                            <div v-if="item.title.length > 0" class="title">
-                                <template v-for="(part, index) in item.title">
-                                    <strong v-if="part.highlight" :key="index">{{ part.text }}</strong>
-                                    <span v-else :key="index">{{ part.text }}</span>
-                                </template>
-                            </div>
-                            <div v-if="item.subtitle.length > 0" class="subtitle">
-                                <template v-for="(part, index) in item.subtitle">
-                                    <strong v-if="part.highlight" :key="index">{{ part.text }}</strong>
-                                    <span v-else :key="index">{{ part.text }}</span>
-                                </template>
-                            </div>
-                            <div v-if="item.description.length > 0" class="description">
-                                <template v-for="(part, index) in item.description">
-                                    <strong v-if="part.highlight" :key="index">{{ part.text }}</strong>
-                                    <span v-else :key="index">{{ part.text }}</span>
-                                </template>
-                            </div>
-                        </i-dropdown-item>
-                    </div>
+                        <div v-if="item.heading.length > 0" class="subtitle">
+                            <template v-for="(part, index) in item.heading">
+                                <strong v-if="part.highlight" :key="index">{{ part.text }}</strong>
+                                <span v-else :key="index">{{ part.text }}</span>
+                            </template>
+                        </div>
+                        <div v-if="item.description.length > 0" class="description">
+                            <template v-for="(part, index) in item.description">
+                                <strong v-if="part.highlight" :key="index">{{ part.text }}</strong>
+                                <span v-else :key="index">{{ part.text }}</span>
+                            </template>
+                        </div>
+                    </i-dropdown-item>
                 </div>
-                <div v-show="hasResults()" class="footer">
-                    Found {{ searchResultsCount }} search result{{ searchResultsCount > 1 ? 's' : '' }}
+
+                <div v-show="searchResults.length > 0" class="footer">
+                    Showing {{ searchResultsCount > searchResultsLimit ? searchResultsLimit : searchResultsCount }} out of
+                    {{ searchResultsCount }} search result{{ searchResultsCount > 1 ? 's' : '' }}
                 </div>
             </i-dropdown-menu>
         </i-dropdown>
@@ -71,12 +48,55 @@
 
 <script>
 import Fuse from 'fuse.js';
-import axios from 'axios';
 
+const searchOptions = {
+    shouldSort: true,
+    includeMatches: true,
+    includeScore: true,
+    threshold: 0.25,
+    ignoreLocation: true,
+    tokenize: true,
+    maxPatternLength: 32,
+    minMatchCharLength: 3,
+    keys: [
+        { name: 'title', weight: 1 },
+        { name: 'heading', weight: 0.9 },
+        { name: 'subheading', weight: 0.8 },
+        { name: 'description', weight: 0.7 }
+    ]
+};
+
+/**
+ * Flatten nuxt content root tag to contain text only
+ *
+ * @param child
+ * @returns {string}
+ */
+const flatten = (child) => {
+    let value = '';
+
+    if (child.value) {
+        return child.value;
+    }
+
+    if (child.children) {
+        child.children.forEach((subChild) => {
+            value += flatten(subChild);
+        });
+    }
+
+    return value;
+};
+
+/**
+ * Highlight the search string in each result
+ *
+ * @param resultItem
+ */
 function highlight(resultItem) {
     resultItem.highlight = {};
 
-    ['title', 'subtitle', 'description'].forEach((key) => {
+    ['title', 'heading', 'subheading', 'description'].forEach((key) => {
         resultItem.highlight[key] = [{ highlight: false, text: resultItem.item[key] }];
     });
 
@@ -115,24 +135,6 @@ function highlight(resultItem) {
     });
 }
 
-const searchOptions = {
-    shouldSort: true,
-    includeMatches: true,
-    includeScore: true,
-    threshold: 0.25,
-    location: 0,
-    distance: 75,
-    tokenize: true,
-    maxPatternLength: 32,
-    minMatchCharLength: 3,
-    keys: [
-        { name: 'title', weight: 0.4 },
-        { name: 'subtitle', weight: 0.3 },
-        { name: 'description', weight: 0.2 },
-        { name: 'category', weight: 0.1 }
-    ]
-};
-
 export default {
     name: 'SiteSearch',
     data () {
@@ -141,78 +143,87 @@ export default {
             searchKeymap: { show: ['enter'], hide: ['enter'] },
             searchList: [],
             searchResults: [],
-            searchClients: []
+            searchResultsLimit: 20,
+            searchResultsCount: 0,
+            searchClient: []
         };
-    },
-    computed: {
-        sortedSearchResults() {
-            return [...this.searchResults].sort((a, b) => {
-                if (a.items.length === 0) {
-                    return 1;
-                } else if (b.items.length === 0) {
-                    return -1;
-                }
-
-                if (a.items[0].score < b.items[0].score) {
-                    return -1;
-                } else if (a.items[0].score > b.items[0].score) {
-                    return 1;
-                }
-
-                return 0;
-            });
-        },
-        searchResultsCount() {
-            return this.searchResults.reduce((acc, category) => {
-                acc += category.items.length;
-
-                return acc;
-            }, 0);
-        }
     },
     watch: {
         searchString(value) {
-            if (!this.searchClients.length > 0) {
-                return;
-            }
+            const searchResults = this.searchClient.search(value);
 
-            this.searchClients.forEach((client, index) => {
-                const searchResults = client.search(value);
-                searchResults.forEach((result) => highlight(result));
+            searchResults.forEach((result) => highlight(result));
 
-                this.searchResults[index].items = searchResults.map((result) => ({
-                    ...result.item,
-                    ...result.highlight,
-                    score: result.score
-                }));
-            });
+            this.searchResultsCount = searchResults.length;
+            this.searchResults = searchResults.map((result) => ({
+                ...result.item,
+                ...result.highlight,
+                score: result.score
+            })).slice(0, this.searchResultsLimit);
 
             setTimeout(() => this.$refs.dropdown.$emit('init'), 100);
         }
     },
     mounted() {
-        axios.get('/search.json')
-            .then((response) => {
-                const searchList = response.data.entries;
-                const searchResults = [];
-                const searchClients = [];
-
-                searchList.forEach((category) => {
-                    searchClients.push(new Fuse(category.items, searchOptions));
-                    searchResults.push({
-                        title: category.title,
-                        items: []
-                    });
-                });
-
-                this.searchList = searchList;
-                this.searchResults = searchResults;
-                this.searchClients = searchClients;
-            });
+        this.initialize();
     },
     methods: {
-        hasResults() {
-            return this.searchResults.some((category) => category.items.length > 0);
+        async initialize() {
+            const pages = await this.$content('docs', { deep: true })
+                .only(['title', 'description', 'body', 'path'])
+                .fetch();
+
+            const entries = pages.reduce((acc, { title, description, body, path }) => {
+                acc.push({
+                    path,
+                    title,
+                    description
+                });
+
+                body.children
+                    .map((child) => ({ tag: child.tag, hash: child.props.id, value: flatten(child) }))
+                    .forEach((entry) => {
+                        const lastEntry = acc[acc.length - 1];
+                        const secondLastEntry = acc[acc.length - 2];
+
+                        if (entry.tag === 'h3') {
+                            return acc.push({
+                                title,
+                                path: `${path}${(entry.hash ? '#' + entry.hash : '')}`,
+                                heading: entry.value,
+                                description: ''
+                            });
+                        } else if (entry.tag === 'h4') {
+                            return acc.push({
+                                title,
+                                path: `${path}${(entry.hash ? '#' + entry.hash : '')}`,
+                                heading: lastEntry.heading,
+                                subheading: entry.value,
+                                description: ''
+                            });
+                        } else if (lastEntry && lastEntry.description === '') {
+                            lastEntry.description = entry.value;
+
+                            if (secondLastEntry && secondLastEntry.description === '') {
+                                secondLastEntry.description = entry.value;
+                            }
+                        } else {
+                            lastEntry.description += ' ' + entry.value;
+                        }
+                    });
+
+                return acc;
+            }, []);
+
+            entries.forEach((entry, index) => {
+                entry.id = index;
+            });
+
+            this.searchList = entries;
+            this.searchClient = new Fuse(
+                this.searchList,
+                searchOptions
+            );
         }
     }
 };
@@ -235,8 +246,8 @@ export default {
         }
 
         > .footer {
-            display: flex;
-            justify-content: flex-end;
+            display: block;
+            text-align: right;
             padding: ($spacer / 2) $spacer;
             border-top: 1px solid colors('gray-30');
             font-size: font-size('sm');
