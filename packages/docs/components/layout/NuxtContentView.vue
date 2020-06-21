@@ -23,13 +23,6 @@ import View from './View';
 
 export default {
     name: 'View',
-    extends: View,
-    async asyncData ({ $content, route }) {
-        const page = await $content(route.path.substring(1)).fetch();
-
-        return {
-            page
-        };
-    }
+    extends: View
 };
 </script>

@@ -1,15 +1,10 @@
-import pages from '~/pages.config';
-
 export function head(options = {}) {
     return function () {
-        const id = this.$route.name;
-        const page = pages.byId[id];
-
         const titlePostamble = ' - Inkline';
         const descriptionPostamble = ' Inkline is the customizable Vue.js UI/UX Library.';
 
-        const title = page.title + (options.preserve?.title ? '' : titlePostamble);
-        const description = page.description + (options.preserve?.description ? '' : descriptionPostamble);
+        const title = this.page.title + (options.preserve?.title ? '' : titlePostamble);
+        const description = this.page.description + (options.preserve?.description ? '' : descriptionPostamble);
         const routerPath = this.$route.fullPath.replace(/\/$/, '');
 
         return {

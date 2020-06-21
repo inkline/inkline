@@ -1,6 +1,6 @@
 <template lang="md" src="./nav.md" />
 <script>
-import View from '~/components/docs/View';
+import View from '~/components/layout/NuxtContentView';
 
 export default {
     name: 'NavView',

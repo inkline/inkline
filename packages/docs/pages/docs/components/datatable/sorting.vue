@@ -1,6 +1,6 @@
 <template lang="md" src="./sorting.md" />
 <script>
-import View from '~/components/docs/View';
+import View from '~/components/layout/NuxtContentView';
 import { generateDataRows } from '~/helpers/generateDataRows';
 
 const customSort = (a, b) => {

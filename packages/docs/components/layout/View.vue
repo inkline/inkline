@@ -27,6 +27,14 @@ export default {
         ApiTableRow,
         ICode
     },
+    async asyncData ({ $content, route }) {
+        const page = await $content(route.path.substring(1))
+            .fetch();
+
+        return {
+            page
+        };
+    },
     mounted() {
         this.$nuxt.$emit('viewLoaded');
     }

@@ -1,6 +1,6 @@
 <template lang="md" src="./dropdown.md" />
 <script>
-import View from '~/components/docs/View';
+import View from '~/components/layout/NuxtContentView';
 
 export default {
     name: 'DropdownView',

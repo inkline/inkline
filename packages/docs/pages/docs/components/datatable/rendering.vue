@@ -1,6 +1,6 @@
 <template lang="md" src="./rendering.md" />
 <script>
-import View from '~/components/docs/View';
+import View from '~/components/layout/NuxtContentView';
 
 import TableProgress from '~/components/docs/TableProgress';
 import TableHeaderComponent from '~/components/docs/TableHeaderComponent';

@@ -1,6 +1,6 @@
 <template lang="md" src="./sass-variables.md" />
 <script>
-import View from '~/components/docs/View';
+import View from '~/components/layout/NuxtContentView';
 
 import { IAlert, IIcon } from '@inkline/inkline/src/components';
 

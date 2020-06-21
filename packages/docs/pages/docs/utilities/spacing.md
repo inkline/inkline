@@ -1,5 +1,7 @@
-# Spacing Utilities
-## You can use a wide range of responsive margin and padding utility classes to modify an element’s appearance. 
+---
+title: Spacing Utilities
+description: You can use a wide range of responsive margin and padding utility classes to modify an element’s appearance. 
+---
 
 ### Notation
 

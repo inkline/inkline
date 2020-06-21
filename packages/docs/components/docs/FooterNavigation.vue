@@ -3,12 +3,12 @@
         <ul class="pagination">
             <li class="previous">
                 <span v-if="previous">&larr;</span>
-                <nuxt-link v-if="previous" :to="{ name: previous.id }">
+                <nuxt-link v-if="previous" :to="previous.path">
                     {{ previous.title }}
                 </nuxt-link>
             </li>
             <li class="next">
-                <nuxt-link v-if="next" :to="{ name: next.id }">
+                <nuxt-link v-if="next" :to="next.path">
                     {{ next.title }}
                 </nuxt-link>
                 <span v-if="next">&rarr;</span>
@@ -23,29 +23,31 @@
 </template>
 
 <script>
-import pages from '~/pages.config';
-
-const docsPagesIds = pages.allIds.filter((pageId) => pageId.indexOf('docs') === 0);
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'FooterNavigation',
     data() {
         return {
-            previous: {},
-            next: {},
+            previous: null,
+            next: null,
             githubUrl: ''
         };
     },
     methods: {
         update() {
-            const currentIndex = docsPagesIds.indexOf(this.$nuxt.$route.name);
-            const previousPageId = docsPagesIds[currentIndex - 1];
-            const nextPageId = docsPagesIds[currentIndex + 1];
+            const path = this.$nuxt.$route.path;
+            const currentIndex = this.sidebar.allIds.indexOf(path);
+            const previousPageId = this.sidebar.allIds[currentIndex - 1];
+            const nextPageId = this.sidebar.allIds[currentIndex + 1];
 
-            this.previous = pages.byId[previousPageId];
-            this.next = pages.byId[nextPageId];
+            this.previous = this.pages.byId[previousPageId];
+            this.next = this.pages.byId[nextPageId];
             this.githubUrl = 'https://github.com/inkline/inkline/tree/master/packages/docs/pages' + this.$nuxt.$route.path + '.md';
         }
+    },
+    computed: {
+        ...mapGetters(['pages', 'sidebar'])
     },
     created() {
         this.$nuxt.$on('viewLoaded', this.update);

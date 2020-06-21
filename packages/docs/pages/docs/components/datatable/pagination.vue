@@ -1,6 +1,6 @@
 <template lang="md" src="./pagination.md" />
 <script>
-import View from '~/components/docs/View';
+import View from '~/components/layout/NuxtContentView';
 import { generateDataRows } from '~/helpers/generateDataRows';
 
 export default {
