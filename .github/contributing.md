@@ -157,7 +157,7 @@ included in the project:
 
 3. Make sure your commits are logically structured. Please adhere to these [git commit
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html). Use Git's
-   [interactive rebase](https://help.github.com/articles/interactive-rebase)
+   [interactive rebase](https://help.github.com/en/github/using-git/about-git-rebase)
    feature to tidy up your commits before making them public.
 
 4. Locally rebsase the upstream master branch into your topic branch:
@@ -176,8 +176,8 @@ included in the project:
     with a clear title and description against the `master` branch.
 
 **Important!** By submitting a patch, you agree to allow the project owners to
-license your work under the terms of the [MIT License](LICENSE) (for code changes) and under the terms of the
-[Creative Commons Attribution 3.0 Unported License](docs/LICENSE)
+license your work under the terms of the [MIT License](../packages/inkline/LICENSE) (for code changes) and under the terms of the
+[Creative Commons Attribution 3.0 Unported License](../packages/docs/LICENSE)
 (for documentation changes).
 
 ## Code guidelines

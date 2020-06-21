@@ -105,7 +105,7 @@ Adhering to the following process is the best way to get your work included in t
 
 3. Make sure your commits are logically structured. Please adhere to these [git commit
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html). Use Git's
-   [interactive rebase](https://help.github.com/articles/interactive-rebase)
+   [interactive rebase](https://help.github.com/en/github/using-git/about-git-rebase)
    feature to tidy up your commits before making them public.
 
 4. Locally rebsase the upstream master branch into your topic branch:

@@ -83,8 +83,8 @@ Vue.use(Inkline);
 ~~~
 
 For detailed usage options, refer to the following: 
-- [Vue CLI](https://inkline.io/docs/introduction/installation#vue-cli)
-- [Nuxt.js Module](https://inkline.io/docs/introduction/installation#nuxt-js-module)
+- [Vue CLI](https://inkline.io/docs/introduction/installation/vue-cli)
+- [Nuxt.js Module](https://inkline.io/docs/introduction/installation/nuxt)
 
 Next, start using the many components that Inkline has to offer. [Read the documentation](https://inkline.io/docs/preface/about-inkline).
 
@@ -147,4 +147,4 @@ Thanks goes to these wonderful people:
 
 ## Copyright and license
 Code copyright 2017-2020 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
-Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/LICENSE). 
+Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/packages/inkline/LICENSE).
