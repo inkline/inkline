@@ -1,6 +1,6 @@
 <template lang="md" src="./grid.md"></template>
 <script>
-import View from '~/components/docs/View';
+import View from '~/components/layout/NuxtContentView';
 import GridBox from '~/components/docs/GridBox';
 
 export default {

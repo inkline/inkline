@@ -1,5 +1,5 @@
 <script>
-import View from '~/components/docs/NuxtContentView';
+import View from '~/components/layout/NuxtContentView';
 
 export default {
     name: 'TextUtilitiesView',

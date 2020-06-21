@@ -1,6 +1,6 @@
 <template lang="md" src="./events.md" />
 <script>
-import View from '~/components/docs/View';
+import View from '~/components/layout/NuxtContentView';
 import { generateDataRows } from '~/helpers/generateDataRows';
 
 export default {

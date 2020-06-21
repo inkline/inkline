@@ -249,7 +249,7 @@ import GithubButton from 'vue-github-button';
 
 export default {
     name: 'IndexView',
-    layout: 'Default',
+    layout: 'default',
     head: head({
         preserve: {
             description: true
@@ -258,6 +258,14 @@ export default {
     components: {
         GithubButton,
         Sponsor
+    },
+    async asyncData ({ $content }) {
+        const page = await $content('index')
+            .fetch();
+
+        return {
+            page
+        };
     },
     data() {
         const defaultSponsor = {

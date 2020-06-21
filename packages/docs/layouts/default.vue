@@ -10,7 +10,7 @@
 </template>
 <script>
 import Vue from 'vue';
-import Layout from '~/components/Layout';
+import Layout from '~/components/layout/Layout';
 
 import { on } from '@inkline/inkline/src/helpers';
 

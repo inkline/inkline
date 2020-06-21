@@ -9,6 +9,12 @@ After you've [created a Nuxt.js Project](https://nuxtjs.org/guide/installation/)
 npm install --save-dev @inkline/nuxt
 ~~~
 
+Inkline uses Sass as a peer dependency to compile its styles, so we'll need to add it to our Nuxt.js installation as well:
+
+~~~bash
+npm install --save-dev node-sass sass-loader
+~~~
+
 Next, add `@inkline/nuxt` to the `modules` section of your `nuxt.config.js` file:
 
 ~~~js

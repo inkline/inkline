@@ -1,6 +1,6 @@
 <style lang="scss" scoped src="./flex.scss"></style>
 <script>
-import View from '~/components/docs/NuxtContentView';
+import View from '~/components/layout/NuxtContentView';
 
 export default {
     name: 'FlexUtilitiesView',
