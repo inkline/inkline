@@ -21,7 +21,7 @@ the preferred channel for [bug reports](#bug-reports), [features requests](#feat
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
-* Please **do not** use the issue tracker for personal support requests. 
+* Please **do not** use the issue tracker for personal support requests.
 
 * Please **do not** get off track in issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -56,13 +56,13 @@ Guidelines for bug reports:
 2. Share the version of Inkline you are using.
 3. Add code examples to demonstrate the issue. You can also provide a complete repository to reproduce the issue quickly.
 
-A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report: 
+A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report:
 
-- What is your environment? 
-- What steps will reproduce the issue? 
-- What browser(s) and OS experience the problem? 
-- Do other browsers show the bug differently? 
-- What would you expect to be the outcome? 
+- What is your environment?
+- What steps will reproduce the issue?
+- What browser(s) and OS experience the problem?
+- Do other browsers show the bug differently?
+- What would you expect to be the outcome?
 
 All these details will help us fix any potential bugs. Remember, fixing bugs takes time. We're doing our best!
 
@@ -140,10 +140,10 @@ included in the project:
    ```bash
    # Clone your fork of the repo into the current directory
    git clone https://github.com/<your-username>/inkline.git
-   
+
    # Navigate to the newly cloned directory
    cd inkline
-   
+
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/inkline/inkline.git
    ```
