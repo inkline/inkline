@@ -7,13 +7,12 @@
 <h1 align="center">Inkline</h1>
 
 <p align="center">
-    Inkline is a modern UI/UX framework designed for creating flawless responsive websites. Inkline is
-    written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
+    Inkline is the customizable Vue.js UI/UX Library designed for creating flawless responsive websites. Inkline is written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
     <br/>
     <br/>
     <br/>
-    <a href="https://inkline.io/docs/introduction/installation/nuxt">
-        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/homepage.png" width="620" alt="Vue.js UI/UX Library - Inkline" />
+    <a href="https://inkline.io">
+        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/homepage.png" alt="Vue.js UI/UX Library - Inkline" />
     </a>
     <br/>
     <br/>
