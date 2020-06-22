@@ -107,21 +107,21 @@ export const sidebar = [
     {
         title: 'Utilities',
         children: [
-            { path: '/docs/utilities/border' },
-            { path: '/docs/utilities/clearfix' },
-            { path: '/docs/utilities/color' },
-            { path: '/docs/utilities/display' },
-            { path: '/docs/utilities/embed' },
-            { path: '/docs/utilities/flex' },
-            { path: '/docs/utilities/float' },
-            { path: '/docs/utilities/overflow' },
-            { path: '/docs/utilities/overlay' },
-            { path: '/docs/utilities/position' },
-            { path: '/docs/utilities/sizing' },
-            { path: '/docs/utilities/spacing' },
-            { path: '/docs/utilities/text' },
-            { path: '/docs/utilities/vertical-align' },
-            { path: '/docs/utilities/visibility' }
+            { title: 'Border', path: '/docs/utilities/border' },
+            { title: 'Clearfix', path: '/docs/utilities/clearfix' },
+            { title: 'Color', path: '/docs/utilities/color' },
+            { title: 'Display', path: '/docs/utilities/display' },
+            { title: 'Embed', path: '/docs/utilities/embed' },
+            { title: 'Flex', path: '/docs/utilities/flex' },
+            { title: 'Float', path: '/docs/utilities/float' },
+            { title: 'Overflow', path: '/docs/utilities/overflow' },
+            { title: 'Overlay', path: '/docs/utilities/overlay' },
+            { title: 'Border', path: '/docs/utilities/position' },
+            { title: 'Position', path: '/docs/utilities/sizing' },
+            { title: 'Spacing', path: '/docs/utilities/spacing' },
+            { title: 'Text', path: '/docs/utilities/text' },
+            { title: 'Vertical Align', path: '/docs/utilities/vertical-align' },
+            { title: 'Visibility', path: '/docs/utilities/visibility' }
         ]
     },
     {
