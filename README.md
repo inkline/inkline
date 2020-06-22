@@ -52,52 +52,12 @@
 - [Copyright and license](#copyright-and-license)
 
 ## Installation
-Read the [Getting started page](https://inkline.io/docs/introduction/getting-started/) for information on the framework contents, templates, examples, and more.
+Read the [Getting Started](https://inkline.io/docs/introduction/getting-started/) page and find information on framework contents, templates, examples, and more.
 
-- Install with [npm](https://www.npmjs.com/package/@inkline/inkline):
-~~~
-npm install --save @inkline/inkline
-~~~
-- Install with [yarn](https://yarnpkg.com/en/package/@inkline/inkline):
-~~~
-yarn add @inkline/inkline
-~~~
-- Install with [composer](https://packagist.org/packages/inkline/inkline):
-~~~
-composer require inkline/inkline
-~~~
-- Install with [@vue/cli](https://cli.vuejs.org):
-~~~
-vue add @inkline/inkline
-~~~
-
-## Usage
-First, we'll import the core styles, after which we import and register the script files. If you already have your Webpack configuration ready for Vue, importing the framework is as simple as:
-
-~~~js
-import Vue from 'vue';
-import '@inkline/inkline/dist/inkline.css';
-import Inkline from '@inkline/inkline';
-
-Vue.use(Inkline);
-~~~
-
-For detailed usage options, refer to the following:
-- [Vue CLI](https://inkline.io/docs/introduction/installation/vue-cli)
-- [Nuxt.js Module](https://inkline.io/docs/introduction/installation/nuxt)
-
-Next, start using the many components that Inkline has to offer. [Read the documentation](https://inkline.io/docs/preface/about-inkline).
-
-## CDN
-
-If you're not using using package managers and build systems and you want to add Inkline to your project, you can import the compiled files from CDN:
-
-~~~html
-<link href="https://cdn.jsdelivr.net/npm/@inkline/inkline/dist/inkline.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@inkline/inkline/dist/inkline.js"></script>
-~~~
-
-You can also try it out live on <a href="https://jsfiddle.net/alexgrozav/0dknfs6L/" rel="nofollow">JSFiddle</a>.
+- [Vue CLI Installation](https://inkline.io/docs/introduction/installation/vue-cli)
+- [Nuxt.js Installation](https://inkline.io/docs/introduction/installation/nuxt)
+- [Custom Installation](https://inkline.io/docs/introduction/installation/custom)
+- [CDN Installation](https://inkline.io/docs/introduction/installation/cdn)
 
 ## Bugs and feature requests
 Have a bug or a feature request? Please first search for existing and closed issues.
