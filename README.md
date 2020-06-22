@@ -11,6 +11,13 @@
     written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
     <br/>
     <br/>
+    <br/>
+    <a href="https://inkline.io/docs/introduction/installation/nuxt">
+        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/homepage.png" width="620" alt="Vue.js UI/UX Library - Inkline" />
+    </a>
+    <br/>
+    <br/>
+    <br/>
     <a href="https://inkline.io">Homepage</a>
     ·
     <a href="https://inkline.io/docs/introduction/getting-started">Documentation</a>
