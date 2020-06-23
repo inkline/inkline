@@ -6,8 +6,15 @@ Inkline is an MIT-licensed open source project. It's an independent project with
 - [Become a backer or sponsor on Ko-fi](https://ko-fi.com/inkline).
 
 
-<!--10 start-->
+<!--Patreon start-->
 <h2 align="center">Backers via Patreon</h2>
 
 - Ali GÖREN
-<!--10 end-->
+<!--Patreon end-->
+
+
+<!--Ko-fi start-->
+<h2 align="center">Backers via Ko-fi</h2>
+
+- Rick Dutour Geerling
+<!--Ko-fi end-->
