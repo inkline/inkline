@@ -54,7 +54,16 @@
       "login": "TheJaredWilcurt",
       "name": "The Jared Wilcurt",
       "avatar_url": "https://avatars1.githubusercontent.com/u/4629794?v=4",
-      "profile": "http://TheJaredWilcurt.com",
+      "profile": "https://github.com/TheJaredWilcurt",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Eternal-Rise",
+      "name": "Bogdan Saliuk",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/34982358?v=4",
+      "profile": "https://github.com/Eternal-Rise",
       "contributions": [
         "doc"
       ]

@@ -114,7 +114,8 @@ Thanks goes to these wonderful people:
     <td align="center"><a href="https://github.com/alexgrozav"><img class="avatar" src="https://avatars3.githubusercontent.com/u/6179477?v=4" width="50px;" alt="Alex Grozav"/></a></td>
     <td align="center"><a href="https://github.com/mtancoigne"><img class="avatar" src="https://avatars3.githubusercontent.com/u/1732268?v=4" width="50px;" alt="Manuel Tancoigne"/></a></td>
     <td align="center"><a href="https://github.com/renielDev"><img class="avatar" src="https://avatars1.githubusercontent.com/u/14147493?v=4" width="50px;" alt="Reniel Salvador"/></a></td>
-    <td align="center"><a href="http://TheJaredWilcurt.com"><img class="avatar" src="https://avatars1.githubusercontent.com/u/4629794?v=4" width="50px;" alt="The Jared Wilcurt"/></a></td>
+    <td align="center"><a href="https://github.com/TheJaredWilcurt"><img class="avatar" src="https://avatars1.githubusercontent.com/u/4629794?v=4" width="50px;" alt="The Jared Wilcurt"/></a></td>
+    <td align="center"><a href="https://github.com/Eternal-Rise"><img class="avatar" src="https://avatars2.githubusercontent.com/u/34982358?v=4" width="50px;" alt="Bogdan Saliuk"/></a></td>
   </tr>
 </table>
 
