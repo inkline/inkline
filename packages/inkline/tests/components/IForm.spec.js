@@ -362,6 +362,68 @@ describe('Components', () => {
                     expect(inputSpy).toHaveBeenNthCalledWith(1, 'input', expect.any(Function));
                 });
             });
+
+            describe('emitSubmit()', () => {
+                beforeEach(() => {
+                    const schema = {
+                        validate() {},
+                        input: {
+                            validators: [
+                                { rule: 'required' }
+                            ]
+                        }
+                    };
+
+                    wrapper.setProps({
+                        value: schema
+                    });
+                });
+
+                it('should be defined', () => {
+                    expect(wrapper.vm.emitSubmit).toBeDefined();
+                });
+
+                it('should emit "submit" event', () => {
+                    const event = { preventDefault() {} };
+
+                    wrapper.vm.emitSubmit(event);
+
+                    expect(wrapper.emitted().submit).toBeTruthy();
+                    expect(wrapper.emitted().submit.length).toBe(1);
+                    expect(wrapper.emitted().submit[0]).toEqual([event]);
+                });
+
+                it('should validate schema', () => {
+                    const spy = jest.spyOn(wrapper.vm.value, 'validate');
+                    const event = { preventDefault() {} };
+
+                    wrapper.vm.emitSubmit(event);
+
+                    expect(spy).toHaveBeenCalled();
+                });
+
+                it('should return if schema is invalid', () => {
+                    const spy = jest.spyOn(wrapper.vm.value, 'validate');
+                    const event = { preventDefault() {} };
+
+                    wrapper.vm.value.invalid = true;
+                    wrapper.vm.emitSubmit(event);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(wrapper.emitted().submit).not.toBeTruthy();
+                });
+
+                it('should emit "submit" if schema is valid', () => {
+                    const spy = jest.spyOn(wrapper.vm.value, 'validate');
+                    const event = { preventDefault() {} };
+
+                    wrapper.vm.value.input.value = 'value';
+                    wrapper.vm.emitSubmit(event);
+
+                    expect(spy).toHaveBeenCalled();
+                    expect(wrapper.emitted().submit).toBeTruthy();
+                });
+            });
         });
 
         describe('created()', () => {
