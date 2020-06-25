@@ -85,8 +85,9 @@ const addVueConfig = (api) => {
  * Add inkline to Vue after importing
  *
  * @param api
+ * @param options
  */
-const addIntegration = (api) => {
+const addIntegration = (api, options) => {
     // Read and get content
     let content = fs.readFileSync(api.resolve(api.entryFile), { encoding: 'utf-8' });
     const lines = content.split(/\r?\n/g).reverse();
