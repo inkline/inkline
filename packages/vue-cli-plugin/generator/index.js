@@ -121,6 +121,6 @@ module.exports = (api, options, rootOptions) => {
     }
 
 	api.onCreateComplete(() => {
-		addIntegration(api)
+		addIntegration(api, options)
 	})
 };
