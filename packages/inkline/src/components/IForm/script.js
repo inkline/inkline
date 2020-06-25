@@ -1,7 +1,6 @@
 import {
     AttributesProviderMixin,
     ClassesProviderMixin,
-    EmitSubmitMethodMixin,
     DisabledPropertyMixin,
     LoadingPropertyMixin,
     NamePropertyMixin,
@@ -16,9 +15,6 @@ export default {
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
-
-        EmitSubmitMethodMixin,
-
         DisabledPropertyMixin,
         LoadingPropertyMixin,
         ReadonlyPropertyMixin,
@@ -137,6 +133,23 @@ export default {
             });
 
             this.$emit('input', this.value);
+        },
+
+        /**
+         * Handler for submit event
+         */
+        emitSubmit (event) {
+            event.preventDefault();
+
+            if (this.value) {
+                this.value[FormBuilder.keys.VALIDATE](this.validationOptions);
+
+                if (this.value[FormBuilder.keys.INVALID]) {
+                    return;
+                }
+            }
+
+            return this.$emit('submit', event);
         }
     },
 };

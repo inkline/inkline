@@ -5,7 +5,6 @@ export { default as EmitFocusMethodMixin } from '@inkline/inkline/src/mixins/met
 export { default as EmitHoverMethodMixin } from '@inkline/inkline/src/mixins/methods/EmitHoverMethodMixin'
 export { default as EmitInputMethodMixin } from '@inkline/inkline/src/mixins/methods/EmitInputMethodMixin'
 export { default as EmitKeydownMethodMixin } from '@inkline/inkline/src/mixins/methods/EmitKeydownMethodMixin'
-export { default as EmitSubmitMethodMixin } from '@inkline/inkline/src/mixins/methods/EmitSubmitMethodMixin'
 export { default as FocusInputRefMethodMixin } from '@inkline/inkline/src/mixins/methods/FocusInputRefMethodMixin'
 
 export { default as ActiveClassPropertyMixin } from '@inkline/inkline/src/mixins/properties/ActiveClassPropertyMixin'

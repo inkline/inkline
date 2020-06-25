@@ -5,7 +5,6 @@ export { default as EmitFocusMethodMixin } from './methods/EmitFocusMethodMixin'
 export { default as EmitHoverMethodMixin } from './methods/EmitHoverMethodMixin'
 export { default as EmitInputMethodMixin } from './methods/EmitInputMethodMixin'
 export { default as EmitKeydownMethodMixin } from './methods/EmitKeydownMethodMixin'
-export { default as EmitSubmitMethodMixin } from './methods/EmitSubmitMethodMixin'
 export { default as FocusInputRefMethodMixin } from './methods/FocusInputRefMethodMixin'
 
 export { default as ActiveClassPropertyMixin } from './properties/ActiveClassPropertyMixin'
