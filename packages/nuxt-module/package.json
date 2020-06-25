@@ -1,6 +1,6 @@
 {
   "name": "@inkline/nuxt",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Nuxt.js Module for Inkline, the customizable Vue.js UI/UX Library.",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@inkline/inkline": "^2.2.2",
+    "@inkline/inkline": "^2.2.3",
     "@nuxt/components": "^0.3.3"
   },
   "peerDependencies": {
