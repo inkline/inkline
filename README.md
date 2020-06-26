@@ -47,8 +47,6 @@
 
 ## Table of contents
 - [Installation](#installation)
-- [Usage](#usage)
-- [CDN](#cdn)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Contributing](#contributing)
 - [Community](#community)
