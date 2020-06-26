@@ -91,7 +91,7 @@ Get updates on Inkline's development and chat with the project maintainers and c
 For increased transparency and backward compatibility,
 Inkline is maintained under [the Semantic Versioning guidelines](https://semver.org/).
 
-## Creator
+## Creators
 **Alex Grozav**
 
 - <https://twitter.com/alexgrozav>
@@ -99,7 +99,7 @@ Inkline is maintained under [the Semantic Versioning guidelines](https://semver.
 - <https://github.com/alexgrozav>
 
 ## Contributing
-Please read through our [contributing guidelines](https://github.com/inkline/inkline/blob/master/.github/contributing.md).
+Please read through our [contributing guidelines](./.github/CONTRIBUTING.md).
 There you can find directions for opening issues, feature requests, coding standards, and how to setup a local development environment.
 
 Thanks goes to these wonderful people:
