@@ -1,17 +1,17 @@
 ---
 title: Form Schema
-description: The form validation schema defines the form input fields, groups and how they work together. 
+description: The form validation schema defines the form input fields, groups and how they work together.
 ---
 
 # Form Schema
-## The form validation schema defines the form input fields, groups and how they work together. 
+## The form validation schema defines the form input fields, groups and how they work together.
 
 ### Schema Example
 The `<i-form>` component and all input components have a `schema` property that can be used to provide form schema validation. From the <nuxt-link :to="{ name: 'docs-forms-validation-schema' }">Introduction</nuxt-link> page we've learned:
 
-- The schema object provides form validation status fields such as `valid`, `invalid`, `touched`, `untouched`, `dirty`, `pristine` and `errors`. 
+- The schema object provides form validation status fields such as `valid`, `invalid`, `touched`, `untouched`, `dirty`, `pristine` and `errors`.
 - The `<i-form>` component needs to receive the `form` object as a `schema`
-- Each child input needs to receive the `form.inputName` as a `schema` and `form.inputName.value` as a `v-model` 
+- Each child input needs to receive the `form.inputName` as a `schema` and `form.inputName.value` as a `v-model`
 
 Using the `validators` field, you can specify an array of validators to be used on the input.
 
@@ -55,16 +55,39 @@ export default {
 
 </i-tab>
 <i-tab type="output">
+<span class="_text-muted">// console.log(this.form);</span>
 <pre>
 <code>
-<span class="_text-muted">// console.log(this.form);</span>
 {{ basicForm | prettify }}
 </code>
 </pre>
 </i-tab>
 </i-code>
 
-<i-alert variant="info" class="-code"><template slot="icon"><i class="inkline-icon -info h3"></i></template>The following keywords are reserved for validation purpopses and cannot be used as field names:<div class="_margin-top-1-2"></div>`name`, `value`, `fields`, `validate`, `validateOn`, `validators`, `invalid`, `valid`, `touch`, `touched`, `untouched`, `dirty`, `pristine`, `set`, `add`, `remove`, `errors`.</i-alert> 
+<i-alert variant="info" class="-code">
+    <template slot="icon">
+        <i class="inkline-icon -info h3"></i>
+    </template>
+    The following keywords are reserved for validation purpopses and cannot be used as field names:
+    <div class="_margin-top-1-2"></div>
+    <code>name</code>,
+    <code>value</code>,
+    <code>fields</code>,
+    <code>validate</code>,
+    <code>validateOn</code>,
+    <code>validators</code>,
+    <code>invalid</code>,
+    <code>valid</code>,
+    <code>touch</code>,
+    <code>touched</code>,
+    <code>untouched</code>,
+    <code>dirty</code>,
+    <code>pristine</code>,
+    <code>set</code>,
+    <code>add</code>,
+    <code>remove</code>,
+    <code>errors</code>.
+</i-alert>
 
 If needed, you can change the reserved validation keywords / field names by updating the <nuxt-link :to="{ name: 'docs-introduction-plugin-options' }">Plugin Options</nuxt-link>.
 
@@ -347,7 +370,7 @@ export default {
 
 The `<i-form>` component and all input components have a `schema` property that can be used to provide form schema validation. The schema object provides form validation status fields such as `valid`, `invalid`, `touched`, `untouched`, `dirty`, `pristine` and `errors`.
 
-The schema object `this.form` contains the validation state of the `<i-form>`, and is updated as soon as the input changes. The object looks as seen in the Output tab: 
+The schema object `this.form` contains the validation state of the `<i-form>`, and is updated as soon as the input changes. The object looks as seen in the Output tab:
 
 <i-code title="Complete Form Example">
 <i-tab type="preview">
@@ -402,12 +425,12 @@ The schema object `this.form` contains the validation state of the `<i-form>`, a
         <i-form-label>Input</i-form-label>
         <i-input :schema="form.input" placeholder="Enter your first name.." />
     </i-form-group>
-    
+
     <i-form-group>
         <i-form-label>Textarea</i-form-label>
         <i-textarea :schema="form.textarea" placeholder="Write a comment.." />
     </i-form-group>
-    
+
     <i-form-group>
         <i-form-group>
             <i-form-label>Select</i-form-label>
