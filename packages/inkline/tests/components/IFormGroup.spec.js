@@ -68,6 +68,14 @@ describe('Components', () => {
                 wrapper.setData({ inputSchema: { invalid: true } });
                 expect(rule()).toEqual(expect.objectContaining({ '-error': true }));
             });
+
+            it('should add "-required" class if inputSchema validators contains required rule', () => {
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-required': null }));
+                wrapper.setData({ inputSchema: { validators: [{ rule: 'required' }] } });
+                expect(rule()).toEqual(expect.objectContaining({ '-required': true }));
+            });
         });
     });
 });
