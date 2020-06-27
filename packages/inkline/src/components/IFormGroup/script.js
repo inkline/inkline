@@ -52,7 +52,11 @@ export default {
     created() {
         this.classesProvider.add(() => ({
             '-inline': this.inline,
-            '-error': this.inputSchema && this.inputSchema[FormBuilder.keys.INVALID]
+            '-error': this.inputSchema && this.inputSchema[FormBuilder.keys.INVALID],
+            '-required':
+                this.inputSchema &&
+                this.inputSchema[FormBuilder.keys.VALIDATORS] &&
+                this.inputSchema[FormBuilder.keys.VALIDATORS].some(v => v.rule === 'required')
         }));
     }
 };

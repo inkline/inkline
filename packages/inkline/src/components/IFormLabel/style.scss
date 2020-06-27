@@ -26,3 +26,10 @@
 .form-group.-inline > .form-label {
     @include form-label-inline-size-variant('md');
 }
+
+.form-group.-required > .form-label {
+    &::before {
+        color: $color-red;
+        content: '* ';
+    }
+}
