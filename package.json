@@ -13,6 +13,7 @@
     "build:docs": "lerna run generate --scope @inkline/docs"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.3",
     "lerna": "^3.22.0"
   }
 }
