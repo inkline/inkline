@@ -1,5 +1,5 @@
 <script>
-import PopperJS from 'popper.js';
+import {createPopper} from '@popperjs/core';
 import popupManager from '@inkline/inkline/src/factories/PopupManager';
 
 /**
@@ -123,36 +123,35 @@ export default {
             this.popperOptions.offset = this.offset;
             this.popperOptions.arrowOffset = this.arrowOffset;
 
-            this.popperOptions.onCreate = () => {
+            this.popperOptions.onFirstUpdate = () => {
                 this.$emit('created', this);
                 this.resetTransformOrigin();
-                this.$nextTick(this.updatePopper);
+                this.$nextTick().then(this.updatePopper);
             };
 
-            if (typeof this.popperOptions.onUpdate === 'function') {
-                this.popperJS.onUpdate(this.popperOptions.onUpdate);
-            }
-
-            this.popperJS = new PopperJS(this.referenceElement, this.popupElement, Object.assign({
-                modifiers: {
-                    computeStyle: {
-                        gpuAcceleration: false
-                    }
-                }
+            this.popperJS = createPopper(this.referenceElement, this.popupElement, Object.assign({
+                modifiers: [
+                    {
+                        name: 'computeStyles',
+                        options: {
+                            adaptive: false,
+                            gpuAcceleration: false
+                        }
+                    },
+                ]
             }, this.popperOptions));
 
-            this.popperJS.popper.style.zIndex = popupManager.nextZIndex();
-
+            this.popperJS.state.styles.zIndex = popupManager.nextZIndex();
             this.popupElement.addEventListener('click', this.stopOnClickPropagation);
         },
 
         updatePopper() {
             if (!this.popperJS) return this.createPopper();
 
-            this.popperJS.update();
+            this.popperJS.forceUpdate();
 
-            if (this.popperJS.popper) {
-                this.popperJS.popper.style.zIndex = popupManager.nextZIndex();
+            if (this.popperJS.state.styles.popper) {
+                this.popperJS.state.styles.popper.zIndex = popupManager.nextZIndex();
             }
         },
 
@@ -172,18 +171,23 @@ export default {
         resetTransformOrigin() {
             if (!this.transformOrigin) return;
 
-            let placementMap = {
-                top: 'bottom',
-                bottom: 'top',
-                left: 'right',
-                right: 'left'
-            };
-            let placement = this.popperJS.popper.getAttribute('x-placement').split('-')[0];
-            let origin = placementMap[placement];
+            const popper = this.popperJS.state.styles.popper;
 
-            this.popperJS.popper.style.transformOrigin = typeof this.transformOrigin === 'string' ?
-                this.transformOrigin :
-                ['top', 'bottom'].indexOf(placement) > -1 ? `center ${ origin }` : `${ origin } center`;
+            if (popper) {
+                const placementMap = {
+                    top: 'bottom',
+                    bottom: 'top',
+                    left: 'right',
+                    right: 'left'
+                };
+                const placement = this.popperJS.state.placement.split('-')[0];
+                const origin = placementMap[placement];
+
+                popper.transformOrigin = typeof this.transformOrigin === 'string' ?
+                    this.transformOrigin :
+                    ['top', 'bottom'].indexOf(placement) > -1 ? `center ${origin}` : `${origin} center`;
+            }
+
         },
         onClickOutside() {
             if (this.value) return;
