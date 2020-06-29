@@ -28,8 +28,8 @@
 }
 
 .form-group.-required > .form-label {
-    &::before {
+    &::after {
         color: $color-red;
-        content: '* ';
+        content: ' *';
     }
 }
