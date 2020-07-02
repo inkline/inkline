@@ -2,60 +2,63 @@
 // Button variants
 // Add the required color variants to all button variations
 //
-@each $variant-name, $variant in variants('button') {
-    $_color-by-luminance: variant-color-by-luminance($variant, $button-variant-color-light, $button-variant-color-dark);
-
+@each $variant-name, $variant in $button-variants {
     .button.-#{$variant-name} {
-        color: $_color-by-luminance;
-        background-color: $variant;
-        border-color: $variant;
+        color: map-get($variant, 'color');
+        background: map-get($variant, 'background');
+        border-color: map-get($variant, 'border-color');
 
         &.-disabled,
         &:disabled {
             opacity: $button-opacity-disabled-light;
+
+            .inkline.-dark & {
+                opacity: $button-opacity-disabled-dark;
+            }
         }
 
         &:not(:disabled):not(.-disabled) {
             &:hover,
             &.-hovered {
-                background-color: darken-lightness($variant, $button-darken-percentage-hover);
-                border-color: darken-lightness($variant, $button-darken-percentage-hover);
+                background: map-get($variant, 'background-hover');
+                border-color: map-get($variant, 'border-color-hover');
             }
 
             &:active,
             &.-active {
-                background-color: darken-lightness($variant, $button-darken-percentage-active);
+                background: map-get($variant, 'background-active');
             }
 
             &:focus,
             &.-focused {
-                box-shadow: 0 0 0 2px rgba($variant, 0.25);
+                box-shadow: 0 0 0 2px rgba(map-get($variant, 'background'), 0.25);
             }
         }
 
         &.-outline {
-            background-color: transparent;
-            color: $variant;
+            background: map-get($variant, 'outline-background');
+            color: map-get($variant, 'outline-color');
+            border-color: map-get($variant, 'outline-border-color');
 
             &:not(:disabled):not(.-disabled) {
                 &:hover,
                 &.-hovered,
                 &:focus,
                 &.-focused {
-                    color: $_color-by-luminance;
-                    background-color: darken-lightness($variant, $button-darken-percentage-hover);
-                    border-color: darken-lightness($variant, $button-darken-percentage-hover);
+                    color: map-get($variant, 'outline-color-hover');
+                    background: map-get($variant, 'outline-background-hover');
+                    border-color: map-get($variant, 'outline-border-color-hover');
                 }
 
                 &:active,
                 &.-active {
-                    background-color: darken-lightness($variant, $button-darken-percentage-active);
+                    background: map-get($variant, 'outline-background-active');
                 }
             }
         }
 
         &.-link {
-            color: $variant;
+            color: map-get($variant, 'link-color');
             background-color: transparent;
             border-color: transparent;
 
@@ -64,7 +67,7 @@
                 &.-hovered,
                 &:focus,
                 &.-focused {
-                    color: darken-lightness($variant, 5%);
+                    color: map-get($variant, 'link-color-active');
                     background-color: transparent;
                     border-color: transparent;
                 }
@@ -73,15 +76,19 @@
 
         ::v-deep .loader {
             > .loader-item {
-                background-color: variant-color-by-luminance($variant, colors('white'), colors('gray-80')) !important;
+                background-color: map-get($variant, 'color') !important;
             }
         }
-    }
 
-    .inkline.-dark .button.-#{$variant-name} {
-        &.-disabled,
-        &:disabled {
-            opacity: $button-opacity-disabled-dark;
+        //
+        // Button group border accent
+        //
+        .button-group:not(.-vertical) > &:not(:first-child) {
+            border-left-color: map-get($variant, 'background-hover');
+        }
+
+        .button-group.-vertical > &:not(:first-child) {
+            border-top-color: map-get($variant, 'background-hover');
         }
     }
 }

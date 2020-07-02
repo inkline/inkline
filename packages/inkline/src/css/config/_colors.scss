@@ -108,6 +108,7 @@ $color-linkedin: #0077b5;
 $color-youtube: #b31217;
 $color-pinterest: #bd081c;
 $color-github: #333333;
+$color-gitlab: #fa7035;
 $color-tumblr: #35465c;
 $color-twitch: #6441a5;
 $color-envato: #82b541;
@@ -125,6 +126,7 @@ $color-group-social: (
     'youtube': $color-youtube,
     'pinterest': $color-pinterest,
     'github': $color-github,
+    'gitlab': $color-gitlab,
     'tumblr': $color-tumblr,
     'twitch':    $color-twitch,
     'envato':    $color-envato,
@@ -135,6 +137,9 @@ $color-group-social: (
 //
 $variant-color-light: $color-white !default;
 $variant-color-dark: $color-gray-80 !default;
+
+$color-for-light-variant: $variant-color-light !default;
+$color-for-dark-variant: $variant-color-dark !default;
 
 // Color groups
 //

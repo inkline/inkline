@@ -1,12 +1,14 @@
 //
 // Hamburger Menu variants
 //
-@each $variant-name, $variant in variants('hamburger-menu') {
-    .hamburger.-#{$variant-name} > .bars {
-        &,
-        &::before,
-        &::after {
-            background-color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
+@each $variant-name, $variant in $hamburger-menu-variants {
+    .hamburger.-#{$variant-name} {
+        > .bars {
+            &,
+            &::before,
+            &::after {
+                background: map-get($variant, 'background');
+            }
         }
     }
 }

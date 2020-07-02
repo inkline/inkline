@@ -7,8 +7,13 @@ $tabs-body-padding: $spacer !default;
 //
 // Themes
 //
-$tabs-variants: ('monochrome-white') !default;
-$tabs-variant-color-light: $variant-color-light !default;
-$tabs-variant-color-dark: $variant-color-dark !default;
+$tabs-color-for-light-variant: $color-for-light-variant !default;
+$tabs-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('tabs': add-variant($tabs-variants, $color-groups)));
+$tabs-variant-light: tabs-variant($color-light) !default;
+$tabs-variant-dark: tabs-variant($color-dark) !default;
+
+$tabs-variants: (
+    light: $tabs-variant-light,
+    dark: $tabs-variant-dark
+) !default;

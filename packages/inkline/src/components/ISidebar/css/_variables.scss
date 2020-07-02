@@ -23,6 +23,13 @@ $sidebar-z-index: $z-index-fixed !default;
 //
 // Variants
 //
-$sidebar-variants: ('monochrome') !default;
+$sidebar-color-for-light-variant: $color-for-light-variant !default;
+$sidebar-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('sidebar': add-variant($sidebar-variants, $color-groups)));
+$sidebar-variant-light: sidebar-variant($color-light) !default;
+$sidebar-variant-dark: sidebar-variant($color-dark) !default;
+
+$sidebar-variants: (
+    light: $sidebar-variant-light,
+    dark: $sidebar-variant-dark
+) !default;

@@ -12,17 +12,19 @@ $breadcrumb-margin-bottom: $spacer !default;
 
 $breadcrumb-divider: '/' !default;
 
-$breadcrumb-plain-color-light: colors('gray-60') !default;
-$breadcrumb-active-color-light: colors('gray-80') !default;
-
-$breadcrumb-plain-color-dark: colors('gray-60') !default;
-$breadcrumb-active-color-dark: colors('gray-40') !default;
+$breadcrumb-item-padding-base: $spacer !default;
+$breadcrumb-item-padding: size-map($breadcrumb-item-padding-base, $sizes, $size-multipliers) !default;
 
 //
 // Variants
 //
-$breadcrumb-variants: ('brand', 'monochrome') !default;
-$breadcrumb-variant-color-light: $variant-color-light !default;
-$breadcrumb-variant-color-dark: $variant-color-dark !default;
+$breadcrumb-color-for-light-variant: $color-for-light-variant !default;
+$breadcrumb-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('breadcrumb': add-variant($breadcrumb-variants, $color-groups)));
+$breadcrumb-variant-light: breadcrumb-variant($color-light) !default;
+$breadcrumb-variant-dark: breadcrumb-variant($color-dark) !default;
+
+$breadcrumb-variants: (
+    light: $breadcrumb-variant-light,
+    dark: $breadcrumb-variant-dark
+) !default;

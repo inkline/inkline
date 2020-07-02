@@ -1,15 +1,15 @@
 //
 // Toggle variants
 //
-@each $variant-name, $variant in variants('toggle') {
-    $_background: map_get($variant, 'background');
-    $_indicator-background: map_get($variant, 'indicator-background');
-    $_background-active: map_get($variant, 'background-active');
-    $_indicator-background-active: map_get($variant, 'indicator-background-active');
-    $_background-disabled: map_get($variant, 'background-disabled');
-    $_indicator-background-disabled: map_get($variant, 'indicator-background-disabled');
-    $_background-active-disabled: map_get($variant, 'background-active-disabled');
-    $_indicator-background-active-disabled: map_get($variant, 'indicator-background-active-disabled');
+@each $variant-name, $variant in $toggle-variants {
+    $_background: map-get($variant, 'background');
+    $_indicator-background: map-get($variant, 'indicator-background');
+    $_background-active: map-get($variant, 'background-active');
+    $_indicator-background-active: map-get($variant, 'indicator-background-active');
+    $_background-disabled: map-get($variant, 'background-disabled');
+    $_indicator-background-disabled: map-get($variant, 'indicator-background-disabled');
+    $_background-active-disabled: map-get($variant, 'background-active-disabled');
+    $_indicator-background-active-disabled: map-get($variant, 'indicator-background-active-disabled');
 
     .toggle.-#{$variant-name} {
         .toggle-input {

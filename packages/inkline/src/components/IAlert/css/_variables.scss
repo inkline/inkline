@@ -23,8 +23,21 @@ $alert-link-color-darken-lighten-percentage: 35% !default;
 //
 // Variants
 //
-$alert-variants: ('brand', 'state') !default;
-$alert-variant-color-light: $variant-color-light !default;
-$alert-variant-color-dark: $variant-color-dark !default;
+$alert-color-for-light-variant: $color-for-light-variant !default;
+$alert-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('alert': add-variant($alert-variants, $color-groups)));
+$alert-variant-primary: alert-variant($color-primary) !default;
+$alert-variant-secondary: alert-variant($color-secondary) !default;
+$alert-variant-info: alert-variant($color-info) !default;
+$alert-variant-success: alert-variant($color-success) !default;
+$alert-variant-warning: alert-variant($color-warning) !default;
+$alert-variant-danger: alert-variant($color-danger) !default;
+
+$alert-variants: (
+    primary: $alert-variant-primary,
+    secondary: $alert-variant-secondary,
+    info: $alert-variant-info,
+    success: $alert-variant-success,
+    warning: $alert-variant-warning,
+    danger: $alert-variant-danger
+) !default;

@@ -1,12 +1,12 @@
 //
 // Sidebar variants
 //
-@each $variant-name, $variant in variants('sidebar') {
+@each $variant-name, $variant in $sidebar-variants {
     .sidebar-wrapper.-#{$variant-name} {
-        color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
+        color: map-get($variant, 'color');
 
         .sidebar {
-            background-color: $variant;
+            background: map-get($variant, 'background');
         }
     }
 }

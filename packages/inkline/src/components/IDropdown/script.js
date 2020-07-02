@@ -6,6 +6,7 @@ import {
     EmitProviderMixin,
     PopupControlsProviderMixin,
     EmitFocusMethodMixin,
+    SizePropertyMixin,
     VariantPropertyMixin,
     DisabledPropertyMixin
 } from '@inkline/inkline/src/mixins';
@@ -20,6 +21,7 @@ export default {
 
         EmitFocusMethodMixin,
 
+        SizePropertyMixin,
         VariantPropertyMixin,
         DisabledPropertyMixin
     ],

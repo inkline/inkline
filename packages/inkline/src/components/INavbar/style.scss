@@ -3,33 +3,32 @@
  */
 @import '../../css/config/index';
 @import '../../css/mixins/index';
+@import 'css/_mixins';
 @import 'css/_variables';
 @import 'css/_variants';
 @import 'css/_sizes';
 
 @mixin navbar-collapse {
-    > .container > .row > .column {
-        ::v-deep .items {
-            position: relative;
-            display: block;
-            width: 100%;
+    .navbar-items {
+        position: relative;
+        display: block;
+        width: 100%;
 
-            > .nav {
-                flex-direction: column;
-                align-items: flex-start;
+        > .nav {
+            flex-direction: column;
+            align-items: flex-start;
 
-                > .item {
-                    width: 100%;
-                }
+            > .item {
+                width: 100%;
             }
         }
+    }
 
-        ::v-deep .collapse-toggle {
-            display: inline-block;
+    .collapse-toggle {
+        display: inline-block;
 
-            + .brand {
-                order: -1;
-            }
+        + .brand {
+            order: -1;
         }
     }
 }
@@ -46,21 +45,21 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
+    }
 
-        ::v-deep .collapse-toggle {
-            display: none;
-        }
+    ::v-deep .collapse-toggle {
+        display: none;
     }
 
     @each $breakpoint in (breakpoints-list()) {
-        &.-collapse-#{$breakpoint} {
+        &.-collapse-#{$breakpoint} ::v-deep {
             @include breakpoint-down($breakpoint) {
                 @include navbar-collapse;
             }
         }
     }
 
-    &.-collapse-true {
+    &.-collapse-true ::v-deep {
         @include navbar-collapse;
     }
 

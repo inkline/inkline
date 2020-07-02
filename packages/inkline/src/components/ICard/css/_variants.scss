@@ -1,19 +1,23 @@
 //
 // Card variants
 //
-@each $variant-name, $variant in variants('card') {
+@each $variant-name, $variant in $card-variants {
     .card.-#{$variant-name} {
-        color: variant-color-by-luminance($variant, $card-variant-color-light, $card-variant-color-dark);
-        background-color: $variant;
+        color: map-get($variant, 'color');
+        background: map-get($variant, 'background');
 
         > .body {
-            border-color: darken-lightness($variant, 10%);
+            border-color: map-get($variant, 'border-color');
         }
 
-        > .header,
+        > .header {
+            background: map-get($variant, 'header-background');
+            border-color: map-get($variant, 'header-border-color');
+        }
+
         > .footer {
-            background-color: $card-background-darken;
-            border-color: darken-lightness($variant, 10%);
+            background: map-get($variant, 'footer-background');
+            border-color: map-get($variant, 'footer-border-color');
         }
     }
 }

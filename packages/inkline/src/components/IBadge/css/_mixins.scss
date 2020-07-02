@@ -1,0 +1,11 @@
+@function badge-variant($variant) {
+    $badge-variant-background: $variant;
+    $badge-variant-color: variant-color-by-luminance($variant, $badge-color-for-light-variant, $badge-color-for-dark-variant);
+
+    $variant-map: (
+        background: $badge-variant-background,
+        color: $badge-variant-color
+    );
+
+    @return $variant-map;
+}

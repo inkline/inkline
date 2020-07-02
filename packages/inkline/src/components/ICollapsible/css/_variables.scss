@@ -7,12 +7,13 @@ $collapsible-item-padding: $spacer !default;
 //
 // Themes
 //
-$collapsible-variants: ('monochrome') !default;
+$collapsible-color-for-light-variant: $color-for-light-variant !default;
+$collapsible-color-for-dark-variant: $color-for-dark-variant !default;
 
-$collapsible-color-light: $variant-color-light !default;
-$collapsible-color-dark: $variant-color-dark !default;
+$collapsible-variant-light: collapsible-variant($color-light) !default;
+$collapsible-variant-dark: collapsible-variant($color-dark) !default;
 
-$collapsible-background-color-light: $color-white !default;
-$collapsible-background-color-dark: $color-gray-90 !default;
-
-$variants: map_merge($variants, ('collapsible': add-variant($collapsible-variants, $color-groups)));
+$collapsible-variants: (
+    light: $collapsible-variant-light,
+    dark: $collapsible-variant-dark
+) !default;

@@ -3,7 +3,6 @@
 @import '../IButton/css/_variables';
 @import 'css/_variables';
 @import 'css/_sizes';
-@import 'css/_variants';
 
 /**
  * Button Group
@@ -79,17 +78,5 @@
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
-    }
-
-    // Button border accent
-    //
-    $_color-accent-base: variant-element('button', 'light');
-
-    &:not(.-vertical) > .button:not(:first-child) {
-        border-left-color: darken-lightness($_color-accent-base, $button-darken-percentage-hover);
-    }
-
-    &.-vertical > .button:not(:first-child) {
-        border-top-color: darken-lightness($_color-accent-base, $button-darken-percentage-hover);
     }
 }

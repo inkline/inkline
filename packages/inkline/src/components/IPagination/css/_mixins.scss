@@ -1,0 +1,17 @@
+@function pagination-variant($variant) {
+    $pagination-variant-color: variant-color-by-luminance($variant, $pagination-color-for-light-variant, $pagination-color-for-dark-variant);
+    $pagination-variant-color-disabled: variant-color-by-luminance($variant, darken-lightness($pagination-color-for-light-variant, 40%), lighten-lightness($pagination-color-for-dark-variant, 40%));
+    $pagination-variant-background: $variant;
+    $pagination-variant-background-hover: darken-lightness($variant, 10%);
+    $pagination-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+
+    $variant-map: (
+        color: $pagination-variant-color,
+        color-disabled: $pagination-variant-color-disabled,
+        background: $pagination-variant-background,
+        background-hover: $pagination-variant-background-hover,
+        border-color: $pagination-variant-border-color
+    );
+
+    @return $variant-map;
+}

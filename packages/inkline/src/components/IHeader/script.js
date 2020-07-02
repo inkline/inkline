@@ -1,6 +1,7 @@
 import {
     SizePropertyMixin,
-    ClassesProviderMixin,
+    VariantPropertyMixin,
+    ClassesProviderMixin
 } from '@inkline/inkline/src/mixins';
 
 import IContainer from "@inkline/inkline/src/components/IContainer";
@@ -11,7 +12,7 @@ export default {
     name: 'IHeader',
     mixins: [
         SizePropertyMixin,
-
+        VariantPropertyMixin,
         ClassesProviderMixin
     ],
     components: {

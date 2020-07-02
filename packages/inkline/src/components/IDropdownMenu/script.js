@@ -1,6 +1,5 @@
 import {
     SizePropertyMixin,
-    VariantPropertyMixin,
     ClassesProviderMixin,
     PopupProviderMixin
 } from '@inkline/inkline/src/mixins';
@@ -12,7 +11,6 @@ export default {
     ],
     mixins: [
         SizePropertyMixin,
-        VariantPropertyMixin,
 
         ClassesProviderMixin,
         PopupProviderMixin

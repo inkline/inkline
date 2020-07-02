@@ -4,5 +4,16 @@
 $header-padding-base: 10rem !default;
 $header-padding: size-map($header-padding-base, $sizes, $size-multipliers) !default;
 
-$header-background-color-light: colors('gray-20') !default;
-$header-background-color-dark: colors('gray-80') !default;
+//
+// Variants
+//
+$header-color-for-light-variant: $color-for-light-variant !default;
+$header-color-for-dark-variant: $color-for-dark-variant !default;
+
+$header-variant-light: header-variant($color-light) !default;
+$header-variant-dark: header-variant($color-dark) !default;
+
+$header-variants: (
+    light: $header-variant-light,
+    dark: $header-variant-dark
+) !default;

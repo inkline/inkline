@@ -1,7 +1,9 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
+@import 'css/_mixins';
 @import 'css/_variables';
 @import 'css/_sizes';
+@import 'css/_variants';
 
 /**
  * Header
@@ -10,7 +12,6 @@
     display: flex;
     box-sizing: border-box;
     width: 100%;
-    background-color: $header-background-color-light;
     transition: background-color $transition-duration $transition-easing;
 
     /* stylelint-disable selector-list-comma-newline-after */
@@ -48,8 +49,5 @@
     }
 
     @extend .header.-md;
-}
-
-.inkline.-dark .header {
-    background-color: $header-background-color-dark;
+    @extend .header.-light;
 }

@@ -2,8 +2,20 @@
 // Breadcrumb sizes
 //
 @each $size in $sizes {
+    $_item-padding: map_get($breadcrumb-item-padding, $size);
+
     .breadcrumb.-#{$size} {
         border-radius: map_get($breadcrumb-border-radius, $size);
         font-size: map_get($breadcrumb-font-size, $size);
+
+        ::v-deep > .item {
+            padding-left: $_item-padding;
+
+            + .item {
+                &::before {
+                    padding-right: $_item-padding;
+                }
+            }
+        }
     }
 }

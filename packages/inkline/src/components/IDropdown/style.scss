@@ -1,3 +1,10 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_mixins';
+@import 'css/_variables';
+@import 'css/_variants';
+@import 'css/_sizes';
+
 /**
  * Dropdown
  */
@@ -13,4 +20,7 @@
         width: 100%;
         display: block;
     }
+
+    @extend .dropdown.-md;
+    @extend .dropdown.-light;
 }

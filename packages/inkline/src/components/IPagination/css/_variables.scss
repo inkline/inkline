@@ -19,11 +19,18 @@ $pagination-item-border-radius: $border-radius !default;
 $pagination-item-background-active: colors('primary') !default;
 $pagination-item-color-active: colors('white') !default;
 
+$pagination-nav-disabled-opacity: 0.85 !default;
+
 //
 // Themes
 //
-$pagination-variants: ('monochrome') !default;
-$pagination-variant-color-light: $variant-color-light !default;
-$pagination-variant-color-dark: $variant-color-dark !default;
+$pagination-color-for-light-variant: $color-for-light-variant !default;
+$pagination-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('pagination': add-variant($pagination-variants, $color-groups)));
+$pagination-variant-light: pagination-variant($color-light) !default;
+$pagination-variant-dark: pagination-variant($color-dark) !default;
+
+$pagination-variants: (
+    light: $pagination-variant-light,
+    dark: $pagination-variant-dark
+) !default;

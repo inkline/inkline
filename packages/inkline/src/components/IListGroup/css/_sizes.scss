@@ -2,9 +2,21 @@
 // List Group sizes
 //
 @each $size in $sizes {
-    $_border-radius: map_get($list-group-border-radius, $size);
-
     .list-group.-#{$size} {
-        border-radius: $_border-radius;
+        border-radius: map-get($list-group-border-radius, $size);
+
+        ::v-deep > .item {
+            padding: map-get($list-group-item-padding, $size);
+
+            &:first-child {
+                border-top-left-radius: map-get($list-group-border-radius, $size);
+                border-top-right-radius: map-get($list-group-border-radius, $size);
+            }
+
+            &:last-child {
+                border-bottom-left-radius: map-get($list-group-border-radius, $size);
+                border-bottom-right-radius: map-get($list-group-border-radius, $size);
+            }
+        }
     }
 }

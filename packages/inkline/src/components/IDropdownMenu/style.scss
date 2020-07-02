@@ -1,9 +1,6 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
-@import 'css/_variables';
-@import 'css/_mixins';
-@import 'css/_sizes';
-@import 'css/_variants';
+@import '../IDropdown/css/_variables';
 
 /**
  * Dropdown Menu
@@ -21,7 +18,4 @@
     border-width: $dropdown-border-width;
     border-style: solid;
     min-width: $dropdown-min-width;
-
-    @include dropdown-menu-color-variant(variant-element('dropdown', 'light'));
-    @include dropdown-menu-size-variant('md');
 }

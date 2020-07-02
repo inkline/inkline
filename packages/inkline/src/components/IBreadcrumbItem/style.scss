@@ -4,16 +4,10 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
 @import '../IBreadcrumb/css/_variables';
-@import 'css/_variables';
-@import 'css/_sizes';
 
 .breadcrumb {
     > .item {
         margin-bottom: 0;
-
-        > a {
-            transition: color $transition-duration $transition-easing;
-        }
 
         > span {
             display: inline-block;
@@ -44,28 +38,6 @@
         // Check the above for duplication
         + .item:hover::before { /* stylelint-disable-line no-duplicate-selectors */
             text-decoration: none;
-        }
-
-        a:not([href]) {
-            color: $breadcrumb-plain-color-light;
-        }
-
-        &.-active a {
-            color: $breadcrumb-active-color-light;
-        }
-
-        @include breadcrumb-item-variant('md');
-    }
-}
-
-.inkline.-dark .breadcrumb {
-    > .item {
-        a:not([href]) {
-            color: $breadcrumb-plain-color-dark;
-        }
-
-        &.-active a {
-            color: $breadcrumb-active-color-dark;
         }
     }
 }

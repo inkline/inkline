@@ -1,8 +1,0 @@
-//
-// Dropdown Menu sizes
-//
-@each $size in $sizes {
-    .dropdown > .menu.-#{$size} {
-        @include dropdown-menu-size-variant($size);
-    }
-}

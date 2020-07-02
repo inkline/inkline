@@ -1,0 +1,11 @@
+@function breadcrumb-variant($variant) {
+    $breadcrumb-variant-color: variant-color-by-luminance($variant, $breadcrumb-color-for-light-variant, $breadcrumb-color-for-dark-variant);
+    $breadcrumb-variant-color-active: variant-color-by-luminance($variant, darken($breadcrumb-variant-color, 25%), lighten($breadcrumb-variant-color, 25%));
+
+    $variant-map: (
+        color: $breadcrumb-variant-color,
+        color-active: $breadcrumb-variant-color-active,
+    );
+
+    @return $variant-map;
+}

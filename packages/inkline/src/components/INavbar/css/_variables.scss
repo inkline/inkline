@@ -13,6 +13,13 @@ $navbar-brand-padding: size-map($navbar-brand-padding-base, $sizes, $size-multip
 //
 // Variants
 //
-$navbar-variants: ('brand', 'monochrome') !default;
+$navbar-color-for-light-variant: $color-for-light-variant !default;
+$navbar-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('navbar': add-variant($navbar-variants, $color-groups)));
+$navbar-variant-light: navbar-variant($color-light) !default;
+$navbar-variant-dark: navbar-variant($color-dark) !default;
+
+$navbar-variants: (
+    light: $navbar-variant-light,
+    dark: $navbar-variant-dark
+) !default;

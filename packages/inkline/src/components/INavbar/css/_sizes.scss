@@ -2,16 +2,20 @@
 // Navbar sizes
 //
 @each $size in $sizes {
-    $_padding: map_get($navbar-padding, $size);
-
     .navbar.-#{$size} {
-        padding: $_padding;
+        padding: map_get($navbar-padding, $size);
+
+        ::v-deep {
+            .brand {
+                padding: map_get($navbar-padding, $size);
+            }
+        }
 
         @each $breakpoint in ('xs', 'sm', 'md', 'lg', 'xl') {
             &.-collapse-#{$breakpoint} {
                 @include breakpoint-down($breakpoint) {
                     > .container > .row > .column > .items {
-                        margin-top: nth($_padding, 1);
+                        margin-top: nth(map_get($navbar-padding, $size), 1);
                     }
                 }
             }

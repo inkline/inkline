@@ -1,14 +1,14 @@
 //
 // Badge variants
 //
-@each $variant-name, $variant in variants('badge') {
+@each $variant-name, $variant in $badge-variants {
     .badge.-#{$variant-name} {
-        color: variant-color-by-luminance($variant, $badge-variant-color-light, $badge-variant-color-dark);
-        background-color: $variant;
+        background: map-get($variant, 'background');
+        color: map-get($variant, 'color');
 
         a:hover &,
         a:focus & {
-            background-color: darken-lightness($variant, 10%);
+            background: darken-lightness(map-get($variant, 'background'), $badge-background-color-hover-darken);
         }
     }
 }

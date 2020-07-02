@@ -1,6 +1,7 @@
 import {
     AttributesProviderMixin,
     ClassesProviderMixin,
+    VariantPropertyMixin,
     SizePropertyMixin
 } from '@inkline/inkline/src/mixins';
 
@@ -9,7 +10,7 @@ export default {
     mixins: [
         AttributesProviderMixin,
         ClassesProviderMixin,
-
+        VariantPropertyMixin,
         SizePropertyMixin
     ],
     props: {

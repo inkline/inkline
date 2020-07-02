@@ -1,0 +1,8 @@
+//
+// Header variants
+//
+@each $variant-name, $variant in $header-variants {
+    .header.-#{$variant-name} {
+        background: map-get($variant, 'background');
+    }
+}

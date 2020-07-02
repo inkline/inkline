@@ -13,6 +13,13 @@ $hamburger-menu-hover-opacity: 1 !default;
 //
 // Variants
 //
-$hamburger-menu-variants: ('monochrome') !default;
+$hamburger-menu-color-for-light-variant: $color-for-light-variant !default;
+$hamburger-menu-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('hamburger-menu': add-variant($hamburger-menu-variants, $color-groups)));
+$hamburger-menu-variant-light: hamburger-menu-variant($color-dark) !default;
+$hamburger-menu-variant-dark: hamburger-menu-variant($color-light) !default;
+
+$hamburger-menu-variants: (
+    light: $hamburger-menu-variant-light,
+    dark: $hamburger-menu-variant-dark
+) !default;
