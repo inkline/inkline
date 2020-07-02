@@ -428,8 +428,51 @@ Here you can find a list of the Sass variables you can use for the tooltip compo
                 <template slot="default"><code>size-map($tooltip-padding-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$tooltip-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tooltip-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tooltip-variant-{variant}</template>
+                <template slot="default"><code>tooltip-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$tooltip-variants</template>
-                <template slot="default"><code>('monochrome-white')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $tooltip-variant-light,
+    dark: $tooltip-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">tooltip-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function tooltip-variant($variant) {
+    $tooltip-variant-color: variant-color-by-luminance($variant, $tooltip-color-for-light-variant, $tooltip-color-for-dark-variant);
+    $tooltip-variant-background: $variant;
+    $tooltip-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+
+    $variant-map: (
+        color: $tooltip-variant-color,
+        background: $tooltip-variant-background,
+        border-color: $tooltip-variant-border-color,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

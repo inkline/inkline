@@ -349,16 +349,59 @@ Here you can find a list of the Sass variables you can use for the pagination co
                 <template slot="default"><code>$color-white</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$pagination-nav-disabled-opacity</template>
+                <template slot="default"><code>0.85</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$pagination-variant-{variant}</template>
+                <template slot="default"><code>pagination-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$pagination-variants</template>
-                <template slot="default"><code>('monochrome')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $pagination-variant-light,
+    dark: $pagination-variant-dark
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$pagination-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$pagination-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
+                <template slot="function">pagination-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function pagination-variant($variant) {
+    $pagination-variant-color: variant-color-by-luminance($variant, $pagination-color-for-light-variant, $pagination-color-for-dark-variant);
+    $pagination-variant-color-disabled: variant-color-by-luminance($variant, darken-lightness($pagination-color-for-light-variant, 40%), lighten-lightness($pagination-color-for-dark-variant, 40%));
+    $pagination-variant-background: $variant;
+    $pagination-variant-background-hover: darken-lightness($variant, 10%);
+    $pagination-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+
+    $variant-map: (
+        color: $pagination-variant-color,
+        color-disabled: $pagination-variant-color-disabled,
+        background: $pagination-variant-background,
+        background-hover: $pagination-variant-background-hover,
+        border-color: $pagination-variant-border-color
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

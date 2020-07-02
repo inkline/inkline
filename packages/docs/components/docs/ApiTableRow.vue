@@ -5,6 +5,14 @@
                 <span class="label">Property</span>
                 <slot name="property" />
             </div>
+            <div v-if="$slots.function" class="td -property">
+                <span class="label">Function</span>
+                <slot name="function" />
+            </div>
+            <div v-if="$slots.mixin" class="td -property">
+                <span class="label">Mixin</span>
+                <slot name="mixin" />
+            </div>
             <div v-if="$slots.event" class="td -event">
                 <span class="label">Event</span>
                 <slot name="event" />

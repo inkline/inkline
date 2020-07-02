@@ -344,8 +344,93 @@ Here you can find a list of the Sass variables you can use for the progress comp
                 <template slot="default"><code>size-map($progress-height-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$progress-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$progress-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$progress-variant-{variant}</template>
+                <template slot="default"><code>progress-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$progress-variants</template>
-                <template slot="default"><code>('monochrome')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $progress-variant-light,
+    dark: $progress-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">progress-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function progress-variant($variant) {
+    $progress-variant-color: variant-color-by-luminance($variant, $progress-color-for-light-variant, $progress-color-for-dark-variant);
+    $progress-variant-background: $variant;
+
+    $variant-map: (
+        color: $progress-variant-color,
+        background: $progress-variant-background,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$progress-bar-variant-{variant}</template>
+                <template slot="default"><code>progress-bar-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$progress-bar-variants</template>
+<template slot="default-row">
+                
+~~~scss
+(
+    primary: $progress-bar-variant-primary,
+    secondary: $progress-bar-variant-secondary,
+    light: $progress-bar-variant-light,
+    dark: $progress-bar-variant-dark,
+    info: $progress-bar-variant-info,
+    success: $progress-bar-variant-success,
+    warning: $progress-bar-variant-warning,
+    danger: $progress-bar-variant-danger
+)
+
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">progress-bar-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function progress-bar-variant($variant) {
+    $progress-bar-variant-color: variant-color-by-luminance($variant, $progress-color-for-light-variant, $progress-color-for-dark-variant);
+    $progress-bar-variant-background: $variant;
+
+    $variant-map: (
+        color: $progress-bar-variant-color,
+        background: $progress-bar-variant-background,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

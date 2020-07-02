@@ -46,12 +46,11 @@ Inkline includes several predefined button styles, each serving its own semantic
 <i-button variant="light">Light</i-button>
 ~~~
 ~~~html
-<i-button variant="dark">Dark</i-button>
+<i-button variant="dark">~~~~Dark</i-button>
 ~~~
 
 </i-tab>
 </i-code>
-
 
 ### Button Type
 The `<i-button>` component makes use of a `<button>` element markup behind the scenes. Therefore, you can assign a type to it,
@@ -281,6 +280,42 @@ You can create block level buttons that span the full width of a parent by addin
 </i-tab>
 </i-code>
 
+### Social Variants
+You can use variants for the most common social login buttons out of the box. The examples below make use of the `block` modifier to have them full-width.
+
+<i-code title="Social Variants">
+<i-tab type="preview">
+    <i-button variant="facebook" block>
+        Signin with Facebook
+    </i-button>
+    <i-button variant="google" block>
+        Signin with Google
+    </i-button>
+    <i-button variant="twitter" block>
+        Signin with Twitter
+    </i-button>
+    <i-button variant="github" block>
+        Signin with GitHub
+    </i-button>
+</i-tab>
+<i-tab type="html">
+
+~~~html
+<i-button variant="facebook" block>Singin with Facebook</i-button>
+~~~
+~~~html
+<i-button variant="google" block>Singin with Google</i-button>
+~~~
+~~~html
+<i-button variant="twitter" block>Singin with Twitter</i-button>
+~~~
+~~~html
+<i-button variant="github" block>Singin with GitHub</i-button>
+~~~
+
+</i-tab>
+</i-code>
+
 ### Button Icon
 You can easily use the `i-button` component together with any icon component (i.e. FontAwesome, IcoMoon), including any of the <nuxt-link :to="{ name: 'docs-components-icon' }">list of icons</nuxt-link> of the `i-icon` component.
 
@@ -424,7 +459,6 @@ The `<i-button>` component is well integrated with the [Vue Router](https://rout
 
 </i-tab>
 </i-code>
-
 
 ### Component API
 Here you can find a list of the various customization options you can use for the button component as props, as well as available slots and events.
@@ -614,16 +648,85 @@ Here you can find a list of the Sass variables you can use for the button compon
                 <template slot="default"><code>$text-muted</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$button-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$button-variant-{variant}</template>
+                <template slot="default"><code>button-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$button-variants</template>
-                <template slot="default"><code>('brand', 'monochrome', 'state', 'social')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    primary: $button-variant-primary,
+    secondary: $button-variant-secondary,
+    light: $button-variant-light,
+    dark: $button-variant-dark,
+    info: $button-variant-info,
+    success: $button-variant-success,
+    warning: $button-variant-warning,
+    danger: $button-variant-danger,
+    facebook: $button-variant-facebook,
+    google: $button-variant-google,
+    twitter: $button-variant-twitter,
+    github: $button-variant-github
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$button-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$button-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
+                <template slot="function">@function button-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function button-variant($variant) {
+    $button-variant-background: $variant;
+    $button-variant-background-hover: darken-lightness($button-variant-background, $button-darken-percentage-hover);
+    $button-variant-background-active: darken-lightness($button-variant-background, $button-darken-percentage-active);
+    $button-variant-border-color: $button-variant-background;
+    $button-variant-border-color-hover: darken-lightness($button-variant-border-color, $button-darken-percentage-hover);
+    $button-variant-color: variant-color-by-luminance($button-variant-background, $button-color-for-light-variant, $button-color-for-dark-variant);
+    $button-variant-color-link: $button-variant-background;
+    $button-variant-color-link-active: $button-variant-background-hover;
+    $button-variant-color-outline: $button-variant-background;
+    $button-variant-color-outline-hover: $button-variant-color;
+    $button-variant-outline-background: transparent;
+    $button-variant-outline-background-hover: $button-variant-background-hover;
+    $button-variant-outline-background-active: $button-variant-background-active;
+    $button-variant-outline-border-color: $button-variant-border-color;
+    $button-variant-outline-border-color-hover: $button-variant-border-color-hover;
+
+    $variant-map: (
+        background: $button-variant-background,
+        background-hover: $button-variant-background-hover,
+        background-active: $button-variant-background-active,
+        border-color: $button-variant-border-color,
+        border-color-hover: $button-variant-border-color-hover,
+        color: $button-variant-color,
+        color-link: $button-variant-color-link,
+        color-link-active: $button-variant-color-link-active,
+        color-outline: $button-variant-outline-color,
+        color-outline-hover: $button-variant-outline-color-hover,
+        background-outline: $button-variant-outline-background,
+        background-outline-hover: $button-variant-outline-background-hover,
+        background-outline-active: $button-variant-outline-background-active,
+        border-color-outline: $button-variant-outline-border-color,
+        border-color-outline-hover: $button-variant-outline-border-color-hover,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

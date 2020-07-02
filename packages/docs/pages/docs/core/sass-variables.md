@@ -346,12 +346,20 @@ This page lists the common Sass Variables that are used throughout the framework
                 <template slot="default"><code>(...)</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$variant-color-light</template>
+                <template slot="property">$variant-color-light <small class="_text-muted">(deprecated)</small></template>
                 <template slot="default"><code>$color-white</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$variant-color-dark</template>
+                <template slot="property">$variant-color-dark <small class="_text-muted">(deprecated)</small></template>
                 <template slot="default"><code>$color-gray-80</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$color-for-light-variant</template>
+                <template slot="default"><code>$variant-color-light</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$color-for-light-variant</template>
+                <template slot="default"><code>$variant-color-dark</code></template>
             </api-table-row>
             <api-table-row>
                 <template slot="property">$colors</template>

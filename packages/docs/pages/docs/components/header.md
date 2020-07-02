@@ -188,6 +188,13 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="values"><code>sm</code>, <code>md</code>, <code>lg</code></template>
                 <template slot="default"><code>md</code></template>
             </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the header component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>light</code>, <code>dark</code></template>
+                <template slot="default"><code>light</code></template>
+            </api-table-row>
         </api-table>
     </i-tab>
     <i-tab type="slots">
@@ -215,12 +222,47 @@ Here you can find a list of the Sass variables you can use for the header compon
                 <template slot="default"><code>size-map($header-padding-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$header-background-color-light</template>
-                <template slot="default"><code>$color-gray-20</code></template>
+                <template slot="property">$header-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$header-background-color-dark</template>
-                <template slot="default"><code>$color-gray-80</code></template>
+                <template slot="property">$header-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$header-variant-{variant}</template>
+                <template slot="default"><code>header-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$header-variants</template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $header-variant-light,
+    dark: $header-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">header-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function header-variant($variant) {
+    $header-variant-background: $variant;
+
+    $variant-map: (
+        background: $header-variant-background
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

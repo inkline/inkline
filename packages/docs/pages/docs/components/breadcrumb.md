@@ -179,6 +179,13 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="values"></template>
                 <template slot="default"></template>
             </api-table-row>
+            <api-table-row>
+                <template slot="property">variant</template>
+                <template slot="description">Sets the color variant of the breadcrumb component.</template>
+                <template slot="type"><code>String</code></template>
+                <template slot="values"><code>light</code>, <code>dark</code></template>
+                <template slot="default"><code>primary</code></template>
+            </api-table-row>
         </api-table>
     </i-tab>
     <i-tab type="slots">
@@ -216,6 +223,14 @@ Here you can find a list of the Sass variables you can use for the breadcrumb co
                 <template slot="default"><code>size-map($breadcrumb-padding-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$breadcrumb-item-padding-base</template>
+                <template slot="default"><code>$spacer</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$breadcrumb-item-padding</template>
+                <template slot="default"><code>size-map($breadcrumb-item-padding-base, $sizes, $size-multipliers)</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$breadcrumb-margin-bottom</template>
                 <template slot="default"><code>$spacer</code></template>
             </api-table-row>
@@ -224,47 +239,49 @@ Here you can find a list of the Sass variables you can use for the breadcrumb co
                 <template slot="default"><code>'/'</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$breadcrumb-plain-color-light</template>
-                <template slot="default"><code>$color-gray-60</code></template>
+                <template slot="property">$breadcrumb-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$breadcrumb-active-color-light</template>
-                <template slot="default"><code>$color-gray-80</code></template>
+                <template slot="property">$breadcrumb-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$breadcrumb-plain-color-dark</template>
-                <template slot="default"><code>$color-gray-60</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$breadcrumb-active-color-dark</template>
-                <template slot="default"><code>$color-gray-40</code></template>
+                <template slot="property">$breadcrumb-variant-{variant}</template>
+                <template slot="default"><code>breadcrumb-variant($color-{variant})</code></template>
             </api-table-row>
             <api-table-row>
                 <template slot="property">$breadcrumb-variants</template>
-                <template slot="default"><code>('brand', 'monochrome')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $breadcrumb-variant-light,
+    dark: $breadcrumb-variant-dark
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$breadcrumb-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$breadcrumb-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
-            </api-table-row>
-        </api-table>
-    </i-tab>
-</i-code> 
+                <template slot="function">breadcrumb-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function breadcrumb-variant($variant) {
+    $breadcrumb-variant-color: variant-color-by-luminance($variant, $breadcrumb-color-for-light-variant, $breadcrumb-color-for-dark-variant);
+    $breadcrumb-variant-color-active: variant-color-by-luminance($variant, darken($breadcrumb-variant-color, 15%), lighten($breadcrumb-variant-color, 15%));
 
-<i-code title="Breadcrumb Item" expanded>
-    <i-tab type="scss">
-        <api-table>
-            <api-table-row>
-                <template slot="property">$breadcrumb-item-padding-base</template>
-                <template slot="default"><code>$spacer</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$breadcrumb-item-padding</template>
-                <template slot="default"><code>size-map($breadcrumb-item-padding-base, $sizes, $size-multipliers)</code></template>
+    $variant-map: (
+        color: $breadcrumb-variant-color,
+        color-active: $breadcrumb-variant-color-active,
+    ) !default;
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

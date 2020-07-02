@@ -152,8 +152,47 @@ Here you can find a list of the Sass variables you can use for the hamburger men
                 <template slot="default"><code>1</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$hamburger-menu-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$hamburger-menu-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$hamburger-menu-variant-{variant}</template>
+                <template slot="default"><code>hamburger-menu-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$hamburger-menu-variants</template>
-                <template slot="default"><code>('monochrome')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $hamburger-menu-variant-light,
+    dark: $hamburger-menu-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">hamburger-menu-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function hamburger-menu-variant($variant) {
+    $hamburger-menu-variant-background: $variant;
+
+    $variant-map: (
+        background: $hamburger-menu-variant-background
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

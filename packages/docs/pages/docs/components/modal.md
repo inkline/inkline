@@ -406,8 +406,61 @@ Here you can find a list of the Sass variables you can use for the modal compone
                 <template slot="default"><code>size-map($modal-padding-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$modal-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$modal-variant-{variant}</template>
+                <template slot="default"><code>modal-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$modal-variants</template>
-                <template slot="default"><code>('brand', 'monochrome', 'state')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    primary: $modal-variant-primary,
+    secondary: $modal-variant-secondary,
+    light: $modal-variant-light,
+    dark: $modal-variant-dark,
+    info: $modal-variant-info,
+    success: $modal-variant-success,
+    warning: $modal-variant-warning,
+    danger: $modal-variant-danger
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">modal-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function modal-variant($variant) {
+    $modal-variant-color: variant-color-by-luminance($variant, $modal-color-for-light-variant, $modal-color-for-dark-variant);
+    $modal-variant-background: $variant;
+    $modal-variant-header-background: darken-lightness($modal-variant-background, 10%);
+    $modal-variant-footer-background: $modal-variant-background;
+    $modal-variant-border-color: darken-lightness($variant, 10%);
+
+    $variant-map: (
+        color: $modal-variant-color,
+        background: $modal-variant-background,
+        header-background: $modal-variant-header-background,
+        footer-background: $modal-variant-footer-background,
+        border-color: $modal-variant-border-color,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

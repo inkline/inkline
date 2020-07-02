@@ -169,6 +169,16 @@ Here you can find a list of the customization options you can use for the badge 
 ### Sass Variables
 Here you can find a list of the Sass variables you can use for the badge component. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
+The `{variant}` placeholder below can be one of the following: 
+- `primary`
+- `secondary`
+- `light`
+- `dark`
+- `info`
+- `success`
+- `warning`
+- `danger`
+
 <i-code title="Badge" expanded>
     <i-tab type="scss">
         <api-table>
@@ -205,16 +215,59 @@ Here you can find a list of the Sass variables you can use for the badge compone
                 <template slot="default"><code>10rem</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$badge-background-color-hover-darken</template>
+                <template slot="default"><code>10%</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$badge-variant-{variant}</template>
+                <template slot="default"><code>badge-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$badge-variants</template>
-                <template slot="default"><code>('brand', 'monochrome', 'state')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    primary: $badge-variant-primary,
+    secondary: $badge-variant-secondary,
+    light: $badge-variant-light,
+    dark: $badge-variant-dark,
+    info: $badge-variant-info,
+    success: $badge-variant-success,
+    warning: $badge-variant-warning,
+    danger: $badge-variant-danger
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$badge-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$badge-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
+                <template slot="function">badge-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function badge-variant($variant) {
+    $badge-variant-background: $variant;
+    $badge-variant-color: variant-color-by-luminance($variant, $badge-color-for-light-variant, $badge-color-for-dark-variant);
+
+    $variant-map: (
+        background: $badge-variant-background,
+        color: $badge-variant-color
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

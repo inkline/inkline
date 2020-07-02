@@ -311,9 +311,9 @@ The default size is set to `md`.
 <i-code title="Dropdown Sizes">
 <i-tab type="preview">
 <div>
-<i-dropdown>
+<i-dropdown size="sm">
     <i-button>Dropdown Small</i-button>
-    <i-dropdown-menu size="sm">
+    <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -322,9 +322,9 @@ The default size is set to `md`.
     </i-dropdown-menu>
 </i-dropdown>&nbsp;
 
-<i-dropdown>
+<i-dropdown size="md">
     <i-button>Dropdown Medium</i-button>
-    <i-dropdown-menu size="md">
+    <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -333,9 +333,9 @@ The default size is set to `md`.
     </i-dropdown-menu>
 </i-dropdown>&nbsp;
 
-<i-dropdown>
+<i-dropdown size="lg">
     <i-button>Dropdown Large</i-button>
-    <i-dropdown-menu size="lg">
+    <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -349,9 +349,9 @@ The default size is set to `md`.
 <i-tab type="html">
 
 ~~~html
-<i-dropdown>
+<i-dropdown size="sm">
     <i-button>Dropdown Small</i-button>
-    <i-dropdown-menu size="sm">
+    <i-dropdown-menu>
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item href="">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -361,9 +361,9 @@ The default size is set to `md`.
 </i-dropdown>
 ~~~
 ~~~html
-<i-dropdown>
+<i-dropdown size="md">
     <i-button>Dropdown Medium</i-button>
-    <i-dropdown-menu size="md">
+    <i-dropdown-menu>
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item href="">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -373,9 +373,9 @@ The default size is set to `md`.
 </i-dropdown>
 ~~~
 ~~~html
-<i-dropdown>
+<i-dropdown size="lg">
     <i-button>Dropdown Large</i-button>
-    <i-dropdown-menu size="lg">
+    <i-dropdown-menu>
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item href="">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -390,14 +390,14 @@ The default size is set to `md`.
 
 
 ### Variants
-Inkline includes two predefined dropdown styles, each serving its own semantic purpose. You can set the style of a `<i-dropdown-menu>` using the `variant` property, which can have a value of `light` or `dark`. By default, dropdown menus use the `light` variant.
+Inkline includes two predefined dropdown styles, each serving its own semantic purpose. You can set the style of a `<i-dropdown>` using the `variant` property, which can have a value of `light` or `dark`. By default, dropdown menus use the `light` variant.
 
 <i-code title="Dropdown Variants">
 <i-tab type="preview">
 <div>
-<i-dropdown>
+<i-dropdown variant="light">
     <i-button variant="light">Dropdown Light</i-button>
-    <i-dropdown-menu variant="light">
+    <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -406,9 +406,9 @@ Inkline includes two predefined dropdown styles, each serving its own semantic p
     </i-dropdown-menu>
 </i-dropdown>&nbsp;
 
-<i-dropdown>
+<i-dropdown variant="dark">
     <i-button variant="dark">Dropdown Dark</i-button>
-    <i-dropdown-menu variant="dark">
+    <i-dropdown-menu>
         <i-dropdown-item href onclick="return false;">Action</i-dropdown-item>
         <i-dropdown-item href onclick="return false;">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -422,9 +422,9 @@ Inkline includes two predefined dropdown styles, each serving its own semantic p
 <i-tab type="html">
 
 ~~~html
-<i-dropdown>
+<i-dropdown variant="light">
     <i-button variant="light">Dropdown Light</i-button>
-    <i-dropdown-menu variant="light">
+    <i-dropdown-menu>
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item href="">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -435,9 +435,9 @@ Inkline includes two predefined dropdown styles, each serving its own semantic p
 ~~~
 
 ~~~html
-<i-dropdown>
+<i-dropdown variant="dark">
     <i-button variant="dark">Dropdown Dark</i-button>
-    <i-dropdown-menu variant="dark">
+    <i-dropdown-menu>
         <i-dropdown-item href="">Action</i-dropdown-item>
         <i-dropdown-item href="">Another action</i-dropdown-item>
         <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
@@ -740,16 +740,58 @@ Here you can find a list of the Sass variables you can use for the dropdown comp
                 <template slot="default"><code>size-map($dropdown-divider-margin-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$dropdown-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$dropdown-variant-{variant}</template>
+                <template slot="default"><code>dropdown-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$dropdown-variants</template>
-                <template slot="default"><code>('monochrome-white')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $dropdown-variant-light,
+    dark: $dropdown-variant-dark
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$dropdown-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$dropdown-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
+                <template slot="function">dropdown-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function dropdown-variant($variant) {
+    $dropdown-variant-color: variant-color-by-luminance($variant, $dropdown-color-for-light-variant, $dropdown-color-for-dark-variant);
+    $dropdown-variant-color-disabled: variant-color-by-luminance($variant, darken-lightness($dropdown-color-for-light-variant, 40%), lighten-lightness($dropdown-color-for-dark-variant, 40%));
+    $dropdown-variant-background: $variant;
+    $dropdown-variant-background-hover: variant-color-by-luminance($variant, darken-lightness($variant, 12%), darken-lightness($variant, 4%));
+    $dropdown-variant-background-active: variant-color-by-luminance($variant, darken-lightness($variant, 24%), darken-lightness($variant, 8%));
+    $dropdown-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+    $dropdown-variant-divider-background: $dropdown-variant-border-color;
+
+    $variant-map: (
+        color: $dropdown-variant-color,
+        color-disabled: $dropdown-variant-color-disabled,
+        background: $dropdown-variant-background,
+        background-hover: $dropdown-variant-background-hover,
+        border-color: $dropdown-variant-border-color,
+        divider-background: $dropdown-variant-divider-background,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>
