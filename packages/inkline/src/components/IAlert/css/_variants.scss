@@ -1,52 +1,23 @@
 //
 // Alert variants
 //
-@each $variant-name, $variant in variants('alert') {
-    $_background-color-light: mix($variant, $body-background-light, $alert-background-mix-percentage);
-    $_border-color-light: darken($_background-color-light, $alert-border-darken-lighten-percentage);
-    $_color-light: darken($variant, $alert-color-darken-lighten-percentage);
-    $_link-color-light: darken($variant, $alert-link-color-darken-lighten-percentage);
-    $_code-background-color-light: lighten($_background-color-light, $alert-code-background-color-darken-lighten-percentage);
-    $_code-color-light: darken($_color-light, $alert-code-color-darken-lighten-percentage);
-
-    $_background-color-dark: mix($variant, $body-background-dark, $alert-background-mix-percentage);
-    $_border-color-dark: lighten($_background-color-dark, $alert-border-darken-lighten-percentage);
-    $_color-dark: lighten($variant, $alert-color-darken-lighten-percentage);
-    $_link-color-dark: lighten($variant, $alert-link-color-darken-lighten-percentage);
-    $_code-background-color-dark: darken($_background-color-dark, $alert-code-background-color-darken-lighten-percentage);
-    $_code-color-dark: lighten($_color-dark, $alert-code-color-darken-lighten-percentage);
-
+@each $variant-name, $variant in $alert-variants {
     .alert.-#{$variant-name} {
-        border-color: $_border-color-light;
-        background-color: $_background-color-light;
-        color: $_color-light;
+        border-color: map-get($variant, 'border-color');
+        background: map-get($variant, 'background');
+        color: map-get($variant, 'color');
 
         a {
-            color: $_link-color-light;
+            color: map-get($variant, 'link-color');
         }
 
         > .icon {
-            border-color: rgba(variant-color-by-luminance($variant, $alert-variant-color-light, $alert-variant-color-dark), 0.33);
+            border-color: map-get($variant, 'border-color');
         }
 
         code {
-            background-color: $_code-background-color-light;
-            color: $_code-color-light;
-        }
-    }
-
-    .inkline.-dark .alert.-#{$variant-name} {
-        border-color: $_border-color-dark;
-        background-color: $_background-color-dark;
-        color: $_color-dark;
-
-        a {
-            color: $_link-color-dark;
-        }
-
-        code {
-            background-color: $_code-background-color-dark;
-            color: $_code-color-dark;
+            background: map-get($variant, 'code-background');
+            color: map-get($variant, 'code-color');
         }
     }
 }

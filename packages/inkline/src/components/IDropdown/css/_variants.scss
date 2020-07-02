@@ -1,0 +1,44 @@
+//
+// Dropdown Menu variants
+//
+@each $variant-name, $variant in $dropdown-variants {
+    .dropdown.-#{$variant-name} {
+        ::v-deep > .menu {
+            color: map-get($variant, 'color');
+            background-color: map-get($variant, 'background');
+            border-color: map-get($variant, 'border-color');
+
+            @include popup-arrow-variant(('background': map-get($variant, 'background'), 'border-color': map-get($variant, 'border-color')));
+
+            .dropdown > .item,
+            .item[href],
+            .item[to] {
+                &:not(.-disabled) {
+                    &:hover,
+                    &:focus {
+                        background: map-get($variant, 'background-hover');
+                    }
+                }
+
+                &.-active,
+                &:active {
+                    background: map-get($variant, 'background-active');
+                }
+            }
+
+            .dropdown > .item,
+            .item {
+                color: map-get($variant, 'color');
+
+                &.-disabled,
+                &:disabled {
+                    color: map-get($variant, 'color-disabled');
+                }
+            }
+
+            .divider {
+                background-color: map-get($variant, 'divider-background');
+            }
+        }
+    }
+}

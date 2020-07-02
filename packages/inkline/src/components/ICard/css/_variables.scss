@@ -11,13 +11,28 @@ $card-border-radius: $border-radius !default;
 $card-padding-base: spacers('1') !default;
 $card-padding: size-map($card-padding-base, $sizes, $size-multipliers) !default;
 
-$card-background-darken: rgba(0, 0, 0, 0.1) !default;
-
 //
 // Variants
 //
-$card-variants: ('basic', 'brand', 'monochrome-white', 'neutral', 'state') !default;
-$card-variant-color-light: $variant-color-light !default;
-$card-variant-color-dark: $variant-color-dark !default;
+$card-color-for-light-variant: $color-for-light-variant !default;
+$card-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('card': add-variant($card-variants, $color-groups)));
+$card-variant-primary: card-variant($color-primary) !default;
+$card-variant-secondary: card-variant($color-secondary) !default;
+$card-variant-light: card-variant($color-white) !default;
+$card-variant-dark: card-variant($color-dark) !default;
+$card-variant-info: card-variant($color-info) !default;
+$card-variant-success: card-variant($color-success) !default;
+$card-variant-warning: card-variant($color-warning) !default;
+$card-variant-danger: card-variant($color-danger) !default;
+
+$card-variants: (
+    primary: $card-variant-primary,
+    secondary: $card-variant-secondary,
+    light: $card-variant-light,
+    dark: $card-variant-dark,
+    info: $card-variant-info,
+    success: $card-variant-success,
+    warning: $card-variant-warning,
+    danger: $card-variant-danger,
+) !default;

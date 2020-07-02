@@ -1,0 +1,16 @@
+//
+// Breadcrumb variants
+//
+@each $variant-name, $variant in $breadcrumb-variants {
+    .breadcrumb.-#{$variant-name} {
+        ::v-deep > .item {
+            a:not([href]) {
+                color: map-get($variant, 'color');
+            }
+
+            &.-active a {
+                color: map-get($variant, 'color-active');
+            }
+        }
+    }
+}

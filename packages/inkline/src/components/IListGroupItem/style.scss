@@ -1,7 +1,6 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
 @import '../IListGroup/css/_variables';
-@import 'css/_sizes';
 
 /**
  * List Group Item
@@ -42,7 +41,5 @@
             color: $list-group-item-active-color;
             border-bottom-color: $list-group-item-active-border-color;
         }
-
-        @include list-group-item-size-variant('md');
     }
 }

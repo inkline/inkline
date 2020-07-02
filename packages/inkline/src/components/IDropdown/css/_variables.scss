@@ -6,47 +6,32 @@ $dropdown-font-size: $font-size !default;
 $dropdown-font-weight: font-weight('normal') !default;
 $dropdown-line-height: $line-height !default;
 
-@function dropdown-font-size($key) {
-    @return map_get($dropdown-font-size, $key);
-}
-
 $dropdown-margin: spacers('1/2') !default;
 
 $dropdown-border-width: $border-width !default;
 $dropdown-border-radius: $border-radius !default;
-
-@function dropdown-border-radius($key) {
-    @return map_get($dropdown-border-radius, $key);
-}
 
 $dropdown-min-width: 200px !default;
 
 $dropdown-padding-base: spacers('1/2') 0 !default;
 $dropdown-padding: size-map($dropdown-padding-base, $sizes, $size-multipliers) !default;
 
-@function dropdown-padding($key) {
-    @return map_get($dropdown-padding, $key);
-}
-
 $dropdown-item-padding-base: spacers('1/2') spacers('1') !default;
 $dropdown-item-padding: size-map($dropdown-item-padding-base, $sizes, $size-multipliers) !default;
-
-@function dropdown-item-padding($key) {
-    @return map_get($dropdown-item-padding, $key);
-}
 
 $dropdown-divider-margin-base: spacers('1/2') 0 !default;
 $dropdown-divider-margin: size-map($dropdown-divider-margin-base, $sizes, $size-multipliers) !default;
 
-@function dropdown-divider-margin($size) {
-    @return map_get($dropdown-divider-margin, $size);
-}
-
 //
 // Variants
 //
-$dropdown-variants: ('monochrome-white') !default;
-$dropdown-variant-color-light: $variant-color-light !default;
-$dropdown-variant-color-dark: $variant-color-dark !default;
+$dropdown-color-for-light-variant: $color-for-light-variant !default;
+$dropdown-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('dropdown': add-variant($dropdown-variants, $color-groups)));
+$dropdown-variant-light: dropdown-variant($color-white) !default;
+$dropdown-variant-dark: dropdown-variant($color-dark) !default;
+
+$dropdown-variants: (
+    light: $dropdown-variant-light,
+    dark: $dropdown-variant-dark
+) !default;

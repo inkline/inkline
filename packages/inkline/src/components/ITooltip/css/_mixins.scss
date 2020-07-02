@@ -1,0 +1,13 @@
+@function tooltip-variant($variant) {
+    $tooltip-variant-color: variant-color-by-luminance($variant, $tooltip-color-for-light-variant, $tooltip-color-for-dark-variant);
+    $tooltip-variant-background: $variant;
+    $tooltip-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+
+    $variant-map: (
+        color: $tooltip-variant-color,
+        background: $tooltip-variant-background,
+        border-color: $tooltip-variant-border-color,
+    );
+
+    @return $variant-map;
+}

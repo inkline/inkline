@@ -1,0 +1,11 @@
+@function sidebar-variant($variant) {
+    $sidebar-variant-color: variant-color-by-luminance($variant, $sidebar-color-for-light-variant, $sidebar-color-for-dark-variant);
+    $sidebar-variant-background: $variant;
+
+    $variant-map: (
+        color: $sidebar-variant-color,
+        background: $sidebar-variant-background,
+    );
+
+    @return $variant-map;
+}

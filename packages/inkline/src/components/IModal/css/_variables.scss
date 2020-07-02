@@ -27,6 +27,25 @@ $modal-padding: size-map($modal-padding-base, $sizes, $size-multipliers) !defaul
 //
 // Variants
 //
-$modal-variants: ('brand', 'monochrome', 'state') !default;
+$modal-color-for-light-variant: $color-for-light-variant !default;
+$modal-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('modal': add-variant($modal-variants, $color-groups)));
+$modal-variant-primary: modal-variant($color-primary) !default;
+$modal-variant-secondary: modal-variant($color-secondary) !default;
+$modal-variant-light: modal-variant($color-white) !default;
+$modal-variant-dark: modal-variant($color-dark) !default;
+$modal-variant-info: modal-variant($color-info) !default;
+$modal-variant-success: modal-variant($color-success) !default;
+$modal-variant-warning: modal-variant($color-warning) !default;
+$modal-variant-danger: modal-variant($color-danger) !default;
+
+$modal-variants: (
+    primary: $modal-variant-primary,
+    secondary: $modal-variant-secondary,
+    light: $modal-variant-light,
+    dark: $modal-variant-dark,
+    info: $modal-variant-info,
+    success: $modal-variant-success,
+    warning: $modal-variant-warning,
+    danger: $modal-variant-danger,
+) !default;

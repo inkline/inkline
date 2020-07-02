@@ -1,0 +1,23 @@
+//
+// Dropdown Menu variant mixin
+//
+@function dropdown-variant($variant) {
+    $dropdown-variant-color: variant-color-by-luminance($variant, $dropdown-color-for-light-variant, $dropdown-color-for-dark-variant);
+    $dropdown-variant-color-disabled: variant-color-by-luminance($variant, darken-lightness($dropdown-color-for-light-variant, 40%), lighten-lightness($dropdown-color-for-dark-variant, 40%));
+    $dropdown-variant-background: $variant;
+    $dropdown-variant-background-hover: variant-color-by-luminance($variant, darken-lightness($variant, 12%), darken-lightness($variant, 4%));
+    $dropdown-variant-background-active: variant-color-by-luminance($variant, darken-lightness($variant, 24%), darken-lightness($variant, 8%));
+    $dropdown-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+    $dropdown-variant-divider-background: $dropdown-variant-border-color;
+
+    $variant-map: (
+        color: $dropdown-variant-color,
+        color-disabled: $dropdown-variant-color-disabled,
+        background: $dropdown-variant-background,
+        background-hover: $dropdown-variant-background-hover,
+        border-color: $dropdown-variant-border-color,
+        divider-background: $dropdown-variant-divider-background,
+    );
+
+    @return $variant-map;
+}

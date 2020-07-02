@@ -1,8 +1,6 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
 @import '../INavbar/css/_variables';
-@import 'css/_sizes';
-@import 'css/_variants';
 
 /**
  * Navbar Brand
@@ -29,7 +27,4 @@
         margin-top: 0;
         margin-bottom: 0;
     }
-
-    @include navbar-brand-color-variant(variant-element('navbar', 'light'));
-    @include navbar-size-variant('md');
 }

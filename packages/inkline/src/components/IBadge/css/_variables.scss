@@ -6,22 +6,42 @@ $badge-font-size: (
     'md': 75%,
     'lg': 85%,
 ) !default;
-$badge-font-weight: font-weight(bold) !default;
+
+$badge-font-weight: $font-weight-bold !default;
 $badge-line-height: $line-height !default;
 
 $badge-border-width: $border-width !default;
 $badge-border-radius: $border-radius !default;
 
-$badge-padding-base: spacers('1/2') spacers('2/3') !default;
+$badge-padding-base: $spacer-1-2 $spacer-2-3 !default;
 $badge-padding: size-map($badge-padding-base, $sizes, $size-multipliers) !default;
 
 $badge-pill-border-radius: 10rem !default;
 
+$badge-background-color-hover-darken: 10% !default;
+
 //
 // Variants
 //
-$badge-variants: ('brand', 'monochrome', 'state') !default;
-$badge-variant-color-light: $variant-color-light !default;
-$badge-variant-color-dark: $variant-color-dark !default;
+$badge-color-for-light-variant: $color-for-light-variant !default;
+$badge-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('badge': add-variant($badge-variants, $color-groups)));
+$badge-variant-primary: badge-variant($color-primary) !default;
+$badge-variant-secondary: badge-variant($color-secondary) !default;
+$badge-variant-light: badge-variant($color-light) !default;
+$badge-variant-dark: badge-variant($color-dark) !default;
+$badge-variant-info: badge-variant($color-info) !default;
+$badge-variant-success: badge-variant($color-success) !default;
+$badge-variant-warning: badge-variant($color-warning) !default;
+$badge-variant-danger: badge-variant($color-danger) !default;
+
+$badge-variants: (
+    primary: $badge-variant-primary,
+    secondary: $badge-variant-secondary,
+    light: $badge-variant-light,
+    dark: $badge-variant-dark,
+    info: $badge-variant-info,
+    success: $badge-variant-success,
+    warning: $badge-variant-warning,
+    danger: $badge-variant-danger,
+) !default;

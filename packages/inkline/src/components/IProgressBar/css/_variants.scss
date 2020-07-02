@@ -1,9 +1,11 @@
 //
 // Progress variants
 //
-@each $variant-name, $variant in variants('progress-bar') {
-    .progress > .bar.-#{$variant-name} {
-        color: variant-color-by-luminance($variant, $progress-bar-variant-color-light, $progress-bar-variant-color-dark);
-        background-color: $variant;
+@each $variant-name, $variant in $progress-bar-variants {
+    .progress {
+        > .bar.-#{$variant-name} {
+            color: map-get($variant, 'color');
+            background: map-get($variant, 'background');
+        }
     }
 }

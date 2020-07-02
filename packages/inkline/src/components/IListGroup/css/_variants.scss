@@ -2,19 +2,17 @@
 // Button variants
 // Add the required color variants to all button variations
 //
-@each $variant-name, $variant in variants('list-group') {
-    $_background-color: map_get($variant, 'background-color');
-    $_border-color: map_get($variant, 'border-color');
-
+@each $variant-name, $variant in $list-group-variants {
     .list-group.-#{$variant-name} {
-        background-color: $_background-color;
+        background-color: map-get($variant, 'background');
+        color: map-get($variant, 'color');
 
         &.-bordered {
-            border-color: $_border-color;
+            border-color: map-get($variant, 'border-color');
         }
 
         > .item {
-            border-bottom-color: $_border-color;
+            border-bottom-color: map-get($variant, 'border-color');
         }
     }
 }

@@ -14,48 +14,16 @@ $toggle-indicator-size: size-map($toggle-indicator-size-base, $sizes, $size-mult
 $toggle-indicator-border-radius-base: $toggle-indicator-size-base !default;
 $toggle-indicator-border-radius: size-map($toggle-indicator-border-radius-base, $sizes, $size-multipliers) !default;
 
-$toggle-background-light: $color-gray-40 !default;
-$toggle-indicator-background-light: $color-white !default;
-$toggle-background-active-light: $color-primary !default;
-$toggle-indicator-background-active-light: $color-white !default;
-$toggle-background-disabled-light: $color-gray-40 !default;
-$toggle-indicator-background-disabled-light: $color-gray-20 !default;
-$toggle-background-active-disabled-light: mix($toggle-background-active-light, $toggle-background-disabled-light, 25%) !default;
-$toggle-indicator-background-active-disabled-light: $color-gray-20 !default;
-
-$toggle-background-dark: colors('dark') !default;
-$toggle-indicator-background-dark: $color-white !default;
-$toggle-background-active-dark: $color-primary !default;
-$toggle-indicator-background-active-dark: $color-white !default;
-$toggle-background-disabled-dark: $color-gray-60 !default;
-$toggle-indicator-background-disabled-dark: $color-gray-20 !default;
-$toggle-background-active-disabled-dark: mix($toggle-background-active-dark, $toggle-background-disabled-dark, 25%) !default;
-$toggle-indicator-background-active-disabled-dark: $color-gray-20 !default;
-
 //
 // Themes
 //
-$toggle-variants: (
-    'light': (
-        'background': $toggle-background-light,
-        'indicator-background': $toggle-indicator-background-light,
-        'background-active': $toggle-background-active-light,
-        'indicator-background-active': $toggle-indicator-background-active-light,
-        'background-disabled': $toggle-background-disabled-light,
-        'indicator-background-disabled': $toggle-indicator-background-disabled-light,
-        'background-active-disabled': $toggle-background-active-disabled-light,
-        'indicator-background-active-disabled': $toggle-indicator-background-active-disabled-light,
-    ),
-    'dark': (
-        'background': $toggle-background-dark,
-        'indicator-background': $toggle-indicator-background-dark,
-        'background-active': $toggle-background-active-dark,
-        'indicator-background-active': $toggle-indicator-background-active-dark,
-        'background-disabled': $toggle-background-disabled-dark,
-        'indicator-background-disabled': $toggle-indicator-background-disabled-dark,
-        'background-active-disabled': $toggle-background-active-disabled-dark,
-        'indicator-background-active-disabled': $toggle-indicator-background-active-disabled-dark,
-    ),
-) !default;
+$toggle-color-for-light-variant: $color-for-light-variant !default;
+$toggle-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('toggle': $toggle-variants));
+$toggle-variant-light: toggle-variant($color-gray-40) !default;
+$toggle-variant-dark: toggle-variant($color-dark) !default;
+
+$toggle-variants: (
+    light: $toggle-variant-light,
+    dark: $toggle-variant-dark
+) !default;

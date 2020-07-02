@@ -1,0 +1,11 @@
+@function progress-variant($variant) {
+    $progress-variant-color: variant-color-by-luminance($variant, $progress-color-for-light-variant, $progress-color-for-dark-variant);
+    $progress-variant-background: $variant;
+
+    $variant-map: (
+        color: $progress-variant-color,
+        background: $progress-variant-background,
+    );
+
+    @return $variant-map;
+}

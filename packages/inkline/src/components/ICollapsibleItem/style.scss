@@ -6,7 +6,6 @@
 @import '../ICollapsible/css/_variables';
 @import '../IIcon/css/_variables';
 @import '../IIcon/css/_mixins';
-@import 'css/_variants';
 
 .collapsible {
     > .item {
@@ -66,6 +65,4 @@
             }
         }
     }
-
-    @extend .collapsible.-light;
 }

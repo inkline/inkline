@@ -26,15 +26,13 @@ $list-group-item-active-border-color: darken-lightness(colors('primary'), 6%) !d
 //
 // Variants
 //
-$list-group-variants: (
-    'light': (
-        'background-color': $list-group-background-color-light,
-        'border-color': $list-group-border-color-light
-    ),
-    'dark': (
-        'background-color': $list-group-background-color-dark,
-        'border-color': $list-group-border-color-dark
-    )
-) !default;
+$list-group-color-for-light-variant: $color-for-light-variant !default;
+$list-group-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('list-group': $list-group-variants));
+$list-group-variant-light: list-group-variant($color-white) !default;
+$list-group-variant-dark: list-group-variant($color-gray-90) !default;
+
+$list-group-variants: (
+    light: $list-group-variant-light,
+    dark: $list-group-variant-dark
+) !default;

@@ -3,6 +3,7 @@
  */
 @import '../../css/config/index';
 @import '../../css/mixins/index';
+@import 'css/mixins';
 @import 'css/variables';
 @import 'css/variants';
 @import 'css/sizes';
@@ -15,9 +16,11 @@
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
-    border-width: $alert-border-width;
     border-style: solid;
-    transition: background-color $transition-duration $transition-easing, color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
+    border-width: $alert-border-width;
+    transition-property: background-color, color, border-color;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-easing;
 
     // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom.
@@ -25,7 +28,9 @@
 
     a {
         font-weight: 600;
-        transition: color $transition-duration $transition-easing;
+        transition-property: color;
+        transition-duration: $transition-duration;
+        transition-timing-function: $transition-easing;
     }
 
     > .icon {

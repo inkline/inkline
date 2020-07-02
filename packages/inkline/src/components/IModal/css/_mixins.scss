@@ -1,0 +1,17 @@
+@function modal-variant($variant) {
+    $modal-variant-color: variant-color-by-luminance($variant, $modal-color-for-light-variant, $modal-color-for-dark-variant);
+    $modal-variant-background: $variant;
+    $modal-variant-header-background: darken-lightness($modal-variant-background, 10%);
+    $modal-variant-footer-background: $modal-variant-background;
+    $modal-variant-border-color: darken-lightness($variant, 10%);
+
+    $variant-map: (
+        color: $modal-variant-color,
+        background: $modal-variant-background,
+        header-background: $modal-variant-header-background,
+        footer-background: $modal-variant-footer-background,
+        border-color: $modal-variant-border-color,
+    );
+
+    @return $variant-map;
+}

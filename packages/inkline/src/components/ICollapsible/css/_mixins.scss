@@ -1,0 +1,15 @@
+@function collapsible-variant($variant) {
+    $collapsible-variant-background: $variant;
+    $collapsible-variant-color: variant-color-by-luminance($variant, $collapsible-color-for-light-variant, $collapsible-color-for-dark-variant);
+    $collapsible-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, darken($border-color-light, 10%));
+    $collapsible-variant-body-background: variant-color-by-luminance($variant, $color-gray-90, $color-white);
+
+    $variant-map: (
+        background: $collapsible-variant-background,
+        color: $collapsible-variant-color,
+        border-color: $collapsible-variant-border-color,
+        body-background: $collapsible-variant-body-background
+    );
+
+    @return $variant-map;
+}

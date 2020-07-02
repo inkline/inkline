@@ -1,9 +1,37 @@
 //
 // Navbar variants
 //
-@each $variant-name, $variant in variants('navbar') {
+@each $variant-name, $variant in $navbar-variants {
     .navbar.-#{$variant-name} {
-        color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
-        background-color: $variant;
+        color: map-get($variant, 'color');
+        background: map-get($variant, 'background');
+
+        ::v-deep .brand {
+            color: map-get($variant, 'color');
+        }
+
+        ::v-deep .navbar-items {
+            .item {
+                color: map-get($variant, 'item-color');
+
+                &.-active,
+                &.-focused,
+                &:focus,
+                &.-hovered,
+                &:hover {
+                    color: map-get($variant, 'item-color-active');
+                }
+            }
+        }
+
+        &.-collapsed {
+            ::v-deep .navbar-items {
+                background: map-get($variant, 'collapsed-item-background');
+
+                .item:hover {
+                    background: map-get($variant, 'collapsed-item-background-hover');
+                }
+            }
+        }
     }
 }

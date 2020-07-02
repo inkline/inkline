@@ -1,0 +1,27 @@
+@function toggle-variant($variant) {
+    $toggle-variant-color: variant-color-by-luminance($variant, $toggle-color-for-light-variant, $toggle-color-for-dark-variant);
+    $toggle-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+    $toggle-variant-background: $variant;
+    $toggle-variant-background-active: $color-primary !default;
+    $toggle-variant-background-disabled: variant-color-by-luminance($variant, $color-gray-60, $color-gray-40) !default;
+    $toggle-variant-background-active-disabled: mix($toggle-variant-background-active, $toggle-variant-background-disabled, 25%) !default;
+    $toggle-variant-indicator-background: $color-white !default;
+    $toggle-variant-indicator-background-active: $toggle-variant-indicator-background !default;
+    $toggle-variant-indicator-background-disabled: $color-gray-20 !default;
+    $toggle-variant-indicator-background-active-disabled: $toggle-variant-indicator-background-disabled !default;
+
+    $variant-map: (
+        color: $toggle-variant-color,
+        background: $toggle-variant-background,
+        border-color: $toggle-variant-border-color,
+        background-active: $toggle-variant-background-active,
+        background-disabled: $toggle-variant-background-disabled,
+        background-active-disabled: $toggle-variant-background-active-disabled,
+        indicator-background: $toggle-variant-indicator-background,
+        indicator-background-active: $toggle-variant-indicator-background-active,
+        indicator-background-disabled: $toggle-variant-indicator-background-disabled,
+        indicator-background-active-disabled: $toggle-variant-indicator-background-active-disabled,
+    );
+
+    @return $variant-map;
+}

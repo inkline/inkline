@@ -3,6 +3,7 @@
  */
 @import '../../css/config/index';
 @import '../../css/mixins/index';
+@import 'css/_mixins';
 @import 'css/_variables';
 @import 'css/_variants';
 
@@ -15,6 +16,13 @@
 
     &.-unstyled {
         border: 0;
+    }
+
+    ::v-deep > .item {
+        &:last-child > .body {
+            border-bottom-left-radius: $collapsible-border-radius;
+            border-bottom-right-radius: $collapsible-border-radius;
+        }
     }
 
     @extend .collapsible.-light;

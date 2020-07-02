@@ -17,6 +17,13 @@ $tooltip-padding: size-map($tooltip-padding-base, $sizes, $size-multipliers) !de
 //
 // Variants
 //
-$tooltip-variants: ('monochrome-white') !default;
+$tooltip-color-for-light-variant: $color-for-light-variant !default;
+$tooltip-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('tooltip': add-variant($tooltip-variants, $color-groups)));
+$tooltip-variant-light: tooltip-variant($color-white) !default;
+$tooltip-variant-dark: tooltip-variant($color-dark) !default;
+
+$tooltip-variants: (
+    light: $tooltip-variant-light,
+    dark: $tooltip-variant-dark
+) !default;

@@ -1,10 +1,10 @@
 //
 // Loading spinner variants
 //
-@each $variant-name, $variant in variants('loader') {
+@each $variant-name, $variant in $loader-variants {
     .loader.-#{$variant-name} {
         > .loader-item {
-            background-color: $variant;
+            background: map-get($variant, 'background');
         }
     }
 }

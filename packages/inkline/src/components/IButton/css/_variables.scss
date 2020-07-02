@@ -8,10 +8,10 @@ $button-line-height: $line-height !default;
 $button-border-width: $border-width !default;
 $button-border-radius: $border-radius !default;
 
-$button-padding-base: spacers('1/2') spacers('1') !default;
+$button-padding-base: spacers('1/2') $spacer !default;
 $button-padding: size-map($button-padding-base, $sizes, $size-multipliers) !default;
 
-$button-circle-size-base: spacers('1') * 1.6 + map_get($button-font-size, 'md') !default;
+$button-circle-size-base: $spacer * 1.6 + map_get($button-font-size, 'md') !default;
 $button-circle-size: size-map($button-circle-size-base, $sizes, $size-multipliers) !default;
 
 $button-margin: $spacer !default;
@@ -26,10 +26,35 @@ $button-link-color: $link-color !default;
 $button-link-disabled-color: $text-muted !default;
 
 //
-// Themes
+// Variants
 //
-$button-variants: ('brand', 'monochrome', 'state', 'social') !default;
-$button-variant-color-light: $variant-color-light !default;
-$button-variant-color-dark: $variant-color-dark !default;
+$button-color-for-light-variant: $color-for-light-variant !default;
+$button-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('button': add-variant($button-variants, $color-groups)));
+$button-variant-primary: button-variant($color-primary) !default;
+$button-variant-secondary: button-variant($color-secondary) !default;
+$button-variant-light: button-variant($color-light) !default;
+$button-variant-dark: button-variant($color-dark) !default;
+$button-variant-info: button-variant($color-info) !default;
+$button-variant-success: button-variant($color-success) !default;
+$button-variant-warning: button-variant($color-warning) !default;
+$button-variant-danger: button-variant($color-danger) !default;
+$button-variant-facebook: button-variant($color-facebook) !default;
+$button-variant-google: button-variant($color-google) !default;
+$button-variant-twitter: button-variant($color-twitter) !default;
+$button-variant-github: button-variant($color-github) !default;
+
+$button-variants: (
+    primary: $button-variant-primary,
+    secondary: $button-variant-secondary,
+    light: $button-variant-light,
+    dark: $button-variant-dark,
+    info: $button-variant-info,
+    success: $button-variant-success,
+    warning: $button-variant-warning,
+    danger: $button-variant-danger,
+    facebook: $button-variant-facebook,
+    google: $button-variant-google,
+    twitter: $button-variant-twitter,
+    github: $button-variant-github
+) !default;

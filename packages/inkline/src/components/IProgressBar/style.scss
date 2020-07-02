@@ -4,16 +4,19 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
 @import '../IProgress/css/_variables';
+@import 'css/_mixins';
 @import 'css/_variables';
 @import 'css/_variants';
 
-.progress > .bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    white-space: nowrap;
-    height: 100%;
+.progress {
+    > .bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+        height: 100%;
 
-    @extend .bar.-primary;
+        @extend .bar.-primary;
+    }
 }

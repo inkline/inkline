@@ -1,0 +1,37 @@
+@function button-variant($variant) {
+    $button-variant-background: $variant !default;
+    $button-variant-background-hover: darken-lightness($button-variant-background, $button-darken-percentage-hover) !default;
+    $button-variant-background-active: darken-lightness($button-variant-background, $button-darken-percentage-active) !default;
+    $button-variant-border-color: $button-variant-background !default;
+    $button-variant-border-color-hover: darken-lightness($button-variant-border-color, $button-darken-percentage-hover) !default;
+    $button-variant-color: variant-color-by-luminance($button-variant-background, $button-color-for-light-variant, $button-color-for-dark-variant) !default;
+    $button-variant-link-color: $button-variant-background !default;
+    $button-variant-link-color-active: $button-variant-background-hover !default;
+    $button-variant-outline-color: $button-variant-background !default;
+    $button-variant-outline-color-hover: $button-variant-color !default;
+    $button-variant-outline-background: transparent !default;
+    $button-variant-outline-background-hover: $button-variant-background-hover !default;
+    $button-variant-outline-background-active: $button-variant-background-active !default;
+    $button-variant-outline-border-color: $button-variant-border-color !default;
+    $button-variant-outline-border-color-hover: $button-variant-border-color-hover !default;
+
+    $variant-map: (
+        background: $button-variant-background,
+        background-hover: $button-variant-background-hover,
+        background-active: $button-variant-background-active,
+        border-color: $button-variant-border-color,
+        border-color-hover: $button-variant-border-color-hover,
+        color: $button-variant-color,
+        link-color: $button-variant-link-color,
+        link-color-active: $button-variant-link-color-active,
+        outline-color: $button-variant-outline-color,
+        outline-color-hover: $button-variant-outline-color-hover,
+        outline-background: $button-variant-outline-background,
+        outline-background-hover: $button-variant-outline-background-hover,
+        outline-background-active: $button-variant-outline-background-active,
+        outline-border-color: $button-variant-outline-border-color,
+        outline-border-color-hover: $button-variant-outline-border-color-hover,
+    );
+
+    @return $variant-map;
+}

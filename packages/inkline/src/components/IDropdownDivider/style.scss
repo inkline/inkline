@@ -1,8 +1,5 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
-@import '../IDropdownMenu/css/_variables';
-@import 'css/_sizes';
-@import 'css/_variants';
 
 /*
  * Dropdown Divider
@@ -12,7 +9,4 @@
     height: 1px;
     width: 100%;
     clear: both;
-
-    @include dropdown-divider-color-variant(variant-element('dropdown', 'light'));
-    @include dropdown-divider-size-variant('md');
 }

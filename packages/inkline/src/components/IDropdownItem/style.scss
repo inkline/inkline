@@ -1,8 +1,5 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
-@import '../IDropdownMenu/css/_variables';
-@import 'css/_sizes';
-@import 'css/_variants';
 
 /**
  * Dropdown Item
@@ -44,7 +41,4 @@
     .item[to] {
         cursor: pointer;
     }
-
-    @include dropdown-item-color-variant(variant-element('dropdown', 'light'));
-    @include dropdown-item-variant-size('md');
 }

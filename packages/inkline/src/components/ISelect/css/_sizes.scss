@@ -2,9 +2,11 @@
 // Select sizes
 //
 @each $size in $sizes {
-    .form.-#{$size} .select ::v-deep .menu,
-    .form-group.-#{$size} .select ::v-deep .menu,
-    .select.-#{$size} ::v-deep .menu {
-        @include dropdown-menu-size-variant($size);
+    .form.-#{$size} .select,
+    .form-group.-#{$size} .select,
+    .select.-#{$size} {
+        ::v-deep .menu {
+            @include dropdown-menu-size-variant($size);
+        }
     }
 }

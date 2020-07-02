@@ -1,0 +1,9 @@
+@function header-variant($variant) {
+    $header-variant-background: $variant;
+
+    $variant-map: (
+        background: $header-variant-background
+    );
+
+    @return $variant-map;
+}

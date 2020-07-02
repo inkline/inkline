@@ -12,6 +12,13 @@ $loader-item-size: 8% !default;
 //
 // Variants
 //
-$loader-variants: ('monochrome-white') !default;
+$loader-color-for-light-variant: $color-for-light-variant !default;
+$loader-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('loader': add-variant($loader-variants, $color-groups)));
+$loader-variant-light: loader-variant($color-white) !default;
+$loader-variant-dark: loader-variant($color-gray-90) !default;
+
+$loader-variants: (
+    light: $loader-variant-light,
+    dark: $loader-variant-dark
+) !default;
