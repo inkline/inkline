@@ -884,8 +884,50 @@ Here you can find a list of the Sass variables you can use for the sidebar compo
                 <template slot="default"><code>$z-index-fixed</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$sidebar-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$sidebar-variant-{variant}</template>
+                <template slot="default"><code>sidebar-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$sidebar-variants</template>
-                <template slot="default"><code>('monochrome')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $sidebar-variant-light,
+    dark: $sidebar-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">sidebar-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function sidebar-variant($variant) {
+    $sidebar-variant-color: variant-color-by-luminance($variant, $sidebar-color-for-light-variant, $sidebar-color-for-dark-variant);
+    $sidebar-variant-background: $variant;
+
+    $variant-map: (
+        color: $sidebar-variant-color,
+        background: $sidebar-variant-background,
+    );
+
+    @return $variant-map;
+}
+
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

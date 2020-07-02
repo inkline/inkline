@@ -375,16 +375,51 @@ Here you can find a list of the Sass variables you can use for the tabs componen
                 <template slot="default"><code>$spacer</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$tabs-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tabs-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$tabs-variant-{variant}</template>
+                <template slot="default"><code>tabs-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$tabs-variants</template>
-                <template slot="default"><code>('monochrome-white')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $tabs-variant-light,
+    dark: $tabs-variant-dark
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$tabs-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$tabs-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
+                <template slot="function">tabs-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function tabs-variant($variant) {
+    $tabs-variant-color: variant-color-by-luminance($variant, $tabs-color-for-light-variant, $tabs-color-for-dark-variant);
+    $tabs-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+    $tabs-variant-background: $variant;
+
+    $variant-map: (
+        color: $tabs-variant-color,
+        background: $tabs-variant-background,
+        border-color: $tabs-variant-border-color,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

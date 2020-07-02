@@ -362,24 +362,53 @@ Here you can find a list of the Sass variables you can use for the collapsible c
                 <template slot="default"><code>$spacer</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$collapsible-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$collapsible-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$collapsible-variant-{variant}</template>
+                <template slot="default"><code>collapsible-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$collapsible-variants</template>
-                <template slot="default"><code>('monochrome')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $collapsible-variant-light,
+    dark: $collapsible-variant-dark
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$collapsible-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$collapsible-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$collapsible-background-color-light</template>
-                <template slot="default"><code>$color-white</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$collapsible-background-color-dark</template>
-                <template slot="default"><code>$color-gray-90</code></template>
+                <template slot="function">collapsible-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function collapsible-variant($variant) {
+    $collapsible-variant-background: $variant;
+    $collapsible-variant-color: variant-color-by-luminance($variant, $collapsible-color-for-light-variant, $collapsible-color-for-dark-variant);
+    $collapsible-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, darken($border-color-light, 10%));
+    $collapsible-variant-body-background: variant-color-by-luminance($variant, $color-gray-90, $color-white);
+
+    $variant-map: (
+        background: $collapsible-variant-background,
+        color: $collapsible-variant-color,
+        border-color: $collapsible-variant-border-color,
+        body-background: $collapsible-variant-body-background
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

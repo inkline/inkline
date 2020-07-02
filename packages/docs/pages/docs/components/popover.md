@@ -392,8 +392,55 @@ Here you can find a list of the Sass variables you can use for the popover compo
                 <template slot="default"><code>size-map($popover-padding-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$popover-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$popover-variant-{variant}</template>
+                <template slot="default"><code>popover-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$popover-variants</template>
-                <template slot="default"><code>('monochrome-white')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $popover-variant-light,
+    dark: $popover-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">popover-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function popover-variant($variant) {
+    $popover-variant-color: variant-color-by-luminance($variant, $popover-color-for-light-variant, $popover-color-for-dark-variant);
+    $popover-variant-background: $variant;
+    $popover-variant-header-background: darken-lightness($popover-variant-background, 10%);
+    $popover-variant-footer-background: $popover-variant-background;
+    $popover-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+
+    $variant-map: (
+        color: $popover-variant-color,
+        background: $popover-variant-background,
+        header-background: $popover-variant-header-background,
+        footer-background: $popover-variant-footer-background,
+        border-color: $popover-variant-border-color,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

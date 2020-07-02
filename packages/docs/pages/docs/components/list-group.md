@@ -345,8 +345,51 @@ Here you can find a list of the Sass variables you can use for the list group co
                 <template slot="default"><code>darken-lightness($color-primary, 6%)</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$list-group-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$list-group-variant-{variant}</template>
+                <template slot="default"><code>list-group-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$list-group-variants</template>
-                <template slot="default"><code>(...)</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $list-group-variant-light,
+    dark: $list-group-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">list-group-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function list-group-variant($variant) {
+    $list-group-variant-color: variant-color-by-luminance($variant, $list-group-color-for-light-variant, $list-group-color-for-dark-variant);
+    $list-group-variant-background: $variant;
+    $list-group-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+
+    $variant-map: (
+        color: $list-group-variant-color,
+        background: $list-group-variant-background,
+        border-color: $list-group-variant-border-color,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

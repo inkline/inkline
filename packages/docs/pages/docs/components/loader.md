@@ -169,8 +169,39 @@ Here you can find a list of the Sass variables you can use for the loader compon
                 <template slot="default"><code>8%</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$loader-variant-{variant}</template>
+                <template slot="default"><code>loader-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$loader-variants</template>
-                <template slot="default"><code>('monochrome-white')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $loader-variant-light,
+    dark: $loader-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">loader-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function loader-variant($variant) {
+    $loader-variant-background: $variant;
+
+    $variant-map: (
+        background: $loader-variant-background,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

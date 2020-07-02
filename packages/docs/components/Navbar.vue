@@ -99,7 +99,7 @@ export default {
             }
         }
 
-        > .items > .nav {
+        > .navbar-items > .nav {
             margin-right: -9px;
 
             @include breakpoint-down('sm') {
@@ -179,7 +179,7 @@ export default {
         }
 
         > .container > .row > .column {
-            > .items > .nav > .item {
+            > .navbar-items > .nav > .item {
                 color: rgba(255, 255, 255, 0.85);
 
                 &:hover {

@@ -359,40 +359,61 @@ Here you can find a list of the Sass variables you can use for the alert compone
                 <template slot="default"><code>1rem</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$alert-background-mix-percentage</template>
-                <template slot="default"><code>60%</code></template>
+                <template slot="property">$alert-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$alert-border-darken-lighten-percentage</template>
-                <template slot="default"><code>10%</code></template>
+                <template slot="property">$alert-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$alert-code-color-darken-lighten-percentage</template>
-                <template slot="default"><code>10%</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$alert-code-background-color-darken-lighten-percentage</template>
-                <template slot="default"><code>7%</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$alert-color-darken-lighten-percentage</template>
-                <template slot="default"><code>30%</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$alert-link-color-darken-lighten-percentage</template>
-                <template slot="default"><code>35%</code></template>
+                <template slot="property">$alert-variant-{variant}</template>
+                <template slot="default"><code>alert-variant($color-{variant})</code></template>
             </api-table-row>
             <api-table-row>
                 <template slot="property">$alert-variants</template>
-                <template slot="default"><code>('brand', 'state')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    primary: $alert-variant-primary,
+    secondary: $alert-variant-secondary,
+    info: $alert-variant-info,
+    success: $alert-variant-success,
+    warning: $alert-variant-warning,
+    danger: $alert-variant-danger
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$alert-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$alert-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
+                <template slot="function">alert-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function alert-variant($variant) {
+    $alert-variant-background: $variant;
+    $alert-variant-border-color: darken($alert-variant-background, 10%);
+    $alert-variant-color: variant-color-by-luminance($variant, $alert-color-for-light-variant, $alert-color-for-dark-variant);
+    $alert-variant-link-color: $alert-variant-color;
+    $alert-variant-code-background: darken($variant, 10%);
+    $alert-variant-code-color: $alert-variant-color;
+
+    $variant-map: (
+        background: $alert-variant-background,
+        border-color: $alert-variant-border-color,
+        color: $alert-variant-color,
+        link-color: $alert-variant-link-color,
+        code-color: $alert-variant-code-color,
+        code-background: $alert-variant-code-background
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

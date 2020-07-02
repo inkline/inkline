@@ -582,8 +582,59 @@ Here you can find a list of the Sass variables you can use for the navbar compon
                 <template slot="default"><code>size-map($navbar-brand-padding-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$navbar-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$navbar-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$navbar-variant-{variant}</template>
+                <template slot="default"><code>navbar-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$navbar-variants</template>
-                <template slot="default"><code>('brand', 'monochrome')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $navbar-variant-light,
+    dark: $navbar-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">navbar-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function navbar-variant($variant) {
+    $navbar-variant-color: variant-color-by-luminance($variant, $navbar-color-for-light-variant, $navbar-color-for-dark-variant);
+    $navbar-variant-item-color: variant-color-by-luminance($variant, darken-lightness($navbar-color-for-light-variant, 20%), lighten-lightness($navbar-color-for-dark-variant, 20%));
+    $navbar-variant-item-color-active: $navbar-variant-color;
+    $navbar-variant-background: $variant;
+    $navbar-variant-background-hover: darken-lightness($navbar-variant-background, 10%);
+    $navbar-variant-collapsed-item-background: darken-lightness($navbar-variant-background, 5%);
+    $navbar-variant-collapsed-item-background-hover: $navbar-variant-background-hover;
+
+    $variant-map: (
+        color: $navbar-variant-color,
+        item-color: $navbar-variant-item-color,
+        item-color-active: $navbar-variant-item-color-active,
+        background: $navbar-variant-background,
+        background-hover: $navbar-variant-background-hover,
+        collapsed-item-background: $navbar-variant-collapsed-item-background,
+        collapsed-item-background-hover: $navbar-variant-collapsed-item-background-hover
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

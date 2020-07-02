@@ -359,20 +359,65 @@ Here you can find a list of the Sass variables you can use for the card componen
                 <template slot="default"><code>size-map($card-padding-base, $sizes, $size-multipliers)</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$card-background-darken</template>
-                <template slot="default"><code>rgba(0, 0, 0, 0.1)</code></template>
+                <template slot="property">$card-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$card-variant-{variant}</template>
+                <template slot="default"><code>card-variant($color-{variant})</code></template>
             </api-table-row>
             <api-table-row>
                 <template slot="property">$card-variants</template>
-                <template slot="default"><code>('basic', 'brand', 'monochrome-white', 'neutral', 'state')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    primary: $card-variant-primary,
+    secondary: $card-variant-secondary,
+    light: $card-variant-light,
+    dark: $card-variant-dark,
+    info: $card-variant-info,
+    success: $card-variant-success,
+    warning: $card-variant-warning,
+    danger: $card-variant-danger
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$card-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$card-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
+                <template slot="function">card-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function card-variant($variant) {
+    $card-variant-color: variant-color-by-luminance($variant, $card-color-for-light-variant, $card-color-for-dark-variant);
+    $card-variant-background: $variant;
+    $card-variant-border-color: darken($variant, 10%);
+    $card-variant-header-background: darken($variant, 5%);
+    $card-variant-header-border-color: $card-variant-border-color;
+    $card-variant-footer-background: $card-variant-header-background;
+    $card-variant-footer-border-color: $card-variant-header-border-color;
+
+    $variant-map: (
+        background: $card-variant-background,
+        color: $card-variant-color,
+        border-color: $card-variant-border-color,
+        header-background: $card-variant-header-background,
+        header-border-color: $card-variant-header-border-color,
+        footer-background: $card-variant-footer-background,
+        footer-border-color: $card-variant-footer-border-color
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

@@ -119,7 +119,7 @@ Pagination can be handled asynchronously by setting the `async` attribute to `tr
 
 This will tell the DataTable component to only display the rows and let the pagination handling be done asynchronously and externally using the `update` event. 
 
-<i-alert variant="info" class="-code">
+<i-alert variant="info" class="-code _margin-bottom-1">
 <template slot="icon"><i-icon icon="info"></i-icon></template>
 
 The first `update` event occurs when the DataTable is `created`.
