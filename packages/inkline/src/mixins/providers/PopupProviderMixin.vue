@@ -1,5 +1,5 @@
 <script>
-import {createPopper} from '@popperjs/core';
+import { createPopper } from '@popperjs/core';
 import popupManager from '@inkline/inkline/src/factories/PopupManager';
 
 /**
@@ -20,7 +20,7 @@ export default {
         },
         offset: {
             type: Number,
-            default: 0
+            default: null
         },
         arrow: {
             type: Boolean,
@@ -28,7 +28,7 @@ export default {
         },
         arrowOffset: {
             type: Number,
-            default: 35
+            default: 10
         },
         appendToBody: {
             type: Boolean,
@@ -70,14 +70,120 @@ export default {
                 return;
             }
 
-            value ? this.updatePopper() : this.destroyPopper();
+            if (value) {
+                this.updatePopper();
+            }
 
             this.$emit('change', value);
         }
     },
 
+    methods: {
+        stopOnClickPropagation(e) {
+            e.stopPropagation();
+        },
+        createPopper() {
+            if (this.$isServer) return;
+
+            this.currentPlacement = this.currentPlacement || this.placement;
+
+            this.popupElement = this.popupElement || this.popup || this.$refs.popup;
+            this.referenceElement = this.referenceElement || this.reference || this.$refs.reference;
+            this.arrowElement = this.arrowElement || this.$refs.arrow;
+
+            if (!this.referenceElement &&
+                this.$slots.reference &&
+                this.$slots.reference[0]) {
+                this.referenceElement = this.$slots.reference[0].elm;
+            }
+
+            if (!this.popupElement || !this.referenceElement) {
+                return;
+            }
+
+            if (!this.$isServer && document && this.appendToBody) {
+                document.body.appendChild(this.popupElement);
+            }
+
+            if (this.popperInstance && this.popperInstance.destroy) {
+                this.popperInstance.destroy()
+            }
+
+            this.popperOptions.placement = this.currentPlacement;
+            this.popperOptions.offset = this.offset;
+            this.popperOptions.arrowOffset = this.arrowOffset;
+
+            this.popperOptions.onFirstUpdate = () => {
+                this.$emit('created', this);
+                this.$nextTick().then(this.updatePopper);
+            };
+
+            const computeStylesModifier = {
+                name: 'computeStyles',
+                options: {
+                    adaptive: false,
+                    gpuAcceleration: false
+                }
+            };
+
+            const offsetModifier = {
+                name: 'offset',
+                options: {
+                    offset: ({ placement }) => {
+                        if (placement.indexOf('left') !== -1 || placement.indexOf('right') !== -1) {
+                            return this.offset || [0, this.arrowOffset];
+                        } else {
+                            return this.offset || [0, this.arrowOffset];
+                        }
+                    },
+                }
+            };
+
+            const arrowModifier = {
+                name: 'arrow',
+                options: {
+                    element: this.arrowElement || '.arrow',
+                    padding: this.arrowOffset
+                },
+            };
+
+            this.popperInstance = createPopper(this.referenceElement, this.popupElement, Object.assign({
+                modifiers: [
+                    computeStylesModifier
+                ].concat(this.arrow ? [arrowModifier, offsetModifier] : [])
+            }, this.popperOptions));
+
+            this.popupElement.addEventListener('click', this.stopOnClickPropagation);
+        },
+
+        updatePopper() {
+            if (!this.popperInstance) {
+                return this.createPopper();
+            }
+
+            if (this.popperInstance.state.styles.popper) {
+                this.popperInstance.state.styles.popper.zIndex = popupManager.nextZIndex();
+            }
+
+            this.popperInstance.forceUpdate();
+        },
+
+        destroyPopper(forceDestroy) {
+            if (!this.popperInstance || (this.visible && !forceDestroy)) return;
+
+            this.popperInstance.destroy();
+            this.popperInstance = null;
+        },
+
+        onClickOutside() {
+            if (this.value) return;
+
+            this.hide();
+        }
+    },
+
     beforeDestroy() {
-        this.doDestroy(true);
+        this.destroyPopper(true);
 
         if (!this.$isServer && document && this.popupElement && this.popupElement.parentNode === document.body) {
             this.popupElement.removeEventListener('click', this.stopOnClickPropagation);
@@ -89,111 +195,6 @@ export default {
     // Call destroy in keep-alive mode
     deactivated() {
         this.$options.beforeDestroy[0].call(this);
-    },
-
-    methods: {
-        stopOnClickPropagation(e) {
-            e.stopPropagation();
-        },
-        createPopper() {
-            if (this.$isServer) return;
-
-            this.currentPlacement = this.currentPlacement || this.placement;
-            if (!/^(top|bottom|left|right)(-start|-end)?$/g.test(this.currentPlacement)) {
-                return;
-            }
-
-            this.popupElement = this.popupElement || this.popup || this.$refs.popup;
-            this.referenceElement = this.referenceElement || this.reference || this.$refs.reference;
-
-            if (!this.referenceElement &&
-                this.$slots.reference &&
-                this.$slots.reference[0]) {
-                this.referenceElement = this.$slots.reference[0].elm;
-            }
-
-            if (!this.popupElement || !this.referenceElement) return;
-
-            if (!this.$isServer && document && this.appendToBody) document.body.appendChild(this.popupElement);
-            if (this.popperJS && this.popperJS.destroy) {
-                this.popperJS.destroy();
-            }
-
-            this.popperOptions.placement = this.currentPlacement;
-            this.popperOptions.offset = this.offset;
-            this.popperOptions.arrowOffset = this.arrowOffset;
-
-            this.popperOptions.onFirstUpdate = () => {
-                this.$emit('created', this);
-                this.resetTransformOrigin();
-                this.$nextTick().then(this.updatePopper);
-            };
-
-            this.popperJS = createPopper(this.referenceElement, this.popupElement, Object.assign({
-                modifiers: [
-                    {
-                        name: 'computeStyles',
-                        options: {
-                            adaptive: false,
-                            gpuAcceleration: false
-                        }
-                    },
-                ]
-            }, this.popperOptions));
-
-            this.popperJS.state.styles.zIndex = popupManager.nextZIndex();
-            this.popupElement.addEventListener('click', this.stopOnClickPropagation);
-        },
-
-        updatePopper() {
-            if (!this.popperJS) return this.createPopper();
-
-            this.popperJS.forceUpdate();
-
-            if (this.popperJS.state.styles.popper) {
-                this.popperJS.state.styles.popper.zIndex = popupManager.nextZIndex();
-            }
-        },
-
-        doDestroy(forceDestroy) {
-            if (!this.popperJS || (this.visible && !forceDestroy)) return;
-
-            this.popperJS.destroy();
-            this.popperJS = null;
-        },
-
-        destroyPopper() {
-            if (this.popperJS) {
-                this.resetTransformOrigin();
-            }
-        },
-
-        resetTransformOrigin() {
-            if (!this.transformOrigin) return;
-
-            const popper = this.popperJS.state.styles.popper;
-
-            if (popper) {
-                const placementMap = {
-                    top: 'bottom',
-                    bottom: 'top',
-                    left: 'right',
-                    right: 'left'
-                };
-                const placement = this.popperJS.state.placement.split('-')[0];
-                const origin = placementMap[placement];
-
-                popper.transformOrigin = typeof this.transformOrigin === 'string' ?
-                    this.transformOrigin :
-                    ['top', 'bottom'].indexOf(placement) > -1 ? `center ${origin}` : `${origin} center`;
-            }
-
-        },
-        onClickOutside() {
-            if (this.value) return;
-
-            this.hide();
-        }
     }
 };
 </script>

@@ -90,9 +90,9 @@
 
         &,
         > div {
-            > .popover-wrapper > .button,
-            > .tooltip-wrapper > .button,
-            > .dropdown > .button,
+            > .popover-wrapper,
+            > .tooltip-wrapper,
+            > .dropdown,
             > .badge,
             > .button {
                 margin-top: $spacer / 2;
@@ -100,6 +100,9 @@
             }
         }
 
+        .popover-wrapper > .button,
+        .tooltip-wrapper > .button,
+        .dropdown > .button,
         .button-group > .button {
             margin-top: 0;
             margin-bottom: 0;

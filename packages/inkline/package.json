@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "@popperjs/core": "^2.4.2",
-    "fuse.js": "^5.2.3"
+    "fuse.js": "^6.4.0"
   },
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",

@@ -42,10 +42,6 @@ export default {
         arrow: {
             type: Boolean,
             default: true
-        },
-        arrowOffset: {
-            type: Number,
-            default: 0
         }
     },
     data() {
