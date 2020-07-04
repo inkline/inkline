@@ -78,6 +78,21 @@ export default {
         }
     },
 
+    beforeDestroy() {
+        this.destroyPopper(true);
+
+        if (!this.$isServer && document && this.popupElement && this.popupElement.parentNode === document.body) {
+            this.popupElement.removeEventListener('click', this.stopOnClickPropagation);
+
+            document.body.removeChild(this.popupElement);
+        }
+    },
+
+    // Call destroy in keep-alive mode
+    deactivated() {
+        this.$options.beforeDestroy[0].call(this);
+    },
+
     methods: {
         stopOnClickPropagation(e) {
             e.stopPropagation();
@@ -180,21 +195,6 @@ export default {
 
             this.hide();
         }
-    },
-
-    beforeDestroy() {
-        this.destroyPopper(true);
-
-        if (!this.$isServer && document && this.popupElement && this.popupElement.parentNode === document.body) {
-            this.popupElement.removeEventListener('click', this.stopOnClickPropagation);
-
-            document.body.removeChild(this.popupElement);
-        }
-    },
-
-    // Call destroy in keep-alive mode
-    deactivated() {
-        this.$options.beforeDestroy[0].call(this);
     }
 };
 </script>
