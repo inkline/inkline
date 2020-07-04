@@ -70,7 +70,7 @@ describe('Mixins', () => {
             describe('offset', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.offset).toBeDefined();
-                    expect(wrapper.vm.offset).toEqual(0);
+                    expect(wrapper.vm.offset).toEqual(null);
                 });
             });
 
@@ -84,7 +84,7 @@ describe('Mixins', () => {
             describe('arrowOffset', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.arrowOffset).toBeDefined();
-                    expect(wrapper.vm.arrowOffset).toEqual(35);
+                    expect(wrapper.vm.arrowOffset).toEqual(10);
                 });
             });
 
@@ -171,19 +171,6 @@ describe('Mixins', () => {
                     });
                 });
 
-                it('should call "destroyPopper()" if not visible', (done) => {
-                    const spy = jest.spyOn(wrapper.vm, 'destroyPopper');
-
-                    wrapper.setData({ visible: true });
-                    wrapper.vm.$nextTick(() => {
-                        wrapper.setData({ visible: false });
-                        wrapper.vm.$nextTick(() => {
-                            expect(spy).toHaveBeenCalled();
-                            done();
-                        });
-                    });
-                });
-
                 it('should not make changes if disabled', (done) => {
                     const emitSpy = jest.spyOn(wrapper.vm, '$emit');
                     const updateSpy = jest.spyOn(wrapper.vm, 'updatePopper');
@@ -239,18 +226,18 @@ describe('Mixins', () => {
                 });
 
                 // it('should call popperOptions.onFirstUpdate if defined', () => {
-                //     wrapper.vm.popperJS = { onFirstUpdate: () => {} };
+                //     wrapper.vm.popperInstance = { onFirstUpdate: () => {} };
                 //     wrapper.setProps({ popperOptions: { onFirstUpdate: () => {} }});
-                //     const spy = jest.spyOn(wrapper.vm.popperJS, 'onFirstUpdate');
+                //     const spy = jest.spyOn(wrapper.vm.popperInstance, 'onFirstUpdate');
 
                 //     wrapper.vm.createPopper();
 
                 //     expect(spy).toHaveBeenCalled();
                 // });
 
-                it('should call popperJS.destroy if defined', () => {
-                    wrapper.vm.popperJS = { destroy: () => {} };
-                    const spy = jest.spyOn(wrapper.vm.popperJS, 'destroy');
+                it('should call popperInstance.destroy if defined', () => {
+                    wrapper.vm.popperInstance = { destroy: () => {} };
+                    const spy = jest.spyOn(wrapper.vm.popperInstance, 'destroy');
 
                     wrapper.vm.createPopper();
 
@@ -264,10 +251,10 @@ describe('Mixins', () => {
                     expect(wrapper.vm.referenceElement).toBeDefined();
                 });
 
-                it('should have popperJS defined', () => {
+                it('should have popperInstance defined', () => {
                     wrapper.vm.createPopper();
 
-                    expect(wrapper.vm.popperJS).toBeDefined();
+                    expect(wrapper.vm.popperInstance).toBeDefined();
                 });
 
                 it('should set onFirstUpdate callback that emits created event', () => {
@@ -282,30 +269,18 @@ describe('Mixins', () => {
                     })
                 });
 
-                it('should set onFirstUpdate callback that calls resetTransformOrigin', () => {
-                    const spy = jest.spyOn(wrapper.vm, 'resetTransformOrigin');
+                it('should set onFirstUpdate callback', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$nextTick');
 
-                    wrapper.setData({ visible: true });
                     wrapper.vm.createPopper();
+                    wrapper.vm.popperOptions.onFirstUpdate();
 
-                    wrapper.vm.$nextTick().then(() => {
-                        expect(spy).toHaveBeenCalled();
-                    });
+                    expect(spy).toEqual(expect.any(Function));
                 });
-
-                // it('should set onCreate callback that calls updatePopper', () => {
-                //     const spy = jest.spyOn(wrapper.vm, '$nextTick');
-
-                //     wrapper.vm.createPopper();
-                //     wrapper.vm.popperOptions.onCreate();
-
-                //     expect(spy).toHaveBeenCalled();
-                //     expect(spy).toHaveBeenCalledWith(wrapper.vm.updatePopper);
-                // });
             });
 
             describe('updatePopper()', () => {
-                it('should createPopper if popperJS not available', () => {
+                it('should createPopper if popperInstance not available', () => {
                     const spy = jest.spyOn(wrapper.vm, 'createPopper');
 
                     wrapper.vm.updatePopper();
@@ -315,93 +290,74 @@ describe('Mixins', () => {
 
                 it('should skip zIndex assignment if not popper set', () => {
                     wrapper.vm.createPopper();
-                    // wrapper.vm.popperJS.update = () => {};
-                    wrapper.vm.popperJS.state.styles.popper = undefined;
+                    // wrapper.vm.popperInstance.update = () => {};
+                    wrapper.vm.popperInstance.state.styles.popper = undefined;
 
-                    const spy = jest.spyOn(wrapper.vm.popperJS, 'forceUpdate');
-
-                    wrapper.vm.updatePopper();
-
-                    expect(spy).toHaveBeenCalled();
-                });
-
-                it('should update popperJS element', () => {
-                    wrapper.vm.createPopper();
-
-                    const spy = jest.spyOn(wrapper.vm.popperJS, 'forceUpdate');
+                    const spy = jest.spyOn(wrapper.vm.popperInstance, 'forceUpdate');
 
                     wrapper.vm.updatePopper();
 
                     expect(spy).toHaveBeenCalled();
-
-                    expect(wrapper.vm.popperJS.state.styles.zIndex).toBeGreaterThanOrEqual(1000);
                 });
-            });
 
-            describe('doDestroy()', () => {
-                it('should destroy popperJS element', () => {
+                it('should update popperInstance element', () => {
                     wrapper.vm.createPopper();
-                    wrapper.vm.popperJS.destroy = () => {};
+                    wrapper.vm.popperInstance.state.styles.popper = {};
 
-                    const spy = jest.spyOn(wrapper.vm.popperJS, 'destroy');
+                    const spy = jest.spyOn(wrapper.vm.popperInstance, 'forceUpdate');
 
-                    wrapper.vm.doDestroy();
+                    wrapper.vm.updatePopper();
 
                     expect(spy).toHaveBeenCalled();
-                    expect(wrapper.vm.popperJS).toEqual(null);
-                });
 
-                it('should not destroy popperJS element if visible', () => {
-                    wrapper.vm.createPopper();
-                    wrapper.vm.popperJS.destroy = () => {};
-                    wrapper.vm.popperJS.update = () => {};
-
-                    wrapper.setData({ visible: true });
-
-                    const spy = jest.spyOn(wrapper.vm.popperJS, 'destroy');
-
-                    wrapper.vm.doDestroy();
-
-                    expect(spy).not.toHaveBeenCalled();
-                });
-
-                it('should destroy popperJS element if visible and forceDestroy', () => {
-                    wrapper.vm.createPopper();
-                    wrapper.vm.popperJS.destroy = () => {};
-                    wrapper.vm.popperJS.update = () => {};
-
-                    wrapper.setData({ visible: true });
-
-                    const spy = jest.spyOn(wrapper.vm.popperJS, 'destroy');
-
-                    wrapper.vm.doDestroy(true);
-
-                    expect(spy).toHaveBeenCalled();
+                    expect(wrapper.vm.popperInstance.state.styles.popper.zIndex).toBeGreaterThanOrEqual(1000);
                 });
             });
 
             describe('destroyPopper()', () => {
-                it('should call resetTransformOrigin() if popperJS', () => {
-                    const spy = jest.spyOn(wrapper.vm, 'resetTransformOrigin');
-
+                it('should destroy popperInstance element', () => {
                     wrapper.vm.createPopper();
+                    wrapper.vm.popperInstance.destroy = () => {};
+
+                    const spy = jest.spyOn(wrapper.vm.popperInstance, 'destroy');
+
                     wrapper.vm.destroyPopper();
 
                     expect(spy).toHaveBeenCalled();
+                    expect(wrapper.vm.popperInstance).toEqual(null);
                 });
 
-                it('should not call resetTransformOrigin() if not popperJS', () => {
-                    const spy = jest.spyOn(wrapper.vm, 'resetTransformOrigin');
+                it('should not destroy popperInstance element if visible', () => {
+                    wrapper.vm.createPopper();
+                    wrapper.vm.popperInstance.destroy = () => {};
+                    wrapper.vm.popperInstance.update = () => {};
 
-                    wrapper.vm.popperJS = null;
+                    wrapper.setData({ visible: true });
+
+                    const spy = jest.spyOn(wrapper.vm.popperInstance, 'destroy');
+
                     wrapper.vm.destroyPopper();
 
                     expect(spy).not.toHaveBeenCalled();
                 });
+
+                it('should destroy popperInstance element if visible and forceDestroy', () => {
+                    wrapper.vm.createPopper();
+                    wrapper.vm.popperInstance.destroy = () => {};
+                    wrapper.vm.popperInstance.update = () => {};
+
+                    wrapper.setData({ visible: true });
+
+                    const spy = jest.spyOn(wrapper.vm.popperInstance, 'destroy');
+
+                    wrapper.vm.destroyPopper(true);
+
+                    expect(spy).toHaveBeenCalled();
+                });
             });
 
             describe('onClickOutside()', () => {
-                it('should call hide() if popperJS value is false', () => {
+                it('should call hide() if popperInstance value is false', () => {
                     wrapper.vm.hide = jest.fn(() => {});
                     const spy = jest.spyOn(wrapper.vm, 'hide');
 
@@ -411,7 +367,7 @@ describe('Mixins', () => {
                     expect(spy).toHaveBeenCalled();
                 });
 
-                it('should not call hide() if popperJS value is true', () => {
+                it('should not call hide() if popperInstance value is true', () => {
                     wrapper.vm.hide = jest.fn(() => {});
                     const spy = jest.spyOn(wrapper.vm, 'hide');
 
@@ -433,41 +389,11 @@ describe('Mixins', () => {
                     expect(spy).toHaveBeenCalled();
                 });
             });
-
-            describe('resetTransformOrigin()', () => {
-                it('should return if transformOrigin not set', () => {
-                    wrapper.setProps({ transformOrigin: false });
-
-                    expect(wrapper.vm.resetTransformOrigin()).toEqual(undefined);
-                });
-
-                it('should set popper style to transform origin if string', () => {
-                    wrapper.setProps({ transformOrigin: 'origin' });
-
-                    wrapper.vm.createPopper();
-
-                    wrapper.vm.$nextTick().then(() => {
-                        wrapper.vm.resetTransformOrigin();
-                        expect(wrapper.vm.popperJS.state.styles.popper.transformOrigin).toEqual('origin');
-                    })
-                });
-
-                it('should set popper style to transform origin if boolean', () => {
-                    wrapper.setProps({ transformOrigin: true });
-
-                    wrapper.vm.createPopper();
-                    wrapper.vm.$nextTick().then(() => {
-                        wrapper.vm.resetTransformOrigin();
-
-                        expect(wrapper.vm.popperJS.state.styles.popper.transformOrigin).toEqual('center bottom');
-                    })
-                });
-            });
         });
 
         describe('beforeDestroy()', () => {
-            it('should call doDestroy with forceDestroy set to true', () => {
-                const spy = jest.spyOn(wrapper.vm, 'doDestroy');
+            it('should call destroyPopper with forceDestroy set to true', () => {
+                const spy = jest.spyOn(wrapper.vm, 'destroyPopper');
 
                 wrapper.vm.beforeDestroy();
 

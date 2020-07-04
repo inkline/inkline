@@ -1,5 +1,4 @@
-@mixin popup($popup :( margin: 5px, z-index: 2000 )) {
-    $_margin: map_get($popup, 'margin');
+@mixin popup($popup :( z-index: 2000 )) {
     $_z-index: map_get($popup, 'z-index');
 
     z-index: $_z-index;
@@ -11,19 +10,19 @@
     }
 
     &[data-popper-placement^="top"] {
-        margin-bottom: $_margin;
+        transform-origin: center bottom;
     }
 
     &[data-popper-placement^="bottom"] {
-        margin-top: $_margin;
-    }
-
-    &[data-popper-placement^="left"] {
-        margin-right: $_margin;
+        transform-origin: center top;
     }
 
     &[data-popper-placement^="right"] {
-        margin-left: $_margin;
+        transform-origin: left center;
+    }
+
+    &[data-popper-placement^="left"] {
+        transform-origin: right center;
     }
 }
 

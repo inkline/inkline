@@ -1,4 +1,4 @@
-<transition name="zoom-in-top-transition" @after-leave="doDestroy">
+<transition name="zoom-in-top-transition" @after-leave="destroyPopper">
     <div class="menu"
          :class="classes"
          v-show="visible">
