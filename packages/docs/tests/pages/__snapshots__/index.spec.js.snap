@@ -148,7 +148,7 @@ exports[`IndexView is should render correctly 1`] = `
       <footer>
         <i-row-stub id="osawards">
           <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" md="12" offsetmd="" pushmd="" pullmd="" offsetlg="" pushlg="" pulllg="" offsetxl="" pushxl="" pullxl="">
-            <i-tooltip-stub transformorigin="true" placement="top" offset="0" arrow="true" arrowoffset="0" popperoptions="[object Object]" trigger="hover" showtimeout="250" hidetimeout="150" size="" variant="light"><a id="osawards-container" href="https://osawards.com/vue/" rel="nofollow">
+            <i-tooltip-stub transformorigin="true" placement="top" arrow="true" arrowoffset="10" popperoptions="[object Object]" trigger="hover" showtimeout="250" hidetimeout="150" size="" variant="light"><a id="osawards-container" href="https://osawards.com/vue/" rel="nofollow">
                 <h4>OS Awards</h4> <img width="200" src="/images/pages/osawards.svg" alt="Open Source Awards - Vue.js London 2019 - Inkline Nominee" class="_margin-auto">
               </a> <template></template></i-tooltip-stub>
           </i-column-stub>
