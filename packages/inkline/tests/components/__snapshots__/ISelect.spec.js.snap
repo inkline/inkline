@@ -18,6 +18,6 @@ exports[`Components ISelect should render correctly 1`] = `
 exports[`Components ISelect should render native correctly 1`] = `
 <i-dropdown-stub trigger="click" showtimeout="250" hidetimeout="150" variant="" disabled="true" hideonclick="true" placement="bottom" keymap="[object Object]" size="" id="select" tabindex="-1" class="select">
   <i-input-stub value="" readonly="true" size="" tabindex="-1" variant="" placeholder=""><template></template> <template></template> <template></template> <template></template></i-input-stub> <select placeholder="" class="form-select"></select>
-  <i-dropdown-menu-stub size="" variant="" transformorigin="true" placement="bottom" offset="0" arrow="true" arrowoffset="0" popperoptions="[object Object]"></i-dropdown-menu-stub>
+  <i-dropdown-menu-stub size="" variant="" transformorigin="true" placement="bottom" arrow="true" arrowoffset="10" popperoptions="[object Object]"></i-dropdown-menu-stub>
 </i-dropdown-stub>
 `;

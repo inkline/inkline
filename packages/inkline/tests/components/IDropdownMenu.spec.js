@@ -39,7 +39,7 @@ describe('Components', () => {
             describe('arrowOffset', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.arrowOffset).toBeDefined();
-                    expect(wrapper.vm.arrowOffset).toEqual(0);
+                    expect(wrapper.vm.arrowOffset).toEqual(10);
                 });
             });
         });
