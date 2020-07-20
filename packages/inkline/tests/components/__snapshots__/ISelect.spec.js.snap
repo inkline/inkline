@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components ISelect should render correctly 1`] = `
-<div size="" id="select" tabindex="-1" class="dropdown select" v-model="value">
+<div id="select" tabindex="-1" class="dropdown select" v-model="value">
   <div class="form-input-group" aria-haspopup="dropdown" aria-controls="select">
     <!---->
     <div class="form-input">
@@ -16,8 +16,8 @@ exports[`Components ISelect should render correctly 1`] = `
 `;
 
 exports[`Components ISelect should render native correctly 1`] = `
-<i-dropdown-stub trigger="click" showtimeout="250" hidetimeout="150" variant="" disabled="true" hideonclick="true" placement="bottom" keymap="[object Object]" size="" id="select" tabindex="-1" class="select">
+<i-dropdown-stub trigger="click" showtimeout="250" hidetimeout="150" size="" variant="" disabled="true" hideonclick="true" placement="bottom" keymap="[object Object]" id="select" tabindex="-1" class="select">
   <i-input-stub value="" readonly="true" size="" tabindex="-1" variant="" placeholder=""><template></template> <template></template> <template></template> <template></template></i-input-stub> <select placeholder="" class="form-select"></select>
-  <i-dropdown-menu-stub size="" variant="" transformorigin="true" placement="bottom" arrow="true" arrowoffset="10" popperoptions="[object Object]"></i-dropdown-menu-stub>
+  <i-dropdown-menu-stub size="" transformorigin="true" placement="bottom" arrow="true" arrowoffset="10" popperoptions="[object Object]"></i-dropdown-menu-stub>
 </i-dropdown-stub>
 `;
