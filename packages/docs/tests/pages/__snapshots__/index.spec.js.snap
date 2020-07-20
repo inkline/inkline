@@ -2,7 +2,7 @@
 
 exports[`IndexView is should render correctly 1`] = `
 <div id="index-page">
-  <i-header-stub size="" id="header">
+  <i-header-stub size="" variant="" id="header">
     <i-row-stub>
       <i-column-stub offset="" push="" pull="" offsetxs="" pushxs="" pullxs="" offsetsm="" pushsm="" pullsm="" md="7" offsetmd="" pushmd="" pullmd="" lg="6" offsetlg="" pushlg="" pulllg="" xl="5" offsetxl="" pushxl="" pullxl="">
         <h1 class="header-title">
