@@ -1,15 +1,12 @@
 //
 // Card variants
 //
-@each $variant-name, $variant in variants('checkable') {
-    $_checked-disabled-dark: $form-check-indicator-disabled-checked-background-color-dark;
-    $_checked-disabled-light: $form-check-indicator-disabled-checked-background-color-light;
-    $_checked-disabled-background: variant-color-by-luminance($variant, $_checked-disabled-dark, $_checked-disabled-light);
-
+@each $variant-name, $variant in $checkable-variants {
     .form-check.-#{$variant-name} {
         .form-input-label {
             &::before {
-                background-color: $variant;
+                background-color: map-get($variant, 'indicator-background');
+                box-shadow: map-get($variant, 'indicator-box-shadow');
             }
         }
 
@@ -17,9 +14,38 @@
             cursor: pointer;
 
             input {
+                &:checked ~ .form-input-label,
+                &[type="checkbox"]:indeterminate ~ .form-input-label {
+                    &::before {
+                        color: map-get($variant, 'indicator-checked-color');
+                        background-color: map-get($variant, 'indicator-checked-background-color');
+                        box-shadow: map-get($variant, 'indicator-checked-box-shadow');
+                    }
+                }
+
                 &:disabled:checked ~ .form-input-label::before,
                 &[readonly]:checked ~ .form-input-label::before {
-                    background-color: $_checked-disabled-background;
+                    background-color: map-get($variant, 'indicator-checked-disabled-background');
+                }
+
+                &:focus ~ .form-input-label::before {
+                    box-shadow: map-get($variant, 'indicator-focused-box-shadow');
+                }
+
+                &:active ~ .form-input-label::before {
+                    color: map-get($variant, 'indicator-active-color');
+                    background-color: map-get($variant, 'indicator-active-background-color');
+                    box-shadow: map-get($variant, 'indicator-active-box-shadow');
+                }
+
+                &:disabled ~ .form-input-label,
+                &[readonly] ~ .form-input-label {
+                    color: map-get($variant, 'indicator-disabled-color');
+                }
+
+                &::before {
+                    color: map-get($variant, 'indicator-disabled-color');
+                    background-color: map-get($variant, 'indicator-disabled-background-color');
                 }
             }
         }

@@ -1,7 +1,7 @@
 @function list-group-variant($variant) {
     $list-group-variant-color: variant-color-by-luminance($variant, $list-group-color-for-light-variant, $list-group-color-for-dark-variant);
     $list-group-variant-background: $variant;
-    $list-group-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+    $list-group-variant-border-color: variant-color-by-luminance($variant, $border-color-light, $border-color-dark);
 
     $variant-map: (
         color: $list-group-variant-color,

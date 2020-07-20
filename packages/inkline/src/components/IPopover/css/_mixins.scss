@@ -3,7 +3,7 @@
     $popover-variant-background: $variant;
     $popover-variant-header-background: darken-lightness($popover-variant-background, 10%);
     $popover-variant-footer-background: $popover-variant-background;
-    $popover-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+    $popover-variant-border-color: variant-color-by-luminance($variant, $border-color-light, $border-color-dark);
 
     $variant-map: (
         color: $popover-variant-color,

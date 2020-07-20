@@ -18,7 +18,15 @@ export default {
             showModalSuccess: false,
             showModalWarning: false,
             showModalDanger: false,
-            showModalInfo: false
+            showModalInfo: false,
+            showFillModalPrimary: false,
+            showFillModalSecondary: false,
+            showFillModalLight: false,
+            showFillModalDark: false,
+            showFillModalSuccess: false,
+            showFillModalWarning: false,
+            showFillModalDanger: false,
+            showFillModalInfo: false
         };
     }
 };

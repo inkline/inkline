@@ -1,0 +1,17 @@
+@function table-variant($variant) {
+    $table-variant-color: variant-color-by-luminance($variant, $table-color-for-light-variant, $table-color-for-dark-variant);
+    $table-variant-background: $variant;
+    $table-variant-background-hover: variant-color-by-luminance($variant, darken-lightness($variant, 10%), lighten-lightness($variant, 10%));
+    $table-variant-background-striped: variant-color-by-luminance($variant, darken-lightness($variant, 5%), lighten-lightness($variant, 5%));
+    $table-variant-border-color: darken($variant, 10%);
+
+    $variant-map: (
+        color: $table-variant-color,
+        background: $table-variant-background,
+        background-hover: $table-variant-background-hover,
+        background-striped: $table-variant-background-striped,
+        border-color: $table-variant-border-color,
+    );
+
+    @return $variant-map;
+}

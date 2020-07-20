@@ -5,9 +5,9 @@
 
 // Background
 //
-@each $variant-name, $variant in variants(background) {
+@each $variant-name, $variant in $background-variants {
     ._background-#{$variant-name} {
-        color: variant-color-by-luminance($variant, $variant-color-light, $variant-color-dark);
+        color: variant-color-by-luminance($variant, $color-for-light-variant, $color-for-dark-variant);
         background-color: $variant !important;
     }
 }
@@ -18,7 +18,7 @@
 
 // Text
 //
-@each $variant-name, $variant in variants('text') {
+@each $variant-name, $variant in $text-variants {
     ._text-#{$variant-name} {
         color: $variant !important;
     }

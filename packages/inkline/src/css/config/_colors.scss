@@ -128,9 +128,9 @@ $color-group-social: (
     'github': $color-github,
     'gitlab': $color-gitlab,
     'tumblr': $color-tumblr,
-    'twitch':    $color-twitch,
-    'envato':    $color-envato,
-    'vine':      $color-vine,
+    'twitch': $color-twitch,
+    'envato': $color-envato,
+    'vine': $color-vine,
 ) !default;
 
 // Theme light and dark colors
@@ -138,8 +138,8 @@ $color-group-social: (
 $variant-color-light: $color-white !default;
 $variant-color-dark: $color-gray-80 !default;
 
-$color-for-light-variant: $variant-color-light !default;
-$color-for-dark-variant: $variant-color-dark !default;
+$color-for-light-variant: $variant-color-dark !default;
+$color-for-dark-variant: $variant-color-light !default;
 
 // Color groups
 //

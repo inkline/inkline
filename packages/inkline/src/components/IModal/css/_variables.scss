@@ -32,7 +32,7 @@ $modal-color-for-dark-variant: $color-for-dark-variant !default;
 
 $modal-variant-primary: modal-variant($color-primary) !default;
 $modal-variant-secondary: modal-variant($color-secondary) !default;
-$modal-variant-light: modal-variant($color-white) !default;
+$modal-variant-light: modal-variant($color-light) !default;
 $modal-variant-dark: modal-variant($color-dark) !default;
 $modal-variant-info: modal-variant($color-info) !default;
 $modal-variant-success: modal-variant($color-success) !default;

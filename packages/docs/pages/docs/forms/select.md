@@ -430,32 +430,3 @@ Modifying the <nuxt-link :to="{ name: 'docs-forms-input' }">Input Component</nux
 
 Here you can find a list of the Sass variables you can use for the select components. If you're looking to find common variables that these rely on, you should take a look at the <nuxt-link :to="{ name: 'docs-core-sass-variables' }">Sass Variables</nuxt-link> page.
 
-<i-code title="Select" expanded>
-    <i-tab type="scss">
-        <api-table>
-            <api-table-row>
-                <template slot="property">$select-dropdown-variants</template>
-                <template slot="default"><code>('monochrome-white')</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$select-dropdown-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$select-dropdown-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
-            </api-table-row>
-        </api-table>
-    </i-tab>
-</i-code>  
-
-<i-code title="Select Option" expanded>
-    <i-tab type="scss">
-        <api-table>
-            <api-table-row>
-                <template slot="property">$select-option-padding</template>
-                <template slot="default"><code>$spacer-1-2 * size-multipliers('md') $spacer * size-multipliers('md')</code></template>
-            </api-table-row>
-        </api-table>
-    </i-tab>
-</i-code>  

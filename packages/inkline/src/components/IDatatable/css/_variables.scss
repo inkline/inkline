@@ -28,8 +28,13 @@ $transition: map_merge($transition, ('datatable': $transition-datatable));
 //
 // Variants
 //
-$datatable-variants: ('monochrome-white') !default;
-$datatable-variant-color-light: $variant-color-light !default;
-$datatable-variant-color-dark: $variant-color-dark !default;
+$datatable-color-for-light-variant: $color-for-light-variant !default;
+$datatable-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('datatable': add-variant($datatable-variants, $color-groups)));
+$datatable-variant-light: datatable-variant($color-white) !default;
+$datatable-variant-dark: datatable-variant($color-dark) !default;
+
+$datatable-variants: (
+    light: $datatable-variant-light,
+    dark: $datatable-variant-dark,
+) !default;

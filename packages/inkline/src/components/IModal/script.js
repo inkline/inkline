@@ -30,6 +30,10 @@ export default {
             type: String,
             default: 'zoom-in-center-transition'
         },
+        fill: {
+            type: Boolean,
+            default: false
+        },
         showClose: {
             type: Boolean,
             default: true
@@ -87,6 +91,10 @@ export default {
     },
     created() {
         popupManager.register(this);
+
+        this.classesProvider.add(() => ({
+            '-fill': Boolean(this.fill)
+        }));
     },
     destroyed() {
         popupManager.unregister(this);

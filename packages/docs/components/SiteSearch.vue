@@ -249,7 +249,7 @@ export default {
             display: block;
             text-align: right;
             padding: ($spacer / 2) $spacer;
-            border-top: 1px solid colors('gray-30');
+            border-top: 1px solid $border-color-light;
             font-size: font-size('sm');
             color: colors('gray-60');
         }
@@ -304,6 +304,14 @@ export default {
             .body {
                 max-width: 100%;
             }
+        }
+    }
+}
+
+.inkline.-dark .site-search {
+    .menu {
+        > .footer {
+            border-top: 1px solid $border-color-dark;
         }
     }
 }

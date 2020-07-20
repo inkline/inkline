@@ -1,23 +1,23 @@
 //
 // Navbar variants
 //
-@each $variant-name, $variant in variants('input') {
-    $_color: map_get($variant, 'color');
-    $_color-focus: map_get($variant, 'color-focus');
-    $_color-disabled: map_get($variant, 'color-disabled');
-    $_placeholder-color: map_get($variant, 'placeholder-color');
-    $_plaintext-color: map_get($variant, 'plaintext-color');
-    $_background: map_get($variant, 'background');
-    $_background-disabled: map_get($variant, 'background-disabled');
-    $_background-focus: map_get($variant, 'background-focus');
-    $_border-color: map_get($variant, 'border-color');
-    $_border-color-hover: map_get($variant, 'border-color-hover');
-    $_border-color-focus: map_get($variant, 'border-color-focus');
-    $_icon-circle-background: map_get($variant, 'icon-circle-background');
-    $_icon-circle-background-hover: map_get($variant, 'icon-circle-background-hover');
-    $_icon-circle-color: map_get($variant, 'icon-circle-color');
-    $_icon-circle-color-hover: map_get($variant, 'icon-circle-color-hover');
-    $_append-prepend-background: map_get($variant, 'append-prepend-background');
+@each $variant-name, $variant in $input-variants {
+    $_color: map-get($variant, 'color');
+    $_color-focus: map-get($variant, 'color-focus');
+    $_color-disabled: map-get($variant, 'color-disabled');
+    $_placeholder-color: map-get($variant, 'placeholder-color');
+    $_plaintext-color: map-get($variant, 'plaintext-color');
+    $_background: map-get($variant, 'background');
+    $_background-disabled: map-get($variant, 'background-disabled');
+    $_background-focus: map-get($variant, 'background-focus');
+    $_border-color: map-get($variant, 'border-color');
+    $_border-color-hover: map-get($variant, 'border-color-hover');
+    $_border-color-focus: map-get($variant, 'border-color-focus');
+    $_icon-circle-background: map-get($variant, 'icon-circle-background');
+    $_icon-circle-background-hover: map-get($variant, 'icon-circle-background-hover');
+    $_icon-circle-color: map-get($variant, 'icon-circle-color');
+    $_icon-circle-color-hover: map-get($variant, 'icon-circle-color-hover');
+    $_append-prepend-background: map-get($variant, 'append-prepend-background');
 
     .form-input-group.-#{$variant-name} {
         .form-input {

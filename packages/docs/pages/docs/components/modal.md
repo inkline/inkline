@@ -118,7 +118,7 @@ export default {
 </i-code>
 
 ### Variants
-Inkline includes two predefined modal styles, each serving its own semantic purpose. You can set the style of a `<i-modal>` using the `variant` property. By default, modals use the `light` variant.
+Inkline includes multiple predefined modal styles, each serving its own semantic purpose. You can set the style of a `<i-modal>` using the `variant` property. By default, modals use the `light` variant.
 
 <i-code title="Modal Variants">
 <i-tab type="preview">
@@ -265,6 +265,154 @@ export default {
 </i-code>
 
 
+### Fill Variants
+You can apply the variant color to all modal parts (header, body, footer) using the `fill` property.
+
+<i-code title="Modal Fill Variants">
+<i-tab type="preview">
+<div>
+    <i-button variant="primary" @click="showFillModalPrimary = true">Primary Modal</i-button>&nbsp;
+    <i-button variant="secondary" @click="showFillModalSecondary = true">Secondary Modal</i-button>&nbsp;
+    <i-button variant="light" @click="showFillModalLight = true">Light Modal</i-button>&nbsp;
+    <i-button variant="dark" @click="showFillModalDark = true">Dark Modal</i-button>&nbsp;
+    <i-button variant="info" @click="showFillModalInfo = true">Info Modal</i-button>&nbsp;
+    <i-button variant="success" @click="showFillModalSuccess = true">Success Modal</i-button>&nbsp;
+    <i-button variant="warning" @click="showFillModalWarning = true">Warning Modal</i-button>&nbsp;
+    <i-button variant="danger" @click="showFillModalDanger = true">Danger Modal</i-button>
+</div>
+
+<i-modal fill variant="primary" v-model="showFillModalPrimary">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+
+<i-modal fill variant="secondary" v-model="showFillModalSecondary">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+
+<i-modal fill variant="light" v-model="showFillModalLight">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+
+<i-modal fill variant="dark" v-model="showFillModalDark">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+
+<i-modal fill variant="info" v-model="showFillModalInfo">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+
+<i-modal fill variant="success" v-model="showFillModalSuccess">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+
+<i-modal fill variant="warning" v-model="showFillModalWarning">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+
+<i-modal fill variant="danger" v-model="showFillModalDanger">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+</i-tab>
+<i-tab type="html">
+
+~~~html
+<i-button variant="primary" @click="visible = true">Primary Modal</i-button>
+<i-modal fill variant="primary" v-model="visible">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+~~~
+~~~html
+<i-button variant="secondary" @click="visible = true">Secondary Modal</i-button>
+<i-modal fill variant="secondary" v-model="visible">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+~~~
+~~~html
+<i-button variant="light" @click="visible = true">Light Modal</i-button>
+<i-modal fill variant="light" v-model="visible">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+~~~
+~~~html
+<i-button variant="dark" @click="visible = true">Dark Modal</i-button>
+<i-modal fill variant="dark" v-model="visible">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+~~~
+~~~html
+<i-button variant="info" @click="visible = true">Info Modal</i-button>
+<i-modal fill variant="info" v-model="visible">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+~~~
+~~~html
+<i-button variant="success" @click="visible = true">Success Modal</i-button>
+<i-modal fill variant="success" v-model="visible">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+~~~
+~~~html
+<i-button variant="warning" @click="visible = true">Warning Modal</i-button>
+<i-modal fill variant="warning" v-model="visible">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+~~~
+~~~html
+<i-button variant="danger" @click="visible = true">Danger Modal</i-button>
+<i-modal fill variant="danger" v-model="visible">
+    <template slot="header">Modal Header</template>
+    This is the modal body. Useful information goes here.
+    <template slot="footer">Modal Footer</template>
+</i-modal>
+~~~
+
+</i-tab>
+<i-tab type="js">
+
+~~~js
+export default {
+  data () {
+    return {
+      visible: false
+    };
+  }
+}
+~~~
+
+</i-tab>
+</i-code>
+
+
 ### Component API
 Here you can find a list of the various customization options you can use for the modal component as props, as well as available slots and events.
 
@@ -277,6 +425,13 @@ Here you can find a list of the various customization options you can use for th
                 <template slot="type"><code>Boolean</code></template>
                 <template slot="values"><code>true</code>, <code>false</code></template>
                 <template slot="default"><code>true</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">fill</template>
+                <template slot="description">Sets the variant color for all modal elements (header, body, footer).</template>
+                <template slot="type"><code>Boolean</code></template>
+                <template slot="values"><code>true</code>, <code>false</code></template>
+                <template slot="default"><code>false</code></template>
             </api-table-row>
             <api-table-row>
                 <template slot="property">value</template>
@@ -442,18 +597,56 @@ Here you can find a list of the Sass variables you can use for the modal compone
                 
 ~~~scss
 @function modal-variant($variant) {
-    $modal-variant-color: variant-color-by-luminance($variant, $modal-color-for-light-variant, $modal-color-for-dark-variant);
-    $modal-variant-background: $variant;
-    $modal-variant-header-background: darken-lightness($modal-variant-background, 10%);
-    $modal-variant-footer-background: $modal-variant-background;
-    $modal-variant-border-color: darken-lightness($variant, 10%);
+    $modal-variant-fill-color: variant-color-by-luminance($variant, $modal-color-for-light-variant, $modal-color-for-dark-variant);
+    $modal-variant-fill-background: $variant;
+    $modal-variant-fill-header-background: darken-lightness($modal-variant-fill-color, 10%);
+    $modal-variant-fill-footer-background: $modal-variant-fill-color;
+    $modal-variant-fill-border-color: darken-lightness($variant, 10%);
+
+    $modal-variant-color-light: $modal-color-for-light-variant;
+    $modal-variant-background-light: $color-white;
+    $modal-variant-border-color-light: $border-color-light;
+    $modal-variant-header-color-light: variant-color-by-luminance($variant, $modal-color-for-light-variant, $modal-color-for-dark-variant);
+    $modal-variant-header-background-light: $variant;
+    $modal-variant-header-border-color-light: $modal-variant-fill-border-color;
+    $modal-variant-footer-color-light: $modal-variant-color-light;
+    $modal-variant-footer-background-light: $modal-variant-background-light;
+    $modal-variant-footer-border-color-light: $modal-variant-border-color-light;
+
+    $modal-variant-color-dark: $modal-color-for-dark-variant;
+    $modal-variant-background-dark: $color-dark;
+    $modal-variant-border-color-dark: $border-color-dark;
+    $modal-variant-header-color-dark: variant-color-by-luminance($variant, $modal-color-for-light-variant, $modal-color-for-dark-variant);
+    $modal-variant-header-background-dark: $variant;
+    $modal-variant-header-border-color-dark: $modal-variant-fill-border-color;
+    $modal-variant-footer-color-dark: $modal-variant-color-dark;
+    $modal-variant-footer-background-dark: $modal-variant-background-dark;
+    $modal-variant-footer-border-color-dark: $modal-variant-border-color-dark;
 
     $variant-map: (
-        color: $modal-variant-color,
-        background: $modal-variant-background,
-        header-background: $modal-variant-header-background,
-        footer-background: $modal-variant-footer-background,
-        border-color: $modal-variant-border-color,
+        color-light: $modal-variant-color-light,
+        background-light: $modal-variant-background-light,
+        border-color-light: $modal-variant-border-color-light,
+        header-color-light: $modal-variant-header-color-light,
+        header-background-light: $modal-variant-header-background-light,
+        header-border-color-light: $modal-variant-header-border-color-light,
+        footer-color-light: $modal-variant-footer-color-light,
+        footer-background-light: $modal-variant-footer-background-light,
+        footer-border-color-light: $modal-variant-footer-border-color-light,
+        color-dark: $modal-variant-color-dark,
+        background-dark: $modal-variant-background-dark,
+        border-color-dark: $modal-variant-border-color-dark,
+        header-color-dark: $modal-variant-header-color-dark,
+        header-background-dark: $modal-variant-header-background-dark,
+        header-border-color-dark: $modal-variant-header-border-color-dark,
+        footer-color-dark: $modal-variant-footer-color-dark,
+        footer-background-dark: $modal-variant-footer-background-dark,
+        footer-border-color-dark: $modal-variant-footer-border-color-dark,
+        fill-color: $modal-variant-fill-color,
+        fill-background: $modal-variant-fill-background,
+        fill-header-background: $modal-variant-fill-header-background,
+        fill-footer-background: $modal-variant-fill-footer-background,
+        fill-border-color: $modal-variant-fill-border-color,
     );
 
     @return $variant-map;
