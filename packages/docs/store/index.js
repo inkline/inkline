@@ -22,12 +22,21 @@ const getters = {
 
 const mutations = {
     setPages(state, { pages }) {
+        const processPath = (path) => path.replace(/(.+)\/index$/, '$1');
+
         state.pages = {
             byId: pages.reduce((acc, page) => {
-                acc[page.path] = page;
+                if (Array.isArray(page)) {
+                    page.forEach((subPage) => {
+                        acc[processPath(subPage.path)] = subPage;
+                    });
+                } else {
+                    acc[processPath(page.path)] = page;
+                }
+
                 return acc;
             }, {}),
-            allIds: pages.map((page) => page.path)
+            allIds: pages.map((page) => processPath(page.path))
         };
     },
     setSidebar(state, { sidebar }) {

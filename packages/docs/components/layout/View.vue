@@ -32,7 +32,7 @@ export default {
             .fetch();
 
         return {
-            page
+            page: Array.isArray(page) ? page.find((p) => p.slug === 'index') : page
         };
     },
     mounted() {
