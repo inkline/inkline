@@ -787,8 +787,76 @@ Here you can find a list of the Sass variables you can use for the input compone
                 <template slot="default"><code>1.2rem</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$input-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$input-variant-{variant}</template>
+                <template slot="default"><code>input-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$input-variants</template>
-                <template slot="default"><code>(...)</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $input-variant-light,
+    dark: $input-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">input-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function input-variant($variant) {
+    $input-color: variant-color-by-luminance($variant, $input-color-for-light-variant, $input-color-for-dark-variant);
+    $input-color-focus: $input-color;
+    $input-color-disabled: $input-color;
+    $input-plaintext-color: $input-color;
+    $input-placeholder-color: variant-color-by-luminance($variant, $color-gray-60, $color-gray-40);
+    $input-background: $variant;
+    $input-background-focus: $input-background;
+    $input-background-disabled: variant-color-by-luminance($variant, $color-gray-20, $color-gray-70);
+    $input-border-color: variant-color-by-luminance($variant, $border-color-light, $border-color-dark);
+    $input-border-color-hover: variant-color-by-luminance($variant, darken-lightness($input-border-color, 10%), lighten-lightness($input-border-color, 10%));
+    $input-border-color-focus: $color-primary;
+    $input-icon-circle-background: variant-color-by-luminance($variant, $color-light, $color-dark);
+    $input-icon-circle-background-hover: $color-primary;
+    $input-icon-circle-color: variant-color-by-luminance($variant, $input-color-for-dark-variant, $input-color-for-light-variant);
+    $input-icon-circle-color-hover: $input-icon-circle-color;
+    $input-append-prepend-background: variant-color-by-luminance($variant, $color-light, $color-dark);
+
+    $variant-map: (
+        'color': $input-color,
+        'color-focus': $input-color-focus,
+        'color-disabled': $input-color-disabled,
+        'placeholder-color': $input-placeholder-color,
+        'plaintext-color': $input-plaintext-color,
+        'background': $input-background,
+        'background-disabled': $input-background-disabled,
+        'background-focus': $input-background-focus,
+        'border-color': $input-border-color,
+        'border-color-hover': $input-border-color-hover,
+        'border-color-focus': $input-border-color-focus,
+        'icon-circle-background': $input-icon-circle-background,
+        'icon-circle-background-hover': $input-icon-circle-background-hover,
+        'icon-circle-color': $input-icon-circle-color,
+        'icon-circle-color-hover': $input-icon-circle-color-hover,
+        'append-prepend-background': $input-append-prepend-background,
+    );
+
+    @return $variant-map;
+}
+~~~
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

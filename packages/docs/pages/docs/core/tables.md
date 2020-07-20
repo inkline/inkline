@@ -762,16 +762,61 @@ Here you can find a list of the Sass variables you can use for the table compone
                 <template slot="default"><code>$border-color</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$table-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$table-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$table-variant-{variant}</template>
+                <template slot="default"><code>table-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$table-variants</template>
-                <template slot="default"><code>('brand', 'monochrome-white', 'state')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    primary: $table-variant-primary,
+    secondary: $table-variant-secondary,
+    light: $table-variant-light,
+    dark: $table-variant-dark,
+    info: $table-variant-info,
+    success: $table-variant-success,
+    warning: $table-variant-warning,
+    danger: $table-variant-danger
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$table-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$table-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
+                <template slot="function">table-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function table-variant($variant) {
+    $table-variant-color: variant-color-by-luminance($variant, $table-color-for-light-variant, $table-color-for-dark-variant);
+    $table-variant-background: $variant;
+    $table-variant-background-hover: variant-color-by-luminance($variant, darken-lightness($variant, 10%), lighten-lightness($variant, 10%));
+    $table-variant-background-striped: variant-color-by-luminance($variant, darken-lightness($variant, 5%), lighten-lightness($variant, 5%));
+    $table-variant-border-color: darken($variant, 10%);
+
+    $variant-map: (
+        color: $table-variant-color,
+        background: $table-variant-background,
+        background-hover: $table-variant-background-hover,
+        background-striped: $table-variant-background-striped,
+        border-color: $table-variant-border-color,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

@@ -2,6 +2,7 @@
 @import '../../css/mixins/index';
 @import '../IIcon/css/_variables';
 @import '../IIcon/css/_mixins';
+@import 'css/_mixins';
 @import 'css/_variables';
 @import 'css/_sizes';
 @import 'css/_variants';
@@ -44,35 +45,9 @@
 
             &:checked ~ .form-input-label,
             &[type="checkbox"]:indeterminate ~ .form-input-label {
-                &::before {
-                    color: $form-check-indicator-checked-color;
-                    background-color: $form-check-indicator-checked-background-color;
-                    box-shadow: $form-check-indicator-checked-box-shadow;
-                }
-
                 &::after {
                     transform: scale(1);
                 }
-            }
-
-            &:focus ~ .form-input-label::before {
-                box-shadow: $form-check-indicator-focused-box-shadow;
-            }
-
-            &:active ~ .form-input-label::before {
-                color: $form-check-indicator-active-color;
-                background-color: $form-check-indicator-active-background-color;
-                box-shadow: $form-check-indicator-active-box-shadow;
-            }
-
-            &:disabled ~ .form-input-label,
-            &[readonly] ~ .form-input-label {
-                color: $form-check-disabled-color;
-            }
-
-            &::before {
-                color: $form-check-indicator-disabled-color;
-                background-color: $form-check-indicator-disabled-background-color;
             }
         }
 
@@ -101,7 +76,6 @@
             content: "";
             cursor: pointer;
             user-select: none;
-            box-shadow: $form-check-indicator-box-shadow;
             transition: background-color $transition-duration $transition-easing;
         }
 

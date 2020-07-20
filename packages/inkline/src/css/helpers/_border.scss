@@ -29,7 +29,7 @@
 /**
  * Border colors
  */
-@each $variant-name, $variant in variants('border') {
+@each $variant-name, $variant in $border-variants {
     ._border-color-#{$variant-name} {
         border-color: $variant !important;
     }

@@ -80,7 +80,6 @@ export default {
             const eventFn = eventValueMap[event] ? eventValueMap[event] : eventValueMap.input;
 
             return (value) => {
-                console.log(formControl.schema[FormBuilder.keys.VALIDATE])
                 formControl.schema[FormBuilder.keys.VALIDATE](eventFn(value), { getSchema: this.getSchema });
 
                 this.$emit('validate', this.value);

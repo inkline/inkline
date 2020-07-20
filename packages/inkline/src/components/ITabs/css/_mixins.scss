@@ -1,6 +1,6 @@
 @function tabs-variant($variant) {
     $tabs-variant-color: variant-color-by-luminance($variant, $tabs-color-for-light-variant, $tabs-color-for-dark-variant);
-    $tabs-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+    $tabs-variant-border-color: variant-color-by-luminance($variant, $border-color-light, $border-color-dark);
     $tabs-variant-background: $variant;
 
     $variant-map: (

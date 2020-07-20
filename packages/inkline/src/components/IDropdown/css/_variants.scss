@@ -40,5 +40,23 @@
                 background-color: map-get($variant, 'divider-background');
             }
         }
+
+        &.select {
+            ::v-deep > .menu {
+                .item {
+                    &:not(.-disabled) {
+                        &:hover,
+                        &:focus {
+                            background: map-get($variant, 'background-hover');
+                        }
+                    }
+
+                    &.-active,
+                    &:active {
+                        background: map-get($variant, 'background-active');
+                    }
+                }
+            }
+        }
     }
 }

@@ -339,16 +339,55 @@ Here you can find a list of the Sass variables you can use for the datatable com
                 <template slot="default"><code>true</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$datatable-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$datatable-variant-{variant}</template>
+                <template slot="default"><code>datatable-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$datatable-variants</template>
-                <template slot="default"><code>('monochrome-white')</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $datatable-variant-light,
+    dark: $datatable-variant-dark
+)
+~~~
+                
+</template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$datatable-variant-color-light</template>
-                <template slot="default"><code>$variant-color-light</code></template>
-            </api-table-row>
-            <api-table-row>
-                <template slot="property">$datatable-variant-color-dark</template>
-                <template slot="default"><code>$variant-color-dark</code></template>
+                <template slot="function">datatable-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function datatable-variant($variant) {
+    $datatable-variant-color: variant-color-by-luminance($variant, $datatable-color-for-light-variant, $datatable-color-for-dark-variant);
+    $datatable-variant-background: $variant;
+    $datatable-variant-background-hover: variant-color-by-luminance($variant, darken-lightness($variant, 10%), lighten-lightness($variant, 10%));
+    $datatable-variant-background-striped: variant-color-by-luminance($variant, darken-lightness($variant, 5%), lighten-lightness($variant, 5%));
+    $datatable-variant-border-color: darken($variant, 10%);
+
+    $variant-map: (
+        color: $datatable-variant-color,
+        background: $datatable-variant-background,
+        background-hover: $datatable-variant-background-hover,
+        background-striped: $datatable-variant-background-striped,
+        border-color: $datatable-variant-border-color,
+    );
+
+    @return $variant-map;
+}
+~~~
+                
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

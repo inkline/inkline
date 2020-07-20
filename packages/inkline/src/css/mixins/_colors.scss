@@ -14,10 +14,10 @@
     $luminance: (red($color) * 0.299) + (green($color) * 0.587) + (blue($color) * 0.114);
 
     @if $luminance > 186 {
-        @return $dark;
+        @return $light;
     }
 
-    @return $light;
+    @return $dark;
 }
 
 //

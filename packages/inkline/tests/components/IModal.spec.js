@@ -47,6 +47,13 @@ describe('Components', () => {
                 });
             });
 
+            describe('fill', () => {
+                it('should be defined', () => {
+                    expect(wrapper.vm.fill).toBeDefined();
+                    expect(wrapper.vm.fill).toEqual(false);
+                });
+            });
+
             describe('value', () => {
                 it('should be defined', () => {
                     expect(wrapper.vm.value).toBeDefined();
@@ -249,6 +256,23 @@ describe('Components', () => {
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith(wrapper.vm);
             });
+
+
+            it('should add class rules to classes provider', () => {
+                const classRulesLength = wrapper.vm.classesProvider.length;
+
+                wrapper.vm.created();
+                expect(wrapper.vm.classesProvider.length).toEqual(classRulesLength + 1)
+            });
+
+            it('should add "-fill" class if "fill" property is true', () => {
+                const rule = wrapper.vm.classesProvider[wrapper.vm.classesProvider.length - 1];
+
+                expect(rule()).toEqual(expect.objectContaining({ '-fill': false }));
+                wrapper.setProps({ fill: true });
+                expect(rule()).toEqual(expect.objectContaining({ '-fill': true }));
+            });
+
         });
 
         describe('destroyed()', () => {

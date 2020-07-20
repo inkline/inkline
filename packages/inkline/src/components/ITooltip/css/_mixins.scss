@@ -1,7 +1,7 @@
 @function tooltip-variant($variant) {
     $tooltip-variant-color: variant-color-by-luminance($variant, $tooltip-color-for-light-variant, $tooltip-color-for-dark-variant);
     $tooltip-variant-background: $variant;
-    $tooltip-variant-border-color: variant-color-by-luminance($variant, $border-color-dark, $border-color-light);
+    $tooltip-variant-border-color: variant-color-by-luminance($variant, $border-color-light, $border-color-dark);
 
     $variant-map: (
         color: $tooltip-variant-color,

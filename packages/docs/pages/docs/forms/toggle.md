@@ -336,8 +336,64 @@ Here you can find a list of the Sass variables you can use for the toggle compon
                 <template slot="default"><code>$color-gray-20</code></template>
             </api-table-row>
             <api-table-row>
+                <template slot="property">$toggle-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$toggle-variant-{variant}</template>
+                <template slot="default"><code>toggle-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
                 <template slot="property">$toggle-variants</template>
-                <template slot="default"><code>(...)</code></template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $toggle-variant-light,
+    dark: $toggle-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">toggle-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function toggle-variant($variant) {
+    $toggle-variant-color: variant-color-by-luminance($variant, $toggle-color-for-light-variant, $toggle-color-for-dark-variant);
+    $toggle-variant-border-color: variant-color-by-luminance($variant, $border-color-light, $border-color-dark);
+    $toggle-variant-background: $variant;
+    $toggle-variant-background-active: $color-primary !default;
+    $toggle-variant-background-disabled: variant-color-by-luminance($variant, $color-gray-40, $color-gray-60) !default;
+    $toggle-variant-background-active-disabled: mix($toggle-variant-background-active, $toggle-variant-background-disabled, 25%) !default;
+    $toggle-variant-indicator-background: $color-white !default;
+    $toggle-variant-indicator-background-active: $toggle-variant-indicator-background !default;
+    $toggle-variant-indicator-background-disabled: $color-gray-20 !default;
+    $toggle-variant-indicator-background-active-disabled: $toggle-variant-indicator-background-disabled !default;
+
+    $variant-map: (
+        color: $toggle-variant-color,
+        background: $toggle-variant-background,
+        border-color: $toggle-variant-border-color,
+        background-active: $toggle-variant-background-active,
+        background-disabled: $toggle-variant-background-disabled,
+        background-active-disabled: $toggle-variant-background-active-disabled,
+        indicator-background: $toggle-variant-indicator-background,
+        indicator-background-active: $toggle-variant-indicator-background-active,
+        indicator-background-disabled: $toggle-variant-indicator-background-disabled,
+        indicator-background-active-disabled: $toggle-variant-indicator-background-active-disabled,
+    );
+
+    @return $variant-map;
+}
+~~~
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

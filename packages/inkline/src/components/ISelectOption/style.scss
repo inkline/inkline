@@ -2,7 +2,6 @@
 @import '../../css/mixins/index';
 @import '../ISelect/css/_variables';
 @import 'css/_variables';
-@import 'css/_variants';
 
 /**
  * Select Option
@@ -33,6 +32,4 @@
     &.-active {
         font-weight: bold;
     }
-
-    @include select-option-color-variant(variant-element('select', 'light'));
 }

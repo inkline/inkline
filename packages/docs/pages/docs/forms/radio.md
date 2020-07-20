@@ -528,8 +528,72 @@ Here you can find a list of the Sass variables you can use for the checkbox and 
                 <template slot="default"><code>0.5rem</code></template>
             </api-table-row>
             <api-table-row>
-                <template slot="property">$form-check-variants</template>
-                <template slot="default"><code>('monochrome-white')</code></template>
+                <template slot="property">$checkable-color-for-light-variant</template>
+                <template slot="default"><code>$color-for-light-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$checkable-color-for-dark-variant</template>
+                <template slot="default"><code>$color-for-dark-variant</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$checkable-variant-{variant}</template>
+                <template slot="default"><code>checkable-variant($color-{variant})</code></template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="property">$checkable-variants</template>
+<template slot="default-row">
+                
+~~~scss
+(
+    light: $checkable-variant-light,
+    dark: $checkable-variant-dark
+)
+~~~
+                
+</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="function">checkable-variant</template>
+<template slot="default-row">
+                
+~~~scss
+@function checkable-variant($variant) {
+    $checkable-variant-indicator-background: $variant;
+    $checkable-variant-indicator-color: $color-black;
+    $checkable-variant-indicator-checked-color: $color-white;
+    $checkable-variant-indicator-active-color: $color-white;
+    $checkable-variant-indicator-disabled-color: $color-gray-30;
+    $checkable-variant-indicator-checked-background-color: $color-primary;
+    $checkable-variant-indicator-active-background-color: $color-primary;
+    $checkable-variant-indicator-disabled-background-color: $color-gray-40;
+    $checkable-variant-indicator-disabled-checked-background-color: variant-color-by-luminance($variant, $color-gray-40, $color-gray-60);
+    $checkable-variant-indicator-box-shadow: 0 0 0 1px rgba($color-black, 0.2), inset 0 0.25rem 0.25rem rgba($color-black, 0.1) !default;
+    $checkable-variant-indicator-focused-box-shadow: 0 0 0 1px $body-background, 0 0 0.2rem 0.2rem rgba($color-primary, 0.33) !default;
+    $checkable-variant-indicator-checked-box-shadow: none !default;
+    $checkable-variant-indicator-active-box-shadow: none !default;
+    $checkable-variant-indicator-background-size: 0.5rem !default;
+
+    $variant-map: (
+        indicator-background: $checkable-variant-indicator-background,
+        indicator-color: $checkable-variant-indicator-color,
+        indicator-checked-color: $checkable-variant-indicator-checked-color,
+        indicator-active-color: $checkable-variant-indicator-active-color,
+        indicator-disabled-color: $checkable-variant-indicator-disabled-color,
+        indicator-checked-background-color: $checkable-variant-indicator-checked-background-color,
+        indicator-active-background-color: $checkable-variant-indicator-active-background-color,
+        indicator-disabled-background-color: $checkable-variant-indicator-disabled-background-color,
+        indicator-disabled-checked-background-color: $checkable-variant-indicator-disabled-checked-background-color,
+        indicator-box-shadow: $checkable-variant-indicator-box-shadow,
+        indicator-focused-box-shadow: $checkable-variant-indicator-focused-box-shadow,
+        indicator-checked-box-shadow: $checkable-variant-indicator-checked-box-shadow,
+        indicator-active-box-shadow: $checkable-variant-indicator-active-box-shadow,
+        indicator-background-size: $checkable-variant-indicator-background-size
+    );
+
+    @return $variant-map;
+}
+~~~
+</template>
             </api-table-row>
         </api-table>
     </i-tab>

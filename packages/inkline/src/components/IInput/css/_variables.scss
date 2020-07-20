@@ -14,44 +14,10 @@ $input-prefix-border-width: 1px !default;
 
 $input-font-size: $font-size !default;
 
-$input-color-light: $body-color-light !default;
-$input-color-focus-light: $input-color-light !default;
-$input-color-disabled-light: $input-color-light !default;
-$input-placeholder-color-light: colors('gray-60') !default;
-$input-plaintext-color-light: $input-color-light !default;
-$input-background-light: colors('white') !default;
-$input-background-disabled-light: colors('gray-20') !default;
-$input-background-focus-light: $input-background-light !default;
-$input-border-color-light: $border-color-light !default;
-$input-border-color-hover-light: darken-lightness($input-border-color-light, 10%) !default;
-$input-border-color-focus-light: colors('primary') !default;
-$input-icon-circle-background-light: colors('light') !default;
-$input-icon-circle-background-hover-light: colors('primary') !default;
-$input-icon-circle-color-light: colors('dark') !default;
-$input-icon-circle-color-hover-light: $input-icon-circle-color-light !default;
-$input-append-prepend-background-light: colors('light') !default;
-
-$input-color-dark: $body-color-dark !default;
-$input-color-focus-dark: $input-color-dark !default;
-$input-color-disabled-dark: $input-color-dark !default;
-$input-placeholder-color-dark: colors('gray-40') !default;
-$input-plaintext-color-dark: $input-color-dark !default;
-$input-background-dark: darken(colors('dark'), 3%) !default;
-$input-background-disabled-dark: colors('gray-70') !default;
-$input-background-focus-dark: $input-background-dark !default;
-$input-border-color-dark: $border-color-dark !default;
-$input-border-color-hover-dark: lighten-lightness($input-border-color-dark, 10%) !default;
-$input-border-color-focus-dark: colors('primary') !default;
-$input-icon-circle-background-dark: colors('dark') !default;
-$input-icon-circle-background-hover-dark: colors('primary') !default;
-$input-icon-circle-color-dark: colors('white') !default;
-$input-icon-circle-color-hover-dark: $input-icon-circle-color-dark !default;
-$input-append-prepend-background-dark: colors('dark') !default;
-
 $input-border-width: $border-width !default;
 $input-border-radius: $border-radius !default;
 
-$input-box-shadow: inset 0 1px 1px rgba(colors('black'), 0.05) !default;
+$input-box-shadow: inset 0 1px 1px rgba($color-black, 0.05) !default;
 $input-transition: background-color $transition-duration $transition-easing, color $transition-duration $transition-easing, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
 
 $input-icon-circle-size: 1.2rem !default;
@@ -59,43 +25,13 @@ $input-icon-circle-size: 1.2rem !default;
 //
 // Variants
 //
-$input-variants: (
-    'light': (
-        'color': $input-color-light,
-        'color-focus': $input-color-focus-light,
-        'color-disabled': $input-color-disabled-light,
-        'placeholder-color': $input-placeholder-color-light,
-        'plaintext-color': $input-plaintext-color-light,
-        'background': $input-background-light,
-        'background-disabled': $input-background-disabled-light,
-        'background-focus': $input-background-focus-light,
-        'border-color': $input-border-color-light,
-        'border-color-hover': $input-border-color-hover-light,
-        'border-color-focus': $input-border-color-focus-light,
-        'icon-circle-background': $input-icon-circle-background-light,
-        'icon-circle-background-hover': $input-icon-circle-background-hover-light,
-        'icon-circle-color': $input-icon-circle-color-light,
-        'icon-circle-color-hover': $input-icon-circle-color-hover-light,
-        'append-prepend-background': $input-append-prepend-background-light,
-    ),
-    'dark': (
-        'color': $input-color-dark,
-        'color-focus': $input-color-focus-dark,
-        'color-disabled': $input-color-disabled-dark,
-        'placeholder-color': $input-placeholder-color-dark,
-        'plaintext-color': $input-plaintext-color-dark,
-        'background': $input-background-dark,
-        'background-disabled': $input-background-disabled-dark,
-        'background-focus': $input-background-focus-dark,
-        'border-color': $input-border-color-dark,
-        'border-color-hover': $input-border-color-hover-dark,
-        'border-color-focus': $input-border-color-focus-dark,
-        'icon-circle-background': $input-icon-circle-background-dark,
-        'icon-circle-background-hover': $input-icon-circle-background-hover-dark,
-        'icon-circle-color': $input-icon-circle-color-dark,
-        'icon-circle-color-hover': $input-icon-circle-color-hover-dark,
-        'append-prepend-background': $input-append-prepend-background-dark,
-    ),
-);
+$input-color-for-light-variant: $color-for-light-variant !default;
+$input-color-for-dark-variant: $color-for-dark-variant !default;
 
-$variants: map_merge($variants, ('input': $input-variants));
+$input-variant-light: input-variant($color-white) !default;
+$input-variant-dark: input-variant($color-dark) !default;
+
+$input-variants: (
+    light: $input-variant-light,
+    dark: $input-variant-dark
+) !default;

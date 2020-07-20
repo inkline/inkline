@@ -111,6 +111,10 @@ $site-navigation-border-left-color-active: $color-primary !default;
             margin: 0;
             position: relative;
 
+            ::v-deep .collapsible > .item > .body {
+                background-color: transparent;
+            }
+
             ::v-deep .collapsible > .item > a,
             > a {
                 display: block;
@@ -119,7 +123,7 @@ $site-navigation-border-left-color-active: $color-primary !default;
                 padding-left: $spacer;
                 color: $body-color;
                 background-color: transparent !important;
-                border-left: 1px solid $site-navigation-border-left-color;
+                border-left: 1px solid $site-navigation-border-left-color !important;
                 transition: color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
 
                 &::before {
@@ -190,10 +194,12 @@ $site-navigation-border-left-color-active: $color-primary !default;
                     }
                 }
 
-                .body > .content {
-                    ul li a {
-                        border-left-color: $site-navigation-border-left-color-active;
-                        transition: color $transition-duration $transition-easing;
+                .body {
+                    > .content {
+                        ul li a {
+                            border-left-color: $site-navigation-border-left-color-active;
+                            transition: color $transition-duration $transition-easing;
+                        }
                     }
                 }
             }
@@ -234,7 +240,7 @@ $site-navigation-border-left-color-active: $color-primary !default;
                 ::v-deep .collapsible > .item > a,
                 > a {
                     color: colors('gray-40');
-                    border-left: 1px solid colors('gray-70');
+                    border-left: 1px solid colors('gray-70') !important;
 
                     &::before {
                         background: $link-color;
