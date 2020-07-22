@@ -21,8 +21,7 @@ export const sidebar = [
                     { title: 'CDN', path: '/docs/introduction/installation/cdn' }
                 ]
             },
-            { path: '/docs/introduction/plugin-options' },
-            { path: '/docs/introduction/guides' }
+            { path: '/docs/introduction/plugin-options' }
         ]
     },
     {
