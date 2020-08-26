@@ -445,7 +445,7 @@ You can control what breakpoint your sidebar will collapse at using the `collaps
 <i-tab type="html">
 
 ~~~html
-<i-layout">
+<i-layout>
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
             <i-navbar-brand>Sidebar</i-navbar-brand>
@@ -512,7 +512,7 @@ Setting a `collapse` value of `true` will set the sidebar to be always collapsib
 <i-tab type="html">
 
 ~~~html
-<i-layout">
+<i-layout>
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
             <i-navbar-brand>Sidebar</i-navbar-brand>
@@ -574,7 +574,7 @@ Setting a `collapse` value of `false` will set the sidebar to never be collapsib
 <i-tab type="html">
 
 ~~~html
-<i-layout">
+<i-layout>
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
             <i-navbar-brand>Sidebar</i-navbar-brand>
@@ -675,7 +675,7 @@ This property allows you to control whether the sidebar will affect the content 
 <i-tab type="html">
 
 ~~~html
-<i-layout">
+<i-layout>
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
             <i-navbar-brand>Relative Position Sidebar</i-navbar-brand>
@@ -696,7 +696,7 @@ This property allows you to control whether the sidebar will affect the content 
 ~~~
 
 ~~~html
-<i-layout">
+<i-layout>
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
             <i-navbar-brand>Absolute Position Sidebar</i-navbar-brand>
@@ -717,7 +717,7 @@ This property allows you to control whether the sidebar will affect the content 
 ~~~
 
 ~~~html
-<i-layout">
+<i-layout>
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
             <i-navbar-brand>Fixed Position Sidebar</i-navbar-brand>
