@@ -360,7 +360,7 @@ You can easily place your sidebar on the right side of a layout by setting the `
 <i-tab type="html">
 
 ~~~html
-<i-layout">
+<i-layout>
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
             <i-navbar-brand>Left Sidebar</i-navbar-brand>
@@ -381,7 +381,7 @@ You can easily place your sidebar on the right side of a layout by setting the `
 ~~~
 
 ~~~html
-<i-layout">
+<i-layout>
     <i-layout-header class="_padding-0">
         <i-navbar :collapse="false">
             <i-navbar-brand>Right Sidebar</i-navbar-brand>
