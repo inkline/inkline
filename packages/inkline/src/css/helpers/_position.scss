@@ -4,7 +4,7 @@
 
 @each $position in ('static', 'relative', 'absolute', 'fixed', 'sticky') {
     ._position-#{$position} {
-        position: $position !important;
+        position: #{$position} !important;
     }
 }
 
