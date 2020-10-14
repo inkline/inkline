@@ -67,6 +67,25 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "marbocub",
+      "name": "marbocub",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1912821?v=4",
+      "profile": "https://github.com/marbocub",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "dimitrio-m",
+      "name": "Dimitrios Mandamadiotis",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/16154728?v=4",
+      "profile": "https://dimitrio.dev/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 10
