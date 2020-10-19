@@ -2,8 +2,8 @@ const validator = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(
 
 export function email(value) {
     if (value.constructor === Array) {
-        return value.every((v) => validator.test(String(v)));
+        return value.every((v) => !v || validator.test(String(v)));
     }
 
-    return validator.test(String(value));
+    return !value || validator.test(String(value));
 }

@@ -25,5 +25,13 @@ describe('Validators', () => {
         it('should return false if array doesn\'t contain only valid emails', () => {
             expect(email(['user1@example.com', 'user2@example'])).toEqual(false);
         });
+
+        it('should return true if value not provided', () => {
+            expect(email('')).toEqual(true);
+        });
+
+        it('should return true if array values not provided', () => {
+            expect(email(['', ''])).toEqual(true);
+        });
     });
 });
