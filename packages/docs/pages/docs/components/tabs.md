@@ -88,7 +88,7 @@ You can use the `header` scoped slot to provide a custom heading for the tab ite
                 </i-button>
             </li>
         </ul>
-    </i-tab>
+    </template>
     <i-tab title="Tab 1">
         Tab 1 content
     </i-tab>
