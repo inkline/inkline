@@ -16,7 +16,8 @@
                     :id="`tab-heading-${tab.id}`"
                     tabindex="0"
                     @click="onHeadingClick(tab)">
-                    {{ tab.title }}
+                    <custom-slot v-if="tab.$slots.title" :components="tab.$slots.title" />
+                    <template v-else>{{tab.title}}</template>
                 </i-button>
             </i-button-group>
         </slot>
