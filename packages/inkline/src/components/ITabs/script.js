@@ -10,7 +10,11 @@ export default {
     name: 'ITabs',
     components: {
         IButtonGroup,
-        IButton
+        IButton,
+        CustomSlot: {
+            functional: true,
+            render: (h, ctx) => h('div', {}, ctx.props.components)
+        }
     },
     mixins: [
         AttributesProviderMixin,

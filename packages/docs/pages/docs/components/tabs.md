@@ -106,6 +106,66 @@ You can use the `header` scoped slot to provide a custom heading for the tab ite
 </i-tab>
 </i-code>
 
+### Custom Tab Title
+You can use the `title` slot for `<i-tab>` to provide custom tab titles, such as including icons, another components or using font efects.
+
+<i-code title="Custom Tab Title">
+<i-tab type="preview">
+    <i-tabs>
+        <i-tab>
+            <template v-slot:title>
+                <i-icon icon="check" />
+                Tab 1
+            </template>
+            Tab 1 content
+        </i-tab>
+        <i-tab>
+            <template v-slot:title>
+                <i-icon icon="info" />
+                <em>Tab 2</em>
+            </template>
+            Tab 2 content
+        </i-tab>
+        <i-tab>
+            <template v-slot:title>
+                <i-icon icon="warning" />
+                <strong>Tab 3</strong>
+            </template>
+            Tab 3 content
+        </i-tab>
+    </i-tabs>
+</i-tab>
+<i-tab type="html">
+
+~~~html
+<i-tabs>
+    <i-tab>
+        <template v-slot:title>
+            <i-icon icon="check" />
+            Tab 1
+        </template>
+        Tab 1 content
+    </i-tab>
+    <i-tab>
+        <template v-slot:title>
+            <i-icon icon="info" />
+            <em>Tab 2</em>
+        </template>
+        Tab 2 content
+    </i-tab>
+    <i-tab>
+        <template v-slot:title>
+            <i-icon icon="warning" />
+            <strong>Tab 3</strong>
+        </template>
+        Tab 3 content
+    </i-tab>
+</i-tabs>
+~~~
+
+</i-tab>
+</i-code>
+
 ### Default Open Tab
 A specific tab can be opened by default, on page load, using the `v-model` directive of the `<i-tabs>` component. First, you'll need to assign an `id` to the `<i-tab>` components which will identify the open panels.
  
@@ -355,6 +415,10 @@ Here you can find a list of the various customization options you can use for th
             <api-table-row>
                 <template slot="slot">default</template>
                 <template slot="description">Slot for tabdefault content.</template>
+            </api-table-row>
+            <api-table-row>
+                <template slot="slot">title</template>
+                <template slot="description">Slot for custom tab title.</template>
             </api-table-row>
         </api-table>
     </i-tab>
