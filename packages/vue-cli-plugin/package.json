@@ -1,6 +1,6 @@
 {
     "name": "@inkline/vue-cli-plugin-inkline",
-    "version": "2.3.2",
+    "version": "2.3.3",
     "description": "Vue CLI Plugin for Inkline, the customizable Vue.js UI/UX Library",
     "main": "index.js",
     "scripts": {
@@ -11,7 +11,7 @@
         "test:install:ts": "cd tests/app-ts && npm install"
     },
     "dependencies": {
-        "@inkline/inkline": "^2.3.2"
+        "@inkline/inkline": "^2.3.3"
     },
     "peerDependencies": {
         "node-sass": "*",
