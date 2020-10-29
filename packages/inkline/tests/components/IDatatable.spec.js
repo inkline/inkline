@@ -937,6 +937,14 @@ describe('Components', () => {
                     expect(wrapper.vm.expanded.rowId).toEqual(false);
                 });
 
+                it('should emit expand event', () => {
+                    const spy = jest.spyOn(wrapper.vm, '$emit');
+
+                    wrapper.vm.onClickExpand('rowId');
+
+                    expect(spy).toHaveBeenCalledWith('expand', 'rowId');
+                });
+
                 it('should set rowId expanded to true if singleExpand', () => {
                     wrapper.setProps({ singleExpand: true });
 
