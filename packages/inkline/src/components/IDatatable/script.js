@@ -475,6 +475,7 @@ export default {
             }
 
             this.expanded = { ...this.expanded, [rowId]: !this.expanded[rowId] };
+            this.$emit('expand', rowId);
         },
         /**
          * Click handler for header cell that triggers sorting and toggles sort direction
