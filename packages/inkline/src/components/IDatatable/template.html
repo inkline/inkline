@@ -57,7 +57,7 @@
                                 <span v-if="!column.component">
                                     {{row[column.path]}}
                                 </span>
-                                <span v-else :is="column.component" :row="row" :column="column" />
+                                <span v-else :is="column.component" :row="row" :data="tableRows[row.indexRef]" :column="column" />
                             </td>
                         </slot>
                         <td class="dtd" v-if="hasExpandableRows">
