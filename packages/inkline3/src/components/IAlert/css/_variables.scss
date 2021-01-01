@@ -1,0 +1,43 @@
+//
+// Alert variables
+//
+$alert-font-size: $font-size !default;
+$alert-font-weight: font-weight(normal) !default;
+$alert-line-height: $line-height !default;
+
+$alert-border-width: $border-width !default;
+$alert-border-radius: $border-radius !default;
+
+$alert-padding-base: spacers('1') !default;
+$alert-padding: size-map($alert-padding-base, $sizes, $size-multipliers) !default;
+
+$alert-dismiss-size: 1rem !default;
+
+$alert-background-mix-percentage: 60% !default;
+$alert-border-darken-lighten-percentage: 10% !default;
+$alert-code-color-darken-lighten-percentage: 10% !default;
+$alert-code-background-color-darken-lighten-percentage: 7% !default;
+$alert-color-darken-lighten-percentage: 30% !default;
+$alert-link-color-darken-lighten-percentage: 35% !default;
+
+//
+// Variants
+//
+$alert-color-for-light-variant: $color-for-light-variant !default;
+$alert-color-for-dark-variant: $color-for-dark-variant !default;
+
+$alert-variant-primary: alert-variant($color-primary) !default;
+$alert-variant-secondary: alert-variant($color-secondary) !default;
+$alert-variant-info: alert-variant($color-info) !default;
+$alert-variant-success: alert-variant($color-success) !default;
+$alert-variant-warning: alert-variant($color-warning) !default;
+$alert-variant-danger: alert-variant($color-danger) !default;
+
+$alert-variants: (
+    primary: $alert-variant-primary,
+    secondary: $alert-variant-secondary,
+    info: $alert-variant-info,
+    success: $alert-variant-success,
+    warning: $alert-variant-warning,
+    danger: $alert-variant-danger
+) !default;

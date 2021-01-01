@@ -1,0 +1,358 @@
+// Typography
+//
+
+// Font families
+//
+$font-family-primary-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !default;
+$font-family-primary-monospace: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+$font-family-primary-print: 'Georgia', 'Times New Roman', 'Times', serif !default;
+
+$font-families-primary: (
+    'base': $font-family-primary-base,
+    'monospace': $font-family-primary-monospace,
+    'print': $font-family-primary-print,
+) !default;
+
+:root {
+    @each $font-family-key, $font-family-value in $font-families-primary {
+        --font-family-primary-#{$font-family-key}: #{$font-family-value};
+    }
+}
+
+@function font-family-primary($font-family-key) {
+    @return var(--font-family-primary-#{$font-family-key});
+}
+
+$font-family-secondary-base: $font-family-primary-base !default;
+$font-family-secondary-print: $font-family-primary-print !default;
+
+$font-families-secondary: (
+    'base': $font-family-secondary-base,
+    'print': $font-family-secondary-print,
+) !default;
+
+:root {
+    @each $font-family-key, $font-family-value in $font-families-secondary {
+        --font-family-secondary-#{$font-family-key}: #{$font-family-value};
+    }
+}
+
+@function font-family-secondary($font-family-key) {
+    @return var(--font-family-secondary-#{$font-family-key});
+}
+
+// Tracking
+//
+$letter-spacing: 0 !default;
+
+:root {
+    --letter-spacing: #{$letter-spacing};
+}
+
+// Font size
+// Assumes the browser default, typically `16px`
+//
+$font-size: 1rem !default;
+
+:root {
+    --font-size: #{$font-size};
+}
+
+$font-size-xs: calc(var(--font-size) * var(--size-multiplier-xs)) !default;
+$font-size-sm: calc(var(--font-size) * var(--size-multiplier-sm)) !default;
+$font-size-md: calc(var(--font-size) * var(--size-multiplier-md)) !default;
+$font-size-lg: calc(var(--font-size) * var(--size-multiplier-lg)) !default;
+$font-size-xl: calc(var(--font-size) * var(--size-multiplier-xs)) !default;
+
+$font-sizes: (
+    'xs': $font-size-xs,
+    'sm': $font-size-sm,
+    'md': $font-size-md,
+    'lg': $font-size-lg,
+    'xl': $font-size-xl,
+) !default;
+
+:root {
+    @each $font-size-key, $font-size-value in $font-sizes {
+        --font-size-#{$font-size-key}: #{$font-size-value};
+    }
+}
+
+@function font-size($font-size-key: null) {
+    @if not ($font-size-key) {
+        @return var(--font-size);
+    }
+
+    @return var(--font-size-#{$font-size-key});
+}
+
+// Font weight
+//
+$font-weight-extralight: 200 !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: normal !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: bold !default;
+$font-weight-black: 900 !default;
+$font-weight-lighter: lighter !default;
+$font-weight-bolder: bolder !default;
+
+$font-weights: (
+    'extralight': $font-weight-extralight,
+    'light': $font-weight-light,
+    'lighter': $font-weight-lighter,
+    'normal': $font-weight-normal,
+    'semibold': $font-weight-semibold,
+    'bold': $font-weight-bold,
+    'bolder': $font-weight-bolder,
+    'black': $font-weight-black,
+) !default;
+
+:root {
+    @each $font-weight-key, $font-weight-value in $font-weights {
+        --font-weight-#{$font-weight-key}: #{$font-weight-value};
+    }
+}
+
+@function font-weight($font-weight-key) {
+    @return var(--font-weight-#{$font-weight-key});
+}
+
+
+// Line height
+//
+$line-height: 1.5 !default;
+
+:root {
+    --line-height: #{$line-height}
+}
+
+// Muted text color
+//
+$text-muted: color('gray-60') !default;
+
+:root {
+    --text-muted: #{$text-muted}
+}
+
+// Headings
+//
+$h1-font-size: calc(2.5 * #{font-size()}) !default;
+$h2-font-size: calc(2 * #{font-size()}) !default;
+$h3-font-size: calc(1.75 * #{font-size()}) !default;
+$h4-font-size: calc(1.5 * #{font-size()}) !default;
+$h5-font-size: calc(1.25 * #{font-size()}) !default;
+$h6-font-size: calc(1 * #{font-size()}) !default;
+
+$headings-font-size: (
+    'h1': $h1-font-size,
+    'h2': $h2-font-size,
+    'h3': $h3-font-size,
+    'h4': $h4-font-size,
+    'h5': $h5-font-size,
+    'h6': $h6-font-size,
+) !default;
+
+:root {
+    @each $heading-font-size-key, $heading-font-size-value in $headings-font-size {
+        --#{$heading-font-size-key}-font-size: #{$heading-font-size-value};
+    }
+}
+
+@function heading-font-size($heading-font-size-key) {
+    @return var(--#{$heading-font-size-key}-font-size);
+}
+
+$headings-margin-top: calc(#{spacer()} * 2.5) !default;
+$headings-margin-bottom: spacer() !default;
+$headings-font-family: font-family-secondary('base') !default;
+$headings-font-weight: font-weight('semibold') !default;
+$headings-line-height: 1.1 !default;
+$headings-color: inherit !default;
+
+:root {
+    --headings-margin-top: #{$headings-margin-top};
+    --headings-margin-bottom: #{$headings-margin-bottom};
+    --headings-font-family: #{$headings-font-family};
+    --headings-font-weight: #{$headings-font-weight};
+    --headings-line-height: #{$headings-line-height};
+    --headings-color: #{$headings-color};
+}
+
+// Displays
+//
+$d1-font-size: calc(5.5 * #{font-size()}) !default;
+$d2-font-size: calc(5 * #{font-size()}) !default;
+$d3-font-size: calc(4.5 * #{font-size()}) !default;
+$d4-font-size: calc(4 * #{font-size()}) !default;
+$d5-font-size: calc(3.5 * #{font-size()}) !default;
+$d6-font-size: calc(3 * #{font-size()}) !default;
+
+$displays-font-size: (
+    'd1': $d1-font-size,
+    'd2': $d2-font-size,
+    'd3': $d3-font-size,
+    'd4': $d4-font-size,
+    'd5': $d5-font-size,
+    'd6': $d6-font-size,
+) !default;
+
+:root {
+    @each $display-font-size-key, $display-font-size-value in $displays-font-size {
+        --#{$display-font-size-key}-font-size: #{$display-font-size-value};
+    }
+}
+
+@function display-font-size($display-font-size-key) {
+    @return var(--#{$display-font-size-key}-font-size);
+}
+
+$displays-font-weight: $headings-font-weight !default;
+$displays-line-height: $headings-line-height !default;
+
+:root {
+    --displays-font-weight: #{$displays-font-weight};
+    --displays-line-height: #{$displays-line-height};
+}
+
+// Links
+//
+$link-color: color('primary') !default;
+$link-color-hover: lighten($color-primary, 10%) !default;
+$link-decoration: none !default;
+$link-decoration-hover: underline !default;
+
+:root {
+    --link-color: #{$link-color};
+    --link-color-hover: #{$link-color-hover};
+    --link-decoration: #{$link-decoration};
+    --link-decoration-hover: #{$link-decoration-hover};
+}
+
+// Lead
+//
+$lead-font-size: font-size('lg') !default;
+$lead-font-weight: 300 !default;
+
+:root {
+    --lead-font-size: #{$lead-font-size};
+    --lead-font-weight: #{$lead-font-weight};
+}
+
+// Lists
+//
+$list-inline-padding: spacer('1') !default;
+$list-item-margin-bottom: spacer('1-2') !default;
+
+:root {
+    --list-inline-padding: #{$list-inline-padding};
+    --list-item-margin-bottom: #{$list-item-margin-bottom};
+}
+
+// Description Lists
+//
+$dt-font-weight: font-weight('bold') !default;
+
+:root {
+    --dt-font-weight: #{$dt-font-weight};
+}
+
+// Emphasis
+//
+$small-font-size: font-size('sm') !default;
+$small-font-weight: font-weight('normal') !default;
+
+:root {
+    --small-font-size: #{$small-font-size};
+    --small-font-weight: #{$small-font-weight};
+}
+
+// Blockquote
+//
+$blockquote-small-color: color('gray-60') !default;
+$blockquote-font-size: font-size('lg') !default;
+$blockquote-border: 3px solid color('gray-30') !default;
+$blockquote-margin: spacer('1') !default;
+$blockquote-bordered-padding: spacer('1') !default;
+
+:root {
+    --blockquote-small-color: #{$blockquote-small-color};
+    --blockquote-font-size: #{$blockquote-font-size};
+    --blockquote-border: #{$blockquote-border};
+    --blockquote-margin: #{$blockquote-margin};
+    --blockquote-bordered-padding: #{$blockquote-bordered-padding};
+}
+
+// Horizontal rule
+//
+$hr-border-color: rgba(color('black'), 0.1) !default;
+$hr-border-width: var(--border-width) !default;
+$hr-margin: spacer() !default;
+
+:root {
+    --hr-border-color: #{$hr-border-color};
+    --hr-border-width: #{$hr-border-width};
+    --hr-margin: #{$hr-margin};
+}
+
+// Mark
+//
+$mark-padding: 0.2rem 0.4rem !default;
+$mark-color: color('gray-80') !default;
+$mark-background-color: color('yellow-10') !default;
+
+:root {
+    --mark-padding: #{$mark-padding};
+    --mark-color: #{$mark-color};
+    --mark-background-color: #{$mark-background-color};
+}
+
+// Code
+//
+$code-font-size: 90% !default;
+$code-padding: 0.15rem 0.4rem !default;
+$code-color: #bd4147 !default;
+$code-background: color('gray-10') !default;
+$code-color-dark: #ff6d6b !default;
+$code-background-dark: color('gray-80') !default;
+
+:root {
+    --code-font-size: #{$code-font-size};
+    --code-padding: #{$code-padding};
+    --code-color: #{$code-color};
+    --code-background: #{$code-background};
+    --code-color-dark: #{$code-color-dark};
+    --code-background-dark: #{$code-background-dark};
+}
+
+// Kbd
+//
+$kbd-font-size: $code-font-size !default;
+$kbd-box-shadow: inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25) !default;
+$kbd-nested-font-weight: font-weight('bold') !default;
+$kbd-color: color('white') !default;
+$kbd-background: color('gray-90') !default;
+$kbd-padding: $code-padding !default;
+
+:root {
+    --kbd-font-size: #{$kbd-font-size};
+    --kbd-box-shadow: #{$kbd-box-shadow};
+    --kbd-nested-font-weight: #{$kbd-nested-font-weight};
+    --kbd-color: #{$kbd-color};
+    --kbd-background: #{$kbd-background};
+    --kbd-padding: #{$kbd-padding};
+}
+
+// Pre
+//
+$pre-font-size: $code-font-size !default;
+$pre-color: color('gray-90') !default;
+$pre-color-dark: color('white') !default;
+$pre-scrollable-max-height: 340px !default;
+
+:root {
+    --pre-font-size: #{$pre-font-size};
+    --pre-color: #{$pre-color};
+    --pre-color-dark: #{$pre-color-dark};
+    --pre-scrollable-max-height: #{$pre-scrollable-max-height};
+}

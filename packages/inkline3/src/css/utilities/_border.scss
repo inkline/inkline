@@ -1,0 +1,93 @@
+/**
+ * Border Utilities
+ */
+
+._border {
+    border-width: var(--border-width) !important;
+    border-style: solid !important;
+    border-color: var(--border-color);
+}
+
+._border-0 {
+    border: none !important;
+}
+
+@each $position in $border-positions {
+    // Add border
+    //
+    ._border-#{$position} {
+        border-#{$position}-width: var(--border-width) !important;
+        border-#{$position}-style: solid !important;
+        border-#{$position}-color: var(--border-color);
+    }
+
+    // Remove border
+    //
+    ._border-#{$position}-0 {
+        border-#{$position}: none !important;
+    }
+}
+
+// Colors
+//
+@each $variant-name, $variant in $border-variants {
+    ._border-color-#{$variant-name} {
+        border-color: color($variant-name) !important;
+    }
+
+    @each $position in $border-positions {
+        ._border-#{$position}-color-#{$variant-name} {
+            border-#{$position}-color: color($variant-name) !important;
+        }
+    }
+}
+
+// Border Radius
+//
+._rounded {
+    border-radius: border-radius() !important;
+}
+
+._rounded-top {
+    border-top-left-radius: border-radius() !important;
+    border-top-right-radius: border-radius() !important;
+}
+
+._rounded-right {
+    border-top-right-radius: border-radius() !important;
+    border-bottom-right-radius: border-radius() !important;
+}
+
+._rounded-bottom {
+    border-bottom-right-radius: border-radius() !important;
+    border-bottom-left-radius: border-radius() !important;
+}
+
+._rounded-left {
+    border-top-left-radius: border-radius() !important;
+    border-bottom-left-radius: border-radius() !important;
+}
+
+._rounded-top-left {
+    border-top-left-radius: border-radius() !important;
+}
+
+._rounded-top-right {
+    border-top-right-radius: border-radius() !important;
+}
+
+._rounded-bottom-left {
+    border-bottom-left-radius: border-radius() !important;
+}
+
+._rounded-bottom-right {
+    border-bottom-right-radius: border-radius() !important;
+}
+
+._rounded-circle {
+    border-radius: 50% !important;
+}
+
+._rounded-0 {
+    border-radius: 0 !important;
+}

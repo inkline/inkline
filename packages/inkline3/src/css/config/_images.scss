@@ -1,0 +1,42 @@
+// Images
+//
+
+// Image thumbnails
+//
+$thumbnail-padding: calc(#{spacer()} / 2) !default;
+$thumbnail-background: var(--body-background-light) !default;
+$thumbnail-border-width: var(--border-width) !default;
+$thumbnail-border-color: color('gray-40') !default;
+$thumbnail-border-radius: border-radius() !default;
+$thumbnail-box-shadow: 0 1px 2px rgba(color('black'), 0.075) !default;
+$thumbnail-transition: all 0.2s ease-in-out !default;
+
+:root {
+    --thumbnail-padding: #{$thumbnail-padding};
+    --thumbnail-background: #{$thumbnail-background};
+    --thumbnail-border-width: #{$thumbnail-border-width};
+    --thumbnail-border-color: #{$thumbnail-border-color};
+    --thumbnail-border-radius: #{$thumbnail-border-radius};
+    --thumbnail-box-shadow: #{$thumbnail-box-shadow};
+    --thumbnail-transition: #{$thumbnail-transition};
+}
+
+// Polaroid
+//
+$polaroid-padding: calc(#{spacer()} * 3) !default;
+
+:root {
+    --polaroid-padding: #{$polaroid-padding};
+}
+
+// Figures
+//
+$figure-caption-font-size: 90% !default;
+$figure-caption-color: color('gray-60') !default;
+$figure-image-margin-bottom: calc(#{spacer()} / 2) !default;
+
+:root {
+    --figure-caption-font-size: #{$figure-caption-font-size};
+    --figure-caption-color: #{$figure-caption-color};
+    --figure-image-margin-bottom: #{$figure-image-margin-bottom};
+}

@@ -1,0 +1,60 @@
+// Sizes and percentages
+//
+
+// Basic width and height utility sizes
+//
+$sizes: ('sm', 'md', 'lg') !default;
+
+// Size percentages
+//
+
+$size-percentage-0: 0% !default;
+$size-percentage-25: 25% !default;
+$size-percentage-50: 50% !default;
+$size-percentage-75: 75% !default;
+$size-percentage-100: 100% !default;
+
+$size-percentages: (
+    '0': 0%,
+    '25': 25%,
+    '50': 50%,
+    '75': 75%,
+    '100': 100%,
+) !default;
+
+:root {
+    @each $size-percentage-key, $size-percentage-value in $size-percentages {
+        --size-percentage-#{$size-percentage-key}: #{$size-percentage-value};
+    }
+}
+
+@function size-percentage($size-percentage-key) {
+    @return var(--size-percentage-#{$size-percentage-key});
+}
+
+// Size multipliers
+//
+
+$size-multiplier-xs: 0.6 !default;
+$size-multiplier-sm: 0.8 !default;
+$size-multiplier-md: 1 !default;
+$size-multiplier-lg: 1.2 !default;
+$size-multiplier-xl: 1.4 !default;
+
+$size-multipliers: (
+    'xs': $size-multiplier-xs,
+    'sm': $size-multiplier-sm,
+    'md': $size-multiplier-md,
+    'lg': $size-multiplier-lg,
+    'xl': $size-multiplier-xl,
+) !default;
+
+:root {
+    @each $size-multiplier-key, $size-multiplier-value in $size-multipliers {
+        --size-multiplier-#{$size-multiplier-key}: #{$size-multiplier-value};
+    }
+}
+
+@function size-multiplier($size-multiplier-key) {
+    @return var(--size-multiplier-#{$size-multiplier-key});
+}
