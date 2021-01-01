@@ -1,0 +1,16 @@
+// Core
+//
+
+$body-background-light: color('white') !default;
+$body-color-light: color('gray-80') !default;
+
+$body-background-dark: color('gray-90') !default;
+$body-color-dark: color('gray-10') !default;
+
+:root {
+    --body-background-light: #{$body-background-light};
+    --body-color-light: #{$body-color-light};
+
+    --body-background-dark: #{$body-background-dark};
+    --body-color-dark: #{$body-color-dark};
+}

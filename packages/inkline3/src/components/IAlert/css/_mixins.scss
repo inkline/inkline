@@ -1,0 +1,19 @@
+@function alert-variant($variant) {
+    $alert-variant-background: $variant;
+    $alert-variant-border-color: darken($alert-variant-background, 10%);
+    $alert-variant-color: variant-color-by-luminance($variant, $alert-color-for-light-variant, $alert-color-for-dark-variant);
+    $alert-variant-link-color: $alert-variant-color;
+    $alert-variant-code-background: darken($variant, 10%);
+    $alert-variant-code-color: $alert-variant-color;
+
+    $variant-map: (
+        background: $alert-variant-background,
+        border-color: $alert-variant-border-color,
+        color: $alert-variant-color,
+        link-color: $alert-variant-link-color,
+        code-color: $alert-variant-code-color,
+        code-background: $alert-variant-code-background
+    );
+
+    @return $variant-map;
+}

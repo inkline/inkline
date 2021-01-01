@@ -1,0 +1,1 @@
+<template src="./remove.html" />

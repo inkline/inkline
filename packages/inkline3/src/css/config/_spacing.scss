@@ -1,0 +1,57 @@
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the --spacers map, should you need more variation.
+//
+
+$spacer: 1rem !default;
+
+:root {
+    --spacer: #{$spacer}
+}
+
+$spacer-1-2: calc(var(--spacer) * 1 / 2) !default;
+$spacer-1-3: calc(var(--spacer) * 1 / 3) !default;
+$spacer-2-3: calc(var(--spacer) * 2 / 3) !default;
+$spacer-1-4: calc(var(--spacer) * 1 / 4) !default;
+$spacer-3-4: calc(var(--spacer) * 3 / 4) !default;
+$spacer-0: calc(var(--spacer) * 0) !default;
+$spacer-1: var(--spacer) !default;
+$spacer-2: calc(var(--spacer) * 2) !default;
+$spacer-3: calc(var(--spacer) * 3) !default;
+$spacer-4: calc(var(--spacer) * 4) !default;
+$spacer-5: calc(var(--spacer) * 5) !default;
+$spacer-6: calc(var(--spacer) * 6) !default;
+$spacer-7: calc(var(--spacer) * 7) !default;
+$spacer-8: calc(var(--spacer) * 8) !default;
+$spacers: (
+    '1-2': $spacer-1-2,
+    '1-3': $spacer-1-3,
+    '2-3': $spacer-2-3,
+    '1-4': $spacer-1-4,
+    '3-4': $spacer-3-4,
+    '0': $spacer-0,
+    '1': $spacer-1,
+    '2': $spacer-2,
+    '3': $spacer-3,
+    '4': $spacer-4,
+    '5': $spacer-5,
+    '6': $spacer-6,
+    '7': $spacer-7,
+    '8': $spacer-8,
+) !default;
+
+:root {
+    @each $spacer-key, $spacer-value in $spacers {
+        --spacer-#{$spacer-key}: #{$spacer-value};
+    }
+}
+
+@function spacer($spacer-key: null) {
+    @if not ($spacer-key) {
+        @return var(--spacer);
+    }
+
+    @return var(--spacer-#{$spacer-key});
+}

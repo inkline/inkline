@@ -1,0 +1,342 @@
+@import '../functions';
+
+// Color Palette
+//
+// Basic, state and neutral colors
+//
+
+// Basic Colors
+//
+$color-red: #F2413D !default;
+$color-red-10: tint-color($color-red, 80%);
+$color-red-20: tint-color($color-red, 60%);
+$color-red-30: tint-color($color-red, 20%);
+$color-red-40: tint-color($color-red, 40%);
+$color-red-50: $color-red;
+$color-red-60: shade-color($color-red, 20%);
+$color-red-70: shade-color($color-red, 40%);
+$color-red-80: shade-color($color-red, 60%);
+$color-red-90: shade-color($color-red, 80%);
+
+$color-orange: #F9A230 !default;
+$color-orange-10: tint-color($color-orange, 80%);
+$color-orange-20: tint-color($color-orange, 60%);
+$color-orange-30: tint-color($color-orange, 40%);
+$color-orange-40: tint-color($color-orange, 20%);
+$color-orange-50: $color-orange;
+$color-orange-60: shade-color($color-orange, 20%);
+$color-orange-70: shade-color($color-orange, 40%);
+$color-orange-80: shade-color($color-orange, 60%);
+$color-orange-90: shade-color($color-orange, 80%);
+
+$color-yellow: #FFD93F !default;
+$color-yellow-10: tint-color($color-yellow, 80%);
+$color-yellow-20: tint-color($color-yellow, 60%);
+$color-yellow-30: tint-color($color-yellow, 40%);
+$color-yellow-40: tint-color($color-yellow, 20%);
+$color-yellow-50: $color-yellow;
+$color-yellow-60: shade-color($color-yellow, 20%);
+$color-yellow-70: shade-color($color-yellow, 40%);
+$color-yellow-80: shade-color($color-yellow, 60%);
+$color-yellow-90: shade-color($color-yellow, 80%);
+
+$color-green: #34B051 !default;
+$color-green-10: tint-color($color-green, 80%);
+$color-green-20: tint-color($color-green, 60%);
+$color-green-30: tint-color($color-green, 40%);
+$color-green-40: tint-color($color-green, 20%);
+$color-green-50: $color-green;
+$color-green-60: shade-color($color-green, 20%);
+$color-green-70: shade-color($color-green, 40%);
+$color-green-80: shade-color($color-green, 60%);
+$color-green-90: shade-color($color-green, 80%);
+
+$color-teal: #48B3B6 !default;
+$color-teal-10: tint-color($color-teal, 80%);
+$color-teal-20: tint-color($color-teal, 60%);
+$color-teal-30: tint-color($color-teal, 40%);
+$color-teal-40: tint-color($color-teal, 20%);
+$color-teal-50: $color-teal;
+$color-teal-60: shade-color($color-teal, 20%);
+$color-teal-70: shade-color($color-teal, 40%);
+$color-teal-80: shade-color($color-teal, 60%);
+$color-teal-90: shade-color($color-teal, 80%);
+
+$color-blue: #178bb2 !default;
+$color-blue-10: tint-color($color-blue, 80%);
+$color-blue-20: tint-color($color-blue, 60%);
+$color-blue-30: tint-color($color-blue, 40%);
+$color-blue-40: tint-color($color-blue, 20%);
+$color-blue-50: $color-blue;
+$color-blue-60: shade-color($color-blue, 20%);
+$color-blue-70: shade-color($color-blue, 40%);
+$color-blue-80: shade-color($color-blue, 60%);
+$color-blue-90: shade-color($color-blue, 80%);
+
+$color-purple: #5d65b9 !default;
+$color-purple-10: tint-color($color-purple, 80%);
+$color-purple-20: tint-color($color-purple, 60%);
+$color-purple-30: tint-color($color-purple, 40%);
+$color-purple-40: tint-color($color-purple, 20%);
+$color-purple-50: $color-purple;
+$color-purple-60: shade-color($color-purple, 20%);
+$color-purple-70: shade-color($color-purple, 40%);
+$color-purple-80: shade-color($color-purple, 60%);
+$color-purple-90: shade-color($color-purple, 80%);
+
+$color-pink: #ff4164 !default;
+$color-pink-10: tint-color($color-pink, 80%);
+$color-pink-20: tint-color($color-pink, 60%);
+$color-pink-30: tint-color($color-pink, 40%);
+$color-pink-40: tint-color($color-pink, 20%);
+$color-pink-50: $color-pink;
+$color-pink-60: shade-color($color-pink, 20%);
+$color-pink-70: shade-color($color-pink, 40%);
+$color-pink-80: shade-color($color-pink, 60%);
+$color-pink-90: shade-color($color-pink, 80%);
+
+// Neutral Colors
+//
+$color-transparent: transparent !default;
+$color-white: #ffffff !default;
+$color-black: #000000 !default;
+
+$color-gray: #98a2ae !default;
+$color-gray-10: tint-color($color-gray, 80%);
+$color-gray-20: tint-color($color-gray, 60%);
+$color-gray-30: tint-color($color-gray, 40%);
+$color-gray-40: tint-color($color-gray, 20%);
+$color-gray-50: $color-gray;
+$color-gray-60: shade-color($color-gray, 20%);
+$color-gray-70: shade-color($color-gray, 40%);
+$color-gray-80: shade-color($color-gray, 60%);
+$color-gray-90: shade-color($color-gray, 80%);
+
+// Brand Colors
+//
+$color-primary: $color-blue !default;
+$color-secondary: $color-purple !default;
+
+// Brand Neutral Colors
+//
+$color-light: $color-gray-20 !default;
+$color-dark: $color-gray-90 !default;
+
+// State Colors
+//
+$color-success: $color-green !default;
+$color-danger: $color-red !default;
+$color-warning: $color-yellow !default;
+$color-info: $color-teal !default;
+
+// Social Colors
+//
+$color-facebook: #3b5998;
+$color-twitter: #1da1f2;
+$color-google: #dd4b39;
+$color-instagram: #fd1d1d;
+$color-dribbble: #ea4c89;
+$color-behance: #1769ff;
+$color-flickr: #ff0084;
+$color-linkedin: #0077b5;
+$color-youtube: #b31217;
+$color-pinterest: #bd081c;
+$color-github: #333333;
+$color-gitlab: #fa7035;
+$color-tumblr: #35465c;
+$color-twitch: #6441a5;
+$color-envato: #82b541;
+$color-vine: #00bf8f;
+
+// All Colors
+//
+$colors: (
+    // Brand colors
+    'primary': $color-primary,
+    'secondary': $color-secondary,
+    'success': $color-success,
+    'danger': $color-danger,
+    'warning': $color-warning,
+    'info': $color-info,
+    'light': $color-light,
+    'dark': $color-dark,
+
+    'red': $color-red,
+    'red-10': $color-red-10,
+    'red-20': $color-red-20,
+    'red-30': $color-red-30,
+    'red-40': $color-red-40,
+    'red-50': $color-red-50,
+    'red-60': $color-red-60,
+    'red-70': $color-red-70,
+    'red-80': $color-red-80,
+    'red-90': $color-red-90,
+
+    'orange': $color-orange,
+    'orange-10': $color-orange-10,
+    'orange-20': $color-orange-20,
+    'orange-30': $color-orange-30,
+    'orange-40': $color-orange-40,
+    'orange-50': $color-orange-50,
+    'orange-60': $color-orange-60,
+    'orange-70': $color-orange-70,
+    'orange-80': $color-orange-80,
+    'orange-90': $color-orange-90,
+
+    'yellow': $color-yellow,
+    'yellow-10': $color-yellow-10,
+    'yellow-20': $color-yellow-20,
+    'yellow-30': $color-yellow-30,
+    'yellow-40': $color-yellow-40,
+    'yellow-50': $color-yellow-50,
+    'yellow-60': $color-yellow-60,
+    'yellow-70': $color-yellow-70,
+    'yellow-80': $color-yellow-80,
+    'yellow-90': $color-yellow-90,
+
+    'green': $color-green,
+    'green-10': $color-green-10,
+    'green-20': $color-green-20,
+    'green-30': $color-green-30,
+    'green-40': $color-green-40,
+    'green-50': $color-green-50,
+    'green-60': $color-green-60,
+    'green-70': $color-green-70,
+    'green-80': $color-green-80,
+    'green-90': $color-green-90,
+
+    'teal': $color-teal,
+    'teal-10': $color-teal-10,
+    'teal-20': $color-teal-20,
+    'teal-30': $color-teal-30,
+    'teal-40': $color-teal-40,
+    'teal-50': $color-teal-50,
+    'teal-60': $color-teal-60,
+    'teal-70': $color-teal-70,
+    'teal-80': $color-teal-80,
+    'teal-90': $color-teal-90,
+
+    'blue': $color-blue,
+    'blue-10': $color-blue-10,
+    'blue-20': $color-blue-20,
+    'blue-30': $color-blue-30,
+    'blue-40': $color-blue-40,
+    'blue-50': $color-blue-50,
+    'blue-60': $color-blue-60,
+    'blue-70': $color-blue-70,
+    'blue-80': $color-blue-80,
+    'blue-90': $color-blue-90,
+
+    'purple': $color-purple,
+    'purple-10': $color-purple-10,
+    'purple-20': $color-purple-20,
+    'purple-30': $color-purple-30,
+    'purple-40': $color-purple-40,
+    'purple-50': $color-purple-50,
+    'purple-60': $color-purple-60,
+    'purple-70': $color-purple-70,
+    'purple-80': $color-purple-80,
+    'purple-90': $color-purple-90,
+
+    'pink': $color-pink,
+    'pink-10': $color-pink-10,
+    'pink-20': $color-pink-20,
+    'pink-30': $color-pink-30,
+    'pink-40': $color-pink-40,
+    'pink-50': $color-pink-50,
+    'pink-60': $color-pink-60,
+    'pink-70': $color-pink-70,
+    'pink-80': $color-pink-80,
+    'pink-90': $color-pink-90,
+
+    // Neutral colors
+    'transparent': $color-transparent,
+    'white': $color-white,
+    'gray': $color-gray,
+    'gray-10': $color-gray-10,
+    'gray-20': $color-gray-20,
+    'gray-30': $color-gray-30,
+    'gray-40': $color-gray-40,
+    'gray-50': $color-gray-50,
+    'gray-60': $color-gray-60,
+    'gray-70': $color-gray-70,
+    'gray-80': $color-gray-80,
+    'gray-90': $color-gray-90,
+    'black': $color-black,
+
+    // Social colors
+    'facebook': $color-facebook,
+    'twitter': $color-twitter,
+    'google': $color-google,
+    'instagram': $color-instagram,
+    'dribbble': $color-dribbble,
+    'behance': $color-behance,
+    'flickr': $color-flickr,
+    'linkedin': $color-linkedin,
+    'youtube': $color-youtube,
+    'pinterest': $color-pinterest,
+    'github': $color-github,
+    'gitlab': $color-gitlab,
+    'tumblr': $color-tumblr,
+    'twitch': $color-twitch,
+    'envato': $color-envato,
+    'vine': $color-vine,
+) !default;
+
+$shades: (
+    'gray',
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'teal',
+    'blue',
+    'purple',
+    'pink',
+) !default;
+
+:root {
+    @each $color-key, $color-value in $colors {
+        @if not (str-index($color-key, '0')) {
+            $h: hue($color-value);
+            $s: saturation($color-value);
+            $l: lightness($color-value);
+
+            --color-#{$color-key}-h: #{$h};
+            --color-#{$color-key}-s: #{$s};
+            --color-#{$color-key}-l: #{$l};
+            --color-#{$color-key}: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), var(--color-#{$color-key}-l));
+        }
+    }
+}
+
+:root {
+    @each $color-key in $shades {
+        --color-#{$color-key}-10: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.2 + 80%));
+        --color-#{$color-key}-20: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.4 + 60%));
+        --color-#{$color-key}-30: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.6 + 40%));
+        --color-#{$color-key}-40: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.8 + 20%));
+        --color-#{$color-key}-50: var(--color-#{$color-key});
+        --color-#{$color-key}-60: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.8), calc(var(--color-#{$color-key}-l) * 0.8));
+        --color-#{$color-key}-70: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.6), calc(var(--color-#{$color-key}-l) * 0.6));
+        --color-#{$color-key}-80: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.4), calc(var(--color-#{$color-key}-l) * 0.4));
+        --color-#{$color-key}-90: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.2), calc(var(--color-#{$color-key}-l) * 0.2));
+    }
+}
+
+@function color($color-key) {
+    @return var(--color-#{$color-key});
+}
+
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$min-contrast-ratio: 2.5 !default;
+
+// Customize the light and dark text colors to be used in the color contrast function
+$contrast-color-for-light-background: $color-gray-90 !default;
+$contrast-color-for-dark-background: $color-white !default;
+
+:root {
+    --contrast-color-for-light-background: #{$contrast-color-for-light-background};
+    --contrast-color-for-dark-background: #{$contrast-color-for-dark-background};
+}

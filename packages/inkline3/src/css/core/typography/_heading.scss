@@ -1,0 +1,27 @@
+/**
+ * Headings and displays
+ */
+
+@for $i from 1 through 6 {
+    h#{$i},
+    .h#{$i},
+    .d#{$i} {
+        margin-top: var(--headings-margin-top);
+        margin-bottom: var(--headings-margin-bottom);
+        font-family: var(--headings-font-family);
+        color: var(--headings-color);
+    }
+
+    h#{$i},
+    .h#{$i} {
+        font-size: heading-font-size(#{'h' + $i});
+        font-weight: var(--headings-font-weight);
+        line-height: var(--headings-line-height);
+    }
+
+    .d#{$i} {
+        font-size: display-font-size(#{'d' + $i});
+        font-weight: var(--displays-font-weight);
+        line-height: var(--displays-line-height);
+    }
+}

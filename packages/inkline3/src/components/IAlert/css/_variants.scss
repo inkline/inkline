@@ -1,0 +1,23 @@
+//
+// Alert variants
+//
+@each $variant-name, $variant in $alert-variants {
+    .alert.-#{$variant-name} {
+        border-color: map-get($variant, 'border-color');
+        background: map-get($variant, 'background');
+        color: map-get($variant, 'color');
+
+        a {
+            color: map-get($variant, 'link-color');
+        }
+
+        > .icon {
+            border-color: map-get($variant, 'border-color');
+        }
+
+        code {
+            background: map-get($variant, 'code-background');
+            color: map-get($variant, 'code-color');
+        }
+    }
+}

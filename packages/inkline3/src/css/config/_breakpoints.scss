@@ -1,0 +1,32 @@
+// Breakpoints
+//
+// Define the minimum dimensions at which the layout will
+// adapt to different screen sizes
+//
+
+$breakpoints-xs: 0 !default;
+$breakpoints-sm: 576px !default;
+$breakpoints-md: 768px !default;
+$breakpoints-lg: 992px !default;
+$breakpoints-xl: 1200px !default;
+$breakpoints-xxl: 1400px !default;
+
+$breakpoints: (
+    'xs': $breakpoints-xs,
+    'sm': $breakpoints-sm,
+    'md': $breakpoints-md,
+    'lg': $breakpoints-lg,
+    'xl': $breakpoints-xl,
+    'xxl': $breakpoints-xxl,
+) !default;
+
+:root {
+    @each $breakpoint-key, $breakpoint-value in $breakpoints {
+        --breakpoint-#{$breakpoint-key}: #{$breakpoint-value};
+    }
+}
+
+@function breakpoint($breakpoint-key) {
+    @return var(--breakpoint-#{$breakpoint-key});
+}
+
