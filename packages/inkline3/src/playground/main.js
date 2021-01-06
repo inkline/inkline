@@ -8,7 +8,10 @@ import Example from '@/playground/components/Example.vue';
 
 const routes = [
     { name: 'index', path: '/', component: () => import('@/playground/pages/index.vue') },
+    { name: 'core-grid', path: '/core/grid', component: () => import('@/playground/pages/core/grid.vue') },
     { name: 'core-typography', path: '/core/typography', component: () => import('@/playground/pages/core/typography.vue') },
+    { name: 'core-images', path: '/core/images', component: () => import('@/playground/pages/core/images.vue') },
+    { name: 'core-code', path: '/core/code', component: () => import('@/playground/pages/core/code.vue') },
     { name: 'components-alert', path: '/components/alert', component: () => import('@/playground/pages/components/alert.vue') },
     { name: 'utilities-border', path: '/utilities/border', component: () => import('@/playground/pages/utilities/border.vue') },
     { name: 'utilities-clearfix', path: '/utilities/clearfix', component: () => import('@/playground/pages/utilities/clearfix.vue') },

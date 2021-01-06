@@ -11,8 +11,23 @@
                     Core
                 </li>
                 <li>
+                    <router-link :to="{ name: 'core-grid' }">
+                        Grid
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'core-typography' }">
                         Typography
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'core-images' }">
+                        Images
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'core-code' }">
+                        Code
                     </router-link>
                 </li>
                 <li>

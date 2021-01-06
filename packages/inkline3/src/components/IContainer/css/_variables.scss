@@ -1,0 +1,23 @@
+$container-width-xs: 100% !default;
+$container-width-sm: calc(#{breakpoint('sm')} - #{gutter('sm')}) !default;
+$container-width-md: calc(#{breakpoint('md')} - #{gutter('md')}) !default;
+$container-width-lg: calc(#{breakpoint('lg')} - #{gutter('lg')}) !default;
+$container-width-xl: calc(#{breakpoint('xl')} - #{gutter('xl')}) !default;
+
+$container-widths: (
+    'xs': $container-width-xs,
+    'sm': $container-width-sm,
+    'md': $container-width-md,
+    'lg': $container-width-lg,
+    'xl': $container-width-xl,
+) !default;
+
+:root {
+    @each $container-width-key, $container-width-value in $container-widths {
+        --container-width-#{$container-width-key}: #{$container-width-value};
+    }
+}
+
+@function container-width($container-width-key) {
+    @return var(--container-width-#{$container-width-key});
+}
