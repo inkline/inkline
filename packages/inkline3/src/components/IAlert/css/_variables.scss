@@ -1,43 +1,179 @@
+// Variables
 //
-// Alert variables
-//
-$alert-font-size: $font-size !default;
-$alert-font-weight: font-weight(normal) !default;
-$alert-line-height: $line-height !default;
+$alert-size-variants: ('sm', 'md', 'lg');
 
-$alert-border-width: $border-width !default;
-$alert-border-radius: $border-radius !default;
-
-$alert-padding-base: spacers('1') !default;
-$alert-padding: size-map($alert-padding-base, $sizes, $size-multipliers) !default;
-
+$alert-font-weight: font-weight('normal') !default;
+$alert-line-height: var(--line-height) !default;
+$alert-border-width: var(--border-width) !default;
 $alert-dismiss-size: 1rem !default;
 
-$alert-background-mix-percentage: 60% !default;
-$alert-border-darken-lighten-percentage: 10% !default;
-$alert-code-color-darken-lighten-percentage: 10% !default;
-$alert-code-background-color-darken-lighten-percentage: 7% !default;
-$alert-color-darken-lighten-percentage: 30% !default;
-$alert-link-color-darken-lighten-percentage: 35% !default;
+:root {
+    --alert-font-weight: #{$alert-font-weight};
+    --alert-line-height: #{$alert-line-height};
+    --alert-border-width: #{$alert-border-width};
+    --alert-dismiss-size: #{$alert-dismiss-size};
+}
 
-//
-// Variants
-//
-$alert-color-for-light-variant: $color-for-light-variant !default;
-$alert-color-for-dark-variant: $color-for-dark-variant !default;
+$alert-font-size: font-size() !default;
 
-$alert-variant-primary: alert-variant($color-primary) !default;
-$alert-variant-secondary: alert-variant($color-secondary) !default;
-$alert-variant-info: alert-variant($color-info) !default;
-$alert-variant-success: alert-variant($color-success) !default;
-$alert-variant-warning: alert-variant($color-warning) !default;
-$alert-variant-danger: alert-variant($color-danger) !default;
+:root {
+    --alert-font-size: #{$alert-font-size};
+}
 
-$alert-variants: (
-    primary: $alert-variant-primary,
-    secondary: $alert-variant-secondary,
-    info: $alert-variant-info,
-    success: $alert-variant-success,
-    warning: $alert-variant-warning,
-    danger: $alert-variant-danger
+$alert-font-sizes: (
+    'sm': calc(var(--alert-font-size) * #{size-multiplier('sm')}),
+    'md': calc(var(--alert-font-size) * #{size-multiplier('md')}),
+    'lg': calc(var(--alert-font-size) * #{size-multiplier('lg')})
 ) !default;
+
+:root {
+    @each $alert-font-size-key, $alert-font-size-value in $alert-font-sizes {
+        --alert-font-size-#{$alert-font-size-key}: #{$alert-font-size-value};
+    }
+}
+
+$alert-border-radius: var(--border-radius) !default;
+
+:root {
+    --alert-border-radius: #{$alert-border-radius};
+}
+
+$alert-border-radiuses: (
+    'sm': calc(var(--alert-border-radius) * #{size-multiplier('sm')}),
+    'md': calc(var(--alert-border-radius) * #{size-multiplier('md')}),
+    'lg': calc(var(--alert-border-radius) * #{size-multiplier('lg')})
+) !default;
+
+:root {
+    @each $alert-border-radius-key, $alert-border-radius-value in $alert-border-radiuses {
+        --alert-border-radius-#{$alert-border-radius-key}: #{$alert-border-radius-value};
+    }
+}
+
+$alert-padding: spacer() !default;
+
+:root {
+    --alert-padding: #{$alert-padding};
+}
+
+$alert-paddings: (
+    'sm': calc(var(--alert-padding) * #{size-multiplier('sm')}),
+    'md': calc(var(--alert-padding) * #{size-multiplier('md')}),
+    'lg': calc(var(--alert-padding) * #{size-multiplier('lg')})
+) !default;
+
+:root {
+    @each $alert-padding-key, $alert-padding-value in $alert-paddings {
+        --alert-padding-#{$alert-padding-key}: #{$alert-padding-value};
+    }
+}
+
+$alert-contrast-color-for-light-background: var(--contrast-color-for-light-background) !default;
+$alert-contrast-color-for-dark-background: var(--contrast-color-for-dark-background) !default;
+
+$alert-color-variant-primary-background: var(--color-primary) !default;
+$alert-color-variant-primary-border-color: var(--color-primary-60) !default;
+$alert-color-variant-primary-color: contrast-color($color-primary) !default;
+$alert-color-variant-primary-link-color: $alert-color-variant-primary-color !default;
+$alert-color-variant-primary-code-background: var(--color-primary-60) !default;
+$alert-color-variant-primary-code-color: $alert-color-variant-primary-color !default;
+$alert-color-variant-primary: (
+    'background': $alert-color-variant-primary-background,
+    'border-color': $alert-color-variant-primary-border-color,
+    'color': $alert-color-variant-primary-color,
+    'link-color': $alert-color-variant-primary-link-color,
+    'code-background': $alert-color-variant-primary-code-background,
+    'code-color': $alert-color-variant-primary-code-color,
+) !default;
+
+$alert-color-variant-secondary-background: var(--color-secondary) !default;
+$alert-color-variant-secondary-border-color: var(--color-secondary-60) !default;
+$alert-color-variant-secondary-color: contrast-color($color-secondary) !default;
+$alert-color-variant-secondary-link-color: $alert-color-variant-secondary-color !default;
+$alert-color-variant-secondary-code-background: var(--color-secondary-60) !default;
+$alert-color-variant-secondary-code-color: $alert-color-variant-secondary-color !default;
+$alert-color-variant-secondary: (
+    'background': $alert-color-variant-secondary-background,
+    'border-color': $alert-color-variant-secondary-border-color,
+    'color': $alert-color-variant-secondary-color,
+    'link-color': $alert-color-variant-secondary-link-color,
+    'code-background': $alert-color-variant-secondary-code-background,
+    'code-color': $alert-color-variant-secondary-code-color,
+) !default;
+
+$alert-color-variant-info-background: var(--color-info) !default;
+$alert-color-variant-info-border-color: var(--color-info-60) !default;
+$alert-color-variant-info-color: contrast-color($color-info) !default;
+$alert-color-variant-info-link-color: $alert-color-variant-info-color !default;
+$alert-color-variant-info-code-background: var(--color-info-60) !default;
+$alert-color-variant-info-code-color: $alert-color-variant-info-color !default;
+$alert-color-variant-info: (
+    'background': $alert-color-variant-info-background,
+    'border-color': $alert-color-variant-info-border-color,
+    'color': $alert-color-variant-info-color,
+    'link-color': $alert-color-variant-info-link-color,
+    'code-background': $alert-color-variant-info-code-background,
+    'code-color': $alert-color-variant-info-code-color,
+) !default;
+
+$alert-color-variant-warning-background: var(--color-warning) !default;
+$alert-color-variant-warning-border-color: var(--color-warning-60) !default;
+$alert-color-variant-warning-color: contrast-color($color-warning) !default;
+$alert-color-variant-warning-link-color: $alert-color-variant-warning-color !default;
+$alert-color-variant-warning-code-background: var(--color-warning-60) !default;
+$alert-color-variant-warning-code-color: $alert-color-variant-warning-color !default;
+$alert-color-variant-warning: (
+    'background': $alert-color-variant-warning-background,
+    'border-color': $alert-color-variant-warning-border-color,
+    'color': $alert-color-variant-warning-color,
+    'link-color': $alert-color-variant-warning-link-color,
+    'code-background': $alert-color-variant-warning-code-background,
+    'code-color': $alert-color-variant-warning-code-color,
+) !default;
+
+$alert-color-variant-danger-background: var(--color-danger) !default;
+$alert-color-variant-danger-border-color: var(--color-danger-60) !default;
+$alert-color-variant-danger-color: contrast-color($color-danger) !default;
+$alert-color-variant-danger-link-color: $alert-color-variant-danger-color !default;
+$alert-color-variant-danger-code-background: var(--color-danger-60) !default;
+$alert-color-variant-danger-code-color: $alert-color-variant-danger-color !default;
+$alert-color-variant-danger: (
+    'background': $alert-color-variant-danger-background,
+    'border-color': $alert-color-variant-danger-border-color,
+    'color': $alert-color-variant-danger-color,
+    'link-color': $alert-color-variant-danger-link-color,
+    'code-background': $alert-color-variant-danger-code-background,
+    'code-color': $alert-color-variant-danger-code-color,
+) !default;
+
+$alert-color-variant-success-background: var(--color-success) !default;
+$alert-color-variant-success-border-color: var(--color-success-60) !default;
+$alert-color-variant-success-color: contrast-color($color-success) !default;
+$alert-color-variant-success-link-color: $alert-color-variant-success-color !default;
+$alert-color-variant-success-code-background: var(--color-success-60) !default;
+$alert-color-variant-success-code-color: $alert-color-variant-success-color !default;
+$alert-color-variant-success: (
+    'background': $alert-color-variant-success-background,
+    'border-color': $alert-color-variant-success-border-color,
+    'color': $alert-color-variant-success-color,
+    'link-color': $alert-color-variant-success-link-color,
+    'code-background': $alert-color-variant-success-code-background,
+    'code-color': $alert-color-variant-success-code-color,
+) !default;
+
+$alert-color-variants: (
+    'primary': $alert-color-variant-primary,
+    'secondary': $alert-color-variant-secondary,
+    'info': $alert-color-variant-info,
+    'warning': $alert-color-variant-warning,
+    'danger': $alert-color-variant-danger,
+    'success': $alert-color-variant-success,
+) !default;
+
+:root {
+    @each $color-variant-key, $color-variant-value in $alert-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --alert-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}

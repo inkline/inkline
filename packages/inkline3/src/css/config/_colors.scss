@@ -115,7 +115,26 @@ $color-gray-90: shade-color($color-gray, 80%);
 // Brand Colors
 //
 $color-primary: $color-blue !default;
+$color-primary-10: tint-color($color-primary, 80%);
+$color-primary-20: tint-color($color-primary, 60%);
+$color-primary-30: tint-color($color-primary, 40%);
+$color-primary-40: tint-color($color-primary, 20%);
+$color-primary-50: $color-primary;
+$color-primary-60: shade-color($color-primary, 20%);
+$color-primary-70: shade-color($color-primary, 40%);
+$color-primary-80: shade-color($color-primary, 60%);
+$color-primary-90: shade-color($color-primary, 80%);
+
 $color-secondary: $color-purple !default;
+$color-secondary-10: tint-color($color-secondary, 80%);
+$color-secondary-20: tint-color($color-secondary, 60%);
+$color-secondary-30: tint-color($color-secondary, 40%);
+$color-secondary-40: tint-color($color-secondary, 20%);
+$color-secondary-50: $color-secondary;
+$color-secondary-60: shade-color($color-secondary, 20%);
+$color-secondary-70: shade-color($color-secondary, 40%);
+$color-secondary-80: shade-color($color-secondary, 60%);
+$color-secondary-90: shade-color($color-secondary, 80%);
 
 // Brand Neutral Colors
 //
@@ -124,10 +143,49 @@ $color-dark: $color-gray-90 !default;
 
 // State Colors
 //
-$color-success: $color-green !default;
-$color-danger: $color-red !default;
-$color-warning: $color-yellow !default;
 $color-info: $color-teal !default;
+$color-info-10: tint-color($color-info, 80%);
+$color-info-20: tint-color($color-info, 60%);
+$color-info-30: tint-color($color-info, 40%);
+$color-info-40: tint-color($color-info, 20%);
+$color-info-50: $color-info;
+$color-info-60: shade-color($color-info, 20%);
+$color-info-70: shade-color($color-info, 40%);
+$color-info-80: shade-color($color-info, 60%);
+$color-info-90: shade-color($color-info, 80%);
+
+$color-warning: $color-yellow !default;
+$color-warning-10: tint-color($color-warning, 80%);
+$color-warning-20: tint-color($color-warning, 60%);
+$color-warning-30: tint-color($color-warning, 40%);
+$color-warning-40: tint-color($color-warning, 20%);
+$color-warning-50: $color-warning;
+$color-warning-60: shade-color($color-warning, 20%);
+$color-warning-70: shade-color($color-warning, 40%);
+$color-warning-80: shade-color($color-warning, 60%);
+$color-warning-90: shade-color($color-warning, 80%);
+
+$color-danger: $color-red !default;
+$color-danger-10: tint-color($color-danger, 80%);
+$color-danger-20: tint-color($color-danger, 60%);
+$color-danger-30: tint-color($color-danger, 40%);
+$color-danger-40: tint-color($color-danger, 20%);
+$color-danger-50: $color-danger;
+$color-danger-60: shade-color($color-danger, 20%);
+$color-danger-70: shade-color($color-danger, 40%);
+$color-danger-80: shade-color($color-danger, 60%);
+$color-danger-90: shade-color($color-danger, 80%);
+
+$color-success: $color-green !default;
+$color-success-10: tint-color($color-success, 80%);
+$color-success-20: tint-color($color-success, 60%);
+$color-success-30: tint-color($color-success, 40%);
+$color-success-40: tint-color($color-success, 20%);
+$color-success-50: $color-success;
+$color-success-60: shade-color($color-success, 20%);
+$color-success-70: shade-color($color-success, 40%);
+$color-success-80: shade-color($color-success, 60%);
+$color-success-90: shade-color($color-success, 80%);
 
 // Social Colors
 //
@@ -153,11 +211,71 @@ $color-vine: #00bf8f;
 $colors: (
     // Brand colors
     'primary': $color-primary,
+    'primary-10': $color-primary-10,
+    'primary-20': $color-primary-20,
+    'primary-30': $color-primary-30,
+    'primary-40': $color-primary-40,
+    'primary-50': $color-primary-50,
+    'primary-60': $color-primary-60,
+    'primary-70': $color-primary-70,
+    'primary-80': $color-primary-80,
+    'primary-90': $color-primary-90,
+
     'secondary': $color-secondary,
-    'success': $color-success,
-    'danger': $color-danger,
-    'warning': $color-warning,
+    'secondary-10': $color-secondary-10,
+    'secondary-20': $color-secondary-20,
+    'secondary-30': $color-secondary-30,
+    'secondary-40': $color-secondary-40,
+    'secondary-50': $color-secondary-50,
+    'secondary-60': $color-secondary-60,
+    'secondary-70': $color-secondary-70,
+    'secondary-80': $color-secondary-80,
+    'secondary-90': $color-secondary-90,
+
     'info': $color-info,
+    'info-10': $color-info-10,
+    'info-20': $color-info-20,
+    'info-30': $color-info-30,
+    'info-40': $color-info-40,
+    'info-50': $color-info-50,
+    'info-60': $color-info-60,
+    'info-70': $color-info-70,
+    'info-80': $color-info-80,
+    'info-90': $color-info-90,
+
+    'warning': $color-warning,
+    'warning-10': $color-warning-10,
+    'warning-20': $color-warning-20,
+    'warning-30': $color-warning-30,
+    'warning-40': $color-warning-40,
+    'warning-50': $color-warning-50,
+    'warning-60': $color-warning-60,
+    'warning-70': $color-warning-70,
+    'warning-80': $color-warning-80,
+    'warning-90': $color-warning-90,
+
+    'danger': $color-danger,
+    'danger-10': $color-danger-10,
+    'danger-20': $color-danger-20,
+    'danger-30': $color-danger-30,
+    'danger-40': $color-danger-40,
+    'danger-50': $color-danger-50,
+    'danger-60': $color-danger-60,
+    'danger-70': $color-danger-70,
+    'danger-80': $color-danger-80,
+    'danger-90': $color-danger-90,
+
+    'success': $color-success,
+    'success-10': $color-success-10,
+    'success-20': $color-success-20,
+    'success-30': $color-success-30,
+    'success-40': $color-success-40,
+    'success-50': $color-success-50,
+    'success-60': $color-success-60,
+    'success-70': $color-success-70,
+    'success-80': $color-success-80,
+    'success-90': $color-success-90,
+
     'light': $color-light,
     'dark': $color-dark,
 
@@ -284,6 +402,12 @@ $colors: (
 ) !default;
 
 $shades: (
+    'primary',
+    'secondary',
+    'info',
+    'warning',
+    'danger',
+    'success',
     'gray',
     'red',
     'orange',
