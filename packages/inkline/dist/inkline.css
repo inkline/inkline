@@ -11226,6 +11226,8 @@ input[type=button].-block[data-v-7a15550a], input[type=reset].-block[data-v-7a15
     max-width: 100%;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+
+
     min-height: 1px;
     position: relative
 }

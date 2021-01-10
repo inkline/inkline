@@ -33,7 +33,9 @@ export default {
 @import '../../css/config';
 
 .example {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     border: 1px solid var(--border-color-light);
     border-radius: border-radius();

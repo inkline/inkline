@@ -13,12 +13,12 @@
 
 <script>
 import { markRaw } from 'vue';
-import Example from '@/playground/pages/components/alert/index.vue';
-import Variants from '@/playground/pages/components/alert/variants.vue';
-import Sizes from '@/playground/pages/components/alert/sizes.vue';
-import Elements from '@/playground/pages/components/alert/elements.vue';
-import Icon from '@/playground/pages/components/alert/icon.vue';
-import Dismissible from '@/playground/pages/components/alert/dismissible.vue';
+import Example from '@/components/IAlert/examples/index.vue';
+import Variants from '@/components/IAlert/examples/variants.vue';
+import Sizes from '@/components/IAlert/examples/sizes.vue';
+import Elements from '@/components/IAlert/examples/elements.vue';
+import Icon from '@/components/IAlert/examples/icon.vue';
+import Dismissible from '@/components/IAlert/examples/dismissible.vue';
 
 export default {
     setup() {
