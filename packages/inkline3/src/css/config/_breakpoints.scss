@@ -20,13 +20,20 @@ $breakpoints: (
     'xxl': $breakpoints-xxl,
 ) !default;
 
-:root {
-    @each $breakpoint-key, $breakpoint-value in $breakpoints {
-        --breakpoint-#{$breakpoint-key}: #{$breakpoint-value};
-    }
-}
+$breakpoint-keys: ('xs', 'sm', 'md', 'lg', 'xl', 'xxl') !default;
 
+// Code is commented out because var(--breakpoint-#{$breakpoint-key}) is
+// not supported inside media queries yet
+//
+// :root {
+//    @each $breakpoint-key, $breakpoint-value in $breakpoints {
+//        --breakpoint-#{$breakpoint-key}: #{$breakpoint-value};
+//    }
+// }
+
+// Returns breakpoint value
+//
 @function breakpoint($breakpoint-key) {
-    @return var(--breakpoint-#{$breakpoint-key});
+    @return map-get($breakpoints, $breakpoint-key);
 }
 

@@ -12,7 +12,7 @@ export default {
             type: String,
             default: ''
         },
-        value: {
+        modelValue: {
             type: Boolean,
             default: true
         },
@@ -31,9 +31,6 @@ export default {
         }
     },
     computed: {
-        visible() {
-            return this.value;
-        },
         classes() {
             return {
                 [`-${this.variant}`]: Boolean(this.variant),
@@ -47,11 +44,11 @@ export default {
         dismiss() {
             this.dismissed = true;
 
-            this.$emit('input', false);
+            this.$emit('update:modelValue', false);
         },
     },
     watch: {
-        value(value) {
+        modelValue(value) {
             this.dismissed = !value;
         }
     }
