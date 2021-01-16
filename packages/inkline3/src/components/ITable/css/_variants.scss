@@ -1,0 +1,53 @@
+@mixin table-color-variant($color-variant-key) {
+    $background: var(--table-color-variant-#{$color-variant-key}-background);
+    $background-hover: var(--table-color-variant-#{$color-variant-key}-background-hover);
+    $background-striped: var(--table-color-variant-#{$color-variant-key}-background-striped);
+    $border-color: var(--table-color-variant-#{$color-variant-key}-border-color);
+    $color: var(--table-color-variant-#{$color-variant-key}-color);
+
+    border-top-color: $border-color;
+    color: $color;
+
+    th,
+    td {
+        border-top-color: $border-color;
+        background-color: $background;
+    }
+
+    // Bordered table
+    //
+    // Add borders to all sides of the table and table cells
+    //
+    &.-bordered {
+        &,
+        th,
+        td {
+            border-color: $border-color;
+        }
+    }
+
+    // Striped Table
+    //
+    // Default zebra-stripe styles (alternating gray and transparent backgrounds)
+    //
+    &.-striped {
+        > tr:nth-of-type(odd),
+        tbody > tr:nth-of-type(odd) {
+            th,
+            td {
+                background-color: $background-striped;
+            }
+        }
+    }
+
+    &.-hover {
+        tbody tr {
+            &:hover {
+                th,
+                td {
+                    background-color: $background-hover;
+                }
+            }
+        }
+    }
+}

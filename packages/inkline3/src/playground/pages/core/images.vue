@@ -2,14 +2,14 @@
     <article>
         <h1>Images</h1>
 
-        <example :component="Responsive" />
-        <example :component="Fluid" />
-        <example :component="Thumbnail" />
-        <example :component="Polaroid" />
-        <example :component="AlignmentLeft" />
-        <example :component="AlignmentRight" />
-        <example :component="AlignmentCenter" />
-        <example :component="AlignmentMarginAuto" />
+        <example type="no-margin" :component="Responsive" />
+        <example type="no-margin" :component="Fluid" />
+        <example type="no-margin" :component="Thumbnail" />
+        <example type="no-margin" :component="Polaroid" />
+        <example type="no-margin" :component="AlignmentLeft" />
+        <example type="no-margin" :component="AlignmentRight" />
+        <example type="no-margin" :component="AlignmentCenter" />
+        <example type="no-margin" :component="AlignmentMarginAuto" />
     </article>
 </template>
 

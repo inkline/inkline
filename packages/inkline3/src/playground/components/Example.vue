@@ -56,6 +56,16 @@ export default {
         margin-top: spacer();
     }
 
+    &.-no-margin {
+        padding: spacer('1');
+
+        > .example-body {
+            > * {
+                margin: 0;
+            }
+        }
+    }
+
     &.-color-utilities {
         > .example-body {
             > div {

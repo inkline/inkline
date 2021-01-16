@@ -16,6 +16,11 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'core-layout' }">
+                        Layout
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'core-typography' }">
                         Typography
                     </router-link>
@@ -23,6 +28,11 @@
                 <li>
                     <router-link :to="{ name: 'core-images' }">
                         Images
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'core-tables' }">
+                        Tables
                     </router-link>
                 </li>
                 <li>

@@ -2,7 +2,7 @@
     <article>
         <h1>Typography</h1>
 
-        <example :component="Example" />
+        <example :component="Index" />
         <example :component="Headings" />
         <example :component="HeadingHelpers" />
         <example :component="Displays" />
@@ -23,7 +23,7 @@
 
 <script>
 import { markRaw } from 'vue';
-import Example from '@/playground/pages/core/typography/index.vue';
+import Index from '@/playground/pages/core/typography/index.vue';
 import Headings from '@/playground/pages/core/typography/headings.vue';
 import HeadingHelpers from '@/playground/pages/core/typography/heading-helpers.vue';
 import Displays from '@/playground/pages/core/typography/displays.vue';
@@ -43,7 +43,7 @@ import DescriptionList from '@/playground/pages/core/typography/description-list
 export default {
     setup() {
         return {
-            Example: markRaw(Example),
+            Index: markRaw(Index),
             Headings: markRaw(Headings),
             HeadingHelpers: markRaw(HeadingHelpers),
             Displays: markRaw(Displays),

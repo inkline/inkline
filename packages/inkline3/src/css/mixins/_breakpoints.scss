@@ -8,8 +8,8 @@
 // @param media Breakpoint identifier
 //
 @mixin breakpoint($media) {
-    $index: list.index($breakpoint-keys, $media);
-    $next-media: list.nth($breakpoint-keys, $index + 1);
+    $index: index($breakpoint-keys, $media);
+    $next-media: nth($breakpoint-keys, $index + 1);
 
     @if $media == 'xxl' {
         @media screen and (min-width: breakpoint('xxl')) {
@@ -39,8 +39,12 @@
 // @param media Breakpoint identifier
 //
 @mixin breakpoint-down($media) {
-    $index: list.index($breakpoint-keys, $media);
-    $next-media: list.nth($breakpoint-keys, $index + 1);
+    $index: index($breakpoint-keys, $media);
+    $next-media: null;
+
+    @if $index + 1 <= length($breakpoint-keys) {
+        $next-media: nth($breakpoint-keys, $index + 1)
+    }
 
     @if $media == 'xxl' {
         @content;

@@ -1,1 +1,1 @@
-<template src="./fluid.html" />
+<template src="./thumbnail.html" />

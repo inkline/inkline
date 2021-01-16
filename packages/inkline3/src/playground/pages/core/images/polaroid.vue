@@ -1,1 +1,1 @@
-<template src="./fluid.html" />
+<template src="./polaroid.html" />

@@ -1,4 +1,10 @@
 export { default as IAlert } from '@/components/IAlert/index.vue';
 export { default as IColumn } from '@/components/IColumn/index.vue';
 export { default as IContainer } from '@/components/IContainer/index.vue';
+export { default as ILayout } from '@/components/ILayout/index.vue';
+export { default as ILayoutAside } from '@/components/ILayout/components/ILayoutAside/index.vue';
+export { default as ILayoutContent } from '@/components/ILayout/components/ILayoutContent/index.vue';
+export { default as ILayoutFooter } from '@/components/ILayout/components/ILayoutFooter/index.vue';
+export { default as ILayoutHeader } from '@/components/ILayout/components/ILayoutHeader/index.vue';
 export { default as IRow } from '@/components/IRow/index.vue';
+export { default as ITable } from '@/components/ITable/index.vue';
