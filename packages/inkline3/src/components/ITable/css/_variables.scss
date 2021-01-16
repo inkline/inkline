@@ -1,0 +1,144 @@
+//
+// Tables
+//
+$table-margin-bottom: spacer() !default;
+
+$table-cell-padding: 0.75rem !default;
+$table-cell-padding-sm: 0.3rem !default;
+
+$table-border-width: var(--border-width) !default;
+$table-border-color: var(--border-color) !default;
+
+:root {
+    --table-margin-bottom: #{$table-margin-bottom};
+    --table-cell-padding: #{$table-cell-padding};
+    --table-cell-padding-sm: #{$table-cell-padding-sm};
+    --table-border-width: #{$table-border-width};
+    --table-border-color: #{$table-border-color};
+}
+
+// Variants
+//
+
+$table-color-variant-light-background: var(--color-white) !default;
+$table-color-variant-light-background-hover: var(--color-gray-20) !default;
+$table-color-variant-light-background-striped: var(--color-gray-10) !default;
+$table-color-variant-light-border-color: var(--color-gray-10) !default;
+$table-color-variant-light-color: contrast-color($color-light) !default;
+$table-color-variant-light: (
+    'background': $table-color-variant-light-background,
+    'background-hover': $table-color-variant-light-background,
+    'background-striped': $table-color-variant-light-background,
+    'border-color': $table-color-variant-light-border-color,
+    'color': $table-color-variant-light-color,
+) !default;
+
+$table-color-variant-dark-background: var(--color-dark) !default;
+$table-color-variant-dark-background-hover: var(--color-gray-80) !default;
+$table-color-variant-dark-background-striped: var(--color-gray-70) !default;
+$table-color-variant-dark-border-color: var(--color-gray-70) !default;
+$table-color-variant-dark-color: contrast-color($color-dark) !default;
+$table-color-variant-dark: (
+    'background': $table-color-variant-dark-background,
+    'background-hover': $table-color-variant-dark-background,
+    'background-striped': $table-color-variant-dark-background,
+    'border-color': $table-color-variant-dark-border-color,
+    'color': $table-color-variant-dark-color,
+) !default;
+
+$table-color-variant-primary-background: var(--color-primary) !default;
+$table-color-variant-primary-background-hover: var(--color-primary-70) !default;
+$table-color-variant-primary-background-striped: var(--color-primary-60) !default;
+$table-color-variant-primary-border-color: var(--color-primary-60) !default;
+$table-color-variant-primary-color: contrast-color($color-primary) !default;
+$table-color-variant-primary: (
+    'background': $table-color-variant-primary-background,
+    'background-hover': $table-color-variant-primary-background,
+    'background-striped': $table-color-variant-primary-background,
+    'border-color': $table-color-variant-primary-border-color,
+    'color': $table-color-variant-primary-color,
+) !default;
+
+$table-color-variant-secondary-background: var(--color-secondary) !default;
+$table-color-variant-secondary-background-hover: var(--color-secondary-70) !default;
+$table-color-variant-secondary-background-striped: var(--color-secondary-60) !default;
+$table-color-variant-secondary-border-color: var(--color-secondary-60) !default;
+$table-color-variant-secondary-color: contrast-color($color-secondary) !default;
+$table-color-variant-secondary: (
+    'background': $table-color-variant-secondary-background,
+    'background-hover': $table-color-variant-secondary-background,
+    'background-striped': $table-color-variant-secondary-background,
+    'border-color': $table-color-variant-secondary-border-color,
+    'color': $table-color-variant-secondary-color,
+) !default;
+
+$table-color-variant-info-background: var(--color-info) !default;
+$table-color-variant-info-background-hover: var(--color-info-70) !default;
+$table-color-variant-info-background-striped: var(--color-info-60) !default;
+$table-color-variant-info-border-color: var(--color-info-60) !default;
+$table-color-variant-info-color: contrast-color($color-info) !default;
+$table-color-variant-info: (
+    'background': $table-color-variant-info-background,
+    'background-hover': $table-color-variant-info-background,
+    'background-striped': $table-color-variant-info-background,
+    'border-color': $table-color-variant-info-border-color,
+    'color': $table-color-variant-info-color,
+) !default;
+
+$table-color-variant-warning-background: var(--color-warning) !default;
+$table-color-variant-warning-background-hover: var(--color-warning-70) !default;
+$table-color-variant-warning-background-striped: var(--color-warning-60) !default;
+$table-color-variant-warning-border-color: var(--color-warning-60) !default;
+$table-color-variant-warning-color: contrast-color($color-warning) !default;
+$table-color-variant-warning: (
+    'background': $table-color-variant-warning-background,
+    'background-hover': $table-color-variant-warning-background,
+    'background-striped': $table-color-variant-warning-background,
+    'border-color': $table-color-variant-warning-border-color,
+    'color': $table-color-variant-warning-color,
+) !default;
+
+$table-color-variant-danger-background: var(--color-danger) !default;
+$table-color-variant-danger-background-hover: var(--color-danger-70) !default;
+$table-color-variant-danger-background-striped: var(--color-danger-60) !default;
+$table-color-variant-danger-border-color: var(--color-danger-60) !default;
+$table-color-variant-danger-color: contrast-color($color-danger) !default;
+$table-color-variant-danger: (
+    'background': $table-color-variant-danger-background,
+    'background-hover': $table-color-variant-danger-background,
+    'background-striped': $table-color-variant-danger-background,
+    'border-color': $table-color-variant-danger-border-color,
+    'color': $table-color-variant-danger-color,
+) !default;
+
+$table-color-variant-success-background: var(--color-success) !default;
+$table-color-variant-success-background-hover: var(--color-success-70) !default;
+$table-color-variant-success-background-striped: var(--color-success-60) !default;
+$table-color-variant-success-border-color: var(--color-success-60) !default;
+$table-color-variant-success-color: contrast-color($color-success) !default;
+$table-color-variant-success: (
+    'background': $table-color-variant-success-background,
+    'background-hover': $table-color-variant-success-background,
+    'background-striped': $table-color-variant-success-background,
+    'border-color': $table-color-variant-success-border-color,
+    'color': $table-color-variant-success-color,
+) !default;
+
+$table-color-variants: (
+    'light': $table-color-variant-light,
+    'dark': $table-color-variant-dark,
+    'primary': $table-color-variant-primary,
+    'secondary': $table-color-variant-secondary,
+    'info': $table-color-variant-info,
+    'warning': $table-color-variant-warning,
+    'danger': $table-color-variant-danger,
+    'success': $table-color-variant-success,
+) !default;
+
+:root {
+    @each $color-variant-key, $color-variant-value in $table-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --table-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}

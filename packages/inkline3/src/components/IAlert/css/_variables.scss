@@ -68,9 +68,6 @@ $alert-paddings: (
     }
 }
 
-$alert-contrast-color-for-light-background: var(--contrast-color-for-light-background) !default;
-$alert-contrast-color-for-dark-background: var(--contrast-color-for-dark-background) !default;
-
 $alert-color-variant-primary-background: var(--color-primary) !default;
 $alert-color-variant-primary-border-color: var(--color-primary-60) !default;
 $alert-color-variant-primary-color: contrast-color($color-primary) !default;

@@ -2,7 +2,7 @@
     <article id="core-grid-page">
         <h1>Grid</h1>
 
-        <example :component="Example" />
+        <example :component="Index" />
         <example :component="Offset" />
         <example :component="OffsetReset" />
         <example :component="PushPull" />
@@ -11,10 +11,9 @@
         <example :component="HorizontalAlignmentStart" />
         <example :component="HorizontalAlignmentCenter" />
         <example :component="HorizontalAlignmentEnd" />
-        <example :component="VerticalAlignmentTop" />
-        <example :component="HorizontalAlignmentEnd" />
-        <example :component="VerticalAlignmentMiddle" />
-        <example :component="VerticalAlignmentBottom" />
+        <example class="vertical-alignment-example" :component="VerticalAlignmentTop" />
+        <example class="vertical-alignment-example" :component="VerticalAlignmentMiddle" />
+        <example class="vertical-alignment-example" :component="VerticalAlignmentBottom" />
         <example :component="DistributionAround" />
         <example :component="DistributionBetween" />
         <example :component="ReorderingReverse" />
@@ -27,30 +26,30 @@
 
 <script>
 import { markRaw } from 'vue';
-import Example from '@/playground/pages/core/grid/index.vue';
-import Offset from '@/playground/pages/core/grid/offset.vue';
-import OffsetReset from '@/playground/pages/core/grid/offset-reset.vue';
-import PushPull from '@/playground/pages/core/grid/push-pull.vue';
-import AutoWidth from '@/playground/pages/core/grid/auto-width.vue';
-import Nested from '@/playground/pages/core/grid/nested.vue';
-import HorizontalAlignmentStart from '@/playground/pages/core/grid/horizontal-alignment-start.vue';
-import HorizontalAlignmentCenter from '@/playground/pages/core/grid/horizontal-alignment-center.vue';
-import HorizontalAlignmentEnd from '@/playground/pages/core/grid/horizontal-alignment-end.vue';
-import VerticalAlignmentTop from '@/playground/pages/core/grid/vertical-alignment-top.vue';
-import VerticalAlignmentMiddle from '@/playground/pages/core/grid/vertical-alignment-middle.vue';
-import VerticalAlignmentBottom from '@/playground/pages/core/grid/vertical-alignment-bottom.vue';
-import DistributionAround from '@/playground/pages/core/grid/distribution-around.vue';
-import DistributionBetween from '@/playground/pages/core/grid/distribution-between.vue';
-import ReorderingReverse from '@/playground/pages/core/grid/reordering-reverse.vue';
-import ReorderingFirst from '@/playground/pages/core/grid/reordering-first.vue';
-import ReorderingLast from '@/playground/pages/core/grid/reordering-last.vue';
-import Responsive from '@/playground/pages/core/grid/responsive.vue';
-import FluidContainer from '@/playground/pages/core/grid/fluid-container.vue';
+import Index from '@/components/IContainer/examples/index.vue';
+import Offset from '@/components/IColumn/examples/offset.vue';
+import OffsetReset from '@/components/IColumn/examples/offset-reset.vue';
+import PushPull from '@/components/IColumn/examples/push-pull.vue';
+import AutoWidth from '@/components/IColumn/examples/auto-width.vue';
+import Nested from '@/components/IColumn/examples/nested.vue';
+import HorizontalAlignmentStart from '@/components/IRow/examples/horizontal-alignment-start.vue';
+import HorizontalAlignmentCenter from '@/components/IRow/examples/horizontal-alignment-center.vue';
+import HorizontalAlignmentEnd from '@/components/IRow/examples/horizontal-alignment-end.vue';
+import VerticalAlignmentTop from '@/components/IRow/examples/vertical-alignment-top.vue';
+import VerticalAlignmentMiddle from '@/components/IRow/examples/vertical-alignment-middle.vue';
+import VerticalAlignmentBottom from '@/components/IRow/examples/vertical-alignment-bottom.vue';
+import DistributionAround from '@/components/IRow/examples/distribution-around.vue';
+import DistributionBetween from '@/components/IRow/examples/distribution-between.vue';
+import ReorderingReverse from '@/components/IRow/examples/reordering-reverse.vue';
+import ReorderingFirst from '@/components/IColumn/examples/reordering-first.vue';
+import ReorderingLast from '@/components/IColumn/examples/reordering-last.vue';
+import Responsive from '@/components/IColumn/examples/responsive.vue';
+import FluidContainer from '@/components/IContainer/examples/fluid-container.vue';
 
 export default {
     setup() {
         return {
-            Example: markRaw(Example),
+            Index: markRaw(Index),
             Offset: markRaw(Offset),
             OffsetReset: markRaw(OffsetReset),
             PushPull: markRaw(PushPull),
@@ -101,21 +100,31 @@ export default {
             background: color('primary');
         }
     }
-}
 
-#nested-example {
-    .container > .row > .column {
-        &::after {
-            display: none;
+    #nested-example {
+        .container > .row > .column {
+            &::after {
+                display: none;
+            }
+
+            &:first-child {
+                border-right: 1px solid color('white');
+            }
+
+            border-radius: border-radius('lg');
+            padding: spacer() 0;
+            background: color('primary-20')
         }
+    }
 
-        &:first-child {
-            border-right: 1px solid color('white');
+    .vertical-alignment-example {
+        .container > .row > .column {
+            &:first-of-type {
+                &::after {
+                    padding: 3rem 0.5rem;
+                }
+            }
         }
-
-        border-radius: border-radius('lg');
-        padding: spacer() 0;
-        background: color('primary-20')
     }
 }
 </style>

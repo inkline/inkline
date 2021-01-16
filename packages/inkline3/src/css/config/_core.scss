@@ -1,16 +1,29 @@
 // Core
 //
 
-$body-background-light: color('white') !default;
-$body-color-light: color('gray-80') !default;
+$body-color-variant-light-background: color('white') !default;
+$body-color-variant-light-color: color('gray-80') !default;
+$body-color-variant-light: (
+    'background': $body-color-variant-light-background,
+    'color': $body-color-variant-light-color
+) !default;
 
-$body-background-dark: color('gray-90') !default;
-$body-color-dark: color('gray-10') !default;
+$body-color-variant-dark-background: color('gray-90') !default;
+$body-color-variant-dark-color: color('gray-10') !default;
+$body-color-variant-dark: (
+    'background': $body-color-variant-dark-background,
+    'color': $body-color-variant-dark-color
+) !default;
+
+$body-color-variants: (
+    'light': $body-color-variant-light,
+    'dark': $body-color-variant-dark
+) !default;
 
 :root {
-    --body-background-light: #{$body-background-light};
-    --body-color-light: #{$body-color-light};
-
-    --body-background-dark: #{$body-background-dark};
-    --body-color-dark: #{$body-color-dark};
+    @each $body-color-variant-key, $body-color-variant-value in $body-color-variants {
+        @each $body-color-variant-field-key, $body-color-variant-field-value in $body-color-variant-value {
+            --body-#{$body-color-variant-field-key}-#{$body-color-variant-key}: #{$body-color-variant-field-value};
+        }
+    }
 }

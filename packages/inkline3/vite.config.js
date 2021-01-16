@@ -1,18 +1,21 @@
-const pathAliasMap = {
-    '@/': '/src/',
-    '~': '/node_modules/',
-};
+import path from 'path';
+import vue from '@vitejs/plugin-vue'
 
 export default {
-    resolvers: [
+    plugins: [vue()],
+    alias: [
         {
-            alias(path) {
-                for (const [slug, res] of Object.entries(pathAliasMap)) {
-                    if (path.startsWith(slug)) {
-                        return path.replace(slug, res)
-                    }
-                }
-            }
+            find: /^@\//,
+            replacement: `${path.resolve(__dirname, 'src')}/`
         }
-    ]
+    ],
+    build: {
+        lib: {
+            entry: path.resolve(__dirname, 'src/inkline.js'),
+            name: 'Inkline'
+        },
+        rollupOptions: {
+            external: ['vue']
+        }
+    }
 }

@@ -65,6 +65,7 @@ rules:
     # https://stylelint.io/user-guide/rules/selector-type-no-unknown
     selector-type-no-unknown:
         -   true
+        -   {}
 
     # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/double-slash-comment-empty-line-before/README.md
     scss/double-slash-comment-empty-line-before:

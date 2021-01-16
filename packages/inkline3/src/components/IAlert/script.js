@@ -8,7 +8,7 @@ export default {
             default: '',
             validator: sizeValidator
         },
-        variant: {
+        color: {
             type: String,
             default: ''
         },
@@ -33,7 +33,7 @@ export default {
     computed: {
         classes() {
             return {
-                [`-${this.variant}`]: Boolean(this.variant),
+                [`-${this.color}`]: Boolean(this.color),
                 [`-${this.size}`]: Boolean(this.size),
                 '-dismissible': this.dismissible,
                 '-with-icon': Boolean(this.$slots.icon)
