@@ -26,25 +26,25 @@
 
 <script>
 import { markRaw } from 'vue';
-import Index from '@/components/IContainer/examples/index.vue';
-import Offset from '@/components/IColumn/examples/offset.vue';
-import OffsetReset from '@/components/IColumn/examples/offset-reset.vue';
-import PushPull from '@/components/IColumn/examples/push-pull.vue';
-import AutoWidth from '@/components/IColumn/examples/auto-width.vue';
-import Nested from '@/components/IColumn/examples/nested.vue';
-import HorizontalAlignmentStart from '@/components/IRow/examples/horizontal-alignment-start.vue';
-import HorizontalAlignmentCenter from '@/components/IRow/examples/horizontal-alignment-center.vue';
-import HorizontalAlignmentEnd from '@/components/IRow/examples/horizontal-alignment-end.vue';
-import VerticalAlignmentTop from '@/components/IRow/examples/vertical-alignment-top.vue';
-import VerticalAlignmentMiddle from '@/components/IRow/examples/vertical-alignment-middle.vue';
-import VerticalAlignmentBottom from '@/components/IRow/examples/vertical-alignment-bottom.vue';
-import DistributionAround from '@/components/IRow/examples/distribution-around.vue';
-import DistributionBetween from '@/components/IRow/examples/distribution-between.vue';
-import ReorderingReverse from '@/components/IRow/examples/reordering-reverse.vue';
-import ReorderingFirst from '@/components/IColumn/examples/reordering-first.vue';
-import ReorderingLast from '@/components/IColumn/examples/reordering-last.vue';
-import Responsive from '@/components/IColumn/examples/responsive.vue';
-import FluidContainer from '@/components/IContainer/examples/fluid-container.vue';
+import Index from '@inkline/inkline/src/components/IContainer/examples/index.vue';
+import Offset from '@inkline/inkline/src/components/IColumn/examples/offset.vue';
+import OffsetReset from '@inkline/inkline/src/components/IColumn/examples/offset-reset.vue';
+import PushPull from '@inkline/inkline/src/components/IColumn/examples/push-pull.vue';
+import AutoWidth from '@inkline/inkline/src/components/IColumn/examples/auto-width.vue';
+import Nested from '@inkline/inkline/src/components/IColumn/examples/nested.vue';
+import HorizontalAlignmentStart from '@inkline/inkline/src/components/IRow/examples/horizontal-alignment-start.vue';
+import HorizontalAlignmentCenter from '@inkline/inkline/src/components/IRow/examples/horizontal-alignment-center.vue';
+import HorizontalAlignmentEnd from '@inkline/inkline/src/components/IRow/examples/horizontal-alignment-end.vue';
+import VerticalAlignmentTop from '@inkline/inkline/src/components/IRow/examples/vertical-alignment-top.vue';
+import VerticalAlignmentMiddle from '@inkline/inkline/src/components/IRow/examples/vertical-alignment-middle.vue';
+import VerticalAlignmentBottom from '@inkline/inkline/src/components/IRow/examples/vertical-alignment-bottom.vue';
+import DistributionAround from '@inkline/inkline/src/components/IRow/examples/distribution-around.vue';
+import DistributionBetween from '@inkline/inkline/src/components/IRow/examples/distribution-between.vue';
+import ReorderingReverse from '@inkline/inkline/src/components/IRow/examples/reordering-reverse.vue';
+import ReorderingFirst from '@inkline/inkline/src/components/IColumn/examples/reordering-first.vue';
+import ReorderingLast from '@inkline/inkline/src/components/IColumn/examples/reordering-last.vue';
+import Responsive from '@inkline/inkline/src/components/IColumn/examples/responsive.vue';
+import FluidContainer from '@inkline/inkline/src/components/IContainer/examples/fluid-container.vue';
 
 export default {
     setup() {

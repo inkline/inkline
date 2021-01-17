@@ -1,7 +1,7 @@
 @mixin alert-size-variant($size-variant-key) {
-    $border-radius: var(--alert-border-radius-#{$size-variant-key});
-    $font-size: var(--alert-font-size-#{$size-variant-key});
-    $padding: var(--alert-padding-#{$size-variant-key});
+    $border-radius: var(--alert-size-variant-#{$size-variant-key}-border-radius);
+    $font-size: var(--alert-size-variant-#{$size-variant-key}-font-size);
+    $padding: var(--alert-size-variant-#{$size-variant-key}-padding);
 
     border-radius: $border-radius;
     font-size: $font-size;

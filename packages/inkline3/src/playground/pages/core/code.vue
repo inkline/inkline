@@ -12,11 +12,11 @@
 
 <script>
 import { markRaw } from 'vue';
-import Inline from '@/playground/pages/core/code/inline.vue';
-import Block from '@/playground/pages/core/code/block.vue';
-import Variables from '@/playground/pages/core/code/variables.vue';
-import UserInput from '@/playground/pages/core/code/user-input.vue';
-import SampleOutput from '@/playground/pages/core/code/sample-output.vue';
+import Inline from '@inkline/inkline/src/playground/pages/core/code/inline.vue';
+import Block from '@inkline/inkline/src/playground/pages/core/code/block.vue';
+import Variables from '@inkline/inkline/src/playground/pages/core/code/variables.vue';
+import UserInput from '@inkline/inkline/src/playground/pages/core/code/user-input.vue';
+import SampleOutput from '@inkline/inkline/src/playground/pages/core/code/sample-output.vue';
 
 export default {
     setup() {

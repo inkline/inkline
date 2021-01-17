@@ -13,12 +13,12 @@
 
 <script>
 import { markRaw } from 'vue';
-import AddExample from '@/playground/pages/utilities/border/add.vue';
-import RemoveExample from '@/playground/pages/utilities/border/remove.vue';
-import ColorBrandExample from '@/playground/pages/utilities/border/color-brand.vue';
-import ColorNeutralExample from '@/playground/pages/utilities/border/color-neutral.vue';
-import ColorStateExample from '@/playground/pages/utilities/border/color-state.vue';
-import RadiusExample from '@/playground/pages/utilities/border/radius.vue';
+import AddExample from '@inkline/inkline/src/playground/pages/utilities/border/add.vue';
+import RemoveExample from '@inkline/inkline/src/playground/pages/utilities/border/remove.vue';
+import ColorBrandExample from '@inkline/inkline/src/playground/pages/utilities/border/color-brand.vue';
+import ColorNeutralExample from '@inkline/inkline/src/playground/pages/utilities/border/color-neutral.vue';
+import ColorStateExample from '@inkline/inkline/src/playground/pages/utilities/border/color-state.vue';
+import RadiusExample from '@inkline/inkline/src/playground/pages/utilities/border/radius.vue';
 
 export default {
     setup() {

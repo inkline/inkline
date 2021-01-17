@@ -5,8 +5,8 @@ export default {
     plugins: [vue()],
     alias: [
         {
-            find: /^@\//,
-            replacement: `${path.resolve(__dirname, 'src')}/`
+            find: /^@inkline\/inkline\//,
+            replacement: `${path.resolve(__dirname)}/`
         }
     ],
     build: {

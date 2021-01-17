@@ -7,7 +7,7 @@
 
 <script>
 import { markRaw } from 'vue';
-import Index from '@/playground/pages/utilities/clearfix/index.vue';
+import Index from '@inkline/inkline/src/playground/pages/utilities/clearfix/index.vue';
 
 export default {
     setup() {

@@ -1,1 +1,1 @@
-export * from '@/validators/size';
+export * from '@inkline/inkline/src/validators/size';

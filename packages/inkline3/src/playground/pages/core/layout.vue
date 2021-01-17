@@ -15,14 +15,14 @@
 
 <script>
 import { markRaw } from 'vue';
-import ContentHeader from '@/components/ILayout/examples/content-header.vue';
-import ContentHeaderFooter from '@/components/ILayout/examples/content-header-footer.vue';
-import ContentWithLeftAsideHeaderFooter from '@/components/ILayout/examples/content-with-left-aside-header-footer.vue';
-import ContentWithRightAsideHeaderFooter from '@/components/ILayout/examples/content-with-right-aside-header-footer.vue';
-import ContentWithLeftAndRightAsidesHeaderFooter from '@/components/ILayout/examples/content-with-left-and-right-asides-header-footer.vue';
-import LeftAsideWithContentHeaderFooter from '@/components/ILayout/examples/left-aside-with-content-header-footer.vue';
-import RightAsideWithContentHeaderFooter from '@/components/ILayout/examples/right-aside-with-content-header-footer.vue';
-import LeftAndRightAsidesWithContentHeaderFooter from '@/components/ILayout/examples/left-and-right-asides-with-content-header-footer.vue';
+import ContentHeader from '@inkline/inkline/src/components/ILayout/examples/content-header.vue';
+import ContentHeaderFooter from '@inkline/inkline/src/components/ILayout/examples/content-header-footer.vue';
+import ContentWithLeftAsideHeaderFooter from '@inkline/inkline/src/components/ILayout/examples/content-with-left-aside-header-footer.vue';
+import ContentWithRightAsideHeaderFooter from '@inkline/inkline/src/components/ILayout/examples/content-with-right-aside-header-footer.vue';
+import ContentWithLeftAndRightAsidesHeaderFooter from '@inkline/inkline/src/components/ILayout/examples/content-with-left-and-right-asides-header-footer.vue';
+import LeftAsideWithContentHeaderFooter from '@inkline/inkline/src/components/ILayout/examples/left-aside-with-content-header-footer.vue';
+import RightAsideWithContentHeaderFooter from '@inkline/inkline/src/components/ILayout/examples/right-aside-with-content-header-footer.vue';
+import LeftAndRightAsidesWithContentHeaderFooter from '@inkline/inkline/src/components/ILayout/examples/left-and-right-asides-with-content-header-footer.vue';
 
 export default {
     setup() {

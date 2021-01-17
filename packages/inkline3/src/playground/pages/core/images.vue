@@ -15,14 +15,14 @@
 
 <script>
 import { markRaw } from 'vue';
-import Responsive from '@/playground/pages/core/images/responsive.vue';
-import Fluid from '@/playground/pages/core/images/fluid.vue';
-import Thumbnail from '@/playground/pages/core/images/thumbnail.vue';
-import Polaroid from '@/playground/pages/core/images/polaroid.vue';
-import AlignmentLeft from '@/playground/pages/core/images/alignment-left.vue';
-import AlignmentRight from '@/playground/pages/core/images/alignment-right.vue';
-import AlignmentCenter from '@/playground/pages/core/images/alignment-center.vue';
-import AlignmentMarginAuto from '@/playground/pages/core/images/alignment-margin-auto.vue';
+import Responsive from '@inkline/inkline/src/playground/pages/core/images/responsive.vue';
+import Fluid from '@inkline/inkline/src/playground/pages/core/images/fluid.vue';
+import Thumbnail from '@inkline/inkline/src/playground/pages/core/images/thumbnail.vue';
+import Polaroid from '@inkline/inkline/src/playground/pages/core/images/polaroid.vue';
+import AlignmentLeft from '@inkline/inkline/src/playground/pages/core/images/alignment-left.vue';
+import AlignmentRight from '@inkline/inkline/src/playground/pages/core/images/alignment-right.vue';
+import AlignmentCenter from '@inkline/inkline/src/playground/pages/core/images/alignment-center.vue';
+import AlignmentMarginAuto from '@inkline/inkline/src/playground/pages/core/images/alignment-margin-auto.vue';
 
 export default {
     setup() {

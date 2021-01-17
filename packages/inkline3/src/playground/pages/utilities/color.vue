@@ -38,37 +38,37 @@
 
 <script>
 import { markRaw } from 'vue';
-import BrandBackgroundExample from '@/playground/pages/utilities/color/brand-background.vue';
-import BrandTextExample from '@/playground/pages/utilities/color/brand-text.vue';
+import BrandBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/brand-background.vue';
+import BrandTextExample from '@inkline/inkline/src/playground/pages/utilities/color/brand-text.vue';
 
-import StateBackgroundExample from '@/playground/pages/utilities/color/state-background.vue';
-import StateTextExample from '@/playground/pages/utilities/color/state-text.vue';
+import StateBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/state-background.vue';
+import StateTextExample from '@inkline/inkline/src/playground/pages/utilities/color/state-text.vue';
 
-import BasicBackgroundExample from '@/playground/pages/utilities/color/basic-background.vue';
-import BasicTextExample from '@/playground/pages/utilities/color/basic-text.vue';
+import BasicBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-background.vue';
+import BasicTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-text.vue';
 
-import BasicRedBackgroundExample from '@/playground/pages/utilities/color/basic-red-background.vue';
-import BasicRedTextExample from '@/playground/pages/utilities/color/basic-red-text.vue';
-import BasicOrangeBackgroundExample from '@/playground/pages/utilities/color/basic-orange-background.vue';
-import BasicOrangeTextExample from '@/playground/pages/utilities/color/basic-orange-text.vue';
-import BasicYellowBackgroundExample from '@/playground/pages/utilities/color/basic-yellow-background.vue';
-import BasicYellowTextExample from '@/playground/pages/utilities/color/basic-yellow-text.vue';
-import BasicGreenBackgroundExample from '@/playground/pages/utilities/color/basic-green-background.vue';
-import BasicGreenTextExample from '@/playground/pages/utilities/color/basic-green-text.vue';
-import BasicTealBackgroundExample from '@/playground/pages/utilities/color/basic-teal-background.vue';
-import BasicTealTextExample from '@/playground/pages/utilities/color/basic-teal-text.vue';
-import BasicBlueBackgroundExample from '@/playground/pages/utilities/color/basic-blue-background.vue';
-import BasicBlueTextExample from '@/playground/pages/utilities/color/basic-blue-text.vue';
-import BasicPurpleBackgroundExample from '@/playground/pages/utilities/color/basic-purple-background.vue';
-import BasicPurpleTextExample from '@/playground/pages/utilities/color/basic-purple-text.vue';
-import BasicPinkBackgroundExample from '@/playground/pages/utilities/color/basic-pink-background.vue';
-import BasicPinkTextExample from '@/playground/pages/utilities/color/basic-pink-text.vue';
+import BasicRedBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-red-background.vue';
+import BasicRedTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-red-text.vue';
+import BasicOrangeBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-orange-background.vue';
+import BasicOrangeTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-orange-text.vue';
+import BasicYellowBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-yellow-background.vue';
+import BasicYellowTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-yellow-text.vue';
+import BasicGreenBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-green-background.vue';
+import BasicGreenTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-green-text.vue';
+import BasicTealBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-teal-background.vue';
+import BasicTealTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-teal-text.vue';
+import BasicBlueBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-blue-background.vue';
+import BasicBlueTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-blue-text.vue';
+import BasicPurpleBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-purple-background.vue';
+import BasicPurpleTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-purple-text.vue';
+import BasicPinkBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-pink-background.vue';
+import BasicPinkTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-pink-text.vue';
 
-import NeutralBackgroundExample from '@/playground/pages/utilities/color/neutral-background.vue';
-import NeutralTextExample from '@/playground/pages/utilities/color/neutral-text.vue';
+import NeutralBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/neutral-background.vue';
+import NeutralTextExample from '@inkline/inkline/src/playground/pages/utilities/color/neutral-text.vue';
 
-import SocialBackgroundExample from '@/playground/pages/utilities/color/social-background.vue';
-import SocialTextExample from '@/playground/pages/utilities/color/social-text.vue';
+import SocialBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/social-background.vue';
+import SocialTextExample from '@inkline/inkline/src/playground/pages/utilities/color/social-text.vue';
 
 export default {
     setup() {
