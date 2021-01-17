@@ -13,12 +13,12 @@
 
 <script>
 import { markRaw } from 'vue';
-import Index from '@/components/IAlert/examples/index.vue';
-import ColorVariants from '@/components/IAlert/examples/color-variants.vue';
-import SizeVariants from '@/components/IAlert/examples/size-variants.vue';
-import Elements from '@/components/IAlert/examples/elements.vue';
-import Icon from '@/components/IAlert/examples/icon.vue';
-import Dismissible from '@/components/IAlert/examples/dismissible.vue';
+import Index from '@inkline/inkline/src/components/IAlert/examples/index.vue';
+import ColorVariants from '@inkline/inkline/src/components/IAlert/examples/color-variants.vue';
+import SizeVariants from '@inkline/inkline/src/components/IAlert/examples/size-variants.vue';
+import Elements from '@inkline/inkline/src/components/IAlert/examples/elements.vue';
+import Icon from '@inkline/inkline/src/components/IAlert/examples/icon.vue';
+import Dismissible from '@inkline/inkline/src/components/IAlert/examples/dismissible.vue';
 
 export default {
     setup() {

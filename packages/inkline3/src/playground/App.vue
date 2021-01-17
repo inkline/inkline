@@ -49,6 +49,11 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'components-badge' }">
+                        Badge
+                    </router-link>
+                </li>
+                <li>
                     Utilities
                 </li>
                 <li>

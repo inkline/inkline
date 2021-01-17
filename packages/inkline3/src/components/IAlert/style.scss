@@ -5,7 +5,7 @@
 @import '../../css/config/index';
 @import '../../css/mixins/index';
 @import 'css/variables';
-@import 'css/variants';
+@import 'css/colors';
 @import 'css/sizes';
 
 .alert {
@@ -71,9 +71,9 @@
     }
 
     @include alert-size-variant('md');
-    @each $size-key in $alert-size-variants {
-        &.-#{$size-key} {
-            @include alert-size-variant($size-key);
+    @each $size-variant-key, $alert-size-variant-value in $alert-size-variants {
+        &.-#{$size-variant-key} {
+            @include alert-size-variant($size-variant-key);
         }
     }
 

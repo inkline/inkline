@@ -23,22 +23,22 @@
 
 <script>
 import { markRaw } from 'vue';
-import Index from '@/playground/pages/core/typography/index.vue';
-import Headings from '@/playground/pages/core/typography/headings.vue';
-import HeadingHelpers from '@/playground/pages/core/typography/heading-helpers.vue';
-import Displays from '@/playground/pages/core/typography/displays.vue';
-import Lead from '@/playground/pages/core/typography/lead.vue';
-import InlineTextElements from '@/playground/pages/core/typography/inline-text-elements.vue';
-import TextAlignment from '@/playground/pages/core/typography/text-alignment.vue';
-import TextWrapping from '@/playground/pages/core/typography/text-wrapping.vue';
-import ResponsiveUtilities from '@/playground/pages/core/typography/responsive-utilities.vue';
-import Abbreviations from '@/playground/pages/core/typography/abbreviations.vue';
-import Blockquotes from '@/playground/pages/core/typography/blockquotes.vue';
-import UnorderedList from '@/playground/pages/core/typography/unordered-list.vue';
-import OrderedList from '@/playground/pages/core/typography/ordered-list.vue';
-import UnstyledList from '@/playground/pages/core/typography/unstyled-list.vue';
-import InlineList from '@/playground/pages/core/typography/inline-list.vue';
-import DescriptionList from '@/playground/pages/core/typography/description-list.vue';
+import Index from '@inkline/inkline/src/playground/pages/core/typography/index.vue';
+import Headings from '@inkline/inkline/src/playground/pages/core/typography/headings.vue';
+import HeadingHelpers from '@inkline/inkline/src/playground/pages/core/typography/heading-helpers.vue';
+import Displays from '@inkline/inkline/src/playground/pages/core/typography/displays.vue';
+import Lead from '@inkline/inkline/src/playground/pages/core/typography/lead.vue';
+import InlineTextElements from '@inkline/inkline/src/playground/pages/core/typography/inline-text-elements.vue';
+import TextAlignment from '@inkline/inkline/src/playground/pages/core/typography/text-alignment.vue';
+import TextWrapping from '@inkline/inkline/src/playground/pages/core/typography/text-wrapping.vue';
+import ResponsiveUtilities from '@inkline/inkline/src/playground/pages/core/typography/responsive-utilities.vue';
+import Abbreviations from '@inkline/inkline/src/playground/pages/core/typography/abbreviations.vue';
+import Blockquotes from '@inkline/inkline/src/playground/pages/core/typography/blockquotes.vue';
+import UnorderedList from '@inkline/inkline/src/playground/pages/core/typography/unordered-list.vue';
+import OrderedList from '@inkline/inkline/src/playground/pages/core/typography/ordered-list.vue';
+import UnstyledList from '@inkline/inkline/src/playground/pages/core/typography/unstyled-list.vue';
+import InlineList from '@inkline/inkline/src/playground/pages/core/typography/inline-list.vue';
+import DescriptionList from '@inkline/inkline/src/playground/pages/core/typography/description-list.vue';
 
 export default {
     setup() {

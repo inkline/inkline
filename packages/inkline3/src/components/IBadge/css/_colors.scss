@@ -1,0 +1,9 @@
+@mixin badge-color-variant($color-variant-key) {
+    background: var(--badge-color-variant-#{$color-variant-key}-background);
+    color: var(--badge-color-variant-#{$color-variant-key}-color);
+
+    a:hover &,
+    a:focus & {
+        background: var(--badge-color-variant-#{$color-variant-key}-link-hover-background);
+    }
+}

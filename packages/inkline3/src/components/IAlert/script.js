@@ -1,4 +1,4 @@
-import { sizeValidator } from "@/validators";
+import { sizeValidator } from "@inkline/inkline/src/validators";
 
 export default {
     name: 'IAlert',

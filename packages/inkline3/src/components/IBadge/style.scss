@@ -1,0 +1,46 @@
+/**
+ * Badge
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/variables';
+@import 'css/colors';
+@import 'css/sizes';
+
+.badge {
+    display: inline-block;
+    font-weight: $badge-font-weight;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+
+    a:hover &,
+    a:focus & {
+        text-decoration: none;
+    }
+
+    .button & {
+        position: relative;
+        top: -1px;
+    }
+
+    &.-pill {
+        border-radius: $badge-pill-border-radius;
+    }
+
+
+    @include badge-size-variant('md');
+    @each $size-variant-key, $badge-size-variant-value in $badge-size-variants {
+        &.-#{$size-variant-key} {
+            @include badge-size-variant($size-variant-key);
+        }
+    }
+
+    @include badge-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $badge-color-variants {
+        &.-#{$color-variant-key} {
+            @include badge-color-variant($color-variant-key);
+        }
+    }
+}
