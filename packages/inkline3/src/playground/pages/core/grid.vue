@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../../css/config';
+@import '../../../css/variables';
 
 #core-grid-page {
     .container {

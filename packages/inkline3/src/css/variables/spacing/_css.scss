@@ -1,0 +1,10 @@
+// Spacing
+//
+
+:root {
+    --spacer: #{$spacer};
+
+    @each $spacer-key, $spacer-value in $spacers {
+        --spacer-#{$spacer-key}: #{$spacer-value};
+    }
+}

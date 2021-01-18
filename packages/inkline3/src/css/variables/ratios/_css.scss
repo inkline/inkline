@@ -1,0 +1,11 @@
+// Ratios
+//
+
+:root {
+    @each $ratio-key, $ratio-value in $ratios {
+        --ratio-#{$ratio-key}: #{$ratio-value};
+    }
+
+    --scale-ratio: #{$scale-ratio};
+    --scale-ratio-secondary: #{$scale-ratio-secondary};
+}

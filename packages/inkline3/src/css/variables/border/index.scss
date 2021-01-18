@@ -6,18 +6,7 @@ $border-color: color('gray-30') !default;
 $border-color-light: $border-color !default;
 $border-color-dark: color('gray-70') !default;
 
-:root {
-    --border-width: #{$border-width};
-    --border-color: #{$border-color};
-    --border-color-light: #{$border-color-light};
-    --border-color-dark: #{$border-color-dark};
-}
-
 $border-radius: 0.25rem !default;
-
-:root {
-    --border-radius: #{$border-radius};
-}
 
 $border-radius-xs: calc(var(--border-radius) * #{size-multiplier('xs')}) !default;
 $border-radius-sm: calc(var(--border-radius) * #{size-multiplier('sm')}) !default;
@@ -32,12 +21,6 @@ $border-radiuses: (
     'lg': $border-radius-lg,
     'xl': $border-radius-xl,
 ) !default;
-
-:root {
-    @each $border-radius-key, $border-radius-value in $border-radiuses {
-        --border-radius-#{$border-radius-key}: #{$border-radius-value};
-    }
-}
 
 @function border-radius($border-radius-key: null) {
     @if not ($border-radius-key) {

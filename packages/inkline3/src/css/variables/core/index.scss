@@ -19,11 +19,3 @@ $body-color-variants: (
     'light': $body-color-variant-light,
     'dark': $body-color-variant-dark
 ) !default;
-
-:root {
-    @each $body-color-variant-key, $body-color-variant-value in $body-color-variants {
-        @each $body-color-variant-field-key, $body-color-variant-field-value in $body-color-variant-value {
-            --body-#{$body-color-variant-field-key}-#{$body-color-variant-key}: #{$body-color-variant-field-value};
-        }
-    }
-}

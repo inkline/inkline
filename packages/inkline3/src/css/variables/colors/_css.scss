@@ -1,0 +1,32 @@
+// Colors
+//
+
+:root {
+    @each $color-key, $color-value in $colors {
+        @if not (str-index($color-key, '0')) {
+            $h: hue($color-value);
+            $s: saturation($color-value);
+            $l: lightness($color-value);
+
+            --color-#{$color-key}-h: #{$h};
+            --color-#{$color-key}-s: #{$s};
+            --color-#{$color-key}-l: #{$l};
+            --color-#{$color-key}: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), var(--color-#{$color-key}-l));
+        }
+    }
+
+    @each $color-key in $shades {
+        --color-#{$color-key}-10: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.2 + 80%));
+        --color-#{$color-key}-20: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.4 + 60%));
+        --color-#{$color-key}-30: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.6 + 40%));
+        --color-#{$color-key}-40: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.8 + 20%));
+        --color-#{$color-key}-50: var(--color-#{$color-key});
+        --color-#{$color-key}-60: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.8), calc(var(--color-#{$color-key}-l) * 0.8));
+        --color-#{$color-key}-70: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.6), calc(var(--color-#{$color-key}-l) * 0.6));
+        --color-#{$color-key}-80: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.4), calc(var(--color-#{$color-key}-l) * 0.4));
+        --color-#{$color-key}-90: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.2), calc(var(--color-#{$color-key}-l) * 0.2));
+    }
+
+    --contrast-color-for-light-background: #{$contrast-color-for-light-background};
+    --contrast-color-for-dark-background: #{$contrast-color-for-dark-background};
+}

@@ -1,11 +1,6 @@
 // Animations
 //
 
-// Transition duration
-//
-$transition-duration: 300ms !default;
-$transition-easing: ease !default;
-
 :root {
     --transition-duration: #{$transition-duration};
     --transition-easing: #{$transition-easing};

@@ -11,6 +11,8 @@
         <example type="color-utilities" :component="BasicBackgroundExample" />
         <example type="color-utilities" :component="BasicTextExample" />
 
+        <example type="color-utilities" :component="PrimaryBackgroundExample" />
+        <example type="color-utilities" :component="PrimaryTextExample" />
         <example type="color-utilities" :component="BasicRedBackgroundExample" />
         <example type="color-utilities" :component="BasicRedTextExample" />
         <example type="color-utilities" :component="BasicOrangeBackgroundExample" />
@@ -47,6 +49,8 @@ import StateTextExample from '@inkline/inkline/src/playground/pages/utilities/co
 import BasicBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-background.vue';
 import BasicTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-text.vue';
 
+import PrimaryBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/primary-background.vue';
+import PrimaryTextExample from '@inkline/inkline/src/playground/pages/utilities/color/primary-text.vue';
 import BasicRedBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-red-background.vue';
 import BasicRedTextExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-red-text.vue';
 import BasicOrangeBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/basic-orange-background.vue';
@@ -82,6 +86,8 @@ export default {
             BasicBackgroundExample: markRaw(BasicBackgroundExample),
             BasicTextExample: markRaw(BasicTextExample),
 
+            PrimaryBackgroundExample: markRaw(PrimaryBackgroundExample),
+            PrimaryTextExample: markRaw(PrimaryTextExample),
             BasicRedBackgroundExample: markRaw(BasicRedBackgroundExample),
             BasicRedTextExample: markRaw(BasicRedTextExample),
             BasicOrangeBackgroundExample: markRaw(BasicOrangeBackgroundExample),

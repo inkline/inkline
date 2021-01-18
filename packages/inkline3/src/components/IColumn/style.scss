@@ -1,5 +1,5 @@
-@import '../../css/config/index';
-@import '../../css/mixins/index';
+@import '../../css/variables';
+@import '../../css/mixins';
 
 // Prevent columns from becoming too narrow when at smaller grid tiers by
 // always setting `width: 100%`. This works because we use `flex` values

@@ -2,11 +2,6 @@
 //
 
 $gutter: 28px !default;
-
-:root {
-    --gutter: #{$gutter};
-}
-
 $gutter-xs: calc(#{var(--gutter)} * 0.85) !default;
 $gutter-sm: calc(#{var(--gutter)} * 0.925) !default;
 $gutter-md: var(--gutter) !default;
@@ -22,12 +17,6 @@ $gutters: (
     'xl': $gutter-xl,
     'xxl': $gutter-xxl
 ) !default;
-
-:root {
-    @each $gutter-key, $gutter-value in $gutters {
-        --gutter-#{$gutter-key}: #{$gutter-value};
-    }
-}
 
 @function gutter($gutter-key: null) {
     @if not ($gutter-key) {

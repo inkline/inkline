@@ -1,5 +1,4 @@
-//
-// Zindex
+// Z-index
 //
 
 $z-index-dropdown: 1000 !default;
@@ -19,12 +18,6 @@ $z-index: (
     'popover': $z-index-popover,
     'tooltip': $z-index-tooltip,
 );
-
-:root {
-    @each $z-index-key, $z-index-value in $z-index {
-        --z-index-#{$z-index-key}: #{$z-index-value};
-    }
-}
 
 @function z-index($z-index-key) {
     @return var(--z-index-#{$z-index-key});
