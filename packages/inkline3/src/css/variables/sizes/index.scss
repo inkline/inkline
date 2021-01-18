@@ -22,12 +22,6 @@ $size-percentages: (
     '100': 100%,
 ) !default;
 
-:root {
-    @each $size-percentage-key, $size-percentage-value in $size-percentages {
-        --size-percentage-#{$size-percentage-key}: #{$size-percentage-value};
-    }
-}
-
 @function size-percentage($size-percentage-key) {
     @return var(--size-percentage-#{$size-percentage-key});
 }
@@ -48,12 +42,6 @@ $size-multipliers: (
     'lg': $size-multiplier-lg,
     'xl': $size-multiplier-xl,
 ) !default;
-
-:root {
-    @each $size-multiplier-key, $size-multiplier-value in $size-multipliers {
-        --size-multiplier-#{$size-multiplier-key}: #{$size-multiplier-value};
-    }
-}
 
 @function size-multiplier($size-multiplier-key) {
     @return var(--size-multiplier-#{$size-multiplier-key});

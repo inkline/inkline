@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 import { Inkline } from '@inkline/inkline/src/plugin';
 import * as components from '@inkline/inkline/src/components';
+import '@inkline/inkline/src/inkline.scss';
 import '@inkline/inkline/src/playground/main.scss';
 
 import App from '@inkline/inkline/src/playground/App.vue';

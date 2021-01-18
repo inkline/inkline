@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../css/config';
+@import '../../css/variables';
 
 .example {
     display: flex;
@@ -73,7 +73,7 @@ export default {
                 width: 120px;
                 text-align: center;
                 border-radius: 4px;
-                padding: spacer('1') spacer('2');
+                padding: spacer('1') 0;
             }
 
             > p {

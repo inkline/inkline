@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../../css/config';
+@import '../../../css/variables';
 
 #core-layout-page {
     .layout-content,
