@@ -19,6 +19,7 @@ const routes = [
     { name: 'core-code', path: '/core/code', component: () => import('@inkline/inkline/src/playground/pages/core/code.vue') },
     { name: 'components-alert', path: '/components/alert', component: () => import('@inkline/inkline/src/playground/pages/components/alert.vue') },
     { name: 'components-badge', path: '/components/badge', component: () => import('@inkline/inkline/src/playground/pages/components/badge.vue') },
+    { name: 'components-breadcrumb', path: '/components/breadcrumb', component: () => import('@inkline/inkline/src/playground/pages/components/breadcrumb.vue') },
     { name: 'utilities-border', path: '/utilities/border', component: () => import('@inkline/inkline/src/playground/pages/utilities/border.vue') },
     { name: 'utilities-clearfix', path: '/utilities/clearfix', component: () => import('@inkline/inkline/src/playground/pages/utilities/clearfix.vue') },
     { name: 'utilities-color', path: '/utilities/color', component: () => import('@inkline/inkline/src/playground/pages/utilities/color.vue') },

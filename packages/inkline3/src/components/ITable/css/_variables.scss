@@ -1,5 +1,5 @@
 //
-// Tables
+// Variables
 //
 $table-margin-bottom: spacer() !default;
 
@@ -9,15 +9,8 @@ $table-cell-padding-sm: 0.3rem !default;
 $table-border-width: var(--border-width) !default;
 $table-border-color: var(--border-color) !default;
 
-:root {
-    --table-margin-bottom: #{$table-margin-bottom};
-    --table-cell-padding: #{$table-cell-padding};
-    --table-cell-padding-sm: #{$table-cell-padding-sm};
-    --table-border-width: #{$table-border-width};
-    --table-border-color: #{$table-border-color};
-}
-
-// Variants
+//
+// Colors
 //
 
 $table-color-variant-light-background: var(--color-white) !default;
@@ -134,11 +127,3 @@ $table-color-variants: (
     'danger': $table-color-variant-danger,
     'success': $table-color-variant-success,
 ) !default;
-
-:root {
-    @each $color-variant-key, $color-variant-value in $table-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --table-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
-        }
-    }
-}

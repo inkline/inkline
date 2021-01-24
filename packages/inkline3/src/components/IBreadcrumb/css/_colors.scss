@@ -1,0 +1,16 @@
+@mixin breadcrumb-color-variant($color-variant-key) {
+    > .item {
+        a {
+            color: var(--breadcrumb-color-variant-#{$color-variant-key}-color-default);
+
+            &[href],
+            &[to] {
+                color: var(--breadcrumb-color-variant-#{$color-variant-key}-color);
+            }
+        }
+
+        &.-active a {
+            color: var(--breadcrumb-color-variant-#{$color-variant-key}-color-active);
+        }
+    }
+}

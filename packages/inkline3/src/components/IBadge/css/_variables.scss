@@ -1,21 +1,13 @@
 //
 // Variables
 //
+
 $badge-font-weight: font-weight('bold') !default;
 $badge-line-height: var(--line-height) !default;
 $badge-border-width: var(--border-width) !default;
 $badge-border-radius: border-radius();
 $badge-padding: spacer('1-2') !default;
 $badge-pill-border-radius: 10rem !default;
-
-:root {
-    --badge-font-weight: #{$badge-font-weight};
-    --badge-line-height: #{$badge-line-height};
-    --badge-border-width: #{$badge-border-width};
-    --badge-border-radius: #{$badge-border-radius};
-    --badge-padding: #{$badge-padding};
-    --badge-pill-border-radius: #{$badge-pill-border-radius};
-}
 
 //
 // Sizes
@@ -54,14 +46,6 @@ $badge-size-variants: (
     'lg': $badge-size-variant-lg
 ) !default;
 
-:root {
-    @each $badge-size-variant-key, $badge-size-variant-value in $badge-size-variants {
-        @each $badge-size-variant-field-key, $badge-size-variant-field-value in $badge-size-variant-value {
-            --badge-size-variant-#{$badge-size-variant-key}-#{$badge-size-variant-field-key}: #{$badge-size-variant-field-value};
-        }
-    }
-}
-
 //
 // Colors
 //
@@ -84,7 +68,6 @@ $badge-color-variant-secondary: (
     'color': $badge-color-variant-secondary-color
 ) !default;
 
-
 $badge-color-variant-light-background: color('light') !default;
 $badge-color-variant-light-link-hover-background: color('gray-30') !default;
 $badge-color-variant-light-color: contrast-color($color-light) !default;
@@ -93,7 +76,6 @@ $badge-color-variant-light: (
     'link-hover-background': $badge-color-variant-light-link-hover-background,
     'color': $badge-color-variant-light-color
 ) !default;
-
 
 $badge-color-variant-dark-background: color('dark') !default;
 $badge-color-variant-dark-link-hover-background: color('gray-80') !default;
@@ -104,7 +86,6 @@ $badge-color-variant-dark: (
     'color': $badge-color-variant-dark-color
 ) !default;
 
-
 $badge-color-variant-info-background: color('info') !default;
 $badge-color-variant-info-link-hover-background: color('info-60') !default;
 $badge-color-variant-info-color: contrast-color($color-info) !default;
@@ -113,7 +94,6 @@ $badge-color-variant-info: (
     'link-hover-background': $badge-color-variant-info-link-hover-background,
     'color': $badge-color-variant-info-color
 ) !default;
-
 
 $badge-color-variant-warning-background: color('warning') !default;
 $badge-color-variant-warning-link-hover-background: color('warning-60') !default;
@@ -124,7 +104,6 @@ $badge-color-variant-warning: (
     'color': $badge-color-variant-warning-color
 ) !default;
 
-
 $badge-color-variant-danger-background: color('danger') !default;
 $badge-color-variant-danger-link-hover-background: color('danger-60') !default;
 $badge-color-variant-danger-color: contrast-color($color-danger) !default;
@@ -133,7 +112,6 @@ $badge-color-variant-danger: (
     'link-hover-background': $badge-color-variant-danger-link-hover-background,
     'color': $badge-color-variant-danger-color
 ) !default;
-
 
 $badge-color-variant-success-background: color('success') !default;
 $badge-color-variant-success-link-hover-background: color('success-60') !default;
@@ -154,11 +132,3 @@ $badge-color-variants: (
     'warning': $badge-color-variant-warning,
     'danger': $badge-color-variant-danger,
 ) !default;
-
-:root {
-    @each $color-variant-key, $color-variant-value in $badge-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --badge-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
-        }
-    }
-}

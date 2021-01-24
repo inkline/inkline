@@ -12,12 +12,6 @@ $container-widths: (
     'xl': $container-width-xl,
 ) !default;
 
-:root {
-    @each $container-width-key, $container-width-value in $container-widths {
-        --container-width-#{$container-width-key}: #{$container-width-value};
-    }
-}
-
 @function container-width($container-width-key) {
     @return var(--container-width-#{$container-width-key});
 }

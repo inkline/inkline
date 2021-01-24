@@ -1,0 +1,20 @@
+:root {
+    --badge-font-weight: #{$badge-font-weight};
+    --badge-line-height: #{$badge-line-height};
+    --badge-border-width: #{$badge-border-width};
+    --badge-border-radius: #{$badge-border-radius};
+    --badge-padding: #{$badge-padding};
+    --badge-pill-border-radius: #{$badge-pill-border-radius};
+
+    @each $badge-size-variant-key, $badge-size-variant-value in $badge-size-variants {
+        @each $badge-size-variant-field-key, $badge-size-variant-field-value in $badge-size-variant-value {
+            --badge-size-variant-#{$badge-size-variant-key}-#{$badge-size-variant-field-key}: #{$badge-size-variant-field-value};
+        }
+    }
+
+    @each $color-variant-key, $color-variant-value in $badge-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --badge-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}

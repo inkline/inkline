@@ -1,0 +1,62 @@
+//
+// Variables
+//
+
+$breadcrumb-padding: spacer() !default;
+$breadcrumb-font-size: font-size() !default;
+$breadcrumb-margin-bottom: spacer() !default;
+$breadcrumb-divider: '/' !default;
+
+$breadcrumb-size-variant-sm-font-size: calc(var(--breadcrumb-font-size) * #{size-multiplier('sm')}) !default;
+$breadcrumb-size-variant-sm-padding: calc(var(--breadcrumb-padding) * #{size-multiplier('sm')}) !default;
+$breadcrumb-size-variant-sm: (
+    'font-size': $breadcrumb-size-variant-sm-font-size,
+    'padding': $breadcrumb-size-variant-sm-padding,
+) !default;
+
+$breadcrumb-size-variant-md-font-size: calc(var(--breadcrumb-font-size) * #{size-multiplier('md')}) !default;
+$breadcrumb-size-variant-md-padding: calc(var(--breadcrumb-padding) * #{size-multiplier('md')}) !default;
+$breadcrumb-size-variant-md: (
+    'font-size': $breadcrumb-size-variant-md-font-size,
+    'padding': $breadcrumb-size-variant-md-padding,
+) !default;
+
+$breadcrumb-size-variant-lg-font-size: calc(var(--breadcrumb-font-size) * #{size-multiplier('lg')}) !default;
+$breadcrumb-size-variant-lg-padding: calc(var(--breadcrumb-padding) * #{size-multiplier('lg')}) !default;
+$breadcrumb-size-variant-lg: (
+    'font-size': $breadcrumb-size-variant-lg-font-size,
+    'padding': $breadcrumb-size-variant-lg-padding,
+) !default;
+
+$breadcrumb-size-variants: (
+    'sm': $breadcrumb-size-variant-sm,
+    'md': $breadcrumb-size-variant-md,
+    'lg': $breadcrumb-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$breadcrumb-color-variant-light-color: color('primary') !default;
+$breadcrumb-color-variant-light-color-default: color('gray-90') !default;
+$breadcrumb-color-variant-light-color-active: color('gray-70') !default;
+$breadcrumb-color-variant-light: (
+    'color': $breadcrumb-color-variant-light-color,
+    'color-default': $breadcrumb-color-variant-light-color-default,
+    'color-active': $breadcrumb-color-variant-light-color-active,
+) !default;
+
+$breadcrumb-color-variant-dark-color: color('primary') !default;
+$breadcrumb-color-variant-dark-color-default: color('white') !default;
+$breadcrumb-color-variant-dark-color-active: color('gray-40') !default;
+$breadcrumb-color-variant-dark: (
+    'color': $breadcrumb-color-variant-dark-color,
+    'color-default': $breadcrumb-color-variant-dark-color-default,
+    'color-active': $breadcrumb-color-variant-dark-color-active,
+) !default;
+
+$breadcrumb-color-variants: (
+    'light': $breadcrumb-color-variant-light,
+    'dark': $breadcrumb-color-variant-dark,
+) !default;

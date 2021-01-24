@@ -1,0 +1,17 @@
+:root {
+    --breadcrumb-font-size: #{$breadcrumb-font-size};
+    --breadcrumb-padding: #{$breadcrumb-padding};
+    --breadcrumb-margin-bottom: #{$breadcrumb-margin-bottom};
+
+    @each $breadcrumb-size-variant-key, $breadcrumb-size-variant-value in $breadcrumb-size-variants {
+        @each $breadcrumb-size-variant-field-key, $breadcrumb-size-variant-field-value in $breadcrumb-size-variant-value {
+            --breadcrumb-size-variant-#{$breadcrumb-size-variant-key}-#{$breadcrumb-size-variant-field-key}: #{$breadcrumb-size-variant-field-value};
+        }
+    }
+
+    @each $color-variant-key, $color-variant-value in $breadcrumb-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --breadcrumb-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}
