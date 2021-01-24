@@ -54,6 +54,11 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'components-breadcrumb' }">
+                        Breadcrumb
+                    </router-link>
+                </li>
+                <li>
                     Utilities
                 </li>
                 <li>

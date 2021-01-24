@@ -1,0 +1,16 @@
+@mixin breadcrumb-size-variant($size-variant-key) {
+    $_font-size: var(--breadcrumb-size-variant-#{$size-variant-key}-font-size);
+    $_padding: var(--breadcrumb-size-variant-#{$size-variant-key}-padding);
+
+    font-size: $_font-size;
+
+    > .item {
+        padding-left: $_padding;
+
+        + .item {
+            &::before {
+                padding-right: $_padding;
+            }
+        }
+    }
+}

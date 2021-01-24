@@ -3,8 +3,9 @@
  */
 @import '../../css/variables';
 @import '../../css/mixins';
-@import 'css/_variables';
-@import 'css/_variants';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
 
 .table {
     width: 100%;

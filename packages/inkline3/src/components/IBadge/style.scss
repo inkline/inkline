@@ -4,6 +4,7 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
+@import 'css/css';
 @import 'css/colors';
 @import 'css/sizes';
 
@@ -28,7 +29,6 @@
     &.-pill {
         border-radius: $badge-pill-border-radius;
     }
-
 
     @include badge-size-variant('md');
     @each $size-variant-key, $badge-size-variant-value in $badge-size-variants {
