@@ -1,0 +1,51 @@
+//
+// Button Group sizes
+//
+@each $size in $sizes {
+    .button-group.-#{$size} {
+        $_border-radius: map_get($button-border-radius, $size);
+        $_font-size: map_get($button-font-size, $size);
+        $_padding: map_get($button-padding, $size);
+        $_circle-size: map_get($button-circle-size, $size);
+
+        .button {
+            font-size: $_font-size;
+            padding: $_padding;
+
+            &.-circle {
+                border-radius: 100%;
+                width: $_circle-size;
+                height: $_circle-size;
+                padding: 0;
+            }
+        }
+
+        &:not(.-vertical) {
+            > .button:last-child,
+            > .button-group:last-child > .button {
+                border-top-right-radius: $_border-radius;
+                border-bottom-right-radius: $_border-radius;
+            }
+
+            > .button:first-child,
+            > .button-group:first-child > .button {
+                border-top-left-radius: $_border-radius;
+                border-bottom-left-radius: $_border-radius;
+            }
+        }
+
+        &.-vertical {
+            > .button:last-child,
+            > .button-group:last-child > .button {
+                border-bottom-left-radius: $_border-radius;
+                border-bottom-right-radius: $_border-radius;
+            }
+
+            > .button:first-child,
+            > .button-group:first-child > .button {
+                border-top-left-radius: $_border-radius;
+                border-top-right-radius: $_border-radius;
+            }
+        }
+    }
+}

@@ -2,6 +2,7 @@ export { default as IAlert } from '@inkline/inkline/src/components/IAlert/index.
 export { default as IBadge } from '@inkline/inkline/src/components/IBadge/index.vue';
 export { default as IBreadcrumb } from '@inkline/inkline/src/components/IBreadcrumb/index.vue';
 export * from '@inkline/inkline/src/components/IBreadcrumb/components';
+export { default as IButton } from '@inkline/inkline/src/components/IButton/index.vue';
 export { default as IColumn } from '@inkline/inkline/src/components/IColumn/index.vue';
 export { default as IContainer } from '@inkline/inkline/src/components/IContainer/index.vue';
 export { default as ILayout } from '@inkline/inkline/src/components/ILayout/index.vue';

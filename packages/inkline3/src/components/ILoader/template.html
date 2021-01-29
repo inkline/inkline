@@ -1,0 +1,4 @@
+<div class="loader" :class="classes">
+    <div class="loader-content" v-if="$slots.default"><slot></slot></div>
+    <span class="loader-item" v-for="item in count" :key="item"></span>
+</div>

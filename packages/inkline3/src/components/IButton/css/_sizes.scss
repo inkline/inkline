@@ -1,0 +1,23 @@
+@mixin button-size-variant($size-variant-key) {
+    $_border-radius: var(--button-size-variant-#{$size-variant-key}-border-radius);
+    $_font-size: var(--button-size-variant-#{$size-variant-key}-font-size);
+    $_padding: var(--button-size-variant-#{$size-variant-key}-padding);
+    $_circle-size: var(--button-size-variant-#{$size-variant-key}-circle-size);
+
+    border-radius: $_border-radius;
+    font-size: $_font-size;
+    padding: $_padding;
+
+    &.-circle {
+        border-radius: 100%;
+        width: $_circle-size;
+        height: $_circle-size;
+        padding: 0;
+    }
+
+    > .loader.-auto {
+        margin: spacer('1-4') 0;
+        width: $_font-size;
+        height: $_font-size;
+    }
+}
