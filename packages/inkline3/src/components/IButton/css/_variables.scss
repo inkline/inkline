@@ -1,0 +1,118 @@
+//
+// Variables
+//
+
+$button-font-size: font-size() !default;
+$button-font-weight: font-weight('normal') !default;
+$button-line-height: $line-height !default;
+
+$button-border-width: var(--border-width) !default;
+$button-border-radius: var(--border-radius) !default;
+
+$button-padding: spacer() !default;
+$button-circle-size: 42px !default;
+$button-margin: $spacer !default;
+
+$button-opacity-disabled: 0.7 !default;
+
+$button-link-color: var(--link-color) !default;
+$button-link-disabled-color: var(--text-muted) !default;
+
+//
+// Sizes
+//
+
+$button-size-variant-sm-border-radius: calc(var(--button-border-radius) * #{size-multiplier('sm')}) !default;
+$button-size-variant-sm-font-size: calc(var(--button-font-size) * #{size-multiplier('sm')}) !default;
+$button-size-variant-sm-padding: calc(var(--button-padding) * #{size-multiplier('sm')} / 2) calc(var(--button-padding) * #{size-multiplier('sm')}) !default;
+$button-size-variant-sm-circle-size: 34px !default;
+$button-size-variant-sm: (
+    'border-radius': $button-size-variant-sm-border-radius,
+    'font-size': $button-size-variant-sm-font-size,
+    'padding': $button-size-variant-sm-padding,
+    'circle-size': $button-size-variant-sm-circle-size,
+) !default;
+
+$button-size-variant-md-border-radius: calc(var(--button-border-radius) * #{size-multiplier('md')}) !default;
+$button-size-variant-md-font-size: calc(var(--button-font-size) * #{size-multiplier('md')}) !default;
+$button-size-variant-md-padding: calc(var(--button-padding) * #{size-multiplier('md')} / 2) calc(var(--button-padding) * #{size-multiplier('md')}) !default;
+$button-size-variant-md-circle-size: 42px !default;
+$button-size-variant-md: (
+    'border-radius': $button-size-variant-md-border-radius,
+    'font-size': $button-size-variant-md-font-size,
+    'padding': $button-size-variant-md-padding,
+    'circle-size': $button-size-variant-md-circle-size,
+) !default;
+
+$button-size-variant-lg-border-radius: calc(var(--button-border-radius) * #{size-multiplier('lg')}) !default;
+$button-size-variant-lg-font-size: calc(var(--button-font-size) * #{size-multiplier('lg')}) !default;
+$button-size-variant-lg-padding: calc(var(--button-padding) * #{size-multiplier('lg')} / 2) calc(var(--button-padding) * #{size-multiplier('lg')}) !default;
+$button-size-variant-lg-circle-size: 49px !default;
+$button-size-variant-lg: (
+    'border-radius': $button-size-variant-lg-border-radius,
+    'font-size': $button-size-variant-lg-font-size,
+    'padding': $button-size-variant-lg-padding,
+    'circle-size': $button-size-variant-lg-circle-size,
+) !default;
+
+$button-size-variants: (
+    'sm': $button-size-variant-sm,
+    'md': $button-size-variant-md,
+    'lg': $button-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$button-color-variant-primary-background: color('primary') !default;
+$button-color-variant-primary-background-hover: color('primary-60') !default;
+$button-color-variant-primary-background-active: color('primary-70') !default;
+$button-color-variant-primary-border-color: color('primary-60') !default;
+$button-color-variant-primary-border-color-hover: color('primary-60') !default;
+$button-color-variant-primary-color: contrast-color($color-primary) !default;
+$button-color-variant-primary-link-color: color('primary') !default;
+$button-color-variant-primary-link-color-active: color('primary-60') !default;
+$button-color-variant-primary-outline-color: color('primary') !default;
+$button-color-variant-primary-outline-color-hover: contrast-color($color-primary) !default;
+$button-color-variant-primary-outline-background: transparent !default;
+$button-color-variant-primary-outline-background-hover: color('primary') !default;
+$button-color-variant-primary-outline-background-active: color('primary-60') !default;
+$button-color-variant-primary-outline-border-color: color('primary') !default;
+$button-color-variant-primary-outline-border-color-hover: color('primary') !default;
+
+$button-color-variant-primary: (
+    'background': $button-color-variant-primary-background,
+    'background-hover': $button-color-variant-primary-background-hover,
+    'background-active': $button-color-variant-primary-background-active,
+    'border-color': $button-color-variant-primary-border-color,
+    'border-color-hover': $button-color-variant-primary-border-color-hover,
+    'color': $button-color-variant-primary-color,
+    'link-color': $button-color-variant-primary-link-color,
+    'link-color-active': $button-color-variant-primary-link-color-active,
+    'outline-color': $button-color-variant-primary-outline-color,
+    'outline-color-hover': $button-color-variant-primary-outline-color-hover,
+    'outline-background': $button-color-variant-primary-outline-background,
+    'outline-background-hover': $button-color-variant-primary-outline-background-hover,
+    'outline-background-active': $button-color-variant-primary-outline-background-active,
+    'outline-border-color': $button-color-variant-primary-outline-border-color,
+    'outline-border-color-hover': $button-color-variant-primary-outline-border-color-hover,
+) !default;
+
+
+//$button-variant-primary: button-variant($color-primary) !default;
+//$button-variant-secondary: button-variant($color-secondary) !default;
+//$button-variant-light: button-variant($color-light) !default;
+//$button-variant-dark: button-variant($color-dark) !default;
+//$button-variant-info: button-variant($color-info) !default;
+//$button-variant-success: button-variant($color-success) !default;
+//$button-variant-warning: button-variant($color-warning) !default;
+//$button-variant-danger: button-variant($color-danger) !default;
+//$button-variant-facebook: button-variant($color-facebook) !default;
+//$button-variant-google: button-variant($color-google) !default;
+//$button-variant-twitter: button-variant($color-twitter) !default;
+//$button-variant-github: button-variant($color-github) !default;
+
+$button-color-variants: (
+    'primary': $button-color-variant-primary,
+) !default;

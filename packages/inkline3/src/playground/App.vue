@@ -59,6 +59,11 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'components-button' }">
+                        Button
+                    </router-link>
+                </li>
+                <li>
                     Utilities
                 </li>
                 <li>
