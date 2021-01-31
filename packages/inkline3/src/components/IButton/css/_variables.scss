@@ -66,18 +66,18 @@ $button-size-variants: (
 //
 
 $button-color-variant-primary-background: color('primary') !default;
-$button-color-variant-primary-background-hover: color('primary-60') !default;
-$button-color-variant-primary-background-active: color('primary-70') !default;
-$button-color-variant-primary-border-color: color('primary-60') !default;
-$button-color-variant-primary-border-color-hover: color('primary-60') !default;
+$button-color-variant-primary-background-hover: color('primary-55') !default;
+$button-color-variant-primary-background-active: color('primary-60') !default;
+$button-color-variant-primary-border-color: color('primary-55') !default;
+$button-color-variant-primary-border-color-hover: color('primary-55') !default;
 $button-color-variant-primary-color: contrast-color($color-primary) !default;
 $button-color-variant-primary-link-color: color('primary') !default;
-$button-color-variant-primary-link-color-active: color('primary-60') !default;
+$button-color-variant-primary-link-color-active: color('primary-55') !default;
 $button-color-variant-primary-outline-color: color('primary') !default;
 $button-color-variant-primary-outline-color-hover: contrast-color($color-primary) !default;
 $button-color-variant-primary-outline-background: transparent !default;
 $button-color-variant-primary-outline-background-hover: color('primary') !default;
-$button-color-variant-primary-outline-background-active: color('primary-60') !default;
+$button-color-variant-primary-outline-background-active: color('primary-55') !default;
 $button-color-variant-primary-outline-border-color: color('primary') !default;
 $button-color-variant-primary-outline-border-color-hover: color('primary') !default;
 

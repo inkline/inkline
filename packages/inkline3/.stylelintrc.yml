@@ -45,11 +45,6 @@ rules:
     # https://stylelint.io/user-guide/rules/selector-list-comma-newline-after
     selector-list-comma-newline-after: always
 
-    # https://stylelint.io/user-guide/rules/selector-pseudo-element-no-unknown
-    selector-pseudo-element-no-unknown:
-        -   true
-        -   ignorePseudoElements: ['v-deep']
-
     # https://stylelint.io/user-guide/rules/selector-list-comma-newline-before
     selector-list-comma-newline-before: never-multi-line
 
@@ -81,19 +76,15 @@ rules:
     scss/media-feature-value-dollar-variable: always
 
     # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/no-duplicate-dollar-variables/README.md
-    scss/no-duplicate-dollar-variables:
-        -   true
-        -   ignoreInsideAtRules:
-                -   mixin
-                -   if
-                -   else
+    at-rule-no-unknown: null
+    scss/at-rule-no-unknown: true
 
     # https://github.com/kristerkari/stylelint-scss/blob/master/docs/examples/if-else.md
-    "rule-empty-line-before": "always",
-    "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
-    "scss/at-else-closing-brace-space-after": "always-intermediate",
-    "scss/at-else-empty-line-before": "never",
-    "scss/at-if-closing-brace-newline-after": "always-last-in-chain",
+    "rule-empty-line-before": "always"
+    "scss/at-else-closing-brace-newline-after": "always-last-in-chain"
+    "scss/at-else-closing-brace-space-after": "always-intermediate"
+    "scss/at-else-empty-line-before": "never"
+    "scss/at-if-closing-brace-newline-after": "always-last-in-chain"
     "scss/at-if-closing-brace-space-after": "always-intermediate"
 
     # https://stylelint.io/user-guide/rules/max-empty-lines#max-empty-lines
