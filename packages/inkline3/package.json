@@ -36,24 +36,24 @@
         "fuse.js": "^6.4.0"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^1.0.4",
+        "@vitejs/plugin-vue": "^1.1.4",
+        "@vue/cli-service": "^4.5.11",
         "@vue/compiler-sfc": "^3.0.5",
-        "vite": "^2.0.0-beta.12",
-        "@vue/cli-service": "^4.5.8",
         "babel-eslint": "^10.1.0",
-        "eslint": "^7.13.0",
-        "eslint-plugin-vue": "^7.1.0",
+        "eslint": "^7.19.0",
+        "eslint-plugin-vue": "^7.5.0",
         "node-sass": "^5.0.0",
         "postcss-preset-env": "^6.7.0",
-        "sass": "^1.29.0",
-        "sass-loader": "^10.1.0",
-        "stylelint": "^13.7.2",
+        "sass": "^1.32.5",
+        "sass-loader": "^10.1.1",
+        "stylelint": "^13.9.0",
         "stylelint-config-recommended": "^3.0.0",
         "stylelint-config-recommended-scss": "^4.2.0",
         "stylelint-config-standard": "^20.0.0",
         "stylelint-scss": "^3.18.0",
-        "vue-router": "^4.0.0-rc.2",
-        "vue": "^3.0.2"
+        "vite": "^2.0.0-beta.60",
+        "vue": "^3.0.2",
+        "vue-router": "^4.0.3"
     },
     "peerDependencies": {
         "vue": "^3.0.2"

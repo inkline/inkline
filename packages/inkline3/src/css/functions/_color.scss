@@ -58,8 +58,8 @@ $linear-channel-values: 0 0.0003035269835488375 0.000607053967097675 0.000910580
 // Source: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
 //
 @function contrast-ratio($background, $foreground) {
-    $backgroundLuminance: luminance($background) + .05;
-    $foregroundLuminance: luminance($foreground) + .05;
+    $backgroundLuminance: luminance($background) + 0.05;
+    $foregroundLuminance: luminance($foreground) + 0.05;
 
     @return max($backgroundLuminance, $foregroundLuminance) / min($backgroundLuminance, $foregroundLuminance);
 }
