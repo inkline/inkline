@@ -202,6 +202,11 @@ $color-gray-85: shade-color($color-gray, 70%) !default;
 $color-gray-90: shade-color($color-gray, 80%) !default;
 $color-gray-95: shade-color($color-gray, 90%) !default;
 
+// Brand Neutral Colors
+//
+$color-light: $color-gray-20 !default;
+$color-dark: $color-gray-90 !default;
+
 // Brand Colors
 //
 $color-primary: $color-blue !default;
@@ -245,11 +250,6 @@ $color-secondary-80: shade-color($color-secondary, 60%) !default;
 $color-secondary-85: shade-color($color-secondary, 70%) !default;
 $color-secondary-90: shade-color($color-secondary, 80%) !default;
 $color-secondary-95: shade-color($color-secondary, 90%) !default;
-
-// Brand Neutral Colors
-//
-$color-light: $color-gray-20 !default;
-$color-dark: $color-gray-90 !default;
 
 // State Colors
 //
@@ -340,8 +340,17 @@ $color-success-95: shade-color($color-success, 90%) !default;
 // Social Colors
 //
 $color-facebook: #3b5998 !default;
+$color-facebook-55: shade-color($color-facebook, 10%) !default;
+$color-facebook-60: shade-color($color-facebook, 20%) !default;
 $color-twitter: #1da1f2 !default;
+$color-twitter-55: shade-color($color-twitter, 10%) !default;
+$color-twitter-60: shade-color($color-twitter, 20%) !default;
 $color-google: #dd4b39 !default;
+$color-google-55: shade-color($color-google, 10%) !default;
+$color-google-60: shade-color($color-google, 20%) !default;
+$color-github: #333333 !default;
+$color-github-55: shade-color($color-github, 10%) !default;
+$color-github-60: shade-color($color-github, 20%) !default;
 $color-instagram: #fd1d1d !default;
 $color-dribbble: #ea4c89 !default;
 $color-behance: #1769ff !default;
@@ -349,7 +358,6 @@ $color-flickr: #ff0084 !default;
 $color-linkedin: #0077b5 !default;
 $color-youtube: #b31217 !default;
 $color-pinterest: #bd081c !default;
-$color-github: #333333 !default;
 $color-gitlab: #fa7035 !default;
 $color-tumblr: #35465c !default;
 $color-twitch: #6441a5 !default;
@@ -485,9 +493,6 @@ $colors: (
     'success-85': $color-success-85,
     'success-90': $color-success-90,
     'success-95': $color-success-95,
-
-    'light': $color-light,
-    'dark': $color-dark,
 
     'red': $color-red,
     'red-05': $color-red-05,
@@ -682,10 +687,22 @@ $colors: (
     'gray-90': $color-gray-90,
     'gray-95': $color-gray-95,
 
+    'light': $color-light,
+    'dark': $color-dark,
+
     // Social colors
     'facebook': $color-facebook,
+    'facebook-55': $color-facebook-55,
+    'facebook-60': $color-facebook-60,
     'twitter': $color-twitter,
+    'twitter-55': $color-twitter-55,
+    'twitter-60': $color-twitter-60,
     'google': $color-google,
+    'google-55': $color-google-55,
+    'google-60': $color-google-60,
+    'github': $color-github,
+    'github-55': $color-github-55,
+    'github-60': $color-github-60,
     'instagram': $color-instagram,
     'dribbble': $color-dribbble,
     'behance': $color-behance,
@@ -693,7 +710,6 @@ $colors: (
     'linkedin': $color-linkedin,
     'youtube': $color-youtube,
     'pinterest': $color-pinterest,
-    'github': $color-github,
     'gitlab': $color-gitlab,
     'tumblr': $color-tumblr,
     'twitch': $color-twitch,
@@ -717,6 +733,10 @@ $shades: (
     'blue',
     'purple',
     'pink',
+    'facebook',
+    'twitter',
+    'google',
+    'github'
 ) !default;
 
 @function color($color-key) {

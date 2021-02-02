@@ -1,0 +1,9 @@
+@mixin loader-color-variant($color-variant-key) {
+    $_background: var(--loader-color-variant-#{$color-variant-key}-background);
+
+    > svg {
+        > circle {
+            stroke: $_background;
+        }
+    }
+}

@@ -1,0 +1,63 @@
+/**
+ * Spacing
+ */
+
+@each $breakpoint-key in $breakpoint-infix-keys {
+    $infix: breakpoint-infix($breakpoint-key);
+
+    @include breakpoint($breakpoint-key) {
+        @each $property in ('margin', 'padding') {
+            @each $size, $length in $spacers {
+                ._#{$property}#{$infix}-#{$size} {
+                    #{$property}: spacer($size) !important;
+                }
+
+                ._#{$property}-top#{$infix}-#{$size},
+                ._#{$property}-y#{$infix}-#{$size} {
+                    #{$property}-top: spacer($size) !important;
+                }
+
+                ._#{$property}-right#{$infix}-#{$size},
+                ._#{$property}-x#{$infix}-#{$size} {
+                    #{$property}-right: spacer($size) !important;
+                }
+
+                ._#{$property}-bottom#{$infix}-#{$size},
+                ._#{$property}-y#{$infix}-#{$size} {
+                    #{$property}-bottom: spacer($size) !important;
+                }
+
+                ._#{$property}-left#{$infix}-#{$size},
+                ._#{$property}-x#{$infix}-#{$size} {
+                    #{$property}-left: spacer($size) !important;
+                }
+            }
+        }
+
+        // Auto margin utils
+        //
+        ._margin#{$infix}-auto {
+            margin: auto !important;
+        }
+
+        ._margin-top#{$infix}-auto,
+        ._margin-y#{$infix}-auto {
+            margin-top: auto !important;
+        }
+
+        ._margin-right#{$infix}-auto,
+        ._margin-x#{$infix}-auto {
+            margin-right: auto !important;
+        }
+
+        ._margin-bottom#{$infix}-auto,
+        ._margin-y#{$infix}-auto {
+            margin-bottom: auto !important;
+        }
+
+        ._margin-left#{$infix}-auto,
+        ._margin-x#{$infix}-auto {
+            margin-left: auto !important;
+        }
+    }
+}

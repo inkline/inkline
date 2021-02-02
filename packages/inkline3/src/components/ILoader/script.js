@@ -1,27 +1,24 @@
-import {
-    AttributesProviderMixin,
-    ClassesProviderMixin,
-    SizePropertyMixin,
-    VariantPropertyMixin,
-} from '@inkline/inkline/src/mixins';
+import { sizeValidator } from "@inkline/inkline/src/validators";
 
 export default {
     name: 'ILoader',
-    mixins: [
-        AttributesProviderMixin,
-        ClassesProviderMixin,
-
-        SizePropertyMixin,
-        VariantPropertyMixin
-    ],
     props: {
-        count: {
-            type: Number,
-            default: 12
+        color: {
+            type: String,
+            default: ''
         },
         size: {
             type: String,
-            default: ''
+            default: '',
+            validator: sizeValidator
+        }
+    },
+    computed: {
+        classes() {
+            return {
+                [`-${this.color}`]: Boolean(this.color),
+                [`-${this.size}`]: Boolean(this.size)
+            }
         }
     }
 };

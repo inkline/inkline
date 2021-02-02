@@ -35,11 +35,6 @@
         &.-active {
             background: $_background-active;
         }
-
-        &:focus,
-        &.-focused {
-            box-shadow: 0 0 0 2px rgba($_background, 0.25);
-        }
     }
 
     &.-outline {
@@ -59,6 +54,7 @@
 
             &:active,
             &.-active {
+                color: $_outline-color-hover;
                 background: $_outline-background-active;
             }
         }
@@ -81,15 +77,16 @@
         }
     }
 
-    ::v-deep .loader {
-        > .loader-item {
-            background-color: $_color !important;
+    .loader {
+        > svg > circle {
+            stroke: $_color !important;
         }
     }
 
     //
     // Button group border accent
     //
+
     .button-group:not(.-vertical) > &:not(:first-child) {
         border-left-color: $_background-hover;
     }

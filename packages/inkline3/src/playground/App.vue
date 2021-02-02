@@ -64,6 +64,16 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'components-button-group' }">
+                        Button Group
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'components-loader' }">
+                        Loader
+                    </router-link>
+                </li>
+                <li>
                     Utilities
                 </li>
                 <li>

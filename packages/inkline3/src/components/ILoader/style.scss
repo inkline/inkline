@@ -2,61 +2,76 @@
  * Loader
  */
 @import '../../css/variables';
-@import '../../css/mixins/index';
-@import 'css/mixins';
+@import '../../css/mixins';
 @import 'css/variables';
-@import 'css/variants';
+@import 'css/css';
+@import 'css/colors';
 @import 'css/sizes';
 
 .loader {
     display: inline-block;
     position: relative;
 
-    > .loader-content {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
+    &::before {
+        content: '';
+        display: block;
+        padding-top: 100%;
     }
 
-    > .loader-item {
+    > svg {
+        animation: loader-rotate var(--loader-animation-duration) linear infinite;
+        height: 100%;
+        width: 100%;
+        transform-origin: center center;
         position: absolute;
-        border-radius: 50%;
-        animation: loader $loader-animation-duration linear infinite;
-        width: 8%;
-        height: 8%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
 
-        @for $i from 1 through $loader-item-count {
-            $rotation: ($i - 1) * (360 / $loader-item-count);
-            $half-size: (100% - 8%) / 2;
-
-            &:nth-of-type(#{$i}) {
-                animation-delay: ($loader-animation-duration / $loader-item-count) * ($i - 1);
-                top: $half-size + sin($rotation * $pi / 180) * $half-size;
-                left: $half-size + cos($rotation * $pi / 180) * $half-size;
-            }
+        > circle {
+            stroke-dasharray: 89, 200;
+            stroke-dashoffset: -35px;
+            animation: loader-dash var(--loader-animation-duration) ease-in-out infinite;
+            stroke-linecap: round;
         }
     }
 
-    &.-auto {
-        height: 100%;
-        width: 100%;
+    @include loader-size-variant('md');
+    @each $size-variant-key, $loader-size-variant-value in $loader-size-variants {
+        &.-#{$size-variant-key} {
+            @include loader-size-variant($size-variant-key);
+        }
     }
 
-    @extend .loader.-md;
-    @extend .loader.-dark;
+    @include loader-color-variant('primary');
+    @each $color-variant-key, $color-variant-value in $loader-color-variants {
+        &.-#{$color-variant-key} {
+            @include loader-color-variant($color-variant-key);
+        }
+    }
 }
 
-@keyframes loader {
-    0%,
-    20%,
-    80%,
+@keyframes loader-rotate {
     100% {
-        transform: scale(1);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0px;
     }
 
     50% {
-        transform: scale(1.5);
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
     }
 }

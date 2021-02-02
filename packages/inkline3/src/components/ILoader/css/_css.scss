@@ -1,0 +1,16 @@
+:root {
+    --loader-size: #{$loader-size};
+    --loader-animation-duration: #{$loader-animation-duration};
+
+    @each $loader-size-variant-key, $loader-size-variant-value in $loader-size-variants {
+        @each $loader-size-variant-field-key, $loader-size-variant-field-value in $loader-size-variant-value {
+            --loader-size-variant-#{$loader-size-variant-key}-#{$loader-size-variant-field-key}: #{$loader-size-variant-field-value};
+        }
+    }
+
+    @each $color-variant-key, $color-variant-value in $loader-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --loader-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}

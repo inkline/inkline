@@ -1,7 +1,6 @@
-@import '../../css/config/index';
-@import '../../css/mixins/index';
+@import '../../css/variables';
+@import '../../css/mixins';
 @import '../IButton/css/_variables';
-@import 'css/_variables';
 @import 'css/_sizes';
 
 /**
@@ -11,6 +10,7 @@
     position: relative;
     display: inline-flex;
     vertical-align: middle;
+    box-sizing: border-box;
 
     > .button {
         position: relative;
@@ -32,16 +32,15 @@
 
     &.-block {
         display: flex;
-        width: 100%;
+        flex-basis: 100%;
 
         > .button {
             flex-basis: 100%;
         }
     }
 
+    // Reset rounded corners
     &:not(.-vertical) {
-
-        // Reset rounded corners
         > .button:not(:last-child),
         > .button-group:not(:last-child) > .button {
             border-top-right-radius: 0;
@@ -77,6 +76,13 @@
         > .button-group:not(:first-child) > .button {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
+        }
+    }
+
+    @include button-group-size-variant('md');
+    @each $size-variant-key, $button-size-variant-value in $button-size-variants {
+        &.-#{$size-variant-key} {
+            @include button-group-size-variant($size-variant-key);
         }
     }
 }

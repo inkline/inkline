@@ -21,6 +21,7 @@ $breakpoints: (
 ) !default;
 
 $breakpoint-keys: ('xs', 'sm', 'md', 'lg', 'xl', 'xxl') !default;
+$breakpoint-infix-keys: append($breakpoint-keys, '_') !default;
 
 // Returns breakpoint value
 //
