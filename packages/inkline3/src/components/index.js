@@ -3,6 +3,7 @@ export { default as IBadge } from '@inkline/inkline/src/components/IBadge/index.
 export { default as IBreadcrumb } from '@inkline/inkline/src/components/IBreadcrumb/index.vue';
 export * from '@inkline/inkline/src/components/IBreadcrumb/components';
 export { default as IButton } from '@inkline/inkline/src/components/IButton/index.vue';
+export { default as IButtonGroup } from '@inkline/inkline/src/components/IButtonGroup/index.vue';
 export { default as IColumn } from '@inkline/inkline/src/components/IColumn/index.vue';
 export { default as IContainer } from '@inkline/inkline/src/components/IContainer/index.vue';
 export { default as ILayout } from '@inkline/inkline/src/components/ILayout/index.vue';
@@ -10,5 +11,6 @@ export { default as ILayoutAside } from '@inkline/inkline/src/components/ILayout
 export { default as ILayoutContent } from '@inkline/inkline/src/components/ILayout/components/ILayoutContent/index.vue';
 export { default as ILayoutFooter } from '@inkline/inkline/src/components/ILayout/components/ILayoutFooter/index.vue';
 export { default as ILayoutHeader } from '@inkline/inkline/src/components/ILayout/components/ILayoutHeader/index.vue';
+export { default as ILoader } from '@inkline/inkline/src/components/ILoader/index.vue';
 export { default as IRow } from '@inkline/inkline/src/components/IRow/index.vue';
 export { default as ITable } from '@inkline/inkline/src/components/ITable/index.vue';

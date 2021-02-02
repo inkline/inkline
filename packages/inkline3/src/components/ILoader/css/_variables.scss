@@ -1,24 +1,55 @@
 //
 // Loading spinner variables
 //
-$loader-size-base: 64px !default;
-$loader-size: size-map($loader-size-base, $sizes, $size-multipliers) !default;
-
 $loader-animation-duration: 1.2s !default;
-
-$loader-item-count: 12 !default;
-$loader-item-size: 8% !default;
+$loader-size: 64px !default;
 
 //
-// Variants
+// Sizes
 //
-$loader-color-for-light-variant: $color-for-light-variant !default;
-$loader-color-for-dark-variant: $color-for-dark-variant !default;
 
-$loader-variant-light: loader-variant($color-white) !default;
-$loader-variant-dark: loader-variant($color-gray-90) !default;
+$loader-size-variant-sm-size: calc(var(--loader-size) * #{size-multiplier('sm')}) !default;
+$loader-size-variant-sm: (
+    'size': $loader-size-variant-sm-size
+) !default;
 
-$loader-variants: (
-    light: $loader-variant-light,
-    dark: $loader-variant-dark
+$loader-size-variant-md-size: calc(var(--loader-size) * #{size-multiplier('md')}) !default;
+$loader-size-variant-md: (
+    'size': $loader-size-variant-md-size
+) !default;
+
+$loader-size-variant-lg-size: calc(var(--loader-size) * #{size-multiplier('lg')}) !default;
+$loader-size-variant-lg: (
+    'size': $loader-size-variant-lg-size
+) !default;
+
+$loader-size-variants: (
+    'sm': $loader-size-variant-sm,
+    'md': $loader-size-variant-md,
+    'lg': $loader-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$loader-color-variant-primary-background: color('primary') !default;
+$loader-color-variant-primary: (
+    'background': $loader-color-variant-primary-background,
+) !default;
+
+$loader-color-variant-light-background: color('light') !default;
+$loader-color-variant-light: (
+    'background': $loader-color-variant-light-background,
+) !default;
+
+$loader-color-variant-dark-background: color('dark') !default;
+$loader-color-variant-dark: (
+    'background': $loader-color-variant-dark-background,
+) !default;
+
+$loader-color-variants: (
+    'primary': $loader-color-variant-primary,
+    'light': $loader-color-variant-light,
+    'dark': $loader-color-variant-dark
 ) !default;

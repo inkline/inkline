@@ -16,7 +16,8 @@
     }
 
     > .loader.-auto {
-        margin: spacer('1-4') 0;
+        margin-top: spacer('1-4');
+        margin-bottom: spacer('1-4');
         width: $_font-size;
         height: $_font-size;
     }
