@@ -6,7 +6,6 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "postbuild": "node scripts/postbuild.js",
         "lint": "npm run lint:script && npm run lint:style",
         "coveralls": "cat coverage/lcov.info | coveralls",
         "dist": "node ./scripts/dist.js && node ./scripts/bower.js",

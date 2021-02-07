@@ -6,6 +6,7 @@ export { default as IButton } from '@inkline/inkline/src/components/IButton/inde
 export { default as IButtonGroup } from '@inkline/inkline/src/components/IButtonGroup/index.vue';
 export { default as IColumn } from '@inkline/inkline/src/components/IColumn/index.vue';
 export { default as IContainer } from '@inkline/inkline/src/components/IContainer/index.vue';
+export { default as ICard } from '@inkline/inkline/src/components/ICard/index.vue';
 export { default as ILayout } from '@inkline/inkline/src/components/ILayout/index.vue';
 export { default as ILayoutAside } from '@inkline/inkline/src/components/ILayout/components/ILayoutAside/index.vue';
 export { default as ILayoutContent } from '@inkline/inkline/src/components/ILayout/components/ILayoutContent/index.vue';

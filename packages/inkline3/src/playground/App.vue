@@ -69,6 +69,11 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'components-card' }">
+                        Card
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'components-loader' }">
                         Loader
                     </router-link>
@@ -89,6 +94,46 @@
                 <li>
                     <router-link :to="{ name: 'utilities-color' }">
                         Color
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'utilities-display' }">
+                        Display
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'utilities-embed' }">
+                        Embed
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'utilities-flex' }">
+                        Flex
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'utilities-float' }">
+                        Float
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'utilities-overflow' }">
+                        Overflow
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'utilities-overlay' }">
+                        Overlay
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'utilities-sizing' }">
+                        Sizing
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'utilities-spacing' }">
+                        Spacing
                     </router-link>
                 </li>
                 <li>

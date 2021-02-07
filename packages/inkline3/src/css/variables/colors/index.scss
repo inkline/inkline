@@ -7,7 +7,7 @@
 
 // Basic Colors
 //
-$color-red: #F2413D !default;
+$color-red: #f2413d !default;
 $color-red-05: tint-color($color-red, 90%) !default;
 $color-red-10: tint-color($color-red, 80%) !default;
 $color-red-15: tint-color($color-red, 70%) !default;
@@ -28,7 +28,7 @@ $color-red-85: shade-color($color-red, 70%) !default;
 $color-red-90: shade-color($color-red, 80%) !default;
 $color-red-95: shade-color($color-red, 90%) !default;
 
-$color-orange: #F9A230 !default;
+$color-orange: #f9a230 !default;
 $color-orange-05: tint-color($color-orange, 90%) !default;
 $color-orange-10: tint-color($color-orange, 80%) !default;
 $color-orange-15: tint-color($color-orange, 70%) !default;
@@ -70,7 +70,7 @@ $color-yellow-85: shade-color($color-yellow, 70%) !default;
 $color-yellow-90: shade-color($color-yellow, 80%) !default;
 $color-yellow-95: shade-color($color-yellow, 90%) !default;
 
-$color-green: #34B051 !default;
+$color-green: #34b051 !default;
 $color-green-05: tint-color($color-green, 90%) !default;
 $color-green-10: tint-color($color-green, 80%) !default;
 $color-green-15: tint-color($color-green, 70%) !default;
@@ -91,7 +91,7 @@ $color-green-85: shade-color($color-green, 70%) !default;
 $color-green-90: shade-color($color-green, 80%) !default;
 $color-green-95: shade-color($color-green, 90%) !default;
 
-$color-teal: #48B3B6 !default;
+$color-teal: #48b3b6 !default;
 $color-teal-05: tint-color($color-teal, 90%) !default;
 $color-teal-10: tint-color($color-teal, 80%) !default;
 $color-teal-15: tint-color($color-teal, 70%) !default;
@@ -205,7 +205,46 @@ $color-gray-95: shade-color($color-gray, 90%) !default;
 // Brand Neutral Colors
 //
 $color-light: $color-gray-20 !default;
-$color-dark: $color-gray-90 !default;
+$color-light-05: tint-color($color-light, 90%) !default;
+$color-light-10: tint-color($color-light, 80%) !default;
+$color-light-15: tint-color($color-light, 70%) !default;
+$color-light-20: tint-color($color-light, 60%) !default;
+$color-light-25: tint-color($color-light, 50%) !default;
+$color-light-30: tint-color($color-light, 40%) !default;
+$color-light-35: tint-color($color-light, 30%) !default;
+$color-light-40: tint-color($color-light, 20%) !default;
+$color-light-45: tint-color($color-light, 10%) !default;
+$color-light-50: $color-light;
+$color-light-55: shade-color($color-light, 10%) !default;
+$color-light-60: shade-color($color-light, 20%) !default;
+$color-light-65: shade-color($color-light, 30%) !default;
+$color-light-70: shade-color($color-light, 40%) !default;
+$color-light-75: shade-color($color-light, 50%) !default;
+$color-light-80: shade-color($color-light, 60%) !default;
+$color-light-85: shade-color($color-light, 70%) !default;
+$color-light-90: shade-color($color-light, 80%) !default;
+$color-light-95: shade-color($color-light, 90%) !default;
+
+$color-dark: $color-gray-85 !default;
+$color-dark-05: tint-color($color-dark, 90%) !default;
+$color-dark-10: tint-color($color-dark, 80%) !default;
+$color-dark-15: tint-color($color-dark, 70%) !default;
+$color-dark-20: tint-color($color-dark, 60%) !default;
+$color-dark-25: tint-color($color-dark, 50%) !default;
+$color-dark-30: tint-color($color-dark, 40%) !default;
+$color-dark-35: tint-color($color-dark, 30%) !default;
+$color-dark-40: tint-color($color-dark, 20%) !default;
+$color-dark-45: tint-color($color-dark, 10%) !default;
+$color-dark-50: $color-dark;
+$color-dark-55: shade-color($color-dark, 10%) !default;
+$color-dark-60: shade-color($color-dark, 20%) !default;
+$color-dark-65: shade-color($color-dark, 30%) !default;
+$color-dark-70: shade-color($color-dark, 40%) !default;
+$color-dark-75: shade-color($color-dark, 50%) !default;
+$color-dark-80: shade-color($color-dark, 60%) !default;
+$color-dark-85: shade-color($color-dark, 70%) !default;
+$color-dark-90: shade-color($color-dark, 80%) !default;
+$color-dark-95: shade-color($color-dark, 90%) !default;
 
 // Brand Colors
 //
@@ -688,7 +727,30 @@ $colors: (
     'gray-95': $color-gray-95,
 
     'light': $color-light,
+    'light-25': $color-light-25,
+    'light-30': $color-light-30,
+    'light-35': $color-light-35,
+    'light-40': $color-light-40,
+    'light-45': $color-light-45,
+    'light-50': $color-light-50,
+    'light-55': $color-light-55,
+    'light-60': $color-light-60,
+    'light-65': $color-light-65,
+    'light-70': $color-light-70,
+    'light-75': $color-light-75,
+
     'dark': $color-dark,
+    'dark-25': $color-dark-25,
+    'dark-30': $color-dark-30,
+    'dark-35': $color-dark-35,
+    'dark-40': $color-dark-40,
+    'dark-45': $color-dark-45,
+    'dark-50': $color-dark-50,
+    'dark-55': $color-dark-55,
+    'dark-60': $color-dark-60,
+    'dark-65': $color-dark-65,
+    'dark-70': $color-dark-70,
+    'dark-75': $color-dark-75,
 
     // Social colors
     'facebook': $color-facebook,
@@ -720,6 +782,8 @@ $colors: (
 $shades: (
     'primary',
     'secondary',
+    'light',
+    'dark',
     'info',
     'warning',
     'danger',

@@ -16,25 +16,24 @@
     }
 
     @each $color-key in $shades {
-        --color-#{$color-key}-05: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.1 + 90%));
-        --color-#{$color-key}-10: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.2 + 80%));
-        --color-#{$color-key}-15: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.3 + 70%));
-        --color-#{$color-key}-20: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.4 + 60%));
-        --color-#{$color-key}-25: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.5 + 50%));
-        --color-#{$color-key}-30: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.6 + 40%));
-        --color-#{$color-key}-35: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.7 + 30%));
-        --color-#{$color-key}-40: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.8 + 20%));
-        --color-#{$color-key}-45: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * 0.9 + 10%));
-        --color-#{$color-key}-50: var(--color-#{$color-key});
-        --color-#{$color-key}-55: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.9), calc(var(--color-#{$color-key}-l) * 0.9));
-        --color-#{$color-key}-60: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.8), calc(var(--color-#{$color-key}-l) * 0.8));
-        --color-#{$color-key}-65: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.7), calc(var(--color-#{$color-key}-l) * 0.7));
-        --color-#{$color-key}-70: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.6), calc(var(--color-#{$color-key}-l) * 0.6));
-        --color-#{$color-key}-75: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.5), calc(var(--color-#{$color-key}-l) * 0.5));
-        --color-#{$color-key}-80: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.4), calc(var(--color-#{$color-key}-l) * 0.4));
-        --color-#{$color-key}-85: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.3), calc(var(--color-#{$color-key}-l) * 0.3));
-        --color-#{$color-key}-90: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.2), calc(var(--color-#{$color-key}-l) * 0.2));
-        --color-#{$color-key}-95: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * 0.1), calc(var(--color-#{$color-key}-l) * 0.1));
+        @for $i from 1 through 19 {
+            $index: $i * 5;
+            $index-key: "#{$index}";
+
+            @if $index == 5 {
+                $index-key: '05';
+            }
+
+            @if map-get($colors, "#{$color-key}-#{$index-key}") {
+                @if $index < 50 {
+                    --color-#{$color-key}-#{$index-key}: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * #{0.1 * $i} + #{ 100% - $i * 10% }));
+                } @else if $index == 50 {
+                    --color-#{$color-key}-#{$index-key}: var(--color-#{$color-key});
+                } @else {
+                    --color-#{$color-key}-#{$index-key}: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * #{1 - 0.1 * ($i - 10)}), calc(var(--color-#{$color-key}-l) * #{1 - 0.1 * ($i - 10)}));
+                }
+            }
+        }
     }
 
     --contrast-color-for-light-background: #{$contrast-color-for-light-background};
