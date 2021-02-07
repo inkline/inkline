@@ -9,6 +9,10 @@
         <example type="color-utilities" :component="BrandPrimaryTextExample" />
         <example type="color-utilities" :component="BrandSecondaryBackgroundExample" />
         <example type="color-utilities" :component="BrandSecondaryTextExample" />
+        <example type="color-utilities" :component="BrandLightBackgroundExample" />
+        <example type="color-utilities" :component="BrandLightTextExample" />
+        <example type="color-utilities" :component="BrandDarkBackgroundExample" />
+        <example type="color-utilities" :component="BrandDarkTextExample" />
 
         <example type="color-utilities" :component="StateBackgroundExample" />
         <example type="color-utilities" :component="StateTextExample" />
@@ -57,6 +61,10 @@ import BrandPrimaryBackgroundExample from '@inkline/inkline/src/playground/pages
 import BrandPrimaryTextExample from '@inkline/inkline/src/playground/pages/utilities/color/brand-primary-text.vue';
 import BrandSecondaryBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/brand-secondary-background.vue';
 import BrandSecondaryTextExample from '@inkline/inkline/src/playground/pages/utilities/color/brand-secondary-text.vue';
+import BrandLightBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/brand-light-background.vue';
+import BrandLightTextExample from '@inkline/inkline/src/playground/pages/utilities/color/brand-light-text.vue';
+import BrandDarkBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/brand-dark-background.vue';
+import BrandDarkTextExample from '@inkline/inkline/src/playground/pages/utilities/color/brand-dark-text.vue';
 
 import StateBackgroundExample from '@inkline/inkline/src/playground/pages/utilities/color/state-background.vue';
 import StateTextExample from '@inkline/inkline/src/playground/pages/utilities/color/state-text.vue';
@@ -105,6 +113,10 @@ export default {
             BrandPrimaryTextExample: markRaw(BrandPrimaryTextExample),
             BrandSecondaryBackgroundExample: markRaw(BrandSecondaryBackgroundExample),
             BrandSecondaryTextExample: markRaw(BrandSecondaryTextExample),
+            BrandLightBackgroundExample: markRaw(BrandLightBackgroundExample),
+            BrandLightTextExample: markRaw(BrandLightTextExample),
+            BrandDarkBackgroundExample: markRaw(BrandDarkBackgroundExample),
+            BrandDarkTextExample: markRaw(BrandDarkTextExample),
 
             StateBackgroundExample: markRaw(StateBackgroundExample),
             StateTextExample: markRaw(StateTextExample),

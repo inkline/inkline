@@ -69,7 +69,7 @@ $badge-color-variant-secondary: (
 ) !default;
 
 $badge-color-variant-light-background: color('light') !default;
-$badge-color-variant-light-link-hover-background: color('gray-30') !default;
+$badge-color-variant-light-link-hover-background: color('light-60') !default;
 $badge-color-variant-light-color: contrast-color($color-light) !default;
 $badge-color-variant-light: (
     'background': $badge-color-variant-light-background,
@@ -78,7 +78,7 @@ $badge-color-variant-light: (
 ) !default;
 
 $badge-color-variant-dark-background: color('dark') !default;
-$badge-color-variant-dark-link-hover-background: color('gray-80') !default;
+$badge-color-variant-dark-link-hover-background: color('dark-40') !default;
 $badge-color-variant-dark-color: contrast-color($color-dark) !default;
 $badge-color-variant-dark: (
     'background': $badge-color-variant-dark-background,

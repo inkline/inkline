@@ -1,0 +1,20 @@
+<div class="card" :class="classes">
+    <header class="card-header" v-if="!!$slots.header">
+        <slot name="header" />
+    </header>
+
+    <slot name="image" />
+
+    <div class="card-body" v-if="!!$slots.default">
+        <slot name="title" class="card-title">
+        </slot>
+        <div class="card-subtitle" v-if="!!$slots.subtitle">
+            <slot name="subtitle" />
+        </div>
+        <slot />
+    </div>
+
+    <footer class="card-footer" v-if="!!$slots.footer">
+        <slot name="footer" />
+    </footer>
+</div>

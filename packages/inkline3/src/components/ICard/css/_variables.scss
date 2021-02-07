@@ -1,0 +1,210 @@
+//
+// Variables
+//
+$card-border-radius: border-radius() !default;
+$card-font-size: font-size() !default;
+$card-padding: spacer() !default;
+
+$card-font-weight: font-weight('normal') !default;
+$card-line-height: var(--line-height) !default;
+$card-border-width: var(--border-width) !default;
+
+//
+// Sizes
+//
+
+$card-size-variant-sm-border-radius: calc(var(--card-border-radius) * #{size-multiplier('sm')}) !default;
+$card-size-variant-sm-font-size: calc(var(--card-font-size) * #{size-multiplier('sm')}) !default;
+$card-size-variant-sm-padding: calc(var(--card-padding) * #{size-multiplier('sm')}) !default;
+$card-size-variant-sm: (
+    'border-radius': $card-size-variant-sm-border-radius,
+    'font-size': $card-size-variant-sm-font-size,
+    'padding': $card-size-variant-sm-padding,
+) !default;
+
+$card-size-variant-md-border-radius: calc(var(--card-border-radius) * #{size-multiplier('md')}) !default;
+$card-size-variant-md-font-size: calc(var(--card-font-size) * #{size-multiplier('md')}) !default;
+$card-size-variant-md-padding: calc(var(--card-padding) * #{size-multiplier('md')}) !default;
+$card-size-variant-md: (
+    'border-radius': $card-size-variant-md-border-radius,
+    'font-size': $card-size-variant-md-font-size,
+    'padding': $card-size-variant-md-padding,
+) !default;
+
+$card-size-variant-lg-border-radius: calc(var(--card-border-radius) * #{size-multiplier('lg')}) !default;
+$card-size-variant-lg-font-size: calc(var(--card-font-size) * #{size-multiplier('lg')}) !default;
+$card-size-variant-lg-padding: calc(var(--card-padding) * #{size-multiplier('lg')}) !default;
+$card-size-variant-lg: (
+    'border-radius': $card-size-variant-lg-border-radius,
+    'font-size': $card-size-variant-lg-font-size,
+    'padding': $card-size-variant-lg-padding,
+) !default;
+
+$card-size-variants: (
+    'sm': $card-size-variant-sm,
+    'md': $card-size-variant-md,
+    'lg': $card-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$card-color-variant-primary-color: contrast-color($color-primary) !default;
+$card-color-variant-primary-background: color('primary') !default;
+$card-color-variant-primary-border-color: color('primary-60') !default;
+$card-color-variant-primary-header-background: color('primary-55') !default;
+$card-color-variant-primary-header-border-color: color('primary-60') !default;
+$card-color-variant-primary-footer-background: color('primary-55') !default;
+$card-color-variant-primary-footer-border-color: color('primary-60') !default;
+
+$card-color-variant-primary: (
+    'color': $card-color-variant-primary-color,
+    'background': $card-color-variant-primary-background,
+    'border-color': $card-color-variant-primary-border-color,
+    'header-background': $card-color-variant-primary-header-background,
+    'header-border-color': $card-color-variant-primary-header-border-color,
+    'footer-background': $card-color-variant-primary-footer-background,
+    'footer-border-color': $card-color-variant-primary-footer-border-color
+) !default;
+
+$card-color-variant-secondary-color: contrast-color($color-secondary) !default;
+$card-color-variant-secondary-background: color('secondary') !default;
+$card-color-variant-secondary-border-color: color('secondary-60') !default;
+$card-color-variant-secondary-header-background: color('secondary-55') !default;
+$card-color-variant-secondary-header-border-color: color('secondary-60') !default;
+$card-color-variant-secondary-footer-background: color('secondary-55') !default;
+$card-color-variant-secondary-footer-border-color: color('secondary-60') !default;
+
+$card-color-variant-secondary: (
+    'color': $card-color-variant-secondary-color,
+    'background': $card-color-variant-secondary-background,
+    'border-color': $card-color-variant-secondary-border-color,
+    'header-background': $card-color-variant-secondary-header-background,
+    'header-border-color': $card-color-variant-secondary-header-border-color,
+    'footer-background': $card-color-variant-secondary-footer-background,
+    'footer-border-color': $card-color-variant-secondary-footer-border-color
+) !default;
+
+
+$card-color-variant-info-color: contrast-color($color-info) !default;
+$card-color-variant-info-background: color('info') !default;
+$card-color-variant-info-border-color: color('info-60') !default;
+$card-color-variant-info-header-background: color('info-55') !default;
+$card-color-variant-info-header-border-color: color('info-60') !default;
+$card-color-variant-info-footer-background: color('info-55') !default;
+$card-color-variant-info-footer-border-color: color('info-60') !default;
+
+$card-color-variant-info: (
+    'color': $card-color-variant-info-color,
+    'background': $card-color-variant-info-background,
+    'border-color': $card-color-variant-info-border-color,
+    'header-background': $card-color-variant-info-header-background,
+    'header-border-color': $card-color-variant-info-header-border-color,
+    'footer-background': $card-color-variant-info-footer-background,
+    'footer-border-color': $card-color-variant-info-footer-border-color
+) !default;
+
+
+$card-color-variant-success-color: contrast-color($color-success) !default;
+$card-color-variant-success-background: color('success') !default;
+$card-color-variant-success-border-color: color('success-60') !default;
+$card-color-variant-success-header-background: color('success-55') !default;
+$card-color-variant-success-header-border-color: color('success-60') !default;
+$card-color-variant-success-footer-background: color('success-55') !default;
+$card-color-variant-success-footer-border-color: color('success-60') !default;
+
+$card-color-variant-success: (
+    'color': $card-color-variant-success-color,
+    'background': $card-color-variant-success-background,
+    'border-color': $card-color-variant-success-border-color,
+    'header-background': $card-color-variant-success-header-background,
+    'header-border-color': $card-color-variant-success-header-border-color,
+    'footer-background': $card-color-variant-success-footer-background,
+    'footer-border-color': $card-color-variant-success-footer-border-color
+) !default;
+
+
+$card-color-variant-warning-color: contrast-color($color-warning) !default;
+$card-color-variant-warning-background: color('warning') !default;
+$card-color-variant-warning-border-color: color('warning-60') !default;
+$card-color-variant-warning-header-background: color('warning-55') !default;
+$card-color-variant-warning-header-border-color: color('warning-60') !default;
+$card-color-variant-warning-footer-background: color('warning-55') !default;
+$card-color-variant-warning-footer-border-color: color('warning-60') !default;
+
+$card-color-variant-warning: (
+    'color': $card-color-variant-warning-color,
+    'background': $card-color-variant-warning-background,
+    'border-color': $card-color-variant-warning-border-color,
+    'header-background': $card-color-variant-warning-header-background,
+    'header-border-color': $card-color-variant-warning-header-border-color,
+    'footer-background': $card-color-variant-warning-footer-background,
+    'footer-border-color': $card-color-variant-warning-footer-border-color
+) !default;
+
+
+$card-color-variant-danger-color: contrast-color($color-danger) !default;
+$card-color-variant-danger-background: color('danger') !default;
+$card-color-variant-danger-border-color: color('danger-60') !default;
+$card-color-variant-danger-header-background: color('danger-55') !default;
+$card-color-variant-danger-header-border-color: color('danger-60') !default;
+$card-color-variant-danger-footer-background: color('danger-55') !default;
+$card-color-variant-danger-footer-border-color: color('danger-60') !default;
+
+$card-color-variant-danger: (
+    'color': $card-color-variant-danger-color,
+    'background': $card-color-variant-danger-background,
+    'border-color': $card-color-variant-danger-border-color,
+    'header-background': $card-color-variant-danger-header-background,
+    'header-border-color': $card-color-variant-danger-header-border-color,
+    'footer-background': $card-color-variant-danger-footer-background,
+    'footer-border-color': $card-color-variant-danger-footer-border-color
+) !default;
+
+$card-color-variant-light-color: contrast-color($color-white) !default;
+$card-color-variant-light-background: color('white') !default;
+$card-color-variant-light-border-color: color('light') !default;
+$card-color-variant-light-header-background: color('light-25') !default;
+$card-color-variant-light-header-border-color: color('light') !default;
+$card-color-variant-light-footer-background: color('light-25') !default;
+$card-color-variant-light-footer-border-color: color('light') !default;
+
+$card-color-variant-light: (
+    'color': $card-color-variant-light-color,
+    'background': $card-color-variant-light-background,
+    'border-color': $card-color-variant-light-border-color,
+    'header-background': $card-color-variant-light-header-background,
+    'header-border-color': $card-color-variant-light-header-border-color,
+    'footer-background': $card-color-variant-light-footer-background,
+    'footer-border-color': $card-color-variant-light-footer-border-color
+) !default;
+
+$card-color-variant-dark-color: contrast-color($color-dark) !default;
+$card-color-variant-dark-background: color('dark') !default;
+$card-color-variant-dark-border-color: color('dark-60') !default;
+$card-color-variant-dark-header-background: color('dark-55') !default;
+$card-color-variant-dark-header-border-color: color('dark-60') !default;
+$card-color-variant-dark-footer-background: color('dark-55') !default;
+$card-color-variant-dark-footer-border-color: color('dark-60') !default;
+
+$card-color-variant-dark: (
+    'color': $card-color-variant-dark-color,
+    'background': $card-color-variant-dark-background,
+    'border-color': $card-color-variant-dark-border-color,
+    'header-background': $card-color-variant-dark-header-background,
+    'header-border-color': $card-color-variant-dark-header-border-color,
+    'footer-background': $card-color-variant-dark-footer-background,
+    'footer-border-color': $card-color-variant-dark-footer-border-color
+) !default;
+
+$card-color-variants: (
+    primary: $card-color-variant-primary,
+    secondary: $card-color-variant-secondary,
+    light: $card-color-variant-light,
+    dark: $card-color-variant-dark,
+    info: $card-color-variant-info,
+    success: $card-color-variant-success,
+    warning: $card-color-variant-warning,
+    danger: $card-color-variant-danger,
+) !default;

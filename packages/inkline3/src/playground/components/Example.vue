@@ -103,5 +103,100 @@ export default {
             }
         }
     }
+
+    &.-flex {
+        &.-tall {
+            > .example-body {
+                > div {
+                    min-height: 150px;
+                }
+            }
+        }
+
+        > .example-body {
+            [class*="_flex-direction-column"],
+            [class*="_align-items"] {
+                min-height: 180px;
+            }
+
+            div {
+                padding: spacer('1-2');
+                background: color('gray-10');
+                border: 1px solid color('gray-30');
+            }
+        }
+    }
+
+    &.-overflow {
+        > .example-body {
+            > div {
+                background: color('light');
+                padding: spacer('1-2');
+                border-radius: border-radius();
+
+                + div {
+                    margin-top: spacer();
+                }
+            }
+        }
+    }
+
+    &.-card {
+        > .example-body {
+            .card {
+                max-width: 360px;
+            }
+        }
+    }
+
+    &.-sizing {
+        > .example-body {
+            flex: 1;
+            padding: 1rem;
+
+            div {
+                margin: 0;
+                padding: spacer();
+                background: color('light');
+            }
+        }
+
+        &.-vertical {
+            > .example-body {
+                height: 240px;
+                display: flex;
+
+                div {
+                    display: inline-block;
+                    width: 20%;
+                }
+            }
+        }
+    }
+
+    &.-spacing {
+        > .example-body {
+            div {
+                max-width: 100%;
+                padding: spacer();
+                background: color('light');
+            }
+        }
+
+        &.-vertical {
+            > .example-body {
+                display: flex;
+                justify-content: flex-start;
+                align-items: stretch;
+                height: 240px;
+
+                div {
+                    flex: 1 1;
+                    display: inline-block;
+                    max-height: 100%;
+                }
+            }
+        }
+    }
 }
 </style>

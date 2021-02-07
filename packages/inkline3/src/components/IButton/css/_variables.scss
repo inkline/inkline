@@ -276,18 +276,18 @@ $button-color-variant-info: (
 
 
 $button-color-variant-light-background: color('light') !default;
-$button-color-variant-light-background-hover: color('gray-25') !default;
-$button-color-variant-light-background-active: color('gray-30') !default;
-$button-color-variant-light-border-color: color('gray-25') !default;
-$button-color-variant-light-border-color-hover: color('gray-25') !default;
+$button-color-variant-light-background-hover: color('light-55') !default;
+$button-color-variant-light-background-active: color('light-60') !default;
+$button-color-variant-light-border-color: color('light-55') !default;
+$button-color-variant-light-border-color-hover: color('light-55') !default;
 $button-color-variant-light-color: contrast-color($color-light) !default;
 $button-color-variant-light-link-color: color('light') !default;
-$button-color-variant-light-link-color-active: color('gray-25') !default;
+$button-color-variant-light-link-color-active: color('light-55') !default;
 $button-color-variant-light-outline-color: color('light') !default;
 $button-color-variant-light-outline-color-hover: contrast-color($color-light) !default;
 $button-color-variant-light-outline-background: transparent !default;
 $button-color-variant-light-outline-background-hover: color('light') !default;
-$button-color-variant-light-outline-background-active: color('gray-25') !default;
+$button-color-variant-light-outline-background-active: color('light-55') !default;
 $button-color-variant-light-outline-border-color: color('light') !default;
 $button-color-variant-light-outline-border-color-hover: color('light') !default;
 
@@ -311,18 +311,18 @@ $button-color-variant-light: (
 
 
 $button-color-variant-dark-background: color('dark') !default;
-$button-color-variant-dark-background-hover: color('gray-85') !default;
-$button-color-variant-dark-background-active: color('gray-80') !default;
-$button-color-variant-dark-border-color: color('gray-85') !default;
-$button-color-variant-dark-border-color-hover: color('gray-85') !default;
+$button-color-variant-dark-background-hover: color('dark-45') !default;
+$button-color-variant-dark-background-active: color('dark-40') !default;
+$button-color-variant-dark-border-color: color('dark-45') !default;
+$button-color-variant-dark-border-color-hover: color('dark-45') !default;
 $button-color-variant-dark-color: contrast-color($color-dark) !default;
 $button-color-variant-dark-link-color: color('dark') !default;
-$button-color-variant-dark-link-color-active: color('gray-85') !default;
+$button-color-variant-dark-link-color-active: color('dark-45') !default;
 $button-color-variant-dark-outline-color: color('dark') !default;
 $button-color-variant-dark-outline-color-hover: contrast-color($color-dark) !default;
 $button-color-variant-dark-outline-background: transparent !default;
 $button-color-variant-dark-outline-background-hover: color('dark') !default;
-$button-color-variant-dark-outline-background-active: color('gray-85') !default;
+$button-color-variant-dark-outline-background-active: color('dark-45') !default;
 $button-color-variant-dark-outline-border-color: color('dark') !default;
 $button-color-variant-dark-outline-border-color-hover: color('dark') !default;
 
