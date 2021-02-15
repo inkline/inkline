@@ -55,7 +55,7 @@
         }
     }
 
-    @include loader-color-variant('primary');
+    @include loader-color-variant('light');
     @each $color-variant-key, $color-variant-value in $loader-color-variants {
         &.-#{$color-variant-key} {
             @include loader-color-variant($color-variant-key);

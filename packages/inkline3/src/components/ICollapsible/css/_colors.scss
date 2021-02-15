@@ -1,0 +1,24 @@
+@mixin collapsible-color-variant($color-variant-key) {
+    $_color: var(--collapsible-color-variant-#{$color-variant-key}-color);
+    $_background: var(--collapsible-color-variant-#{$color-variant-key}-background);
+    $_body-background: var(--collapsible-color-variant-#{$color-variant-key}-body-background);
+    $_border-color: var(--collapsible-color-variant-#{$color-variant-key}-border-color);
+
+    border-color: $_border-color;
+
+    > .collapsible-item {
+        > .header,
+        > .body {
+            border-color: $_border-color;
+            color: $_color;
+        }
+
+        > .header {
+            background: $_background;
+        }
+
+        > .body {
+            background-color: $_body-background;
+        }
+    }
+}

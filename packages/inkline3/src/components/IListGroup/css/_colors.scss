@@ -1,0 +1,30 @@
+@mixin list-group-color-variant($color-variant-key) {
+    $_color: var(--list-group-color-variant-#{$color-variant-key}-color);
+    $_background: var(--list-group-color-variant-#{$color-variant-key}-background);
+    $_border-color: var(--list-group-color-variant-#{$color-variant-key}-border-color);
+    $_disabled-color: var(--list-group-color-variant-#{$color-variant-key}-disabled-color);
+    $_active-color: var(--list-group-color-variant-#{$color-variant-key}-active-color);
+    $_active-background: var(--list-group-color-variant-#{$color-variant-key}-active-background);
+    $_active-border-color: var(--list-group-color-variant-#{$color-variant-key}-active-border-color);
+
+    background-color: $_background;
+    color: $_color;
+
+    &.-border {
+        border-color: $_border-color;
+    }
+
+    > .list-group-item {
+        border-bottom-color: $_border-color;
+
+        &.-disabled {
+            color: $_disabled-color;
+        }
+
+        &.-active {
+            color: $_active-color;
+            background: $_active-background;
+            border-bottom-color: $_active-border-color;
+        }
+    }
+}

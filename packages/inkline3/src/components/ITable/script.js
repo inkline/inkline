@@ -1,3 +1,5 @@
+import {colorVariantClass} from "@inkline/inkline/src/mixins";
+
 export default {
     name: 'ITable',
     props: {
@@ -33,12 +35,12 @@ export default {
     computed: {
         classes() {
             return {
+                ...colorVariantClass(this),
                 '-bordered': this.bordered,
                 '-condensed': this.condensed,
                 '-striped': this.striped,
                 '-hover': this.hover,
-                '-nowrap': this.nowrap,
-                [`-${this.color}`]: Boolean(this.color),
+                '-nowrap': this.nowrap
             };
         },
         wrapperClasses() {

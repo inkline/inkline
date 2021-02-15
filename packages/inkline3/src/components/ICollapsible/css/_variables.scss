@@ -1,0 +1,75 @@
+//
+// Collapsible Variables
+//
+$collapsible-border-radius: border-radius() !default;
+$collapsible-font-size: font-size() !default;
+$collapsible-padding: spacer() !default;
+
+//
+// Sizes
+//
+
+$collapsible-size-variant-sm-border-radius: calc(var(--collapsible-border-radius) * #{size-multiplier('sm')}) !default;
+$collapsible-size-variant-sm-font-size: calc(var(--collapsible-font-size) * #{size-multiplier('sm')}) !default;
+$collapsible-size-variant-sm-padding: calc(var(--collapsible-padding) * #{size-multiplier('sm')}) !default;
+$collapsible-size-variant-sm: (
+    'border-radius': $collapsible-size-variant-sm-border-radius,
+    'font-size': $collapsible-size-variant-sm-font-size,
+    'padding': $collapsible-size-variant-sm-padding,
+) !default;
+
+$collapsible-size-variant-md-border-radius: calc(var(--collapsible-border-radius) * #{size-multiplier('md')}) !default;
+$collapsible-size-variant-md-font-size: calc(var(--collapsible-font-size) * #{size-multiplier('md')}) !default;
+$collapsible-size-variant-md-padding: calc(var(--collapsible-padding) * #{size-multiplier('md')}) !default;
+$collapsible-size-variant-md: (
+    'border-radius': $collapsible-size-variant-md-border-radius,
+    'font-size': $collapsible-size-variant-md-font-size,
+    'padding': $collapsible-size-variant-md-padding,
+) !default;
+
+$collapsible-size-variant-lg-border-radius: calc(var(--collapsible-border-radius) * #{size-multiplier('lg')}) !default;
+$collapsible-size-variant-lg-font-size: calc(var(--collapsible-font-size) * #{size-multiplier('lg')}) !default;
+$collapsible-size-variant-lg-padding: calc(var(--collapsible-padding) * #{size-multiplier('lg')}) !default;
+$collapsible-size-variant-lg: (
+    'border-radius': $collapsible-size-variant-lg-border-radius,
+    'font-size': $collapsible-size-variant-lg-font-size,
+    'padding': $collapsible-size-variant-lg-padding,
+) !default;
+
+$collapsible-size-variants: (
+    'sm': $collapsible-size-variant-sm,
+    'md': $collapsible-size-variant-md,
+    'lg': $collapsible-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+$collapsible-color-variant-light-color: contrast-color($color-light) !default;
+$collapsible-color-variant-light-background: color('light') !default;
+$collapsible-color-variant-light-body-background: color('white') !default;
+$collapsible-color-variant-light-border-color: color('light-60') !default;
+
+$collapsible-color-variant-light: (
+    'color': $collapsible-color-variant-light-color,
+    'background': $collapsible-color-variant-light-background,
+    'body-background': $collapsible-color-variant-light-body-background,
+    'border-color': $collapsible-color-variant-light-border-color,
+) !default;
+
+$collapsible-color-variant-dark-color: contrast-color($color-dark) !default;
+$collapsible-color-variant-dark-background: color('dark') !default;
+$collapsible-color-variant-dark-body-background: color('dark-45') !default;
+$collapsible-color-variant-dark-border-color: color('dark-60') !default;
+
+$collapsible-color-variant-dark: (
+    'color': $collapsible-color-variant-dark-color,
+    'background': $collapsible-color-variant-dark-background,
+    'body-background': $collapsible-color-variant-dark-body-background,
+    'border-color': $collapsible-color-variant-dark-border-color,
+) !default;
+
+$collapsible-color-variants: (
+    light: $collapsible-color-variant-light,
+    dark: $collapsible-color-variant-dark
+) !default;

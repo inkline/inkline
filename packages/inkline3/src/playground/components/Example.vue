@@ -7,9 +7,15 @@
 </template>
 
 <script>
+import { colorVariantClass } from "@inkline/inkline/src/mixins";
+
 export default {
     name: 'Example',
     props: {
+        color: {
+            type: String,
+            default: ''
+        },
         component: {
             type: Object,
             default: null
@@ -22,6 +28,7 @@ export default {
     computed: {
         classes() {
             return {
+                ...colorVariantClass(this),
                 [`-${this.type}`]: Boolean(this.type)
             }
         }
@@ -37,9 +44,16 @@ export default {
     justify-content: center;
     align-items: center;
     width: 100%;
-    border: 1px solid var(--border-color-light);
     border-radius: border-radius();
     box-sizing: border-box;
+
+    &.-light {
+        border: 1px solid var(--border-color-light);
+    }
+
+    &.-dark {
+        border: 1px solid var(--border-color-dark);
+    }
 
     > .example-body {
         display: block;
@@ -91,6 +105,11 @@ export default {
                 height: 64px;
                 background: color('gray-10');
                 border-color: var(--border-color);
+
+                .inkline.-dark & {
+                    background: color('dark');
+                    border-color: var(--border-color-dark);
+                }
             }
         }
     }
@@ -123,6 +142,11 @@ export default {
                 padding: spacer('1-2');
                 background: color('gray-10');
                 border: 1px solid color('gray-30');
+
+                .inkline.-dark & {
+                    background: color('gray-85');
+                    border: 1px solid color('gray-75');
+                }
             }
         }
     }
@@ -137,6 +161,10 @@ export default {
                 + div {
                     margin-top: spacer();
                 }
+
+                .inkline.-dark & {
+                    background: color('dark');
+                }
             }
         }
     }
@@ -145,6 +173,26 @@ export default {
         > .example-body {
             .card {
                 max-width: 360px;
+            }
+        }
+    }
+
+    &.-icon {
+        > .example-body {
+            .inkline-icon {
+                height: 60px;
+                width: 60px;
+                border-radius: border-radius();
+                border-width: 1px;
+                border-style: solid;
+                border-color: var(--border-color-light);
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+
+                .inkline.-dark & {
+                    border-color: var(--border-color-dark);
+                }
             }
         }
     }
@@ -158,6 +206,10 @@ export default {
                 margin: 0;
                 padding: spacer();
                 background: color('light');
+
+                .inkline.-dark & {
+                    background: color('dark');
+                }
             }
         }
 
@@ -180,6 +232,10 @@ export default {
                 max-width: 100%;
                 padding: spacer();
                 background: color('light');
+
+                .inkline.-dark & {
+                    background: color('dark');
+                }
             }
         }
 
@@ -196,6 +252,48 @@ export default {
                     max-height: 100%;
                 }
             }
+        }
+    }
+
+    .layout-content,
+    .layout-header,
+    .layout-footer,
+    .layout-aside {
+        text-align: center;
+    }
+
+    .layout-header,
+    .layout-footer {
+        background: color('gray-20');
+        padding: spacer('1') 0;
+
+        .inkline.-dark & {
+            background: color('gray-80');
+        }
+    }
+
+    .layout-content {
+        background: color('gray-10');
+        padding: spacer('4') 0;
+
+        .inkline.-dark & {
+            background: color('gray-70');
+        }
+    }
+
+    .layout-aside {
+        background: color('gray-30');
+        width: 30%;
+        flex-basis: 30%;
+
+        .inkline.-dark & {
+            background: color('gray-75');
+        }
+
+        .layout-aside-children {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }

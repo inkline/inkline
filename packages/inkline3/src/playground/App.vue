@@ -74,6 +74,31 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'components-collapsible' }">
+                        Collapsible
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'components-hamburger-menu' }">
+                        Hamburger Menu
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'components-header' }">
+                        Header
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'components-icon' }">
+                        Icon
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'components-list-group' }">
+                        List Group
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'components-loader' }">
                         Loader
                     </router-link>
@@ -137,9 +162,35 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'utilities-text' }">
+                        Text
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'utilities-vertical-align' }">
                         Vertical Align
                     </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'utilities-visibility' }">
+                        Visibility
+                    </router-link>
+                </li>
+                <li>
+                    Color mode
+                </li>
+                <li>
+                    <label>
+                        <input v-model="colorMode" name="color-mode" type="radio" value="system" /> System
+                    </label>
+                    <br/>
+                    <label>
+                        <input v-model="colorMode" name="color-mode" type="radio" value="light" /> Light
+                    </label>
+                    <br/>
+                    <label>
+                        <input v-model="colorMode" name="color-mode" type="radio" value="dark" /> Dark
+                    </label>
                 </li>
             </ul>
         </aside>
@@ -151,7 +202,17 @@
 
 <script>
 export default {
-    name: 'App'
+    name: 'App',
+    data() {
+        return {
+            colorMode: this.$inkline.options.colorMode
+        };
+    },
+    watch: {
+        colorMode(value) {
+            this.$inkline.options.colorMode = value;
+        }
+    }
 }
 </script>
 
@@ -171,14 +232,20 @@ body,
 #sidebar {
     display: flex;
     height: 100%;
+    overflow: auto;
     width: 280px;
-    border-right: 1px solid #c7cfd6;
+    border-right: 1px solid var(--border-color-light);
+
+    .inkline.-dark & {
+        border-right: 1px solid var(--border-color-dark);
+    }
 }
 
 #content {
     display: flex;
     height: 100%;
     width: 100%;
+    overflow: auto;
     padding: 2rem;
     box-sizing: border-box;
 

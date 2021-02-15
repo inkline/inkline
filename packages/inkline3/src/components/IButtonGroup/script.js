@@ -1,4 +1,4 @@
-import { sizeValidator } from "@inkline/inkline/src/validators";
+import { sizePropValidator } from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IButtonGroup',
@@ -22,7 +22,7 @@ export default {
         size: {
             type: String,
             default: '',
-            validator: sizeValidator
+            validator: sizePropValidator
         }
     },
     inject: [

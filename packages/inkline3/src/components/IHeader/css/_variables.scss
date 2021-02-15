@@ -1,0 +1,64 @@
+//
+// Variables
+//
+
+$header-padding: 10rem !default;
+
+//
+// Sizes
+//
+
+$header-size-variant-sm-padding: calc(var(--header-padding) * #{size-multiplier('sm')}) !default;
+$header-size-variant-sm: (
+    'padding': $header-size-variant-sm-padding,
+) !default;
+
+$header-size-variant-md-padding: calc(var(--header-padding) * #{size-multiplier('md')}) !default;
+$header-size-variant-md: (
+    'padding': $header-size-variant-md-padding,
+) !default;
+
+$header-size-variant-lg-padding: calc(var(--header-padding) * #{size-multiplier('lg')}) !default;
+$header-size-variant-lg: (
+    'padding': $header-size-variant-lg-padding,
+) !default;
+
+$header-size-variants: (
+    'sm': $header-size-variant-sm,
+    'md': $header-size-variant-md,
+    'lg': $header-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$header-color-variant-light-color: contrast-color($color-light) !default;
+$header-color-variant-light-background: color('light') !default;
+
+$header-color-variant-light: (
+    'color': $header-color-variant-light-color,
+    'background': $header-color-variant-light-background
+) !default;
+
+$header-color-variant-dark-color: contrast-color($color-dark) !default;
+$header-color-variant-dark-background: color('dark') !default;
+
+$header-color-variant-dark: (
+    'color': $header-color-variant-dark-color,
+    'background': $header-color-variant-dark-background
+) !default;
+
+$header-color-variant-primary-color: contrast-color($color-primary) !default;
+$header-color-variant-primary-background: color('primary') !default;
+
+$header-color-variant-primary: (
+    'color': $header-color-variant-primary-color,
+    'background': $header-color-variant-primary-background
+) !default;
+
+$header-color-variants: (
+    'light': $header-color-variant-light,
+    'dark': $header-color-variant-dark,
+    'primary': $header-color-variant-primary
+) !default;

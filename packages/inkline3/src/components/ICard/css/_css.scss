@@ -1,11 +1,3 @@
-$card-border-radius: border-radius() !default;
-$card-font-size: font-size() !default;
-$card-padding: spacer() !default;
-
-$card-font-weight: font-weight('normal') !default;
-$card-line-height: var(--line-height) !default;
-$card-border-width: var(--border-width) !default;
-
 :root {
     --card-border-radius: #{$card-border-radius};
     --card-font-size: #{$card-font-size};

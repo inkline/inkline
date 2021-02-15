@@ -1,4 +1,4 @@
-import LinkableMixin from '@inkline/inkline/src/mixins/LinkableMixin';
+import { LinkableMixin } from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IBreadcrumbItem',

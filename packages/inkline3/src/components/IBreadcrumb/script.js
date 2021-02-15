@@ -1,4 +1,4 @@
-import { sizeValidator } from "@inkline/inkline/src/validators";
+import {colorVariantClass, sizePropValidator} from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IBreadcrumb',
@@ -14,13 +14,13 @@ export default {
         size: {
             type: String,
             default: '',
-            validator: sizeValidator
+            validator: sizePropValidator
         }
     },
     computed: {
         classes() {
             return {
-                [`-${this.color}`]: Boolean(this.color),
+                ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size)
             }
         }

@@ -1,1 +1,3 @@
-export const sizeValidator = (size) => ['', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'].includes(size);
+export function sizePropValidator(size) {
+    return ['', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'].includes(size);
+}

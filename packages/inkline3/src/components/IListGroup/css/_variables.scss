@@ -1,0 +1,92 @@
+//
+// Variables
+//
+$list-group-border-width: var(--border-width) !default;
+$list-group-border-style: solid !default;
+
+$list-group-font-size: font-size() !default;
+$list-group-padding: spacer() !default;
+$list-group-border-radius: border-radius() !default;
+
+//
+// Sizes
+//
+
+$list-group-size-variant-sm-border-radius: calc(var(--list-group-border-radius) * #{size-multiplier('sm')}) !default;
+$list-group-size-variant-sm-font-size: calc(var(--list-group-font-size) * #{size-multiplier('sm')}) !default;
+$list-group-size-variant-sm-padding: calc(var(--list-group-padding) * #{size-multiplier('sm')}) !default;
+$list-group-size-variant-sm: (
+    'border-radius': $list-group-size-variant-sm-border-radius,
+    'font-size': $list-group-size-variant-sm-font-size,
+    'padding': $list-group-size-variant-sm-padding,
+) !default;
+
+$list-group-size-variant-md-border-radius: calc(var(--list-group-border-radius) * #{size-multiplier('md')}) !default;
+$list-group-size-variant-md-font-size: calc(var(--list-group-font-size) * #{size-multiplier('md')}) !default;
+$list-group-size-variant-md-padding: calc(var(--list-group-padding) * #{size-multiplier('md')}) !default;
+$list-group-size-variant-md: (
+    'border-radius': $list-group-size-variant-md-border-radius,
+    'font-size': $list-group-size-variant-md-font-size,
+    'padding': $list-group-size-variant-md-padding,
+) !default;
+
+$list-group-size-variant-lg-border-radius: calc(var(--list-group-border-radius) * #{size-multiplier('lg')}) !default;
+$list-group-size-variant-lg-font-size: calc(var(--list-group-font-size) * #{size-multiplier('lg')}) !default;
+$list-group-size-variant-lg-padding: calc(var(--list-group-padding) * #{size-multiplier('lg')}) !default;
+$list-group-size-variant-lg: (
+    'border-radius': $list-group-size-variant-lg-border-radius,
+    'font-size': $list-group-size-variant-lg-font-size,
+    'padding': $list-group-size-variant-lg-padding,
+) !default;
+
+$list-group-size-variants: (
+    'sm': $list-group-size-variant-sm,
+    'md': $list-group-size-variant-md,
+    'lg': $list-group-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$list-group-color-variant-light-color: contrast-color($color-white) !default;
+$list-group-color-variant-light-background: color('white') !default;
+$list-group-color-variant-light-border-color: color('light') !default;
+$list-group-color-variant-light-disabled-color: var(--text-muted) !default;
+$list-group-color-variant-light-active-color: contrast-color($color-primary) !default;
+$list-group-color-variant-light-active-background: color('primary') !default;
+$list-group-color-variant-light-active-border-color: color('primary-55') !default;
+
+$list-group-color-variant-light: (
+    'color': $list-group-color-variant-light-color,
+    'background': $list-group-color-variant-light-background,
+    'border-color': $list-group-color-variant-light-border-color,
+    'disabled-color': $list-group-color-variant-light-disabled-color,
+    'active-color': $list-group-color-variant-light-active-color,
+    'active-background': $list-group-color-variant-light-active-background,
+    'active-border-color': $list-group-color-variant-light-active-border-color,
+) !default;
+
+$list-group-color-variant-dark-color: contrast-color($color-dark) !default;
+$list-group-color-variant-dark-background: color('dark') !default;
+$list-group-color-variant-dark-border-color: color('dark-60') !default;
+$list-group-color-variant-dark-disabled-color: var(--text-muted) !default;
+$list-group-color-variant-dark-active-color: contrast-color($color-primary) !default;
+$list-group-color-variant-dark-active-background: color('primary') !default;
+$list-group-color-variant-dark-active-border-color: color('primary-55') !default;
+
+$list-group-color-variant-dark: (
+    'color': $list-group-color-variant-dark-color,
+    'background': $list-group-color-variant-dark-background,
+    'border-color': $list-group-color-variant-dark-border-color,
+    'disabled-color': $list-group-color-variant-light-disabled-color,
+    'active-color': $list-group-color-variant-dark-active-color,
+    'active-background': $list-group-color-variant-dark-active-background,
+    'active-border-color': $list-group-color-variant-dark-active-border-color,
+) !default;
+
+
+$list-group-color-variants: (
+    'light': $list-group-color-variant-light,
+    'dark': $list-group-color-variant-dark
+) !default;
