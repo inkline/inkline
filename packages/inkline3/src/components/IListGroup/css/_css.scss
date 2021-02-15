@@ -1,0 +1,19 @@
+:root {
+    --list-group-border-width: #{$list-group-border-width};
+    --list-group-border-style: #{$list-group-border-style};
+    --list-group-border-radius: #{$list-group-border-radius};
+    --list-group-font-size: #{$list-group-font-size};
+    --list-group-padding: #{$list-group-padding};
+
+    @each $list-group-size-variant-key, $list-group-size-variant-value in $list-group-size-variants {
+        @each $list-group-size-variant-field-key, $list-group-size-variant-field-value in $list-group-size-variant-value {
+            --list-group-size-variant-#{$list-group-size-variant-key}-#{$list-group-size-variant-field-key}: #{$list-group-size-variant-field-value};
+        }
+    }
+
+    @each $color-variant-key, $color-variant-value in $list-group-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --list-group-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}

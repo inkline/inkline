@@ -66,6 +66,10 @@
     font-style: italic !important;
 }
 
+._font-monospace {
+    font-family: font-family-primary('monospace');
+}
+
 ._text-muted {
     color: var(--text-muted) !important;
 }
@@ -77,10 +81,6 @@
 ._text-break {
     word-break: break-word !important;
     overflow-wrap: break-word !important;
-}
-
-._text-monospace {
-    font-family: font-family-primary('monospace');
 }
 
 ._text-reset {

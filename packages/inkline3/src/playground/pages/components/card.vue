@@ -1,6 +1,6 @@
 <template>
     <article>
-        <h1>Button</h1>
+        <h1>Card</h1>
 
         <example type="card" :component="IndexExample" />
         <example type="card" :component="CardBodyExample" />

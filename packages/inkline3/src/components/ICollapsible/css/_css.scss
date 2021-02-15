@@ -1,0 +1,17 @@
+:root {
+    --collapsible-border-radius: #{$collapsible-border-radius};
+    --collapsible-font-size: #{$collapsible-font-size};
+    --collapsible-padding: #{$collapsible-padding};
+
+    @each $collapsible-size-variant-key, $collapsible-size-variant-value in $collapsible-size-variants {
+        @each $collapsible-size-variant-field-key, $collapsible-size-variant-field-value in $collapsible-size-variant-value {
+            --collapsible-size-variant-#{$collapsible-size-variant-key}-#{$collapsible-size-variant-field-key}: #{$collapsible-size-variant-field-value};
+        }
+    }
+
+    @each $color-variant-key, $color-variant-value in $collapsible-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --collapsible-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}

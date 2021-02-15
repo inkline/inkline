@@ -23,6 +23,11 @@ const routes = [
     { name: 'components-button', path: '/components/button', component: () => import('@inkline/inkline/src/playground/pages/components/button.vue') },
     { name: 'components-button-group', path: '/components/button-group', component: () => import('@inkline/inkline/src/playground/pages/components/button-group.vue') },
     { name: 'components-card', path: '/components/card', component: () => import('@inkline/inkline/src/playground/pages/components/card.vue') },
+    { name: 'components-collapsible', path: '/components/collapsible', component: () => import('@inkline/inkline/src/playground/pages/components/collapsible.vue') },
+    { name: 'components-hamburger-menu', path: '/components/hamburger-menu', component: () => import('@inkline/inkline/src/playground/pages/components/hamburger-menu.vue') },
+    { name: 'components-header', path: '/components/header', component: () => import('@inkline/inkline/src/playground/pages/components/header.vue') },
+    { name: 'components-icon', path: '/components/icon', component: () => import('@inkline/inkline/src/playground/pages/components/icon.vue') },
+    { name: 'components-list-group', path: '/components/list-group', component: () => import('@inkline/inkline/src/playground/pages/components/list-group.vue') },
     { name: 'components-loader', path: '/components/loader', component: () => import('@inkline/inkline/src/playground/pages/components/loader.vue') },
     { name: 'utilities-border', path: '/utilities/border', component: () => import('@inkline/inkline/src/playground/pages/utilities/border.vue') },
     { name: 'utilities-clearfix', path: '/utilities/clearfix', component: () => import('@inkline/inkline/src/playground/pages/utilities/clearfix.vue') },
@@ -35,7 +40,9 @@ const routes = [
     { name: 'utilities-overlay', path: '/utilities/overlay', component: () => import('@inkline/inkline/src/playground/pages/utilities/overlay.vue') },
     { name: 'utilities-sizing', path: '/utilities/sizing', component: () => import('@inkline/inkline/src/playground/pages/utilities/sizing.vue') },
     { name: 'utilities-spacing', path: '/utilities/spacing', component: () => import('@inkline/inkline/src/playground/pages/utilities/spacing.vue') },
+    { name: 'utilities-text', path: '/utilities/text', component: () => import('@inkline/inkline/src/playground/pages/utilities/text.vue') },
     { name: 'utilities-vertical-align', path: '/utilities/vertical-align', component: () => import('@inkline/inkline/src/playground/pages/utilities/vertical-align.vue') },
+    { name: 'utilities-visibility', path: '/utilities/visibility', component: () => import('@inkline/inkline/src/playground/pages/utilities/visibility.vue') },
 ];
 
 const app = createApp(App);

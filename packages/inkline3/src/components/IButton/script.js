@@ -1,15 +1,14 @@
-import LinkableMixin from '@inkline/inkline/src/mixins/LinkableMixin';
-// import ILoader from '@inkline/inkline/src/components/ILoader/index.vue';
-import { sizeValidator } from "@inkline/inkline/src/validators";
+import ILoader from '@inkline/inkline/src/components/ILoader/index.vue';
+import { LinkableMixin, sizePropValidator, colorVariantClass } from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IButton',
     mixins: [
         LinkableMixin
     ],
-    // components: {
-    //     ILoader,
-    // },
+    components: {
+        ILoader,
+    },
     props: {
         active: {
             type: Boolean,
@@ -54,21 +53,26 @@ export default {
         size: {
             type: String,
             default: '',
-            validator: sizeValidator
+            validator: sizePropValidator
         }
     },
-    inject: [
-        'parentForm',
-        'parentFormGroup'
-    ],
+    inject: {
+        parentForm: {
+            default: () => ({})
+        },
+        parentFormGroup: {
+            default: () => ({})
+        }
+    },
     computed: {
         classes() {
             return {
-                [`-${this.color}`]: Boolean(this.color),
+                ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
                 '-active': this.active,
                 '-block': this.block,
                 '-circle': this.circle,
+                '-disabled': this.isDisabled,
                 '-link': this.link,
                 '-outline': this.outline
             }

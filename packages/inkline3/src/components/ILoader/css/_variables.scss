@@ -38,12 +38,12 @@ $loader-color-variant-primary: (
     'background': $loader-color-variant-primary-background,
 ) !default;
 
-$loader-color-variant-light-background: color('light') !default;
+$loader-color-variant-light-background: color('dark') !default;
 $loader-color-variant-light: (
     'background': $loader-color-variant-light-background,
 ) !default;
 
-$loader-color-variant-dark-background: color('dark') !default;
+$loader-color-variant-dark-background: color('light') !default;
 $loader-color-variant-dark: (
     'background': $loader-color-variant-dark-background,
 ) !default;

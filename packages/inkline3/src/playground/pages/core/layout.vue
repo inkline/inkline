@@ -39,37 +39,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss">
-@import '../../../css/variables';
-
-#core-layout-page {
-    .layout-content,
-    .layout-header,
-    .layout-footer,
-    .layout-aside {
-        text-align: center;
-    }
-
-    .layout-header,
-    .layout-footer {
-        background: color('gray-20');
-        padding: spacer('1') 0;
-    }
-
-    .layout-content {
-        background: color('gray-10');
-        padding: spacer('4') 0;
-    }
-
-    .layout-aside {
-        background: color('gray-30');
-
-        .layout-aside-children {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-}
-</style>

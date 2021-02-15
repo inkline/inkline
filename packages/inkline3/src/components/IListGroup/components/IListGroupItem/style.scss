@@ -1,0 +1,40 @@
+@import '../../../../css/variables';
+@import '../../../../css/mixins';
+@import '../../css/variables';
+
+/**
+ * List Group Item
+ */
+.list-group {
+    > .list-group-item {
+        display: block;
+        margin-bottom: 0;
+        border-bottom-width: var(--list-group-border-width);
+        border-bottom-style: var(--list-group-border-style);
+        transition-property: color, border-color;
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-easing);
+
+        &:last-child {
+            border-bottom-width: 0;
+        }
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+
+        &.-disabled {
+            pointer-events: none;
+            cursor: default;
+        }
+    }
+}

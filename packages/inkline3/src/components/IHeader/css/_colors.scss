@@ -1,0 +1,7 @@
+@mixin header-color-variant($color-variant-key) {
+    $_color: var(--header-color-variant-#{$color-variant-key}-color);
+    $_background: var(--header-color-variant-#{$color-variant-key}-background);
+
+    color: $_color;
+    background: $_background;
+}

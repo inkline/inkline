@@ -1,0 +1,66 @@
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/sizes';
+@import 'css/colors';
+
+/**
+ * Header
+ */
+.header {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    transition-property: background-color;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-easing);
+
+    /* stylelint-disable selector-list-comma-newline-after */
+    > .container,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        margin-top: 0;
+    }
+    /* stylelint-enable */
+
+    &.-cover {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: unset;
+        background-size: cover;
+    }
+
+    &.-fullscreen {
+        padding: 0;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    @include header-size-variant('md');
+    @each $size-variant-key, $header-size-variant-value in $header-size-variants {
+        &.-#{$size-variant-key} {
+            @include header-size-variant($size-variant-key);
+        }
+    }
+
+    @include header-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $header-color-variants {
+        &.-#{$color-variant-key} {
+            @include header-color-variant($color-variant-key);
+        }
+    }
+}
