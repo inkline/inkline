@@ -1,0 +1,42 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default list group content",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "border",
+            "description": "Display the list group border",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "true"
+        },
+        {
+            "name": "color",
+            "description": "The color variant of the list group",
+            "type": [
+                "light",
+                "dark"
+            ],
+            "category": "props",
+            "defaultvalue": "light"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the list group",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "category": "props",
+            "defaultvalue": "md"
+        }
+    ]
+}

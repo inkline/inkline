@@ -1,0 +1,122 @@
+//
+// Navbar variants
+//
+@each $variant-name, $variant in $input-variants {
+    $_color: map-get($variant, 'color');
+    $_color-focus: map-get($variant, 'color-focus');
+    $_color-disabled: map-get($variant, 'color-disabled');
+    $_placeholder-color: map-get($variant, 'placeholder-color');
+    $_plaintext-color: map-get($variant, 'plaintext-color');
+    $_background: map-get($variant, 'background');
+    $_background-disabled: map-get($variant, 'background-disabled');
+    $_background-focus: map-get($variant, 'background-focus');
+    $_border-color: map-get($variant, 'border-color');
+    $_border-color-hover: map-get($variant, 'border-color-hover');
+    $_border-color-focus: map-get($variant, 'border-color-focus');
+    $_icon-circle-background: map-get($variant, 'icon-circle-background');
+    $_icon-circle-background-hover: map-get($variant, 'icon-circle-background-hover');
+    $_icon-circle-color: map-get($variant, 'icon-circle-color');
+    $_icon-circle-color-hover: map-get($variant, 'icon-circle-color-hover');
+    $_append-prepend-background: map-get($variant, 'append-prepend-background');
+
+    .form-input-group.-#{$variant-name} {
+        .form-input {
+            @include form-input-selector() {
+                color: $_color;
+                background-color: $_background;
+                border-color: $_border-color;
+
+                &:hover {
+                    border-color: $_border-color-hover;
+                }
+
+                &:focus {
+                    color: $_color-focus;
+                    border-color: $_border-color-focus;
+                }
+
+                &::placeholder {
+                    color: $_placeholder-color;
+                }
+
+                &:disabled,
+                &[readonly] {
+                    color: $_color-disabled;
+                    background-color: $_background-disabled;
+
+                    &:hover {
+                        border-color: $_border-color;
+                    }
+                }
+
+                &[readonly]:focus {
+                    outline: 0;
+                    border-color: $_border-color-hover;
+                }
+            }
+
+            .form-input-prefix {
+                border-right-color: $_border-color;
+            }
+
+            .form-input-suffix {
+                border-left-color: $_border-color;
+            }
+
+            .clear-input {
+                background-color: $_icon-circle-background;
+                color: $_icon-circle-color;
+
+                &:hover {
+                    color: $_icon-circle-color-hover;
+                    background-color: $_icon-circle-background-hover;
+                }
+            }
+        }
+
+        .form-input-prepend,
+        .form-input-append {
+            background-color: $_append-prepend-background;
+        }
+    }
+
+    /**
+     * Select input
+     * Special case for readonly property
+     */
+    .select.-#{$variant-name} {
+        &:not([readonly]) > .form-input-group > .form-input > input[readonly]:not([disabled]) {
+            background-color: $_background;
+        }
+
+        &[readonly] {
+            > .form-input-group > .form-input {
+                > input[readonly]:not(:disabled) {
+                    &:focus {
+                        border-color: $_border-color-hover;
+                    }
+                }
+            }
+        }
+
+        > .form-input-group > .form-input {
+            > input {
+                color: $_color;
+
+                &[readonly] {
+                    cursor: pointer;
+
+                    &:disabled {
+                        cursor: default;
+                    }
+
+                    &:not(:disabled) {
+                        &:focus {
+                            border-color: $_border-color-focus;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<i-navbar>
+    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
+    <i-navbar-collapsible>
+        <i-nav>
+            <i-nav-item :to="{ name: 'index' }">Home</i-nav-item>
+            <i-nav-item :to="{ name: 'about' }">About</i-nav-item>
+        </i-nav>
+        <i-nav>
+            <i-input class="item" placeholder="Type something..">
+                <i-button variant="primary" slot="append">
+                    <i-icon icon="search" />
+                </i-button>
+            </i-input>
+        </i-nav>
+    </i-navbar-collapsible>
+</i-navbar>

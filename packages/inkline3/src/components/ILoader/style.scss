@@ -61,6 +61,11 @@
             @include loader-color-variant($color-variant-key);
         }
     }
+
+    &.-auto {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 @keyframes loader-rotate {

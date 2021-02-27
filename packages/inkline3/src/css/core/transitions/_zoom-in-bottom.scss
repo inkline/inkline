@@ -12,7 +12,7 @@ $zoom-in-bottom-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opac
     transform-origin: center bottom;
 }
 
-.zoom-in-bottom-transition-enter,
+.zoom-in-bottom-transition-enter-from,
 .zoom-in-bottom-transition-leave-active {
     opacity: 0;
     transform: scaleY(0);

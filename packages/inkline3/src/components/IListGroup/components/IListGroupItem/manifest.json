@@ -1,0 +1,49 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default list group item content",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "active",
+            "description": "The active state of the list group item",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "disabled",
+            "description": "The disabled state of the list group item",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "tag",
+            "description": "Set the HTML tag to be used for rendering the list group item",
+            "type": [
+                "String"
+            ],
+            "category": "props",
+            "defaultvalue": "div"
+        },
+        {
+            "name": "tabindex",
+            "description": "The tabindex of the list group item",
+            "type": [
+                "Number",
+                "String"
+            ],
+            "category": "props",
+            "defaultvalue": "1"
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default header content",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "color",
+            "description": "The color variant of the header",
+            "type": [
+                "primary",
+                "light",
+                "dark"
+            ],
+            "category": "props",
+            "defaultvalue": "light"
+        },
+        {
+            "name": "cover",
+            "description": "Display the header background as cover, always covering the whole header width",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "true"
+        },
+        {
+            "name": "fullscreen",
+            "description": "Display the header as fullscreen, covering 100% screen height and 100% screen width",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "true"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the header",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "category": "props",
+            "defaultvalue": "md"
+        }
+    ]
+}

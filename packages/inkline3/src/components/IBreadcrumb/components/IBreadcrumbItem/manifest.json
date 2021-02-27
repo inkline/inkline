@@ -1,0 +1,49 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default breadcrumb item content",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "tag",
+            "description": "Set the HTML tag to be used for rendering the breadcrumb item",
+            "type": [
+                "String"
+            ],
+            "category": "props",
+            "defaultvalue": "a"
+        },
+        {
+            "name": "active",
+            "description": "The active state of the breadcrumb item",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "disabled",
+            "description": "The disabled state of the breadcrumb item",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "tabindex",
+            "description": "The tabindex of the breadcrumb item",
+            "type": [
+                "Number",
+                "String"
+            ],
+            "category": "props",
+            "defaultvalue": "1"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+@import '../../../../css/variables';
+@import '../../../../css/mixins';
+@import '../../css/variables';
+
+/**
+ * Navbar Items
+ */
+.navbar {
+    .navbar-collapsible {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+        flex-shrink: 1;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

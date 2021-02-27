@@ -44,7 +44,7 @@
 
     // Responsive Flex Alignments
     //
-    @each $breakpoint-key, $breakpoint-value in $breakpoints {
+    @each $breakpoint-key in $breakpoint-infix-keys {
         $breakpoint: breakpoint-infix($breakpoint-key);
 
         @include breakpoint-up($breakpoint-key) {

@@ -1,0 +1,50 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default button group content",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "vertical",
+            "description": "Display the button group with vertical orientation",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "block",
+            "description": "Display the button group as a block, spanning the full container width",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "disabled",
+            "description": "The disabled state of the button group",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the button group",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "category": "props",
+            "defaultvalue": "md"
+        }
+    ]
+}

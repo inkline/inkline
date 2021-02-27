@@ -1,0 +1,88 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default table content",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "border",
+            "description": "Display the table with borders",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "condensed",
+            "description": "Display the table rows as condensed",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "striped",
+            "description": "Display the table rows as alternating stripes",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "hover",
+            "description": "Set the table rows as hoverable",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "responsive",
+            "description": "Set the table to be responsive, enabling horizontal scroll when overflowing the parent container",
+            "type": [
+                "Boolean",
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "xxl"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "nowrap",
+            "description": "Display the table rows without wrapping white-space",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "color",
+            "description": "The color variant of the table",
+            "type": [
+                "primary",
+                "success",
+                "light",
+                "dark",
+                "info",
+                "success",
+                "warning",
+                "danger"
+            ],
+            "category": "props",
+            "defaultvalue": "light"
+        }
+    ]
+}

@@ -1,2 +1,2 @@
-<template src="./animation.html" />
-<script src="./animation.js" />
+<template src="./animation.demo.html" />
+<script src="./animation.demo.js" />

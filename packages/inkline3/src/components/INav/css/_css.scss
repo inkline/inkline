@@ -1,0 +1,16 @@
+:root {
+    --nav-font-size: #{$nav-font-size};
+    --nav-padding: #{$nav-padding};
+
+    @each $nav-size-variant-key, $nav-size-variant-value in $nav-size-variants {
+        @each $nav-size-variant-field-key, $nav-size-variant-field-value in $nav-size-variant-value {
+            --nav-size-variant-#{$nav-size-variant-key}-#{$nav-size-variant-field-key}: #{$nav-size-variant-field-value};
+        }
+    }
+
+    @each $color-variant-key, $color-variant-value in $nav-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --nav-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}

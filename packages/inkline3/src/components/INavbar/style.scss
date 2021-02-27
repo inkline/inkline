@@ -1,0 +1,82 @@
+/**
+ * Navbar
+ */
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
+@import 'css/sizes';
+
+@mixin navbar-collapse {
+    .navbar-collapsible {
+        position: relative;
+        display: block;
+        width: 100%;
+
+        .nav {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .nav-item {
+                width: 100%;
+                transition-property: background-color, color;
+                transition-timing-function: var(--transition-easing);
+                transition-duration: var(--transition-duration);
+            }
+        }
+    }
+
+    .collapse-toggle {
+        display: inline-block;
+
+        + .navbar-brand {
+            order: -1;
+        }
+    }
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; // allow us to do the line break for collapsing content
+    align-items: center;
+    justify-content: space-between;
+
+    > .container > .row > .column {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .collapse-toggle {
+        display: none;
+    }
+
+    @each $breakpoint in $breakpoint-keys {
+        &.-collapse-#{$breakpoint} {
+            @include breakpoint-down($breakpoint) {
+                @include navbar-collapse();
+            }
+        }
+    }
+
+    &.-collapse-true {
+        @include navbar-collapse();
+    }
+
+    @include navbar-size-variant('md');
+    @each $size-variant-key, $navbar-size-variant-value in $navbar-size-variants {
+        &.-#{$size-variant-key} {
+            @include navbar-size-variant($size-variant-key);
+        }
+    }
+
+    @include navbar-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $navbar-color-variants {
+        &.-#{$color-variant-key} {
+            @include navbar-color-variant($color-variant-key);
+        }
+    }
+}

@@ -1,0 +1,81 @@
+//
+// Variables
+//
+
+
+$input-line-height: var(--line-height) !default;
+$input-padding: spacer() !default;
+$input-font-size: font-size() !default;
+$input-border-radius: border-radius() !default;
+$input-border-width: var(--border-width) !default;
+$input-prefix-border-width: var(--input-border-width) !default;
+
+$input-box-shadow: inset 0 1px 1px rgba($color-black, 0.05) !default;
+$input-icon-circle-size: 1.2rem !default;
+
+
+//
+// Sizes
+//
+
+$input-size-variant-sm-border-radius: calc(var(--input-border-radius) * #{size-multiplier('sm')}) !default;
+$input-size-variant-sm-font-size: calc(var(--input-font-size) * #{size-multiplier('sm')}) !default;
+$input-size-variant-sm-padding: calc(var(--input-padding) * #{size-multiplier('sm')}) !default;
+$input-size-variant-sm: (
+    'border-radius': $input-size-variant-sm-border-radius,
+    'font-size': $input-size-variant-sm-font-size,
+    'padding': $input-size-variant-sm-padding,
+) !default;
+
+$input-size-variant-md-border-radius: calc(var(--input-border-radius) * #{size-multiplier('md')}) !default;
+$input-size-variant-md-font-size: calc(var(--input-font-size) * #{size-multiplier('md')}) !default;
+$input-size-variant-md-padding: calc(var(--input-padding) * #{size-multiplier('md')}) !default;
+$input-size-variant-md: (
+    'border-radius': $input-size-variant-md-border-radius,
+    'font-size': $input-size-variant-md-font-size,
+    'padding': $input-size-variant-md-padding,
+) !default;
+
+$input-size-variant-lg-border-radius: calc(var(--input-border-radius) * #{size-multiplier('lg')}) !default;
+$input-size-variant-lg-font-size: calc(var(--input-font-size) * #{size-multiplier('lg')}) !default;
+$input-size-variant-lg-padding: calc(var(--input-padding) * #{size-multiplier('lg')}) !default;
+$input-size-variant-lg: (
+    'border-radius': $input-size-variant-lg-border-radius,
+    'font-size': $input-size-variant-lg-font-size,
+    'padding': $input-size-variant-lg-padding,
+) !default;
+
+$input-size-variants: (
+    'sm': $input-size-variant-sm,
+    'md': $input-size-variant-md,
+    'lg': $input-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$input-color-variant-light-color: contrast-color($color-light) !default;
+$input-color-variant-light-background: color('white') !default;
+$input-color-variant-light-border-color: color('light') !default;
+
+$input-color-variant-light: (
+    'color': $input-color-variant-light-color,
+    'background': $input-color-variant-light-background,
+    'border-color': $input-color-variant-light-border-color,
+) !default;
+
+$input-color-variant-dark-color: contrast-color($color-dark) !default;
+$input-color-variant-dark-background: color('dark') !default;
+$input-color-variant-dark-border-color: color('dark-60') !default;
+
+$input-color-variant-dark: (
+    'color': $input-color-variant-dark-color,
+    'background': $input-color-variant-dark-background,
+    'border-color': $input-color-variant-dark-border-color,
+) !default;
+
+$input-color-variants: (
+    light: $input-color-variant-light,
+    dark: $input-color-variant-dark
+) !default;

@@ -1,0 +1,33 @@
+@mixin modal-color-variant($color-variant-key) {
+    $_color: var(--modal-color-variant-#{$color-variant-key}-color);
+    $_background: var(--modal-color-variant-#{$color-variant-key}-background);
+    $_border-color: var(--modal-color-variant-#{$color-variant-key}-border-color);
+    $_header-color: var(--modal-color-variant-#{$color-variant-key}-header-color);
+    $_header-background: var(--modal-color-variant-#{$color-variant-key}-header-background);
+    $_header-border-color: var(--modal-color-variant-#{$color-variant-key}-header-border-color);
+    $_footer-color: var(--modal-color-variant-#{$color-variant-key}-footer-color);
+    $_footer-background: var(--modal-color-variant-#{$color-variant-key}-footer-background);
+    $_footer-border-color: var(--modal-color-variant-#{$color-variant-key}-footer-border-color);
+
+    > .modal-header {
+        border-color: $_header-border-color;
+        color: $_header-color;
+        background: $_header-background;
+
+        > .close {
+            color: $_header-color;
+        }
+    }
+
+    > .modal-body {
+        color: $_color;
+        background: $_background;
+        border-color: $_border-color;
+    }
+
+    > .modal-footer {
+        color: $_footer-color;
+        background: $_footer-background;
+        border-color: $_footer-border-color;
+    }
+}

@@ -1,0 +1,95 @@
+@import '../../css/variables';
+@import '../../css/mixins';
+@import '../IIcon/css/variables';
+@import '../IIcon/css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/sizes';
+@import 'css/colors';
+
+.modal-overlay {
+    background: var(--modal-overlay-background);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    text-align: left; // Ensures proper alignment if parent has it changed
+    list-style: none;
+    line-height: var(--modal-line-height);
+    display: block;
+    width: calc(100% - var(--modal-margin) * 2);
+
+    > .modal-header,
+    > .modal-body,
+    > .modal-footer {
+        border-width: var(--modal-border-width);
+        border-style: solid;
+    }
+
+    > .modal-header {
+        display: flex;
+        justify-content: space-between;
+
+        > .close {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1.5rem;
+            width: 1.5rem;
+            line-height: 1.5rem;
+            font-size: 0.5rem;
+            cursor: pointer;
+            padding: 0;
+            border: 0;
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+
+            > .icon {
+                &::before {
+                    @extend %icon;
+
+                    content: $icon-times;
+                }
+            }
+
+            &:hover,
+            &:focus {
+                outline: none;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            &:active {
+                background-color: rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
+
+    > .modal-header + .modal-body,
+    > .modal-header + .modal-footer,
+    > .modal-body + .modal-footer,
+    > .modal-body + .modal-body {
+        border-top-width: 0;
+    }
+
+    @include modal-size-variant('md');
+    @each $size-variant-key, $modal-size-variant-value in $modal-size-variants {
+        &.-#{$size-variant-key} {
+            @include modal-size-variant($size-variant-key);
+        }
+    }
+
+    @include modal-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $modal-color-variants {
+        &.-#{$color-variant-key} {
+            @include modal-color-variant($color-variant-key);
+        }
+    }
+}

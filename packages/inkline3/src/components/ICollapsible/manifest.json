@@ -1,0 +1,60 @@
+{
+    "events": [
+        {
+            "name": "update:modelValue",
+            "description": "Event emitted for setting the modelValue",
+            "type": [],
+            "category": "events"
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default collapsible content",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "accordion",
+            "description": "Display the collapsible as an accordion, keeping a maximum of one open collapsible item",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        },
+        {
+            "name": "color",
+            "description": "The color variant of the button",
+            "type": [
+                "light",
+                "dark",
+                "blank"
+            ],
+            "category": "props",
+            "defaultvalue": "light"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the collapsible",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "category": "props",
+            "defaultvalue": "md"
+        },
+        {
+            "name": "modelValue",
+            "description": "Used to determine which collapsible item is open",
+            "type": [
+                "Array.<String>"
+            ],
+            "category": "props",
+            "defaultvalue": "{\"type\":\"\",\"default\":\"\"}"
+        }
+    ]
+}

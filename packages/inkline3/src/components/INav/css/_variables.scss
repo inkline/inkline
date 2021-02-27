@@ -1,0 +1,67 @@
+//
+// Variables
+//
+
+$nav-font-size: font-size() !default;
+$nav-padding: spacer() !default;
+
+//
+// Sizes
+//
+
+$nav-size-variant-sm-font-size: calc(var(--nav-font-size) * #{size-multiplier('sm')}) !default;
+$nav-size-variant-sm-padding: calc(var(--nav-padding) * #{size-multiplier('sm')}) !default;
+$nav-size-variant-sm: (
+    'font-size': $nav-size-variant-sm-font-size,
+    'padding': $nav-size-variant-sm-padding,
+) !default;
+
+$nav-size-variant-md-font-size: calc(var(--nav-font-size) * #{size-multiplier('md')}) !default;
+$nav-size-variant-md-padding: calc(var(--nav-padding) * #{size-multiplier('md')}) !default;
+$nav-size-variant-md: (
+    'font-size': $nav-size-variant-md-font-size,
+    'padding': $nav-size-variant-md-padding,
+) !default;
+
+$nav-size-variant-lg-font-size: calc(var(--nav-font-size) * #{size-multiplier('lg')}) !default;
+$nav-size-variant-lg-padding: calc(var(--nav-padding) * #{size-multiplier('lg')}) !default;
+$nav-size-variant-lg: (
+    'font-size': $nav-size-variant-lg-font-size,
+    'padding': $nav-size-variant-lg-padding,
+) !default;
+
+$nav-size-variants: (
+    'sm': $nav-size-variant-sm,
+    'md': $nav-size-variant-md,
+    'lg': $nav-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$nav-color-variant-light-color: contrast-color($color-light) !default;
+$nav-color-variant-light-disabled-color: var(--text-muted) !default;
+$nav-color-variant-light-active-color: var(--color-primary) !default;
+
+$nav-color-variant-light: (
+    'color': $nav-color-variant-light-color,
+    'disabled-color': $nav-color-variant-light-disabled-color,
+    'active-color': $nav-color-variant-light-active-color,
+) !default;
+
+$nav-color-variant-dark-color: contrast-color($color-dark) !default;
+$nav-color-variant-dark-disabled-color: var(--text-muted) !default;
+$nav-color-variant-dark-active-color: var(--color-primary) !default;
+
+$nav-color-variant-dark: (
+    'color': $nav-color-variant-dark-color,
+    'disabled-color': $nav-color-variant-light-disabled-color,
+    'active-color': $nav-color-variant-dark-active-color,
+) !default;
+
+
+$nav-color-variants: (
+    'light': $nav-color-variant-light,
+    'dark': $nav-color-variant-dark
+) !default;

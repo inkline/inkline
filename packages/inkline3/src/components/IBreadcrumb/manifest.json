@@ -1,0 +1,33 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default breadcrumb content",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "color",
+            "description": "The color variant of the breadcrumb",
+            "type": [
+                "light",
+                "dark"
+            ],
+            "category": "props",
+            "defaultvalue": "light"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the breadcrumb",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "category": "props",
+            "defaultvalue": "md"
+        }
+    ]
+}

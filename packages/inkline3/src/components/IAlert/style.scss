@@ -78,7 +78,7 @@
         }
     }
 
-    @include alert-color-variant('primary');
+    @include alert-color-variant('info');
     @each $color-variant-key, $color-variant-value in $alert-color-variants {
         &.-#{$color-variant-key} {
             @include alert-color-variant($color-variant-key);

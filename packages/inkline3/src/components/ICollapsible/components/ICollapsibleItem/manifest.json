@@ -1,0 +1,36 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default collapsible item content",
+            "type": [],
+            "category": "slots"
+        },
+        {
+            "name": "header",
+            "description": "Slot for collapsible item header content",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "id",
+            "description": "The id of the collapsible item, used for determining if the item is open or not",
+            "type": [
+                "String"
+            ],
+            "category": "props",
+            "defaultvalue": "uid()"
+        },
+        {
+            "name": "title",
+            "description": "The title of the collapsible item",
+            "type": [
+                "String"
+            ],
+            "category": "props",
+            "defaultvalue": "{\"type\":\"\",\"default\":\"\"}"
+        }
+    ]
+}

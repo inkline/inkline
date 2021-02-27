@@ -1,0 +1,12 @@
+<component
+    v-bind="$attrs"
+    class="nav-item"
+    :is="isTag"
+    :tag="tag"
+    :tabindex="tabIndex"
+    :class="classes"
+    :disabled="disabled"
+    :aria-disabled="disabled"
+    :aria-pressed="active">
+    <slot />
+</component>
