@@ -1,0 +1,50 @@
+@mixin navbar-color-variant($color-variant-key) {
+    $_color: var(--navbar-color-variant-#{$color-variant-key}-color);
+    $_background: var(--navbar-color-variant-#{$color-variant-key}-background);
+    $_item-color: var(--navbar-color-variant-#{$color-variant-key}-item-color);
+    $_item-color-hover: var(--navbar-color-variant-#{$color-variant-key}-item-color-hover);
+    $_item-background: var(--navbar-color-variant-#{$color-variant-key}-item-background);
+    $_item-background-hover: var(--navbar-color-variant-#{$color-variant-key}-item-background-hover);
+    $_collapsed-item-color: var(--navbar-color-variant-#{$color-variant-key}-collapsed-item-color);
+    $_collapsed-item-color-hover: var(--navbar-color-variant-#{$color-variant-key}-collapsed-item-color-hover);
+    $_collapsed-item-background: var(--navbar-color-variant-#{$color-variant-key}-collapsed-item-background);
+    $_collapsed-item-background-hover: var(--navbar-color-variant-#{$color-variant-key}-collapsed-item-background-hover);
+
+    color: $_color;
+    background: $_background;
+
+    .navbar-brand {
+        color: $_color;
+    }
+
+    .navbar-collapsible {
+        .nav-item {
+            color: $_item-color;
+            background-color: $_item-background;
+
+            &.-active,
+            &.-focused,
+            &.-hovered,
+            &:focus,
+            &:hover {
+                color: $_item-color-hover;
+                background-color: $_item-background-hover;
+            }
+        }
+    }
+
+    &.-collapsed {
+        .navbar-collapsible {
+            background: $_collapsed-item-background;
+
+            .nav-item {
+                color: $_collapsed-item-color;
+
+                &:hover {
+                    color: $_collapsed-item-color-hover;
+                    background: $_collapsed-item-background-hover;
+                }
+            }
+        }
+    }
+}

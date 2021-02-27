@@ -1,0 +1,109 @@
+//
+// Variables
+//
+
+$navbar-padding: spacer('1-2') !default;
+$navbar-item-padding: spacer() !default;
+$navbar-font-size: font-size() !default;
+$navbar-border-radius: border-radius() !default;
+$navbar-brand-margin: spacer() !default;
+
+//
+// Sizes
+//
+
+$navbar-size-variant-sm-border-radius: calc(var(--navbar-border-radius) * #{size-multiplier('sm')}) !default;
+$navbar-size-variant-sm-font-size: calc(var(--navbar-font-size) * #{size-multiplier('sm')}) !default;
+$navbar-size-variant-sm-padding: calc(var(--navbar-padding) * #{size-multiplier('sm')}) 0 !default;
+$navbar-size-variant-sm-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('sm')}) !default;
+$navbar-size-variant-sm: (
+    'border-radius': $navbar-size-variant-sm-border-radius,
+    'font-size': $navbar-size-variant-sm-font-size,
+    'padding': $navbar-size-variant-sm-padding,
+    'item-padding': $navbar-size-variant-sm-item-padding,
+) !default;
+
+$navbar-size-variant-md-border-radius: calc(var(--navbar-border-radius) * #{size-multiplier('md')}) !default;
+$navbar-size-variant-md-font-size: calc(var(--navbar-font-size) * #{size-multiplier('md')}) !default;
+$navbar-size-variant-md-padding: calc(var(--navbar-padding) * #{size-multiplier('md')}) 0 !default;
+$navbar-size-variant-md-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('md')}) !default;
+$navbar-size-variant-md: (
+    'border-radius': $navbar-size-variant-md-border-radius,
+    'font-size': $navbar-size-variant-md-font-size,
+    'padding': $navbar-size-variant-md-padding,
+    'item-padding': $navbar-size-variant-md-item-padding,
+) !default;
+
+$navbar-size-variant-lg-border-radius: calc(var(--navbar-border-radius) * #{size-multiplier('lg')}) !default;
+$navbar-size-variant-lg-font-size: calc(var(--navbar-font-size) * #{size-multiplier('lg')}) !default;
+$navbar-size-variant-lg-padding: calc(var(--navbar-padding) * #{size-multiplier('lg')}) 0 !default;
+$navbar-size-variant-lg-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('lg')}) !default;
+$navbar-size-variant-lg: (
+    'border-radius': $navbar-size-variant-lg-border-radius,
+    'font-size': $navbar-size-variant-lg-font-size,
+    'padding': $navbar-size-variant-lg-padding,
+    'item-padding': $navbar-size-variant-lg-item-padding,
+) !default;
+
+$navbar-size-variants: (
+    'sm': $navbar-size-variant-sm,
+    'md': $navbar-size-variant-md,
+    'lg': $navbar-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$navbar-color-variant-light-color: contrast-color($color-light) !default;
+$navbar-color-variant-light-background: color('light') !default;
+$navbar-color-variant-light-item-color: contrast-color($color-light) !default;
+$navbar-color-variant-light-item-color-hover: contrast-color($color-light) !default;
+$navbar-color-variant-light-item-background: color('light') !default;
+$navbar-color-variant-light-item-background-hover: color('light-55') !default;
+$navbar-color-variant-light-collapsed-item-color: contrast-color($color-light) !default;
+$navbar-color-variant-light-collapsed-item-color-hover: contrast-color($color-light) !default;
+$navbar-color-variant-light-collapsed-item-background: color('light') !default;
+$navbar-color-variant-light-collapsed-item-background-hover: color('light-55') !default;
+
+$navbar-color-variant-light: (
+    'color': $navbar-color-variant-light-color,
+    'background': $navbar-color-variant-light-background,
+    'item-color': $navbar-color-variant-light-item-color,
+    'item-color-hover': $navbar-color-variant-light-item-color-hover,
+    'item-background': $navbar-color-variant-light-item-background,
+    'item-background-hover': $navbar-color-variant-light-item-background-hover,
+    'collapsed-item-color': $navbar-color-variant-light-collapsed-item-color,
+    'collapsed-item-color-hover': $navbar-color-variant-light-collapsed-item-color-hover,
+    'collapsed-item-background': $navbar-color-variant-light-collapsed-item-background,
+    'collapsed-item-background-hover': $navbar-color-variant-light-collapsed-item-background-hover,
+) !default;
+
+$navbar-color-variant-dark-color: contrast-color($color-dark) !default;
+$navbar-color-variant-dark-background: color('dark') !default;
+$navbar-color-variant-dark-item-color: contrast-color($color-dark) !default;
+$navbar-color-variant-dark-item-color-hover: contrast-color($color-dark) !default;
+$navbar-color-variant-dark-item-background: color('dark') !default;
+$navbar-color-variant-dark-item-background-hover: color('dark-55') !default;
+$navbar-color-variant-dark-collapsed-item-color: contrast-color($color-dark) !default;
+$navbar-color-variant-dark-collapsed-item-color-hover: contrast-color($color-dark) !default;
+$navbar-color-variant-dark-collapsed-item-background: color('dark') !default;
+$navbar-color-variant-dark-collapsed-item-background-hover: color('dark-55') !default;
+
+$navbar-color-variant-dark: (
+    'color': $navbar-color-variant-dark-color,
+    'background': $navbar-color-variant-dark-background,
+    'item-color': $navbar-color-variant-dark-item-color,
+    'item-color-hover': $navbar-color-variant-dark-item-color-hover,
+    'item-background': $navbar-color-variant-dark-item-background,
+    'item-background-hover': $navbar-color-variant-dark-item-background-hover,
+    'collapsed-item-color': $navbar-color-variant-dark-collapsed-item-color,
+    'collapsed-item-color-hover': $navbar-color-variant-dark-collapsed-item-color-hover,
+    'collapsed-item-background': $navbar-color-variant-dark-collapsed-item-background,
+    'collapsed-item-background-hover': $navbar-color-variant-dark-collapsed-item-background-hover,
+) !default;
+
+$navbar-color-variants: (
+    'light': $navbar-color-variant-light,
+    'dark': $navbar-color-variant-dark
+) !default;

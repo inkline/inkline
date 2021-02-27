@@ -1,0 +1,57 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default card content",
+            "type": [],
+            "category": "slots"
+        },
+        {
+            "name": "header",
+            "description": "Slot for card header content",
+            "type": [],
+            "category": "slots"
+        },
+        {
+            "name": "footer",
+            "description": "Slot for card footer content",
+            "type": [],
+            "category": "slots"
+        },
+        {
+            "name": "image",
+            "description": "Slot for card image",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "color",
+            "description": "The color variant of the card",
+            "type": [
+                "primary",
+                "success",
+                "light",
+                "dark",
+                "info",
+                "success",
+                "warning",
+                "danger"
+            ],
+            "category": "props",
+            "defaultvalue": "light"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the card",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "category": "props",
+            "defaultvalue": "md"
+        }
+    ]
+}

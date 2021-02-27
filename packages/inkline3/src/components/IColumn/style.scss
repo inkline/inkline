@@ -49,22 +49,26 @@
 
     // Column Responsive Sizes
     //
-    @each $breakpoint-key, $breakpoint-value in $breakpoints {
+    @each $breakpoint-key in $breakpoint-infix-keys {
         $breakpoint: breakpoint-infix($breakpoint-key);
 
-        &.#{$breakpoint},
-        &.#{$breakpoint}-auto {
-            @include column-full-width();
+        @if $breakpoint-key != '_' {
+            &.#{$breakpoint},
+            &.#{$breakpoint}-auto {
+                @include column-full-width();
+            }
         }
 
         @include breakpoint-up($breakpoint-key) {
-            &.#{$breakpoint} {
-                @include column-flexible();
-            }
+            @if $breakpoint-key != '_' {
+                &.#{$breakpoint} {
+                    @include column-flexible();
+                }
 
-            &.#{$breakpoint}-auto {
-                flex: 1 0 auto;
-                max-width: auto;
+                &.#{$breakpoint}-auto {
+                    flex: 1 0 auto;
+                    max-width: auto;
+                }
             }
 
             &.-first#{$breakpoint} {
@@ -77,15 +81,20 @@
         }
 
         @for $column-count from 1 through $columns {
-            &.#{$breakpoint}-#{$column-count} {
-                @include column-full-width();
+            @if $breakpoint-key != '_' {
+                &.#{$breakpoint}-#{$column-count} {
+                    @include column-full-width();
+                }
             }
 
             @include breakpoint-up($breakpoint-key) {
+
                 // Column width
                 //
-                &.#{$breakpoint}-#{$column-count} {
-                    @include column-fixed-width($columns, $column-count);
+                @if $breakpoint-key != '_' {
+                    &.#{$breakpoint}-#{$column-count} {
+                        @include column-fixed-width($columns, $column-count);
+                    }
                 }
 
                 // Column offset
@@ -94,18 +103,10 @@
                     margin-left: percentage($column-count / $columns);
                 }
 
-                &.-offset#{$breakpoint}-0 {
-                    margin-left: 0;
-                }
-
                 // Column push
                 //
                 &.-push#{$breakpoint}-#{$column-count} {
                     left: percentage($column-count / $columns);
-                }
-
-                &.-push#{$breakpoint}-0 {
-                    left: 0;
                 }
 
                 // Column pull
@@ -113,11 +114,19 @@
                 &.-pull#{$breakpoint}-#{$column-count} {
                     right: percentage($column-count / $columns);
                 }
-
-                &.-pull#{$breakpoint}-0 {
-                    right: 0;
-                }
             }
+        }
+
+        &.-offset#{$breakpoint}-0 {
+            margin-left: 0;
+        }
+
+        &.-push#{$breakpoint}-0 {
+            left: 0;
+        }
+
+        &.-pull#{$breakpoint}-0 {
+            right: 0;
         }
     }
 }

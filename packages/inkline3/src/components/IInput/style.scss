@@ -1,0 +1,204 @@
+@import '../../css/variables';
+@import '../../css/mixins';
+@import '../IIcon/css/variables';
+@import '../IIcon/css/mixins';
+@import 'css/mixins';
+@import 'css/variables';
+@import 'css/sizes';
+@import 'css/colors';
+
+.form-input-group {
+    display: block;
+    vertical-align: middle;
+    position: relative;
+
+    &.-prepended,
+    &.-appended {
+        display: flex;
+        flex-wrap: nowrap;
+
+        .form-input {
+            flex-shrink: 1;
+        }
+    }
+
+    &.-prepended {
+        .form-input {
+            > input,
+            > select,
+            > textarea {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+
+    &.-appended {
+        .form-input {
+            > input,
+            > select,
+            > textarea {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+    }
+
+    &.-error {
+        .form-input {
+            > input,
+            > select,
+            > textarea {
+                border-color: color('danger');
+            }
+        }
+    }
+
+    > .form-input-prepend,
+    > .form-input-append {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+        padding: 0;
+        line-height: var(--input-line-height);
+        transition-property: background-color;
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-easing);
+
+        > * {
+            flex: auto 1 0;
+            border-radius: 0;
+        }
+    }
+
+    .form-input {
+        position: relative;
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: row;
+
+        > input,
+        > select,
+        > textarea {
+            position: relative;
+            flex: 1 0 auto;
+            width: 1%;
+            line-height: var(--input-line-height);
+            background-clip: padding-box;
+            border-width: var(--input-border-width);
+            border-style: solid;
+            box-shadow: var(--input-box-shadow);
+            transition-property: background-color, color, border-color, box-shadow;
+            transition-duration: var(--transition-duration);
+            transition-timing-function: var(--transition-easing);
+
+            // Remove style for the caret on `<select>`s in IE10+.
+            &::-ms-expand {
+                background-color: transparent;
+                border: 0;
+            }
+
+            // Customize the `:focus` state to imitate native WebKit styles.
+            &:focus {
+                outline: 0;
+                box-shadow: var(--input-box-shadow);
+            }
+
+            // Placeholder
+            // Override Firefox's unusual default opacity see https://github.com/twbs/bootstrap/pull/11526.
+            &::placeholder {
+                opacity: 1;
+            }
+
+            // Disabled and read-only inputs
+            //
+            // HTML5 says that controls under a fieldset > legend:first-child won't be
+            // disabled if the fieldset is disabled. Due to implementation difficulty, we
+            // don't honor that edge case we style them as disabled anyway.
+            &:disabled,
+            &[readonly] {
+                opacity: 1; // iOS fix for unreadable disabled content
+                cursor: default;
+            }
+
+            /**
+             * Select
+             */
+            &[readonly]:focus {
+                outline: 0;
+            }
+        }
+
+        .form-input-prefix,
+        .form-input-suffix {
+            z-index: 1;
+            top: 50%;
+            position: absolute;
+            transform: translateY(-50%);
+            font-style: normal;
+            color: var(--text-muted);
+            transition-property: border-color;
+            transition-duration: var(--transition-duration);
+            transition-timing-function: var(--transition-easing);
+
+            > button {
+                background: transparent;
+                border: 0;
+                color: inherit;
+            }
+        }
+
+        .form-input-prefix {
+            left: spacer();
+            padding-right: spacer();
+            border-right-width: var(--input-prefix-border-width);
+            border-right-style: solid;
+        }
+
+        .form-input-suffix {
+            right: spacer();
+            padding-left: spacer();
+            border-left-width: var(--input-prefix-border-width);
+            border-left-style: solid;
+        }
+
+        .clear-input {
+            transition-property: background-color;
+            transition-duration: var(--transition-duration);
+            transition-timing-function: var(--transition-easing);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            width: var(--input-icon-circle-size);
+            height: var(--input-icon-circle-size);
+            border-radius: 100%;
+
+            &::before {
+                @extend %icon;
+
+                font-size: 8px;
+                content: $icon-times;
+            }
+        }
+    }
+
+    @include input-size-variant('md');
+    @each $size-variant-key, $input-size-variant-value in $input-size-variants {
+        .form.-#{$size-variant-key} .form-input-group,
+        .form-group.-#{$size-variant-key} .form-input-group,
+        .form-input-group.-#{$size-variant-key} {
+            @include input-size-variant($size-variant-key);
+        }
+    }
+
+    @include input-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $input-color-variants {
+        .form.-#{$color-variant-key} .form-input-group,
+        .form-group.-#{$color-variant-key} .form-input-group,
+        .form-input-group.-#{$color-variant-key} {
+            @include input-color-variant($color-variant-key);
+        }
+    }
+}
+

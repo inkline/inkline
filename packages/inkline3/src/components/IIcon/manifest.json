@@ -1,0 +1,24 @@
+{
+    "props": [
+        {
+            "name": "icon",
+            "description": "The icon to be displayed",
+            "type": [
+                "String"
+            ],
+            "category": "props",
+            "defaultvalue": "{\"type\":\"\",\"default\":\"\"}"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the icon",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "category": "props",
+            "defaultvalue": "md"
+        }
+    ]
+}

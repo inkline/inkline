@@ -1,2 +1,2 @@
-<template src="./color-variants.html" />
-<script src="./color-variants.js" />
+<template src="./color-variants.demo.html" />
+<script src="./color-variants.demo.js" />

@@ -1,0 +1,10 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default media content",
+            "type": [],
+            "category": "slots"
+        }
+    ]
+}

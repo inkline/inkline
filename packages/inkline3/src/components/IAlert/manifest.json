@@ -1,0 +1,73 @@
+{
+    "events": [
+        {
+            "name": "update:modelValue",
+            "description": "Event emitted for setting the modelValue",
+            "type": [],
+            "category": "events"
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default alert content",
+            "type": [],
+            "category": "slots"
+        },
+        {
+            "name": "icon",
+            "description": "Slot for alert icon",
+            "type": [],
+            "category": "slots"
+        },
+        {
+            "name": "dismiss",
+            "description": "Slot for alert dismiss button",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "size",
+            "description": "The size variant of the alert",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "category": "props",
+            "defaultvalue": "md"
+        },
+        {
+            "name": "color",
+            "description": "The color variant of the alert",
+            "type": [
+                "info",
+                "success",
+                "warning",
+                "danger"
+            ],
+            "category": "props",
+            "defaultvalue": "info"
+        },
+        {
+            "name": "modelValue",
+            "description": "Used to show or hide a dismissible alert",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "true"
+        },
+        {
+            "name": "dismissible",
+            "description": "Shows a dismiss icon on the alert",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        }
+    ]
+}

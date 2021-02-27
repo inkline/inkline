@@ -51,36 +51,6 @@ $alert-size-variants: (
 // Colors
 //
 
-$alert-color-variant-primary-background: var(--color-primary) !default;
-$alert-color-variant-primary-border-color: var(--color-primary-60) !default;
-$alert-color-variant-primary-color: contrast-color($color-primary) !default;
-$alert-color-variant-primary-link-color: $alert-color-variant-primary-color !default;
-$alert-color-variant-primary-code-background: var(--color-primary-60) !default;
-$alert-color-variant-primary-code-color: $alert-color-variant-primary-color !default;
-$alert-color-variant-primary: (
-    'background': $alert-color-variant-primary-background,
-    'border-color': $alert-color-variant-primary-border-color,
-    'color': $alert-color-variant-primary-color,
-    'link-color': $alert-color-variant-primary-link-color,
-    'code-background': $alert-color-variant-primary-code-background,
-    'code-color': $alert-color-variant-primary-code-color,
-) !default;
-
-$alert-color-variant-secondary-background: var(--color-secondary) !default;
-$alert-color-variant-secondary-border-color: var(--color-secondary-60) !default;
-$alert-color-variant-secondary-color: contrast-color($color-secondary) !default;
-$alert-color-variant-secondary-link-color: $alert-color-variant-secondary-color !default;
-$alert-color-variant-secondary-code-background: var(--color-secondary-60) !default;
-$alert-color-variant-secondary-code-color: $alert-color-variant-secondary-color !default;
-$alert-color-variant-secondary: (
-    'background': $alert-color-variant-secondary-background,
-    'border-color': $alert-color-variant-secondary-border-color,
-    'color': $alert-color-variant-secondary-color,
-    'link-color': $alert-color-variant-secondary-link-color,
-    'code-background': $alert-color-variant-secondary-code-background,
-    'code-color': $alert-color-variant-secondary-code-color,
-) !default;
-
 $alert-color-variant-info-background: var(--color-info) !default;
 $alert-color-variant-info-border-color: var(--color-info-60) !default;
 $alert-color-variant-info-color: contrast-color($color-info) !default;
@@ -142,8 +112,6 @@ $alert-color-variant-success: (
 ) !default;
 
 $alert-color-variants: (
-    'primary': $alert-color-variant-primary,
-    'secondary': $alert-color-variant-secondary,
     'info': $alert-color-variant-info,
     'warning': $alert-color-variant-warning,
     'danger': $alert-color-variant-danger,

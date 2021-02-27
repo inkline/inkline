@@ -14,11 +14,11 @@
         background-color: $background;
     }
 
-    // Bordered table
+    // Border table
     //
     // Add borders to all sides of the table and table cells
     //
-    &.-bordered {
+    &.-border {
         &,
         th,
         td {

@@ -1,23 +1,27 @@
-<i-alert color="primary">
-    <p>A simple primary alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
-</i-alert>
-
-<i-alert color="secondary">
-    <p>A simple secondary alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
-</i-alert>
-
 <i-alert color="info">
-    <p>A simple info alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
-</i-alert>
-
-<i-alert color="warning">
-    <p>A simple warning alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
-</i-alert>
-
-<i-alert color="danger">
-    <p>A simple danger alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
+    <template #icon>
+        <i-icon icon="info" />
+    </template>
+    <p>Heads up! This alert needs your attention, but it's not super important.</p>
 </i-alert>
 
 <i-alert color="success">
-    <p>A simple success alert with an <a href="https://inkline.io">example link</a>. It's clickable!</p>
+    <template #icon>
+        <i-icon icon="check" />
+    </template>
+    <p>Well done! You successfully read this important alert message.</p>
+</i-alert>
+
+<i-alert color="warning">
+    <template #icon>
+        <i-icon icon="warning" />
+    </template>
+    <p>Warning! Better check yourself, you're not looking too good.</p>
+</i-alert>
+
+<i-alert color="danger">
+    <template #icon>
+        <i-icon icon="danger" />
+    </template>
+    <p>Oh snap! Change a few things up and try submitting again.</p>
 </i-alert>

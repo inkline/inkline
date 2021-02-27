@@ -10,12 +10,12 @@ $slide-in-right-transition: transform 300ms ease !default;
     transform-origin: left;
 }
 
-.slide-in-right-transition-enter,
+.slide-in-right-transition-enter-from,
 .slide-in-right-transition-leave-to {
     transform: translateX(-100%);
 }
 
 .slide-in-right-transition-enter-to,
-.slide-in-right-transition-leave {
+.slide-in-right-transition-leave-from {
     transform: translateX(0);
 }

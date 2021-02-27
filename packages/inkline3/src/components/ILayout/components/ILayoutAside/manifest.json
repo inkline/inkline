@@ -1,0 +1,10 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default layout aside content",
+            "type": [],
+            "category": "slots"
+        }
+    ]
+}

@@ -41,11 +41,11 @@
         }
     }
 
-    // Bordered version
+    // Border version
     //
     // Add borders all around the table and between all the columns.
     //
-    &.-bordered {
+    &.-border {
         border: var(--table-border-width) solid transparent;
 
         th,
@@ -115,7 +115,7 @@
 
                     // Prevent double border on horizontal scroll due to use of `display: block`
                     .table {
-                        &.-bordered {
+                        &.-border {
                             border: none;
                         }
                     }

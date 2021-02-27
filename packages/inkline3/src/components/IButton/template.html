@@ -9,7 +9,7 @@
     :aria-disabled="isDisabled"
     :aria-pressed="active">
     <slot v-if="loading" name="loading">
-        <i-loader size="auto" />
+        <i-loader />
     </slot>
     <slot v-if="!loading" />
 </button>

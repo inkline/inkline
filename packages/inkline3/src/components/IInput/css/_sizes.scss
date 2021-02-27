@@ -1,0 +1,51 @@
+@mixin input-size-variant($size-variant-key) {
+    $_border-radius: var(--input-size-variant-#{$size-variant-key}-border-radius);
+    $_font-size: var(--input-size-variant-#{$size-variant-key}-font-size);
+    $_padding: var(--input-size-variant-#{$size-variant-key}-padding);
+    $_prefix-padding: var(--input-size-variant-#{$size-variant-key}-prefixpadding);
+
+    > .form-input-prepend,
+    > .form-input-append {
+        font-size: $_font-size;
+
+        > span {
+            padding: $_padding;
+        }
+    }
+
+    > .form-input-prepend,
+    > .form-input-prepend > *:first-child {
+        border-top-left-radius: $_border-radius;
+        border-bottom-left-radius: $_border-radius;
+    }
+
+    > .form-input-append,
+    > .form-input-append > *:last-child {
+        border-top-right-radius: $_border-radius;
+        border-bottom-right-radius: $_border-radius;
+    }
+
+    > input,
+    > select,
+    > textarea {
+        padding: $_padding;
+        font-size: $_font-size;
+        border-radius: $_border-radius;
+    }
+
+    &.-prefixed {
+        > input,
+        > select,
+        > textarea {
+            padding-left: $_prefix-padding;
+        }
+    }
+
+    &.-suffixed {
+        > input,
+        > select,
+        > textarea {
+            padding-right: $_prefix-padding;
+        }
+    }
+}

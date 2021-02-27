@@ -9,9 +9,12 @@ export { default as IContainer } from '@inkline/inkline/src/components/IContaine
 export { default as ICard } from '@inkline/inkline/src/components/ICard/index.vue';
 export { default as ICollapsible } from '@inkline/inkline/src/components/ICollapsible/index.vue';
 export * from '@inkline/inkline/src/components/ICollapsible/components';
+export { default as IForm } from '@inkline/inkline/src/components/IForm/index.vue';
+export * from '@inkline/inkline/src/components/IForm/components';
 export { default as IHamburgerMenu } from '@inkline/inkline/src/components/IHamburgerMenu/index.vue';
 export { default as IHeader } from '@inkline/inkline/src/components/IHeader/index.vue';
 export { default as IIcon } from '@inkline/inkline/src/components/IIcon/index.vue';
+export { default as IInput } from '@inkline/inkline/src/components/IInput/index.vue';
 export { default as ILayout } from '@inkline/inkline/src/components/ILayout/index.vue';
 export { default as ILayoutAside } from '@inkline/inkline/src/components/ILayout/components/ILayoutAside/index.vue';
 export { default as ILayoutContent } from '@inkline/inkline/src/components/ILayout/components/ILayoutContent/index.vue';
@@ -20,5 +23,11 @@ export { default as ILayoutHeader } from '@inkline/inkline/src/components/ILayou
 export { default as IListGroup } from '@inkline/inkline/src/components/IListGroup/index.vue';
 export * from '@inkline/inkline/src/components/IListGroup/components';
 export { default as ILoader } from '@inkline/inkline/src/components/ILoader/index.vue';
+export { default as IMedia } from '@inkline/inkline/src/components/IMedia/index.vue';
+export { default as IModal } from '@inkline/inkline/src/components/IModal/index.vue';
+export { default as INav } from '@inkline/inkline/src/components/INav/index.vue';
+export * from '@inkline/inkline/src/components/INav/components';
+export { default as INavbar } from '@inkline/inkline/src/components/INavbar/index.vue';
+export * from '@inkline/inkline/src/components/INavbar/components';
 export { default as IRow } from '@inkline/inkline/src/components/IRow/index.vue';
 export { default as ITable } from '@inkline/inkline/src/components/ITable/index.vue';

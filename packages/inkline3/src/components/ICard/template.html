@@ -6,11 +6,6 @@
     <slot name="image" />
 
     <div class="card-body" v-if="!!$slots.default">
-        <slot name="title" class="card-title">
-        </slot>
-        <div class="card-subtitle" v-if="!!$slots.subtitle">
-            <slot name="subtitle" />
-        </div>
         <slot />
     </div>
 

@@ -11,168 +11,206 @@
                     Core
                 </li>
                 <li>
-                    <router-link :to="{ name: 'core-grid' }">
+                    <router-link :to="{ name: 'docs-core-grid' }">
                         Grid
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'core-layout' }">
+                    <router-link :to="{ name: 'docs-core-layout' }">
                         Layout
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'core-typography' }">
+                    <router-link :to="{ name: 'docs-core-typography' }">
                         Typography
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'core-images' }">
+                    <router-link :to="{ name: 'docs-core-images' }">
                         Images
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'core-tables' }">
+                    <router-link :to="{ name: 'docs-core-tables' }">
                         Tables
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'core-code' }">
+                    <router-link :to="{ name: 'docs-core-code' }">
                         Code
+                    </router-link>
+                </li>
+                <li>
+                    Forms
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-form' }">
+                        Form
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-input' }">
+                        Input
                     </router-link>
                 </li>
                 <li>
                     Components
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-alert' }">
+                    <router-link :to="{ name: 'docs-components-alert' }">
                         Alert
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-badge' }">
+                    <router-link :to="{ name: 'docs-components-badge' }">
                         Badge
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-breadcrumb' }">
+                    <router-link :to="{ name: 'docs-components-breadcrumb' }">
                         Breadcrumb
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-button' }">
+                    <router-link :to="{ name: 'docs-components-button' }">
                         Button
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-button-group' }">
+                    <router-link :to="{ name: 'docs-components-button-group' }">
                         Button Group
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-card' }">
+                    <router-link :to="{ name: 'docs-components-card' }">
                         Card
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-collapsible' }">
+                    <router-link :to="{ name: 'docs-components-collapsible' }">
                         Collapsible
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-hamburger-menu' }">
+                    <router-link :to="{ name: 'docs-components-hamburger-menu' }">
                         Hamburger Menu
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-header' }">
+                    <router-link :to="{ name: 'docs-components-header' }">
                         Header
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-icon' }">
+                    <router-link :to="{ name: 'docs-components-icon' }">
                         Icon
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-list-group' }">
+                    <router-link :to="{ name: 'docs-components-list-group' }">
                         List Group
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'components-loader' }">
+                    <router-link :to="{ name: 'docs-components-loader' }">
                         Loader
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-components-media' }">
+                        Media
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-components-modal' }">
+                        Modal
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-components-nav' }">
+                        Nav
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-components-navbar' }">
+                        Navbar
                     </router-link>
                 </li>
                 <li>
                     Utilities
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-border' }">
+                    <router-link :to="{ name: 'docs-utilities-border' }">
                         Border
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-clearfix' }">
+                    <router-link :to="{ name: 'docs-utilities-clearfix' }">
                         Clearfix
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-color' }">
+                    <router-link :to="{ name: 'docs-utilities-color' }">
                         Color
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-display' }">
+                    <router-link :to="{ name: 'docs-utilities-display' }">
                         Display
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-embed' }">
+                    <router-link :to="{ name: 'docs-utilities-embed' }">
                         Embed
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-flex' }">
+                    <router-link :to="{ name: 'docs-utilities-flex' }">
                         Flex
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-float' }">
+                    <router-link :to="{ name: 'docs-utilities-float' }">
                         Float
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-overflow' }">
+                    <router-link :to="{ name: 'docs-utilities-overflow' }">
                         Overflow
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-overlay' }">
+                    <router-link :to="{ name: 'docs-utilities-overlay' }">
                         Overlay
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-sizing' }">
+                    <router-link :to="{ name: 'docs-utilities-position' }">
+                        Position
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-utilities-sizing' }">
                         Sizing
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-spacing' }">
+                    <router-link :to="{ name: 'docs-utilities-spacing' }">
                         Spacing
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-text' }">
+                    <router-link :to="{ name: 'docs-utilities-text' }">
                         Text
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-vertical-align' }">
+                    <router-link :to="{ name: 'docs-utilities-vertical-align' }">
                         Vertical Align
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'utilities-visibility' }">
+                    <router-link :to="{ name: 'docs-utilities-visibility' }">
                         Visibility
                     </router-link>
                 </li>
@@ -242,7 +280,7 @@ body,
 }
 
 #content {
-    display: flex;
+    display: block;
     height: 100%;
     width: 100%;
     overflow: auto;

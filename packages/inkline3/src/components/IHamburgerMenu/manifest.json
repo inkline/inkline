@@ -1,0 +1,46 @@
+{
+    "events": [
+        {
+            "name": "update:modelValue",
+            "description": "Event emitted for setting the modelValue",
+            "type": [],
+            "category": "events"
+        }
+    ],
+    "props": [
+        {
+            "name": "animation",
+            "description": "The animation of the hamburger menu",
+            "type": [
+                "close",
+                "arrow-up",
+                "arrow-down",
+                "arrow-left",
+                "arrow-right",
+                "plus",
+                "minux"
+            ],
+            "category": "props",
+            "defaultvalue": "close"
+        },
+        {
+            "name": "color",
+            "description": "The color variant of the hamburger menu",
+            "type": [
+                "light",
+                "dark"
+            ],
+            "category": "props",
+            "defaultvalue": "light"
+        },
+        {
+            "name": "modelValue",
+            "description": "Used to set the hamburger menu as opened or closed",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        }
+    ]
+}

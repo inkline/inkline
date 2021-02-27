@@ -1,0 +1,21 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default container content",
+            "type": [],
+            "category": "slots"
+        }
+    ],
+    "props": [
+        {
+            "name": "fluid",
+            "description": "Display the container as fluid, always spanning 100% width",
+            "type": [
+                "Boolean"
+            ],
+            "category": "props",
+            "defaultvalue": "false"
+        }
+    ]
+}

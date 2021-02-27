@@ -1,0 +1,22 @@
+:root {
+    --input-line-height: #{$input-line-height};
+    --input-border-width: #{$input-border-width};
+    --input-prefix-border-width: #{$input-prefix-border-width};
+    --input-box-shadow: #{$input-box-shadow};
+    --input-icon-circle-size: #{$input-icon-circle-size};
+    --input-border-radius: #{$input-border-radius};
+    --input-font-size: #{$input-font-size};
+    --input-padding: #{$input-padding};
+
+    @each $input-size-variant-key, $input-size-variant-value in $input-size-variants {
+        @each $input-size-variant-field-key, $input-size-variant-field-value in $input-size-variant-value {
+            --input-size-variant-#{$input-size-variant-key}-#{$input-size-variant-field-key}: #{$input-size-variant-field-value};
+        }
+    }
+
+    @each $color-variant-key, $color-variant-value in $input-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --input-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}

@@ -1,28 +1,67 @@
 import { sizePropValidator } from '@inkline/inkline/src/mixins';
 
+/**
+ * @event update:modelValue
+ * @description Event emitted for setting the modelValue
+ */
+
+/**
+ * @name default
+ * @kind slot
+ * @description Slot for default alert content
+ */
+
+/**
+ * @name icon
+ * @kind slot
+ * @description Slot for alert icon
+ */
+
+/**
+ * @name dismiss
+ * @kind slot
+ * @description Slot for alert dismiss button
+ */
+
 export default {
     name: 'IAlert',
     props: {
+        /**
+         * @description The size variant of the alert
+         * @type sm | md | lg
+         * @default md
+         */
         size: {
             type: String,
             default: '',
             validator: sizePropValidator
         },
+        /**
+         * @description The color variant of the alert
+         * @type info | success | warning | danger
+         * @default info
+         */
         color: {
             type: String,
             default: ''
         },
+        /**
+         * @description Used to show or hide a dismissible alert
+         * @type Boolean
+         * @default true
+         */
         modelValue: {
             type: Boolean,
             default: true
         },
+        /**
+         * @description Shows a dismiss icon on the alert
+         * @type Boolean
+         * @default false
+         */
         dismissible: {
             type: Boolean,
             default: false
-        },
-        dismissLabel: {
-            type: String,
-            default: '×'
         }
     },
     data() {

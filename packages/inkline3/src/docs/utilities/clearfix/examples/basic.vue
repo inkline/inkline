@@ -1,1 +1,1 @@
-<template src="./index.html" />
+<template src="./basic.html" />

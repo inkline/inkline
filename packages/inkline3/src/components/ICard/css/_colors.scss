@@ -2,8 +2,10 @@
     $_color: var(--card-color-variant-#{$color-variant-key}-color);
     $_background: var(--card-color-variant-#{$color-variant-key}-background);
     $_border-color: var(--card-color-variant-#{$color-variant-key}-border-color);
+    $_header-color: var(--card-color-variant-#{$color-variant-key}-header-color);
     $_header-background: var(--card-color-variant-#{$color-variant-key}-header-background);
     $_header-border-color: var(--card-color-variant-#{$color-variant-key}-header-border-color);
+    $_footer-color: var(--card-color-variant-#{$color-variant-key}-footer-color);
     $_footer-background: var(--card-color-variant-#{$color-variant-key}-footer-background);
     $_footer-border-color: var(--card-color-variant-#{$color-variant-key}-footer-border-color);
 
@@ -15,11 +17,13 @@
     }
 
     > .card-header {
+        color: $_header-color;
         background: $_header-background;
         border-color: $_header-border-color;
     }
 
     > .card-footer {
+        color: $_footer-color;
         background: $_footer-background;
         border-color: $_footer-border-color;
     }
