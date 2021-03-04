@@ -20,29 +20,35 @@ $input-icon-circle-size: 1.2rem !default;
 
 $input-size-variant-sm-border-radius: calc(var(--input-border-radius) * #{size-multiplier('sm')}) !default;
 $input-size-variant-sm-font-size: calc(var(--input-font-size) * #{size-multiplier('sm')}) !default;
-$input-size-variant-sm-padding: calc(var(--input-padding) * #{size-multiplier('sm')}) !default;
+$input-size-variant-sm-padding: calc(var(--input-padding) * #{size-multiplier('sm')} * 1 / 2) calc(var(--input-padding) * #{size-multiplier('sm')}) !default;
+$input-size-variant-sm-prefix-suffix-padding: calc(var(--input-padding) * #{size-multiplier('sm')}) !default;
 $input-size-variant-sm: (
     'border-radius': $input-size-variant-sm-border-radius,
     'font-size': $input-size-variant-sm-font-size,
     'padding': $input-size-variant-sm-padding,
+    'prefix-suffix-padding': $input-size-variant-sm-prefix-suffix-padding,
 ) !default;
 
 $input-size-variant-md-border-radius: calc(var(--input-border-radius) * #{size-multiplier('md')}) !default;
 $input-size-variant-md-font-size: calc(var(--input-font-size) * #{size-multiplier('md')}) !default;
-$input-size-variant-md-padding: calc(var(--input-padding) * #{size-multiplier('md')}) !default;
+$input-size-variant-md-padding: calc(var(--input-padding) * #{size-multiplier('md')} * 1 / 2) calc(var(--input-padding) * #{size-multiplier('md')}) !default;
+$input-size-variant-md-prefix-suffix-padding: calc(var(--input-padding) * #{size-multiplier('md')}) !default;
 $input-size-variant-md: (
     'border-radius': $input-size-variant-md-border-radius,
     'font-size': $input-size-variant-md-font-size,
     'padding': $input-size-variant-md-padding,
+    'prefix-suffix-padding': $input-size-variant-md-prefix-suffix-padding,
 ) !default;
 
 $input-size-variant-lg-border-radius: calc(var(--input-border-radius) * #{size-multiplier('lg')}) !default;
 $input-size-variant-lg-font-size: calc(var(--input-font-size) * #{size-multiplier('lg')}) !default;
-$input-size-variant-lg-padding: calc(var(--input-padding) * #{size-multiplier('lg')}) !default;
+$input-size-variant-lg-padding: calc(var(--input-padding) * #{size-multiplier('lg')} * 1 / 2) calc(var(--input-padding) * #{size-multiplier('lg')}) !default;
+$input-size-variant-lg-prefix-suffix-padding: calc(var(--input-padding) * #{size-multiplier('lg')}) !default;
 $input-size-variant-lg: (
     'border-radius': $input-size-variant-lg-border-radius,
     'font-size': $input-size-variant-lg-font-size,
     'padding': $input-size-variant-lg-padding,
+    'prefix-suffix-padding': $input-size-variant-lg-prefix-suffix-padding,
 ) !default;
 
 $input-size-variants: (
@@ -56,26 +62,72 @@ $input-size-variants: (
 //
 
 $input-color-variant-light-color: contrast-color($color-light) !default;
+$input-color-variant-light-color-disabled: color('light-75') !default;
 $input-color-variant-light-background: color('white') !default;
+$input-color-variant-light-background-disabled: color('light-25') !default;
 $input-color-variant-light-border-color: color('light') !default;
-
+$input-color-variant-light-border-color-hover: color('light-55') !default;
+$input-color-variant-light-border-color-focus: color('primary') !default;
+$input-color-variant-light-placeholder-color: color('light-60') !default;
+$input-color-variant-light-prefix-suffix-color: color('light-70') !default;
+$input-color-variant-light-prepend-append-background: color('light') !default;
+$input-color-variant-light-clearable-color: color('light-70') !default;
+$input-color-variant-light-clearable-color-hover: color('light-70') !default;
+$input-color-variant-light-clearable-background: transparent !default;
+$input-color-variant-light-clearable-background-hover: color('light-30') !default;
+$input-color-variant-light-clearable-background-active: color('light-40') !default;
 $input-color-variant-light: (
     'color': $input-color-variant-light-color,
+    'color-disabled': $input-color-variant-light-color-disabled,
     'background': $input-color-variant-light-background,
+    'background-disabled': $input-color-variant-light-background-disabled,
     'border-color': $input-color-variant-light-border-color,
+    'border-color-hover': $input-color-variant-light-border-color-hover,
+    'border-color-focus': $input-color-variant-light-border-color-focus,
+    'placeholder-color': $input-color-variant-light-placeholder-color,
+    'prefix-suffix-color': $input-color-variant-light-prefix-suffix-color,
+    'prepend-append-background': $input-color-variant-light-prepend-append-background,
+    'clearable-color': $input-color-variant-light-clearable-color,
+    'clearable-color-hover': $input-color-variant-light-clearable-color-hover,
+    'clearable-background': $input-color-variant-light-clearable-background,
+    'clearable-background-hover': $input-color-variant-light-clearable-background-hover,
+    'clearable-background-active': $input-color-variant-light-clearable-background-active,
 ) !default;
 
 $input-color-variant-dark-color: contrast-color($color-dark) !default;
+$input-color-variant-dark-color-disabled: color('gray-35') !default;
 $input-color-variant-dark-background: color('dark') !default;
-$input-color-variant-dark-border-color: color('dark-60') !default;
-
+$input-color-variant-dark-background-disabled: color('dark-40') !default;
+$input-color-variant-dark-border-color: color('dark-45') !default;
+$input-color-variant-dark-border-color-hover: color('dark-40') !default;
+$input-color-variant-dark-border-color-focus: color('primary') !default;
+$input-color-variant-dark-placeholder-color: color('dark-25') !default;
+$input-color-variant-dark-prefix-suffix-color: color('dark-25') !default;
+$input-color-variant-dark-prepend-append-background: color('dark') !default;
+$input-color-variant-dark-clearable-color: color('dark-30') !default;
+$input-color-variant-dark-clearable-color-hover: color('dark-70') !default;
+$input-color-variant-dark-clearable-background: transparent !default;
+$input-color-variant-dark-clearable-background-hover: color('dark-35') !default;
+$input-color-variant-dark-clearable-background-active: color('dark-30') !default;
 $input-color-variant-dark: (
     'color': $input-color-variant-dark-color,
+    'color-disabled': $input-color-variant-dark-color-disabled,
     'background': $input-color-variant-dark-background,
+    'background-disabled': $input-color-variant-dark-background-disabled,
     'border-color': $input-color-variant-dark-border-color,
+    'border-color-hover': $input-color-variant-dark-border-color-hover,
+    'border-color-focus': $input-color-variant-dark-border-color-focus,
+    'placeholder-color': $input-color-variant-dark-placeholder-color,
+    'prefix-suffix-color': $input-color-variant-dark-prefix-suffix-color,
+    'prepend-append-background': $input-color-variant-dark-prepend-append-background,
+    'clearable-color': $input-color-variant-dark-clearable-color,
+    'clearable-color-hover': $input-color-variant-dark-clearable-color-hover,
+    'clearable-background': $input-color-variant-dark-clearable-background,
+    'clearable-background-hover': $input-color-variant-dark-clearable-background-hover,
+    'clearable-background-active': $input-color-variant-dark-clearable-background-active,
 ) !default;
 
 $input-color-variants: (
-    light: $input-color-variant-light,
-    dark: $input-color-variant-dark
+    'light': $input-color-variant-light,
+    'dark': $input-color-variant-dark
 ) !default;

@@ -1,7 +1,8 @@
+import { uid } from '@inkline/inkline/src/helpers/uid';
 import {
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
-import { FormBuilder } from '@inkline/inkline/src/factories/FormBuilder';
+import { FormComponentMixin } from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -11,6 +12,9 @@ import { FormBuilder } from '@inkline/inkline/src/factories/FormBuilder';
 
 export default {
     name: 'IFormGroup',
+    mixins: [
+        FormComponentMixin
+    ],
     props: {
         /**
          * @description The disabled state of the form group
@@ -35,7 +39,7 @@ export default {
          * @type String
          * @default uid()
          */
-        id: {
+        name: {
             type: String,
             default() {
                 return uid('form-group');
@@ -61,13 +65,10 @@ export default {
             validator: sizePropValidator
         }
     },
-    inject: {
-        formGroup: {
-            default: () => {}
-        },
-        form: {
-            default: () => {}
-        }
+    provide() {
+        return {
+            formGroup: this
+        };
     },
     data() {
         return {
@@ -77,11 +78,23 @@ export default {
     computed: {
         classes() {
             return {
-                '-disabled': this.disabled,
-                '-readonly': this.readonly,
+                '-disabled': this.isDisabled,
+                '-readonly': this.isReadonly,
                 '-inline': this.inline,
-                '-error': this.input && this.input.schema?.$invalid,
-                '-required': this.input.schema?.validators.some(v => v.name === 'required')
+                // @TODO '-error': this.input && this.input.schema?.$invalid,
+                // @TODO '-required': this.input.schema?.validators.some(v => v.name === 'required')
+            }
+        }
+    },
+    methods: {
+        onBlur(name, event) {
+            if (this.parent) {
+                this.parent.onBlur(`${this.name}.${name}`, event);
+            }
+        },
+        onInput(name, value) {
+            if (this.parent) {
+                this.parent.onInput(`${this.name}.${name}`, value);
             }
         }
     }

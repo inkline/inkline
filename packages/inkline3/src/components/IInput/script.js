@@ -1,48 +1,52 @@
+import { uid } from '@inkline/inkline/src/helpers';
 import {
-    // AttributesProviderMixin,
-    // ClassesProviderMixin,
-    // InjectParentFormProviderMixin,
-    // ModelProviderMixin,
-    // ClickInputRefMethodMixin,
-    // FocusInputRefMethodMixin,
-    // EmitChangeMethodMixin,
-    // EmitClickMethodMixin,
-    // EmitFocusMethodMixin,
-    // EmitHoverMethodMixin,
-    // EmitInputMethodMixin,
-    // EmitKeydownMethodMixin,
-    // ClearablePropertyMixin,
-    // DisabledFormPropertyMixin,
-    // NamePropertyMixin,
-    // ParentFormGroupPropertyMixin,
-    // ReadonlyPropertyMixin,
-    // SizePropertyMixin,
-    // TabIndexPropertyMixin,
-    // VariantPropertyMixin,
-    // SchemaProviderMixin,
+    colorVariantClass,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
+import { FormComponentMixin } from '@inkline/inkline/src/mixins';
+
+/**
+ * @name prefix
+ * @kind slot
+ * @description Slot for the input prefix content
+ */
+
+/**
+ * @name suffix
+ * @kind slot
+ * @description Slot for the input suffix content
+ */
+
+/**
+ * @name prepend
+ * @kind slot
+ * @description Slot for the input prepend content
+ */
+
+/**
+ * @name append
+ * @kind slot
+ * @description Slot for the input append content
+ */
+
+/**
+ * @name clearable
+ * @kind slot
+ * @description Slot for the clearable button
+ * @property clear
+ */
 
 export default {
     name: 'IInput',
-    inheritAttrs: false,
     mixins: [
-        // AttributesProviderMixin,
-        // ClassesProviderMixin,
-        // InjectParentFormProviderMixin,
-        // ModelProviderMixin,
-        // SchemaProviderMixin,
-        //
-        // ClickInputRefMethodMixin,
-        // FocusInputRefMethodMixin,
-        // EmitChangeMethodMixin,
-        // EmitClickMethodMixin,
-        // EmitFocusMethodMixin,
-        // EmitHoverMethodMixin,
-        // EmitInputMethodMixin,
-        // EmitKeydownMethodMixin,
-        //
-        // ClearablePropertyMixin,
+        FormComponentMixin
+    ],
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
     ],
     props: {
         /**
@@ -71,6 +75,15 @@ export default {
         disabled: {
             type: Boolean,
             default: false
+        },
+        /**
+         * @description Used to set the field value
+         * @type Boolean
+         * @default false
+         */
+        modelValue: {
+            type: String,
+            default: ''
         },
         /**
          * @description The unique identifier of the input
@@ -111,47 +124,58 @@ export default {
             type: [Number, String],
             default: 1
         },
-    },
-    inject: {
-        formGroup: {
-            default: () => {}
+        /**
+         * @description The type of the input
+         * @type String
+         * @default text
+         */
+        type: {
+            type: String,
+            default: 'text'
         },
-        form: {
-            default: () => {}
-        }
     },
     computed: {
         classes() {
             return {
-                '-disabled': Boolean(this.isDisabled),
-                '-readonly': Boolean(this.isReadonly),
+                ...colorVariantClass(this),
+                [`-${this.size}`]: Boolean(this.size),
+                '-disabled': this.isDisabled,
+                '-readonly': this.isReadonly,
                 '-prefixed': Boolean(this.$slots.prefix),
-                '-suffixed': Boolean(this.$slots.suffix)
+                '-suffixed': Boolean(this.$slots.suffix),
+                '-prepended': Boolean(this.$slots.prepend),
+                '-appended': Boolean(this.$slots.append),
             };
-        },
-        wrapperClasses() {
-            return {
-                '-prepended': Boolean(this.$slots.prepend) || this.prepended,
-                '-appended': Boolean(this.$slots.append) || this.appended,
-                '-error': this.schema.$invalid
-            };
-        },
-        isDisabled() {
-            return this.disabled || this.form.isDisabled || this.formGroup.isDisabled;
-        },
-        isReadonly() {
-            return this.readonly || this.form.isReadonly || this.formGroup.isReadonly;
         },
         tabIndex() {
             return this.isDisabled ? -1 : this.tabindex;
         },
         isClearable() {
-            return this.clearable && this.currentValue !== '';
+            return this.clearable && !this.isDisabled && !this.isReadonly && this.currentValue !== '';
+        },
+        value() {
+            if (this.schema) {
+                return this.schema.value;
+            }
+
+            return this.modelValue;
         }
     },
     methods: {
-        onInput(value) {
-            this.$emit('input', value);
+        onBlur(event) {
+            if (this.parent) {
+                this.parent.onBlur(this.name, event);
+            }
+        },
+        onInput(event) {
+            if (this.parent) {
+                this.parent.onInput(this.name, event.target.value);
+            }
+
+            this.$emit('update:modelValue', event.target.value);
+        },
+        onClear() {
+            this.$emit('update:modelValue', '');
         }
     }
 };

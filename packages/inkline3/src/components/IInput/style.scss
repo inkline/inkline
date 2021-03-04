@@ -2,8 +2,8 @@
 @import '../../css/mixins';
 @import '../IIcon/css/variables';
 @import '../IIcon/css/mixins';
-@import 'css/mixins';
 @import 'css/variables';
+@import 'css/css';
 @import 'css/sizes';
 @import 'css/colors';
 
@@ -24,33 +24,21 @@
 
     &.-prepended {
         .form-input {
-            > input,
-            > select,
-            > textarea {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-            }
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
         }
     }
 
     &.-appended {
         .form-input {
-            > input,
-            > select,
-            > textarea {
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-            }
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
         }
     }
 
     &.-error {
         .form-input {
-            > input,
-            > select,
-            > textarea {
-                border-color: color('danger');
-            }
+            border-color: color('danger');
         }
     }
 
@@ -67,6 +55,7 @@
 
         > * {
             flex: auto 1 0;
+            align-self: center;
             border-radius: 0;
         }
     }
@@ -75,7 +64,21 @@
         position: relative;
         display: flex;
         flex: 1 0 auto;
+        align-items: center;
         flex-direction: row;
+        background-clip: padding-box;
+        border-width: var(--input-border-width);
+        border-style: solid;
+        box-shadow: var(--input-box-shadow);
+        transition-property: background-color, color, border-color, box-shadow;
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-easing);
+
+        // Customize the `:focus` state to imitate native WebKit styles.
+        &:focus-within {
+            outline: 0;
+            box-shadow: var(--input-box-shadow);
+        }
 
         > input,
         > select,
@@ -83,25 +86,17 @@
             position: relative;
             flex: 1 0 auto;
             width: 1%;
+            background: transparent;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            outline: 0;
             line-height: var(--input-line-height);
-            background-clip: padding-box;
-            border-width: var(--input-border-width);
-            border-style: solid;
-            box-shadow: var(--input-box-shadow);
-            transition-property: background-color, color, border-color, box-shadow;
-            transition-duration: var(--transition-duration);
-            transition-timing-function: var(--transition-easing);
 
             // Remove style for the caret on `<select>`s in IE10+.
             &::-ms-expand {
                 background-color: transparent;
                 border: 0;
-            }
-
-            // Customize the `:focus` state to imitate native WebKit styles.
-            &:focus {
-                outline: 0;
-                box-shadow: var(--input-box-shadow);
             }
 
             // Placeholder
@@ -132,11 +127,7 @@
         .form-input-prefix,
         .form-input-suffix {
             z-index: 1;
-            top: 50%;
-            position: absolute;
-            transform: translateY(-50%);
             font-style: normal;
-            color: var(--text-muted);
             transition-property: border-color;
             transition-duration: var(--transition-duration);
             transition-timing-function: var(--transition-easing);
@@ -149,20 +140,18 @@
         }
 
         .form-input-prefix {
-            left: spacer();
             padding-right: spacer();
             border-right-width: var(--input-prefix-border-width);
             border-right-style: solid;
         }
 
         .form-input-suffix {
-            right: spacer();
             padding-left: spacer();
             border-left-width: var(--input-prefix-border-width);
             border-left-style: solid;
         }
 
-        .clear-input {
+        .form-input-clear {
             transition-property: background-color;
             transition-duration: var(--transition-duration);
             transition-timing-function: var(--transition-easing);
@@ -185,18 +174,18 @@
 
     @include input-size-variant('md');
     @each $size-variant-key, $input-size-variant-value in $input-size-variants {
-        .form.-#{$size-variant-key} .form-input-group,
-        .form-group.-#{$size-variant-key} .form-input-group,
-        .form-input-group.-#{$size-variant-key} {
+        .form.-#{$size-variant-key} &,
+        .form-group.-#{$size-variant-key} &,
+        &.-#{$size-variant-key} {
             @include input-size-variant($size-variant-key);
         }
     }
 
     @include input-color-variant('light');
     @each $color-variant-key, $color-variant-value in $input-color-variants {
-        .form.-#{$color-variant-key} .form-input-group,
-        .form-group.-#{$color-variant-key} .form-input-group,
-        .form-input-group.-#{$color-variant-key} {
+        .form.-#{$color-variant-key} &,
+        .form-group.-#{$color-variant-key} &,
+        &.-#{$color-variant-key} {
             @include input-color-variant($color-variant-key);
         }
     }

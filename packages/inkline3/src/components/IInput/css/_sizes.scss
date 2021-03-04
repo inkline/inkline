@@ -2,14 +2,15 @@
     $_border-radius: var(--input-size-variant-#{$size-variant-key}-border-radius);
     $_font-size: var(--input-size-variant-#{$size-variant-key}-font-size);
     $_padding: var(--input-size-variant-#{$size-variant-key}-padding);
-    $_prefix-padding: var(--input-size-variant-#{$size-variant-key}-prefixpadding);
+    $_prefix-suffix-padding: var(--input-size-variant-#{$size-variant-key}-prefix-suffix-padding);
 
     > .form-input-prepend,
     > .form-input-append {
         font-size: $_font-size;
 
-        > span {
-            padding: $_padding;
+        > * {
+            padding-left: $_prefix-suffix-padding;
+            padding-right: $_prefix-suffix-padding;
         }
     }
 
@@ -25,27 +26,20 @@
         border-bottom-right-radius: $_border-radius;
     }
 
-    > input,
-    > select,
-    > textarea {
-        padding: $_padding;
-        font-size: $_font-size;
+    > .form-input {
         border-radius: $_border-radius;
-    }
+        font-size: $_font-size;
 
-    &.-prefixed {
         > input,
         > select,
         > textarea {
-            padding-left: $_prefix-padding;
+            padding: $_padding;
         }
-    }
 
-    &.-suffixed {
-        > input,
-        > select,
-        > textarea {
-            padding-right: $_prefix-padding;
+        > .form-input-prefix,
+        > .form-input-suffix {
+            padding-left: $_prefix-suffix-padding;
+            padding-right: $_prefix-suffix-padding;
         }
     }
 }

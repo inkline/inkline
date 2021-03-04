@@ -34,6 +34,13 @@ export default {
     directives: {
         ClickOutside
     },
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
+    ],
     props: {
         /**
          * @description Determines if the modal should close when pressing escape

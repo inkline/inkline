@@ -1,8 +1,8 @@
-import {
-    ClassesProviderMixin,
-    InjectParentFormProviderMixin,
-    SizePropertyMixin,
-} from '@inkline/inkline/src/mixins';
+// import {
+//     ClassesProviderMixin,
+//     InjectParentFormProviderMixin,
+//     SizePropertyMixin,
+// } from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -12,16 +12,23 @@ import {
 
 export default {
     name: 'IFormLabel',
-    mixins: [
-        ClassesProviderMixin,
-        InjectParentFormProviderMixin,
-
-        SizePropertyMixin,
-    ],
+    // mixins: [
+    //     ClassesProviderMixin,
+    //     InjectParentFormProviderMixin,
+    //
+    //     SizePropertyMixin,
+    // ],
     props: {
         placement: {
             type: String,
-            default: 'default'
+            default: ''
+        }
+    },
+    computed: {
+        classes() {
+            return {
+                [`-${this.placement}`]: Boolean(this.placement)
+            };
         }
     },
     methods: {
@@ -36,10 +43,5 @@ export default {
                 input.focusInputRef();
             }
         }
-    },
-    created() {
-        this.classesProvider.add(() => ({
-            [`-${this.placement}`]: this.placement !== 'default'
-        }));
     }
 };

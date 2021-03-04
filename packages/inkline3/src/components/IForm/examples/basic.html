@@ -1,35 +1,45 @@
-<i-form>
-    <i-form-group>
-        <i-form-label>Input</i-form-label>
-        <i-input v-model="input1" placeholder="Type something.." />
+<i-form v-model="schema" @submit="onSubmit">
+    <i-form-group name="group1" class="_border _padding-1">
+        <i-form-label>Input 1</i-form-label>
+        <i-input name="input1" v-model="input1" placeholder="Type something.." />
     </i-form-group>
 
-    <i-form-group>
-        <i-form-label>Input</i-form-label>
-        <i-input v-model="input2" placeholder="Type something.." />
+    <i-form-group name="group2" class="_border _padding-1">
+        <i-form-label>Input 2</i-form-label>
+        <i-input name="input1" v-model="input2" placeholder="Type something.." />
 
-        <i-form-group>
-            <i-form-label>Input</i-form-label>
-            <i-input v-model="input3" placeholder="Type something.." />
+        <i-form-group name="group1" class="_border _padding-1">
+            <i-form-label>Input 3</i-form-label>
+            <i-input name="input1" v-model="input3" placeholder="Type something.." />
         </i-form-group>
     </i-form-group>
 
-    <i-form-group>
+    <i-form-group name="group3" class="_border _padding-1">
         <i-form-label>Input</i-form-label>
-        <i-input v-model="input4" placeholder="Type something.." />
+        <i-input name="0" v-model="input4" placeholder="Type something.." />
 
         <i-form-label>Input</i-form-label>
-        <i-input v-model="input5" placeholder="Type something.." />
+        <i-input name="1" v-model="input5" placeholder="Type something.." />
     </i-form-group>
 
-    <i-form>
-        <i-form-group>
+    <i-form name="form4" class="_border _padding-1">
+        <i-form-group name="group1" class="_border _padding-1">
             <i-form-label>Input</i-form-label>
-            <i-input v-model="input6" placeholder="Type something.." />
+            <i-input name="input1" v-model="input6" placeholder="Type something.." />
         </i-form-group>
     </i-form>
 
-    <i-form-group>
+    <i-form-group class="_border _padding-1">
+        <i-form-label>Input 2</i-form-label>
+        <i-input name="group5.input1" v-model="input2" placeholder="Type something.." />
+
+        <i-form-group name="group5.group1" class="_border _padding-1">
+            <i-form-label>Input 3</i-form-label>
+            <i-input name="input1" v-model="input3" placeholder="Type something.." />
+        </i-form-group>
+    </i-form-group>
+
+    <i-form-group class="_border _padding-1">
         <i-button type="submit">Submit</i-button>
     </i-form-group>
 </i-form>

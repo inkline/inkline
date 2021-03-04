@@ -2,13 +2,15 @@ import {
     colorVariantClass,
 } from '@inkline/inkline/src/mixins';
 
-/**
- * @event update:modelValue
- * @description Event emitted for setting the modelValue
- */
-
 export default {
     name: 'IHamburgerMenu',
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
+    ],
     props: {
         /**
          * @description The animation of the hamburger menu
