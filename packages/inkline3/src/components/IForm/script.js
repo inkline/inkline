@@ -1,8 +1,16 @@
 import {
+    getValueByPath,
+    setValueByPath,
+    setValuesAlongPath,
+    clone,
+    uid,
+    validateFormGroup
+} from '@inkline/inkline/src/helpers';
+import {
     colorVariantClass,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
-import { eventValueMap } from '@inkline/inkline/src/constants';
+import { FormComponentMixin } from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -12,6 +20,16 @@ import { eventValueMap } from '@inkline/inkline/src/constants';
 
 export default {
     name: 'IForm',
+    mixins: [
+        FormComponentMixin
+    ],
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue schema
+         */
+        'update:modelValue'
+    ],
     props: {
         /**
          * @description The color variant of the form
@@ -94,21 +112,7 @@ export default {
             form: this
         }
     },
-    inject: {
-        formGroup: {
-            default: () => ({})
-        },
-        form: {
-            default: () => ({})
-        }
-    },
     computed: {
-        isDisabled() {
-            return this.disabled || this.form.isDisabled || this.formGroup.isDisabled;
-        },
-        isReadonly() {
-            return this.readonly || this.form.isReadonly || this.formGroup.isReadonly;
-        },
         classes() {
             return {
                 ...colorVariantClass(this),
@@ -117,78 +121,76 @@ export default {
                 '-readonly': this.isReadonly,
                 '-inline': this.inline
             };
+        },
+        schema() {
+            if (this.modelValue) {
+                return this.modelValue;
+            }
+
+            return getValueByPath(this.formGroup.schema || this.form.schema || {}, this.name);
         }
     },
     methods: {
-        /**
-         * Retrieve form schema
-         * @TODO REMOVE
-         */
-        getSchema() {
-            return this.value;
+        onBlur(name, event) {
+            this.parent.onBlur?.(`${this.name}.${name}`, event);
+
+            if (this.modelValue) {
+                let schema = clone(this.modelValue);
+
+                schema = setValuesAlongPath(schema, name, { untouched: false, touched: true });
+
+                if (this.shouldValidate(name, 'blur')) {
+                    schema = validateFormGroup(schema);
+                }
+
+                this.$emit('update:modelValue', schema);
+            }
         },
+        onInput(name, value) {
+            this.parent.onInput?.(`${this.name}.${name}`, value);
 
-        /**
-         * Callback on form control input event
-         *
-         * @param formControl
-         * @TODO REMOVE
-         */
-        onFormControlInput(formControl) {
-            return (value) => {
-                formControl.schema[FormBuilder.keys.VALUE] = value;
+            if (this.modelValue) {
+                let schema = clone(this.modelValue);
 
-                this.$emit('input', this.value);
-            };
+                schema = setValueByPath(schema, name, 'value', value);
+                schema = setValuesAlongPath(schema, name, { pristine: false, dirty: true });
+
+                if (this.shouldValidate(name, 'input')) {
+                    schema = validateFormGroup(schema);
+                }
+
+                this.$emit('update:modelValue', schema);
+            }
         },
+        onSubmit (event) {
+            event.preventDefault();
 
-        /**
-         * Callback on form control input event
-         *
-         * @param formControl
-         * @TODO REMOVE
-         */
-        onFormControlBlur(formControl) {
-            return () => {
-                formControl.schema[FormBuilder.keys.TOUCH]({ getSchema: this.getSchema });
-            };
-        },
+            if (this.modelValue) {
+                let schema = clone(this.modelValue);
 
-        /**
-         * Callback on form control input event
-         * @TODO REMOVE
-         *
-         * @param formControl
-         */
-        onFormControlValidate(formControl, event) {
-            const eventFn = eventValueMap[event] ? eventValueMap[event] : eventValueMap.input;
+                schema = validateFormGroup(schema);
 
-            return (value) => {
-                formControl.schema[FormBuilder.keys.VALIDATE](eventFn(value), { getSchema: this.getSchema });
+                this.$emit('update:modelValue', schema);
 
-                this.$emit('validate', this.value);
-            };
-        },
-
-        /**
-         * Retrieve validateOn field based as array of events, also taking the validation config into account
-         * @TODO REMOVE
-         *
-         * @param formControl
-         */
-        getFormControlValidationEvents(formControl) {
-            let validateOn = [];
-
-            if (formControl.schema[FormBuilder.keys.VALIDATE_ON]) {
-                validateOn = formControl.schema[FormBuilder.keys.VALIDATE_ON].constructor === Array ?
-                    formControl.schema[FormBuilder.keys.VALIDATE_ON] :
-                    [formControl.schema[FormBuilder.keys.VALIDATE_ON]];
-            } else {
-                validateOn = this.$inkline.config.validation.validateOn;
+                if (schema.invalid) {
+                    return;
+                }
             }
 
-            return validateOn;
+            console.log('submitting')
+
+            this.$emit('submit', event);
         },
+        shouldValidate(path, eventName) {
+            const targetSchema = getValueByPath(this.modelValue, path);
+            const events = this.$inkline.options.validateOn.concat(targetSchema.validateOn || []);
+
+            return events.includes(eventName);
+        },
+
+
+
+
 
         /**
          * Add required schema event listeners for one of the form's child inputs
@@ -222,24 +224,5 @@ export default {
             this.$emit('input', this.value);
         },
 
-        /**
-         * Handler for submit event
-         */
-        onSubmit (event) {
-            event.preventDefault();
-
-            if (this.modelValue) {
-                /**
-                 * @TODO do not store validate() in modelValue
-                 */
-                this.modelValue[FormBuilder.keys.VALIDATE](this.validationOptions);
-
-                if (this.modelValue.$invalid) {
-                    return;
-                }
-            }
-
-            this.$emit('submit', event);
-        }
     },
 };

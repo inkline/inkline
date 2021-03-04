@@ -4,11 +4,6 @@ import {
 } from '@inkline/inkline/src/mixins';
 
 /**
- * @event update:modelValue
- * @description Event emitted for setting the modelValue
- */
-
-/**
  * @name default
  * @kind slot
  * @description Slot for default collapsible content
@@ -16,6 +11,13 @@ import {
 
 export default {
     name: 'ICollapsible',
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
+    ],
     props: {
         /**
          * @description Display the collapsible as an accordion, keeping a maximum of one open collapsible item

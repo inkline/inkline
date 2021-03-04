@@ -16,8 +16,9 @@ import * as examples from '../examples';
 
 The `<i-form>` component is a wrapper that provides proper handling of form validation and form grouping.
 
-<example :component="examples.IFormBasicExample" :html="examples.IFormBasicExampleHTML" :js="IFormBasicExampleJS"></example>
+<example :component="examples.IFormBasicExample" :html="examples.IFormBasicExampleHTML" :js="examples.IFormBasicExampleJS"></example>
 
+<!--
 ### Disabled State
 Setting a form as `disabled` will cause all of its child inputs to be disabled.
 
@@ -449,3 +450,4 @@ export default {
 </i-tab>
 </i-code>
 
+-->

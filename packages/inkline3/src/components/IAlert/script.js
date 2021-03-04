@@ -1,11 +1,6 @@
 import { sizePropValidator } from '@inkline/inkline/src/mixins';
 
 /**
- * @event update:modelValue
- * @description Event emitted for setting the modelValue
- */
-
-/**
  * @name default
  * @kind slot
  * @description Slot for default alert content
@@ -25,6 +20,13 @@ import { sizePropValidator } from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IAlert',
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
+    ],
     props: {
         /**
          * @description The size variant of the alert

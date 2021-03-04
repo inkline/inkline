@@ -1,33 +1,33 @@
-<div class="form-input-group" :class="wrapperClasses">
+<div class="form-input-group" :class="classes">
+    {{ schema }}
     <div class="form-input-prepend" v-if="$slots.prepend">
-        <slot name="prepend"></slot>
+        <slot name="prepend" />
     </div>
-
-    <div class="form-input" :class="classes">
-
+    <div class="form-input">
         <span class="form-input-prefix" v-if="$slots.prefix">
-            <slot name="prefix"></slot>
+            <slot name="prefix" />
         </span>
-
-        <span class="form-input-suffix" v-if="$slots.suffix || clearable">
-            <i class="clear-input" aria-label="Clear" v-show="isClearable" @click="clear"></i>
-            <slot name="suffix"></slot>
-        </span>
-
         <input
             v-bind="$attrs"
-            v-model="modelValue"
+            :value="value"
             ref="input"
             :name="name"
+            :type="type"
             :tabindex="tabIndex"
             :disabled="isDisabled"
-            :aria-disabled="isDisabled"
+            :aria-disabled="isDisabled ? 'true' : false"
             :readonly="isReadonly"
-            :aria-readonly="isReadonly"
-            @input="onInput">
+            :aria-readonly="isReadonly ? 'true' : false"
+            @input="onInput"
+            @blur="onBlur">
+        <span class="form-input-suffix" v-if="$slots.suffix || clearable">
+            <slot name="clearable" :clear="onClear">
+                <i class="form-input-clear" aria-label="Clear" v-show="isClearable" @click="onClear"></i>
+            </slot>
+            <slot name="suffix" />
+        </span>
     </div>
-
     <div class="form-input-append" v-if="$slots.append">
-        <slot name="append"></slot>
+        <slot name="append" />
     </div>
 </div>

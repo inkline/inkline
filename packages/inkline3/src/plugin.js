@@ -50,6 +50,7 @@ export const Inkline = {
 
         app.config.globalProperties.$inkline = {
             options: reactive({
+                validateOn: ['input', 'blur', 'submit'],
                 colorMode,
             })
         };
