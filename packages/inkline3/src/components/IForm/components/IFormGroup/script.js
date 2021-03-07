@@ -1,5 +1,5 @@
-import { uid } from '@inkline/inkline/src/helpers/uid';
 import {
+    colorVariantClass,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 import { FormComponentMixin } from '@inkline/inkline/src/mixins';
@@ -16,6 +16,15 @@ export default {
         FormComponentMixin
     ],
     props: {
+        /**
+         * @description The color variant of the form group
+         * @type light | dark
+         * @default light
+         */
+        color: {
+            type: String,
+            default: ''
+        },
         /**
          * @description The disabled state of the form group
          * @type Boolean
@@ -37,13 +46,11 @@ export default {
         /**
          * @description The identifier of the form group
          * @type String
-         * @default uid()
+         * @default
          */
         name: {
             type: String,
-            default() {
-                return uid('form-group');
-            }
+            default: ''
         },
         /**
          * @description The readonly state of the form group
@@ -70,14 +77,11 @@ export default {
             formGroup: this
         };
     },
-    data() {
-        return {
-            inputs: []
-        };
-    },
     computed: {
         classes() {
             return {
+                ...colorVariantClass(this),
+                [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
                 '-inline': this.inline,
@@ -89,12 +93,12 @@ export default {
     methods: {
         onBlur(name, event) {
             if (this.parent) {
-                this.parent.onBlur(`${this.name}.${name}`, event);
+                this.parent.onBlur(this.name ? `${this.name}.${name}` : name, event);
             }
         },
         onInput(name, value) {
             if (this.parent) {
-                this.parent.onInput(`${this.name}.${name}`, value);
+                this.parent.onInput(this.name ? `${this.name}.${name}` : name, value);
             }
         }
     }

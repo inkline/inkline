@@ -77,6 +77,15 @@ export default {
             default: false
         },
         /**
+         * @description The id of the internal input element
+         * @type String
+         * @default
+         */
+        id: {
+            type: String,
+            default: ''
+        },
+        /**
          * @description Used to set the field value
          * @type Boolean
          * @default false
@@ -91,7 +100,7 @@ export default {
          * @default uid()
          */
         name: {
-            type: String,
+            type: [String, Number],
             default() {
                 return uid('input');
             }
@@ -134,6 +143,7 @@ export default {
             default: 'text'
         },
     },
+    inheritAttrs: false,
     computed: {
         classes() {
             return {
@@ -176,6 +186,9 @@ export default {
         },
         onClear() {
             this.$emit('update:modelValue', '');
+        },
+        focusInput() {
+            this.$refs.input.focus();
         }
     }
 };

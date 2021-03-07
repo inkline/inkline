@@ -12,7 +12,7 @@ export default {
             checkbox: ['Football'],
             radio: 'Decline',
 
-            schema: {
+            schema: this.$inkline.form({
                 group1: {
                     input1: {
                         value: 'G1 example 1',
@@ -23,7 +23,7 @@ export default {
                 },
                 group2: {
                     input1: {
-                        value: 'G2 example 1',
+                        value: 'alex@grozav.com',
                         validators: [
                             { name: 'required' },
                             { name: 'email' }
@@ -31,7 +31,7 @@ export default {
                     },
                     group1: {
                         input1: {
-                            value: 'G2 G1 example 3',
+                            value: 'G2 G1',
                             validators: [
                                 'required',
                                 { name: 'maxLength', value: 5 }
@@ -41,10 +41,10 @@ export default {
                 },
                 group3: [
                     {
-                        value: 'G3 example 1'
+                        value: 'G3 example 0'
                     },
                     {
-                        value: 'G3 example 3'
+                        value: 'G3 example 1'
                     }
                 ],
                 form4: {
@@ -64,12 +64,20 @@ export default {
                         }
                     }
                 },
-            }
+            })
         };
     },
     methods: {
         onSubmit() {
             alert('Submitted!');
+        },
+        addRow() {
+            this.schema.group3.push(this.$inkline.form({
+                value: `G3 example ${this.schema.group3.length}`
+            }))
+        },
+        setRow() {
+            this.schema.group5.example = this.$inkline.form({});
         }
     }
 }

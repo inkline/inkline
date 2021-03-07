@@ -1,3 +1,4 @@
+declare const defaultValidationValues: { [key: string]: boolean };
 declare const reservedValidationFields: string[];
 
-export { reservedValidationFields };
+export { defaultValidationValues, reservedValidationFields };
