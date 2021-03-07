@@ -1,9 +1,10 @@
-import path from 'path';;
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import markdown from 'vite-plugin-md';
 
 const html = () => ({
-    name: 'vue-i18n',
+    name: 'html',
     test: ({ path }) => path.endsWith('.html'),
     transform (code, id) {
         if (/\.html$/.test(id)) {
@@ -12,7 +13,8 @@ const html = () => ({
     }
 });
 
-export default {
+// https://vitejs.dev/config/
+export default defineConfig({
     plugins: [
         vue({
             include: [
@@ -23,19 +25,21 @@ export default {
         markdown(),
         html()
     ],
-    alias: [
-        {
-            find: /^@inkline\/inkline\//,
-            replacement: `${path.resolve(__dirname)}/`
-        }
-    ],
+    resolve: {
+        alias: [
+            {
+                find: /^@inkline\/inkline\//,
+                replacement: `${resolve(__dirname)}/`
+            }
+        ],
+    },
     build: {
         lib: {
-            entry: path.resolve(__dirname, 'src/inkline.js'),
+            entry: resolve(__dirname, 'src/inkline.js'),
             name: 'Inkline'
         },
         rollupOptions: {
             external: ['vue']
         }
     }
-}
+});

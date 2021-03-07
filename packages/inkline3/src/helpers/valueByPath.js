@@ -37,7 +37,7 @@ export function setValueByPath(object, path, key, value) {
 export function setValuesAlongPath(object, path, values) {
     path.split('.').reduce((acc, part) => {
         Object.keys(values).forEach((key) => {
-            acc[key] = values[key];
+            acc[part][key] = values[key];
         });
 
         return acc && acc[part];

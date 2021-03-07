@@ -4,7 +4,6 @@ export { capitalizeFirst } from './capitalizeFirst';
 export { clone } from './clone';
 export { debounce } from './debounce';
 export { focusAttempt } from './focusAttempt';
-export { validateFormGroup, validateFormInput } from './form';
 export { focusFirstDescendant } from './focusFirstDescendant';
 export { focusLastDescendant } from './focusLastDescendant';
 export { getStyleProperty } from './getStyleProperty';

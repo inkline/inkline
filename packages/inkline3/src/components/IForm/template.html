@@ -4,7 +4,7 @@
       :class="classes"
       :readonly="isReadonly"
       :disabled="isDisabled"
-      @submit.prevent="onSubmit">
+      @submit="onSubmit">
     {{ schema }}
     <slot />
 </form>

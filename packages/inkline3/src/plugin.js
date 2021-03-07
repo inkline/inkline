@@ -1,9 +1,10 @@
 import { reactive, watch } from 'vue'
-import {addClass, removeClass} from "@inkline/inkline/src/helpers";
+import { addClass, removeClass } from "@inkline/inkline/src/helpers";
+import { initialize as initializeForm } from "@inkline/inkline/src/validation";
+import { setLocale } from '@inkline/inkline/src/i18n';
 
 const defaultOptions = {
     colorMode: 'system'
-
 };
 
 const colorModeLocalStorageKey = 'inkline-color-mode';
@@ -49,8 +50,15 @@ export const Inkline = {
          */
 
         app.config.globalProperties.$inkline = {
+            form(schema) {
+                return initializeForm(schema);
+            },
+            setLocale(locale) {
+                setLocale(locale);
+            },
             options: reactive({
-                validateOn: ['input', 'blur', 'submit'],
+                locale: 'en',
+                validateOn: ['input', 'blur'],
                 colorMode,
             })
         };

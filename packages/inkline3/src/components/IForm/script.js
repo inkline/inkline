@@ -3,14 +3,16 @@ import {
     setValueByPath,
     setValuesAlongPath,
     clone,
-    uid,
-    validateFormGroup
+    uid
 } from '@inkline/inkline/src/helpers';
 import {
     colorVariantClass,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
-import { FormComponentMixin } from '@inkline/inkline/src/mixins';
+import {
+    FormComponentMixin
+} from '@inkline/inkline/src/mixins';
+import { validate } from "@inkline/inkline/src/validation";
 
 /**
  * @name default
@@ -28,8 +30,14 @@ export default {
          * @event update:modelValue
          * @description Event emitted for setting the modelValue schema
          */
-        'update:modelValue'
+        'update:modelValue',
+        /**
+         * @event submit
+         * @description Event emitted for submitting the form
+         */
+        'submit'
     ],
+    inheritAttrs: false,
     props: {
         /**
          * @description The color variant of the form
@@ -132,7 +140,7 @@ export default {
     },
     methods: {
         onBlur(name, event) {
-            this.parent.onBlur?.(`${this.name}.${name}`, event);
+            this.parent.onBlur?.(this.name ? `${this.name}.${name}` : name, event);
 
             if (this.modelValue) {
                 let schema = clone(this.modelValue);
@@ -140,14 +148,14 @@ export default {
                 schema = setValuesAlongPath(schema, name, { untouched: false, touched: true });
 
                 if (this.shouldValidate(name, 'blur')) {
-                    schema = validateFormGroup(schema);
+                    schema = validate(schema);
                 }
 
                 this.$emit('update:modelValue', schema);
             }
         },
         onInput(name, value) {
-            this.parent.onInput?.(`${this.name}.${name}`, value);
+            this.parent.onInput?.(this.name ? `${this.name}.${name}` : name, value);
 
             if (this.modelValue) {
                 let schema = clone(this.modelValue);
@@ -156,7 +164,7 @@ export default {
                 schema = setValuesAlongPath(schema, name, { pristine: false, dirty: true });
 
                 if (this.shouldValidate(name, 'input')) {
-                    schema = validateFormGroup(schema);
+                    schema = validate(schema);
                 }
 
                 this.$emit('update:modelValue', schema);
@@ -168,7 +176,7 @@ export default {
             if (this.modelValue) {
                 let schema = clone(this.modelValue);
 
-                schema = validateFormGroup(schema);
+                schema = validate(schema);
 
                 this.$emit('update:modelValue', schema);
 
@@ -177,8 +185,6 @@ export default {
                 }
             }
 
-            console.log('submitting')
-
             this.$emit('submit', event);
         },
         shouldValidate(path, eventName) {
@@ -186,43 +192,6 @@ export default {
             const events = this.$inkline.options.validateOn.concat(targetSchema.validateOn || []);
 
             return events.includes(eventName);
-        },
-
-
-
-
-
-        /**
-         * Add required schema event listeners for one of the form's child inputs
-         *
-         * @TODO REMOVE
-         * @param formControl
-         */
-        add(formControl) {
-            formControl.$on('input', this.onFormControlInput(formControl));
-            formControl.$on('blur', this.onFormControlBlur(formControl));
-
-            this.getFormControlValidationEvents(formControl).forEach((event) => {
-                formControl.$on(event, this.onFormControlValidate(formControl, event));
-            });
-        },
-
-        /**
-         * Remove event listeners for one of the form's child inputs
-         * @TODO REMOVE
-         *
-         * @param formControl
-         */
-        remove(formControl) {
-            formControl.$off('input', this.onFormControlInput(formControl));
-            formControl.$off('blur', this.onFormControlBlur(formControl));
-
-            this.getFormControlValidationEvents(formControl).forEach((event) => {
-                formControl.$off(event, this.onFormControlValidate(formControl, event));
-            });
-
-            this.$emit('input', this.value);
-        },
-
-    },
+        }
+    }
 };
