@@ -1,5 +1,5 @@
-import { DirectiveArguments } from 'vue'
+import { Directive } from 'vue'
 
-declare const ClickOutside: DirectiveArguments;
+declare const ClickOutside: Directive;
 
 export default ClickOutside;

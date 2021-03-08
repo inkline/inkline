@@ -1,4 +1,4 @@
-import { en } from './messages/en';
+import { en } from '@inkline/inkline/src/i18n/messages/en';
 export * from '@inkline/inkline/src/i18n/translate';
 
 /**

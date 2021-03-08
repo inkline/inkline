@@ -1,26 +1,26 @@
-import { alpha } from '@inkline/inkline/src/validation/validators/alpha';
-import { alphanumeric } from '@inkline/inkline/src/validation/validators/alphanumeric';
-import { custom } from '@inkline/inkline/src/validation/validators/custom';
-import { number } from '@inkline/inkline/src/validation/validators/number';
-import { email } from '@inkline/inkline/src/validation/validators/email';
-import { max } from '@inkline/inkline/src/validation/validators/max';
-import { maxLength } from '@inkline/inkline/src/validation/validators/maxLength';
-import { min } from '@inkline/inkline/src/validation/validators/min';
-import { minLength } from '@inkline/inkline/src/validation/validators/minLength';
-import { required } from '@inkline/inkline/src/validation/validators/required';
-import { sameAs } from '@inkline/inkline/src/validation/validators/sameAs';
+import { alpha } from './alpha';
+import { alphanumeric } from './alphanumeric';
+import { custom } from './custom';
+import { number } from './number';
+import { email } from './email';
+import { max } from './max';
+import { maxLength } from './maxLength';
+import { min } from './min';
+import { minLength } from './minLength';
+import { required } from './required';
+import { sameAs } from './sameAs';
 
-export { alpha } from '@inkline/inkline/src/validation/validators/alpha';
-export { alphanumeric } from '@inkline/inkline/src/validation/validators/alphanumeric';
-export { custom } from '@inkline/inkline/src/validation/validators/custom';
-export { number } from '@inkline/inkline/src/validation/validators/number';
-export { email } from '@inkline/inkline/src/validation/validators/email';
-export { max } from '@inkline/inkline/src/validation/validators/max';
-export { maxLength } from '@inkline/inkline/src/validation/validators/maxLength';
-export { min } from '@inkline/inkline/src/validation/validators/min';
-export { minLength } from '@inkline/inkline/src/validation/validators/minLength';
-export { required } from '@inkline/inkline/src/validation/validators/required';
-export { sameAs } from '@inkline/inkline/src/validation/validators/sameAs';
+export { alpha } from './alpha';
+export { alphanumeric } from './alphanumeric';
+export { custom } from './custom';
+export { number } from './number';
+export { email } from './email';
+export { max } from './max';
+export { maxLength } from './maxLength';
+export { min } from './min';
+export { minLength } from './minLength';
+export { required } from './required';
+export { sameAs } from './sameAs';
 
 export const validators = {
     alpha,

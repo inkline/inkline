@@ -1,8 +1,8 @@
 import { reactive } from 'vue';
-import { FormController } from '@inkline/inkline/src/controllers';
+import { initialize } from '@inkline/inkline/src/validation';
 
 export function useForm(schema) {
-    const form = reactive(FormController.initialize(schema));
+    const form = reactive(initialize(schema));
 
     return {
         form
