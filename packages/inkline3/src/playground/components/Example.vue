@@ -14,8 +14,9 @@
 
 <script>
 import { colorVariantClass } from "@inkline/inkline/src/mixins";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
     name: 'Example',
     props: {
         color: {
@@ -51,7 +52,7 @@ export default {
             }
         }
     }
-}
+});
 </script>
 
 <style lang="scss">

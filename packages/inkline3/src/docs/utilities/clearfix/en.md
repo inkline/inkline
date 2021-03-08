@@ -1,7 +1,7 @@
 ---
- title: Clearfix Utilities
- description: Use the clearfix utility to clear floated content within a container. 
- ---
+title: Clearfix Utilities
+description: Use the clearfix utility to clear floated content within a container. 
+---
 
 <script setup>
 import * as examples from './examples';

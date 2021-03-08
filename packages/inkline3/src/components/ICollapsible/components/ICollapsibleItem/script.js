@@ -41,7 +41,9 @@ export default {
         }
     },
     inject: {
-        collapsible: () => ({})
+        collapsible: {
+            default: () => ({})
+        }
     },
     computed: {
         active() {
