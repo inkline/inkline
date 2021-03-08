@@ -36,24 +36,23 @@
         "fuse.js": "^6.4.0"
     },
     "devDependencies": {
+        "@types/node": "^14.14.32",
         "@vitejs/plugin-vue": "^1.1.5",
-        "@vue/compiler-sfc": "^3.0.7",
+        "@vue/compiler-sfc": "^3.0.5",
+        "sass": "^1.32.8",
+        "typescript": "^4.1.3",
+        "vite": "^2.0.5",
+        "vite-plugin-md": "^0.6.0",
+        "vue-router": "^4.0.4",
         "glob": "^7.1.6",
         "jsdoc-api": "^6.0.0",
-        "node-sass": "^5.0.0",
         "postcss-preset-env": "^6.7.0",
-        "sass": "^1.32.5",
         "stylelint": "^13.9.0",
         "stylelint-config-recommended": "^3.0.0",
         "stylelint-config-recommended-scss": "^4.2.0",
         "stylelint-config-standard": "^20.0.0",
         "stylelint-scss": "^3.18.0",
-        "typescript": "^4.1.3",
-        "vite": "^2.0.0-beta.60",
-        "vite-plugin-eslint": "^1.1.0",
-        "vite-plugin-md": "^0.6.0",
-        "vue": "^3.0.7",
-        "vue-router": "^4.0.3"
+        "vue": "^3.0.7"
     },
     "peerDependencies": {
         "vue": "^3.0.7"
@@ -90,6 +89,5 @@
         "type": "git",
         "url": "git+https://github.com/inkline/inkline.git"
     },
-    "types": "types/index.d.ts",
-    "gitHead": "32b796bad26ac1ff604c314af5ed81995d67bc0c"
+    "types": "src/index.d.ts"
 }

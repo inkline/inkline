@@ -238,8 +238,12 @@
     </div>
 </template>
 
-<script>
-export default {
+
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
     name: 'App',
     data() {
         return {
@@ -251,46 +255,47 @@ export default {
             this.$inkline.options.colorMode = value;
         }
     }
-}
+});
 </script>
 
 <style lang="scss">
-html,
-body,
-#app,
-#layout {
-    height: 100%;
-    width: 100%;
-}
-
-#layout {
-    display: flex;
-}
-
-#sidebar {
-    display: flex;
-    height: 100%;
-    overflow: auto;
-    width: 280px;
-    border-right: 1px solid var(--border-color-light);
-
-    .inkline.-dark & {
-        border-right: 1px solid var(--border-color-dark);
-    }
-}
-
-#content {
-    display: block;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    padding: 2rem;
-    box-sizing: border-box;
-
-    > article {
-        width: 100%;
+    html,
+    body,
+    #app,
+    #layout {
         height: 100%;
-        box-sizing: border-box;
+        width: 100%;
     }
-}
+
+    #layout {
+        display: flex;
+    }
+
+    #sidebar {
+        display: flex;
+        height: 100%;
+        overflow: auto;
+        width: 280px;
+        border-right: 1px solid var(--border-color-light);
+
+        .inkline.-dark & {
+            border-right: 1px solid var(--border-color-dark);
+        }
+    }
+
+    #content {
+        display: block;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        padding: 2rem;
+        box-sizing: border-box;
+
+        > article {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+    }
 </style>
+

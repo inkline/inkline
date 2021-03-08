@@ -1,8 +1,8 @@
 import { createApp } from 'vue';
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
-import { Inkline } from '@inkline/inkline/src/plugin';
-import * as components from '@inkline/inkline/src/components';
+import { Inkline } from '../plugin';
+import * as components from '../components';
 import '@inkline/inkline/src/inkline.scss';
 import '@inkline/inkline/src/playground/main.scss';
 
@@ -11,7 +11,7 @@ import Example from '@inkline/inkline/src/playground/components/Example.vue';
 import DocsRoute from '@inkline/inkline/src/playground/components/DocsRoute.vue';
 import ComponentsRoute from '@inkline/inkline/src/playground/components/ComponentsRoute.vue';
 
-const routes = [
+const routes: RouteRecordRaw[] = [
     { name: 'index', path: '/', component: DocsRoute, meta: { path: '' } },
     { name: 'docs-core-grid', path: '/docs/core/grid', component: ComponentsRoute, meta: { component: 'IContainer' } },
     { name: 'docs-core-layout', path: '/docs/core/layout', component: ComponentsRoute, meta: { component: 'ILayout' } },

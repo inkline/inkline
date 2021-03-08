@@ -1,17 +1,18 @@
-import { defineConfig } from 'vite';
+import { defineConfig, Plugin } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import markdown from 'vite-plugin-md';
 
-const html = () => ({
-    name: 'html',
-    test: ({ path }) => path.endsWith('.html'),
-    transform (code, id) {
-        if (/\.html$/.test(id)) {
-            return `export default ${JSON.stringify(code)}`
+function html(): Plugin {
+    return {
+        name: 'html',
+        transform (code: string, id: string) {
+            if (/\.html$/.test(id)) {
+                return `export default ${JSON.stringify(code)}`
+            }
         }
-    }
-});
+    };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({

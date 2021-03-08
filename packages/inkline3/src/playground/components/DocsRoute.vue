@@ -4,10 +4,10 @@
     </div>
 </template>
 <script>
-import { ref, defineAsyncComponent, markRaw, watch, onMounted } from 'vue';
+import { ref, defineComponent, defineAsyncComponent, markRaw, watch, onMounted } from 'vue';
 import { useRoute } from 'vue-router'
 
-export default {
+export default defineComponent({
     setup() {
         const route = useRoute();
         const content = ref(null);
@@ -26,5 +26,5 @@ export default {
             content
         };
     }
-}
+});
 </script>
