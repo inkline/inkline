@@ -1,12 +1,12 @@
-import { defineConfig, Plugin } from 'vite';
+import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import markdown from 'vite-plugin-md';
 
-function html(): Plugin {
+function html() {
     return {
         name: 'html',
-        transform (code: string, id: string) {
+        transform (code, id) {
             if (/\.html$/.test(id)) {
                 return `export default ${JSON.stringify(code)}`
             }

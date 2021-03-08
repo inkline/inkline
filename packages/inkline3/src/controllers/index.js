@@ -1,1 +1,1 @@
-export * from './OverlayController';
+export * from '@inkline/inkline/src/controllers/OverlayController';

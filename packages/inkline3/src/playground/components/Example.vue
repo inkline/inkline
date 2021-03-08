@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { colorVariantClass } from "@inkline/inkline/src/mixins";
+import { colorVariantClass } from "@inkline/inkline/src/mixins/computed";
 import { defineComponent } from "vue";
 
 export default defineComponent({
