@@ -1,0 +1,56 @@
+<i-textarea v-model="prepend" placeholder="Type something..">
+    <template #prepend>
+        <i-dropdown>
+            <i-button>Dropdown</i-button>
+            <i-dropdown-menu>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </i-dropdown-menu>
+        </i-dropdown>
+    </template>
+</i-textarea>
+
+<i-textarea v-model="append" placeholder="Type something..">
+    <template #append>
+        <i-dropdown>
+            <i-button>Dropdown</i-button>
+            <i-dropdown-menu>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </i-dropdown-menu>
+        </i-dropdown>
+    </template>
+</i-textarea>
+
+<i-textarea v-model="prependAppend" placeholder="Type something..">
+    <template #prepend>
+        <i-dropdown>
+            <i-button>Dropdown</i-button>
+            <i-dropdown-menu>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </i-dropdown-menu>
+        </i-dropdown>
+    </template>
+    <template #append>
+        <i-dropdown>
+            <i-button>Dropdown</i-button>
+            <i-dropdown-menu>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Something disabled here</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </i-dropdown-menu>
+        </i-dropdown>
+    </template>
+</i-textarea>
