@@ -173,14 +173,10 @@ export default {
     },
     methods: {
         onBlur(event) {
-            if (this.parent) {
-                this.parent.onBlur(this.name, event);
-            }
+            this.parent.onBlur?.(this.name, event);
         },
         onInput(event) {
-            if (this.parent) {
-                this.parent.onInput(this.name, event.target.value);
-            }
+            this.parent.onInput?.(this.name, event.target.value);
 
             this.$emit('update:modelValue', event.target.value);
         },
