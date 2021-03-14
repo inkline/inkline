@@ -5,157 +5,168 @@
  */
 
 @each $breakpoint-key in $breakpoint-infix-keys {
-    $infix: breakpoint-infix($breakpoint-key);
+    $prefix: breakpoint-prefix($breakpoint-key);
 
-    @include breakpoint($breakpoint-key) {
-        ._flex-direction#{$infix}-row {
+    @include breakpoint-up($breakpoint-key) {
+        ._#{$prefix}flex-direction\:row {
             flex-direction: row !important;
         }
 
-        ._flex-direction#{$infix}-column {
+        ._#{$prefix}flex-direction\:column {
             flex-direction: column !important;
         }
 
-        ._flex-direction#{$infix}-row-reverse {
+        ._#{$prefix}flex-direction\:row-reverse {
             flex-direction: row-reverse !important;
         }
 
-        ._flex-direction#{$infix}-column-reverse {
+        ._#{$prefix}flex-direction\:column-reverse {
             flex-direction: column-reverse !important;
         }
 
-        ._flex#{$infix}-wrap {
+        ._#{$prefix}flex\:wrap,
+        ._#{$prefix}flex-wrap\:wrap {
             flex-wrap: wrap !important;
         }
 
-        ._flex#{$infix}-nowrap {
+        ._#{$prefix}flex\:nowrap,
+        ._#{$prefix}flex-wrap\:nowrap {
             flex-wrap: nowrap !important;
         }
 
-        ._flex#{$infix}-wrap-reverse {
+        ._#{$prefix}flex\:wrap-reverse,
+        ._#{$prefix}flex-wrap\:wrap-reverse {
             flex-wrap: wrap-reverse !important;
         }
 
-        ._flex#{$infix}-fill {
+        ._#{$prefix}flex\:fill {
             flex: 1 1 auto !important;
         }
 
-        ._flex#{$infix}-grow-1 {
+        ._#{$prefix}flex-grow\:1 {
             flex-grow: 1 !important;
         }
 
-        ._flex#{$infix}-grow-0 {
+        ._#{$prefix}flex-grow\:0 {
             flex-grow: 0 !important;
         }
 
-        ._flex#{$infix}-shrink-1 {
+        ._#{$prefix}flex-shrink\:1 {
             flex-shrink: 1 !important;
         }
 
-        ._flex#{$infix}-shrink-0 {
+        ._#{$prefix}flex-shrink\:0 {
             flex-shrink: 0 !important;
         }
 
-        ._justify-content#{$infix}-start {
+        ._#{$prefix}justify-content\:start,
+        ._#{$prefix}justify-content\:flex-start {
             justify-content: flex-start !important;
         }
 
-        ._justify-content#{$infix}-end {
+        ._#{$prefix}justify-content\:end,
+        ._#{$prefix}justify-content\:flex-end {
             justify-content: flex-end !important;
         }
 
-        ._justify-content#{$infix}-center {
+        ._#{$prefix}justify-content\:center {
             justify-content: center !important;
         }
 
-        ._justify-content#{$infix}-space-between {
+        ._#{$prefix}justify-content\:space-between {
             justify-content: space-between !important;
         }
 
-        ._justify-content#{$infix}-space-around {
+        ._#{$prefix}justify-content\:space-around {
             justify-content: space-around !important;
         }
 
-        ._align-items#{$infix}-start {
+        ._#{$prefix}align-items\:start,
+        ._#{$prefix}align-items\:flex-start {
             align-items: flex-start !important;
         }
 
-        ._align-items#{$infix}-end {
+        ._#{$prefix}align-items\:end,
+        ._#{$prefix}align-items\:flex-end {
             align-items: flex-end !important;
         }
 
-        ._align-items#{$infix}-center {
+        ._#{$prefix}align-items\:center {
             align-items: center !important;
         }
 
-        ._align-items#{$infix}-baseline {
+        ._#{$prefix}align-items\:baseline {
             align-items: baseline !important;
         }
 
-        ._align-items#{$infix}-stretch {
+        ._#{$prefix}align-items\:stretch {
             align-items: stretch !important;
         }
 
-        ._align-content#{$infix}-start {
+        ._#{$prefix}align-content\:start,
+        ._#{$prefix}align-content\:flex-start {
             align-content: flex-start !important;
         }
 
-        ._align-content#{$infix}-end {
+        ._#{$prefix}align-content\:end,
+        ._#{$prefix}align-content\:flex-end {
             align-content: flex-end !important;
         }
 
-        ._align-content#{$infix}-center {
+        ._#{$prefix}align-content\:center {
             align-content: center !important;
         }
 
-        ._align-content#{$infix}-space-between {
+        ._#{$prefix}align-content\:space-between {
             align-content: space-between !important;
         }
 
-        ._align-content#{$infix}-space-around {
+        ._#{$prefix}align-content\:space-around {
             align-content: space-around !important;
         }
 
-        ._align-content#{$infix}-stretch {
+        ._#{$prefix}align-content\:stretch {
             align-content: stretch !important;
         }
 
-        ._align-self#{$infix}-auto {
+        ._#{$prefix}align-self\:auto {
             align-self: auto !important;
         }
 
-        ._align-self#{$infix}-start {
+        ._#{$prefix}align-self\:start,
+        ._#{$prefix}align-self\:flex-start {
             align-self: flex-start !important;
         }
 
-        ._align-self#{$infix}-end {
+        ._#{$prefix}align-self\:end,
+        ._#{$prefix}align-self\:flex-end {
             align-self: flex-end !important;
         }
 
-        ._align-self#{$infix}-center {
+        ._#{$prefix}align-self\:center {
             align-self: center !important;
         }
 
-        ._align-self#{$infix}-baseline {
+        ._#{$prefix}align-self\:baseline {
             align-self: baseline !important;
         }
 
-        ._align-self#{$infix}-stretch {
+        ._#{$prefix}align-self\:stretch {
             align-self: stretch !important;
         }
 
-        @for $column-count from 1 through $columns {
-            ._order#{$infix}-#{$column-count} {
+        @for $column-count from 0 through $columns {
+            ._#{$prefix}order\:#{$column-count} {
                 order: $column-count;
             }
         }
 
-        ._order#{$infix}-first {
-            order: 1;
+        ._#{$prefix}order\:first {
+            order: -1;
         }
 
-        ._order#{$infix}-last {
-            order: -1;
+        ._#{$prefix}order\:last {
+            order: 99;
         }
     }
 }

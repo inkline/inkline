@@ -7,7 +7,7 @@
 //
 // @param media Breakpoint identifier
 //
-@mixin breakpoint($media) {
+@mixin breakpoint-only($media) {
     @if $media == 'xxl' {
         @media screen and (min-width: breakpoint('xxl')) {
             @content;
@@ -76,6 +76,18 @@
         @return '';
     } @else {
         @return '-' + $media;
+    }
+}
+
+// Get the prefix name of a breakpoint
+//
+// @param media Breakpoint identifier
+//
+@function breakpoint-prefix($media) {
+    @if $media == '_' {
+        @return '';
+    } @else {
+        @return $media + '\\:';
     }
 }
 

@@ -24,8 +24,11 @@ You can use the float utility classes to float an element to the left or right, 
 ### Responsive
 Float utilities can be applied responsively using the following helper classes:
 
-- `._float-{xs|sm|md|lg|xl}-left`
-- `._float-{xs|sm|md|lg|xl}-right`
-- `._float-{xs|sm|md|lg|xl}-none`
+- `._float:left`
+- `._float:right`
+- `._float:none`
+- `._{xs|sm|md|lg|xl|xxl}:float:left`
+- `._{xs|sm|md|lg|xl|xxl}:float:right`
+- `._{xs|sm|md|lg|xl|xxl}:float:none`
 
 <example :component="examples.FloatResponsiveExample" :html="examples.FloatResponsiveExampleHTML"></example>

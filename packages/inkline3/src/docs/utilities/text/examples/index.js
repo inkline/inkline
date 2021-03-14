@@ -1,5 +1,7 @@
 export { default as TextFontMonospaceExample } from './font-monospace.vue'
 export { default as TextFontMonospaceExampleHTML } from './font-monospace.html'
+export { default as TextFontSizeExample } from './font-size.vue'
+export { default as TextFontSizeExampleHTML } from './font-size.html'
 export { default as TextFontStyleItalicExample } from './font-style-italic.vue'
 export { default as TextFontStyleItalicExampleHTML } from './font-style-italic.html'
 export { default as TextFontWeightRelativeExample } from './font-weight-relative.vue'

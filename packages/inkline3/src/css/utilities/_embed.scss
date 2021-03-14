@@ -4,7 +4,7 @@
  * Credit: Nicolas Gallagher and SUIT CSS.
  */
 
-._embed {
+[class^="_embed"] {
     position: relative;
     display: block;
     width: 100%;
@@ -31,18 +31,18 @@
     }
 }
 
-._embed-21by9 {
+._embed\:21\:9 {
     &::before { padding-top: percentage(9 / 21); }
 }
 
-._embed-16by9 {
+._embed\:16\:9 {
     &::before { padding-top: percentage(9 / 16); }
 }
 
-._embed-4by3 {
+._embed\:4\:3 {
     &::before { padding-top: percentage(3 / 4); }
 }
 
-._embed-1by1 {
+._embed\:1\:1 {
     &::before { padding-top: percentage(1 / 1); }
 }

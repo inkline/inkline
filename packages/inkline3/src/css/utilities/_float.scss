@@ -5,18 +5,18 @@
  */
 
 @each $breakpoint-key in $breakpoint-infix-keys {
-    $infix: breakpoint-infix($breakpoint-key);
+    $prefix: breakpoint-prefix($breakpoint-key);
 
-    @include breakpoint($breakpoint-key) {
-        ._float#{$infix}-left {
+    @include breakpoint-up($breakpoint-key) {
+        ._#{$prefix}float\:left {
             float: left !important;
         }
 
-        ._float#{$infix}-right {
+        ._#{$prefix}float\:right {
             float: right !important;
         }
 
-        ._float#{$infix}-none {
+        ._#{$prefix}float\:none {
             float: none !important;
         }
     }

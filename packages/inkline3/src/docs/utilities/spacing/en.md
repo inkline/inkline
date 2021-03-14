@@ -11,22 +11,24 @@ import * as examples from './examples';
 
 ## You can use a wide range of responsive margin and padding utility classes to modify an element’s appearance. 
 
-Spacing utilities that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them and are not bound by a media query.
+The spacing utility classes are named using the following format:
 
-The classes are named using the format `._{property}-{sides}-{size}` for targeting all breakpoints and `._{property}-{sides}-{breakpoint}-{size}` for responsive spacing utilities.
+- `._{property}:{size}`
+- `._{property}-{sides}:{size}`
+- `._{breakpoint}:{property}-{sides}:{size}`
 
 Where *property* is one of:
 - `margin`
 - `padding`
 
 Where *sides* is one of:
-- `top` for top `margin` or `padding`
-- `right` for right `margin` or `padding`
-- `bottom` for bottom `margin` or `padding`
-- `left` for left `margin` or `padding`
-- `x` for horizontal (left and right) `margin` or `padding`
-- `y` from vertical (top and bottom) `margin` or `padding`
-- blank for classes that set a `margin` or `padding` on all 4 sides
+- `top` for top side
+- `right` for right side
+- `bottom` for bottom side
+- `left` for left side
+- `x` for horizontal (left and right) sides
+- `y` from vertical (top and bottom) sides
+- none for classes that set a `margin` or `padding` on all 4 sides
 
 Where *size* is one of:
 - `0` for eliminating `margin` or `padding`
@@ -38,12 +40,20 @@ Where *size* is one of:
 - `6` for classes setting `margin` or `padding` to `$spacer * 6`
 - `7` for classes setting `margin` or `padding` to `$spacer * 7`
 - `8` for classes setting `margin` or `padding` to `$spacer * 8`
-- `1-2` for classes setting `margin` or `padding` to `$spacer * 1/2`
-- `1-3` for classes setting `margin` or `padding` to `$spacer * 1/3`
-- `2-3` for classes setting `margin` or `padding` to `$spacer * 2/3`
-- `1-4` for classes setting `margin` or `padding` to `$spacer * 1/4`
-- `3-4` for classes setting `margin` or `padding` to `$spacer * 3/4`
+- `1/2` for classes setting `margin` or `padding` to `$spacer * 1/2`
+- `1/3` for classes setting `margin` or `padding` to `$spacer * 1/3`
+- `2/3` for classes setting `margin` or `padding` to `$spacer * 2/3`
+- `1/4` for classes setting `margin` or `padding` to `$spacer * 1/4`
+- `3/4` for classes setting `margin` or `padding` to `$spacer * 3/4`
 - `auto` for classes setting `margin` or `padding` to `auto`
+
+And `breakpoint` is one of:
+- `xs`
+- `sm`
+- `md`
+- `lg`
+- `xl`
+- `xxl`
 
 You can add more sizes by adding entries to the `$spacers` Sass variable.
 
@@ -60,6 +70,6 @@ Here are some examples of these utility classes:
 <example type="spacing" :component="examples.SpacingRightExample" :html="examples.SpacingRightExampleHTML"></example>
 
 ### Horizontal Centering
-You can set a `left` and `right` margin using the `x` side parameter, such as `._margin-x-auto`. The `._margin-x-auto` class is useful for horizontally centering fixed-width block level content.
+You can set a `left` and `right` margin using the `x` side parameter, such as `._margin-x:auto`. The `._margin-x:auto` class is useful for horizontally centering fixed-width block level content.
 
 <example type="spacing" :component="examples.SpacingHorizontalCenterExample" :html="examples.SpacingHorizontalCenterExampleHTML"></example>

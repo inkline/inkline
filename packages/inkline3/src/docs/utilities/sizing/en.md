@@ -33,8 +33,11 @@ Width and height utilities provide support for `25%`, `50%`, `75%`, `100%`, and 
 You can also use utilities to set the width and height relative to the viewport.
 
 ~~~html
-<div class="_vw-100">100% Viewport Width</div>
-<div class="_vh-100">100% Viewport Height</div>
-<div class="_max-vw-100">100% Max Viewport Width</div>
-<div class="_max-vh-100">100% Max Viewport Height</div>
+<div class="_width:100vw">100% Viewport Width</div>
+
+<div class="_height:100vh">100% Viewport Height</div>
+
+<div class="_max-width:100vw">100% Viewport Max Width</div>
+
+<div class="_max-height:100vh">100% Viewport Max Height</div>
 ~~~

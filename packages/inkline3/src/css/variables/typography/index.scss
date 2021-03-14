@@ -42,7 +42,7 @@ $font-size-xs: calc(var(--font-size) * var(--size-multiplier-xs)) !default;
 $font-size-sm: calc(var(--font-size) * var(--size-multiplier-sm)) !default;
 $font-size-md: calc(var(--font-size) * var(--size-multiplier-md)) !default;
 $font-size-lg: calc(var(--font-size) * var(--size-multiplier-lg)) !default;
-$font-size-xl: calc(var(--font-size) * var(--size-multiplier-xs)) !default;
+$font-size-xl: calc(var(--font-size) * var(--size-multiplier-xl)) !default;
 
 $font-sizes: (
     'xs': $font-size-xs,
@@ -164,7 +164,7 @@ $lead-font-weight: 300 !default;
 // Lists
 //
 $list-inline-padding: spacer('1') !default;
-$list-item-margin-bottom: spacer('1-2') !default;
+$list-item-margin-bottom: spacer('1/2') !default;
 
 // Description Lists
 //
@@ -180,8 +180,8 @@ $small-font-weight: font-weight('normal') !default;
 $blockquote-small-color: color('gray-60') !default;
 $blockquote-font-size: font-size('lg') !default;
 $blockquote-border: 3px solid color('gray-30') !default;
-$blockquote-margin: spacer('1') !default;
-$blockquote-bordered-padding: spacer('1') !default;
+$blockquote-margin: spacer() !default;
+$blockquote-bordered-padding: spacer() !default;
 
 // Horizontal rule
 //
