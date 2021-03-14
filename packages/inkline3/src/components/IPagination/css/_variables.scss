@@ -1,0 +1,97 @@
+//
+// Variables
+//
+
+$pagination-font-size: font-size() !default;
+$pagination-padding: spacer('1/2') !default;
+$pagination-border-radius: border-radius() !default;
+$pagination-min-width: 40px !default;
+$pagination-border-width: var(--border-width) !default;
+$pagination-margin: spacer('1/4') !default;
+$pagination-opacity-disabled: 0.85 !default;
+
+//
+// Sizes
+//
+
+$pagination-size-variant-sm-font-size: calc(var(--pagination-font-size) * #{size-multiplier('sm')}) !default;
+$pagination-size-variant-sm-border-radius: calc(var(--pagination-border-radius) * #{size-multiplier('sm')}) !default;
+$pagination-size-variant-sm-padding: calc(var(--pagination-padding) * #{size-multiplier('sm')}) !default;
+$pagination-size-variant-sm-min-width: calc(var(--pagination-min-width) * #{size-multiplier('sm')}) !default;
+$pagination-size-variant-sm: (
+    'font-size': $pagination-size-variant-sm-font-size,
+    'border-radius': $pagination-size-variant-sm-border-radius,
+    'padding': $pagination-size-variant-sm-padding,
+    'min-width': $pagination-size-variant-sm-min-width,
+) !default;
+
+$pagination-size-variant-md-font-size: calc(var(--pagination-font-size) * #{size-multiplier('md')}) !default;
+$pagination-size-variant-md-border-radius: calc(var(--pagination-border-radius) * #{size-multiplier('md')}) !default;
+$pagination-size-variant-md-padding: calc(var(--pagination-padding) * #{size-multiplier('md')}) !default;
+$pagination-size-variant-md-min-width: calc(var(--pagination-min-width) * #{size-multiplier('md')}) !default;
+$pagination-size-variant-md: (
+    'font-size': $pagination-size-variant-md-font-size,
+    'border-radius': $pagination-size-variant-md-border-radius,
+    'padding': $pagination-size-variant-md-padding,
+    'min-width': $pagination-size-variant-md-min-width,
+) !default;
+
+$pagination-size-variant-lg-font-size: calc(var(--pagination-font-size) * #{size-multiplier('lg')}) !default;
+$pagination-size-variant-lg-border-radius: calc(var(--pagination-border-radius) * #{size-multiplier('lg')}) !default;
+$pagination-size-variant-lg-padding: calc(var(--pagination-padding) * #{size-multiplier('lg')}) !default;
+$pagination-size-variant-lg-min-width: calc(var(--pagination-min-width) * #{size-multiplier('lg')}) !default;
+$pagination-size-variant-lg: (
+    'font-size': $pagination-size-variant-lg-font-size,
+    'border-radius': $pagination-size-variant-lg-border-radius,
+    'padding': $pagination-size-variant-lg-padding,
+    'min-width': $pagination-size-variant-lg-min-width,
+) !default;
+
+$pagination-size-variants: (
+    'sm': $pagination-size-variant-sm,
+    'md': $pagination-size-variant-md,
+    'lg': $pagination-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$pagination-color-variant-light-background: color('light') !default;
+$pagination-color-variant-light-background-hover: color('light-55') !default;
+$pagination-color-variant-light-background-active: color('primary') !default;
+$pagination-color-variant-light-border-color: color('light-55') !default;
+$pagination-color-variant-light-border-color-active: color('primary-55') !default;
+$pagination-color-variant-light-color: contrast-color($color-light) !default;
+$pagination-color-variant-light-color-active: contrast-color($color-primary) !default;
+$pagination-color-variant-light: (
+    'background': $pagination-color-variant-light-background,
+    'background-hover': $pagination-color-variant-light-background-hover,
+    'background-active': $pagination-color-variant-light-background-active,
+    'border-color': $pagination-color-variant-light-border-color,
+    'border-color-active': $pagination-color-variant-light-border-color-active,
+    'color': $pagination-color-variant-light-color,
+    'color-active': $pagination-color-variant-light-color-active
+) !default;
+
+$pagination-color-variant-dark-background: color('dark') !default;
+$pagination-color-variant-dark-background-hover: color('dark-45') !default;
+$pagination-color-variant-dark-background-active: color('primary') !default;
+$pagination-color-variant-dark-border-color: color('dark-45') !default;
+$pagination-color-variant-dark-border-color-active: color('primary-55') !default;
+$pagination-color-variant-dark-color: contrast-color($color-dark) !default;
+$pagination-color-variant-dark-color-active: contrast-color($color-primary) !default;
+$pagination-color-variant-dark: (
+    'background': $pagination-color-variant-dark-background,
+    'background-hover': $pagination-color-variant-dark-background-hover,
+    'background-active': $pagination-color-variant-dark-background-active,
+    'border-color': $pagination-color-variant-dark-border-color,
+    'border-color-active': $pagination-color-variant-dark-border-color-active,
+    'color': $pagination-color-variant-dark-color,
+    'color-active': $pagination-color-variant-dark-color-active
+) !default;
+
+$pagination-color-variants: (
+    'light': $pagination-color-variant-light,
+    'dark': $pagination-color-variant-dark,
+) !default;
