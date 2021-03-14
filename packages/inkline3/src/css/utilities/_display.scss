@@ -4,17 +4,17 @@
 @import '../mixins/breakpoints';
 
 @each $breakpoint-key in $breakpoint-infix-keys {
-    $infix: breakpoint-infix($breakpoint-key);
+    $prefix: breakpoint-prefix($breakpoint-key);
 
-    @include breakpoint($breakpoint-key) {
-        ._display#{$infix}-none { display: none !important; }
-        ._display#{$infix}-inline { display: inline !important; }
-        ._display#{$infix}-inline-block { display: inline-block !important; }
-        ._display#{$infix}-block { display: block !important; }
-        ._display#{$infix}-table { display: table !important; }
-        ._display#{$infix}-table-cell { display: table-cell !important; }
-        ._display#{$infix}-flex { display: flex !important; }
-        ._display#{$infix}-inline-flex { display: inline-flex !important; }
+    @include breakpoint-up($breakpoint-key) {
+        ._#{$prefix}display\:none { display: none !important; }
+        ._#{$prefix}display\:inline { display: inline !important; }
+        ._#{$prefix}display\:inline-block { display: inline-block !important; }
+        ._#{$prefix}display\:block { display: block !important; }
+        ._#{$prefix}display\:table { display: table !important; }
+        ._#{$prefix}display\:table-cell { display: table-cell !important; }
+        ._#{$prefix}display\:flex { display: flex !important; }
+        ._#{$prefix}display\:inline-flex { display: inline-flex !important; }
     }
 }
 
@@ -22,24 +22,24 @@
     * Print Display
     */
 
-._display-print-block {
+._print\:display\:block {
     display: none !important;
 
     @media print { display: block !important; }
 }
 
-._display-print-inline {
+._print\:display\:inline {
     display: none !important;
 
     @media print { display: inline !important; }
 }
 
-._display-print-inline-block {
+._print\:display\:inline-block {
     display: none !important;
 
     @media print { display: inline-block !important; }
 }
 
-._display-print-none {
+._print\:display\:none {
     @media print { display: none !important; }
 }

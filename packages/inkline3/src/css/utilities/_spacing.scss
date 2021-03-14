@@ -3,32 +3,34 @@
  */
 
 @each $breakpoint-key in $breakpoint-infix-keys {
-    $infix: breakpoint-infix($breakpoint-key);
+    $prefix: breakpoint-prefix($breakpoint-key);
 
-    @include breakpoint($breakpoint-key) {
+    @include breakpoint-up($breakpoint-key) {
         @each $property in ('margin', 'padding') {
             @each $size, $length in $spacers {
-                ._#{$property}#{$infix}-#{$size} {
+                $size-class: str-replace($size, '/', '\\/');
+
+                ._#{$prefix}#{$property}\:#{$size-class} {
                     #{$property}: spacer($size) !important;
                 }
 
-                ._#{$property}-top#{$infix}-#{$size},
-                ._#{$property}-y#{$infix}-#{$size} {
+                ._#{$prefix}#{$property}-top\:#{$size-class},
+                ._#{$prefix}#{$property}-y\:#{$size-class} {
                     #{$property}-top: spacer($size) !important;
                 }
 
-                ._#{$property}-right#{$infix}-#{$size},
-                ._#{$property}-x#{$infix}-#{$size} {
+                ._#{$prefix}#{$property}-right\:#{$size-class},
+                ._#{$prefix}#{$property}-x\:#{$size-class} {
                     #{$property}-right: spacer($size) !important;
                 }
 
-                ._#{$property}-bottom#{$infix}-#{$size},
-                ._#{$property}-y#{$infix}-#{$size} {
+                ._#{$prefix}#{$property}-bottom\:#{$size-class},
+                ._#{$prefix}#{$property}-y\:#{$size-class} {
                     #{$property}-bottom: spacer($size) !important;
                 }
 
-                ._#{$property}-left#{$infix}-#{$size},
-                ._#{$property}-x#{$infix}-#{$size} {
+                ._#{$prefix}#{$property}-left\:#{$size-class},
+                ._#{$prefix}#{$property}-x\:#{$size-class} {
                     #{$property}-left: spacer($size) !important;
                 }
             }
@@ -36,27 +38,27 @@
 
         // Auto margin utils
         //
-        ._margin#{$infix}-auto {
+        ._#{$prefix}margin\:auto {
             margin: auto !important;
         }
 
-        ._margin-top#{$infix}-auto,
-        ._margin-y#{$infix}-auto {
+        ._#{$prefix}margin-top\:auto,
+        ._#{$prefix}margin-y\:auto {
             margin-top: auto !important;
         }
 
-        ._margin-right#{$infix}-auto,
-        ._margin-x#{$infix}-auto {
+        ._#{$prefix}margin-right\:auto,
+        ._#{$prefix}margin-x\:auto {
             margin-right: auto !important;
         }
 
-        ._margin-bottom#{$infix}-auto,
-        ._margin-y#{$infix}-auto {
+        ._#{$prefix}margin-bottom\:auto,
+        ._#{$prefix}margin-y\:auto {
             margin-bottom: auto !important;
         }
 
-        ._margin-left#{$infix}-auto,
-        ._margin-x#{$infix}-auto {
+        ._#{$prefix}margin-left\:auto,
+        ._#{$prefix}margin-x\:auto {
             margin-left: auto !important;
         }
     }

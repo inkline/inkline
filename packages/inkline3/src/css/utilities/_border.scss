@@ -23,7 +23,7 @@
 
     // Remove border
     //
-    ._border-#{$position}-0 {
+    ._border-#{$position}\:0 {
         border-#{$position}: none !important;
     }
 }
@@ -31,12 +31,12 @@
 // Colors
 //
 @each $variant-name, $variant in $border-variants {
-    ._border-color-#{$variant-name} {
+    ._border-color\:#{$variant-name} {
         border-color: color($variant-name) !important;
     }
 
     @each $position in $border-positions {
-        ._border-#{$position}-color-#{$variant-name} {
+        ._border-#{$position}-color\:#{$variant-name} {
             border-#{$position}-color: color($variant-name) !important;
         }
     }
@@ -44,50 +44,50 @@
 
 // Border Radius
 //
-._rounded {
+._border-radius {
     border-radius: border-radius() !important;
 }
 
-._rounded-top {
+._border-top-radius {
     border-top-left-radius: border-radius() !important;
     border-top-right-radius: border-radius() !important;
 }
 
-._rounded-right {
+._border-right-radius {
     border-top-right-radius: border-radius() !important;
     border-bottom-right-radius: border-radius() !important;
 }
 
-._rounded-bottom {
+._border-bottom-radius {
     border-bottom-right-radius: border-radius() !important;
     border-bottom-left-radius: border-radius() !important;
 }
 
-._rounded-left {
+._border-left-radius {
     border-top-left-radius: border-radius() !important;
     border-bottom-left-radius: border-radius() !important;
 }
 
-._rounded-top-left {
+._border-top-left-radius {
     border-top-left-radius: border-radius() !important;
 }
 
-._rounded-top-right {
+._border-top-right-radius {
     border-top-right-radius: border-radius() !important;
 }
 
-._rounded-bottom-left {
+._border-bottom-left-radius {
     border-bottom-left-radius: border-radius() !important;
 }
 
-._rounded-bottom-right {
+._border-bottom-right-radius {
     border-bottom-right-radius: border-radius() !important;
 }
 
-._rounded-circle {
+._border-radius\:circle {
     border-radius: 50% !important;
 }
 
-._rounded-0 {
+._border-radius\:0 {
     border-radius: 0 !important;
 }

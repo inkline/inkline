@@ -5,7 +5,7 @@
 // Background
 //
 @each $variant-name, $variant in $colors {
-    ._background-#{$variant-name} {
+    ._background\:#{$variant-name} {
         color: contrast-color($variant);
         background-color: color($variant-name) !important;
     }
@@ -14,8 +14,8 @@
 // Text
 //
 @each $variant-name, $variant in $colors {
-    ._color-#{$variant-name},
-    ._text-#{$variant-name} {
+    ._color\:#{$variant-name},
+    ._text\:#{$variant-name} {
         color: color($variant-name) !important;
     }
 }

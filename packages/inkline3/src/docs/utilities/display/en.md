@@ -18,8 +18,8 @@ The classes are named using the following format:
 
 <div v-pre>
 
-- `._display-{value}`<span/>
-- `._display-{breakpoint}-{value}`<span/> 
+- `._display:{value}`<span/>
+- `._{breakpoint}:display:{value}`<span/> 
 
 </div>
 
@@ -40,8 +40,9 @@ And `breakpoint` is one of:
 - `md`
 - `lg`
 - `xl`
+- `xxl`
 
-The media queries affect screen widths with the given breakpoint. For example, `._display-lg-none` sets `display: none;` on large screens.
+The media queries affect screen widths with the given breakpoint. For example, `._lg:display:none` sets `display: none;` on large screens.
 
 <example :component="examples.DisplayInlineExample" :html="examples.DisplayInlineExampleHTML"></example>
 
@@ -50,7 +51,7 @@ The media queries affect screen widths with the given breakpoint. For example, `
 ### Print
 Change the display value of elements when printing with the print display utility classes.
 
-- `._display-print-none`
-- `._display-print-inline`
-- `._display-print-inline-block`
-- `._display-print-block`
+- `._print:display:none`
+- `._print:display:inline`
+- `._print:display:inline-block`
+- `._print:display:block`

@@ -5,6 +5,8 @@
     --spacer: #{$spacer};
 
     @each $spacer-key, $spacer-value in $spacers {
+        $spacer-key: str-replace($spacer-key, '/', '-');
+
         --spacer-#{$spacer-key}: #{$spacer-value};
     }
 }

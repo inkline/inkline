@@ -21,28 +21,28 @@ Aspect ratios can be customized with embed helper classes. The following aspect 
 
 ~~~html
 <!-- 21:9 aspect ratio -->
-<div class="_embed _embed-21by9">
+<div class="_embed:21:9">
     <iframe src="..."></iframe>
 </div>
 ~~~
 
 ~~~html
 <!-- 16:9 aspect ratio -->
-<div class="_embed _embed-16by9">
+<div class="_embed:16:9">
     <iframe src="..."></iframe>
 </div>
 ~~~
 
 ~~~html
 <!-- 4:3 aspect ratio -->
-<div class="_embed _embed-4by3">
+<div class="_embed:4:3">
     <iframe src="..."></iframe>
 </div>
 ~~~
 
 ~~~html
 <!-- 1:1 aspect ratio -->
-<div class="_embed _embed-1by1">
+<div class="_embed:1:1">
     <iframe src="..."></iframe>
 </div>
 ~~~

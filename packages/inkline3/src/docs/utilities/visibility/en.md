@@ -23,8 +23,8 @@ Set element visibility using visibility utilities. Content will be hidden both v
 Without modifying the element's display:
 
 ~~~html
-<div class="_visibility-hidden">...</div>
-<div class="_visibility-visible">...</div>
+<div class="_visibility:hidden">...</div>
+<div class="_visibility:visible">...</div>
 ~~~
 
 ### Responsive Visibility
@@ -32,11 +32,7 @@ Visibility utilities can be applied responsively using the following helper clas
 
 - `._hidden`
 - `._visible`
-- `._hidden-{xs|sm|md|lg|xl}`
-- `._hidden-{xs|sm|md|lg|xl}-and-up`
-- `._hidden-{xs|sm|md|lg|xl}-and-down`
-- `._visible-{xs|sm|md|lg|xl}`
-- `._visible-{xs|sm|md|lg|xl}-and-up`
-- `._visible-{xs|sm|md|lg|xl}-and-down`
+- `._{xs|sm|md|lg|xl|xxl}:hidden`
+- `._{xs|sm|md|lg|xl|xxl}:visible`
 
 <example :component="examples.VisibilityBasicExample" :html="examples.VisibilityBasicExampleHTML"></example>

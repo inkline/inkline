@@ -3,12 +3,12 @@
  */
 
 @each $position in ('static', 'relative', 'absolute', 'fixed', 'sticky') {
-    ._position-#{$position} {
+    ._position\:#{$position} {
         position: #{$position} !important;
     }
 }
 
-._fixed-top {
+._position\:fixed-top {
     position: fixed;
     top: 0;
     right: 0;
@@ -16,7 +16,7 @@
     z-index: z-index(fixed);
 }
 
-._fixed-bottom {
+._position\:fixed-bottom {
     position: fixed;
     right: 0;
     bottom: 0;
@@ -24,7 +24,7 @@
     z-index: z-index(fixed);
 }
 
-._sticky-top {
+._position\:sticky-top {
     @supports (position: sticky) {
         position: sticky;
         top: 0;

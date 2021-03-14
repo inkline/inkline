@@ -1,49 +1,25 @@
 @each $breakpoint-key in $breakpoint-infix-keys {
-    $infix: breakpoint-infix($breakpoint-key);
+    $prefix: breakpoint-prefix($breakpoint-key);
 
-    @include breakpoint($breakpoint-key) {
-        ._hidden#{$infix}-only {
+    ._#{$prefix}visible {
+        display: none;
+    }
+
+    @include breakpoint-up($breakpoint-key) {
+        ._#{$prefix}hidden {
             display: none !important;
         }
 
-        ._visible#{$infix}-only {
+        ._#{$prefix}visible {
             display: block;
         }
     }
-
-    @if $infix != '' {
-        ._visible#{$infix}-only,
-        ._visible#{$infix}-and-up,
-        ._visible#{$infix}-and-down {
-            display: none !important;
-        }
-
-        @include breakpoint-up($breakpoint-key) {
-            ._hidden#{$infix}-and-up {
-                display: none !important;
-            }
-
-            ._visible#{$infix}-and-up {
-                display: block !important;
-            }
-        }
-
-        @include breakpoint-down($breakpoint-key) {
-            ._hidden#{$infix}-and-down {
-                display: none !important;
-            }
-
-            ._visible#{$infix}-and-down {
-                display: block !important;
-            }
-        }
-    }
 }
 
-._visibility-visible {
+._visibility\:visible {
     visibility: visible;
 }
 
-._visibility-hidden {
+._visibility\:hidden {
     visibility: hidden;
 }

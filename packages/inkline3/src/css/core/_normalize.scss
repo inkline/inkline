@@ -211,7 +211,7 @@ dt {
 }
 
 dd {
-    margin-bottom: spacer('1-2');
+    margin-bottom: spacer('1/2');
     margin-left: 0; // Undo browser default
 }
 
@@ -400,7 +400,7 @@ legend {
     width: 100%;
     max-width: 100%;
     padding: 0;
-    margin-bottom: spacer('1-2');
+    margin-bottom: spacer('1/2');
     font-size: 1.5rem;
     line-height: inherit;
     color: inherit;
@@ -409,7 +409,7 @@ legend {
 
 label {
     display: inline-block;
-    margin-bottom: spacer('1-2');
+    margin-bottom: spacer('1/2');
 }
 
 textarea {
