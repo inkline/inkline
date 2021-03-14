@@ -78,10 +78,10 @@ export default defineComponent({
         display: block;
         width: 100%;
         box-sizing: border-box;
-        padding: spacer('1-2');
+        padding: spacer('1/2');
 
         > * {
-            margin: spacer('1-2');
+            margin: spacer('1/2');
         }
     }
 
@@ -90,7 +90,7 @@ export default defineComponent({
     }
 
     &.-no-margin {
-        padding: spacer('1');
+        padding: spacer();
 
         > .body {
             > * {
@@ -105,7 +105,7 @@ export default defineComponent({
             width: 120px;
             text-align: center;
             border-radius: 4px;
-            padding: spacer('1') 0;
+            padding: spacer() 0;
         }
 
         > p {
@@ -145,7 +145,7 @@ export default defineComponent({
             }
 
             div {
-                padding: spacer('1-2');
+                padding: spacer('1/2');
                 background: color('gray-10');
                 border: 1px solid color('gray-30');
 
@@ -166,7 +166,7 @@ export default defineComponent({
     &.-overflow > .body {
         > div {
             background: color('light');
-            padding: spacer('1-2');
+            padding: spacer('1/2');
             border-radius: border-radius();
 
             + div {
@@ -268,7 +268,7 @@ export default defineComponent({
         .layout-header,
         .layout-footer {
             background: color('gray-20');
-            padding: spacer('1') 0;
+            padding: spacer() 0;
 
             .inkline.-dark & {
                 background: color('gray-80');
@@ -309,8 +309,8 @@ export default defineComponent({
         }
 
         .column {
-            margin-top: spacer('1-2');
-            margin-bottom: spacer('1-2');
+            margin-top: spacer('1/2');
+            margin-bottom: spacer('1/2');
             text-align: center;
 
             &::after {

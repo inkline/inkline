@@ -2,57 +2,67 @@
     <div id="layout">
         <aside id="sidebar">
             <ul>
-<!--                <li>-->
-<!--                    <router-link :to="{ name: 'index' }">-->
-<!--                        Home-->
-<!--                    </router-link>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    Core-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <router-link :to="{ name: 'docs-core-grid' }">-->
-<!--                        Grid-->
-<!--                    </router-link>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <router-link :to="{ name: 'docs-core-layout' }">-->
-<!--                        Layout-->
-<!--                    </router-link>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <router-link :to="{ name: 'docs-core-typography' }">-->
-<!--                        Typography-->
-<!--                    </router-link>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <router-link :to="{ name: 'docs-core-images' }">-->
-<!--                        Images-->
-<!--                    </router-link>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <router-link :to="{ name: 'docs-core-tables' }">-->
-<!--                        Tables-->
-<!--                    </router-link>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <router-link :to="{ name: 'docs-core-code' }">-->
-<!--                        Code-->
-<!--                    </router-link>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    Forms-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <router-link :to="{ name: 'docs-forms-form' }">-->
-<!--                        Form-->
-<!--                    </router-link>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <router-link :to="{ name: 'docs-forms-input' }">-->
-<!--                        Input-->
-<!--                    </router-link>-->
-<!--                </li>-->
+                <li>
+                    <router-link :to="{ name: 'index' }">
+                        Home
+                    </router-link>
+                </li>
+                <li>
+                    Core
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-core-grid' }">
+                        Grid
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-core-layout' }">
+                        Layout
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-core-typography' }">
+                        Typography
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-core-images' }">
+                        Images
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-core-tables' }">
+                        Tables
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-core-code' }">
+                        Code
+                    </router-link>
+                </li>
+                <li>
+                    Forms
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-form' }">
+                        Form
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-input' }">
+                        Input
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-number-input' }">
+                        Number Input
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-textarea' }">
+                        Textarea
+                    </router-link>
+                </li>
                 <li>
                     Components
                 </li>
@@ -134,6 +144,16 @@
                 <li>
                     <router-link :to="{ name: 'docs-components-navbar' }">
                         Navbar
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-components-pagination' }">
+                        Pagination
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-components-tooltip' }">
+                        Tooltip
                     </router-link>
                 </li>
                 <li>

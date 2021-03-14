@@ -32,7 +32,7 @@ export default defineConfig({
                 find: /^@inkline\/inkline\//,
                 replacement: `${resolve(__dirname)}/`
             }
-        ],
+        ]
     },
     build: {
         lib: {
