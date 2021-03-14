@@ -1,0 +1,43 @@
+@mixin pagination-color-variant($color-variant-key) {
+    $_color: var(--pagination-color-variant-#{$color-variant-key}-color);
+    $_color-active: var(--pagination-color-variant-#{$color-variant-key}-color-active);
+    $_background: var(--pagination-color-variant-#{$color-variant-key}-background);
+    $_background-hover: var(--pagination-color-variant-#{$color-variant-key}-background-hover);
+    $_background-active: var(--pagination-color-variant-#{$color-variant-key}-background-active);
+    $_border-color: var(--pagination-color-variant-#{$color-variant-key}-border-color);
+    $_border-color-active: var(--pagination-color-variant-#{$color-variant-key}-border-color-active);
+
+    > .pagination-item {
+        color: $_color;
+        background-color: $_background;
+        border-color: $_border-color;
+
+        &:hover:not(.-disabled),
+        &:focus:not(.-disabled) {
+            background: $_background-hover;
+        }
+
+        &.-active {
+            background-color: $_background-active;
+            border-color: $_border-color-active;
+            color: $_color-active;
+
+            &:hover,
+            &:focus {
+                background-color: $_background-active;
+            }
+        }
+
+        &.-disabled {
+            opacity: var(--pagination-opacity-disabled);
+        }
+
+        &.-quick-next,
+        &.-quick-previous {
+            &.-disabled {
+                opacity: var(--pagination-opacity-disabled);
+                border-color: $_background;
+            }
+        }
+    }
+}

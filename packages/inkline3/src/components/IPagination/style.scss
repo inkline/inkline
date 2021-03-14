@@ -1,0 +1,53 @@
+/**
+ * Nav
+ */
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/sizes';
+@import 'css/colors';
+
+.pagination {
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    > .pagination-item {
+        display: inline-flex;
+        border-width: var(--pagination-border-width);
+        border-style: solid;
+        margin: 0 var(--pagination-margin);
+        text-align: center;
+        justify-content: center;
+        cursor: pointer;
+        transition-property: background, color, border;
+        transition-timing-function: var(--transition-easing);
+        transition-duration: var(--transition-duration);
+
+        &.-active {
+            font-weight: bold;
+        }
+
+        &.-disabled {
+            cursor: default;
+        }
+    }
+
+    @include pagination-size-variant('md');
+    @each $size-variant-key, $pagination-size-variant-value in $pagination-size-variants {
+        &.-#{$size-variant-key} {
+            @include pagination-size-variant($size-variant-key);
+        }
+    }
+
+    @include pagination-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $pagination-color-variants {
+        &.-#{$color-variant-key} {
+            @include pagination-color-variant($color-variant-key);
+        }
+    }
+}
