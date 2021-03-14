@@ -1,0 +1,22 @@
+:root {
+    --tooltip-border-radius: #{$tooltip-border-radius};
+    --tooltip-border-width: #{$tooltip-border-width};
+    --tooltip-font-size: #{$tooltip-font-size};
+    --tooltip-font-weight: #{$tooltip-font-weight};
+    --tooltip-line-height: #{$tooltip-line-height};
+    --tooltip-padding: #{$tooltip-padding};
+    --tooltip-margin: #{$tooltip-margin};
+    --tooltip-z-index: #{$tooltip-z-index};
+
+    @each $tooltip-size-variant-key, $tooltip-size-variant-value in $tooltip-size-variants {
+        @each $tooltip-size-variant-field-key, $tooltip-size-variant-field-value in $tooltip-size-variant-value {
+            --tooltip-size-variant-#{$tooltip-size-variant-key}-#{$tooltip-size-variant-field-key}: #{$tooltip-size-variant-field-value};
+        }
+    }
+
+    @each $color-variant-key, $color-variant-value in $tooltip-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --tooltip-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}

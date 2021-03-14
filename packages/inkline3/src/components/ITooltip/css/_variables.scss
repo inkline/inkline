@@ -1,0 +1,78 @@
+//
+// Variables
+//
+
+$tooltip-font-size: font-size() !default;
+$tooltip-font-weight: font-weight('normal') !default;
+$tooltip-line-height: var(--line-height) !default;
+$tooltip-margin: spacer('1/2') !default;
+$tooltip-border-width: var(--border-width) !default;
+$tooltip-border-radius: border-radius() !default;
+$tooltip-padding: spacer('1/2') !default;
+$tooltip-z-index: 2000 !default;
+
+//
+// Sizes
+//
+
+$tooltip-size-variant-sm-border-radius: calc(var(--tooltip-border-radius) * #{size-multiplier('sm')}) !default;
+$tooltip-size-variant-sm-font-size: calc(var(--tooltip-font-size) * #{size-multiplier('sm')}) !default;
+$tooltip-size-variant-sm-padding: calc(var(--tooltip-padding) * #{size-multiplier('sm')}) !default;
+$tooltip-size-variant-sm: (
+    'border-radius': $tooltip-size-variant-sm-border-radius,
+    'font-size': $tooltip-size-variant-sm-font-size,
+    'padding': $tooltip-size-variant-sm-padding,
+) !default;
+
+$tooltip-size-variant-md-border-radius: calc(var(--tooltip-border-radius) * #{size-multiplier('md')}) !default;
+$tooltip-size-variant-md-font-size: calc(var(--tooltip-font-size) * #{size-multiplier('md')}) !default;
+$tooltip-size-variant-md-padding: calc(var(--tooltip-padding) * #{size-multiplier('md')}) !default;
+$tooltip-size-variant-md: (
+    'border-radius': $tooltip-size-variant-md-border-radius,
+    'font-size': $tooltip-size-variant-md-font-size,
+    'padding': $tooltip-size-variant-md-padding,
+) !default;
+
+$tooltip-size-variant-lg-border-radius: calc(var(--tooltip-border-radius) * #{size-multiplier('lg')}) !default;
+$tooltip-size-variant-lg-font-size: calc(var(--tooltip-font-size) * #{size-multiplier('lg')}) !default;
+$tooltip-size-variant-lg-padding: calc(var(--tooltip-padding) * #{size-multiplier('lg')}) !default;
+$tooltip-size-variant-lg: (
+    'border-radius': $tooltip-size-variant-lg-border-radius,
+    'font-size': $tooltip-size-variant-lg-font-size,
+    'padding': $tooltip-size-variant-lg-padding,
+) !default;
+
+$tooltip-size-variants: (
+    'sm': $tooltip-size-variant-sm,
+    'md': $tooltip-size-variant-md,
+    'lg': $tooltip-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$tooltip-color-variant-light-color: contrast-color($color-white) !default;
+$tooltip-color-variant-light-background: color('white') !default;
+$tooltip-color-variant-light-border-color: color('light') !default;
+
+$tooltip-color-variant-light: (
+    'color': $tooltip-color-variant-light-color,
+    'background': $tooltip-color-variant-light-background,
+    'border-color': $tooltip-color-variant-light-border-color,
+) !default;
+
+$tooltip-color-variant-dark-color: contrast-color($color-dark) !default;
+$tooltip-color-variant-dark-background: color('dark') !default;
+$tooltip-color-variant-dark-border-color: color('dark-60') !default;
+
+$tooltip-color-variant-dark: (
+    'color': $tooltip-color-variant-dark-color,
+    'background': $tooltip-color-variant-dark-background,
+    'border-color': $tooltip-color-variant-dark-border-color,
+) !default;
+
+$tooltip-color-variants: (
+    'light': $tooltip-color-variant-light,
+    'dark': $tooltip-color-variant-dark,
+) !default;
