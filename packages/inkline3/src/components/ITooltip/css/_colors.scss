@@ -1,0 +1,11 @@
+@mixin tooltip-color-variant($color-variant-key) {
+    $_color: var(--tooltip-color-variant-#{$color-variant-key}-color);
+    $_background: var(--tooltip-color-variant-#{$color-variant-key}-background);
+    $_border-color: var(--tooltip-color-variant-#{$color-variant-key}-border-color);
+
+    color: $_color;
+    background-color: $_background;
+    border-color: $_border-color;
+
+    @include popup-arrow-color-variant(('background': $_background, 'border-color': $_border-color));
+}
