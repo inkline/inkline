@@ -12,36 +12,6 @@
     vertical-align: middle;
     position: relative;
 
-    &.-prepended,
-    &.-appended {
-        display: flex;
-        flex-wrap: nowrap;
-
-        .form-input {
-            flex-shrink: 1;
-        }
-    }
-
-    &.-prepended {
-        .form-input {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-    }
-
-    &.-appended {
-        .form-input {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-    }
-
-    &.-error {
-        .form-input {
-            border-color: color('danger');
-        }
-    }
-
     > .form-input-prepend,
     > .form-input-append {
         display: flex;
@@ -187,6 +157,36 @@
         .form-group.-#{$color-variant-key} &,
         &.-#{$color-variant-key} {
             @include input-color-variant($color-variant-key);
+        }
+    }
+
+    &.-prepended,
+    &.-appended {
+        display: flex;
+        flex-wrap: nowrap;
+
+        > .form-input {
+            flex-shrink: 1;
+        }
+    }
+
+    &.-prepended {
+        > .form-input {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    &.-appended {
+        > .form-input {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    &.-error {
+        .form-input {
+            border-color: color('danger');
         }
     }
 }

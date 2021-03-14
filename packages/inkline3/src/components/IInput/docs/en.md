@@ -1,19 +1,15 @@
 ---
-title: Form
-description: Forms are the main wrapper components for form elements, with powerful customization and validation options. 
+title: Input
+description: Form component used for inputting data directly from the keyboard. 
 ---
 
 <script setup>
 import * as examples from '../examples';
 </script>
 
----
-title: Input
-description: Form component used for inputting data directly from the keyboard. 
----
 
-#  Input
-##  Form component used for inputting data directly from the keyboard. 
+# Input
+## Form component used for inputting data directly from the keyboard. 
 
 ### Basic Example
 Inputs are the simplest and most used type of form control. Inkline provides you with simple solutions for all the scenarios you will encounter when creating input forms.
