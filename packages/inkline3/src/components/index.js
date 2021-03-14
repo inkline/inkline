@@ -15,6 +15,8 @@ export { default as IHamburgerMenu } from '@inkline/inkline/src/components/IHamb
 export { default as IHeader } from '@inkline/inkline/src/components/IHeader/index.vue';
 export { default as IIcon } from '@inkline/inkline/src/components/IIcon/index.vue';
 export { default as IInput } from '@inkline/inkline/src/components/IInput/index.vue';
+export { default as INumberInput } from '@inkline/inkline/src/components/INumberInput/index.vue';
+export { default as ITextarea } from '@inkline/inkline/src/components/ITextarea/index.vue';
 export { default as ILayout } from '@inkline/inkline/src/components/ILayout/index.vue';
 export { default as ILayoutAside } from '@inkline/inkline/src/components/ILayout/components/ILayoutAside/index.vue';
 export { default as ILayoutContent } from '@inkline/inkline/src/components/ILayout/components/ILayoutContent/index.vue';
@@ -29,5 +31,7 @@ export { default as INav } from '@inkline/inkline/src/components/INav/index.vue'
 export * from '@inkline/inkline/src/components/INav/components';
 export { default as INavbar } from '@inkline/inkline/src/components/INavbar/index.vue';
 export * from '@inkline/inkline/src/components/INavbar/components';
+export { default as IPagination } from '@inkline/inkline/src/components/IPagination/index.vue';
 export { default as IRow } from '@inkline/inkline/src/components/IRow/index.vue';
 export { default as ITable } from '@inkline/inkline/src/components/ITable/index.vue';
+export { default as ITooltip } from '@inkline/inkline/src/components/ITooltip/index.vue';

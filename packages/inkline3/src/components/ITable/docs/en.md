@@ -16,7 +16,7 @@ Using the most basic table markup, here’s how tables look in Inkline. All tabl
 
 <example :component="examples.ITableBasicExample" :html="examples.ITableBasicExampleHTML"></example>
 
-<i-alert color="info" class="_margin-top-1">
+<i-alert color="info" class="_margin-top:1">
     <template #icon><i-icon icon="info" class="h4"></i-icon></template>
     <p>If your tables require more features such as sorting, filtering and rendering, you might want to take a look at the <router-link to="/docs/components/datatable/introduction">Datatable</router-link> component.</p>
 </i-alert>

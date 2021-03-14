@@ -21,13 +21,13 @@
 
     &:not(.-vertical) {
         > .button:last-child,
-        > .button-group:last-child > .button:last-child {
+        > [class$="-wrapper"]:last-child > * > .button:last-child {
             border-top-right-radius: $_border-radius;
             border-bottom-right-radius: $_border-radius;
         }
 
         > .button:first-child,
-        > .button-group:first-child > .button:first-child {
+        > [class$="-wrapper"]:first-child > * > .button:first-child {
             border-top-left-radius: $_border-radius;
             border-bottom-left-radius: $_border-radius;
         }
@@ -35,13 +35,13 @@
 
     &.-vertical {
         > .button:last-child,
-        > .button-group:last-child > .button {
+        > [class$="-wrapper"]:last-child > * > .button:last-child {
             border-bottom-left-radius: $_border-radius;
             border-bottom-right-radius: $_border-radius;
         }
 
         > .button:first-child,
-        > .button-group:first-child > .button {
+        > [class$="-wrapper"]:first-child > * > .button:first-child {
             border-top-left-radius: $_border-radius;
             border-top-right-radius: $_border-radius;
         }
