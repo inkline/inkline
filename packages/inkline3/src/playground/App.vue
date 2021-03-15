@@ -102,6 +102,11 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'docs-components-dropdown' }">
+                        Dropdown
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'docs-components-hamburger-menu' }">
                         Hamburger Menu
                     </router-link>
@@ -149,6 +154,11 @@
                 <li>
                     <router-link :to="{ name: 'docs-components-pagination' }">
                         Pagination
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-components-popover' }">
+                        Popover
                     </router-link>
                 </li>
                 <li>

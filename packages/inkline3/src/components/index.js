@@ -9,6 +9,8 @@ export { default as IContainer } from '@inkline/inkline/src/components/IContaine
 export { default as ICard } from '@inkline/inkline/src/components/ICard/index.vue';
 export { default as ICollapsible } from '@inkline/inkline/src/components/ICollapsible/index.vue';
 export * from '@inkline/inkline/src/components/ICollapsible/components';
+export { default as IDropdown } from '@inkline/inkline/src/components/IDropdown/index.vue';
+export * from '@inkline/inkline/src/components/IDropdown/components';
 export { default as IForm } from '@inkline/inkline/src/components/IForm/index.vue';
 export * from '@inkline/inkline/src/components/IForm/components';
 export { default as IHamburgerMenu } from '@inkline/inkline/src/components/IHamburgerMenu/index.vue';
@@ -32,6 +34,7 @@ export * from '@inkline/inkline/src/components/INav/components';
 export { default as INavbar } from '@inkline/inkline/src/components/INavbar/index.vue';
 export * from '@inkline/inkline/src/components/INavbar/components';
 export { default as IPagination } from '@inkline/inkline/src/components/IPagination/index.vue';
+export { default as IPopover } from '@inkline/inkline/src/components/IPopover/index.vue';
 export { default as IRow } from '@inkline/inkline/src/components/IRow/index.vue';
 export { default as ITable } from '@inkline/inkline/src/components/ITable/index.vue';
 export { default as ITooltip } from '@inkline/inkline/src/components/ITooltip/index.vue';

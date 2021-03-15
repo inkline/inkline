@@ -1,0 +1,88 @@
+//
+// Variables
+//
+
+$popover-font-size: font-size() !default;
+$popover-font-weight: font-weight('normal') !default;
+$popover-line-height: var(--line-height) !default;
+$popover-margin: spacer('1/2') !default;
+$popover-border-width: var(--border-width) !default;
+$popover-border-radius: border-radius() !default;
+$popover-padding: spacer() !default;
+$popover-z-index: 2000 !default;
+$popover-width: 280px !default;
+$popover-max-width: 90vw !default;
+
+//
+// Sizes
+//
+
+$popover-size-variant-sm-border-radius: calc(var(--popover-border-radius) * #{size-multiplier('sm')}) !default;
+$popover-size-variant-sm-font-size: calc(var(--popover-font-size) * #{size-multiplier('sm')}) !default;
+$popover-size-variant-sm-padding: calc(var(--popover-padding) * #{size-multiplier('sm')} / 2) calc(var(--popover-padding) * #{size-multiplier('sm')}) !default;
+$popover-size-variant-sm: (
+    'border-radius': $popover-size-variant-sm-border-radius,
+    'font-size': $popover-size-variant-sm-font-size,
+    'padding': $popover-size-variant-sm-padding,
+) !default;
+
+$popover-size-variant-md-border-radius: calc(var(--popover-border-radius) * #{size-multiplier('md')}) !default;
+$popover-size-variant-md-font-size: calc(var(--popover-font-size) * #{size-multiplier('md')}) !default;
+$popover-size-variant-md-padding: calc(var(--popover-padding) * #{size-multiplier('md')} / 2) calc(var(--popover-padding) * #{size-multiplier('md')}) !default;
+$popover-size-variant-md: (
+    'border-radius': $popover-size-variant-md-border-radius,
+    'font-size': $popover-size-variant-md-font-size,
+    'padding': $popover-size-variant-md-padding,
+) !default;
+
+$popover-size-variant-lg-border-radius: calc(var(--popover-border-radius) * #{size-multiplier('lg')}) !default;
+$popover-size-variant-lg-font-size: calc(var(--popover-font-size) * #{size-multiplier('lg')}) !default;
+$popover-size-variant-lg-padding: calc(var(--popover-padding) * #{size-multiplier('lg')} / 2) calc(var(--popover-padding) * #{size-multiplier('lg')}) !default;
+$popover-size-variant-lg: (
+    'border-radius': $popover-size-variant-lg-border-radius,
+    'font-size': $popover-size-variant-lg-font-size,
+    'padding': $popover-size-variant-lg-padding,
+) !default;
+
+$popover-size-variants: (
+    'sm': $popover-size-variant-sm,
+    'md': $popover-size-variant-md,
+    'lg': $popover-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$popover-color-variant-light-color: contrast-color($color-white) !default;
+$popover-color-variant-light-background: color('white') !default;
+$popover-color-variant-light-border-color: color('light') !default;
+$popover-color-variant-light-header-background: color('gray-05') !default;
+$popover-color-variant-light-footer-background: color('gray-05') !default;
+
+$popover-color-variant-light: (
+    'color': $popover-color-variant-light-color,
+    'background': $popover-color-variant-light-background,
+    'border-color': $popover-color-variant-light-border-color,
+    'header-background': $popover-color-variant-light-header-background,
+    'footer-background': $popover-color-variant-light-footer-background,
+) !default;
+
+$popover-color-variant-dark-color: contrast-color($color-dark) !default;
+$popover-color-variant-dark-background: color('dark') !default;
+$popover-color-variant-dark-border-color: color('dark-60') !default;
+$popover-color-variant-dark-header-background: color('dark-55') !default;
+$popover-color-variant-dark-footer-background: color('dark-55') !default;
+
+$popover-color-variant-dark: (
+    'color': $popover-color-variant-dark-color,
+    'background': $popover-color-variant-dark-background,
+    'border-color': $popover-color-variant-dark-border-color,
+    'header-background': $popover-color-variant-dark-header-background,
+    'footer-background': $popover-color-variant-dark-footer-background,
+) !default;
+
+$popover-color-variants: (
+    'light': $popover-color-variant-light,
+    'dark': $popover-color-variant-dark,
+) !default;

@@ -8,3 +8,6 @@ export { default as ITooltipFreeformExample } from './freeform.vue';
 export { default as ITooltipFreeformExampleHTML } from './freeform.html';
 export { default as ITooltipPlacementExample } from './placement.vue';
 export { default as ITooltipPlacementExampleHTML } from './placement.html';
+export { default as ITooltipTriggerExample } from './trigger.vue';
+export { default as ITooltipTriggerExampleHTML } from './trigger.html';
+export { default as ITooltipTriggerExampleJS } from './trigger.js?raw';

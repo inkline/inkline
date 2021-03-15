@@ -1,0 +1,24 @@
+:root {
+    --popover-border-radius: #{$popover-border-radius};
+    --popover-border-width: #{$popover-border-width};
+    --popover-font-size: #{$popover-font-size};
+    --popover-font-weight: #{$popover-font-weight};
+    --popover-line-height: #{$popover-line-height};
+    --popover-padding: #{$popover-padding};
+    --popover-margin: #{$popover-margin};
+    --popover-z-index: #{$popover-z-index};
+    --popover-width: #{$popover-width};
+    --popover-max-width: #{$popover-max-width};
+
+    @each $popover-size-variant-key, $popover-size-variant-value in $popover-size-variants {
+        @each $popover-size-variant-field-key, $popover-size-variant-field-value in $popover-size-variant-value {
+            --popover-size-variant-#{$popover-size-variant-key}-#{$popover-size-variant-field-key}: #{$popover-size-variant-field-value};
+        }
+    }
+
+    @each $color-variant-key, $color-variant-value in $popover-color-variants {
+        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
+            --popover-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+        }
+    }
+}

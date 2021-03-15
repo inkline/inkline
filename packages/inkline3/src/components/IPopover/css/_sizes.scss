@@ -1,0 +1,23 @@
+@mixin popover-size-variant($size-variant-key) {
+    $_border-radius: var(--popover-size-variant-#{$size-variant-key}-border-radius);
+    $_font-size: var(--popover-size-variant-#{$size-variant-key}-font-size);
+    $_padding: var(--popover-size-variant-#{$size-variant-key}-padding);
+
+    font-size: $_font-size;
+
+    > .popover-header,
+    > .popover-body,
+    > .popover-footer {
+        padding: $_padding;
+    }
+
+    > *:nth-child(2) {
+        border-top-left-radius: $_border-radius;
+        border-top-right-radius: $_border-radius;
+    }
+
+    > *:last-child {
+        border-bottom-left-radius: $_border-radius;
+        border-bottom-right-radius: $_border-radius;
+    }
+}

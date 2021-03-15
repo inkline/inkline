@@ -1,7 +1,11 @@
-import { on, off } from "@inkline/inkline/src/helpers";
+import {on, off, isFocusable} from "@inkline/inkline/src/helpers";
 
 export default {
     props: {
+        disabled: {
+            type: Boolean,
+            default: false
+        },
         modelValue: {
             type: Boolean,
             default: undefined
@@ -13,14 +17,16 @@ export default {
     },
     data() {
         return {
-            triggerElement: null,
-            popupElement: null,
             visible: this.modelValue,
             triggerStack: 0
         };
     },
     methods: {
         show() {
+            if (this.disabled || this.visible) {
+                return;
+            }
+
             this.triggerStack += 1;
             this.visible = true;
 
@@ -28,13 +34,18 @@ export default {
             this.$emit('update:modelValue', true);
         },
         hide() {
+            if (this.disabled) {
+                return;
+            }
+
             this.triggerStack -= 1;
 
             if (this.triggerStack <= 0) {
                 this.triggerStack = 0;
                 this.visible = false;
 
-                // this.destroyPopper(); // Destroyed by <transition> component after transition is finished
+                // Destroyed by <transition> component after transition is finished
+                // this.destroyPopper();
                 this.$emit('update:modelValue', false);
             }
         },
@@ -50,28 +61,21 @@ export default {
 
             this.hide();
         },
-        initElements() {
-            if ((this.$slots.default() || []).length === 0) {
-                throw new Error('Popup components require one child element to be used as trigger.');
-            }
-
-            this.triggerElement = this.$refs.trigger;
-            this.popupElement = this.$refs.popup;
-
-        },
         addEventListeners() {
             [].concat(this.trigger).forEach((trigger) => {
                 switch (trigger) {
                     case 'hover':
-                        on(this.triggerElement, 'mouseenter', this.show);
-                        on(this.triggerElement, 'mouseleave', this.hide);
+                        on(this.$refs.trigger, 'mouseenter', this.show);
+                        on(this.$refs.trigger, 'mouseleave', this.hide);
                         break;
                     case 'click':
-                        on(this.triggerElement, 'click', this.onClick);
+                        on(this.$refs.trigger, 'click', this.onClick);
                         break;
                     case 'focus':
-                        on(this.triggerElement, 'focus', this.show);
-                        on(this.triggerElement, 'blur', this.hide);
+                        for (const child of this.$refs.trigger.children) {
+                            on(child, 'focus', this.show);
+                            on(child, 'blur', this.hide);
+                        }
                         break;
                     default:
                         break;
@@ -82,32 +86,49 @@ export default {
             [].concat(this.trigger).forEach((trigger) => {
                 switch (trigger) {
                     case 'hover':
-                        off(this.triggerElement, 'mouseenter', this.show);
-                        off(this.triggerElement, 'mouseleave', this.hide);
+                        off(this.$refs.trigger, 'mouseenter', this.show);
+                        off(this.$refs.trigger, 'mouseleave', this.hide);
                         break;
                     case 'click':
-                        off(this.triggerElement, 'click', this.onClick);
+                        off(this.$refs.trigger, 'click', this.onClick);
                         break;
                     case 'focus':
-                        off(this.triggerElement, 'focus', this.show);
-                        off(this.triggerElement, 'blur', this.hide);
+                        for (const child of this.$refs.trigger.children) {
+                            off(child, 'focus', this.show);
+                            off(child, 'blur', this.hide);
+                        }
                         break;
                     default:
                         break;
                 }
             });
+        },
+        focusTrigger() {
+            for (const child of this.$refs.trigger.children) {
+                if (isFocusable(child)) {
+                    child.focus();
+                    break;
+                }
+            }
         }
     },
     watch: {
         modelValue(value) {
-            this.visible = value;
+            if (value) {
+                this.show();
+            } else {
+                this.hide();
+            }
         }
     },
     mounted() {
-        this.initElements();
+        if ((this.$slots.default() || []).length === 0) {
+            throw new Error('Popup components require one child element to be used as trigger.');
+        }
+
         this.addEventListeners();
     },
-    unmounted() {
+    beforeUnmount() {
         this.removeEventListeners();
     }
 }
