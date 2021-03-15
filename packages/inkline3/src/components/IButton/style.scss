@@ -68,7 +68,7 @@
             &:focus,
             &.-focused {
                 box-shadow: none;
-                text-decoration: $link-decoration-hover;
+                text-decoration: var(--link-decoration-hover);
             }
         }
 
@@ -122,7 +122,7 @@
 
 // Future-proof disabling of clicks on `<a>` elements
 a.button.-disabled,
-fieldset:disabled a.button {
+*:disabled a.button {
     pointer-events: none;
 }
 

@@ -1,4 +1,3 @@
-import { h, resolveComponent } from 'vue'
 import {
     PopupMixin,
     PopupControlsMixin,
@@ -6,6 +5,18 @@ import {
     colorVariantClass
 } from '@inkline/inkline/src/mixins';
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
+
+/**
+ * @name default
+ * @kind slot
+ * @description Slot for tooltip trigger
+ */
+
+/**
+ * @name body
+ * @kind slot
+ * @description Slot for tooltip body content
+ */
 
 export default {
     name: 'ITooltip',
@@ -34,15 +45,6 @@ export default {
             default: ''
         },
         /**
-         * @description The delay to hide tooltip
-         * @type Boolean
-         * @default false
-         */
-        hideDelay: {
-            type: Number,
-            default: 300
-        },
-        /**
          * @description The disabled state of the tooltip
          * @type Boolean
          * @default false
@@ -51,26 +53,56 @@ export default {
             type: Boolean,
             default: false
         },
+        /**
+         * @description Used to manually control the visibility of the tooltip
+         * @type Boolean
+         * @default false
+         */
         modelValue: {
             type: Boolean,
-            default: undefined
+            default: false
         },
+        /**
+         * @description Displays an arrow on the tooltip pointing to the trigger element
+         * @type Boolean
+         * @default true
+         */
         arrow: {
             type: Boolean,
             default: true
         },
+        /**
+         * @description The placement of the tooltip
+         * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
+         * @default false
+         */
         placement: {
             type: String,
-            default: 'bottom',
+            default: 'top',
         },
+        /**
+         * @description The events used to trigger the tooltip
+         * @type hover | focus | click | manual
+         * @default [hover, focus]
+         */
         trigger: {
             type: [String, Array],
-            default: ['hover']
+            default: ['hover', 'focus']
         },
+        /**
+         * @description The offset of the tooltip relative to the trigger element
+         * @type Number
+         * @default 6
+         */
         offset: {
             type: Number,
             default: 6
         },
+        /**
+         * @description Used to override the popper.js options used for creating the tooltip
+         * @type Object
+         * @default {}
+         */
         popperOptions: {
             type: Object,
             default: () => ({})

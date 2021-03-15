@@ -1,0 +1,134 @@
+//
+// Variables
+//
+
+$dropdown-font-size: font-size() !default;
+$dropdown-font-weight: font-weight('normal') !default;
+$dropdown-line-height: var(--line-height) !default;
+$dropdown-margin: spacer('1/2') !default;
+$dropdown-border-width: var(--border-width) !default;
+$dropdown-border-radius: border-radius() !default;
+$dropdown-padding: spacer() !default;
+$dropdown-body-padding: spacer('1/2') !default;
+$dropdown-header-padding: spacer() !default;
+$dropdown-footer-padding: spacer() !default;
+$dropdown-z-index: 2000 !default;
+$dropdown-min-width: 280px !default;
+$dropdown-max-width: 90vw !default;
+$dropdown-divider-margin: spacer('1/2') !default;
+
+//
+// Sizes
+//
+
+$dropdown-size-variant-sm-border-radius: calc(var(--dropdown-border-radius) * #{size-multiplier('sm')}) !default;
+$dropdown-size-variant-sm-font-size: calc(var(--dropdown-font-size) * #{size-multiplier('sm')}) !default;
+$dropdown-size-variant-sm-padding: calc(var(--dropdown-padding) * #{size-multiplier('sm')} / 2) calc(var(--dropdown-padding) * #{size-multiplier('sm')}) !default;
+$dropdown-size-variant-sm-body-padding: calc(var(--dropdown-body-padding) * #{size-multiplier('sm')}) 0 !default;
+$dropdown-size-variant-sm-header-padding: calc(var(--dropdown-header-padding) * #{size-multiplier('sm')}) !default;
+$dropdown-size-variant-sm-footer-padding: calc(var(--dropdown-footer-padding) * #{size-multiplier('sm')}) !default;
+$dropdown-size-variant-sm: (
+    'border-radius': $dropdown-size-variant-sm-border-radius,
+    'font-size': $dropdown-size-variant-sm-font-size,
+    'padding': $dropdown-size-variant-sm-padding,
+    'body-padding': $dropdown-size-variant-sm-body-padding,
+    'header-padding': $dropdown-size-variant-sm-header-padding,
+    'footer-padding': $dropdown-size-variant-sm-footer-padding,
+) !default;
+
+$dropdown-size-variant-md-border-radius: calc(var(--dropdown-border-radius) * #{size-multiplier('md')}) !default;
+$dropdown-size-variant-md-font-size: calc(var(--dropdown-font-size) * #{size-multiplier('md')}) !default;
+$dropdown-size-variant-md-padding: calc(var(--dropdown-padding) * #{size-multiplier('md')} / 2) calc(var(--dropdown-padding) * #{size-multiplier('md')}) !default;
+$dropdown-size-variant-md-body-padding: calc(var(--dropdown-body-padding) * #{size-multiplier('md')}) 0 !default;
+$dropdown-size-variant-md-header-padding: calc(var(--dropdown-header-padding) * #{size-multiplier('md')}) !default;
+$dropdown-size-variant-md-footer-padding: calc(var(--dropdown-footer-padding) * #{size-multiplier('md')}) !default;
+$dropdown-size-variant-md: (
+    'border-radius': $dropdown-size-variant-md-border-radius,
+    'font-size': $dropdown-size-variant-md-font-size,
+    'padding': $dropdown-size-variant-md-padding,
+    'body-padding': $dropdown-size-variant-md-body-padding,
+    'header-padding': $dropdown-size-variant-md-header-padding,
+    'footer-padding': $dropdown-size-variant-md-footer-padding,
+) !default;
+
+$dropdown-size-variant-lg-border-radius: calc(var(--dropdown-border-radius) * #{size-multiplier('lg')}) !default;
+$dropdown-size-variant-lg-font-size: calc(var(--dropdown-font-size) * #{size-multiplier('lg')}) !default;
+$dropdown-size-variant-lg-padding: calc(var(--dropdown-padding) * #{size-multiplier('lg')} / 2) calc(var(--dropdown-padding) * #{size-multiplier('lg')}) !default;
+$dropdown-size-variant-lg-body-padding: calc(var(--dropdown-body-padding) * #{size-multiplier('lg')}) 0 !default;
+$dropdown-size-variant-lg-header-padding: calc(var(--dropdown-header-padding) * #{size-multiplier('lg')}) !default;
+$dropdown-size-variant-lg-footer-padding: calc(var(--dropdown-footer-padding) * #{size-multiplier('lg')}) !default;
+$dropdown-size-variant-lg: (
+    'border-radius': $dropdown-size-variant-lg-border-radius,
+    'font-size': $dropdown-size-variant-lg-font-size,
+    'padding': $dropdown-size-variant-lg-padding,
+    'body-padding': $dropdown-size-variant-lg-body-padding,
+    'header-padding': $dropdown-size-variant-lg-header-padding,
+    'footer-padding': $dropdown-size-variant-lg-footer-padding,
+) !default;
+
+$dropdown-size-variants: (
+    'sm': $dropdown-size-variant-sm,
+    'md': $dropdown-size-variant-md,
+    'lg': $dropdown-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$dropdown-color-variant-light-color: contrast-color($color-white) !default;
+$dropdown-color-variant-light-color-hover: var(--dropdown-color-variant-light-color) !default;
+$dropdown-color-variant-light-color-active: var(--dropdown-color-variant-light-color) !default;
+$dropdown-color-variant-light-color-disabled: color('light-65') !default;
+$dropdown-color-variant-light-background: color('white') !default;
+$dropdown-color-variant-light-background-hover: color('light-25') !default;
+$dropdown-color-variant-light-background-active: color('light-25') !default;
+$dropdown-color-variant-light-background-disabled: transparent !default;
+$dropdown-color-variant-light-border-color: color('light') !default;
+$dropdown-color-variant-light-header-background: color('gray-05') !default;
+$dropdown-color-variant-light-footer-background: color('gray-05') !default;
+
+$dropdown-color-variant-light: (
+    'color': $dropdown-color-variant-light-color,
+    'color-hover': $dropdown-color-variant-light-color-hover,
+    'color-active': $dropdown-color-variant-light-color-active,
+    'color-disabled': $dropdown-color-variant-light-color-disabled,
+    'background': $dropdown-color-variant-light-background,
+    'background-hover': $dropdown-color-variant-light-background-hover,
+    'background-active': $dropdown-color-variant-light-background-active,
+    'background-disabled': $dropdown-color-variant-light-background-disabled,
+    'border-color': $dropdown-color-variant-light-border-color,
+    'header-background': $dropdown-color-variant-light-header-background,
+    'footer-background': $dropdown-color-variant-light-footer-background,
+) !default;
+
+$dropdown-color-variant-dark-color: contrast-color($color-dark) !default;
+$dropdown-color-variant-dark-color-hover: var(--dropdown-color-variant-dark-color) !default;
+$dropdown-color-variant-dark-color-active: var(--dropdown-color-variant-dark-color) !default;
+$dropdown-color-variant-dark-color-disabled: color('dark-25') !default;
+$dropdown-color-variant-dark-background: color('dark') !default;
+$dropdown-color-variant-dark-background-hover: color('dark-45') !default;
+$dropdown-color-variant-dark-background-active: color('dark-45') !default;
+$dropdown-color-variant-dark-background-disabled: transparent !default;
+$dropdown-color-variant-dark-border-color: color('dark-60') !default;
+$dropdown-color-variant-dark-header-background: color('dark-55') !default;
+$dropdown-color-variant-dark-footer-background: color('dark-55') !default;
+
+$dropdown-color-variant-dark: (
+    'color': $dropdown-color-variant-dark-color,
+    'color-hover': $dropdown-color-variant-dark-color-hover,
+    'color-active': $dropdown-color-variant-dark-color-active,
+    'color-disabled': $dropdown-color-variant-dark-color-disabled,
+    'background': $dropdown-color-variant-dark-background,
+    'background-hover': $dropdown-color-variant-dark-background-hover,
+    'background-active': $dropdown-color-variant-dark-background-active,
+    'background-disabled': $dropdown-color-variant-dark-background-disabled,
+    'border-color': $dropdown-color-variant-dark-border-color,
+    'header-background': $dropdown-color-variant-dark-header-background,
+    'footer-background': $dropdown-color-variant-dark-footer-background,
+) !default;
+
+$dropdown-color-variants: (
+    'light': $dropdown-color-variant-light,
+    'dark': $dropdown-color-variant-dark,
+) !default;

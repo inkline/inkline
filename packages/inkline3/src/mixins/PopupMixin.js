@@ -29,9 +29,7 @@ export default {
     },
     data() {
         return {
-            referenceElement: null,
-            popperInstance: null,
-            popupElement: null
+            popperInstance: null
         };
     },
     methods: {
@@ -69,8 +67,8 @@ export default {
             ];
 
             this.popperInstance = createPopper(
-                this.referenceElement,
-                this.popupElement,
+                this.$refs.wrapper,
+                this.$refs.popup,
                 {
                     strategy: 'fixed',
                     modifiers,
@@ -92,9 +90,6 @@ export default {
                 this.popperInstance.setOptions({ placement });
             }
         }
-    },
-    mounted() {
-        this.referenceElement = this.$refs.wrapper;
     },
     beforeUnmount() {
         this.destroyPopper();

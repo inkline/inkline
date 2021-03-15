@@ -26,7 +26,9 @@
 
     &:not(:disabled):not(.-disabled) {
         &:hover,
-        &.-hovered {
+        &:focus,
+        &.-hovered,
+        &.-focused {
             background: $_background-hover;
             border-color: $_border-color-hover;
         }
@@ -44,8 +46,8 @@
 
         &:not(:disabled):not(.-disabled) {
             &:hover,
-            &.-hovered,
             &:focus,
+            &.-hovered,
             &.-focused {
                 color: $_outline-color-hover;
                 background: $_outline-background-hover;
@@ -67,8 +69,8 @@
 
         &:not(:disabled):not(.-disabled) {
             &:hover,
-            &.-hovered,
             &:focus,
+            &.-hovered,
             &.-focused {
                 color: $_link-color-active;
                 background-color: transparent;

@@ -145,39 +145,23 @@
     }
 }
 
-@mixin popup-arrow-color-variant($arrow: ('background': #ffffff, 'border-color': #bcbcbc)) {
+@mixin popup-arrow-color-variant-for-side($side, $arrow) {
     $_background: map_get($arrow, 'background');
     $_border-color: map_get($arrow, 'border-color');
 
-    &[data-popper-placement^="top"] > [data-popper-arrow] {
-        border-top-color: $_border-color;
+    &[data-popper-placement^="#{$side}"] > [data-popper-arrow] {
+        border-#{$side}-color: $_border-color;
 
         &::after {
-            border-top-color: $_background;
-        }
-    }
-
-    &[data-popper-placement^="bottom"] > [data-popper-arrow] {
-        border-bottom-color: $_border-color;
-
-        &::after {
-            border-bottom-color: $_background;
-        }
-    }
-
-    &[data-popper-placement^="right"] > [data-popper-arrow] {
-        border-right-color: $_border-color;
-
-        &::after {
-            border-right-color: $_background;
-        }
-    }
-
-    &[data-popper-placement^="left"] > [data-popper-arrow] {
-        border-left-color: $_border-color;
-
-        &::after {
-            border-left-color: $_background;
+            border-#{$side}-color: $_background;
         }
     }
 }
+
+@mixin popup-arrow-color-variant($arrow: ('background': #ffffff, 'border-color': #bcbcbc)) {
+    @include popup-arrow-color-variant-for-side('top', $arrow);
+    @include popup-arrow-color-variant-for-side('bottom', $arrow);
+    @include popup-arrow-color-variant-for-side('left', $arrow);
+    @include popup-arrow-color-variant-for-side('right', $arrow);
+}
+

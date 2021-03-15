@@ -8,7 +8,7 @@ $tooltip-line-height: var(--line-height) !default;
 $tooltip-margin: spacer('1/2') !default;
 $tooltip-border-width: var(--border-width) !default;
 $tooltip-border-radius: border-radius() !default;
-$tooltip-padding: spacer('1/2') !default;
+$tooltip-padding: spacer() !default;
 $tooltip-z-index: 2000 !default;
 
 //
@@ -17,7 +17,7 @@ $tooltip-z-index: 2000 !default;
 
 $tooltip-size-variant-sm-border-radius: calc(var(--tooltip-border-radius) * #{size-multiplier('sm')}) !default;
 $tooltip-size-variant-sm-font-size: calc(var(--tooltip-font-size) * #{size-multiplier('sm')}) !default;
-$tooltip-size-variant-sm-padding: calc(var(--tooltip-padding) * #{size-multiplier('sm')}) !default;
+$tooltip-size-variant-sm-padding: calc(var(--tooltip-padding) * #{size-multiplier('sm')} / 2) calc(var(--tooltip-padding) * #{size-multiplier('sm')}) !default;
 $tooltip-size-variant-sm: (
     'border-radius': $tooltip-size-variant-sm-border-radius,
     'font-size': $tooltip-size-variant-sm-font-size,
@@ -26,7 +26,7 @@ $tooltip-size-variant-sm: (
 
 $tooltip-size-variant-md-border-radius: calc(var(--tooltip-border-radius) * #{size-multiplier('md')}) !default;
 $tooltip-size-variant-md-font-size: calc(var(--tooltip-font-size) * #{size-multiplier('md')}) !default;
-$tooltip-size-variant-md-padding: calc(var(--tooltip-padding) * #{size-multiplier('md')}) !default;
+$tooltip-size-variant-md-padding: calc(var(--tooltip-padding) * #{size-multiplier('md')} / 2) calc(var(--tooltip-padding) * #{size-multiplier('md')}) !default;
 $tooltip-size-variant-md: (
     'border-radius': $tooltip-size-variant-md-border-radius,
     'font-size': $tooltip-size-variant-md-font-size,
@@ -35,7 +35,7 @@ $tooltip-size-variant-md: (
 
 $tooltip-size-variant-lg-border-radius: calc(var(--tooltip-border-radius) * #{size-multiplier('lg')}) !default;
 $tooltip-size-variant-lg-font-size: calc(var(--tooltip-font-size) * #{size-multiplier('lg')}) !default;
-$tooltip-size-variant-lg-padding: calc(var(--tooltip-padding) * #{size-multiplier('lg')}) !default;
+$tooltip-size-variant-lg-padding: calc(var(--tooltip-padding) * #{size-multiplier('lg')} / 2) calc(var(--tooltip-padding) * #{size-multiplier('lg')}) !default;
 $tooltip-size-variant-lg: (
     'border-radius': $tooltip-size-variant-lg-border-radius,
     'font-size': $tooltip-size-variant-lg-font-size,
