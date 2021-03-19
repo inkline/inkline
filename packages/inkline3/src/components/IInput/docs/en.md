@@ -17,7 +17,9 @@ Inputs are the simplest and most used type of form control. Inkline provides you
 <example :component="examples.IInputBasicExample" :html="examples.IInputBasicExampleHTML" :js="examples.IInputBasicExampleJS"></example>
 
 ### Input Type
-Behind the scenes, Inkline uses a native HTML `<input>` element, meaning that you can use the `type` property to define the type of the input, such as `text`, `password`, `date`, `email`, and so on. By default, the input type is set to `text`.
+Behind the scenes, Inkline uses a native HTML `<input>` element, meaning that you can use the `type` property to define the type of the input, such as `text`, `password`, `date`, `email`, `number`, and so on. By default, the input type is set to `text`.
+
+Keep in mind that native input types look and are treated differently in each browser, which is why you should use a custom component to achieve consistency.
 
 <example :component="examples.IInputTypeExample" :html="examples.IInputTypeExampleHTML" :js="examples.IInputTypeExampleJS"></example>
 

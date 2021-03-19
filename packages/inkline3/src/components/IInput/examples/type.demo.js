@@ -4,7 +4,8 @@ export default {
             text: '',
             password: '',
             date: '',
-            email: ''
+            email: '',
+            number: ''
         };
     }
 }
