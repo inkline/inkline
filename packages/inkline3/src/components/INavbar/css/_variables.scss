@@ -2,7 +2,7 @@
 // Variables
 //
 
-$navbar-padding: spacer('1/2') !default;
+$navbar-padding: spacer() !default;
 $navbar-item-padding: spacer() !default;
 $navbar-font-size: font-size() !default;
 $navbar-border-radius: border-radius() !default;
@@ -15,7 +15,7 @@ $navbar-brand-margin: spacer() !default;
 $navbar-size-variant-sm-border-radius: calc(var(--navbar-border-radius) * #{size-multiplier('sm')}) !default;
 $navbar-size-variant-sm-font-size: calc(var(--navbar-font-size) * #{size-multiplier('sm')}) !default;
 $navbar-size-variant-sm-padding: calc(var(--navbar-padding) * #{size-multiplier('sm')}) 0 !default;
-$navbar-size-variant-sm-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('sm')}) !default;
+$navbar-size-variant-sm-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('sm')} / 2) calc(var(--navbar-item-padding) * #{size-multiplier('sm')}) !default;
 $navbar-size-variant-sm: (
     'border-radius': $navbar-size-variant-sm-border-radius,
     'font-size': $navbar-size-variant-sm-font-size,
@@ -26,7 +26,7 @@ $navbar-size-variant-sm: (
 $navbar-size-variant-md-border-radius: calc(var(--navbar-border-radius) * #{size-multiplier('md')}) !default;
 $navbar-size-variant-md-font-size: calc(var(--navbar-font-size) * #{size-multiplier('md')}) !default;
 $navbar-size-variant-md-padding: calc(var(--navbar-padding) * #{size-multiplier('md')}) 0 !default;
-$navbar-size-variant-md-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('md')}) !default;
+$navbar-size-variant-md-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('md')} / 2) calc(var(--navbar-item-padding) * #{size-multiplier('md')}) !default;
 $navbar-size-variant-md: (
     'border-radius': $navbar-size-variant-md-border-radius,
     'font-size': $navbar-size-variant-md-font-size,
@@ -37,7 +37,7 @@ $navbar-size-variant-md: (
 $navbar-size-variant-lg-border-radius: calc(var(--navbar-border-radius) * #{size-multiplier('lg')}) !default;
 $navbar-size-variant-lg-font-size: calc(var(--navbar-font-size) * #{size-multiplier('lg')}) !default;
 $navbar-size-variant-lg-padding: calc(var(--navbar-padding) * #{size-multiplier('lg')}) 0 !default;
-$navbar-size-variant-lg-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('lg')}) !default;
+$navbar-size-variant-lg-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('lg')} / 2) calc(var(--navbar-item-padding) * #{size-multiplier('lg')}) !default;
 $navbar-size-variant-lg: (
     'border-radius': $navbar-size-variant-lg-border-radius,
     'font-size': $navbar-size-variant-lg-font-size,
@@ -84,11 +84,11 @@ $navbar-color-variant-dark-background: color('dark') !default;
 $navbar-color-variant-dark-item-color: contrast-color($color-dark) !default;
 $navbar-color-variant-dark-item-color-hover: contrast-color($color-dark) !default;
 $navbar-color-variant-dark-item-background: color('dark') !default;
-$navbar-color-variant-dark-item-background-hover: color('dark-55') !default;
+$navbar-color-variant-dark-item-background-hover: color('dark-45') !default;
 $navbar-color-variant-dark-collapsed-item-color: contrast-color($color-dark) !default;
 $navbar-color-variant-dark-collapsed-item-color-hover: contrast-color($color-dark) !default;
 $navbar-color-variant-dark-collapsed-item-background: color('dark') !default;
-$navbar-color-variant-dark-collapsed-item-background-hover: color('dark-55') !default;
+$navbar-color-variant-dark-collapsed-item-background-hover: color('dark-45') !default;
 
 $navbar-color-variant-dark: (
     'color': $navbar-color-variant-dark-color,

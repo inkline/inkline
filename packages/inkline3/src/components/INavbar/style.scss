@@ -24,6 +24,22 @@
                 transition-timing-function: var(--transition-easing);
                 transition-duration: var(--transition-duration);
             }
+
+            .dropdown-wrapper {
+                width: 100%;
+
+                .dropdown {
+                    width: 100%;
+                    position: relative !important;
+                    left: auto !important;
+                    top: auto !important;
+                    transform-origin: center top;
+
+                    [data-popper-arrow] {
+                        display: none;
+                    }
+                }
+            }
         }
     }
 

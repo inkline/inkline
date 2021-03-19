@@ -17,6 +17,13 @@ import { ClickOutside } from '@inkline/inkline/src/directives';
 
 export default {
     name: 'INavbar',
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
+    ],
     mixins: [
         CollapsibleMixin
     ],
@@ -97,13 +104,13 @@ export default {
     },
     methods: {
         onItemClick() {
-            if (this.collapseOnItemClick && this.collapsed) {
-                this.setCollapse(false);
+            if (this.collapseOnItemClick && this.open) {
+                this.setOpen(false);
             }
         },
         onClickOutside() {
-            if (this.collapseOnClickOutside && this.collapsed) {
-                this.setCollapse(false);
+            if (this.collapseOnClickOutside && this.open) {
+                this.setOpen(false);
             }
         }
     }

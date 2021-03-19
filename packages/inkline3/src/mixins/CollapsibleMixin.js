@@ -14,9 +14,7 @@ export default {
     },
     data() {
         return {
-            collapsed: false,
-            collapsible: false,
-            windowWidth: typeof window !== 'undefined' ? window.innerWidth : 0
+            open: this.modelValue
         };
     },
     provide() {
@@ -27,7 +25,8 @@ export default {
     computed: {
         collapsibleClasses() {
             return {
-                '-collapsed': this.collapsed,
+                '-open': this.open,
+                '-collapsible': this.collapsible,
                 [`-collapse-${this.collapse}`]: Boolean(this.collapse)
             }
         }
@@ -45,36 +44,31 @@ export default {
         }
     },
     methods: {
-        setCollapse(value) {
-            this.collapsed = value;
+        setOpen(value) {
+            this.open = value;
+            this.$emit('update:modelValue', this.open);
         },
-        toggleCollapse() {
-            this.collapsed = !this.collapsed;
+        toggleOpen() {
+            this.open = !this.open;
+            this.$emit('update:modelValue', this.open);
         },
         onWindowResize() {
-            if (this.collapse === true) {
-                this.collapsible = true;
-                return;
-            } else if (this.collapse === false) {
+            if (this.collapse === true || this.collapse === false) {
                 return;
             }
 
             const windowWidth = window.innerWidth;
 
-            if (this.windowWidth <= breakpoints[this.collapse][1] && windowWidth > breakpoints[this.collapse][1]) {
-                this.collapsed = false;
+            if (windowWidth <= breakpoints[this.collapse][1] && windowWidth > breakpoints[this.collapse][1]) {
+                this.setOpen(false);
             }
 
-            this.collapsible = windowWidth <= breakpoints[this.collapse][1];
-            this.windowWidth = windowWidth;
+            console.log(this.collapsible, this.open)
         }
     },
     watch: {
         modelValue(value) {
-            this.collapsed = value;
-        },
-        collapsed(value) {
-            this.$emit('update:modelValue', value);
+            this.open = value;
         }
     }
 };

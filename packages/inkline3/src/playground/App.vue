@@ -162,6 +162,16 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'docs-components-progress' }">
+                        Progress
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-components-tabs' }">
+                        Tabs
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'docs-components-tooltip' }">
                         Tooltip
                     </router-link>

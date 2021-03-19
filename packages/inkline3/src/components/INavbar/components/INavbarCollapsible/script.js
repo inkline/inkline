@@ -18,7 +18,7 @@ export default {
     },
     computed: {
         visible() {
-            return this.navbar.collapsed || !this.navbar.collapsible;
+            return this.navbar.open || !this.navbar.collapsible;
         }
     }
 };

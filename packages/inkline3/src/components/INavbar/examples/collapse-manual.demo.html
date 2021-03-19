@@ -1,4 +1,6 @@
-<i-navbar>
+<i-button @click="open = !open">Toggle Navbar</i-button>
+
+<i-navbar v-model="open" :collapse="true">
     <i-navbar-brand :to="{ name: 'docs-components-navbar' }">
         Navbar
     </i-navbar-brand>
@@ -14,10 +16,5 @@
                 Contact
             </i-nav-item>
         </i-nav>
-        <i-input placeholder="Type something..">
-            <i-button variant="primary" slot="append">
-                <i-icon icon="search" />
-            </i-button>
-        </i-input>
     </i-navbar-collapsible>
 </i-navbar>

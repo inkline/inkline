@@ -35,6 +35,10 @@ export { default as INavbar } from '@inkline/inkline/src/components/INavbar/inde
 export * from '@inkline/inkline/src/components/INavbar/components';
 export { default as IPagination } from '@inkline/inkline/src/components/IPagination/index.vue';
 export { default as IPopover } from '@inkline/inkline/src/components/IPopover/index.vue';
+export { default as IProgress } from '@inkline/inkline/src/components/IProgress/index.vue';
+export * from '@inkline/inkline/src/components/IProgress/components';
 export { default as IRow } from '@inkline/inkline/src/components/IRow/index.vue';
 export { default as ITable } from '@inkline/inkline/src/components/ITable/index.vue';
+export { default as Tabs } from '@inkline/inkline/src/components/ITabs/index.vue';
+export * from '@inkline/inkline/src/components/ITabs/components';
 export { default as ITooltip } from '@inkline/inkline/src/components/ITooltip/index.vue';

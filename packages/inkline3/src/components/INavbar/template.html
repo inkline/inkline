@@ -7,10 +7,11 @@
             <i-column>
                 <i-hamburger-menu
                     class="collapse-toggle"
-                    :active="collapsed"
                     :animation="toggleAnimation"
                     :color="color"
-                    @click="toggleCollapse" />
+                    :modelValue="open"
+                    @update:modelValue="toggleOpen"
+                />
                 <slot />
             </i-column>
         </i-row>
