@@ -110,7 +110,7 @@ export default {
          */
         placement: {
             type: String,
-            default: 'top',
+            default: 'bottom',
         },
         /**
          * @description The events used to trigger the dropdown
