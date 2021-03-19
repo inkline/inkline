@@ -1,0 +1,25 @@
+/**
+ * Nav
+ */
+@import '../../../../css/variables';
+@import '../../../../css/mixins';
+@import '../../css/variables';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    height: 100%;
+
+    @include progress-bar-color-variant('primary');
+    @each $color-variant-key, $color-variant-value in $progress-bar-color-variants {
+        &.-#{$color-variant-key} {
+            @include progress-bar-color-variant($color-variant-key);
+        }
+    }
+}

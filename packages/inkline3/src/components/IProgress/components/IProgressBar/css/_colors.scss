@@ -1,0 +1,7 @@
+@mixin progress-bar-color-variant($color-variant-key) {
+    $_color: var(--progress-bar-color-variant-#{$color-variant-key}-color);
+    $_background: var(--progress-bar-color-variant-#{$color-variant-key}-background);
+
+    color: $_color;
+    background: $_background;
+}
