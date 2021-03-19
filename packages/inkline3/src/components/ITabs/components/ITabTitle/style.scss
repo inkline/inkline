@@ -1,0 +1,35 @@
+@import '../../../../css/variables';
+@import '../../../../css/mixins';
+@import '../../css/variables';
+
+.tabs {
+    .tab-title {
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        border-bottom-width: var(--tabs-header-border-bottom-width);
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        transition-property: background-color, border-color, color;
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-easing);
+
+        &:hover,
+        &:focus {
+            cursor: pointer;
+            outline: none;
+        }
+
+        &.-active {
+            font-weight: font-weight('semibold');
+        }
+    }
+
+    &.-stretch {
+        > .tabs-header .tab-title {
+            flex-grow: 1;
+        }
+    }
+}
