@@ -1,0 +1,19 @@
+@mixin tabs-size-variant($size-variant-key) {
+    $_padding: var(--tabs-size-variant-#{$size-variant-key}-padding);
+    $_font-size: var(--tabs-size-variant-#{$size-variant-key}-font-size);
+    $_header-padding: var(--tabs-size-variant-#{$size-variant-key}-header-padding);
+    $_border-radius: var(--tabs-size-variant-#{$size-variant-key}-border-radius);
+
+    .tab-title {
+        font-size: $_font-size;
+        padding: $_header-padding;
+    }
+
+    .tab {
+        > .tab-body {
+            font-size: $_font-size;
+            padding: $_padding;
+            border-radius: $_border-radius;
+        }
+    }
+}

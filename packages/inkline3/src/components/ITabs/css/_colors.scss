@@ -1,0 +1,36 @@
+@mixin tabs-color-variant($color-variant-key) {
+    $_color: var(--tabs-color-variant-#{$color-variant-key}-color);
+    $_border-color: var(--tabs-color-variant-#{$color-variant-key}-border-color);
+    $_background: var(--tabs-color-variant-#{$color-variant-key}-background);
+    $_header-border-color-active: var(--tabs-color-variant-#{$color-variant-key}-header-border-color-active);
+    $_header-background: var(--tabs-color-variant-#{$color-variant-key}-header-background);
+    $_header-background-hover: var(--tabs-color-variant-#{$color-variant-key}-header-background-hover);
+    $_header-background-active: var(--tabs-color-variant-#{$color-variant-key}-header-background-active);
+    $_header-color-active: var(--tabs-color-variant-#{$color-variant-key}-header-color-active);
+
+    .tabs-header {
+        color: $_color;
+        border-color: $_border-color;
+        background: $_header-background;
+
+        .tab-title {
+            &.-active {
+                color: $_header-color-active;
+                background-color: $_header-background-active;
+                border-bottom-color: $_header-border-color-active;
+            }
+
+            &:hover,
+            &:focus {
+                background: $_header-background-hover;
+            }
+        }
+    }
+
+
+    .tab {
+        color: $_color;
+        border-color: $_border-color;
+        background: $_background;
+    }
+}

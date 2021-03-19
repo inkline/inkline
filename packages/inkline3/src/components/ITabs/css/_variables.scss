@@ -1,0 +1,104 @@
+//
+// Variables
+//
+
+$tabs-font-size: font-size() !default;
+$tabs-border-radius: border-radius() !default;
+$tabs-border-width: var(--border-width) !default;
+$tabs-padding: spacer() !default;
+$tabs-header-padding: spacer() !default;
+$tabs-header-border-bottom-width: 2px !default;
+$tabs-header-margin-bottom: -1px !default;
+
+//
+// Sizes
+//
+
+$tabs-size-variant-sm-border-radius: calc(var(--tabs-border-radius) * #{size-multiplier('sm')}) !default;
+$tabs-size-variant-sm-font-size: calc(var(--tabs-font-size) * #{size-multiplier('sm')}) !default;
+$tabs-size-variant-sm-padding: calc(var(--tabs-padding) * #{size-multiplier('sm')}) !default;
+$tabs-size-variant-sm-header-padding: calc(var(--tabs-header-padding) * #{size-multiplier('sm')}) calc(var(--tabs-header-padding) * #{size-multiplier('sm')} * 2) !default;
+$tabs-size-variant-sm: (
+    'border-radius': $tabs-size-variant-sm-border-radius,
+    'font-size': $tabs-size-variant-sm-font-size,
+    'padding': $tabs-size-variant-sm-padding,
+    'header-padding': $tabs-size-variant-sm-header-padding,
+) !default;
+
+$tabs-size-variant-md-border-radius: calc(var(--tabs-border-radius) * #{size-multiplier('md')}) !default;
+$tabs-size-variant-md-font-size: calc(var(--tabs-font-size) * #{size-multiplier('md')}) !default;
+$tabs-size-variant-md-padding: calc(var(--tabs-padding) * #{size-multiplier('md')}) !default;
+$tabs-size-variant-md-header-padding: calc(var(--tabs-header-padding) * #{size-multiplier('md')}) calc(var(--tabs-header-padding) * #{size-multiplier('md')} * 2) !default;
+$tabs-size-variant-md: (
+    'border-radius': $tabs-size-variant-md-border-radius,
+    'font-size': $tabs-size-variant-md-font-size,
+    'padding': $tabs-size-variant-md-padding,
+    'header-padding': $tabs-size-variant-md-header-padding,
+) !default;
+
+$tabs-size-variant-lg-border-radius: calc(var(--tabs-border-radius) * #{size-multiplier('lg')}) !default;
+$tabs-size-variant-lg-font-size: calc(var(--tabs-font-size) * #{size-multiplier('lg')}) !default;
+$tabs-size-variant-lg-padding: calc(var(--tabs-padding) * #{size-multiplier('lg')}) !default;
+$tabs-size-variant-lg-header-padding: calc(var(--tabs-header-padding) * #{size-multiplier('lg')}) calc(var(--tabs-header-padding) * #{size-multiplier('lg')} * 2) !default;
+$tabs-size-variant-lg: (
+    'border-radius': $tabs-size-variant-lg-border-radius,
+    'font-size': $tabs-size-variant-lg-font-size,
+    'padding': $tabs-size-variant-lg-padding,
+    'header-padding': $tabs-size-variant-lg-header-padding,
+) !default;
+
+$tabs-size-variants: (
+    'sm': $tabs-size-variant-sm,
+    'md': $tabs-size-variant-md,
+    'lg': $tabs-size-variant-lg
+) !default;
+
+
+//
+// Colors
+//
+
+$tabs-color-variant-light-color: contrast-color($color-white) !default;
+$tabs-color-variant-light-background: color('white') !default;
+$tabs-color-variant-light-border-color: color('light') !default;
+$tabs-color-variant-light-header-background: color('white') !default;
+$tabs-color-variant-light-header-border-color-active: color('primary') !default;
+$tabs-color-variant-light-header-background-hover: color('gray-05') !default;
+$tabs-color-variant-light-header-background-active: color('white') !default;
+$tabs-color-variant-light-header-color-active: contrast-color($color-white) !default;
+
+$tabs-color-variant-light: (
+    'color': $tabs-color-variant-light-color,
+    'background': $tabs-color-variant-light-background,
+    'border-color': $tabs-color-variant-light-border-color,
+    'header-border-color-active': $tabs-color-variant-light-header-border-color-active,
+    'header-background': $tabs-color-variant-light-header-background,
+    'header-background-hover': $tabs-color-variant-light-header-background-hover,
+    'header-background-active': $tabs-color-variant-light-header-background-active,
+    'header-color-active': $tabs-color-variant-light-header-color-active,
+) !default;
+
+$tabs-color-variant-dark-color: contrast-color($color-dark) !default;
+$tabs-color-variant-dark-background: color('dark') !default;
+$tabs-color-variant-dark-border-color: color('dark-60') !default;
+$tabs-color-variant-dark-header-background: color('dark') !default;
+$tabs-color-variant-dark-header-border-color-active: color('primary') !default;
+$tabs-color-variant-dark-header-background-hover: color('dark-45') !default;
+$tabs-color-variant-dark-header-background-active: color('dark') !default;
+$tabs-color-variant-dark-header-color-active: contrast-color($color-dark) !default;
+
+$tabs-color-variant-dark: (
+    'color': $tabs-color-variant-dark-color,
+    'background': $tabs-color-variant-dark-background,
+    'border-color': $tabs-color-variant-dark-border-color,
+    'header-border-color-active': $tabs-color-variant-dark-header-border-color-active,
+    'header-background': $tabs-color-variant-dark-header-background,
+    'header-background-hover': $tabs-color-variant-dark-header-background-hover,
+    'header-background-active': $tabs-color-variant-dark-header-background-active,
+    'header-color-active': $tabs-color-variant-dark-header-color-active,
+) !default;
+
+$tabs-color-variants: (
+    'light': $tabs-color-variant-light,
+    'dark': $tabs-color-variant-dark
+) !default;
