@@ -22,7 +22,6 @@
             color: $_item-color;
             background-color: $_item-background;
 
-            &.-active,
             &.-focused,
             &.-hovered,
             &:focus,
@@ -33,7 +32,7 @@
         }
     }
 
-    &.-collapsed {
+    &.-collapsible {
         .navbar-collapsible {
             background: $_collapsed-item-background;
 

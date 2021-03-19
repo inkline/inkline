@@ -1,1 +1,1 @@
-<template src="./color-variants.html" />
+<template src="./color-variants.demo.html" />

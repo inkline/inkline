@@ -1,7 +1,5 @@
 <i-navbar>
-    <i-navbar-brand :to="{ name: 'index' }">
-        Navbar
-    </i-navbar-brand>
+    <i-navbar-brand :to="{ name: 'index' }">Navbar</i-navbar-brand>
     <i-navbar-collapsible>
         <i-nav>
             <i-nav-item :to="{ name: 'index' }">
@@ -10,11 +8,8 @@
             <i-nav-item :to="{ name: 'about' }">
                 About
             </i-nav-item>
-            <i-nav-item :to="{ name: 'contact' }">
-                Contact
-            </i-nav-item>
         </i-nav>
-        <i-input placeholder="Type something..">
+        <i-input class="item" placeholder="Type something..">
             <i-button variant="primary" slot="append">
                 <i-icon icon="search" />
             </i-button>

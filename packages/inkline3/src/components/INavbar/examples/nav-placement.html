@@ -1,8 +1,8 @@
-<i-navbar color="light">
+<i-navbar>
     <i-navbar-brand :to="{ name: 'index' }">
         Navbar
     </i-navbar-brand>
-    <i-navbar-collapsible>
+    <i-navbar-collapsible class="_justify-content:flex-start">
         <i-nav>
             <i-nav-item :to="{ name: 'index' }">
                 Home
@@ -17,11 +17,30 @@
     </i-navbar-collapsible>
 </i-navbar>
 
-<i-navbar color="dark">
+<i-navbar>
     <i-navbar-brand :to="{ name: 'index' }">
         Navbar
     </i-navbar-brand>
-    <i-navbar-collapsible>
+    <i-navbar-collapsible class="_justify-content:center">
+        <i-nav>
+            <i-nav-item :to="{ name: 'index' }">
+                Home
+            </i-nav-item>
+            <i-nav-item :to="{ name: 'about' }">
+                About
+            </i-nav-item>
+            <i-nav-item :to="{ name: 'contact' }">
+                Contact
+            </i-nav-item>
+        </i-nav>
+    </i-navbar-collapsible>
+</i-navbar>
+
+<i-navbar>
+    <i-navbar-brand :to="{ name: 'index' }">
+        Navbar
+    </i-navbar-brand>
+    <i-navbar-collapsible class="_justify-content:flex-end">
         <i-nav>
             <i-nav-item :to="{ name: 'index' }">
                 Home
