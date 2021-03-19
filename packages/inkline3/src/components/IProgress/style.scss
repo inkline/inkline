@@ -1,0 +1,30 @@
+/**
+ * progress
+ */
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/sizes';
+@import 'css/colors';
+
+.progress {
+    display: flex;
+    flex-basis: 100%;
+    position: relative;
+    overflow: hidden;
+
+    @include progress-size-variant('md');
+    @each $size-variant-key, $progress-size-variant-value in $progress-size-variants {
+        &.-#{$size-variant-key} {
+            @include progress-size-variant($size-variant-key);
+        }
+    }
+
+    @include progress-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $progress-color-variants {
+        &.-#{$color-variant-key} {
+            @include progress-color-variant($color-variant-key);
+        }
+    }
+}

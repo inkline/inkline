@@ -1,0 +1,60 @@
+//
+// Variables
+//
+
+$progress-border-radius: border-radius() !default;
+$progress-height: spacer('3/4') !default;
+
+
+//
+// Sizes
+//
+
+$progress-size-variant-sm-border-radius: calc(var(--progress-border-radius) * #{size-multiplier('sm')}) !default;
+$progress-size-variant-sm-height: calc(var(--progress-height) * #{size-multiplier('xs')}) !default;
+$progress-size-variant-sm: (
+    'border-radius': $progress-size-variant-sm-border-radius,
+    'height': $progress-size-variant-sm-height,
+) !default;
+
+$progress-size-variant-md-border-radius: calc(var(--progress-border-radius) * #{size-multiplier('md')}) !default;
+$progress-size-variant-md-height: calc(var(--progress-height) * #{size-multiplier('md')}) !default;
+$progress-size-variant-md: (
+    'border-radius': $progress-size-variant-md-border-radius,
+    'height': $progress-size-variant-md-height,
+) !default;
+
+$progress-size-variant-lg-border-radius: calc(var(--progress-border-radius) * #{size-multiplier('lg')}) !default;
+$progress-size-variant-lg-height: calc(var(--progress-height) * #{size-multiplier('xl')}) !default;
+$progress-size-variant-lg: (
+    'border-radius': $progress-size-variant-lg-border-radius,
+    'height': $progress-size-variant-lg-height,
+) !default;
+
+
+$progress-size-variants: (
+    'sm': $progress-size-variant-sm,
+    'md': $progress-size-variant-md,
+    'lg': $progress-size-variant-lg
+) !default;
+
+//
+// Colors
+//
+
+$progress-color-variant-light-background: color('light') !default;
+
+$progress-color-variant-light: (
+    'background': $progress-color-variant-light-background
+) !default;
+
+$progress-color-variant-dark-background: color('dark') !default;
+
+$progress-color-variant-dark: (
+    'background': $progress-color-variant-dark-background
+) !default;
+
+$progress-color-variants: (
+    'light': $progress-color-variant-light,
+    'dark': $progress-color-variant-dark,
+) !default;

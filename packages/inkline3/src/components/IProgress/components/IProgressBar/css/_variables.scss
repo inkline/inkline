@@ -1,0 +1,78 @@
+//
+// Colors
+//
+
+$progress-bar-color-variant-light-color: contrast-color($color-light) !default;
+$progress-bar-color-variant-light-background: color('light') !default;
+
+$progress-bar-color-variant-light: (
+    'color': $progress-bar-color-variant-light-color,
+    'background': $progress-bar-color-variant-light-background
+) !default;
+
+$progress-bar-color-variant-dark-color: contrast-color($color-dark) !default;
+$progress-bar-color-variant-dark-background: color('dark') !default;
+
+$progress-bar-color-variant-dark: (
+    'color': $progress-bar-color-variant-dark-color,
+    'background': $progress-bar-color-variant-dark-background
+) !default;
+
+$progress-bar-color-variant-primary-color: contrast-color($color-primary) !default;
+$progress-bar-color-variant-primary-background: color('primary') !default;
+
+$progress-bar-color-variant-primary: (
+    'color': $progress-bar-color-variant-primary-color,
+    'background': $progress-bar-color-variant-primary-background
+) !default;
+
+$progress-bar-color-variant-secondary-color: contrast-color($color-secondary) !default;
+$progress-bar-color-variant-secondary-background: color('secondary') !default;
+
+$progress-bar-color-variant-secondary: (
+    'color': $progress-bar-color-variant-secondary-color,
+    'background': $progress-bar-color-variant-secondary-background
+) !default;
+
+$progress-bar-color-variant-info-color: contrast-color($color-info) !default;
+$progress-bar-color-variant-info-background: color('info') !default;
+
+$progress-bar-color-variant-info: (
+    'color': $progress-bar-color-variant-info-color,
+    'background': $progress-bar-color-variant-info-background
+) !default;
+
+$progress-bar-color-variant-success-color: contrast-color($color-success) !default;
+$progress-bar-color-variant-success-background: color('success') !default;
+
+$progress-bar-color-variant-success: (
+    'color': $progress-bar-color-variant-success-color,
+    'background': $progress-bar-color-variant-success-background
+) !default;
+
+$progress-bar-color-variant-warning-color: contrast-color($color-warning) !default;
+$progress-bar-color-variant-warning-background: color('warning') !default;
+
+$progress-bar-color-variant-warning: (
+    'color': $progress-bar-color-variant-warning-color,
+    'background': $progress-bar-color-variant-warning-background
+) !default;
+
+$progress-bar-color-variant-danger-color: contrast-color($color-danger) !default;
+$progress-bar-color-variant-danger-background: color('danger') !default;
+
+$progress-bar-color-variant-danger: (
+    'color': $progress-bar-color-variant-danger-color,
+    'background': $progress-bar-color-variant-danger-background
+) !default;
+
+$progress-bar-color-variants: (
+    'light': $progress-bar-color-variant-light,
+    'dark': $progress-bar-color-variant-dark,
+    'primary': $progress-bar-color-variant-primary,
+    'secondary': $progress-bar-color-variant-secondary,
+    'info': $progress-bar-color-variant-info,
+    'success': $progress-bar-color-variant-success,
+    'warning': $progress-bar-color-variant-warning,
+    'danger': $progress-bar-color-variant-danger
+) !default;
