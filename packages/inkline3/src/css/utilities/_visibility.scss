@@ -1,4 +1,4 @@
-@each $breakpoint-key in $breakpoint-infix-keys {
+@each $breakpoint-key in $breakpoint-prefix-keys {
     $prefix: breakpoint-prefix($breakpoint-key);
 
     ._#{$prefix}visible {
