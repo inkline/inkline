@@ -30,10 +30,14 @@ Inkline includes two predefined navbar styles. You can set the style of a `<i-na
 ### Dropdown
 You can use an `<i-dropdown>` component inside the `<i-nav>` component to create a contextual navbar menu. 
 
+<router-link :to="{ name: 'docs-components-dropdown' }">Learn more about the Dropdown component.</router-link>
+
 <example :component="examples.INavbarDropdownExample" :html="examples.INavbarDropdownExampleHTML"></example>
 
 ### Nav Placement
 You can position the `<i-nav>` component to the `start`, `end`, or `center` of the `<i-navbar-collapsible>` component using flexbox utilities.
+
+<router-link :to="{ name: 'docs-components-nav' }">Learn more about the Nav component.</router-link>
 
 <example :component="examples.INavbarNavPlacementExample" :html="examples.INavbarNavPlacementExampleHTML"></example>
 
@@ -62,12 +66,16 @@ Sometimes, it's necessary to control whether the collapsed Navbar is open or not
 ### Linking and Routing
 Nav items will be automatically converted to link anchors `<a>` when providing a `href` property. You can also specify `target` and `rel` properties.
 
-The `<i-nav-item>` component is well integrated with the Vue Router plugin and will be converted to a `<router-link>` when using the to property.
+The `<i-nav-item>` component is well integrated with the Vue Router plugin and will be converted to a `<router-link>` when using the `to` property.
+
+<router-link :to="{ name: 'docs-components-nav' }">Learn more about the Nav Item component.</router-link>
 
 <example :component="examples.INavbarRoutingExample" :html="examples.INavbarRoutingExampleHTML"></example>
 
 #### Active State
 
-You can control the active state of your `<i-nav-item>` using the `active` property. If you're providing a `:to` property, converting it into a `router-link`, you can use the `active-class` and `exact-active-class` properties and set them to `-active`.
+You can control the active state of your `<i-nav-item>` using the `active` property. When you provide a `to` property you're converting the component into a `router-link`, therefore you can use the `active-class` and `exact-active-class` properties and set them to `-active`.
 
-<example :component="examples.INavbarStateActiveExample" :html="examples.INavbarStateActiveExampleHTML"></example>
+<router-link :to="{ name: 'docs-components-nav' }">Learn more about the Nav Item component.</router-link>
+
+<example :component="examples.INavbarRoutingActiveExample" :html="examples.INavbarRoutingActiveExampleHTML"></example>

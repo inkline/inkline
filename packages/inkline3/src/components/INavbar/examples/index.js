@@ -17,3 +17,7 @@ export { default as INavbarNavPlacementExample } from './nav-placement.vue';
 export { default as INavbarNavPlacementExampleHTML } from './nav-placement.html';
 export { default as INavbarSizeVariantsExample } from './size-variants.vue';
 export { default as INavbarSizeVariantsExampleHTML } from './size-variants.html';
+export { default as INavbarRoutingExample } from './routing.vue';
+export { default as INavbarRoutingExampleHTML } from './routing.html';
+export { default as INavbarRoutingActiveExample } from './routing-active.vue';
+export { default as INavbarRoutingActiveExampleHTML } from './routing-active.html';
