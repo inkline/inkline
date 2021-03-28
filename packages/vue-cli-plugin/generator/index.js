@@ -29,8 +29,8 @@ const addDependencies = (api) => {
 const addDevDependencies = (api) => {
     api.extendPackage({
         devDependencies: {
-            'node-sass': '>=4.0.0',
-            'sass-loader': '>=8.0.0'
+            'node-sass': '<5.0.0',
+            'sass-loader': '<11.0.0'
         }
     });
 };

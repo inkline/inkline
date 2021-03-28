@@ -24,8 +24,8 @@ By running the command above, you have added Inkline to your Vue CLI project. He
         "@inkline/inkline": "^2.0.0"
     },
     "devDependencies": {
-        "node-sass": ">=4.0.0",
-        "sass-loader": ">=8.0.0"
+        "node-sass": "<5.0.0",
+        "sass-loader": "<11.0.0"
     }
 }
 ~~~

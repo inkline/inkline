@@ -35,7 +35,7 @@ This is it for the non-customizable installation. Start using the many component
 The customizable setup requires Sass in order to compile the styles, therefore we need to install it:
 
 ~~~bash
-npm install --save-dev node-sass sass-loader
+npm install --save-dev node-sass@4 sass-loader@10
 ~~~
 
 Make sure you configure your application bundler appropriately to work with `.scss` files. If you're using WebPack, here's the official <a href="https://webpack.js.org/loaders/sass-loader/" rel="nofollow">sass-loader integration guide</a>.

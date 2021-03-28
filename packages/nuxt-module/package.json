@@ -19,8 +19,8 @@
     "@nuxt/components": "^0.3.3"
   },
   "peerDependencies": {
-    "node-sass": "*",
-    "sass-loader": "*",
+    "node-sass": "<5.0.0",
+    "sass-loader": "<11.0.0",
     "vue": "^2.0.0"
   },
   "repository": {
