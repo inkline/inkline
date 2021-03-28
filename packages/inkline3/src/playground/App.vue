@@ -167,6 +167,11 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'docs-components-sidebar' }">
+                        Sidebar
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'docs-components-tabs' }">
                         Tabs
                     </router-link>
