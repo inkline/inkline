@@ -352,5 +352,13 @@ export default defineComponent({
             }
         }
     }
+
+    &.-sidebar {
+        > .body {
+            > .layout {
+                height: 400px;
+            }
+        }
+    }
 }
 </style>

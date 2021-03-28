@@ -19,3 +19,13 @@
     backface-visibility: hidden;
     perspective: 1000px;
 }
+
+.expand-enter-from,
+.expand-enter-active,
+.expand-leave-active,
+.expand-leave-to {
+    will-change: height;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}

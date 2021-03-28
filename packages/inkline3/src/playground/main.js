@@ -41,6 +41,7 @@ const routes = [
     { name: 'docs-components-pagination', path: '/docs/components/pagination', component: () => import('../components/IPagination/docs/en.md') },
     { name: 'docs-components-popover', path: '/docs/components/popover', component: () => import('../components/IPopover/docs/en.md') },
     { name: 'docs-components-progress', path: '/docs/components/progress', component: () => import('../components/IProgress/docs/en.md') },
+    { name: 'docs-components-sidebar', path: '/docs/components/sidebar', component: () => import('../components/ISidebar/docs/en.md') },
     { name: 'docs-components-tabs', path: '/docs/components/tabs', component: () => import('../components/ITabs/docs/en.md') },
     { name: 'docs-components-tooltip', path: '/docs/components/tooltip', component: () => import('../components/ITooltip/docs/en.md') },
     { name: 'docs-utilities-border', path: '/docs/utilities/border', component: () => import('../docs/utilities/border/en.md') },

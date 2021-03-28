@@ -14,7 +14,8 @@ export default {
     },
     data() {
         return {
-            open: this.modelValue
+            open: this.modelValue,
+            windowWidth: typeof window !== 'undefined' ? window.innerWidth : 0
         };
     },
     provide() {
@@ -29,18 +30,13 @@ export default {
                 '-collapsible': this.collapsible,
                 [`-collapse-${this.collapse}`]: Boolean(this.collapse)
             }
-        }
-    },
-    created() {
-        if (typeof window !== 'undefined') {
-            on(window, 'resize', this.onWindowResize);
+        },
+        collapsible() {
+            if (this.collapse === true || this.collapse === false) {
+                return this.collapse;
+            }
 
-            this.onWindowResize();
-        }
-    },
-    beforeUnmount() {
-        if (typeof window !== 'undefined') {
-            off(window, 'resize', this.onWindowResize);
+            return this.windowWidth <= breakpoints[this.collapse][1];
         }
     },
     methods: {
@@ -59,16 +55,28 @@ export default {
 
             const windowWidth = window.innerWidth;
 
-            if (windowWidth <= breakpoints[this.collapse][1] && windowWidth > breakpoints[this.collapse][1]) {
+            if (this.windowWidth <= breakpoints[this.collapse][1] && windowWidth > breakpoints[this.collapse][1]) {
                 this.setOpen(false);
             }
 
-            console.log(this.collapsible, this.open)
+            this.windowWidth = window.innerWidth;
         }
     },
     watch: {
         modelValue(value) {
             this.open = value;
         }
-    }
+    },
+    created() {
+        if (typeof window !== 'undefined') {
+            on(window, 'resize', this.onWindowResize);
+
+            this.onWindowResize();
+        }
+    },
+    beforeUnmount() {
+        if (typeof window !== 'undefined') {
+            off(window, 'resize', this.onWindowResize);
+        }
+    },
 };
