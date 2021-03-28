@@ -1,10 +1,10 @@
 <i-navbar>
-    <i-navbar-brand :to="{ name: 'index' }">
+    <i-navbar-brand to="/">
         Navbar
     </i-navbar-brand>
     <i-navbar-collapsible>
         <i-nav>
-            <i-nav-item :to="{ name: 'index' }">
+            <i-nav-item to="/">
                 Home
             </i-nav-item>
             <i-dropdown>
@@ -17,7 +17,7 @@
                     <i-dropdown-item>Separated item</i-dropdown-item>
                 </template>
             </i-dropdown>
-            <i-nav-item :to="{ name: 'contact' }">
+            <i-nav-item to="/contact">
                 Contact
             </i-nav-item>
         </i-nav>

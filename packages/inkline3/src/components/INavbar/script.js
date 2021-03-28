@@ -85,10 +85,10 @@ export default {
         },
         /**
          * @description The animation of the hamburger menu component used for collapsing
-         * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minux
-         * @default md
+         * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minus
+         * @default close
          */
-        toggleAnimation: {
+        menuAnimation: {
             type: String,
             default: 'close'
         }
@@ -98,7 +98,7 @@ export default {
             return {
                 ...this.collapsibleClasses,
                 ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.size}`]: Boolean(this.size)
             };
         }
     },
