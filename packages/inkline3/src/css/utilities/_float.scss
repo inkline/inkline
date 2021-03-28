@@ -4,7 +4,7 @@
  * Custom styles for additional flex alignment options.
  */
 
-@each $breakpoint-key in $breakpoint-infix-keys {
+@each $breakpoint-key in $breakpoint-prefix-keys {
     $prefix: breakpoint-prefix($breakpoint-key);
 
     @include breakpoint-up($breakpoint-key) {
