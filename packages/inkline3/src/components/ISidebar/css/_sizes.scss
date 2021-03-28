@@ -1,0 +1,34 @@
+@mixin sidebar-size-variant($size-variant-key) {
+    $_border-radius: var(--sidebar-size-variant-#{$size-variant-key}-border-radius);
+    $_font-size: var(--sidebar-size-variant-#{$size-variant-key}-font-size);
+    $_padding: var(--sidebar-size-variant-#{$size-variant-key}-padding);
+    $_width: var(--sidebar-size-variant-#{$size-variant-key}-width);
+    $_item-padding: var(--sidebar-size-variant-#{$size-variant-key}-item-padding);
+
+    width: $_width;
+
+    &.sidebar-wrapper-transition-enter-to,
+    &.sidebar-wrapper-transition-leave {
+        width: $_width;
+    }
+
+    .sidebar {
+        width: $_width;
+
+        .sidebar-content {
+            padding: $_padding;
+
+            .nav-item {
+                border-radius: $_border-radius;
+                padding: $_item-padding;
+            }
+
+            .collapsible {
+                .collapsible-header {
+                    border-radius: $_border-radius;
+                    padding: $_item-padding;
+                }
+            }
+        }
+    }
+}
