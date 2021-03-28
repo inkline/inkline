@@ -11,7 +11,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 
-    @each $breakpoint-key, $gutter-width in $gutter {
+    @each $breakpoint-key, $gutter-width in $gutters {
         @include breakpoint-up($breakpoint-key) {
             margin-left: calc(#{gutter($breakpoint-key)} / -2);
             margin-right: calc(#{gutter($breakpoint-key)} / -2);
@@ -44,7 +44,7 @@
 
     // Responsive Flex Alignments
     //
-    @each $breakpoint-key in $breakpoint-infix-keys {
+    @each $breakpoint-key in $breakpoint-prefix-keys {
         $breakpoint: breakpoint-infix($breakpoint-key);
 
         @include breakpoint-up($breakpoint-key) {

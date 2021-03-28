@@ -12,7 +12,7 @@
         position: relative;
         display: block;
 
-        > .header {
+        > .collapsible-header {
             border-width: 0;
             border-bottom-width: 1px;
             border-style: solid;
@@ -38,26 +38,24 @@
             }
         }
 
-        &.-active > .header > .icon {
+        &.-active > .collapsible-header > .icon {
             transform: rotate(180deg);
         }
 
-        > .body {
+        > .collapsible-body {
             display: block;
             position: relative;
-
-            @extend %expand-transition;
         }
 
-        &:last-child > .header {
+        &:last-child > .collapsible-header {
             border-bottom-width: 0;
         }
     }
 
     &.-blank {
         > .collapsible-item {
-            > .header,
-            > .body {
+            > .collapsible-header,
+            > .collapsible-body {
                 border: 0;
                 background-color: unset;
                 color: inherit;

@@ -49,7 +49,7 @@
 
     // Column Responsive Sizes
     //
-    @each $breakpoint-key in $breakpoint-infix-keys {
+    @each $breakpoint-key in $breakpoint-prefix-keys {
         $breakpoint: breakpoint-infix($breakpoint-key);
 
         @if $breakpoint-key != '_' {

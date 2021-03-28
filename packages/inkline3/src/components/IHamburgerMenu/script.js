@@ -14,7 +14,7 @@ export default {
     props: {
         /**
          * @description The animation of the hamburger menu
-         * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minux
+         * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minus
          * @default close
          */
         animation: {

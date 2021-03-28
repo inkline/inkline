@@ -30,12 +30,12 @@ export default {
         },
         /**
          * @description Used to set the currently active tab
-         * @type Boolean
-         * @default false
+         * @type String
+         * @default
          */
         modelValue: {
-            type: Boolean,
-            default: false
+            type: String,
+            default: ''
         },
         /**
          * @description The size variant of the tabs

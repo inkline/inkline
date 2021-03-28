@@ -7,13 +7,13 @@
     font-size: $_font-size;
 
     > .collapsible-item {
-        &:last-child > .body {
+        &:last-child > .collapsible-body {
             border-bottom-left-radius: $_border-radius;
             border-bottom-right-radius: $_border-radius;
         }
 
-        > .header,
-        > .body > .content {
+        > .collapsible-header,
+        > .collapsible-body > .content {
             padding: $_padding;
         }
     }

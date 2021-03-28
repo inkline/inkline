@@ -253,7 +253,6 @@ export default {
 
                 case isKey('tab', event):
                 case isKey('esc', event):
-                    console.log(event);
                     this.hide();
                     this.focusTrigger();
 
