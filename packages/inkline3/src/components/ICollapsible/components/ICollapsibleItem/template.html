@@ -1,6 +1,6 @@
 <div class="collapsible-item" :class="classes">
     <a
-        class="header"
+        class="collapsible-header"
         role="tab"
         :aria-expanded="active"
         :aria-controls="`collapsible-item-content-${name}`"
@@ -9,13 +9,13 @@
         @click="onClick"
     >
         <slot name="header">
-            {{title}}
+            {{ title }}
         </slot>
-        <i class="icon"></i>
+        <i class="icon" />
     </a>
     <i-expand-transition>
         <div
-            class="body"
+            class="collapsible-body"
             v-show="active"
             role="tabpanel"
             :aria-hidden="!active"

@@ -56,7 +56,7 @@ You can use variants for the most common social login buttons out of the box. Th
 <example :component="examples.IButtonSocialColorVariantsExample" :html="examples.IButtonSocialColorVariantsExampleHTML"></example>
 
 ### Button Icon
-You can easily use the `i-button` component together with any icon component (i.e. FontAwesome, IcoMoon), including the <router-link to="/docs/components/icon">Inkline Icon Component</router-link>.
+You can easily use the `i-button` component together with any icon component (i.e. FontAwesome, IcoMoon), including the <router-link :to="{ name: 'docs-components-icon' }">Icon Component</router-link>.
 
 <example :component="examples.IButtonIconExample" :html="examples.IButtonIconExampleHTML"></example>
 

@@ -12,7 +12,7 @@ import * as examples from '../examples';
 ## Inkline's hamburger menu is used to control opening and closing elements using various animation options.
 
 ### Basic Example
-Here’s an example of a basic use case for the `<i-hamburger-menu>` component. This component is usually used together with the <router-link to="/docs/components/navbar">Navbar Component</router-link> and <router-link to="/docs/components/sidebar">Sidebar Component</router-link> to control their collapsed state.
+Here’s an example of a basic use case for the `<i-hamburger-menu>` component. This component is usually used together with the <router-link :to="{ name: 'docs-components-navbar' }">Navbar Component</router-link> and <router-link to="{ name: 'docs-components-sidebar' }">Sidebar Component</router-link> to control their collapsed state.
 
 <example :component="examples.IHamburgerMenuBasicExample" :html="examples.IHamburgerMenuBasicExampleHTML" :js="examples.IHamburgerMenuBasicExampleJS"></example>
 

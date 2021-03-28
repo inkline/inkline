@@ -7,6 +7,7 @@ export { default as IButtonGroup } from '@inkline/inkline/src/components/IButton
 export { default as IColumn } from '@inkline/inkline/src/components/IColumn/index.vue';
 export { default as IContainer } from '@inkline/inkline/src/components/IContainer/index.vue';
 export { default as ICard } from '@inkline/inkline/src/components/ICard/index.vue';
+export { default as ICheckbox } from '@inkline/inkline/src/components/ICheckbox/index.vue';
 export { default as ICollapsible } from '@inkline/inkline/src/components/ICollapsible/index.vue';
 export * from '@inkline/inkline/src/components/ICollapsible/components';
 export { default as IDropdown } from '@inkline/inkline/src/components/IDropdown/index.vue';
@@ -38,6 +39,7 @@ export { default as IPopover } from '@inkline/inkline/src/components/IPopover/in
 export { default as IProgress } from '@inkline/inkline/src/components/IProgress/index.vue';
 export * from '@inkline/inkline/src/components/IProgress/components';
 export { default as IRow } from '@inkline/inkline/src/components/IRow/index.vue';
+export { default as ISidebar } from '@inkline/inkline/src/components/ISidebar/index.vue';
 export { default as ITable } from '@inkline/inkline/src/components/ITable/index.vue';
 export { default as Tabs } from '@inkline/inkline/src/components/ITabs/index.vue';
 export * from '@inkline/inkline/src/components/ITabs/components';

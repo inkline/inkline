@@ -35,12 +35,12 @@ You're able to use the `size` modifier to control the size of your navs, using o
 ### Linking and Routing
 Nav items will be automatically converted to link anchors `<a>` when providing a `href` property. You can also specify `target` and `rel` properties.
 
-The `<i-nav-item>` component is well integrated with the Vue Router plugin and will be converted to a `<router-link>` when using the to property.
+The `<i-nav-item>` component is well integrated with the Vue Router plugin and will be converted to a `<router-link>` when using the `to` property.
 
 <example :component="examples.INavRoutingExample" :html="examples.INavRoutingExampleHTML"></example>
 
 #### Active State
 
-You can control the active state of your `<i-nav-item>` using the `active` property. If you're providing a `:to` property, converting it into a `router-link`, you can use the `active-class` and `exact-active-class` properties and set them to `-active`.
+You can control the active state of your `<i-nav-item>` using the `active` property. When you provide a `to` property you're converting the component into a `router-link`, therefore you can use the `active-class` and `exact-active-class` properties and set them to `-active`.
 
 <example :component="examples.INavStateActiveExample" :html="examples.INavStateActiveExampleHTML"></example>

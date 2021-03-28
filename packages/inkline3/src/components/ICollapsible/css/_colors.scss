@@ -7,17 +7,17 @@
     border-color: $_border-color;
 
     > .collapsible-item {
-        > .header,
-        > .body {
+        > .collapsible-header,
+        > .collapsible-body {
             border-color: $_border-color;
             color: $_color;
         }
 
-        > .header {
+        > .collapsible-header {
             background: $_background;
         }
 
-        > .body {
+        > .collapsible-body {
             background-color: $_body-background;
         }
     }
