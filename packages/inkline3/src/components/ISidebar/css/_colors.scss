@@ -1,0 +1,29 @@
+@mixin sidebar-color-variant($color-variant-key) {
+    $_color: var(--sidebar-color-variant-#{$color-variant-key}-color);
+    $_background: var(--sidebar-color-variant-#{$color-variant-key}-background);
+    $_item-color: var(--sidebar-color-variant-#{$color-variant-key}-item-color);
+    $_item-color-hover: var(--sidebar-color-variant-#{$color-variant-key}-item-color-hover);
+    $_item-background: var(--sidebar-color-variant-#{$color-variant-key}-item-background);
+    $_item-background-hover: var(--sidebar-color-variant-#{$color-variant-key}-item-background-hover);
+
+    .sidebar {
+        color: $_color;
+        background: $_background;
+
+        .sidebar-content {
+            .nav-item,
+            .collapsible-header {
+                color: $_item-color;
+                background-color: $_item-background;
+
+                &.-focused,
+                &.-hovered,
+                &:focus,
+                &:hover {
+                    color: $_item-color-hover;
+                    background-color: $_item-background-hover;
+                }
+            }
+        }
+    }
+}

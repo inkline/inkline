@@ -1,0 +1,207 @@
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
+@import 'css/sizes';
+
+@mixin sidebar-wrapper-collapse {
+    &.-collapse-fixed {
+        position: fixed;
+    }
+
+    &.-collapse-absolute {
+        position: absolute;
+    }
+
+    &.-collapse-fixed,
+    &.-collapse-absolute {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.sidebar-wrapper {
+    position: relative;
+    height: 100%;
+    min-width: 0;
+    overflow: hidden;
+    z-index: var(--sidebar-z-index);
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    .sidebar {
+        position: absolute;
+        height: 100%;
+        z-index: 1;
+
+        .sidebar-content {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+
+            // Hack for fixing margin collapse bug
+            // https://github.com/ant-design/ant-design/issues/7967
+            // solution from https://stackoverflow.com/a/33132624/3040605
+            padding-top: 0.1px;
+            margin-top: -0.1px;
+
+            .nav {
+                &.-vertical {
+                    .nav-item {
+                        width: 100%;
+                    }
+                }
+
+                .nav-item {
+                    &.-active {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .collapsible {
+                width: 100%;
+                border: 0;
+
+                .collapsible-header {
+                    border-bottom: 0;
+                    transition-property: background, color;
+                    transition-duration: var(--transition-duration);
+                    transition-timing-function: var(--transition-easing);
+                }
+
+                .collapsible-body {
+                    background: transparent;
+
+                    .content {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &.-collapse-relative {
+        &.-placement-left .sidebar {
+            right: 0;
+        }
+
+        &.-placement-right .sidebar {
+            left: 0;
+        }
+    }
+
+    &.-collapse-absolute,
+    &.-collapse-fixed {
+        &.-placement-left .sidebar {
+            left: 0;
+        }
+
+        &.-placement-right .sidebar {
+            right: 0;
+        }
+    }
+
+    .sidebar-overlay {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background: $sidebar-overlay-background;
+    }
+
+    @each $breakpoint in $breakpoint-keys {
+        &.-collapse-#{$breakpoint} {
+            @include breakpoint-down($breakpoint) {
+                @include sidebar-wrapper-collapse;
+            }
+        }
+    }
+
+    &.-collapse-true {
+        @include sidebar-wrapper-collapse;
+    }
+
+    @include sidebar-size-variant('md');
+    @each $size-variant-key, $sidebar-size-variant-value in $sidebar-size-variants {
+        &.-#{$size-variant-key} {
+            @include sidebar-size-variant($size-variant-key);
+        }
+    }
+
+    @include sidebar-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $sidebar-color-variants {
+        &.-#{$color-variant-key} {
+            @include sidebar-color-variant($color-variant-key);
+        }
+    }
+}
+
+/**
+ * Sidebar animation
+ */
+
+//
+// Sidebar Wrapper
+//
+.sidebar-wrapper-transition-enter-active,
+.sidebar-wrapper-transition-leave-active {
+    transition: width var(--transition-duration) var(--transition-easing);
+}
+
+.sidebar-wrapper-none-transition-enter-active,
+.sidebar-wrapper-none-transition-leave-active {
+    transition: none var(--transition-duration) var(--transition-easing);
+}
+
+.sidebar-wrapper-transition-enter-from,
+.sidebar-wrapper-transition-leave-to {
+    width: 0;
+}
+
+//
+// Sidebar
+//
+.sidebar-transition-enter-active,
+.sidebar-transition-leave-active {
+    transition: transform var(--transition-duration) var(--transition-easing);
+    transform-origin: left;
+}
+
+.sidebar-transition-enter-from,
+.sidebar-transition-leave-to {
+    transform: translateX(-100%);
+}
+
+.sidebar-transition-enter-to,
+.sidebar-transition-leave-from {
+    transform: translateX(0);
+}
+
+.sidebar-wrapper.-placement-right {
+    .sidebar-transition-enter-active,
+    .sidebar-transition-leave-active {
+        transform-origin: right;
+    }
+
+    .sidebar-transition-enter-from,
+    .sidebar-transition-leave-to {
+        transform: translateX(100%);
+    }
+}
+
+//
+// Sidebar Overlay
+//
+.sidebar-overlay-transition-enter-active,
+.sidebar-overlay-transition-leave-active {
+    transition: opacity var(--transition-duration) var(--transition-easing);
+}
+
+.sidebar-overlay-transition-enter-from,
+.sidebar-overlay-transition-leave-to,
+.sidebar-overlay-transition-leave-active {
+    opacity: 0;
+}
