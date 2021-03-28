@@ -14,8 +14,8 @@
         "@inkline/inkline": "^2.3.6"
     },
     "peerDependencies": {
-        "node-sass": "*",
-        "sass-loader": "*",
+        "node-sass": "<5.0.0",
+        "sass-loader": "<11.0.0",
         "vue": "^2.0.0"
     },
     "devDependencies": {
