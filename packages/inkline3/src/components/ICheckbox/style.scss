@@ -95,4 +95,22 @@
             color: white;
         }
     }
+
+    @include checkbox-size-variant('md');
+    @each $size-variant-key, $checkbox-size-variant-value in $checkbox-size-variants {
+        .form.-#{$size-variant-key} &,
+        .form-group.-#{$size-variant-key} &,
+        &.-#{$size-variant-key} {
+            @include checkbox-size-variant($size-variant-key);
+        }
+    }
+
+    @include checkbox-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $checkbox-color-variants {
+        .form.-#{$color-variant-key} &,
+        .form-group.-#{$color-variant-key} &,
+        &.-#{$color-variant-key} {
+            @include checkbox-color-variant($color-variant-key);
+        }
+    }
 }
