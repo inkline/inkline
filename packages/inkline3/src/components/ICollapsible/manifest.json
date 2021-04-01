@@ -1,18 +1,17 @@
 {
+    "name": "collapsible",
     "events": [
         {
             "name": "update:modelValue",
             "description": "Event emitted for setting the modelValue",
-            "type": [],
-            "category": "events"
+            "type": []
         }
     ],
     "slots": [
         {
             "name": "default",
             "description": "Slot for default collapsible content",
-            "type": [],
-            "category": "slots"
+            "type": []
         }
     ],
     "props": [
@@ -22,8 +21,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "color",
@@ -33,8 +31,7 @@
                 "dark",
                 "blank"
             ],
-            "category": "props",
-            "defaultvalue": "light"
+            "default": "light"
         },
         {
             "name": "size",
@@ -44,8 +41,7 @@
                 "md",
                 "lg"
             ],
-            "category": "props",
-            "defaultvalue": "md"
+            "default": "md"
         },
         {
             "name": "modelValue",
@@ -53,8 +49,64 @@
             "type": [
                 "Array.<String>"
             ],
-            "category": "props",
-            "defaultvalue": "{\"type\":\"\",\"default\":\"\"}"
+            "default": "{\"type\":\"\",\"default\":\"\"}"
+        }
+    ],
+
+    "styles": [
+        {
+            "name": "font-size",
+            "description": "The font size of the collapsible component",
+            "type": "size",
+            "default": "font-size()"
+        },
+        {
+            "name": "border-radius",
+            "description": "The border radius of the collapsible component",
+            "type": "size",
+            "default": "border-radius()"
+        },
+        {
+            "name": "padding",
+            "description": "The padding of the collapsible component",
+            "type": "size",
+            "default": "spacer()"
+        },
+        {
+            "name": "color",
+            "description": "The color of the collapsible component",
+            "type": "color",
+            "values": {
+                "light": "contrast-color($color-light)",
+                "dark": "contrast-color($color-dark)"
+            }
+        },
+        {
+            "name": "background",
+            "description": "The background of the collapsible component",
+            "type": "color",
+            "values": {
+                "light": "color('light')",
+                "dark": "color('dark')"
+            }
+        },
+        {
+            "name": "border-color",
+            "description": "The border color of the collapsible component",
+            "type": "color",
+            "values": {
+                "light": "color('light-55')",
+                "dark": "color('dark-45')"
+            }
+        },
+        {
+            "name": "body-background",
+            "description": "The background of the collapsible component body",
+            "type": "color",
+            "values": {
+                "light": "color('white')",
+                "dark": "color('dark-45')"
+            }
         }
     ]
 }

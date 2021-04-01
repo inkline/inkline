@@ -1,0 +1,72 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default sidebar content",
+            "type": []
+        }
+    ],
+    "events": [
+        {
+            "name": "update:modelValue",
+            "description": "Event emitted for setting the modelValue",
+            "type": []
+        }
+    ],
+    "props": [
+        {
+            "name": "collapseOnItemClick",
+            "description": "Determines if the sidebar should close when clicking a sidebar item",
+            "type": [
+                "Boolean"
+            ],
+            "default": "true"
+        },
+        {
+            "name": "collapseOnClickOutside",
+            "description": "Determines if the sidebar should close when clicking outside, on the overlay",
+            "type": [
+                "Boolean"
+            ],
+            "default": "true"
+        },
+        {
+            "name": "collapsePosition",
+            "description": "The collapse position of the sidebar",
+            "type": [
+                "fixed",
+                "absolute",
+                "relative"
+            ],
+            "default": "absolute"
+        },
+        {
+            "name": "color",
+            "description": "The color variant of the sidebar",
+            "type": [
+                "light",
+                "dark"
+            ],
+            "default": "light"
+        },
+        {
+            "name": "placement",
+            "description": "The placement of the sidebar",
+            "type": [
+                "left",
+                "right"
+            ],
+            "default": "left"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the navbar",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    ]
+}

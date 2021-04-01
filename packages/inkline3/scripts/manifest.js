@@ -9,15 +9,18 @@ const categoryByKind = {
     event: 'events'
 };
 
-glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'script.js'), (error, files) => {
+glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.json'), (error, files) => {
     if (error) {
         console.error(error);
         throw error;
     }
 
     files.forEach((fileName) => {
-        const source = fs.readFileSync(fileName);
-        const target = fileName.replace('script.js', 'manifest.json');
+        let manifest = require(fileName);
+
+        // Read script.js and update manifest.json
+        //
+        const source = fs.readFileSync(fileName.replace('manifest.json', 'script.js'));
         const doc = jsdoc.explainSync({ source })
             .filter((x) => !x.undocumented && ['member', 'slot', 'event'].includes(x.kind))
             .map(({ name, description, type, kind, defaultvalue, memberof, tags }) => {
@@ -30,18 +33,29 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'script.js'), (err
                     description,
                     type,
                     category,
-                    defaultvalue,
+                    default: defaultvalue,
                     tags
                 };
             })
             .reduce((acc, x) => {
-                acc[x.category] = acc[x.category] || [];
-                acc[x.category].push(x);
+                const category = x.category;
+
+                delete x.category;
+
+                acc[category] = acc[category] || [];
+                acc[category].push(x);
 
                 return acc;
             }, {});
 
-        fs.writeFileSync(target, JSON.stringify(doc, null, 4));
+        // Update manifest
+        //
+        manifest = {
+            ...manifest,
+            ...doc
+        };
+
+        fs.writeFileSync(fileName, JSON.stringify(manifest, null, 4));
     });
 });
 

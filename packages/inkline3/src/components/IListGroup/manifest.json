@@ -3,8 +3,7 @@
         {
             "name": "default",
             "description": "Slot for default list group content",
-            "type": [],
-            "category": "slots"
+            "type": []
         }
     ],
     "props": [
@@ -14,8 +13,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "true"
+            "default": "true"
         },
         {
             "name": "color",
@@ -24,8 +22,7 @@
                 "light",
                 "dark"
             ],
-            "category": "props",
-            "defaultvalue": "light"
+            "default": "light"
         },
         {
             "name": "size",
@@ -35,8 +32,7 @@
                 "md",
                 "lg"
             ],
-            "category": "props",
-            "defaultvalue": "md"
+            "default": "md"
         }
     ]
 }

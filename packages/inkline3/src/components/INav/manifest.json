@@ -1,0 +1,38 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default nav content",
+            "type": []
+        }
+    ],
+    "props": [
+        {
+            "name": "color",
+            "description": "The color variant of the nav",
+            "type": [
+                "light",
+                "dark"
+            ],
+            "default": "light"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the nav",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        },
+        {
+            "name": "vertical",
+            "description": "Display the nav with vertical orientation",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
+        }
+    ]
+}

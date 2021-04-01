@@ -3,8 +3,7 @@
         {
             "name": "default",
             "description": "Slot for default loader content",
-            "type": [],
-            "category": "slots"
+            "type": []
         }
     ],
     "props": [
@@ -21,8 +20,7 @@
                 "warning",
                 "danger"
             ],
-            "category": "props",
-            "defaultvalue": "light"
+            "default": "light"
         },
         {
             "name": "size",
@@ -30,10 +28,10 @@
             "type": [
                 "sm",
                 "md",
-                "lg"
+                "lg",
+                "auto"
             ],
-            "category": "props",
-            "defaultvalue": "md"
+            "default": "md"
         }
     ]
 }

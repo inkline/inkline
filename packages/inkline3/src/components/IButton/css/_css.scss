@@ -1,19 +1,19 @@
 :root {
-    --button-font-size: #{$button-font-size};
+    /**
+     * Variables
+     */
+
     --button-font-weight: #{$button-font-weight};
     --button-line-height: #{$button-line-height};
-
     --button-border-width: #{$button-border-width};
+    --button-font-size: #{$button-font-size};
     --button-border-radius: #{$button-border-radius};
-
     --button-padding: #{$button-padding};
     --button-circle-size: #{$button-circle-size};
-    --button-margin: #{$button-margin};
 
-    --button-opacity-disabled: #{$button-opacity-disabled};
-
-    --button-link-color: #{$button-link-color};
-    --button-link-disabled-color: #{$button-link-disabled-color};
+    /**
+     * Sizes
+     */
 
     @each $button-size-variant-key, $button-size-variant-value in $button-size-variants {
         @each $button-size-variant-field-key, $button-size-variant-field-value in $button-size-variant-value {
@@ -21,9 +21,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $button-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --button-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $button-color-variant-key, $button-color-variant-value in $button-color-variants {
+        @each $button-color-variant-field-key, $button-color-variant-field-value in $button-color-variant-value {
+            --button-color-variant-#{$button-color-variant-key}-#{$button-color-variant-field-key}: #{$button-color-variant-field-value};
         }
     }
 }

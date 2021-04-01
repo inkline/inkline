@@ -10,7 +10,7 @@
 
 .badge {
     display: inline-block;
-    font-weight: $badge-font-weight;
+    font-weight: var(--badge-font-weight);
     line-height: 1;
     text-align: center;
     white-space: nowrap;
@@ -27,7 +27,7 @@
     }
 
     &.-pill {
-        border-radius: $badge-pill-border-radius;
+        border-radius: var(--badge-pill-border-radius);
     }
 
     @include badge-size-variant('md');

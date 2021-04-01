@@ -1,119 +1,351 @@
-//
-// Variables
-//
+////
+/// Variables
+////
 
+/// The font weight of the alert component
+/// @name font-weight
 $alert-font-weight: font-weight('normal') !default;
+
+/// The line height of the alert component
+/// @name line-height
 $alert-line-height: var(--line-height) !default;
+
+/// The border width of the alert component
+/// @name border-width
 $alert-border-width: var(--border-width) !default;
+
+/// The size of the alert component dismiss icon
+/// @name dismiss-size
 $alert-dismiss-size: 1rem !default;
+
+/// The font size of the alert component
+/// @name font-size
+/// @type size
 $alert-font-size: font-size() !default;
-$alert-border-radius: var(--border-radius) !default;
+
+/// The border radius of the alert component
+/// @name border-radius
+/// @type size
+$alert-border-radius: border-radius() !default;
+
+/// The padding of the alert component
+/// @name padding
+/// @type size
 $alert-padding: spacer() !default;
 
-//
-// Sizes
-//
+////
+/// Sizes
+////
 
+////
+/// Small size
+////
+
+/// The font size of the alert component, for the small size variant
+/// @name font-size
+/// @group sm
+/// @type size
 $alert-size-variant-sm-font-size: calc(var(--alert-font-size) * #{size-multiplier('sm')}) !default;
+
+/// The border radius of the alert component, for the small size variant
+/// @name border-radius
+/// @group sm
+/// @type size
 $alert-size-variant-sm-border-radius: calc(var(--alert-border-radius) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the alert component, for the small size variant
+/// @name padding
+/// @group sm
+/// @type size
 $alert-size-variant-sm-padding: calc(var(--alert-padding) * #{size-multiplier('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
 $alert-size-variant-sm: (
     'font-size': $alert-size-variant-sm-font-size,
     'border-radius': $alert-size-variant-sm-border-radius,
-    'padding': $alert-size-variant-sm-padding,
+    'padding': $alert-size-variant-sm-padding
 ) !default;
 
+////
+/// Medium size
+////
+
+/// The font size of the alert component, for the medium size variant
+/// @name font-size
+/// @group md
+/// @type size
 $alert-size-variant-md-font-size: calc(var(--alert-font-size) * #{size-multiplier('md')}) !default;
+
+/// The border radius of the alert component, for the medium size variant
+/// @name border-radius
+/// @group md
+/// @type size
 $alert-size-variant-md-border-radius: calc(var(--alert-border-radius) * #{size-multiplier('md')}) !default;
+
+/// The padding of the alert component, for the medium size variant
+/// @name padding
+/// @group md
+/// @type size
 $alert-size-variant-md-padding: calc(var(--alert-padding) * #{size-multiplier('md')}) !default;
+
+/// Map for md size
+/// @group md
 $alert-size-variant-md: (
     'font-size': $alert-size-variant-md-font-size,
     'border-radius': $alert-size-variant-md-border-radius,
-    'padding': $alert-size-variant-md-padding,
+    'padding': $alert-size-variant-md-padding
 ) !default;
 
+////
+/// Large size
+////
+
+/// The font size of the alert component, for the large size variant
+/// @name font-size
+/// @group lg
+/// @type size
 $alert-size-variant-lg-font-size: calc(var(--alert-font-size) * #{size-multiplier('lg')}) !default;
+
+/// The border radius of the alert component, for the large size variant
+/// @name border-radius
+/// @group lg
+/// @type size
 $alert-size-variant-lg-border-radius: calc(var(--alert-border-radius) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the alert component, for the large size variant
+/// @name padding
+/// @group lg
+/// @type size
 $alert-size-variant-lg-padding: calc(var(--alert-padding) * #{size-multiplier('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
 $alert-size-variant-lg: (
     'font-size': $alert-size-variant-lg-font-size,
     'border-radius': $alert-size-variant-lg-border-radius,
-    'padding': $alert-size-variant-lg-padding,
+    'padding': $alert-size-variant-lg-padding
 ) !default;
 
+/// Sizes group map
 $alert-size-variants: (
     'sm': $alert-size-variant-sm,
     'md': $alert-size-variant-md,
     'lg': $alert-size-variant-lg
 ) !default;
 
-//
-// Colors
-//
+////
+/// Colors
+////
 
-$alert-color-variant-info-background: var(--color-info) !default;
-$alert-color-variant-info-border-color: var(--color-info-60) !default;
+////
+/// Info color
+////
+
+/// The background of the alert component, for the info color variant
+/// @name background
+/// @group info
+/// @type color
+$alert-color-variant-info-background: color('info') !default;
+
+/// The border color of the alert component, for the info color variant
+/// @name border-color
+/// @group info
+/// @type color
+$alert-color-variant-info-border-color: color('info-60') !default;
+
+/// The text color of the alert component, for the info color variant
+/// @name color
+/// @group info
+/// @type color
 $alert-color-variant-info-color: contrast-color($color-info) !default;
+
+/// The link color of the alert component, for the info color variant
+/// @name link-color
+/// @group info
+/// @type color
 $alert-color-variant-info-link-color: $alert-color-variant-info-color !default;
-$alert-color-variant-info-code-background: var(--color-info-60) !default;
+
+/// The code color of the alert component, for the info color variant
+/// @name code-color
+/// @group info
+/// @type color
 $alert-color-variant-info-code-color: $alert-color-variant-info-color !default;
+
+/// The code background of the alert component, for the info color variant
+/// @name code-background
+/// @group info
+/// @type color
+$alert-color-variant-info-code-background: color('info-60') !default;
+
+/// Map for info color
+/// @group info
 $alert-color-variant-info: (
     'background': $alert-color-variant-info-background,
     'border-color': $alert-color-variant-info-border-color,
     'color': $alert-color-variant-info-color,
     'link-color': $alert-color-variant-info-link-color,
-    'code-background': $alert-color-variant-info-code-background,
     'code-color': $alert-color-variant-info-code-color,
+    'code-background': $alert-color-variant-info-code-background
 ) !default;
 
-$alert-color-variant-warning-background: var(--color-warning) !default;
-$alert-color-variant-warning-border-color: var(--color-warning-60) !default;
-$alert-color-variant-warning-color: contrast-color($color-warning) !default;
-$alert-color-variant-warning-link-color: $alert-color-variant-warning-color !default;
-$alert-color-variant-warning-code-background: var(--color-warning-60) !default;
-$alert-color-variant-warning-code-color: $alert-color-variant-warning-color !default;
-$alert-color-variant-warning: (
-    'background': $alert-color-variant-warning-background,
-    'border-color': $alert-color-variant-warning-border-color,
-    'color': $alert-color-variant-warning-color,
-    'link-color': $alert-color-variant-warning-link-color,
-    'code-background': $alert-color-variant-warning-code-background,
-    'code-color': $alert-color-variant-warning-code-color,
-) !default;
+////
+/// Success color
+////
 
-$alert-color-variant-danger-background: var(--color-danger) !default;
-$alert-color-variant-danger-border-color: var(--color-danger-60) !default;
-$alert-color-variant-danger-color: contrast-color($color-danger) !default;
-$alert-color-variant-danger-link-color: $alert-color-variant-danger-color !default;
-$alert-color-variant-danger-code-background: var(--color-danger-60) !default;
-$alert-color-variant-danger-code-color: $alert-color-variant-danger-color !default;
-$alert-color-variant-danger: (
-    'background': $alert-color-variant-danger-background,
-    'border-color': $alert-color-variant-danger-border-color,
-    'color': $alert-color-variant-danger-color,
-    'link-color': $alert-color-variant-danger-link-color,
-    'code-background': $alert-color-variant-danger-code-background,
-    'code-color': $alert-color-variant-danger-code-color,
-) !default;
+/// The background of the alert component, for the success color variant
+/// @name background
+/// @group success
+/// @type color
+$alert-color-variant-success-background: color('success') !default;
 
-$alert-color-variant-success-background: var(--color-success) !default;
-$alert-color-variant-success-border-color: var(--color-success-60) !default;
+/// The border color of the alert component, for the success color variant
+/// @name border-color
+/// @group success
+/// @type color
+$alert-color-variant-success-border-color: color('success-60') !default;
+
+/// The text color of the alert component, for the success color variant
+/// @name color
+/// @group success
+/// @type color
 $alert-color-variant-success-color: contrast-color($color-success) !default;
+
+/// The link color of the alert component, for the success color variant
+/// @name link-color
+/// @group success
+/// @type color
 $alert-color-variant-success-link-color: $alert-color-variant-success-color !default;
-$alert-color-variant-success-code-background: var(--color-success-60) !default;
+
+/// The code color of the alert component, for the success color variant
+/// @name code-color
+/// @group success
+/// @type color
 $alert-color-variant-success-code-color: $alert-color-variant-success-color !default;
+
+/// The code background of the alert component, for the success color variant
+/// @name code-background
+/// @group success
+/// @type color
+$alert-color-variant-success-code-background: color('success-60') !default;
+
+/// Map for success color
+/// @group success
 $alert-color-variant-success: (
     'background': $alert-color-variant-success-background,
     'border-color': $alert-color-variant-success-border-color,
     'color': $alert-color-variant-success-color,
     'link-color': $alert-color-variant-success-link-color,
-    'code-background': $alert-color-variant-success-code-background,
     'code-color': $alert-color-variant-success-code-color,
+    'code-background': $alert-color-variant-success-code-background
 ) !default;
 
+////
+/// Warning color
+////
+
+/// The background of the alert component, for the warning color variant
+/// @name background
+/// @group warning
+/// @type color
+$alert-color-variant-warning-background: color('warning') !default;
+
+/// The border color of the alert component, for the warning color variant
+/// @name border-color
+/// @group warning
+/// @type color
+$alert-color-variant-warning-border-color: color('warning-60') !default;
+
+/// The text color of the alert component, for the warning color variant
+/// @name color
+/// @group warning
+/// @type color
+$alert-color-variant-warning-color: contrast-color($color-warning) !default;
+
+/// The link color of the alert component, for the warning color variant
+/// @name link-color
+/// @group warning
+/// @type color
+$alert-color-variant-warning-link-color: $alert-color-variant-warning-color !default;
+
+/// The code color of the alert component, for the warning color variant
+/// @name code-color
+/// @group warning
+/// @type color
+$alert-color-variant-warning-code-color: $alert-color-variant-warning-color !default;
+
+/// The code background of the alert component, for the warning color variant
+/// @name code-background
+/// @group warning
+/// @type color
+$alert-color-variant-warning-code-background: color('warning-60') !default;
+
+/// Map for warning color
+/// @group warning
+$alert-color-variant-warning: (
+    'background': $alert-color-variant-warning-background,
+    'border-color': $alert-color-variant-warning-border-color,
+    'color': $alert-color-variant-warning-color,
+    'link-color': $alert-color-variant-warning-link-color,
+    'code-color': $alert-color-variant-warning-code-color,
+    'code-background': $alert-color-variant-warning-code-background
+) !default;
+
+////
+/// Danger color
+////
+
+/// The background of the alert component, for the danger color variant
+/// @name background
+/// @group danger
+/// @type color
+$alert-color-variant-danger-background: color('danger') !default;
+
+/// The border color of the alert component, for the danger color variant
+/// @name border-color
+/// @group danger
+/// @type color
+$alert-color-variant-danger-border-color: color('danger-60') !default;
+
+/// The text color of the alert component, for the danger color variant
+/// @name color
+/// @group danger
+/// @type color
+$alert-color-variant-danger-color: contrast-color($color-danger) !default;
+
+/// The link color of the alert component, for the danger color variant
+/// @name link-color
+/// @group danger
+/// @type color
+$alert-color-variant-danger-link-color: $alert-color-variant-danger-color !default;
+
+/// The code color of the alert component, for the danger color variant
+/// @name code-color
+/// @group danger
+/// @type color
+$alert-color-variant-danger-code-color: $alert-color-variant-danger-color !default;
+
+/// The code background of the alert component, for the danger color variant
+/// @name code-background
+/// @group danger
+/// @type color
+$alert-color-variant-danger-code-background: color('danger-60') !default;
+
+/// Map for danger color
+/// @group danger
+$alert-color-variant-danger: (
+    'background': $alert-color-variant-danger-background,
+    'border-color': $alert-color-variant-danger-border-color,
+    'color': $alert-color-variant-danger-color,
+    'link-color': $alert-color-variant-danger-link-color,
+    'code-color': $alert-color-variant-danger-code-color,
+    'code-background': $alert-color-variant-danger-code-background
+) !default;
+
+/// Colors group map
 $alert-color-variants: (
     'info': $alert-color-variant-info,
-    'warning': $alert-color-variant-warning,
-    'danger': $alert-color-variant-danger,
     'success': $alert-color-variant-success,
+    'warning': $alert-color-variant-warning,
+    'danger': $alert-color-variant-danger
 ) !default;

@@ -6,8 +6,7 @@
             "type": [
                 "String"
             ],
-            "category": "props",
-            "defaultvalue": "{\"type\":\"\",\"default\":\"\"}"
+            "default": "{\"type\":\"\",\"default\":\"\"}"
         },
         {
             "name": "size",
@@ -17,8 +16,7 @@
                 "md",
                 "lg"
             ],
-            "category": "props",
-            "defaultvalue": "md"
+            "default": "md"
         }
     ]
 }

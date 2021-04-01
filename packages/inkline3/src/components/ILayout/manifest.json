@@ -3,8 +3,7 @@
         {
             "name": "default",
             "description": "Slot for default layout content",
-            "type": [],
-            "category": "slots"
+            "type": []
         }
     ],
     "props": [
@@ -14,8 +13,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         }
     ]
 }

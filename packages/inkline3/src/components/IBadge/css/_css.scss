@@ -1,10 +1,19 @@
 :root {
+    /**
+     * Variables
+     */
+
     --badge-font-weight: #{$badge-font-weight};
     --badge-line-height: #{$badge-line-height};
     --badge-border-width: #{$badge-border-width};
+    --badge-pill-border-radius: #{$badge-pill-border-radius};
     --badge-border-radius: #{$badge-border-radius};
     --badge-padding: #{$badge-padding};
-    --badge-pill-border-radius: #{$badge-pill-border-radius};
+    --badge-font-size: #{$badge-font-size};
+
+    /**
+     * Sizes
+     */
 
     @each $badge-size-variant-key, $badge-size-variant-value in $badge-size-variants {
         @each $badge-size-variant-field-key, $badge-size-variant-field-value in $badge-size-variant-value {
@@ -12,9 +21,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $badge-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --badge-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $badge-color-variant-key, $badge-color-variant-value in $badge-color-variants {
+        @each $badge-color-variant-field-key, $badge-color-variant-field-value in $badge-color-variant-value {
+            --badge-color-variant-#{$badge-color-variant-key}-#{$badge-color-variant-field-key}: #{$badge-color-variant-field-value};
         }
     }
 }

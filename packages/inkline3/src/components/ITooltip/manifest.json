@@ -1,0 +1,112 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for tooltip trigger",
+            "type": []
+        },
+        {
+            "name": "body",
+            "description": "Slot for tooltip body content",
+            "type": []
+        }
+    ],
+    "events": [
+        {
+            "name": "update:modelValue",
+            "description": "Event emitted for setting the modelValue",
+            "type": []
+        }
+    ],
+    "props": [
+        {
+            "name": "color",
+            "description": "The color variant of the tooltip",
+            "type": [
+                "light",
+                "dark"
+            ],
+            "default": "light"
+        },
+        {
+            "name": "disabled",
+            "description": "The disabled state of the tooltip",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "modelValue",
+            "description": "Used to manually control the visibility of the tooltip",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "arrow",
+            "description": "Displays an arrow on the tooltip pointing to the trigger element",
+            "type": [
+                "Boolean"
+            ],
+            "default": "true"
+        },
+        {
+            "name": "placement",
+            "description": "The placement of the tooltip",
+            "type": [
+                "top",
+                "top-start",
+                "top-end",
+                "bottom",
+                "bottom-start",
+                "bottom-end",
+                "left",
+                "left-start",
+                "left-end",
+                "right",
+                "right-start",
+                "right-end"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "trigger",
+            "description": "The events used to trigger the tooltip",
+            "type": [
+                "hover",
+                "focus",
+                "click",
+                "manual"
+            ],
+            "default": "[hover, focus]"
+        },
+        {
+            "name": "offset",
+            "description": "The offset of the tooltip relative to the trigger element",
+            "type": [
+                "Number"
+            ],
+            "default": "6"
+        },
+        {
+            "name": "popperOptions",
+            "description": "Used to override the popper.js options used for creating the tooltip",
+            "type": [
+                "Object"
+            ],
+            "default": "{}"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the tooltip",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    ]
+}

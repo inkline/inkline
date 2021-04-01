@@ -3,8 +3,7 @@
         {
             "name": "default",
             "description": "Slot for default column content",
-            "type": [],
-            "category": "slots"
+            "type": []
         }
     ],
     "props": [
@@ -15,8 +14,7 @@
                 "Boolean",
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "sm",
@@ -25,8 +23,7 @@
                 "Boolean",
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "md",
@@ -35,8 +32,7 @@
                 "Boolean",
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "lg",
@@ -45,8 +41,7 @@
                 "Boolean",
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "xl",
@@ -55,8 +50,7 @@
                 "Boolean",
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "xxl",
@@ -65,8 +59,7 @@
                 "Boolean",
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "first",
@@ -74,8 +67,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "first-xs",
@@ -83,8 +75,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "first-sm",
@@ -92,8 +83,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "first-md",
@@ -101,8 +91,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "first-lg",
@@ -110,8 +99,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "first-xl",
@@ -119,8 +107,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "first-xxl",
@@ -128,8 +115,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "last",
@@ -137,8 +123,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "last-xs",
@@ -146,8 +131,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "last-sm",
@@ -155,8 +139,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "last-md",
@@ -164,8 +147,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "last-lg",
@@ -173,8 +155,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "last-xl",
@@ -182,8 +163,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "last-xxl",
@@ -191,8 +171,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "offset",
@@ -200,8 +179,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "offset-xs",
@@ -209,8 +187,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "offset-sm",
@@ -218,8 +195,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "offset-md",
@@ -227,8 +203,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "offset-lg",
@@ -236,8 +211,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "offset-xl",
@@ -245,8 +219,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "offset-xxl",
@@ -254,8 +227,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "push",
@@ -263,8 +235,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "push-xs",
@@ -272,8 +243,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "push-sm",
@@ -281,8 +251,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "push-md",
@@ -290,8 +259,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "push-lg",
@@ -299,8 +267,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "push-xl",
@@ -308,8 +275,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "push-xxl",
@@ -317,8 +283,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "pull",
@@ -326,8 +291,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "pull-xs",
@@ -335,8 +299,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "pull-sm",
@@ -344,8 +307,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "pull-md",
@@ -353,8 +315,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "pull-lg",
@@ -362,8 +323,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "pull-xl",
@@ -371,8 +331,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         },
         {
             "name": "pull-xxl",
@@ -380,8 +339,7 @@
             "type": [
                 "String",
                 "Number"
-            ],
-            "category": "props"
+            ]
         }
     ]
 }
