@@ -25,8 +25,7 @@
             "description": "The title of the collapsible item",
             "type": [
                 "String"
-            ],
-            "default": "{\"type\":\"\",\"default\":\"\"}"
+            ]
         }
     ]
 }

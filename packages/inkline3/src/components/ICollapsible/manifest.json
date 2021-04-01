@@ -52,7 +52,6 @@
             "default": "{\"type\":\"\",\"default\":\"\"}"
         }
     ],
-
     "styles": [
         {
             "name": "font-size",

@@ -55,7 +55,7 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.json'), 
             ...doc
         };
 
-        fs.writeFileSync(fileName, JSON.stringify(manifest, null, 4));
+        fs.writeFileSync(fileName, JSON.stringify(manifest, null, 4) + '\n');
     });
 });
 

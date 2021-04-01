@@ -33,7 +33,6 @@ export default {
         /**
          * @description The title of the collapsible item
          * @type String
-         * @default
          */
         title: {
             type: String,
