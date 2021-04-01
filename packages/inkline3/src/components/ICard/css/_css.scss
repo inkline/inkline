@@ -1,10 +1,18 @@
 :root {
-    --card-border-radius: #{$card-border-radius};
-    --card-font-size: #{$card-font-size};
-    --card-padding: #{$card-padding};
+    /**
+     * Variables
+     */
+
     --card-font-weight: #{$card-font-weight};
     --card-line-height: #{$card-line-height};
     --card-border-width: #{$card-border-width};
+    --card-font-size: #{$card-font-size};
+    --card-border-radius: #{$card-border-radius};
+    --card-padding: #{$card-padding};
+
+    /**
+     * Sizes
+     */
 
     @each $card-size-variant-key, $card-size-variant-value in $card-size-variants {
         @each $card-size-variant-field-key, $card-size-variant-field-value in $card-size-variant-value {
@@ -12,9 +20,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $card-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --card-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $card-color-variant-key, $card-color-variant-value in $card-color-variants {
+        @each $card-color-variant-field-key, $card-color-variant-field-value in $card-color-variant-value {
+            --card-color-variant-#{$card-color-variant-key}-#{$card-color-variant-field-key}: #{$card-color-variant-field-value};
         }
     }
 }

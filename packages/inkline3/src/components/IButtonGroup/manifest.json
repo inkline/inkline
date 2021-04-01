@@ -1,10 +1,10 @@
 {
+    "name": "button-group",
     "slots": [
         {
             "name": "default",
             "description": "Slot for default button group content",
-            "type": [],
-            "category": "slots"
+            "type": []
         }
     ],
     "props": [
@@ -14,8 +14,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "block",
@@ -23,8 +22,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "disabled",
@@ -32,8 +30,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "size",
@@ -43,8 +40,7 @@
                 "md",
                 "lg"
             ],
-            "category": "props",
-            "defaultvalue": "md"
+            "default": "md"
         }
     ]
 }

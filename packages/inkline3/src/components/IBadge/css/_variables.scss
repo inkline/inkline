@@ -1,127 +1,379 @@
-//
-// Variables
-//
+////
+/// Variables
+////
 
+/// The font weight of the badge component
+/// @name font-weight
 $badge-font-weight: font-weight('bold') !default;
+
+/// The line height of the badge component
+/// @name line-height
 $badge-line-height: var(--line-height) !default;
+
+/// The border width of the badge component
+/// @name border-width
 $badge-border-width: var(--border-width) !default;
-$badge-border-radius: border-radius();
-$badge-padding: spacer('1/2') !default;
+
+/// The border radius of the badge component
+/// @name pill-border-radius
 $badge-pill-border-radius: 10rem !default;
 
-//
-// Sizes
-//
+/// The border radius of the badge component
+/// @name border-radius
+/// @type size
+$badge-border-radius: border-radius() !default;
 
-$badge-size-variant-sm-font-size: 65% !default;
+/// The padding of the badge component
+/// @name padding
+/// @type size
+$badge-padding: spacer('1/2') !default;
+
+////
+/// Sizes
+////
+
+////
+/// Small size
+////
+
+/// The border radius of the badge component, for the small size variant
+/// @name border-radius
+/// @group sm
+/// @type size
 $badge-size-variant-sm-border-radius: calc(var(--badge-border-radius) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the badge component, for the small size variant
+/// @name padding
+/// @group sm
+/// @type size
 $badge-size-variant-sm-padding: calc(var(--badge-padding) * #{size-multiplier('sm')}) !default;
+
+/// The font size of the badge component, for the small size variant
+/// @name font-size
+/// @group sm
+/// @type size
+$badge-size-variant-sm-font-size: 65% !default;
+
+/// Map for sm size
+/// @group sm
 $badge-size-variant-sm: (
-    'font-size': $badge-size-variant-sm-font-size,
     'border-radius': $badge-size-variant-sm-border-radius,
     'padding': $badge-size-variant-sm-padding,
+    'font-size': $badge-size-variant-sm-font-size
 ) !default;
 
-$badge-size-variant-md-font-size: 75% !default;
+////
+/// Medium size
+////
+
+/// The border radius of the badge component, for the medium size variant
+/// @name border-radius
+/// @group md
+/// @type size
 $badge-size-variant-md-border-radius: calc(var(--badge-border-radius) * #{size-multiplier('md')}) !default;
+
+/// The padding of the badge component, for the medium size variant
+/// @name padding
+/// @group md
+/// @type size
 $badge-size-variant-md-padding: calc(var(--badge-padding) * #{size-multiplier('md')}) !default;
+
+/// The font size of the badge component, for the medium size variant
+/// @name font-size
+/// @group md
+/// @type size
+$badge-size-variant-md-font-size: 75% !default;
+
+/// Map for md size
+/// @group md
 $badge-size-variant-md: (
-    'font-size': $badge-size-variant-md-font-size,
     'border-radius': $badge-size-variant-md-border-radius,
     'padding': $badge-size-variant-md-padding,
+    'font-size': $badge-size-variant-md-font-size
 ) !default;
 
-$badge-size-variant-lg-font-size: 85% !default;
+////
+/// Large size
+////
+
+/// The border radius of the badge component, for the large size variant
+/// @name border-radius
+/// @group lg
+/// @type size
 $badge-size-variant-lg-border-radius: calc(var(--badge-border-radius) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the badge component, for the large size variant
+/// @name padding
+/// @group lg
+/// @type size
 $badge-size-variant-lg-padding: calc(var(--badge-padding) * #{size-multiplier('lg')}) !default;
+
+/// The font size of the badge component, for the large size variant
+/// @name font-size
+/// @group lg
+/// @type size
+$badge-size-variant-lg-font-size: 85% !default;
+
+/// Map for lg size
+/// @group lg
 $badge-size-variant-lg: (
-    'font-size': $badge-size-variant-lg-font-size,
     'border-radius': $badge-size-variant-lg-border-radius,
     'padding': $badge-size-variant-lg-padding,
+    'font-size': $badge-size-variant-lg-font-size
 ) !default;
 
+/// Sizes group map
 $badge-size-variants: (
     'sm': $badge-size-variant-sm,
     'md': $badge-size-variant-md,
     'lg': $badge-size-variant-lg
 ) !default;
 
-//
-// Colors
-//
+////
+/// Colors
+////
 
+////
+/// Primary color
+////
+
+/// The background of the badge component, for the primary color variant
+/// @name background
+/// @group primary
+/// @type color
 $badge-color-variant-primary-background: color('primary') !default;
-$badge-color-variant-primary-link-hover-background: color('primary-60') !default;
+
+/// The color of the badge component, for the primary color variant
+/// @name color
+/// @group primary
+/// @type color
 $badge-color-variant-primary-color: contrast-color($color-primary) !default;
+
+/// The background of the badge component when parent link is hovered, for the primary color variant
+/// @name link-background-hover
+/// @group primary
+/// @type color
+$badge-color-variant-primary-link-background-hover: color('primary-60') !default;
+
+/// Map for primary color
+/// @group primary
 $badge-color-variant-primary: (
     'background': $badge-color-variant-primary-background,
-    'link-hover-background': $badge-color-variant-primary-link-hover-background,
-    'color': $badge-color-variant-primary-color
+    'color': $badge-color-variant-primary-color,
+    'link-background-hover': $badge-color-variant-primary-link-background-hover
 ) !default;
 
+////
+/// Secondary color
+////
+
+/// The background of the badge component, for the secondary color variant
+/// @name background
+/// @group secondary
+/// @type color
 $badge-color-variant-secondary-background: color('secondary') !default;
-$badge-color-variant-secondary-link-hover-background: color('secondary-60') !default;
+
+/// The color of the badge component, for the secondary color variant
+/// @name color
+/// @group secondary
+/// @type color
 $badge-color-variant-secondary-color: contrast-color($color-secondary) !default;
+
+/// The background of the badge component when parent link is hovered, for the secondary color variant
+/// @name link-background-hover
+/// @group secondary
+/// @type color
+$badge-color-variant-secondary-link-background-hover: color('secondary-60') !default;
+
+/// Map for secondary color
+/// @group secondary
 $badge-color-variant-secondary: (
     'background': $badge-color-variant-secondary-background,
-    'link-hover-background': $badge-color-variant-secondary-link-hover-background,
-    'color': $badge-color-variant-secondary-color
+    'color': $badge-color-variant-secondary-color,
+    'link-background-hover': $badge-color-variant-secondary-link-background-hover
 ) !default;
 
+////
+/// Light color
+////
+
+/// The background of the badge component, for the light color variant
+/// @name background
+/// @group light
+/// @type color
 $badge-color-variant-light-background: color('light') !default;
-$badge-color-variant-light-link-hover-background: color('light-60') !default;
+
+/// The color of the badge component, for the light color variant
+/// @name color
+/// @group light
+/// @type color
 $badge-color-variant-light-color: contrast-color($color-light) !default;
+
+/// The background of the badge component when parent link is hovered, for the light color variant
+/// @name link-background-hover
+/// @group light
+/// @type color
+$badge-color-variant-light-link-background-hover: color('light-60') !default;
+
+/// Map for light color
+/// @group light
 $badge-color-variant-light: (
     'background': $badge-color-variant-light-background,
-    'link-hover-background': $badge-color-variant-light-link-hover-background,
-    'color': $badge-color-variant-light-color
+    'color': $badge-color-variant-light-color,
+    'link-background-hover': $badge-color-variant-light-link-background-hover
 ) !default;
 
+////
+/// Dark color
+////
+
+/// The background of the badge component, for the dark color variant
+/// @name background
+/// @group dark
+/// @type color
 $badge-color-variant-dark-background: color('dark') !default;
-$badge-color-variant-dark-link-hover-background: color('dark-40') !default;
+
+/// The color of the badge component, for the dark color variant
+/// @name color
+/// @group dark
+/// @type color
 $badge-color-variant-dark-color: contrast-color($color-dark) !default;
+
+/// The background of the badge component when parent link is hovered, for the dark color variant
+/// @name link-background-hover
+/// @group dark
+/// @type color
+$badge-color-variant-dark-link-background-hover: color('dark-40') !default;
+
+/// Map for dark color
+/// @group dark
 $badge-color-variant-dark: (
     'background': $badge-color-variant-dark-background,
-    'link-hover-background': $badge-color-variant-dark-link-hover-background,
-    'color': $badge-color-variant-dark-color
+    'color': $badge-color-variant-dark-color,
+    'link-background-hover': $badge-color-variant-dark-link-background-hover
 ) !default;
 
+////
+/// Info color
+////
+
+/// The background of the badge component, for the info color variant
+/// @name background
+/// @group info
+/// @type color
 $badge-color-variant-info-background: color('info') !default;
-$badge-color-variant-info-link-hover-background: color('info-60') !default;
+
+/// The color of the badge component, for the info color variant
+/// @name color
+/// @group info
+/// @type color
 $badge-color-variant-info-color: contrast-color($color-info) !default;
+
+/// The background of the badge component when parent link is hovered, for the info color variant
+/// @name link-background-hover
+/// @group info
+/// @type color
+$badge-color-variant-info-link-background-hover: color('info-60') !default;
+
+/// Map for info color
+/// @group info
 $badge-color-variant-info: (
     'background': $badge-color-variant-info-background,
-    'link-hover-background': $badge-color-variant-info-link-hover-background,
-    'color': $badge-color-variant-info-color
+    'color': $badge-color-variant-info-color,
+    'link-background-hover': $badge-color-variant-info-link-background-hover
 ) !default;
 
-$badge-color-variant-warning-background: color('warning') !default;
-$badge-color-variant-warning-link-hover-background: color('warning-60') !default;
-$badge-color-variant-warning-color: contrast-color($color-warning) !default;
-$badge-color-variant-warning: (
-    'background': $badge-color-variant-warning-background,
-    'link-hover-background': $badge-color-variant-warning-link-hover-background,
-    'color': $badge-color-variant-warning-color
-) !default;
+////
+/// Success color
+////
 
-$badge-color-variant-danger-background: color('danger') !default;
-$badge-color-variant-danger-link-hover-background: color('danger-60') !default;
-$badge-color-variant-danger-color: contrast-color($color-danger) !default;
-$badge-color-variant-danger: (
-    'background': $badge-color-variant-danger-background,
-    'link-hover-background': $badge-color-variant-danger-link-hover-background,
-    'color': $badge-color-variant-danger-color
-) !default;
-
+/// The background of the badge component, for the success color variant
+/// @name background
+/// @group success
+/// @type color
 $badge-color-variant-success-background: color('success') !default;
-$badge-color-variant-success-link-hover-background: color('success-60') !default;
+
+/// The color of the badge component, for the success color variant
+/// @name color
+/// @group success
+/// @type color
 $badge-color-variant-success-color: contrast-color($color-success) !default;
+
+/// The background of the badge component when parent link is hovered, for the success color variant
+/// @name link-background-hover
+/// @group success
+/// @type color
+$badge-color-variant-success-link-background-hover: color('success-60') !default;
+
+/// Map for success color
+/// @group success
 $badge-color-variant-success: (
     'background': $badge-color-variant-success-background,
-    'link-hover-background': $badge-color-variant-success-link-hover-background,
-    'color': $badge-color-variant-success-color
+    'color': $badge-color-variant-success-color,
+    'link-background-hover': $badge-color-variant-success-link-background-hover
 ) !default;
 
+////
+/// Warning color
+////
+
+/// The background of the badge component, for the warning color variant
+/// @name background
+/// @group warning
+/// @type color
+$badge-color-variant-warning-background: color('warning') !default;
+
+/// The color of the badge component, for the warning color variant
+/// @name color
+/// @group warning
+/// @type color
+$badge-color-variant-warning-color: contrast-color($color-warning) !default;
+
+/// The background of the badge component when parent link is hovered, for the warning color variant
+/// @name link-background-hover
+/// @group warning
+/// @type color
+$badge-color-variant-warning-link-background-hover: color('warning-60') !default;
+
+/// Map for warning color
+/// @group warning
+$badge-color-variant-warning: (
+    'background': $badge-color-variant-warning-background,
+    'color': $badge-color-variant-warning-color,
+    'link-background-hover': $badge-color-variant-warning-link-background-hover
+) !default;
+
+////
+/// Danger color
+////
+
+/// The background of the badge component, for the danger color variant
+/// @name background
+/// @group danger
+/// @type color
+$badge-color-variant-danger-background: color('danger') !default;
+
+/// The color of the badge component, for the danger color variant
+/// @name color
+/// @group danger
+/// @type color
+$badge-color-variant-danger-color: contrast-color($color-danger) !default;
+
+/// The background of the badge component when parent link is hovered, for the danger color variant
+/// @name link-background-hover
+/// @group danger
+/// @type color
+$badge-color-variant-danger-link-background-hover: color('danger-60') !default;
+
+/// Map for danger color
+/// @group danger
+$badge-color-variant-danger: (
+    'background': $badge-color-variant-danger-background,
+    'color': $badge-color-variant-danger-color,
+    'link-background-hover': $badge-color-variant-danger-link-background-hover
+) !default;
+
+/// Colors group map
 $badge-color-variants: (
     'primary': $badge-color-variant-primary,
     'secondary': $badge-color-variant-secondary,
@@ -130,5 +382,5 @@ $badge-color-variants: (
     'info': $badge-color-variant-info,
     'success': $badge-color-variant-success,
     'warning': $badge-color-variant-warning,
-    'danger': $badge-color-variant-danger,
+    'danger': $badge-color-variant-danger
 ) !default;

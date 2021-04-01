@@ -4,6 +4,6 @@
 
     a:hover &,
     a:focus & {
-        background: var(--badge-color-variant-#{$color-variant-key}-link-hover-background);
+        background: var(--badge-color-variant-#{$color-variant-key}-link-background-hover);
     }
 }

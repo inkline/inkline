@@ -3,8 +3,7 @@
         {
             "name": "default",
             "description": "Slot for default list group item content",
-            "type": [],
-            "category": "slots"
+            "type": []
         }
     ],
     "props": [
@@ -14,8 +13,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "disabled",
@@ -23,8 +21,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "tag",
@@ -32,8 +29,7 @@
             "type": [
                 "String"
             ],
-            "category": "props",
-            "defaultvalue": "div"
+            "default": "div"
         },
         {
             "name": "tabindex",
@@ -42,8 +38,7 @@
                 "Number",
                 "String"
             ],
-            "category": "props",
-            "defaultvalue": "1"
+            "default": "1"
         }
     ]
 }

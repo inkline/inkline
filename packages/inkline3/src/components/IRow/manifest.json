@@ -3,8 +3,7 @@
         {
             "name": "default",
             "description": "Slot for default row content",
-            "type": [],
-            "category": "slots"
+            "type": []
         }
     ],
     "props": [
@@ -14,8 +13,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "start-xs",
@@ -23,8 +21,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "start-sm",
@@ -32,8 +29,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "start-md",
@@ -41,8 +37,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "start-lg",
@@ -50,8 +45,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "start-xl",
@@ -59,8 +53,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "start-xxl",
@@ -68,8 +61,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "center",
@@ -77,8 +69,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "center-xs",
@@ -86,8 +77,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "center-sm",
@@ -95,8 +85,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "center-md",
@@ -104,8 +93,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "center-lg",
@@ -113,8 +101,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "center-xl",
@@ -122,8 +109,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "center-xxl",
@@ -131,8 +117,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "end",
@@ -140,8 +125,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "end-xs",
@@ -149,8 +133,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "end-sm",
@@ -158,8 +141,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "end-md",
@@ -167,8 +149,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "end-lg",
@@ -176,8 +157,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "end-xl",
@@ -185,8 +165,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "end-xxl",
@@ -194,8 +173,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around",
@@ -203,8 +181,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-xs",
@@ -212,8 +189,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-sm",
@@ -221,8 +197,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-md",
@@ -230,8 +205,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-lg",
@@ -239,8 +213,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-xl",
@@ -248,8 +221,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-xxl",
@@ -257,8 +229,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around",
@@ -266,8 +237,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-xs",
@@ -275,8 +245,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-sm",
@@ -284,8 +253,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-md",
@@ -293,8 +261,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-lg",
@@ -302,8 +269,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-xl",
@@ -311,8 +277,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "around-xxl",
@@ -320,8 +285,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "top",
@@ -329,8 +293,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "top-xs",
@@ -338,8 +301,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "top-sm",
@@ -347,8 +309,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "top-md",
@@ -356,8 +317,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "top-lg",
@@ -365,8 +325,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "top-xl",
@@ -374,8 +333,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "top-xxl",
@@ -383,8 +341,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "middle",
@@ -392,8 +349,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "middle-xs",
@@ -401,8 +357,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "middle-sm",
@@ -410,8 +365,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "middle-md",
@@ -419,8 +373,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "middle-lg",
@@ -428,8 +381,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "middle-xl",
@@ -437,8 +389,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "middle-xxl",
@@ -446,8 +397,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "bottom",
@@ -455,8 +405,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "bottom-xs",
@@ -464,8 +413,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "bottom-sm",
@@ -473,8 +421,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "bottom-md",
@@ -482,8 +429,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "bottom-lg",
@@ -491,8 +437,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "bottom-xl",
@@ -500,8 +445,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "bottom-xxl",
@@ -509,8 +453,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "reverse",
@@ -518,8 +461,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "reverse-xs",
@@ -527,8 +469,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "reverse-sm",
@@ -536,8 +477,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "reverse-md",
@@ -545,8 +485,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "reverse-lg",
@@ -554,8 +493,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "reverse-xl",
@@ -563,8 +501,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         },
         {
             "name": "reverse-xxl",
@@ -572,8 +509,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "false"
+            "default": "false"
         }
     ]
 }

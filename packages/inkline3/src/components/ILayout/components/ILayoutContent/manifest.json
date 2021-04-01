@@ -3,8 +3,7 @@
         {
             "name": "default",
             "description": "Slot for default layout content children",
-            "type": [],
-            "category": "slots"
+            "type": []
         }
     ]
 }

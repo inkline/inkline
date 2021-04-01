@@ -1,7 +1,16 @@
 :root {
+    /**
+     * Variables
+     */
+
+    --breadcrumb-divider: #{$breadcrumb-divider};
+    --breadcrumb-margin-bottom: #{$breadcrumb-margin-bottom};
     --breadcrumb-font-size: #{$breadcrumb-font-size};
     --breadcrumb-padding: #{$breadcrumb-padding};
-    --breadcrumb-margin-bottom: #{$breadcrumb-margin-bottom};
+
+    /**
+     * Sizes
+     */
 
     @each $breadcrumb-size-variant-key, $breadcrumb-size-variant-value in $breadcrumb-size-variants {
         @each $breadcrumb-size-variant-field-key, $breadcrumb-size-variant-field-value in $breadcrumb-size-variant-value {
@@ -9,9 +18,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $breadcrumb-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --breadcrumb-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $breadcrumb-color-variant-key, $breadcrumb-color-variant-value in $breadcrumb-color-variants {
+        @each $breadcrumb-color-variant-field-key, $breadcrumb-color-variant-field-value in $breadcrumb-color-variant-value {
+            --breadcrumb-color-variant-#{$breadcrumb-color-variant-key}-#{$breadcrumb-color-variant-field-key}: #{$breadcrumb-color-variant-field-value};
         }
     }
 }

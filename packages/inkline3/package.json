@@ -14,7 +14,8 @@
         "prepublishOnly": "npm run build",
         "test": "jest --coverage",
         "test:dev": "jest --watch",
-        "jsdoc": "node ./scripts/jsdoc.js"
+        "manifest": "node ./scripts/manifest.js",
+        "manifest:sass": "node ./scripts/manifest-sass.js"
     },
     "main": "dist/inkline.js",
     "module": "dist/inkline.js",

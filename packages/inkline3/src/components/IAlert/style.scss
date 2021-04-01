@@ -18,7 +18,7 @@
     word-wrap: break-word;
     background-clip: border-box;
     border-style: solid;
-    border-width: $alert-border-width;
+    border-width: var(--alert-border-width);
     transition-property: background-color, color, border-color;
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--transition-easing);

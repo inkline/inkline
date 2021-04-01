@@ -3,8 +3,7 @@
         {
             "name": "default",
             "description": "Slot for default header content",
-            "type": [],
-            "category": "slots"
+            "type": []
         }
     ],
     "props": [
@@ -16,8 +15,7 @@
                 "light",
                 "dark"
             ],
-            "category": "props",
-            "defaultvalue": "light"
+            "default": "light"
         },
         {
             "name": "cover",
@@ -25,8 +23,15 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "true"
+            "default": "true"
+        },
+        {
+            "name": "fluid",
+            "description": "Display the inner content container as fluid, covering 100% of the header width",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
         },
         {
             "name": "fullscreen",
@@ -34,8 +39,7 @@
             "type": [
                 "Boolean"
             ],
-            "category": "props",
-            "defaultvalue": "true"
+            "default": "true"
         },
         {
             "name": "size",
@@ -45,8 +49,7 @@
                 "md",
                 "lg"
             ],
-            "category": "props",
-            "defaultvalue": "md"
+            "default": "md"
         }
     ]
 }

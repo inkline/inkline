@@ -1,0 +1,120 @@
+{
+    "events": [
+        {
+            "name": "update:modelValue",
+            "description": "Event emitted for setting the modelValue",
+            "type": []
+        },
+        {
+            "name": "update:modelValue",
+            "description": "Event emitted for setting the modelValue",
+            "type": []
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for modal body content",
+            "type": []
+        },
+        {
+            "name": "header",
+            "description": "Slot for modal header content",
+            "type": []
+        },
+        {
+            "name": "footer",
+            "description": "Slot for modal footer content",
+            "type": []
+        }
+    ],
+    "props": [
+        {
+            "name": "closeOnPressEscape",
+            "description": "Determines if the modal should close when pressing escape",
+            "type": [
+                "Boolean"
+            ],
+            "default": "true"
+        },
+        {
+            "name": "color",
+            "description": "The color variant of the modal",
+            "type": [
+                "primary",
+                "success",
+                "light",
+                "dark",
+                "info",
+                "success",
+                "warning",
+                "danger"
+            ],
+            "default": "light"
+        },
+        {
+            "name": "disabled",
+            "description": "The disabled state of the modal",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "hideOnClickOutside",
+            "description": "Determines if the modal should close when clicking the overlay",
+            "type": [
+                "Boolean"
+            ],
+            "default": "true"
+        },
+        {
+            "name": "id",
+            "description": "The identifier of the modal",
+            "type": [
+                "String"
+            ],
+            "default": "uid()"
+        },
+        {
+            "name": "showClose",
+            "description": "Determines if the close icon should be visible in the modal header",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the modal",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        },
+        {
+            "name": "modelValue",
+            "description": "Used to determine if modal is visible or not",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "transition",
+            "description": "The modal opening and closing animation",
+            "type": [
+                "fade-in-transition",
+                "fade-in-linear-transition",
+                "zoom-in-top-transition",
+                "zoom-in-bottom-transition",
+                "zoom-in-center-transition",
+                "zoom-in-left-transition",
+                "zoom-in-right-transition"
+            ],
+            "default": "zoom-in-center-transition"
+        }
+    ]
+}

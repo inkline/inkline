@@ -1,0 +1,75 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default navbar content",
+            "type": []
+        }
+    ],
+    "events": [
+        {
+            "name": "update:modelValue",
+            "description": "Event emitted for setting the modelValue",
+            "type": []
+        }
+    ],
+    "props": [
+        {
+            "name": "collapseOnItemClick",
+            "description": "Determines if the navbar should close when clicking a navbar item",
+            "type": [
+                "Boolean"
+            ],
+            "default": "true"
+        },
+        {
+            "name": "collapseOnClickOutside",
+            "description": "Determines if the navbar should close when clicking outside",
+            "type": [
+                "Boolean"
+            ],
+            "default": "true"
+        },
+        {
+            "name": "color",
+            "description": "The color variant of the navbar",
+            "type": [
+                "light",
+                "dark"
+            ],
+            "default": "light"
+        },
+        {
+            "name": "fluid",
+            "description": "Display the inner container as fluid, spanning 100% width",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the navbar",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        },
+        {
+            "name": "menuAnimation",
+            "description": "The animation of the hamburger menu component used for collapsing",
+            "type": [
+                "close",
+                "arrow-up",
+                "arrow-down",
+                "arrow-left",
+                "arrow-right",
+                "plus",
+                "minus"
+            ],
+            "default": "close"
+        }
+    ]
+}

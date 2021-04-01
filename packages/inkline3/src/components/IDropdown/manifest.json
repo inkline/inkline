@@ -1,0 +1,138 @@
+{
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for dropdown trigger",
+            "type": []
+        },
+        {
+            "name": "header",
+            "description": "Slot for dropdown header content",
+            "type": []
+        },
+        {
+            "name": "body",
+            "description": "Slot for dropdown body content",
+            "type": []
+        },
+        {
+            "name": "footer",
+            "description": "Slot for dropdown footer content",
+            "type": []
+        }
+    ],
+    "events": [
+        {
+            "name": "update:modelValue",
+            "description": "Event emitted for setting the modelValue",
+            "type": []
+        }
+    ],
+    "props": [
+        {
+            "name": "animationDuration",
+            "description": "The duration of the hide and show animation",
+            "type": [
+                "Number"
+            ],
+            "default": "300"
+        },
+        {
+            "name": "color",
+            "description": "The color variant of the dropdown",
+            "type": [
+                "light",
+                "dark"
+            ],
+            "default": "light"
+        },
+        {
+            "name": "disabled",
+            "description": "The disabled state of the dropdown",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "hideOnItemClick",
+            "description": "Used to hide the dropdown when clicking or selecting a dropdown item",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "modelValue",
+            "description": "Used to manually control the visibility of the dropdown",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "arrow",
+            "description": "Displays an arrow on the dropdown pointing to the trigger element",
+            "type": [
+                "Boolean"
+            ],
+            "default": "true"
+        },
+        {
+            "name": "placement",
+            "description": "The placement of the dropdown",
+            "type": [
+                "top",
+                "top-start",
+                "top-end",
+                "bottom",
+                "bottom-start",
+                "bottom-end",
+                "left",
+                "left-start",
+                "left-end",
+                "right",
+                "right-start",
+                "right-end"
+            ],
+            "default": "false"
+        },
+        {
+            "name": "trigger",
+            "description": "The events used to trigger the dropdown",
+            "type": [
+                "hover",
+                "focus",
+                "click",
+                "manual"
+            ],
+            "default": "[click]"
+        },
+        {
+            "name": "offset",
+            "description": "The offset of the dropdown relative to the trigger element",
+            "type": [
+                "Number"
+            ],
+            "default": "6"
+        },
+        {
+            "name": "popperOptions",
+            "description": "Used to override the popper.js options used for creating the dropdown",
+            "type": [
+                "Object"
+            ],
+            "default": "{}"
+        },
+        {
+            "name": "size",
+            "description": "The size variant of the dropdown",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    ]
+}
