@@ -1,12 +1,20 @@
 :root {
+    /**
+     * Variables
+     */
+
     --input-line-height: #{$input-line-height};
     --input-border-width: #{$input-border-width};
     --input-prefix-border-width: #{$input-prefix-border-width};
-    --input-box-shadow: #{$input-box-shadow};
-    --input-icon-circle-size: #{$input-icon-circle-size};
     --input-border-radius: #{$input-border-radius};
     --input-font-size: #{$input-font-size};
     --input-padding: #{$input-padding};
+    --input-box-shadow: #{$input-box-shadow};
+    --input-icon-circle-size: #{$input-icon-circle-size};
+
+    /**
+     * Sizes
+     */
 
     @each $input-size-variant-key, $input-size-variant-value in $input-size-variants {
         @each $input-size-variant-field-key, $input-size-variant-field-value in $input-size-variant-value {
@@ -14,9 +22,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $input-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --input-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $input-color-variant-key, $input-color-variant-value in $input-color-variants {
+        @each $input-color-variant-field-key, $input-color-variant-field-value in $input-color-variant-value {
+            --input-color-variant-#{$input-color-variant-key}-#{$input-color-variant-field-key}: #{$input-color-variant-field-value};
         }
     }
 }

@@ -1,103 +1,310 @@
-//
-// Variables
-//
+////
+/// Variables
+////
 
-$tabs-font-size: font-size() !default;
-$tabs-border-radius: border-radius() !default;
+/// The border width of the tabs component
+/// @name border-width
 $tabs-border-width: var(--border-width) !default;
-$tabs-padding: spacer() !default;
-$tabs-header-padding: spacer() !default;
+
+/// The bottom border width of the tabs component header
+/// @name header-border-bottom-width
 $tabs-header-border-bottom-width: 2px !default;
+
+/// The bottom margin of the tabs component header
+/// @name header-margin-bottom
 $tabs-header-margin-bottom: -1px !default;
 
-//
-// Sizes
-//
+/// The font size of the tabs component
+/// @name font-size
+/// @type size
+$tabs-font-size: font-size() !default;
 
-$tabs-size-variant-sm-border-radius: calc(var(--tabs-border-radius) * #{size-multiplier('sm')}) !default;
+/// The border radius of the tabs component
+/// @name border-radius
+/// @type size
+$tabs-border-radius: border-radius() !default;
+
+/// The padding of the tabs component
+/// @name padding
+/// @type size
+$tabs-padding: spacer() !default;
+
+/// The padding of the tabs component header
+/// @name header-padding
+/// @type size
+$tabs-header-padding: spacer() !default;
+
+////
+/// Sizes
+////
+
+////
+/// Small size
+////
+
+/// The font size of the tabs component
+/// @name font-size
+/// @group sm
+/// @type size
 $tabs-size-variant-sm-font-size: calc(var(--tabs-font-size) * #{size-multiplier('sm')}) !default;
+
+/// The border radius of the tabs component
+/// @name border-radius
+/// @group sm
+/// @type size
+$tabs-size-variant-sm-border-radius: calc(var(--tabs-border-radius) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the tabs component
+/// @name padding
+/// @group sm
+/// @type size
 $tabs-size-variant-sm-padding: calc(var(--tabs-padding) * #{size-multiplier('sm')}) !default;
-$tabs-size-variant-sm-header-padding: calc(var(--tabs-header-padding) * #{size-multiplier('sm')}) calc(var(--tabs-header-padding) * #{size-multiplier('sm')} * 2) !default;
+
+/// The padding of the tabs component header
+/// @name header-padding
+/// @group sm
+/// @type size
+$tabs-size-variant-sm-header-padding: calc(var(--tabs-header-padding) * #{size-multiplier('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
 $tabs-size-variant-sm: (
-    'border-radius': $tabs-size-variant-sm-border-radius,
     'font-size': $tabs-size-variant-sm-font-size,
+    'border-radius': $tabs-size-variant-sm-border-radius,
     'padding': $tabs-size-variant-sm-padding,
-    'header-padding': $tabs-size-variant-sm-header-padding,
+    'header-padding': $tabs-size-variant-sm-header-padding
 ) !default;
 
-$tabs-size-variant-md-border-radius: calc(var(--tabs-border-radius) * #{size-multiplier('md')}) !default;
+////
+/// Medium size
+////
+
+/// The font size of the tabs component
+/// @name font-size
+/// @group md
+/// @type size
 $tabs-size-variant-md-font-size: calc(var(--tabs-font-size) * #{size-multiplier('md')}) !default;
+
+/// The border radius of the tabs component
+/// @name border-radius
+/// @group md
+/// @type size
+$tabs-size-variant-md-border-radius: calc(var(--tabs-border-radius) * #{size-multiplier('md')}) !default;
+
+/// The padding of the tabs component
+/// @name padding
+/// @group md
+/// @type size
 $tabs-size-variant-md-padding: calc(var(--tabs-padding) * #{size-multiplier('md')}) !default;
-$tabs-size-variant-md-header-padding: calc(var(--tabs-header-padding) * #{size-multiplier('md')}) calc(var(--tabs-header-padding) * #{size-multiplier('md')} * 2) !default;
+
+/// The padding of the tabs component header
+/// @name header-padding
+/// @group md
+/// @type size
+$tabs-size-variant-md-header-padding: calc(var(--tabs-header-padding) * #{size-multiplier('md')}) !default;
+
+/// Map for md size
+/// @group md
 $tabs-size-variant-md: (
-    'border-radius': $tabs-size-variant-md-border-radius,
     'font-size': $tabs-size-variant-md-font-size,
+    'border-radius': $tabs-size-variant-md-border-radius,
     'padding': $tabs-size-variant-md-padding,
-    'header-padding': $tabs-size-variant-md-header-padding,
+    'header-padding': $tabs-size-variant-md-header-padding
 ) !default;
 
-$tabs-size-variant-lg-border-radius: calc(var(--tabs-border-radius) * #{size-multiplier('lg')}) !default;
+////
+/// Large size
+////
+
+/// The font size of the tabs component
+/// @name font-size
+/// @group lg
+/// @type size
 $tabs-size-variant-lg-font-size: calc(var(--tabs-font-size) * #{size-multiplier('lg')}) !default;
+
+/// The border radius of the tabs component
+/// @name border-radius
+/// @group lg
+/// @type size
+$tabs-size-variant-lg-border-radius: calc(var(--tabs-border-radius) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the tabs component
+/// @name padding
+/// @group lg
+/// @type size
 $tabs-size-variant-lg-padding: calc(var(--tabs-padding) * #{size-multiplier('lg')}) !default;
-$tabs-size-variant-lg-header-padding: calc(var(--tabs-header-padding) * #{size-multiplier('lg')}) calc(var(--tabs-header-padding) * #{size-multiplier('lg')} * 2) !default;
+
+/// The padding of the tabs component header
+/// @name header-padding
+/// @group lg
+/// @type size
+$tabs-size-variant-lg-header-padding: calc(var(--tabs-header-padding) * #{size-multiplier('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
 $tabs-size-variant-lg: (
-    'border-radius': $tabs-size-variant-lg-border-radius,
     'font-size': $tabs-size-variant-lg-font-size,
+    'border-radius': $tabs-size-variant-lg-border-radius,
     'padding': $tabs-size-variant-lg-padding,
-    'header-padding': $tabs-size-variant-lg-header-padding,
+    'header-padding': $tabs-size-variant-lg-header-padding
 ) !default;
 
+/// Sizes group map
 $tabs-size-variants: (
     'sm': $tabs-size-variant-sm,
     'md': $tabs-size-variant-md,
     'lg': $tabs-size-variant-lg
 ) !default;
 
+////
+/// Colors
+////
 
-//
-// Colors
-//
+////
+/// Light color
+////
 
+/// The color of the tabs component item
+/// @name color
+/// @group light
+/// @type color
 $tabs-color-variant-light-color: contrast-color($color-white) !default;
+
+/// The background of the tabs component
+/// @name background
+/// @group light
+/// @type color
 $tabs-color-variant-light-background: color('white') !default;
+
+/// The border-color of the tabs component
+/// @name border-color
+/// @group light
+/// @type color
 $tabs-color-variant-light-border-color: color('light') !default;
+
+/// The background of the tabs component header
+/// @name header-background
+/// @group light
+/// @type color
 $tabs-color-variant-light-header-background: color('white') !default;
-$tabs-color-variant-light-header-border-color-active: color('primary') !default;
-$tabs-color-variant-light-header-background-hover: color('gray-05') !default;
+
+/// The background of the tabs component header when active
+/// @name header-background-active
+/// @group light
+/// @type color
 $tabs-color-variant-light-header-background-active: color('white') !default;
+
+/// The background of the tabs component header when hovered or focused
+/// @name header-background-hover
+/// @group light
+/// @type color
+$tabs-color-variant-light-header-background-hover: color('gray-05') !default;
+
+/// The border color of the tabs component header
+/// @name header-border-color
+/// @group light
+/// @type color
+$tabs-color-variant-light-header-border-color: transparent !default;
+
+/// The border color of the tabs component header when active
+/// @name header-border-color-active
+/// @group light
+/// @type color
+$tabs-color-variant-light-header-border-color-active: color('primary') !default;
+
+/// The color of the tabs component header when active
+/// @name header-color-active
+/// @group light
+/// @type color
 $tabs-color-variant-light-header-color-active: contrast-color($color-white) !default;
 
+/// Map for light color
+/// @group light
 $tabs-color-variant-light: (
     'color': $tabs-color-variant-light-color,
     'background': $tabs-color-variant-light-background,
     'border-color': $tabs-color-variant-light-border-color,
-    'header-border-color-active': $tabs-color-variant-light-header-border-color-active,
     'header-background': $tabs-color-variant-light-header-background,
-    'header-background-hover': $tabs-color-variant-light-header-background-hover,
     'header-background-active': $tabs-color-variant-light-header-background-active,
-    'header-color-active': $tabs-color-variant-light-header-color-active,
+    'header-background-hover': $tabs-color-variant-light-header-background-hover,
+    'header-border-color': $tabs-color-variant-light-header-border-color,
+    'header-border-color-active': $tabs-color-variant-light-header-border-color-active,
+    'header-color-active': $tabs-color-variant-light-header-color-active
 ) !default;
 
+////
+/// Dark color
+////
+
+/// The color of the tabs component item
+/// @name color
+/// @group dark
+/// @type color
 $tabs-color-variant-dark-color: contrast-color($color-dark) !default;
+
+/// The background of the tabs component
+/// @name background
+/// @group dark
+/// @type color
 $tabs-color-variant-dark-background: color('dark') !default;
+
+/// The border-color of the tabs component
+/// @name border-color
+/// @group dark
+/// @type color
 $tabs-color-variant-dark-border-color: color('dark-60') !default;
+
+/// The background of the tabs component header
+/// @name header-background
+/// @group dark
+/// @type color
 $tabs-color-variant-dark-header-background: color('dark') !default;
-$tabs-color-variant-dark-header-border-color-active: color('primary') !default;
-$tabs-color-variant-dark-header-background-hover: color('dark-45') !default;
+
+/// The background of the tabs component header when active
+/// @name header-background-active
+/// @group dark
+/// @type color
 $tabs-color-variant-dark-header-background-active: color('dark') !default;
+
+/// The background of the tabs component header when hovered or focused
+/// @name header-background-hover
+/// @group dark
+/// @type color
+$tabs-color-variant-dark-header-background-hover: color('dark-45') !default;
+
+/// The border color of the tabs component header
+/// @name header-border-color
+/// @group dark
+/// @type color
+$tabs-color-variant-dark-header-border-color: transparent !default;
+
+/// The border color of the tabs component header when active
+/// @name header-border-color-active
+/// @group dark
+/// @type color
+$tabs-color-variant-dark-header-border-color-active: color('primary') !default;
+
+/// The color of the tabs component header when active
+/// @name header-color-active
+/// @group dark
+/// @type color
 $tabs-color-variant-dark-header-color-active: contrast-color($color-dark) !default;
 
+/// Map for dark color
+/// @group dark
 $tabs-color-variant-dark: (
     'color': $tabs-color-variant-dark-color,
     'background': $tabs-color-variant-dark-background,
     'border-color': $tabs-color-variant-dark-border-color,
-    'header-border-color-active': $tabs-color-variant-dark-header-border-color-active,
     'header-background': $tabs-color-variant-dark-header-background,
-    'header-background-hover': $tabs-color-variant-dark-header-background-hover,
     'header-background-active': $tabs-color-variant-dark-header-background-active,
-    'header-color-active': $tabs-color-variant-dark-header-color-active,
+    'header-background-hover': $tabs-color-variant-dark-header-background-hover,
+    'header-border-color': $tabs-color-variant-dark-header-border-color,
+    'header-border-color-active': $tabs-color-variant-dark-header-border-color-active,
+    'header-color-active': $tabs-color-variant-dark-header-color-active
 ) !default;
 
+/// Colors group map
 $tabs-color-variants: (
     'light': $tabs-color-variant-light,
     'dark': $tabs-color-variant-dark

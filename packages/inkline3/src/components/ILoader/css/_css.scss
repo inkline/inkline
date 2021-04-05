@@ -1,6 +1,14 @@
 :root {
-    --loader-size: #{$loader-size};
+    /**
+     * Variables
+     */
+
     --loader-animation-duration: #{$loader-animation-duration};
+    --loader-size: #{$loader-size};
+
+    /**
+     * Sizes
+     */
 
     @each $loader-size-variant-key, $loader-size-variant-value in $loader-size-variants {
         @each $loader-size-variant-field-key, $loader-size-variant-field-value in $loader-size-variant-value {
@@ -8,9 +16,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $loader-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --loader-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $loader-color-variant-key, $loader-color-variant-value in $loader-color-variants {
+        @each $loader-color-variant-field-key, $loader-color-variant-field-value in $loader-color-variant-value {
+            --loader-color-variant-#{$loader-color-variant-key}-#{$loader-color-variant-field-key}: #{$loader-color-variant-field-value};
         }
     }
 }

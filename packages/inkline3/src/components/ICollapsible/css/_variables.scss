@@ -25,19 +25,19 @@ $collapsible-padding: spacer() !default;
 /// Small size
 ////
 
-/// The font size of the collapsible component, for the small size variant
+/// The font size of the collapsible component
 /// @name font-size
 /// @group sm
 /// @type size
 $collapsible-size-variant-sm-font-size: calc(var(--collapsible-font-size) * #{size-multiplier('sm')}) !default;
 
-/// The border radius of the collapsible component, for the small size variant
+/// The border radius of the collapsible component
 /// @name border-radius
 /// @group sm
 /// @type size
 $collapsible-size-variant-sm-border-radius: calc(var(--collapsible-border-radius) * #{size-multiplier('sm')}) !default;
 
-/// The padding of the collapsible component, for the small size variant
+/// The padding of the collapsible component
 /// @name padding
 /// @group sm
 /// @type size
@@ -55,19 +55,19 @@ $collapsible-size-variant-sm: (
 /// Medium size
 ////
 
-/// The font size of the collapsible component, for the medium size variant
+/// The font size of the collapsible component
 /// @name font-size
 /// @group md
 /// @type size
 $collapsible-size-variant-md-font-size: calc(var(--collapsible-font-size) * #{size-multiplier('md')}) !default;
 
-/// The border radius of the collapsible component, for the medium size variant
+/// The border radius of the collapsible component
 /// @name border-radius
 /// @group md
 /// @type size
 $collapsible-size-variant-md-border-radius: calc(var(--collapsible-border-radius) * #{size-multiplier('md')}) !default;
 
-/// The padding of the collapsible component, for the medium size variant
+/// The padding of the collapsible component
 /// @name padding
 /// @group md
 /// @type size
@@ -85,19 +85,19 @@ $collapsible-size-variant-md: (
 /// Large size
 ////
 
-/// The font size of the collapsible component, for the large size variant
+/// The font size of the collapsible component
 /// @name font-size
 /// @group lg
 /// @type size
 $collapsible-size-variant-lg-font-size: calc(var(--collapsible-font-size) * #{size-multiplier('lg')}) !default;
 
-/// The border radius of the collapsible component, for the large size variant
+/// The border radius of the collapsible component
 /// @name border-radius
 /// @group lg
 /// @type size
 $collapsible-size-variant-lg-border-radius: calc(var(--collapsible-border-radius) * #{size-multiplier('lg')}) !default;
 
-/// The padding of the collapsible component, for the large size variant
+/// The padding of the collapsible component
 /// @name padding
 /// @group lg
 /// @type size
@@ -126,25 +126,25 @@ $collapsible-size-variants: (
 /// Light color
 ////
 
-/// The color of the collapsible component, for the light color variant
+/// The color of the collapsible component
 /// @name color
 /// @group light
 /// @type color
 $collapsible-color-variant-light-color: contrast-color($color-light) !default;
 
-/// The background of the collapsible component, for the light color variant
+/// The background of the collapsible component
 /// @name background
 /// @group light
 /// @type color
 $collapsible-color-variant-light-background: color('light') !default;
 
-/// The border color of the collapsible component, for the light color variant
+/// The border color of the collapsible component
 /// @name border-color
 /// @group light
 /// @type color
 $collapsible-color-variant-light-border-color: color('light-55') !default;
 
-/// The background of the collapsible component body, for the light color variant
+/// The background of the collapsible component body
 /// @name body-background
 /// @group light
 /// @type color
@@ -163,25 +163,25 @@ $collapsible-color-variant-light: (
 /// Dark color
 ////
 
-/// The color of the collapsible component, for the dark color variant
+/// The color of the collapsible component
 /// @name color
 /// @group dark
 /// @type color
 $collapsible-color-variant-dark-color: contrast-color($color-dark) !default;
 
-/// The background of the collapsible component, for the dark color variant
+/// The background of the collapsible component
 /// @name background
 /// @group dark
 /// @type color
 $collapsible-color-variant-dark-background: color('dark') !default;
 
-/// The border color of the collapsible component, for the dark color variant
+/// The border color of the collapsible component
 /// @name border-color
 /// @group dark
 /// @type color
 $collapsible-color-variant-dark-border-color: color('dark-45') !default;
 
-/// The background of the collapsible component body, for the dark color variant
+/// The background of the collapsible component body
 /// @name body-background
 /// @group dark
 /// @type color

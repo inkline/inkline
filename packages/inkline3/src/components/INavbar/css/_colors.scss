@@ -5,6 +5,7 @@
     $_item-color-hover: var(--navbar-color-variant-#{$color-variant-key}-item-color-hover);
     $_item-background: var(--navbar-color-variant-#{$color-variant-key}-item-background);
     $_item-background-hover: var(--navbar-color-variant-#{$color-variant-key}-item-background-hover);
+    $_collapsed-background: var(--navbar-color-variant-#{$color-variant-key}-collapsed-background);
     $_collapsed-item-color: var(--navbar-color-variant-#{$color-variant-key}-collapsed-item-color);
     $_collapsed-item-color-hover: var(--navbar-color-variant-#{$color-variant-key}-collapsed-item-color-hover);
     $_collapsed-item-background: var(--navbar-color-variant-#{$color-variant-key}-collapsed-item-background);
@@ -34,9 +35,10 @@
 
     &.-collapsible {
         .navbar-collapsible {
-            background: $_collapsed-item-background;
+            background: $_collapsed-background;
 
             .nav-item {
+                background: $_collapsed-item-background;
                 color: $_collapsed-item-color;
 
                 &:hover {

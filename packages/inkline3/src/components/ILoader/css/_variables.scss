@@ -1,53 +1,128 @@
-//
-// Loading spinner variables
-//
+////
+/// Variables
+////
+
+/// The animation duration of the loader component
+/// @name animation-duration
 $loader-animation-duration: 1.2s !default;
+
+/// The size of the loader component
+/// @name size
+/// @type size
 $loader-size: 64px !default;
 
-//
-// Sizes
-//
+////
+/// Sizes
+////
 
+////
+/// Small size
+////
+
+/// The size of the loader component
+/// @name size
+/// @group sm
+/// @type size
 $loader-size-variant-sm-size: calc(var(--loader-size) * #{size-multiplier('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
 $loader-size-variant-sm: (
     'size': $loader-size-variant-sm-size
 ) !default;
 
+////
+/// Medium size
+////
+
+/// The size of the loader component
+/// @name size
+/// @group md
+/// @type size
 $loader-size-variant-md-size: calc(var(--loader-size) * #{size-multiplier('md')}) !default;
+
+/// Map for md size
+/// @group md
 $loader-size-variant-md: (
     'size': $loader-size-variant-md-size
 ) !default;
 
+////
+/// Large size
+////
+
+/// The size of the loader component
+/// @name size
+/// @group lg
+/// @type size
 $loader-size-variant-lg-size: calc(var(--loader-size) * #{size-multiplier('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
 $loader-size-variant-lg: (
     'size': $loader-size-variant-lg-size
 ) !default;
 
+/// Sizes group map
 $loader-size-variants: (
     'sm': $loader-size-variant-sm,
     'md': $loader-size-variant-md,
     'lg': $loader-size-variant-lg
 ) !default;
 
-//
-// Colors
-//
+////
+/// Colors
+////
 
+////
+/// Primary color
+////
+
+/// The background of the loader component
+/// @name background
+/// @group primary
+/// @type color
 $loader-color-variant-primary-background: color('primary') !default;
+
+/// Map for primary color
+/// @group primary
 $loader-color-variant-primary: (
-    'background': $loader-color-variant-primary-background,
+    'background': $loader-color-variant-primary-background
 ) !default;
 
-$loader-color-variant-light-background: color('dark') !default;
+////
+/// Light color
+////
+
+/// The background of the loader component
+/// @name background
+/// @group light
+/// @type color
+$loader-color-variant-light-background: color('light') !default;
+
+/// Map for light color
+/// @group light
 $loader-color-variant-light: (
-    'background': $loader-color-variant-light-background,
+    'background': $loader-color-variant-light-background
 ) !default;
 
-$loader-color-variant-dark-background: color('light') !default;
+////
+/// Dark color
+////
+
+/// The background of the loader component
+/// @name background
+/// @group dark
+/// @type color
+$loader-color-variant-dark-background: color('dark') !default;
+
+/// Map for dark color
+/// @group dark
 $loader-color-variant-dark: (
-    'background': $loader-color-variant-dark-background,
+    'background': $loader-color-variant-dark-background
 ) !default;
 
+/// Colors group map
 $loader-color-variants: (
     'primary': $loader-color-variant-primary,
     'light': $loader-color-variant-light,

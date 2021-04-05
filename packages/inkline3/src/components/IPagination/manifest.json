@@ -1,4 +1,5 @@
 {
+    "name": "pagination",
     "slots": [
         {
             "name": "previous",
@@ -78,6 +79,110 @@
                 "lg"
             ],
             "default": "md"
+        }
+    ],
+    "styles": [
+        {
+            "name": "border-width",
+            "description": "The border width of the pagination component",
+            "default": "var(--border-width)"
+        },
+        {
+            "name": "margin",
+            "description": "The margin of the pagination component items",
+            "default": "spacer('1/4')"
+        },
+        {
+            "name": "opacity-disabled",
+            "description": "The opacity of the pagination component when disabled",
+            "default": "0.85"
+        },
+        {
+            "name": "border-radius",
+            "description": "The border radius of the pagination component",
+            "type": "size",
+            "default": "border-radius()"
+        },
+        {
+            "name": "font-size",
+            "description": "The font size of the pagination component",
+            "type": "size",
+            "default": "font-size()"
+        },
+        {
+            "name": "padding",
+            "description": "The padding of the pagination component",
+            "type": "size",
+            "default": "spacer('1/4')"
+        },
+        {
+            "name": "min-width",
+            "description": "The minimum width of the pagination component items",
+            "type": "size",
+            "default": "40px"
+        },
+        {
+            "name": "background",
+            "description": "The background of the pagination component item",
+            "type": "color",
+            "values": {
+                "light": "color('light')",
+                "dark": "color('dark')"
+            }
+        },
+        {
+            "name": "background-hover",
+            "description": "The background of the pagination component item when hovered or focused",
+            "type": "color",
+            "values": {
+                "light": "color('light-55')",
+                "dark": "color('dark-45')"
+            }
+        },
+        {
+            "name": "background-active",
+            "description": "The background of the pagination component item when active",
+            "type": "color",
+            "values": {
+                "light": "color('primary')",
+                "dark": "color('primary')"
+            }
+        },
+        {
+            "name": "border-color",
+            "description": "The border color of the pagination component item",
+            "type": "color",
+            "values": {
+                "light": "color('light-55')",
+                "dark": "color('dark-45')"
+            }
+        },
+        {
+            "name": "border-color-active",
+            "description": "The border color of the pagination component item when active",
+            "type": "color",
+            "values": {
+                "light": "color('primary-55')",
+                "dark": "color('primary-55')"
+            }
+        },
+        {
+            "name": "color",
+            "description": "The border color of the pagination component item when active",
+            "type": "color",
+            "values": {
+                "light": "contrast-color($color-light)",
+                "dark": "contrast-color($color-dark)"
+            }
+        },
+        {
+            "name": "color-active",
+            "description": "The border color of the pagination component item when active",
+            "type": "color",
+            "values": {
+                "light": "contrast-color($color-primary)",
+                "dark": "contrast-color($color-primary)"
+            }
         }
     ]
 }

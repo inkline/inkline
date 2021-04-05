@@ -41,19 +41,19 @@ $alert-padding: spacer() !default;
 /// Small size
 ////
 
-/// The font size of the alert component, for the small size variant
+/// The font size of the alert component
 /// @name font-size
 /// @group sm
 /// @type size
 $alert-size-variant-sm-font-size: calc(var(--alert-font-size) * #{size-multiplier('sm')}) !default;
 
-/// The border radius of the alert component, for the small size variant
+/// The border radius of the alert component
 /// @name border-radius
 /// @group sm
 /// @type size
 $alert-size-variant-sm-border-radius: calc(var(--alert-border-radius) * #{size-multiplier('sm')}) !default;
 
-/// The padding of the alert component, for the small size variant
+/// The padding of the alert component
 /// @name padding
 /// @group sm
 /// @type size
@@ -71,19 +71,19 @@ $alert-size-variant-sm: (
 /// Medium size
 ////
 
-/// The font size of the alert component, for the medium size variant
+/// The font size of the alert component
 /// @name font-size
 /// @group md
 /// @type size
 $alert-size-variant-md-font-size: calc(var(--alert-font-size) * #{size-multiplier('md')}) !default;
 
-/// The border radius of the alert component, for the medium size variant
+/// The border radius of the alert component
 /// @name border-radius
 /// @group md
 /// @type size
 $alert-size-variant-md-border-radius: calc(var(--alert-border-radius) * #{size-multiplier('md')}) !default;
 
-/// The padding of the alert component, for the medium size variant
+/// The padding of the alert component
 /// @name padding
 /// @group md
 /// @type size
@@ -101,19 +101,19 @@ $alert-size-variant-md: (
 /// Large size
 ////
 
-/// The font size of the alert component, for the large size variant
+/// The font size of the alert component
 /// @name font-size
 /// @group lg
 /// @type size
 $alert-size-variant-lg-font-size: calc(var(--alert-font-size) * #{size-multiplier('lg')}) !default;
 
-/// The border radius of the alert component, for the large size variant
+/// The border radius of the alert component
 /// @name border-radius
 /// @group lg
 /// @type size
 $alert-size-variant-lg-border-radius: calc(var(--alert-border-radius) * #{size-multiplier('lg')}) !default;
 
-/// The padding of the alert component, for the large size variant
+/// The padding of the alert component
 /// @name padding
 /// @group lg
 /// @type size
@@ -142,37 +142,37 @@ $alert-size-variants: (
 /// Info color
 ////
 
-/// The background of the alert component, for the info color variant
+/// The background of the alert component
 /// @name background
 /// @group info
 /// @type color
 $alert-color-variant-info-background: color('info') !default;
 
-/// The border color of the alert component, for the info color variant
+/// The border color of the alert component
 /// @name border-color
 /// @group info
 /// @type color
 $alert-color-variant-info-border-color: color('info-60') !default;
 
-/// The text color of the alert component, for the info color variant
+/// The text color of the alert component
 /// @name color
 /// @group info
 /// @type color
 $alert-color-variant-info-color: contrast-color($color-info) !default;
 
-/// The link color of the alert component, for the info color variant
+/// The link color of the alert component
 /// @name link-color
 /// @group info
 /// @type color
 $alert-color-variant-info-link-color: $alert-color-variant-info-color !default;
 
-/// The code color of the alert component, for the info color variant
+/// The code color of the alert component
 /// @name code-color
 /// @group info
 /// @type color
 $alert-color-variant-info-code-color: $alert-color-variant-info-color !default;
 
-/// The code background of the alert component, for the info color variant
+/// The code background of the alert component
 /// @name code-background
 /// @group info
 /// @type color
@@ -193,37 +193,37 @@ $alert-color-variant-info: (
 /// Success color
 ////
 
-/// The background of the alert component, for the success color variant
+/// The background of the alert component
 /// @name background
 /// @group success
 /// @type color
 $alert-color-variant-success-background: color('success') !default;
 
-/// The border color of the alert component, for the success color variant
+/// The border color of the alert component
 /// @name border-color
 /// @group success
 /// @type color
 $alert-color-variant-success-border-color: color('success-60') !default;
 
-/// The text color of the alert component, for the success color variant
+/// The text color of the alert component
 /// @name color
 /// @group success
 /// @type color
 $alert-color-variant-success-color: contrast-color($color-success) !default;
 
-/// The link color of the alert component, for the success color variant
+/// The link color of the alert component
 /// @name link-color
 /// @group success
 /// @type color
 $alert-color-variant-success-link-color: $alert-color-variant-success-color !default;
 
-/// The code color of the alert component, for the success color variant
+/// The code color of the alert component
 /// @name code-color
 /// @group success
 /// @type color
 $alert-color-variant-success-code-color: $alert-color-variant-success-color !default;
 
-/// The code background of the alert component, for the success color variant
+/// The code background of the alert component
 /// @name code-background
 /// @group success
 /// @type color
@@ -244,37 +244,37 @@ $alert-color-variant-success: (
 /// Warning color
 ////
 
-/// The background of the alert component, for the warning color variant
+/// The background of the alert component
 /// @name background
 /// @group warning
 /// @type color
 $alert-color-variant-warning-background: color('warning') !default;
 
-/// The border color of the alert component, for the warning color variant
+/// The border color of the alert component
 /// @name border-color
 /// @group warning
 /// @type color
 $alert-color-variant-warning-border-color: color('warning-60') !default;
 
-/// The text color of the alert component, for the warning color variant
+/// The text color of the alert component
 /// @name color
 /// @group warning
 /// @type color
 $alert-color-variant-warning-color: contrast-color($color-warning) !default;
 
-/// The link color of the alert component, for the warning color variant
+/// The link color of the alert component
 /// @name link-color
 /// @group warning
 /// @type color
 $alert-color-variant-warning-link-color: $alert-color-variant-warning-color !default;
 
-/// The code color of the alert component, for the warning color variant
+/// The code color of the alert component
 /// @name code-color
 /// @group warning
 /// @type color
 $alert-color-variant-warning-code-color: $alert-color-variant-warning-color !default;
 
-/// The code background of the alert component, for the warning color variant
+/// The code background of the alert component
 /// @name code-background
 /// @group warning
 /// @type color
@@ -295,37 +295,37 @@ $alert-color-variant-warning: (
 /// Danger color
 ////
 
-/// The background of the alert component, for the danger color variant
+/// The background of the alert component
 /// @name background
 /// @group danger
 /// @type color
 $alert-color-variant-danger-background: color('danger') !default;
 
-/// The border color of the alert component, for the danger color variant
+/// The border color of the alert component
 /// @name border-color
 /// @group danger
 /// @type color
 $alert-color-variant-danger-border-color: color('danger-60') !default;
 
-/// The text color of the alert component, for the danger color variant
+/// The text color of the alert component
 /// @name color
 /// @group danger
 /// @type color
 $alert-color-variant-danger-color: contrast-color($color-danger) !default;
 
-/// The link color of the alert component, for the danger color variant
+/// The link color of the alert component
 /// @name link-color
 /// @group danger
 /// @type color
 $alert-color-variant-danger-link-color: $alert-color-variant-danger-color !default;
 
-/// The code color of the alert component, for the danger color variant
+/// The code color of the alert component
 /// @name code-color
 /// @group danger
 /// @type color
 $alert-color-variant-danger-code-color: $alert-color-variant-danger-color !default;
 
-/// The code background of the alert component, for the danger color variant
+/// The code background of the alert component
 /// @name code-background
 /// @group danger
 /// @type color

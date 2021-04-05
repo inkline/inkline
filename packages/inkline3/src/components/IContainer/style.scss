@@ -13,8 +13,10 @@
     width: 100%;
 
     @each $breakpoint-name, $breakpoint in $breakpoints {
+        $_container-width: var(--container-size-variant-#{$breakpoint-name}-width);
+
         @include breakpoint-up($breakpoint-name) {
-            max-width: container-width($breakpoint-name);
+            max-width: $_container-width;
             padding-left: calc(#{gutter($breakpoint-name)} / 2);
             padding-right: calc(#{gutter($breakpoint-name)} / 2);
         }

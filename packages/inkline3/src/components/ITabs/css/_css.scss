@@ -1,11 +1,19 @@
 :root {
-    --tabs-font-size: #{$tabs-font-size};
-    --tabs-padding: #{$tabs-padding};
-    --tabs-border-radius: #{$tabs-border-radius};
+    /**
+     * Variables
+     */
+
     --tabs-border-width: #{$tabs-border-width};
     --tabs-header-border-bottom-width: #{$tabs-header-border-bottom-width};
-    --tabs-header-padding: #{$tabs-header-padding};
     --tabs-header-margin-bottom: #{$tabs-header-margin-bottom};
+    --tabs-font-size: #{$tabs-font-size};
+    --tabs-border-radius: #{$tabs-border-radius};
+    --tabs-padding: #{$tabs-padding};
+    --tabs-header-padding: #{$tabs-header-padding};
+
+    /**
+     * Sizes
+     */
 
     @each $tabs-size-variant-key, $tabs-size-variant-value in $tabs-size-variants {
         @each $tabs-size-variant-field-key, $tabs-size-variant-field-value in $tabs-size-variant-value {
@@ -13,9 +21,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $tabs-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --tabs-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $tabs-color-variant-key, $tabs-color-variant-value in $tabs-color-variants {
+        @each $tabs-color-variant-field-key, $tabs-color-variant-field-value in $tabs-color-variant-value {
+            --tabs-color-variant-#{$tabs-color-variant-key}-#{$tabs-color-variant-field-key}: #{$tabs-color-variant-field-value};
         }
     }
 }

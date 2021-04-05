@@ -1,11 +1,19 @@
 :root {
-    --pagination-padding: #{$pagination-padding};
-    --pagination-font-size: #{$pagination-font-size};
-    --pagination-border-radius: #{$pagination-border-radius};
+    /**
+     * Variables
+     */
+
     --pagination-border-width: #{$pagination-border-width};
-    --pagination-min-width: #{$pagination-min-width};
     --pagination-margin: #{$pagination-margin};
     --pagination-opacity-disabled: #{$pagination-opacity-disabled};
+    --pagination-border-radius: #{$pagination-border-radius};
+    --pagination-font-size: #{$pagination-font-size};
+    --pagination-padding: #{$pagination-padding};
+    --pagination-min-width: #{$pagination-min-width};
+
+    /**
+     * Sizes
+     */
 
     @each $pagination-size-variant-key, $pagination-size-variant-value in $pagination-size-variants {
         @each $pagination-size-variant-field-key, $pagination-size-variant-field-value in $pagination-size-variant-value {
@@ -13,9 +21,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $pagination-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --pagination-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $pagination-color-variant-key, $pagination-color-variant-value in $pagination-color-variants {
+        @each $pagination-color-variant-field-key, $pagination-color-variant-field-value in $pagination-color-variant-value {
+            --pagination-color-variant-#{$pagination-color-variant-key}-#{$pagination-color-variant-field-key}: #{$pagination-color-variant-field-value};
         }
     }
 }

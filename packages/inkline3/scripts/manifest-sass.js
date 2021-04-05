@@ -66,11 +66,9 @@ $${meta.id}-${meta.type}-variants: (
         let value;
 
         if (variable.type === 'size' && meta.group) {
-            output += `, for the ${sizeWords[meta.group.name]} size variant`;
             name = `$${meta.id}-size-variant-${meta.group.name}-${variable.name}`;
             value = variable.values && variable.values[meta.group.name] || `calc(var(--${meta.id}-${variable.name}) * #{size-multiplier('${meta.group.name}')})`;
         } else if (variable.type === 'color' && meta.group) {
-            output += `, for the ${meta.group.name} color variant`;
             name = `$${meta.id}-color-variant-${meta.group.name}-${variable.name}`;
             value = variable.values[meta.group.name];
         } else {
@@ -124,24 +122,24 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.json'), 
         const manifest = require(fileName);
 
         if (manifest.styles) {
-            const defaults = manifest.styles.filter(({ type }) => !type);
+            const defaults = manifest.styles.filter((variable) => variable.default);
             const colors = manifest.styles.filter(({ type }) => type === 'color');
             const sizes = manifest.styles.filter(({ type }) => type === 'size');
 
             /**
              * Base variables
              */
-            const baseSassVariables = defaults.concat(sizes)
-                .filter((variable) => variable.default)
+            const baseSassVariables = defaults
                 .map((variable) => generate.sassVariable(variable, { id: manifest.name }).output);
 
-            const baseCSSVariables = defaults.concat(sizes)
+            const baseCSSVariables = defaults
                 .map((variable) => generate.cssVariable(variable, { id: manifest.name }).output);
 
             /**
              * Sizes
              */
-            const sizeVariableGroups = sizeKeys.map((key) => ({
+            const sizeWithValues = sizes.find((s) => s.values);
+            const sizeVariableGroups = (sizeWithValues ? Object.keys(sizeWithValues.values) : sizeKeys).map((key) => ({
                 name: key,
                 values: [],
                 kvMap: []
@@ -171,7 +169,7 @@ ${generate.sassGroup(group, { id: manifest.name, type: 'size' }).output}`;
              * Colors
              */
             const colorWithValues = colors.find((c) => c.values);
-            const colorVariableGroups = Object.keys(colorWithValues.values)
+            const colorVariableGroups = Object.keys(colorWithValues?.values || {})
                 .map((key) => ({
                     name: key,
                     values: [],
@@ -217,25 +215,33 @@ ${generate.sassGroup(group, { id: manifest.name, type: 'color' }).output}`;
              * Resulting _variables.scss file contents
              */
             let sassVariables = '';
-            if (baseSassVariables) {
+            if (baseSassVariables && defaults.length > 0) {
                 sassVariables += `////
 /// Variables
 ////
 
-${baseSassVariables.join('\n\n')}\n\n`;
+${baseSassVariables.join('\n\n')}\n`;
             }
 
-            if (sizeSassVariables) {
+            if (sizes.length > 0 && defaults.length > 0) {
+                sassVariables += '\n'
+            }
+
+            if (sizeSassVariables && sizes.length > 0) {
                 sassVariables += `////
 /// Sizes
 ////
 
 ${sizeSassVariables.join('\n\n')}
 
-${generate.sassGroupMap(sizeVariableGroups, { id: manifest.name, type: 'size' }).output}\n\n`;
+${generate.sassGroupMap(sizeVariableGroups, { id: manifest.name, type: 'size' }).output}\n`;
             }
 
-            if (colorSassVariables) {
+            if (colors.length > 0 && (sizes.length > 0 || defaults.length > 0)) {
+                sassVariables += '\n'
+            }
+
+            if (colorSassVariables && colors.length > 0) {
                 sassVariables += `////
 /// Colors
 ////
@@ -250,17 +256,21 @@ ${generate.sassGroupMap(colorVariableGroups, { id: manifest.name, type: 'color' 
              * Resulting _css.scss file contents
              */
             let cssVariables = ':root {\n';
-            if (baseSassVariables) {
+            if (baseSassVariables && defaults.length > 0) {
                 cssVariables += `    /**
      * Variables
      */
 
-    ${baseCSSVariables.join('\n    ')}\n`;
+    ${baseCSSVariables.join('\n    ')}
+`;
             }
 
-            if (sizeSassVariables) {
-                cssVariables += `
-    /**
+            if (sizes.length > 0 && defaults.length > 0) {
+                cssVariables += '\n'
+            }
+
+            if (sizeSassVariables && sizes.length > 0) {
+                cssVariables += `    /**
      * Sizes
      */
 
@@ -268,14 +278,16 @@ ${generate.sassGroupMap(colorVariableGroups, { id: manifest.name, type: 'color' 
 `;
             }
 
-            if (colorSassVariables) {
-                cssVariables += `
-    /**
+            if (colors.length > 0 && (sizes.length > 0 || defaults.length > 0)) {
+                cssVariables += '\n'
+            }
+
+            if (colorSassVariables && colors.length > 0) {
+                cssVariables += `    /**
      * Colors
      */
 
-    ${generate.cssGroup({ id: manifest.name, type: 'color' }).output}
-`;
+    ${generate.cssGroup({ id: manifest.name, type: 'color' }).output}\n`;
             }
 
             cssVariables += '}\n';

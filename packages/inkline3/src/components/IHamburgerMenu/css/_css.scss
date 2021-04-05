@@ -1,15 +1,23 @@
 :root {
+    /**
+     * Variables
+     */
+
     --hamburger-menu-bar-width: #{$hamburger-menu-bar-width};
     --hamburger-menu-bar-height: #{$hamburger-menu-bar-height};
     --hamburger-menu-bar-border-radius: #{$hamburger-menu-bar-border-radius};
     --hamburger-menu-bar-spacing: #{$hamburger-menu-bar-spacing};
     --hamburger-menu-padding: #{$hamburger-menu-padding};
     --hamburger-menu-opacity: #{$hamburger-menu-opacity};
-    --hamburger-menu-hover-opacity: #{$hamburger-menu-hover-opacity};
+    --hamburger-menu-opacity-hover: #{$hamburger-menu-opacity-hover};
 
-    @each $color-variant-key, $color-variant-value in $hamburger-menu-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --hamburger-menu-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $hamburger-menu-color-variant-key, $hamburger-menu-color-variant-value in $hamburger-menu-color-variants {
+        @each $hamburger-menu-color-variant-field-key, $hamburger-menu-color-variant-field-value in $hamburger-menu-color-variant-value {
+            --hamburger-menu-color-variant-#{$hamburger-menu-color-variant-key}-#{$hamburger-menu-color-variant-field-key}: #{$hamburger-menu-color-variant-field-value};
         }
     }
 }

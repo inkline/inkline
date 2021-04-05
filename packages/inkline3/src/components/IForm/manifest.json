@@ -1,4 +1,5 @@
 {
+    "name": "form",
     "slots": [
         {
             "name": "default",

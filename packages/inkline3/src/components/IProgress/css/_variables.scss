@@ -1,60 +1,135 @@
-//
-// Variables
-//
+////
+/// Variables
+////
 
+/// The border radius of the progress component
+/// @name border-radius
+/// @type size
 $progress-border-radius: border-radius() !default;
+
+/// The height of the progress component
+/// @name height
+/// @type size
 $progress-height: spacer('3/4') !default;
 
+////
+/// Sizes
+////
 
-//
-// Sizes
-//
+////
+/// Small size
+////
 
+/// The border radius of the progress component
+/// @name border-radius
+/// @group sm
+/// @type size
 $progress-size-variant-sm-border-radius: calc(var(--progress-border-radius) * #{size-multiplier('sm')}) !default;
-$progress-size-variant-sm-height: calc(var(--progress-height) * #{size-multiplier('xs')}) !default;
+
+/// The height of the progress component
+/// @name height
+/// @group sm
+/// @type size
+$progress-size-variant-sm-height: calc(var(--progress-height) * #{size-multiplier('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
 $progress-size-variant-sm: (
     'border-radius': $progress-size-variant-sm-border-radius,
-    'height': $progress-size-variant-sm-height,
+    'height': $progress-size-variant-sm-height
 ) !default;
 
+////
+/// Medium size
+////
+
+/// The border radius of the progress component
+/// @name border-radius
+/// @group md
+/// @type size
 $progress-size-variant-md-border-radius: calc(var(--progress-border-radius) * #{size-multiplier('md')}) !default;
+
+/// The height of the progress component
+/// @name height
+/// @group md
+/// @type size
 $progress-size-variant-md-height: calc(var(--progress-height) * #{size-multiplier('md')}) !default;
+
+/// Map for md size
+/// @group md
 $progress-size-variant-md: (
     'border-radius': $progress-size-variant-md-border-radius,
-    'height': $progress-size-variant-md-height,
+    'height': $progress-size-variant-md-height
 ) !default;
 
+////
+/// Large size
+////
+
+/// The border radius of the progress component
+/// @name border-radius
+/// @group lg
+/// @type size
 $progress-size-variant-lg-border-radius: calc(var(--progress-border-radius) * #{size-multiplier('lg')}) !default;
-$progress-size-variant-lg-height: calc(var(--progress-height) * #{size-multiplier('xl')}) !default;
+
+/// The height of the progress component
+/// @name height
+/// @group lg
+/// @type size
+$progress-size-variant-lg-height: calc(var(--progress-height) * #{size-multiplier('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
 $progress-size-variant-lg: (
     'border-radius': $progress-size-variant-lg-border-radius,
-    'height': $progress-size-variant-lg-height,
+    'height': $progress-size-variant-lg-height
 ) !default;
 
-
+/// Sizes group map
 $progress-size-variants: (
     'sm': $progress-size-variant-sm,
     'md': $progress-size-variant-md,
     'lg': $progress-size-variant-lg
 ) !default;
 
-//
-// Colors
-//
+////
+/// Colors
+////
 
+////
+/// Light color
+////
+
+/// The background of the progress component
+/// @name background
+/// @group light
+/// @type color
 $progress-color-variant-light-background: color('light') !default;
 
+/// Map for light color
+/// @group light
 $progress-color-variant-light: (
     'background': $progress-color-variant-light-background
 ) !default;
 
+////
+/// Dark color
+////
+
+/// The background of the progress component
+/// @name background
+/// @group dark
+/// @type color
 $progress-color-variant-dark-background: color('dark') !default;
 
+/// Map for dark color
+/// @group dark
 $progress-color-variant-dark: (
     'background': $progress-color-variant-dark-background
 ) !default;
 
+/// Colors group map
 $progress-color-variants: (
     'light': $progress-color-variant-light,
-    'dark': $progress-color-variant-dark,
+    'dark': $progress-color-variant-dark
 ) !default;

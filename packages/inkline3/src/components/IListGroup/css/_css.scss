@@ -1,9 +1,17 @@
 :root {
+    /**
+     * Variables
+     */
+
     --list-group-border-width: #{$list-group-border-width};
     --list-group-border-style: #{$list-group-border-style};
     --list-group-border-radius: #{$list-group-border-radius};
     --list-group-font-size: #{$list-group-font-size};
     --list-group-padding: #{$list-group-padding};
+
+    /**
+     * Sizes
+     */
 
     @each $list-group-size-variant-key, $list-group-size-variant-value in $list-group-size-variants {
         @each $list-group-size-variant-field-key, $list-group-size-variant-field-value in $list-group-size-variant-value {
@@ -11,9 +19,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $list-group-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --list-group-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $list-group-color-variant-key, $list-group-color-variant-value in $list-group-color-variants {
+        @each $list-group-color-variant-field-key, $list-group-color-variant-field-value in $list-group-color-variant-value {
+            --list-group-color-variant-#{$list-group-color-variant-key}-#{$list-group-color-variant-field-key}: #{$list-group-color-variant-field-value};
         }
     }
 }

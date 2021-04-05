@@ -1,5 +1,11 @@
 :root {
-    @each $container-width-key, $container-width-value in $container-widths {
-        --container-width-#{$container-width-key}: #{$container-width-value};
+    /**
+     * Sizes
+     */
+
+    @each $container-size-variant-key, $container-size-variant-value in $container-size-variants {
+        @each $container-size-variant-field-key, $container-size-variant-field-value in $container-size-variant-value {
+            --container-size-variant-#{$container-size-variant-key}-#{$container-size-variant-field-key}: #{$container-size-variant-field-value};
+        }
     }
 }

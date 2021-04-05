@@ -2,6 +2,7 @@
     $_color: var(--tabs-color-variant-#{$color-variant-key}-color);
     $_border-color: var(--tabs-color-variant-#{$color-variant-key}-border-color);
     $_background: var(--tabs-color-variant-#{$color-variant-key}-background);
+    $_header-border-color: var(--tabs-color-variant-#{$color-variant-key}-header-border-color);
     $_header-border-color-active: var(--tabs-color-variant-#{$color-variant-key}-header-border-color-active);
     $_header-background: var(--tabs-color-variant-#{$color-variant-key}-header-background);
     $_header-background-hover: var(--tabs-color-variant-#{$color-variant-key}-header-background-hover);
@@ -14,6 +15,8 @@
         background: $_header-background;
 
         .tab-title {
+            border-bottom-color: $_header-border-color;
+
             &.-active {
                 color: $_header-color-active;
                 background-color: $_header-background-active;

@@ -25,7 +25,6 @@
     thead th {
         vertical-align: bottom;
         border-bottom-width: calc(2 * var(--table-border-width));
-        border-bottom-color: var(--table-border-color);
     }
 
     tbody + tbody {
@@ -50,7 +49,8 @@
 
         th,
         td {
-            border: var(--table-border-width) solid var(--table-border-color);
+            border-width: var(--table-border-width);
+            border-style: solid;
         }
     }
 

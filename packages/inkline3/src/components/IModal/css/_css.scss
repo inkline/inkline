@@ -1,13 +1,21 @@
 :root {
-    --modal-width: #{$modal-width};
-    --modal-margin: #{$modal-margin};
-    --modal-padding: #{$modal-padding};
-    --modal-font-size: #{$modal-font-size};
+    /**
+     * Variables
+     */
+
     --modal-font-weight: #{$modal-font-weight};
     --modal-line-height: #{$modal-line-height};
-    --modal-border-radius: #{$modal-border-radius};
     --modal-border-width: #{$modal-border-width};
+    --modal-margin: #{$modal-margin};
+    --modal-width: #{$modal-width};
     --modal-overlay-background: #{$modal-overlay-background};
+    --modal-border-radius: #{$modal-border-radius};
+    --modal-font-size: #{$modal-font-size};
+    --modal-padding: #{$modal-padding};
+
+    /**
+     * Sizes
+     */
 
     @each $modal-size-variant-key, $modal-size-variant-value in $modal-size-variants {
         @each $modal-size-variant-field-key, $modal-size-variant-field-value in $modal-size-variant-value {
@@ -15,9 +23,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $modal-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --modal-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $modal-color-variant-key, $modal-color-variant-value in $modal-color-variants {
+        @each $modal-color-variant-field-key, $modal-color-variant-field-value in $modal-color-variant-value {
+            --modal-color-variant-#{$modal-color-variant-key}-#{$modal-color-variant-field-key}: #{$modal-color-variant-field-value};
         }
     }
 }

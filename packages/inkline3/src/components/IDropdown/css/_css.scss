@@ -1,18 +1,22 @@
 :root {
-    --dropdown-border-radius: #{$dropdown-border-radius};
-    --dropdown-border-width: #{$dropdown-border-width};
-    --dropdown-font-size: #{$dropdown-font-size};
+    /**
+     * Variables
+     */
+
     --dropdown-font-weight: #{$dropdown-font-weight};
     --dropdown-line-height: #{$dropdown-line-height};
+    --dropdown-border-width: #{$dropdown-border-width};
+    --dropdown-margin: #{$dropdown-margin};
+    --dropdown-border-radius: #{$dropdown-border-radius};
+    --dropdown-font-size: #{$dropdown-font-size};
     --dropdown-padding: #{$dropdown-padding};
     --dropdown-body-padding: #{$dropdown-body-padding};
     --dropdown-header-padding: #{$dropdown-header-padding};
     --dropdown-footer-padding: #{$dropdown-footer-padding};
-    --dropdown-margin: #{$dropdown-margin};
-    --dropdown-z-index: #{$dropdown-z-index};
-    --dropdown-min-width: #{$dropdown-min-width};
-    --dropdown-max-width: #{$dropdown-max-width};
-    --dropdown-divider-margin: #{$dropdown-divider-margin};
+
+    /**
+     * Sizes
+     */
 
     @each $dropdown-size-variant-key, $dropdown-size-variant-value in $dropdown-size-variants {
         @each $dropdown-size-variant-field-key, $dropdown-size-variant-field-value in $dropdown-size-variant-value {
@@ -20,9 +24,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $dropdown-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --dropdown-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $dropdown-color-variant-key, $dropdown-color-variant-value in $dropdown-color-variants {
+        @each $dropdown-color-variant-field-key, $dropdown-color-variant-field-value in $dropdown-color-variant-value {
+            --dropdown-color-variant-#{$dropdown-color-variant-key}-#{$dropdown-color-variant-field-key}: #{$dropdown-color-variant-field-value};
         }
     }
 }

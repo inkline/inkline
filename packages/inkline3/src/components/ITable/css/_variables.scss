@@ -1,130 +1,387 @@
-//
-// Variables
-//
+////
+/// Variables
+////
 
+/// The bottom margin of the table component
+/// @name margin-bottom
 $table-margin-bottom: spacer() !default;
 
+/// The cell padding of the table component
+/// @name cell-padding
 $table-cell-padding: 0.75rem !default;
+
+/// The cell padding of the table component when condensed
+/// @name cell-padding-sm
 $table-cell-padding-sm: 0.3rem !default;
 
+/// The border width of the table component
+/// @name border-width
 $table-border-width: var(--border-width) !default;
-$table-border-color: var(--border-color) !default;
 
-//
-// Colors
-//
+////
+/// Colors
+////
 
-$table-color-variant-light-background: var(--color-white) !default;
-$table-color-variant-light-background-hover: var(--color-gray-20) !default;
-$table-color-variant-light-background-striped: var(--color-gray-10) !default;
-$table-color-variant-light-border-color: var(--color-gray-10) !default;
-$table-color-variant-light-color: contrast-color($color-light) !default;
-$table-color-variant-light: (
-    'background': $table-color-variant-light-background,
-    'background-hover': $table-color-variant-light-background,
-    'background-striped': $table-color-variant-light-background,
-    'border-color': $table-color-variant-light-border-color,
-    'color': $table-color-variant-light-color,
-) !default;
+////
+/// Primary color
+////
 
-$table-color-variant-dark-background: var(--color-dark) !default;
-$table-color-variant-dark-background-hover: var(--color-gray-80) !default;
-$table-color-variant-dark-background-striped: var(--color-gray-70) !default;
-$table-color-variant-dark-border-color: var(--color-gray-70) !default;
-$table-color-variant-dark-color: contrast-color($color-dark) !default;
-$table-color-variant-dark: (
-    'background': $table-color-variant-dark-background,
-    'background-hover': $table-color-variant-dark-background,
-    'background-striped': $table-color-variant-dark-background,
-    'border-color': $table-color-variant-dark-border-color,
-    'color': $table-color-variant-dark-color,
-) !default;
-
-$table-color-variant-primary-background: var(--color-primary) !default;
-$table-color-variant-primary-background-hover: var(--color-primary-70) !default;
-$table-color-variant-primary-background-striped: var(--color-primary-60) !default;
-$table-color-variant-primary-border-color: var(--color-primary-60) !default;
+/// The color of the table component
+/// @name color
+/// @group primary
+/// @type color
 $table-color-variant-primary-color: contrast-color($color-primary) !default;
+
+/// The background of the table component
+/// @name background
+/// @group primary
+/// @type color
+$table-color-variant-primary-background: color('primary') !default;
+
+/// The background of the table component when hovered
+/// @name background-hover
+/// @group primary
+/// @type color
+$table-color-variant-primary-background-hover: color('primary-70') !default;
+
+/// The background of the table component when striped
+/// @name background-striped
+/// @group primary
+/// @type color
+$table-color-variant-primary-background-striped: color('primary-60') !default;
+
+/// The border color of the table component
+/// @name border-color
+/// @group primary
+/// @type color
+$table-color-variant-primary-border-color: color('primary-60') !default;
+
+/// Map for primary color
+/// @group primary
 $table-color-variant-primary: (
-    'background': $table-color-variant-primary-background,
-    'background-hover': $table-color-variant-primary-background,
-    'background-striped': $table-color-variant-primary-background,
-    'border-color': $table-color-variant-primary-border-color,
     'color': $table-color-variant-primary-color,
+    'background': $table-color-variant-primary-background,
+    'background-hover': $table-color-variant-primary-background-hover,
+    'background-striped': $table-color-variant-primary-background-striped,
+    'border-color': $table-color-variant-primary-border-color
 ) !default;
 
-$table-color-variant-secondary-background: var(--color-secondary) !default;
-$table-color-variant-secondary-background-hover: var(--color-secondary-70) !default;
-$table-color-variant-secondary-background-striped: var(--color-secondary-60) !default;
-$table-color-variant-secondary-border-color: var(--color-secondary-60) !default;
+////
+/// Secondary color
+////
+
+/// The color of the table component
+/// @name color
+/// @group secondary
+/// @type color
 $table-color-variant-secondary-color: contrast-color($color-secondary) !default;
+
+/// The background of the table component
+/// @name background
+/// @group secondary
+/// @type color
+$table-color-variant-secondary-background: color('secondary') !default;
+
+/// The background of the table component when hovered
+/// @name background-hover
+/// @group secondary
+/// @type color
+$table-color-variant-secondary-background-hover: color('secondary-70') !default;
+
+/// The background of the table component when striped
+/// @name background-striped
+/// @group secondary
+/// @type color
+$table-color-variant-secondary-background-striped: color('secondary-60') !default;
+
+/// The border color of the table component
+/// @name border-color
+/// @group secondary
+/// @type color
+$table-color-variant-secondary-border-color: color('secondary-60') !default;
+
+/// Map for secondary color
+/// @group secondary
 $table-color-variant-secondary: (
-    'background': $table-color-variant-secondary-background,
-    'background-hover': $table-color-variant-secondary-background,
-    'background-striped': $table-color-variant-secondary-background,
-    'border-color': $table-color-variant-secondary-border-color,
     'color': $table-color-variant-secondary-color,
+    'background': $table-color-variant-secondary-background,
+    'background-hover': $table-color-variant-secondary-background-hover,
+    'background-striped': $table-color-variant-secondary-background-striped,
+    'border-color': $table-color-variant-secondary-border-color
 ) !default;
 
-$table-color-variant-info-background: var(--color-info) !default;
-$table-color-variant-info-background-hover: var(--color-info-70) !default;
-$table-color-variant-info-background-striped: var(--color-info-60) !default;
-$table-color-variant-info-border-color: var(--color-info-60) !default;
+////
+/// Light color
+////
+
+/// The color of the table component
+/// @name color
+/// @group light
+/// @type color
+$table-color-variant-light-color: contrast-color($color-light) !default;
+
+/// The background of the table component
+/// @name background
+/// @group light
+/// @type color
+$table-color-variant-light-background: color('white') !default;
+
+/// The background of the table component when hovered
+/// @name background-hover
+/// @group light
+/// @type color
+$table-color-variant-light-background-hover: color('gray-20') !default;
+
+/// The background of the table component when striped
+/// @name background-striped
+/// @group light
+/// @type color
+$table-color-variant-light-background-striped: color('gray-10') !default;
+
+/// The border color of the table component
+/// @name border-color
+/// @group light
+/// @type color
+$table-color-variant-light-border-color: color('gray-10') !default;
+
+/// Map for light color
+/// @group light
+$table-color-variant-light: (
+    'color': $table-color-variant-light-color,
+    'background': $table-color-variant-light-background,
+    'background-hover': $table-color-variant-light-background-hover,
+    'background-striped': $table-color-variant-light-background-striped,
+    'border-color': $table-color-variant-light-border-color
+) !default;
+
+////
+/// Dark color
+////
+
+/// The color of the table component
+/// @name color
+/// @group dark
+/// @type color
+$table-color-variant-dark-color: contrast-color($color-dark) !default;
+
+/// The background of the table component
+/// @name background
+/// @group dark
+/// @type color
+$table-color-variant-dark-background: color('dark') !default;
+
+/// The background of the table component when hovered
+/// @name background-hover
+/// @group dark
+/// @type color
+$table-color-variant-dark-background-hover: color('gray-80') !default;
+
+/// The background of the table component when striped
+/// @name background-striped
+/// @group dark
+/// @type color
+$table-color-variant-dark-background-striped: color('gray-70') !default;
+
+/// The border color of the table component
+/// @name border-color
+/// @group dark
+/// @type color
+$table-color-variant-dark-border-color: color('gray-70') !default;
+
+/// Map for dark color
+/// @group dark
+$table-color-variant-dark: (
+    'color': $table-color-variant-dark-color,
+    'background': $table-color-variant-dark-background,
+    'background-hover': $table-color-variant-dark-background-hover,
+    'background-striped': $table-color-variant-dark-background-striped,
+    'border-color': $table-color-variant-dark-border-color
+) !default;
+
+////
+/// Info color
+////
+
+/// The color of the table component
+/// @name color
+/// @group info
+/// @type color
 $table-color-variant-info-color: contrast-color($color-info) !default;
+
+/// The background of the table component
+/// @name background
+/// @group info
+/// @type color
+$table-color-variant-info-background: color('info') !default;
+
+/// The background of the table component when hovered
+/// @name background-hover
+/// @group info
+/// @type color
+$table-color-variant-info-background-hover: color('info-70') !default;
+
+/// The background of the table component when striped
+/// @name background-striped
+/// @group info
+/// @type color
+$table-color-variant-info-background-striped: color('info-60') !default;
+
+/// The border color of the table component
+/// @name border-color
+/// @group info
+/// @type color
+$table-color-variant-info-border-color: color('info-60') !default;
+
+/// Map for info color
+/// @group info
 $table-color-variant-info: (
-    'background': $table-color-variant-info-background,
-    'background-hover': $table-color-variant-info-background,
-    'background-striped': $table-color-variant-info-background,
-    'border-color': $table-color-variant-info-border-color,
     'color': $table-color-variant-info-color,
+    'background': $table-color-variant-info-background,
+    'background-hover': $table-color-variant-info-background-hover,
+    'background-striped': $table-color-variant-info-background-striped,
+    'border-color': $table-color-variant-info-border-color
 ) !default;
 
-$table-color-variant-warning-background: var(--color-warning) !default;
-$table-color-variant-warning-background-hover: var(--color-warning-70) !default;
-$table-color-variant-warning-background-striped: var(--color-warning-60) !default;
-$table-color-variant-warning-border-color: var(--color-warning-60) !default;
-$table-color-variant-warning-color: contrast-color($color-warning) !default;
-$table-color-variant-warning: (
-    'background': $table-color-variant-warning-background,
-    'background-hover': $table-color-variant-warning-background,
-    'background-striped': $table-color-variant-warning-background,
-    'border-color': $table-color-variant-warning-border-color,
-    'color': $table-color-variant-warning-color,
-) !default;
+////
+/// Success color
+////
 
-$table-color-variant-danger-background: var(--color-danger) !default;
-$table-color-variant-danger-background-hover: var(--color-danger-70) !default;
-$table-color-variant-danger-background-striped: var(--color-danger-60) !default;
-$table-color-variant-danger-border-color: var(--color-danger-60) !default;
-$table-color-variant-danger-color: contrast-color($color-danger) !default;
-$table-color-variant-danger: (
-    'background': $table-color-variant-danger-background,
-    'background-hover': $table-color-variant-danger-background,
-    'background-striped': $table-color-variant-danger-background,
-    'border-color': $table-color-variant-danger-border-color,
-    'color': $table-color-variant-danger-color,
-) !default;
-
-$table-color-variant-success-background: var(--color-success) !default;
-$table-color-variant-success-background-hover: var(--color-success-70) !default;
-$table-color-variant-success-background-striped: var(--color-success-60) !default;
-$table-color-variant-success-border-color: var(--color-success-60) !default;
+/// The color of the table component
+/// @name color
+/// @group success
+/// @type color
 $table-color-variant-success-color: contrast-color($color-success) !default;
+
+/// The background of the table component
+/// @name background
+/// @group success
+/// @type color
+$table-color-variant-success-background: color('success') !default;
+
+/// The background of the table component when hovered
+/// @name background-hover
+/// @group success
+/// @type color
+$table-color-variant-success-background-hover: color('success-70') !default;
+
+/// The background of the table component when striped
+/// @name background-striped
+/// @group success
+/// @type color
+$table-color-variant-success-background-striped: color('success-60') !default;
+
+/// The border color of the table component
+/// @name border-color
+/// @group success
+/// @type color
+$table-color-variant-success-border-color: color('success-60') !default;
+
+/// Map for success color
+/// @group success
 $table-color-variant-success: (
-    'background': $table-color-variant-success-background,
-    'background-hover': $table-color-variant-success-background,
-    'background-striped': $table-color-variant-success-background,
-    'border-color': $table-color-variant-success-border-color,
     'color': $table-color-variant-success-color,
+    'background': $table-color-variant-success-background,
+    'background-hover': $table-color-variant-success-background-hover,
+    'background-striped': $table-color-variant-success-background-striped,
+    'border-color': $table-color-variant-success-border-color
 ) !default;
 
+////
+/// Warning color
+////
+
+/// The color of the table component
+/// @name color
+/// @group warning
+/// @type color
+$table-color-variant-warning-color: contrast-color($color-warning) !default;
+
+/// The background of the table component
+/// @name background
+/// @group warning
+/// @type color
+$table-color-variant-warning-background: color('warning') !default;
+
+/// The background of the table component when hovered
+/// @name background-hover
+/// @group warning
+/// @type color
+$table-color-variant-warning-background-hover: color('warning-70') !default;
+
+/// The background of the table component when striped
+/// @name background-striped
+/// @group warning
+/// @type color
+$table-color-variant-warning-background-striped: color('warning-60') !default;
+
+/// The border color of the table component
+/// @name border-color
+/// @group warning
+/// @type color
+$table-color-variant-warning-border-color: color('warning-60') !default;
+
+/// Map for warning color
+/// @group warning
+$table-color-variant-warning: (
+    'color': $table-color-variant-warning-color,
+    'background': $table-color-variant-warning-background,
+    'background-hover': $table-color-variant-warning-background-hover,
+    'background-striped': $table-color-variant-warning-background-striped,
+    'border-color': $table-color-variant-warning-border-color
+) !default;
+
+////
+/// Danger color
+////
+
+/// The color of the table component
+/// @name color
+/// @group danger
+/// @type color
+$table-color-variant-danger-color: contrast-color($color-danger) !default;
+
+/// The background of the table component
+/// @name background
+/// @group danger
+/// @type color
+$table-color-variant-danger-background: color('danger') !default;
+
+/// The background of the table component when hovered
+/// @name background-hover
+/// @group danger
+/// @type color
+$table-color-variant-danger-background-hover: color('danger-70') !default;
+
+/// The background of the table component when striped
+/// @name background-striped
+/// @group danger
+/// @type color
+$table-color-variant-danger-background-striped: color('danger-60') !default;
+
+/// The border color of the table component
+/// @name border-color
+/// @group danger
+/// @type color
+$table-color-variant-danger-border-color: color('danger-60') !default;
+
+/// Map for danger color
+/// @group danger
+$table-color-variant-danger: (
+    'color': $table-color-variant-danger-color,
+    'background': $table-color-variant-danger-background,
+    'background-hover': $table-color-variant-danger-background-hover,
+    'background-striped': $table-color-variant-danger-background-striped,
+    'border-color': $table-color-variant-danger-border-color
+) !default;
+
+/// Colors group map
 $table-color-variants: (
-    'light': $table-color-variant-light,
-    'dark': $table-color-variant-dark,
     'primary': $table-color-variant-primary,
     'secondary': $table-color-variant-secondary,
+    'light': $table-color-variant-light,
+    'dark': $table-color-variant-dark,
     'info': $table-color-variant-info,
-    'warning': $table-color-variant-warning,
-    'danger': $table-color-variant-danger,
     'success': $table-color-variant-success,
+    'warning': $table-color-variant-warning,
+    'danger': $table-color-variant-danger
 ) !default;
