@@ -28,13 +28,13 @@ $breadcrumb-padding: spacer() !default;
 /// Small size
 ////
 
-/// The font size of the breadcrumb component, for the small size variant
+/// The font size of the breadcrumb component
 /// @name font-size
 /// @group sm
 /// @type size
 $breadcrumb-size-variant-sm-font-size: calc(var(--breadcrumb-font-size) * #{size-multiplier('sm')}) !default;
 
-/// The padding of the breadcrumb component, for the small size variant
+/// The padding of the breadcrumb component
 /// @name padding
 /// @group sm
 /// @type size
@@ -51,13 +51,13 @@ $breadcrumb-size-variant-sm: (
 /// Medium size
 ////
 
-/// The font size of the breadcrumb component, for the medium size variant
+/// The font size of the breadcrumb component
 /// @name font-size
 /// @group md
 /// @type size
 $breadcrumb-size-variant-md-font-size: calc(var(--breadcrumb-font-size) * #{size-multiplier('md')}) !default;
 
-/// The padding of the breadcrumb component, for the medium size variant
+/// The padding of the breadcrumb component
 /// @name padding
 /// @group md
 /// @type size
@@ -74,13 +74,13 @@ $breadcrumb-size-variant-md: (
 /// Large size
 ////
 
-/// The font size of the breadcrumb component, for the large size variant
+/// The font size of the breadcrumb component
 /// @name font-size
 /// @group lg
 /// @type size
 $breadcrumb-size-variant-lg-font-size: calc(var(--breadcrumb-font-size) * #{size-multiplier('lg')}) !default;
 
-/// The padding of the breadcrumb component, for the large size variant
+/// The padding of the breadcrumb component
 /// @name padding
 /// @group lg
 /// @type size
@@ -108,19 +108,19 @@ $breadcrumb-size-variants: (
 /// Light color
 ////
 
-/// The text color of the breadcrumb component, for the light color variant
+/// The text color of the breadcrumb component
 /// @name color
 /// @group light
 /// @type color
 $breadcrumb-color-variant-light-color: color('primary') !default;
 
-/// The text default color of the breadcrumb component, for the light color variant
+/// The text default color of the breadcrumb component
 /// @name color-default
 /// @group light
 /// @type color
 $breadcrumb-color-variant-light-color-default: color('gray-90') !default;
 
-/// The text active color of the breadcrumb component, for the light color variant
+/// The text active color of the breadcrumb component
 /// @name color-active
 /// @group light
 /// @type color
@@ -138,19 +138,19 @@ $breadcrumb-color-variant-light: (
 /// Dark color
 ////
 
-/// The text color of the breadcrumb component, for the dark color variant
+/// The text color of the breadcrumb component
 /// @name color
 /// @group dark
 /// @type color
 $breadcrumb-color-variant-dark-color: color('primary') !default;
 
-/// The text default color of the breadcrumb component, for the dark color variant
+/// The text default color of the breadcrumb component
 /// @name color-default
 /// @group dark
 /// @type color
 $breadcrumb-color-variant-dark-color-default: color('white') !default;
 
-/// The text active color of the breadcrumb component, for the dark color variant
+/// The text active color of the breadcrumb component
 /// @name color-active
 /// @group dark
 /// @type color

@@ -1,4 +1,5 @@
 {
+    "name": "header",
     "slots": [
         {
             "name": "default",
@@ -50,6 +51,34 @@
                 "lg"
             ],
             "default": "md"
+        }
+    ],
+    "styles": [
+        {
+            "name": "padding",
+            "description": "The padding of the header component",
+            "type": "size",
+            "default": "10rem"
+        },
+        {
+            "name": "color",
+            "description": "The color of the header component",
+            "type": "color",
+            "values": {
+                "primary": "contrast-color($color-primary)",
+                "light": "contrast-color($color-light)",
+                "dark": "contrast-color($color-dark)"
+            }
+        },
+        {
+            "name": "background",
+            "description": "The background of the header component",
+            "type": "color",
+            "values": {
+                "primary": "color('primary')",
+                "light": "color('light')",
+                "dark": "color('dark')"
+            }
         }
     ]
 }

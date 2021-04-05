@@ -1,76 +1,197 @@
-//
-// Colors
-//
+////
+/// Colors
+////
 
-$progress-bar-color-variant-light-color: contrast-color($color-light) !default;
-$progress-bar-color-variant-light-background: color('light') !default;
+////
+/// Primary color
+////
 
-$progress-bar-color-variant-light: (
-    'color': $progress-bar-color-variant-light-color,
-    'background': $progress-bar-color-variant-light-background
-) !default;
-
-$progress-bar-color-variant-dark-color: contrast-color($color-dark) !default;
-$progress-bar-color-variant-dark-background: color('dark') !default;
-
-$progress-bar-color-variant-dark: (
-    'color': $progress-bar-color-variant-dark-color,
-    'background': $progress-bar-color-variant-dark-background
-) !default;
-
+/// The color of the progress-bar component
+/// @name color
+/// @group primary
+/// @type color
 $progress-bar-color-variant-primary-color: contrast-color($color-primary) !default;
+
+/// The background of the progress-bar component
+/// @name background
+/// @group primary
+/// @type color
 $progress-bar-color-variant-primary-background: color('primary') !default;
 
+/// Map for primary color
+/// @group primary
 $progress-bar-color-variant-primary: (
     'color': $progress-bar-color-variant-primary-color,
     'background': $progress-bar-color-variant-primary-background
 ) !default;
 
+////
+/// Secondary color
+////
+
+/// The color of the progress-bar component
+/// @name color
+/// @group secondary
+/// @type color
 $progress-bar-color-variant-secondary-color: contrast-color($color-secondary) !default;
+
+/// The background of the progress-bar component
+/// @name background
+/// @group secondary
+/// @type color
 $progress-bar-color-variant-secondary-background: color('secondary') !default;
 
+/// Map for secondary color
+/// @group secondary
 $progress-bar-color-variant-secondary: (
     'color': $progress-bar-color-variant-secondary-color,
     'background': $progress-bar-color-variant-secondary-background
 ) !default;
 
+////
+/// Light color
+////
+
+/// The color of the progress-bar component
+/// @name color
+/// @group light
+/// @type color
+$progress-bar-color-variant-light-color: contrast-color($color-light) !default;
+
+/// The background of the progress-bar component
+/// @name background
+/// @group light
+/// @type color
+$progress-bar-color-variant-light-background: color('white') !default;
+
+/// Map for light color
+/// @group light
+$progress-bar-color-variant-light: (
+    'color': $progress-bar-color-variant-light-color,
+    'background': $progress-bar-color-variant-light-background
+) !default;
+
+////
+/// Dark color
+////
+
+/// The color of the progress-bar component
+/// @name color
+/// @group dark
+/// @type color
+$progress-bar-color-variant-dark-color: contrast-color($color-dark) !default;
+
+/// The background of the progress-bar component
+/// @name background
+/// @group dark
+/// @type color
+$progress-bar-color-variant-dark-background: color('dark') !default;
+
+/// Map for dark color
+/// @group dark
+$progress-bar-color-variant-dark: (
+    'color': $progress-bar-color-variant-dark-color,
+    'background': $progress-bar-color-variant-dark-background
+) !default;
+
+////
+/// Info color
+////
+
+/// The color of the progress-bar component
+/// @name color
+/// @group info
+/// @type color
 $progress-bar-color-variant-info-color: contrast-color($color-info) !default;
+
+/// The background of the progress-bar component
+/// @name background
+/// @group info
+/// @type color
 $progress-bar-color-variant-info-background: color('info') !default;
 
+/// Map for info color
+/// @group info
 $progress-bar-color-variant-info: (
     'color': $progress-bar-color-variant-info-color,
     'background': $progress-bar-color-variant-info-background
 ) !default;
 
+////
+/// Success color
+////
+
+/// The color of the progress-bar component
+/// @name color
+/// @group success
+/// @type color
 $progress-bar-color-variant-success-color: contrast-color($color-success) !default;
+
+/// The background of the progress-bar component
+/// @name background
+/// @group success
+/// @type color
 $progress-bar-color-variant-success-background: color('success') !default;
 
+/// Map for success color
+/// @group success
 $progress-bar-color-variant-success: (
     'color': $progress-bar-color-variant-success-color,
     'background': $progress-bar-color-variant-success-background
 ) !default;
 
+////
+/// Warning color
+////
+
+/// The color of the progress-bar component
+/// @name color
+/// @group warning
+/// @type color
 $progress-bar-color-variant-warning-color: contrast-color($color-warning) !default;
+
+/// The background of the progress-bar component
+/// @name background
+/// @group warning
+/// @type color
 $progress-bar-color-variant-warning-background: color('warning') !default;
 
+/// Map for warning color
+/// @group warning
 $progress-bar-color-variant-warning: (
     'color': $progress-bar-color-variant-warning-color,
     'background': $progress-bar-color-variant-warning-background
 ) !default;
 
+////
+/// Danger color
+////
+
+/// The color of the progress-bar component
+/// @name color
+/// @group danger
+/// @type color
 $progress-bar-color-variant-danger-color: contrast-color($color-danger) !default;
+
+/// The background of the progress-bar component
+/// @name background
+/// @group danger
+/// @type color
 $progress-bar-color-variant-danger-background: color('danger') !default;
 
+/// Map for danger color
+/// @group danger
 $progress-bar-color-variant-danger: (
     'color': $progress-bar-color-variant-danger-color,
     'background': $progress-bar-color-variant-danger-background
 ) !default;
 
+/// Colors group map
 $progress-bar-color-variants: (
-    'light': $progress-bar-color-variant-light,
-    'dark': $progress-bar-color-variant-dark,
     'primary': $progress-bar-color-variant-primary,
     'secondary': $progress-bar-color-variant-secondary,
+    'light': $progress-bar-color-variant-light,
+    'dark': $progress-bar-color-variant-dark,
     'info': $progress-bar-color-variant-info,
     'success': $progress-bar-color-variant-success,
     'warning': $progress-bar-color-variant-warning,

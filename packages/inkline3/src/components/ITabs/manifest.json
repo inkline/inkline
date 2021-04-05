@@ -1,4 +1,5 @@
 {
+    "name": "tabs",
     "slots": [
         {
             "name": "default",
@@ -49,6 +50,128 @@
                 "Boolean"
             ],
             "default": "false"
+        }
+    ],
+    "styles": [
+        {
+            "name": "border-width",
+            "description": "The border width of the tabs component",
+            "default": "var(--border-width)"
+        },
+        {
+            "name": "header-border-bottom-width",
+            "description": "The bottom border width of the tabs component header",
+            "default": "2px"
+        },
+        {
+            "name": "header-margin-bottom",
+            "description": "The bottom margin of the tabs component header",
+            "default": "-1px"
+        },
+        {
+            "name": "font-size",
+            "description": "The font size of the tabs component",
+            "type": "size",
+            "default": "font-size()"
+        },
+        {
+            "name": "border-radius",
+            "description": "The border radius of the tabs component",
+            "type": "size",
+            "default": "border-radius()"
+        },
+        {
+            "name": "padding",
+            "description": "The padding of the tabs component",
+            "type": "size",
+            "default": "spacer()"
+        },
+        {
+            "name": "header-padding",
+            "description": "The padding of the tabs component header",
+            "type": "size",
+            "default": "spacer()"
+        },
+        {
+            "name": "color",
+            "description": "The color of the tabs component item",
+            "type": "color",
+            "values": {
+                "light": "contrast-color($color-white)",
+                "dark": "contrast-color($color-dark)"
+            }
+        },
+        {
+            "name": "background",
+            "description": "The background of the tabs component",
+            "type": "color",
+            "values": {
+                "light": "color('white')",
+                "dark": "color('dark')"
+            }
+        },
+        {
+            "name": "border-color",
+            "description": "The border-color of the tabs component",
+            "type": "color",
+            "values": {
+                "light": "color('light')",
+                "dark": "color('dark-60')"
+            }
+        },
+        {
+            "name": "header-background",
+            "description": "The background of the tabs component header",
+            "type": "color",
+            "values": {
+                "light": "color('white')",
+                "dark": "color('dark')"
+            }
+        },
+        {
+            "name": "header-background-active",
+            "description": "The background of the tabs component header when active",
+            "type": "color",
+            "values": {
+                "light": "color('white')",
+                "dark": "color('dark')"
+            }
+        },
+        {
+            "name": "header-background-hover",
+            "description": "The background of the tabs component header when hovered or focused",
+            "type": "color",
+            "values": {
+                "light": "color('gray-05')",
+                "dark": "color('dark-45')"
+            }
+        },
+        {
+            "name": "header-border-color",
+            "description": "The border color of the tabs component header",
+            "type": "color",
+            "values": {
+                "light": "transparent",
+                "dark": "transparent"
+            }
+        },
+        {
+            "name": "header-border-color-active",
+            "description": "The border color of the tabs component header when active",
+            "type": "color",
+            "values": {
+                "light": "color('primary')",
+                "dark": "color('primary')"
+            }
+        },
+        {
+            "name": "header-color-active",
+            "description": "The color of the tabs component header when active",
+            "type": "color",
+            "values": {
+                "light": "contrast-color($color-white)",
+                "dark": "contrast-color($color-dark)"
+            }
         }
     ]
 }

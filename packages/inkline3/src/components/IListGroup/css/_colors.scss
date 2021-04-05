@@ -1,11 +1,11 @@
 @mixin list-group-color-variant($color-variant-key) {
     $_color: var(--list-group-color-variant-#{$color-variant-key}-color);
+    $_color-disabled: var(--list-group-color-variant-#{$color-variant-key}-color-disabled);
+    $_color-active: var(--list-group-color-variant-#{$color-variant-key}-color-active);
     $_background: var(--list-group-color-variant-#{$color-variant-key}-background);
+    $_background-active: var(--list-group-color-variant-#{$color-variant-key}-background-active);
     $_border-color: var(--list-group-color-variant-#{$color-variant-key}-border-color);
-    $_disabled-color: var(--list-group-color-variant-#{$color-variant-key}-disabled-color);
-    $_active-color: var(--list-group-color-variant-#{$color-variant-key}-active-color);
-    $_active-background: var(--list-group-color-variant-#{$color-variant-key}-active-background);
-    $_active-border-color: var(--list-group-color-variant-#{$color-variant-key}-active-border-color);
+    $_border-color-active: var(--list-group-color-variant-#{$color-variant-key}-border-color-active);
 
     background-color: $_background;
     color: $_color;
@@ -18,13 +18,13 @@
         border-bottom-color: $_border-color;
 
         &.-disabled {
-            color: $_disabled-color;
+            color: $_color-disabled;
         }
 
         &.-active {
-            color: $_active-color;
-            background: $_active-background;
-            border-bottom-color: $_active-border-color;
+            color: $_color-active;
+            background: $_background-active;
+            border-bottom-color: $_border-color-active;
         }
     }
 }

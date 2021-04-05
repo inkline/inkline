@@ -1,7 +1,7 @@
 @mixin hamburger-menu-color-variant($color-variant-key) {
     $_background: var(--hamburger-menu-color-variant-#{$color-variant-key}-background);
 
-    > .bars {
+    > .hamburger-menu-bars {
         &,
         &::before,
         &::after {

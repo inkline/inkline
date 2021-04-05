@@ -1,4 +1,5 @@
 {
+    "name": "nav",
     "slots": [
         {
             "name": "default",
@@ -33,6 +34,48 @@
                 "Boolean"
             ],
             "default": "false"
+        }
+    ],
+    "styles": [
+        {
+            "name": "font-size",
+            "description": "The font size of the modal component",
+            "type": "size",
+            "default": "font-size()"
+        },
+        {
+            "name": "padding",
+            "description": "The padding of the modal component",
+            "type": "size",
+            "default": "spacer()"
+        },
+
+        {
+            "name": "color",
+            "description": "The color of the list group component item",
+            "type": "color",
+            "values": {
+                "light": "contrast-color($color-light)",
+                "dark": "contrast-color($color-dark)"
+            }
+        },
+        {
+            "name": "color-active",
+            "description": "The color of the list group component item when active",
+            "type": "color",
+            "values": {
+                "light": "color('primary')",
+                "dark": "color('primary')"
+            }
+        },
+        {
+            "name": "color-disabled",
+            "description": "The color of the list group component item when disabled",
+            "type": "color",
+            "values": {
+                "light": "var(--text-muted)",
+                "dark": "var(--text-muted)"
+            }
         }
     ]
 }

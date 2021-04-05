@@ -1,4 +1,5 @@
 {
+    "name": "modal",
     "events": [
         {
             "name": "update:modelValue",
@@ -115,6 +116,191 @@
                 "zoom-in-right-transition"
             ],
             "default": "zoom-in-center-transition"
+        }
+    ],
+    "styles": [
+        {
+            "name": "font-weight",
+            "description": "The font weight of the modal component",
+            "default": "font-weight('normal')"
+        },
+        {
+            "name": "line-height",
+            "description": "The line height of the modal component",
+            "default": "var(--line-height)"
+        },
+        {
+            "name": "border-width",
+            "description": "The border width of the modal component",
+            "default": "var(--border-width)"
+        },
+        {
+            "name": "margin",
+            "description": "The margin of the modal component",
+            "default": "spacer()"
+        },
+        {
+            "name": "width",
+            "description": "The width of the modal component",
+            "default": "480px"
+        },
+        {
+            "name": "overlay-background",
+            "description": "The background of the modal component overlay",
+            "default": "rgba(0, 0, 0, 0.75)"
+        },
+        {
+            "name": "border-radius",
+            "description": "The border radius of the modal component",
+            "type": "size",
+            "default": "border-radius()"
+        },
+        {
+            "name": "font-size",
+            "description": "The font size of the modal component",
+            "type": "size",
+            "default": "font-size()"
+        },
+        {
+            "name": "padding",
+            "description": "The padding of the modal component",
+            "type": "size",
+            "default": "spacer()"
+        },
+        {
+            "name": "color",
+            "description": "The color of the modal component",
+            "type": "color",
+            "values": {
+                "primary": "contrast-color($color-primary)",
+                "secondary": "contrast-color($color-secondary)",
+                "light": "contrast-color($color-light)",
+                "dark": "contrast-color($color-dark)",
+                "info": "contrast-color($color-info)",
+                "success": "contrast-color($color-success)",
+                "warning": "contrast-color($color-warning)",
+                "danger": "contrast-color($color-danger)"
+            }
+        },
+        {
+            "name": "background",
+            "description": "The background of the modal component",
+            "type": "color",
+            "values": {
+                "primary": "color('primary')",
+                "secondary": "color('secondary')",
+                "light": "color('white')",
+                "dark": "color('dark')",
+                "info": "color('info')",
+                "success": "color('success')",
+                "warning": "color('warning')",
+                "danger": "color('danger')"
+            }
+        },
+        {
+            "name": "border-color",
+            "description": "The border color of the modal component",
+            "type": "color",
+            "values": {
+                "primary": "color('primary-60')",
+                "secondary": "color('secondary-60')",
+                "light": "color('light')",
+                "dark": "color('dark-60')",
+                "info": "color('info-60')",
+                "success": "color('success-60')",
+                "warning": "color('warning-60')",
+                "danger": "color('danger-60')"
+            }
+        },
+        {
+            "name": "header-color",
+            "description": "The color of the modal component header",
+            "type": "color",
+            "values": {
+                "primary": "contrast-color($color-primary)",
+                "secondary": "contrast-color($color-secondary)",
+                "light": "contrast-color($color-light)",
+                "dark": "contrast-color($color-dark)",
+                "info": "contrast-color($color-info)",
+                "success": "contrast-color($color-success)",
+                "warning": "contrast-color($color-warning)",
+                "danger": "contrast-color($color-danger)"
+            }
+        },
+        {
+            "name": "header-background",
+            "description": "The background of the modal component header",
+            "type": "color",
+            "values": {
+                "primary": "color('primary-55')",
+                "secondary": "color('secondary-55')",
+                "light": "color('light-25')",
+                "dark": "color('dark-55')",
+                "info": "color('info-55')",
+                "success": "color('success-55')",
+                "warning": "color('warning-55')",
+                "danger": "color('danger-55')"
+            }
+        },
+        {
+            "name": "header-border-color",
+            "description": "The border color of the modal component header",
+            "type": "color",
+            "values": {
+                "primary": "color('primary-60')",
+                "secondary": "color('secondary-60')",
+                "light": "color('light')",
+                "dark": "color('dark-60')",
+                "info": "color('info-60')",
+                "success": "color('success-60')",
+                "warning": "color('warning-60')",
+                "danger": "color('danger-60')"
+            }
+        },
+        {
+            "name": "footer-color",
+            "description": "The color of the modal component footer",
+            "type": "color",
+            "values": {
+                "primary": "contrast-color($color-primary)",
+                "secondary": "contrast-color($color-secondary)",
+                "light": "contrast-color($color-light)",
+                "dark": "contrast-color($color-dark)",
+                "info": "contrast-color($color-info)",
+                "success": "contrast-color($color-success)",
+                "warning": "contrast-color($color-warning)",
+                "danger": "contrast-color($color-danger)"
+            }
+        },
+        {
+            "name": "footer-background",
+            "description": "The background of the modal component footer",
+            "type": "color",
+            "values": {
+                "primary": "color('primary-55')",
+                "secondary": "color('secondary-55')",
+                "light": "color('light-25')",
+                "dark": "color('dark-55')",
+                "info": "color('info-55')",
+                "success": "color('success-55')",
+                "warning": "color('warning-55')",
+                "danger": "color('danger-55')"
+            }
+        },
+        {
+            "name": "footer-border-color",
+            "description": "The border color of the modal component footer",
+            "type": "color",
+            "values": {
+                "primary": "color('primary-60')",
+                "secondary": "color('secondary-60')",
+                "light": "color('light')",
+                "dark": "color('dark-60')",
+                "info": "color('info-60')",
+                "success": "color('success-60')",
+                "warning": "color('warning-60')",
+                "danger": "color('danger-60')"
+            }
         }
     ]
 }

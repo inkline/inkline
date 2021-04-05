@@ -1,1 +1,7 @@
-$form-group-error-margin: ($spacer / 4) 0 0 !default;
+////
+/// Variables
+////
+
+/// The margin of the form error component
+/// @name margin
+$form-error-margin: spacer('1/4') 0 0 !default;

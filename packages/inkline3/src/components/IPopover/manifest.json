@@ -1,4 +1,5 @@
 {
+    "name": "popover",
     "slots": [
         {
             "name": "default",
@@ -117,6 +118,111 @@
                 "lg"
             ],
             "default": "md"
+        }
+    ],
+    "styles": [
+        {
+            "name": "font-weight",
+            "description": "The font weight of the popover component",
+            "default": "font-weight('normal')"
+        },
+        {
+            "name": "line-height",
+            "description": "The line height of the popover component",
+            "default": "var(--line-height)"
+        },
+        {
+            "name": "border-width",
+            "description": "The border width of the popover component",
+            "default": "var(--border-width)"
+        },
+        {
+            "name": "margin",
+            "description": "The margin of the popover component",
+            "default": "spacer('1/2')"
+        },
+        {
+            "name": "z-index",
+            "description": "The z-index of the popover component",
+            "default": "2000"
+        },
+        {
+            "name": "width",
+            "description": "The width of the popover component",
+            "default": "280px"
+        },
+        {
+            "name": "max-width",
+            "description": "The maximum width of the popover component",
+            "default": "90vw"
+        },
+        {
+            "name": "border-radius",
+            "description": "The border radius of the popover component",
+            "type": "size",
+            "default": "border-radius()"
+        },
+        {
+            "name": "font-size",
+            "description": "The font size of the popover component",
+            "type": "size",
+            "default": "font-size()"
+        },
+        {
+            "name": "padding",
+            "description": "The padding of the popover component items",
+            "type": "size",
+            "default": "spacer()",
+            "values": {
+                "sm": "calc(var(--popover-padding) * #{size-multiplier('sm')} / 2) calc(var(--popover-padding) * #{size-multiplier('sm')})",
+                "md": "calc(var(--popover-padding) * #{size-multiplier('md')} / 2) calc(var(--popover-padding) * #{size-multiplier('md')})",
+                "lg": "calc(var(--popover-padding) * #{size-multiplier('lg')} / 2) calc(var(--popover-padding) * #{size-multiplier('lg')})"
+            }
+        },
+        {
+            "name": "color",
+            "description": "The color of the popover component item",
+            "type": "color",
+            "values": {
+                "light": "contrast-color($color-white)",
+                "dark": "contrast-color($color-dark)"
+            }
+        },
+        {
+            "name": "background",
+            "description": "The background of the popover component",
+            "type": "color",
+            "values": {
+                "light": "color('white')",
+                "dark": "color('dark')"
+            }
+        },
+        {
+            "name": "border-color",
+            "description": "The border-color of the popover component",
+            "type": "color",
+            "values": {
+                "light": "color('light')",
+                "dark": "color('dark-60')"
+            }
+        },
+        {
+            "name": "header-background",
+            "description": "The background of the popover component header",
+            "type": "color",
+            "values": {
+                "light": "color('gray-05')",
+                "dark": "color('dark-55')"
+            }
+        },
+        {
+            "name": "footer-background",
+            "description": "The background of the popover component footer",
+            "type": "color",
+            "values": {
+                "light": "color('gray-05')",
+                "dark": "color('dark-55')"
+            }
         }
     ]
 }

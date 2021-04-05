@@ -1,9 +1,17 @@
 :root {
+    /**
+     * Variables
+     */
+
+    --navbar-brand-margin: #{$navbar-brand-margin};
+    --navbar-border-radius: #{$navbar-border-radius};
+    --navbar-font-size: #{$navbar-font-size};
     --navbar-padding: #{$navbar-padding};
     --navbar-item-padding: #{$navbar-item-padding};
-    --navbar-font-size: #{$navbar-font-size};
-    --navbar-border-radius: #{$navbar-border-radius};
-    --navbar-brand-margin: #{$navbar-brand-margin};
+
+    /**
+     * Sizes
+     */
 
     @each $navbar-size-variant-key, $navbar-size-variant-value in $navbar-size-variants {
         @each $navbar-size-variant-field-key, $navbar-size-variant-field-value in $navbar-size-variant-value {
@@ -11,9 +19,13 @@
         }
     }
 
-    @each $color-variant-key, $color-variant-value in $navbar-color-variants {
-        @each $color-variant-field-key, $color-variant-field-value in $color-variant-value {
-            --navbar-color-variant-#{$color-variant-key}-#{$color-variant-field-key}: #{$color-variant-field-value};
+    /**
+     * Colors
+     */
+
+    @each $navbar-color-variant-key, $navbar-color-variant-value in $navbar-color-variants {
+        @each $navbar-color-variant-field-key, $navbar-color-variant-field-value in $navbar-color-variant-value {
+            --navbar-color-variant-#{$navbar-color-variant-key}-#{$navbar-color-variant-field-key}: #{$navbar-color-variant-field-value};
         }
     }
 }

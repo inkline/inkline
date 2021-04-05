@@ -1,17 +1,17 @@
 @mixin nav-color-variant($color-variant-key) {
     $_color: var(--nav-color-variant-#{$color-variant-key}-color);
-    $_active-color: var(--nav-color-variant-#{$color-variant-key}-active-color);
-    $_disabled-color: var(--nav-color-variant-#{$color-variant-key}-disabled-color);
+    $_color-active: var(--nav-color-variant-#{$color-variant-key}-color-active);
+    $_color-disabled: var(--nav-color-variant-#{$color-variant-key}-color-disabled);
 
     color: $_color;
 
     .nav-item {
         &.-active {
-            color: $_active-color;
+            color: $_color-active;
         }
 
         &.-disabled {
-            color: $_disabled-color;
+            color: $_color-disabled;
         }
     }
 }

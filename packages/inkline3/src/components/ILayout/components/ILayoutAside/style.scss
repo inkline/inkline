@@ -1,4 +1,5 @@
-@import 'css/_variables';
+@import 'css/variables';
+@import 'css/css';
 
 /**
  * Layout Aside
@@ -6,8 +7,8 @@
 .layout-aside {
     transition: all 0.2s;
     position: relative;
-    width: $layout-aside-width;
-    flex: 0 0 $layout-aside-width;
+    width: var(--layout-aside-width);
+    flex: 0 0 var(--layout-aside-width);
 
     /* Fix firefox can't set width smaller than content on flex item */
     min-width: 0;
