@@ -53,7 +53,7 @@
 
         + .button.-block {
             margin-left: 0;
-            margin-top: $button-margin;
+            margin-top: var(--button-block-margin);
         }
     }
 

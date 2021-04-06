@@ -12,6 +12,11 @@
             padding-left: $_prefix-suffix-padding;
             padding-right: $_prefix-suffix-padding;
         }
+
+        > [class$="-wrapper"] {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
 
     > .form-input-prepend,

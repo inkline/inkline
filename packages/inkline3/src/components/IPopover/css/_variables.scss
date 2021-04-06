@@ -69,7 +69,7 @@ $popover-size-variant-sm-font-size: calc(var(--popover-font-size) * #{size-multi
 /// @name padding
 /// @group sm
 /// @type size
-$popover-size-variant-sm-padding: calc(var(--popover-padding) * #{size-multiplier('sm')} / 2) calc(var(--popover-padding) * #{size-multiplier('sm')}) !default;
+$popover-size-variant-sm-padding: calc(var(--popover-padding) * 3 / 4 * #{size-multiplier('sm')}) calc(var(--popover-padding) * #{size-multiplier('sm')}) !default;
 
 /// Map for sm size
 /// @group sm
@@ -99,7 +99,7 @@ $popover-size-variant-md-font-size: calc(var(--popover-font-size) * #{size-multi
 /// @name padding
 /// @group md
 /// @type size
-$popover-size-variant-md-padding: calc(var(--popover-padding) * #{size-multiplier('md')} / 2) calc(var(--popover-padding) * #{size-multiplier('md')}) !default;
+$popover-size-variant-md-padding: calc(var(--popover-padding) * 3 / 4 * #{size-multiplier('md')}) calc(var(--popover-padding) * #{size-multiplier('md')}) !default;
 
 /// Map for md size
 /// @group md
@@ -129,7 +129,7 @@ $popover-size-variant-lg-font-size: calc(var(--popover-font-size) * #{size-multi
 /// @name padding
 /// @group lg
 /// @type size
-$popover-size-variant-lg-padding: calc(var(--popover-padding) * #{size-multiplier('lg')} / 2) calc(var(--popover-padding) * #{size-multiplier('lg')}) !default;
+$popover-size-variant-lg-padding: calc(var(--popover-padding) * 3 / 4 * #{size-multiplier('lg')}) calc(var(--popover-padding) * #{size-multiplier('lg')}) !default;
 
 /// Map for lg size
 /// @group lg

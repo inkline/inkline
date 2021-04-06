@@ -67,7 +67,12 @@ $${meta.id}-${meta.type}-variants: (
 
         if (variable.type === 'size' && meta.group) {
             name = `$${meta.id}-size-variant-${meta.group.name}-${variable.name}`;
-            value = variable.values && variable.values[meta.group.name] || `calc(var(--${meta.id}-${variable.name}) * #{size-multiplier('${meta.group.name}')})`;
+            value = variable.values && variable.values[meta.group.name] ||
+                `calc(var(--${meta.id}-${variable.name}) * #{size-multiplier('${meta.group.name}')})`;
+
+            if (Array.isArray(value)) {
+                value = value.map((v) => v === '0' ? v : `calc(${v} * #{size-multiplier('${meta.group.name}')})`).join(' ');
+            }
         } else if (variable.type === 'color' && meta.group) {
             name = `$${meta.id}-color-variant-${meta.group.name}-${variable.name}`;
             value = variable.values[meta.group.name];

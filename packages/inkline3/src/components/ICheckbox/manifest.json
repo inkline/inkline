@@ -71,5 +71,25 @@
             ],
             "default": "1"
         }
+    ],
+    "xstyles": [
+        {
+            "name": "border-radius",
+            "description": "The border radius of the checkbox component",
+            "type": "size",
+            "default": "border-radius()"
+        },
+        {
+            "name": "indicator-size",
+            "description": "The size of the checkbox component indicator",
+            "type": "size",
+            "default": "1rem"
+        },
+        {
+            "name": "indicator-icon-size",
+            "description": "The size of the checkbox component indicator icon",
+            "type": "size",
+            "default": "8px"
+        }
     ]
 }

@@ -28,7 +28,7 @@ $color-red-85: shade-color($color-red, 70%) !default;
 $color-red-90: shade-color($color-red, 80%) !default;
 $color-red-95: shade-color($color-red, 90%) !default;
 
-$color-orange: #f9a230 !default;
+$color-orange: #f98e5a !default;
 $color-orange-05: tint-color($color-orange, 90%) !default;
 $color-orange-10: tint-color($color-orange, 80%) !default;
 $color-orange-15: tint-color($color-orange, 70%) !default;
@@ -49,7 +49,7 @@ $color-orange-85: shade-color($color-orange, 70%) !default;
 $color-orange-90: shade-color($color-orange, 80%) !default;
 $color-orange-95: shade-color($color-orange, 90%) !default;
 
-$color-yellow: #FFD93F !default;
+$color-yellow: #ffda77 !default;
 $color-yellow-05: tint-color($color-yellow, 90%) !default;
 $color-yellow-10: tint-color($color-yellow, 80%) !default;
 $color-yellow-15: tint-color($color-yellow, 70%) !default;
@@ -70,7 +70,7 @@ $color-yellow-85: shade-color($color-yellow, 70%) !default;
 $color-yellow-90: shade-color($color-yellow, 80%) !default;
 $color-yellow-95: shade-color($color-yellow, 90%) !default;
 
-$color-green: #34b051 !default;
+$color-green: #2fb079 !default;
 $color-green-05: tint-color($color-green, 90%) !default;
 $color-green-10: tint-color($color-green, 80%) !default;
 $color-green-15: tint-color($color-green, 70%) !default;
@@ -91,7 +91,7 @@ $color-green-85: shade-color($color-green, 70%) !default;
 $color-green-90: shade-color($color-green, 80%) !default;
 $color-green-95: shade-color($color-green, 90%) !default;
 
-$color-teal: #48b3b6 !default;
+$color-teal: #48b4a9 !default;
 $color-teal-05: tint-color($color-teal, 90%) !default;
 $color-teal-10: tint-color($color-teal, 80%) !default;
 $color-teal-15: tint-color($color-teal, 70%) !default;
@@ -133,7 +133,7 @@ $color-blue-85: shade-color($color-blue, 70%) !default;
 $color-blue-90: shade-color($color-blue, 80%) !default;
 $color-blue-95: shade-color($color-blue, 90%) !default;
 
-$color-purple: #5d65b9 !default;
+$color-purple: #8268ae !default;
 $color-purple-05: tint-color($color-purple, 90%) !default;
 $color-purple-10: tint-color($color-purple, 80%) !default;
 $color-purple-15: tint-color($color-purple, 70%) !default;
@@ -154,7 +154,7 @@ $color-purple-85: shade-color($color-purple, 70%) !default;
 $color-purple-90: shade-color($color-purple, 80%) !default;
 $color-purple-95: shade-color($color-purple, 90%) !default;
 
-$color-pink: #ff4164 !default;
+$color-pink: #fc778a !default;
 $color-pink-05: tint-color($color-pink, 90%) !default;
 $color-pink-10: tint-color($color-pink, 80%) !default;
 $color-pink-15: tint-color($color-pink, 70%) !default;
@@ -181,7 +181,7 @@ $color-transparent: transparent !default;
 $color-white: #ffffff !default;
 $color-black: #000000 !default;
 
-$color-gray: #98a2ae !default;
+$color-gray: #8e9fa4 !default;
 $color-gray-05: tint-color($color-gray, 90%) !default;
 $color-gray-10: tint-color($color-gray, 80%) !default;
 $color-gray-15: tint-color($color-gray, 70%) !default;
@@ -204,7 +204,7 @@ $color-gray-95: shade-color($color-gray, 90%) !default;
 
 // Brand Neutral Colors
 //
-$color-light: $color-gray-20 !default;
+$color-light: $color-gray-15 !default;
 $color-light-05: tint-color($color-light, 90%) !default;
 $color-light-10: tint-color($color-light, 80%) !default;
 $color-light-15: tint-color($color-light, 70%) !default;
@@ -225,7 +225,7 @@ $color-light-85: shade-color($color-light, 70%) !default;
 $color-light-90: shade-color($color-light, 80%) !default;
 $color-light-95: shade-color($color-light, 90%) !default;
 
-$color-dark: $color-gray-85 !default;
+$color-dark: $color-gray-80 !default;
 $color-dark-05: tint-color($color-dark, 90%) !default;
 $color-dark-10: tint-color($color-dark, 80%) !default;
 $color-dark-15: tint-color($color-dark, 70%) !default;

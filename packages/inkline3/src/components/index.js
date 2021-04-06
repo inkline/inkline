@@ -7,7 +7,7 @@ export { default as IButtonGroup } from '@inkline/inkline/src/components/IButton
 export { default as IColumn } from '@inkline/inkline/src/components/IColumn/index.vue';
 export { default as IContainer } from '@inkline/inkline/src/components/IContainer/index.vue';
 export { default as ICard } from '@inkline/inkline/src/components/ICard/index.vue';
-export { default as ICheckbox } from '@inkline/inkline/src/components/ICheckbox/index.vue';
+// export { default as ICheckbox } from '@inkline/inkline/src/components/ICheckbox/index.vue';
 export { default as ICollapsible } from '@inkline/inkline/src/components/ICollapsible/index.vue';
 export * from '@inkline/inkline/src/components/ICollapsible/components';
 export { default as IDropdown } from '@inkline/inkline/src/components/IDropdown/index.vue';

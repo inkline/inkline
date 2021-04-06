@@ -22,6 +22,8 @@ You're able to use the `size` modifier to control the text and spacing size of y
 
 <example :component="examples.IBadgeSizeVariantsExample" :html="examples.IBadgeSizeVariantsExampleHTML"></example>
 
+### Relative Size
+
 Badges always match the size of the immediate parent element by using relative font sizing and `em` units.
 
 <example :component="examples.IBadgeHeadingExample" :html="examples.IBadgeHeadingExampleHTML"></example>

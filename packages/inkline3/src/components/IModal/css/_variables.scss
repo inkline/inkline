@@ -18,13 +18,14 @@ $modal-border-width: var(--border-width) !default;
 /// @name margin
 $modal-margin: spacer() !default;
 
-/// The width of the modal component
-/// @name width
-$modal-width: 480px !default;
-
 /// The background of the modal component overlay
 /// @name overlay-background
 $modal-overlay-background: rgba(0, 0, 0, 0.75) !default;
+
+/// The width of the modal component
+/// @name width
+/// @type size
+$modal-width: 480px !default;
 
 /// The border radius of the modal component
 /// @name border-radius
@@ -49,6 +50,12 @@ $modal-padding: spacer() !default;
 /// Small size
 ////
 
+/// The width of the modal component
+/// @name width
+/// @group sm
+/// @type size
+$modal-size-variant-sm-width: calc(var(--modal-width) * #{size-multiplier('sm')}) !default;
+
 /// The border radius of the modal component
 /// @name border-radius
 /// @group sm
@@ -70,6 +77,7 @@ $modal-size-variant-sm-padding: calc(var(--modal-padding) * #{size-multiplier('s
 /// Map for sm size
 /// @group sm
 $modal-size-variant-sm: (
+    'width': $modal-size-variant-sm-width,
     'border-radius': $modal-size-variant-sm-border-radius,
     'font-size': $modal-size-variant-sm-font-size,
     'padding': $modal-size-variant-sm-padding
@@ -78,6 +86,12 @@ $modal-size-variant-sm: (
 ////
 /// Medium size
 ////
+
+/// The width of the modal component
+/// @name width
+/// @group md
+/// @type size
+$modal-size-variant-md-width: calc(var(--modal-width) * #{size-multiplier('md')}) !default;
 
 /// The border radius of the modal component
 /// @name border-radius
@@ -100,6 +114,7 @@ $modal-size-variant-md-padding: calc(var(--modal-padding) * #{size-multiplier('m
 /// Map for md size
 /// @group md
 $modal-size-variant-md: (
+    'width': $modal-size-variant-md-width,
     'border-radius': $modal-size-variant-md-border-radius,
     'font-size': $modal-size-variant-md-font-size,
     'padding': $modal-size-variant-md-padding
@@ -108,6 +123,12 @@ $modal-size-variant-md: (
 ////
 /// Large size
 ////
+
+/// The width of the modal component
+/// @name width
+/// @group lg
+/// @type size
+$modal-size-variant-lg-width: calc(var(--modal-width) * #{size-multiplier('lg')}) !default;
 
 /// The border radius of the modal component
 /// @name border-radius
@@ -130,6 +151,7 @@ $modal-size-variant-lg-padding: calc(var(--modal-padding) * #{size-multiplier('l
 /// Map for lg size
 /// @group lg
 $modal-size-variant-lg: (
+    'width': $modal-size-variant-lg-width,
     'border-radius': $modal-size-variant-lg-border-radius,
     'font-size': $modal-size-variant-lg-font-size,
     'padding': $modal-size-variant-lg-padding

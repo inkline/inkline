@@ -29,6 +29,11 @@ $input-font-size: font-size() !default;
 /// @type size
 $input-padding: spacer() !default;
 
+/// The padding of the input component prefix and suffix
+/// @name prefix-suffix-padding
+/// @type size
+$input-prefix-suffix-padding: spacer() !default;
+
 /// The padding of the input component
 /// @name box-shadow
 $input-box-shadow: inset 0 1px 1px rgba(#{color('black')}, 0.05) !default;
@@ -61,14 +66,21 @@ $input-size-variant-sm-font-size: calc(var(--input-font-size) * #{size-multiplie
 /// @name padding
 /// @group sm
 /// @type size
-$input-size-variant-sm-padding: calc(var(--input-padding) * #{size-multiplier('sm')} * 1 / 2) calc(var(--input-padding) * #{size-multiplier('sm')}) !default;
+$input-size-variant-sm-padding: calc(var(--input-padding) / 2 * #{size-multiplier('sm')}) calc(var(--input-padding) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the input component prefix and suffix
+/// @name prefix-suffix-padding
+/// @group sm
+/// @type size
+$input-size-variant-sm-prefix-suffix-padding: calc(var(--input-prefix-suffix-padding) * #{size-multiplier('sm')}) !default;
 
 /// Map for sm size
 /// @group sm
 $input-size-variant-sm: (
     'border-radius': $input-size-variant-sm-border-radius,
     'font-size': $input-size-variant-sm-font-size,
-    'padding': $input-size-variant-sm-padding
+    'padding': $input-size-variant-sm-padding,
+    'prefix-suffix-padding': $input-size-variant-sm-prefix-suffix-padding
 ) !default;
 
 ////
@@ -91,14 +103,21 @@ $input-size-variant-md-font-size: calc(var(--input-font-size) * #{size-multiplie
 /// @name padding
 /// @group md
 /// @type size
-$input-size-variant-md-padding: calc(var(--input-padding) * #{size-multiplier('md')} * 1 / 2) calc(var(--input-padding) * #{size-multiplier('md')}) !default;
+$input-size-variant-md-padding: calc(var(--input-padding) / 2 * #{size-multiplier('md')}) calc(var(--input-padding) * #{size-multiplier('md')}) !default;
+
+/// The padding of the input component prefix and suffix
+/// @name prefix-suffix-padding
+/// @group md
+/// @type size
+$input-size-variant-md-prefix-suffix-padding: calc(var(--input-prefix-suffix-padding) * #{size-multiplier('md')}) !default;
 
 /// Map for md size
 /// @group md
 $input-size-variant-md: (
     'border-radius': $input-size-variant-md-border-radius,
     'font-size': $input-size-variant-md-font-size,
-    'padding': $input-size-variant-md-padding
+    'padding': $input-size-variant-md-padding,
+    'prefix-suffix-padding': $input-size-variant-md-prefix-suffix-padding
 ) !default;
 
 ////
@@ -121,14 +140,21 @@ $input-size-variant-lg-font-size: calc(var(--input-font-size) * #{size-multiplie
 /// @name padding
 /// @group lg
 /// @type size
-$input-size-variant-lg-padding: calc(var(--input-padding) * #{size-multiplier('lg')} * 1 / 2) calc(var(--input-padding) * #{size-multiplier('lg')}) !default;
+$input-size-variant-lg-padding: calc(var(--input-padding) / 2 * #{size-multiplier('lg')}) calc(var(--input-padding) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the input component prefix and suffix
+/// @name prefix-suffix-padding
+/// @group lg
+/// @type size
+$input-size-variant-lg-prefix-suffix-padding: calc(var(--input-prefix-suffix-padding) * #{size-multiplier('lg')}) !default;
 
 /// Map for lg size
 /// @group lg
 $input-size-variant-lg: (
     'border-radius': $input-size-variant-lg-border-radius,
     'font-size': $input-size-variant-lg-font-size,
-    'padding': $input-size-variant-lg-padding
+    'padding': $input-size-variant-lg-padding,
+    'prefix-suffix-padding': $input-size-variant-lg-prefix-suffix-padding
 ) !default;
 
 /// Sizes group map

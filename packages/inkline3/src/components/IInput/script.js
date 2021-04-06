@@ -161,7 +161,7 @@ export default {
             return this.isDisabled ? -1 : this.tabindex;
         },
         isClearable() {
-            return this.clearable && !this.isDisabled && !this.isReadonly && this.currentValue !== '';
+            return this.clearable && !this.isDisabled && !this.isReadonly && this.modelValue !== '';
         },
         value() {
             if (this.schema) {
