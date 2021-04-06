@@ -174,9 +174,9 @@
             "type": "size",
             "default": "spacer()",
             "values": {
-                "sm": "calc(var(--popover-padding) * #{size-multiplier('sm')} / 2) calc(var(--popover-padding) * #{size-multiplier('sm')})",
-                "md": "calc(var(--popover-padding) * #{size-multiplier('md')} / 2) calc(var(--popover-padding) * #{size-multiplier('md')})",
-                "lg": "calc(var(--popover-padding) * #{size-multiplier('lg')} / 2) calc(var(--popover-padding) * #{size-multiplier('lg')})"
+                "sm": ["var(--popover-padding) * 3 / 4", "var(--popover-padding)"],
+                "md": ["var(--popover-padding) * 3 / 4", "var(--popover-padding)"],
+                "lg": ["var(--popover-padding) * 3 / 4", "var(--popover-padding)"]
             }
         },
         {

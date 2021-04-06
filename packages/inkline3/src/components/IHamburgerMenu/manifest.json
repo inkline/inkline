@@ -81,8 +81,8 @@
             "description": "The background of the hamburger-menu component",
             "type": "color",
             "values": {
-                "light": "color('light')",
-                "dark": "color('dark')"
+                "light": "color('dark')",
+                "dark": "color('light')"
             }
         }
     ]

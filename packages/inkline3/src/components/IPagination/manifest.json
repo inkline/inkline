@@ -113,7 +113,7 @@
             "name": "padding",
             "description": "The padding of the pagination component",
             "type": "size",
-            "default": "spacer('1/4')"
+            "default": "spacer('1/2')"
         },
         {
             "name": "min-width",

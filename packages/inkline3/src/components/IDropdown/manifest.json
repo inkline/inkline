@@ -158,6 +158,26 @@
             "default": "spacer('1/2')"
         },
         {
+            "name": "z-index",
+            "description": "The z-index of the dropdown component",
+            "default": "2000"
+        },
+        {
+            "name": "min-width",
+            "description": "The minimum width of the dropdown component",
+            "default": "240px"
+        },
+        {
+            "name": "max-width",
+            "description": "The maximum width of the dropdown component",
+            "default": "90vw"
+        },
+        {
+            "name": "divider-margin",
+            "description": "The margin of the dropdown component divider",
+            "default": "spacer('1/2')"
+        },
+        {
             "name": "border-radius",
             "description": "The border radius of the dropdown component",
             "type": "size",

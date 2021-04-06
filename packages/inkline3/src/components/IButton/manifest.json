@@ -133,6 +133,11 @@
             "default": "var(--border-width)"
         },
         {
+            "name": "block-margin",
+            "description": "The margin of the button component when block",
+            "default": "spacer()"
+        },
+        {
             "name": "font-size",
             "description": "The font size of the button component",
             "type": "size",
@@ -148,7 +153,12 @@
             "name": "padding",
             "description": "The padding of the button component",
             "type": "size",
-            "default": "spacer()"
+            "default": "spacer()",
+            "values": {
+                "sm": ["var(--button-padding) / 2", "var(--button-padding)"],
+                "md": ["var(--button-padding) / 2", "var(--button-padding)"],
+                "lg": ["var(--button-padding) / 2", "var(--button-padding)"]
+            }
         },
         {
             "name": "circle-size",

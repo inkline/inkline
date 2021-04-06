@@ -3,10 +3,5 @@ export default {
         return {
             visible: false
         };
-    },
-    watch: {
-        visible(v) {
-            console.log(v)
-        }
     }
 }

@@ -4,8 +4,8 @@
 
 <i-button :loading="true">
     Button
-    <template v-slot:loading>
-        <i-loader variant="dark" class="_margin-right:1/2" />
+    <template #loading>
+        <i-loader color="dark" class="_margin-right:1/2" />
         Loading
     </template>
 </i-button>

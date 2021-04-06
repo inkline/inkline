@@ -140,14 +140,15 @@
             "default": "spacer()"
         },
         {
-            "name": "width",
-            "description": "The width of the modal component",
-            "default": "480px"
-        },
-        {
             "name": "overlay-background",
             "description": "The background of the modal component overlay",
             "default": "rgba(0, 0, 0, 0.75)"
+        },
+        {
+            "name": "width",
+            "description": "The width of the modal component",
+            "type": "size",
+            "default": "480px"
         },
         {
             "name": "border-radius",

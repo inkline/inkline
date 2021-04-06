@@ -28,6 +28,7 @@ const routes = [
     { name: 'docs-components-button-group', path: '/docs/components/button-group', component: () => import('../components/IButtonGroup/docs/en.md') },
     { name: 'docs-components-card', path: '/docs/components/card', component: () => import('../components/ICard/docs/en.md') },
     { name: 'docs-components-collapsible', path: '/docs/components/collapsible', component: () => import('../components/ICollapsible/docs/en.md') },
+    { name: 'docs-components-datatable', path: '/docs/components/datatable', component: () => import('../components/IDatatable/docs/en.md') },
     { name: 'docs-components-dropdown', path: '/docs/components/dropdown', component: () => import('../components/IDropdown/docs/en.md') },
     { name: 'docs-components-hamburger-menu', path: '/docs/components/hamburger-menu', component: () => import('../components/IHamburgerMenu/docs/en.md') },
     { name: 'docs-components-header', path: '/docs/components/header', component: () => import('../components/IHeader/docs/en.md') },

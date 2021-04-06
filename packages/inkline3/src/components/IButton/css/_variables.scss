@@ -14,6 +14,10 @@ $button-line-height: var(--line-height) !default;
 /// @name border-width
 $button-border-width: var(--border-width) !default;
 
+/// The margin of the button component when block
+/// @name block-margin
+$button-block-margin: spacer() !default;
+
 /// The font size of the button component
 /// @name font-size
 /// @type size
@@ -58,7 +62,7 @@ $button-size-variant-sm-border-radius: calc(var(--button-border-radius) * #{size
 /// @name padding
 /// @group sm
 /// @type size
-$button-size-variant-sm-padding: calc(var(--button-padding) * #{size-multiplier('sm')}) !default;
+$button-size-variant-sm-padding: calc(var(--button-padding) / 2 * #{size-multiplier('sm')}) calc(var(--button-padding) * #{size-multiplier('sm')}) !default;
 
 /// The size of the button component circle variant
 /// @name circle-size
@@ -95,7 +99,7 @@ $button-size-variant-md-border-radius: calc(var(--button-border-radius) * #{size
 /// @name padding
 /// @group md
 /// @type size
-$button-size-variant-md-padding: calc(var(--button-padding) * #{size-multiplier('md')}) !default;
+$button-size-variant-md-padding: calc(var(--button-padding) / 2 * #{size-multiplier('md')}) calc(var(--button-padding) * #{size-multiplier('md')}) !default;
 
 /// The size of the button component circle variant
 /// @name circle-size
@@ -132,7 +136,7 @@ $button-size-variant-lg-border-radius: calc(var(--button-border-radius) * #{size
 /// @name padding
 /// @group lg
 /// @type size
-$button-size-variant-lg-padding: calc(var(--button-padding) * #{size-multiplier('lg')}) !default;
+$button-size-variant-lg-padding: calc(var(--button-padding) / 2 * #{size-multiplier('lg')}) calc(var(--button-padding) * #{size-multiplier('lg')}) !default;
 
 /// The size of the button component circle variant
 /// @name circle-size

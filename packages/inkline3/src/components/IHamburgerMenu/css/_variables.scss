@@ -42,7 +42,7 @@ $hamburger-menu-opacity-hover: 1 !default;
 /// @name background
 /// @group light
 /// @type color
-$hamburger-menu-color-variant-light-background: color('light') !default;
+$hamburger-menu-color-variant-light-background: color('dark') !default;
 
 /// Map for light color
 /// @group light
@@ -58,7 +58,7 @@ $hamburger-menu-color-variant-light: (
 /// @name background
 /// @group dark
 /// @type color
-$hamburger-menu-color-variant-dark-background: color('dark') !default;
+$hamburger-menu-color-variant-dark-background: color('light') !default;
 
 /// Map for dark color
 /// @group dark

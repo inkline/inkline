@@ -18,6 +18,22 @@ $dropdown-border-width: var(--border-width) !default;
 /// @name margin
 $dropdown-margin: spacer('1/2') !default;
 
+/// The z-index of the dropdown component
+/// @name z-index
+$dropdown-z-index: 2000 !default;
+
+/// The minimum width of the dropdown component
+/// @name min-width
+$dropdown-min-width: 240px !default;
+
+/// The maximum width of the dropdown component
+/// @name max-width
+$dropdown-max-width: 90vw !default;
+
+/// The margin of the dropdown component divider
+/// @name divider-margin
+$dropdown-divider-margin: spacer('1/2') !default;
+
 /// The border radius of the dropdown component
 /// @name border-radius
 /// @type size

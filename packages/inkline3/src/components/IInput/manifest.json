@@ -155,10 +155,16 @@
             "type": "size",
             "default": "spacer()",
             "values": {
-                "sm": "calc(var(--input-padding) * #{size-multiplier('sm')} * 1 / 2) calc(var(--input-padding) * #{size-multiplier('sm')})",
-                "md": "calc(var(--input-padding) * #{size-multiplier('md')} * 1 / 2) calc(var(--input-padding) * #{size-multiplier('md')})",
-                "lg": "calc(var(--input-padding) * #{size-multiplier('lg')} * 1 / 2) calc(var(--input-padding) * #{size-multiplier('lg')})"
+                "sm": ["var(--input-padding) / 2", "var(--input-padding)"],
+                "md": ["var(--input-padding) / 2", "var(--input-padding)"],
+                "lg": ["var(--input-padding) / 2", "var(--input-padding)"]
             }
+        },
+        {
+            "name": "prefix-suffix-padding",
+            "description": "The padding of the input component prefix and suffix",
+            "type": "size",
+            "default": "spacer()"
         },
         {
             "name": "box-shadow",
