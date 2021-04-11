@@ -155,9 +155,18 @@
             "type": "size",
             "default": "spacer()",
             "values": {
-                "sm": ["var(--button-padding) / 2", "var(--button-padding)"],
-                "md": ["var(--button-padding) / 2", "var(--button-padding)"],
-                "lg": ["var(--button-padding) / 2", "var(--button-padding)"]
+                "sm": [
+                    "var(--button-padding) / 2",
+                    "var(--button-padding)"
+                ],
+                "md": [
+                    "var(--button-padding) / 2",
+                    "var(--button-padding)"
+                ],
+                "lg": [
+                    "var(--button-padding) / 2",
+                    "var(--button-padding)"
+                ]
             }
         },
         {

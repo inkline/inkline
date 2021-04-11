@@ -11,11 +11,6 @@
     vertical-align: middle;
     position: relative;
 
-    &.-checkbox,
-    &.-radio {
-        font-size: 0;
-    }
-
     + .form-group {
         margin-top: var(--form-group-margin);
     }

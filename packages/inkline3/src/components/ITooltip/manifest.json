@@ -110,7 +110,6 @@
             "default": "md"
         }
     ],
-
     "styles": [
         {
             "name": "font-weight",

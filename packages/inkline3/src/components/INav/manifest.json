@@ -49,7 +49,6 @@
             "type": "size",
             "default": "spacer()"
         },
-
         {
             "name": "color",
             "description": "The color of the list group component item",
