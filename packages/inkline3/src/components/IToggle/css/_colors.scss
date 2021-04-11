@@ -1,0 +1,72 @@
+@mixin toggle-color-variant($color-variant-key) {
+    $_color: var(--toggle-color-variant-#{$color-variant-key}-color);
+    $_color-disabled: var(--toggle-color-variant-#{$color-variant-key}-color-disabled);
+    $_indicator-background: var(--toggle-color-variant-#{$color-variant-key}-indicator-background);
+    $_indicator-background-checked: var(--toggle-color-variant-#{$color-variant-key}-indicator-background-checked);
+    $_indicator-background-disabled: var(--toggle-color-variant-#{$color-variant-key}-indicator-background-disabled);
+    $_indicator-background-checked-disabled: var(--toggle-color-variant-#{$color-variant-key}-indicator-background-checked-disabled);
+    $_indicator-border-color: var(--toggle-color-variant-#{$color-variant-key}-indicator-border-color);
+    $_indicator-border-color-checked: var(--toggle-color-variant-#{$color-variant-key}-indicator-border-color-checked);
+    $_indicator-border-color-disabled: var(--toggle-color-variant-#{$color-variant-key}-indicator-border-color-disabled);
+    $_indicator-border-color-checked-disabled: var(--toggle-color-variant-#{$color-variant-key}-indicator-border-color-checked-disabled);
+    $_indicator-icon-background: var(--toggle-color-variant-#{$color-variant-key}-indicator-icon-background);
+    $_indicator-icon-background-checked: var(--toggle-color-variant-#{$color-variant-key}-indicator-icon-background-checked);
+    $_indicator-icon-background-disabled: var(--toggle-color-variant-#{$color-variant-key}-indicator-icon-background-disabled);
+    $_indicator-icon-background-checked-disabled: var(--toggle-color-variant-#{$color-variant-key}-indicator-icon-background-checked-disabled);
+
+    .toggle-label {
+        color: $_color;
+
+        &::before {
+            background-color: $_indicator-background;
+            border-color: $_indicator-border-color;
+        }
+
+        &::after {
+            background-color: $_indicator-icon-background;
+        }
+    }
+
+    > input {
+        &:checked + .toggle-label {
+            &::before {
+                background-color: $_indicator-background-checked;
+                border-color: $_indicator-border-color-checked;
+            }
+
+            &::after {
+                background-color: $_indicator-icon-background-checked;
+            }
+        }
+
+        &:focus + .toggle-label::before {
+            box-shadow: 0 0 1px $_indicator-background-checked;
+        }
+
+        &:disabled + .toggle-label,
+        &[readonly] + .toggle-label {
+            color: $_color-disabled;
+
+            &::before {
+                background-color: $_indicator-background-disabled;
+                border-color: $_indicator-border-color-disabled;
+            }
+
+            &::after {
+                background-color: $_indicator-icon-background-disabled;
+            }
+        }
+
+        &:disabled:checked + .toggle-label,
+        &[readonly]:checked + .toggle-label {
+            &::before {
+                background-color: $_indicator-background-checked-disabled;
+                border-color: $_indicator-border-color-checked-disabled;
+            }
+
+            &::after {
+                background-color: $_indicator-icon-background-checked-disabled;
+            }
+        }
+    }
+}

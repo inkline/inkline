@@ -1,0 +1,31 @@
+@mixin toggle-size-variant($size-variant-key) {
+    $_font-size: var(--toggle-size-variant-#{$size-variant-key}-font-size);
+    $_indicator-border-radius: var(--toggle-size-variant-#{$size-variant-key}-indicator-border-radius);
+    $_indicator-width: var(--toggle-size-variant-#{$size-variant-key}-indicator-width);
+    $_indicator-height: var(--toggle-size-variant-#{$size-variant-key}-indicator-height);
+    $_indicator-icon-width: var(--toggle-size-variant-#{$size-variant-key}-indicator-icon-width);
+    $_indicator-icon-height: var(--toggle-size-variant-#{$size-variant-key}-indicator-icon-height);
+    $_indicator-icon-border-radius: var(--toggle-size-variant-#{$size-variant-key}-indicator-icon-border-radius);
+    $_indicator-icon-margin: calc(#{$_indicator-height} / 2 - #{$_indicator-icon-height} / 2);
+    $_indicator-icon-offset: calc(#{$_indicator-icon-height} / -2);
+
+    .toggle-label {
+        &::before {
+            width: $_indicator-width;
+            height: $_indicator-height;
+            border-radius: $_indicator-border-radius;
+        }
+
+        &::after {
+            height: $_indicator-icon-width;
+            width: $_indicator-icon-height;
+            border-radius: $_indicator-border-radius;
+            left: $_indicator-icon-margin;
+            margin-top: $_indicator-icon-offset;
+        }
+    }
+
+    > input:checked + .toggle-label::after {
+        transform: translate(calc(#{$_indicator-width} / 2), 0);
+    }
+}
