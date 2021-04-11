@@ -1,8 +1,8 @@
 export default {
     data () {
         return {
-            light: '',
-            dark: ''
+            light: false,
+            dark: false
         };
     }
 }

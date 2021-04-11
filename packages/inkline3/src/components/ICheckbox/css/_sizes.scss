@@ -1,35 +1,25 @@
 @mixin checkbox-size-variant($size-variant-key) {
-    $_border-radius: var(--checkbox-size-variant-#{$size-variant-key}-border-radius);
     $_font-size: var(--checkbox-size-variant-#{$size-variant-key}-font-size);
-    $_padding: var(--checkbox-size-variant-#{$size-variant-key}-padding);
-    $_prefix-suffix-padding: var(--checkbox-size-variant-#{$size-variant-key}-prefix-suffix-padding);
+    $_indicator-border-radius: var(--checkbox-size-variant-#{$size-variant-key}-indicator-border-radius);
+    $_indicator-size: var(--checkbox-size-variant-#{$size-variant-key}-indicator-size);
+    $_indicator-icon-size: var(--checkbox-size-variant-#{$size-variant-key}-indicator-icon-size);
 
-    $_border-radius: map_get($form-check-checkbox-border-radius, $size);
-    $_icon-size: map_get($form-check-checkbox-icon-size, $size);
+    .checkbox-label {
+        font-size: $_font-size;
 
-    .form-input-label {
+        &::before,
+        &::after {
+            width: $_indicator-size;
+            height: $_indicator-size;
+        }
+
         &::before {
-            border-radius: $_border-radius;
+            border-radius: $_indicator-border-radius;
         }
 
         &::after {
-            font-size: $_icon-size;
-        }
-    }
-
-    font-size: font-size($size);
-
-    &.-custom {
-        .form-input-label {
-            padding-left: ($form-check-indicator-size + $form-check-indicator-gutter) * $_size-multiplier;
-
-            &::before,
-            &::after {
-                top: $form-check-indicator-margin-normalize * $_size-multiplier;
-                width: $form-check-indicator-size * $_size-multiplier;
-                height: $form-check-indicator-size * $_size-multiplier;
-                line-height: $form-check-indicator-size * $_size-multiplier;
-            }
+            margin-top: calc(#{$_indicator-size} / -2);
+            font-size: $_indicator-icon-size;
         }
     }
 }
