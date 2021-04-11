@@ -1,18 +1,17 @@
 <div class="checkbox" :class="classes">
     <input
-        :value="value"
-        v-model="model"
         ref="input"
         type="checkbox"
+        :checked="checked"
         tabindex="-1"
         :name="name"
-        :value="currentValue"
         :disabled="isDisabled"
         :readonly="isReadonly"
-        :indeterminate.prop="indeterminate">
+        :indeterminate.prop="indeterminate"
+        @change="onChange"
+    >
     <label
-       class="form-input-label"
-       :class="classes['label']"
+       class="checkbox-label"
        :aria-checked="checked"
        :aria-disabled="isDisabled"
        :aria-readonly="isReadonly"

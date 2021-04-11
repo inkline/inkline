@@ -1,9 +1,9 @@
 export default {
     data () {
         return {
-            sm: '',
-            md: '',
-            lg: ''
+            sm: false,
+            md: false,
+            lg: false
         };
     }
 }

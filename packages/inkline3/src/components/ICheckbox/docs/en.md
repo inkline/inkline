@@ -10,264 +10,65 @@ import * as examples from '../examples';
 # Checkbox
 ## Checkbox inputs allow the user to select multiple options from a set. 
 
-### Basic Usage
+### Basic Example
 
 Using the `i-checkbox` component to determine a boolean value is very straightforward:
 
 <example :component="examples.ICheckboxBasicExample" :html="examples.ICheckboxBasicExampleHTML" :js="examples.ICheckboxBasicExampleJS"></example>
 
-### Checkbox Group
+### Disabled State
 
-Using the `i-checkbox` component together with a `i-checkbox-group` allows you to control multiple values using a single binding.
+You can disable a checkbox using the `disabled` property.
 
-<i-code title="Checkbox Group">
-<i-tab type="preview">
-    <i-checkbox-group v-model="checkedGroup">
-        <i-checkbox value="Football">Football</i-checkbox>
-        <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-        <i-checkbox value="Basketball">Basketball</i-checkbox>
-        <i-checkbox value="Snowboarding">Snowboarding</i-checkbox>
-        <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-    </i-checkbox-group>
-</i-tab>
-<i-tab type="html">
+<example :component="examples.ICheckboxDisabledExample" :html="examples.ICheckboxDisabledExampleHTML" :js="examples.ICheckboxDisabledExampleJS"></example>
 
-~~~html
-<i-checkbox-group v-model="checked">
-    <i-checkbox value="Football">Football</i-checkbox>
-    <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-    <i-checkbox value="Basketball">Basketball</i-checkbox>
-    <i-checkbox value="Snowboarding">Snowboarding</i-checkbox>
-    <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-</i-checkbox-group>
-~~~
+### Readonly State
 
-</i-tab>
-<i-tab type="js">
+You can make a checkbox readonly using the `readonly` property.
 
-~~~js
-export default {
-  data () {
-    return {
-      checked: ['Football', 'Basketball', 'Tennis']
-    };
-  }
-}
-~~~
+<example :component="examples.ICheckboxReadonlyExample" :html="examples.ICheckboxReadonlyExampleHTML" :js="examples.ICheckboxReadonlyExampleJS"></example>
 
-</i-tab>
-<i-tab type="output">
-    Checked values: <code>{{checkedGroup}}</code>
-</i-tab>
-</i-code>
+### Indeterminate State
+You can set the state of a `<i-checkbox>` to be indeterminate by using the `indeterminate` property. 
+
+<example :component="examples.ICheckboxIndeterminateExample" :html="examples.ICheckboxIndeterminateExampleHTML" :js="examples.ICheckboxIndeterminateExampleJS"></example>
+
+### Size Variants
+You're able to use the `size` property to control the size of your checkbox, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
+
+<example :component="examples.ICheckboxSizeVariantsExample" :html="examples.ICheckboxSizeVariantsExampleHTML" :js="examples.ICheckboxSizeVariantsExampleJS"></example>
 
 
-### Sizes
-You're able to use the `size` property to control the size of your inputs, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
+### Color Variants
+You can use the `color` property to set a `light` or `dark` color for your checkboxes.
 
-<i-code title="Checkbox Sizes">
-<i-tab type="preview">
-    <i-checkbox-group v-model="checkedSize">
-        <i-checkbox size="sm" value="Football">Football</i-checkbox>
-        <i-checkbox size="md" value="Volleyball">Tennis</i-checkbox>
-        <i-checkbox size="lg" value="Basketball">Basketball</i-checkbox>
-    </i-checkbox-group>
-</i-tab>
-<i-tab type="html">
+<example :component="examples.ICheckboxColorVariantsExample" :html="examples.ICheckboxColorVariantsExampleHTML" :js="examples.ICheckboxColorVariantsExampleJS"></example>
 
-~~~html
-<i-checkbox-group v-model="checked">
-    <i-checkbox size="sm" value="Football">Football</i-checkbox>
-    <i-checkbox size="md" value="Volleyball">Tennis</i-checkbox>
-    <i-checkbox size="lg" value="Basketball">Basketball</i-checkbox>
-</i-checkbox-group>
-~~~
+### Group Example
 
-</i-tab>
-<i-tab type="js">
+Using the `i-checkbox` component together with a `i-checkbox-group` allows you to control multiple selected values using a single binding.
 
-~~~js
-export default {
-  data () {
-    return {
-      checked: ['Basketball']
-    };
-  }
-}
-~~~
+<example :component="examples.ICheckboxGroupExample" :html="examples.ICheckboxGroupExampleHTML" :js="examples.ICheckboxGroupExampleJS"></example>
 
-</i-tab>
-</i-code>
+### Group Disabled State
 
-Applying the size `size` property to a `i-checkbox-group` will set the chosen size to all of its child inputs.
+You can disable an entire checkbox group using the `disabled` property.
 
-<i-code title="Checkbox Group Size">
-<i-tab type="preview">
-    <i-checkbox-group size="sm" v-model="checkedSizeGroupSm" class="_margin-bottom-1">
-        <i-checkbox value="Football">Football</i-checkbox>
-        <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-        <i-checkbox value="Basketball">Basketball</i-checkbox>
-        <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-    </i-checkbox-group>
-    <i-checkbox-group size="md" v-model="checkedSizeGroupMd" class="_margin-bottom-1">
-        <i-checkbox value="Football">Football</i-checkbox>
-        <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-        <i-checkbox value="Basketball">Basketball</i-checkbox>
-        <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-    </i-checkbox-group>
-    <i-checkbox-group size="lg" v-model="checkedSizeGroupLg">
-        <i-checkbox value="Football">Football</i-checkbox>
-        <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-        <i-checkbox value="Basketball">Basketball</i-checkbox>
-        <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-    </i-checkbox-group>
-</i-tab>
-<i-tab type="html">
+<example :component="examples.ICheckboxGroupDisabledExample" :html="examples.ICheckboxGroupDisabledExampleHTML" :js="examples.ICheckboxGroupDisabledExampleJS"></example>
 
-~~~html
-<i-checkbox-group size="sm" v-model="checked">
-    <i-checkbox value="Football">Football</i-checkbox>
-    <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-    <i-checkbox value="Basketball">Basketball</i-checkbox>
-    <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-</i-checkbox-group>
-~~~
-~~~html
-<i-checkbox-group size="md" v-model="checked">
-    <i-checkbox value="Football">Football</i-checkbox>
-    <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-    <i-checkbox value="Basketball">Basketball</i-checkbox>
-    <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-</i-checkbox-group>
-~~~
-~~~html
-<i-checkbox-group size="lg" v-model="checked">
-    <i-checkbox value="Football">Football</i-checkbox>
-    <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-    <i-checkbox value="Basketball">Basketball</i-checkbox>
-    <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-</i-checkbox-group>
-~~~
+### Group Size Variants
+You're able to use the `size` property to control the size of your checkbox group, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
 
-</i-tab>
-<i-tab type="js">
+The chosen size will be applied to all of its child inputs.
 
-~~~js
-export default {
-  data () {
-    return {
-      checked: ['Basketball', 'Tennis']
-    };
-  }
-}
-~~~
+<example :component="examples.ICheckboxGroupSizeVariantsExample" :html="examples.ICheckboxGroupSizeVariantsExampleHTML" :js="examples.ICheckboxGroupSizeVariantsExampleJS"></example>
 
-</i-tab>
-</i-code>
+### Group Color Variants
+You can use the `color` property to set a `light` or `dark` color for your checkboxes.
+
+<example :component="examples.ICheckboxGroupColorVariantsExample" :html="examples.ICheckboxGroupColorVariantsExampleHTML" :js="examples.ICheckboxGroupColorVariantsExampleJS"></example>
 
 ### Custom vs. Native
-Inkline uses custom checkbox designs by setting the `custom` property to `true` by default. 
+Inkline uses a custom checkbox design by default. You can use the `native` property to use native browser checkbox indicators.
 
-<i-code title="Custom Checkbox">
-<i-tab type="preview">
-    <i-checkbox-group v-model="checkedCustomTrue">
-        <i-checkbox :custom="true" value="Football">Football</i-checkbox>
-        <i-checkbox :custom="true" value="Volleyball">Tennis</i-checkbox>
-        <i-checkbox :custom="true" value="Basketball">Basketball</i-checkbox>    
-    </i-checkbox-group>
-</i-tab>
-<i-tab type="html">
-
-~~~html
-<i-checkbox-group v-model="checkedCustomTrue">
-    <i-checkbox :custom="true" value="Football">Football</i-checkbox>
-    <i-checkbox :custom="true" value="Volleyball">Tennis</i-checkbox>
-    <i-checkbox :custom="true" value="Basketball">Basketball</i-checkbox>    
-</i-checkbox-group>
-~~~
-
-</i-tab>
-<i-tab type="js">
-
-~~~js
-export default {
-  data () {
-    return {
-      checked: ['Basketball']
-    };
-  }
-}
-~~~
-
-</i-tab>
-</i-code>
-
-### Indeterminate
-You can set the state of a `<i-checkbox>` to be indeterminate by setting the `indeterminate` property to `true`. 
-
-<i-code title="Indeterminate Checkbox">
-<i-tab type="preview">
-    <i-checkbox :indeterminate="true">Football</i-checkbox>
-</i-tab>
-<i-tab type="html">
-
-~~~html
-<i-checkbox :indeterminate="true">Football</i-checkbox>
-~~~
-
-</i-tab>
-<i-tab type="js"> 
-
-~~~js
-export default {
-  data () {
-    return {
-      checked: ['Basketball']
-    };
-  }
-}
-~~~
-
-</i-tab>
-</i-code>
-
-
-### Checkbox Buttons
-
-You can display your checkbox inputs as toggleable buttons using the provided `<i-checkbox-button>` and `<i-checkbox-button-group>` components.
-
-<i-code title="Checkbox Buttons">
-<i-tab type="preview">
-    <i-checkbox-button-group v-model="checkedButton">
-        <i-checkbox-button value="Earth">Earth</i-checkbox-button>
-        <i-checkbox-button value="Mars">Mars</i-checkbox-button>
-        <i-checkbox-button value="Jupiter">Jupiter</i-checkbox-button>
-        <i-checkbox-button value="Venus" disabled>Venus</i-checkbox-button>
-    </i-checkbox-button-group>
-</i-tab>
-<i-tab type="html">
-
-~~~html
-<i-checkbox-button-group v-model="checked">
-    <i-checkbox-button value="Earth">Earth</i-checkbox-button>
-    <i-checkbox-button value="Mars">Mars</i-checkbox-button>
-    <i-checkbox-button value="Jupiter">Jupiter</i-checkbox-button>
-    <i-checkbox-button value="Venus" disabled>Venus</i-checkbox-button>
-</i-checkbox-button-group>
-~~~
-
-</i-tab>
-<i-tab type="js">
-
-~~~js
-export default {
-  data () {
-    return {
-      checked: ['Earth']
-    };
-  }
-}
-~~~
-
-</i-tab>
-</i-code>
+<example :component="examples.ICheckboxNativeExample" :html="examples.ICheckboxNativeExampleHTML" :js="examples.ICheckboxNativeExampleJS"></example>

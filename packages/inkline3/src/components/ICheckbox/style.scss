@@ -1,27 +1,29 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import '../IIcon/css/variables';
+@import '../IIcon/css/mixins';
 @import 'css/variables';
 @import 'css/css';
 @import 'css/colors';
 @import 'css/sizes';
 
-.form-check {
+.checkbox {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     white-space: nowrap;
     outline: none;
-    margin-right: $form-check-margin-right;
+    cursor: pointer;
+    margin-right: var(--checkbox-margin-right);
 
     &:last-child {
         margin-right: 0;
     }
 
     &.-disabled {
-        color: $form-check-disabled-color;
         cursor: default;
 
-        .form-input-label {
+        .checkbox-label {
             &::before,
             &::after {
                 cursor: default;
@@ -29,70 +31,92 @@
         }
     }
 
-    &.-custom {
-        cursor: pointer;
+    input {
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 0; // Put the input behind the label so it doesn't overlay text
+        opacity: 0;
+        height: 0;
+        width: 0;
+        outline: 0;
 
-        input {
-            top: 0;
-            left: 0;
-            position: absolute;
-            z-index: 0; // Put the input behind the label so it doesn't overlay text
-            opacity: 0;
-
-            &:checked ~ .form-input-label,
-            &[type="checkbox"]:indeterminate ~ .form-input-label {
-                &::after {
-                    transform: scale(1);
-                }
+        &:checked ~ .checkbox-label,
+        &[type="checkbox"]:indeterminate ~ .checkbox-label {
+            &::after {
+                content: $icon-check;
+                transform: scale(1);
             }
         }
 
-        .form-input-label {
-            &::before,
-            &::after {
-                display: inline-block;
-            }
+        &:indeterminate ~ .checkbox-label::after {
+            content: $icon-minus;
+        }
+
+        &:focus,
+        &:active {
+            outline: none;
         }
     }
 
-    .form-input-label {
+    .checkbox-label {
         margin-bottom: 0;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        transition-property: color;
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-easing);
 
         &::before,
         &::after {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
         }
 
         &::before {
             content: "";
-            cursor: pointer;
             user-select: none;
-            transition: background-color $transition-duration $transition-easing;
+            border-width: var(--checkbox-indicator-border-width);
+            border-style: solid;
+            margin-right: var(--checkbox-indicator-margin-right);
+            transition-property: background-color, border-color;
+            transition-duration: var(--transition-duration);
+            transition-timing-function: var(--transition-easing);
         }
 
         &::after {
             @extend %icon;
-
+            position: absolute;
+            top: 50%;
+            left: 0;
+            z-index: 1;
             text-align: center;
-            transition: transform $transition-duration $transition-easing;
+            transition-property: transform;
+            transition-duration: var(--transition-duration);
+            transition-timing-function: var(--transition-easing);
             transform: scale(0);
         }
     }
 
-    input {
-        &:checked ~ .form-input-label::after {
-            content: $icon-check;
-            color: white;
+    &.-native {
+        input {
+            top: auto;
+            left: auto;
+            position: relative;
+            opacity: 1;
+            height: auto;
+            width: auto;
+            margin-right: var(--checkbox-indicator-margin-right);
         }
 
-        &:indeterminate ~ .form-input-label::after {
-            content: $icon-minus;
-            color: white;
+        .checkbox-label {
+            &::after,
+            &::before {
+                display: none;
+            }
         }
     }
 

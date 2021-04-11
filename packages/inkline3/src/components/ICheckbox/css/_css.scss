@@ -3,17 +3,31 @@
      * Variables
      */
 
-    --undefined-border-radius: #{$undefined-border-radius};
-    --undefined-indicator-size: #{$undefined-indicator-size};
-    --undefined-indicator-icon-size: #{$undefined-indicator-icon-size};
+    --checkbox-font-size: #{$checkbox-font-size};
+    --checkbox-margin-right: #{$checkbox-margin-right};
+    --checkbox-indicator-border-radius: #{$checkbox-indicator-border-radius};
+    --checkbox-indicator-border-width: #{$checkbox-indicator-border-width};
+    --checkbox-indicator-size: #{$checkbox-indicator-size};
+    --checkbox-indicator-icon-size: #{$checkbox-indicator-icon-size};
+    --checkbox-indicator-margin-right: #{$checkbox-indicator-margin-right};
 
     /**
      * Sizes
      */
 
-    @each $undefined-size-variant-key, $undefined-size-variant-value in $undefined-size-variants {
-        @each $undefined-size-variant-field-key, $undefined-size-variant-field-value in $undefined-size-variant-value {
-            --undefined-size-variant-#{$undefined-size-variant-key}-#{$undefined-size-variant-field-key}: #{$undefined-size-variant-field-value};
+    @each $checkbox-size-variant-key, $checkbox-size-variant-value in $checkbox-size-variants {
+        @each $checkbox-size-variant-field-key, $checkbox-size-variant-field-value in $checkbox-size-variant-value {
+            --checkbox-size-variant-#{$checkbox-size-variant-key}-#{$checkbox-size-variant-field-key}: #{$checkbox-size-variant-field-value};
+        }
+    }
+
+    /**
+     * Colors
+     */
+
+    @each $checkbox-color-variant-key, $checkbox-color-variant-value in $checkbox-color-variants {
+        @each $checkbox-color-variant-field-key, $checkbox-color-variant-field-value in $checkbox-color-variant-value {
+            --checkbox-color-variant-#{$checkbox-color-variant-key}-#{$checkbox-color-variant-field-key}: #{$checkbox-color-variant-field-value};
         }
     }
 }
