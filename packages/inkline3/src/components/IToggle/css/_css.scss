@@ -1,0 +1,35 @@
+:root {
+    /**
+     * Variables
+     */
+
+    --toggle-font-size: #{$toggle-font-size};
+    --toggle-indicator-margin-right: #{$toggle-indicator-margin-right};
+    --toggle-indicator-width: #{$toggle-indicator-width};
+    --toggle-indicator-height: #{$toggle-indicator-height};
+    --toggle-indicator-border-radius: #{$toggle-indicator-border-radius};
+    --toggle-indicator-icon-width: #{$toggle-indicator-icon-width};
+    --toggle-indicator-icon-height: #{$toggle-indicator-icon-height};
+    --toggle-indicator-icon-border-radius: #{$toggle-indicator-icon-border-radius};
+    --toggle-transition-duration: #{$toggle-transition-duration};
+
+    /**
+     * Sizes
+     */
+
+    @each $toggle-size-variant-key, $toggle-size-variant-value in $toggle-size-variants {
+        @each $toggle-size-variant-field-key, $toggle-size-variant-field-value in $toggle-size-variant-value {
+            --toggle-size-variant-#{$toggle-size-variant-key}-#{$toggle-size-variant-field-key}: #{$toggle-size-variant-field-value};
+        }
+    }
+
+    /**
+     * Colors
+     */
+
+    @each $toggle-color-variant-key, $toggle-color-variant-value in $toggle-color-variants {
+        @each $toggle-color-variant-field-key, $toggle-color-variant-field-value in $toggle-color-variant-value {
+            --toggle-color-variant-#{$toggle-color-variant-key}-#{$toggle-color-variant-field-key}: #{$toggle-color-variant-field-value};
+        }
+    }
+}
