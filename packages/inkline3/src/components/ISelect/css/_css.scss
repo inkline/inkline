@@ -1,0 +1,35 @@
+:root {
+    /**
+     * Variables
+     */
+
+    --select-line-height: #{$select-line-height};
+    --select-border-width: #{$select-border-width};
+    --select-prefix-border-width: #{$select-prefix-border-width};
+    --select-border-radius: #{$select-border-radius};
+    --select-font-size: #{$select-font-size};
+    --select-padding: #{$select-padding};
+    --select-prefix-suffix-padding: #{$select-prefix-suffix-padding};
+    --select-box-shadow: #{$select-box-shadow};
+    --select-icon-circle-size: #{$select-icon-circle-size};
+
+    /**
+     * Sizes
+     */
+
+    @each $select-size-variant-key, $select-size-variant-value in $select-size-variants {
+        @each $select-size-variant-field-key, $select-size-variant-field-value in $select-size-variant-value {
+            --select-size-variant-#{$select-size-variant-key}-#{$select-size-variant-field-key}: #{$select-size-variant-field-value};
+        }
+    }
+
+    /**
+     * Colors
+     */
+
+    @each $select-color-variant-key, $select-color-variant-value in $select-color-variants {
+        @each $select-color-variant-field-key, $select-color-variant-field-value in $select-color-variant-value {
+            --select-color-variant-#{$select-color-variant-key}-#{$select-color-variant-field-key}: #{$select-color-variant-field-value};
+        }
+    }
+}

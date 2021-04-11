@@ -1,0 +1,93 @@
+@mixin input-color-variant($color-variant-key) {
+    $_color: var(--input-color-variant-#{$color-variant-key}-color);
+    $_color-disabled: var(--input-color-variant-#{$color-variant-key}-color-disabled);
+    $_background: var(--input-color-variant-#{$color-variant-key}-background);
+    $_background-disabled: var(--input-color-variant-#{$color-variant-key}-background-disabled);
+    $_border-color: var(--input-color-variant-#{$color-variant-key}-border-color);
+    $_border-color-hover: var(--input-color-variant-#{$color-variant-key}-border-color-hover);
+    $_border-color-focus: var(--input-color-variant-#{$color-variant-key}-border-color-focus);
+    $_placeholder-color: var(--input-color-variant-#{$color-variant-key}-placeholder-color);
+    $_prefix-suffix-color: var(--input-color-variant-#{$color-variant-key}-prefix-suffix-color);
+    $_prepend-append-background: var(--input-color-variant-#{$color-variant-key}-prepend-append-background);
+    $_clearable-color: var(--input-color-variant-#{$color-variant-key}-clearable-color);
+    $_clearable-color-hover: var(--input-color-variant-#{$color-variant-key}-clearable-color-hover);
+    $_clearable-background: var(--input-color-variant-#{$color-variant-key}-clearable-background);
+    $_clearable-background-hover: var(--input-color-variant-#{$color-variant-key}-clearable-background-hover);
+    $_clearable-background-active: var(--input-color-variant-#{$color-variant-key}-clearable-background-active);
+
+    > .form-input {
+        color: $_color;
+        background-color: $_background;
+        border-color: $_border-color;
+
+        &:hover {
+            border-color: $_border-color-hover;
+        }
+
+        &:focus-within {
+            border-color: $_border-color-focus;
+        }
+
+        > input,
+        > select,
+        > textarea {
+            color: $_color;
+
+            &::placeholder {
+                color: $_placeholder-color;
+            }
+
+            &:disabled,
+            &[readonly] {
+                color: $_color-disabled;
+            }
+        }
+
+        > .form-input-prefix,
+        > .form-input-suffix {
+            color: $_prefix-suffix-color;
+            border-color: $_border-color;
+        }
+
+        .form-input-clear {
+            color: $_clearable-color;
+            background-color: $_clearable-background;
+
+            &:hover,
+            &:focus {
+                color: $_clearable-color-hover;
+                background-color: $_clearable-background-hover;
+            }
+
+            &:active {
+                background-color: $_clearable-background-active;
+            }
+        }
+    }
+
+    &.-disabled,
+    &.-readonly {
+        > .form-input {
+            color: $_color-disabled;
+            background-color: $_background-disabled;
+
+            &:hover {
+                border-color: $_border-color;
+            }
+        }
+    }
+
+    &.-readonly {
+        > .form-input {
+            &:focus-within {
+                outline: 0;
+                border-color: $_border-color-focus;
+            }
+        }
+    }
+
+    .form-input-prepend,
+    .form-input-append {
+        background-color: $_prepend-append-background;
+    }
+}

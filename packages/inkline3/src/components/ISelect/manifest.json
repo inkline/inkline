@@ -1,24 +1,24 @@
 {
-    "name": "input",
+    "name": "select",
     "slots": [
         {
             "name": "prefix",
-            "description": "Slot for the input prefix content",
+            "description": "Slot for the select prefix content",
             "type": []
         },
         {
             "name": "suffix",
-            "description": "Slot for the input suffix content",
+            "description": "Slot for the select suffix content",
             "type": []
         },
         {
             "name": "prepend",
-            "description": "Slot for the input prepend content",
+            "description": "Slot for the select prepend content",
             "type": []
         },
         {
             "name": "append",
-            "description": "Slot for the input append content",
+            "description": "Slot for the select append content",
             "type": []
         },
         {
@@ -37,7 +37,7 @@
     "props": [
         {
             "name": "color",
-            "description": "The color variant of the input",
+            "description": "The color variant of the select",
             "type": [
                 "light",
                 "dark"
@@ -46,7 +46,7 @@
         },
         {
             "name": "clearable",
-            "description": "Display the input as clearable",
+            "description": "Display the select as clearable",
             "type": [
                 "Boolean"
             ],
@@ -54,7 +54,7 @@
         },
         {
             "name": "disabled",
-            "description": "The disabled state of the input",
+            "description": "The disabled state of the select",
             "type": [
                 "Boolean"
             ],
@@ -62,7 +62,7 @@
         },
         {
             "name": "id",
-            "description": "The id of the internal input element",
+            "description": "The id of the internal select element",
             "type": [
                 "String"
             ],
@@ -78,7 +78,7 @@
         },
         {
             "name": "name",
-            "description": "The unique identifier of the input",
+            "description": "The unique identifier of the select",
             "type": [
                 "String"
             ],
@@ -86,7 +86,7 @@
         },
         {
             "name": "readonly",
-            "description": "The readonly state of the input",
+            "description": "The readonly state of the select",
             "type": [
                 "Boolean"
             ],
@@ -94,7 +94,7 @@
         },
         {
             "name": "size",
-            "description": "The size variant of the input",
+            "description": "The size variant of the select",
             "type": [
                 "sm",
                 "md",
@@ -104,7 +104,7 @@
         },
         {
             "name": "tabindex",
-            "description": "The tabindex of the input",
+            "description": "The tabindex of the select",
             "type": [
                 "Number",
                 "String"
@@ -113,7 +113,7 @@
         },
         {
             "name": "type",
-            "description": "The type of the input",
+            "description": "The type of the select",
             "type": [
                 "String"
             ],
@@ -123,70 +123,70 @@
     "styles": [
         {
             "name": "line-height",
-            "description": "The line height of the input component",
+            "description": "The line height of the select component",
             "default": "var(--line-height)"
         },
         {
             "name": "border-width",
-            "description": "The border width of the input component",
+            "description": "The border width of the select component",
             "default": "var(--border-width)"
         },
         {
             "name": "prefix-border-width",
-            "description": "The border width of the input component",
-            "default": "var(--input-border-width)"
+            "description": "The border width of the select component",
+            "default": "var(--select-border-width)"
         },
         {
             "name": "border-radius",
-            "description": "The border radius of the input component",
+            "description": "The border radius of the select component",
             "type": "size",
             "default": "border-radius()"
         },
         {
             "name": "font-size",
-            "description": "The font size of the input component",
+            "description": "The font size of the select component",
             "type": "size",
             "default": "font-size()"
         },
         {
             "name": "padding",
-            "description": "The padding of the input component",
+            "description": "The padding of the select component",
             "type": "size",
             "default": "spacer()",
             "values": {
                 "sm": [
-                    "var(--input-padding) / 2",
-                    "var(--input-padding)"
+                    "var(--select-padding) / 2",
+                    "var(--select-padding)"
                 ],
                 "md": [
-                    "var(--input-padding) / 2",
-                    "var(--input-padding)"
+                    "var(--select-padding) / 2",
+                    "var(--select-padding)"
                 ],
                 "lg": [
-                    "var(--input-padding) / 2",
-                    "var(--input-padding)"
+                    "var(--select-padding) / 2",
+                    "var(--select-padding)"
                 ]
             }
         },
         {
             "name": "prefix-suffix-padding",
-            "description": "The padding of the input component prefix and suffix",
+            "description": "The padding of the select component prefix and suffix",
             "type": "size",
             "default": "spacer()"
         },
         {
             "name": "box-shadow",
-            "description": "The padding of the input component",
+            "description": "The padding of the select component",
             "default": "inset 0 1px 1px rgba(#{color('black')}, 0.05)"
         },
         {
             "name": "icon-circle-size",
-            "description": "The size of the input component icon circle",
+            "description": "The size of the select component icon circle",
             "default": "1.2rem"
         },
         {
             "name": "color",
-            "description": "The color of the input component",
+            "description": "The color of the select component",
             "type": "color",
             "values": {
                 "light": "contrast-color($color-white)",
@@ -195,7 +195,7 @@
         },
         {
             "name": "color-disabled",
-            "description": "The color of the input component when disabled",
+            "description": "The color of the select component when disabled",
             "type": "color",
             "values": {
                 "light": "color('light-75')",
@@ -204,7 +204,7 @@
         },
         {
             "name": "background",
-            "description": "The background of the input component",
+            "description": "The background of the select component",
             "type": "color",
             "values": {
                 "light": "color('white')",
@@ -213,7 +213,7 @@
         },
         {
             "name": "background-disabled",
-            "description": "The background of the input component when disabled",
+            "description": "The background of the select component when disabled",
             "type": "color",
             "values": {
                 "light": "color('light-25')",
@@ -222,7 +222,7 @@
         },
         {
             "name": "border-color",
-            "description": "The border color of the input component",
+            "description": "The border color of the select component",
             "type": "color",
             "values": {
                 "light": "color('light')",
@@ -231,7 +231,7 @@
         },
         {
             "name": "border-color-hover",
-            "description": "The border color of the input component when hovered",
+            "description": "The border color of the select component when hovered",
             "type": "color",
             "values": {
                 "light": "color('light-55')",
@@ -240,7 +240,7 @@
         },
         {
             "name": "border-color-focus",
-            "description": "The border color of the input component when focused",
+            "description": "The border color of the select component when focused",
             "type": "color",
             "values": {
                 "light": "color('primary')",
@@ -249,7 +249,7 @@
         },
         {
             "name": "placeholder-color",
-            "description": "The color of the input component placeholder",
+            "description": "The color of the select component placeholder",
             "type": "color",
             "values": {
                 "light": "color('light-60')",
@@ -258,7 +258,7 @@
         },
         {
             "name": "prefix-suffix-color",
-            "description": "The color of the input component prefix and suffix",
+            "description": "The color of the select component prefix and suffix",
             "type": "color",
             "values": {
                 "light": "color('light-70')",
@@ -267,7 +267,7 @@
         },
         {
             "name": "prepend-append-background",
-            "description": "The background of the input component prepend and append",
+            "description": "The background of the select component prepend and append",
             "type": "color",
             "values": {
                 "light": "color('light')",
@@ -276,7 +276,7 @@
         },
         {
             "name": "clearable-color",
-            "description": "The color of the input component clear button",
+            "description": "The color of the select component clear button",
             "type": "color",
             "values": {
                 "light": "color('light-70')",
@@ -285,7 +285,7 @@
         },
         {
             "name": "clearable-background",
-            "description": "The background of the input component clear button",
+            "description": "The background of the select component clear button",
             "type": "color",
             "values": {
                 "light": "transparent",
@@ -294,7 +294,7 @@
         },
         {
             "name": "clearable-background-hover",
-            "description": "The background of the input component clear button",
+            "description": "The background of the select component clear button",
             "type": "color",
             "values": {
                 "light": "color('light-30')",
@@ -303,7 +303,7 @@
         },
         {
             "name": "clearable-background-active",
-            "description": "The background of the input component clear button",
+            "description": "The background of the select component clear button",
             "type": "color",
             "values": {
                 "light": "color('light-40')",

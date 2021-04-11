@@ -1,0 +1,50 @@
+@mixin input-size-variant($size-variant-key) {
+    $_border-radius: var(--input-size-variant-#{$size-variant-key}-border-radius);
+    $_font-size: var(--input-size-variant-#{$size-variant-key}-font-size);
+    $_padding: var(--input-size-variant-#{$size-variant-key}-padding);
+    $_prefix-suffix-padding: var(--input-size-variant-#{$size-variant-key}-prefix-suffix-padding);
+
+    > .form-input-prepend,
+    > .form-input-append {
+        font-size: $_font-size;
+
+        > * {
+            padding-left: $_prefix-suffix-padding;
+            padding-right: $_prefix-suffix-padding;
+        }
+
+        > [class$="-wrapper"] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    > .form-input-prepend,
+    > .form-input-prepend > *:first-child {
+        border-top-left-radius: $_border-radius;
+        border-bottom-left-radius: $_border-radius;
+    }
+
+    > .form-input-append,
+    > .form-input-append > *:last-child {
+        border-top-right-radius: $_border-radius;
+        border-bottom-right-radius: $_border-radius;
+    }
+
+    > .form-input {
+        border-radius: $_border-radius;
+        font-size: $_font-size;
+
+        > input,
+        > select,
+        > textarea {
+            padding: $_padding;
+        }
+
+        > .form-input-prefix,
+        > .form-input-suffix {
+            padding-left: $_prefix-suffix-padding;
+            padding-right: $_prefix-suffix-padding;
+        }
+    }
+}

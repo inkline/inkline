@@ -49,6 +49,11 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'docs-forms-checkbox' }">
+                        Checkbox
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'docs-forms-input' }">
                         Input
                     </router-link>
@@ -59,8 +64,18 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'docs-forms-radio' }">
+                        Radio
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'docs-forms-textarea' }">
                         Textarea
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-toggle' }">
+                        Toggle
                     </router-link>
                 </li>
                 <li>

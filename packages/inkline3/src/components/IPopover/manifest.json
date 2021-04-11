@@ -174,9 +174,18 @@
             "type": "size",
             "default": "spacer()",
             "values": {
-                "sm": ["var(--popover-padding) * 3 / 4", "var(--popover-padding)"],
-                "md": ["var(--popover-padding) * 3 / 4", "var(--popover-padding)"],
-                "lg": ["var(--popover-padding) * 3 / 4", "var(--popover-padding)"]
+                "sm": [
+                    "var(--popover-padding) * 3 / 4",
+                    "var(--popover-padding)"
+                ],
+                "md": [
+                    "var(--popover-padding) * 3 / 4",
+                    "var(--popover-padding)"
+                ],
+                "lg": [
+                    "var(--popover-padding) * 3 / 4",
+                    "var(--popover-padding)"
+                ]
             }
         },
         {

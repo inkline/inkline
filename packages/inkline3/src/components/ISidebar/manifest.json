@@ -61,7 +61,7 @@
         },
         {
             "name": "size",
-            "description": "The size variant of the sidebar",
+            "description": "The size variant of the navbar",
             "type": [
                 "sm",
                 "md",
