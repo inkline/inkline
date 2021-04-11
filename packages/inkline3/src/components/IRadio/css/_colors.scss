@@ -1,0 +1,58 @@
+@mixin radio-color-variant($color-variant-key) {
+    $_color: var(--radio-color-variant-#{$color-variant-key}-color);
+    $_color-disabled: var(--radio-color-variant-#{$color-variant-key}-color-disabled);
+    $_indicator-background: var(--radio-color-variant-#{$color-variant-key}-indicator-background);
+    $_indicator-background-checked: var(--radio-color-variant-#{$color-variant-key}-indicator-background-checked);
+    $_indicator-background-disabled: var(--radio-color-variant-#{$color-variant-key}-indicator-background-disabled);
+    $_indicator-background-checked-disabled: var(--radio-color-variant-#{$color-variant-key}-indicator-background-checked-disabled);
+    $_indicator-border-color: var(--radio-color-variant-#{$color-variant-key}-indicator-border-color);
+    $_indicator-border-color-checked: var(--radio-color-variant-#{$color-variant-key}-indicator-border-color-checked);
+    $_indicator-border-color-disabled: var(--radio-color-variant-#{$color-variant-key}-indicator-border-color-disabled);
+    $_indicator-border-color-checked-disabled: var(--radio-color-variant-#{$color-variant-key}-indicator-border-color-checked-disabled);
+    $_indicator-icon-color: var(--radio-color-variant-#{$color-variant-key}-indicator-icon-color);
+    $_indicator-icon-color-disabled: var(--radio-color-variant-#{$color-variant-key}-indicator-icon-color-disabled);
+
+    .radio-label {
+        color: $_color;
+
+        &::before {
+            border-color: $_indicator-border-color;
+            background-color: $_indicator-background;
+        }
+
+        &::after {
+            color: $_indicator-icon-color;
+        }
+    }
+
+    input {
+        &:checked ~ .radio-label  {
+            &::before {
+                border-color: $_indicator-border-color-checked;
+                background-color: $_indicator-background-checked;
+            }
+        }
+
+        &:disabled:checked ~ .radio-label,
+        &[readonly]:checked ~ .radio-label {
+            &::before {
+                border-color: $_indicator-border-color-checked-disabled;
+                background-color: $_indicator-background-checked-disabled;
+            }
+
+            &::after {
+                color: $_indicator-icon-color-disabled;
+            }
+        }
+
+        &:disabled ~ .radio-label,
+        &[readonly] ~ .radio-label {
+            color: $_color-disabled;
+        }
+
+        &::before {
+            color: $_indicator-icon-color;
+            background-color: $_indicator-background;
+        }
+    }
+}
