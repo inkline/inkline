@@ -1,0 +1,129 @@
+@import '../../css/variables';
+@import '../../css/mixins';
+@import '../IIcon/css/variables';
+@import '../IIcon/css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
+@import 'css/sizes';
+
+.radio {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    outline: none;
+    cursor: pointer;
+    margin-right: var(--radio-margin-right);
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    input {
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 0; // Put the input behind the label so it doesn't overlay text
+        opacity: 0;
+        height: 0;
+        width: 0;
+
+        &:checked ~ .radio-label::after {
+            content: $icon-circle;
+        }
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
+    }
+
+    .radio-label {
+        margin-bottom: 0;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        transition-property: color;
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-easing);
+
+        &::before,
+        &::after {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        &::before {
+            border-radius: 100%;
+            content: "";
+            user-select: none;
+            border-width: var(--radio-indicator-border-width);
+            border-style: solid;
+            margin-right: var(--radio-indicator-margin-right);
+            transition-property: background-color, border-color;
+            transition-duration: var(--transition-duration);
+            transition-timing-function: var(--transition-easing);
+        }
+
+        &::after {
+            @extend %icon;
+
+            position: absolute;
+            top: 50%;
+            left: 0;
+            z-index: 1;
+            text-align: center;
+        }
+    }
+
+    &.-disabled {
+        cursor: default;
+
+        .radio-label {
+            &::before,
+            &::after {
+                cursor: default;
+            }
+        }
+    }
+
+    &.-native {
+        input {
+            top: auto;
+            left: auto;
+            position: relative;
+            opacity: 1;
+            height: auto;
+            width: auto;
+            margin-right: var(--radio-indicator-margin-right);
+        }
+
+        .radio-label {
+            &::after,
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    @include radio-size-variant('md');
+    @each $size-variant-key, $radio-size-variant-value in $radio-size-variants {
+        .form.-#{$size-variant-key} &,
+        .form-group.-#{$size-variant-key} &,
+        &.-#{$size-variant-key} {
+            @include radio-size-variant($size-variant-key);
+        }
+    }
+
+    @include radio-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $radio-color-variants {
+        .form.-#{$color-variant-key} &,
+        .form-group.-#{$color-variant-key} &,
+        &.-#{$color-variant-key} {
+            @include radio-color-variant($color-variant-key);
+        }
+    }
+}

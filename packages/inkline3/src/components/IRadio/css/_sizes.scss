@@ -1,0 +1,20 @@
+@mixin radio-size-variant($size-variant-key) {
+    $_font-size: var(--radio-size-variant-#{$size-variant-key}-font-size);
+    $_indicator-size: var(--radio-size-variant-#{$size-variant-key}-indicator-size);
+    $_indicator-icon-size: var(--radio-size-variant-#{$size-variant-key}-indicator-icon-size);
+
+    .radio-label {
+        font-size: $_font-size;
+
+        &::before,
+        &::after {
+            width: $_indicator-size;
+            height: $_indicator-size;
+        }
+
+        &::after {
+            margin-top: calc(#{$_indicator-size} / -2);
+            font-size: $_indicator-icon-size;
+        }
+    }
+}
