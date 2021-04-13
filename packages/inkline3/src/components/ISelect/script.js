@@ -1,9 +1,16 @@
-import { uid } from '@inkline/inkline/src/helpers';
+import { isKey, uid } from '@inkline/inkline/src/helpers';
 import {
     colorVariantClass,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 import { FormComponentMixin } from '@inkline/inkline/src/mixins';
+import { ClickOutside } from '@inkline/inkline/src/directives';
+import IInput from '@inkline/inkline/src/components/IInput/index.vue';
+import IIcon from '@inkline/inkline/src/components/IIcon/index.vue';
+import IDropdown from '@inkline/inkline/src/components/IDropdown/index.vue';
+import IDropdownItem from '@inkline/inkline/src/components/IDropdown/components/IDropdownItem/index.vue';
+import { getValueByPath } from "@inkline/inkline/src/helpers";
+import { useBaseModifiers, sameWidthModifier } from "@inkline/inkline/src/mixins/PopupMixin";
 
 /**
  * @name prefix
@@ -46,9 +53,32 @@ export default {
          * @event update:modelValue
          * @description Event emitted for setting the modelValue
          */
-        'update:modelValue'
+        'update:modelValue',
+        /**
+         * @event search
+         * @description Event emitted when input value changes
+         */
+        'search'
     ],
+    components: {
+        IInput,
+        IIcon,
+        IDropdown,
+        IDropdownItem
+    },
+    directives: {
+        ClickOutside
+    },
     props: {
+        /**
+         * @description Enable autocomplete functionality
+         * @type Boolean
+         * @default false
+         */
+        autocomplete: {
+            type: Boolean,
+            default: false
+        },
         /**
          * @description The color variant of the select
          * @type light | dark
@@ -86,13 +116,22 @@ export default {
             default: ''
         },
         /**
-         * @description Used to set the field value
-         * @type Boolean
-         * @default false
+         * @description Used to extract the label from the select option and select value
+         * @type String
+         * @default ''
          */
-        modelValue: {
+        label: {
             type: String,
             default: ''
+        },
+        /**
+         * @description Used to set the field value
+         * @type Object
+         * @default null
+         */
+        modelValue: {
+            type: Object,
+            default: null
         },
         /**
          * @description The unique identifier of the select
@@ -104,6 +143,24 @@ export default {
             default() {
                 return uid('select');
             }
+        },
+        /**
+         * @description The options to be displayed in the select component
+         * @type Array
+         * @default []
+         */
+        options: {
+            type: Array,
+            default: () => []
+        },
+        /**
+         * @description The placeholder of the select input
+         * @type String
+         * @default ''
+         */
+        placeholder: {
+            type: String,
+            default: ''
         },
         /**
          * @description The readonly state of the select
@@ -143,7 +200,18 @@ export default {
             default: 'text'
         },
     },
-    inheritAttrs: false,
+    data() {
+        return {
+            open: false,
+            inputValue: getValueByPath(this.modelValue, this.label) || '',
+            popperOptions: {
+                modifiers: [
+                    ...useBaseModifiers({ offset: 8 }),
+                    sameWidthModifier()
+                ]
+            }
+        };
+    },
     computed: {
         classes() {
             return {
@@ -169,22 +237,73 @@ export default {
             }
 
             return this.modelValue;
+        },
+        inputPlaceholder() {
+            return this.value ? getValueByPath(this.value, this.label) : this.placeholder;
         }
     },
     methods: {
-        onBlur(event) {
-            this.parent.onBlur?.(this.name, event);
-        },
-        onInput(event) {
-            this.parent.onInput?.(this.name, event.target.value);
+        onInput(option) {
+            if (option.disabled) {
+                return;
+            }
 
-            this.$emit('update:modelValue', event.target.value);
+            this.parent.onInput?.(this.name, option);
+
+            this.$emit('update:modelValue', option);
+        },
+        onBlur(event) {
+            this.closeSelect();
+
+            this.parent.onBlur?.(this.name, event);
         },
         onClear() {
             this.$emit('update:modelValue', '');
         },
+        onClickOutside() {
+            this.closeSelect();
+        },
+        onInputClick() {
+            this.openSelect();
+
+            if (this.autocomplete) {
+                this.inputValue = '';
+            }
+        },
+        onInputFocus() {
+            this.openSelect();
+
+            if (this.autocomplete) {
+                this.inputValue = '';
+            }
+        },
+        onInputBlur() {
+            this.inputValue = getValueByPath(this.value, this.label);
+        },
+        onInputChange() {
+            this.$emit('search', this.inputValue);
+        },
+        onInputKeydown(event) {
+            if (isKey('space', event)) {
+                event.stopPropagation();
+            }
+        },
         focusInput() {
             this.$refs.input.focus();
+        },
+        openSelect() {
+            this.open = true;
+        },
+        closeSelect() {
+            this.open = false;
+        },
+        getOptionLabel(option) {
+            return getValueByPath(option, this.label);
+        }
+    },
+    watch: {
+        value(value) {
+            this.inputValue = getValueByPath(value, this.label);
         }
     }
 };

@@ -7,6 +7,8 @@
     :class="classes"
     :disabled="disabled"
     :aria-disabled="disabled"
-    :aria-pressed="active">
+    :aria-pressed="active"
+    @click="onClick"
+>
     <slot />
 </component>

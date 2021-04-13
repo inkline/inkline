@@ -69,6 +69,11 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'docs-forms-select' }">
+                        Select
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'docs-forms-textarea' }">
                         Textarea
                     </router-link>

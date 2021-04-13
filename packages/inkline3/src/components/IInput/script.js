@@ -106,6 +106,15 @@ export default {
             }
         },
         /**
+         * @description Display the input as plaintext, disabling interaction
+         * @type Boolean
+         * @default false
+         */
+        plaintext: {
+            type: Boolean,
+            default: false
+        },
+        /**
          * @description The readonly state of the input
          * @type Boolean
          * @default false

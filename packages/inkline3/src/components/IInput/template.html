@@ -17,8 +17,8 @@
             :tabindex="tabIndex"
             :disabled="isDisabled"
             :aria-disabled="isDisabled ? 'true' : false"
-            :readonly="isReadonly"
-            :aria-readonly="isReadonly ? 'true' : false"
+            :readonly="isReadonly || plaintext"
+            :aria-readonly="(isReadonly || plaintext) ? 'true' : false"
             @input="onInput"
             @blur="onBlur">
         <span class="form-input-suffix" v-if="$slots.suffix || clearable">

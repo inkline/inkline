@@ -1,6 +1,56 @@
-<i-dropdown>
-    <i-input />
-    <template #body>
-        HELLO WORLD
-    </template>
-</i-dropdown>
+<div class="select">
+    <i-dropdown
+        v-model="open"
+        ref="dropdown"
+        :disabled="disabled"
+        :popper-options="popperOptions"
+        trigger="manual"
+        hide-on-item-click
+        v-click-outside="onClickOutside"
+        @blur="onBlur"
+    >
+        <i-input
+            v-model="inputValue"
+            ref="input"
+            :tabindex="tabIndex"
+            :plaintext="!autocomplete"
+            :placeholder="inputPlaceholder"
+            @focus="onInputFocus"
+            @blur="onInputBlur"
+            @click="onInputClick"
+            @keydown="onInputKeydown"
+            @update:modelValue="onInputChange"
+        >
+            <template v-if="$slots.prepend" #prepend>
+                <slot name="prepend" />
+            </template>
+            <template v-if="$slots.prefix" #prefix>
+                <slot name="prefix" />
+            </template>
+            <template #suffix>
+                <i-icon name="caret-down" />
+                <slot name="suffix" />
+            </template>
+            <template v-if="$slots.append" #append>
+                <slot name="append" />
+            </template>
+        </i-input>
+        <template v-if="$slots.header" #header>
+            <slot name="header" />
+        </template>
+        <template #body>
+            <i-dropdown-item
+                v-for="option in options"
+                :key="option.id"
+                :active="value && value.id === option.id"
+                :disabled="option.disabled"
+                @click="onInput(option)"
+            >
+                {{ getOptionLabel(option) }}
+            </i-dropdown-item>
+        </template>
+        <template v-if="$slots.footer" #footer>
+            <slot name="footer" />
+        </template>
+    </i-dropdown>
+</div>
