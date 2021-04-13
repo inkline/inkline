@@ -150,6 +150,11 @@ export default {
             validator: sizePropValidator
         },
     },
+    provide() {
+        return {
+            dropdown: this
+        };
+    },
     computed: {
         classes() {
             return {
@@ -258,6 +263,11 @@ export default {
 
                     event.preventDefault();
                     break;
+            }
+        },
+        onItemClick() {
+            if (this.hideOnItemClick) {
+                this.hide();
             }
         }
     },

@@ -1,6 +1,6 @@
 ---
-title: Input
-description: Form component used for inputting data directly from the keyboard. 
+title: Select
+description: Form component used for selecting a value from a large list of options, with autocomplete support. 
 ---
 
 <script setup>
@@ -8,14 +8,15 @@ import * as examples from '../examples';
 </script>
 
 
-# Input
-## Form component used for inputting data directly from the keyboard. 
+# Select
+## Form component used for selecting a value from a large list of options, with autocomplete support
 
 ### Basic Example
-Inputs are the simplest and most used type of form control. Inkline provides you with simple solutions for all the scenarios you will encounter when creating input forms.
+The most basic use case for a select component is to have the select options predefined. You can easily choose from a fixed set of options.
 
 <example :component="examples.ISelectBasicExample" :html="examples.ISelectBasicExampleHTML" :js="examples.ISelectBasicExampleJS"></example>
 
+<!--
 ### Input Type
 Behind the scenes, Inkline uses a native HTML `<input>` element, meaning that you can use the `type` property to define the type of the input, such as `text`, `password`, `date`, `email`, `number`, and so on. By default, the input type is set to `text`.
 
@@ -63,4 +64,4 @@ You're able to use the `size` modifier to control the size of your inputs, using
 
 <example :component="examples.ISelectSizeVariantsExample" :html="examples.ISelectSizeVariantsExampleHTML" :js="examples.ISelectSizeVariantsExampleJS"></example>
 
-
+-->

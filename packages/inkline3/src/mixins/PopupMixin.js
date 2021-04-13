@@ -1,5 +1,55 @@
 import { createPopper } from '@popperjs/core';
 
+export const offsetModifier = (offset) => ({
+    name: 'offset',
+    options: {
+        offset: [0, offset]
+    }
+});
+
+export const arrowModifier = () => ({
+    name: 'arrow',
+    options: {
+        padding: 6, // padding from the edges of the popper
+    },
+});
+
+export const preventOverflowModifier = () => ({
+    name: 'preventOverflow',
+    options: {
+        padding: 8, // padding from the edges of the viewport
+    },
+});
+
+export const computeStylesModifier = () => ({
+    name: 'computeStyles',
+    options: {
+        gpuAcceleration: false,
+        adaptive: false, // true by default
+    },
+});
+
+export const sameWidthModifier = () => ({
+    name: "sameWidth",
+    enabled: true,
+    phase: "beforeWrite",
+    requires: ["computeStyles"],
+    fn: ({ state }) => {
+        state.styles.popper.width = `${state.rects.reference.width}px`;
+    },
+    effect({ state }) {
+        state.elements.popper.style.width = `${state.elements.reference.offsetWidth}px`;
+    }
+});
+
+export const useBaseModifiers = ({ offset }) => [
+    offsetModifier(offset),
+    arrowModifier(),
+    preventOverflowModifier(),
+    computeStylesModifier()
+];
+
+
 /**
  * @param {HTMLElement} [popupElement=$refs.overlay]
  * The HTML element used as overlay, or a configuration used to generate the overlay.
@@ -25,6 +75,10 @@ export default {
         offset: {
             type: Number,
             default: 6
+        },
+        popperOptions: {
+            type: Object,
+            default: () => ({})
         }
     },
     data() {
@@ -38,42 +92,16 @@ export default {
                 return;
             }
 
-            const modifiers = [
-                {
-                    name: 'offset',
-                    options: {
-                        offset: [0, this.offset]
-                    }
-                },
-                {
-                    name: 'arrow',
-                    options: {
-                        padding: 6, // padding from the edges of the popper
-                    },
-                },
-                {
-                    name: 'preventOverflow',
-                    options: {
-                        padding: 8, // padding from the edges of the viewport
-                    },
-                },
-                {
-                    name: 'computeStyles',
-                    options: {
-                        gpuAcceleration: false,
-                        adaptive: false, // true by default
-                    },
-                },
-            ];
+            const modifiers = useBaseModifiers({ offset: this.offset });
 
             this.popperInstance = createPopper(
                 this.$refs.wrapper,
                 this.$refs.popup,
                 {
                     strategy: 'fixed',
-                    modifiers,
                     placement: this.placement,
-                    ...this.popperOptions
+                    modifiers,
+                    ...this.popperOptions,
                 }
             );
         },

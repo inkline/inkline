@@ -36,11 +36,6 @@
             &::placeholder {
                 color: $_placeholder-color;
             }
-
-            &:disabled,
-            &[readonly] {
-                color: $_color-disabled;
-            }
         }
 
         > .form-input-prefix,
@@ -73,6 +68,15 @@
 
             &:hover {
                 border-color: $_border-color;
+            }
+
+            > input,
+            > select,
+            > textarea {
+                &:disabled,
+                &[readonly] {
+                    color: $_color-disabled;
+                }
             }
         }
     }

@@ -6,7 +6,7 @@ export default {
          * @type String
          * @default
          */
-        icon: {
+        name: {
             type: String,
             default: ''
         },
@@ -23,7 +23,7 @@ export default {
     computed: {
         classes() {
             return {
-                [`-${this.icon}`]: Boolean(this.icon),
+                [`-${this.name}`]: Boolean(this.name),
                 [`-${this.size}`]: Boolean(this.size)
             };
         }
