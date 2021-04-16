@@ -10,9 +10,12 @@ export { getStyleProperty } from '@inkline/inkline/src/helpers/getStyleProperty'
 export { hasClass } from '@inkline/inkline/src/helpers/hasClass';
 export { hashString } from '@inkline/inkline/src/helpers/hashString';
 export { isFocusable } from '@inkline/inkline/src/helpers/isFocusable';
+export { isFunction } from '@inkline/inkline/src/helpers/isFunction';
 export { isKey } from '@inkline/inkline/src/helpers/isKey';
 export { isMobile } from '@inkline/inkline/src/helpers/isMobile';
 export { isVisible } from '@inkline/inkline/src/helpers/isVisible';
+export { markSearchString } from '@inkline/inkline/src/helpers/markSearchString';
+export { memoize } from '@inkline/inkline/src/helpers/memoize';
 export { off } from '@inkline/inkline/src/helpers/off';
 export { on } from '@inkline/inkline/src/helpers/on';
 export { once } from '@inkline/inkline/src/helpers/once';
