@@ -8,6 +8,7 @@ import '@inkline/inkline/src/playground/main.scss';
 
 import App from '@inkline/inkline/src/playground/App.vue';
 import Example from '@inkline/inkline/src/playground/components/Example.vue';
+import { useServer } from "@inkline/inkline/src/playground/server";
 
 const routes = [
     { name: 'index', path: '/', component: {}, meta: { path: '' } },
@@ -74,6 +75,8 @@ const router = createRouter({
 
 app.use(Inkline, { components });
 app.use(router);
+
+useServer();
 
 [
     Example
