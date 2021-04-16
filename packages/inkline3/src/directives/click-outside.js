@@ -9,7 +9,7 @@ const onClickOutside = (element, binding) => (e) => {
         return;
     }
 
-    binding.value();
+    binding.value(e);
 };
 
 /**
