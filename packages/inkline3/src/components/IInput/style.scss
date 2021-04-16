@@ -7,13 +7,13 @@
 @import 'css/sizes';
 @import 'css/colors';
 
-.form-input-group {
+.input-wrapper {
     display: block;
     vertical-align: middle;
     position: relative;
 
-    > .form-input-prepend,
-    > .form-input-append {
+    > .input-prepend,
+    > .input-append {
         display: flex;
         flex-flow: row nowrap;
         align-items: stretch;
@@ -30,7 +30,7 @@
         }
     }
 
-    .form-input {
+    .input {
         position: relative;
         display: flex;
         flex: 1 0 auto;
@@ -94,8 +94,10 @@
             }
         }
 
-        .form-input-prefix,
-        .form-input-suffix {
+        .input-prefix,
+        .input-suffix {
+            display: inline-flex;
+            align-items: center;
             z-index: 1;
             font-style: normal;
             transition-property: border-color;
@@ -109,19 +111,19 @@
             }
         }
 
-        .form-input-prefix {
+        .input-prefix {
             padding-right: spacer();
             border-right-width: var(--input-prefix-border-width);
             border-right-style: solid;
         }
 
-        .form-input-suffix {
+        .input-suffix {
             padding-left: spacer();
             border-left-width: var(--input-prefix-border-width);
             border-left-style: solid;
         }
 
-        .form-input-clear {
+        .input-clear {
             transition-property: background-color;
             transition-duration: var(--transition-duration);
             transition-timing-function: var(--transition-easing);
@@ -165,27 +167,27 @@
         display: flex;
         flex-wrap: nowrap;
 
-        > .form-input {
+        > .input {
             flex-shrink: 1;
         }
     }
 
     &.-prepended {
-        > .form-input {
+        > .input {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
     }
 
     &.-appended {
-        > .form-input {
+        > .input {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
         }
     }
 
     &.-error {
-        .form-input {
+        .input {
             border-color: color('danger');
         }
     }

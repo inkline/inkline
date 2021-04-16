@@ -1,12 +1,35 @@
-<i-input v-model="value" placeholder="Type something..">
-    <template #prefix>@</template>
-</i-input>
+<i-select
+    v-model="selected"
+    :options="options"
+    label="name"
+    placeholder="Choose something.."
+>
+    <template #prefix>
+        <span>@</span>
+    </template>
+</i-select>
 
-<i-input v-model="value" placeholder="Type something..">
-    <template #suffix>@</template>
-</i-input>
+<i-select
+    v-model="selected"
+    :options="options"
+    label="name"
+    placeholder="Choose something.."
+>
+    <template #suffix>
+        <span>@</span>
+    </template>
+</i-select>
 
-<i-input v-model="value" placeholder="Type something..">
-    <template #prefix>@</template>
-    <template #suffix>@</template>
-</i-input>
+<i-select
+    v-model="selected"
+    :options="options"
+    label="name"
+    placeholder="Choose something.."
+>
+    <template #prefix>
+        <span>@</span>
+    </template>
+    <template #suffix>
+        <span>@</span>
+    </template>
+</i-select>

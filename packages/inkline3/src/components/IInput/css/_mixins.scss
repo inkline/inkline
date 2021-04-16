@@ -2,7 +2,7 @@
 // Mixins
 //
 
-@mixin form-input-label-size($size) {
+@mixin input-label-size($size) {
     $_font-size: map_get($input-font-size, $size);
     $_padding: map_get($input-padding, $size);
 

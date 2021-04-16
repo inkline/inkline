@@ -2,6 +2,10 @@
 /// Variables
 ////
 
+/// The font weight of the select component
+/// @name font-weight
+$select-font-weight: font-weight('normal') !default;
+
 /// The line height of the select component
 /// @name line-height
 $select-line-height: var(--line-height) !default;
@@ -10,9 +14,25 @@ $select-line-height: var(--line-height) !default;
 /// @name border-width
 $select-border-width: var(--border-width) !default;
 
-/// The border width of the select component
-/// @name prefix-border-width
-$select-prefix-border-width: var(--select-border-width) !default;
+/// The margin of the select component
+/// @name margin
+$select-margin: spacer('1/2') !default;
+
+/// The z-index of the select component
+/// @name z-index
+$select-z-index: 2000 !default;
+
+/// The minimum width of the select component
+/// @name min-width
+$select-min-width: 240px !default;
+
+/// The maximum width of the select component
+/// @name max-width
+$select-max-width: 90vw !default;
+
+/// The margin of the select component divider
+/// @name divider-margin
+$select-divider-margin: spacer('1/2') !default;
 
 /// The border radius of the select component
 /// @name border-radius
@@ -24,23 +44,25 @@ $select-border-radius: border-radius() !default;
 /// @type size
 $select-font-size: font-size() !default;
 
-/// The padding of the select component
+/// The padding of the select component items
 /// @name padding
 /// @type size
 $select-padding: spacer() !default;
 
-/// The padding of the select component prefix and suffix
-/// @name prefix-suffix-padding
+/// The padding of the select component popover body
+/// @name body-padding
 /// @type size
-$select-prefix-suffix-padding: spacer() !default;
+$select-body-padding: spacer() !default;
 
-/// The padding of the select component
-/// @name box-shadow
-$select-box-shadow: inset 0 1px 1px rgba(#{color('black')}, 0.05) !default;
+/// The padding of the select component popover header
+/// @name header-padding
+/// @type size
+$select-header-padding: spacer() !default;
 
-/// The size of the select component icon circle
-/// @name icon-circle-size
-$select-icon-circle-size: 1.2rem !default;
+/// The padding of the select component popover footer
+/// @name footer-padding
+/// @type size
+$select-footer-padding: spacer() !default;
 
 ////
 /// Sizes
@@ -62,17 +84,29 @@ $select-size-variant-sm-border-radius: calc(var(--select-border-radius) * #{size
 /// @type size
 $select-size-variant-sm-font-size: calc(var(--select-font-size) * #{size-multiplier('sm')}) !default;
 
-/// The padding of the select component
+/// The padding of the select component items
 /// @name padding
 /// @group sm
 /// @type size
-$select-size-variant-sm-padding: calc(var(--select-padding) / 2 * #{size-multiplier('sm')}) calc(var(--select-padding) * #{size-multiplier('sm')}) !default;
+$select-size-variant-sm-padding: calc(var(--select-padding) * #{size-multiplier('sm')} / 2) calc(var(--select-padding) * #{size-multiplier('sm')}) !default;
 
-/// The padding of the select component prefix and suffix
-/// @name prefix-suffix-padding
+/// The padding of the select component popover body
+/// @name body-padding
 /// @group sm
 /// @type size
-$select-size-variant-sm-prefix-suffix-padding: calc(var(--select-prefix-suffix-padding) * #{size-multiplier('sm')}) !default;
+$select-size-variant-sm-body-padding: calc(var(--select-body-padding) * #{size-multiplier('sm')}) 0 !default;
+
+/// The padding of the select component popover header
+/// @name header-padding
+/// @group sm
+/// @type size
+$select-size-variant-sm-header-padding: calc(var(--select-header-padding) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the select component popover footer
+/// @name footer-padding
+/// @group sm
+/// @type size
+$select-size-variant-sm-footer-padding: calc(var(--select-footer-padding) * #{size-multiplier('sm')}) !default;
 
 /// Map for sm size
 /// @group sm
@@ -80,7 +114,9 @@ $select-size-variant-sm: (
     'border-radius': $select-size-variant-sm-border-radius,
     'font-size': $select-size-variant-sm-font-size,
     'padding': $select-size-variant-sm-padding,
-    'prefix-suffix-padding': $select-size-variant-sm-prefix-suffix-padding
+    'body-padding': $select-size-variant-sm-body-padding,
+    'header-padding': $select-size-variant-sm-header-padding,
+    'footer-padding': $select-size-variant-sm-footer-padding
 ) !default;
 
 ////
@@ -99,17 +135,29 @@ $select-size-variant-md-border-radius: calc(var(--select-border-radius) * #{size
 /// @type size
 $select-size-variant-md-font-size: calc(var(--select-font-size) * #{size-multiplier('md')}) !default;
 
-/// The padding of the select component
+/// The padding of the select component items
 /// @name padding
 /// @group md
 /// @type size
-$select-size-variant-md-padding: calc(var(--select-padding) / 2 * #{size-multiplier('md')}) calc(var(--select-padding) * #{size-multiplier('md')}) !default;
+$select-size-variant-md-padding: calc(var(--select-padding) * #{size-multiplier('md')} / 2) calc(var(--select-padding) * #{size-multiplier('md')}) !default;
 
-/// The padding of the select component prefix and suffix
-/// @name prefix-suffix-padding
+/// The padding of the select component popover body
+/// @name body-padding
 /// @group md
 /// @type size
-$select-size-variant-md-prefix-suffix-padding: calc(var(--select-prefix-suffix-padding) * #{size-multiplier('md')}) !default;
+$select-size-variant-md-body-padding: calc(var(--select-body-padding) * #{size-multiplier('md')}) 0 !default;
+
+/// The padding of the select component popover header
+/// @name header-padding
+/// @group md
+/// @type size
+$select-size-variant-md-header-padding: calc(var(--select-header-padding) * #{size-multiplier('md')}) !default;
+
+/// The padding of the select component popover footer
+/// @name footer-padding
+/// @group md
+/// @type size
+$select-size-variant-md-footer-padding: calc(var(--select-footer-padding) * #{size-multiplier('md')}) !default;
 
 /// Map for md size
 /// @group md
@@ -117,7 +165,9 @@ $select-size-variant-md: (
     'border-radius': $select-size-variant-md-border-radius,
     'font-size': $select-size-variant-md-font-size,
     'padding': $select-size-variant-md-padding,
-    'prefix-suffix-padding': $select-size-variant-md-prefix-suffix-padding
+    'body-padding': $select-size-variant-md-body-padding,
+    'header-padding': $select-size-variant-md-header-padding,
+    'footer-padding': $select-size-variant-md-footer-padding
 ) !default;
 
 ////
@@ -136,17 +186,29 @@ $select-size-variant-lg-border-radius: calc(var(--select-border-radius) * #{size
 /// @type size
 $select-size-variant-lg-font-size: calc(var(--select-font-size) * #{size-multiplier('lg')}) !default;
 
-/// The padding of the select component
+/// The padding of the select component items
 /// @name padding
 /// @group lg
 /// @type size
-$select-size-variant-lg-padding: calc(var(--select-padding) / 2 * #{size-multiplier('lg')}) calc(var(--select-padding) * #{size-multiplier('lg')}) !default;
+$select-size-variant-lg-padding: calc(var(--select-padding) * #{size-multiplier('lg')} / 2) calc(var(--select-padding) * #{size-multiplier('lg')}) !default;
 
-/// The padding of the select component prefix and suffix
-/// @name prefix-suffix-padding
+/// The padding of the select component popover body
+/// @name body-padding
 /// @group lg
 /// @type size
-$select-size-variant-lg-prefix-suffix-padding: calc(var(--select-prefix-suffix-padding) * #{size-multiplier('lg')}) !default;
+$select-size-variant-lg-body-padding: calc(var(--select-body-padding) * #{size-multiplier('lg')}) 0 !default;
+
+/// The padding of the select component popover header
+/// @name header-padding
+/// @group lg
+/// @type size
+$select-size-variant-lg-header-padding: calc(var(--select-header-padding) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the select component popover footer
+/// @name footer-padding
+/// @group lg
+/// @type size
+$select-size-variant-lg-footer-padding: calc(var(--select-footer-padding) * #{size-multiplier('lg')}) !default;
 
 /// Map for lg size
 /// @group lg
@@ -154,7 +216,9 @@ $select-size-variant-lg: (
     'border-radius': $select-size-variant-lg-border-radius,
     'font-size': $select-size-variant-lg-font-size,
     'padding': $select-size-variant-lg-padding,
-    'prefix-suffix-padding': $select-size-variant-lg-prefix-suffix-padding
+    'body-padding': $select-size-variant-lg-body-padding,
+    'header-padding': $select-size-variant-lg-header-padding,
+    'footer-padding': $select-size-variant-lg-footer-padding
 ) !default;
 
 /// Sizes group map
@@ -172,17 +236,29 @@ $select-size-variants: (
 /// Light color
 ////
 
-/// The color of the select component
+/// The color of the select component item
 /// @name color
 /// @group light
 /// @type color
 $select-color-variant-light-color: contrast-color($color-white) !default;
 
-/// The color of the select component when disabled
+/// The color of the select component item when hovered or focused
+/// @name color-hover
+/// @group light
+/// @type color
+$select-color-variant-light-color-hover: var(--select-color-variant-light-color) !default;
+
+/// The color of the select component item when active
+/// @name color-active
+/// @group light
+/// @type color
+$select-color-variant-light-color-active: var(--select-color-variant-light-color) !default;
+
+/// The color of the select component item when disabled
 /// @name color-disabled
 /// @group light
 /// @type color
-$select-color-variant-light-color-disabled: color('light-75') !default;
+$select-color-variant-light-color-disabled: color('light-65') !default;
 
 /// The background of the select component
 /// @name background
@@ -190,106 +266,85 @@ $select-color-variant-light-color-disabled: color('light-75') !default;
 /// @type color
 $select-color-variant-light-background: color('white') !default;
 
+/// The background of the select component when hovered or focused
+/// @name background-hover
+/// @group light
+/// @type color
+$select-color-variant-light-background-hover: color('light-25') !default;
+
+/// The background of the select component when active
+/// @name background-active
+/// @group light
+/// @type color
+$select-color-variant-light-background-active: color('light-25') !default;
+
 /// The background of the select component when disabled
 /// @name background-disabled
 /// @group light
 /// @type color
-$select-color-variant-light-background-disabled: color('light-25') !default;
+$select-color-variant-light-background-disabled: transparent !default;
 
-/// The border color of the select component
+/// The border-color of the select component
 /// @name border-color
 /// @group light
 /// @type color
 $select-color-variant-light-border-color: color('light') !default;
 
-/// The border color of the select component when hovered
-/// @name border-color-hover
+/// The background of the select component header
+/// @name header-background
 /// @group light
 /// @type color
-$select-color-variant-light-border-color-hover: color('light-55') !default;
+$select-color-variant-light-header-background: color('gray-05') !default;
 
-/// The border color of the select component when focused
-/// @name border-color-focus
+/// The background of the select component footer
+/// @name footer-background
 /// @group light
 /// @type color
-$select-color-variant-light-border-color-focus: color('primary') !default;
-
-/// The color of the select component placeholder
-/// @name placeholder-color
-/// @group light
-/// @type color
-$select-color-variant-light-placeholder-color: color('light-60') !default;
-
-/// The color of the select component prefix and suffix
-/// @name prefix-suffix-color
-/// @group light
-/// @type color
-$select-color-variant-light-prefix-suffix-color: color('light-70') !default;
-
-/// The background of the select component prepend and append
-/// @name prepend-append-background
-/// @group light
-/// @type color
-$select-color-variant-light-prepend-append-background: color('light') !default;
-
-/// The color of the select component clear button
-/// @name clearable-color
-/// @group light
-/// @type color
-$select-color-variant-light-clearable-color: color('light-70') !default;
-
-/// The background of the select component clear button
-/// @name clearable-background
-/// @group light
-/// @type color
-$select-color-variant-light-clearable-background: transparent !default;
-
-/// The background of the select component clear button
-/// @name clearable-background-hover
-/// @group light
-/// @type color
-$select-color-variant-light-clearable-background-hover: color('light-30') !default;
-
-/// The background of the select component clear button
-/// @name clearable-background-active
-/// @group light
-/// @type color
-$select-color-variant-light-clearable-background-active: color('light-40') !default;
+$select-color-variant-light-footer-background: color('gray-05') !default;
 
 /// Map for light color
 /// @group light
 $select-color-variant-light: (
     'color': $select-color-variant-light-color,
+    'color-hover': $select-color-variant-light-color-hover,
+    'color-active': $select-color-variant-light-color-active,
     'color-disabled': $select-color-variant-light-color-disabled,
     'background': $select-color-variant-light-background,
+    'background-hover': $select-color-variant-light-background-hover,
+    'background-active': $select-color-variant-light-background-active,
     'background-disabled': $select-color-variant-light-background-disabled,
     'border-color': $select-color-variant-light-border-color,
-    'border-color-hover': $select-color-variant-light-border-color-hover,
-    'border-color-focus': $select-color-variant-light-border-color-focus,
-    'placeholder-color': $select-color-variant-light-placeholder-color,
-    'prefix-suffix-color': $select-color-variant-light-prefix-suffix-color,
-    'prepend-append-background': $select-color-variant-light-prepend-append-background,
-    'clearable-color': $select-color-variant-light-clearable-color,
-    'clearable-background': $select-color-variant-light-clearable-background,
-    'clearable-background-hover': $select-color-variant-light-clearable-background-hover,
-    'clearable-background-active': $select-color-variant-light-clearable-background-active
+    'header-background': $select-color-variant-light-header-background,
+    'footer-background': $select-color-variant-light-footer-background
 ) !default;
 
 ////
 /// Dark color
 ////
 
-/// The color of the select component
+/// The color of the select component item
 /// @name color
 /// @group dark
 /// @type color
 $select-color-variant-dark-color: contrast-color($color-dark) !default;
 
-/// The color of the select component when disabled
+/// The color of the select component item when hovered or focused
+/// @name color-hover
+/// @group dark
+/// @type color
+$select-color-variant-dark-color-hover: var(--select-color-variant-dark-color) !default;
+
+/// The color of the select component item when active
+/// @name color-active
+/// @group dark
+/// @type color
+$select-color-variant-dark-color-active: var(--select-color-variant-dark-color) !default;
+
+/// The color of the select component item when disabled
 /// @name color-disabled
 /// @group dark
 /// @type color
-$select-color-variant-dark-color-disabled: color('gray-35') !default;
+$select-color-variant-dark-color-disabled: color('dark-25') !default;
 
 /// The background of the select component
 /// @name background
@@ -297,89 +352,56 @@ $select-color-variant-dark-color-disabled: color('gray-35') !default;
 /// @type color
 $select-color-variant-dark-background: color('dark') !default;
 
+/// The background of the select component when hovered or focused
+/// @name background-hover
+/// @group dark
+/// @type color
+$select-color-variant-dark-background-hover: color('dark-45') !default;
+
+/// The background of the select component when active
+/// @name background-active
+/// @group dark
+/// @type color
+$select-color-variant-dark-background-active: color('dark-45') !default;
+
 /// The background of the select component when disabled
 /// @name background-disabled
 /// @group dark
 /// @type color
-$select-color-variant-dark-background-disabled: color('dark-40') !default;
+$select-color-variant-dark-background-disabled: transparent !default;
 
-/// The border color of the select component
+/// The border-color of the select component
 /// @name border-color
 /// @group dark
 /// @type color
-$select-color-variant-dark-border-color: color('dark-40') !default;
+$select-color-variant-dark-border-color: color('dark-60') !default;
 
-/// The border color of the select component when hovered
-/// @name border-color-hover
+/// The background of the select component header
+/// @name header-background
 /// @group dark
 /// @type color
-$select-color-variant-dark-border-color-hover: color('dark-35') !default;
+$select-color-variant-dark-header-background: color('dark-55') !default;
 
-/// The border color of the select component when focused
-/// @name border-color-focus
+/// The background of the select component footer
+/// @name footer-background
 /// @group dark
 /// @type color
-$select-color-variant-dark-border-color-focus: color('primary') !default;
-
-/// The color of the select component placeholder
-/// @name placeholder-color
-/// @group dark
-/// @type color
-$select-color-variant-dark-placeholder-color: color('dark-25') !default;
-
-/// The color of the select component prefix and suffix
-/// @name prefix-suffix-color
-/// @group dark
-/// @type color
-$select-color-variant-dark-prefix-suffix-color: color('dark-25') !default;
-
-/// The background of the select component prepend and append
-/// @name prepend-append-background
-/// @group dark
-/// @type color
-$select-color-variant-dark-prepend-append-background: color('dark') !default;
-
-/// The color of the select component clear button
-/// @name clearable-color
-/// @group dark
-/// @type color
-$select-color-variant-dark-clearable-color: color('dark-30') !default;
-
-/// The background of the select component clear button
-/// @name clearable-background
-/// @group dark
-/// @type color
-$select-color-variant-dark-clearable-background: transparent !default;
-
-/// The background of the select component clear button
-/// @name clearable-background-hover
-/// @group dark
-/// @type color
-$select-color-variant-dark-clearable-background-hover: color('dark-35') !default;
-
-/// The background of the select component clear button
-/// @name clearable-background-active
-/// @group dark
-/// @type color
-$select-color-variant-dark-clearable-background-active: color('dark-30') !default;
+$select-color-variant-dark-footer-background: color('dark-55') !default;
 
 /// Map for dark color
 /// @group dark
 $select-color-variant-dark: (
     'color': $select-color-variant-dark-color,
+    'color-hover': $select-color-variant-dark-color-hover,
+    'color-active': $select-color-variant-dark-color-active,
     'color-disabled': $select-color-variant-dark-color-disabled,
     'background': $select-color-variant-dark-background,
+    'background-hover': $select-color-variant-dark-background-hover,
+    'background-active': $select-color-variant-dark-background-active,
     'background-disabled': $select-color-variant-dark-background-disabled,
     'border-color': $select-color-variant-dark-border-color,
-    'border-color-hover': $select-color-variant-dark-border-color-hover,
-    'border-color-focus': $select-color-variant-dark-border-color-focus,
-    'placeholder-color': $select-color-variant-dark-placeholder-color,
-    'prefix-suffix-color': $select-color-variant-dark-prefix-suffix-color,
-    'prepend-append-background': $select-color-variant-dark-prepend-append-background,
-    'clearable-color': $select-color-variant-dark-clearable-color,
-    'clearable-background': $select-color-variant-dark-clearable-background,
-    'clearable-background-hover': $select-color-variant-dark-clearable-background-hover,
-    'clearable-background-active': $select-color-variant-dark-clearable-background-active
+    'header-background': $select-color-variant-dark-header-background,
+    'footer-background': $select-color-variant-dark-footer-background
 ) !default;
 
 /// Colors group map

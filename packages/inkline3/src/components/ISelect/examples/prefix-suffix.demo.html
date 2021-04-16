@@ -1,12 +1,35 @@
-<i-input v-model="prefix" placeholder="Type something..">
-    <template #prefix>@</template>
-</i-input>
+<i-select
+    v-model="prefix"
+    :options="options"
+    label="name"
+    placeholder="Choose something.."
+>
+    <template #prefix>
+        <span>@</span>
+    </template>
+</i-select>
 
-<i-input v-model="suffix" placeholder="Type something..">
-    <template #suffix>@</template>
-</i-input>
+<i-select
+    v-model="suffix"
+    :options="options"
+    label="name"
+    placeholder="Choose something.."
+>
+    <template #suffix>
+        <span>@</span>
+    </template>
+</i-select>
 
-<i-input v-model="prefixSuffix" placeholder="Type something..">
-    <template #prefix>@</template>
-    <template #suffix>@</template>
-</i-input>
+<i-select
+    v-model="prefixSuffix"
+    :options="options"
+    label="name"
+    placeholder="Choose something.."
+>
+    <template #prefix>
+        <span>@</span>
+    </template>
+    <template #suffix>
+        <span>@</span>
+    </template>
+</i-select>

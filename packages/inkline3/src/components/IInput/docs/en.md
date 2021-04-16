@@ -39,8 +39,7 @@ If you need to be able to quickly clear the value of an input, you can add the `
 <example :component="examples.IInputClearableExample" :html="examples.IInputClearableExampleHTML" :js="examples.IInputClearableExampleJS"></example>
 
 ### Prefix and Suffix
-Inkline allows you to easily add a prefix or suffix to your inputs. Using prefixes and suffixes you can, indicate 
-your input type using an icon or text. 
+Inkline allows you to easily add a prefix or suffix to your inputs. Using prefixes and suffixes you can, for example, indicate the input type using an icon or text. 
 
 <example :component="examples.IInputPrefixSuffixExample" :html="examples.IInputPrefixSuffixExampleHTML" :js="examples.IInputPrefixSuffixExampleJS"></example>
 

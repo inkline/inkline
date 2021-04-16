@@ -7,32 +7,70 @@
 @import 'css/sizes';
 @import 'css/colors';
 
-.select {
+.select-wrapper {
     display: block;
+    position: relative;
 
-    .dropdown-wrapper {
-        display: block;
-        width: 100%;
+    .input-wrapper {
+        * + .inkline-icon.-caret-down {
+            margin-left: spacer();
+        }
     }
 
+    .select {
+        @include popup(('margin': var(--select-margin), 'z-index': var(--select-z-index)));
+        @include popup-arrow();
+        @include popup-arrow-size-variant();
 
+        text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+        list-style: none;
+        line-height: var(--select-line-height);
+        background-clip: padding-box;
+        display: inline-block;
+        white-space: normal;
+        min-width: var(--select-min-width);
+        max-width: var(--select-max-width);
 
-    //@include input-size-variant('md');
-    //@each $size-variant-key, $input-size-variant-value in $input-size-variants {
-    //    .form.-#{$size-variant-key} &,
-    //    .form-group.-#{$size-variant-key} &,
-    //    &.-#{$size-variant-key} {
-    //        @include input-size-variant($size-variant-key);
-    //    }
-    //}
-    //
-    //@include input-color-variant('light');
-    //@each $color-variant-key, $color-variant-value in $input-color-variants {
-    //    .form.-#{$color-variant-key} &,
-    //    .form-group.-#{$color-variant-key} &,
-    //    &.-#{$color-variant-key} {
-    //        @include input-color-variant($color-variant-key);
-    //    }
-    //}
+        > .select-header {
+            border-width: var(--select-border-width) var(--select-border-width) 0;
+            border-style: solid;
+        }
+
+        > .select-body {
+            border-width: var(--select-border-width);
+            border-style: solid;
+            max-height: 300px;
+            overflow: auto;
+
+            .select-option {
+                mark {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+
+            .select-no-results {
+                text-align: center;
+            }
+        }
+
+        > .select-footer {
+            border-width: 0 var(--select-border-width) var(--select-border-width);
+            border-style: solid;
+        }
+
+        @include select-size-variant('md');
+        @each $size-variant-key, $select-size-variant-value in $select-size-variants {
+            &.-#{$size-variant-key} {
+                @include select-size-variant($size-variant-key);
+            }
+        }
+
+        @include select-color-variant('light');
+        @each $color-variant-key, $color-variant-value in $select-color-variants {
+            &.-#{$color-variant-key} {
+                @include select-color-variant($color-variant-key);
+            }
+        }
+    }
 }
-

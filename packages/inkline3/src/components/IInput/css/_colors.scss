@@ -15,7 +15,7 @@
     $_clearable-background-hover: var(--input-color-variant-#{$color-variant-key}-clearable-background-hover);
     $_clearable-background-active: var(--input-color-variant-#{$color-variant-key}-clearable-background-active);
 
-    > .form-input {
+    > .input {
         color: $_color;
         background-color: $_background;
         border-color: $_border-color;
@@ -38,13 +38,13 @@
             }
         }
 
-        > .form-input-prefix,
-        > .form-input-suffix {
+        > .input-prefix,
+        > .input-suffix {
             color: $_prefix-suffix-color;
             border-color: $_border-color;
         }
 
-        .form-input-clear {
+        .input-clear {
             color: $_clearable-color;
             background-color: $_clearable-background;
 
@@ -62,7 +62,7 @@
 
     &.-disabled,
     &.-readonly {
-        > .form-input {
+        > .input {
             color: $_color-disabled;
             background-color: $_background-disabled;
 
@@ -82,7 +82,7 @@
     }
 
     &.-readonly {
-        > .form-input {
+        > .input {
             &:focus-within {
                 outline: 0;
                 border-color: $_border-color-focus;
@@ -90,8 +90,8 @@
         }
     }
 
-    .form-input-prepend,
-    .form-input-append {
+    .input-prepend,
+    .input-append {
         background-color: $_prepend-append-background;
     }
 }

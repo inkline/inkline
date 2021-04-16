@@ -1,10 +1,10 @@
-<div class="form-input-group" :class="classes">
+<div class="input-wrapper" :class="classes">
     {{ schema }}
-    <div class="form-input-prepend" v-if="$slots.prepend">
+    <div class="input-prepend" v-if="$slots.prepend">
         <slot name="prepend" />
     </div>
-    <div class="form-input">
-        <span class="form-input-prefix" v-if="$slots.prefix">
+    <div class="input">
+        <span class="input-prefix" v-if="$slots.prefix">
             <slot name="prefix" />
         </span>
         <textarea
@@ -20,14 +20,14 @@
             :aria-readonly="isReadonly ? 'true' : false"
             @input="onInput"
             @blur="onBlur" />
-        <span class="form-input-suffix" v-if="$slots.suffix || clearable">
+        <span class="input-suffix" v-if="$slots.suffix || clearable">
             <slot name="clearable" :clear="onClear">
-                <i class="form-input-clear" aria-label="Clear" v-show="isClearable" @click="onClear"></i>
+                <i class="input-clear" aria-label="Clear" v-show="isClearable" @click="onClear"></i>
             </slot>
             <slot name="suffix" />
         </span>
     </div>
-    <div class="form-input-append" v-if="$slots.append">
+    <div class="input-append" v-if="$slots.append">
         <slot name="append" />
     </div>
 </div>
