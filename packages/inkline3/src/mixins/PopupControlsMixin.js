@@ -1,4 +1,4 @@
-import {on, off, isFocusable} from "@inkline/inkline/src/helpers";
+import { on, off, focusFirstDescendant } from "@inkline/inkline/src/helpers";
 
 export default {
     props: {
@@ -34,7 +34,7 @@ export default {
             this.$emit('update:modelValue', true);
         },
         hide() {
-            if (this.disabled) {
+            if (this.disabled || !this.visible) {
                 return;
             }
 
@@ -105,7 +105,7 @@ export default {
         },
         focusTrigger() {
             for (const child of this.$refs.trigger.children) {
-                if (isFocusable(child)) {
+                if (focusFirstDescendant(child)) {
                     child.focus();
                     break;
                 }
