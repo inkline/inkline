@@ -1,20 +1,36 @@
-<i-input v-model="prepend" placeholder="Type something..">
+<i-select
+    v-model="prepend"
+    :options="options"
+    label="name"
+    placeholder="Choose something.."
+>
     <template #prepend>
-        <span>https://</span>
+        <span>I choose</span>
     </template>
-</i-input>
+</i-select>
 
-<i-input v-model="append" placeholder="Type something..">
+<i-select
+    v-model="append"
+    :options="options"
+    label="name"
+    placeholder="Choose something.."
+>
     <template #append>
-        <span>.com</span>
+        <span>as an example</span>
     </template>
-</i-input>
+</i-select>
 
-<i-input v-model="prependAppend" placeholder="Type something..">
+<i-select
+    v-model="prependAppend"
+    :options="options"
+    label="name"
+    placeholder="Choose something.."
+>
     <template #prepend>
-        <span>https://</span>
+        <span>I choose</span>
     </template>
     <template #append>
-        <span>.com</span>
+        <span>as an example</span>
     </template>
-</i-input>
+</i-select>
+

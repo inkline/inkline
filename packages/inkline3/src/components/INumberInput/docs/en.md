@@ -46,8 +46,7 @@ If you need to be able to quickly clear the value of a number input, you can add
 <example :component="examples.INumberInputClearableExample" :html="examples.INumberInputClearableExampleHTML" :js="examples.INumberInputClearableExampleJS"></example>
 
 ### Prefix and Suffix
-Inkline allows you to easily add a prefix or suffix to your number inputs. Using prefixes and suffixes you can, indicate 
-your number input type using an icon or text. 
+Inkline allows you to easily add a prefix or suffix to your number inputs. Using prefixes and suffixes you can, for example, indicate your number input type using an icon or text. 
 
 <example :component="examples.INumberInputPrefixSuffixExample" :html="examples.INumberInputPrefixSuffixExampleHTML" :js="examples.INumberInputPrefixSuffixExampleJS"></example>
 

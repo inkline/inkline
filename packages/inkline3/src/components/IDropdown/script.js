@@ -86,6 +86,24 @@ export default {
             default: true
         },
         /**
+         * @description The keydown events bound to the trigger element
+         * @type string[]
+         * @default [up, down, enter, space, tab, esc]
+         */
+        keydownTrigger: {
+            type: Array,
+            default: () => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+        },
+        /**
+         * @description The keydown events bound to the dropdown item elements
+         * @type string[]
+         * @default [up, down, enter, space, tab, esc]
+         */
+        keydownItem: {
+            type: Array,
+            default: () => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+        },
+        /**
          * @description Used to manually control the visibility of the dropdown
          * @type Boolean
          * @default false
@@ -185,14 +203,18 @@ export default {
             return focusableItems;
         },
         onTriggerKeyDown(event) {
+            if (this.keydownTrigger.length === 0) {
+                return;
+            }
+
             const focusableItems = this.getFocusableItems();
             const activeIndex = focusableItems.findIndex((item) => item.active);
             const initialIndex = activeIndex > -1 ? activeIndex : 0;
             const focusTarget = focusableItems[initialIndex];
 
             switch (true) {
-                case isKey('up', event):
-                case isKey('down', event):
+                case isKey('up', event) && this.keydownTrigger.includes('up'):
+                case isKey('down', event) && this.keydownTrigger.includes('down'):
                     this.show();
 
                     setTimeout(() => {
@@ -203,8 +225,8 @@ export default {
                     event.stopPropagation();
                     break;
 
-                case isKey('enter', event):
-                case isKey('space', event):
+                case isKey('enter', event) && this.keydownTrigger.includes('enter'):
+                case isKey('space', event) && this.keydownTrigger.includes('space'):
                     this.onClick();
 
                     if (!this.visible) {
@@ -216,16 +238,20 @@ export default {
                     event.preventDefault();
                     break;
 
-                case isKey('tab', event):
-                case isKey('esc', event):
+                case isKey('tab', event) && this.keydownTrigger.includes('tab'):
+                case isKey('esc', event) && this.keydownTrigger.includes('esc'):
                     this.hide();
                     break;
             }
         },
         onItemKeyDown(event) {
+            if (this.keydownItem.length === 0) {
+                return;
+            }
+
             switch (true) {
-                case isKey('up', event):
-                case isKey('down', event):
+                case isKey('up', event) && this.keydownItem.includes('up'):
+                case isKey('down', event) && this.keydownItem.includes('down'):
                     const focusableItems = this.getFocusableItems();
 
                     const currentIndex = focusableItems.findIndex((item) => item === event.target);
@@ -244,8 +270,8 @@ export default {
                     event.stopPropagation();
                     break;
 
-                case isKey('enter', event):
-                case isKey('space', event):
+                case isKey('enter', event) && this.keydownItem.includes('enter'):
+                case isKey('space', event) && this.keydownItem.includes('space'):
                     event.target.click();
 
                     if (this.hideOnItemClick) {
@@ -256,8 +282,8 @@ export default {
                     event.preventDefault();
                     break;
 
-                case isKey('tab', event):
-                case isKey('esc', event):
+                case isKey('tab', event) && this.keydownItem.includes('tab'):
+                case isKey('esc', event) && this.keydownItem.includes('esc'):
                     this.hide();
                     this.focusTrigger();
 

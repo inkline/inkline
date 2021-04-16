@@ -1,56 +1,77 @@
-<div class="select">
-    <i-dropdown
-        v-model="open"
-        ref="dropdown"
-        :disabled="disabled"
-        :popper-options="popperOptions"
-        trigger="manual"
-        hide-on-item-click
-        v-click-outside="onClickOutside"
+<div
+    class="select-wrapper"
+    ref="wrapper"
+    v-click-outside="onClickOutside"
+    @keyup.esc="onEscape"
+>
+    <i-input
+        v-model="inputValue"
+        ref="trigger"
+        :disabled="isDisabled"
+        :readonly="isReadonly"
+        :tabindex="tabIndex"
+        :plaintext="!autocomplete"
+        :placeholder="inputPlaceholder"
+        :clearable="value && clearable"
+        :color="color"
+        :size="size"
+        @click="onClick"
+        @focus="onFocus"
         @blur="onBlur"
+        @clear="onClear"
+        @keydown="onTriggerKeyDown"
     >
-        <i-input
-            v-model="inputValue"
-            ref="input"
-            :tabindex="tabIndex"
-            :plaintext="!autocomplete"
-            :placeholder="inputPlaceholder"
-            @focus="onInputFocus"
-            @blur="onInputBlur"
-            @click="onInputClick"
-            @keydown="onInputKeydown"
-            @update:modelValue="onInputChange"
-        >
-            <template v-if="$slots.prepend" #prepend>
-                <slot name="prepend" />
-            </template>
-            <template v-if="$slots.prefix" #prefix>
-                <slot name="prefix" />
-            </template>
-            <template #suffix>
-                <i-icon name="caret-down" />
-                <slot name="suffix" />
-            </template>
-            <template v-if="$slots.append" #append>
-                <slot name="append" />
-            </template>
-        </i-input>
-        <template v-if="$slots.header" #header>
-            <slot name="header" />
+        <template v-if="$slots.prepend" #prepend>
+            <slot name="prepend" />
         </template>
-        <template #body>
-            <i-dropdown-item
-                v-for="option in options"
-                :key="option.id"
-                :active="value && value.id === option.id"
-                :disabled="option.disabled"
-                @click="onInput(option)"
-            >
-                {{ getOptionLabel(option) }}
-            </i-dropdown-item>
+        <template v-if="$slots.prefix" #prefix>
+            <slot name="prefix" />
         </template>
-        <template v-if="$slots.footer" #footer>
-            <slot name="footer" />
+        <template #suffix>
+            <slot name="suffix" />
+            <i-icon name="caret-down" @click="onCaretClick" />
         </template>
-    </i-dropdown>
+        <template v-if="$slots.append" #append>
+            <slot name="append" />
+        </template>
+    </i-input>
+
+    <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
+        <div class="select" ref="popup" :class="classes" v-show="visible">
+            <span data-popper-arrow v-if="arrow" />
+            <div class="select-header" v-if="$slots.header">
+                <slot name="header" />
+            </div>
+            <div class="select-body" ref="body" @scroll="onScroll">
+                <div class="select-no-results" v-if="options.length === 0">
+                    <slot name="no-results">
+                        There are no results for your query.
+                    </slot>
+                </div>
+                <div class="select-options" ref="options">
+                    <i-select-option
+                        v-for="option in options"
+                        :key="option[idField]"
+                        :active="value && value[idField] === option[idField]"
+                        :disabled="option.disabled"
+                        :value="option"
+                        @click="onInput(option)"
+                        @keydown="onItemKeyDown"
+                    >
+                        <i-mark
+                            v-if="autocomplete && inputValue !== computeLabel(option)"
+                            :text="computeLabel(option)"
+                            :query="inputValue"
+                        />
+                        <template v-else>
+                            {{ computeLabel(option) }}
+                        </template>
+                    </i-select-option>
+                </div>
+            </div>
+            <div class="select-footer" v-if="$slots.footer">
+                <slot name="footer" />
+            </div>
+        </div>
+    </transition>
 </div>

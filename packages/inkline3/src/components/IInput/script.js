@@ -46,7 +46,12 @@ export default {
          * @event update:modelValue
          * @description Event emitted for setting the modelValue
          */
-        'update:modelValue'
+        'update:modelValue',
+        /**
+         * @event clear
+         * @description Event emitted when clearing the input element
+         */
+        'clear'
     ],
     props: {
         /**
@@ -83,7 +88,7 @@ export default {
          */
         id: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * @description Used to set the field value
@@ -170,7 +175,7 @@ export default {
             return this.isDisabled ? -1 : this.tabindex;
         },
         isClearable() {
-            return this.clearable && !this.isDisabled && !this.isReadonly && this.modelValue !== '';
+            return this.clearable && !this.isDisabled && !this.isReadonly && this.value !== '';
         },
         value() {
             if (this.schema) {
@@ -189,10 +194,11 @@ export default {
 
             this.$emit('update:modelValue', event.target.value);
         },
-        onClear() {
+        onClear(event) {
             this.$emit('update:modelValue', '');
+            this.$emit('clear', event);
         },
-        focusInput() {
+        focus() {
             this.$refs.input.focus();
         }
     }

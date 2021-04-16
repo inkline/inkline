@@ -1,3 +1,13 @@
-<i-input v-model="light" color="light" placeholder="Type something.." />
+<i-select
+    v-model="dark"
+    :options="options"
+    placeholder="Choose something.."
+    color="light"
+/>
 
-<i-input v-model="dark" color="dark" placeholder="Type something.." />
+<i-select
+    v-model="dark"
+    :options="options"
+    placeholder="Choose something.."
+    color="dark"
+/>

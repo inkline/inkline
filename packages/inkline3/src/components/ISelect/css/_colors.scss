@@ -1,93 +1,77 @@
-@mixin input-color-variant($color-variant-key) {
-    $_color: var(--input-color-variant-#{$color-variant-key}-color);
-    $_color-disabled: var(--input-color-variant-#{$color-variant-key}-color-disabled);
-    $_background: var(--input-color-variant-#{$color-variant-key}-background);
-    $_background-disabled: var(--input-color-variant-#{$color-variant-key}-background-disabled);
-    $_border-color: var(--input-color-variant-#{$color-variant-key}-border-color);
-    $_border-color-hover: var(--input-color-variant-#{$color-variant-key}-border-color-hover);
-    $_border-color-focus: var(--input-color-variant-#{$color-variant-key}-border-color-focus);
-    $_placeholder-color: var(--input-color-variant-#{$color-variant-key}-placeholder-color);
-    $_prefix-suffix-color: var(--input-color-variant-#{$color-variant-key}-prefix-suffix-color);
-    $_prepend-append-background: var(--input-color-variant-#{$color-variant-key}-prepend-append-background);
-    $_clearable-color: var(--input-color-variant-#{$color-variant-key}-clearable-color);
-    $_clearable-color-hover: var(--input-color-variant-#{$color-variant-key}-clearable-color-hover);
-    $_clearable-background: var(--input-color-variant-#{$color-variant-key}-clearable-background);
-    $_clearable-background-hover: var(--input-color-variant-#{$color-variant-key}-clearable-background-hover);
-    $_clearable-background-active: var(--input-color-variant-#{$color-variant-key}-clearable-background-active);
+@mixin select-color-variant($color-variant-key) {
+    $_color: var(--select-color-variant-#{$color-variant-key}-color);
+    $_color-hover: var(--select-color-variant-#{$color-variant-key}-color-hover);
+    $_color-disabled: var(--select-color-variant-#{$color-variant-key}-color-disabled);
+    $_color-active: var(--select-color-variant-#{$color-variant-key}-color-active);
+    $_background: var(--select-color-variant-#{$color-variant-key}-background);
+    $_background-hover: var(--select-color-variant-#{$color-variant-key}-background-hover);
+    $_background-disabled: var(--select-color-variant-#{$color-variant-key}-background-disabled);
+    $_background-active: var(--select-color-variant-#{$color-variant-key}-background-active);
+    $_border-color: var(--select-color-variant-#{$color-variant-key}-border-color);
+    $_header-background: var(--select-color-variant-#{$color-variant-key}-header-background);
+    $_footer-background: var(--select-color-variant-#{$color-variant-key}-footer-background);
 
-    > .form-input {
-        color: $_color;
+    color: $_color;
+
+    > .select-header {
+        border-color: $_border-color;
+        background-color: $_header-background;
+    }
+
+    > .select-body {
         background-color: $_background;
         border-color: $_border-color;
 
-        &:hover {
-            border-color: $_border-color-hover;
-        }
-
-        &:focus-within {
-            border-color: $_border-color-focus;
-        }
-
-        > input,
-        > select,
-        > textarea {
+        .select-option {
             color: $_color;
-
-            &::placeholder {
-                color: $_placeholder-color;
-            }
-
-            &:disabled,
-            &[readonly] {
-                color: $_color-disabled;
-            }
-        }
-
-        > .form-input-prefix,
-        > .form-input-suffix {
-            color: $_prefix-suffix-color;
             border-color: $_border-color;
+
+            &:not(.-disabled):not(.-plaintext) {
+                &:hover,
+                &:focus {
+                    color: $_color-hover;
+                    background: $_background-hover;
+                }
+            }
+
+            &.-disabled {
+                color: $_color-disabled;
+                background: $_background-disabled;
+            }
+
+            &.-active {
+                color: $_color-active;
+                background: $_background-active;
+            }
         }
 
-        .form-input-clear {
-            color: $_clearable-color;
-            background-color: $_clearable-background;
-
-            &:hover,
-            &:focus {
-                color: $_clearable-color-hover;
-                background-color: $_clearable-background-hover;
-            }
-
-            &:active {
-                background-color: $_clearable-background-active;
-            }
-        }
-    }
-
-    &.-disabled,
-    &.-readonly {
-        > .form-input {
-            color: $_color-disabled;
-            background-color: $_background-disabled;
-
-            &:hover {
-                border-color: $_border-color;
-            }
+        .select-divider {
+            background-color: $_border-color;
         }
     }
 
-    &.-readonly {
-        > .form-input {
-            &:focus-within {
-                outline: 0;
-                border-color: $_border-color-focus;
-            }
-        }
+    > .select-footer {
+        border-color: $_border-color;
+        background-color: $_footer-background;
     }
 
-    .form-input-prepend,
-    .form-input-append {
-        background-color: $_prepend-append-background;
-    }
+    @include popup-arrow-color-variant-for-side('top', (
+        'background': $_footer-background,
+        'border-color': $_border-color
+    ));
+
+    @include popup-arrow-color-variant-for-side('bottom', (
+        'background': $_header-background,
+        'border-color': $_border-color
+    ));
+
+    @include popup-arrow-color-variant-for-side('left', (
+        'background': $_background,
+        'border-color': $_border-color
+    ));
+
+    @include popup-arrow-color-variant-for-side('right', (
+        'background': $_background,
+        'border-color': $_border-color
+    ));
 }

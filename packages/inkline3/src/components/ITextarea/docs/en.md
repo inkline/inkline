@@ -31,8 +31,7 @@ If you need to be able to quickly clear the value of an textarea, you can add th
 <example :component="examples.ITextareaClearableExample" :html="examples.ITextareaClearableExampleHTML" :js="examples.ITextareaClearableExampleJS"></example>
 
 ### Prefix and Suffix
-Inkline allows you to easily add a prefix or suffix to your textareas. Using prefixes and suffixes you can, indicate 
-your textarea type using an icon or text. 
+Inkline allows you to easily add a prefix or suffix to your textareas. Using prefixes and suffixes you can, for example, indicate the textarea type using an icon or text. 
 
 <example :component="examples.ITextareaPrefixSuffixExample" :html="examples.ITextareaPrefixSuffixExampleHTML" :js="examples.ITextareaPrefixSuffixExampleJS"></example>
 

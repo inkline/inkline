@@ -4,8 +4,8 @@
     $_padding: var(--input-size-variant-#{$size-variant-key}-padding);
     $_prefix-suffix-padding: var(--input-size-variant-#{$size-variant-key}-prefix-suffix-padding);
 
-    > .form-input-prepend,
-    > .form-input-append {
+    > .input-prepend,
+    > .input-append {
         font-size: $_font-size;
 
         > * {
@@ -19,19 +19,19 @@
         }
     }
 
-    > .form-input-prepend,
-    > .form-input-prepend > *:first-child {
+    > .input-prepend,
+    > .input-prepend > *:first-child {
         border-top-left-radius: $_border-radius;
         border-bottom-left-radius: $_border-radius;
     }
 
-    > .form-input-append,
-    > .form-input-append > *:last-child {
+    > .input-append,
+    > .input-append > *:last-child {
         border-top-right-radius: $_border-radius;
         border-bottom-right-radius: $_border-radius;
     }
 
-    > .form-input {
+    > .input {
         border-radius: $_border-radius;
         font-size: $_font-size;
 
@@ -41,8 +41,8 @@
             padding: $_padding;
         }
 
-        > .form-input-prefix,
-        > .form-input-suffix {
+        > .input-prefix,
+        > .input-suffix {
             padding-left: $_prefix-suffix-padding;
             padding-right: $_prefix-suffix-padding;
         }
