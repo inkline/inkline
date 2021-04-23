@@ -68,7 +68,7 @@ export default {
     <template slot="icon">
         <i class="inkline-icon -info h3"></i>
     </template>
-    The following keywords are reserved for validation purpopses and cannot be used as field names:
+    The following keywords are reserved for validation purposes and cannot be used as field names:
     <div class="_margin-top-1-2"></div>
     <code>name</code>,
     <code>value</code>,
