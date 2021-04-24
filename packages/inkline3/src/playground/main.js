@@ -24,6 +24,10 @@ const routes = [
     { name: 'docs-forms-number-input', path: '/docs/forms/number-input', component: () => import('../components/INumberInput/docs/en.md') },
     { name: 'docs-forms-radio', path: '/docs/forms/radio', component: () => import('../components/IRadio/docs/en.md') },
     { name: 'docs-forms-select', path: '/docs/forms/select', component: () => import('../components/ISelect/docs/en.md') },
+    { name: 'docs-forms-select-pagination', path: '/docs/forms/select/pagination', component: () => import('../components/ISelect/docs/pagination/en.md') },
+    { name: 'docs-forms-select-autocomplete', path: '/docs/forms/select/autocomplete', component: () => import('../components/ISelect/docs/autocomplete/en.md') },
+    { name: 'docs-forms-select-rendering', path: '/docs/forms/select/rendering', component: () => import('../components/ISelect/docs/rendering/en.md') },
+    { name: 'docs-forms-select-advanced', path: '/docs/forms/select/advanced', component: () => import('../components/ISelect/docs/advanced/en.md') },
     { name: 'docs-forms-textarea', path: '/docs/forms/textarea', component: () => import('../components/ITextarea/docs/en.md') },
     { name: 'docs-forms-toggle', path: '/docs/forms/toggle', component: () => import('../components/IToggle/docs/en.md') },
     { name: 'docs-components-alert', path: '/docs/components/alert', component: () => import('../components/IAlert/docs/en.md') },
@@ -73,7 +77,12 @@ const router = createRouter({
     routes
 });
 
-app.use(Inkline, { components });
+app.use(Inkline, {
+    components,
+    icons: {
+        fa
+    }
+});
 app.use(router);
 
 useServer();
