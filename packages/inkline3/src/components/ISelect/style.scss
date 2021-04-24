@@ -12,8 +12,12 @@
     position: relative;
 
     .input-wrapper {
-        * + .inkline-icon.-caret-down {
+        * + .select-caret {
             margin-left: spacer();
+        }
+
+        .select-caret {
+            cursor: pointer;
         }
     }
 

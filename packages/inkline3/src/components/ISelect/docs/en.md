@@ -1,6 +1,6 @@
 ---
 title: Select
-description: Form component used for selecting a value from a large list of options, with autocomplete support. 
+description: Form component used for selecting a value from a large list of options, with autocomplete and pagination support. 
 ---
 
 <script setup>
@@ -9,7 +9,7 @@ import * as examples from '../examples';
 
 
 # Select
-## Form component used for selecting a value from a large list of options, with autocomplete support
+## Form component used for selecting a value from a large list of options, with autocomplete and pagination support
 
 ### Basic Example
 The most basic use case for a select component is to have all the select options predefined using the `options` property. This component allows you to easily choose from a set of values and display a computed option label of your choice.
@@ -64,31 +64,11 @@ You're able to use the `size` modifier to control the size of your select, using
 <example :component="examples.ISelectSizeVariantsExample" :html="examples.ISelectSizeVariantsExampleHTML" :js="examples.ISelectSizeVariantsExampleJS"></example>
 
 ### Header and Footer
+You can provide a custom header and footer for the select menu using the `header` and `footer` slots.
+
+<example :component="examples.ISelectHeaderFooterExample" :html="examples.ISelectHeaderFooterExampleHTML" :js="examples.ISelectHeaderFooterExampleJS"></example>
 
 ### Custom Label
-
-### Autocomplete
-Autocomplete functionality can be enabled using the `autocomplete` property. There are some considerations to be made when using autocomplete:
-- Search functionality is handled externally, using the `@search` event
-- You must provide a loading state using the `loading` property, if done asynchronously
-- You must update the available `options` array manually
-
-<example :component="examples.ISelectAutocompleteExample" :html="examples.ISelectAutocompleteExampleHTML" :js="examples.ISelectAutocompleteExampleJS"></example>
-
-### Infinite Scrolling
-There are some considerations to be made when using infinite scrolling:
-- Pagination functionality is handled externally, using the `@pagination` event
-- You must provide a total number of options using the `total` property
-- You must provide a loading state using the `loading` property
-- You must update the available `options` array manually
-
-### Complex Example
-The select component provides support for more complex scenarios as well, such as combining asynchronous search with infinite scrolling pagination. 
-
-Here you can see an example using asynchronous autocomplete and infinite scrolling pagination:
-
-<example :component="examples.ISelectComplexExample" :html="examples.ISelectComplexExampleHTML" :js="examples.ISelectComplexExampleJS"></example>
-
 
 
 

@@ -1,55 +1,25 @@
-import qs from 'qs';
-
 export default {
     data () {
+        const defaultOptions = [
+            { id: 1, label: 'Richard Hendricks' },
+            { id: 2, label: 'Bertram Gilfoyle' },
+            { id: 3, label: 'Dinesh Chugtai' },
+            { id: 4, label: 'Jared Dunn' },
+            { id: 5, label: 'Erlich Bachman' },
+        ];
+
         return {
             selected: null,
-            loading: false,
-            options: [],
-            total: 0,
-            params: {
-                page: 1,
-                rowsPerPage: 25,
-                query: ''
-            }
+            options: defaultOptions,
+            defaultOptions
         };
     },
     methods: {
-        async fetchOptions() {
-            this.loading = true;
-
-            const response = await fetch(`/api/users?${qs.stringify(this.params)}`);
-            const { items, total } = await response.json();
-
-            if (this.params.page === 1) {
-                this.options = items;
-            } else {
-                this.options = this.options.concat(items);
-            }
-
-            this.total = total;
-            this.loading = false;
-        },
-        async onSearch(query) {
-            if (query === '' || query === this.renderLabel(this.selected)) {
-                return;
-            }
-
-            this.params.page = 1;
-            this.params.query = query;
-
-            await this.fetchOptions();
-        },
-        async onPagination() {
-            this.params.page += 1;
-
-            await this.fetchOptions();
-        },
-        renderLabel(option) {
-            return option ? `${option.firstName} ${option.lastName}` : '';
+        onSearch(query) {
+            this.options = this.defaultOptions
+                .filter((option) => {
+                    return option.label.toLowerCase().includes((query || '').toLowerCase())
+                });
         }
-    },
-    mounted() {
-        this.fetchOptions();
     }
 }
