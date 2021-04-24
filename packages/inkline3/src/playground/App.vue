@@ -69,9 +69,34 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'docs-forms-select' }">
-                        Select
-                    </router-link>
+                    Select
+                    <ul>
+                        <li>
+                            <router-link :to="{ name: 'docs-forms-select' }">
+                                Introduction
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'docs-forms-select-pagination' }">
+                                Pagination
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'docs-forms-select-autocomplete' }">
+                                Autocomplete
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'docs-forms-select-rendering' }">
+                                Rendering
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'docs-forms-select-advanced' }">
+                                Advanced
+                            </router-link>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <router-link :to="{ name: 'docs-forms-textarea' }">
