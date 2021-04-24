@@ -29,7 +29,7 @@
         </template>
         <template #suffix>
             <slot name="suffix" />
-            <i-icon name="caret-down" @click="onCaretClick" />
+            <i-icon class="select-caret" name="caret-down" @click="onCaretClick" />
         </template>
         <template v-if="$slots.append" #append>
             <slot name="append" />
@@ -58,14 +58,16 @@
                         @click="onInput(option)"
                         @keydown="onItemKeyDown"
                     >
-                        <i-mark
-                            v-if="autocomplete && inputValue !== computeLabel(option)"
-                            :text="computeLabel(option)"
-                            :query="inputValue"
-                        />
-                        <template v-else>
-                            {{ computeLabel(option) }}
-                        </template>
+                        <slot name="option" :option="option">
+                            <i-mark
+                                v-if="autocomplete && inputValue !== computeLabel(option)"
+                                :text="computeLabel(option)"
+                                :query="inputValue"
+                            />
+                            <template v-else>
+                                {{ computeLabel(option) }}
+                            </template>
+                        </slot>
                     </i-select-option>
                 </div>
             </div>

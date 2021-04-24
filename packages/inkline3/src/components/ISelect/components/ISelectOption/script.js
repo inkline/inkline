@@ -59,12 +59,5 @@ export default {
         tabIndex() {
             return this.disabled ? -1 : this.tabindex;
         }
-    },
-    methods: {
-        onClick(event) {
-            if (this.select.onItemClick) {
-                this.select.onItemClick(this, event);
-            }
-        }
     }
 };
