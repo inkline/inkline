@@ -4,8 +4,8 @@
 @import '../../../../css/variables';
 @import '../../../../css/mixins';
 @import '../../css/variables';
-@import '../../../IIcon/css/variables';
-@import '../../../IIcon/css/mixins';
+// @import '../../../IIcon/css/variables';
+// @import '../../../IIcon/css/mixins';
 
 .collapsible {
     > .collapsible-item {
@@ -30,11 +30,11 @@
                 transition-timing-function: var(--transition-easing);
                 transition-duration: var(--transition-duration);
 
-                &::after {
-                    @extend %icon;
+                // &::after {
+                //     // @extend %icon;
 
-                    content: $icon-chevron-down;
-                }
+                //     content: $icon-chevron-down;
+                // }
             }
         }
 

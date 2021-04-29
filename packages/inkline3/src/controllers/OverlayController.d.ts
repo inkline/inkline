@@ -4,12 +4,12 @@ declare const OverlayController: {
     instances: { [key: string]: Component };
     stack: string[];
     zIndex: number;
-    register(instance: Component);
-    unregister(instance: Component);
-    open(id: string);
-    close(id: string);
+    register(instance: Component): void;
+    unregister(instance: Component): void;
+    open(id: string): void;
+    close(id: string): void;
     getTopOverlay(): Component;
-    onPressEscape();
+    onPressEscape(): void;
 };
 
 export { OverlayController };

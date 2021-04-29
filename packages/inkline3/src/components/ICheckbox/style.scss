@@ -1,7 +1,7 @@
 @import '../../css/variables';
 @import '../../css/mixins';
-@import '../IIcon/css/variables';
-@import '../IIcon/css/mixins';
+// @import '../IIcon/css/variables';
+// @import '../IIcon/css/mixins';
 @import 'css/variables';
 @import 'css/css';
 @import 'css/colors';
@@ -44,14 +44,14 @@
         &:checked ~ .checkbox-label,
         &[type="checkbox"]:indeterminate ~ .checkbox-label {
             &::after {
-                content: $icon-check;
+                // content: $icon-check;
                 transform: scale(1);
             }
         }
 
-        &:indeterminate ~ .checkbox-label::after {
-            content: $icon-minus;
-        }
+        // &:indeterminate ~ .checkbox-label::after {
+            // content: $icon-minus;
+        // }
 
         &:focus,
         &:active {
@@ -88,7 +88,7 @@
         }
 
         &::after {
-            @extend %icon;
+            // @extend %icon;
             position: absolute;
             top: 50%;
             left: 0;

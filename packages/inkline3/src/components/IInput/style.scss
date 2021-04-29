@@ -1,7 +1,7 @@
 @import '../../css/variables';
 @import '../../css/mixins';
-@import '../IIcon/css/variables';
-@import '../IIcon/css/mixins';
+// @import '../IIcon/css/variables';
+// @import '../IIcon/css/mixins';
 @import 'css/variables';
 @import 'css/css';
 @import 'css/sizes';
@@ -135,12 +135,12 @@
             height: var(--input-icon-circle-size);
             border-radius: 100%;
 
-            &::before {
-                @extend %icon;
+            // &::before {
+            //     @extend %icon;
 
-                font-size: 8px;
-                content: $icon-times;
-            }
+            //     font-size: 8px;
+            //     content: $icon-times;
+            // }
         }
     }
 

@@ -40,25 +40,25 @@ $icon-star-full: "\e9d9";
 $icon-heart: "\e9da";
 $icon-code: "\ea80";
 
-$icon-font-size: font-size() !default;
+$icon-size: $font-size !default;
 
 //
 // Sizes
 //
 
-$icon-size-variant-sm-font-size: calc(var(--icon-font-size) * #{size-multiplier('sm')}) !default;
+$icon-size-variant-sm-size: calc(var(--icon-size) * #{size-multiplier('sm')}) !default;
 $icon-size-variant-sm: (
-    'font-size': $icon-size-variant-sm-font-size,
+    'size': $icon-size-variant-sm-size,
 ) !default;
 
-$icon-size-variant-md-font-size: calc(var(--icon-font-size) * #{size-multiplier('md')}) !default;
+$icon-size-variant-md-size: calc(var(--icon-size) * #{size-multiplier('md')}) !default;
 $icon-size-variant-md: (
-    'font-size': $icon-size-variant-md-font-size,
+    'size': $icon-size-variant-md-size,
 ) !default;
 
-$icon-size-variant-lg-font-size: calc(var(--icon-font-size) * #{size-multiplier('lg')}) !default;
+$icon-size-variant-lg-size: calc(var(--icon-size) * #{size-multiplier('lg')}) !default;
 $icon-size-variant-lg: (
-    'font-size': $icon-size-variant-lg-font-size,
+    'size': $icon-size-variant-lg-size,
 ) !default;
 
 $icon-size-variants: (
