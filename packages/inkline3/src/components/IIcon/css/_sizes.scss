@@ -1,5 +1,5 @@
 @mixin icon-size-variant($size-variant-key) {
-    $_font-size: var(--icon-size-variant-#{$size-variant-key}-font-size);
+    $_size: var(--icon-size-variant-#{$size-variant-key}-size);
 
-    font-size: $_font-size;
+    height: $_size;
 }

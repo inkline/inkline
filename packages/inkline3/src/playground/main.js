@@ -78,10 +78,7 @@ const router = createRouter({
 });
 
 app.use(Inkline, {
-    components,
-    icons: {
-        fa
-    }
+    components
 });
 app.use(router);
 

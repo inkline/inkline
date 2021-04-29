@@ -187,12 +187,6 @@ export default defineComponent({
 
     &.-icon > .body {
         .inkline-icon {
-            height: 60px;
-            width: 60px;
-            border-radius: border-radius();
-            border-width: 1px;
-            border-style: solid;
-            border-color: var(--border-color-light);
             display: inline-flex;
             justify-content: center;
             align-items: center;

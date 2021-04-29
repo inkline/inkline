@@ -1,3 +1,14 @@
+import { h, computed } from 'vue';
+import { IconController } from "@inkline/inkline/src/controllers";
+import { toCamelCase } from '@inkline/inkline/src/helpers';
+
+const renderChildren = (children) =>
+    children
+        .map((child) => child.type === 'element'
+            ? h(child.name, child.attributes, child.children ? renderChildren(child.children) : [])
+            : child.value
+)
+
 export default {
     name: 'IIcon',
     props: {
@@ -20,12 +31,20 @@ export default {
             default: ''
         }
     },
-    computed: {
-        classes() {
-            return {
-                [`-${this.name}`]: Boolean(this.name),
-                [`-${this.size}`]: Boolean(this.size)
-            };
-        }
+    setup(props) {
+        const icon = computed(() => IconController.icons[toCamelCase(props.name)]);
+        const classes = computed(() => ({
+            'inkline-icon': true,
+            [`-${props.size}`]: Boolean(props.size)
+        }));
+
+        return () => h(
+            'svg',
+            {
+                class: classes.value,
+                ...icon.value?.attributes
+            },
+            renderChildren(icon.value?.children || [])
+        );
     }
 };
