@@ -84,7 +84,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'CryptoCurrency Regular Icons',
                 name: 'regular',
-                path: 'cryptocurrency-icons/svg',
+                path: 'cryptocurrency-icons/svg/black',
                 fill: true,
                 icon: (basename: string) => `cc-${basename.replace(/\$/g, '')}`
             },
@@ -217,7 +217,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
-                path: '../src/assets/icons',
+                path: '../src/assets',
                 fill: true,
                 import: '@inkline/inkline/src/assets/icons',
                 icon: (basename: string) => `ink-${basename}`,
