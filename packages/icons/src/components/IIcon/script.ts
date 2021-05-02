@@ -1,4 +1,4 @@
-import { h, computed, defineComponent, VNode } from 'vue';
+import { h, computed, defineComponent, onMounted, VNode } from 'vue';
 import { INode as Svg } from 'svgson';
 import { IconController } from "../../controllers";
 import { toCamelCase } from '../../helpers';
@@ -32,11 +32,18 @@ export default defineComponent({
         }
     },
     setup(props) {
-        const icon = computed(() => IconController.icons[toCamelCase(props.name)]);
+        const iconName = computed(() => toCamelCase(props.name));
+        const icon = computed(() => IconController.icons[iconName.value]);
         const classes = computed(() => ({
             'inkline-icon': true,
             [`-${props.size}`]: Boolean(props.size)
         }));
+
+        onMounted(() => {
+            if (!IconController.icons[iconName.value]) {
+                throw new Error(`The icon ${iconName.value} is not registered.`)
+            }
+        });
 
         return () => h(
             'svg',

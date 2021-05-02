@@ -1,47 +1,52 @@
 import fs from 'fs';
 import path from 'path';
 import glob from 'glob';
+import chalk from 'chalk';
 import { parse as parseSvg } from 'svgson';
 import { iconPacks } from './config';
-
-const toCamelCase = (string: string) => string.replace(/[-_]([a-z0-9])/g, (match, p) => p.toUpperCase());
+import { toCamelCase } from './helpers';
 
 iconPacks.forEach(async (iconPack) => {
     const hasMultipleVariants = iconPack.variants.length > 1;
 
     for (const iconPackVariant of iconPack.variants) {
-        const variantDirPath = path.resolve(__dirname, '..', 'node_modules', iconPackVariant.path);
-        const variantOutputPath = hasMultipleVariants
-            ? path.resolve(__dirname, '..', 'src', 'packs', iconPack.name, `${iconPackVariant.name}.ts`)
-            : path.resolve(__dirname, '..', 'src', 'packs', `${iconPack.name}.ts`);
-        const files = glob.sync(path.join(variantDirPath, iconPackVariant.pattern || '*.svg'));
-        const variantIcons: {
+        const iconPackVariantDirPath = path.resolve(__dirname, '..', 'node_modules', iconPackVariant.path);
+        const iconPackVariantOutputPath = hasMultipleVariants
+            ? path.resolve(__dirname, '..', 'src', 'packs', iconPack.name, `${iconPackVariant.name}`)
+            : path.resolve(__dirname, '..', 'src', 'packs', `${iconPack.name}`);
+        const iconPackVariantFiles = glob.sync(path.join(iconPackVariantDirPath, iconPackVariant.pattern || '**/*.svg'));
+        const iconPackVariantIcons: {
             name: string;
             js: string;
             scss: string;
         }[] = [];
 
-        for (const file of files) {
-            const basename = path.basename(file).replace('.svg', '');
-            const basedir = path.dirname(file);
-            const name = toCamelCase(iconPackVariant.icon(basename, basedir));
+        for (const iconPath of iconPackVariantFiles) {
+            const iconBasename = path.basename(iconPath).replace('.svg', '');
+            const iconBasedir = path.dirname(iconPath);
+            const iconName = toCamelCase(iconPackVariant.icon(iconBasename, iconBasedir));
 
-            const markup = fs.readFileSync(file).toString();
-            const svg = await parseSvg(markup);
+            let iconMarkup = fs.readFileSync(iconPath).toString();
+            const iconSvgson = await parseSvg(iconMarkup);
 
-            const jsOutput = JSON.stringify(svg).replace(/\"([^(\")"-:]+)\":/g,"$1:");
-            const scssOutput = markup.replace(/\n/, '');
+            if (iconPackVariant.fill && !iconMarkup.includes('currentColor')) {
+                iconSvgson.attributes.fill = 'currentColor';
+                iconMarkup = iconMarkup.replace('<svg', '<svg fill="currentColor"');
+            }
 
-            if (!variantIcons.find((icon) => icon.name === name)) {
-                variantIcons.push({
-                    name,
-                    js: jsOutput,
-                    scss: scssOutput
+            const iconJsOutput = JSON.stringify(iconSvgson).replace(/"([^(")"-:]+)":/g,"$1:");
+            const iconScssOutput = iconMarkup.replace(/\n/g, '').replace(/> +</g, '><');
+
+            if (!iconPackVariantIcons.find((icon) => icon.name === iconName)) {
+                iconPackVariantIcons.push({
+                    name: iconName,
+                    js: iconJsOutput,
+                    scss: iconScssOutput
                 });
             }
         }
 
-        const variantOutput = `/**
+        const iconPackVariantTsOutput = `/**
  * ${iconPackVariant.title || iconPack.title}
  *
  * @name ${iconPack.name}${iconPackVariant.name ? `/${iconPackVariant.name}` : ''}
@@ -52,16 +57,31 @@ iconPacks.forEach(async (iconPack) => {
 
 import { Svg } from '${hasMultipleVariants ? '../../' : '../'}types';
 
-${variantIcons.map((icon) => `export const ${icon.name}: Svg = ${icon.js};`).join('\n')}
+${iconPackVariantIcons.map((icon) => `export const ${icon.name}: Svg = ${icon.js};`).join('\n')}
 `;
 
-        fs.mkdirSync(path.dirname(variantOutputPath), { recursive: true });
-        fs.writeFileSync(variantOutputPath, variantOutput);
+        const iconPackVariantScssOutput = `//
+// ${iconPackVariant.title || iconPack.title}
+//
+// @name ${iconPack.name}${iconPackVariant.name ? `/${iconPackVariant.name}` : ''}
+// @url ${iconPack.url}
+// @version ${iconPack.version}
+// @generated
+//
+
+${iconPackVariantIcons.map((icon) => `$${icon.name}: '${icon.scss}' !default;`).join('\n')}
+`;
+
+        fs.mkdirSync(path.dirname(`${iconPackVariantOutputPath}.ts`), { recursive: true });
+        fs.writeFileSync(`${iconPackVariantOutputPath}.ts`, iconPackVariantTsOutput);
+        fs.writeFileSync(`${iconPackVariantOutputPath}.scss`, iconPackVariantScssOutput);
+
+        console.log(`Generated ${chalk.blue.bold(iconPack.name)} (${iconPackVariantFiles.length} icons)`);
     }
 
     if (hasMultipleVariants) {
-        const outputPath = path.resolve(__dirname, '..', 'src', 'packs', iconPack.name, `index.ts`);
-        const output = `/**
+        const iconPackOutputPath = path.resolve(__dirname, '..', 'src', 'packs', iconPack.name, `index`);
+        const iconPackTsOutput = `/**
  * ${iconPack.title}
  *
  * @name ${iconPack.name}
@@ -73,6 +93,41 @@ ${variantIcons.map((icon) => `export const ${icon.name}: Svg = ${icon.js};`).joi
 ${iconPack.variants.map((variant) => `export * from './${variant.name}';`).join('\n')}
 `;
 
-        fs.writeFileSync(outputPath, output);
+        const iconPackScssOutput = `//
+// ${iconPack.title}
+//
+// @name ${iconPack.name}
+// @url ${iconPack.url}
+// @version ${iconPack.version}
+// @generated
+//
+
+${iconPack.variants.map((variant) => `@import '${variant.name}';`).join('\n')}
+`;
+
+        fs.writeFileSync(`${iconPackOutputPath}.ts`, iconPackTsOutput);
+        fs.writeFileSync(`${iconPackOutputPath}.scss`, iconPackScssOutput);
     }
 });
+
+
+const indexOutputPath = path.resolve(__dirname, '..', 'src', 'packs', 'index');
+const indexJsOutput = `/**
+ * Inkline Icons
+ *
+ * @generated
+ */
+
+${iconPacks.map((iconPack) => `export * from './${iconPack.name}';`).join('\n')}
+`;
+const indexScssOutput = `//
+// Inkline Icons
+//
+// @generated
+//
+
+${iconPacks.map((iconPack) => `@import '${iconPack.name}';`).join('\n')}
+`;
+
+fs.writeFileSync(`${indexOutputPath}.ts`, indexJsOutput);
+fs.writeFileSync(`${indexOutputPath}.scss`, indexScssOutput);
