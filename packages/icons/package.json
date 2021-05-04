@@ -10,9 +10,13 @@
         }
     },
     "scripts": {
-        "dist": "vue-tsc --noEmit && vite build",
+        "dist:plugin": "vue-tsc --noEmit && vite build",
+        "dist:packs": "node -r esbuild-register scripts/dist.ts",
+        "dist": "npm run build && npm run dist:plugin && npm run dist:packs",
         "build:ts": "tsc -d -p tsconfig.json",
-        "build:vue": "rsync -amR --include='*.vue' --include='*/' --exclude='*' src/ build/",
+        "build:vue:copy": "rsync -am --include='*.'{vue,scss} --include='*/' --exclude='*' src/ build/",
+        "build:vue:replace": "find build -type f -name *.vue -exec sed -i '' 's/ lang=\"ts\"//g' {} +",
+        "build:vue": "npm run build:vue:copy && npm run build:vue:replace",
         "build": "npm run generate && npm run build:ts && npm run build:vue",
         "generate:version": "node -r esbuild-register scripts/version.ts",
         "generate:icons": "node -r esbuild-register src/generate.ts",
@@ -39,8 +43,11 @@
     "devDependencies": {
         "@types/glob": "^7.1.3",
         "@types/node": "^15.0.1",
+        "@typescript-eslint/eslint-plugin": "^4.22.0",
+        "@typescript-eslint/parser": "^4.22.0",
         "@vitejs/plugin-vue": "^1.2.2",
         "@vue/compiler-sfc": "^3.0.5",
+        "chalk": "^4.1.1",
         "esbuild-register": "^2.5.0",
         "eslint": "^7.25.0",
         "eslint-plugin-vue": "^7.9.0",

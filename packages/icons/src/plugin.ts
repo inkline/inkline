@@ -1,7 +1,7 @@
 import { Plugin } from 'vue';
 import { IconController } from "./controllers";
-import { IIcon } from "./components";
 import { Svg } from './types';
+import { IIcon } from "./components";
 
 export interface PluginOptions {
     [key: string]: Svg;
@@ -16,3 +16,5 @@ export const InklineIcons: Plugin = {
         });
     }
 };
+
+export default InklineIcons;

@@ -9,6 +9,7 @@ import { toCamelCase } from './helpers';
 iconPacks.forEach(async (iconPack) => {
     const hasMultipleVariants = iconPack.variants.length > 1;
 
+    let iconPackFileCount = 0;
     for (const iconPackVariant of iconPack.variants) {
         const iconPackVariantDirPath = path.resolve(__dirname, '..', 'node_modules', iconPackVariant.path);
         const iconPackVariantOutputPath = hasMultipleVariants
@@ -76,7 +77,11 @@ ${iconPackVariantIcons.map((icon) => `$${icon.name}: '${icon.scss}' !default;`).
         fs.writeFileSync(`${iconPackVariantOutputPath}.ts`, iconPackVariantTsOutput);
         fs.writeFileSync(`${iconPackVariantOutputPath}.scss`, iconPackVariantScssOutput);
 
-        console.log(`Generated ${chalk.blue.bold(iconPack.name)} (${iconPackVariantFiles.length} icons)`);
+        if (hasMultipleVariants) {
+            console.log(`Generated ${chalk.blue.bold(`${iconPack.name}/${iconPackVariant.name}`)} (${iconPackVariantFiles.length} icons)`);
+        }
+
+        iconPackFileCount += iconPackVariantFiles.length;
     }
 
     if (hasMultipleVariants) {
@@ -108,6 +113,8 @@ ${iconPack.variants.map((variant) => `@import '${variant.name}';`).join('\n')}
         fs.writeFileSync(`${iconPackOutputPath}.ts`, iconPackTsOutput);
         fs.writeFileSync(`${iconPackOutputPath}.scss`, iconPackScssOutput);
     }
+
+    console.log(`Generated ${chalk.blue.bold(`${iconPack.name}`)} (${iconPackFileCount} icons)`);
 });
 
 
