@@ -1,27 +1,94 @@
-# Vue 3 + Typescript + Vite
+<p align="center">
+    <a href="https://inkline.io/">
+        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/logo.png" alt="Inkline logo" width=72 height=72>
+    </a>
+</p>
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
+<h1 align="center">Inkline Icons</h1>
 
-## Recommended IDE Setup
+<p align="center">
+    Inkline Icons provides you with an awesome, maintainable Universal Vue.js 3 Icon Component with thousands of icons from more than 15 icon packs. Inkline is written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
+    <br/>
+    <br/>
+    <br/>
+    <a href="https://inkline.io">
+        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/homepage.png" width="1009" alt="Vue.js UI/UX Library - Inkline" />
+    </a>
+    <br/>
+    <br/>
+    <br/>
+    <a href="https://inkline.io">Homepage</a>
+    ·
+    <a href="https://inkline.io/docs/introduction/getting-started">Documentation</a>
+    ·
+    <a href="https://github.com/inkline/inkline/issues">Issue Tracker</a>
+</p>
 
-[VSCode](https://code.visualstudio.com/) + [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur). Make sure to enable `vetur.experimental.templateInterpolationService` in settings!
+<br/>
 
-### If Using `<script setup>`
+<p align="center">
+    <a href="https://www.npmjs.com/package/@inkline/inkline">
+        <img src="https://img.shields.io/npm/v/@inkline/inkline.svg" alt="npm version">
+    </a>
+    <a href="https://github.com/inkline/inkline/actions">
+        <img src="https://github.com/inkline/inkline/workflows/Build/badge.svg" alt="Build">
+    </a>
+    <a href='https://coveralls.io/github/inkline/inkline?branch=master'><img src='https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master' alt='Coverage Status' /></a>
+    <a href="https://www.npmjs.com/package/@inkline/inkline">
+        <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
+    </a>
+    <a href="https://discord.gg/2w5UGnK">
+        <img src="https://img.shields.io/discord/550436704482492429.svg" alt="Discord">
+    </a>
+</a>
 
-[`<script setup>`](https://github.com/vuejs/rfcs/pull/227) is a feature that is currently in RFC stage. To get proper IDE support for the syntax, use [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) instead of Vetur (and disable Vetur).
+<br/>
+<br/>
 
-## Type Support For `.vue` Imports in TS
+## Table of contents
+- [Installation](#installation)
+- [Bugs and feature requests](#bugs-and-feature-requests)
+- [Contributing](#contributing)
+- [Community](#community)
+- [Releases](#releases)
+- [Versioning](#versioning)
+- [Creators](#creators)
+- [Copyright and license](#copyright-and-license)
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can use the following:
+## Installation
+Read the [Icon Documentation](https://inkline.io/docs/components/icon) page and find information on how to import and use the icon component.
 
-### If Using Volar
+## Bugs and feature requests
+Have a bug or a feature request? Please first search for existing and closed issues.
+If your problem or idea is not addressed yet, [please open a new issue](https://github.com/inkline/inkline/issues/new).
 
-Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
+## Community
+Get updates on Inkline's development and chat with the project maintainers and community members.
+- Follow [@inkline on Twitter](https://twitter.com/inkline).
+- Join [Inkline on Discord](https://discord.com/invite/2w5UGnK).
+- Join [Discussions on GitHub](https://github.com/inkline/inkline/discussions).
+- Developers should use the keyword `inkline` on packages which modify or add to the functionality of Inkline when distributing through [npm](https://www.npmjs.com/browse/keyword/inkline) or similar delivery mechanisms for maximum discoverability.
 
-### If Using Vetur
+## Releases
+[Previous releases](https://github.com/inkline/inkline/releases) and their documentation are also available for download.
 
-1. Install and add `@vuedx/typescript-plugin-vue` to the [plugins section](https://www.typescriptlang.org/tsconfig#plugins) in `tsconfig.json`
-2. Delete `src/shims-vue.d.ts` as it is no longer needed to provide module info to Typescript
-3. Open `src/main.ts` in VSCode
-4. Open the VSCode command palette
-5. Search and run "Select TypeScript version" -> "Use workspace version"
+## Versioning
+For increased transparency and backward compatibility,
+Inkline is maintained under [the Semantic Versioning guidelines](https://semver.org/).
+
+## Creators
+**Alex Grozav**
+
+- <https://twitter.com/alexgrozav>
+- <https://facebook.com/alexgrozav>
+- <https://github.com/alexgrozav>
+
+## Contributing
+Please read through our [contributing guidelines](https://github.com/inkline/inkline/blob/master/.github/CONTRIBUTING.md).
+There you can find directions for opening issues, feature requests, coding standards, and how to setup a local development environment.
+
+Thanks goes to [these wonderful people](https://github.com/inkline/inkline#contributing).
+
+## Copyright and license
+Code copyright 2017-2021 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
+Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/packages/inkline/LICENSE).
