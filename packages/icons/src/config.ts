@@ -362,3 +362,5 @@ export const iconPacks: IconPack[] = [
         ]
     },
 ];
+
+export default iconPacks;
