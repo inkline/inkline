@@ -1,5 +1,5 @@
 import { IconController } from "./controllers";
-import IIcon from "./components/IIcon/index.vue";
+import { IIcon } from "./components";
 export const InklineIcons = {
     install(app, options = {}) {
         app.component(IIcon.name, IIcon);

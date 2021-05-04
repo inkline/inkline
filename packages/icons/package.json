@@ -15,7 +15,7 @@
         "dist": "npm run build && npm run dist:plugin && npm run dist:packs",
         "build:ts": "tsc -d -p tsconfig.json",
         "build:vue:copy": "rsync -am --include='*.'{vue,scss} --include='*/' --exclude='*' src/ build/",
-        "build:vue:replace": "find build -type f -name *.vue -exec sed -i '' 's/ lang=\"ts\"//g' {} +",
+        "build:vue:replace": "find build -type f -name *.vue -exec perl -i -pe's/ lang=\"ts\"//g' {} +",
         "build:vue": "npm run build:vue:copy && npm run build:vue:replace",
         "build": "npm run generate && npm run build:ts && npm run build:vue",
         "generate:version": "node -r esbuild-register scripts/version.ts",
