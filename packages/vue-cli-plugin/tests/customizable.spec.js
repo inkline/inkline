@@ -8,10 +8,10 @@ describe('Vue CLI Module', () => {
         })
     );
 
-    it('should build typescript plugin with customizable flag enabled',
-        vueCLIBuild('customizable', generator, {
-            customizable: true,
-            typescript: true
-        })
-    );
+    // it('should build typescript plugin with customizable flag enabled',
+    //     vueCLIBuild('customizable', generator, {
+    //         customizable: true,
+    //         typescript: true
+    //     })
+    // );
 });

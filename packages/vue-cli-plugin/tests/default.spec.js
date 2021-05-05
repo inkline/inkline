@@ -6,7 +6,7 @@ describe('Vue CLI Module', () => {
         vueCLIBuild('default', generator, {})
     );
 
-    it('should build typescript plugin with default config',
+    xit('should build typescript plugin with default config',
         vueCLIBuild('default', generator, {
             typescript: true
         })
