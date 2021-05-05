@@ -58,6 +58,25 @@
 ## Installation
 Read the [Icon Documentation](https://inkline.io/docs/components/icon) page and find information on how to import and use the icon component.
 
+To install the package standalone:
+~~~bash
+npm install @inkline/icons
+~~~
+
+~~~js
+import { createApp } from 'vue';
+import { InklineIcons } from '@inkline/icons';
+import { faCheck, faHome } from '@inkline/icons/build/packs/fontawesome';
+import App from './App.vue';
+
+const app = createApp(App);
+
+app.use(InklineIcons, {
+    faCheck,
+    faHome
+});
+~~~
+
 ## Bugs and feature requests
 Have a bug or a feature request? Please first search for existing and closed issues.
 If your problem or idea is not addressed yet, [please open a new issue](https://github.com/inkline/inkline/issues/new).
