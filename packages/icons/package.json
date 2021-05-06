@@ -1,12 +1,14 @@
 {
     "name": "@inkline/icons",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "build/index.js",
     "module": "./build/index.js",
     "exports": {
         ".": {
             "import": "./build/index.js",
-            "require": "./dist/icons.umd.js"
+            "require": "./dist/icons.umd.js",
+            "sass": "./build/index.scss",
+            "style": "./dist/style.css"
         },
         "./": {
             "import": "./build/",
