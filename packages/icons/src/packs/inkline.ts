@@ -3,7 +3,7 @@
  *
  * @name inkline
  * @url https://inkline.io
- * @version 1.0.2
+ * @version 1.0.4
  * @generated
  */
 
