@@ -20,7 +20,7 @@ import config from '../vite.packs.config';
 
         if (hasMultipleVariants) {
             for (const iconPackVariant of iconPack.variants) {
-                const iconPackVariantName = iconPackVariant.name;
+                const iconPackVariantName = iconPackVariant.name as string;
                 const iconPackVariantEntry = resolve(__dirname, '..', 'src', 'packs', iconPack.name, `${iconPackVariant.name}.ts`);
                 const iconPackVariantFileName = `packs/${iconPack.name}/[name]`;
 
