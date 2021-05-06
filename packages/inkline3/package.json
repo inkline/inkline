@@ -23,6 +23,7 @@
     "jsdelivr": "dist/inkline.js",
     "unpkg": "dist/inkline.js",
     "dependencies": {
+        "@inkline/icons": "^1.0.0",
         "@popperjs/core": "^2.9.1",
         "fuse.js": "^6.4.0"
     },
