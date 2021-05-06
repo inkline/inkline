@@ -20,7 +20,8 @@
         "build": "npm run generate && npm run build:ts && npm run build:vue",
         "generate:version": "node -r esbuild-register scripts/version.ts",
         "generate:icons": "node -r esbuild-register src/generate.ts",
-        "generate": "npm run generate:version && npm run generate:icons"
+        "generate": "npm run generate:version && npm run generate:icons",
+        "prepare": "npm run build"
     },
     "dependencies": {
         "vue": "^3.0.5",
