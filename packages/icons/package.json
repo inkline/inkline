@@ -12,11 +12,15 @@
         },
         "./": {
             "import": "./build/",
-            "require": "./dist/"
+            "require": "./dist/",
+            "sass": "./build/index.scss",
+            "style": "./dist/style.css"
         },
         "./packs/": {
-            "import": "./build/packs",
-            "require": "./dist/packs"
+            "import": "./build/packs/",
+            "require": "./dist/packs/",
+            "sass": "./build/packs/",
+            "style": "./dist/packs/"
         }
     },
     "scripts": {
