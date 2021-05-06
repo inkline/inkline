@@ -1,10 +1,13 @@
 import { reactive, watch } from 'vue'
+import { InklineIcons } from '@inkline/icons';
 import { addClass, removeClass } from "@inkline/inkline/src/helpers";
 import { initialize as initializeForm } from "@inkline/inkline/src/validation";
 import { setLocale } from '@inkline/inkline/src/i18n';
 
 const defaultOptions = {
-    colorMode: 'system'
+    colorMode: 'system',
+    components: {},
+    icons: {}
 };
 
 const colorModeLocalStorageKey = 'inkline-color-mode';
@@ -28,6 +31,11 @@ export const Inkline = {
         };
 
         let colorMode = options.colorMode;
+
+        /**
+         * Register Inkline plugins
+         */
+        app.use(InklineIcons, options.icons);
 
         /**
          * Register components provided through options globally

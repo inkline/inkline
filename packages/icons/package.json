@@ -60,6 +60,12 @@
         "vue-tsc": "^0.0.24"
     },
     "files": [
-        "dist"
+        "src",
+        "build",
+        "dist",
+        "scripts",
+        "README.md",
+        "LICENSE",
+        "tsconfig.json"
     ]
 }
