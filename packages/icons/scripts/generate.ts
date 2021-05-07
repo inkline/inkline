@@ -26,9 +26,12 @@ iconPacks.forEach(async (iconPack) => {
         for (const iconPath of iconPackVariantFiles) {
             const iconBasename = path.basename(iconPath).replace('.svg', '');
             const iconBasedir = path.dirname(iconPath);
-            const iconName = toCamelCase(iconPackVariant.icon(iconBasename, iconBasedir));
+            const rawIconName = iconPackVariant.icon(iconBasename, iconBasedir);
+            const jsIconName = toCamelCase(rawIconName);
+            const scssIconName = toKebabCase(rawIconName);
 
-            let iconMarkup = fs.readFileSync(iconPath).toString();
+            let iconMarkup = fs.readFileSync(iconPath).toString()
+                .replace(/ (id|class)=["']\w+['"]/g, '');
             const iconSvgson = await parseSvg(iconMarkup);
 
             if (iconPackVariant.fill && !iconMarkup.includes('currentColor')) {
@@ -39,11 +42,11 @@ iconPacks.forEach(async (iconPack) => {
             const iconJsOutput = JSON.stringify(iconSvgson).replace(/"([^(")"-:]+)":/g,"$1:");
             const iconScssOutput = `data:image/svg+xml; utf8, ${iconMarkup.replace(/\n/g, '').replace(/> +</g, '><')}`;
 
-            if (!iconPackVariantIcons.find((icon) => icon.jsName === iconName)) {
+            if (!iconPackVariantIcons.find((icon) => icon.jsName === jsIconName)) {
                 iconPackVariantIcons.push({
-                    jsName: iconName,
+                    jsName: jsIconName,
                     js: iconJsOutput,
-                    scssName: toKebabCase(iconName),
+                    scssName: scssIconName,
                     scss: iconScssOutput
                 });
             }
