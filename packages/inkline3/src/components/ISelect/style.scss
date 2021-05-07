@@ -1,3 +1,4 @@
+@import '@inkline/icons/packs/inkline';
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
@@ -8,16 +9,6 @@
 .select-wrapper {
     display: block;
     position: relative;
-
-    .input-wrapper {
-        * + .select-caret {
-            margin-left: spacer();
-        }
-
-        .select-caret {
-            cursor: pointer;
-        }
-    }
 
     .select {
         @include popup(('margin': var(--select-margin), 'z-index': var(--select-z-index)));
@@ -60,19 +51,32 @@
             border-width: 0 var(--select-border-width) var(--select-border-width);
             border-style: solid;
         }
+    }
 
-        @include select-size-variant('md');
-        @each $size-variant-key, $select-size-variant-value in $select-size-variants {
-            &.-#{$size-variant-key} {
-                @include select-size-variant($size-variant-key);
-            }
+    .input-wrapper {
+        * + .select-caret {
+            margin-left: spacer();
         }
 
-        @include select-color-variant('light');
-        @each $color-variant-key, $color-variant-value in $select-color-variants {
-            &.-#{$color-variant-key} {
-                @include select-color-variant($color-variant-key);
-            }
+        .select-caret {
+            cursor: pointer;
+            mask-image: url($ink-caret-down);
+            mask-position: center center;
+            mask-repeat: no-repeat;
+        }
+    }
+
+    @include select-size-variant('md');
+    @each $size-variant-key, $select-size-variant-value in $select-size-variants {
+        &.-#{$size-variant-key} {
+            @include select-size-variant($size-variant-key);
+        }
+    }
+
+    @include select-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $select-color-variants {
+        &.-#{$color-variant-key} {
+            @include select-color-variant($color-variant-key);
         }
     }
 }

@@ -11,67 +11,75 @@
     $_header-background: var(--select-color-variant-#{$color-variant-key}-header-background);
     $_footer-background: var(--select-color-variant-#{$color-variant-key}-footer-background);
 
-    color: $_color;
+    > .select {
+        color: $_color;
 
-    > .select-header {
-        border-color: $_border-color;
-        background-color: $_header-background;
-    }
+        > .select-header {
+            border-color: $_border-color;
+            background-color: $_header-background;
+        }
 
-    > .select-body {
-        background-color: $_background;
-        border-color: $_border-color;
-
-        .select-option {
-            color: $_color;
+        > .select-body {
+            background-color: $_background;
             border-color: $_border-color;
 
-            &:not(.-disabled):not(.-plaintext) {
-                &:hover,
-                &:focus {
-                    color: $_color-hover;
-                    background: $_background-hover;
+            .select-option {
+                color: $_color;
+                border-color: $_border-color;
+
+                &:not(.-disabled):not(.-plaintext) {
+                    &:hover,
+                    &:focus {
+                        color: $_color-hover;
+                        background: $_background-hover;
+                    }
+                }
+
+                &.-disabled {
+                    color: $_color-disabled;
+                    background: $_background-disabled;
+                }
+
+                &.-active {
+                    color: $_color-active;
+                    background: $_background-active;
                 }
             }
 
-            &.-disabled {
-                color: $_color-disabled;
-                background: $_background-disabled;
-            }
-
-            &.-active {
-                color: $_color-active;
-                background: $_background-active;
+            .select-divider {
+                background-color: $_border-color;
             }
         }
 
-        .select-divider {
-            background-color: $_border-color;
+        > .select-footer {
+            border-color: $_border-color;
+            background-color: $_footer-background;
+        }
+
+        @include popup-arrow-color-variant-for-side('top', (
+            'background': $_footer-background,
+            'border-color': $_border-color
+        ));
+
+        @include popup-arrow-color-variant-for-side('bottom', (
+            'background': $_header-background,
+            'border-color': $_border-color
+        ));
+
+        @include popup-arrow-color-variant-for-side('left', (
+            'background': $_background,
+            'border-color': $_border-color
+        ));
+
+        @include popup-arrow-color-variant-for-side('right', (
+            'background': $_background,
+            'border-color': $_border-color
+        ));
+    }
+
+    .input-wrapper {
+        .select-caret {
+            background-color: $_color;
         }
     }
-
-    > .select-footer {
-        border-color: $_border-color;
-        background-color: $_footer-background;
-    }
-
-    @include popup-arrow-color-variant-for-side('top', (
-        'background': $_footer-background,
-        'border-color': $_border-color
-    ));
-
-    @include popup-arrow-color-variant-for-side('bottom', (
-        'background': $_header-background,
-        'border-color': $_border-color
-    ));
-
-    @include popup-arrow-color-variant-for-side('left', (
-        'background': $_background,
-        'border-color': $_border-color
-    ));
-
-    @include popup-arrow-color-variant-for-side('right', (
-        'background': $_background,
-        'border-color': $_border-color
-    ));
 }

@@ -21,7 +21,7 @@
         }
 
         &::after {
-            color: $_indicator-icon-color;
+            background-color: $_indicator-icon-color;
         }
     }
 
@@ -41,7 +41,7 @@
             }
 
             &::after {
-                color: $_indicator-icon-color-disabled;
+                background-color: $_indicator-icon-color-disabled;
             }
         }
 

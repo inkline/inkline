@@ -45,7 +45,6 @@
         }
 
         .input-clear {
-            color: $_clearable-color;
             background-color: $_clearable-background;
 
             &:hover,
@@ -56,6 +55,10 @@
 
             &:active {
                 background-color: $_clearable-background-active;
+            }
+
+            &::before {
+                background-color: $_clearable-color;
             }
         }
     }

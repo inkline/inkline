@@ -73,7 +73,7 @@
                     <ul>
                         <li>
                             <router-link :to="{ name: 'docs-forms-select' }">
-                                Introduction
+                                Overview
                             </router-link>
                         </li>
                         <li>

@@ -1,11 +1,10 @@
-<div class="form-input-group -prepended -appended" :class="classes">
-    {{ schema }}
-    <div class="form-input-prepend">
+<div class="input-wrapper -prepended -appended" :class="classes">
+    <div class="input-prepend">
         <slot name="prepend" />
-        <i-button type="button" :color="color" :size="size" :disabled="disabled" class="form-input-button-decrease" @click="decrease">-</i-button>
+        <i-button type="button" :color="color" :size="size" :disabled="disabled" class="input-button-decrease" @click="decrease">-</i-button>
     </div>
-    <div class="form-input">
-        <span class="form-input-prefix" v-if="$slots.prefix">
+    <div class="input">
+        <span class="input-prefix" v-if="$slots.prefix">
             <slot name="prefix" />
         </span>
         <input
@@ -22,15 +21,15 @@
             :aria-readonly="isReadonly ? 'true' : false"
             @input="onInput"
             @blur="onBlur">
-        <span class="form-input-suffix" v-if="$slots.suffix || clearable">
+        <span class="input-suffix" v-if="$slots.suffix || clearable && isClearable">
             <slot name="clearable" :clear="onClear">
-                <i class="form-input-clear" aria-label="Clear" v-show="isClearable" @click="onClear"></i>
+                <i class="input-clear" aria-label="Clear" v-show="isClearable" @click="onClear"></i>
             </slot>
             <slot name="suffix" />
         </span>
     </div>
-    <div class="form-input-append">
-        <i-button type="button" :color="color" :size="size" :disabled="disabled" class="form-input-button-increase" @click="increase">+</i-button>
+    <div class="input-append">
+        <i-button type="button" :color="color" :size="size" :disabled="disabled" class="input-button-increase" @click="increase">+</i-button>
         <slot name="append" />
     </div>
 </div>

@@ -10,6 +10,7 @@ interface IconPack {
     variants: {
         title?: string;
         name?: string;
+        prefix: string;
         pattern?: string;
         import?: string;
         path: string;

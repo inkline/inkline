@@ -5,6 +5,7 @@ import { Inkline } from '../plugin';
 import * as components from '../components';
 import '@inkline/inkline/src/inkline.scss';
 import '@inkline/inkline/src/playground/main.scss';
+import * as icons from '@inkline/icons/packs/inkline';
 
 import App from '@inkline/inkline/src/playground/App.vue';
 import Example from '@inkline/inkline/src/playground/components/Example.vue';
@@ -78,8 +79,10 @@ const router = createRouter({
 });
 
 app.use(Inkline, {
-    components
+    components,
+    icons
 });
+
 app.use(router);
 
 useServer();

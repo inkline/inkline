@@ -1,7 +1,6 @@
+@import '@inkline/icons/packs/inkline.scss';
 @import '../../css/variables';
 @import '../../css/mixins';
-// @import '../IIcon/css/variables';
-// @import '../IIcon/css/mixins';
 @import 'css/variables';
 @import 'css/css';
 @import 'css/sizes';
@@ -52,13 +51,11 @@
             transition: background-color 0.3s ease;
             background-color: transparent;
 
-            // > .icon {
-            //     &::before {
-            //         @extend %icon;
-
-            //         content: $icon-times;
-            //     }
-            // }
+             > .icon {
+                 mask-image: url($ink-times);
+                 mask-position: center center;
+                 mask-repeat: no-repeat;
+             }
 
             &:hover,
             &:focus {

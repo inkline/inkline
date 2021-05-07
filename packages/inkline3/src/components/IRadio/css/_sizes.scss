@@ -14,7 +14,7 @@
 
         &::after {
             margin-top: calc(#{$_indicator-size} / -2);
-            font-size: $_indicator-icon-size;
+            mask-size: $_indicator-icon-size $_indicator-icon-size;
         }
     }
 }

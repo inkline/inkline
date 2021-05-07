@@ -19,6 +19,12 @@
 
         > .close {
             border-radius: $_border-radius;
+
+            > .icon {
+                width: $_font-size;
+                height: $_font-size;
+                mask-size: $_font-size $_font-size;
+            }
         }
     }
 

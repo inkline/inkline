@@ -14,7 +14,11 @@
         }
 
         > .collapsible-header {
-            background: $_background;
+            background-color: $_background;
+
+            > .icon {
+                background-color: $_color;
+            }
         }
 
         > .collapsible-body {

@@ -1,7 +1,6 @@
+@import '@inkline/icons/packs/inkline.scss';
 @import '../../css/variables';
 @import '../../css/mixins';
-// @import '../IIcon/css/variables';
-// @import '../IIcon/css/mixins';
 @import 'css/variables';
 @import 'css/css';
 @import 'css/sizes';
@@ -135,12 +134,15 @@
             height: var(--input-icon-circle-size);
             border-radius: 100%;
 
-            // &::before {
-            //     @extend %icon;
-
-            //     font-size: 8px;
-            //     content: $icon-times;
-            // }
+             &::before {
+                 content: '';
+                 mask-image: url($ink-times);
+                 mask-position: center center;
+                 mask-repeat: no-repeat;
+                 mask-size: 8px 8px;
+                 height: 8px;
+                 width: 8px;
+             }
         }
     }
 

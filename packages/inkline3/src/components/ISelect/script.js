@@ -341,10 +341,14 @@ export default {
         };
     },
     computed: {
-        classes() {
+        wrapperClasses() {
             return {
                 ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.size}`]: Boolean(this.size)
+            };
+        },
+        popupClasses() {
+            return {
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
             };

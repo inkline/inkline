@@ -1,6 +1,7 @@
 <div
     class="select-wrapper"
     ref="wrapper"
+    :class="wrapperClasses"
     v-click-outside="onClickOutside"
     @keyup.esc="onEscape"
 >
@@ -29,7 +30,7 @@
         </template>
         <template #suffix>
             <slot name="suffix" />
-            <i-icon class="select-caret" name="caret-down" @click="onCaretClick" />
+            <button class="select-caret" @click="onCaretClick" />
         </template>
         <template v-if="$slots.append" #append>
             <slot name="append" />
@@ -37,7 +38,7 @@
     </i-input>
 
     <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
-        <div class="select" ref="popup" :class="classes" v-show="visible">
+        <div class="select" ref="popup" :class="popupClasses" v-show="visible">
             <span data-popper-arrow v-if="arrow" />
             <div class="select-header" v-if="$slots.header">
                 <slot name="header" />
