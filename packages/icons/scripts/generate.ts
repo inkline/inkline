@@ -4,7 +4,7 @@ import glob from 'glob';
 import chalk from 'chalk';
 import { parse as parseSvg } from 'svgson';
 import { iconPacks } from '../src/config';
-import { toCamelCase } from '../src/helpers';
+import { toCamelCase, toKebabCase } from '../src/helpers';
 
 iconPacks.forEach(async (iconPack) => {
     const hasMultipleVariants = iconPack.variants.length > 1;
@@ -17,8 +17,9 @@ iconPacks.forEach(async (iconPack) => {
             : path.resolve(__dirname, '..', 'src', 'packs', `${iconPack.name}`);
         const iconPackVariantFiles = glob.sync(path.join(iconPackVariantDirPath, iconPackVariant.pattern || '**/*.svg'));
         const iconPackVariantIcons: {
-            name: string;
+            jsName: string;
             js: string;
+            scssName: string;
             scss: string;
         }[] = [];
 
@@ -40,8 +41,9 @@ iconPacks.forEach(async (iconPack) => {
 
             if (!iconPackVariantIcons.find((icon) => icon.name === iconName)) {
                 iconPackVariantIcons.push({
-                    name: iconName,
+                    jsName: iconName,
                     js: iconJsOutput,
+                    scssName: toKebabCase(iconName),
                     scss: iconScssOutput
                 });
             }
@@ -58,7 +60,7 @@ iconPacks.forEach(async (iconPack) => {
 
 import { Svg } from '${hasMultipleVariants ? '../../' : '../'}types';
 
-${iconPackVariantIcons.map((icon) => `export const ${icon.name}: Svg = ${icon.js};`).join('\n')}
+${iconPackVariantIcons.map((icon) => `export const ${icon.jsName}: Svg = ${icon.js};`).join('\n')}
 `;
 
         const iconPackVariantScssOutput = `//
@@ -70,7 +72,7 @@ ${iconPackVariantIcons.map((icon) => `export const ${icon.name}: Svg = ${icon.js
 // @generated
 //
 
-${iconPackVariantIcons.map((icon) => `$${icon.name}: '${icon.scss}' !default;`).join('\n')}
+${iconPackVariantIcons.map((icon) => `$${icon.scssName}: '${icon.scss}' !default;`).join('\n')}
 `;
 
         fs.mkdirSync(path.dirname(`${iconPackVariantOutputPath}.ts`), { recursive: true });
