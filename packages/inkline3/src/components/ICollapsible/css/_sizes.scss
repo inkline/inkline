@@ -16,5 +16,13 @@
         > .collapsible-body > .content {
             padding: $_padding;
         }
+
+        > .collapsible-header {
+            > .icon {
+                width: $_font-size;
+                height: $_font-size;
+                mask-size: $_font-size $_font-size;
+            }
+        }
     }
 }

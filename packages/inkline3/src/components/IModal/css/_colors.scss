@@ -15,7 +15,9 @@
         background: $_header-background;
 
         > .close {
-            color: $_header-color;
+            > .icon {
+                background-color: $_header-color;
+            }
         }
     }
 

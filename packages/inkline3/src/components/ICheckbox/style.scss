@@ -1,7 +1,6 @@
+@import '@inkline/icons/packs/inkline.scss';
 @import '../../css/variables';
 @import '../../css/mixins';
-// @import '../IIcon/css/variables';
-// @import '../IIcon/css/mixins';
 @import 'css/variables';
 @import 'css/css';
 @import 'css/colors';
@@ -44,14 +43,16 @@
         &:checked ~ .checkbox-label,
         &[type="checkbox"]:indeterminate ~ .checkbox-label {
             &::after {
-                // content: $icon-check;
+                content: '';
+                mask-position: center center;
+                mask-repeat: no-repeat;
                 transform: scale(1);
             }
         }
 
-        // &:indeterminate ~ .checkbox-label::after {
-            // content: $icon-minus;
-        // }
+         &:indeterminate ~ .checkbox-label::after {
+             mask-image: url($ink-minus);
+         }
 
         &:focus,
         &:active {
@@ -88,7 +89,7 @@
         }
 
         &::after {
-            // @extend %icon;
+            mask-image: url($ink-check);
             position: absolute;
             top: 50%;
             left: 0;

@@ -5,14 +5,6 @@
 @import 'css/sizes';
 
 .inkline-icon {
-    display: inline-block;
-    fill: currentColor;
-    speak: none;
-    width: auto;
-    font-size: inherit;
-    overflow: visible;
-    vertical-align: -0.125rem;
-
     @include icon-size-variant('md');
     @each $size-variant-key, $icon-size-variant-value in $icon-size-variants {
         &.-#{$size-variant-key} {
