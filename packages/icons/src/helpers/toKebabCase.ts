@@ -1,5 +1,5 @@
 export function toKebabCase (string: string): string {
-    const regExp = /([A-Z])/g;
-
-    return string.replace(regExp, (match, p) => '-' + p.toLowerCase());
+    return string
+        .replace(/([A-Z])/g, (match, p) => '-' + p.toLowerCase())
+        .replace(/_/g, '-');
 }

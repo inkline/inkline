@@ -1,0 +1,1 @@
+{"version":3,"file":"toKebabCase.js","sourceRoot":"","sources":["../../src/helpers/toKebabCase.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,WAAW,CAAE,MAAc;IACvC,OAAO,MAAM;SACR,OAAO,CAAC,UAAU,EAAE,CAAC,KAAK,EAAE,CAAC,EAAE,EAAE,CAAC,GAAG,GAAG,CAAC,CAAC,WAAW,EAAE,CAAC;SACxD,OAAO,CAAC,IAAI,EAAE,GAAG,CAAC,CAAC;AAC5B,CAAC"}
