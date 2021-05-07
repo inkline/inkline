@@ -39,7 +39,7 @@ iconPacks.forEach(async (iconPack) => {
             const iconJsOutput = JSON.stringify(iconSvgson).replace(/"([^(")"-:]+)":/g,"$1:");
             const iconScssOutput = `data:image/svg+xml; utf8, ${iconMarkup.replace(/\n/g, '').replace(/> +</g, '><')}`;
 
-            if (!iconPackVariantIcons.find((icon) => icon.name === iconName)) {
+            if (!iconPackVariantIcons.find((icon) => icon.jsName === iconName)) {
                 iconPackVariantIcons.push({
                     jsName: iconName,
                     js: iconJsOutput,
