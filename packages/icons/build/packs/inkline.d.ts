@@ -3,7 +3,7 @@
  *
  * @name inkline
  * @url https://inkline.io
- * @version 1.1.0
+ * @version 1.1.1
  * @generated
  */
 import { Svg } from '../types';
@@ -19,4 +19,5 @@ export declare const inkSearch: Svg;
 export declare const inkSortAsc: Svg;
 export declare const inkSortDesc: Svg;
 export declare const inkSort: Svg;
+export declare const inkTimes: Svg;
 export declare const inkWarning: Svg;

@@ -12,6 +12,7 @@ interface IconPack {
     variants: {
         title?: string;
         name?: string;
+        prefix: string;
         pattern?: string;
         import?: string;
         path: string;
@@ -32,6 +33,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'bi',
                 path: 'bootstrap-icons/icons',
                 fill: true,
                 icon: (basename: string) => `bi-${basename}`
@@ -51,6 +53,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'CoreUI Brand Icons',
                 name: 'brands',
+                prefix: 'cib',
                 path: '@coreui/icons/svg/brand',
                 fill: true,
                 icon: (basename: string) => basename
@@ -58,6 +61,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'CoreUI Flag Icons',
                 name: 'flag',
+                prefix: 'cif',
                 path: '@coreui/icons/svg/flag',
                 fill: false,
                 icon: (basename: string) => basename
@@ -65,6 +69,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'CoreUI Linear Icons',
                 name: 'linear',
+                prefix: 'cil',
                 path: '@coreui/icons/svg/free',
                 fill: true,
                 icon: (basename: string) => basename
@@ -84,6 +89,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'CryptoCurrency Regular Icons',
                 name: 'regular',
+                prefix: 'cc',
                 path: 'cryptocurrency-icons/svg/black',
                 fill: true,
                 icon: (basename: string) => `cc-${basename.replace(/\$/g, '')}`
@@ -91,6 +97,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'CryptoCurrency Color Icons',
                 name: 'color',
+                prefix: 'ccc',
                 path: 'cryptocurrency-icons/svg/color',
                 fill: false,
                 icon: (basename: string) => `ccc-${basename.replace(/\$/g, '')}`
@@ -98,6 +105,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'CryptoCurrency Icon Icons',
                 name: 'icon',
+                prefix: 'cci',
                 path: 'cryptocurrency-icons/svg/icon',
                 fill: false,
                 icon: (basename: string) => `cci-${basename.replace(/\$/g, '')}`
@@ -117,6 +125,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'FontAwesome Brand Icons',
                 name: 'brands',
+                prefix: 'fab',
                 path: '@fortawesome/fontawesome-free/svgs/brands',
                 fill: true,
                 icon: (basename: string) => `fab-${basename}`
@@ -124,6 +133,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'FontAwesome Regular Icons',
                 name: 'regular',
+                prefix: 'far',
                 path: '@fortawesome/fontawesome-free/svgs/regular',
                 fill: true,
                 icon: (basename: string) => `far-${basename}`
@@ -131,6 +141,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'FontAwesome Solid Icons',
                 name: 'solid',
+                prefix: 'fas',
                 path: '@fortawesome/fontawesome-free/svgs/solid',
                 fill: true,
                 icon: (basename: string) => `fas-${basename}`
@@ -148,6 +159,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'fc',
                 path: 'flat-color-icons/svg',
                 fill: false,
                 icon: (basename: string) => `fc-${basename}`
@@ -167,6 +179,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'Flag Icons 4x3',
                 name: '4x3',
+                prefix: 'fi',
                 path: 'flag-icon-css/flags/4x3',
                 fill: false,
                 icon: (basename: string) => `fi-${basename}`
@@ -174,6 +187,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'Flag Icons 1x1',
                 name: '1x1',
+                prefix: 'fis',
                 path: 'flag-icon-css/flags/1x1',
                 fill: false,
                 icon: (basename: string) => `fis-${basename}`
@@ -193,6 +207,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'Heroicons Solid',
                 name: 'solid',
+                prefix: 'his',
                 path: 'heroicons/solid',
                 fill: true,
                 icon: (basename: string) => `his-${basename}`
@@ -200,6 +215,7 @@ export const iconPacks: IconPack[] = [
             {
                 title: 'Heroicons Outline',
                 name: 'outline',
+                prefix: 'hio',
                 path: 'heroicons/outline',
                 fill: true,
                 icon: (basename: string) => `hio-${basename}`
@@ -217,6 +233,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'ink',
                 path: '../src/assets',
                 fill: true,
                 import: '@inkline/inkline/src/assets/icons',
@@ -235,6 +252,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'ion',
                 path: 'ionicons/dist/svg',
                 fill: true,
                 icon: (basename: string) => `ion-${basename}`,
@@ -252,6 +270,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'la',
                 path: 'line-awesome/svg',
                 fill: true,
                 icon: (basename: string) => `la-${basename}`,
@@ -269,6 +288,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'mdi',
                 path: 'material-design-icons',
                 fill: true,
                 pattern: '**/production/*.svg',
@@ -287,6 +307,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'oi',
                 path: '@primer/octicons/build/svg',
                 fill: true,
                 icon: (basename: string) => `oi-${basename}`
@@ -304,6 +325,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'px',
                 path: 'pixelarticons/svg',
                 fill: true,
                 icon: (basename: string) => `px-${basename}`
@@ -321,6 +343,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'pi',
                 path: 'primeicons/raw-svg',
                 fill: true,
                 icon: (basename: string) => `pi-${basename}`
@@ -338,6 +361,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'ri',
                 path: 'remixicon/icons',
                 fill: true,
                 icon: (basename: string) => `ri-${basename}`
@@ -355,6 +379,7 @@ export const iconPacks: IconPack[] = [
         },
         variants: [
             {
+                prefix: 'si',
                 path: 'simple-icons/icons',
                 fill: true,
                 icon: (basename: string) => `si-${basename}`
