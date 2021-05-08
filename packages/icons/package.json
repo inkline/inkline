@@ -11,12 +11,26 @@
             "style": "./dist/style.css",
             "default": "./build/icons.js"
         },
-        "./*": {
-            "import": "./build/*/*.js",
-            "require": "./dist/*/*.js",
-            "style": "./dist/*/*.css",
-            "sass": "./build/*/*.scss",
-            "default": "./build/*/*"
+        "./packs": {
+            "import": "./build/packs/index.js",
+            "require": "./dist/packs/index.js",
+            "sass": "./build/packs/index.scss",
+            "default": "./build/packs/index.js"
+        },
+        "./packs/": {
+            "import": "./build/packs/",
+            "require": "./dist/packs/",
+            "sass": "./build/packs/",
+            "default": "./build/packs/"
+        },
+        "./components": {
+            "import": "./build/components/index.js"
+        },
+        "./controllers": {
+            "import": "./build/controllers/index.js"
+        },
+        "./helpers": {
+            "import": "./build/helpers/index.js"
         }
     },
     "types": "./build/index.d.ts",
