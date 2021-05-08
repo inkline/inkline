@@ -11,12 +11,6 @@
     <br/>
     <br/>
     <br/>
-    <a href="https://inkline.io">
-        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/homepage.png" width="1009" alt="Vue.js UI/UX Library - Inkline" />
-    </a>
-    <br/>
-    <br/>
-    <br/>
     <a href="https://inkline.io">Homepage</a>
     ·
     <a href="https://inkline.io/docs/introduction/getting-started">Documentation</a>
@@ -27,15 +21,15 @@
 <br/>
 
 <p align="center">
-    <a href="https://www.npmjs.com/package/@inkline/inkline">
-        <img src="https://img.shields.io/npm/v/@inkline/inkline.svg" alt="npm version">
+    <a href="https://www.npmjs.com/package/@inkline/icons">
+        <img src="https://img.shields.io/npm/v/@inkline/icons.svg" alt="npm version">
     </a>
     <a href="https://github.com/inkline/inkline/actions">
         <img src="https://github.com/inkline/inkline/workflows/Build/badge.svg" alt="Build">
     </a>
     <a href='https://coveralls.io/github/inkline/inkline?branch=master'><img src='https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master' alt='Coverage Status' /></a>
-    <a href="https://www.npmjs.com/package/@inkline/inkline">
-        <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
+    <a href="https://www.npmjs.com/package/@inkline/icons">
+        <img src="https://img.shields.io/npm/dm/@inkline/icons.svg" alt="Downloads">
     </a>
     <a href="https://discord.gg/2w5UGnK">
         <img src="https://img.shields.io/discord/550436704482492429.svg" alt="Discord">
