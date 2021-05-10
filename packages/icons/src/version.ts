@@ -14,5 +14,5 @@ export const versions = {
     primeicons: "4.1.0",
     remixicon: "2.5.0",
     "simple-icons": "4.21.0",
-    inkline: "1.1.3"
+    inkline: "1.1.4"
 }

@@ -36,11 +36,21 @@ export default defineConfig({
     },
     build: {
         lib: {
-            entry: resolve(__dirname, 'src/inkline.js'),
+            entry: resolve(__dirname, 'src', 'inkline.js'),
             name: 'Inkline'
         },
         rollupOptions: {
-            external: ['vue']
+            // make sure to externalize deps that shouldn't be bundled
+            // into your library
+            external: ['vue'],
+            output: {
+                exports: 'named',
+                // Provide global variables to use in the UMD build
+                // for externalized deps
+                globals: {
+                    vue: 'Vue'
+                }
+            }
         }
     }
 });
