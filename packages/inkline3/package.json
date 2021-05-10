@@ -1,7 +1,7 @@
 {
-    "name": "@inkline/inkline3",
-    "version": "3.0.0",
-    "description": "Inkline is the customizable Vue.js UI/UX Library, designed for creating flawless content-rich responsive web applications",
+    "name": "@inkline/inkline",
+    "version": "3.0.0-beta.1",
+    "description": "Inkline is the Vue.js UI/UX Library built for creating your next design system",
     "author": "Alex Grozav <alex@grozav.com>",
     "scripts": {
         "dev": "vite",
@@ -23,7 +23,7 @@
     "jsdelivr": "dist/inkline.js",
     "unpkg": "dist/inkline.js",
     "dependencies": {
-        "@inkline/icons": "^1.1.2",
+        "@inkline/icons": "^1.1.4",
         "@popperjs/core": "^2.9.1",
         "fuse.js": "^6.4.0"
     },
