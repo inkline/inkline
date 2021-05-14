@@ -95,18 +95,3 @@ sw.*
 
 # MacOS
 .DS_Store
-
-# Algolia configuration
-algolia.config.js
-
-# packages/docs
-
-# Nuxt generate
-packages/docs/dist
-packages/nuxt-module/tests/app/dist*
-packages/vue-cli-plugin/tests/app/dist*
-
-# packages/inkline
-
-# README
-packages/inkline/README.md
