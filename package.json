@@ -12,7 +12,7 @@
         "lint:script": "vue-cli-service lint",
         "lint:style": "vue-cli-service lint:style",
         "prepublishOnly": "npm run build",
-        "test": "jest --coverage",
+        "test": "",
         "test:dev": "jest --watch",
         "generate:manifest": "node ./scripts/manifest.js",
         "generate:manifest:sass": "node ./scripts/manifest-sass.js",
