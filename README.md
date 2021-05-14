@@ -58,21 +58,23 @@
 ## Installation
 Read the [Getting Started](https://inkline.io/docs/introduction/getting-started/) page and find information on framework contents, templates, examples, and more.
 
-<a href="https://inkline.io/docs/introduction/installation/vue-cli">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/vue-cli.png" width="510" alt="Vue CLI Installation - Inkline" />
-</a>
+~~~js
+import '@inkline/inkline/src/inkline.scss';
+import { Inkline, IButton } from '@inkline/inkline/src';
+import { createApp } from 'vue'
+import App from './App.vue'
 
-<a href="https://inkline.io/docs/introduction/installation/nuxt">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/nuxt.png" width="510" alt="Nuxt.js Installation - Inkline" />
-</a>
+const app = createApp(App);
 
-<a href="https://inkline.io/docs/introduction/installation/custom">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/custom.png" width="510" alt="Custom Installation - Inkline" />
-</a>
+app.use(Inkline, {
+    components: {
+        IButton
+    }
+});
 
-<a href="https://inkline.io/docs/introduction/installation/cdn">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/cdn.png" width="510" alt="CDN Installation - Inkline" />
-</a>
+app.mount('#app');
+
+~~~
 
 ## Bugs and feature requests
 Have a bug or a feature request? Please first search for existing and closed issues.
