@@ -1,19 +1,14 @@
-//
-// Nav sizes
-//
-@each $size in $sizes {
-    $_font-size: map_get($pagination-font-size, $size);
-    $_item-border-radius: map_get($pagination-item-border-radius, $size);
-    $_item-padding: map_get($pagination-item-padding, $size);
-    $_item-min-width: map_get($pagination-item-min-width, $size);
+@mixin pagination-size-variant($size-variant-key) {
+    $_border-radius: var(--pagination-size-variant-#{$size-variant-key}-border-radius);
+    $_font-size: var(--pagination-size-variant-#{$size-variant-key}-font-size);
+    $_padding: var(--pagination-size-variant-#{$size-variant-key}-padding);
+    $_min-width: var(--pagination-size-variant-#{$size-variant-key}-min-width);
 
-    .pagination.-#{$size} {
-        font-size: $_font-size;
+    font-size: $_font-size;
 
-        > .item {
-            border-radius: $_item-border-radius;
-            padding: $_item-padding;
-            min-width: $_item-min-width;
-        }
+    > .pagination-item {
+        border-radius: $_border-radius;
+        padding: $_padding;
+        min-width: $_min-width;
     }
 }

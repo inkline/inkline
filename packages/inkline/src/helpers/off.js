@@ -1,5 +1,3 @@
-import Vue from 'vue';
-
 export function removeEventListenerBinding (element, event, handler) {
     if (element && event) {
         element.removeEventListener(event, handler, false);
@@ -13,7 +11,11 @@ export function detachEventBinding (element, event, handler) {
 }
 
 export const _off = () => {
-    if (!Vue.prototype.$isServer && typeof window !== 'undefined' && window.document.removeEventListener) {
+    if (typeof window === 'undefined') {
+        return () => {};
+    }
+
+    if (window.document.removeEventListener) {
         return removeEventListenerBinding;
     } else {
         return detachEventBinding;

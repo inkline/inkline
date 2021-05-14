@@ -1,35 +1,291 @@
-//
-// Sidebar Variables
-//
-$sidebar-width-base: 14rem !default;
-$sidebar-width: size-map($sidebar-width-base, $sizes, $size-multipliers) !default;
+////
+/// Variables
+////
 
-$sidebar-padding-base: 0 !default;
-$sidebar-padding: size-map($sidebar-padding-base, $sizes, $size-multipliers) !default;
+/// The border radius of the sidebar component
+/// @name border-radius
+/// @type size
+$sidebar-border-radius: border-radius() !default;
 
-$sidebar-wrapper-transition-duration: $transition-duration !default;
-$sidebar-wrapper-transition-easing: $transition-easing !default;
+/// The font size of the sidebar component
+/// @name font-size
+/// @type size
+$sidebar-font-size: font-size() !default;
 
-$sidebar-transition-duration: $transition-duration !default;
-$sidebar-transition-easing: $transition-easing !default;
+/// The padding of the sidebar component
+/// @name padding
+/// @type size
+$sidebar-padding: spacer() !default;
 
-$sidebar-overlay-transition-duration: $transition-duration !default;
-$sidebar-overlay-transition-easing: $transition-easing !default;
+/// The padding of the sidebar component item
+/// @name item-padding
+/// @type size
+$sidebar-item-padding: spacer() !default;
 
+/// The width of the sidebar component
+/// @name width
+/// @type size
+$sidebar-width: 14rem !default;
+
+/// The background of the sidebar component overlay
+/// @name overlay-background
 $sidebar-overlay-background: rgba(0, 0, 0, 0.5) !default;
 
-$sidebar-z-index: $z-index-fixed !default;
+/// The z-index of the sidebar component
+/// @name z-index
+$sidebar-z-index: z-index('fixed') !default;
 
-//
-// Variants
-//
-$sidebar-color-for-light-variant: $color-for-light-variant !default;
-$sidebar-color-for-dark-variant: $color-for-dark-variant !default;
+////
+/// Sizes
+////
 
-$sidebar-variant-light: sidebar-variant($color-light) !default;
-$sidebar-variant-dark: sidebar-variant($color-dark) !default;
+////
+/// Small size
+////
 
-$sidebar-variants: (
-    light: $sidebar-variant-light,
-    dark: $sidebar-variant-dark
+/// The border radius of the sidebar component
+/// @name border-radius
+/// @group sm
+/// @type size
+$sidebar-size-variant-sm-border-radius: calc(var(--sidebar-border-radius) * #{size-multiplier('sm')}) !default;
+
+/// The font size of the sidebar component
+/// @name font-size
+/// @group sm
+/// @type size
+$sidebar-size-variant-sm-font-size: calc(var(--sidebar-font-size) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the sidebar component
+/// @name padding
+/// @group sm
+/// @type size
+$sidebar-size-variant-sm-padding: calc(var(--sidebar-padding) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the sidebar component item
+/// @name item-padding
+/// @group sm
+/// @type size
+$sidebar-size-variant-sm-item-padding: calc(var(--sidebar-item-padding) * #{size-multiplier('sm')} / 2) calc(var(--sidebar-item-padding) * #{size-multiplier('sm')}) !default;
+
+/// The width of the sidebar component
+/// @name width
+/// @group sm
+/// @type size
+$sidebar-size-variant-sm-width: calc(var(--sidebar-width) * #{size-multiplier('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
+$sidebar-size-variant-sm: (
+    'border-radius': $sidebar-size-variant-sm-border-radius,
+    'font-size': $sidebar-size-variant-sm-font-size,
+    'padding': $sidebar-size-variant-sm-padding,
+    'item-padding': $sidebar-size-variant-sm-item-padding,
+    'width': $sidebar-size-variant-sm-width
+) !default;
+
+////
+/// Medium size
+////
+
+/// The border radius of the sidebar component
+/// @name border-radius
+/// @group md
+/// @type size
+$sidebar-size-variant-md-border-radius: calc(var(--sidebar-border-radius) * #{size-multiplier('md')}) !default;
+
+/// The font size of the sidebar component
+/// @name font-size
+/// @group md
+/// @type size
+$sidebar-size-variant-md-font-size: calc(var(--sidebar-font-size) * #{size-multiplier('md')}) !default;
+
+/// The padding of the sidebar component
+/// @name padding
+/// @group md
+/// @type size
+$sidebar-size-variant-md-padding: calc(var(--sidebar-padding) * #{size-multiplier('md')}) !default;
+
+/// The padding of the sidebar component item
+/// @name item-padding
+/// @group md
+/// @type size
+$sidebar-size-variant-md-item-padding: calc(var(--sidebar-item-padding) * #{size-multiplier('md')} / 2) calc(var(--sidebar-item-padding) * #{size-multiplier('md')}) !default;
+
+/// The width of the sidebar component
+/// @name width
+/// @group md
+/// @type size
+$sidebar-size-variant-md-width: calc(var(--sidebar-width) * #{size-multiplier('md')}) !default;
+
+/// Map for md size
+/// @group md
+$sidebar-size-variant-md: (
+    'border-radius': $sidebar-size-variant-md-border-radius,
+    'font-size': $sidebar-size-variant-md-font-size,
+    'padding': $sidebar-size-variant-md-padding,
+    'item-padding': $sidebar-size-variant-md-item-padding,
+    'width': $sidebar-size-variant-md-width
+) !default;
+
+////
+/// Large size
+////
+
+/// The border radius of the sidebar component
+/// @name border-radius
+/// @group lg
+/// @type size
+$sidebar-size-variant-lg-border-radius: calc(var(--sidebar-border-radius) * #{size-multiplier('lg')}) !default;
+
+/// The font size of the sidebar component
+/// @name font-size
+/// @group lg
+/// @type size
+$sidebar-size-variant-lg-font-size: calc(var(--sidebar-font-size) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the sidebar component
+/// @name padding
+/// @group lg
+/// @type size
+$sidebar-size-variant-lg-padding: calc(var(--sidebar-padding) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the sidebar component item
+/// @name item-padding
+/// @group lg
+/// @type size
+$sidebar-size-variant-lg-item-padding: calc(var(--sidebar-item-padding) * #{size-multiplier('lg')} / 2) calc(var(--sidebar-item-padding) * #{size-multiplier('lg')}) !default;
+
+/// The width of the sidebar component
+/// @name width
+/// @group lg
+/// @type size
+$sidebar-size-variant-lg-width: calc(var(--sidebar-width) * #{size-multiplier('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
+$sidebar-size-variant-lg: (
+    'border-radius': $sidebar-size-variant-lg-border-radius,
+    'font-size': $sidebar-size-variant-lg-font-size,
+    'padding': $sidebar-size-variant-lg-padding,
+    'item-padding': $sidebar-size-variant-lg-item-padding,
+    'width': $sidebar-size-variant-lg-width
+) !default;
+
+/// Sizes group map
+$sidebar-size-variants: (
+    'sm': $sidebar-size-variant-sm,
+    'md': $sidebar-size-variant-md,
+    'lg': $sidebar-size-variant-lg
+) !default;
+
+////
+/// Colors
+////
+
+////
+/// Light color
+////
+
+/// The color of the sidebar component
+/// @name color
+/// @group light
+/// @type color
+$sidebar-color-variant-light-color: contrast-color($color-light) !default;
+
+/// The background of the sidebar component
+/// @name background
+/// @group light
+/// @type color
+$sidebar-color-variant-light-background: color('light') !default;
+
+/// The color of the sidebar component item
+/// @name item-color
+/// @group light
+/// @type color
+$sidebar-color-variant-light-item-color: contrast-color($color-light) !default;
+
+/// The color of the sidebar component item when hovered
+/// @name item-color-hover
+/// @group light
+/// @type color
+$sidebar-color-variant-light-item-color-hover: contrast-color($color-light) !default;
+
+/// The background of the sidebar component item
+/// @name item-background
+/// @group light
+/// @type color
+$sidebar-color-variant-light-item-background: color('light') !default;
+
+/// The background of the sidebar component item when hovered or focused
+/// @name item-background-hover
+/// @group light
+/// @type color
+$sidebar-color-variant-light-item-background-hover: color('light-55') !default;
+
+/// Map for light color
+/// @group light
+$sidebar-color-variant-light: (
+    'color': $sidebar-color-variant-light-color,
+    'background': $sidebar-color-variant-light-background,
+    'item-color': $sidebar-color-variant-light-item-color,
+    'item-color-hover': $sidebar-color-variant-light-item-color-hover,
+    'item-background': $sidebar-color-variant-light-item-background,
+    'item-background-hover': $sidebar-color-variant-light-item-background-hover
+) !default;
+
+////
+/// Dark color
+////
+
+/// The color of the sidebar component
+/// @name color
+/// @group dark
+/// @type color
+$sidebar-color-variant-dark-color: contrast-color($color-dark) !default;
+
+/// The background of the sidebar component
+/// @name background
+/// @group dark
+/// @type color
+$sidebar-color-variant-dark-background: color('dark') !default;
+
+/// The color of the sidebar component item
+/// @name item-color
+/// @group dark
+/// @type color
+$sidebar-color-variant-dark-item-color: contrast-color($color-dark) !default;
+
+/// The color of the sidebar component item when hovered
+/// @name item-color-hover
+/// @group dark
+/// @type color
+$sidebar-color-variant-dark-item-color-hover: contrast-color($color-dark) !default;
+
+/// The background of the sidebar component item
+/// @name item-background
+/// @group dark
+/// @type color
+$sidebar-color-variant-dark-item-background: color('dark') !default;
+
+/// The background of the sidebar component item when hovered or focused
+/// @name item-background-hover
+/// @group dark
+/// @type color
+$sidebar-color-variant-dark-item-background-hover: color('dark-45') !default;
+
+/// Map for dark color
+/// @group dark
+$sidebar-color-variant-dark: (
+    'color': $sidebar-color-variant-dark-color,
+    'background': $sidebar-color-variant-dark-background,
+    'item-color': $sidebar-color-variant-dark-item-color,
+    'item-color-hover': $sidebar-color-variant-dark-item-color-hover,
+    'item-background': $sidebar-color-variant-dark-item-background,
+    'item-background-hover': $sidebar-color-variant-dark-item-background-hover
+) !default;
+
+/// Colors group map
+$sidebar-color-variants: (
+    'light': $sidebar-color-variant-light,
+    'dark': $sidebar-color-variant-dark
 ) !default;

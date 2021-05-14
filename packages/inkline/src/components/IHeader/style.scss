@@ -1,9 +1,9 @@
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_mixins';
-@import 'css/_variables';
-@import 'css/_sizes';
-@import 'css/_variants';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/sizes';
+@import 'css/colors';
 
 /**
  * Header
@@ -12,7 +12,9 @@
     display: flex;
     box-sizing: border-box;
     width: 100%;
-    transition: background-color $transition-duration $transition-easing;
+    transition-property: background-color;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-easing);
 
     /* stylelint-disable selector-list-comma-newline-after */
     > .container,
@@ -48,6 +50,17 @@
         max-height: 100%;
     }
 
-    @extend .header.-md;
-    @extend .header.-light;
+    @include header-size-variant('md');
+    @each $size-variant-key, $header-size-variant-value in $header-size-variants {
+        &.-#{$size-variant-key} {
+            @include header-size-variant($size-variant-key);
+        }
+    }
+
+    @include header-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $header-color-variants {
+        &.-#{$color-variant-key} {
+            @include header-color-variant($color-variant-key);
+        }
+    }
 }

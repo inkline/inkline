@@ -1,12 +1,12 @@
 /**
  * Nav
  */
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_mixins';
-@import 'css/_variables';
-@import 'css/_sizes';
-@import 'css/_variants';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/sizes';
+@import 'css/colors';
 
 .pagination {
     display: flex;
@@ -16,24 +16,20 @@
     margin-bottom: 0;
     list-style: none;
 
-    > .item {
+    > .pagination-item {
         display: inline-flex;
-        border-width: $pagination-item-border-width;
+        border-width: var(--pagination-border-width);
         border-style: solid;
-        margin: 0 $pagination-item-spacing;
+        margin: 0 var(--pagination-margin);
         text-align: center;
         justify-content: center;
         cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        transition-property: background, color, border;
+        transition-timing-function: var(--transition-easing);
+        transition-duration: var(--transition-duration);
 
         &.-active {
-            color: $pagination-item-color-active;
             font-weight: bold;
-
-            &:hover,
-            &:focus {
-                background-color: $pagination-item-background-active;
-            }
         }
 
         &.-disabled {
@@ -41,6 +37,17 @@
         }
     }
 
-    @extend .pagination.-md;
-    @extend .pagination.-light;
+    @include pagination-size-variant('md');
+    @each $size-variant-key, $pagination-size-variant-value in $pagination-size-variants {
+        &.-#{$size-variant-key} {
+            @include pagination-size-variant($size-variant-key);
+        }
+    }
+
+    @include pagination-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $pagination-color-variants {
+        &.-#{$color-variant-key} {
+            @include pagination-color-variant($color-variant-key);
+        }
+    }
 }

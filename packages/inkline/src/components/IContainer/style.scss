@@ -1,29 +1,24 @@
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_variables';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
 
 /**
  * Container
  */
-.container,
-.container.-fluid {
+.container {
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
     width: 100%;
 
-    @each $breakpoint-name, $gutter-width in $gutter {
-        @include breakpoint-up($breakpoint-name) {
-            padding-left: ($gutter-width / 2);
-            padding-right: ($gutter-width / 2);
-        }
-    }
-}
+    @each $breakpoint-name, $breakpoint in $breakpoints {
+        $_container-width: var(--container-size-variant-#{$breakpoint-name}-width);
 
-.container {
-    @each $breakpoint-name, $container-max-width in $container-width {
         @include breakpoint-up($breakpoint-name) {
-            max-width: $container-max-width;
+            max-width: $_container-width;
+            padding-left: calc(#{gutter($breakpoint-name)} / 2);
+            padding-right: calc(#{gutter($breakpoint-name)} / 2);
         }
     }
 

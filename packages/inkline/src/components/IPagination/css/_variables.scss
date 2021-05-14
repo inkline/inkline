@@ -1,36 +1,283 @@
-//
-// Nav Variables
-//
-$pagination-font-size: $font-size !default;
+////
+/// Variables
+////
 
-$pagination-item-disabled-color: $text-muted !default;
+/// The border width of the pagination component
+/// @name border-width
+$pagination-border-width: var(--border-width) !default;
 
-$pagination-item-padding-base: spacers('1/2') spacers('1/3') !default;
-$pagination-item-padding: size-map($pagination-item-padding-base, $sizes, $size-multipliers) !default;
+/// The margin of the pagination component items
+/// @name margin
+$pagination-margin: spacer('1/4') !default;
 
-$pagination-item-min-width-base: 40px !default;
-$pagination-item-min-width: size-map($pagination-item-min-width-base, $sizes, $size-multipliers) !default;
+/// The opacity of the pagination component when disabled
+/// @name opacity-disabled
+$pagination-opacity-disabled: 0.85 !default;
 
-$pagination-item-spacing: 0.25rem !default;
+/// The border radius of the pagination component
+/// @name border-radius
+/// @type size
+$pagination-border-radius: border-radius() !default;
 
-$pagination-item-border-width: $border-width !default;
-$pagination-item-border-radius: $border-radius !default;
+/// The font size of the pagination component
+/// @name font-size
+/// @type size
+$pagination-font-size: font-size() !default;
 
-$pagination-item-background-active: colors('primary') !default;
-$pagination-item-color-active: colors('white') !default;
+/// The padding of the pagination component
+/// @name padding
+/// @type size
+$pagination-padding: spacer('1/2') !default;
 
-$pagination-nav-disabled-opacity: 0.85 !default;
+/// The minimum width of the pagination component items
+/// @name min-width
+/// @type size
+$pagination-min-width: 40px !default;
 
-//
-// Themes
-//
-$pagination-color-for-light-variant: $color-for-light-variant !default;
-$pagination-color-for-dark-variant: $color-for-dark-variant !default;
+////
+/// Sizes
+////
 
-$pagination-variant-light: pagination-variant($color-light) !default;
-$pagination-variant-dark: pagination-variant($color-dark) !default;
+////
+/// Small size
+////
 
-$pagination-variants: (
-    light: $pagination-variant-light,
-    dark: $pagination-variant-dark
+/// The border radius of the pagination component
+/// @name border-radius
+/// @group sm
+/// @type size
+$pagination-size-variant-sm-border-radius: calc(var(--pagination-border-radius) * #{size-multiplier('sm')}) !default;
+
+/// The font size of the pagination component
+/// @name font-size
+/// @group sm
+/// @type size
+$pagination-size-variant-sm-font-size: calc(var(--pagination-font-size) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the pagination component
+/// @name padding
+/// @group sm
+/// @type size
+$pagination-size-variant-sm-padding: calc(var(--pagination-padding) * #{size-multiplier('sm')}) !default;
+
+/// The minimum width of the pagination component items
+/// @name min-width
+/// @group sm
+/// @type size
+$pagination-size-variant-sm-min-width: calc(var(--pagination-min-width) * #{size-multiplier('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
+$pagination-size-variant-sm: (
+    'border-radius': $pagination-size-variant-sm-border-radius,
+    'font-size': $pagination-size-variant-sm-font-size,
+    'padding': $pagination-size-variant-sm-padding,
+    'min-width': $pagination-size-variant-sm-min-width
+) !default;
+
+////
+/// Medium size
+////
+
+/// The border radius of the pagination component
+/// @name border-radius
+/// @group md
+/// @type size
+$pagination-size-variant-md-border-radius: calc(var(--pagination-border-radius) * #{size-multiplier('md')}) !default;
+
+/// The font size of the pagination component
+/// @name font-size
+/// @group md
+/// @type size
+$pagination-size-variant-md-font-size: calc(var(--pagination-font-size) * #{size-multiplier('md')}) !default;
+
+/// The padding of the pagination component
+/// @name padding
+/// @group md
+/// @type size
+$pagination-size-variant-md-padding: calc(var(--pagination-padding) * #{size-multiplier('md')}) !default;
+
+/// The minimum width of the pagination component items
+/// @name min-width
+/// @group md
+/// @type size
+$pagination-size-variant-md-min-width: calc(var(--pagination-min-width) * #{size-multiplier('md')}) !default;
+
+/// Map for md size
+/// @group md
+$pagination-size-variant-md: (
+    'border-radius': $pagination-size-variant-md-border-radius,
+    'font-size': $pagination-size-variant-md-font-size,
+    'padding': $pagination-size-variant-md-padding,
+    'min-width': $pagination-size-variant-md-min-width
+) !default;
+
+////
+/// Large size
+////
+
+/// The border radius of the pagination component
+/// @name border-radius
+/// @group lg
+/// @type size
+$pagination-size-variant-lg-border-radius: calc(var(--pagination-border-radius) * #{size-multiplier('lg')}) !default;
+
+/// The font size of the pagination component
+/// @name font-size
+/// @group lg
+/// @type size
+$pagination-size-variant-lg-font-size: calc(var(--pagination-font-size) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the pagination component
+/// @name padding
+/// @group lg
+/// @type size
+$pagination-size-variant-lg-padding: calc(var(--pagination-padding) * #{size-multiplier('lg')}) !default;
+
+/// The minimum width of the pagination component items
+/// @name min-width
+/// @group lg
+/// @type size
+$pagination-size-variant-lg-min-width: calc(var(--pagination-min-width) * #{size-multiplier('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
+$pagination-size-variant-lg: (
+    'border-radius': $pagination-size-variant-lg-border-radius,
+    'font-size': $pagination-size-variant-lg-font-size,
+    'padding': $pagination-size-variant-lg-padding,
+    'min-width': $pagination-size-variant-lg-min-width
+) !default;
+
+/// Sizes group map
+$pagination-size-variants: (
+    'sm': $pagination-size-variant-sm,
+    'md': $pagination-size-variant-md,
+    'lg': $pagination-size-variant-lg
+) !default;
+
+////
+/// Colors
+////
+
+////
+/// Light color
+////
+
+/// The background of the pagination component item
+/// @name background
+/// @group light
+/// @type color
+$pagination-color-variant-light-background: color('light') !default;
+
+/// The background of the pagination component item when hovered or focused
+/// @name background-hover
+/// @group light
+/// @type color
+$pagination-color-variant-light-background-hover: color('light-55') !default;
+
+/// The background of the pagination component item when active
+/// @name background-active
+/// @group light
+/// @type color
+$pagination-color-variant-light-background-active: color('primary') !default;
+
+/// The border color of the pagination component item
+/// @name border-color
+/// @group light
+/// @type color
+$pagination-color-variant-light-border-color: color('light-55') !default;
+
+/// The border color of the pagination component item when active
+/// @name border-color-active
+/// @group light
+/// @type color
+$pagination-color-variant-light-border-color-active: color('primary-55') !default;
+
+/// The border color of the pagination component item when active
+/// @name color
+/// @group light
+/// @type color
+$pagination-color-variant-light-color: contrast-color($color-light) !default;
+
+/// The border color of the pagination component item when active
+/// @name color-active
+/// @group light
+/// @type color
+$pagination-color-variant-light-color-active: contrast-color($color-primary) !default;
+
+/// Map for light color
+/// @group light
+$pagination-color-variant-light: (
+    'background': $pagination-color-variant-light-background,
+    'background-hover': $pagination-color-variant-light-background-hover,
+    'background-active': $pagination-color-variant-light-background-active,
+    'border-color': $pagination-color-variant-light-border-color,
+    'border-color-active': $pagination-color-variant-light-border-color-active,
+    'color': $pagination-color-variant-light-color,
+    'color-active': $pagination-color-variant-light-color-active
+) !default;
+
+////
+/// Dark color
+////
+
+/// The background of the pagination component item
+/// @name background
+/// @group dark
+/// @type color
+$pagination-color-variant-dark-background: color('dark') !default;
+
+/// The background of the pagination component item when hovered or focused
+/// @name background-hover
+/// @group dark
+/// @type color
+$pagination-color-variant-dark-background-hover: color('dark-45') !default;
+
+/// The background of the pagination component item when active
+/// @name background-active
+/// @group dark
+/// @type color
+$pagination-color-variant-dark-background-active: color('primary') !default;
+
+/// The border color of the pagination component item
+/// @name border-color
+/// @group dark
+/// @type color
+$pagination-color-variant-dark-border-color: color('dark-45') !default;
+
+/// The border color of the pagination component item when active
+/// @name border-color-active
+/// @group dark
+/// @type color
+$pagination-color-variant-dark-border-color-active: color('primary-55') !default;
+
+/// The border color of the pagination component item when active
+/// @name color
+/// @group dark
+/// @type color
+$pagination-color-variant-dark-color: contrast-color($color-dark) !default;
+
+/// The border color of the pagination component item when active
+/// @name color-active
+/// @group dark
+/// @type color
+$pagination-color-variant-dark-color-active: contrast-color($color-primary) !default;
+
+/// Map for dark color
+/// @group dark
+$pagination-color-variant-dark: (
+    'background': $pagination-color-variant-dark-background,
+    'background-hover': $pagination-color-variant-dark-background-hover,
+    'background-active': $pagination-color-variant-dark-background-active,
+    'border-color': $pagination-color-variant-dark-border-color,
+    'border-color-active': $pagination-color-variant-dark-border-color-active,
+    'color': $pagination-color-variant-dark-color,
+    'color-active': $pagination-color-variant-dark-color-active
+) !default;
+
+/// Colors group map
+$pagination-color-variants: (
+    'light': $pagination-color-variant-light,
+    'dark': $pagination-color-variant-dark
 ) !default;

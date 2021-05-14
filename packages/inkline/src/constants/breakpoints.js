@@ -6,7 +6,8 @@ export const breakpoints = {
     sm: [576, 767],
     md: [768, 991],
     lg: [992, 1199],
-    xl: [1200, Infinity]
+    xl: [1200, 1399],
+    xxl: [1400, Infinity]
 };
 
 /**
@@ -14,5 +15,5 @@ export const breakpoints = {
  *
  * @type {string[]}
  */
-export const breakpointKeys = ['', 'xs', 'sm', 'md', 'lg', 'xl'];
+export const breakpointKeys = ['', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 

@@ -1,33 +1,34 @@
 /**
  * Tables
  */
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_mixins';
-@import 'css/_variables';
-@import 'css/_variants';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
 
 .table {
     width: 100%;
     max-width: 100%;
-    margin-bottom: $table-margin-bottom;
+    margin-bottom: var(--table-margin-bottom);
 
     th,
     td {
-        padding: $table-cell-padding;
+        padding: var(--table-cell-padding);
         vertical-align: top;
-        border-top: $table-border-width solid transparent;
-        transition: color $transition-duration $transition-easing, background-color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
+        border-top: var(--table-border-width) solid transparent;
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-easing);
+        transition-property: color, background-color, border;
     }
 
     thead th {
         vertical-align: bottom;
-        border-bottom-width: (2 * $table-border-width);
-        border-bottom-color: $table-border-color;
+        border-bottom-width: calc(2 * var(--table-border-width));
     }
 
     tbody + tbody {
-        border-top: (2 * $table-border-width) solid transparent;
+        border-top: calc(2 * var(--table-border-width)) solid transparent;
     }
 
     // Condensed table w/ half padding
@@ -35,20 +36,21 @@
     &.-condensed {
         th,
         td {
-            padding: $table-cell-padding-sm;
+            padding: var(--table-cell-padding-sm);
         }
     }
 
-    // Bordered version
+    // Border version
     //
     // Add borders all around the table and between all the columns.
     //
-    &.-bordered {
-        border: $table-border-width solid transparent;
+    &.-border {
+        border: var(--table-border-width) solid transparent;
 
         th,
         td {
-            border: $table-border-width solid $table-border-color;
+            border-width: var(--table-border-width);
+            border-style: solid;
         }
     }
 
@@ -71,9 +73,7 @@
         tbody tr {
             th,
             td {
-                @if $transition-enabled and transition('table') {
-                    transition: background-color $transition-duration ease;
-                }
+                transition: background-color var(--transition-duration) ease;
             }
         }
     }
@@ -81,10 +81,15 @@
     th,
     td,
     tbody + tbody {
-        border-top-color: $table-border-color;
+        border-top-color: var(--table-border-color);
     }
 
-    @extend .table.-light;
+    @include table-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $table-color-variants {
+        &.-#{$color-variant-key} {
+            @include table-color-variant($color-variant-key);
+        }
+    }
 }
 
 // Responsive tables
@@ -97,11 +102,11 @@
     position: relative;
 
     &.-responsive {
-        @each $breakpoint-name, $breakpoint-value in $breakpoints {
-            $infix: breakpoint-infix($breakpoint-name);
+        @each $breakpoint-key, $breakpoint-value in $breakpoints {
+            $infix: breakpoint-infix($breakpoint-key);
 
             &#{$infix} {
-                @include breakpoint-down($breakpoint-name) {
+                @include breakpoint-down($breakpoint-key) {
                     display: block;
                     width: 100%;
                     overflow-x: auto;
@@ -110,7 +115,7 @@
 
                     // Prevent double border on horizontal scroll due to use of `display: block`
                     .table {
-                        &.-bordered {
+                        &.-border {
                             border: none;
                         }
                     }

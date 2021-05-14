@@ -1,43 +1,75 @@
 import {
-    ClassesProviderMixin,
-    EmitProviderMixin,
-    SizePropertyMixin,
+    colorVariantClass,
+    sizePropValidator,
 } from '@inkline/inkline/src/mixins';
+
+/**
+ * @name default
+ * @kind slot
+ * @description Slot for default nav content
+ */
 
 export default {
     name: 'INav',
-    mixins: [
-        ClassesProviderMixin,
-        EmitProviderMixin,
-
-        SizePropertyMixin,
-    ],
     props: {
-        tabs: {
-            type: Boolean,
-            default: false
+        /**
+         * @description The color variant of the nav
+         * @type light | dark
+         * @default light
+         */
+        color: {
+            type: String,
+            default: '',
         },
+        /**
+         * @description The size variant of the nav
+         * @type sm | md | lg
+         * @default md
+         */
+        size: {
+            type: String,
+            default: '',
+            validator: sizePropValidator
+        },
+        /**
+         * @description Display the nav with vertical orientation
+         * @type Boolean
+         * @default false
+         */
         vertical: {
             type: Boolean,
             default: false
         }
     },
-    methods: {
-        dispatchItemClick(e) {
-            ['INavbar', 'ISidebar'].forEach((componentName) => {
-                this.dispatch(componentName, 'item-click', e);
-            });
+    provide() {
+        return {
+            nav: this
+        };
+    },
+    inject: {
+        navbar: {
+            default: () => ({})
+        },
+        sidebar: {
+            default: () => ({})
         }
     },
-    created() {
-        this.classesProvider.add(() => ({
-            '-tabs': this.tabs,
-            '-vertical': this.vertical
-        }));
-
-        this.$on('item-click', this.dispatchItemClick);
+    computed: {
+        classes() {
+            return {
+                ...colorVariantClass(this),
+                [`-${this.size}`]: Boolean(this.size),
+                '-vertical': this.vertical,
+            };
+        }
     },
-    destroyed() {
-        this.$off('item-click', this.dispatchItemClick);
+    methods: {
+        onItemClick() {
+            [this.navbar, this.sidebar].forEach((parent) => {
+                if (parent.onItemClick) {
+                    parent.onItemClick();
+                }
+            });
+        }
     }
 };

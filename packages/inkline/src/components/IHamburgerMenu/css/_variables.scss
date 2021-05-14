@@ -1,25 +1,73 @@
-//
-// Hamburger Variables
-//
+////
+/// Variables
+////
+
+/// The width of the hamburger-menu component bars
+/// @name bar-width
 $hamburger-menu-bar-width: 30px !default;
+
+/// The height of the hamburger-menu component bars
+/// @name bar-height
 $hamburger-menu-bar-height: 3px !default;
+
+/// The border radius of the hamburger-menu component bars
+/// @name bar-border-radius
 $hamburger-menu-bar-border-radius: 2px !default;
+
+/// The spacing between the hamburger-menu component bars
+/// @name bar-spacing
 $hamburger-menu-bar-spacing: 5px !default;
-$hamburger-menu-bar-color: #000000 !default;
-$hamburger-menu-padding: $spacer / 2 !default;
+
+/// The padding of the hamburger-menu component
+/// @name padding
+$hamburger-menu-padding: spacer('1/2') !default;
+
+/// The opacity of the hamburger-menu component
+/// @name opacity
 $hamburger-menu-opacity: 0.7 !default;
-$hamburger-menu-hover-opacity: 1 !default;
 
-//
-// Variants
-//
-$hamburger-menu-color-for-light-variant: $color-for-light-variant !default;
-$hamburger-menu-color-for-dark-variant: $color-for-dark-variant !default;
+/// The opacity of the hamburger-menu component
+/// @name opacity-hover
+$hamburger-menu-opacity-hover: 1 !default;
 
-$hamburger-menu-variant-light: hamburger-menu-variant($color-dark) !default;
-$hamburger-menu-variant-dark: hamburger-menu-variant($color-light) !default;
+////
+/// Colors
+////
 
-$hamburger-menu-variants: (
-    light: $hamburger-menu-variant-light,
-    dark: $hamburger-menu-variant-dark
+////
+/// Light color
+////
+
+/// The background of the hamburger-menu component
+/// @name background
+/// @group light
+/// @type color
+$hamburger-menu-color-variant-light-background: color('dark') !default;
+
+/// Map for light color
+/// @group light
+$hamburger-menu-color-variant-light: (
+    'background': $hamburger-menu-color-variant-light-background
+) !default;
+
+////
+/// Dark color
+////
+
+/// The background of the hamburger-menu component
+/// @name background
+/// @group dark
+/// @type color
+$hamburger-menu-color-variant-dark-background: color('light') !default;
+
+/// Map for dark color
+/// @group dark
+$hamburger-menu-color-variant-dark: (
+    'background': $hamburger-menu-color-variant-dark-background
+) !default;
+
+/// Colors group map
+$hamburger-menu-color-variants: (
+    'light': $hamburger-menu-color-variant-light,
+    'dark': $hamburger-menu-color-variant-dark
 ) !default;

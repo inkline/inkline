@@ -1,6 +1,6 @@
 /**
-    * Document
-    */
+ * Document
+ */
 
 html {
     font-family: sans-serif;
@@ -10,11 +10,11 @@ html {
 }
 
 body {
-    font-size: font-size(md);
-    font-weight: font-weight(normal);
-    font-family: font-family-primary(base);
-    line-height: $line-height;
-    letter-spacing: $letter-spacing;
+    font-size: font-size('md');
+    font-weight: font-weight('normal');
+    font-family: font-family-primary('base');
+    line-height: var(--line-height);
+    letter-spacing: var(--letter-spacing);
     text-align: left;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

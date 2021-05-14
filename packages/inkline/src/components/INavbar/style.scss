@@ -1,25 +1,44 @@
 /**
  * Navbar
  */
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_mixins';
-@import 'css/_variables';
-@import 'css/_variants';
-@import 'css/_sizes';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
+@import 'css/sizes';
 
 @mixin navbar-collapse {
-    .navbar-items {
+    .navbar-collapsible {
         position: relative;
         display: block;
         width: 100%;
 
-        > .nav {
+        .nav {
             flex-direction: column;
             align-items: flex-start;
 
-            > .item {
+            .nav-item {
                 width: 100%;
+                transition-property: background-color, color;
+                transition-timing-function: var(--transition-easing);
+                transition-duration: var(--transition-duration);
+            }
+
+            .dropdown-wrapper {
+                width: 100%;
+
+                .dropdown {
+                    width: 100%;
+                    position: relative !important;
+                    left: auto !important;
+                    top: auto !important;
+                    transform-origin: center top;
+
+                    [data-popper-arrow] {
+                        display: none;
+                    }
+                }
             }
         }
     }
@@ -27,7 +46,7 @@
     .collapse-toggle {
         display: inline-block;
 
-        + .brand {
+        + .navbar-brand {
             order: -1;
         }
     }
@@ -47,22 +66,33 @@
         justify-content: space-between;
     }
 
-    ::v-deep .collapse-toggle {
+    .collapse-toggle {
         display: none;
     }
 
-    @each $breakpoint in (breakpoints-list()) {
-        &.-collapse-#{$breakpoint} ::v-deep {
+    @each $breakpoint in $breakpoint-keys {
+        &.-collapse-#{$breakpoint} {
             @include breakpoint-down($breakpoint) {
-                @include navbar-collapse;
+                @include navbar-collapse();
             }
         }
     }
 
-    &.-collapse-true ::v-deep {
-        @include navbar-collapse;
+    &.-collapse-true {
+        @include navbar-collapse();
     }
 
-    @extend .navbar.-md;
-    @extend .navbar.-light;
+    @include navbar-size-variant('md');
+    @each $size-variant-key, $navbar-size-variant-value in $navbar-size-variants {
+        &.-#{$size-variant-key} {
+            @include navbar-size-variant($size-variant-key);
+        }
+    }
+
+    @include navbar-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $navbar-color-variants {
+        &.-#{$color-variant-key} {
+            @include navbar-color-variant($color-variant-key);
+        }
+    }
 }

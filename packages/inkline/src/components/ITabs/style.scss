@@ -1,56 +1,36 @@
-/**
- * Collapsible
- */
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_mixins';
-@import 'css/_variables';
-@import 'css/_variants';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
+@import 'css/sizes';
 
 .tabs {
     position: relative;
     display: block;
 
-    &:not(.-custom) {
-        > .header {
-            > .button-group {
-                .button {
-                    &:first-child {
-                        border-bottom-left-radius: 0;
-                    }
+    > .tabs-header {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        align-items: center;
+        border-width: var(--tabs-border-width);
+        border-style: solid;
+        margin-bottom: var(--tabs-header-margin-bottom);
+        overflow: auto;
+    }
 
-                    &:last-child {
-                        border-bottom-right-radius: 0;
-                    }
-                }
-            }
-        }
-
-        > .tab {
-            border-top-left-radius: 0;
-        }
-
-        &.-stretch {
-            > .tab {
-                border-top-right-radius: 0;
-            }
+    @include tabs-size-variant('md');
+    @each $size-variant-key, $tabs-size-variant-value in $tabs-size-variants {
+        &.-#{$size-variant-key} {
+            @include tabs-size-variant($size-variant-key);
         }
     }
 
-    &.-stretch {
-        > .header {
-            width: 100%;
-
-            > .button-group {
-                display: flex;
-                flex-basis: 100%;
-
-                > .button {
-                    flex-grow: 1;
-                }
-            }
+    @include tabs-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $tabs-color-variants {
+        &.-#{$color-variant-key} {
+            @include tabs-color-variant($color-variant-key);
         }
     }
-
-    @extend .tabs.-light;
 }

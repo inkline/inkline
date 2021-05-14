@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Components IForm should render correctly 1`] = `<form role="form" class="form"></form>`;

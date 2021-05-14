@@ -1,10 +1,9 @@
-/**
- * Nav
- */
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_variables';
-@import 'css/_sizes';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
+@import 'css/sizes';
 
 .nav {
     display: flex;
@@ -19,5 +18,17 @@
         align-items: flex-start;
     }
 
-    @extend .nav.-md;
+    @include nav-size-variant('md');
+    @each $size-variant-key, $nav-size-variant-value in $nav-size-variants {
+        &.-#{$size-variant-key} {
+            @include nav-size-variant($size-variant-key);
+        }
+    }
+
+    @include nav-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $nav-color-variants {
+        &.-#{$color-variant-key} {
+            @include nav-color-variant($color-variant-key);
+        }
+    }
 }

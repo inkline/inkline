@@ -1,27 +1,23 @@
-<div class="form-check -checkbox" :class="classes['root']">
+<div class="checkbox" :class="classes">
     <input
-        v-model="model"
         ref="input"
         type="checkbox"
+        :checked="checked"
         tabindex="-1"
         :name="name"
-        :value="currentValue"
         :disabled="isDisabled"
         :readonly="isReadonly"
-        :indeterminate.prop="indeterminate">
+        :indeterminate.prop="indeterminate"
+        @change="onChange"
+    >
     <label
-       class="form-input-label"
-       :class="classes['label']"
+       class="checkbox-label"
        :aria-checked="checked"
        :aria-disabled="isDisabled"
        :aria-readonly="isReadonly"
        :tabindex="tabIndex"
-       @blur="onBlur"
-       @focus="onFocus"
        @click="clickInputRef"
        @keydown.space.stop.prevent="clickInputRef">
-        <slot></slot>
+        <slot />
     </label>
-
-    <i-form-error v-if="validate" :schema="schema"></i-form-error>
 </div>

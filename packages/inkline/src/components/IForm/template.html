@@ -2,7 +2,9 @@
       role="form"
       :name="name"
       :class="classes"
-      :disabled="disabled"
-      @submit="emitSubmit">
-    <slot></slot>
+      :readonly="isReadonly"
+      :disabled="isDisabled"
+      @submit="onSubmit">
+    {{ schema }}
+    <slot />
 </form>

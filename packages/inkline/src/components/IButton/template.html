@@ -6,10 +6,10 @@
     :tabindex="tabIndex"
     :class="classes"
     :disabled="isDisabled || loading"
-    @click="emitClick">
+    :aria-disabled="isDisabled"
+    :aria-pressed="active">
     <slot v-if="loading" name="loading">
-        <i-loader size="auto"></i-loader>
+        <i-loader />
     </slot>
-    <slot v-if="!loading"></slot>
+    <slot v-if="!loading" />
 </button>
-

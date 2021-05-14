@@ -1,80 +1,141 @@
-import { uid } from '@inkline/inkline/src/helpers';
 import {
-    AttributesProviderMixin,
-    ClassesProviderMixin,
-    EmitProviderMixin,
-    PopupProviderMixin,
-    PopupControlsProviderMixin,
-    EmitFocusMethodMixin,
-    SizePropertyMixin,
-    VariantPropertyMixin,
-    DisabledPropertyMixin
+    PopupMixin,
+    PopupControlsMixin,
+    sizePropValidator,
+    colorVariantClass
 } from '@inkline/inkline/src/mixins';
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
+
+/**
+ * @name default
+ * @kind slot
+ * @description Slot for tooltip trigger
+ */
+
+/**
+ * @name body
+ * @kind slot
+ * @description Slot for tooltip body content
+ */
 
 export default {
     name: 'ITooltip',
     mixins: [
-        AttributesProviderMixin,
-        ClassesProviderMixin,
-        EmitProviderMixin,
-        PopupProviderMixin,
-        PopupControlsProviderMixin,
-
-        EmitFocusMethodMixin,
-
-        SizePropertyMixin,
-        VariantPropertyMixin,
-        DisabledPropertyMixin,
+        PopupMixin,
+        PopupControlsMixin
     ],
     directives: {
         ClickOutside
     },
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
+    ],
     props: {
-        trigger: {
-            type: [String, Array],
-            default: 'hover'
-        },
-        placement: {
+        /**
+         * @description The color variant of the tooltip
+         * @type light | dark
+         * @default light
+         */
+        color: {
             type: String,
-            default: 'top'
+            default: ''
         },
+        /**
+         * @description The disabled state of the tooltip
+         * @type Boolean
+         * @default false
+         */
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * @description Used to manually control the visibility of the tooltip
+         * @type Boolean
+         * @default false
+         */
+        modelValue: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * @description Displays an arrow on the tooltip pointing to the trigger element
+         * @type Boolean
+         * @default true
+         */
         arrow: {
             type: Boolean,
             default: true
-        }
+        },
+        /**
+         * @description The placement of the tooltip
+         * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
+         * @default false
+         */
+        placement: {
+            type: String,
+            default: 'top',
+        },
+        /**
+         * @description The events used to trigger the tooltip
+         * @type hover | focus | click | manual
+         * @default [hover, focus]
+         */
+        trigger: {
+            type: [String, Array],
+            default: ['hover', 'focus']
+        },
+        /**
+         * @description The offset of the tooltip relative to the trigger element
+         * @type Number
+         * @default 6
+         */
+        offset: {
+            type: Number,
+            default: 6
+        },
+        /**
+         * @description Used to override the popper.js options used for creating the tooltip
+         * @type Object
+         * @default {}
+         */
+        popperOptions: {
+            type: Object,
+            default: () => ({})
+        },
+        /**
+         * @description The size variant of the tooltip
+         * @type sm | md | lg
+         * @default md
+         */
+        size: {
+            type: String,
+            default: '',
+            validator: sizePropValidator
+        },
     },
-    data() {
-        const basename = 'tooltip';
-
-        return {
-            id: this.$attrs.id || uid(basename),
-            basename
-        };
-    },
-    watch: {
-        'placement': {
-            immediate: true,
-            handler(value) {
-                this.currentPlacement = value;
+    computed: {
+        classes() {
+            return {
+                ...colorVariantClass(this),
+                [`-${this.size}`]: Boolean(this.size),
             }
         }
     },
     methods: {
-        onUpdatePopper() {
-            if (this.visible) {
-                this.updatePopper();
-            }
+        onEscape() {
+            this.visible = false;
+            this.$emit('update:modelValue', false);
+        },
+        handleClickOutside() {
+            this.visible = false;
+            this.$emit('update:modelValue', false);
+            this.onClickOutside();
         }
-    },
-    created() {
-        this.$on('updatePopper', this.onUpdatePopper);
-    },
-    mounted() {
-        this.referenceElement = this.$el;
-        this.currentPlacement = this.placement;
-    },
-    beforeDestroy() {
-        this.$off('updatePopper', this.onUpdatePopper);
     }
-};
+}
+

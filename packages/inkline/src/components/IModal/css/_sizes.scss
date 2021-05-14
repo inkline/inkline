@@ -1,29 +1,35 @@
-//
-// Modal sizes
-//
-@each $size in $sizes {
-    .modal.-#{$size} {
-        $_width: map_get($modal-width, $size);
-        $_border-radius: map_get($modal-border-radius, $size);
-        $_padding: map_get($modal-padding, $size);
+@mixin modal-size-variant($size-variant-key) {
+    $_width: var(--modal-size-variant-#{$size-variant-key}-width);
+    $_border-radius: var(--modal-size-variant-#{$size-variant-key}-border-radius);
+    $_font-size: var(--modal-size-variant-#{$size-variant-key}-font-size);
+    $_padding: var(--modal-size-variant-#{$size-variant-key}-padding);
 
-        max-width: $_width;
-        border-radius: $_border-radius;
+    max-width: $_width;
+    border-radius: $_border-radius;
 
-        > .header,
-        > .body,
-        > .footer {
-            padding: $_padding;
+    > .modal-header,
+    > .modal-body,
+    > .modal-footer {
+        padding: $_padding;
+    }
+
+    > .modal-header {
+        border-top-left-radius: $_border-radius;
+        border-top-right-radius: $_border-radius;
+
+        > .close {
+            border-radius: $_border-radius;
+
+            > .icon {
+                width: $_font-size;
+                height: $_font-size;
+                mask-size: $_font-size $_font-size;
+            }
         }
+    }
 
-        > .header {
-            border-top-left-radius: $_border-radius;
-            border-top-right-radius: $_border-radius;
-        }
-
-        > .footer {
-            border-bottom-left-radius: $_border-radius;
-            border-bottom-right-radius: $_border-radius;
-        }
+    > .modal-footer {
+        border-bottom-left-radius: $_border-radius;
+        border-bottom-right-radius: $_border-radius;
     }
 }

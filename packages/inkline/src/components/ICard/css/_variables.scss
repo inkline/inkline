@@ -1,38 +1,723 @@
-//
-// Card variables
-//
-$card-font-size: $font-size !default;
-$card-font-weight: font-weight(normal) !default;
-$card-line-height: $line-height !default;
+////
+/// Variables
+////
 
-$card-border-width: $border-width !default;
-$card-border-radius: $border-radius !default;
+/// The font weight of the card component
+/// @name font-weight
+$card-font-weight: font-weight('normal') !default;
 
-$card-padding-base: spacers('1') !default;
-$card-padding: size-map($card-padding-base, $sizes, $size-multipliers) !default;
+/// The line height of the card component
+/// @name line-height
+$card-line-height: var(--line-height) !default;
 
-//
-// Variants
-//
-$card-color-for-light-variant: $color-for-light-variant !default;
-$card-color-for-dark-variant: $color-for-dark-variant !default;
+/// The border width of the card component
+/// @name border-width
+$card-border-width: var(--border-width) !default;
 
-$card-variant-primary: card-variant($color-primary) !default;
-$card-variant-secondary: card-variant($color-secondary) !default;
-$card-variant-light: card-variant($color-white) !default;
-$card-variant-dark: card-variant($color-dark) !default;
-$card-variant-info: card-variant($color-info) !default;
-$card-variant-success: card-variant($color-success) !default;
-$card-variant-warning: card-variant($color-warning) !default;
-$card-variant-danger: card-variant($color-danger) !default;
+/// The font size of the card component
+/// @name font-size
+/// @type size
+$card-font-size: font-size() !default;
 
-$card-variants: (
-    primary: $card-variant-primary,
-    secondary: $card-variant-secondary,
-    light: $card-variant-light,
-    dark: $card-variant-dark,
-    info: $card-variant-info,
-    success: $card-variant-success,
-    warning: $card-variant-warning,
-    danger: $card-variant-danger,
+/// The border radius of the card component
+/// @name border-radius
+/// @type size
+$card-border-radius: border-radius() !default;
+
+/// The padding of the card component
+/// @name padding
+/// @type size
+$card-padding: spacer() !default;
+
+////
+/// Sizes
+////
+
+////
+/// Small size
+////
+
+/// The font size of the card component
+/// @name font-size
+/// @group sm
+/// @type size
+$card-size-variant-sm-font-size: calc(var(--card-font-size) * #{size-multiplier('sm')}) !default;
+
+/// The border radius of the card component
+/// @name border-radius
+/// @group sm
+/// @type size
+$card-size-variant-sm-border-radius: calc(var(--card-border-radius) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the card component
+/// @name padding
+/// @group sm
+/// @type size
+$card-size-variant-sm-padding: calc(var(--card-padding) * #{size-multiplier('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
+$card-size-variant-sm: (
+    'font-size': $card-size-variant-sm-font-size,
+    'border-radius': $card-size-variant-sm-border-radius,
+    'padding': $card-size-variant-sm-padding
+) !default;
+
+////
+/// Medium size
+////
+
+/// The font size of the card component
+/// @name font-size
+/// @group md
+/// @type size
+$card-size-variant-md-font-size: calc(var(--card-font-size) * #{size-multiplier('md')}) !default;
+
+/// The border radius of the card component
+/// @name border-radius
+/// @group md
+/// @type size
+$card-size-variant-md-border-radius: calc(var(--card-border-radius) * #{size-multiplier('md')}) !default;
+
+/// The padding of the card component
+/// @name padding
+/// @group md
+/// @type size
+$card-size-variant-md-padding: calc(var(--card-padding) * #{size-multiplier('md')}) !default;
+
+/// Map for md size
+/// @group md
+$card-size-variant-md: (
+    'font-size': $card-size-variant-md-font-size,
+    'border-radius': $card-size-variant-md-border-radius,
+    'padding': $card-size-variant-md-padding
+) !default;
+
+////
+/// Large size
+////
+
+/// The font size of the card component
+/// @name font-size
+/// @group lg
+/// @type size
+$card-size-variant-lg-font-size: calc(var(--card-font-size) * #{size-multiplier('lg')}) !default;
+
+/// The border radius of the card component
+/// @name border-radius
+/// @group lg
+/// @type size
+$card-size-variant-lg-border-radius: calc(var(--card-border-radius) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the card component
+/// @name padding
+/// @group lg
+/// @type size
+$card-size-variant-lg-padding: calc(var(--card-padding) * #{size-multiplier('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
+$card-size-variant-lg: (
+    'font-size': $card-size-variant-lg-font-size,
+    'border-radius': $card-size-variant-lg-border-radius,
+    'padding': $card-size-variant-lg-padding
+) !default;
+
+/// Sizes group map
+$card-size-variants: (
+    'sm': $card-size-variant-sm,
+    'md': $card-size-variant-md,
+    'lg': $card-size-variant-lg
+) !default;
+
+////
+/// Colors
+////
+
+////
+/// Primary color
+////
+
+/// The color of the card component
+/// @name color
+/// @group primary
+/// @type color
+$card-color-variant-primary-color: contrast-color($color-primary) !default;
+
+/// The background of the card component
+/// @name background
+/// @group primary
+/// @type color
+$card-color-variant-primary-background: color('primary') !default;
+
+/// The border color of the card component
+/// @name border-color
+/// @group primary
+/// @type color
+$card-color-variant-primary-border-color: color('primary-60') !default;
+
+/// The color of the card component header
+/// @name header-color
+/// @group primary
+/// @type color
+$card-color-variant-primary-header-color: contrast-color($color-primary) !default;
+
+/// The background of the card component header
+/// @name header-background
+/// @group primary
+/// @type color
+$card-color-variant-primary-header-background: color('primary-55') !default;
+
+/// The border color of the card component header
+/// @name header-border-color
+/// @group primary
+/// @type color
+$card-color-variant-primary-header-border-color: color('primary-60') !default;
+
+/// The color of the card component footer
+/// @name footer-color
+/// @group primary
+/// @type color
+$card-color-variant-primary-footer-color: contrast-color($color-primary) !default;
+
+/// The background of the card component footer
+/// @name footer-background
+/// @group primary
+/// @type color
+$card-color-variant-primary-footer-background: color('primary-55') !default;
+
+/// The border color of the card component footer
+/// @name footer-border-color
+/// @group primary
+/// @type color
+$card-color-variant-primary-footer-border-color: color('primary-60') !default;
+
+/// Map for primary color
+/// @group primary
+$card-color-variant-primary: (
+    'color': $card-color-variant-primary-color,
+    'background': $card-color-variant-primary-background,
+    'border-color': $card-color-variant-primary-border-color,
+    'header-color': $card-color-variant-primary-header-color,
+    'header-background': $card-color-variant-primary-header-background,
+    'header-border-color': $card-color-variant-primary-header-border-color,
+    'footer-color': $card-color-variant-primary-footer-color,
+    'footer-background': $card-color-variant-primary-footer-background,
+    'footer-border-color': $card-color-variant-primary-footer-border-color
+) !default;
+
+////
+/// Secondary color
+////
+
+/// The color of the card component
+/// @name color
+/// @group secondary
+/// @type color
+$card-color-variant-secondary-color: contrast-color($color-secondary) !default;
+
+/// The background of the card component
+/// @name background
+/// @group secondary
+/// @type color
+$card-color-variant-secondary-background: color('secondary') !default;
+
+/// The border color of the card component
+/// @name border-color
+/// @group secondary
+/// @type color
+$card-color-variant-secondary-border-color: color('secondary-60') !default;
+
+/// The color of the card component header
+/// @name header-color
+/// @group secondary
+/// @type color
+$card-color-variant-secondary-header-color: contrast-color($color-secondary) !default;
+
+/// The background of the card component header
+/// @name header-background
+/// @group secondary
+/// @type color
+$card-color-variant-secondary-header-background: color('secondary-55') !default;
+
+/// The border color of the card component header
+/// @name header-border-color
+/// @group secondary
+/// @type color
+$card-color-variant-secondary-header-border-color: color('secondary-60') !default;
+
+/// The color of the card component footer
+/// @name footer-color
+/// @group secondary
+/// @type color
+$card-color-variant-secondary-footer-color: contrast-color($color-secondary) !default;
+
+/// The background of the card component footer
+/// @name footer-background
+/// @group secondary
+/// @type color
+$card-color-variant-secondary-footer-background: color('secondary-55') !default;
+
+/// The border color of the card component footer
+/// @name footer-border-color
+/// @group secondary
+/// @type color
+$card-color-variant-secondary-footer-border-color: color('secondary-60') !default;
+
+/// Map for secondary color
+/// @group secondary
+$card-color-variant-secondary: (
+    'color': $card-color-variant-secondary-color,
+    'background': $card-color-variant-secondary-background,
+    'border-color': $card-color-variant-secondary-border-color,
+    'header-color': $card-color-variant-secondary-header-color,
+    'header-background': $card-color-variant-secondary-header-background,
+    'header-border-color': $card-color-variant-secondary-header-border-color,
+    'footer-color': $card-color-variant-secondary-footer-color,
+    'footer-background': $card-color-variant-secondary-footer-background,
+    'footer-border-color': $card-color-variant-secondary-footer-border-color
+) !default;
+
+////
+/// Light color
+////
+
+/// The color of the card component
+/// @name color
+/// @group light
+/// @type color
+$card-color-variant-light-color: contrast-color($color-light) !default;
+
+/// The background of the card component
+/// @name background
+/// @group light
+/// @type color
+$card-color-variant-light-background: color('white') !default;
+
+/// The border color of the card component
+/// @name border-color
+/// @group light
+/// @type color
+$card-color-variant-light-border-color: color('light') !default;
+
+/// The color of the card component header
+/// @name header-color
+/// @group light
+/// @type color
+$card-color-variant-light-header-color: contrast-color($color-light) !default;
+
+/// The background of the card component header
+/// @name header-background
+/// @group light
+/// @type color
+$card-color-variant-light-header-background: color('white-55') !default;
+
+/// The border color of the card component header
+/// @name header-border-color
+/// @group light
+/// @type color
+$card-color-variant-light-header-border-color: color('light') !default;
+
+/// The color of the card component footer
+/// @name footer-color
+/// @group light
+/// @type color
+$card-color-variant-light-footer-color: contrast-color($color-light) !default;
+
+/// The background of the card component footer
+/// @name footer-background
+/// @group light
+/// @type color
+$card-color-variant-light-footer-background: color('white-55') !default;
+
+/// The border color of the card component footer
+/// @name footer-border-color
+/// @group light
+/// @type color
+$card-color-variant-light-footer-border-color: color('light') !default;
+
+/// Map for light color
+/// @group light
+$card-color-variant-light: (
+    'color': $card-color-variant-light-color,
+    'background': $card-color-variant-light-background,
+    'border-color': $card-color-variant-light-border-color,
+    'header-color': $card-color-variant-light-header-color,
+    'header-background': $card-color-variant-light-header-background,
+    'header-border-color': $card-color-variant-light-header-border-color,
+    'footer-color': $card-color-variant-light-footer-color,
+    'footer-background': $card-color-variant-light-footer-background,
+    'footer-border-color': $card-color-variant-light-footer-border-color
+) !default;
+
+////
+/// Dark color
+////
+
+/// The color of the card component
+/// @name color
+/// @group dark
+/// @type color
+$card-color-variant-dark-color: contrast-color($color-dark) !default;
+
+/// The background of the card component
+/// @name background
+/// @group dark
+/// @type color
+$card-color-variant-dark-background: color('dark') !default;
+
+/// The border color of the card component
+/// @name border-color
+/// @group dark
+/// @type color
+$card-color-variant-dark-border-color: color('dark-60') !default;
+
+/// The color of the card component header
+/// @name header-color
+/// @group dark
+/// @type color
+$card-color-variant-dark-header-color: contrast-color($color-dark) !default;
+
+/// The background of the card component header
+/// @name header-background
+/// @group dark
+/// @type color
+$card-color-variant-dark-header-background: color('dark-55') !default;
+
+/// The border color of the card component header
+/// @name header-border-color
+/// @group dark
+/// @type color
+$card-color-variant-dark-header-border-color: color('dark-60') !default;
+
+/// The color of the card component footer
+/// @name footer-color
+/// @group dark
+/// @type color
+$card-color-variant-dark-footer-color: contrast-color($color-dark) !default;
+
+/// The background of the card component footer
+/// @name footer-background
+/// @group dark
+/// @type color
+$card-color-variant-dark-footer-background: color('dark-55') !default;
+
+/// The border color of the card component footer
+/// @name footer-border-color
+/// @group dark
+/// @type color
+$card-color-variant-dark-footer-border-color: color('dark-60') !default;
+
+/// Map for dark color
+/// @group dark
+$card-color-variant-dark: (
+    'color': $card-color-variant-dark-color,
+    'background': $card-color-variant-dark-background,
+    'border-color': $card-color-variant-dark-border-color,
+    'header-color': $card-color-variant-dark-header-color,
+    'header-background': $card-color-variant-dark-header-background,
+    'header-border-color': $card-color-variant-dark-header-border-color,
+    'footer-color': $card-color-variant-dark-footer-color,
+    'footer-background': $card-color-variant-dark-footer-background,
+    'footer-border-color': $card-color-variant-dark-footer-border-color
+) !default;
+
+////
+/// Info color
+////
+
+/// The color of the card component
+/// @name color
+/// @group info
+/// @type color
+$card-color-variant-info-color: contrast-color($color-info) !default;
+
+/// The background of the card component
+/// @name background
+/// @group info
+/// @type color
+$card-color-variant-info-background: color('info') !default;
+
+/// The border color of the card component
+/// @name border-color
+/// @group info
+/// @type color
+$card-color-variant-info-border-color: color('info-60') !default;
+
+/// The color of the card component header
+/// @name header-color
+/// @group info
+/// @type color
+$card-color-variant-info-header-color: contrast-color($color-info) !default;
+
+/// The background of the card component header
+/// @name header-background
+/// @group info
+/// @type color
+$card-color-variant-info-header-background: color('info-55') !default;
+
+/// The border color of the card component header
+/// @name header-border-color
+/// @group info
+/// @type color
+$card-color-variant-info-header-border-color: color('info-60') !default;
+
+/// The color of the card component footer
+/// @name footer-color
+/// @group info
+/// @type color
+$card-color-variant-info-footer-color: contrast-color($color-info) !default;
+
+/// The background of the card component footer
+/// @name footer-background
+/// @group info
+/// @type color
+$card-color-variant-info-footer-background: color('info-55') !default;
+
+/// The border color of the card component footer
+/// @name footer-border-color
+/// @group info
+/// @type color
+$card-color-variant-info-footer-border-color: color('info-60') !default;
+
+/// Map for info color
+/// @group info
+$card-color-variant-info: (
+    'color': $card-color-variant-info-color,
+    'background': $card-color-variant-info-background,
+    'border-color': $card-color-variant-info-border-color,
+    'header-color': $card-color-variant-info-header-color,
+    'header-background': $card-color-variant-info-header-background,
+    'header-border-color': $card-color-variant-info-header-border-color,
+    'footer-color': $card-color-variant-info-footer-color,
+    'footer-background': $card-color-variant-info-footer-background,
+    'footer-border-color': $card-color-variant-info-footer-border-color
+) !default;
+
+////
+/// Success color
+////
+
+/// The color of the card component
+/// @name color
+/// @group success
+/// @type color
+$card-color-variant-success-color: contrast-color($color-success) !default;
+
+/// The background of the card component
+/// @name background
+/// @group success
+/// @type color
+$card-color-variant-success-background: color('success') !default;
+
+/// The border color of the card component
+/// @name border-color
+/// @group success
+/// @type color
+$card-color-variant-success-border-color: color('success-60') !default;
+
+/// The color of the card component header
+/// @name header-color
+/// @group success
+/// @type color
+$card-color-variant-success-header-color: contrast-color($color-success) !default;
+
+/// The background of the card component header
+/// @name header-background
+/// @group success
+/// @type color
+$card-color-variant-success-header-background: color('success-55') !default;
+
+/// The border color of the card component header
+/// @name header-border-color
+/// @group success
+/// @type color
+$card-color-variant-success-header-border-color: color('success-60') !default;
+
+/// The color of the card component footer
+/// @name footer-color
+/// @group success
+/// @type color
+$card-color-variant-success-footer-color: contrast-color($color-success) !default;
+
+/// The background of the card component footer
+/// @name footer-background
+/// @group success
+/// @type color
+$card-color-variant-success-footer-background: color('success-55') !default;
+
+/// The border color of the card component footer
+/// @name footer-border-color
+/// @group success
+/// @type color
+$card-color-variant-success-footer-border-color: color('success-60') !default;
+
+/// Map for success color
+/// @group success
+$card-color-variant-success: (
+    'color': $card-color-variant-success-color,
+    'background': $card-color-variant-success-background,
+    'border-color': $card-color-variant-success-border-color,
+    'header-color': $card-color-variant-success-header-color,
+    'header-background': $card-color-variant-success-header-background,
+    'header-border-color': $card-color-variant-success-header-border-color,
+    'footer-color': $card-color-variant-success-footer-color,
+    'footer-background': $card-color-variant-success-footer-background,
+    'footer-border-color': $card-color-variant-success-footer-border-color
+) !default;
+
+////
+/// Warning color
+////
+
+/// The color of the card component
+/// @name color
+/// @group warning
+/// @type color
+$card-color-variant-warning-color: contrast-color($color-warning) !default;
+
+/// The background of the card component
+/// @name background
+/// @group warning
+/// @type color
+$card-color-variant-warning-background: color('warning') !default;
+
+/// The border color of the card component
+/// @name border-color
+/// @group warning
+/// @type color
+$card-color-variant-warning-border-color: color('warning-60') !default;
+
+/// The color of the card component header
+/// @name header-color
+/// @group warning
+/// @type color
+$card-color-variant-warning-header-color: contrast-color($color-warning) !default;
+
+/// The background of the card component header
+/// @name header-background
+/// @group warning
+/// @type color
+$card-color-variant-warning-header-background: color('warning-55') !default;
+
+/// The border color of the card component header
+/// @name header-border-color
+/// @group warning
+/// @type color
+$card-color-variant-warning-header-border-color: color('warning-60') !default;
+
+/// The color of the card component footer
+/// @name footer-color
+/// @group warning
+/// @type color
+$card-color-variant-warning-footer-color: contrast-color($color-warning) !default;
+
+/// The background of the card component footer
+/// @name footer-background
+/// @group warning
+/// @type color
+$card-color-variant-warning-footer-background: color('warning-55') !default;
+
+/// The border color of the card component footer
+/// @name footer-border-color
+/// @group warning
+/// @type color
+$card-color-variant-warning-footer-border-color: color('warning-60') !default;
+
+/// Map for warning color
+/// @group warning
+$card-color-variant-warning: (
+    'color': $card-color-variant-warning-color,
+    'background': $card-color-variant-warning-background,
+    'border-color': $card-color-variant-warning-border-color,
+    'header-color': $card-color-variant-warning-header-color,
+    'header-background': $card-color-variant-warning-header-background,
+    'header-border-color': $card-color-variant-warning-header-border-color,
+    'footer-color': $card-color-variant-warning-footer-color,
+    'footer-background': $card-color-variant-warning-footer-background,
+    'footer-border-color': $card-color-variant-warning-footer-border-color
+) !default;
+
+////
+/// Danger color
+////
+
+/// The color of the card component
+/// @name color
+/// @group danger
+/// @type color
+$card-color-variant-danger-color: contrast-color($color-danger) !default;
+
+/// The background of the card component
+/// @name background
+/// @group danger
+/// @type color
+$card-color-variant-danger-background: color('danger') !default;
+
+/// The border color of the card component
+/// @name border-color
+/// @group danger
+/// @type color
+$card-color-variant-danger-border-color: color('danger-60') !default;
+
+/// The color of the card component header
+/// @name header-color
+/// @group danger
+/// @type color
+$card-color-variant-danger-header-color: contrast-color($color-danger) !default;
+
+/// The background of the card component header
+/// @name header-background
+/// @group danger
+/// @type color
+$card-color-variant-danger-header-background: color('danger-55') !default;
+
+/// The border color of the card component header
+/// @name header-border-color
+/// @group danger
+/// @type color
+$card-color-variant-danger-header-border-color: color('danger-60') !default;
+
+/// The color of the card component footer
+/// @name footer-color
+/// @group danger
+/// @type color
+$card-color-variant-danger-footer-color: contrast-color($color-danger) !default;
+
+/// The background of the card component footer
+/// @name footer-background
+/// @group danger
+/// @type color
+$card-color-variant-danger-footer-background: color('danger-55') !default;
+
+/// The border color of the card component footer
+/// @name footer-border-color
+/// @group danger
+/// @type color
+$card-color-variant-danger-footer-border-color: color('danger-60') !default;
+
+/// Map for danger color
+/// @group danger
+$card-color-variant-danger: (
+    'color': $card-color-variant-danger-color,
+    'background': $card-color-variant-danger-background,
+    'border-color': $card-color-variant-danger-border-color,
+    'header-color': $card-color-variant-danger-header-color,
+    'header-background': $card-color-variant-danger-header-background,
+    'header-border-color': $card-color-variant-danger-header-border-color,
+    'footer-color': $card-color-variant-danger-footer-color,
+    'footer-background': $card-color-variant-danger-footer-background,
+    'footer-border-color': $card-color-variant-danger-footer-border-color
+) !default;
+
+/// Colors group map
+$card-color-variants: (
+    'primary': $card-color-variant-primary,
+    'secondary': $card-color-variant-secondary,
+    'light': $card-color-variant-light,
+    'dark': $card-color-variant-dark,
+    'info': $card-color-variant-info,
+    'success': $card-color-variant-success,
+    'warning': $card-color-variant-warning,
+    'danger': $card-color-variant-danger
 ) !default;

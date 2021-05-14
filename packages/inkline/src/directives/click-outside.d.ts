@@ -1,5 +1,5 @@
-import { DirectiveOptions } from 'vue'
+import { Directive } from 'vue'
 
-declare const IClickOutside: DirectiveOptions;
+declare const ClickOutside: Directive;
 
-export default IClickOutside;
+export default ClickOutside;

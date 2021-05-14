@@ -1,5 +1,4 @@
-import '../types/vue.prototype';
-import { PluginFunction } from 'vue'
+import { Plugin } from 'vue'
 
 export type IPrototypeFormFn = (...args: any[]) => any;
 
@@ -15,9 +14,7 @@ export interface IPrototype {
     config: IPrototypeConfig;
 }
 
-export interface IInkline {
-    install: PluginFunction<IPrototype>
-}
+export type IInkline = Plugin;
 
 declare const Inkline: IInkline;
 

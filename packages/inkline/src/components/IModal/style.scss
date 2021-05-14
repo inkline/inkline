@@ -1,19 +1,13 @@
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import '../IIcon/css/_variables';
-@import '../IIcon/css/_mixins';
-@import 'css/_mixins';
-@import 'css/_variables';
-@import 'css/_sizes';
-@import 'css/_variants';
-
-.modal-wrapper {
-    display: block;
-    position: relative;
-}
+@import '@inkline/icons/packs/inkline.scss';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/sizes';
+@import 'css/colors';
 
 .modal-overlay {
-    background: $modal-overlay-background;
+    background: var(--modal-overlay-background);
     position: fixed;
     top: 0;
     left: 0;
@@ -26,20 +20,20 @@
 }
 
 .modal {
-    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    text-align: left; // Ensures proper alignment if parent has it changed
     list-style: none;
-    line-height: $modal-line-height;
+    line-height: var(--modal-line-height);
     display: block;
-    width: calc(100% - #{$modal-margin * 2}); // stylelint-disable-line
+    width: calc(100% - var(--modal-margin) * 2);
 
-    > .header,
-    > .body,
-    > .footer {
-        border-width: $modal-border-width;
+    > .modal-header,
+    > .modal-body,
+    > .modal-footer {
+        border-width: var(--modal-border-width);
         border-style: solid;
     }
 
-    > .header {
+    > .modal-header {
         display: flex;
         justify-content: space-between;
 
@@ -52,19 +46,16 @@
             line-height: 1.5rem;
             font-size: 0.5rem;
             cursor: pointer;
-            border-radius: border-radius(md);
             padding: 0;
             border: 0;
             transition: background-color 0.3s ease;
             background-color: transparent;
 
-            > .icon {
-                &::before {
-                    @extend %icon;
-
-                    content: $icon-times;
-                }
-            }
+             > .icon {
+                 mask-image: url($ink-times);
+                 mask-position: center center;
+                 mask-repeat: no-repeat;
+             }
 
             &:hover,
             &:focus {
@@ -78,12 +69,24 @@
         }
     }
 
-    > .header + .body,
-    > .header + .footer,
-    > .body + .footer,
-    > .body + .body {
+    > .modal-header + .modal-body,
+    > .modal-header + .modal-footer,
+    > .modal-body + .modal-footer,
+    > .modal-body + .modal-body {
         border-top-width: 0;
     }
 
-    @extend .modal.-md;
+    @include modal-size-variant('md');
+    @each $size-variant-key, $modal-size-variant-value in $modal-size-variants {
+        &.-#{$size-variant-key} {
+            @include modal-size-variant($size-variant-key);
+        }
+    }
+
+    @include modal-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $modal-color-variants {
+        &.-#{$color-variant-key} {
+            @include modal-color-variant($color-variant-key);
+        }
+    }
 }

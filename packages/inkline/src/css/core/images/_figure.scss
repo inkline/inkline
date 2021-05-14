@@ -6,12 +6,12 @@
     display: inline-block; // Ensures the caption's text aligns with the image.
 
     > .img {
-        margin-bottom: $figure-image-margin-bottom;
+        margin-bottom: var(--figure-image-margin-bottom);
         line-height: 1;
     }
 
     > .caption {
-        font-size: $figure-caption-font-size;
-        color: $figure-caption-color;
+        font-size: var(--figure-caption-font-size);
+        color: var(--figure-caption-color);
     }
 }

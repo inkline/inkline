@@ -4,22 +4,21 @@ plugins:
 extends:
     - stylelint-config-standard
     - stylelint-config-recommended-scss
-ignoreFiles: []
 rules:
     # https://stylelint.io/user-guide/rules/at-rule-empty-line-before
     at-rule-empty-line-before:
-        - always
-        - ignore:
-              - after-comment
-              - first-nested
-              - blockless-after-blockless
-        - ignoreAtRules:
-              - else
-              - else if
+        -   always
+        -   ignore:
+                -   after-comment
+                -   first-nested
+                -   blockless-after-blockless
+            ignoreAtRules:
+                -   else
+                -   else if
+                -   each
 
     # https://stylelint.io/user-guide/rules/block-closing-brace-newline-after
-    block-closing-brace-newline-after:
-        - always
+    block-closing-brace-newline-after: null
 
     # https://stylelint.io/user-guide/rules/color-hex-length
     color-hex-length: long
@@ -38,19 +37,14 @@ rules:
 
     # https://stylelint.io/user-guide/rules/selector-class-pattern
     selector-class-pattern:
-        - '^[-_a-z0-9]+(?:(-{1,2}|_{1,2})[a-z0-9]+)*$'
-        - resolveNestedSelectors: true
+        -   '^[-_a-z0-9]+(?:(-{1,2}|_{1,2})[a-z0-9]+)*$'
+        -   resolveNestedSelectors: true
 
     # https://stylelint.io/user-guide/rules/selector-id-pattern
     selector-id-pattern: '^[a-z]+(?:-[a-z]*)*$'
 
     # https://stylelint.io/user-guide/rules/selector-list-comma-newline-after
     selector-list-comma-newline-after: always
-
-    # https://stylelint.io/user-guide/rules/selector-pseudo-element-no-unknown
-    selector-pseudo-element-no-unknown:
-        - true
-        - ignorePseudoElements: ['v-deep']
 
     # https://stylelint.io/user-guide/rules/selector-list-comma-newline-before
     selector-list-comma-newline-before: never-multi-line
@@ -62,18 +56,19 @@ rules:
     selector-list-comma-space-before: never
 
     # https://stylelint.io/user-guide/rules/selector-max-id
-    selector-max-id: 0
+    selector-max-id: 1
 
     # https://stylelint.io/user-guide/rules/selector-type-no-unknown
     selector-type-no-unknown:
-        - true
+        -   true
+        -   {}
 
     # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/double-slash-comment-empty-line-before/README.md
     scss/double-slash-comment-empty-line-before:
-        - always
-        - ignore:
-              - between-comments
-              - stylelint-commands
+        -   always
+        -   ignore:
+                -   between-comments
+                -   stylelint-commands
 
     # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/double-slash-comment-whitespace-inside/README.md
     scss/double-slash-comment-whitespace-inside: always
@@ -82,9 +77,23 @@ rules:
     scss/media-feature-value-dollar-variable: always
 
     # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/no-duplicate-dollar-variables/README.md
-    scss/no-duplicate-dollar-variables:
-        - true
-        - ignoreInsideAtRules:
-              - mixin
-              - if
-              - else
+    at-rule-no-unknown: null
+    scss/at-rule-no-unknown: true
+
+    # https://github.com/kristerkari/stylelint-scss/blob/master/docs/examples/if-else.md
+    "scss/at-else-closing-brace-newline-after": "always-last-in-chain"
+    "scss/at-else-closing-brace-space-after": "always-intermediate"
+    "scss/at-else-empty-line-before": "never"
+    "scss/at-if-closing-brace-newline-after": "always-last-in-chain"
+    "scss/at-if-closing-brace-space-after": "always-intermediate"
+
+    selector-pseudo-class-no-unknown:
+        -   true
+        -   ignorePseudoClasses:
+                -   deep
+
+    # https://stylelint.io/user-guide/rules/max-empty-lines#max-empty-lines
+    max-empty-lines: 2
+
+    # https://stylelint.io/user-guide/rules/value-list-max-empty-lines#value-list-max-empty-lines
+    value-list-max-empty-lines: 1

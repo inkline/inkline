@@ -1,65 +1,96 @@
-import {
-    AttributesProviderMixin,
-    ClassesProviderMixin,
-    SizePropertyMixin,
-    VariantPropertyMixin
-} from '@inkline/inkline/src/mixins';
+import { sizePropValidator } from '@inkline/inkline/src/mixins';
+
+/**
+ * @name default
+ * @kind slot
+ * @description Slot for default alert content
+ */
+
+/**
+ * @name icon
+ * @kind slot
+ * @description Slot for alert icon
+ */
+
+/**
+ * @name dismiss
+ * @kind slot
+ * @description Slot for alert dismiss button
+ */
 
 export default {
     name: 'IAlert',
-    mixins: [
-        AttributesProviderMixin,
-        ClassesProviderMixin,
-
-        SizePropertyMixin,
-        VariantPropertyMixin
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
     ],
-    model: {
-        prop: 'show',
-        event: 'input'
+    props: {
+        /**
+         * @description The size variant of the alert
+         * @type sm | md | lg
+         * @default md
+         */
+        size: {
+            type: String,
+            default: '',
+            validator: sizePropValidator
+        },
+        /**
+         * @description The color variant of the alert
+         * @type info | success | warning | danger
+         * @default info
+         */
+        color: {
+            type: String,
+            default: ''
+        },
+        /**
+         * @description Used to show or hide a dismissible alert
+         * @type Boolean
+         * @default true
+         */
+        modelValue: {
+            type: Boolean,
+            default: true
+        },
+        /**
+         * @description Shows a dismiss icon on the alert
+         * @type Boolean
+         * @default false
+         */
+        dismissible: {
+            type: Boolean,
+            default: false
+        }
     },
     data() {
         return {
             dismissed: false
         }
     },
-    props: {
-        show: {
-            type: Boolean,
-            default: true
-        },
-        dismissible: {
-            type: Boolean,
-            default: false
-        },
-        dismissLabel: {
-            type: String,
-            default: '×'
+    computed: {
+        classes() {
+            return {
+                [`-${this.color}`]: Boolean(this.color),
+                [`-${this.size}`]: Boolean(this.size),
+                '-dismissible': this.dismissible,
+                '-with-icon': Boolean(this.$slots.icon)
+            }
         }
     },
     methods: {
         dismiss() {
             this.dismissed = true;
 
-            this.$emit('dismiss');
-            this.$emit('input', false);
+            this.$emit('update:modelValue', false);
         },
-        onShowChange() {
-            this.dismissed = false;
-        }
     },
     watch: {
-        show() {
-            this.onShowChange()
+        modelValue(value) {
+            this.dismissed = !value;
         }
-    },
-    mounted() {
-        this.onShowChange()
-    },
-    created() {
-        this.classesProvider.add(() => ({
-            '-dismissible': this.dismissible,
-            '-with-icon': Boolean(this.$slots.icon)
-        }));
     }
 };

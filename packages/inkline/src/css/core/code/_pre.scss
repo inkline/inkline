@@ -8,11 +8,11 @@ pre {
     display: block;
     margin-top: 0;
     margin-bottom: 1rem;
-    font-size: $pre-font-size;
-    color: $pre-color;
+    font-size: var(--pre-font-size);
+    color: var(--pre-color);
     transition-property: background-color, color, text-shadow;
-    transition-duration: $transition-duration;
-    transition-timing-function: $transition-easing;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-easing);
 
     // Account for some code outputs that place code tags in pre tags
     code {
@@ -26,13 +26,13 @@ pre {
 
     // Enable scrollable blocks of code
     &.-scrollable {
-        max-height: $pre-scrollable-max-height;
+        max-height: var(--pre-scrollable-max-height);
         overflow-y: scroll;
     }
 }
 
 .inkline.-dark pre {
-    color: $pre-color-dark;
+    color: var(--pre-color-dark);
 
     code {
         color: inherit;

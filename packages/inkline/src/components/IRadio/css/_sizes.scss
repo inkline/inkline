@@ -1,24 +1,20 @@
-//
-// Radio Sizes
-//
-@each $size in $sizes {
-    $_icon-size: map_get($form-check-radio-icon-size, $size);
+@mixin radio-size-variant($size-variant-key) {
+    $_font-size: var(--radio-size-variant-#{$size-variant-key}-font-size);
+    $_indicator-size: var(--radio-size-variant-#{$size-variant-key}-indicator-size);
+    $_indicator-icon-size: var(--radio-size-variant-#{$size-variant-key}-indicator-icon-size);
 
-    .form.-#{$size} .form-check,
-    .form-group.-#{$size} .form-check,
-    .form-check.-#{$size} {
-        &.-custom.-radio {
-            .form-input-label {
-                &::before {
-                    @if $border-radius-enabled {
-                        border-radius: $form-check-radio-border-radius;
-                    }
-                }
+    .radio-label {
+        font-size: $_font-size;
 
-                &::after {
-                    font-size: $_icon-size;
-                }
-            }
+        &::before,
+        &::after {
+            width: $_indicator-size;
+            height: $_indicator-size;
+        }
+
+        &::after {
+            margin-top: calc(#{$_indicator-size} / -2);
+            mask-size: $_indicator-icon-size $_indicator-icon-size;
         }
     }
 }

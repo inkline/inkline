@@ -1,20 +1,21 @@
 <transition :name="sidebarWrapperTransition">
     <div class="sidebar-wrapper" :class="classes"
          ref="wrapper"
-         v-show="collapsed || !collapsible">
+         v-show="open || !collapsible">
         <transition :name="sidebarTransition">
             <div class="sidebar"
-                 v-show="collapsePosition === 'relative' || collapsed || !collapsible">
+                 v-show="collapsePosition === 'relative' || open || !collapsible">
                 <div class="sidebar-content">
-                    <slot></slot>
+                    <slot />
                 </div>
             </div>
         </transition>
         <transition name="sidebar-overlay-transition">
             <div class="sidebar-overlay"
-                 @click="onOverlayClick()"
+                 @click="onOverlayClick"
                  v-if="collapsePosition !== 'relative'"
-                 v-show="collapsed"></div>
+                 v-show="open"
+            />
         </transition>
     </div>
 </transition>

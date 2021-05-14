@@ -1,18 +1,18 @@
 hr {
-    margin: $spacer 0;
+    margin: var(--hr-margin) 0;
     border: none;
-    border-top: $hr-border-width solid $hr-border-color;
+    border-top: var(--hr-border-width) solid var(--hr-border-color);
 }
 
 small,
 .small {
-    font-size: $small-font-size;
-    font-weight: font-weight('base');
+    font-size: var(--small-font-size);
+    font-weight: var(--small-font-weight);
 }
 
 mark,
 .mark {
-    padding: $mark-padding;
-    background-color: $mark-background-color;
-    color: $mark-color;
+    padding: var(--mark-padding);
+    background-color: var(--mark-background-color);
+    color: var(--mark-color);
 }

@@ -1,14 +1,9 @@
-//
-// Tooltip sizes
-//
-@each $size in $sizes {
-    $_border-radius: map_get($tooltip-border-radius, $size);
-    $_font-size: map_get($tooltip-font-size, $size);
-    $_padding: map_get($tooltip-padding, $size);
+@mixin tooltip-size-variant($size-variant-key) {
+    $_border-radius: var(--tooltip-size-variant-#{$size-variant-key}-border-radius);
+    $_font-size: var(--tooltip-size-variant-#{$size-variant-key}-font-size);
+    $_padding: var(--tooltip-size-variant-#{$size-variant-key}-padding);
 
-    .tooltip.-#{$size} {
-        border-radius: $_border-radius;
-        font-size: $_font-size;
-        padding: $_padding;
-    }
+    border-radius: $_border-radius;
+    font-size: $_font-size;
+    padding: $_padding;
 }

@@ -1,22 +1,32 @@
-//
-// Navbar sizes
-//
-@each $size in $sizes {
-    .navbar.-#{$size} {
-        padding: map_get($navbar-padding, $size);
+@mixin navbar-size-variant($size-variant-key) {
+    $_border-radius: var(--navbar-size-variant-#{$size-variant-key}-border-radius);
+    $_font-size: var(--navbar-size-variant-#{$size-variant-key}-font-size);
+    $_padding: var(--navbar-size-variant-#{$size-variant-key}-padding);
+    $_item-padding: var(--navbar-size-variant-#{$size-variant-key}-item-padding);
 
-        ::v-deep {
-            .brand {
-                padding: map_get($navbar-padding, $size);
+    padding: $_padding;
+    font-size: $_font-size;
+
+    .navbar-brand {
+        padding: $_item-padding;
+    }
+
+    .navbar-collapsible {
+        .nav {
+            .nav-item {
+                font-size: $_font-size;
+                padding: $_item-padding;
+                border-radius: $_border-radius;
             }
         }
+    }
 
-        @each $breakpoint in ('xs', 'sm', 'md', 'lg', 'xl') {
-            &.-collapse-#{$breakpoint} {
-                @include breakpoint-down($breakpoint) {
-                    > .container > .row > .column > .items {
-                        margin-top: nth(map_get($navbar-padding, $size), 1);
-                    }
+    @each $breakpoint in ('xs', 'sm', 'md', 'lg', 'xl') {
+        &.-collapse-#{$breakpoint} {
+            @include breakpoint-down($breakpoint) {
+                .navbar-collapsible {
+                    margin-top: $_padding;
+                    border-radius: $_border-radius;
                 }
             }
         }

@@ -1,5 +1,5 @@
 import { Component } from 'vue';
 
-declare const ITextarea: Component;
+declare const IInput: Component;
 
-export default ITextarea;
+export default IInput;

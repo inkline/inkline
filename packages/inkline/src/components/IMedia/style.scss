@@ -1,6 +1,7 @@
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_variables';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
 
 /**
  * Media
@@ -10,7 +11,7 @@
     display: flex;
     flex-direction: row;
 
-    > .body {
+    > .media-body {
         flex: 0 1 auto;
 
         > *:first-child {
@@ -28,6 +29,6 @@
         align-self: flex-start;
         height: auto;
         flex: 0 0 auto;
-        margin-right: $media-image-margin-right;
+        margin-right: var(--media-image-margin-right);
     }
 }

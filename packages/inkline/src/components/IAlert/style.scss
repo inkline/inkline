@@ -1,11 +1,12 @@
 /**
  * Alert
  */
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/mixins';
+@import '../../css/functions';
+@import '../../css/variables';
+@import '../../css/mixins';
 @import 'css/variables';
-@import 'css/variants';
+@import 'css/css';
+@import 'css/colors';
 @import 'css/sizes';
 
 .alert {
@@ -17,10 +18,10 @@
     word-wrap: break-word;
     background-clip: border-box;
     border-style: solid;
-    border-width: $alert-border-width;
+    border-width: var(--alert-border-width);
     transition-property: background-color, color, border-color;
-    transition-duration: $transition-duration;
-    transition-timing-function: $transition-easing;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-easing);
 
     // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom.
@@ -29,8 +30,8 @@
     a {
         font-weight: 600;
         transition-property: color;
-        transition-duration: $transition-duration;
-        transition-timing-function: $transition-easing;
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-easing);
     }
 
     > .icon {
@@ -52,24 +53,35 @@
         text-align: center;
     }
 
-    @extend .alert.-md;
-    @extend .alert.-primary;
-}
+    &,
+    > .content {
+        flex: 0 1 100%;
 
-.alert,
-.alert > .content {
-    flex: 0 1 100%;
+        > hr {
+            margin-right: 0;
+            margin-left: 0;
+        }
 
-    > hr {
-        margin-right: 0;
-        margin-left: 0;
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
     }
 
-    > *:first-child {
-        margin-top: 0;
+    @include alert-size-variant('md');
+    @each $size-variant-key, $alert-size-variant-value in $alert-size-variants {
+        &.-#{$size-variant-key} {
+            @include alert-size-variant($size-variant-key);
+        }
     }
 
-    > *:last-child {
-        margin-bottom: 0;
+    @include alert-color-variant('info');
+    @each $color-variant-key, $color-variant-value in $alert-color-variants {
+        &.-#{$color-variant-key} {
+            @include alert-color-variant($color-variant-key);
+        }
     }
 }

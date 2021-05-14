@@ -1,6 +1,0 @@
-@mixin header-size-variant($size-variant-key) {
-    $_padding: var(--header-size-variant-#{$size-variant-key}-padding);
-
-    padding-top: $_padding;
-    padding-bottom: $_padding;
-}

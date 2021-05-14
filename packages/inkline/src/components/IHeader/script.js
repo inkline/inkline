@@ -1,43 +1,81 @@
 import {
-    SizePropertyMixin,
-    VariantPropertyMixin,
-    ClassesProviderMixin
+    colorVariantClass,
+    sizePropValidator
 } from '@inkline/inkline/src/mixins';
 
-import IContainer from "@inkline/inkline/src/components/IContainer";
-import IRow from '@inkline/inkline/src/components/IRow';
-import IColumn from '@inkline/inkline/src/components/IColumn';
+import IContainer from '@inkline/inkline/src/components/IContainer/index.vue';
+import IRow from '@inkline/inkline/src/components/IRow/index.vue';
+import IColumn from '@inkline/inkline/src/components/IColumn/index.vue';
+
+/**
+ * @name default
+ * @kind slot
+ * @description Slot for default header content
+ */
 
 export default {
     name: 'IHeader',
-    mixins: [
-        SizePropertyMixin,
-        VariantPropertyMixin,
-        ClassesProviderMixin
-    ],
     components: {
         IContainer,
         IRow,
         IColumn
     },
     props: {
+        /**
+         * @description The color variant of the header
+         * @type primary | light | dark
+         * @default light
+         */
+        color: {
+            type: String,
+            default: ''
+        },
+        /**
+         * @description Display the header background as cover, always covering the whole header width
+         * @type Boolean
+         * @default true
+         */
         cover: {
             type: Boolean,
             default: true
         },
+        /**
+         * @description Display the inner content container as fluid, covering 100% of the header width
+         * @type Boolean
+         * @default false
+         */
         fluid: {
             type: Boolean,
             default: false
         },
+        /**
+         * @description Display the header as fullscreen, covering 100% screen height and 100% screen width
+         * @type Boolean
+         * @default true
+         */
         fullscreen: {
             type: Boolean,
             default: false
+        },
+        /**
+         * @description The size variant of the header
+         * @type sm | md | lg
+         * @default md
+         */
+        size: {
+            type: String,
+            default: '',
+            validator: sizePropValidator
         }
     },
-    created() {
-        this.classesProvider.add(() => ({
-            '-cover': this.cover,
-            '-fullscreen': this.fullscreen
-        }));
+    computed: {
+        classes() {
+            return {
+                ...colorVariantClass(this),
+                [`-${this.size}`]: Boolean(this.size),
+                '-cover': this.cover,
+                '-fullscreen': this.fullscreen
+            };
+        }
     }
-};
+}

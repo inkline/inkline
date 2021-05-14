@@ -1,51 +1,757 @@
-//
-// Modal Variables
-//
+////
+/// Variables
+////
 
-$modal-font-size: $font-size !default;
+/// The font weight of the modal component
+/// @name font-weight
 $modal-font-weight: font-weight('normal') !default;
-$modal-line-height: $line-height !default;
 
-$modal-margin: spacers('1') !default;
+/// The line height of the modal component
+/// @name line-height
+$modal-line-height: var(--line-height) !default;
 
-$modal-width-base: 480px !default;
-$modal-width: size-map($modal-width-base, $sizes, $size-multipliers) !default;
+/// The border width of the modal component
+/// @name border-width
+$modal-border-width: var(--border-width) !default;
 
-$modal-border-width: $border-width !default;
-$modal-border-radius: $border-radius !default;
+/// The margin of the modal component
+/// @name margin
+$modal-margin: spacer() !default;
 
-$modal-border-color-light: $border-color-light !default;
-$modal-background-light: colors('white') !default;
-$modal-border-color-dark: $border-color-dark !default;
-$modal-background-dark: colors('dark') !default;
-
+/// The background of the modal component overlay
+/// @name overlay-background
 $modal-overlay-background: rgba(0, 0, 0, 0.75) !default;
 
-$modal-padding-base: spacers('1') !default;
-$modal-padding: size-map($modal-padding-base, $sizes, $size-multipliers) !default;
+/// The width of the modal component
+/// @name width
+/// @type size
+$modal-width: 480px !default;
 
-//
-// Variants
-//
-$modal-color-for-light-variant: $color-for-light-variant !default;
-$modal-color-for-dark-variant: $color-for-dark-variant !default;
+/// The border radius of the modal component
+/// @name border-radius
+/// @type size
+$modal-border-radius: border-radius() !default;
 
-$modal-variant-primary: modal-variant($color-primary) !default;
-$modal-variant-secondary: modal-variant($color-secondary) !default;
-$modal-variant-light: modal-variant($color-light) !default;
-$modal-variant-dark: modal-variant($color-dark) !default;
-$modal-variant-info: modal-variant($color-info) !default;
-$modal-variant-success: modal-variant($color-success) !default;
-$modal-variant-warning: modal-variant($color-warning) !default;
-$modal-variant-danger: modal-variant($color-danger) !default;
+/// The font size of the modal component
+/// @name font-size
+/// @type size
+$modal-font-size: font-size() !default;
 
-$modal-variants: (
-    primary: $modal-variant-primary,
-    secondary: $modal-variant-secondary,
-    light: $modal-variant-light,
-    dark: $modal-variant-dark,
-    info: $modal-variant-info,
-    success: $modal-variant-success,
-    warning: $modal-variant-warning,
-    danger: $modal-variant-danger,
+/// The padding of the modal component
+/// @name padding
+/// @type size
+$modal-padding: spacer() !default;
+
+////
+/// Sizes
+////
+
+////
+/// Small size
+////
+
+/// The width of the modal component
+/// @name width
+/// @group sm
+/// @type size
+$modal-size-variant-sm-width: calc(var(--modal-width) * #{size-multiplier('sm')}) !default;
+
+/// The border radius of the modal component
+/// @name border-radius
+/// @group sm
+/// @type size
+$modal-size-variant-sm-border-radius: calc(var(--modal-border-radius) * #{size-multiplier('sm')}) !default;
+
+/// The font size of the modal component
+/// @name font-size
+/// @group sm
+/// @type size
+$modal-size-variant-sm-font-size: calc(var(--modal-font-size) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the modal component
+/// @name padding
+/// @group sm
+/// @type size
+$modal-size-variant-sm-padding: calc(var(--modal-padding) * #{size-multiplier('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
+$modal-size-variant-sm: (
+    'width': $modal-size-variant-sm-width,
+    'border-radius': $modal-size-variant-sm-border-radius,
+    'font-size': $modal-size-variant-sm-font-size,
+    'padding': $modal-size-variant-sm-padding
+) !default;
+
+////
+/// Medium size
+////
+
+/// The width of the modal component
+/// @name width
+/// @group md
+/// @type size
+$modal-size-variant-md-width: calc(var(--modal-width) * #{size-multiplier('md')}) !default;
+
+/// The border radius of the modal component
+/// @name border-radius
+/// @group md
+/// @type size
+$modal-size-variant-md-border-radius: calc(var(--modal-border-radius) * #{size-multiplier('md')}) !default;
+
+/// The font size of the modal component
+/// @name font-size
+/// @group md
+/// @type size
+$modal-size-variant-md-font-size: calc(var(--modal-font-size) * #{size-multiplier('md')}) !default;
+
+/// The padding of the modal component
+/// @name padding
+/// @group md
+/// @type size
+$modal-size-variant-md-padding: calc(var(--modal-padding) * #{size-multiplier('md')}) !default;
+
+/// Map for md size
+/// @group md
+$modal-size-variant-md: (
+    'width': $modal-size-variant-md-width,
+    'border-radius': $modal-size-variant-md-border-radius,
+    'font-size': $modal-size-variant-md-font-size,
+    'padding': $modal-size-variant-md-padding
+) !default;
+
+////
+/// Large size
+////
+
+/// The width of the modal component
+/// @name width
+/// @group lg
+/// @type size
+$modal-size-variant-lg-width: calc(var(--modal-width) * #{size-multiplier('lg')}) !default;
+
+/// The border radius of the modal component
+/// @name border-radius
+/// @group lg
+/// @type size
+$modal-size-variant-lg-border-radius: calc(var(--modal-border-radius) * #{size-multiplier('lg')}) !default;
+
+/// The font size of the modal component
+/// @name font-size
+/// @group lg
+/// @type size
+$modal-size-variant-lg-font-size: calc(var(--modal-font-size) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the modal component
+/// @name padding
+/// @group lg
+/// @type size
+$modal-size-variant-lg-padding: calc(var(--modal-padding) * #{size-multiplier('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
+$modal-size-variant-lg: (
+    'width': $modal-size-variant-lg-width,
+    'border-radius': $modal-size-variant-lg-border-radius,
+    'font-size': $modal-size-variant-lg-font-size,
+    'padding': $modal-size-variant-lg-padding
+) !default;
+
+/// Sizes group map
+$modal-size-variants: (
+    'sm': $modal-size-variant-sm,
+    'md': $modal-size-variant-md,
+    'lg': $modal-size-variant-lg
+) !default;
+
+////
+/// Colors
+////
+
+////
+/// Primary color
+////
+
+/// The color of the modal component
+/// @name color
+/// @group primary
+/// @type color
+$modal-color-variant-primary-color: contrast-color($color-primary) !default;
+
+/// The background of the modal component
+/// @name background
+/// @group primary
+/// @type color
+$modal-color-variant-primary-background: color('primary') !default;
+
+/// The border color of the modal component
+/// @name border-color
+/// @group primary
+/// @type color
+$modal-color-variant-primary-border-color: color('primary-60') !default;
+
+/// The color of the modal component header
+/// @name header-color
+/// @group primary
+/// @type color
+$modal-color-variant-primary-header-color: contrast-color($color-primary) !default;
+
+/// The background of the modal component header
+/// @name header-background
+/// @group primary
+/// @type color
+$modal-color-variant-primary-header-background: color('primary-55') !default;
+
+/// The border color of the modal component header
+/// @name header-border-color
+/// @group primary
+/// @type color
+$modal-color-variant-primary-header-border-color: color('primary-60') !default;
+
+/// The color of the modal component footer
+/// @name footer-color
+/// @group primary
+/// @type color
+$modal-color-variant-primary-footer-color: contrast-color($color-primary) !default;
+
+/// The background of the modal component footer
+/// @name footer-background
+/// @group primary
+/// @type color
+$modal-color-variant-primary-footer-background: color('primary-55') !default;
+
+/// The border color of the modal component footer
+/// @name footer-border-color
+/// @group primary
+/// @type color
+$modal-color-variant-primary-footer-border-color: color('primary-60') !default;
+
+/// Map for primary color
+/// @group primary
+$modal-color-variant-primary: (
+    'color': $modal-color-variant-primary-color,
+    'background': $modal-color-variant-primary-background,
+    'border-color': $modal-color-variant-primary-border-color,
+    'header-color': $modal-color-variant-primary-header-color,
+    'header-background': $modal-color-variant-primary-header-background,
+    'header-border-color': $modal-color-variant-primary-header-border-color,
+    'footer-color': $modal-color-variant-primary-footer-color,
+    'footer-background': $modal-color-variant-primary-footer-background,
+    'footer-border-color': $modal-color-variant-primary-footer-border-color
+) !default;
+
+////
+/// Secondary color
+////
+
+/// The color of the modal component
+/// @name color
+/// @group secondary
+/// @type color
+$modal-color-variant-secondary-color: contrast-color($color-secondary) !default;
+
+/// The background of the modal component
+/// @name background
+/// @group secondary
+/// @type color
+$modal-color-variant-secondary-background: color('secondary') !default;
+
+/// The border color of the modal component
+/// @name border-color
+/// @group secondary
+/// @type color
+$modal-color-variant-secondary-border-color: color('secondary-60') !default;
+
+/// The color of the modal component header
+/// @name header-color
+/// @group secondary
+/// @type color
+$modal-color-variant-secondary-header-color: contrast-color($color-secondary) !default;
+
+/// The background of the modal component header
+/// @name header-background
+/// @group secondary
+/// @type color
+$modal-color-variant-secondary-header-background: color('secondary-55') !default;
+
+/// The border color of the modal component header
+/// @name header-border-color
+/// @group secondary
+/// @type color
+$modal-color-variant-secondary-header-border-color: color('secondary-60') !default;
+
+/// The color of the modal component footer
+/// @name footer-color
+/// @group secondary
+/// @type color
+$modal-color-variant-secondary-footer-color: contrast-color($color-secondary) !default;
+
+/// The background of the modal component footer
+/// @name footer-background
+/// @group secondary
+/// @type color
+$modal-color-variant-secondary-footer-background: color('secondary-55') !default;
+
+/// The border color of the modal component footer
+/// @name footer-border-color
+/// @group secondary
+/// @type color
+$modal-color-variant-secondary-footer-border-color: color('secondary-60') !default;
+
+/// Map for secondary color
+/// @group secondary
+$modal-color-variant-secondary: (
+    'color': $modal-color-variant-secondary-color,
+    'background': $modal-color-variant-secondary-background,
+    'border-color': $modal-color-variant-secondary-border-color,
+    'header-color': $modal-color-variant-secondary-header-color,
+    'header-background': $modal-color-variant-secondary-header-background,
+    'header-border-color': $modal-color-variant-secondary-header-border-color,
+    'footer-color': $modal-color-variant-secondary-footer-color,
+    'footer-background': $modal-color-variant-secondary-footer-background,
+    'footer-border-color': $modal-color-variant-secondary-footer-border-color
+) !default;
+
+////
+/// Light color
+////
+
+/// The color of the modal component
+/// @name color
+/// @group light
+/// @type color
+$modal-color-variant-light-color: contrast-color($color-light) !default;
+
+/// The background of the modal component
+/// @name background
+/// @group light
+/// @type color
+$modal-color-variant-light-background: color('white') !default;
+
+/// The border color of the modal component
+/// @name border-color
+/// @group light
+/// @type color
+$modal-color-variant-light-border-color: color('light') !default;
+
+/// The color of the modal component header
+/// @name header-color
+/// @group light
+/// @type color
+$modal-color-variant-light-header-color: contrast-color($color-light) !default;
+
+/// The background of the modal component header
+/// @name header-background
+/// @group light
+/// @type color
+$modal-color-variant-light-header-background: color('light-25') !default;
+
+/// The border color of the modal component header
+/// @name header-border-color
+/// @group light
+/// @type color
+$modal-color-variant-light-header-border-color: color('light') !default;
+
+/// The color of the modal component footer
+/// @name footer-color
+/// @group light
+/// @type color
+$modal-color-variant-light-footer-color: contrast-color($color-light) !default;
+
+/// The background of the modal component footer
+/// @name footer-background
+/// @group light
+/// @type color
+$modal-color-variant-light-footer-background: color('light-25') !default;
+
+/// The border color of the modal component footer
+/// @name footer-border-color
+/// @group light
+/// @type color
+$modal-color-variant-light-footer-border-color: color('light') !default;
+
+/// Map for light color
+/// @group light
+$modal-color-variant-light: (
+    'color': $modal-color-variant-light-color,
+    'background': $modal-color-variant-light-background,
+    'border-color': $modal-color-variant-light-border-color,
+    'header-color': $modal-color-variant-light-header-color,
+    'header-background': $modal-color-variant-light-header-background,
+    'header-border-color': $modal-color-variant-light-header-border-color,
+    'footer-color': $modal-color-variant-light-footer-color,
+    'footer-background': $modal-color-variant-light-footer-background,
+    'footer-border-color': $modal-color-variant-light-footer-border-color
+) !default;
+
+////
+/// Dark color
+////
+
+/// The color of the modal component
+/// @name color
+/// @group dark
+/// @type color
+$modal-color-variant-dark-color: contrast-color($color-dark) !default;
+
+/// The background of the modal component
+/// @name background
+/// @group dark
+/// @type color
+$modal-color-variant-dark-background: color('dark') !default;
+
+/// The border color of the modal component
+/// @name border-color
+/// @group dark
+/// @type color
+$modal-color-variant-dark-border-color: color('dark-60') !default;
+
+/// The color of the modal component header
+/// @name header-color
+/// @group dark
+/// @type color
+$modal-color-variant-dark-header-color: contrast-color($color-dark) !default;
+
+/// The background of the modal component header
+/// @name header-background
+/// @group dark
+/// @type color
+$modal-color-variant-dark-header-background: color('dark-55') !default;
+
+/// The border color of the modal component header
+/// @name header-border-color
+/// @group dark
+/// @type color
+$modal-color-variant-dark-header-border-color: color('dark-60') !default;
+
+/// The color of the modal component footer
+/// @name footer-color
+/// @group dark
+/// @type color
+$modal-color-variant-dark-footer-color: contrast-color($color-dark) !default;
+
+/// The background of the modal component footer
+/// @name footer-background
+/// @group dark
+/// @type color
+$modal-color-variant-dark-footer-background: color('dark-55') !default;
+
+/// The border color of the modal component footer
+/// @name footer-border-color
+/// @group dark
+/// @type color
+$modal-color-variant-dark-footer-border-color: color('dark-60') !default;
+
+/// Map for dark color
+/// @group dark
+$modal-color-variant-dark: (
+    'color': $modal-color-variant-dark-color,
+    'background': $modal-color-variant-dark-background,
+    'border-color': $modal-color-variant-dark-border-color,
+    'header-color': $modal-color-variant-dark-header-color,
+    'header-background': $modal-color-variant-dark-header-background,
+    'header-border-color': $modal-color-variant-dark-header-border-color,
+    'footer-color': $modal-color-variant-dark-footer-color,
+    'footer-background': $modal-color-variant-dark-footer-background,
+    'footer-border-color': $modal-color-variant-dark-footer-border-color
+) !default;
+
+////
+/// Info color
+////
+
+/// The color of the modal component
+/// @name color
+/// @group info
+/// @type color
+$modal-color-variant-info-color: contrast-color($color-info) !default;
+
+/// The background of the modal component
+/// @name background
+/// @group info
+/// @type color
+$modal-color-variant-info-background: color('info') !default;
+
+/// The border color of the modal component
+/// @name border-color
+/// @group info
+/// @type color
+$modal-color-variant-info-border-color: color('info-60') !default;
+
+/// The color of the modal component header
+/// @name header-color
+/// @group info
+/// @type color
+$modal-color-variant-info-header-color: contrast-color($color-info) !default;
+
+/// The background of the modal component header
+/// @name header-background
+/// @group info
+/// @type color
+$modal-color-variant-info-header-background: color('info-55') !default;
+
+/// The border color of the modal component header
+/// @name header-border-color
+/// @group info
+/// @type color
+$modal-color-variant-info-header-border-color: color('info-60') !default;
+
+/// The color of the modal component footer
+/// @name footer-color
+/// @group info
+/// @type color
+$modal-color-variant-info-footer-color: contrast-color($color-info) !default;
+
+/// The background of the modal component footer
+/// @name footer-background
+/// @group info
+/// @type color
+$modal-color-variant-info-footer-background: color('info-55') !default;
+
+/// The border color of the modal component footer
+/// @name footer-border-color
+/// @group info
+/// @type color
+$modal-color-variant-info-footer-border-color: color('info-60') !default;
+
+/// Map for info color
+/// @group info
+$modal-color-variant-info: (
+    'color': $modal-color-variant-info-color,
+    'background': $modal-color-variant-info-background,
+    'border-color': $modal-color-variant-info-border-color,
+    'header-color': $modal-color-variant-info-header-color,
+    'header-background': $modal-color-variant-info-header-background,
+    'header-border-color': $modal-color-variant-info-header-border-color,
+    'footer-color': $modal-color-variant-info-footer-color,
+    'footer-background': $modal-color-variant-info-footer-background,
+    'footer-border-color': $modal-color-variant-info-footer-border-color
+) !default;
+
+////
+/// Success color
+////
+
+/// The color of the modal component
+/// @name color
+/// @group success
+/// @type color
+$modal-color-variant-success-color: contrast-color($color-success) !default;
+
+/// The background of the modal component
+/// @name background
+/// @group success
+/// @type color
+$modal-color-variant-success-background: color('success') !default;
+
+/// The border color of the modal component
+/// @name border-color
+/// @group success
+/// @type color
+$modal-color-variant-success-border-color: color('success-60') !default;
+
+/// The color of the modal component header
+/// @name header-color
+/// @group success
+/// @type color
+$modal-color-variant-success-header-color: contrast-color($color-success) !default;
+
+/// The background of the modal component header
+/// @name header-background
+/// @group success
+/// @type color
+$modal-color-variant-success-header-background: color('success-55') !default;
+
+/// The border color of the modal component header
+/// @name header-border-color
+/// @group success
+/// @type color
+$modal-color-variant-success-header-border-color: color('success-60') !default;
+
+/// The color of the modal component footer
+/// @name footer-color
+/// @group success
+/// @type color
+$modal-color-variant-success-footer-color: contrast-color($color-success) !default;
+
+/// The background of the modal component footer
+/// @name footer-background
+/// @group success
+/// @type color
+$modal-color-variant-success-footer-background: color('success-55') !default;
+
+/// The border color of the modal component footer
+/// @name footer-border-color
+/// @group success
+/// @type color
+$modal-color-variant-success-footer-border-color: color('success-60') !default;
+
+/// Map for success color
+/// @group success
+$modal-color-variant-success: (
+    'color': $modal-color-variant-success-color,
+    'background': $modal-color-variant-success-background,
+    'border-color': $modal-color-variant-success-border-color,
+    'header-color': $modal-color-variant-success-header-color,
+    'header-background': $modal-color-variant-success-header-background,
+    'header-border-color': $modal-color-variant-success-header-border-color,
+    'footer-color': $modal-color-variant-success-footer-color,
+    'footer-background': $modal-color-variant-success-footer-background,
+    'footer-border-color': $modal-color-variant-success-footer-border-color
+) !default;
+
+////
+/// Warning color
+////
+
+/// The color of the modal component
+/// @name color
+/// @group warning
+/// @type color
+$modal-color-variant-warning-color: contrast-color($color-warning) !default;
+
+/// The background of the modal component
+/// @name background
+/// @group warning
+/// @type color
+$modal-color-variant-warning-background: color('warning') !default;
+
+/// The border color of the modal component
+/// @name border-color
+/// @group warning
+/// @type color
+$modal-color-variant-warning-border-color: color('warning-60') !default;
+
+/// The color of the modal component header
+/// @name header-color
+/// @group warning
+/// @type color
+$modal-color-variant-warning-header-color: contrast-color($color-warning) !default;
+
+/// The background of the modal component header
+/// @name header-background
+/// @group warning
+/// @type color
+$modal-color-variant-warning-header-background: color('warning-55') !default;
+
+/// The border color of the modal component header
+/// @name header-border-color
+/// @group warning
+/// @type color
+$modal-color-variant-warning-header-border-color: color('warning-60') !default;
+
+/// The color of the modal component footer
+/// @name footer-color
+/// @group warning
+/// @type color
+$modal-color-variant-warning-footer-color: contrast-color($color-warning) !default;
+
+/// The background of the modal component footer
+/// @name footer-background
+/// @group warning
+/// @type color
+$modal-color-variant-warning-footer-background: color('warning-55') !default;
+
+/// The border color of the modal component footer
+/// @name footer-border-color
+/// @group warning
+/// @type color
+$modal-color-variant-warning-footer-border-color: color('warning-60') !default;
+
+/// Map for warning color
+/// @group warning
+$modal-color-variant-warning: (
+    'color': $modal-color-variant-warning-color,
+    'background': $modal-color-variant-warning-background,
+    'border-color': $modal-color-variant-warning-border-color,
+    'header-color': $modal-color-variant-warning-header-color,
+    'header-background': $modal-color-variant-warning-header-background,
+    'header-border-color': $modal-color-variant-warning-header-border-color,
+    'footer-color': $modal-color-variant-warning-footer-color,
+    'footer-background': $modal-color-variant-warning-footer-background,
+    'footer-border-color': $modal-color-variant-warning-footer-border-color
+) !default;
+
+////
+/// Danger color
+////
+
+/// The color of the modal component
+/// @name color
+/// @group danger
+/// @type color
+$modal-color-variant-danger-color: contrast-color($color-danger) !default;
+
+/// The background of the modal component
+/// @name background
+/// @group danger
+/// @type color
+$modal-color-variant-danger-background: color('danger') !default;
+
+/// The border color of the modal component
+/// @name border-color
+/// @group danger
+/// @type color
+$modal-color-variant-danger-border-color: color('danger-60') !default;
+
+/// The color of the modal component header
+/// @name header-color
+/// @group danger
+/// @type color
+$modal-color-variant-danger-header-color: contrast-color($color-danger) !default;
+
+/// The background of the modal component header
+/// @name header-background
+/// @group danger
+/// @type color
+$modal-color-variant-danger-header-background: color('danger-55') !default;
+
+/// The border color of the modal component header
+/// @name header-border-color
+/// @group danger
+/// @type color
+$modal-color-variant-danger-header-border-color: color('danger-60') !default;
+
+/// The color of the modal component footer
+/// @name footer-color
+/// @group danger
+/// @type color
+$modal-color-variant-danger-footer-color: contrast-color($color-danger) !default;
+
+/// The background of the modal component footer
+/// @name footer-background
+/// @group danger
+/// @type color
+$modal-color-variant-danger-footer-background: color('danger-55') !default;
+
+/// The border color of the modal component footer
+/// @name footer-border-color
+/// @group danger
+/// @type color
+$modal-color-variant-danger-footer-border-color: color('danger-60') !default;
+
+/// Map for danger color
+/// @group danger
+$modal-color-variant-danger: (
+    'color': $modal-color-variant-danger-color,
+    'background': $modal-color-variant-danger-background,
+    'border-color': $modal-color-variant-danger-border-color,
+    'header-color': $modal-color-variant-danger-header-color,
+    'header-background': $modal-color-variant-danger-header-background,
+    'header-border-color': $modal-color-variant-danger-header-border-color,
+    'footer-color': $modal-color-variant-danger-footer-color,
+    'footer-background': $modal-color-variant-danger-footer-background,
+    'footer-border-color': $modal-color-variant-danger-footer-border-color
+) !default;
+
+/// Colors group map
+$modal-color-variants: (
+    'primary': $modal-color-variant-primary,
+    'secondary': $modal-color-variant-secondary,
+    'light': $modal-color-variant-light,
+    'dark': $modal-color-variant-dark,
+    'info': $modal-color-variant-info,
+    'success': $modal-color-variant-success,
+    'warning': $modal-color-variant-warning,
+    'danger': $modal-color-variant-danger
 ) !default;

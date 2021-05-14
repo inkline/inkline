@@ -1,114 +1,120 @@
-import { addClass } from "@inkline/inkline/src/helpers/addClass";
-import { removeClass } from "@inkline/inkline/src/helpers/removeClass";
-import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
+import { reactive, watch } from 'vue'
+import { addClass, removeClass } from "@inkline/inkline/src/helpers";
+import { initialize as initializeForm } from "@inkline/inkline/src/validation";
+import { setLocale } from '@inkline/inkline/src/i18n';
+import { InklineIcons } from '@inkline/icons';
+
+const defaultOptions = {
+    colorMode: 'system',
+    components: {},
+    icons: {}
+};
+
+const colorModeLocalStorageKey = 'inkline-color-mode';
+const handleColorMode = (colorMode) => {
+    let color;
+    if (colorMode === 'system') {
+        color = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    } else {
+        color = colorMode;
+    }
+
+    removeClass(document.body, `-light -dark`);
+    addClass(document.body, `-${color}`);
+};
 
 export const Inkline = {
-    install(Vue, options = {}) {
-        const config = {
-            validation: {
-                validateOn: ['input'],
-                keys: {},
-                ...(options.config || {}).validation
-            },
-            variant: 'light',
-            autodetectVariant: false,
-            ...options.config
+    install(app, options = {}) {
+        options = {
+            ...defaultOptions,
+            ...options
         };
 
-        /**
-         * Checks if default inkline variant has been stored in localStorage.
-         * If not, fallback to light variant.
-         */
-        const variant = !(Vue.prototype.$isServer || typeof window === 'undefined') &&
-            window.localStorage.getItem('inkline-variant') || config.variant;
+        let colorMode = options.colorMode;
 
         /**
-         * Register $inkline prototype in Vue components
+         * Register Inkline plugins
          */
-        Vue.prototype.$inkline = {
-            /**
-             * Inkline reactive global state
-             */
-            _vm: new Vue({
-                data: () => ({ config }),
-                watch: {
-                    'config.variant'(value, oldValue) {
-                        if (oldValue) {
-                            removeClass(document.body, `-${oldValue}`);
-                        }
 
-                        if (value) {
-                            addClass(document.body, `-${value}`);
-                            window.localStorage.setItem('inkline-variant', value);
-                        } else {
-                            window.localStorage.removeItem('inkline-variant');
-                        }
-                    }
-                },
-                /**
-                 * Set up variant and form configuration on create
-                 */
-                created() {
-                    // Configure variant
-                    //
-                    let setVariant;
-                    this.config.variant = null;
+        InklineIcons.add(options.icons);
 
-                    if (this.config.autodetectVariant) {
-                        setVariant = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                    } else {
-                        setVariant = variant;
-                    }
-
-                    setTimeout(() => this.config.variant = setVariant, 0);
-
-                    // Configure form builder
-                    //
-                    FormBuilder.configure(config.validation);
-                }
-            }),
-
-            /**
-             * Config getter used for accessing and setting reactive values
-             * inside components using this.$inkline.config
-             */
-            get config() {
-                return this._vm.$data.config
-            },
-
-            /**
-             * Form builder wrapper used to create a root form schema
-             *
-             * @param name
-             * @param schema
-             * @returns {*}
-             */
-            form(name, schema) {
-                if (typeof name !== 'string') {
-                    schema = name;
-                    name = '';
-                }
-
-                return FormBuilder.build(name, schema, { group: true, root: true });
-            }
-        };
-
-        /**
-         * Add inkline base class to body
-         */
-        if (!(Vue.prototype.$isServer || typeof window === 'undefined')) {
-            addClass(document.body, `inkline`);
-
-            if (variant) {
-                addClass(document.body, `-${variant}`);
-            }
-        }
+        app.use(InklineIcons, {
+            registerComponent: false
+        });
 
         /**
          * Register components provided through options globally
          */
+
         for (const componentIndex in options.components) {
-            Vue.component(options.components[componentIndex].name, options.components[componentIndex]);
+            app.component(options.components[componentIndex].name, options.components[componentIndex]);
+        }
+
+        /**
+         * Get preferred theme based on selected color mode
+         */
+
+        if (typeof window !== 'undefined') {
+            colorMode = window.localStorage.getItem(colorModeLocalStorageKey) || options.colorMode;
+        }
+
+        /**
+         * Add $inkline global property
+         */
+
+        app.config.globalProperties.$inkline = {
+            form(schema) {
+                return initializeForm(schema);
+            },
+            setLocale(locale) {
+                setLocale(locale);
+            },
+            options: reactive({
+                locale: 'en',
+                validateOn: ['input', 'blur'],
+                colorMode,
+            })
+        };
+
+        if (typeof window !== 'undefined') {
+            /**
+             * Add inkline class to document body and initialize color mode
+             */
+
+            addClass(document.body, 'inkline');
+
+            /**
+             * Add color mode on change handler
+             */
+
+            watch(() => app.config.globalProperties.$inkline.options.colorMode, (colorMode) => {
+                handleColorMode(colorMode);
+
+                if (typeof window !== 'undefined') {
+                    window.localStorage.setItem(colorModeLocalStorageKey, colorMode);
+                }
+            });
+
+            /**
+             * Add dark mode media query on change handler
+             */
+
+            const onDarkModeMediaQueryChange = (e) => {
+                app.config.globalProperties.$inkline.options.prefersColorScheme = e.matches ? 'dark' : 'light';
+
+                if (app.config.globalProperties.$inkline.options.colorMode === 'system') {
+                    handleColorMode(app.config.globalProperties.$inkline.options.colorMode);
+                }
+            };
+
+            const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            if (darkModeMediaQuery.addEventListener) {
+                darkModeMediaQuery.addEventListener('change', onDarkModeMediaQueryChange);
+            } else {
+                darkModeMediaQuery.addListener(onDarkModeMediaQueryChange);
+            }
+
+            handleColorMode(colorMode);
         }
     }
 };

@@ -1,5 +1,3 @@
-$inkline-font-path : 'assets/icons/' !default;
-
 $icon-circle: "\e900";
 $icon-chevron-down: "\e901";
 $icon-caret-down: "\e902";
@@ -41,3 +39,30 @@ $icon-star-half: "\e9d8";
 $icon-star-full: "\e9d9";
 $icon-heart: "\e9da";
 $icon-code: "\ea80";
+
+$icon-size: $font-size !default;
+
+//
+// Sizes
+//
+
+$icon-size-variant-sm-size: calc(var(--icon-size) * #{size-multiplier('sm')}) !default;
+$icon-size-variant-sm: (
+    'size': $icon-size-variant-sm-size,
+) !default;
+
+$icon-size-variant-md-size: calc(var(--icon-size) * #{size-multiplier('md')}) !default;
+$icon-size-variant-md: (
+    'size': $icon-size-variant-md-size,
+) !default;
+
+$icon-size-variant-lg-size: calc(var(--icon-size) * #{size-multiplier('lg')}) !default;
+$icon-size-variant-lg: (
+    'size': $icon-size-variant-lg-size,
+) !default;
+
+$icon-size-variants: (
+    'sm': $icon-size-variant-sm,
+    'md': $icon-size-variant-md,
+    'lg': $icon-size-variant-lg
+) !default;

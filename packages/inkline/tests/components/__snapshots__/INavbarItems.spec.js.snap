@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Components INavbarItems should render correctly 1`] = `
-<i-transition-expand-stub>
-  <div class="navbar-items"></div>
-</i-transition-expand-stub>
-`;

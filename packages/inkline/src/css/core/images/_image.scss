@@ -1,6 +1,25 @@
 /**
-    * Image
-    */
+ * Image
+ */
+
+%image-responsive {
+    max-width: 100%;
+
+    // Override the height to auto, otherwise images will be stretched
+    // when setting a width and height attribute on the img element.
+    height: auto;
+}
+
+%image-thumbnail {
+    padding: var(--thumbnail-padding);
+    background-color: var(--thumbnail-background);
+    border: var(--thumbnail-border-width) solid var(--thumbnail-border-color);
+    border-radius: var(--thumbnail-border-radius);
+    transition: var(--thumbnail-transition);
+    box-shadow: var(--thumbnail-box-shadow);
+
+    @extend %image-responsive;
+}
 
 .img,
 .image {
@@ -13,13 +32,7 @@
     // expecting the images within themselves to be involuntarily resized.
     //
     &.-responsive {
-
-        // Set a maximum relative to the parent
-        max-width: 100%;
-
-        // Override the height to auto, otherwise images will be stretched
-        // when setting a width and height attribute on the img element.
-        height: auto;
+        @extend %image-responsive;
     }
 
     &.-fluid {
@@ -42,21 +55,14 @@
     // Image thumbnails
     //
     &.-thumbnail {
-        padding: $thumbnail-padding;
-        background-color: $thumbnail-background;
-        border: $thumbnail-border-width solid $thumbnail-border-color;
-        border-radius: $thumbnail-border-radius;
-        transition: $thumbnail-transition;
-        box-shadow: $thumbnail-box-shadow;
-
-        @extend .img.-responsive;
+        @extend %image-thumbnail;
     }
 
     // Image Polaroid
     //
     &.-polaroid {
-        padding-bottom: $polaroid-padding;
+        padding-bottom: var(--polaroid-padding);
 
-        @extend .img.-thumbnail;
+        @extend %image-thumbnail;
     }
 }

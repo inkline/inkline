@@ -1,7 +1,5 @@
-import Vue from 'vue';
-
 export function getStyleProperty (element, property) {
-    if (!element || !property || Vue.prototype.$isServer && !window) { return; }
+    if (!element || !property || typeof window === 'undefined') { return; }
 
     if (element.currentStyle) {
         return element.currentStyle[property];

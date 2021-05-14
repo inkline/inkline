@@ -1,19 +1,30 @@
 /**
- * Nav
+ * progress
  */
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_mixins';
-@import 'css/_variables';
-@import 'css/_sizes';
-@import 'css/_variants';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/sizes';
+@import 'css/colors';
 
 .progress {
-    width: 100%;
     display: flex;
+    flex-basis: 100%;
     position: relative;
     overflow: hidden;
 
-    @extend .progress.-md;
-    @extend .progress.-light;
+    @include progress-size-variant('md');
+    @each $size-variant-key, $progress-size-variant-value in $progress-size-variants {
+        &.-#{$size-variant-key} {
+            @include progress-size-variant($size-variant-key);
+        }
+    }
+
+    @include progress-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $progress-color-variants {
+        &.-#{$color-variant-key} {
+            @include progress-color-variant($color-variant-key);
+        }
+    }
 }

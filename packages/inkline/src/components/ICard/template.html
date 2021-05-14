@@ -1,14 +1,15 @@
-<div class="card"
-     :class="classes"
-     v-bind="attributes">
-    <header class="header" v-if="$slots.header">
-        <slot name="header"></slot>
+<div class="card" :class="classes">
+    <header class="card-header" v-if="!!$slots.header">
+        <slot name="header" />
     </header>
-    <slot name="image"></slot>
-    <div class="body" v-if="$slots.default">
-        <slot></slot>
+
+    <slot name="image" />
+
+    <div class="card-body" v-if="!!$slots.default">
+        <slot />
     </div>
-    <footer class="footer" v-if="$slots.footer">
-        <slot name="footer"></slot>
+
+    <footer class="card-footer" v-if="!!$slots.footer">
+        <slot name="footer" />
     </footer>
 </div>

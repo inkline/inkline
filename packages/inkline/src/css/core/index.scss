@@ -1,12 +1,7 @@
-/**
- * Core
- */
-
 @import 'normalize';
-@import 'print';
+@import 'code';
+@import 'images';
 @import 'modal';
-@import 'fonts';
-@import 'code/index';
-@import 'images/index';
-@import 'transitions/index';
-@import 'typography/index';
+@import 'print';
+@import 'transitions';
+@import 'typography';

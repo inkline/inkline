@@ -1,7 +1,4 @@
-<div class="alert"
-     :class="classes"
-     v-bind="attributes"
-     v-show="dismissible ? !dismissed && show : show">
+<div class="alert" :class="classes" v-bind="$attrs" v-show="!dismissed">
     <span class="icon" v-if="$slots.icon">
         <slot name="icon"></slot>
     </span>
@@ -9,6 +6,6 @@
         <slot></slot>
     </div>
     <span class="dismiss" @click="dismiss" v-if="dismissible">
-        <slot name="dismiss">{{ dismissLabel }}</slot>
+        <slot name="dismiss">&times;</slot>
     </span>
 </div>

@@ -1,29 +1,34 @@
 /**
  * Collapsible
  */
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_mixins';
-@import 'css/_variables';
-@import 'css/_variants';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
+@import 'css/sizes';
 
 .collapsible {
     position: relative;
     display: block;
     border-width: 1px;
     border-style: solid;
-    border-radius: $collapsible-border-radius;
 
-    &.-unstyled {
+    &.-blank {
         border: 0;
     }
 
-    ::v-deep > .item {
-        &:last-child > .body {
-            border-bottom-left-radius: $collapsible-border-radius;
-            border-bottom-right-radius: $collapsible-border-radius;
+    @include collapsible-size-variant('md');
+    @each $size-variant-key, $collapsible-size-variant-value in $collapsible-size-variants {
+        &.-#{$size-variant-key} {
+            @include collapsible-size-variant($size-variant-key);
         }
     }
 
-    @extend .collapsible.-light;
+    @include collapsible-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $collapsible-color-variants {
+        &.-#{$color-variant-key} {
+            @include collapsible-color-variant($color-variant-key);
+        }
+    }
 }

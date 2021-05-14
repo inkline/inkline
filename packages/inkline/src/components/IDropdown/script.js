@@ -1,202 +1,315 @@
-import { uid, isKey, querySelector, querySelectorAll, isVisible } from '@inkline/inkline/src/helpers';
-import ClickOutside from '@inkline/inkline/src/directives/click-outside';
 import {
-    AttributesProviderMixin,
-    ClassesProviderMixin,
-    EmitProviderMixin,
-    PopupControlsProviderMixin,
-    EmitFocusMethodMixin,
-    SizePropertyMixin,
-    VariantPropertyMixin,
-    DisabledPropertyMixin
+    PopupMixin,
+    PopupControlsMixin,
+    sizePropValidator,
+    colorVariantClass
 } from '@inkline/inkline/src/mixins';
+import { ClickOutside } from '@inkline/inkline/src/directives';
+import { on, off, isFocusable, isKey } from "@inkline/inkline/src/helpers";
+
+
+/**
+ * @name default
+ * @kind slot
+ * @description Slot for dropdown trigger
+ */
+
+/**
+ * @name header
+ * @kind slot
+ * @description Slot for dropdown header content
+ */
+
+/**
+ * @name body
+ * @kind slot
+ * @description Slot for dropdown body content
+ */
+
+/**
+ * @name footer
+ * @kind slot
+ * @description Slot for dropdown footer content
+ */
 
 export default {
     name: 'IDropdown',
     mixins: [
-        AttributesProviderMixin,
-        ClassesProviderMixin,
-        EmitProviderMixin,
-        PopupControlsProviderMixin,
-
-        EmitFocusMethodMixin,
-
-        SizePropertyMixin,
-        VariantPropertyMixin,
-        DisabledPropertyMixin
+        PopupMixin,
+        PopupControlsMixin
     ],
     directives: {
         ClickOutside
+    },
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
+    ],
+    props: {
+        /**
+         * @description The duration of the hide and show animation
+         * @type Number
+         * @default 300
+         */
+        animationDuration: {
+            type: Number,
+            default: 300
+        },
+        /**
+         * @description The color variant of the dropdown
+         * @type light | dark
+         * @default light
+         */
+        color: {
+            type: String,
+            default: ''
+        },
+        /**
+         * @description The disabled state of the dropdown
+         * @type Boolean
+         * @default false
+         */
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * @description Used to hide the dropdown when clicking or selecting a dropdown item
+         * @type Boolean
+         * @default false
+         */
+        hideOnItemClick: {
+            type: Boolean,
+            default: true
+        },
+        /**
+         * @description The keydown events bound to the trigger element
+         * @type string[]
+         * @default [up, down, enter, space, tab, esc]
+         */
+        keydownTrigger: {
+            type: Array,
+            default: () => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+        },
+        /**
+         * @description The keydown events bound to the dropdown item elements
+         * @type string[]
+         * @default [up, down, enter, space, tab, esc]
+         */
+        keydownItem: {
+            type: Array,
+            default: () => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+        },
+        /**
+         * @description Used to manually control the visibility of the dropdown
+         * @type Boolean
+         * @default false
+         */
+        modelValue: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * @description Displays an arrow on the dropdown pointing to the trigger element
+         * @type Boolean
+         * @default true
+         */
+        arrow: {
+            type: Boolean,
+            default: true
+        },
+        /**
+         * @description The placement of the dropdown
+         * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
+         * @default false
+         */
+        placement: {
+            type: String,
+            default: 'bottom',
+        },
+        /**
+         * @description The events used to trigger the dropdown
+         * @type hover | focus | click | manual
+         * @default [click]
+         */
+        trigger: {
+            type: [String, Array],
+            default: ['click']
+        },
+        /**
+         * @description The offset of the dropdown relative to the trigger element
+         * @type Number
+         * @default 6
+         */
+        offset: {
+            type: Number,
+            default: 6
+        },
+        /**
+         * @description Used to override the popper.js options used for creating the dropdown
+         * @type Object
+         * @default {}
+         */
+        popperOptions: {
+            type: Object,
+            default: () => ({})
+        },
+        /**
+         * @description The size variant of the dropdown
+         * @type sm | md | lg
+         * @default md
+         */
+        size: {
+            type: String,
+            default: '',
+            validator: sizePropValidator
+        },
     },
     provide() {
         return {
             dropdown: this
         };
     },
-    props: {
-        hideOnClick: {
-            type: Boolean,
-            default: true
-        },
-        placement: {
-            type: String,
-            default: 'bottom'
-        },
-        keymap: {
-            type: Object,
-            default: () => ({})
-        }
-    },
-    data() {
-        const basename = 'dropdown';
-
-        return {
-            id: this.$attrs.id || uid(basename + '-menu'),
-            items: [],
-            menu: null,
-            basename
-        };
-    },
     computed: {
-        actionKeymap() {
+        classes() {
             return {
-                navigate: ['up', 'down'],
-                select: ['enter', 'space'],
-                show: ['enter', 'space'],
-                hide: ['esc', 'tab'],
-
-                ...this.keymap
-            };
-        },
-        focusableItems() {
-            return this.items.filter((item) => !(item.disabled || (item.componentInstance || {}).disabled) &&
-                isVisible(item.elm || item.$el));
-        }
-    },
-    watch: {
-        visible(value) {
-            this.broadcast('IDropdownMenu', 'visibility-change', value);
-            this.$emit('change', value);
+                ...colorVariantClass(this),
+                [`-${this.size}`]: Boolean(this.size),
+            }
         }
     },
     methods: {
-        onTriggerKeyDown(e) {
-            if (!this.focusableItems.length > 0) { return; }
+        onEscape() {
+            this.visible = false;
+            this.$emit('update:modelValue', false);
+        },
+        handleClickOutside() {
+            this.visible = false;
+            this.$emit('update:modelValue', false);
+            this.onClickOutside();
+        },
+        getFocusableItems() {
+            const focusableItems = [];
 
-            let activeIndex = this.focusableItems.findIndex((e) => e.active);
-            let initialIndex = activeIndex > -1 ? activeIndex : 0;
-            const focusTarget = this.focusableItems[initialIndex].elm || this.focusableItems[initialIndex].$el;
+            for (const child of this.$refs.body.children) {
+                if (isFocusable(child)) {
+                    focusableItems.push(child);
+                }
+            }
 
-            // Default key: up or down
-            if (this.actionKeymap.navigate.some((key) => isKey(key, e))) {
-                this.show();
+            return focusableItems;
+        },
+        onTriggerKeyDown(event) {
+            if (this.keydownTrigger.length === 0) {
+                return;
+            }
 
-                setTimeout(() => {
-                    focusTarget.focus();
-                }, this.visible ? 0 : this.showTimeout);
+            const focusableItems = this.getFocusableItems();
+            const activeIndex = focusableItems.findIndex((item) => item.active);
+            const initialIndex = activeIndex > -1 ? activeIndex : 0;
+            const focusTarget = focusableItems[initialIndex];
 
-                e.preventDefault();
-                e.stopPropagation();
+            switch (true) {
+                case isKey('up', event) && this.keydownTrigger.includes('up'):
+                case isKey('down', event) && this.keydownTrigger.includes('down'):
+                    this.show();
 
-            // Default key: enter or space
-            } else if (this.actionKeymap.show.some((key) => isKey(key, e))) {
-                this.onClick();
-
-                if (!this.visible) {
                     setTimeout(() => {
                         focusTarget.focus();
-                    }, this.showTimeout);
-                }
+                    }, this.visible ? 0 : this.animationDuration);
 
-                e.preventDefault();
+                    event.preventDefault();
+                    event.stopPropagation();
+                    break;
 
-            // Default key: tab or esc
-            } else if (this.actionKeymap.hide.some((key) => isKey(key, e))) {
+                case isKey('enter', event) && this.keydownTrigger.includes('enter'):
+                case isKey('space', event) && this.keydownTrigger.includes('space'):
+                    this.onClick();
+
+                    if (!this.visible) {
+                        setTimeout(() => {
+                            focusTarget.focus();
+                        }, this.animationDuration);
+                    }
+
+                    event.preventDefault();
+                    break;
+
+                case isKey('tab', event) && this.keydownTrigger.includes('tab'):
+                case isKey('esc', event) && this.keydownTrigger.includes('esc'):
+                    this.hide();
+                    break;
+            }
+        },
+        onItemKeyDown(event) {
+            if (this.keydownItem.length === 0) {
+                return;
+            }
+
+            switch (true) {
+                case isKey('up', event) && this.keydownItem.includes('up'):
+                case isKey('down', event) && this.keydownItem.includes('down'):
+                    const focusableItems = this.getFocusableItems();
+
+                    const currentIndex = focusableItems.findIndex((item) => item === event.target);
+                    const maxIndex = focusableItems.length - 1;
+                    let nextIndex;
+
+                    if (isKey('up', event)) {
+                        nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+                    } else {
+                        nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
+                    }
+
+                    focusableItems[nextIndex].focus();
+
+                    event.preventDefault();
+                    event.stopPropagation();
+                    break;
+
+                case isKey('enter', event) && this.keydownItem.includes('enter'):
+                case isKey('space', event) && this.keydownItem.includes('space'):
+                    event.target.click();
+
+                    if (this.hideOnItemClick) {
+                        this.hide();
+                    }
+                    this.focusTrigger();
+
+                    event.preventDefault();
+                    break;
+
+                case isKey('tab', event) && this.keydownItem.includes('tab'):
+                case isKey('esc', event) && this.keydownItem.includes('esc'):
+                    this.hide();
+                    this.focusTrigger();
+
+                    event.preventDefault();
+                    break;
+            }
+        },
+        onItemClick() {
+            if (this.hideOnItemClick) {
                 this.hide();
             }
-        },
-        onItemKeyDown(e) {
-            if (!this.focusableItems.length > 0) { return; }
-
-            // Default key: up or down
-            if (this.actionKeymap.navigate.some((key) => isKey(key, e))) {
-                const currentIndex = this.focusableItems.findIndex((i) => (i.elm || i.$el) === e.target);
-                const maxIndex = this.focusableItems.length - 1;
-                let nextIndex;
-
-                if (isKey('up', e)) {
-                    nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-                } else {
-                    nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
-                }
-
-                const focusTarget = this.focusableItems[nextIndex].elm || this.focusableItems[nextIndex].$el;
-                focusTarget.focus();
-
-                e.preventDefault();
-                e.stopPropagation();
-
-            // Default key: enter or space
-            } else if (this.actionKeymap.select.some((key) => isKey(key, e))) {
-                e.target.click();
-
-                if (e.target.hasAttribute('aria-haspopup')) {
-                    this.initItems();
-                } else {
-                    this.triggerElement.focus();
-                }
-
-                if (this.hideOnClick) {
-                    this.visible = false;
-                }
-
-                e.preventDefault();
-
-            // Default key: tab or esc
-            } else if (this.actionKeymap.hide.some((key) => isKey(key, e))) {
-                this.hide();
-
-                this.triggerElement.focus();
-            }
-        },
-        onItemClick(action, instance) {
-            if (this.hideOnClick) {
-                this.visible = false;
-            }
-
-            this.$emit('action', action, instance);
-        },
-        initElements() {
-            if ((this.$slots.default || []).length < 2) {
-                throw new Error(`IDropdown component requires two child elements.
-                The first one will be used as a trigger. The second one should be a IDropdownMenu component.`);
-            }
-
-            this.menu = querySelector(this.$slots.default, 'IDropdownMenu');
-
-            if (!this.menu) {
-                throw new Error('Could not find child IDropdownMenu in IDropdown.')
-            }
-
-            this.triggerElement = this.$slots.default[0].elm;
-            this.popupElement = this.menu.elm;
-
-            this.initItems();
-        },
-        initItems() {
-            this.items = querySelectorAll(this.menu.componentInstance.$slots.default, 'IDropdownItem');
         }
     },
     mounted() {
-        this.$on('init', this.initElements);
-        this.$on('item-click', this.onItemClick);
-
-        this.triggerElement.addEventListener('keydown', this.onTriggerKeyDown);
-        this.popupElement.addEventListener('keydown', this.onItemKeyDown, true);
-
-        if (this.trigger === 'hover') {
-            this.popupElement.addEventListener('mouseenter', this.show);
-            this.popupElement.addEventListener('mouseleave', this.hide);
+        for (const child of this.$refs.trigger.children) {
+            on(child, 'keydown', this.onTriggerKeyDown);
         }
+
+        on(this.$refs.popup, 'keydown', this.onItemKeyDown);
     },
-};
+    beforeUnmount() {
+        for (const child of this.$refs.trigger.children) {
+            off(child, 'keydown', this.onTriggerKeyDown);
+        }
+
+        off(this.$refs.popup, 'keydown', this.onItemKeyDown);
+    }
+}
+

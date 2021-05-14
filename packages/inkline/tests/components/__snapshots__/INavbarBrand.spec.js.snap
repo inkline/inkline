@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Components INavbarBrand should render correctly 1`] = `<a class="brand"></a>`;

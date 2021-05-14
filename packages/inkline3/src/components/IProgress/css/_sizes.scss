@@ -1,7 +1,0 @@
-@mixin progress-size-variant($size-variant-key) {
-    $_height: var(--progress-size-variant-#{$size-variant-key}-height);
-    $_border-radius: var(--progress-size-variant-#{$size-variant-key}-border-radius);
-
-    border-radius: $_border-radius;
-    height: $_height;
-}

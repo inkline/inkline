@@ -1,4 +1,4 @@
-import { getValueByPath } from "@inkline/inkline/src/helpers/getValueByPath";
+import { getValueByPath } from "./valueByPath";
 
 /**
  * Sort an array of objects by path

@@ -5,5 +5,5 @@
  * @param baseId
  */
 export function uid (baseId) {
-    return baseId + '-' + Math.random().toString(36).substr(2, 9);
+    return `${baseId}-${Math.random().toString(36).substr(2, 9)}`;
 }

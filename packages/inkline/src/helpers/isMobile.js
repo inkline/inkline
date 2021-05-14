@@ -1,12 +1,10 @@
-import Vue from 'vue';
-
 /**
  * Function used to determine if the used browser is a mobile browser
  *
  * @returns {boolean}
  */
 export function isMobile() {
-    if (Vue.prototype.$isServer || typeof window === 'undefined') {
+    if (typeof window === 'undefined') {
         return false;
     }
 

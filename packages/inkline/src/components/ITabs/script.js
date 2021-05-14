@@ -1,36 +1,57 @@
-import IButtonGroup from '@inkline/inkline/src/components/IButtonGroup';
-import IButton from '@inkline/inkline/src/components/IButton';
 import {
-    AttributesProviderMixin,
-    ClassesProviderMixin,
-    VariantPropertyMixin
+    colorVariantClass,
+    sizePropValidator,
 } from '@inkline/inkline/src/mixins';
+
+/**
+ * @name default
+ * @kind slot
+ * @description Slot for default tabs content
+ */
 
 export default {
     name: 'ITabs',
-    components: {
-        IButtonGroup,
-        IButton,
-        CustomSlot: {
-            functional: true,
-            render: (h, ctx) => h('div', {}, ctx.props.components)
-        }
-    },
-    mixins: [
-        AttributesProviderMixin,
-        ClassesProviderMixin,
-
-        VariantPropertyMixin
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
     ],
     props: {
-        custom: {
-            type: Boolean,
-            default: false
-        },
-        value: {
+        /**
+         * @description The color variant of the header
+         * @type primary | light | dark
+         * @default light
+         */
+        color: {
             type: String,
             default: ''
         },
+        /**
+         * @description Used to set the currently active tab
+         * @type String
+         * @default
+         */
+        modelValue: {
+            type: String,
+            default: ''
+        },
+        /**
+         * @description The size variant of the tabs
+         * @type sm | md | lg
+         * @default md
+         */
+        size: {
+            type: String,
+            default: '',
+            validator: sizePropValidator
+        },
+        /**
+         * @description Display the tabs header as full width
+         * @type Boolean
+         * @default false
+         */
         stretch: {
             type: Boolean,
             default: false
@@ -38,7 +59,7 @@ export default {
     },
     data() {
         return {
-            active: null,
+            active: this.modelValue,
             tabs: []
         }
     },
@@ -47,38 +68,24 @@ export default {
             tabs: this
         };
     },
+    computed: {
+        classes() {
+            return {
+                ...colorVariantClass(this),
+                [`-${this.size}`]: Boolean(this.size),
+                '-stretch': this.stretch
+            };
+        }
+    },
     methods: {
-        onHeadingClick(item) {
-            this.active = item.id;
-            this.$emit('input', this.active);
-        },
-        initElements() {
-            this.tabs = this.$children.filter((tab) => tab.$options.name === 'ITab');
-
-            if (!this.active && this.tabs.length > 0) {
-                if (this.value) {
-                    return this.active = this.value;
-                }
-
-                this.active = this.tabs[0].id;
-                this.$emit('input', this.active);
-            }
+        setActive(id) {
+            this.active = id;
+            this.$emit('update:modelValue', this.active);
         }
     },
     watch: {
-        value(value) {
+        modelValue(value) {
             this.active = value;
         }
-    },
-    created() {
-        this.classesProvider.add(() => ({
-            '-custom': this.custom,
-            '-stretch': this.stretch
-        }));
-    },
-    mounted() {
-        this.$on('init', this.initElements);
-
-        this.initElements();
     }
 };

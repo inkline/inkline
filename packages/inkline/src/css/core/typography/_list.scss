@@ -8,7 +8,7 @@ dl,
 .list {
     > .item,
     > li {
-        margin-bottom: $list-item-margin-bottom;
+        margin-bottom: var(--list-item-margin-bottom);
     }
 
     &.-unstyled {
@@ -22,11 +22,11 @@ dl,
 
         > .item,
         > li {
-            display: inline-block;
+            display: inline-flex;
             margin-bottom: 0;
 
             &:not(:last-child) {
-                margin-right: $list-inline-padding;
+                margin-right: var(--list-inline-padding);
             }
         }
     }

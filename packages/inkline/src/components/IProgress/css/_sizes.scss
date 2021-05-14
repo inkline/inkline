@@ -1,12 +1,7 @@
-//
-// Progress sizes
-//
-@each $size in $sizes {
-    $_border-radius: map_get($progress-border-radius, $size);
-    $_height: map_get($progress-height, $size);
+@mixin progress-size-variant($size-variant-key) {
+    $_height: var(--progress-size-variant-#{$size-variant-key}-height);
+    $_border-radius: var(--progress-size-variant-#{$size-variant-key}-border-radius);
 
-    .progress.-#{$size} {
-        border-radius: $_border-radius;
-        height: $_height;
-    }
+    border-radius: $_border-radius;
+    height: $_height;
 }

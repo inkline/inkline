@@ -1,5 +1,5 @@
 import { Component } from 'vue';
 
-declare const ISelect: Component;
+declare const IInput: Component;
 
-export default ISelect;
+export default IInput;

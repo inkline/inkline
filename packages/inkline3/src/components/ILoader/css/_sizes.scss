@@ -1,6 +1,0 @@
-@mixin loader-size-variant($size-variant-key) {
-    $_loader-size: var(--loader-size-variant-#{$size-variant-key}-size);
-
-    width: $_loader-size;
-    height: $_loader-size;
-}

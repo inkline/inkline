@@ -1,26 +1,20 @@
-import {
-    ClassesProviderMixin,
-} from '@inkline/inkline/src/mixins';
+import { IIcon } from '@inkline/icons/components';
+
+/**
+ * @description The icon to be displayed
+ * @type String
+ * @default
+ */
+
+/**
+ * @description The size variant of the icon
+ * @type sm | md | lg
+ * @default md
+ */
 
 export default {
     name: 'IIcon',
-    mixins: [
-        ClassesProviderMixin
-    ],
-    props: {
-        icon: {
-            type: String,
-            default: ''
-        },
-        size: {
-            type: String,
-            default: ''
-        }
-    },
-    created() {
-        this.classesProvider.add(() => ({
-            [`-${this.icon}`]: Boolean(this.icon),
-            [`-${this.size}`]: Boolean(this.size)
-        }));
+    components: {
+        Icon: IIcon
     }
 };

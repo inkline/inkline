@@ -1,9 +1,9 @@
-@import '../../css/config/index';
-@import '../../css/mixins/index';
-@import 'css/_mixins';
-@import 'css/_variables';
-@import 'css/_variants';
-@import 'css/_sizes';
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/css';
+@import 'css/colors';
+@import 'css/sizes';
 
 /**
  * Card
@@ -15,14 +15,13 @@
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
-    transition: background-color $transition-duration $transition-easing;
 
     > hr {
         margin-right: 0;
         margin-left: 0;
     }
 
-    > .header {
+    > .card-header {
         margin-bottom: 0;
         border-width: $card-border-width;
         border-style: solid;
@@ -47,7 +46,7 @@
         }
 
         + img,
-        + .body {
+        + .card-body {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
@@ -59,14 +58,16 @@
         }
     }
 
-    > .body {
+    > .card-body {
 
         // Enable `flex-grow: 1` for decks and groups so that card blocks take up
         // as much space as possible, ensuring footers are aligned to the bottom.
         flex: 1 1 auto;
         border-width: $card-border-width;
         border-style: solid;
-        transition: border-color $transition-duration $transition-easing;
+        transition-property: border-color;
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-easing);
 
         &:not(:first-child) {
             border-top-left-radius: 0;
@@ -78,35 +79,56 @@
             border-bottom-right-radius: 0;
         }
 
-        > .title {
+        > .card-title {
             margin-top: 0;
         }
 
-        > .subtitle {
+        > .card-subtitle {
             margin-bottom: 0;
         }
 
-        > .link {
+        > .card-link {
             text-decoration: none;
+        }
+
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
         }
     }
 
-    > .footer {
+    > .card-footer {
         border-width: $card-border-width;
         border-style: solid;
         border-top-width: 0;
     }
 
-    > img {
+    img {
         width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
     }
 
-    > .header,
-    > .footer {
-        transition: background-color $transition-duration $transition-easing;
+    &,
+    > .card-header,
+    > .card-footer {
+        transition-property: background-color;
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-easing);
     }
 
-    // Default card size
-    @extend .card.-md;
-    @extend .card.-light;
+    @include card-size-variant('md');
+    @each $size-variant-key, $card-size-variant-value in $card-size-variants {
+        &.-#{$size-variant-key} {
+            @include card-size-variant($size-variant-key);
+        }
+    }
+
+    @include card-color-variant('light');
+    @each $color-variant-key, $color-variant-value in $card-color-variants {
+        &.-#{$color-variant-key} {
+            @include card-color-variant($color-variant-key);
+        }
+    }
 }

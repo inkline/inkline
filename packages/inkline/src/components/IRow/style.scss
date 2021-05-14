@@ -1,5 +1,5 @@
-@import '../../css/config/index';
-@import '../../css/mixins/index';
+@import '../../css/variables';
+@import '../../css/mixins';
 
 /**
  * Row
@@ -11,10 +11,10 @@
     flex-direction: row;
     flex-wrap: wrap;
 
-    @each $breakpoint-name, $gutter-width in $gutter {
-        @include breakpoint-up($breakpoint-name) {
-            margin-left: ($gutter-width / -2);
-            margin-right: ($gutter-width / -2);
+    @each $breakpoint-key, $gutter-width in $gutters {
+        @include breakpoint-up($breakpoint-key) {
+            margin-left: calc(#{gutter($breakpoint-key)} / -2);
+            margin-right: calc(#{gutter($breakpoint-key)} / -2);
         }
     }
 
@@ -44,10 +44,10 @@
 
     // Responsive Flex Alignments
     //
-    @each $breakpoint-name, $breakpoint-value in $breakpoints {
-        $breakpoint: breakpoint-infix($breakpoint-name);
+    @each $breakpoint-key in $breakpoint-prefix-keys {
+        $breakpoint: breakpoint-infix($breakpoint-key);
 
-        @include breakpoint-up($breakpoint-name) {
+        @include breakpoint-up($breakpoint-key) {
             &.-start#{$breakpoint} {
                 justify-content: flex-start;
                 text-align: start;

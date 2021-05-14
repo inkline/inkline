@@ -1,20 +1,23 @@
-<label class="toggle"
-       :tabindex="tabIndex"
-       :class="classes"
-       @blur="onBlur"
-       @focus="onFocus"
-       @keydown.space.stop.prevent="clickInputRef">
-    <input type="checkbox"
-           class="toggle-input"
-           ref="input"
-           :checked="value"
-           :value="value"
-           :disabled="isDisabled"
-           :readonly="isReadonly"
-           :aria-checked="value"
-           :aria-disabled="isDisabled"
-           :aria-readonly="isReadonly"
-           :name="name"
-           @change="onChange">
-    <span class="indicator" />
-</label>
+<div class="toggle" :class="classes">
+    <input
+        ref="input"
+        type="checkbox"
+        :checked="checked"
+        :disabled="isDisabled"
+        :readonly="isReadonly"
+        :aria-checked="checked"
+        :aria-disabled="isDisabled"
+        :aria-readonly="isReadonly"
+        :name="name"
+        @change="onChange">
+    <label
+        class="toggle-label"
+        :aria-checked="checked"
+        :aria-disabled="isDisabled"
+        :aria-readonly="isReadonly"
+        :tabindex="tabIndex"
+        @click="clickInputRef"
+        @keydown.space.stop.prevent="clickInputRef">
+        <slot />
+    </label>
+</div>

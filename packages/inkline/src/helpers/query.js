@@ -1,5 +1,3 @@
-
-
 /**
  * Find component by component instance name.
  * Mainly used for searching first matching child in component slots.

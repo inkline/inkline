@@ -42,19 +42,19 @@ html {
 
 body {
     margin: 0;
-    color: $body-color;
-    background-color: $body-background;
+    color: var(--body-color-light);
+    background-color: var(--body-background-light);
 }
 
 body.inkline {
     transition-property: background-color, color;
-    transition-duration: $transition-duration;
-    transition-timing-function: $transition-easing;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-easing);
 
-    @each $variant-name, $variant in $body-variants {
-        &.-#{$variant-name} {
-            color: map_get($variant, 'color');
-            background-color: map_get($variant, 'background');
+    @each $color-variant-key, $color-variant-value in $body-color-variants {
+        &.-#{$color-variant-key} {
+            color: var(--body-color-variant-#{$color-variant-key}-color);
+            background-color: var(--body-color-variant-#{$color-variant-key}-background);
         }
     }
 }
@@ -118,16 +118,16 @@ hr {
  */
 
 a {
-    color: $link-color;
-    text-decoration: $link-decoration;
+    color: var(--link-color);
+    text-decoration: var(--link-decoration);
     -webkit-text-decoration-skip: objects;
     background-color: transparent;
 
     &:hover,
     &:focus,
     &:active {
-        color: $link-color-hover;
-        text-decoration: $link-decoration-hover;
+        color: var(--link-color-hover);
+        text-decoration: var(--link-decoration-hover);
         outline-width: 0;
     }
 }
@@ -196,7 +196,7 @@ ol,
 ul,
 dl {
     margin-top: 0;
-    margin-bottom: $spacer;
+    margin-bottom: spacer();
 }
 
 ol ol,
@@ -207,11 +207,11 @@ ul ol {
 }
 
 dt {
-    font-weight: font-weight(bold);
+    font-weight: font-weight('bold');
 }
 
 dd {
-    margin-bottom: spacers('1/2');
+    margin-bottom: spacer('1/2');
     margin-left: 0; // Undo browser default
 }
 
@@ -220,7 +220,7 @@ dd {
  */
 
 address {
-    margin-bottom: $spacer;
+    margin-bottom: spacer();
     font-style: normal;
     line-height: inherit;
 }
@@ -235,7 +235,7 @@ pre,
 code,
 kbd,
 samp {
-    font-family: font-family-primary(monospace);
+    font-family: font-family-primary('monospace');
     font-size: 1rem;
 }
 
@@ -302,7 +302,7 @@ template {
 
 pre {
     margin-top: 0;
-    margin-bottom: $spacer;
+    margin-bottom: spacer();
     overflow: auto;
 }
 
@@ -400,7 +400,7 @@ legend {
     width: 100%;
     max-width: 100%;
     padding: 0;
-    margin-bottom: spacers('1/2');
+    margin-bottom: spacer('1/2');
     font-size: 1.5rem;
     line-height: inherit;
     color: inherit;
@@ -409,7 +409,7 @@ legend {
 
 label {
     display: inline-block;
-    margin-bottom: spacers('1/2');
+    margin-bottom: spacer('1/2');
 }
 
 textarea {

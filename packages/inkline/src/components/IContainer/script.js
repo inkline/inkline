@@ -1,21 +1,27 @@
-import {
-    ClassesProviderMixin,
-} from '@inkline/inkline/src/mixins';
+/**
+ * @name default
+ * @kind slot
+ * @description Slot for default container content
+ */
 
 export default {
     name: 'IContainer',
-    mixins: [
-        ClassesProviderMixin
-    ],
     props: {
+        /**
+         * @description Display the container as fluid, always spanning 100% width
+         * @type Boolean
+         * @default false
+         */
         fluid: {
             type: Boolean,
             default: false
         }
     },
-    created() {
-        this.classesProvider.add(() => ({
-            '-fluid': this.fluid
-        }));
+    computed: {
+        classes() {
+            return {
+                '-fluid': this.fluid
+            };
+        }
     }
 };

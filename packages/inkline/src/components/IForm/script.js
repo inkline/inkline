@@ -1,155 +1,197 @@
 import {
-    AttributesProviderMixin,
-    ClassesProviderMixin,
-    DisabledPropertyMixin,
-    LoadingPropertyMixin,
-    NamePropertyMixin,
-    ReadonlyPropertyMixin,
-    SizePropertyMixin,
+    getValueByPath,
+    setValueByPath,
+    setValuesAlongPath,
+    clone,
+    uid
+} from '@inkline/inkline/src/helpers';
+import {
+    colorVariantClass,
+    sizePropValidator
 } from '@inkline/inkline/src/mixins';
-import { eventValueMap } from '@inkline/inkline/src/constants';
-import { FormBuilder } from '@inkline/inkline/src/factories/FormBuilder';
+import {
+    FormComponentMixin
+} from '@inkline/inkline/src/mixins';
+import { validate } from "@inkline/inkline/src/validation";
+
+/**
+ * @name default
+ * @kind slot
+ * @description Slot for default card content
+ */
 
 export default {
     name: 'IForm',
     mixins: [
-        AttributesProviderMixin,
-        ClassesProviderMixin,
-        DisabledPropertyMixin,
-        LoadingPropertyMixin,
-        ReadonlyPropertyMixin,
-        SizePropertyMixin,
-        NamePropertyMixin
+        FormComponentMixin
     ],
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue schema
+         */
+        'update:modelValue',
+        /**
+         * @event submit
+         * @description Event emitted for submitting the form
+         */
+        'submit'
+    ],
+    inheritAttrs: false,
     props: {
+        /**
+         * @description The color variant of the form
+         * @type light | dark
+         * @default light
+         */
+        color: {
+            type: String,
+            default: ''
+        },
+        /**
+         * @description The disabled state of the form
+         * @type Boolean
+         * @default false
+         */
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * @description Display the form as inline
+         * @type Boolean
+         * @default false
+         */
         inline: {
             type: Boolean,
             default: false
         },
-        value: {
+        /**
+         * @description The loading state of the form
+         * @type Boolean
+         * @default false
+         */
+        loading: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * @description The unique identifier of the form
+         * @type String
+         * @default uid()
+         */
+        name: {
+            type: String,
+            default() {
+                return uid('form');
+            }
+        },
+        /**
+         * @description Used to set the form schema
+         * @type Boolean
+         * @default false
+         */
+        modelValue: {
             type: Object,
             default: () => null
+        },
+        /**
+         * @description The readonly state of the form
+         * @type Boolean
+         * @default false
+         */
+        readonly: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * @description The size variant of the form
+         * @type sm | md | lg
+         * @default md
+         */
+        size: {
+            type: String,
+            default: '',
+            validator: sizePropValidator
         }
     },
     provide() {
         return {
-            parentForm: this
+            form: this
         }
     },
-    created() {
-        this.classesProvider.add(() => ({ '-inline': this.inline }));
-    },
-    methods: {
-        /**
-         * Retrieve form schema
-         */
-        getSchema() {
-            return this.value;
-        },
-
-        /**
-         * Callback on form control input event
-         *
-         * @param formControl
-         */
-        onFormControlInput(formControl) {
-            return (value) => {
-                formControl.schema[FormBuilder.keys.VALUE] = value;
-
-                this.$emit('input', this.value);
+    computed: {
+        classes() {
+            return {
+                ...colorVariantClass(this),
+                [`-${this.size}`]: Boolean(this.size),
+                '-disabled': this.isDisabled,
+                '-readonly': this.isReadonly,
+                '-inline': this.inline
             };
         },
-
-        /**
-         * Callback on form control input event
-         *
-         * @param formControl
-         */
-        onFormControlBlur(formControl) {
-            return () => {
-                formControl.schema[FormBuilder.keys.TOUCH]({ getSchema: this.getSchema });
-            };
-        },
-
-        /**
-         * Callback on form control input event
-         *
-         * @param formControl
-         */
-        onFormControlValidate(formControl, event) {
-            const eventFn = eventValueMap[event] ? eventValueMap[event] : eventValueMap.input;
-
-            return (value) => {
-                formControl.schema[FormBuilder.keys.VALIDATE](eventFn(value), { getSchema: this.getSchema });
-
-                this.$emit('validate', this.value);
-            };
-        },
-
-        /**
-         * Retrieve validateOn field based as array of events, also taking the validation config into account
-         *
-         * @param formControl
-         */
-        getFormControlValidationEvents(formControl) {
-            let validateOn = [];
-
-            if (formControl.schema[FormBuilder.keys.VALIDATE_ON]) {
-                validateOn = formControl.schema[FormBuilder.keys.VALIDATE_ON].constructor === Array ?
-                    formControl.schema[FormBuilder.keys.VALIDATE_ON] :
-                    [formControl.schema[FormBuilder.keys.VALIDATE_ON]];
-            } else {
-                validateOn = this.$inkline.config.validation.validateOn;
+        schema() {
+            if (this.modelValue) {
+                return this.modelValue;
             }
 
-            return validateOn;
+            return getValueByPath(this.formGroup.schema || this.form.schema || {}, this.name);
+        }
+    },
+    methods: {
+        onBlur(name, event) {
+            this.parent.onBlur?.(this.name ? `${this.name}.${name}` : name, event);
+
+            if (this.modelValue) {
+                let schema = clone(this.modelValue);
+
+                schema = setValuesAlongPath(schema, name, { untouched: false, touched: true });
+
+                if (this.shouldValidate(name, 'blur')) {
+                    schema = validate(schema);
+                }
+
+                this.$emit('update:modelValue', schema);
+            }
         },
+        onInput(name, value) {
+            this.parent.onInput?.(this.name ? `${this.name}.${name}` : name, value);
 
-        /**
-         * Add required schema event listeners for one of the form's child inputs
-         *
-         * @param formControl
-         */
-        add(formControl) {
-            formControl.$on('input', this.onFormControlInput(formControl));
-            formControl.$on('blur', this.onFormControlBlur(formControl));
+            if (this.modelValue) {
+                let schema = clone(this.modelValue);
 
-            this.getFormControlValidationEvents(formControl).forEach((event) => {
-                formControl.$on(event, this.onFormControlValidate(formControl, event));
-            });
+                schema = setValueByPath(schema, name, 'value', value);
+                schema = setValuesAlongPath(schema, name, { pristine: false, dirty: true });
+
+                if (this.shouldValidate(name, 'input')) {
+                    schema = validate(schema);
+                }
+
+                this.$emit('update:modelValue', schema);
+            }
         },
-
-        /**
-         * Remove event listeners for one of the form's child inputs
-         *
-         * @param formControl
-         */
-        remove(formControl) {
-            formControl.$off('input', this.onFormControlInput(formControl));
-            formControl.$off('blur', this.onFormControlBlur(formControl));
-
-            this.getFormControlValidationEvents(formControl).forEach((event) => {
-                formControl.$off(event, this.onFormControlValidate(formControl, event));
-            });
-
-            this.$emit('input', this.value);
-        },
-
-        /**
-         * Handler for submit event
-         */
-        emitSubmit (event) {
+        onSubmit (event) {
             event.preventDefault();
 
-            if (this.value) {
-                this.value[FormBuilder.keys.VALIDATE](this.validationOptions);
+            if (this.modelValue) {
+                let schema = clone(this.modelValue);
 
-                if (this.value[FormBuilder.keys.INVALID]) {
+                schema = validate(schema);
+
+                this.$emit('update:modelValue', schema);
+
+                if (schema.invalid) {
                     return;
                 }
             }
 
-            return this.$emit('submit', event);
+            this.$emit('submit', event);
+        },
+        shouldValidate(path, eventName) {
+            const targetSchema = getValueByPath(this.modelValue, path);
+            const events = this.$inkline.options.validateOn.concat(targetSchema.validateOn || []);
+
+            return events.includes(eventName);
         }
-    },
+    }
 };

@@ -1,29 +1,455 @@
-//
-// Toggle variables
-//
-$toggle-width-base: 40px !default;
-$toggle-width: size-map($toggle-width-base, $sizes, $size-multipliers) !default;
-$toggle-height-base: 20px !default;
-$toggle-height: size-map($toggle-height-base, $sizes, $size-multipliers) !default;
-$toggle-border-radius-base: $toggle-height-base !default;
-$toggle-border-radius: size-map($toggle-border-radius-base, $sizes, $size-multipliers) !default;
-$toggle-transition-duration: $transition-duration !default;
+////
+/// Variables
+////
 
-$toggle-indicator-size-base: 16px !default;
-$toggle-indicator-size: size-map($toggle-indicator-size-base, $sizes, $size-multipliers) !default;
-$toggle-indicator-border-radius-base: $toggle-indicator-size-base !default;
-$toggle-indicator-border-radius: size-map($toggle-indicator-border-radius-base, $sizes, $size-multipliers) !default;
+/// The font size of the toggle component label
+/// @name font-size
+/// @type size
+$toggle-font-size: font-size() !default;
 
-//
-// Themes
-//
-$toggle-color-for-light-variant: $color-for-light-variant !default;
-$toggle-color-for-dark-variant: $color-for-dark-variant !default;
+/// The right margin of the toggle component indicator
+/// @name indicator-margin-right
+$toggle-indicator-margin-right: spacer('1/2') !default;
 
-$toggle-variant-light: toggle-variant($color-gray-40) !default;
-$toggle-variant-dark: toggle-variant($color-dark) !default;
+/// The width of the toggle component indicator
+/// @name indicator-width
+/// @type size
+$toggle-indicator-width: 40px !default;
 
-$toggle-variants: (
-    light: $toggle-variant-light,
-    dark: $toggle-variant-dark
+/// The height of the toggle component indicator
+/// @name indicator-height
+/// @type size
+$toggle-indicator-height: 20px !default;
+
+/// The border radius of the toggle component indicator
+/// @name indicator-border-radius
+/// @type size
+$toggle-indicator-border-radius: 20px !default;
+
+/// The width of the toggle component indicator icon
+/// @name indicator-icon-width
+/// @type size
+$toggle-indicator-icon-width: 16px !default;
+
+/// The height of the toggle component indicator icon
+/// @name indicator-icon-height
+/// @type size
+$toggle-indicator-icon-height: 16px !default;
+
+/// The border radius of the toggle component indicator icon
+/// @name indicator-icon-border-radius
+/// @type size
+$toggle-indicator-icon-border-radius: 50% !default;
+
+/// The transition duration of the toggle component
+/// @name transition-duration
+$toggle-transition-duration: var(--transition-duration) !default;
+
+////
+/// Sizes
+////
+
+////
+/// Small size
+////
+
+/// The font size of the toggle component label
+/// @name font-size
+/// @group sm
+/// @type size
+$toggle-size-variant-sm-font-size: calc(var(--toggle-font-size) * #{size-multiplier('sm')}) !default;
+
+/// The width of the toggle component indicator
+/// @name indicator-width
+/// @group sm
+/// @type size
+$toggle-size-variant-sm-indicator-width: calc(var(--toggle-indicator-width) * #{size-multiplier('sm')}) !default;
+
+/// The height of the toggle component indicator
+/// @name indicator-height
+/// @group sm
+/// @type size
+$toggle-size-variant-sm-indicator-height: calc(var(--toggle-indicator-height) * #{size-multiplier('sm')}) !default;
+
+/// The border radius of the toggle component indicator
+/// @name indicator-border-radius
+/// @group sm
+/// @type size
+$toggle-size-variant-sm-indicator-border-radius: calc(var(--toggle-indicator-border-radius) * #{size-multiplier('sm')}) !default;
+
+/// The width of the toggle component indicator icon
+/// @name indicator-icon-width
+/// @group sm
+/// @type size
+$toggle-size-variant-sm-indicator-icon-width: calc(var(--toggle-indicator-icon-width) * #{size-multiplier('sm')}) !default;
+
+/// The height of the toggle component indicator icon
+/// @name indicator-icon-height
+/// @group sm
+/// @type size
+$toggle-size-variant-sm-indicator-icon-height: calc(var(--toggle-indicator-icon-height) * #{size-multiplier('sm')}) !default;
+
+/// The border radius of the toggle component indicator icon
+/// @name indicator-icon-border-radius
+/// @group sm
+/// @type size
+$toggle-size-variant-sm-indicator-icon-border-radius: calc(var(--toggle-indicator-icon-border-radius) * #{size-multiplier('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
+$toggle-size-variant-sm: (
+    'font-size': $toggle-size-variant-sm-font-size,
+    'indicator-width': $toggle-size-variant-sm-indicator-width,
+    'indicator-height': $toggle-size-variant-sm-indicator-height,
+    'indicator-border-radius': $toggle-size-variant-sm-indicator-border-radius,
+    'indicator-icon-width': $toggle-size-variant-sm-indicator-icon-width,
+    'indicator-icon-height': $toggle-size-variant-sm-indicator-icon-height,
+    'indicator-icon-border-radius': $toggle-size-variant-sm-indicator-icon-border-radius
+) !default;
+
+////
+/// Medium size
+////
+
+/// The font size of the toggle component label
+/// @name font-size
+/// @group md
+/// @type size
+$toggle-size-variant-md-font-size: calc(var(--toggle-font-size) * #{size-multiplier('md')}) !default;
+
+/// The width of the toggle component indicator
+/// @name indicator-width
+/// @group md
+/// @type size
+$toggle-size-variant-md-indicator-width: calc(var(--toggle-indicator-width) * #{size-multiplier('md')}) !default;
+
+/// The height of the toggle component indicator
+/// @name indicator-height
+/// @group md
+/// @type size
+$toggle-size-variant-md-indicator-height: calc(var(--toggle-indicator-height) * #{size-multiplier('md')}) !default;
+
+/// The border radius of the toggle component indicator
+/// @name indicator-border-radius
+/// @group md
+/// @type size
+$toggle-size-variant-md-indicator-border-radius: calc(var(--toggle-indicator-border-radius) * #{size-multiplier('md')}) !default;
+
+/// The width of the toggle component indicator icon
+/// @name indicator-icon-width
+/// @group md
+/// @type size
+$toggle-size-variant-md-indicator-icon-width: calc(var(--toggle-indicator-icon-width) * #{size-multiplier('md')}) !default;
+
+/// The height of the toggle component indicator icon
+/// @name indicator-icon-height
+/// @group md
+/// @type size
+$toggle-size-variant-md-indicator-icon-height: calc(var(--toggle-indicator-icon-height) * #{size-multiplier('md')}) !default;
+
+/// The border radius of the toggle component indicator icon
+/// @name indicator-icon-border-radius
+/// @group md
+/// @type size
+$toggle-size-variant-md-indicator-icon-border-radius: calc(var(--toggle-indicator-icon-border-radius) * #{size-multiplier('md')}) !default;
+
+/// Map for md size
+/// @group md
+$toggle-size-variant-md: (
+    'font-size': $toggle-size-variant-md-font-size,
+    'indicator-width': $toggle-size-variant-md-indicator-width,
+    'indicator-height': $toggle-size-variant-md-indicator-height,
+    'indicator-border-radius': $toggle-size-variant-md-indicator-border-radius,
+    'indicator-icon-width': $toggle-size-variant-md-indicator-icon-width,
+    'indicator-icon-height': $toggle-size-variant-md-indicator-icon-height,
+    'indicator-icon-border-radius': $toggle-size-variant-md-indicator-icon-border-radius
+) !default;
+
+////
+/// Large size
+////
+
+/// The font size of the toggle component label
+/// @name font-size
+/// @group lg
+/// @type size
+$toggle-size-variant-lg-font-size: calc(var(--toggle-font-size) * #{size-multiplier('lg')}) !default;
+
+/// The width of the toggle component indicator
+/// @name indicator-width
+/// @group lg
+/// @type size
+$toggle-size-variant-lg-indicator-width: calc(var(--toggle-indicator-width) * #{size-multiplier('lg')}) !default;
+
+/// The height of the toggle component indicator
+/// @name indicator-height
+/// @group lg
+/// @type size
+$toggle-size-variant-lg-indicator-height: calc(var(--toggle-indicator-height) * #{size-multiplier('lg')}) !default;
+
+/// The border radius of the toggle component indicator
+/// @name indicator-border-radius
+/// @group lg
+/// @type size
+$toggle-size-variant-lg-indicator-border-radius: calc(var(--toggle-indicator-border-radius) * #{size-multiplier('lg')}) !default;
+
+/// The width of the toggle component indicator icon
+/// @name indicator-icon-width
+/// @group lg
+/// @type size
+$toggle-size-variant-lg-indicator-icon-width: calc(var(--toggle-indicator-icon-width) * #{size-multiplier('lg')}) !default;
+
+/// The height of the toggle component indicator icon
+/// @name indicator-icon-height
+/// @group lg
+/// @type size
+$toggle-size-variant-lg-indicator-icon-height: calc(var(--toggle-indicator-icon-height) * #{size-multiplier('lg')}) !default;
+
+/// The border radius of the toggle component indicator icon
+/// @name indicator-icon-border-radius
+/// @group lg
+/// @type size
+$toggle-size-variant-lg-indicator-icon-border-radius: calc(var(--toggle-indicator-icon-border-radius) * #{size-multiplier('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
+$toggle-size-variant-lg: (
+    'font-size': $toggle-size-variant-lg-font-size,
+    'indicator-width': $toggle-size-variant-lg-indicator-width,
+    'indicator-height': $toggle-size-variant-lg-indicator-height,
+    'indicator-border-radius': $toggle-size-variant-lg-indicator-border-radius,
+    'indicator-icon-width': $toggle-size-variant-lg-indicator-icon-width,
+    'indicator-icon-height': $toggle-size-variant-lg-indicator-icon-height,
+    'indicator-icon-border-radius': $toggle-size-variant-lg-indicator-icon-border-radius
+) !default;
+
+/// Sizes group map
+$toggle-size-variants: (
+    'sm': $toggle-size-variant-sm,
+    'md': $toggle-size-variant-md,
+    'lg': $toggle-size-variant-lg
+) !default;
+
+////
+/// Colors
+////
+
+////
+/// Light color
+////
+
+/// The label color of the toggle component
+/// @name color
+/// @group light
+/// @type color
+$toggle-color-variant-light-color: contrast-color($color-light) !default;
+
+/// The label color of the toggle component when disabled
+/// @name color-disabled
+/// @group light
+/// @type color
+$toggle-color-variant-light-color-disabled: color('light-70') !default;
+
+/// The background of the toggle component indicator
+/// @name indicator-background
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-background: color('light') !default;
+
+/// The background of the toggle component indicator when checked
+/// @name indicator-background-checked
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-background-checked: color('primary') !default;
+
+/// The background of the toggle component indicator when disabled
+/// @name indicator-background-disabled
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-background-disabled: color('light-40') !default;
+
+/// The background of the toggle component indicator when checked and disabled
+/// @name indicator-background-checked-disabled
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-background-checked-disabled: color('primary-25') !default;
+
+/// The border-color of the toggle component indicator
+/// @name indicator-border-color
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-border-color: color('light-55') !default;
+
+/// The border-color of the toggle component indicator when checked
+/// @name indicator-border-color-checked
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-border-color-checked: color('primary-55') !default;
+
+/// The border-color of the toggle component indicator when disabled
+/// @name indicator-border-color-disabled
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-border-color-disabled: color('light') !default;
+
+/// The border-color of the toggle component indicator when checked and disabled
+/// @name indicator-border-color-checked-disabled
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-border-color-checked-disabled: color('primary-30') !default;
+
+/// The background of the toggle component indicator icon
+/// @name indicator-icon-background
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-icon-background: color('white') !default;
+
+/// The background of the toggle component indicator icon when checked
+/// @name indicator-icon-background-checked
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-icon-background-checked: color('white') !default;
+
+/// The background of the toggle component indicator icon when disabled
+/// @name indicator-icon-background-disabled
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-icon-background-disabled: color('gray-05') !default;
+
+/// The background of the toggle component indicator icon when checked and disabled
+/// @name indicator-icon-background-checked-disabled
+/// @group light
+/// @type color
+$toggle-color-variant-light-indicator-icon-background-checked-disabled: color('gray-10') !default;
+
+/// Map for light color
+/// @group light
+$toggle-color-variant-light: (
+    'color': $toggle-color-variant-light-color,
+    'color-disabled': $toggle-color-variant-light-color-disabled,
+    'indicator-background': $toggle-color-variant-light-indicator-background,
+    'indicator-background-checked': $toggle-color-variant-light-indicator-background-checked,
+    'indicator-background-disabled': $toggle-color-variant-light-indicator-background-disabled,
+    'indicator-background-checked-disabled': $toggle-color-variant-light-indicator-background-checked-disabled,
+    'indicator-border-color': $toggle-color-variant-light-indicator-border-color,
+    'indicator-border-color-checked': $toggle-color-variant-light-indicator-border-color-checked,
+    'indicator-border-color-disabled': $toggle-color-variant-light-indicator-border-color-disabled,
+    'indicator-border-color-checked-disabled': $toggle-color-variant-light-indicator-border-color-checked-disabled,
+    'indicator-icon-background': $toggle-color-variant-light-indicator-icon-background,
+    'indicator-icon-background-checked': $toggle-color-variant-light-indicator-icon-background-checked,
+    'indicator-icon-background-disabled': $toggle-color-variant-light-indicator-icon-background-disabled,
+    'indicator-icon-background-checked-disabled': $toggle-color-variant-light-indicator-icon-background-checked-disabled
+) !default;
+
+////
+/// Dark color
+////
+
+/// The label color of the toggle component
+/// @name color
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-color: contrast-color($color-dark) !default;
+
+/// The label color of the toggle component when disabled
+/// @name color-disabled
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-color-disabled: color('dark-30') !default;
+
+/// The background of the toggle component indicator
+/// @name indicator-background
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-background: color('dark') !default;
+
+/// The background of the toggle component indicator when checked
+/// @name indicator-background-checked
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-background-checked: color('primary') !default;
+
+/// The background of the toggle component indicator when disabled
+/// @name indicator-background-disabled
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-background-disabled: color('dark-40') !default;
+
+/// The background of the toggle component indicator when checked and disabled
+/// @name indicator-background-checked-disabled
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-background-checked-disabled: color('primary-75') !default;
+
+/// The border-color of the toggle component indicator
+/// @name indicator-border-color
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-border-color: color('dark') !default;
+
+/// The border-color of the toggle component indicator when checked
+/// @name indicator-border-color-checked
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-border-color-checked: color('primary-55') !default;
+
+/// The border-color of the toggle component indicator when disabled
+/// @name indicator-border-color-disabled
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-border-color-disabled: color('dark') !default;
+
+/// The border-color of the toggle component indicator when checked and disabled
+/// @name indicator-border-color-checked-disabled
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-border-color-checked-disabled: color('primary-70') !default;
+
+/// The background of the toggle component indicator icon
+/// @name indicator-icon-background
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-icon-background: color('white') !default;
+
+/// The background of the toggle component indicator icon when checked
+/// @name indicator-icon-background-checked
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-icon-background-checked: color('white') !default;
+
+/// The background of the toggle component indicator icon when disabled
+/// @name indicator-icon-background-disabled
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-icon-background-disabled: color('gray-25') !default;
+
+/// The background of the toggle component indicator icon when checked and disabled
+/// @name indicator-icon-background-checked-disabled
+/// @group dark
+/// @type color
+$toggle-color-variant-dark-indicator-icon-background-checked-disabled: color('dark-25') !default;
+
+/// Map for dark color
+/// @group dark
+$toggle-color-variant-dark: (
+    'color': $toggle-color-variant-dark-color,
+    'color-disabled': $toggle-color-variant-dark-color-disabled,
+    'indicator-background': $toggle-color-variant-dark-indicator-background,
+    'indicator-background-checked': $toggle-color-variant-dark-indicator-background-checked,
+    'indicator-background-disabled': $toggle-color-variant-dark-indicator-background-disabled,
+    'indicator-background-checked-disabled': $toggle-color-variant-dark-indicator-background-checked-disabled,
+    'indicator-border-color': $toggle-color-variant-dark-indicator-border-color,
+    'indicator-border-color-checked': $toggle-color-variant-dark-indicator-border-color-checked,
+    'indicator-border-color-disabled': $toggle-color-variant-dark-indicator-border-color-disabled,
+    'indicator-border-color-checked-disabled': $toggle-color-variant-dark-indicator-border-color-checked-disabled,
+    'indicator-icon-background': $toggle-color-variant-dark-indicator-icon-background,
+    'indicator-icon-background-checked': $toggle-color-variant-dark-indicator-icon-background-checked,
+    'indicator-icon-background-disabled': $toggle-color-variant-dark-indicator-icon-background-disabled,
+    'indicator-icon-background-checked-disabled': $toggle-color-variant-dark-indicator-icon-background-checked-disabled
+) !default;
+
+/// Colors group map
+$toggle-color-variants: (
+    'light': $toggle-color-variant-light,
+    'dark': $toggle-color-variant-dark
 ) !default;

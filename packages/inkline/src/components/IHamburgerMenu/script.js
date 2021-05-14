@@ -1,30 +1,57 @@
 import {
-    VariantPropertyMixin,
-    EmitClickMethodMixin,
-    ClassesProviderMixin,
+    colorVariantClass,
 } from '@inkline/inkline/src/mixins';
 
 export default {
     name: 'IHamburgerMenu',
-    mixins: [
-        ClassesProviderMixin,
-        EmitClickMethodMixin,
-        VariantPropertyMixin,
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
     ],
     props: {
-        active: {
-            type: Boolean,
-            default: false
-        },
+        /**
+         * @description The animation of the hamburger menu
+         * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minus
+         * @default close
+         */
         animation: {
             type: String,
             default: 'close'
+        },
+        /**
+         * @description The color variant of the hamburger menu
+         * @type light | dark
+         * @default light
+         */
+        color: {
+            type: String,
+            default: ''
+        },
+        /**
+         * @description Used to set the hamburger menu as opened or closed
+         * @type Boolean
+         * @default false
+         */
+        modelValue: {
+            type: Boolean,
+            default: false
+        },
+    },
+    computed: {
+        classes() {
+            return {
+                ...colorVariantClass(this),
+                '-active': this.modelValue,
+                [`-${this.animation}`]: true
+            };
         }
     },
-    created() {
-        this.classesProvider.add(() => ({
-            '-active': this.active,
-            [`-${this.animation}`]: true
-        }));
+    methods: {
+        onClick() {
+            this.$emit('update:modelValue', !this.modelValue);
+        }
     }
 };

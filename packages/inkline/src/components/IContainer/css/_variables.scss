@@ -1,21 +1,92 @@
-//
-// Variables
-//
+////
+/// Sizes
+////
 
-$container-width-xs: 100% !default;
-$container-width-sm: breakpoints('sm') - gutter('sm') !default;
-$container-width-md: breakpoints('md') - gutter('md') !default;
-$container-width-lg: breakpoints('lg') - gutter('lg') !default;
-$container-width-xl: breakpoints('xl') - gutter('xl') !default;
+////
+/// Extra-small size
+////
 
-$container-width: (
-    'xs': $container-width-xs,
-    'sm': $container-width-sm,
-    'md': $container-width-md,
-    'lg': $container-width-lg,
-    'xl': $container-width-xl,
+/// The width of the container component
+/// @name width
+/// @group xs
+/// @type size
+$container-size-variant-xs-width: 100% !default;
+
+/// Map for xs size
+/// @group xs
+$container-size-variant-xs: (
+    'width': $container-size-variant-xs-width
 ) !default;
 
-@function container-width($key) {
-    @return map_get($container-width, $key);
-}
+////
+/// Small size
+////
+
+/// The width of the container component
+/// @name width
+/// @group sm
+/// @type size
+$container-size-variant-sm-width: calc(#{breakpoint('sm')} - #{gutter('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
+$container-size-variant-sm: (
+    'width': $container-size-variant-sm-width
+) !default;
+
+////
+/// Medium size
+////
+
+/// The width of the container component
+/// @name width
+/// @group md
+/// @type size
+$container-size-variant-md-width: calc(#{breakpoint('md')} - #{gutter('md')}) !default;
+
+/// Map for md size
+/// @group md
+$container-size-variant-md: (
+    'width': $container-size-variant-md-width
+) !default;
+
+////
+/// Large size
+////
+
+/// The width of the container component
+/// @name width
+/// @group lg
+/// @type size
+$container-size-variant-lg-width: calc(#{breakpoint('lg')} - #{gutter('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
+$container-size-variant-lg: (
+    'width': $container-size-variant-lg-width
+) !default;
+
+////
+/// Extra-large size
+////
+
+/// The width of the container component
+/// @name width
+/// @group xl
+/// @type size
+$container-size-variant-xl-width: calc(#{breakpoint('xl')} - #{gutter('xl')}) !default;
+
+/// Map for xl size
+/// @group xl
+$container-size-variant-xl: (
+    'width': $container-size-variant-xl-width
+) !default;
+
+/// Sizes group map
+$container-size-variants: (
+    'xs': $container-size-variant-xs,
+    'sm': $container-size-variant-sm,
+    'md': $container-size-variant-md,
+    'lg': $container-size-variant-lg,
+    'xl': $container-size-variant-xl
+) !default;
