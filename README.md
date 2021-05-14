@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://inkline.io/">
-        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/logo.png" alt="Inkline logo" width=72 height=72>
+        <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/logo.png" alt="Inkline logo" width=72 height=72>
     </a>
 </p>
 
@@ -12,7 +12,7 @@
     <br/>
     <br/>
     <a href="https://inkline.io">
-        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/homepage.png" width="1009" alt="Vue.js UI/UX Library - Inkline" />
+        <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/homepage.png" width="1009" alt="Vue.js UI/UX Library - Inkline" />
     </a>
     <br/>
     <br/>
