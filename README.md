@@ -59,19 +59,19 @@
 Read the [Getting Started](https://inkline.io/docs/introduction/getting-started/) page and find information on framework contents, templates, examples, and more.
 
 <a href="https://inkline.io/docs/introduction/installation/vue-cli">
-    <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/vue-cli.png" width="510" alt="Vue CLI Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/vue-cli.png" width="510" alt="Vue CLI Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/nuxt">
-    <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/nuxt.png" width="510" alt="Nuxt.js Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/nuxt.png" width="510" alt="Nuxt.js Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/custom">
-    <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/custom.png" width="510" alt="Custom Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/custom.png" width="510" alt="Custom Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/cdn">
-    <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/cdn.png" width="510" alt="CDN Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/cdn.png" width="510" alt="CDN Installation - Inkline" />
 </a>
 
 ## Bugs and feature requests
