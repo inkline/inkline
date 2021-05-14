@@ -5,11 +5,10 @@ import { Inkline } from '../plugin';
 import * as components from '../components';
 import '@inkline/inkline/src/inkline.scss';
 import '@inkline/inkline/src/playground/main.scss';
-import * as icons from '@inkline/icons/packs/inkline';
-
 import App from '@inkline/inkline/src/playground/App.vue';
 import Example from '@inkline/inkline/src/playground/components/Example.vue';
 import { useServer } from "@inkline/inkline/src/playground/server";
+import * as icons from '@inkline/icons/packs/inkline';
 
 const routes = [
     { name: 'index', path: '/', component: {}, meta: { path: '' } },

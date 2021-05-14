@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { iconPacks } from '@inkline/icons/config';
+import { iconPacks } from '@inkline/icons/config.js';
 
 export default {
     data() {

@@ -2,7 +2,7 @@ import { reactive, watch } from 'vue'
 import { addClass, removeClass } from "@inkline/inkline/src/helpers";
 import { initialize as initializeForm } from "@inkline/inkline/src/validation";
 import { setLocale } from '@inkline/inkline/src/i18n';
-import { IconController } from '@inkline/icons/controllers';
+import { InklineIcons } from '@inkline/icons';
 
 const defaultOptions = {
     colorMode: 'system',
@@ -35,8 +35,11 @@ export const Inkline = {
         /**
          * Register Inkline plugins
          */
-        Object.keys(options.icons).forEach((iconName) => {
-            IconController.add(iconName, options.icons[iconName]);
+
+        InklineIcons.add(options.icons);
+
+        app.use(InklineIcons, {
+            registerComponent: false
         });
 
         /**
