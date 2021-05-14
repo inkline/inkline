@@ -56,7 +56,11 @@
 - [Copyright and license](#copyright-and-license)
 
 ## Installation
-Read the [Getting Started](https://inkline.io/docs/introduction/getting-started/) page and find information on framework contents, templates, examples, and more.
+Here are some basic installation instructions for the beta version of Inkline (compatible with Vue 3). Keep in mind that they are still subject to change.
+
+~~~
+npm install @inkline/inkline@next
+~~~
 
 ~~~js
 import '@inkline/inkline/src/inkline.scss';
