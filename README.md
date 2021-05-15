@@ -47,6 +47,7 @@
 
 ## Table of contents
 - [Installation](#installation)
+- [Join the beta](#join-the-beta)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Contributing](#contributing)
 - [Community](#community)
@@ -56,7 +57,27 @@
 - [Copyright and license](#copyright-and-license)
 
 ## Installation
-Here are some basic installation instructions for the beta version of Inkline (compatible with Vue 3). Keep in mind that they are still subject to change.
+
+Read the [Getting Started](https://inkline.io/docs/introduction/getting-started/) page and find information on framework contents, templates, examples, and more.
+
+<a href="https://inkline.io/docs/introduction/installation/vue-cli">
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/vue-cli.png" width="510" alt="Vue CLI Installation - Inkline" />
+</a>
+
+<a href="https://inkline.io/docs/introduction/installation/nuxt">
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/nuxt.png" width="510" alt="Nuxt.js Installation - Inkline" />
+</a>
+
+<a href="https://inkline.io/docs/introduction/installation/custom">
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/custom.png" width="510" alt="Custom Installation - Inkline" />
+</a>
+
+<a href="https://inkline.io/docs/introduction/installation/cdn">
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/cdn.png" width="510" alt="CDN Installation - Inkline" />
+</a>
+
+## Join the beta
+The beta version for Inkline 3 (compatible with Vue 3) is finally out! Here are some basic installation instructions. Keep in mind that the beta is still subject to change.
 
 ~~~
 npm install @inkline/inkline@next
