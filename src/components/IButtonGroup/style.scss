@@ -1,11 +1,10 @@
 @import '../../css/variables';
 @import '../../css/mixins';
-@import '../IButton/css/_variables';
-@import 'css/_sizes';
 
 /**
  * Button Group
  */
+
 .button-group {
     position: relative;
     display: inline-flex;
@@ -17,12 +16,21 @@
         flex: 0 1 auto;
         z-index: 0;
         margin-right: 0;
+        font-size: var(----font-size);
+        padding: var(----padding);
 
         &:hover,
         &:focus,
         &:active,
         &.-active {
             z-index: 1;
+        }
+
+        &.-circle {
+            border-radius: 100%;
+            width: var(----circle--size);
+            height: var(----circle--size);
+            padding: 0;
         }
     }
 
@@ -45,15 +53,20 @@
         border-radius: 0;
     }
 
-    @include button-group-size-variant('md');
-    @each $size-variant-key, $button-size-variant-value in $button-size-variants {
-        &.-#{$size-variant-key} {
-            @include button-group-size-variant($size-variant-key);
-        }
-    }
-
     // Reset rounded corners
     &:not(.-vertical) {
+        > .button:last-child,
+        > [class$="-wrapper"]:last-child > * > .button:last-child {
+            border-top-right-radius: var(----border-top-right-radius);
+            border-bottom-right-radius: var(----border-bottom-right-radius);
+        }
+
+        > .button:first-child,
+        > [class$="-wrapper"]:first-child > * > .button:first-child {
+            border-top-left-radius: var(----border-top-left-radius);
+            border-bottom-left-radius: var(----border-bottom-left-radius);
+        }
+
         > .button:not(:last-child),
         > .button-group:not(:last-child) .button,
         > [class$="-wrapper"]:not(:last-child) > * > .button,
@@ -81,6 +94,18 @@
         .button-group,
         [class$="-wrapper"] {
             width: 100%;
+        }
+
+        > .button:last-child,
+        > [class$="-wrapper"]:last-child > * > .button:last-child {
+            border-bottom-left-radius: var(----border-bottom-left-radius);
+            border-bottom-right-radius: var(----border-bottom-right-radius);
+        }
+
+        > .button:first-child,
+        > [class$="-wrapper"]:first-child > * > .button:first-child {
+            border-top-left-radius: var(----border-top-left-radius);
+            border-top-right-radius: var(----border-top-right-radius);
         }
 
         > .button:not(:last-child),
