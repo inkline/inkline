@@ -1,0 +1,200 @@
+/**
+ * Size variants
+ */
+
+.button {
+    /// Variables for the sm color variant
+    /// @name sm
+    /// @type group
+    @include variant('sm') {
+        /// The font size of the button component, for the sm size variant
+        /// @name font-size
+        /// @type size
+        ///
+        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
+
+        /// The border top left radius of the button component, for the sm size variant
+        /// @name border-top-left-radius
+        /// @type size
+        ///
+        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')});
+
+        /// The border top right radius of the button component, for the sm size variant
+        /// @name border-top-right-radius
+        /// @type size
+        ///
+        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')});
+
+        /// The border bottom right radius of the button component, for the sm size variant
+        /// @name border-bottom-right-radius
+        /// @type size
+        ///
+        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')});
+
+        /// The border bottom left radius of the button component, for the sm size variant
+        /// @name border-bottom-left-radius
+        /// @type size
+        ///
+        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')});
+
+        /// The padding top of the button component, for the sm size variant
+        /// @name padding-top
+        /// @type size
+        ///
+        ----padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('sm')});
+
+        /// The padding right of the button component, for the sm size variant
+        /// @name padding-right
+        /// @type size
+        ///
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
+
+        /// The padding bottom of the button component, for the sm size variant
+        /// @name padding-bottom
+        /// @type size
+        ///
+        ----padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('sm')});
+
+        /// The padding left of the button component, for the sm size variant
+        /// @name padding-left
+        /// @type size
+        ///
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
+
+        /// The size of the button component circle variant, for the sm size variant
+        /// @name circle--size
+        /// @type size
+        ///
+        ----circle--size: calc(#{34px} * #{size-multiplier('sm')});
+    }
+
+    /// Variables for the md color variant
+    /// @name md
+    /// @type group
+    @include variant('md') {
+        /// The font size of the button component, for the md size variant
+        /// @name font-size
+        /// @type size
+        ///
+        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
+
+        /// The border top left radius of the button component, for the md size variant
+        /// @name border-top-left-radius
+        /// @type size
+        ///
+        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')});
+
+        /// The border top right radius of the button component, for the md size variant
+        /// @name border-top-right-radius
+        /// @type size
+        ///
+        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')});
+
+        /// The border bottom right radius of the button component, for the md size variant
+        /// @name border-bottom-right-radius
+        /// @type size
+        ///
+        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')});
+
+        /// The border bottom left radius of the button component, for the md size variant
+        /// @name border-bottom-left-radius
+        /// @type size
+        ///
+        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')});
+
+        /// The padding top of the button component, for the md size variant
+        /// @name padding-top
+        /// @type size
+        ///
+        ----padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('md')});
+
+        /// The padding right of the button component, for the md size variant
+        /// @name padding-right
+        /// @type size
+        ///
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
+
+        /// The padding bottom of the button component, for the md size variant
+        /// @name padding-bottom
+        /// @type size
+        ///
+        ----padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('md')});
+
+        /// The padding left of the button component, for the md size variant
+        /// @name padding-left
+        /// @type size
+        ///
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
+
+        /// The size of the button component circle variant, for the md size variant
+        /// @name circle--size
+        /// @type size
+        ///
+        ----circle--size: calc(#{42px} * #{size-multiplier('md')});
+    }
+
+    /// Variables for the lg color variant
+    /// @name lg
+    /// @type group
+    @include variant('lg') {
+        /// The font size of the button component, for the lg size variant
+        /// @name font-size
+        /// @type size
+        ///
+        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
+
+        /// The border top left radius of the button component, for the lg size variant
+        /// @name border-top-left-radius
+        /// @type size
+        ///
+        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')});
+
+        /// The border top right radius of the button component, for the lg size variant
+        /// @name border-top-right-radius
+        /// @type size
+        ///
+        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')});
+
+        /// The border bottom right radius of the button component, for the lg size variant
+        /// @name border-bottom-right-radius
+        /// @type size
+        ///
+        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')});
+
+        /// The border bottom left radius of the button component, for the lg size variant
+        /// @name border-bottom-left-radius
+        /// @type size
+        ///
+        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')});
+
+        /// The padding top of the button component, for the lg size variant
+        /// @name padding-top
+        /// @type size
+        ///
+        ----padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('lg')});
+
+        /// The padding right of the button component, for the lg size variant
+        /// @name padding-right
+        /// @type size
+        ///
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
+
+        /// The padding bottom of the button component, for the lg size variant
+        /// @name padding-bottom
+        /// @type size
+        ///
+        ----padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('lg')});
+
+        /// The padding left of the button component, for the lg size variant
+        /// @name padding-left
+        /// @type size
+        ///
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
+
+        /// The size of the button component circle variant, for the lg size variant
+        /// @name circle--size
+        /// @type size
+        ///
+        ----circle--size: calc(#{49px} * #{size-multiplier('lg')});
+    }
+}

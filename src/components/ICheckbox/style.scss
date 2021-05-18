@@ -2,7 +2,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/colors';
 @import 'css/sizes';
 
@@ -13,7 +12,7 @@
     white-space: nowrap;
     outline: none;
     cursor: pointer;
-    margin-right: var(--checkbox-margin-right);
+    margin-right: var(--margin-right);
 
     &:last-child {
         margin-right: 0;
@@ -42,11 +41,34 @@
 
         &:checked ~ .checkbox-label,
         &[type="checkbox"]:indeterminate ~ .checkbox-label {
+            &::before {
+                border-color: var(----border-color--checked);
+                background-color: var(----background--checked);
+            }
+
             &::after {
                 content: '';
                 mask-position: center center;
                 mask-repeat: no-repeat;
                 transform: scale(1);
+            }
+        }
+
+        &:disabled,
+        &[readonly] {
+            ~ .checkbox-label {
+                color: var(----label--color--disabled);
+            }
+
+            &:checked ~ .checkbox-label {
+                &::before {
+                    border-color: var(----border-color--checked-disabled);
+                    background-color: var(----background--checked-disabled);
+                }
+
+                &::after {
+                    background-color: var(----color--disabled);
+                }
             }
         }
 
@@ -68,9 +90,13 @@
         transition-property: color;
         transition-duration: var(--transition-duration);
         transition-timing-function: var(--transition-easing);
+        color: var(----label--color);
+        font-size: var(----label--font-size);
 
         &::before,
         &::after {
+            width: var(----size);
+            height: var(----size);
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -80,12 +106,16 @@
         &::before {
             content: "";
             user-select: none;
-            border-width: var(--checkbox-indicator-border-width);
-            border-style: solid;
-            margin-right: var(--checkbox-indicator-margin-right);
+            border-width: var(----border-width);
+            border-style: var(----border-style);
+            border-color: var(----border-color);
+            border-radius: var(----border-radius);
+            box-shadow: var(----box-shadow);
+            margin-right: var(----margin-right);
             transition-property: background-color, border-color;
             transition-duration: var(--transition-duration);
             transition-timing-function: var(--transition-easing);
+            background-color: var(----background);
         }
 
         &::after {
@@ -99,6 +129,9 @@
             transition-duration: var(--transition-duration);
             transition-timing-function: var(--transition-easing);
             transform: scale(0);
+            background-color: var(----color);
+            margin-top: calc(var(----size) / -2);
+            mask-size: var(----checkmark--size) var(----checkmark--size);
         }
     }
 
@@ -110,7 +143,7 @@
             opacity: 1;
             height: auto;
             width: auto;
-            margin-right: var(--checkbox-indicator-margin-right);
+            margin-right: var(----margin-right);
         }
 
         .checkbox-label {
@@ -118,24 +151,6 @@
             &::before {
                 display: none;
             }
-        }
-    }
-
-    @include checkbox-size-variant('md');
-    @each $size-variant-key, $checkbox-size-variant-value in $checkbox-size-variants {
-        .form.-#{$size-variant-key} &,
-        .form-group.-#{$size-variant-key} &,
-        &.-#{$size-variant-key} {
-            @include checkbox-size-variant($size-variant-key);
-        }
-    }
-
-    @include checkbox-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $checkbox-color-variants {
-        .form.-#{$color-variant-key} &,
-        .form-group.-#{$color-variant-key} &,
-        &.-#{$color-variant-key} {
-            @include checkbox-color-variant($color-variant-key);
         }
     }
 }

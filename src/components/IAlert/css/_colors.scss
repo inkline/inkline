@@ -1,0 +1,121 @@
+/**
+ * Color variants
+ */
+
+.alert {
+    /// Variables for the info color variant
+    /// @name info
+    /// @type group
+    @include variant('info') {
+        /// The background of the alert component, for the info color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('info')};
+
+        /// The border color of the alert component, for the info color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('info-60')};
+
+        /// The text color of the alert component, for the info color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-info)};
+
+        /// The code background of the alert component, for the info color variant
+        /// @name code--background
+        /// @type color
+        ///
+        ----code--background: #{color('info-60')};
+    }
+
+    /// Variables for the success color variant
+    /// @name success
+    /// @type group
+    @include variant('success') {
+        /// The background of the alert component, for the success color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('success')};
+
+        /// The border color of the alert component, for the success color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('success-60')};
+
+        /// The text color of the alert component, for the success color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-success)};
+
+        /// The code background of the alert component, for the success color variant
+        /// @name code--background
+        /// @type color
+        ///
+        ----code--background: #{color('success-60')};
+    }
+
+    /// Variables for the warning color variant
+    /// @name warning
+    /// @type group
+    @include variant('warning') {
+        /// The background of the alert component, for the warning color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('warning')};
+
+        /// The border color of the alert component, for the warning color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('warning-60')};
+
+        /// The text color of the alert component, for the warning color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-warning)};
+
+        /// The code background of the alert component, for the warning color variant
+        /// @name code--background
+        /// @type color
+        ///
+        ----code--background: #{color('warning-60')};
+    }
+
+    /// Variables for the danger color variant
+    /// @name danger
+    /// @type group
+    @include variant('danger') {
+        /// The background of the alert component, for the danger color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('danger')};
+
+        /// The border color of the alert component, for the danger color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('danger-60')};
+
+        /// The text color of the alert component, for the danger color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-danger)};
+
+        /// The code background of the alert component, for the danger color variant
+        /// @name code--background
+        /// @type color
+        ///
+        ----code--background: #{color('danger-60')};
+    }
+}

@@ -23,7 +23,7 @@ function capitalizeFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-glob(path.resolve(__dirname, '..', 'src', 'components', 'ICard', '**', 'manifest.js'), (error, files) => {
+glob(path.resolve(__dirname, '..', 'src', 'components', 'ICheckbox', '**', 'manifest.js'), (error, files) => {
     const selectorMixins = [];
 
     if (error) {
@@ -114,37 +114,46 @@ glob(path.resolve(__dirname, '..', 'src', 'components', 'ICard', '**', 'manifest
              * Output
              */
 
-            const output = `/**
+            const variablesOutput = `/**
  * Variables
  */
 
 ${manifest.css.selector} {
 ${baseVariables.join('\n\n')}
+}
+`;
 
-    /**
-     * Size variants
-     */
+            const sizesOutput = `/**
+ * Size variants
+ */
 
+${manifest.css.selector} {
 ${sizeVariables.map(({ variant, variables }) => `    /// Variables for the ${variant} color variant
     /// @name ${variant}
     /// @type group
     @include variant('${variant}') {
 ${variables.join('\n\n')}
     }`).join('\n\n')}
+}
+`;
 
-    /**
-     * Color variants
-     */
+            const colorsOutput = `/**
+ * Color variants
+ */
 
+${manifest.css.selector} {
 ${colorVariables.map(({ variant, variables }) => `    /// Variables for the ${variant} color variant
     /// @name ${variant}
     /// @type group
-    @include variant('${variant}') {
+    @include variant('${variant}'${ manifest.css.type && `, '${manifest.css.type}'`}) {
 ${variables.join('\n\n')}
-    }`).join('\n\n')}}
+    }`).join('\n\n')}
+}
 `;
 
-            fs.writeFileSync(path.join(dirname, 'css', '_variables.scss'), output);
+            fs.writeFileSync(path.join(dirname, 'css', '_variables.scss'), variablesOutput);
+            fs.writeFileSync(path.join(dirname, 'css', '_sizes.scss'), sizesOutput);
+            fs.writeFileSync(path.join(dirname, 'css', '_colors.scss'), colorsOutput);
         }
     });
 

@@ -1,8 +1,8 @@
 /// Component selector mixins
 ///
 
-@mixin i-card {
-    .card {
+@mixin i-checkbox {
+    .checkbox {
         @content;
     }
 }

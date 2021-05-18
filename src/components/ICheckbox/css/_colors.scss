@@ -1,59 +1,159 @@
-@mixin checkbox-color-variant($color-variant-key) {
-    $_color: var(--checkbox-color-variant-#{$color-variant-key}-color);
-    $_color-disabled: var(--checkbox-color-variant-#{$color-variant-key}-color-disabled);
-    $_indicator-background: var(--checkbox-color-variant-#{$color-variant-key}-indicator-background);
-    $_indicator-background-checked: var(--checkbox-color-variant-#{$color-variant-key}-indicator-background-checked);
-    $_indicator-background-disabled: var(--checkbox-color-variant-#{$color-variant-key}-indicator-background-disabled);
-    $_indicator-background-checked-disabled: var(--checkbox-color-variant-#{$color-variant-key}-indicator-background-checked-disabled);
-    $_indicator-border-color: var(--checkbox-color-variant-#{$color-variant-key}-indicator-border-color);
-    $_indicator-border-color-checked: var(--checkbox-color-variant-#{$color-variant-key}-indicator-border-color-checked);
-    $_indicator-border-color-disabled: var(--checkbox-color-variant-#{$color-variant-key}-indicator-border-color-disabled);
-    $_indicator-border-color-checked-disabled: var(--checkbox-color-variant-#{$color-variant-key}-indicator-border-color-checked-disabled);
-    $_indicator-icon-color: var(--checkbox-color-variant-#{$color-variant-key}-indicator-icon-color);
-    $_indicator-icon-color-disabled: var(--checkbox-color-variant-#{$color-variant-key}-indicator-icon-color-disabled);
+/**
+ * Color variants
+ */
 
-    .checkbox-label {
-        color: $_color;
+.checkbox {
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light', 'form') {
+        /// The background of the checkbox component indicator, for the light color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('white')};
 
-        &::before {
-            border-color: $_indicator-border-color;
-            background-color: $_indicator-background;
-        }
+        /// The background of the checkbox component indicator when checked, for the light color variant
+        /// @name background--checked
+        /// @type color
+        ///
+        ----background--checked: #{color('primary')};
 
-        &::after {
-            background-color: $_indicator-icon-color;
-        }
+        /// The background of the checkbox component indicator when disabled, for the light color variant
+        /// @name background--disabled
+        /// @type color
+        ///
+        ----background--disabled: #{color('light-25')};
+
+        /// The background of the checkbox component indicator when checked and disabled, for the light color variant
+        /// @name background--checked-disabled
+        /// @type color
+        ///
+        ----background--checked-disabled: #{color('primary-25')};
+
+        /// The border-color of the checkbox component indicator, for the light color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('light-55')};
+
+        /// The border-color of the checkbox component indicator when checked, for the light color variant
+        /// @name border-color--checked
+        /// @type color
+        ///
+        ----border-color--checked: #{color('primary-55')};
+
+        /// The border-color of the checkbox component indicator when disabled, for the light color variant
+        /// @name border-color--disabled
+        /// @type color
+        ///
+        ----border-color--disabled: #{color('light')};
+
+        /// The border-color of the checkbox component indicator when checked and disabled, for the light color variant
+        /// @name border-color--checked-disabled
+        /// @type color
+        ///
+        ----border-color--checked-disabled: #{color('primary-30')};
+
+        /// The color of the checkbox component indicator icon, for the light color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{color('white')};
+
+        /// The color of the checkbox component indicator icon when disabled, for the light color variant
+        /// @name color--disabled
+        /// @type color
+        ///
+        ----color--disabled: #{color('light-25')};
+
+        /// The label color of the checkbox component label, for the light color variant
+        /// @name label--color
+        /// @type color
+        ///
+        ----label--color: #{contrast-color($color-light)};
+
+        /// The label color of the checkbox component when disabled, for the light color variant
+        /// @name label--color--disabled
+        /// @type color
+        ///
+        ----label--color--disabled: #{color('light-70')};
     }
 
-    input {
-        &:checked ~ .checkbox-label,
-        &[type="checkbox"]:indeterminate ~ .checkbox-label {
-            &::before {
-                border-color: $_indicator-border-color-checked;
-                background-color: $_indicator-background-checked;
-            }
-        }
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark', 'form') {
+        /// The background of the checkbox component indicator, for the dark color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('dark')};
 
-        &:disabled:checked ~ .checkbox-label,
-        &[readonly]:checked ~ .checkbox-label {
-            &::before {
-                border-color: $_indicator-border-color-checked-disabled;
-                background-color: $_indicator-background-checked-disabled;
-            }
+        /// The background of the checkbox component indicator when checked, for the dark color variant
+        /// @name background--checked
+        /// @type color
+        ///
+        ----background--checked: #{color('primary')};
 
-            &::after {
-                background-color: $_indicator-icon-color-disabled;
-            }
-        }
+        /// The background of the checkbox component indicator when disabled, for the dark color variant
+        /// @name background--disabled
+        /// @type color
+        ///
+        ----background--disabled: #{color('dark-25')};
 
-        &:disabled ~ .checkbox-label,
-        &[readonly] ~ .checkbox-label {
-            color: $_color-disabled;
-        }
+        /// The background of the checkbox component indicator when checked and disabled, for the dark color variant
+        /// @name background--checked-disabled
+        /// @type color
+        ///
+        ----background--checked-disabled: #{color('primary-75')};
 
-        &::before {
-            color: $_indicator-icon-color;
-            background-color: $_indicator-background;
-        }
+        /// The border-color of the checkbox component indicator, for the dark color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('dark')};
+
+        /// The border-color of the checkbox component indicator when checked, for the dark color variant
+        /// @name border-color--checked
+        /// @type color
+        ///
+        ----border-color--checked: #{color('primary-55')};
+
+        /// The border-color of the checkbox component indicator when disabled, for the dark color variant
+        /// @name border-color--disabled
+        /// @type color
+        ///
+        ----border-color--disabled: #{color('dark')};
+
+        /// The border-color of the checkbox component indicator when checked and disabled, for the dark color variant
+        /// @name border-color--checked-disabled
+        /// @type color
+        ///
+        ----border-color--checked-disabled: #{color('primary-70')};
+
+        /// The color of the checkbox component indicator icon, for the dark color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{color('white')};
+
+        /// The color of the checkbox component indicator icon when disabled, for the dark color variant
+        /// @name color--disabled
+        /// @type color
+        ///
+        ----color--disabled: #{color('dark-25')};
+
+        /// The label color of the checkbox component label, for the dark color variant
+        /// @name label--color
+        /// @type color
+        ///
+        ----label--color: #{contrast-color($color-dark)};
+
+        /// The label color of the checkbox component when disabled, for the dark color variant
+        /// @name label--color--disabled
+        /// @type color
+        ///
+        ----label--color--disabled: #{color('dark-30')};
     }
 }

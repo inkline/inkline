@@ -1,0 +1,477 @@
+/**
+ * Color variants
+ */
+
+.card {
+    /// Variables for the primary color variant
+    /// @name primary
+    /// @type group
+    @include variant('primary') {
+        /// The color of the card component, for the primary color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-primary)};
+
+        /// The background of the card component, for the primary color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('primary')};
+
+        /// The border color of the card component, for the primary color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('primary-60')};
+
+        /// The color of the card component header, for the primary color variant
+        /// @name header--color
+        /// @type color
+        ///
+        ----header--color: #{contrast-color($color-primary)};
+
+        /// The background of the card component header, for the primary color variant
+        /// @name header--background
+        /// @type color
+        ///
+        ----header--background: #{color('primary-55')};
+
+        /// The border color of the card component header, for the primary color variant
+        /// @name header--border-color
+        /// @type color
+        ///
+        ----header--border-color: #{color('primary-60')};
+
+        /// The color of the card component footer, for the primary color variant
+        /// @name footer--color
+        /// @type color
+        ///
+        ----footer--color: #{contrast-color($color-primary)};
+
+        /// The background of the card component footer, for the primary color variant
+        /// @name footer--background
+        /// @type color
+        ///
+        ----footer--background: #{color('primary-55')};
+
+        /// The border color of the card component footer, for the primary color variant
+        /// @name footer--border-color
+        /// @type color
+        ///
+        ----footer--border-color: #{color('primary-60')};
+    }
+
+    /// Variables for the secondary color variant
+    /// @name secondary
+    /// @type group
+    @include variant('secondary') {
+        /// The color of the card component, for the secondary color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-secondary)};
+
+        /// The background of the card component, for the secondary color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('secondary')};
+
+        /// The border color of the card component, for the secondary color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('secondary-60')};
+
+        /// The color of the card component header, for the secondary color variant
+        /// @name header--color
+        /// @type color
+        ///
+        ----header--color: #{contrast-color($color-secondary)};
+
+        /// The background of the card component header, for the secondary color variant
+        /// @name header--background
+        /// @type color
+        ///
+        ----header--background: #{color('secondary-55')};
+
+        /// The border color of the card component header, for the secondary color variant
+        /// @name header--border-color
+        /// @type color
+        ///
+        ----header--border-color: #{color('secondary-60')};
+
+        /// The color of the card component footer, for the secondary color variant
+        /// @name footer--color
+        /// @type color
+        ///
+        ----footer--color: #{contrast-color($color-secondary)};
+
+        /// The background of the card component footer, for the secondary color variant
+        /// @name footer--background
+        /// @type color
+        ///
+        ----footer--background: #{color('secondary-55')};
+
+        /// The border color of the card component footer, for the secondary color variant
+        /// @name footer--border-color
+        /// @type color
+        ///
+        ----footer--border-color: #{color('secondary-60')};
+    }
+
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light') {
+        /// The color of the card component, for the light color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-light)};
+
+        /// The background of the card component, for the light color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('white')};
+
+        /// The border color of the card component, for the light color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('light')};
+
+        /// The color of the card component header, for the light color variant
+        /// @name header--color
+        /// @type color
+        ///
+        ----header--color: #{contrast-color($color-light)};
+
+        /// The background of the card component header, for the light color variant
+        /// @name header--background
+        /// @type color
+        ///
+        ----header--background: #{color('white-55')};
+
+        /// The border color of the card component header, for the light color variant
+        /// @name header--border-color
+        /// @type color
+        ///
+        ----header--border-color: #{color('light')};
+
+        /// The color of the card component footer, for the light color variant
+        /// @name footer--color
+        /// @type color
+        ///
+        ----footer--color: #{contrast-color($color-light)};
+
+        /// The background of the card component footer, for the light color variant
+        /// @name footer--background
+        /// @type color
+        ///
+        ----footer--background: #{color('white-55')};
+
+        /// The border color of the card component footer, for the light color variant
+        /// @name footer--border-color
+        /// @type color
+        ///
+        ----footer--border-color: #{color('light')};
+    }
+
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark') {
+        /// The color of the card component, for the dark color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-dark)};
+
+        /// The background of the card component, for the dark color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('dark')};
+
+        /// The border color of the card component, for the dark color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('dark-60')};
+
+        /// The color of the card component header, for the dark color variant
+        /// @name header--color
+        /// @type color
+        ///
+        ----header--color: #{contrast-color($color-dark)};
+
+        /// The background of the card component header, for the dark color variant
+        /// @name header--background
+        /// @type color
+        ///
+        ----header--background: #{color('dark-55')};
+
+        /// The border color of the card component header, for the dark color variant
+        /// @name header--border-color
+        /// @type color
+        ///
+        ----header--border-color: #{color('dark-60')};
+
+        /// The color of the card component footer, for the dark color variant
+        /// @name footer--color
+        /// @type color
+        ///
+        ----footer--color: #{contrast-color($color-dark)};
+
+        /// The background of the card component footer, for the dark color variant
+        /// @name footer--background
+        /// @type color
+        ///
+        ----footer--background: #{color('dark-55')};
+
+        /// The border color of the card component footer, for the dark color variant
+        /// @name footer--border-color
+        /// @type color
+        ///
+        ----footer--border-color: #{color('dark-60')};
+    }
+
+    /// Variables for the info color variant
+    /// @name info
+    /// @type group
+    @include variant('info') {
+        /// The color of the card component, for the info color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-info)};
+
+        /// The background of the card component, for the info color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('info')};
+
+        /// The border color of the card component, for the info color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('info-60')};
+
+        /// The color of the card component header, for the info color variant
+        /// @name header--color
+        /// @type color
+        ///
+        ----header--color: #{contrast-color($color-info)};
+
+        /// The background of the card component header, for the info color variant
+        /// @name header--background
+        /// @type color
+        ///
+        ----header--background: #{color('info-55')};
+
+        /// The border color of the card component header, for the info color variant
+        /// @name header--border-color
+        /// @type color
+        ///
+        ----header--border-color: #{color('info-60')};
+
+        /// The color of the card component footer, for the info color variant
+        /// @name footer--color
+        /// @type color
+        ///
+        ----footer--color: #{contrast-color($color-info)};
+
+        /// The background of the card component footer, for the info color variant
+        /// @name footer--background
+        /// @type color
+        ///
+        ----footer--background: #{color('info-55')};
+
+        /// The border color of the card component footer, for the info color variant
+        /// @name footer--border-color
+        /// @type color
+        ///
+        ----footer--border-color: #{color('info-60')};
+    }
+
+    /// Variables for the success color variant
+    /// @name success
+    /// @type group
+    @include variant('success') {
+        /// The color of the card component, for the success color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-success)};
+
+        /// The background of the card component, for the success color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('success')};
+
+        /// The border color of the card component, for the success color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('success-60')};
+
+        /// The color of the card component header, for the success color variant
+        /// @name header--color
+        /// @type color
+        ///
+        ----header--color: #{contrast-color($color-success)};
+
+        /// The background of the card component header, for the success color variant
+        /// @name header--background
+        /// @type color
+        ///
+        ----header--background: #{color('success-55')};
+
+        /// The border color of the card component header, for the success color variant
+        /// @name header--border-color
+        /// @type color
+        ///
+        ----header--border-color: #{color('success-60')};
+
+        /// The color of the card component footer, for the success color variant
+        /// @name footer--color
+        /// @type color
+        ///
+        ----footer--color: #{contrast-color($color-success)};
+
+        /// The background of the card component footer, for the success color variant
+        /// @name footer--background
+        /// @type color
+        ///
+        ----footer--background: #{color('success-55')};
+
+        /// The border color of the card component footer, for the success color variant
+        /// @name footer--border-color
+        /// @type color
+        ///
+        ----footer--border-color: #{color('success-60')};
+    }
+
+    /// Variables for the warning color variant
+    /// @name warning
+    /// @type group
+    @include variant('warning') {
+        /// The color of the card component, for the warning color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-warning)};
+
+        /// The background of the card component, for the warning color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('warning')};
+
+        /// The border color of the card component, for the warning color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('warning-60')};
+
+        /// The color of the card component header, for the warning color variant
+        /// @name header--color
+        /// @type color
+        ///
+        ----header--color: #{contrast-color($color-warning)};
+
+        /// The background of the card component header, for the warning color variant
+        /// @name header--background
+        /// @type color
+        ///
+        ----header--background: #{color('warning-55')};
+
+        /// The border color of the card component header, for the warning color variant
+        /// @name header--border-color
+        /// @type color
+        ///
+        ----header--border-color: #{color('warning-60')};
+
+        /// The color of the card component footer, for the warning color variant
+        /// @name footer--color
+        /// @type color
+        ///
+        ----footer--color: #{contrast-color($color-warning)};
+
+        /// The background of the card component footer, for the warning color variant
+        /// @name footer--background
+        /// @type color
+        ///
+        ----footer--background: #{color('warning-55')};
+
+        /// The border color of the card component footer, for the warning color variant
+        /// @name footer--border-color
+        /// @type color
+        ///
+        ----footer--border-color: #{color('warning-60')};
+    }
+
+    /// Variables for the danger color variant
+    /// @name danger
+    /// @type group
+    @include variant('danger') {
+        /// The color of the card component, for the danger color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-danger)};
+
+        /// The background of the card component, for the danger color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('danger')};
+
+        /// The border color of the card component, for the danger color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('danger-60')};
+
+        /// The color of the card component header, for the danger color variant
+        /// @name header--color
+        /// @type color
+        ///
+        ----header--color: #{contrast-color($color-danger)};
+
+        /// The background of the card component header, for the danger color variant
+        /// @name header--background
+        /// @type color
+        ///
+        ----header--background: #{color('danger-55')};
+
+        /// The border color of the card component header, for the danger color variant
+        /// @name header--border-color
+        /// @type color
+        ///
+        ----header--border-color: #{color('danger-60')};
+
+        /// The color of the card component footer, for the danger color variant
+        /// @name footer--color
+        /// @type color
+        ///
+        ----footer--color: #{contrast-color($color-danger)};
+
+        /// The background of the card component footer, for the danger color variant
+        /// @name footer--background
+        /// @type color
+        ///
+        ----footer--background: #{color('danger-55')};
+
+        /// The border color of the card component footer, for the danger color variant
+        /// @name footer--border-color
+        /// @type color
+        ///
+        ----footer--border-color: #{color('danger-60')};
+    }
+}

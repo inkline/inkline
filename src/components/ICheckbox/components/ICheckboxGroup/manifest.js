@@ -1,4 +1,5 @@
 module.exports = {
+    name: 'checkbox-group',
 	slots: [
 		{
 			name: 'default',
@@ -79,5 +80,8 @@ module.exports = {
 			],
 			default: 'md'
 		}
-	]
+	],
+    css: {
+	    selector: '.checkbox-group'
+    }
 };

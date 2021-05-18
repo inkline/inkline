@@ -1,0 +1,1217 @@
+/**
+ * Color variants
+ */
+
+.button {
+    /// Variables for the primary color variant
+    /// @name primary
+    /// @type group
+    @include variant('primary') {
+        /// The background of the button component, for the primary color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('primary')};
+
+        /// The background of the button component when hovered or focused, for the primary color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('primary-55')};
+
+        /// The background of the button component when active, for the primary color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('primary-60')};
+
+        /// The border color of the button component, for the primary color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('primary-55')};
+
+        /// The border color of the button component when hovered or focused, for the primary color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('primary-55')};
+
+        /// The color of the button component, for the primary color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-primary)};
+
+        /// The color of the button component link variant, for the primary color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('primary')};
+
+        /// The color of the button component link variant when active, for the primary color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('primary-55')};
+
+        /// The color of the button component outline variant, for the primary color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('primary')};
+
+        /// The color of the button component outline variant when hovered or focused, for the primary color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-primary)};
+
+        /// The color of the button component outline variant when hovered or focused, for the primary color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the primary color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the primary color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('primary')};
+
+        /// The background of the button component outline variant when active, for the primary color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('primary-55')};
+
+        /// The border color of the button component outline variant, for the primary color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('primary')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the primary color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('primary')};
+    }
+
+    /// Variables for the secondary color variant
+    /// @name secondary
+    /// @type group
+    @include variant('secondary') {
+        /// The background of the button component, for the secondary color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('secondary')};
+
+        /// The background of the button component when hovered or focused, for the secondary color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('secondary-55')};
+
+        /// The background of the button component when active, for the secondary color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('secondary-60')};
+
+        /// The border color of the button component, for the secondary color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('secondary-55')};
+
+        /// The border color of the button component when hovered or focused, for the secondary color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('secondary-55')};
+
+        /// The color of the button component, for the secondary color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-secondary)};
+
+        /// The color of the button component link variant, for the secondary color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('secondary')};
+
+        /// The color of the button component link variant when active, for the secondary color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('secondary-55')};
+
+        /// The color of the button component outline variant, for the secondary color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('secondary')};
+
+        /// The color of the button component outline variant when hovered or focused, for the secondary color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-secondary)};
+
+        /// The color of the button component outline variant when hovered or focused, for the secondary color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the secondary color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the secondary color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('secondary')};
+
+        /// The background of the button component outline variant when active, for the secondary color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('secondary-55')};
+
+        /// The border color of the button component outline variant, for the secondary color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('secondary')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the secondary color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('secondary')};
+    }
+
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light') {
+        /// The background of the button component, for the light color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('light')};
+
+        /// The background of the button component when hovered or focused, for the light color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('light-55')};
+
+        /// The background of the button component when active, for the light color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('light-60')};
+
+        /// The border color of the button component, for the light color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('light-55')};
+
+        /// The border color of the button component when hovered or focused, for the light color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('light-55')};
+
+        /// The color of the button component, for the light color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-light)};
+
+        /// The color of the button component link variant, for the light color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('light')};
+
+        /// The color of the button component link variant when active, for the light color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('light-55')};
+
+        /// The color of the button component outline variant, for the light color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('light')};
+
+        /// The color of the button component outline variant when hovered or focused, for the light color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-light)};
+
+        /// The color of the button component outline variant when hovered or focused, for the light color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the light color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the light color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('light')};
+
+        /// The background of the button component outline variant when active, for the light color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('light-55')};
+
+        /// The border color of the button component outline variant, for the light color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('light')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the light color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('light')};
+    }
+
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark') {
+        /// The background of the button component, for the dark color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('dark')};
+
+        /// The background of the button component when hovered or focused, for the dark color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('dark-45')};
+
+        /// The background of the button component when active, for the dark color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('dark-40')};
+
+        /// The border color of the button component, for the dark color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('dark-45')};
+
+        /// The border color of the button component when hovered or focused, for the dark color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('dark-45')};
+
+        /// The color of the button component, for the dark color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-dark)};
+
+        /// The color of the button component link variant, for the dark color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('dark')};
+
+        /// The color of the button component link variant when active, for the dark color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('dark-45')};
+
+        /// The color of the button component outline variant, for the dark color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('dark')};
+
+        /// The color of the button component outline variant when hovered or focused, for the dark color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-dark)};
+
+        /// The color of the button component outline variant when hovered or focused, for the dark color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the dark color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the dark color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('dark')};
+
+        /// The background of the button component outline variant when active, for the dark color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('dark-45')};
+
+        /// The border color of the button component outline variant, for the dark color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('dark')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the dark color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('dark')};
+    }
+
+    /// Variables for the info color variant
+    /// @name info
+    /// @type group
+    @include variant('info') {
+        /// The background of the button component, for the info color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('info')};
+
+        /// The background of the button component when hovered or focused, for the info color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('info-55')};
+
+        /// The background of the button component when active, for the info color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('info-60')};
+
+        /// The border color of the button component, for the info color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('info-55')};
+
+        /// The border color of the button component when hovered or focused, for the info color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('info-55')};
+
+        /// The color of the button component, for the info color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-info)};
+
+        /// The color of the button component link variant, for the info color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('info')};
+
+        /// The color of the button component link variant when active, for the info color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('info-55')};
+
+        /// The color of the button component outline variant, for the info color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('info')};
+
+        /// The color of the button component outline variant when hovered or focused, for the info color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-info)};
+
+        /// The color of the button component outline variant when hovered or focused, for the info color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the info color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the info color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('info')};
+
+        /// The background of the button component outline variant when active, for the info color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('info-55')};
+
+        /// The border color of the button component outline variant, for the info color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('info')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the info color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('info')};
+    }
+
+    /// Variables for the success color variant
+    /// @name success
+    /// @type group
+    @include variant('success') {
+        /// The background of the button component, for the success color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('success')};
+
+        /// The background of the button component when hovered or focused, for the success color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('success-55')};
+
+        /// The background of the button component when active, for the success color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('success-60')};
+
+        /// The border color of the button component, for the success color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('success-55')};
+
+        /// The border color of the button component when hovered or focused, for the success color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('success-55')};
+
+        /// The color of the button component, for the success color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-success)};
+
+        /// The color of the button component link variant, for the success color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('success')};
+
+        /// The color of the button component link variant when active, for the success color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('success-55')};
+
+        /// The color of the button component outline variant, for the success color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('success')};
+
+        /// The color of the button component outline variant when hovered or focused, for the success color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-success)};
+
+        /// The color of the button component outline variant when hovered or focused, for the success color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the success color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the success color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('success')};
+
+        /// The background of the button component outline variant when active, for the success color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('success-55')};
+
+        /// The border color of the button component outline variant, for the success color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('success')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the success color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('success')};
+    }
+
+    /// Variables for the warning color variant
+    /// @name warning
+    /// @type group
+    @include variant('warning') {
+        /// The background of the button component, for the warning color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('warning')};
+
+        /// The background of the button component when hovered or focused, for the warning color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('warning-55')};
+
+        /// The background of the button component when active, for the warning color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('warning-60')};
+
+        /// The border color of the button component, for the warning color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('warning-55')};
+
+        /// The border color of the button component when hovered or focused, for the warning color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('warning-55')};
+
+        /// The color of the button component, for the warning color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-warning)};
+
+        /// The color of the button component link variant, for the warning color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('warning')};
+
+        /// The color of the button component link variant when active, for the warning color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('warning-55')};
+
+        /// The color of the button component outline variant, for the warning color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('warning')};
+
+        /// The color of the button component outline variant when hovered or focused, for the warning color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-warning)};
+
+        /// The color of the button component outline variant when hovered or focused, for the warning color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the warning color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the warning color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('warning')};
+
+        /// The background of the button component outline variant when active, for the warning color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('warning-55')};
+
+        /// The border color of the button component outline variant, for the warning color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('warning')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the warning color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('warning')};
+    }
+
+    /// Variables for the danger color variant
+    /// @name danger
+    /// @type group
+    @include variant('danger') {
+        /// The background of the button component, for the danger color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('danger')};
+
+        /// The background of the button component when hovered or focused, for the danger color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('danger-55')};
+
+        /// The background of the button component when active, for the danger color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('danger-60')};
+
+        /// The border color of the button component, for the danger color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('danger-55')};
+
+        /// The border color of the button component when hovered or focused, for the danger color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('danger-55')};
+
+        /// The color of the button component, for the danger color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-danger)};
+
+        /// The color of the button component link variant, for the danger color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('danger')};
+
+        /// The color of the button component link variant when active, for the danger color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('danger-55')};
+
+        /// The color of the button component outline variant, for the danger color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('danger')};
+
+        /// The color of the button component outline variant when hovered or focused, for the danger color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-danger)};
+
+        /// The color of the button component outline variant when hovered or focused, for the danger color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the danger color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the danger color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('danger')};
+
+        /// The background of the button component outline variant when active, for the danger color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('danger-55')};
+
+        /// The border color of the button component outline variant, for the danger color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('danger')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the danger color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('danger')};
+    }
+
+    /// Variables for the facebook color variant
+    /// @name facebook
+    /// @type group
+    @include variant('facebook') {
+        /// The background of the button component, for the facebook color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('facebook')};
+
+        /// The background of the button component when hovered or focused, for the facebook color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('facebook-55')};
+
+        /// The background of the button component when active, for the facebook color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('facebook-60')};
+
+        /// The border color of the button component, for the facebook color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('facebook-55')};
+
+        /// The border color of the button component when hovered or focused, for the facebook color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('facebook-55')};
+
+        /// The color of the button component, for the facebook color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-facebook)};
+
+        /// The color of the button component link variant, for the facebook color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('facebook')};
+
+        /// The color of the button component link variant when active, for the facebook color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('facebook-55')};
+
+        /// The color of the button component outline variant, for the facebook color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('facebook')};
+
+        /// The color of the button component outline variant when hovered or focused, for the facebook color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-facebook)};
+
+        /// The color of the button component outline variant when hovered or focused, for the facebook color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the facebook color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the facebook color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('facebook')};
+
+        /// The background of the button component outline variant when active, for the facebook color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('facebook-55')};
+
+        /// The border color of the button component outline variant, for the facebook color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('facebook')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the facebook color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('facebook')};
+    }
+
+    /// Variables for the google color variant
+    /// @name google
+    /// @type group
+    @include variant('google') {
+        /// The background of the button component, for the google color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('google')};
+
+        /// The background of the button component when hovered or focused, for the google color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('google-55')};
+
+        /// The background of the button component when active, for the google color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('google-60')};
+
+        /// The border color of the button component, for the google color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('google-55')};
+
+        /// The border color of the button component when hovered or focused, for the google color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('google-55')};
+
+        /// The color of the button component, for the google color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-google)};
+
+        /// The color of the button component link variant, for the google color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('google')};
+
+        /// The color of the button component link variant when active, for the google color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('google-55')};
+
+        /// The color of the button component outline variant, for the google color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('google')};
+
+        /// The color of the button component outline variant when hovered or focused, for the google color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-google)};
+
+        /// The color of the button component outline variant when hovered or focused, for the google color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the google color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the google color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('google')};
+
+        /// The background of the button component outline variant when active, for the google color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('google-55')};
+
+        /// The border color of the button component outline variant, for the google color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('google')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the google color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('google')};
+    }
+
+    /// Variables for the twitter color variant
+    /// @name twitter
+    /// @type group
+    @include variant('twitter') {
+        /// The background of the button component, for the twitter color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('twitter')};
+
+        /// The background of the button component when hovered or focused, for the twitter color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('twitter-55')};
+
+        /// The background of the button component when active, for the twitter color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('twitter-60')};
+
+        /// The border color of the button component, for the twitter color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('twitter-55')};
+
+        /// The border color of the button component when hovered or focused, for the twitter color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('twitter-55')};
+
+        /// The color of the button component, for the twitter color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-twitter)};
+
+        /// The color of the button component link variant, for the twitter color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('twitter')};
+
+        /// The color of the button component link variant when active, for the twitter color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('twitter-55')};
+
+        /// The color of the button component outline variant, for the twitter color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('twitter')};
+
+        /// The color of the button component outline variant when hovered or focused, for the twitter color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-twitter)};
+
+        /// The color of the button component outline variant when hovered or focused, for the twitter color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the twitter color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the twitter color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('twitter')};
+
+        /// The background of the button component outline variant when active, for the twitter color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('twitter-55')};
+
+        /// The border color of the button component outline variant, for the twitter color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('twitter')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the twitter color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('twitter')};
+    }
+
+    /// Variables for the github color variant
+    /// @name github
+    /// @type group
+    @include variant('github') {
+        /// The background of the button component, for the github color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('github')};
+
+        /// The background of the button component when hovered or focused, for the github color variant
+        /// @name background--hover
+        /// @type color
+        ///
+        ----background--hover: #{color('github-55')};
+
+        /// The background of the button component when active, for the github color variant
+        /// @name background--active
+        /// @type color
+        ///
+        ----background--active: #{color('github-60')};
+
+        /// The border color of the button component, for the github color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('github-55')};
+
+        /// The border color of the button component when hovered or focused, for the github color variant
+        /// @name border-color--hover
+        /// @type color
+        ///
+        ----border-color--hover: #{color('github-55')};
+
+        /// The color of the button component, for the github color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-github)};
+
+        /// The color of the button component link variant, for the github color variant
+        /// @name link--color
+        /// @type color
+        ///
+        ----link--color: #{color('github')};
+
+        /// The color of the button component link variant when active, for the github color variant
+        /// @name link--color--active
+        /// @type color
+        ///
+        ----link--color--active: #{color('github-55')};
+
+        /// The color of the button component outline variant, for the github color variant
+        /// @name outline--color
+        /// @type color
+        ///
+        ----outline--color: #{color('github')};
+
+        /// The color of the button component outline variant when hovered or focused, for the github color variant
+        /// @name outline--color--hover
+        /// @type color
+        ///
+        ----outline--color--hover: #{contrast-color($color-github)};
+
+        /// The color of the button component outline variant when hovered or focused, for the github color variant
+        /// @name outline--color--active
+        /// @type color
+        ///
+        ----outline--color--active: #{var(----outline-color)};
+
+        /// The background of the button component outline variant, for the github color variant
+        /// @name outline--background
+        /// @type color
+        ///
+        ----outline--background: #{transparent};
+
+        /// The background of the button component outline variant when hovered, for the github color variant
+        /// @name outline--background--hover
+        /// @type color
+        ///
+        ----outline--background--hover: #{color('github')};
+
+        /// The background of the button component outline variant when active, for the github color variant
+        /// @name outline--background--active
+        /// @type color
+        ///
+        ----outline--background--active: #{color('github-55')};
+
+        /// The border color of the button component outline variant, for the github color variant
+        /// @name outline--border-color
+        /// @type color
+        ///
+        ----outline--border-color: #{color('github')};
+
+        /// The border color of the button component outline variant when hovered or focused, for the github color variant
+        /// @name outline--border-color--hover
+        /// @type color
+        ///
+        ----outline--border-color--hover: #{color('github')};
+    }
+}

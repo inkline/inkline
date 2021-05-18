@@ -134,6 +134,12 @@ module.exports = {
                 value: 'var(--line-height)'
             },
             {
+                name: 'font-size',
+                description: 'The font size of the button component',
+                type: 'size',
+                value: 'font-size()'
+            },
+            {
                 name: 'border-style',
                 description: 'The border style of the button component',
                 value: 'var(--border-style)'
@@ -164,6 +170,35 @@ module.exports = {
                 value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
             },
             {
+                name: 'border-top-left-radius',
+                type: 'size',
+                description: 'The border top left radius of the button component',
+                value: 'var(--border-top-left-radius)'
+            },
+            {
+                name: 'border-top-right-radius',
+                type: 'size',
+                description: 'The border top right radius of the button component',
+                value: 'var(--border-top-right-radius)'
+            },
+            {
+                name: 'border-bottom-right-radius',
+                type: 'size',
+                description: 'The border bottom right radius of the button component',
+                value: 'var(--border-bottom-right-radius)'
+            },
+            {
+                name: 'border-bottom-left-radius',
+                type: 'size',
+                description: 'The border bottom left radius of the button component',
+                value: 'var(--border-bottom-left-radius)'
+            },
+            {
+                name: 'border-radius',
+                description: 'The border radius of the button component',
+                value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
+            },
+            {
                 name: 'box-shadow-offset-x',
                 description: 'The box shadow horizontal offset of the button component',
                 value: 'var(--box-shadow-offset-x)'
@@ -192,41 +227,6 @@ module.exports = {
                 name: 'box-shadow',
                 description: 'The box shadow of the button component',
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
-            },
-            {
-                name: 'font-size',
-                description: 'The font size of the button component',
-                type: 'size',
-                value: 'font-size()'
-            },
-            {
-                name: 'border-top-left-radius',
-                type: 'size',
-                description: 'The border top left radius of the button component',
-                value: 'var(--border-top-left-radius)'
-            },
-            {
-                name: 'border-top-right-radius',
-                type: 'size',
-                description: 'The border top right radius of the button component',
-                value: 'var(--border-top-right-radius)'
-            },
-            {
-                name: 'border-bottom-right-radius',
-                type: 'size',
-                description: 'The border bottom right radius of the button component',
-                value: 'var(--border-bottom-right-radius)'
-            },
-            {
-                name: 'border-bottom-left-radius',
-                type: 'size',
-                description: 'The border bottom left radius of the button component',
-                value: 'var(--border-bottom-left-radius)'
-            },
-            {
-                name: 'border-radius',
-                description: 'The border radius of the button component',
-                value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
             },
             {
                 name: 'padding-top',

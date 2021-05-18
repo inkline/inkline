@@ -111,6 +111,35 @@ module.exports = {
                 value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
             },
             {
+                name: 'border-top-left-radius',
+                type: 'size',
+                description: 'The border top left radius of the alert component',
+                value: 'var(--border-top-left-radius)'
+            },
+            {
+                name: 'border-top-right-radius',
+                type: 'size',
+                description: 'The border top right radius of the alert component',
+                value: 'var(--border-top-right-radius)'
+            },
+            {
+                name: 'border-bottom-right-radius',
+                type: 'size',
+                description: 'The border bottom right radius of the alert component',
+                value: 'var(--border-bottom-right-radius)'
+            },
+            {
+                name: 'border-bottom-left-radius',
+                type: 'size',
+                description: 'The border bottom left radius of the alert component',
+                value: 'var(--border-bottom-left-radius)'
+            },
+            {
+                name: 'border-radius',
+                description: 'The border radius of the alert component',
+                value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
+            },
+            {
                 name: 'box-shadow-offset-x',
                 description: 'The box shadow horizontal offset of the alert component',
                 value: 'var(--box-shadow-offset-x)'
@@ -155,35 +184,6 @@ module.exports = {
                 type: 'size',
                 description: 'The font size of the alert component',
                 value: 'font-size()'
-            },
-            {
-                name: 'border-top-left-radius',
-                type: 'size',
-                description: 'The border top left radius of the alert component',
-                value: 'var(--border-top-left-radius)'
-            },
-            {
-                name: 'border-top-right-radius',
-                type: 'size',
-                description: 'The border top right radius of the alert component',
-                value: 'var(--border-top-right-radius)'
-            },
-            {
-                name: 'border-bottom-right-radius',
-                type: 'size',
-                description: 'The border bottom right radius of the alert component',
-                value: 'var(--border-bottom-right-radius)'
-            },
-            {
-                name: 'border-bottom-left-radius',
-                type: 'size',
-                description: 'The border bottom left radius of the alert component',
-                value: 'var(--border-bottom-left-radius)'
-            },
-            {
-                name: 'border-radius',
-                description: 'The border radius of the alert component',
-                value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
             },
             {
                 name: 'padding-top',
