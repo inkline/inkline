@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://inkline.io/">
-        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/logo.png" alt="Inkline logo" width=72 height=72>
+        <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/logo.png" alt="Inkline logo" width=72 height=72>
     </a>
 </p>
 
@@ -12,7 +12,7 @@
     <br/>
     <br/>
     <a href="https://inkline.io">
-        <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/homepage.png" width="1009" alt="Vue.js UI/UX Library - Inkline" />
+        <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/homepage.png" width="1009" alt="Vue.js UI/UX Library - Inkline" />
     </a>
     <br/>
     <br/>
@@ -47,6 +47,7 @@
 
 ## Table of contents
 - [Installation](#installation)
+- [Join the beta](#join-the-beta)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Contributing](#contributing)
 - [Community](#community)
@@ -56,23 +57,49 @@
 - [Copyright and license](#copyright-and-license)
 
 ## Installation
+
 Read the [Getting Started](https://inkline.io/docs/introduction/getting-started/) page and find information on framework contents, templates, examples, and more.
 
 <a href="https://inkline.io/docs/introduction/installation/vue-cli">
-    <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/vue-cli.png" width="510" alt="Vue CLI Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/vue-cli.png" width="510" alt="Vue CLI Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/nuxt">
-    <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/nuxt.png" width="510" alt="Nuxt.js Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/nuxt.png" width="510" alt="Nuxt.js Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/custom">
-    <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/custom.png" width="510" alt="Custom Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/custom.png" width="510" alt="Custom Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/cdn">
-    <img src="https://raw.githubusercontent.com/inkline/inkline/master/packages/docs/static/images/github/cdn.png" width="510" alt="CDN Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/cdn.png" width="510" alt="CDN Installation - Inkline" />
 </a>
+
+## Join the beta
+The beta version for Inkline 3 (compatible with Vue 3) is finally out! Here are some basic installation instructions. Keep in mind that the beta is still subject to change.
+
+~~~
+npm install @inkline/inkline@next
+~~~
+
+~~~js
+import '@inkline/inkline/src/inkline.scss';
+import { Inkline, IButton } from '@inkline/inkline/src';
+import { createApp } from 'vue'
+import App from './App.vue'
+
+const app = createApp(App);
+
+app.use(Inkline, {
+    components: {
+        IButton
+    }
+});
+
+app.mount('#app');
+
+~~~
 
 ## Bugs and feature requests
 Have a bug or a feature request? Please first search for existing and closed issues.
