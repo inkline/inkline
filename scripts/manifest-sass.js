@@ -23,100 +23,9 @@ function capitalizeFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const generate = {
-    title: (text) => {
-        let output = '////\n';
-        output += `/// ${text}\n`;
-        output += '////\n';
+glob(path.resolve(__dirname, '..', 'src', 'components', 'ICard', '**', 'manifest.js'), (error, files) => {
+    const selectorMixins = [];
 
-        return { output };
-    },
-    sassGroup: (group, meta = {}) => {
-        let output = `/// Map for ${group.name} ${meta.type}
-/// @group ${group.name}
-$${meta.id}-${meta.type}-variant-${group.name}: (
-    ${group.kvMap.join(',\n    ')}
-) !default;`;
-
-        return { output };
-    },
-    cssGroup: (meta = {}) => {
-        const output = `@each $${meta.id}-${meta.type}-variant-key, $${meta.id}-${meta.type}-variant-value in $${meta.id}-${meta.type}-variants {
-        @each $${meta.id}-${meta.type}-variant-field-key, $${meta.id}-${meta.type}-variant-field-value in $${meta.id}-${meta.type}-variant-value {
-            --${meta.id}-${meta.type}-variant-#{$${meta.id}-${meta.type}-variant-key}-#{$${meta.id}-${meta.type}-variant-field-key}: #{$${meta.id}-${meta.type}-variant-field-value};
-        }
-    }`;
-
-        return { output };
-    },
-    sassGroupMap: (groups, meta = {}) => {
-        const groupsOutput = groups.map((group) => `'${group.name}': $${meta.id}-${meta.type}-variant-${group.name}`).join(',\n    ');
-        const output = `/// ${capitalizeFirst(meta.type)}s group map
-$${meta.id}-${meta.type}-variants: (
-    ${groupsOutput}
-) !default;`;
-
-
-        return { output };
-    },
-    sassVariable: (variable, meta = {}) => {
-        let output = `/// ${variable.description}`;
-
-        let name;
-        let value;
-
-        if (variable.type === 'size' && meta.group) {
-            name = `$${meta.id}-size-variant-${meta.group.name}-${variable.name}`;
-            value = variable.values && variable.values[meta.group.name] ||
-                `calc(var(--${meta.id}-${variable.name}) * #{size-multiplier('${meta.group.name}')})`;
-
-            if (Array.isArray(value)) {
-                value = value.map((v) => v === '0' ? v : `calc(${v} * #{size-multiplier('${meta.group.name}')})`).join(' ');
-            }
-        } else if (variable.type === 'color' && meta.group) {
-            name = `$${meta.id}-color-variant-${meta.group.name}-${variable.name}`;
-            value = variable.values[meta.group.name];
-        } else {
-            name = `$${meta.id}-${variable.name}`;
-            value = variable.default;
-        }
-
-        output += '\n';
-
-        if (variable.name) {
-            output += `/// @name ${variable.name}\n`;
-        }
-
-        if (meta.group) {
-            output += `/// @group ${meta.group.name}\n`;
-        }
-
-        if (variable.type) {
-            output += `/// @type ${variable.type}\n`;
-        }
-
-        output += `${name}: ${value} !default;`;
-
-        return {
-            output,
-            name,
-            value
-        };
-    },
-    cssVariable: (variable, meta = {}) => {
-        const name = `--${meta.id}-${variable.name}`;
-        const value = `#{$${meta.id}-${variable.name}}`;
-        const output = `${name}: ${value};`;
-
-        return {
-            output,
-            name,
-            value
-        }
-    }
-};
-
-glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.json'), (error, files) => {
     if (error) {
         console.error(error);
         throw error;
@@ -126,180 +35,130 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.json'), 
         const dirname = path.dirname(fileName);
         const manifest = require(fileName);
 
-        if (manifest.styles) {
-            const defaults = manifest.styles.filter((variable) => variable.default);
-            const colors = manifest.styles.filter(({ type }) => type === 'color');
-            const sizes = manifest.styles.filter(({ type }) => type === 'size');
+        if (!manifest.css) {
+            return;
+        }
+
+        selectorMixins.push({
+            name: manifest.name,
+            selector: manifest.css.selector
+        });
+
+        if (manifest.css.variables) {
+            const variables = manifest.css.variables;
+            const colors = manifest.css.variables.filter(({ type }) => type === 'color');
+            const sizes = manifest.css.variables.filter(({ type }) => type === 'size');
+
+            const colorKeys = Object.keys(colors.find((variable) => variable.variants).variants);
+            const sizeKeys = Object.keys((sizes.find((variable) => variable.variants) || { variants: { sm: '', md: '', lg: '' }}).variants);
 
             /**
              * Base variables
              */
-            const baseSassVariables = defaults
-                .map((variable) => generate.sassVariable(variable, { id: manifest.name }).output);
 
-            const baseCSSVariables = defaults
-                .map((variable) => generate.cssVariable(variable, { id: manifest.name }).output);
+            const baseVariables = variables.map((variable) => {
+                let value = !variable.value && variable.type ? variable.variants[manifest.css.defaults[variable.type]] : variable.value;
 
-            /**
-             * Sizes
-             */
-            const sizeWithValues = sizes.find((s) => s.values);
-            const sizeVariableGroups = (sizeWithValues ? Object.keys(sizeWithValues.values) : sizeKeys).map((key) => ({
-                name: key,
-                values: [],
-                kvMap: []
-            }));
-
-            const sizeSassVariables = sizes
-                .reduce((acc, variable) => {
-                    acc.forEach((group) => {
-                        const { output, name } = generate.sassVariable(variable, { group, id: manifest.name });
-
-                        group.values.push(output);
-                        group.kvMap.push(`'${variable.name}': ${name}`);
-                    });
-
-                    return acc;
-                }, sizeVariableGroups)
-                .map((group) => {
-                    const size = group.name;
-
-                    return `${generate.title(`${capitalizeFirst(sizeWords[size])} size`).output}
-${group.values.join('\n\n')}
-
-${generate.sassGroup(group, { id: manifest.name, type: 'size' }).output}`;
-                });
-
-            /**
-             * Colors
-             */
-            const colorWithValues = colors.find((c) => c.values);
-            const colorVariableGroups = Object.keys(colorWithValues?.values || {})
-                .map((key) => ({
-                    name: key,
-                    values: [],
-                    kvMap: []
-                }));
-
-            colorVariableGroups.sort((a, b) => {
-                const aIndex = colorKeys.indexOf(a.name);
-                const bIndex = colorKeys.indexOf(b.name);
-
-                if (aIndex !== -1 && aIndex < bIndex) {
-                    return -1;
+                if (Array.isArray(value)) {
+                    value = value.join(' ');
                 }
 
-                if (aIndex > bIndex) {
-                    return 1;
-                }
-
-                return 0;
+                return `    /// ${variable.description}
+    /// @name ${variable.name}
+    /// ${ variable.type ? `@type ${variable.type}\n    ///` : '' }
+    ----${variable.name}: #{${value}};`;
             });
 
-            const colorSassVariables = colors
-                .reduce((acc, variable) => {
-                    acc.forEach((group) => {
-                        const { output, name } = generate.sassVariable(variable, { group, id: manifest.name });
+            /**
+             * Size variables
+             */
 
-                        group.values.push(output);
-                        group.kvMap.push(`'${variable.name}': ${name}`);
-                    });
+            const sizeVariables = sizeKeys.map((variant) => ({
+                variant,
+                variables: sizes.map((variable) => {
+                    let value = variable.value || variable.variants[variant];
 
-                    return acc;
-                }, colorVariableGroups)
-                .map((group) => {
-                    const color = group.name;
+                    if (Array.isArray(value)) {
+                        value = value.join(' ');
+                    }
 
-                    return `${generate.title(`${capitalizeFirst(color)} color`).output}
-${group.values.join('\n\n')}
-
-${generate.sassGroup(group, { id: manifest.name, type: 'color' }).output}`;
-                });
+                    return `        /// ${variable.description}, for the ${variant} size variant
+        /// @name ${variable.name}
+        /// ${ variable.type ? `@type ${variable.type}\n        ///` : '' }
+        ----${variable.name}: calc(#{${value}} * #{size-multiplier('${variant}')});`;
+                })
+            }));
 
             /**
-             * Resulting _variables.scss file contents
+             * Color variables
              */
-            let sassVariables = '';
-            if (baseSassVariables && defaults.length > 0) {
-                sassVariables += `////
-/// Variables
-////
 
-${baseSassVariables.join('\n\n')}\n`;
-            }
+            const colorVariables = colorKeys.map((variant) => ({
+                variant,
+                variables: colors.map((variable) => {
+                    let value = variable.variants[variant];
 
-            if (sizes.length > 0 && defaults.length > 0) {
-                sassVariables += '\n'
-            }
+                    if (Array.isArray(value)) {
+                        value = value.join(' ');
+                    }
 
-            if (sizeSassVariables && sizes.length > 0) {
-                sassVariables += `////
-/// Sizes
-////
-
-${sizeSassVariables.join('\n\n')}
-
-${generate.sassGroupMap(sizeVariableGroups, { id: manifest.name, type: 'size' }).output}\n`;
-            }
-
-            if (colors.length > 0 && (sizes.length > 0 || defaults.length > 0)) {
-                sassVariables += '\n'
-            }
-
-            if (colorSassVariables && colors.length > 0) {
-                sassVariables += `////
-/// Colors
-////
-
-${colorSassVariables.join('\n\n')}
-
-${generate.sassGroupMap(colorVariableGroups, { id: manifest.name, type: 'color' }).output}\n`;
-            }
+                    return `        /// ${variable.description}, for the ${variant} color variant
+        /// @name ${variable.name}
+        /// ${ variable.type ? `@type ${variable.type}\n        ///` : '' }
+        ----${variable.name}: #{${value}};`;
+                })
+            }));
 
 
             /**
-             * Resulting _css.scss file contents
+             * Output
              */
-            let cssVariables = ':root {\n';
-            if (baseSassVariables && defaults.length > 0) {
-                cssVariables += `    /**
-     * Variables
+
+            const output = `/**
+ * Variables
+ */
+
+${manifest.css.selector} {
+${baseVariables.join('\n\n')}
+
+    /**
+     * Size variants
      */
 
-    ${baseCSSVariables.join('\n    ')}
+${sizeVariables.map(({ variant, variables }) => `    /// Variables for the ${variant} color variant
+    /// @name ${variant}
+    /// @type group
+    @include variant('${variant}') {
+${variables.join('\n\n')}
+    }`).join('\n\n')}
+
+    /**
+     * Color variants
+     */
+
+${colorVariables.map(({ variant, variables }) => `    /// Variables for the ${variant} color variant
+    /// @name ${variant}
+    /// @type group
+    @include variant('${variant}') {
+${variables.join('\n\n')}
+    }`).join('\n\n')}}
 `;
-            }
 
-            if (sizes.length > 0 && defaults.length > 0) {
-                cssVariables += '\n'
-            }
-
-            if (sizeSassVariables && sizes.length > 0) {
-                cssVariables += `    /**
-     * Sizes
-     */
-
-    ${generate.cssGroup({ id: manifest.name, type: 'size' }).output}
-`;
-            }
-
-            if (colors.length > 0 && (sizes.length > 0 || defaults.length > 0)) {
-                cssVariables += '\n'
-            }
-
-            if (colorSassVariables && colors.length > 0) {
-                cssVariables += `    /**
-     * Colors
-     */
-
-    ${generate.cssGroup({ id: manifest.name, type: 'color' }).output}\n`;
-            }
-
-            cssVariables += '}\n';
-
-            fs.writeFileSync(path.join(dirname, 'css', '_css.scss'), cssVariables);
-            fs.writeFileSync(path.join(dirname, 'css', '_variables.scss'), sassVariables);
+            fs.writeFileSync(path.join(dirname, 'css', '_variables.scss'), output);
         }
     });
+
+
+    const selectorsOutput = `/// Component selector mixins
+///
+
+${selectorMixins.map((mixin) => `@mixin i-${mixin.name} {
+    ${mixin.selector} {
+        @content;
+    }
+}`).join('\n\n')}
+`;
+    fs.writeFileSync(path.join(__dirname, '..', 'src', 'css', 'mixins', '_selectors.scss'), selectorsOutput);
 });
+
 

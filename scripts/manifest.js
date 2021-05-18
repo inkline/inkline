@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 const jsdoc = require('jsdoc-api');
+const stringifyObject = require('stringify-object');
 
 const categoryByKind = {
     member: 'props',
@@ -9,7 +10,7 @@ const categoryByKind = {
     event: 'events'
 };
 
-glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.json'), (error, files) => {
+glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.js'), (error, files) => {
     if (error) {
         console.error(error);
         throw error;
@@ -20,7 +21,7 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.json'), 
 
         // Read script.js and update manifest.json
         //
-        const source = fs.readFileSync(fileName.replace('manifest.json', 'script.js'));
+        const source = fs.readFileSync(fileName.replace('manifest.js', 'script.js'));
         const doc = jsdoc.explainSync({ source })
             .filter((x) => !x.undocumented && ['member', 'slot', 'event'].includes(x.kind))
             .map(({ name, description, type, kind, defaultvalue, memberof, tags }) => {
@@ -55,7 +56,11 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.json'), 
             ...doc
         };
 
-        fs.writeFileSync(fileName, JSON.stringify(manifest, null, 4) + '\n');
+        const objectString = stringifyObject(manifest, {
+            filter: (obj, prop) => typeof obj[prop] !== 'undefined'
+        });
+
+        fs.writeFileSync(fileName, `module.exports = ${objectString};\n`);
     });
 });
 

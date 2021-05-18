@@ -1,0 +1,17 @@
+module.exports = {
+	name: 'layout-aside',
+	slots: [
+		{
+			name: 'default',
+			description: 'Slot for default layout aside content',
+			type: []
+		}
+	],
+	styles: [
+		{
+			name: 'width',
+			description: 'The width of the layout aside component',
+			default: '320px'
+		}
+	]
+};

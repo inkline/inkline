@@ -1,0 +1,84 @@
+module.exports = {
+	name: 'header',
+	slots: [
+		{
+			name: 'default',
+			description: 'Slot for default header content',
+			type: []
+		}
+	],
+	props: [
+		{
+			name: 'color',
+			description: 'The color variant of the header',
+			type: [
+				'primary',
+				'light',
+				'dark'
+			],
+			default: 'light'
+		},
+		{
+			name: 'cover',
+			description: 'Display the header background as cover, always covering the whole header width',
+			type: [
+				'Boolean'
+			],
+			default: 'true'
+		},
+		{
+			name: 'fluid',
+			description: 'Display the inner content container as fluid, covering 100% of the header width',
+			type: [
+				'Boolean'
+			],
+			default: 'false'
+		},
+		{
+			name: 'fullscreen',
+			description: 'Display the header as fullscreen, covering 100% screen height and 100% screen width',
+			type: [
+				'Boolean'
+			],
+			default: 'true'
+		},
+		{
+			name: 'size',
+			description: 'The size variant of the header',
+			type: [
+				'sm',
+				'md',
+				'lg'
+			],
+			default: 'md'
+		}
+	],
+	styles: [
+		{
+			name: 'padding',
+			description: 'The padding of the header component',
+			type: 'size',
+			default: '10rem'
+		},
+		{
+			name: 'color',
+			description: 'The color of the header component',
+			type: 'color',
+			variants: {
+				primary: 'contrast-color($color-primary)',
+				light: 'contrast-color($color-light)',
+				dark: 'contrast-color($color-dark)'
+			}
+		},
+		{
+			name: 'background',
+			description: 'The background of the header component',
+			type: 'color',
+			variants: {
+				primary: 'color(\'primary\')',
+				light: 'color(\'light\')',
+				dark: 'color(\'dark\')'
+			}
+		}
+	]
+};

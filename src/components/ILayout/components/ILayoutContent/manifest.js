@@ -1,0 +1,9 @@
+module.exports = {
+	slots: [
+		{
+			name: 'default',
+			description: 'Slot for default layout content children',
+			type: []
+		}
+	]
+};

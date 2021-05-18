@@ -1,0 +1,178 @@
+module.exports = {
+	name: 'table',
+	slots: [
+		{
+			name: 'default',
+			description: 'Slot for default table content',
+			type: []
+		}
+	],
+	props: [
+		{
+			name: 'border',
+			description: 'Display the table with borders',
+			type: [
+				'Boolean'
+			],
+			default: 'false'
+		},
+		{
+			name: 'condensed',
+			description: 'Display the table rows as condensed',
+			type: [
+				'Boolean'
+			],
+			default: 'false'
+		},
+		{
+			name: 'striped',
+			description: 'Display the table rows as alternating stripes',
+			type: [
+				'Boolean'
+			],
+			default: 'false'
+		},
+		{
+			name: 'hover',
+			description: 'Set the table rows as hoverable',
+			type: [
+				'Boolean'
+			],
+			default: 'false'
+		},
+		{
+			name: 'responsive',
+			description: 'Set the table to be responsive, enabling horizontal scroll when overflowing the parent container',
+			type: [
+				'Boolean',
+				'xs',
+				'sm',
+				'md',
+				'lg',
+				'xl',
+				'xxl'
+			],
+			default: 'false'
+		},
+		{
+			name: 'nowrap',
+			description: 'Display the table rows without wrapping white-space',
+			type: [
+				'Boolean'
+			],
+			default: 'false'
+		},
+		{
+			name: 'color',
+			description: 'The color variant of the table',
+			type: [
+				'primary',
+				'success',
+				'light',
+				'dark',
+				'info',
+				'success',
+				'warning',
+				'danger'
+			],
+			default: 'light'
+		}
+	],
+	styles: [
+		{
+			name: 'margin-bottom',
+			description: 'The bottom margin of the table component',
+			default: 'spacing()'
+		},
+		{
+			name: 'cell-padding',
+			description: 'The cell padding of the table component',
+			default: '0.75rem'
+		},
+		{
+			name: 'cell-padding-sm',
+			description: 'The cell padding of the table component when condensed',
+			default: '0.3rem'
+		},
+		{
+			name: 'border-width',
+			description: 'The border width of the table component',
+			default: 'var(--border-width)'
+		},
+		{
+			name: 'color',
+			description: 'The color of the table component',
+			type: 'color',
+			variants: {
+				primary: 'contrast-color($color-primary)',
+				secondary: 'contrast-color($color-secondary)',
+				light: 'contrast-color($color-light)',
+				dark: 'contrast-color($color-dark)',
+				info: 'contrast-color($color-info)',
+				success: 'contrast-color($color-success)',
+				warning: 'contrast-color($color-warning)',
+				danger: 'contrast-color($color-danger)'
+			}
+		},
+		{
+			name: 'background',
+			description: 'The background of the table component',
+			type: 'color',
+			variants: {
+				primary: 'color(\'primary\')',
+				secondary: 'color(\'secondary\')',
+				light: 'color(\'white\')',
+				dark: 'color(\'dark\')',
+				info: 'color(\'info\')',
+				success: 'color(\'success\')',
+				warning: 'color(\'warning\')',
+				danger: 'color(\'danger\')'
+			}
+		},
+		{
+			name: 'background-hover',
+			description: 'The background of the table component when hovered',
+			type: 'color',
+			variants: {
+				primary: 'color(\'primary-70\')',
+				secondary: 'color(\'secondary-70\')',
+				light: 'color(\'gray-20\')',
+				dark: 'color(\'gray-80\')',
+				info: 'color(\'info-70\')',
+				success: 'color(\'success-70\')',
+				warning: 'color(\'warning-70\')',
+				danger: 'color(\'danger-70\')'
+			}
+		},
+		{
+			name: 'background-striped',
+			description: 'The background of the table component when striped',
+			type: 'color',
+			variants: {
+				primary: 'color(\'primary-60\')',
+				secondary: 'color(\'secondary-60\')',
+				light: 'color(\'gray-10\')',
+				dark: 'color(\'gray-70\')',
+				info: 'color(\'info-60\')',
+				success: 'color(\'success-60\')',
+				warning: 'color(\'warning-60\')',
+				danger: 'color(\'danger-60\')'
+			}
+		},
+		{
+			name: 'border-color',
+			description: 'The border color of the table component',
+			type: 'color',
+			variants: {
+				primary: 'color(\'primary-60\')',
+				secondary: 'color(\'secondary-60\')',
+				light: 'color(\'gray-10\')',
+				dark: 'color(\'gray-70\')',
+				info: 'color(\'info-60\')',
+				success: 'color(\'success-60\')',
+				warning: 'color(\'warning-60\')',
+				danger: 'color(\'danger-60\')'
+			}
+		}
+	]
+};

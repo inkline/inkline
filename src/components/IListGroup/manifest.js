@@ -1,0 +1,132 @@
+module.exports = {
+	name: 'list-group',
+	slots: [
+		{
+			name: 'default',
+			description: 'Slot for default list group content',
+			type: []
+		}
+	],
+	props: [
+		{
+			name: 'border',
+			description: 'Display the list group border',
+			type: [
+				'Boolean'
+			],
+			default: 'true'
+		},
+		{
+			name: 'color',
+			description: 'The color variant of the list group',
+			type: [
+				'light',
+				'dark'
+			],
+			default: 'light'
+		},
+		{
+			name: 'size',
+			description: 'The size variant of the list group',
+			type: [
+				'sm',
+				'md',
+				'lg'
+			],
+			default: 'md'
+		}
+	],
+	styles: [
+		{
+			name: 'border-width',
+			description: 'The border width of the list group component',
+			default: 'var(--border-width)'
+		},
+		{
+			name: 'border-style',
+			description: 'The border style of the list group component',
+			default: 'solid'
+		},
+		{
+			name: 'border-radius',
+			description: 'The border radius of the list group component',
+			type: 'size',
+			default: 'border-radius()'
+		},
+		{
+			name: 'font-size',
+			description: 'The font size of the list group component',
+			type: 'size',
+			default: 'font-size()'
+		},
+		{
+			name: 'padding',
+			description: 'The padding of the list group component items',
+			type: 'size',
+			default: 'spacing()'
+		},
+		{
+			name: 'color',
+			description: 'The color of the list group component item',
+			type: 'color',
+			variants: {
+				light: 'contrast-color($color-light)',
+				dark: 'contrast-color($color-dark)'
+			}
+		},
+		{
+			name: 'color-active',
+			description: 'The color of the list group component item when active',
+			type: 'color',
+			variants: {
+				light: 'contrast-color($color-primary)',
+				dark: 'contrast-color($color-primary)'
+			}
+		},
+		{
+			name: 'color-disabled',
+			description: 'The color of the list group component item when disabled',
+			type: 'color',
+			variants: {
+				light: 'var(--text-muted)',
+				dark: 'var(--text-muted)'
+			}
+		},
+		{
+			name: 'background',
+			description: 'The background of the list group component',
+			type: 'color',
+			variants: {
+				light: 'color(\'white\')',
+				dark: 'color(\'dark\')'
+			}
+		},
+		{
+			name: 'background-active',
+			description: 'The background of the list group component when active',
+			type: 'color',
+			variants: {
+				light: 'color(\'primary\')',
+				dark: 'color(\'primary\')'
+			}
+		},
+		{
+			name: 'border-color',
+			description: 'The border-color of the list group component',
+			type: 'color',
+			variants: {
+				light: 'color(\'light\')',
+				dark: 'color(\'dark-60\')'
+			}
+		},
+		{
+			name: 'border-color-active',
+			description: 'The border-color of the list group component',
+			type: 'color',
+			variants: {
+				light: 'color(\'primary-55\')',
+				dark: 'color(\'primary-55\')'
+			}
+		}
+	]
+};
