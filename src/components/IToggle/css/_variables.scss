@@ -9,7 +9,7 @@ $toggle-font-size: font-size() !default;
 
 /// The right margin of the toggle component indicator
 /// @name indicator-margin-right
-$toggle-indicator-margin-right: spacer('1/2') !default;
+$toggle-indicator-margin-right: spacing('1/2') !default;
 
 /// The width of the toggle component indicator
 /// @name indicator-width

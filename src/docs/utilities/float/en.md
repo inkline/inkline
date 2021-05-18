@@ -17,7 +17,7 @@ You can use the float utility classes to float an element to the left or right, 
 <example :component="examples.FloatBasicExample" :html="examples.FloatBasicExampleHTML"></example>
 
 <i-alert variant="info" class="_margin-top-1">
-    <template #icon><i-icon icon="info"></i-icon></template>
+    <template #icon><i-icon name="ink-info"></i-icon></template>
      Float utilities do not affect flex items.
 </i-alert>
 

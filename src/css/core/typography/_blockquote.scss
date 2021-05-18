@@ -9,7 +9,7 @@
         text-align: left;
 
         &.-bordered {
-            padding-left: spacer();
+            padding-left: spacing();
             border-left: var(--blockquote-border);
         }
     }

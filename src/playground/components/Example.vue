@@ -78,19 +78,19 @@ export default defineComponent({
         display: block;
         width: 100%;
         box-sizing: border-box;
-        padding: spacer('1/2');
+        padding: spacing('1/2');
 
         > * {
-            margin: spacer('1/2');
+            margin: spacing('1/2');
         }
     }
 
     + .example {
-        margin-top: spacer();
+        margin-top: spacing();
     }
 
     &.-no-margin {
-        padding: spacer();
+        padding: spacing();
 
         > .body {
             > * {
@@ -105,7 +105,7 @@ export default defineComponent({
             width: 120px;
             text-align: center;
             border-radius: 4px;
-            padding: spacer() 0;
+            padding: spacing() 0;
         }
 
         > p {
@@ -145,7 +145,7 @@ export default defineComponent({
             }
 
             div {
-                padding: spacer('1/2');
+                padding: spacing('1/2');
                 background: color('gray-10');
                 border: 1px solid color('gray-30');
 
@@ -166,11 +166,11 @@ export default defineComponent({
     &.-overflow > .body {
         > div {
             background: color('light');
-            padding: spacer('1/2');
+            padding: spacing('1/2');
             border-radius: border-radius();
 
             + div {
-                margin-top: spacer();
+                margin-top: spacing();
             }
 
             .inkline.-dark & {
@@ -204,7 +204,7 @@ export default defineComponent({
 
             div {
                 margin: 0;
-                padding: spacer();
+                padding: spacing();
                 background: color('light');
 
                 .inkline.-dark & {
@@ -228,7 +228,7 @@ export default defineComponent({
         > .body {
             div {
                 max-width: 100%;
-                padding: spacer();
+                padding: spacing();
                 background: color('light');
 
                 .inkline.-dark & {
@@ -262,7 +262,7 @@ export default defineComponent({
         .layout-header,
         .layout-footer {
             background: color('gray-20');
-            padding: spacer() 0;
+            padding: spacing() 0;
 
             .inkline.-dark & {
                 background: color('gray-80');
@@ -271,7 +271,7 @@ export default defineComponent({
 
         .layout-content {
             background: color('gray-10');
-            padding: spacer('4') 0;
+            padding: spacing('4') 0;
 
             .inkline.-dark & {
                 background: color('gray-70');
@@ -303,8 +303,8 @@ export default defineComponent({
         }
 
         .column {
-            margin-top: spacer('1/2');
-            margin-bottom: spacer('1/2');
+            margin-top: spacing('1/2');
+            margin-bottom: spacing('1/2');
             text-align: center;
 
             &::after {
@@ -331,7 +331,7 @@ export default defineComponent({
                 }
 
                 border-radius: border-radius('lg');
-                padding: spacer() 0;
+                padding: spacing() 0;
                 background: color('primary-20')
             }
         }

@@ -196,7 +196,7 @@ ol,
 ul,
 dl {
     margin-top: 0;
-    margin-bottom: spacer();
+    margin-bottom: spacing();
 }
 
 ol ol,
@@ -211,7 +211,7 @@ dt {
 }
 
 dd {
-    margin-bottom: spacer('1/2');
+    margin-bottom: spacing('1/2');
     margin-left: 0; // Undo browser default
 }
 
@@ -220,7 +220,7 @@ dd {
  */
 
 address {
-    margin-bottom: spacer();
+    margin-bottom: spacing();
     font-style: normal;
     line-height: inherit;
 }
@@ -302,7 +302,7 @@ template {
 
 pre {
     margin-top: 0;
-    margin-bottom: spacer();
+    margin-bottom: spacing();
     overflow: auto;
 }
 
@@ -400,7 +400,7 @@ legend {
     width: 100%;
     max-width: 100%;
     padding: 0;
-    margin-bottom: spacer('1/2');
+    margin-bottom: spacing('1/2');
     font-size: 1.5rem;
     line-height: inherit;
     color: inherit;
@@ -409,7 +409,7 @@ legend {
 
 label {
     display: inline-block;
-    margin-bottom: spacer('1/2');
+    margin-bottom: spacing('1/2');
 }
 
 textarea {

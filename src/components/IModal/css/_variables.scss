@@ -16,7 +16,7 @@ $modal-border-width: var(--border-width) !default;
 
 /// The margin of the modal component
 /// @name margin
-$modal-margin: spacer() !default;
+$modal-margin: spacing() !default;
 
 /// The background of the modal component overlay
 /// @name overlay-background
@@ -40,7 +40,7 @@ $modal-font-size: font-size() !default;
 /// The padding of the modal component
 /// @name padding
 /// @type size
-$modal-padding: spacer() !default;
+$modal-padding: spacing() !default;
 
 ////
 /// Sizes

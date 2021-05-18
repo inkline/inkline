@@ -16,7 +16,7 @@ $select-border-width: var(--border-width) !default;
 
 /// The margin of the select component
 /// @name margin
-$select-margin: spacer('1/2') !default;
+$select-margin: spacing('1/2') !default;
 
 /// The z-index of the select component
 /// @name z-index
@@ -32,7 +32,7 @@ $select-max-width: 90vw !default;
 
 /// The margin of the select component divider
 /// @name divider-margin
-$select-divider-margin: spacer('1/2') !default;
+$select-divider-margin: spacing('1/2') !default;
 
 /// The border radius of the select component
 /// @name border-radius
@@ -47,22 +47,22 @@ $select-font-size: font-size() !default;
 /// The padding of the select component items
 /// @name padding
 /// @type size
-$select-padding: spacer() !default;
+$select-padding: spacing() !default;
 
 /// The padding of the select component popover body
 /// @name body-padding
 /// @type size
-$select-body-padding: spacer() !default;
+$select-body-padding: spacing() !default;
 
 /// The padding of the select component popover header
 /// @name header-padding
 /// @type size
-$select-header-padding: spacer() !default;
+$select-header-padding: spacing() !default;
 
 /// The padding of the select component popover footer
 /// @name footer-padding
 /// @type size
-$select-footer-padding: spacer() !default;
+$select-footer-padding: spacing() !default;
 
 ////
 /// Sizes

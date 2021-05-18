@@ -16,7 +16,7 @@ $tooltip-border-width: var(--border-width) !default;
 
 /// The margin of the tooltip component
 /// @name margin
-$tooltip-margin: spacer('1/2') !default;
+$tooltip-margin: spacing('1/2') !default;
 
 /// The z-index of the tooltip component
 /// @name z-index
@@ -35,7 +35,7 @@ $tooltip-font-size: font-size() !default;
 /// The padding of the tooltip component items
 /// @name padding
 /// @type size
-$tooltip-padding: spacer() !default;
+$tooltip-padding: spacing() !default;
 
 ////
 /// Sizes

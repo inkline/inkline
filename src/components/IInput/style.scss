@@ -111,13 +111,13 @@
         }
 
         .input-prefix {
-            padding-right: spacer();
+            padding-right: spacing();
             border-right-width: var(--input-prefix-border-width);
             border-right-style: solid;
         }
 
         .input-suffix {
-            padding-left: spacer();
+            padding-left: spacing();
             border-left-width: var(--input-prefix-border-width);
             border-left-style: solid;
         }

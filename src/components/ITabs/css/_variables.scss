@@ -27,12 +27,12 @@ $tabs-border-radius: border-radius() !default;
 /// The padding of the tabs component
 /// @name padding
 /// @type size
-$tabs-padding: spacer() !default;
+$tabs-padding: spacing() !default;
 
 /// The padding of the tabs component header
 /// @name header-padding
 /// @type size
-$tabs-header-padding: spacer() !default;
+$tabs-header-padding: spacing() !default;
 
 ////
 /// Sizes

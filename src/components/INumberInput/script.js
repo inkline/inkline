@@ -55,7 +55,7 @@ export default {
         },
         /**
          * @description Used to set the field value
-         * @type String, Number
+         * @type String | Number
          * @default
          */
         modelValue: {

@@ -4,7 +4,7 @@
 
 /// The margin of the navbar component brand
 /// @name brand-margin
-$navbar-brand-margin: spacer() !default;
+$navbar-brand-margin: spacing() !default;
 
 /// The border radius of the navbar component
 /// @name border-radius
@@ -19,12 +19,12 @@ $navbar-font-size: font-size() !default;
 /// The padding of the navbar component
 /// @name padding
 /// @type size
-$navbar-padding: spacer() !default;
+$navbar-padding: spacing() !default;
 
 /// The padding of the navbar component item
 /// @name item-padding
 /// @type size
-$navbar-item-padding: spacer() !default;
+$navbar-item-padding: spacing() !default;
 
 ////
 /// Sizes

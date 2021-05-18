@@ -9,7 +9,7 @@ $radio-font-size: font-size() !default;
 
 /// The right margin of the radio component, when displaying multiple inline radioes
 /// @name margin-right
-$radio-margin-right: spacer() !default;
+$radio-margin-right: spacing() !default;
 
 /// The border width of the radio component indicator
 /// @name indicator-border-width
@@ -27,7 +27,7 @@ $radio-indicator-icon-size: 8px !default;
 
 /// The right margin of the radio component indicator
 /// @name indicator-margin-right
-$radio-indicator-margin-right: spacer('1/2') !default;
+$radio-indicator-margin-right: spacing('1/2') !default;
 
 ////
 /// Sizes

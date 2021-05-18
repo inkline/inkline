@@ -16,7 +16,7 @@ $dropdown-border-width: var(--border-width) !default;
 
 /// The margin of the dropdown component
 /// @name margin
-$dropdown-margin: spacer('1/2') !default;
+$dropdown-margin: spacing('1/2') !default;
 
 /// The z-index of the dropdown component
 /// @name z-index
@@ -32,7 +32,7 @@ $dropdown-max-width: 90vw !default;
 
 /// The margin of the dropdown component divider
 /// @name divider-margin
-$dropdown-divider-margin: spacer('1/2') !default;
+$dropdown-divider-margin: spacing('1/2') !default;
 
 /// The border radius of the dropdown component
 /// @name border-radius
@@ -47,22 +47,22 @@ $dropdown-font-size: font-size() !default;
 /// The padding of the dropdown component items
 /// @name padding
 /// @type size
-$dropdown-padding: spacer() !default;
+$dropdown-padding: spacing() !default;
 
 /// The padding of the dropdown component popover body
 /// @name body-padding
 /// @type size
-$dropdown-body-padding: spacer() !default;
+$dropdown-body-padding: spacing() !default;
 
 /// The padding of the dropdown component popover header
 /// @name header-padding
 /// @type size
-$dropdown-header-padding: spacer() !default;
+$dropdown-header-padding: spacing() !default;
 
 /// The padding of the dropdown component popover footer
 /// @name footer-padding
 /// @type size
-$dropdown-footer-padding: spacer() !default;
+$dropdown-footer-padding: spacing() !default;
 
 ////
 /// Sizes

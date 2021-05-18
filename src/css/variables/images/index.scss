@@ -3,7 +3,7 @@
 
 // Image thumbnails
 //
-$thumbnail-padding: calc(#{spacer()} / 2) !default;
+$thumbnail-padding: calc(#{spacing()} / 2) !default;
 $thumbnail-background: var(--body-background-light) !default;
 $thumbnail-border-width: var(--border-width) !default;
 $thumbnail-border-color: color('gray-40') !default;
@@ -13,10 +13,10 @@ $thumbnail-transition: all 0.2s ease-in-out !default;
 
 // Polaroid
 //
-$polaroid-padding: calc(#{spacer()} * 3) !default;
+$polaroid-padding: calc(#{spacing()} * 3) !default;
 
 // Figures
 //
 $figure-caption-font-size: 90% !default;
 $figure-caption-color: color('gray-60') !default;
-$figure-image-margin-bottom: calc(#{spacer()} / 2) !default;
+$figure-image-margin-bottom: calc(#{spacing()} / 2) !default;

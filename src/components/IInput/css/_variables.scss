@@ -27,12 +27,12 @@ $input-font-size: font-size() !default;
 /// The padding of the input component
 /// @name padding
 /// @type size
-$input-padding: spacer() !default;
+$input-padding: spacing() !default;
 
 /// The padding of the input component prefix and suffix
 /// @name prefix-suffix-padding
 /// @type size
-$input-prefix-suffix-padding: spacer() !default;
+$input-prefix-suffix-padding: spacing() !default;
 
 /// The padding of the input component
 /// @name box-shadow

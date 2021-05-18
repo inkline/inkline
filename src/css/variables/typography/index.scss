@@ -82,7 +82,7 @@ $font-weights: (
     'black': $font-weight-black,
 ) !default;
 
-@function font-weight($font-weight-key) {
+@function font-weight($font-weight-key: 'normal') {
     @return var(--font-weight-#{$font-weight-key});
 }
 
@@ -97,12 +97,12 @@ $text-muted: color('gray-60') !default;
 
 // Headings
 //
-$h1-font-size: calc(2.5 * #{font-size()}) !default;
-$h2-font-size: calc(2 * #{font-size()}) !default;
-$h3-font-size: calc(1.75 * #{font-size()}) !default;
-$h4-font-size: calc(1.5 * #{font-size()}) !default;
-$h5-font-size: calc(1.25 * #{font-size()}) !default;
-$h6-font-size: calc(1 * #{font-size()}) !default;
+$h1-font-size: calc(#{font-size()} * var(--scale-ratio-pow-5)) !default;
+$h2-font-size: calc(#{font-size()} * var(--scale-ratio-pow-4)) !default;
+$h3-font-size: calc(#{font-size()} * var(--scale-ratio-pow-3)) !default;
+$h4-font-size: calc(#{font-size()} * var(--scale-ratio-pow-2)) !default;
+$h5-font-size: calc(#{font-size()} * var(--scale-ratio-pow-1)) !default;
+$h6-font-size: calc(#{font-size()}) !default;
 
 $headings-font-size: (
     'h1': $h1-font-size,
@@ -117,8 +117,8 @@ $headings-font-size: (
     @return var(--#{$heading-font-size-key}-font-size);
 }
 
-$headings-margin-top: calc(#{spacer()} * 2.5) !default;
-$headings-margin-bottom: spacer() !default;
+$headings-margin-top: calc(#{spacing()} * 2.5) !default;
+$headings-margin-bottom: spacing() !default;
 $headings-font-family: font-family-secondary('base') !default;
 $headings-font-weight: font-weight('semibold') !default;
 $headings-line-height: 1.1 !default;
@@ -126,12 +126,12 @@ $headings-color: inherit !default;
 
 // Displays
 //
-$d1-font-size: calc(5.5 * #{font-size()}) !default;
-$d2-font-size: calc(5 * #{font-size()}) !default;
-$d3-font-size: calc(4.5 * #{font-size()}) !default;
-$d4-font-size: calc(4 * #{font-size()}) !default;
-$d5-font-size: calc(3.5 * #{font-size()}) !default;
-$d6-font-size: calc(3 * #{font-size()}) !default;
+$d1-font-size: calc(#{heading-font-size('h1')} * var(--scale-ratio-pow-6)) !default;
+$d2-font-size: calc(#{heading-font-size('h1')} * var(--scale-ratio-pow-5)) !default;
+$d3-font-size: calc(#{heading-font-size('h1')} * var(--scale-ratio-pow-4)) !default;
+$d4-font-size: calc(#{heading-font-size('h1')} * var(--scale-ratio-pow-3)) !default;
+$d5-font-size: calc(#{heading-font-size('h1')} * var(--scale-ratio-pow-2)) !default;
+$d6-font-size: calc(#{heading-font-size('h1')} * var(--scale-ratio-pow-1)) !default;
 
 $displays-font-size: (
     'd1': $d1-font-size,
@@ -163,8 +163,8 @@ $lead-font-weight: 300 !default;
 
 // Lists
 //
-$list-inline-padding: spacer('1') !default;
-$list-item-margin-bottom: spacer('1/2') !default;
+$list-inline-padding: spacing('1') !default;
+$list-item-margin-bottom: spacing('1/2') !default;
 
 // Description Lists
 //
@@ -180,14 +180,14 @@ $small-font-weight: font-weight('normal') !default;
 $blockquote-small-color: color('gray-60') !default;
 $blockquote-font-size: font-size('lg') !default;
 $blockquote-border: 3px solid color('gray-30') !default;
-$blockquote-margin: spacer() !default;
-$blockquote-bordered-padding: spacer() !default;
+$blockquote-margin: spacing() !default;
+$blockquote-bordered-padding: spacing() !default;
 
 // Horizontal rule
 //
 $hr-border-color: rgba(color('black'), 0.1) !default;
 $hr-border-width: var(--border-width) !default;
-$hr-margin: spacer() !default;
+$hr-margin: spacing() !default;
 
 // Mark
 //

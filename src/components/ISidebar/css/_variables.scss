@@ -15,12 +15,12 @@ $sidebar-font-size: font-size() !default;
 /// The padding of the sidebar component
 /// @name padding
 /// @type size
-$sidebar-padding: spacer() !default;
+$sidebar-padding: spacing() !default;
 
 /// The padding of the sidebar component item
 /// @name item-padding
 /// @type size
-$sidebar-item-padding: spacer() !default;
+$sidebar-item-padding: spacing() !default;
 
 /// The width of the sidebar component
 /// @name width

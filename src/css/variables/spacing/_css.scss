@@ -2,11 +2,23 @@
 //
 
 :root {
-    --spacer: #{$spacer};
+    --spacing: #{$spacing};
 
-    @each $spacer-key, $spacer-value in $spacers {
-        $spacer-key: str-replace($spacer-key, '/', '-');
+    --margin-top: #{$margin-top};
+    --margin-right: #{$margin-right};
+    --margin-bottom: #{$margin-bottom};
+    --margin-left: #{$margin-left};
+    --margin: #{$margin};
 
-        --spacer-#{$spacer-key}: #{$spacer-value};
+    --padding-top: #{$padding-top};
+    --padding-right: #{$padding-right};
+    --padding-bottom: #{$padding-bottom};
+    --padding-left: #{$padding-left};
+    --padding: #{$padding};
+
+    @each $spacing-key, $spacing-value in $spacings {
+        $spacing-key: str-replace($spacing-key, '/', '-');
+
+        --spacing-#{$spacing-key}: #{$spacing-value};
     }
 }

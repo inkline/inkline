@@ -29,11 +29,13 @@ $size-percentages: (
 // Size multipliers
 //
 
-$size-multiplier-xs: 0.6 !default;
-$size-multiplier-sm: 0.8 !default;
-$size-multiplier-md: 1 !default;
-$size-multiplier-lg: 1.2 !default;
-$size-multiplier-xl: 1.4 !default;
+$size-multiplier: 1 !default;
+
+$size-multiplier-xs: calc(var(--size-multiplier) / var(--scale-ratio-pow-2)) !default;
+$size-multiplier-sm: calc(var(--size-multiplier) / var(--scale-ratio)) !default;
+$size-multiplier-md: var(--size-multiplier) !default;
+$size-multiplier-lg: calc(var(--size-multiplier) * var(--scale-ratio)) !default;
+$size-multiplier-xl: calc(var(--size-multiplier) * var(--scale-ratio-pow-2)) !default;
 
 $size-multipliers: (
     'xs': $size-multiplier-xs,

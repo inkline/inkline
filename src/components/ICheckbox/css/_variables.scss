@@ -9,7 +9,7 @@ $checkbox-font-size: font-size() !default;
 
 /// The right margin of the checkbox component, when displaying multiple inline checkboxes
 /// @name margin-right
-$checkbox-margin-right: spacer() !default;
+$checkbox-margin-right: spacing() !default;
 
 /// The border radius of the checkbox component indicator
 /// @name indicator-border-radius
@@ -32,7 +32,7 @@ $checkbox-indicator-icon-size: 8px !default;
 
 /// The right margin of the checkbox component indicator
 /// @name indicator-margin-right
-$checkbox-indicator-margin-right: spacer('1/2') !default;
+$checkbox-indicator-margin-right: spacing('1/2') !default;
 
 ////
 /// Sizes

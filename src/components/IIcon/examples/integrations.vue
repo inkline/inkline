@@ -86,7 +86,7 @@ export default {
         }
 
         ul {
-            margin-top: spacer();
+            margin-top: spacing();
             padding-left: 0;
 
             li {
@@ -95,7 +95,7 @@ export default {
                 div {
                     display: flex;
                     flex-direction: column;
-                    margin-right: spacer('2');
+                    margin-right: spacing('2');
                 }
             }
         }

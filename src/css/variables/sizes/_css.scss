@@ -3,6 +3,7 @@
         --size-percentage-#{$size-percentage-key}: #{$size-percentage-value};
     }
 
+    --size-multiplier: #{$size-multiplier};
     @each $size-multiplier-key, $size-multiplier-value in $size-multipliers {
         --size-multiplier-#{$size-multiplier-key}: #{$size-multiplier-value};
     }

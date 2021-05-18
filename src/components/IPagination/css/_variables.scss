@@ -8,7 +8,7 @@ $pagination-border-width: var(--border-width) !default;
 
 /// The margin of the pagination component items
 /// @name margin
-$pagination-margin: spacer('1/4') !default;
+$pagination-margin: spacing('1/4') !default;
 
 /// The opacity of the pagination component when disabled
 /// @name opacity-disabled
@@ -27,7 +27,7 @@ $pagination-font-size: font-size() !default;
 /// The padding of the pagination component
 /// @name padding
 /// @type size
-$pagination-padding: spacer('1/2') !default;
+$pagination-padding: spacing('1/2') !default;
 
 /// The minimum width of the pagination component items
 /// @name min-width

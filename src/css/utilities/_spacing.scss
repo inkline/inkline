@@ -7,31 +7,31 @@
 
     @include breakpoint-up($breakpoint-key) {
         @each $property in ('margin', 'padding') {
-            @each $size, $length in $spacers {
+            @each $size, $length in $spacings {
                 $size-class: str-replace($size, '/', '\\/');
 
                 ._#{$prefix}#{$property}\:#{$size-class} {
-                    #{$property}: spacer($size) !important;
+                    #{$property}: spacing($size) !important;
                 }
 
                 ._#{$prefix}#{$property}-top\:#{$size-class},
                 ._#{$prefix}#{$property}-y\:#{$size-class} {
-                    #{$property}-top: spacer($size) !important;
+                    #{$property}-top: spacing($size) !important;
                 }
 
                 ._#{$prefix}#{$property}-right\:#{$size-class},
                 ._#{$prefix}#{$property}-x\:#{$size-class} {
-                    #{$property}-right: spacer($size) !important;
+                    #{$property}-right: spacing($size) !important;
                 }
 
                 ._#{$prefix}#{$property}-bottom\:#{$size-class},
                 ._#{$prefix}#{$property}-y\:#{$size-class} {
-                    #{$property}-bottom: spacer($size) !important;
+                    #{$property}-bottom: spacing($size) !important;
                 }
 
                 ._#{$prefix}#{$property}-left\:#{$size-class},
                 ._#{$prefix}#{$property}-x\:#{$size-class} {
-                    #{$property}-left: spacer($size) !important;
+                    #{$property}-left: spacing($size) !important;
                 }
             }
         }

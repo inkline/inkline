@@ -16,7 +16,7 @@ $popover-border-width: var(--border-width) !default;
 
 /// The margin of the popover component
 /// @name margin
-$popover-margin: spacer('1/2') !default;
+$popover-margin: spacing('1/2') !default;
 
 /// The z-index of the popover component
 /// @name z-index
@@ -43,7 +43,7 @@ $popover-font-size: font-size() !default;
 /// The padding of the popover component items
 /// @name padding
 /// @type size
-$popover-padding: spacer() !default;
+$popover-padding: spacing() !default;
 
 ////
 /// Sizes

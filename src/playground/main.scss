@@ -2,3 +2,32 @@ $assets-path: '../assets';
 
 @import '../inkline';
 
+//:root {
+//    --spacing: 2rem;
+//    --padding-top: 1rem;
+//    --padding-right: 3rem;
+//    --padding-bottom: 1rem;
+//    --padding-left: 3rem;
+//}
+//
+
+//@include i-alert {
+//    ----border-left-width: 1rem;
+//
+//    @include variant('lg') {
+//        ----border-left-width: 5rem;
+//    }
+//}
+////.alert {
+////    ----border-left-width: 5px;
+////    ----padding-top: 1rem;
+////    ----padding-bottom: 5rem;
+////}
+//
+//.badge {
+//    //----padding: 1rem;
+//
+//    &.-lg {
+//        ----padding: 2rem;
+//    }
+//}
