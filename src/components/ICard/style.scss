@@ -1,9 +1,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
-@import 'css/colors';
-@import 'css/sizes';
 
 /**
  * Card
@@ -15,6 +12,10 @@
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
+    color: var(----color);
+    background: var(----background);
+    border-radius: var(----border-radius);
+    font-size: var(----font-size);
 
     > hr {
         margin-right: 0;
@@ -23,9 +24,13 @@
 
     > .card-header {
         margin-bottom: 0;
-        border-width: $card-border-width;
-        border-style: solid;
+        color: var(----header--color);
+        background: var(----header--background);
+        border-color: var(----header--border-color);
+        border-width: var(----border-width);
+        border-style: var(----border-style);
         border-bottom-width: 0;
+        padding: var(----padding);
 
         > h1,
         > h2,
@@ -56,18 +61,25 @@
                 border-top: 0;
             }
         }
+
+        &:first-child {
+            border-top-left-radius: var(----border-top-left-radius);
+            border-top-right-radius: var(----border-top-right-radius);
+        }
     }
 
     > .card-body {
-
         // Enable `flex-grow: 1` for decks and groups so that card blocks take up
         // as much space as possible, ensuring footers are aligned to the bottom.
         flex: 1 1 auto;
-        border-width: $card-border-width;
-        border-style: solid;
+        border-width: var(----border-width);
+        border-style: var(----border-style);
+        border-color: var(----border-color);
         transition-property: border-color;
         transition-duration: var(--transition-duration);
         transition-timing-function: var(--transition-easing);
+        padding: var(----padding);
+        border-radius: var(----border-radius);
 
         &:not(:first-child) {
             border-top-left-radius: 0;
@@ -81,14 +93,20 @@
 
         > .card-title {
             margin-top: 0;
+            margin-bottom: var(--margin-bottom);
         }
 
         > .card-subtitle {
+            margin-top: var(--margin-top);
             margin-bottom: 0;
         }
 
         > .card-link {
             text-decoration: none;
+
+            + .card-link {
+                margin-left: var(--margin-left);
+            }
         }
 
         > *:first-child {
@@ -101,13 +119,29 @@
     }
 
     > .card-footer {
-        border-width: $card-border-width;
-        border-style: solid;
+        background: var(----footer--background);
+        color: var(----footer--color);
+        border-color: var(----footer--border-color);
+        border-width: var(----border-width);
+        border-style: var(----border-style);
         border-top-width: 0;
+        padding: var(----padding);
+
+        &:last-child {
+            border-bottom-left-radius: var(----border-bottom-left-radius);
+            border-bottom-right-radius: var(----border-bottom-right-radius);
+        }
     }
 
     img {
         width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+        border-top-left-radius: var(----border-top-left-radius);
+        border-top-right-radius: var(----border-top-right-radius);
+    }
+
+    &:last-child {
+        border-bottom-left-radius: var(----border-bottom-left-radius);
+        border-bottom-right-radius: var(----border-bottom-right-radius);
     }
 
     &,
@@ -118,17 +152,15 @@
         transition-timing-function: var(--transition-easing);
     }
 
-    @include card-size-variant('md');
-    @each $size-variant-key, $card-size-variant-value in $card-size-variants {
-        &.-#{$size-variant-key} {
-            @include card-size-variant($size-variant-key);
-        }
+    > .list-group:first-child,
+    .list-group-item:first-child {
+        border-top-left-radius: var(----border-top-left-radius);
+        border-top-right-radius: var(----border-top-right-radius);
     }
 
-    @include card-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $card-color-variants {
-        &.-#{$color-variant-key} {
-            @include card-color-variant($color-variant-key);
-        }
+    > .list-group:last-child,
+    .list-group-item:last-child {
+        border-bottom-left-radius: var(----border-bottom-left-radius);
+        border-bottom-right-radius: var(----border-bottom-right-radius);
     }
 }
