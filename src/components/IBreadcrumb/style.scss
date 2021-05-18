@@ -4,28 +4,35 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
-@import 'css/colors';
-@import 'css/sizes';
 
 .breadcrumb {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: var(--breadcrumb-margin-bottom);
     padding-left: 0;
     list-style: none;
+    margin-bottom: var(----margin-bottom);
+    font-size: var(----font-size);
 
-    @include breadcrumb-size-variant('md');
-    @each $size-variant-key, $breadcrumb-size-variant-value in $breadcrumb-size-variants {
-        &.-#{$size-variant-key} {
-            @include breadcrumb-size-variant($size-variant-key);
+    > .breadcrumb-item {
+        padding-left: var(----padding-left);
+
+        a {
+            color: var(----color--default);
+
+            &[href],
+            &[to] {
+                color: var(----color);
+            }
         }
-    }
 
-    @include breadcrumb-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $breadcrumb-color-variants {
-        &.-#{$color-variant-key} {
-            @include breadcrumb-color-variant($color-variant-key);
+        &.-active a {
+            color: var(----color--active);
+        }
+
+        + .breadcrumb-item {
+            &::before {
+                padding-right: var(----padding-right);
+            }
         }
     }
 }

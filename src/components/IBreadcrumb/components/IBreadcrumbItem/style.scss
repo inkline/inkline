@@ -3,50 +3,47 @@
  */
 @import '../../../../css/variables';
 @import '../../../../css/mixins';
-@import '../../css/variables';
 
-.breadcrumb {
-    > .item {
-        margin-bottom: 0;
+.breadcrumb-item {
+    margin-bottom: 0;
 
-        > span {
-            display: inline-block;
+    > span {
+        display: inline-block;
+    }
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    // The separator between breadcrumbs (by default, a forward-slash: "/")
+    + .breadcrumb-item {
+        &::before {
+            display: inline-block; // } Suppress underlining of the separator in modern browsers
+            content: '/';
         }
+    }
 
-        &:first-child {
-            padding-left: 0;
-        }
+    // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
+    // without `<ul>`s. The `::before` pseudo-element generates an element
+    // *within* the .breadcrumb-item and thereby inherits the `text-decoration`.
+    //
+    // To trick IE into suppressing the underline, we give the pseudo-element an
+    // underline and then immediately remove it.
+    + .breadcrumb-item:hover::before {
+        text-decoration: underline;
+    }
 
-        // The separator between breadcrumbs (by default, a forward-slash: "/")
-        + .item {
-            &::before {
-                display: inline-block; // } Suppress underlining of the separator in modern browsers
-                content: $breadcrumb-divider;
-            }
-        }
+    // Check the above for duplication
+    + .breadcrumb-item:hover::before { /* stylelint-disable-line no-duplicate-selectors */
+        text-decoration: none;
+    }
 
-        // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
-        // without `<ul>`s. The `::before` pseudo-element generates an element
-        // *within* the .item and thereby inherits the `text-decoration`.
-        //
-        // To trick IE into suppressing the underline, we give the pseudo-element an
-        // underline and then immediately remove it.
-        + .item:hover::before {
-            text-decoration: underline;
-        }
+    :not([href]):not([to]) {
+        text-decoration: none;
+    }
 
-        // Check the above for duplication
-        + .item:hover::before { /* stylelint-disable-line no-duplicate-selectors */
-            text-decoration: none;
-        }
-
-        :not([href]):not([to]) {
-            text-decoration: none;
-        }
-
-        [href],
-        [to] {
-            cursor: pointer;
-        }
+    [href],
+    [to] {
+        cursor: pointer;
     }
 }

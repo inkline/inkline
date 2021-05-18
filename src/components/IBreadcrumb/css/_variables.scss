@@ -1,171 +1,168 @@
-////
-/// Variables
-////
+/**
+ * Variables
+ */
 
-/// The divider of the breadcrumb component
-/// @name divider
-$breadcrumb-divider: '/' !default;
+.breadcrumb {
+    /// The bottom margin of the breadcrumb component
+    /// @name margin-bottom
+    /// 
+    ----margin-bottom: #{spacing()};
 
-/// The bottom margin of the breadcrumb component
-/// @name margin-bottom
-$breadcrumb-margin-bottom: spacer() !default;
+    /// The font size of the breadcrumb component
+    /// @name font-size
+    /// @type size
+    ///
+    ----font-size: #{font-size()};
 
-/// The font size of the breadcrumb component
-/// @name font-size
-/// @type size
-$breadcrumb-font-size: font-size() !default;
+    /// The padding right of the breadcrumb component
+    /// @name padding-right
+    /// @type size
+    ///
+    ----padding-right: #{var(--padding-right)};
 
-/// The padding of the breadcrumb component
-/// @name padding
-/// @type size
-$breadcrumb-padding: spacer() !default;
+    /// The padding left of the breadcrumb component
+    /// @name padding-left
+    /// @type size
+    ///
+    ----padding-left: #{var(--padding-left)};
 
-////
-/// Sizes
-////
+    /// The text color of the breadcrumb component
+    /// @name color
+    /// @type color
+    ///
+    ----color: #{color('primary')};
 
-////
-/// Small size
-////
+    /// The text default color of the breadcrumb component
+    /// @name color--default
+    /// @type color
+    ///
+    ----color--default: #{color('gray-90')};
 
-/// The font size of the breadcrumb component
-/// @name font-size
-/// @group sm
-/// @type size
-$breadcrumb-size-variant-sm-font-size: calc(var(--breadcrumb-font-size) * #{size-multiplier('sm')}) !default;
+    /// The text active color of the breadcrumb component
+    /// @name color--active
+    /// @type color
+    ///
+    ----color--active: #{color('gray-70')};
 
-/// The padding of the breadcrumb component
-/// @name padding
-/// @group sm
-/// @type size
-$breadcrumb-size-variant-sm-padding: calc(var(--breadcrumb-padding) * #{size-multiplier('sm')}) !default;
+    /**
+     * Size variants
+     */
 
-/// Map for sm size
-/// @group sm
-$breadcrumb-size-variant-sm: (
-    'font-size': $breadcrumb-size-variant-sm-font-size,
-    'padding': $breadcrumb-size-variant-sm-padding
-) !default;
+    /// Variables for the sm color variant
+    /// @name sm
+    /// @type group
+    @include variant('sm') {
+        /// The font size of the breadcrumb component, for the sm size variant
+        /// @name font-size
+        /// @type size
+        ///
+        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
 
-////
-/// Medium size
-////
+        /// The padding right of the breadcrumb component, for the sm size variant
+        /// @name padding-right
+        /// @type size
+        ///
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
 
-/// The font size of the breadcrumb component
-/// @name font-size
-/// @group md
-/// @type size
-$breadcrumb-size-variant-md-font-size: calc(var(--breadcrumb-font-size) * #{size-multiplier('md')}) !default;
+        /// The padding left of the breadcrumb component, for the sm size variant
+        /// @name padding-left
+        /// @type size
+        ///
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
+    }
 
-/// The padding of the breadcrumb component
-/// @name padding
-/// @group md
-/// @type size
-$breadcrumb-size-variant-md-padding: calc(var(--breadcrumb-padding) * #{size-multiplier('md')}) !default;
+    /// Variables for the md color variant
+    /// @name md
+    /// @type group
+    @include variant('md') {
+        /// The font size of the breadcrumb component, for the md size variant
+        /// @name font-size
+        /// @type size
+        ///
+        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
 
-/// Map for md size
-/// @group md
-$breadcrumb-size-variant-md: (
-    'font-size': $breadcrumb-size-variant-md-font-size,
-    'padding': $breadcrumb-size-variant-md-padding
-) !default;
+        /// The padding right of the breadcrumb component, for the md size variant
+        /// @name padding-right
+        /// @type size
+        ///
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
 
-////
-/// Large size
-////
+        /// The padding left of the breadcrumb component, for the md size variant
+        /// @name padding-left
+        /// @type size
+        ///
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
+    }
 
-/// The font size of the breadcrumb component
-/// @name font-size
-/// @group lg
-/// @type size
-$breadcrumb-size-variant-lg-font-size: calc(var(--breadcrumb-font-size) * #{size-multiplier('lg')}) !default;
+    /// Variables for the lg color variant
+    /// @name lg
+    /// @type group
+    @include variant('lg') {
+        /// The font size of the breadcrumb component, for the lg size variant
+        /// @name font-size
+        /// @type size
+        ///
+        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
 
-/// The padding of the breadcrumb component
-/// @name padding
-/// @group lg
-/// @type size
-$breadcrumb-size-variant-lg-padding: calc(var(--breadcrumb-padding) * #{size-multiplier('lg')}) !default;
+        /// The padding right of the breadcrumb component, for the lg size variant
+        /// @name padding-right
+        /// @type size
+        ///
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
 
-/// Map for lg size
-/// @group lg
-$breadcrumb-size-variant-lg: (
-    'font-size': $breadcrumb-size-variant-lg-font-size,
-    'padding': $breadcrumb-size-variant-lg-padding
-) !default;
+        /// The padding left of the breadcrumb component, for the lg size variant
+        /// @name padding-left
+        /// @type size
+        ///
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
+    }
 
-/// Sizes group map
-$breadcrumb-size-variants: (
-    'sm': $breadcrumb-size-variant-sm,
-    'md': $breadcrumb-size-variant-md,
-    'lg': $breadcrumb-size-variant-lg
-) !default;
+    /**
+     * Color variants
+     */
 
-////
-/// Colors
-////
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light') {
+        /// The text color of the breadcrumb component, for the light color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{color('primary')};
 
-////
-/// Light color
-////
+        /// The text default color of the breadcrumb component, for the light color variant
+        /// @name color--default
+        /// @type color
+        ///
+        ----color--default: #{color('gray-90')};
 
-/// The text color of the breadcrumb component
-/// @name color
-/// @group light
-/// @type color
-$breadcrumb-color-variant-light-color: color('primary') !default;
+        /// The text active color of the breadcrumb component, for the light color variant
+        /// @name color--active
+        /// @type color
+        ///
+        ----color--active: #{color('gray-70')};
+    }
 
-/// The text default color of the breadcrumb component
-/// @name color-default
-/// @group light
-/// @type color
-$breadcrumb-color-variant-light-color-default: color('gray-90') !default;
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark') {
+        /// The text color of the breadcrumb component, for the dark color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{color('primary')};
 
-/// The text active color of the breadcrumb component
-/// @name color-active
-/// @group light
-/// @type color
-$breadcrumb-color-variant-light-color-active: color('gray-70') !default;
+        /// The text default color of the breadcrumb component, for the dark color variant
+        /// @name color--default
+        /// @type color
+        ///
+        ----color--default: #{color('white')};
 
-/// Map for light color
-/// @group light
-$breadcrumb-color-variant-light: (
-    'color': $breadcrumb-color-variant-light-color,
-    'color-default': $breadcrumb-color-variant-light-color-default,
-    'color-active': $breadcrumb-color-variant-light-color-active
-) !default;
-
-////
-/// Dark color
-////
-
-/// The text color of the breadcrumb component
-/// @name color
-/// @group dark
-/// @type color
-$breadcrumb-color-variant-dark-color: color('primary') !default;
-
-/// The text default color of the breadcrumb component
-/// @name color-default
-/// @group dark
-/// @type color
-$breadcrumb-color-variant-dark-color-default: color('white') !default;
-
-/// The text active color of the breadcrumb component
-/// @name color-active
-/// @group dark
-/// @type color
-$breadcrumb-color-variant-dark-color-active: color('gray-40') !default;
-
-/// Map for dark color
-/// @group dark
-$breadcrumb-color-variant-dark: (
-    'color': $breadcrumb-color-variant-dark-color,
-    'color-default': $breadcrumb-color-variant-dark-color-default,
-    'color-active': $breadcrumb-color-variant-dark-color-active
-) !default;
-
-/// Colors group map
-$breadcrumb-color-variants: (
-    'light': $breadcrumb-color-variant-light,
-    'dark': $breadcrumb-color-variant-dark
-) !default;
+        /// The text active color of the breadcrumb component, for the dark color variant
+        /// @name color--active
+        /// @type color
+        ///
+        ----color--active: #{color('gray-40')};
+    }}
