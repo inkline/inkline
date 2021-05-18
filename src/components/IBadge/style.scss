@@ -4,21 +4,28 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
-@import 'css/colors';
-@import 'css/sizes';
 
 .badge {
     display: inline-block;
-    font-weight: var(--badge-font-weight);
+    font-weight: var(----font-weight);
     line-height: 1;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
+    background: var(----background);
+    color: var(----color);
+    border-style: var(----border-style);
+    border-width: var(----border-width);
+    border-color: var(----border-color);
+    border-radius: var(----border-radius);
+    font-size: var(----font-size);
+    padding: var(----padding);
+    box-shadow: var(----box-shadow);
 
     a:hover &,
     a:focus & {
         text-decoration: none;
+        background: var(----link--background--hover);
     }
 
     .button & {
@@ -27,20 +34,7 @@
     }
 
     &.-pill {
-        border-radius: var(--badge-pill-border-radius);
-    }
-
-    @include badge-size-variant('md');
-    @each $size-variant-key, $badge-size-variant-value in $badge-size-variants {
-        &.-#{$size-variant-key} {
-            @include badge-size-variant($size-variant-key);
-        }
-    }
-
-    @include badge-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $badge-color-variants {
-        &.-#{$color-variant-key} {
-            @include badge-color-variant($color-variant-key);
-        }
+        padding: var(----padding);
+        border-radius: var(----pill--border-radius);
     }
 }
