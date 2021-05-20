@@ -1,9 +1,0 @@
-:root {
-    --icon-size: #{$icon-size};
-
-    @each $icon-size-variant-key, $icon-size-variant-value in $icon-size-variants {
-        @each $icon-size-variant-field-key, $icon-size-variant-field-value in $icon-size-variant-value {
-            --icon-size-variant-#{$icon-size-variant-key}-#{$icon-size-variant-field-key}: #{$icon-size-variant-field-value};
-        }
-    }
-}

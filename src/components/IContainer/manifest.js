@@ -17,18 +17,24 @@ module.exports = {
 			default: 'false'
 		}
 	],
-	styles: [
-		{
-			name: 'width',
-			description: 'The width of the container component',
-			type: 'size',
-			variants: {
-				xs: '100%',
-				sm: 'calc(#{breakpoint(\'sm\')} - #{gutter(\'sm\')})',
-				md: 'calc(#{breakpoint(\'md\')} - #{gutter(\'md\')})',
-				lg: 'calc(#{breakpoint(\'lg\')} - #{gutter(\'lg\')})',
-				xl: 'calc(#{breakpoint(\'xl\')} - #{gutter(\'xl\')})'
-			}
-		}
-	]
+    css: {
+        selector: '.column',
+        defaults: {
+            size: 'xs'
+        },
+        variables: [
+            {
+                name: 'width',
+                description: 'The width of the container component',
+                type: 'size',
+                variants: {
+                    xs: '100%',
+                    sm: 'calc(#{breakpoint(\'sm\')} - #{gutter(\'sm\')})',
+                    md: 'calc(#{breakpoint(\'md\')} - #{gutter(\'md\')})',
+                    lg: 'calc(#{breakpoint(\'lg\')} - #{gutter(\'lg\')})',
+                    xl: 'calc(#{breakpoint(\'xl\')} - #{gutter(\'xl\')})'
+                }
+            }
+        ]
+	}
 };

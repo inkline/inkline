@@ -23,7 +23,7 @@ function capitalizeFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-glob(path.resolve(__dirname, '..', 'src', 'components', 'ICheckbox', '**', 'manifest.js'), (error, files) => {
+glob(path.resolve(__dirname, '..', 'src', 'components', 'IIcon', '**', 'manifest.js'), (error, files) => {
     const selectorMixins = [];
 
     if (error) {
@@ -49,7 +49,7 @@ glob(path.resolve(__dirname, '..', 'src', 'components', 'ICheckbox', '**', 'mani
             const colors = manifest.css.variables.filter(({ type }) => type === 'color');
             const sizes = manifest.css.variables.filter(({ type }) => type === 'size');
 
-            const colorKeys = Object.keys(colors.find((variable) => variable.variants).variants);
+            const colorKeys = Object.keys((colors.find((variable) => variable.variants) || { variants: {} }).variants);
             const sizeKeys = Object.keys((sizes.find((variable) => variable.variants) || { variants: { sm: '', md: '', lg: '' }}).variants);
 
             /**
@@ -64,8 +64,7 @@ glob(path.resolve(__dirname, '..', 'src', 'components', 'ICheckbox', '**', 'mani
                 }
 
                 return `    /// ${variable.description}
-    /// @name ${variable.name}
-    /// ${ variable.type ? `@type ${variable.type}\n    ///` : '' }
+    /// @name ${variable.name}${ variable.type ? `\n    /// @type ${variable.type}` : '' }
     ----${variable.name}: #{${value}};`;
             });
 
@@ -83,8 +82,7 @@ glob(path.resolve(__dirname, '..', 'src', 'components', 'ICheckbox', '**', 'mani
                     }
 
                     return `        /// ${variable.description}, for the ${variant} size variant
-        /// @name ${variable.name}
-        /// ${ variable.type ? `@type ${variable.type}\n        ///` : '' }
+        /// @name ${variable.name}${ variable.type ? `\n        /// @type ${variable.type}` : '' }
         ----${variable.name}: calc(#{${value}} * #{size-multiplier('${variant}')});`;
                 })
             }));
@@ -103,8 +101,7 @@ glob(path.resolve(__dirname, '..', 'src', 'components', 'ICheckbox', '**', 'mani
                     }
 
                     return `        /// ${variable.description}, for the ${variant} color variant
-        /// @name ${variable.name}
-        /// ${ variable.type ? `@type ${variable.type}\n        ///` : '' }
+        /// @name ${variable.name}${ variable.type ? `\n        /// @type ${variable.type}` : '' }
         ----${variable.name}: #{${value}};`;
                 })
             }));
@@ -122,44 +119,48 @@ ${manifest.css.selector} {
 ${baseVariables.join('\n\n')}
 }
 `;
+            fs.writeFileSync(path.join(dirname, 'css', '_variables.scss'), variablesOutput);
 
-            const sizesOutput = `/**
+            if (sizes.length > 0) {
+                const sizesOutput = `/**
  * Size variants
  */
 
 ${manifest.css.selector} {
-${sizeVariables.map(({ variant, variables }) => `    /// Variables for the ${variant} color variant
+${sizeVariables.map(({variant, variables}) => `    /// Variables for the ${variant} color variant
     /// @name ${variant}
     /// @type group
-    @include variant('${variant}') {
+    @include variant('${variant}'${manifest.css.type ? `, '${manifest.css.type}'` : ''}) {
 ${variables.join('\n\n')}
     }`).join('\n\n')}
 }
 `;
+                fs.writeFileSync(path.join(dirname, 'css', '_sizes.scss'), sizesOutput);
+            }
 
-            const colorsOutput = `/**
+            if (colors.length > 0) {
+                const colorsOutput = `/**
  * Color variants
  */
 
 ${manifest.css.selector} {
-${colorVariables.map(({ variant, variables }) => `    /// Variables for the ${variant} color variant
+${colorVariables.map(({variant, variables}) => `    /// Variables for the ${variant} color variant
     /// @name ${variant}
     /// @type group
-    @include variant('${variant}'${ manifest.css.type && `, '${manifest.css.type}'`}) {
+    @include variant('${variant}'${manifest.css.type ? `, '${manifest.css.type}'` : ''}) {
 ${variables.join('\n\n')}
     }`).join('\n\n')}
 }
 `;
-
-            fs.writeFileSync(path.join(dirname, 'css', '_variables.scss'), variablesOutput);
-            fs.writeFileSync(path.join(dirname, 'css', '_sizes.scss'), sizesOutput);
-            fs.writeFileSync(path.join(dirname, 'css', '_colors.scss'), colorsOutput);
+                fs.writeFileSync(path.join(dirname, 'css', '_colors.scss'), colorsOutput);
+            }
         }
     });
 
 
-    const selectorsOutput = `/// Component selector mixins
-///
+    const selectorsOutput = `////
+/// Component selector mixins
+////
 
 ${selectorMixins.map((mixin) => `@mixin i-${mixin.name} {
     ${mixin.selector} {

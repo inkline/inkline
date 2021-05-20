@@ -1,4 +1,5 @@
 module.exports = {
+    name: 'column',
 	slots: [
 		{
 			name: 'default',
@@ -341,5 +342,8 @@ module.exports = {
 				'Number'
 			]
 		}
-	]
+	],
+    css: {
+	    selector: '.column'
+    }
 };

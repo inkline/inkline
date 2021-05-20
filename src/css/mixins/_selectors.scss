@@ -1,8 +1,9 @@
+////
 /// Component selector mixins
-///
+////
 
-@mixin i-checkbox {
-    .checkbox {
+@mixin i-icon {
+    .inkline-icon {
         @content;
     }
 }

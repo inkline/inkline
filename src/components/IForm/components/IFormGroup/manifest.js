@@ -58,5 +58,15 @@ module.exports = {
 			],
 			default: 'md'
 		}
-	]
+	],
+    css: {
+	    selector: 'form-group',
+        variables: [
+            {
+                name: 'margin-top',
+                description: 'The margin top of the form error component',
+                value: 'var(--margin-top)'
+            }
+        ]
+    }
 };

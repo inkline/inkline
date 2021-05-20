@@ -165,7 +165,7 @@ module.exports = {
                 name: 'padding-top',
                 type: 'size',
                 description: 'The padding top of the card component',
-                value: 'calc(var(--padding-top) / 2)'
+                value: 'var(--padding-top)'
             },
             {
                 name: 'padding-right',
@@ -177,7 +177,7 @@ module.exports = {
                 name: 'padding-bottom',
                 type: 'size',
                 description: 'The padding bottom of the card component',
-                value: 'calc(var(--padding-bottom) / 2)'
+                value: 'var(--padding-bottom)'
             },
             {
                 name: 'padding-left',

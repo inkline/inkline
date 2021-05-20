@@ -1,4 +1,5 @@
 module.exports = {
+    name: 'collapsible-item',
 	slots: [
 		{
 			name: 'default',
@@ -27,5 +28,8 @@ module.exports = {
 				'String'
 			]
 		}
-	]
+	],
+    css: {
+	    selector: '.collapsible-item'
+    }
 };

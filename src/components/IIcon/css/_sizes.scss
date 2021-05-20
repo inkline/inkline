@@ -1,5 +1,35 @@
-@mixin icon-size-variant($size-variant-key) {
-    $_size: var(--icon-size-variant-#{$size-variant-key}-size);
+/**
+ * Size variants
+ */
 
-    height: $_size;
+.inkline-icon {
+    /// Variables for the sm color variant
+    /// @name sm
+    /// @type group
+    @include variant('sm') {
+        /// The size of the icon component, for the sm size variant
+        /// @name size
+        /// @type size
+        ----size: calc(#{1rem} * #{size-multiplier('sm')});
+    }
+
+    /// Variables for the md color variant
+    /// @name md
+    /// @type group
+    @include variant('md') {
+        /// The size of the icon component, for the md size variant
+        /// @name size
+        /// @type size
+        ----size: calc(#{1rem} * #{size-multiplier('md')});
+    }
+
+    /// Variables for the lg color variant
+    /// @name lg
+    /// @type group
+    @include variant('lg') {
+        /// The size of the icon component, for the lg size variant
+        /// @name size
+        /// @type size
+        ----size: calc(#{1rem} * #{size-multiplier('lg')});
+    }
 }

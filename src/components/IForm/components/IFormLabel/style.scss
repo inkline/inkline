@@ -1,35 +1,39 @@
 @import '../../../../css/variables';
 @import '../../../../css/mixins';
-//@import 'css/_variables';
-//@import 'css/_sizes';
+@import 'css/variables';
 
 /**
  * Form Label
  */
+
 .form-label {
     position: relative;
     flex-basis: 100%;
-    transition: color $transition-easing $transition-duration;
+    transition: color var(--transition-easing) var(--transition-duration);
+    font-size: var(----font-size);
+    margin-bottom: var(----margin-bottom);
 
     &.-right {
         margin-right: 0;
         order: 1;
     }
 
-    @extend .form-label.-md;
-}
+    &.-error > .form-label {
+        color: var(--color-danger);
+    }
 
-.form-group.-error > .form-label {
-    color: $label-error-color;
-}
+    &.-inline > .form-label {
+        margin-right: var(----margin-right);
 
-.form-group.-inline > .form-label {
-    @include form-label-inline-size-variant('md');
-}
+        &.-right {
+            margin-left: var(----margin-left);
+        }
+    }
 
-.form-group.-required > .form-label {
-    &::after {
-        color: $color-red;
-        content: ' *';
+    &.-required > .form-label {
+        &::after {
+            color: var(--color-danger);
+            content: ' *';
+        }
     }
 }

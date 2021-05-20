@@ -4,14 +4,13 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/colors';
 
 .hamburger-menu {
-    opacity: var(--hamburger-menu-opacity);
-    padding: var(--hamburger-menu-padding);
-    width: var(--hamburger-menu-bar-width);
-    height: calc(var(--hamburger-menu-bar-height) * 3 + var(--hamburger-menu-bar-spacing) * 2);
+    opacity: var(----opacity);
+    padding: var(----padding);
+    width: var(----bar--width);
+    height: calc(var(----bar--height) * 3 + var(----bar--spacing) * 2);
     display: inline-block;
     position: relative;
     box-sizing: content-box;
@@ -19,20 +18,21 @@
     transition: opacity 0.3s ease;
 
     &:hover {
-        opacity: var(--hamburger-menu-opacity-hover);
+        opacity: var(----opacity--hover);
     }
 
     > .hamburger-menu-bars {
         display: block;
         top: 50%;
-        margin-top: calc(var(--hamburger-menu-bar-height) / -2);
+        margin-top: calc(var(----bar--height) / -2);
 
         &,
         &::before,
         &::after {
-            width: var(--hamburger-menu-bar-width);
-            height: var(--hamburger-menu-bar-height);
-            border-radius: var(--hamburger-menu-bar-border-radius);
+            width: var(----bar--width);
+            height: var(----bar--height);
+            border-radius: var(----bar--border-radius);
+            background: var(----background);
             position: absolute;
             transition-property: transform;
             transition-duration: 0.15s;
@@ -46,11 +46,11 @@
         }
 
         &::before {
-            top: calc(var(--hamburger-menu-bar-spacing) * -1 + var(--hamburger-menu-bar-height) * -1);
+            top: calc(var(----bar--spacing) * -1 + var(----bar--height) * -1);
         }
 
         &::after {
-            bottom: calc(var(--hamburger-menu-bar-spacing) * -1 + var(--hamburger-menu-bar-height) * -1);
+            bottom: calc(var(----bar--spacing) * -1 + var(----bar--height) * -1);
         }
     }
 
@@ -91,21 +91,21 @@
 
     &.-arrow-left.-active > .hamburger-menu-bars {
         &::before {
-            transform: translate3d(calc(var(--hamburger-menu-bar-width) * -0.2), 0, 0) rotate(-45deg) scale(0.7, 1);
+            transform: translate3d(calc(var(----bar--width) * -0.2), 0, 0) rotate(-45deg) scale(0.7, 1);
         }
 
         &::after {
-            transform: translate3d(calc(var(--hamburger-menu-bar-width) * -0.2), 0, 0) rotate(45deg) scale(0.7, 1);
+            transform: translate3d(calc(var(----bar--width) * -0.2), 0, 0) rotate(45deg) scale(0.7, 1);
         }
     }
 
     &.-arrow-right.-active > .hamburger-menu-bars {
         &::before {
-            transform: translate3d(calc(var(--hamburger-menu-bar-width) * 0.2), 0, 0) rotate(45deg) scale(0.7, 1);
+            transform: translate3d(calc(var(----bar--width) * 0.2), 0, 0) rotate(45deg) scale(0.7, 1);
         }
 
         &::after {
-            transform: translate3d(calc(var(--hamburger-menu-bar-width) * 0.2), 0, 0) rotate(-45deg) scale(0.7, 1);
+            transform: translate3d(calc(var(----bar--width) * 0.2), 0, 0) rotate(-45deg) scale(0.7, 1);
         }
     }
 
@@ -113,11 +113,11 @@
         transform: rotate(-90deg);
 
         &::before {
-            transform: translate3d(calc(var(--hamburger-menu-bar-width) * 0.2), 0, 0) rotate(45deg) scale(0.7, 1);
+            transform: translate3d(calc(var(----bar--width) * 0.2), 0, 0) rotate(45deg) scale(0.7, 1);
         }
 
         &::after {
-            transform: translate3d(calc(var(--hamburger-menu-bar-width) * 0.2), 0, 0) rotate(-45deg) scale(0.7, 1);
+            transform: translate3d(calc(var(----bar--width) * 0.2), 0, 0) rotate(-45deg) scale(0.7, 1);
         }
     }
 
@@ -125,38 +125,31 @@
         transform: rotate(90deg);
 
         &::before {
-            transform: translate3d(calc(var(--hamburger-menu-bar-width) * 0.2), 0, 0) rotate(45deg) scale(0.7, 1);
+            transform: translate3d(calc(var(----bar--width) * 0.2), 0, 0) rotate(45deg) scale(0.7, 1);
         }
 
         &::after {
-            transform: translate3d(calc(var(--hamburger-menu-bar-width) * 0.2), 0, 0) rotate(-45deg) scale(0.7, 1);
+            transform: translate3d(calc(var(----bar--width) * 0.2), 0, 0) rotate(-45deg) scale(0.7, 1);
         }
     }
 
     &.-minus.-active > .hamburger-menu-bars {
         &::before {
-            transform: translate3d(0, calc(var(--hamburger-menu-bar-spacing) + var(--hamburger-menu-bar-height)), 0);
+            transform: translate3d(0, calc(var(----bar--spacing) + var(----bar--height)), 0);
         }
 
         &::after {
-            transform: translate3d(0, calc(var(--hamburger-menu-bar-spacing) * -1 + var(--hamburger-menu-bar-height) * -1), 0);
+            transform: translate3d(0, calc(var(----bar--spacing) * -1 + var(----bar--height) * -1), 0);
         }
     }
 
     &.-plus.-active > .hamburger-menu-bars {
         &::before {
-            transform: translate3d(0, calc(var(--hamburger-menu-bar-spacing) + var(--hamburger-menu-bar-height)), 0);
+            transform: translate3d(0, calc(var(----bar--spacing) + var(----bar--height)), 0);
         }
 
         &::after {
-            transform: translate3d(0, calc(var(--hamburger-menu-bar-spacing) * -1 + var(--hamburger-menu-bar-height) * -1), 0) rotate(90deg);
-        }
-    }
-
-    @include hamburger-menu-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $hamburger-menu-color-variants {
-        &.-#{$color-variant-key} {
-            @include hamburger-menu-color-variant($color-variant-key);
+            transform: translate3d(0, calc(var(----bar--spacing) * -1 + var(----bar--height) * -1), 0) rotate(90deg);
         }
     }
 }

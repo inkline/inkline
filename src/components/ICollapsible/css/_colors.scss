@@ -1,28 +1,63 @@
-@mixin collapsible-color-variant($color-variant-key) {
-    $_color: var(--collapsible-color-variant-#{$color-variant-key}-color);
-    $_background: var(--collapsible-color-variant-#{$color-variant-key}-background);
-    $_body-background: var(--collapsible-color-variant-#{$color-variant-key}-body-background);
-    $_border-color: var(--collapsible-color-variant-#{$color-variant-key}-border-color);
+/**
+ * Color variants
+ */
 
-    border-color: $_border-color;
+.collapsible {
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light') {
+        /// The border color of the collapsible component, for the light color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('light-55')};
 
-    > .collapsible-item {
-        > .collapsible-header,
-        > .collapsible-body {
-            border-color: $_border-color;
-            color: $_color;
-        }
+        /// The color of the collapsible component, for the light color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-light)};
 
-        > .collapsible-header {
-            background-color: $_background;
+        /// The background of the collapsible component, for the light color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('light')};
 
-            > .icon {
-                background-color: $_color;
-            }
-        }
+        /// The background of the collapsible component body, for the light color variant
+        /// @name body--background
+        /// @type color
+        ///
+        ----body--background: #{color('white')};
+    }
 
-        > .collapsible-body {
-            background-color: $_body-background;
-        }
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark') {
+        /// The border color of the collapsible component, for the dark color variant
+        /// @name border-color
+        /// @type color
+        ///
+        ----border-color: #{color('dark-45')};
+
+        /// The color of the collapsible component, for the dark color variant
+        /// @name color
+        /// @type color
+        ///
+        ----color: #{contrast-color($color-dark)};
+
+        /// The background of the collapsible component, for the dark color variant
+        /// @name background
+        /// @type color
+        ///
+        ----background: #{color('dark')};
+
+        /// The background of the collapsible component body, for the dark color variant
+        /// @name body--background
+        /// @type color
+        ///
+        ----body--background: #{color('dark-45')};
     }
 }

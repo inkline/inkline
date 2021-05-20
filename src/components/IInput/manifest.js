@@ -133,195 +133,203 @@ module.exports = {
 			default: 'text'
 		}
 	],
-	styles: [
-		{
-			name: 'line-height',
-			description: 'The line height of the input component',
-			default: 'var(--line-height)'
-		},
-		{
-			name: 'border-width',
-			description: 'The border width of the input component',
-			default: 'var(--border-width)'
-		},
-		{
-			name: 'prefix-border-width',
-			description: 'The border width of the input component',
-			default: 'var(--input-border-width)'
-		},
-		{
-			name: 'border-radius',
-			description: 'The border radius of the input component',
-			type: 'size',
-			default: 'border-radius()'
-		},
-		{
-			name: 'font-size',
-			description: 'The font size of the input component',
-			type: 'size',
-			default: 'font-size()'
-		},
-		{
-			name: 'padding',
-			description: 'The padding of the input component',
-			type: 'size',
-			default: 'spacing()',
-			variants: {
-				sm: [
-					'var(--input-padding) / 2',
-					'var(--input-padding)'
-				],
-				md: [
-					'var(--input-padding) / 2',
-					'var(--input-padding)'
-				],
-				lg: [
-					'var(--input-padding) / 2',
-					'var(--input-padding)'
-				]
-			}
-		},
-		{
-			name: 'prefix-suffix-padding',
-			description: 'The padding of the input component prefix and suffix',
-			type: 'size',
-			default: 'spacing()'
-		},
-		{
-			name: 'box-shadow',
-			description: 'The padding of the input component',
-			default: 'inset 0 1px 1px rgba(#{color(\'black\')}, 0.05)'
-		},
-		{
-			name: 'icon-circle-size',
-			description: 'The size of the input component icon circle',
-			default: '1.2rem'
-		},
-		{
-			name: 'color',
-			description: 'The color of the input component',
-			type: 'color',
-			variants: {
-				light: 'contrast-color($color-white)',
-				dark: 'contrast-color($color-dark)'
-			}
-		},
-		{
-			name: 'color-disabled',
-			description: 'The color of the input component when disabled',
-			type: 'color',
-			variants: {
-				light: 'color(\'light-75\')',
-				dark: 'color(\'gray-35\')'
-			}
-		},
-		{
-			name: 'background',
-			description: 'The background of the input component',
-			type: 'color',
-			variants: {
-				light: 'color(\'white\')',
-				dark: 'color(\'dark\')'
-			}
-		},
-		{
-			name: 'background-disabled',
-			description: 'The background of the input component when disabled',
-			type: 'color',
-			variants: {
-				light: 'color(\'light-25\')',
-				dark: 'color(\'dark-40\')'
-			}
-		},
-		{
-			name: 'border-color',
-			description: 'The border color of the input component',
-			type: 'color',
-			variants: {
-				light: 'color(\'light\')',
-				dark: 'color(\'dark-40\')'
-			}
-		},
-		{
-			name: 'border-color-hover',
-			description: 'The border color of the input component when hovered',
-			type: 'color',
-			variants: {
-				light: 'color(\'light-55\')',
-				dark: 'color(\'dark-35\')'
-			}
-		},
-		{
-			name: 'border-color-focus',
-			description: 'The border color of the input component when focused',
-			type: 'color',
-			variants: {
-				light: 'color(\'primary\')',
-				dark: 'color(\'primary\')'
-			}
-		},
-		{
-			name: 'placeholder-color',
-			description: 'The color of the input component placeholder',
-			type: 'color',
-			variants: {
-				light: 'color(\'light-60\')',
-				dark: 'color(\'dark-25\')'
-			}
-		},
-		{
-			name: 'prefix-suffix-color',
-			description: 'The color of the input component prefix and suffix',
-			type: 'color',
-			variants: {
-				light: 'color(\'light-70\')',
-				dark: 'color(\'dark-25\')'
-			}
-		},
-		{
-			name: 'prepend-append-background',
-			description: 'The background of the input component prepend and append',
-			type: 'color',
-			variants: {
-				light: 'color(\'light\')',
-				dark: 'color(\'dark\')'
-			}
-		},
-		{
-			name: 'clearable-color',
-			description: 'The color of the input component clear button',
-			type: 'color',
-			variants: {
-				light: 'color(\'light-70\')',
-				dark: 'color(\'dark-30\')'
-			}
-		},
-		{
-			name: 'clearable-background',
-			description: 'The background of the input component clear button',
-			type: 'color',
-			variants: {
-				light: 'transparent',
-				dark: 'transparent'
-			}
-		},
-		{
-			name: 'clearable-background-hover',
-			description: 'The background of the input component clear button',
-			type: 'color',
-			variants: {
-				light: 'color(\'light-30\')',
-				dark: 'color(\'dark-35\')'
-			}
-		},
-		{
-			name: 'clearable-background-active',
-			description: 'The background of the input component clear button',
-			type: 'color',
-			variants: {
-				light: 'color(\'light-40\')',
-				dark: 'color(\'dark-30\')'
-			}
-		}
-	]
+	css: {
+	    selector: '.input-wrapper',
+	    type: 'form',
+        defaults: {
+            size: 'md',
+            color: 'light'
+        },
+        variables: [
+            {
+                name: 'line-height',
+                description: 'The line height of the input component',
+                default: 'var(--line-height)'
+            },
+            {
+                name: 'border-width',
+                description: 'The border width of the input component',
+                default: 'var(--border-width)'
+            },
+            {
+                name: 'prefix--border-width',
+                description: 'The border width of the input component',
+                default: 'var(--input-border-width)'
+            },
+            {
+                name: 'border-radius',
+                description: 'The border radius of the input component',
+                type: 'size',
+                default: 'border-radius()'
+            },
+            {
+                name: 'font-size',
+                description: 'The font size of the input component',
+                type: 'size',
+                default: 'font-size()'
+            },
+            {
+                name: 'padding',
+                description: 'The padding of the input component',
+                type: 'size',
+                default: 'spacing()',
+                variants: {
+                    sm: [
+                        'var(--input-padding) / 2',
+                        'var(--input-padding)'
+                    ],
+                    md: [
+                        'var(--input-padding) / 2',
+                        'var(--input-padding)'
+                    ],
+                    lg: [
+                        'var(--input-padding) / 2',
+                        'var(--input-padding)'
+                    ]
+                }
+            },
+            {
+                name: 'prefix-suffix-padding',
+                description: 'The padding of the input component prefix and suffix',
+                type: 'size',
+                default: 'spacing()'
+            },
+            {
+                name: 'box-shadow',
+                description: 'The padding of the input component',
+                default: 'inset 0 1px 1px rgba(#{color(\'black\')}, 0.05)'
+            },
+            {
+                name: 'icon-circle-size',
+                description: 'The size of the input component icon circle',
+                default: '1.2rem'
+            },
+            {
+                name: 'color',
+                description: 'The color of the input component',
+                type: 'color',
+                variants: {
+                    light: 'contrast-color($color-white)',
+                    dark: 'contrast-color($color-dark)'
+                }
+            },
+            {
+                name: 'color-disabled',
+                description: 'The color of the input component when disabled',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-75\')',
+                    dark: 'color(\'gray-35\')'
+                }
+            },
+            {
+                name: 'background',
+                description: 'The background of the input component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'white\')',
+                    dark: 'color(\'dark\')'
+                }
+            },
+            {
+                name: 'background-disabled',
+                description: 'The background of the input component when disabled',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-25\')',
+                    dark: 'color(\'dark-40\')'
+                }
+            },
+            {
+                name: 'border-color',
+                description: 'The border color of the input component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-40\')'
+                }
+            },
+            {
+                name: 'border-color-hover',
+                description: 'The border color of the input component when hovered',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-35\')'
+                }
+            },
+            {
+                name: 'border-color-focus',
+                description: 'The border color of the input component when focused',
+                type: 'color',
+                variants: {
+                    light: 'color(\'primary\')',
+                    dark: 'color(\'primary\')'
+                }
+            },
+            {
+                name: 'placeholder-color',
+                description: 'The color of the input component placeholder',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-60\')',
+                    dark: 'color(\'dark-25\')'
+                }
+            },
+            {
+                name: 'prefix-suffix-color',
+                description: 'The color of the input component prefix and suffix',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-70\')',
+                    dark: 'color(\'dark-25\')'
+                }
+            },
+            {
+                name: 'prepend-append-background',
+                description: 'The background of the input component prepend and append',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark\')'
+                }
+            },
+            {
+                name: 'clearable-color',
+                description: 'The color of the input component clear button',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-70\')',
+                    dark: 'color(\'dark-30\')'
+                }
+            },
+            {
+                name: 'clearable-background',
+                description: 'The background of the input component clear button',
+                type: 'color',
+                variants: {
+                    light: 'transparent',
+                    dark: 'transparent'
+                }
+            },
+            {
+                name: 'clearable-background-hover',
+                description: 'The background of the input component clear button',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-30\')',
+                    dark: 'color(\'dark-35\')'
+                }
+            },
+            {
+                name: 'clearable-background-active',
+                description: 'The background of the input component clear button',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-40\')',
+                    dark: 'color(\'dark-30\')'
+                }
+            }
+        ]
+    }
 };

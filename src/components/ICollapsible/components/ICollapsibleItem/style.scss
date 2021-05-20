@@ -4,9 +4,6 @@
 @import '@inkline/icons/packs/inkline.scss';
 @import '../../../../css/variables';
 @import '../../../../css/mixins';
-@import '../../css/variables';
-// @import '../../../IIcon/css/variables';
-// @import '../../../IIcon/css/mixins';
 
 .collapsible {
     > .collapsible-item {
@@ -15,8 +12,8 @@
 
         > .collapsible-header {
             border-width: 0;
-            border-bottom-width: 1px;
-            border-style: solid;
+            border-bottom-width: var(----border-bottom-width);
+            border-style: var(----border-style);
             display: flex;
             cursor: pointer;
             align-items: center;
@@ -30,10 +27,9 @@
                 transition-property: transform;
                 transition-timing-function: var(--transition-easing);
                 transition-duration: var(--transition-duration);
-
-                 mask-image: url($ink-chevron-down);
-                 mask-position: center center;
-                 mask-repeat: no-repeat;
+                mask-image: url($ink-chevron-down);
+                mask-position: center center;
+                mask-repeat: no-repeat;
             }
         }
 

@@ -1,147 +1,46 @@
-////
-/// Variables
-////
+/**
+ * Variables
+ */
 
-/// The padding of the header component
-/// @name padding
-/// @type size
-$header-padding: 10rem !default;
+.header {
+    /// The padding top of the header component
+    /// @name padding-top
+    /// @type size
+    ///
+    ----padding-top: #{10rem};
 
-////
-/// Sizes
-////
+    /// The padding right of the header component
+    /// @name padding-right
+    /// @type size
+    ///
+    ----padding-right: #{0};
 
-////
-/// Small size
-////
+    /// The padding bottom of the header component
+    /// @name padding-bottom
+    /// @type size
+    ///
+    ----padding-bottom: #{10rem};
 
-/// The padding of the header component
-/// @name padding
-/// @group sm
-/// @type size
-$header-size-variant-sm-padding: calc(var(--header-padding) * #{size-multiplier('sm')}) !default;
+    /// The padding left of the header component
+    /// @name padding-left
+    /// @type size
+    ///
+    ----padding-left: #{0};
 
-/// Map for sm size
-/// @group sm
-$header-size-variant-sm: (
-    'padding': $header-size-variant-sm-padding
-) !default;
+    /// The padding of the header component
+    /// @name padding
+    /// 
+    ----padding: #{var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)};
 
-////
-/// Medium size
-////
+    /// The color of the header component
+    /// @name color
+    /// @type color
+    ///
+    ----color: #{contrast-color($color-light)};
 
-/// The padding of the header component
-/// @name padding
-/// @group md
-/// @type size
-$header-size-variant-md-padding: calc(var(--header-padding) * #{size-multiplier('md')}) !default;
-
-/// Map for md size
-/// @group md
-$header-size-variant-md: (
-    'padding': $header-size-variant-md-padding
-) !default;
-
-////
-/// Large size
-////
-
-/// The padding of the header component
-/// @name padding
-/// @group lg
-/// @type size
-$header-size-variant-lg-padding: calc(var(--header-padding) * #{size-multiplier('lg')}) !default;
-
-/// Map for lg size
-/// @group lg
-$header-size-variant-lg: (
-    'padding': $header-size-variant-lg-padding
-) !default;
-
-/// Sizes group map
-$header-size-variants: (
-    'sm': $header-size-variant-sm,
-    'md': $header-size-variant-md,
-    'lg': $header-size-variant-lg
-) !default;
-
-////
-/// Colors
-////
-
-////
-/// Primary color
-////
-
-/// The color of the header component
-/// @name color
-/// @group primary
-/// @type color
-$header-color-variant-primary-color: contrast-color($color-primary) !default;
-
-/// The background of the header component
-/// @name background
-/// @group primary
-/// @type color
-$header-color-variant-primary-background: color('primary') !default;
-
-/// Map for primary color
-/// @group primary
-$header-color-variant-primary: (
-    'color': $header-color-variant-primary-color,
-    'background': $header-color-variant-primary-background
-) !default;
-
-////
-/// Light color
-////
-
-/// The color of the header component
-/// @name color
-/// @group light
-/// @type color
-$header-color-variant-light-color: contrast-color($color-light) !default;
-
-/// The background of the header component
-/// @name background
-/// @group light
-/// @type color
-$header-color-variant-light-background: color('light') !default;
-
-/// Map for light color
-/// @group light
-$header-color-variant-light: (
-    'color': $header-color-variant-light-color,
-    'background': $header-color-variant-light-background
-) !default;
-
-////
-/// Dark color
-////
-
-/// The color of the header component
-/// @name color
-/// @group dark
-/// @type color
-$header-color-variant-dark-color: contrast-color($color-dark) !default;
-
-/// The background of the header component
-/// @name background
-/// @group dark
-/// @type color
-$header-color-variant-dark-background: color('dark') !default;
-
-/// Map for dark color
-/// @group dark
-$header-color-variant-dark: (
-    'color': $header-color-variant-dark-color,
-    'background': $header-color-variant-dark-background
-) !default;
-
-/// Colors group map
-$header-color-variants: (
-    'primary': $header-color-variant-primary,
-    'light': $header-color-variant-light,
-    'dark': $header-color-variant-dark
-) !default;
+    /// The background of the header component
+    /// @name background
+    /// @type color
+    ///
+    ----background: #{color('light')};
+}

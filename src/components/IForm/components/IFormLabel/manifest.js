@@ -1,4 +1,5 @@
 module.exports = {
+    name: 'form-label',
 	slots: [
 		{
 			name: 'default',
@@ -34,5 +35,41 @@ module.exports = {
 			],
 			default: 'md'
 		}
-	]
+	],
+    css: {
+        selector: '.form-label',
+        variables: [
+            {
+                name: 'font-size',
+                description: 'The font size of the form label component',
+                type: 'size',
+                value: 'font-size()'
+            },
+            {
+                name: 'margin-top',
+                description: 'The margin top of the form label component',
+                value: 'var(--margin-top)'
+            },
+            {
+                name: 'margin-right',
+                description: 'The margin right of the form label component',
+                value: 'var(--margin-right)'
+            },
+            {
+                name: 'margin-bottom',
+                description: 'The margin bottom of the form label component',
+                value: 'var(--margin-bottom)'
+            },
+            {
+                name: 'margin-left',
+                description: 'The margin left of the form label component',
+                value: 'var(--margin-left)'
+            },
+            {
+                name: 'margin',
+                description: 'The margin of the form label component',
+                value: ['var(----margin-top)', 'var(----margin-right)', 'var(----margin-bottom)', 'var(----margin-left)']
+            },
+        ]
+    }
 };

@@ -53,32 +53,62 @@ module.exports = {
 			default: 'md'
 		}
 	],
-	styles: [
-		{
-			name: 'padding',
-			description: 'The padding of the header component',
-			type: 'size',
-			default: '10rem'
-		},
-		{
-			name: 'color',
-			description: 'The color of the header component',
-			type: 'color',
-			variants: {
-				primary: 'contrast-color($color-primary)',
-				light: 'contrast-color($color-light)',
-				dark: 'contrast-color($color-dark)'
-			}
-		},
-		{
-			name: 'background',
-			description: 'The background of the header component',
-			type: 'color',
-			variants: {
-				primary: 'color(\'primary\')',
-				light: 'color(\'light\')',
-				dark: 'color(\'dark\')'
-			}
-		}
-	]
+	css: {
+	    selector: '.header',
+        defaults: {
+            size: 'md',
+            color: 'light'
+        },
+        variables: [
+            {
+                name: 'padding-top',
+                type: 'size',
+                description: 'The padding top of the header component',
+                value: '10rem'
+            },
+            {
+                name: 'padding-right',
+                type: 'size',
+                description: 'The padding right of the header component',
+                value: '0'
+            },
+            {
+                name: 'padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the header component',
+                value: '10rem'
+            },
+            {
+                name: 'padding-left',
+                type: 'size',
+                description: 'The padding left of the header component',
+                value: '0'
+            },
+            {
+                name: 'padding',
+                description: 'The padding of the header component',
+                value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
+            },
+            {
+                name: 'color',
+                description: 'The color of the header component',
+                type: 'color',
+                variants: {
+                    primary: 'contrast-color($color-primary)',
+                    light: 'contrast-color($color-light)',
+                    dark: 'contrast-color($color-dark)'
+                }
+            },
+            {
+                name: 'background',
+                description: 'The background of the header component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary\')',
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark\')'
+                }
+            }
+        ]
+    }
 };

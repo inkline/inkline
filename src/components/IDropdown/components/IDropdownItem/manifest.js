@@ -1,4 +1,5 @@
 module.exports = {
+    name: 'dropdown-item',
 	slots: [
 		{
 			name: 'default',
@@ -48,5 +49,8 @@ module.exports = {
 			],
 			default: '1'
 		}
-	]
+	],
+    css: {
+        selector: '.dropdown-item'
+    }
 };

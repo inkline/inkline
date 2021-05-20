@@ -2,7 +2,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/sizes';
 @import 'css/colors';
 
@@ -11,8 +10,8 @@
     vertical-align: middle;
     position: relative;
 
-    > .input-prepend,
-    > .input-append {
+    .input-prepend,
+    .input-append {
         display: flex;
         flex-flow: row nowrap;
         align-items: stretch;
@@ -21,12 +20,33 @@
         transition-property: background-color;
         transition-duration: var(--transition-duration);
         transition-timing-function: var(--transition-easing);
+        background-color: var(----prepend-append--background);
+        font-size: var(----font-size);
 
         > * {
             flex: auto 1 0;
             align-self: center;
             border-radius: 0;
+            padding-left: var(----prefix-suffix--padding-left);
+            padding-right: var(----prefix-suffix--padding-right);
         }
+
+        > [class$="-wrapper"] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    .input-prepend,
+    .input-prepend > *:first-child {
+        border-top-left-radius: var(----border-top-left-radius);
+        border-bottom-left-radius: var(----border-bottom-left-radius);
+    }
+
+    .input-append,
+    .input-append > *:last-child {
+        border-top-right-radius: var(----border-top-right-radius);
+        border-bottom-right-radius: var(----border-bottom-right-radius);
     }
 
     .input {
@@ -36,17 +56,30 @@
         align-items: center;
         flex-direction: row;
         background-clip: padding-box;
-        border-width: var(--input-border-width);
-        border-style: solid;
-        box-shadow: var(--input-box-shadow);
+        border-width: var(----border-width);
+        border-style: var(----border-style);
+        border-color: var(----border-color);
+        border-radius: var(----border-radius);
+        box-shadow: var(----box-shadow);
         transition-property: background-color, color, border-color, box-shadow;
         transition-duration: var(--transition-duration);
         transition-timing-function: var(--transition-easing);
+        color: var(----color);
+        background-color: var(----background);
+        font-size: var(----font-size);
 
         // Customize the `:focus` state to imitate native WebKit styles.
         &:focus-within {
             outline: 0;
-            box-shadow: var(--input-box-shadow);
+            box-shadow: var(----box-shadow);
+        }
+
+        &:hover {
+            border-color: var(----border-color--hover);
+        }
+
+        &:focus-within {
+            border-color: var(----border-color--focus);
         }
 
         > input,
@@ -57,10 +90,11 @@
             width: 1%;
             background: transparent;
             border: 0;
-            padding: 0;
             margin: 0;
             outline: 0;
-            line-height: var(--input-line-height);
+            line-height: var(----line-height);
+            color: var(----color);
+            padding: var(----padding);
 
             // Remove style for the caret on `<select>`s in IE10+.
             &::-ms-expand {
@@ -72,6 +106,7 @@
             // Override Firefox's unusual default opacity see https://github.com/twbs/bootstrap/pull/11526.
             &::placeholder {
                 opacity: 1;
+                color: var(----placeholder--color);
             }
 
             // Disabled and read-only inputs
@@ -102,6 +137,10 @@
             transition-property: border-color;
             transition-duration: var(--transition-duration);
             transition-timing-function: var(--transition-easing);
+            border-color: var(----border-color);
+            color: var(----prefix-suffix--color);
+            padding-left: var(----prefix-suffix--padding-left);
+            padding-right: var(----prefix-suffix--padding-right);
 
             > button {
                 background: transparent;
@@ -112,14 +151,14 @@
 
         .input-prefix {
             padding-right: spacing();
-            border-right-width: var(--input-prefix-border-width);
-            border-right-style: solid;
+            border-right-width: var(----prefix-suffix--border-width);
+            border-right-style: var(----prefix-suffix--border-style);
         }
 
         .input-suffix {
             padding-left: spacing();
-            border-left-width: var(--input-prefix-border-width);
-            border-left-style: solid;
+            border-left-width: var(----prefix-suffix--border-width);
+            border-left-style: var(----prefix-suffix--border-style);
         }
 
         .input-clear {
@@ -130,11 +169,23 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            width: var(--input-icon-circle-size);
-            height: var(--input-icon-circle-size);
+            width: var(----clear--size);
+            height: var(----clear--size);
             border-radius: 100%;
+            background-color: var(----clear--background);
+
+            &:hover,
+            &:focus {
+                color: var(----clear--color--hover);
+                background-color: var(----clear--background--hover);
+            }
+
+            &:active {
+                background-color: var(----clear--background--active);
+            }
 
              &::before {
+                 background-color: var(----clear--color);
                  content: '';
                  mask-image: url($ink-times);
                  mask-position: center center;
@@ -143,24 +194,6 @@
                  height: 8px;
                  width: 8px;
              }
-        }
-    }
-
-    @include input-size-variant('md');
-    @each $size-variant-key, $input-size-variant-value in $input-size-variants {
-        .form.-#{$size-variant-key} &,
-        .form-group.-#{$size-variant-key} &,
-        &.-#{$size-variant-key} {
-            @include input-size-variant($size-variant-key);
-        }
-    }
-
-    @include input-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $input-color-variants {
-        .form.-#{$color-variant-key} &,
-        .form-group.-#{$color-variant-key} &,
-        &.-#{$color-variant-key} {
-            @include input-color-variant($color-variant-key);
         }
     }
 
@@ -191,6 +224,36 @@
     &.-error {
         .input {
             border-color: color('danger');
+        }
+    }
+
+    &.-disabled,
+    &.-readonly {
+        > .input {
+            color: var(----color--disabled);
+            background-color: var(----background--disabled);
+
+            &:hover {
+                border-color: var(----border-color);
+            }
+
+            > input,
+            > select,
+            > textarea {
+                &:disabled,
+                &[readonly] {
+                    color: var(----color--disabled);
+                }
+            }
+        }
+    }
+
+    &.-readonly {
+        > .input {
+            &:focus-within {
+                outline: 0;
+                border-color: var(----border-color--focus);
+            }
         }
     }
 }

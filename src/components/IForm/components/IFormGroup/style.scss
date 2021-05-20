@@ -1,7 +1,6 @@
 @import '../../../../css/variables';
 @import '../../../../css/mixins';
-@import 'css/_variables';
-@import 'css/_css';
+@import 'css/variables';
 
 /**
  * Input Group
@@ -12,7 +11,7 @@
     position: relative;
 
     + .form-group {
-        margin-top: var(--form-group-margin);
+        margin-top: var(----margin-top);
     }
 
     &.-inline {

@@ -87,5 +87,8 @@ module.exports = {
 			],
 			default: 'md'
 		}
-	]
+	],
+    css: {
+	    selector: '.form'
+    }
 };

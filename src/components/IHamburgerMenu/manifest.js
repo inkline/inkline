@@ -40,50 +40,78 @@ module.exports = {
 			default: 'false'
 		}
 	],
-	styles: [
-		{
-			name: 'bar-width',
-			description: 'The width of the hamburger-menu component bars',
-			default: '30px'
-		},
-		{
-			name: 'bar-height',
-			description: 'The height of the hamburger-menu component bars',
-			default: '3px'
-		},
-		{
-			name: 'bar-border-radius',
-			description: 'The border radius of the hamburger-menu component bars',
-			default: '2px'
-		},
-		{
-			name: 'bar-spacing',
-			description: 'The spacing between the hamburger-menu component bars',
-			default: '5px'
-		},
-		{
-			name: 'padding',
-			description: 'The padding of the hamburger-menu component',
-			default: 'spacing(\'1/2\')'
-		},
-		{
-			name: 'opacity',
-			description: 'The opacity of the hamburger-menu component',
-			default: '0.7'
-		},
-		{
-			name: 'opacity-hover',
-			description: 'The opacity of the hamburger-menu component',
-			default: '1'
-		},
-		{
-			name: 'background',
-			description: 'The background of the hamburger-menu component',
-			type: 'color',
-			variants: {
-				light: 'color(\'dark\')',
-				dark: 'color(\'light\')'
-			}
-		}
-	]
+	css: {
+	    selector: '.hamburger-menu',
+        defaults: {
+            size: 'md',
+            color: 'light'
+        },
+        variables: [
+            {
+                name: 'bar--width',
+                description: 'The width of the hamburger-menu component bars',
+                value: '30px'
+            },
+            {
+                name: 'bar--height',
+                description: 'The height of the hamburger-menu component bars',
+                value: '3px'
+            },
+            {
+                name: 'bar--border-radius',
+                description: 'The border radius of the hamburger-menu component bars',
+                value: '2px'
+            },
+            {
+                name: 'bar--spacing',
+                description: 'The spacing between the hamburger-menu component bars',
+                value: '5px'
+            },
+            {
+                name: 'padding-top',
+                description: 'The padding top of the card component',
+                value: 'calc(var(--padding-top) / 2)'
+            },
+            {
+                name: 'padding-right',
+                description: 'The padding right of the card component',
+                value: 'calc(var(--padding-right) / 2)'
+            },
+            {
+                name: 'padding-bottom',
+                description: 'The padding bottom of the card component',
+                value: 'calc(var(--padding-bottom) / 2)'
+            },
+            {
+                name: 'padding-left',
+
+                description: 'The padding left of the card component',
+                value: 'calc(var(--padding-left) / 2)'
+            },
+            {
+                name: 'padding',
+                description: 'The padding of the card component',
+                value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
+            },
+            {
+                name: 'opacity',
+                description: 'The opacity of the hamburger-menu component',
+                value: '0.7'
+            },
+            {
+                name: 'opacity--hover',
+                description: 'The opacity of the hamburger-menu component',
+                value: '1'
+            },
+            {
+                name: 'background',
+                description: 'The background of the hamburger-menu component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'dark\')',
+                    dark: 'color(\'light\')'
+                }
+            }
+        ]
+    }
 };

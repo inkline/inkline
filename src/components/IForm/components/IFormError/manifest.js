@@ -7,11 +7,39 @@ module.exports = {
 			type: []
 		}
 	],
-	styles: [
-		{
-			name: 'margin',
-			description: 'The margin of the form error component',
-			default: 'spacing(\'1/4\') 0 0'
-		}
-	]
+	css: {
+	    selector: '.form-error',
+        variables: [
+            {
+                name: 'margin-top',
+                description: 'The margin top of the form error component',
+                value: 'calc(var(--margin-top) / 4)'
+            },
+            {
+                name: 'margin-right',
+                description: 'The margin right of the form error component',
+                value: '0'
+            },
+            {
+                name: 'margin-bottom',
+                description: 'The margin bottom of the form error component',
+                value: '0'
+            },
+            {
+                name: 'margin-left',
+                description: 'The margin left of the form error component',
+                value: '0'
+            },
+            {
+                name: 'margin',
+                description: 'The margin of the form error component',
+                value: ['var(----margin-top)', 'var(----margin-right)', 'var(----margin-bottom)', 'var(----margin-left)']
+            },
+            {
+                name: 'color',
+                description: 'The color of the form error component',
+                value: 'color(\'danger\')'
+            }
+        ]
+    }
 };

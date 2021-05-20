@@ -1,13 +1,13 @@
-@import '../../../../css/config';
+@import '../../../../css/variables';
 @import '../../../../css/mixins';
-@import './css/variables';
+@import 'css/variables';
 
 .form-group-error {
     position: relative;
-    margin: $form-group-error-margin;
+    margin: var(----margin);
     padding: 0;
     list-style: none;
-    color: colors('danger');
+    color: var(----color);
     font-size: font-size('sm');
 
     li {
