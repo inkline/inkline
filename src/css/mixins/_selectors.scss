@@ -2,8 +2,8 @@
 /// Component selector mixins
 ////
 
-@mixin i-icon {
-    .inkline-icon {
+@mixin i-modal {
+    .modal-overlay {
         @content;
     }
 }

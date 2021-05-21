@@ -1,389 +1,204 @@
-////
-/// Variables
-////
+/**
+ * Variables
+ */
 
-/// The line height of the input component
-/// @name line-height
-$input-line-height: var(--line-height) !default;
+.input-wrapper {
+    /// The line height of the input component
+    /// @name line-height
+    ----line-height: #{var(--line-height)};
 
-/// The border width of the input component
-/// @name border-width
-$input-border-width: var(--border-width) !default;
+    /// The font size of the input component
+    /// @name font-size
+    /// @type size
+    ----font-size: #{font-size()};
 
-/// The border width of the input component
-/// @name prefix-border-width
-$input-prefix-border-width: var(--input-border-width) !default;
+    /// The border top width of the input component
+    /// @name border-top-width
+    ----border-top-width: #{var(--border-top-width)};
 
-/// The border radius of the input component
-/// @name border-radius
-/// @type size
-$input-border-radius: border-radius() !default;
+    /// The border right width of the input component
+    /// @name border-right-width
+    ----border-right-width: #{var(--border-right-width)};
 
-/// The font size of the input component
-/// @name font-size
-/// @type size
-$input-font-size: font-size() !default;
+    /// The border bottom width of the input component
+    /// @name border-bottom-width
+    ----border-bottom-width: #{var(--border-bottom-width)};
 
-/// The padding of the input component
-/// @name padding
-/// @type size
-$input-padding: spacing() !default;
+    /// The border left width of the input component
+    /// @name border-left-width
+    ----border-left-width: #{var(--border-left-width)};
 
-/// The padding of the input component prefix and suffix
-/// @name prefix-suffix-padding
-/// @type size
-$input-prefix-suffix-padding: spacing() !default;
+    /// The border width of the input component
+    /// @name border-width
+    ----border-width: #{var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)};
 
-/// The padding of the input component
-/// @name box-shadow
-$input-box-shadow: inset 0 1px 1px rgba(#{color('black')}, 0.05) !default;
+    /// The border style of the input component
+    /// @name border-style
+    ----border-style: #{var(--border-style)};
 
-/// The size of the input component icon circle
-/// @name icon-circle-size
-$input-icon-circle-size: 1.2rem !default;
+    /// The border top left radius of the input component
+    /// @name border-top-left-radius
+    /// @type size
+    ----border-top-left-radius: #{var(--border-top-left-radius)};
 
-////
-/// Sizes
-////
+    /// The border top right radius of the input component
+    /// @name border-top-right-radius
+    /// @type size
+    ----border-top-right-radius: #{var(--border-top-right-radius)};
 
-////
-/// Small size
-////
+    /// The border bottom right radius of the input component
+    /// @name border-bottom-right-radius
+    /// @type size
+    ----border-bottom-right-radius: #{var(--border-bottom-right-radius)};
 
-/// The border radius of the input component
-/// @name border-radius
-/// @group sm
-/// @type size
-$input-size-variant-sm-border-radius: calc(var(--input-border-radius) * #{size-multiplier('sm')}) !default;
+    /// The border bottom left radius of the input component
+    /// @name border-bottom-left-radius
+    /// @type size
+    ----border-bottom-left-radius: #{var(--border-bottom-left-radius)};
 
-/// The font size of the input component
-/// @name font-size
-/// @group sm
-/// @type size
-$input-size-variant-sm-font-size: calc(var(--input-font-size) * #{size-multiplier('sm')}) !default;
+    /// The border radius of the input component
+    /// @name border-radius
+    ----border-radius: #{var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)};
 
-/// The padding of the input component
-/// @name padding
-/// @group sm
-/// @type size
-$input-size-variant-sm-padding: calc(var(--input-padding) / 2 * #{size-multiplier('sm')}) calc(var(--input-padding) * #{size-multiplier('sm')}) !default;
+    /// The box shadow horizontal offset of the alert component
+    /// @name box-shadow-offset-x
+    ----box-shadow-offset-x: #{var(--box-shadow-offset-x)};
 
-/// The padding of the input component prefix and suffix
-/// @name prefix-suffix-padding
-/// @group sm
-/// @type size
-$input-size-variant-sm-prefix-suffix-padding: calc(var(--input-prefix-suffix-padding) * #{size-multiplier('sm')}) !default;
+    /// The box shadow vertical offset of the alert component
+    /// @name box-shadow-offset-y
+    ----box-shadow-offset-y: #{var(--box-shadow-offset-y)};
 
-/// Map for sm size
-/// @group sm
-$input-size-variant-sm: (
-    'border-radius': $input-size-variant-sm-border-radius,
-    'font-size': $input-size-variant-sm-font-size,
-    'padding': $input-size-variant-sm-padding,
-    'prefix-suffix-padding': $input-size-variant-sm-prefix-suffix-padding
-) !default;
+    /// The box shadow blur radius of the alert component
+    /// @name box-shadow-blur-radius
+    ----box-shadow-blur-radius: #{var(--box-shadow-blur-radius)};
 
-////
-/// Medium size
-////
+    /// The box shadow spread radius of the alert component
+    /// @name box-shadow-spread-radius
+    ----box-shadow-spread-radius: #{var(--box-shadow-spread-radius)};
 
-/// The border radius of the input component
-/// @name border-radius
-/// @group md
-/// @type size
-$input-size-variant-md-border-radius: calc(var(--input-border-radius) * #{size-multiplier('md')}) !default;
+    /// The box shadow spread radius of the alert component
+    /// @name box-shadow-color
+    ----box-shadow-color: #{var(--box-shadow-color)};
 
-/// The font size of the input component
-/// @name font-size
-/// @group md
-/// @type size
-$input-size-variant-md-font-size: calc(var(--input-font-size) * #{size-multiplier('md')}) !default;
+    /// The box shadow of the alert component
+    /// @name box-shadow
+    ----box-shadow: #{var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)};
 
-/// The padding of the input component
-/// @name padding
-/// @group md
-/// @type size
-$input-size-variant-md-padding: calc(var(--input-padding) / 2 * #{size-multiplier('md')}) calc(var(--input-padding) * #{size-multiplier('md')}) !default;
+    /// The padding right of the input component prefix and suffix
+    /// @name prefix-suffix--padding-right
+    ----prefix-suffix--padding-right: #{var(----padding-right)};
 
-/// The padding of the input component prefix and suffix
-/// @name prefix-suffix-padding
-/// @group md
-/// @type size
-$input-size-variant-md-prefix-suffix-padding: calc(var(--input-prefix-suffix-padding) * #{size-multiplier('md')}) !default;
+    /// The padding top of the input component
+    /// @name padding-top
+    /// @type size
+    ----padding-top: #{calc(var(--padding-top) / 2)};
 
-/// Map for md size
-/// @group md
-$input-size-variant-md: (
-    'border-radius': $input-size-variant-md-border-radius,
-    'font-size': $input-size-variant-md-font-size,
-    'padding': $input-size-variant-md-padding,
-    'prefix-suffix-padding': $input-size-variant-md-prefix-suffix-padding
-) !default;
+    /// The padding right of the input component
+    /// @name padding-right
+    /// @type size
+    ----padding-right: #{var(--padding-right)};
 
-////
-/// Large size
-////
+    /// The padding bottom of the input component
+    /// @name padding-bottom
+    /// @type size
+    ----padding-bottom: #{calc(var(--padding-bottom) / 2)};
 
-/// The border radius of the input component
-/// @name border-radius
-/// @group lg
-/// @type size
-$input-size-variant-lg-border-radius: calc(var(--input-border-radius) * #{size-multiplier('lg')}) !default;
+    /// The padding left of the input component
+    /// @name padding-left
+    /// @type size
+    ----padding-left: #{var(--padding-left)};
 
-/// The font size of the input component
-/// @name font-size
-/// @group lg
-/// @type size
-$input-size-variant-lg-font-size: calc(var(--input-font-size) * #{size-multiplier('lg')}) !default;
+    /// The padding of the input component
+    /// @name padding
+    ----padding: #{var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)};
 
-/// The padding of the input component
-/// @name padding
-/// @group lg
-/// @type size
-$input-size-variant-lg-padding: calc(var(--input-padding) / 2 * #{size-multiplier('lg')}) calc(var(--input-padding) * #{size-multiplier('lg')}) !default;
+    /// The size of the input component clear button
+    /// @name clear--size
+    ----clear--size: #{1.2rem};
 
-/// The padding of the input component prefix and suffix
-/// @name prefix-suffix-padding
-/// @group lg
-/// @type size
-$input-size-variant-lg-prefix-suffix-padding: calc(var(--input-prefix-suffix-padding) * #{size-multiplier('lg')}) !default;
+    /// The color of the input component
+    /// @name color
+    /// @type color
+    ----color: #{contrast-color($color-white)};
 
-/// Map for lg size
-/// @group lg
-$input-size-variant-lg: (
-    'border-radius': $input-size-variant-lg-border-radius,
-    'font-size': $input-size-variant-lg-font-size,
-    'padding': $input-size-variant-lg-padding,
-    'prefix-suffix-padding': $input-size-variant-lg-prefix-suffix-padding
-) !default;
+    /// The color of the input component when disabled
+    /// @name color--disabled
+    /// @type color
+    ----color--disabled: #{color('light-75')};
 
-/// Sizes group map
-$input-size-variants: (
-    'sm': $input-size-variant-sm,
-    'md': $input-size-variant-md,
-    'lg': $input-size-variant-lg
-) !default;
+    /// The background of the input component
+    /// @name background
+    /// @type color
+    ----background: #{color('white')};
 
-////
-/// Colors
-////
+    /// The background of the input component when disabled
+    /// @name background--disabled
+    /// @type color
+    ----background--disabled: #{color('light-25')};
 
-////
-/// Light color
-////
+    /// The border color of the input component
+    /// @name border-color
+    /// @type color
+    ----border-color: #{color('light')};
 
-/// The color of the input component
-/// @name color
-/// @group light
-/// @type color
-$input-color-variant-light-color: contrast-color($color-white) !default;
+    /// The border color of the input component when hovered
+    /// @name border-color--hover
+    /// @type color
+    ----border-color--hover: #{color('light-55')};
 
-/// The color of the input component when disabled
-/// @name color-disabled
-/// @group light
-/// @type color
-$input-color-variant-light-color-disabled: color('light-75') !default;
+    /// The border color of the input component when focused
+    /// @name border-color--focus
+    /// @type color
+    ----border-color--focus: #{color('primary')};
 
-/// The background of the input component
-/// @name background
-/// @group light
-/// @type color
-$input-color-variant-light-background: color('white') !default;
+    /// The color of the input component placeholder
+    /// @name placeholder--color
+    /// @type color
+    ----placeholder--color: #{color('light-60')};
 
-/// The background of the input component when disabled
-/// @name background-disabled
-/// @group light
-/// @type color
-$input-color-variant-light-background-disabled: color('light-25') !default;
+    /// The color of the input component prefix and suffix
+    /// @name prefix-suffix--color
+    /// @type color
+    ----prefix-suffix--color: #{color('light-70')};
 
-/// The border color of the input component
-/// @name border-color
-/// @group light
-/// @type color
-$input-color-variant-light-border-color: color('light') !default;
+    /// The background of the input component prepend and append
+    /// @name prepend-append--background
+    /// @type color
+    ----prepend-append--background: #{color('light')};
 
-/// The border color of the input component when hovered
-/// @name border-color-hover
-/// @group light
-/// @type color
-$input-color-variant-light-border-color-hover: color('light-55') !default;
+    /// The color of the input component clear button
+    /// @name clear--color
+    /// @type color
+    ----clear--color: #{color('light-70')};
 
-/// The border color of the input component when focused
-/// @name border-color-focus
-/// @group light
-/// @type color
-$input-color-variant-light-border-color-focus: color('primary') !default;
+    /// The background of the input component clear button
+    /// @name clear--background
+    /// @type color
+    ----clear--background: #{transparent};
 
-/// The color of the input component placeholder
-/// @name placeholder-color
-/// @group light
-/// @type color
-$input-color-variant-light-placeholder-color: color('light-60') !default;
+    /// The background of the input component clear button
+    /// @name clear--background--hover
+    /// @type color
+    ----clear--background--hover: #{color('light-30')};
 
-/// The color of the input component prefix and suffix
-/// @name prefix-suffix-color
-/// @group light
-/// @type color
-$input-color-variant-light-prefix-suffix-color: color('light-70') !default;
+    /// The background of the input component clear button
+    /// @name clear--background--active
+    /// @type color
+    ----clear--background--active: #{color('light-40')};
 
-/// The background of the input component prepend and append
-/// @name prepend-append-background
-/// @group light
-/// @type color
-$input-color-variant-light-prepend-append-background: color('light') !default;
+    /// The padding left of the input component prefix and suffix
+    /// @name prefix-suffix--padding-left
+    ----prefix-suffix--padding-left: #{var(----padding-left)};
 
-/// The color of the input component clear button
-/// @name clearable-color
-/// @group light
-/// @type color
-$input-color-variant-light-clearable-color: color('light-70') !default;
+    /// The border width of the input component prefix
+    /// @name prefix--border-width
+    ----prefix--border-width: #{var(----border-right-width)};
 
-/// The background of the input component clear button
-/// @name clearable-background
-/// @group light
-/// @type color
-$input-color-variant-light-clearable-background: transparent !default;
+    /// The border width of the input component suffix
+    /// @name suffix--border-width
+    ----suffix--border-width: #{var(----border-left-width)};
 
-/// The background of the input component clear button
-/// @name clearable-background-hover
-/// @group light
-/// @type color
-$input-color-variant-light-clearable-background-hover: color('light-30') !default;
-
-/// The background of the input component clear button
-/// @name clearable-background-active
-/// @group light
-/// @type color
-$input-color-variant-light-clearable-background-active: color('light-40') !default;
-
-/// Map for light color
-/// @group light
-$input-color-variant-light: (
-    'color': $input-color-variant-light-color,
-    'color-disabled': $input-color-variant-light-color-disabled,
-    'background': $input-color-variant-light-background,
-    'background-disabled': $input-color-variant-light-background-disabled,
-    'border-color': $input-color-variant-light-border-color,
-    'border-color-hover': $input-color-variant-light-border-color-hover,
-    'border-color-focus': $input-color-variant-light-border-color-focus,
-    'placeholder-color': $input-color-variant-light-placeholder-color,
-    'prefix-suffix-color': $input-color-variant-light-prefix-suffix-color,
-    'prepend-append-background': $input-color-variant-light-prepend-append-background,
-    'clearable-color': $input-color-variant-light-clearable-color,
-    'clearable-background': $input-color-variant-light-clearable-background,
-    'clearable-background-hover': $input-color-variant-light-clearable-background-hover,
-    'clearable-background-active': $input-color-variant-light-clearable-background-active
-) !default;
-
-////
-/// Dark color
-////
-
-/// The color of the input component
-/// @name color
-/// @group dark
-/// @type color
-$input-color-variant-dark-color: contrast-color($color-dark) !default;
-
-/// The color of the input component when disabled
-/// @name color-disabled
-/// @group dark
-/// @type color
-$input-color-variant-dark-color-disabled: color('gray-35') !default;
-
-/// The background of the input component
-/// @name background
-/// @group dark
-/// @type color
-$input-color-variant-dark-background: color('dark') !default;
-
-/// The background of the input component when disabled
-/// @name background-disabled
-/// @group dark
-/// @type color
-$input-color-variant-dark-background-disabled: color('dark-40') !default;
-
-/// The border color of the input component
-/// @name border-color
-/// @group dark
-/// @type color
-$input-color-variant-dark-border-color: color('dark-40') !default;
-
-/// The border color of the input component when hovered
-/// @name border-color-hover
-/// @group dark
-/// @type color
-$input-color-variant-dark-border-color-hover: color('dark-35') !default;
-
-/// The border color of the input component when focused
-/// @name border-color-focus
-/// @group dark
-/// @type color
-$input-color-variant-dark-border-color-focus: color('primary') !default;
-
-/// The color of the input component placeholder
-/// @name placeholder-color
-/// @group dark
-/// @type color
-$input-color-variant-dark-placeholder-color: color('dark-25') !default;
-
-/// The color of the input component prefix and suffix
-/// @name prefix-suffix-color
-/// @group dark
-/// @type color
-$input-color-variant-dark-prefix-suffix-color: color('dark-25') !default;
-
-/// The background of the input component prepend and append
-/// @name prepend-append-background
-/// @group dark
-/// @type color
-$input-color-variant-dark-prepend-append-background: color('dark') !default;
-
-/// The color of the input component clear button
-/// @name clearable-color
-/// @group dark
-/// @type color
-$input-color-variant-dark-clearable-color: color('dark-30') !default;
-
-/// The background of the input component clear button
-/// @name clearable-background
-/// @group dark
-/// @type color
-$input-color-variant-dark-clearable-background: transparent !default;
-
-/// The background of the input component clear button
-/// @name clearable-background-hover
-/// @group dark
-/// @type color
-$input-color-variant-dark-clearable-background-hover: color('dark-35') !default;
-
-/// The background of the input component clear button
-/// @name clearable-background-active
-/// @group dark
-/// @type color
-$input-color-variant-dark-clearable-background-active: color('dark-30') !default;
-
-/// Map for dark color
-/// @group dark
-$input-color-variant-dark: (
-    'color': $input-color-variant-dark-color,
-    'color-disabled': $input-color-variant-dark-color-disabled,
-    'background': $input-color-variant-dark-background,
-    'background-disabled': $input-color-variant-dark-background-disabled,
-    'border-color': $input-color-variant-dark-border-color,
-    'border-color-hover': $input-color-variant-dark-border-color-hover,
-    'border-color-focus': $input-color-variant-dark-border-color-focus,
-    'placeholder-color': $input-color-variant-dark-placeholder-color,
-    'prefix-suffix-color': $input-color-variant-dark-prefix-suffix-color,
-    'prepend-append-background': $input-color-variant-dark-prepend-append-background,
-    'clearable-color': $input-color-variant-dark-clearable-color,
-    'clearable-background': $input-color-variant-dark-clearable-background,
-    'clearable-background-hover': $input-color-variant-dark-clearable-background-hover,
-    'clearable-background-active': $input-color-variant-dark-clearable-background-active
-) !default;
-
-/// Colors group map
-$input-color-variants: (
-    'light': $input-color-variant-light,
-    'dark': $input-color-variant-dark
-) !default;
+    /// The border style of the input component prefix and suffix
+    /// @name prefix-suffix--border-style
+    ----prefix-suffix--border-style: #{var(--border-style)};
+}

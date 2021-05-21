@@ -7,11 +7,18 @@ module.exports = {
 			type: []
 		}
 	],
-	styles: [
-		{
-			name: 'image-margin-right',
-			description: 'The margin right of the media component image',
-			default: 'spacing()'
-		}
-	]
+	css: {
+	    selector: '.media',
+        defaults: {
+            size: 'md',
+            color: 'light'
+        },
+	    variables: [
+            {
+                name: 'image--margin-right',
+                description: 'The margin right of the media component image',
+                value: 'var(--margin-right)'
+            }
+        ]
+    }
 };

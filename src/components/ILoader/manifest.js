@@ -35,27 +35,34 @@ module.exports = {
 			default: 'md'
 		}
 	],
-	styles: [
-		{
-			name: 'animation-duration',
-			description: 'The animation duration of the loader component',
-			default: '1.2s'
-		},
-		{
-			name: 'size',
-			description: 'The size of the loader component',
-			type: 'size',
-			default: '64px'
-		},
-		{
-			name: 'background',
-			description: 'The background of the loader component',
-			type: 'color',
-			variants: {
-				primary: 'color(\'primary\')',
-				light: 'color(\'light\')',
-				dark: 'color(\'dark\')'
-			}
-		}
-	]
+	css: {
+	    selector: '.loader',
+        defaults: {
+            size: 'md',
+            color: 'primary'
+        },
+	    variables: [
+            {
+                name: 'animation-duration',
+                description: 'The animation duration of the loader component',
+                value: '1.2s'
+            },
+            {
+                name: 'size',
+                description: 'The size of the loader component',
+                type: 'size',
+                value: '64px'
+            },
+            {
+                name: 'background',
+                description: 'The background of the loader component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary\')',
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark\')'
+                }
+            }
+        ]
+    }
 };

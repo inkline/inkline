@@ -7,11 +7,18 @@ module.exports = {
 			type: []
 		}
 	],
-	styles: [
-		{
-			name: 'width',
-			description: 'The width of the layout aside component',
-			default: '320px'
-		}
-	]
+	css: {
+	    selector: '.layout-aside',
+        defaults: {
+            size: 'md',
+            color: 'light'
+        },
+	    variables: [
+            {
+                name: 'width',
+                description: 'The width of the layout aside component',
+                value: '320px'
+            }
+        ]
+    }
 };

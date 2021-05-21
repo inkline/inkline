@@ -4,13 +4,14 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/colors';
 @import 'css/sizes';
 
 .loader {
     display: inline-block;
     position: relative;
+    width: var(----size);
+    height: var(----size);
 
     &::before {
         content: '';
@@ -37,28 +38,15 @@
     }
 
     > svg {
-        animation: loader-rotate var(--loader-animation-duration) linear infinite;
+        animation: loader-rotate var(----animation-duration) linear infinite;
         transform-origin: center center;
 
         > circle {
+            stroke: var(----background);
             stroke-dasharray: 89, 200;
             stroke-dashoffset: -35px;
-            animation: loader-dash var(--loader-animation-duration) ease-in-out infinite;
+            animation: loader-dash var(----animation-duration) ease-in-out infinite;
             stroke-linecap: round;
-        }
-    }
-
-    @include loader-size-variant('md');
-    @each $size-variant-key, $loader-size-variant-value in $loader-size-variants {
-        &.-#{$size-variant-key} {
-            @include loader-size-variant($size-variant-key);
-        }
-    }
-
-    @include loader-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $loader-color-variants {
-        &.-#{$color-variant-key} {
-            @include loader-color-variant($color-variant-key);
         }
     }
 

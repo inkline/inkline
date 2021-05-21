@@ -1,253 +1,117 @@
-////
-/// Variables
-////
+/**
+ * Variables
+ */
 
-/// The border width of the list group component
-/// @name border-width
-$list-group-border-width: var(--border-width) !default;
+.list-group {
+    /// The font size of the list group component
+    /// @name font-size
+    /// @type size
+    ----font-size: #{font-size()};
 
-/// The border style of the list group component
-/// @name border-style
-$list-group-border-style: solid !default;
+    /// The border top width of the list group component
+    /// @name border-top-width
+    ----border-top-width: #{var(--border-top-width)};
 
-/// The border radius of the list group component
-/// @name border-radius
-/// @type size
-$list-group-border-radius: border-radius() !default;
+    /// The border right width of the list group component
+    /// @name border-right-width
+    ----border-right-width: #{var(--border-right-width)};
 
-/// The font size of the list group component
-/// @name font-size
-/// @type size
-$list-group-font-size: font-size() !default;
+    /// The border bottom width of the list group component
+    /// @name border-bottom-width
+    ----border-bottom-width: #{var(--border-bottom-width)};
 
-/// The padding of the list group component items
-/// @name padding
-/// @type size
-$list-group-padding: spacing() !default;
+    /// The border left width of the list group component
+    /// @name border-left-width
+    ----border-left-width: #{var(--border-left-width)};
 
-////
-/// Sizes
-////
+    /// The border width of the list group component
+    /// @name border-width
+    ----border-width: #{var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)};
 
-////
-/// Small size
-////
+    /// The border style of the list group component
+    /// @name border-style
+    ----border-style: #{solid};
 
-/// The border radius of the list group component
-/// @name border-radius
-/// @group sm
-/// @type size
-$list-group-size-variant-sm-border-radius: calc(var(--list-group-border-radius) * #{size-multiplier('sm')}) !default;
+    /// The border top left radius of the list group component
+    /// @name border-top-left-radius
+    /// @type size
+    ----border-top-left-radius: #{var(--border-top-left-radius)};
 
-/// The font size of the list group component
-/// @name font-size
-/// @group sm
-/// @type size
-$list-group-size-variant-sm-font-size: calc(var(--list-group-font-size) * #{size-multiplier('sm')}) !default;
+    /// The border top right radius of the list group component
+    /// @name border-top-right-radius
+    /// @type size
+    ----border-top-right-radius: #{var(--border-top-right-radius)};
 
-/// The padding of the list group component items
-/// @name padding
-/// @group sm
-/// @type size
-$list-group-size-variant-sm-padding: calc(var(--list-group-padding) * #{size-multiplier('sm')}) !default;
+    /// The border bottom right radius of the list group component
+    /// @name border-bottom-right-radius
+    /// @type size
+    ----border-bottom-right-radius: #{var(--border-bottom-right-radius)};
 
-/// Map for sm size
-/// @group sm
-$list-group-size-variant-sm: (
-    'border-radius': $list-group-size-variant-sm-border-radius,
-    'font-size': $list-group-size-variant-sm-font-size,
-    'padding': $list-group-size-variant-sm-padding
-) !default;
+    /// The border bottom left radius of the list group component
+    /// @name border-bottom-left-radius
+    /// @type size
+    ----border-bottom-left-radius: #{var(--border-bottom-left-radius)};
 
-////
-/// Medium size
-////
+    /// The border radius of the list group component
+    /// @name border-radius
+    ----border-radius: #{var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)};
 
-/// The border radius of the list group component
-/// @name border-radius
-/// @group md
-/// @type size
-$list-group-size-variant-md-border-radius: calc(var(--list-group-border-radius) * #{size-multiplier('md')}) !default;
+    /// The padding top of the list group component
+    /// @name padding-top
+    /// @type size
+    ----padding-top: #{var(--padding-top)};
 
-/// The font size of the list group component
-/// @name font-size
-/// @group md
-/// @type size
-$list-group-size-variant-md-font-size: calc(var(--list-group-font-size) * #{size-multiplier('md')}) !default;
+    /// The padding right of the list group component
+    /// @name padding-right
+    /// @type size
+    ----padding-right: #{var(--padding-right)};
 
-/// The padding of the list group component items
-/// @name padding
-/// @group md
-/// @type size
-$list-group-size-variant-md-padding: calc(var(--list-group-padding) * #{size-multiplier('md')}) !default;
+    /// The padding bottom of the list group component
+    /// @name padding-bottom
+    /// @type size
+    ----padding-bottom: #{var(--padding-bottom)};
 
-/// Map for md size
-/// @group md
-$list-group-size-variant-md: (
-    'border-radius': $list-group-size-variant-md-border-radius,
-    'font-size': $list-group-size-variant-md-font-size,
-    'padding': $list-group-size-variant-md-padding
-) !default;
+    /// The padding left of the list group component
+    /// @name padding-left
+    /// @type size
+    ----padding-left: #{var(--padding-left)};
 
-////
-/// Large size
-////
+    /// The padding of the list group component
+    /// @name padding
+    ----padding: #{var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)};
 
-/// The border radius of the list group component
-/// @name border-radius
-/// @group lg
-/// @type size
-$list-group-size-variant-lg-border-radius: calc(var(--list-group-border-radius) * #{size-multiplier('lg')}) !default;
+    /// The color of the list group component item
+    /// @name color
+    /// @type color
+    ----color: #{contrast-color($color-light)};
 
-/// The font size of the list group component
-/// @name font-size
-/// @group lg
-/// @type size
-$list-group-size-variant-lg-font-size: calc(var(--list-group-font-size) * #{size-multiplier('lg')}) !default;
+    /// The color of the list group component item when active
+    /// @name color--active
+    /// @type color
+    ----color--active: #{contrast-color($color-primary)};
 
-/// The padding of the list group component items
-/// @name padding
-/// @group lg
-/// @type size
-$list-group-size-variant-lg-padding: calc(var(--list-group-padding) * #{size-multiplier('lg')}) !default;
+    /// The color of the list group component item when disabled
+    /// @name color--disabled
+    /// @type color
+    ----color--disabled: #{var(--text-muted)};
 
-/// Map for lg size
-/// @group lg
-$list-group-size-variant-lg: (
-    'border-radius': $list-group-size-variant-lg-border-radius,
-    'font-size': $list-group-size-variant-lg-font-size,
-    'padding': $list-group-size-variant-lg-padding
-) !default;
+    /// The background of the list group component
+    /// @name background
+    /// @type color
+    ----background: #{color('white')};
 
-/// Sizes group map
-$list-group-size-variants: (
-    'sm': $list-group-size-variant-sm,
-    'md': $list-group-size-variant-md,
-    'lg': $list-group-size-variant-lg
-) !default;
+    /// The background of the list group component when active
+    /// @name background--active
+    /// @type color
+    ----background--active: #{color('primary')};
 
-////
-/// Colors
-////
+    /// The border-color of the list group component
+    /// @name border-color
+    /// @type color
+    ----border-color: #{color('light')};
 
-////
-/// Light color
-////
-
-/// The color of the list group component item
-/// @name color
-/// @group light
-/// @type color
-$list-group-color-variant-light-color: contrast-color($color-light) !default;
-
-/// The color of the list group component item when active
-/// @name color-active
-/// @group light
-/// @type color
-$list-group-color-variant-light-color-active: contrast-color($color-primary) !default;
-
-/// The color of the list group component item when disabled
-/// @name color-disabled
-/// @group light
-/// @type color
-$list-group-color-variant-light-color-disabled: var(--text-muted) !default;
-
-/// The background of the list group component
-/// @name background
-/// @group light
-/// @type color
-$list-group-color-variant-light-background: color('white') !default;
-
-/// The background of the list group component when active
-/// @name background-active
-/// @group light
-/// @type color
-$list-group-color-variant-light-background-active: color('primary') !default;
-
-/// The border-color of the list group component
-/// @name border-color
-/// @group light
-/// @type color
-$list-group-color-variant-light-border-color: color('light') !default;
-
-/// The border-color of the list group component
-/// @name border-color-active
-/// @group light
-/// @type color
-$list-group-color-variant-light-border-color-active: color('primary-55') !default;
-
-/// Map for light color
-/// @group light
-$list-group-color-variant-light: (
-    'color': $list-group-color-variant-light-color,
-    'color-active': $list-group-color-variant-light-color-active,
-    'color-disabled': $list-group-color-variant-light-color-disabled,
-    'background': $list-group-color-variant-light-background,
-    'background-active': $list-group-color-variant-light-background-active,
-    'border-color': $list-group-color-variant-light-border-color,
-    'border-color-active': $list-group-color-variant-light-border-color-active
-) !default;
-
-////
-/// Dark color
-////
-
-/// The color of the list group component item
-/// @name color
-/// @group dark
-/// @type color
-$list-group-color-variant-dark-color: contrast-color($color-dark) !default;
-
-/// The color of the list group component item when active
-/// @name color-active
-/// @group dark
-/// @type color
-$list-group-color-variant-dark-color-active: contrast-color($color-primary) !default;
-
-/// The color of the list group component item when disabled
-/// @name color-disabled
-/// @group dark
-/// @type color
-$list-group-color-variant-dark-color-disabled: var(--text-muted) !default;
-
-/// The background of the list group component
-/// @name background
-/// @group dark
-/// @type color
-$list-group-color-variant-dark-background: color('dark') !default;
-
-/// The background of the list group component when active
-/// @name background-active
-/// @group dark
-/// @type color
-$list-group-color-variant-dark-background-active: color('primary') !default;
-
-/// The border-color of the list group component
-/// @name border-color
-/// @group dark
-/// @type color
-$list-group-color-variant-dark-border-color: color('dark-60') !default;
-
-/// The border-color of the list group component
-/// @name border-color-active
-/// @group dark
-/// @type color
-$list-group-color-variant-dark-border-color-active: color('primary-55') !default;
-
-/// Map for dark color
-/// @group dark
-$list-group-color-variant-dark: (
-    'color': $list-group-color-variant-dark-color,
-    'color-active': $list-group-color-variant-dark-color-active,
-    'color-disabled': $list-group-color-variant-dark-color-disabled,
-    'background': $list-group-color-variant-dark-background,
-    'background-active': $list-group-color-variant-dark-background-active,
-    'border-color': $list-group-color-variant-dark-border-color,
-    'border-color-active': $list-group-color-variant-dark-border-color-active
-) !default;
-
-/// Colors group map
-$list-group-color-variants: (
-    'light': $list-group-color-variant-light,
-    'dark': $list-group-color-variant-dark
-) !default;
+    /// The border-color of the list group component
+    /// @name border-color--active
+    /// @type color
+    ----border-color--active: #{color('primary-55')};
+}

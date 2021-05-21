@@ -4,7 +4,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/colors';
 @import 'css/sizes';
 
@@ -15,23 +14,14 @@
     transition-property: background-color, border-color;
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--transition-easing);
+    background-color: var(----background);
+    color: var(----color);
+    font-size: var(----font-size);
+    border-radius: var(----border-radius);
 
     &.-border {
-        border-width: var(--list-group-border-width);
-        border-style: var(--list-group-border-style);
-    }
-
-    @include list-group-size-variant('md');
-    @each $size-variant-key, $list-group-size-variant-value in $list-group-size-variants {
-        &.-#{$size-variant-key} {
-            @include list-group-size-variant($size-variant-key);
-        }
-    }
-
-    @include list-group-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $list-group-color-variants {
-        &.-#{$color-variant-key} {
-            @include list-group-color-variant($color-variant-key);
-        }
+        border-width: var(----border-width);
+        border-style: var(----border-style);
+        border-color: var(----border-color);
     }
 }

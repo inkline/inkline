@@ -139,8 +139,8 @@
             transition-timing-function: var(--transition-easing);
             border-color: var(----border-color);
             color: var(----prefix-suffix--color);
-            padding-left: var(----prefix-suffix--padding-left);
             padding-right: var(----prefix-suffix--padding-right);
+            padding-left: var(----prefix-suffix--padding-left);
 
             > button {
                 background: transparent;
@@ -150,14 +150,12 @@
         }
 
         .input-prefix {
-            padding-right: spacing();
-            border-right-width: var(----prefix-suffix--border-width);
+            border-right-width: var(----prefix--border-width);
             border-right-style: var(----prefix-suffix--border-style);
         }
 
         .input-suffix {
-            padding-left: spacing();
-            border-left-width: var(----prefix-suffix--border-width);
+            border-left-width: var(----suffix--border-width);
             border-left-style: var(----prefix-suffix--border-style);
         }
 

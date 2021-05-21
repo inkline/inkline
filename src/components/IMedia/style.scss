@@ -1,7 +1,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 
 /**
  * Media
@@ -29,6 +28,6 @@
         align-self: flex-start;
         height: auto;
         flex: 0 0 auto;
-        margin-right: var(--media-image-margin-right);
+        margin-right: var(----image--margin-right);
     }
 }

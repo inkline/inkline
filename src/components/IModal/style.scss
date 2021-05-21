@@ -2,12 +2,11 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/sizes';
 @import 'css/colors';
 
 .modal-overlay {
-    background: var(--modal-overlay-background);
+    background: var(----overlay--background);
     position: fixed;
     top: 0;
     left: 0;
@@ -22,20 +21,23 @@
 .modal {
     text-align: left; // Ensures proper alignment if parent has it changed
     list-style: none;
-    line-height: var(--modal-line-height);
+    line-height: var(----line-height);
     display: block;
-    width: calc(100% - var(--modal-margin) * 2);
-
-    > .modal-header,
-    > .modal-body,
-    > .modal-footer {
-        border-width: var(--modal-border-width);
-        border-style: solid;
-    }
+    width: calc(100% - var(----margin-left) - var(----margin-right));
+    max-width: var(----width);
+    border-radius: var(----border-radius);
 
     > .modal-header {
         display: flex;
         justify-content: space-between;
+        border-width: var(----header--border-width, var(----border-width));
+        border-style: var(----header--border-style, var(----border-style));
+        border-color: var(----header--border-color, var(----border-color));
+        color: var(----header--color, var(----color));
+        background: var(----header--background, var(----background));
+        padding: var(----header--padding, var(----padding));
+        border-top-left-radius: var(----border-top-left-radius);
+        border-top-right-radius: var(----border-top-right-radius);
 
         > .close {
             display: flex;
@@ -50,11 +52,16 @@
             border: 0;
             transition: background-color 0.3s ease;
             background-color: transparent;
+            border-radius: var(----border-radius);
 
              > .icon {
                  mask-image: url($ink-times);
                  mask-position: center center;
                  mask-repeat: no-repeat;
+                 background-color: var(----header--color, var(----color));
+                 width: var(----font-size);
+                 height: var(----font-size);
+                 mask-size: var(----font-size) var(----font-size);
              }
 
             &:hover,
@@ -69,24 +76,30 @@
         }
     }
 
+    > .modal-body {
+        color: var(----body--color, var(----color));
+        background: var(----body--background, var(----background));
+        border-width: var(----body--border-width, var(----border-width));
+        border-style: var(----body--border-style, var(----border-style));
+        border-color: var(----body--border-color, var(----border-color));
+        padding: var(----body--padding, var(----padding));
+    }
+
+    > .modal-footer {
+        color: var(----footer--color, var(----color));
+        background: var(----footer--background, var(----background));
+        border-width: var(----footer--border-width, var(----border-width));
+        border-style: var(----footer--border-style, var(----border-style));
+        border-color: var(----footer--border-color, var(----border-color));
+        padding: var(----footer--padding, var(----padding));
+        border-bottom-left-radius: var(----border-bottom-left-radius);
+        border-bottom-right-radius: var(----border-bottom-right-radius);
+    }
+
     > .modal-header + .modal-body,
     > .modal-header + .modal-footer,
     > .modal-body + .modal-footer,
     > .modal-body + .modal-body {
         border-top-width: 0;
-    }
-
-    @include modal-size-variant('md');
-    @each $size-variant-key, $modal-size-variant-value in $modal-size-variants {
-        &.-#{$size-variant-key} {
-            @include modal-size-variant($size-variant-key);
-        }
-    }
-
-    @include modal-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $modal-color-variants {
-        &.-#{$color-variant-key} {
-            @include modal-color-variant($color-variant-key);
-        }
     }
 }

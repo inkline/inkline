@@ -144,65 +144,141 @@ module.exports = {
             {
                 name: 'line-height',
                 description: 'The line height of the input component',
-                default: 'var(--line-height)'
-            },
-            {
-                name: 'border-width',
-                description: 'The border width of the input component',
-                default: 'var(--border-width)'
-            },
-            {
-                name: 'prefix--border-width',
-                description: 'The border width of the input component',
-                default: 'var(--input-border-width)'
-            },
-            {
-                name: 'border-radius',
-                description: 'The border radius of the input component',
-                type: 'size',
-                default: 'border-radius()'
+                value: 'var(--line-height)'
             },
             {
                 name: 'font-size',
                 description: 'The font size of the input component',
                 type: 'size',
-                default: 'font-size()'
+                value: 'font-size()'
+            },
+            {
+                name: 'border-top-width',
+                description: 'The border top width of the input component',
+                value: 'var(--border-top-width)'
+            },
+            {
+                name: 'border-right-width',
+                description: 'The border right width of the input component',
+                value: 'var(--border-right-width)'
+            },
+            {
+                name: 'border-bottom-width',
+                description: 'The border bottom width of the input component',
+                value: 'var(--border-bottom-width)'
+            },
+            {
+                name: 'border-left-width',
+                description: 'The border left width of the input component',
+                value: 'var(--border-left-width)'
+            },
+            {
+                name: 'border-width',
+                description: 'The border width of the input component',
+                value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
+            },
+            {
+                name: 'border-style',
+                description: 'The border style of the input component',
+                value: 'var(--border-style)'
+            },
+            {
+                name: 'border-top-left-radius',
+                type: 'size',
+                description: 'The border top left radius of the input component',
+                value: 'var(--border-top-left-radius)'
+            },
+            {
+                name: 'border-top-right-radius',
+                type: 'size',
+                description: 'The border top right radius of the input component',
+                value: 'var(--border-top-right-radius)'
+            },
+            {
+                name: 'border-bottom-right-radius',
+                type: 'size',
+                description: 'The border bottom right radius of the input component',
+                value: 'var(--border-bottom-right-radius)'
+            },
+            {
+                name: 'border-bottom-left-radius',
+                type: 'size',
+                description: 'The border bottom left radius of the input component',
+                value: 'var(--border-bottom-left-radius)'
+            },
+            {
+                name: 'border-radius',
+                description: 'The border radius of the input component',
+                value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
+            },
+            {
+                name: 'box-shadow-offset-x',
+                description: 'The box shadow horizontal offset of the alert component',
+                value: 'var(--box-shadow-offset-x)'
+            },
+            {
+                name: 'box-shadow-offset-y',
+                description: 'The box shadow vertical offset of the alert component',
+                value: 'var(--box-shadow-offset-y)'
+            },
+            {
+                name: 'box-shadow-blur-radius',
+                description: 'The box shadow blur radius of the alert component',
+                value: 'var(--box-shadow-blur-radius)'
+            },
+            {
+                name: 'box-shadow-spread-radius',
+                description: 'The box shadow spread radius of the alert component',
+                value: 'var(--box-shadow-spread-radius)'
+            },
+            {
+                name: 'box-shadow-color',
+                description: 'The box shadow spread radius of the alert component',
+                value: 'var(--box-shadow-color)'
+            },
+            {
+                name: 'box-shadow',
+                description: 'The box shadow of the alert component',
+                value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
+            },
+            {
+                name: 'prefix-suffix--padding-right',
+                description: 'The padding right of the input component prefix and suffix',
+                value: 'var(----padding-right)'
+            },
+            {
+                name: 'padding-top',
+                type: 'size',
+                description: 'The padding top of the input component',
+                value: 'calc(var(--padding-top) / 2)'
+            },
+            {
+                name: 'padding-right',
+                type: 'size',
+                description: 'The padding right of the input component',
+                value: 'var(--padding-right)'
+            },
+            {
+                name: 'padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the input component',
+                value: 'calc(var(--padding-bottom) / 2)'
+            },
+            {
+                name: 'padding-left',
+                type: 'size',
+                description: 'The padding left of the input component',
+                value: 'var(--padding-left)'
             },
             {
                 name: 'padding',
                 description: 'The padding of the input component',
-                type: 'size',
-                default: 'spacing()',
-                variants: {
-                    sm: [
-                        'var(--input-padding) / 2',
-                        'var(--input-padding)'
-                    ],
-                    md: [
-                        'var(--input-padding) / 2',
-                        'var(--input-padding)'
-                    ],
-                    lg: [
-                        'var(--input-padding) / 2',
-                        'var(--input-padding)'
-                    ]
-                }
+                value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
             },
             {
-                name: 'prefix-suffix-padding',
-                description: 'The padding of the input component prefix and suffix',
-                type: 'size',
-                default: 'spacing()'
-            },
-            {
-                name: 'box-shadow',
-                description: 'The padding of the input component',
-                default: 'inset 0 1px 1px rgba(#{color(\'black\')}, 0.05)'
-            },
-            {
-                name: 'icon-circle-size',
-                description: 'The size of the input component icon circle',
-                default: '1.2rem'
+                name: 'clear--size',
+                description: 'The size of the input component clear button',
+                value: '1.2rem'
             },
             {
                 name: 'color',
@@ -214,7 +290,7 @@ module.exports = {
                 }
             },
             {
-                name: 'color-disabled',
+                name: 'color--disabled',
                 description: 'The color of the input component when disabled',
                 type: 'color',
                 variants: {
@@ -232,7 +308,7 @@ module.exports = {
                 }
             },
             {
-                name: 'background-disabled',
+                name: 'background--disabled',
                 description: 'The background of the input component when disabled',
                 type: 'color',
                 variants: {
@@ -250,7 +326,7 @@ module.exports = {
                 }
             },
             {
-                name: 'border-color-hover',
+                name: 'border-color--hover',
                 description: 'The border color of the input component when hovered',
                 type: 'color',
                 variants: {
@@ -259,7 +335,7 @@ module.exports = {
                 }
             },
             {
-                name: 'border-color-focus',
+                name: 'border-color--focus',
                 description: 'The border color of the input component when focused',
                 type: 'color',
                 variants: {
@@ -268,7 +344,7 @@ module.exports = {
                 }
             },
             {
-                name: 'placeholder-color',
+                name: 'placeholder--color',
                 description: 'The color of the input component placeholder',
                 type: 'color',
                 variants: {
@@ -277,7 +353,7 @@ module.exports = {
                 }
             },
             {
-                name: 'prefix-suffix-color',
+                name: 'prefix-suffix--color',
                 description: 'The color of the input component prefix and suffix',
                 type: 'color',
                 variants: {
@@ -286,7 +362,7 @@ module.exports = {
                 }
             },
             {
-                name: 'prepend-append-background',
+                name: 'prepend-append--background',
                 description: 'The background of the input component prepend and append',
                 type: 'color',
                 variants: {
@@ -295,7 +371,7 @@ module.exports = {
                 }
             },
             {
-                name: 'clearable-color',
+                name: 'clear--color',
                 description: 'The color of the input component clear button',
                 type: 'color',
                 variants: {
@@ -304,7 +380,7 @@ module.exports = {
                 }
             },
             {
-                name: 'clearable-background',
+                name: 'clear--background',
                 description: 'The background of the input component clear button',
                 type: 'color',
                 variants: {
@@ -313,7 +389,7 @@ module.exports = {
                 }
             },
             {
-                name: 'clearable-background-hover',
+                name: 'clear--background--hover',
                 description: 'The background of the input component clear button',
                 type: 'color',
                 variants: {
@@ -322,13 +398,33 @@ module.exports = {
                 }
             },
             {
-                name: 'clearable-background-active',
+                name: 'clear--background--active',
                 description: 'The background of the input component clear button',
                 type: 'color',
                 variants: {
                     light: 'color(\'light-40\')',
                     dark: 'color(\'dark-30\')'
                 }
+            },
+            {
+                name: 'prefix-suffix--padding-left',
+                description: 'The padding left of the input component prefix and suffix',
+                value: 'var(----padding-left)'
+            },
+            {
+                name: 'prefix--border-width',
+                description: 'The border width of the input component prefix',
+                value: 'var(----border-right-width)'
+            },
+            {
+                name: 'suffix--border-width',
+                description: 'The border width of the input component suffix',
+                value: 'var(----border-left-width)'
+            },
+            {
+                name: 'prefix-suffix--border-style',
+                description: 'The border style of the input component prefix and suffix',
+                value: 'var(--border-style)'
             }
         ]
     }
