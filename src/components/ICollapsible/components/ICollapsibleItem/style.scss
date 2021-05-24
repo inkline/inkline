@@ -9,25 +9,24 @@
     > .collapsible-item {
         position: relative;
         display: block;
-        border-width: var(----border-width);
-        border-style: var(----border-style);
-        border-color: var(----border-color);
         box-shadow: var(----box-shadow);
 
         > .collapsible-header {
-            border-width: 0;
-            border-bottom-width: var(----border-bottom-width);
-            border-style: var(----border-style);
-            border-color: var(----border-color);
-            color: var(----color);
-            background-color: var(----background);
-            padding: var(----padding);
+            border-width: var(----header--border-width);
+            border-style: var(----header--border-style);
+            border-color: var(----header--border-color);
+            color: var(----header--color);
+            background-color: var(----header--background);
+            padding: var(----header--padding);
             display: flex;
             cursor: pointer;
             align-items: center;
             justify-content: space-between;
             text-decoration: none;
             outline: 0;
+            transition-property: border-radius;
+            transition-duration: var(--transition-duration);
+            transition-timing-function: var(--transition-easing);
 
             > .icon {
                 background-color: var(----header--color);
@@ -49,6 +48,7 @@
             display: block;
             position: relative;
             background-color: var(----body--background);
+            border-width: var(----body--border-width);
             border-color: var(----body--border-color);
             border-style: var(----body--border-style);
             color: var(----body--color);
@@ -67,7 +67,8 @@
 
         &:last-child {
             > .collapsible-header {
-                border-bottom-width: 0;
+                border-bottom-left-radius: var(----border-bottom-left-radius);
+                border-bottom-right-radius: var(----border-bottom-right-radius);
             }
 
             > .collapsible-body {
@@ -76,13 +77,28 @@
             }
         }
 
-        &.-active > .collapsible-header > .icon {
-            transform: rotate(180deg);
+        &.-active {
+            > .collapsible-header {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+
+                > .icon {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        + .collapsible-item {
+            > .collapsible-header {
+                border-top-width: 0;
+            }
         }
     }
 
     &.-blank {
         > .collapsible-item {
+            box-shadow: none;
+
             > .collapsible-header,
             > .collapsible-body {
                 border: 0;

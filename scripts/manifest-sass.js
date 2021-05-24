@@ -23,7 +23,7 @@ function capitalizeFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-glob(path.resolve(__dirname, '..', 'src', 'components', 'ICard', '**', 'manifest.js'), (error, files) => {
+glob(path.resolve(__dirname, '..', 'src', 'components', 'ICollapsible', '**', 'manifest.js'), (error, files) => {
     const selectorMixins = [];
 
     if (error) {

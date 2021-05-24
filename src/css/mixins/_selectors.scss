@@ -2,8 +2,14 @@
 /// Component selector mixins
 ////
 
-@mixin i-card {
-    .card {
+@mixin i-collapsible-item {
+    .collapsible-item {
+        @content;
+    }
+}
+
+@mixin i-collapsible {
+    .collapsible {
         @content;
     }
 }

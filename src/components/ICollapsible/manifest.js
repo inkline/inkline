@@ -211,6 +211,80 @@ module.exports = {
                 value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
             },
             {
+                name: 'header--background',
+                description: 'The background of the collapsible component header',
+                value: 'var(----background)'
+            },
+            {
+                name: 'header--border-color',
+                description: 'The border color of the collapsible component header',
+                value: 'var(----border-color)'
+            },
+            {
+                name: 'header--border-style',
+                description: 'The border style of the collapsible component header',
+                value: 'var(----border-style)'
+            },
+            {
+                name: 'header--border-top-width',
+                description: 'The border top width of the collapsible component header',
+                value: 'var(----border-top-width)'
+            },
+            {
+                name: 'header--border-right-width',
+                description: 'The border right width of the collapsible component header',
+                value: 'var(----border-right-width)'
+            },
+            {
+                name: 'header--border-bottom-width',
+                description: 'The border bottom width of the collapsible component header',
+                value: 'var(----border-bottom-width)'
+            },
+            {
+                name: 'header--border-left-width',
+                description: 'The border left width of the collapsible component header',
+                value: 'var(----border-left-width)'
+            },
+            {
+                name: 'header--border-width',
+                description: 'The border width of the collapsible component header',
+                value: ['var(----header--border-top-width)', 'var(----header--border-right-width)', 'var(----header--border-bottom-width)', 'var(----header--border-left-width)']
+            },
+            {
+                name: 'header--color',
+                description: 'The color of the collapsible component header',
+                value: 'var(----color)'
+            },
+            {
+                name: 'header--padding-top',
+                type: 'size',
+                description: 'The padding top of the collapsible component header',
+                value: 'var(----padding-top)'
+            },
+            {
+                name: 'header--padding-right',
+                type: 'size',
+                description: 'The padding right of the collapsible component header',
+                value: 'var(----padding-right)'
+            },
+            {
+                name: 'header--padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the collapsible component header',
+                value: 'var(----padding-bottom)'
+            },
+            {
+                name: 'header--padding-left',
+                type: 'size',
+                description: 'The padding left of the collapsible component header',
+                value: 'var(----padding-left)'
+            },
+            {
+                name: 'header--padding',
+                description: 'The padding of the collapsible component header',
+                value: ['var(----header--padding-top)', 'var(----header--padding-right)', 'var(----header--padding-bottom)', 'var(----header--padding-left)']
+            },
+            {
                 name: 'body--background',
                 description: 'The background of the collapsible component body',
                 type: 'color',
@@ -218,6 +292,46 @@ module.exports = {
                     light: 'color(\'white\')',
                     dark: 'color(\'dark-45\')'
                 }
+            },
+            {
+                name: 'body--border-color',
+                description: 'The border color of the collapsible component body',
+                value: 'var(----border-color)'
+            },
+            {
+                name: 'body--border-style',
+                description: 'The border style of the collapsible component body',
+                value: 'var(----border-style)'
+            },
+            {
+                name: 'body--border-top-width',
+                description: 'The border top width of the collapsible component body',
+                value: '0'
+            },
+            {
+                name: 'body--border-right-width',
+                description: 'The border right width of the collapsible component body',
+                value: 'var(----border-right-width)'
+            },
+            {
+                name: 'body--border-bottom-width',
+                description: 'The border bottom width of the collapsible component body',
+                value: 'var(----border-bottom-width)'
+            },
+            {
+                name: 'body--border-left-width',
+                description: 'The border left width of the collapsible component body',
+                value: 'var(----border-left-width)'
+            },
+            {
+                name: 'body--border-width',
+                description: 'The border width of the collapsible component body',
+                value: ['var(----body--border-top-width)', 'var(----body--border-right-width)', 'var(----body--border-bottom-width)', 'var(----body--border-left-width)']
+            },
+            {
+                name: 'body--color',
+                description: 'The color of the collapsible component body',
+                value: 'var(----color)'
             },
             {
                 name: 'body--padding-top',
