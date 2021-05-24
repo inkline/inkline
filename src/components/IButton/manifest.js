@@ -124,20 +124,85 @@ module.exports = {
         },
         variables: [
             {
-                name: 'font-weight',
-                description: 'The font weight of the button component',
-                value: 'font-weight(\'normal\')'
+                name: 'background',
+                description: 'The background of the button component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary\')',
+                    secondary: 'color(\'secondary\')',
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark\')',
+                    info: 'color(\'info\')',
+                    success: 'color(\'success\')',
+                    warning: 'color(\'warning\')',
+                    danger: 'color(\'danger\')',
+                    facebook: 'color(\'facebook\')',
+                    google: 'color(\'google\')',
+                    twitter: 'color(\'twitter\')',
+                    github: 'color(\'github\')'
+                }
             },
             {
-                name: 'line-height',
-                description: 'The line height of the button component',
-                value: 'var(--line-height)'
+                name: 'background--hover',
+                description: 'The background of the button component when hovered or focused',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-55\')',
+                    secondary: 'color(\'secondary-55\')',
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-45\')',
+                    info: 'color(\'info-55\')',
+                    success: 'color(\'success-55\')',
+                    warning: 'color(\'warning-55\')',
+                    danger: 'color(\'danger-55\')',
+                    facebook: 'color(\'facebook-55\')',
+                    google: 'color(\'google-55\')',
+                    twitter: 'color(\'twitter-55\')',
+                    github: 'color(\'github-55\')'
+                }
             },
             {
-                name: 'font-size',
-                description: 'The font size of the button component',
-                type: 'size',
-                value: 'font-size()'
+                name: 'background--active',
+                description: 'The background of the button component when active',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-60\')',
+                    secondary: 'color(\'secondary-60\')',
+                    light: 'color(\'light-60\')',
+                    dark: 'color(\'dark-40\')',
+                    info: 'color(\'info-60\')',
+                    success: 'color(\'success-60\')',
+                    warning: 'color(\'warning-60\')',
+                    danger: 'color(\'danger-60\')',
+                    facebook: 'color(\'facebook-60\')',
+                    google: 'color(\'google-60\')',
+                    twitter: 'color(\'twitter-60\')',
+                    github: 'color(\'github-60\')'
+                }
+            },
+            {
+                name: 'border-color',
+                description: 'The border color of the button component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-55\')',
+                    secondary: 'color(\'secondary-55\')',
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-45\')',
+                    info: 'color(\'info-55\')',
+                    success: 'color(\'success-55\')',
+                    warning: 'color(\'warning-55\')',
+                    danger: 'color(\'danger-55\')',
+                    facebook: 'color(\'facebook-55\')',
+                    google: 'color(\'google-55\')',
+                    twitter: 'color(\'twitter-55\')',
+                    github: 'color(\'github-55\')'
+                }
+            },
+            {
+                name: 'border-color--hover',
+                description: 'The border color of the button component when hovered or focused',
+                value: 'var(----border-color)'
             },
             {
                 name: 'border-style',
@@ -229,6 +294,41 @@ module.exports = {
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
             {
+                name: 'color',
+                description: 'The color of the button component',
+                type: 'color',
+                variants: {
+                    primary: 'contrast-color($color-primary)',
+                    secondary: 'contrast-color($color-secondary)',
+                    light: 'contrast-color($color-light)',
+                    dark: 'contrast-color($color-dark)',
+                    info: 'contrast-color($color-info)',
+                    success: 'contrast-color($color-success)',
+                    warning: 'contrast-color($color-warning)',
+                    danger: 'contrast-color($color-danger)',
+                    facebook: 'contrast-color($color-facebook)',
+                    google: 'contrast-color($color-google)',
+                    twitter: 'contrast-color($color-twitter)',
+                    github: 'contrast-color($color-github)'
+                }
+            },
+            {
+                name: 'font-size',
+                description: 'The font size of the button component',
+                type: 'size',
+                value: 'font-size()'
+            },
+            {
+                name: 'font-weight',
+                description: 'The font weight of the button component',
+                value: 'font-weight(\'normal\')'
+            },
+            {
+                name: 'line-height',
+                description: 'The line height of the button component',
+                value: 'var(--line-height)'
+            },
+            {
                 name: 'padding-top',
                 type: 'size',
                 description: 'The padding top of the button component',
@@ -273,120 +373,6 @@ module.exports = {
                 }
             },
             {
-                name: 'background',
-                description: 'The background of the button component',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary\')',
-                    secondary: 'color(\'secondary\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')',
-                    info: 'color(\'info\')',
-                    success: 'color(\'success\')',
-                    warning: 'color(\'warning\')',
-                    danger: 'color(\'danger\')',
-                    facebook: 'color(\'facebook\')',
-                    google: 'color(\'google\')',
-                    twitter: 'color(\'twitter\')',
-                    github: 'color(\'github\')'
-                }
-            },
-            {
-                name: 'background--hover',
-                description: 'The background of the button component when hovered or focused',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    success: 'color(\'success-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    facebook: 'color(\'facebook-55\')',
-                    google: 'color(\'google-55\')',
-                    twitter: 'color(\'twitter-55\')',
-                    github: 'color(\'github-55\')'
-                }
-            },
-            {
-                name: 'background--active',
-                description: 'The background of the button component when active',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary-60\')',
-                    secondary: 'color(\'secondary-60\')',
-                    light: 'color(\'light-60\')',
-                    dark: 'color(\'dark-40\')',
-                    info: 'color(\'info-60\')',
-                    success: 'color(\'success-60\')',
-                    warning: 'color(\'warning-60\')',
-                    danger: 'color(\'danger-60\')',
-                    facebook: 'color(\'facebook-60\')',
-                    google: 'color(\'google-60\')',
-                    twitter: 'color(\'twitter-60\')',
-                    github: 'color(\'github-60\')'
-                }
-            },
-            {
-                name: 'border-color',
-                description: 'The border color of the button component',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    success: 'color(\'success-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    facebook: 'color(\'facebook-55\')',
-                    google: 'color(\'google-55\')',
-                    twitter: 'color(\'twitter-55\')',
-                    github: 'color(\'github-55\')'
-                }
-            },
-            {
-                name: 'border-color--hover',
-                description: 'The border color of the button component when hovered or focused',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    success: 'color(\'success-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    facebook: 'color(\'facebook-55\')',
-                    google: 'color(\'google-55\')',
-                    twitter: 'color(\'twitter-55\')',
-                    github: 'color(\'github-55\')'
-                }
-            },
-            {
-                name: 'color',
-                description: 'The color of the button component',
-                type: 'color',
-                variants: {
-                    primary: 'contrast-color($color-primary)',
-                    secondary: 'contrast-color($color-secondary)',
-                    light: 'contrast-color($color-light)',
-                    dark: 'contrast-color($color-dark)',
-                    info: 'contrast-color($color-info)',
-                    success: 'contrast-color($color-success)',
-                    warning: 'contrast-color($color-warning)',
-                    danger: 'contrast-color($color-danger)',
-                    facebook: 'contrast-color($color-facebook)',
-                    google: 'contrast-color($color-google)',
-                    twitter: 'contrast-color($color-twitter)',
-                    github: 'contrast-color($color-github)'
-                }
-            },
-            {
                 name: 'link--color',
                 description: 'The color of the button component link variant',
                 type: 'color',
@@ -425,156 +411,44 @@ module.exports = {
                 }
             },
             {
-                name: 'outline--color',
-                description: 'The color of the button component outline variant',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary\')',
-                    secondary: 'color(\'secondary\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')',
-                    info: 'color(\'info\')',
-                    success: 'color(\'success\')',
-                    warning: 'color(\'warning\')',
-                    danger: 'color(\'danger\')',
-                    facebook: 'color(\'facebook\')',
-                    google: 'color(\'google\')',
-                    twitter: 'color(\'twitter\')',
-                    github: 'color(\'github\')'
-                }
-            },
-            {
-                name: 'outline--color--hover',
-                description: 'The color of the button component outline variant when hovered or focused',
-                type: 'color',
-                variants: {
-                    primary: 'contrast-color($color-primary)',
-                    secondary: 'contrast-color($color-secondary)',
-                    light: 'contrast-color($color-light)',
-                    dark: 'contrast-color($color-dark)',
-                    info: 'contrast-color($color-info)',
-                    success: 'contrast-color($color-success)',
-                    warning: 'contrast-color($color-warning)',
-                    danger: 'contrast-color($color-danger)',
-                    facebook: 'contrast-color($color-facebook)',
-                    google: 'contrast-color($color-google)',
-                    twitter: 'contrast-color($color-twitter)',
-                    github: 'contrast-color($color-github)'
-                }
-            },
-            {
-                name: 'outline--color--active',
-                description: 'The color of the button component outline variant when hovered or focused',
-                type: 'color',
-                variants: {
-                    primary: 'var(----outline-color)',
-                    secondary: 'var(----outline-color)',
-                    light: 'var(----outline-color)',
-                    dark: 'var(----outline-color)',
-                    info: 'var(----outline-color)',
-                    success: 'var(----outline-color)',
-                    warning: 'var(----outline-color)',
-                    danger: 'var(----outline-color)',
-                    facebook: 'var(----outline-color)',
-                    google: 'var(----outline-color)',
-                    twitter: 'var(----outline-color)',
-                    github: 'var(----outline-color)'
-                }
-            },
-            {
                 name: 'outline--background',
                 description: 'The background of the button component outline variant',
-                type: 'color',
-                variants: {
-                    primary: 'transparent',
-                    secondary: 'transparent',
-                    light: 'transparent',
-                    dark: 'transparent',
-                    info: 'transparent',
-                    success: 'transparent',
-                    warning: 'transparent',
-                    danger: 'transparent',
-                    facebook: 'transparent',
-                    google: 'transparent',
-                    twitter: 'transparent',
-                    github: 'transparent'
-                }
+                value: 'transparent'
             },
             {
                 name: 'outline--background--hover',
                 description: 'The background of the button component outline variant when hovered',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary\')',
-                    secondary: 'color(\'secondary\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')',
-                    info: 'color(\'info\')',
-                    success: 'color(\'success\')',
-                    warning: 'color(\'warning\')',
-                    danger: 'color(\'danger\')',
-                    facebook: 'color(\'facebook\')',
-                    google: 'color(\'google\')',
-                    twitter: 'color(\'twitter\')',
-                    github: 'color(\'github\')'
-                }
+                value: 'var(----background)'
             },
             {
                 name: 'outline--background--active',
                 description: 'The background of the button component outline variant when active',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    success: 'color(\'success-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    facebook: 'color(\'facebook-55\')',
-                    google: 'color(\'google-55\')',
-                    twitter: 'color(\'twitter-55\')',
-                    github: 'color(\'github-55\')'
-                }
+                value: 'var(----background--active)'
             },
             {
                 name: 'outline--border-color',
                 description: 'The border color of the button component outline variant',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary\')',
-                    secondary: 'color(\'secondary\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')',
-                    info: 'color(\'info\')',
-                    success: 'color(\'success\')',
-                    warning: 'color(\'warning\')',
-                    danger: 'color(\'danger\')',
-                    facebook: 'color(\'facebook\')',
-                    google: 'color(\'google\')',
-                    twitter: 'color(\'twitter\')',
-                    github: 'color(\'github\')'
-                }
+                value: 'var(----background)'
             },
             {
                 name: 'outline--border-color--hover',
                 description: 'The border color of the button component outline variant when hovered or focused',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary\')',
-                    secondary: 'color(\'secondary\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')',
-                    info: 'color(\'info\')',
-                    success: 'color(\'success\')',
-                    warning: 'color(\'warning\')',
-                    danger: 'color(\'danger\')',
-                    facebook: 'color(\'facebook\')',
-                    google: 'color(\'google\')',
-                    twitter: 'color(\'twitter\')',
-                    github: 'color(\'github\')'
-                }
+                value: 'var(----border-color--hover)'
+            },
+            {
+                name: 'outline--color',
+                description: 'The color of the button component outline variant',
+                value: 'var(----background)'
+            },
+            {
+                name: 'outline--color--hover',
+                description: 'The color of the button component outline variant when hovered or focused',
+                value: 'var(----color)'
+            },
+            {
+                name: 'outline--color--active',
+                description: 'The color of the button component outline variant when hovered or focused',
+                value: 'var(----outline--color--hover)'
             }
         ]
     }

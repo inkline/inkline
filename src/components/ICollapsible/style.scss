@@ -10,51 +10,10 @@
 .collapsible {
     position: relative;
     display: block;
-    border-width: var(----border-width);
-    border-style: var(----border-style);
-    border-color: var(----border-color);
-    border-radius: var(----border-radius);
-    box-shadow: var(----box-shadow);
     font-size: var(----font-size);
 
     &.-blank {
         border: 0;
         box-shadow: none;
-    }
-
-    > .collapsible-item {
-        > .collapsible-header,
-        > .collapsible-body {
-            border-color: var(----border-color);
-            color: var(----color);
-        }
-
-        > .collapsible-header {
-            padding: var(----padding);
-        }
-
-        > .collapsible-body > .content {
-            padding: var(----body--padding);
-        }
-
-        > .collapsible-header {
-            background-color: var(----background);
-
-            > .icon {
-                background-color: var(----color);
-                width: var(----font-size);
-                height: var(----font-size);
-                mask-size: var(----font-size) var(----font-size);
-            }
-        }
-
-        > .collapsible-body {
-            background-color: var(----body--background);
-        }
-
-        &:last-child > .collapsible-body {
-            border-bottom-left-radius: var(----border-bottom-left-radius);
-            border-bottom-right-radius: var(----border-bottom-right-radius);
-        }
     }
 }

@@ -68,6 +68,7 @@ rules:
         -   always
         -   ignore:
                 -   between-comments
+                -   first-nested
                 -   stylelint-commands
 
     # https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/double-slash-comment-whitespace-inside/README.md

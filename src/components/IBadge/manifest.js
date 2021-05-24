@@ -42,14 +42,34 @@ module.exports = {
         },
         variables: [
             {
-                name: 'font-weight',
-                description: 'The font weight of the badge component',
-                default: 'font-weight(\'bold\')'
+                name: 'background',
+                description: 'The background of the badge component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary\')',
+                    secondary: 'color(\'secondary\')',
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark\')',
+                    info: 'color(\'info\')',
+                    warning: 'color(\'warning\')',
+                    danger: 'color(\'danger\')',
+                    success: 'color(\'success\')'
+                }
             },
             {
-                name: 'line-height',
-                description: 'The line height of the badge component',
-                default: 'var(--line-height)'
+                name: 'border-color',
+                description: 'The border color of the badge component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-55\')',
+                    secondary: 'color(\'secondary-55\')',
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-45\')',
+                    info: 'color(\'info-55\')',
+                    warning: 'color(\'warning-55\')',
+                    danger: 'color(\'danger-55\')',
+                    success: 'color(\'success-55\')'
+                }
             },
             {
                 name: 'border-style',
@@ -141,6 +161,41 @@ module.exports = {
                 value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
             },
             {
+                name: 'color',
+                description: 'The color of the badge component',
+                type: 'color',
+                variants: {
+                    primary: 'contrast-color($color-primary)',
+                    secondary: 'contrast-color($color-secondary)',
+                    light: 'contrast-color($color-light)',
+                    dark: 'contrast-color($color-dark)',
+                    info: 'contrast-color($color-info)',
+                    warning: 'contrast-color($color-warning)',
+                    danger: 'contrast-color($color-danger)',
+                    success: 'contrast-color($color-success)'
+                }
+            },
+            {
+                name: 'font-size',
+                description: 'The font size of the badge component',
+                type: 'size',
+                variants: {
+                    sm: '65%',
+                    md: '75%',
+                    lg: '85%'
+                }
+            },
+            {
+                name: 'font-weight',
+                description: 'The font weight of the badge component',
+                default: 'font-weight(\'bold\')'
+            },
+            {
+                name: 'line-height',
+                description: 'The line height of the badge component',
+                default: 'var(--line-height)'
+            },
+            {
                 name: 'padding-top',
                 type: 'size',
                 description: 'The padding top of the badge component',
@@ -168,61 +223,6 @@ module.exports = {
                 name: 'padding',
                 description: 'The padding of the badge component',
                 value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
-            },
-            {
-                name: 'font-size',
-                description: 'The font size of the badge component',
-                type: 'size',
-                variants: {
-                    sm: '65%',
-                    md: '75%',
-                    lg: '85%'
-                }
-            },
-            {
-                name: 'background',
-                description: 'The background of the badge component',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary\')',
-                    secondary: 'color(\'secondary\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')',
-                    info: 'color(\'info\')',
-                    warning: 'color(\'warning\')',
-                    danger: 'color(\'danger\')',
-                    success: 'color(\'success\')'
-                }
-            },
-            {
-                name: 'border-color',
-                description: 'The border color of the badge component',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    success: 'color(\'success-55\')'
-                }
-            },
-            {
-                name: 'color',
-                description: 'The color of the badge component',
-                type: 'color',
-                variants: {
-                    primary: 'contrast-color($color-primary)',
-                    secondary: 'contrast-color($color-secondary)',
-                    light: 'contrast-color($color-light)',
-                    dark: 'contrast-color($color-dark)',
-                    info: 'contrast-color($color-info)',
-                    warning: 'contrast-color($color-warning)',
-                    danger: 'contrast-color($color-danger)',
-                    success: 'contrast-color($color-success)'
-                }
             },
             {
                 name: 'link--background--hover',

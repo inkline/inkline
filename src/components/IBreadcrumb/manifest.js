@@ -36,29 +36,6 @@ module.exports = {
         },
         variables: [
             {
-                name: 'margin-bottom',
-                description: 'The bottom margin of the breadcrumb component',
-                value: 'spacing()'
-            },
-            {
-                name: 'font-size',
-                description: 'The font size of the breadcrumb component',
-                type: 'size',
-                value: 'font-size()'
-            },
-            {
-                name: 'padding-right',
-                type: 'size',
-                description: 'The padding right of the breadcrumb component',
-                value: 'var(--padding-right)'
-            },
-            {
-                name: 'padding-left',
-                type: 'size',
-                description: 'The padding left of the breadcrumb component',
-                value: 'var(--padding-left)'
-            },
-            {
                 name: 'color',
                 description: 'The text color of the breadcrumb component',
                 type: 'color',
@@ -84,6 +61,29 @@ module.exports = {
                     light: 'color(\'gray-70\')',
                     dark: 'color(\'gray-40\')'
                 }
+            },
+            {
+                name: 'font-size',
+                description: 'The font size of the breadcrumb component',
+                type: 'size',
+                value: 'font-size()'
+            },
+            {
+                name: 'margin-bottom',
+                description: 'The bottom margin of the breadcrumb component',
+                value: 'spacing()'
+            },
+            {
+                name: 'padding-right',
+                type: 'size',
+                description: 'The padding right of the breadcrumb component',
+                value: 'var(--padding-right)'
+            },
+            {
+                name: 'padding-left',
+                type: 'size',
+                description: 'The padding left of the breadcrumb component',
+                value: 'var(--padding-left)'
             }
         ]
     }

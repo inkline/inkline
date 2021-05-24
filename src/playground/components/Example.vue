@@ -356,7 +356,7 @@ export default defineComponent({
     }
 
     &.-modal {
-        .modal-overlay {
+        .modal-wrapper {
             margin: 0;
         }
     }

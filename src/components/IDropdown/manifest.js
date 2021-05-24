@@ -160,20 +160,49 @@ module.exports = {
         },
         variables: [
             {
-                name: 'font-weight',
-                description: 'The font weight of the dropdown component',
-                value: 'font-weight(\'normal\')'
+                name: 'background',
+                description: 'The background of the dropdown component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'white\')',
+                    dark: 'color(\'dark\')'
+                }
             },
             {
-                name: 'font-size',
-                description: 'The font size of the dropdown component',
-                type: 'size',
-                value: 'font-size()'
+                name: 'background--hover',
+                description: 'The background of the dropdown component when hovered or focused',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-25\')',
+                    dark: 'color(\'dark-45\')'
+                }
             },
             {
-                name: 'line-height',
-                description: 'The line height of the dropdown component',
-                value: 'var(--line-height)'
+                name: 'background--active',
+                description: 'The background of the dropdown component when active',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-25\')',
+                    dark: 'color(\'dark-45\')'
+                }
+            },
+            {
+                name: 'background--disabled',
+                description: 'The background of the dropdown component when disabled',
+                type: 'color',
+                variants: {
+                    light: 'transparent',
+                    dark: 'transparent'
+                }
+            },
+            {
+                name: 'border-color',
+                description: 'The border-color of the dropdown component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')'
+                }
             },
             {
                 name: 'border-style',
@@ -204,21 +233,6 @@ module.exports = {
                 name: 'border-width',
                 description: 'The border width of the dropdown component',
                 value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
-            },
-            {
-                name: 'z-index',
-                description: 'The z-index of the dropdown component',
-                value: '2000'
-            },
-            {
-                name: 'min-width',
-                description: 'The minimum width of the dropdown component',
-                value: '240px'
-            },
-            {
-                name: 'max-width',
-                description: 'The maximum width of the dropdown component',
-                value: '90vw'
             },
             {
                 name: 'border-top-left-radius',
@@ -279,197 +293,7 @@ module.exports = {
                 description: 'The box shadow of the dropdown component',
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
-            {
-                name: 'padding-top',
-                type: 'size',
-                description: 'The padding top of the dropdown component items',
-                value: 'var(--padding-top)'
-            },
-            {
-                name: 'padding-right',
-                type: 'size',
-                description: 'The padding right of the dropdown component items',
-                value: 'var(--padding-right)'
-            },
-            {
-                name: 'padding-bottom',
-                type: 'size',
-                description: 'The padding bottom of the dropdown component items',
-                value: 'var(--padding-bottom)'
-            },
-            {
-                name: 'padding-left',
-                type: 'size',
-                description: 'The padding left of the dropdown component items',
-                value: 'var(--padding-left)'
-            },
-            {
-                name: 'padding',
-                description: 'The padding of the dropdown component items',
-                value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
-            },
-            {
-                name: 'background',
-                description: 'The background of the dropdown component',
-                type: 'color',
-                variants: {
-                    light: 'color(\'white\')',
-                    dark: 'color(\'dark\')'
-                }
-            },
-            {
-                name: 'background--hover',
-                description: 'The background of the dropdown component when hovered or focused',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-25\')',
-                    dark: 'color(\'dark-45\')'
-                }
-            },
-            {
-                name: 'background--active',
-                description: 'The background of the dropdown component when active',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-25\')',
-                    dark: 'color(\'dark-45\')'
-                }
-            },
-            {
-                name: 'background--disabled',
-                description: 'The background of the dropdown component when disabled',
-                type: 'color',
-                variants: {
-                    light: 'transparent',
-                    dark: 'transparent'
-                }
-            },
-            {
-                name: 'item--padding-top',
-                type: 'size',
-                description: 'The padding top of the dropdown component item',
-                value: 'calc(var(----padding-top) / 2)'
-            },
-            {
-                name: 'item--padding-right',
-                type: 'size',
-                description: 'The padding right of the dropdown component item',
-                value: 'var(----padding-right)'
-            },
-            {
-                name: 'item--padding-bottom',
-                type: 'size',
-                description: 'The padding bottom of the dropdown component item',
-                value: 'calc(var(----padding-bottom) / 2)'
-            },
-            {
-                name: 'item--padding-left',
-                type: 'size',
-                description: 'The padding left of the dropdown component item',
-                value: 'var(----padding-left)'
-            },
-            {
-                name: 'item--padding',
-                description: 'The padding of the dropdown component item',
-                value: ['var(----item--padding-top)', 'var(----item--padding-right)', 'var(----item--padding-bottom)', 'var(----item--padding-left)']
-            },
-            {
-                name: 'body--padding-top',
-                type: 'size',
-                description: 'The padding top of the dropdown component body',
-                value: 'var(----padding-top)'
-            },
-            {
-                name: 'body--padding-right',
-                type: 'size',
-                description: 'The padding right of the dropdown component body',
-                value: '0'
-            },
-            {
-                name: 'body--padding-bottom',
-                type: 'size',
-                description: 'The padding bottom of the dropdown component body',
-                value: 'var(----padding-bottom)'
-            },
-            {
-                name: 'body--padding-left',
-                type: 'size',
-                description: 'The padding left of the dropdown component body',
-                value: '0'
-            },
-            {
-                name: 'body--padding',
-                description: 'The padding of the dropdown component body',
-                value: ['var(----body--padding-top)', 'var(----body--padding-right)', 'var(----body--padding-bottom)', 'var(----body--padding-left)']
-            },
-            {
-                name: 'header--padding-top',
-                type: 'size',
-                description: 'The padding top of the dropdown component header',
-                value: 'var(----padding-top)'
-            },
-            {
-                name: 'header--padding-right',
-                type: 'size',
-                description: 'The padding right of the dropdown component header',
-                value: 'var(----padding-right)'
-            },
-            {
-                name: 'header--padding-bottom',
-                type: 'size',
-                description: 'The padding bottom of the dropdown component header',
-                value: 'var(----padding-bottom)'
-            },
-            {
-                name: 'header--padding-left',
-                type: 'size',
-                description: 'The padding left of the dropdown component header',
-                value: 'var(----padding-left)'
-            },
-            {
-                name: 'header--padding',
-                description: 'The padding of the dropdown component header',
-                value: ['var(----header--padding-top)', 'var(----header--padding-right)', 'var(----header--padding-bottom)', 'var(----header--padding-left)']
-            },
-            {
-                name: 'footer--padding-top',
-                type: 'size',
-                description: 'The padding top of the dropdown component footer',
-                value: 'var(----padding-top)'
-            },
-            {
-                name: 'footer--padding-right',
-                type: 'size',
-                description: 'The padding right of the dropdown component footer',
-                value: 'var(----padding-right)'
-            },
-            {
-                name: 'footer--padding-bottom',
-                type: 'size',
-                description: 'The padding bottom of the dropdown component footer',
-                value: 'var(----padding-bottom)'
-            },
-            {
-                name: 'footer--padding-left',
-                type: 'size',
-                description: 'The padding left of the dropdown component footer',
-                value: 'var(----padding-left)'
-            },
-            {
-                name: 'footer--padding',
-                description: 'The padding of the dropdown component footer',
-                value: ['var(----footer--padding-top)', 'var(----footer--padding-right)', 'var(----footer--padding-bottom)', 'var(----footer--padding-left)']
-            },
-            {
-                name: 'divider--margin-top',
-                description: 'The margin top of the dropdown component divider',
-                value: 'calc(var(--margin-top) / 2)'
-            },
-            {
-                name: 'divider--margin-bottom',
-                description: 'The margin bottom of the dropdown component divider',
-                value: 'calc(var(--margin-bottom) / 2)'
-            },
+
             {
                 name: 'color',
                 description: 'The color of the dropdown component item',
@@ -507,13 +331,103 @@ module.exports = {
                 }
             },
             {
-                name: 'border-color',
-                description: 'The border-color of the dropdown component',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark-60\')'
-                }
+                name: 'font-weight',
+                description: 'The font weight of the dropdown component',
+                value: 'font-weight(\'normal\')'
+            },
+            {
+                name: 'font-size',
+                description: 'The font size of the dropdown component',
+                type: 'size',
+                value: 'font-size()'
+            },
+            {
+                name: 'line-height',
+                description: 'The line height of the dropdown component',
+                value: 'var(--line-height)'
+            },
+            {
+                name: 'min-width',
+                description: 'The minimum width of the dropdown component',
+                value: '240px'
+            },
+            {
+                name: 'max-width',
+                description: 'The maximum width of the dropdown component',
+                value: '90vw'
+            },
+            {
+                name: 'padding-top',
+                type: 'size',
+                description: 'The padding top of the dropdown component items',
+                value: 'var(--padding-top)'
+            },
+            {
+                name: 'padding-right',
+                type: 'size',
+                description: 'The padding right of the dropdown component items',
+                value: 'var(--padding-right)'
+            },
+            {
+                name: 'padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the dropdown component items',
+                value: 'var(--padding-bottom)'
+            },
+            {
+                name: 'padding-left',
+                type: 'size',
+                description: 'The padding left of the dropdown component items',
+                value: 'var(--padding-left)'
+            },
+            {
+                name: 'padding',
+                description: 'The padding of the dropdown component items',
+                value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
+            },
+            {
+                name: 'z-index',
+                description: 'The z-index of the dropdown component',
+                value: '2000'
+            },
+            {
+                name: 'divider--margin-top',
+                description: 'The margin top of the dropdown component divider',
+                value: 'calc(var(--margin-top) / 2)'
+            },
+            {
+                name: 'divider--margin-bottom',
+                description: 'The margin bottom of the dropdown component divider',
+                value: 'calc(var(--margin-bottom) / 2)'
+            },
+            {
+                name: 'item--padding-top',
+                type: 'size',
+                description: 'The padding top of the dropdown component item',
+                value: 'calc(var(----padding-top) / 2)'
+            },
+            {
+                name: 'item--padding-right',
+                type: 'size',
+                description: 'The padding right of the dropdown component item',
+                value: 'var(----padding-right)'
+            },
+            {
+                name: 'item--padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the dropdown component item',
+                value: 'calc(var(----padding-bottom) / 2)'
+            },
+            {
+                name: 'item--padding-left',
+                type: 'size',
+                description: 'The padding left of the dropdown component item',
+                value: 'var(----padding-left)'
+            },
+            {
+                name: 'item--padding',
+                description: 'The padding of the dropdown component item',
+                value: ['var(----item--padding-top)', 'var(----item--padding-right)', 'var(----item--padding-bottom)', 'var(----item--padding-left)']
             },
             {
                 name: 'header--background',
@@ -525,6 +439,64 @@ module.exports = {
                 }
             },
             {
+                name: 'header--padding-top',
+                type: 'size',
+                description: 'The padding top of the dropdown component header',
+                value: 'var(----padding-top)'
+            },
+            {
+                name: 'header--padding-right',
+                type: 'size',
+                description: 'The padding right of the dropdown component header',
+                value: 'var(----padding-right)'
+            },
+            {
+                name: 'header--padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the dropdown component header',
+                value: 'var(----padding-bottom)'
+            },
+            {
+                name: 'header--padding-left',
+                type: 'size',
+                description: 'The padding left of the dropdown component header',
+                value: 'var(----padding-left)'
+            },
+            {
+                name: 'header--padding',
+                description: 'The padding of the dropdown component header',
+                value: ['var(----header--padding-top)', 'var(----header--padding-right)', 'var(----header--padding-bottom)', 'var(----header--padding-left)']
+            },
+            {
+                name: 'body--padding-top',
+                type: 'size',
+                description: 'The padding top of the dropdown component body',
+                value: 'var(----padding-top)'
+            },
+            {
+                name: 'body--padding-right',
+                type: 'size',
+                description: 'The padding right of the dropdown component body',
+                value: '0'
+            },
+            {
+                name: 'body--padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the dropdown component body',
+                value: 'var(----padding-bottom)'
+            },
+            {
+                name: 'body--padding-left',
+                type: 'size',
+                description: 'The padding left of the dropdown component body',
+                value: '0'
+            },
+            {
+                name: 'body--padding',
+                description: 'The padding of the dropdown component body',
+                value: ['var(----body--padding-top)', 'var(----body--padding-right)', 'var(----body--padding-bottom)', 'var(----body--padding-left)']
+            },
+            {
                 name: 'footer--background',
                 description: 'The background of the dropdown component footer',
                 type: 'color',
@@ -532,6 +504,35 @@ module.exports = {
                     light: 'color(\'gray-05\')',
                     dark: 'color(\'dark-55\')'
                 }
+            },
+            {
+                name: 'footer--padding-top',
+                type: 'size',
+                description: 'The padding top of the dropdown component footer',
+                value: 'var(----padding-top)'
+            },
+            {
+                name: 'footer--padding-right',
+                type: 'size',
+                description: 'The padding right of the dropdown component footer',
+                value: 'var(----padding-right)'
+            },
+            {
+                name: 'footer--padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the dropdown component footer',
+                value: 'var(----padding-bottom)'
+            },
+            {
+                name: 'footer--padding-left',
+                type: 'size',
+                description: 'The padding left of the dropdown component footer',
+                value: 'var(----padding-left)'
+            },
+            {
+                name: 'footer--padding',
+                description: 'The padding of the dropdown component footer',
+                value: ['var(----footer--padding-top)', 'var(----footer--padding-right)', 'var(----footer--padding-bottom)', 'var(----footer--padding-left)']
             }
         ]
     }

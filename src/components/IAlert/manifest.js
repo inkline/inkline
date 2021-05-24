@@ -71,14 +71,26 @@ module.exports = {
         },
         variables: [
             {
-                name: 'font-weight',
-                description: 'The font weight of the alert component',
-                value: 'font-weight(\'normal\')'
+                name: 'background',
+                description: 'The background of the alert component',
+                type: 'color',
+                variants: {
+                    info: 'color(\'info\')',
+                    success: 'color(\'success\')',
+                    warning: 'color(\'warning\')',
+                    danger: 'color(\'danger\')'
+                }
             },
             {
-                name: 'line-height',
-                description: 'The line height of the alert component',
-                value: 'var(--line-height)'
+                name: 'border-color',
+                description: 'The border color of the alert component',
+                type: 'color',
+                variants: {
+                    info: 'color(\'info-60\')',
+                    success: 'color(\'success-60\')',
+                    warning: 'color(\'warning-60\')',
+                    danger: 'color(\'danger-60\')'
+                }
             },
             {
                 name: 'border-style',
@@ -170,20 +182,31 @@ module.exports = {
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
             {
-                name: 'dismiss--padding',
-                description: 'The padding of the alert component dismiss icon',
-                value: 'calc(var(----padding-top) / 2)'
-            },
-            {
-                name: 'dismiss--margin',
-                description: 'The margin of the alert component dismiss icon',
-                value: 'var(----padding-right)'
+                name: 'color',
+                description: 'The text color of the alert component',
+                type: 'color',
+                variants: {
+                    info: 'contrast-color($color-info)',
+                    success: 'contrast-color($color-success)',
+                    warning: 'contrast-color($color-warning)',
+                    danger: 'contrast-color($color-danger)'
+                }
             },
             {
                 name: 'font-size',
                 type: 'size',
                 description: 'The font size of the alert component',
                 value: 'font-size()'
+            },
+            {
+                name: 'font-weight',
+                description: 'The font weight of the alert component',
+                value: 'font-weight(\'normal\')'
+            },
+            {
+                name: 'line-height',
+                description: 'The line height of the alert component',
+                value: 'var(--line-height)'
             },
             {
                 name: 'padding-top',
@@ -215,44 +238,6 @@ module.exports = {
                 value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
             },
             {
-                name: 'background',
-                description: 'The background of the alert component',
-                type: 'color',
-                variants: {
-                    info: 'color(\'info\')',
-                    success: 'color(\'success\')',
-                    warning: 'color(\'warning\')',
-                    danger: 'color(\'danger\')'
-                }
-            },
-            {
-                name: 'border-color',
-                description: 'The border color of the alert component',
-                type: 'color',
-                variants: {
-                    info: 'color(\'info-60\')',
-                    success: 'color(\'success-60\')',
-                    warning: 'color(\'warning-60\')',
-                    danger: 'color(\'danger-60\')'
-                }
-            },
-            {
-                name: 'color',
-                description: 'The text color of the alert component',
-                type: 'color',
-                variants: {
-                    info: 'contrast-color($color-info)',
-                    success: 'contrast-color($color-success)',
-                    warning: 'contrast-color($color-warning)',
-                    danger: 'contrast-color($color-danger)'
-                }
-            },
-            {
-                name: 'link--color',
-                description: 'The link color of the alert component',
-                value: 'var(----color)'
-            },
-            {
                 name: 'code--color',
                 description: 'The code color of the alert component',
                 value: 'var(----color)'
@@ -267,6 +252,21 @@ module.exports = {
                     warning: 'color(\'warning-60\')',
                     danger: 'color(\'danger-60\')'
                 }
+            },
+            {
+                name: 'dismiss--margin',
+                description: 'The margin of the alert component dismiss icon',
+                value: 'var(----padding-right)'
+            },
+            {
+                name: 'dismiss--padding',
+                description: 'The padding of the alert component dismiss icon',
+                value: 'calc(var(----padding-top) / 2)'
+            },
+            {
+                name: 'link--color',
+                description: 'The link color of the alert component',
+                value: 'var(----color)'
             }
         ]
     }

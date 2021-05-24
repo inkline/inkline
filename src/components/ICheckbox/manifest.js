@@ -105,6 +105,78 @@ module.exports = {
         },
         variables: [
             {
+                name: 'background',
+                description: 'The background of the checkbox component indicator',
+                type: 'color',
+                variants: {
+                    light: 'color(\'white\')',
+                    dark: 'color(\'dark\')'
+                }
+            },
+            {
+                name: 'background--checked',
+                description: 'The background of the checkbox component indicator when checked',
+                type: 'color',
+                variants: {
+                    light: 'color(\'primary\')',
+                    dark: 'color(\'primary\')'
+                }
+            },
+            {
+                name: 'background--disabled',
+                description: 'The background of the checkbox component indicator when disabled',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-25\')',
+                    dark: 'color(\'dark-25\')'
+                }
+            },
+            {
+                name: 'background--checked-disabled',
+                description: 'The background of the checkbox component indicator when checked and disabled',
+                type: 'color',
+                variants: {
+                    light: 'color(\'primary-25\')',
+                    dark: 'color(\'primary-75\')'
+                }
+            },
+            {
+                name: 'border-color',
+                description: 'The border-color of the checkbox component indicator',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark\')'
+                }
+            },
+            {
+                name: 'border-color--checked',
+                description: 'The border-color of the checkbox component indicator when checked',
+                type: 'color',
+                variants: {
+                    light: 'color(\'primary-55\')',
+                    dark: 'color(\'primary-55\')'
+                }
+            },
+            {
+                name: 'border-color--disabled',
+                description: 'The border-color of the checkbox component indicator when disabled',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark\')'
+                }
+            },
+            {
+                name: 'border-color--checked-disabled',
+                description: 'The border-color of the checkbox component indicator when checked and disabled',
+                type: 'color',
+                variants: {
+                    light: 'color(\'primary-30\')',
+                    dark: 'color(\'primary-70\')'
+                }
+            },
+            {
                 name: 'border-style',
                 description: 'The border style of the checkbox component indicator',
                 value: 'var(--border-style)'
@@ -194,89 +266,6 @@ module.exports = {
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
             {
-                name: 'margin-right',
-                description: 'The right margin of the checkbox component indicator',
-                value: 'calc(var(--margin-right) / 2)'
-            },
-            {
-                name: 'size',
-                description: 'The size of the checkbox component indicator',
-                type: 'size',
-                value: '1rem'
-            },
-            {
-                name: 'background',
-                description: 'The background of the checkbox component indicator',
-                type: 'color',
-                variants: {
-                    light: 'color(\'white\')',
-                    dark: 'color(\'dark\')'
-                }
-            },
-            {
-                name: 'background--checked',
-                description: 'The background of the checkbox component indicator when checked',
-                type: 'color',
-                variants: {
-                    light: 'color(\'primary\')',
-                    dark: 'color(\'primary\')'
-                }
-            },
-            {
-                name: 'background--disabled',
-                description: 'The background of the checkbox component indicator when disabled',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-25\')',
-                    dark: 'color(\'dark-25\')'
-                }
-            },
-            {
-                name: 'background--checked-disabled',
-                description: 'The background of the checkbox component indicator when checked and disabled',
-                type: 'color',
-                variants: {
-                    light: 'color(\'primary-25\')',
-                    dark: 'color(\'primary-75\')'
-                }
-            },
-            {
-                name: 'border-color',
-                description: 'The border-color of the checkbox component indicator',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark\')'
-                }
-            },
-            {
-                name: 'border-color--checked',
-                description: 'The border-color of the checkbox component indicator when checked',
-                type: 'color',
-                variants: {
-                    light: 'color(\'primary-55\')',
-                    dark: 'color(\'primary-55\')'
-                }
-            },
-            {
-                name: 'border-color--disabled',
-                description: 'The border-color of the checkbox component indicator when disabled',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')'
-                }
-            },
-            {
-                name: 'border-color--checked-disabled',
-                description: 'The border-color of the checkbox component indicator when checked and disabled',
-                type: 'color',
-                variants: {
-                    light: 'color(\'primary-30\')',
-                    dark: 'color(\'primary-70\')'
-                }
-            },
-            {
                 name: 'color',
                 description: 'The color of the checkbox component indicator icon',
                 type: 'color',
@@ -293,6 +282,17 @@ module.exports = {
                     light: 'color(\'light-25\')',
                     dark: 'color(\'dark-25\')'
                 }
+            },
+            {
+                name: 'margin-right',
+                description: 'The right margin of the checkbox component indicator',
+                value: 'calc(var(--margin-right) / 2)'
+            },
+            {
+                name: 'size',
+                description: 'The size of the checkbox component indicator',
+                type: 'size',
+                value: '1rem'
             },
             {
                 name: 'checkmark--size',

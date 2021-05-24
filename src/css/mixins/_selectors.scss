@@ -2,8 +2,8 @@
 /// Component selector mixins
 ////
 
-@mixin i-modal {
-    .modal-overlay {
+@mixin i-card {
+    .card {
         @content;
     }
 }

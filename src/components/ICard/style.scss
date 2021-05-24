@@ -14,8 +14,6 @@
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
-    color: var(----color);
-    background: var(----background);
     border-radius: var(----border-radius);
     font-size: var(----font-size);
     box-shadow: var(----box-shadow);
@@ -26,14 +24,14 @@
     }
 
     > .card-header {
-        margin-bottom: 0;
         color: var(----header--color);
         background: var(----header--background);
         border-color: var(----header--border-color);
-        border-width: var(----border-width);
-        border-style: var(----border-style);
+        border-width: var(----header--border-width);
+        border-style: var(----header--border-style);
+        padding: var(----header--padding);
         border-bottom-width: 0;
-        padding: var(----padding);
+        margin-bottom: 0;
 
         > h1,
         > h2,
@@ -75,13 +73,15 @@
         // Enable `flex-grow: 1` for decks and groups so that card blocks take up
         // as much space as possible, ensuring footers are aligned to the bottom.
         flex: 1 1 auto;
-        border-width: var(----border-width);
-        border-style: var(----border-style);
-        border-color: var(----border-color);
+        background: var(----body--background);
+        border-width: var(----body--border-width);
+        border-style: var(----body--border-style);
+        border-color: var(----body--border-color);
+        color: var(----body--color);
+        padding: var(----body--padding);
         transition-property: border-color;
         transition-duration: var(--transition-duration);
         transition-timing-function: var(--transition-easing);
-        padding: var(----padding);
         border-radius: var(----border-radius);
 
         &:not(:first-child) {
@@ -123,12 +123,12 @@
 
     > .card-footer {
         background: var(----footer--background);
-        color: var(----footer--color);
         border-color: var(----footer--border-color);
-        border-width: var(----border-width);
-        border-style: var(----border-style);
+        border-width: var(----footer--border-width);
+        border-style: var(----footer--border-style);
+        color: var(----footer--color);
+        padding: var(----footer--padding);
         border-top-width: 0;
-        padding: var(----padding);
 
         &:last-child {
             border-bottom-left-radius: var(----border-bottom-left-radius);

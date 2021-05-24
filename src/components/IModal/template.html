@@ -1,7 +1,7 @@
 <transition name="fade-in-transition">
-    <div class="modal-overlay" v-show="visible" :id="id">
+    <div class="modal-wrapper" :class="classes" v-show="visible" :id="id">
         <transition :name="transition">
-            <div class="modal" :class="classes" v-click-outside="onClickOutside" v-show="visible">
+            <div class="modal" v-click-outside="onClickOutside" v-show="visible">
                 <div class="modal-header" v-if="$slots.header">
                     <slot name="header" />
                     <button class="close" @click="hide" v-if="showClose">

@@ -60,24 +60,27 @@ module.exports = {
         },
         variables: [
             {
-                name: 'font-size',
-                description: 'The font size of the collapsible component',
-                type: 'size',
-                value: 'font-size()'
-            },
-            {
-                name: 'border-style',
-                description: 'The border style of the collapsible component',
-                value: 'var(--border-style)'
+                name: 'background',
+                description: 'The background of the collapsible component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark\')'
+                }
             },
             {
                 name: 'border-color',
                 description: 'The border color of the collapsible component',
                 type: 'color',
                 variants: {
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')'
+                    light: 'color(\'light-60\')',
+                    dark: 'color(\'dark-40\')'
                 }
+            },
+            {
+                name: 'border-style',
+                description: 'The border style of the collapsible component',
+                value: 'var(--border-style)'
             },
             {
                 name: 'border-top-width',
@@ -164,6 +167,21 @@ module.exports = {
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
             {
+                name: 'color',
+                description: 'The color of the collapsible component',
+                type: 'color',
+                variants: {
+                    light: 'contrast-color($color-light)',
+                    dark: 'contrast-color($color-dark)'
+                }
+            },
+            {
+                name: 'font-size',
+                description: 'The font size of the collapsible component',
+                type: 'size',
+                value: 'font-size()'
+            },
+            {
                 name: 'padding-top',
                 type: 'size',
                 description: 'The padding top of the collapsible component',
@@ -193,21 +211,12 @@ module.exports = {
                 value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
             },
             {
-                name: 'color',
-                description: 'The color of the collapsible component',
+                name: 'body--background',
+                description: 'The background of the collapsible component body',
                 type: 'color',
                 variants: {
-                    light: 'contrast-color($color-light)',
-                    dark: 'contrast-color($color-dark)'
-                }
-            },
-            {
-                name: 'background',
-                description: 'The background of the collapsible component',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')'
+                    light: 'color(\'white\')',
+                    dark: 'color(\'dark-45\')'
                 }
             },
             {
@@ -238,15 +247,6 @@ module.exports = {
                 name: 'body--padding',
                 description: 'The padding of the collapsible component body',
                 value: ['var(----body--padding-top)', 'var(----body--padding-right)', 'var(----body--padding-bottom)', 'var(----body--padding-left)']
-            },
-            {
-                name: 'body--background',
-                description: 'The background of the collapsible component body',
-                type: 'color',
-                variants: {
-                    light: 'color(\'white\')',
-                    dark: 'color(\'dark-45\')'
-                }
             }
         ]
     }

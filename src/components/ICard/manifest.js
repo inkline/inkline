@@ -57,20 +57,34 @@ module.exports = {
         },
         variables: [
             {
-                name: 'font-weight',
-                description: 'The font weight of the card component',
-                value: 'font-weight(\'normal\')'
+                name: 'background',
+                description: 'The background of the card component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary\')',
+                    secondary: 'color(\'secondary\')',
+                    light: 'color(\'white\')',
+                    dark: 'color(\'dark\')',
+                    info: 'color(\'info\')',
+                    success: 'color(\'success\')',
+                    warning: 'color(\'warning\')',
+                    danger: 'color(\'danger\')'
+                }
             },
             {
-                name: 'font-size',
-                description: 'The font size of the card component',
-                type: 'size',
-                value: 'font-size()'
-            },
-            {
-                name: 'line-height',
-                description: 'The line height of the card component',
-                value: 'var(--line-height)'
+                name: 'border-color',
+                description: 'The border color of the card component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-60\')',
+                    secondary: 'color(\'secondary-60\')',
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')',
+                    info: 'color(\'info-60\')',
+                    success: 'color(\'success-60\')',
+                    warning: 'color(\'warning-60\')',
+                    danger: 'color(\'danger-60\')'
+                }
             },
             {
                 name: 'border-style',
@@ -162,6 +176,37 @@ module.exports = {
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
             {
+                name: 'color',
+                description: 'The color of the card component',
+                type: 'color',
+                variants: {
+                    primary: 'contrast-color($color-primary)',
+                    secondary: 'contrast-color($color-secondary)',
+                    light: 'contrast-color($color-light)',
+                    dark: 'contrast-color($color-dark)',
+                    info: 'contrast-color($color-info)',
+                    success: 'contrast-color($color-success)',
+                    warning: 'contrast-color($color-warning)',
+                    danger: 'contrast-color($color-danger)'
+                }
+            },
+            {
+                name: 'font-size',
+                description: 'The font size of the card component',
+                type: 'size',
+                value: 'font-size()'
+            },
+            {
+                name: 'font-weight',
+                description: 'The font weight of the card component',
+                value: 'font-weight(\'normal\')'
+            },
+            {
+                name: 'line-height',
+                description: 'The line height of the card component',
+                value: 'var(--line-height)'
+            },
+            {
                 name: 'padding-top',
                 type: 'size',
                 description: 'The padding top of the card component',
@@ -191,73 +236,13 @@ module.exports = {
                 value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
             },
             {
-                name: 'color',
-                description: 'The color of the card component',
-                type: 'color',
-                variants: {
-                    primary: 'contrast-color($color-primary)',
-                    secondary: 'contrast-color($color-secondary)',
-                    light: 'contrast-color($color-light)',
-                    dark: 'contrast-color($color-dark)',
-                    info: 'contrast-color($color-info)',
-                    success: 'contrast-color($color-success)',
-                    warning: 'contrast-color($color-warning)',
-                    danger: 'contrast-color($color-danger)'
-                }
-            },
-            {
-                name: 'background',
-                description: 'The background of the card component',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary\')',
-                    secondary: 'color(\'secondary\')',
-                    light: 'color(\'white\')',
-                    dark: 'color(\'dark\')',
-                    info: 'color(\'info\')',
-                    success: 'color(\'success\')',
-                    warning: 'color(\'warning\')',
-                    danger: 'color(\'danger\')'
-                }
-            },
-            {
-                name: 'border-color',
-                description: 'The border color of the card component',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary-60\')',
-                    secondary: 'color(\'secondary-60\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark-60\')',
-                    info: 'color(\'info-60\')',
-                    success: 'color(\'success-60\')',
-                    warning: 'color(\'warning-60\')',
-                    danger: 'color(\'danger-60\')'
-                }
-            },
-            {
-                name: 'header--color',
-                description: 'The color of the card component header',
-                type: 'color',
-                variants: {
-                    primary: 'contrast-color($color-primary)',
-                    secondary: 'contrast-color($color-secondary)',
-                    light: 'contrast-color($color-light)',
-                    dark: 'contrast-color($color-dark)',
-                    info: 'contrast-color($color-info)',
-                    success: 'contrast-color($color-success)',
-                    warning: 'contrast-color($color-warning)',
-                    danger: 'contrast-color($color-danger)'
-                }
-            },
-            {
                 name: 'header--background',
-                description: 'The background of the card component header',
+                description: 'The background of the modal component header',
                 type: 'color',
                 variants: {
                     primary: 'color(\'primary-55\')',
                     secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'white-55\')',
+                    light: 'color(\'light-25\')',
                     dark: 'color(\'dark-55\')',
                     info: 'color(\'info-55\')',
                     success: 'color(\'success-55\')',
@@ -267,42 +252,151 @@ module.exports = {
             },
             {
                 name: 'header--border-color',
-                description: 'The border color of the card component header',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary-60\')',
-                    secondary: 'color(\'secondary-60\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark-60\')',
-                    info: 'color(\'info-60\')',
-                    success: 'color(\'success-60\')',
-                    warning: 'color(\'warning-60\')',
-                    danger: 'color(\'danger-60\')'
-                }
+                description: 'The border color of the modal component header',
+                value: 'var(----border-color)'
             },
             {
-                name: 'footer--color',
-                description: 'The color of the card component footer',
-                type: 'color',
-                variants: {
-                    primary: 'contrast-color($color-primary)',
-                    secondary: 'contrast-color($color-secondary)',
-                    light: 'contrast-color($color-light)',
-                    dark: 'contrast-color($color-dark)',
-                    info: 'contrast-color($color-info)',
-                    success: 'contrast-color($color-success)',
-                    warning: 'contrast-color($color-warning)',
-                    danger: 'contrast-color($color-danger)'
-                }
+                name: 'header--border-style',
+                description: 'The border style of the modal component header',
+                value: 'var(----border-style)'
+            },
+            {
+                name: 'header--border-top-width',
+                description: 'The border top width of the modal component header',
+                value: 'var(----border-top-width)'
+            },
+            {
+                name: 'header--border-right-width',
+                description: 'The border right width of the modal component header',
+                value: 'var(----border-right-width)'
+            },
+            {
+                name: 'header--border-bottom-width',
+                description: 'The border bottom width of the modal component header',
+                value: 'var(----border-bottom-width)'
+            },
+            {
+                name: 'header--border-left-width',
+                description: 'The border left width of the modal component header',
+                value: 'var(----border-left-width)'
+            },
+            {
+                name: 'header--border-width',
+                description: 'The border width of the modal component header',
+                value: ['var(----header--border-top-width)', 'var(----header--border-right-width)', 'var(----header--border-bottom-width)', 'var(----header--border-left-width)']
+            },
+            {
+                name: 'header--color',
+                description: 'The color of the modal component header',
+                value: 'var(----color)'
+            },
+            {
+                name: 'header--padding-top',
+                description: 'The padding top of the modal component header',
+                value: 'var(----padding-top)'
+            },
+            {
+                name: 'header--padding-right',
+                description: 'The padding right of the modal component header',
+                value: 'var(----padding-right)'
+            },
+            {
+                name: 'header--padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the modal component header',
+                value: 'var(----padding-bottom)'
+            },
+            {
+                name: 'header--padding-left',
+                type: 'size',
+                description: 'The padding left of the modal component header',
+                value: 'var(----padding-left)'
+            },
+            {
+                name: 'header--padding',
+                description: 'The padding of the modal component header',
+                value: ['var(----header--padding-top)', 'var(----header--padding-right)', 'var(----header--padding-bottom)', 'var(----header--padding-left)']
+            },
+            {
+                name: 'body--background',
+                description: 'The background of the modal component body',
+                value: 'var(----background)'
+            },
+            {
+                name: 'body--border-color',
+                description: 'The border color of the modal component body',
+                value: 'var(----border-color)'
+            },
+            {
+                name: 'body--border-style',
+                description: 'The border style of the modal component body',
+                value: 'var(----border-style)'
+            },
+            {
+                name: 'body--border-top-width',
+                description: 'The border top width of the modal component body',
+                value: 'var(----border-top-width)'
+            },
+            {
+                name: 'body--border-right-width',
+                description: 'The border right width of the modal component body',
+                value: 'var(----border-right-width)'
+            },
+            {
+                name: 'body--border-bottom-width',
+                description: 'The border bottom width of the modal component body',
+                value: 'var(----border-bottom-width)'
+            },
+            {
+                name: 'body--border-left-width',
+                description: 'The border left width of the modal component body',
+                value: 'var(----border-left-width)'
+            },
+            {
+                name: 'body--border-width',
+                description: 'The border width of the modal component body',
+                value: ['var(----body--border-top-width)', 'var(----body--border-right-width)', 'var(----body--border-bottom-width)', 'var(----body--border-left-width)']
+            },
+            {
+                name: 'body--color',
+                description: 'The color of the modal component body',
+                value: 'var(----color)'
+            },
+            {
+                name: 'body--padding-top',
+                description: 'The padding top of the modal component body',
+                value: 'var(----padding-top)'
+            },
+            {
+                name: 'body--padding-right',
+                description: 'The padding right of the modal component body',
+                value: 'var(----padding-right)'
+            },
+            {
+                name: 'body--padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the modal component body',
+                value: 'var(----padding-bottom)'
+            },
+            {
+                name: 'body--padding-left',
+                type: 'size',
+                description: 'The padding left of the modal component body',
+                value: 'var(----padding-left)'
+            },
+            {
+                name: 'body--padding',
+                description: 'The padding of the modal component body',
+                value: ['var(----body--padding-top)', 'var(----body--padding-right)', 'var(----body--padding-bottom)', 'var(----body--padding-left)']
             },
             {
                 name: 'footer--background',
-                description: 'The background of the card component footer',
+                description: 'The background of the modal component footer',
                 type: 'color',
                 variants: {
                     primary: 'color(\'primary-55\')',
                     secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'white-55\')',
+                    light: 'color(\'light-25\')',
                     dark: 'color(\'dark-55\')',
                     info: 'color(\'info-55\')',
                     success: 'color(\'success-55\')',
@@ -312,19 +406,71 @@ module.exports = {
             },
             {
                 name: 'footer--border-color',
-                description: 'The border color of the card component footer',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary-60\')',
-                    secondary: 'color(\'secondary-60\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark-60\')',
-                    info: 'color(\'info-60\')',
-                    success: 'color(\'success-60\')',
-                    warning: 'color(\'warning-60\')',
-                    danger: 'color(\'danger-60\')'
-                }
-            }
+                description: 'The border color of the modal component footer',
+                value: 'var(----border-color)'
+            },
+            {
+                name: 'footer--border-style',
+                description: 'The border style of the modal component footer',
+                value: 'var(----border-style)'
+            },
+            {
+                name: 'footer--border-top-width',
+                description: 'The border top width of the modal component footer',
+                value: 'var(----border-top-width)'
+            },
+            {
+                name: 'footer--border-right-width',
+                description: 'The border right width of the modal component footer',
+                value: 'var(----border-right-width)'
+            },
+            {
+                name: 'footer--border-bottom-width',
+                description: 'The border bottom width of the modal component footer',
+                value: 'var(----border-bottom-width)'
+            },
+            {
+                name: 'footer--border-left-width',
+                description: 'The border left width of the modal component footer',
+                value: 'var(----border-left-width)'
+            },
+            {
+                name: 'footer--border-width',
+                description: 'The border width of the modal component footer',
+                value: ['var(----footer--border-top-width)', 'var(----footer--border-right-width)', 'var(----footer--border-bottom-width)', 'var(----footer--border-left-width)']
+            },
+            {
+                name: 'footer--color',
+                description: 'The color of the modal component footer',
+                value: 'var(----color)'
+            },
+            {
+                name: 'footer--padding-top',
+                description: 'The padding top of the modal component footer',
+                value: 'var(----padding-top)'
+            },
+            {
+                name: 'footer--padding-right',
+                description: 'The padding right of the modal component footer',
+                value: 'var(----padding-right)'
+            },
+            {
+                name: 'footer--padding-bottom',
+                type: 'size',
+                description: 'The padding bottom of the modal component footer',
+                value: 'var(----padding-bottom)'
+            },
+            {
+                name: 'footer--padding-left',
+                type: 'size',
+                description: 'The padding left of the modal component footer',
+                value: 'var(----padding-left)'
+            },
+            {
+                name: 'footer--padding',
+                description: 'The padding of the modal component footer',
+                value: ['var(----footer--padding-top)', 'var(----footer--padding-right)', 'var(----footer--padding-bottom)', 'var(----footer--padding-left)']
+            },
         ]
     }
 };
