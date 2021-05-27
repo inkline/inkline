@@ -3,14 +3,34 @@
  */
 
 .input-wrapper {
-    /// The line height of the input component
-    /// @name line-height
-    ----line-height: #{var(--line-height)};
+    /// The background of the input component
+    /// @name background
+    /// @type color
+    ----background: #{color('white')};
 
-    /// The font size of the input component
-    /// @name font-size
-    /// @type size
-    ----font-size: #{font-size()};
+    /// The background of the input component when disabled
+    /// @name background--disabled
+    /// @type color
+    ----background--disabled: #{color('light-25')};
+
+    /// The border color of the input component
+    /// @name border-color
+    /// @type color
+    ----border-color: #{color('light-55')};
+
+    /// The border color of the input component when hovered
+    /// @name border-color--hover
+    /// @type color
+    ----border-color--hover: #{color('light-60')};
+
+    /// The border color of the input component when focused
+    /// @name border-color--focus
+    /// @type color
+    ----border-color--focus: #{color('primary')};
+
+    /// The border style of the input component
+    /// @name border-style
+    ----border-style: #{var(--border-style)};
 
     /// The border top width of the input component
     /// @name border-top-width
@@ -31,10 +51,6 @@
     /// The border width of the input component
     /// @name border-width
     ----border-width: #{var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)};
-
-    /// The border style of the input component
-    /// @name border-style
-    ----border-style: #{var(--border-style)};
 
     /// The border top left radius of the input component
     /// @name border-top-left-radius
@@ -84,9 +100,24 @@
     /// @name box-shadow
     ----box-shadow: #{var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)};
 
-    /// The padding right of the input component prefix and suffix
-    /// @name prefix-suffix--padding-right
-    ----prefix-suffix--padding-right: #{var(----padding-right)};
+    /// The color of the input component
+    /// @name color
+    /// @type color
+    ----color: #{contrast-color($color-white)};
+
+    /// The color of the input component when disabled
+    /// @name color--disabled
+    /// @type color
+    ----color--disabled: #{color('light-75')};
+
+    /// The font size of the input component
+    /// @name font-size
+    /// @type size
+    ----font-size: #{font-size()};
+
+    /// The line height of the input component
+    /// @name line-height
+    ----line-height: #{var(--line-height)};
 
     /// The padding top of the input component
     /// @name padding-top
@@ -112,65 +143,6 @@
     /// @name padding
     ----padding: #{var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)};
 
-    /// The size of the input component clear button
-    /// @name clear--size
-    ----clear--size: #{1.2rem};
-
-    /// The color of the input component
-    /// @name color
-    /// @type color
-    ----color: #{contrast-color($color-white)};
-
-    /// The color of the input component when disabled
-    /// @name color--disabled
-    /// @type color
-    ----color--disabled: #{color('light-75')};
-
-    /// The background of the input component
-    /// @name background
-    /// @type color
-    ----background: #{color('white')};
-
-    /// The background of the input component when disabled
-    /// @name background--disabled
-    /// @type color
-    ----background--disabled: #{color('light-25')};
-
-    /// The border color of the input component
-    /// @name border-color
-    /// @type color
-    ----border-color: #{color('light')};
-
-    /// The border color of the input component when hovered
-    /// @name border-color--hover
-    /// @type color
-    ----border-color--hover: #{color('light-55')};
-
-    /// The border color of the input component when focused
-    /// @name border-color--focus
-    /// @type color
-    ----border-color--focus: #{color('primary')};
-
-    /// The color of the input component placeholder
-    /// @name placeholder--color
-    /// @type color
-    ----placeholder--color: #{color('light-60')};
-
-    /// The color of the input component prefix and suffix
-    /// @name prefix-suffix--color
-    /// @type color
-    ----prefix-suffix--color: #{color('light-70')};
-
-    /// The background of the input component prepend and append
-    /// @name prepend-append--background
-    /// @type color
-    ----prepend-append--background: #{color('light')};
-
-    /// The color of the input component clear button
-    /// @name clear--color
-    /// @type color
-    ----clear--color: #{color('light-70')};
-
     /// The background of the input component clear button
     /// @name clear--background
     /// @type color
@@ -186,9 +158,19 @@
     /// @type color
     ----clear--background--active: #{color('light-40')};
 
-    /// The padding left of the input component prefix and suffix
-    /// @name prefix-suffix--padding-left
-    ----prefix-suffix--padding-left: #{var(----padding-left)};
+    /// The color of the input component clear button
+    /// @name clear--color
+    /// @type color
+    ----clear--color: #{color('light-70')};
+
+    /// The size of the input component clear button
+    /// @name clear--size
+    ----clear--size: #{1.2rem};
+
+    /// The color of the input component placeholder
+    /// @name placeholder--color
+    /// @type color
+    ----placeholder--color: #{color('light-60')};
 
     /// The border width of the input component prefix
     /// @name prefix--border-width
@@ -201,4 +183,22 @@
     /// The border style of the input component prefix and suffix
     /// @name prefix-suffix--border-style
     ----prefix-suffix--border-style: #{var(--border-style)};
+
+    /// The color of the input component prefix and suffix
+    /// @name prefix-suffix--color
+    /// @type color
+    ----prefix-suffix--color: #{color('light-70')};
+
+    /// The padding right of the input component prefix and suffix
+    /// @name prefix-suffix--padding-right
+    ----prefix-suffix--padding-right: #{var(----padding-right)};
+
+    /// The padding left of the input component prefix and suffix
+    /// @name prefix-suffix--padding-left
+    ----prefix-suffix--padding-left: #{var(----padding-left)};
+
+    /// The background of the input component prepend and append
+    /// @name prepend-append--background
+    /// @type color
+    ----prepend-append--background: #{color('light')};
 }

@@ -142,15 +142,54 @@ module.exports = {
         },
         variables: [
             {
-                name: 'line-height',
-                description: 'The line height of the input component',
-                value: 'var(--line-height)'
+                name: 'background',
+                description: 'The background of the input component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'white\')',
+                    dark: 'color(\'dark\')'
+                }
             },
             {
-                name: 'font-size',
-                description: 'The font size of the input component',
-                type: 'size',
-                value: 'font-size()'
+                name: 'background--disabled',
+                description: 'The background of the input component when disabled',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-25\')',
+                    dark: 'color(\'dark-40\')'
+                }
+            },
+            {
+                name: 'border-color',
+                description: 'The border color of the input component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-45\')'
+                }
+            },
+            {
+                name: 'border-color--hover',
+                description: 'The border color of the input component when hovered',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-60\')',
+                    dark: 'color(\'dark-40\')'
+                }
+            },
+            {
+                name: 'border-color--focus',
+                description: 'The border color of the input component when focused',
+                type: 'color',
+                variants: {
+                    light: 'color(\'primary\')',
+                    dark: 'color(\'primary\')'
+                }
+            },
+            {
+                name: 'border-style',
+                description: 'The border style of the input component',
+                value: 'var(--border-style)'
             },
             {
                 name: 'border-top-width',
@@ -176,11 +215,6 @@ module.exports = {
                 name: 'border-width',
                 description: 'The border width of the input component',
                 value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
-            },
-            {
-                name: 'border-style',
-                description: 'The border style of the input component',
-                value: 'var(--border-style)'
             },
             {
                 name: 'border-top-left-radius',
@@ -213,38 +247,62 @@ module.exports = {
             },
             {
                 name: 'box-shadow-offset-x',
-                description: 'The box shadow horizontal offset of the alert component',
+                description: 'The box shadow horizontal offset of the input component',
                 value: 'var(--box-shadow-offset-x)'
             },
             {
                 name: 'box-shadow-offset-y',
-                description: 'The box shadow vertical offset of the alert component',
+                description: 'The box shadow vertical offset of the input component',
                 value: 'var(--box-shadow-offset-y)'
             },
             {
                 name: 'box-shadow-blur-radius',
-                description: 'The box shadow blur radius of the alert component',
+                description: 'The box shadow blur radius of the input component',
                 value: 'var(--box-shadow-blur-radius)'
             },
             {
                 name: 'box-shadow-spread-radius',
-                description: 'The box shadow spread radius of the alert component',
+                description: 'The box shadow spread radius of the input component',
                 value: 'var(--box-shadow-spread-radius)'
             },
             {
                 name: 'box-shadow-color',
-                description: 'The box shadow spread radius of the alert component',
+                description: 'The box shadow spread radius of the input component',
                 value: 'var(--box-shadow-color)'
             },
             {
                 name: 'box-shadow',
-                description: 'The box shadow of the alert component',
+                description: 'The box shadow of the input component',
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
             {
-                name: 'prefix-suffix--padding-right',
-                description: 'The padding right of the input component prefix and suffix',
-                value: 'var(----padding-right)'
+                name: 'color',
+                description: 'The color of the input component',
+                type: 'color',
+                variants: {
+                    light: 'contrast-color($color-white)',
+                    dark: 'contrast-color($color-dark)'
+                }
+            },
+            {
+                name: 'color--disabled',
+                description: 'The color of the input component when disabled',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-75\')',
+                    dark: 'color(\'gray-35\')'
+                }
+            },
+            {
+                name: 'font-size',
+                description: 'The font size of the input component',
+                type: 'size',
+                value: 'font-size()'
+            },
+            {
+                name: 'line-height',
+                description: 'The line height of the input component',
+                value: 'var(--line-height)'
             },
             {
                 name: 'padding-top',
@@ -276,110 +334,6 @@ module.exports = {
                 value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
             },
             {
-                name: 'clear--size',
-                description: 'The size of the input component clear button',
-                value: '1.2rem'
-            },
-            {
-                name: 'color',
-                description: 'The color of the input component',
-                type: 'color',
-                variants: {
-                    light: 'contrast-color($color-white)',
-                    dark: 'contrast-color($color-dark)'
-                }
-            },
-            {
-                name: 'color--disabled',
-                description: 'The color of the input component when disabled',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-75\')',
-                    dark: 'color(\'gray-35\')'
-                }
-            },
-            {
-                name: 'background',
-                description: 'The background of the input component',
-                type: 'color',
-                variants: {
-                    light: 'color(\'white\')',
-                    dark: 'color(\'dark\')'
-                }
-            },
-            {
-                name: 'background--disabled',
-                description: 'The background of the input component when disabled',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-25\')',
-                    dark: 'color(\'dark-40\')'
-                }
-            },
-            {
-                name: 'border-color',
-                description: 'The border color of the input component',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark-40\')'
-                }
-            },
-            {
-                name: 'border-color--hover',
-                description: 'The border color of the input component when hovered',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-35\')'
-                }
-            },
-            {
-                name: 'border-color--focus',
-                description: 'The border color of the input component when focused',
-                type: 'color',
-                variants: {
-                    light: 'color(\'primary\')',
-                    dark: 'color(\'primary\')'
-                }
-            },
-            {
-                name: 'placeholder--color',
-                description: 'The color of the input component placeholder',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-60\')',
-                    dark: 'color(\'dark-25\')'
-                }
-            },
-            {
-                name: 'prefix-suffix--color',
-                description: 'The color of the input component prefix and suffix',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-70\')',
-                    dark: 'color(\'dark-25\')'
-                }
-            },
-            {
-                name: 'prepend-append--background',
-                description: 'The background of the input component prepend and append',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')'
-                }
-            },
-            {
-                name: 'clear--color',
-                description: 'The color of the input component clear button',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-70\')',
-                    dark: 'color(\'dark-30\')'
-                }
-            },
-            {
                 name: 'clear--background',
                 description: 'The background of the input component clear button',
                 type: 'color',
@@ -407,9 +361,27 @@ module.exports = {
                 }
             },
             {
-                name: 'prefix-suffix--padding-left',
-                description: 'The padding left of the input component prefix and suffix',
-                value: 'var(----padding-left)'
+                name: 'clear--color',
+                description: 'The color of the input component clear button',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-70\')',
+                    dark: 'color(\'dark-30\')'
+                }
+            },
+            {
+                name: 'clear--size',
+                description: 'The size of the input component clear button',
+                value: '1.2rem'
+            },
+            {
+                name: 'placeholder--color',
+                description: 'The color of the input component placeholder',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-60\')',
+                    dark: 'color(\'dark-25\')'
+                }
             },
             {
                 name: 'prefix--border-width',
@@ -425,7 +397,35 @@ module.exports = {
                 name: 'prefix-suffix--border-style',
                 description: 'The border style of the input component prefix and suffix',
                 value: 'var(--border-style)'
-            }
+            },
+            {
+                name: 'prefix-suffix--color',
+                description: 'The color of the input component prefix and suffix',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-70\')',
+                    dark: 'color(\'dark-25\')'
+                }
+            },
+            {
+                name: 'prefix-suffix--padding-right',
+                description: 'The padding right of the input component prefix and suffix',
+                value: 'var(----padding-right)'
+            },
+            {
+                name: 'prefix-suffix--padding-left',
+                description: 'The padding left of the input component prefix and suffix',
+                value: 'var(----padding-left)'
+            },
+            {
+                name: 'prepend-append--background',
+                description: 'The background of the input component prepend and append',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark\')'
+                }
+            },
         ]
     }
 };

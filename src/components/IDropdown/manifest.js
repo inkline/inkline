@@ -169,15 +169,6 @@ module.exports = {
                 }
             },
             {
-                name: 'background--hover',
-                description: 'The background of the dropdown component when hovered or focused',
-                type: 'color',
-                variants: {
-                    light: 'color(\'light-25\')',
-                    dark: 'color(\'dark-45\')'
-                }
-            },
-            {
                 name: 'background--active',
                 description: 'The background of the dropdown component when active',
                 type: 'color',
@@ -193,6 +184,15 @@ module.exports = {
                 variants: {
                     light: 'transparent',
                     dark: 'transparent'
+                }
+            },
+            {
+                name: 'background--hover',
+                description: 'The background of the dropdown component when hovered or focused',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-25\')',
+                    dark: 'color(\'dark-45\')'
                 }
             },
             {
@@ -304,15 +304,6 @@ module.exports = {
                 }
             },
             {
-                name: 'color--hover',
-                description: 'The color of the dropdown component item when hovered or focused',
-                type: 'color',
-                variants: {
-                    light: 'var(--dropdown-color-variant-light-color)',
-                    dark: 'var(--dropdown-color-variant-dark-color)'
-                }
-            },
-            {
                 name: 'color--active',
                 description: 'The color of the dropdown component item when active',
                 type: 'color',
@@ -328,6 +319,15 @@ module.exports = {
                 variants: {
                     light: 'color(\'light-65\')',
                     dark: 'color(\'dark-25\')'
+                }
+            },
+            {
+                name: 'color--hover',
+                description: 'The color of the dropdown component item when hovered or focused',
+                type: 'color',
+                variants: {
+                    light: 'var(--dropdown-color-variant-light-color)',
+                    dark: 'var(--dropdown-color-variant-dark-color)'
                 }
             },
             {

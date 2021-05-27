@@ -61,6 +61,26 @@ module.exports = {
         },
         variables: [
             {
+                name: 'background',
+                description: 'The background of the header component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary\')',
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark\')'
+                }
+            },
+            {
+                name: 'color',
+                description: 'The color of the header component',
+                type: 'color',
+                variants: {
+                    primary: 'contrast-color($color-primary)',
+                    light: 'contrast-color($color-light)',
+                    dark: 'contrast-color($color-dark)'
+                }
+            },
+            {
                 name: 'padding-top',
                 type: 'size',
                 description: 'The padding top of the header component',
@@ -88,26 +108,6 @@ module.exports = {
                 name: 'padding',
                 description: 'The padding of the header component',
                 value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
-            },
-            {
-                name: 'color',
-                description: 'The color of the header component',
-                type: 'color',
-                variants: {
-                    primary: 'contrast-color($color-primary)',
-                    light: 'contrast-color($color-light)',
-                    dark: 'contrast-color($color-dark)'
-                }
-            },
-            {
-                name: 'background',
-                description: 'The background of the header component',
-                type: 'color',
-                variants: {
-                    primary: 'color(\'primary\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')'
-                }
             }
         ]
     }

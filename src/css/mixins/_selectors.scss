@@ -2,14 +2,8 @@
 /// Component selector mixins
 ////
 
-@mixin i-collapsible-item {
-    .collapsible-item {
-        @content;
-    }
-}
-
-@mixin i-collapsible {
-    .collapsible {
+@mixin i-pagination {
+    .pagination {
         @content;
     }
 }

@@ -215,29 +215,34 @@ module.exports = {
                 value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
             },
             {
-                name: 'border-top-width',
-                description: 'The border top width of the modal component',
-                value: 'var(--border-top-width)'
+                name: 'box-shadow-offset-x',
+                description: 'The box shadow horizontal offset of the modal component',
+                value: 'var(--box-shadow-offset-x)'
             },
             {
-                name: 'border-right-width',
-                description: 'The border right width of the modal component',
-                value: 'var(--border-right-width)'
+                name: 'box-shadow-offset-y',
+                description: 'The box shadow vertical offset of the modal component',
+                value: 'var(--box-shadow-offset-y)'
             },
             {
-                name: 'border-bottom-width',
-                description: 'The border bottom width of the modal component',
-                value: 'var(--border-bottom-width)'
+                name: 'box-shadow-blur-radius',
+                description: 'The box shadow blur radius of the modal component',
+                value: 'var(--box-shadow-blur-radius)'
             },
             {
-                name: 'border-left-width',
-                description: 'The border left width of the modal component',
-                value: 'var(--border-left-width)'
+                name: 'box-shadow-spread-radius',
+                description: 'The box shadow spread radius of the modal component',
+                value: 'var(--box-shadow-spread-radius)'
             },
             {
-                name: 'border-width',
-                description: 'The border width of the modal component',
-                value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
+                name: 'box-shadow-color',
+                description: 'The box shadow spread radius of the modal component',
+                value: 'var(--box-shadow-color)'
+            },
+            {
+                name: 'box-shadow',
+                description: 'The box shadow of the modal component',
+                value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
             {
                 name: 'color',

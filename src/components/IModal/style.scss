@@ -30,6 +30,7 @@ $_border-color: var(----border-color);
     width: calc(100% - var(----margin-left) - var(----margin-right));
     max-width: var(----width);
     border-radius: var(----border-radius);
+    box-shadow: var(----box-shadow);
 
     > .modal-header {
         display: flex;

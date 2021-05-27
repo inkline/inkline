@@ -1,14 +1,15 @@
 @import '../../../../css/variables';
 @import '../../../../css/mixins';
-@import '../../css/variables';
 
 /**
  * Navbar Brand
  */
 .navbar .navbar-brand {
     display: inline-flex;
-    margin-right: var(--navbar-brand-margin);
-    font-size: var(--navbar-brand-font-size);
+    color: var(----color);
+    padding: var(----item--padding);
+    font-size: var(----font-size);
+    margin-right: var(----brand--margin-right);
     line-height: inherit;
     white-space: nowrap;
     align-items: center;

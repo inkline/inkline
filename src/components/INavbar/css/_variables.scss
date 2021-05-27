@@ -1,331 +1,186 @@
-////
-/// Variables
-////
+/**
+ * Variables
+ */
 
-/// The margin of the navbar component brand
-/// @name brand-margin
-$navbar-brand-margin: spacing() !default;
+.navbar {
+    /// The background of the navbar component
+    /// @name background
+    /// @type color
+    ----background: #{color('light')};
 
-/// The border radius of the navbar component
-/// @name border-radius
-/// @type size
-$navbar-border-radius: border-radius() !default;
+    /// The border color of the navbar component
+    /// @name border-color
+    /// @type color
+    ----border-color: #{color('light-60')};
 
-/// The font size of the navbar component
-/// @name font-size
-/// @type size
-$navbar-font-size: font-size() !default;
+    /// The border style of the navbar component
+    /// @name border-style
+    ----border-style: #{var(--border-style)};
 
-/// The padding of the navbar component
-/// @name padding
-/// @type size
-$navbar-padding: spacing() !default;
+    /// The border top width of the navbar component
+    /// @name border-top-width
+    ----border-top-width: #{var(--border-top-width)};
 
-/// The padding of the navbar component item
-/// @name item-padding
-/// @type size
-$navbar-item-padding: spacing() !default;
+    /// The border right width of the navbar component
+    /// @name border-right-width
+    ----border-right-width: #{var(--border-right-width)};
 
-////
-/// Sizes
-////
+    /// The border bottom width of the navbar component
+    /// @name border-bottom-width
+    ----border-bottom-width: #{var(--border-bottom-width)};
 
-////
-/// Small size
-////
+    /// The border left width of the navbar component
+    /// @name border-left-width
+    ----border-left-width: #{var(--border-left-width)};
 
-/// The border radius of the navbar component
-/// @name border-radius
-/// @group sm
-/// @type size
-$navbar-size-variant-sm-border-radius: calc(var(--navbar-border-radius) * #{size-multiplier('sm')}) !default;
+    /// The border width of the navbar component
+    /// @name border-width
+    ----border-width: #{var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)};
 
-/// The font size of the navbar component
-/// @name font-size
-/// @group sm
-/// @type size
-$navbar-size-variant-sm-font-size: calc(var(--navbar-font-size) * #{size-multiplier('sm')}) !default;
+    /// The border top left radius of the navbar component
+    /// @name border-top-left-radius
+    /// @type size
+    ----border-top-left-radius: #{var(--border-top-left-radius)};
 
-/// The padding of the navbar component
-/// @name padding
-/// @group sm
-/// @type size
-$navbar-size-variant-sm-padding: calc(var(--navbar-padding) * #{size-multiplier('sm')}) 0 !default;
+    /// The border top right radius of the navbar component
+    /// @name border-top-right-radius
+    /// @type size
+    ----border-top-right-radius: #{var(--border-top-right-radius)};
 
-/// The padding of the navbar component item
-/// @name item-padding
-/// @group sm
-/// @type size
-$navbar-size-variant-sm-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('sm')} / 2) calc(var(--navbar-item-padding) * #{size-multiplier('sm')}) !default;
+    /// The border bottom right radius of the navbar component
+    /// @name border-bottom-right-radius
+    /// @type size
+    ----border-bottom-right-radius: #{var(--border-bottom-right-radius)};
 
-/// Map for sm size
-/// @group sm
-$navbar-size-variant-sm: (
-    'border-radius': $navbar-size-variant-sm-border-radius,
-    'font-size': $navbar-size-variant-sm-font-size,
-    'padding': $navbar-size-variant-sm-padding,
-    'item-padding': $navbar-size-variant-sm-item-padding
-) !default;
+    /// The border bottom left radius of the navbar component
+    /// @name border-bottom-left-radius
+    /// @type size
+    ----border-bottom-left-radius: #{var(--border-bottom-left-radius)};
 
-////
-/// Medium size
-////
+    /// The border radius of the navbar component
+    /// @name border-radius
+    ----border-radius: #{var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)};
 
-/// The border radius of the navbar component
-/// @name border-radius
-/// @group md
-/// @type size
-$navbar-size-variant-md-border-radius: calc(var(--navbar-border-radius) * #{size-multiplier('md')}) !default;
+    /// The box shadow horizontal offset of the alert component
+    /// @name box-shadow-offset-x
+    ----box-shadow-offset-x: #{var(--box-shadow-offset-x)};
 
-/// The font size of the navbar component
-/// @name font-size
-/// @group md
-/// @type size
-$navbar-size-variant-md-font-size: calc(var(--navbar-font-size) * #{size-multiplier('md')}) !default;
+    /// The box shadow vertical offset of the alert component
+    /// @name box-shadow-offset-y
+    ----box-shadow-offset-y: #{var(--box-shadow-offset-y)};
 
-/// The padding of the navbar component
-/// @name padding
-/// @group md
-/// @type size
-$navbar-size-variant-md-padding: calc(var(--navbar-padding) * #{size-multiplier('md')}) 0 !default;
+    /// The box shadow blur radius of the alert component
+    /// @name box-shadow-blur-radius
+    ----box-shadow-blur-radius: #{var(--box-shadow-blur-radius)};
 
-/// The padding of the navbar component item
-/// @name item-padding
-/// @group md
-/// @type size
-$navbar-size-variant-md-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('md')} / 2) calc(var(--navbar-item-padding) * #{size-multiplier('md')}) !default;
+    /// The box shadow spread radius of the alert component
+    /// @name box-shadow-spread-radius
+    ----box-shadow-spread-radius: #{var(--box-shadow-spread-radius)};
 
-/// Map for md size
-/// @group md
-$navbar-size-variant-md: (
-    'border-radius': $navbar-size-variant-md-border-radius,
-    'font-size': $navbar-size-variant-md-font-size,
-    'padding': $navbar-size-variant-md-padding,
-    'item-padding': $navbar-size-variant-md-item-padding
-) !default;
+    /// The box shadow spread radius of the alert component
+    /// @name box-shadow-color
+    ----box-shadow-color: #{var(--box-shadow-color)};
 
-////
-/// Large size
-////
+    /// The box shadow of the alert component
+    /// @name box-shadow
+    ----box-shadow: #{var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)};
 
-/// The border radius of the navbar component
-/// @name border-radius
-/// @group lg
-/// @type size
-$navbar-size-variant-lg-border-radius: calc(var(--navbar-border-radius) * #{size-multiplier('lg')}) !default;
+    /// The font size of the navbar component
+    /// @name font-size
+    /// @type size
+    ----font-size: #{font-size()};
 
-/// The font size of the navbar component
-/// @name font-size
-/// @group lg
-/// @type size
-$navbar-size-variant-lg-font-size: calc(var(--navbar-font-size) * #{size-multiplier('lg')}) !default;
+    /// The padding top of the navbar component
+    /// @name padding-top
+    /// @type size
+    ----padding-top: #{var(--padding-top)};
 
-/// The padding of the navbar component
-/// @name padding
-/// @group lg
-/// @type size
-$navbar-size-variant-lg-padding: calc(var(--navbar-padding) * #{size-multiplier('lg')}) 0 !default;
+    /// The padding right of the navbar component
+    /// @name padding-right
+    ----padding-right: #{0};
 
-/// The padding of the navbar component item
-/// @name item-padding
-/// @group lg
-/// @type size
-$navbar-size-variant-lg-item-padding: calc(var(--navbar-item-padding) * #{size-multiplier('lg')} / 2) calc(var(--navbar-item-padding) * #{size-multiplier('lg')}) !default;
+    /// The padding bottom of the navbar component
+    /// @name padding-bottom
+    /// @type size
+    ----padding-bottom: #{var(--padding-bottom)};
 
-/// Map for lg size
-/// @group lg
-$navbar-size-variant-lg: (
-    'border-radius': $navbar-size-variant-lg-border-radius,
-    'font-size': $navbar-size-variant-lg-font-size,
-    'padding': $navbar-size-variant-lg-padding,
-    'item-padding': $navbar-size-variant-lg-item-padding
-) !default;
+    /// The padding left of the navbar component
+    /// @name padding-left
+    ----padding-left: #{0};
 
-/// Sizes group map
-$navbar-size-variants: (
-    'sm': $navbar-size-variant-sm,
-    'md': $navbar-size-variant-md,
-    'lg': $navbar-size-variant-lg
-) !default;
+    /// The padding of the modal component
+    /// @name padding
+    ----padding: #{var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)};
 
-////
-/// Colors
-////
+    /// The color of the navbar component
+    /// @name color
+    /// @type color
+    ----color: #{contrast-color($color-light)};
 
-////
-/// Light color
-////
+    /// The background of the navbar component item
+    /// @name item--background
+    /// @type color
+    ----item--background: #{color('light')};
 
-/// The color of the navbar component
-/// @name color
-/// @group light
-/// @type color
-$navbar-color-variant-light-color: contrast-color($color-light) !default;
+    /// The background of the navbar component item when hovered or focused
+    /// @name item--background--hover
+    /// @type color
+    ----item--background--hover: #{color('light-55')};
 
-/// The background of the navbar component
-/// @name background
-/// @group light
-/// @type color
-$navbar-color-variant-light-background: color('light') !default;
+    /// The color of the navbar component item
+    /// @name item--color
+    ----item--color: #{var(----color)};
 
-/// The color of the navbar component item
-/// @name item-color
-/// @group light
-/// @type color
-$navbar-color-variant-light-item-color: contrast-color($color-light) !default;
+    /// The color of the navbar component item when hovered
+    /// @name item--color--hover
+    ----item--color--hover: #{var(----color)};
 
-/// The color of the navbar component item when hovered
-/// @name item-color-hover
-/// @group light
-/// @type color
-$navbar-color-variant-light-item-color-hover: contrast-color($color-light) !default;
+    /// The padding top of the navbar component
+    /// @name item--padding-top
+    /// @type size
+    ----item--padding-top: #{calc(var(--padding-top) / 2)};
 
-/// The background of the navbar component item
-/// @name item-background
-/// @group light
-/// @type color
-$navbar-color-variant-light-item-background: color('light') !default;
+    /// The padding right of the navbar component
+    /// @name item--padding-right
+    /// @type size
+    ----item--padding-right: #{var(--padding-right)};
 
-/// The background of the navbar component item when hovered or focused
-/// @name item-background-hover
-/// @group light
-/// @type color
-$navbar-color-variant-light-item-background-hover: color('light-55') !default;
+    /// The padding bottom of the navbar component
+    /// @name item--padding-bottom
+    /// @type size
+    ----item--padding-bottom: #{calc(var(--padding-bottom) / 2)};
 
-/// The background of the collapsed navbar component
-/// @name collapsed-background
-/// @group light
-/// @type color
-$navbar-color-variant-light-collapsed-background: color('light') !default;
+    /// The padding left of the navbar component
+    /// @name item--padding-left
+    /// @type size
+    ----item--padding-left: #{var(--padding-left)};
 
-/// The color of the collapsed navbar component item
-/// @name collapsed-item-color
-/// @group light
-/// @type color
-$navbar-color-variant-light-collapsed-item-color: contrast-color($color-light) !default;
+    /// The padding of the navbar component
+    /// @name item--padding
+    ----item--padding: #{var(----item--padding-top) var(----item--padding-right) var(----item--padding-bottom) var(----item--padding-left)};
 
-/// The color of the collapsed navbar component item when hovered
-/// @name collapsed-item-color-hover
-/// @group light
-/// @type color
-$navbar-color-variant-light-collapsed-item-color-hover: contrast-color($color-light) !default;
+    /// The background of the collapsed navbar component
+    /// @name collapsed--background
+    /// @type color
+    ----collapsed--background: #{color('light')};
 
-/// The background of the collapsed navbar component item
-/// @name collapsed-item-background
-/// @group light
-/// @type color
-$navbar-color-variant-light-collapsed-item-background: color('light') !default;
+    /// The color of the collapsed navbar component item
+    /// @name collapsed--item--color
+    ----collapsed--item--color: #{var(----color)};
 
-/// The background of the collapsed navbar component item when hovered or focused
-/// @name collapsed-item-background-hover
-/// @group light
-/// @type color
-$navbar-color-variant-light-collapsed-item-background-hover: color('light-55') !default;
+    /// The color of the collapsed navbar component item when hovered
+    /// @name collapsed--item--color--hover
+    ----collapsed--item--color--hover: #{var(----color)};
 
-/// Map for light color
-/// @group light
-$navbar-color-variant-light: (
-    'color': $navbar-color-variant-light-color,
-    'background': $navbar-color-variant-light-background,
-    'item-color': $navbar-color-variant-light-item-color,
-    'item-color-hover': $navbar-color-variant-light-item-color-hover,
-    'item-background': $navbar-color-variant-light-item-background,
-    'item-background-hover': $navbar-color-variant-light-item-background-hover,
-    'collapsed-background': $navbar-color-variant-light-collapsed-background,
-    'collapsed-item-color': $navbar-color-variant-light-collapsed-item-color,
-    'collapsed-item-color-hover': $navbar-color-variant-light-collapsed-item-color-hover,
-    'collapsed-item-background': $navbar-color-variant-light-collapsed-item-background,
-    'collapsed-item-background-hover': $navbar-color-variant-light-collapsed-item-background-hover
-) !default;
+    /// The background of the collapsed navbar component item
+    /// @name collapsed--item--background
+    ----collapsed--item--background: #{var(----item--background)};
 
-////
-/// Dark color
-////
+    /// The background of the collapsed navbar component item when hovered or focused
+    /// @name collapsed--item--background--hover
+    ----collapsed--item--background--hover: #{var(----item--background--hover)};
 
-/// The color of the navbar component
-/// @name color
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-color: contrast-color($color-dark) !default;
-
-/// The background of the navbar component
-/// @name background
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-background: color('dark') !default;
-
-/// The color of the navbar component item
-/// @name item-color
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-item-color: contrast-color($color-dark) !default;
-
-/// The color of the navbar component item when hovered
-/// @name item-color-hover
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-item-color-hover: contrast-color($color-dark) !default;
-
-/// The background of the navbar component item
-/// @name item-background
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-item-background: color('dark') !default;
-
-/// The background of the navbar component item when hovered or focused
-/// @name item-background-hover
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-item-background-hover: color('dark-45') !default;
-
-/// The background of the collapsed navbar component
-/// @name collapsed-background
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-collapsed-background: color('dark') !default;
-
-/// The color of the collapsed navbar component item
-/// @name collapsed-item-color
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-collapsed-item-color: contrast-color($color-dark) !default;
-
-/// The color of the collapsed navbar component item when hovered
-/// @name collapsed-item-color-hover
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-collapsed-item-color-hover: contrast-color($color-dark) !default;
-
-/// The background of the collapsed navbar component item
-/// @name collapsed-item-background
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-collapsed-item-background: color('dark') !default;
-
-/// The background of the collapsed navbar component item when hovered or focused
-/// @name collapsed-item-background-hover
-/// @group dark
-/// @type color
-$navbar-color-variant-dark-collapsed-item-background-hover: color('dark-45') !default;
-
-/// Map for dark color
-/// @group dark
-$navbar-color-variant-dark: (
-    'color': $navbar-color-variant-dark-color,
-    'background': $navbar-color-variant-dark-background,
-    'item-color': $navbar-color-variant-dark-item-color,
-    'item-color-hover': $navbar-color-variant-dark-item-color-hover,
-    'item-background': $navbar-color-variant-dark-item-background,
-    'item-background-hover': $navbar-color-variant-dark-item-background-hover,
-    'collapsed-background': $navbar-color-variant-dark-collapsed-background,
-    'collapsed-item-color': $navbar-color-variant-dark-collapsed-item-color,
-    'collapsed-item-color-hover': $navbar-color-variant-dark-collapsed-item-color-hover,
-    'collapsed-item-background': $navbar-color-variant-dark-collapsed-item-background,
-    'collapsed-item-background-hover': $navbar-color-variant-dark-collapsed-item-background-hover
-) !default;
-
-/// Colors group map
-$navbar-color-variants: (
-    'light': $navbar-color-variant-light,
-    'dark': $navbar-color-variant-dark
-) !default;
+    /// The margin right of the navbar component brand
+    /// @name brand--margin-right
+    ----brand--margin-right: #{var(--margin-right)};
+}

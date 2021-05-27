@@ -4,7 +4,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/sizes';
 @import 'css/colors';
 
@@ -15,12 +14,20 @@
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
+    font-size: var(----font-size);
 
     > .pagination-item {
         display: inline-flex;
-        border-width: var(--pagination-border-width);
-        border-style: solid;
-        margin: 0 var(--pagination-margin);
+        border-color: var(----border-color);
+        border-width: var(----border-width);
+        border-style: var(----border-style);
+        border-radius: var(----border-radius);
+        box-shadow: var(----box-shadow);
+        padding: var(----padding);
+        min-width: var(----min-width);
+        color: var(----color);
+        background-color: var(----background);
+        margin: var(----margin);
         text-align: center;
         justify-content: center;
         cursor: pointer;
@@ -28,26 +35,34 @@
         transition-timing-function: var(--transition-easing);
         transition-duration: var(--transition-duration);
 
+        &:hover:not(.-disabled),
+        &:focus:not(.-disabled) {
+            background: var(----background--hover);
+        }
+
         &.-active {
             font-weight: bold;
+            background-color: var(----background--active);
+            border-color: var(----border-color--active);
+            color: var(----color--active);
+
+            &:hover,
+            &:focus {
+                background-color: var(----background--active);
+            }
         }
 
         &.-disabled {
             cursor: default;
+            opacity: var(----opacity--disabled);
         }
-    }
 
-    @include pagination-size-variant('md');
-    @each $size-variant-key, $pagination-size-variant-value in $pagination-size-variants {
-        &.-#{$size-variant-key} {
-            @include pagination-size-variant($size-variant-key);
-        }
-    }
-
-    @include pagination-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $pagination-color-variants {
-        &.-#{$color-variant-key} {
-            @include pagination-color-variant($color-variant-key);
+        &.-quick-next,
+        &.-quick-previous {
+            &.-disabled {
+                opacity: var(----opacity--disabled);
+                border-color: var(----background);
+            }
         }
     }
 }

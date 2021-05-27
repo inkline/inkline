@@ -38,18 +38,6 @@ module.exports = {
 	],
 	styles: [
 		{
-			name: 'font-size',
-			description: 'The font size of the modal component',
-			type: 'size',
-			default: 'font-size()'
-		},
-		{
-			name: 'padding',
-			description: 'The padding of the modal component',
-			type: 'size',
-			default: 'spacing()'
-		},
-		{
 			name: 'color',
 			description: 'The color of the list group component item',
 			type: 'color',
@@ -75,6 +63,18 @@ module.exports = {
 				light: 'var(--text-muted)',
 				dark: 'var(--text-muted)'
 			}
-		}
+		},
+        {
+            name: 'font-size',
+            description: 'The font size of the modal component',
+            type: 'size',
+            default: 'font-size()'
+        },
+        {
+            name: 'padding',
+            description: 'The padding of the modal component',
+            type: 'size',
+            default: 'spacing()'
+        },
 	]
 };

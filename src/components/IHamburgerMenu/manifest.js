@@ -48,24 +48,23 @@ module.exports = {
         },
         variables: [
             {
-                name: 'bar--width',
-                description: 'The width of the hamburger-menu component bars',
-                value: '30px'
+                name: 'background',
+                description: 'The background of the hamburger-menu component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'dark\')',
+                    dark: 'color(\'light\')'
+                }
             },
             {
-                name: 'bar--height',
-                description: 'The height of the hamburger-menu component bars',
-                value: '3px'
+                name: 'opacity',
+                description: 'The opacity of the hamburger-menu component',
+                value: '0.7'
             },
             {
-                name: 'bar--border-radius',
-                description: 'The border radius of the hamburger-menu component bars',
-                value: '2px'
-            },
-            {
-                name: 'bar--spacing',
-                description: 'The spacing between the hamburger-menu component bars',
-                value: '5px'
+                name: 'opacity--hover',
+                description: 'The opacity of the hamburger-menu component',
+                value: '1'
             },
             {
                 name: 'padding-top',
@@ -94,23 +93,24 @@ module.exports = {
                 value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
             },
             {
-                name: 'opacity',
-                description: 'The opacity of the hamburger-menu component',
-                value: '0.7'
+                name: 'bar--border-radius',
+                description: 'The border radius of the hamburger-menu component bars',
+                value: '2px'
             },
             {
-                name: 'opacity--hover',
-                description: 'The opacity of the hamburger-menu component',
-                value: '1'
+                name: 'bar--spacing',
+                description: 'The spacing between the hamburger-menu component bars',
+                value: '5px'
             },
             {
-                name: 'background',
-                description: 'The background of the hamburger-menu component',
-                type: 'color',
-                variants: {
-                    light: 'color(\'dark\')',
-                    dark: 'color(\'light\')'
-                }
+                name: 'bar--width',
+                description: 'The width of the hamburger-menu component bars',
+                value: '30px'
+            },
+            {
+                name: 'bar--height',
+                description: 'The height of the hamburger-menu component bars',
+                value: '3px'
             }
         ]
     }
