@@ -3,9 +3,7 @@
  */
 @import '../../../../css/variables';
 @import '../../../../css/mixins';
-@import '../../css/variables';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/colors';
 
 .progress-bar {
@@ -15,4 +13,6 @@
     text-align: center;
     white-space: nowrap;
     height: 100%;
+    color: var(----color);
+    background: var(----background);
 }

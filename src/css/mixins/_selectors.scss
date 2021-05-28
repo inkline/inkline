@@ -2,8 +2,8 @@
 /// Component selector mixins
 ////
 
-@mixin i-progress {
-    .progress {
+@mixin i-radio {
+    .radio {
         @content;
     }
 }

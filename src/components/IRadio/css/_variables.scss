@@ -1,327 +1,152 @@
-////
-/// Variables
-////
+/**
+ * Variables
+ */
 
-/// The font size of the radio component label
-/// @name font-size
-/// @type size
-$radio-font-size: font-size() !default;
+.radio {
+    /// The background of the radio component indicator
+    /// @name background
+    /// @type color
+    ----background: #{color('white')};
 
-/// The right margin of the radio component, when displaying multiple inline radioes
-/// @name margin-right
-$radio-margin-right: spacing() !default;
+    /// The background of the radio component indicator when checked
+    /// @name background--checked
+    /// @type color
+    ----background--checked: #{color('primary')};
 
-/// The border width of the radio component indicator
-/// @name indicator-border-width
-$radio-indicator-border-width: var(--border-width) !default;
+    /// The background of the radio component indicator when disabled
+    /// @name background--disabled
+    /// @type color
+    ----background--disabled: #{color('light-25')};
 
-/// The size of the radio component indicator
-/// @name indicator-size
-/// @type size
-$radio-indicator-size: 1rem !default;
+    /// The background of the radio component indicator when checked and disabled
+    /// @name background--checked-disabled
+    /// @type color
+    ----background--checked-disabled: #{color('primary-25')};
 
-/// The size of the radio component indicator icon
-/// @name indicator-icon-size
-/// @type size
-$radio-indicator-icon-size: 8px !default;
+    /// The border-color of the radio component indicator
+    /// @name border-color
+    /// @type color
+    ----border-color: #{color('light-55')};
 
-/// The right margin of the radio component indicator
-/// @name indicator-margin-right
-$radio-indicator-margin-right: spacing('1/2') !default;
+    /// The border-color of the radio component indicator when checked
+    /// @name border-color--checked
+    /// @type color
+    ----border-color--checked: #{color('primary-55')};
 
-////
-/// Sizes
-////
+    /// The border-color of the radio component indicator when disabled
+    /// @name border-color--disabled
+    /// @type color
+    ----border-color--disabled: #{color('light')};
 
-////
-/// Small size
-////
+    /// The border-color of the radio component indicator when checked and disabled
+    /// @name border-color--checked-disabled
+    /// @type color
+    ----border-color--checked-disabled: #{color('primary-30')};
 
-/// The font size of the radio component label
-/// @name font-size
-/// @group sm
-/// @type size
-$radio-size-variant-sm-font-size: calc(var(--radio-font-size) * #{size-multiplier('sm')}) !default;
+    /// The border style of the radio component indicator
+    /// @name border-style
+    ----border-style: #{var(--border-style)};
 
-/// The size of the radio component indicator
-/// @name indicator-size
-/// @group sm
-/// @type size
-$radio-size-variant-sm-indicator-size: calc(var(--radio-indicator-size) * #{size-multiplier('sm')}) !default;
+    /// The border top width of the radio component indicator
+    /// @name border-top-width
+    ----border-top-width: #{var(--border-top-width)};
 
-/// The size of the radio component indicator icon
-/// @name indicator-icon-size
-/// @group sm
-/// @type size
-$radio-size-variant-sm-indicator-icon-size: calc(var(--radio-indicator-icon-size) * #{size-multiplier('sm')}) !default;
+    /// The border right width of the radio component indicator
+    /// @name border-right-width
+    ----border-right-width: #{var(--border-right-width)};
 
-/// Map for sm size
-/// @group sm
-$radio-size-variant-sm: (
-    'font-size': $radio-size-variant-sm-font-size,
-    'indicator-size': $radio-size-variant-sm-indicator-size,
-    'indicator-icon-size': $radio-size-variant-sm-indicator-icon-size
-) !default;
+    /// The border bottom width of the radio component indicator
+    /// @name border-bottom-width
+    ----border-bottom-width: #{var(--border-bottom-width)};
 
-////
-/// Medium size
-////
+    /// The border left width of the radio component indicator
+    /// @name border-left-width
+    ----border-left-width: #{var(--border-left-width)};
 
-/// The font size of the radio component label
-/// @name font-size
-/// @group md
-/// @type size
-$radio-size-variant-md-font-size: calc(var(--radio-font-size) * #{size-multiplier('md')}) !default;
+    /// The border width of the radio component indicator
+    /// @name border-width
+    ----border-width: #{var(--border-width)};
 
-/// The size of the radio component indicator
-/// @name indicator-size
-/// @group md
-/// @type size
-$radio-size-variant-md-indicator-size: calc(var(--radio-indicator-size) * #{size-multiplier('md')}) !default;
+    /// The border top left radius of the radio component indicator
+    /// @name border-top-left-radius
+    ----border-top-left-radius: #{50%};
 
-/// The size of the radio component indicator icon
-/// @name indicator-icon-size
-/// @group md
-/// @type size
-$radio-size-variant-md-indicator-icon-size: calc(var(--radio-indicator-icon-size) * #{size-multiplier('md')}) !default;
+    /// The border top right radius of the radio component indicator
+    /// @name border-top-right-radius
+    ----border-top-right-radius: #{50%};
 
-/// Map for md size
-/// @group md
-$radio-size-variant-md: (
-    'font-size': $radio-size-variant-md-font-size,
-    'indicator-size': $radio-size-variant-md-indicator-size,
-    'indicator-icon-size': $radio-size-variant-md-indicator-icon-size
-) !default;
+    /// The border bottom right radius of the radio component indicator
+    /// @name border-bottom-right-radius
+    ----border-bottom-right-radius: #{50%};
 
-////
-/// Large size
-////
+    /// The border bottom left radius of the radio component indicator
+    /// @name border-bottom-left-radius
+    ----border-bottom-left-radius: #{50%};
 
-/// The font size of the radio component label
-/// @name font-size
-/// @group lg
-/// @type size
-$radio-size-variant-lg-font-size: calc(var(--radio-font-size) * #{size-multiplier('lg')}) !default;
+    /// The border radius of the radio component indicator
+    /// @name border-radius
+    ----border-radius: #{var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)};
 
-/// The size of the radio component indicator
-/// @name indicator-size
-/// @group lg
-/// @type size
-$radio-size-variant-lg-indicator-size: calc(var(--radio-indicator-size) * #{size-multiplier('lg')}) !default;
+    /// The box shadow horizontal offset of the radio component indicator
+    /// @name box-shadow-offset-x
+    ----box-shadow-offset-x: #{var(--box-shadow-offset-x)};
 
-/// The size of the radio component indicator icon
-/// @name indicator-icon-size
-/// @group lg
-/// @type size
-$radio-size-variant-lg-indicator-icon-size: calc(var(--radio-indicator-icon-size) * #{size-multiplier('lg')}) !default;
+    /// The box shadow vertical offset of the radio component indicator
+    /// @name box-shadow-offset-y
+    ----box-shadow-offset-y: #{var(--box-shadow-offset-y)};
 
-/// Map for lg size
-/// @group lg
-$radio-size-variant-lg: (
-    'font-size': $radio-size-variant-lg-font-size,
-    'indicator-size': $radio-size-variant-lg-indicator-size,
-    'indicator-icon-size': $radio-size-variant-lg-indicator-icon-size
-) !default;
+    /// The box shadow blur radius of the radio component indicator
+    /// @name box-shadow-blur-radius
+    ----box-shadow-blur-radius: #{var(--box-shadow-blur-radius)};
 
-/// Sizes group map
-$radio-size-variants: (
-    'sm': $radio-size-variant-sm,
-    'md': $radio-size-variant-md,
-    'lg': $radio-size-variant-lg
-) !default;
+    /// The box shadow spread radius of the radio component indicator
+    /// @name box-shadow-spread-radius
+    ----box-shadow-spread-radius: #{var(--box-shadow-spread-radius)};
 
-////
-/// Colors
-////
+    /// The box shadow spread radius of the radio component indicator
+    /// @name box-shadow-color
+    ----box-shadow-color: #{var(--box-shadow-color)};
 
-////
-/// Light color
-////
+    /// The box shadow of the radio component indicator
+    /// @name box-shadow
+    ----box-shadow: #{var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)};
 
-/// The label color of the radio component
-/// @name color
-/// @group light
-/// @type color
-$radio-color-variant-light-color: contrast-color($color-light) !default;
+    /// The color of the radio component indicator icon
+    /// @name color
+    /// @type color
+    ----color: #{color('white')};
 
-/// The label color of the radio component when disabled
-/// @name color-disabled
-/// @group light
-/// @type color
-$radio-color-variant-light-color-disabled: color('light-70') !default;
+    /// The color of the radio component indicator icon when disabled
+    /// @name color--disabled
+    /// @type color
+    ----color--disabled: #{color('light-25')};
 
-/// The background of the radio component indicator
-/// @name indicator-background
-/// @group light
-/// @type color
-$radio-color-variant-light-indicator-background: color('white') !default;
+    /// The right margin of the radio component indicator
+    /// @name margin-right
+    ----margin-right: #{calc(var(--margin-right) / 2)};
 
-/// The background of the radio component indicator when checked
-/// @name indicator-background-checked
-/// @group light
-/// @type color
-$radio-color-variant-light-indicator-background-checked: color('primary') !default;
+    /// The size of the radio component indicator
+    /// @name size
+    /// @type size
+    ----size: #{1rem};
 
-/// The background of the radio component indicator when disabled
-/// @name indicator-background-disabled
-/// @group light
-/// @type color
-$radio-color-variant-light-indicator-background-disabled: color('light-25') !default;
+    /// The size of the radio component indicator check mark icon
+    /// @name checkmark--size
+    /// @type size
+    ----checkmark--size: #{8px};
 
-/// The background of the radio component indicator when checked and disabled
-/// @name indicator-background-checked-disabled
-/// @group light
-/// @type color
-$radio-color-variant-light-indicator-background-checked-disabled: color('primary-25') !default;
+    /// The font size of the radio component label
+    /// @name label--font-size
+    /// @type size
+    ----label--font-size: #{font-size()};
 
-/// The border-color of the radio component indicator
-/// @name indicator-border-color
-/// @group light
-/// @type color
-$radio-color-variant-light-indicator-border-color: color('light-55') !default;
+    /// The label color of the radio component label
+    /// @name label--color
+    /// @type color
+    ----label--color: #{contrast-color($color-light)};
 
-/// The border-color of the radio component indicator when checked
-/// @name indicator-border-color-checked
-/// @group light
-/// @type color
-$radio-color-variant-light-indicator-border-color-checked: color('primary-55') !default;
-
-/// The border-color of the radio component indicator when disabled
-/// @name indicator-border-color-disabled
-/// @group light
-/// @type color
-$radio-color-variant-light-indicator-border-color-disabled: color('light') !default;
-
-/// The border-color of the radio component indicator when checked and disabled
-/// @name indicator-border-color-checked-disabled
-/// @group light
-/// @type color
-$radio-color-variant-light-indicator-border-color-checked-disabled: color('primary-30') !default;
-
-/// The color of the radio component indicator icon
-/// @name indicator-icon-color
-/// @group light
-/// @type color
-$radio-color-variant-light-indicator-icon-color: color('white') !default;
-
-/// The color of the checkbox component indicator icon when disabled
-/// @name indicator-icon-color-disabled
-/// @group light
-/// @type color
-$radio-color-variant-light-indicator-icon-color-disabled: color('light-25') !default;
-
-/// Map for light color
-/// @group light
-$radio-color-variant-light: (
-    'color': $radio-color-variant-light-color,
-    'color-disabled': $radio-color-variant-light-color-disabled,
-    'indicator-background': $radio-color-variant-light-indicator-background,
-    'indicator-background-checked': $radio-color-variant-light-indicator-background-checked,
-    'indicator-background-disabled': $radio-color-variant-light-indicator-background-disabled,
-    'indicator-background-checked-disabled': $radio-color-variant-light-indicator-background-checked-disabled,
-    'indicator-border-color': $radio-color-variant-light-indicator-border-color,
-    'indicator-border-color-checked': $radio-color-variant-light-indicator-border-color-checked,
-    'indicator-border-color-disabled': $radio-color-variant-light-indicator-border-color-disabled,
-    'indicator-border-color-checked-disabled': $radio-color-variant-light-indicator-border-color-checked-disabled,
-    'indicator-icon-color': $radio-color-variant-light-indicator-icon-color,
-    'indicator-icon-color-disabled': $radio-color-variant-light-indicator-icon-color-disabled
-) !default;
-
-////
-/// Dark color
-////
-
-/// The label color of the radio component
-/// @name color
-/// @group dark
-/// @type color
-$radio-color-variant-dark-color: contrast-color($color-dark) !default;
-
-/// The label color of the radio component when disabled
-/// @name color-disabled
-/// @group dark
-/// @type color
-$radio-color-variant-dark-color-disabled: color('dark-30') !default;
-
-/// The background of the radio component indicator
-/// @name indicator-background
-/// @group dark
-/// @type color
-$radio-color-variant-dark-indicator-background: color('dark') !default;
-
-/// The background of the radio component indicator when checked
-/// @name indicator-background-checked
-/// @group dark
-/// @type color
-$radio-color-variant-dark-indicator-background-checked: color('primary') !default;
-
-/// The background of the radio component indicator when disabled
-/// @name indicator-background-disabled
-/// @group dark
-/// @type color
-$radio-color-variant-dark-indicator-background-disabled: color('dark-25') !default;
-
-/// The background of the radio component indicator when checked and disabled
-/// @name indicator-background-checked-disabled
-/// @group dark
-/// @type color
-$radio-color-variant-dark-indicator-background-checked-disabled: color('primary-25') !default;
-
-/// The border-color of the radio component indicator
-/// @name indicator-border-color
-/// @group dark
-/// @type color
-$radio-color-variant-dark-indicator-border-color: color('dark') !default;
-
-/// The border-color of the radio component indicator when checked
-/// @name indicator-border-color-checked
-/// @group dark
-/// @type color
-$radio-color-variant-dark-indicator-border-color-checked: color('primary-55') !default;
-
-/// The border-color of the radio component indicator when disabled
-/// @name indicator-border-color-disabled
-/// @group dark
-/// @type color
-$radio-color-variant-dark-indicator-border-color-disabled: color('dark') !default;
-
-/// The border-color of the radio component indicator when checked and disabled
-/// @name indicator-border-color-checked-disabled
-/// @group dark
-/// @type color
-$radio-color-variant-dark-indicator-border-color-checked-disabled: color('primary-30') !default;
-
-/// The color of the radio component indicator icon
-/// @name indicator-icon-color
-/// @group dark
-/// @type color
-$radio-color-variant-dark-indicator-icon-color: color('white') !default;
-
-/// The color of the checkbox component indicator icon when disabled
-/// @name indicator-icon-color-disabled
-/// @group dark
-/// @type color
-$radio-color-variant-dark-indicator-icon-color-disabled: color('dark-25') !default;
-
-/// Map for dark color
-/// @group dark
-$radio-color-variant-dark: (
-    'color': $radio-color-variant-dark-color,
-    'color-disabled': $radio-color-variant-dark-color-disabled,
-    'indicator-background': $radio-color-variant-dark-indicator-background,
-    'indicator-background-checked': $radio-color-variant-dark-indicator-background-checked,
-    'indicator-background-disabled': $radio-color-variant-dark-indicator-background-disabled,
-    'indicator-background-checked-disabled': $radio-color-variant-dark-indicator-background-checked-disabled,
-    'indicator-border-color': $radio-color-variant-dark-indicator-border-color,
-    'indicator-border-color-checked': $radio-color-variant-dark-indicator-border-color-checked,
-    'indicator-border-color-disabled': $radio-color-variant-dark-indicator-border-color-disabled,
-    'indicator-border-color-checked-disabled': $radio-color-variant-dark-indicator-border-color-checked-disabled,
-    'indicator-icon-color': $radio-color-variant-dark-indicator-icon-color,
-    'indicator-icon-color-disabled': $radio-color-variant-dark-indicator-icon-color-disabled
-) !default;
-
-/// Colors group map
-$radio-color-variants: (
-    'light': $radio-color-variant-light,
-    'dark': $radio-color-variant-dark
-) !default;
+    /// The label color of the radio component when disabled
+    /// @name label--color--disabled
+    /// @type color
+    ----label--color--disabled: #{color('light-70')};
+}
