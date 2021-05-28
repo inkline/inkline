@@ -2,8 +2,8 @@
 /// Component selector mixins
 ////
 
-@mixin i-sidebar {
-    .sidebar-wrapper {
+@mixin i-toggle {
+    .toggle {
         @content;
     }
 }

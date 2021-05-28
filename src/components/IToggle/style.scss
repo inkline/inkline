@@ -1,7 +1,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/_variables';
-@import 'css/_css';
 @import 'css/_sizes';
 @import 'css/_colors';
 
@@ -26,6 +25,49 @@
         &[readonly] + .toggle-label {
             cursor: default;
         }
+
+        &:checked + .toggle-label {
+            &::before {
+                background-color: var(----background--checked);
+                border-color: var(----border-color--checked);
+            }
+
+            &::after {
+                background-color: var(----indicator--background--checked);
+                transform: translate(calc(#{var(----width)} / 2), 0);
+            }
+        }
+
+
+        &:focus + .toggle-label::before {
+            box-shadow: 0 0 1px var(----background--checked);
+        }
+
+        &:disabled + .toggle-label,
+        &[readonly] + .toggle-label {
+            color: var(----label--color--disabled);
+
+            &::before {
+                background-color: var(----background--disabled);
+                border-color: var(----border-color--disabled);
+            }
+
+            &::after {
+                background-color: var(----indicator--background--disabled);
+            }
+        }
+
+        &:disabled:checked + .toggle-label,
+        &[readonly]:checked + .toggle-label {
+            &::before {
+                background-color: var(----background--checked-disabled);
+                border-color: var(----border-color--checked-disabled);
+            }
+
+            &::after {
+                background-color: var(----indicator--background--checked-disabled);
+            }
+        }
     }
 
     .toggle-label {
@@ -33,18 +75,24 @@
         align-items: center;
         position: relative;
         margin: 0;
+        color: var(----label--color);
 
         &::before {
             content: "";
             position: relative;
             display: inline-block;
             cursor: pointer;
-            transition: var(--toggle-transition-duration);
-            border-width: var(--border-width);
-            border-style: solid;
-            margin-right: var(--toggle-indicator-margin-right);
+            transition: var(----transition-duration);
+            border-width: var(----border-width);
+            border-style: var(----border-style);
+            border-color: var(----border-color);
+            margin-right: var(----margin-right);
             flex-shrink: 0;
             flex-grow: 0;
+            background-color: var(----background);
+            width: var(----width);
+            height: var(----height);
+            border-radius: var(----border-radius);
         }
 
         &::after {
@@ -55,25 +103,13 @@
             left: 0;
             z-index: 1;
             transform: translate(0, 0);
-            transition: var(--toggle-transition-duration);
-        }
-    }
-
-    @include toggle-size-variant('md');
-    @each $size-variant-key, $toggle-size-variant-value in $toggle-size-variants {
-        .form.-#{$size-variant-key} &,
-        .form-group.-#{$size-variant-key} &,
-        &.-#{$size-variant-key} {
-            @include toggle-size-variant($size-variant-key);
-        }
-    }
-
-    @include toggle-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $toggle-color-variants {
-        .form.-#{$color-variant-key} &,
-        .form-group.-#{$color-variant-key} &,
-        &.-#{$color-variant-key} {
-            @include toggle-color-variant($color-variant-key);
+            transition: var(----transition-duration);
+            background-color: var(----indicator--background);
+            height: var(----indicator--width);
+            width: var(----indicator--height);
+            border-radius: var(----border-radius);
+            margin-top: calc(var(----indicator--height) / -2);
+            margin-left: calc(var(----height) / 2 - var(----indicator--height) / 2);
         }
     }
 }
