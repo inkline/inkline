@@ -2,8 +2,8 @@
 /// Component selector mixins
 ////
 
-@mixin i-pagination {
-    .pagination {
+@mixin i-progress {
+    .progress {
         @content;
     }
 }

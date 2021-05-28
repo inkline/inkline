@@ -1,5 +1,35 @@
-@mixin progress-color-variant($color-variant-key) {
-    $_background: var(--progress-color-variant-#{$color-variant-key}-background);
+/**
+ * Color variants
+ */
 
-    background: $_background;
+.progress {
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light') {
+        /// The background of the progress component, for the light color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('light')};
+
+        /// The border color of the progress component, for the light color variant
+        /// @name border-color
+        /// @type color
+        ----border-color: #{color('light-55')};
+    }
+
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark') {
+        /// The background of the progress component, for the dark color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('dark')};
+
+        /// The border color of the progress component, for the dark color variant
+        /// @name border-color
+        /// @type color
+        ----border-color: #{color('dark-45')};
+    }
 }
