@@ -253,12 +253,6 @@ module.exports = {
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
             {
-                name: 'font-size',
-                description: 'The font size of the toggle component label',
-                type: 'size',
-                value: 'font-size()'
-            },
-            {
                 name: 'margin-right',
                 description: 'The right margin of the toggle component',
                 value: 'var(--margin-right)'
@@ -378,7 +372,13 @@ module.exports = {
                     light: 'color(\'light-70\')',
                     dark: 'color(\'dark-30\')'
                 }
-            }
+            },
+            {
+                name: 'label--font-size',
+                description: 'The font size of the toggle component label',
+                type: 'size',
+                value: 'font-size()'
+            },
         ]
     }
 };

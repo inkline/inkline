@@ -10,19 +10,16 @@
         /// The font size of the breadcrumb component, for the sm size variant
         /// @name font-size
         /// @type size
-        ///
         ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
 
         /// The padding right of the breadcrumb component, for the sm size variant
         /// @name padding-right
         /// @type size
-        ///
         ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
 
         /// The padding left of the breadcrumb component, for the sm size variant
         /// @name padding-left
         /// @type size
-        ///
         ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
     }
 
@@ -33,19 +30,16 @@
         /// The font size of the breadcrumb component, for the md size variant
         /// @name font-size
         /// @type size
-        ///
         ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
 
         /// The padding right of the breadcrumb component, for the md size variant
         /// @name padding-right
         /// @type size
-        ///
         ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
 
         /// The padding left of the breadcrumb component, for the md size variant
         /// @name padding-left
         /// @type size
-        ///
         ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
     }
 
@@ -56,19 +50,16 @@
         /// The font size of the breadcrumb component, for the lg size variant
         /// @name font-size
         /// @type size
-        ///
         ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
 
         /// The padding right of the breadcrumb component, for the lg size variant
         /// @name padding-right
         /// @type size
-        ///
         ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
 
         /// The padding left of the breadcrumb component, for the lg size variant
         /// @name padding-left
         /// @type size
-        ///
         ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
     }
 }

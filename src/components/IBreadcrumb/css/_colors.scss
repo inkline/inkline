@@ -10,19 +10,16 @@
         /// The text color of the breadcrumb component, for the light color variant
         /// @name color
         /// @type color
-        ///
         ----color: #{color('primary')};
 
         /// The text default color of the breadcrumb component, for the light color variant
         /// @name color--default
         /// @type color
-        ///
         ----color--default: #{color('gray-90')};
 
         /// The text active color of the breadcrumb component, for the light color variant
         /// @name color--active
         /// @type color
-        ///
         ----color--active: #{color('gray-70')};
     }
 
@@ -33,19 +30,16 @@
         /// The text color of the breadcrumb component, for the dark color variant
         /// @name color
         /// @type color
-        ///
         ----color: #{color('primary')};
 
         /// The text default color of the breadcrumb component, for the dark color variant
         /// @name color--default
         /// @type color
-        ///
         ----color--default: #{color('white')};
 
         /// The text active color of the breadcrumb component, for the dark color variant
         /// @name color--active
         /// @type color
-        ///
         ----color--active: #{color('gray-40')};
     }
 }

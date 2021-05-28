@@ -1,9 +1,30 @@
-//
-// Input variables
-//
-$label-margin-bottom: 0.5rem !default;
-$label-margin: spacing() !default;
+/**
+ * Variables
+ */
 
-$label-error-color: $color-danger !default;
+.form-label {
+    /// The font size of the form label component
+    /// @name font-size
+    /// @type size
+    ----font-size: #{font-size()};
 
-$label-font-size: font-size() !default;
+    /// The margin top of the form label component
+    /// @name margin-top
+    ----margin-top: #{var(--margin-top)};
+
+    /// The margin right of the form label component
+    /// @name margin-right
+    ----margin-right: #{var(--margin-right)};
+
+    /// The margin bottom of the form label component
+    /// @name margin-bottom
+    ----margin-bottom: #{var(--margin-bottom)};
+
+    /// The margin left of the form label component
+    /// @name margin-left
+    ----margin-left: #{var(--margin-left)};
+
+    /// The margin of the form label component
+    /// @name margin
+    ----margin: #{var(----margin-top) var(----margin-right) var(----margin-bottom) var(----margin-left)};
+}

@@ -188,12 +188,12 @@ module.exports = {
             {
                 name: 'font-weight',
                 description: 'The font weight of the badge component',
-                default: 'font-weight(\'bold\')'
+                value: 'font-weight(\'bold\')'
             },
             {
                 name: 'line-height',
                 description: 'The line height of the badge component',
-                default: 'var(--line-height)'
+                value: 'var(--line-height)'
             },
             {
                 name: 'padding-top',

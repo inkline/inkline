@@ -111,11 +111,6 @@
     /// @name box-shadow
     ----box-shadow: #{var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)};
 
-    /// The font size of the toggle component label
-    /// @name font-size
-    /// @type size
-    ----font-size: #{font-size()};
-
     /// The right margin of the toggle component
     /// @name margin-right
     ----margin-right: #{var(--margin-right)};
@@ -191,11 +186,6 @@
     /// @type size
     ----indicator--height: #{16px};
 
-    /// The height of the toggle component indicator
-    /// @name indicator--offset
-    /// @type size
-    ----indicator--offset: #{4px};
-
     /// The color of the toggle component label
     /// @name label--color
     /// @type color
@@ -205,4 +195,9 @@
     /// @name label--color--disabled
     /// @type color
     ----label--color--disabled: #{color('light-70')};
+
+    /// The font size of the toggle component label
+    /// @name label--font-size
+    /// @type size
+    ----label--font-size: #{font-size()};
 }

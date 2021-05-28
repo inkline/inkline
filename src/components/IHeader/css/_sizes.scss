@@ -10,25 +10,21 @@
         /// The padding top of the header component, for the sm size variant
         /// @name padding-top
         /// @type size
-        ///
         ----padding-top: calc(#{10rem} * #{size-multiplier('sm')});
 
         /// The padding right of the header component, for the sm size variant
         /// @name padding-right
         /// @type size
-        ///
         ----padding-right: calc(#{0} * #{size-multiplier('sm')});
 
         /// The padding bottom of the header component, for the sm size variant
         /// @name padding-bottom
         /// @type size
-        ///
         ----padding-bottom: calc(#{10rem} * #{size-multiplier('sm')});
 
         /// The padding left of the header component, for the sm size variant
         /// @name padding-left
         /// @type size
-        ///
         ----padding-left: calc(#{0} * #{size-multiplier('sm')});
     }
 
@@ -39,25 +35,21 @@
         /// The padding top of the header component, for the md size variant
         /// @name padding-top
         /// @type size
-        ///
         ----padding-top: calc(#{10rem} * #{size-multiplier('md')});
 
         /// The padding right of the header component, for the md size variant
         /// @name padding-right
         /// @type size
-        ///
         ----padding-right: calc(#{0} * #{size-multiplier('md')});
 
         /// The padding bottom of the header component, for the md size variant
         /// @name padding-bottom
         /// @type size
-        ///
         ----padding-bottom: calc(#{10rem} * #{size-multiplier('md')});
 
         /// The padding left of the header component, for the md size variant
         /// @name padding-left
         /// @type size
-        ///
         ----padding-left: calc(#{0} * #{size-multiplier('md')});
     }
 
@@ -68,25 +60,21 @@
         /// The padding top of the header component, for the lg size variant
         /// @name padding-top
         /// @type size
-        ///
         ----padding-top: calc(#{10rem} * #{size-multiplier('lg')});
 
         /// The padding right of the header component, for the lg size variant
         /// @name padding-right
         /// @type size
-        ///
         ----padding-right: calc(#{0} * #{size-multiplier('lg')});
 
         /// The padding bottom of the header component, for the lg size variant
         /// @name padding-bottom
         /// @type size
-        ///
         ----padding-bottom: calc(#{10rem} * #{size-multiplier('lg')});
 
         /// The padding left of the header component, for the lg size variant
         /// @name padding-left
         /// @type size
-        ///
         ----padding-left: calc(#{0} * #{size-multiplier('lg')});
     }
 }

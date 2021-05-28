@@ -1,0 +1,55 @@
+/**
+ * Size variants
+ */
+
+.column {
+    /// Variables for the xs color variant
+    /// @name xs
+    /// @type group
+    @include variant('xs') {
+        /// The width of the container component, for the xs size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{100%} * #{size-multiplier('xs')});
+    }
+
+    /// Variables for the sm color variant
+    /// @name sm
+    /// @type group
+    @include variant('sm') {
+        /// The width of the container component, for the sm size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{calc(#{breakpoint('sm')} - #{gutter('sm')})} * #{size-multiplier('sm')});
+    }
+
+    /// Variables for the md color variant
+    /// @name md
+    /// @type group
+    @include variant('md') {
+        /// The width of the container component, for the md size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{calc(#{breakpoint('md')} - #{gutter('md')})} * #{size-multiplier('md')});
+    }
+
+    /// Variables for the lg color variant
+    /// @name lg
+    /// @type group
+    @include variant('lg') {
+        /// The width of the container component, for the lg size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{calc(#{breakpoint('lg')} - #{gutter('lg')})} * #{size-multiplier('lg')});
+    }
+
+    /// Variables for the xl color variant
+    /// @name xl
+    /// @type group
+    @include variant('xl') {
+        /// The width of the container component, for the xl size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{calc(#{breakpoint('xl')} - #{gutter('xl')})} * #{size-multiplier('xl')});
+    }
+}

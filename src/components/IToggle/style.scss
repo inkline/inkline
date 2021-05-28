@@ -76,6 +76,7 @@
         position: relative;
         margin: 0;
         color: var(----label--color);
+        font-size: var(----label--font-size);
 
         &::before {
             content: "";

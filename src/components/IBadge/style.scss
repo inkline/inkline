@@ -9,7 +9,6 @@
 
 .badge {
     display: inline-block;
-    font-weight: var(----font-weight);
     line-height: 1;
     text-align: center;
     white-space: nowrap;
@@ -21,6 +20,7 @@
     border-color: var(----border-color);
     border-radius: var(----border-radius);
     font-size: var(----font-size);
+    font-weight: var(----font-weight);
     padding: var(----padding);
     box-shadow: var(----box-shadow);
 

@@ -10,25 +10,21 @@
         /// The background of the badge component, for the primary color variant
         /// @name background
         /// @type color
-        ///
         ----background: #{color('primary')};
 
         /// The border color of the badge component, for the primary color variant
         /// @name border-color
         /// @type color
-        ///
         ----border-color: #{color('primary-55')};
 
         /// The color of the badge component, for the primary color variant
         /// @name color
         /// @type color
-        ///
         ----color: #{contrast-color($color-primary)};
 
         /// The background of the badge component when parent link is hovered, for the primary color variant
         /// @name link--background--hover
         /// @type color
-        ///
         ----link--background--hover: #{color('primary-60')};
     }
 
@@ -39,25 +35,21 @@
         /// The background of the badge component, for the secondary color variant
         /// @name background
         /// @type color
-        ///
         ----background: #{color('secondary')};
 
         /// The border color of the badge component, for the secondary color variant
         /// @name border-color
         /// @type color
-        ///
         ----border-color: #{color('secondary-55')};
 
         /// The color of the badge component, for the secondary color variant
         /// @name color
         /// @type color
-        ///
         ----color: #{contrast-color($color-secondary)};
 
         /// The background of the badge component when parent link is hovered, for the secondary color variant
         /// @name link--background--hover
         /// @type color
-        ///
         ----link--background--hover: #{color('secondary-60')};
     }
 
@@ -68,25 +60,21 @@
         /// The background of the badge component, for the light color variant
         /// @name background
         /// @type color
-        ///
         ----background: #{color('light')};
 
         /// The border color of the badge component, for the light color variant
         /// @name border-color
         /// @type color
-        ///
         ----border-color: #{color('light-55')};
 
         /// The color of the badge component, for the light color variant
         /// @name color
         /// @type color
-        ///
         ----color: #{contrast-color($color-light)};
 
         /// The background of the badge component when parent link is hovered, for the light color variant
         /// @name link--background--hover
         /// @type color
-        ///
         ----link--background--hover: #{color('light-60')};
     }
 
@@ -97,25 +85,21 @@
         /// The background of the badge component, for the dark color variant
         /// @name background
         /// @type color
-        ///
         ----background: #{color('dark')};
 
         /// The border color of the badge component, for the dark color variant
         /// @name border-color
         /// @type color
-        ///
         ----border-color: #{color('dark-45')};
 
         /// The color of the badge component, for the dark color variant
         /// @name color
         /// @type color
-        ///
         ----color: #{contrast-color($color-dark)};
 
         /// The background of the badge component when parent link is hovered, for the dark color variant
         /// @name link--background--hover
         /// @type color
-        ///
         ----link--background--hover: #{color('dark-40')};
     }
 
@@ -126,25 +110,21 @@
         /// The background of the badge component, for the info color variant
         /// @name background
         /// @type color
-        ///
         ----background: #{color('info')};
 
         /// The border color of the badge component, for the info color variant
         /// @name border-color
         /// @type color
-        ///
         ----border-color: #{color('info-55')};
 
         /// The color of the badge component, for the info color variant
         /// @name color
         /// @type color
-        ///
         ----color: #{contrast-color($color-info)};
 
         /// The background of the badge component when parent link is hovered, for the info color variant
         /// @name link--background--hover
         /// @type color
-        ///
         ----link--background--hover: #{color('info-60')};
     }
 
@@ -155,25 +135,21 @@
         /// The background of the badge component, for the warning color variant
         /// @name background
         /// @type color
-        ///
         ----background: #{color('warning')};
 
         /// The border color of the badge component, for the warning color variant
         /// @name border-color
         /// @type color
-        ///
         ----border-color: #{color('warning-55')};
 
         /// The color of the badge component, for the warning color variant
         /// @name color
         /// @type color
-        ///
         ----color: #{contrast-color($color-warning)};
 
         /// The background of the badge component when parent link is hovered, for the warning color variant
         /// @name link--background--hover
         /// @type color
-        ///
         ----link--background--hover: #{color('warning-60')};
     }
 
@@ -184,25 +160,21 @@
         /// The background of the badge component, for the danger color variant
         /// @name background
         /// @type color
-        ///
         ----background: #{color('danger')};
 
         /// The border color of the badge component, for the danger color variant
         /// @name border-color
         /// @type color
-        ///
         ----border-color: #{color('danger-55')};
 
         /// The color of the badge component, for the danger color variant
         /// @name color
         /// @type color
-        ///
         ----color: #{contrast-color($color-danger)};
 
         /// The background of the badge component when parent link is hovered, for the danger color variant
         /// @name link--background--hover
         /// @type color
-        ///
         ----link--background--hover: #{color('danger-60')};
     }
 
@@ -213,25 +185,21 @@
         /// The background of the badge component, for the success color variant
         /// @name background
         /// @type color
-        ///
         ----background: #{color('success')};
 
         /// The border color of the badge component, for the success color variant
         /// @name border-color
         /// @type color
-        ///
         ----border-color: #{color('success-55')};
 
         /// The color of the badge component, for the success color variant
         /// @name color
         /// @type color
-        ///
         ----color: #{contrast-color($color-success)};
 
         /// The background of the badge component when parent link is hovered, for the success color variant
         /// @name link--background--hover
         /// @type color
-        ///
         ----link--background--hover: #{color('success-60')};
     }
 }

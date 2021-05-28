@@ -10,7 +10,6 @@
         /// The background of the hamburger-menu component, for the light color variant
         /// @name background
         /// @type color
-        ///
         ----background: #{color('dark')};
     }
 
@@ -21,7 +20,6 @@
         /// The background of the hamburger-menu component, for the dark color variant
         /// @name background
         /// @type color
-        ///
         ----background: #{color('light')};
     }
 }
