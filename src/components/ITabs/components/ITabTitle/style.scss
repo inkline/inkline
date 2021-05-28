@@ -9,14 +9,24 @@
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
-        border-bottom-width: var(--tabs-header-border-bottom-width);
-        border-bottom-style: solid;
+        border-width: var(----header--border-width);
+        border-style: var(----header--border-style);
+        border-color: var(----header--border-color);
+        font-size: var(----header--font-size);
+        padding: var(----header--padding);
         transition-property: background-color, border-color, color;
         transition-duration: var(--transition-duration);
         transition-timing-function: var(--transition-easing);
 
+        &.-active {
+            color: var(----header--color--active);
+            background-color: var(----header--background--active);
+            border-color: var(----header--border-color--active);
+        }
+
         &:hover,
         &:focus {
+            background: var(----header--background--hover);
             cursor: pointer;
             outline: none;
         }

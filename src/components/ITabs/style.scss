@@ -1,7 +1,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/colors';
 @import 'css/sizes';
 
@@ -9,28 +8,17 @@
     position: relative;
     display: block;
 
-    > .tabs-header {
+    .tabs-header {
         display: flex;
         justify-content: flex-start;
         flex-wrap: nowrap;
         align-items: center;
-        border-width: var(--tabs-border-width);
-        border-style: solid;
-        margin-bottom: var(--tabs-header-margin-bottom);
+        border-width: var(----border-width);
+        border-style: var(----border-style);
+        border-color: var(----border-color);
+        margin-bottom: var(----header--margin-bottom);
         overflow: auto;
-    }
-
-    @include tabs-size-variant('md');
-    @each $size-variant-key, $tabs-size-variant-value in $tabs-size-variants {
-        &.-#{$size-variant-key} {
-            @include tabs-size-variant($size-variant-key);
-        }
-    }
-
-    @include tabs-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $tabs-color-variants {
-        &.-#{$color-variant-key} {
-            @include tabs-color-variant($color-variant-key);
-        }
+        color: var(----header--color);
+        background: var(----header--background);
     }
 }
