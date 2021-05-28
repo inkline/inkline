@@ -1,34 +1,230 @@
-@mixin sidebar-size-variant($size-variant-key) {
-    $_border-radius: var(--sidebar-size-variant-#{$size-variant-key}-border-radius);
-    $_font-size: var(--sidebar-size-variant-#{$size-variant-key}-font-size);
-    $_padding: var(--sidebar-size-variant-#{$size-variant-key}-padding);
-    $_width: var(--sidebar-size-variant-#{$size-variant-key}-width);
-    $_item-padding: var(--sidebar-size-variant-#{$size-variant-key}-item-padding);
+/**
+ * Size variants
+ */
 
-    width: $_width;
+.sidebar-wrapper {
+    /// Variables for the sm color variant
+    /// @name sm
+    /// @type group
+    @include variant('sm') {
+        /// The border top left radius of the sidebar component, for the sm size variant
+        /// @name border-top-left-radius
+        /// @type size
+        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')});
 
-    &.sidebar-wrapper-transition-enter-to,
-    &.sidebar-wrapper-transition-leave {
-        width: $_width;
+        /// The border top right radius of the sidebar component, for the sm size variant
+        /// @name border-top-right-radius
+        /// @type size
+        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')});
+
+        /// The border bottom right radius of the sidebar component, for the sm size variant
+        /// @name border-bottom-right-radius
+        /// @type size
+        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')});
+
+        /// The border bottom left radius of the sidebar component, for the sm size variant
+        /// @name border-bottom-left-radius
+        /// @type size
+        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')});
+
+        /// The font size of the sidebar component, for the sm size variant
+        /// @name font-size
+        /// @type size
+        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
+
+        /// The padding top of the sidebar component, for the sm size variant
+        /// @name padding-top
+        /// @type size
+        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('sm')});
+
+        /// The padding right of the sidebar component, for the sm size variant
+        /// @name padding-right
+        /// @type size
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
+
+        /// The padding bottom of the sidebar component, for the sm size variant
+        /// @name padding-bottom
+        /// @type size
+        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('sm')});
+
+        /// The padding left of the sidebar component, for the sm size variant
+        /// @name padding-left
+        /// @type size
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
+
+        /// The width of the sidebar component, for the sm size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{14rem} * #{size-multiplier('sm')});
+
+        /// The padding top of the sidebar component item, for the sm size variant
+        /// @name item--padding-top
+        /// @type size
+        ----item--padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('sm')});
+
+        /// The padding right of the sidebar component item, for the sm size variant
+        /// @name item--padding-right
+        /// @type size
+        ----item--padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
+
+        /// The padding bottom of the sidebar component item, for the sm size variant
+        /// @name item--padding-bottom
+        /// @type size
+        ----item--padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('sm')});
+
+        /// The padding left of the sidebar component item, for the sm size variant
+        /// @name item--padding-left
+        /// @type size
+        ----item--padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
     }
 
-    .sidebar {
-        width: $_width;
+    /// Variables for the md color variant
+    /// @name md
+    /// @type group
+    @include variant('md') {
+        /// The border top left radius of the sidebar component, for the md size variant
+        /// @name border-top-left-radius
+        /// @type size
+        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')});
 
-        .sidebar-content {
-            padding: $_padding;
+        /// The border top right radius of the sidebar component, for the md size variant
+        /// @name border-top-right-radius
+        /// @type size
+        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')});
 
-            .nav-item {
-                border-radius: $_border-radius;
-                padding: $_item-padding;
-            }
+        /// The border bottom right radius of the sidebar component, for the md size variant
+        /// @name border-bottom-right-radius
+        /// @type size
+        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')});
 
-            .collapsible {
-                .collapsible-header {
-                    border-radius: $_border-radius;
-                    padding: $_item-padding;
-                }
-            }
-        }
+        /// The border bottom left radius of the sidebar component, for the md size variant
+        /// @name border-bottom-left-radius
+        /// @type size
+        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')});
+
+        /// The font size of the sidebar component, for the md size variant
+        /// @name font-size
+        /// @type size
+        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
+
+        /// The padding top of the sidebar component, for the md size variant
+        /// @name padding-top
+        /// @type size
+        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('md')});
+
+        /// The padding right of the sidebar component, for the md size variant
+        /// @name padding-right
+        /// @type size
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
+
+        /// The padding bottom of the sidebar component, for the md size variant
+        /// @name padding-bottom
+        /// @type size
+        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('md')});
+
+        /// The padding left of the sidebar component, for the md size variant
+        /// @name padding-left
+        /// @type size
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
+
+        /// The width of the sidebar component, for the md size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{14rem} * #{size-multiplier('md')});
+
+        /// The padding top of the sidebar component item, for the md size variant
+        /// @name item--padding-top
+        /// @type size
+        ----item--padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('md')});
+
+        /// The padding right of the sidebar component item, for the md size variant
+        /// @name item--padding-right
+        /// @type size
+        ----item--padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
+
+        /// The padding bottom of the sidebar component item, for the md size variant
+        /// @name item--padding-bottom
+        /// @type size
+        ----item--padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('md')});
+
+        /// The padding left of the sidebar component item, for the md size variant
+        /// @name item--padding-left
+        /// @type size
+        ----item--padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
+    }
+
+    /// Variables for the lg color variant
+    /// @name lg
+    /// @type group
+    @include variant('lg') {
+        /// The border top left radius of the sidebar component, for the lg size variant
+        /// @name border-top-left-radius
+        /// @type size
+        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')});
+
+        /// The border top right radius of the sidebar component, for the lg size variant
+        /// @name border-top-right-radius
+        /// @type size
+        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')});
+
+        /// The border bottom right radius of the sidebar component, for the lg size variant
+        /// @name border-bottom-right-radius
+        /// @type size
+        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')});
+
+        /// The border bottom left radius of the sidebar component, for the lg size variant
+        /// @name border-bottom-left-radius
+        /// @type size
+        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')});
+
+        /// The font size of the sidebar component, for the lg size variant
+        /// @name font-size
+        /// @type size
+        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
+
+        /// The padding top of the sidebar component, for the lg size variant
+        /// @name padding-top
+        /// @type size
+        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('lg')});
+
+        /// The padding right of the sidebar component, for the lg size variant
+        /// @name padding-right
+        /// @type size
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
+
+        /// The padding bottom of the sidebar component, for the lg size variant
+        /// @name padding-bottom
+        /// @type size
+        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('lg')});
+
+        /// The padding left of the sidebar component, for the lg size variant
+        /// @name padding-left
+        /// @type size
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
+
+        /// The width of the sidebar component, for the lg size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{14rem} * #{size-multiplier('lg')});
+
+        /// The padding top of the sidebar component item, for the lg size variant
+        /// @name item--padding-top
+        /// @type size
+        ----item--padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('lg')});
+
+        /// The padding right of the sidebar component item, for the lg size variant
+        /// @name item--padding-right
+        /// @type size
+        ----item--padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
+
+        /// The padding bottom of the sidebar component item, for the lg size variant
+        /// @name item--padding-bottom
+        /// @type size
+        ----item--padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('lg')});
+
+        /// The padding left of the sidebar component item, for the lg size variant
+        /// @name item--padding-left
+        /// @type size
+        ----item--padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
     }
 }

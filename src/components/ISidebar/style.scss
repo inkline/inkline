@@ -1,7 +1,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/colors';
 @import 'css/sizes';
 
@@ -26,14 +25,24 @@
     height: 100%;
     min-width: 0;
     overflow: hidden;
-    z-index: var(--sidebar-z-index);
+    z-index: var(----z-index);
     flex-grow: 0;
     flex-shrink: 0;
+    width: var(----width);
 
     .sidebar {
         position: absolute;
         height: 100%;
         z-index: 1;
+        color: var(----color);
+        background: var(----background);
+        width: var(----width);
+        box-shadow: var(----box-shadow);
+        border-width: var(----border-width);
+        border-style: var(----border-style);
+        border-color: var(----border-color);
+        border-radius: var(----border-radius);
+        padding: var(----padding);
 
         .sidebar-content {
             height: 100%;
@@ -49,15 +58,18 @@
             margin-top: -0.1px;
 
             .nav {
-                &.-vertical {
-                    .nav-item {
-                        width: 100%;
+                .nav-item {
+                    border-radius: var(----item--border-radius);
+                    padding: var(----item--padding);
+
+                    &.-active {
+                        cursor: pointer;
                     }
                 }
 
-                .nav-item {
-                    &.-active {
-                        cursor: pointer;
+                &.-vertical {
+                    .nav-item {
+                        width: 100%;
                     }
                 }
             }
@@ -66,19 +78,40 @@
                 width: 100%;
                 border: 0;
 
+                .collapsible-item {
+                    box-shadow: none;
+                }
+
                 .collapsible-header {
-                    border-bottom: 0;
+                    border-width: 0;
                     transition-property: background, color;
                     transition-duration: var(--transition-duration);
                     transition-timing-function: var(--transition-easing);
+                    border-radius: var(----item--border-radius);
+                    padding: var(----item--padding);
                 }
 
                 .collapsible-body {
+                    border-width: 0;
                     background: transparent;
 
                     .content {
                         padding: 0;
                     }
+                }
+            }
+
+            .nav-item,
+            .collapsible-header {
+                color: var(----item--color);
+                background-color: var(----item--background);
+
+                &.-focused,
+                &.-hovered,
+                &:focus,
+                &:hover {
+                    color: var(----item--color--hover);
+                    background-color: var(----item--background--hover);
                 }
             }
         }
@@ -109,7 +142,9 @@
         width: 100%;
         height: 100%;
         z-index: 0;
-        background: $sidebar-overlay-background;
+        background: var(----overlay--background);
+        border-top-left-radius: var(----border-top-left-radius);
+        border-bottom-left-radius: var(----border-bottom-left-radius);
     }
 
     @each $breakpoint in $breakpoint-keys {
@@ -124,18 +159,9 @@
         @include sidebar-wrapper-collapse;
     }
 
-    @include sidebar-size-variant('md');
-    @each $size-variant-key, $sidebar-size-variant-value in $sidebar-size-variants {
-        &.-#{$size-variant-key} {
-            @include sidebar-size-variant($size-variant-key);
-        }
-    }
-
-    @include sidebar-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $sidebar-color-variants {
-        &.-#{$color-variant-key} {
-            @include sidebar-color-variant($color-variant-key);
-        }
+    &.sidebar-wrapper-transition-enter-to,
+    &.sidebar-wrapper-transition-leave {
+        width: var(----width);
     }
 }
 

@@ -1,291 +1,198 @@
-////
-/// Variables
-////
+/**
+ * Variables
+ */
 
-/// The border radius of the sidebar component
-/// @name border-radius
-/// @type size
-$sidebar-border-radius: border-radius() !default;
+.sidebar-wrapper {
+    /// The background of the sidebar component
+    /// @name background
+    /// @type color
+    ----background: #{color('light')};
 
-/// The font size of the sidebar component
-/// @name font-size
-/// @type size
-$sidebar-font-size: font-size() !default;
+    /// The border color of the sidebar component
+    /// @name border-color
+    /// @type color
+    ----border-color: #{color('light-60')};
 
-/// The padding of the sidebar component
-/// @name padding
-/// @type size
-$sidebar-padding: spacing() !default;
+    /// The border style of the sidebar component
+    /// @name border-style
+    ----border-style: #{var(--border-style)};
 
-/// The padding of the sidebar component item
-/// @name item-padding
-/// @type size
-$sidebar-item-padding: spacing() !default;
+    /// The border top width of the sidebar component
+    /// @name border-top-width
+    ----border-top-width: #{var(--border-top-width)};
 
-/// The width of the sidebar component
-/// @name width
-/// @type size
-$sidebar-width: 14rem !default;
+    /// The border right width of the sidebar component
+    /// @name border-right-width
+    ----border-right-width: #{var(--border-right-width)};
 
-/// The background of the sidebar component overlay
-/// @name overlay-background
-$sidebar-overlay-background: rgba(0, 0, 0, 0.5) !default;
+    /// The border bottom width of the sidebar component
+    /// @name border-bottom-width
+    ----border-bottom-width: #{var(--border-bottom-width)};
 
-/// The z-index of the sidebar component
-/// @name z-index
-$sidebar-z-index: z-index('fixed') !default;
+    /// The border left width of the sidebar component
+    /// @name border-left-width
+    ----border-left-width: #{var(--border-left-width)};
 
-////
-/// Sizes
-////
+    /// The border width of the sidebar component
+    /// @name border-width
+    ----border-width: #{var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)};
 
-////
-/// Small size
-////
+    /// The border top left radius of the sidebar component
+    /// @name border-top-left-radius
+    /// @type size
+    ----border-top-left-radius: #{var(--border-top-left-radius)};
 
-/// The border radius of the sidebar component
-/// @name border-radius
-/// @group sm
-/// @type size
-$sidebar-size-variant-sm-border-radius: calc(var(--sidebar-border-radius) * #{size-multiplier('sm')}) !default;
+    /// The border top right radius of the sidebar component
+    /// @name border-top-right-radius
+    /// @type size
+    ----border-top-right-radius: #{var(--border-top-right-radius)};
 
-/// The font size of the sidebar component
-/// @name font-size
-/// @group sm
-/// @type size
-$sidebar-size-variant-sm-font-size: calc(var(--sidebar-font-size) * #{size-multiplier('sm')}) !default;
+    /// The border bottom right radius of the sidebar component
+    /// @name border-bottom-right-radius
+    /// @type size
+    ----border-bottom-right-radius: #{var(--border-bottom-right-radius)};
 
-/// The padding of the sidebar component
-/// @name padding
-/// @group sm
-/// @type size
-$sidebar-size-variant-sm-padding: calc(var(--sidebar-padding) * #{size-multiplier('sm')}) !default;
+    /// The border bottom left radius of the sidebar component
+    /// @name border-bottom-left-radius
+    /// @type size
+    ----border-bottom-left-radius: #{var(--border-bottom-left-radius)};
 
-/// The padding of the sidebar component item
-/// @name item-padding
-/// @group sm
-/// @type size
-$sidebar-size-variant-sm-item-padding: calc(var(--sidebar-item-padding) * #{size-multiplier('sm')} / 2) calc(var(--sidebar-item-padding) * #{size-multiplier('sm')}) !default;
+    /// The border radius of the sidebar component
+    /// @name border-radius
+    ----border-radius: #{var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)};
 
-/// The width of the sidebar component
-/// @name width
-/// @group sm
-/// @type size
-$sidebar-size-variant-sm-width: calc(var(--sidebar-width) * #{size-multiplier('sm')}) !default;
+    /// The box shadow horizontal offset of the sidebar component
+    /// @name box-shadow-offset-x
+    ----box-shadow-offset-x: #{var(--box-shadow-offset-x)};
 
-/// Map for sm size
-/// @group sm
-$sidebar-size-variant-sm: (
-    'border-radius': $sidebar-size-variant-sm-border-radius,
-    'font-size': $sidebar-size-variant-sm-font-size,
-    'padding': $sidebar-size-variant-sm-padding,
-    'item-padding': $sidebar-size-variant-sm-item-padding,
-    'width': $sidebar-size-variant-sm-width
-) !default;
+    /// The box shadow vertical offset of the sidebar component
+    /// @name box-shadow-offset-y
+    ----box-shadow-offset-y: #{var(--box-shadow-offset-y)};
 
-////
-/// Medium size
-////
+    /// The box shadow blur radius of the sidebar component
+    /// @name box-shadow-blur-radius
+    ----box-shadow-blur-radius: #{var(--box-shadow-blur-radius)};
 
-/// The border radius of the sidebar component
-/// @name border-radius
-/// @group md
-/// @type size
-$sidebar-size-variant-md-border-radius: calc(var(--sidebar-border-radius) * #{size-multiplier('md')}) !default;
+    /// The box shadow spread radius of the sidebar component
+    /// @name box-shadow-spread-radius
+    ----box-shadow-spread-radius: #{var(--box-shadow-spread-radius)};
 
-/// The font size of the sidebar component
-/// @name font-size
-/// @group md
-/// @type size
-$sidebar-size-variant-md-font-size: calc(var(--sidebar-font-size) * #{size-multiplier('md')}) !default;
+    /// The box shadow spread radius of the sidebar component
+    /// @name box-shadow-color
+    ----box-shadow-color: #{var(--box-shadow-color)};
 
-/// The padding of the sidebar component
-/// @name padding
-/// @group md
-/// @type size
-$sidebar-size-variant-md-padding: calc(var(--sidebar-padding) * #{size-multiplier('md')}) !default;
+    /// The box shadow of the sidebar component
+    /// @name box-shadow
+    ----box-shadow: #{var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)};
 
-/// The padding of the sidebar component item
-/// @name item-padding
-/// @group md
-/// @type size
-$sidebar-size-variant-md-item-padding: calc(var(--sidebar-item-padding) * #{size-multiplier('md')} / 2) calc(var(--sidebar-item-padding) * #{size-multiplier('md')}) !default;
+    /// The color of the sidebar component
+    /// @name color
+    /// @type color
+    ----color: #{contrast-color($color-light)};
 
-/// The width of the sidebar component
-/// @name width
-/// @group md
-/// @type size
-$sidebar-size-variant-md-width: calc(var(--sidebar-width) * #{size-multiplier('md')}) !default;
+    /// The font size of the sidebar component
+    /// @name font-size
+    /// @type size
+    ----font-size: #{font-size()};
 
-/// Map for md size
-/// @group md
-$sidebar-size-variant-md: (
-    'border-radius': $sidebar-size-variant-md-border-radius,
-    'font-size': $sidebar-size-variant-md-font-size,
-    'padding': $sidebar-size-variant-md-padding,
-    'item-padding': $sidebar-size-variant-md-item-padding,
-    'width': $sidebar-size-variant-md-width
-) !default;
+    /// The padding top of the sidebar component
+    /// @name padding-top
+    /// @type size
+    ----padding-top: #{var(--padding-top)};
 
-////
-/// Large size
-////
+    /// The padding right of the sidebar component
+    /// @name padding-right
+    /// @type size
+    ----padding-right: #{var(--padding-right)};
 
-/// The border radius of the sidebar component
-/// @name border-radius
-/// @group lg
-/// @type size
-$sidebar-size-variant-lg-border-radius: calc(var(--sidebar-border-radius) * #{size-multiplier('lg')}) !default;
+    /// The padding bottom of the sidebar component
+    /// @name padding-bottom
+    /// @type size
+    ----padding-bottom: #{var(--padding-bottom)};
 
-/// The font size of the sidebar component
-/// @name font-size
-/// @group lg
-/// @type size
-$sidebar-size-variant-lg-font-size: calc(var(--sidebar-font-size) * #{size-multiplier('lg')}) !default;
+    /// The padding left of the sidebar component
+    /// @name padding-left
+    /// @type size
+    ----padding-left: #{var(--padding-left)};
 
-/// The padding of the sidebar component
-/// @name padding
-/// @group lg
-/// @type size
-$sidebar-size-variant-lg-padding: calc(var(--sidebar-padding) * #{size-multiplier('lg')}) !default;
+    /// The padding of the sidebar component
+    /// @name padding
+    ----padding: #{var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)};
 
-/// The padding of the sidebar component item
-/// @name item-padding
-/// @group lg
-/// @type size
-$sidebar-size-variant-lg-item-padding: calc(var(--sidebar-item-padding) * #{size-multiplier('lg')} / 2) calc(var(--sidebar-item-padding) * #{size-multiplier('lg')}) !default;
+    /// The width of the sidebar component
+    /// @name width
+    /// @type size
+    ----width: #{14rem};
 
-/// The width of the sidebar component
-/// @name width
-/// @group lg
-/// @type size
-$sidebar-size-variant-lg-width: calc(var(--sidebar-width) * #{size-multiplier('lg')}) !default;
+    /// The z-index of the sidebar component
+    /// @name z-index
+    ----z-index: #{z-index('fixed')};
 
-/// Map for lg size
-/// @group lg
-$sidebar-size-variant-lg: (
-    'border-radius': $sidebar-size-variant-lg-border-radius,
-    'font-size': $sidebar-size-variant-lg-font-size,
-    'padding': $sidebar-size-variant-lg-padding,
-    'item-padding': $sidebar-size-variant-lg-item-padding,
-    'width': $sidebar-size-variant-lg-width
-) !default;
+    /// The color of the sidebar component item
+    /// @name item--color
+    /// @type color
+    ----item--color: #{contrast-color($color-light)};
 
-/// Sizes group map
-$sidebar-size-variants: (
-    'sm': $sidebar-size-variant-sm,
-    'md': $sidebar-size-variant-md,
-    'lg': $sidebar-size-variant-lg
-) !default;
+    /// The color of the sidebar component item when hovered
+    /// @name item--color--hover
+    /// @type color
+    ----item--color--hover: #{contrast-color($color-light)};
 
-////
-/// Colors
-////
+    /// The background of the sidebar component item
+    /// @name item--background
+    /// @type color
+    ----item--background: #{color('light')};
 
-////
-/// Light color
-////
+    /// The background of the sidebar component item when hovered or focused
+    /// @name item--background--hover
+    /// @type color
+    ----item--background--hover: #{color('light-55')};
 
-/// The color of the sidebar component
-/// @name color
-/// @group light
-/// @type color
-$sidebar-color-variant-light-color: contrast-color($color-light) !default;
+    /// The border top left radius of the sidebar component item
+    /// @name item--border-top-left-radius
+    ----item--border-top-left-radius: #{var(----border-top-left-radius)};
 
-/// The background of the sidebar component
-/// @name background
-/// @group light
-/// @type color
-$sidebar-color-variant-light-background: color('light') !default;
+    /// The border top right radius of the sidebar component item
+    /// @name item--border-top-right-radius
+    ----item--border-top-right-radius: #{var(----border-top-right-radius)};
 
-/// The color of the sidebar component item
-/// @name item-color
-/// @group light
-/// @type color
-$sidebar-color-variant-light-item-color: contrast-color($color-light) !default;
+    /// The border bottom right radius of the sidebar component item
+    /// @name item--border-bottom-right-radius
+    ----item--border-bottom-right-radius: #{var(----border-bottom-right-radius)};
 
-/// The color of the sidebar component item when hovered
-/// @name item-color-hover
-/// @group light
-/// @type color
-$sidebar-color-variant-light-item-color-hover: contrast-color($color-light) !default;
+    /// The border bottom left radius of the sidebar component item
+    /// @name item--border-bottom-left-radius
+    ----item--border-bottom-left-radius: #{var(----border-bottom-left-radius)};
 
-/// The background of the sidebar component item
-/// @name item-background
-/// @group light
-/// @type color
-$sidebar-color-variant-light-item-background: color('light') !default;
+    /// The border radius of the sidebar component item
+    /// @name item--border-radius
+    ----item--border-radius: #{var(----item--border-top-left-radius) var(----item--border-top-right-radius) var(----item--border-bottom-right-radius) var(----item--border-bottom-left-radius)};
 
-/// The background of the sidebar component item when hovered or focused
-/// @name item-background-hover
-/// @group light
-/// @type color
-$sidebar-color-variant-light-item-background-hover: color('light-55') !default;
+    /// The padding top of the sidebar component item
+    /// @name item--padding-top
+    /// @type size
+    ----item--padding-top: #{calc(var(--padding-top) / 2)};
 
-/// Map for light color
-/// @group light
-$sidebar-color-variant-light: (
-    'color': $sidebar-color-variant-light-color,
-    'background': $sidebar-color-variant-light-background,
-    'item-color': $sidebar-color-variant-light-item-color,
-    'item-color-hover': $sidebar-color-variant-light-item-color-hover,
-    'item-background': $sidebar-color-variant-light-item-background,
-    'item-background-hover': $sidebar-color-variant-light-item-background-hover
-) !default;
+    /// The padding right of the sidebar component item
+    /// @name item--padding-right
+    /// @type size
+    ----item--padding-right: #{var(--padding-right)};
 
-////
-/// Dark color
-////
+    /// The padding bottom of the sidebar component item
+    /// @name item--padding-bottom
+    /// @type size
+    ----item--padding-bottom: #{calc(var(--padding-bottom) / 2)};
 
-/// The color of the sidebar component
-/// @name color
-/// @group dark
-/// @type color
-$sidebar-color-variant-dark-color: contrast-color($color-dark) !default;
+    /// The padding left of the sidebar component item
+    /// @name item--padding-left
+    /// @type size
+    ----item--padding-left: #{var(--padding-left)};
 
-/// The background of the sidebar component
-/// @name background
-/// @group dark
-/// @type color
-$sidebar-color-variant-dark-background: color('dark') !default;
+    /// The padding of the sidebar component item
+    /// @name item--padding
+    ----item--padding: #{var(----item--padding-top) var(----item--padding-right) var(----item--padding-bottom) var(----item--padding-left)};
 
-/// The color of the sidebar component item
-/// @name item-color
-/// @group dark
-/// @type color
-$sidebar-color-variant-dark-item-color: contrast-color($color-dark) !default;
-
-/// The color of the sidebar component item when hovered
-/// @name item-color-hover
-/// @group dark
-/// @type color
-$sidebar-color-variant-dark-item-color-hover: contrast-color($color-dark) !default;
-
-/// The background of the sidebar component item
-/// @name item-background
-/// @group dark
-/// @type color
-$sidebar-color-variant-dark-item-background: color('dark') !default;
-
-/// The background of the sidebar component item when hovered or focused
-/// @name item-background-hover
-/// @group dark
-/// @type color
-$sidebar-color-variant-dark-item-background-hover: color('dark-45') !default;
-
-/// Map for dark color
-/// @group dark
-$sidebar-color-variant-dark: (
-    'color': $sidebar-color-variant-dark-color,
-    'background': $sidebar-color-variant-dark-background,
-    'item-color': $sidebar-color-variant-dark-item-color,
-    'item-color-hover': $sidebar-color-variant-dark-item-color-hover,
-    'item-background': $sidebar-color-variant-dark-item-background,
-    'item-background-hover': $sidebar-color-variant-dark-item-background-hover
-) !default;
-
-/// Colors group map
-$sidebar-color-variants: (
-    'light': $sidebar-color-variant-light,
-    'dark': $sidebar-color-variant-dark
-) !default;
+    /// The background of the sidebar component overlay
+    /// @name overlay--background
+    ----overlay--background: #{rgba(0, 0, 0, 0.5)};
+}
