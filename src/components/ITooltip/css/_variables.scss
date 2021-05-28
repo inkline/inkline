@@ -1,209 +1,161 @@
-////
-/// Variables
-////
+/**
+ * Variables
+ */
 
-/// The font weight of the tooltip component
-/// @name font-weight
-$tooltip-font-weight: font-weight('normal') !default;
+.tooltip-wrapper {
+    /// The background of the popover component
+    /// @name background
+    /// @type color
+    ----background: #{color('white')};
 
-/// The line height of the tooltip component
-/// @name line-height
-$tooltip-line-height: var(--line-height) !default;
+    /// The border-color of the popover component
+    /// @name border-color
+    /// @type color
+    ----border-color: #{color('light')};
 
-/// The border width of the tooltip component
-/// @name border-width
-$tooltip-border-width: var(--border-width) !default;
+    /// The border style of the popover component
+    /// @name border-style
+    ----border-style: #{var(--border-style)};
 
-/// The margin of the tooltip component
-/// @name margin
-$tooltip-margin: spacing('1/2') !default;
+    /// The border top width of the popover component
+    /// @name border-top-width
+    ----border-top-width: #{var(--border-top-width)};
 
-/// The z-index of the tooltip component
-/// @name z-index
-$tooltip-z-index: 2000 !default;
+    /// The border right width of the popover component
+    /// @name border-right-width
+    ----border-right-width: #{var(--border-right-width)};
 
-/// The border radius of the tooltip component
-/// @name border-radius
-/// @type size
-$tooltip-border-radius: border-radius() !default;
+    /// The border bottom width of the popover component
+    /// @name border-bottom-width
+    ----border-bottom-width: #{var(--border-bottom-width)};
 
-/// The font size of the tooltip component
-/// @name font-size
-/// @type size
-$tooltip-font-size: font-size() !default;
+    /// The border left width of the popover component
+    /// @name border-left-width
+    ----border-left-width: #{var(--border-left-width)};
 
-/// The padding of the tooltip component items
-/// @name padding
-/// @type size
-$tooltip-padding: spacing() !default;
+    /// The border width of the popover component
+    /// @name border-width
+    ----border-width: #{var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)};
 
-////
-/// Sizes
-////
+    /// The border top left radius of the popover component
+    /// @name border-top-left-radius
+    /// @type size
+    ----border-top-left-radius: #{var(--border-top-left-radius)};
 
-////
-/// Small size
-////
+    /// The border top right radius of the popover component
+    /// @name border-top-right-radius
+    /// @type size
+    ----border-top-right-radius: #{var(--border-top-right-radius)};
 
-/// The border radius of the tooltip component
-/// @name border-radius
-/// @group sm
-/// @type size
-$tooltip-size-variant-sm-border-radius: calc(var(--tooltip-border-radius) * #{size-multiplier('sm')}) !default;
+    /// The border bottom right radius of the popover component
+    /// @name border-bottom-right-radius
+    /// @type size
+    ----border-bottom-right-radius: #{var(--border-bottom-right-radius)};
 
-/// The font size of the tooltip component
-/// @name font-size
-/// @group sm
-/// @type size
-$tooltip-size-variant-sm-font-size: calc(var(--tooltip-font-size) * #{size-multiplier('sm')}) !default;
+    /// The border bottom left radius of the popover component
+    /// @name border-bottom-left-radius
+    /// @type size
+    ----border-bottom-left-radius: #{var(--border-bottom-left-radius)};
 
-/// The padding of the tooltip component items
-/// @name padding
-/// @group sm
-/// @type size
-$tooltip-size-variant-sm-padding: calc(var(--tooltip-padding) * #{size-multiplier('sm')} / 2) calc(var(--tooltip-padding) * #{size-multiplier('sm')}) !default;
+    /// The border radius of the popover component
+    /// @name border-radius
+    ----border-radius: #{var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)};
 
-/// Map for sm size
-/// @group sm
-$tooltip-size-variant-sm: (
-    'border-radius': $tooltip-size-variant-sm-border-radius,
-    'font-size': $tooltip-size-variant-sm-font-size,
-    'padding': $tooltip-size-variant-sm-padding
-) !default;
+    /// The box shadow horizontal offset of the popover component
+    /// @name box-shadow-offset-x
+    ----box-shadow-offset-x: #{var(--box-shadow-offset-x)};
 
-////
-/// Medium size
-////
+    /// The box shadow vertical offset of the popover component
+    /// @name box-shadow-offset-y
+    ----box-shadow-offset-y: #{var(--box-shadow-offset-y)};
 
-/// The border radius of the tooltip component
-/// @name border-radius
-/// @group md
-/// @type size
-$tooltip-size-variant-md-border-radius: calc(var(--tooltip-border-radius) * #{size-multiplier('md')}) !default;
+    /// The box shadow blur radius of the popover component
+    /// @name box-shadow-blur-radius
+    ----box-shadow-blur-radius: #{var(--box-shadow-blur-radius)};
 
-/// The font size of the tooltip component
-/// @name font-size
-/// @group md
-/// @type size
-$tooltip-size-variant-md-font-size: calc(var(--tooltip-font-size) * #{size-multiplier('md')}) !default;
+    /// The box shadow spread radius of the popover component
+    /// @name box-shadow-spread-radius
+    ----box-shadow-spread-radius: #{var(--box-shadow-spread-radius)};
 
-/// The padding of the tooltip component items
-/// @name padding
-/// @group md
-/// @type size
-$tooltip-size-variant-md-padding: calc(var(--tooltip-padding) * #{size-multiplier('md')} / 2) calc(var(--tooltip-padding) * #{size-multiplier('md')}) !default;
+    /// The box shadow spread radius of the popover component
+    /// @name box-shadow-color
+    ----box-shadow-color: #{var(--box-shadow-color)};
 
-/// Map for md size
-/// @group md
-$tooltip-size-variant-md: (
-    'border-radius': $tooltip-size-variant-md-border-radius,
-    'font-size': $tooltip-size-variant-md-font-size,
-    'padding': $tooltip-size-variant-md-padding
-) !default;
+    /// The box shadow of the popover component
+    /// @name box-shadow
+    ----box-shadow: #{var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)};
 
-////
-/// Large size
-////
+    /// The color of the popover component item
+    /// @name color
+    /// @type color
+    ----color: #{contrast-color($color-white)};
 
-/// The border radius of the tooltip component
-/// @name border-radius
-/// @group lg
-/// @type size
-$tooltip-size-variant-lg-border-radius: calc(var(--tooltip-border-radius) * #{size-multiplier('lg')}) !default;
+    /// The font size of the popover component
+    /// @name font-size
+    /// @type size
+    ----font-size: #{font-size()};
 
-/// The font size of the tooltip component
-/// @name font-size
-/// @group lg
-/// @type size
-$tooltip-size-variant-lg-font-size: calc(var(--tooltip-font-size) * #{size-multiplier('lg')}) !default;
+    /// The font weight of the popover component
+    /// @name font-weight
+    ----font-weight: #{font-weight('normal')};
 
-/// The padding of the tooltip component items
-/// @name padding
-/// @group lg
-/// @type size
-$tooltip-size-variant-lg-padding: calc(var(--tooltip-padding) * #{size-multiplier('lg')} / 2) calc(var(--tooltip-padding) * #{size-multiplier('lg')}) !default;
+    /// The line height of the popover component
+    /// @name line-height
+    ----line-height: #{var(--line-height)};
 
-/// Map for lg size
-/// @group lg
-$tooltip-size-variant-lg: (
-    'border-radius': $tooltip-size-variant-lg-border-radius,
-    'font-size': $tooltip-size-variant-lg-font-size,
-    'padding': $tooltip-size-variant-lg-padding
-) !default;
+    /// The margin top of the popover component
+    /// @name margin-top
+    /// @type size
+    ----margin-top: #{calc(var(--margin-top) / 2)};
 
-/// Sizes group map
-$tooltip-size-variants: (
-    'sm': $tooltip-size-variant-sm,
-    'md': $tooltip-size-variant-md,
-    'lg': $tooltip-size-variant-lg
-) !default;
+    /// The margin right of the popover component
+    /// @name margin-right
+    /// @type size
+    ----margin-right: #{calc(var(--margin-right) / 2)};
 
-////
-/// Colors
-////
+    /// The margin bottom of the popover component
+    /// @name margin-bottom
+    /// @type size
+    ----margin-bottom: #{calc(var(--margin-bottom) / 2)};
 
-////
-/// Light color
-////
+    /// The margin left of the popover component
+    /// @name margin-left
+    /// @type size
+    ----margin-left: #{calc(var(--margin-left) / 2)};
 
-/// The color of the tooltip component item
-/// @name color
-/// @group light
-/// @type color
-$tooltip-color-variant-light-color: contrast-color($color-white) !default;
+    /// The margin of the popover component
+    /// @name margin
+    ----margin: #{var(----margin-top) var(----margin-right) var(----margin-bottom) var(----margin-left)};
 
-/// The background of the tooltip component
-/// @name background
-/// @group light
-/// @type color
-$tooltip-color-variant-light-background: color('white') !default;
+    /// The padding top of the popover component
+    /// @name padding-top
+    /// @type size
+    ----padding-top: #{calc(var(--padding-top) * 3 / 4)};
 
-/// The border-color of the tooltip component
-/// @name border-color
-/// @group light
-/// @type color
-$tooltip-color-variant-light-border-color: color('light') !default;
+    /// The padding right of the popover component
+    /// @name padding-right
+    /// @type size
+    ----padding-right: #{var(--padding-right)};
 
-/// Map for light color
-/// @group light
-$tooltip-color-variant-light: (
-    'color': $tooltip-color-variant-light-color,
-    'background': $tooltip-color-variant-light-background,
-    'border-color': $tooltip-color-variant-light-border-color
-) !default;
+    /// The padding bottom of the popover component
+    /// @name padding-bottom
+    /// @type size
+    ----padding-bottom: #{calc(var(--padding-bottom) * 3 / 4)};
 
-////
-/// Dark color
-////
+    /// The padding left of the popover component
+    /// @name padding-left
+    /// @type size
+    ----padding-left: #{var(--padding-left)};
 
-/// The color of the tooltip component item
-/// @name color
-/// @group dark
-/// @type color
-$tooltip-color-variant-dark-color: contrast-color($color-dark) !default;
+    /// The padding of the popover component
+    /// @name padding
+    ----padding: #{var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)};
 
-/// The background of the tooltip component
-/// @name background
-/// @group dark
-/// @type color
-$tooltip-color-variant-dark-background: color('dark') !default;
+    /// The width of the popover component
+    /// @name width
+    ----width: #{280px};
 
-/// The border-color of the tooltip component
-/// @name border-color
-/// @group dark
-/// @type color
-$tooltip-color-variant-dark-border-color: color('dark-60') !default;
-
-/// Map for dark color
-/// @group dark
-$tooltip-color-variant-dark: (
-    'color': $tooltip-color-variant-dark-color,
-    'background': $tooltip-color-variant-dark-background,
-    'border-color': $tooltip-color-variant-dark-border-color
-) !default;
-
-/// Colors group map
-$tooltip-color-variants: (
-    'light': $tooltip-color-variant-light,
-    'dark': $tooltip-color-variant-dark
-) !default;
+    /// The z-index of the popover component
+    /// @name z-index
+    ----z-index: #{2000};
+}

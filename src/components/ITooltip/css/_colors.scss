@@ -1,11 +1,45 @@
-@mixin tooltip-color-variant($color-variant-key) {
-    $_color: var(--tooltip-color-variant-#{$color-variant-key}-color);
-    $_background: var(--tooltip-color-variant-#{$color-variant-key}-background);
-    $_border-color: var(--tooltip-color-variant-#{$color-variant-key}-border-color);
+/**
+ * Color variants
+ */
 
-    color: $_color;
-    background-color: $_background;
-    border-color: $_border-color;
+.tooltip-wrapper {
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light') {
+        /// The background of the popover component, for the light color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('white')};
 
-    @include popup-arrow-color-variant(('background': $_background, 'border-color': $_border-color));
+        /// The border-color of the popover component, for the light color variant
+        /// @name border-color
+        /// @type color
+        ----border-color: #{color('light')};
+
+        /// The color of the popover component item, for the light color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-white)};
+    }
+
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark') {
+        /// The background of the popover component, for the dark color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('dark')};
+
+        /// The border-color of the popover component, for the dark color variant
+        /// @name border-color
+        /// @type color
+        ----border-color: #{color('dark-60')};
+
+        /// The color of the popover component item, for the dark color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-dark)};
+    }
 }

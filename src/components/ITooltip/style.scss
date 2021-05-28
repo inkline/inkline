@@ -1,7 +1,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/sizes';
 @import 'css/colors';
 
@@ -12,33 +11,28 @@
     .tooltip-trigger {
         display: contents;
     }
-}
 
-.tooltip {
-    @include popup(('margin': var(--tooltip-margin), 'z-index': var(--tooltip-z-index)));
-    @include popup-arrow();
-    @include popup-arrow-size-variant();
+    .tooltip {
+        @include popup(('z-index': var(----z-index)));
+        @include popup-arrow();
+        @include popup-arrow-size-variant();
 
-    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
-    list-style: none;
-    line-height: var(--tooltip-line-height);
-    background-clip: padding-box;
-    border-width: var(--tooltip-border-width);
-    border-style: solid;
-    display: inline-block;
-    white-space: nowrap;
+        text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+        list-style: none;
+        background-clip: padding-box;
+        display: inline-block;
+        white-space: nowrap;
+        line-height: var(----line-height);
+        border-width: var(----border-width);
+        border-style: var(----border-style);
+        color: var(----color);
+        background-color: var(----background);
+        border-color: var(----border-color);
+        border-radius: var(----border-radius);
+        font-size: var(----font-size);
+        padding: var(----padding);
+        box-shadow: var(----box-shadow);
 
-    @include tooltip-size-variant('md');
-    @each $size-variant-key, $tooltip-size-variant-value in $tooltip-size-variants {
-        &.-#{$size-variant-key} {
-            @include tooltip-size-variant($size-variant-key);
-        }
-    }
-
-    @include tooltip-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $tooltip-color-variants {
-        &.-#{$color-variant-key} {
-            @include tooltip-color-variant($color-variant-key);
-        }
+        @include popup-arrow-color-variant(('background': var(----background), 'border-color': var(----border-color)));
     }
 }

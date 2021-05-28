@@ -2,8 +2,8 @@
 /// Component selector mixins
 ////
 
-@mixin i-toggle {
-    .toggle {
+@mixin i-tooltip {
+    .tooltip-wrapper {
         @content;
     }
 }

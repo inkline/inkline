@@ -1,10 +1,10 @@
-<div class="tooltip-wrapper" ref="wrapper" v-click-outside="onClickOutside" @keyup.esc="onEscape">
+<div class="tooltip-wrapper" ref="wrapper" :class="classes" v-click-outside="onClickOutside" @keyup.esc="onEscape">
     <div class="tooltip-trigger" ref="trigger">
         <slot />
     </div>
 
     <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
-        <div class="tooltip" ref="popup" :class="classes" v-show="visible">
+        <div class="tooltip" ref="popup" v-show="visible">
             <span data-popper-arrow v-if="arrow" />
             <slot name="body" />
         </div>
