@@ -81,13 +81,9 @@ export default {
                 '-condensed': this.condensed,
                 '-striped': this.striped,
                 '-hover': this.hover,
-                '-nowrap': this.nowrap
-            };
-        },
-        wrapperClasses() {
-            return {
+                '-nowrap': this.nowrap,
                 [`-responsive${typeof this.responsive === "boolean" ? '' : `-${this.responsive}`}`]: Boolean(this.responsive)
-            }
+            };
         }
     }
 };
