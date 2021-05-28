@@ -159,32 +159,32 @@ module.exports = {
             },
             {
                 name: 'box-shadow-offset-x',
-                description: 'The box shadow horizontal offset of the alert component',
+                description: 'The box shadow horizontal offset of the navbar component',
                 value: 'var(--box-shadow-offset-x)'
             },
             {
                 name: 'box-shadow-offset-y',
-                description: 'The box shadow vertical offset of the alert component',
+                description: 'The box shadow vertical offset of the navbar component',
                 value: 'var(--box-shadow-offset-y)'
             },
             {
                 name: 'box-shadow-blur-radius',
-                description: 'The box shadow blur radius of the alert component',
+                description: 'The box shadow blur radius of the navbar component',
                 value: 'var(--box-shadow-blur-radius)'
             },
             {
                 name: 'box-shadow-spread-radius',
-                description: 'The box shadow spread radius of the alert component',
+                description: 'The box shadow spread radius of the navbar component',
                 value: 'var(--box-shadow-spread-radius)'
             },
             {
                 name: 'box-shadow-color',
-                description: 'The box shadow spread radius of the alert component',
+                description: 'The box shadow spread radius of the navbar component',
                 value: 'var(--box-shadow-color)'
             },
             {
                 name: 'box-shadow',
-                description: 'The box shadow of the alert component',
+                description: 'The box shadow of the navbar component',
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
             {
@@ -217,7 +217,7 @@ module.exports = {
             },
             {
                 name: 'padding',
-                description: 'The padding of the modal component',
+                description: 'The padding of the navbar component',
                 value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
             },
             {

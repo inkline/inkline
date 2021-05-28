@@ -1,46 +1,335 @@
-@mixin select-size-variant($size-variant-key) {
-    $_border-radius: var(--select-size-variant-#{$size-variant-key}-border-radius);
-    $_font-size: var(--select-size-variant-#{$size-variant-key}-font-size);
-    $_padding: var(--select-size-variant-#{$size-variant-key}-padding);
-    $_body-padding: var(--select-size-variant-#{$size-variant-key}-body-padding);
-    $_header-padding: var(--select-size-variant-#{$size-variant-key}-header-padding);
-    $_footer-padding: var(--select-size-variant-#{$size-variant-key}-footer-padding);
+/**
+ * Size variants
+ */
 
-    > .select {
-        font-size: $_font-size;
+.select-wrapper {
+    /// Variables for the sm color variant
+    /// @name sm
+    /// @type group
+    @include variant('sm', 'form') {
+        /// The border top left radius of the select component, for the sm size variant
+        /// @name border-top-left-radius
+        /// @type size
+        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')});
 
-        > .select-header {
-            padding: $_header-padding;
-        }
+        /// The border top right radius of the select component, for the sm size variant
+        /// @name border-top-right-radius
+        /// @type size
+        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')});
 
-        > .select-footer {
-            padding: $_footer-padding;
-        }
+        /// The border bottom right radius of the select component, for the sm size variant
+        /// @name border-bottom-right-radius
+        /// @type size
+        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')});
 
-        > *:nth-child(2) {
-            border-top-left-radius: $_border-radius;
-            border-top-right-radius: $_border-radius;
-        }
+        /// The border bottom left radius of the select component, for the sm size variant
+        /// @name border-bottom-left-radius
+        /// @type size
+        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')});
 
-        > *:last-child {
-            border-bottom-left-radius: $_border-radius;
-            border-bottom-right-radius: $_border-radius;
-        }
+        /// The font size of the select component, for the sm size variant
+        /// @name font-size
+        /// @type size
+        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
 
-        > .select-body {
-            padding: $_body-padding;
+        /// The margin top of the select component, for the sm size variant
+        /// @name margin-top
+        /// @type size
+        ----margin-top: calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier('sm')});
 
-            .select-option {
-                padding: $_padding;
-            }
-        }
+        /// The margin right of the select component, for the sm size variant
+        /// @name margin-right
+        /// @type size
+        ----margin-right: calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier('sm')});
+
+        /// The margin bottom of the select component, for the sm size variant
+        /// @name margin-bottom
+        /// @type size
+        ----margin-bottom: calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier('sm')});
+
+        /// The margin left of the select component, for the sm size variant
+        /// @name margin-left
+        /// @type size
+        ----margin-left: calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier('sm')});
+
+        /// The padding top of the select component, for the sm size variant
+        /// @name padding-top
+        /// @type size
+        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('sm')});
+
+        /// The padding right of the select component, for the sm size variant
+        /// @name padding-right
+        /// @type size
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
+
+        /// The padding bottom of the select component, for the sm size variant
+        /// @name padding-bottom
+        /// @type size
+        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('sm')});
+
+        /// The padding left of the select component, for the sm size variant
+        /// @name padding-left
+        /// @type size
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
+
+        /// The padding bottom of the select component option, for the sm size variant
+        /// @name option--padding-bottom
+        /// @type size
+        ----option--padding-bottom: calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('sm')});
+
+        /// The padding left of the select component option, for the sm size variant
+        /// @name option--padding-left
+        /// @type size
+        ----option--padding-left: calc(#{calc(var(----padding-left) / 2)} * #{size-multiplier('sm')});
+
+        /// The padding bottom of the select component header, for the sm size variant
+        /// @name header--padding-bottom
+        /// @type size
+        ----header--padding-bottom: calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('sm')});
+
+        /// The padding left of the select component header, for the sm size variant
+        /// @name header--padding-left
+        /// @type size
+        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('sm')});
+
+        /// The padding bottom of the select component body, for the sm size variant
+        /// @name body--padding-bottom
+        /// @type size
+        ----body--padding-bottom: calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('sm')});
+
+        /// The padding left of the select component body, for the sm size variant
+        /// @name body--padding-left
+        /// @type size
+        ----body--padding-left: calc(#{calc(var(----padding-left) / 2)} * #{size-multiplier('sm')});
+
+        /// The padding bottom of the select component footer, for the sm size variant
+        /// @name footer--padding-bottom
+        /// @type size
+        ----footer--padding-bottom: calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('sm')});
+
+        /// The padding left of the select component footer, for the sm size variant
+        /// @name footer--padding-left
+        /// @type size
+        ----footer--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('sm')});
     }
 
-    .input-wrapper {
-        .select-caret {
-            height: $_font-size;
-            width: $_font-size;
-            mask-size: $_font-size $_font-size;
-        }
+    /// Variables for the md color variant
+    /// @name md
+    /// @type group
+    @include variant('md', 'form') {
+        /// The border top left radius of the select component, for the md size variant
+        /// @name border-top-left-radius
+        /// @type size
+        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')});
+
+        /// The border top right radius of the select component, for the md size variant
+        /// @name border-top-right-radius
+        /// @type size
+        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')});
+
+        /// The border bottom right radius of the select component, for the md size variant
+        /// @name border-bottom-right-radius
+        /// @type size
+        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')});
+
+        /// The border bottom left radius of the select component, for the md size variant
+        /// @name border-bottom-left-radius
+        /// @type size
+        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')});
+
+        /// The font size of the select component, for the md size variant
+        /// @name font-size
+        /// @type size
+        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
+
+        /// The margin top of the select component, for the md size variant
+        /// @name margin-top
+        /// @type size
+        ----margin-top: calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier('md')});
+
+        /// The margin right of the select component, for the md size variant
+        /// @name margin-right
+        /// @type size
+        ----margin-right: calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier('md')});
+
+        /// The margin bottom of the select component, for the md size variant
+        /// @name margin-bottom
+        /// @type size
+        ----margin-bottom: calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier('md')});
+
+        /// The margin left of the select component, for the md size variant
+        /// @name margin-left
+        /// @type size
+        ----margin-left: calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier('md')});
+
+        /// The padding top of the select component, for the md size variant
+        /// @name padding-top
+        /// @type size
+        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('md')});
+
+        /// The padding right of the select component, for the md size variant
+        /// @name padding-right
+        /// @type size
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
+
+        /// The padding bottom of the select component, for the md size variant
+        /// @name padding-bottom
+        /// @type size
+        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('md')});
+
+        /// The padding left of the select component, for the md size variant
+        /// @name padding-left
+        /// @type size
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
+
+        /// The padding bottom of the select component option, for the md size variant
+        /// @name option--padding-bottom
+        /// @type size
+        ----option--padding-bottom: calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('md')});
+
+        /// The padding left of the select component option, for the md size variant
+        /// @name option--padding-left
+        /// @type size
+        ----option--padding-left: calc(#{calc(var(----padding-left) / 2)} * #{size-multiplier('md')});
+
+        /// The padding bottom of the select component header, for the md size variant
+        /// @name header--padding-bottom
+        /// @type size
+        ----header--padding-bottom: calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('md')});
+
+        /// The padding left of the select component header, for the md size variant
+        /// @name header--padding-left
+        /// @type size
+        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('md')});
+
+        /// The padding bottom of the select component body, for the md size variant
+        /// @name body--padding-bottom
+        /// @type size
+        ----body--padding-bottom: calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('md')});
+
+        /// The padding left of the select component body, for the md size variant
+        /// @name body--padding-left
+        /// @type size
+        ----body--padding-left: calc(#{calc(var(----padding-left) / 2)} * #{size-multiplier('md')});
+
+        /// The padding bottom of the select component footer, for the md size variant
+        /// @name footer--padding-bottom
+        /// @type size
+        ----footer--padding-bottom: calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('md')});
+
+        /// The padding left of the select component footer, for the md size variant
+        /// @name footer--padding-left
+        /// @type size
+        ----footer--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('md')});
+    }
+
+    /// Variables for the lg color variant
+    /// @name lg
+    /// @type group
+    @include variant('lg', 'form') {
+        /// The border top left radius of the select component, for the lg size variant
+        /// @name border-top-left-radius
+        /// @type size
+        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')});
+
+        /// The border top right radius of the select component, for the lg size variant
+        /// @name border-top-right-radius
+        /// @type size
+        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')});
+
+        /// The border bottom right radius of the select component, for the lg size variant
+        /// @name border-bottom-right-radius
+        /// @type size
+        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')});
+
+        /// The border bottom left radius of the select component, for the lg size variant
+        /// @name border-bottom-left-radius
+        /// @type size
+        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')});
+
+        /// The font size of the select component, for the lg size variant
+        /// @name font-size
+        /// @type size
+        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
+
+        /// The margin top of the select component, for the lg size variant
+        /// @name margin-top
+        /// @type size
+        ----margin-top: calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier('lg')});
+
+        /// The margin right of the select component, for the lg size variant
+        /// @name margin-right
+        /// @type size
+        ----margin-right: calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier('lg')});
+
+        /// The margin bottom of the select component, for the lg size variant
+        /// @name margin-bottom
+        /// @type size
+        ----margin-bottom: calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier('lg')});
+
+        /// The margin left of the select component, for the lg size variant
+        /// @name margin-left
+        /// @type size
+        ----margin-left: calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier('lg')});
+
+        /// The padding top of the select component, for the lg size variant
+        /// @name padding-top
+        /// @type size
+        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('lg')});
+
+        /// The padding right of the select component, for the lg size variant
+        /// @name padding-right
+        /// @type size
+        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
+
+        /// The padding bottom of the select component, for the lg size variant
+        /// @name padding-bottom
+        /// @type size
+        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('lg')});
+
+        /// The padding left of the select component, for the lg size variant
+        /// @name padding-left
+        /// @type size
+        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
+
+        /// The padding bottom of the select component option, for the lg size variant
+        /// @name option--padding-bottom
+        /// @type size
+        ----option--padding-bottom: calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('lg')});
+
+        /// The padding left of the select component option, for the lg size variant
+        /// @name option--padding-left
+        /// @type size
+        ----option--padding-left: calc(#{calc(var(----padding-left) / 2)} * #{size-multiplier('lg')});
+
+        /// The padding bottom of the select component header, for the lg size variant
+        /// @name header--padding-bottom
+        /// @type size
+        ----header--padding-bottom: calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('lg')});
+
+        /// The padding left of the select component header, for the lg size variant
+        /// @name header--padding-left
+        /// @type size
+        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('lg')});
+
+        /// The padding bottom of the select component body, for the lg size variant
+        /// @name body--padding-bottom
+        /// @type size
+        ----body--padding-bottom: calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('lg')});
+
+        /// The padding left of the select component body, for the lg size variant
+        /// @name body--padding-left
+        /// @type size
+        ----body--padding-left: calc(#{calc(var(----padding-left) / 2)} * #{size-multiplier('lg')});
+
+        /// The padding bottom of the select component footer, for the lg size variant
+        /// @name footer--padding-bottom
+        /// @type size
+        ----footer--padding-bottom: calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('lg')});
+
+        /// The padding left of the select component footer, for the lg size variant
+        /// @name footer--padding-left
+        /// @type size
+        ----footer--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('lg')});
     }
 }

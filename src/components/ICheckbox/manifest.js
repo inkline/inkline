@@ -204,7 +204,7 @@ module.exports = {
             {
                 name: 'border-width',
                 description: 'The border width of the checkbox component indicator',
-                value: 'var(--border-width)'
+                value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
             },
             {
                 name: 'border-top-left-radius',

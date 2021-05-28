@@ -24,8 +24,10 @@
         font-size: var(----font-size);
 
         > * {
+            display: flex;
             flex: auto 1 0;
             align-self: stretch;
+            align-items: center;
             border-radius: 0;
             padding-left: var(----prefix-suffix--padding-left);
             padding-right: var(----prefix-suffix--padding-right);

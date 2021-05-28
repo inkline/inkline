@@ -1,85 +1,95 @@
-@mixin select-color-variant($color-variant-key) {
-    $_color: var(--select-color-variant-#{$color-variant-key}-color);
-    $_color-hover: var(--select-color-variant-#{$color-variant-key}-color-hover);
-    $_color-disabled: var(--select-color-variant-#{$color-variant-key}-color-disabled);
-    $_color-active: var(--select-color-variant-#{$color-variant-key}-color-active);
-    $_background: var(--select-color-variant-#{$color-variant-key}-background);
-    $_background-hover: var(--select-color-variant-#{$color-variant-key}-background-hover);
-    $_background-disabled: var(--select-color-variant-#{$color-variant-key}-background-disabled);
-    $_background-active: var(--select-color-variant-#{$color-variant-key}-background-active);
-    $_border-color: var(--select-color-variant-#{$color-variant-key}-border-color);
-    $_header-background: var(--select-color-variant-#{$color-variant-key}-header-background);
-    $_footer-background: var(--select-color-variant-#{$color-variant-key}-footer-background);
+/**
+ * Color variants
+ */
 
-    > .select {
-        color: $_color;
+.select-wrapper {
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light', 'form') {
+        /// The background of the select component, for the light color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('white')};
 
-        > .select-header {
-            border-color: $_border-color;
-            background-color: $_header-background;
-        }
+        /// The border-color of the select component, for the light color variant
+        /// @name border-color
+        /// @type color
+        ----border-color: #{color('light-55')};
 
-        > .select-body {
-            background-color: $_background;
-            border-color: $_border-color;
+        /// The color of the select component item, for the light color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-white)};
 
-            .select-option {
-                color: $_color;
-                border-color: $_border-color;
+        /// The background of the select component option when hovered or focused, for the light color variant
+        /// @name option--background--hover
+        /// @type color
+        ----option--background--hover: #{color('light-25')};
 
-                &:not(.-disabled):not(.-plaintext) {
-                    &:hover,
-                    &:focus {
-                        color: $_color-hover;
-                        background: $_background-hover;
-                    }
-                }
+        /// The background of the select component option when disabled, for the light color variant
+        /// @name option--background--disabled
+        /// @type color
+        ----option--background--disabled: #{transparent};
 
-                &.-disabled {
-                    color: $_color-disabled;
-                    background: $_background-disabled;
-                }
+        /// The color of the select component option when disabled, for the light color variant
+        /// @name option--color--disabled
+        /// @type color
+        ----option--color--disabled: #{color('light-65')};
 
-                &.-active {
-                    color: $_color-active;
-                    background: $_background-active;
-                }
-            }
+        /// The background of the select component header, for the light color variant
+        /// @name header--background
+        /// @type color
+        ----header--background: #{color('gray-05')};
 
-            .select-divider {
-                background-color: $_border-color;
-            }
-        }
-
-        > .select-footer {
-            border-color: $_border-color;
-            background-color: $_footer-background;
-        }
-
-        @include popup-arrow-color-variant-for-side('top', (
-            'background': $_footer-background,
-            'border-color': $_border-color
-        ));
-
-        @include popup-arrow-color-variant-for-side('bottom', (
-            'background': $_header-background,
-            'border-color': $_border-color
-        ));
-
-        @include popup-arrow-color-variant-for-side('left', (
-            'background': $_background,
-            'border-color': $_border-color
-        ));
-
-        @include popup-arrow-color-variant-for-side('right', (
-            'background': $_background,
-            'border-color': $_border-color
-        ));
+        /// The background of the select component footer, for the light color variant
+        /// @name footer--background
+        /// @type color
+        ----footer--background: #{color('gray-05')};
     }
 
-    .input-wrapper {
-        .select-caret {
-            background-color: $_color;
-        }
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark', 'form') {
+        /// The background of the select component, for the dark color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('dark')};
+
+        /// The border-color of the select component, for the dark color variant
+        /// @name border-color
+        /// @type color
+        ----border-color: #{color('dark-45')};
+
+        /// The color of the select component item, for the dark color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-dark)};
+
+        /// The background of the select component option when hovered or focused, for the dark color variant
+        /// @name option--background--hover
+        /// @type color
+        ----option--background--hover: #{color('dark-45')};
+
+        /// The background of the select component option when disabled, for the dark color variant
+        /// @name option--background--disabled
+        /// @type color
+        ----option--background--disabled: #{transparent};
+
+        /// The color of the select component option when disabled, for the dark color variant
+        /// @name option--color--disabled
+        /// @type color
+        ----option--color--disabled: #{color('dark-25')};
+
+        /// The background of the select component header, for the dark color variant
+        /// @name header--background
+        /// @type color
+        ----header--background: #{color('dark-55')};
+
+        /// The background of the select component footer, for the dark color variant
+        /// @name footer--background
+        /// @type color
+        ----footer--background: #{color('dark-55')};
     }
 }

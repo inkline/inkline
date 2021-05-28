@@ -65,7 +65,7 @@
 
     /// The border width of the radio component indicator
     /// @name border-width
-    ----border-width: #{var(--border-width)};
+    ----border-width: #{var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)};
 
     /// The border top left radius of the radio component indicator
     /// @name border-top-left-radius

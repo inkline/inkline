@@ -2,7 +2,6 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
-@import 'css/css';
 @import 'css/sizes';
 @import 'css/colors';
 
@@ -11,7 +10,7 @@
     position: relative;
 
     .select {
-        @include popup(('margin': var(--select-margin), 'z-index': var(--select-z-index)));
+        @include popup(('z-index': var(----z-index)));
         @include popup-arrow();
         @include popup-arrow-size-variant();
 
@@ -21,25 +20,62 @@
         background-clip: padding-box;
         display: inline-block;
         white-space: normal;
-        min-width: var(--select-min-width);
-        max-width: var(--select-max-width);
+        min-width: var(----min-width);
+        max-width: var(----max-width);
+        color: var(----color);
+        font-size: var(----font-size);
+        box-shadow: var(----box-shadow);
 
         > .select-header {
-            border-width: var(--select-border-width) var(--select-border-width) 0;
-            border-style: solid;
+            border-width: var(----header--border-width);
+            border-style: var(----header--border-style);
+            border-color: var(----header--border-color);
+            background-color: var(----header--background);
+            padding: var(----header--padding);
         }
 
         > .select-body {
-            border-width: var(--select-border-width);
-            border-style: solid;
-            max-height: 300px;
             overflow: auto;
+            border-width: var(----body--border-width);
+            border-style: var(----body--border-style);
+            border-color: var(----body--border-color);
+            background-color: var(----body--background);
+            padding: var(----body--padding);
+            max-height: var(----max-height);
 
             .select-option {
+                color: var(----option--color);
+                border-color: var(----option--border-color);
+                padding: var(----option--padding);
+                background: var(----option--background);
+                border-radius: var(----option--border-radius);
+
                 mark {
                     padding-left: 0;
                     padding-right: 0;
                 }
+
+                &:not(.-disabled):not(.-plaintext) {
+                    &:hover,
+                    &:focus {
+                        color: var(----option--color--hover);
+                        background: var(----option--background--hover);
+                    }
+                }
+
+                &.-disabled {
+                    color: var(----option--color--disabled);
+                    background: var(----option--background--disabled);
+                }
+
+                &.-active {
+                    color: var(----option--color--active);
+                    background: var(----option--background--active);
+                }
+            }
+
+            .select-divider {
+                background-color: var(----divider--border-color);
             }
 
             .select-no-results {
@@ -48,9 +84,42 @@
         }
 
         > .select-footer {
-            border-width: 0 var(--select-border-width) var(--select-border-width);
-            border-style: solid;
+            border-width: var(----footer--border-width);
+            border-style: var(----footer--border-style);
+            border-color: var(----footer--border-color);
+            background-color: var(----footer--background);
+            padding: var(----footer--padding);
         }
+
+        > *:nth-child(2) {
+            border-top-left-radius: var(----border-top-left-radius);
+            border-top-right-radius: var(----border-top-right-radius);
+        }
+
+        > *:last-child {
+            border-bottom-left-radius: var(----border-bottom-left-radius);
+            border-bottom-right-radius: var(----border-bottom-right-radius);
+        }
+
+        @include popup-arrow-color-variant-for-side('top', (
+            'background': var(----footer--background),
+            'border-color': var(----body--border-color)
+        ));
+
+        @include popup-arrow-color-variant-for-side('bottom', (
+            'background': var(----header--background),
+            'border-color': var(----body--border-color)
+        ));
+
+        @include popup-arrow-color-variant-for-side('left', (
+            'background': var(----body--background),
+            'border-color': var(----body--border-color)
+        ));
+
+        @include popup-arrow-color-variant-for-side('right', (
+            'background': var(----body--background),
+            'border-color': var(----body--border-color)
+        ));
     }
 
     .input-wrapper {
@@ -58,25 +127,15 @@
             margin-left: spacing();
         }
 
-        .select-caret {
+        .input-suffix > .select-caret {
             cursor: pointer;
             mask-image: url($ink-caret-down);
             mask-position: center center;
             mask-repeat: no-repeat;
-        }
-    }
-
-    @include select-size-variant('md');
-    @each $size-variant-key, $select-size-variant-value in $select-size-variants {
-        &.-#{$size-variant-key} {
-            @include select-size-variant($size-variant-key);
-        }
-    }
-
-    @include select-color-variant('light');
-    @each $color-variant-key, $color-variant-value in $select-color-variants {
-        &.-#{$color-variant-key} {
-            @include select-color-variant($color-variant-key);
+            background-color: var(----color);
+            height: var(----font-size);
+            width: var(----font-size);
+            mask-size: var(----font-size) var(----font-size);
         }
     }
 }

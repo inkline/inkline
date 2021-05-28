@@ -68,8 +68,6 @@ You can provide a custom header and footer for the select menu using the `header
 
 <example :component="examples.ISelectHeaderFooterExample" :html="examples.ISelectHeaderFooterExampleHTML" :js="examples.ISelectHeaderFooterExampleJS"></example>
 
-### Custom Label
-
 
 
 

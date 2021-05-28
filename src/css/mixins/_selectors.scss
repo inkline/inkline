@@ -2,8 +2,8 @@
 /// Component selector mixins
 ////
 
-@mixin i-radio {
-    .radio {
+@mixin i-sidebar {
+    .sidebar-wrapper {
         @content;
     }
 }
