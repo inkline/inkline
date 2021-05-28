@@ -1,10 +1,10 @@
-<div class="popover-wrapper" ref="wrapper" v-click-outside="onClickOutside" @keyup.esc="onEscape">
+<div class="popover-wrapper" :class="classes" ref="wrapper" v-click-outside="onClickOutside" @keyup.esc="onEscape">
     <div class="popover-trigger" ref="trigger">
         <slot />
     </div>
 
     <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
-        <div class="popover" ref="popup" :class="classes" v-show="visible">
+        <div class="popover" ref="popup" v-show="visible">
             <span data-popper-arrow v-if="arrow" />
             <div class="popover-header" v-if="$slots.header">
                 <slot name="header" />

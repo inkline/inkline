@@ -1,44 +1,65 @@
-@mixin popover-color-variant($color-variant-key) {
-    $_color: var(--popover-color-variant-#{$color-variant-key}-color);
-    $_background: var(--popover-color-variant-#{$color-variant-key}-background);
-    $_border-color: var(--popover-color-variant-#{$color-variant-key}-border-color);
-    $_header-background: var(--popover-color-variant-#{$color-variant-key}-header-background);
-    $_footer-background: var(--popover-color-variant-#{$color-variant-key}-footer-background);
+/**
+ * Color variants
+ */
 
-    color: $_color;
+.popover-wrapper {
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light') {
+        /// The background of the popover component, for the light color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('white')};
 
-    > .popover-header {
-        border-color: $_border-color;
-        background-color: $_header-background;
+        /// The border-color of the popover component, for the light color variant
+        /// @name border-color
+        /// @type color
+        ----border-color: #{color('light')};
+
+        /// The color of the popover component item, for the light color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-white)};
+
+        /// The background of the popover component header, for the light color variant
+        /// @name header--background
+        /// @type color
+        ----header--background: #{color('gray-05')};
+
+        /// The background of the popover component footer, for the light color variant
+        /// @name footer--background
+        /// @type color
+        ----footer--background: #{color('gray-05')};
     }
 
-    > .popover-body {
-        background-color: $_background;
-        border-color: $_border-color;
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark') {
+        /// The background of the popover component, for the dark color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('dark')};
+
+        /// The border-color of the popover component, for the dark color variant
+        /// @name border-color
+        /// @type color
+        ----border-color: #{color('dark-60')};
+
+        /// The color of the popover component item, for the dark color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-dark)};
+
+        /// The background of the popover component header, for the dark color variant
+        /// @name header--background
+        /// @type color
+        ----header--background: #{color('dark-55')};
+
+        /// The background of the popover component footer, for the dark color variant
+        /// @name footer--background
+        /// @type color
+        ----footer--background: #{color('dark-55')};
     }
-
-    > .popover-footer {
-        border-color: $_border-color;
-        background-color: $_footer-background;
-    }
-
-    @include popup-arrow-color-variant-for-side('top', (
-        'background': $_footer-background,
-        'border-color': $_border-color
-    ));
-
-    @include popup-arrow-color-variant-for-side('bottom', (
-        'background': $_header-background,
-        'border-color': $_border-color
-    ));
-
-    @include popup-arrow-color-variant-for-side('left', (
-        'background': $_background,
-        'border-color': $_border-color
-    ));
-
-    @include popup-arrow-color-variant-for-side('right', (
-        'background': $_background,
-        'border-color': $_border-color
-    ));
 }
