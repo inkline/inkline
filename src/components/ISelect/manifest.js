@@ -519,22 +519,22 @@ module.exports = {
             {
                 name: 'option--border-top-left-radius',
                 description: 'The border top left radius of the modal component',
-                value: 'var(----border-top-left-radius)'
+                value: '0'
             },
             {
                 name: 'option--border-top-right-radius',
                 description: 'The border top right radius of the modal component',
-                value: 'var(----border-top-right-radius)'
+                value: '0'
             },
             {
                 name: 'option--border-bottom-right-radius',
                 description: 'The border bottom right radius of the modal component',
-                value: 'var(----border-bottom-right-radius)'
+                value: '0'
             },
             {
                 name: 'option--border-bottom-left-radius',
                 description: 'The border bottom left radius of the modal component',
-                value: 'var(----border-bottom-left-radius)'
+                value: '0'
             },
             {
                 name: 'option--border-radius',
@@ -568,24 +568,24 @@ module.exports = {
             {
                 name: 'option--padding-top',
                 description: 'The padding top of the select component option',
-                value: 'calc(var(----padding-top) / 2)'
+                value: 'var(----padding-top)'
             },
             {
                 name: 'option--padding-right',
                 description: 'The padding right of the select component option',
-                value: 'calc(var(----padding-right) / 2)'
+                value: 'var(----padding-right)'
             },
             {
                 name: 'option--padding-bottom',
                 type: 'size',
                 description: 'The padding bottom of the select component option',
-                value: 'calc(var(----padding-bottom) / 2)'
+                value: 'var(----padding-bottom)'
             },
             {
                 name: 'option--padding-left',
                 type: 'size',
                 description: 'The padding left of the select component option',
-                value: 'calc(var(----padding-left) / 2)'
+                value: 'var(----padding-left)'
             },
             {
                 name: 'option--padding',
@@ -721,24 +721,24 @@ module.exports = {
             {
                 name: 'body--padding-top',
                 description: 'The padding top of the select component body',
-                value: 'calc(var(----padding-top) / 2)'
+                value: 'var(----padding-top)'
             },
             {
                 name: 'body--padding-right',
                 description: 'The padding right of the select component body',
-                value: 'calc(var(----padding-right) / 2)'
+                value: '0'
             },
             {
                 name: 'body--padding-bottom',
                 type: 'size',
                 description: 'The padding bottom of the select component body',
-                value: 'calc(var(----padding-bottom) / 2)'
+                value: 'var(----padding-bottom)'
             },
             {
                 name: 'body--padding-left',
                 type: 'size',
                 description: 'The padding left of the select component body',
-                value: 'calc(var(----padding-left) / 2)'
+                value: '0'
             },
             {
                 name: 'body--padding',

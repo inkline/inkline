@@ -187,19 +187,19 @@
 
     /// The border top left radius of the modal component
     /// @name option--border-top-left-radius
-    ----option--border-top-left-radius: #{var(----border-top-left-radius)};
+    ----option--border-top-left-radius: #{0};
 
     /// The border top right radius of the modal component
     /// @name option--border-top-right-radius
-    ----option--border-top-right-radius: #{var(----border-top-right-radius)};
+    ----option--border-top-right-radius: #{0};
 
     /// The border bottom right radius of the modal component
     /// @name option--border-bottom-right-radius
-    ----option--border-bottom-right-radius: #{var(----border-bottom-right-radius)};
+    ----option--border-bottom-right-radius: #{0};
 
     /// The border bottom left radius of the modal component
     /// @name option--border-bottom-left-radius
-    ----option--border-bottom-left-radius: #{var(----border-bottom-left-radius)};
+    ----option--border-bottom-left-radius: #{0};
 
     /// The border radius of the modal component
     /// @name option--border-radius
@@ -224,21 +224,21 @@
 
     /// The padding top of the select component option
     /// @name option--padding-top
-    ----option--padding-top: #{calc(var(----padding-top) / 2)};
+    ----option--padding-top: #{var(----padding-top)};
 
     /// The padding right of the select component option
     /// @name option--padding-right
-    ----option--padding-right: #{calc(var(----padding-right) / 2)};
+    ----option--padding-right: #{var(----padding-right)};
 
     /// The padding bottom of the select component option
     /// @name option--padding-bottom
     /// @type size
-    ----option--padding-bottom: #{calc(var(----padding-bottom) / 2)};
+    ----option--padding-bottom: #{var(----padding-bottom)};
 
     /// The padding left of the select component option
     /// @name option--padding-left
     /// @type size
-    ----option--padding-left: #{calc(var(----padding-left) / 2)};
+    ----option--padding-left: #{var(----padding-left)};
 
     /// The padding of the select component option
     /// @name option--padding
@@ -345,21 +345,21 @@
 
     /// The padding top of the select component body
     /// @name body--padding-top
-    ----body--padding-top: #{calc(var(----padding-top) / 2)};
+    ----body--padding-top: #{var(----padding-top)};
 
     /// The padding right of the select component body
     /// @name body--padding-right
-    ----body--padding-right: #{calc(var(----padding-right) / 2)};
+    ----body--padding-right: #{0};
 
     /// The padding bottom of the select component body
     /// @name body--padding-bottom
     /// @type size
-    ----body--padding-bottom: #{calc(var(----padding-bottom) / 2)};
+    ----body--padding-bottom: #{var(----padding-bottom)};
 
     /// The padding left of the select component body
     /// @name body--padding-left
     /// @type size
-    ----body--padding-left: #{calc(var(----padding-left) / 2)};
+    ----body--padding-left: #{0};
 
     /// The padding of the select component body
     /// @name body--padding
