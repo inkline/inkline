@@ -568,7 +568,7 @@ module.exports = {
             {
                 name: 'option--padding-top',
                 description: 'The padding top of the select component option',
-                value: 'var(----padding-top)'
+                value: 'calc(var(----padding-top) / 2)'
             },
             {
                 name: 'option--padding-right',
@@ -579,7 +579,7 @@ module.exports = {
                 name: 'option--padding-bottom',
                 type: 'size',
                 description: 'The padding bottom of the select component option',
-                value: 'var(----padding-bottom)'
+                value: 'calc(var(----padding-bottom) / 2)'
             },
             {
                 name: 'option--padding-left',

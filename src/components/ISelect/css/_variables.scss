@@ -224,7 +224,7 @@
 
     /// The padding top of the select component option
     /// @name option--padding-top
-    ----option--padding-top: #{var(----padding-top)};
+    ----option--padding-top: #{calc(var(----padding-top) / 2)};
 
     /// The padding right of the select component option
     /// @name option--padding-right
@@ -233,7 +233,7 @@
     /// The padding bottom of the select component option
     /// @name option--padding-bottom
     /// @type size
-    ----option--padding-bottom: #{var(----padding-bottom)};
+    ----option--padding-bottom: #{calc(var(----padding-bottom) / 2)};
 
     /// The padding left of the select component option
     /// @name option--padding-left

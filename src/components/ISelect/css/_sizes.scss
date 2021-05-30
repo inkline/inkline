@@ -75,7 +75,7 @@
         /// The padding bottom of the select component option, for the sm size variant
         /// @name option--padding-bottom
         /// @type size
-        ----option--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('sm')});
+        ----option--padding-bottom: calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('sm')});
 
         /// The padding left of the select component option, for the sm size variant
         /// @name option--padding-left
@@ -185,7 +185,7 @@
         /// The padding bottom of the select component option, for the md size variant
         /// @name option--padding-bottom
         /// @type size
-        ----option--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('md')});
+        ----option--padding-bottom: calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('md')});
 
         /// The padding left of the select component option, for the md size variant
         /// @name option--padding-left
@@ -295,7 +295,7 @@
         /// The padding bottom of the select component option, for the lg size variant
         /// @name option--padding-bottom
         /// @type size
-        ----option--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('lg')});
+        ----option--padding-bottom: calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('lg')});
 
         /// The padding left of the select component option, for the lg size variant
         /// @name option--padding-left
