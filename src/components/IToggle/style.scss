@@ -10,7 +10,7 @@
 .toggle {
     position: relative;
     margin-bottom: 0;
-    display: inline-block;
+    display: flex;
 
     > input {
         opacity: 0;

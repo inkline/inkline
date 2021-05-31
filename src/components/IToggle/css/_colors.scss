@@ -6,7 +6,7 @@
     /// Variables for the light color variant
     /// @name light
     /// @type group
-    @include variant('light') {
+    @include variant('light', 'form') {
         /// The background of the toggle component, for the light color variant
         /// @name background
         /// @type color
@@ -76,7 +76,7 @@
     /// Variables for the dark color variant
     /// @name dark
     /// @type group
-    @include variant('dark') {
+    @include variant('dark', 'form') {
         /// The background of the toggle component, for the dark color variant
         /// @name background
         /// @type color

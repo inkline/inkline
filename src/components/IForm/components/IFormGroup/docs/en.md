@@ -4,7 +4,7 @@ description: Forms are the main wrapper components for form elements, with power
 ---
 
 <script setup>
-import * as examples from '../examples';
+import * as examples from '../../examples';
 </script>
 
 

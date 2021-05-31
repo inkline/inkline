@@ -6,7 +6,7 @@
     /// Variables for the sm color variant
     /// @name sm
     /// @type group
-    @include variant('sm') {
+    @include variant('sm', 'form') {
         /// The width of the toggle component, for the sm size variant
         /// @name width
         /// @type size
@@ -56,7 +56,7 @@
     /// Variables for the md color variant
     /// @name md
     /// @type group
-    @include variant('md') {
+    @include variant('md', 'form') {
         /// The width of the toggle component, for the md size variant
         /// @name width
         /// @type size
@@ -106,7 +106,7 @@
     /// Variables for the lg color variant
     /// @name lg
     /// @type group
-    @include variant('lg') {
+    @include variant('lg', 'form') {
         /// The width of the toggle component, for the lg size variant
         /// @name width
         /// @type size

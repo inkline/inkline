@@ -90,6 +90,7 @@ module.exports = {
 	],
 	css: {
         selector: '.toggle',
+        type: 'form',
         defaults: {
             size: 'md',
             color: 'light'

@@ -48,22 +48,22 @@ module.exports = {
             {
                 name: 'margin-top',
                 description: 'The margin top of the form label component',
-                value: 'var(--margin-top)'
+                value: '0'
             },
             {
                 name: 'margin-right',
                 description: 'The margin right of the form label component',
-                value: 'var(--margin-right)'
+                value: '0'
             },
             {
                 name: 'margin-bottom',
                 description: 'The margin bottom of the form label component',
-                value: 'var(--margin-bottom)'
+                value: 'calc(var(--margin-bottom) / 4)'
             },
             {
                 name: 'margin-left',
                 description: 'The margin left of the form label component',
-                value: 'var(--margin-left)'
+                value: '0'
             },
             {
                 name: 'margin',

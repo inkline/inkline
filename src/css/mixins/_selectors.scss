@@ -99,7 +99,7 @@
 }
 
 @mixin i-undefined {
-    form-group {
+    .form-group {
         @content;
     }
 }

@@ -44,11 +44,6 @@
                     Forms
                 </li>
                 <li>
-                    <router-link :to="{ name: 'docs-forms-form' }">
-                        Form
-                    </router-link>
-                </li>
-                <li>
                     <router-link :to="{ name: 'docs-forms-checkbox' }">
                         Checkbox
                     </router-link>
@@ -106,6 +101,26 @@
                 <li>
                     <router-link :to="{ name: 'docs-forms-toggle' }">
                         Toggle
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-form' }">
+                        Form
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-form-group' }">
+                        Form Group
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-form-label' }">
+                        Form Label
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-forms-form-validation' }">
+                        Form Validation
                     </router-link>
                 </li>
                 <li>
