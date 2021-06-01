@@ -38,6 +38,11 @@ module.exports = {
 	],
     css: {
         selector: '.form-label',
+        type: 'form',
+        defaults: {
+            size: 'md',
+            color: 'light'
+        },
         variables: [
             {
                 name: 'font-size',

@@ -58,7 +58,7 @@ export default {
                 return;
             }
 
-            this.$el.nextSibling.querySelector('input')?.focus();
+            this.$el.nextSibling.querySelector('input, textarea')?.focus();
         }
     }
 };

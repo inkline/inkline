@@ -1,35 +1,43 @@
 ---
-title: Form
-description: Forms are the main wrapper components for form elements, with powerful customization and validation options. 
+title: Form Group
+description: Form groups are the easiest way to add structure and spacing to form elements. 
 ---
 
 <script setup>
-import * as examples from '../../examples';
+import * as examples from '../examples';
 </script>
 
+# Form Group
+## Form groups are the easiest way to add structure and spacing to form elements. 
 
+### Example
+The `<i-form-group>` component is a wrapper that provides proper grouping of labels, input, help text, and form validation messaging. By default, form groups add spacing between them.
 
-# Form
-## Forms are the main wrapper components for form elements, with powerful customization and validation options. 
-
-### Basic Example
-
-The `<i-form>` component is a wrapper that provides proper handling of form validation and form grouping. You can use the `@submit` handler for the submit event.
-
-<example :component="examples.IFormBasicExample" :html="examples.IFormBasicExampleHTML" :js="examples.IFormBasicExampleJS"></example>
+<example :component="examples.IFormGroupBasicExample" :html="examples.IFormGroupBasicExampleHTML" :js="examples.IFormGroupBasicExampleJS"></example>
 
 ### Disabled State
-Setting a form as `disabled` will cause all of its child inputs to be disabled.
+Setting a form group as `disabled` will cause all of its child form components to be disabled.
 
-<example :component="examples.IFormDisabledExample" :html="examples.IFormDisabledExampleHTML" :js="examples.IFormDisabledExampleJS"></example>
+<example :component="examples.IFormGroupDisabledExample" :html="examples.IFormGroupDisabledExampleHTML" :js="examples.IFormGroupDisabledExampleJS"></example>
 
 ### Sizes
-You're able to use the `size` modifier to control the size of the components inside your `<i-form>`, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
+You're able to use the `size` modifier to control the size of the form components inside your `<i-form-group>`, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
 
-All of the components inside the `<i-form>` will inherit the parent form group's size.
+All of the components inside the `<i-form-group>` will inherit the parent form group's size.
 
-<example :component="examples.IFormSizeVariantsSmExample" :html="examples.IFormSizeVariantsSmExampleHTML" :js="examples.IFormSizeVariantsSmExampleJS"></example>
+<example :component="examples.IFormGroupSizeVariantsSmExample" :html="examples.IFormGroupSizeVariantsSmExampleHTML" :js="examples.IFormGroupSizeVariantsSmExampleJS"></example>
 
-<example :component="examples.IFormSizeVariantsMdExample" :html="examples.IFormSizeVariantsMdExampleHTML" :js="examples.IFormSizeVariantsMdExampleJS"></example>
+<example :component="examples.IFormGroupSizeVariantsMdExample" :html="examples.IFormGroupSizeVariantsMdExampleHTML" :js="examples.IFormGroupSizeVariantsMdExampleJS"></example>
 
-<example :component="examples.IFormSizeVariantsLgExample" :html="examples.IFormSizeVariantsLgExampleHTML" :js="examples.IFormSizeVariantsLgExampleJS"></example>
+<example :component="examples.IFormGroupSizeVariantsLgExample" :html="examples.IFormGroupSizeVariantsLgExampleHTML" :js="examples.IFormGroupSizeVariantsLgExampleJS"></example>
+
+### Form Group Nesting
+You can nest form groups in order to control the `disabled`, `readonly` and `size` properties of multiple form components at once. All the child inputs of the parent form group will inherit the property.
+
+<example :component="examples.IFormGroupNestingExample" :html="examples.IFormGroupNestingExampleHTML" :js="examples.IFormGroupNestingExampleJS"></example>
+
+<example :component="examples.IFormGroupNestingDisabledExample" :html="examples.IFormGroupNestingDisabledExampleHTML" :js="examples.IFormGroupNestingDisabledExampleJS"></example>
+
+<example :component="examples.IFormGroupNestingReadonlyExample" :html="examples.IFormGroupNestingReadonlyExampleHTML" :js="examples.IFormGroupNestingReadonlyExampleJS"></example>
+
+<example :component="examples.IFormGroupNestingSizeVariantsLgExample" :html="examples.IFormGroupNestingSizeVariantsLgExampleHTML" :js="examples.IFormGroupNestingSizeVariantsLgExampleJS"></example>
