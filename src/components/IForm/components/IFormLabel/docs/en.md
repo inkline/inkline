@@ -1,35 +1,31 @@
 ---
-title: Form
-description: Forms are the main wrapper components for form elements, with powerful customization and validation options. 
+title: Form Label
+description: Form component used to add text labels to form groups. 
 ---
 
 <script setup>
 import * as examples from '../examples';
 </script>
 
-
-
-# Form
-## Forms are the main wrapper components for form elements, with powerful customization and validation options. 
+# Form Label
+## Form component used to add text labels to form groups. 
 
 ### Basic Example
+You can add a label to your input by grouping an `<i-form-label>` and any input component inside an `<i-form-group>`. 
 
-The `<i-form>` component is a wrapper that provides proper handling of form validation and form grouping. You can use the `@submit` handler for the submit event.
+<example :component="examples.IFormLabelBasicExample" :html="examples.IFormLabelBasicExampleHTML" :js="examples.IFormLabelBasicExampleJS"></example>
 
-<example :component="examples.IFormBasicExample" :html="examples.IFormBasicExampleHTML" :js="examples.IFormBasicExampleJS"></example>
+### Required Example
+You can add the `required` property to a parent form group to add a red asterisk `*` to the form label. 
 
-### Disabled State
-Setting a form as `disabled` will cause all of its child inputs to be disabled.
+<example :component="examples.IFormLabelRequiredExample" :html="examples.IFormLabelRequiredExampleHTML" :js="examples.IFormLabelRequiredExampleJS"></example>
 
-<example :component="examples.IFormDisabledExample" :html="examples.IFormDisabledExampleHTML" :js="examples.IFormDisabledExampleJS"></example>
+### Placement
+You can add labels to either side of your input, and position it using the optional `inline` form group and `placement` form label properties.
 
-### Sizes
-You're able to use the `size` modifier to control the size of the components inside your `<i-form>`, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
+<example :component="examples.IFormLabelPlacementExample" :html="examples.IFormLabelPlacementExampleHTML" :js="examples.IFormLabelPlacementExampleJS"></example>
 
-All of the components inside the `<i-form>` will inherit the parent form group's size.
+### Size
+You're able to use the `size` property to control the size of your form labels, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. Setting the size on a `<i-form-group>` will also affect form labels.
 
-<example :component="examples.IFormSizeVariantsSmExample" :html="examples.IFormSizeVariantsSmExampleHTML" :js="examples.IFormSizeVariantsSmExampleJS"></example>
-
-<example :component="examples.IFormSizeVariantsMdExample" :html="examples.IFormSizeVariantsMdExampleHTML" :js="examples.IFormSizeVariantsMdExampleJS"></example>
-
-<example :component="examples.IFormSizeVariantsLgExample" :html="examples.IFormSizeVariantsLgExampleHTML" :js="examples.IFormSizeVariantsLgExampleJS"></example>
+<example :component="examples.IFormLabelSizeVariantsExample" :html="examples.IFormLabelSizeVariantsExampleHTML" :js="examples.IFormLabelSizeVariantsExampleJS"></example>

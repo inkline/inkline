@@ -62,6 +62,15 @@ export default {
             default: false
         },
         /**
+         * @description The required state of the form group
+         * @type Boolean
+         * @default false
+         */
+        required: {
+            type: Boolean,
+            default: false
+        },
+        /**
          * @description The size variant of the form group
          * @type sm | md | lg
          * @default md
@@ -86,7 +95,7 @@ export default {
                 '-readonly': this.isReadonly,
                 '-inline': this.inline,
                 // @TODO '-error': this.input && this.input.schema?.$invalid,
-                // @TODO '-required': this.input.schema?.validators.some(v => v.name === 'required')
+               '-required': this.required // @TODO Add required state based on required validator this.input.schema?.validators.some(v => v.name === 'required')
             }
         }
     },

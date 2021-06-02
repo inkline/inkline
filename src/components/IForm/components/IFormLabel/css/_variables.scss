@@ -14,7 +14,7 @@
 
     /// The margin right of the form label component
     /// @name margin-right
-    ----margin-right: #{0};
+    ----margin-right: #{var(--margin-right)};
 
     /// The margin bottom of the form label component
     /// @name margin-bottom
@@ -22,9 +22,5 @@
 
     /// The margin left of the form label component
     /// @name margin-left
-    ----margin-left: #{0};
-
-    /// The margin of the form label component
-    /// @name margin
-    ----margin: #{var(----margin-top) var(----margin-right) var(----margin-bottom) var(----margin-left)};
+    ----margin-left: #{var(--margin-left)};
 }

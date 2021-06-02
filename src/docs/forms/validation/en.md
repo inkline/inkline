@@ -16,7 +16,7 @@ import * as examples from './examples';
 
 The `<i-form>` component is a wrapper that provides proper handling of form validation and form grouping. As you would expect, you can use the `@submit` handler for the submit event.
 
-<example :component="examples.IFormBasicExample" :html="examples.IFormBasicExampleHTML" :js="examples.IFormBasicExampleJS"></example>
+<example :component="examples.IFormValidationBasicExample" :html="examples.IFormValidationBasicExampleHTML" :js="examples.IFormValidationBasicExampleJS"></example>
 
 <!--
 ### Disabled State

@@ -12,29 +12,30 @@
     flex-basis: 100%;
     transition: color var(--transition-easing) var(--transition-duration);
     font-size: var(----font-size);
-    margin: var(----margin);
+    margin-top: var(----margin-top);
+    margin-bottom: var(----margin-bottom);
 
     &.-right {
         margin-right: 0;
         order: 1;
     }
 
-    &.-error > .form-label {
+    .form-group.-required > & {
+        &::after {
+            color: var(--color-danger);
+            content: ' *';
+        }
+    }
+
+    .form-group.-error > & {
         color: var(--color-danger);
     }
 
-    &.-inline > .form-label {
+    .form-group.-inline > & {
         margin-right: var(----margin-right);
 
         &.-right {
             margin-left: var(----margin-left);
-        }
-    }
-
-    &.-required > .form-label {
-        &::after {
-            color: var(--color-danger);
-            content: ' *';
         }
     }
 }

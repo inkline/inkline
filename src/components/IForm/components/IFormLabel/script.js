@@ -53,12 +53,15 @@ export default {
         }
     },
     methods: {
+        getNextSibling() {
+            return this.$el.nextSibling.querySelector('input, textarea');
+        },
         onClick() {
             if (this.for) {
                 return;
             }
 
-            this.$el.nextSibling.querySelector('input, textarea')?.focus();
+            this.getNextSibling()?.focus();
         }
     }
 };
