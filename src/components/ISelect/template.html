@@ -44,19 +44,19 @@
                 <slot name="header" />
             </div>
             <div class="select-body" ref="body" @scroll="onScroll">
-                <div class="select-no-results" v-if="options.length === 0">
+                <div class="select-no-results" v-if="!$slots.default && options.length === 0">
                     <slot name="no-results">
                         There are no results for your query.
                     </slot>
                 </div>
                 <div class="select-options" ref="options">
+                    <slot />
                     <i-select-option
                         v-for="option in options"
                         :key="option[idField]"
                         :active="value && value[idField] === option[idField]"
                         :disabled="option.disabled"
                         :value="option"
-                        @click="onInput(option)"
                         @keydown="onItemKeyDown"
                     >
                         <slot name="option" :option="option">

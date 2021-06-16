@@ -191,11 +191,11 @@ export default {
         },
         /**
          * @description Used to set the field value
-         * @type Object
+         * @type Object | String | Number
          * @default null
          */
         modelValue: {
-            type: Object,
+            type: [Object, String, Number],
             default: null
         },
         /**
@@ -378,12 +378,16 @@ export default {
          * focusing and blurring the input elements.
          */
 
-        onInput(option) {
+        onInput(option, label) {
             if (option.disabled) {
                 return;
             }
 
             this.hide();
+
+            if (label) {
+                this.inputValue = label;
+            }
 
             this.parent.onInput?.(this.name, option);
             this.$emit('update:modelValue', option);
@@ -636,6 +640,10 @@ export default {
             return this.inputMatchesLength(value) && !this.inputMatchesLabel(value);
         },
         computeLabel(option) {
+            if (typeof option !== 'object') {
+                return this.inputValue;
+            }
+
             return isFunction(this.label)
                 ? this.label(option)
                 : getValueByPath(option, this.label);

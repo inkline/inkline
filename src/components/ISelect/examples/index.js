@@ -25,6 +25,9 @@ export { default as ISelectDisabledOptionExampleJS } from './disabled-option.js?
 export { default as ISelectHeaderFooterExample } from './header-and-footer.vue';
 export { default as ISelectHeaderFooterExampleHTML } from './header-and-footer.html';
 export { default as ISelectHeaderFooterExampleJS } from './header-and-footer.js?raw';
+export { default as ISelectMarkupExample } from './markup.vue';
+export { default as ISelectMarkupExampleHTML } from './markup.html';
+export { default as ISelectMarkupExampleJS } from './markup.js?raw';
 export { default as ISelectSizeVariantsExample } from './size-variants.vue';
 export { default as ISelectSizeVariantsExampleHTML } from './size-variants.html';
 export { default as ISelectSizeVariantsExampleJS } from './size-variants.js?raw';

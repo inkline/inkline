@@ -6,6 +6,9 @@
     :disabled="disabled"
     :aria-disabled="disabled"
     :aria-pressed="active"
+    @click="onClick"
 >
-    <slot />
+    <slot>
+        {{ label }}
+    </slot>
 </div>

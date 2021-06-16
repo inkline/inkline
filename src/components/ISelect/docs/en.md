@@ -68,6 +68,10 @@ You can provide a custom header and footer for the select menu using the `header
 
 <example :component="examples.ISelectHeaderFooterExample" :html="examples.ISelectHeaderFooterExampleHTML" :js="examples.ISelectHeaderFooterExampleJS"></example>
 
+### Markup Example
+The old way to write the select input is still viable, although it doesn't support the more advanced features that the Inkline 3 Select has to offer.
+
+<example :component="examples.ISelectMarkupExample" :html="examples.ISelectMarkupExampleHTML" :js="examples.ISelectMarkupExampleJS"></example>
 
 
 
