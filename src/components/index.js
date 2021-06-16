@@ -43,6 +43,7 @@ export { default as IRadio } from '@inkline/inkline/src/components/IRadio/index.
 export * from '@inkline/inkline/src/components/IRadio/components';
 export { default as IRow } from '@inkline/inkline/src/components/IRow/index.vue';
 export { default as ISelect } from '@inkline/inkline/src/components/ISelect/index.vue';
+export * from '@inkline/inkline/src/components/ISelect/components';
 export { default as ISidebar } from '@inkline/inkline/src/components/ISidebar/index.vue';
 export { default as ITable } from '@inkline/inkline/src/components/ITable/index.vue';
 export { default as Tabs } from '@inkline/inkline/src/components/ITabs/index.vue';

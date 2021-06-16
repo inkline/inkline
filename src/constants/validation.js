@@ -1,4 +1,6 @@
 export const defaultValidationValues = {
+    value: '',
+    validators: [],
     pristine: true,
     dirty: false,
     untouched: true,
@@ -11,11 +13,11 @@ export const defaultValidationValues = {
 export const reservedValidationFields = [
     'value',
     'validators',
+    'pristine',
+    'dirty',
+    'untouched',
+    'touched',
     'valid',
     'invalid',
-    'touched',
-    'untouched',
-    'dirty',
-    'pristine',
     'errors'
 ];

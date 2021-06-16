@@ -1,4 +1,4 @@
-import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
+import {getValueByPath} from "@inkline/inkline/src/helpers";
 
 /**
  * @name default
@@ -8,36 +8,62 @@ import { FormBuilder } from "@inkline/inkline/src/factories/FormBuilder";
 
 export default {
     name: 'IFormError',
-    props: {
-        schema: {
-            type: Object,
-            default: () => null
+    inject: {
+        formGroup: {
+            default: () => ({})
+        },
+        form: {
+            default: () => ({})
         }
     },
-    data() {
-        return {
-            errors: []
-        };
-    },
-    watch: {
-        ['schema.' + FormBuilder.keys.INVALID] (invalid) {
-            if (invalid) {
-                this.errors = Object.keys(this.schema[FormBuilder.keys.ERRORS])
-                    .filter((key) => key !== 'length')
-                    .map((key) => this.schema[FormBuilder.keys.ERRORS][key]);
-            } else {
-                this.errors = [];
-            }
+    props: {
+        /**
+         * @description The schema path of the target input to show the errors for.
+         * @type String
+         * @default
+         */
+        for: {
+            type: String,
+            default: ''
+        },
+        /**
+         * @description Set the validation statuses for which the form error should be visible.
+         * @type Array
+         * @default ['touched', 'dirty']
+         */
+        visible: {
+            type: Array,
+            default: () => ['touched', 'dirty']
         }
     },
     computed: {
-        hasErrors() {
-            return this.schema[FormBuilder.keys.ERRORS] && this.schema[FormBuilder.keys.ERRORS].length > 0
-        }
-    },
-    methods: {
-        clearErrors() {
-            this.errors = [];
+        parent() {
+            if (this.formGroup.$) {
+                return this.formGroup;
+            }
+
+            return this.form;
+        },
+        schema() {
+            if (this.for !== '') {
+                return getValueByPath(this.parent.schema || {}, `${this.for}`);
+            }
+
+            return this.parent.schema || {};
+        },
+        errors() {
+            return this.schema.errors || [];
+        },
+        isVisible() {
+            let visible = true;
+
+            if (this.schema && this.visible) {
+                this.visible.forEach((status) => {
+                    visible = visible && this.schema[status];
+                });
+            }
+
+            return visible;
         }
     }
 };

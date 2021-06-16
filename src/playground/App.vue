@@ -118,10 +118,16 @@
                         Form Label
                     </router-link>
                 </li>
+
                 <li>
-                    <router-link :to="{ name: 'docs-forms-form-validation' }">
-                        Form Validation
-                    </router-link>
+                    Form Validation
+                    <ul>
+                        <li>
+                            <router-link :to="{ name: 'docs-forms-form-validation' }">
+                                Overview
+                            </router-link>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     Components

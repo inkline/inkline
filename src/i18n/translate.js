@@ -11,6 +11,6 @@ export function translate(path, params) {
     const string = getValueByPath(i18n.messages[i18n.locale], path)?.(params) || path;
 
     return Object.keys(params).reduce((acc, key) => {
-        return acc.replace(new RegExp(`{${key}}`, 'g'), params[key].toString());
+        return acc.replace(new RegExp(`{${key}}`, 'g'), `${params[key]}`);
     }, string);
 }

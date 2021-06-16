@@ -25,7 +25,7 @@ export default {
         },
         schema() {
             if (this.name !== '') {
-                return getValueByPath(this.parent.schema || {}, this.name.toString());
+                return getValueByPath(this.parent.schema || {}, `${this.name}`);
             }
 
             return this.parent.schema || {};

@@ -17,15 +17,15 @@ export function validateFormInput(schema, path = '') {
             ? { name: validator }
             : validator;
 
-        const valid = validators[validator.name](schema.value, validator);
+        const valid = validators[validator.name](schema.value || '', validator);
         if (!valid) {
             const { name, message, ...params } = validator;
-
             const i18nParams = {
                 name: path.split('.').pop(),
                 value: schema.value,
                 ...params
             };
+
             const errorMessage = (message instanceof Function ? message() : message)
                 || translate(`validation.${name}`, i18nParams);
 

@@ -1,5 +1,5 @@
-<transition name="fade-in-transition" @after-leave="clearErrors()" v-if="schema">
-    <ul class="form-group-error" v-if="hasErrors">
-        <li v-for="error in errors">{{ error }}</li>
+<transition name="fade-in-transition" v-if="schema" v-show="isVisible">
+    <ul class="form-group-error" v-if="errors.length > 0">
+        <li v-for="error in errors">{{ error.message }}</li>
     </ul>
 </transition>
