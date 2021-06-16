@@ -1,453 +1,156 @@
 ---
 title: Form Validation
-description: Forms are the main wrapper components for form elements, with powerful customization and validation options. 
+description: Inkline provides you with powerful form validation utilities. 
 ---
 
 <script setup>
 import * as examples from './examples';
 </script>
 
+# Form Validation
+## Inkline provides you with powerful form validation utilities. 
 
+The built-in Form Validation package allows you to define a form validation schema which you will bind to your form components. 
 
-# Form
-## Forms are the main wrapper components for form elements, with powerful customization and validation options. 
+Using this declarative approach has several advantages and allows for easy and intuitive form validation:
+- centralized form validation schema
+- programmatically customizable and extendable
+- schema nesting and nested form validation
+- built-in validation status propagation
+- clean template markup
 
 ### Basic Example
+Let's create a basic login form that has a `username` and a `password` field. Validation for this kind of form is usually a headache, but Inkline makes it simple for you. Basic validation for these fields usually includes:
+- The username is required
+- The password is required
+- The password is at least 8 characters long
+- The password contains at least one uppercase character
+- The password contains at least one lowercase character 
+- The password contains at least one numeric character 
+- The password contains at least one symbol
 
-The `<i-form>` component is a wrapper that provides proper handling of form validation and form grouping. As you would expect, you can use the `@submit` handler for the submit event.
+#### 1. Defining the form schema
+First, we'll create our schema with two fields: `username` and `password`. The form validation schema prototype is available for both the Options API and the new Composition API. Choose the one that you prefer. 
 
-<example :component="examples.IFormValidationBasicExample" :html="examples.IFormValidationBasicExampleHTML" :js="examples.IFormValidationBasicExampleJS"></example>
-
-<!--
-### Disabled State
-Setting a form as `disabled` will cause all of its child inputs to be disabled.
-
-
-<i-code title="Disabled Form">
-<i-tab type="preview">
-    <i-form disabled>
-        <i-form-group>
-            <i-form-label>Disabled Input</i-form-label>
-            <i-input v-model="inputDisabled" placeholder="Type something.." />
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Disabled Textarea</i-form-label>
-            <i-textarea v-model="textareaDisabled" placeholder="Write a comment.." />
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Disabled Select</i-form-label>
-            <i-select v-model="selectDisabled" placeholder="Choose an option">
-                <i-select-option value="a" label="Option A" />
-                <i-select-option value="b" label="Option B" />
-                <i-select-option value="c" label="Option C" disabled/>
-            </i-select>
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Disabled Checkbox</i-form-label>
-            <i-checkbox-group v-model="checkboxDisabled">
-                <i-checkbox value="Football">Football</i-checkbox>
-                <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-                <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-            </i-checkbox-group>
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Disabled Radio</i-form-label>
-            <i-radio-group v-model="radioDisabled">
-                <i-radio value="Accept">Accept</i-radio>
-                <i-radio value="Decline">Decline</i-radio>
-            </i-radio-group>
-        </i-form-group>
-        <i-form-group>
-            <i-button type="submit">Submit</i-button>
-        </i-form-group>
-    </i-form>
-</i-tab>
-<i-tab type="html">
-
-~~~html
-<i-form disabled>
-    <i-form-group>
-        <i-form-label>Disabled Input</i-form-label>
-        <i-input v-model="input" placeholder="Type something.." />
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Disabled Textarea</i-form-label>
-        <i-textarea v-model="textarea" placeholder="Write a comment.." />
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Disabled Select</i-form-label>
-        <i-select v-model="select" placeholder="Choose an option">
-            <i-select-option value="a" label="Option A" />
-            <i-select-option value="b" label="Option B" />
-            <i-select-option value="c" label="Option C" disabled />
-        </i-select>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Disabled Checkbox</i-form-label>
-        <i-checkbox-group v-model="checkbox">
-            <i-checkbox value="Football">Football</i-checkbox>
-            <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-            <i-checkbox value="Tennis">Tennis</i-checkbox>
-        </i-checkbox-group>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Disabled Radio</i-form-label>
-        <i-radio-group v-model="radio">
-            <i-radio value="Accept">Accept</i-radio>
-            <i-radio value="Decline">Decline</i-radio>
-        </i-radio-group>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-button type="submit">Submit</i-button>
-    </i-form-group>
-</i-form>
-~~~
-
-</i-tab>
-<i-tab type="js">
+##### a. Options API
+The form schema prototype will created using `this.$inkline.form` inside components and will be used as the foundation for form validation schemas.
 
 ~~~js
 export default {
-  data () {
-    return {
-      input: '',
-      textarea: '',
-      select: '',
-      checkbox: ['Football'],
-      radio: 'Decline'
-    };
-  }
-}
+    data() {
+        const schema = {
+            username: {},
+            password: {},
+        };
+
+        return {
+            form: this.$inkline.form(schema)
+        };   
+    }       
+}       
+~~~
+ 
+##### b. Composition API 
+
+The form schema prototype is created using the `useForm` utility inside components and will be used as the foundation for form validation schemas.
+
+~~~js
+import { useForm } from '@inkline/inkline/src/composition-api';
+
+export default {
+    setup() {
+        const schema = {
+            username: {},
+            password: {},
+        };
+        const form = useForm(schema);
+
+        return {
+            form
+        };   
+    }       
+}       
 ~~~
 
-</i-tab>
-</i-code>
+#### 2. Connecting the schema to the form components
 
-### Sizes
-You're able to use the `size` modifier to control the size of the components inside your `<i-form>`, using one of the available sizes: `sm`, `md`, and `lg`. The default size is set to `md`. 
+Next, the created `form` object needs to be bound to the form input components inside your template as follows:
+ - The form component handles field value changes using the `v-model` directive
+ - Each field name inside the defined schema connects to an input using the `name` property in your template
 
-All of the components inside the `<i-form>` will inherit the parent form group's size.
+<example :component="examples.IFormValidationBasicBindingExample" :html="examples.IFormValidationBasicBindingExampleHTML" :js="examples.IFormValidationBasicBindingExampleJS"></example>
 
+For the example above, `this.form.username` and `this.form.password` would be objects containing the field value, errors and validation statuses.
 
-<i-code title="Small Form Size">
-<i-tab type="preview">
-    <i-form size="sm">
-        <i-form-group>
-            <i-form-label>Input</i-form-label>
-            <i-input v-model="inputSizeSm" placeholder="Type something.." />
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Textarea</i-form-label>
-            <i-textarea v-model="textareaSizeSm" placeholder="Write a comment.." />
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Select</i-form-label>
-            <i-select v-model="selectSizeSm" placeholder="Choose an option">
-                <i-select-option value="a" label="Option A" />
-                <i-select-option value="b" label="Option B" />
-                <i-select-option value="c" label="Option C" disabled />
-            </i-select>
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Checkbox</i-form-label>
-            <i-checkbox-group v-model="checkboxSizeSm">
-                <i-checkbox value="Football">Football</i-checkbox>
-                <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-                <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-            </i-checkbox-group>
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Radio</i-form-label>
-            <i-radio-group v-model="radioSizeSm">
-                <i-radio value="Accept">Accept</i-radio>
-                <i-radio value="Decline">Decline</i-radio>
-            </i-radio-group>
-        </i-form-group>
-        <i-form-group>
-            <i-button type="submit">Submit</i-button>
-        </i-form-group>
-    </i-form>
-</i-tab>
-<i-tab type="html">
+#### 3. Adding the field validators
 
-~~~html
-<i-form size="sm">
-    <i-form-group>
-        <i-form-label>Input</i-form-label>
-        <i-input v-model="input" placeholder="Type something.." />
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Textarea</i-form-label>
-        <i-textarea v-model="textarea" placeholder="Write a comment.." />
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Select</i-form-label>
-        <i-select v-model="select" placeholder="Choose an option">
-            <i-select-option value="a" label="Option A" />
-            <i-select-option value="b" label="Option B" />
-            <i-select-option value="c" label="Option C" disabled />
-        </i-select>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Checkbox</i-form-label>
-        <i-checkbox-group v-model="checkbox">
-            <i-checkbox value="Football">Football</i-checkbox>
-            <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-            <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-        </i-checkbox-group>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Radio</i-form-label>
-        <i-radio-group v-model="radio">
-            <i-radio value="Accept">Accept</i-radio>
-            <i-radio value="Decline">Decline</i-radio>
-        </i-radio-group>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-button type="submit">Submit</i-button>
-    </i-form-group>
-</i-form>
-~~~
-
-</i-tab>
-<i-tab type="js">
+Next, let's add the previously mentioned validators to the created form schema:
 
 ~~~js
 export default {
-  data () {
-    return {
-      input: '',
-      textarea: '',
-      select: '',
-      checkbox: ['Football'],
-      radio: 'Decline'
-    };
-  }
-}
+    data() {
+        const schema = {
+            username: {
+                validators: [
+                    { 
+                        name: 'required' 
+                    }
+                ]
+            },
+            password: {
+                validators: [
+                    { 
+                        name: 'required' 
+                    },
+                    { 
+                        name: 'minLength', 
+                        value: 8 
+                    },
+                    {
+                        name: 'custom', // lowercase
+                        message: 'Please enter at least one lowercase character.',
+                        validator: (v) => /[a-z]/.test(v)
+                    },
+                    {
+                        name: 'custom', // uppercase
+                        message: 'Please enter at least one uppercase character.',
+                        validator: (v) => /[A-Z]/.test(v)
+                    },
+                    {
+                        name: 'custom', // numeric
+                        message: 'Please enter at least one numeric character.',
+                        validator: (v) => /[0-9]/.test(v)
+                    },
+                    {
+                        name: 'custom', // symbol
+                        message: 'Please enter at least one symbol.',
+                        validator: (v) => /[^a-zA-Z0-9]/.test(v)
+                    }
+                ]
+            }
+        };
+
+        return {
+            form: this.$inkline.form(schema)
+        };   
+    }       
+}       
 ~~~
 
-</i-tab>
-</i-code>
+<example :component="examples.IFormValidationBasicValidatorsExample" :html="examples.IFormValidationBasicValidatorsExampleHTML" :js="examples.IFormValidationBasicValidatorsExampleJS"></example>
 
+You can also register custom validators for your form schema.
 
-<i-code title="Medium Form Size">
-<i-tab type="preview">
-    <i-form size="md">
-        <i-form-group>
-            <i-form-label>Input</i-form-label>
-            <i-input v-model="inputSizeMd" placeholder="Type something.." />
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Textarea</i-form-label>
-            <i-textarea v-model="textareaSizeMd" placeholder="Write a comment.." />
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Select</i-form-label>
-            <i-select v-model="selectSizeMd" placeholder="Choose an option">
-                <i-select-option value="a" label="Option A" />
-                <i-select-option value="b" label="Option B" />
-                <i-select-option value="c" label="Option C" disabled />
-            </i-select>
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Checkbox</i-form-label>
-            <i-checkbox-group v-model="checkboxSizeMd">
-                <i-checkbox value="Football">Football</i-checkbox>
-                <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-                <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-            </i-checkbox-group>
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Radio</i-form-label>
-            <i-radio-group v-model="radioSizeMd">
-                <i-radio value="Accept">Accept</i-radio>
-                <i-radio value="Decline">Decline</i-radio>
-            </i-radio-group>
-        </i-form-group>
-        <i-form-group>
-            <i-button type="submit">Submit</i-button>
-        </i-form-group>
-    </i-form>
-</i-tab>
-<i-tab type="html">
+### Validation Statuses
+Did you see how simple that was? Makes writing form validation a breeze. Behind the scenes, the validation utility will validate values using the set of rules you define, handle the displaying of error messages and provide you with useful `valid`, `invalid`, `touched`, `untouched`, `dirty` and `pristine` statuses. 
 
-~~~html
-<i-form size="md">
-    <i-form-group>
-        <i-form-label>Input</i-form-label>
-        <i-input v-model="input" placeholder="Type something.." />
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Textarea</i-form-label>
-        <i-textarea v-model="textarea" placeholder="Write a comment.." />
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Select</i-form-label>
-        <i-select v-model="select" placeholder="Choose an option">
-            <i-select-option value="a" label="Option A" />
-            <i-select-option value="b" label="Option B" />
-            <i-select-option value="c" label="Option C" disabled />
-        </i-select>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Checkbox</i-form-label>
-        <i-checkbox-group v-model="checkbox">
-            <i-checkbox value="Football">Football</i-checkbox>
-            <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-            <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-        </i-checkbox-group>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Radio</i-form-label>
-        <i-radio-group v-model="radio">
-            <i-radio value="Accept">Accept</i-radio>
-            <i-radio value="Decline">Decline</i-radio>
-        </i-radio-group>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-button type="submit">Submit</i-button>
-    </i-form-group>
-</i-form>
-~~~
+These fields will be set to `true` when:
 
-</i-tab>
-<i-tab type="js">
+- `valid` - the input value is correct
+- `invalid` - the input value is not correct
+- `touched` - the input has been touched and blurred
+- `untouched` - the input has not been touched
+- `dirty` - the input value has been changed
+- `pristine` - the input value has not been changed
 
-~~~js
-export default {
-  data () {
-    return {
-      input: '',
-      textarea: '',
-      select: '',
-      checkbox: ['Football'],
-      radio: 'Decline'
-    };
-  }
-}
-~~~
-
-</i-tab>
-</i-code>
-
-<i-code title="Large Form Size">
-<i-tab type="preview">
-    <i-form size="lg">
-        <i-form-group>
-            <i-form-label>Input</i-form-label>
-            <i-input v-model="inputSizeLg" placeholder="Type something.." />
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Textarea</i-form-label>
-            <i-textarea v-model="textareaSizeLg" placeholder="Write a comment.." />
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Select</i-form-label>
-            <i-select v-model="selectSizeLg" placeholder="Choose an option">
-                <i-select-option value="a" label="Option A" />
-                <i-select-option value="b" label="Option B" />
-                <i-select-option value="c" label="Option C" disabled />
-            </i-select>
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Checkbox</i-form-label>
-            <i-checkbox-group v-model="checkboxSizeLg">
-                <i-checkbox value="Football">Football</i-checkbox>
-                <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-                <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-            </i-checkbox-group>
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Radio</i-form-label>
-            <i-radio-group v-model="radioSizeLg">
-                <i-radio value="Accept">Accept</i-radio>
-                <i-radio value="Decline">Decline</i-radio>
-            </i-radio-group>
-        </i-form-group>
-        <i-form-group>
-            <i-button type="submit">Submit</i-button>
-        </i-form-group>
-    </i-form>
-</i-tab>
-<i-tab type="html">
-
-~~~html
-<i-form size="lg">
-    <i-form-group>
-        <i-form-label>Input</i-form-label>
-        <i-input v-model="input" placeholder="Type something.." />
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Textarea</i-form-label>
-        <i-textarea v-model="textarea" placeholder="Write a comment.." />
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Select</i-form-label>
-        <i-select v-model="select" placeholder="Choose an option">
-            <i-select-option value="a" label="Option A" />
-            <i-select-option value="b" label="Option B" />
-            <i-select-option value="c" label="Option C" disabled />
-        </i-select>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Checkbox</i-form-label>
-        <i-checkbox-group v-model="checkbox">
-            <i-checkbox value="Football">Football</i-checkbox>
-            <i-checkbox value="Volleyball">Volleyball</i-checkbox>
-            <i-checkbox value="Tennis" disabled>Tennis</i-checkbox>
-        </i-checkbox-group>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-form-label>Radio</i-form-label>
-        <i-radio-group v-model="radio">
-            <i-radio value="Accept">Accept</i-radio>
-            <i-radio value="Decline">Decline</i-radio>
-        </i-radio-group>
-    </i-form-group>
-    
-    <i-form-group>
-        <i-button type="submit">Submit</i-button>
-    </i-form-group>
-</i-form>
-~~~
-
-</i-tab>
-<i-tab type="js">
-
-~~~js
-export default {
-  data () {
-    return {
-      input: '',
-      textarea: '',
-      select: '',
-      checkbox: ['Football'],
-      radio: 'Decline'
-    };
-  }
-}
-~~~
-
-</i-tab>
-</i-code>
-
--->
+To learn more about defining a form schema, head to the next page.
