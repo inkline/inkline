@@ -127,6 +127,21 @@
                                 Overview
                             </router-link>
                         </li>
+                        <li>
+                            <router-link :to="{ name: 'docs-forms-form-validation-schema' }">
+                                Schema
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'docs-forms-form-validation-validators' }">
+                                Validators
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'docs-forms-form-validation-methods' }">
+                                Methods
+                            </router-link>
+                        </li>
                     </ul>
                 </li>
                 <li>
