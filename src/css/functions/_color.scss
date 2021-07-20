@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // Return opaque color
 //
 // opaque(#fff, rgba(0, 0, 0, 0.5)) => #808080
@@ -9,13 +11,13 @@
 // Tint a color (mix with white)
 //
 @function tint-color($color, $weight) {
-    @return change-color($color, $lightness: (100% - $weight) / 100% * lightness($color) + $weight);
+    @return change-color($color, $lightness: math.div((100% - $weight), 100%) * lightness($color) + $weight);
 }
 
 // Shade a color (mix with black)
 //
 @function shade-color($color, $weight) {
-    @return change-color($color, $saturation: saturation($color) * (100% - $weight) / 100%, $lightness: lightness($color) * (100% - $weight) / 100%);
+    @return change-color($color, $saturation: math.div(saturation($color) * (100% - $weight), 100%), $lightness: math.div(lightness($color) * (100% - $weight), 100%));
 }
 
 // Shade the color if the weight is positive, else tint it
@@ -61,7 +63,7 @@ $linear-channel-values: 0 0.0003035269835488375 0.000607053967097675 0.000910580
     $backgroundLuminance: luminance($background) + 0.05;
     $foregroundLuminance: luminance($foreground) + 0.05;
 
-    @return max($backgroundLuminance, $foregroundLuminance) / min($backgroundLuminance, $foregroundLuminance);
+    @return math.div(max($backgroundLuminance, $foregroundLuminance), min($backgroundLuminance, $foregroundLuminance));
 }
 
 // Get contrast text color for a background color by calculating the luminance

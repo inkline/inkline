@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import '../../css/variables';
 @import '../../css/mixins';
 
@@ -25,8 +27,8 @@
 //
 @mixin column-fixed-width($columns, $columns-count) {
     flex-grow: 1;
-    flex-basis: percentage($columns-count / $columns);
-    max-width: percentage($columns-count / $columns);
+    flex-basis: percentage(math.div($columns-count, $columns));
+    max-width: percentage(math.div($columns-count, $columns));
 }
 
 /**
@@ -100,19 +102,19 @@
                 // Column offset
                 //
                 &.-offset#{$breakpoint}-#{$column-count} {
-                    margin-left: percentage($column-count / $columns);
+                    margin-left: percentage(math.div($column-count, $columns));
                 }
 
                 // Column push
                 //
                 &.-push#{$breakpoint}-#{$column-count} {
-                    left: percentage($column-count / $columns);
+                    left: percentage(math.div($column-count, $columns));
                 }
 
                 // Column pull
                 //
                 &.-pull#{$breakpoint}-#{$column-count} {
-                    right: percentage($column-count / $columns);
+                    right: percentage(math.div($column-count, $columns));
                 }
             }
         }
