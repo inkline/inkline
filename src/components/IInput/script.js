@@ -101,11 +101,11 @@ export default {
         },
         /**
          * @description Used to set the field value
-         * @type Boolean
-         * @default false
+         * @type String | Number
+         * @default ''
          */
         modelValue: {
-            type: String,
+            type: [String, Number],
             default: ''
         },
         /**
