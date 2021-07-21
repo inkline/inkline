@@ -11,6 +11,11 @@ module.exports = {
 	    selector: '.form-error',
         variables: [
             {
+                name: 'font-size',
+                description: 'The font size of the form error component',
+                value: 'font-size(\'sm\')'
+            },
+            {
                 name: 'margin-top',
                 description: 'The margin top of the form error component',
                 value: 'calc(var(--margin-top) / 4)'

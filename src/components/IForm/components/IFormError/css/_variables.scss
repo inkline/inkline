@@ -3,6 +3,10 @@
  */
 
 .form-error {
+    /// The font size of the form error component
+    /// @name font-size
+    ----font-size: #{font-size('sm')};
+
     /// The margin top of the form error component
     /// @name margin-top
     ----margin-top: #{calc(var(--margin-top) / 4)};

@@ -1,4 +1,4 @@
-import {getValueByPath} from "@inkline/inkline/src/helpers";
+import { getValueByPath } from '@inkline/inkline/src/helpers';
 
 /**
  * @name default
@@ -28,12 +28,12 @@ export default {
         },
         /**
          * @description Set the validation statuses for which the form error should be visible.
-         * @type Array
-         * @default ['touched', 'dirty']
+         * @type Array | String
+         * @default ['touched', 'dirty', 'invalid']
          */
         visible: {
-            type: Array,
-            default: () => ['touched', 'dirty']
+            type: [Array, String],
+            default: () => ['touched', 'dirty', 'invalid']
         }
     },
     computed: {
@@ -58,7 +58,7 @@ export default {
             let visible = true;
 
             if (this.schema && this.visible) {
-                this.visible.forEach((status) => {
+                [].concat(this.visible).forEach((status) => {
                     visible = visible && this.schema[status];
                 });
             }

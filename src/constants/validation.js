@@ -1,6 +1,4 @@
 export const defaultValidationValues = {
-    value: '',
-    validators: [],
     pristine: true,
     dirty: false,
     untouched: true,
@@ -8,6 +6,11 @@ export const defaultValidationValues = {
     valid: true,
     invalid: false,
     errors: []
+};
+
+export const defaultFieldValidationValues = {
+    value: '',
+    validators: [],
 };
 
 export const reservedValidationFields = [

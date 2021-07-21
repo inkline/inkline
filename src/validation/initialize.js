@@ -1,4 +1,8 @@
-import { defaultValidationValues, reservedValidationFields } from "@inkline/inkline/src/constants";
+import {
+    defaultValidationValues,
+    reservedValidationFields,
+    defaultFieldValidationValues
+} from "@inkline/inkline/src/constants";
 
 /**
  * Initialize raw form schema by adding required default fields if they do not exist
@@ -7,11 +11,17 @@ import { defaultValidationValues, reservedValidationFields } from "@inkline/inkl
  * @returns {*}
  */
 export function initialize(schema) {
-    Object.entries(defaultValidationValues).forEach(([key, value]) => {
-        if (!schema.hasOwnProperty(key)) {
-            schema[key] = value;
-        }
-    });
+    const isField = Object.keys(schema).length === 0 || schema.validators || schema.value;
+    const defaultValues = isField
+        ? { ...defaultValidationValues, ...defaultFieldValidationValues }
+        : defaultValidationValues;
+
+    Object.entries(defaultValues)
+        .forEach(([key, value]) => {
+            if (!schema.hasOwnProperty(key)) {
+                schema[key] = value;
+            }
+        });
 
     Object.keys(schema)
         .filter((key) => !reservedValidationFields.includes(key))

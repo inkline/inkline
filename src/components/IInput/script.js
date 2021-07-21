@@ -82,6 +82,15 @@ export default {
             default: false
         },
         /**
+         * @description The error state of the input, computed based on schema by default.
+         * @type Boolean | Array
+         * @default ['touched', 'dirty', 'invalid']
+         */
+        error: {
+            type: [Array, Boolean],
+            default: () => ['touched', 'dirty', 'invalid']
+        },
+        /**
          * @description The id of the internal input element
          * @type String
          * @default
@@ -164,12 +173,28 @@ export default {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
+                '-error': this.hasError,
                 '-readonly': this.isReadonly,
                 '-prefixed': Boolean(this.$slots.prefix),
                 '-suffixed': Boolean(this.$slots.suffix),
                 '-prepended': Boolean(this.$slots.prepend),
                 '-appended': Boolean(this.$slots.append),
             };
+        },
+        hasError() {
+            if (typeof this.error == 'boolean') {
+                return this.error;
+            } else if (this.schema && this.error) {
+                let visible = true;
+
+                [].concat(this.error).forEach((status) => {
+                    visible = visible && this.schema[status];
+                });
+
+                return visible;
+            }
+
+            return false;
         },
         tabIndex() {
             return this.isDisabled ? -1 : this.tabindex;

@@ -7,75 +7,50 @@ description: Inkline provides you with powerful form validation utilities.
 import * as examples from './examples';
 </script>
 
-# Form Validation
-## Inkline provides you with powerful form validation utilities. 
+# Form Validation Schema
+## The validation schema defines the form input fields, groups and how they work together.
 
-The built-in Form Validation package allows you to define a form validation schema which you will bind to your form components. 
+From the <router-link :to="{ name: 'docs-forms-form-validation' }">Overview</router-link> page we've learned:
+- The schema object provides form validation status fields such as `valid`, `invalid`, `touched`, `untouched`, `dirty`, `pristine` and `errors`
+- The form component handles field value changes using the `v-model` directive
+- Each field name inside the defined schema connects to an input using the `name` property in your template
+- Using the `validators` field, you can specify an array of validators to be used on the field input
 
-Using this declarative approach has several advantages and allows for easy and intuitive form validation:
-- centralized form validation schema
-- programmatically customizable and extendable
-- schema nesting and nested form validation
-- built-in validation status propagation
-- clean template markup
+### Default Field Value
+Providing a default value for a validation schema field can be done using the `value` field:
 
-### Basic Example
-Let's create a basic login form that has a `username` and a `password` field. Validation for this kind of form is usually a headache, but Inkline makes it simple for you. Basic validation for these fields usually includes:
-- The username is required
-- The password is required
-- The password is at least 8 characters long
-- The password contains at least one uppercase character
-- The password contains at least one lowercase character 
-- The password contains at least one numeric character 
-- The password contains at least one symbol
+<example :component="examples.IFormValidationSchemaDefaultValueExample" :html="examples.IFormValidationSchemaDefaultValueExampleHTML" :js="examples.IFormValidationSchemaDefaultValueExampleJS"></example>
 
-#### 1. Defining the form schema
-First, we'll create our schema with two fields: `username` and `password`. The form validation schema prototype is available for both the Options API and the new Composition API. Choose the one that you prefer. 
+### Validation Message
+Each validator accepts a custom error message using the `message` field. This allows you to easily use i18n to display custom error messages.
 
-##### a. Options API
-The form schema prototype will created using `this.$inkline.form` inside components and will be used as the foundation for form validation schemas.
+<example :component="examples.IFormValidationSchemaValidationMessageExample" :html="examples.IFormValidationSchemaValidationMessageExampleHTML" :js="examples.IFormValidationSchemaValidationMessageExampleJS"></example>
 
-~~~js
-export default {
-    data() {
-        const schema = {
-            username: {},
-            password: {},
-        };
+### Error Visibility
+The `<i-form-error>` component has a `visible` property that can be either an array of string values (multiple conditions), or a simple string (single condition). 
 
-        return {
-            form: this.$inkline.form(schema)
-        };   
-    }       
-}       
-~~~
- 
-##### b. Composition API 
+The string values refer to the schema fields that have to be true before displaying the error (i.e. setting a value of `invalid` will show the error message when the field becomes invalid). By default, it is set to `['touched', 'dirty', 'invalid']`.
 
-The form schema prototype is created using the `useForm` utility inside components and will be used as the foundation for form validation schemas.
+<example :component="examples.IFormValidationSchemaErrorVisibilityExample" :html="examples.IFormValidationSchemaErrorVisibilityExampleHTML" :js="examples.IFormValidationSchemaErrorVisibilityExampleJS"></example>
 
-~~~js
-import { useForm } from '@inkline/inkline/src/composition-api';
+The default field validation events can be configured globally when initializing Inkline or by updating the value of `this.$inkline.options.validateOn`.
 
-export default {
-    setup() {
-        const schema = {
-            username: {},
-            password: {},
-        };
-        const form = useForm(schema);
+### Validation Event
+By using the `validateOn` field you can specify the event that triggers the validation. By default, fields get validated on both `input` and `blur`.
 
-        return {
-            form
-        };   
-    }       
-}       
-~~~
+<example :component="examples.IFormValidationSchemaValidationEventExample" :html="examples.IFormValidationSchemaValidationEventExampleHTML" :js="examples.IFormValidationSchemaValidationEventExampleJS"></example>
 
-#### 2. Connecting the schema to the form components
+The default field validation events can be configured globally when initializing Inkline or by updating the value of `this.$inkline.options.validateOn`.
 
-Next, the created `form` object needs to be bound to the form input components inside your template as follows:
- - The form component handles field value changes using the `v-model` directive
- - Each field name inside the defined schema connects to an input using the `name` property in your template
+### Schema Groups
+You can define schema groups to access the validation result of a group of inputs.
 
-<example :component="examples.IFormValidationBasicBindingExample" :html="examples.IFormValidationBasicBindingExampleHTML" :js="examples.IFormValidationBasicBindingExampleJS"></example>
+#### Object Schema Groups
+Objects that aren't empty and don't have a `value` or `validators` field are treated as schema groups. Schema groups can be used to see the validation status of multiple related fields. You can also assign the schema group to an `<i-form-group>` component to simulate form nesting.
+
+<example :component="examples.IFormValidationSchemaGroupsObjectExample" :html="examples.IFormValidationSchemaGroupsObjectExampleHTML" :js="examples.IFormValidationSchemaGroupsObjectExampleJS"></example>
+
+#### Array Schema Groups
+Form groups can also be an `Array` of fields, allowing you to loop over them using` v-for`.
+
+<example :component="examples.IFormValidationSchemaGroupsArrayExample" :html="examples.IFormValidationSchemaGroupsArrayExampleHTML" :js="examples.IFormValidationSchemaGroupsArrayExampleJS"></example>

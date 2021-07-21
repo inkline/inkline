@@ -167,6 +167,8 @@ export default {
                     schema = validate(schema);
                 }
 
+                console.log(name, schema);
+
                 this.$emit('update:modelValue', schema);
             }
         },
@@ -189,7 +191,9 @@ export default {
         },
         shouldValidate(path, eventName) {
             const targetSchema = getValueByPath(this.modelValue, path);
-            const events = this.$inkline.options.validateOn.concat(targetSchema.validateOn || []);
+            const events = targetSchema.validateOn
+                ? [].concat(targetSchema.validateOn)
+                : this.$inkline.options.validateOn;
 
             return events.includes(eventName);
         }
