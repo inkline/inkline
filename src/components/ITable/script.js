@@ -1,4 +1,4 @@
-import {colorPropDefault, colorVariantClass} from "@inkline/inkline/src/mixins";
+import { defaultPropValue, colorVariantClass } from "@inkline/inkline/src/mixins";
 
 /**
  * @name default
@@ -72,7 +72,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         }
     },
     computed: {

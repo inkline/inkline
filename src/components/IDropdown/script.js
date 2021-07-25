@@ -1,8 +1,11 @@
+/* eslint-disable no-case-declarations */
+
 import {
     PopupMixin,
     PopupControlsMixin,
     sizePropValidator,
-    colorVariantClass, colorPropDefault, sizePropDefault
+    colorVariantClass,
+    defaultPropValue
 } from '@inkline/inkline/src/mixins';
 import { ClickOutside } from '@inkline/inkline/src/directives';
 import { on, off, isFocusable, isKey } from "@inkline/inkline/src/helpers";
@@ -67,7 +70,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description The disabled state of the dropdown
@@ -166,7 +169,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
     },
@@ -215,35 +218,35 @@ export default {
             const focusTarget = focusableItems[initialIndex];
 
             switch (true) {
-                case isKey('up', event) && this.keydownTrigger.includes('up'):
-                case isKey('down', event) && this.keydownTrigger.includes('down'):
-                    this.show();
+            case isKey('up', event) && this.keydownTrigger.includes('up'):
+            case isKey('down', event) && this.keydownTrigger.includes('down'):
+                this.show();
 
+                setTimeout(() => {
+                    focusTarget.focus();
+                }, this.visible ? 0 : this.animationDuration);
+
+                event.preventDefault();
+                event.stopPropagation();
+                break;
+
+            case isKey('enter', event) && this.keydownTrigger.includes('enter'):
+            case isKey('space', event) && this.keydownTrigger.includes('space'):
+                this.onClick();
+
+                if (!this.visible) {
                     setTimeout(() => {
                         focusTarget.focus();
-                    }, this.visible ? 0 : this.animationDuration);
+                    }, this.animationDuration);
+                }
 
-                    event.preventDefault();
-                    event.stopPropagation();
-                    break;
+                event.preventDefault();
+                break;
 
-                case isKey('enter', event) && this.keydownTrigger.includes('enter'):
-                case isKey('space', event) && this.keydownTrigger.includes('space'):
-                    this.onClick();
-
-                    if (!this.visible) {
-                        setTimeout(() => {
-                            focusTarget.focus();
-                        }, this.animationDuration);
-                    }
-
-                    event.preventDefault();
-                    break;
-
-                case isKey('tab', event) && this.keydownTrigger.includes('tab'):
-                case isKey('esc', event) && this.keydownTrigger.includes('esc'):
-                    this.hide();
-                    break;
+            case isKey('tab', event) && this.keydownTrigger.includes('tab'):
+            case isKey('esc', event) && this.keydownTrigger.includes('esc'):
+                this.hide();
+                break;
             }
         },
         onItemKeyDown(event) {
@@ -252,45 +255,45 @@ export default {
             }
 
             switch (true) {
-                case isKey('up', event) && this.keydownItem.includes('up'):
-                case isKey('down', event) && this.keydownItem.includes('down'):
-                    const focusableItems = this.getFocusableItems();
+            case isKey('up', event) && this.keydownItem.includes('up'):
+            case isKey('down', event) && this.keydownItem.includes('down'):
+                const focusableItems = this.getFocusableItems();
 
-                    const currentIndex = focusableItems.findIndex((item) => item === event.target);
-                    const maxIndex = focusableItems.length - 1;
-                    let nextIndex;
+                const currentIndex = focusableItems.findIndex((item) => item === event.target);
+                const maxIndex = focusableItems.length - 1;
+                let nextIndex;
 
-                    if (isKey('up', event)) {
-                        nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-                    } else {
-                        nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
-                    }
+                if (isKey('up', event)) {
+                    nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+                } else {
+                    nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
+                }
 
-                    focusableItems[nextIndex].focus();
+                focusableItems[nextIndex].focus();
 
-                    event.preventDefault();
-                    event.stopPropagation();
-                    break;
+                event.preventDefault();
+                event.stopPropagation();
+                break;
 
-                case isKey('enter', event) && this.keydownItem.includes('enter'):
-                case isKey('space', event) && this.keydownItem.includes('space'):
-                    event.target.click();
+            case isKey('enter', event) && this.keydownItem.includes('enter'):
+            case isKey('space', event) && this.keydownItem.includes('space'):
+                event.target.click();
 
-                    if (this.hideOnItemClick) {
-                        this.hide();
-                    }
-                    this.focusTrigger();
-
-                    event.preventDefault();
-                    break;
-
-                case isKey('tab', event) && this.keydownItem.includes('tab'):
-                case isKey('esc', event) && this.keydownItem.includes('esc'):
+                if (this.hideOnItemClick) {
                     this.hide();
-                    this.focusTrigger();
+                }
+                this.focusTrigger();
 
-                    event.preventDefault();
-                    break;
+                event.preventDefault();
+                break;
+
+            case isKey('tab', event) && this.keydownItem.includes('tab'):
+            case isKey('esc', event) && this.keydownItem.includes('esc'):
+                this.hide();
+                this.focusTrigger();
+
+                event.preventDefault();
+                break;
             }
         },
         onItemClick() {

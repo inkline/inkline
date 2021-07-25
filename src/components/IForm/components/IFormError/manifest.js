@@ -1,13 +1,13 @@
 module.exports = {
-	name: 'form-error',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default form error content',
-			type: []
-		}
-	],
-	css: {
+    name: 'form-error',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default form error content',
+            type: []
+        }
+    ],
+    css: {
 	    selector: '.form-error',
         variables: [
             {

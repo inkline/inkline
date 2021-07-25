@@ -345,15 +345,15 @@
                 </li>
                 <li>
                     <label>
-                        <input v-model="colorMode" name="color-mode" type="radio" value="system" /> System
+                        <input v-model="colorMode" name="color-mode" type="radio" value="system"> System
                     </label>
-                    <br/>
+                    <br>
                     <label>
-                        <input v-model="colorMode" name="color-mode" type="radio" value="light" /> Light
+                        <input v-model="colorMode" name="color-mode" type="radio" value="light"> Light
                     </label>
-                    <br/>
+                    <br>
                     <label>
-                        <input v-model="colorMode" name="color-mode" type="radio" value="dark" /> Dark
+                        <input v-model="colorMode" name="color-mode" type="radio" value="dark"> Dark
                     </label>
                 </li>
             </ul>

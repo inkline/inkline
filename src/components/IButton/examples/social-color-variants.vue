@@ -1,1 +1,1 @@
-<template src="./social-color-variants.html"></template>
+<template src="./social-color-variants.html" />

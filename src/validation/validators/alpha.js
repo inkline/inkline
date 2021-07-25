@@ -1,19 +1,19 @@
 import { alpha as validators } from './constants';
 
-export function alpha(value, options = {}) {
+export function alpha(rawValue, options = {}) {
     const locale = options.locale || 'en-US';
     const process = (v) => {
-        v = String(v);
+        let value = String(v);
 
-        if (options.allowDashes) { v = v.replace(/-/g, ''); }
-        if (options.allowSpaces) { v = v.replace(/ /g, ''); }
+        if (options.allowDashes) { value = value.replace(/-/g, ''); }
+        if (options.allowSpaces) { value = value.replace(/ /g, ''); }
 
-        return v;
+        return value;
     };
 
-    if (value.constructor === Array) {
-        return value.every((v) => validators[locale].test(process(v)));
+    if (rawValue.constructor === Array) {
+        return rawValue.every((v) => validators[locale].test(process(v)));
     }
 
-    return validators[locale].test(process(value));
+    return validators[locale].test(process(rawValue));
 }

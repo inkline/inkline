@@ -3,8 +3,9 @@ import IRow from '@inkline/inkline/src/components/IRow/index.vue';
 import IColumn from '@inkline/inkline/src/components/IColumn/index.vue';
 import IHamburgerMenu from '@inkline/inkline/src/components/IHamburgerMenu/index.vue';
 import {
-    CollapsibleMixin, colorPropDefault,
-    colorVariantClass, sizePropDefault,
+    CollapsibleMixin,
+    defaultPropValue,
+    colorVariantClass,
     sizePropValidator,
 } from '@inkline/inkline/src/mixins';
 import { ClickOutside } from '@inkline/inkline/src/directives';
@@ -64,7 +65,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description Display the inner container as fluid, spanning 100% width
@@ -82,7 +83,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
         /**

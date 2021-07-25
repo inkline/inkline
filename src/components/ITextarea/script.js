@@ -1,6 +1,6 @@
 import { uid } from '@inkline/inkline/src/helpers';
 import {
-    colorPropDefault, sizePropDefault,
+    defaultPropValue,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 import IInput from '@inkline/inkline/src/components/IInput/index.vue';
@@ -56,7 +56,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description Display the input as clearable
@@ -121,7 +121,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
         /**

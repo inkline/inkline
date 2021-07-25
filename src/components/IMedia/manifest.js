@@ -1,13 +1,13 @@
 module.exports = {
-	name: 'media',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default media content',
-			type: []
-		}
-	],
-	css: {
+    name: 'media',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default media content',
+            type: []
+        }
+    ],
+    css: {
 	    selector: '.media',
         defaults: {
             size: 'md',

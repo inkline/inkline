@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import markdown from 'vite-plugin-md';
+import eslint from 'vite-plugin-eslint';
 
 function html() {
     return {
@@ -24,7 +25,8 @@ export default defineConfig({
             ]
         }),
         markdown(),
-        html()
+        html(),
+        eslint()
     ],
     resolve: {
         alias: [

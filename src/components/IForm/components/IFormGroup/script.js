@@ -1,9 +1,9 @@
 import {
-    colorPropDefault,
-    colorVariantClass, sizePropDefault,
-    sizePropValidator
+    colorVariantClass,
+    defaultPropValue,
+    sizePropValidator,
+    FormComponentMixin
 } from '@inkline/inkline/src/mixins';
-import { FormComponentMixin } from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -26,7 +26,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description The disabled state of the form group
@@ -80,7 +80,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         }
     },
@@ -98,7 +98,7 @@ export default {
                 '-readonly': this.isReadonly,
                 '-inline': this.inline,
                 // @TODO '-error': this.input && this.input.schema?.$invalid,
-               '-required': this.required // @TODO Add required state based on required validator this.input.schema?.validators.some(v => v.name === 'required')
+                '-required': this.required // @TODO Add required state based on required validator this.input.schema?.validators.some(v => v.name === 'required')
             }
         }
     },

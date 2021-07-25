@@ -1,4 +1,4 @@
-import { colorPropDefault, sizePropDefault, sizePropValidator } from '@inkline/inkline/src/mixins';
+import { defaultPropValue, sizePropValidator } from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -37,7 +37,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
         /**
@@ -47,7 +47,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description Used to show or hide a dismissible alert

@@ -1,58 +1,58 @@
 module.exports = {
-	name: 'collapsible',
-	events: [
-		{
-			name: 'update:modelValue',
-			description: 'Event emitted for setting the modelValue',
-			type: []
-		}
-	],
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default collapsible content',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'accordion',
-			description: 'Display the collapsible as an accordion, keeping a maximum of one open collapsible item',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'color',
-			description: 'The color variant of the collapsible',
-			type: [
-				'light',
-				'dark',
-				'blank'
-			],
-			default: 'light'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the collapsible',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		},
-		{
-			name: 'modelValue',
-			description: 'Used to determine which collapsible item is open',
-			type: [
-				'Array.<String>'
-			],
-			default: '{"type":"","default":""}'
-		}
-	],
-	css: {
+    name: 'collapsible',
+    events: [
+        {
+            name: 'update:modelValue',
+            description: 'Event emitted for setting the modelValue',
+            type: []
+        }
+    ],
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default collapsible content',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'accordion',
+            description: 'Display the collapsible as an accordion, keeping a maximum of one open collapsible item',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'color',
+            description: 'The color variant of the collapsible',
+            type: [
+                'light',
+                'dark',
+                'blank'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the collapsible',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        },
+        {
+            name: 'modelValue',
+            description: 'Used to determine which collapsible item is open',
+            type: [
+                'Array.<String>'
+            ],
+            default: '{"type":"","default":""}'
+        }
+    ],
+    css: {
 	    selector: '.collapsible',
         defaults: {
             size: 'md',

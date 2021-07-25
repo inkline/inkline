@@ -1,126 +1,126 @@
 module.exports = {
-	name: 'popover',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for tooltip trigger',
-			type: []
-		},
-		{
-			name: 'header',
-			description: 'Slot for tooltip header content',
-			type: []
-		},
-		{
-			name: 'body',
-			description: 'Slot for tooltip body content',
-			type: []
-		},
-		{
-			name: 'footer',
-			description: 'Slot for tooltip footer content',
-			type: []
-		}
-	],
-	events: [
-		{
-			name: 'update:modelValue',
-			description: 'Event emitted for setting the modelValue',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'color',
-			description: 'The color variant of the popover',
-			type: [
-				'light',
-				'dark'
-			],
-			default: 'light'
-		},
-		{
-			name: 'disabled',
-			description: 'The disabled state of the popover',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'modelValue',
-			description: 'Used to manually control the visibility of the popover',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'arrow',
-			description: 'Displays an arrow on the popover pointing to the trigger element',
-			type: [
-				'Boolean'
-			],
-			default: 'true'
-		},
-		{
-			name: 'placement',
-			description: 'The placement of the popover',
-			type: [
-				'top',
-				'top-start',
-				'top-end',
-				'bottom',
-				'bottom-start',
-				'bottom-end',
-				'left',
-				'left-start',
-				'left-end',
-				'right',
-				'right-start',
-				'right-end'
-			],
-			default: 'false'
-		},
-		{
-			name: 'trigger',
-			description: 'The events used to trigger the popover',
-			type: [
-				'hover',
-				'focus',
-				'click',
-				'manual'
-			],
-			default: '[click]'
-		},
-		{
-			name: 'offset',
-			description: 'The offset of the popover relative to the trigger element',
-			type: [
-				'Number'
-			],
-			default: '6'
-		},
-		{
-			name: 'popperOptions',
-			description: 'Used to override the popper.js options used for creating the popover',
-			type: [
-				'Object'
-			],
-			default: '{}'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the popover',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		}
-	],
-	css: {
+    name: 'popover',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for tooltip trigger',
+            type: []
+        },
+        {
+            name: 'header',
+            description: 'Slot for tooltip header content',
+            type: []
+        },
+        {
+            name: 'body',
+            description: 'Slot for tooltip body content',
+            type: []
+        },
+        {
+            name: 'footer',
+            description: 'Slot for tooltip footer content',
+            type: []
+        }
+    ],
+    events: [
+        {
+            name: 'update:modelValue',
+            description: 'Event emitted for setting the modelValue',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'color',
+            description: 'The color variant of the popover',
+            type: [
+                'light',
+                'dark'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'disabled',
+            description: 'The disabled state of the popover',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'modelValue',
+            description: 'Used to manually control the visibility of the popover',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'arrow',
+            description: 'Displays an arrow on the popover pointing to the trigger element',
+            type: [
+                'Boolean'
+            ],
+            default: 'true'
+        },
+        {
+            name: 'placement',
+            description: 'The placement of the popover',
+            type: [
+                'top',
+                'top-start',
+                'top-end',
+                'bottom',
+                'bottom-start',
+                'bottom-end',
+                'left',
+                'left-start',
+                'left-end',
+                'right',
+                'right-start',
+                'right-end'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'trigger',
+            description: 'The events used to trigger the popover',
+            type: [
+                'hover',
+                'focus',
+                'click',
+                'manual'
+            ],
+            default: '[click]'
+        },
+        {
+            name: 'offset',
+            description: 'The offset of the popover relative to the trigger element',
+            type: [
+                'Number'
+            ],
+            default: '6'
+        },
+        {
+            name: 'popperOptions',
+            description: 'Used to override the popper.js options used for creating the popover',
+            type: [
+                'Object'
+            ],
+            default: '{}'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the popover',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        }
+    ],
+    css: {
         selector: '.popover-wrapper',
         defaults: {
             size: 'md',

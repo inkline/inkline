@@ -1,46 +1,46 @@
 module.exports = {
-	name: 'hamburger-menu',
-	events: [
-		{
-			name: 'update:modelValue',
-			description: 'Event emitted for setting the modelValue',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'animation',
-			description: 'The animation of the hamburger menu',
-			type: [
-				'close',
-				'arrow-up',
-				'arrow-down',
-				'arrow-left',
-				'arrow-right',
-				'plus',
-				'minus'
-			],
-			default: 'close'
-		},
-		{
-			name: 'color',
-			description: 'The color variant of the hamburger menu',
-			type: [
-				'light',
-				'dark'
-			],
-			default: 'light'
-		},
-		{
-			name: 'modelValue',
-			description: 'Used to set the hamburger menu as opened or closed',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		}
-	],
-	css: {
+    name: 'hamburger-menu',
+    events: [
+        {
+            name: 'update:modelValue',
+            description: 'Event emitted for setting the modelValue',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'animation',
+            description: 'The animation of the hamburger menu',
+            type: [
+                'close',
+                'arrow-up',
+                'arrow-down',
+                'arrow-left',
+                'arrow-right',
+                'plus',
+                'minus'
+            ],
+            default: 'close'
+        },
+        {
+            name: 'color',
+            description: 'The color variant of the hamburger menu',
+            type: [
+                'light',
+                'dark'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'modelValue',
+            description: 'Used to set the hamburger menu as opened or closed',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        }
+    ],
+    css: {
 	    selector: '.hamburger-menu',
         defaults: {
             size: 'md',

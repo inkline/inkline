@@ -1,7 +1,7 @@
 import {
-    colorPropDefault,
-    colorVariantClass, sizePropDefault,
-    sizePropValidator
+    defaultPropValue,
+    sizePropValidator,
+    colorVariantClass
 } from '@inkline/inkline/src/mixins';
 
 import IContainer from '@inkline/inkline/src/components/IContainer/index.vue';
@@ -31,7 +31,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description Display the header background as cover, always covering the whole header width
@@ -67,7 +67,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         }
     },

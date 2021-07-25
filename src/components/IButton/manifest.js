@@ -1,122 +1,122 @@
 module.exports = {
-	name: 'button',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default button content',
-			type: []
-		},
-		{
-			name: 'loading',
-			description: 'Slot for button loading state',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'active',
-			description: 'The active state of the button',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'block',
-			description: 'Display the button as a block, spanning the full container width',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'circle',
-			description: 'Display the button as a circle',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'color',
-			description: 'The color variant of the button',
-			type: [
-				'primary',
-				'success',
-				'light',
-				'dark',
-				'info',
-				'success',
-				'warning',
-				'danger',
-				'facebook',
-				'google',
-				'twitter',
-				'github'
-			],
-			default: 'light'
-		},
-		{
-			name: 'disabled',
-			description: 'The disabled state of the button',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'link',
-			description: 'Display the button as a link',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'loading',
-			description: 'The loading state of the button',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'outline',
-			description: 'Display the button as an outline button',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'tag',
-			description: 'Set the HTML tag to be used for rendering the button',
-			type: [
-				'String'
-			],
-			default: 'button'
-		},
-		{
-			name: 'tabindex',
-			description: 'The tabindex of the button',
-			type: [
-				'Number',
-				'String'
-			],
-			default: '1'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the button',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		}
-	],
-	css: {
+    name: 'button',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default button content',
+            type: []
+        },
+        {
+            name: 'loading',
+            description: 'Slot for button loading state',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'active',
+            description: 'The active state of the button',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'block',
+            description: 'Display the button as a block, spanning the full container width',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'circle',
+            description: 'Display the button as a circle',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'color',
+            description: 'The color variant of the button',
+            type: [
+                'primary',
+                'success',
+                'light',
+                'dark',
+                'info',
+                'success',
+                'warning',
+                'danger',
+                'facebook',
+                'google',
+                'twitter',
+                'github'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'disabled',
+            description: 'The disabled state of the button',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'link',
+            description: 'Display the button as a link',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'loading',
+            description: 'The loading state of the button',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'outline',
+            description: 'Display the button as an outline button',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'tag',
+            description: 'Set the HTML tag to be used for rendering the button',
+            type: [
+                'String'
+            ],
+            default: 'button'
+        },
+        {
+            name: 'tabindex',
+            description: 'The tabindex of the button',
+            type: [
+                'Number',
+                'String'
+            ],
+            default: '1'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the button',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        }
+    ],
+    css: {
 	    selector: '.button',
         defaults: {
             size: 'md',

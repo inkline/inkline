@@ -1,5 +1,5 @@
 <template>
-    <section class="example" :class="classes">
+    <section :class="['example', classes]">
         <div class="body">
             <slot>
                 <component :is="component" v-if="component" />

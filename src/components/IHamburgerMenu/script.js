@@ -1,5 +1,5 @@
 import {
-    colorPropDefault,
+    defaultPropValue,
     colorVariantClass,
 } from '@inkline/inkline/src/mixins';
 
@@ -31,7 +31,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description Used to set the hamburger menu as opened or closed

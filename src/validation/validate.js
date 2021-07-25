@@ -12,10 +12,10 @@ import { translate } from "@inkline/inkline/src/i18n";
 export function validateFormInput(schema, path = '') {
     const errors = [];
 
-    schema.valid = (schema.validators || []).reduce((acc, validator) => {
-        validator = typeof validator === 'string'
-            ? { name: validator }
-            : validator;
+    schema.valid = (schema.validators || []).reduce((acc, rawValidator) => {
+        const validator = typeof rawValidator === 'string'
+            ? { name: rawValidator }
+            : rawValidator;
 
         const valid = validators[validator.name](schema.value || '', validator);
         if (!valid) {

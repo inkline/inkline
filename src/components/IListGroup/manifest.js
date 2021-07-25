@@ -1,42 +1,42 @@
 module.exports = {
-	name: 'list-group',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default list group content',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'border',
-			description: 'Display the list group border',
-			type: [
-				'Boolean'
-			],
-			default: 'true'
-		},
-		{
-			name: 'color',
-			description: 'The color variant of the list group',
-			type: [
-				'light',
-				'dark'
-			],
-			default: 'light'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the list group',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		}
-	],
-	css: {
+    name: 'list-group',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default list group content',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'border',
+            description: 'Display the list group border',
+            type: [
+                'Boolean'
+            ],
+            default: 'true'
+        },
+        {
+            name: 'color',
+            description: 'The color variant of the list group',
+            type: [
+                'light',
+                'dark'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the list group',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        }
+    ],
+    css: {
 	    selector: '.list-group',
         defaults: {
             size: 'md',

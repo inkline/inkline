@@ -1,4 +1,4 @@
-import {sizePropDefault, sizePropValidator} from '@inkline/inkline/src/mixins';
+import { defaultPropValue, sizePropValidator } from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -45,7 +45,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         }
     },

@@ -1,6 +1,6 @@
 import {
-    colorPropDefault,
-    colorVariantClass, sizePropDefault,
+    colorVariantClass,
+    defaultPropValue,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 
@@ -38,7 +38,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description The size variant of the collapsible
@@ -47,7 +47,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
         /**
@@ -83,7 +83,8 @@ export default {
     methods: {
         onItemClick(item) {
             if (this.accordion) {
-                return this.activeItems = this.activeItems.indexOf(item.name) > -1 ? [] : [item.name];
+                this.activeItems = this.activeItems.indexOf(item.name) > -1 ? [] : [item.name];
+                return this.activeItems;
             }
 
             let index = this.activeItems.indexOf(item.name);

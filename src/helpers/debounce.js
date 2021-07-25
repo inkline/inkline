@@ -11,7 +11,7 @@ export function debounce(fn, delay) {
     let inDebounce;
 
     return function() {
-        const context = this;
+        const context = this; // eslint-disable-line no-invalid-this
         const args = arguments;
 
         clearTimeout(inDebounce);

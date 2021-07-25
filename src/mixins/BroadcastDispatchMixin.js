@@ -1,3 +1,5 @@
+/* eslint-disable no-invalid-this */
+
 /**
  * Broadcast an event with given params to specific child properties
  *

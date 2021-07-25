@@ -1,1 +1,1 @@
-<template src="./state-active.html"></template>
+<template src="./state-active.html" />

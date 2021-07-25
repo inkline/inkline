@@ -1,1 +1,1 @@
-<template src="./outline.html"></template>
+<template src="./outline.html" />

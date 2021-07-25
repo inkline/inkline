@@ -1,68 +1,68 @@
 module.exports = {
-	name: 'alert',
-	events: [
-		{
-			name: 'update:modelValue',
-			description: 'Event emitted for setting the modelValue',
-			type: []
-		}
-	],
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default alert content',
-			type: []
-		},
-		{
-			name: 'icon',
-			description: 'Slot for alert icon',
-			type: []
-		},
-		{
-			name: 'dismiss',
-			description: 'Slot for alert dismiss button',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'size',
-			description: 'The size variant of the alert',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		},
-		{
-			name: 'color',
-			description: 'The color variant of the alert',
-			type: [
-				'info',
-				'success',
-				'warning',
-				'danger'
-			],
-			default: 'info'
-		},
-		{
-			name: 'modelValue',
-			description: 'Used to show or hide a dismissible alert',
-			type: [
-				'Boolean'
-			],
-			default: 'true'
-		},
-		{
-			name: 'dismissible',
-			description: 'Shows a dismiss icon on the alert',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		}
-	],
+    name: 'alert',
+    events: [
+        {
+            name: 'update:modelValue',
+            description: 'Event emitted for setting the modelValue',
+            type: []
+        }
+    ],
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default alert content',
+            type: []
+        },
+        {
+            name: 'icon',
+            description: 'Slot for alert icon',
+            type: []
+        },
+        {
+            name: 'dismiss',
+            description: 'Slot for alert dismiss button',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'size',
+            description: 'The size variant of the alert',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        },
+        {
+            name: 'color',
+            description: 'The color variant of the alert',
+            type: [
+                'info',
+                'success',
+                'warning',
+                'danger'
+            ],
+            default: 'info'
+        },
+        {
+            name: 'modelValue',
+            description: 'Used to show or hide a dismissible alert',
+            type: [
+                'Boolean'
+            ],
+            default: 'true'
+        },
+        {
+            name: 'dismissible',
+            description: 'Shows a dismiss icon on the alert',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        }
+    ],
     css: {
         selector: '.alert',
         defaults: {

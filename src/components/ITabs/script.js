@@ -1,6 +1,6 @@
 import {
-    colorPropDefault,
-    colorVariantClass, sizePropDefault,
+    defaultPropValue,
+    colorVariantClass,
     sizePropValidator,
 } from '@inkline/inkline/src/mixins';
 
@@ -29,7 +29,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description Used to set the currently active tab
@@ -47,7 +47,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
         /**

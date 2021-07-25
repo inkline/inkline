@@ -1,4 +1,8 @@
-import {colorPropDefault, colorVariantClass, sizePropDefault, sizePropValidator} from '@inkline/inkline/src/mixins';
+import {
+    defaultPropValue,
+    colorVariantClass,
+    sizePropValidator
+} from '@inkline/inkline/src/mixins';
 import { breakpointKeys, breakpoints } from "@inkline/inkline/src/constants";
 import { debounce } from "@inkline/inkline/src/helpers";
 
@@ -33,7 +37,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description The number of items per page to be displayed
@@ -96,7 +100,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
     },
@@ -181,12 +185,14 @@ export default {
         },
         onWindowResize() {
             if (typeof this.limit === 'number') {
-                return this.pageLimit = this.limit;
+                this.pageLimit = this.limit;
+                return this.pageLimit;
             }
 
             for (let breakpointKey of breakpointKeys.slice().reverse()) {
                 if (this.limit.hasOwnProperty(breakpointKey) && (typeof window !== 'undefined' && window.innerWidth >= breakpoints[breakpointKey][0])) {
-                    return this.pageLimit = this.limit[breakpointKey];
+                    this.pageLimit = this.limit[breakpointKey];
+                    return this.pageLimit;
                 }
             }
         }

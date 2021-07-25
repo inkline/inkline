@@ -1,84 +1,84 @@
 module.exports = {
-	name: 'table',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default table content',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'border',
-			description: 'Display the table with borders',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'condensed',
-			description: 'Display the table rows as condensed',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'striped',
-			description: 'Display the table rows as alternating stripes',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'hover',
-			description: 'Set the table rows as hoverable',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'responsive',
-			description: 'Set the table to be responsive, enabling horizontal scroll when overflowing the parent container',
-			type: [
-				'Boolean',
-				'xs',
-				'sm',
-				'md',
-				'lg',
-				'xl',
-				'xxl'
-			],
-			default: 'false'
-		},
-		{
-			name: 'nowrap',
-			description: 'Display the table rows without wrapping white-space',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'color',
-			description: 'The color variant of the table',
-			type: [
-				'primary',
-				'success',
-				'light',
-				'dark',
-				'info',
-				'success',
-				'warning',
-				'danger'
-			],
-			default: 'light'
-		}
-	],
-	css: {
+    name: 'table',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default table content',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'border',
+            description: 'Display the table with borders',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'condensed',
+            description: 'Display the table rows as condensed',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'striped',
+            description: 'Display the table rows as alternating stripes',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'hover',
+            description: 'Set the table rows as hoverable',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'responsive',
+            description: 'Set the table to be responsive, enabling horizontal scroll when overflowing the parent container',
+            type: [
+                'Boolean',
+                'xs',
+                'sm',
+                'md',
+                'lg',
+                'xl',
+                'xxl'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'nowrap',
+            description: 'Display the table rows without wrapping white-space',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'color',
+            description: 'The color variant of the table',
+            type: [
+                'primary',
+                'success',
+                'light',
+                'dark',
+                'info',
+                'success',
+                'warning',
+                'danger'
+            ],
+            default: 'light'
+        }
+    ],
+    css: {
 	    selector: '.table-wrapper',
         defaults: {
             size: 'md',

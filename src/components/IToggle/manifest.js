@@ -1,94 +1,94 @@
 module.exports = {
-	name: 'toggle',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default checkbox label',
-			type: []
-		}
-	],
-	events: [
-		{
-			name: 'update:modelValue',
-			description: 'Event emitted for setting the modelValue',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'color',
-			description: 'The color variant of the checkbox',
-			type: [
-				'light',
-				'dark'
-			],
-			default: 'light'
-		},
-		{
-			name: 'disabled',
-			description: 'The disabled state of the checkbox',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'indeterminate',
-			description: 'The indeterminate state of the checkbox',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'value',
-			description: 'Used to set the checkbox value when used inside a checkbox group',
-			type: [],
-			default: 'false'
-		},
-		{
-			name: 'modelValue',
-			description: 'Used to set the checkbox value when used by itself',
-			type: [],
-			default: 'false'
-		},
-		{
-			name: 'name',
-			description: 'The unique identifier of the checkbox',
-			type: [
-				'String'
-			],
-			default: 'uid()'
-		},
-		{
-			name: 'readonly',
-			description: 'The readonly state of the checkbox',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the checkbox',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		},
-		{
-			name: 'tabindex',
-			description: 'The tabindex of the checkbox',
-			type: [
-				'Number',
-				'String'
-			],
-			default: '1'
-		}
-	],
-	css: {
+    name: 'toggle',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default checkbox label',
+            type: []
+        }
+    ],
+    events: [
+        {
+            name: 'update:modelValue',
+            description: 'Event emitted for setting the modelValue',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'color',
+            description: 'The color variant of the checkbox',
+            type: [
+                'light',
+                'dark'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'disabled',
+            description: 'The disabled state of the checkbox',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'indeterminate',
+            description: 'The indeterminate state of the checkbox',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'value',
+            description: 'Used to set the checkbox value when used inside a checkbox group',
+            type: [],
+            default: 'false'
+        },
+        {
+            name: 'modelValue',
+            description: 'Used to set the checkbox value when used by itself',
+            type: [],
+            default: 'false'
+        },
+        {
+            name: 'name',
+            description: 'The unique identifier of the checkbox',
+            type: [
+                'String'
+            ],
+            default: 'uid()'
+        },
+        {
+            name: 'readonly',
+            description: 'The readonly state of the checkbox',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the checkbox',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        },
+        {
+            name: 'tabindex',
+            description: 'The tabindex of the checkbox',
+            type: [
+                'Number',
+                'String'
+            ],
+            default: '1'
+        }
+    ],
+    css: {
         selector: '.toggle',
         type: 'form',
         defaults: {

@@ -20,7 +20,7 @@ export function getValueByPath(object, path) {
  * @param value
  * @returns {T}
  */
-export function setValueByPath(object, path, key, value) {
+export function setValueByPath(object, path, key, value) { // eslint-disable-line max-params
     getValueByPath(object, path)[key] = value;
 
     return object;

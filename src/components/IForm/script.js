@@ -6,10 +6,9 @@ import {
     uid
 } from '@inkline/inkline/src/helpers';
 import {
-    colorVariantClass, sizePropDefault,
-    sizePropValidator
-} from '@inkline/inkline/src/mixins';
-import {
+    colorVariantClass,
+    defaultPropValue,
+    sizePropValidator,
     FormComponentMixin
 } from '@inkline/inkline/src/mixins';
 import { validate } from "@inkline/inkline/src/validation";
@@ -113,7 +112,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         }
     },

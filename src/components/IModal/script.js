@@ -1,8 +1,8 @@
 import { addClass, removeClass, uid } from '@inkline/inkline/src/helpers';
 import { OverlayController } from '@inkline/inkline/src/controllers';
 import {
-    colorPropDefault,
-    colorVariantClass, sizePropDefault,
+    defaultPropValue,
+    colorVariantClass,
     sizePropValidator,
 } from '@inkline/inkline/src/mixins';
 import { ClickOutside } from '@inkline/inkline/src/directives';
@@ -61,7 +61,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description The disabled state of the modal
@@ -108,7 +108,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
         /**

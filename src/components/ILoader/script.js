@@ -1,4 +1,4 @@
-import {colorPropDefault, colorVariantClass, sizePropDefault, sizePropValidator} from '@inkline/inkline/src/mixins';
+import { colorVariantClass, defaultPropValue } from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -18,7 +18,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description The size variant of the loader
@@ -27,7 +27,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName)
+            default: defaultPropValue(componentName, 'size')
         }
     },
     computed: {

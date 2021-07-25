@@ -1,102 +1,102 @@
 module.exports = {
-	name: 'radio',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default radio label',
-			type: []
-		}
-	],
-	events: [
-		{
-			name: 'update:modelValue',
-			description: 'Event emitted for setting the modelValue',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'color',
-			description: 'The color variant of the radio',
-			type: [
-				'light',
-				'dark'
-			],
-			default: 'light'
-		},
-		{
-			name: 'disabled',
-			description: 'The disabled state of the radio',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'indeterminate',
-			description: 'The indeterminate state of the radio',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'value',
-			description: 'Used to set the radio value when used inside a radio group',
-			type: [],
-			default: '\'\''
-		},
-		{
-			name: 'modelValue',
-			description: 'Used to set the radio value when used by itself',
-			type: [],
-			default: 'false'
-		},
-		{
-			name: 'name',
-			description: 'The unique identifier of the radio',
-			type: [
-				'String'
-			],
-			default: 'uid()'
-		},
-		{
-			name: 'native',
-			description: 'Displays the native browser radio input indicator',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'readonly',
-			description: 'The readonly state of the radio',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the radio',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		},
-		{
-			name: 'tabindex',
-			description: 'The tabindex of the radio',
-			type: [
-				'Number',
-				'String'
-			],
-			default: '1'
-		}
-	],
-	css: {
+    name: 'radio',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default radio label',
+            type: []
+        }
+    ],
+    events: [
+        {
+            name: 'update:modelValue',
+            description: 'Event emitted for setting the modelValue',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'color',
+            description: 'The color variant of the radio',
+            type: [
+                'light',
+                'dark'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'disabled',
+            description: 'The disabled state of the radio',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'indeterminate',
+            description: 'The indeterminate state of the radio',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'value',
+            description: 'Used to set the radio value when used inside a radio group',
+            type: [],
+            default: '\'\''
+        },
+        {
+            name: 'modelValue',
+            description: 'Used to set the radio value when used by itself',
+            type: [],
+            default: 'false'
+        },
+        {
+            name: 'name',
+            description: 'The unique identifier of the radio',
+            type: [
+                'String'
+            ],
+            default: 'uid()'
+        },
+        {
+            name: 'native',
+            description: 'Displays the native browser radio input indicator',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'readonly',
+            description: 'The readonly state of the radio',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the radio',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        },
+        {
+            name: 'tabindex',
+            description: 'The tabindex of the radio',
+            type: [
+                'Number',
+                'String'
+            ],
+            default: '1'
+        }
+    ],
+    css: {
         selector: '.radio',
         type: 'form',
         defaults: {

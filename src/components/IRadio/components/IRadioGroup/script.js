@@ -2,8 +2,7 @@ import {
     colorVariantClass,
     sizePropValidator,
     FormComponentMixin,
-    colorPropDefault,
-    sizePropDefault
+    defaultPropValue,
 } from "@inkline/inkline/src/mixins";
 import { uid } from "@inkline/inkline/src/helpers";
 
@@ -35,7 +34,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description The disabled state of the radio group
@@ -89,7 +88,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         }
     },

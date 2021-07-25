@@ -1,5 +1,6 @@
 import {
-    FormComponentMixin, sizePropDefault,
+    FormComponentMixin,
+    defaultPropValue,
     sizePropValidator
 } from "@inkline/inkline/src/mixins";
 
@@ -42,7 +43,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         }
     },

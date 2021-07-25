@@ -1,38 +1,38 @@
 module.exports = {
-	name: 'progress-bar',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default progress bar content',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'color',
-			description: 'The color variant of the progress bar',
-			type: [
-				'light',
-				'dark',
-				'primary',
-				'secondary',
-				'info',
-				'success',
-				'warning',
-				'danger'
-			],
-			default: 'primary'
-		},
-		{
-			name: 'value',
-			description: 'The value of the progress bar',
-			type: [
-				'Number'
-			],
-			default: '0'
-		}
-	],
-	css: {
+    name: 'progress-bar',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default progress bar content',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'color',
+            description: 'The color variant of the progress bar',
+            type: [
+                'light',
+                'dark',
+                'primary',
+                'secondary',
+                'info',
+                'success',
+                'warning',
+                'danger'
+            ],
+            default: 'primary'
+        },
+        {
+            name: 'value',
+            description: 'The value of the progress bar',
+            type: [
+                'Number'
+            ],
+            default: '0'
+        }
+    ],
+    css: {
         selector: '.progress-bar',
         defaults: {
             size: 'md',

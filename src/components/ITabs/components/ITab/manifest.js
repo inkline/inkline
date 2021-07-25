@@ -1,27 +1,27 @@
 module.exports = {
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default tab content',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'title',
-			description: 'The title of the tab',
-			type: [
-				'String'
-			],
-			default: '{"type":"","default":""}'
-		},
-		{
-			name: 'name',
-			description: 'The name of the tab, used as an identifier',
-			type: [
-				'String'
-			],
-			default: 'uid()'
-		}
-	]
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default tab content',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'title',
+            description: 'The title of the tab',
+            type: [
+                'String'
+            ],
+            default: '{"type":"","default":""}'
+        },
+        {
+            name: 'name',
+            description: 'The name of the tab, used as an identifier',
+            type: [
+                'String'
+            ],
+            default: 'uid()'
+        }
+    ]
 };

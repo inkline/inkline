@@ -1,22 +1,22 @@
 module.exports = {
-	name: 'container',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default container content',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'fluid',
-			description: 'Display the container as fluid, always spanning 100% width',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		}
-	],
+    name: 'container',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default container content',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'fluid',
+            description: 'Display the container as fluid, always spanning 100% width',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        }
+    ],
     css: {
         selector: '.column',
         defaults: {
@@ -36,5 +36,5 @@ module.exports = {
                 }
             }
         ]
-	}
+    }
 };

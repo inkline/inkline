@@ -1,1 +1,1 @@
-<template src="./icon.html"></template>
+<template src="./icon.html" />

@@ -1,58 +1,58 @@
 module.exports = {
-	name: 'tabs',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default tabs content',
-			type: []
-		}
-	],
-	events: [
-		{
-			name: 'update:modelValue',
-			description: 'Event emitted for setting the modelValue',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'color',
-			description: 'The color variant of the header',
-			type: [
-				'primary',
-				'light',
-				'dark'
-			],
-			default: 'light'
-		},
-		{
-			name: 'modelValue',
-			description: 'Used to set the currently active tab',
-			type: [
-				'String'
-			],
-			default: '{"type":"","default":""}'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the tabs',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		},
-		{
-			name: 'stretch',
-			description: 'Display the tabs header as full width',
-			type: [
-				'Boolean'
-			],
-			default: 'false'
-		}
-	],
-	css: {
+    name: 'tabs',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default tabs content',
+            type: []
+        }
+    ],
+    events: [
+        {
+            name: 'update:modelValue',
+            description: 'Event emitted for setting the modelValue',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'color',
+            description: 'The color variant of the header',
+            type: [
+                'primary',
+                'light',
+                'dark'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'modelValue',
+            description: 'Used to set the currently active tab',
+            type: [
+                'String'
+            ],
+            default: '{"type":"","default":""}'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the tabs',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        },
+        {
+            name: 'stretch',
+            description: 'Display the tabs header as full width',
+            type: [
+                'Boolean'
+            ],
+            default: 'false'
+        }
+    ],
+    css: {
         selector: '.tabs',
         defaults: {
             size: 'md',

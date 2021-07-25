@@ -2,7 +2,8 @@ import {
     PopupMixin,
     PopupControlsMixin,
     sizePropValidator,
-    colorVariantClass, colorPropDefault, sizePropDefault
+    colorVariantClass,
+    defaultPropValue
 } from '@inkline/inkline/src/mixins';
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
 
@@ -57,7 +58,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description The disabled state of the popover
@@ -129,7 +130,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
     },

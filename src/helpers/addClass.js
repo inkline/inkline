@@ -10,10 +10,10 @@ export function addClass (element, classes) {
     if (!element) return;
 
     let currentClass = element.className;
-    classes = (classes || '').split(' ');
+    const classList = (classes || '').split(' ');
 
-    for (let i = 0, j = classes.length; i < j; i++) {
-        const className = classes[i];
+    for (let i = 0, j = classList.length; i < j; i++) {
+        const className = classList[i];
         if (!className) continue;
 
         if (element.classList) {

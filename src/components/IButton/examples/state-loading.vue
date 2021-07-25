@@ -1,1 +1,1 @@
-<template src="./state-loading.html"></template>
+<template src="./state-loading.html" />

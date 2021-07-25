@@ -1,5 +1,5 @@
 import { IIcon } from '@inkline/icons/components';
-import {sizePropDefault, sizePropValidator} from "@inkline/inkline/src/mixins";
+import { defaultPropValue, sizePropValidator } from "@inkline/inkline/src/mixins";
 
 /**
  * @description The icon to be displayed
@@ -22,7 +22,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         }
     }

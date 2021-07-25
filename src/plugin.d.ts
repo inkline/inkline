@@ -3,16 +3,19 @@ import { Plugin } from 'vue'
 export type IPrototypeFormFn = (...args: any[]) => any;
 
 export interface IPrototypeConfig {
-    variant: 'light' | 'dark';
+    colorMode: 'system' | 'light' | 'dark';
+    locale: string;
+    validateOn: string[];
+    color: string;
     size: 'sm' | 'md' | 'lg';
-    autodetectVariant: boolean;
+    componentOptions: any;
 
-    [key: string]: string | boolean;
+    [key: string]: string | string[] | boolean;
 }
 
 export interface IPrototype {
     form: IPrototypeFormFn;
-    config: IPrototypeConfig;
+    options: IPrototypeConfig;
 }
 
 export type IInkline = Plugin;

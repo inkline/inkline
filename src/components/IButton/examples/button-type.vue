@@ -1,1 +1,1 @@
-<template src="./button-type.html"></template>
+<template src="./button-type.html" />

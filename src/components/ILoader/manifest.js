@@ -1,41 +1,41 @@
 module.exports = {
-	name: 'loader',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default loader content',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'color',
-			description: 'The color variant of the loader',
-			type: [
-				'primary',
-				'success',
-				'light',
-				'dark',
-				'info',
-				'success',
-				'warning',
-				'danger'
-			],
-			default: 'light'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the loader',
-			type: [
-				'sm',
-				'md',
-				'lg',
-				'auto'
-			],
-			default: 'md'
-		}
-	],
-	css: {
+    name: 'loader',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default loader content',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'color',
+            description: 'The color variant of the loader',
+            type: [
+                'primary',
+                'success',
+                'light',
+                'dark',
+                'info',
+                'success',
+                'warning',
+                'danger'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the loader',
+            type: [
+                'sm',
+                'md',
+                'lg',
+                'auto'
+            ],
+            default: 'md'
+        }
+    ],
+    css: {
 	    selector: '.loader',
         defaults: {
             size: 'md',

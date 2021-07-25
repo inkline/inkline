@@ -1,14 +1,18 @@
+/* eslint-disable no-case-declarations */
+
 import {
     isFocusable,
     isFunction,
     isKey,
-    uid
+    uid,
+    getValueByPath
 } from '@inkline/inkline/src/helpers';
 import {
     colorVariantClass,
+    defaultPropValue,
     sizePropValidator,
     FormComponentMixin,
-    PopupMixin, colorPropDefault, sizePropDefault,
+    PopupMixin
 } from '@inkline/inkline/src/mixins';
 import {
     useBaseModifiers,
@@ -19,7 +23,6 @@ import IInput from '@inkline/inkline/src/components/IInput/index.vue';
 import IIcon from '@inkline/inkline/src/components/IIcon/index.vue';
 import ISelectOption from '@inkline/inkline/src/components/ISelect/components/ISelectOption/index.vue';
 import IMark from '@inkline/inkline/src/components/IMark/index.vue';
-import { getValueByPath } from "@inkline/inkline/src/helpers";
 
 /**
  * @name prefix
@@ -126,7 +129,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description Display the select as clearable
@@ -304,7 +307,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
         /**
@@ -397,7 +400,7 @@ export default {
         onClear() {
             this.animating = true;
             this.$emit('update:modelValue', null);
-            this.$nextTick(() => this.animating = false);
+            this.$nextTick(() => { this.animating = false; });
         },
         onFocus(event) {
             // If there is no value and there are no default options,
@@ -487,43 +490,43 @@ export default {
             const focusTarget = focusableItems[initialIndex];
 
             switch (true) {
-                case isKey('up', event) && this.keydownTrigger.includes('up'):
-                case isKey('down', event) && this.keydownTrigger.includes('down'):
-                    this.show();
+            case isKey('up', event) && this.keydownTrigger.includes('up'):
+            case isKey('down', event) && this.keydownTrigger.includes('down'):
+                this.show();
 
+                setTimeout(() => {
+                    focusTarget.focus();
+                }, this.visible ? 0 : this.animationDuration);
+
+                event.preventDefault();
+                event.stopPropagation();
+                break;
+
+            case isKey('enter', event) && this.keydownTrigger.includes('enter'):
+                if (this.selectFirstOptionOnEnter && (!this.value || !this.inputMatchesLabel(this.inputValue))) {
+                    const firstAvailableOption = this.options.find((option) => !option.disabled);
+
+                    if (firstAvailableOption) {
+                        this.onInput(firstAvailableOption);
+                        this.focus();
+                    }
+                } else {
+                    this.onClick();
+                }
+
+                if (!this.visible) {
                     setTimeout(() => {
                         focusTarget.focus();
-                    }, this.visible ? 0 : this.animationDuration);
+                    }, this.animationDuration);
+                }
 
-                    event.preventDefault();
-                    event.stopPropagation();
-                    break;
+                event.preventDefault();
+                break;
 
-                case isKey('enter', event) && this.keydownTrigger.includes('enter'):
-                    if (this.selectFirstOptionOnEnter && (!this.value || !this.inputMatchesLabel(this.inputValue))) {
-                        const firstAvailableOption = this.options.find((option) => !option.disabled);
-
-                        if (firstAvailableOption) {
-                            this.onInput(firstAvailableOption);
-                            this.focus();
-                        }
-                    } else {
-                        this.onClick();
-                    }
-
-                    if (!this.visible) {
-                        setTimeout(() => {
-                            focusTarget.focus();
-                        }, this.animationDuration);
-                    }
-
-                    event.preventDefault();
-                    break;
-
-                case isKey('tab', event) && this.keydownTrigger.includes('tab'):
-                case isKey('esc', event) && this.keydownTrigger.includes('esc'):
-                    this.hide();
-                    break;
+            case isKey('tab', event) && this.keydownTrigger.includes('tab'):
+            case isKey('esc', event) && this.keydownTrigger.includes('esc'):
+                this.hide();
+                break;
             }
         },
         onItemKeyDown(event) {
@@ -532,42 +535,42 @@ export default {
             }
 
             switch (true) {
-                case isKey('up', event) && this.keydownItem.includes('up'):
-                case isKey('down', event) && this.keydownItem.includes('down'):
-                    const focusableItems = this.getFocusableItems();
+            case isKey('up', event) && this.keydownItem.includes('up'):
+            case isKey('down', event) && this.keydownItem.includes('down'):
+                const focusableItems = this.getFocusableItems();
 
-                    const currentIndex = focusableItems.findIndex((item) => item === event.target);
-                    const maxIndex = focusableItems.length - 1;
-                    let nextIndex;
+                const currentIndex = focusableItems.findIndex((item) => item === event.target);
+                const maxIndex = focusableItems.length - 1;
+                let nextIndex;
 
-                    if (isKey('up', event)) {
-                        nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-                    } else {
-                        nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
-                    }
+                if (isKey('up', event)) {
+                    nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+                } else {
+                    nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
+                }
 
-                    focusableItems[nextIndex].focus();
+                focusableItems[nextIndex].focus();
 
-                    event.preventDefault();
-                    event.stopPropagation();
-                    break;
+                event.preventDefault();
+                event.stopPropagation();
+                break;
 
-                case isKey('enter', event) && this.keydownItem.includes('enter'):
-                case isKey('space', event) && this.keydownItem.includes('space'):
-                    event.target.click();
+            case isKey('enter', event) && this.keydownItem.includes('enter'):
+            case isKey('space', event) && this.keydownItem.includes('space'):
+                event.target.click();
 
-                    this.focus();
+                this.focus();
 
-                    event.preventDefault();
-                    break;
+                event.preventDefault();
+                break;
 
-                case isKey('tab', event) && this.keydownItem.includes('tab'):
-                case isKey('esc', event) && this.keydownItem.includes('esc'):
-                    this.hide();
-                    this.focus();
+            case isKey('tab', event) && this.keydownItem.includes('tab'):
+            case isKey('esc', event) && this.keydownItem.includes('esc'):
+                this.hide();
+                this.focus();
 
-                    event.preventDefault();
-                    break;
+                event.preventDefault();
+                break;
             }
         },
         onEscape() {

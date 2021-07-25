@@ -7,17 +7,17 @@
  * @param {String} name
  * @param {*} opts
  */
-export function triggerEvent (element, name, options) {
+export function triggerEvent (element, name, rawOptions) {
     if (typeof window === 'undefined') {
         return;
     }
 
     let eventName;
 
-    options = {
+    const options = {
         bubbles: false,
         cancelable: true,
-        ...options
+        ...rawOptions
     };
 
     if (/^mouse|click/.test(name)) {

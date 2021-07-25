@@ -1,34 +1,34 @@
 module.exports = {
-	name: 'breadcrumb',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default breadcrumb content',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'color',
-			description: 'The color variant of the breadcrumb',
-			type: [
-				'light',
-				'dark'
-			],
-			default: 'light'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the breadcrumb',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		}
-	],
-	css: {
+    name: 'breadcrumb',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default breadcrumb content',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'color',
+            description: 'The color variant of the breadcrumb',
+            type: [
+                'light',
+                'dark'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the breadcrumb',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        }
+    ],
+    css: {
 	    selector: '.breadcrumb',
         defaults: {
             size: 'md',

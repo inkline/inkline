@@ -1,1 +1,1 @@
-<template src="./size-variants.html"></template>
+<template src="./size-variants.html" />

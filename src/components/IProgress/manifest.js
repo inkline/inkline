@@ -1,50 +1,50 @@
 module.exports = {
-	name: 'progress',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default progress content',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'color',
-			description: 'The color variant of the progress component',
-			type: [
-				'light',
-				'dark'
-			],
-			default: 'light'
-		},
-		{
-			name: 'min',
-			description: 'The value to consider as the 0% starting point',
-			type: [
-				'Number'
-			],
-			default: '0'
-		},
-		{
-			name: 'max',
-			description: 'The value to consider as the 100% ending point',
-			type: [
-				'Number'
-			],
-			default: '100'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the progress component',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		}
-	],
-	css: {
+    name: 'progress',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default progress content',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'color',
+            description: 'The color variant of the progress component',
+            type: [
+                'light',
+                'dark'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'min',
+            description: 'The value to consider as the 0% starting point',
+            type: [
+                'Number'
+            ],
+            default: '0'
+        },
+        {
+            name: 'max',
+            description: 'The value to consider as the 100% ending point',
+            type: [
+                'Number'
+            ],
+            default: '100'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the progress component',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        }
+    ],
+    css: {
 	    selector: '.progress',
         defaults: {
             size: 'md',

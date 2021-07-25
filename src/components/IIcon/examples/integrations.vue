@@ -1,6 +1,6 @@
 <template>
     <i-list-group class="integrations-list">
-        <i-list-group-item class="integrations-item" v-for="iconPack in iconPacks" tag="div">
+        <i-list-group-item v-for="iconPack in iconPacks" :key="iconPack.name" class="integrations-item" tag="div">
             <div class="meta">
                 <div class="title">
                     <small class="_text:muted">Icon Pack</small>
@@ -18,7 +18,7 @@
             </div>
 
             <ul>
-                <li v-for="iconPackVariant in iconPack.variants">
+                <li v-for="iconPackVariant in iconPack.variants" :key="iconPackVariant.name">
                     <div>
                         <small class="_text:muted">Prefix</small>
                         <strong>{{ iconPackVariant.prefix }}</strong>

@@ -1,55 +1,55 @@
 module.exports = {
-	name: 'card',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default card content',
-			type: []
-		},
-		{
-			name: 'header',
-			description: 'Slot for card header content',
-			type: []
-		},
-		{
-			name: 'footer',
-			description: 'Slot for card footer content',
-			type: []
-		},
-		{
-			name: 'image',
-			description: 'Slot for card image',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'color',
-			description: 'The color variant of the card',
-			type: [
-				'primary',
-				'success',
-				'light',
-				'dark',
-				'info',
-				'success',
-				'warning',
-				'danger'
-			],
-			default: 'light'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the card',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		}
-	],
-	css: {
+    name: 'card',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default card content',
+            type: []
+        },
+        {
+            name: 'header',
+            description: 'Slot for card header content',
+            type: []
+        },
+        {
+            name: 'footer',
+            description: 'Slot for card footer content',
+            type: []
+        },
+        {
+            name: 'image',
+            description: 'Slot for card image',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'color',
+            description: 'The color variant of the card',
+            type: [
+                'primary',
+                'success',
+                'light',
+                'dark',
+                'info',
+                'success',
+                'warning',
+                'danger'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the card',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        }
+    ],
+    css: {
 	    selector: '.card',
         defaults: {
             size: 'md',

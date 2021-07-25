@@ -1,1 +1,1 @@
-<template src="./state-disabled.html"></template>
+<template src="./state-disabled.html" />

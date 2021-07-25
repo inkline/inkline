@@ -1,40 +1,40 @@
 module.exports = {
-	name: 'badge',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default badge content',
-			type: []
-		}
-	],
-	props: [
-		{
-			name: 'color',
-			description: 'The color variant of the badge',
-			type: [
-				'primary',
-				'success',
-				'light',
-				'dark',
-				'info',
-				'success',
-				'warning',
-				'danger'
-			],
-			default: 'light'
-		},
-		{
-			name: 'size',
-			description: 'The size variant of the badge',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		}
-	],
-	css: {
+    name: 'badge',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default badge content',
+            type: []
+        }
+    ],
+    props: [
+        {
+            name: 'color',
+            description: 'The color variant of the badge',
+            type: [
+                'primary',
+                'success',
+                'light',
+                'dark',
+                'info',
+                'success',
+                'warning',
+                'danger'
+            ],
+            default: 'light'
+        },
+        {
+            name: 'size',
+            description: 'The size variant of the badge',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        }
+    ],
+    css: {
 	    selector: '.badge',
         defaults: {
             size: 'md',

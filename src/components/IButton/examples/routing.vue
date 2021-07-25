@@ -1,1 +1,1 @@
-<template src="./routing.html"></template>
+<template src="./routing.html" />

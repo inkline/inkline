@@ -1,1 +1,1 @@
-<template src="./circle.html"></template>
+<template src="./circle.html" />

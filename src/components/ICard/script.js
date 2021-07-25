@@ -1,7 +1,6 @@
 import {
-    colorPropDefault,
     colorVariantClass,
-    sizePropDefault,
+    defaultPropValue,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 
@@ -41,7 +40,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description The size variant of the card
@@ -50,7 +49,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         }
     },

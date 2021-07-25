@@ -32,18 +32,18 @@ export const inklineGlobals = {};
 
 export const Inkline = {
     install(app, options = {}) {
-        options = {
+        const extendedOptions = {
             ...defaultOptions,
             ...options,
         };
 
-        let colorMode = options.colorMode;
+        let colorMode = extendedOptions.colorMode;
 
         /**
          * Register Inkline plugins
          */
 
-        InklineIcons.add(options.icons);
+        InklineIcons.add(extendedOptions.icons);
 
         app.use(InklineIcons, {
             registerComponent: false
@@ -53,8 +53,10 @@ export const Inkline = {
          * Register components provided through options globally
          */
 
-        for (const componentIndex in options.components) {
-            app.component(options.components[componentIndex].name, options.components[componentIndex]);
+        for (const componentIndex in extendedOptions.components) {
+            if (extendedOptions.components.hasOwnProperty(componentIndex)) {
+                app.component(extendedOptions.components[componentIndex].name, extendedOptions.components[componentIndex]);
+            }
         }
 
         /**
@@ -62,7 +64,7 @@ export const Inkline = {
          */
 
         if (typeof window !== 'undefined') {
-            colorMode = window.localStorage.getItem(colorModeLocalStorageKey) || options.colorMode;
+            colorMode = window.localStorage.getItem(colorModeLocalStorageKey) || extendedOptions.colorMode;
         }
 
         /**
@@ -78,11 +80,11 @@ export const Inkline = {
             },
             options: reactive({
                 colorMode,
-                locale: options.locale,
-                validateOn: options.validateOn,
-                color: options.color,
-                size: options.size,
-                componentOptions: options.componentOptions
+                locale: extendedOptions.locale,
+                validateOn: extendedOptions.validateOn,
+                color: extendedOptions.color,
+                size: extendedOptions.size,
+                componentOptions: extendedOptions.componentOptions
             })
         };
 

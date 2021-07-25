@@ -1,17 +1,17 @@
 module.exports = {
     name: 'icon',
     props: [
-		{
-			name: 'exports',
-			description: 'The size variant of the icon',
-			type: [
-				'sm',
-				'md',
-				'lg'
-			],
-			default: 'md'
-		}
-	],
+        {
+            name: 'exports',
+            description: 'The size variant of the icon',
+            type: [
+                'sm',
+                'md',
+                'lg'
+            ],
+            default: 'md'
+        }
+    ],
     css: {
 	    selector: '.inkline-icon',
         defaults: {

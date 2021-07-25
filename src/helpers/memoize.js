@@ -1,13 +1,14 @@
 export function memoize(fn) {
-	const cache = {};
+    const cache = {};
 
-	return (...args) => {
-		const cacheKey = JSON.stringify(args);
+    return (...args) => {
+        const cacheKey = JSON.stringify(args);
 
-		if (cacheKey in cache) {
+        if (cacheKey in cache) {
             return cache[cacheKey];
         }
 
-		return cache[cacheKey] = fn(...args);
-	};
+        cache[cacheKey] = fn(...args);
+        return cache[cacheKey];
+    };
 }

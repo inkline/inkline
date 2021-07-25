@@ -1,13 +1,13 @@
 module.exports = {
-	name: 'layout-aside',
-	slots: [
-		{
-			name: 'default',
-			description: 'Slot for default layout aside content',
-			type: []
-		}
-	],
-	css: {
+    name: 'layout-aside',
+    slots: [
+        {
+            name: 'default',
+            description: 'Slot for default layout aside content',
+            type: []
+        }
+    ],
+    css: {
 	    selector: '.layout-aside',
         defaults: {
             size: 'md',

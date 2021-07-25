@@ -1,10 +1,10 @@
 import { uid } from '@inkline/inkline/src/helpers';
 import {
-    colorPropDefault,
-    colorVariantClass, sizePropDefault,
-    sizePropValidator
+    defaultPropValue,
+    colorVariantClass,
+    sizePropValidator,
+    FormComponentMixin
 } from '@inkline/inkline/src/mixins';
-import { FormComponentMixin } from '@inkline/inkline/src/mixins';
 
 /**
  * @name prefix
@@ -64,7 +64,7 @@ export default {
          */
         color: {
             type: String,
-            default: colorPropDefault(componentName)
+            default: defaultPropValue(componentName, 'color')
         },
         /**
          * @description Display the input as clearable
@@ -147,7 +147,7 @@ export default {
          */
         size: {
             type: String,
-            default: sizePropDefault(componentName),
+            default: defaultPropValue(componentName, 'size'),
             validator: sizePropValidator
         },
         /**
