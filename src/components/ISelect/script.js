@@ -8,7 +8,7 @@ import {
     colorVariantClass,
     sizePropValidator,
     FormComponentMixin,
-    PopupMixin,
+    PopupMixin, colorPropDefault, sizePropDefault,
 } from '@inkline/inkline/src/mixins';
 import {
     useBaseModifiers,
@@ -52,8 +52,10 @@ import { getValueByPath } from "@inkline/inkline/src/helpers";
  * @property clear
  */
 
+const componentName = 'ISelect';
+
 export default {
-    name: 'ISelect',
+    name: componentName,
     mixins: [
         FormComponentMixin,
         PopupMixin
@@ -124,7 +126,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description Display the select as clearable
@@ -302,7 +304,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
         /**

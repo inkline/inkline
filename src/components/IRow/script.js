@@ -520,8 +520,10 @@ for (let breakpoint of breakpointKeys) {
     }
 }
 
+const componentName = 'IRow';
+
 export default {
-    name: 'IRow',
+    name: componentName,
     props: {
         noGutter: {
             type: Boolean,

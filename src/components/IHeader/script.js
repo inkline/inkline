@@ -1,5 +1,6 @@
 import {
-    colorVariantClass,
+    colorPropDefault,
+    colorVariantClass, sizePropDefault,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 
@@ -13,8 +14,10 @@ import IColumn from '@inkline/inkline/src/components/IColumn/index.vue';
  * @description Slot for default header content
  */
 
+const componentName = 'IHeader';
+
 export default {
-    name: 'IHeader',
+    name: componentName,
     components: {
         IContainer,
         IRow,
@@ -28,7 +31,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description Display the header background as cover, always covering the whole header width
@@ -64,7 +67,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

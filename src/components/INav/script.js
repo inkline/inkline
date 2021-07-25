@@ -1,5 +1,6 @@
 import {
-    colorVariantClass,
+    colorPropDefault,
+    colorVariantClass, sizePropDefault,
     sizePropValidator,
 } from '@inkline/inkline/src/mixins';
 
@@ -9,8 +10,10 @@ import {
  * @description Slot for default nav content
  */
 
+const componentName = 'INav';
+
 export default {
-    name: 'INav',
+    name: componentName,
     props: {
         /**
          * @description The color variant of the nav
@@ -19,7 +22,7 @@ export default {
          */
         color: {
             type: String,
-            default: '',
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The size variant of the nav
@@ -28,7 +31,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
         /**

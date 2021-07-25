@@ -8,8 +8,10 @@ import {
  * @description Slot for default dropdown item content
  */
 
+const componentName = 'IDropdownItem';
+
 export default {
-    name: 'IDropdownItem',
+    name: componentName,
     mixins: [
         LinkableMixin
     ],

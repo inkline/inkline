@@ -1,4 +1,9 @@
-import { colorVariantClass, sizePropValidator } from '@inkline/inkline/src/mixins';
+import {
+    colorPropDefault,
+    colorVariantClass,
+    sizePropDefault,
+    sizePropValidator
+} from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -24,8 +29,10 @@ import { colorVariantClass, sizePropValidator } from '@inkline/inkline/src/mixin
  * @description Slot for card image
  */
 
+const componentName = 'ICard';
+
 export default {
-    name: 'ICard',
+    name: componentName,
     props: {
         /**
          * @description The color variant of the card
@@ -34,7 +41,7 @@ export default {
          */
         color: {
             type: String,
-            default: '',
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The size variant of the card
@@ -43,7 +50,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

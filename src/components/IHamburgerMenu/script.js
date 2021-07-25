@@ -1,9 +1,12 @@
 import {
+    colorPropDefault,
     colorVariantClass,
 } from '@inkline/inkline/src/mixins';
 
+const componentName = 'IHamburgerMenu';
+
 export default {
-    name: 'IHamburgerMenu',
+    name: componentName,
     emits: [
         /**
          * @event update:modelValue
@@ -28,7 +31,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description Used to set the hamburger menu as opened or closed

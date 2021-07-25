@@ -1,4 +1,5 @@
 import { IIcon } from '@inkline/icons/components';
+import {sizePropDefault, sizePropValidator} from "@inkline/inkline/src/mixins";
 
 /**
  * @description The icon to be displayed
@@ -6,15 +7,23 @@ import { IIcon } from '@inkline/icons/components';
  * @default
  */
 
-/**
- * @description The size variant of the icon
- * @type sm | md | lg
- * @default md
- */
+const componentName = 'IIcon';
 
 export default {
-    name: 'IIcon',
+    name: componentName,
     components: {
         Icon: IIcon
+    },
+    props: {
+        /**
+         * @description The size variant of the icon
+         * @type sm | md | lg
+         * @default md
+         */
+        size: {
+            type: String,
+            default: sizePropDefault(componentName),
+            validator: sizePropValidator
+        }
     }
 };

@@ -1,6 +1,7 @@
 import { uid } from '@inkline/inkline/src/helpers';
 import {
-    colorVariantClass,
+    colorPropDefault,
+    colorVariantClass, sizePropDefault,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 import { FormComponentMixin } from '@inkline/inkline/src/mixins';
@@ -36,8 +37,10 @@ import { FormComponentMixin } from '@inkline/inkline/src/mixins';
  * @property clear
  */
 
+const componentName = 'IInput';
+
 export default {
-    name: 'IInput',
+    name: componentName,
     mixins: [
         FormComponentMixin
     ],
@@ -61,7 +64,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description Display the input as clearable
@@ -144,7 +147,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
         /**

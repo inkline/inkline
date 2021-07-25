@@ -6,7 +6,7 @@ import {
     uid
 } from '@inkline/inkline/src/helpers';
 import {
-    colorVariantClass,
+    colorVariantClass, sizePropDefault,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 import {
@@ -20,8 +20,10 @@ import { validate } from "@inkline/inkline/src/validation";
  * @description Slot for default card content
  */
 
+const componentName = 'IForm';
+
 export default {
-    name: 'IForm',
+    name: componentName,
     mixins: [
         FormComponentMixin
     ],
@@ -111,7 +113,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

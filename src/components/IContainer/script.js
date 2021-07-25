@@ -4,8 +4,10 @@
  * @description Slot for default container content
  */
 
+const componentName = 'IContainer';
+
 export default {
-    name: 'IContainer',
+    name: componentName,
     props: {
         /**
          * @description Display the container as fluid, always spanning 100% width

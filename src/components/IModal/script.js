@@ -1,7 +1,8 @@
 import { addClass, removeClass, uid } from '@inkline/inkline/src/helpers';
 import { OverlayController } from '@inkline/inkline/src/controllers';
 import {
-    colorVariantClass,
+    colorPropDefault,
+    colorVariantClass, sizePropDefault,
     sizePropValidator,
 } from '@inkline/inkline/src/mixins';
 import { ClickOutside } from '@inkline/inkline/src/directives';
@@ -29,8 +30,10 @@ import { ClickOutside } from '@inkline/inkline/src/directives';
  * @description Slot for modal footer content
  */
 
+const componentName = 'IModal';
+
 export default {
-    name: 'IModal',
+    name: componentName,
     directives: {
         ClickOutside
     },
@@ -58,7 +61,7 @@ export default {
          */
         color: {
             type: String,
-            default: '',
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The disabled state of the modal
@@ -105,7 +108,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
         /**

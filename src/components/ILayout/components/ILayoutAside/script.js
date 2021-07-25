@@ -4,6 +4,8 @@
  * @description Slot for default layout aside content
  */
 
+const componentName = 'ILayoutAside';
+
 export default {
-    name: 'ILayoutAside'
+    name: componentName
 };

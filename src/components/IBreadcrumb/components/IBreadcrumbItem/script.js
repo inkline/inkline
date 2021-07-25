@@ -14,8 +14,10 @@ import { LinkableMixin } from '@inkline/inkline/src/mixins';
  * @default a
  */
 
+const componentName = 'IBreadcrumbItem';
+
 export default {
-    name: 'IBreadcrumbItem',
+    name: componentName,
     mixins: [
         LinkableMixin
     ],

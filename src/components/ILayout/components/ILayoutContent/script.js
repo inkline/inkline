@@ -4,6 +4,8 @@
  * @description Slot for default layout content children
  */
 
+const componentName = 'ILayoutContent';
+
 export default {
-    name: 'ILayoutContent'
+    name: componentName
 };

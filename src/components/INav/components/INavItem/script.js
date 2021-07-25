@@ -8,8 +8,10 @@ import {
  * @description Slot for default nav item content
  */
 
+const componentName = 'INavItem';
+
 export default {
-    name: 'INavItem',
+    name: componentName,
     mixins: [
         LinkableMixin
     ],

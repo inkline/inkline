@@ -1,4 +1,10 @@
-import { colorVariantClass, sizePropValidator, FormComponentMixin } from "@inkline/inkline/src/mixins";
+import {
+    colorVariantClass,
+    sizePropValidator,
+    FormComponentMixin,
+    colorPropDefault,
+    sizePropDefault
+} from "@inkline/inkline/src/mixins";
 import { uid } from "@inkline/inkline/src/helpers";
 
 /**
@@ -7,8 +13,10 @@ import { uid } from "@inkline/inkline/src/helpers";
  * @description Slot for default checkbox group options
  */
 
+const componentName = 'ICheckboxGroup';
+
 export default {
-    name: 'ICheckboxGroup',
+    name: componentName,
     mixins: [
         FormComponentMixin
     ],
@@ -27,7 +35,7 @@ export default {
          */
         color: {
             type: String,
-            default: '',
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The disabled state of the checkbox group
@@ -90,7 +98,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

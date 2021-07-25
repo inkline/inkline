@@ -2,7 +2,7 @@ import {
     PopupMixin,
     PopupControlsMixin,
     sizePropValidator,
-    colorVariantClass
+    colorVariantClass, colorPropDefault, sizePropDefault
 } from '@inkline/inkline/src/mixins';
 import ClickOutside from '@inkline/inkline/src/directives/click-outside';
 
@@ -18,8 +18,10 @@ import ClickOutside from '@inkline/inkline/src/directives/click-outside';
  * @description Slot for tooltip body content
  */
 
+const componentName = 'ITooltip';
+
 export default {
-    name: 'ITooltip',
+    name: componentName,
     mixins: [
         PopupMixin,
         PopupControlsMixin
@@ -42,7 +44,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The disabled state of the tooltip
@@ -114,7 +116,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
     },

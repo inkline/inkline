@@ -6,8 +6,10 @@ import { getValueByPath } from '@inkline/inkline/src/helpers';
  * @description Slot for default form error content
  */
 
+const componentName = 'IFormError';
+
 export default {
-    name: 'IFormError',
+    name: componentName,
     inject: {
         formGroup: {
             default: () => ({})

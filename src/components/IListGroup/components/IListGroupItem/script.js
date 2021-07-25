@@ -8,8 +8,10 @@ import {
  * @description Slot for default list group item content
  */
 
+const componentName = 'IListGroupItem';
+
 export default {
-    name: 'IListGroupItem',
+    name: componentName,
     mixins: [
         LinkableMixin
     ],

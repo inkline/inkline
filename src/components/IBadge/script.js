@@ -1,4 +1,4 @@
-import { colorVariantClass, sizePropValidator } from '@inkline/inkline/src/mixins';
+import {colorPropDefault, colorVariantClass, sizePropDefault, sizePropValidator} from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -6,8 +6,10 @@ import { colorVariantClass, sizePropValidator } from '@inkline/inkline/src/mixin
  * @description Slot for default badge content
  */
 
+const componentName = 'IBadge';
+
 export default {
-    name: 'IBadge',
+    name: componentName,
     props: {
         /**
          * @description The color variant of the badge
@@ -16,7 +18,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The size variant of the badge
@@ -25,7 +27,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

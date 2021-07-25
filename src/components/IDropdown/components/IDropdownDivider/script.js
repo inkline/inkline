@@ -1,3 +1,5 @@
+const componentName = 'IDropdownDivider';
+
 export default {
-    name: 'IDropdownDivider'
+    name: componentName
 };

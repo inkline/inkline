@@ -4,8 +4,10 @@
  * @description Slot for default select option content
  */
 
+const componentName = 'ISelectOption';
+
 export default {
-    name: 'ISelectOption',
+    name: componentName,
     props: {
         /**
          * @description The active state of the select option

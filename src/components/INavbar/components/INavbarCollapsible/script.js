@@ -6,8 +6,10 @@ import IExpandTransition from '@inkline/inkline/src/transitions/IExpandTransitio
  * @description Slot for default navbar collapsible content
  */
 
+const componentName = 'INavbarCollapsible';
+
 export default {
-    name: 'INavbarCollapsible',
+    name: componentName,
     components: {
         IExpandTransition
     },

@@ -1,5 +1,11 @@
 import { uid } from "@inkline/inkline/src/helpers";
-import { colorVariantClass, sizePropValidator, FormComponentMixin } from "@inkline/inkline/src/mixins";
+import {
+    colorVariantClass,
+    sizePropValidator,
+    FormComponentMixin,
+    colorPropDefault,
+    sizePropDefault
+} from "@inkline/inkline/src/mixins";
 
 /**
  * @name default
@@ -7,8 +13,10 @@ import { colorVariantClass, sizePropValidator, FormComponentMixin } from "@inkli
  * @description Slot for default checkbox label
  */
 
+const componentName = 'ICheckbox';
+
 export default {
-    name: 'ICheckbox',
+    name: componentName,
     mixins: [
         FormComponentMixin
     ],
@@ -27,7 +35,7 @@ export default {
          */
         color: {
             type: String,
-            default: '',
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The disabled state of the checkbox
@@ -97,7 +105,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
         /**

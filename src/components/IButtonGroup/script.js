@@ -1,4 +1,4 @@
-import { sizePropValidator } from '@inkline/inkline/src/mixins';
+import {sizePropDefault, sizePropValidator} from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -6,8 +6,10 @@ import { sizePropValidator } from '@inkline/inkline/src/mixins';
  * @description Slot for default button group content
  */
 
+const componentName = 'IButtonGroup';
+
 export default {
-    name: 'IButtonGroup',
+    name: componentName,
     props: {
         /**
          * @description Display the button group with vertical orientation
@@ -43,7 +45,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

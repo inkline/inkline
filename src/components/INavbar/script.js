@@ -3,8 +3,8 @@ import IRow from '@inkline/inkline/src/components/IRow/index.vue';
 import IColumn from '@inkline/inkline/src/components/IColumn/index.vue';
 import IHamburgerMenu from '@inkline/inkline/src/components/IHamburgerMenu/index.vue';
 import {
-    CollapsibleMixin,
-    colorVariantClass,
+    CollapsibleMixin, colorPropDefault,
+    colorVariantClass, sizePropDefault,
     sizePropValidator,
 } from '@inkline/inkline/src/mixins';
 import { ClickOutside } from '@inkline/inkline/src/directives';
@@ -15,8 +15,10 @@ import { ClickOutside } from '@inkline/inkline/src/directives';
  * @description Slot for default navbar content
  */
 
+const componentName = 'INavbar';
+
 export default {
-    name: 'INavbar',
+    name: componentName,
     emits: [
         /**
          * @event update:modelValue
@@ -62,7 +64,7 @@ export default {
          */
         color: {
             type: String,
-            default: '',
+            default: colorPropDefault(componentName)
         },
         /**
          * @description Display the inner container as fluid, spanning 100% width
@@ -80,7 +82,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
         /**

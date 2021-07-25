@@ -6,8 +6,10 @@ import {colorVariantClass} from "@inkline/inkline/src/mixins";
  * @description Slot for default progress bar content
  */
 
+const componentName = 'IProgressBar';
+
 export default {
-    name: 'IProgressBar',
+    name: componentName,
     props: {
         /**
          * @description The color variant of the progress bar

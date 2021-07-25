@@ -1,10 +1,12 @@
 import IButton from '@inkline/inkline/src/components/IButton/index.vue';
 import IInput from '@inkline/inkline/src/components/IInput/index.vue';
 import { uid } from "@inkline/inkline/src/helpers";
-import { sizePropValidator } from "@inkline/inkline/src/mixins/props";
+import {colorPropDefault, sizePropDefault, sizePropValidator} from "@inkline/inkline/src/mixins/props";
+
+const componentName = 'INumberInput';
 
 export default {
-    name: 'INumberInput',
+    name: componentName,
     extends: IInput,
     components: {
         IButton
@@ -24,7 +26,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description Display the input as clearable
@@ -89,7 +91,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
         /**

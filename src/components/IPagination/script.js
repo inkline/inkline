@@ -1,4 +1,4 @@
-import { colorVariantClass, sizePropValidator } from '@inkline/inkline/src/mixins';
+import {colorPropDefault, colorVariantClass, sizePropDefault, sizePropValidator} from '@inkline/inkline/src/mixins';
 import { breakpointKeys, breakpoints } from "@inkline/inkline/src/constants";
 import { debounce } from "@inkline/inkline/src/helpers";
 
@@ -14,8 +14,10 @@ import { debounce } from "@inkline/inkline/src/helpers";
  * @description Slot for next button content
  */
 
+const componentName = 'IPagination';
+
 export default {
-    name: 'IPagination',
+    name: componentName,
     emits: [
         /**
          * @event update:modelValue
@@ -31,7 +33,7 @@ export default {
          */
         color: {
             type: String,
-            default: '',
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The number of items per page to be displayed
@@ -94,7 +96,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
     },

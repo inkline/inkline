@@ -1,5 +1,6 @@
 import {
-    colorVariantClass,
+    colorPropDefault,
+    colorVariantClass, sizePropDefault,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 
@@ -9,8 +10,10 @@ import {
  * @description Slot for default collapsible content
  */
 
+const componentName = 'ICollapsible';
+
 export default {
-    name: 'ICollapsible',
+    name: componentName,
     emits: [
         /**
          * @event update:modelValue
@@ -35,7 +38,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The size variant of the collapsible
@@ -44,7 +47,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
         /**

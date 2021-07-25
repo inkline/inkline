@@ -1,4 +1,4 @@
-import { sizePropValidator } from '@inkline/inkline/src/mixins';
+import { colorPropDefault, sizePropDefault, sizePropValidator } from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -18,8 +18,10 @@ import { sizePropValidator } from '@inkline/inkline/src/mixins';
  * @description Slot for alert dismiss button
  */
 
+const componentName = 'IAlert';
+
 export default {
-    name: 'IAlert',
+    name: componentName,
     emits: [
         /**
          * @event update:modelValue
@@ -35,7 +37,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
         /**
@@ -45,7 +47,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description Used to show or hide a dismissible alert

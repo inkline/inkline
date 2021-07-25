@@ -8,8 +8,10 @@ import {
  * @description Slot for default navbar brand content
  */
 
+const componentName = 'INavbarBrand';
+
 export default {
-    name: 'INavbarBrand',
+    name: componentName,
     mixins: [
         LinkableMixin
     ],

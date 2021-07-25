@@ -2,7 +2,7 @@ import {
     PopupMixin,
     PopupControlsMixin,
     sizePropValidator,
-    colorVariantClass
+    colorVariantClass, colorPropDefault, sizePropDefault
 } from '@inkline/inkline/src/mixins';
 import { ClickOutside } from '@inkline/inkline/src/directives';
 import { on, off, isFocusable, isKey } from "@inkline/inkline/src/helpers";
@@ -32,8 +32,10 @@ import { on, off, isFocusable, isKey } from "@inkline/inkline/src/helpers";
  * @description Slot for dropdown footer content
  */
 
+const componentName = 'IDropdown';
+
 export default {
-    name: 'IDropdown',
+    name: componentName,
     mixins: [
         PopupMixin,
         PopupControlsMixin
@@ -65,7 +67,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The disabled state of the dropdown
@@ -164,7 +166,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
     },

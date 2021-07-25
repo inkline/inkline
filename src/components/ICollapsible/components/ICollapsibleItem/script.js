@@ -13,8 +13,10 @@ import IExpandTransition from '@inkline/inkline/src/transitions/IExpandTransitio
  * @description Slot for collapsible item header content
  */
 
+const componentName = 'ICollapsibleItem';
+
 export default {
-    name: 'ICollapsibleItem',
+    name: componentName,
     components: {
         IExpandTransition
     },

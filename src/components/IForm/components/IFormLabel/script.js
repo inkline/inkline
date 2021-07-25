@@ -1,5 +1,5 @@
 import {
-    FormComponentMixin,
+    FormComponentMixin, sizePropDefault,
     sizePropValidator
 } from "@inkline/inkline/src/mixins";
 
@@ -9,8 +9,10 @@ import {
  * @description Slot for default form label content
  */
 
+const componentName = 'IFormLabel';
+
 export default {
-    name: 'IFormLabel',
+    name: componentName,
     mixins: [
         FormComponentMixin
     ],
@@ -40,7 +42,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

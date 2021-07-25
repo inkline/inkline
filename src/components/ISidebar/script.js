@@ -1,6 +1,6 @@
 import {
-    CollapsibleMixin,
-    colorVariantClass,
+    CollapsibleMixin, colorPropDefault,
+    colorVariantClass, sizePropDefault,
     sizePropValidator,
 } from '@inkline/inkline/src/mixins';
 
@@ -10,8 +10,10 @@ import {
  * @description Slot for default sidebar content
  */
 
+const componentName = 'ISidebar';
+
 export default {
-    name: 'ISidebar',
+    name: componentName,
     emits: [
         /**
          * @event update:modelValue
@@ -57,7 +59,7 @@ export default {
          */
         color: {
             type: String,
-            default: '',
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The placement of the sidebar
@@ -75,7 +77,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
     },

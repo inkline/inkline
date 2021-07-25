@@ -1,4 +1,9 @@
-import { colorVariantClass, sizePropValidator } from '@inkline/inkline/src/mixins';
+import {
+    colorPropDefault,
+    colorVariantClass,
+    sizePropDefault,
+    sizePropValidator
+} from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -6,8 +11,10 @@ import { colorVariantClass, sizePropValidator } from '@inkline/inkline/src/mixin
  * @description Slot for default breadcrumb content
  */
 
+const componentName = 'IBreadcrumb';
+
 export default {
-    name: 'IBreadcrumb',
+    name: componentName,
     props: {
         /**
          * @description The color variant of the breadcrumb
@@ -16,7 +23,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The size variant of the breadcrumb
@@ -25,7 +32,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

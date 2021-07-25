@@ -5,9 +5,14 @@ import { setLocale } from '@inkline/inkline/src/i18n';
 import { InklineIcons } from '@inkline/icons';
 
 const defaultOptions = {
-    colorMode: 'system',
     components: {},
-    icons: {}
+    icons: {},
+    colorMode: 'system',
+    locale: 'en',
+    validateOn: ['input', 'blur'],
+    color: '',
+    size: '',
+    componentOptions: {}
 };
 
 const colorModeLocalStorageKey = 'inkline-color-mode';
@@ -23,11 +28,13 @@ const handleColorMode = (colorMode) => {
     addClass(document.body, `-${color}`);
 };
 
+export const inklineGlobals = {};
+
 export const Inkline = {
     install(app, options = {}) {
         options = {
             ...defaultOptions,
-            ...options
+            ...options,
         };
 
         let colorMode = options.colorMode;
@@ -70,9 +77,12 @@ export const Inkline = {
                 setLocale(locale);
             },
             options: reactive({
-                locale: 'en',
-                validateOn: ['input', 'blur'],
                 colorMode,
+                locale: options.locale,
+                validateOn: options.validateOn,
+                color: options.color,
+                size: options.size,
+                componentOptions: options.componentOptions
             })
         };
 
@@ -116,5 +126,7 @@ export const Inkline = {
 
             handleColorMode(colorMode);
         }
+
+        inklineGlobals.prototype = app.config.globalProperties.$inkline;
     }
 };

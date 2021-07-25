@@ -6,8 +6,10 @@ import { uid } from '@inkline/inkline/src/helpers';
  * @description Slot for default tab content
  */
 
+const componentName = 'ITab';
+
 export default {
-    name: 'ITab',
+    name: componentName,
     props: {
         /**
          * @description The title of the tab

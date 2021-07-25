@@ -4,8 +4,10 @@
  * @description Slot for default layout content
  */
 
+const componentName = 'ILayout';
+
 export default {
-    name: 'ILayout',
+    name: componentName,
     props: {
         /**
          * @description Display the layout on a vertical orientation

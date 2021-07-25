@@ -4,6 +4,8 @@
  * @description Slot for default media content
  */
 
+const componentName = 'IMedia';
+
 export default {
-    name: 'IMedia'
+    name: componentName
 };

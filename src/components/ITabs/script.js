@@ -1,5 +1,6 @@
 import {
-    colorVariantClass,
+    colorPropDefault,
+    colorVariantClass, sizePropDefault,
     sizePropValidator,
 } from '@inkline/inkline/src/mixins';
 
@@ -9,8 +10,10 @@ import {
  * @description Slot for default tabs content
  */
 
+const componentName = 'ITabs';
+
 export default {
-    name: 'ITabs',
+    name: componentName,
     emits: [
         /**
          * @event update:modelValue
@@ -26,7 +29,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description Used to set the currently active tab
@@ -44,7 +47,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         },
         /**

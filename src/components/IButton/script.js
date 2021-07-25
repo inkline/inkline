@@ -1,5 +1,11 @@
 import ILoader from '@inkline/inkline/src/components/ILoader/index.vue';
-import { LinkableMixin, sizePropValidator, colorVariantClass } from '@inkline/inkline/src/mixins';
+import {
+    LinkableMixin,
+    sizePropValidator,
+    colorVariantClass,
+    sizePropDefault,
+    colorPropDefault
+} from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -13,8 +19,10 @@ import { LinkableMixin, sizePropValidator, colorVariantClass } from '@inkline/in
  * @description Slot for button loading state
  */
 
+const componentName = 'IButton';
+
 export default {
-    name: 'IButton',
+    name: componentName,
     mixins: [
         LinkableMixin
     ],
@@ -56,7 +64,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The disabled state of the button
@@ -119,7 +127,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

@@ -1,4 +1,4 @@
-import { colorVariantClass } from "@inkline/inkline/src/mixins";
+import {colorPropDefault, colorVariantClass} from "@inkline/inkline/src/mixins";
 
 /**
  * @name default
@@ -6,8 +6,10 @@ import { colorVariantClass } from "@inkline/inkline/src/mixins";
  * @description Slot for default table content
  */
 
+const componentName = 'ITable';
+
 export default {
-    name: 'ITable',
+    name: componentName,
     props: {
         /**
          * @description Display the table with borders
@@ -70,7 +72,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         }
     },
     computed: {

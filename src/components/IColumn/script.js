@@ -359,8 +359,10 @@ for (let breakpoint of breakpointKeys) {
     }
 }
 
+const componentName = 'IColumn';
+
 export default {
-    name: 'IColumn',
+    name: componentName,
     props: properties,
     computed: {
         classes() {

@@ -1,5 +1,6 @@
 import {
-    colorVariantClass, sizePropValidator,
+    colorPropDefault,
+    colorVariantClass, sizePropDefault, sizePropValidator,
 } from '@inkline/inkline/src/mixins';
 
 /**
@@ -8,8 +9,10 @@ import {
  * @description Slot for default list group content
  */
 
+const componentName = 'IListGroup';
+
 export default {
-    name: 'IListGroup',
+    name: componentName,
     props: {
         /**
          * @description Display the list group border
@@ -27,7 +30,7 @@ export default {
          */
         color: {
             type: String,
-            default: '',
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The size variant of the list group
@@ -36,7 +39,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

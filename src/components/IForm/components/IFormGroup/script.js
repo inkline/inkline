@@ -1,5 +1,6 @@
 import {
-    colorVariantClass,
+    colorPropDefault,
+    colorVariantClass, sizePropDefault,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 import { FormComponentMixin } from '@inkline/inkline/src/mixins';
@@ -10,8 +11,10 @@ import { FormComponentMixin } from '@inkline/inkline/src/mixins';
  * @description Slot for default form group content
  */
 
+const componentName = 'IFormGroup';
+
 export default {
-    name: 'IFormGroup',
+    name: componentName,
     mixins: [
         FormComponentMixin
     ],
@@ -23,7 +26,7 @@ export default {
          */
         color: {
             type: String,
-            default: ''
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The disabled state of the form group
@@ -77,7 +80,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },

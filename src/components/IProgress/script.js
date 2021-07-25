@@ -1,5 +1,6 @@
 import {
-    colorVariantClass,
+    colorPropDefault,
+    colorVariantClass, sizePropDefault,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
 
@@ -9,8 +10,10 @@ import {
  * @description Slot for default progress content
  */
 
+const componentName = 'IProgress';
+
 export default {
-    name: 'IProgress',
+    name: componentName,
     props: {
         /**
          * @description The color variant of the progress component
@@ -19,7 +22,7 @@ export default {
          */
         color: {
             type: String,
-            default: '',
+            default: colorPropDefault(componentName)
         },
         /**
          * @description The value to consider as the 0% starting point
@@ -46,7 +49,7 @@ export default {
          */
         size: {
             type: String,
-            default: '',
+            default: sizePropDefault(componentName),
             validator: sizePropValidator
         }
     },
