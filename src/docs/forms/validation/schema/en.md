@@ -1,6 +1,6 @@
 ---
-title: Form Validation
-description: Inkline provides you with powerful form validation utilities. 
+title: Form Validation Schema
+description:  The validation schema defines the form input fields, groups and how they work together.
 ---
 
 <script setup>

@@ -12,6 +12,15 @@ import * as icons from '@inkline/icons/packs/inkline';
 
 const routes = [
     { name: 'index', path: '/', component: {}, meta: { path: '' } },
+    { name: 'docs-preface', path: '/docs/preface', component: () => import('../docs/preface/en.md') },
+    { name: 'docs-preface-concepts', path: '/docs/preface/concepts', component: () => import('../docs/preface/concepts/en.md') },
+    { name: 'docs-preface-contribution-guide', path: '/docs/preface/contribution-guide', component: () => import('../docs/preface/contribution-guide/en.md') },
+    { name: 'docs-introduction', path: '/docs/introduction', component: () => import('../docs/introduction/en.md') },
+    { name: 'docs-introduction-installation-vue-cli', path: '/docs/introduction/installation/vue-cli', component: () => import('../docs/introduction/installation/vue-cli/en.md') },
+    { name: 'docs-introduction-installation-nuxt', path: '/docs/introduction/installation/nuxt', component: () => import('../docs/introduction/installation/nuxt/en.md') },
+    { name: 'docs-introduction-installation-custom', path: '/docs/introduction/installation/custom', component: () => import('../docs/introduction/installation/custom/en.md') },
+    { name: 'docs-introduction-installation-cdn', path: '/docs/introduction/installation/cdn', component: () => import('../docs/introduction/installation/cdn/en.md') },
+    { name: 'docs-introduction-plugin-options', path: '/docs/introduction/plugin-options', component: () => import('../docs/introduction/plugin-options/en.md') },
     { name: 'docs-core-grid', path: '/docs/core/grid', component: () => import('../components/IContainer/docs/en.md') },
     { name: 'docs-core-layout', path: '/docs/core/layout', component: () => import('../components/ILayout/docs/en.md') },
     { name: 'docs-core-typography', path: '/docs/core/typography', component: () => import('../docs/core/typography/en.md') },

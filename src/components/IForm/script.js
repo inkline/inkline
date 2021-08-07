@@ -168,8 +168,6 @@ export default {
                     schema = validate(schema);
                 }
 
-                console.log(name, schema);
-
                 this.$emit('update:modelValue', schema);
             }
         },

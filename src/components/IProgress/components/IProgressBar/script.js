@@ -1,4 +1,4 @@
-import {colorVariantClass} from "@inkline/inkline/src/mixins";
+import {colorVariantClass, defaultPropValue} from "@inkline/inkline/src/mixins";
 
 /**
  * @name default
@@ -18,7 +18,7 @@ export default {
          */
         color: {
             type: String,
-            default: 'primary',
+            default: defaultPropValue(componentName, 'color', 'primary'),
         },
         /**
          * @description The value of the progress bar

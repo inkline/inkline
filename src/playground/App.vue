@@ -3,8 +3,59 @@
         <aside id="sidebar">
             <ul>
                 <li>
-                    <router-link :to="{ name: 'index' }">
-                        Home
+                    Preface
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-preface' }">
+                        About Inkline
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-preface-concepts' }">
+                        Concepts
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-preface-contribution-guide' }">
+                        Contribution Guide
+                    </router-link>
+                </li>
+                <li>
+                    Introduction
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-introduction' }">
+                        Getting Started
+                    </router-link>
+                </li>
+                <li>
+                    Installation
+                    <ul>
+                        <li>
+                            <router-link :to="{ name: 'docs-introduction-installation-vue-cli' }">
+                                Vue CLI
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'docs-introduction-installation-nuxt' }">
+                                Nuxt.js
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'docs-introduction-installation-custom' }">
+                                Custom
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'docs-introduction-installation-cdn' }">
+                                CDN
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docs-introduction-plugin-options' }">
+                        Plugin Options
                     </router-link>
                 </li>
                 <li>
