@@ -53,10 +53,8 @@ export const Inkline = {
          * Register components provided through options globally
          */
 
-        for (const componentIndex in extendedOptions.components) {
-            if (extendedOptions.components.hasOwnProperty(componentIndex)) {
-                app.component(extendedOptions.components[componentIndex].name, extendedOptions.components[componentIndex]);
-            }
+        for (const componentIndex in extendedOptions.components) { // eslint-disable-line guard-for-in
+            app.component(extendedOptions.components[componentIndex].name, extendedOptions.components[componentIndex]);
         }
 
         /**
