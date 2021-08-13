@@ -119,7 +119,7 @@ module.exports = {
 	    variables: [
             {
                 name: 'background',
-                description: 'The background of the popover component',
+                description: 'The background of the tooltip component',
                 type: 'color',
                 variants: {
                     light: 'color(\'white\')',
@@ -127,8 +127,8 @@ module.exports = {
                 }
             },
             {
-                name: 'border-color',
-                description: 'The border-color of the popover component',
+                name: 'border-top-color',
+                description: 'The border top color of the tooltip component',
                 type: 'color',
                 variants: {
                     light: 'color(\'light\')',
@@ -136,96 +136,128 @@ module.exports = {
                 }
             },
             {
+                name: 'border-right-color',
+                description: 'The border right color of the tooltip component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')'
+                }
+            },
+            {
+                name: 'border-bottom-color',
+                description: 'The border bottom color of the tooltip component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')'
+                }
+            },
+            {
+                name: 'border-left-color',
+                description: 'The border left color of the tooltip component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')'
+                }
+            },
+            {
+                name: 'border-color',
+                description: 'The border color of the tooltip component',
+                value: ['var(----border-top-color)', 'var(----border-right-color)', 'var(----border-bottom-color)', 'var(----border-left-color)']
+            },
+            {
                 name: 'border-style',
-                description: 'The border style of the popover component',
+                description: 'The border style of the tooltip component',
                 value: 'var(--border-style)'
             },
             {
                 name: 'border-top-width',
-                description: 'The border top width of the popover component',
+                description: 'The border top width of the tooltip component',
                 value: 'var(--border-top-width)'
             },
             {
                 name: 'border-right-width',
-                description: 'The border right width of the popover component',
+                description: 'The border right width of the tooltip component',
                 value: 'var(--border-right-width)'
             },
             {
                 name: 'border-bottom-width',
-                description: 'The border bottom width of the popover component',
+                description: 'The border bottom width of the tooltip component',
                 value: 'var(--border-bottom-width)'
             },
             {
                 name: 'border-left-width',
-                description: 'The border left width of the popover component',
+                description: 'The border left width of the tooltip component',
                 value: 'var(--border-left-width)'
             },
             {
                 name: 'border-width',
-                description: 'The border width of the popover component',
+                description: 'The border width of the tooltip component',
                 value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
             },
             {
                 name: 'border-top-left-radius',
                 type: 'size',
-                description: 'The border top left radius of the popover component',
+                description: 'The border top left radius of the tooltip component',
                 value: 'var(--border-top-left-radius)'
             },
             {
                 name: 'border-top-right-radius',
                 type: 'size',
-                description: 'The border top right radius of the popover component',
+                description: 'The border top right radius of the tooltip component',
                 value: 'var(--border-top-right-radius)'
             },
             {
                 name: 'border-bottom-right-radius',
                 type: 'size',
-                description: 'The border bottom right radius of the popover component',
+                description: 'The border bottom right radius of the tooltip component',
                 value: 'var(--border-bottom-right-radius)'
             },
             {
                 name: 'border-bottom-left-radius',
                 type: 'size',
-                description: 'The border bottom left radius of the popover component',
+                description: 'The border bottom left radius of the tooltip component',
                 value: 'var(--border-bottom-left-radius)'
             },
             {
                 name: 'border-radius',
-                description: 'The border radius of the popover component',
+                description: 'The border radius of the tooltip component',
                 value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
             },{
                 name: 'box-shadow-offset-x',
-                description: 'The box shadow horizontal offset of the popover component',
+                description: 'The box shadow horizontal offset of the tooltip component',
                 value: 'var(--box-shadow-offset-x)'
             },
             {
                 name: 'box-shadow-offset-y',
-                description: 'The box shadow vertical offset of the popover component',
+                description: 'The box shadow vertical offset of the tooltip component',
                 value: 'var(--box-shadow-offset-y)'
             },
             {
                 name: 'box-shadow-blur-radius',
-                description: 'The box shadow blur radius of the popover component',
+                description: 'The box shadow blur radius of the tooltip component',
                 value: 'var(--box-shadow-blur-radius)'
             },
             {
                 name: 'box-shadow-spread-radius',
-                description: 'The box shadow spread radius of the popover component',
+                description: 'The box shadow spread radius of the tooltip component',
                 value: 'var(--box-shadow-spread-radius)'
             },
             {
                 name: 'box-shadow-color',
-                description: 'The box shadow spread radius of the popover component',
+                description: 'The box shadow spread radius of the tooltip component',
                 value: 'var(--box-shadow-color)'
             },
             {
                 name: 'box-shadow',
-                description: 'The box shadow of the popover component',
+                description: 'The box shadow of the tooltip component',
                 value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
             },
             {
                 name: 'color',
-                description: 'The color of the popover component item',
+                description: 'The color of the tooltip component item',
                 type: 'color',
                 variants: {
                     light: 'contrast-color($color-white)',
@@ -234,87 +266,87 @@ module.exports = {
             },
             {
                 name: 'font-size',
-                description: 'The font size of the popover component',
+                description: 'The font size of the tooltip component',
                 type: 'size',
                 value: 'font-size()'
             },
             {
                 name: 'font-weight',
-                description: 'The font weight of the popover component',
+                description: 'The font weight of the tooltip component',
                 value: 'font-weight(\'normal\')'
             },
             {
                 name: 'line-height',
-                description: 'The line height of the popover component',
+                description: 'The line height of the tooltip component',
                 value: 'var(--line-height)'
             },
 
             {
                 name: 'margin-top',
                 type: 'size',
-                description: 'The margin top of the popover component',
+                description: 'The margin top of the tooltip component',
                 value: 'calc(var(--margin-top) / 2)'
             },
             {
                 name: 'margin-right',
                 type: 'size',
-                description: 'The margin right of the popover component',
+                description: 'The margin right of the tooltip component',
                 value: 'calc(var(--margin-right) / 2)'
             },
             {
                 name: 'margin-bottom',
                 type: 'size',
-                description: 'The margin bottom of the popover component',
+                description: 'The margin bottom of the tooltip component',
                 value: 'calc(var(--margin-bottom) / 2)'
             },
             {
                 name: 'margin-left',
                 type: 'size',
-                description: 'The margin left of the popover component',
+                description: 'The margin left of the tooltip component',
                 value: 'calc(var(--margin-left) / 2)'
             },
             {
                 name: 'margin',
-                description: 'The margin of the popover component',
+                description: 'The margin of the tooltip component',
                 value: ['var(----margin-top)', 'var(----margin-right)', 'var(----margin-bottom)', 'var(----margin-left)']
             },
             {
                 name: 'padding-top',
                 type: 'size',
-                description: 'The padding top of the popover component',
+                description: 'The padding top of the tooltip component',
                 value: 'calc(var(--padding-top) * 3 / 4)'
             },
             {
                 name: 'padding-right',
                 type: 'size',
-                description: 'The padding right of the popover component',
+                description: 'The padding right of the tooltip component',
                 value: 'var(--padding-right)'
             },
             {
                 name: 'padding-bottom',
                 type: 'size',
-                description: 'The padding bottom of the popover component',
+                description: 'The padding bottom of the tooltip component',
                 value: 'calc(var(--padding-bottom) * 3 / 4)'
             },
             {
                 name: 'padding-left',
                 type: 'size',
-                description: 'The padding left of the popover component',
+                description: 'The padding left of the tooltip component',
                 value: 'var(--padding-left)'
             },
             {
                 name: 'padding',
-                description: 'The padding of the popover component',
+                description: 'The padding of the tooltip component',
                 value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
             },
             {
                 name: 'width',
-                description: 'The width of the popover component',
+                description: 'The width of the tooltip component',
                 value: '280px'
             },
             {
                 name: 'z-index',
-                description: 'The z-index of the popover component',
+                description: 'The z-index of the tooltip component',
                 value: '2000'
             },
         ]

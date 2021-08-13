@@ -62,13 +62,45 @@ module.exports = {
                 }
             },
             {
-                name: 'border-color',
-                description: 'The border-color of the list group component',
+                name: 'border-top-color',
+                description: 'The border top color of the list group component',
                 type: 'color',
                 variants: {
                     light: 'color(\'light\')',
                     dark: 'color(\'dark-60\')'
                 }
+            },
+            {
+                name: 'border-right-color',
+                description: 'The border right color of the list group component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')'
+                }
+            },
+            {
+                name: 'border-bottom-color',
+                description: 'The border bottom color of the list group component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')'
+                }
+            },
+            {
+                name: 'border-left-color',
+                description: 'The border left color of the list group component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')'
+                }
+            },
+            {
+                name: 'border-color',
+                description: 'The border color of the list group component',
+                value: ['var(----border-top-color)', 'var(----border-right-color)', 'var(----border-bottom-color)', 'var(----border-left-color)']
             },
             {
                 name: 'border-color--active',

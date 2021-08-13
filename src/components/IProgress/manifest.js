@@ -61,13 +61,45 @@ module.exports = {
                 }
             },
             {
-                name: 'border-color',
-                description: 'The border color of the progress component',
+                name: 'border-top-color',
+                description: 'The border top color of the progress component',
                 type: 'color',
                 variants: {
                     light: 'color(\'light-55\')',
                     dark: 'color(\'dark-45\')',
                 }
+            },
+            {
+                name: 'border-right-color',
+                description: 'The border right color of the progress component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-45\')',
+                }
+            },
+            {
+                name: 'border-bottom-color',
+                description: 'The border bottom color of the progress component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-45\')',
+                }
+            },
+            {
+                name: 'border-left-color',
+                description: 'The border left color of the progress component',
+                type: 'color',
+                variants: {
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-45\')',
+                }
+            },
+            {
+                name: 'border-color',
+                description: 'The border color of the progress component',
+                value: ['var(----border-top-color)', 'var(----border-right-color)', 'var(----border-bottom-color)', 'var(----border-left-color)']
             },
             {
                 name: 'border-style',

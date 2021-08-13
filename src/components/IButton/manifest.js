@@ -181,8 +181,8 @@ module.exports = {
                 }
             },
             {
-                name: 'border-color',
-                description: 'The border color of the button component',
+                name: 'border-top-color',
+                description: 'The border top color of the button component',
                 type: 'color',
                 variants: {
                     primary: 'color(\'primary-55\')',
@@ -198,6 +198,68 @@ module.exports = {
                     twitter: 'color(\'twitter-55\')',
                     github: 'color(\'github-55\')'
                 }
+            },
+            {
+                name: 'border-right-color',
+                description: 'The border right color of the button component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-55\')',
+                    secondary: 'color(\'secondary-55\')',
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-45\')',
+                    info: 'color(\'info-55\')',
+                    success: 'color(\'success-55\')',
+                    warning: 'color(\'warning-55\')',
+                    danger: 'color(\'danger-55\')',
+                    facebook: 'color(\'facebook-55\')',
+                    google: 'color(\'google-55\')',
+                    twitter: 'color(\'twitter-55\')',
+                    github: 'color(\'github-55\')'
+                }
+            },
+            {
+                name: 'border-bottom-color',
+                description: 'The border bottom color of the button component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-55\')',
+                    secondary: 'color(\'secondary-55\')',
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-45\')',
+                    info: 'color(\'info-55\')',
+                    success: 'color(\'success-55\')',
+                    warning: 'color(\'warning-55\')',
+                    danger: 'color(\'danger-55\')',
+                    facebook: 'color(\'facebook-55\')',
+                    google: 'color(\'google-55\')',
+                    twitter: 'color(\'twitter-55\')',
+                    github: 'color(\'github-55\')'
+                }
+            },
+            {
+                name: 'border-left-color',
+                description: 'The border left color of the button component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-55\')',
+                    secondary: 'color(\'secondary-55\')',
+                    light: 'color(\'light-55\')',
+                    dark: 'color(\'dark-45\')',
+                    info: 'color(\'info-55\')',
+                    success: 'color(\'success-55\')',
+                    warning: 'color(\'warning-55\')',
+                    danger: 'color(\'danger-55\')',
+                    facebook: 'color(\'facebook-55\')',
+                    google: 'color(\'google-55\')',
+                    twitter: 'color(\'twitter-55\')',
+                    github: 'color(\'github-55\')'
+                }
+            },
+            {
+                name: 'border-color',
+                description: 'The border color of the button component',
+                value: ['var(----border-top-color)', 'var(----border-right-color)', 'var(----border-bottom-color)', 'var(----border-left-color)']
             },
             {
                 name: 'border-color--hover',

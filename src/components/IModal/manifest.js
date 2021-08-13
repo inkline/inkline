@@ -141,8 +141,8 @@ module.exports = {
                 }
             },
             {
-                name: 'border-color',
-                description: 'The border color of the modal component',
+                name: 'border-top-color',
+                description: 'The border top color of the modal component',
                 type: 'color',
                 variants: {
                     primary: 'color(\'primary-60\')',
@@ -154,6 +154,56 @@ module.exports = {
                     warning: 'color(\'warning-60\')',
                     danger: 'color(\'danger-60\')'
                 }
+            },
+            {
+                name: 'border-right-color',
+                description: 'The border right color of the modal component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-60\')',
+                    secondary: 'color(\'secondary-60\')',
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')',
+                    info: 'color(\'info-60\')',
+                    success: 'color(\'success-60\')',
+                    warning: 'color(\'warning-60\')',
+                    danger: 'color(\'danger-60\')'
+                }
+            },
+            {
+                name: 'border-bottom-color',
+                description: 'The border bottom color of the modal component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-60\')',
+                    secondary: 'color(\'secondary-60\')',
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')',
+                    info: 'color(\'info-60\')',
+                    success: 'color(\'success-60\')',
+                    warning: 'color(\'warning-60\')',
+                    danger: 'color(\'danger-60\')'
+                }
+            },
+            {
+                name: 'border-left-color',
+                description: 'The border left color of the modal component',
+                type: 'color',
+                variants: {
+                    primary: 'color(\'primary-60\')',
+                    secondary: 'color(\'secondary-60\')',
+                    light: 'color(\'light\')',
+                    dark: 'color(\'dark-60\')',
+                    info: 'color(\'info-60\')',
+                    success: 'color(\'success-60\')',
+                    warning: 'color(\'warning-60\')',
+                    danger: 'color(\'danger-60\')'
+                }
+            },
+            {
+                name: 'border-color',
+                description: 'The border color of the modal component',
+                value: ['var(----border-top-color)', 'var(----border-right-color)', 'var(----border-bottom-color)', 'var(----border-left-color)']
             },
             {
                 name: 'border-style',
