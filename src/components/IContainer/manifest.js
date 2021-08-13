@@ -47,6 +47,11 @@ module.exports = {
                 name: 'width--xl',
                 description: 'The width of the container component on extralarge screens',
                 value: 'calc(#{breakpoint(\'xl\')} - #{gutter(\'xl\')})'
+            },
+            {
+                name: 'width--xxl',
+                description: 'The width of the container component on extralarge screens',
+                value: 'calc(#{breakpoint(\'xxl\')} - #{gutter(\'xxl\')})'
             }
         ]
     }
