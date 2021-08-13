@@ -24,16 +24,29 @@ module.exports = {
         },
         variables: [
             {
-                name: 'width',
-                description: 'The width of the container component',
-                type: 'size',
-                variants: {
-                    xs: '100%',
-                    sm: 'calc(#{breakpoint(\'sm\')} - #{gutter(\'sm\')})',
-                    md: 'calc(#{breakpoint(\'md\')} - #{gutter(\'md\')})',
-                    lg: 'calc(#{breakpoint(\'lg\')} - #{gutter(\'lg\')})',
-                    xl: 'calc(#{breakpoint(\'xl\')} - #{gutter(\'xl\')})'
-                }
+                name: 'width--xs',
+                description: 'The width of the container component on extrasmall screens',
+                value: '100%'
+            },
+            {
+                name: 'width--sm',
+                description: 'The width of the container component on small screens',
+                value: 'calc(#{breakpoint(\'sm\')} - #{gutter(\'sm\')})'
+            },
+            {
+                name: 'width--md',
+                description: 'The width of the container component on medium screens',
+                value: 'calc(#{breakpoint(\'md\')} - #{gutter(\'md\')})'
+            },
+            {
+                name: 'width--lg',
+                description: 'The width of the container component on large screens',
+                value: 'calc(#{breakpoint(\'lg\')} - #{gutter(\'lg\')})'
+            },
+            {
+                name: 'width--xl',
+                description: 'The width of the container component on extralarge screens',
+                value: 'calc(#{breakpoint(\'xl\')} - #{gutter(\'xl\')})'
             }
         ]
     }
