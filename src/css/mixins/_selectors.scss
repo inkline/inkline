@@ -69,7 +69,7 @@
 }
 
 @mixin i-container {
-    .column {
+    .container {
         @content;
     }
 }
