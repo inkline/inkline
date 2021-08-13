@@ -14,7 +14,7 @@ labels: bug
 * **What is the current behavior?**
 
 * **Please tell us about your environment:**
-  - Version: 2.0.0
+  - Version: 3.0.0
   - Browser: [all | Chrome XX | Firefox XX | IE XX | Safari XX | Mobile Chrome XX | Android X.X Web Browser | iOS XX Safari | iOS XX UIWebView | iOS XX WKWebView ]
   - Language: [all | TypeScript X.X | ES6/7 | ES5 | Dart]
 

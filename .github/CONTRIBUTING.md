@@ -99,7 +99,7 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 ## Feature requests
 Feature requests are welcome! When opening a feature request, it's up to *you* to make a strong case to convince the project's developers of the merits of this feature. Please provide as much detail and context as possible.
 
-When adding a new feature to the framework, make sure you update the documentation package as well.
+When adding a new feature to the library, make sure you update the documentation package as well.
 
 ### Testing
 Before providing a pull request be sure to test the feature you are adding. Inkline's target code coverage is 100% and we're proudly consistent with that.
@@ -124,12 +124,10 @@ project (indentation, accurate comments, etc.) and any other requirements
 (such as test coverage).
 
 **Do not edit `inkline.css`, or `inkline.js`
-directly!** Those files are automatically generated. You should edit the
-source files in [`/packages/inkline/src`](https://github.com/inkline/inkline/tree/master/packages/inkline/src) instead.
+directly!** Those files are automatically generated. You should edit the source files in [`/src`](https://github.com/inkline/inkline/tree/master/src) instead.
 
-Similarly, when contributing to Inkline's documentation, you should edit the
-documentation source files in
-[the `/packages/docs` directory](https://github.com/inkline/inkline/tree/master/packages/docs).
+Similarly, when contributing to Inkline's documentation, you should edit the documentation source files in
+[the `/src` directory](https://github.com/inkline/inkline.io/tree/master/src).
 
 Adhering to the following process is the best way to get your work
 included in the project:
@@ -216,19 +214,15 @@ Adhere to the linting and [Concepts](https://inkline.io/docs/preface/concepts) g
 
 1. First, fork the repository and create a branch as specified in the [Pull Request Guidelines](#pull-requests) above.
 
-2. You'll find a structured [lerna](https://lerna.js.org) project. The folder structure is as follows:
-- `packages/inkline` contains the UI Framework
-- `packages/docs` contains the Documentation
-- `packages/vue-cli-plugin` contains the Vue CLI integration
-- `packages/nuxt-module` contains the Nuxt integration
+2. You'll find a well-structured [Vite.js](https://vitejs.dev) + [Vue.js](https://vuejs.org) project.
 
-3. Run `npm install` to install all dependencies. The four child projects dependencies will be automatically installed and linked as well.
+3. Run `npm install` to install all dependencies.
 
-4. To start developing, run `npm run dev` in your command line to run both inkline and the docs in development mode. The documentation will be automatically linked to the ui framework updates and will react to changes in the framework code.
+4. To start developing, run `npm run dev` in your command line to run Inkline in development mode. The documentation will be automatically generated based on the UI library updates.
 
-5. To test, go to `packages/inkline` and run `npm run test:dev` to run the UI Framework tests in development mode. Make sure you run `npm run test` to run all the tests once (ui framework, docs, integrations) before creating a pull request.
+5. To test, run `npm run test:dev` to run the UI Library tests in development mode. Make sure you run `npm run test` to run all the tests once before creating a pull request.
 
 ## License
 
-By contributing your code, you agree to license your contribution under the [MIT License](https://github.com/inkline/inkline/tree/master/packages/inkline/LICENSE).
-By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](https://github.com/inkline/inkline/tree/master/packages/docs/LICENSE).
+By contributing your code, you agree to license your contribution under the [MIT License](https://github.com/inkline/inkline/tree/master/LICENSE).
+By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](https://github.com/inkline/inkline.io/tree/master/LICENSE).
