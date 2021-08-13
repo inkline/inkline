@@ -22,10 +22,25 @@
         /// @type color
         ----background--active: #{color('primary-60')};
 
-        /// The border color of the button component, for the primary color variant
-        /// @name border-color
+        /// The border top color of the button component, for the primary color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('primary-55')};
+        ----border-top-color: #{color('primary-55')};
+
+        /// The border right color of the button component, for the primary color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('primary-55')};
+
+        /// The border bottom color of the button component, for the primary color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('primary-55')};
+
+        /// The border left color of the button component, for the primary color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('primary-55')};
 
         /// The color of the button component, for the primary color variant
         /// @name color
@@ -62,10 +77,25 @@
         /// @type color
         ----background--active: #{color('secondary-60')};
 
-        /// The border color of the button component, for the secondary color variant
-        /// @name border-color
+        /// The border top color of the button component, for the secondary color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('secondary-55')};
+        ----border-top-color: #{color('secondary-55')};
+
+        /// The border right color of the button component, for the secondary color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('secondary-55')};
+
+        /// The border bottom color of the button component, for the secondary color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('secondary-55')};
+
+        /// The border left color of the button component, for the secondary color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('secondary-55')};
 
         /// The color of the button component, for the secondary color variant
         /// @name color
@@ -102,10 +132,25 @@
         /// @type color
         ----background--active: #{color('light-60')};
 
-        /// The border color of the button component, for the light color variant
-        /// @name border-color
+        /// The border top color of the button component, for the light color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('light-55')};
+        ----border-top-color: #{color('light-55')};
+
+        /// The border right color of the button component, for the light color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('light-55')};
+
+        /// The border bottom color of the button component, for the light color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('light-55')};
+
+        /// The border left color of the button component, for the light color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('light-55')};
 
         /// The color of the button component, for the light color variant
         /// @name color
@@ -142,10 +187,25 @@
         /// @type color
         ----background--active: #{color('dark-40')};
 
-        /// The border color of the button component, for the dark color variant
-        /// @name border-color
+        /// The border top color of the button component, for the dark color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('dark-45')};
+        ----border-top-color: #{color('dark-45')};
+
+        /// The border right color of the button component, for the dark color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('dark-45')};
+
+        /// The border bottom color of the button component, for the dark color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('dark-45')};
+
+        /// The border left color of the button component, for the dark color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('dark-45')};
 
         /// The color of the button component, for the dark color variant
         /// @name color
@@ -182,10 +242,25 @@
         /// @type color
         ----background--active: #{color('info-60')};
 
-        /// The border color of the button component, for the info color variant
-        /// @name border-color
+        /// The border top color of the button component, for the info color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('info-55')};
+        ----border-top-color: #{color('info-55')};
+
+        /// The border right color of the button component, for the info color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('info-55')};
+
+        /// The border bottom color of the button component, for the info color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('info-55')};
+
+        /// The border left color of the button component, for the info color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('info-55')};
 
         /// The color of the button component, for the info color variant
         /// @name color
@@ -222,10 +297,25 @@
         /// @type color
         ----background--active: #{color('success-60')};
 
-        /// The border color of the button component, for the success color variant
-        /// @name border-color
+        /// The border top color of the button component, for the success color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('success-55')};
+        ----border-top-color: #{color('success-55')};
+
+        /// The border right color of the button component, for the success color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('success-55')};
+
+        /// The border bottom color of the button component, for the success color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('success-55')};
+
+        /// The border left color of the button component, for the success color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('success-55')};
 
         /// The color of the button component, for the success color variant
         /// @name color
@@ -262,10 +352,25 @@
         /// @type color
         ----background--active: #{color('warning-60')};
 
-        /// The border color of the button component, for the warning color variant
-        /// @name border-color
+        /// The border top color of the button component, for the warning color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('warning-55')};
+        ----border-top-color: #{color('warning-55')};
+
+        /// The border right color of the button component, for the warning color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('warning-55')};
+
+        /// The border bottom color of the button component, for the warning color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('warning-55')};
+
+        /// The border left color of the button component, for the warning color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('warning-55')};
 
         /// The color of the button component, for the warning color variant
         /// @name color
@@ -302,10 +407,25 @@
         /// @type color
         ----background--active: #{color('danger-60')};
 
-        /// The border color of the button component, for the danger color variant
-        /// @name border-color
+        /// The border top color of the button component, for the danger color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('danger-55')};
+        ----border-top-color: #{color('danger-55')};
+
+        /// The border right color of the button component, for the danger color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('danger-55')};
+
+        /// The border bottom color of the button component, for the danger color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('danger-55')};
+
+        /// The border left color of the button component, for the danger color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('danger-55')};
 
         /// The color of the button component, for the danger color variant
         /// @name color
@@ -342,10 +462,25 @@
         /// @type color
         ----background--active: #{color('facebook-60')};
 
-        /// The border color of the button component, for the facebook color variant
-        /// @name border-color
+        /// The border top color of the button component, for the facebook color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('facebook-55')};
+        ----border-top-color: #{color('facebook-55')};
+
+        /// The border right color of the button component, for the facebook color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('facebook-55')};
+
+        /// The border bottom color of the button component, for the facebook color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('facebook-55')};
+
+        /// The border left color of the button component, for the facebook color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('facebook-55')};
 
         /// The color of the button component, for the facebook color variant
         /// @name color
@@ -382,10 +517,25 @@
         /// @type color
         ----background--active: #{color('google-60')};
 
-        /// The border color of the button component, for the google color variant
-        /// @name border-color
+        /// The border top color of the button component, for the google color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('google-55')};
+        ----border-top-color: #{color('google-55')};
+
+        /// The border right color of the button component, for the google color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('google-55')};
+
+        /// The border bottom color of the button component, for the google color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('google-55')};
+
+        /// The border left color of the button component, for the google color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('google-55')};
 
         /// The color of the button component, for the google color variant
         /// @name color
@@ -422,10 +572,25 @@
         /// @type color
         ----background--active: #{color('twitter-60')};
 
-        /// The border color of the button component, for the twitter color variant
-        /// @name border-color
+        /// The border top color of the button component, for the twitter color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('twitter-55')};
+        ----border-top-color: #{color('twitter-55')};
+
+        /// The border right color of the button component, for the twitter color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('twitter-55')};
+
+        /// The border bottom color of the button component, for the twitter color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('twitter-55')};
+
+        /// The border left color of the button component, for the twitter color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('twitter-55')};
 
         /// The color of the button component, for the twitter color variant
         /// @name color
@@ -462,10 +627,25 @@
         /// @type color
         ----background--active: #{color('github-60')};
 
-        /// The border color of the button component, for the github color variant
-        /// @name border-color
+        /// The border top color of the button component, for the github color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('github-55')};
+        ----border-top-color: #{color('github-55')};
+
+        /// The border right color of the button component, for the github color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('github-55')};
+
+        /// The border bottom color of the button component, for the github color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('github-55')};
+
+        /// The border left color of the button component, for the github color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('github-55')};
 
         /// The color of the button component, for the github color variant
         /// @name color

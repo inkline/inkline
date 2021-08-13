@@ -23,10 +23,29 @@
     /// @type color
     ----background--hover: #{color('light-25')};
 
-    /// The border-color of the dropdown component
-    /// @name border-color
+    /// The border top color of the dropdown component
+    /// @name border-top-color
     /// @type color
-    ----border-color: #{color('light')};
+    ----border-top-color: #{color('light')};
+
+    /// The border right color of the dropdown component
+    /// @name border-right-color
+    /// @type color
+    ----border-right-color: #{color('light')};
+
+    /// The border bottom color of the dropdown component
+    /// @name border-bottom-color
+    /// @type color
+    ----border-bottom-color: #{color('light')};
+
+    /// The border left color of the dropdown component
+    /// @name border-left-color
+    /// @type color
+    ----border-left-color: #{color('light')};
+
+    /// The border color of the dropdown component
+    /// @name border-color
+    ----border-color: #{var(----border-top-color) var(----border-right-color) var(----border-bottom-color) var(----border-left-color)};
 
     /// The border style of the dropdown component
     /// @name border-style

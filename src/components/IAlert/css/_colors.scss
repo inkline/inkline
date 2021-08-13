@@ -12,10 +12,25 @@
         /// @type color
         ----background: #{color('info')};
 
-        /// The border color of the alert component, for the info color variant
-        /// @name border-color
+        /// The border top color of the alert component, for the info color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('info-60')};
+        ----border-top-color: #{color('info-60')};
+
+        /// The border right color of the alert component, for the info color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('info-60')};
+
+        /// The border bottom color of the alert component, for the info color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('info-60')};
+
+        /// The border left color of the alert component, for the info color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('info-60')};
 
         /// The text color of the alert component, for the info color variant
         /// @name color
@@ -37,10 +52,25 @@
         /// @type color
         ----background: #{color('success')};
 
-        /// The border color of the alert component, for the success color variant
-        /// @name border-color
+        /// The border top color of the alert component, for the success color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('success-60')};
+        ----border-top-color: #{color('success-60')};
+
+        /// The border right color of the alert component, for the success color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('success-60')};
+
+        /// The border bottom color of the alert component, for the success color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('success-60')};
+
+        /// The border left color of the alert component, for the success color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('success-60')};
 
         /// The text color of the alert component, for the success color variant
         /// @name color
@@ -62,10 +92,25 @@
         /// @type color
         ----background: #{color('warning')};
 
-        /// The border color of the alert component, for the warning color variant
-        /// @name border-color
+        /// The border top color of the alert component, for the warning color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('warning-60')};
+        ----border-top-color: #{color('warning-60')};
+
+        /// The border right color of the alert component, for the warning color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('warning-60')};
+
+        /// The border bottom color of the alert component, for the warning color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('warning-60')};
+
+        /// The border left color of the alert component, for the warning color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('warning-60')};
 
         /// The text color of the alert component, for the warning color variant
         /// @name color
@@ -87,10 +132,25 @@
         /// @type color
         ----background: #{color('danger')};
 
-        /// The border color of the alert component, for the danger color variant
-        /// @name border-color
+        /// The border top color of the alert component, for the danger color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('danger-60')};
+        ----border-top-color: #{color('danger-60')};
+
+        /// The border right color of the alert component, for the danger color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('danger-60')};
+
+        /// The border bottom color of the alert component, for the danger color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('danger-60')};
+
+        /// The border left color of the alert component, for the danger color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('danger-60')};
 
         /// The text color of the alert component, for the danger color variant
         /// @name color

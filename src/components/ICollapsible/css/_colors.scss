@@ -12,10 +12,25 @@
         /// @type color
         ----background: #{color('light')};
 
-        /// The border color of the collapsible component, for the light color variant
-        /// @name border-color
+        /// The border top color of the collapsible component, for the light color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('light-60')};
+        ----border-top-color: #{color('light-60')};
+
+        /// The border right color of the collapsible component, for the light color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('light-60')};
+
+        /// The border bottom color of the collapsible component, for the light color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('light-60')};
+
+        /// The border left color of the collapsible component, for the light color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('light-60')};
 
         /// The color of the collapsible component, for the light color variant
         /// @name color
@@ -37,10 +52,25 @@
         /// @type color
         ----background: #{color('dark')};
 
-        /// The border color of the collapsible component, for the dark color variant
-        /// @name border-color
+        /// The border top color of the collapsible component, for the dark color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('dark-40')};
+        ----border-top-color: #{color('dark-40')};
+
+        /// The border right color of the collapsible component, for the dark color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('dark-40')};
+
+        /// The border bottom color of the collapsible component, for the dark color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('dark-40')};
+
+        /// The border left color of the collapsible component, for the dark color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('dark-40')};
 
         /// The color of the collapsible component, for the dark color variant
         /// @name color

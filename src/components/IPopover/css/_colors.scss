@@ -12,10 +12,25 @@
         /// @type color
         ----background: #{color('white')};
 
-        /// The border-color of the popover component, for the light color variant
-        /// @name border-color
+        /// The border top color of the popover component, for the light color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('light')};
+        ----border-top-color: #{color('light')};
+
+        /// The border right color of the popover component, for the light color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('light')};
+
+        /// The border bottom color of the popover component, for the light color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('light')};
+
+        /// The border left color of the popover component, for the light color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('light')};
 
         /// The color of the popover component item, for the light color variant
         /// @name color
@@ -42,10 +57,25 @@
         /// @type color
         ----background: #{color('dark')};
 
-        /// The border-color of the popover component, for the dark color variant
-        /// @name border-color
+        /// The border top color of the popover component, for the dark color variant
+        /// @name border-top-color
         /// @type color
-        ----border-color: #{color('dark-60')};
+        ----border-top-color: #{color('dark-60')};
+
+        /// The border right color of the popover component, for the dark color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('dark-60')};
+
+        /// The border bottom color of the popover component, for the dark color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('dark-60')};
+
+        /// The border left color of the popover component, for the dark color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('dark-60')};
 
         /// The color of the popover component item, for the dark color variant
         /// @name color

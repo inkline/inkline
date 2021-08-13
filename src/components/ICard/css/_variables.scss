@@ -8,10 +8,29 @@
     /// @type color
     ----background: #{color('white')};
 
+    /// The border top color of the card component
+    /// @name border-top-color
+    /// @type color
+    ----border-top-color: #{color('light')};
+
+    /// The border right color of the card component
+    /// @name border-right-color
+    /// @type color
+    ----border-right-color: #{color('light')};
+
+    /// The border bottom color of the card component
+    /// @name border-bottom-color
+    /// @type color
+    ----border-bottom-color: #{color('light')};
+
+    /// The border left color of the card component
+    /// @name border-left-color
+    /// @type color
+    ----border-left-color: #{color('light')};
+
     /// The border color of the card component
     /// @name border-color
-    /// @type color
-    ----border-color: #{color('light')};
+    ----border-color: #{var(----border-top-color) var(----border-right-color) var(----border-bottom-color) var(----border-left-color)};
 
     /// The border style of the card component
     /// @name border-style
