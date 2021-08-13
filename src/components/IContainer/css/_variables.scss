@@ -22,4 +22,8 @@
     /// The width of the container component on extralarge screens
     /// @name width--xl
     ----width--xl: #{calc(#{breakpoint('xl')} - #{gutter('xl')})};
+
+    /// The width of the container component on extralarge screens
+    /// @name width--xxl
+    ----width--xxl: #{calc(#{breakpoint('xxl')} - #{gutter('xxl')})};
 }
