@@ -131,11 +131,11 @@ Adhering to the following process is the best way to get your work included in t
 
 1. First, fork the repository and create a branch as specified in the [Pull Request Guidelines](#pull-requests) above.
 
-2. You'll find a well structured [Vite.js](https://vitejs.dev) + [Vue.js](https://vuejs.org) project.
+2. You'll find a well-structured [Vite.js](https://vitejs.dev) + [Vue.js](https://vuejs.org) project.
 
 3. Run `npm install` to install all dependencies.
 
-4. To start developing, run `npm run dev` in your command line to run inkline in development mode. The documentation will be automatically generated based on the UI library updates.
+4. To start developing, run `npm run dev` in your command line to run Inkline in development mode. The documentation will be automatically generated based on the UI library updates.
 
 5. To test, run `npm run test:dev` to run the UI Library tests in development mode. Make sure you run `npm run test` to run all the tests once before creating a pull request.
 
