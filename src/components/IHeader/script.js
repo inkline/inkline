@@ -34,13 +34,13 @@ export default {
             default: defaultPropValue(componentName, 'color')
         },
         /**
-         * @description Display the header background as cover, always covering the whole header width
+         * @description Display the header background as cover, always covering the whole header width or height
          * @type Boolean
-         * @default true
+         * @default false
          */
         cover: {
             type: Boolean,
-            default: true
+            default: false
         },
         /**
          * @description Display the inner content container as fluid, covering 100% of the header width
