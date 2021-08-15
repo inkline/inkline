@@ -186,7 +186,7 @@ $blockquote--padding--bordered: spacing() !default;
 // Horizontal rule
 //
 $hr--border-color: rgba(color('black'), 0.1) !default;
-$hr--border-width: var(--border-width) !default;
+$hr--border-width: var(--border-top-width) !default;
 $hr--border-style: var(--border-style) !default;
 $hr--margin: spacing() !default;
 
