@@ -1,12 +1,12 @@
 export function number(value, options = { allowNegative: false, allowDecimal: false }) {
-    let regExp = "\\d+";
+    let regExp = '\\d+';
 
     if (options.allowNegative) {
-        regExp = "[-]?" + regExp;
+        regExp = '[-]?' + regExp;
     }
 
     if (options.allowDecimal) {
-        regExp += "([\\.\\,]\\d+)?";
+        regExp += '([\\.\\,]\\d+)?';
     }
 
     regExp = new RegExp(`^${regExp}$`);

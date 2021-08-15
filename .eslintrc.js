@@ -15,6 +15,8 @@ module.exports = {
     ],
     rules: {
         'indent': ['warn', 4],
+        'semi': ['warn', 'always'],
+        'quotes': ['warn', 'single'],
         'vue/html-indent': ['warn', 4],
         'vue/max-attributes-per-line': 'off',
         'vue/custom-event-name-casing': 'off',

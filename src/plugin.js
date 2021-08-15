@@ -1,6 +1,6 @@
-import { reactive, watch } from 'vue'
-import { addClass, removeClass } from "@inkline/inkline/src/helpers";
-import { initialize as initializeForm } from "@inkline/inkline/src/validation";
+import { reactive, watch } from 'vue';
+import { addClass, removeClass } from '@inkline/inkline/src/helpers';
+import { initialize as initializeForm } from '@inkline/inkline/src/validation';
 import { setLocale } from '@inkline/inkline/src/i18n';
 import { InklineIcons } from '@inkline/icons';
 
@@ -24,7 +24,7 @@ const handleColorMode = (colorMode) => {
         color = colorMode;
     }
 
-    removeClass(document.body, `-light -dark`);
+    removeClass(document.body, '-light -dark');
     addClass(document.body, `-${color}`);
 };
 
@@ -69,7 +69,7 @@ export const Inkline = {
          * Add $inkline global property
          */
 
-        app.config.globalProperties.$inkline = {
+        const prototype = {
             form(schema) {
                 return initializeForm(schema);
             },
@@ -85,6 +85,11 @@ export const Inkline = {
                 componentOptions: extendedOptions.componentOptions
             })
         };
+
+        app.config.globalProperties.$inkline = prototype;
+        app.provide('inkline', prototype);
+
+        inklineGlobals.prototype = prototype;
 
         if (typeof window !== 'undefined') {
             /**
@@ -126,7 +131,5 @@ export const Inkline = {
 
             handleColorMode(colorMode);
         }
-
-        inklineGlobals.prototype = app.config.globalProperties.$inkline;
     }
 };
