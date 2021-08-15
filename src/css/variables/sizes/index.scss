@@ -8,11 +8,11 @@ $sizes: ('sm', 'md', 'lg') !default;
 // Size percentages
 //
 
-$size-percentage-0: 0% !default;
-$size-percentage-25: 25% !default;
-$size-percentage-50: 50% !default;
-$size-percentage-75: 75% !default;
-$size-percentage-100: 100% !default;
+$size-percentage--0: 0% !default;
+$size-percentage--25: 25% !default;
+$size-percentage--50: 50% !default;
+$size-percentage--75: 75% !default;
+$size-percentage--100: 100% !default;
 
 $size-percentages: (
     '0': 0%,
@@ -23,7 +23,7 @@ $size-percentages: (
 ) !default;
 
 @function size-percentage($size-percentage-key) {
-    @return var(--size-percentage-#{$size-percentage-key});
+    @return var(--size-percentage--#{$size-percentage-key});
 }
 
 // Size multipliers
@@ -31,20 +31,20 @@ $size-percentages: (
 
 $size-multiplier: 1 !default;
 
-$size-multiplier-xs: calc(var(--size-multiplier) / var(--scale-ratio-pow-2)) !default;
-$size-multiplier-sm: calc(var(--size-multiplier) / var(--scale-ratio)) !default;
-$size-multiplier-md: var(--size-multiplier) !default;
-$size-multiplier-lg: calc(var(--size-multiplier) * var(--scale-ratio)) !default;
-$size-multiplier-xl: calc(var(--size-multiplier) * var(--scale-ratio-pow-2)) !default;
+$size-multiplier--xs: calc(var(--size-multiplier) / var(--scale-ratio--pow-2)) !default;
+$size-multiplier--sm: calc(var(--size-multiplier) / var(--scale-ratio)) !default;
+$size-multiplier--md: var(--size-multiplier) !default;
+$size-multiplier--lg: calc(var(--size-multiplier) * var(--scale-ratio)) !default;
+$size-multiplier--xl: calc(var(--size-multiplier) * var(--scale-ratio--pow-2)) !default;
 
 $size-multipliers: (
-    'xs': $size-multiplier-xs,
-    'sm': $size-multiplier-sm,
-    'md': $size-multiplier-md,
-    'lg': $size-multiplier-lg,
-    'xl': $size-multiplier-xl,
+    'xs': $size-multiplier--xs,
+    'sm': $size-multiplier--sm,
+    'md': $size-multiplier--md,
+    'lg': $size-multiplier--lg,
+    'xl': $size-multiplier--xl,
 ) !default;
 
 @function size-multiplier($size-multiplier-key) {
-    @return var(--size-multiplier-#{$size-multiplier-key});
+    @return var(--size-multiplier--#{$size-multiplier-key});
 }

@@ -71,7 +71,7 @@ export default defineComponent({
     }
 
     &.-dark {
-        border: 1px solid var(--border-color-dark);
+        border: 1px solid var(--border-color--dark);
     }
 
     > .body {
@@ -124,7 +124,7 @@ export default defineComponent({
 
                 .inkline.-dark & {
                     background: color('dark');
-                    border-color: var(--border-color-dark);
+                    border-color: var(--border-color--dark);
                 }
             }
         }
@@ -192,7 +192,7 @@ export default defineComponent({
             align-items: center;
 
             .inkline.-dark & {
-                border-color: var(--border-color-dark);
+                border-color: var(--border-color--dark);
             }
         }
     }

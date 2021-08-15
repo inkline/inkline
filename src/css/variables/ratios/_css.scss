@@ -2,17 +2,17 @@
 //
 
 :root {
-    @each $ratio-key, $ratio-value in $ratios {
-        --ratio-#{$ratio-key}: #{$ratio-value};
+    @each $scale-ratio-key, $scale-ratio-value in $scale-ratios {
+        --scale-ratio--#{$scale-ratio-key}: #{$scale-ratio-value};
     }
 
     --scale-ratio: #{$scale-ratio};
     --scale-ratio-secondary: #{$scale-ratio-secondary};
 
-    --scale-ratio-pow-1: var(--scale-ratio);
-    --scale-ratio-pow-2: calc(var(--scale-ratio-pow-1) * var(--scale-ratio));
-    --scale-ratio-pow-3: calc(var(--scale-ratio-pow-2) * var(--scale-ratio));
-    --scale-ratio-pow-4: calc(var(--scale-ratio-pow-3) * var(--scale-ratio));
-    --scale-ratio-pow-5: calc(var(--scale-ratio-pow-4) * var(--scale-ratio));
-    --scale-ratio-pow-6: calc(var(--scale-ratio-pow-5) * var(--scale-ratio));
+    --scale-ratio--pow-1: var(--scale-ratio);
+    --scale-ratio--pow-2: calc(var(--scale-ratio--pow-1) * var(--scale-ratio));
+    --scale-ratio--pow-3: calc(var(--scale-ratio--pow-2) * var(--scale-ratio));
+    --scale-ratio--pow-4: calc(var(--scale-ratio--pow-3) * var(--scale-ratio));
+    --scale-ratio--pow-5: calc(var(--scale-ratio--pow-4) * var(--scale-ratio));
+    --scale-ratio--pow-6: calc(var(--scale-ratio--pow-5) * var(--scale-ratio));
 }

@@ -3,8 +3,8 @@
 
 :root {
     --gutter: #{$gutter};
-    
+
     @each $gutter-key, $gutter-value in $gutters {
-        --gutter-#{$gutter-key}: #{$gutter-value};
+        --gutter--#{$gutter-key}: #{$gutter-value};
     }
 }

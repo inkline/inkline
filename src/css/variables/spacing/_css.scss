@@ -19,6 +19,6 @@
     @each $spacing-key, $spacing-value in $spacings {
         $spacing-key: str-replace($spacing-key, '/', '-');
 
-        --spacing-#{$spacing-key}: #{$spacing-value};
+        --spacing--#{$spacing-key}: #{$spacing-value};
     }
 }

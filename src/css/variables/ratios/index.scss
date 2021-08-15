@@ -4,31 +4,31 @@
 // Suggested ratios
 // Source: http://type-scale.com/
 //
-$ratio-second: 1.067 !default;
-$ratio-major-second: 1.125 !default;
-$ratio-minor-third: 1.2 !default;
-$ratio-major-third: 1.25 !default;
-$ratio-perfect-fourth: 1.333 !default;
-$ratio-augmented-fourth: 1.414 !default;
-$ratio-perfect-fifth: 1.5 !default;
-$ratio-golden: 1.618 !default;
+$scale-ratio--second: 1.067 !default;
+$scale-ratio--major-second: 1.125 !default;
+$scale-ratio--minor-third: 1.2 !default;
+$scale-ratio--major-third: 1.25 !default;
+$scale-ratio--perfect-fourth: 1.333 !default;
+$scale-ratio--augmented-fourth: 1.414 !default;
+$scale-ratio--perfect-fifth: 1.5 !default;
+$scale-ratio--golden: 1.618 !default;
 
-$ratios: (
-    'second': $ratio-second,
-    'major-second': $ratio-major-second,
-    'minor-third': $ratio-minor-third,
-    'major-third': $ratio-major-third,
-    'perfect-fourth': $ratio-perfect-fourth,
-    'augmented-fourth': $ratio-augmented-fourth,
-    'perfect-fifth': $ratio-perfect-fifth,
-    'golden': $ratio-golden,
+$scale-ratios: (
+    'second': $scale-ratio--second,
+    'major-second': $scale-ratio--major-second,
+    'minor-third': $scale-ratio--minor-third,
+    'major-third': $scale-ratio--major-third,
+    'perfect-fourth': $scale-ratio--perfect-fourth,
+    'augmented-fourth': $scale-ratio--augmented-fourth,
+    'perfect-fifth': $scale-ratio--perfect-fifth,
+    'golden': $scale-ratio--golden,
 ) !default;
 
-@function ratio($ratio-key) {
-    @return var(--ratio-#{$ratio-key});
+@function scale-ratio($scale-ratio-key) {
+    @return var(--scale-ratio--#{$scale-ratio-key});
 }
 
 // Scale ratio
 //
-$scale-ratio: ratio('minor-third') !default;
-$scale-ratio-secondary: ratio('perfect-fourth') !default;
+$scale-ratio: scale-ratio('minor-third') !default;
+$scale-ratio-secondary: scale-ratio('perfect-fourth') !default;

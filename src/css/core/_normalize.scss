@@ -53,8 +53,8 @@ body.inkline {
 
     @each $color-variant-key, $color-variant-value in $body-color-variants {
         &.-#{$color-variant-key} {
-            color: var(--body-color-variant-#{$color-variant-key}-color);
-            background-color: var(--body-color-variant-#{$color-variant-key}-background);
+            color: var(--body--color--#{$color-variant-key});
+            background-color: var(--body--background--#{$color-variant-key});
         }
     }
 }
@@ -118,16 +118,16 @@ hr {
  */
 
 a {
-    color: var(--link-color);
-    text-decoration: var(--link-decoration);
+    color: var(--link--color);
+    text-decoration: var(--link--decoration);
     -webkit-text-decoration-skip: objects;
     background-color: transparent;
 
     &:hover,
     &:focus,
     &:active {
-        color: var(--link-color-hover);
-        text-decoration: var(--link-decoration-hover);
+        color: var(--link--color--hover);
+        text-decoration: var(--link--decoration--hover);
         outline-width: 0;
     }
 }

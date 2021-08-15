@@ -454,7 +454,7 @@ export default defineComponent({
         border-right: 1px solid var(--border-color-light);
 
         .inkline.-dark & {
-            border-right: 1px solid var(--border-color-dark);
+            border-right: 1px solid var(--border-color--dark);
         }
     }
 

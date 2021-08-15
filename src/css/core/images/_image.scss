@@ -11,12 +11,12 @@
 }
 
 %image-thumbnail {
-    padding: var(--thumbnail-padding);
-    background-color: var(--thumbnail-background);
-    border: var(--thumbnail-border-width) solid var(--thumbnail-border-color);
-    border-radius: var(--thumbnail-border-radius);
-    transition: var(--thumbnail-transition);
-    box-shadow: var(--thumbnail-box-shadow);
+    padding: var(--thumbnail--padding);
+    background-color: var(--thumbnail--background);
+    border: var(--thumbnail--border-width) solid var(--thumbnail--border-color);
+    border-radius: var(--thumbnail--border-radius);
+    transition: var(--thumbnail--transition);
+    box-shadow: var(--thumbnail--box-shadow);
 
     @extend %image-responsive;
 }
@@ -61,7 +61,7 @@
     // Image Polaroid
     //
     &.-polaroid {
-        padding-bottom: var(--polaroid-padding);
+        padding-bottom: var(--polaroid--padding);
 
         @extend %image-thumbnail;
     }

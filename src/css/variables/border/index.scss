@@ -10,8 +10,8 @@ $border-left-width: 1px !default;
 $border-width: var(--border-top-width) var(--border-right-width) var(--border-bottom-width) var(--border-left-width) !default;
 
 $border-color: color('gray-30') !default;
-$border-color-light: $border-color !default;
-$border-color-dark: color('gray-70') !default;
+$border-color--light: $border-color !default;
+$border-color--dark: color('gray-70') !default;
 
 $border-top-left-radius: 0.25rem !default;
 $border-top-right-radius: 0.25rem !default;
