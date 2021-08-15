@@ -3,6 +3,6 @@ export default {
         return {
             light: false,
             dark: false,
-        }
+        };
     }
-}
+};

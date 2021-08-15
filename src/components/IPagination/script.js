@@ -3,8 +3,8 @@ import {
     colorVariantClass,
     sizePropValidator
 } from '@inkline/inkline/src/mixins';
-import { breakpointKeys, breakpoints } from "@inkline/inkline/src/constants";
-import { debounce } from "@inkline/inkline/src/helpers";
+import { breakpointKeys, breakpoints } from '@inkline/inkline/src/constants';
+import { debounce } from '@inkline/inkline/src/helpers';
 
 /**
  * @name previous
@@ -72,7 +72,7 @@ export default {
                 return {
                     xs: 3,
                     sm: 5
-                }
+                };
             }
         },
         /**
@@ -107,7 +107,7 @@ export default {
     data() {
         return {
             pageLimit: 5
-        }
+        };
     },
     computed: {
         classes() {

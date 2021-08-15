@@ -9,5 +9,5 @@ export { default as INavSizeVariantsExampleHTML } from './size-variants.html';
 export { default as INavStateActiveExample } from './state-active.vue';
 export { default as INavStateActiveExampleHTML } from './state-active.html';
 export { default as INavVerticalExample } from './vertical.vue';
-export { default as INavVerticalExampleHTML } from './vertical.html'
+export { default as INavVerticalExampleHTML } from './vertical.html';
 

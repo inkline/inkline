@@ -52,4 +52,4 @@ export default {
     mounted() {
         this.fetchOptions();
     }
-}
+};

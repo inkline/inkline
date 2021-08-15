@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import { colorVariantClass } from "@inkline/inkline/src/mixins/computed";
-import { defineComponent } from "vue";
+import { colorVariantClass } from '@inkline/inkline/src/mixins/computed';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
     name: 'Example',
@@ -49,7 +49,7 @@ export default defineComponent({
             return {
                 ...colorVariantClass(this),
                 [`-${this.type}`]: Boolean(this.type)
-            }
+            };
         }
     }
 });

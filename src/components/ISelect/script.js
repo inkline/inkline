@@ -17,7 +17,7 @@ import {
 import {
     useBaseModifiers,
     sameWidthModifier
-} from "@inkline/inkline/src/mixins/PopupMixin";
+} from '@inkline/inkline/src/mixins/PopupMixin';
 import { ClickOutside } from '@inkline/inkline/src/directives';
 import IInput from '@inkline/inkline/src/components/IInput/index.vue';
 import IIcon from '@inkline/inkline/src/components/IIcon/index.vue';

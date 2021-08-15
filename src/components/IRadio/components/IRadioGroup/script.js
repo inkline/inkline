@@ -3,8 +3,8 @@ import {
     sizePropValidator,
     FormComponentMixin,
     defaultPropValue,
-} from "@inkline/inkline/src/mixins";
-import { uid } from "@inkline/inkline/src/helpers";
+} from '@inkline/inkline/src/mixins';
+import { uid } from '@inkline/inkline/src/helpers';
 
 /**
  * @name default
@@ -95,7 +95,7 @@ export default {
     provide() {
         return {
             formGroup: this
-        }
+        };
     },
     computed: {
         classes() {
@@ -105,7 +105,7 @@ export default {
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
                 '-inline': this.inline,
-            }
+            };
         },
         checked() {
             if (this.schema) {

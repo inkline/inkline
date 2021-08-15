@@ -61,7 +61,7 @@ export function querySelectorAll(items, name, maxDepth = 3, currentDepth = 0) {
         }
 
         if (children && children.length > 0 && currentDepth < maxDepth) {
-            results = results.concat(querySelectorAll(children, name, maxDepth, currentDepth + 1))
+            results = results.concat(querySelectorAll(children, name, maxDepth, currentDepth + 1));
         }
     }
 

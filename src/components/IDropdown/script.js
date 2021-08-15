@@ -8,7 +8,7 @@ import {
     defaultPropValue
 } from '@inkline/inkline/src/mixins';
 import { ClickOutside } from '@inkline/inkline/src/directives';
-import { on, off, isFocusable, isKey } from "@inkline/inkline/src/helpers";
+import { on, off, isFocusable, isKey } from '@inkline/inkline/src/helpers';
 
 
 /**
@@ -183,7 +183,7 @@ export default {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
-            }
+            };
         }
     },
     methods: {
@@ -316,5 +316,5 @@ export default {
 
         off(this.$refs.popup, 'keydown', this.onItemKeyDown);
     }
-}
+};
 

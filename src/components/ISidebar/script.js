@@ -90,7 +90,7 @@ export default {
                 [`-${this.size}`]: Boolean(this.size),
                 [`-collapse-${this.collapsePosition}`]: true,
                 [`-placement-${this.placement}`]: true,
-            }
+            };
         },
         sidebarWrapperTransition() {
             return this.collapsePosition !== 'relative' ?

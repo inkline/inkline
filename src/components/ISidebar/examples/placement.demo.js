@@ -3,6 +3,6 @@ export default {
         return {
             left: false,
             right: false
-        }
+        };
     }
-}
+};

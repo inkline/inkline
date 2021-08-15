@@ -6,4 +6,4 @@ export default {
             itemsTotal: 300
         };
     }
-}
+};

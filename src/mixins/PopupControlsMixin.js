@@ -1,4 +1,4 @@
-import { on, off, focusFirstDescendant } from "@inkline/inkline/src/helpers";
+import { on, off, focusFirstDescendant } from '@inkline/inkline/src/helpers';
 
 export default {
     props: {
@@ -131,4 +131,4 @@ export default {
     beforeUnmount() {
         this.removeEventListeners();
     }
-}
+};

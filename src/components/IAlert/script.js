@@ -71,7 +71,7 @@ export default {
     data() {
         return {
             dismissed: false
-        }
+        };
     },
     computed: {
         classes() {
@@ -80,7 +80,7 @@ export default {
                 [`-${this.size}`]: Boolean(this.size),
                 '-dismissible': this.dismissible,
                 '-with-icon': Boolean(this.$slots.icon)
-            }
+            };
         }
     },
     methods: {

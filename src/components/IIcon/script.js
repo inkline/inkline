@@ -1,5 +1,5 @@
 import { IIcon } from '@inkline/icons/components';
-import { defaultPropValue, sizePropValidator } from "@inkline/inkline/src/mixins";
+import { defaultPropValue, sizePropValidator } from '@inkline/inkline/src/mixins';
 
 /**
  * @description The icon to be displayed

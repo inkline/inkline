@@ -4,4 +4,4 @@ export default {
             open: ['collapsible-item-1']
         };
     }
-}
+};

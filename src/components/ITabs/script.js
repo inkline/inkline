@@ -64,7 +64,7 @@ export default {
         return {
             active: this.modelValue,
             tabs: []
-        }
+        };
     },
     provide() {
         return {

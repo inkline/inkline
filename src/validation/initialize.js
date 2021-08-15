@@ -2,7 +2,7 @@ import {
     defaultValidationValues,
     reservedValidationFields,
     defaultFieldValidationValues
-} from "@inkline/inkline/src/constants";
+} from '@inkline/inkline/src/constants';
 
 /**
  * Initialize raw form schema by adding required default fields if they do not exist
@@ -27,7 +27,7 @@ export function initialize(schema) {
         .filter((key) => !reservedValidationFields.includes(key))
         .forEach((key) => {
             if (typeof schema[key] === 'object' || Array.isArray(schema[key])) {
-                schema[key] = initialize(schema[key])
+                schema[key] = initialize(schema[key]);
             }
         });
 

@@ -58,7 +58,7 @@ export default {
             return {
                 '-active': this.active,
                 '-disabled': this.disabled
-            }
+            };
         },
         tabIndex() {
             return this.disabled ? -1 : this.tabindex;

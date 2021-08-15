@@ -18,8 +18,8 @@ export default {
         onSearch(query) {
             this.options = this.defaultOptions
                 .filter((option) => {
-                    return option.label.toLowerCase().includes((query || '').toLowerCase())
+                    return option.label.toLowerCase().includes((query || '').toLowerCase());
                 });
         }
     }
-}
+};

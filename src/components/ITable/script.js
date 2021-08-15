@@ -1,4 +1,4 @@
-import { defaultPropValue, colorVariantClass } from "@inkline/inkline/src/mixins";
+import { defaultPropValue, colorVariantClass } from '@inkline/inkline/src/mixins';
 
 /**
  * @name default
@@ -84,7 +84,7 @@ export default {
                 '-striped': this.striped,
                 '-hover': this.hover,
                 '-nowrap': this.nowrap,
-                [`-responsive${typeof this.responsive === "boolean" ? '' : `-${this.responsive}`}`]: Boolean(this.responsive)
+                [`-responsive${typeof this.responsive === 'boolean' ? '' : `-${this.responsive}`}`]: Boolean(this.responsive)
             };
         }
     }

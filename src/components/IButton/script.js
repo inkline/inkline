@@ -152,7 +152,7 @@ export default {
                 '-disabled': this.isDisabled,
                 '-link': this.link,
                 '-outline': this.outline
-            }
+            };
         },
         isDisabled() {
             return this.disabled || this.buttonGroup.disabled || this.form.disabled || this.formGroup.disabled;

@@ -60,7 +60,7 @@ export default {
     provide() {
         return {
             buttonGroup: this
-        }
+        };
     },
     computed: {
         classes() {
@@ -69,7 +69,7 @@ export default {
                 '-vertical': this.vertical,
                 '-block': this.block,
                 '-disabled': this.disabled,
-            }
+            };
         },
         isDisabled() {
             return this.disabled || this.form.disabled || this.formGroup.disabled;

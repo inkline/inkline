@@ -1,4 +1,4 @@
-import { getValueByPath } from "./valueByPath";
+import { getValueByPath } from './valueByPath';
 
 /**
  * Sort an array of objects by path

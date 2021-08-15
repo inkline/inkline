@@ -4,4 +4,4 @@ export default {
             value: 'This input is readonly.'
         };
     }
-}
+};

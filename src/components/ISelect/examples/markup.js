@@ -4,4 +4,4 @@ export default {
             selected: null
         };
     }
-}
+};

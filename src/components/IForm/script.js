@@ -11,7 +11,7 @@ import {
     sizePropValidator,
     FormComponentMixin
 } from '@inkline/inkline/src/mixins';
-import { validate } from "@inkline/inkline/src/validation";
+import { validate } from '@inkline/inkline/src/validation';
 
 /**
  * @name default
@@ -119,7 +119,7 @@ export default {
     provide() {
         return {
             form: this
-        }
+        };
     },
     computed: {
         classes() {

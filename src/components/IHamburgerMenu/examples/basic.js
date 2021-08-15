@@ -4,4 +4,4 @@ export default {
             active: false
         };
     }
-}
+};

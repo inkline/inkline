@@ -73,7 +73,7 @@ export default {
                 '-active': this.active,
                 '-disabled': this.disabled,
                 '-plaintext': this.plaintext
-            }
+            };
         },
         tabIndex() {
             return this.disabled ? -1 : this.tabindex;

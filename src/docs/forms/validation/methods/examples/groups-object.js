@@ -21,7 +21,7 @@ export default {
                 validators: [
                     { name: 'email' }
                 ]
-            })
+            });
         },
         setAddress() {
             this.schema.group.address = this.$inkline.form({
@@ -29,4 +29,4 @@ export default {
             });
         }
     }
-}
+};

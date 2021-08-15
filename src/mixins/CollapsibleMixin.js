@@ -1,4 +1,4 @@
-import { on, off } from "@inkline/inkline/src/helpers";
+import { on, off } from '@inkline/inkline/src/helpers';
 import { breakpoints } from '@inkline/inkline/src/constants';
 
 export default {
@@ -29,7 +29,7 @@ export default {
                 '-open': this.open,
                 '-collapsible': this.collapsible,
                 [`-collapse-${this.collapse}`]: Boolean(this.collapse)
-            }
+            };
         },
         collapsible() {
             if (this.collapse === true || this.collapse === false) {

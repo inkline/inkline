@@ -1,4 +1,4 @@
-import {colorVariantClass, defaultPropValue} from "@inkline/inkline/src/mixins";
+import {colorVariantClass, defaultPropValue} from '@inkline/inkline/src/mixins';
 
 /**
  * @name default

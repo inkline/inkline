@@ -4,6 +4,6 @@ export default {
             sm: false,
             md: false,
             lg: false,
-        }
+        };
     }
-}
+};

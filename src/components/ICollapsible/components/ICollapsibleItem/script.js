@@ -53,7 +53,7 @@ export default {
         classes() {
             return {
                 '-active': this.active
-            }
+            };
         }
     },
     methods: {

@@ -99,7 +99,7 @@ export default {
                 '-inline': this.inline,
                 // @TODO '-error': this.input && this.input.schema?.$invalid,
                 '-required': this.required // @TODO Add required state based on required validator this.input.schema?.validators.some(v => v.name === 'required')
-            }
+            };
         }
     },
     methods: {

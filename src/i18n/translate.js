@@ -1,5 +1,5 @@
-import { getValueByPath } from "@inkline/inkline/src/helpers";
-import { i18n } from "@inkline/inkline/src/i18n";
+import { getValueByPath } from '@inkline/inkline/src/helpers';
+import { i18n } from '@inkline/inkline/src/i18n';
 
 /**
  * Translate a string given its path and translation params

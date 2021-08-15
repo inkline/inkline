@@ -35,7 +35,7 @@ export default {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size)
-            }
+            };
         }
     }
 };

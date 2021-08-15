@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         renderLabel(option) {
-            return option ? `${option.address.city}, ${option.address.country}` : ''
+            return option ? `${option.address.city}, ${option.address.country}` : '';
         }
     }
-}
+};

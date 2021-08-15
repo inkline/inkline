@@ -1,10 +1,10 @@
-import { uid } from "@inkline/inkline/src/helpers";
+import { uid } from '@inkline/inkline/src/helpers';
 import {
     colorVariantClass,
     sizePropValidator,
     FormComponentMixin,
     defaultPropValue,
-} from "@inkline/inkline/src/mixins";
+} from '@inkline/inkline/src/mixins';
 
 /**
  * @name default

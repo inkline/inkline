@@ -1,7 +1,7 @@
 import IButton from '@inkline/inkline/src/components/IButton/index.vue';
 import IInput from '@inkline/inkline/src/components/IInput/index.vue';
-import { uid } from "@inkline/inkline/src/helpers";
-import { defaultPropValue, sizePropValidator } from "@inkline/inkline/src/mixins/props";
+import { uid } from '@inkline/inkline/src/helpers';
+import { defaultPropValue, sizePropValidator } from '@inkline/inkline/src/mixins/props';
 
 const componentName = 'INumberInput';
 
@@ -149,7 +149,7 @@ export default {
         },
         formatPrecision (value) {
             const parts = value.split('.');
-            let decimals = parts[1] || "";
+            let decimals = parts[1] || '';
 
             for (let i = decimals.length; i < this.precision; i += 1) {
                 decimals += '0';

@@ -30,10 +30,10 @@ export const computeStylesModifier = () => ({
 });
 
 export const sameWidthModifier = () => ({
-    name: "sameWidth",
+    name: 'sameWidth',
     enabled: true,
-    phase: "beforeWrite",
-    requires: ["computeStyles"],
+    phase: 'beforeWrite',
+    requires: ['computeStyles'],
     fn: ({ state }) => {
         state.styles.popper.width = `${state.rects.reference.width}px`;
     },

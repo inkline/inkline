@@ -62,13 +62,13 @@ export default {
     },
     computed: {
         isActive() {
-            return this.active || (this.value === this.select.modelValue)
+            return this.active || (this.value === this.select.modelValue);
         },
         classes() {
             return {
                 '-active': this.isActive,
                 '-disabled': this.disabled
-            }
+            };
         },
         tabIndex() {
             return this.disabled ? -1 : this.tabindex;
