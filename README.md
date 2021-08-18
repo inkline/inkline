@@ -85,17 +85,13 @@ npm install @inkline/inkline@next
 
 ~~~js
 import '@inkline/inkline/src/inkline.scss';
-import { Inkline, IButton } from '@inkline/inkline/src';
+import Inkline from '@inkline/inkline';
 import { createApp } from 'vue'
 import App from './App.vue'
 
 const app = createApp(App);
 
-app.use(Inkline, {
-    components: {
-        IButton
-    }
-});
+app.use(Inkline);
 
 app.mount('#app');
 

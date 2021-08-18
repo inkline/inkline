@@ -23,10 +23,10 @@
         "generate:manifest:sass": "node ./scripts/manifest-sass.js",
         "generate:icons": "node ./scripts/icons.js"
     },
-    "main": "dist/inkline.js",
-    "module": "dist/inkline.js",
-    "jsdelivr": "dist/inkline.js",
-    "unpkg": "dist/inkline.js",
+    "main": "lib/inkline.js",
+    "module": "lib/inkline.js",
+    "jsdelivr": "dist/inkline.umd.js",
+    "unpkg": "dist/inkline.umd.js",
     "dependencies": {
         "@inkline/icons": "^1.4.5",
         "@popperjs/core": "2.9.2",
