@@ -1,3 +1,4 @@
+import { defineComponent } from 'vue';
 import { colorVariantClass, defaultPropValue } from '@inkline/inkline/src/mixins';
 
 /**
@@ -8,7 +9,7 @@ import { colorVariantClass, defaultPropValue } from '@inkline/inkline/src/mixins
 
 const componentName = 'ILoader';
 
-export default {
+export default defineComponent({
     name: componentName,
     props: {
         /**
@@ -18,7 +19,7 @@ export default {
          */
         color: {
             type: String,
-            default: defaultPropValue(componentName, 'color')
+            default: defaultPropValue<string>(componentName, 'color')
         },
         /**
          * @description The size variant of the loader
@@ -27,7 +28,7 @@ export default {
          */
         size: {
             type: String,
-            default: defaultPropValue(componentName, 'size')
+            default: defaultPropValue<string>(componentName, 'size')
         }
     },
     computed: {
@@ -38,4 +39,4 @@ export default {
             };
         }
     }
-};
+});

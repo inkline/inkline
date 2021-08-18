@@ -6,9 +6,10 @@ module.exports = {
         browser: true
     },
     parserOptions: {
-        parser: '@babel/eslint-parser'
+        parser: '@typescript-eslint/parser'
     },
     extends: [
+        '@vue/typescript/recommended',
         'plugin:vue/vue3-recommended',
         'alloy',
         'alloy/vue',
@@ -16,11 +17,18 @@ module.exports = {
     rules: {
         'indent': ['warn', 4],
         'semi': ['warn', 'always'],
+        'object-curly-spacing': ['warn', 'always'],
         'quotes': ['warn', 'single'],
         'vue/html-indent': ['warn', 4],
         'vue/max-attributes-per-line': 'off',
         'vue/custom-event-name-casing': 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-        'no-prototype-builtins': 'off'
+        'no-prototype-builtins': 'off',
+        'max-params': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off'
     }
 };

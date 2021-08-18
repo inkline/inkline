@@ -1,0 +1,85 @@
+import { defineComponent } from 'vue';
+import { on, off } from '@inkline/inkline/src/helpers';
+import { breakpoints } from '@inkline/inkline/src/constants';
+import { Classes } from '@inkline/inkline/src/types';
+
+export default defineComponent({
+    provide(): { navbar: any } {
+        return {
+            navbar: this
+        };
+    },
+    props: {
+        collapse: {
+            type: [String, Boolean],
+            default: 'md'
+        },
+        modelValue: {
+            type: Boolean,
+            default: false
+        }
+    },
+    emits: ['update:modelValue'],
+    data() {
+        return {
+            open: this.modelValue,
+            windowWidth: typeof window !== 'undefined' ? window.innerWidth : 0
+        };
+    },
+    computed: {
+        collapsibleClasses(): Classes {
+            return {
+                '-open': this.open,
+                '-collapsible': this.collapsible,
+                [`-collapse-${this.collapse}`]: Boolean(this.collapse)
+            };
+        },
+        collapsible(): boolean {
+            if (this.collapse === true || this.collapse === false) {
+                return this.collapse;
+            }
+
+            return this.windowWidth <= breakpoints[this.collapse][1];
+        }
+    },
+    watch: {
+        modelValue(value) {
+            this.open = value;
+        }
+    },
+    created() {
+        if (typeof window !== 'undefined') {
+            on(window, 'resize', this.onWindowResize);
+
+            this.onWindowResize();
+        }
+    },
+    beforeUnmount() {
+        if (typeof window !== 'undefined') {
+            off(window, 'resize', this.onWindowResize);
+        }
+    },
+    methods: {
+        setOpen(value: boolean) {
+            this.open = value;
+            this.$emit('update:modelValue', this.open);
+        },
+        toggleOpen() {
+            this.open = !this.open;
+            this.$emit('update:modelValue', this.open);
+        },
+        onWindowResize() {
+            if (this.collapse === true || this.collapse === false) {
+                return;
+            }
+
+            const windowWidth = window.innerWidth;
+
+            if (this.windowWidth <= breakpoints[this.collapse][1] && windowWidth > breakpoints[this.collapse][1]) {
+                this.setOpen(false);
+            }
+
+            this.windowWidth = window.innerWidth;
+        }
+    },
+});

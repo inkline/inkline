@@ -12,9 +12,9 @@
     </section>
 </template>
 
-<script>
-import { colorVariantClass } from '@inkline/inkline/src/mixins/computed';
+<script lang="ts">
 import { defineComponent } from 'vue';
+import { colorVariantClass } from '@inkline/inkline/src/mixins/computed';
 
 export default defineComponent({
     name: 'Example',
@@ -45,7 +45,7 @@ export default defineComponent({
         }
     },
     computed: {
-        classes() {
+        classes(): { [key: string]: boolean } {
             return {
                 ...colorVariantClass(this),
                 [`-${this.type}`]: Boolean(this.type)

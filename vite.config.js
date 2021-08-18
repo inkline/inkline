@@ -2,14 +2,13 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import markdown from 'vite-plugin-md';
-import eslint from 'vite-plugin-eslint';
 
 function html() {
     return {
         name: 'html',
         transform (code, id) {
             if (/\.html$/.test(id)) {
-                return `export default ${JSON.stringify(code)}`
+                return `export default ${JSON.stringify(code)}`;
             }
         }
     };
@@ -25,8 +24,7 @@ export default defineConfig({
             ]
         }),
         markdown(),
-        html(),
-        eslint()
+        html()
     ],
     resolve: {
         alias: [
