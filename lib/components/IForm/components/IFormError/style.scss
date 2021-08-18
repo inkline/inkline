@@ -1,0 +1,16 @@
+@import '../../../../css/variables';
+@import '../../../../css/mixins';
+@import 'css/variables';
+
+.form-error {
+    position: relative;
+    margin: var(----margin);
+    padding: 0;
+    list-style: none;
+    color: var(----color);
+    font-size: font-size('sm');
+
+    li {
+        margin: 0;
+    }
+}

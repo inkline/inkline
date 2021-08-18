@@ -1,0 +1,27 @@
+/**
+    * Inline code
+    */
+
+code {
+    font-family: font-family-primary(monospace);
+    padding: var(--code--padding);
+    font-size: var(--code--font-size);
+    color: var(--code--color);
+    background-color: var(--code--background);
+    border-radius: border-radius(md);
+    transition-property: background-color, color, text-shadow;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-easing);
+
+    // Streamline the style when inside anchors to avoid broken underline and more
+    a > & {
+        padding: 0;
+        color: inherit;
+        background-color: inherit;
+    }
+}
+
+.inkline.-dark code {
+    background-color: var(--code--background--dark);
+    color: var(--code--color--dark);
+}

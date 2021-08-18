@@ -1,0 +1,54 @@
+<i-dropdown trigger="click">
+    <i-button>Click Dropdown</i-button>
+    <template #body>
+        <i-dropdown-item>Action</i-dropdown-item>
+        <i-dropdown-item>Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </template>
+</i-dropdown>
+
+<i-dropdown trigger="hover">
+    <i-button>Hover Dropdown</i-button>
+    <template #body>
+        <i-dropdown-item>Action</i-dropdown-item>
+        <i-dropdown-item>Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </template>
+</i-dropdown>
+
+<i-dropdown trigger="focus">
+    <i-button type="submit">Focus Dropdown</i-button>
+    <template #body>
+        <i-dropdown-item>Action</i-dropdown-item>
+        <i-dropdown-item>Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </template>
+</i-dropdown>
+
+<i-dropdown :trigger="['focus', 'hover']">
+    <i-button>Multiple Events Dropdown</i-button>
+    <template #body>
+        <i-dropdown-item>Action</i-dropdown-item>
+        <i-dropdown-item>Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </template>
+</i-dropdown>
+
+<i-dropdown trigger="manual" v-model="visible">
+    <i-button @click="visible = !visible">Manual Dropdown</i-button>
+    <template #body>
+        <i-dropdown-item>Action</i-dropdown-item>
+        <i-dropdown-item>Another action</i-dropdown-item>
+        <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+        <i-dropdown-divider />
+        <i-dropdown-item>Separated item</i-dropdown-item>
+    </template>
+</i-dropdown>

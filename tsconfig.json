@@ -12,6 +12,8 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
+        "rootDir": "src",
+        "outDir": "lib",
         "paths": {
             "@inkline/inkline/*": ["./*"]
         },
@@ -32,6 +34,8 @@
         "src/**/*.vue"
     ],
     "exclude": [
+        "dist",
+        "lib",
         "node_modules"
     ]
 }

@@ -1,0 +1,115 @@
+/**
+ * Color variants
+ */
+
+.sidebar-wrapper {
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light') {
+        /// The background of the sidebar component, for the light color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('light')};
+
+        /// The border top color of the sidebar component, for the light color variant
+        /// @name border-top-color
+        /// @type color
+        ----border-top-color: #{color('light-60')};
+
+        /// The border right color of the sidebar component, for the light color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('light-60')};
+
+        /// The border bottom color of the sidebar component, for the light color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('light-60')};
+
+        /// The border left color of the sidebar component, for the light color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('light-60')};
+
+        /// The color of the sidebar component, for the light color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-light)};
+
+        /// The color of the sidebar component item, for the light color variant
+        /// @name item--color
+        /// @type color
+        ----item--color: #{contrast-color($color-light)};
+
+        /// The color of the sidebar component item when hovered, for the light color variant
+        /// @name item--color--hover
+        /// @type color
+        ----item--color--hover: #{contrast-color($color-light)};
+
+        /// The background of the sidebar component item, for the light color variant
+        /// @name item--background
+        /// @type color
+        ----item--background: #{color('light')};
+
+        /// The background of the sidebar component item when hovered or focused, for the light color variant
+        /// @name item--background--hover
+        /// @type color
+        ----item--background--hover: #{color('light-55')};
+    }
+
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark') {
+        /// The background of the sidebar component, for the dark color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('dark')};
+
+        /// The border top color of the sidebar component, for the dark color variant
+        /// @name border-top-color
+        /// @type color
+        ----border-top-color: #{color('dark-40')};
+
+        /// The border right color of the sidebar component, for the dark color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('dark-40')};
+
+        /// The border bottom color of the sidebar component, for the dark color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('dark-40')};
+
+        /// The border left color of the sidebar component, for the dark color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('dark-40')};
+
+        /// The color of the sidebar component, for the dark color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-dark)};
+
+        /// The color of the sidebar component item, for the dark color variant
+        /// @name item--color
+        /// @type color
+        ----item--color: #{contrast-color($color-dark)};
+
+        /// The color of the sidebar component item when hovered, for the dark color variant
+        /// @name item--color--hover
+        /// @type color
+        ----item--color--hover: #{contrast-color($color-dark)};
+
+        /// The background of the sidebar component item, for the dark color variant
+        /// @name item--background
+        /// @type color
+        ----item--background: #{color('dark')};
+
+        /// The background of the sidebar component item when hovered or focused, for the dark color variant
+        /// @name item--background--hover
+        /// @type color
+        ----item--background--hover: #{color('dark-45')};
+    }
+}

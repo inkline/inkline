@@ -1,0 +1,11 @@
+@import '../../../../css/variables';
+@import '../../../../css/mixins';
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+
+    &.-inline {
+        flex-direction: row;
+    }
+}

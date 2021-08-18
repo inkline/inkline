@@ -1,0 +1,40 @@
+/**
+ * Breadcrumb
+ */
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/colors';
+@import 'css/sizes';
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: var(----margin-bottom);
+    font-size: var(----font-size);
+
+    > .breadcrumb-item {
+        padding-left: var(----padding-left);
+
+        a {
+            color: var(----color--default);
+
+            &[href],
+            &[to] {
+                color: var(----color);
+            }
+        }
+
+        &.-active a {
+            color: var(----color--active);
+        }
+
+        + .breadcrumb-item {
+            &::before {
+                padding-right: var(----padding-right);
+            }
+        }
+    }
+}

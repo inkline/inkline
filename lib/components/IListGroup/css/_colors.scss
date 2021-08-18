@@ -1,0 +1,115 @@
+/**
+ * Color variants
+ */
+
+.list-group {
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light') {
+        /// The background of the list group component, for the light color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('white')};
+
+        /// The background of the list group component when active, for the light color variant
+        /// @name background--active
+        /// @type color
+        ----background--active: #{color('primary')};
+
+        /// The border top color of the list group component, for the light color variant
+        /// @name border-top-color
+        /// @type color
+        ----border-top-color: #{color('light')};
+
+        /// The border right color of the list group component, for the light color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('light')};
+
+        /// The border bottom color of the list group component, for the light color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('light')};
+
+        /// The border left color of the list group component, for the light color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('light')};
+
+        /// The border-color of the list group component, for the light color variant
+        /// @name border-color--active
+        /// @type color
+        ----border-color--active: #{color('primary-55')};
+
+        /// The color of the list group component item, for the light color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-light)};
+
+        /// The color of the list group component item when active, for the light color variant
+        /// @name color--active
+        /// @type color
+        ----color--active: #{contrast-color($color-primary)};
+
+        /// The color of the list group component item when disabled, for the light color variant
+        /// @name color--disabled
+        /// @type color
+        ----color--disabled: #{var(--text-muted)};
+    }
+
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark') {
+        /// The background of the list group component, for the dark color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('dark')};
+
+        /// The background of the list group component when active, for the dark color variant
+        /// @name background--active
+        /// @type color
+        ----background--active: #{color('primary')};
+
+        /// The border top color of the list group component, for the dark color variant
+        /// @name border-top-color
+        /// @type color
+        ----border-top-color: #{color('dark-60')};
+
+        /// The border right color of the list group component, for the dark color variant
+        /// @name border-right-color
+        /// @type color
+        ----border-right-color: #{color('dark-60')};
+
+        /// The border bottom color of the list group component, for the dark color variant
+        /// @name border-bottom-color
+        /// @type color
+        ----border-bottom-color: #{color('dark-60')};
+
+        /// The border left color of the list group component, for the dark color variant
+        /// @name border-left-color
+        /// @type color
+        ----border-left-color: #{color('dark-60')};
+
+        /// The border-color of the list group component, for the dark color variant
+        /// @name border-color--active
+        /// @type color
+        ----border-color--active: #{color('primary-55')};
+
+        /// The color of the list group component item, for the dark color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-dark)};
+
+        /// The color of the list group component item when active, for the dark color variant
+        /// @name color--active
+        /// @type color
+        ----color--active: #{contrast-color($color-primary)};
+
+        /// The color of the list group component item when disabled, for the dark color variant
+        /// @name color--disabled
+        /// @type color
+        ----color--disabled: #{var(--text-muted)};
+    }
+}

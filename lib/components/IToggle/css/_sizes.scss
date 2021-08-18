@@ -1,0 +1,155 @@
+/**
+ * Size variants
+ */
+
+.toggle {
+    /// Variables for the sm color variant
+    /// @name sm
+    /// @type group
+    @include variant('sm', 'form') {
+        /// The width of the toggle component, for the sm size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{40px} * #{size-multiplier('sm')});
+
+        /// The height of the toggle component, for the sm size variant
+        /// @name height
+        /// @type size
+        ----height: calc(#{20px} * #{size-multiplier('sm')});
+
+        /// The border top left radius of the toggle component indicator, for the sm size variant
+        /// @name indicator--border-top-left-radius
+        /// @type size
+        ----indicator--border-top-left-radius: calc(#{50%} * #{size-multiplier('sm')});
+
+        /// The border top right radius of the toggle component indicator, for the sm size variant
+        /// @name indicator--border-top-right-radius
+        /// @type size
+        ----indicator--border-top-right-radius: calc(#{50%} * #{size-multiplier('sm')});
+
+        /// The border bottom right radius of the toggle component indicator, for the sm size variant
+        /// @name indicator--border-bottom-right-radius
+        /// @type size
+        ----indicator--border-bottom-right-radius: calc(#{50%} * #{size-multiplier('sm')});
+
+        /// The border bottom left radius of the toggle component indicator, for the sm size variant
+        /// @name indicator--border-bottom-left-radius
+        /// @type size
+        ----indicator--border-bottom-left-radius: calc(#{50%} * #{size-multiplier('sm')});
+
+        /// The width of the toggle component indicator, for the sm size variant
+        /// @name indicator--width
+        /// @type size
+        ----indicator--width: calc(#{16px} * #{size-multiplier('sm')});
+
+        /// The height of the toggle component indicator, for the sm size variant
+        /// @name indicator--height
+        /// @type size
+        ----indicator--height: calc(#{16px} * #{size-multiplier('sm')});
+
+        /// The font size of the toggle component label, for the sm size variant
+        /// @name label--font-size
+        /// @type size
+        ----label--font-size: calc(#{font-size()} * #{size-multiplier('sm')});
+    }
+
+    /// Variables for the md color variant
+    /// @name md
+    /// @type group
+    @include variant('md', 'form') {
+        /// The width of the toggle component, for the md size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{40px} * #{size-multiplier('md')});
+
+        /// The height of the toggle component, for the md size variant
+        /// @name height
+        /// @type size
+        ----height: calc(#{20px} * #{size-multiplier('md')});
+
+        /// The border top left radius of the toggle component indicator, for the md size variant
+        /// @name indicator--border-top-left-radius
+        /// @type size
+        ----indicator--border-top-left-radius: calc(#{50%} * #{size-multiplier('md')});
+
+        /// The border top right radius of the toggle component indicator, for the md size variant
+        /// @name indicator--border-top-right-radius
+        /// @type size
+        ----indicator--border-top-right-radius: calc(#{50%} * #{size-multiplier('md')});
+
+        /// The border bottom right radius of the toggle component indicator, for the md size variant
+        /// @name indicator--border-bottom-right-radius
+        /// @type size
+        ----indicator--border-bottom-right-radius: calc(#{50%} * #{size-multiplier('md')});
+
+        /// The border bottom left radius of the toggle component indicator, for the md size variant
+        /// @name indicator--border-bottom-left-radius
+        /// @type size
+        ----indicator--border-bottom-left-radius: calc(#{50%} * #{size-multiplier('md')});
+
+        /// The width of the toggle component indicator, for the md size variant
+        /// @name indicator--width
+        /// @type size
+        ----indicator--width: calc(#{16px} * #{size-multiplier('md')});
+
+        /// The height of the toggle component indicator, for the md size variant
+        /// @name indicator--height
+        /// @type size
+        ----indicator--height: calc(#{16px} * #{size-multiplier('md')});
+
+        /// The font size of the toggle component label, for the md size variant
+        /// @name label--font-size
+        /// @type size
+        ----label--font-size: calc(#{font-size()} * #{size-multiplier('md')});
+    }
+
+    /// Variables for the lg color variant
+    /// @name lg
+    /// @type group
+    @include variant('lg', 'form') {
+        /// The width of the toggle component, for the lg size variant
+        /// @name width
+        /// @type size
+        ----width: calc(#{40px} * #{size-multiplier('lg')});
+
+        /// The height of the toggle component, for the lg size variant
+        /// @name height
+        /// @type size
+        ----height: calc(#{20px} * #{size-multiplier('lg')});
+
+        /// The border top left radius of the toggle component indicator, for the lg size variant
+        /// @name indicator--border-top-left-radius
+        /// @type size
+        ----indicator--border-top-left-radius: calc(#{50%} * #{size-multiplier('lg')});
+
+        /// The border top right radius of the toggle component indicator, for the lg size variant
+        /// @name indicator--border-top-right-radius
+        /// @type size
+        ----indicator--border-top-right-radius: calc(#{50%} * #{size-multiplier('lg')});
+
+        /// The border bottom right radius of the toggle component indicator, for the lg size variant
+        /// @name indicator--border-bottom-right-radius
+        /// @type size
+        ----indicator--border-bottom-right-radius: calc(#{50%} * #{size-multiplier('lg')});
+
+        /// The border bottom left radius of the toggle component indicator, for the lg size variant
+        /// @name indicator--border-bottom-left-radius
+        /// @type size
+        ----indicator--border-bottom-left-radius: calc(#{50%} * #{size-multiplier('lg')});
+
+        /// The width of the toggle component indicator, for the lg size variant
+        /// @name indicator--width
+        /// @type size
+        ----indicator--width: calc(#{16px} * #{size-multiplier('lg')});
+
+        /// The height of the toggle component indicator, for the lg size variant
+        /// @name indicator--height
+        /// @type size
+        ----indicator--height: calc(#{16px} * #{size-multiplier('lg')});
+
+        /// The font size of the toggle component label, for the lg size variant
+        /// @name label--font-size
+        /// @type size
+        ----label--font-size: calc(#{font-size()} * #{size-multiplier('lg')});
+    }
+}

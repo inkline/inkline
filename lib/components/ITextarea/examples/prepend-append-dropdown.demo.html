@@ -1,0 +1,56 @@
+<i-textarea v-model="prepend" placeholder="Type something..">
+    <template #prepend>
+        <i-dropdown>
+            <div class="_padding:1">Dropdown</div>
+            <template #body>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </template>
+        </i-dropdown>
+    </template>
+</i-textarea>
+
+<i-textarea v-model="append" placeholder="Type something..">
+    <template #append>
+        <i-dropdown>
+            <div class="_padding:1">Dropdown</div>
+            <template #body>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </template>
+        </i-dropdown>
+    </template>
+</i-textarea>
+
+<i-textarea v-model="prependAppend" placeholder="Type something..">
+    <template #prepend>
+        <i-dropdown>
+            <div class="_padding:1">Dropdown</div>
+            <template #body>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </template>
+        </i-dropdown>
+    </template>
+    <template #append>
+        <i-dropdown>
+            <div class="_padding:1">Dropdown</div>
+            <template #body>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </template>
+        </i-dropdown>
+    </template>
+</i-textarea>

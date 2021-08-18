@@ -1,0 +1,172 @@
+/**
+ * Flex
+ *
+ * Custom styles for additional flex alignment options.
+ */
+
+@each $breakpoint-key in $breakpoint-prefix-keys {
+    $prefix: breakpoint-prefix($breakpoint-key);
+
+    @include breakpoint-up($breakpoint-key) {
+        ._#{$prefix}flex-direction\:row {
+            flex-direction: row !important;
+        }
+
+        ._#{$prefix}flex-direction\:column {
+            flex-direction: column !important;
+        }
+
+        ._#{$prefix}flex-direction\:row-reverse {
+            flex-direction: row-reverse !important;
+        }
+
+        ._#{$prefix}flex-direction\:column-reverse {
+            flex-direction: column-reverse !important;
+        }
+
+        ._#{$prefix}flex\:wrap,
+        ._#{$prefix}flex-wrap\:wrap {
+            flex-wrap: wrap !important;
+        }
+
+        ._#{$prefix}flex\:nowrap,
+        ._#{$prefix}flex-wrap\:nowrap {
+            flex-wrap: nowrap !important;
+        }
+
+        ._#{$prefix}flex\:wrap-reverse,
+        ._#{$prefix}flex-wrap\:wrap-reverse {
+            flex-wrap: wrap-reverse !important;
+        }
+
+        ._#{$prefix}flex\:fill {
+            flex: 1 1 auto !important;
+        }
+
+        ._#{$prefix}flex-grow\:1 {
+            flex-grow: 1 !important;
+        }
+
+        ._#{$prefix}flex-grow\:0 {
+            flex-grow: 0 !important;
+        }
+
+        ._#{$prefix}flex-shrink\:1 {
+            flex-shrink: 1 !important;
+        }
+
+        ._#{$prefix}flex-shrink\:0 {
+            flex-shrink: 0 !important;
+        }
+
+        ._#{$prefix}justify-content\:start,
+        ._#{$prefix}justify-content\:flex-start {
+            justify-content: flex-start !important;
+        }
+
+        ._#{$prefix}justify-content\:end,
+        ._#{$prefix}justify-content\:flex-end {
+            justify-content: flex-end !important;
+        }
+
+        ._#{$prefix}justify-content\:center {
+            justify-content: center !important;
+        }
+
+        ._#{$prefix}justify-content\:space-between {
+            justify-content: space-between !important;
+        }
+
+        ._#{$prefix}justify-content\:space-around {
+            justify-content: space-around !important;
+        }
+
+        ._#{$prefix}align-items\:start,
+        ._#{$prefix}align-items\:flex-start {
+            align-items: flex-start !important;
+        }
+
+        ._#{$prefix}align-items\:end,
+        ._#{$prefix}align-items\:flex-end {
+            align-items: flex-end !important;
+        }
+
+        ._#{$prefix}align-items\:center {
+            align-items: center !important;
+        }
+
+        ._#{$prefix}align-items\:baseline {
+            align-items: baseline !important;
+        }
+
+        ._#{$prefix}align-items\:stretch {
+            align-items: stretch !important;
+        }
+
+        ._#{$prefix}align-content\:start,
+        ._#{$prefix}align-content\:flex-start {
+            align-content: flex-start !important;
+        }
+
+        ._#{$prefix}align-content\:end,
+        ._#{$prefix}align-content\:flex-end {
+            align-content: flex-end !important;
+        }
+
+        ._#{$prefix}align-content\:center {
+            align-content: center !important;
+        }
+
+        ._#{$prefix}align-content\:space-between {
+            align-content: space-between !important;
+        }
+
+        ._#{$prefix}align-content\:space-around {
+            align-content: space-around !important;
+        }
+
+        ._#{$prefix}align-content\:stretch {
+            align-content: stretch !important;
+        }
+
+        ._#{$prefix}align-self\:auto {
+            align-self: auto !important;
+        }
+
+        ._#{$prefix}align-self\:start,
+        ._#{$prefix}align-self\:flex-start {
+            align-self: flex-start !important;
+        }
+
+        ._#{$prefix}align-self\:end,
+        ._#{$prefix}align-self\:flex-end {
+            align-self: flex-end !important;
+        }
+
+        ._#{$prefix}align-self\:center {
+            align-self: center !important;
+        }
+
+        ._#{$prefix}align-self\:baseline {
+            align-self: baseline !important;
+        }
+
+        ._#{$prefix}align-self\:stretch {
+            align-self: stretch !important;
+        }
+
+        @for $column-count from 0 through $columns {
+            ._#{$prefix}order\:#{$column-count} {
+                order: $column-count;
+            }
+        }
+
+        ._#{$prefix}order\:first {
+            order: -1;
+        }
+
+        ._#{$prefix}order\:last {
+            order: 99;
+        }
+    }
+}

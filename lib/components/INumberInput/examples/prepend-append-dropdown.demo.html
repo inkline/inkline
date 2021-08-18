@@ -1,0 +1,56 @@
+<i-number-input v-model="prepend" placeholder="Enter a number..">
+    <template #prepend>
+        <i-dropdown>
+            <i-button>Dropdown</i-button>
+            <template #body>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </template>
+        </i-dropdown>
+    </template>
+</i-number-input>
+
+<i-number-input v-model="append" placeholder="Enter a number..">
+    <template #append>
+        <i-dropdown>
+            <i-button>Dropdown</i-button>
+            <template #body>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </template>
+        </i-dropdown>
+    </template>
+</i-number-input>
+
+<i-number-input v-model="prependAppend" placeholder="Enter a number..">
+    <template #prepend>
+        <i-dropdown>
+            <i-button>Dropdown</i-button>
+            <template #body>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </template>
+        </i-dropdown>
+    </template>
+    <template #append>
+        <i-dropdown>
+            <i-button>Dropdown</i-button>
+            <template #body>
+                <i-dropdown-item>Action</i-dropdown-item>
+                <i-dropdown-item>Another action</i-dropdown-item>
+                <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+                <i-dropdown-divider />
+                <i-dropdown-item>Separated item</i-dropdown-item>
+            </template>
+        </i-dropdown>
+    </template>
+</i-number-input>

@@ -1,0 +1,18 @@
+<i-navbar collapse="lg">
+    <i-navbar-brand :to="{ name: 'docs-components-navbar' }">
+        Navbar
+    </i-navbar-brand>
+    <i-navbar-collapsible>
+        <i-nav>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }" active-class="-active">
+                Home
+            </i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">
+                About
+            </i-nav-item>
+            <i-nav-item :to="{ name: 'docs-components-navbar' }">
+                Contact
+            </i-nav-item>
+        </i-nav>
+    </i-navbar-collapsible>
+</i-navbar>

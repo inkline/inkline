@@ -1,0 +1,9 @@
+<form class="form"
+      role="form"
+      :name="name"
+      :class="classes"
+      :readonly="isReadonly"
+      :disabled="isDisabled"
+      @submit="onSubmit">
+    <slot />
+</form>

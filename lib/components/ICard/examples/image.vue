@@ -1,0 +1,1 @@
+<template src="./image.html" />

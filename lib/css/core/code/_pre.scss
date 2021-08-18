@@ -1,0 +1,41 @@
+/**
+    * Pre-formatted Text
+    */
+
+// Blocks of code
+pre {
+    font-family: font-family-primary('monospace');
+    display: block;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: var(--pre--font-size);
+    color: var(--pre--color);
+    transition-property: background-color, color, text-shadow;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-easing);
+
+    // Account for some code outputs that place code tags in pre tags
+    code {
+        padding: 0;
+        font-size: inherit;
+        color: inherit;
+        background-color: transparent;
+        border-radius: 0;
+        transition-property: none;
+    }
+
+    // Enable scrollable blocks of code
+    &.-scrollable {
+        max-height: var(--pre--scrollable-max-height);
+        overflow-y: scroll;
+    }
+}
+
+.inkline.-dark pre {
+    color: var(--pre--color--dark);
+
+    code {
+        color: inherit;
+        background-color: transparent;
+    }
+}

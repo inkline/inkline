@@ -1,0 +1,163 @@
+////
+/// Variables
+////
+
+/// The font size of the modal component
+/// @name font-size
+/// @type size
+$nav-font-size: font-size() !default;
+
+/// The padding of the modal component
+/// @name padding
+/// @type size
+$nav-padding: spacing() !default;
+
+////
+/// Sizes
+////
+
+////
+/// Small size
+////
+
+/// The font size of the modal component
+/// @name font-size
+/// @group sm
+/// @type size
+$nav-size-variant-sm-font-size: calc(var(--nav-font-size) * #{size-multiplier('sm')}) !default;
+
+/// The padding of the modal component
+/// @name padding
+/// @group sm
+/// @type size
+$nav-size-variant-sm-padding: calc(var(--nav-padding) * #{size-multiplier('sm')}) !default;
+
+/// Map for sm size
+/// @group sm
+$nav-size-variant-sm: (
+    'font-size': $nav-size-variant-sm-font-size,
+    'padding': $nav-size-variant-sm-padding
+) !default;
+
+////
+/// Medium size
+////
+
+/// The font size of the modal component
+/// @name font-size
+/// @group md
+/// @type size
+$nav-size-variant-md-font-size: calc(var(--nav-font-size) * #{size-multiplier('md')}) !default;
+
+/// The padding of the modal component
+/// @name padding
+/// @group md
+/// @type size
+$nav-size-variant-md-padding: calc(var(--nav-padding) * #{size-multiplier('md')}) !default;
+
+/// Map for md size
+/// @group md
+$nav-size-variant-md: (
+    'font-size': $nav-size-variant-md-font-size,
+    'padding': $nav-size-variant-md-padding
+) !default;
+
+////
+/// Large size
+////
+
+/// The font size of the modal component
+/// @name font-size
+/// @group lg
+/// @type size
+$nav-size-variant-lg-font-size: calc(var(--nav-font-size) * #{size-multiplier('lg')}) !default;
+
+/// The padding of the modal component
+/// @name padding
+/// @group lg
+/// @type size
+$nav-size-variant-lg-padding: calc(var(--nav-padding) * #{size-multiplier('lg')}) !default;
+
+/// Map for lg size
+/// @group lg
+$nav-size-variant-lg: (
+    'font-size': $nav-size-variant-lg-font-size,
+    'padding': $nav-size-variant-lg-padding
+) !default;
+
+/// Sizes group map
+$nav-size-variants: (
+    'sm': $nav-size-variant-sm,
+    'md': $nav-size-variant-md,
+    'lg': $nav-size-variant-lg
+) !default;
+
+////
+/// Colors
+////
+
+////
+/// Light color
+////
+
+/// The color of the list group component item
+/// @name color
+/// @group light
+/// @type color
+$nav-color-variant-light-color: contrast-color($color-light) !default;
+
+/// The color of the list group component item when active
+/// @name color-active
+/// @group light
+/// @type color
+$nav-color-variant-light-color-active: color('primary') !default;
+
+/// The color of the list group component item when disabled
+/// @name color-disabled
+/// @group light
+/// @type color
+$nav-color-variant-light-color-disabled: var(--text-muted) !default;
+
+/// Map for light color
+/// @group light
+$nav-color-variant-light: (
+    'color': $nav-color-variant-light-color,
+    'color-active': $nav-color-variant-light-color-active,
+    'color-disabled': $nav-color-variant-light-color-disabled
+) !default;
+
+////
+/// Dark color
+////
+
+/// The color of the list group component item
+/// @name color
+/// @group dark
+/// @type color
+$nav-color-variant-dark-color: contrast-color($color-dark) !default;
+
+/// The color of the list group component item when active
+/// @name color-active
+/// @group dark
+/// @type color
+$nav-color-variant-dark-color-active: color('primary') !default;
+
+/// The color of the list group component item when disabled
+/// @name color-disabled
+/// @group dark
+/// @type color
+$nav-color-variant-dark-color-disabled: var(--text-muted) !default;
+
+/// Map for dark color
+/// @group dark
+$nav-color-variant-dark: (
+    'color': $nav-color-variant-dark-color,
+    'color-active': $nav-color-variant-dark-color-active,
+    'color-disabled': $nav-color-variant-dark-color-disabled
+) !default;
+
+/// Colors group map
+$nav-color-variants: (
+    'light': $nav-color-variant-light,
+    'dark': $nav-color-variant-dark
+) !default;

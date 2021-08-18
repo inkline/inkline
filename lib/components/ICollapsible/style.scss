@@ -1,0 +1,14 @@
+/**
+ * Collapsible
+ */
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/colors';
+@import 'css/sizes';
+
+.collapsible {
+    position: relative;
+    display: block;
+    font-size: var(----font-size);
+}

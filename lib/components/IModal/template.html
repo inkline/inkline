@@ -1,0 +1,22 @@
+<transition name="fade-in-transition">
+    <div class="modal-wrapper" :class="classes" v-show="visible" :id="id">
+        <transition :name="transition">
+            <div class="modal" v-click-outside="onClickOutside" v-show="visible">
+                <div class="modal-header" v-if="$slots.header">
+                    <slot name="header" />
+                    <button class="close" @click="hide" v-if="showClose">
+                        <slot name="close">
+                            <i class="icon" />
+                        </slot>
+                    </button>
+                </div>
+                <div class="modal-body" v-if="$slots.default">
+                    <slot />
+                </div>
+                <div class="modal-footer" v-if="$slots.footer">
+                    <slot name="footer" />
+                </div>
+            </div>
+        </transition>
+    </div>
+</transition>

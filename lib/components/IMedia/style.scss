@@ -1,0 +1,33 @@
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+
+/**
+ * Media
+ */
+.media {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    > .media-body {
+        flex: 0 1 auto;
+
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    > img,
+    > .img,
+    > .image {
+        align-self: flex-start;
+        height: auto;
+        flex: 0 0 auto;
+        margin-right: var(----image--margin-right);
+    }
+}

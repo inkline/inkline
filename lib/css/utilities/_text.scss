@@ -1,0 +1,112 @@
+/**
+ * Text
+ */
+
+@each $breakpoint-key in $breakpoint-prefix-keys {
+    $prefix: breakpoint-prefix($breakpoint-key);
+
+    @include breakpoint-up($breakpoint-key) {
+        ._#{$prefix}text\:left,
+        ._#{$prefix}text-align\:left {
+            text-align: left !important;
+        }
+
+        ._#{$prefix}text\:right,
+        ._#{$prefix}text-align\:right {
+            text-align: right !important;
+        }
+
+        ._#{$prefix}text\:center,
+        ._#{$prefix}text-align\:center {
+            text-align: center !important;
+        }
+
+        ._#{$prefix}text\:wrap,
+        ._#{$prefix}white-space\:normal {
+            white-space: normal !important;
+        }
+
+        ._#{$prefix}text\:nowrap,
+        ._#{$prefix}white-space\:nowrap {
+            white-space: nowrap !important;
+        }
+
+        ._#{$prefix}text\:truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+._text\:justify,
+._text-align\:justify {
+    text-align: justify !important;
+}
+
+// Transformation
+//
+._text\:lowercase,
+._text-transform\:lowercase {
+    text-transform: lowercase !important;
+}
+
+._text\:uppercase,
+._text-transform\:uppercase {
+    text-transform: uppercase !important;
+}
+
+._text\:capitalize,
+._text-transform\:capitalize {
+    text-transform: capitalize !important;
+}
+
+// Weight and italics
+//
+@each $font-weight-key, $font-weight-value in $font-weights {
+    ._text\:#{$font-weight-key},
+    ._font-weight\:#{$font-weight-key} {
+        font-weight: font-weight($font-weight-key) !important;
+    }
+}
+
+._text\:italic,
+._font-style\:italic {
+    font-style: italic !important;
+}
+
+._text\:monospace,
+._font-family\:monospace {
+    font-family: font-family-primary('monospace');
+}
+
+._text\:muted,
+._color-muted {
+    color: var(--text-muted) !important;
+}
+
+._text\:hide {
+    text-indent: -10000px;
+}
+
+._text\:break-word {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+._text\:reset {
+    color: inherit !important;
+}
+
+._text-decoration\:none {
+    text-decoration: none !important;
+}
+
+// Font size
+//
+@each $size-key, $size in $font-sizes {
+    ._text\:#{$size-key},
+    ._font-size\:#{$size-key} {
+        font-size: font-size($size-key);
+    }
+}

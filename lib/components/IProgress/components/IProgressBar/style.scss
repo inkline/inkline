@@ -1,0 +1,18 @@
+/**
+ * Nav
+ */
+@import '../../../../css/variables';
+@import '../../../../css/mixins';
+@import 'css/variables';
+@import 'css/colors';
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    height: 100%;
+    color: var(----color);
+    background: var(----background);
+}

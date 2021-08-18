@@ -1,0 +1,11 @@
+:root {
+    /**
+     * Colors
+     */
+
+    @each $progress-bar-color-variant-key, $progress-bar-color-variant-value in $progress-bar-color-variants {
+        @each $progress-bar-color-variant-field-key, $progress-bar-color-variant-field-value in $progress-bar-color-variant-value {
+            --progress-bar-color-variant-#{$progress-bar-color-variant-key}-#{$progress-bar-color-variant-field-key}: #{$progress-bar-color-variant-field-value};
+        }
+    }
+}

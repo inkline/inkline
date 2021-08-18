@@ -1,0 +1,24 @@
+@import '../../css/variables';
+@import '../../css/mixins';
+@import 'css/variables';
+@import 'css/colors';
+@import 'css/sizes';
+
+.tabs {
+    position: relative;
+    display: block;
+
+    .tabs-header {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        align-items: center;
+        border-width: var(----border-width);
+        border-style: var(----border-style);
+        border-color: var(----border-color);
+        margin-bottom: var(----header--margin-bottom);
+        overflow: auto;
+        color: var(----header--color);
+        background: var(----header--background);
+    }
+}

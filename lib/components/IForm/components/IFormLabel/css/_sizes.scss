@@ -1,0 +1,35 @@
+/**
+ * Size variants
+ */
+
+.form-label {
+    /// Variables for the sm color variant
+    /// @name sm
+    /// @type group
+    @include variant('sm', 'form') {
+        /// The font size of the form label component, for the sm size variant
+        /// @name font-size
+        /// @type size
+        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
+    }
+
+    /// Variables for the md color variant
+    /// @name md
+    /// @type group
+    @include variant('md', 'form') {
+        /// The font size of the form label component, for the md size variant
+        /// @name font-size
+        /// @type size
+        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
+    }
+
+    /// Variables for the lg color variant
+    /// @name lg
+    /// @type group
+    @include variant('lg', 'form') {
+        /// The font size of the form label component, for the lg size variant
+        /// @name font-size
+        /// @type size
+        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
+    }
+}

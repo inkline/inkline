@@ -1,0 +1,21 @@
+$slide-in-right-transition: transform 300ms ease !default;
+
+:root {
+    --slide-in-right-transition: #{$slide-in-right-transition};
+}
+
+.slide-in-right-transition-enter-active,
+.slide-in-right-transition-leave-active {
+    transition: var(--slide-in-right-transition);
+    transform-origin: left;
+}
+
+.slide-in-right-transition-enter-from,
+.slide-in-right-transition-leave-to {
+    transform: translateX(-100%);
+}
+
+.slide-in-right-transition-enter-to,
+.slide-in-right-transition-leave-from {
+    transform: translateX(0);
+}

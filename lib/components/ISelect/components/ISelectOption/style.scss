@@ -1,0 +1,33 @@
+@import '../../../../css/variables';
+@import '../../../../css/mixins';
+@import '../../css/variables';
+
+/**
+ * Nav Item
+ */
+.select .select-option {
+    display: block;
+    width: 100%;
+    clear: both;
+    margin-bottom: 0;
+    border: 0;
+    cursor: pointer;
+    transition-property: background-color, border-color, color;
+    transition-timing-function: var(--transition-easing);
+    transition-duration: var(--transition-duration);
+
+    &:hover,
+    &:focus {
+        outline: 0;
+        text-decoration: none;
+    }
+
+    &.-disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    &.-active {
+        font-weight: bold;
+    }
+}

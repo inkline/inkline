@@ -1,0 +1,44 @@
+/**
+ * Blockquote
+ */
+.blockquote {
+    margin: 0 0 var(--blockquote--margin);
+    font-size: var(--blockquote--font-size);
+
+    &.-left {
+        text-align: left;
+
+        &.-bordered {
+            padding-left: spacing();
+            border-left: var(--blockquote--border);
+        }
+    }
+
+    &.-center {
+        text-align: center;
+    }
+
+    &.-right {
+        text-align: right;
+
+        &.-bordered {
+            padding-right: var(--blockquote--padding--bordered);
+            border-right: var(--blockquote--border);
+        }
+    }
+
+    > p {
+        margin-bottom: 0;
+    }
+
+    > footer,
+    > .footer {
+        display: block;
+        font-size: 80%;
+        color: var(--blockquote--footer--color);
+
+        &::before {
+            content: '\2014 \00A0'; // em dash, nbsp
+        }
+    }
+}

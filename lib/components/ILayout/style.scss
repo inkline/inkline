@@ -1,0 +1,31 @@
+@import '../../css/variables';
+@import '../../css/mixins';
+
+/**
+ * Layout
+ */
+.layout {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    position: relative;
+
+    &,
+    * {
+        box-sizing: border-box;
+    }
+
+    &.-vertical {
+        flex-direction: row;
+        height: 100%;
+
+        > .layout,
+        > .container {
+            overflow-x: hidden;
+        }
+    }
+
+    > .container {
+        flex: auto;
+    }
+}

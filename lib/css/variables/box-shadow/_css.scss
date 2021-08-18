@@ -1,0 +1,11 @@
+// Box Shadow
+//
+
+:root {
+    --box-shadow-offset-x: #{$box-shadow-offset-x};
+    --box-shadow-offset-y: #{$box-shadow-offset-y};
+    --box-shadow-blur-radius: #{$box-shadow-blur-radius};
+    --box-shadow-spread-radius: #{$box-shadow-spread-radius};
+    --box-shadow-color: #{$box-shadow-color};
+    --box-shadow: #{$box-shadow};
+}

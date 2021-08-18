@@ -1,0 +1,23 @@
+/**
+ * Float
+ *
+ * Custom styles for additional flex alignment options.
+ */
+
+@each $breakpoint-key in $breakpoint-prefix-keys {
+    $prefix: breakpoint-prefix($breakpoint-key);
+
+    @include breakpoint-up($breakpoint-key) {
+        ._#{$prefix}float\:left {
+            float: left !important;
+        }
+
+        ._#{$prefix}float\:right {
+            float: right !important;
+        }
+
+        ._#{$prefix}float\:none {
+            float: none !important;
+        }
+    }
+}

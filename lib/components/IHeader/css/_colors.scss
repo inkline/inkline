@@ -1,0 +1,50 @@
+/**
+ * Color variants
+ */
+
+.header {
+    /// Variables for the primary color variant
+    /// @name primary
+    /// @type group
+    @include variant('primary') {
+        /// The background of the header component, for the primary color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('primary')};
+
+        /// The color of the header component, for the primary color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-primary)};
+    }
+
+    /// Variables for the light color variant
+    /// @name light
+    /// @type group
+    @include variant('light') {
+        /// The background of the header component, for the light color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('light')};
+
+        /// The color of the header component, for the light color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-light)};
+    }
+
+    /// Variables for the dark color variant
+    /// @name dark
+    /// @type group
+    @include variant('dark') {
+        /// The background of the header component, for the dark color variant
+        /// @name background
+        /// @type color
+        ----background: #{color('dark')};
+
+        /// The color of the header component, for the dark color variant
+        /// @name color
+        /// @type color
+        ----color: #{contrast-color($color-dark)};
+    }
+}

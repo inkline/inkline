@@ -1,0 +1,35 @@
+/**
+ * Size variants
+ */
+
+.loader {
+    /// Variables for the sm color variant
+    /// @name sm
+    /// @type group
+    @include variant('sm') {
+        /// The size of the loader component, for the sm size variant
+        /// @name size
+        /// @type size
+        ----size: calc(#{64px} * #{size-multiplier('sm')});
+    }
+
+    /// Variables for the md color variant
+    /// @name md
+    /// @type group
+    @include variant('md') {
+        /// The size of the loader component, for the md size variant
+        /// @name size
+        /// @type size
+        ----size: calc(#{64px} * #{size-multiplier('md')});
+    }
+
+    /// Variables for the lg color variant
+    /// @name lg
+    /// @type group
+    @include variant('lg') {
+        /// The size of the loader component, for the lg size variant
+        /// @name size
+        /// @type size
+        ----size: calc(#{64px} * #{size-multiplier('lg')});
+    }
+}

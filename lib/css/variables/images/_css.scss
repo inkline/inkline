@@ -1,0 +1,18 @@
+// Images
+//
+
+:root {
+    --thumbnail--padding: #{$thumbnail--padding};
+    --thumbnail--background: #{$thumbnail--background};
+    --thumbnail--border-width: #{$thumbnail--border-width};
+    --thumbnail--border-color: #{$thumbnail--border-color};
+    --thumbnail--border-radius: #{$thumbnail--border-radius};
+    --thumbnail--box-shadow: #{$thumbnail--box-shadow};
+    --thumbnail--transition: #{$thumbnail--transition};
+
+    --polaroid--padding: #{$polaroid--padding};
+
+    --figure--caption--font-size: #{$figure--caption--font-size};
+    --figure--caption--color: #{$figure--caption--color};
+    --figure--image--margin-bottom: #{$figure--image--margin-bottom};
+}

@@ -1,0 +1,11 @@
+// Breakpoints
+//
+
+// Code is commented out because var(--breakpoint-#{$breakpoint-key}) is
+// not supported inside media queries yet
+//
+// :root {
+//    @each $breakpoint-key, $breakpoint-value in $breakpoints {
+//        --breakpoint-#{$breakpoint-key}: #{$breakpoint-value};
+//    }
+// }
