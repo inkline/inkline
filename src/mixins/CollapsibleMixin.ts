@@ -49,14 +49,14 @@ export default defineComponent({
     },
     created() {
         if (typeof window !== 'undefined') {
-            on(window, 'resize', this.onWindowResize);
+            on(window as any, 'resize', this.onWindowResize);
 
             this.onWindowResize();
         }
     },
     beforeUnmount() {
         if (typeof window !== 'undefined') {
-            off(window, 'resize', this.onWindowResize);
+            off(window as any, 'resize', this.onWindowResize);
         }
     },
     methods: {

@@ -1,4 +1,4 @@
-export { default as ILayoutAside } from './ILayoutAside';
-export { default as ILayoutContent } from './ILayoutContent';
-export { default as ILayoutFooter } from './ILayoutFooter';
-export { default as ILayoutHeader } from './ILayoutHeader';
+export { default as ILayoutAside } from './ILayoutAside/index.vue';
+export { default as ILayoutContent } from './ILayoutContent/index.vue';
+export { default as ILayoutFooter } from './ILayoutFooter/index.vue';
+export { default as ILayoutHeader } from './ILayoutHeader/index.vue';

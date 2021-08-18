@@ -500,7 +500,7 @@ export default defineComponent({
          * Keyboard bindings for select input and select options
          */
 
-        onTriggerKeyDown(event: ElementEvent) {
+        onTriggerKeyDown(event: KeyboardEvent) {
             if (this.keydownTrigger.length === 0) {
                 return;
             }
@@ -550,7 +550,7 @@ export default defineComponent({
                 break;
             }
         },
-        onItemKeyDown(event: ElementEvent) {
+        onItemKeyDown(event: KeyboardEvent) {
             if (this.keydownItem.length === 0) {
                 return;
             }
@@ -578,7 +578,7 @@ export default defineComponent({
 
             case isKey('enter', event) && this.keydownItem.includes('enter'):
             case isKey('space', event) && this.keydownItem.includes('space'):
-                event.target.click();
+                (event as any).target.click();
 
                 this.focus();
 

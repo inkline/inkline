@@ -6,7 +6,7 @@ import { hasClass } from './hasClass';
  * @param element
  * @param classes
  */
-export function addClass (element: Element, classes: string) {
+export function addClass (element: HTMLElement, classes: string) {
     if (!element) return;
 
     let currentClass = element.className;

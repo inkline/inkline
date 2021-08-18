@@ -24,7 +24,7 @@ const onClickOutside = (element: HTMLElement, binding: any) => (e: { target: HTM
 const ClickOutsideDirective: Directive = {
     beforeMount(element: HTMLElement, binding: any) {
         if (typeof window !== 'undefined') {
-            on(window.document, 'mouseup', onClickOutside(element, binding));
+            on(window.document as any, 'mouseup', onClickOutside(element, binding));
         }
     }
 };

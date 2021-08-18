@@ -86,11 +86,11 @@ export default defineComponent({
             [].concat((this as any).trigger).forEach((trigger) => {
                 switch (trigger) {
                 case 'hover':
-                    on(this.$refs.trigger, 'mouseenter', this.show);
-                    on(this.$refs.trigger, 'mouseleave', this.hide);
+                    on(this.$refs.trigger as HTMLElement, 'mouseenter', this.show);
+                    on(this.$refs.trigger as HTMLElement, 'mouseleave', this.hide);
                     break;
                 case 'click':
-                    on(this.$refs.trigger, 'click', this.onClick);
+                    on(this.$refs.trigger as HTMLElement, 'click', this.onClick);
                     break;
                 case 'focus':
                     for (const child of (this as any).$refs.trigger.children) {
@@ -107,11 +107,11 @@ export default defineComponent({
             [].concat((this as any).trigger).forEach((trigger) => {
                 switch (trigger) {
                 case 'hover':
-                    off(this.$refs.trigger, 'mouseenter', this.show);
-                    off(this.$refs.trigger, 'mouseleave', this.hide);
+                    off(this.$refs.trigger as HTMLElement, 'mouseenter', this.show);
+                    off(this.$refs.trigger as HTMLElement, 'mouseleave', this.hide);
                     break;
                 case 'click':
-                    off(this.$refs.trigger, 'click', this.onClick);
+                    off(this.$refs.trigger as HTMLElement, 'click', this.onClick);
                     break;
                 case 'focus':
                     for (const child of (this as any).$refs.trigger.children) {

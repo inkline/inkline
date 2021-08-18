@@ -10,7 +10,7 @@ import {
 } from '@inkline/inkline/src/mixins';
 import { ClickOutside } from '@inkline/inkline/src/directives';
 import { on, off, isFocusable, isKey } from '@inkline/inkline/src/helpers';
-
+import { Classes } from '@inkline/inkline/src/types';
 
 /**
  * @name default
@@ -40,20 +40,18 @@ const componentName = 'IDropdown';
 
 export default defineComponent({
     name: componentName,
+    directives: {
+        ClickOutside
+    },
     mixins: [
         PopupMixin,
         PopupControlsMixin
     ],
-    directives: {
-        ClickOutside
+    provide() {
+        return {
+            dropdown: this
+        };
     },
-    emits: [
-        /**
-         * @event update:modelValue
-         * @description Event emitted for setting the modelValue
-         */
-        'update:modelValue'
-    ],
     props: {
         /**
          * @description The duration of the hide and show animation
@@ -98,7 +96,7 @@ export default defineComponent({
          */
         keydownTrigger: {
             type: Array,
-            default: () => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+            default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
         },
         /**
          * @description The keydown events bound to the dropdown item elements
@@ -107,7 +105,7 @@ export default defineComponent({
          */
         keydownItem: {
             type: Array,
-            default: () => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+            default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
         },
         /**
          * @description Used to manually control the visibility of the dropdown
@@ -143,7 +141,7 @@ export default defineComponent({
          */
         trigger: {
             type: [String, Array],
-            default: ['click']
+            default: (): string[] => ['click']
         },
         /**
          * @description The offset of the dropdown relative to the trigger element
@@ -161,7 +159,7 @@ export default defineComponent({
          */
         popperOptions: {
             type: Object,
-            default: () => ({})
+            default: (): any => ({})
         },
         /**
          * @description The size variant of the dropdown
@@ -174,18 +172,34 @@ export default defineComponent({
             validator: sizePropValidator
         },
     },
-    provide() {
-        return {
-            dropdown: this
-        };
-    },
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
+    ],
     computed: {
-        classes() {
+        classes(): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
             };
         }
+    },
+    mounted() {
+        for (const child of (this.$refs.trigger as HTMLElement).children) {
+            on(child as HTMLElement, 'keydown', this.onTriggerKeyDown);
+        }
+
+        on(this.$refs.popup as HTMLElement, 'keydown', this.onItemKeyDown);
+    },
+    beforeUnmount() {
+        for (const child of (this.$refs.trigger as HTMLElement).children) {
+            off(child as HTMLElement, 'keydown', this.onTriggerKeyDown);
+        }
+
+        off(this.$refs.popup as HTMLElement, 'keydown', this.onItemKeyDown);
     },
     methods: {
         onEscape() {
@@ -197,24 +211,24 @@ export default defineComponent({
             this.$emit('update:modelValue', false);
             this.onClickOutside();
         },
-        getFocusableItems() {
+        getFocusableItems(): HTMLElement[] {
             const focusableItems = [];
 
-            for (const child of this.$refs.body.children) {
-                if (isFocusable(child)) {
-                    focusableItems.push(child);
+            for (const child of (this.$refs.body as HTMLElement).children) {
+                if (isFocusable(child as HTMLElement)) {
+                    focusableItems.push(child as HTMLElement);
                 }
             }
 
             return focusableItems;
         },
-        onTriggerKeyDown(event) {
+        onTriggerKeyDown(event: KeyboardEvent) {
             if (this.keydownTrigger.length === 0) {
                 return;
             }
 
             const focusableItems = this.getFocusableItems();
-            const activeIndex = focusableItems.findIndex((item) => item.active);
+            const activeIndex = focusableItems.findIndex((item: any) => item.active);
             const initialIndex = activeIndex > -1 ? activeIndex : 0;
             const focusTarget = focusableItems[initialIndex];
 
@@ -250,7 +264,7 @@ export default defineComponent({
                 break;
             }
         },
-        onItemKeyDown(event) {
+        onItemKeyDown(event: KeyboardEvent) {
             if (this.keydownItem.length === 0) {
                 return;
             }
@@ -278,7 +292,7 @@ export default defineComponent({
 
             case isKey('enter', event) && this.keydownItem.includes('enter'):
             case isKey('space', event) && this.keydownItem.includes('space'):
-                event.target.click();
+                (event as any).target.click();
 
                 if (this.hideOnItemClick) {
                     this.hide();
@@ -302,20 +316,6 @@ export default defineComponent({
                 this.hide();
             }
         }
-    },
-    mounted() {
-        for (const child of this.$refs.trigger.children) {
-            on(child, 'keydown', this.onTriggerKeyDown);
-        }
-
-        on(this.$refs.popup, 'keydown', this.onItemKeyDown);
-    },
-    beforeUnmount() {
-        for (const child of this.$refs.trigger.children) {
-            off(child, 'keydown', this.onTriggerKeyDown);
-        }
-
-        off(this.$refs.popup, 'keydown', this.onItemKeyDown);
     }
 });
 

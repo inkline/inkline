@@ -1,4 +1,9 @@
-export function markSearchString(text: string, query: string): Array<{ text: string; marked?: boolean }> {
+export interface MarkSearchStringPart {
+    text: string;
+    marked?: boolean
+}
+
+export function markSearchString(text: string, query: string): MarkSearchStringPart[] {
     if (!query) return [{ text }];
 
     const chunks = [];
