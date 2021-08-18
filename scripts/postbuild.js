@@ -16,9 +16,6 @@ const remove = [
     {
         from: path.resolve(__dirname, '..', 'dist', 'images'),
         dir: true
-    },
-    {
-        from: path.resolve(__dirname, '..', 'dist', 'favicon.ico'),
     }
 ];
 

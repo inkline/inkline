@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue';
 import { colorVariantClass, defaultPropValue } from '@inkline/inkline/src/mixins';
+import { Classes } from '@inkline/inkline/src/types';
 
 /**
  * @name default
@@ -32,7 +33,7 @@ export default defineComponent({
         }
     },
     computed: {
-        classes() {
+        classes(): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size)

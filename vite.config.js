@@ -36,7 +36,7 @@ export default defineConfig({
     },
     build: {
         lib: {
-            entry: resolve(__dirname, 'src', 'inkline.js'),
+            entry: resolve(__dirname, 'src', 'inkline.ts'),
             name: 'Inkline'
         },
         rollupOptions: {
