@@ -11,7 +11,7 @@
         "build:ts": "npm run build:ts:compile && npm run build:ts:copy && npm run build:ts:replace",
         "build:vite": "vite lib",
         "build": "npm run build:ts && npm run build:vite",
-        "postbuild": "node scripts/postbuild.js",
+        "postbuild": "ts-node scripts/postbuild.ts",
         "lint": "npm run lint:script && npm run lint:style",
         "coveralls": "cat coverage/lcov.info | coveralls",
         "lint:script": "eslint --ext .vue,.js src",
@@ -19,9 +19,8 @@
         "prepublishOnly": "npm run build",
         "test": "",
         "test:dev": "jest --watch",
-        "generate:manifest": "node ./scripts/manifest.js",
-        "generate:manifest:sass": "node ./scripts/manifest-sass.js",
-        "generate:icons": "node ./scripts/icons.js"
+        "generate:manifest": "ts-node ./scripts/manifest.ts",
+        "generate:manifest:sass": "ts-node ./scripts/manifest-sass.ts"
     },
     "main": "lib/inkline.js",
     "module": "lib/inkline.js",
@@ -56,6 +55,7 @@
         "stylelint-config-standard": "22.0.0",
         "stylelint-scss": "3.20",
         "svgson": "5.2.1",
+        "ts-node": "^10.2.0",
         "tsconfig-replace-paths": "^0.0.5",
         "typescript": "4.3",
         "vite": "2.4",
@@ -70,8 +70,8 @@
     },
     "files": [
         "dist/",
+        "lib/",
         "src/",
-        "types/",
         "nuxt/",
         "babel.config.js",
         "LICENSE",

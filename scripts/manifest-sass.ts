@@ -1,27 +1,8 @@
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
+/* eslint-disable @typescript-eslint/no-var-requires, max-nested-callbacks */
 
-const sizeKeys = [
-    'sm', 'md', 'lg'
-];
-
-const sizeWords = {
-    xs: 'extra-small',
-    sm: 'small',
-    md: 'medium',
-    lg: 'large',
-    xl: 'extra-large'
-};
-
-const colorKeys = [
-    'primary', 'secondary', 'light', 'dark',
-    'info', 'success', 'warning', 'danger'
-];
-
-function capitalizeFirst(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+import fs from 'fs';
+import path from 'path';
+import glob from 'glob';
 
 glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.js'), (error, files) => {
     const selectorMixins = [];
