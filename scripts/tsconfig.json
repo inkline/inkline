@@ -12,11 +12,6 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
-        "rootDir": "src",
-        "outDir": "lib",
-        "paths": {
-            "@inkline/inkline/*": ["./*"]
-        },
         "lib": [
             "esnext",
             "dom",
@@ -24,19 +19,10 @@
             "scripthost"
         ],
         "types": [
-            "vite/client",
             "@types/node"
         ]
     },
     "include": [
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.tsx",
-        "src/**/*.vue"
-    ],
-    "exclude": [
-        "dist",
-        "lib",
-        "node_modules"
+        "*",
     ]
 }

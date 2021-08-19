@@ -8,7 +8,7 @@
  * @returns {Function}
  */
 export function debounce(fn: any, delay: number) {
-    let inDebounce: number;
+    let inDebounce: any;
 
     return function() {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

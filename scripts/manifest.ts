@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import glob from 'glob';
+import { Manifest } from './types';
 
 const jsdoc = require('jsdoc-api');
 const stringifyObject = require('stringify-object');
@@ -42,7 +43,7 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.js'), (e
     }
 
     files.forEach((fileName) => {
-        let manifest = require(fileName);
+        let manifest: Manifest = require(fileName);
 
         // Read script.js and update manifest.json
         //

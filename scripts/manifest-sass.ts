@@ -3,9 +3,10 @@
 import fs from 'fs';
 import path from 'path';
 import glob from 'glob';
+import { Manifest } from './types';
 
 glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.js'), (error, files) => {
-    const selectorMixins = [];
+    const selectorMixins: any[] = [];
 
     if (error) {
         console.error(error);
@@ -14,7 +15,7 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.js'), (e
 
     files.forEach((fileName) => {
         const dirname = path.dirname(fileName);
-        const manifest = require(fileName);
+        const manifest: Manifest = require(fileName);
 
         if (!manifest.css) {
             return;
@@ -30,15 +31,15 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.js'), (e
             const colors = manifest.css.variables.filter(({ type }) => type === 'color');
             const sizes = manifest.css.variables.filter(({ type }) => type === 'size');
 
-            const colorKeys = Object.keys((colors.find((variable) => variable.variants) || { variants: {} }).variants);
-            const sizeKeys = Object.keys((sizes.find((variable) => variable.variants) || { variants: { sm: '', md: '', lg: '' }}).variants);
+            const colorKeys = Object.keys((colors.find((variable) => variable.variants) || { variants: {} } as any).variants);
+            const sizeKeys = Object.keys((sizes.find((variable) => variable.variants) || { variants: { sm: '', md: '', lg: '' } } as any).variants);
 
             /**
              * Base variables
              */
 
             const baseVariables = variables.map((variable) => {
-                let value = !variable.value && variable.type ? variable.variants[manifest.css.defaults[variable.type]] : variable.value;
+                let value = !variable.value && variable.type ? variable.variants![manifest.css.defaults[variable.type]] : variable.value;
 
                 if (Array.isArray(value)) {
                     value = value.join(' ');
@@ -56,7 +57,7 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.js'), (e
             const sizeVariables = sizeKeys.map((variant) => ({
                 variant,
                 variables: sizes.map((variable) => {
-                    let value = variable.value || variable.variants[variant];
+                    let value = variable.value || variable.variants![variant];
 
                     if (Array.isArray(value)) {
                         value = value.join(' ');
@@ -75,7 +76,7 @@ glob(path.resolve(__dirname, '..', 'src', 'components', '**', 'manifest.js'), (e
             const colorVariables = colorKeys.map((variant) => ({
                 variant,
                 variables: colors.map((variable) => {
-                    let value = variable.variants[variant];
+                    let value = variable.variants![variant];
 
                     if (Array.isArray(value)) {
                         value = value.join(' ');
@@ -108,7 +109,7 @@ ${baseVariables.join('\n\n')}
  */
 
 ${manifest.css.selector} {
-${sizeVariables.map(({variant, variables}) => `    /// Variables for the ${variant} color variant
+${sizeVariables.map(({ variant, variables }) => `    /// Variables for the ${variant} color variant
     /// @name ${variant}
     /// @type group
     @include variant('${variant}'${manifest.css.type ? `, '${manifest.css.type}'` : ''}) {
@@ -125,7 +126,7 @@ ${variables.join('\n\n')}
  */
 
 ${manifest.css.selector} {
-${colorVariables.map(({variant, variables}) => `    /// Variables for the ${variant} color variant
+${colorVariables.map(({ variant, variables }) => `    /// Variables for the ${variant} color variant
     /// @name ${variant}
     /// @type group
     @include variant('${variant}'${manifest.css.type ? `, '${manifest.css.type}'` : ''}) {
