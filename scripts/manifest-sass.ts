@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires, max-nested-callbacks */
-
 import fs from 'fs';
 import path from 'path';
 import glob from 'glob';
