@@ -3,4 +3,5 @@ node_modules
 dist-ssr
 *.local
 .idea
+.npm
 coverage

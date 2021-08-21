@@ -1,7 +1,0 @@
-{
-    "packages": [
-        "packages/*"
-    ],
-    "stream": true,
-    "version": "2.3.6"
-}
