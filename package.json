@@ -111,5 +111,5 @@
         "type": "git",
         "url": "git+https://github.com/inkline/inkline.git"
     },
-    "types": "src/index.d.ts"
+    "types": "lib/index.d.ts"
 }
