@@ -1,8 +1,8 @@
 import fs from 'fs';
 import fse from 'fs-extra';
 import path from 'path';
+import { packageFolder } from './config';
 
-const packageFolder = path.resolve(__dirname, '..', '.npm');
 
 const remove = [
     {
@@ -25,10 +25,6 @@ const copy = [
     {
         from: path.resolve(__dirname, '..', 'dist'),
         to: path.resolve(packageFolder, 'dist')
-    },
-    {
-        from: path.resolve(__dirname, '..', 'package.json'),
-        to: path.resolve(packageFolder, 'package.json')
     },
     {
         from: path.resolve(__dirname, '..', 'README.md'),
