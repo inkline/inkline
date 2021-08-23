@@ -2,7 +2,7 @@ import fs from 'fs';
 import fse from 'fs-extra';
 import path from 'path';
 
-const packageFolder = path.resolve(__dirname, '..', '.npm');
+const packageFolder = path.resolve(__dirname, '..', 'package');
 
 const remove = [
     {
