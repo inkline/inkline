@@ -5,9 +5,9 @@ import {
     sizePropValidator,
     colorVariantClass,
     defaultPropValue
-} from '@inkline/inkline/src/mixins';
-import ClickOutside from '@inkline/inkline/src/directives/click-outside';
-import { Classes } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins';
+import ClickOutside from '@inkline/inkline/directives/click-outside';
+import { Classes } from '@inkline/inkline/types';
 
 
 /**

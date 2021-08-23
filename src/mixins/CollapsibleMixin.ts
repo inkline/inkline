@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
-import { on, off } from '@inkline/inkline/src/helpers';
-import { breakpoints } from '@inkline/inkline/src/constants';
-import { Classes } from '@inkline/inkline/src/types';
+import { on, off } from '@inkline/inkline/helpers';
+import { breakpoints } from '@inkline/inkline/constants';
+import { Classes } from '@inkline/inkline/types';
 
 export default defineComponent({
     provide(): { navbar: any } {

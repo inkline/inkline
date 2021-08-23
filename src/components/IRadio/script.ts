@@ -1,12 +1,12 @@
 import { defineComponent } from 'vue';
-import { uid } from '@inkline/inkline/src/helpers';
+import { uid } from '@inkline/inkline/helpers';
 import {
     colorVariantClass,
     sizePropValidator,
     FormComponentMixin,
     defaultPropValue,
-} from '@inkline/inkline/src/mixins';
-import { Classes, InputElementEvent } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins';
+import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 /**
  * @name default

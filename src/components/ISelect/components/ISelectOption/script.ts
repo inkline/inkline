@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import {Classes} from "@inkline/inkline/src/types";
+import {Classes} from "@inkline/inkline/types";
 
 /**
  * @name default

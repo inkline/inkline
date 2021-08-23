@@ -1,6 +1,6 @@
-import '@inkline/inkline/src/inkline.scss';
-import { Inkline } from '@inkline/inkline/src/plugin';
-import * as components from '@inkline/inkline/src/components';
+import '@inkline/inkline/inkline.scss';
+import { Inkline } from '@inkline/inkline/plugin';
+import * as components from '@inkline/inkline/components';
 
 const install = Inkline.install;
 Inkline.install = (Vue, options = {}) => install!.call(Inkline, Vue, { components, ...options });

@@ -1,16 +1,16 @@
 import { defineComponent } from 'vue';
-import IContainer from '@inkline/inkline/src/components/IContainer/index.vue';
-import IRow from '@inkline/inkline/src/components/IRow/index.vue';
-import IColumn from '@inkline/inkline/src/components/IColumn/index.vue';
-import IHamburgerMenu from '@inkline/inkline/src/components/IHamburgerMenu/index.vue';
+import IContainer from '@inkline/inkline/components/IContainer/index.vue';
+import IRow from '@inkline/inkline/components/IRow/index.vue';
+import IColumn from '@inkline/inkline/components/IColumn/index.vue';
+import IHamburgerMenu from '@inkline/inkline/components/IHamburgerMenu/index.vue';
 import {
     CollapsibleMixin,
     defaultPropValue,
     colorVariantClass,
     sizePropValidator,
-} from '@inkline/inkline/src/mixins';
-import { ClickOutside } from '@inkline/inkline/src/directives';
-import { Classes } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins';
+import { ClickOutside } from '@inkline/inkline/directives';
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @name default

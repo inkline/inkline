@@ -1,4 +1,4 @@
-import { InternationalizationMessages } from '@inkline/inkline/src/i18n';
+import { InternationalizationMessages } from '@inkline/inkline/i18n';
 
 export const en: InternationalizationMessages = {
     validation: {

@@ -1,1 +1,1 @@
-export * from '@inkline/inkline/src/composition-api/useForm';
+export * from '@inkline/inkline/composition-api/useForm';

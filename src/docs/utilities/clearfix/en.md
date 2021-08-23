@@ -21,7 +21,7 @@ In the following example, without adding the clearfix helper, the wrapping div w
 The clearfix utility is also available as a Sass Mixin.
 
 ~~~scss
-@require '~@inkline/inkline/src/css/mixins/clearfix'
+@require '~@inkline/inkline/css/mixins/clearfix'
 
 .element {
   @include clearfix;

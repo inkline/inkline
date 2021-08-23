@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { memoize, markSearchString, MarkSearchStringPart } from '@inkline/inkline/src/helpers';
+import { memoize, markSearchString, MarkSearchStringPart } from '@inkline/inkline/helpers';
 
 const memoizedMarkSearchString: typeof markSearchString = memoize(markSearchString) as any;
 

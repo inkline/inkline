@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { getValueByPath } from '@inkline/inkline/src/helpers';
+import { getValueByPath } from '@inkline/inkline/helpers';
 
 /**
  * @name default

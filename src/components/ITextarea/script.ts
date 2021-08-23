@@ -1,10 +1,10 @@
 import { defineComponent } from 'vue';
-import { uid } from '@inkline/inkline/src/helpers';
+import { uid } from '@inkline/inkline/helpers';
 import {
     defaultPropValue,
     sizePropValidator
-} from '@inkline/inkline/src/mixins';
-import IInput from '@inkline/inkline/src/components/IInput/index.vue';
+} from '@inkline/inkline/mixins';
+import IInput from '@inkline/inkline/components/IInput/index.vue';
 
 /**
  * @name prefix

@@ -2,7 +2,7 @@ import {
     defaultValidationValues,
     reservedValidationFields,
     defaultFieldValidationValues
-} from '@inkline/inkline/src/constants';
+} from '@inkline/inkline/constants';
 
 /**
  * Initialize raw form schema by adding required default fields if they do not exist

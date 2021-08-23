@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue';
-import IButton from '@inkline/inkline/src/components/IButton/index.vue';
-import IInput from '@inkline/inkline/src/components/IInput/index.vue';
-import { uid } from '@inkline/inkline/src/helpers';
-import { defaultPropValue, sizePropValidator } from '@inkline/inkline/src/mixins/props';
-import { InputElementEvent } from '@inkline/inkline/src/types';
+import IButton from '@inkline/inkline/components/IButton/index.vue';
+import IInput from '@inkline/inkline/components/IInput/index.vue';
+import { uid } from '@inkline/inkline/helpers';
+import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins/props';
+import { InputElementEvent } from '@inkline/inkline/types';
 
 const componentName = 'INumberInput';
 

@@ -9,7 +9,7 @@ const path = require('path');
 module.exports = {
     resolve: {
         alias: {
-            '@inkline/inkline': path.resolve(__dirname)
+            '@inkline/inkline': path.resolve(__dirname, 'src')
         }
     }
 };

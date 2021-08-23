@@ -30,7 +30,7 @@ export default defineConfig({
         alias: [
             {
                 find: /^@inkline\/inkline\//,
-                replacement: `${resolve(__dirname)}/`
+                replacement: `${resolve(__dirname)}/src/`
             }
         ]
     },

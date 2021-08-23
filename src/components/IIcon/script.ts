@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 // @ts-ignore
 import { IIcon } from '@inkline/icons/components';
-import { defaultPropValue, sizePropValidator } from '@inkline/inkline/src/mixins';
+import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
 
 /**
  * @description The icon to be displayed

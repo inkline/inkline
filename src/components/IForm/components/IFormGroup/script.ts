@@ -4,8 +4,8 @@ import {
     defaultPropValue,
     sizePropValidator,
     FormComponentMixin
-} from '@inkline/inkline/src/mixins';
-import { Classes, InputElementEvent } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins';
+import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 /**
  * @name default

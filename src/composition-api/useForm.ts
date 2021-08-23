@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import { initialize } from '@inkline/inkline/src/validation';
+import { initialize } from '@inkline/inkline/validation';
 
 export interface FormFieldValidator {
     name: string;

@@ -5,15 +5,15 @@ import {
     setValuesAlongPath,
     clone,
     uid
-} from '@inkline/inkline/src/helpers';
+} from '@inkline/inkline/helpers';
 import {
     colorVariantClass,
     defaultPropValue,
     sizePropValidator,
     FormComponentMixin
-} from '@inkline/inkline/src/mixins';
-import { validate } from '@inkline/inkline/src/validation';
-import { Classes, InputElementEvent } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins';
+import { validate } from '@inkline/inkline/validation';
+import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 /**
  * @name default

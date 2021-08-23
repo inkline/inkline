@@ -38,9 +38,9 @@ By running the command above, you have added Inkline to your Vue CLI project. He
 
 ~~~js
 import Vue from 'vue';
-import { Inkline } from '@inkline/inkline/src';
-import * as components from '@inkline/inkline/src/components';
-import '@inkline/inkline/src/inkline.scss';
+import { Inkline } from '@inkline/inkline';
+import * as components from '@inkline/inkline/components';
+import '@inkline/inkline/inkline.scss';
 
 Vue.use(Inkline, { components });
 ~~~
@@ -116,9 +116,9 @@ Tree shaking means eliminating code that isn’t actually being used from the fi
 
 ~~~js
 import Vue from 'vue';
-import '@inkline/inkline/src/inkline.scss';
-import { Inkline } from '@inkline/inkline/src';
-import { IButton, IForm, IInput } from '@inkline/inkline/src/components';
+import '@inkline/inkline/inkline.scss';
+import { Inkline } from '@inkline/inkline';
+import { IButton, IForm, IInput } from '@inkline/inkline/components';
 
 Vue.use(Inkline, {
     components: {
