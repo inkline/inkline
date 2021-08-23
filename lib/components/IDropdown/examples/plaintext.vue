@@ -1,1 +1,0 @@
-<template src="./plaintext.html" />

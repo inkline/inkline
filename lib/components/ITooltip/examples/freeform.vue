@@ -1,1 +1,0 @@
-<template src="./freeform.html" />
