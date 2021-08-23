@@ -77,7 +77,7 @@
         "vue": ">=3.0.0"
     },
     "files": [
-        ".npm/**/*"
+        "**/*"
     ],
     "funding": {
         "type": "patreon",
