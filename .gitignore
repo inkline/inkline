@@ -1,7 +1,9 @@
 node_modules
+dist
+lib
+package
+.idea
 .DS_Store
 dist-ssr
 *.local
-.idea
-.npm
 coverage
