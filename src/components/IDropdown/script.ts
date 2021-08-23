@@ -7,10 +7,10 @@ import {
     sizePropValidator,
     colorVariantClass,
     defaultPropValue
-} from '@inkline/inkline/src/mixins';
-import { ClickOutside } from '@inkline/inkline/src/directives';
-import { on, off, isFocusable, isKey } from '@inkline/inkline/src/helpers';
-import { Classes } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins';
+import { ClickOutside } from '@inkline/inkline/directives';
+import { on, off, isFocusable, isKey } from '@inkline/inkline/helpers';
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @name default

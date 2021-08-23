@@ -7,25 +7,25 @@ import {
     isKey,
     uid,
     getValueByPath
-} from '@inkline/inkline/src/helpers';
+} from '@inkline/inkline/helpers';
 import {
     colorVariantClass,
     defaultPropValue,
     sizePropValidator,
     FormComponentMixin,
     PopupMixin
-} from '@inkline/inkline/src/mixins';
+} from '@inkline/inkline/mixins';
 import {
     useBaseModifiers,
     sameWidthModifier
-} from '@inkline/inkline/src/mixins/PopupMixin';
-import { ClickOutside } from '@inkline/inkline/src/directives';
-import IInput from '@inkline/inkline/src/components/IInput/index.vue';
-import IIcon from '@inkline/inkline/src/components/IIcon/index.vue';
-import IMark from '@inkline/inkline/src/components/IMark/index.vue';
-import ISelectOption from '@inkline/inkline/src/components/ISelect/components/ISelectOption/index.vue';
-import { SelectOption } from '@inkline/inkline/src/components/ISelect/components/ISelectOption/script';
-import { Classes, ElementEvent } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins/PopupMixin';
+import { ClickOutside } from '@inkline/inkline/directives';
+import IInput from '@inkline/inkline/components/IInput/index.vue';
+import IIcon from '@inkline/inkline/components/IIcon/index.vue';
+import IMark from '@inkline/inkline/components/IMark/index.vue';
+import ISelectOption from '@inkline/inkline/components/ISelect/components/ISelectOption/index.vue';
+import { SelectOption } from '@inkline/inkline/components/ISelect/components/ISelectOption/script';
+import { Classes, ElementEvent } from '@inkline/inkline/types';
 
 /**
  * @name prefix

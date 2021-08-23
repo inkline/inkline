@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { colorVariantClass } from '@inkline/inkline/src/mixins/computed';
+import { colorVariantClass } from '@inkline/inkline/mixins/computed';
 
 export default defineComponent({
     name: 'Example',

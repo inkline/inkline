@@ -1,5 +1,5 @@
-export * from '@inkline/inkline/src/validation/validators';
-export * from '@inkline/inkline/src/validation/initialize';
-export * from '@inkline/inkline/src/validation/validate';
+export * from '@inkline/inkline/validation/validators';
+export * from '@inkline/inkline/validation/initialize';
+export * from '@inkline/inkline/validation/validate';
 
 

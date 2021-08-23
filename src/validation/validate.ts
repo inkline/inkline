@@ -1,6 +1,6 @@
-import { validators } from '@inkline/inkline/src/validation/validators';
-import { reservedValidationFields } from '@inkline/inkline/src/constants';
-import { translate } from '@inkline/inkline/src/i18n';
+import { validators } from '@inkline/inkline/validation/validators';
+import { reservedValidationFields } from '@inkline/inkline/constants';
+import { translate } from '@inkline/inkline/i18n';
 
 /**
  * Apply validators to the form input schema and set the value for the valid and invalid fields

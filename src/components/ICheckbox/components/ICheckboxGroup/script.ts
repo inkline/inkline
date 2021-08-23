@@ -4,9 +4,9 @@ import {
     sizePropValidator,
     FormComponentMixin,
     defaultPropValue
-} from '@inkline/inkline/src/mixins';
-import { uid } from '@inkline/inkline/src/helpers';
-import { Classes } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins';
+import { uid } from '@inkline/inkline/helpers';
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @name default

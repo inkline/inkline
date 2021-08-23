@@ -3,8 +3,8 @@ import {
     FormComponentMixin,
     defaultPropValue,
     sizePropValidator
-} from '@inkline/inkline/src/mixins';
-import { Classes } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins';
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @name default

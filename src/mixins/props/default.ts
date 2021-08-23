@@ -1,4 +1,4 @@
-import { inklineGlobals } from '@inkline/inkline/src/plugin';
+import { inklineGlobals } from '@inkline/inkline/plugin';
 
 export function defaultPropValue<T>(componentName: string, propertyName: string, propertyValue: T = '' as any) {
     return (): T => inklineGlobals.prototype

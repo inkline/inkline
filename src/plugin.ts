@@ -1,7 +1,7 @@
 import { Plugin, reactive, watch } from 'vue';
-import { addClass, removeClass } from '@inkline/inkline/src/helpers';
-import { initialize as initializeForm } from '@inkline/inkline/src/validation';
-import { setLocale } from '@inkline/inkline/src/i18n';
+import { addClass, removeClass } from '@inkline/inkline/helpers';
+import { initialize as initializeForm } from '@inkline/inkline/validation';
+import { setLocale } from '@inkline/inkline/i18n';
 import { InklineIcons } from '@inkline/icons';
 
 export interface PrototypeConfig {

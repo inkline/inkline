@@ -3,12 +3,12 @@ import {
     defaultPropValue,
     sizePropValidator,
     colorVariantClass
-} from '@inkline/inkline/src/mixins';
+} from '@inkline/inkline/mixins';
 
-import IContainer from '@inkline/inkline/src/components/IContainer/index.vue';
-import IRow from '@inkline/inkline/src/components/IRow/index.vue';
-import IColumn from '@inkline/inkline/src/components/IColumn/index.vue';
-import { Classes } from '@inkline/inkline/src/types';
+import IContainer from '@inkline/inkline/components/IContainer/index.vue';
+import IRow from '@inkline/inkline/components/IRow/index.vue';
+import IColumn from '@inkline/inkline/components/IColumn/index.vue';
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @name default

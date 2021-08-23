@@ -1,6 +1,6 @@
 import { defineComponent, Prop } from 'vue';
-import { breakpointKeys } from '@inkline/inkline/src/constants';
-import { breakpointClass, capitalizeFirst } from '@inkline/inkline/src/helpers';
+import { breakpointKeys } from '@inkline/inkline/constants';
+import { breakpointClass, capitalizeFirst } from '@inkline/inkline/helpers';
 
 /**
  * @name default

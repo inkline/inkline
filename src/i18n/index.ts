@@ -1,5 +1,5 @@
-import { en } from '@inkline/inkline/src/i18n/messages/en';
-export * from '@inkline/inkline/src/i18n/translate';
+import { en } from '@inkline/inkline/i18n/messages/en';
+export * from '@inkline/inkline/i18n/translate';
 
 export interface InternationalizationMessages {
     [key: string]: string | string[] | (() => string) | ((params: any) => string) | InternationalizationMessages;

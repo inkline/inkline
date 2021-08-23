@@ -1,1 +1,1 @@
-export * from '@inkline/inkline/src/mixins/computed/classes';
+export * from '@inkline/inkline/mixins/computed/classes';

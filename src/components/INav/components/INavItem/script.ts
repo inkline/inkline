@@ -1,8 +1,8 @@
 import { defineComponent } from 'vue';
 import {
     LinkableMixin,
-} from '@inkline/inkline/src/mixins';
-import { Classes, ElementEvent } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins';
+import { Classes, ElementEvent } from '@inkline/inkline/types';
 
 /**
  * @name default

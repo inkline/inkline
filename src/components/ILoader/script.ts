@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
-import { colorVariantClass, defaultPropValue } from '@inkline/inkline/src/mixins';
-import { Classes } from '@inkline/inkline/src/types';
+import { colorVariantClass, defaultPropValue } from '@inkline/inkline/mixins';
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @name default

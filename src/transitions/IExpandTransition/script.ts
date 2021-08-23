@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { getStyleProperty } from '@inkline/inkline/src/helpers';
+import { getStyleProperty } from '@inkline/inkline/helpers';
 
 export default defineComponent({
     name: 'ITransitionExpand',

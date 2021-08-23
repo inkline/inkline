@@ -1,4 +1,4 @@
-import { isKey } from '@inkline/inkline/src/helpers';
+import { isKey } from '@inkline/inkline/helpers';
 
 export const OverlayController = {
     instances: {} as { [key: string]: any },

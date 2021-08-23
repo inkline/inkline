@@ -1,12 +1,12 @@
 import { defineComponent } from 'vue';
-import ILoader from '@inkline/inkline/src/components/ILoader/index.vue';
+import ILoader from '@inkline/inkline/components/ILoader/index.vue';
 import {
     LinkableMixin,
     sizePropValidator,
     colorVariantClass,
     defaultPropValue,
-} from '@inkline/inkline/src/mixins';
-import {Classes} from "@inkline/inkline/src/types";
+} from '@inkline/inkline/mixins';
+import {Classes} from "@inkline/inkline/types";
 
 /**
  * @name default

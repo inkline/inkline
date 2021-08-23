@@ -1,4 +1,4 @@
-import { getValueByPath } from '@inkline/inkline/src/helpers';
+import { getValueByPath } from '@inkline/inkline/helpers';
 
 export function sameAs(value: any, options: any = {}) {
     if (!options.target) {

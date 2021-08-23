@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import {
     LinkableMixin,
-} from '@inkline/inkline/src/mixins';
+} from '@inkline/inkline/mixins';
 
 /**
  * @name default

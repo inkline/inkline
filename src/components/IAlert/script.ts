@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
-import { defaultPropValue, sizePropValidator } from '@inkline/inkline/src/mixins';
-import { Classes } from '@inkline/inkline/src/types';
+import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @name default

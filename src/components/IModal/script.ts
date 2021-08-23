@@ -1,13 +1,13 @@
 import { defineComponent } from 'vue';
-import { addClass, removeClass, uid } from '@inkline/inkline/src/helpers';
-import { OverlayController } from '@inkline/inkline/src/controllers';
+import { addClass, removeClass, uid } from '@inkline/inkline/helpers';
+import { OverlayController } from '@inkline/inkline/controllers';
 import {
     defaultPropValue,
     colorVariantClass,
     sizePropValidator,
-} from '@inkline/inkline/src/mixins';
-import { ClickOutside } from '@inkline/inkline/src/directives';
-import { Classes } from '@inkline/inkline/src/types';
+} from '@inkline/inkline/mixins';
+import { ClickOutside } from '@inkline/inkline/directives';
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @event update:modelValue

@@ -15,7 +15,7 @@
         "rootDir": "src",
         "outDir": "lib",
         "paths": {
-            "@inkline/inkline/*": ["./*"]
+            "@inkline/inkline/*": ["./src/*"]
         },
         "lib": [
             "esnext",
