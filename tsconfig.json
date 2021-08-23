@@ -37,6 +37,7 @@
     "exclude": [
         "dist",
         "lib",
+        "package",
         "node_modules"
     ]
 }

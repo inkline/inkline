@@ -3,6 +3,7 @@ import { addClass, removeClass } from '@inkline/inkline/helpers';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
 import { InklineIcons } from '@inkline/icons';
+import * as inklineIconsPack from '@inkline/icons/packs/inkline';
 
 export interface PrototypeConfig {
     colorMode?: 'system' | 'light' | 'dark';
@@ -84,6 +85,7 @@ export const Inkline: Plugin = {
          * Register Inkline plugins
          */
 
+        InklineIcons.add(inklineIconsPack);
         InklineIcons.add(extendedOptions.icons);
 
         app.use(InklineIcons, {

@@ -25,8 +25,8 @@
         "generate:manifest": "ts-node ./scripts/manifest.ts",
         "generate:manifest:sass": "ts-node ./scripts/manifest-sass.ts"
     },
-    "main": "inkline.js",
-    "module": "inkline.js",
+    "main": "index.js",
+    "module": "index.js",
     "jsdelivr": "dist/inkline.umd.js",
     "unpkg": "dist/inkline.umd.js",
     "types": "index.d.ts",
