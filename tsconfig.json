@@ -7,7 +7,7 @@
         "skipLibCheck": true,
         "strict": true,
         "jsx": "preserve",
-        "inlineSourceMap": true,
+        "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
@@ -25,7 +25,8 @@
         ],
         "types": [
             "vite/client",
-            "@types/node"
+            "@types/node",
+            "@types/jest"
         ]
     },
     "include": [

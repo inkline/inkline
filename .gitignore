@@ -2,8 +2,8 @@ node_modules
 dist
 lib
 package
+coverage
 .idea
 .DS_Store
 dist-ssr
 *.local
-coverage

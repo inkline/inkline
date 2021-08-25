@@ -52,5 +52,13 @@ export default defineConfig({
                 }
             }
         }
+    },
+    optimizeDeps: {
+        exclude: [
+            'dist',
+            'lib',
+            'package',
+            'coverage'
+        ]
     }
 });
