@@ -31,7 +31,7 @@
     "unpkg": "dist/inkline.umd.js",
     "types": "index.d.ts",
     "dependencies": {
-        "@inkline/icons": "^1.4.5",
+        "@inkline/icons": "^1.4.10",
         "@popperjs/core": "2.9.2",
         "fuse.js": "6.4.0"
     },
