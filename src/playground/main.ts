@@ -8,7 +8,6 @@ import '@inkline/inkline/playground/main.scss';
 import App from '@inkline/inkline/playground/App.vue';
 import Example from '@inkline/inkline/playground/components/Example.vue';
 import { useServer } from '@inkline/inkline/playground/server';
-// @ts-ignore
 import * as icons from '@inkline/icons/packs/inkline';
 
 const routes = [

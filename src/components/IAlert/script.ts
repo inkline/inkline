@@ -24,13 +24,6 @@ const componentName = 'IAlert';
 
 export default defineComponent({
     name: componentName,
-    emits: [
-        /**
-         * @event update:modelValue
-         * @description Event emitted for setting the modelValue
-         */
-        'update:modelValue'
-    ],
     props: {
         /**
          * @description The size variant of the alert
@@ -70,6 +63,13 @@ export default defineComponent({
             default: false
         }
     },
+    emits: [
+        /**
+         * @event update:modelValue
+         * @description Event emitted for setting the modelValue
+         */
+        'update:modelValue'
+    ],
     data() {
         return {
             dismissed: false

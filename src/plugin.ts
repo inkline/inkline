@@ -63,6 +63,28 @@ const handleColorMode = (colorMode: string) => {
 };
 
 /**
+ * Create inkline prototype
+ */
+export function createPrototype(options: PrototypeConfig): Prototype {
+    return {
+        form(schema) {
+            return initializeForm(schema);
+        },
+        setLocale(locale) {
+            setLocale(locale);
+        },
+        options: reactive({
+            colorMode: options.colorMode,
+            locale: options.locale,
+            validateOn: options.validateOn,
+            color: options.color,
+            size: options.size,
+            componentOptions: options.componentOptions
+        })
+    };
+}
+
+/**
  * Easily accessible global Inkline object
  */
 export const inklineGlobals: InklineGlobals = {
@@ -78,8 +100,6 @@ export const Inkline: Plugin = {
             ...defaultOptions,
             ...options,
         };
-
-        let colorMode = extendedOptions.colorMode;
 
         /**
          * Register Inkline plugins
@@ -105,29 +125,14 @@ export const Inkline: Plugin = {
          */
 
         if (typeof window !== 'undefined') {
-            colorMode = window.localStorage.getItem(colorModeLocalStorageKey) || extendedOptions.colorMode;
+            extendedOptions.colorMode = window.localStorage.getItem(colorModeLocalStorageKey) || extendedOptions.colorMode;
         }
 
         /**
          * Add $inkline global property
          */
 
-        const prototype: Prototype = {
-            form(schema) {
-                return initializeForm(schema);
-            },
-            setLocale(locale) {
-                setLocale(locale);
-            },
-            options: reactive({
-                colorMode,
-                locale: extendedOptions.locale,
-                validateOn: extendedOptions.validateOn,
-                color: extendedOptions.color,
-                size: extendedOptions.size,
-                componentOptions: extendedOptions.componentOptions
-            })
-        };
+        const prototype: Prototype = createPrototype(extendedOptions);
 
         app.config.globalProperties.$inkline = prototype;
         app.provide('inkline', prototype);
@@ -172,7 +177,7 @@ export const Inkline: Plugin = {
                 darkModeMediaQuery.addListener(onDarkModeMediaQueryChange);
             }
 
-            handleColorMode(colorMode);
+            handleColorMode(extendedOptions.colorMode);
         }
     }
 };
