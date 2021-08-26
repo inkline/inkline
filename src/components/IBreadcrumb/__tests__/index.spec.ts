@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import { IBreadcrumb } from '@inkline/inkline/components';
 
 describe('Components', () => {
@@ -13,19 +13,20 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = shallowMount(IBreadcrumb, { props });
+            const wrapper = render(IBreadcrumb, { props });
+
             expect(wrapper.html()).toMatchSnapshot();
         });
 
         describe('computed', () => {
             describe('classes', () => {
-                it('should return classes object', () => {
-                    const wrapper: any = shallowMount(IBreadcrumb, { props });
+                it('should add classes based on props', () => {
+                    const wrapper = render(IBreadcrumb, { props });
 
-                    expect(wrapper.vm.classes).toEqual({
-                        [`-${wrapper.vm.color}`]: true,
-                        [`-${wrapper.vm.size}`]: true
-                    });
+                    expect(wrapper.container.firstChild).toHaveClass(
+                        `-${props.color}`,
+                        `-${props.size}`
+                    );
                 });
             });
         });

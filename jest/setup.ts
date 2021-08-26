@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import { inklineGlobals, defaultOptions as defaultPrototypeOptions, createPrototype } from '../src/plugin';
 
 jest.mock('@inkline/icons', () => ({}));

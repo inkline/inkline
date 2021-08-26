@@ -7,7 +7,10 @@
     :class="classes"
     :disabled="isDisabled || loading"
     :aria-disabled="isDisabled"
-    :aria-pressed="active">
+    :aria-pressed="active"
+    :aria-busy="loading"
+    aria-live="polite"
+>
     <slot v-if="loading" name="loading">
         <i-loader />
     </slot>

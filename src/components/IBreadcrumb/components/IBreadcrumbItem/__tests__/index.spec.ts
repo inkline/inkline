@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import { IBreadcrumbItem } from '@inkline/inkline/components';
 
 describe('Components', () => {
@@ -8,57 +8,69 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = shallowMount(IBreadcrumbItem);
+            const wrapper = render(IBreadcrumbItem);
+
             expect(wrapper.html()).toMatchSnapshot();
         });
 
         describe('computed', () => {
             describe('classes', () => {
-                it('should return classes object', () => {
-                    const wrapper: any = shallowMount(IBreadcrumbItem, {
+                it('should add classes based on props', () => {
+                    const wrapper: any = render(IBreadcrumbItem, {
                         props: {
                             active: true,
                             disabled: true
                         }
                     });
 
-                    expect(wrapper.vm.classes).toEqual({
-                        '-active': true,
-                        '-disabled': true
-                    });
+                    expect(wrapper.container.firstChild).toHaveClass(
+                        '-active',
+                        '-disabled'
+                    );
                 });
             });
 
             describe('tabIndex', () => {
-                it('should return -1 if disabled', () => {
-                    const wrapper: any = shallowMount(IBreadcrumbItem, {
+                it('should be -1 if disabled', () => {
+                    const wrapper = render(IBreadcrumbItem, {
                         props: {
                             disabled: true
                         }
                     });
+                    const link = wrapper.container.querySelector('a');
 
-                    expect(wrapper.vm.tabIndex).toEqual(-1);
+                    expect(link).toHaveAttribute('tabindex', '-1');
                 });
 
-                it('should return -1 if active', () => {
-                    const wrapper: any = shallowMount(IBreadcrumbItem, {
+                it('should be -1 if active', () => {
+                    const wrapper = render(IBreadcrumbItem, {
                         props: {
                             active: true
                         }
                     });
+                    const link = wrapper.container.querySelector('a');
 
-                    expect(wrapper.vm.tabIndex).toEqual(-1);
+                    expect(link).toHaveAttribute('tabindex', '-1');
                 });
 
-                it('should return tabindex otherwise', () => {
-                    const wrapper: any = shallowMount(IBreadcrumbItem, {
+                it('should be 1 otherwise', () => {
+                    const wrapper = render(IBreadcrumbItem);
+                    const link = wrapper.container.querySelector('a');
+
+                    expect(link).toHaveAttribute('tabindex', '1');
+                });
+            });
+
+            describe('aria-current', () => {
+                it('should be location if active', () => {
+                    const wrapper: any = render(IBreadcrumbItem, {
                         props: {
-                            disabled: false,
-                            active: false
+                            active: true
                         }
                     });
+                    const link = wrapper.container.querySelector('a');
 
-                    expect(wrapper.vm.tabIndex).toEqual(wrapper.vm.tabindex);
+                    expect(link).toHaveAttribute('aria-current', 'location');
                 });
             });
         });

@@ -18,6 +18,15 @@ export default defineComponent({
     name: componentName,
     props: {
         /**
+         * @description The aria-label of the breadcrumbs
+         * @type String
+         * @default Breadcrumbs
+         */
+        ariaLabel: {
+            type: String,
+            default: 'Breadcrumbs'
+        },
+        /**
          * @description The color variant of the breadcrumb
          * @type light | dark
          * @default light

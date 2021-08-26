@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import { ICard } from '@inkline/inkline/components';
 
 describe('Components', () => {
@@ -13,19 +13,24 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = shallowMount(ICard, { props });
+            const wrapper = render(ICard, { props });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
         describe('computed', () => {
             describe('classes', () => {
-                it('should return classes object', () => {
-                    const wrapper: any = shallowMount(ICard, { props });
-
-                    expect(wrapper.vm.classes).toEqual({
-                        [`-${wrapper.vm.color}`]: true,
-                        [`-${wrapper.vm.size}`]: true
+                it('should add classes based on props', () => {
+                    const wrapper = render(ICard, {
+                        props: {
+                            dismissible: true,
+                            ...props
+                        }
                     });
+
+                    expect(wrapper.container.firstChild).toHaveClass(
+                        `-${props.color}`,
+                        `-${props.size}`
+                    );
                 });
             });
         });

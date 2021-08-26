@@ -1,11 +1,28 @@
-<div class="alert" :class="classes" v-bind="$attrs" v-show="!dismissed">
-    <span class="icon" v-if="$slots.icon">
-        <slot name="icon"></slot>
+<div
+    class="alert"
+    role="alert"
+    :class="classes"
+    v-bind="$attrs"
+    v-show="!dismissed"
+>
+    <span
+        class="icon"
+        role="img"
+        aria-hidden="true"
+        v-if="$slots.icon"
+    >
+        <slot name="icon" />
     </span>
     <div class="content">
-        <slot></slot>
+        <slot />
     </div>
-    <span class="dismiss" @click="dismiss" v-if="dismissible">
+    <span
+        class="dismiss"
+        role="button"
+        :aria-label="dismissAriaLabel"
+        @click="dismiss"
+        v-if="dismissible"
+    >
         <slot name="dismiss">&times;</slot>
     </span>
 </div>

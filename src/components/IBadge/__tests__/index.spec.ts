@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import { IBadge } from '@inkline/inkline/components';
 
 describe('Components', () => {
@@ -13,19 +13,19 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = shallowMount(IBadge, { props });
+            const wrapper = render(IBadge, { props });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
         describe('computed', () => {
             describe('classes', () => {
-                it('should return classes object', () => {
-                    const wrapper: any = shallowMount(IBadge, { props });
+                it('should add classes based on props', () => {
+                    const wrapper = render(IBadge, { props });
 
-                    expect(wrapper.vm.classes).toEqual({
-                        [`-${wrapper.vm.color}`]: true,
-                        [`-${wrapper.vm.size}`]: true
-                    });
+                    expect(wrapper.container.firstChild).toHaveClass(
+                        `-${props.color}`,
+                        `-${props.size}`
+                    );
                 });
             });
         });

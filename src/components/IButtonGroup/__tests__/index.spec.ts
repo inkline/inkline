@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import { IButtonGroup } from '@inkline/inkline/components';
 
 describe('Components', () => {
@@ -12,14 +12,15 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = shallowMount(IButtonGroup, { props });
+            const wrapper = render(IButtonGroup, { props });
+
             expect(wrapper.html()).toMatchSnapshot();
         });
 
         describe('computed', () => {
             describe('classes', () => {
-                it('should return classes object', () => {
-                    const wrapper: any = shallowMount(IButtonGroup, {
+                it('should add classes based on props', () => {
+                    const wrapper = render(IButtonGroup, {
                         props: {
                             vertical: true,
                             block: true,
@@ -28,29 +29,29 @@ describe('Components', () => {
                         }
                     });
 
-                    expect(wrapper.vm.classes).toEqual({
-                        [`-${wrapper.vm.size}`]: true,
-                        '-vertical': true,
-                        '-block': true,
-                        '-disabled': true
-                    });
+                    expect(wrapper.container.firstChild).toHaveClass(
+                        `-${props.size}`,
+                        '-vertical',
+                        '-block',
+                        '-disabled'
+                    );
                 });
             });
 
             describe('isDisabled', () => {
-                it('should return true if disabled', () => {
-                    const wrapper: any = shallowMount(IButtonGroup, {
+                it('should be disabled if disabled', () => {
+                    const wrapper = render(IButtonGroup, {
                         props: {
                             disabled: true,
                             ...props
                         }
                     });
 
-                    expect(wrapper.vm.isDisabled).toEqual(true);
+                    expect(wrapper.container.firstChild).toHaveAttribute('aria-disabled', 'true');
                 });
 
-                it('should return true if buttonGroup is disabled', () => {
-                    const wrapper: any = shallowMount(IButtonGroup, {
+                it('should be disabled if buttonGroup is disabled', () => {
+                    const wrapper = render(IButtonGroup, {
                         global: {
                             provide: {
                                 buttonGroup: {
@@ -61,11 +62,11 @@ describe('Components', () => {
                         props
                     });
 
-                    expect(wrapper.vm.isDisabled).toEqual(true);
+                    expect(wrapper.container.firstChild).toHaveAttribute('aria-disabled', 'true');
                 });
 
-                it('should return true if form is disabled', () => {
-                    const wrapper: any = shallowMount(IButtonGroup, {
+                it('should be disabled if form is disabled', () => {
+                    const wrapper = render(IButtonGroup, {
                         global: {
                             provide: {
                                 form: {
@@ -76,11 +77,11 @@ describe('Components', () => {
                         props
                     });
 
-                    expect(wrapper.vm.isDisabled).toEqual(true);
+                    expect(wrapper.container.firstChild).toHaveAttribute('aria-disabled', 'true');
                 });
 
-                it('should return true if formGroup is disabled', () => {
-                    const wrapper: any = shallowMount(IButtonGroup, {
+                it('should be disabled if formGroup is disabled', () => {
+                    const wrapper = render(IButtonGroup, {
                         global: {
                             provide: {
                                 formGroup: {
@@ -91,7 +92,7 @@ describe('Components', () => {
                         props
                     });
 
-                    expect(wrapper.vm.isDisabled).toEqual(true);
+                    expect(wrapper.container.firstChild).toHaveAttribute('aria-disabled', 'true');
                 });
             });
         });

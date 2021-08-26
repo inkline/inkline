@@ -9,31 +9,35 @@
 
 .breadcrumb {
     display: flex;
-    flex-wrap: wrap;
-    padding-left: 0;
-    list-style: none;
     margin-bottom: var(----margin-bottom);
     font-size: var(----font-size);
 
-    > .breadcrumb-item {
-        padding-left: var(----padding-left);
+    ol {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        list-style: none;
 
-        a {
-            color: var(----color--default);
+        > .breadcrumb-item {
+            padding-left: var(----padding-left);
 
-            &[href],
-            &[to] {
-                color: var(----color);
+            a {
+                color: var(----color--default);
+
+                &[href],
+                &[to] {
+                    color: var(----color);
+                }
             }
-        }
 
-        &.-active a {
-            color: var(----color--active);
-        }
+            &.-active a {
+                color: var(----color--active);
+            }
 
-        + .breadcrumb-item {
-            &::before {
-                padding-right: var(----padding-right);
+            + .breadcrumb-item {
+                &::before {
+                    padding-right: var(----padding-right);
+                }
             }
         }
     }

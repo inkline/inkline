@@ -40,6 +40,8 @@
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.14.7",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/vue": "^6.4.2",
         "@types/fs-extra": "^9.0.12",
         "@types/jest": "^26.0.24",
         "@types/node": "^16.6.2",

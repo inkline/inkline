@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components IBreadcrumb should render correctly 1`] = `<ol class="breadcrumb -light -md"></ol>`;
+exports[`Components IBreadcrumb should render correctly 1`] = `
+<nav class="breadcrumb -light -md" aria-label="Breadcrumbs">
+  <ol></ol>
+</nav>
+`;

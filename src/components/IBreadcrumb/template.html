@@ -1,3 +1,10 @@
-<ol class="breadcrumb" :class="classes" v-bind="$attrs">
-    <slot />
-</ol>
+<nav
+    class="breadcrumb"
+    :class="classes"
+    :aria-label="ariaLabel"
+    v-bind="$attrs"
+>
+    <ol>
+        <slot />
+    </ol>
+</nav>

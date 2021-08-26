@@ -1,4 +1,8 @@
-<div class="checkbox" :class="classes">
+<div
+    class="checkbox"
+    :class="classes"
+    role="checkbox"
+>
     <input
         ref="input"
         type="checkbox"
@@ -16,8 +20,10 @@
        :aria-disabled="isDisabled"
        :aria-readonly="isReadonly"
        :tabindex="tabIndex"
+       @blur="onBlur"
        @click="clickInputRef"
-       @keydown.space.stop.prevent="clickInputRef">
+       @keydown.space.stop.prevent="clickInputRef"
+    >
         <slot />
     </label>
 </div>

@@ -61,6 +61,15 @@ export default defineComponent({
         dismissible: {
             type: Boolean,
             default: false
+        },
+        /**
+         * @description The aria-label to use for the dismiss button
+         * @type String
+         * @default Dismiss
+         */
+        dismissAriaLabel: {
+            type: String,
+            default: 'Dismiss'
         }
     },
     emits: [
