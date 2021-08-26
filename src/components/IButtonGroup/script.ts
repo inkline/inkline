@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
 import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
-import {Classes} from "@inkline/inkline/types";
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @name default
@@ -14,6 +14,9 @@ export default defineComponent({
     name: componentName,
     inject: {
         form: {
+            default: () => ({})
+        },
+        buttonGroup: {
             default: () => ({})
         },
         formGroup: {
@@ -70,11 +73,11 @@ export default defineComponent({
                 [`-${this.size}`]: Boolean(this.size),
                 '-vertical': this.vertical,
                 '-block': this.block,
-                '-disabled': this.disabled,
+                '-disabled': this.isDisabled,
             };
         },
         isDisabled(): boolean {
-            return this.disabled || (this as any).form.disabled || (this as any).formGroup.disabled;
+            return this.disabled || (this as any).buttonGroup.disabled || (this as any).form.disabled || (this as any).formGroup.disabled;
         }
     }
 });

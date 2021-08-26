@@ -15,9 +15,10 @@
         "postdist": "ts-node scripts/postdist.ts",
         "lint": "npm run lint:script && npm run lint:style",
         "coveralls": "cat coverage/lcov.info | coveralls",
-        "lint:script": "eslint --ext .vue,.js src",
+        "lint:script": "eslint --ext .vue,.js,.ts src",
         "lint:style": "echo 'stylelint not installed'",
-        "prerelease": "npm run dist && ts-node scripts/prepublish.ts",
+        "prerelease:sourcemaps": "cp -r src package/src && bash -c 'find package -type f -name *.js.map -exec perl -i -pe\"s/..\\/src/src/g\" {} +'",
+        "prerelease": "npm run dist && ts-node scripts/prepublish.ts && npm run prerelease:sourcemaps",
         "release": "np",
         "postrelease": "ts-node scripts/postpublish.ts",
         "postversion": "ts-node scripts/postversion.ts",
@@ -33,7 +34,7 @@
     "unpkg": "dist/inkline.umd.js",
     "types": "index.d.ts",
     "dependencies": {
-        "@inkline/icons": "^1.4.12",
+        "@inkline/icons": "^1.4.13",
         "@popperjs/core": "2.9.2",
         "fuse.js": "6.4.0"
     },

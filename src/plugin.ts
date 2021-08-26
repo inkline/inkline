@@ -31,7 +31,7 @@ export interface InklineGlobals {
 /**
  * Default configuration options
  */
-const defaultOptions: PrototypeConfig = {
+export const defaultOptions: PrototypeConfig = {
     components: {},
     icons: {},
     colorMode: 'system',
@@ -45,12 +45,12 @@ const defaultOptions: PrototypeConfig = {
 /**
  * Color mode localStorage key
  */
-const colorModeLocalStorageKey = 'inkline-color-mode';
+export const colorModeLocalStorageKey = 'inkline-color-mode';
 
 /**
  * Color mode change handler
  */
-const handleColorMode = (colorMode: string) => {
+export const handleColorMode = (colorMode: string) => {
     let color;
     if (colorMode === 'system') {
         color = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

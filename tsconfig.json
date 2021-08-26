@@ -7,7 +7,7 @@
         "skipLibCheck": true,
         "strict": true,
         "jsx": "preserve",
-        "sourceMap": false,
+        "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,

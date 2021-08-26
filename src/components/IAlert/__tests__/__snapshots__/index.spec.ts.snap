@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components IAlert should render correctly 1`] = `
-<div class="alert">
+<div class="alert -primary -md">
   <!--v-if-->
   <div class="content"></div>
   <!--v-if-->

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components IButton should render correctly 1`] = `
+<button class="button -light -md" is="button" tag="button" tabindex="1" aria-pressed="false">
+  <!--v-if-->
+</button>
+`;

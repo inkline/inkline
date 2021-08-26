@@ -3,11 +3,6 @@ module.exports = {
     collectCoverage: true,
     coverageReporters: ['json', 'html', 'lcov'],
     coverageDirectory: '<rootDir>/coverage',
-    collectCoverageFrom: [
-        '<rootDir>/src/**/*.vue',
-        '<rootDir>/src/**/*.ts',
-        '!<rootDir>/node_modules/**'
-    ],
     transform: {
         '^.+\\.vue$': 'vue-jest',
         '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
@@ -22,7 +17,7 @@ module.exports = {
         '^@inkline/inkline/(.*)$': '<rootDir>/src/$1'
     },
     snapshotSerializers: ['jest-serializer-vue'],
-    setupFiles: ['<rootDir>/jest.setup.js'],
+    setupFiles: ['<rootDir>/jest/setup.ts'],
     testMatch: [
         '**/*.spec.(js|jsx|ts|tsx)'
     ],
