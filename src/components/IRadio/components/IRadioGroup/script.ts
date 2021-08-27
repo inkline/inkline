@@ -6,7 +6,7 @@ import {
     defaultPropValue,
 } from '@inkline/inkline/mixins';
 import { uid } from '@inkline/inkline/helpers';
-import {Classes} from "@inkline/inkline/types";
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @name default

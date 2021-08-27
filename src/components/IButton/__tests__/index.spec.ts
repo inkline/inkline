@@ -1,5 +1,5 @@
 import { render } from '@testing-library/vue';
-import {IButton, IButtonGroup} from '@inkline/inkline/components';
+import { IButton, IButtonGroup } from '@inkline/inkline/components';
 
 describe('Components', () => {
     describe('IButton', () => {

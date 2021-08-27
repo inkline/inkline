@@ -1,6 +1,6 @@
-import {fireEvent, render, waitFor} from '@testing-library/vue';
-import {IButton, IDropdown, IDropdownDivider, IDropdownItem} from '@inkline/inkline/components';
-import {keymap} from "@inkline/inkline/constants";
+import { fireEvent, render } from '@testing-library/vue';
+import { IButton, IDropdown, IDropdownDivider, IDropdownItem } from '@inkline/inkline/components';
+import { keymap } from '@inkline/inkline/constants';
 
 describe('Components', () => {
     describe('IDropdown', () => {

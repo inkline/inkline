@@ -6,7 +6,7 @@ import {
     colorVariantClass,
     defaultPropValue,
 } from '@inkline/inkline/mixins';
-import {Classes} from "@inkline/inkline/types";
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * @name default

@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import {createPopper, Instance, Placement} from '@popperjs/core';
+import { createPopper, Instance, Placement } from '@popperjs/core';
 
 export const offsetModifier = (offset: number) => ({
     name: 'offset',
