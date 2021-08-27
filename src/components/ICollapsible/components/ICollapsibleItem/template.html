@@ -1,8 +1,12 @@
-<div class="collapsible-item" :class="classes">
+<div
+    class="collapsible-item"
+    :class="classes"
+>
     <a
         class="collapsible-header"
         role="tab"
-        :aria-expanded="active"
+        :id="`collapsible-item-heading-${name}`"
+        :aria-expanded="active ? 'true' : 'false'"
         :aria-controls="`collapsible-item-content-${name}`"
         :aria-describedby="`collapsible-item-content-${name}`"
         tabindex="0"
@@ -16,10 +20,11 @@
     <i-expand-transition>
         <div
             class="collapsible-body"
-            v-show="active"
             role="tabpanel"
-            :aria-hidden="!active"
+            :id="`collapsible-item-content-${name}`"
+            :aria-hidden="active ? 'false' : 'true'"
             :aria-labelledby="`collapsible-item-heading-${name}`"
+            v-show="active"
         >
             <div class="content">
                 <slot />

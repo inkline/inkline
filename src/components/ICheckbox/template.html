@@ -1,6 +1,7 @@
 <div
     class="checkbox"
     :class="classes"
+    :aria-checked="checked ? 'true' : 'false'"
     role="checkbox"
 >
     <input
@@ -12,6 +13,7 @@
         :disabled="isDisabled"
         :readonly="isReadonly"
         :indeterminate.prop="indeterminate"
+        aria-hidden="true"
         @change="onChange"
     >
     <label

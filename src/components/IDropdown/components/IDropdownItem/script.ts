@@ -83,9 +83,7 @@ export default defineComponent({
     },
     methods: {
         onClick(event: InputElementEvent) {
-            if ((this as any).dropdown.onItemClick) {
-                (this as any).dropdown.onItemClick(this, event);
-            }
+            (this as any).dropdown.onItemClick?.(this, event);
         }
     }
 });

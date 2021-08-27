@@ -33,7 +33,7 @@ export default defineComponent({
         }
     },
     mounted() {
-        if (((this as any).$slots.default() || []).length === 0) {
+        if (!(this as any).$slots.default) {
             throw new Error('Popup components require one child element to be used as trigger.');
         }
 

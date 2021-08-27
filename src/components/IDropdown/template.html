@@ -1,6 +1,7 @@
 <div
     class="dropdown-wrapper"
     ref="wrapper"
+    aria-haspopup="true"
     v-click-outside="onClickOutside"
     @keyup.esc="onEscape"
 >
@@ -9,7 +10,14 @@
     </div>
 
     <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
-        <div class="dropdown" ref="popup" :class="classes" v-show="visible">
+        <div
+            class="dropdown"
+            :class="classes"
+            role="menu"
+            ref="popup"
+            :aria-hidden="visible ? 'false' : 'true'"
+            v-show="visible"
+        >
             <span data-popper-arrow v-if="arrow" />
             <div class="dropdown-header" v-if="$slots.header">
                 <slot name="header" />

@@ -178,118 +178,6 @@ import { Classes } from '@inkline/inkline/types';
  */
 
 /**
- * @name around
- * @kind member
- * @description Justify the content to have space around each item inside the row
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-xs
- * @kind member
- * @description Justify the content to have space around each item inside the row on extra-small screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-sm
- * @kind member
- * @description Justify the content to have space around each item inside the row on small screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-md
- * @kind member
- * @description Justify the content to have space around each item inside the row on medium screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-lg
- * @kind member
- * @description Justify the content to have space around each item inside the row on large screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-xl
- * @kind member
- * @description Justify the content to have space around each item inside the row on extra-large screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-xxl
- * @kind member
- * @description Justify the content to have space around each item inside the row on extra-extra-large screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around
- * @kind member
- * @description Justify the content to have space around each item inside the row
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-xs
- * @kind member
- * @description Justify the content to have space around each item inside the row on extra-small screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-sm
- * @kind member
- * @description Justify the content to have space around each item inside the row on small screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-md
- * @kind member
- * @description Justify the content to have space around each item inside the row on medium screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-lg
- * @kind member
- * @description Justify the content to have space around each item inside the row on large screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-xl
- * @kind member
- * @description Justify the content to have space around each item inside the row on extra-large screens
- * @type Boolean
- * @default false
- */
-
-/**
- * @name around-xxl
- * @kind member
- * @description Justify the content to have space around each item inside the row on extra-extra-large screens
- * @type Boolean
- * @default false
- */
-
-/**
  * @name top
  * @kind member
  * @description Align the content to the top of the row
@@ -456,6 +344,119 @@ import { Classes } from '@inkline/inkline/types';
  * @type Boolean
  * @default false
  */
+
+/**
+ * @name around
+ * @kind member
+ * @description Justify the content to have space around each item inside the row
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name around-xs
+ * @kind member
+ * @description Justify the content to have space around each item inside the row on extra-small screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name around-sm
+ * @kind member
+ * @description Justify the content to have space around each item inside the row on small screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name around-md
+ * @kind member
+ * @description Justify the content to have space around each item inside the row on medium screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name around-lg
+ * @kind member
+ * @description Justify the content to have space around each item inside the row on large screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name around-xl
+ * @kind member
+ * @description Justify the content to have space around each item inside the row on extra-large screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name around-xxl
+ * @kind member
+ * @description Justify the content to have space around each item inside the row on extra-extra-large screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name between
+ * @kind member
+ * @description Justify the content to have space between each item inside the row
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name between-xs
+ * @kind member
+ * @description Justify the content to have space between each item inside the row on extra-small screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name between-sm
+ * @kind member
+ * @description Justify the content to have space between each item inside the row on small screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name between-md
+ * @kind member
+ * @description Justify the content to have space between each item inside the row on medium screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name between-lg
+ * @kind member
+ * @description Justify the content to have space between each item inside the row on large screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name between-xl
+ * @kind member
+ * @description Justify the content to have space between each item inside the row on extra-large screens
+ * @type Boolean
+ * @default false
+ */
+
+/**
+ * @name between-xxl
+ * @kind member
+ * @description Justify the content to have space between each item inside the row on extra-extra-large screens
+ * @type Boolean
+ * @default false
+ */
+
 /**
  * @name reverse
  * @kind member
