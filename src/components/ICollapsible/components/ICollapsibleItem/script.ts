@@ -24,7 +24,9 @@ export default defineComponent({
     },
     inject: {
         collapsible: {
-            default: () => ({})
+            default: () => ({
+                activeItems: []
+            })
         }
     },
     props: {

@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components IForm should render correctly 1`] = `<form class="form -light -md" role="form" name="form"></form>`;
+exports[`Components IForm should render correctly 1`] = `
+<form class="form -light -md" role="form" name="form">
+  <div class="input-wrapper -light -md">
+    <!--v-if-->
+    <div class="input">
+      <!--v-if--><input name="input" type="text" tabindex="1" aria-disabled="false" aria-readonly="false">
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+</form>
+`;

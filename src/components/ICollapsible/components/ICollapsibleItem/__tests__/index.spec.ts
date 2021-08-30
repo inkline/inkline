@@ -26,6 +26,18 @@ describe('Components', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
 
+        describe('props', () => {
+            describe('name', () => {
+                it('should have randomly generated name uid', () => {
+                    const wrapper = render(ICollapsibleItem, {
+                        props: {}
+                    });
+
+                    expect(wrapper.container.firstChild).toHaveAttribute('name', expect.stringContaining('collapsible-item'));
+                });
+            });
+        });
+
         describe('computed', () => {
             describe('active', () => {
                 it('should add -active class when item is active', () => {
