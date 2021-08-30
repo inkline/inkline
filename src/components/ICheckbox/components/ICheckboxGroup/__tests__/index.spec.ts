@@ -1,4 +1,4 @@
-import {fireEvent, render} from '@testing-library/vue';
+import { fireEvent, render } from '@testing-library/vue';
 import { ICheckbox, ICheckboxGroup } from '@inkline/inkline/components';
 
 describe('Components', () => {

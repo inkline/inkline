@@ -1,5 +1,5 @@
-import {fireEvent, render} from '@testing-library/vue';
-import {IFormGroup, IFormLabel, IInput} from '@inkline/inkline/components';
+import { render } from '@testing-library/vue';
+import { IFormLabel } from '@inkline/inkline/components';
 
 describe('Components', () => {
     describe('IFormLabel', () => {

@@ -1,5 +1,5 @@
-import {fireEvent, render} from '@testing-library/vue';
-import {IFormGroup, IInput} from '@inkline/inkline/components';
+import { fireEvent, render } from '@testing-library/vue';
+import { IFormGroup, IInput } from '@inkline/inkline/components';
 
 describe('Components', () => {
     describe('IFormGroup', () => {
