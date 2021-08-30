@@ -18,6 +18,22 @@ describe('Components', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
 
+        describe('props', () => {
+            describe('name', () => {
+                it('should have randomly generated name uid', () => {
+                    const wrapper = render(IInput, {
+                        props: {
+                            color: props.color,
+                            size: props.size
+                        }
+                    });
+                    const inputElement = wrapper.container.querySelector('input');
+
+                    expect(inputElement).toHaveAttribute('name', expect.stringContaining('input'));
+                });
+            });
+        });
+
         describe('computed', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
@@ -254,7 +270,7 @@ describe('Components', () => {
                 });
             });
 
-            describe('onClear', () => {
+            describe('onClear()', () => {
                 it('should emit clear event', async () => {
                     const wrapper = render(IInput, {
                         props: {
@@ -269,6 +285,24 @@ describe('Components', () => {
 
                     expect(wrapper.emitted()['clear'][0]).toBeDefined();
                     expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['']);
+                });
+            });
+
+            describe('focus()', () => {
+                it('should focus input ref', async () => {
+                    const focus = jest.fn();
+                    const wrapper = {
+                        $refs: {
+                            input: {
+                                focus
+                            }
+                        },
+                        focus: IInput.methods!.focus
+                    };
+
+                    wrapper.focus();
+
+                    expect(focus).toHaveBeenCalled();
                 });
             });
         });
