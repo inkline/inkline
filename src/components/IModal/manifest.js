@@ -70,7 +70,7 @@ module.exports = {
             default: 'true'
         },
         {
-            name: 'id',
+            name: 'name',
             description: 'The identifier of the modal',
             type: [
                 'String'

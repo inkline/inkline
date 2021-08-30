@@ -81,7 +81,7 @@ export default defineComponent({
          * @type String
          * @default uid()
          */
-        id: {
+        name: {
             type: String,
             default(): string {
                 return uid('modal');
@@ -170,7 +170,7 @@ export default defineComponent({
             this.visible = true;
             this.$emit('update:modelValue', true);
 
-            OverlayController.open((this as any).id);
+            OverlayController.open((this as any).name);
 
             addClass(window.document.body, '-modal');
         },
@@ -182,7 +182,7 @@ export default defineComponent({
             this.visible = false;
             this.$emit('update:modelValue', false);
 
-            OverlayController.close((this as any).id);
+            OverlayController.close((this as any).name);
 
             removeClass(window.document.body, '-modal');
         },
