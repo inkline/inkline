@@ -79,6 +79,7 @@ export default defineComponent({
          * @description The error state of the input, computed based on schema by default.
          * @type Boolean | Array
          * @default ['touched', 'dirty', 'invalid']
+         * @TODO use propDefaultValue to set default value
          */
         error: {
             type: [Array, Boolean],
@@ -158,6 +159,15 @@ export default defineComponent({
         type: {
             type: String,
             default: 'text'
+        },
+        /**
+         * @description The aria-label of the clear button
+         * @type String
+         * @default Clear
+         */
+        clearAriaLabel: {
+            type: String,
+            default: 'Clear'
         },
     },
     emits: [

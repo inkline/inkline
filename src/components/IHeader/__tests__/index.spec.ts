@@ -1,32 +1,38 @@
 import { render } from '@testing-library/vue';
-import { ICard } from '@inkline/inkline/components';
+import { IHeader } from '@inkline/inkline/components';
 
 describe('Components', () => {
-    describe('ICard', () => {
+    describe('IHeader', () => {
         const props = {
             color: 'light',
             size: 'md'
         };
 
         it('should be named correctly', () => {
-            expect(ICard.name).toEqual('ICard');
+            expect(IHeader.name).toEqual('IHeader');
         });
 
         it('should render correctly', () => {
-            const wrapper = render(ICard, { props });
+            const wrapper = render(IHeader, { props });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
         describe('computed', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
-                    const wrapper = render(ICard, {
-                        props
+                    const wrapper = render(IHeader, {
+                        props: {
+                            cover: true,
+                            fullscreen: true,
+                            ...props
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         `-${props.color}`,
-                        `-${props.size}`
+                        `-${props.size}`,
+                        '-cover',
+                        '-fullscreen'
                     );
                 });
             });

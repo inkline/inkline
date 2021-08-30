@@ -1,5 +1,5 @@
-import { render } from '@testing-library/vue';
-import { IFormLabel } from '@inkline/inkline/components';
+import {fireEvent, render} from '@testing-library/vue';
+import {IFormGroup, IFormLabel, IInput} from '@inkline/inkline/components';
 
 describe('Components', () => {
     describe('IFormLabel', () => {
@@ -31,6 +31,63 @@ describe('Components', () => {
                         `-${props.size}`,
                         '-left',
                     );
+                });
+            });
+        });
+
+        describe('methods', () => {
+            describe('onClick()', () => {
+                it('should focus next sibling if for not provided', async () => {
+                    const focus = jest.fn();
+                    const wrapper = {
+                        $el: {
+                            nextSibling: {
+                                querySelector: () => ({
+                                    focus
+                                })
+                            }
+                        },
+                        ...IFormLabel.methods
+                    };
+
+                    (wrapper as any).onClick();
+
+                    expect(focus).toHaveBeenCalled();
+                });
+
+                it('should not focus next sibling if not focusable', async () => {
+                    const focus = jest.fn();
+                    const wrapper = {
+                        $el: {
+                            nextSibling: {
+                                querySelector: () => null
+                            }
+                        },
+                        ...IFormLabel.methods
+                    };
+
+                    (wrapper as any).onClick();
+
+                    expect(focus).not.toHaveBeenCalled();
+                });
+
+                it('should not focus next sibling if for provided', async () => {
+                    const focus = jest.fn();
+                    const wrapper = {
+                        for: true,
+                        $el: {
+                            nextSibling: {
+                                querySelector: () => ({
+                                    focus
+                                })
+                            }
+                        },
+                        ...IFormLabel.methods
+                    };
+
+                    (wrapper as any).onClick();
+
+                    expect(focus).not.toHaveBeenCalled();
                 });
             });
         });

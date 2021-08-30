@@ -10,6 +10,8 @@
             v-bind="$attrs"
             :value="value"
             ref="input"
+            role="input"
+            contenteditable="true"
             :name="name"
             :id="id"
             :type="type"
@@ -19,10 +21,22 @@
             :readonly="isReadonly || plaintext"
             :aria-readonly="(isReadonly || plaintext) ? 'true' : false"
             @input="onInput"
-            @blur="onBlur">
-        <span class="input-suffix" v-if="$slots.suffix || clearable && isClearable">
+            @blur="onBlur"
+        >
+        <span
+            class="input-suffix"
+            v-if="$slots.suffix || clearable && isClearable"
+        >
             <slot name="clearable" :clear="onClear">
-                <i class="input-clear" aria-label="Clear" v-if="clearable" v-show="isClearable" @click="onClear"></i>
+                <i
+                    class="input-clear"
+                    role="button"
+                    :aria-label="clearAriaLabel"
+                    :aria-hidden="isClearable ? 'false' : 'true'"
+                    v-if="clearable"
+                    v-show="isClearable"
+                    @click="onClear"
+                />
             </slot>
             <slot name="suffix" />
         </span>

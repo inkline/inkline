@@ -106,14 +106,10 @@ export default defineComponent({
     },
     methods: {
         onBlur(name: string, event: InputElementEvent) {
-            if (this.parent) {
-                this.parent.onBlur(this.name ? `${this.name}.${name}` : name, event);
-            }
+            this.parent?.onBlur?.(this.name ? `${this.name}.${name}` : name, event);
         },
         onInput(name: string, value: any) {
-            if (this.parent) {
-                this.parent.onInput(this.name ? `${this.name}.${name}` : name, value);
-            }
+            this.parent?.onInput?.(this.name ? `${this.name}.${name}` : name, value);
         }
     }
 });

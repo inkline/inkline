@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components IInput should render correctly 1`] = `
+<div class="input-wrapper -light -md">
+  <!--v-if-->
+  <div class="input">
+    <!--v-if--><input role="input" contenteditable="true" name="input" type="text" tabindex="1" aria-disabled="false" aria-readonly="false">
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+</div>
+`;

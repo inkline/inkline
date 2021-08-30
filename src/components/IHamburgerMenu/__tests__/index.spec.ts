@@ -1,32 +1,37 @@
 import { render } from '@testing-library/vue';
-import { ICard } from '@inkline/inkline/components';
+import { IHamburgerMenu } from '@inkline/inkline/components';
 
 describe('Components', () => {
-    describe('ICard', () => {
+    describe('IHamburgerMenu', () => {
         const props = {
-            color: 'light',
-            size: 'md'
+            color: 'light'
         };
 
         it('should be named correctly', () => {
-            expect(ICard.name).toEqual('ICard');
+            expect(IHamburgerMenu.name).toEqual('IHamburgerMenu');
         });
 
         it('should render correctly', () => {
-            const wrapper = render(ICard, { props });
+            const wrapper = render(IHamburgerMenu, { props });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
         describe('computed', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
-                    const wrapper = render(ICard, {
-                        props
+                    const animation = 'animation';
+                    const wrapper = render(IHamburgerMenu, {
+                        props: {
+                            modelValue: true,
+                            animation,
+                            ...props
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         `-${props.color}`,
-                        `-${props.size}`
+                        `-${animation}`,
+                        '-active'
                     );
                 });
             });

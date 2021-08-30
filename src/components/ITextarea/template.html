@@ -10,6 +10,7 @@
             v-bind="$attrs"
             :value="value"
             ref="input"
+            role="textbox"
             :name="name"
             :id="id"
             :tabindex="tabIndex"
@@ -17,6 +18,7 @@
             :aria-disabled="isDisabled ? 'true' : false"
             :readonly="isReadonly"
             :aria-readonly="isReadonly ? 'true' : false"
+            aria-multiline="true"
             @input="onInput"
             @blur="onBlur" />
         <span class="input-suffix" v-if="$slots.suffix || clearable && isClearable">
