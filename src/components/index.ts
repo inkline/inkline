@@ -29,6 +29,7 @@ export { default as ILayoutHeader } from '@inkline/inkline/components/ILayout/co
 export { default as IListGroup } from '@inkline/inkline/components/IListGroup/index.vue';
 export * from '@inkline/inkline/components/IListGroup/components';
 export { default as ILoader } from '@inkline/inkline/components/ILoader/index.vue';
+export { default as IMark } from '@inkline/inkline/components/IMark/index.vue';
 export { default as IMedia } from '@inkline/inkline/components/IMedia/index.vue';
 export { default as IModal } from '@inkline/inkline/components/IModal/index.vue';
 export { default as INav } from '@inkline/inkline/components/INav/index.vue';

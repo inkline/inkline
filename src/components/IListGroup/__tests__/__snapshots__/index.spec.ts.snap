@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components IListGroup should render correctly 1`] = `
+<div class="list-group -light -md -border">
+  <div class="list-group-item" tag="div" tabindex="1" disabled="false" aria-disabled="false" aria-pressed="false">Item 1</div>
+  <div class="list-group-item" tag="div" tabindex="1" disabled="false" aria-disabled="false" aria-pressed="false">Item 2</div>
+  <div class="list-group-item" tag="div" tabindex="1" disabled="false" aria-disabled="false" aria-pressed="false">Item 3</div>
+</div>
+`;
