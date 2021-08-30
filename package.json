@@ -22,9 +22,8 @@
         "release": "np",
         "postrelease": "ts-node scripts/postpublish.ts",
         "postversion": "ts-node scripts/postversion.ts",
-        "test": "jest",
+        "test": "jest --coverage",
         "test:dev": "jest --watch",
-        "test:ci": "jest --coverage",
         "generate:manifest": "ts-node ./scripts/manifest.ts",
         "generate:manifest:sass": "ts-node ./scripts/manifest-sass.ts"
     },
