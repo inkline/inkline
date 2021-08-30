@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components IFormError should render correctly 1`] = `
+<transition-stub style="display: none;">
+  <!--v-if-->
+</transition-stub>
+`;

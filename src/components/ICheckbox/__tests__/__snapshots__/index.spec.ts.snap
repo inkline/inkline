@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components ICheckbox should render correctly 1`] = `<div class="checkbox -light -md" role="checkbox"><input type="checkbox" tabindex="-1" name="checkbox"><label class="checkbox-label" aria-checked="false" tabindex="1"></label></div>`;
+exports[`Components ICheckbox should render correctly 1`] = `<div class="checkbox -light -md" aria-checked="false" role="checkbox"><input type="checkbox" tabindex="-1" name="checkbox" aria-hidden="true"><label class="checkbox-label" aria-checked="false" tabindex="1"></label></div>`;

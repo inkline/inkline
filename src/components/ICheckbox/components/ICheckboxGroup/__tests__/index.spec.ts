@@ -1,4 +1,4 @@
-import { render } from '@testing-library/vue';
+import {fireEvent, render} from '@testing-library/vue';
 import { ICheckbox, ICheckboxGroup } from '@inkline/inkline/components';
 
 describe('Components', () => {
@@ -121,142 +121,66 @@ describe('Components', () => {
                     expect(checkboxes[2]).toBeChecked();
                 });
             });
+        });
 
-        //     describe('tabIndex', () => {
-        //         it('should be -1 if disabled', () => {
-        //             const wrapper = render(ICheckboxGroup, {
-        //                 props: {
-        //                     disabled: true,
-        //                     ...props
-        //                 }
-        //             });
-        //             const labelElement = wrapper.container.querySelector('label');
-        //
-        //             expect(labelElement).toHaveAttribute('tabindex', '-1');
-        //         });
-        //
-        //         it('should be 1 otherwise', () => {
-        //             const wrapper = render(ICheckboxGroup, { props });
-        //             const labelElement = wrapper.container.querySelector('label');
-        //
-        //             expect(labelElement).toHaveAttribute('tabindex', '1');
-        //         });
-        //     });
-        // });
-        //
-        // describe('methods', () => {
-        //     describe('clickInputRef()', () => {
-        //         it('should not be able to click label if disabled', () => {
-        //             const wrapper = render(ICheckboxGroup, {
-        //                 props: {
-        //                     disabled: true,
-        //                     ...props
-        //                 }
-        //             });
-        //             const labelElement = wrapper.container.querySelector('label');
-        //             const inputElement = wrapper.container.querySelector('input');
-        //
-        //             fireEvent.click(labelElement as Element);
-        //             expect(inputElement).not.toBeChecked();
-        //         });
-        //
-        //         it('should not be able to click label if readonly', () => {
-        //             const wrapper = render(ICheckboxGroup, {
-        //                 props: {
-        //                     readonly: true,
-        //                     ...props
-        //                 }
-        //             });
-        //             const labelElement = wrapper.container.querySelector('label');
-        //             const inputElement = wrapper.container.querySelector('input');
-        //
-        //             fireEvent.click(labelElement as Element);
-        //             expect(inputElement).not.toBeChecked();
-        //         });
-        //
-        //         it('should change input value on click when clicking label', () => {
-        //             const wrapper = render(ICheckboxGroup, { props });
-        //             const labelElement = wrapper.container.querySelector('label');
-        //             const inputElement = wrapper.container.querySelector('input');
-        //
-        //             fireEvent.click(labelElement as Element);
-        //             expect(inputElement).toBeChecked();
-        //         });
-        //     });
-        //
-        //     describe('onChange()', () => {
-        //         it('should call parent onInput', () => {
-        //             const onInput = jest.fn();
-        //             const wrapper = render(ICheckboxGroup, {
-        //                 global: {
-        //                     provide: {
-        //                         form: {
-        //                             onInput
-        //                         }
-        //                     }
-        //                 },
-        //                 props
-        //             });
-        //             const inputElement = wrapper.container.querySelector('input');
-        //
-        //             fireEvent.change(inputElement as Element);
-        //             expect(onInput).toHaveBeenCalled();
-        //         });
-        //
-        //         it('should call parent onChange if formGroup', () => {
-        //             const onChange = jest.fn();
-        //             const wrapper = render(ICheckboxGroup, {
-        //                 global: {
-        //                     provide: {
-        //                         formGroup: {
-        //                             onChange
-        //                         }
-        //                     }
-        //                 },
-        //                 props
-        //             });
-        //             const inputElement = wrapper.container.querySelector('input');
-        //
-        //             fireEvent.change(inputElement as Element);
-        //             expect(onChange).toHaveBeenCalled();
-        //         });
-        //     });
-        //
-        //     describe('onBlur()', () => {
-        //         it('should call parent onBlur if defined', () => {
-        //             const onBlur = jest.fn();
-        //             const wrapper = render(ICheckboxGroup, {
-        //                 global: {
-        //                     provide: {
-        //                         form: {
-        //                             onBlur
-        //                         }
-        //                     }
-        //                 },
-        //                 props
-        //             });
-        //             const labelElement = wrapper.container.querySelector('label');
-        //
-        //             fireEvent.blur(labelElement as Element);
-        //             expect(onBlur).toHaveBeenCalled();
-        //         });
-        //
-        //         it('should not call parent onBlur if not defined', () => {
-        //             const onBlur = jest.fn();
-        //             const wrapper = render(ICheckboxGroup, {
-        //                 global: {
-        //                     provide: {
-        //                         form: {}
-        //                     }
-        //                 },
-        //                 props
-        //             });
-        //             const labelElement = wrapper.container.querySelector('label');
-        //
-        //             fireEvent.blur(labelElement as Element);
-        //             expect(onBlur).not.toHaveBeenCalled();
-        //         });
-        //     });
+        describe('methods', () => {
+            describe('onChange', () => {
+                it('should update modelValue when checking checkbox', async () => {
+                    const wrapper = render(ICheckboxGroup, {
+                        global: { stubs },
+                        props: {
+                            modelValue: [],
+                            ...props
+                        },
+                        slots
+                    });
+                    const checkboxes = wrapper.container.querySelectorAll('label');
+
+                    await fireEvent.click(checkboxes[0]);
+
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([['1']]);
+                });
+
+                it('should update modelValue when unchecking checkbox', async () => {
+                    const wrapper = render(ICheckboxGroup, {
+                        global: { stubs },
+                        props: {
+                            modelValue: ['1'],
+                            ...props
+                        },
+                        slots
+                    });
+                    const checkboxes = wrapper.container.querySelectorAll('label');
+
+                    await fireEvent.click(checkboxes[0]);
+
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([[]]);
+                });
+
+                it('should call parent form onInput when checking checkbox', async () => {
+                    const onInput = jest.fn();
+                    const wrapper = render(ICheckboxGroup, {
+                        global: {
+                            stubs,
+                            provide: {
+                                form: {
+                                    onInput
+                                }
+                            }
+                        },
+                        props: {
+                            modelValue: [],
+                            ...props
+                        },
+                        slots
+                    });
+                    const checkboxes = wrapper.container.querySelectorAll('label');
+
+                    await fireEvent.click(checkboxes[0]);
+
+                    expect(onInput).toHaveBeenCalled();
+                });
+            });
         });
     });
 });
