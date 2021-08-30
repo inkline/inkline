@@ -5,36 +5,36 @@ export const OverlayController = {
     stack: [] as string[],
     zIndex: 1000,
     register(instance: any) {
-        if (instance && instance.id) {
-            OverlayController.instances[instance.id] = instance;
+        if (instance && instance.name) {
+            OverlayController.instances[instance.name] = instance;
         }
     },
     unregister(instance: any) {
-        if (instance && instance.id) {
-            OverlayController.instances[instance.id] = null;
+        if (instance && instance.name) {
+            OverlayController.instances[instance.name] = null;
 
-            delete OverlayController.instances[instance.id];
+            delete OverlayController.instances[instance.name];
         }
     },
-    open(id: string) {
+    open(name: string) {
         if (typeof window === 'undefined') {
             return;
         }
 
-        OverlayController.stack.push(id);
-        OverlayController.instances[id].$el.style.zIndex = OverlayController.zIndex++;
+        OverlayController.stack.push(name);
+        OverlayController.instances[name].$el.style.zIndex = OverlayController.zIndex++;
     },
-    close(id: string) {
+    close(name: string) {
         if (typeof window === 'undefined') {
             return;
         }
 
-        OverlayController.stack.splice(OverlayController.stack.indexOf(id), 1);
+        OverlayController.stack.splice(OverlayController.stack.indexOf(name), 1);
     },
     getTopOverlay(): any {
         const topOverlay = OverlayController.stack.slice(-1)[0] || {};
 
-        return OverlayController.instances[(topOverlay as any).id];
+        return OverlayController.instances[(topOverlay as any).name];
     },
     onPressEscape() {
         const topOverlay = OverlayController.getTopOverlay();
