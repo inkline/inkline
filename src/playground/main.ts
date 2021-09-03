@@ -79,6 +79,7 @@ const routes = [
     { name: 'docs-utilities-overflow', path: '/docs/utilities/overflow', component: () => import('../docs/utilities/overflow/en.md')  },
     { name: 'docs-utilities-overlay', path: '/docs/utilities/overlay', component: () => import('../docs/utilities/overlay/en.md')  },
     { name: 'docs-utilities-position', path: '/docs/utilities/position', component: () => import('../docs/utilities/position/en.md')  },
+    { name: 'docs-utilities-screen-reader', path: '/docs/utilities/screen-reader', component: () => import('../docs/utilities/screen-reader/en.md')  },
     { name: 'docs-utilities-sizing', path: '/docs/utilities/sizing', component: () => import('../docs/utilities/sizing/en.md')  },
     { name: 'docs-utilities-spacing', path: '/docs/utilities/spacing', component: () => import('../docs/utilities/spacing/en.md')  },
     { name: 'docs-utilities-text', path: '/docs/utilities/text', component: () => import('../docs/utilities/text/en.md')  },

@@ -367,6 +367,11 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{ name: 'docs-utilities-screen-reader' }">
+                        Screen Reader
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{ name: 'docs-utilities-sizing' }">
                         Sizing
                     </router-link>
