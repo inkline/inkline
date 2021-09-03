@@ -1,4 +1,4 @@
-import {fireEvent, render} from '@testing-library/vue';
+import { fireEvent, render } from '@testing-library/vue';
 import { IModal } from '@inkline/inkline/components';
 
 describe('Components', () => {
@@ -110,7 +110,7 @@ describe('Components', () => {
                     const button = await wrapper.getByRole('button');
                     await fireEvent.click(button);
 
-                    const modal = wrapper.container.querySelector('[role="dialog"]')
+                    const modal = wrapper.container.querySelector('[role="dialog"]');
                     expect(modal).not.toBeVisible();
                 });
             });

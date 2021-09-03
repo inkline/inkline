@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components INavItem should render correctly 1`] = `<div class="nav-item" role="menuitem" tag="div" tabindex="1" disabled="false" aria-disabled="false" aria-pressed="false"></div>`;

@@ -1,10 +1,33 @@
-<div class="popover-wrapper" :class="classes" ref="wrapper" v-click-outside="onClickOutside" @keyup.esc="onEscape">
-    <div class="popover-trigger" ref="trigger">
+<div
+    class="popover-wrapper"
+    :class="classes"
+    ref="wrapper"
+    v-click-outside="onClickOutside"
+    @keyup.esc="onEscape"
+>
+    <div
+        class="popover-trigger"
+        ref="trigger"
+        :aria-describedby="`${name}-popup`"
+        :aria-disabled="disabled ? 'true' : 'false'"
+        :aria-expanded="visible ? 'true' : 'false'"
+    >
         <slot />
     </div>
 
-    <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
-        <div class="popover" ref="popup" v-show="visible">
+    <transition
+        nme="zoom-in-top-transition"
+        @after-leave="destroyPopper"
+    >
+        <div
+            class="popover"
+            ref="popup"
+            role="tooltip"
+            aria-live="polite"
+            :id="`${name}-popup`"
+            :aria-hidden="visible ? 'false' : 'true'"
+            v-show="visible"
+        >
             <span data-popper-arrow v-if="arrow" />
             <div class="popover-header" v-if="$slots.header">
                 <slot name="header" />

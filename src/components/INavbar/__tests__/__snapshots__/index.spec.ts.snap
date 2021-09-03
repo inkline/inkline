@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components INavbar should render correctly 1`] = `
+<div class="navbar -collapse-md -light -md" role="navigation">
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <div class="hamburger-menu -light -close collapse-toggle collapse-toggle"><span class="hamburger-menu-bars"></span></div>
+        <div class="navbar-brand" tag="div" translate="yes"></div>
+        <transition-stub>
+          <div class="navbar-collapsible" aria-hidden="false" aria-expanded="true">
+            <nav class="nav -light -md" role="menubar">
+              <div class="nav-item" role="menuitem" tag="div" tabindex="1" disabled="false" aria-disabled="false" aria-pressed="false"></div>
+            </nav>
+          </div>
+        </transition-stub>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,12 +1,15 @@
 <component
     v-bind="$attrs"
     class="nav-item"
+    role="menuitem"
     :is="isTag"
     :tag="tag"
     :tabindex="tabIndex"
     :class="classes"
     :disabled="disabled"
-    :aria-disabled="disabled"
-    :aria-pressed="active">
+    :aria-disabled="disabled ? 'true' : 'false'"
+    :aria-pressed="active ? 'true' : 'false'"
+    @click="onClick"
+>
     <slot />
 </component>

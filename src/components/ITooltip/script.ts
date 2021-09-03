@@ -8,6 +8,7 @@ import {
 } from '@inkline/inkline/mixins';
 import ClickOutside from '@inkline/inkline/directives/click-outside';
 import { Classes } from '@inkline/inkline/types';
+import { uid } from '@inkline/inkline/helpers';
 
 /**
  * @name default
@@ -59,6 +60,17 @@ export default defineComponent({
         modelValue: {
             type: Boolean,
             default: false
+        },
+        /**
+         * @description The identifier of the tooltip
+         * @type String
+         * @default uid()
+         */
+        name: {
+            type: String,
+            default(): string {
+                return uid('tooltip');
+            }
         },
         /**
          * @description Displays an arrow on the tooltip pointing to the trigger element

@@ -1,5 +1,10 @@
 <i-expand-transition>
-    <div class="navbar-collapsible" v-show="visible">
+    <div
+        class="navbar-collapsible"
+        :aria-hidden="visible ? 'false' : 'true'"
+        :aria-expanded="visible ? 'true' : 'false'"
+        v-show="visible"
+    >
         <slot />
     </div>
 </i-expand-transition>

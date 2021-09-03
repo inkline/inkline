@@ -23,10 +23,14 @@ export default defineComponent({
     },
     inject: {
         navbar: {
-            default: () => ({})
+            default: () => ({
+                onItemClick: () => {}
+            })
         },
         sidebar: {
-            default: () => ({})
+            default: () => ({
+                onItemClick: () => {}
+            })
         }
     },
     props: {
@@ -71,9 +75,7 @@ export default defineComponent({
     methods: {
         onItemClick() {
             [(this as any).navbar, (this as any).sidebar].forEach((parent) => {
-                if (parent.onItemClick) {
-                    parent.onItemClick();
-                }
+                parent.onItemClick();
             });
         }
     }

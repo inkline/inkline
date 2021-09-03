@@ -26,6 +26,15 @@ export default defineComponent({
     name: componentName,
     props: {
         /**
+         * @description The aria-label of the pagination
+         * @type String
+         * @default Pagination
+         */
+        ariaLabel: {
+            type: String,
+            default: 'Pagination'
+        },
+        /**
          * @description The color variant of the pagination
          * @type light | dark
          * @default light

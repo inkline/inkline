@@ -160,6 +160,7 @@ export default defineComponent({
                 if (parseFloat(newValue) >= parseFloat(this.max as string)) newValue = this.max.toString();
                 if (parseFloat(newValue) <= parseFloat(this.min as string)) newValue = this.min.toString();
 
+                (this.parent as any).onInput?.(this.name, newValue);
                 this.$emit('update:modelValue', newValue);
             }
         }
@@ -183,7 +184,8 @@ export default defineComponent({
         },
         onBlurFormatPrecision (event: InputElementEvent) {
             this.$emit('update:modelValue', this.formatPrecision(Number(this.value).toString()));
-            (this as any).emitBlur(event);
+
+            (this.parent as any).onBlur?.(this.name, event);
         },
     }
 });

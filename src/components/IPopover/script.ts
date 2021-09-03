@@ -8,6 +8,7 @@ import {
 } from '@inkline/inkline/mixins';
 import ClickOutside from '@inkline/inkline/directives/click-outside';
 import { Classes } from '@inkline/inkline/types';
+import { uid } from '@inkline/inkline/helpers';
 
 
 /**
@@ -72,6 +73,17 @@ export default defineComponent({
         modelValue: {
             type: Boolean,
             default: false
+        },
+        /**
+         * @description The identifier of the popover
+         * @type String
+         * @default uid()
+         */
+        name: {
+            type: String,
+            default(): string {
+                return uid('popover');
+            }
         },
         /**
          * @description Displays an arrow on the popover pointing to the trigger element

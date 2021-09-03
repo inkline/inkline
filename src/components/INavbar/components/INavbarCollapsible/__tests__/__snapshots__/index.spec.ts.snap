@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components INavbarCollapsible should render correctly 1`] = `
+<transition-stub>
+  <div class="navbar-collapsible" aria-hidden="false" aria-expanded="true"></div>
+</transition-stub>
+`;

@@ -19,7 +19,9 @@ export default defineComponent({
     ],
     inject: {
         nav: {
-            default: () => ({})
+            default: () => ({
+                onItemClick: () => {}
+            })
         }
     },
     props: {
@@ -73,9 +75,7 @@ export default defineComponent({
     },
     methods: {
         onClick(event: ElementEvent) {
-            if ((this as any).nav.onItemClick) {
-                (this as any).nav.onItemClick(this, event);
-            }
+            (this as any).nav.onItemClick(this, event);
         }
     }
 });
