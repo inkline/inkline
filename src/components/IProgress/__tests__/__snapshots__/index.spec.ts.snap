@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components IProgress should render correctly 1`] = `
+<div class="progress -primary -md">
+  <div class="progress-bar -primary" style="width: 50%;" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+</div>
+`;

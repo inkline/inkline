@@ -17,7 +17,7 @@ module.exports = {
         '^@inkline/inkline/(.*)$': '<rootDir>/src/$1'
     },
     snapshotSerializers: ['jest-serializer-vue'],
-    setupFilesAfterEnv: ['<rootDir>/jest/setup.ts'],
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     testMatch: [
         '**/*.spec.(js|jsx|ts|tsx)'
     ],

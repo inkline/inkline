@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components ISelect should render correctly 1`] = `
+<div class="select-wrapper -primary -md" id="select" name="select" role="combobox" aria-haspopup="listbox" aria-owns="select-options" aria-expanded="false">
+  <div class="input-wrapper -primary -md -suffixed">
+    <!--v-if-->
+    <div class="input">
+      <!--v-if--><input autocomplete="off" aria-autocomplete="both" aria-controls="select-options" placeholder="Option 1" role="input" contenteditable="true" name="select-input" type="text" tabindex="1" aria-disabled="false" readonly="" aria-readonly="true"><span class="input-suffix"><!--v-if--><button class="select-caret"></button></span>
+    </div>
+    <!--v-if-->
+  </div>
+  <transition-stub>
+    <div class="select" id="select-options" role="listbox" aria-hidden="true" style="display: none;"><span data-popper-arrow=""></span>
+      <!--v-if-->
+      <div class="select-body">
+        <!--v-if-->
+        <div class="select-options">
+          <div class="select-option -active" role="option" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="true">Option 1</div>
+          <div class="select-option -active" role="option" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="true">Option 2</div>
+          <div class="select-option -active" role="option" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="true">Option 3</div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+  </transition-stub>
+</div>
+`;

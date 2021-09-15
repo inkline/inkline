@@ -73,7 +73,7 @@ describe('Components', () => {
                     expect(onItemClick).toHaveBeenCalled();
                 });
 
-                it('should call dropdown onItemClick if not inside dropdown', async () => {
+                it('should not call dropdown onItemClick if not inside dropdown', async () => {
                     const onItemClick = jest.fn();
                     const wrapper = render(IDropdownItem, {
                         global: {

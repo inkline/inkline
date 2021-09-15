@@ -363,7 +363,7 @@ export default defineComponent({
             return this.isDisabled ? -1 : this.tabindex;
         },
         isClearable(): boolean {
-            return this.clearable && !this.isDisabled && !this.isReadonly && this.value !== '';
+            return this.value && this.clearable && !this.isDisabled && !this.isReadonly;
         },
         value(): any {
             if (this.schema) {

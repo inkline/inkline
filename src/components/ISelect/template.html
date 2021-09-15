@@ -1,21 +1,31 @@
 <div
     class="select-wrapper"
-    ref="wrapper"
     :class="wrapperClasses"
+    :id="name"
+    :name="name"
+    ref="wrapper"
+    role="combobox"
+    aria-haspopup="listbox"
+    :aria-owns="`${name}-options`"
+    :aria-expanded="visible ? 'true' : 'false'"
     v-click-outside="onClickOutside"
     @keyup.esc="onEscape"
 >
     <i-input
         v-model="inputValue"
         ref="trigger"
+        autocomplete="off"
+        aria-autocomplete="both"
+        :aria-controls="`${name}-options`"
         :disabled="isDisabled"
         :readonly="isReadonly"
         :tabindex="tabIndex"
         :plaintext="!autocomplete"
         :placeholder="inputPlaceholder"
-        :clearable="value && clearable"
+        :clearable="isClearable"
         :color="color"
         :size="size"
+        :name="`${name}-input`"
         @click="onClick"
         @focus="onFocus"
         @blur="onBlur"
@@ -37,8 +47,19 @@
         </template>
     </i-input>
 
-    <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
-        <div class="select" ref="popup" :class="popupClasses" v-show="visible">
+    <transition
+        name="zoom-in-top-transition"
+        @after-leave="destroyPopper"
+    >
+        <div
+            class="select"
+            :class="popupClasses"
+            :id="`${name}-options`"
+            role="listbox"
+            ref="popup"
+            :aria-hidden="visible ? 'false' : 'true'"
+            v-show="visible"
+        >
             <span data-popper-arrow v-if="arrow" />
             <div class="select-header" v-if="$slots.header">
                 <slot name="header" />

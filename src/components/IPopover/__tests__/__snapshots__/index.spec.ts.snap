@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components IPopover should render correctly 1`] = `
-<div class="popover-wrapper -primary -md" id="popover">
+<div class="popover-wrapper -primary -md">
   <div class="popover-trigger" aria-describedby="popover-popup" aria-disabled="false" aria-expanded="false"><button></button></div>
   <transition-stub>
     <div class="popover" role="tooltip" aria-live="polite" id="popover-popup" aria-hidden="true" style="display: none;"><span data-popper-arrow=""></span>
