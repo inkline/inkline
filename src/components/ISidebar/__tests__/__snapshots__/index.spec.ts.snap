@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components ISidebar should render correctly 1`] = `
+<transition-stub>
+  <aside role="complementary" class="sidebar-wrapper -collapse-md -light -md -collapse-absolute -placement-left" aria-label="Sidebar">
+    <transition-stub>
+      <div class="sidebar">
+        <div class="sidebar-content">
+          <nav class="nav -light -md" role="menubar">
+            <div class="nav-item" role="menuitem" tag="div" tabindex="1" disabled="false" aria-disabled="false" aria-pressed="false">Item 1</div>
+            <div class="nav-item" role="menuitem" tag="div" tabindex="1" disabled="false" aria-disabled="false" aria-pressed="false">Item 2</div>
+            <div class="nav-item" role="menuitem" tag="div" tabindex="1" disabled="false" aria-disabled="false" aria-pressed="false">Item 3</div>
+          </nav>
+        </div>
+      </div>
+    </transition-stub>
+    <transition-stub>
+      <div class="sidebar-overlay" style="display: none;"></div>
+    </transition-stub>
+  </aside>
+</transition-stub>
+`;

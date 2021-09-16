@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/vue';
-import {IDropdown, ISelect} from '@inkline/inkline/components';
+import { ISelect } from '@inkline/inkline/components';
 import { createMockInstance } from '@inkline/inkline/__mocks__/createMockInstance';
 import { keymap } from '@inkline/inkline/constants';
 

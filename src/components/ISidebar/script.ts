@@ -22,6 +22,15 @@ export default defineComponent({
     ],
     props: {
         /**
+         * @description The aria-label of the sidebar
+         * @type String
+         * @default Sidebar
+         */
+        ariaLabel: {
+            type: String,
+            default: 'Sidebar'
+        },
+        /**
          * @description Determines if the sidebar should close when clicking a sidebar item
          * @type Boolean
          * @default true

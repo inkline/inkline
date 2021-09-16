@@ -20,7 +20,9 @@ describe('Components', () => {
                 '<i-navbar-brand />',
                 `<i-navbar-collapsible>
                     <i-nav color="light" size="md">
-                        <i-nav-item />
+                        <i-nav-item>Item 1</i-nav-item>
+                        <i-nav-item>Item 2</i-nav-item>
+                        <i-nav-item>Item 3</i-nav-item>
                     </i-nav>
                 </i-navbar-collapsible>`
             ]

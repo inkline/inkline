@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ISelectOption } from '@inkline/inkline/components';
-import {createMockInstance} from "@inkline/inkline/__mocks__/createMockInstance";
+import { createMockInstance } from '@inkline/inkline/__mocks__/createMockInstance';
 
 describe('Components', () => {
     describe('ISelectOption', () => {
@@ -90,15 +90,20 @@ describe('Components', () => {
                     expect(onInput).toHaveBeenCalled();
                 });
 
-                it('should not call select onInput if not inside select', async () => {
+                it('should not call select onInput if disabled', async () => {
                     const onInput = jest.fn();
                     const wrapper = render(ISelectOption, {
                         global: {
                             provide: {
-                                select: {}
+                                select: {
+                                    onInput
+                                }
                             }
                         },
-                        props
+                        props: {
+                            ...props,
+                            disabled: true
+                        }
                     });
                     const item = await wrapper.getByRole('option');
                     await fireEvent.click(item);
