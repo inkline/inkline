@@ -15,8 +15,7 @@ export const _off = () => {
         return () => {};
     }
 
-    // @ts-ignore
-    if (window.document.removeEventListener) {
+    if ((window as any).document.removeEventListener) {
         return removeEventListenerBinding;
     } else {
         return detachEventBinding;

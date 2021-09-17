@@ -1,7 +1,7 @@
 import { Directive } from 'vue';
 import { on, isVisible } from '@inkline/inkline/helpers';
 
-const onClickOutside = (element: HTMLElement, binding: any) => (e: { target: HTMLElement }) => {
+export const onClickOutside = (element: HTMLElement, binding: any) => (e: { target: HTMLElement }) => {
     if (!isVisible(element) || !e.target) {
         return;
     }
@@ -21,7 +21,7 @@ const onClickOutside = (element: HTMLElement, binding: any) => (e: { target: HTM
  * ```
  */
 
-const ClickOutsideDirective: Directive = {
+export const ClickOutsideDirective: Directive = {
     beforeMount(element: HTMLElement, binding: any) {
         if (typeof window !== 'undefined') {
             on(window.document as any, 'mouseup', onClickOutside(element, binding));

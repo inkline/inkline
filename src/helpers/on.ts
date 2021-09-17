@@ -15,8 +15,7 @@ export const _on = () => {
         return () => {};
     }
 
-    // @ts-ignore
-    if (window.document.addEventListener) {
+    if ((window as any).document.addEventListener) {
         return addEventListenerBinding;
     } else {
         return attachEventBinding;

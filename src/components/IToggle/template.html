@@ -9,7 +9,8 @@
         :aria-disabled="isDisabled"
         :aria-readonly="isReadonly"
         :name="name"
-        @change="onChange">
+        @change="onChange"
+    >
     <label
         class="toggle-label"
         :aria-checked="checked"
@@ -17,7 +18,9 @@
         :aria-readonly="isReadonly"
         :tabindex="tabIndex"
         @click="clickInputRef"
-        @keydown.space.stop.prevent="clickInputRef">
+        @blur="onBlur"
+        @keydown.space.stop.prevent="clickInputRef"
+    >
         <slot />
     </label>
 </div>

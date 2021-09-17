@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components ITooltip should render correctly 1`] = `
+<div class="tooltip-wrapper -primary -md" id="tooltip">
+  <div class="tooltip-trigger" aria-describedby="tooltip-popup" aria-disabled="false" aria-expanded="false"><button></button></div>
+  <transition-stub>
+    <div class="tooltip" role="tooltip" aria-live="polite" id="tooltip-popup" aria-hidden="true" style="display: none;"><span data-popper-arrow=""></span>Body</div>
+  </transition-stub>
+</div>
+`;

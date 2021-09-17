@@ -13,7 +13,6 @@ export function focusAttempt (element: HTMLElement): boolean {
 
     try {
         element.focus();
-
     // eslint-disable-next-line
     } catch (e) {}
 

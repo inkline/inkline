@@ -5,9 +5,8 @@ export function getStyleProperty (element: HTMLElement, property: string): any {
         return (element as any).currentStyle[property];
     }
 
-    if ((window as any).getComputedStyle.getPropertyValue) {
-        return window.getComputedStyle(element, null).getPropertyValue(property);
-    } else {
-        return window.getComputedStyle(element)[property as any];
-    }
+    const computedStyle = window.getComputedStyle(element, null);
+    return computedStyle.getPropertyValue
+        ? computedStyle.getPropertyValue(property)
+        : computedStyle[property as any];
 }

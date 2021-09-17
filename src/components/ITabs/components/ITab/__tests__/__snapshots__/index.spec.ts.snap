@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components ITab should render correctly 1`] = `
+<div class="tab" role="tabpanel" name="tab" aria-hidden="true" aria-labelledby="tab-heading-tab" style="display: none;">
+  <div class="tab-body"></div>
+</div>
+`;

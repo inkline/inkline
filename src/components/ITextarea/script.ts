@@ -9,25 +9,25 @@ import IInput from '@inkline/inkline/components/IInput/index.vue';
 /**
  * @name prefix
  * @kind slot
- * @description Slot for the input prefix content
+ * @description Slot for the textarea prefix content
  */
 
 /**
  * @name suffix
  * @kind slot
- * @description Slot for the input suffix content
+ * @description Slot for the textarea suffix content
  */
 
 /**
  * @name prepend
  * @kind slot
- * @description Slot for the input prepend content
+ * @description Slot for the textarea prepend content
  */
 
 /**
  * @name append
  * @kind slot
- * @description Slot for the input append content
+ * @description Slot for the textarea append content
  */
 
 /**
@@ -44,7 +44,7 @@ export default defineComponent({
     extends: IInput,
     props: {
         /**
-         * @description The color variant of the input
+         * @description The color variant of the textarea
          * @type light | dark
          * @default light
          */
@@ -53,7 +53,7 @@ export default defineComponent({
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description Display the input as clearable
+         * @description Display the textarea as clearable
          * @type Boolean
          * @default false
          */
@@ -62,7 +62,7 @@ export default defineComponent({
             default: false
         },
         /**
-         * @description The disabled state of the input
+         * @description The disabled state of the textarea
          * @type Boolean
          * @default false
          */
@@ -71,7 +71,7 @@ export default defineComponent({
             default: false
         },
         /**
-         * @description The id of the internal input element
+         * @description The id of the internal textarea element
          * @type String
          * @default
          */
@@ -89,18 +89,18 @@ export default defineComponent({
             default: ''
         },
         /**
-         * @description The unique identifier of the input
+         * @description The unique identifier of the textarea
          * @type String
          * @default uid()
          */
         name: {
             type: [String, Number],
             default(): string {
-                return uid('input');
+                return uid('textarea');
             }
         },
         /**
-         * @description The readonly state of the input
+         * @description The readonly state of the textarea
          * @type Boolean
          * @default false
          */
@@ -109,7 +109,7 @@ export default defineComponent({
             default: false
         },
         /**
-         * @description The size variant of the input
+         * @description The size variant of the textarea
          * @type sm | md | lg
          * @default md
          */
@@ -119,7 +119,7 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description The tabindex of the input
+         * @description The tabindex of the textarea
          * @type Number | String
          * @default 1
          */

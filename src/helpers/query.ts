@@ -4,6 +4,8 @@
  * Find component by component instance name.
  * Mainly used for searching first matching child in component slots.
  *
+ * @TODO Requires Vue 3 update
+ *
  * @param items
  * @param name
  * @param maxDepth
@@ -38,6 +40,8 @@ export function querySelector(items: any[], name: string, maxDepth = 3, currentD
 /**
  * Find components by component instance name.
  * Mainly used for filtering and searching children in component slots.
+ *
+ * @TODO Requires Vue 3 update
  *
  * @param items
  * @param name

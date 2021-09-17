@@ -47,7 +47,7 @@ export { default as ISelect } from '@inkline/inkline/components/ISelect/index.vu
 export * from '@inkline/inkline/components/ISelect/components';
 export { default as ISidebar } from '@inkline/inkline/components/ISidebar/index.vue';
 export { default as ITable } from '@inkline/inkline/components/ITable/index.vue';
-export { default as Tabs } from '@inkline/inkline/components/ITabs/index.vue';
+export { default as ITabs } from '@inkline/inkline/components/ITabs/index.vue';
 export * from '@inkline/inkline/components/ITabs/components';
 export { default as IToggle } from '@inkline/inkline/components/IToggle/index.vue';
 export { default as ITooltip } from '@inkline/inkline/components/ITooltip/index.vue';
