@@ -32,9 +32,9 @@ export const OverlayController = {
         OverlayController.stack.splice(OverlayController.stack.indexOf(name), 1);
     },
     getTopOverlay(): any {
-        const topOverlay = OverlayController.stack.slice(-1)[0] || {};
+        const topOverlayName: string = OverlayController.stack.slice(-1)[0] || '';
 
-        return OverlayController.instances[(topOverlay as any).name];
+        return OverlayController.instances[topOverlayName];
     },
     onPressEscape() {
         const topOverlay = OverlayController.getTopOverlay();
