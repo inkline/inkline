@@ -53,7 +53,7 @@ export const colorModeLocalStorageKey = 'inkline-color-mode';
 export const handleColorMode = (colorMode: string) => {
     let color;
     if (colorMode === 'system') {
-        color = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        color = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     } else {
         color = colorMode;
     }
@@ -125,7 +125,7 @@ export const Inkline: Plugin = {
          */
 
         if (typeof window !== 'undefined') {
-            extendedOptions.colorMode = window.localStorage.getItem(colorModeLocalStorageKey) || extendedOptions.colorMode;
+            extendedOptions.colorMode = localStorage.getItem(colorModeLocalStorageKey) || extendedOptions.colorMode;
         }
 
         /**
@@ -150,12 +150,10 @@ export const Inkline: Plugin = {
              * Add color mode on change handler
              */
 
-            watch(() => app.config.globalProperties.$inkline.options.colorMode, (colorMode) => {
-                handleColorMode(colorMode);
+            watch(() => prototype.options.colorMode, (colorMode) => {
+                handleColorMode(colorMode as string);
 
-                if (typeof window !== 'undefined') {
-                    window.localStorage.setItem(colorModeLocalStorageKey, colorMode);
-                }
+                localStorage.setItem(colorModeLocalStorageKey, colorMode as string);
             });
 
             /**
@@ -163,14 +161,14 @@ export const Inkline: Plugin = {
              */
 
             const onDarkModeMediaQueryChange = (e: MediaQueryListEvent) => {
-                app.config.globalProperties.$inkline.options.prefersColorScheme = e.matches ? 'dark' : 'light';
+                prototype.options.prefersColorScheme = e.matches ? 'dark' : 'light';
 
-                if (app.config.globalProperties.$inkline.options.colorMode === 'system') {
-                    handleColorMode(app.config.globalProperties.$inkline.options.colorMode);
+                if (prototype.options.colorMode === 'system') {
+                    handleColorMode(prototype.options.colorMode);
                 }
             };
 
-            const darkModeMediaQuery: MediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+            const darkModeMediaQuery: MediaQueryList = matchMedia('(prefers-color-scheme: dark)');
             if (darkModeMediaQuery.addEventListener) {
                 darkModeMediaQuery.addEventListener('change', onDarkModeMediaQueryChange);
             } else {
