@@ -13,7 +13,10 @@ interface MockInstanceOptions {
  * @param options
  */
 export const createMockInstance = (component: any, { props = {}, computed = {}, methods = {}, mocks = {} }: MockInstanceOptions) => {
-    const instance: any = {};
+    const instance: any = {
+        $emit: jest.fn(),
+        $el: document.createElement('div')
+    };
 
     if (component.props) {
         Object.entries(component.props).forEach(([key, prop]) => {
@@ -27,7 +30,7 @@ export const createMockInstance = (component: any, { props = {}, computed = {}, 
 
     if (component.methods) {
         Object.entries(component.methods).forEach(([key, fn]) => {
-            instance[key] = methods[key] || fn;
+            instance[key] = jest.fn().mockImplementation(methods[key] || fn);
         });
     }
 
@@ -48,6 +51,10 @@ export const createMockInstance = (component: any, { props = {}, computed = {}, 
     Object.entries(mocks).forEach(([key, mock]) => {
         instance[key] = mock;
     });
+
+    if (component.mounted) {
+        component.mounted.call(instance);
+    }
 
     return instance;
 };

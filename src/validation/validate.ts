@@ -17,7 +17,7 @@ export function validateFormInput(schema: any, path = '') {
             ? { name: rawValidator }
             : rawValidator;
 
-        const valid = validators[validator.name](schema.value || '', validator);
+        const valid = validators[validator.name](schema.value, validator);
         if (!valid) {
             const { name, message, ...params } = validator;
             const i18nParams = {

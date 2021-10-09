@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import { getStyleProperty } from '@inkline/inkline/helpers';
 
 export default defineComponent({
-    name: 'ITransitionExpand',
+    name: 'IExpandTransition',
     methods: {
         onEnter(element: HTMLElement) {
             const width = getStyleProperty(element, 'width');

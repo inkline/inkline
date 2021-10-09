@@ -24,6 +24,8 @@
                     <slot name="header" />
                     <button
                         class="close"
+                        aria-hidden="true"
+                        :aria-label="closeAriaLabel"
                         @click="hide"
                         v-if="showClose"
                     >

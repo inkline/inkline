@@ -50,6 +50,15 @@ export default defineComponent({
             default: true
         },
         /**
+         * @description The aria-label attribute of the close button
+         * @type String
+         * @default Close
+         */
+        closeAriaLabel: {
+            type: String,
+            default: 'Close'
+        },
+        /**
          * @description The color variant of the modal
          * @type primary | success | light | dark | info | success | warning | danger
          * @default light

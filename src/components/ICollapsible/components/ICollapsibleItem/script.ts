@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
 import { uid } from '@inkline/inkline/helpers';
-import IExpandTransition from '@inkline/inkline/transitions/IExpandTransition/index.vue';
+import { IExpandTransition } from '@inkline/inkline/transitions';
 import { Classes } from '@inkline/inkline/types';
 
 /**

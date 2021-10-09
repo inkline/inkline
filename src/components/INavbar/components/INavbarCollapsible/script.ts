@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import IExpandTransition from '@inkline/inkline/transitions/IExpandTransition/index.vue';
+import { IExpandTransition } from '@inkline/inkline/transitions';
 
 /**
  * @name default

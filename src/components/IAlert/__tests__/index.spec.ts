@@ -40,6 +40,21 @@ describe('Components', () => {
             });
         });
 
+        describe('watch', () => {
+            describe('modelValue', () => {
+                it('should set dismissed', () => {
+                    const wrapper = {
+                        dismissed: false,
+                        fn: (IAlert as any).watch.modelValue
+                    };
+
+                    wrapper.fn(false);
+
+                    expect(wrapper.dismissed).toEqual(true);
+                });
+            });
+        });
+
         describe('methods', () => {
             describe('dismiss()', () => {
                 it('should hide the alert when clicking the dismiss button', async () => {

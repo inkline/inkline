@@ -7,7 +7,7 @@ import { i18n } from '@inkline/inkline/i18n';
  * @param path
  * @param params
  */
-export function translate(path: string, params: { [key: string]: any }): string {
+export function translate(path: string, params: { [key: string]: any } = {}): string {
     const valueByPath = getValueByPath(i18n.messages[i18n.locale], path);
     const string = isFunction(valueByPath) ? valueByPath(params) : valueByPath || path;
 
