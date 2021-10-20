@@ -25,11 +25,13 @@ export default defineComponent({
             return (this as any).form;
         },
         schema(): any {
+            const parentSchema = (this as any).parent.schema || {};
+
             if ((this as any).name !== '') {
-                return getValueByPath((this as any).parent.schema || {}, `${(this as any).name}`);
+                return getValueByPath(parentSchema, `${(this as any).name}`);
             }
 
-            return (this as any).parent.schema || {};
+            return parentSchema;
         }
     }
 });

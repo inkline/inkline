@@ -4,6 +4,6 @@
  *
  * @param baseId
  */
-export function uid (baseId: string): string {
+export function uid (baseId?: string): string {
     return `${baseId ? `${baseId}-` : ''}${Math.random().toString(36).substr(2, 9)}`;
 }

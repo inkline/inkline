@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mixins CollapsibleMixin should render correctly 1`] = `<div class="-collapse-md"><span>false</span><button>Set open</button><button>Toggle open</button></div>`;

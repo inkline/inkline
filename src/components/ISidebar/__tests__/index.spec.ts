@@ -122,6 +122,7 @@ describe('Components', () => {
                         },
                         props: {
                             ...props,
+                            collapseOnItemClick: true,
                             modelValue: true
                         },
                         slots

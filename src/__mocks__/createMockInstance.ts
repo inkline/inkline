@@ -1,8 +1,12 @@
 interface MockInstanceOptions {
+    data?: Record<string, any>;
     props?: Record<string, any>;
     computed?: Record<string, any>;
     methods?: Record<string, any>;
+    inject?: Record<string, any>;
     mocks?: Record<string, any>;
+    $el?: HTMLElement;
+    $refs?: Record<string, HTMLElement>;
 }
 
 /**
@@ -12,10 +16,11 @@ interface MockInstanceOptions {
  * @param component
  * @param options
  */
-export const createMockInstance = (component: any, { props = {}, computed = {}, methods = {}, mocks = {} }: MockInstanceOptions) => {
+export const createMockInstance = (component: any, { inject = {}, data = {}, props = {}, computed = {}, methods = {}, mocks = {}, $el = document.createElement('div'), $refs = {} }: MockInstanceOptions = {}) => {
     const instance: any = {
         $emit: jest.fn(),
-        $el: document.createElement('div')
+        $el,
+        $refs,
     };
 
     if (component.props) {
@@ -36,7 +41,13 @@ export const createMockInstance = (component: any, { props = {}, computed = {}, 
 
     if (component.data) {
         Object.entries(component.data.call(instance)).forEach(([key, value]) => {
-            instance[key] = value;
+            instance[key] = data[key] || value;
+        });
+    }
+
+    if (component.inject) {
+        Object.entries(component.inject).forEach(([key, value]) => {
+            instance[key] = inject[key] || (value as any)?.default();
         });
     }
 
@@ -51,6 +62,10 @@ export const createMockInstance = (component: any, { props = {}, computed = {}, 
     Object.entries(mocks).forEach(([key, mock]) => {
         instance[key] = mock;
     });
+
+    if (component.created) {
+        component.created.call(instance);
+    }
 
     if (component.mounted) {
         component.mounted.call(instance);

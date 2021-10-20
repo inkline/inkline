@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mixins PopupControlsMixin should render correctly 1`] = `
+<div>
+  <div class="trigger"><button>Trigger</button></div>
+  <div role="tooltip" style="display: none;">
+    <div>Content</div>
+  </div>
+</div>
+`;

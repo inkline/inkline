@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Plugin, reactive, watch } from 'vue';
 import { addClass, removeClass } from '@inkline/inkline/helpers';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
@@ -6,16 +7,20 @@ import { InklineIcons } from '@inkline/icons';
 import * as inklineIconsPack from '@inkline/icons/packs/inkline';
 
 export interface PrototypeConfig {
-    colorMode?: 'system' | 'light' | 'dark';
-    locale?: string;
-    validateOn?: string[];
-    color?: string;
-    size?: string;
-    componentOptions?: any;
-    components?: any;
-    icons?: any;
+    colorMode: 'system' | 'light' | 'dark' | string;
+    locale: string;
+    validateOn: string[];
+    routerComponent: string;
+    color: string;
+    size: string;
+    componentOptions: any;
 
     [key: string]: any;
+}
+
+export interface PluginConfig extends PrototypeConfig {
+    components: any;
+    icons: any;
 }
 
 export interface Prototype {
@@ -27,20 +32,6 @@ export interface Prototype {
 export interface InklineGlobals {
     prototype?: Prototype
 }
-
-/**
- * Default configuration options
- */
-export const defaultOptions: PrototypeConfig = {
-    components: {},
-    icons: {},
-    colorMode: 'system',
-    locale: 'en',
-    validateOn: ['input', 'blur'],
-    color: '',
-    size: '',
-    componentOptions: {}
-};
 
 /**
  * Color mode localStorage key
@@ -63,9 +54,24 @@ export const handleColorMode = (colorMode: string) => {
 };
 
 /**
+ * Default configuration options
+ */
+export const defaultOptions: PluginConfig = {
+    components: {},
+    icons: {},
+    colorMode: 'system',
+    locale: 'en',
+    validateOn: ['input', 'blur'],
+    color: '',
+    size: '',
+    routerComponent: 'router-link',
+    componentOptions: {}
+};
+
+/**
  * Create inkline prototype
  */
-export function createPrototype(options: PrototypeConfig): Prototype {
+export function createPrototype({ icons, components, ...options }: PrototypeConfig): Prototype {
     return {
         form(schema) {
             return initializeForm(schema);
@@ -73,15 +79,8 @@ export function createPrototype(options: PrototypeConfig): Prototype {
         setLocale(locale) {
             setLocale(locale);
         },
-        options: reactive({
-            colorMode: options.colorMode,
-            locale: options.locale,
-            validateOn: options.validateOn,
-            color: options.color,
-            size: options.size,
-            componentOptions: options.componentOptions
-        })
-    };
+        options: reactive(options)
+    } as Prototype;
 }
 
 /**
@@ -95,8 +94,8 @@ export const inklineGlobals: InklineGlobals = {
  * Inkline Vue.js plugin
  */
 export const Inkline: Plugin = {
-    install(app, options = {}) {
-        const extendedOptions = {
+    install(app, options: Partial<PrototypeConfig> = {}) {
+        const extendedOptions: PluginConfig = {
             ...defaultOptions,
             ...options,
         };

@@ -34,6 +34,11 @@ export default defineComponent({
     mixins: [
         CollapsibleMixin
     ],
+    provide(): { navbar: any } {
+        return {
+            navbar: this
+        };
+    },
     props: {
         /**
          * @description Determines if the navbar should close when clicking a navbar item

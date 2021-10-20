@@ -20,6 +20,11 @@ export default defineComponent({
     mixins: [
         CollapsibleMixin
     ],
+    provide(): { sidebar: any } {
+        return {
+            sidebar: this
+        };
+    },
     props: {
         /**
          * @description The aria-label of the sidebar

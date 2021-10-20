@@ -9,5 +9,9 @@ describe('Helpers', () => {
         it('should return a different string every call', () => {
             expect(uid('any')).not.toEqual(uid('any'));
         });
+
+        it('should work without a base id', () => {
+            expect(uid()[0]).not.toEqual('-');
+        });
     });
 });

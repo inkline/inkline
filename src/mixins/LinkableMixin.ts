@@ -7,17 +7,15 @@ export default defineComponent({
             default: 'a'
         }
     },
-    data() {
-        return {
-            routerComponent: this.$nuxt ? 'nuxt-link' : 'router-link'
-        };
-    },
     computed: {
         isTag(): string {
             return this.$attrs.to ? this.routerComponent : this.$attrs.href ? 'a' : this.tag;
         },
         isComponent(): boolean {
             return this.isTag === this.routerComponent;
+        },
+        routerComponent(): string {
+            return this.$inkline.options.routerComponent;
         }
     }
 });

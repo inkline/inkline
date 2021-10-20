@@ -4,11 +4,6 @@ import { breakpoints } from '@inkline/inkline/constants';
 import { Classes } from '@inkline/inkline/types';
 
 export default defineComponent({
-    provide(): { navbar: any } {
-        return {
-            navbar: this
-        };
-    },
     props: {
         collapse: {
             type: [String, Boolean],

@@ -54,6 +54,7 @@ describe('Plugin', () => {
                 validateOn: ['blur'],
                 color: 'light',
                 size: 'md',
+                routerComponent: 'router-link',
                 componentOptions: {}
             };
             const prototype = createPrototype(options);

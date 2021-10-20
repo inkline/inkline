@@ -46,6 +46,58 @@ describe('Components', () => {
                     expect(wrapper.container.firstChild).toHaveAttribute('id', expect.stringContaining('select'));
                 });
             });
+
+            describe('options', () => {
+                it('should render correctly without options', () => {
+                    const wrapper = render(ISelect, {
+                        props: {
+                            name: 'select',
+                            color: 'primary',
+                            size: 'md',
+                        }
+                    });
+
+                    expect(wrapper.html()).toMatchSnapshot();
+                });
+            });
+        });
+
+        describe('watch', () => {
+            describe('value', () => {
+                it('should set inputValue using computeLabel', () => {
+                    const wrapper = createMockInstance(ISelect, { props });
+                    const value = 'example';
+
+                    wrapper.watchValue = (ISelect as any).watch.value;
+                    wrapper.watchValue(value);
+
+                    expect(wrapper.computeLabel).toHaveBeenCalledWith(value);
+                });
+            });
+
+            describe('options', () => {
+                it('should call createPopper if visible', () => {
+                    const wrapper = createMockInstance(ISelect, { props });
+
+                    wrapper.visible = true;
+                    wrapper.createPopper = jest.fn();
+                    wrapper.watchOptions = (ISelect as any).watch.options;
+                    wrapper.watchOptions();
+
+                    expect(wrapper.createPopper).toHaveBeenCalled();
+                });
+
+                it('should not call createPopper if not visible', () => {
+                    const wrapper = createMockInstance(ISelect, { props });
+
+                    wrapper.visible = false;
+                    wrapper.createPopper = jest.fn();
+                    wrapper.watchOptions = (ISelect as any).watch.options;
+                    wrapper.watchOptions();
+
+                    expect(wrapper.createPopper).not.toHaveBeenCalled();
+                });
+            });
         });
 
         describe('computed', () => {
@@ -690,6 +742,69 @@ describe('Components', () => {
                     });
 
                     expect(wrapper.computeLabel(option)).toEqual(option.name);
+                });
+            });
+
+            describe('onScroll()', () => {
+                it('should not emit if total is not set', async () => {
+                    const wrapper = createMockInstance(ISelect, {
+                        props: {
+                            ...props,
+                            total: undefined
+                        }
+                    });
+
+                    wrapper.onScroll();
+
+                    expect(wrapper.$emit).not.toHaveBeenCalledWith('pagination');
+                });
+
+                it('should emit pagination event', async () => {
+                    const body = document.createElement('div');
+                    body.scrollTop = 100;
+                    body.style.height = '500px';
+
+                    const options = document.createElement('div');
+                    options.style.height = '300px';
+
+                    const wrapper = createMockInstance(ISelect, {
+                        props: {
+                            ...props,
+                            total: 100
+                        },
+                        $refs: {
+                            body,
+                            options
+                        }
+                    });
+
+                    wrapper.onScroll();
+
+                    expect(wrapper.$emit).toHaveBeenCalledWith('pagination');
+                });
+            });
+
+            describe('onWindowResize()', () => {
+                it('should call onScroll', async () => {
+                    const wrapper = createMockInstance(ISelect, {
+                        props,
+                    });
+
+                    wrapper.onWindowResize();
+
+                    expect(wrapper.onScroll).toHaveBeenCalled();
+                });
+            });
+
+            describe('onEscape()', () => {
+                it('should call hide', async () => {
+                    const wrapper = createMockInstance(ISelect, {
+                        props,
+                    });
+
+                    wrapper.onEscape();
+
+                    expect(wrapper.hide).toHaveBeenCalled();
                 });
             });
         });

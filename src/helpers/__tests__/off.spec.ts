@@ -14,6 +14,19 @@ describe('Helpers', () => {
             };
         });
 
+        it('should be void function if window is not defined', () => {
+            windowSpy.mockImplementation(() => undefined);
+
+            const offFn = _off();
+
+            const spy = jest.spyOn(element, 'removeEventListener');
+            const fn = () => {};
+
+            offFn(element, 'eventName', fn);
+
+            expect(spy).not.toHaveBeenCalled();
+        });
+
         it('should be a function calling removeEventListener on element', () => {
             const spy = jest.spyOn(element, 'removeEventListener');
             const fn = () => {};

@@ -143,10 +143,10 @@ export default defineComponent({
         'update:modelValue'
     ],
     watch: {
-        value: {
+        modelValue: {
             immediate: true,
             handler (value: string) {
-                let newValue = value === undefined ? value : value.toString()
+                let newValue = (value || '').toString()
                     .replace(/^[^0-9-]/, '')
                     .replace(/^(-)[^0-9]/, '$1')
                     .replace(new RegExp(`^(-?[0-9]+)[^0-9${this.precision > 0 ? '.' : ''}]`), '$1');
@@ -167,10 +167,10 @@ export default defineComponent({
     },
     methods: {
         decrease() {
-            this.$emit('update:modelValue', this.formatPrecision((Number(this.value) - this.step).toString()));
+            this.$emit('update:modelValue', this.formatPrecision((Number(this.modelValue) - this.step).toString()));
         },
         increase() {
-            this.$emit('update:modelValue', this.formatPrecision((Number(this.value) + this.step).toString()));
+            this.$emit('update:modelValue', this.formatPrecision((Number(this.modelValue) + this.step).toString()));
         },
         formatPrecision (value: string) {
             const parts = value.split('.');
@@ -183,7 +183,7 @@ export default defineComponent({
             return this.precision > 0 ? `${parts[0]}.${decimals}` : parts[0];
         },
         onBlurFormatPrecision (event: InputElementEvent) {
-            this.$emit('update:modelValue', this.formatPrecision(Number(this.value).toString()));
+            this.$emit('update:modelValue', this.formatPrecision(Number(this.modelValue).toString()));
 
             (this.parent as any).onBlur?.(this.name, event);
         },

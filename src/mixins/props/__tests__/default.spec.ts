@@ -15,6 +15,7 @@ describe('mixins', () => {
             const componentName = 'IButton';
             const propertyName = 'size';
             const propertyValue = 'md';
+            const propertyValueOption = 'lg';
 
             it('should return a function', () => {
                 expect(defaultPropValue(componentName, propertyName, propertyValue)).toEqual(expect.any(Function));
@@ -25,6 +26,33 @@ describe('mixins', () => {
 
                 const defaultValue = defaultPropValue(componentName, propertyName, propertyValue)();
                 expect(defaultValue).toEqual(propertyValue);
+            });
+
+            it('should return property value if inkline prototype options.propertyName', () => {
+                inklineGlobals.prototype = {
+                    options: {
+                        [propertyName]: propertyValueOption,
+                        componentOptions: {},
+                    }
+                } as any;
+
+                const defaultValue = defaultPropValue(componentName, propertyName, propertyValue)();
+                expect(defaultValue).toEqual(propertyValueOption);
+            });
+
+            it('should return property value if inkline prototype options.componentOptions.propertyName', () => {
+                inklineGlobals.prototype = {
+                    options: {
+                        componentOptions: {
+                            [componentName]: {
+                                [propertyName]: propertyValueOption
+                            }
+                        }
+                    }
+                } as any;
+
+                const defaultValue = defaultPropValue(componentName, propertyName, propertyValue)();
+                expect(defaultValue).toEqual(propertyValueOption);
             });
         });
     });

@@ -1,6 +1,5 @@
 export * from '@inkline/inkline/mixins/computed';
 export * from '@inkline/inkline/mixins/props';
-export { default as BroadcastDispatchMixin } from '@inkline/inkline/mixins/BroadcastDispatchMixin';
 export { default as CollapsibleMixin } from '@inkline/inkline/mixins/CollapsibleMixin';
 export { default as FormComponentMixin } from '@inkline/inkline/mixins/FormComponentMixin';
 export { default as LinkableMixin } from '@inkline/inkline/mixins/LinkableMixin';

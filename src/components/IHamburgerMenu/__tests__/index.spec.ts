@@ -1,5 +1,6 @@
-import { render } from '@testing-library/vue';
+import {fireEvent, render} from '@testing-library/vue';
 import { IHamburgerMenu } from '@inkline/inkline/components';
+import {markSearchString} from "@inkline/inkline/helpers";
 
 describe('Components', () => {
     describe('IHamburgerMenu', () => {
@@ -33,6 +34,23 @@ describe('Components', () => {
                         `-${animation}`,
                         '-active'
                     );
+                });
+            });
+        });
+
+        describe('methods', () => {
+            describe('onClick()', () => {
+                it('should emit update:modelValue with toggled value', async () => {
+                    const wrapper = render(IHamburgerMenu, {
+                        props: {
+                            modelValue: true,
+                            ...props
+                        }
+                    });
+
+                    await fireEvent.click(wrapper.container.firstChild as Element);
+
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([false])
                 });
             });
         });
