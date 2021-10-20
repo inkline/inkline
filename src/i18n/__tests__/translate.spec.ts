@@ -1,4 +1,4 @@
-import {i18n, setLocale, translate} from '@inkline/inkline/i18n';
+import { i18n, setLocale, translate } from '@inkline/inkline/i18n';
 
 describe('i18n', () => {
     describe('translate()', () => {

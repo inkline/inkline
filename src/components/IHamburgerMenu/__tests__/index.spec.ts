@@ -1,6 +1,5 @@
-import {fireEvent, render} from '@testing-library/vue';
+import { fireEvent, render } from '@testing-library/vue';
 import { IHamburgerMenu } from '@inkline/inkline/components';
-import {markSearchString} from "@inkline/inkline/helpers";
 
 describe('Components', () => {
     describe('IHamburgerMenu', () => {
@@ -50,7 +49,7 @@ describe('Components', () => {
 
                     await fireEvent.click(wrapper.container.firstChild as Element);
 
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([false])
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([false]);
                 });
             });
         });

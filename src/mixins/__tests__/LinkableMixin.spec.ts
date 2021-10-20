@@ -1,6 +1,6 @@
 import { LinkableMixin } from '@inkline/inkline/mixins';
 import { render } from '@testing-library/vue';
-import {$inkline} from "@inkline/inkline/__mocks__/globalProperties";
+import { $inkline } from '@inkline/inkline/__mocks__/globalProperties';
 
 describe('mixins', () => {
     describe('LinkableMixin', () => {

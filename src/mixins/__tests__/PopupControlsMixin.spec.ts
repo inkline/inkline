@@ -1,5 +1,5 @@
 import { PopupControlsMixin } from '@inkline/inkline/mixins';
-import {fireEvent, render} from '@testing-library/vue';
+import { fireEvent, render } from '@testing-library/vue';
 
 describe('mixins', () => {
     describe('PopupControlsMixin', () => {

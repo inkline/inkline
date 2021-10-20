@@ -1,5 +1,5 @@
-import {initialize} from "@inkline/inkline/validation";
-import {defaultFieldValidationValues, defaultValidationValues} from "@inkline/inkline/constants";
+import { initialize } from '@inkline/inkline/validation';
+import { defaultFieldValidationValues, defaultValidationValues } from '@inkline/inkline/constants';
 
 describe('validation', () => {
     describe('initialize()', () => {

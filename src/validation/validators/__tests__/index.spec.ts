@@ -1,10 +1,10 @@
-import {registerValidator, unregisterValidator, validators} from "@inkline/inkline/validation";
+import { registerValidator, unregisterValidator, validators } from '@inkline/inkline/validation';
 
 describe('Validators', () => {
     describe('registerValidator()', () => {
         it('should register a new validator', () => {
             const name = 'newValidator';
-            const validator = (value: string, options: any) => value === 'inkline';
+            const validator = (value: string) => value === 'inkline';
 
             registerValidator(name, validator);
 
@@ -15,7 +15,7 @@ describe('Validators', () => {
     describe('unregisterValidator()', () => {
         it('should unregister a validator', () => {
             const name = 'newValidator';
-            const validator = (value: string, options: any) => value === 'inkline';
+            const validator = (value: string) => value === 'inkline';
 
             registerValidator(name, validator);
             unregisterValidator(name);

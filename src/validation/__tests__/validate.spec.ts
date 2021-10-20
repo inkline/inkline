@@ -1,4 +1,4 @@
-import {validateFormGroup, validateFormInput} from '@inkline/inkline/validation';
+import { validateFormGroup, validateFormInput } from '@inkline/inkline/validation';
 
 describe('validation', () => {
     describe('validateFormInput()', () => {
