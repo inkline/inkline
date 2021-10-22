@@ -4,7 +4,7 @@ description: Build basic layouts using Inkline's built-in layout components.
 ---
 
 <script setup>
-import * as examples from './examples';
+import * as examples from '../examples';
 </script>
 
 # Layout
