@@ -174,22 +174,22 @@
                     Form Validation
                     <ul>
                         <li>
-                            <router-link :to="{ name: 'docs-forms-form-validation' }">
+                            <router-link :to="{ name: 'docs-forms-validation' }">
                                 Overview
                             </router-link>
                         </li>
                         <li>
-                            <router-link :to="{ name: 'docs-forms-form-validation-schema' }">
+                            <router-link :to="{ name: 'docs-forms-validation-schema' }">
                                 Schema
                             </router-link>
                         </li>
                         <li>
-                            <router-link :to="{ name: 'docs-forms-form-validation-validators' }">
+                            <router-link :to="{ name: 'docs-forms-validation-validators' }">
                                 Validators
                             </router-link>
                         </li>
                         <li>
-                            <router-link :to="{ name: 'docs-forms-form-validation-methods' }">
+                            <router-link :to="{ name: 'docs-forms-validation-methods' }">
                                 Methods
                             </router-link>
                         </li>
