@@ -84,9 +84,9 @@ npm install @inkline/inkline@next
 ~~~
 
 ~~~js
-import '@inkline/inkline/src/inkline.scss';
-import Inkline from '@inkline/inkline';
 import { createApp } from 'vue'
+import '@inkline/inkline/inkline.scss';
+import Inkline from '@inkline/inkline/inkline';
 import App from './App.vue'
 
 const app = createApp(App);
