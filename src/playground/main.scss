@@ -2,6 +2,10 @@ $assets-path: '../assets';
 
 @import '../inkline';
 
+#content {
+    max-width: 672px;
+}
+
 //:root {
 //    --spacing: 2rem;
 //    --padding-top: 1rem;
