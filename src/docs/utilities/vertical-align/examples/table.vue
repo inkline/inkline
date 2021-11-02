@@ -1,1 +1,0 @@
-<template src="./table.html" />
