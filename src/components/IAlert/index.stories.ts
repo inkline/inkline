@@ -12,12 +12,7 @@ export default {
     component: IAlert,
     title: 'Components/Alert',
     argTypes: {
-        ...colorArgType([
-            'info',
-            'success',
-            'warning',
-            'danger'
-        ]),
+        ...colorArgType(),
         ...sizeArgType()
     }
 };
@@ -25,13 +20,15 @@ export default {
 const Template = (args: any) => ({
     setup: () => ({ args }),
     template: `<i-alert v-bind="args">
-      Heads up! This alert needs your attention.
+        Alert
     </i-alert>`,
 });
 
 export const Component = Template.bind({});
+
 export const ColorVariants = () => IAlertColorVariantsExample;
-export const SizeVariants = () => IAlertSizeVariantsExample;
 export const Dismissible = () => IAlertDismissibleExample;
 export const Content = () => IAlertContentExample;
 export const Icon = () => IAlertIconExample;
+export const SizeVariants = () => IAlertSizeVariantsExample;
+            
