@@ -1,1 +1,0 @@
-<template src="./inline.html" />
