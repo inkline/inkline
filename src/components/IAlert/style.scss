@@ -15,7 +15,6 @@
     flex: 1 1 auto;
     min-width: 0;
     word-wrap: break-word;
-    background-clip: border-box;
     border-style: var(----border-style);
     border-width: var(----border-width);
     border-color: var(----border-color);
@@ -23,6 +22,7 @@
     font-size: var(----font-size);
     box-shadow: var(----box-shadow);
     background: var(----background);
+    background-clip: border-box;
     color: var(----color);
     transition-property: background-color, color, border-color;
     transition-duration: var(--transition-duration);
