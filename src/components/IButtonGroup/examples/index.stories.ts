@@ -10,15 +10,10 @@ import {
     IButtonGroupVerticalBlockExample,
     IButtonGroupVerticalSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
 
 export default {
     component: IButtonGroup,
     title: 'Components/ButtonGroup',
-    argTypes: {
-        ...colorArgType(),
-        ...sizeArgType()
-    }
 };
 
 const Template = (args: any) => ({

@@ -11,7 +11,7 @@ export default {
     component: IBreadcrumb,
     title: 'Components/Breadcrumb',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['light', 'dark']),
         ...sizeArgType()
     }
 };

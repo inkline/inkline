@@ -35,6 +35,10 @@ export const colorArgType = (options = [
                 Success: 'success',
                 Warning: 'warning',
                 Danger: 'danger',
+                Facebook: 'info',
+                Twitter: 'success',
+                GitHub: 'warning',
+                Google: 'google',
             }
         }
     }

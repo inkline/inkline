@@ -1,3 +1,121 @@
-#root > * {
-    margin: 0.5rem;
+@import "../src/css/variables";
+@import "../src/css/mixins";
+
+#root {
+    > * {
+        margin: 0.5rem;
+    }
+
+    > .card {
+        max-width: 360px;
+    }
+
+    > .layout {
+        border: 1px solid color('gray-50');
+        padding: spacing();
+        border-radius: var(--border-radius);
+
+        .layout,
+        .layout-content,
+        .layout-header,
+        .layout-footer,
+        .layout-aside {
+            padding: spacing();
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid color('gray-50');
+        }
+
+        .layout-header {
+            margin-bottom: spacing('1/2');
+        }
+
+        .layout-footer {
+            margin-top: spacing('1/2');
+        }
+
+        .layout-aside {
+            width: 30%;
+            flex-basis: 30%;
+
+            + .layout {
+                margin-left: spacing();
+            }
+        }
+
+        .layout {
+            + .layout-aside {
+                margin-left: spacing();
+            }
+        }
+
+        .layout-content,
+        .layout-aside {
+            min-height: 300px;
+        }
+
+        .layout-content,
+        .layout-aside-children {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    > .container {
+        max-width: 100%;
+        background: var(--color-gray-05);
+        border-radius: var(--border-radius);
+        padding: var(--spacing);
+
+        .row {
+            background: var(--color-gray-10);
+            border-radius: var(--border-radius);
+
+            .column {
+                background: var(--color-gray-15);
+                text-align: center;
+            }
+        }
+    }
+
+    &.-nested-example {
+        .container > .row > .column {
+            &::after {
+                display: none;
+            }
+
+            &:first-child {
+                border-right: 1px solid color('white');
+            }
+
+            border-radius: border-radius('lg');
+            padding: spacing() 0;
+            background: color('primary-20')
+        }
+    }
+
+    &.-vertical-alignment-example {
+        .container > .row > .column {
+            &:first-of-type {
+                &::after {
+                    padding: 3rem 0.5rem;
+                }
+            }
+        }
+    }
+
+    &.-sidebar {
+        > .body {
+            > .layout {
+                height: 400px;
+            }
+        }
+    }
+
+    &.-modal {
+        .modal-wrapper {
+            margin: 0;
+        }
+    }
 }

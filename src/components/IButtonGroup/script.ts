@@ -1,5 +1,4 @@
 import { defineComponent } from 'vue';
-import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
 /**
@@ -55,22 +54,11 @@ export default defineComponent({
         disabled: {
             type: Boolean,
             default: false
-        },
-        /**
-         * @description The size variant of the button group
-         * @type sm | md | lg
-         * @default md
-         */
-        size: {
-            type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
         }
     },
     computed: {
         classes(): Classes {
             return {
-                [`-${this.size}`]: Boolean(this.size),
                 '-vertical': this.vertical,
                 '-block': this.block,
                 '-disabled': this.isDisabled,

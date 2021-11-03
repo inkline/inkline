@@ -27,4 +27,3 @@ export const Component = Template.bind({});
 export const ColorVariants = () => IBadgeColorVariantsExample;
 export const Heading = () => IBadgeHeadingExample;
 export const SizeVariants = () => IBadgeSizeVariantsExample;
-            
