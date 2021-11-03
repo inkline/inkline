@@ -20,19 +20,17 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IListGroupBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-list-group v-bind="args">
-        ListGroup
-    </i-list-group>`,
+    template: '<IListGroupBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IListGroupBasicExample;
+export const Basic = Template.bind({});
 export const Borderless = () => IListGroupBorderlessExample;
 export const Content = () => IListGroupContentExample;
 export const ColorVariants = () => IListGroupColorVariantsExample;
 export const SizeVariants = () => IListGroupSizeVariantsExample;
 export const StateActive = () => IListGroupStateActiveExample;
 export const StateDisabled = () => IListGroupStateDisabledExample;
-            

@@ -19,18 +19,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: { ITooltipBasicExample },
     setup: () => ({ args }),
-    template: `<i-tooltip v-bind="args">
-        Tooltip
-    </i-tooltip>`,
+    template: '<ITooltipBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => ITooltipBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => ITooltipColorVariantsExample;
 export const SizeVariants = () => ITooltipSizeVariantsExample;
 export const Freeform = () => ITooltipFreeformExample;
 export const Placement = () => ITooltipPlacementExample;
 export const Trigger = () => ITooltipTriggerExample;
-            

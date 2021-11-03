@@ -21,15 +21,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IRadioBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-radio v-bind="args">
-        Radio
-    </i-radio>`,
+    template: '<IRadioBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IRadioBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => IRadioColorVariantsExample;
 export const Disabled = () => IRadioDisabledExample;
 export const GroupDisabled = () => IRadioGroupDisabledExample;
@@ -37,4 +36,3 @@ export const GroupSizeVariants = () => IRadioGroupSizeVariantsExample;
 export const Native = () => IRadioNativeExample;
 export const Readonly = () => IRadioReadonlyExample;
 export const SizeVariants = () => IRadioSizeVariantsExample;
-            

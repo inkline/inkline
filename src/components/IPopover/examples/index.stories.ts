@@ -18,17 +18,15 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IPopoverBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-popover v-bind="args">
-        Popover
-    </i-popover>`,
+    template: '<IPopoverBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IPopoverBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => IPopoverColorVariantsExample;
 export const SizeVariants = () => IPopoverSizeVariantsExample;
 export const Placement = () => IPopoverPlacementExample;
 export const Trigger = () => IPopoverTriggerExample;
-            

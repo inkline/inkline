@@ -24,8 +24,7 @@ const Template = (args: any) => ({
     </i-alert>`,
 });
 
-export const Component = Template.bind({});
-
+export const Basic = Template.bind({});
 export const ColorVariants = () => IAlertColorVariantsExample;
 export const Dismissible = () => IAlertDismissibleExample;
 export const Content = () => IAlertContentExample;

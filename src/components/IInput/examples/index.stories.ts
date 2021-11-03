@@ -24,15 +24,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IInputBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-input v-bind="args">
-        Input
-    </i-input>`,
+    template: '<IInputBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IInputBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => IInputColorVariantsExample;
 export const Clearable = () => IInputClearableExample;
 export const Disabled = () => IInputDisabledExample;
@@ -43,4 +42,3 @@ export const PrependAppendButton = () => IInputPrependAppendButtonExample;
 export const PrependAppendDropdown = () => IInputPrependAppendDropdownExample;
 export const PrefixSuffix = () => IInputPrefixSuffixExample;
 export const Type = () => IInputTypeExample;
-            

@@ -16,21 +16,8 @@ export default {
     title: 'Components/Column'
 };
 
-const Template = (args: any) => ({
-    setup: () => ({ args }),
-    template: `<i-container>
-        <i-row>
-            <i-column v-bind="args">
-                Column
-            </i-column>
-        </i-row>
-    </i-container>`,
-});
-
-export const Component = Template.bind({});
-
-export const AutoWidth = () => IColumnAutoWidthExample;
 export const Basic = () => IColumnBasicExample;
+export const AutoWidth = () => IColumnAutoWidthExample;
 export const Nested = () => IColumnNestedExample;
 export const Offset = () => IColumnOffsetExample;
 export const OffsetReset = () => IColumnOffsetResetExample;

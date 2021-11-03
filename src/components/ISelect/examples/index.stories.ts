@@ -33,18 +33,17 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        ISelectBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-select v-bind="args">
-        Select
-    </i-select>`,
+    template: '<ISelectBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
+export const Basic = Template.bind({});
 export const Advanced = () => ISelectAdvancedExample;
 export const Autocomplete = () => ISelectAutocompleteExample;
 export const AutocompleteAsync = () => ISelectAutocompleteAsyncExample;
-export const Basic = () => ISelectBasicExample;
 export const ColorVariants = () => ISelectColorVariantsExample;
 export const Clearable = () => ISelectClearableExample;
 export const Disabled = () => ISelectDisabledExample;
@@ -61,4 +60,3 @@ export const RenderingRenderFunction = () => ISelectRenderingRenderFunctionExamp
 export const RenderingValueByPath = () => ISelectRenderingValueByPathExample;
 export const RenderingScopedSlot = () => ISelectRenderingScopedSlotExample;
 export const Type = () => ISelectTypeExample;
-            
