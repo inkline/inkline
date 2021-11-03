@@ -19,18 +19,16 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IPaginationBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-pagination v-bind="args">
-        Pagination
-    </i-pagination>`,
+    template: '<IPaginationBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IPaginationBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => IPaginationColorVariantsExample;
 export const Limit = () => IPaginationLimitExample;
 export const LimitResponsive = () => IPaginationLimitResponsiveExample;
 export const QuickLinks = () => IPaginationQuickLinksExample;
 export const SizeVariants = () => IPaginationSizeVariantsExample;
-            

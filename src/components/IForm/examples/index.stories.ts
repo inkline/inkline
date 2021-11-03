@@ -8,29 +8,28 @@ import {
     IFormSizeVariantsLgExample
 } from './index';
 import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { ref } from 'vue';
 
 export default {
     component: IForm,
     title: 'Components/Form',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['light', 'dark']),
         ...sizeArgType()
     }
 };
 
 const Template = (args: any) => ({
+    components: {
+        IFormBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-form v-bind="args">
-        Form
-    </i-form>`,
+    template: '<IFormBasicExample v-bind="args" />'
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IFormBasicExample;
+export const Basic = Template.bind({});
 export const Disabled = () => IFormDisabledExample;
 export const Readonly = () => IFormReadonlyExample;
 export const SizeVariantsSm = () => IFormSizeVariantsSmExample;
 export const SizeVariantsMd = () => IFormSizeVariantsMdExample;
 export const SizeVariantsLg = () => IFormSizeVariantsLgExample;
-            

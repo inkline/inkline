@@ -22,15 +22,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        ICardBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-card v-bind="args">
-        Some quick example text to build on the card title and make up the bulk of the card's content.
-    </i-card>`,
+    template: '<ICardBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => ICardBasicExample;
+export const Basic = Template.bind({});
 export const Body = () => ICardBodyExample;
 export const HeaderFooter = () => ICardHeaderFooterExample;
 export const ColorVariants = () => ICardColorVariantsExample;

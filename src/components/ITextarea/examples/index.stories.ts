@@ -23,15 +23,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        ITextareaBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-textarea v-bind="args">
-        Textarea
-    </i-textarea>`,
+    template: '<ITextareaBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => ITextareaBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => ITextareaColorVariantsExample;
 export const Clearable = () => ITextareaClearableExample;
 export const Disabled = () => ITextareaDisabledExample;
@@ -41,4 +40,3 @@ export const PrependAppendText = () => ITextareaPrependAppendTextExample;
 export const PrependAppendButton = () => ITextareaPrependAppendButtonExample;
 export const PrependAppendDropdown = () => ITextareaPrependAppendDropdownExample;
 export const PrefixSuffix = () => ITextareaPrefixSuffixExample;
-            

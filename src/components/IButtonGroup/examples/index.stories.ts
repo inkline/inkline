@@ -17,17 +17,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IButtonGroupBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-button-group v-bind="args">
-        <i-button>Left</i-button>
-        <i-button>Middle</i-button>
-        <i-button>Right</i-button>
-    </i-button-group>`,
+    template: '<IButtonGroupBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IButtonGroupBasicExample;
+export const Basic = Template.bind({});
 export const Block = () => IButtonGroupBlockExample;
 export const Disabled = () => IButtonGroupDisabledExample;
 export const Nested = () => IButtonGroupNestedExample;

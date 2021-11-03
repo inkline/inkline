@@ -16,15 +16,13 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IHamburgerMenuBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-hamburger-menu v-bind="args">
-        HamburgerMenu
-    </i-hamburger-menu>`,
+    template: '<IHamburgerMenuBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
+export const Basic = Template.bind({});
 export const Animation = () => IHamburgerMenuAnimationExample;
-export const Basic = () => IHamburgerMenuBasicExample;
 export const ColorVariants = () => IHamburgerMenuColorVariantsExample;
-            

@@ -19,12 +19,13 @@ export default {
 const Template = (args: any) => ({
     setup: () => ({ args }),
     template: `<i-row v-bind="args">
-        Row
+        <i-column>
+            Row
+        </i-column>
     </i-row>`,
 });
 
-export const Component = Template.bind({});
-
+export const Basic = Template.bind({});
 export const DistributionAround = () => IRowDistributionAroundExample;
 export const DistributionBetween = () => IRowDistributionBetweenExample;
 export const HorizontalAlignmentStart = () => IRowHorizontalAlignmentStartExample;

@@ -18,17 +18,15 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IToggleBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-toggle v-bind="args">
-        Toggle
-    </i-toggle>`,
+    template: '<IToggleBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IToggleBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => IToggleColorVariantsExample;
 export const Disabled = () => IToggleDisabledExample;
 export const Readonly = () => IToggleReadonlyExample;
 export const SizeVariants = () => IToggleSizeVariantsExample;
-            

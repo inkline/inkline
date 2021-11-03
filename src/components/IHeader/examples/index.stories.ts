@@ -18,17 +18,15 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IHeaderBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-header v-bind="args">
-        Header
-    </i-header>`,
+    template: '<iIHeaderBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IHeaderBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => IHeaderColorVariantsExample;
 export const Cover = () => IHeaderCoverExample;
 export const Fullscreen = () => IHeaderFullscreenExample;
 export const SizeVariants = () => IHeaderSizeVariantsExample;
-            

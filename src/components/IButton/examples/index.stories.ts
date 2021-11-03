@@ -46,8 +46,7 @@ const Template = (args: any) => ({
     </i-button>`,
 });
 
-export const Component = Template.bind({});
-
+export const Basic = Template.bind({});
 export const Block = () => IButtonBlockExample;
 export const Tag = () => IButtonTagExample;
 export const Type = () => IButtonTypeExample;

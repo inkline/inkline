@@ -19,18 +19,16 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        INavBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-nav v-bind="args">
-        Nav
-    </i-nav>`,
+    template: '<INavBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => INavBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => INavColorVariantsExample;
 export const Routing = () => INavRoutingExample;
 export const SizeVariants = () => INavSizeVariantsExample;
 export const StateActive = () => INavStateActiveExample;
 export const Vertical = () => INavVerticalExample;
-            
