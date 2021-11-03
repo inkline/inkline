@@ -22,7 +22,7 @@
 
     .form-group.-required > & {
         &::after {
-            color: var(--color-danger);
+            color: color('danger');
             content: ' *';
         }
     }

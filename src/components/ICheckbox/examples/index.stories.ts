@@ -18,7 +18,7 @@ export default {
     component: ICheckbox,
     title: 'Components/Checkbox',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['light', 'dark']),
         ...sizeArgType()
     }
 };
@@ -43,4 +43,3 @@ export const Indeterminate = () => ICheckboxIndeterminateExample;
 export const Native = () => ICheckboxNativeExample;
 export const Readonly = () => ICheckboxReadonlyExample;
 export const SizeVariants = () => ICheckboxSizeVariantsExample;
-            

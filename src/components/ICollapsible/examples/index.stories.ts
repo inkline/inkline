@@ -13,7 +13,7 @@ export default {
     component: ICollapsible,
     title: 'Components/Collapsible',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['light', 'dark']),
         ...sizeArgType()
     }
 };
@@ -21,7 +21,15 @@ export default {
 const Template = (args: any) => ({
     setup: () => ({ args }),
     template: `<i-collapsible v-bind="args">
-        Collapsible
+        <i-collapsible-item title="Item 1">
+            Item 1 content
+        </i-collapsible-item>
+        <i-collapsible-item title="Item 2">
+            Item 2 content
+        </i-collapsible-item>
+        <i-collapsible-item title="Item 3">
+            Item 3 content
+        </i-collapsible-item>
     </i-collapsible>`,
 });
 
@@ -33,4 +41,3 @@ export const ColorVariants = () => ICollapsibleColorVariantsExample;
 export const DefaultOpen = () => ICollapsibleDefaultOpenExample;
 export const Header = () => ICollapsibleHeaderExample;
 export const SizeVariants = () => ICollapsibleSizeVariantsExample;
-            

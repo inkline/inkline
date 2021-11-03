@@ -9,15 +9,10 @@ import {
     ILayoutLeftAsideWithContentHeaderFooter,
     ILayoutRightAsideWithContentHeaderFooter
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
 
 export default {
     component: ILayout,
-    title: 'Components/Layout',
-    argTypes: {
-        ...colorArgType(),
-        ...sizeArgType()
-    }
+    title: 'Components/Layout'
 };
 
 const Template = (args: any) => ({
@@ -37,4 +32,3 @@ export const ContentWithRightAsideHeaderFooter = () => ILayoutContentWithRightAs
 export const LeftAndRightAsidesWithContentHeaderFooter = () => ILayoutLeftAndRightAsidesWithContentHeaderFooter;
 export const LeftAsideWithContentHeaderFooter = () => ILayoutLeftAsideWithContentHeaderFooter;
 export const RightAsideWithContentHeaderFooter = () => ILayoutRightAsideWithContentHeaderFooter;
-            

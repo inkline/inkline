@@ -6,12 +6,12 @@ import './preview.scss';
 app.use(Inkline);
 
 export const parameters = {
-  actions: {
-      argTypesRegex: "^on[A-Z].*"
-  },
-  controls: {
-    matchers: {
-      date: /Date$/,
+    actions: {
+        argTypesRegex: "^on[A-Z].*"
     },
-  },
+    controls: {
+        matchers: {
+            date: /Date$/,
+        },
+    },
 }

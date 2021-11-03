@@ -21,7 +21,20 @@ export default {
     component: IButton,
     title: 'Components/Button',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType([
+            'primary',
+            'secondary',
+            'light',
+            'dark',
+            'info',
+            'success',
+            'warning',
+            'danger',
+            'facebook',
+            'google',
+            'twitter',
+            'github'
+        ]),
         ...sizeArgType()
     }
 };
@@ -49,4 +62,3 @@ export const SocialColorVariants = () => IButtonSocialColorVariantsExample;
 export const StateActive = () => IButtonStateActiveExample;
 export const StateDisabled = () => IButtonStateDisabledExample;
 export const StateLoading = () => IButtonStateLoadingExample;
-            
