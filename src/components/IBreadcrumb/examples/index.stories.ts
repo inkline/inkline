@@ -17,16 +17,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IBreadcrumbBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-breadcrumb v-bind="args">
-        <i-breadcrumb-item>Home</i-breadcrumb-item>
-        <i-breadcrumb-item active>Breadcrumbs</i-breadcrumb-item>
-    </i-breadcrumb>`,
+    template: '<IBreadcrumbBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IBreadcrumbBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => IBreadcrumbColorVariantsExample;
 export const SizeVariants = () => IBreadcrumbSizeVariantsExample;
 export const DynamicallyGenerated = () => IBreadcrumbDynamicallyGeneratedExample;

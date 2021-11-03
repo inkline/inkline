@@ -26,15 +26,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        INumberInputBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-number-input v-bind="args">
-        NumberInput
-    </i-number-input>`,
+    template: '<INumberInputBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => INumberInputBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => INumberInputColorVariantsExample;
 export const Clearable = () => INumberInputClearableExample;
 export const Disabled = () => INumberInputDisabledExample;
@@ -47,4 +46,3 @@ export const PrependAppendText = () => INumberInputPrependAppendTextExample;
 export const PrependAppendButton = () => INumberInputPrependAppendButtonExample;
 export const PrependAppendDropdown = () => INumberInputPrependAppendDropdownExample;
 export const PrefixSuffix = () => INumberInputPrefixSuffixExample;
-            

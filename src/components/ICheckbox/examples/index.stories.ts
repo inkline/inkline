@@ -24,15 +24,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        ICheckboxBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-checkbox v-bind="args">
-        Checkbox
-    </i-checkbox>`,
+    template: '<ICheckboxBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => ICheckboxBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => ICheckboxColorVariantsExample;
 export const Disabled = () => ICheckboxDisabledExample;
 export const Group = () => ICheckboxGroupExample;

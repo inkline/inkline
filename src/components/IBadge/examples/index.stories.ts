@@ -22,8 +22,7 @@ const Template = (args: any) => ({
     </i-badge>`,
 });
 
-export const Component = Template.bind({});
-
+export const Basic = Template.bind({});
 export const ColorVariants = () => IBadgeColorVariantsExample;
 export const Heading = () => IBadgeHeadingExample;
 export const SizeVariants = () => IBadgeSizeVariantsExample;

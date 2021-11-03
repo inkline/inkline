@@ -17,16 +17,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        ITabsBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-tabs v-bind="args">
-        Tabs
-    </i-tabs>`,
+    template: '<ITabsBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => ITabsBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => ITabsColorVariantsExample;
 export const SizeVariants = () => ITabsSizeVariantsExample;
 export const Stretch = () => ITabsStretchExample;
-            

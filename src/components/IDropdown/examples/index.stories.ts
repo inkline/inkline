@@ -17,21 +17,20 @@ export default {
     component: IDropdown,
     title: 'Components/Dropdown',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['light', 'dark']),
         ...sizeArgType()
     }
 };
 
 const Template = (args: any) => ({
+    components: {
+        IDropdownBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-dropdown v-bind="args">
-        Dropdown
-    </i-dropdown>`,
+    template: '<IDropdownBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IDropdownBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => IDropdownColorVariantsExample;
 export const HeaderFooter = () => IDropdownHeaderFooterExample;
 export const SizeVariants = () => IDropdownSizeVariantsExample;
@@ -41,4 +40,3 @@ export const Placement = () => IDropdownPlacementExample;
 export const Routing = () => IDropdownRoutingExample;
 export const StateActive = () => IDropdownStateActiveExample;
 export const Trigger = () => IDropdownTriggerExample;
-            

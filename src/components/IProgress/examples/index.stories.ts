@@ -19,18 +19,16 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IProgressBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-progress v-bind="args">
-        Progress
-    </i-progress>`,
+    template: '<IProgressBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IProgressBasicExample;
+export const Basic = Template.bind({});
 export const BarColorVariants = () => IProgressBarColorVariantsExample;
 export const ColorVariants = () => IProgressColorVariantsExample;
 export const SizeVariants = () => IProgressSizeVariantsExample;
 export const Stacked = () => IProgressStackedExample;
 export const Value = () => IProgressValueExample;
-            

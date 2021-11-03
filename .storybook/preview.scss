@@ -64,17 +64,39 @@
 
     > .container {
         max-width: 100%;
-        background: var(--color-gray-05);
-        border-radius: var(--border-radius);
-        padding: var(--spacing);
+        background: color('gray-05');
+        border: 1px solid color('gray-10');
+        border-radius: border-radius();
+        padding-top: spacing();
+        padding-bottom: spacing();
 
         .row {
-            background: var(--color-gray-10);
-            border-radius: var(--border-radius);
+            background: color('gray-10');
+            border: 1px solid color('gray-20');
+            border-radius: border-radius();
+            padding-top: spacing();
+            padding-bottom: spacing();
+
+            + .row {
+                margin-top: spacing();
+            }
 
             .column {
-                background: var(--color-gray-15);
-                text-align: center;
+                background: color('gray-20');
+                border: 1px solid color('gray-40');
+                border-radius: border-radius();
+                padding-top: spacing();
+                padding-bottom: spacing();
+
+                .row {
+                    background: color('gray-25');
+                    border: 1px solid color('gray-50');
+                }
+
+                .column {
+                    background: color('gray-30');
+                    border: 1px solid color('gray-60');
+                }
             }
         }
     }

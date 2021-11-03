@@ -19,18 +19,16 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        ITableBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-table v-bind="args">
-        Table
-    </i-table>`,
+    template: '<ITableBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => ITableBasicExample;
+export const Basic = Template.bind({});
 export const Bordered = () => ITableBorderedExample;
 export const ColorVariants = () => ITableColorVariantsExample;
 export const Hover = () => ITableHoverExample;
 export const Responsive = () => ITableResponsiveExample;
 export const Striped = () => ITableStripedExample;
-            

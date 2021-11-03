@@ -17,14 +17,10 @@ export default {
 
 const Template = (args: any) => ({
     setup: () => ({ args }),
-    template: `<i-icon v-bind="args">
-        Icon
-    </i-icon>`,
+    template: '<i-icon v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IIconBasicExample;
+export const Basic = Template.bind({});
+export const DefaultIcons = () => IIconBasicExample;
 export const ColorVariants = () => IIconColorVariantsExample;
 export const SizeVariants = () => IIconSizeVariantsExample;
-            

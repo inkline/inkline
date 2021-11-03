@@ -24,15 +24,14 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        INavbarBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-navbar v-bind="args">
-        Navbar
-    </i-navbar>`,
+    template: '<INavbarBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => INavbarBasicExample;
+export const Basic = Template.bind({});
 export const CollapseBreakpoint = () => INavbarCollapseBreakpointExample;
 export const CollapseTrue = () => INavbarCollapseTrueExample;
 export const CollapseFalse = () => INavbarCollapseFalseExample;
@@ -43,4 +42,3 @@ export const NavPlacement = () => INavbarNavPlacementExample;
 export const SizeVariants = () => INavbarSizeVariantsExample;
 export const Routing = () => INavbarRoutingExample;
 export const RoutingActive = () => INavbarRoutingActiveExample;
-            

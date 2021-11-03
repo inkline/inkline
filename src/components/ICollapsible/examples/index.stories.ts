@@ -19,24 +19,15 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        ICollapsibleBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-collapsible v-bind="args">
-        <i-collapsible-item title="Item 1">
-            Item 1 content
-        </i-collapsible-item>
-        <i-collapsible-item title="Item 2">
-            Item 2 content
-        </i-collapsible-item>
-        <i-collapsible-item title="Item 3">
-            Item 3 content
-        </i-collapsible-item>
-    </i-collapsible>`,
+    template: '<ICollapsibleBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
+export const Basic = Template.bind({});
 export const Accordion = () => ICollapsibleAccordionExample;
-export const Basic = () => ICollapsibleBasicExample;
 export const ColorVariants = () => ICollapsibleColorVariantsExample;
 export const DefaultOpen = () => ICollapsibleDefaultOpenExample;
 export const Header = () => ICollapsibleHeaderExample;

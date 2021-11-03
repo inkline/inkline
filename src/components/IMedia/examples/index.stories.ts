@@ -16,15 +16,13 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IMediaBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-media v-bind="args">
-        Media
-    </i-media>`,
+    template: '<IMediaBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
+export const Basic = Template.bind({});
 export const Alignment = () => IMediaAlignmentExample;
-export const Basic = () => IMediaBasicExample;
 export const Nesting = () => IMediaNestingExample;
-            

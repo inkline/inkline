@@ -15,6 +15,5 @@ const Template = (args: any) => ({
     </i-container>`,
 });
 
-export const Component = Template.bind({});
-
+export const Basic = Template.bind({});
 export const Fluid = () => IContainerFluidExample;

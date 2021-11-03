@@ -22,8 +22,7 @@ const Template = (args: any) => ({
     </i-layout>`,
 });
 
-export const Component = Template.bind({});
-
+export const Basic = Template.bind({});
 export const ContentHeader = () => ILayoutContentHeader;
 export const ContentHeaderFooter = () => ILayoutContentHeaderFooter;
 export const ContentWithLeftAsideHeaderFooter = () => ILayoutContentWithLeftAsideHeaderFooter;

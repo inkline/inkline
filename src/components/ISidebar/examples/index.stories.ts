@@ -25,14 +25,10 @@ export default {
 
 const Template = (args: any) => ({
     setup: () => ({ args }),
-    template: `<i-sidebar v-bind="args">
-        Sidebar
-    </i-sidebar>`,
+    template: '<ISidebarBasicExample v-bind="args" />'
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => ISidebarBasicExample;
+export const Basic = Template.bind({});
 export const CollapseBreakpoint = () => ISidebarCollapseBreakpointExample;
 export const CollapseTrue = () => ISidebarCollapseTrueExample;
 export const CollapseFalse = () => ISidebarCollapseFalseExample;
@@ -43,4 +39,3 @@ export const SizeVariants = () => ISidebarSizeVariantsExample;
 export const Placement = () => ISidebarPlacementExample;
 export const Routing = () => ISidebarRoutingExample;
 export const RoutingActive = () => ISidebarRoutingActiveExample;
-            

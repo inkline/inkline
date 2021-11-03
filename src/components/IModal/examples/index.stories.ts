@@ -17,14 +17,9 @@ export default {
 
 const Template = (args: any) => ({
     setup: () => ({ args }),
-    template: `<i-modal v-bind="args">
-        Modal
-    </i-modal>`,
+    template: '<IModalBasicExample v-bind="args" />',
 });
 
-export const Component = Template.bind({});
-
-export const Basic = () => IModalBasicExample;
+export const Basic = Template.bind({});
 export const ColorVariants = () => IModalColorVariantsExample;
 export const SizeVariants = () => IModalSizeVariantsExample;
-            
