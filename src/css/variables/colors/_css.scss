@@ -8,10 +8,10 @@
             $s: saturation($color-value);
             $l: lightness($color-value);
 
-            --color-#{$color-key}-h: #{$h};
-            --color-#{$color-key}-s: #{$s};
-            --color-#{$color-key}-l: #{$l};
-            --color-#{$color-key}: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), var(--color-#{$color-key}-l));
+            --color--#{$color-key}--h: #{$h};
+            --color--#{$color-key}--s: #{$s};
+            --color--#{$color-key}--l: #{$l};
+            --color--#{$color-key}: hsl(var(--color--#{$color-key}--h), var(--color--#{$color-key}--s), var(--color--#{$color-key}--l));
         }
     }
 
@@ -26,11 +26,11 @@
 
             @if map-get($colors, "#{$color-key}-#{$index-key}") {
                 @if $index < 50 {
-                    --color-#{$color-key}-#{$index-key}: hsl(var(--color-#{$color-key}-h), var(--color-#{$color-key}-s), calc(var(--color-#{$color-key}-l) * #{0.1 * $i} + #{ 100% - $i * 10% }));
+                    --color--#{$color-key}-#{$index-key}: hsl(var(--color--#{$color-key}--h), var(--color--#{$color-key}--s), calc(var(--color--#{$color-key}--l) * #{0.1 * $i} + #{ 100% - $i * 10% }));
                 } @else if $index == 50 {
-                    --color-#{$color-key}-#{$index-key}: var(--color-#{$color-key});
+                    --color--#{$color-key}-#{$index-key}: var(--color--#{$color-key});
                 } @else {
-                    --color-#{$color-key}-#{$index-key}: hsl(var(--color-#{$color-key}-h), calc(var(--color-#{$color-key}-s) * #{1 - 0.1 * ($i - 10)}), calc(var(--color-#{$color-key}-l) * #{1 - 0.1 * ($i - 10)}));
+                    --color--#{$color-key}-#{$index-key}: hsl(var(--color--#{$color-key}--h), calc(var(--color--#{$color-key}--s) * #{1 - 0.1 * ($i - 10)}), calc(var(--color--#{$color-key}--l) * #{1 - 0.1 * ($i - 10)}));
                 }
             }
         }

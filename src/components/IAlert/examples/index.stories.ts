@@ -12,7 +12,7 @@ export default {
     component: IAlert,
     title: 'Components/Alert',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['info', 'success', 'warning', 'danger']),
         ...sizeArgType()
     }
 };
@@ -31,4 +31,3 @@ export const Dismissible = () => IAlertDismissibleExample;
 export const Content = () => IAlertContentExample;
 export const Icon = () => IAlertIconExample;
 export const SizeVariants = () => IAlertSizeVariantsExample;
-            

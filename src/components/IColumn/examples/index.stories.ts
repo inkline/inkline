@@ -18,9 +18,13 @@ export default {
 
 const Template = (args: any) => ({
     setup: () => ({ args }),
-    template: `<i-column v-bind="args">
-        Column
-    </i-column>`,
+    template: `<i-container>
+        <i-row>
+            <i-column v-bind="args">
+                Column
+            </i-column>
+        </i-row>
+    </i-container>`,
 });
 
 export const Component = Template.bind({});

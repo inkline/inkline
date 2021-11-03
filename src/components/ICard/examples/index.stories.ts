@@ -15,13 +15,16 @@ export default {
     argTypes: {
         ...colorArgType(),
         ...sizeArgType()
+    },
+    parameters: {
+        layout: 'custom-card'
     }
 };
 
 const Template = (args: any) => ({
     setup: () => ({ args }),
     template: `<i-card v-bind="args">
-        Card
+        Some quick example text to build on the card title and make up the bulk of the card's content.
     </i-card>`,
 });
 
@@ -33,4 +36,3 @@ export const HeaderFooter = () => ICardHeaderFooterExample;
 export const ColorVariants = () => ICardColorVariantsExample;
 export const Image = () => ICardImageExample;
 export const SizeVariants = () => ICardSizeVariantsExample;
-            
