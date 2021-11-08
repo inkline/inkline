@@ -3,9 +3,7 @@ import { IButtonGroup } from '@inkline/inkline/components';
 
 describe('Components', () => {
     describe('IButtonGroup', () => {
-        const props = {
-            size: 'md'
-        };
+        const props = {};
 
         it('should be named correctly', () => {
             expect(IButtonGroup.name).toEqual('IButtonGroup');
@@ -30,7 +28,6 @@ describe('Components', () => {
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.size}`,
                         '-vertical',
                         '-block',
                         '-disabled'
