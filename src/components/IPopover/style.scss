@@ -68,21 +68,21 @@
 
     @include popup-arrow-color-variant-for-side('top', (
         'background': var(----footer--background),
-        'border-color': var(----body--border-color)
+        'border-color': var(----border-top-color)
     ));
 
     @include popup-arrow-color-variant-for-side('bottom', (
         'background': var(----header--background),
-        'border-color': var(----body--border-color)
+        'border-color': var(----border-bottom-color)
     ));
 
     @include popup-arrow-color-variant-for-side('left', (
         'background': var(----body--background),
-        'border-color': var(----body--border-color)
+        'border-color': var(----border-left-color)
     ));
 
     @include popup-arrow-color-variant-for-side('right', (
         'background': var(----body--background),
-        'border-color': var(----body--border-color)
+        'border-color': var(----border-right-color)
     ));
 }

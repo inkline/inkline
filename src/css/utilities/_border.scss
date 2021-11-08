@@ -16,7 +16,7 @@
     // Add border
     //
     ._border-#{$position} {
-        border-#{$position}-width: var(--border-width) !important;
+        border-#{$position}-width: var(--border-#{$position}-width) !important;
         border-#{$position}-style: solid !important;
         border-#{$position}-color: var(--border-color);
     }
@@ -49,39 +49,39 @@
 }
 
 ._border-top-radius {
-    border-top-left-radius: border-radius() !important;
-    border-top-right-radius: border-radius() !important;
+    border-top-left-radius: border-top-left-radius() !important;
+    border-top-right-radius: border-top-right-radius() !important;
 }
 
 ._border-right-radius {
-    border-top-right-radius: border-radius() !important;
-    border-bottom-right-radius: border-radius() !important;
+    border-top-right-radius: border-top-right-radius() !important;
+    border-bottom-right-radius: border-bottom-right-radius() !important;
 }
 
 ._border-bottom-radius {
-    border-bottom-right-radius: border-radius() !important;
-    border-bottom-left-radius: border-radius() !important;
+    border-bottom-right-radius: border-bottom-right-radius() !important;
+    border-bottom-left-radius: border-bottom-left-radius() !important;
 }
 
 ._border-left-radius {
-    border-top-left-radius: border-radius() !important;
-    border-bottom-left-radius: border-radius() !important;
+    border-top-left-radius: border-top-left-radius() !important;
+    border-bottom-left-radius: border-bottom-left-radius() !important;
 }
 
 ._border-top-left-radius {
-    border-top-left-radius: border-radius() !important;
+    border-top-left-radius: border-top-left-radius() !important;
 }
 
 ._border-top-right-radius {
-    border-top-right-radius: border-radius() !important;
-}
-
-._border-bottom-left-radius {
-    border-bottom-left-radius: border-radius() !important;
+    border-top-right-radius: border-top-right-radius() !important;
 }
 
 ._border-bottom-right-radius {
-    border-bottom-right-radius: border-radius() !important;
+    border-bottom-right-radius: border-bottom-right-radius() !important;
+}
+
+._border-bottom-left-radius {
+    border-bottom-left-radius: border-bottom-left-radius() !important;
 }
 
 ._border-radius\:circle {

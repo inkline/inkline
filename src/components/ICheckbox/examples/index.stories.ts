@@ -16,7 +16,7 @@ import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ICheckbox,
-    title: 'Components/Checkbox',
+    title: 'Forms/Checkbox',
     argTypes: {
         ...colorArgType(['light', 'dark']),
         ...sizeArgType()

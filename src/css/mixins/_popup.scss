@@ -158,10 +158,30 @@
     }
 }
 
-@mixin popup-arrow-color-variant($arrow: ('background': #ffffff, 'border-color': #bcbcbc)) {
-    @include popup-arrow-color-variant-for-side('top', $arrow);
-    @include popup-arrow-color-variant-for-side('bottom', $arrow);
-    @include popup-arrow-color-variant-for-side('left', $arrow);
-    @include popup-arrow-color-variant-for-side('right', $arrow);
+@mixin popup-arrow-color-variant($arrow: ('background': #ffffff, 'border-color': (
+    'top': #bcbcbc,
+    'right': #bcbcbc,
+    'bottom': #bcbcbc,
+    'left': #bcbcbc
+))) {
+    $background: map-get($arrow, 'background');
+    $border-color: map-get($arrow, 'border-color');
+
+    @include popup-arrow-color-variant-for-side('top', (
+        'background': $background,
+        'border-color': map-get($border-color, 'top')
+    ));
+    @include popup-arrow-color-variant-for-side('bottom', (
+        'background': $background,
+        'border-color': map-get($border-color, 'bottom')
+    ));
+    @include popup-arrow-color-variant-for-side('left', (
+        'background': $background,
+        'border-color': map-get($border-color, 'left')
+    ));
+    @include popup-arrow-color-variant-for-side('right', (
+        'background': $background,
+        'border-color': map-get($border-color, 'right')
+    ));
 }
 

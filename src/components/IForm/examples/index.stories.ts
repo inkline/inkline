@@ -11,7 +11,7 @@ import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IForm,
-    title: 'Components/Form',
+    title: 'Forms/Form',
     argTypes: {
         ...colorArgType(['light', 'dark']),
         ...sizeArgType()

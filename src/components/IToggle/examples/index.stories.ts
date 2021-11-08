@@ -10,7 +10,7 @@ import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IToggle,
-    title: 'Components/Toggle',
+    title: 'Forms/Toggle',
     argTypes: {
         ...colorArgType(['light', 'dark']),
         ...sizeArgType()

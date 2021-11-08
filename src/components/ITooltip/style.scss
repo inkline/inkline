@@ -33,6 +33,11 @@
         padding: var(----padding);
         box-shadow: var(----box-shadow);
 
-        @include popup-arrow-color-variant(('background': var(----background), 'border-color': var(----border-color)));
+        @include popup-arrow-color-variant(('background': var(----background), 'border-color': (
+            'top': var(----border-top-color),
+            'right': var(----border-right-color),
+            'bottom': var(----border-bottom-color),
+            'left': var(----border-left-color),
+        )));
     }
 }

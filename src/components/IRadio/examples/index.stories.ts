@@ -13,7 +13,7 @@ import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IRadio,
-    title: 'Components/Radio',
+    title: 'Forms/Radio',
     argTypes: {
         ...colorArgType(['light', 'dark']),
         ...sizeArgType()
