@@ -6,13 +6,13 @@ import {
     IToggleReadonlyExample,
     IToggleSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IToggle,
     title: 'Components/Toggle',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['light', 'dark']),
         ...sizeArgType()
     }
 };

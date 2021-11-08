@@ -12,7 +12,7 @@ import {
     ISidebarRoutingExample,
     ISidebarRoutingActiveExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ISidebar,
@@ -24,6 +24,9 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        ISidebarBasicExample
+    },
     setup: () => ({ args }),
     template: '<ISidebarBasicExample v-bind="args" />'
 });

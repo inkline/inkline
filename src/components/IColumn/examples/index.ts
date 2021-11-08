@@ -16,4 +16,6 @@ export { default as IColumnReorderingLastExample } from './reordering-last.vue';
 export { default as IColumnReorderingLastExampleHTML } from './reordering-last.html';
 export { default as IColumnResponsiveExample } from './responsive.vue';
 export { default as IColumnResponsiveExampleHTML } from './responsive.html';
+export { default as IColumnWidthExample } from './width.vue';
+export { default as IColumnWidthExampleHTML } from './width.html';
 

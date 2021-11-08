@@ -7,13 +7,13 @@ import {
     ITooltipPlacementExample,
     ITooltipTriggerExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ITooltip,
     title: 'Components/Tooltip',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['light', 'dark']),
         ...sizeArgType()
     }
 };

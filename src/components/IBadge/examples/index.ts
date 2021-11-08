@@ -1,3 +1,5 @@
+export { default as IBadgeBasicExample } from './basic.vue';
+export { default as IBadgeBasicExampleHTML } from './basic.html';
 export { default as IBadgeColorVariantsExample } from './color-variants.vue';
 export { default as IBadgeColorVariantsExampleHTML } from './color-variants.html';
 export { default as IBadgeHeadingExample } from './heading.vue';

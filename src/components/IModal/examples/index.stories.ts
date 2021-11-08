@@ -4,7 +4,7 @@ import {
     IModalColorVariantsExample,
     IModalSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IModal,
@@ -16,6 +16,9 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IModalBasicExample
+    },
     setup: () => ({ args }),
     template: '<IModalBasicExample v-bind="args" />',
 });

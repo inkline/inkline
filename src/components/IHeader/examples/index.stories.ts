@@ -6,13 +6,13 @@ import {
     IHeaderFullscreenExample,
     IHeaderSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IHeader,
     title: 'Components/Header',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['light', 'dark', 'primary']),
         ...sizeArgType()
     }
 };
@@ -22,7 +22,7 @@ const Template = (args: any) => ({
         IHeaderBasicExample
     },
     setup: () => ({ args }),
-    template: '<iIHeaderBasicExample v-bind="args" />',
+    template: '<IHeaderBasicExample v-bind="args" />',
 });
 
 export const Basic = Template.bind({});

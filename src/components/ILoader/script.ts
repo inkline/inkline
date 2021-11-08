@@ -15,7 +15,7 @@ export default defineComponent({
     props: {
         /**
          * @description The color variant of the loader
-         * @type primary | success | light | dark | info | success | warning | danger
+         * @type primary | light | dark
          * @default light
          */
         color: {

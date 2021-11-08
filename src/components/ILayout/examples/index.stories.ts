@@ -1,33 +1,28 @@
 import ILayout from '../index.vue';
 import {
-    ILayoutContentHeader,
-    ILayoutContentHeaderFooter,
-    ILayoutContentWithLeftAsideHeaderFooter,
-    ILayoutContentWithLeftAndRightAsidesHeaderFooter,
-    ILayoutContentWithRightAsideHeaderFooter,
-    ILayoutLeftAndRightAsidesWithContentHeaderFooter,
-    ILayoutLeftAsideWithContentHeaderFooter,
-    ILayoutRightAsideWithContentHeaderFooter
+    ILayoutBasicExample,
+    ILayoutContentHeaderExample,
+    ILayoutContentHeaderFooterExample,
+    ILayoutContentWithLeftAsideHeaderFooterExample,
+    ILayoutContentWithLeftAndRightAsidesHeaderFooterExample,
+    ILayoutContentWithRightAsideHeaderFooterExample,
+    ILayoutLeftAndRightAsidesWithContentHeaderFooterExample,
+    ILayoutLeftAsideWithContentHeaderFooterExample,
+    ILayoutRightAsideWithContentHeaderFooterExample
 } from './index';
+import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ILayout,
     title: 'Components/Layout'
 };
 
-const Template = (args: any) => ({
-    setup: () => ({ args }),
-    template: `<i-layout v-bind="args">
-        Layout
-    </i-layout>`,
-});
-
-export const Basic = Template.bind({});
-export const ContentHeader = () => ILayoutContentHeader;
-export const ContentHeaderFooter = () => ILayoutContentHeaderFooter;
-export const ContentWithLeftAsideHeaderFooter = () => ILayoutContentWithLeftAsideHeaderFooter;
-export const ContentWithLeftAndRightAsidesHeaderFooter = () => ILayoutContentWithLeftAndRightAsidesHeaderFooter;
-export const ContentWithRightAsideHeaderFooter = () => ILayoutContentWithRightAsideHeaderFooter;
-export const LeftAndRightAsidesWithContentHeaderFooter = () => ILayoutLeftAndRightAsidesWithContentHeaderFooter;
-export const LeftAsideWithContentHeaderFooter = () => ILayoutLeftAsideWithContentHeaderFooter;
-export const RightAsideWithContentHeaderFooter = () => ILayoutRightAsideWithContentHeaderFooter;
+export const Basic = createStory(ILayoutBasicExample);
+export const ContentHeader = createStory(ILayoutContentHeaderExample);
+export const ContentHeaderFooter = createStory(ILayoutContentHeaderFooterExample);
+export const ContentWithLeftAsideHeaderFooter = createStory(ILayoutContentWithLeftAsideHeaderFooterExample);
+export const ContentWithLeftAndRightAsidesHeaderFooter = createStory(ILayoutContentWithLeftAndRightAsidesHeaderFooterExample);
+export const ContentWithRightAsideHeaderFooter = createStory(ILayoutContentWithRightAsideHeaderFooterExample);
+export const LeftAndRightAsidesWithContentHeaderFooter = createStory(ILayoutLeftAndRightAsidesWithContentHeaderFooterExample);
+export const LeftAsideWithContentHeaderFooter = createStory(ILayoutLeftAsideWithContentHeaderFooterExample);
+export const RightAsideWithContentHeaderFooter = createStory(ILayoutRightAsideWithContentHeaderFooterExample);
