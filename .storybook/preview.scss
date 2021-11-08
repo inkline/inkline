@@ -2,6 +2,8 @@
 @import "../src/css/mixins";
 
 #root {
+    min-height: calc(100vh - 2rem);
+
     > * {
         margin: 0.5rem;
     }
@@ -10,7 +12,7 @@
         max-width: 360px;
     }
 
-    > .layout {
+    > .layout.storybook-example {
         border: 1px solid color('gray-50');
         padding: spacing();
         border-radius: var(--border-radius);
@@ -62,7 +64,7 @@
         }
     }
 
-    > .container {
+    > .container.storybook-example {
         max-width: 100%;
         background: color('gray-05');
         border: 1px solid color('gray-10');

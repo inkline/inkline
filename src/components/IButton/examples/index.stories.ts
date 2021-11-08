@@ -1,5 +1,6 @@
 import IButton from '../index.vue';
 import {
+    IButtonBasicExample,
     IButtonBlockExample,
     IButtonTagExample,
     IButtonTypeExample,
@@ -15,7 +16,7 @@ import {
     IButtonStateDisabledExample,
     IButtonStateLoadingExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IButton,
@@ -40,10 +41,11 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IButtonBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-button v-bind="args">
-        Button
-    </i-button>`,
+    template: '<IButtonBasicExample v-bind="args" />',
 });
 
 export const Basic = Template.bind({});

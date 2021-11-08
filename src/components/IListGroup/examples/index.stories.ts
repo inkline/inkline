@@ -8,13 +8,13 @@ import {
     IListGroupStateActiveExample,
     IListGroupStateDisabledExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IListGroup,
     title: 'Components/ListGroup',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['light', 'dark']),
         ...sizeArgType()
     }
 };

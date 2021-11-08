@@ -336,7 +336,7 @@ import { breakpointClass, capitalizeFirst } from '@inkline/inkline/helpers';
  * @default
  */
 
-const properties: { [key: string]: Prop<any> } = {};
+export const properties: { [key: string]: Prop<any> } = {};
 for (let breakpoint of breakpointKeys) {
     if (breakpoint !== '') {
         properties[breakpoint] = {

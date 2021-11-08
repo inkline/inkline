@@ -5,13 +5,13 @@ import {
     ILoaderSizeVariantsExample,
     ILoaderTextExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ILoader,
     title: 'Components/Loader',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['primary', 'light', 'dark']),
         ...sizeArgType()
     }
 };

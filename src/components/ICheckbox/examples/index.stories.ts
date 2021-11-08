@@ -12,7 +12,7 @@ import {
     ICheckboxReadonlyExample,
     ICheckboxSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ICheckbox,
