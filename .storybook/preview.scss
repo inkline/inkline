@@ -8,9 +8,94 @@
         margin: 0.5rem;
     }
 
+    ///
+    // Border Utilities
+    ///
+
+    > div[class^="_border"] {
+        height: 100px;
+        width: 100px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: transparent;
+    }
+
+    > div[class="_border"],
+    > div[class^="_border-"] {
+        border-color: color('gray-40');
+    }
+
+    > div[class="_border-top"] {
+        border-color: color('gray-20');
+        border-top-color: color('gray-40');
+    }
+
+    > div[class="_border-right"] {
+        border-color: color('gray-20');
+        border-right-color: color('gray-40');
+    }
+
+    > div[class="_border-bottom"] {
+        border-color: color('gray-20');
+        border-bottom-color: color('gray-40');
+    }
+
+    > div[class="_border-left"] {
+        border-color: color('gray-20');
+        border-left-color: color('gray-40');
+    }
+
+    ///
+    // Color Utilities
+    ///
+
+    > div[class^="_background"],
+    > div[class^="_color"] {
+        height: 80px;
+        width: 240px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: border-radius();
+    }
+
+    ///
+    // Flex Utilities
+    ///
+
+    > div[class*="_display:flex"],
+    > div[class*="_display:flex"] div {
+        padding: spacing('1/2');
+        background: color('gray-10');
+        border: 1px solid color('gray-30');
+    }
+
+    > div[class*="_align-content"],
+    > div[class*="_flex-direction-column"],
+    > div[class*="_align-items"] {
+        min-height: 180px;
+    }
+
+    > div[class*="_display:flex"] {
+        > div[class^="_align-self"] {
+            + div {
+                height: 180px;
+            }
+        }
+    }
+
+
+    ///
+    // Card
+    ///
+
     > .card {
         max-width: 360px;
     }
+
+    ///
+    // Layout
+    ///
 
     > .layout.storybook-example {
         border: 1px solid color('gray-50');
@@ -64,6 +149,10 @@
         }
     }
 
+    ///
+    // Container
+    ///
+
     > .container.storybook-example {
         max-width: 100%;
         background: color('gray-05');
@@ -100,46 +189,6 @@
                     border: 1px solid color('gray-60');
                 }
             }
-        }
-    }
-
-    &.-nested-example {
-        .container > .row > .column {
-            &::after {
-                display: none;
-            }
-
-            &:first-child {
-                border-right: 1px solid color('white');
-            }
-
-            border-radius: border-radius('lg');
-            padding: spacing() 0;
-            background: color('primary-20')
-        }
-    }
-
-    &.-vertical-alignment-example {
-        .container > .row > .column {
-            &:first-of-type {
-                &::after {
-                    padding: 3rem 0.5rem;
-                }
-            }
-        }
-    }
-
-    &.-sidebar {
-        > .body {
-            > .layout {
-                height: 400px;
-            }
-        }
-    }
-
-    &.-modal {
-        .modal-wrapper {
-            margin: 0;
         }
     }
 }

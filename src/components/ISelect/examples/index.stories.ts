@@ -25,7 +25,7 @@ import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ISelect,
-    title: 'Components/Select',
+    title: 'Forms/Select',
     argTypes: {
         ...colorArgType(['light', 'dark']),
         ...sizeArgType()

@@ -18,7 +18,7 @@ import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: INumberInput,
-    title: 'Components/NumberInput',
+    title: 'Forms/NumberInput',
     argTypes: {
         ...colorArgType(['light', 'dark']),
         ...sizeArgType()

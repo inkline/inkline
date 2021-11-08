@@ -15,7 +15,7 @@ import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ITextarea,
-    title: 'Components/Textarea',
+    title: 'Forms/Textarea',
     argTypes: {
         ...colorArgType(['light', 'dark']),
         ...sizeArgType()

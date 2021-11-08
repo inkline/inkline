@@ -1,0 +1,14 @@
+<i-form v-model="schema">
+    <i-form-group name="group">
+        <i-form-group v-for="(field, index) in schema.group">
+            <i-form-label>Input {{index}}</i-form-label>
+            <i-input :name="`${index}`" placeholder="Type something.." />
+            <i-form-error :for="`${index}`" />
+        </i-form-group>
+    </i-form-group>
+    <i-form-group>
+        <i-button @click="addField" type="button">Add</i-button>&nbsp;
+        <i-button @click="removeField" type="button">Remove First</i-button>&nbsp;
+        <i-button @click="replaceField" type="button">Replace First</i-button>
+    </i-form-group>
+</i-form>
