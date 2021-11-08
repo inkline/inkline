@@ -1,12 +1,13 @@
 import IAlert from '../index.vue';
 import {
+    IAlertBasicExample,
     IAlertColorVariantsExample,
     IAlertDismissibleExample,
     IAlertContentExample,
     IAlertIconExample,
     IAlertSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IAlert,
@@ -18,10 +19,11 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IAlertBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-alert v-bind="args">
-        Alert
-    </i-alert>`,
+    template: '<IAlertBasicExample v-bind="args" />',
 });
 
 export const Basic = Template.bind({});

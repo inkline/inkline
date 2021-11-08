@@ -23,8 +23,8 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The color variant of the header
-         * @type primary | light | dark
+         * @description The color variant of the tabs
+         * @type light | dark
          * @default light
          */
         color: {

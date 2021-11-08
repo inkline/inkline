@@ -1,3 +1,5 @@
+export { default as IAlertBasicExample } from './basic.vue';
+export { default as IAlertBasicExampleHTML } from './basic.html';
 export { default as IAlertColorVariantsExample } from './color-variants.vue';
 export { default as IAlertColorVariantsExampleHTML } from './color-variants.html';
 export { default as IAlertDismissibleExample } from './dismissible.vue';

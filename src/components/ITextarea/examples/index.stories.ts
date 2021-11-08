@@ -11,13 +11,13 @@ import {
     ITextareaPrependAppendDropdownExample,
     ITextareaPrefixSuffixExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ITextarea,
     title: 'Components/Textarea',
     argTypes: {
-        ...colorArgType(),
+        ...colorArgType(['light', 'dark']),
         ...sizeArgType()
     }
 };

@@ -7,7 +7,7 @@ import {
     IFormSizeVariantsMdExample,
     IFormSizeVariantsLgExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 import { ref } from 'vue';
 
 export default {

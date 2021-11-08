@@ -1,10 +1,11 @@
 import IBadge from '../index.vue';
 import {
+    IBadgeBasicExample,
     IBadgeColorVariantsExample,
     IBadgeHeadingExample,
     IBadgeSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IBadge,
@@ -16,10 +17,11 @@ export default {
 };
 
 const Template = (args: any) => ({
+    components: {
+        IBadgeBasicExample
+    },
     setup: () => ({ args }),
-    template: `<i-badge v-bind="args">
-        Badge
-    </i-badge>`,
+    template: '<IBadgeBasicExample v-bind="args" />',
 });
 
 export const Basic = Template.bind({});

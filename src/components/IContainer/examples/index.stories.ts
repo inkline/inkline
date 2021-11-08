@@ -1,19 +1,14 @@
 import IContainer from '../index.vue';
 import {
+    IContainerBasicExample,
     IContainerFluidExample
 } from './index';
+import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IContainer,
     title: 'Components/Container'
 };
 
-const Template = (args: any) => ({
-    setup: () => ({ args }),
-    template: `<i-container v-bind="args">
-        Container
-    </i-container>`,
-});
-
-export const Basic = Template.bind({});
-export const Fluid = () => IContainerFluidExample;
+export const Basic = createStory(IContainerBasicExample);
+export const Fluid = createStory(IContainerFluidExample);

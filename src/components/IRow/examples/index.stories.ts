@@ -1,5 +1,6 @@
 import IRow from '../index.vue';
 import {
+    IRowBasicExample,
     IRowDistributionAroundExample,
     IRowDistributionBetweenExample,
     IRowHorizontalAlignmentStartExample,
@@ -10,28 +11,20 @@ import {
     IRowVerticalAlignmentMiddleExample,
     IRowVerticalAlignmentBottomExample,
 } from './index';
+import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IRow,
     title: 'Components/Row'
 };
 
-const Template = (args: any) => ({
-    setup: () => ({ args }),
-    template: `<i-row v-bind="args">
-        <i-column>
-            Row
-        </i-column>
-    </i-row>`,
-});
-
-export const Basic = Template.bind({});
-export const DistributionAround = () => IRowDistributionAroundExample;
-export const DistributionBetween = () => IRowDistributionBetweenExample;
-export const HorizontalAlignmentStart = () => IRowHorizontalAlignmentStartExample;
-export const HorizontalAlignmentCenter = () => IRowHorizontalAlignmentCenterExample;
-export const HorizontalAlignmentEnd = () => IRowHorizontalAlignmentEndExample;
-export const ReorderingReverse = () => IRowReorderingReverseExample;
-export const VerticalAlignmentTop = () => IRowVerticalAlignmentTopExample;
-export const VerticalAlignmentMiddle = () => IRowVerticalAlignmentMiddleExample;
-export const VerticalAlignmentBottom = () => IRowVerticalAlignmentBottomExample;
+export const Basic = createStory(IRowBasicExample);
+export const DistributionAround = createStory(IRowDistributionAroundExample);
+export const DistributionBetween = createStory(IRowDistributionBetweenExample);
+export const HorizontalAlignmentStart = createStory(IRowHorizontalAlignmentStartExample);
+export const HorizontalAlignmentCenter = createStory(IRowHorizontalAlignmentCenterExample);
+export const HorizontalAlignmentEnd = createStory(IRowHorizontalAlignmentEndExample);
+export const ReorderingReverse = createStory(IRowReorderingReverseExample);
+export const VerticalAlignmentTop = createStory(IRowVerticalAlignmentTopExample);
+export const VerticalAlignmentMiddle = createStory(IRowVerticalAlignmentMiddleExample);
+export const VerticalAlignmentBottom = createStory(IRowVerticalAlignmentBottomExample);

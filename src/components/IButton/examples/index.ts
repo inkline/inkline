@@ -1,3 +1,5 @@
+export { default as IButtonBasicExample } from './basic.vue';
+export { default as IButtonBasicExampleHTML } from './basic.html';
 export { default as IButtonBlockExample } from './block.vue';
 export { default as IButtonBlockExampleHTML } from './block.html';
 export { default as IButtonTagExample } from './button-tag.vue';

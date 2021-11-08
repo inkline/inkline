@@ -1,3 +1,5 @@
+export { default as IRowBasicExample } from './basic.vue';
+export { default as IRowBasicExampleHTML } from './basic.html';
 export { default as IRowDistributionAroundExample } from './distribution-around.vue';
 export { default as IRowDistributionAroundExampleHTML } from './distribution-around.html';
 export { default as IRowDistributionBetweenExample } from './distribution-between.vue';

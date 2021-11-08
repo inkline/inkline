@@ -8,7 +8,7 @@
         </i-navbar>
     </i-layout-header>
     <i-layout vertical class="_padding-top:1/2">
-        <i-sidebar v-model="open">
+        <i-sidebar v-model="open" v-bind="$attrs">
             <i-nav vertical>
                 <i-nav-item :to="{ name: 'docs-components-sidebar' }">
                     Home
@@ -36,7 +36,7 @@
                 <i-row>
                     <i-column>
                         <h1>
-                            Sidebar
+                            Page with Sidebar
                         </h1>
                         <p>
                             Example content for a page with a sidebar, a layout typically seen in Documentation pages and Web Application dashboards.

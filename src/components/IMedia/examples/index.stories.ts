@@ -4,13 +4,12 @@ import {
     IMediaBasicExample,
     IMediaNestingExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__/argTypes';
+import { sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IMedia,
     title: 'Components/Media',
     argTypes: {
-        ...colorArgType(),
         ...sizeArgType()
     }
 };
