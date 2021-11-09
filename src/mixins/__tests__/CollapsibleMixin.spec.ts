@@ -27,14 +27,14 @@ describe('mixins', () => {
                         props: {
                             modelValue: true,
                             collapsible: true,
-                            collapse: true,
-                        },
+                            collapse: true
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         '-open',
                         '-collapsible',
-                        '-collapse-true',
+                        '-collapse-true'
                     );
                 });
             });

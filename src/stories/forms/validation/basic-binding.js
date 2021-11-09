@@ -3,7 +3,7 @@ export default {
         return {
             form: this.$inkline.form({
                 username: {},
-                password: {},
+                password: {}
             })
         };
     }

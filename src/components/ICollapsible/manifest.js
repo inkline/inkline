@@ -53,7 +53,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.collapsible',
+        selector: '.collapsible',
         defaults: {
             size: 'md',
             color: 'light'

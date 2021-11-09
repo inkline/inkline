@@ -30,7 +30,7 @@ describe('Components', () => {
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         '-active',
-                        '-disabled',
+                        '-disabled'
                     );
                 });
             });
@@ -67,7 +67,7 @@ describe('Components', () => {
                                 }
                             }
                         },
-                        props,
+                        props
                     });
 
                     await fireEvent.click(wrapper.container.firstChild as Element);

@@ -16,7 +16,7 @@ const componentName = 'IProgress';
 
 export default defineComponent({
     name: componentName,
-    provide() {
+    provide () {
         return {
             progress: this
         };
@@ -61,7 +61,7 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size)

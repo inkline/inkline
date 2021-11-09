@@ -28,7 +28,7 @@ const Template = (args: any) => ({
         IInputBasicExample
     },
     setup: () => ({ args }),
-    template: '<IInputBasicExample v-bind="args" />',
+    template: '<IInputBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

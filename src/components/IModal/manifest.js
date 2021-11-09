@@ -119,12 +119,12 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.modal-wrapper',
+        selector: '.modal-wrapper',
         defaults: {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the modal component',
@@ -629,7 +629,7 @@ module.exports = {
                 name: 'wrapper--background',
                 description: 'The overlay background of the modal component wrapper',
                 value: 'rgba(0, 0, 0, 0.75)'
-            },
+            }
         ]
     }
 };

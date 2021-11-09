@@ -9,7 +9,7 @@ describe('Helpers', () => {
                 tabIndex: 1,
                 disabled: false,
                 nodeName: 'A',
-                focus() {}
+                focus () {}
             };
         });
 

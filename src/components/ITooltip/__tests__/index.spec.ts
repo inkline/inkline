@@ -12,7 +12,7 @@ describe('Components', () => {
 
         const slots = {
             default: ['<button />'],
-            body: ['Body'],
+            body: ['Body']
         };
 
         it('should be named correctly', () => {
@@ -54,7 +54,7 @@ describe('Components', () => {
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         `-${props.color}`,
-                        `-${props.size}`,
+                        `-${props.size}`
                     );
                 });
             });

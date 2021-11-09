@@ -50,7 +50,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.card',
+        selector: '.card',
         defaults: {
             size: 'md',
             color: 'light'
@@ -520,7 +520,7 @@ module.exports = {
                 name: 'footer--padding',
                 description: 'The padding of the modal component footer',
                 value: ['var(----footer--padding-top)', 'var(----footer--padding-right)', 'var(----footer--padding-bottom)', 'var(----footer--padding-left)']
-            },
+            }
         ]
     }
 };

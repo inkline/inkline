@@ -26,7 +26,7 @@ const Template = (args: any) => ({
         ICardBasicExample
     },
     setup: () => ({ args }),
-    template: '<ICardBasicExample v-bind="args" />',
+    template: '<ICardBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

@@ -9,8 +9,8 @@ describe('Helpers', () => {
                 tabIndex: null,
                 disabled: false,
                 nodeName: 'A',
-                getAttribute() { return element.tabIndex; },
-                focus() {}
+                getAttribute () { return element.tabIndex; },
+                focus () {}
             } as any;
         });
 

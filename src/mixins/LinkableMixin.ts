@@ -8,13 +8,13 @@ export default defineComponent({
         }
     },
     computed: {
-        isTag(): string {
+        isTag (): string {
             return this.$attrs.to ? this.routerComponent : this.$attrs.href ? 'a' : this.tag;
         },
-        isComponent(): boolean {
+        isComponent (): boolean {
             return this.isTag === this.routerComponent;
         },
-        routerComponent(): string {
+        routerComponent (): string {
             return this.$inkline.options.routerComponent;
         }
     }

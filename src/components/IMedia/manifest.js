@@ -8,12 +8,12 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.media',
+        selector: '.media',
         defaults: {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'image--margin-right',
                 description: 'The margin right of the media component image',

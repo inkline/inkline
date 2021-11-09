@@ -11,23 +11,23 @@ export const offsetModifier = (offset: number) => ({
 export const arrowModifier = () => ({
     name: 'arrow',
     options: {
-        padding: 6, // padding from the edges of the popper
-    },
+        padding: 6 // padding from the edges of the popper
+    }
 });
 
 export const preventOverflowModifier = () => ({
     name: 'preventOverflow',
     options: {
-        padding: 8, // padding from the edges of the viewport
-    },
+        padding: 8 // padding from the edges of the viewport
+    }
 });
 
 export const computeStylesModifier = () => ({
     name: 'computeStyles',
     options: {
         gpuAcceleration: false,
-        adaptive: false, // true by default
-    },
+        adaptive: false // true by default
+    }
 });
 
 export const sameWidthModifier = () => ({
@@ -38,7 +38,7 @@ export const sameWidthModifier = () => ({
     fn: ({ state }: { state: any }) => {
         state.styles.popper.width = `${state.rects.reference.width}px`;
     },
-    effect({ state }: { state: any }) {
+    effect ({ state }: { state: any }) {
         state.elements.popper.style.width = `${state.elements.reference.offsetWidth}px`;
     }
 });
@@ -50,17 +50,16 @@ export const useBaseModifiers = ({ offset }: { offset: number }) => [
     computeStylesModifier()
 ];
 
-
 /**
  * @param {HTMLElement} [popupElement=$refs.overlay]
  * The HTML element used as overlay, or a configuration used to generate the overlay.
  * @param {String} [placement=auto]
  * Placement of the overlay, accepted values:
- *	- auto(-start, -end)
- *	- top(-start, -end)
- *	- right(-start, -end)
- *	- bottom(-start, -end)
- *	- left(-start, -end)
+ *  - auto(-start, -end)
+ *  - top(-start, -end)
+ *  - right(-start, -end)
+ *  - bottom(-start, -end)
+ *  - left(-start, -end)
  * @param {Boolean} [visible=false]
  * Visibility of the overlay
  * @param {Number} [offset=0]
@@ -82,23 +81,23 @@ export default defineComponent({
             default: () => ({})
         }
     },
-    data(): { popperInstance?: Instance } {
+    data (): { popperInstance?: Instance } {
         return {
             popperInstance: undefined
         };
     },
     watch: {
-        placement(placement: Placement) {
+        placement (placement: Placement) {
             if (this.popperInstance) {
                 this.popperInstance.setOptions({ placement });
             }
         }
     },
-    beforeUnmount() {
+    beforeUnmount () {
         this.destroyPopper();
     },
     methods: {
-        createPopper() {
+        createPopper () {
             if (typeof window === 'undefined') {
                 return;
             }
@@ -112,15 +111,15 @@ export default defineComponent({
                     strategy: 'fixed',
                     placement: this.placement as Placement,
                     modifiers,
-                    ...this.popperOptions,
+                    ...this.popperOptions
                 }
             );
         },
-        destroyPopper() {
+        destroyPopper () {
             if (this.popperInstance) {
                 this.popperInstance.destroy();
                 this.popperInstance = undefined;
             }
-        },
+        }
     }
 });

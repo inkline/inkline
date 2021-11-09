@@ -60,7 +60,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.form-group',
+        selector: '.form-group',
         variables: [
             {
                 name: 'margin-top',

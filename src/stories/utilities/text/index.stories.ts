@@ -14,11 +14,11 @@ import {
     TextResetExample,
     TextTransformExample,
     TextTruncateExample,
-    TextWrapExample,
+    TextWrapExample
 } from './index';
 
 export default {
-    title: 'Utilities/Text',
+    title: 'Utilities/Text'
 };
 
 export const FontMonospace = () => TextFontMonospaceExample;

@@ -65,7 +65,7 @@ describe('Components', () => {
                         `-${props.size}`,
                         '-open',
                         '-collapsible',
-                        '-collapse-true',
+                        '-collapse-true'
                     );
                 });
             });

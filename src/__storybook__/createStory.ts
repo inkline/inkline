@@ -1,7 +1,7 @@
 export const createStory = (Component: any) => (args: any) => ({
     components: {
-        Component,
+        Component
     },
     setup: () => ({ args }),
-    template: '<Component class="storybook-example" v-bind="args" />',
+    template: '<Component class="storybook-example" v-bind="args" />'
 });

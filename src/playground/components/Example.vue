@@ -45,7 +45,7 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): { [key: string]: boolean } {
+        classes (): { [key: string]: boolean } {
             return {
                 ...colorVariantClass(this),
                 [`-${this.type}`]: Boolean(this.type)

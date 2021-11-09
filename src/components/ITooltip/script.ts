@@ -68,7 +68,7 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default(): string {
+            default (): string {
                 return uid('tooltip');
             }
         },
@@ -88,7 +88,7 @@ export default defineComponent({
          */
         placement: {
             type: String,
-            default: 'top',
+            default: 'top'
         },
         /**
          * @description The events used to trigger the tooltip
@@ -126,7 +126,7 @@ export default defineComponent({
             type: String,
             default: defaultPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
-        },
+        }
     },
     emits: [
         /**
@@ -136,23 +136,22 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.size}`]: Boolean(this.size)
             };
         }
     },
     methods: {
-        onEscape() {
+        onEscape () {
             this.visible = false;
             this.$emit('update:modelValue', false);
         },
-        handleClickOutside() {
+        handleClickOutside () {
             this.visible = false;
             this.$emit('update:modelValue', false);
             this.onClickOutside();
         }
     }
 });
-

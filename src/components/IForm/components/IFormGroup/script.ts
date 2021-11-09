@@ -20,7 +20,7 @@ export default defineComponent({
     mixins: [
         FormComponentMixin
     ],
-    provide() {
+    provide () {
         return {
             formGroup: this
         };
@@ -92,7 +92,7 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
@@ -105,10 +105,10 @@ export default defineComponent({
         }
     },
     methods: {
-        onBlur(name: string, event: InputElementEvent) {
+        onBlur (name: string, event: InputElementEvent) {
             this.parent?.onBlur?.(this.name ? `${this.name}.${name}` : name, event);
         },
-        onInput(name: string, value: any) {
+        onInput (name: string, value: any) {
             this.parent?.onInput?.(this.name ? `${this.name}.${name}` : name, value);
         }
     }

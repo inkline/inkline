@@ -36,12 +36,12 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.loader',
+        selector: '.loader',
         defaults: {
             size: 'md',
             color: 'primary'
         },
-	    variables: [
+        variables: [
             {
                 name: 'animation-duration',
                 description: 'The animation duration of the loader component',

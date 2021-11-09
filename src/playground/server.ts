@@ -19,14 +19,14 @@ export const usePagination = (schema: any, req: any, model: any) => {
 
 export const useServer = () => createServer({
     models: {
-        user: Model,
+        user: Model
     },
-    seeds(server) {
+    seeds (server) {
         data.forEach((row) => (server.schema as any).users.create(row));
     },
-    routes() {
+    routes () {
         this.namespace = 'api';
 
         this.get('/users', (schema, req) => usePagination(schema, req, 'users'));
-    },
+    }
 });

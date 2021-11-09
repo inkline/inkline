@@ -4,7 +4,7 @@
  * @param string
  * @returns {number}
  */
-export function hashString(string: string): number {
+export function hashString (string: string): number {
     let hash = 0;
 
     if (string.length === 0) {

@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import {
     defaultPropValue,
-    colorVariantClass,
+    colorVariantClass
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -36,7 +36,7 @@ export default defineComponent({
         modelValue: {
             type: Boolean,
             default: false
-        },
+        }
     },
     emits: [
         /**
@@ -46,7 +46,7 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 '-active': this.modelValue,
@@ -55,7 +55,7 @@ export default defineComponent({
         }
     },
     methods: {
-        onClick() {
+        onClick () {
             this.$emit('update:modelValue', !this.modelValue);
         }
     }

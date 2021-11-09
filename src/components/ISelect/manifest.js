@@ -277,7 +277,7 @@ module.exports = {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the select component',
@@ -293,7 +293,7 @@ module.exports = {
                 type: 'color',
                 variants: {
                     light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
+                    dark: 'color(\'dark-45\')'
                 }
             },
             {
@@ -302,7 +302,7 @@ module.exports = {
                 type: 'color',
                 variants: {
                     light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
+                    dark: 'color(\'dark-45\')'
                 }
             },
             {
@@ -311,7 +311,7 @@ module.exports = {
                 type: 'color',
                 variants: {
                     light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
+                    dark: 'color(\'dark-45\')'
                 }
             },
             {
@@ -320,7 +320,7 @@ module.exports = {
                 type: 'color',
                 variants: {
                     light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
+                    dark: 'color(\'dark-45\')'
                 }
             },
             {
@@ -852,7 +852,7 @@ module.exports = {
                 name: 'footer--padding',
                 description: 'The padding of the select component footer',
                 value: ['var(----footer--padding-top)', 'var(----footer--padding-right)', 'var(----footer--padding-bottom)', 'var(----footer--padding-left)']
-            },
+            }
         ]
     }
 };

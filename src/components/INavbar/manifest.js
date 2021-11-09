@@ -74,12 +74,12 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.navbar',
+        selector: '.navbar',
         defaults: {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the navbar component',
@@ -351,7 +351,7 @@ module.exports = {
                 name: 'brand--margin-right',
                 description: 'The margin right of the navbar component brand',
                 value: 'var(--margin-right)'
-            },
+            }
         ]
     }
 };

@@ -24,7 +24,7 @@ const Template = (args: any) => ({
         IListGroupBasicExample
     },
     setup: () => ({ args }),
-    template: '<IListGroupBasicExample v-bind="args" />',
+    template: '<IListGroupBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

@@ -47,7 +47,7 @@ export default defineComponent({
         PopupMixin,
         PopupControlsMixin
     ],
-    provide() {
+    provide () {
         return {
             dropdown: this
         };
@@ -132,7 +132,7 @@ export default defineComponent({
          */
         placement: {
             type: String,
-            default: 'bottom',
+            default: 'bottom'
         },
         /**
          * @description The events used to trigger the dropdown
@@ -170,7 +170,7 @@ export default defineComponent({
             type: String,
             default: defaultPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
-        },
+        }
     },
     emits: [
         /**
@@ -180,21 +180,21 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.size}`]: Boolean(this.size)
             };
         }
     },
-    mounted() {
+    mounted () {
         for (const child of (this.$refs.trigger as HTMLElement).children) {
             on(child as HTMLElement, 'keydown', this.onTriggerKeyDown);
         }
 
         on(this.$refs.popup as HTMLElement, 'keydown', this.onItemKeyDown);
     },
-    beforeUnmount() {
+    beforeUnmount () {
         for (const child of (this.$refs.trigger as HTMLElement).children) {
             off(child as HTMLElement, 'keydown', this.onTriggerKeyDown);
         }
@@ -202,16 +202,16 @@ export default defineComponent({
         off(this.$refs.popup as HTMLElement, 'keydown', this.onItemKeyDown);
     },
     methods: {
-        onEscape() {
+        onEscape () {
             this.visible = false;
             this.$emit('update:modelValue', false);
         },
-        handleClickOutside() {
+        handleClickOutside () {
             this.visible = false;
             this.$emit('update:modelValue', false);
             this.onClickOutside();
         },
-        getFocusableItems(): HTMLElement[] {
+        getFocusableItems (): HTMLElement[] {
             const focusableItems = [];
 
             for (const child of (this.$refs.body as HTMLElement).children) {
@@ -222,7 +222,7 @@ export default defineComponent({
 
             return focusableItems;
         },
-        onTriggerKeyDown(event: KeyboardEvent) {
+        onTriggerKeyDown (event: KeyboardEvent) {
             if (this.keydownTrigger.length === 0) {
                 return;
             }
@@ -264,7 +264,7 @@ export default defineComponent({
                 break;
             }
         },
-        onItemKeyDown(event: KeyboardEvent) {
+        onItemKeyDown (event: KeyboardEvent) {
             if (this.keydownItem.length === 0) {
                 return;
             }
@@ -311,11 +311,10 @@ export default defineComponent({
                 break;
             }
         },
-        onItemClick() {
+        onItemClick () {
             if (this.hideOnItemClick) {
                 this.hide();
             }
         }
     }
 });
-

@@ -10,7 +10,7 @@ import {
  * @param schema
  * @returns {*}
  */
-export function initialize(schema: any) {
+export function initialize (schema: any) {
     const isField = Object.keys(schema).length === 0 || Array.isArray(schema.validators) || schema.hasOwnProperty('value');
     const defaultValues = isField
         ? { ...defaultValidationValues, ...defaultFieldValidationValues }

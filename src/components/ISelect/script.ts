@@ -75,7 +75,7 @@ export default defineComponent({
         FormComponentMixin,
         PopupMixin
     ],
-    provide() {
+    provide () {
         return {
             select: this
         };
@@ -241,7 +241,7 @@ export default defineComponent({
          */
         placement: {
             type: String,
-            default: 'bottom',
+            default: 'bottom'
         },
         /**
          * @description Used to override the popper.js options used for creating the dropdown
@@ -339,7 +339,7 @@ export default defineComponent({
          */
         'pagination'
     ],
-    data(): { animating: boolean; visible: boolean; inputValue: string; } {
+    data (): { animating: boolean; visible: boolean; inputValue: string; } {
         return {
             animating: false,
             visible: false,
@@ -347,40 +347,40 @@ export default defineComponent({
         };
     },
     computed: {
-        wrapperClasses(): Classes {
+        wrapperClasses (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size)
             };
         },
-        popupClasses(): Classes {
+        popupClasses (): Classes {
             return {
                 '-disabled': this.isDisabled,
-                '-readonly': this.isReadonly,
+                '-readonly': this.isReadonly
             };
         },
-        tabIndex(): number | string {
+        tabIndex (): number | string {
             return this.isDisabled ? -1 : this.tabindex;
         },
-        isClearable(): boolean {
+        isClearable (): boolean {
             return this.value && this.clearable && !this.isDisabled && !this.isReadonly;
         },
-        value(): any {
+        value (): any {
             if (this.schema) {
                 return this.schema.value;
             }
 
             return this.modelValue;
         },
-        inputPlaceholder(): string {
+        inputPlaceholder (): string {
             return this.value ? this.computeLabel(this.value) : this.placeholder;
         }
     },
     watch: {
-        value(value) {
+        value (value) {
             this.inputValue = this.computeLabel(value);
         },
-        inputValue(value) {
+        inputValue (value) {
             const matchesLength = this.inputMatchesLength(value);
             const matchesLabel = this.inputMatchesLabel(value);
 
@@ -390,7 +390,7 @@ export default defineComponent({
 
             this.$emit('search', this.inputValue);
         },
-        options() {
+        options () {
             if (this.visible) {
                 this.createPopper();
             }
@@ -404,7 +404,7 @@ export default defineComponent({
          * focusing and blurring the input elements.
          */
 
-        onInput(option: SelectOption, label?: string) {
+        onInput (option: SelectOption, label?: string) {
             if (option.disabled) {
                 return;
             }
@@ -418,12 +418,12 @@ export default defineComponent({
             this.parent.onInput?.(this.name, option);
             this.$emit('update:modelValue', option);
         },
-        onClear() {
+        onClear () {
             this.animating = true;
             this.$emit('update:modelValue', null);
             this.$nextTick(() => { this.animating = false; });
         },
-        onFocus(event: ElementEvent) {
+        onFocus (event: ElementEvent) {
             // If there is no value and there are no default options,
             // do not open select
             if (!this.value && this.options.length === 0) {
@@ -441,7 +441,7 @@ export default defineComponent({
                 this.show();
             }
         },
-        onBlur(event: ElementEvent) {
+        onBlur (event: ElementEvent) {
             const blurShouldHideSelect = !event.relatedTarget ||
                 !(this as any).$refs.wrapper.contains(event.relatedTarget);
 
@@ -452,7 +452,7 @@ export default defineComponent({
 
             this.parent.onBlur?.(this.name, event);
         },
-        onClick() {
+        onClick () {
             if (this.autocomplete) {
                 this.inputValue = '';
             }
@@ -461,10 +461,10 @@ export default defineComponent({
                 this.show();
             }
         },
-        onClickOutside() {
+        onClickOutside () {
             this.hide();
         },
-        onCaretClick() {
+        onCaretClick () {
             this.focus();
         },
 
@@ -474,7 +474,7 @@ export default defineComponent({
          * Compute scroll offset, viewport height and total height and determine if next set of items needs to be loaded
          */
 
-        onScroll() {
+        onScroll () {
             if (isNaN(this.total as any)) {
                 return;
             }
@@ -490,7 +490,7 @@ export default defineComponent({
                 this.$emit('pagination');
             }
         },
-        onWindowResize() {
+        onWindowResize () {
             this.onScroll();
         },
 
@@ -500,7 +500,7 @@ export default defineComponent({
          * Keyboard bindings for select input and select options
          */
 
-        onTriggerKeyDown(event: KeyboardEvent) {
+        onTriggerKeyDown (event: KeyboardEvent) {
             if (this.keydownTrigger.length === 0) {
                 return;
             }
@@ -550,7 +550,7 @@ export default defineComponent({
                 break;
             }
         },
-        onItemKeyDown(event: KeyboardEvent) {
+        onItemKeyDown (event: KeyboardEvent) {
             if (this.keydownItem.length === 0) {
                 return;
             }
@@ -594,7 +594,7 @@ export default defineComponent({
                 break;
             }
         },
-        onEscape() {
+        onEscape () {
             this.hide();
         },
 
@@ -604,7 +604,7 @@ export default defineComponent({
          * Hide or show the select options menu
          */
 
-        show() {
+        show () {
             if (this.isDisabled || this.isReadonly || this.visible) {
                 return;
             }
@@ -612,7 +612,7 @@ export default defineComponent({
             this.visible = true;
             this.createPopper();
         },
-        hide() {
+        hide () {
             if (!this.visible) {
                 return;
             }
@@ -629,10 +629,10 @@ export default defineComponent({
          * Helper methods
          */
 
-        focus() {
+        focus () {
             (this as any).$refs.trigger.focus();
         },
-        getFocusableItems(): HTMLElement[] {
+        getFocusableItems (): HTMLElement[] {
             const focusableItems = [];
 
             for (const child of (this as any).$refs.options.children) {
@@ -643,7 +643,7 @@ export default defineComponent({
 
             return focusableItems;
         },
-        getElementHeight(node: HTMLElement): number {
+        getElementHeight (node: HTMLElement): number {
             const computedStyle = getComputedStyle(node);
 
             if (!computedStyle.height) {
@@ -652,20 +652,20 @@ export default defineComponent({
 
             return Math.ceil(parseFloat(computedStyle.height));
         },
-        inputMatchesLabel(value: string): boolean {
+        inputMatchesLabel (value: string): boolean {
             return this.value && value === this.computeLabel(this.value);
         },
-        inputMatchesLength(value: string): boolean {
-            return this.minLength === 0 || (value as any) && value.length >= this.minLength;
+        inputMatchesLength (value: string): boolean {
+            return this.minLength === 0 || ((value as any) && value.length >= this.minLength);
         },
-        inputShouldShowSelect(value: string): boolean {
+        inputShouldShowSelect (value: string): boolean {
             if (!this.autocomplete) {
                 return true;
             }
 
             return this.inputMatchesLength(value) && !this.inputMatchesLabel(value);
         },
-        computeLabel(option: SelectOption): string {
+        computeLabel (option: SelectOption): string {
             if (typeof option !== 'object') {
                 return this.inputValue;
             }

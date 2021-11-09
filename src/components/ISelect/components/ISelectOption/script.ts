@@ -73,21 +73,21 @@ export default defineComponent({
         }
     },
     computed: {
-        isActive(): boolean {
+        isActive (): boolean {
             return this.active || (this.value === (this as any).select.modelValue);
         },
-        classes(): Classes {
+        classes (): Classes {
             return {
                 '-active': this.isActive,
                 '-disabled': this.disabled
             };
         },
-        tabIndex(): number | string {
+        tabIndex (): number | string {
             return this.disabled ? -1 : this.tabindex;
         }
     },
     methods: {
-        onClick() {
+        onClick () {
             if (!this.disabled) {
                 (this as any).select.onInput(this.value, this.label);
             }

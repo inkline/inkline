@@ -22,7 +22,7 @@ const Template = (args: any) => ({
         IToggleBasicExample
     },
     setup: () => ({ args }),
-    template: '<IToggleBasicExample v-bind="args" />',
+    template: '<IToggleBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

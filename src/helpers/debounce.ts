@@ -7,14 +7,13 @@
  * @param delay
  * @returns {Function}
  */
-export function debounce(fn: any, delay: number) {
+export function debounce (fn: any, delay: number) {
     let inDebounce: any;
 
-    return function() {
+    return function (...args: any[]) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         const context = this; // eslint-disable-line @typescript-eslint/no-this-alias, no-invalid-this
-        const args = arguments;
 
         clearTimeout(inDebounce);
         inDebounce = setTimeout(() => fn.apply(context, args), delay);

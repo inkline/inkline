@@ -40,24 +40,24 @@ export default defineComponent({
         }
     },
     computed: {
-        parent(): any {
+        parent (): any {
             if ((this as any).formGroup.$) {
                 return (this as any).formGroup;
             }
 
             return (this as any).form;
         },
-        schema(): any {
+        schema (): any {
             if (this.for !== '') {
                 return getValueByPath(this.parent.schema || {}, `${this.for}`);
             }
 
             return this.parent.schema || {};
         },
-        errors(): any {
+        errors (): any {
             return this.schema.errors || [];
         },
-        isVisible(): boolean {
+        isVisible (): boolean {
             let visible = true;
 
             if (this.schema && this.visible) {

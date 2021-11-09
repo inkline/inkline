@@ -153,7 +153,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.dropdown',
+        selector: '.dropdown',
         defaults: {
             size: 'md',
             color: 'light'

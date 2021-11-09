@@ -8,12 +8,12 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.layout-aside',
+        selector: '.layout-aside',
         defaults: {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'width',
                 description: 'The width of the layout aside component',

@@ -4,19 +4,19 @@ export const OverlayController = {
     instances: {} as { [key: string]: any },
     stack: [] as string[],
     zIndex: 1000,
-    register(instance: any) {
+    register (instance: any) {
         if (instance && instance.name) {
             OverlayController.instances[instance.name] = instance;
         }
     },
-    unregister(instance: any) {
+    unregister (instance: any) {
         if (instance && instance.name) {
             OverlayController.instances[instance.name] = null;
 
             delete OverlayController.instances[instance.name];
         }
     },
-    open(name: string) {
+    open (name: string) {
         if (typeof window === 'undefined') {
             return;
         }
@@ -24,19 +24,19 @@ export const OverlayController = {
         OverlayController.stack.push(name);
         OverlayController.instances[name].$el.style.zIndex = OverlayController.zIndex++;
     },
-    close(name: string) {
+    close (name: string) {
         if (typeof window === 'undefined') {
             return;
         }
 
         OverlayController.stack.splice(OverlayController.stack.indexOf(name), 1);
     },
-    getTopOverlay(): any {
+    getTopOverlay (): any {
         const topOverlayName: string = OverlayController.stack.slice(-1)[0] || '';
 
         return OverlayController.instances[topOverlayName];
     },
-    onPressEscape() {
+    onPressEscape () {
         const topOverlay = OverlayController.getTopOverlay();
 
         if (topOverlay && topOverlay.closeOnPressEscape) {
@@ -53,4 +53,3 @@ if (typeof window !== 'undefined') {
 }
 
 export default OverlayController;
-

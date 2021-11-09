@@ -1,4 +1,4 @@
-export function colorVariantClass(component: any): { [key: string]: boolean } {
+export function colorVariantClass (component: any): { [key: string]: boolean } {
     let colorClass = component.color;
 
     if (!colorClass) {

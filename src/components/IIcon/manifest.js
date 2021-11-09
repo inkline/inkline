@@ -13,7 +13,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.inkline-icon',
+        selector: '.inkline-icon',
         defaults: {
             size: 'md',
             color: 'light'

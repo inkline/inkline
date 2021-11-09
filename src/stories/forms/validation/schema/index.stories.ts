@@ -10,7 +10,7 @@ import { IForm } from '@inkline/inkline/components';
 
 export default {
     component: IForm,
-    title: 'Form Validation/Schema',
+    title: 'Form Validation/Schema'
 };
 
 export const ObjectGroups = () => IFormValidationSchemaDefaultValueExample;

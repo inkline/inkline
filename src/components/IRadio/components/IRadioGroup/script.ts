@@ -3,7 +3,7 @@ import {
     colorVariantClass,
     sizePropValidator,
     FormComponentMixin,
-    defaultPropValue,
+    defaultPropValue
 } from '@inkline/inkline/mixins';
 import { uid } from '@inkline/inkline/helpers';
 import { Classes } from '@inkline/inkline/types';
@@ -21,7 +21,7 @@ export default defineComponent({
     mixins: [
         FormComponentMixin
     ],
-    provide() {
+    provide () {
         return {
             formGroup: this
         };
@@ -68,7 +68,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default() {
+            default () {
                 return uid('radio-group');
             }
         },
@@ -100,25 +100,25 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
-                '-inline': this.inline,
+                '-inline': this.inline
             };
         },
-        checked(): string {
+        checked (): string {
             if (this.schema) {
                 return this.schema.value;
             }
 
             return this.modelValue;
-        },
+        }
     },
     methods: {
-        onChange(value: string) {
+        onChange (value: string) {
             this.parent.onInput?.(this.name, value);
 
             this.$emit('update:modelValue', value);

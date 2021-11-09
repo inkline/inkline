@@ -66,7 +66,7 @@ describe('Helpers', () => {
             beforeEach(() => {
                 element = {
                     classList: {
-                        remove() {}
+                        remove () {}
                     }
                 } as HTMLElement;
             });

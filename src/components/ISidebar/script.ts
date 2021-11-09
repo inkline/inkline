@@ -3,7 +3,7 @@ import {
     CollapsibleMixin,
     defaultPropValue,
     colorVariantClass,
-    sizePropValidator,
+    sizePropValidator
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -20,7 +20,7 @@ export default defineComponent({
     mixins: [
         CollapsibleMixin
     ],
-    provide(): { sidebar: any } {
+    provide (): { sidebar: any } {
         return {
             sidebar: this
         };
@@ -89,7 +89,7 @@ export default defineComponent({
             type: String,
             default: defaultPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
-        },
+        }
     },
     emits: [
         /**
@@ -99,33 +99,33 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...this.collapsibleClasses,
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
                 [`-collapse-${this.collapsePosition}`]: true,
-                [`-placement-${this.placement}`]: true,
+                [`-placement-${this.placement}`]: true
             };
         },
-        sidebarWrapperTransition(): string {
-            return this.collapsePosition !== 'relative' ?
-                'sidebar-wrapper-none-transition' :
-                'sidebar-wrapper-transition';
+        sidebarWrapperTransition (): string {
+            return this.collapsePosition !== 'relative'
+                ? 'sidebar-wrapper-none-transition'
+                : 'sidebar-wrapper-transition';
         },
-        sidebarTransition(): string {
-            return this.collapsePosition !== 'relative' ?
-                'sidebar-transition' :
-                'sidebar-none-transition';
+        sidebarTransition (): string {
+            return this.collapsePosition !== 'relative'
+                ? 'sidebar-transition'
+                : 'sidebar-none-transition';
         }
     },
     methods: {
-        onItemClick() {
+        onItemClick () {
             if (this.collapseOnItemClick && this.open) {
                 this.setOpen(false);
             }
         },
-        onOverlayClick() {
+        onOverlayClick () {
             if (this.collapseOnClickOutside && this.open) {
                 this.setOpen(false);
             }

@@ -4,7 +4,7 @@ import {
 } from './index';
 
 export default {
-    title: 'Utilities/Display',
+    title: 'Utilities/Display'
 };
 
 export const Block = () => DisplayBlockExample;

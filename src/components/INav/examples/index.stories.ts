@@ -23,7 +23,7 @@ const Template = (args: any) => ({
         INavBasicExample
     },
     setup: () => ({ args }),
-    template: '<INavBasicExample v-bind="args" />',
+    template: '<INavBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

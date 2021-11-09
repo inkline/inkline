@@ -10,7 +10,7 @@ export const defaultValidationValues: { [key: string]: any } = {
 
 export const defaultFieldValidationValues: { [key: string]: any } = {
     value: '',
-    validators: [],
+    validators: []
 };
 
 export const reservedValidationFields: string[] = [

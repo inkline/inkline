@@ -4,11 +4,11 @@ import {
     BorderColorNeutralExample,
     BorderColorStateExample,
     BorderRadiusExample,
-    BorderRemoveExample,
+    BorderRemoveExample
 } from './index';
 
 export default {
-    title: 'Utilities/Border',
+    title: 'Utilities/Border'
 };
 
 export const Add = () => BorderAddExample;

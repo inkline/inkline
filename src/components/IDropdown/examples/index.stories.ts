@@ -27,7 +27,7 @@ const Template = (args: any) => ({
         IDropdownBasicExample
     },
     setup: () => ({ args }),
-    template: '<IDropdownBasicExample v-bind="args" />',
+    template: '<IDropdownBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

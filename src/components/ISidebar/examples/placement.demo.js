@@ -1,5 +1,5 @@
 export default {
-    data() {
+    data () {
         return {
             left: false,
             right: false

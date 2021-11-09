@@ -17,7 +17,7 @@ describe('Components', () => {
             default: [
                 '<i-checkbox color="light" name="checkbox-1" value="1" />',
                 '<i-checkbox color="light" name="checkbox-2" value="2" />',
-                '<i-checkbox color="light" name="checkbox-3" value="3" />',
+                '<i-checkbox color="light" name="checkbox-3" value="3" />'
             ]
         };
 

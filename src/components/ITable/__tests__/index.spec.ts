@@ -28,7 +28,7 @@ describe('Components', () => {
                             striped: true,
                             hover: true,
                             nowrap: true,
-                            responsive: true,
+                            responsive: true
                         }
                     });
 

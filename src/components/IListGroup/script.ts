@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import {
     defaultPropValue,
     colorVariantClass,
-    sizePropValidator,
+    sizePropValidator
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -47,11 +47,11 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
-                '-border': this.border,
+                '-border': this.border
             };
         }
     }

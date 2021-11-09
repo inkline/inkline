@@ -28,7 +28,7 @@ export default defineComponent({
     mixins: [
         FormComponentMixin
     ],
-    provide() {
+    provide () {
         return {
             form: this
         };
@@ -78,7 +78,7 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default() {
+            default () {
                 return uid('form');
             }
         },
@@ -124,7 +124,7 @@ export default defineComponent({
         'submit'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
@@ -133,7 +133,7 @@ export default defineComponent({
                 '-inline': this.inline
             };
         },
-        schema(): any {
+        schema (): any {
             if (this.modelValue) {
                 return this.modelValue;
             }
@@ -142,7 +142,7 @@ export default defineComponent({
         }
     },
     methods: {
-        onBlur(name: string, event: InputElementEvent) {
+        onBlur (name: string, event: InputElementEvent) {
             this.parent.onBlur?.(this.name ? `${this.name}.${name}` : name, event);
 
             if (this.modelValue) {
@@ -157,7 +157,7 @@ export default defineComponent({
                 this.$emit('update:modelValue', schema);
             }
         },
-        onInput(name: string, value: any) {
+        onInput (name: string, value: any) {
             this.parent.onInput?.(this.name ? `${this.name}.${name}` : name, value);
 
             if (this.modelValue) {
@@ -190,7 +190,7 @@ export default defineComponent({
 
             this.$emit('submit', event);
         },
-        shouldValidate(path: string, eventName: string): boolean {
+        shouldValidate (path: string, eventName: string): boolean {
             const targetSchema = getValueByPath(this.modelValue, path);
             const events = targetSchema.validateOn
                 ? [].concat(targetSchema.validateOn)

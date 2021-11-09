@@ -21,7 +21,7 @@ const Template = (args: any) => ({
         IBadgeBasicExample
     },
     setup: () => ({ args }),
-    template: '<IBadgeBasicExample v-bind="args" />',
+    template: '<IBadgeBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

@@ -27,6 +27,6 @@ export const i18n: Internationalization = {
  *
  * @param locale
  */
-export function setLocale(locale: string) {
+export function setLocale (locale: string) {
     i18n.locale = locale;
 }

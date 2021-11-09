@@ -10,7 +10,6 @@ import ClickOutside from '@inkline/inkline/directives/click-outside';
 import { Classes } from '@inkline/inkline/types';
 import { uid } from '@inkline/inkline/helpers';
 
-
 /**
  * @name default
  * @kind slot
@@ -81,7 +80,7 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default(): string {
+            default (): string {
                 return uid('popover');
             }
         },
@@ -101,7 +100,7 @@ export default defineComponent({
          */
         placement: {
             type: String,
-            default: 'top',
+            default: 'top'
         },
         /**
          * @description The events used to trigger the popover
@@ -139,7 +138,7 @@ export default defineComponent({
             type: String,
             default: defaultPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
-        },
+        }
     },
     emits: [
         /**
@@ -149,23 +148,22 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.size}`]: Boolean(this.size)
             };
         }
     },
     methods: {
-        onEscape() {
+        onEscape () {
             this.visible = false;
             this.$emit('update:modelValue', false);
         },
-        handleClickOutside() {
+        handleClickOutside () {
             this.visible = false;
             this.$emit('update:modelValue', false);
             this.onClickOutside();
         }
     }
 });
-

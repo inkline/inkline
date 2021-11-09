@@ -30,6 +30,6 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.collapsible-item'
+        selector: '.collapsible-item'
     }
 };

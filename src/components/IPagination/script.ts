@@ -72,7 +72,7 @@ export default defineComponent({
          */
         limit: {
             type: [Number, Object],
-            default(): { [key: string]: number } {
+            default (): { [key: string]: number } {
                 return {
                     xs: 3,
                     sm: 5
@@ -106,39 +106,39 @@ export default defineComponent({
             type: String,
             default: defaultPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
-        },
+        }
     },
     emits: [
         /**
          * @event update:modelValue
          * @description Event emitted for setting the modelValue
          */
-        'update:modelValue',
+        'update:modelValue'
     ],
-    data(): { pageLimit: number } {
+    data (): { pageLimit: number } {
         return {
             pageLimit: 5
         };
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${(this as any).size}`]: Boolean((this as any).size)
             };
         },
-        pageCount(): number {
+        pageCount (): number {
             return Math.ceil((this as any).itemsTotal / (this as any).itemsPerPage);
         },
-        showQuickPrevious(): boolean {
+        showQuickPrevious (): boolean {
             return this.pageCount > this.pageLimit && // Has more pages than limit
                 (this as any).modelValue > this.pageLimit - (this.pageLimit - 1) / 2; // Active page is after limit - (limit - 1) / 2
         },
-        showQuickNext(): boolean {
+        showQuickNext (): boolean {
             return this.pageCount > this.pageLimit && // Has more pages than limit
                 (this as any).modelValue < this.pageCount - (this.pageLimit - 1) / 2; // Active page is before pageCount - (limit - 1) / 2
         },
-        pages(): number[] {
+        pages (): number[] {
             const pages = [];
 
             if (this.showQuickPrevious && !this.showQuickNext) {
@@ -154,7 +154,7 @@ export default defineComponent({
             } else if (this.showQuickPrevious && this.showQuickNext) {
                 const offset = Math.floor(this.pageLimit / 2) - 1;
 
-                for (let i = (this as any).modelValue - offset ; i <= (this as any).modelValue + offset; i++) {
+                for (let i = (this as any).modelValue - offset; i <= (this as any).modelValue + offset; i++) {
                     pages.push(i);
                 }
             } else {
@@ -166,7 +166,7 @@ export default defineComponent({
             return pages;
         }
     },
-    created() {
+    created () {
         (this as any).debouncedOnWindowResize = debounce(this.onWindowResize, 250);
 
         if (typeof window !== 'undefined') {
@@ -175,46 +175,46 @@ export default defineComponent({
             this.onWindowResize();
         }
     },
-    unmounted() {
+    unmounted () {
         if (typeof window !== 'undefined') {
             window.removeEventListener('resize', (this as any).debouncedOnWindowResize);
         }
     },
     methods: {
-        next() {
+        next () {
             if ((this as any).modelValue === this.pageCount) { return; }
 
             this.onClick((this as any).modelValue + 1);
         },
-        quickNext() {
+        quickNext () {
             if (!(this as any).quickLink) { return; }
 
             const jumpTo = (this as any).modelValue + (this.pageLimit - 2);
 
             this.onClick(jumpTo > this.pageCount ? this.pageCount : jumpTo);
         },
-        previous() {
+        previous () {
             if ((this as any).modelValue === 1) { return; }
 
             this.onClick((this as any).modelValue - 1);
         },
-        quickPrevious() {
+        quickPrevious () {
             if (!(this as any).quickLink) { return; }
 
             const jumpTo = (this as any).modelValue - (this.pageLimit - 2);
 
             this.onClick(jumpTo < 1 ? 1 : jumpTo);
         },
-        onClick(item: number) {
+        onClick (item: number) {
             this.$emit('update:modelValue', item);
         },
-        onWindowResize() {
+        onWindowResize () {
             if (typeof (this as any).limit === 'number') {
                 this.pageLimit = (this as any).limit;
                 return this.pageLimit;
             }
 
-            for (let breakpointKey of breakpointKeys.slice().reverse()) {
+            for (const breakpointKey of breakpointKeys.slice().reverse()) {
                 if ((this as any).limit.hasOwnProperty(breakpointKey) && (typeof window !== 'undefined' && window.innerWidth >= breakpoints[breakpointKey][0])) {
                     this.pageLimit = (this as any).limit[breakpointKey];
                     return this.pageLimit;

@@ -45,12 +45,12 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.progress',
+        selector: '.progress',
         defaults: {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the progress component',
@@ -66,7 +66,7 @@ module.exports = {
                 type: 'color',
                 variants: {
                     light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
+                    dark: 'color(\'dark-45\')'
                 }
             },
             {
@@ -75,7 +75,7 @@ module.exports = {
                 type: 'color',
                 variants: {
                     light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
+                    dark: 'color(\'dark-45\')'
                 }
             },
             {
@@ -84,7 +84,7 @@ module.exports = {
                 type: 'color',
                 variants: {
                     light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
+                    dark: 'color(\'dark-45\')'
                 }
             },
             {
@@ -93,7 +93,7 @@ module.exports = {
                 type: 'color',
                 variants: {
                     light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
+                    dark: 'color(\'dark-45\')'
                 }
             },
             {

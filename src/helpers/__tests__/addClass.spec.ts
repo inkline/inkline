@@ -48,7 +48,7 @@ describe('Helpers', () => {
             beforeEach(() => {
                 element = {
                     classList: {
-                        add() {}
+                        add () {}
                     }
                 } as HTMLElement;
             });

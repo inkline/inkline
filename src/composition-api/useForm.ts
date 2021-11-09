@@ -25,7 +25,7 @@ export interface FormGroup extends FormState {
     [key: string]: FormField | FormField[] | FormGroup | boolean;
 }
 
-export function useForm<T>(rawSchema: T): { form: FormGroup } {
+export function useForm<T> (rawSchema: T): { form: FormGroup } {
     const schema = initialize(rawSchema);
     const form = reactive(schema);
 

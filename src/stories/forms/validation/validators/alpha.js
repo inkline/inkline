@@ -9,7 +9,7 @@ export default {
                 },
                 inputSpaces: {
                     validators: [
-                        { name: 'alpha', allowSpaces: true },
+                        { name: 'alpha', allowSpaces: true }
                     ]
                 },
                 inputDashes: {

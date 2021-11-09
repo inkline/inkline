@@ -1,8 +1,8 @@
 export default {
-    data() {
+    data () {
         return {
             light: false,
-            dark: false,
+            dark: false
         };
     }
 };

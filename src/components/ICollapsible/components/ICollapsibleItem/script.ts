@@ -37,7 +37,7 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default() {
+            default () {
                 return uid('collapsible-item');
             }
         },
@@ -51,18 +51,18 @@ export default defineComponent({
         }
     },
     computed: {
-        active(): boolean {
+        active (): boolean {
             return (this as any).collapsible.activeItems.indexOf(this.name) > -1;
         },
-        classes(): Classes {
+        classes (): Classes {
             return {
                 '-active': this.active
             };
         }
     },
     methods: {
-        onClick() {
+        onClick () {
             (this as any).collapsible.onItemClick(this);
-        },
+        }
     }
 });

@@ -7,7 +7,7 @@ export default {
             options: [
                 { id: 1, label: 'Option A' },
                 { id: 2, label: 'Option B' },
-                { id: 3, label: 'Option C' },
+                { id: 3, label: 'Option C' }
             ],
             checkboxGroup: ['apple'],
             radioGroup: 'coconut',
@@ -17,7 +17,7 @@ export default {
         };
     },
     methods: {
-        onSubmit() {
+        onSubmit () {
             this.loading = true;
 
             setTimeout(() => {

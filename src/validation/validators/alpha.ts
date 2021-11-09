@@ -1,6 +1,6 @@
 import { alpha as validators } from './constants';
 
-export function alpha(rawValue: any, options: any = {}): boolean {
+export function alpha (rawValue: any, options: any = {}): boolean {
     const locale = options.locale || 'en-US';
     const process = (v: any) => {
         let value = String(v);

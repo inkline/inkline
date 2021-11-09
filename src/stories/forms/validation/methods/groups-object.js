@@ -16,14 +16,14 @@ export default {
         };
     },
     methods: {
-        setEmail() {
+        setEmail () {
             this.schema.group.email = this.$inkline.form({
                 validators: [
                     { name: 'email' }
                 ]
             });
         },
-        setAddress() {
+        setAddress () {
             this.schema.group.address = this.$inkline.form({
                 value: '32 Inkline St.'
             });

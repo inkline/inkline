@@ -20,7 +20,7 @@ export const createMockInstance = (component: any, { inject = {}, data = {}, pro
     const instance: any = {
         $emit: jest.fn(),
         $el,
-        $refs,
+        $refs
     };
 
     if (component.props) {
@@ -54,7 +54,7 @@ export const createMockInstance = (component: any, { inject = {}, data = {}, pro
     if (component.computed) {
         Object.entries(component.computed).forEach(([key, fn]) => {
             Object.defineProperty(instance, key, {
-                get: computed[key] || fn as any,
+                get: computed[key] || fn as any
             });
         });
     }

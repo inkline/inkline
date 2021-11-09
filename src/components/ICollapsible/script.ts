@@ -16,7 +16,7 @@ const componentName = 'ICollapsible';
 
 export default defineComponent({
     name: componentName,
-    provide() {
+    provide () {
         return {
             collapsible: this
         };
@@ -67,32 +67,32 @@ export default defineComponent({
          */
         'update:modelValue'
     ],
-    data() {
+    data () {
         return {
             activeItems: ([] as any[]).concat(this.modelValue)
         };
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size)
             };
-        },
+        }
     },
     watch: {
-        modelValue(value) {
+        modelValue (value) {
             this.activeItems = [].concat(value);
         }
     },
     methods: {
-        onItemClick(item: any) {
+        onItemClick (item: any) {
             if (this.accordion) {
                 this.activeItems = this.activeItems.indexOf(item.name) > -1 ? [] : [item.name];
                 return this.activeItems;
             }
 
-            let index = this.activeItems.indexOf(item.name);
+            const index = this.activeItems.indexOf(item.name);
 
             if (index > -1) {
                 this.activeItems.splice(index, 1);

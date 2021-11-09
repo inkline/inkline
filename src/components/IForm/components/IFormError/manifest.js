@@ -8,7 +8,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.form-error',
+        selector: '.form-error',
         variables: [
             {
                 name: 'font-size',

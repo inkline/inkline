@@ -18,4 +18,3 @@ export { default as IColumnResponsiveExample } from './responsive.vue';
 export { default as IColumnResponsiveExampleHTML } from './responsive.html';
 export { default as IColumnWidthExample } from './width.vue';
 export { default as IColumnWidthExampleHTML } from './width.html';
-

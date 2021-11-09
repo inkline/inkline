@@ -21,7 +21,7 @@ const Template = (args: any) => ({
         IBreadcrumbBasicExample
     },
     setup: () => ({ args }),
-    template: '<IBreadcrumbBasicExample v-bind="args" />',
+    template: '<IBreadcrumbBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

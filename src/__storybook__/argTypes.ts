@@ -6,7 +6,7 @@ export const sizeArgType = () => ({
             labels: {
                 Small: 'sm',
                 Medium: 'md',
-                Large: 'lg',
+                Large: 'lg'
             }
         }
     }
@@ -38,7 +38,7 @@ export const colorArgType = (options = [
                 Facebook: 'info',
                 Twitter: 'success',
                 GitHub: 'warning',
-                Google: 'google',
+                Google: 'google'
             }
         }
     }

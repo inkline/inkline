@@ -61,7 +61,7 @@ describe('Components', () => {
                             `-${position}-md`,
                             `-${position}-lg`,
                             `-${position}-xl`,
-                            `-${position}-xxl`,
+                            `-${position}-xxl`
                         );
                     });
                 });
@@ -88,7 +88,7 @@ describe('Components', () => {
                             `-${action}-md-6`,
                             `-${action}-lg-6`,
                             `-${action}-xl-6`,
-                            `-${action}-xxl-6`,
+                            `-${action}-xxl-6`
                         );
                     });
                 });

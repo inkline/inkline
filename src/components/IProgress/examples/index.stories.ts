@@ -23,7 +23,7 @@ const Template = (args: any) => ({
         IProgressBasicExample
     },
     setup: () => ({ args }),
-    template: '<IProgressBasicExample v-bind="args" />',
+    template: '<IProgressBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

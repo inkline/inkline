@@ -20,7 +20,7 @@ const Template = (args: any) => ({
         IFormValidationBasicExample
     },
     setup: () => ({ args }),
-    template: '<IFormValidationBasicExample v-bind="args" />',
+    template: '<IFormValidationBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

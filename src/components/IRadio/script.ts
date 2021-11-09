@@ -4,7 +4,7 @@ import {
     colorVariantClass,
     sizePropValidator,
     FormComponentMixin,
-    defaultPropValue,
+    defaultPropValue
 } from '@inkline/inkline/mixins';
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
@@ -70,7 +70,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default() {
+            default () {
                 return uid('radio');
             }
         },
@@ -110,7 +110,7 @@ export default defineComponent({
         tabindex: {
             type: [Number, String],
             default: 1
-        },
+        }
     },
     emits: [
         /**
@@ -120,31 +120,31 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
-                '-native': this.native,
+                '-native': this.native
             };
         },
-        checked(): boolean {
+        checked (): boolean {
             return (this as any).formGroup.checked === this.value;
         },
-        tabIndex(): number | string {
+        tabIndex (): number | string {
             return this.isDisabled ? -1 : this.tabindex;
         }
     },
     methods: {
-        clickInputRef() {
+        clickInputRef () {
             if (this.isReadonly) {
                 return;
             }
 
             (this as any).$refs.input.click();
         },
-        onChange(event: InputElementEvent) {
+        onChange (event: InputElementEvent) {
             this.parent.onInput?.(this.name, event.target.checked);
 
             // When inside a Radio Group
@@ -152,7 +152,7 @@ export default defineComponent({
 
             this.$emit('update:modelValue', event.target.checked);
         },
-        onBlur(event: InputElementEvent) {
+        onBlur (event: InputElementEvent) {
             this.parent.onBlur?.(this.name, event);
         }
     }

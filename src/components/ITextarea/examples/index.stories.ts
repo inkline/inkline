@@ -27,7 +27,7 @@ const Template = (args: any) => ({
         ITextareaBasicExample
     },
     setup: () => ({ args }),
-    template: '<ITextareaBasicExample v-bind="args" />',
+    template: '<ITextareaBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

@@ -97,7 +97,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.checkbox',
+        selector: '.checkbox',
         type: 'form',
         defaults: {
             size: 'md',
@@ -323,7 +323,7 @@ module.exports = {
                     light: 'color(\'light-70\')',
                     dark: 'color(\'dark-30\')'
                 }
-            },
+            }
         ]
     }
 };

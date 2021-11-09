@@ -21,7 +21,7 @@ export default defineComponent({
     mixins: [
         FormComponentMixin
     ],
-    provide() {
+    provide () {
         return {
             formGroup: this
         };
@@ -77,7 +77,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default() {
+            default () {
                 return uid('checkbox-group');
             }
         },
@@ -109,25 +109,25 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
-                '-inline': this.inline,
+                '-inline': this.inline
             };
         },
-        checked(): any[] {
+        checked (): any[] {
             if (this.schema) {
                 return this.schema.value;
             }
 
             return this.modelValue;
-        },
+        }
     },
     methods: {
-        onChange(value: any) {
+        onChange (value: any) {
             const modelValue = [...this.modelValue];
             const valueIndex = modelValue.findIndex((v) => v === value);
 

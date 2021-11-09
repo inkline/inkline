@@ -82,12 +82,12 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.pagination',
+        selector: '.pagination',
         defaults: {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the pagination component item',

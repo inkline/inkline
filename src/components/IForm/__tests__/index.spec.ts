@@ -414,7 +414,7 @@ describe('Components', () => {
 
                     await fireEvent.submit(form);
 
-                    expect(wrapper.emitted()['submit'][0]).toContainEqual(expect.any(Event));
+                    expect(wrapper.emitted().submit[0]).toContainEqual(expect.any(Event));
                     expect(wrapper.emitted()['update:modelValue'][0]).toEqual([
                         {
                             input: {
@@ -451,7 +451,7 @@ describe('Components', () => {
 
                     await fireEvent.submit(form);
 
-                    expect(wrapper.emitted()['submit']).not.toBeDefined();
+                    expect(wrapper.emitted().submit).not.toBeDefined();
                 });
 
                 it('should not validate if not modelValue', async () => {

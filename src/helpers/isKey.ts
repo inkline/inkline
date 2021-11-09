@@ -12,4 +12,3 @@ export const isKey = (key: string, e: KeyboardEvent): boolean => {
 
     return keymap[key].indexOf(keyCode) !== -1;
 };
-

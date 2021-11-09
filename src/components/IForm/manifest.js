@@ -89,6 +89,6 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.form'
+        selector: '.form'
     }
 };

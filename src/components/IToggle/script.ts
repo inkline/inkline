@@ -70,7 +70,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default(): string {
+            default (): string {
                 return uid('toggle');
             }
         },
@@ -101,7 +101,7 @@ export default defineComponent({
         tabindex: {
             type: [Number, String],
             default: 1
-        },
+        }
     },
     emits: [
         /**
@@ -111,7 +111,7 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
@@ -119,31 +119,31 @@ export default defineComponent({
                 '-readonly': this.isReadonly
             };
         },
-        checked(): boolean {
+        checked (): boolean {
             if (this.schema) {
                 return this.schema.value;
             }
 
             return this.modelValue;
         },
-        tabIndex(): number | string {
+        tabIndex (): number | string {
             return this.isDisabled ? -1 : this.tabindex;
         }
     },
     methods: {
-        clickInputRef() {
+        clickInputRef () {
             if (this.isReadonly) {
                 return;
             }
 
             (this as any).$refs.input.click();
         },
-        onChange(event: InputElementEvent) {
+        onChange (event: InputElementEvent) {
             this.parent.onInput?.(this.name, event.target.checked);
 
             this.$emit('update:modelValue', event.target.checked);
         },
-        onBlur(event: InputElementEvent) {
+        onBlur (event: InputElementEvent) {
             this.parent.onBlur?.(this.name, event);
         }
     }

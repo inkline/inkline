@@ -23,7 +23,7 @@ const Template = (args: any) => ({
         IPaginationBasicExample
     },
     setup: () => ({ args }),
-    template: '<IPaginationBasicExample v-bind="args" />',
+    template: '<IPaginationBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

@@ -5,7 +5,7 @@
  * @param path
  * @returns {T}
  */
-export function getValueByPath(object: any, path: string): any {
+export function getValueByPath (object: any, path: string): any {
     return path.split('.').reduce((acc, part) => {
         return acc && acc[part];
     }, object);
@@ -20,7 +20,7 @@ export function getValueByPath(object: any, path: string): any {
  * @param value
  * @returns {T}
  */
-export function setValueByPath(object: any, path: string, key: string, value: any): any { // eslint-disable-line max-params
+export function setValueByPath (object: any, path: string, key: string, value: any): any { // eslint-disable-line max-params
     getValueByPath(object, path)[key] = value;
 
     return object;
@@ -34,7 +34,7 @@ export function setValueByPath(object: any, path: string, key: string, value: an
  * @param values
  * @returns {T}
  */
-export function setValuesAlongPath(object: any, path: string, values: any): any {
+export function setValuesAlongPath (object: any, path: string, values: any): any {
     path.split('.').reduce((acc, part) => {
         Object.keys(values).forEach((key) => {
             acc[part][key] = values[key];

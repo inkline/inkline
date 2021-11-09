@@ -25,7 +25,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color', 'primary'),
+            default: defaultPropValue<string>(componentName, 'color', 'primary')
         },
         /**
          * @description The value of the progress bar
@@ -38,28 +38,28 @@ export default defineComponent({
         }
     },
     computed: {
-        computedValue(): number {
+        computedValue (): number {
             const min = typeof this.min === 'string' ? parseFloat(this.min) : this.min;
             const value = typeof this.value === 'string' ? parseFloat(this.value.replace('%', '')) : this.value;
             const max = typeof this.max === 'string' ? parseFloat(this.max) : this.max;
 
             return (value - min) * 100 / (max - min);
         },
-        min(): number {
+        min (): number {
             return (this as any).progress.min;
         },
-        max(): number {
+        max (): number {
             return (this as any).progress.max;
         },
-        style(): Styles {
+        style (): Styles {
             return {
                 width: `${this.computedValue}%`
             };
         },
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this)
             };
         }
-    },
+    }
 });

@@ -45,7 +45,7 @@ const Template = (args: any) => ({
         IButtonBasicExample
     },
     setup: () => ({ args }),
-    template: '<IButtonBasicExample v-bind="args" />',
+    template: '<IButtonBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

@@ -35,7 +35,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.badge',
+        selector: '.badge',
         defaults: {
             size: 'md',
             color: 'light'

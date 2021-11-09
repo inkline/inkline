@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/ban-types
-export function memoize<T>(fn: T): () => T {
+export function memoize<T> (fn: T): () => T {
     const cache: { [key: string]: T } = {};
 
     return (...args): T => {

@@ -38,10 +38,10 @@ export const validators: {
     sameAs
 };
 
-export function registerValidator(name: string, validator: (value: any, options: any) => boolean): void {
+export function registerValidator (name: string, validator: (value: any, options: any) => boolean): void {
     validators[name] = validator;
 }
 
-export function unregisterValidator(name: string): void {
+export function unregisterValidator (name: string): void {
     delete validators[name];
 }

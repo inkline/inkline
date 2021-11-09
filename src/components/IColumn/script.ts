@@ -337,7 +337,7 @@ import { breakpointClass, capitalizeFirst } from '@inkline/inkline/helpers';
  */
 
 export const properties: { [key: string]: Prop<any> } = {};
-for (let breakpoint of breakpointKeys) {
+for (const breakpoint of breakpointKeys) {
     if (breakpoint !== '') {
         properties[breakpoint] = {
             type: [String, Boolean, Number],
@@ -345,14 +345,14 @@ for (let breakpoint of breakpointKeys) {
         };
     }
 
-    for (let property of ['first', 'last']) {
+    for (const property of ['first', 'last']) {
         properties[`${property}${capitalizeFirst(breakpoint)}`] = {
             type: Boolean,
             default: false
         };
     }
 
-    for (let property of ['offset', 'push', 'pull']) {
+    for (const property of ['offset', 'push', 'pull']) {
         properties[`${property}${capitalizeFirst(breakpoint)}`] = {
             type: [String, Number],
             default: ''
@@ -366,7 +366,7 @@ export default defineComponent({
     name: componentName,
     props: properties,
     computed: {
-        classes() {
+        classes () {
             return Object.keys(properties)
                 .reduce((acc: { [key: string]: boolean }, property) => {
                     if (this[property]) {

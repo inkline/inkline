@@ -18,7 +18,7 @@ export default {
 
 const Template = (args: any) => ({
     setup: () => ({ args }),
-    template: '<i-loader v-bind="args" />',
+    template: '<i-loader v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

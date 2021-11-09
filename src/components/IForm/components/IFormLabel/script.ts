@@ -50,7 +50,7 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 [`-${this.size}`]: Boolean(this.size),
                 [`-${this.placement}`]: Boolean(this.placement)
@@ -58,10 +58,10 @@ export default defineComponent({
         }
     },
     methods: {
-        getNextSibling(): HTMLElement {
+        getNextSibling (): HTMLElement {
             return this.$el.nextSibling.querySelector('input, textarea');
         },
-        onClick() {
+        onClick () {
             if (this.for) {
                 return;
             }

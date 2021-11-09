@@ -134,8 +134,8 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.input-wrapper',
-	    type: 'form',
+        selector: '.input-wrapper',
+        type: 'form',
         defaults: {
             size: 'md',
             color: 'light'
@@ -425,7 +425,7 @@ module.exports = {
                     light: 'color(\'light\')',
                     dark: 'color(\'dark\')'
                 }
-            },
+            }
         ]
     }
 };

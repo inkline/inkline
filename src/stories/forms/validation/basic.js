@@ -52,20 +52,20 @@ export default {
                             value: 'G5 G1 example 3'
                         }
                     }
-                },
+                }
             })
         };
     },
     methods: {
-        onSubmit() {
+        onSubmit () {
             alert('Submitted!');
         },
-        addRow() {
+        addRow () {
             this.schema.group3.push(this.$inkline.form({
                 value: `G3 example ${this.schema.group3.length}`
             }));
         },
-        setRow() {
+        setRow () {
             this.schema.group5.example = this.$inkline.form({});
         }
     }

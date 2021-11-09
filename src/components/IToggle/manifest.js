@@ -95,7 +95,7 @@ module.exports = {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the toggle component',
@@ -282,7 +282,6 @@ module.exports = {
                 value: 'var(--transition-duration)'
             },
 
-
             {
                 name: 'indicator--background',
                 description: 'The background of the toggle component indicator',
@@ -379,7 +378,7 @@ module.exports = {
                 description: 'The font size of the toggle component label',
                 type: 'size',
                 value: 'font-size()'
-            },
+            }
         ]
     }
 };
