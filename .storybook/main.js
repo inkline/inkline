@@ -14,7 +14,7 @@ module.exports = {
         builder: "storybook-builder-vite"
     },
     async viteFinal(config) {
-        config.configFile = "./vite.config.js";
+        config.configFile = "./vite.common.config.js";
         config.plugins = config.plugins.filter((plugin) => !['vite:vue'].includes(plugin.name));
         config.resolve.alias['@inkline/inkline'] = path.resolve(__dirname, '..', 'src');
         return config;
