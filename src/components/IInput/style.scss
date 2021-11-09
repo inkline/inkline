@@ -74,14 +74,11 @@
         &:focus-within {
             outline: 0;
             box-shadow: var(----box-shadow);
+            border-color: var(----border-color--focus);
         }
 
         &:hover {
             border-color: var(----border-color--hover);
-        }
-
-        &:focus-within {
-            border-color: var(----border-color--focus);
         }
 
         > input,
@@ -184,16 +181,16 @@
                 background-color: var(----clear--background--active);
             }
 
-             &::before {
-                 background-color: var(----clear--color);
-                 content: '';
-                 mask-image: url($ink-times);
-                 mask-position: center center;
-                 mask-repeat: no-repeat;
-                 mask-size: 8px 8px;
-                 height: 8px;
-                 width: 8px;
-             }
+            &::before {
+                background-color: var(----clear--color);
+                content: '';
+                mask-image: url($ink-times);
+                mask-position: center center;
+                mask-repeat: no-repeat;
+                mask-size: 8px 8px;
+                height: 8px;
+                width: 8px;
+            }
         }
     }
 
@@ -257,4 +254,3 @@
         }
     }
 }
-

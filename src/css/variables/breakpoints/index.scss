@@ -28,4 +28,3 @@ $breakpoint-prefix-keys: append($breakpoint-keys, '_') !default;
 @function breakpoint($breakpoint-key) {
     @return map-get($breakpoints, $breakpoint-key);
 }
-

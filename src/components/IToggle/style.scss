@@ -21,11 +21,6 @@
         top: 0;
         left: 0;
 
-        &:disabled + .toggle-label,
-        &[readonly] + .toggle-label {
-            cursor: default;
-        }
-
         &:checked + .toggle-label {
             &::before {
                 background-color: var(----background--checked);
@@ -38,13 +33,13 @@
             }
         }
 
-
         &:focus + .toggle-label::before {
             box-shadow: 0 0 1px var(----background--checked);
         }
 
         &:disabled + .toggle-label,
         &[readonly] + .toggle-label {
+            cursor: default;
             color: var(----label--color--disabled);
 
             &::before {

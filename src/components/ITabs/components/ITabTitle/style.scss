@@ -22,6 +22,7 @@
             color: var(----header--color--active);
             background-color: var(----header--background--active);
             border-color: var(----header--border-color--active);
+            font-weight: font-weight('semibold');
         }
 
         &:hover,
@@ -29,10 +30,6 @@
             background: var(----header--background--hover);
             cursor: pointer;
             outline: none;
-        }
-
-        &.-active {
-            font-weight: font-weight('semibold');
         }
     }
 

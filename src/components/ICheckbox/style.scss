@@ -72,9 +72,9 @@
             }
         }
 
-         &:indeterminate ~ .checkbox-label::after {
-             mask-image: url($ink-minus);
-         }
+        &:indeterminate ~ .checkbox-label::after {
+            mask-image: url($ink-minus);
+        }
 
         &:focus,
         &:active {

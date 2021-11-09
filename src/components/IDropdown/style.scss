@@ -53,6 +53,7 @@
         .dropdown-divider {
             margin-top: var(----divider--margin-top);
             margin-bottom: var(----divider--margin-bottom);
+            background-color: var(----border-color);
         }
 
         .dropdown-item {
@@ -77,10 +78,6 @@
                 color: var(----color--active);
                 background: var(----background--active);
             }
-        }
-
-        .dropdown-divider {
-            background-color: var(----border-color);
         }
     }
 
