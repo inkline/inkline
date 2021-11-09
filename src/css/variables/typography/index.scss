@@ -86,7 +86,6 @@ $font-weights: (
     @return var(--font-weight--#{$font-weight-key});
 }
 
-
 // Line height
 //
 $line-height: 1.5 !default;
