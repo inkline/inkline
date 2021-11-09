@@ -37,7 +37,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.list-group',
+        selector: '.list-group',
         defaults: {
             size: 'md',
             color: 'light'

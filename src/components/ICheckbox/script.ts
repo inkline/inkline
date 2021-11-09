@@ -70,7 +70,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default() {
+            default () {
                 return uid('checkbox');
             }
         },
@@ -110,7 +110,7 @@ export default defineComponent({
         tabindex: {
             type: [Number, String],
             default: 1
-        },
+        }
     },
     emits: [
         /**
@@ -120,16 +120,16 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
-                '-native': this.native,
+                '-native': this.native
             };
         },
-        checked(): boolean {
+        checked (): boolean {
             // When inside a Checkbox Group
             if ((this as any).formGroup.checked) {
                 return (this as any).formGroup.checked.includes(this.value);
@@ -141,19 +141,19 @@ export default defineComponent({
 
             return this.modelValue;
         },
-        tabIndex(): number | string {
+        tabIndex (): number | string {
             return this.isDisabled ? -1 : this.tabindex;
         }
     },
     methods: {
-        clickInputRef() {
+        clickInputRef () {
             if (this.isReadonly) {
                 return;
             }
 
             (this as any).$refs.input.click();
         },
-        onChange(event: InputElementEvent) {
+        onChange (event: InputElementEvent) {
             this.parent.onInput?.(this.name, event.target.checked);
 
             // When inside a Checkbox Group
@@ -161,7 +161,7 @@ export default defineComponent({
 
             this.$emit('update:modelValue', event.target.checked);
         },
-        onBlur(event: InputElementEvent) {
+        onBlur (event: InputElementEvent) {
             this.parent.onBlur?.(this.name, event);
         }
     }

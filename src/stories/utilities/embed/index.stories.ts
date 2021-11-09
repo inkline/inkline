@@ -1,9 +1,9 @@
 import {
-    EmbedBasicExample,
+    EmbedBasicExample
 } from './index';
 
 export default {
-    title: 'Utilities/Embed',
+    title: 'Utilities/Embed'
 };
 
 export const Basic = () => EmbedBasicExample;

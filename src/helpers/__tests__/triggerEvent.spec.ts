@@ -2,7 +2,7 @@ import { triggerEvent } from '@inkline/inkline/helpers';
 
 describe('Helpers', () => {
     describe('triggerEvent()', () => {
-        let windowSpy = jest.spyOn(global as any, 'window', 'get');
+        const windowSpy = jest.spyOn(global as any, 'window', 'get');
         let element: HTMLElement;
 
         beforeEach(() => {
@@ -20,7 +20,6 @@ describe('Helpers', () => {
 
                 triggerEvent(element, eventName);
 
-
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith(event);
             });
@@ -34,7 +33,6 @@ describe('Helpers', () => {
                 event.initEvent(eventName);
 
                 triggerEvent(element, eventName);
-
 
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith(event);
@@ -84,7 +82,6 @@ describe('Helpers', () => {
 
                 triggerEvent(element, eventName);
 
-
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith('on' + eventName, event);
             });
@@ -99,7 +96,6 @@ describe('Helpers', () => {
 
                 triggerEvent(element, eventName);
 
-
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith('on' + eventName, event);
             });
@@ -113,7 +109,6 @@ describe('Helpers', () => {
                 event.initEvent(eventName);
 
                 triggerEvent(element, eventName);
-
 
                 expect(spy).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalledWith('on' + eventName, event);

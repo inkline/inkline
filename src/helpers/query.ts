@@ -12,7 +12,7 @@
  * @param currentDepth
  * @returns {Array}
  */
-export function querySelector(items: any[], name: string, maxDepth = 3, currentDepth = 0): any {
+export function querySelector (items: any[], name: string, maxDepth = 3, currentDepth = 0): any {
     let result;
 
     for (const item of items) {
@@ -49,7 +49,7 @@ export function querySelector(items: any[], name: string, maxDepth = 3, currentD
  * @param currentDepth
  * @returns {Array}
  */
-export function querySelectorAll(items: any[], name: string, maxDepth = 3, currentDepth = 0): any[] {
+export function querySelectorAll (items: any[], name: string, maxDepth = 3, currentDepth = 0): any[] {
     let results: any[] = [];
 
     if (!items) { return results; }

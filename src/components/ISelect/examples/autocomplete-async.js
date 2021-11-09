@@ -12,7 +12,7 @@ export default {
         };
     },
     methods: {
-        async fetchOptions() {
+        async fetchOptions () {
             this.loading = true;
 
             const response = await fetch(`/api/users?${qs.stringify(this.params)}`);
@@ -21,7 +21,7 @@ export default {
             this.options = items;
             this.loading = false;
         },
-        async onSearch(query) {
+        async onSearch (query) {
             if (query === '' || query === this.renderLabel(this.selected)) {
                 return;
             }
@@ -30,11 +30,11 @@ export default {
 
             await this.fetchOptions();
         },
-        renderLabel(option) {
+        renderLabel (option) {
             return option ? `${option.firstName} ${option.lastName}` : '';
         }
     },
-    mounted() {
+    mounted () {
         this.fetchOptions();
     }
 };

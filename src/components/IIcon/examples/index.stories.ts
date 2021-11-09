@@ -28,7 +28,7 @@ const Template = (args: any) => ({
         IIconBasicExample
     },
     setup: () => ({ args }),
-    template: '<IIconBasicExample v-bind="args" />',
+    template: '<IIconBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

@@ -1,6 +1,6 @@
 import { alphanumeric as validators } from './constants';
 
-export function alphanumeric(rawValue: any, options: any = {}): boolean {
+export function alphanumeric (rawValue: any, options: any = {}): boolean {
     const locale = options.locale || 'en-US';
     const process = (v: any) => {
         let value = String(v);

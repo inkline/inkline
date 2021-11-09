@@ -344,6 +344,6 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.column'
+        selector: '.column'
     }
 };

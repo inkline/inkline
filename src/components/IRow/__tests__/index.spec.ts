@@ -63,7 +63,7 @@ describe('Components', () => {
                             `-${position}-md`,
                             `-${position}-lg`,
                             `-${position}-xl`,
-                            `-${position}-xxl`,
+                            `-${position}-xxl`
                         );
                     });
                 });

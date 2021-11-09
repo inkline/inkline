@@ -20,7 +20,7 @@ const Template = (args: any) => ({
         IHamburgerMenuBasicExample
     },
     setup: () => ({ args }),
-    template: '<IHamburgerMenuBasicExample v-bind="args" />',
+    template: '<IHamburgerMenuBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

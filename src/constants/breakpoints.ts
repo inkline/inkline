@@ -18,4 +18,3 @@ export const breakpoints: Breakpoints = {
  * Available window breakpoints. The emtpy string is required for generating class names without breakpoints.
  */
 export const breakpointKeys: string[] = ['', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
-

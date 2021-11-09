@@ -22,7 +22,7 @@ export default defineComponent({
             default: () => ({})
         }
     },
-    provide() {
+    provide () {
         return {
             buttonGroup: this
         };
@@ -57,14 +57,14 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 '-vertical': this.vertical,
                 '-block': this.block,
-                '-disabled': this.isDisabled,
+                '-disabled': this.isDisabled
             };
         },
-        isDisabled(): boolean {
+        isDisabled (): boolean {
             return this.disabled || (this as any).buttonGroup.disabled || (this as any).form.disabled || (this as any).formGroup.disabled;
         }
     }

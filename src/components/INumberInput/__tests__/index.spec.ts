@@ -77,7 +77,7 @@ describe('Components', () => {
                     const wrapper = render(INumberInput, {
                         props: {
                             ...props,
-                            precision: 2,
+                            precision: 2
                         }
                     });
                     const input = await wrapper.getByRole('input');

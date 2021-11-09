@@ -23,7 +23,7 @@ const Template = (args: any) => ({
         ITableBasicExample
     },
     setup: () => ({ args }),
-    template: '<ITableBasicExample v-bind="args" />',
+    template: '<ITableBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

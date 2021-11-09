@@ -11,20 +11,20 @@ export default defineComponent({
         }
     },
     computed: {
-        isDisabled(): boolean {
+        isDisabled (): boolean {
             return (this as any).disabled || (this as any).form.isDisabled || (this as any).formGroup.isDisabled;
         },
-        isReadonly(): boolean {
+        isReadonly (): boolean {
             return (this as any).readonly || (this as any).form.isReadonly || (this as any).formGroup.isReadonly;
         },
-        parent(): any {
+        parent (): any {
             if ((this as any).formGroup.$) {
                 return (this as any).formGroup;
             }
 
             return (this as any).form;
         },
-        schema(): any {
+        schema (): any {
             const parentSchema = (this as any).parent.schema || {};
 
             if ((this as any).name !== '') {

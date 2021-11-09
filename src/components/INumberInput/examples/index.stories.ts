@@ -30,7 +30,7 @@ const Template = (args: any) => ({
         INumberInputBasicExample
     },
     setup: () => ({ args }),
-    template: '<INumberInputBasicExample v-bind="args" />',
+    template: '<INumberInputBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

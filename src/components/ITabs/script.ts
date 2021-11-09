@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import {
     defaultPropValue,
     colorVariantClass,
-    sizePropValidator,
+    sizePropValidator
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -16,7 +16,7 @@ const componentName = 'ITabs';
 
 export default defineComponent({
     name: componentName,
-    provide() {
+    provide () {
         return {
             tabs: this
         };
@@ -67,14 +67,14 @@ export default defineComponent({
          */
         'update:modelValue'
     ],
-    data() {
+    data () {
         return {
             active: this.modelValue,
             tabs: []
         };
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
@@ -83,12 +83,12 @@ export default defineComponent({
         }
     },
     watch: {
-        modelValue(value) {
+        modelValue (value) {
             this.active = value;
         }
     },
     methods: {
-        setActive(id: string) {
+        setActive (id: string) {
             this.active = id;
             this.$emit('update:modelValue', this.active);
         }

@@ -71,12 +71,12 @@ export const defaultOptions: PluginConfig = {
 /**
  * Create inkline prototype
  */
-export function createPrototype({ icons, components, ...options }: PrototypeConfig): Prototype {
+export function createPrototype ({ icons, components, ...options }: PrototypeConfig): Prototype {
     return {
-        form(schema) {
+        form (schema) {
             return initializeForm(schema);
         },
-        setLocale(locale) {
+        setLocale (locale) {
             setLocale(locale);
         },
         options: reactive(options)
@@ -94,10 +94,10 @@ export const inklineGlobals: InklineGlobals = {
  * Inkline Vue.js plugin
  */
 export const Inkline: Plugin = {
-    install(app, options: Partial<PrototypeConfig> = {}) {
+    install (app, options: Partial<PrototypeConfig> = {}) {
         const extendedOptions: PluginConfig = {
             ...defaultOptions,
-            ...options,
+            ...options
         };
 
         /**

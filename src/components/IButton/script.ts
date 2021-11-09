@@ -4,7 +4,7 @@ import {
     LinkableMixin,
     sizePropValidator,
     colorVariantClass,
-    defaultPropValue,
+    defaultPropValue
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -25,7 +25,7 @@ const componentName = 'IButton';
 export default defineComponent({
     name: componentName,
     components: {
-        ILoader,
+        ILoader
     },
     mixins: [
         LinkableMixin
@@ -144,7 +144,7 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
@@ -156,10 +156,10 @@ export default defineComponent({
                 '-outline': this.outline
             };
         },
-        isDisabled(): boolean {
+        isDisabled (): boolean {
             return this.disabled || (this as any).buttonGroup.disabled || (this as any).form.disabled || (this as any).formGroup.disabled;
         },
-        tabIndex(): number | string {
+        tabIndex (): number | string {
             return this.isDisabled ? -1 : this.tabindex;
         }
     }

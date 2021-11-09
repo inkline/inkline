@@ -9,7 +9,7 @@ import {
     IRowReorderingReverseExample,
     IRowVerticalAlignmentTopExample,
     IRowVerticalAlignmentMiddleExample,
-    IRowVerticalAlignmentBottomExample,
+    IRowVerticalAlignmentBottomExample
 } from './index';
 import { createStory } from '@inkline/inkline/__storybook__';
 

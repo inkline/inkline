@@ -80,7 +80,7 @@ describe('Components', () => {
                     await fireEvent.click(tabTitles[0]);
 
                     expect(tabTitles[0]).toHaveClass(
-                        '-active',
+                        '-active'
                     );
                     expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['tab-1']);
                 });

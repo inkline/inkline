@@ -6,9 +6,11 @@ import { keymap } from '@inkline/inkline/constants';
 describe('Components', () => {
     describe('ISelect', () => {
         const options = [
-            { label: 'Option 1', value: 1 },
+            {
+                label: 'Option 1', value: 1
+            },
             { label: 'Option 2', value: 2 },
-            { label: 'Option 3', value: 3 },
+            { label: 'Option 3', value: 3 }
         ];
 
         const props = {
@@ -25,7 +27,7 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(ISelect, {
-                props,
+                props
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -53,7 +55,7 @@ describe('Components', () => {
                         props: {
                             name: 'select',
                             color: 'primary',
-                            size: 'md',
+                            size: 'md'
                         }
                     });
 
@@ -104,12 +106,12 @@ describe('Components', () => {
             describe('wrapperClasses', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(ISelect, {
-                        props,
+                        props
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         `-${props.color}`,
-                        `-${props.size}`,
+                        `-${props.size}`
                     );
                 });
             });
@@ -121,13 +123,13 @@ describe('Components', () => {
                             ...props,
                             disabled: true,
                             readonly: true
-                        },
+                        }
                     });
                     const popup = wrapper.container.querySelector('[role="listbox"]');
 
                     expect(popup).toHaveClass(
                         '-disabled',
-                        '-readonly',
+                        '-readonly'
                     );
                 });
             });
@@ -192,7 +194,7 @@ describe('Components', () => {
                         props: {
                             ...props,
                             modelValue: null,
-                            placeholder,
+                            placeholder
                         }
                     });
                     const input = wrapper.container.querySelector('input');
@@ -394,7 +396,7 @@ describe('Components', () => {
                     describe(key, () => {
                         it('should open the dropdown', async () => {
                             const wrapper = render(ISelect, {
-                                props,
+                                props
                             });
                             const trigger = await wrapper.getByRole('input');
                             await fireEvent.keyDown(trigger, { key: keymap[key][1] });
@@ -407,10 +409,10 @@ describe('Components', () => {
                 describe('enter', () => {
                     it('should open the dropdown', async () => {
                         const wrapper = render(ISelect, {
-                            props,
+                            props
                         });
                         const trigger = await wrapper.getByRole('input');
-                        await fireEvent.keyDown(trigger, { key: keymap['enter'][0] });
+                        await fireEvent.keyDown(trigger, { key: keymap.enter[0] });
                         const menu = await wrapper.getByRole('listbox');
                         expect(menu).toBeVisible();
                     });
@@ -420,7 +422,7 @@ describe('Components', () => {
                     describe(key, () => {
                         it('should close the dropdown', async () => {
                             const wrapper = render(ISelect, {
-                                props,
+                                props
                             });
                             const trigger = await wrapper.getByRole('input');
                             await fireEvent.click(trigger);
@@ -438,7 +440,7 @@ describe('Components', () => {
                         props: {
                             keydownItem: [],
                             ...props
-                        },
+                        }
                     });
                     const trigger = await wrapper.getByRole('input');
                     await fireEvent.click(trigger);
@@ -452,7 +454,7 @@ describe('Components', () => {
                         const wrapper = render(ISelect, {
                             props: {
                                 ...props
-                            },
+                            }
                         });
                         const trigger = await wrapper.getByRole('input');
                         await fireEvent.click(trigger);
@@ -466,7 +468,7 @@ describe('Components', () => {
                         const wrapper = render(ISelect, {
                             props: {
                                 ...props
-                            },
+                            }
                         });
                         const trigger = await wrapper.getByRole('input');
                         await fireEvent.click(trigger);
@@ -482,7 +484,7 @@ describe('Components', () => {
                         const wrapper = render(ISelect, {
                             props: {
                                 ...props
-                            },
+                            }
                         });
                         const trigger = await wrapper.getByRole('input');
                         await fireEvent.click(trigger);
@@ -496,7 +498,7 @@ describe('Components', () => {
                         const wrapper = render(ISelect, {
                             props: {
                                 ...props
-                            },
+                            }
                         });
                         const trigger = await wrapper.getByRole('input');
                         await fireEvent.click(trigger);
@@ -514,7 +516,7 @@ describe('Components', () => {
                                 props: {
                                     hideOnItemClick: false,
                                     ...props
-                                },
+                                }
                             });
                             const trigger = await wrapper.getByRole('input');
                             await fireEvent.click(trigger);
@@ -528,7 +530,7 @@ describe('Components', () => {
                                 props: {
                                     hideOnItemClick: true,
                                     ...props
-                                },
+                                }
                             });
                             const trigger = await wrapper.getByRole('input');
                             await fireEvent.click(trigger);
@@ -547,7 +549,7 @@ describe('Components', () => {
                                 props: {
                                     hideOnItemClick: true,
                                     ...props
-                                },
+                                }
                             });
                             const trigger = await wrapper.getByRole('input');
                             await fireEvent.click(trigger);
@@ -589,7 +591,7 @@ describe('Components', () => {
             describe('getElementHeight()', () => {
                 it('should return computed style height', async () => {
                     const wrapper = createMockInstance(ISelect, {
-                        props,
+                        props
                     });
                     const element = document.createElement('div');
 
@@ -601,7 +603,7 @@ describe('Components', () => {
 
                 it('should return NaN if height unavailable', async () => {
                     const wrapper = createMockInstance(ISelect, {
-                        props,
+                        props
                     });
                     const element = document.createElement('div');
 
@@ -613,7 +615,7 @@ describe('Components', () => {
             describe('inputMatchesLabel()', () => {
                 it('should return true if given value equals selected value label', async () => {
                     const wrapper = createMockInstance(ISelect, {
-                        props,
+                        props
                     });
 
                     expect(wrapper.inputMatchesLabel(options[0].label)).toEqual(true);
@@ -621,7 +623,7 @@ describe('Components', () => {
 
                 it('should return undefined if given value does not equal selected value label', async () => {
                     const wrapper = createMockInstance(ISelect, {
-                        props,
+                        props
                     });
 
                     expect(wrapper.inputMatchesLabel('Other')).toEqual(false);
@@ -632,7 +634,7 @@ describe('Components', () => {
                         props: {
                             ...props,
                             modelValue: null
-                        },
+                        }
                     });
 
                     expect(wrapper.inputMatchesLabel(options[0].label)).toEqual(null);
@@ -645,7 +647,7 @@ describe('Components', () => {
                         props: {
                             ...props,
                             minLength: 0
-                        },
+                        }
                     });
 
                     expect(wrapper.inputMatchesLength('')).toEqual(true);
@@ -656,7 +658,7 @@ describe('Components', () => {
                         props: {
                             ...props,
                             minLength: 3
-                        },
+                        }
                     });
 
                     expect(wrapper.inputMatchesLength('abc')).toEqual(true);
@@ -667,7 +669,7 @@ describe('Components', () => {
                         props: {
                             ...props,
                             minLength: 3
-                        },
+                        }
                     });
 
                     expect(wrapper.inputMatchesLength('ab')).toEqual(false);
@@ -680,7 +682,7 @@ describe('Components', () => {
                         props: {
                             ...props,
                             autocomplete: false
-                        },
+                        }
                     });
 
                     expect(wrapper.inputShouldShowSelect('')).toEqual(true);
@@ -692,7 +694,7 @@ describe('Components', () => {
                             ...props,
                             minLength: 3,
                             autocomplete: true
-                        },
+                        }
                     });
 
                     expect(wrapper.inputShouldShowSelect('abc')).toEqual(true);
@@ -704,7 +706,7 @@ describe('Components', () => {
                             ...props,
                             minLength: 3,
                             autocomplete: true
-                        },
+                        }
                     });
 
                     expect(wrapper.inputShouldShowSelect(options[0].label)).toEqual(false);
@@ -716,7 +718,7 @@ describe('Components', () => {
                             ...props,
                             minLength: 3,
                             autocomplete: true
-                        },
+                        }
                     });
 
                     expect(wrapper.inputShouldShowSelect('ab')).toEqual(false);
@@ -726,7 +728,7 @@ describe('Components', () => {
             describe('computeLabel()', () => {
                 it('should return inputValue if option not an object', async () => {
                     const wrapper = createMockInstance(ISelect, {
-                        props,
+                        props
                     });
 
                     expect(wrapper.computeLabel('abc')).toEqual(wrapper.inputValue);
@@ -738,7 +740,7 @@ describe('Components', () => {
                         props: {
                             ...props,
                             label: (o: any) => o.name
-                        },
+                        }
                     });
 
                     expect(wrapper.computeLabel(option)).toEqual(option.name);
@@ -787,7 +789,7 @@ describe('Components', () => {
             describe('onWindowResize()', () => {
                 it('should call onScroll', async () => {
                     const wrapper = createMockInstance(ISelect, {
-                        props,
+                        props
                     });
 
                     wrapper.onWindowResize();
@@ -799,7 +801,7 @@ describe('Components', () => {
             describe('onEscape()', () => {
                 it('should call hide', async () => {
                     const wrapper = createMockInstance(ISelect, {
-                        props,
+                        props
                     });
 
                     wrapper.onEscape();

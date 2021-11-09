@@ -16,7 +16,7 @@ export default {
         };
     },
     methods: {
-        addField() {
+        addField () {
             this.schema.group.push(this.$inkline.form({
                 value: 'Added Field',
                 validators: [
@@ -24,16 +24,16 @@ export default {
                 ]
             }));
         },
-        removeField() {
+        removeField () {
             this.schema.group.splice(0, 1);
         },
-        replaceField() {
+        replaceField () {
             this.schema.group.splice(0, 1, this.$inkline.form({
                 value: 'Spliced Field',
                 validators: [
                     { name: 'required' }
                 ]
             }));
-        },
+        }
     }
 };

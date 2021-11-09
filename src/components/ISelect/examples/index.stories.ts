@@ -37,7 +37,7 @@ const Template = (args: any) => ({
         ISelectBasicExample
     },
     setup: () => ({ args }),
-    template: '<ISelectBasicExample v-bind="args" />',
+    template: '<ISelectBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

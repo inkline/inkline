@@ -50,7 +50,7 @@ describe('Components', () => {
                         props: {
                             ...props,
                             modelValue: true,
-                            collapse: true,
+                            collapse: true
                         },
                         slots
                     });
@@ -63,7 +63,7 @@ describe('Components', () => {
                         '-light',
                         '-md',
                         '-collapse-absolute',
-                        '-placement-left',
+                        '-placement-left'
                     );
                 });
             });

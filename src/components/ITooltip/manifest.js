@@ -116,7 +116,7 @@ module.exports = {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the tooltip component',
@@ -225,7 +225,7 @@ module.exports = {
                 name: 'border-radius',
                 description: 'The border radius of the tooltip component',
                 value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
-            },{
+            }, {
                 name: 'box-shadow-offset-x',
                 description: 'The box shadow horizontal offset of the tooltip component',
                 value: 'var(--box-shadow-offset-x)'
@@ -348,7 +348,7 @@ module.exports = {
                 name: 'z-index',
                 description: 'The z-index of the tooltip component',
                 value: '2000'
-            },
+            }
         ]
     }
 };

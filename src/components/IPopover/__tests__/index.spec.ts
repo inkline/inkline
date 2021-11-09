@@ -14,7 +14,7 @@ describe('Components', () => {
             default: ['<button />'],
             header: ['Header'],
             body: ['Body'],
-            footer: ['Footer'],
+            footer: ['Footer']
         };
 
         it('should be named correctly', () => {
@@ -40,7 +40,7 @@ describe('Components', () => {
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         `-${props.color}`,
-                        `-${props.size}`,
+                        `-${props.size}`
                     );
                 });
             });

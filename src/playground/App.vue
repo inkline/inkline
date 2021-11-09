@@ -425,13 +425,13 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
     name: 'App',
-    data() {
+    data () {
         return {
             colorMode: this.$inkline.options.colorMode
         };
     },
     watch: {
-        colorMode(value) {
+        colorMode (value) {
             this.$inkline.options.colorMode = value;
         }
     }
@@ -478,4 +478,3 @@ export default defineComponent({
         }
     }
 </style>
-

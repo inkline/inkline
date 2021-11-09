@@ -40,11 +40,11 @@ import {
     ColorStateSuccessTextExample,
     ColorStateTextExample,
     ColorStateWarningBackgroundExample,
-    ColorStateWarningTextExample,
+    ColorStateWarningTextExample
 } from './index';
 
 export default {
-    title: 'Utilities/Color',
+    title: 'Utilities/Color'
 };
 
 export const BasicBackground = () => ColorBasicBackgroundExample;

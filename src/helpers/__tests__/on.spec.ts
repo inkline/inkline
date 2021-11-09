@@ -10,7 +10,7 @@ describe('Helpers', () => {
         beforeEach(() => {
             element = {
                 addEventListener: jest.fn(),
-                attachEvent: jest.fn(),
+                attachEvent: jest.fn()
             };
         });
 

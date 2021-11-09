@@ -82,6 +82,6 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.checkbox-group'
+        selector: '.checkbox-group'
     }
 };

@@ -1,4 +1,4 @@
-export function clone(source: any): any {
+export function clone (source: any): any {
     if (Array.isArray(source)) {
         const target: any = source.slice().map(clone);
         const targetKeys = Object.keys(target);

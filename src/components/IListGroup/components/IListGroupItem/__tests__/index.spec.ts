@@ -30,7 +30,7 @@ describe('Components', () => {
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         '-active',
-                        '-disabled',
+                        '-disabled'
                     );
                 });
             });

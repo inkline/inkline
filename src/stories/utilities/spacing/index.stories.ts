@@ -3,11 +3,11 @@ import {
     SpacingHorizontalCenterExample,
     SpacingLeftExample,
     SpacingRightExample,
-    SpacingTopExample,
+    SpacingTopExample
 } from './index';
 
 export default {
-    title: 'Utilities/Spacing',
+    title: 'Utilities/Spacing'
 };
 
 export const Bottom = () => SpacingBottomExample;

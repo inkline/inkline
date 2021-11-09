@@ -79,12 +79,12 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.table-wrapper',
+        selector: '.table-wrapper',
         defaults: {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the table component',

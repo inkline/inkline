@@ -4,7 +4,7 @@ import {
 } from './index';
 
 export default {
-    title: 'Utilities/Float',
+    title: 'Utilities/Float'
 };
 
 export const Basic = () => FloatBasicExample;

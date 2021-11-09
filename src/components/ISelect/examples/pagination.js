@@ -15,7 +15,7 @@ export default {
         };
     },
     methods: {
-        async fetchOptions() {
+        async fetchOptions () {
             this.loading = true;
 
             const response = await fetch(`/api/users?${qs.stringify(this.params)}`);
@@ -30,16 +30,16 @@ export default {
             this.total = total;
             this.loading = false;
         },
-        async onPagination() {
+        async onPagination () {
             this.params.page += 1;
 
             await this.fetchOptions();
         },
-        renderLabel(option) {
+        renderLabel (option) {
             return option ? `${option.firstName} ${option.lastName}` : '';
         }
     },
-    mounted() {
+    mounted () {
         this.fetchOptions();
     }
 };

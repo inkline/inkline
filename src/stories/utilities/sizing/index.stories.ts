@@ -6,7 +6,7 @@ import {
 } from './index';
 
 export default {
-    title: 'Utilities/Sizing',
+    title: 'Utilities/Sizing'
 };
 
 export const Height = () => SizingHeightExample;

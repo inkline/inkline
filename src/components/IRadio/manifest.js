@@ -103,7 +103,7 @@ module.exports = {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the radio component indicator',

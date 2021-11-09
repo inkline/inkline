@@ -3,7 +3,7 @@ export interface MarkSearchStringPart {
     marked?: boolean
 }
 
-export function markSearchString(text: string, query: string): MarkSearchStringPart[] {
+export function markSearchString (text: string, query: string): MarkSearchStringPart[] {
     if (!query) return [{ text }];
 
     const chunks = [];
@@ -30,7 +30,7 @@ export function markSearchString(text: string, query: string): MarkSearchStringP
 
             chunks.push({
                 text: text.substring(start, end),
-                marked: true,
+                marked: true
             });
 
             start = end;

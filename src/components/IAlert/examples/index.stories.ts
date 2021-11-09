@@ -23,7 +23,7 @@ const Template = (args: any) => ({
         IAlertBasicExample
     },
     setup: () => ({ args }),
-    template: '<IAlertBasicExample v-bind="args" />',
+    template: '<IAlertBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

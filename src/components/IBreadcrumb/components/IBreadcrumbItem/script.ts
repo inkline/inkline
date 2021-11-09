@@ -53,13 +53,13 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 '-active': this.active,
                 '-disabled': this.disabled
             };
         },
-        tabIndex(): number | string {
+        tabIndex (): number | string {
             return this.disabled || this.active ? -1 : this.tabindex;
         }
     }

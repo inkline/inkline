@@ -22,7 +22,7 @@ const Template = (args: any) => ({
         IPopoverBasicExample
     },
     setup: () => ({ args }),
-    template: '<IPopoverBasicExample v-bind="args" />',
+    template: '<IPopoverBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

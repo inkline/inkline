@@ -9,8 +9,8 @@ describe('Helpers', () => {
 
         beforeEach(() => {
             element = {
-                removeEventListener() {},
-                detachEvent() {},
+                removeEventListener () {},
+                detachEvent () {}
             };
         });
 

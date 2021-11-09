@@ -28,7 +28,7 @@ const Template = (args: any) => ({
         ICheckboxBasicExample
     },
     setup: () => ({ args }),
-    template: '<ICheckboxBasicExample v-bind="args" />',
+    template: '<ICheckboxBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

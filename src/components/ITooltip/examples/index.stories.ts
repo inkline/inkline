@@ -21,7 +21,7 @@ export default {
 const Template = (args: any) => ({
     components: { ITooltipBasicExample },
     setup: () => ({ args }),
-    template: '<ITooltipBasicExample v-bind="args" />',
+    template: '<ITooltipBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

@@ -1,5 +1,5 @@
 export default {
-    data() {
+    data () {
         return {
             sm: 'tab-1',
             md: 'tab-1',

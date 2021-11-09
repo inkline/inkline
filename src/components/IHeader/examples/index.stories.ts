@@ -22,7 +22,7 @@ const Template = (args: any) => ({
         IHeaderBasicExample
     },
     setup: () => ({ args }),
-    template: '<IHeaderBasicExample v-bind="args" />',
+    template: '<IHeaderBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

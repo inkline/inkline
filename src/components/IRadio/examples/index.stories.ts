@@ -25,7 +25,7 @@ const Template = (args: any) => ({
         IRadioBasicExample
     },
     setup: () => ({ args }),
-    template: '<IRadioBasicExample v-bind="args" />',
+    template: '<IRadioBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

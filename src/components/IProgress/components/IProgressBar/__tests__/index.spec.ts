@@ -14,7 +14,7 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(IProgressBar, {
-                props,
+                props
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -24,11 +24,11 @@ describe('Components', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(IProgressBar, {
-                        props,
+                        props
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.color}`,
+                        `-${props.color}`
                     );
                 });
             });
@@ -36,7 +36,7 @@ describe('Components', () => {
             describe('style', () => {
                 it('should set width based on default min and max props', () => {
                     const wrapper = render(IProgressBar, {
-                        props,
+                        props
                     });
 
                     expect(wrapper.container.firstChild).toHaveStyle({
@@ -54,7 +54,7 @@ describe('Components', () => {
                                 }
                             }
                         },
-                        props,
+                        props
                     });
 
                     expect(wrapper.container.firstChild).toHaveStyle({

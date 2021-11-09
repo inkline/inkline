@@ -29,7 +29,7 @@ describe('Components', () => {
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         `-${props.size}`,
-                        '-left',
+                        '-left'
                     );
                 });
             });

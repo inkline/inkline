@@ -51,7 +51,7 @@
 import { iconPacks } from '@inkline/icons/config';
 
 export default {
-    data() {
+    data () {
         return {
             iconPacks
         };

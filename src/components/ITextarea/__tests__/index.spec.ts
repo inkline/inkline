@@ -48,7 +48,7 @@ describe('Components', () => {
                             prefix: ['<div />'],
                             suffix: ['<div />'],
                             prepend: ['<div />'],
-                            append: ['<div />'],
+                            append: ['<div />']
                         }
                     });
 
@@ -61,7 +61,7 @@ describe('Components', () => {
                         '-prefixed',
                         '-suffixed',
                         '-prepended',
-                        '-appended',
+                        '-appended'
                     );
                 });
             });
@@ -283,7 +283,7 @@ describe('Components', () => {
 
                     await fireEvent.click(clear);
 
-                    expect(wrapper.emitted()['clear'][0]).toBeDefined();
+                    expect(wrapper.emitted().clear[0]).toBeDefined();
                     expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['']);
                 });
             });

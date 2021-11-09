@@ -34,16 +34,16 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default(): string {
+            default (): string {
                 return uid('tab');
             }
         }
     },
     computed: {
-        active(): boolean {
+        active (): boolean {
             return (this as any).tabs.active === this.name;
         },
-        classes(): Classes {
+        classes (): Classes {
             return {
                 '-active': this.active
             };

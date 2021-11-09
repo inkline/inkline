@@ -54,7 +54,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.header',
+        selector: '.header',
         defaults: {
             size: 'md',
             color: 'light'

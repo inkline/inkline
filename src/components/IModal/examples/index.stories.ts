@@ -20,7 +20,7 @@ const Template = (args: any) => ({
         IModalBasicExample
     },
     setup: () => ({ args }),
-    template: '<IModalBasicExample v-bind="args" />',
+    template: '<IModalBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

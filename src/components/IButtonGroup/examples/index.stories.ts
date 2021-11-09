@@ -13,7 +13,7 @@ import {
 
 export default {
     component: IButtonGroup,
-    title: 'Components/ButtonGroup',
+    title: 'Components/ButtonGroup'
 };
 
 const Template = (args: any) => ({
@@ -21,7 +21,7 @@ const Template = (args: any) => ({
         IButtonGroupBasicExample
     },
     setup: () => ({ args }),
-    template: '<IButtonGroupBasicExample v-bind="args" />',
+    template: '<IButtonGroupBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

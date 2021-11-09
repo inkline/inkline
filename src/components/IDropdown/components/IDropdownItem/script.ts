@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
 import {
-    LinkableMixin,
+    LinkableMixin
 } from '@inkline/inkline/mixins';
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
@@ -70,19 +70,19 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 '-active': this.active,
                 '-disabled': this.disabled,
                 '-plaintext': this.plaintext
             };
         },
-        tabIndex(): number | string {
+        tabIndex (): number | string {
             return this.disabled ? -1 : this.tabindex;
         }
     },
     methods: {
-        onClick(event: InputElementEvent) {
+        onClick (event: InputElementEvent) {
             (this as any).dropdown.onItemClick?.(this, event);
         }
     }

@@ -4,7 +4,7 @@ import { getStyleProperty } from '@inkline/inkline/helpers';
 export default defineComponent({
     name: 'IExpandTransition',
     methods: {
-        onEnter(element: HTMLElement) {
+        onEnter (element: HTMLElement) {
             const width = getStyleProperty(element, 'width');
 
             element.style.width = width;
@@ -24,10 +24,10 @@ export default defineComponent({
                 element.style.height = height;
             });
         },
-        onAfterEnter(element: HTMLElement) {
+        onAfterEnter (element: HTMLElement) {
             element.style.height = 'auto';
         },
-        onLeave(element: HTMLElement) {
+        onLeave (element: HTMLElement) {
             element.style.height = getStyleProperty(element, 'height');
 
             getStyleProperty(element, 'height'); // Force rerender element to set correct height

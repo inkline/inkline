@@ -1,5 +1,5 @@
 export default {
-    data() {
+    data () {
         return {
             primary: false,
             secondary: false,

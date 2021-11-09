@@ -110,7 +110,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default() {
+            default () {
                 return uid('input');
             }
         },
@@ -168,7 +168,7 @@ export default defineComponent({
         clearAriaLabel: {
             type: String,
             default: 'Clear'
-        },
+        }
     },
     emits: [
         /**
@@ -183,7 +183,7 @@ export default defineComponent({
         'clear'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
@@ -193,11 +193,11 @@ export default defineComponent({
                 '-prefixed': Boolean(this.$slots.prefix),
                 '-suffixed': Boolean(this.$slots.suffix),
                 '-prepended': Boolean(this.$slots.prepend),
-                '-appended': Boolean(this.$slots.append),
+                '-appended': Boolean(this.$slots.append)
             };
         },
-        hasError(): boolean {
-            if (typeof this.error == 'boolean') {
+        hasError (): boolean {
+            if (typeof this.error === 'boolean') {
                 return this.error;
             } else if (this.schema && this.error) {
                 let visible = true;
@@ -211,13 +211,13 @@ export default defineComponent({
 
             return false;
         },
-        tabIndex(): number | string {
+        tabIndex (): number | string {
             return this.isDisabled ? -1 : this.tabindex;
         },
-        isClearable(): boolean {
+        isClearable (): boolean {
             return this.clearable && !this.isDisabled && !this.isReadonly && this.value !== '';
         },
-        value(): any {
+        value (): any {
             if (this.schema) {
                 return this.schema.value;
             }
@@ -226,19 +226,19 @@ export default defineComponent({
         }
     },
     methods: {
-        onBlur(event: InputElementEvent) {
+        onBlur (event: InputElementEvent) {
             this.parent.onBlur?.(this.name, event);
         },
-        onInput(event: InputElementEvent) {
+        onInput (event: InputElementEvent) {
             this.parent.onInput?.(this.name, event.target.value);
 
             this.$emit('update:modelValue', event.target.value);
         },
-        onClear(event: InputElementEvent) {
+        onClear (event: InputElementEvent) {
             this.$emit('update:modelValue', '');
             this.$emit('clear', event);
         },
-        focus() {
+        focus () {
             (this as any).$refs.input.focus();
         }
     }

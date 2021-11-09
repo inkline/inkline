@@ -117,7 +117,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.button',
+        selector: '.button',
         defaults: {
             size: 'md',
             color: 'light'

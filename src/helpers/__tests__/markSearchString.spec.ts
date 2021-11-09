@@ -20,7 +20,7 @@ describe('Helpers', () => {
             const query = 'fox';
 
             expect(markSearchString(text, query)).toEqual([
-                { text },
+                { text }
             ]);
         });
     });

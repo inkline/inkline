@@ -23,7 +23,7 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 '-fluid': this.fluid
             };

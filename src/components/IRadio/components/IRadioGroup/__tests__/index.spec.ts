@@ -17,7 +17,7 @@ describe('Components', () => {
             default: [
                 '<i-radio color="light" name="radio-1" value="1" />',
                 '<i-radio color="light" name="radio-2" value="2" />',
-                '<i-radio color="light" name="radio-3" value="3" />',
+                '<i-radio color="light" name="radio-3" value="3" />'
             ]
         };
 

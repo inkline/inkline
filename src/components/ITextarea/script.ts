@@ -95,7 +95,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default(): string {
+            default (): string {
                 return uid('textarea');
             }
         },
@@ -134,5 +134,5 @@ export default defineComponent({
          * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
-    ],
+    ]
 });

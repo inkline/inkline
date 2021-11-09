@@ -16,7 +16,7 @@ export default {
         };
     },
     computed: {
-        groupValidationStatus() {
+        groupValidationStatus () {
             return this.schema.group.dirty
                 ? this.schema.group.invalid ? 'Invalid' : 'Valid'
                 : 'Pending';

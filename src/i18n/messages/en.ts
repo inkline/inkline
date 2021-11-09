@@ -5,7 +5,7 @@ export const en: InternationalizationMessages = {
         alpha: (params: { allowSpaces: boolean, allowDashes: boolean }) => {
             let context;
 
-            switch(true) {
+            switch (true) {
             case params.allowSpaces && params.allowDashes:
                 context = 'letters, spaces, and dashes'; break;
             case params.allowSpaces:
@@ -21,7 +21,7 @@ export const en: InternationalizationMessages = {
         alphanumeric: (params: { allowSpaces: boolean, allowDashes: boolean }) => {
             let context;
 
-            switch(true) {
+            switch (true) {
             case params.allowSpaces && params.allowDashes:
                 context = 'letters, numbers, spaces, and dashes'; break;
             case params.allowSpaces:
@@ -37,7 +37,7 @@ export const en: InternationalizationMessages = {
         number: (params: { allowNegative: boolean, allowDecimal: boolean }) => {
             let context;
 
-            switch(true) {
+            switch (true) {
             case params.allowNegative && params.allowDecimal:
                 context = 'positive or negative decimal numbers'; break;
             case params.allowNegative:

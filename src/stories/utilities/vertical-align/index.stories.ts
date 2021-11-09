@@ -4,7 +4,7 @@ import {
 } from './index';
 
 export default {
-    title: 'Utilities/Vertical Align',
+    title: 'Utilities/Vertical Align'
 };
 
 export const Basic = () => VerticalAlignBasicExample;

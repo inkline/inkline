@@ -126,7 +126,7 @@ module.exports = {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the popover component',
@@ -588,7 +588,7 @@ module.exports = {
                 name: 'footer--padding',
                 description: 'The padding of the popover component footer',
                 value: ['var(----footer--padding-top)', 'var(----footer--padding-right)', 'var(----footer--padding-bottom)', 'var(----footer--padding-left)']
-            },
+            }
         ]
     }
 };

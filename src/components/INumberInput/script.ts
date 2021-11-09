@@ -66,7 +66,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default(): string {
+            default (): string {
                 return uid('input');
             }
         },
@@ -166,10 +166,10 @@ export default defineComponent({
         }
     },
     methods: {
-        decrease() {
+        decrease () {
             this.$emit('update:modelValue', this.formatPrecision((Number(this.modelValue) - this.step).toString()));
         },
-        increase() {
+        increase () {
             this.$emit('update:modelValue', this.formatPrecision((Number(this.modelValue) + this.step).toString()));
         },
         formatPrecision (value: string) {
@@ -186,6 +186,6 @@ export default defineComponent({
             this.$emit('update:modelValue', this.formatPrecision(Number(this.modelValue).toString()));
 
             (this.parent as any).onBlur?.(this.name, event);
-        },
+        }
     }
 });

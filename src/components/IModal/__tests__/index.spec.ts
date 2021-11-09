@@ -120,7 +120,7 @@ describe('Components', () => {
                     const wrapper = render(IModal, {
                         props: {
                             ...props,
-                            modelValue: true,
+                            modelValue: true
                         },
                         slots
                     });
@@ -139,7 +139,7 @@ describe('Components', () => {
                         props: {
                             ...props,
                             disabled: true,
-                            modelValue: true,
+                            modelValue: true
                         },
                         slots
                     });

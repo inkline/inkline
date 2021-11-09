@@ -75,6 +75,6 @@ module.exports = {
             description: 'The padding of the modal component',
             type: 'size',
             default: 'spacing()'
-        },
+        }
     ]
 };

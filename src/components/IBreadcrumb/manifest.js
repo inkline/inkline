@@ -29,7 +29,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.breadcrumb',
+        selector: '.breadcrumb',
         defaults: {
             size: 'md',
             color: 'light'

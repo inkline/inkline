@@ -3,7 +3,7 @@ import {
 } from './index';
 
 export default {
-    title: 'Utilities/Clearfix',
+    title: 'Utilities/Clearfix'
 };
 
 export const Basic = () => ClearfixBasicExample;

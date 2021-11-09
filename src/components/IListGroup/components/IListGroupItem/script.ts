@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
 import {
-    LinkableMixin,
+    LinkableMixin
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -56,13 +56,13 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 '-active': this.active,
                 '-disabled': this.disabled
             };
         },
-        tabIndex(): number | string {
+        tabIndex (): number | string {
             return this.disabled ? -1 : this.tabindex;
         }
     }

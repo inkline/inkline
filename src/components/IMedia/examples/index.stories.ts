@@ -19,7 +19,7 @@ const Template = (args: any) => ({
         IMediaBasicExample
     },
     setup: () => ({ args }),
-    template: '<IMediaBasicExample v-bind="args" />',
+    template: '<IMediaBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

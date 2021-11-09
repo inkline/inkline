@@ -79,13 +79,13 @@ export default defineComponent({
          */
         'update:modelValue'
     ],
-    data() {
+    data () {
         return {
             dismissed: false
         };
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 [`-${this.color}`]: Boolean(this.color),
                 [`-${this.size}`]: Boolean(this.size),
@@ -95,15 +95,15 @@ export default defineComponent({
         }
     },
     watch: {
-        modelValue(value: boolean) {
+        modelValue (value: boolean) {
             this.dismissed = !value;
         }
     },
     methods: {
-        dismiss() {
+        dismiss () {
             this.dismissed = true;
 
             this.$emit('update:modelValue', false);
-        },
+        }
     }
 });

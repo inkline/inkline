@@ -20,7 +20,7 @@ export default defineComponent({
         }
     },
     computed: {
-        visible() {
+        visible () {
             return (this as any).navbar.open || !(this as any).navbar.collapsible;
         }
     }

@@ -4,7 +4,7 @@ import { OverlayController } from '@inkline/inkline/controllers';
 import {
     defaultPropValue,
     colorVariantClass,
-    sizePropValidator,
+    sizePropValidator
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
 import { Classes } from '@inkline/inkline/types';
@@ -92,7 +92,7 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default(): string {
+            default (): string {
                 return uid('modal');
             }
         },
@@ -141,13 +141,13 @@ export default defineComponent({
          */
         'update:modelValue'
     ],
-    data(): { visible: boolean } {
+    data (): { visible: boolean } {
         return {
             visible: (this as any).modelValue as boolean
         };
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 '-disabled': (this as any).disabled,
                 ...colorVariantClass(this),
@@ -164,14 +164,14 @@ export default defineComponent({
             }
         }
     },
-    mounted() {
+    mounted () {
         OverlayController.register(this as any);
     },
-    unmounted() {
+    unmounted () {
         OverlayController.unregister(this as any);
     },
     methods: {
-        show(): void {
+        show (): void {
             if ((this as any).disabled) {
                 return;
             }
@@ -183,7 +183,7 @@ export default defineComponent({
 
             addClass(window.document.body, '-modal');
         },
-        hide(): void {
+        hide (): void {
             if ((this as any).disabled) {
                 return;
             }
@@ -195,7 +195,7 @@ export default defineComponent({
 
             removeClass(window.document.body, '-modal');
         },
-        onClickOutside(): void {
+        onClickOutside (): void {
             if (!(this as any).hideOnClickOutside) {
                 return;
             }

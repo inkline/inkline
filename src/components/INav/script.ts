@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import {
     defaultPropValue,
     colorVariantClass,
-    sizePropValidator,
+    sizePropValidator
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -16,7 +16,7 @@ const componentName = 'INav';
 
 export default defineComponent({
     name: componentName,
-    provide() {
+    provide () {
         return {
             nav: this
         };
@@ -64,16 +64,16 @@ export default defineComponent({
         }
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...colorVariantClass(this),
                 [`-${this.size}`]: Boolean(this.size),
-                '-vertical': this.vertical,
+                '-vertical': this.vertical
             };
         }
     },
     methods: {
-        onItemClick() {
+        onItemClick () {
             [(this as any).navbar, (this as any).sidebar].forEach((parent) => {
                 parent.onItemClick();
             });

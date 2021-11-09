@@ -22,7 +22,7 @@ export const onClickOutside = (element: HTMLElement, binding: any) => (e: { targ
  */
 
 export const ClickOutsideDirective: Directive = {
-    beforeMount(element: HTMLElement, binding: any) {
+    beforeMount (element: HTMLElement, binding: any) {
         if (typeof window !== 'undefined') {
             on(window.document as any, 'mouseup', onClickOutside(element, binding));
         }

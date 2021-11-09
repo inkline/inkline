@@ -7,7 +7,7 @@ import {
     CollapsibleMixin,
     defaultPropValue,
     colorVariantClass,
-    sizePropValidator,
+    sizePropValidator
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
 import { Classes } from '@inkline/inkline/types';
@@ -34,7 +34,7 @@ export default defineComponent({
     mixins: [
         CollapsibleMixin
     ],
-    provide(): { navbar: any } {
+    provide (): { navbar: any } {
         return {
             navbar: this
         };
@@ -104,7 +104,7 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             return {
                 ...this.collapsibleClasses,
                 ...colorVariantClass(this),
@@ -113,12 +113,12 @@ export default defineComponent({
         }
     },
     methods: {
-        onItemClick() {
+        onItemClick () {
             if (this.collapseOnItemClick && this.open) {
                 this.setOpen(false);
             }
         },
-        onClickOutside() {
+        onClickOutside () {
             if (this.collapseOnClickOutside && this.open) {
                 this.setOpen(false);
             }

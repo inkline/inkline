@@ -3,7 +3,7 @@ import {
 } from './index';
 
 export default {
-    title: 'Utilities/Overflow',
+    title: 'Utilities/Overflow'
 };
 
 export const Basic = () => OverflowBasicExample;

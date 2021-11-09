@@ -18,7 +18,7 @@ export default defineComponent({
         }
     },
     computed: {
-        parts(): MarkSearchStringPart[] {
+        parts (): MarkSearchStringPart[] {
             return memoizedMarkSearchString(this.text, this.query);
         }
     }

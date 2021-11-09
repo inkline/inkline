@@ -58,7 +58,7 @@ module.exports = {
             size: 'md',
             color: 'light'
         },
-	    variables: [
+        variables: [
             {
                 name: 'background',
                 description: 'The background of the tabs component',
@@ -349,7 +349,7 @@ module.exports = {
                 name: 'header--padding',
                 description: 'The padding of the tabs component header',
                 value: ['var(----header--padding-top)', 'var(----header--padding-right)', 'var(----header--padding-bottom)', 'var(----header--padding-left)']
-            },
+            }
         ]
     }
 };

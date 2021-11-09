@@ -9,7 +9,7 @@ import { translate } from '@inkline/inkline/i18n';
  * @param path
  * @returns {*}
  */
-export function validateFormInput(schema: any, path = '') {
+export function validateFormInput (schema: any, path = '') {
     const errors: any[] = [];
 
     schema.valid = (schema.validators || []).reduce((acc: boolean, rawValidator: any) => {
@@ -26,8 +26,8 @@ export function validateFormInput(schema: any, path = '') {
                 ...params
             };
 
-            const errorMessage = (message instanceof Function ? message() : message)
-                || translate(`validation.${name}`, i18nParams);
+            const errorMessage = (message instanceof Function ? message() : message) ||
+                translate(`validation.${name}`, i18nParams);
 
             errors.push({ name, message: errorMessage, path });
         }
@@ -47,7 +47,7 @@ export function validateFormInput(schema: any, path = '') {
  * @param name
  * @returns {*}
  */
-export function validateFormGroup(schema: any, name = '') {
+export function validateFormGroup (schema: any, name = '') {
     schema.valid = Object.keys(schema)
         .filter((key) => !reservedValidationFields.includes(key))
         .reduce((acc, key) => {
@@ -70,6 +70,6 @@ export function validateFormGroup(schema: any, name = '') {
  * @param schema
  * @returns {*}
  */
-export function validate(schema: any) {
+export function validate (schema: any) {
     return validateFormGroup(schema, '');
 }

@@ -25,26 +25,26 @@ export default defineComponent({
          */
         for: {
             type: String,
-            default(): string {
+            default (): string {
                 return uid('tab');
             }
         }
     },
     computed: {
-        active(): boolean {
+        active (): boolean {
             return (this as any).tabs.active === this.for;
         },
-        classes(): Classes {
+        classes (): Classes {
             return {
                 '-active': this.active
             };
         },
-        name(): string {
+        name (): string {
             return this.for;
         }
     },
     methods: {
-        onClick() {
+        onClick () {
             (this as any).tabs.setActive(this.for);
         }
     }

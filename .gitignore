@@ -1,6 +1,7 @@
 node_modules
 dist
 lib
+storybook-static
 package
 coverage
 .idea

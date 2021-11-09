@@ -38,7 +38,7 @@ module.exports = {
             size: 'md',
             color: 'primary'
         },
-	    variables: [
+        variables: [
             {
                 name: 'color',
                 description: 'The color of the progress-bar component',

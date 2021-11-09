@@ -23,7 +23,7 @@ const Template = (args: any) => ({
         ICollapsibleBasicExample
     },
     setup: () => ({ args }),
-    template: '<ICollapsibleBasicExample v-bind="args" />',
+    template: '<ICollapsibleBasicExample v-bind="args" />'
 });
 
 export const Basic = Template.bind({});

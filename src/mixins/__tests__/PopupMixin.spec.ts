@@ -12,7 +12,7 @@ describe('mixins', () => {
                     const wrapper = createMockInstance(PopupMixin, {
                         $refs: {
                             wrapper: document.createElement('div'),
-                            popup: document.createElement('div'),
+                            popup: document.createElement('div')
                         }
                     });
 
@@ -36,7 +36,6 @@ describe('mixins', () => {
                 });
             });
 
-
             describe('destroyPopper()', () => {
                 it('should destroy popper instance', async () => {
                     const spy = jest.spyOn(PopupMixinModule, 'useBaseModifiers');
@@ -44,7 +43,7 @@ describe('mixins', () => {
                     const wrapper = createMockInstance(PopupMixin, {
                         $refs: {
                             wrapper: document.createElement('div'),
-                            popup: document.createElement('div'),
+                            popup: document.createElement('div')
                         }
                     });
 

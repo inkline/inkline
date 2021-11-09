@@ -9,13 +9,13 @@ import {
     IFormValidationValidatorsNumberExample,
     IFormValidationValidatorsRequiredExample,
     IFormValidationValidatorsSameAsExample,
-    IFormValidationValidatorsCustomExample,
+    IFormValidationValidatorsCustomExample
 } from './index';
 import { IForm } from '@inkline/inkline/components';
 
 export default {
     component: IForm,
-    title: 'Form Validation/Validators',
+    title: 'Form Validation/Validators'
 };
 
 export const Alpha = () => IFormValidationValidatorsAlphaExample;

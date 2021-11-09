@@ -41,7 +41,7 @@ module.exports = {
         }
     ],
     css: {
-	    selector: '.hamburger-menu',
+        selector: '.hamburger-menu',
         defaults: {
             size: 'md',
             color: 'light'

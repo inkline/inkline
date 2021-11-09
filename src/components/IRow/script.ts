@@ -514,8 +514,8 @@ import { Classes } from '@inkline/inkline/types';
  */
 
 const properties: { [key: string]: Prop<any> } = {};
-for (let breakpoint of breakpointKeys) {
-    for (let property of ['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between', 'reverse']) {
+for (const breakpoint of breakpointKeys) {
+    for (const property of ['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between', 'reverse']) {
         properties[`${property}${capitalizeFirst(breakpoint)}`] = {
             type: Boolean,
             default: false
@@ -539,7 +539,7 @@ export default defineComponent({
         ...properties
     },
     computed: {
-        classes(): Classes {
+        classes (): Classes {
             const responsiveClasses = Object.keys(properties)
                 .reduce((acc: { [key: string]: boolean }, property) => {
                     if ((this as any)[property]) {
@@ -548,7 +548,6 @@ export default defineComponent({
 
                     return acc;
                 }, {});
-
 
             return {
                 '-no-gutter': this.noGutter,

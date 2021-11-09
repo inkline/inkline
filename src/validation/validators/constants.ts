@@ -29,7 +29,7 @@ export const alpha: { [key: string]: RegExp } = {
     'tr-TR': /^[A-ZÇĞİıÖŞÜ]+$/i,
     'uk-UA': /^[А-ЩЬЮЯЄIЇҐі]+$/i,
     'ku-IQ': /^[ئابپتجچحخدرڕزژسشعغفڤقکگلڵمنوۆھەیێيطؤثآإأكضصةظذ]+$/i,
-    ar: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]+$/, // eslint-disable-line no-misleading-character-class
+    ar: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]+$/ // eslint-disable-line no-misleading-character-class
 };
 
 export const alphanumeric: { [key: string]: RegExp } = {
@@ -57,17 +57,17 @@ export const alphanumeric: { [key: string]: RegExp } = {
     'tr-TR': /^[0-9A-ZÇĞİıÖŞÜ]+$/i,
     'uk-UA': /^[0-9А-ЩЬЮЯЄIЇҐі]+$/i,
     'ku-IQ': /^[٠١٢٣٤٥٦٧٨٩0-9ئابپتجچحخدرڕزژسشعغفڤقکگلڵمنوۆھەیێيطؤثآإأكضصةظذ]+$/i,
-    'ar': /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]+$/ // eslint-disable-line no-misleading-character-class
+    ar: /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]+$/ // eslint-disable-line no-misleading-character-class
 };
 
 export const decimal: { [key: string]: string } = {
     'en-US': '.',
-    ar: '٫',
+    ar: '٫'
 };
 
 export const arabicLocales: string[] = [
     'AE', 'BH', 'DZ', 'EG', 'IQ', 'JO', 'KW', 'LB', 'LY',
-    'MA', 'QM', 'QA', 'SA', 'SD', 'SY', 'TN', 'YE',
+    'MA', 'QM', 'QA', 'SA', 'SD', 'SY', 'TN', 'YE'
 ];
 
 export const englishLocales: string[] = [
@@ -79,7 +79,7 @@ export const dotDecimal: string[] = ['ar-EG', 'ar-LB', 'ar-LY'];
 export const commaDecimal: string[] = [
     'bg-BG', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'en-ZM', 'es-ES', 'fr-FR', 'it-IT', 'ku-IQ',
     'hu-HU', 'nb-NO', 'nn-NO', 'nl-NL', 'pl-PL', 'pt-PT', 'ru-RU', 'sl-SI', 'sr-RS@latin',
-    'sr-RS', 'sv-SE', 'tr-TR', 'uk-UA',
+    'sr-RS', 'sv-SE', 'tr-TR', 'uk-UA'
 ];
 
 englishLocales.forEach((locale) => {
@@ -89,9 +89,9 @@ englishLocales.forEach((locale) => {
 });
 
 arabicLocales.forEach((locale) => {
-    alpha[`ar-${locale}`] = alpha['ar'];
-    alphanumeric[`ar-${locale}`] = alphanumeric['ar'];
-    decimal[`ar-${locale}`] = decimal['ar'];
+    alpha[`ar-${locale}`] = alpha.ar;
+    alphanumeric[`ar-${locale}`] = alphanumeric.ar;
+    decimal[`ar-${locale}`] = decimal.ar;
 });
 
 dotDecimal.forEach((locale) => {
@@ -99,7 +99,7 @@ dotDecimal.forEach((locale) => {
 });
 
 commaDecimal.forEach((locale: string) => {
-    decimal[locale] = decimal['ar'];
+    decimal[locale] = decimal.ar;
 });
 
 alpha['pt-BR'] = alpha['pt-PT'];

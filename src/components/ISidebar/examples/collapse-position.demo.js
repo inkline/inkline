@@ -1,9 +1,9 @@
 export default {
-    data() {
+    data () {
         return {
             relative: false,
             absolute: false,
-            fixed: false,
+            fixed: false
         };
     }
 };

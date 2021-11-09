@@ -11,7 +11,7 @@ describe('Helpers', () => {
             { children: [{ $options: { name: '5' } }] },
             { $children: [{ $options: { name: '6' } }] },
             { componentInstance: { $children: [{ $options: { name: '7' } }] } },
-            { $children: [{ $children: [{ $children: [{ $options: { name: '8' } }] }] }] },
+            { $children: [{ $children: [{ $children: [{ $options: { name: '8' } }] }] }] }
         ];
 
         it('should return undefined if no items in array', () => {
@@ -65,7 +65,7 @@ describe('Helpers', () => {
             { children: [{ $options: { name: '5' } }] },
             { $children: [{ $options: { name: '6' } }] },
             { componentInstance: { $children: [{ $options: { name: '7' } }] } },
-            { $children: [{ $children: [{ $children: [{ $options: { name: '8' } }] }] }] },
+            { $children: [{ $children: [{ $children: [{ $options: { name: '8' } }] }] }] }
         ];
 
         it('should return empty array if items is undefined', () => {

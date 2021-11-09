@@ -7,8 +7,8 @@ describe('Helpers', () => {
         let vendor: string | undefined;
 
         beforeAll(() => {
-            Object.defineProperty(global.navigator, 'userAgent', { get() { return userAgent; } });
-            Object.defineProperty(global.navigator, 'vendor', { get() { return vendor; } });
+            Object.defineProperty(global.navigator, 'userAgent', { get () { return userAgent; } });
+            Object.defineProperty(global.navigator, 'vendor', { get () { return vendor; } });
         });
 
         afterEach(() => {

@@ -32,7 +32,7 @@ describe('mixins', () => {
                 inklineGlobals.prototype = {
                     options: {
                         [propertyName]: propertyValueOption,
-                        componentOptions: {},
+                        componentOptions: {}
                     }
                 } as any;
 

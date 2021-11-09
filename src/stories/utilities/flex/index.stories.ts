@@ -12,11 +12,11 @@ import {
     FlexInlineFlexExample,
     FlexJustifyContentExample,
     FlexMarginAutoExample,
-    FlexOrderExample,
+    FlexOrderExample
 } from './index';
 
 export default {
-    title: 'Utilities/Flex',
+    title: 'Utilities/Flex'
 };
 
 export const AlignContent = () => FlexAlignContentExample;

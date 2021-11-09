@@ -4,7 +4,7 @@ import {
 } from './index';
 
 export default {
-    title: 'Utilities/Overlay',
+    title: 'Utilities/Overlay'
 };
 
 export const Basic = () => OverlayBasicExample;

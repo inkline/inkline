@@ -45,7 +45,7 @@ describe('Components', () => {
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         `-${props.color}`,
-                        `-${props.size}`,
+                        `-${props.size}`
                     );
                 });
             });

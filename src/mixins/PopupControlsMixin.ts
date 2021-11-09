@@ -17,14 +17,14 @@ export default defineComponent({
         }
     },
     emits: ['update:modelValue'],
-    data() {
+    data () {
         return {
             visible: this.modelValue,
             triggerStack: 0
         };
     },
     watch: {
-        modelValue(value) {
+        modelValue (value) {
             if (value) {
                 this.show();
             } else {
@@ -32,18 +32,18 @@ export default defineComponent({
             }
         }
     },
-    mounted() {
+    mounted () {
         if (!(this as any).$slots.default) {
             throw new Error('Popup components require one child element to be used as trigger.');
         }
 
         this.addEventListeners();
     },
-    beforeUnmount() {
+    beforeUnmount () {
         this.removeEventListeners();
     },
     methods: {
-        show() {
+        show () {
             if (this.disabled || this.visible) {
                 return;
             }
@@ -54,7 +54,7 @@ export default defineComponent({
             (this as any).createPopper();
             this.$emit('update:modelValue', true);
         },
-        hide() {
+        hide () {
             if (this.disabled || !this.visible) {
                 return;
             }
@@ -70,19 +70,19 @@ export default defineComponent({
                 this.$emit('update:modelValue', false);
             }
         },
-        onClick() {
+        onClick () {
             if (this.visible) {
                 this.hide();
             } else {
                 this.show();
             }
         },
-        onClickOutside() {
+        onClickOutside () {
             if (this.modelValue) return;
 
             this.hide();
         },
-        addEventListeners() {
+        addEventListeners () {
             [].concat((this as any).trigger).forEach((trigger) => {
                 switch (trigger) {
                 case 'hover':
@@ -103,7 +103,7 @@ export default defineComponent({
                 }
             });
         },
-        removeEventListeners() {
+        removeEventListeners () {
             [].concat((this as any).trigger).forEach((trigger) => {
                 switch (trigger) {
                 case 'hover':
@@ -124,7 +124,7 @@ export default defineComponent({
                 }
             });
         },
-        focusTrigger() {
+        focusTrigger () {
             for (const child of (this as any).$refs.trigger.children) {
                 if (focusFirstDescendant(child)) {
                     child.focus();

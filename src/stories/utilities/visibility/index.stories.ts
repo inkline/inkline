@@ -3,7 +3,7 @@ import {
 } from './index';
 
 export default {
-    title: 'Utilities/Visibility',
+    title: 'Utilities/Visibility'
 };
 
 export const Basic = () => VisibilityBasicExample;
