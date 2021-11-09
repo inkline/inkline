@@ -19,4 +19,19 @@ module.exports = {
         config.resolve.alias['@inkline/inkline'] = path.resolve(__dirname, '..', 'src');
         return config;
     },
+    managerWebpack: async (config) => {
+        const configHtmlWebPackPlugin = config.plugins.find(plugin => plugin.constructor.name === 'HtmlWebpackPlugin');
+        const { templateParameters } = configHtmlWebPackPlugin.options;
+
+        configHtmlWebPackPlugin.options.publicPath = '/storybook/';
+        config.output.publicPath = '/storybook/'
+        configHtmlWebPackPlugin.options.templateParameters = (compilation, files, options) => {
+            oriReturn = templateParameters(compilation, files, options);
+            oriReturn.globals.PREVIEW_URL = '/storybook/iframe.html';
+
+            return oriReturn;
+        }
+
+        return config;
+    }
 }
