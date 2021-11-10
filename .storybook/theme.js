@@ -3,7 +3,7 @@ import logo from './public/logo.png';
 
 export default create({
     base: 'light',
-    brandTitle: 'inkline',
+    brandTitle: 'Inkline',
     brandUrl: 'https://inkline.io',
     brandImage: logo
 });
