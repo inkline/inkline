@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IPopover } from '@inkline/inkline/components';
 import { keymap } from '@inkline/inkline/constants';
+import { Placeholder, PlaceholderButton } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IPopover', () => {
@@ -11,10 +12,10 @@ describe('Components', () => {
         };
 
         const slots = {
-            default: ['<button />'],
-            header: ['Header'],
-            body: ['Body'],
-            footer: ['Footer']
+            default: [PlaceholderButton],
+            header: [Placeholder],
+            body: [Placeholder],
+            footer: [Placeholder]
         };
 
         it('should be named correctly', () => {

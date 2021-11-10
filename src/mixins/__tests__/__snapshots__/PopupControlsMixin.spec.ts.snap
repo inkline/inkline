@@ -2,9 +2,9 @@
 
 exports[`mixins PopupControlsMixin should render correctly 1`] = `
 <div>
-  <div class="trigger"><button>Trigger</button></div>
+  <div class="trigger"><button> Button </button></div>
   <div role="tooltip" style="display: none;">
-    <div>Content</div>
+    <div> Placeholder </div>
   </div>
 </div>
 `;

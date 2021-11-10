@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IAlert } from '@inkline/inkline/components';
+import { Placeholder } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IAlert', () => {
@@ -22,7 +23,7 @@ describe('Components', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(IAlert, {
                         slots: {
-                            icon: '<svg></svg>'
+                            icon: [Placeholder]
                         },
                         props: {
                             dismissible: true,

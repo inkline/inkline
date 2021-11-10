@@ -1,5 +1,6 @@
 import { PopupControlsMixin } from '@inkline/inkline/mixins';
 import { fireEvent, render } from '@testing-library/vue';
+import { Placeholder, PlaceholderButton } from '@inkline/inkline/__mocks__';
 
 describe('mixins', () => {
     describe('PopupControlsMixin', () => {
@@ -20,8 +21,8 @@ describe('mixins', () => {
         };
 
         const slots = {
-            default: ['<button>Trigger</button>'],
-            body: ['<div>Content</div>']
+            default: [PlaceholderButton],
+            body: [Placeholder]
         };
 
         it('should render correctly', () => {

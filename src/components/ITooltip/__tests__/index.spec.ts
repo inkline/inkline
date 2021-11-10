@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ITooltip } from '@inkline/inkline/components';
 import { keymap } from '@inkline/inkline/constants';
+import { Placeholder, PlaceholderButton } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('ITooltip', () => {
@@ -11,8 +12,8 @@ describe('Components', () => {
         };
 
         const slots = {
-            default: ['<button />'],
-            body: ['Body']
+            default: [PlaceholderButton],
+            body: [Placeholder]
         };
 
         it('should be named correctly', () => {

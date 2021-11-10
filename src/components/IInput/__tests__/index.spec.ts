@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IInput } from '@inkline/inkline/components';
+import { Placeholder } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IInput', () => {
@@ -45,10 +46,10 @@ describe('Components', () => {
                             ...props
                         },
                         slots: {
-                            prefix: ['<div />'],
-                            suffix: ['<div />'],
-                            prepend: ['<div />'],
-                            append: ['<div />']
+                            prefix: [Placeholder],
+                            suffix: [Placeholder],
+                            prepend: [Placeholder],
+                            append: [Placeholder]
                         }
                     });
 
