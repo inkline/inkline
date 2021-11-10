@@ -1,4 +1,29 @@
-const path = require('path');
+function webpackInjectPublicPath(webpackConfig, publicPath) {
+    const configHtmlWebPackPlugin = webpackConfig.plugins.find(
+        (plugin) => plugin.constructor.name === 'HtmlWebpackPlugin',
+    );
+    const templateParameters = configHtmlWebPackPlugin.options.templateParameters
+
+    configHtmlWebPackPlugin.options.publicPath = publicPath;
+    webpackConfig.output.publicPath = publicPath;
+
+    configHtmlWebPackPlugin.options.templateParameters = (compilation, files, options) => {
+        const result = templateParameters(compilation, files, options);
+        result.globals.PREVIEW_URL = `${publicPath}iframe.html`;
+        return result;
+    }
+}
+
+function viteHtmlPlugin() {
+    return {
+        name: 'html',
+        transform (code, id) {
+            if (/\.html$/.test(id)) {
+                return `export default ${JSON.stringify(code)}`;
+            }
+        }
+    };
+}
 
 module.exports = {
     stories: [
@@ -13,25 +38,22 @@ module.exports = {
     core: {
         builder: "storybook-builder-vite"
     },
-    async viteFinal(config) {
-        config.configFile = "./vite.storybook.config.js";
+    async viteFinal(config, { configType }) {
+        if (configType === 'DEVELOPMENT') {
+            config.plugins.push(viteHtmlPlugin());
+        } else {
+            config.base = "/storybook/";
+        }
+
+        config.configFile = "./vite.common.config.js";
         config.plugins = config.plugins.filter((plugin) => !['vite:vue'].includes(plugin.name));
-        config.resolve.alias['@inkline/inkline'] = path.resolve(__dirname, '..', 'src');
         return config;
     },
-    managerWebpack: async (config) => {
-        const configHtmlWebPackPlugin = config.plugins.find(plugin => plugin.constructor.name === 'HtmlWebpackPlugin');
-        const { templateParameters } = configHtmlWebPackPlugin.options;
-
-        configHtmlWebPackPlugin.options.publicPath = '/storybook/';
-        config.output.publicPath = '/storybook/'
-        configHtmlWebPackPlugin.options.templateParameters = (compilation, files, options) => {
-            oriReturn = templateParameters(compilation, files, options);
-            oriReturn.globals.PREVIEW_URL = '/storybook/iframe.html';
-
-            return oriReturn;
+    managerWebpack: async (config, { configType }) => {
+        if (configType !== 'DEVELOPMENT') {
+            webpackInjectPublicPath(config, '/storybook/');
         }
 
         return config;
-    }
+    },
 }
