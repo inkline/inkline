@@ -1,4 +1,6 @@
 ---
+processors:
+    - stylelint-processor-html
 plugins:
     - stylelint-scss
 extends:
@@ -28,6 +30,7 @@ rules:
     indentation: 4
     max-line-length: null
     no-descending-specificity: null
+    no-empty-source: null
     number-max-precision: null
     property-no-vendor-prefix: null
     scss/comment-no-empty: null
