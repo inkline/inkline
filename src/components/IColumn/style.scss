@@ -27,8 +27,8 @@
 //
 @mixin column-fixed-width($columns, $columns-count) {
     flex-grow: 1;
-    flex-basis: percentage(math.div($columns-count, $columns));
-    max-width: percentage(math.div($columns-count, $columns));
+    flex-basis: math.percentage(math.div($columns-count, $columns));
+    max-width: math.percentage(math.div($columns-count, $columns));
 }
 
 /**
@@ -102,19 +102,19 @@
                 // Column offset
                 //
                 &.-offset#{$breakpoint}-#{$column-count} {
-                    margin-left: percentage(math.div($column-count, $columns));
+                    margin-left: math.percentage(math.div($column-count, $columns));
                 }
 
                 // Column push
                 //
                 &.-push#{$breakpoint}-#{$column-count} {
-                    left: percentage(math.div($column-count, $columns));
+                    left: math.percentage(math.div($column-count, $columns));
                 }
 
                 // Column pull
                 //
                 &.-pull#{$breakpoint}-#{$column-count} {
-                    right: percentage(math.div($column-count, $columns));
+                    right: math.percentage(math.div($column-count, $columns));
                 }
             }
         }

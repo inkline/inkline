@@ -1,3 +1,5 @@
+@use 'sass:list';
+@use 'sass:color';
 @use 'sass:math';
 
 // Return opaque color
@@ -48,9 +50,9 @@ $linear-channel-values: 0 0.0003035269835488375 0.000607053967097675 0.000910580
 // See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
 //
 @function luminance($color) {
-    $red: nth($linear-channel-values, red($color) + 1);
-    $green: nth($linear-channel-values, green($color) + 1);
-    $blue: nth($linear-channel-values, blue($color) + 1);
+    $red: list.nth($linear-channel-values, color.red($color) + 1);
+    $green: list.nth($linear-channel-values, color.green($color) + 1);
+    $blue: list.nth($linear-channel-values, color.blue($color) + 1);
 
     @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
 }
@@ -63,7 +65,7 @@ $linear-channel-values: 0 0.0003035269835488375 0.000607053967097675 0.000910580
     $backgroundLuminance: luminance($background) + 0.05;
     $foregroundLuminance: luminance($foreground) + 0.05;
 
-    @return math.div(max($backgroundLuminance, $foregroundLuminance), min($backgroundLuminance, $foregroundLuminance));
+    @return math.div(math.max($backgroundLuminance, $foregroundLuminance), math.min($backgroundLuminance, $foregroundLuminance));
 }
 
 // Get contrast text color for a background color by calculating the luminance

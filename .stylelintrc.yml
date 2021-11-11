@@ -5,11 +5,7 @@ extends:
     - stylelint-config-standard
     - stylelint-config-recommended-scss
 rules:
-    indentation: 4
-    custom-property-empty-line-before: null
-    value-keyword-case: null
-    no-descending-specificity: null
-    color-hex-length: null
+    alpha-value-notation: null
     at-rule-empty-line-before:
         -   always
         -   ignore:
@@ -20,5 +16,22 @@ rules:
                 -   else
                 -   else if
                 -   each
+    at-rule-no-vendor-prefix: null
     block-closing-brace-newline-after: null
+    color-function-notation: null
+    color-hex-length: null
+    custom-property-empty-line-before: null
+    custom-property-no-missing-var-function: null
+    custom-property-pattern: null
+    declaration-block-no-redundant-longhand-properties: null
+    function-calc-no-unspaced-operator: null
+    indentation: 4
+    max-line-length: null
+    no-descending-specificity: null
+    number-max-precision: null
+    property-no-vendor-prefix: null
+    scss/comment-no-empty: null
+    selector-class-pattern: null
+    string-quotes: null
+    value-keyword-case: null
     value-list-max-empty-lines: null

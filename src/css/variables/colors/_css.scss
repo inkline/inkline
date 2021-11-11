@@ -1,12 +1,14 @@
+@use "sass:color";
+
 // Colors
 //
 
 :root {
     @each $color-key, $color-value in $colors {
         @if not (str-index($color-key, '0')) {
-            $h: hue($color-value);
-            $s: saturation($color-value);
-            $l: lightness($color-value);
+            $h: color.hue($color-value);
+            $s: color.saturation($color-value);
+            $l: color.lightness($color-value);
 
             --color--#{$color-key}--h: #{$h};
             --color--#{$color-key}--s: #{$s};
