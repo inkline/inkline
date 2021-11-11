@@ -23,7 +23,7 @@ const remove = [
     for (const entry of rename) {
         try {
             await fs.promises.rename(entry.from, entry.to);
-        } catch (err) {
+        } catch (err: any) {
             console.log(err.message);
         }
     }
@@ -31,7 +31,7 @@ const remove = [
     for (const entry of remove) {
         try {
             await fs.promises[entry.dir ? 'rmdir' : 'rm'](entry.from, { recursive: true });
-        } catch (err) {
+        } catch (err: any) {
             console.log(err.message);
         }
     }

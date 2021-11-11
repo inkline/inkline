@@ -14,6 +14,34 @@ function webpackInjectPublicPath(webpackConfig, publicPath) {
     }
 }
 
+function viteForceBundleDependencies() {
+    const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
+
+    return {
+        name: 'force-bundle-config-dep',
+        enforce: 'pre',
+        transform(code, id) {
+            if (id !== virtualFileId) {
+                return;
+            }
+
+            // match last node_modules
+            // .../node_modules/.../node_modules/yy/zz -> yy/zz
+            const transformedCode = code.replace(
+                /import \* as (config_.*?) from '.*\/node_modules\/(.*?)'/g,
+                (_substr, name, mpath) => {
+                    return `import * as ${name} from '${mpath}'`;
+                }
+            );
+
+            return {
+                code: transformedCode,
+                map: null,
+            };
+        },
+    };
+}
+
 function viteHtmlPlugin() {
     return {
         name: 'html',
@@ -46,7 +74,9 @@ module.exports = {
         }
 
         config.configFile = "./vite.common.config.js";
-        config.plugins = config.plugins.filter((plugin) => !['vite:vue'].includes(plugin.name));
+        config.plugins = config.plugins
+            .filter((plugin) => !['vite:vue'].includes(plugin.name));
+            // .concat([viteForceBundleDependencies()]);
         return config;
     },
     managerWebpack: async (config, { configType }) => {
