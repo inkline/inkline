@@ -1,5 +1,7 @@
+@use 'sass:map';
+
 @mixin popup($popup: ( 'z-index': 2000 )) {
-    $_z-index: map_get($popup, 'z-index');
+    $_z-index: map.get($popup, 'z-index');
 
     position: fixed;
     z-index: $_z-index;
@@ -75,8 +77,8 @@
 }
 
 @mixin popup-arrow-size-variant($arrow: ( 'size': 6px, 'margin': 6px )) {
-    $_size: map_get($arrow, 'size');
-    $_margin: map_get($arrow, 'margin');
+    $_size: map.get($arrow, 'size');
+    $_margin: map.get($arrow, 'margin');
 
     > [data-popper-arrow] {
         &,
@@ -145,8 +147,8 @@
 }
 
 @mixin popup-arrow-color-variant-for-side($side, $arrow) {
-    $_background: map_get($arrow, 'background');
-    $_border-color: map_get($arrow, 'border-color');
+    $_background: map.get($arrow, 'background');
+    $_border-color: map.get($arrow, 'border-color');
 
     &[data-popper-placement^="#{$side}"] > [data-popper-arrow] {
         border-#{$side}-color: $_border-color;
@@ -163,23 +165,23 @@
     'bottom': #bcbcbc,
     'left': #bcbcbc
 ))) {
-    $background: map-get($arrow, 'background');
-    $border-color: map-get($arrow, 'border-color');
+    $background: map.get($arrow, 'background');
+    $border-color: map.get($arrow, 'border-color');
 
     @include popup-arrow-color-variant-for-side('top', (
         'background': $background,
-        'border-color': map-get($border-color, 'top')
+        'border-color': map.get($border-color, 'top')
     ));
     @include popup-arrow-color-variant-for-side('bottom', (
         'background': $background,
-        'border-color': map-get($border-color, 'bottom')
+        'border-color': map.get($border-color, 'bottom')
     ));
     @include popup-arrow-color-variant-for-side('left', (
         'background': $background,
-        'border-color': map-get($border-color, 'left')
+        'border-color': map.get($border-color, 'left')
     ));
     @include popup-arrow-color-variant-for-side('right', (
         'background': $background,
-        'border-color': map-get($border-color, 'right')
+        'border-color': map.get($border-color, 'right')
     ));
 }

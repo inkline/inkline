@@ -1,3 +1,5 @@
+@use "sass:list";
+
 // Breakpoints
 //
 // Define the minimum dimensions at which the layout will
@@ -21,7 +23,7 @@ $breakpoints: (
 ) !default;
 
 $breakpoint-keys: ('xs', 'sm', 'md', 'lg', 'xl', 'xxl') !default;
-$breakpoint-prefix-keys: append($breakpoint-keys, '_') !default;
+$breakpoint-prefix-keys: list.append($breakpoint-keys, '_') !default;
 
 // Returns breakpoint value
 //

@@ -1,5 +1,7 @@
 /* stylelint-disable scss/media-feature-value-dollar-variable */
 
+@use 'sass:list';
+
 // Breakpoints
 //
 
@@ -17,8 +19,8 @@
             @content;
         }
     } @else if contains($breakpoint-keys, $media) {
-        $index: index($breakpoint-keys, $media);
-        $next-media: nth($breakpoint-keys, $index + 1);
+        $index: list.index($breakpoint-keys, $media);
+        $next-media: list.nth($breakpoint-keys, $index + 1);
 
         @media screen and (min-width: breakpoint($media)) and (max-width: breakpoint($next-media) - 1) {
             @content;
@@ -36,11 +38,11 @@
     @if $media == 'xxl' {
         @content;
     } @else if contains($breakpoint-keys, $media) {
-        $index: index($breakpoint-keys, $media);
+        $index: list.index($breakpoint-keys, $media);
         $next-media: null;
 
         @if $index + 1 <= length($breakpoint-keys) {
-            $next-media: nth($breakpoint-keys, $index + 1);
+            $next-media: list.nth($breakpoint-keys, $index + 1);
         }
 
         @media screen and (max-width: breakpoint($next-media) - 1) {

@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Typography
 //
 
@@ -151,7 +153,7 @@ $display--line-height: $heading--line-height !default;
 // Links
 //
 $link--color: color('primary') !default;
-$link--color--hover: lighten($color-primary, 10%) !default;
+$link--color--hover: color.adjust($color-primary, $lightness: 10%) !default;
 $link--decoration: none !default;
 $link--decoration--hover: underline !default;
 

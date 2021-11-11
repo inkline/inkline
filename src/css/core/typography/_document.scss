@@ -1,3 +1,5 @@
+@use "sass:string";
+
 /**
  * Document
  */
@@ -19,5 +21,5 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -moz-font-feature-settings: unquote('"liga" on');
+    -moz-font-feature-settings: string.unquote('"liga" on');
 }
