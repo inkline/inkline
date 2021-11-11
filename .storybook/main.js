@@ -1,3 +1,5 @@
+const {resolve} = require("path");
+
 function webpackInjectPublicPath(webpackConfig, publicPath) {
     const configHtmlWebPackPlugin = webpackConfig.plugins.find(
         (plugin) => plugin.constructor.name === 'HtmlWebpackPlugin',
@@ -54,6 +56,10 @@ function viteHtmlPlugin() {
 }
 
 module.exports = {
+    framework: '@storybook/vue3',
+    features: {
+        storyStoreV7: true,
+    },
     stories: [
         "../src/**/*.stories.mdx",
         "../src/**/*.stories.@(js|jsx|ts|tsx)"
@@ -67,16 +73,30 @@ module.exports = {
         builder: "storybook-builder-vite"
     },
     async viteFinal(config, { configType }) {
+        config.resolve.alias = [
+            {
+                find: /^@inkline\/inkline\//,
+                replacement: `${resolve(__dirname)}/../src/`
+            },
+            {
+                find: /^~@inkline\/icons/,
+                replacement: '@inkline/icons'
+            }
+        ];
+
         if (configType === 'DEVELOPMENT') {
-            config.plugins.push(viteHtmlPlugin());
+            config.plugins = config.plugins.concat([
+                viteHtmlPlugin(),
+                // viteForceBundleDependencies()
+            ]);
+            config.resolve.alias.push({
+                find: 'vue',
+                replacement: 'vue/dist/vue.esm-bundler.js'
+            })
         } else {
             config.base = "/storybook/";
         }
 
-        config.configFile = "./vite.common.config.js";
-        config.plugins = config.plugins
-            .filter((plugin) => !['vite:vue'].includes(plugin.name));
-            // .concat([viteForceBundleDependencies()]);
         return config;
     },
     managerWebpack: async (config, { configType }) => {
