@@ -23,6 +23,11 @@ export default defineConfig({
             {
                 find: /^@inkline\/inkline\//,
                 replacement: `${resolve(__dirname)}/src/`
+            },
+            // Replacement used in .scss when importing files from node_modules using ~ pattern
+            {
+                find: /^~@inkline\/icons/,
+                replacement: '@inkline/icons'
             }
         ]
     },
