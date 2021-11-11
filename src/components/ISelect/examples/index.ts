@@ -55,6 +55,3 @@ export { default as ISelectRenderingValueByPathExampleJS } from './rendering-val
 export { default as ISelectRenderingScopedSlotExample } from './rendering-scoped-slot.vue';
 export { default as ISelectRenderingScopedSlotExampleHTML } from './rendering-scoped-slot.html';
 export { default as ISelectRenderingScopedSlotExampleJS } from './rendering-scoped-slot.js?raw';
-export { default as ISelectTypeExample } from './type.vue';
-export { default as ISelectTypeExampleHTML } from './type.html';
-export { default as ISelectTypeExampleJS } from './type.js?raw';

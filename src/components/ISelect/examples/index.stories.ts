@@ -18,10 +18,12 @@ import {
     ISelectReadonlyExample,
     ISelectRenderingRenderFunctionExample,
     ISelectRenderingValueByPathExample,
-    ISelectRenderingScopedSlotExample,
-    ISelectTypeExample
+    ISelectRenderingScopedSlotExample
 } from './index';
 import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { useServer } from '@inkline/inkline/__mocks__/useServer';
+
+useServer();
 
 export default {
     component: ISelect,
@@ -59,4 +61,3 @@ export const Readonly = () => ISelectReadonlyExample;
 export const RenderingRenderFunction = () => ISelectRenderingRenderFunctionExample;
 export const RenderingValueByPath = () => ISelectRenderingValueByPathExample;
 export const RenderingScopedSlot = () => ISelectRenderingScopedSlotExample;
-export const Type = () => ISelectTypeExample;
