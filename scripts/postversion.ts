@@ -14,7 +14,7 @@ const copy = [
     for (const entry of copy) {
         try {
             await fse.copy(entry.from, entry.to);
-        } catch (err) {
+        } catch (err: any) {
             console.log(err.message);
         }
     }
