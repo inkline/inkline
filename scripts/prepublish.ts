@@ -40,7 +40,7 @@ const copy = [
     for (const entry of remove) {
         try {
             await fs.promises[entry.dir ? 'rmdir' : 'rm'](entry.from, { recursive: true });
-        } catch (err) {
+        } catch (err: any) {
             console.log(err.message);
         }
     }
@@ -48,7 +48,7 @@ const copy = [
     for (const entry of mkdir) {
         try {
             await fs.promises.mkdir(entry.from, { recursive: true });
-        } catch (err) {
+        } catch (err: any) {
             console.log(err.message);
         }
     }
@@ -56,7 +56,7 @@ const copy = [
     for (const entry of copy) {
         try {
             await fse.copy(entry.from, entry.to);
-        } catch (err) {
+        } catch (err: any) {
             console.log(err.message);
         }
     }
