@@ -5,7 +5,7 @@ import {
     IBadgeHeadingExample,
     IBadgeSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IBadge,
@@ -16,15 +16,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IBadgeBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IBadgeBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IBadgeBasicExample);
 export const ColorVariants = () => IBadgeColorVariantsExample;
 export const Heading = () => IBadgeHeadingExample;
 export const SizeVariants = () => IBadgeSizeVariantsExample;

@@ -1,7 +1,5 @@
+import { h } from 'vue';
+
 export const createStory = (Component: any) => (args: any) => ({
-    components: {
-        Component
-    },
-    setup: () => ({ args }),
-    template: '<Component class="storybook-example" v-bind="args" />'
+    setup: () => () => h(Component, { class: 'storybook-example', ...args })
 });

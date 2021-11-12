@@ -7,7 +7,7 @@ import {
     ICollapsibleHeaderExample,
     ICollapsibleSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ICollapsible,
@@ -18,15 +18,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        ICollapsibleBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<ICollapsibleBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(ICollapsibleBasicExample);
 export const Accordion = () => ICollapsibleAccordionExample;
 export const ColorVariants = () => ICollapsibleColorVariantsExample;
 export const DefaultOpen = () => ICollapsibleDefaultOpenExample;

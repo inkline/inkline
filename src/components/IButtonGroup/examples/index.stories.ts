@@ -10,21 +10,14 @@ import {
     IButtonGroupVerticalBlockExample,
     IButtonGroupVerticalSizeVariantsExample
 } from './index';
+import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IButtonGroup,
     title: 'Components/ButtonGroup'
 };
 
-const Template = (args: any) => ({
-    components: {
-        IButtonGroupBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IButtonGroupBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IButtonGroupBasicExample);
 export const Block = () => IButtonGroupBlockExample;
 export const Disabled = () => IButtonGroupDisabledExample;
 export const Nested = () => IButtonGroupNestedExample;

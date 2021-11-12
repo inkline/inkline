@@ -10,7 +10,7 @@ import {
     IFormGroupSizeVariantsMdExample,
     IFormGroupSizeVariantsLgExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IFormGroup,
@@ -21,15 +21,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IFormGroupBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IFormGroupBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IFormGroupBasicExample);
 export const Disabled = () => IFormGroupDisabledExample;
 export const Nesting = () => IFormGroupNestingExample;
 export const NestingDisabled = () => IFormGroupNestingDisabledExample;

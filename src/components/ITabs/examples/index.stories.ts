@@ -5,7 +5,7 @@ import {
     ITabsSizeVariantsExample,
     ITabsStretchExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ITabs,
@@ -16,15 +16,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        ITabsBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<ITabsBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(ITabsBasicExample);
 export const ColorVariants = () => ITabsColorVariantsExample;
 export const SizeVariants = () => ITabsSizeVariantsExample;
 export const Stretch = () => ITabsStretchExample;

@@ -12,7 +12,7 @@ import {
     IInputPrefixSuffixExample,
     IInputTypeExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IInput,
@@ -23,15 +23,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IInputBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IInputBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IInputBasicExample);
 export const ColorVariants = () => IInputColorVariantsExample;
 export const Clearable = () => IInputClearableExample;
 export const Disabled = () => IInputDisabledExample;

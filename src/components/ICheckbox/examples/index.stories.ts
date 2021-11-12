@@ -12,7 +12,7 @@ import {
     ICheckboxReadonlyExample,
     ICheckboxSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ICheckbox,
@@ -23,15 +23,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        ICheckboxBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<ICheckboxBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(ICheckboxBasicExample);
 export const ColorVariants = () => ICheckboxColorVariantsExample;
 export const Disabled = () => ICheckboxDisabledExample;
 export const Group = () => ICheckboxGroupExample;

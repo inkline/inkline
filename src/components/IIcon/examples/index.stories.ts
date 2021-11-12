@@ -5,7 +5,7 @@ import {
     IIconColorVariantsExample,
     IIconSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IIcon,
@@ -23,15 +23,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IIconBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IIconBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IIconBasicExample);
 export const Icons = () => IIconIconsExample;
 export const ColorVariants = () => IIconColorVariantsExample;
 export const SizeVariants = () => IIconSizeVariantsExample;

@@ -7,7 +7,7 @@ import {
     ITooltipPlacementExample,
     ITooltipTriggerExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ITooltip,
@@ -18,13 +18,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: { ITooltipBasicExample },
-    setup: () => ({ args }),
-    template: '<ITooltipBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(ITooltipBasicExample);
 export const ColorVariants = () => ITooltipColorVariantsExample;
 export const SizeVariants = () => ITooltipSizeVariantsExample;
 export const Freeform = () => ITooltipFreeformExample;

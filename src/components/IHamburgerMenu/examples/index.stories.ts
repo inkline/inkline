@@ -4,7 +4,7 @@ import {
     IHamburgerMenuBasicExample,
     IHamburgerMenuColorVariantsExample
 } from './index';
-import { colorArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IHamburgerMenu,
@@ -14,14 +14,6 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IHamburgerMenuBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IHamburgerMenuBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IHamburgerMenuBasicExample);
 export const Animation = () => IHamburgerMenuAnimationExample;
 export const ColorVariants = () => IHamburgerMenuColorVariantsExample;

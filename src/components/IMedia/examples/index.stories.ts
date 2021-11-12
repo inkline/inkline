@@ -4,7 +4,7 @@ import {
     IMediaBasicExample,
     IMediaNestingExample
 } from './index';
-import { sizeArgType } from '@inkline/inkline/__storybook__';
+import { createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IMedia,
@@ -14,14 +14,6 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IMediaBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IMediaBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IMediaBasicExample);
 export const Alignment = () => IMediaAlignmentExample;
 export const Nesting = () => IMediaNestingExample;

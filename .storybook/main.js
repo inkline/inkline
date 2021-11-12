@@ -90,10 +90,10 @@ module.exports = {
                 // viteForceBundleDependencies()
             ]);
 
-            config.resolve.alias.push({
-                find: /^vue$/,
-                replacement: 'vue/dist/vue.esm-bundler.js'
-            });
+            // config.resolve.alias.push({
+            //     find: /^vue$/,
+            //     replacement: 'vue/dist/vue.esm-bundler.js'
+            // });
 
             config.server.force = false;
         } else {

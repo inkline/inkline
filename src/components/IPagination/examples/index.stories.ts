@@ -7,7 +7,7 @@ import {
     IPaginationQuickLinksExample,
     IPaginationSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IPagination,
@@ -18,15 +18,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IPaginationBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IPaginationBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IPaginationBasicExample);
 export const ColorVariants = () => IPaginationColorVariantsExample;
 export const Limit = () => IPaginationLimitExample;
 export const LimitResponsive = () => IPaginationLimitResponsiveExample;

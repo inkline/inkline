@@ -7,7 +7,7 @@ import {
     ITableResponsiveExample,
     ITableStripedExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ITable,
@@ -18,15 +18,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        ITableBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<ITableBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(ITableBasicExample);
 export const Bordered = () => ITableBorderedExample;
 export const ColorVariants = () => ITableColorVariantsExample;
 export const Hover = () => ITableHoverExample;
