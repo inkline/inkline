@@ -89,10 +89,13 @@ module.exports = {
                 viteHtmlPlugin(),
                 // viteForceBundleDependencies()
             ]);
+
             config.resolve.alias.push({
-                find: 'vue',
+                find: /^vue$/,
                 replacement: 'vue/dist/vue.esm-bundler.js'
-            })
+            });
+
+            config.server.force = false;
         } else {
             config.base = "/storybook/";
         }
