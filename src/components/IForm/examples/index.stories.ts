@@ -7,7 +7,7 @@ import {
     IFormSizeVariantsMdExample,
     IFormSizeVariantsLgExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IForm,
@@ -18,15 +18,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IFormBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IFormBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IFormBasicExample);
 export const Disabled = () => IFormDisabledExample;
 export const Readonly = () => IFormReadonlyExample;
 export const SizeVariantsSm = () => IFormSizeVariantsSmExample;

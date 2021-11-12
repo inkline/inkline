@@ -7,7 +7,7 @@ import {
     IAlertIconExample,
     IAlertSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import {colorArgType, createStory, sizeArgType} from '@inkline/inkline/__storybook__';
 
 export default {
     component: IAlert,
@@ -18,15 +18,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IAlertBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IAlertBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IAlertBasicExample);
 export const ColorVariants = () => IAlertColorVariantsExample;
 export const Dismissible = () => IAlertDismissibleExample;
 export const Content = () => IAlertContentExample;

@@ -12,7 +12,7 @@ import {
     ISidebarRoutingExample,
     ISidebarRoutingActiveExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ISidebar,
@@ -23,15 +23,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        ISidebarBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<ISidebarBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(ISidebarBasicExample);
 export const CollapseBreakpoint = () => ISidebarCollapseBreakpointExample;
 export const CollapseTrue = () => ISidebarCollapseTrueExample;
 export const CollapseFalse = () => ISidebarCollapseFalseExample;

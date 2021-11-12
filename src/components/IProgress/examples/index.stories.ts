@@ -7,7 +7,7 @@ import {
     IProgressStackedExample,
     IProgressValueExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IProgress,
@@ -18,15 +18,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IProgressBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IProgressBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IProgressBasicExample);
 export const BarColorVariants = () => IProgressBarColorVariantsExample;
 export const ColorVariants = () => IProgressColorVariantsExample;
 export const SizeVariants = () => IProgressSizeVariantsExample;

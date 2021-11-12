@@ -20,7 +20,7 @@ import {
     ISelectRenderingValueByPathExample,
     ISelectRenderingScopedSlotExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 import { useServer } from '@inkline/inkline/__mocks__/useServer';
 
 useServer();
@@ -34,15 +34,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        ISelectBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<ISelectBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(ISelectBasicExample);
 export const Advanced = () => ISelectAdvancedExample;
 export const Autocomplete = () => ISelectAutocompleteExample;
 export const AutocompleteAsync = () => ISelectAutocompleteAsyncExample;

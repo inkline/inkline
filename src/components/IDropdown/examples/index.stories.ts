@@ -11,7 +11,7 @@ import {
     IDropdownStateActiveExample,
     IDropdownTriggerExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IDropdown,
@@ -22,15 +22,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IDropdownBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IDropdownBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IDropdownBasicExample);
 export const ColorVariants = () => IDropdownColorVariantsExample;
 export const HeaderFooter = () => IDropdownHeaderFooterExample;
 export const SizeVariants = () => IDropdownSizeVariantsExample;

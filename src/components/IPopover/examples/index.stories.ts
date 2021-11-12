@@ -6,7 +6,7 @@ import {
     IPopoverPlacementExample,
     IPopoverTriggerExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IPopover,
@@ -17,15 +17,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IPopoverBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IPopoverBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IPopoverBasicExample);
 export const ColorVariants = () => IPopoverColorVariantsExample;
 export const SizeVariants = () => IPopoverSizeVariantsExample;
 export const Placement = () => IPopoverPlacementExample;

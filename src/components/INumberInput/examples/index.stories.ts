@@ -14,7 +14,7 @@ import {
     INumberInputPrependAppendDropdownExample,
     INumberInputPrefixSuffixExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: INumberInput,
@@ -25,15 +25,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        INumberInputBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<INumberInputBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(INumberInputBasicExample);
 export const ColorVariants = () => INumberInputColorVariantsExample;
 export const Clearable = () => INumberInputClearableExample;
 export const Disabled = () => INumberInputDisabledExample;

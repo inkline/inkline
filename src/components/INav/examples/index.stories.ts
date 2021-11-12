@@ -7,7 +7,7 @@ import {
     INavStateActiveExample,
     INavVerticalExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: INav,
@@ -18,15 +18,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        INavBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<INavBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(INavBasicExample);
 export const ColorVariants = () => INavColorVariantsExample;
 export const Routing = () => INavRoutingExample;
 export const SizeVariants = () => INavSizeVariantsExample;

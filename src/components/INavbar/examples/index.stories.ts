@@ -12,7 +12,7 @@ import {
     INavbarRoutingExample,
     INavbarRoutingActiveExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: INavbar,
@@ -23,15 +23,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        INavbarBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<INavbarBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(INavbarBasicExample);
 export const CollapseBreakpoint = () => INavbarCollapseBreakpointExample;
 export const CollapseTrue = () => INavbarCollapseTrueExample;
 export const CollapseFalse = () => INavbarCollapseFalseExample;

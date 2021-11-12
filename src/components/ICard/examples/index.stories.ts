@@ -7,7 +7,7 @@ import {
     ICardImageExample,
     ICardSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ICard,
@@ -21,15 +21,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        ICardBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<ICardBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(ICardBasicExample);
 export const Body = () => ICardBodyExample;
 export const HeaderFooter = () => ICardHeaderFooterExample;
 export const ColorVariants = () => ICardColorVariantsExample;

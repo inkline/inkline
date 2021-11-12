@@ -3,7 +3,7 @@ import {
     IFormValidationBasicBindingExample,
     IFormValidationBasicValidatorsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 import { IForm } from '@inkline/inkline/components';
 
 export default {
@@ -15,14 +15,6 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IFormValidationBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IFormValidationBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IFormValidationBasicExample);
 export const BasicBinding = () => IFormValidationBasicBindingExample;
 export const BasicValidators = () => IFormValidationBasicValidatorsExample;

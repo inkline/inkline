@@ -8,7 +8,7 @@ import {
     IListGroupStateActiveExample,
     IListGroupStateDisabledExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IListGroup,
@@ -19,15 +19,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IListGroupBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IListGroupBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IListGroupBasicExample);
 export const Borderless = () => IListGroupBorderlessExample;
 export const Content = () => IListGroupContentExample;
 export const ColorVariants = () => IListGroupColorVariantsExample;

@@ -6,7 +6,7 @@ import {
     IHeaderFullscreenExample,
     IHeaderSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IHeader,
@@ -17,15 +17,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IHeaderBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IHeaderBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IHeaderBasicExample);
 export const ColorVariants = () => IHeaderColorVariantsExample;
 export const Cover = () => IHeaderCoverExample;
 export const Fullscreen = () => IHeaderFullscreenExample;

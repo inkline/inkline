@@ -1,11 +1,12 @@
 import ILoader from '../index.vue';
 import {
+    ILoaderBasicExample,
     ILoaderColorVariantsExample,
     ILoaderSizeAutoExample,
     ILoaderSizeVariantsExample,
     ILoaderTextExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ILoader,
@@ -16,12 +17,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    setup: () => ({ args }),
-    template: '<i-loader v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(ILoaderBasicExample);
 export const ColorVariants = () => ILoaderColorVariantsExample;
 export const SizeAuto = () => ILoaderSizeAutoExample;
 export const SizeVariants = () => ILoaderSizeVariantsExample;

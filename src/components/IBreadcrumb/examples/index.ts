@@ -2,6 +2,8 @@ export { default as IBreadcrumbBasicExample } from './basic.vue';
 export { default as IBreadcrumbBasicExampleHTML } from './basic.html';
 export { default as IBreadcrumbColorVariantsExample } from './color-variants.vue';
 export { default as IBreadcrumbColorVariantsExampleHTML } from './color-variants.html';
+export { default as IBreadcrumbRoutingExample } from './routing.vue';
+export { default as IBreadcrumbRoutingExampleHTML } from './routing.html';
 export { default as IBreadcrumbSizeVariantsExample } from './size-variants.vue';
 export { default as IBreadcrumbSizeVariantsExampleHTML } from './size-variants.html';
 export { default as IBreadcrumbDynamicallyGeneratedExample } from './dynamically-generated.vue';

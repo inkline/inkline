@@ -6,7 +6,7 @@ import {
     IToggleReadonlyExample,
     IToggleSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IToggle,
@@ -17,15 +17,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IToggleBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IToggleBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IToggleBasicExample);
 export const ColorVariants = () => IToggleColorVariantsExample;
 export const Disabled = () => IToggleDisabledExample;
 export const Readonly = () => IToggleReadonlyExample;

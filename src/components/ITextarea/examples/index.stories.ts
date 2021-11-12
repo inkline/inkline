@@ -11,7 +11,7 @@ import {
     ITextareaPrependAppendDropdownExample,
     ITextareaPrefixSuffixExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ITextarea,
@@ -22,15 +22,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        ITextareaBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<ITextareaBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(ITextareaBasicExample);
 export const ColorVariants = () => ITextareaColorVariantsExample;
 export const Clearable = () => ITextareaClearableExample;
 export const Disabled = () => ITextareaDisabledExample;

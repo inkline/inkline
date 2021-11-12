@@ -1,3 +1,5 @@
+export { default as ILoaderBasicExample } from './basic.vue';
+export { default as ILoaderBasicExampleHTML } from './basic.html';
 export { default as ILoaderColorVariantsExample } from './color-variants.vue';
 export { default as ILoaderColorVariantsExampleHTML } from './color-variants.html';
 export { default as ILoaderSizeAutoExample } from './size-auto.vue';

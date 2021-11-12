@@ -9,7 +9,7 @@ import {
     IRadioReadonlyExample,
     IRadioSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IRadio,
@@ -20,15 +20,7 @@ export default {
     }
 };
 
-const Template = (args: any) => ({
-    components: {
-        IRadioBasicExample
-    },
-    setup: () => ({ args }),
-    template: '<IRadioBasicExample v-bind="args" />'
-});
-
-export const Basic = Template.bind({});
+export const Basic = createStory(IRadioBasicExample);
 export const ColorVariants = () => IRadioColorVariantsExample;
 export const Disabled = () => IRadioDisabledExample;
 export const GroupDisabled = () => IRadioGroupDisabledExample;
