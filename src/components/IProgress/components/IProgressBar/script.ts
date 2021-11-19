@@ -3,9 +3,9 @@ import { colorVariantClass, defaultPropValue } from '@inkline/inkline/mixins';
 import { Classes, Styles } from '@inkline/inkline/types';
 
 /**
+ * Slot for default progress bar content
  * @name default
  * @kind slot
- * @description Slot for default progress bar content
  */
 
 const componentName = 'IProgressBar';
@@ -19,18 +19,20 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The color variant of the progress bar
+         * The color variant of the progress bar
          * @type light | dark | primary | secondary | info | success | warning | danger
          * @default primary
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color', 'primary')
         },
         /**
-         * @description The value of the progress bar
+         * The value of the progress bar
          * @type Number
          * @default 0
+         * @name value
          */
         value: {
             type: [String, Number],

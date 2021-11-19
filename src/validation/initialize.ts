@@ -9,6 +9,7 @@ import {
  *
  * @param schema
  * @returns {*}
+ * @name export function initialize (schema: any) {
  */
 export function initialize (schema: any) {
     const isField = Object.keys(schema).length === 0 || Array.isArray(schema.validators) || schema.hasOwnProperty('value');

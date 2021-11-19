@@ -1,26 +1,14 @@
-export interface ManifestEvent {
+export interface ManifestEntry {
     name: string;
     description: string;
-    type: string[];
 }
 
-export interface ManifestSlot {
-    name: string;
-    description: string;
-    type: string[];
-}
-
-export interface ManifestProp {
-    name: string;
-    description: string;
+export interface ManifestProp extends ManifestEntry {
     type: string[];
     default: string;
 }
 
-
-export interface ManifestCSSVariable {
-    name: string;
-    description: string;
+export interface ManifestCSSVariable extends ManifestEntry {
     type?: string;
     value?: string | string[];
     variants?: {
@@ -41,8 +29,8 @@ export interface ManifestCSS {
 
 export interface Manifest {
     name: string;
-    events: ManifestEvent[];
-    slots: ManifestSlot[];
+    events: ManifestEntry[];
+    slots: ManifestEntry[];
     props: ManifestProp[];
     css: ManifestCSS;
 }

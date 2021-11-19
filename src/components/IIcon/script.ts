@@ -4,7 +4,7 @@ import { IIcon } from '@inkline/icons/components';
 import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
 
 /**
- * @description The icon to be displayed
+ * The icon to be displayed
  * @type String
  * @default
  */
@@ -18,9 +18,10 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The size variant of the icon
+         * The size variant of the icon
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,

@@ -9,15 +9,15 @@ import {
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default button content
  * @name default
  * @kind slot
- * @description Slot for default button content
  */
 
 /**
+ * Slot for button loading state
  * @name loading
  * @kind slot
- * @description Slot for button loading state
  */
 
 const componentName = 'IButton';
@@ -43,99 +43,110 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The active state of the button
+         * The active state of the button
          * @type Boolean
          * @default false
+         * @name active
          */
         active: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the button as a block, spanning the full container width
+         * Display the button as a block, spanning the full container width
          * @type Boolean
          * @default false
+         * @name block
          */
         block: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the button as a circle
+         * Display the button as a circle
          * @type Boolean
          * @default false
+         * @name circle
          */
         circle: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The color variant of the button
+         * The color variant of the button
          * @type primary | success | light | dark | info | success | warning | danger | facebook | google | twitter | github
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The disabled state of the button
+         * The disabled state of the button
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the button as a link
+         * Display the button as a link
          * @type Boolean
          * @default false
+         * @name link
          */
         link: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The loading state of the button
+         * The loading state of the button
          * @type Boolean
          * @default false
+         * @name loading
          */
         loading: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the button as an outline button
+         * Display the button as an outline button
          * @type Boolean
          * @default false
+         * @name outline
          */
         outline: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Set the HTML tag to be used for rendering the button
+         * Set the HTML tag to be used for rendering the button
          * @type String
          * @default button
+         * @name tag
          */
         tag: {
             type: String,
             default: 'button'
         },
         /**
-         * @description The tabindex of the button
+         * The tabindex of the button
          * @type Number | String
          * @default 1
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
             default: 1
         },
         /**
-         * @description The size variant of the button
+         * The size variant of the button
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,

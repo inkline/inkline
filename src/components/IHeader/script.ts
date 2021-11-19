@@ -11,9 +11,9 @@ import IColumn from '@inkline/inkline/components/IColumn/index.vue';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default header content
  * @name default
  * @kind slot
- * @description Slot for default header content
  */
 
 const componentName = 'IHeader';
@@ -27,45 +27,50 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The color variant of the header
+         * The color variant of the header
          * @type primary | light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description Display the header background as cover, always covering the whole header width or height
+         * Display the header background as cover, always covering the whole header width or height
          * @type Boolean
          * @default false
+         * @name cover
          */
         cover: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the inner content container as fluid, covering 100% of the header width
+         * Display the inner content container as fluid, covering 100% of the header width
          * @type Boolean
          * @default false
+         * @name fluid
          */
         fluid: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the header as fullscreen, covering 100% screen height and 100% screen width
+         * Display the header as fullscreen, covering 100% screen height and 100% screen width
          * @type Boolean
          * @default true
+         * @name fullscreen
          */
         fullscreen: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The size variant of the header
+         * The size variant of the header
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,

@@ -46,6 +46,7 @@ export function validateFormInput (schema: any, path = '') {
  * @param schema
  * @param name
  * @returns {*}
+ * @name export function validateFormGroup (schema
  */
 export function validateFormGroup (schema: any, name = '') {
     schema.valid = Object.keys(schema)
@@ -69,6 +70,7 @@ export function validateFormGroup (schema: any, name = '') {
  *
  * @param schema
  * @returns {*}
+ * @name export function validate (schema
  */
 export function validate (schema: any) {
     return validateFormGroup(schema, '');

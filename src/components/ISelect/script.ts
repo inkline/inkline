@@ -28,33 +28,33 @@ import { SelectOption } from '@inkline/inkline/components/ISelect/components/ISe
 import { Classes, ElementEvent } from '@inkline/inkline/types';
 
 /**
+ * Slot for the select prefix content
  * @name prefix
  * @kind slot
- * @description Slot for the select prefix content
  */
 
 /**
+ * Slot for the select suffix content
  * @name suffix
  * @kind slot
- * @description Slot for the select suffix content
  */
 
 /**
+ * Slot for the select prepend content
  * @name prepend
  * @kind slot
- * @description Slot for the select prepend content
  */
 
 /**
+ * Slot for the select append content
  * @name append
  * @kind slot
- * @description Slot for the select append content
  */
 
 /**
+ * Slot for the clearable button
  * @name clearable
  * @kind slot
- * @description Slot for the clearable button
  * @property clear
  */
 
@@ -82,171 +82,190 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The duration of the hide and show animation
+         * The duration of the hide and show animation
          * @type Number
          * @default 300
+         * @name animationDuration
          */
         animationDuration: {
             type: Number,
             default: 300
         },
         /**
-         * @description Enable autocomplete functionality
+         * Enable autocomplete functionality
          * @type Boolean
          * @default false
+         * @name autocomplete
          */
         autocomplete: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Displays an arrow on the dropdown pointing to the trigger element
+         * Displays an arrow on the dropdown pointing to the trigger element
          * @type Boolean
          * @default true
+         * @name arrow
          */
         arrow: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The color variant of the select
+         * The color variant of the select
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description Display the select as clearable
+         * Display the select as clearable
          * @type Boolean
          * @default false
+         * @name clearable
          */
         clearable: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The disabled state of the select
+         * The disabled state of the select
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The field to be used for identifying the options
+         * The field to be used for identifying the options
          * @type String
          * @default id
+         * @name idField
          */
         idField: {
             type: String,
             default: 'id'
         },
         /**
-         * @description The keydown events bound to the trigger element
+         * The keydown events bound to the trigger element
          * @type string[]
          * @default [up, down, enter, space, tab, esc]
+         * @name keydownTrigger
          */
         keydownTrigger: {
             type: Array,
             default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
         },
         /**
-         * @description The keydown events bound to the select option elements
+         * The keydown events bound to the select option elements
          * @type string[]
          * @default [up, down, enter, space, tab, esc]
+         * @name keydownItem
          */
         keydownItem: {
             type: Array,
             default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
         },
         /**
-         * @description Used to extract the label from the select option and select value
+         * Used to extract the label from the select option and select value
          * @type String | Function
          * @default label
+         * @name label
          */
         label: {
             type: [String, Function],
             default: 'label'
         },
         /**
-         * @description The loading state of the select
+         * The loading state of the select
          * @type Boolean
          * @default false
+         * @name loading
          */
         loading: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Used to set the field value
+         * Used to set the field value
          * @type Object | String | Number
          * @default null
+         * @name modelValue
          */
         modelValue: {
             type: [Object, String, Number],
             default: null
         },
         /**
-         * @description The minimum input length to open the select dropdown at
+         * The minimum input length to open the select dropdown at
          * @type Number
          * @default 0
+         * @name minLength
          */
         minLength: {
             type: Number,
             default: 0
         },
         /**
-         * @description The unique identifier of the select
+         * The unique identifier of the select
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: [String, Number],
             default: (): string => uid('select')
         },
         /**
-         * @description The options to be displayed in the select component
+         * The options to be displayed in the select component
          * @type Array
          * @default []
+         * @name options
          */
         options: {
             type: Array,
             default: (): SelectOption[] => []
         },
         /**
-         * @description The placeholder of the select input
+         * The placeholder of the select input
          * @type String
          * @default ''
+         * @name placeholder
          */
         placeholder: {
             type: String,
             default: ''
         },
         /**
-         * @description The offset of the dropdown relative to the trigger element
+         * The offset of the dropdown relative to the trigger element
          * @type Number
          * @default 6
+         * @name offset
          */
         offset: {
             type: Number,
             default: 6
         },
         /**
-         * @description The placement of the dropdown
+         * The placement of the dropdown
          * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
          * @default false
+         * @name placement
          */
         placement: {
             type: String,
             default: 'bottom'
         },
         /**
-         * @description Used to override the popper.js options used for creating the dropdown
+         * Used to override the popper.js options used for creating the dropdown
          * @type Object
          * @default {}
+         * @name popperOptions
          */
         popperOptions: {
             type: Object,
@@ -258,36 +277,40 @@ export default defineComponent({
             })
         },
         /**
-         * @description The readonly state of the select
+         * The readonly state of the select
          * @type Boolean
          * @default false
+         * @name readonly
          */
         readonly: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The number of pixels until scroll end before loading the next page
+         * The number of pixels until scroll end before loading the next page
          * @type Number
          * @default 160
+         * @name scrollTolerance
          */
         scrollTolerance: {
             type: Number,
             default: 160
         },
         /**
-         * @description Selects the first option when pressing enter
+         * Selects the first option when pressing enter
          * @type Boolean
          * @default true
+         * @name selectFirstOptionOnEnter
          */
         selectFirstOptionOnEnter: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The size variant of the select
+         * The size variant of the select
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -295,27 +318,30 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description The tabindex of the select
+         * The tabindex of the select
          * @type Number | String
          * @default 1
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
             default: 1
         },
         /**
-         * @description The type of the select
+         * The type of the select
          * @type String
          * @default text
+         * @name type
          */
         type: {
             type: String,
             default: 'text'
         },
         /**
-         * @description The total number of options, used for infinite scrolling
+         * The total number of options, used for infinite scrolling
          * @type Number
          * @default undefined
+         * @name total
          */
         total: {
             type: Number,
@@ -324,18 +350,18 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue',
         /**
+         * Event emitted when input value changes
          * @event search
-         * @description Event emitted when input value changes
          */
         'search',
         /**
+         * Event emitted when the next page needs to be loaded
          * @event pagination
-         * @description Event emitted when the next page needs to be loaded
          */
         'pagination'
     ],

@@ -8,9 +8,9 @@ import {
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default sidebar content
  * @name default
  * @kind slot
- * @description Slot for default sidebar content
  */
 
 const componentName = 'ISidebar';
@@ -27,63 +27,70 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The aria-label of the sidebar
+         * The aria-label of the sidebar
          * @type String
          * @default Sidebar
+         * @name ariaLabel
          */
         ariaLabel: {
             type: String,
             default: 'Sidebar'
         },
         /**
-         * @description Determines if the sidebar should close when clicking a sidebar item
+         * Determines if the sidebar should close when clicking a sidebar item
          * @type Boolean
          * @default true
+         * @name collapseOnItemClick
          */
         collapseOnItemClick: {
             type: Boolean,
             default: true
         },
         /**
-         * @description Determines if the sidebar should close when clicking outside, on the overlay
+         * Determines if the sidebar should close when clicking outside, on the overlay
          * @type Boolean
          * @default true
+         * @name collapseOnClickOutside
          */
         collapseOnClickOutside: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The collapse position of the sidebar
+         * The collapse position of the sidebar
          * @type fixed | absolute | relative
          * @default absolute
+         * @name collapsePosition
          */
         collapsePosition: {
             type: String,
             default: 'absolute'
         },
         /**
-         * @description The color variant of the sidebar
+         * The color variant of the sidebar
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The placement of the sidebar
+         * The placement of the sidebar
          * @type left | right
          * @default left
+         * @name placement
          */
         placement: {
             type: String,
             default: 'left'
         },
         /**
-         * @description The size variant of the navbar
+         * The size variant of the navbar
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -93,8 +100,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

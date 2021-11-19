@@ -2,9 +2,9 @@ import { defineComponent } from 'vue';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default select option content
  * @name default
  * @kind slot
- * @description Slot for default select option content
  */
 
 export interface SelectOption {
@@ -27,45 +27,55 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The active state of the select option
+         * The active state of the select option
          * @type Boolean
          * @default false
+         * @name active
+         * @name active
          */
         active: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The disabled state of the select option
+         * The disabled state of the select option
          * @type Boolean
          * @default false
+         * @name disabled
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The label of the select option
+         * The label of the select option
          * @type String
          * @default ''
+         * @name label
+         * @name label
          */
         label: {
             type: String,
             default: ''
         },
         /**
-         * @description The tabindex of the list group item
+         * The tabindex of the list group item
          * @type Number | String
          * @default 1
+         * @name tabindex
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
             default: 0
         },
         /**
-         * @description The select option value
+         * The select option value
          * @type Object | String | Number
          * @default {}
+         * @name value
+         * @name value
          */
         value: {
             type: [Object, String, Number],

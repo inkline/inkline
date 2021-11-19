@@ -13,27 +13,27 @@ import { on, off, isFocusable, isKey } from '@inkline/inkline/helpers';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for dropdown trigger
  * @name default
  * @kind slot
- * @description Slot for dropdown trigger
  */
 
 /**
+ * Slot for dropdown header content
  * @name header
  * @kind slot
- * @description Slot for dropdown header content
  */
 
 /**
+ * Slot for dropdown body content
  * @name body
  * @kind slot
- * @description Slot for dropdown body content
  */
 
 /**
+ * Slot for dropdown footer content
  * @name footer
  * @kind slot
- * @description Slot for dropdown footer content
  */
 
 const componentName = 'IDropdown';
@@ -54,117 +54,130 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The duration of the hide and show animation
+         * The duration of the hide and show animation
          * @type Number
          * @default 300
+         * @name animationDuration
          */
         animationDuration: {
             type: Number,
             default: 300
         },
         /**
-         * @description The color variant of the dropdown
+         * The color variant of the dropdown
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The disabled state of the dropdown
+         * The disabled state of the dropdown
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Used to hide the dropdown when clicking or selecting a dropdown item
+         * Used to hide the dropdown when clicking or selecting a dropdown item
          * @type Boolean
          * @default false
+         * @name hideOnItemClick
          */
         hideOnItemClick: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The keydown events bound to the trigger element
+         * The keydown events bound to the trigger element
          * @type string[]
          * @default [up, down, enter, space, tab, esc]
+         * @name keydownTrigger
          */
         keydownTrigger: {
             type: Array,
             default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
         },
         /**
-         * @description The keydown events bound to the dropdown item elements
+         * The keydown events bound to the dropdown item elements
          * @type string[]
          * @default [up, down, enter, space, tab, esc]
+         * @name keydownItem
          */
         keydownItem: {
             type: Array,
             default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
         },
         /**
-         * @description Used to manually control the visibility of the dropdown
+         * Used to manually control the visibility of the dropdown
          * @type Boolean
          * @default false
+         * @name modelValue
          */
         modelValue: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Displays an arrow on the dropdown pointing to the trigger element
+         * Displays an arrow on the dropdown pointing to the trigger element
          * @type Boolean
          * @default true
+         * @name arrow
          */
         arrow: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The placement of the dropdown
+         * The placement of the dropdown
          * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
          * @default false
+         * @name placement
          */
         placement: {
             type: String,
             default: 'bottom'
         },
         /**
-         * @description The events used to trigger the dropdown
+         * The events used to trigger the dropdown
          * @type hover | focus | click | manual
          * @default [click]
+         * @name trigger
          */
         trigger: {
             type: [String, Array],
             default: (): string[] => ['click']
         },
         /**
-         * @description The offset of the dropdown relative to the trigger element
+         * The offset of the dropdown relative to the trigger element
          * @type Number
          * @default 6
+         * @name offset
          */
         offset: {
             type: Number,
             default: 6
         },
         /**
-         * @description Used to override the popper.js options used for creating the dropdown
+         * Used to override the popper.js options used for creating the dropdown
          * @type Object
          * @default {}
+         * @name popperOptions
          */
         popperOptions: {
             type: Object,
             default: (): any => ({})
         },
         /**
-         * @description The size variant of the dropdown
+         * The size variant of the dropdown
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -174,8 +187,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],
