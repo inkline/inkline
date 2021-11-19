@@ -7,9 +7,9 @@ import {
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default breadcrumb content
  * @name default
  * @kind slot
- * @description Slot for default breadcrumb content
  */
 
 const componentName = 'IBreadcrumb';
@@ -18,27 +18,30 @@ export default defineComponent({
     name: componentName,
     props: {
         /**
-         * @description The aria-label of the breadcrumbs
+         * The aria-label of the breadcrumbs
          * @type String
          * @default Breadcrumbs
+         * @name ariaLabel
          */
         ariaLabel: {
             type: String,
             default: 'Breadcrumbs'
         },
         /**
-         * @description The color variant of the breadcrumb
+         * The color variant of the breadcrumb
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The size variant of the breadcrumb
+         * The size variant of the breadcrumb
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,

@@ -7,9 +7,9 @@ import {
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default tabs content
  * @name default
  * @kind slot
- * @description Slot for default tabs content
  */
 
 const componentName = 'ITabs';
@@ -23,27 +23,30 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The color variant of the tabs
+         * The color variant of the tabs
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description Used to set the currently active tab
+         * Used to set the currently active tab
          * @type String
          * @default
+         * @name modelValue
          */
         modelValue: {
             type: String,
             default: ''
         },
         /**
-         * @description The size variant of the tabs
+         * The size variant of the tabs
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -51,9 +54,10 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description Display the tabs header as full width
+         * Display the tabs header as full width
          * @type Boolean
          * @default false
+         * @name stretch
          */
         stretch: {
             type: Boolean,
@@ -62,8 +66,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

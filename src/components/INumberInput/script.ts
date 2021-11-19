@@ -15,54 +15,60 @@ export default defineComponent({
     extends: IInput,
     props: {
         /**
-         * @description The color variant of the input
+         * The color variant of the input
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description Display the input as clearable
+         * Display the input as clearable
          * @type Boolean
          * @default false
+         * @name clearable
          */
         clearable: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The disabled state of the input
+         * The disabled state of the input
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The id of the internal input element
+         * The id of the internal input element
          * @type String
          * @default
+         * @name id
          */
         id: {
             type: String,
             default: ''
         },
         /**
-         * @description Used to set the field value
+         * Used to set the field value
          * @type String | Number
          * @default
+         * @name modelValue
          */
         modelValue: {
             type: [String, Number],
             default: ''
         },
         /**
-         * @description The unique identifier of the input
+         * The unique identifier of the input
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: [String, Number],
@@ -71,18 +77,20 @@ export default defineComponent({
             }
         },
         /**
-         * @description The readonly state of the input
+         * The readonly state of the input
          * @type Boolean
          * @default false
+         * @name readonly
          */
         readonly: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The size variant of the input
+         * The size variant of the input
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -90,45 +98,50 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description The tabindex of the input
+         * The tabindex of the input
          * @type Number | String
          * @default 1
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
             default: 1
         },
         /**
-         * @description The minimum allowed input value
+         * The minimum allowed input value
          * @type Number
          * @default -Infinity
+         * @name min
          */
         min: {
             type: [Number, String],
             default: -Infinity
         },
         /**
-         * @description The maximum allowed input value
+         * The maximum allowed input value
          * @type Number
          * @default +Infinity
+         * @name max
          */
         max: {
             type: [Number, String],
             default: Infinity
         },
         /**
-         * @description The precision of the input value, for floating point numbers
+         * The precision of the input value, for floating point numbers
          * @type Number
          * @default 0
+         * @name precision
          */
         precision: {
             type: Number,
             default: 0
         },
         /**
-         * @description The increment step to increase or decrease the value by
+         * The increment step to increase or decrease the value by
          * @type Number
          * @default 1
+         * @name step
          */
         step: {
             type: Number,
@@ -137,8 +150,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

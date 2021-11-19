@@ -13,9 +13,9 @@ import { ClickOutside } from '@inkline/inkline/directives';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default navbar content
  * @name default
  * @kind slot
- * @description Slot for default navbar content
  */
 
 const componentName = 'INavbar';
@@ -41,45 +41,55 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description Determines if the navbar should close when clicking a navbar item
+         * Determines if the navbar should close when clicking a navbar item
          * @type Boolean
          * @default true
+         * @name collapseOnItemClick
+         * @name collapseOnItemClick
          */
         collapseOnItemClick: {
             type: Boolean,
             default: true
         },
         /**
-         * @description Determines if the navbar should close when clicking outside
+         * Determines if the navbar should close when clicking outside
          * @type Boolean
          * @default true
+         * @name collapseOnClickOutside
+         * @name collapseOnClickOutside
          */
         collapseOnClickOutside: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The color variant of the navbar
+         * The color variant of the navbar
          * @type light | dark
          * @default light
+         * @name color
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description Display the inner container as fluid, spanning 100% width
+         * Display the inner container as fluid, spanning 100% width
          * @type Boolean
          * @default false
+         * @name fluid
+         * @name fluid
          */
         fluid: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The size variant of the navbar
+         * The size variant of the navbar
          * @type sm | md | lg
          * @default md
+         * @name size
+         * @name size
          */
         size: {
             type: String,
@@ -87,9 +97,11 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description The animation of the hamburger menu component used for collapsing
+         * The animation of the hamburger menu component used for collapsing
          * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minus
          * @default close
+         * @name menuAnimation
+         * @name menuAnimation
          */
         menuAnimation: {
             type: String,
@@ -98,8 +110,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

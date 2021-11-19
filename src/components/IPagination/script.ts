@@ -9,15 +9,15 @@ import { debounce } from '@inkline/inkline/helpers';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for previous button content
  * @name previous
  * @kind slot
- * @description Slot for previous button content
  */
 
 /**
+ * Slot for next button content
  * @name next
  * @kind slot
- * @description Slot for next button content
  */
 
 const componentName = 'IPagination';
@@ -26,43 +26,47 @@ export default defineComponent({
     name: componentName,
     props: {
         /**
-         * @description The aria-label of the pagination
+         * The aria-label of the pagination
          * @type String
          * @default Pagination
+         * @name ariaLabel
          */
         ariaLabel: {
             type: String,
             default: 'Pagination'
         },
         /**
-         * @description The color variant of the pagination
+         * The color variant of the pagination
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The number of items per page to be displayed
+         * The number of items per page to be displayed
          * @type Number
          * @default 20
+         * @name itemsPerPage
          */
         itemsPerPage: {
             type: Number,
             default: 20
         },
         /**
-         * @description The total number of items
+         * The total number of items
          * @type Number
          * @default 0
+         * @name itemsTotal
          */
         itemsTotal: {
             type: Number,
             default: 0
         },
         /**
-         * @description The maximum number of pagination buttons to show on each breakpoint
+         * The maximum number of pagination buttons to show on each breakpoint
          * @type Number | Object
          * @default
          * {
@@ -80,27 +84,30 @@ export default defineComponent({
             }
         },
         /**
-         * @description Display the quick link buttons
+         * Display the quick link buttons
          * @type Boolean
          * @default false
+         * @name quickLink
          */
         quickLink: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Used to determine the current page
+         * Used to determine the current page
          * @type Number
          * @default 1
+         * @name modelValue
          */
         modelValue: {
             type: Number,
             default: 1
         },
         /**
-         * @description The size variant of the pagination
+         * The size variant of the pagination
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -110,8 +117,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

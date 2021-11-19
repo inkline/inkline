@@ -2,9 +2,9 @@ import { defineComponent } from 'vue';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default button group content
  * @name default
  * @kind slot
- * @description Slot for default button group content
  */
 
 const componentName = 'IButtonGroup';
@@ -29,27 +29,30 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description Display the button group with vertical orientation
+         * Display the button group with vertical orientation
          * @type Boolean
          * @default false
+         * @name vertical
          */
         vertical: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the button group as a block, spanning the full container width
+         * Display the button group as a block, spanning the full container width
          * @type Boolean
          * @default false
+         * @name block
          */
         block: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The disabled state of the button group
+         * The disabled state of the button group
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,

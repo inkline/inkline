@@ -5,9 +5,9 @@ import {
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default list group item content
  * @name default
  * @kind slot
- * @description Slot for default list group item content
  */
 
 const componentName = 'IListGroupItem';
@@ -19,36 +19,40 @@ export default defineComponent({
     ],
     props: {
         /**
-         * @description The active state of the list group item
+         * The active state of the list group item
          * @type Boolean
          * @default false
+         * @name active
          */
         active: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The disabled state of the list group item
+         * The disabled state of the list group item
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Set the HTML tag to be used for rendering the list group item
+         * Set the HTML tag to be used for rendering the list group item
          * @type String
          * @default div
+         * @name tag
          */
         tag: {
             type: String,
             default: 'div'
         },
         /**
-         * @description The tabindex of the list group item
+         * The tabindex of the list group item
          * @type Number | String
          * @default 1
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],

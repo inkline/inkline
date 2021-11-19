@@ -9,33 +9,33 @@ import {
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 /**
+ * Slot for the input prefix content
  * @name prefix
  * @kind slot
- * @description Slot for the input prefix content
  */
 
 /**
+ * Slot for the input suffix content
  * @name suffix
  * @kind slot
- * @description Slot for the input suffix content
  */
 
 /**
+ * Slot for the input prepend content
  * @name prepend
  * @kind slot
- * @description Slot for the input prepend content
  */
 
 /**
+ * Slot for the input append content
  * @name append
  * @kind slot
- * @description Slot for the input append content
  */
 
 /**
+ * Slot for the clearable button
  * @name clearable
  * @kind slot
- * @description Slot for the clearable button
  * @property clear
  */
 
@@ -49,64 +49,71 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         /**
-         * @description The color variant of the input
+         * The color variant of the input
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description Display the input as clearable
+         * Display the input as clearable
          * @type Boolean
          * @default false
+         * @name clearable
          */
         clearable: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The disabled state of the input
+         * The disabled state of the input
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The error state of the input, computed based on schema by default.
+         * The error state of the input, computed based on schema by default.
          * @type Boolean | Array
          * @default ['touched', 'dirty', 'invalid']
          * @TODO use propDefaultValue to set default value
+         * @name error
          */
         error: {
             type: [Array, Boolean],
             default: (): string[] => ['touched', 'dirty', 'invalid']
         },
         /**
-         * @description The id of the internal input element
+         * The id of the internal input element
          * @type String
          * @default
+         * @name id
          */
         id: {
             type: String,
             default: undefined
         },
         /**
-         * @description Used to set the field value
+         * Used to set the field value
          * @type String | Number
          * @default ''
+         * @name modelValue
          */
         modelValue: {
             type: [String, Number],
             default: ''
         },
         /**
-         * @description The unique identifier of the input
+         * The unique identifier of the input
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: [String, Number],
@@ -115,27 +122,30 @@ export default defineComponent({
             }
         },
         /**
-         * @description Display the input as plaintext, disabling interaction
+         * Display the input as plaintext, disabling interaction
          * @type Boolean
          * @default false
+         * @name plaintext
          */
         plaintext: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The readonly state of the input
+         * The readonly state of the input
          * @type Boolean
          * @default false
+         * @name readonly
          */
         readonly: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The size variant of the input
+         * The size variant of the input
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -143,27 +153,30 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description The tabindex of the input
+         * The tabindex of the input
          * @type Number | String
          * @default 1
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
             default: 1
         },
         /**
-         * @description The type of the input
+         * The type of the input
          * @type String
          * @default text
+         * @name type
          */
         type: {
             type: String,
             default: 'text'
         },
         /**
-         * @description The aria-label of the clear button
+         * The aria-label of the clear button
          * @type String
          * @default Clear
+         * @name clearAriaLabel
          */
         clearAriaLabel: {
             type: String,
@@ -172,13 +185,13 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue',
         /**
+         * Event emitted when clearing the input element
          * @event clear
-         * @description Event emitted when clearing the input element
          */
         'clear'
     ],

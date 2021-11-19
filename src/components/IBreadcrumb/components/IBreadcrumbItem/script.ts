@@ -3,15 +3,15 @@ import { LinkableMixin } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default breadcrumb item content
  * @name default
  * @kind slot
- * @description Slot for default breadcrumb item content
  */
 
 /**
+ * Set the HTML tag to be used for rendering the breadcrumb item
  * @name tag
  * @kind member
- * @description Set the HTML tag to be used for rendering the breadcrumb item
  * @type String
  * @default a
  */
@@ -25,27 +25,30 @@ export default defineComponent({
     ],
     props: {
         /**
-         * @description The active state of the breadcrumb item
+         * The active state of the breadcrumb item
          * @type Boolean
          * @default false
+         * @name active
          */
         active: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The disabled state of the breadcrumb item
+         * The disabled state of the breadcrumb item
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The tabindex of the breadcrumb item
+         * The tabindex of the breadcrumb item
          * @type Number | String
          * @default 1
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],

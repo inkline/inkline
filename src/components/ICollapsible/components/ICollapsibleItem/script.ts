@@ -4,15 +4,15 @@ import { IExpandTransition } from '@inkline/inkline/transitions';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default collapsible item content
  * @name default
  * @kind slot
- * @description Slot for default collapsible item content
  */
 
 /**
+ * Slot for collapsible item header content
  * @name header
  * @kind slot
- * @description Slot for collapsible item header content
  */
 
 const componentName = 'ICollapsibleItem';
@@ -31,9 +31,10 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The unique identifier of the collapsible item, used for determining if the item is open or not
+         * The unique identifier of the collapsible item, used for determining if the item is open or not
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: String,
@@ -42,8 +43,9 @@ export default defineComponent({
             }
         },
         /**
-         * @description The title of the collapsible item
+         * The title of the collapsible item
          * @type String
+         * @name title
          */
         title: {
             type: String,

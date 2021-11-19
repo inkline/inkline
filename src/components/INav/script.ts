@@ -7,9 +7,9 @@ import {
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default nav content
  * @name default
  * @kind slot
- * @description Slot for default nav content
  */
 
 const componentName = 'INav';
@@ -35,18 +35,20 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The color variant of the nav
+         * The color variant of the nav
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The size variant of the nav
+         * The size variant of the nav
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -54,9 +56,10 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description Display the nav with vertical orientation
+         * Display the nav with vertical orientation
          * @type Boolean
          * @default false
+         * @name vertical
          */
         vertical: {
             type: Boolean,

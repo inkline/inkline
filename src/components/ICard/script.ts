@@ -7,27 +7,27 @@ import {
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default card content
  * @name default
  * @kind slot
- * @description Slot for default card content
  */
 
 /**
+ * Slot for card header content
  * @name header
  * @kind slot
- * @description Slot for card header content
  */
 
 /**
+ * Slot for card footer content
  * @name footer
  * @kind slot
- * @description Slot for card footer content
  */
 
 /**
+ * Slot for card image
  * @name image
  * @kind slot
- * @description Slot for card image
  */
 
 const componentName = 'ICard';
@@ -36,18 +36,20 @@ export default defineComponent({
     name: componentName,
     props: {
         /**
-         * @description The color variant of the card
+         * The color variant of the card
          * @type primary | success | light | dark | info | success | warning | danger
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The size variant of the card
+         * The size variant of the card
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,

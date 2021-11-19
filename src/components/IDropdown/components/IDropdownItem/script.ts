@@ -5,9 +5,9 @@ import {
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 /**
+ * Slot for default dropdown item content
  * @name default
  * @kind slot
- * @description Slot for default dropdown item content
  */
 
 const componentName = 'IDropdownItem';
@@ -24,45 +24,50 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The active state of the dropdown item
+         * The active state of the dropdown item
          * @type Boolean
          * @default false
+         * @name active
          */
         active: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The disabled state of the dropdown item
+         * The disabled state of the dropdown item
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the dropdown item as plaintext
+         * Display the dropdown item as plaintext
          * @type String
          * @default div
+         * @name plaintext
          */
         plaintext: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Set the HTML tag to be used for rendering the dropdown item
+         * Set the HTML tag to be used for rendering the dropdown item
          * @type String
          * @default div
+         * @name tag
          */
         tag: {
             type: String,
             default: 'div'
         },
         /**
-         * @description The tabindex of the list group item
+         * The tabindex of the list group item
          * @type Number | String
          * @default 1
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],

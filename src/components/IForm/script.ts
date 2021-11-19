@@ -16,9 +16,9 @@ import { validate } from '@inkline/inkline/validation';
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 /**
+ * Slot for default card content
  * @name default
  * @kind slot
- * @description Slot for default card content
  */
 
 const componentName = 'IForm';
@@ -36,45 +36,50 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         /**
-         * @description The color variant of the form
+         * The color variant of the form
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: ''
         },
         /**
-         * @description The disabled state of the form
+         * The disabled state of the form
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the form as inline
+         * Display the form as inline
          * @type Boolean
          * @default false
+         * @name inline
          */
         inline: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The loading state of the form
+         * The loading state of the form
          * @type Boolean
          * @default false
+         * @name loading
          */
         loading: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The unique identifier of the form
+         * The unique identifier of the form
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: String,
@@ -83,27 +88,30 @@ export default defineComponent({
             }
         },
         /**
-         * @description Used to set the form schema
+         * Used to set the form schema
          * @type Boolean
          * @default false
+         * @name modelValue
          */
         modelValue: {
             type: Object,
             default: () => null
         },
         /**
-         * @description The readonly state of the form
+         * The readonly state of the form
          * @type Boolean
          * @default false
+         * @name readonly
          */
         readonly: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The size variant of the form
+         * The size variant of the form
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -113,13 +121,13 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue schema
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue schema
          */
         'update:modelValue',
         /**
+         * Event emitted for submitting the form
          * @event submit
-         * @description Event emitted for submitting the form
          */
         'submit'
     ],

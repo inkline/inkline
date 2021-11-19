@@ -3,13 +3,9 @@
  */
 
 .alert {
-    /// Variables for the info color variant
-    /// @name info
-    /// @type group
     @include variant('info') {
-        /// The background of the alert component, for the info color variant
-        /// @name background
-        /// @type color
+/// The background of the alert component, for the info color variant
+/// @name background
         ----background: #{color('info')};
 
         /// The border top color of the alert component, for the info color variant
@@ -43,9 +39,6 @@
         ----code--background: #{color('info-60')};
     }
 
-    /// Variables for the success color variant
-    /// @name success
-    /// @type group
     @include variant('success') {
         /// The background of the alert component, for the success color variant
         /// @name background
@@ -83,9 +76,6 @@
         ----code--background: #{color('success-60')};
     }
 
-    /// Variables for the warning color variant
-    /// @name warning
-    /// @type group
     @include variant('warning') {
         /// The background of the alert component, for the warning color variant
         /// @name background
@@ -123,9 +113,6 @@
         ----code--background: #{color('warning-60')};
     }
 
-    /// Variables for the danger color variant
-    /// @name danger
-    /// @type group
     @include variant('danger') {
         /// The background of the alert component, for the danger color variant
         /// @name background
