@@ -8,9 +8,9 @@ import {
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 /**
+ * Slot for default form group content
  * @name default
  * @kind slot
- * @description Slot for default form group content
  */
 
 const componentName = 'IFormGroup';
@@ -27,63 +27,70 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The color variant of the form group
+         * The color variant of the form group
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The disabled state of the form group
+         * The disabled state of the form group
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the form group as inline
+         * Display the form group as inline
          * @type Boolean
          * @default false
+         * @name inline
          */
         inline: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The identifier of the form group
+         * The identifier of the form group
          * @type String
          * @default
+         * @name name
          */
         name: {
             type: String,
             default: ''
         },
         /**
-         * @description The readonly state of the form group
+         * The readonly state of the form group
          * @type Boolean
          * @default false
+         * @name readonly
          */
         readonly: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The required state of the form group
+         * The required state of the form group
          * @type Boolean
          * @default false
+         * @name required
          */
         required: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The size variant of the form group
+         * The size variant of the form group
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,

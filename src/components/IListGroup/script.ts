@@ -7,9 +7,9 @@ import {
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default list group content
  * @name default
  * @kind slot
- * @description Slot for default list group content
  */
 
 const componentName = 'IListGroup';
@@ -18,27 +18,30 @@ export default defineComponent({
     name: componentName,
     props: {
         /**
-         * @description Display the list group border
+         * Display the list group border
          * @type Boolean
          * @default true
+         * @name border
          */
         border: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The color variant of the list group
+         * The color variant of the list group
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The size variant of the list group
+         * The size variant of the list group
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,

@@ -2,9 +2,9 @@ import { defineComponent } from 'vue';
 import { getValueByPath } from '@inkline/inkline/helpers';
 
 /**
+ * Slot for default form error content
  * @name default
  * @kind slot
- * @description Slot for default form error content
  */
 
 const componentName = 'IFormError';
@@ -21,18 +21,20 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The schema path of the target input to show the errors for.
+         * The schema path of the target input to show the errors for.
          * @type String
          * @default
+         * @name for
          */
         for: {
             type: String,
             default: ''
         },
         /**
-         * @description Set the validation statuses for which the form error should be visible.
+         * Set the validation statuses for which the form error should be visible.
          * @type Array | String
          * @default ['touched', 'dirty', 'invalid']
+         * @name visible
          */
         visible: {
             type: [Array, String],

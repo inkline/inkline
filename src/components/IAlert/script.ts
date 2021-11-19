@@ -3,21 +3,21 @@ import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default alert content
  * @name default
  * @kind slot
- * @description Slot for default alert content
  */
 
 /**
+ * Slot for alert icon
  * @name icon
  * @kind slot
- * @description Slot for alert icon
  */
 
 /**
+ * Slot for alert dismiss button
  * @name dismiss
  * @kind slot
- * @description Slot for alert dismiss button
  */
 
 const componentName = 'IAlert';
@@ -26,9 +26,10 @@ export default defineComponent({
     name: componentName,
     props: {
         /**
-         * @description The size variant of the alert
+         * The size variant of the alert
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -36,36 +37,40 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description The color variant of the alert
+         * The color variant of the alert
          * @type info | success | warning | danger
          * @default info
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description Used to show or hide a dismissible alert
+         * Used to show or hide a dismissible alert
          * @type Boolean
          * @default true
+         * @name modelValue
          */
         modelValue: {
             type: Boolean,
             default: true
         },
         /**
-         * @description Shows a dismiss icon on the alert
+         * Shows a dismiss icon on the alert
          * @type Boolean
          * @default false
+         * @name dismissible
          */
         dismissible: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The aria-label to use for the dismiss button
+         * The aria-label to use for the dismiss button
          * @type String
          * @default Dismiss
+         * @name dismissAriaLabel
          */
         dismissAriaLabel: {
             type: String,
@@ -74,8 +79,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

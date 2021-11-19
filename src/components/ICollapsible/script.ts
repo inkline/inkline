@@ -7,9 +7,9 @@ import {
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default collapsible content
  * @name default
  * @kind slot
- * @description Slot for default collapsible content
  */
 
 const componentName = 'ICollapsible';
@@ -23,27 +23,30 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description Display the collapsible as an accordion, keeping a maximum of one open collapsible item
+         * Display the collapsible as an accordion, keeping a maximum of one open collapsible item
          * @type Boolean
          * @default false
+         * @name accordion
          */
         accordion: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The color variant of the button
+         * The color variant of the button
          * @type light | dark | blank
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The size variant of the collapsible
+         * The size variant of the collapsible
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -51,9 +54,10 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description Used to determine which collapsible item is open
+         * Used to determine which collapsible item is open
          * @type String[]
          * @default
+         * @name modelValue
          */
         modelValue: {
             type: Array,
@@ -62,8 +66,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

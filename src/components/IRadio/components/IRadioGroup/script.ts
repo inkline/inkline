@@ -9,9 +9,9 @@ import { uid } from '@inkline/inkline/helpers';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default radio group options
  * @name default
  * @kind slot
- * @description Slot for default radio group options
  */
 
 const componentName = 'IRadioGroup';
@@ -28,43 +28,48 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The color variant of the radio group
+         * The color variant of the radio group
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The disabled state of the radio group
+         * The disabled state of the radio group
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the radio group as inline
+         * Display the radio group as inline
          * @type Boolean
          * @default false
+         * @name inline
          */
         inline: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Used to set the radio group value
+         * Used to set the radio group value
          * @default ''
+         * @name modelValue
          */
         modelValue: {
             default: ''
         },
         /**
-         * @description The unique identifier of the radio group
+         * The unique identifier of the radio group
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: [String, Number],
@@ -73,18 +78,20 @@ export default defineComponent({
             }
         },
         /**
-         * @description The readonly state of the radio group
+         * The readonly state of the radio group
          * @type Boolean
          * @default false
+         * @name readonly
          */
         readonly: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The size variant of the radio group
+         * The size variant of the radio group
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -94,8 +101,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

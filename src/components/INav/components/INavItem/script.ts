@@ -5,9 +5,9 @@ import {
 import { Classes, ElementEvent } from '@inkline/inkline/types';
 
 /**
+ * Slot for default nav item content
  * @name default
  * @kind slot
- * @description Slot for default nav item content
  */
 
 const componentName = 'INavItem';
@@ -26,36 +26,40 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The active state of the nav item
+         * The active state of the nav item
          * @type Boolean
          * @default false
+         * @name active
          */
         active: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The disabled state of the nav item
+         * The disabled state of the nav item
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Set the HTML tag to be used for rendering the nav item
+         * Set the HTML tag to be used for rendering the nav item
          * @type String
          * @default div
+         * @name tag
          */
         tag: {
             type: String,
             default: 'div'
         },
         /**
-         * @description The tabindex of the list group item
+         * The tabindex of the list group item
          * @type Number | String
          * @default 1
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],

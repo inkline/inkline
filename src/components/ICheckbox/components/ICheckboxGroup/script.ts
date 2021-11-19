@@ -9,9 +9,9 @@ import { uid } from '@inkline/inkline/helpers';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default checkbox group options
  * @name default
  * @kind slot
- * @description Slot for default checkbox group options
  */
 
 const componentName = 'ICheckboxGroup';
@@ -28,52 +28,58 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The color variant of the checkbox group
+         * The color variant of the checkbox group
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The disabled state of the checkbox group
+         * The disabled state of the checkbox group
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Display the checkbox group as inline
+         * Display the checkbox group as inline
          * @type Boolean
          * @default false
+         * @name inline
          */
         inline: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The indeterminate state of the checkbox group
+         * The indeterminate state of the checkbox group
          * @type Boolean
          * @default false
+         * @name indeterminate
          */
         indeterminate: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Used to set the checkbox group value
+         * Used to set the checkbox group value
          * @default []
+         * @name modelValue
          */
         modelValue: {
             default: (): any[] => []
         },
         /**
-         * @description The unique identifier of the checkbox group
+         * The unique identifier of the checkbox group
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: [String, Number],
@@ -82,18 +88,20 @@ export default defineComponent({
             }
         },
         /**
-         * @description The readonly state of the checkbox group
+         * The readonly state of the checkbox group
          * @type Boolean
          * @default false
+         * @name readonly
          */
         readonly: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The size variant of the checkbox group
+         * The size variant of the checkbox group
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -103,8 +111,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

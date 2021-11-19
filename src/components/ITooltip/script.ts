@@ -11,15 +11,15 @@ import { Classes } from '@inkline/inkline/types';
 import { uid } from '@inkline/inkline/helpers';
 
 /**
+ * Slot for tooltip trigger
  * @name default
  * @kind slot
- * @description Slot for tooltip trigger
  */
 
 /**
+ * Slot for tooltip body content
  * @name body
  * @kind slot
- * @description Slot for tooltip body content
  */
 
 const componentName = 'ITooltip';
@@ -35,36 +35,40 @@ export default defineComponent({
     ],
     props: {
         /**
-         * @description The color variant of the tooltip
+         * The color variant of the tooltip
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The disabled state of the tooltip
+         * The disabled state of the tooltip
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Used to manually control the visibility of the tooltip
+         * Used to manually control the visibility of the tooltip
          * @type Boolean
          * @default false
+         * @name modelValue
          */
         modelValue: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The identifier of the tooltip
+         * The identifier of the tooltip
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: String,
@@ -73,54 +77,60 @@ export default defineComponent({
             }
         },
         /**
-         * @description Displays an arrow on the tooltip pointing to the trigger element
+         * Displays an arrow on the tooltip pointing to the trigger element
          * @type Boolean
          * @default true
+         * @name arrow
          */
         arrow: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The placement of the tooltip
+         * The placement of the tooltip
          * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
          * @default false
+         * @name placement
          */
         placement: {
             type: String,
             default: 'top'
         },
         /**
-         * @description The events used to trigger the tooltip
+         * The events used to trigger the tooltip
          * @type hover | focus | click | manual
          * @default [hover, focus]
+         * @name trigger
          */
         trigger: {
             type: [String, Array],
             default: (): string[] => ['hover', 'focus']
         },
         /**
-         * @description The offset of the tooltip relative to the trigger element
+         * The offset of the tooltip relative to the trigger element
          * @type Number
          * @default 6
+         * @name offset
          */
         offset: {
             type: Number,
             default: 6
         },
         /**
-         * @description Used to override the popper.js options used for creating the tooltip
+         * Used to override the popper.js options used for creating the tooltip
          * @type Object
          * @default {}
+         * @name popperOptions
          */
         popperOptions: {
             type: Object,
             default: (): any => ({})
         },
         /**
-         * @description The size variant of the tooltip
+         * The size variant of the tooltip
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -130,8 +140,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

@@ -10,26 +10,26 @@ import { ClickOutside } from '@inkline/inkline/directives';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Event emitted for setting the modelValue
  * @event update:modelValue
- * @description Event emitted for setting the modelValue
  */
 
 /**
+ * Slot for modal body content
  * @name default
  * @kind slot
- * @description Slot for modal body content
  */
 
 /**
+ * Slot for modal header content
  * @name header
  * @kind slot
- * @description Slot for modal header content
  */
 
 /**
+ * Slot for modal footer content
  * @name footer
  * @kind slot
- * @description Slot for modal footer content
  */
 
 const componentName = 'IModal';
@@ -41,54 +41,60 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description Determines if the modal should close when pressing escape
+         * Determines if the modal should close when pressing escape
          * @type Boolean
          * @default true
+         * @name closeOnPressEscape
          */
         closeOnPressEscape: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The aria-label attribute of the close button
+         * The aria-label attribute of the close button
          * @type String
          * @default Close
+         * @name closeAriaLabel
          */
         closeAriaLabel: {
             type: String,
             default: 'Close'
         },
         /**
-         * @description The color variant of the modal
+         * The color variant of the modal
          * @type primary | success | light | dark | info | success | warning | danger
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The disabled state of the modal
+         * The disabled state of the modal
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Determines if the modal should close when clicking the overlay
+         * Determines if the modal should close when clicking the overlay
          * @type Boolean
          * @default true
+         * @name hideOnClickOutside
          */
         hideOnClickOutside: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The identifier of the modal
+         * The identifier of the modal
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: String,
@@ -97,18 +103,20 @@ export default defineComponent({
             }
         },
         /**
-         * @description Determines if the close icon should be visible in the modal header
+         * Determines if the close icon should be visible in the modal header
          * @type Boolean
          * @default false
+         * @name showClose
          */
         showClose: {
             type: Boolean,
             default: true
         },
         /**
-         * @description The size variant of the modal
+         * The size variant of the modal
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -116,18 +124,20 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description Used to determine if modal is visible or not
+         * Used to determine if modal is visible or not
          * @type Boolean
          * @default false
+         * @name modelValue
          */
         modelValue: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The modal opening and closing animation
+         * The modal opening and closing animation
          * @type fade-in-transition | fade-in-linear-transition | zoom-in-top-transition | zoom-in-bottom-transition | zoom-in-center-transition | zoom-in-left-transition | zoom-in-right-transition
          * @default zoom-in-center-transition
+         * @name transition
          */
         transition: {
             type: String,
@@ -136,8 +146,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

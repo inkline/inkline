@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue';
 
 /**
+ * Slot for default layout header content
  * @name default
  * @kind slot
- * @description Slot for default layout header content
  */
 
 const componentName = 'ILayoutHeader';

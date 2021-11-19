@@ -3,335 +3,335 @@ import { breakpointKeys } from '@inkline/inkline/constants';
 import { breakpointClass, capitalizeFirst } from '@inkline/inkline/helpers';
 
 /**
+ * Slot for default column content
  * @name default
  * @kind slot
- * @description Slot for default column content
  */
 
 /**
+ * The number of columns to span for extra-small screen sizes. Setting the prop to true will set the width automatically
  * @name xs
  * @kind member
- * @description The number of columns to span for extra-small screen sizes. Setting the prop to true will set the width automatically
  * @type Boolean | String | Number
  * @default
  */
 
 /**
+ * The number of columns to span for small screen sizes. Setting the prop to true will set the width automatically
  * @name sm
  * @kind member
- * @description The number of columns to span for small screen sizes. Setting the prop to true will set the width automatically
  * @type Boolean | String | Number
  * @default
  */
 
 /**
+ * The number of columns to span for medium screen sizes. Setting the prop to true will set the width automatically
  * @name md
  * @kind member
- * @description The number of columns to span for medium screen sizes. Setting the prop to true will set the width automatically
  * @type Boolean | String | Number
  * @default
  */
 
 /**
+ * The number of columns to span for large screen sizes. Setting the prop to true will set the width automatically
  * @name lg
  * @kind member
- * @description The number of columns to span for large screen sizes. Setting the prop to true will set the width automatically
  * @type Boolean | String | Number
  * @default
  */
 
 /**
+ * The number of columns to span for extra-large screen sizes. Setting the prop to true will set the width automatically
  * @name xl
  * @kind member
- * @description The number of columns to span for extra-large screen sizes. Setting the prop to true will set the width automatically
  * @type Boolean | String | Number
  * @default
  */
 
 /**
+ * The number of columns to span for extra-extra-large screen sizes. Setting the prop to true will set the width automatically
  * @name xxl
  * @kind member
- * @description The number of columns to span for extra-extra-large screen sizes. Setting the prop to true will set the width automatically
  * @type Boolean | String | Number
  * @default
  */
 
 /**
+ * Display the column as the first column
  * @name first
  * @kind member
- * @description Display the column as the first column
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the first column on extra-small screens
  * @name first-xs
  * @kind member
- * @description Display the column as the first column on extra-small screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the first column on small screens
  * @name first-sm
  * @kind member
- * @description Display the column as the first column on small screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the first column on medium screens
  * @name first-md
  * @kind member
- * @description Display the column as the first column on medium screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the first column on large screens
  * @name first-lg
  * @kind member
- * @description Display the column as the first column on large screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the first column on extra-large screens
  * @name first-xl
  * @kind member
- * @description Display the column as the first column on extra-large screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the first column on extra-extra-large screens
  * @name first-xxl
  * @kind member
- * @description Display the column as the first column on extra-extra-large screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the last column
  * @name last
  * @kind member
- * @description Display the column as the last column
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the last column on extra-small screens
  * @name last-xs
  * @kind member
- * @description Display the column as the last column on extra-small screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the last column on small screens
  * @name last-sm
  * @kind member
- * @description Display the column as the last column on small screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the last column on medium screens
  * @name last-md
  * @kind member
- * @description Display the column as the last column on medium screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the last column on large screens
  * @name last-lg
  * @kind member
- * @description Display the column as the last column on large screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the last column on extra-large screens
  * @name last-xl
  * @kind member
- * @description Display the column as the last column on extra-large screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * Display the column as the last column on extra-extra-large screens
  * @name last-xxl
  * @kind member
- * @description Display the column as the last column on extra-extra-large screens
  * @type Boolean
  * @default false
  */
 
 /**
+ * The number of columns to offset the column by
  * @name offset
  * @kind member
- * @description The number of columns to offset the column by
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to offset the column by on extra-small screens
  * @name offset-xs
  * @kind member
- * @description The number of columns to offset the column by on extra-small screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to offset the column by on small screens
  * @name offset-sm
  * @kind member
- * @description The number of columns to offset the column by on small screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to offset the column by on medium screens
  * @name offset-md
  * @kind member
- * @description The number of columns to offset the column by on medium screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to offset the column by on large screens
  * @name offset-lg
  * @kind member
- * @description The number of columns to offset the column by on large screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to offset the column by on extra-large screens
  * @name offset-xl
  * @kind member
- * @description The number of columns to offset the column by on extra-large screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to offset the column by on extra-extra-large screens
  * @name offset-xxl
  * @kind member
- * @description The number of columns to offset the column by on extra-extra-large screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to push the column by
  * @name push
  * @kind member
- * @description The number of columns to push the column by
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to push the column by on extra-small screens
  * @name push-xs
  * @kind member
- * @description The number of columns to push the column by on extra-small screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to push the column by on small screens
  * @name push-sm
  * @kind member
- * @description The number of columns to push the column by on small screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to push the column by on medium screens
  * @name push-md
  * @kind member
- * @description The number of columns to push the column by on medium screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to push the column by on large screens
  * @name push-lg
  * @kind member
- * @description The number of columns to push the column by on large screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to push the column by on extra-large screens
  * @name push-xl
  * @kind member
- * @description The number of columns to push the column by on extra-large screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to push the column by on extra-extra-large screens
  * @name push-xxl
  * @kind member
- * @description The number of columns to push the column by on extra-extra-large screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to pull the column by
  * @name pull
  * @kind member
- * @description The number of columns to pull the column by
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to pull the column by on extra-small screens
  * @name pull-xs
  * @kind member
- * @description The number of columns to pull the column by on extra-small screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to pull the column by on small screens
  * @name pull-sm
  * @kind member
- * @description The number of columns to pull the column by on small screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to pull the column by on medium screens
  * @name pull-md
  * @kind member
- * @description The number of columns to pull the column by on medium screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to pull the column by on large screens
  * @name pull-lg
  * @kind member
- * @description The number of columns to pull the column by on large screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to pull the column by on extra-large screens
  * @name pull-xl
  * @kind member
- * @description The number of columns to pull the column by on extra-large screens
  * @type String | Number
  * @default
  */
 
 /**
+ * The number of columns to pull the column by on extra-extra-large screens
  * @name pull-xxl
  * @kind member
- * @description The number of columns to pull the column by on extra-extra-large screens
  * @type String | Number
  * @default
  */

@@ -11,27 +11,30 @@ export default defineComponent({
     name: componentName,
     props: {
         /**
-         * @description The animation of the hamburger menu
+         * The animation of the hamburger menu
          * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minus
          * @default close
+         * @name animation
          */
         animation: {
             type: String,
             default: 'close'
         },
         /**
-         * @description The color variant of the hamburger menu
+         * The color variant of the hamburger menu
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description Used to set the hamburger menu as opened or closed
+         * Used to set the hamburger menu as opened or closed
          * @type Boolean
          * @default false
+         * @name modelValue
          */
         modelValue: {
             type: Boolean,
@@ -40,8 +43,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],

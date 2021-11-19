@@ -7,33 +7,33 @@ import {
 import IInput from '@inkline/inkline/components/IInput/index.vue';
 
 /**
+ * Slot for the textarea prefix content
  * @name prefix
  * @kind slot
- * @description Slot for the textarea prefix content
  */
 
 /**
+ * Slot for the textarea suffix content
  * @name suffix
  * @kind slot
- * @description Slot for the textarea suffix content
  */
 
 /**
+ * Slot for the textarea prepend content
  * @name prepend
  * @kind slot
- * @description Slot for the textarea prepend content
  */
 
 /**
+ * Slot for the textarea append content
  * @name append
  * @kind slot
- * @description Slot for the textarea append content
  */
 
 /**
+ * Slot for the clearable button
  * @name clearable
  * @kind slot
- * @description Slot for the clearable button
  * @property clear
  */
 
@@ -44,54 +44,60 @@ export default defineComponent({
     extends: IInput,
     props: {
         /**
-         * @description The color variant of the textarea
+         * The color variant of the textarea
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description Display the textarea as clearable
+         * Display the textarea as clearable
          * @type Boolean
          * @default false
+         * @name clearable
          */
         clearable: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The disabled state of the textarea
+         * The disabled state of the textarea
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The id of the internal textarea element
+         * The id of the internal textarea element
          * @type String
          * @default
+         * @name id
          */
         id: {
             type: String,
             default: ''
         },
         /**
-         * @description Used to set the field value
+         * Used to set the field value
          * @type Boolean
          * @default false
+         * @name modelValue
          */
         modelValue: {
             type: String,
             default: ''
         },
         /**
-         * @description The unique identifier of the textarea
+         * The unique identifier of the textarea
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: [String, Number],
@@ -100,18 +106,20 @@ export default defineComponent({
             }
         },
         /**
-         * @description The readonly state of the textarea
+         * The readonly state of the textarea
          * @type Boolean
          * @default false
+         * @name readonly
          */
         readonly: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The size variant of the textarea
+         * The size variant of the textarea
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -119,9 +127,10 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description The tabindex of the textarea
+         * The tabindex of the textarea
          * @type Number | String
          * @default 1
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
@@ -130,8 +139,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ]

@@ -3,9 +3,9 @@ import { uid } from '@inkline/inkline/helpers';
 import { Classes } from '@inkline/inkline/types';
 
 /**
+ * Slot for default tab content
  * @name default
  * @kind slot
- * @description Slot for default tab content
  */
 
 const componentName = 'ITab';
@@ -19,18 +19,20 @@ export default defineComponent({
     },
     props: {
         /**
-         * @description The title of the tab
+         * The title of the tab
          * @type String
          * @default
+         * @name title
          */
         title: {
             type: String,
             default: ''
         },
         /**
-         * @description The name of the tab, used as an identifier
+         * The name of the tab, used as an identifier
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: String,

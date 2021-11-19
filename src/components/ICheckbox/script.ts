@@ -9,9 +9,9 @@ import {
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 /**
+ * Slot for default checkbox label
  * @name default
  * @kind slot
- * @description Slot for default checkbox label
  */
 
 const componentName = 'ICheckbox';
@@ -23,50 +23,56 @@ export default defineComponent({
     ],
     props: {
         /**
-         * @description The color variant of the checkbox
+         * The color variant of the checkbox
          * @type light | dark
          * @default light
+         * @name color
          */
         color: {
             type: String,
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * @description The disabled state of the checkbox
+         * The disabled state of the checkbox
          * @type Boolean
          * @default false
+         * @name disabled
          */
         disabled: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The indeterminate state of the checkbox
+         * The indeterminate state of the checkbox
          * @type Boolean
          * @default false
+         * @name indeterminate
          */
         indeterminate: {
             type: Boolean,
             default: false
         },
         /**
-         * @description Used to set the checkbox value when used inside a checkbox group
+         * Used to set the checkbox value when used inside a checkbox group
          * @default false
+         * @name value
          */
         value: {
             default: false
         },
         /**
-         * @description Used to set the checkbox value when used by itself
+         * Used to set the checkbox value when used by itself
          * @default false
+         * @name modelValue
          */
         modelValue: {
             default: false
         },
         /**
-         * @description The unique identifier of the checkbox
+         * The unique identifier of the checkbox
          * @type String
          * @default uid()
+         * @name name
          */
         name: {
             type: [String, Number],
@@ -75,27 +81,30 @@ export default defineComponent({
             }
         },
         /**
-         * @description Displays the native browser checkbox input indicator
+         * Displays the native browser checkbox input indicator
          * @type Boolean
          * @default false
+         * @name native
          */
         native: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The readonly state of the checkbox
+         * The readonly state of the checkbox
          * @type Boolean
          * @default false
+         * @name readonly
          */
         readonly: {
             type: Boolean,
             default: false
         },
         /**
-         * @description The size variant of the checkbox
+         * The size variant of the checkbox
          * @type sm | md | lg
          * @default md
+         * @name size
          */
         size: {
             type: String,
@@ -103,9 +112,10 @@ export default defineComponent({
             validator: sizePropValidator
         },
         /**
-         * @description The tabindex of the checkbox
+         * The tabindex of the checkbox
          * @type Number | String
          * @default 1
+         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
@@ -114,8 +124,8 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted for setting the modelValue
          * @event update:modelValue
-         * @description Event emitted for setting the modelValue
          */
         'update:modelValue'
     ],
