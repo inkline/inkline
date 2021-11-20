@@ -7,7 +7,7 @@ import {
     IAlertIconExample,
     IAlertSizeVariantsExample
 } from './index';
-import {colorArgType, createStory, sizeArgType} from '@inkline/inkline/__storybook__';
+import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IAlert,
