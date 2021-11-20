@@ -20,7 +20,7 @@
     "lint:script": "eslint --ext .vue,.js,.ts src",
     "lint:style": "stylelint \"src/**/*.scss\"",
     "prerelease:sourcemaps": "cp -r src package/src && bash -c 'find package -type f -name *.js.map -exec perl -i -pe\"s/..\\/src/src/g\" {} +'",
-    "prerelease": "npm run dist && ts-node scripts/prepublish.ts && npm run prerelease:sourcemaps",
+    "prerelease": "npm run lint && npm run test && npm run dist && ts-node scripts/prepublish.ts && npm run prerelease:sourcemaps",
     "release": "np",
     "postrelease": "ts-node scripts/postpublish.ts",
     "postversion": "ts-node scripts/postversion.ts",
