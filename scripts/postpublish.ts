@@ -21,8 +21,8 @@ const remove = [
     for (const entry of remove) {
         try {
             await fs.promises[entry.dir ? 'rmdir' : 'rm'](entry.from, { recursive: true });
-        } catch (err) {
-            console.log(err.message);
+        } catch (error: any) {
+            console.log(error.message);
         }
     }
 })();
