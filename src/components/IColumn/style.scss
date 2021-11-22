@@ -119,16 +119,18 @@
             }
         }
 
-        &.-offset#{$breakpoint}-0 {
-            margin-left: 0;
-        }
+        @include breakpoint-up($breakpoint-key) {
+            &.-offset#{$breakpoint}-0 {
+                margin-left: 0;
+            }
 
-        &.-push#{$breakpoint}-0 {
-            left: 0;
-        }
+            &.-push#{$breakpoint}-0 {
+                left: 0;
+            }
 
-        &.-pull#{$breakpoint}-0 {
-            right: 0;
+            &.-pull#{$breakpoint}-0 {
+                right: 0;
+            }
         }
     }
 }
