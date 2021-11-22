@@ -22,6 +22,11 @@ module.exports = {
     testMatch: [
         '**/*.spec.(js|jsx|ts|tsx)'
     ],
+    testPathIgnorePatterns: [
+        '/node_modules/',
+        '/lib/',
+        '/package/'
+    ],
     testURL: 'http://localhost/',
     verbose: true
 };
