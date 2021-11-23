@@ -33,6 +33,19 @@ describe('Components', () => {
                     );
                 });
             });
+
+            describe('forAttr', () => {
+                it('should be equal to props.for', () => {
+                    const value = 'example';
+                    const wrapper = render(IFormLabel, {
+                        props: {
+                            for: value
+                        }
+                    });
+
+                    expect(wrapper.container.firstChild).toHaveAttribute('for', value);
+                });
+            });
         });
 
         describe('methods', () => {
