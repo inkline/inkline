@@ -55,6 +55,9 @@ export default defineComponent({
                 [`-${this.size}`]: Boolean(this.size),
                 [`-${this.placement}`]: Boolean(this.placement)
             };
+        },
+        forAttr (): string {
+            return this.for;
         }
     },
     methods: {
