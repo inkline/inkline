@@ -3,33 +3,40 @@
  */
 
 .form-label {
-    /// Variables for the sm color variant
+    ////
+    /// Variables for the sm size variant
     /// @name sm
-    /// @type group
+    /// @type variant
+    ////
     @include variant('sm', 'form') {
+        ////
         /// The font size of the form label component, for the sm size variant
         /// @name font-size
-        /// @type size
+        ////
         ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
     }
-
-    /// Variables for the md color variant
+    ////
+    /// Variables for the md size variant
     /// @name md
-    /// @type group
+    /// @type variant
+    ////
     @include variant('md', 'form') {
+        ////
         /// The font size of the form label component, for the md size variant
         /// @name font-size
-        /// @type size
+        ////
         ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
     }
-
-    /// Variables for the lg color variant
+    ////
+    /// Variables for the lg size variant
     /// @name lg
-    /// @type group
+    /// @type variant
+    ////
     @include variant('lg', 'form') {
+        ////
         /// The font size of the form label component, for the lg size variant
         /// @name font-size
-        /// @type size
+        ////
         ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
     }
 }
