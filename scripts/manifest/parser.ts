@@ -16,32 +16,34 @@ export const parseBlocks = (filePath: string, options = {}): ContextBlock[] => {
     const lines: string[] = source.split('\n');
     const blocks: Block[] = parse(source, options);
 
-    return blocks.map((block) => {
-        const lastSourceLineNumber = block.source[block.source.length - 1].number;
-        const context = [];
+    return blocks
+        .map((block) => {
+            const lastSourceLineNumber = block.source[block.source.length - 1].number;
+            const context = [];
 
-        let brackets = 0;
-        for (let lineNumber = lastSourceLineNumber + 1; lineNumber < lines.length; lineNumber += 1) {
-            const line = lines[lineNumber];
+            let brackets = 0;
+            for (let lineNumber = lastSourceLineNumber + 1; lineNumber < lines.length; lineNumber += 1) {
+                const line = lines[lineNumber];
 
-            if (/{/.test(line)) {
-                brackets += 1;
+                if (/{/.test(line)) {
+                    brackets += 1;
+                }
+
+                context.push(line);
+
+                if (/},?/.test(line)) {
+                    brackets -= 1;
+                }
+
+                if (brackets === 0) {
+                    break;
+                }
             }
 
-            context.push(line);
-
-            if (/},?/.test(line)) {
-                brackets -= 1;
-            }
-
-            if (brackets === 0) {
-                break;
-            }
-        }
-
-        return ({
-            ...block,
-            context
-        });
-    });
+            return ({
+                ...block,
+                context
+            });
+        })
+        .filter((block) => block.tags.length > 0);
 };
