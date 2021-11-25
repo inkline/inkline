@@ -3,37 +3,45 @@
  */
 
 .breadcrumb {
+    ////
     /// The text color of the breadcrumb component
     /// @name color
     /// @type color
+    ////
     ----color: #{color('primary')};
-
+    ////
     /// The text default color of the breadcrumb component
     /// @name color--default
     /// @type color
+    ////
     ----color--default: #{color('gray-90')};
-
+    ////
     /// The text active color of the breadcrumb component
     /// @name color--active
     /// @type color
+    ////
     ----color--active: #{color('gray-70')};
-
+    ////
     /// The font size of the breadcrumb component
     /// @name font-size
     /// @type size
+    ////
     ----font-size: #{font-size()};
-
+    ////
     /// The bottom margin of the breadcrumb component
     /// @name margin-bottom
+    ////
     ----margin-bottom: #{spacing()};
-
+    ////
     /// The padding right of the breadcrumb component
     /// @name padding-right
     /// @type size
+    ////
     ----padding-right: #{var(--padding-right)};
-
+    ////
     /// The padding left of the breadcrumb component
     /// @name padding-left
     /// @type size
+    ////
     ----padding-left: #{var(--padding-left)};
 }

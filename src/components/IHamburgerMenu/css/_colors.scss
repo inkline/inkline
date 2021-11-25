@@ -3,23 +3,28 @@
  */
 
 .hamburger-menu {
+    ////
     /// Variables for the light color variant
     /// @name light
-    /// @type group
+    /// @type variant
+    ////
     @include variant('light') {
+        ////
         /// The background of the hamburger-menu component, for the light color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('dark')};
     }
-
+    ////
     /// Variables for the dark color variant
     /// @name dark
-    /// @type group
+    /// @type variant
+    ////
     @include variant('dark') {
+        ////
         /// The background of the hamburger-menu component, for the dark color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('light')};
     }
 }

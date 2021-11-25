@@ -3,663 +3,688 @@
  */
 
 .button {
+    ////
     /// Variables for the primary color variant
     /// @name primary
-    /// @type group
+    /// @type variant
+    ////
     @include variant('primary') {
+        ////
         /// The background of the button component, for the primary color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('primary')};
-
+        ////
         /// The background of the button component when hovered or focused, for the primary color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('primary-55')};
-
+        ////
         /// The background of the button component when active, for the primary color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('primary-60')};
-
+        ////
         /// The border top color of the button component, for the primary color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('primary-55')};
-
+        ////
         /// The border right color of the button component, for the primary color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('primary-55')};
-
+        ////
         /// The border bottom color of the button component, for the primary color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('primary-55')};
-
+        ////
         /// The border left color of the button component, for the primary color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('primary-55')};
-
+        ////
         /// The color of the button component, for the primary color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-primary)};
-
+        ////
         /// The color of the button component link variant, for the primary color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('primary')};
-
+        ////
         /// The color of the button component link variant when active, for the primary color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('primary-55')};
     }
-
+    ////
     /// Variables for the secondary color variant
     /// @name secondary
-    /// @type group
+    /// @type variant
+    ////
     @include variant('secondary') {
+        ////
         /// The background of the button component, for the secondary color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('secondary')};
-
+        ////
         /// The background of the button component when hovered or focused, for the secondary color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('secondary-55')};
-
+        ////
         /// The background of the button component when active, for the secondary color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('secondary-60')};
-
+        ////
         /// The border top color of the button component, for the secondary color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('secondary-55')};
-
+        ////
         /// The border right color of the button component, for the secondary color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('secondary-55')};
-
+        ////
         /// The border bottom color of the button component, for the secondary color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('secondary-55')};
-
+        ////
         /// The border left color of the button component, for the secondary color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('secondary-55')};
-
+        ////
         /// The color of the button component, for the secondary color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-secondary)};
-
+        ////
         /// The color of the button component link variant, for the secondary color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('secondary')};
-
+        ////
         /// The color of the button component link variant when active, for the secondary color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('secondary-55')};
     }
-
+    ////
     /// Variables for the light color variant
     /// @name light
-    /// @type group
+    /// @type variant
+    ////
     @include variant('light') {
+        ////
         /// The background of the button component, for the light color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('light')};
-
+        ////
         /// The background of the button component when hovered or focused, for the light color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('light-55')};
-
+        ////
         /// The background of the button component when active, for the light color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('light-60')};
-
+        ////
         /// The border top color of the button component, for the light color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('light-55')};
-
+        ////
         /// The border right color of the button component, for the light color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('light-55')};
-
+        ////
         /// The border bottom color of the button component, for the light color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('light-55')};
-
+        ////
         /// The border left color of the button component, for the light color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('light-55')};
-
+        ////
         /// The color of the button component, for the light color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-light)};
-
+        ////
         /// The color of the button component link variant, for the light color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('light')};
-
+        ////
         /// The color of the button component link variant when active, for the light color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('light-55')};
     }
-
+    ////
     /// Variables for the dark color variant
     /// @name dark
-    /// @type group
+    /// @type variant
+    ////
     @include variant('dark') {
+        ////
         /// The background of the button component, for the dark color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('dark')};
-
+        ////
         /// The background of the button component when hovered or focused, for the dark color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('dark-45')};
-
+        ////
         /// The background of the button component when active, for the dark color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('dark-40')};
-
+        ////
         /// The border top color of the button component, for the dark color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('dark-45')};
-
+        ////
         /// The border right color of the button component, for the dark color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('dark-45')};
-
+        ////
         /// The border bottom color of the button component, for the dark color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('dark-45')};
-
+        ////
         /// The border left color of the button component, for the dark color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('dark-45')};
-
+        ////
         /// The color of the button component, for the dark color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-dark)};
-
+        ////
         /// The color of the button component link variant, for the dark color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('dark')};
-
+        ////
         /// The color of the button component link variant when active, for the dark color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('dark-45')};
     }
-
+    ////
     /// Variables for the info color variant
     /// @name info
-    /// @type group
+    /// @type variant
+    ////
     @include variant('info') {
+        ////
         /// The background of the button component, for the info color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('info')};
-
+        ////
         /// The background of the button component when hovered or focused, for the info color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('info-55')};
-
+        ////
         /// The background of the button component when active, for the info color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('info-60')};
-
+        ////
         /// The border top color of the button component, for the info color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('info-55')};
-
+        ////
         /// The border right color of the button component, for the info color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('info-55')};
-
+        ////
         /// The border bottom color of the button component, for the info color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('info-55')};
-
+        ////
         /// The border left color of the button component, for the info color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('info-55')};
-
+        ////
         /// The color of the button component, for the info color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-info)};
-
+        ////
         /// The color of the button component link variant, for the info color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('info')};
-
+        ////
         /// The color of the button component link variant when active, for the info color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('info-55')};
     }
-
+    ////
     /// Variables for the success color variant
     /// @name success
-    /// @type group
+    /// @type variant
+    ////
     @include variant('success') {
+        ////
         /// The background of the button component, for the success color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('success')};
-
+        ////
         /// The background of the button component when hovered or focused, for the success color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('success-55')};
-
+        ////
         /// The background of the button component when active, for the success color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('success-60')};
-
+        ////
         /// The border top color of the button component, for the success color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('success-55')};
-
+        ////
         /// The border right color of the button component, for the success color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('success-55')};
-
+        ////
         /// The border bottom color of the button component, for the success color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('success-55')};
-
+        ////
         /// The border left color of the button component, for the success color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('success-55')};
-
+        ////
         /// The color of the button component, for the success color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-success)};
-
+        ////
         /// The color of the button component link variant, for the success color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('success')};
-
+        ////
         /// The color of the button component link variant when active, for the success color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('success-55')};
     }
-
+    ////
     /// Variables for the warning color variant
     /// @name warning
-    /// @type group
+    /// @type variant
+    ////
     @include variant('warning') {
+        ////
         /// The background of the button component, for the warning color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('warning')};
-
+        ////
         /// The background of the button component when hovered or focused, for the warning color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('warning-55')};
-
+        ////
         /// The background of the button component when active, for the warning color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('warning-60')};
-
+        ////
         /// The border top color of the button component, for the warning color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('warning-55')};
-
+        ////
         /// The border right color of the button component, for the warning color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('warning-55')};
-
+        ////
         /// The border bottom color of the button component, for the warning color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('warning-55')};
-
+        ////
         /// The border left color of the button component, for the warning color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('warning-55')};
-
+        ////
         /// The color of the button component, for the warning color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-warning)};
-
+        ////
         /// The color of the button component link variant, for the warning color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('warning')};
-
+        ////
         /// The color of the button component link variant when active, for the warning color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('warning-55')};
     }
-
+    ////
     /// Variables for the danger color variant
     /// @name danger
-    /// @type group
+    /// @type variant
+    ////
     @include variant('danger') {
+        ////
         /// The background of the button component, for the danger color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('danger')};
-
+        ////
         /// The background of the button component when hovered or focused, for the danger color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('danger-55')};
-
+        ////
         /// The background of the button component when active, for the danger color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('danger-60')};
-
+        ////
         /// The border top color of the button component, for the danger color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('danger-55')};
-
+        ////
         /// The border right color of the button component, for the danger color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('danger-55')};
-
+        ////
         /// The border bottom color of the button component, for the danger color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('danger-55')};
-
+        ////
         /// The border left color of the button component, for the danger color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('danger-55')};
-
+        ////
         /// The color of the button component, for the danger color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-danger)};
-
+        ////
         /// The color of the button component link variant, for the danger color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('danger')};
-
+        ////
         /// The color of the button component link variant when active, for the danger color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('danger-55')};
     }
-
+    ////
     /// Variables for the facebook color variant
     /// @name facebook
-    /// @type group
+    /// @type variant
+    ////
     @include variant('facebook') {
+        ////
         /// The background of the button component, for the facebook color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('facebook')};
-
+        ////
         /// The background of the button component when hovered or focused, for the facebook color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('facebook-55')};
-
+        ////
         /// The background of the button component when active, for the facebook color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('facebook-60')};
-
+        ////
         /// The border top color of the button component, for the facebook color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('facebook-55')};
-
+        ////
         /// The border right color of the button component, for the facebook color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('facebook-55')};
-
+        ////
         /// The border bottom color of the button component, for the facebook color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('facebook-55')};
-
+        ////
         /// The border left color of the button component, for the facebook color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('facebook-55')};
-
+        ////
         /// The color of the button component, for the facebook color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-facebook)};
-
+        ////
         /// The color of the button component link variant, for the facebook color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('facebook')};
-
+        ////
         /// The color of the button component link variant when active, for the facebook color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('facebook-55')};
     }
-
+    ////
     /// Variables for the google color variant
     /// @name google
-    /// @type group
+    /// @type variant
+    ////
     @include variant('google') {
+        ////
         /// The background of the button component, for the google color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('google')};
-
+        ////
         /// The background of the button component when hovered or focused, for the google color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('google-55')};
-
+        ////
         /// The background of the button component when active, for the google color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('google-60')};
-
+        ////
         /// The border top color of the button component, for the google color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('google-55')};
-
+        ////
         /// The border right color of the button component, for the google color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('google-55')};
-
+        ////
         /// The border bottom color of the button component, for the google color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('google-55')};
-
+        ////
         /// The border left color of the button component, for the google color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('google-55')};
-
+        ////
         /// The color of the button component, for the google color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-google)};
-
+        ////
         /// The color of the button component link variant, for the google color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('google')};
-
+        ////
         /// The color of the button component link variant when active, for the google color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('google-55')};
     }
-
+    ////
     /// Variables for the twitter color variant
     /// @name twitter
-    /// @type group
+    /// @type variant
+    ////
     @include variant('twitter') {
+        ////
         /// The background of the button component, for the twitter color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('twitter')};
-
+        ////
         /// The background of the button component when hovered or focused, for the twitter color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('twitter-55')};
-
+        ////
         /// The background of the button component when active, for the twitter color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('twitter-60')};
-
+        ////
         /// The border top color of the button component, for the twitter color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('twitter-55')};
-
+        ////
         /// The border right color of the button component, for the twitter color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('twitter-55')};
-
+        ////
         /// The border bottom color of the button component, for the twitter color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('twitter-55')};
-
+        ////
         /// The border left color of the button component, for the twitter color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('twitter-55')};
-
+        ////
         /// The color of the button component, for the twitter color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-twitter)};
-
+        ////
         /// The color of the button component link variant, for the twitter color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('twitter')};
-
+        ////
         /// The color of the button component link variant when active, for the twitter color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('twitter-55')};
     }
-
+    ////
     /// Variables for the github color variant
     /// @name github
-    /// @type group
+    /// @type variant
+    ////
     @include variant('github') {
+        ////
         /// The background of the button component, for the github color variant
         /// @name background
-        /// @type color
+        ////
         ----background: #{color('github')};
-
+        ////
         /// The background of the button component when hovered or focused, for the github color variant
         /// @name background--hover
-        /// @type color
+        ////
         ----background--hover: #{color('github-55')};
-
+        ////
         /// The background of the button component when active, for the github color variant
         /// @name background--active
-        /// @type color
+        ////
         ----background--active: #{color('github-60')};
-
+        ////
         /// The border top color of the button component, for the github color variant
         /// @name border-top-color
-        /// @type color
+        ////
         ----border-top-color: #{color('github-55')};
-
+        ////
         /// The border right color of the button component, for the github color variant
         /// @name border-right-color
-        /// @type color
+        ////
         ----border-right-color: #{color('github-55')};
-
+        ////
         /// The border bottom color of the button component, for the github color variant
         /// @name border-bottom-color
-        /// @type color
+        ////
         ----border-bottom-color: #{color('github-55')};
-
+        ////
         /// The border left color of the button component, for the github color variant
         /// @name border-left-color
-        /// @type color
+        ////
         ----border-left-color: #{color('github-55')};
-
+        ////
         /// The color of the button component, for the github color variant
         /// @name color
-        /// @type color
+        ////
         ----color: #{contrast-color($color-github)};
-
+        ////
         /// The color of the button component link variant, for the github color variant
         /// @name link--color
-        /// @type color
+        ////
         ----link--color: #{color('github')};
-
+        ////
         /// The color of the button component link variant when active, for the github color variant
         /// @name link--color--active
-        /// @type color
+        ////
         ----link--color--active: #{color('github-55')};
     }
 }
