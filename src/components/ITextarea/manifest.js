@@ -1,114 +1,114 @@
-module.exports = {
+export const manifest = {
     slots: [
         {
-            name: 'prefix',
-            description: 'Slot for the input prefix content',
-            type: []
+            description: 'Slot for the textarea prefix content',
+            name: 'prefix'
         },
         {
-            name: 'suffix',
-            description: 'Slot for the input suffix content',
-            type: []
+            description: 'Slot for the textarea suffix content',
+            name: 'suffix'
         },
         {
-            name: 'prepend',
-            description: 'Slot for the input prepend content',
-            type: []
+            description: 'Slot for the textarea prepend content',
+            name: 'prepend'
         },
         {
-            name: 'append',
-            description: 'Slot for the input append content',
-            type: []
+            description: 'Slot for the textarea append content',
+            name: 'append'
         },
         {
-            name: 'clearable',
             description: 'Slot for the clearable button',
-            type: []
+            name: 'clearable'
         }
     ],
     events: [
         {
-            name: 'update:modelValue',
             description: 'Event emitted for setting the modelValue',
-            type: []
+            name: 'update:modelValue'
         }
     ],
     props: [
         {
             name: 'color',
-            description: 'The color variant of the input',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the textarea'
         },
         {
             name: 'clearable',
-            description: 'Display the input as clearable',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the textarea as clearable'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the input',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the textarea'
         },
         {
             name: 'id',
-            description: 'The id of the internal input element',
             type: [
                 'String'
             ],
-            default: '{"type":"","default":""}'
+            default: '',
+            description: 'The id of the internal textarea element'
         },
         {
             name: 'modelValue',
-            description: 'Used to set the field value',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Used to set the field value'
         },
         {
             name: 'name',
-            description: 'The unique identifier of the input',
             type: [
                 'String'
             ],
-            default: 'uid()'
+            default: 'uid()',
+            description: 'The unique identifier of the textarea'
         },
         {
             name: 'readonly',
-            description: 'The readonly state of the input',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The readonly state of the textarea'
         },
         {
             name: 'size',
-            description: 'The size variant of the input',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the textarea'
         },
         {
             name: 'tabindex',
-            description: 'The tabindex of the input',
             type: [
                 'Number',
                 'String'
             ],
-            default: '1'
+            default: '1',
+            description: 'The tabindex of the textarea'
         }
-    ]
+    ],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;

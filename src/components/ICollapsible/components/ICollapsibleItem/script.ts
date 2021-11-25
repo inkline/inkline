@@ -45,6 +45,7 @@ export default defineComponent({
         /**
          * The title of the collapsible item
          * @type String
+         * @default
          * @name title
          */
         title: {

@@ -68,11 +68,14 @@ export default defineComponent({
         /**
          * The maximum number of pagination buttons to show on each breakpoint
          * @type Number | Object
+         * @name limit
          * @default
+         * ```
          * {
          *     xs: 3,
          *     sm: 5
          * }
+         * ```
          */
         limit: {
             type: [Number, Object],

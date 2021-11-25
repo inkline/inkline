@@ -1,9 +1,16 @@
-module.exports = {
+export const manifest = {
     slots: [
         {
-            name: 'default',
             description: 'Slot for default layout footer content',
-            type: []
+            name: 'default'
         }
-    ]
+    ],
+    events: [],
+    props: [],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;

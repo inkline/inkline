@@ -1,62 +1,69 @@
-module.exports = {
+export const manifest = {
     slots: [
         {
-            name: 'default',
             description: 'Slot for default form group content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'color',
-            description: 'The color variant of the form group',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the form group'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the form group',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the form group'
         },
         {
             name: 'inline',
-            description: 'Display the form group as inline',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the form group as inline'
         },
         {
             name: 'name',
-            description: 'The identifier of the form group',
             type: [
                 'String'
             ],
-            default: '{"type":"","default":""}'
+            default: '',
+            description: 'The identifier of the form group'
         },
         {
             name: 'readonly',
-            description: 'The readonly state of the form group',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The readonly state of the form group'
+        },
+        {
+            name: 'required',
+            type: [
+                'Boolean'
+            ],
+            default: 'false',
+            description: 'The required state of the form group'
         },
         {
             name: 'size',
-            description: 'The size variant of the form group',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the form group'
         }
     ],
     css: {
@@ -64,9 +71,14 @@ module.exports = {
         variables: [
             {
                 name: 'margin-top',
-                description: 'The margin top of the form error component',
-                value: 'var(--margin-top)'
+                type: '',
+                value: 'var(--margin-top)',
+                description: 'The margin top of the form error component'
             }
-        ]
-    }
+        ],
+        variants: []
+    },
+    events: []
 };
+
+export default manifest;

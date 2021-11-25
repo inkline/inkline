@@ -1,10 +1,9 @@
-module.exports = {
+export const manifest = {
     name: 'layout-aside',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default layout aside content',
-            type: []
+            name: 'default'
         }
     ],
     css: {
@@ -16,9 +15,15 @@ module.exports = {
         variables: [
             {
                 name: 'width',
-                description: 'The width of the layout aside component',
-                value: '320px'
+                type: '',
+                value: '320px',
+                description: 'The width of the layout aside component'
             }
-        ]
-    }
+        ],
+        variants: []
+    },
+    events: [],
+    props: []
 };
+
+export default manifest;

@@ -1,39 +1,38 @@
-module.exports = {
+export const manifest = {
     name: 'nav',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default nav content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'color',
-            description: 'The color variant of the nav',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the nav'
         },
         {
             name: 'size',
-            description: 'The size variant of the nav',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the nav'
         },
         {
             name: 'vertical',
-            description: 'Display the nav with vertical orientation',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the nav with vertical orientation'
         }
     ],
     styles: [
@@ -76,5 +75,12 @@ module.exports = {
             type: 'size',
             default: 'spacing()'
         }
-    ]
+    ],
+    events: [],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;

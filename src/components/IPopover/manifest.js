@@ -1,71 +1,73 @@
-module.exports = {
+export const manifest = {
     name: 'popover',
     slots: [
         {
-            name: 'default',
             description: 'Slot for tooltip trigger',
-            type: []
+            name: 'default'
         },
         {
-            name: 'header',
             description: 'Slot for tooltip header content',
-            type: []
+            name: 'header'
         },
         {
-            name: 'body',
             description: 'Slot for tooltip body content',
-            type: []
+            name: 'body'
         },
         {
-            name: 'footer',
             description: 'Slot for tooltip footer content',
-            type: []
+            name: 'footer'
         }
     ],
     events: [
         {
-            name: 'update:modelValue',
             description: 'Event emitted for setting the modelValue',
-            type: []
+            name: 'update:modelValue'
         }
     ],
     props: [
         {
             name: 'color',
-            description: 'The color variant of the popover',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the popover'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the popover',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the popover'
         },
         {
             name: 'modelValue',
-            description: 'Used to manually control the visibility of the popover',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Used to manually control the visibility of the popover'
+        },
+        {
+            name: 'name',
+            type: [
+                'String'
+            ],
+            default: 'uid()',
+            description: 'The identifier of the popover'
         },
         {
             name: 'arrow',
-            description: 'Displays an arrow on the popover pointing to the trigger element',
             type: [
                 'Boolean'
             ],
-            default: 'true'
+            default: 'true',
+            description: 'Displays an arrow on the popover pointing to the trigger element'
         },
         {
             name: 'placement',
-            description: 'The placement of the popover',
             type: [
                 'top',
                 'top-start',
@@ -80,44 +82,45 @@ module.exports = {
                 'right-start',
                 'right-end'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The placement of the popover'
         },
         {
             name: 'trigger',
-            description: 'The events used to trigger the popover',
             type: [
                 'hover',
                 'focus',
                 'click',
                 'manual'
             ],
-            default: '[click]'
+            default: 'click',
+            description: 'The events used to trigger the popover'
         },
         {
             name: 'offset',
-            description: 'The offset of the popover relative to the trigger element',
             type: [
                 'Number'
             ],
-            default: '6'
+            default: '6',
+            description: 'The offset of the popover relative to the trigger element'
         },
         {
             name: 'popperOptions',
-            description: 'Used to override the popper.js options used for creating the popover',
             type: [
                 'Object'
             ],
-            default: '{}'
+            default: '',
+            description: 'Used to override the popper.js options used for creating the popover'
         },
         {
             name: 'size',
-            description: 'The size variant of the popover',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the popover'
         }
     ],
     css: {
@@ -129,466 +132,973 @@ module.exports = {
         variables: [
             {
                 name: 'background',
-                description: 'The background of the popover component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'white\')',
-                    dark: 'color(\'dark\')'
-                }
+                value: 'color(\'white\')',
+                description: 'The background of the popover component'
             },
             {
                 name: 'border-top-color',
-                description: 'The border top color of the popover component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark-60\')'
-                }
+                value: 'color(\'light\')',
+                description: 'The border top color of the popover component'
             },
             {
                 name: 'border-right-color',
-                description: 'The border right color of the popover component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark-60\')'
-                }
+                value: 'color(\'light\')',
+                description: 'The border right color of the popover component'
             },
             {
                 name: 'border-bottom-color',
-                description: 'The border bottom color of the popover component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark-60\')'
-                }
+                value: 'color(\'light\')',
+                description: 'The border bottom color of the popover component'
             },
             {
                 name: 'border-left-color',
-                description: 'The border left color of the popover component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark-60\')'
-                }
+                value: 'color(\'light\')',
+                description: 'The border left color of the popover component'
             },
             {
                 name: 'border-color',
-                description: 'The border color of the popover component',
-                value: ['var(----border-top-color)', 'var(----border-right-color)', 'var(----border-bottom-color)', 'var(----border-left-color)']
+                type: '',
+                value: 'var(----border-top-color) var(----border-right-color) var(----border-bottom-color) var(----border-left-color)',
+                description: 'The border color of the popover component'
             },
             {
                 name: 'border-style',
-                description: 'The border style of the popover component',
-                value: 'var(--border-style)'
+                type: '',
+                value: 'var(--border-style)',
+                description: 'The border style of the popover component'
             },
             {
                 name: 'border-top-width',
-                description: 'The border top width of the popover component',
-                value: 'var(--border-top-width)'
+                type: '',
+                value: 'var(--border-top-width)',
+                description: 'The border top width of the popover component'
             },
             {
                 name: 'border-right-width',
-                description: 'The border right width of the popover component',
-                value: 'var(--border-right-width)'
+                type: '',
+                value: 'var(--border-right-width)',
+                description: 'The border right width of the popover component'
             },
             {
                 name: 'border-bottom-width',
-                description: 'The border bottom width of the popover component',
-                value: 'var(--border-bottom-width)'
+                type: '',
+                value: 'var(--border-bottom-width)',
+                description: 'The border bottom width of the popover component'
             },
             {
                 name: 'border-left-width',
-                description: 'The border left width of the popover component',
-                value: 'var(--border-left-width)'
+                type: '',
+                value: 'var(--border-left-width)',
+                description: 'The border left width of the popover component'
             },
             {
                 name: 'border-width',
-                description: 'The border width of the popover component',
-                value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
+                type: '',
+                value: 'var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)',
+                description: 'The border width of the popover component'
             },
             {
                 name: 'border-top-left-radius',
                 type: 'size',
-                description: 'The border top left radius of the popover component',
-                value: 'var(--border-top-left-radius)'
+                value: 'var(--border-top-left-radius)',
+                description: 'The border top left radius of the popover component'
             },
             {
                 name: 'border-top-right-radius',
                 type: 'size',
-                description: 'The border top right radius of the popover component',
-                value: 'var(--border-top-right-radius)'
+                value: 'var(--border-top-right-radius)',
+                description: 'The border top right radius of the popover component'
             },
             {
                 name: 'border-bottom-right-radius',
                 type: 'size',
-                description: 'The border bottom right radius of the popover component',
-                value: 'var(--border-bottom-right-radius)'
+                value: 'var(--border-bottom-right-radius)',
+                description: 'The border bottom right radius of the popover component'
             },
             {
                 name: 'border-bottom-left-radius',
                 type: 'size',
-                description: 'The border bottom left radius of the popover component',
-                value: 'var(--border-bottom-left-radius)'
+                value: 'var(--border-bottom-left-radius)',
+                description: 'The border bottom left radius of the popover component'
             },
             {
                 name: 'border-radius',
-                description: 'The border radius of the popover component',
-                value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
+                type: '',
+                value: 'var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)',
+                description: 'The border radius of the popover component'
             },
             {
                 name: 'box-shadow-offset-x',
-                description: 'The box shadow horizontal offset of the popover component',
-                value: 'var(--box-shadow-offset-x)'
+                type: '',
+                value: 'var(--box-shadow-offset-x)',
+                description: 'The box shadow horizontal offset of the popover component'
             },
             {
                 name: 'box-shadow-offset-y',
-                description: 'The box shadow vertical offset of the popover component',
-                value: 'var(--box-shadow-offset-y)'
+                type: '',
+                value: 'var(--box-shadow-offset-y)',
+                description: 'The box shadow vertical offset of the popover component'
             },
             {
                 name: 'box-shadow-blur-radius',
-                description: 'The box shadow blur radius of the popover component',
-                value: 'var(--box-shadow-blur-radius)'
+                type: '',
+                value: 'var(--box-shadow-blur-radius)',
+                description: 'The box shadow blur radius of the popover component'
             },
             {
                 name: 'box-shadow-spread-radius',
-                description: 'The box shadow spread radius of the popover component',
-                value: 'var(--box-shadow-spread-radius)'
+                type: '',
+                value: 'var(--box-shadow-spread-radius)',
+                description: 'The box shadow spread radius of the popover component'
             },
             {
                 name: 'box-shadow-color',
-                description: 'The box shadow spread radius of the popover component',
-                value: 'var(--box-shadow-color)'
+                type: '',
+                value: 'var(--box-shadow-color)',
+                description: 'The box shadow spread radius of the popover component'
             },
             {
                 name: 'box-shadow',
-                description: 'The box shadow of the popover component',
-                value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
+                type: '',
+                value: 'var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)',
+                description: 'The box shadow of the popover component'
             },
             {
                 name: 'color',
-                description: 'The color of the popover component item',
                 type: 'color',
-                variants: {
-                    light: 'contrast-color($color-white)',
-                    dark: 'contrast-color($color-dark)'
-                }
+                value: 'contrast-color($color-white)',
+                description: 'The color of the popover component item'
             },
             {
                 name: 'font-size',
-                description: 'The font size of the popover component',
                 type: 'size',
-                value: 'font-size()'
+                value: 'font-size()',
+                description: 'The font size of the popover component'
             },
             {
                 name: 'font-weight',
-                description: 'The font weight of the popover component',
-                value: 'font-weight(\'normal\')'
+                type: '',
+                value: 'font-weight(\'normal\')',
+                description: 'The font weight of the popover component'
             },
             {
                 name: 'line-height',
-                description: 'The line height of the popover component',
-                value: 'var(--line-height)'
+                type: '',
+                value: 'var(--line-height)',
+                description: 'The line height of the popover component'
             },
-
             {
                 name: 'margin-top',
                 type: 'size',
-                description: 'The margin top of the popover component',
-                value: 'calc(var(--margin-top) / 2)'
+                value: 'calc(var(--margin-top) / 2)',
+                description: 'The margin top of the popover component'
             },
             {
                 name: 'margin-right',
                 type: 'size',
-                description: 'The margin right of the popover component',
-                value: 'calc(var(--margin-right) / 2)'
+                value: 'calc(var(--margin-right) / 2)',
+                description: 'The margin right of the popover component'
             },
             {
                 name: 'margin-bottom',
                 type: 'size',
-                description: 'The margin bottom of the popover component',
-                value: 'calc(var(--margin-bottom) / 2)'
+                value: 'calc(var(--margin-bottom) / 2)',
+                description: 'The margin bottom of the popover component'
             },
             {
                 name: 'margin-left',
                 type: 'size',
-                description: 'The margin left of the popover component',
-                value: 'calc(var(--margin-left) / 2)'
+                value: 'calc(var(--margin-left) / 2)',
+                description: 'The margin left of the popover component'
             },
             {
                 name: 'margin',
-                description: 'The margin of the popover component',
-                value: ['var(----margin-top)', 'var(----margin-right)', 'var(----margin-bottom)', 'var(----margin-left)']
+                type: '',
+                value: 'var(----margin-top) var(----margin-right) var(----margin-bottom) var(----margin-left)',
+                description: 'The margin of the popover component'
             },
             {
                 name: 'padding-top',
                 type: 'size',
-                description: 'The padding top of the popover component',
-                value: 'calc(var(--padding-top) * 3 / 4)'
+                value: 'calc(var(--padding-top) * 3 / 4)',
+                description: 'The padding top of the popover component'
             },
             {
                 name: 'padding-right',
                 type: 'size',
-                description: 'The padding right of the popover component',
-                value: 'var(--padding-right)'
+                value: 'var(--padding-right)',
+                description: 'The padding right of the popover component'
             },
             {
                 name: 'padding-bottom',
                 type: 'size',
-                description: 'The padding bottom of the popover component',
-                value: 'calc(var(--padding-bottom) * 3 / 4)'
+                value: 'calc(var(--padding-bottom) * 3 / 4)',
+                description: 'The padding bottom of the popover component'
             },
             {
                 name: 'padding-left',
                 type: 'size',
-                description: 'The padding left of the popover component',
-                value: 'var(--padding-left)'
+                value: 'var(--padding-left)',
+                description: 'The padding left of the popover component'
             },
             {
                 name: 'padding',
-                description: 'The padding of the popover component',
-                value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
+                type: '',
+                value: 'var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)',
+                description: 'The padding of the popover component'
             },
             {
                 name: 'max-width',
-                description: 'The maximum width of the popover component',
-                value: '90vw'
+                type: '',
+                value: '90vw',
+                description: 'The maximum width of the popover component'
             },
             {
                 name: 'width',
-                description: 'The width of the popover component',
-                value: '280px'
+                type: '',
+                value: '280px',
+                description: 'The width of the popover component'
             },
             {
                 name: 'z-index',
-                description: 'The z-index of the popover component',
-                value: '2000'
+                type: '',
+                value: '2000',
+                description: 'The z-index of the popover component'
             },
             {
                 name: 'header--background',
-                description: 'The background of the popover component header',
                 type: 'color',
-                variants: {
-                    light: 'color(\'gray-05\')',
-                    dark: 'color(\'dark-55\')'
-                }
+                value: 'color(\'gray-05\')',
+                description: 'The background of the popover component header'
             },
             {
                 name: 'header--border-color',
-                description: 'The border color of the popover component header',
-                value: 'var(----border-color)'
+                type: '',
+                value: 'var(----border-color)',
+                description: 'The border color of the popover component header'
             },
             {
                 name: 'header--border-style',
-                description: 'The border style of the popover component header',
-                value: 'var(----border-style)'
+                type: '',
+                value: 'var(----border-style)',
+                description: 'The border style of the popover component header'
             },
             {
                 name: 'header--border-top-width',
-                description: 'The border top width of the popover component header',
-                value: 'var(----border-top-width)'
+                type: '',
+                value: 'var(----border-top-width)',
+                description: 'The border top width of the popover component header'
             },
             {
                 name: 'header--border-right-width',
-                description: 'The border right width of the popover component header',
-                value: 'var(----border-right-width)'
+                type: '',
+                value: 'var(----border-right-width)',
+                description: 'The border right width of the popover component header'
             },
             {
                 name: 'header--border-bottom-width',
-                description: 'The border bottom width of the popover component header',
-                value: 'var(----border-bottom-width)'
+                type: '',
+                value: 'var(----border-bottom-width)',
+                description: 'The border bottom width of the popover component header'
             },
             {
                 name: 'header--border-left-width',
-                description: 'The border left width of the popover component header',
-                value: 'var(----border-left-width)'
+                type: '',
+                value: 'var(----border-left-width)',
+                description: 'The border left width of the popover component header'
             },
             {
                 name: 'header--border-width',
-                description: 'The border width of the popover component header',
-                value: ['var(----header--border-top-width)', 'var(----header--border-right-width)', 'var(----header--border-bottom-width)', 'var(----header--border-left-width)']
+                type: '',
+                value: 'var(----header--border-top-width) var(----header--border-right-width) var(----header--border-bottom-width) var(----header--border-left-width)',
+                description: 'The border width of the popover component header'
             },
             {
                 name: 'header--color',
-                description: 'The color of the popover component header',
-                value: 'var(----color)'
+                type: '',
+                value: 'var(----color)',
+                description: 'The color of the popover component header'
             },
             {
                 name: 'header--padding-top',
-                description: 'The padding top of the popover component header',
-                value: 'var(----padding-top)'
+                type: '',
+                value: 'var(----padding-top)',
+                description: 'The padding top of the popover component header'
             },
             {
                 name: 'header--padding-right',
-                description: 'The padding right of the popover component header',
-                value: 'var(----padding-right)'
+                type: '',
+                value: 'var(----padding-right)',
+                description: 'The padding right of the popover component header'
             },
             {
                 name: 'header--padding-bottom',
                 type: 'size',
-                description: 'The padding bottom of the popover component header',
-                value: 'var(----padding-bottom)'
+                value: 'var(----padding-bottom)',
+                description: 'The padding bottom of the popover component header'
             },
             {
                 name: 'header--padding-left',
                 type: 'size',
-                description: 'The padding left of the popover component header',
-                value: 'var(----padding-left)'
+                value: 'var(----padding-left)',
+                description: 'The padding left of the popover component header'
             },
             {
                 name: 'header--padding',
-                description: 'The padding of the popover component header',
-                value: ['var(----header--padding-top)', 'var(----header--padding-right)', 'var(----header--padding-bottom)', 'var(----header--padding-left)']
+                type: '',
+                value: 'var(----header--padding-top) var(----header--padding-right) var(----header--padding-bottom) var(----header--padding-left)',
+                description: 'The padding of the popover component header'
             },
             {
                 name: 'body--background',
-                description: 'The background of the popover component body',
-                value: 'var(----background)'
+                type: '',
+                value: 'var(----background)',
+                description: 'The background of the popover component body'
             },
             {
                 name: 'body--border-color',
-                description: 'The border color of the popover component body',
-                value: 'var(----border-color)'
+                type: '',
+                value: 'var(----border-color)',
+                description: 'The border color of the popover component body'
             },
             {
                 name: 'body--border-style',
-                description: 'The border style of the popover component body',
-                value: 'var(----border-style)'
+                type: '',
+                value: 'var(----border-style)',
+                description: 'The border style of the popover component body'
             },
             {
                 name: 'body--border-top-width',
-                description: 'The border top width of the popover component body',
-                value: 'var(----border-top-width)'
+                type: '',
+                value: 'var(----border-top-width)',
+                description: 'The border top width of the popover component body'
             },
             {
                 name: 'body--border-right-width',
-                description: 'The border right width of the popover component body',
-                value: 'var(----border-right-width)'
+                type: '',
+                value: 'var(----border-right-width)',
+                description: 'The border right width of the popover component body'
             },
             {
                 name: 'body--border-bottom-width',
-                description: 'The border bottom width of the popover component body',
-                value: 'var(----border-bottom-width)'
+                type: '',
+                value: 'var(----border-bottom-width)',
+                description: 'The border bottom width of the popover component body'
             },
             {
                 name: 'body--border-left-width',
-                description: 'The border left width of the popover component body',
-                value: 'var(----border-left-width)'
+                type: '',
+                value: 'var(----border-left-width)',
+                description: 'The border left width of the popover component body'
             },
             {
                 name: 'body--border-width',
-                description: 'The border width of the popover component body',
-                value: ['var(----body--border-top-width)', 'var(----body--border-right-width)', 'var(----body--border-bottom-width)', 'var(----body--border-left-width)']
+                type: '',
+                value: 'var(----body--border-top-width) var(----body--border-right-width) var(----body--border-bottom-width) var(----body--border-left-width)',
+                description: 'The border width of the popover component body'
             },
             {
                 name: 'body--color',
-                description: 'The color of the popover component body',
-                value: 'var(----color)'
+                type: '',
+                value: 'var(----color)',
+                description: 'The color of the popover component body'
             },
             {
                 name: 'body--padding-top',
-                description: 'The padding top of the popover component body',
-                value: 'var(----padding-top)'
+                type: '',
+                value: 'var(----padding-top)',
+                description: 'The padding top of the popover component body'
             },
             {
                 name: 'body--padding-right',
-                description: 'The padding right of the popover component body',
-                value: 'var(----padding-right)'
+                type: '',
+                value: 'var(----padding-right)',
+                description: 'The padding right of the popover component body'
             },
             {
                 name: 'body--padding-bottom',
                 type: 'size',
-                description: 'The padding bottom of the popover component body',
-                value: 'var(----padding-bottom)'
+                value: 'var(----padding-bottom)',
+                description: 'The padding bottom of the popover component body'
             },
             {
                 name: 'body--padding-left',
                 type: 'size',
-                description: 'The padding left of the popover component body',
-                value: 'var(----padding-left)'
+                value: 'var(----padding-left)',
+                description: 'The padding left of the popover component body'
             },
             {
                 name: 'body--padding',
-                description: 'The padding of the popover component body',
-                value: ['var(----body--padding-top)', 'var(----body--padding-right)', 'var(----body--padding-bottom)', 'var(----body--padding-left)']
+                type: '',
+                value: 'var(----body--padding-top) var(----body--padding-right) var(----body--padding-bottom) var(----body--padding-left)',
+                description: 'The padding of the popover component body'
             },
             {
                 name: 'footer--background',
-                description: 'The background of the popover component footer',
                 type: 'color',
-                variants: {
-                    light: 'color(\'gray-05\')',
-                    dark: 'color(\'dark-55\')'
-                }
+                value: 'color(\'gray-05\')',
+                description: 'The background of the popover component footer'
             },
             {
                 name: 'footer--border-color',
-                description: 'The border color of the popover component footer',
-                value: 'var(----border-color)'
+                type: '',
+                value: 'var(----border-color)',
+                description: 'The border color of the popover component footer'
             },
             {
                 name: 'footer--border-style',
-                description: 'The border style of the popover component footer',
-                value: 'var(----border-style)'
+                type: '',
+                value: 'var(----border-style)',
+                description: 'The border style of the popover component footer'
             },
             {
                 name: 'footer--border-top-width',
-                description: 'The border top width of the popover component footer',
-                value: 'var(----border-top-width)'
+                type: '',
+                value: 'var(----border-top-width)',
+                description: 'The border top width of the popover component footer'
             },
             {
                 name: 'footer--border-right-width',
-                description: 'The border right width of the popover component footer',
-                value: 'var(----border-right-width)'
+                type: '',
+                value: 'var(----border-right-width)',
+                description: 'The border right width of the popover component footer'
             },
             {
                 name: 'footer--border-bottom-width',
-                description: 'The border bottom width of the popover component footer',
-                value: 'var(----border-bottom-width)'
+                type: '',
+                value: 'var(----border-bottom-width)',
+                description: 'The border bottom width of the popover component footer'
             },
             {
                 name: 'footer--border-left-width',
-                description: 'The border left width of the popover component footer',
-                value: 'var(----border-left-width)'
+                type: '',
+                value: 'var(----border-left-width)',
+                description: 'The border left width of the popover component footer'
             },
             {
                 name: 'footer--border-width',
-                description: 'The border width of the popover component footer',
-                value: ['var(----footer--border-top-width)', 'var(----footer--border-right-width)', 'var(----footer--border-bottom-width)', 'var(----footer--border-left-width)']
+                type: '',
+                value: 'var(----footer--border-top-width) var(----footer--border-right-width) var(----footer--border-bottom-width) var(----footer--border-left-width)',
+                description: 'The border width of the popover component footer'
             },
             {
                 name: 'footer--color',
-                description: 'The color of the popover component footer',
-                value: 'var(----color)'
+                type: '',
+                value: 'var(----color)',
+                description: 'The color of the popover component footer'
             },
             {
                 name: 'footer--padding-top',
-                description: 'The padding top of the popover component footer',
-                value: 'var(----padding-top)'
+                type: '',
+                value: 'var(----padding-top)',
+                description: 'The padding top of the popover component footer'
             },
             {
                 name: 'footer--padding-right',
-                description: 'The padding right of the popover component footer',
-                value: 'var(----padding-right)'
+                type: '',
+                value: 'var(----padding-right)',
+                description: 'The padding right of the popover component footer'
             },
             {
                 name: 'footer--padding-bottom',
                 type: 'size',
-                description: 'The padding bottom of the popover component footer',
-                value: 'var(----padding-bottom)'
+                value: 'var(----padding-bottom)',
+                description: 'The padding bottom of the popover component footer'
             },
             {
                 name: 'footer--padding-left',
                 type: 'size',
-                description: 'The padding left of the popover component footer',
-                value: 'var(----padding-left)'
+                value: 'var(----padding-left)',
+                description: 'The padding left of the popover component footer'
             },
             {
                 name: 'footer--padding',
-                description: 'The padding of the popover component footer',
-                value: ['var(----footer--padding-top)', 'var(----footer--padding-right)', 'var(----footer--padding-bottom)', 'var(----footer--padding-left)']
+                type: '',
+                value: 'var(----footer--padding-top) var(----footer--padding-right) var(----footer--padding-bottom) var(----footer--padding-left)',
+                description: 'The padding of the popover component footer'
+            }
+        ],
+        variants: [
+            {
+                name: 'light',
+                type: 'variant',
+                description: 'Variables for the light color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'white\')',
+                        description: 'The background of the popover component, for the light color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'light\')',
+                        description: 'The border top color of the popover component, for the light color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'light\')',
+                        description: 'The border right color of the popover component, for the light color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'light\')',
+                        description: 'The border bottom color of the popover component, for the light color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'light\')',
+                        description: 'The border left color of the popover component, for the light color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-white)',
+                        description: 'The color of the popover component item, for the light color variant'
+                    },
+                    {
+                        name: 'header--background',
+                        type: '',
+                        value: 'color(\'gray-05\')',
+                        description: 'The background of the popover component header, for the light color variant'
+                    },
+                    {
+                        name: 'footer--background',
+                        type: '',
+                        value: 'color(\'gray-05\')',
+                        description: 'The background of the popover component footer, for the light color variant'
+                    }
+                ]
+            },
+            {
+                name: 'dark',
+                type: 'variant',
+                description: 'Variables for the dark color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'dark\')',
+                        description: 'The background of the popover component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'dark-60\')',
+                        description: 'The border top color of the popover component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'dark-60\')',
+                        description: 'The border right color of the popover component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'dark-60\')',
+                        description: 'The border bottom color of the popover component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'dark-60\')',
+                        description: 'The border left color of the popover component, for the dark color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-dark)',
+                        description: 'The color of the popover component item, for the dark color variant'
+                    },
+                    {
+                        name: 'header--background',
+                        type: '',
+                        value: 'color(\'dark-55\')',
+                        description: 'The background of the popover component header, for the dark color variant'
+                    },
+                    {
+                        name: 'footer--background',
+                        type: '',
+                        value: 'color(\'dark-55\')',
+                        description: 'The background of the popover component footer, for the dark color variant'
+                    }
+                ]
+            },
+            {
+                name: 'sm',
+                type: 'variant',
+                description: 'Variables for the sm size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border top left radius of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border top right radius of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border bottom right radius of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border bottom left radius of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
+                        description: 'The font size of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'margin-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The margin top of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'margin-right',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The margin right of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'margin-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The margin bottom of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'margin-left',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The margin left of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) * 3 / 4)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding top of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding right of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) * 3 / 4)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding bottom of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding left of the popover component, for the sm size variant'
+                    },
+                    {
+                        name: 'header--padding-bottom',
+                        type: '',
+                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding bottom of the popover component header, for the sm size variant'
+                    },
+                    {
+                        name: 'header--padding-left',
+                        type: '',
+                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding left of the popover component header, for the sm size variant'
+                    },
+                    {
+                        name: 'body--padding-bottom',
+                        type: '',
+                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding bottom of the popover component body, for the sm size variant'
+                    },
+                    {
+                        name: 'body--padding-left',
+                        type: '',
+                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding left of the popover component body, for the sm size variant'
+                    },
+                    {
+                        name: 'footer--padding-bottom',
+                        type: '',
+                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding bottom of the popover component footer, for the sm size variant'
+                    },
+                    {
+                        name: 'footer--padding-left',
+                        type: '',
+                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding left of the popover component footer, for the sm size variant'
+                    }
+                ]
+            },
+            {
+                name: 'md',
+                type: 'variant',
+                description: 'Variables for the md size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border top left radius of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border top right radius of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border bottom right radius of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border bottom left radius of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
+                        description: 'The font size of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'margin-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The margin top of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'margin-right',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The margin right of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'margin-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The margin bottom of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'margin-left',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The margin left of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) * 3 / 4)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding top of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding right of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) * 3 / 4)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding bottom of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding left of the popover component, for the md size variant'
+                    },
+                    {
+                        name: 'header--padding-bottom',
+                        type: '',
+                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding bottom of the popover component header, for the md size variant'
+                    },
+                    {
+                        name: 'header--padding-left',
+                        type: '',
+                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding left of the popover component header, for the md size variant'
+                    },
+                    {
+                        name: 'body--padding-bottom',
+                        type: '',
+                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding bottom of the popover component body, for the md size variant'
+                    },
+                    {
+                        name: 'body--padding-left',
+                        type: '',
+                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding left of the popover component body, for the md size variant'
+                    },
+                    {
+                        name: 'footer--padding-bottom',
+                        type: '',
+                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding bottom of the popover component footer, for the md size variant'
+                    },
+                    {
+                        name: 'footer--padding-left',
+                        type: '',
+                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding left of the popover component footer, for the md size variant'
+                    }
+                ]
+            },
+            {
+                name: 'lg',
+                type: 'variant',
+                description: 'Variables for the lg size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border top left radius of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border top right radius of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border bottom right radius of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border bottom left radius of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
+                        description: 'The font size of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'margin-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The margin top of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'margin-right',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The margin right of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'margin-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The margin bottom of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'margin-left',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The margin left of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) * 3 / 4)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding top of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding right of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) * 3 / 4)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding bottom of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding left of the popover component, for the lg size variant'
+                    },
+                    {
+                        name: 'header--padding-bottom',
+                        type: '',
+                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding bottom of the popover component header, for the lg size variant'
+                    },
+                    {
+                        name: 'header--padding-left',
+                        type: '',
+                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding left of the popover component header, for the lg size variant'
+                    },
+                    {
+                        name: 'body--padding-bottom',
+                        type: '',
+                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding bottom of the popover component body, for the lg size variant'
+                    },
+                    {
+                        name: 'body--padding-left',
+                        type: '',
+                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding left of the popover component body, for the lg size variant'
+                    },
+                    {
+                        name: 'footer--padding-bottom',
+                        type: '',
+                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding bottom of the popover component footer, for the lg size variant'
+                    },
+                    {
+                        name: 'footer--padding-left',
+                        type: '',
+                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding left of the popover component footer, for the lg size variant'
+                    }
+                ]
             }
         ]
     }
 };
+
+export default manifest;

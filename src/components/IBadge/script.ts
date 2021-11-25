@@ -22,7 +22,6 @@ export default defineComponent({
          * @type primary | success | light | dark | info | success | warning | danger
          * @default light
          * @name color
-         * @name color
          */
         color: {
             type: String,
