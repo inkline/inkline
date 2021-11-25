@@ -27,7 +27,6 @@ export default defineComponent({
          * @type light | dark
          * @default light
          * @name color
-         * @name color
          */
         color: {
             type: String,
@@ -37,7 +36,6 @@ export default defineComponent({
          * The disabled state of the checkbox
          * @type Boolean
          * @default false
-         * @name disabled
          * @name disabled
          */
         disabled: {
@@ -49,7 +47,6 @@ export default defineComponent({
          * @type Boolean
          * @default false
          * @name indeterminate
-         * @name indeterminate
          */
         indeterminate: {
             type: Boolean,
@@ -59,7 +56,6 @@ export default defineComponent({
          * Used to set the checkbox value when used inside a checkbox group
          * @default false
          * @name value
-         * @name value
          */
         value: {
             default: false
@@ -67,7 +63,6 @@ export default defineComponent({
         /**
          * Used to set the checkbox value when used by itself
          * @default false
-         * @name modelValue
          * @name modelValue
          */
         modelValue: {
@@ -77,7 +72,6 @@ export default defineComponent({
          * The unique identifier of the checkbox
          * @type String
          * @default uid()
-         * @name name
          * @name name
          */
         name: {
@@ -91,7 +85,6 @@ export default defineComponent({
          * @type Boolean
          * @default false
          * @name readonly
-         * @name readonly
          */
         readonly: {
             type: Boolean,
@@ -101,7 +94,6 @@ export default defineComponent({
          * The size variant of the checkbox
          * @type sm | md | lg
          * @default md
-         * @name size
          * @name size
          */
         size: {
@@ -113,7 +105,6 @@ export default defineComponent({
          * The tabindex of the checkbox
          * @type Number | String
          * @default 1
-         * @name tabindex
          * @name tabindex
          */
         tabindex: {

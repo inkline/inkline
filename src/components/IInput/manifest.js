@@ -1,136 +1,147 @@
-module.exports = {
+export const manifest = {
     name: 'input',
     slots: [
         {
-            name: 'prefix',
             description: 'Slot for the input prefix content',
-            type: []
+            name: 'prefix'
         },
         {
-            name: 'suffix',
             description: 'Slot for the input suffix content',
-            type: []
+            name: 'suffix'
         },
         {
-            name: 'prepend',
             description: 'Slot for the input prepend content',
-            type: []
+            name: 'prepend'
         },
         {
-            name: 'append',
             description: 'Slot for the input append content',
-            type: []
+            name: 'append'
         },
         {
-            name: 'clearable',
             description: 'Slot for the clearable button',
-            type: []
+            name: 'clearable'
         }
     ],
     events: [
         {
-            name: 'update:modelValue',
             description: 'Event emitted for setting the modelValue',
-            type: []
+            name: 'update:modelValue'
         },
         {
-            name: 'clear',
             description: 'Event emitted when clearing the input element',
-            type: []
+            name: 'clear'
         }
     ],
     props: [
         {
             name: 'color',
-            description: 'The color variant of the input',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the input'
         },
         {
             name: 'clearable',
-            description: 'Display the input as clearable',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the input as clearable'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the input',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the input'
+        },
+        {
+            name: 'error',
+            type: [
+                'Boolean',
+                'Array'
+            ],
+            default: '\'touched\', \'dirty\', \'invalid\'',
+            description: 'The error state of the input, computed based on schema by default.'
         },
         {
             name: 'id',
-            description: 'The id of the internal input element',
             type: [
                 'String'
             ],
-            default: '{"type":"","default":""}'
+            default: '',
+            description: 'The id of the internal input element'
         },
         {
             name: 'modelValue',
-            description: 'Used to set the field value',
             type: [
-                'Boolean'
+                'String',
+                'Number'
             ],
-            default: 'false'
+            default: '\'\'',
+            description: 'Used to set the field value'
         },
         {
             name: 'name',
-            description: 'The unique identifier of the input',
             type: [
                 'String'
             ],
-            default: 'uid()'
+            default: 'uid()',
+            description: 'The unique identifier of the input'
         },
         {
             name: 'plaintext',
-            description: 'Display the input as plaintext, disabling interaction',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the input as plaintext, disabling interaction'
         },
         {
             name: 'readonly',
-            description: 'The readonly state of the input',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The readonly state of the input'
         },
         {
             name: 'size',
-            description: 'The size variant of the input',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the input'
         },
         {
             name: 'tabindex',
-            description: 'The tabindex of the input',
             type: [
                 'Number',
                 'String'
             ],
-            default: '1'
+            default: '1',
+            description: 'The tabindex of the input'
         },
         {
             name: 'type',
-            description: 'The type of the input',
             type: [
                 'String'
             ],
-            default: 'text'
+            default: 'text',
+            description: 'The type of the input'
+        },
+        {
+            name: 'clearAriaLabel',
+            type: [
+                'String'
+            ],
+            default: 'Clear',
+            description: 'The aria-label of the clear button'
         }
     ],
     css: {
@@ -143,289 +154,467 @@ module.exports = {
         variables: [
             {
                 name: 'background',
-                description: 'The background of the input component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'white\')',
-                    dark: 'color(\'dark\')'
-                }
+                value: 'color(\'white\')',
+                description: 'The background of the input component'
             },
             {
                 name: 'background--disabled',
-                description: 'The background of the input component when disabled',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-25\')',
-                    dark: 'color(\'dark-40\')'
-                }
+                value: 'color(\'light-25\')',
+                description: 'The background of the input component when disabled'
             },
             {
                 name: 'border-color',
-                description: 'The border color of the input component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The border color of the input component'
             },
             {
                 name: 'border-color--hover',
-                description: 'The border color of the input component when hovered',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-60\')',
-                    dark: 'color(\'dark-40\')'
-                }
+                value: 'color(\'light-60\')',
+                description: 'The border color of the input component when hovered'
             },
             {
                 name: 'border-color--focus',
-                description: 'The border color of the input component when focused',
                 type: 'color',
-                variants: {
-                    light: 'color(\'primary\')',
-                    dark: 'color(\'primary\')'
-                }
+                value: 'color(\'primary\')',
+                description: 'The border color of the input component when focused'
             },
             {
                 name: 'border-style',
-                description: 'The border style of the input component',
-                value: 'var(--border-style)'
+                type: '',
+                value: 'var(--border-style)',
+                description: 'The border style of the input component'
             },
             {
                 name: 'border-top-width',
-                description: 'The border top width of the input component',
-                value: 'var(--border-top-width)'
+                type: '',
+                value: 'var(--border-top-width)',
+                description: 'The border top width of the input component'
             },
             {
                 name: 'border-right-width',
-                description: 'The border right width of the input component',
-                value: 'var(--border-right-width)'
+                type: '',
+                value: 'var(--border-right-width)',
+                description: 'The border right width of the input component'
             },
             {
                 name: 'border-bottom-width',
-                description: 'The border bottom width of the input component',
-                value: 'var(--border-bottom-width)'
+                type: '',
+                value: 'var(--border-bottom-width)',
+                description: 'The border bottom width of the input component'
             },
             {
                 name: 'border-left-width',
-                description: 'The border left width of the input component',
-                value: 'var(--border-left-width)'
+                type: '',
+                value: 'var(--border-left-width)',
+                description: 'The border left width of the input component'
             },
             {
                 name: 'border-width',
-                description: 'The border width of the input component',
-                value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
+                type: '',
+                value: 'var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)',
+                description: 'The border width of the input component'
             },
             {
                 name: 'border-top-left-radius',
                 type: 'size',
-                description: 'The border top left radius of the input component',
-                value: 'var(--border-top-left-radius)'
+                value: 'var(--border-top-left-radius)',
+                description: 'The border top left radius of the input component'
             },
             {
                 name: 'border-top-right-radius',
                 type: 'size',
-                description: 'The border top right radius of the input component',
-                value: 'var(--border-top-right-radius)'
+                value: 'var(--border-top-right-radius)',
+                description: 'The border top right radius of the input component'
             },
             {
                 name: 'border-bottom-right-radius',
                 type: 'size',
-                description: 'The border bottom right radius of the input component',
-                value: 'var(--border-bottom-right-radius)'
+                value: 'var(--border-bottom-right-radius)',
+                description: 'The border bottom right radius of the input component'
             },
             {
                 name: 'border-bottom-left-radius',
                 type: 'size',
-                description: 'The border bottom left radius of the input component',
-                value: 'var(--border-bottom-left-radius)'
+                value: 'var(--border-bottom-left-radius)',
+                description: 'The border bottom left radius of the input component'
             },
             {
                 name: 'border-radius',
-                description: 'The border radius of the input component',
-                value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
+                type: '',
+                value: 'var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)',
+                description: 'The border radius of the input component'
             },
             {
                 name: 'box-shadow-offset-x',
-                description: 'The box shadow horizontal offset of the input component',
-                value: 'var(--box-shadow-offset-x)'
+                type: '',
+                value: 'var(--box-shadow-offset-x)',
+                description: 'The box shadow horizontal offset of the input component'
             },
             {
                 name: 'box-shadow-offset-y',
-                description: 'The box shadow vertical offset of the input component',
-                value: 'var(--box-shadow-offset-y)'
+                type: '',
+                value: 'var(--box-shadow-offset-y)',
+                description: 'The box shadow vertical offset of the input component'
             },
             {
                 name: 'box-shadow-blur-radius',
-                description: 'The box shadow blur radius of the input component',
-                value: 'var(--box-shadow-blur-radius)'
+                type: '',
+                value: 'var(--box-shadow-blur-radius)',
+                description: 'The box shadow blur radius of the input component'
             },
             {
                 name: 'box-shadow-spread-radius',
-                description: 'The box shadow spread radius of the input component',
-                value: 'var(--box-shadow-spread-radius)'
+                type: '',
+                value: 'var(--box-shadow-spread-radius)',
+                description: 'The box shadow spread radius of the input component'
             },
             {
                 name: 'box-shadow-color',
-                description: 'The box shadow spread radius of the input component',
-                value: 'var(--box-shadow-color)'
+                type: '',
+                value: 'var(--box-shadow-color)',
+                description: 'The box shadow spread radius of the input component'
             },
             {
                 name: 'box-shadow',
-                description: 'The box shadow of the input component',
-                value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
+                type: '',
+                value: 'var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)',
+                description: 'The box shadow of the input component'
             },
             {
                 name: 'color',
-                description: 'The color of the input component',
                 type: 'color',
-                variants: {
-                    light: 'contrast-color($color-white)',
-                    dark: 'contrast-color($color-dark)'
-                }
+                value: 'contrast-color($color-white)',
+                description: 'The color of the input component'
             },
             {
                 name: 'color--disabled',
-                description: 'The color of the input component when disabled',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-75\')',
-                    dark: 'color(\'gray-35\')'
-                }
+                value: 'color(\'light-75\')',
+                description: 'The color of the input component when disabled'
             },
             {
                 name: 'font-size',
-                description: 'The font size of the input component',
                 type: 'size',
-                value: 'font-size()'
+                value: 'font-size()',
+                description: 'The font size of the input component'
             },
             {
                 name: 'line-height',
-                description: 'The line height of the input component',
-                value: 'var(--line-height)'
+                type: '',
+                value: 'var(--line-height)',
+                description: 'The line height of the input component'
             },
             {
                 name: 'padding-top',
                 type: 'size',
-                description: 'The padding top of the input component',
-                value: 'calc(var(--padding-top) / 2)'
+                value: 'calc(var(--padding-top) / 2)',
+                description: 'The padding top of the input component'
             },
             {
                 name: 'padding-right',
                 type: 'size',
-                description: 'The padding right of the input component',
-                value: 'var(--padding-right)'
+                value: 'var(--padding-right)',
+                description: 'The padding right of the input component'
             },
             {
                 name: 'padding-bottom',
                 type: 'size',
-                description: 'The padding bottom of the input component',
-                value: 'calc(var(--padding-bottom) / 2)'
+                value: 'calc(var(--padding-bottom) / 2)',
+                description: 'The padding bottom of the input component'
             },
             {
                 name: 'padding-left',
                 type: 'size',
-                description: 'The padding left of the input component',
-                value: 'var(--padding-left)'
+                value: 'var(--padding-left)',
+                description: 'The padding left of the input component'
             },
             {
                 name: 'padding',
-                description: 'The padding of the input component',
-                value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
+                type: '',
+                value: 'var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)',
+                description: 'The padding of the input component'
             },
             {
                 name: 'clear--background',
-                description: 'The background of the input component clear button',
                 type: 'color',
-                variants: {
-                    light: 'transparent',
-                    dark: 'transparent'
-                }
+                value: 'transparent',
+                description: 'The background of the input component clear button'
             },
             {
                 name: 'clear--background--hover',
-                description: 'The background of the input component clear button',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-30\')',
-                    dark: 'color(\'dark-35\')'
-                }
+                value: 'color(\'light-30\')',
+                description: 'The background of the input component clear button'
             },
             {
                 name: 'clear--background--active',
-                description: 'The background of the input component clear button',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-40\')',
-                    dark: 'color(\'dark-30\')'
-                }
+                value: 'color(\'light-40\')',
+                description: 'The background of the input component clear button'
             },
             {
                 name: 'clear--color',
-                description: 'The color of the input component clear button',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-70\')',
-                    dark: 'color(\'dark-30\')'
-                }
+                value: 'color(\'light-70\')',
+                description: 'The color of the input component clear button'
             },
             {
                 name: 'clear--size',
-                description: 'The size of the input component clear button',
-                value: '1.2rem'
+                type: '',
+                value: '1.2rem',
+                description: 'The size of the input component clear button'
             },
             {
                 name: 'placeholder--color',
-                description: 'The color of the input component placeholder',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-60\')',
-                    dark: 'color(\'dark-25\')'
-                }
+                value: 'color(\'light-60\')',
+                description: 'The color of the input component placeholder'
             },
             {
                 name: 'prefix--border-width',
-                description: 'The border width of the input component prefix',
-                value: 'var(----border-right-width)'
+                type: '',
+                value: 'var(----border-right-width)',
+                description: 'The border width of the input component prefix'
             },
             {
                 name: 'suffix--border-width',
-                description: 'The border width of the input component suffix',
-                value: 'var(----border-left-width)'
+                type: '',
+                value: 'var(----border-left-width)',
+                description: 'The border width of the input component suffix'
             },
             {
                 name: 'prefix-suffix--border-style',
-                description: 'The border style of the input component prefix and suffix',
-                value: 'var(--border-style)'
+                type: '',
+                value: 'var(--border-style)',
+                description: 'The border style of the input component prefix and suffix'
             },
             {
                 name: 'prefix-suffix--color',
-                description: 'The color of the input component prefix and suffix',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-70\')',
-                    dark: 'color(\'dark-25\')'
-                }
+                value: 'color(\'light-70\')',
+                description: 'The color of the input component prefix and suffix'
             },
             {
                 name: 'prefix-suffix--padding-right',
-                description: 'The padding right of the input component prefix and suffix',
-                value: 'var(----padding-right)'
+                type: '',
+                value: 'var(----padding-right)',
+                description: 'The padding right of the input component prefix and suffix'
             },
             {
                 name: 'prefix-suffix--padding-left',
-                description: 'The padding left of the input component prefix and suffix',
-                value: 'var(----padding-left)'
+                type: '',
+                value: 'var(----padding-left)',
+                description: 'The padding left of the input component prefix and suffix'
             },
             {
                 name: 'prepend-append--background',
-                description: 'The background of the input component prepend and append',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')'
-                }
+                value: 'color(\'light\')',
+                description: 'The background of the input component prepend and append'
+            }
+        ],
+        variants: [
+            {
+                name: 'light',
+                type: 'variant',
+                description: 'Variables for the light color variant',
+                variables: []
+            },
+            {
+                name: 'dark',
+                type: 'variant',
+                description: 'Variables for the dark color variant',
+                variables: []
+            },
+            {
+                name: 'sm',
+                type: 'variant',
+                description: 'Variables for the sm size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border top left radius of the input component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border top right radius of the input component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border bottom right radius of the input component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border bottom left radius of the input component, for the sm size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
+                        description: 'The font size of the input component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding top of the input component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding right of the input component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding bottom of the input component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding left of the input component, for the sm size variant'
+                    }
+                ]
+            },
+            {
+                name: 'md',
+                type: 'variant',
+                description: 'Variables for the md size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border top left radius of the input component, for the md size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border top right radius of the input component, for the md size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border bottom right radius of the input component, for the md size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border bottom left radius of the input component, for the md size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
+                        description: 'The font size of the input component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding top of the input component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding right of the input component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding bottom of the input component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding left of the input component, for the md size variant'
+                    }
+                ]
+            },
+            {
+                name: 'lg',
+                type: 'variant',
+                description: 'Variables for the lg size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border top left radius of the input component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border top right radius of the input component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border bottom right radius of the input component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border bottom left radius of the input component, for the lg size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
+                        description: 'The font size of the input component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding top of the input component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding right of the input component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding bottom of the input component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding left of the input component, for the lg size variant'
+                    }
+                ]
             }
         ]
     }
 };
+
+export default manifest;

@@ -1,75 +1,79 @@
-module.exports = {
+export const manifest = {
     slots: [
         {
-            name: 'default',
             description: 'Slot for default radio group options',
-            type: []
+            name: 'default'
         }
     ],
     events: [
         {
-            name: 'update:modelValue',
             description: 'Event emitted for setting the modelValue',
-            type: []
+            name: 'update:modelValue'
         }
     ],
     props: [
         {
             name: 'color',
-            description: 'The color variant of the radio group',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the radio group'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the radio group',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the radio group'
         },
         {
             name: 'inline',
-            description: 'Display the radio group as inline',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the radio group as inline'
         },
         {
             name: 'modelValue',
-            description: 'Used to set the radio group value',
             type: [],
-            default: '\'\''
+            default: '\'\'',
+            description: 'Used to set the radio group value'
         },
         {
             name: 'name',
-            description: 'The unique identifier of the radio group',
             type: [
                 'String'
             ],
-            default: 'uid()'
+            default: 'uid()',
+            description: 'The unique identifier of the radio group'
         },
         {
             name: 'readonly',
-            description: 'The readonly state of the radio group',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The readonly state of the radio group'
         },
         {
             name: 'size',
-            description: 'The size variant of the radio group',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the radio group'
         }
-    ]
+    ],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;

@@ -1,44 +1,50 @@
-module.exports = {
+export const manifest = {
     slots: [
         {
-            name: 'default',
             description: 'Slot for default list group item content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'active',
-            description: 'The active state of the list group item',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The active state of the list group item'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the list group item',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the list group item'
         },
         {
             name: 'tag',
-            description: 'Set the HTML tag to be used for rendering the list group item',
             type: [
                 'String'
             ],
-            default: 'div'
+            default: 'div',
+            description: 'Set the HTML tag to be used for rendering the list group item'
         },
         {
             name: 'tabindex',
-            description: 'The tabindex of the list group item',
             type: [
                 'Number',
                 'String'
             ],
-            default: '1'
+            default: '1',
+            description: 'The tabindex of the list group item'
         }
-    ]
+    ],
+    events: [],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;

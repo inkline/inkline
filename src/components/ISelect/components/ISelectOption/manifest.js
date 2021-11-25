@@ -1,44 +1,60 @@
-module.exports = {
+export const manifest = {
     slots: [
         {
-            name: 'default',
             description: 'Slot for default select option content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'active',
-            description: 'The active state of the select option',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The active state of the select option'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the select option',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the select option'
+        },
+        {
+            name: 'label',
+            type: [
+                'String'
+            ],
+            default: '\'\'',
+            description: 'The label of the select option'
         },
         {
             name: 'tabindex',
-            description: 'The tabindex of the list group item',
             type: [
                 'Number',
                 'String'
             ],
-            default: '1'
+            default: '1',
+            description: 'The tabindex of the list group item'
         },
         {
             name: 'value',
-            description: 'The select option value',
             type: [
-                'Object'
+                'Object',
+                'String',
+                'Number'
             ],
-            default: '{}'
+            default: '',
+            description: 'The select option value'
         }
-    ]
+    ],
+    events: [],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;

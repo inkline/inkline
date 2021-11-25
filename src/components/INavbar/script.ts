@@ -45,7 +45,6 @@ export default defineComponent({
          * @type Boolean
          * @default true
          * @name collapseOnItemClick
-         * @name collapseOnItemClick
          */
         collapseOnItemClick: {
             type: Boolean,
@@ -55,7 +54,6 @@ export default defineComponent({
          * Determines if the navbar should close when clicking outside
          * @type Boolean
          * @default true
-         * @name collapseOnClickOutside
          * @name collapseOnClickOutside
          */
         collapseOnClickOutside: {
@@ -67,7 +65,6 @@ export default defineComponent({
          * @type light | dark
          * @default light
          * @name color
-         * @name color
          */
         color: {
             type: String,
@@ -77,7 +74,6 @@ export default defineComponent({
          * Display the inner container as fluid, spanning 100% width
          * @type Boolean
          * @default false
-         * @name fluid
          * @name fluid
          */
         fluid: {
@@ -89,7 +85,6 @@ export default defineComponent({
          * @type sm | md | lg
          * @default md
          * @name size
-         * @name size
          */
         size: {
             type: String,
@@ -100,7 +95,6 @@ export default defineComponent({
          * The animation of the hamburger menu component used for collapsing
          * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minus
          * @default close
-         * @name menuAnimation
          * @name menuAnimation
          */
         menuAnimation: {

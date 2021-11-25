@@ -1,45 +1,36 @@
-module.exports = {
+export const manifest = {
     name: 'breadcrumb-item',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default breadcrumb item content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
-            name: 'tag',
-            description: 'Set the HTML tag to be used for rendering the breadcrumb item',
-            type: [
-                'String'
-            ],
-            default: 'a'
-        },
-        {
             name: 'active',
-            description: 'The active state of the breadcrumb item',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The active state of the breadcrumb item'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the breadcrumb item',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the breadcrumb item'
         },
         {
             name: 'tabindex',
-            description: 'The tabindex of the breadcrumb item',
             type: [
                 'Number',
                 'String'
             ],
-            default: '1'
+            default: '1',
+            description: 'The tabindex of the breadcrumb item'
         }
     ],
     css: {
@@ -47,6 +38,11 @@ module.exports = {
         defaults: {
             size: 'md',
             color: 'info'
-        }
-    }
+        },
+        variables: [],
+        variants: []
+    },
+    events: []
 };
+
+export default manifest;

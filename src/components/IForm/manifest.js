@@ -1,94 +1,95 @@
-module.exports = {
+export const manifest = {
     name: 'form',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default card content',
-            type: []
+            name: 'default'
         }
     ],
     events: [
         {
-            name: 'update:modelValue',
             description: 'Event emitted for setting the modelValue schema',
-            type: []
+            name: 'update:modelValue'
         },
         {
-            name: 'submit',
             description: 'Event emitted for submitting the form',
-            type: []
+            name: 'submit'
         }
     ],
     props: [
         {
             name: 'color',
-            description: 'The color variant of the form',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the form'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the form',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the form'
         },
         {
             name: 'inline',
-            description: 'Display the form as inline',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the form as inline'
         },
         {
             name: 'loading',
-            description: 'The loading state of the form',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The loading state of the form'
         },
         {
             name: 'name',
-            description: 'The unique identifier of the form',
             type: [
                 'String'
             ],
-            default: 'uid()'
+            default: 'uid()',
+            description: 'The unique identifier of the form'
         },
         {
             name: 'modelValue',
-            description: 'Used to set the form schema',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Used to set the form schema'
         },
         {
             name: 'readonly',
-            description: 'The readonly state of the form',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The readonly state of the form'
         },
         {
             name: 'size',
-            description: 'The size variant of the form',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the form'
         }
     ],
     css: {
-        selector: '.form'
+        selector: '.form',
+        variables: [],
+        variants: []
     }
 };
+
+export default manifest;

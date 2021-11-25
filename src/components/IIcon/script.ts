@@ -7,6 +7,7 @@ import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
  * The icon to be displayed
  * @type String
  * @default
+ * @name name
  */
 
 const componentName = 'IIcon';

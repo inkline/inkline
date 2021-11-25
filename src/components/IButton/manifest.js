@@ -1,45 +1,42 @@
-module.exports = {
+export const manifest = {
     name: 'button',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default button content',
-            type: []
+            name: 'default'
         },
         {
-            name: 'loading',
             description: 'Slot for button loading state',
-            type: []
+            name: 'loading'
         }
     ],
     props: [
         {
             name: 'active',
-            description: 'The active state of the button',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The active state of the button'
         },
         {
             name: 'block',
-            description: 'Display the button as a block, spanning the full container width',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the button as a block, spanning the full container width'
         },
         {
             name: 'circle',
-            description: 'Display the button as a circle',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the button as a circle'
         },
         {
             name: 'color',
-            description: 'The color variant of the button',
             type: [
                 'primary',
                 'success',
@@ -54,66 +51,67 @@ module.exports = {
                 'twitter',
                 'github'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the button'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the button',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the button'
         },
         {
             name: 'link',
-            description: 'Display the button as a link',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the button as a link'
         },
         {
             name: 'loading',
-            description: 'The loading state of the button',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The loading state of the button'
         },
         {
             name: 'outline',
-            description: 'Display the button as an outline button',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the button as an outline button'
         },
         {
             name: 'tag',
-            description: 'Set the HTML tag to be used for rendering the button',
             type: [
                 'String'
             ],
-            default: 'button'
+            default: 'button',
+            description: 'Set the HTML tag to be used for rendering the button'
         },
         {
             name: 'tabindex',
-            description: 'The tabindex of the button',
             type: [
                 'Number',
                 'String'
             ],
-            default: '1'
+            default: '1',
+            description: 'The tabindex of the button'
         },
         {
             name: 'size',
-            description: 'The size variant of the button',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the button'
         }
     ],
     css: {
@@ -125,393 +123,1296 @@ module.exports = {
         variables: [
             {
                 name: 'background',
-                description: 'The background of the button component',
                 type: 'color',
-                variants: {
-                    primary: 'color(\'primary\')',
-                    secondary: 'color(\'secondary\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')',
-                    info: 'color(\'info\')',
-                    success: 'color(\'success\')',
-                    warning: 'color(\'warning\')',
-                    danger: 'color(\'danger\')',
-                    facebook: 'color(\'facebook\')',
-                    google: 'color(\'google\')',
-                    twitter: 'color(\'twitter\')',
-                    github: 'color(\'github\')'
-                }
+                value: 'color(\'light\')',
+                description: 'The background of the button component'
             },
             {
                 name: 'background--hover',
-                description: 'The background of the button component when hovered or focused',
                 type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    success: 'color(\'success-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    facebook: 'color(\'facebook-55\')',
-                    google: 'color(\'google-55\')',
-                    twitter: 'color(\'twitter-55\')',
-                    github: 'color(\'github-55\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The background of the button component when hovered or focused'
             },
             {
                 name: 'background--active',
-                description: 'The background of the button component when active',
                 type: 'color',
-                variants: {
-                    primary: 'color(\'primary-60\')',
-                    secondary: 'color(\'secondary-60\')',
-                    light: 'color(\'light-60\')',
-                    dark: 'color(\'dark-40\')',
-                    info: 'color(\'info-60\')',
-                    success: 'color(\'success-60\')',
-                    warning: 'color(\'warning-60\')',
-                    danger: 'color(\'danger-60\')',
-                    facebook: 'color(\'facebook-60\')',
-                    google: 'color(\'google-60\')',
-                    twitter: 'color(\'twitter-60\')',
-                    github: 'color(\'github-60\')'
-                }
+                value: 'color(\'light-60\')',
+                description: 'The background of the button component when active'
             },
             {
                 name: 'border-top-color',
-                description: 'The border top color of the button component',
                 type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    success: 'color(\'success-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    facebook: 'color(\'facebook-55\')',
-                    google: 'color(\'google-55\')',
-                    twitter: 'color(\'twitter-55\')',
-                    github: 'color(\'github-55\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The border top color of the button component'
             },
             {
                 name: 'border-right-color',
-                description: 'The border right color of the button component',
                 type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    success: 'color(\'success-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    facebook: 'color(\'facebook-55\')',
-                    google: 'color(\'google-55\')',
-                    twitter: 'color(\'twitter-55\')',
-                    github: 'color(\'github-55\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The border right color of the button component'
             },
             {
                 name: 'border-bottom-color',
-                description: 'The border bottom color of the button component',
                 type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    success: 'color(\'success-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    facebook: 'color(\'facebook-55\')',
-                    google: 'color(\'google-55\')',
-                    twitter: 'color(\'twitter-55\')',
-                    github: 'color(\'github-55\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The border bottom color of the button component'
             },
             {
                 name: 'border-left-color',
-                description: 'The border left color of the button component',
                 type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    success: 'color(\'success-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    facebook: 'color(\'facebook-55\')',
-                    google: 'color(\'google-55\')',
-                    twitter: 'color(\'twitter-55\')',
-                    github: 'color(\'github-55\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The border left color of the button component'
             },
             {
                 name: 'border-color',
-                description: 'The border color of the button component',
-                value: ['var(----border-top-color)', 'var(----border-right-color)', 'var(----border-bottom-color)', 'var(----border-left-color)']
+                type: '',
+                value: 'var(----border-top-color) var(----border-right-color) var(----border-bottom-color) var(----border-left-color)',
+                description: 'The border color of the button component'
             },
             {
                 name: 'border-color--hover',
-                description: 'The border color of the button component when hovered or focused',
-                value: 'var(----border-color)'
+                type: '',
+                value: 'var(----border-color)',
+                description: 'The border color of the button component when hovered or focused'
             },
             {
                 name: 'border-style',
-                description: 'The border style of the button component',
-                value: 'var(--border-style)'
+                type: '',
+                value: 'var(--border-style)',
+                description: 'The border style of the button component'
             },
             {
                 name: 'border-top-width',
-                description: 'The border top width of the button component',
-                value: 'var(--border-top-width)'
+                type: '',
+                value: 'var(--border-top-width)',
+                description: 'The border top width of the button component'
             },
             {
                 name: 'border-right-width',
-                description: 'The border right width of the button component',
-                value: 'var(--border-right-width)'
+                type: '',
+                value: 'var(--border-right-width)',
+                description: 'The border right width of the button component'
             },
             {
                 name: 'border-bottom-width',
-                description: 'The border bottom width of the button component',
-                value: 'var(--border-bottom-width)'
+                type: '',
+                value: 'var(--border-bottom-width)',
+                description: 'The border bottom width of the button component'
             },
             {
                 name: 'border-left-width',
-                description: 'The border left width of the button component',
-                value: 'var(--border-left-width)'
+                type: '',
+                value: 'var(--border-left-width)',
+                description: 'The border left width of the button component'
             },
             {
                 name: 'border-width',
-                description: 'The border width of the button component',
-                value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
+                type: '',
+                value: 'var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)',
+                description: 'The border width of the button component'
             },
             {
                 name: 'border-top-left-radius',
                 type: 'size',
-                description: 'The border top left radius of the button component',
-                value: 'var(--border-top-left-radius)'
+                value: 'var(--border-top-left-radius)',
+                description: 'The border top left radius of the button component'
             },
             {
                 name: 'border-top-right-radius',
                 type: 'size',
-                description: 'The border top right radius of the button component',
-                value: 'var(--border-top-right-radius)'
+                value: 'var(--border-top-right-radius)',
+                description: 'The border top right radius of the button component'
             },
             {
                 name: 'border-bottom-right-radius',
                 type: 'size',
-                description: 'The border bottom right radius of the button component',
-                value: 'var(--border-bottom-right-radius)'
+                value: 'var(--border-bottom-right-radius)',
+                description: 'The border bottom right radius of the button component'
             },
             {
                 name: 'border-bottom-left-radius',
                 type: 'size',
-                description: 'The border bottom left radius of the button component',
-                value: 'var(--border-bottom-left-radius)'
+                value: 'var(--border-bottom-left-radius)',
+                description: 'The border bottom left radius of the button component'
             },
             {
                 name: 'border-radius',
-                description: 'The border radius of the button component',
-                value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
+                type: '',
+                value: 'var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)',
+                description: 'The border radius of the button component'
             },
             {
                 name: 'box-shadow-offset-x',
-                description: 'The box shadow horizontal offset of the button component',
-                value: 'var(--box-shadow-offset-x)'
+                type: '',
+                value: 'var(--box-shadow-offset-x)',
+                description: 'The box shadow horizontal offset of the button component'
             },
             {
                 name: 'box-shadow-offset-y',
-                description: 'The box shadow vertical offset of the button component',
-                value: 'var(--box-shadow-offset-y)'
+                type: '',
+                value: 'var(--box-shadow-offset-y)',
+                description: 'The box shadow vertical offset of the button component'
             },
             {
                 name: 'box-shadow-blur-radius',
-                description: 'The box shadow blur radius of the button component',
-                value: 'var(--box-shadow-blur-radius)'
+                type: '',
+                value: 'var(--box-shadow-blur-radius)',
+                description: 'The box shadow blur radius of the button component'
             },
             {
                 name: 'box-shadow-spread-radius',
-                description: 'The box shadow spread radius of the button component',
-                value: 'var(--box-shadow-spread-radius)'
+                type: '',
+                value: 'var(--box-shadow-spread-radius)',
+                description: 'The box shadow spread radius of the button component'
             },
             {
                 name: 'box-shadow-color',
-                description: 'The box shadow spread radius of the button component',
-                value: 'var(--box-shadow-color)'
+                type: '',
+                value: 'var(--box-shadow-color)',
+                description: 'The box shadow spread radius of the button component'
             },
             {
                 name: 'box-shadow',
-                description: 'The box shadow of the button component',
-                value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
+                type: '',
+                value: 'var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)',
+                description: 'The box shadow of the button component'
             },
             {
                 name: 'color',
-                description: 'The color of the button component',
                 type: 'color',
-                variants: {
-                    primary: 'contrast-color($color-primary)',
-                    secondary: 'contrast-color($color-secondary)',
-                    light: 'contrast-color($color-light)',
-                    dark: 'contrast-color($color-dark)',
-                    info: 'contrast-color($color-info)',
-                    success: 'contrast-color($color-success)',
-                    warning: 'contrast-color($color-warning)',
-                    danger: 'contrast-color($color-danger)',
-                    facebook: 'contrast-color($color-facebook)',
-                    google: 'contrast-color($color-google)',
-                    twitter: 'contrast-color($color-twitter)',
-                    github: 'contrast-color($color-github)'
-                }
+                value: 'contrast-color($color-light)',
+                description: 'The color of the button component'
             },
             {
                 name: 'font-size',
-                description: 'The font size of the button component',
                 type: 'size',
-                value: 'font-size()'
+                value: 'font-size()',
+                description: 'The font size of the button component'
             },
             {
                 name: 'font-weight',
-                description: 'The font weight of the button component',
-                value: 'font-weight(\'normal\')'
+                type: '',
+                value: 'font-weight(\'normal\')',
+                description: 'The font weight of the button component'
             },
             {
                 name: 'line-height',
-                description: 'The line height of the button component',
-                value: 'var(--line-height)'
+                type: '',
+                value: 'var(--line-height)',
+                description: 'The line height of the button component'
             },
             {
                 name: 'padding-top',
                 type: 'size',
-                description: 'The padding top of the button component',
-                value: 'calc(var(--padding-top) / 2)'
+                value: 'calc(var(--padding-top) / 2)',
+                description: 'The padding top of the button component'
             },
             {
                 name: 'padding-right',
                 type: 'size',
-                description: 'The padding right of the button component',
-                value: 'var(--padding-right)'
+                value: 'var(--padding-right)',
+                description: 'The padding right of the button component'
             },
             {
                 name: 'padding-bottom',
                 type: 'size',
-                description: 'The padding bottom of the button component',
-                value: 'calc(var(--padding-bottom) / 2)'
+                value: 'calc(var(--padding-bottom) / 2)',
+                description: 'The padding bottom of the button component'
             },
             {
                 name: 'padding-left',
                 type: 'size',
-                description: 'The padding left of the button component',
-                value: 'var(--padding-left)'
+                value: 'var(--padding-left)',
+                description: 'The padding left of the button component'
             },
             {
                 name: 'padding',
-                description: 'The padding of the button component',
-                value: ['var(----padding-top)', 'var(----padding-right)', 'var(----padding-bottom)', 'var(----padding-left)']
+                type: '',
+                value: 'var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)',
+                description: 'The padding of the button component'
             },
             {
                 name: 'block--margin',
-                description: 'The margin of the button component when block',
-                value: 'spacing()'
+                type: '',
+                value: 'spacing()',
+                description: 'The margin of the button component when block'
             },
             {
                 name: 'circle--size',
-                description: 'The size of the button component circle variant',
                 type: 'size',
-                variants: {
-                    sm: '34px',
-                    md: '42px',
-                    lg: '49px'
-                }
+                value: '42px',
+                description: 'The size of the button component circle variant'
             },
             {
                 name: 'link--color',
-                description: 'The color of the button component link variant',
                 type: 'color',
-                variants: {
-                    primary: 'color(\'primary\')',
-                    secondary: 'color(\'secondary\')',
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')',
-                    info: 'color(\'info\')',
-                    success: 'color(\'success\')',
-                    warning: 'color(\'warning\')',
-                    danger: 'color(\'danger\')',
-                    facebook: 'color(\'facebook\')',
-                    google: 'color(\'google\')',
-                    twitter: 'color(\'twitter\')',
-                    github: 'color(\'github\')'
-                }
+                value: 'color(\'light\')',
+                description: 'The color of the button component link variant'
             },
             {
                 name: 'link--color--active',
-                description: 'The color of the button component link variant when active',
                 type: 'color',
-                variants: {
-                    primary: 'color(\'primary-55\')',
-                    secondary: 'color(\'secondary-55\')',
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')',
-                    info: 'color(\'info-55\')',
-                    success: 'color(\'success-55\')',
-                    warning: 'color(\'warning-55\')',
-                    danger: 'color(\'danger-55\')',
-                    facebook: 'color(\'facebook-55\')',
-                    google: 'color(\'google-55\')',
-                    twitter: 'color(\'twitter-55\')',
-                    github: 'color(\'github-55\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The color of the button component link variant when active'
             },
             {
                 name: 'outline--background',
-                description: 'The background of the button component outline variant',
-                value: 'transparent'
+                type: '',
+                value: 'transparent',
+                description: 'The background of the button component outline variant'
             },
             {
                 name: 'outline--background--hover',
-                description: 'The background of the button component outline variant when hovered',
-                value: 'var(----background)'
+                type: '',
+                value: 'var(----background)',
+                description: 'The background of the button component outline variant when hovered'
             },
             {
                 name: 'outline--background--active',
-                description: 'The background of the button component outline variant when active',
-                value: 'var(----background--active)'
+                type: '',
+                value: 'var(----background--active)',
+                description: 'The background of the button component outline variant when active'
             },
             {
                 name: 'outline--border-color',
-                description: 'The border color of the button component outline variant',
-                value: 'var(----background)'
+                type: '',
+                value: 'var(----background)',
+                description: 'The border color of the button component outline variant'
             },
             {
                 name: 'outline--border-color--hover',
-                description: 'The border color of the button component outline variant when hovered or focused',
-                value: 'var(----border-color--hover)'
+                type: '',
+                value: 'var(----border-color--hover)',
+                description: 'The border color of the button component outline variant when hovered or focused'
             },
             {
                 name: 'outline--color',
-                description: 'The color of the button component outline variant',
-                value: 'var(----background)'
+                type: '',
+                value: 'var(----background)',
+                description: 'The color of the button component outline variant'
             },
             {
                 name: 'outline--color--hover',
-                description: 'The color of the button component outline variant when hovered or focused',
-                value: 'var(----color)'
+                type: '',
+                value: 'var(----color)',
+                description: 'The color of the button component outline variant when hovered or focused'
             },
             {
                 name: 'outline--color--active',
-                description: 'The color of the button component outline variant when hovered or focused',
-                value: 'var(----outline--color--hover)'
+                type: '',
+                value: 'var(----outline--color--hover)',
+                description: 'The color of the button component outline variant when hovered or focused'
+            }
+        ],
+        variants: [
+            {
+                name: 'primary',
+                type: 'variant',
+                description: 'Variables for the primary color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'primary\')',
+                        description: 'The background of the button component, for the primary color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'primary-55\')',
+                        description: 'The background of the button component when hovered or focused, for the primary color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'primary-60\')',
+                        description: 'The background of the button component when active, for the primary color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'primary-55\')',
+                        description: 'The border top color of the button component, for the primary color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'primary-55\')',
+                        description: 'The border right color of the button component, for the primary color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'primary-55\')',
+                        description: 'The border bottom color of the button component, for the primary color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'primary-55\')',
+                        description: 'The border left color of the button component, for the primary color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-primary)',
+                        description: 'The color of the button component, for the primary color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'primary\')',
+                        description: 'The color of the button component link variant, for the primary color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'primary-55\')',
+                        description: 'The color of the button component link variant when active, for the primary color variant'
+                    }
+                ]
+            },
+            {
+                name: 'secondary',
+                type: 'variant',
+                description: 'Variables for the secondary color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'secondary\')',
+                        description: 'The background of the button component, for the secondary color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'secondary-55\')',
+                        description: 'The background of the button component when hovered or focused, for the secondary color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'secondary-60\')',
+                        description: 'The background of the button component when active, for the secondary color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'secondary-55\')',
+                        description: 'The border top color of the button component, for the secondary color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'secondary-55\')',
+                        description: 'The border right color of the button component, for the secondary color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'secondary-55\')',
+                        description: 'The border bottom color of the button component, for the secondary color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'secondary-55\')',
+                        description: 'The border left color of the button component, for the secondary color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-secondary)',
+                        description: 'The color of the button component, for the secondary color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'secondary\')',
+                        description: 'The color of the button component link variant, for the secondary color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'secondary-55\')',
+                        description: 'The color of the button component link variant when active, for the secondary color variant'
+                    }
+                ]
+            },
+            {
+                name: 'light',
+                type: 'variant',
+                description: 'Variables for the light color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'light\')',
+                        description: 'The background of the button component, for the light color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The background of the button component when hovered or focused, for the light color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'light-60\')',
+                        description: 'The background of the button component when active, for the light color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The border top color of the button component, for the light color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The border right color of the button component, for the light color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The border bottom color of the button component, for the light color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The border left color of the button component, for the light color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-light)',
+                        description: 'The color of the button component, for the light color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'light\')',
+                        description: 'The color of the button component link variant, for the light color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The color of the button component link variant when active, for the light color variant'
+                    }
+                ]
+            },
+            {
+                name: 'dark',
+                type: 'variant',
+                description: 'Variables for the dark color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'dark\')',
+                        description: 'The background of the button component, for the dark color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The background of the button component when hovered or focused, for the dark color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'dark-40\')',
+                        description: 'The background of the button component when active, for the dark color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The border top color of the button component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The border right color of the button component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The border bottom color of the button component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The border left color of the button component, for the dark color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-dark)',
+                        description: 'The color of the button component, for the dark color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'dark\')',
+                        description: 'The color of the button component link variant, for the dark color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The color of the button component link variant when active, for the dark color variant'
+                    }
+                ]
+            },
+            {
+                name: 'info',
+                type: 'variant',
+                description: 'Variables for the info color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'info\')',
+                        description: 'The background of the button component, for the info color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'info-55\')',
+                        description: 'The background of the button component when hovered or focused, for the info color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'info-60\')',
+                        description: 'The background of the button component when active, for the info color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'info-55\')',
+                        description: 'The border top color of the button component, for the info color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'info-55\')',
+                        description: 'The border right color of the button component, for the info color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'info-55\')',
+                        description: 'The border bottom color of the button component, for the info color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'info-55\')',
+                        description: 'The border left color of the button component, for the info color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-info)',
+                        description: 'The color of the button component, for the info color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'info\')',
+                        description: 'The color of the button component link variant, for the info color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'info-55\')',
+                        description: 'The color of the button component link variant when active, for the info color variant'
+                    }
+                ]
+            },
+            {
+                name: 'success',
+                type: 'variant',
+                description: 'Variables for the success color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'success\')',
+                        description: 'The background of the button component, for the success color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'success-55\')',
+                        description: 'The background of the button component when hovered or focused, for the success color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'success-60\')',
+                        description: 'The background of the button component when active, for the success color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'success-55\')',
+                        description: 'The border top color of the button component, for the success color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'success-55\')',
+                        description: 'The border right color of the button component, for the success color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'success-55\')',
+                        description: 'The border bottom color of the button component, for the success color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'success-55\')',
+                        description: 'The border left color of the button component, for the success color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-success)',
+                        description: 'The color of the button component, for the success color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'success\')',
+                        description: 'The color of the button component link variant, for the success color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'success-55\')',
+                        description: 'The color of the button component link variant when active, for the success color variant'
+                    }
+                ]
+            },
+            {
+                name: 'warning',
+                type: 'variant',
+                description: 'Variables for the warning color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'warning\')',
+                        description: 'The background of the button component, for the warning color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'warning-55\')',
+                        description: 'The background of the button component when hovered or focused, for the warning color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'warning-60\')',
+                        description: 'The background of the button component when active, for the warning color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'warning-55\')',
+                        description: 'The border top color of the button component, for the warning color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'warning-55\')',
+                        description: 'The border right color of the button component, for the warning color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'warning-55\')',
+                        description: 'The border bottom color of the button component, for the warning color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'warning-55\')',
+                        description: 'The border left color of the button component, for the warning color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-warning)',
+                        description: 'The color of the button component, for the warning color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'warning\')',
+                        description: 'The color of the button component link variant, for the warning color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'warning-55\')',
+                        description: 'The color of the button component link variant when active, for the warning color variant'
+                    }
+                ]
+            },
+            {
+                name: 'danger',
+                type: 'variant',
+                description: 'Variables for the danger color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'danger\')',
+                        description: 'The background of the button component, for the danger color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'danger-55\')',
+                        description: 'The background of the button component when hovered or focused, for the danger color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'danger-60\')',
+                        description: 'The background of the button component when active, for the danger color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'danger-55\')',
+                        description: 'The border top color of the button component, for the danger color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'danger-55\')',
+                        description: 'The border right color of the button component, for the danger color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'danger-55\')',
+                        description: 'The border bottom color of the button component, for the danger color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'danger-55\')',
+                        description: 'The border left color of the button component, for the danger color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-danger)',
+                        description: 'The color of the button component, for the danger color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'danger\')',
+                        description: 'The color of the button component link variant, for the danger color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'danger-55\')',
+                        description: 'The color of the button component link variant when active, for the danger color variant'
+                    }
+                ]
+            },
+            {
+                name: 'facebook',
+                type: 'variant',
+                description: 'Variables for the facebook color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'facebook\')',
+                        description: 'The background of the button component, for the facebook color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'facebook-55\')',
+                        description: 'The background of the button component when hovered or focused, for the facebook color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'facebook-60\')',
+                        description: 'The background of the button component when active, for the facebook color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'facebook-55\')',
+                        description: 'The border top color of the button component, for the facebook color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'facebook-55\')',
+                        description: 'The border right color of the button component, for the facebook color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'facebook-55\')',
+                        description: 'The border bottom color of the button component, for the facebook color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'facebook-55\')',
+                        description: 'The border left color of the button component, for the facebook color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-facebook)',
+                        description: 'The color of the button component, for the facebook color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'facebook\')',
+                        description: 'The color of the button component link variant, for the facebook color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'facebook-55\')',
+                        description: 'The color of the button component link variant when active, for the facebook color variant'
+                    }
+                ]
+            },
+            {
+                name: 'google',
+                type: 'variant',
+                description: 'Variables for the google color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'google\')',
+                        description: 'The background of the button component, for the google color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'google-55\')',
+                        description: 'The background of the button component when hovered or focused, for the google color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'google-60\')',
+                        description: 'The background of the button component when active, for the google color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'google-55\')',
+                        description: 'The border top color of the button component, for the google color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'google-55\')',
+                        description: 'The border right color of the button component, for the google color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'google-55\')',
+                        description: 'The border bottom color of the button component, for the google color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'google-55\')',
+                        description: 'The border left color of the button component, for the google color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-google)',
+                        description: 'The color of the button component, for the google color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'google\')',
+                        description: 'The color of the button component link variant, for the google color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'google-55\')',
+                        description: 'The color of the button component link variant when active, for the google color variant'
+                    }
+                ]
+            },
+            {
+                name: 'twitter',
+                type: 'variant',
+                description: 'Variables for the twitter color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'twitter\')',
+                        description: 'The background of the button component, for the twitter color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'twitter-55\')',
+                        description: 'The background of the button component when hovered or focused, for the twitter color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'twitter-60\')',
+                        description: 'The background of the button component when active, for the twitter color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'twitter-55\')',
+                        description: 'The border top color of the button component, for the twitter color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'twitter-55\')',
+                        description: 'The border right color of the button component, for the twitter color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'twitter-55\')',
+                        description: 'The border bottom color of the button component, for the twitter color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'twitter-55\')',
+                        description: 'The border left color of the button component, for the twitter color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-twitter)',
+                        description: 'The color of the button component, for the twitter color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'twitter\')',
+                        description: 'The color of the button component link variant, for the twitter color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'twitter-55\')',
+                        description: 'The color of the button component link variant when active, for the twitter color variant'
+                    }
+                ]
+            },
+            {
+                name: 'github',
+                type: 'variant',
+                description: 'Variables for the github color variant',
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'github\')',
+                        description: 'The background of the button component, for the github color variant'
+                    },
+                    {
+                        name: 'background--hover',
+                        type: '',
+                        value: 'color(\'github-55\')',
+                        description: 'The background of the button component when hovered or focused, for the github color variant'
+                    },
+                    {
+                        name: 'background--active',
+                        type: '',
+                        value: 'color(\'github-60\')',
+                        description: 'The background of the button component when active, for the github color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'github-55\')',
+                        description: 'The border top color of the button component, for the github color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'github-55\')',
+                        description: 'The border right color of the button component, for the github color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'github-55\')',
+                        description: 'The border bottom color of the button component, for the github color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'github-55\')',
+                        description: 'The border left color of the button component, for the github color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-github)',
+                        description: 'The color of the button component, for the github color variant'
+                    },
+                    {
+                        name: 'link--color',
+                        type: '',
+                        value: 'color(\'github\')',
+                        description: 'The color of the button component link variant, for the github color variant'
+                    },
+                    {
+                        name: 'link--color--active',
+                        type: '',
+                        value: 'color(\'github-55\')',
+                        description: 'The color of the button component link variant when active, for the github color variant'
+                    }
+                ]
+            },
+            {
+                name: 'sm',
+                type: 'variant',
+                description: 'Variables for the sm size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border top left radius of the button component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border top right radius of the button component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border bottom right radius of the button component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border bottom left radius of the button component, for the sm size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
+                        description: 'The font size of the button component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding top of the button component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding right of the button component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding bottom of the button component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding left of the button component, for the sm size variant'
+                    },
+                    {
+                        name: 'circle--size',
+                        type: '',
+                        value: 'calc(#{34px} * #{size-multiplier(\'sm\')})',
+                        description: 'The size of the button component circle variant, for the sm size variant'
+                    }
+                ]
+            },
+            {
+                name: 'md',
+                type: 'variant',
+                description: 'Variables for the md size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border top left radius of the button component, for the md size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border top right radius of the button component, for the md size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border bottom right radius of the button component, for the md size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border bottom left radius of the button component, for the md size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
+                        description: 'The font size of the button component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding top of the button component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding right of the button component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding bottom of the button component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding left of the button component, for the md size variant'
+                    },
+                    {
+                        name: 'circle--size',
+                        type: '',
+                        value: 'calc(#{42px} * #{size-multiplier(\'md\')})',
+                        description: 'The size of the button component circle variant, for the md size variant'
+                    }
+                ]
+            },
+            {
+                name: 'lg',
+                type: 'variant',
+                description: 'Variables for the lg size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border top left radius of the button component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border top right radius of the button component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border bottom right radius of the button component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border bottom left radius of the button component, for the lg size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
+                        description: 'The font size of the button component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding top of the button component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding right of the button component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding bottom of the button component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding left of the button component, for the lg size variant'
+                    },
+                    {
+                        name: 'circle--size',
+                        type: '',
+                        value: 'calc(#{49px} * #{size-multiplier(\'lg\')})',
+                        description: 'The size of the button component circle variant, for the lg size variant'
+                    }
+                ]
             }
         ]
-    }
+    },
+    events: []
 };
+
+export default manifest;

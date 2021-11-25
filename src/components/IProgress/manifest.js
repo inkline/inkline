@@ -1,47 +1,46 @@
-module.exports = {
+export const manifest = {
     name: 'progress',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default progress content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'color',
-            description: 'The color variant of the progress component',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the progress component'
         },
         {
             name: 'min',
-            description: 'The value to consider as the 0% starting point',
             type: [
                 'Number'
             ],
-            default: '0'
+            default: '0',
+            description: 'The value to consider as the 0% starting point'
         },
         {
             name: 'max',
-            description: 'The value to consider as the 100% ending point',
             type: [
                 'Number'
             ],
-            default: '100'
+            default: '100',
+            description: 'The value to consider as the 100% ending point'
         },
         {
             name: 'size',
-            description: 'The size variant of the progress component',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the progress component'
         }
     ],
     css: {
@@ -53,150 +52,276 @@ module.exports = {
         variables: [
             {
                 name: 'background',
-                description: 'The background of the progress component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light\')',
-                    dark: 'color(\'dark\')'
-                }
+                value: 'color(\'light\')',
+                description: 'The background of the progress component'
             },
             {
                 name: 'border-top-color',
-                description: 'The border top color of the progress component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The border top color of the progress component'
             },
             {
                 name: 'border-right-color',
-                description: 'The border right color of the progress component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The border right color of the progress component'
             },
             {
                 name: 'border-bottom-color',
-                description: 'The border bottom color of the progress component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The border bottom color of the progress component'
             },
             {
                 name: 'border-left-color',
-                description: 'The border left color of the progress component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'light-55\')',
-                    dark: 'color(\'dark-45\')'
-                }
+                value: 'color(\'light-55\')',
+                description: 'The border left color of the progress component'
             },
             {
                 name: 'border-color',
-                description: 'The border color of the progress component',
-                value: ['var(----border-top-color)', 'var(----border-right-color)', 'var(----border-bottom-color)', 'var(----border-left-color)']
+                type: '',
+                value: 'var(----border-top-color) var(----border-right-color) var(----border-bottom-color) var(----border-left-color)',
+                description: 'The border color of the progress component'
             },
             {
                 name: 'border-style',
-                description: 'The border style of the progress component',
-                value: 'var(--border-style)'
+                type: '',
+                value: 'var(--border-style)',
+                description: 'The border style of the progress component'
             },
             {
                 name: 'border-top-width',
-                description: 'The border top width of the progress component',
-                value: 'var(--border-top-width)'
+                type: '',
+                value: 'var(--border-top-width)',
+                description: 'The border top width of the progress component'
             },
             {
                 name: 'border-right-width',
-                description: 'The border right width of the progress component',
-                value: 'var(--border-right-width)'
+                type: '',
+                value: 'var(--border-right-width)',
+                description: 'The border right width of the progress component'
             },
             {
                 name: 'border-bottom-width',
-                description: 'The border bottom width of the progress component',
-                value: 'var(--border-bottom-width)'
+                type: '',
+                value: 'var(--border-bottom-width)',
+                description: 'The border bottom width of the progress component'
             },
             {
                 name: 'border-left-width',
-                description: 'The border left width of the progress component',
-                value: 'var(--border-left-width)'
+                type: '',
+                value: 'var(--border-left-width)',
+                description: 'The border left width of the progress component'
             },
             {
                 name: 'border-width',
-                description: 'The border width of the progress component',
-                value: ['var(----border-top-width)', 'var(----border-right-width)', 'var(----border-bottom-width)', 'var(----border-left-width)']
+                type: '',
+                value: 'var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)',
+                description: 'The border width of the progress component'
             },
             {
                 name: 'border-top-left-radius',
                 type: 'size',
-                description: 'The border top left radius of the progress component',
-                value: 'var(--border-top-left-radius)'
+                value: 'var(--border-top-left-radius)',
+                description: 'The border top left radius of the progress component'
             },
             {
                 name: 'border-top-right-radius',
                 type: 'size',
-                description: 'The border top right radius of the progress component',
-                value: 'var(--border-top-right-radius)'
+                value: 'var(--border-top-right-radius)',
+                description: 'The border top right radius of the progress component'
             },
             {
                 name: 'border-bottom-right-radius',
                 type: 'size',
-                description: 'The border bottom right radius of the progress component',
-                value: 'var(--border-bottom-right-radius)'
+                value: 'var(--border-bottom-right-radius)',
+                description: 'The border bottom right radius of the progress component'
             },
             {
                 name: 'border-bottom-left-radius',
                 type: 'size',
-                description: 'The border bottom left radius of the progress component',
-                value: 'var(--border-bottom-left-radius)'
+                value: 'var(--border-bottom-left-radius)',
+                description: 'The border bottom left radius of the progress component'
             },
             {
                 name: 'border-radius',
-                description: 'The border radius of the progress component',
-                value: ['var(----border-top-left-radius)', 'var(----border-top-right-radius)', 'var(----border-bottom-right-radius)', 'var(----border-bottom-left-radius)']
+                type: '',
+                value: 'var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)',
+                description: 'The border radius of the progress component'
             },
-
             {
                 name: 'box-shadow-offset-x',
-                description: 'The box shadow horizontal offset of the progress component',
-                value: 'var(--box-shadow-offset-x)'
+                type: '',
+                value: 'var(--box-shadow-offset-x)',
+                description: 'The box shadow horizontal offset of the progress component'
             },
             {
                 name: 'box-shadow-offset-y',
-                description: 'The box shadow vertical offset of the progress component',
-                value: 'var(--box-shadow-offset-y)'
+                type: '',
+                value: 'var(--box-shadow-offset-y)',
+                description: 'The box shadow vertical offset of the progress component'
             },
             {
                 name: 'box-shadow-blur-radius',
-                description: 'The box shadow blur radius of the progress component',
-                value: 'var(--box-shadow-blur-radius)'
+                type: '',
+                value: 'var(--box-shadow-blur-radius)',
+                description: 'The box shadow blur radius of the progress component'
             },
             {
                 name: 'box-shadow-spread-radius',
-                description: 'The box shadow spread radius of the progress component',
-                value: 'var(--box-shadow-spread-radius)'
+                type: '',
+                value: 'var(--box-shadow-spread-radius)',
+                description: 'The box shadow spread radius of the progress component'
             },
             {
                 name: 'box-shadow-color',
-                description: 'The box shadow spread radius of the progress component',
-                value: 'var(--box-shadow-color)'
+                type: '',
+                value: 'var(--box-shadow-color)',
+                description: 'The box shadow spread radius of the progress component'
             },
             {
                 name: 'box-shadow',
-                description: 'The box shadow of the progress component',
-                value: ['var(----box-shadow-offset-x)', 'var(----box-shadow-offset-y)', 'var(----box-shadow-blur-radius)', 'var(----box-shadow-spread-radius)', 'var(----box-shadow-color)']
+                type: '',
+                value: 'var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)',
+                description: 'The box shadow of the progress component'
             },
             {
                 name: 'height',
-                description: 'The height of the progress component',
                 type: 'size',
-                value: 'spacing(\'3/4\')'
+                value: 'spacing(\'3/4\')',
+                description: 'The height of the progress component'
+            }
+        ],
+        variants: [
+            {
+                name: 'light',
+                type: 'variant',
+                description: 'Variables for the light color variant',
+                variables: []
+            },
+            {
+                name: 'dark',
+                type: 'variant',
+                description: 'Variables for the dark color variant',
+                variables: []
+            },
+            {
+                name: 'sm',
+                type: 'variant',
+                description: 'Variables for the sm size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border top left radius of the progress component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border top right radius of the progress component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border bottom right radius of the progress component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border bottom left radius of the progress component, for the sm size variant'
+                    },
+                    {
+                        name: 'height',
+                        type: '',
+                        value: 'calc(#{spacing(\'3/4\')} * #{size-multiplier(\'sm\')})',
+                        description: 'The height of the progress component, for the sm size variant'
+                    }
+                ]
+            },
+            {
+                name: 'md',
+                type: 'variant',
+                description: 'Variables for the md size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border top left radius of the progress component, for the md size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border top right radius of the progress component, for the md size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border bottom right radius of the progress component, for the md size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border bottom left radius of the progress component, for the md size variant'
+                    },
+                    {
+                        name: 'height',
+                        type: '',
+                        value: 'calc(#{spacing(\'3/4\')} * #{size-multiplier(\'md\')})',
+                        description: 'The height of the progress component, for the md size variant'
+                    }
+                ]
+            },
+            {
+                name: 'lg',
+                type: 'variant',
+                description: 'Variables for the lg size variant',
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border top left radius of the progress component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border top right radius of the progress component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border bottom right radius of the progress component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border bottom left radius of the progress component, for the lg size variant'
+                    },
+                    {
+                        name: 'height',
+                        type: '',
+                        value: 'calc(#{spacing(\'3/4\')} * #{size-multiplier(\'lg\')})',
+                        description: 'The height of the progress component, for the lg size variant'
+                    }
+                ]
             }
         ]
-    }
+    },
+    events: []
 };
+
+export default manifest;
