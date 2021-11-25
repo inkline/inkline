@@ -8,6 +8,14 @@ export const manifest = {
     ],
     props: [
         {
+            name: 'tag',
+            type: [
+                'String'
+            ],
+            default: 'a',
+            description: 'Set the HTML tag to be used for rendering the breadcrumb item'
+        },
+        {
             name: 'active',
             type: [
                 'Boolean'
