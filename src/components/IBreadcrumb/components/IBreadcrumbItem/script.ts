@@ -11,7 +11,6 @@ import { Classes } from '@inkline/inkline/types';
 /**
  * Set the HTML tag to be used for rendering the breadcrumb item
  * @name tag
- * @kind member
  * @type String
  * @default a
  */
