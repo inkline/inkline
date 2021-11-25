@@ -7,7 +7,7 @@ export const mapBlocksToProps = (blocks: Block[]): ManifestProp[] => blocks
         const { name } = tags.find(({ tag }) => tag === 'name') as Spec;
         const { name: defaultValue } = tags.find(({ tag }) => tag === 'default') as Spec;
         const typeTag = tags.find(({ tag }) => tag === 'type') as Spec;
-        const type = `${typeTag.name}${typeTag.description}`.split(/ *\| */);
+        const type = typeTag ? `${typeTag.name}${typeTag.description}`.split(/ *\| */) : [];
 
         return {
             name,
