@@ -31,7 +31,6 @@ export default defineComponent({
          * @type Boolean
          * @default false
          * @name active
-         * @name active
          */
         active: {
             type: Boolean,
@@ -41,7 +40,6 @@ export default defineComponent({
          * The disabled state of the select option
          * @type Boolean
          * @default false
-         * @name disabled
          * @name disabled
          */
         disabled: {
@@ -53,7 +51,6 @@ export default defineComponent({
          * @type String
          * @default ''
          * @name label
-         * @name label
          */
         label: {
             type: String,
@@ -64,7 +61,6 @@ export default defineComponent({
          * @type Number | String
          * @default 1
          * @name tabindex
-         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
@@ -74,7 +70,6 @@ export default defineComponent({
          * The select option value
          * @type Object | String | Number
          * @default {}
-         * @name value
          * @name value
          */
         value: {

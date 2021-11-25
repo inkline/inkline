@@ -1,56 +1,60 @@
-module.exports = {
+export const manifest = {
     name: 'dropdown-item',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default dropdown item content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'active',
-            description: 'The active state of the dropdown item',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The active state of the dropdown item'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the dropdown item',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the dropdown item'
         },
         {
             name: 'plaintext',
-            description: 'Display the dropdown item as plaintext',
             type: [
                 'String'
             ],
-            default: 'div'
+            default: 'div',
+            description: 'Display the dropdown item as plaintext'
         },
         {
             name: 'tag',
-            description: 'Set the HTML tag to be used for rendering the dropdown item',
             type: [
                 'String'
             ],
-            default: 'div'
+            default: 'div',
+            description: 'Set the HTML tag to be used for rendering the dropdown item'
         },
         {
             name: 'tabindex',
-            description: 'The tabindex of the list group item',
             type: [
                 'Number',
                 'String'
             ],
-            default: '1'
+            default: '1',
+            description: 'The tabindex of the list group item'
         }
     ],
     css: {
-        selector: '.dropdown-item'
-    }
+        selector: '.dropdown-item',
+        variables: [],
+        variants: []
+    },
+    events: []
 };
+
+export default manifest;

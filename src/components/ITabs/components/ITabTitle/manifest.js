@@ -1,19 +1,25 @@
-module.exports = {
+export const manifest = {
     slots: [
         {
-            name: 'default',
             description: 'Slot for default tab title content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'for',
-            description: 'The name of the referenced tab',
             type: [
                 'String'
             ],
-            default: '{"type":"","default":""}'
+            default: '',
+            description: 'The name of the referenced tab'
         }
-    ]
+    ],
+    events: [],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;

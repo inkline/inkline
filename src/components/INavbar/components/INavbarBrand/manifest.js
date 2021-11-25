@@ -1,19 +1,25 @@
-module.exports = {
+export const manifest = {
     slots: [
         {
-            name: 'default',
             description: 'Slot for default navbar brand content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'tag',
-            description: 'Set the HTML tag to be used for rendering the nav item',
             type: [
                 'String'
             ],
-            default: 'div'
+            default: 'div',
+            description: 'Set the HTML tag to be used for rendering the nav item'
         }
-    ]
+    ],
+    events: [],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;

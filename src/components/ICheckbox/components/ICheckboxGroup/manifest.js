@@ -1,87 +1,89 @@
-module.exports = {
+export const manifest = {
     name: 'checkbox-group',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default checkbox group options',
-            type: []
+            name: 'default'
         }
     ],
     events: [
         {
-            name: 'update:modelValue',
             description: 'Event emitted for setting the modelValue',
-            type: []
+            name: 'update:modelValue'
         }
     ],
     props: [
         {
             name: 'color',
-            description: 'The color variant of the checkbox group',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the checkbox group'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the checkbox group',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the checkbox group'
         },
         {
             name: 'inline',
-            description: 'Display the checkbox group as inline',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the checkbox group as inline'
         },
         {
             name: 'indeterminate',
-            description: 'The indeterminate state of the checkbox group',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The indeterminate state of the checkbox group'
         },
         {
             name: 'modelValue',
-            description: 'Used to set the checkbox group value',
             type: [],
-            default: '[]'
+            default: '',
+            description: 'Used to set the checkbox group value'
         },
         {
             name: 'name',
-            description: 'The unique identifier of the checkbox group',
             type: [
                 'String'
             ],
-            default: 'uid()'
+            default: 'uid()',
+            description: 'The unique identifier of the checkbox group'
         },
         {
             name: 'readonly',
-            description: 'The readonly state of the checkbox group',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The readonly state of the checkbox group'
         },
         {
             name: 'size',
-            description: 'The size variant of the checkbox group',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the checkbox group'
         }
     ],
     css: {
-        selector: '.checkbox-group'
+        selector: '.checkbox-group',
+        variables: [],
+        variants: []
     }
 };
+
+export default manifest;

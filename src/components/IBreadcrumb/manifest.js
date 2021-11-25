@@ -1,31 +1,38 @@
-module.exports = {
+export const manifest = {
     name: 'breadcrumb',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default breadcrumb content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
+            name: 'ariaLabel',
+            type: [
+                'String'
+            ],
+            default: 'Breadcrumbs',
+            description: 'The aria-label of the breadcrumbs'
+        },
+        {
             name: 'color',
-            description: 'The color variant of the breadcrumb',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the breadcrumb'
         },
         {
             name: 'size',
-            description: 'The size variant of the breadcrumb',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the breadcrumb'
         }
     ],
     css: {
@@ -37,54 +44,176 @@ module.exports = {
         variables: [
             {
                 name: 'color',
-                description: 'The text color of the breadcrumb component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'primary\')',
-                    dark: 'color(\'primary\')'
-                }
+                value: 'color(\'primary\')',
+                description: 'The text color of the breadcrumb component'
             },
             {
                 name: 'color--default',
-                description: 'The text default color of the breadcrumb component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'gray-90\')',
-                    dark: 'color(\'white\')'
-                }
+                value: 'color(\'gray-90\')',
+                description: 'The text default color of the breadcrumb component'
             },
             {
                 name: 'color--active',
-                description: 'The text active color of the breadcrumb component',
                 type: 'color',
-                variants: {
-                    light: 'color(\'gray-70\')',
-                    dark: 'color(\'gray-40\')'
-                }
+                value: 'color(\'gray-70\')',
+                description: 'The text active color of the breadcrumb component'
             },
             {
                 name: 'font-size',
-                description: 'The font size of the breadcrumb component',
                 type: 'size',
-                value: 'font-size()'
+                value: 'font-size()',
+                description: 'The font size of the breadcrumb component'
             },
             {
                 name: 'margin-bottom',
-                description: 'The bottom margin of the breadcrumb component',
-                value: 'spacing()'
+                type: '',
+                value: 'spacing()',
+                description: 'The bottom margin of the breadcrumb component'
             },
             {
                 name: 'padding-right',
                 type: 'size',
-                description: 'The padding right of the breadcrumb component',
-                value: 'var(--padding-right)'
+                value: 'var(--padding-right)',
+                description: 'The padding right of the breadcrumb component'
             },
             {
                 name: 'padding-left',
                 type: 'size',
-                description: 'The padding left of the breadcrumb component',
-                value: 'var(--padding-left)'
+                value: 'var(--padding-left)',
+                description: 'The padding left of the breadcrumb component'
+            }
+        ],
+        variants: [
+            {
+                name: 'light',
+                type: 'variant',
+                description: 'Variables for the light color variant',
+                variables: [
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'color(\'primary\')',
+                        description: 'The text color of the breadcrumb component, for the light color variant'
+                    },
+                    {
+                        name: 'color--default',
+                        type: '',
+                        value: 'color(\'gray-90\')',
+                        description: 'The text default color of the breadcrumb component, for the light color variant'
+                    },
+                    {
+                        name: 'color--active',
+                        type: '',
+                        value: 'color(\'gray-70\')',
+                        description: 'The text active color of the breadcrumb component, for the light color variant'
+                    }
+                ]
+            },
+            {
+                name: 'dark',
+                type: 'variant',
+                description: 'Variables for the dark color variant',
+                variables: [
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'color(\'primary\')',
+                        description: 'The text color of the breadcrumb component, for the dark color variant'
+                    },
+                    {
+                        name: 'color--default',
+                        type: '',
+                        value: 'color(\'white\')',
+                        description: 'The text default color of the breadcrumb component, for the dark color variant'
+                    },
+                    {
+                        name: 'color--active',
+                        type: '',
+                        value: 'color(\'gray-40\')',
+                        description: 'The text active color of the breadcrumb component, for the dark color variant'
+                    }
+                ]
+            },
+            {
+                name: 'sm',
+                type: 'variant',
+                description: 'Variables for the sm size variant',
+                variables: [
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
+                        description: 'The font size of the breadcrumb component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding right of the breadcrumb component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding left of the breadcrumb component, for the sm size variant'
+                    }
+                ]
+            },
+            {
+                name: 'md',
+                type: 'variant',
+                description: 'Variables for the md size variant',
+                variables: [
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
+                        description: 'The font size of the breadcrumb component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding right of the breadcrumb component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding left of the breadcrumb component, for the md size variant'
+                    }
+                ]
+            },
+            {
+                name: 'lg',
+                type: 'variant',
+                description: 'Variables for the lg size variant',
+                variables: [
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
+                        description: 'The font size of the breadcrumb component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding right of the breadcrumb component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding left of the breadcrumb component, for the lg size variant'
+                    }
+                ]
             }
         ]
-    }
+    },
+    events: []
 };
+
+export default manifest;

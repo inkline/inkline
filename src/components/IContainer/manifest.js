@@ -1,20 +1,19 @@
-module.exports = {
+export const manifest = {
     name: 'container',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default container content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'fluid',
-            description: 'Display the container as fluid, always spanning 100% width',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the container as fluid, always spanning 100% width'
         }
     ],
     css: {
@@ -25,34 +24,44 @@ module.exports = {
         variables: [
             {
                 name: 'width--xs',
-                description: 'The width of the container component on extrasmall screens',
-                value: '100%'
+                type: '',
+                value: '100%',
+                description: 'The width of the container component on extrasmall screens'
             },
             {
                 name: 'width--sm',
-                description: 'The width of the container component on small screens',
-                value: 'calc(#{breakpoint(\'sm\')} - #{gutter(\'sm\')})'
+                type: '',
+                value: 'calc(#{breakpoint(\'sm\')} - #{gutter(\'sm\')})',
+                description: 'The width of the container component on small screens'
             },
             {
                 name: 'width--md',
-                description: 'The width of the container component on medium screens',
-                value: 'calc(#{breakpoint(\'md\')} - #{gutter(\'md\')})'
+                type: '',
+                value: 'calc(#{breakpoint(\'md\')} - #{gutter(\'md\')})',
+                description: 'The width of the container component on medium screens'
             },
             {
                 name: 'width--lg',
-                description: 'The width of the container component on large screens',
-                value: 'calc(#{breakpoint(\'lg\')} - #{gutter(\'lg\')})'
+                type: '',
+                value: 'calc(#{breakpoint(\'lg\')} - #{gutter(\'lg\')})',
+                description: 'The width of the container component on large screens'
             },
             {
                 name: 'width--xl',
-                description: 'The width of the container component on extralarge screens',
-                value: 'calc(#{breakpoint(\'xl\')} - #{gutter(\'xl\')})'
+                type: '',
+                value: 'calc(#{breakpoint(\'xl\')} - #{gutter(\'xl\')})',
+                description: 'The width of the container component on extralarge screens'
             },
             {
                 name: 'width--xxl',
-                description: 'The width of the container component on extralarge screens',
-                value: 'calc(#{breakpoint(\'xxl\')} - #{gutter(\'xxl\')})'
+                type: '',
+                value: 'calc(#{breakpoint(\'xxl\')} - #{gutter(\'xxl\')})',
+                description: 'The width of the container component on extralarge screens'
             }
-        ]
-    }
+        ],
+        variants: []
+    },
+    events: []
 };
+
+export default manifest;

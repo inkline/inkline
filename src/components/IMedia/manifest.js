@@ -1,10 +1,9 @@
-module.exports = {
+export const manifest = {
     name: 'media',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default media content',
-            type: []
+            name: 'default'
         }
     ],
     css: {
@@ -16,9 +15,15 @@ module.exports = {
         variables: [
             {
                 name: 'image--margin-right',
-                description: 'The margin right of the media component image',
-                value: 'var(--margin-right)'
+                type: '',
+                value: 'var(--margin-right)',
+                description: 'The margin right of the media component image'
             }
-        ]
-    }
+        ],
+        variants: []
+    },
+    events: [],
+    props: []
 };
+
+export default manifest;

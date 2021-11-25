@@ -1,44 +1,50 @@
-module.exports = {
+export const manifest = {
     slots: [
         {
-            name: 'default',
             description: 'Slot for default nav item content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'active',
-            description: 'The active state of the nav item',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The active state of the nav item'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the nav item',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the nav item'
         },
         {
             name: 'tag',
-            description: 'Set the HTML tag to be used for rendering the nav item',
             type: [
                 'String'
             ],
-            default: 'div'
+            default: 'div',
+            description: 'Set the HTML tag to be used for rendering the nav item'
         },
         {
             name: 'tabindex',
-            description: 'The tabindex of the list group item',
             type: [
                 'Number',
                 'String'
             ],
-            default: '1'
+            default: '1',
+            description: 'The tabindex of the list group item'
         }
-    ]
+    ],
+    events: [],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;

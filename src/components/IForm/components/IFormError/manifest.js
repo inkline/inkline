@@ -1,10 +1,9 @@
-module.exports = {
+export const manifest = {
     name: 'form-error',
     slots: [
         {
-            name: 'default',
             description: 'Slot for default form error content',
-            type: []
+            name: 'default'
         }
     ],
     css: {
@@ -12,39 +11,69 @@ module.exports = {
         variables: [
             {
                 name: 'font-size',
-                description: 'The font size of the form error component',
-                value: 'font-size(\'sm\')'
+                type: '',
+                value: 'font-size(\'sm\')',
+                description: 'The font size of the form error component'
             },
             {
                 name: 'margin-top',
-                description: 'The margin top of the form error component',
-                value: 'calc(var(--margin-top) / 4)'
+                type: '',
+                value: 'calc(var(--margin-top) / 4)',
+                description: 'The margin top of the form error component'
             },
             {
                 name: 'margin-right',
-                description: 'The margin right of the form error component',
-                value: '0'
+                type: '',
+                value: '0',
+                description: 'The margin right of the form error component'
             },
             {
                 name: 'margin-bottom',
-                description: 'The margin bottom of the form error component',
-                value: '0'
+                type: '',
+                value: '0',
+                description: 'The margin bottom of the form error component'
             },
             {
                 name: 'margin-left',
-                description: 'The margin left of the form error component',
-                value: '0'
+                type: '',
+                value: '0',
+                description: 'The margin left of the form error component'
             },
             {
                 name: 'margin',
-                description: 'The margin of the form error component',
-                value: ['var(----margin-top)', 'var(----margin-right)', 'var(----margin-bottom)', 'var(----margin-left)']
+                type: '',
+                value: 'var(----margin-top) var(----margin-right) var(----margin-bottom) var(----margin-left)',
+                description: 'The margin of the form error component'
             },
             {
                 name: 'color',
-                description: 'The color of the form error component',
-                value: 'color(\'danger\')'
+                type: '',
+                value: 'color(\'danger\')',
+                description: 'The color of the form error component'
             }
-        ]
-    }
+        ],
+        variants: []
+    },
+    events: [],
+    props: [
+        {
+            name: 'for',
+            type: [
+                'String'
+            ],
+            default: '',
+            description: 'The schema path of the target input to show the errors for.'
+        },
+        {
+            name: 'visible',
+            type: [
+                'Array',
+                'String'
+            ],
+            default: '\'touched\', \'dirty\', \'invalid\'',
+            description: 'Set the validation statuses for which the form error should be visible.'
+        }
+    ]
 };
+
+export default manifest;

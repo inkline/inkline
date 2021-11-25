@@ -1,120 +1,126 @@
-module.exports = {
+export const manifest = {
     events: [
         {
-            name: 'update:modelValue',
             description: 'Event emitted for setting the modelValue',
-            type: []
+            name: 'update:modelValue'
         }
     ],
     props: [
         {
             name: 'color',
-            description: 'The color variant of the input',
             type: [
                 'light',
                 'dark'
             ],
-            default: 'light'
+            default: 'light',
+            description: 'The color variant of the input'
         },
         {
             name: 'clearable',
-            description: 'Display the input as clearable',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the input as clearable'
         },
         {
             name: 'disabled',
-            description: 'The disabled state of the input',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The disabled state of the input'
         },
         {
             name: 'id',
-            description: 'The id of the internal input element',
             type: [
                 'String'
             ],
-            default: '{"type":"","default":""}'
+            default: '',
+            description: 'The id of the internal input element'
         },
         {
             name: 'modelValue',
-            description: 'Used to set the field value',
             type: [
                 'String',
                 'Number'
             ],
-            default: '{"type":"","default":""}'
+            default: '',
+            description: 'Used to set the field value'
         },
         {
             name: 'name',
-            description: 'The unique identifier of the input',
             type: [
                 'String'
             ],
-            default: 'uid()'
+            default: 'uid()',
+            description: 'The unique identifier of the input'
         },
         {
             name: 'readonly',
-            description: 'The readonly state of the input',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'The readonly state of the input'
         },
         {
             name: 'size',
-            description: 'The size variant of the input',
             type: [
                 'sm',
                 'md',
                 'lg'
             ],
-            default: 'md'
+            default: 'md',
+            description: 'The size variant of the input'
         },
         {
             name: 'tabindex',
-            description: 'The tabindex of the input',
             type: [
                 'Number',
                 'String'
             ],
-            default: '1'
+            default: '1',
+            description: 'The tabindex of the input'
         },
         {
             name: 'min',
-            description: 'The minimum allowed input value',
             type: [
                 'Number'
             ],
-            default: '-Infinity'
+            default: '-Infinity',
+            description: 'The minimum allowed input value'
         },
         {
             name: 'max',
-            description: 'The maximum allowed input value',
             type: [
                 'Number'
             ],
-            default: '+Infinity'
+            default: '+Infinity',
+            description: 'The maximum allowed input value'
         },
         {
             name: 'precision',
-            description: 'The precision of the input value, for floating point numbers',
             type: [
                 'Number'
             ],
-            default: '0'
+            default: '0',
+            description: 'The precision of the input value, for floating point numbers'
         },
         {
             name: 'step',
-            description: 'The increment step to increase or decrease the value by',
             type: [
                 'Number'
             ],
-            default: '1'
+            default: '1',
+            description: 'The increment step to increase or decrease the value by'
         }
-    ]
+    ],
+    slots: [],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;

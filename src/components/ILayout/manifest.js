@@ -1,19 +1,25 @@
-module.exports = {
+export const manifest = {
     slots: [
         {
-            name: 'default',
             description: 'Slot for default layout content',
-            type: []
+            name: 'default'
         }
     ],
     props: [
         {
             name: 'vertical',
-            description: 'Display the layout on a vertical orientation',
             type: [
                 'Boolean'
             ],
-            default: 'false'
+            default: 'false',
+            description: 'Display the layout on a vertical orientation'
         }
-    ]
+    ],
+    events: [],
+    css: {
+        variables: [],
+        variants: []
+    }
 };
+
+export default manifest;
