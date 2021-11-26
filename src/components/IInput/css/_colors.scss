@@ -10,101 +10,73 @@
     ////
     @include variant('light', 'form') {
         ////
-        ////
         /// The background of the input component, for the light color variant
         /// @name background
         ////
-        ////
         ----background: #{color('white')};
-        ////
         ////
         /// The background of the input component when disabled, for the light color variant
         /// @name background--disabled
         ////
-        ////
         ----background--disabled: #{color('light-25')};
-        ////
         ////
         /// The border color of the input component, for the light color variant
         /// @name border-color
         ////
-        ////
         ----border-color: #{color('light-55')};
-        ////
         ////
         /// The border color of the input component when hovered, for the light color variant
         /// @name border-color--hover
         ////
-        ////
         ----border-color--hover: #{color('light-60')};
-        ////
         ////
         /// The border color of the input component when focused, for the light color variant
         /// @name border-color--focus
         ////
-        ////
         ----border-color--focus: #{color('primary')};
-        ////
         ////
         /// The color of the input component, for the light color variant
         /// @name color
         ////
-        ////
         ----color: #{contrast-color($color-white)};
-        ////
         ////
         /// The color of the input component when disabled, for the light color variant
         /// @name color--disabled
         ////
-        ////
         ----color--disabled: #{color('light-75')};
-        ////
         ////
         /// The background of the input component clear button, for the light color variant
         /// @name clear--background
         ////
-        ////
         ----clear--background: #{transparent};
-        ////
         ////
         /// The background of the input component clear button, for the light color variant
         /// @name clear--background--hover
         ////
-        ////
         ----clear--background--hover: #{color('light-30')};
-        ////
         ////
         /// The background of the input component clear button, for the light color variant
         /// @name clear--background--active
         ////
-        ////
         ----clear--background--active: #{color('light-40')};
-        ////
         ////
         /// The color of the input component clear button, for the light color variant
         /// @name clear--color
         ////
-        ////
         ----clear--color: #{color('light-70')};
-        ////
         ////
         /// The color of the input component placeholder, for the light color variant
         /// @name placeholder--color
         ////
-        ////
         ----placeholder--color: #{color('light-60')};
-        ////
         ////
         /// The color of the input component prefix and suffix, for the light color variant
         /// @name prefix-suffix--color
         ////
-        ////
         ----prefix-suffix--color: #{color('light-70')};
-        ////
         ////
         /// The background of the input component prepend and append, for the light color variant
         /// @name prepend-append--background
-        ////
         ////
         ----prepend-append--background: #{color('light')};
     }
@@ -115,101 +87,73 @@
     ////
     @include variant('dark', 'form') {
         ////
-        ////
         /// The background of the input component, for the dark color variant
         /// @name background
         ////
-        ////
         ----background: #{color('dark')};
-        ////
         ////
         /// The background of the input component when disabled, for the dark color variant
         /// @name background--disabled
         ////
-        ////
         ----background--disabled: #{color('dark-40')};
-        ////
         ////
         /// The border color of the input component, for the dark color variant
         /// @name border-color
         ////
-        ////
         ----border-color: #{color('dark-45')};
-        ////
         ////
         /// The border color of the input component when hovered, for the dark color variant
         /// @name border-color--hover
         ////
-        ////
         ----border-color--hover: #{color('dark-40')};
-        ////
         ////
         /// The border color of the input component when focused, for the dark color variant
         /// @name border-color--focus
         ////
-        ////
         ----border-color--focus: #{color('primary')};
-        ////
         ////
         /// The color of the input component, for the dark color variant
         /// @name color
         ////
-        ////
         ----color: #{contrast-color($color-dark)};
-        ////
         ////
         /// The color of the input component when disabled, for the dark color variant
         /// @name color--disabled
         ////
-        ////
         ----color--disabled: #{color('gray-35')};
-        ////
         ////
         /// The background of the input component clear button, for the dark color variant
         /// @name clear--background
         ////
-        ////
         ----clear--background: #{transparent};
-        ////
         ////
         /// The background of the input component clear button, for the dark color variant
         /// @name clear--background--hover
         ////
-        ////
         ----clear--background--hover: #{color('dark-35')};
-        ////
         ////
         /// The background of the input component clear button, for the dark color variant
         /// @name clear--background--active
         ////
-        ////
         ----clear--background--active: #{color('dark-30')};
-        ////
         ////
         /// The color of the input component clear button, for the dark color variant
         /// @name clear--color
         ////
-        ////
         ----clear--color: #{color('dark-30')};
-        ////
         ////
         /// The color of the input component placeholder, for the dark color variant
         /// @name placeholder--color
         ////
-        ////
         ----placeholder--color: #{color('dark-25')};
-        ////
         ////
         /// The color of the input component prefix and suffix, for the dark color variant
         /// @name prefix-suffix--color
         ////
-        ////
         ----prefix-suffix--color: #{color('dark-25')};
-        ////
         ////
         /// The background of the input component prepend and append, for the dark color variant
         /// @name prepend-append--background
-        ////
         ////
         ----prepend-append--background: #{color('dark')};
     }

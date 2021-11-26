@@ -10,38 +10,28 @@
     ////
     @include variant('light') {
         ////
-        ////
         /// The background of the progress component, for the light color variant
         /// @name background
         ////
-        ////
         ----background: #{color('light')};
-        ////
         ////
         /// The border top color of the progress component, for the light color variant
         /// @name border-top-color
         ////
-        ////
         ----border-top-color: #{color('light-55')};
-        ////
         ////
         /// The border right color of the progress component, for the light color variant
         /// @name border-right-color
         ////
-        ////
         ----border-right-color: #{color('light-55')};
-        ////
         ////
         /// The border bottom color of the progress component, for the light color variant
         /// @name border-bottom-color
         ////
-        ////
         ----border-bottom-color: #{color('light-55')};
-        ////
         ////
         /// The border left color of the progress component, for the light color variant
         /// @name border-left-color
-        ////
         ////
         ----border-left-color: #{color('light-55')};
     }
@@ -52,38 +42,28 @@
     ////
     @include variant('dark') {
         ////
-        ////
         /// The background of the progress component, for the dark color variant
         /// @name background
         ////
-        ////
         ----background: #{color('dark')};
-        ////
         ////
         /// The border top color of the progress component, for the dark color variant
         /// @name border-top-color
         ////
-        ////
         ----border-top-color: #{color('dark-45')};
-        ////
         ////
         /// The border right color of the progress component, for the dark color variant
         /// @name border-right-color
         ////
-        ////
         ----border-right-color: #{color('dark-45')};
-        ////
         ////
         /// The border bottom color of the progress component, for the dark color variant
         /// @name border-bottom-color
         ////
-        ////
         ----border-bottom-color: #{color('dark-45')};
-        ////
         ////
         /// The border left color of the progress component, for the dark color variant
         /// @name border-left-color
-        ////
         ////
         ----border-left-color: #{color('dark-45')};
     }
