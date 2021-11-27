@@ -58,19 +58,19 @@
                 &:not(.-disabled):not(.-plaintext) {
                     &:hover,
                     &:focus {
-                        color: var(----option--color--hover);
-                        background: var(----option--background--hover);
+                        ----option--color: var(----option--color--hover);
+                        ----option--background: var(----option--background--hover);
                     }
                 }
 
                 &.-disabled {
-                    color: var(----option--color--disabled);
-                    background: var(----option--background--disabled);
+                    ----option--color: var(----option--color--disabled);
+                    ----option--background: var(----option--background--disabled);
                 }
 
                 &.-active {
-                    color: var(----option--color--active);
-                    background: var(----option--background--active);
+                    ----option--color: var(----option--color--active);
+                    ----option--background: var(----option--background--active);
                 }
             }
 

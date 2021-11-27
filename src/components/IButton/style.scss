@@ -40,15 +40,15 @@
         &:focus,
         &.-hovered,
         &.-focused {
-            background: var(----background--hover);
-            border-color: var(----border-color--hover);
+            ----background: var(----background--hover);
+            ----border-color: var(----border-color--hover);
             text-decoration: none;
             outline: 0;
         }
 
         &:active,
         &.-active {
-            background: var(----background--active);
+            ----background: var(----background--active);
         }
     }
 
@@ -75,8 +75,8 @@
     // Link buttons
     // Make a button look and behave like a link
     &.-link {
+        ----color: var(----link--color);
         box-shadow: none;
-        color: var(----link--color);
         background-color: transparent;
         border-color: transparent;
 
@@ -87,7 +87,7 @@
             &.-hovered,
             &.-focused,
             &.-active {
-                color: var(----link--color--active);
+                ----color: var(----link--color--active);
                 background-color: transparent;
                 border-color: transparent;
                 box-shadow: none;
@@ -104,45 +104,31 @@
     // Outline buttons
     // Remove button background and add a beautiful transition on hover
     &.-outline {
-        color: var(----outline--color);
-        background: var(----outline--background);
-        border-color: var(----outline--border-color);
-        box-shadow: none;
+        background: transparent;
+        color: var(----background);
+        border-color: var(----background);
+        ----box-shadow: none;
 
         &:not(:disabled):not(.-disabled) {
             &:hover,
             &:focus,
-            &.-hovered,
-            &.-focused {
-                color: var(----outline--color--hover);
-                background: var(----outline--background--hover);
-                border-color: var(----outline--border-color--hover);
-            }
-
             &:active,
+            &.-hovered,
+            &.-focused,
             &.-active {
-                color: var(----outline--color--active);
-                background: var(----outline--background--active);
+                ----border-color: var(----border-color--hover);
+                background: var(----background);
+                color: var(----color);
             }
         }
     }
 
     // Circle button
     &.-circle {
-        border-radius: 100%;
+        ----border-radius: 100%;
         width: var(----circle--size);
         height: var(----circle--size);
         padding: 0;
-    }
-
-    // Transparent button
-    &.-transparent {
-        background-color: transparent;
-    }
-
-    // Flat buttons
-    &.-flat {
-        background-image: none;
     }
 
     .loader {
@@ -161,11 +147,11 @@
     //
 
     .button-group:not(.-vertical) > &:not(:first-child) {
-        border-left-color: var(----background--hover);
+        ----border-left-color: var(----background--hover);
     }
 
     .button-group.-vertical > &:not(:first-child) {
-        border-top-color: var(----background--hover);
+        ----border-top-color: var(----background--hover);
     }
 }
 

@@ -17,17 +17,19 @@
         transition-property: background-color, border-color, color;
         transition-duration: var(--transition-duration);
         transition-timing-function: var(--transition-easing);
+        color: var(----header--color);
+        background: var(----header--background);
 
         &.-active {
-            color: var(----header--color--active);
-            background-color: var(----header--background--active);
-            border-color: var(----header--border-color--active);
+            ----header--color: var(----header--color--active);
+            ----header--background: var(----header--background--active);
+            ----header--border-color: var(----header--border-color--active);
             font-weight: font-weight('semibold');
         }
 
         &:hover,
         &:focus {
-            background: var(----header--background--hover);
+            ----header--background: var(----header--background--hover);
             cursor: pointer;
             outline: none;
         }

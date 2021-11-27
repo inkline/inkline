@@ -356,51 +356,51 @@ export const manifest = {
                 description: 'The color of the button component link variant when active'
             },
             {
-                name: 'outline--background',
+                name: 'background--outline',
                 type: '',
                 value: 'transparent',
                 description: 'The background of the button component outline variant'
             },
             {
-                name: 'outline--background--hover',
+                name: 'background--outline--hover',
                 type: '',
                 value: 'var(----background)',
                 description: 'The background of the button component outline variant when hovered'
             },
             {
-                name: 'outline--background--active',
+                name: 'background--outline--active',
                 type: '',
                 value: 'var(----background--active)',
                 description: 'The background of the button component outline variant when active'
             },
             {
-                name: 'outline--border-color',
+                name: 'border-color--outline',
                 type: '',
                 value: 'var(----background)',
                 description: 'The border color of the button component outline variant'
             },
             {
-                name: 'outline--border-color--hover',
+                name: 'border-color--outline--hover',
                 type: '',
                 value: 'var(----border-color--hover)',
                 description: 'The border color of the button component outline variant when hovered or focused'
             },
             {
-                name: 'outline--color',
+                name: 'color--outline',
                 type: '',
                 value: 'var(----background)',
                 description: 'The color of the button component outline variant'
             },
             {
-                name: 'outline--color--hover',
+                name: 'color--outline--hover',
                 type: '',
                 value: 'var(----color)',
                 description: 'The color of the button component outline variant when hovered or focused'
             },
             {
-                name: 'outline--color--active',
+                name: 'color--outline--active',
                 type: '',
-                value: 'var(----outline--color--hover)',
+                value: 'var(----color--outline--hover)',
                 description: 'The color of the button component outline variant when hovered or focused'
             }
         ],

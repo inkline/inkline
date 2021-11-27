@@ -18,6 +18,28 @@
     transition-property: background-color, border-color, color;
     transition-timing-function: var(--transition-easing);
     transition-duration: var(--transition-duration);
+    color: var(----color);
+    border-color: var(----border-color);
+    padding: var(----item--padding);
+    background: var(----background);
+
+    &:not(.-disabled):not(.-plaintext) {
+        &:hover,
+        &:focus {
+            ----color: var(----color--hover);
+            ----background: var(----background--hover);
+        }
+    }
+
+    &.-disabled {
+        ----color: var(----color--disabled);
+        ----background: var(----background--disabled);
+    }
+
+    &.-active {
+        ----color: var(----color--active);
+        ----background: var(----background--active);
+    }
 
     &:hover,
     &:focus {
