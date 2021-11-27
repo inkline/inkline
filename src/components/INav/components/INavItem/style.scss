@@ -12,6 +12,8 @@
     transition-timing-function: var(--transition-easing);
     transition-duration: var(--transition-duration);
     padding: var(----padding);
+    color: var(----color);
+    font-size: var(----font-size);
 
     &:hover,
     &:focus {

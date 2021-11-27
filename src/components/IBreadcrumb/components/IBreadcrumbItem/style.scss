@@ -6,6 +6,26 @@
 
 .breadcrumb-item {
     margin-bottom: 0;
+    padding-left: var(----padding-left);
+
+    a {
+        color: var(----color);
+
+        &[href],
+        &[to] {
+            ----color: var(----color--link);
+        }
+    }
+
+    &.-active a {
+        ----color: var(----color--active);
+    }
+
+    + .breadcrumb-item {
+        &::before {
+            padding-right: var(----padding-right);
+        }
+    }
 
     > span {
         display: inline-block;

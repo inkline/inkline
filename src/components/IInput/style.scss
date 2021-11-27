@@ -74,11 +74,11 @@
         &:focus-within {
             outline: 0;
             box-shadow: var(----box-shadow);
-            border-color: var(----border-color--focus);
+            ----border-color: var(----border-color--focus);
         }
 
         &:hover {
-            border-color: var(----border-color--hover);
+            ----border-color: var(----border-color--hover);
         }
 
         > input,
@@ -170,15 +170,16 @@
             height: var(----clear--size);
             border-radius: 100%;
             background-color: var(----clear--background);
+            color: var(----clear--color);
 
             &:hover,
             &:focus {
-                color: var(----clear--color--hover);
-                background-color: var(----clear--background--hover);
+                ----clear--color: var(----clear--color--hover);
+                ----clear--background: var(----clear--background--hover);
             }
 
             &:active {
-                background-color: var(----clear--background--active);
+                ----clear--background: var(----clear--background--active);
             }
 
             &::before {
@@ -220,15 +221,15 @@
 
     &.-error {
         .input {
-            border-color: color('danger');
+            ----border-color: color('danger');
         }
     }
 
     &.-disabled,
     &.-readonly {
         > .input {
-            color: var(----color--disabled);
-            background-color: var(----background--disabled);
+            ----color: var(----color--disabled);
+            ----background: var(----background--disabled);
 
             &:hover {
                 border-color: var(----border-color);
@@ -239,7 +240,7 @@
             > textarea {
                 &:disabled,
                 &[readonly] {
-                    color: var(----color--disabled);
+                    ----color: var(----color--disabled);
                 }
             }
         }
@@ -249,7 +250,7 @@
         > .input {
             &:focus-within {
                 outline: 0;
-                border-color: var(----border-color--focus);
+                ----border-color: var(----border-color--focus);
             }
         }
     }

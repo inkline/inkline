@@ -55,30 +55,6 @@
             margin-bottom: var(----divider--margin-bottom);
             background-color: var(----border-color);
         }
-
-        .dropdown-item {
-            color: var(----color);
-            border-color: var(----border-color);
-            padding: var(----item--padding);
-
-            &:not(.-disabled):not(.-plaintext) {
-                &:hover,
-                &:focus {
-                    color: var(----color--hover);
-                    background: var(----background--hover);
-                }
-            }
-
-            &.-disabled {
-                color: var(----color--disabled);
-                background: var(----background--disabled);
-            }
-
-            &.-active {
-                color: var(----color--active);
-                background: var(----background--active);
-            }
-        }
     }
 
     > .dropdown-footer {
@@ -110,12 +86,12 @@
     ));
 
     @include popup-arrow-color-variant-for-side('left', (
-        'background': var(----body--background),
+        'background': var(----background),
         'border-color': var(----border-left-color)
     ));
 
     @include popup-arrow-color-variant-for-side('right', (
-        'background': var(----body--background),
+        'background': var(----background),
         'border-color': var(----border-right-color)
     ));
 }

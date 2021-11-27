@@ -42,8 +42,8 @@
         &:checked ~ .checkbox-label,
         &[type="checkbox"]:indeterminate ~ .checkbox-label {
             &::before {
-                border-color: var(----border-color--checked);
-                background-color: var(----background--checked);
+                ----border-color: var(----border-color--checked);
+                ----background: var(----background--checked);
             }
 
             &::after {
@@ -57,17 +57,17 @@
         &:disabled,
         &[readonly] {
             ~ .checkbox-label {
-                color: var(----label--color--disabled);
+                ----label--color: var(----label--color--disabled);
             }
 
             &:checked ~ .checkbox-label {
                 &::before {
-                    border-color: var(----border-color--checked-disabled);
-                    background-color: var(----background--checked-disabled);
+                    ----border-color: var(----border-color--checked-disabled);
+                    ----background: var(----background--checked-disabled);
                 }
 
                 &::after {
-                    background-color: var(----color--disabled);
+                    ----background: var(----color--disabled);
                 }
             }
         }
