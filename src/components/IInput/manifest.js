@@ -422,13 +422,183 @@ export const manifest = {
                 name: 'light',
                 type: 'variant',
                 description: 'Variables for the light color variant',
-                variables: []
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'white\')',
+                        description: 'The background of the input component, for the light color variant'
+                    },
+                    {
+                        name: 'background--disabled',
+                        type: '',
+                        value: 'color(\'light-25\')',
+                        description: 'The background of the input component when disabled, for the light color variant'
+                    },
+                    {
+                        name: 'border-color',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The border color of the input component, for the light color variant'
+                    },
+                    {
+                        name: 'border-color--hover',
+                        type: '',
+                        value: 'color(\'light-60\')',
+                        description: 'The border color of the input component when hovered, for the light color variant'
+                    },
+                    {
+                        name: 'border-color--focus',
+                        type: '',
+                        value: 'color(\'primary\')',
+                        description: 'The border color of the input component when focused, for the light color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-white)',
+                        description: 'The color of the input component, for the light color variant'
+                    },
+                    {
+                        name: 'color--disabled',
+                        type: '',
+                        value: 'color(\'light-75\')',
+                        description: 'The color of the input component when disabled, for the light color variant'
+                    },
+                    {
+                        name: 'clear--background',
+                        type: '',
+                        value: 'transparent',
+                        description: 'The background of the input component clear button, for the light color variant'
+                    },
+                    {
+                        name: 'clear--background--hover',
+                        type: '',
+                        value: 'color(\'light-30\')',
+                        description: 'The background of the input component clear button, for the light color variant'
+                    },
+                    {
+                        name: 'clear--background--active',
+                        type: '',
+                        value: 'color(\'light-40\')',
+                        description: 'The background of the input component clear button, for the light color variant'
+                    },
+                    {
+                        name: 'clear--color',
+                        type: '',
+                        value: 'color(\'light-70\')',
+                        description: 'The color of the input component clear button, for the light color variant'
+                    },
+                    {
+                        name: 'placeholder--color',
+                        type: '',
+                        value: 'color(\'light-60\')',
+                        description: 'The color of the input component placeholder, for the light color variant'
+                    },
+                    {
+                        name: 'prefix-suffix--color',
+                        type: '',
+                        value: 'color(\'light-70\')',
+                        description: 'The color of the input component prefix and suffix, for the light color variant'
+                    },
+                    {
+                        name: 'prepend-append--background',
+                        type: '',
+                        value: 'color(\'light\')',
+                        description: 'The background of the input component prepend and append, for the light color variant'
+                    }
+                ]
             },
             {
                 name: 'dark',
                 type: 'variant',
                 description: 'Variables for the dark color variant',
-                variables: []
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'dark\')',
+                        description: 'The background of the input component, for the dark color variant'
+                    },
+                    {
+                        name: 'background--disabled',
+                        type: '',
+                        value: 'color(\'dark-40\')',
+                        description: 'The background of the input component when disabled, for the dark color variant'
+                    },
+                    {
+                        name: 'border-color',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The border color of the input component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-color--hover',
+                        type: '',
+                        value: 'color(\'dark-40\')',
+                        description: 'The border color of the input component when hovered, for the dark color variant'
+                    },
+                    {
+                        name: 'border-color--focus',
+                        type: '',
+                        value: 'color(\'primary\')',
+                        description: 'The border color of the input component when focused, for the dark color variant'
+                    },
+                    {
+                        name: 'color',
+                        type: '',
+                        value: 'contrast-color($color-dark)',
+                        description: 'The color of the input component, for the dark color variant'
+                    },
+                    {
+                        name: 'color--disabled',
+                        type: '',
+                        value: 'color(\'gray-35\')',
+                        description: 'The color of the input component when disabled, for the dark color variant'
+                    },
+                    {
+                        name: 'clear--background',
+                        type: '',
+                        value: 'transparent',
+                        description: 'The background of the input component clear button, for the dark color variant'
+                    },
+                    {
+                        name: 'clear--background--hover',
+                        type: '',
+                        value: 'color(\'dark-35\')',
+                        description: 'The background of the input component clear button, for the dark color variant'
+                    },
+                    {
+                        name: 'clear--background--active',
+                        type: '',
+                        value: 'color(\'dark-30\')',
+                        description: 'The background of the input component clear button, for the dark color variant'
+                    },
+                    {
+                        name: 'clear--color',
+                        type: '',
+                        value: 'color(\'dark-30\')',
+                        description: 'The color of the input component clear button, for the dark color variant'
+                    },
+                    {
+                        name: 'placeholder--color',
+                        type: '',
+                        value: 'color(\'dark-25\')',
+                        description: 'The color of the input component placeholder, for the dark color variant'
+                    },
+                    {
+                        name: 'prefix-suffix--color',
+                        type: '',
+                        value: 'color(\'dark-25\')',
+                        description: 'The color of the input component prefix and suffix, for the dark color variant'
+                    },
+                    {
+                        name: 'prepend-append--background',
+                        type: '',
+                        value: 'color(\'dark\')',
+                        description: 'The background of the input component prepend and append, for the dark color variant'
+                    }
+                ]
             },
             {
                 name: 'sm',

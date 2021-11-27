@@ -24,12 +24,14 @@
             ----header--color: var(----header--color--active);
             ----header--background: var(----header--background--active);
             ----header--border-color: var(----header--border-color--active);
+
             font-weight: font-weight('semibold');
         }
 
         &:hover,
         &:focus {
             ----header--background: var(----header--background--hover);
+
             cursor: pointer;
             outline: none;
         }

@@ -45,14 +45,14 @@ export const manifest = {
             {
                 name: 'color',
                 type: 'color',
-                value: 'color(\'primary\')',
+                value: 'color(\'gray-90\')',
                 description: 'The text color of the breadcrumb component'
             },
             {
-                name: 'color--default',
+                name: 'color--link',
                 type: 'color',
-                value: 'color(\'gray-90\')',
-                description: 'The text default color of the breadcrumb component'
+                value: 'color(\'primary\')',
+                description: 'The link color of the breadcrumb component'
             },
             {
                 name: 'color--active',
@@ -94,14 +94,14 @@ export const manifest = {
                     {
                         name: 'color',
                         type: '',
-                        value: 'color(\'primary\')',
+                        value: 'color(\'gray-90\')',
                         description: 'The text color of the breadcrumb component, for the light color variant'
                     },
                     {
-                        name: 'color--default',
+                        name: 'color--link',
                         type: '',
-                        value: 'color(\'gray-90\')',
-                        description: 'The text default color of the breadcrumb component, for the light color variant'
+                        value: 'color(\'primary\')',
+                        description: 'The link color of the breadcrumb component, for the light color variant'
                     },
                     {
                         name: 'color--active',
@@ -119,14 +119,14 @@ export const manifest = {
                     {
                         name: 'color',
                         type: '',
-                        value: 'color(\'primary\')',
+                        value: 'color(\'white\')',
                         description: 'The text color of the breadcrumb component, for the dark color variant'
                     },
                     {
-                        name: 'color--default',
+                        name: 'color--link',
                         type: '',
-                        value: 'color(\'white\')',
-                        description: 'The text default color of the breadcrumb component, for the dark color variant'
+                        value: 'color(\'primary\')',
+                        description: 'The link color of the breadcrumb component, for the dark color variant'
                     },
                     {
                         name: 'color--active',

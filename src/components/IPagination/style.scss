@@ -48,6 +48,7 @@
             ----background: var(----background--active);
             ----border-color: var(----border-color--active);
             ----color: var(----color--active);
+
             font-weight: bold;
 
             &:hover,
@@ -65,6 +66,7 @@
         &.-quick-previous {
             &.-disabled {
                 ----border-color: var(----background);
+
                 opacity: var(----opacity--disabled);
             }
         }

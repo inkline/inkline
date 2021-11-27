@@ -200,13 +200,75 @@ export const manifest = {
                 name: 'light',
                 type: 'variant',
                 description: 'Variables for the light color variant',
-                variables: []
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'light\')',
+                        description: 'The background of the progress component, for the light color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The border top color of the progress component, for the light color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The border right color of the progress component, for the light color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The border bottom color of the progress component, for the light color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'light-55\')',
+                        description: 'The border left color of the progress component, for the light color variant'
+                    }
+                ]
             },
             {
                 name: 'dark',
                 type: 'variant',
                 description: 'Variables for the dark color variant',
-                variables: []
+                variables: [
+                    {
+                        name: 'background',
+                        type: '',
+                        value: 'color(\'dark\')',
+                        description: 'The background of the progress component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-top-color',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The border top color of the progress component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-right-color',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The border right color of the progress component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-bottom-color',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The border bottom color of the progress component, for the dark color variant'
+                    },
+                    {
+                        name: 'border-left-color',
+                        type: '',
+                        value: 'color(\'dark-45\')',
+                        description: 'The border left color of the progress component, for the dark color variant'
+                    }
+                ]
             },
             {
                 name: 'sm',
