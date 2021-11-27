@@ -41,18 +41,18 @@
 
         &:hover:not(.-disabled),
         &:focus:not(.-disabled) {
-            background: var(----background--hover);
+            ----background: var(----background--hover);
         }
 
         &.-active {
+            ----background: var(----background--active);
+            ----border-color: var(----border-color--active);
+            ----color: var(----color--active);
             font-weight: bold;
-            background-color: var(----background--active);
-            border-color: var(----border-color--active);
-            color: var(----color--active);
 
             &:hover,
             &:focus {
-                background-color: var(----background--active);
+                ----background: var(----background--active);
             }
         }
 
@@ -64,8 +64,8 @@
         &.-quick-next,
         &.-quick-previous {
             &.-disabled {
+                ----border-color: var(----background);
                 opacity: var(----opacity--disabled);
-                border-color: var(----background);
             }
         }
     }

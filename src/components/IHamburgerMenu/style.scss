@@ -18,7 +18,7 @@
     transition: opacity 0.3s ease;
 
     &:hover {
-        opacity: var(----opacity--hover);
+        ----opacity: var(----opacity--hover);
     }
 
     > .hamburger-menu-bars {

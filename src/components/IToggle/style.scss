@@ -23,12 +23,12 @@
 
         &:checked + .toggle-label {
             &::before {
-                background-color: var(----background--checked);
-                border-color: var(----border-color--checked);
+                ----background: var(----background--checked);
+                ----border-color: var(----border-color--checked);
             }
 
             &::after {
-                background-color: var(----indicator--background--checked);
+                ----indicator--background: var(----indicator--background--checked);
                 transform: translate(calc(#{var(----width)} / 2), 0);
             }
         }
@@ -43,24 +43,24 @@
             color: var(----label--color--disabled);
 
             &::before {
-                background-color: var(----background--disabled);
-                border-color: var(----border-color--disabled);
+                ----background: var(----background--disabled);
+                ----border-color: var(----border-color--disabled);
             }
 
             &::after {
-                background-color: var(----indicator--background--disabled);
+                ----indicator--background: var(----indicator--background--disabled);
             }
         }
 
         &:disabled:checked + .toggle-label,
         &[readonly]:checked + .toggle-label {
             &::before {
-                background-color: var(----background--checked-disabled);
-                border-color: var(----border-color--checked-disabled);
+                ----background: var(----background--checked-disabled);
+                ----border-color: var(----border-color--checked-disabled);
             }
 
             &::after {
-                background-color: var(----indicator--background--checked-disabled);
+                ----indicator--background: var(----indicator--background--checked-disabled);
             }
         }
     }

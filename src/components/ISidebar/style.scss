@@ -111,8 +111,8 @@
                 &.-hovered,
                 &:focus,
                 &:hover {
-                    color: var(----item--color--hover);
-                    background-color: var(----item--background--hover);
+                    ----item--color: var(----item--color--hover);
+                    ----item--background: var(----item--background--hover);
                 }
             }
         }

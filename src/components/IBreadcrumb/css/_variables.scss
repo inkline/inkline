@@ -8,13 +8,13 @@
     /// @name color
     /// @type color
     ////
-    ----color: #{color('primary')};
+    ----color: #{color('gray-90')};
     ////
-    /// The text default color of the breadcrumb component
-    /// @name color--default
+    /// The link color of the breadcrumb component
+    /// @name color--link
     /// @type color
     ////
-    ----color--default: #{color('gray-90')};
+    ----color--link: #{color('primary')};
     ////
     /// The text active color of the breadcrumb component
     /// @name color--active

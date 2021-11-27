@@ -79,7 +79,7 @@
     &.-condensed .table {
         th,
         td {
-            padding: var(----padding--condensed);
+            ----padding: var(----padding--condensed);
         }
     }
 
@@ -120,7 +120,7 @@
         tbody > tr:nth-of-type(odd) {
             th,
             td {
-                background-color: var(----background--striped);
+                ----background: var(----background--striped);
             }
         }
     }
@@ -139,7 +139,7 @@
             &:hover {
                 th,
                 td {
-                    background-color: var(----background--hover);
+                    ----background: var(----background--hover);
                 }
             }
         }
