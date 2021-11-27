@@ -448,19 +448,256 @@ export const manifest = {
                 name: 'sm',
                 type: 'variant',
                 description: 'Variables for the sm size variant',
-                variables: []
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border top left radius of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border top right radius of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border bottom right radius of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
+                        description: 'The border bottom left radius of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
+                        description: 'The font size of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'margin-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The margin top of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'margin-right',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The margin right of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'margin-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The margin bottom of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'margin-left',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier(\'sm\')})',
+                        description: 'The margin left of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) * 3 / 4)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding top of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding right of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) * 3 / 4)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding bottom of the tooltip component, for the sm size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
+                        description: 'The padding left of the tooltip component, for the sm size variant'
+                    }
+                ]
             },
             {
                 name: 'md',
                 type: 'variant',
                 description: 'Variables for the md size variant',
-                variables: []
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border top left radius of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border top right radius of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border bottom right radius of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
+                        description: 'The border bottom left radius of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
+                        description: 'The font size of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'margin-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The margin top of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'margin-right',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The margin right of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'margin-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The margin bottom of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'margin-left',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier(\'md\')})',
+                        description: 'The margin left of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) * 3 / 4)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding top of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding right of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) * 3 / 4)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding bottom of the tooltip component, for the md size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
+                        description: 'The padding left of the tooltip component, for the md size variant'
+                    }
+                ]
             },
             {
                 name: 'lg',
                 type: 'variant',
                 description: 'Variables for the lg size variant',
-                variables: []
+                variables: [
+                    {
+                        name: 'border-top-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border top left radius of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-top-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border top right radius of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-bottom-right-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border bottom right radius of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'border-bottom-left-radius',
+                        type: '',
+                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
+                        description: 'The border bottom left radius of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'font-size',
+                        type: '',
+                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
+                        description: 'The font size of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'margin-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The margin top of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'margin-right',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The margin right of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'margin-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The margin bottom of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'margin-left',
+                        type: '',
+                        value: 'calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier(\'lg\')})',
+                        description: 'The margin left of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-top',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-top) * 3 / 4)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding top of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-right',
+                        type: '',
+                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding right of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-bottom',
+                        type: '',
+                        value: 'calc(#{calc(var(--padding-bottom) * 3 / 4)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding bottom of the tooltip component, for the lg size variant'
+                    },
+                    {
+                        name: 'padding-left',
+                        type: '',
+                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
+                        description: 'The padding left of the tooltip component, for the lg size variant'
+                    }
+                ]
             }
         ]
     }
