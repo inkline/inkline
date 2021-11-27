@@ -29,6 +29,7 @@
 
             &::after {
                 ----indicator--background: var(----indicator--background--checked);
+
                 transform: translate(calc(#{var(----width)} / 2), 0);
             }
         }
