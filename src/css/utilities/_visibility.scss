@@ -1,13 +1,19 @@
 @each $breakpoint-key in $breakpoint-prefix-keys {
     $prefix: breakpoint-prefix($breakpoint-key);
 
+    ._#{$prefix}visible {
+        display: none;
+    }
+
+    @include breakpoint-up($breakpoint-key) {
+        ._#{$prefix}visible {
+            display: block;
+        }
+    }
+
     @include breakpoint-up($breakpoint-key) {
         ._#{$prefix}hidden {
             display: none;
-        }
-
-        ._#{$prefix}visible {
-            display: block;
         }
     }
 }
