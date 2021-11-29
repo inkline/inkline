@@ -15,7 +15,7 @@ import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IColumn,
-    title: 'Components/Column'
+    title: 'Layout/Column'
 };
 
 export const Basic = createStory(IColumnBasicExample);

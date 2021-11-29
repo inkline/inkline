@@ -15,7 +15,7 @@ import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IRow,
-    title: 'Components/Row'
+    title: 'Layout/Row'
 };
 
 export const Basic = createStory(IRowBasicExample);

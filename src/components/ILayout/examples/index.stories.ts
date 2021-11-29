@@ -14,7 +14,7 @@ import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ILayout,
-    title: 'Components/Layout'
+    title: 'Layout/Layout'
 };
 
 export const Basic = createStory(ILayoutBasicExample);

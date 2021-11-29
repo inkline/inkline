@@ -7,7 +7,7 @@ import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     component: IContainer,
-    title: 'Components/Container'
+    title: 'Layout/Container'
 };
 
 export const Basic = createStory(IContainerBasicExample);
