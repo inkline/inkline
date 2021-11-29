@@ -84,6 +84,17 @@
         }
     }
 
+    ///
+    // Spacing Utilities
+    ///
+
+    > div[class*="_margin"] {
+        padding: spacing('1/2');
+        background: color('gray-10');
+        border: 1px solid color('gray-30');
+        min-height: 25px;
+        display: flex;
+    }
 
     ///
     // Card
