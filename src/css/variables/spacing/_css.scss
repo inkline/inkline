@@ -15,10 +15,4 @@
     --padding-bottom: #{$padding-bottom};
     --padding-left: #{$padding-left};
     --padding: #{$padding};
-
-    @each $spacing-key, $spacing-value in $spacings {
-        $spacing-key: str-replace($spacing-key, '/', '-');
-
-        --spacing--#{$spacing-key}: #{$spacing-value};
-    }
 }
