@@ -4,7 +4,7 @@
 // Image thumbnails
 //
 $thumbnail--padding: calc(#{spacing()} / 2) !default;
-$thumbnail--background: var(--body-background-light) !default;
+$thumbnail--background: color('white') !default;
 $thumbnail--border-width: var(--border-width) !default;
 $thumbnail--border-color: color('gray-40') !default;
 $thumbnail--border-radius: border-radius() !default;

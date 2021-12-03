@@ -1,4 +1,6 @@
 @use "sass:color";
+@use "sass:string";
+@use "sass:map";
 
 // Colors
 //
@@ -17,25 +19,21 @@
         }
     }
 
-    @each $color-key in $shades {
-        @for $i from 1 through 19 {
-            $index: $i * 5;
-            $index-key: "#{$index}";
+    @each $shade-key, $shade-value in $shades {
+        $color-key: string.slice($shade-key, 0, string.length($shade-key) - 3);
+        $color-value: map.get($colors, $color-key);
 
-            @if $index == 5 {
-                $index-key: '05';
-            }
+        $shade: string.slice($shade-key, string.length($shade-key) - 1);
 
-            @if map-get($colors, "#{$color-key}-#{$index-key}") {
-                @if $index < 50 {
-                    --color--#{$color-key}-#{$index-key}: hsl(var(--color--#{$color-key}--h), var(--color--#{$color-key}--s), calc(var(--color--#{$color-key}--l) * #{0.1 * $i} + #{ 100% - $i * 10% }));
-                } @else if $index == 50 {
-                    --color--#{$color-key}-#{$index-key}: var(--color--#{$color-key});
-                } @else {
-                    --color--#{$color-key}-#{$index-key}: hsl(var(--color--#{$color-key}--h), calc(var(--color--#{$color-key}--s) * #{1 - 0.1 * ($i - 10)}), calc(var(--color--#{$color-key}--l) * #{1 - 0.1 * ($i - 10)}));
-                }
-            }
-        }
+        $shade-h: color.hue($shade-value);
+        $shade-s: color.saturation($shade-value);
+        $shade-l: color.lightness($shade-value);
+        $color-l: color.lightness($color-value);
+
+        --color--#{$shade-key}-h: var(--color--#{$color-key}--h);
+        --color--#{$shade-key}-s: var(--color--#{$color-key}--s);
+        --color--#{$shade-key}-l: calc(var(--color--#{$color-key}--l) + #{$shade-l - $color-l});
+        --color--#{$shade-key}: hsl(var(--color--#{$shade-key}-h) var(--color--#{$shade-key}-s) var(--color--#{$shade-key}-l));
     }
 
     --contrast-color-for-light-background: #{$contrast-color-for-light-background};
