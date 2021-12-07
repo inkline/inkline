@@ -14,6 +14,7 @@ const componentName = 'INavItem';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     mixins: [
         LinkableMixin
     ],
