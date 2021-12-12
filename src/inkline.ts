@@ -1,4 +1,4 @@
-import '@inkline/inkline/inkline.scss';
+import '@inkline/inkline/index.scss';
 import { Inkline } from '@inkline/inkline/plugin';
 import * as components from '@inkline/inkline/components';
 
