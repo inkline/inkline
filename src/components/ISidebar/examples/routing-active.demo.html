@@ -2,33 +2,20 @@
     <i-layout>
         <i-layout-header>
             <i-navbar fluid :collapse="false">
-                <i-navbar-brand :to="{ name: 'docs-components-sidebar' }">
+                <i-navbar-brand>
                     Dashboard
                 </i-navbar-brand>
                 <i-hamburger-menu v-model="open" animation="arrow-left" class="_lg:hidden" />
             </i-navbar>
         </i-layout-header>
         <i-layout vertical class="_padding-top:1/2">
-            <i-sidebar v-model="open" v-bind="$attrs">
+            <i-sidebar v-model="open">
                 <i-nav vertical>
-                    <i-nav-item :to="{ name: 'docs-components-sidebar' }">
-                        Home
+                    <i-nav-item :to="{ name: 'docs-components-sidebar' }" exact-active-class="-active">
+                        Active Router Link
                     </i-nav-item>
-                    <i-collapsible>
-                        <i-collapsible-item title="Menu">
-                            <i-nav-item :to="{ name: 'docs-components-sidebar' }">
-                                Item 1
-                            </i-nav-item>
-                            <i-nav-item :to="{ name: 'docs-components-sidebar' }">
-                                Item 2
-                            </i-nav-item>
-                            <i-nav-item :to="{ name: 'docs-components-sidebar' }">
-                                Item 3
-                            </i-nav-item>
-                        </i-collapsible-item>
-                    </i-collapsible>
-                    <i-nav-item :to="{ name: 'docs-components-sidebar' }">
-                        Contact
+                    <i-nav-item active>
+                        Active Item
                     </i-nav-item>
                 </i-nav>
             </i-sidebar>
@@ -37,7 +24,7 @@
                     <i-row>
                         <i-column>
                             <h1>
-                                Page with Sidebar
+                                Sidebar
                             </h1>
                             <p>
                                 Example content for a page with a sidebar, a layout typically seen in Documentation pages and Web Application dashboards.
