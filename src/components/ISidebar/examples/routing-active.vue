@@ -1,2 +1,2 @@
-<template src="./routing-active.html" />
+<template src="./routing-active.demo.html" />
 <script src="./routing-active.js" />
