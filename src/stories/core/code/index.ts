@@ -1,10 +1,10 @@
 export { default as CodeBlockExample } from './block.vue';
-export { default as CodeBlockExampleHTML } from './block.html';
+export { default as CodeBlockExampleHTML } from './block.html?raw';
 export { default as CodeInlineExample } from './inline.vue';
-export { default as CodeInlineExampleHTML } from './inline.html';
+export { default as CodeInlineExampleHTML } from './inline.html?raw';
 export { default as CodeSampleOutputExample } from './sample-output.vue';
-export { default as CodeSampleOutputExampleHTML } from './sample-output.html';
+export { default as CodeSampleOutputExampleHTML } from './sample-output.html?raw';
 export { default as CodeUserInputExample } from './user-input.vue';
-export { default as CodeUserInputExampleHTML } from './user-input.html';
+export { default as CodeUserInputExampleHTML } from './user-input.html?raw';
 export { default as CodeVariablesExample } from './variables.vue';
-export { default as CodeVariablesExampleHTML } from './variables.html';
+export { default as CodeVariablesExampleHTML } from './variables.html?raw';

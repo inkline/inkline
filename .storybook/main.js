@@ -1,4 +1,4 @@
-const {resolve} = require("path");
+const { resolve } = require("path");
 
 function webpackInjectPublicPath(webpackConfig, publicPath) {
     const configHtmlWebPackPlugin = webpackConfig.plugins.find(
@@ -14,45 +14,6 @@ function webpackInjectPublicPath(webpackConfig, publicPath) {
         result.globals.PREVIEW_URL = `${publicPath}iframe.html`;
         return result;
     }
-}
-
-function viteForceBundleDependencies() {
-    const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
-
-    return {
-        name: 'force-bundle-config-dep',
-        enforce: 'pre',
-        transform(code, id) {
-            if (id !== virtualFileId) {
-                return;
-            }
-
-            // match last node_modules
-            // .../node_modules/.../node_modules/yy/zz -> yy/zz
-            const transformedCode = code.replace(
-                /import \* as (config_.*?) from '.*\/node_modules\/(.*?)'/g,
-                (_substr, name, mpath) => {
-                    return `import * as ${name} from '${mpath}'`;
-                }
-            );
-
-            return {
-                code: transformedCode,
-                map: null,
-            };
-        },
-    };
-}
-
-function viteHtmlPlugin() {
-    return {
-        name: 'html',
-        transform (code, id) {
-            if (/\.html$/.test(id)) {
-                return `export default ${JSON.stringify(code)}`;
-            }
-        }
-    };
 }
 
 module.exports = {
@@ -85,16 +46,6 @@ module.exports = {
         ];
 
         if (configType === 'DEVELOPMENT') {
-            config.plugins = config.plugins.concat([
-                viteHtmlPlugin(),
-                // viteForceBundleDependencies()
-            ]);
-
-            // config.resolve.alias.push({
-            //     find: /^vue$/,
-            //     replacement: 'vue/dist/vue.esm-bundler.js'
-            // });
-
             config.server.force = false;
         } else {
             config.base = "/storybook/";

@@ -1,12 +1,12 @@
 export { default as ITabsBasicExample } from './basic.vue';
-export { default as ITabsBasicExampleHTML } from './basic.html';
+export { default as ITabsBasicExampleHTML } from './basic.html?raw';
 export { default as ITabsBasicExampleJS } from './basic.js?raw';
 export { default as ITabsColorVariantsExample } from './color-variants.vue';
-export { default as ITabsColorVariantsExampleHTML } from './color-variants.html';
+export { default as ITabsColorVariantsExampleHTML } from './color-variants.html?raw';
 export { default as ITabsColorVariantsExampleJS } from './color-variants.js?raw';
 export { default as ITabsSizeVariantsExample } from './size-variants.vue';
-export { default as ITabsSizeVariantsExampleHTML } from './size-variants.html';
+export { default as ITabsSizeVariantsExampleHTML } from './size-variants.html?raw';
 export { default as ITabsSizeVariantsExampleJS } from './size-variants.js?raw';
 export { default as ITabsStretchExample } from './stretch.vue';
-export { default as ITabsStretchExampleHTML } from './stretch.html';
+export { default as ITabsStretchExampleHTML } from './stretch.html?raw';
 export { default as ITabsStretchExampleJS } from './stretch.js?raw';
