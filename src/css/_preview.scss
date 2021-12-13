@@ -1,0 +1,201 @@
+///
+// Border Utilities
+///
+%border-utilities-preview {
+    > div[class^="_border"] {
+        height: 100px;
+        width: 100px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: transparent;
+    }
+
+    > div[class="_border"],
+    > div[class^="_border-"] {
+        border-color: color('gray-40');
+    }
+
+    > div[class="_border-top"] {
+        border-color: color('gray-20');
+        border-top-color: color('gray-40');
+    }
+
+    > div[class="_border-right"] {
+        border-color: color('gray-20');
+        border-right-color: color('gray-40');
+    }
+
+    > div[class="_border-bottom"] {
+        border-color: color('gray-20');
+        border-bottom-color: color('gray-40');
+    }
+
+    > div[class="_border-left"] {
+        border-color: color('gray-20');
+        border-left-color: color('gray-40');
+    }
+}
+
+///
+// Color Utilities
+///
+%color-utilities-preview {
+    > div[class^="_background"],
+    > div[class^="_color"] {
+        height: 80px;
+        width: 240px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: border-radius();
+    }
+}
+
+///
+// Flex Utilities
+///
+%flex-utilities-preview {
+    > div[class*="_display:flex"],
+    > div[class*="_display:flex"] div {
+        padding: spacing('1/2');
+        background: color('gray-10');
+        border: 1px solid color('gray-30');
+    }
+
+    > div[class*="_align-content"],
+    > div[class*="_flex-direction-column"],
+    > div[class*="_align-items"] {
+        min-height: 180px;
+    }
+
+    > div[class*="_display:flex"] {
+        > div[class^="_align-self"] {
+            + div {
+                height: 180px;
+            }
+        }
+    }
+}
+
+///
+// Spacing Utilities
+///
+%spacing-utilities-preview {
+    > div[class*="_margin"] {
+        padding: spacing('1/2');
+        background: color('gray-10');
+        border: 1px solid color('gray-30');
+        min-height: 25px;
+        display: flex;
+    }
+}
+
+///
+// Layout
+///
+%layout-preview {
+    > .layout {
+        border: 1px solid color('gray-50');
+        padding: spacing();
+        border-radius: var(--border-radius);
+
+        .layout,
+        .layout-content,
+        .layout-header,
+        .layout-footer,
+        .layout-aside {
+            padding: spacing();
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid color('gray-50');
+        }
+
+        .layout-header {
+            margin-bottom: spacing('1/2');
+        }
+
+        .layout-footer {
+            margin-top: spacing('1/2');
+        }
+
+        .layout-aside {
+            width: 30%;
+            flex-basis: 30%;
+
+            + .layout {
+                margin-left: spacing();
+            }
+        }
+
+        .layout {
+            + .layout-aside {
+                margin-left: spacing();
+            }
+        }
+
+        .layout-content,
+        .layout-aside {
+            min-height: 300px;
+        }
+
+        .layout-content,
+        .layout-aside-children {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+///
+// Grid
+///
+%grid-preview {
+    > .container {
+        max-width: 100%;
+        background: color('gray-05');
+        border: 1px solid color('gray-10');
+        border-radius: border-radius();
+        padding-top: spacing();
+        padding-bottom: spacing();
+
+        .row {
+            background: color('gray-10');
+            border: 1px solid color('gray-20');
+            border-radius: border-radius();
+            padding-top: spacing();
+            padding-bottom: spacing();
+
+            + .row {
+                margin-top: spacing();
+            }
+
+            .column {
+                background: color('gray-20');
+                border: 1px solid color('gray-40');
+                border-radius: border-radius();
+                padding-top: spacing();
+                padding-bottom: spacing();
+
+                .row {
+                    background: color('gray-25');
+                    border: 1px solid color('gray-50');
+                }
+
+                .column {
+                    background: color('gray-30');
+                    border: 1px solid color('gray-60');
+                }
+            }
+        }
+    }
+}
+
+///
+// Card
+///
+%card-preview {
+    > .card {
+        max-width: 360px;
+    }
+}
