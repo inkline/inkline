@@ -1,8 +1,6 @@
-import {
-    IFormValidationBasicExample,
-    IFormValidationBasicBindingExample,
-    IFormValidationBasicValidatorsExample
-} from './index';
+import IFormValidationBasicExample from './basic.vue';
+import IFormValidationBasicBindingExample from './basic-binding.vue';
+import IFormValidationBasicValidatorsExample from './basic-validators.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 import { IForm } from '@inkline/inkline/components';
 

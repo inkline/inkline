@@ -1,12 +1,10 @@
 import IForm from '../index.vue';
-import {
-    IFormBasicExample,
-    IFormDisabledExample,
-    IFormReadonlyExample,
-    IFormSizeVariantsSmExample,
-    IFormSizeVariantsMdExample,
-    IFormSizeVariantsLgExample
-} from './index';
+import IFormBasicExample from './basic.vue';
+import IFormDisabledExample from './disabled.vue';
+import IFormReadonlyExample from './readonly.vue';
+import IFormSizeVariantsSmExample from './size-variants-sm.vue';
+import IFormSizeVariantsMdExample from './size-variants-md.vue';
+import IFormSizeVariantsLgExample from './size-variants-lg.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

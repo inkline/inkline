@@ -1,16 +1,14 @@
 import IRow from '../index.vue';
-import {
-    IRowBasicExample,
-    IRowDistributionAroundExample,
-    IRowDistributionBetweenExample,
-    IRowHorizontalAlignmentStartExample,
-    IRowHorizontalAlignmentCenterExample,
-    IRowHorizontalAlignmentEndExample,
-    IRowReorderingReverseExample,
-    IRowVerticalAlignmentTopExample,
-    IRowVerticalAlignmentMiddleExample,
-    IRowVerticalAlignmentBottomExample
-} from './index';
+import IRowBasicExample from './basic.vue';
+import IRowDistributionAroundExample from './distribution-around.vue';
+import IRowDistributionBetweenExample from './distribution-between.vue';
+import IRowHorizontalAlignmentStartExample from './horizontal-alignment-start.vue';
+import IRowHorizontalAlignmentCenterExample from './horizontal-alignment-center.vue';
+import IRowHorizontalAlignmentEndExample from './horizontal-alignment-end.vue';
+import IRowReorderingReverseExample from './reordering-reverse.vue';
+import IRowVerticalAlignmentTopExample from './vertical-alignment-top.vue';
+import IRowVerticalAlignmentMiddleExample from './vertical-alignment-middle.vue';
+import IRowVerticalAlignmentBottomExample from './vertical-alignment-bottom.vue';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

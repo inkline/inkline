@@ -3,7 +3,7 @@ export { default as ISidebarBasicExampleHTML } from './basic.html?raw';
 export { default as ISidebarBasicExampleJS } from './basic.js?raw';
 export { default as ISidebarCollapseBreakpointExample } from './collapse-breakpoint.vue';
 export { default as ISidebarCollapseBreakpointExampleHTML } from './collapse-breakpoint.html?raw';
-// export { default as ISidebarCollapseBreakpointExampleJS } from './collapse-breakpoint.js?raw';
+export { default as ISidebarCollapseBreakpointExampleJS } from './collapse-breakpoint.js?raw';
 export { default as ISidebarCollapseTrueExample } from './collapse-true.vue';
 export { default as ISidebarCollapseTrueExampleHTML } from './collapse-true.html?raw';
 export { default as ISidebarCollapseFalseExample } from './collapse-false.vue';

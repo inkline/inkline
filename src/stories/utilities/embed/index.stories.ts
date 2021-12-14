@@ -1,6 +1,4 @@
-import {
-    EmbedBasicExample
-} from './index';
+import EmbedBasicExample from './basic.vue';
 
 export default {
     title: 'Utilities/Embed'

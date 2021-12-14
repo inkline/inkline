@@ -1,12 +1,10 @@
 import ITooltip from '../index.vue';
-import {
-    ITooltipBasicExample,
-    ITooltipColorVariantsExample,
-    ITooltipSizeVariantsExample,
-    ITooltipFreeformExample,
-    ITooltipPlacementExample,
-    ITooltipTriggerExample
-} from './index';
+import ITooltipBasicExample from './basic.vue';
+import ITooltipColorVariantsExample from './color-variants.vue';
+import ITooltipSizeVariantsExample from './size-variants.vue';
+import ITooltipFreeformExample from './freeform.vue';
+import ITooltipPlacementExample from './placement.vue';
+import ITooltipTriggerExample from './trigger.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

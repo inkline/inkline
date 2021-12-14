@@ -1,11 +1,9 @@
 import IToggle from '../index.vue';
-import {
-    IToggleBasicExample,
-    IToggleColorVariantsExample,
-    IToggleDisabledExample,
-    IToggleReadonlyExample,
-    IToggleSizeVariantsExample
-} from './index';
+import IToggleBasicExample from './basic.vue';
+import IToggleColorVariantsExample from './color-variants.vue';
+import IToggleDisabledExample from './disabled.vue';
+import IToggleReadonlyExample from './readonly.vue';
+import IToggleSizeVariantsExample from './size-variants.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

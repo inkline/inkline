@@ -1,11 +1,9 @@
-import {
-    IFormValidationSchemaDefaultValueExample,
-    IFormValidationSchemaValidationMessageExample,
-    IFormValidationSchemaValidationEventExample,
-    IFormValidationSchemaErrorVisibilityExample,
-    IFormValidationSchemaGroupsObjectExample,
-    IFormValidationSchemaGroupsArrayExample
-} from './index';
+import IFormValidationSchemaDefaultValueExample from './default-value.vue';
+import IFormValidationSchemaValidationMessageExample from './validation-message.vue';
+import IFormValidationSchemaValidationEventExample from './validation-event.vue';
+import IFormValidationSchemaErrorVisibilityExample from './error-visibility.vue';
+import IFormValidationSchemaGroupsObjectExample from './groups-object.vue';
+import IFormValidationSchemaGroupsArrayExample from './groups-array.vue';
 import { IForm } from '@inkline/inkline/components';
 
 export default {

@@ -1,11 +1,9 @@
 import IHeader from '../index.vue';
-import {
-    IHeaderBasicExample,
-    IHeaderColorVariantsExample,
-    IHeaderCoverExample,
-    IHeaderFullscreenExample,
-    IHeaderSizeVariantsExample
-} from './index';
+import IHeaderBasicExample from './basic.vue';
+import IHeaderColorVariantsExample from './color-variants.vue';
+import IHeaderCoverExample from './cover.vue';
+import IHeaderFullscreenExample from './fullscreen.vue';
+import IHeaderSizeVariantsExample from './size-variants.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

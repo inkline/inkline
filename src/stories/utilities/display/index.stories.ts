@@ -1,7 +1,5 @@
-import {
-    DisplayBlockExample,
-    DisplayInlineExample
-} from './index';
+import DisplayBlockExample from './block.vue';
+import DisplayInlineExample from './inline.vue';
 
 export default {
     title: 'Utilities/Display'
