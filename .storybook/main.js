@@ -4,8 +4,8 @@ const tsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
     stories: [
-        '../src/components/IAlert/**/*.stories.mdx',
-        '../src/components/IAlert/**/*.stories.@(js|jsx|ts|tsx)'
+        '../src/**/*.stories.mdx',
+        '../src/**/*.stories.@(js|jsx|ts|tsx)'
     ],
     addons: [
         '@storybook/addon-postcss',
@@ -14,6 +14,9 @@ module.exports = {
         '@storybook/addon-a11y'
     ],
     framework: '@storybook/vue3',
+    core: {
+        builder: 'webpack5'
+    },
     features: {
         storyStoreV7: true,
     },

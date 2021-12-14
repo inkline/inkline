@@ -1,16 +1,14 @@
 import IColumn from '../index.vue';
-import {
-    IColumnBasicExample,
-    IColumnAutoWidthExample,
-    IColumnNestedExample,
-    IColumnOffsetExample,
-    IColumnOffsetResetExample,
-    IColumnPushPullExample,
-    IColumnReorderingFirstExample,
-    IColumnReorderingLastExample,
-    IColumnResponsiveExample,
-    IColumnWidthExample
-} from './index';
+import IColumnAutoWidthExample from './auto-width.vue';
+import IColumnBasicExample from './basic.vue';
+import IColumnNestedExample from './nested.vue';
+import IColumnOffsetExample from './offset.vue';
+import IColumnOffsetResetExample from './offset-reset.vue';
+import IColumnPushPullExample from './push-pull.vue';
+import IColumnReorderingFirstExample from './reordering-first.vue';
+import IColumnReorderingLastExample from './reordering-last.vue';
+import IColumnResponsiveExample from './responsive.vue';
+import IColumnWidthExample from './width.vue';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

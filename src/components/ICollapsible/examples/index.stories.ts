@@ -1,12 +1,10 @@
 import ICollapsible from '../index.vue';
-import {
-    ICollapsibleAccordionExample,
-    ICollapsibleBasicExample,
-    ICollapsibleColorVariantsExample,
-    ICollapsibleDefaultOpenExample,
-    ICollapsibleHeaderExample,
-    ICollapsibleSizeVariantsExample
-} from './index';
+import ICollapsibleAccordionExample from './accordion.vue';
+import ICollapsibleBasicExample from './basic.vue';
+import ICollapsibleColorVariantsExample from './color-variants.vue';
+import ICollapsibleDefaultOpenExample from './default-open.vue';
+import ICollapsibleHeaderExample from './header.vue';
+import ICollapsibleSizeVariantsExample from './size-variants.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

@@ -1,8 +1,6 @@
 import IContainer from '../index.vue';
-import {
-    IContainerBasicExample,
-    IContainerFluidExample
-} from './index';
+import IContainerBasicExample from './basic.vue';
+import IContainerFluidExample from './fluid.vue';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

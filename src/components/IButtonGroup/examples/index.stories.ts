@@ -1,15 +1,13 @@
 import IButtonGroup from '../index.vue';
-import {
-    IButtonGroupBasicExample,
-    IButtonGroupBlockExample,
-    IButtonGroupDisabledExample,
-    IButtonGroupNestedExample,
-    IButtonGroupNestedBlockExample,
-    IButtonGroupSizeVariantsExample,
-    IButtonGroupVerticalExample,
-    IButtonGroupVerticalBlockExample,
-    IButtonGroupVerticalSizeVariantsExample
-} from './index';
+import IButtonGroupBasicExample from './basic.vue';
+import IButtonGroupBlockExample from './block.vue';
+import IButtonGroupDisabledExample from './disabled.vue';
+import IButtonGroupNestedExample from './nested.vue';
+import IButtonGroupNestedBlockExample from './nested-block.vue';
+import IButtonGroupSizeVariantsExample from './size-variants.vue';
+import IButtonGroupVerticalExample from './vertical.vue';
+import IButtonGroupVerticalBlockExample from './vertical-block.vue';
+import IButtonGroupVerticalSizeVariantsExample from './vertical-size-variants.vue';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

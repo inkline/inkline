@@ -1,12 +1,10 @@
 import ICard from '../index.vue';
-import {
-    ICardBasicExample,
-    ICardBodyExample,
-    ICardHeaderFooterExample,
-    ICardColorVariantsExample,
-    ICardImageExample,
-    ICardSizeVariantsExample
-} from './index';
+import ICardBasicExample from './basic.vue';
+import ICardBodyExample from './card-body.vue';
+import ICardHeaderFooterExample from './card-header-footer.vue';
+import ICardColorVariantsExample from './color-variants.vue';
+import ICardImageExample from './image.vue';
+import ICardSizeVariantsExample from './size-variants.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

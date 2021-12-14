@@ -1,6 +1,4 @@
-import {
-    OverflowBasicExample
-} from './index';
+import OverflowBasicExample from './basic.vue';
 
 export default {
     title: 'Utilities/Overflow'

@@ -1,10 +1,8 @@
 import IIcon from '../index.vue';
-import {
-    IIconBasicExample,
-    IIconIconsExample,
-    IIconColorVariantsExample,
-    IIconSizeVariantsExample
-} from './index';
+import IIconBasicExample from './basic.vue';
+import IIconColorVariantsExample from './color-variants.vue';
+import IIconIconsExample from './icons.vue';
+import IIconSizeVariantsExample from './size-variants.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

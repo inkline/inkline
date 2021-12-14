@@ -1,11 +1,9 @@
 import IPopover from '../index.vue';
-import {
-    IPopoverBasicExample,
-    IPopoverColorVariantsExample,
-    IPopoverSizeVariantsExample,
-    IPopoverPlacementExample,
-    IPopoverTriggerExample
-} from './index';
+import IPopoverBasicExample from './basic.vue';
+import IPopoverColorVariantsExample from './color-variants.vue';
+import IPopoverSizeVariantsExample from './size-variants.vue';
+import IPopoverPlacementExample from './placement.vue';
+import IPopoverTriggerExample from './trigger.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

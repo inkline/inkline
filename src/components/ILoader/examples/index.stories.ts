@@ -1,11 +1,9 @@
 import ILoader from '../index.vue';
-import {
-    ILoaderBasicExample,
-    ILoaderColorVariantsExample,
-    ILoaderSizeAutoExample,
-    ILoaderSizeVariantsExample,
-    ILoaderTextExample
-} from './index';
+import ILoaderBasicExample from './basic.vue';
+import ILoaderColorVariantsExample from './color-variants.vue';
+import ILoaderSizeAutoExample from './size-auto.vue';
+import ILoaderSizeVariantsExample from './size-variants.vue';
+import ILoaderTextExample from './text.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
