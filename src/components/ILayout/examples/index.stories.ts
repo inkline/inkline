@@ -8,7 +8,6 @@ import ILayoutContentWithRightAsideHeaderFooterExample from './content-with-righ
 import ILayoutLeftAndRightAsidesWithContentHeaderFooterExample from './left-and-right-asides-with-content-header-footer.vue';
 import ILayoutLeftAsideWithContentHeaderFooterExample from './left-aside-with-content-header-footer.vue';
 import ILayoutRightAsideWithContentHeaderFooterExample from './right-aside-with-content-header-footer.vue';
-import ILayoutWithAsideCSSExample from './with-aside.scss';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
