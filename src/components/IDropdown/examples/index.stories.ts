@@ -1,16 +1,14 @@
 import IDropdown from '../index.vue';
-import {
-    IDropdownBasicExample,
-    IDropdownColorVariantsExample,
-    IDropdownHeaderFooterExample,
-    IDropdownSizeVariantsExample,
-    IDropdownFreeformExample,
-    IDropdownNestedExample,
-    IDropdownPlacementExample,
-    IDropdownRoutingExample,
-    IDropdownStateActiveExample,
-    IDropdownTriggerExample
-} from './index';
+import IDropdownBasicExample from './basic.vue';
+import IDropdownColorVariantsExample from './color-variants.vue';
+import IDropdownHeaderFooterExample from './header-footer.vue';
+import IDropdownSizeVariantsExample from './size-variants.vue';
+import IDropdownFreeformExample from './freeform.vue';
+import IDropdownNestedExample from './nested.vue';
+import IDropdownPlacementExample from './placement.vue';
+import IDropdownRoutingExample from './routing.vue';
+import IDropdownStateActiveExample from './state-active.vue';
+import IDropdownTriggerExample from './trigger.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

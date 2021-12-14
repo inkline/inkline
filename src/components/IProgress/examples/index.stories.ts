@@ -1,12 +1,10 @@
 import IProgress from '../index.vue';
-import {
-    IProgressBasicExample,
-    IProgressBarColorVariantsExample,
-    IProgressColorVariantsExample,
-    IProgressSizeVariantsExample,
-    IProgressStackedExample,
-    IProgressValueExample
-} from './index';
+import IProgressBasicExample from './basic.vue';
+import IProgressBarColorVariantsExample from './bar-color-variants.vue';
+import IProgressColorVariantsExample from './color-variants.vue';
+import IProgressSizeVariantsExample from './size-variants.vue';
+import IProgressStackedExample from './stacked.vue';
+import IProgressValueExample from './value.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

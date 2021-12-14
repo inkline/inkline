@@ -1,9 +1,7 @@
-import {
-    SizingHeightExample,
-    SizingMaxHeightExample,
-    SizingMaxWidthExample,
-    SizingWidthExample
-} from './index';
+import SizingHeightExample from './height.vue';
+import SizingMaxHeightExample from './max-height.vue';
+import SizingMaxWidthExample from './max-width.vue';
+import SizingWidthExample from './width.vue';
 
 export default {
     title: 'Utilities/Sizing'

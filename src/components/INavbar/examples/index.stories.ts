@@ -1,17 +1,15 @@
 import INavbar from '../index.vue';
-import {
-    INavbarBasicExample,
-    INavbarCollapseBreakpointExample,
-    INavbarCollapseTrueExample,
-    INavbarCollapseFalseExample,
-    INavbarCollapseManualExample,
-    INavbarColorVariantsExample,
-    INavbarDropdownExample,
-    INavbarNavPlacementExample,
-    INavbarSizeVariantsExample,
-    INavbarRoutingExample,
-    INavbarRoutingActiveExample
-} from './index';
+import INavbarBasicExample from './basic.vue';
+import INavbarCollapseBreakpointExample from './collapse-breakpoint.vue';
+import INavbarCollapseTrueExample from './collapse-true.vue';
+import INavbarCollapseFalseExample from './collapse-false.vue';
+import INavbarCollapseManualExample from './collapse-manual.vue';
+import INavbarColorVariantsExample from './color-variants.vue';
+import INavbarDropdownExample from './dropdown.vue';
+import INavbarNavPlacementExample from './nav-placement.vue';
+import INavbarSizeVariantsExample from './size-variants.vue';
+import INavbarRoutingExample from './routing.vue';
+import INavbarRoutingActiveExample from './routing-active.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

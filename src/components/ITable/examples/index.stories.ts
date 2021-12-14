@@ -1,12 +1,10 @@
 import ITable from '../index.vue';
-import {
-    ITableBasicExample,
-    ITableBorderedExample,
-    ITableColorVariantsExample,
-    ITableHoverExample,
-    ITableResponsiveExample,
-    ITableStripedExample
-} from './index';
+import ITableBasicExample from './basic.vue';
+import ITableBorderedExample from './bordered.vue';
+import ITableColorVariantsExample from './color-variants.vue';
+import ITableHoverExample from './hover.vue';
+import ITableResponsiveExample from './responsive.vue';
+import ITableStripedExample from './striped.vue';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

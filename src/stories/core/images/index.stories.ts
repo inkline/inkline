@@ -1,14 +1,12 @@
-import {
-    ImagesAlignmentCenterExample,
-    ImagesAlignmentLeftExample,
-    ImagesAlignmentMarginAutoExample,
-    ImagesAlignmentRightExample,
-    ImagesFluidExample,
-    ImagesPictureExample,
-    ImagesPolaroidExample,
-    ImagesResponsiveExample,
-    ImagesThumbnailExample
-} from './index';
+import ImagesAlignmentCenterExample from './alignment-center.vue';
+import ImagesAlignmentLeftExample from './alignment-left.vue';
+import ImagesAlignmentMarginAutoExample from './alignment-margin-auto.vue';
+import ImagesAlignmentRightExample from './alignment-right.vue';
+import ImagesFluidExample from './fluid.vue';
+import ImagesPictureExample from './picture.vue';
+import ImagesPolaroidExample from './polaroid.vue';
+import ImagesResponsiveExample from './responsive.vue';
+import ImagesThumbnailExample from './thumbnail.vue';
 
 export default {
     title: 'Core/Images'

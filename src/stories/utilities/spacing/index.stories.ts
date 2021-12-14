@@ -1,10 +1,8 @@
-import {
-    SpacingBottomExample,
-    SpacingHorizontalCenterExample,
-    SpacingLeftExample,
-    SpacingRightExample,
-    SpacingTopExample
-} from './index';
+import SpacingBottomExample from './bottom.vue';
+import SpacingHorizontalCenterExample from './horizontal-center.vue';
+import SpacingLeftExample from './left.vue';
+import SpacingRightExample from './right.vue';
+import SpacingTopExample from './top.vue';
 
 export default {
     title: 'Utilities/Spacing'

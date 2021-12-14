@@ -1,7 +1,5 @@
-import {
-    IFormValidationMethodsGroupsObjectExample,
-    IFormValidationMethodsGroupsArrayExample
-} from './index';
+import IFormValidationMethodsGroupsObjectExample from './groups-object.vue';
+import IFormValidationMethodsGroupsArrayExample from './groups-array.vue';
 import { IForm } from '@inkline/inkline/components';
 
 export default {
