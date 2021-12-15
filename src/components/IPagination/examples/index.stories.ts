@@ -1,10 +1,12 @@
 import IPagination from '../index.vue';
-import IPaginationBasicExample from './basic.vue';
-import IPaginationColorVariantsExample from './color-variants.vue';
-import IPaginationLimitExample from './limit.vue';
-import IPaginationLimitResponsiveExample from './limit-responsive.vue';
-import IPaginationQuickLinksExample from './quick-links.vue';
-import IPaginationSizeVariantsExample from './size-variants.vue';
+import {
+    IPaginationBasicExample,
+    IPaginationColorVariantsExample,
+    IPaginationLimitExample,
+    IPaginationLimitResponsiveExample,
+    IPaginationQuickLinksExample,
+    IPaginationSizeVariantsExample
+} from './index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

@@ -1,8 +1,10 @@
 import ITabs from '../index.vue';
-import ITabsBasicExample from './basic.vue';
-import ITabsColorVariantsExample from './color-variants.vue';
-import ITabsSizeVariantsExample from './size-variants.vue';
-import ITabsStretchExample from './stretch.vue';
+import {
+    ITabsBasicExample,
+    ITabsColorVariantsExample,
+    ITabsSizeVariantsExample,
+    ITabsStretchExample
+} from './index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

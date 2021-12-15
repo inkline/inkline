@@ -1,15 +1,17 @@
 import ISidebar from '../index.vue';
-import ISidebarBasicExample from './basic.vue';
-import ISidebarCollapseBreakpointExample from './collapse-breakpoint.vue';
-import ISidebarCollapseTrueExample from './collapse-true.vue';
-import ISidebarCollapseFalseExample from './collapse-false.vue';
-import ISidebarColorVariantsExample from './color-variants.vue';
-import ISidebarCollapsePositionExample from './collapse-position.vue';
-import ISidebarCollapsibleExample from './collapsible.vue';
-import ISidebarSizeVariantsExample from './size-variants.vue';
-import ISidebarPlacementExample from './placement.vue';
-import ISidebarRoutingExample from './routing.vue';
-import ISidebarRoutingActiveExample from './routing-active.vue';
+import {
+    ISidebarBasicExample,
+    ISidebarCollapseBreakpointExample,
+    ISidebarCollapseTrueExample,
+    ISidebarCollapseFalseExample,
+    ISidebarColorVariantsExample,
+    ISidebarCollapsePositionExample,
+    ISidebarCollapsibleExample,
+    ISidebarSizeVariantsExample,
+    ISidebarPlacementExample,
+    ISidebarRoutingExample,
+    ISidebarRoutingActiveExample
+} from './index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

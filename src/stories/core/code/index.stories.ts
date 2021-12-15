@@ -1,8 +1,10 @@
-import CodeBlockExample from './block.vue';
-import CodeInlineExample from './inline.vue';
-import CodeSampleOutputExample from './sample-output.vue';
-import CodeUserInputExample from './user-input.vue';
-import CodeVariablesExample from './variables.vue';
+import {
+    CodeBlockExample,
+    CodeInlineExample,
+    CodeSampleOutputExample,
+    CodeUserInputExample,
+    CodeVariablesExample
+} from './index';
 
 export default {
     title: 'Core/Code'

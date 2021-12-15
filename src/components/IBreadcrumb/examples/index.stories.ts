@@ -1,9 +1,11 @@
 import IBreadcrumb from '../index.vue';
-import IBreadcrumbBasicExample from './basic.vue';
-import IBreadcrumbColorVariantsExample from './color-variants.vue';
-import IBreadcrumbRoutingExample from './routing.vue';
-import IBreadcrumbSizeVariantsExample from './size-variants.vue';
-import IBreadcrumbDynamicallyGeneratedExample from './dynamically-generated.vue';
+import {
+    IBreadcrumbBasicExample,
+    IBreadcrumbColorVariantsExample,
+    IBreadcrumbRoutingExample,
+    IBreadcrumbSizeVariantsExample,
+    IBreadcrumbDynamicallyGeneratedExample
+} from './index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

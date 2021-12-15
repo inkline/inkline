@@ -1,9 +1,3 @@
 export { default as IModalBasicExample } from './basic.vue';
-export { default as IModalBasicExampleHTML } from './basic.html?raw';
-export { default as IModalBasicExampleJS } from './basic.js?raw';
 export { default as IModalColorVariantsExample } from './color-variants.vue';
-export { default as IModalColorVariantsExampleHTML } from './color-variants.html?raw';
-export { default as IModalColorVariantsExampleJS } from './color-variants.js?raw';
 export { default as IModalSizeVariantsExample } from './size-variants.vue';
-export { default as IModalSizeVariantsExampleHTML } from './size-variants.html?raw';
-export { default as IModalSizeVariantsExampleJS } from './size-variants.js?raw';

@@ -1,5 +1,7 @@
-import OverlayBasicExample from './basic.vue';
-import OverlayLinkExample from './link.vue';
+import {
+    OverlayBasicExample,
+    OverlayLinkExample
+} from './index';
 
 export default {
     title: 'Utilities/Overlay'

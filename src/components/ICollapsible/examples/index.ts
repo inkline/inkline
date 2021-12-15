@@ -1,13 +1,6 @@
 export { default as ICollapsibleAccordionExample } from './accordion.vue';
-export { default as ICollapsibleAccordionExampleHTML } from './accordion.html?raw';
 export { default as ICollapsibleBasicExample } from './basic.vue';
-export { default as ICollapsibleBasicExampleHTML } from './basic.html?raw';
 export { default as ICollapsibleColorVariantsExample } from './color-variants.vue';
-export { default as ICollapsibleColorVariantsExampleHTML } from './color-variants.html?raw';
 export { default as ICollapsibleDefaultOpenExample } from './default-open.vue';
-export { default as ICollapsibleDefaultOpenExampleHTML } from './default-open.html?raw';
-export { default as ICollapsibleDefaultOpenExampleJS } from './default-open.js?raw';
 export { default as ICollapsibleHeaderExample } from './header.vue';
-export { default as ICollapsibleHeaderExampleHTML } from './header.html?raw';
 export { default as ICollapsibleSizeVariantsExample } from './size-variants.vue';
-export { default as ICollapsibleSizeVariantsExampleHTML } from './size-variants.html?raw';

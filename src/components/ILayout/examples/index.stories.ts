@@ -1,13 +1,15 @@
 import ILayout from '../index.vue';
-import ILayoutBasicExample from './basic.vue';
-import ILayoutContentHeaderExample from './content-header.vue';
-import ILayoutContentHeaderFooterExample from './content-header-footer.vue';
-import ILayoutContentWithLeftAsideHeaderFooterExample from './content-with-left-aside-header-footer.vue';
-import ILayoutContentWithLeftAndRightAsidesHeaderFooterExample from './content-with-left-and-right-asides-header-footer.vue';
-import ILayoutContentWithRightAsideHeaderFooterExample from './content-with-right-aside-header-footer.vue';
-import ILayoutLeftAndRightAsidesWithContentHeaderFooterExample from './left-and-right-asides-with-content-header-footer.vue';
-import ILayoutLeftAsideWithContentHeaderFooterExample from './left-aside-with-content-header-footer.vue';
-import ILayoutRightAsideWithContentHeaderFooterExample from './right-aside-with-content-header-footer.vue';
+import {
+    ILayoutBasicExample,
+    ILayoutContentHeaderExample,
+    ILayoutContentHeaderFooterExample,
+    ILayoutContentWithLeftAsideHeaderFooterExample,
+    ILayoutContentWithLeftAndRightAsidesHeaderFooterExample,
+    ILayoutContentWithRightAsideHeaderFooterExample,
+    ILayoutLeftAndRightAsidesWithContentHeaderFooterExample,
+    ILayoutLeftAsideWithContentHeaderFooterExample,
+    ILayoutRightAsideWithContentHeaderFooterExample
+} from './index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

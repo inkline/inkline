@@ -1,11 +1,5 @@
 export { default as IPopoverBasicExample } from './basic.vue';
-export { default as IPopoverBasicExampleHTML } from './basic.html?raw';
 export { default as IPopoverColorVariantsExample } from './color-variants.vue';
-export { default as IPopoverColorVariantsExampleHTML } from './color-variants.html?raw';
 export { default as IPopoverSizeVariantsExample } from './size-variants.vue';
-export { default as IPopoverSizeVariantsExampleHTML } from './size-variants.html?raw';
 export { default as IPopoverPlacementExample } from './placement.vue';
-export { default as IPopoverPlacementExampleHTML } from './placement.html?raw';
 export { default as IPopoverTriggerExample } from './trigger.vue';
-export { default as IPopoverTriggerExampleHTML } from './trigger.html?raw';
-export { default as IPopoverTriggerExampleJS } from './trigger.js?raw';

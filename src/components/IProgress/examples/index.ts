@@ -1,12 +1,6 @@
 export { default as IProgressBasicExample } from './basic.vue';
-export { default as IProgressBasicExampleHTML } from './basic.html?raw';
 export { default as IProgressBarColorVariantsExample } from './bar-color-variants.vue';
-export { default as IProgressBarColorVariantsExampleHTML } from './bar-color-variants.html?raw';
 export { default as IProgressColorVariantsExample } from './color-variants.vue';
-export { default as IProgressColorVariantsExampleHTML } from './color-variants.html?raw';
 export { default as IProgressSizeVariantsExample } from './size-variants.vue';
-export { default as IProgressSizeVariantsExampleHTML } from './size-variants.html?raw';
 export { default as IProgressStackedExample } from './stacked.vue';
-export { default as IProgressStackedExampleHTML } from './stacked.html?raw';
 export { default as IProgressValueExample } from './value.vue';
-export { default as IProgressValueExampleHTML } from './value.html?raw';

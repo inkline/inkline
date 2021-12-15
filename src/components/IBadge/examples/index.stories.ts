@@ -1,8 +1,10 @@
 import IBadge from '../index.vue';
-import IBadgeBasicExample from './basic.vue';
-import IBadgeColorVariantsExample from './color-variants.vue';
-import IBadgeHeadingExample from './heading.vue';
-import IBadgeSizeVariantsExample from './size-variants.vue';
+import {
+    IBadgeBasicExample,
+    IBadgeColorVariantsExample,
+    IBadgeHeadingExample,
+    IBadgeSizeVariantsExample
+} from './index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

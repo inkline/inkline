@@ -1,14 +1,16 @@
-import IFormValidationValidatorsAlphaExample from './alpha.vue';
-import IFormValidationValidatorsAlphanumericExample from './alphanumeric.vue';
-import IFormValidationValidatorsEmailExample from './email.vue';
-import IFormValidationValidatorsMinExample from './min.vue';
-import IFormValidationValidatorsMaxExample from './max.vue';
-import IFormValidationValidatorsMinLengthExample from './min-length.vue';
-import IFormValidationValidatorsMaxLengthExample from './max-length.vue';
-import IFormValidationValidatorsNumberExample from './number.vue';
-import IFormValidationValidatorsRequiredExample from './required.vue';
-import IFormValidationValidatorsSameAsExample from './same-as.vue';
-import IFormValidationValidatorsCustomExample from './custom.vue';
+import {
+    IFormValidationValidatorsAlphaExample,
+    IFormValidationValidatorsAlphanumericExample,
+    IFormValidationValidatorsEmailExample,
+    IFormValidationValidatorsMinExample,
+    IFormValidationValidatorsMaxExample,
+    IFormValidationValidatorsMinLengthExample,
+    IFormValidationValidatorsMaxLengthExample,
+    IFormValidationValidatorsNumberExample,
+    IFormValidationValidatorsRequiredExample,
+    IFormValidationValidatorsSameAsExample,
+    IFormValidationValidatorsCustomExample
+} from './index';
 import { IForm } from '@inkline/inkline/components';
 
 export default {
