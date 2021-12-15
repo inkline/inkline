@@ -1,9 +1,3 @@
 export { default as IHamburgerMenuAnimationExample } from './animation.vue';
-export { default as IHamburgerMenuAnimationExampleHTML } from './animation.html?raw';
-export { default as IHamburgerMenuAnimationExampleJS } from './animation.js?raw';
 export { default as IHamburgerMenuBasicExample } from './basic.vue';
-export { default as IHamburgerMenuBasicExampleHTML } from './basic.html?raw';
-export { default as IHamburgerMenuBasicExampleJS } from './basic.js?raw';
 export { default as IHamburgerMenuColorVariantsExample } from './color-variants.vue';
-export { default as IHamburgerMenuColorVariantsExampleHTML } from './color-variants.html?raw';
-export { default as IHamburgerMenuColorVariantsExampleJS } from './color-variants.js?raw';

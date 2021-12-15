@@ -1,17 +1,19 @@
 import INumberInput from '../index.vue';
-import INumberInputBasicExample from './basic.vue';
-import INumberInputColorVariantsExample from './color-variants.vue';
-import INumberInputClearableExample from './clearable.vue';
-import INumberInputDisabledExample from './disabled.vue';
-import INumberInputMinMaxExample from './minmax.vue';
-import INumberInputPrecisionExample from './precision.vue';
-import INumberInputReadonlyExample from './readonly.vue';
-import INumberInputSizeVariantsExample from './size-variants.vue';
-import INumberInputStepSizeExample from './step-size.vue';
-import INumberInputPrependAppendTextExample from './prepend-append-text.vue';
-import INumberInputPrependAppendButtonExample from './prepend-append-button.vue';
-import INumberInputPrependAppendDropdownExample from './prepend-append-dropdown.vue';
-import INumberInputPrefixSuffixExample from './prefix-suffix.vue';
+import {
+    INumberInputBasicExample,
+    INumberInputColorVariantsExample,
+    INumberInputClearableExample,
+    INumberInputDisabledExample,
+    INumberInputMinMaxExample,
+    INumberInputPrecisionExample,
+    INumberInputReadonlyExample,
+    INumberInputSizeVariantsExample,
+    INumberInputStepSizeExample,
+    INumberInputPrependAppendTextExample,
+    INumberInputPrependAppendButtonExample,
+    INumberInputPrependAppendDropdownExample,
+    INumberInputPrefixSuffixExample
+} from './index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

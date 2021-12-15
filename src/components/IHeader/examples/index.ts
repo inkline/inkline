@@ -1,11 +1,6 @@
 export { default as IHeaderBasicExample } from './basic.vue';
-export { default as IHeaderBasicExampleHTML } from './basic.html?raw';
 export { default as IHeaderColorVariantsExample } from './color-variants.vue';
-export { default as IHeaderColorVariantsExampleHTML } from './color-variants.html?raw';
 export { default as IHeaderCoverExample } from './cover.vue';
-export { default as IHeaderCoverExampleHTML } from './cover.html?raw';
 export { default as IHeaderCoverExampleCSS } from './cover.scss';
 export { default as IHeaderFullscreenExample } from './fullscreen.vue';
-export { default as IHeaderFullscreenExampleHTML } from './fullscreen.html?raw';
 export { default as IHeaderSizeVariantsExample } from './size-variants.vue';
-export { default as IHeaderSizeVariantsExampleHTML } from './size-variants.html?raw';

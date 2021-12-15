@@ -1,5 +1,7 @@
-import VerticalAlignBasicExample from './basic.vue';
-import VerticalAlignTableExample from './table.vue';
+import {
+    VerticalAlignBasicExample,
+    VerticalAlignTableExample
+} from './index';
 
 export default {
     title: 'Utilities/Vertical Align'

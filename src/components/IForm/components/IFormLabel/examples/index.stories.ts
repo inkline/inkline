@@ -1,9 +1,11 @@
 import IFormLabel from '../index.vue';
-import IFormLabelBasicExample from './basic.vue';
-import IFormLabelDisabledExample from './disabled.vue';
-import IFormLabelPlacementExample from './placement.vue';
-import IFormLabelRequiredExample from './required.vue';
-import IFormLabelSizeVariantsExample from './size-variants.vue';
+import {
+    IFormLabelBasicExample,
+    IFormLabelDisabledExample,
+    IFormLabelPlacementExample,
+    IFormLabelRequiredExample,
+    IFormLabelSizeVariantsExample
+} from './index';
 import { createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

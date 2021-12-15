@@ -1,5 +1,6 @@
 const path = require('path');
-const webpackConfig = require('../webpack.config.js');
+const webpackConfig = require('../webpack.config');
+const postcssConfig = require('../postcss.config');
 const tsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
@@ -8,11 +9,20 @@ module.exports = {
         '../src/**/*.stories.@(js|jsx|ts|tsx)'
     ],
     addons: [
-        '@storybook/addon-postcss',
+        {
+            name: '@storybook/addon-postcss',
+            options: {
+                postcssLoaderOptions: {
+                    ...postcssConfig,
+                    implementation: require('postcss')
+                }
+            }
+        },
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         '@storybook/addon-a11y'
     ],
+    staticDirs: ['../public'],
     framework: '@storybook/vue3',
     core: {
         builder: 'webpack5'
@@ -24,7 +34,7 @@ module.exports = {
         config.resolve.alias = webpackConfig.resolve.alias;
         config.module.rules.push({
             test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'sass-loader'],
+            use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             include: path.resolve(__dirname, '../'),
         });
 

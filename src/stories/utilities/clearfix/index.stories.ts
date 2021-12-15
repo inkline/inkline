@@ -1,4 +1,6 @@
-import ClearfixBasicExample from './basic.vue';
+import {
+    ClearfixBasicExample
+} from './index';
 
 export default {
     title: 'Utilities/Clearfix'

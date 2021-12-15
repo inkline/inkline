@@ -1,10 +1,12 @@
 import INav from '../index.vue';
-import INavBasicExample from './basic.vue';
-import INavColorVariantsExample from './color-variants.vue';
-import INavRoutingExample from './routing.vue';
-import INavSizeVariantsExample from './size-variants.vue';
-import INavStateActiveExample from './state-active.vue';
-import INavVerticalExample from './vertical.vue';
+import {
+    INavBasicExample,
+    INavColorVariantsExample,
+    INavRoutingExample,
+    INavSizeVariantsExample,
+    INavStateActiveExample,
+    INavVerticalExample
+} from './index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

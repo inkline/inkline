@@ -1,4 +1,6 @@
-import VisibilityBasicExample from './basic.vue';
+import {
+    VisibilityBasicExample
+} from './index';
 
 export default {
     title: 'Utilities/Visibility'

@@ -1,10 +1,12 @@
 import IAlert from '../index.vue';
-import IAlertBasicExample from './basic.vue';
-import IAlertColorVariantsExample from './color-variants.vue';
-import IAlertDismissibleExample from './dismissible.vue';
-import IAlertContentExample from './content.vue';
-import IAlertIconExample from './icon.vue';
-import IAlertSizeVariantsExample from './size-variants.vue';
+import {
+    IAlertBasicExample,
+    IAlertColorVariantsExample,
+    IAlertDismissibleExample,
+    IAlertContentExample,
+    IAlertIconExample,
+    IAlertSizeVariantsExample
+} from './index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

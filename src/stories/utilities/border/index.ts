@@ -1,12 +1,6 @@
 export { default as BorderAddExample } from './add.vue';
-export { default as BorderAddExampleHTML } from './add.html?raw';
 export { default as BorderColorBrandExample } from './color-brand.vue';
-export { default as BorderColorBrandExampleHTML } from './color-brand.html?raw';
 export { default as BorderColorNeutralExample } from './color-neutral.vue';
-export { default as BorderColorNeutralExampleHTML } from './color-neutral.html?raw';
 export { default as BorderColorStateExample } from './color-state.vue';
-export { default as BorderColorStateExampleHTML } from './color-state.html?raw';
 export { default as BorderRadiusExample } from './radius.vue';
-export { default as BorderRadiusExampleHTML } from './radius.html?raw';
 export { default as BorderRemoveExample } from './remove.vue';
-export { default as BorderRemoveExampleHTML } from './remove.html?raw';

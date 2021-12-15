@@ -1,15 +1,5 @@
 export { default as IFormLabelBasicExample } from './basic.vue';
-export { default as IFormLabelBasicExampleHTML } from './basic.html?raw';
-export { default as IFormLabelBasicExampleJS } from './basic.js?raw';
 export { default as IFormLabelDisabledExample } from './disabled.vue';
-export { default as IFormLabelDisabledExampleHTML } from './disabled.html?raw';
-export { default as IFormLabelDisabledExampleJS } from './disabled.js?raw';
 export { default as IFormLabelPlacementExample } from './placement.vue';
-export { default as IFormLabelPlacementExampleHTML } from './placement.html?raw';
-export { default as IFormLabelPlacementExampleJS } from './placement.js?raw';
 export { default as IFormLabelRequiredExample } from './required.vue';
-export { default as IFormLabelRequiredExampleHTML } from './required.html?raw';
-export { default as IFormLabelRequiredExampleJS } from './required.js?raw';
 export { default as IFormLabelSizeVariantsExample } from './size-variants.vue';
-export { default as IFormLabelSizeVariantsExampleHTML } from './size-variants.html?raw';
-export { default as IFormLabelSizeVariantsExampleJS } from './size-variants.js?raw';

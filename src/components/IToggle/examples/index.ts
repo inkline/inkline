@@ -1,15 +1,5 @@
 export { default as IToggleBasicExample } from './basic.vue';
-export { default as IToggleBasicExampleHTML } from './basic.html?raw';
-export { default as IToggleBasicExampleJS } from './basic.js?raw';
 export { default as IToggleColorVariantsExample } from './color-variants.vue';
-export { default as IToggleColorVariantsExampleHTML } from './color-variants.html?raw';
-export { default as IToggleColorVariantsExampleJS } from './color-variants.js?raw';
 export { default as IToggleDisabledExample } from './disabled.vue';
-export { default as IToggleDisabledExampleHTML } from './disabled.html?raw';
-export { default as IToggleDisabledExampleJS } from './disabled.js?raw';
 export { default as IToggleReadonlyExample } from './readonly.vue';
-export { default as IToggleReadonlyExampleHTML } from './readonly.html?raw';
-export { default as IToggleReadonlyExampleJS } from './readonly.js?raw';
 export { default as IToggleSizeVariantsExample } from './size-variants.vue';
-export { default as IToggleSizeVariantsExampleHTML } from './size-variants.html?raw';
-export { default as IToggleSizeVariantsExampleJS } from './size-variants.js?raw';

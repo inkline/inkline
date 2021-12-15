@@ -1,11 +1,13 @@
 import IListGroup from '../index.vue';
-import IListGroupBasicExample from './basic.vue';
-import IListGroupBorderlessExample from './borderless.vue';
-import IListGroupContentExample from './content.vue';
-import IListGroupColorVariantsExample from './color-variants.vue';
-import IListGroupSizeVariantsExample from './size-variants.vue';
-import IListGroupStateActiveExample from './state-active.vue';
-import IListGroupStateDisabledExample from './state-disabled.vue';
+import {
+    IListGroupBasicExample,
+    IListGroupBorderlessExample,
+    IListGroupContentExample,
+    IListGroupColorVariantsExample,
+    IListGroupSizeVariantsExample,
+    IListGroupStateActiveExample,
+    IListGroupStateDisabledExample
+} from './index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

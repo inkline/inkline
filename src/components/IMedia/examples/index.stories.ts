@@ -1,7 +1,9 @@
 import IMedia from '../index.vue';
-import IMediaAlignmentExample from './alignment.vue';
-import IMediaBasicExample from './basic.vue';
-import IMediaNestingExample from './nesting.vue';
+import {
+    IMediaAlignmentExample,
+    IMediaBasicExample,
+    IMediaNestingExample
+} from './index';
 import { createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

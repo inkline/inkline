@@ -1,7 +1,9 @@
 import IHamburgerMenu from '../index.vue';
-import IHamburgerMenuAnimationExample from './animation.vue';
-import IHamburgerMenuBasicExample from './basic.vue';
-import IHamburgerMenuColorVariantsExample from './color-variants.vue';
+import {
+    IHamburgerMenuAnimationExample,
+    IHamburgerMenuBasicExample,
+    IHamburgerMenuColorVariantsExample
+} from './index';
 import { colorArgType, createStory } from '@inkline/inkline/__storybook__';
 
 export default {
