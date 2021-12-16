@@ -1,38 +1,37 @@
 import fs from 'fs';
 import fse from 'fs-extra';
 import path from 'path';
-import { packageFolder } from './config';
-
+import { packageFolderPath } from './config';
 
 const remove = [
     {
-        from: packageFolder,
+        from: packageFolderPath,
         dir: true
     }
 ];
 
 const mkdir = [
     {
-        from: packageFolder
+        from: packageFolderPath
     }
 ];
 
 const copy = [
     {
         from: path.resolve(__dirname, '..', 'lib'),
-        to: packageFolder
+        to: packageFolderPath
     },
     {
         from: path.resolve(__dirname, '..', 'dist'),
-        to: path.resolve(packageFolder, 'dist')
+        to: path.resolve(packageFolderPath, 'dist')
     },
     {
         from: path.resolve(__dirname, '..', 'README.md'),
-        to: path.resolve(packageFolder, 'README.md')
+        to: path.resolve(packageFolderPath, 'README.md')
     },
     {
         from: path.resolve(__dirname, '..', 'LICENSE'),
-        to: path.resolve(packageFolder, 'LICENSE')
+        to: path.resolve(packageFolderPath, 'LICENSE')
     }
 ];
 

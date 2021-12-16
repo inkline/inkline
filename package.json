@@ -9,7 +9,7 @@
     "build:ts:copy": "bash -c 'rsync -am --include=\"*.\"{vue,scss,html,js,md,d.ts} --include=\"*/\" --exclude=\"*\" src/ lib/'",
     "build:ts:replace": "bash -c 'find lib -type f -name *.vue -exec perl -i -pe\"s/.ts\\\" lang=\\\"ts\\\"/.js\\\"/g\" {} +'",
     "build:ts:delete:tests": "find lib -name __tests__ -type d -exec rm -rf {} +",
-    "build:ts:delete:storybook": "rm -r lib/__storybook__ lib/stories && find lib -name index.stories.* -type f -delete",
+    "build:ts:delete:storybook": "rm -r lib/__storybook__ && find lib -name index.stories.* -type f -delete",
     "build:ts:delete": "npm run build:ts:delete:tests && npm run build:ts:delete:storybook",
     "build:ts": "npm run build:ts:compile && npm run build:ts:copy && npm run build:ts:replace && npm run build:ts:delete",
     "build": "npm run build:ts",

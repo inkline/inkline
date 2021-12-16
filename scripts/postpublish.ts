@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { packageFolder } from './config';
+import { packageFolderPath } from './config';
 
 const remove = [
     {
@@ -12,7 +12,7 @@ const remove = [
         dir: true
     },
     {
-        from: packageFolder,
+        from: packageFolderPath,
         dir: true
     }
 ];
