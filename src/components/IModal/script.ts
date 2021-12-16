@@ -191,7 +191,9 @@ export default defineComponent({
 
             OverlayController.open((this as any).name);
 
-            addClass(window.document.body, '-modal');
+            if (typeof window !== 'undefined') {
+                addClass(window.document.body, '-modal');
+            }
         },
         hide (): void {
             if ((this as any).disabled) {
@@ -203,7 +205,9 @@ export default defineComponent({
 
             OverlayController.close((this as any).name);
 
-            removeClass(window.document.body, '-modal');
+            if (typeof window !== 'undefined') {
+                removeClass(window.document.body, '-modal');
+            }
         },
         onClickOutside (): void {
             if (!(this as any).hideOnClickOutside) {
