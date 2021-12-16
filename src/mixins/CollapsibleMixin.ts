@@ -64,7 +64,7 @@ export default defineComponent({
             this.$emit('update:modelValue', this.open);
         },
         onWindowResize () {
-            if (this.collapse === true || this.collapse === false) {
+            if (this.collapse === true || this.collapse === false || typeof window === 'undefined') {
                 return;
             }
 
