@@ -80,7 +80,7 @@ describe('Components', () => {
                             precision: 2
                         }
                     });
-                    const input = await wrapper.getByRole('input');
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     await fireEvent.update(input as Element, '10.25');
                     await fireEvent.blur(input as Element);

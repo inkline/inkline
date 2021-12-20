@@ -114,12 +114,12 @@ export default defineComponent({
         /**
          * The tabindex of the checkbox
          * @type Number | String
-         * @default 1
+         * @default 0
          * @name tabindex
          */
         tabindex: {
             type: [Number, String],
-            default: 1
+            default: 0
         }
     },
     emits: [

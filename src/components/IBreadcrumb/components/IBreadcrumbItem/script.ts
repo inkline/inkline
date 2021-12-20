@@ -46,12 +46,12 @@ export default defineComponent({
         /**
          * The tabindex of the breadcrumb item
          * @type Number | String
-         * @default 1
+         * @default 0
          * @name tabindex
          */
         tabindex: {
             type: [Number, String],
-            default: 1
+            default: 0
         }
     },
     computed: {

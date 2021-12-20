@@ -132,7 +132,7 @@ describe('Components', () => {
                     const wrapper = render(ICheckbox, { props });
                     const labelElement = wrapper.container.querySelector('label');
 
-                    expect(labelElement).toHaveAttribute('tabindex', '1');
+                    expect(labelElement).toHaveAttribute('tabindex', '0');
                 });
             });
         });

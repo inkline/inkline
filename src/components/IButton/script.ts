@@ -135,12 +135,12 @@ export default defineComponent({
         /**
          * The tabindex of the button
          * @type Number | String
-         * @default 1
+         * @default 0
          * @name tabindex
          */
         tabindex: {
             type: [Number, String],
-            default: 1
+            default: 0
         },
         /**
          * The size variant of the button
@@ -169,6 +169,9 @@ export default defineComponent({
         },
         isDisabled (): boolean {
             return this.disabled || (this as any).buttonGroup.disabled || (this as any).form.disabled || (this as any).formGroup.disabled;
+        },
+        role (): string {
+            return this.$attrs.to || this.$attrs.href ? 'link' : 'button';
         },
         tabIndex (): number | string {
             return this.isDisabled ? -1 : this.tabindex;

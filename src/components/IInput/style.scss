@@ -220,8 +220,8 @@
     }
 
     &.-error {
-        .input {
-            ----border-color: color('danger');
+        > .input {
+            ----border-color: #{color('danger')};
         }
     }
 

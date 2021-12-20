@@ -136,7 +136,7 @@ describe('Components', () => {
                     const wrapper = render(ITextarea, { props });
                     const textarea = await wrapper.findByRole('textbox');
 
-                    expect(textarea).toHaveAttribute('tabindex', '1');
+                    expect(textarea).toHaveAttribute('tabindex', '0');
                 });
             });
 

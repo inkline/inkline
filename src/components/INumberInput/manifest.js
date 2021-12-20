@@ -80,7 +80,7 @@ export const manifest = {
                 'Number',
                 'String'
             ],
-            default: '1',
+            default: '0',
             description: 'The tabindex of the input'
         },
         {

@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components IFormGroup should render correctly 1`] = `
-<div class="form-group -light -md" name="form-group" role="inputgroup">
+<fieldset class="form-group -light -md" name="form-group" role="group">
   <div class="input-wrapper -light -md">
     <!--v-if-->
     <div class="input">
-      <!--v-if--><input role="input" contenteditable="true" name="input" type="text" tabindex="1" aria-disabled="false" aria-readonly="false">
+      <!--v-if--><input name="input" type="text" tabindex="0" aria-disabled="false" aria-readonly="false">
       <!--v-if-->
     </div>
     <!--v-if-->
   </div>
-</div>
+</fieldset>
 `;

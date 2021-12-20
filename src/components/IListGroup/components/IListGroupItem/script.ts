@@ -51,12 +51,12 @@ export default defineComponent({
         /**
          * The tabindex of the list group item
          * @type Number | String
-         * @default 1
+         * @default 0
          * @name tabindex
          */
         tabindex: {
             type: [Number, String],
-            default: 1
+            default: 0
         }
     },
     computed: {
