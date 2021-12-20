@@ -10,9 +10,9 @@ exports[`Components INavbar should render correctly 1`] = `
         <transition-stub>
           <div class="navbar-collapsible" aria-hidden="false" aria-expanded="true">
             <nav class="nav -light -md" role="menubar">
-              <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="false">Item 1</div>
-              <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="false">Item 2</div>
-              <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="false">Item 3</div>
+              <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 1</div>
+              <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 2</div>
+              <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 3</div>
             </nav>
           </div>
         </transition-stub>

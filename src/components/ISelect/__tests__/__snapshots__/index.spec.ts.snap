@@ -5,7 +5,7 @@ exports[`Components ISelect props options should render correctly without option
   <div class="input-wrapper -primary -md -suffixed">
     <!--v-if-->
     <div class="input">
-      <!--v-if--><input autocomplete="off" aria-autocomplete="both" aria-controls="select-options" placeholder="" name="select-input" type="text" tabindex="0" aria-disabled="false" readonly="" aria-readonly="true"><span class="input-suffix"><!--v-if--><button class="select-caret"></button></span>
+      <!--v-if--><input autocomplete="off" aria-autocomplete="both" aria-controls="select-options" placeholder="" name="select-input" type="text" tabindex="0" aria-disabled="false" readonly="" aria-readonly="true"><span class="input-suffix"><!--v-if--><button class="select-caret" aria-hidden="true"></button></span>
     </div>
     <!--v-if-->
   </div>
@@ -27,7 +27,7 @@ exports[`Components ISelect should render correctly 1`] = `
   <div class="input-wrapper -primary -md -suffixed">
     <!--v-if-->
     <div class="input">
-      <!--v-if--><input autocomplete="off" aria-autocomplete="both" aria-controls="select-options" placeholder="Option 1" name="select-input" type="text" tabindex="0" aria-disabled="false" readonly="" aria-readonly="true"><span class="input-suffix"><!--v-if--><button class="select-caret"></button></span>
+      <!--v-if--><input autocomplete="off" aria-autocomplete="both" aria-controls="select-options" placeholder="Option 1" name="select-input" type="text" tabindex="0" aria-disabled="false" readonly="" aria-readonly="true"><span class="input-suffix"><!--v-if--><button class="select-caret" aria-hidden="true"></button></span>
     </div>
     <!--v-if-->
   </div>
@@ -37,9 +37,9 @@ exports[`Components ISelect should render correctly 1`] = `
       <div class="select-body">
         <!--v-if-->
         <div class="select-options">
-          <div class="select-option -active" role="option" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="true">Option 1</div>
-          <div class="select-option -active" role="option" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="true">Option 2</div>
-          <div class="select-option -active" role="option" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="true">Option 3</div>
+          <div class="select-option -active" role="option" tabindex="0" aria-disabled="false" aria-selected="true">Option 1</div>
+          <div class="select-option -active" role="option" tabindex="0" aria-disabled="false" aria-selected="true">Option 2</div>
+          <div class="select-option -active" role="option" tabindex="0" aria-disabled="false" aria-selected="true">Option 3</div>
         </div>
       </div>
       <!--v-if-->
