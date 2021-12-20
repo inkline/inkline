@@ -7,9 +7,9 @@
     :tabindex="tabIndex"
     :class="classes"
     :disabled="isDisabled || loading"
-    :aria-disabled="isDisabled"
-    :aria-pressed="active"
-    :aria-busy="loading"
+    :aria-disabled="ariaDisabled"
+    :aria-pressed="ariaPressed"
+    :aria-busy="ariaBusy"
     aria-live="polite"
 >
     <slot v-if="loading" name="loading">

@@ -3,10 +3,11 @@
     class="list-group-item"
     :is="isTag"
     :tag="tag"
+    :role="role"
     :tabindex="tabIndex"
     :class="classes"
     :disabled="disabled"
-    :aria-disabled="disabled"
-    :aria-pressed="active">
+    :aria-disabled="ariaDisabled"
+>
     <slot />
 </component>

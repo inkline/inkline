@@ -68,6 +68,13 @@ export default defineComponent({
         }
     },
     computed: {
+        ariaDisabled () {
+            if (this.role === 'link') {
+                return null;
+            }
+
+            return this.disabled ? 'true' : 'false';
+        },
         classes (): Classes {
             return {
                 '-active': this.active,

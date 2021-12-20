@@ -78,6 +78,12 @@ export default defineComponent({
         }
     },
     computed: {
+        ariaDisabled () {
+            return this.disabled ? 'true' : 'false';
+        },
+        ariaSelected () {
+            return this.active ? 'true' : 'false';
+        },
         isActive (): boolean {
             return this.active || (this.value === (this as any).select.modelValue);
         },
