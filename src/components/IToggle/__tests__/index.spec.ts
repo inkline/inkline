@@ -110,7 +110,7 @@ describe('Components', () => {
                     const wrapper = render(IToggle, { props });
                     const labelElement = wrapper.container.querySelector('label');
 
-                    expect(labelElement).toHaveAttribute('tabindex', '1');
+                    expect(labelElement).toHaveAttribute('tabindex', '0');
                 });
             });
         });

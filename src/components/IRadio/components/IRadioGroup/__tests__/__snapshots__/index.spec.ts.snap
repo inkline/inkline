@@ -2,8 +2,8 @@
 
 exports[`Components IRadioGroup should render correctly 1`] = `
 <div class="form-group radio-group -light -md" name="radio-group" role="radiogroup">
-  <div class="radio -light" role="radio"><input type="radio" tabindex="-1" name="radio-1"><label class="radio-label" aria-checked="false" tabindex="1"></label></div>
-  <div class="radio -light" role="radio"><input type="radio" tabindex="-1" name="radio-2"><label class="radio-label" aria-checked="false" tabindex="1"></label></div>
-  <div class="radio -light" role="radio"><input type="radio" tabindex="-1" name="radio-3"><label class="radio-label" aria-checked="false" tabindex="1"></label></div>
+  <div class="radio -light" role="radio"><input type="radio" tabindex="-1" name="radio-1"><label class="radio-label" aria-checked="false" tabindex="0"></label></div>
+  <div class="radio -light" role="radio"><input type="radio" tabindex="-1" name="radio-2"><label class="radio-label" aria-checked="false" tabindex="0"></label></div>
+  <div class="radio -light" role="radio"><input type="radio" tabindex="-1" name="radio-3"><label class="radio-label" aria-checked="false" tabindex="0"></label></div>
 </div>
 `;

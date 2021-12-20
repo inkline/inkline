@@ -5,7 +5,7 @@ exports[`Components IForm should render correctly 1`] = `
   <div class="input-wrapper -light -md">
     <!--v-if-->
     <div class="input">
-      <!--v-if--><input role="input" contenteditable="true" name="input" type="text" tabindex="1" aria-disabled="false" aria-readonly="false">
+      <!--v-if--><input name="input" type="text" tabindex="0" aria-disabled="false" aria-readonly="false">
       <!--v-if-->
     </div>
     <!--v-if-->

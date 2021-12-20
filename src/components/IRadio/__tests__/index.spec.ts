@@ -95,7 +95,7 @@ describe('Components', () => {
                     const wrapper = render(IRadio, { props });
                     const labelElement = wrapper.container.querySelector('label');
 
-                    expect(labelElement).toHaveAttribute('tabindex', '1');
+                    expect(labelElement).toHaveAttribute('tabindex', '0');
                 });
             });
         });

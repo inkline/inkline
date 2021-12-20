@@ -2,7 +2,7 @@
 
 exports[`Components IDropdown should render correctly 1`] = `
 <div class="dropdown-wrapper" aria-haspopup="true">
-  <div class="dropdown-trigger"><button class="button -light -md" tag="button" tabindex="1" aria-pressed="false" aria-busy="false" aria-live="polite">
+  <div class="dropdown-trigger"><button class="button -light -md" tag="button" role="button" tabindex="0" aria-pressed="false" aria-busy="false" aria-live="polite">
       <!--v-if-->
     </button></div>
   <transition-stub>

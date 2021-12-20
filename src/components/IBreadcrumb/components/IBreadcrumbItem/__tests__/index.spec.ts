@@ -53,11 +53,11 @@ describe('Components', () => {
                     expect(link).toHaveAttribute('tabindex', '-1');
                 });
 
-                it('should be 1 otherwise', () => {
+                it('should be 0 otherwise', () => {
                     const wrapper = render(IBreadcrumbItem);
                     const link = wrapper.container.querySelector('a');
 
-                    expect(link).toHaveAttribute('tabindex', '1');
+                    expect(link).toHaveAttribute('tabindex', '0');
                 });
             });
 

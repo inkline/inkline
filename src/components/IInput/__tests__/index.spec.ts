@@ -28,7 +28,7 @@ describe('Components', () => {
                             size: props.size
                         }
                     });
-                    const inputElement = wrapper.container.querySelector('input');
+                    const inputElement = wrapper.container.querySelector('input')!;
 
                     expect(inputElement).toHaveAttribute('name', expect.stringContaining('input'));
                 });
@@ -127,16 +127,16 @@ describe('Components', () => {
                         }
                     });
 
-                    const input = await wrapper.findByRole('input');
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     expect(input).toHaveAttribute('tabindex', '-1');
                 });
 
                 it('should be 1 otherwise', async () => {
                     const wrapper = render(IInput, { props });
-                    const input = await wrapper.findByRole('input');
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
-                    expect(input).toHaveAttribute('tabindex', '1');
+                    expect(input).toHaveAttribute('tabindex', '0');
                 });
             });
 
@@ -172,7 +172,7 @@ describe('Components', () => {
                         },
                         props
                     });
-                    const input = await wrapper.findByRole('input');
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     expect(input).toHaveValue(value);
                 });
@@ -185,7 +185,7 @@ describe('Components', () => {
                             ...props
                         }
                     });
-                    const input = await wrapper.findByRole('input');
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     expect(input).toHaveValue(value);
                 });
@@ -206,7 +206,7 @@ describe('Components', () => {
                         },
                         props
                     });
-                    const input = await wrapper.findByRole('input');
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     await fireEvent.blur(input);
 
@@ -223,7 +223,7 @@ describe('Components', () => {
                         },
                         props
                     });
-                    const input = await wrapper.findByRole('input');
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     await fireEvent.blur(input);
 
@@ -245,7 +245,7 @@ describe('Components', () => {
                         },
                         props
                     });
-                    const input = await wrapper.findByRole('input');
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     await fireEvent.update(input, 'value');
 
@@ -263,7 +263,7 @@ describe('Components', () => {
                         },
                         props
                     });
-                    const input = await wrapper.findByRole('input');
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     await fireEvent.blur(input);
 

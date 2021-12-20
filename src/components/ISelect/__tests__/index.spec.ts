@@ -151,7 +151,7 @@ describe('Components', () => {
                     const wrapper = render(ISelect, { props });
                     const input = wrapper.container.querySelector('input');
 
-                    expect(input).toHaveAttribute('tabindex', '1');
+                    expect(input).toHaveAttribute('tabindex', '0');
                 });
             });
 
@@ -386,7 +386,7 @@ describe('Components', () => {
                             ...props
                         }
                     });
-                    const trigger = await wrapper.getByRole('input');
+                    const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                     const menu = wrapper.container.querySelector('[role="listbox"]');
                     await fireEvent.keyDown(trigger, { key: keymap.up[1] });
                     expect(menu).not.toBeVisible();
@@ -398,7 +398,7 @@ describe('Components', () => {
                             const wrapper = render(ISelect, {
                                 props
                             });
-                            const trigger = await wrapper.getByRole('input');
+                            const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                             await fireEvent.keyDown(trigger, { key: keymap[key][1] });
                             const menu = await wrapper.getByRole('listbox');
                             expect(menu).toBeVisible();
@@ -411,7 +411,7 @@ describe('Components', () => {
                         const wrapper = render(ISelect, {
                             props
                         });
-                        const trigger = await wrapper.getByRole('input');
+                        const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                         await fireEvent.keyDown(trigger, { key: keymap.enter[0] });
                         const menu = await wrapper.getByRole('listbox');
                         expect(menu).toBeVisible();
@@ -424,7 +424,7 @@ describe('Components', () => {
                             const wrapper = render(ISelect, {
                                 props
                             });
-                            const trigger = await wrapper.getByRole('input');
+                            const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                             await fireEvent.click(trigger);
                             const menu = await wrapper.getByRole('listbox');
                             await fireEvent.keyDown(trigger, { key: keymap[key][0] });
@@ -442,7 +442,7 @@ describe('Components', () => {
                             ...props
                         }
                     });
-                    const trigger = await wrapper.getByRole('input');
+                    const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                     await fireEvent.click(trigger);
                     const menuItems = await wrapper.getAllByRole('option');
                     await fireEvent.keyDown(menuItems[0], { key: keymap.up[1] });
@@ -456,7 +456,7 @@ describe('Components', () => {
                                 ...props
                             }
                         });
-                        const trigger = await wrapper.getByRole('input');
+                        const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                         await fireEvent.click(trigger);
                         const menuItems = await wrapper.getAllByRole('option');
                         menuItems[1].focus();
@@ -470,7 +470,7 @@ describe('Components', () => {
                                 ...props
                             }
                         });
-                        const trigger = await wrapper.getByRole('input');
+                        const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                         await fireEvent.click(trigger);
                         const menuItems = await wrapper.getAllByRole('option');
                         menuItems[0].focus();
@@ -486,7 +486,7 @@ describe('Components', () => {
                                 ...props
                             }
                         });
-                        const trigger = await wrapper.getByRole('input');
+                        const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                         await fireEvent.click(trigger);
                         const menuItems = await wrapper.getAllByRole('option');
                         menuItems[0].focus();
@@ -500,7 +500,7 @@ describe('Components', () => {
                                 ...props
                             }
                         });
-                        const trigger = await wrapper.getByRole('input');
+                        const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                         await fireEvent.click(trigger);
                         const menuItems = await wrapper.getAllByRole('option');
                         menuItems[1].focus();
@@ -518,7 +518,7 @@ describe('Components', () => {
                                     ...props
                                 }
                             });
-                            const trigger = await wrapper.getByRole('input');
+                            const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                             await fireEvent.click(trigger);
                             const menuItems = await wrapper.getAllByRole('option');
                             await fireEvent.keyDown(menuItems[0], { key: keymap[key][0] });
@@ -532,7 +532,7 @@ describe('Components', () => {
                                     ...props
                                 }
                             });
-                            const trigger = await wrapper.getByRole('input');
+                            const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                             await fireEvent.click(trigger);
                             const menu = await wrapper.getByRole('listbox');
                             const menuItems = await wrapper.getAllByRole('option');
@@ -551,7 +551,7 @@ describe('Components', () => {
                                     ...props
                                 }
                             });
-                            const trigger = await wrapper.getByRole('input');
+                            const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                             await fireEvent.click(trigger);
                             const menu = await wrapper.getByRole('listbox');
                             const menuItems = await wrapper.getAllByRole('option');

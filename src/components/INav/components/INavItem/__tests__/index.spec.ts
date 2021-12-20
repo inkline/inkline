@@ -50,7 +50,7 @@ describe('Components', () => {
                 it('should be 1 otherwise', () => {
                     const wrapper = render(INavItem, { props });
 
-                    expect(wrapper.container.firstChild).toHaveAttribute('tabindex', '1');
+                    expect(wrapper.container.firstChild).toHaveAttribute('tabindex', '0');
                 });
             });
         });

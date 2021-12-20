@@ -320,12 +320,12 @@ export default defineComponent({
         /**
          * The tabindex of the select
          * @type Number | String
-         * @default 1
+         * @default 0
          * @name tabindex
          */
         tabindex: {
             type: [Number, String],
-            default: 1
+            default: 0
         },
         /**
          * The type of the select

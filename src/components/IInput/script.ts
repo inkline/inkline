@@ -155,12 +155,12 @@ export default defineComponent({
         /**
          * The tabindex of the input
          * @type Number | String
-         * @default 1
+         * @default 0
          * @name tabindex
          */
         tabindex: {
             type: [Number, String],
-            default: 1
+            default: 0
         },
         /**
          * The type of the input

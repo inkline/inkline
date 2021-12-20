@@ -66,7 +66,7 @@ export default defineComponent({
         /**
          * The tabindex of the list group item
          * @type Number | String
-         * @default 1
+         * @default 0
          * @name tabindex
          */
         tabindex: {
@@ -81,6 +81,9 @@ export default defineComponent({
                 '-disabled': this.disabled,
                 '-plaintext': this.plaintext
             };
+        },
+        role (): string {
+            return this.$attrs.to || this.$attrs.href ? 'link' : 'menuitem';
         },
         tabIndex (): number | string {
             return this.disabled ? -1 : this.tabindex;

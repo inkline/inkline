@@ -4,7 +4,7 @@ exports[`Components ITextarea should render correctly 1`] = `
 <div class="input-wrapper -light -md">
   <!--v-if-->
   <div class="input">
-    <!--v-if--><textarea role="textbox" name="textarea" id="" tabindex="1" aria-disabled="false" aria-readonly="false" aria-multiline="true"></textarea>
+    <!--v-if--><textarea role="textbox" name="textarea" id="" tabindex="0" aria-disabled="false" aria-readonly="false" aria-multiline="true"></textarea>
     <!--v-if-->
   </div>
   <!--v-if-->
