@@ -7,8 +7,7 @@
     :tabindex="tabIndex"
     :class="classes"
     :disabled="disabled"
-    :aria-disabled="disabled ? 'true' : 'false'"
-    :aria-pressed="active ? 'true' : 'false'"
+    :aria-disabled="ariaDisabled"
     @click="onClick"
 >
     <slot />

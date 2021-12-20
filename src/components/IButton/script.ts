@@ -155,6 +155,27 @@ export default defineComponent({
         }
     },
     computed: {
+        ariaBusy () {
+            if (this.role !== 'button') {
+                return null;
+            }
+
+            return this.loading ? 'true' : 'false';
+        },
+        ariaDisabled () {
+            if (this.role !== 'button') {
+                return null;
+            }
+
+            return this.disabled ? 'true' : 'false';
+        },
+        ariaPressed () {
+            if (this.role !== 'button') {
+                return null;
+            }
+
+            return this.active ? 'true' : 'false';
+        },
         classes (): Classes {
             return {
                 ...colorVariantClass(this),

@@ -60,11 +60,21 @@ export default defineComponent({
         }
     },
     computed: {
+        ariaDisabled () {
+            if (this.role === 'link') {
+                return null;
+            }
+
+            return this.disabled ? 'true' : 'false';
+        },
         classes (): Classes {
             return {
                 '-active': this.active,
                 '-disabled': this.disabled
             };
+        },
+        role (): string {
+            return this.$attrs.to || this.$attrs.href ? 'link' : 'listitem';
         },
         tabIndex (): number | string {
             return this.disabled ? -1 : this.tabindex;
