@@ -7,9 +7,9 @@ exports[`Components ISidebar should render correctly 1`] = `
       <div class="sidebar">
         <div class="sidebar-content">
           <nav class="nav -light -md" role="menubar">
-            <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="false">Item 1</div>
-            <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="false">Item 2</div>
-            <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false" aria-pressed="false">Item 3</div>
+            <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 1</div>
+            <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 2</div>
+            <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 3</div>
           </nav>
         </div>
       </div>
