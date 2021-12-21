@@ -16,7 +16,12 @@
     @extend %card-preview;
 
     .storybook-example {
+        @extend %card-preview;
         @extend %layout-preview;
         @extend %grid-preview;
+
+        .layout-content {
+            min-height: 300px;
+        }
     }
 }

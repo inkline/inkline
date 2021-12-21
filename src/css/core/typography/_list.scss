@@ -26,7 +26,7 @@ dl,
             margin-bottom: 0;
 
             &:not(:last-child) {
-                margin-right: var(--list--padding--inline);
+                margin-right: var(--list--item--padding--inline);
             }
         }
     }
