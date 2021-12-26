@@ -1,5 +1,3 @@
-import qs from 'qs';
-
 export default {
     data () {
         return {
@@ -18,7 +16,8 @@ export default {
         async fetchOptions () {
             this.loading = true;
 
-            const response = await fetch(`/api/users?${qs.stringify(this.params)}`);
+            const query = new URLSearchParams(this.params).toString();
+            const response = await fetch(`/api/users?${query}`);
             const { items, total } = await response.json();
 
             if (this.params.page === 1) {
