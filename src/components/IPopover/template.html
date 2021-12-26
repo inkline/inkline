@@ -1,7 +1,8 @@
 <div
     class="popover-wrapper"
-    :class="classes"
     ref="wrapper"
+    :class="classes"
+    :id="name"
     v-click-outside="onClickOutside"
     @keyup.esc="onEscape"
 >
@@ -16,7 +17,7 @@
     </div>
 
     <transition
-        nme="zoom-in-top-transition"
+        name="zoom-in-top-transition"
         @after-leave="destroyPopper"
     >
         <div

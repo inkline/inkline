@@ -1,52 +1,23 @@
-<i-form v-model="schema" @submit="onSubmit">
-    <i-form-group name="group1">
-        <i-form-label for="input1">Input 1</i-form-label>
-        <i-input id="input1" name="input1" placeholder="Type something.." />
-    </i-form-group>
-
-    <i-form-group name="group2">
-        <i-form-label>Input 2</i-form-label>
-        <i-input name="input1" placeholder="Type something.." />
-
-        <i-form-group name="group1">
-            <i-form-label>Input 3</i-form-label>
-            <i-input name="input1" placeholder="Type something.." />
-        </i-form-group>
-    </i-form-group>
-
-    <i-form-group name="group3">
-        <i-form-group v-for="(input, index) in schema.group3" :key="index">
-            <i-form-label>Input {{index}}</i-form-label>
-            <i-input :name="index" placeholder="Type something.." />
-        </i-form-group>
-
-        <i-button @click="addRow" type="button">Add Row</i-button>
-    </i-form-group>
-
-    <i-form name="form4">
-        <i-form-group name="group1">
-            <i-form-label>Input</i-form-label>
-            <i-input name="input1" placeholder="Type something.." />
-        </i-form-group>
-    </i-form>
-
+<i-form v-model="form" @submit="onSubmit">
     <i-form-group>
-        <i-form-label>Input 1</i-form-label>
-        <i-input name="group5.input1" placeholder="Type something.." />
-
-        <div v-if="schema.group5.example">
-            <i-form-label>Input 2</i-form-label>
-            <i-input name="group5.example" placeholder="Type something.." />
-        </div>
-
-        <i-form-group name="group5.group1">
-            <i-form-label>Input 3</i-form-label>
-            <i-input name="input1" placeholder="Type something.." />
-        </i-form-group>
+        <i-form-label>Username</i-form-label>
+        <i-input name="username" placeholder="Enter a username.." />
     </i-form-group>
-
     <i-form-group>
-        <i-button type="submit">Submit</i-button>
-        <i-button type="button" class="_margin-left" @click="setRow">Set Row</i-button>
+        <i-form-label>Password</i-form-label>
+        <i-input name="password" type="password" placeholder="Enter a password.." />
+    </i-form-group>
+    <i-form-group>
+        <i-button
+            type="submit"
+            :disabled="form.untouched || form.pristine"
+            block
+        >
+            Sign up
+        </i-button>
     </i-form-group>
 </i-form>
+
+<pre class="_margin-top:2 _text:muted">
+{{ form }}
+</pre>

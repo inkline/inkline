@@ -20,5 +20,5 @@ $z-index: (
 );
 
 @function z-index($z-index-key) {
-    @return var(--z-index-#{$z-index-key});
+    @return var(--z-index--#{$z-index-key});
 }

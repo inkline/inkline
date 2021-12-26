@@ -18,7 +18,7 @@
         /// The padding right of the header component, for the sm size variant
         /// @name padding-right
         ////
-        ----padding-right: calc(#{0} * #{size-multiplier('sm')});
+        ----padding-right: calc(#{0rem} * #{size-multiplier('sm')});
         ////
         /// The padding bottom of the header component, for the sm size variant
         /// @name padding-bottom
@@ -28,7 +28,7 @@
         /// The padding left of the header component, for the sm size variant
         /// @name padding-left
         ////
-        ----padding-left: calc(#{0} * #{size-multiplier('sm')});
+        ----padding-left: calc(#{0rem} * #{size-multiplier('sm')});
     }
     ////
     /// Variables for the md size variant
@@ -45,7 +45,7 @@
         /// The padding right of the header component, for the md size variant
         /// @name padding-right
         ////
-        ----padding-right: calc(#{0} * #{size-multiplier('md')});
+        ----padding-right: calc(#{0rem} * #{size-multiplier('md')});
         ////
         /// The padding bottom of the header component, for the md size variant
         /// @name padding-bottom
@@ -55,7 +55,7 @@
         /// The padding left of the header component, for the md size variant
         /// @name padding-left
         ////
-        ----padding-left: calc(#{0} * #{size-multiplier('md')});
+        ----padding-left: calc(#{0rem} * #{size-multiplier('md')});
     }
     ////
     /// Variables for the lg size variant
@@ -72,7 +72,7 @@
         /// The padding right of the header component, for the lg size variant
         /// @name padding-right
         ////
-        ----padding-right: calc(#{0} * #{size-multiplier('lg')});
+        ----padding-right: calc(#{0rem} * #{size-multiplier('lg')});
         ////
         /// The padding bottom of the header component, for the lg size variant
         /// @name padding-bottom
@@ -82,6 +82,6 @@
         /// The padding left of the header component, for the lg size variant
         /// @name padding-left
         ////
-        ----padding-left: calc(#{0} * #{size-multiplier('lg')});
+        ----padding-left: calc(#{0rem} * #{size-multiplier('lg')});
     }
 }

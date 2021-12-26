@@ -28,7 +28,8 @@
     }
 
     &.-active {
+        ----color: var(----color--active);
+
         font-weight: bold;
-        color: var(----color--active);
     }
 }
