@@ -4,11 +4,11 @@ import path from 'path';
 const rename = [
     {
         from: path.resolve(__dirname, '..', 'dist', 'inkline.es.js'),
-        to: path.resolve(__dirname, '..', 'dist', 'inkline.js'),
+        to: path.resolve(__dirname, '..', 'dist', 'inkline.js')
     },
     {
         from: path.resolve(__dirname, '..', 'dist', 'style.css'),
-        to: path.resolve(__dirname, '..', 'dist', 'inkline.css'),
+        to: path.resolve(__dirname, '..', 'dist', 'inkline.css')
     }
 ];
 
