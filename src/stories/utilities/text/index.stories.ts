@@ -14,7 +14,8 @@ import {
     TextResetExample,
     TextTransformExample,
     TextTruncateExample,
-    TextWrapExample
+    TextWrapExample,
+    TextListsExample
 } from './index';
 
 export default {
@@ -37,3 +38,4 @@ export const Reset = () => TextResetExample;
 export const Transform = () => TextTransformExample;
 export const Truncate = () => TextTruncateExample;
 export const Wrap = () => TextWrapExample;
+export const Lists = () => TextListsExample;

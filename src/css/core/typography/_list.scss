@@ -1,6 +1,6 @@
 /**
-    * Lists
-    */
+ * Lists
+ */
 
 ul,
 ol,
@@ -11,12 +11,14 @@ dl,
         margin-bottom: var(--list--item--margin-bottom);
     }
 
-    &.-unstyled {
+    &.-unstyled,
+    &._list\:unstyled {
         padding-left: 0;
         list-style: none;
     }
 
-    &.-inline {
+    &.-inline,
+    &._list\:inline {
         padding-left: 0;
         list-style: none;
 
