@@ -1,3 +1,4 @@
+export { default as TextListsExample } from './lists.vue';
 export { default as TextFontMonospaceExample } from './font-monospace.vue';
 export { default as TextFontSizeExample } from './font-size.vue';
 export { default as TextFontStyleItalicExample } from './font-style-italic.vue';
