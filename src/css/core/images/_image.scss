@@ -13,7 +13,9 @@
 %image-thumbnail {
     padding: var(--thumbnail--padding);
     background-color: var(--thumbnail--background);
-    border: var(--thumbnail--border-width) solid var(--thumbnail--border-color);
+    border-width: var(--thumbnail--border-width);
+    border-style: var(--border-style);
+    border-color: var(--thumbnail--border-color);
     border-radius: var(--thumbnail--border-radius);
     transition: var(--thumbnail--transition);
     box-shadow: var(--thumbnail--box-shadow);
