@@ -35,7 +35,7 @@ describe('Factories', () => {
             describe('zIndex', () => {
                 it('should be defined', () => {
                     expect(OverlayController.zIndex).toBeDefined();
-                    expect(OverlayController.zIndex).toEqual(1000);
+                    expect(OverlayController.zIndex).toEqual(1050);
                 });
             });
         });
@@ -67,7 +67,7 @@ describe('Factories', () => {
 
                 expect(spy).toHaveBeenCalled();
                 expect(OverlayController.stack).toEqual([]);
-                expect(instance.$el.style.zIndex).toEqual(1000);
+                expect(instance.$el.style.zIndex).toEqual(1050);
             });
 
             it('should not react to other key other than Escape', async () => {
