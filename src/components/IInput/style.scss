@@ -70,15 +70,15 @@
         background-color: var(----background);
         font-size: var(----font-size);
 
+        &:hover {
+            ----border-color: var(----border-color--hover);
+        }
+
         // Customize the `:focus` state to imitate native WebKit styles.
         &:focus-within {
             outline: 0;
             box-shadow: var(----box-shadow);
             ----border-color: var(----border-color--focus);
-        }
-
-        &:hover {
-            ----border-color: var(----border-color--hover);
         }
 
         > input,
