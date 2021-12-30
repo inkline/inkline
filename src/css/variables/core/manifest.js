@@ -21,6 +21,16 @@ export const manifest = {
                 name: 'body--color--dark',
                 value: 'var(--color--gray-10)',
                 description: 'The body background color for the dark color mode'
+            },
+            {
+                name: 'body--background',
+                value: 'var(--body--background--light)',
+                description: 'The body background color. Changes based on selected color mode.'
+            },
+            {
+                name: 'body--color',
+                value: 'var(--body--color--light)',
+                description: 'The body background color. Changes based on selected color mode.'
             }
         ]
     }

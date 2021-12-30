@@ -34,19 +34,19 @@ export const manifest = {
                 description: 'The composed border-width of the design system'
             },
             {
-                name: 'border-color',
-                value: 'var(--color--gray-30)',
-                description: 'The default border-color of the design system border'
-            },
-            {
                 name: 'border-color--light',
-                value: 'var(--border-color)',
+                value: 'var(--color--gray-30)',
                 description: 'The light mode border-color of the design system border'
             },
             {
                 name: 'border-color--dark',
                 value: 'var(--color--gray-70)',
                 description: 'The dark mode border-color of the design system border'
+            },
+            {
+                name: 'border-color',
+                value: 'var(--border-color--light)',
+                description: 'The border-color of the design system border. Changes based on selected color mode.'
             },
             {
                 name: 'border-top-left-radius',
