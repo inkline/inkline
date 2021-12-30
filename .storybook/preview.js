@@ -1,9 +1,11 @@
 import { app } from '@storybook/vue3';
-import Inkline from '../src/inkline';
-import '../src/css/index.scss';
+import { Inkline, components } from '../src/inkline';
+import '../src/inkline.scss';
 import './preview.scss';
 
-app.use(Inkline);
+app.use(Inkline, {
+    components
+});
 
 export const parameters = {
     actions: {

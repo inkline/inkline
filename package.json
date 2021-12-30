@@ -33,10 +33,10 @@
     "build-storybook": "build-storybook"
   },
   "main": "dist/inkline.js",
-  "module": "index.js",
+  "module": "inkline.js",
   "jsdelivr": "dist/inkline.umd.js",
   "unpkg": "dist/inkline.umd.js",
-  "types": "index.d.ts",
+  "types": "inkline.d.ts",
   "dependencies": {
     "@inkline/icons": "1.4.13",
     "@popperjs/core": "2.11.0"
