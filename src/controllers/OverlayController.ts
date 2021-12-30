@@ -3,7 +3,7 @@ import { isKey } from '@inkline/inkline/helpers';
 export const OverlayController = {
     instances: {} as { [key: string]: any },
     stack: [] as string[],
-    zIndex: 1000,
+    zIndex: 1050,
     register (instance: any) {
         if (instance && instance.name) {
             OverlayController.instances[instance.name] = instance;
