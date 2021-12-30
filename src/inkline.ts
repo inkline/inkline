@@ -2,15 +2,17 @@ import '@inkline/inkline/inkline.scss';
 import { Inkline } from '@inkline/inkline/plugin';
 import * as components from '@inkline/inkline/components';
 
-const install = Inkline.install;
-Inkline.install = (Vue, options = {}) => install!.call(Inkline, Vue, { components, ...options });
+export * from '@inkline/inkline/plugin';
+export * from '@inkline/inkline/components';
+export * from '@inkline/inkline/composition-api';
+export * from '@inkline/inkline/constants';
+export * from '@inkline/inkline/controllers';
+export * from '@inkline/inkline/directives';
+export * from '@inkline/inkline/helpers';
+export * from '@inkline/inkline/i18n';
+export * from '@inkline/inkline/mixins';
+export * from '@inkline/inkline/transitions';
+export * from '@inkline/inkline/validation';
+export { components };
 
-/**
- * Integrate automatically when referenced from CDN
- */
-if (typeof window !== 'undefined' && (window as any).Vue) {
-    (window as any).Vue.use(Inkline);
-}
-
-export { Inkline };
 export default Inkline;
