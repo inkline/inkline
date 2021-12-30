@@ -42,8 +42,8 @@ html {
 
 body {
     margin: 0;
-    color: var(--body-color-light);
-    background-color: var(--body-background-light);
+    color: var(--body--color);
+    background-color: var(--body--background);
 }
 
 body.inkline {
@@ -51,11 +51,10 @@ body.inkline {
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--transition-easing);
 
-    @each $color-variant-key, $color-variant-value in $body-color-variants {
-        &.-#{$color-variant-key} {
-            color: var(--body--color--#{$color-variant-key});
-            background-color: var(--body--background--#{$color-variant-key});
-        }
+    &.-dark {
+        --border-color: var(--border-color--dark);
+        --body--color: var(--body--color--dark);
+        --body--background: var(--body--background--dark);
     }
 }
 
