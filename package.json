@@ -33,7 +33,7 @@
     "build-storybook": "build-storybook"
   },
   "main": "dist/inkline.js",
-  "module": "index.js",
+  "module": "inkline.js",
   "jsdelivr": "dist/inkline.umd.js",
   "unpkg": "dist/inkline.umd.js",
   "types": "inkline.d.ts",
