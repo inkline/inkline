@@ -3,8 +3,7 @@ import { Plugin, reactive, watch } from 'vue';
 import { addClass, removeClass } from '@inkline/inkline/helpers';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
-import { InklineIcons } from '@inkline/icons';
-import * as inklineIconsPack from '@inkline/icons/packs/inkline';
+import { InklineIcons, inklineIconsPack } from '@inkline/icons';
 
 export interface PrototypeConfig {
     colorMode: 'system' | 'light' | 'dark' | string;

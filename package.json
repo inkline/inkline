@@ -40,7 +40,7 @@
   "unpkg": "dist/inkline.umd.js",
   "types": "inkline.d.ts",
   "dependencies": {
-    "@inkline/icons": "1.5.2",
+    "@inkline/icons": "1.5.4",
     "@popperjs/core": "2.11.0"
   },
   "devDependencies": {
@@ -80,7 +80,7 @@
     "jest-serializer-vue": "2.0.2",
     "jest-transform-stub": "2.0.0",
     "miragejs": "0.1.43",
-    "mjscjs": "1.0.6",
+    "mjscjs": "1.0.7",
     "np": "7.6.0",
     "postcss": "8.4.5",
     "postcss-preset-env": "7.0.1",
