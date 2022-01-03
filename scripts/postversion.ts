@@ -12,11 +12,7 @@ const copy = [
 (async () => {
     for (const entry of copy) {
         try {
-            const buffer = await fse.readFile(entry.from);
-            const contents = buffer.toString()
-                .replace('"module": "inkline.js",', '"type": "module",\n  "module": "inkline.js",');
-
-            await fse.writeFile(entry.to, contents);
+            await fse.copyFile(entry.from, entry.to);
         } catch (err: any) {
             console.log(err.message);
         }

@@ -5,9 +5,11 @@
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
     "dev": "npm run storybook",
-    "build:ts:compile": "tsc -d -p tsconfig.json && tsconfig-replace-paths --project tsconfig.json",
-    "build:ts:copy": "bash -c 'rsync -am --include=\"*.\"{vue,scss,html,js,md,d.ts} --include=\"*/\" --exclude=\"*\" src/ lib/'",
-    "build:ts:replace": "bash -c 'find lib -type f -name *.vue -exec perl -i -pe\"s/.ts\\\" lang=\\\"ts\\\"/.js\\\"/g\" {} +'",
+    "build:ts:compile:mjs": "tsc -d -p tsconfig.mjs.json && mjscjs -p tsconfig.mjs.json",
+    "build:ts:compile:cjs": "tsc -d -p tsconfig.cjs.json && mjscjs -p tsconfig.cjs.json",
+    "build:ts:compile": "npm run build:ts:compile:cjs && npm run build:ts:compile:mjs",
+    "build:ts:copy": "rimraf lib && mkdir lib && cp -r lib-cjs/* lib && cp -r lib-mjs/* lib && rimraf lib-cjs lib-mjs && bash -c 'rsync -am --include=\"*.\"{vue,scss,html,js,md,d.ts} --include=\"*/\" --exclude=\"*\" src/ lib/'",
+    "build:ts:replace": "bash -c 'find lib -type f -name *.vue -exec perl -i -pe\"s/.ts\\\" lang=\\\"ts\\\"/.mjs\\\"/g\" {} +'",
     "build:ts:delete:tests": "find lib -name __tests__ -type d -exec rm -rf {} +",
     "build:ts:delete:storybook": "rm -r lib/__storybook__ && find lib -name index.stories.* -type f -delete",
     "build:ts:delete": "npm run build:ts:delete:tests && npm run build:ts:delete:storybook",
@@ -32,13 +34,13 @@
     "build:storybook": "build-storybook",
     "build-storybook": "build-storybook"
   },
-  "main": "dist/inkline.js",
-  "module": "inkline.js",
+  "main": "inkline.cjs",
+  "module": "inkline.mjs",
   "jsdelivr": "dist/inkline.umd.js",
   "unpkg": "dist/inkline.umd.js",
   "types": "inkline.d.ts",
   "dependencies": {
-    "@inkline/icons": "1.4.15",
+    "@inkline/icons": "1.5.2",
     "@popperjs/core": "2.11.0"
   },
   "devDependencies": {
@@ -78,6 +80,7 @@
     "jest-serializer-vue": "2.0.2",
     "jest-transform-stub": "2.0.0",
     "miragejs": "0.1.43",
+    "mjscjs": "1.0.6",
     "np": "7.6.0",
     "postcss": "8.4.5",
     "postcss-preset-env": "7.0.1",
