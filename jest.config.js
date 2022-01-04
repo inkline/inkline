@@ -9,9 +9,6 @@ module.exports = {
         '^.+\\.c?m?jsx?$': 'babel-jest',
         '^.+\\.c?m?tsx?$': 'ts-jest'
     },
-    transformIgnorePatterns: [
-        'node_modules/?!(@inkline/icons)'
-    ],
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/src/$1',
         '^@inkline/inkline/(.*)$': '<rootDir>/src/$1'
