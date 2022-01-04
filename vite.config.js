@@ -29,7 +29,8 @@ export default defineConfig({
     build: {
         lib: {
             entry: resolve(__dirname, 'src', 'main.ts'),
-            name: 'Inkline'
+            name: 'Inkline',
+            fileName: (format) => `inkline.${format}.js`
         },
         rollupOptions: {
             // make sure to externalize deps that shouldn't be bundled

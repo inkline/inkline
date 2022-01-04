@@ -3,7 +3,8 @@ import { Plugin, reactive, watch } from 'vue';
 import { addClass, removeClass } from '@inkline/inkline/helpers';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
-import { InklineIcons, inklineIconsPack } from '@inkline/icons';
+import { IconController } from '@inkline/inkline/controllers';
+import * as inklineIcons from '@inkline/inkline/icons';
 
 export interface PrototypeConfig {
     colorMode: 'system' | 'light' | 'dark' | string;
@@ -103,12 +104,8 @@ export const Inkline: Plugin = {
          * Register Inkline plugins
          */
 
-        InklineIcons.add(inklineIconsPack);
-        InklineIcons.add(extendedOptions.icons);
-
-        app.use(InklineIcons, {
-            registerComponent: false
-        });
+        IconController.addMultiple(inklineIcons);
+        IconController.addMultiple(extendedOptions.icons);
 
         /**
          * Register components provided through options globally
