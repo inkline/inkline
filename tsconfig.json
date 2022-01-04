@@ -27,7 +27,8 @@
             "vite/client",
             "@testing-library/jest-dom",
             "@types/node",
-            "@types/jest"
+            "@types/jest",
+            "@types/shelljs"
         ]
     },
     "include": [
