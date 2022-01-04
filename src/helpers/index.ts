@@ -20,6 +20,7 @@ export * from '@inkline/inkline/helpers/off';
 export * from '@inkline/inkline/helpers/on';
 export * from '@inkline/inkline/helpers/once';
 export * from '@inkline/inkline/helpers/query';
+export * from '@inkline/inkline/helpers/renderSvg';
 export * from '@inkline/inkline/helpers/removeClass';
 export * from '@inkline/inkline/helpers/slugify';
 export * from '@inkline/inkline/helpers/sortByPath';

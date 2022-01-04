@@ -2,7 +2,7 @@ import { OverlayController } from '@inkline/inkline/controllers';
 import { fireEvent } from '@testing-library/vue';
 import { keymap } from '@inkline/inkline/constants';
 
-describe('Factories', () => {
+describe('Controllers', () => {
     describe('OverlayController', () => {
         let modalElement: any;
 

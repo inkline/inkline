@@ -6,8 +6,7 @@ import {
 } from '@inkline/inkline/plugin';
 import { IButton } from '@inkline/inkline/components';
 import { i18n } from '@inkline/inkline/i18n';
-
-const { InklineIcons } = jest.requireMock('@inkline/icons');
+import { IconController } from '@inkline/inkline/controllers';
 
 describe('Plugin', () => {
     describe('handleColorMode()', () => {
@@ -79,7 +78,7 @@ describe('Plugin', () => {
                 }
             });
 
-            it('should use InklineIcons with options.icons', () => {
+            it('should register default inkline icons', () => {
                 const app = createApp();
 
                 (Inkline as any).install(app, {
@@ -88,7 +87,7 @@ describe('Plugin', () => {
                     }
                 });
 
-                expect(app.use).toHaveBeenCalledWith(InklineIcons, { registerComponent: false });
+                expect(IconController.icons).toHaveProperty('Icon', true);
             });
 
             it('should register options.components', () => {
