@@ -1,28 +1,14 @@
-import fs from 'fs';
+import shell from 'shelljs';
 import path from 'path';
-import { packageFolderPath } from './config';
 
-const remove = [
-    {
-        from: path.resolve(__dirname, '..', 'lib'),
-        dir: true
-    },
-    {
-        from: path.resolve(__dirname, '..', 'dist'),
-        dir: true
-    },
-    {
-        from: packageFolderPath,
-        dir: true
-    }
-];
+/**
+ * Change directory to root
+ */
 
-(async () => {
-    for (const entry of remove) {
-        try {
-            await fs.promises[entry.dir ? 'rmdir' : 'rm'](entry.from, { recursive: true });
-        } catch (error: any) {
-            console.log(error.message);
-        }
-    }
-})();
+shell.cd(path.resolve(__dirname, '..'));
+
+/**
+ * Remove build files
+ */
+
+shell.rm('-R', ['./lib', './dist']);

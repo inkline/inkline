@@ -1,20 +1,14 @@
-import fse from 'fs-extra';
+import shell from 'shelljs';
 import path from 'path';
-import { packageFolderPath } from './config';
 
-const copy = [
-    {
-        from: path.resolve(__dirname, '..', 'package.json'),
-        to: path.resolve(packageFolderPath, 'package.json')
-    }
-];
+/**
+ * Change directory to root
+ */
 
-(async () => {
-    for (const entry of copy) {
-        try {
-            await fse.copyFile(entry.from, entry.to);
-        } catch (err: any) {
-            console.log(err.message);
-        }
-    }
-})();
+shell.cd(path.resolve(__dirname, '..'));
+
+/**
+ * Remove build files
+ */
+
+shell.cp('./package.json', './lib/package.json');

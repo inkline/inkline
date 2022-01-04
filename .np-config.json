@@ -1,4 +1,4 @@
 {
     "yarn": false,
-    "contents": "./package"
+    "contents": "./lib"
 }
