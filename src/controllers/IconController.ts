@@ -15,8 +15,6 @@ export const IconController: IIconController = {
         Object.keys(icons).forEach((iconName) => {
             IconController.icons[iconName] = icons[iconName];
         });
-
-        console.log(IconController.icons);
     }
 };
 
