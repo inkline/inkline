@@ -1,13 +1,13 @@
 <p align="center">
     <a href="https://inkline.io/">
-        <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/logo.png" alt="Inkline logo" width=72 height=72>
+        <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/logo/logo-black.svg" alt="Inkline" width=72 height=72>
     </a>
 </p>
 
 <h1 align="center">Inkline</h1>
 
 <p align="center">
-    Inkline is the customizable Vue.js UI/UX Library designed for creating flawless responsive websites. Inkline is written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
+    Inkline is the intuitive UI Components library that gives you the foundation for building high quality, accessible, and customizable Vue.js Design Systems. Inkline is written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
     <br/>
     <br/>
     <br/>
@@ -37,7 +37,7 @@
     <a href="https://www.npmjs.com/package/@inkline/inkline">
         <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
     </a>
-    <a href="https://discord.gg/2w5UGnK">
+    <a href="https://discord.gg/hpus7x2n">
         <img src="https://img.shields.io/discord/550436704482492429.svg" alt="Discord">
     </a>
 </a>
@@ -58,7 +58,7 @@
 
 ## Installation
 
-Read the [Getting Started](https://inkline.io/docs/introduction/getting-started/) page and find information on framework contents, templates, examples, and more.
+Read the [Getting Started](https://inkline.io/docs/introduction/getting-started/) page to find more information about the library concepts, components, examples, and more.
 
 <a href="https://inkline.io/docs/introduction/installation/vue-cli">
     <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/vue-cli.png" width="510" alt="Vue CLI Installation - Inkline" />
@@ -76,26 +76,6 @@ Read the [Getting Started](https://inkline.io/docs/introduction/getting-started/
     <img src="https://raw.githubusercontent.com/inkline/inkline.io-old/master/static/images/github/cdn.png" width="510" alt="CDN Installation - Inkline" />
 </a>
 
-## Join the beta
-The beta version for Inkline 3 (compatible with Vue 3) is finally out! Here are some basic installation instructions. Keep in mind that the beta is still subject to change.
-
-~~~
-npm install @inkline/inkline@next
-~~~
-
-~~~js
-import { createApp } from 'vue'
-import '@inkline/inkline/inkline.scss';
-import Inkline from '@inkline/inkline/inkline';
-import App from './App.vue'
-
-const app = createApp(App);
-
-app.use(Inkline);
-
-app.mount('#app');
-
-~~~
 
 ## Bugs and feature requests
 Have a bug or a feature request? Please first search for existing and closed issues.
@@ -104,7 +84,7 @@ If your problem or idea is not addressed yet, [please open a new issue](https://
 ## Community
 Get updates on Inkline's development and chat with the project maintainers and community members.
 - Follow [@inkline on Twitter](https://twitter.com/inkline).
-- Join [Inkline on Discord](https://discord.com/invite/2w5UGnK).
+- Join [Inkline on Discord](https://discord.gg/hpus7x2n).
 - Developers should use the keyword `inkline` on packages which modify or add to the functionality of Inkline when distributing through [npm](https://www.npmjs.com/browse/keyword/inkline) or similar delivery mechanisms for maximum discoverability.
 
 ## Releases
@@ -148,5 +128,5 @@ Thanks goes to these wonderful people:
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## Copyright and license
-Code copyright 2017-2020 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
+Code copyright 2017-2022 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
 Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/packages/inkline/LICENSE).
