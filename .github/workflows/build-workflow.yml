@@ -15,7 +15,7 @@ jobs:
                 with:
                     node-version: ${{ matrix.node }}
             -   run: npm install
-            -   run: npm run dist
+            -   run: npm run build
             -   run: npm run lint
             -   run: npm run test
             -   name: Coveralls
