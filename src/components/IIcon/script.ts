@@ -1,7 +1,7 @@
-import { h, computed, defineComponent, onMounted } from 'vue';
+import { h, computed, defineComponent, onMounted, inject } from 'vue';
 import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
 import { renderSvg, toCamelCase } from '@inkline/inkline/helpers';
-import { IconController } from '@inkline/inkline/controllers';
+import { SvgNode } from '@inkline/inkline/types';
 
 /**
  * The icon to be displayed
@@ -38,15 +38,16 @@ export default defineComponent({
         }
     },
     setup (props) {
+        const icons = inject('inklineIcons') as Record<string, SvgNode>;
         const iconName = computed(() => toCamelCase(props.name));
-        const icon = computed(() => IconController.icons[iconName.value]);
+        const icon = computed(() => icons[iconName.value]);
         const classes = computed(() => ({
             'inkline-icon': true,
             [`-${props.size}`]: Boolean(props.size)
         }));
 
         onMounted(() => {
-            if (iconName.value && !IconController.icons[iconName.value]) {
+            if (iconName.value && !icons[iconName.value]) {
                 console.error(`The icon ${iconName.value} is not registered.`);
             }
         });

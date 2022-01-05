@@ -14,7 +14,14 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(IIcon, {
-                props
+                props,
+                global: {
+                    provide: {
+                        inklineIcons: {
+                            inkPlus: {}
+                        }
+                    }
+                }
             });
             expect(wrapper.html()).toMatchSnapshot();
         });

@@ -3,8 +3,8 @@ import { Plugin, reactive, watch } from 'vue';
 import { addClass, removeClass } from '@inkline/inkline/helpers';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
-import { IconController } from '@inkline/inkline/controllers';
 import * as inklineIcons from '@inkline/inkline/icons';
+import { SvgNode } from '@inkline/inkline/types';
 
 export interface PrototypeConfig {
     colorMode: 'system' | 'light' | 'dark' | string;
@@ -20,7 +20,7 @@ export interface PrototypeConfig {
 
 export interface PluginConfig extends PrototypeConfig {
     components: any;
-    icons: any;
+    icons: Record<string, SvgNode>
 }
 
 export interface Prototype {
@@ -30,7 +30,8 @@ export interface Prototype {
 }
 
 export interface InklineGlobals {
-    prototype?: Prototype
+    prototype?: Prototype;
+    icons?: Record<string, SvgNode>;
 }
 
 /**
@@ -87,7 +88,8 @@ export function createPrototype ({ icons, components, ...options }: PrototypeCon
  * Easily accessible global Inkline object
  */
 export const inklineGlobals: InklineGlobals = {
-    prototype: undefined
+    prototype: undefined,
+    icons: undefined
 };
 
 /**
@@ -99,13 +101,6 @@ export const Inkline: Plugin = {
             ...defaultOptions,
             ...options
         };
-
-        /**
-         * Register Inkline plugins
-         */
-
-        IconController.addMultiple(inklineIcons);
-        IconController.addMultiple(extendedOptions.icons);
 
         /**
          * Register components provided through options globally
@@ -133,6 +128,17 @@ export const Inkline: Plugin = {
         app.provide('inkline', prototype);
 
         inklineGlobals.prototype = prototype;
+
+        /**
+         * Add inklineIcons global provide
+         */
+
+        const icons: Record<string, SvgNode> = {
+            ...inklineIcons,
+            ...extendedOptions.icons
+        };
+
+        app.provide('inklineIcons', icons);
 
         if (typeof window !== 'undefined') {
             /**
