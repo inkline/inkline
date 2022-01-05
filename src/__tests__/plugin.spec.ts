@@ -4,9 +4,9 @@ import {
     Inkline,
     PrototypeConfig
 } from '@inkline/inkline/plugin';
+import * as inklineIcons from '@inkline/inkline/icons';
 import { IButton } from '@inkline/inkline/components';
 import { i18n } from '@inkline/inkline/i18n';
-import { IconController } from '@inkline/inkline/controllers';
 
 describe('Plugin', () => {
     describe('handleColorMode()', () => {
@@ -87,7 +87,7 @@ describe('Plugin', () => {
                     }
                 });
 
-                expect(IconController.icons).toHaveProperty('Icon', true);
+                expect(app.provide).toHaveBeenCalledWith('inklineIcons', { Icon: true, ...inklineIcons });
             });
 
             it('should register options.components', () => {
