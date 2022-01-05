@@ -12,7 +12,7 @@
     <br/>
     <br/>
     <a href="https://inkline.io">
-        <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/homepageg.png" width="1009" alt="Vue.js UI/UX Library - Inkline" />
+        <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/homepage.png" width="1009" alt="Vue.js UI/UX Library - Inkline" />
     </a>
     <br/>
     <br/>
