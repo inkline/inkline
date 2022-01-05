@@ -108,6 +108,14 @@
   "files": [
     "**/*"
   ],
+  "exports": {
+    ".": {
+      "require": "./inkline.cjs",
+      "import": "./inkline.mjs",
+      "types": "./inkline.d.ts"
+    },
+    "./*": "./*"
+  },
   "funding": {
     "type": "patreon",
     "url": "https://www.patreon.com/inkline"

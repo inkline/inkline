@@ -4,7 +4,4 @@
  */
 
 import '@inkline/inkline/inkline.scss';
-import { Inkline } from '@inkline/inkline/plugin';
-
 export * from '@inkline/inkline/inkline';
-export default Inkline;
