@@ -1,5 +1,6 @@
 import { createServer, Model } from 'miragejs';
 import data from './data.json';
+import { Server } from 'miragejs/server';
 
 export const usePagination = (schema: any, req: any, model: any) => {
     const { models: items } = schema[model].all();
@@ -17,16 +18,24 @@ export const usePagination = (schema: any, req: any, model: any) => {
     };
 };
 
-export const useServer = () => createServer({
-    models: {
-        user: Model
-    },
-    seeds (server) {
-        data.forEach((row) => (server.schema as any).users.create(row));
-    },
-    routes () {
-        this.namespace = 'api';
+let server: Server;
 
-        this.get('/users', (schema, req) => usePagination(schema, req, 'users'));
+export const useServer = () => {
+    if (!server) {
+        server = createServer({
+            models: {
+                user: Model
+            },
+            seeds (server) {
+                data.forEach((row) => (server.schema as any).users.create(row));
+            },
+            routes () {
+                this.namespace = 'api';
+
+                this.get('/users', (schema, req) => usePagination(schema, req, 'users'));
+            }
+        });
     }
-});
+
+    return server;
+};
