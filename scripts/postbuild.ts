@@ -42,7 +42,6 @@ shell.rm(['./lib/main.*']);
 shell.exec('find lib -name index.stories.* -type f -delete');
 shell.exec('find lib -name __storybook__ -type d -exec rm -rf {} +');
 shell.exec('find lib -name __tests__ -type d -exec rm -rf {} +');
-shell.exec('find lib -name __mocks__ -type d -exec rm -rf {} +');
 
 /**
  * Copy dist files
