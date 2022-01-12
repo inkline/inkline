@@ -13,7 +13,7 @@ describe('Plugin', () => {
         it('should set given colorMode if not system color mode', () => {
             handleColorMode('color');
 
-            expect(document.documentElement).toHaveClass('-color');
+            expect(document.body).toHaveClass('-color');
         });
 
         it('should set given light mode if system color mode', () => {
@@ -25,7 +25,7 @@ describe('Plugin', () => {
 
             handleColorMode('system');
 
-            expect(document.documentElement).toHaveClass('-light');
+            expect(document.body).toHaveClass('-light');
 
             jest.clearAllMocks();
         });
@@ -39,7 +39,7 @@ describe('Plugin', () => {
 
             handleColorMode('system');
 
-            expect(document.documentElement).toHaveClass('-dark');
+            expect(document.body).toHaveClass('-dark');
 
             jest.clearAllMocks();
         });
@@ -107,7 +107,7 @@ describe('Plugin', () => {
 
                 (Inkline as any).install(app);
 
-                expect(document.documentElement).toHaveClass('inkline');
+                expect(document.body).toHaveClass('inkline');
             });
 
             it('should set color mode', () => {
@@ -115,7 +115,7 @@ describe('Plugin', () => {
 
                 (Inkline as any).install(app, { colorMode: 'dark' });
 
-                expect(document.documentElement).toHaveClass('-dark');
+                expect(document.body).toHaveClass('-dark');
             });
 
             it('should add color mode matchMedia event listener', (done) => {
@@ -127,7 +127,7 @@ describe('Plugin', () => {
                 prototype.options.colorMode = 'other';
 
                 setTimeout(() => {
-                    expect(document.documentElement).toHaveClass('-other');
+                    expect(document.body).toHaveClass('-other');
                     done();
                 });
             });
@@ -267,7 +267,7 @@ describe('Plugin', () => {
 
                 (Inkline as any).install(app, { colorMode: 'isServer' });
 
-                expect(document.documentElement).not.toHaveClass('-isServer');
+                expect(document.body).not.toHaveClass('-isServer');
 
                 jest.clearAllMocks();
             });
