@@ -19,7 +19,7 @@
     <br/>
     <a href="https://inkline.io">Homepage</a>
     ·
-    <a href="https://inkline.io/docs/introduction/getting-started">Documentation</a>
+    <a href="https://inkline.io/docs/introduction">Documentation</a>
     ·
     <a href="https://github.com/inkline/inkline/issues">Issue Tracker</a>
 </p>
