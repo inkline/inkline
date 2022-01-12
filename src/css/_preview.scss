@@ -128,12 +128,10 @@
         border: 1px solid color('gray-30');
     }
 
-
     > div[class*="_max-width"],
     > div[class*="_width"] {
         display: flex;
     }
-
 
     > div[class*="_max-height"],
     > div[class*="_height"] {
@@ -286,7 +284,6 @@
                 .row {
                     background: color('gray-25');
                     border: 1px solid color('gray-50');
-
 
                     .-dark & {
                         background: color('gray-65');
