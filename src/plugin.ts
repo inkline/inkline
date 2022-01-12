@@ -50,8 +50,8 @@ export const handleColorMode = (colorMode: string) => {
         color = colorMode;
     }
 
-    removeClass(document.body, '-light -dark');
-    addClass(document.body, `-${color}`);
+    removeClass(document.documentElement, '-light -dark');
+    addClass(document.documentElement, `-${color}`);
 };
 
 /**
@@ -142,10 +142,10 @@ export const Inkline: Plugin = {
 
         if (typeof window !== 'undefined') {
             /**
-             * Add inkline class to document body and initialize color mode
+             * Add inkline class to document root and initialize color mode
              */
 
-            addClass(document.body, 'inkline');
+            addClass(document.documentElement, 'inkline');
 
             /**
              * Add color mode on change handler
