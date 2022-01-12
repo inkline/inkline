@@ -3,6 +3,8 @@
 @import '../../css/variables';
 
 .tabs {
+    ----header--color: var(----color);
+
     .tab-title {
         position: relative;
         display: inline-flex;

@@ -1,9 +1,20 @@
 import { create } from '@storybook/theming';
-import logo from '../public/assets/images/logo.png';
+import logoLight from '../public/assets/images/storybook-logo-light.png';
+import logoDark from '../public/assets/images/storybook-logo-dark.png';
 
-export default create({
-    base: 'light',
+const commonConfig = {
     brandTitle: 'Inkline',
-    brandUrl: 'https://inkline.io',
-    brandImage: logo
+    brandUrl: 'https://inkline.io'
+};
+
+export const light = create({
+    base: 'light',
+    brandImage: logoLight,
+    ...commonConfig
+});
+
+export const dark = create({
+    base: 'dark',
+    brandImage: logoDark,
+    ...commonConfig
 });

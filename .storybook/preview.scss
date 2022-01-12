@@ -13,6 +13,7 @@
     @extend %color-utilities-preview;
     @extend %flex-utilities-preview;
     @extend %spacing-utilities-preview;
+    @extend %sizing-utilities-preview;
     @extend %card-preview;
 
     .storybook-example {

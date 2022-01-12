@@ -20,7 +20,8 @@ module.exports = {
         },
         '@storybook/addon-links',
         '@storybook/addon-essentials',
-        '@storybook/addon-a11y'
+        '@storybook/addon-a11y',
+        'storybook-dark-mode'
     ],
     staticDirs: ['../public'],
     framework: '@storybook/vue3',

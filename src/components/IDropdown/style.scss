@@ -76,22 +76,22 @@
     }
 
     @include popup-arrow-color-variant-for-side('top', (
-        'background': var(----footer--background),
-        'border-color': var(----border-top-color)
+        'background': var(----background),
+        'border-color': var(----border-bottom-color)
     ));
 
     @include popup-arrow-color-variant-for-side('bottom', (
-        'background': var(----header--background),
-        'border-color': var(----border-bottom-color)
+        'background': var(----background),
+        'border-color': var(----border-top-color)
     ));
 
     @include popup-arrow-color-variant-for-side('left', (
         'background': var(----background),
-        'border-color': var(----border-left-color)
+        'border-color': var(----border-right-color)
     ));
 
     @include popup-arrow-color-variant-for-side('right', (
         'background': var(----background),
-        'border-color': var(----border-right-color)
+        'border-color': var(----border-left-color)
     ));
 }

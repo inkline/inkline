@@ -67,12 +67,12 @@
     }
 
     @include popup-arrow-color-variant-for-side('top', (
-        'background': var(----footer--background),
+        'background': var(----body--background),
         'border-color': var(----border-top-color)
     ));
 
     @include popup-arrow-color-variant-for-side('bottom', (
-        'background': var(----header--background),
+        'background': var(----body--background),
         'border-color': var(----border-bottom-color)
     ));
 
