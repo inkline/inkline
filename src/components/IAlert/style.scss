@@ -38,6 +38,11 @@
         transition-property: color;
         transition-duration: var(----transition-duration);
         transition-timing-function: var(----transition-easing);
+
+        &:hover,
+        &:focus {
+            color: var(----link--color);
+        }
     }
 
     code {

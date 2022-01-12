@@ -241,7 +241,7 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
+                        value: 'color(\'dark-60\')',
                         description: 'The background of the progress component, for the dark color variant'
                     },
                     {

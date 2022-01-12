@@ -26,7 +26,7 @@ export const Disabled = () => IFormGroupDisabledExample;
 export const Nesting = () => IFormGroupNestingExample;
 export const NestingDisabled = () => IFormGroupNestingDisabledExample;
 export const NestingReadonly = () => IFormGroupNestingReadonlyExample;
-export const NestingSizeVariantsLg = () => IFormGroupNestingSizeVariantsLgExample;
+export const NestingSizeVariants = () => IFormGroupNestingSizeVariantsLgExample;
 export const SizeVariantsSm = () => IFormGroupSizeVariantsSmExample;
 export const SizeVariantsMd = () => IFormGroupSizeVariantsMdExample;
 export const SizeVariantsLg = () => IFormGroupSizeVariantsLgExample;
