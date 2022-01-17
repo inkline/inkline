@@ -37,7 +37,7 @@
     <a href="https://www.npmjs.com/package/@inkline/inkline">
         <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
     </a>
-    <a href="https://discord.gg/hpus7x2n">
+    <a href="https://discord.gg/wZqvPQ2YZ9">
         <img src="https://img.shields.io/discord/550436704482492429.svg" alt="Discord">
     </a>
 </a>
