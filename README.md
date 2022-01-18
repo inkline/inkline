@@ -7,7 +7,7 @@
 <h1 align="center">Inkline</h1>
 
 <p align="center">
-    Inkline is the intuitive UI Components library that gives you the foundation for building high quality, accessible, and customizable Vue.js Design Systems. Inkline is written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
+    Inkline is the intuitive UI UX DX Components library that gives you the foundation for building high quality, accessible, and customizable Vue.js Design Systems. Inkline is written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
     <br/>
     <br/>
     <br/>
