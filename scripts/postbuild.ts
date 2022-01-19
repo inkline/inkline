@@ -49,7 +49,7 @@ shell.exec('find lib -name __tests__ -type d -exec rm -rf {} +');
 
 shell.cp('./dist/inkline.umd.js', './lib/inkline.cjs');
 shell.cp('./dist/style.css', './lib/inkline.css');
-shell.cp('-R', './dist/assets', './lib/assets');
+shell.cp('-R', './src/assets', './lib/assets');
 
 /**
  * Copy meta files
