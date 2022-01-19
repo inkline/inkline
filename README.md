@@ -7,7 +7,7 @@
 <h1 align="center">Inkline</h1>
 
 <p align="center">
-    Inkline is the intuitive UI Components library that gives you the foundation for building high quality, accessible, and customizable Vue.js Design Systems. Inkline is written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
+    Inkline is the intuitive UI UX DX Components library that gives you the foundation for building high quality, accessible, and customizable Vue.js Design Systems. Inkline is written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
     <br/>
     <br/>
     <br/>
@@ -19,7 +19,7 @@
     <br/>
     <a href="https://inkline.io">Homepage</a>
     ·
-    <a href="https://inkline.io/docs/introduction/getting-started">Documentation</a>
+    <a href="https://inkline.io/docs/introduction">Documentation</a>
     ·
     <a href="https://github.com/inkline/inkline/issues">Issue Tracker</a>
 </p>
@@ -37,7 +37,7 @@
     <a href="https://www.npmjs.com/package/@inkline/inkline">
         <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
     </a>
-    <a href="https://discord.gg/hpus7x2n">
+    <a href="https://discord.gg/wZqvPQ2YZ9">
         <img src="https://img.shields.io/discord/550436704482492429.svg" alt="Discord">
     </a>
 </a>
