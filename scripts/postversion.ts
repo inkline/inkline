@@ -8,7 +8,7 @@ import path from 'path';
 shell.cd(path.resolve(__dirname, '..'));
 
 /**
- * Remove build files
+ * Copy package.json to lib
  */
 
 shell.cp('./package.json', './lib/package.json');
