@@ -1,6 +1,6 @@
 {
   "projectName": "inkline",
-  "projectOwner": "alexgrozav",
+  "projectOwner": "inkline",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -95,7 +95,17 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "milaan-muc",
+      "name": "milaan-muc",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3469112?v=4",
+      "profile": "https://github.com/milaan-muc",
+      "contributions": [
+        "test"
+      ]
     }
   ],
-  "contributorsPerLine": 10
+  "contributorsPerLine": 10,
+  "skipCi": true
 }
