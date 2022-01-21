@@ -7,7 +7,7 @@
 <h1 align="center">Inkline</h1>
 
 <p align="center">
-    Inkline is the intuitive UI UX DX Components library that gives you the foundation for building high quality, accessible, and customizable Vue.js Design Systems. Inkline is written and maintained by <a href="https://twitter.com/alexgrozav">@alexgrozav</a>.
+    Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.<br/> Inkline is written and maintained by <a href="https://github.com/alexgrozav">@alexgrozav</a>.
     <br/>
     <br/>
     <br/>
@@ -20,6 +20,10 @@
     <a href="https://inkline.io">Homepage</a>
     ·
     <a href="https://inkline.io/docs/introduction">Documentation</a>
+    ·
+    <a href="https://inkline.io/storybook/">Storybook</a>
+    ·
+    <a href="https://stackblitz.com/edit/inkline?file=src/App.vue">Playground</a>
     ·
     <a href="https://github.com/inkline/inkline/issues">Issue Tracker</a>
 </p>
@@ -40,7 +44,7 @@
     <a href="https://discord.gg/wZqvPQ2YZ9">
         <img src="https://img.shields.io/discord/550436704482492429.svg" alt="Discord">
     </a>
-</a>
+</p>
 
 <br/>
 <br/>
@@ -58,14 +62,14 @@
 
 ## Installation
 
-Read the [Getting Started](https://inkline.io/docs/introduction/getting-started/) page to find more information about the library concepts, components, examples, and more.
-
-<a href="https://inkline.io/docs/introduction/installation/vue-cli">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/installation-vuejs.png" width="526" alt="Vue CLI Installation - Inkline" />
-</a>
+Read the [Getting Started guide](https://inkline.io/docs/introduction) or choose one of the guides below. Inkline offers official integrations for Vite.js (recommended), Vue.js CLI and Nuxt.js, but can be easily installed for a custom Vue.js configuration as well.
 
 <a href="https://inkline.io/docs/introduction/installation/vite">
     <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/installation-vitejs.png" width="526" alt="Nuxt.js Installation - Inkline" />
+</a>
+
+<a href="https://inkline.io/docs/introduction/installation/vue-cli">
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/installation-vuejs.png" width="526" alt="Vue CLI Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/nuxt">
@@ -98,7 +102,7 @@ Get updates on Inkline's development and chat with the project maintainers and c
 For increased transparency and backward compatibility,
 Inkline is maintained under [the Semantic Versioning guidelines](https://semver.org/).
 
-## Creators
+## Creator
 **Alex Grozav**
 
 - <https://twitter.com/alexgrozav>
