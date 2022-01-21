@@ -1,7 +1,7 @@
 {
   "name": "@inkline/inkline",
   "version": "3.0.6",
-  "description": "Inkline is the Vue.js UI/UX Library built for creating your next design system",
+  "description": "Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
     "dev": "npm run storybook",

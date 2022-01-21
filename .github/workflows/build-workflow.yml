@@ -15,9 +15,9 @@ jobs:
                 with:
                     node-version: ${{ matrix.node }}
             -   run: npm install
-            -   run: npm run build
             -   run: npm run lint
             -   run: npm run test
+            -   run: npm run build
             -   name: Coveralls
                 uses: coverallsapp/github-action@master
                 with:
