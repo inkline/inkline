@@ -104,6 +104,15 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "IDisposable",
+      "name": "Marc Brooks",
+      "avatar_url": "https://avatars.githubusercontent.com/u/874059?v=4",
+      "profile": "http://about.me/IDisposable",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 10,
