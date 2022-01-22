@@ -105,6 +105,7 @@ Inkline is maintained under [the Semantic Versioning guidelines](https://semver.
 ## Creator
 **Alex Grozav**
 
+- <https://grozav.com>
 - <https://twitter.com/alexgrozav>
 - <https://facebook.com/alexgrozav>
 - <https://github.com/alexgrozav>
