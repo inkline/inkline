@@ -128,11 +128,13 @@ Thanks goes to these wonderful people:
     <td align="center"><a href="https://github.com/marbocub"><img class="avatar" src="https://avatars3.githubusercontent.com/u/1912821?v=4" width="50px;" alt="marbocub"/></a></td>
     <td align="center"><a href="https://dimitrio.dev/"><img class="avatar" src="https://avatars3.githubusercontent.com/u/16154728?v=4" width="50px;" alt="Dimitrios Mandamadiotis"/></a></td>
     <td align="center"><a href="https://github.com/roiLeo"><img class="avatar" src="https://avatars1.githubusercontent.com/u/9987732?v=4" width="50px;" alt="roiLeo"/></a></td>
+    <td align="center"><a href="https://github.com/milaan-muc"><img class="avatar" src="https://avatars.githubusercontent.com/u/3469112?v=4" width="50px;" alt="milaan-muc"/></a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## Copyright and license
