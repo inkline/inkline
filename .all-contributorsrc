@@ -122,6 +122,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "agarbutt",
+      "name": "Andrew Garbutt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/734757?v=4",
+      "profile": "https://github.com/agarbutt",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 10,
