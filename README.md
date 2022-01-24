@@ -130,8 +130,11 @@ Thanks goes to these wonderful people:
     <td align="center"><a href="https://dimitrio.dev/"><img class="avatar" src="https://avatars3.githubusercontent.com/u/16154728?v=4" width="50px;" alt="Dimitrios Mandamadiotis"/></a></td>
     <td align="center"><a href="https://github.com/roiLeo"><img class="avatar" src="https://avatars1.githubusercontent.com/u/9987732?v=4" width="50px;" alt="roiLeo"/></a></td>
     <td align="center"><a href="https://github.com/milaan-muc"><img class="avatar" src="https://avatars.githubusercontent.com/u/3469112?v=4" width="50px;" alt="milaan-muc"/></a></td>
-    <td align="center"><a href="https://github.com/IDisposable"><img class="avatar" src="https://avatars.githubusercontent.com/u/874059?v=4" width="50px;" alt="Marc Brooks"/></a></td>
-    <td align="center"><a href="https://github.com/onno-timmerman"><img class="avatar" src="https://avatars.githubusercontent.com/u/178425?v=4" width="50px;" alt="code-on"/></a></td>
+    <td align="center"><a href="http://about.me/IDisposable"><img class="avatar" src="https://avatars.githubusercontent.com/u/874059?v=4" width="50px;" alt="Marc Brooks"/></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://code-on.be"><img class="avatar" src="https://avatars.githubusercontent.com/u/178425?v=4" width="50px;" alt="code-on"/></a></td>
+    <td align="center"><a href="https://github.com/agarbutt"><img class="avatar" src="https://avatars.githubusercontent.com/u/734757?v=4" width="50px;" alt="Andrew Garbutt"/></a></td>
   </tr>
 </table>
 
