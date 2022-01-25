@@ -46,17 +46,9 @@ module.exports = {
             }),
         ];
 
-        if (process.env.STORYBOOK_BASE_HREF) {
-            config.output.publicPath = `/${process.env.STORYBOOK_BASE_HREF}/`;
-        }
-
         return config;
     },
     managerWebpack: async (config) => {
-        if (process.env.STORYBOOK_BASE_HREF) {
-            config.output.publicPath = `/${process.env.STORYBOOK_BASE_HREF}/`;
-        }
-
         return config;
     },
 }

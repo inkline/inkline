@@ -20,7 +20,7 @@
     "generate:manifest": "ts-node ./scripts/manifest.ts",
     "generate:manifest:sass": "ts-node ./scripts/manifest-sass.ts",
     "storybook": "start-storybook -p 6006",
-    "build:storybook": "build-storybook -- --preview-url=/storybook/iframe.html"
+    "build:storybook": "build-storybook"
   },
   "main": "inkline.cjs",
   "module": "inkline.mjs",
