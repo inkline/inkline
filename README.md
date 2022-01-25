@@ -21,7 +21,7 @@
     ·
     <a href="https://inkline.io/docs/introduction">Documentation</a>
     ·
-    <a href="https://inkline.io/storybook/">Storybook</a>
+    <a href="https://storybook.inkline.io/">Storybook</a>
     ·
     <a href="https://stackblitz.com/edit/inkline?file=src/App.vue">Playground</a>
     ·
