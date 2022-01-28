@@ -23,6 +23,14 @@ export const manifest = {
             description: 'The disabled state of the nav item'
         },
         {
+            name: 'stopPropagation',
+            type: [
+                'Boolean'
+            ],
+            default: 'false',
+            description: 'Used to close the nearest navbar or sidebar by propagating the onClick event'
+        },
+        {
             name: 'tag',
             type: [
                 'String'
