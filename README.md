@@ -41,7 +41,7 @@
     <a href="https://www.npmjs.com/package/@inkline/inkline">
         <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
     </a>
-    <a href="https://discord.gg/v7RbKcTSjQ">
+    <a href="https://chat.inkline.io">
         <img src="https://img.shields.io/discord/550436704482492429.svg" alt="Discord">
     </a>
 </p>
@@ -92,7 +92,7 @@ If your problem or idea is not addressed yet, [please open a new issue](https://
 ## Community
 Get updates on Inkline's development and chat with the project maintainers and community members.
 - Follow [@inkline on Twitter](https://twitter.com/inkline).
-- Join [Inkline on Discord](https://discord.gg/v7RbKcTSjQ).
+- Join [Inkline on Discord](https://chat.inkline.io).
 - Developers should use the keyword `inkline` on packages which modify or add to the functionality of Inkline when distributing through [npm](https://www.npmjs.com/browse/keyword/inkline) or similar delivery mechanisms for maximum discoverability.
 
 ## Releases
@@ -109,6 +109,8 @@ Inkline is maintained under [the Semantic Versioning guidelines](https://semver.
 - <https://twitter.com/alexgrozav>
 - <https://facebook.com/alexgrozav>
 - <https://github.com/alexgrozav>
+
+If you use Inkline in your daily work and feel that it has made your life easier, please consider sponsoring me on [Github Sponsors](https://github.com/sponsors/alexgrozav). 💖
 
 ## Contributing
 Please read through our [contributing guidelines](./.github/CONTRIBUTING.md).
