@@ -310,6 +310,34 @@ describe('Components', () => {
                     });
                 });
             });
+
+            describe('onItemClick()', () => {
+                ['navbar', 'sidebar'].forEach((parent) => {
+                    it(`should call parent ${parent} onItemClick`, async () => {
+                        const onItemClick = jest.fn();
+                        const wrapper = render(IDropdown, {
+                            global: {
+                                stubs,
+                                provide: {
+                                    [parent]: {
+                                        onItemClick
+                                    }
+                                }
+                            },
+                            props: {
+                                hideOnItemClick: true,
+                                modelValue: true,
+                                ...props
+                            },
+                            slots
+                        });
+                        const menuItems = await wrapper.getAllByRole('menuitem');
+                        await fireEvent.click(menuItems[0]);
+
+                        expect(onItemClick).toHaveBeenCalled();
+                    });
+                });
+            });
         });
     });
 });

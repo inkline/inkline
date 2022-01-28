@@ -74,6 +74,27 @@ describe('Components', () => {
 
                     expect(onItemClick).toHaveBeenCalled();
                 });
+
+                it('should not call parent nav onItemClick if stopPropagation', async () => {
+                    const onItemClick = jest.fn();
+                    const wrapper = render(INavItem, {
+                        global: {
+                            provide: {
+                                nav: {
+                                    onItemClick
+                                }
+                            }
+                        },
+                        props: {
+                            ...props,
+                            stopPropagation: true
+                        }
+                    });
+
+                    await fireEvent.click(wrapper.container.firstChild as Element);
+
+                    expect(onItemClick).not.toHaveBeenCalled();
+                });
             });
         });
     });
