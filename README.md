@@ -7,7 +7,7 @@
 <h1 align="center">Inkline</h1>
 
 <p align="center">
-    Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.<br/> Inkline is written and maintained by <a href="https://github.com/alexgrozav">@alexgrozav</a>.
+    Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.<br/><br/> Inkline is written and maintained by <a href="https://github.com/alexgrozav">@alexgrozav</a>.
     <br/>
     <br/>
     <br/>
@@ -41,7 +41,7 @@
     <a href="https://www.npmjs.com/package/@inkline/inkline">
         <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
     </a>
-    <a href="https://discord.gg/wZqvPQ2YZ9">
+    <a href="https://discord.gg/v7RbKcTSjQ">
         <img src="https://img.shields.io/discord/550436704482492429.svg" alt="Discord">
     </a>
 </p>
@@ -92,7 +92,7 @@ If your problem or idea is not addressed yet, [please open a new issue](https://
 ## Community
 Get updates on Inkline's development and chat with the project maintainers and community members.
 - Follow [@inkline on Twitter](https://twitter.com/inkline).
-- Join [Inkline on Discord](https://discord.gg/hpus7x2n).
+- Join [Inkline on Discord](https://discord.gg/v7RbKcTSjQ).
 - Developers should use the keyword `inkline` on packages which modify or add to the functionality of Inkline when distributing through [npm](https://www.npmjs.com/browse/keyword/inkline) or similar delivery mechanisms for maximum discoverability.
 
 ## Releases
