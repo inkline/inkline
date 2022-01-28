@@ -52,6 +52,18 @@ export default defineComponent({
             dropdown: this
         };
     },
+    inject: {
+        navbar: {
+            default: () => ({
+                onItemClick: () => {}
+            })
+        },
+        sidebar: {
+            default: () => ({
+                onItemClick: () => {}
+            })
+        }
+    },
     props: {
         /**
          * The duration of the hide and show animation
@@ -328,6 +340,10 @@ export default defineComponent({
             if (this.hideOnItemClick) {
                 this.hide();
             }
+
+            [(this as any).navbar, (this as any).sidebar].forEach((parent) => {
+                parent.onItemClick();
+            });
         }
     }
 });

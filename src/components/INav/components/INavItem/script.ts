@@ -47,6 +47,16 @@ export default defineComponent({
             default: false
         },
         /**
+         * Used to close the nearest navbar or sidebar by propagating the onClick event
+         * @type Boolean
+         * @default false
+         * @name stopPropagation
+         */
+        stopPropagation: {
+            type: Boolean,
+            default: false
+        },
+        /**
          * Set the HTML tag to be used for rendering the nav item
          * @type String
          * @default div
@@ -90,6 +100,10 @@ export default defineComponent({
     },
     methods: {
         onClick (event: ElementEvent) {
+            if (this.stopPropagation) {
+                return;
+            }
+
             (this as any).nav.onItemClick(this, event);
         }
     }
