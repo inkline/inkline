@@ -518,6 +518,10 @@ export default defineComponent({
         },
         onWindowResize () {
             this.onScroll();
+
+            if (this.visible) {
+                this.$nextTick().then(() => this.createPopper());
+            }
         },
 
         /**
