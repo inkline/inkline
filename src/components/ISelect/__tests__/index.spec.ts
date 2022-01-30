@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/vue';
+import { fireEvent, render, waitFor } from '@testing-library/vue';
 import { ISelect } from '@inkline/inkline/components';
 import { createMockInstance } from '@inkline/inkline/__mocks__/createMockInstance';
 import { keymap } from '@inkline/inkline/constants';
@@ -795,6 +795,22 @@ describe('Components', () => {
                     wrapper.onWindowResize();
 
                     expect(wrapper.onScroll).toHaveBeenCalled();
+                });
+
+                it('should createPopper if visible', async () => {
+                    const wrapper = createMockInstance(ISelect, {
+                        props,
+                        data: {
+                            visible: true
+                        },
+                        mocks: {
+                            createPopper: jest.fn(() => {})
+                        }
+                    });
+
+                    wrapper.onWindowResize();
+
+                    await waitFor(() => expect(wrapper.createPopper).toHaveBeenCalled());
                 });
             });
 

@@ -19,6 +19,7 @@ interface MockInstanceOptions {
 export const createMockInstance = (component: any, { inject = {}, data = {}, props = {}, computed = {}, methods = {}, mocks = {}, $el = document.createElement('div'), $refs = {} }: MockInstanceOptions = {}) => {
     const instance: any = {
         $emit: jest.fn(),
+        $nextTick: jest.fn(() => Promise.resolve()),
         $el,
         $refs
     };
