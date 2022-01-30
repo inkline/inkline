@@ -1,6 +1,6 @@
 {
   "name": "@inkline/inkline",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
@@ -28,7 +28,7 @@
   "unpkg": "inkline.cjs",
   "types": "inkline.d.ts",
   "dependencies": {
-      "@popperjs/core": "2.11.2"
+    "@popperjs/core": "2.11.2"
   },
   "devDependencies": {
     "@babel/core": "7.16.12",
