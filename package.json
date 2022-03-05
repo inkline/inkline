@@ -118,8 +118,8 @@
     "./*": "./*"
   },
   "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/inkline"
+    "type": "github",
+    "url": "https://github.com/sponsors/alexgrozav"
   },
   "browserslist": [
     "> 1%",
