@@ -1,11 +1,12 @@
-import IBadge from '../index.vue';
+import IBadge from '../index';
 import {
-    IBadgeBasicExample,
-    IBadgeColorVariantsExample,
-    IBadgeHeadingExample,
-    IBadgeSizeVariantsExample
+    IBadgeBasicExample
+    // IBadgeColorVariantsExample,
+    // IBadgeHeadingExample,
+    // IBadgeSizeVariantsExample
 } from './index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
+import { createStory } from '@inkline/paper/storybook';
 
 export default {
     component: IBadge,
@@ -17,6 +18,6 @@ export default {
 };
 
 export const Basic = createStory(IBadgeBasicExample);
-export const ColorVariants = () => IBadgeColorVariantsExample;
-export const Heading = () => IBadgeHeadingExample;
-export const SizeVariants = () => IBadgeSizeVariantsExample;
+// export const ColorVariants = () => IBadgeColorVariantsExample;
+// export const Heading = () => IBadgeHeadingExample;
+// export const SizeVariants = () => IBadgeSizeVariantsExample;

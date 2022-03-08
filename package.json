@@ -28,6 +28,7 @@
   "unpkg": "inkline.cjs",
   "types": "inkline.d.ts",
   "dependencies": {
+    "@inkline/paper": "^1.1.4",
     "@popperjs/core": "2.11.2"
   },
   "devDependencies": {
@@ -39,6 +40,7 @@
     "@storybook/addon-postcss": "2.0.0",
     "@storybook/builder-webpack5": "6.4.16",
     "@storybook/manager-webpack5": "6.4.16",
+    "@storybook/react": "6.4.19",
     "@storybook/vue3": "6.4.16",
     "@testing-library/jest-dom": "5.16.1",
     "@testing-library/vue": "6.5.0",
@@ -101,7 +103,8 @@
     "vue-eslint-parser": "8.2.0",
     "vue-jest": "5.0.0-alpha.10",
     "vue-loader": "16.8.3",
-    "vue-router": "4.0.12"
+    "vue-router": "4.0.12",
+    "webpack": "5.70.0"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"

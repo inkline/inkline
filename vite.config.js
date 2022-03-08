@@ -3,6 +3,8 @@ import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import markdown from 'vite-plugin-md';
 
+const framework = process.env.FRAMEWORK || 'vue';
+
 /**
  * Vite configuration for library build
  *
@@ -23,6 +25,10 @@ export default defineConfig({
             {
                 find: /^@inkline\/inkline\//,
                 replacement: `${resolve(__dirname)}/src/`
+            },
+            {
+                find: /^@inkline\/paper/,
+                replacement: `@inkline/paper/${framework}`
             }
         ]
     },

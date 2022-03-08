@@ -107,6 +107,7 @@ export const Inkline: Plugin = {
          */
 
         for (const componentIndex in extendedOptions.components) { // eslint-disable-line guard-for-in
+            console.log(componentIndex, extendedOptions.components[componentIndex])
             app.component(extendedOptions.components[componentIndex].name, extendedOptions.components[componentIndex]);
         }
 

@@ -1,10 +1,8 @@
-import { defineComponent } from 'vue';
+import './style.scss';
+import { computed, defineComponent, h } from '@inkline/paper';
 import {
-    colorVariantClass,
-    defaultPropValue,
-    sizePropValidator
+    defaultPropValue
 } from '@inkline/inkline/mixins';
-import { Classes } from '@inkline/inkline/types';
 
 /**
  * Slot for default badge content
@@ -35,16 +33,19 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: defaultPropValue<string>(componentName, 'size')
         }
     },
-    computed: {
-        classes (): Classes {
-            return {
-                ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size)
-            };
-        }
+    setup (props) {
+        const classes = computed(() => `${
+            props.color ? ` -${props.color}` : ''
+        }${
+            props.size ? ` -${props.size}` : ''
+        }`, [props.color, props.size]);
+
+        return { classes };
+    },
+    render ({ classes }, { slot }) {
+        return h('div', { class: `badge${classes.value}` }, slot());
     }
 });
