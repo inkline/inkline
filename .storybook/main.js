@@ -4,17 +4,15 @@ const postcssConfig = require('../postcss.config');
 const tsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const framework = process.env.FRAMEWORK || 'vue';
 
-console.log({framework})
-
-const frameworks = {
+const storybookFrameworks = {
     vue: '@storybook/vue3',
     react: '@storybook/react'
 }
 
 module.exports = {
     stories: [
-        '../src/components/IBadge/**/*.stories.mdx',
-        '../src/components/IBadge/**/*.stories.@(js|jsx|ts|tsx)'
+        `../src/components/IBadge/**/${framework}/*.stories.mdx`,
+        `../src/components/IBadge/**/${framework}/*.stories.@(js|jsx|ts|tsx)`
     ],
     addons: [
         {
@@ -32,7 +30,7 @@ module.exports = {
         'storybook-dark-mode'
     ],
     staticDirs: ['../public'],
-    framework: frameworks[framework],
+    framework: storybookFrameworks[framework],
     core: {
         builder: 'webpack5'
     },

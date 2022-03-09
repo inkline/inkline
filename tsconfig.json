@@ -41,6 +41,8 @@
         "dist",
         "lib",
         "package",
-        "node_modules"
+        "node_modules",
+        "src/**/*.stories.ts",
+        "src/**/*.spec.ts"
     ]
 }

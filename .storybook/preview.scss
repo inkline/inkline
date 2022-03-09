@@ -5,6 +5,7 @@
 #root {
     min-height: calc(100vh - 2rem);
 
+    .storybook-example > *,
     > * {
         margin: 0.5rem;
     }
