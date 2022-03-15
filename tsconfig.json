@@ -7,6 +7,8 @@
         "skipLibCheck": true,
         "strict": true,
         "jsx": "preserve",
+        "jsxFactory": "h",
+        "jsxFragmentFactory": "Fragment",
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
@@ -25,9 +27,9 @@
         ],
         "types": [
             "vite/client",
+            "vitest/globals",
             "@testing-library/jest-dom",
             "@types/node",
-            "@types/jest",
             "@types/shelljs"
         ]
     },

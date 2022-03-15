@@ -4,16 +4,18 @@ import {
     defaultPropValue
 } from '@inkline/inkline/mixins';
 
-/**
- * Slot for default badge content
- * @name default
- * @kind slot
- */
-
 const componentName = 'IBadge';
 
 export default defineComponent({
     name: componentName,
+    slots: [
+        /**
+         * Slot for default badge content
+         * @name default
+         * @kind slot
+         */
+        'default'
+    ],
     props: {
         /**
          * The color variant of the badge

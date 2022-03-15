@@ -11,8 +11,10 @@ const storybookFrameworks = {
 
 module.exports = {
     stories: [
-        `../src/components/IBadge/**/${framework}/*.stories.mdx`,
-        `../src/components/IBadge/**/${framework}/*.stories.@(js|jsx|ts|tsx)`
+        `../src/**/${framework}/*.stories.mdx`,
+        `../src/components/IAlert/**/${framework}/*.stories.@(js|jsx|ts|tsx)`,
+        `../src/components/IBadge/**/${framework}/*.stories.@(js|jsx|ts|tsx)`,
+        `../src/components/IIcon/**/${framework}/*.stories.@(js|jsx|ts|tsx)`
     ],
     addons: [
         {

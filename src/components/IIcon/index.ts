@@ -1,14 +1,9 @@
-import { h, computed, defineComponent, onMounted, inject } from 'vue';
-import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
+import './style.scss';
+import { h, computed, defineComponent, inject } from '@inkline/paper';
+import { defaultPropValue } from '@inkline/inkline/mixins';
 import { renderSvg, toCamelCase } from '@inkline/inkline/helpers';
 import { SvgNode } from '@inkline/inkline/types';
-
-/**
- * The icon to be displayed
- * @type String
- * @default
- * @name name
- */
+import { inklineIconsSymbol } from '@inkline/inkline/plugin';
 
 const componentName = 'IIcon';
 
@@ -33,29 +28,24 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: defaultPropValue<string>(componentName, 'size')
         }
     },
     setup (props) {
-        const icons = inject('inklineIcons') as Record<string, SvgNode>;
-        const iconName = computed(() => toCamelCase(props.name));
+        const icons: Record<string, SvgNode> = inject(inklineIconsSymbol, {});
+        const iconName = computed(() => toCamelCase(props.name), [props.name]);
         const icon = computed(() => icons[iconName.value]);
-        const classes = computed(() => ({
-            'inkline-icon': true,
-            [`-${props.size}`]: Boolean(props.size)
-        }));
+        const classes = computed(() => `${
+            props.size ? ` -${props.size}` : ''
+        }`, [props.size]);
 
-        onMounted(() => {
-            if (iconName.value && !icons[iconName.value]) {
-                console.error(`The icon ${iconName.value} is not registered.`);
-            }
-        });
-
-        return () => h(
+        return { icon, classes };
+    },
+    render ({ classes, icon }) {
+        return h(
             'svg',
             {
-                class: classes.value,
+                class: `inkline-icon${classes.value}`,
                 ...icon.value?.attributes
             },
             renderSvg(icon.value?.children || [])

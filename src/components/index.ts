@@ -1,4 +1,4 @@
-// export { default as IAlert } from '@inkline/inkline/components/IAlert/index.vue';
+export { default as IAlert } from '@inkline/inkline/components/IAlert';
 export { default as IBadge } from '@inkline/inkline/components/IBadge';
 // export { default as IBreadcrumb } from '@inkline/inkline/components/IBreadcrumb/index.vue';
 // export * from '@inkline/inkline/components/IBreadcrumb/components';
@@ -17,7 +17,7 @@ export { default as IBadge } from '@inkline/inkline/components/IBadge';
 // export * from '@inkline/inkline/components/IForm/components';
 // export { default as IHamburgerMenu } from '@inkline/inkline/components/IHamburgerMenu/index.vue';
 // export { default as IHeader } from '@inkline/inkline/components/IHeader/index.vue';
-// export { default as IIcon } from '@inkline/inkline/components/IIcon/index.vue';
+export { default as IIcon } from '@inkline/inkline/components/IIcon';
 // export { default as IInput } from '@inkline/inkline/components/IInput/index.vue';
 // export { default as INumberInput } from '@inkline/inkline/components/INumberInput/index.vue';
 // export { default as ITextarea } from '@inkline/inkline/components/ITextarea/index.vue';

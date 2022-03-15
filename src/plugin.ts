@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Plugin, reactive, watch } from 'vue';
+import { definePlugin, Ref, ref, watch } from '@inkline/paper';
 import { addClass, removeClass } from '@inkline/inkline/helpers';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
 import * as inklineIcons from '@inkline/inkline/icons';
 import { SvgNode } from '@inkline/inkline/types';
+
+export const inklineSymbol = Symbol('inkline');
+export const inklineIconsSymbol = Symbol('inkline-icons');
 
 export interface PrototypeConfig {
     colorMode: 'system' | 'light' | 'dark' | string;
@@ -26,7 +29,7 @@ export interface PluginConfig extends PrototypeConfig {
 export interface Prototype {
     form: (...args: any[]) => any;
     setLocale: (language: string) => any;
-    options: PrototypeConfig;
+    options: Ref<PrototypeConfig>;
 }
 
 export interface InklineGlobals {
@@ -80,7 +83,7 @@ export function createPrototype ({ icons, components, ...options }: PrototypeCon
         setLocale (locale) {
             setLocale(locale);
         },
-        options: reactive(options)
+        options: ref(options)
     } as Prototype;
 }
 
@@ -95,95 +98,82 @@ export const inklineGlobals: InklineGlobals = {
 /**
  * Inkline Vue.js plugin
  */
-export const Inkline: Plugin = {
-    install (app, options: Partial<PrototypeConfig> = {}) {
-        const extendedOptions: PluginConfig = {
-            ...defaultOptions,
-            ...options
-        };
+export const Inkline: Plugin = definePlugin<PluginConfig>((options, { provide }) => {
+    const extendedOptions: PluginConfig = {
+        ...defaultOptions,
+        ...options
+    };
 
+    /**
+     * Get preferred theme based on selected color mode
+     */
+
+    if (typeof window !== 'undefined') {
+        extendedOptions.colorMode = localStorage.getItem(colorModeLocalStorageKey) || extendedOptions.colorMode;
+    }
+
+    /**
+     * Add $inkline global property
+     */
+
+    const prototype: Prototype = createPrototype(extendedOptions);
+
+    provide(inklineSymbol, prototype);
+    inklineGlobals.prototype = prototype;
+
+    /**
+     * Add inklineIcons global provide
+     */
+
+    const icons: Record<string, SvgNode> = {
+        ...inklineIcons,
+        ...extendedOptions.icons
+    };
+
+    provide('inklineIcons', icons);
+
+    if (typeof window !== 'undefined') {
         /**
-         * Register components provided through options globally
+         * Add inkline class to document body and initialize color mode
          */
 
-        for (const componentIndex in extendedOptions.components) { // eslint-disable-line guard-for-in
-            console.log(componentIndex, extendedOptions.components[componentIndex])
-            app.component(extendedOptions.components[componentIndex].name, extendedOptions.components[componentIndex]);
-        }
+        addClass(document.body, 'inkline');
 
         /**
-         * Get preferred theme based on selected color mode
+         * Add color mode on change handler
          */
 
-        if (typeof window !== 'undefined') {
-            extendedOptions.colorMode = localStorage.getItem(colorModeLocalStorageKey) || extendedOptions.colorMode;
-        }
+        watch(() => prototype.options.colorMode, (colorMode) => {
+            handleColorMode(colorMode as string);
+
+            localStorage.setItem(colorModeLocalStorageKey, colorMode as string);
+        });
 
         /**
-         * Add $inkline global property
+         * Add dark mode media query on change handler
          */
 
-        const prototype: Prototype = createPrototype(extendedOptions);
+        const onDarkModeMediaQueryChange = (e: MediaQueryListEvent) => {
+            prototype.options.prefersColorScheme = e.matches ? 'dark' : 'light';
 
-        app.config.globalProperties.$inkline = prototype;
-        app.provide('inkline', prototype);
-
-        inklineGlobals.prototype = prototype;
-
-        /**
-         * Add inklineIcons global provide
-         */
-
-        const icons: Record<string, SvgNode> = {
-            ...inklineIcons,
-            ...extendedOptions.icons
-        };
-
-        app.provide('inklineIcons', icons);
-
-        if (typeof window !== 'undefined') {
-            /**
-             * Add inkline class to document body and initialize color mode
-             */
-
-            addClass(document.body, 'inkline');
-
-            /**
-             * Add color mode on change handler
-             */
-
-            watch(() => prototype.options.colorMode, (colorMode) => {
-                handleColorMode(colorMode as string);
-
-                localStorage.setItem(colorModeLocalStorageKey, colorMode as string);
-            });
-
-            /**
-             * Add dark mode media query on change handler
-             */
-
-            const onDarkModeMediaQueryChange = (e: MediaQueryListEvent) => {
-                prototype.options.prefersColorScheme = e.matches ? 'dark' : 'light';
-
-                if (prototype.options.colorMode === 'system') {
-                    handleColorMode(prototype.options.colorMode);
-                }
-            };
-
-            const darkModeMediaQuery: MediaQueryList = matchMedia('(prefers-color-scheme: dark)');
-            if (darkModeMediaQuery.addEventListener) {
-                darkModeMediaQuery.addEventListener('change', onDarkModeMediaQueryChange);
-            } else {
-                darkModeMediaQuery.addListener(onDarkModeMediaQueryChange);
+            if (prototype.options.colorMode === 'system') {
+                handleColorMode(prototype.options.colorMode);
             }
+        };
 
-            handleColorMode(extendedOptions.colorMode);
+        const darkModeMediaQuery: MediaQueryList = matchMedia('(prefers-color-scheme: dark)');
+        if (darkModeMediaQuery.addEventListener) {
+            darkModeMediaQuery.addEventListener('change', onDarkModeMediaQueryChange);
+        } else {
+            darkModeMediaQuery.addListener(onDarkModeMediaQueryChange);
         }
-    }
-};
 
-declare module '@vue/runtime-core' {
-    interface ComponentCustomProperties {
-        $inkline: Prototype
+        handleColorMode(extendedOptions.colorMode);
     }
-}
+});
+
+// declare module '@vue/runtime-core' {
+//     interface ComponentCustomProperties {
+//         $inkline: Prototype
+//     }
+// }

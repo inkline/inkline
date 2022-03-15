@@ -32,6 +32,11 @@ export default defineConfig({
             }
         ]
     },
+    esbuild: {
+        jsxFactory: 'h',
+        jsxFragment: 'Fragment',
+        jsxInject: ''
+    },
     build: {
         lib: {
             entry: resolve(__dirname, 'src', 'main.ts'),
@@ -60,5 +65,11 @@ export default defineConfig({
             'package',
             'scripts'
         ]
+    },
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        setupFiles: ['./vitest.setup.js'],
+        include: ['src/components/IBadge/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}']
     }
 });
