@@ -1,7 +1,7 @@
+import '@inkline/inkline/shims-react';
 import './style.scss';
 import { defaultPropValue } from '@inkline/inkline/mixins';
-import { computed, defineComponent, h, ref } from '@inkline/paper';
-import { watch } from 'vue';
+import { computed, watch, defineComponent, ref } from '@inkline/paper';
 
 const componentName = 'IAlert';
 
@@ -113,28 +113,20 @@ export default defineComponent({
     render ({ dismissible, dismiss, dismissed, dismissAriaLabel, classes }, { slot, hasSlot }) {
         return dismissed.value
             ? null
-            : h('div', {
-                class: `alert${classes.value}`,
-                role: 'alert'
-            }, [
-                hasSlot('icon')
-                    ? h('span', {
-                        class: 'icon',
-                        role: 'img',
-                        'aria-hidden': 'true'
-                    }, slot('icon'))
-                    : null,
-                h('div', {
-                    class: 'content'
-                }, slot()),
-                dismissible
-                    ? h('span', {
-                        class: 'dismiss',
-                        role: 'button',
-                        onClick: dismiss,
-                        'aria-label': dismissAriaLabel
-                    }, slot('dismiss'))
-                    : null
-            ]);
+            : <div class={`alert${classes.value}`} role="alert">
+                { hasSlot('icon') &&
+                    <span class="icon" role="img" aria-hidden="true">
+                        { slot('icon') }
+                    </span>
+                }
+                <div class="content">
+                    { slot() }
+                </div>
+                { dismissible &&
+                    <span class="dismiss" role="button" onClick={dismiss} aria-label={dismissAriaLabel}>
+                        { hasSlot('dismiss') ? slot('dismiss') : '×' }
+                    </span>
+                }
+            </div>;
     }
 });

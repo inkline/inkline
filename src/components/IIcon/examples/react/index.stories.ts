@@ -1,13 +1,12 @@
 import IIcon from '../../index';
 import {
-    IIconBasicExample
-    // IIconIconsExample,
-    // IIconColorVariantsExample,
-    // IIconSizeVariantsExample
+    IIconBasicExample,
+    IIconIconsExample,
+    IIconColorVariantsExample,
+    IIconSizeVariantsExample
 } from './index';
 import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 import { createStory } from '@inkline/paper/storybook';
-import { withInkline } from '@inkline/inkline/__storybook__/react';
 
 export default {
     component: IIcon,
@@ -25,7 +24,7 @@ export default {
     }
 };
 
-export const Basic = createStory(withInkline(IIconBasicExample));
-// export const Icons = () => IIconIconsExample;
-// export const ColorVariants = () => IIconColorVariantsExample;
-// export const SizeVariants = () => IIconSizeVariantsExample;
+export const Basic = createStory(IIconBasicExample);
+export const Icons = createStory(IIconIconsExample);
+export const ColorVariants = createStory(IIconColorVariantsExample);
+export const SizeVariants = createStory(IIconSizeVariantsExample);

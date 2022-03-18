@@ -1,8 +1,7 @@
-const path = require('path');
-const webpackConfig = require('../webpack.config');
+const { loadConfigFromFile, mergeConfig } = require('vite');
+const { resolve } = require('path');
 const postcssConfig = require('../postcss.config');
-const tsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const framework = process.env.FRAMEWORK || 'vue';
+const framework = process.env.VITE_FRAMEWORK || 'vue';
 
 const storybookFrameworks = {
     vue: '@storybook/vue3',
@@ -34,29 +33,18 @@ module.exports = {
     staticDirs: ['../public'],
     framework: storybookFrameworks[framework],
     core: {
-        builder: 'webpack5'
+        builder: 'storybook-builder-vite'
     },
     features: {
         storyStoreV7: true,
+        babelModeV7: true
     },
-    webpackFinal: async (config, { configType }) => {
-        config.resolve.alias = webpackConfig.resolve.alias;
-        config.module.rules.push({
-            test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-            include: path.resolve(__dirname, '../'),
+    async viteFinal(config) {
+        const { config: userConfig } = await loadConfigFromFile(resolve(__dirname, '..', 'vite.config.js'));
+
+        return mergeConfig(config, {
+            resolve: userConfig.resolve,
+            esbuild: userConfig.esbuild
         });
-
-        config.resolve.plugins = [
-            ...(config.resolve.plugins || []),
-            new tsconfigPathsPlugin({
-                extensions: config.resolve.extensions,
-            }),
-        ];
-
-        return config;
-    },
-    managerWebpack: async (config) => {
-        return config;
-    },
+    }
 }

@@ -1,7 +1,8 @@
 import './style.scss';
-import { h, computed, defineComponent, inject } from '@inkline/paper';
+import { computed, defineComponent, inject } from '@inkline/paper';
 import { defaultPropValue } from '@inkline/inkline/mixins';
 import { renderSvg, toCamelCase } from '@inkline/inkline/helpers';
+import * as inklineIcons from '@inkline/inkline/icons';
 import { SvgNode } from '@inkline/inkline/types';
 import { inklineIconsSymbol } from '@inkline/inkline/plugin';
 
@@ -32,23 +33,20 @@ export default defineComponent({
         }
     },
     setup (props) {
-        const icons: Record<string, SvgNode> = inject(inklineIconsSymbol, {});
+        const icons: Record<string, SvgNode> = inject(inklineIconsSymbol, inklineIcons);
         const iconName = computed(() => toCamelCase(props.name), [props.name]);
         const icon = computed(() => icons[iconName.value]);
         const classes = computed(() => `${
+            props.className ? ` ${props.className}` : ''
+        }${
             props.size ? ` -${props.size}` : ''
         }`, [props.size]);
 
         return { icon, classes };
     },
     render ({ classes, icon }) {
-        return h(
-            'svg',
-            {
-                class: `inkline-icon${classes.value}`,
-                ...icon.value?.attributes
-            },
-            renderSvg(icon.value?.children || [])
-        );
+        return <svg class={`inkline-icon${classes.value}`} { ...icon.value?.attributes }>
+            { renderSvg(icon.value?.children || []) }
+        </svg>;
     }
 });

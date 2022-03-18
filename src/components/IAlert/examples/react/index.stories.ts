@@ -1,11 +1,11 @@
 import IAlert from '../../index';
 import {
-    IAlertBasicExample
-    // IAlertColorVariantsExample,
-    // IAlertDismissibleExample,
-    // IAlertContentExample,
-    // IAlertIconExample,
-    // IAlertSizeVariantsExample
+    IAlertBasicExample,
+    IAlertColorVariantsExample,
+    IAlertDismissibleExample,
+    IAlertContentExample,
+    IAlertIconExample,
+    IAlertSizeVariantsExample
 } from './index';
 import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 import { createStory } from '@inkline/paper/storybook';
@@ -20,8 +20,8 @@ export default {
 };
 
 export const Basic = createStory(IAlertBasicExample);
-// export const ColorVariants = createStory(IAlertColorVariantsExample);
-// export const Dismissible = createStory(IAlertDismissibleExample);
-// export const Content = createStory(IAlertContentExample);
-// export const Icon = createStory(IAlertIconExample);
-// export const SizeVariants = createStory(IAlertSizeVariantsExample);
+export const ColorVariants = createStory(IAlertColorVariantsExample);
+export const Dismissible = createStory(IAlertDismissibleExample);
+export const Content = createStory(IAlertContentExample);
+export const Icon = createStory(IAlertIconExample);
+export const SizeVariants = createStory(IAlertSizeVariantsExample);

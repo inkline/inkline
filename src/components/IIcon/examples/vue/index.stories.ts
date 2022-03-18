@@ -5,7 +5,6 @@ import {
     IIconColorVariantsExample,
     IIconSizeVariantsExample
 } from './index';
-import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 import { createStory } from '@inkline/paper/storybook';
 
 export default {
@@ -19,12 +18,10 @@ export default {
                 type: 'text'
             }
         },
-        ...colorArgType(['light', 'dark']),
-        ...sizeArgType()
     }
 };
 
 export const Basic = createStory(IIconBasicExample);
-export const Icons = () => IIconIconsExample;
-export const ColorVariants = () => IIconColorVariantsExample;
-export const SizeVariants = () => IIconSizeVariantsExample;
+export const Icons = createStory(IIconIconsExample);
+export const ColorVariants = createStory(IIconColorVariantsExample);
+export const SizeVariants = createStory(IIconSizeVariantsExample);

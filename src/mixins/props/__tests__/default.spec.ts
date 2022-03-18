@@ -1,5 +1,5 @@
 import { defaultPropValue } from '@inkline/inkline/mixins';
-import { inklineGlobals } from '@inkline/inkline/plugin';
+import { $inkline } from '@inkline/inkline/plugin';
 
 jest.mock('@inkline/inkline/plugin', () => ({
     inklineGlobals: {
@@ -22,14 +22,14 @@ describe('mixins', () => {
             });
 
             it('should return fallback property value if inkline prototype not defined', () => {
-                inklineGlobals.prototype = undefined;
+                $inkline.prototype = undefined;
 
                 const defaultValue = defaultPropValue(componentName, propertyName, propertyValue)();
                 expect(defaultValue).toEqual(propertyValue);
             });
 
             it('should return property value if inkline prototype options.propertyName', () => {
-                inklineGlobals.prototype = {
+                $inkline.prototype = {
                     options: {
                         [propertyName]: propertyValueOption,
                         componentOptions: {}
@@ -41,7 +41,7 @@ describe('mixins', () => {
             });
 
             it('should return property value if inkline prototype options.componentOptions.propertyName', () => {
-                inklineGlobals.prototype = {
+                $inkline.prototype = {
                     options: {
                         componentOptions: {
                             [componentName]: {

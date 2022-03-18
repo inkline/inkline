@@ -1,9 +1,10 @@
 <script lang="ts">
-import { IAlert } from '@inkline/inkline/components';
+import { IAlert, IIcon } from '@inkline/inkline/components';
 
 export default {
     components: {
-        IAlert
+        IAlert,
+        IIcon
     }
 };
 </script>

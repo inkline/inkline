@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import vue from '@vitejs/plugin-vue';
-import markdown from 'vite-plugin-md';
+// import vue from '@vitejs/plugin-vue';
+// import markdown from 'vite-plugin-md';
 
-const framework = process.env.FRAMEWORK || 'vue';
+const framework = process.env.VITE_FRAMEWORK || 'vue';
 
 /**
  * Vite configuration for library build
@@ -12,30 +12,30 @@ const framework = process.env.FRAMEWORK || 'vue';
  */
 export default defineConfig({
     plugins: [
-        vue({
-            include: [
-                /\.vue$/,
-                /\.md$/
-            ]
-        }),
-        markdown()
+        // vue({
+        //     include: [
+        //         /\.vue$/,
+        //         /\.md$/
+        //     ]
+        // }),
+        // markdown()
     ],
     resolve: {
         alias: [
             {
-                find: /^@inkline\/inkline\//,
-                replacement: `${resolve(__dirname)}/src/`
+                find: /^@inkline\/inkline(.*)/,
+                replacement: `${resolve(__dirname)}/src$1`
             },
             {
-                find: /^@inkline\/paper/,
-                replacement: `@inkline/paper/${framework}`
+                find: /^@inkline\/paper(.*)/,
+                replacement: `${resolve(__dirname)}/node_modules/@inkline/paper/${framework}$1`
             }
         ]
     },
     esbuild: {
         jsxFactory: 'h',
         jsxFragment: 'Fragment',
-        jsxInject: ''
+        jsxInject: 'import { h, Fragment } from \'@inkline/paper\';'
     },
     build: {
         lib: {

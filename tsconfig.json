@@ -25,6 +25,7 @@
             "dom.iterable",
             "scripthost"
         ],
+        "typeRoots": [],
         "types": [
             "vite/client",
             "vitest/globals",

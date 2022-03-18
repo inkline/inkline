@@ -1,11 +1,11 @@
-import { h } from '@inkline/paper';
+import React from 'react';
 import { IAlert, IIcon } from '@inkline/inkline/components';
 
 export default (props: any) => <>
-    <IAlert {...props}>
+    <IAlert color="info" {...props}>
         <IAlert.Icon>
             <IIcon name="ink-info" />
         </IAlert.Icon>
-        <p>Heads up! This alert needs your attention, and it might be <a href="">important</a>.</p>
+        <p>Some quick example text to build on the alert title and make up the bulk of the alert's content.</p>
     </IAlert>
 </>;
