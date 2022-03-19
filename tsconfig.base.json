@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "importHelpers": true,
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "strict": true,
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "rootDir": "src",
+        "outDir": "lib",
+        "paths": {
+            "@inkline/inkline/*": ["./src/*"]
+        },
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ],
+        "typeRoots": [],
+        "types": []
+    }
+}

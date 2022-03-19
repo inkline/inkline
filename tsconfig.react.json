@@ -1,0 +1,17 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "composite": true,
+        "jsx": "react",
+        "jsxFactory": "React.createElement",
+        "jsxFragmentFactory": "React.Fragment",
+        "types": [
+            "@types/react"
+        ]
+    },
+    "include": [
+        "src/**/react/*.ts",
+        "src/**/react/*.d.ts",
+        "src/**/react/*.tsx"
+    ]
+}

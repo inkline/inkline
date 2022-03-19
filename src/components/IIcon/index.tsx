@@ -1,5 +1,5 @@
 import './style.scss';
-import { computed, defineComponent, inject } from '@inkline/paper';
+import { h, computed, defineComponent, inject } from '@inkline/paper';
 import { defaultPropValue } from '@inkline/inkline/mixins';
 import { renderSvg, toCamelCase } from '@inkline/inkline/helpers';
 import * as inklineIcons from '@inkline/inkline/icons';

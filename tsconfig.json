@@ -1,31 +1,9 @@
 {
+    "extends": "./tsconfig.base.json",
     "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
-        "importHelpers": true,
-        "moduleResolution": "node",
-        "skipLibCheck": true,
-        "strict": true,
-        "jsx": "preserve",
+        "jsx": "react",
         "jsxFactory": "h",
         "jsxFragmentFactory": "Fragment",
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "baseUrl": ".",
-        "rootDir": "src",
-        "outDir": "lib",
-        "paths": {
-            "@inkline/inkline/*": ["./src/*"]
-        },
-        "lib": [
-            "esnext",
-            "dom",
-            "dom.iterable",
-            "scripthost"
-        ],
-        "typeRoots": [],
         "types": [
             "vite/client",
             "vitest/globals",
@@ -45,7 +23,19 @@
         "lib",
         "package",
         "node_modules",
-        "src/**/*.stories.ts",
-        "src/**/*.spec.ts"
+        "src/stories",
+        "src/**/__tests__/*",
+        "src/**/examples/*"
+    ],
+    "references": [
+        {
+            "path": "./tsconfig.test.json"
+        },
+        {
+            "path": "./tsconfig.react.json"
+        },
+        {
+            "path": "./tsconfig.vue.json"
+        }
     ]
 }

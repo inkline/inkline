@@ -1,7 +1,7 @@
 import React from 'react';
 import { IIcon } from '@inkline/inkline/components';
 
-export default (props: any) => <>
+export default () => <>
     <IIcon name="ink-check" />
 
     <IIcon name="ink-info" />

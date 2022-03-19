@@ -1,0 +1,11 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "composite": true
+    },
+    "include": [
+        "src/**/vue/*.ts",
+        "src/**/vue/*.d.ts",
+        "src/**/vue/*.tsx"
+    ]
+}

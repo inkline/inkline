@@ -202,7 +202,7 @@ export default defineComponent({
             const targetSchema = getValueByPath(this.modelValue, path);
             const events = targetSchema.validateOn
                 ? [].concat(targetSchema.validateOn)
-                : this.$inkline.options.validateOn;
+                : this.$inkline.options.value.validateOn;
 
             return events!.includes(eventName);
         }

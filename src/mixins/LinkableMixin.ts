@@ -15,7 +15,7 @@ export default defineComponent({
             return this.isTag === this.routerComponent;
         },
         routerComponent (): string {
-            return this.$inkline.options.routerComponent;
+            return this.$inkline.options.value.routerComponent;
         }
     }
 });

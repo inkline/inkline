@@ -1,19 +1,10 @@
 const { loadConfigFromFile, mergeConfig } = require('vite');
 const { resolve } = require('path');
-const postcssConfig = require('../postcss.config');
-const framework = process.env.VITE_FRAMEWORK || 'vue';
-
-const storybookFrameworks = {
-    vue: '@storybook/vue3',
-    react: '@storybook/react'
-}
+const postcssConfig = require('../../../postcss.config');
 
 module.exports = {
     stories: [
-        `../src/**/${framework}/*.stories.mdx`,
-        `../src/components/IAlert/**/${framework}/*.stories.@(js|jsx|ts|tsx)`,
-        `../src/components/IBadge/**/${framework}/*.stories.@(js|jsx|ts|tsx)`,
-        `../src/components/IIcon/**/${framework}/*.stories.@(js|jsx|ts|tsx)`
+        '../src/**/*.stories.@(mdx|js|jsx|ts|tsx)'
     ],
     addons: [
         {
@@ -30,8 +21,8 @@ module.exports = {
         '@storybook/addon-a11y',
         'storybook-dark-mode'
     ],
-    staticDirs: ['../public'],
-    framework: storybookFrameworks[framework],
+    staticDirs: ['../../common/public'],
+    framework: '@storybook/react',
     core: {
         builder: 'storybook-builder-vite'
     },
@@ -40,7 +31,7 @@ module.exports = {
         babelModeV7: true
     },
     async viteFinal(config) {
-        const { config: userConfig } = await loadConfigFromFile(resolve(__dirname, '..', 'vite.config.js'));
+        const { config: userConfig } = await loadConfigFromFile(resolve(__dirname, '..', '..', 'vite.config.js'));
 
         return mergeConfig(config, {
             resolve: userConfig.resolve,

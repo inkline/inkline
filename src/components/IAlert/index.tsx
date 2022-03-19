@@ -1,7 +1,6 @@
-import '@inkline/inkline/shims-react';
 import './style.scss';
 import { defaultPropValue } from '@inkline/inkline/mixins';
-import { computed, watch, defineComponent, ref } from '@inkline/paper';
+import { h, computed, watch, defineComponent, ref } from '@inkline/paper';
 
 const componentName = 'IAlert';
 
@@ -99,7 +98,7 @@ export default defineComponent({
         }`, [props.color, props.size, props.dismissible]);
 
         watch(() => props.modelValue, () => {
-            dismissed.value = !dismissed.value;
+            dismissed.value = !props.modelValue;
         });
 
         const dismiss = () => {

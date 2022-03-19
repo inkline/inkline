@@ -13,7 +13,10 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 12,
         parser: '@typescript-eslint/parser',
-        sourceType: 'module'
+        sourceType: 'module',
+        ecmaFeatures: {
+            jsx: true
+        }
     },
     plugins: [
         'vue',
@@ -37,6 +40,18 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-empty-function': 'off',
-        '@typescript-eslint/explicit-module-boundary-types': 'off'
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': [
+            'error',
+            {
+                varsIgnorePattern: '^(h|Fragment)$'
+            }
+        ]
+    },
+    settings: {
+        react: {
+            pragma: 'h'
+        }
     }
 };
