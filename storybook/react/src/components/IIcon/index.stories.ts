@@ -1,10 +1,11 @@
-import IIcon from '../../index';
+import { IIcon } from '@inkline/inkline/components';
 import {
     IIconBasicExample,
     IIconIconsExample,
     IIconColorVariantsExample,
     IIconSizeVariantsExample
 } from './index';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 import { createStory } from '@inkline/paper/storybook';
 
 export default {
@@ -17,7 +18,9 @@ export default {
             control: {
                 type: 'text'
             }
-        }
+        },
+        ...colorArgType(['light', 'dark']),
+        ...sizeArgType()
     }
 };
 

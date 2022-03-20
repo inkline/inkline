@@ -1,4 +1,4 @@
-import IBadge from '../../index';
+import { IBadge } from '@inkline/inkline/components';
 import {
     IBadgeBasicExample,
     IBadgeColorVariantsExample,
