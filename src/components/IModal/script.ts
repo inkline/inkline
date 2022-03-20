@@ -1,10 +1,9 @@
-import { defineComponent } from 'vue';
+import { defineComponent, h } from '@inkline/paper';
 import { addClass, removeClass, uid } from '@inkline/inkline/helpers';
 import { OverlayController } from '@inkline/inkline/controllers';
 import {
     defaultPropValue,
-    colorVariantClass,
-    sizePropValidator
+    colorVariantClass
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
 import { Classes } from '@inkline/inkline/types';
@@ -120,8 +119,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: defaultPropValue<string>(componentName, 'size')
         },
         /**
          * Used to determine if modal is visible or not

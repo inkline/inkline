@@ -46,7 +46,8 @@ export default {
         contents = contents.replace(/<template src=".+" \/>/, `<template>
 ${template.toString().split('\n').map((line) => `    ${line}`).join('\n')}
 </template>`)
-
-        await writeFile(target, contents);
     }
+
+    shell.mkdir('-p', path.dirname(target));
+    await writeFile(target, contents);
 });

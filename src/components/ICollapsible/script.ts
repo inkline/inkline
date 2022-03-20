@@ -1,8 +1,7 @@
-import { defineComponent } from 'vue';
+import { defineComponent, h } from '@inkline/paper';
 import {
     colorVariantClass,
-    defaultPropValue,
-    sizePropValidator
+    defaultPropValue
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -50,8 +49,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: defaultPropValue<string>(componentName, 'size')
         },
         /**
          * Used to determine which collapsible item is open

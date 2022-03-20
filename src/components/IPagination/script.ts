@@ -1,8 +1,7 @@
-import { defineComponent } from 'vue';
+import { defineComponent, h } from '@inkline/paper';
 import {
     defaultPropValue,
-    colorVariantClass,
-    sizePropValidator
+    colorVariantClass
 } from '@inkline/inkline/mixins';
 import { breakpointKeys, breakpoints } from '@inkline/inkline/constants';
 import { debounce } from '@inkline/inkline/helpers';
@@ -108,8 +107,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: defaultPropValue<string>(componentName, 'size')
         }
     },
     emits: [

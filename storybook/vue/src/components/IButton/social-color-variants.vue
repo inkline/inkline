@@ -1,0 +1,18 @@
+<script lang="ts">
+import { IButton } from '@inkline/inkline/components';
+
+export default {
+    components: {
+        IButton
+    }
+};
+</script>
+<template>
+    <i-button color="facebook" block>Singin with Facebook</i-button>
+    
+    <i-button color="google" block>Singin with Google</i-button>
+    
+    <i-button color="twitter" block>Singin with Twitter</i-button>
+    
+    <i-button color="github" block>Singin with GitHub</i-button>
+</template>

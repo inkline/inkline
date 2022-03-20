@@ -1,0 +1,22 @@
+<script lang="ts">
+import { IProgress } from '@inkline/inkline/components';
+
+export default {
+    components: {
+        IProgress
+    }
+};
+</script>
+<template>
+    <i-progress size="sm">
+        <i-progress-bar :value="65" />
+    </i-progress>
+    
+    <i-progress size="md">
+        <i-progress-bar :value="65" />
+    </i-progress>
+    
+    <i-progress size="lg">
+        <i-progress-bar :value="65" />
+    </i-progress>
+</template>

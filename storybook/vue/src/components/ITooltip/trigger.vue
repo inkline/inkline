@@ -1,0 +1,36 @@
+<script lang="ts">
+import { ITooltip } from '@inkline/inkline/components';
+
+export default {
+    components: {
+        ITooltip
+    }
+};
+</script>
+<template>
+    <i-tooltip trigger="click">
+        <i-button>Click Tooltip</i-button>
+        <template #body>Tooltip</template>
+    </i-tooltip>
+    
+    <i-tooltip trigger="hover">
+        <i-button>Hover Tooltip</i-button>
+        <template #body>Tooltip</template>
+    </i-tooltip>
+    
+    <i-tooltip trigger="focus">
+        <i-button type="submit">Focus Tooltip</i-button>
+        <template #body>Tooltip</template>
+    </i-tooltip>
+    
+    <i-tooltip :trigger="['focus', 'hover']">
+        <i-button>Multiple Events Tooltip</i-button>
+        <template #body>Tooltip</template>
+    </i-tooltip>
+    
+    <i-tooltip trigger="manual" v-model="visible">
+        <i-button @click="visible = !visible">Manual Tooltip</i-button>
+        <template #body>Tooltip</template>
+    </i-tooltip>
+</template>
+<script src="./trigger.js" />

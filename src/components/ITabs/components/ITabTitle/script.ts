@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, h } from '@inkline/paper';
 import { uid } from '@inkline/inkline/helpers';
 import { Classes } from '@inkline/inkline/types';
 

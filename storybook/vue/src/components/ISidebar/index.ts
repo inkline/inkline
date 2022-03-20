@@ -1,0 +1,11 @@
+export { default as ISidebarBasicExample } from './basic.vue';
+export { default as ISidebarCollapseBreakpointExample } from './collapse-breakpoint.vue';
+export { default as ISidebarCollapseTrueExample } from './collapse-true.vue';
+export { default as ISidebarCollapseFalseExample } from './collapse-false.vue';
+export { default as ISidebarColorVariantsExample } from './color-variants.vue';
+export { default as ISidebarCollapsePositionExample } from './collapse-position.vue';
+export { default as ISidebarCollapsibleExample } from './collapsible.vue';
+export { default as ISidebarSizeVariantsExample } from './size-variants.vue';
+export { default as ISidebarPlacementExample } from './placement.vue';
+export { default as ISidebarRoutingExample } from './routing.vue';
+export { default as ISidebarRoutingActiveExample } from './routing-active.vue';

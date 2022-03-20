@@ -1,0 +1,16 @@
+<script lang="ts">
+import { IButton } from '@inkline/inkline/components';
+
+export default {
+    components: {
+        IButton
+    }
+};
+</script>
+<template>
+    <i-button size="sm">Small Button</i-button>
+    
+    <i-button size="md">Medium Button</i-button>
+    
+    <i-button size="lg">Large Button</i-button>
+</template>

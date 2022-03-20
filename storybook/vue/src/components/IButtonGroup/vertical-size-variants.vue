@@ -1,0 +1,28 @@
+<script lang="ts">
+import { IButtonGroup } from '@inkline/inkline/components';
+
+export default {
+    components: {
+        IButtonGroup
+    }
+};
+</script>
+<template>
+    <i-button-group vertical size="sm">
+        <i-button>Top</i-button>
+        <i-button>Middle</i-button>
+        <i-button>Bottom</i-button>
+    </i-button-group>
+    
+    <i-button-group vertical size="md">
+        <i-button>Top</i-button>
+        <i-button>Middle</i-button>
+        <i-button>Bottom</i-button>
+    </i-button-group>
+    
+    <i-button-group vertical size="lg">
+        <i-button>Top</i-button>
+        <i-button>Middle</i-button>
+        <i-button>Bottom</i-button>
+    </i-button-group>
+</template>

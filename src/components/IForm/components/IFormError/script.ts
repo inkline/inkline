@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, h } from '@inkline/paper';
 import { getValueByPath } from '@inkline/inkline/helpers';
 
 /**

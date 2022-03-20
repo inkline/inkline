@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 
-import { defineComponent } from 'vue';
+import { defineComponent, h } from '@inkline/paper';
 import {
     isFocusable,
     isFunction,
@@ -11,7 +11,6 @@ import {
 import {
     colorVariantClass,
     defaultPropValue,
-    sizePropValidator,
     FormComponentMixin,
     PopupMixin
 } from '@inkline/inkline/mixins';
@@ -314,8 +313,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: defaultPropValue<string>(componentName, 'size')
         },
         /**
          * The tabindex of the select

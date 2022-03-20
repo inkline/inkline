@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, h } from '@inkline/paper';
 import { defaultPropValue, colorVariantClass } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 

@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, h } from '@inkline/paper';
 import IButton from '@inkline/inkline/components/IButton/index.vue';
 import IInput from '@inkline/inkline/components/IInput/index.vue';
 import { uid } from '@inkline/inkline/helpers';
@@ -94,8 +94,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: defaultPropValue<string>(componentName, 'size')
         },
         /**
          * The tabindex of the input

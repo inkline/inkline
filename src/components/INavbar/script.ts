@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, h } from '@inkline/paper';
 import IContainer from '@inkline/inkline/components/IContainer/index.vue';
 import IRow from '@inkline/inkline/components/IRow/index.vue';
 import IColumn from '@inkline/inkline/components/IColumn/index.vue';
@@ -6,8 +6,7 @@ import IHamburgerMenu from '@inkline/inkline/components/IHamburgerMenu/index.vue
 import {
     CollapsibleMixin,
     defaultPropValue,
-    colorVariantClass,
-    sizePropValidator
+    colorVariantClass
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
 import { Classes } from '@inkline/inkline/types';
@@ -88,8 +87,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: defaultPropValue<string>(componentName, 'size')
         },
         /**
          * The animation of the hamburger menu component used for collapsing

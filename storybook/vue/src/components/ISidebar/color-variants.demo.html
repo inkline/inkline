@@ -1,0 +1,81 @@
+<div>
+    <i-layout>
+        <i-layout-header>
+            <i-navbar color="light" fluid :collapse="false">
+                <i-navbar-brand :to="{ name: 'docs-components-sidebar' }">
+                    Dashboard
+                </i-navbar-brand>
+                <i-hamburger-menu v-model="light" color="light" animation="arrow-left" class="_lg:hidden" />
+            </i-navbar>
+        </i-layout-header>
+        <i-layout vertical class="_padding-top:1/2">
+            <i-sidebar v-model="light" color="light">
+                <i-nav vertical>
+                    <i-nav-item :to="{ name: 'docs-components-sidebar' }">
+                        Home
+                    </i-nav-item>
+                    <i-nav-item :to="{ name: 'docs-components-sidebar' }">
+                        About
+                    </i-nav-item>
+                    <i-nav-item :to="{ name: 'docs-components-sidebar' }">
+                        Contact
+                    </i-nav-item>
+                </i-nav>
+            </i-sidebar>
+            <i-layout-content>
+                <i-container fluid>
+                    <i-row>
+                        <i-column>
+                            <h1>
+                                Light Sidebar
+                            </h1>
+                            <p>
+                                Example content for a page with a sidebar, a layout typically seen in Documentation pages and Web Application dashboards.
+                            </p>
+                        </i-column>
+                    </i-row>
+                </i-container>
+            </i-layout-content>
+        </i-layout>
+    </i-layout>
+
+    <i-layout class="_margin-top:1">
+        <i-layout-header>
+            <i-navbar color="dark" fluid :collapse="false">
+                <i-navbar-brand :to="{ name: 'docs-components-sidebar' }">
+                    Dashboard
+                </i-navbar-brand>
+                <i-hamburger-menu v-model="dark" color="dark" animation="arrow-left" class="_lg:hidden" />
+            </i-navbar>
+        </i-layout-header>
+        <i-layout vertical class="_padding-top:1/2">
+            <i-sidebar v-model="dark" color="dark">
+                <i-nav vertical>
+                    <i-nav-item :to="{ name: 'docs-components-sidebar' }">
+                        Home
+                    </i-nav-item>
+                    <i-nav-item :to="{ name: 'docs-components-sidebar' }">
+                        About
+                    </i-nav-item>
+                    <i-nav-item :to="{ name: 'docs-components-sidebar' }">
+                        Contact
+                    </i-nav-item>
+                </i-nav>
+            </i-sidebar>
+            <i-layout-content>
+                <i-container fluid>
+                    <i-row>
+                        <i-column>
+                            <h1>
+                                Dark Sidebar
+                            </h1>
+                            <p>
+                                Example content for a page with a sidebar, a layout typically seen in Documentation pages and Web Application dashboards.
+                            </p>
+                        </i-column>
+                    </i-row>
+                </i-container>
+            </i-layout-content>
+        </i-layout>
+    </i-layout>
+</div>

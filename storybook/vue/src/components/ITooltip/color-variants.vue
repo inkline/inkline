@@ -1,0 +1,20 @@
+<script lang="ts">
+import { ITooltip } from '@inkline/inkline/components';
+
+export default {
+    components: {
+        ITooltip
+    }
+};
+</script>
+<template>
+    <i-tooltip color="light">
+        <i-button color="light">Light Tooltip</i-button>
+        <template #body>Tooltip</template>
+    </i-tooltip>
+    
+    <i-tooltip color="dark">
+        <i-button color="dark">Dark Tooltip</i-button>
+        <template #body>Tooltip</template>
+    </i-tooltip>
+</template>

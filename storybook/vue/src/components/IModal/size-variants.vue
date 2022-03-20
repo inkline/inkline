@@ -1,0 +1,53 @@
+<script lang="ts">
+import { IModal } from '@inkline/inkline/components';
+
+export default {
+    components: {
+        IModal
+    }
+};
+</script>
+<template>
+    <i-button @click="visible = true">
+        Show Small Modal
+    </i-button>
+    
+    <i-modal v-model="visible" size="sm">
+        <template #header>
+            Small Modal
+        </template>
+        This is the modal body. Useful information goes here.
+        <template #footer>
+            Modal Footer
+        </template>
+    </i-modal>
+    
+    <i-button @click="visible = true">
+        Show Medium Modal
+    </i-button>
+    
+    <i-modal v-model="visible" size="md">
+        <template #header>
+            Medium Modal
+        </template>
+        This is the modal body. Useful information goes here.
+        <template #footer>
+            Modal Footer
+        </template>
+    </i-modal>
+    
+    <i-button @click="visible = true">
+        Show Large Modal
+    </i-button>
+    
+    <i-modal v-model="visible" size="lg">
+        <template #header>
+            Large Modal
+        </template>
+        This is the modal body. Useful information goes here.
+        <template #footer>
+            Modal Footer
+        </template>
+    </i-modal>
+</template>
+<script src="./size-variants.js" />

@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, h } from '@inkline/paper';
 import {
     getValueByPath,
     setValueByPath,
@@ -9,7 +9,6 @@ import {
 import {
     colorVariantClass,
     defaultPropValue,
-    sizePropValidator,
     FormComponentMixin
 } from '@inkline/inkline/mixins';
 import { validate } from '@inkline/inkline/validation';
@@ -115,8 +114,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: defaultPropValue<string>(componentName, 'size')
         }
     },
     emits: [
