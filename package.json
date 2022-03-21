@@ -30,7 +30,7 @@
   "unpkg": "inkline.cjs",
   "types": "inkline.d.ts",
   "dependencies": {
-    "@inkline/paper": "1.4.3",
+    "@inkline/paper": "^1.4.5",
     "@popperjs/core": "2.11.2"
   },
   "devDependencies": {

@@ -1,6 +1,5 @@
-import { defineComponent, h } from '@inkline/paper';
-import { LinkableMixin } from '@inkline/inkline/mixins';
-import { Classes } from '@inkline/inkline/types';
+import './style.scss';
+import { computed, defineComponent, h } from '@inkline/paper';
 
 /**
  * Slot for default breadcrumb item content
@@ -19,9 +18,6 @@ const componentName = 'IBreadcrumbItem';
 
 export default defineComponent({
     name: componentName,
-    mixins: [
-        LinkableMixin
-    ],
     props: {
         /**
          * The active state of the breadcrumb item
@@ -45,24 +41,36 @@ export default defineComponent({
         },
         /**
          * The tabindex of the breadcrumb item
-         * @type Number | String
+         * @type String
          * @default 0
          * @name tabindex
          */
         tabindex: {
-            type: [Number, String],
-            default: 0
+            type: String,
+            default: '0'
         }
     },
-    computed: {
-        classes (): Classes {
-            return {
-                '-active': this.active,
-                '-disabled': this.disabled
-            };
-        },
-        tabIndex (): number | string {
-            return this.disabled || this.active ? -1 : this.tabindex;
-        }
+    setup (props) {
+        const classes = computed(() => `${
+            props.className ? ` ${props.className}` : ''
+        }${
+            props.active ? ' -active' : ''
+        }${
+            props.disabled ? ' -disabled' : ''
+        }`, [props.active, props.disabled, props.className]);
+
+        const tabIndex = computed(
+            () => (props.disabled || props.active) ? '-1' : props.tabindex,
+            [props.disabled, props.active, props.tabindex]
+        );
+
+        return { tabIndex, classes };
+    },
+    render ({ active, classes, tabIndex }, { slot }) {
+        return <li class={`breadcrumb-item${classes.value}`}>
+            <a is="isTag" tabindex={tabIndex.value} aria-current={active ? 'location' : undefined}>
+                { slot() }
+            </a>
+        </li>;
     }
 });

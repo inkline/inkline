@@ -1,0 +1,17 @@
+<script lang="ts">
+import { IColumn } from '@inkline/inkline/components';
+
+export default {
+    components: {
+        IColumn
+    }
+};
+</script>
+<template>
+    <i-container>
+        <i-row>
+            <i-column sm="5" md="6"></i-column>
+            <i-column sm="5" offset-sm="2" md="6" offset-md="0"></i-column>
+        </i-row>
+    </i-container>
+</template>

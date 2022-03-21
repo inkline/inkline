@@ -1,17 +1,16 @@
-export function colorVariantClass (component: any): { [key: string]: boolean } {
-    let colorClass = component.color;
+import { $inkline } from '@inkline/inkline/plugin';
 
-    if (!colorClass) {
-        if (component.$inkline.options.colorMode === 'system') {
+export function colorVariantClass (colorClass?: string): string {
+    console.log
+    if (!colorClass && $inkline.prototype) {
+        if ($inkline.prototype.options.value.colorMode === 'system') {
             colorClass = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
                 ? 'dark'
                 : 'light';
         } else {
-            colorClass = component.$inkline.options.colorMode;
+            colorClass = $inkline.prototype.options.value.colorMode;
         }
     }
 
-    return {
-        [`-${colorClass}`]: true
-    };
+    return 'light';
 }

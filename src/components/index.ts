@@ -1,7 +1,7 @@
 export { default as IAlert } from '@inkline/inkline/components/IAlert';
 export { default as IBadge } from '@inkline/inkline/components/IBadge';
-// export { default as IBreadcrumb } from '@inkline/inkline/components/IBreadcrumb/index.vue';
-// export * from '@inkline/inkline/components/IBreadcrumb/components';
+export { default as IBreadcrumb } from '@inkline/inkline/components/IBreadcrumb';
+export * from '@inkline/inkline/components/IBreadcrumb/components';
 // export { default as IButton } from '@inkline/inkline/components/IButton/index.vue';
 // export { default as IButtonGroup } from '@inkline/inkline/components/IButtonGroup/index.vue';
 // export { default as IColumn } from '@inkline/inkline/components/IColumn/index.vue';

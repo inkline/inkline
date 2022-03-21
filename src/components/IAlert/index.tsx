@@ -88,6 +88,8 @@ export default defineComponent({
     setup (props, { emit, hasSlot }) {
         const dismissed = ref(false);
         const classes = computed(() => `${
+            props.className ? ` ${props.className}` : ''
+        }${
             props.color ? ` -${props.color}` : ''
         }${
             props.size ? ` -${props.size}` : ''
@@ -95,7 +97,7 @@ export default defineComponent({
             props.dismissible ? ' -dismissible' : ''
         }${
             hasSlot('icon') ? ' -with-icon' : ''
-        }`, [props.color, props.size, props.dismissible]);
+        }`, [props.color, props.size, props.dismissible, props.classname]);
 
         watch(() => props.modelValue, () => {
             dismissed.value = !props.modelValue;

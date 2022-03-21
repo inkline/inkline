@@ -1,10 +1,25 @@
 import './style.scss';
-import { computed, defineComponent, h } from '@inkline/paper';
+import { computed, defineComponent, h, inject } from '@inkline/paper';
 import {
     defaultPropValue
 } from '@inkline/inkline/mixins';
+import { $inkline, inklineSymbol } from '@inkline/inkline/plugin';
 
 const componentName = 'IBadge';
+
+const useColorVariant = (color?: string) => {
+    if (!color && $inkline.prototype) {
+        if ($inkline.prototype.options.value.colorMode === 'system') {
+            color = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+        } else {
+            color = $inkline.prototype.options.value.colorMode;
+        }
+    }
+
+    return color;
+};
 
 export default defineComponent({
     name: componentName,
@@ -39,11 +54,18 @@ export default defineComponent({
         }
     },
     setup (props) {
+        const inkline = inject(inklineSymbol);
+        const colorVariant = useColorVariant(props.color);
+
+        console.log(colorVariant, inkline, ($inkline as any).test);
+
         const classes = computed(() => `${
-            props.color ? ` -${props.color}` : ''
+            props.className ? ` ${props.className}` : ''
+        }${
+            colorVariant ? ` -${colorVariant}` : ''
         }${
             props.size ? ` -${props.size}` : ''
-        }`, [props.color, props.size]);
+        }`, [colorVariant, props.size, props.className]);
 
         return { classes };
     },

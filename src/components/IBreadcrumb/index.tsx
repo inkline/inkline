@@ -1,9 +1,9 @@
-import { defineComponent, h } from '@inkline/paper';
+import './style.scss';
+import { computed, defineComponent, h } from '@inkline/paper';
 import {
     colorVariantClass,
     defaultPropValue
 } from '@inkline/inkline/mixins';
-import { Classes } from '@inkline/inkline/types';
 
 /**
  * Slot for default breadcrumb content
@@ -47,15 +47,27 @@ export default defineComponent({
             default: defaultPropValue<string>(componentName, 'size')
         }
     },
-    setup () {
+    setup (props) {
+        const classes = computed(() => `${
+            props.className ? ` ${props.className}` : ''
+        }${
+            props.color ? ` -${props.color}` : ` -${colorVariantClass(props.color)}`
+        }${
+            props.size ? ` -${props.size}` : ''
+        }`, [props.color, props.size, props.className]);
 
+        return {
+            classes
+        };
     },
-    computed: {
-        classes (): Classes {
-            return {
-                ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size)
-            };
-        }
+    render ({ classes, ariaLabel }, { slot }) {
+        return <nav
+            class={`breadcrumb${classes.value}`}
+            aria-label={ariaLabel}
+        >
+            <ol>
+                { slot() }
+            </ol>
+        </nav>;
     }
 });
