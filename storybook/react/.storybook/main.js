@@ -26,10 +26,6 @@ module.exports = {
     core: {
         builder: 'storybook-builder-vite'
     },
-    features: {
-        storyStoreV7: true,
-        babelModeV7: true
-    },
     async viteFinal(config) {
         const { config: userConfig } = await loadConfigFromFile(resolve(__dirname, '..', '..', 'vite.config.js'));
 

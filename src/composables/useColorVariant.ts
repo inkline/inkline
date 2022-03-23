@@ -1,4 +1,4 @@
-import { computed, inject, ref, Ref } from '@inkline/paper';
+import { computed, inject, Ref } from '@inkline/paper';
 import { inklineSymbol } from '@inkline/inkline/plugin';
 
 /**
@@ -9,6 +9,8 @@ import { inklineSymbol } from '@inkline/inkline/plugin';
  */
 export function useColorVariant (colorProp?: string) {
     const inkline = inject(inklineSymbol);
+
+    console.log({inkline})
 
     const getColor = () => {
         if (!colorProp && inkline) {

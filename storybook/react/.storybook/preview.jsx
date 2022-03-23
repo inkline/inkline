@@ -2,6 +2,7 @@ import { light, dark } from './theme';
 import '../../common/preview.scss';
 import '../../../src/inkline.scss';
 import { addons } from '@storybook/addons';
+import { BrowserRouter } from 'react-router-dom';
 import { $inkline, Inkline } from '@inkline/inkline/plugin';
 
 addons.getChannel().on('DARK_MODE', (isDarkMode) => {
@@ -9,9 +10,12 @@ addons.getChannel().on('DARK_MODE', (isDarkMode) => {
         return;
     }
 
-    $inkline.prototype.options.value = {
-        ...$inkline.prototype.options.value,
-        colorMode: isDarkMode ? 'dark' : 'light'
+    $inkline.prototype.value = {
+        ...$inkline.prototype.value,
+        options: {
+            ...$inkline.prototype.value.options,
+            colorMode: isDarkMode ? 'dark' : 'light'
+        }
     };
 });
 
@@ -32,5 +36,9 @@ export const parameters = {
 }
 
 export const decorators = [
-    (Story) => <Inkline><Story /></Inkline>
+    (Story) => <Inkline>
+        <BrowserRouter>
+            <Story />
+        </BrowserRouter>
+    </Inkline>
 ];

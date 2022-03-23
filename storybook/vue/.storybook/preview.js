@@ -17,9 +17,12 @@ addons.getChannel().on('DARK_MODE', (isDarkMode) => {
         return;
     }
 
-    $inkline.prototype.options.value = {
-        ...$inkline.prototype.options.value,
-        colorMode: isDarkMode ? 'dark' : 'light'
+    $inkline.prototype.value = {
+        ...$inkline.prototype.value,
+        options: {
+            ...$inkline.prototype.value.options,
+            colorMode: isDarkMode ? 'dark' : 'light'
+        }
     };
 });
 
