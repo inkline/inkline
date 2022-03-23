@@ -15,15 +15,17 @@ note: |
 category: file
 */
 
-
 /* @docs
 label: Box Sizing
 note: |
   Use border-box by default, globally.
 category: global
 */
-*, ::before, ::after { box-sizing: border-box; }
-
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
 
 /* @docs
 label: Line Sizing
@@ -34,8 +36,9 @@ links:
   - https://drafts.csswg.org/css-inline-3/#line-sizing-property
 category: global
 */
-html { line-sizing: normal; }
-
+html {
+    line-sizing: normal;
+}
 
 /* @docs
 label: Body Margins
@@ -43,8 +46,9 @@ note: |
   Remove the tiny space around the edge of the page.
 category: global
 */
-body { margin: 0; }
-
+body {
+    margin: 0;
+}
 
 /* @docs
 label: Hidden Attribute
@@ -52,8 +56,9 @@ note: |
   Maintain `hidden` behaviour when overriding `display` values.
   category: global
 */
-[hidden] { display: none; }
-
+[hidden] {
+    display: none;
+}
 
 /* @docs
 label: Heading Sizes
@@ -61,13 +66,29 @@ note: |
   Switch to rem units for headings
 category: typography
 */
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.17rem; }
-h4 { font-size: 1.00rem; }
-h5 { font-size: 0.83rem; }
-h6 { font-size: 0.67rem; }
+h1 {
+    font-size: 2rem;
+}
 
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+}
+
+h4 {
+    font-size: 1.00rem;
+}
+
+h5 {
+    font-size: 0.83rem;
+}
+
+h6 {
+    font-size: 0.67rem;
+}
 
 /* @docs
 label: H1 Margins
@@ -75,8 +96,9 @@ note: |
   Keep h1 margins consistent, even when nested.
 category: typography
 */
-h1 { margin: 0.67em 0; }
-
+h1 {
+    margin: 0.67em 0;
+}
 
 /* @docs
 label: Pre Wrapping
@@ -84,8 +106,9 @@ note: |
   Overflow by default is bad...
 category: typography
 */
-pre { white-space: pre-wrap; }
-
+pre {
+    white-space: pre-wrap;
+}
 
 /* @docs
 label: Horizontal Rule
@@ -101,8 +124,7 @@ hr {
     color: inherit;
     height: 0;
     overflow: visible;
-    }
-
+}
 
 /* @docs
 label: Responsive Embeds
@@ -113,13 +135,22 @@ note: |
   4. Audio without `[controls]` remains hidden by default
 category: embedded elements
 */
-img, svg, video, canvas, audio, iframe, embed, object {
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
     display: block;
     vertical-align: middle;
     max-width: 100%;
-    }
-audio:not([controls]) { display:none; }
+}
 
+audio:not([controls]) {
+    display:none;
+}
 
 /* @docs
 label: Responsive Images
@@ -131,9 +162,13 @@ note: |
   2. Source elements have nothing to display, so we hide them entirely
 category: embedded elements
 */
-picture { display: contents; }
-source { display: none; }
+picture {
+    display: contents;
+}
 
+source {
+    display: none;
+}
 
 /* @docs
 label: Aspect Ratios
@@ -144,10 +179,12 @@ note: |
   so their `height` needs to be set explicitly.
 category: embedded elements
 */
-img, svg, video, canvas {
+img,
+svg,
+video,
+canvas {
     height: auto;
-    }
-
+}
 
 /* @docs
 label: Audio Width
@@ -156,7 +193,9 @@ note: |
   and audio files are unlikely to come with a width attribute.
 category: embedded elements
 */
-audio { width: 100%; }
+audio {
+    width: 100%;
+}
 
 /* @docs
 label: Image Borders
@@ -164,8 +203,9 @@ note: |
   Remove the border on images inside links in IE 10 and earlier.
 category: legacy browsers
 */
-img { border-style: none; }
-
+img {
+    border-style: none;
+}
 
 /* @docs
 label: SVG Overflow
@@ -173,8 +213,9 @@ note: |
   Hide the overflow in IE 10 and earlier.
 category: legacy browsers
 */
-svg { overflow: hidden; }
-
+svg {
+    overflow: hidden;
+}
 
 /* @docs
 label: HTML5 Elements
@@ -185,10 +226,19 @@ links:
   - https://www.sitepoint.com/html5-older-browsers-and-the-shiv/
 category: legacy browsers
 */
-article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
     display: block;
-    }
-
+}
 
 /* @docs
 label: Checkbox & Radio Inputs
@@ -201,4 +251,4 @@ category: legacy browsers
 [type='radio'] {
     box-sizing: border-box;
     padding: 0;
-    }
+}
