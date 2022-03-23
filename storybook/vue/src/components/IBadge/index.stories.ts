@@ -17,7 +17,7 @@ export default {
     }
 };
 
-export const Basic = () => IBadgeBasicExample;
+export const Basic = createStory(IBadgeBasicExample);
 export const ColorVariants = createStory(IBadgeColorVariantsExample);
 export const Heading = createStory(IBadgeHeadingExample);
 export const SizeVariants = createStory(IBadgeSizeVariantsExample);

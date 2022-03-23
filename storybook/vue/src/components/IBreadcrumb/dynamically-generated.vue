@@ -10,7 +10,7 @@ export default {
     setup () {
         const items = ref([
             { title: 'Home', href: '/' },
-            { title: 'Components', to: 'components' },
+            { title: 'Components', to: '/example' },
             { title: 'Breadcrumbs', active: true }
         ]);
 

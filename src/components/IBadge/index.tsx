@@ -5,30 +5,22 @@ import {
 } from '@inkline/inkline/mixins';
 import { useColorVariant } from '@inkline/inkline/composables';
 
-/**
- * Slot for default breadcrumb content
- * @name default
- * @kind slot
- */
-
-const componentName = 'IBreadcrumb';
+const componentName = 'IBadge';
 
 export default defineComponent({
     name: componentName,
+    slots: [
+        /**
+         * Slot for default badge content
+         * @name default
+         * @kind slot
+         */
+        'default'
+    ],
     props: {
         /**
-         * The aria-label of the breadcrumbs
-         * @type String
-         * @default Breadcrumbs
-         * @name ariaLabel
-         */
-        ariaLabel: {
-            type: String,
-            default: 'Breadcrumbs'
-        },
-        /**
-         * The color variant of the breadcrumb
-         * @type light | dark
+         * The color variant of the badge
+         * @type primary | success | light | dark | info | success | warning | danger
          * @default light
          * @name color
          */
@@ -37,7 +29,7 @@ export default defineComponent({
             default: defaultPropValue<string>(componentName, 'color')
         },
         /**
-         * The size variant of the breadcrumb
+         * The size variant of the badge
          * @type sm | md | lg
          * @default md
          * @name size
@@ -49,8 +41,6 @@ export default defineComponent({
     },
     setup (props) {
         const { color } = useColorVariant(props.color);
-
-        console.log(color.value);
 
         const classes = computed(() => `${
             props.className ? ` ${props.className}` : ''
@@ -64,14 +54,9 @@ export default defineComponent({
             classes
         };
     },
-    render ({ classes, ariaLabel }, { slot }) {
-        return <nav
-            class={`breadcrumb${classes.value}`}
-            aria-label={ariaLabel}
-        >
-            <ol>
-                { slot() }
-            </ol>
-        </nav>;
+    render ({ classes }, { slot }) {
+        return <div class={`badge${classes.value}`}>
+            { slot() }
+        </div>;
     }
 });

@@ -1,17 +1,11 @@
 import './style.scss';
 import { computed, defineComponent, h } from '@inkline/paper';
+import { useLinkable } from '@inkline/inkline/composables';
 
 /**
  * Slot for default breadcrumb item content
  * @name default
  * @kind slot
- */
-
-/**
- * Set the HTML tag to be used for rendering the breadcrumb item
- * @name tag
- * @type String
- * @default a
  */
 
 const componentName = 'IBreadcrumbItem';
@@ -48,9 +42,21 @@ export default defineComponent({
         tabindex: {
             type: String,
             default: '0'
+        },
+        /**
+         * Set the HTML tag to be used for rendering the breadcrumb item
+         * @name tag
+         * @type String
+         * @default a
+         */
+        tag: {
+            type: String,
+            default: 'a'
         }
     },
     setup (props) {
+        const { Component } = useLinkable(props);
+
         const classes = computed(() => `${
             props.className ? ` ${props.className}` : ''
         }${
@@ -64,13 +70,21 @@ export default defineComponent({
             [props.disabled, props.active, props.tabindex]
         );
 
-        return { tabIndex, classes };
+        return { tabIndex, classes, Component };
+
+        // {  }
+        // tabindex={tabIndex.value}
+        // aria-current={active ? 'location' : undefined}
     },
-    render ({ active, classes, tabIndex }, { slot }) {
+    render ({ active, classes, tabIndex, Component, to, href }, { slot }) {
         return <li class={`breadcrumb-item${classes.value}`}>
-            <a is="isTag" tabindex={tabIndex.value} aria-current={active ? 'location' : undefined}>
-                { slot() }
-            </a>
+            {
+                h(Component, {
+                    ...(to ? { to } : { href }),
+                    tabindex: tabIndex.value,
+                    'aria-current': active ? 'location' : undefined
+                }, Component === 'a' ? slot() : { default: () => slot() })
+            }
         </li>;
     }
 });

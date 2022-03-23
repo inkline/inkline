@@ -13,13 +13,8 @@ export default defineConfig({
             },
             {
                 find: /^@inkline\/paper(.*)/,
-                replacement: resolve(__dirname, 'node_modules', '@inkline', 'inkline', 'node_modules', '@inkline', 'paper', 'vue$1')
+                replacement: resolve(__dirname, '..', '..', 'node_modules', '@inkline', 'paper', 'vue$1')
             }
         ]
-    },
-    esbuild: {
-        jsxFactory: 'h',
-        jsxFragment: 'Fragment',
-        jsxInject: ''
     }
 });

@@ -6,8 +6,8 @@ import { setLocale } from '@inkline/inkline/i18n';
 import * as inklineIcons from '@inkline/inkline/icons';
 import { SvgNode } from '@inkline/inkline/types';
 
-export const inklineSymbol = Symbol('inkline');
-export const inklineIconsSymbol = Symbol('inklineIcons');
+export const inklineSymbol = Symbol('[inkline]: prototype');
+export const inklineIconsSymbol = Symbol('[inkline]: icons');
 
 export interface PrototypeConfig {
     colorMode: 'system' | 'light' | 'dark' | string;
@@ -29,11 +29,11 @@ export interface PluginConfig extends PrototypeConfig {
 export interface Prototype {
     form: (...args: any[]) => any;
     setLocale: (language: string) => any;
-    options: Ref<PrototypeConfig>;
+    options: PrototypeConfig;
 }
 
 export interface InklineGlobals {
-    prototype?: Prototype;
+    prototype?: Ref<Prototype>;
     icons?: Record<string, SvgNode>;
 }
 
@@ -75,16 +75,18 @@ export const defaultOptions: PluginConfig = {
 /**
  * Create inkline prototype
  */
-export function createPrototype ({ components, icons, ...options }: PrototypeConfig): Prototype {
+export function createPrototype ({ components, icons, ...options }: PrototypeConfig): { prototype: Ref<Prototype> } {
     return {
-        form (schema) {
-            return initializeForm(schema);
-        },
-        setLocale (locale) {
-            setLocale(locale);
-        },
-        options: ref(options)
-    } as Prototype;
+        prototype: ref({
+            form (schema: any) {
+                return initializeForm(schema);
+            },
+            setLocale (locale: string) {
+                setLocale(locale);
+            },
+            options
+        })
+    };
 }
 
 /**
@@ -125,9 +127,11 @@ export const Inkline: Plugin = definePlugin((userOptions: PluginConfig, { provid
      * Add $inkline global property
      */
 
-    const prototype: Prototype = createPrototype(options);
+    const { prototype } = createPrototype(options);
 
-    provide(inklineSymbol, prototype);
+    provide(inklineSymbol, prototype, [
+        prototype
+    ]);
     $inkline.prototype = prototype;
 
     /**
@@ -148,7 +152,7 @@ export const Inkline: Plugin = definePlugin((userOptions: PluginConfig, { provid
          * Add color mode on change handler
          */
 
-        watch(() => prototype.options.value.colorMode, (colorMode) => {
+        watch(() => prototype.value.options.colorMode, (colorMode) => {
             handleColorMode(colorMode as string);
 
             localStorage.setItem(colorModeLocalStorageKey, colorMode as string);
@@ -159,10 +163,10 @@ export const Inkline: Plugin = definePlugin((userOptions: PluginConfig, { provid
          */
 
         const onDarkModeMediaQueryChange = (e: MediaQueryListEvent) => {
-            prototype.options.value.prefersColorScheme = e.matches ? 'dark' : 'light';
+            prototype.value.options.prefersColorScheme = e.matches ? 'dark' : 'light';
 
-            if (prototype.options.value.colorMode === 'system') {
-                handleColorMode(prototype.options.value.colorMode);
+            if (prototype.value.options.colorMode === 'system') {
+                handleColorMode(prototype.value.options.colorMode);
             }
         };
 
@@ -173,7 +177,7 @@ export const Inkline: Plugin = definePlugin((userOptions: PluginConfig, { provid
             darkModeMediaQuery.addListener(onDarkModeMediaQueryChange);
         }
 
-        handleColorMode(prototype.options.value.colorMode);
+        handleColorMode(prototype.value.options.colorMode);
     }
 });
 

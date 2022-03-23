@@ -1,4 +1,4 @@
-import { Fragment, createElement as h } from 'react';
+import React from 'react';
 import { IBadge } from '@inkline/inkline/components';
 
 export default () => <>

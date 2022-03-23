@@ -1,6 +1,5 @@
-const { loadConfigFromFile, mergeConfig } = require('vite');
-const { resolve } = require('path');
-const postcssConfig = require('../../../postcss.config');
+const {loadConfigFromFile, mergeConfig} = require('vite');
+const {resolve} = require('path');
 
 module.exports = {
     stories: [
@@ -10,28 +9,12 @@ module.exports = {
         '../src/components/IIcon/**/*.stories.@(js|jsx|ts|tsx)',
     ],
     addons: [
-        {
-            name: '@storybook/addon-postcss',
-            options: {
-                postcssLoaderOptions: {
-                    ...postcssConfig,
-                    implementation: require('postcss')
-                }
-            }
-        },
         '@storybook/addon-links',
-        '@storybook/addon-essentials',
-        '@storybook/addon-a11y',
-        'storybook-dark-mode'
+        '@storybook/addon-essentials'
     ],
-    staticDirs: ['../../common/public'],
     framework: '@storybook/vue3',
     core: {
         builder: 'storybook-builder-vite'
-    },
-    features: {
-        storyStoreV7: true,
-        babelModeV7: true
     },
     async viteFinal(config) {
         const { config: userConfig } = await loadConfigFromFile(resolve(__dirname, '..', '..', 'vite.config.js'));
@@ -40,7 +23,7 @@ module.exports = {
 
         return mergeConfig(config, {
             resolve: userConfig.resolve,
-            esbuild: userConfig.esbuild
+            esbuild: userConfig.esbuild,
         });
     }
 }
