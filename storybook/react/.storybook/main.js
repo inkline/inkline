@@ -29,9 +29,15 @@ module.exports = {
     async viteFinal(config) {
         const { config: userConfig } = await loadConfigFromFile(resolve(__dirname, '..', '..', 'vite.config.js'));
 
+        config.resolve.alias = [
+            {
+                find: /^react(.*)/,
+                replacement: resolve(__dirname, '..', 'node_modules', 'react$1')
+            }
+        ];
+
         return mergeConfig(config, {
-            resolve: userConfig.resolve,
-            esbuild: userConfig.esbuild
+            resolve: userConfig.resolve
         });
     }
 }

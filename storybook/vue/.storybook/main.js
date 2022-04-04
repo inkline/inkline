@@ -32,11 +32,19 @@ module.exports = {
     async viteFinal(config) {
         const { config: userConfig } = await loadConfigFromFile(resolve(__dirname, '..', '..', 'vite.config.js'));
 
-        config.resolve.alias['@vue'] = resolve(__dirname, '..', 'node_modules', '@vue')
+        config.resolve.alias = [
+            {
+                find: 'vue',
+                replacement: 'vue/dist/vue.esm-bundler.js'
+            },
+            {
+                find: /^@vue(.*)/,
+                replacement: resolve(__dirname, '..', 'node_modules', '@vue$1')
+            }
+        ]
 
         return mergeConfig(config, {
-            resolve: userConfig.resolve,
-            esbuild: userConfig.esbuild,
+            resolve: userConfig.resolve
         });
     }
 }

@@ -1,7 +1,6 @@
 import { defineComponent, h } from '@inkline/paper';
 import ILoader from '@inkline/inkline/components/ILoader/index.vue';
 import {
-    LinkableMixin,
     colorVariantClass,
     defaultPropValue
 } from '@inkline/inkline/mixins';
@@ -26,9 +25,6 @@ export default defineComponent({
     components: {
         ILoader
     },
-    mixins: [
-        LinkableMixin
-    ],
     inject: {
         buttonGroup: {
             default: () => ({})

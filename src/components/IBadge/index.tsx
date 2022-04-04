@@ -4,6 +4,7 @@ import {
     defaultPropValue
 } from '@inkline/inkline/mixins';
 import { useColorVariant } from '@inkline/inkline/composables';
+import {inklineSymbol} from "@inkline/inkline/plugin";
 
 const componentName = 'IBadge';
 
@@ -39,8 +40,9 @@ export default defineComponent({
             default: defaultPropValue<string>(componentName, 'size')
         }
     },
-    setup (props) {
-        const { color } = useColorVariant(props.color);
+    setup (props, { inject }) {
+        const inkline = inject(inklineSymbol);
+        const { color } = useColorVariant(inkline, props.color);
 
         const classes = computed(() => `${
             props.className ? ` ${props.className}` : ''

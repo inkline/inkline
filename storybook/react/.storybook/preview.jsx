@@ -2,7 +2,7 @@ import { light, dark } from './theme';
 import '../../common/preview.scss';
 import '../../../src/inkline.scss';
 import { addons } from '@storybook/addons';
-import { BrowserRouter } from 'react-router-dom';
+import {BrowserRouter, Link} from 'react-router-dom';
 import { $inkline, Inkline } from '@inkline/inkline/plugin';
 
 addons.getChannel().on('DARK_MODE', (isDarkMode) => {
@@ -35,8 +35,12 @@ export const parameters = {
     }
 }
 
+const options = {
+    routerComponent: Link
+};
+
 export const decorators = [
-    (Story) => <Inkline>
+    (Story) => <Inkline options={options}>
         <BrowserRouter>
             <Story />
         </BrowserRouter>

@@ -1,9 +1,10 @@
 import './style.scss';
-import { computed, defineComponent, h } from '@inkline/paper';
+import { computed, defineComponent } from '@inkline/paper';
 import {
     defaultPropValue
 } from '@inkline/inkline/mixins';
 import { useColorVariant } from '@inkline/inkline/composables';
+import {inklineSymbol} from "@inkline/inkline/plugin";
 
 /**
  * Slot for default breadcrumb content
@@ -47,10 +48,9 @@ export default defineComponent({
             default: defaultPropValue<string>(componentName, 'size')
         }
     },
-    setup (props) {
-        const { color } = useColorVariant(props.color);
-
-        console.log(color.value);
+    setup (props, { provide, inject }) {
+        const inkline = inject(inklineSymbol);
+        const { color } = useColorVariant(inkline, props.color);
 
         const classes = computed(() => `${
             props.className ? ` ${props.className}` : ''
@@ -59,6 +59,9 @@ export default defineComponent({
         }${
             props.size ? ` -${props.size}` : ''
         }`, [color.value, props.size, props.className]);
+
+        provide('example', classes.value, [classes.value]);
+        console.log('provide in parent', classes.value);
 
         return {
             classes

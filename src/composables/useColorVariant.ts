@@ -1,5 +1,5 @@
-import { computed, inject, Ref } from '@inkline/paper';
-import { inklineSymbol } from '@inkline/inkline/plugin';
+import {computed, Ref} from '@inkline/paper';
+import { Prototype} from '@inkline/inkline/plugin';
 
 /**
  * Get color variant based on global inkline colorMode.
@@ -7,10 +7,7 @@ import { inklineSymbol } from '@inkline/inkline/plugin';
  *
  * @param colorProp
  */
-export function useColorVariant (colorProp?: string) {
-    const inkline = inject(inklineSymbol);
-
-    console.log({inkline})
+export function useColorVariant (inkline: Ref<Prototype>, colorProp?: string) {
 
     const getColor = () => {
         if (!colorProp && inkline) {
@@ -29,7 +26,6 @@ export function useColorVariant (colorProp?: string) {
     const color: Ref<string> = computed(
         () => getColor(),
         [
-            inkline,
             inkline?.value.options.colorMode,
             colorProp
         ]

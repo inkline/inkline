@@ -54,7 +54,7 @@ export default defineComponent({
             default: 'a'
         }
     },
-    setup (props) {
+    setup (props, { inject }) {
         const { Component } = useLinkable(props);
 
         const classes = computed(() => `${
@@ -69,6 +69,9 @@ export default defineComponent({
             () => (props.disabled || props.active) ? '-1' : props.tabindex,
             [props.disabled, props.active, props.tabindex]
         );
+
+        const injection = inject('example');
+        console.log('inject in child', injection);
 
         return { tabIndex, classes, Component };
 
