@@ -1,17 +1,19 @@
 import { spacing } from '../spacing';
-import { ParserContext, SpacingProperty } from '../../types';
+import { Configuration, ParserContext, SpacingProperty } from '../../types';
 
 describe('plugins', () => {
     describe('spacing', () => {
         describe('parser', () => {
             const plugin = spacing();
             const parser = plugin.parsers[0];
+            const config = {} as Configuration;
 
             ['margin', 'padding'].forEach((path) => {
                 describe(path, () => {
                     describe('test()', () => {
                         it('should pass test for direct value path', () => {
                             const context: ParserContext<SpacingProperty> = {
+                                config,
                                 path,
                                 value: '1rem'
                             };
@@ -21,6 +23,7 @@ describe('plugins', () => {
 
                         it('should pass test for nested value path', () => {
                             const context: ParserContext<SpacingProperty> = {
+                                config,
                                 path: `nested.${path}`,
                                 value: '1rem'
                             };
@@ -32,6 +35,7 @@ describe('plugins', () => {
                     describe('resolve()', () => {
                         it('should return side tokens', () => {
                             const context: ParserContext<SpacingProperty> = {
+                                config,
                                 path,
                                 value: '1rem'
                             };

@@ -24,7 +24,7 @@ export function applyParsers (config: Configuration, target: Record<string, any>
             value: getValueByPath(config, path)
         };
 
-        config.parsers.forEach((parser) => {
+        (config.parsers || []).forEach((parser) => {
             if (!parser.test(context)) {
                 return;
             }

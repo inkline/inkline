@@ -33,10 +33,9 @@ export function parseSidesValue (
     } else if (typeof value === 'string') {
         assignSidesFromArray(value.split(/\s+/));
     } else if (typeof value === 'object') {
-        sides.top = value.top || value.default || fallbackValue;
-        sides.right = value.right || value.default || fallbackValue;
-        sides.bottom = value.bottom || value.default || fallbackValue;
-        sides.left = value.left || value.default || fallbackValue;
+        sidesPropertyKeys.forEach((sideKey) => {
+            sides[sideKey] = value[sideKey] || value.default || fallbackValue;
+        });
     } else if (typeof value === 'function') {
         return parseSidesValue(config, value({ theme: config.theme }));
     } else {

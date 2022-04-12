@@ -1,4 +1,4 @@
-import { spacing } from '../plugins';
+import { spacing, theme } from '../plugins';
 import { Configuration } from '../types';
 
 export const defaultConfig: Configuration = {
@@ -10,12 +10,12 @@ export const defaultConfig: Configuration = {
         // color({
         //     name: (path, value) => 'color--'
         // }), // Parser, options { name: (parts) => `color--${parts.join('--')}` }
-        spacing()
+        spacing(),
         // borderRadius(), // Parser, finds field ending with 'borderRadius'
         // border(), // Parser, finds field ending with 'border'
         // boxShadow(), // Parser, finds field ending with 'boxShadow'
         // generic(), // Parser, finds anything else
-        // theme(), // Generator, renders comment and applies generators to every item in items, wraps items in class if not default
+        theme() // Generator, renders comment and applies generators to every item in items, wraps items in class if not default
         // group(), // Generator, renders comment and applies generators to every item in items
         // variable() // Generator, renders CSS Variable
     ],
@@ -36,14 +36,9 @@ export const defaultConfig: Configuration = {
             left: '1rem'
         },
         border: {
-            top: {
-                width: '1px',
-                style: 'solid',
-                color: '#000000'
-            },
-            right: '1px solid #000000',
-            bottom: '1px solid #000000',
-            left: '1px solid #000000'
+            width: '1px',
+            style: 'solid',
+            color: '#000000'
         },
         colors: {
             green: '#031124'
@@ -60,15 +55,15 @@ export const defaultConfig: Configuration = {
             //     80: '#411412',
             //     90: '#411412'
             // }
+        },
+        overrides: {
+            dark: { // Requires override class fn for generator `.-dark`
+                colors: {
+                    green: ({ theme }) => theme.colors.green,
+                    red: '#412321'
+                }
+            }
         }
-        // overrides: {
-        //     dark: { // Requires override class fn for generator `.-dark`
-        //         colors: {
-        //             green: ({ theme }) => theme.colors.green,
-        //             red: '#412321'
-        //         }
-        //     }
-        // }
     }
 };
 

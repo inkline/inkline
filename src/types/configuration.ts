@@ -59,7 +59,10 @@ export interface Plugin<Options = {}, ValueDefinition = {}, TokenDefinition = To
  */
 
 export interface Configuration extends Record<string, any> {
-    plugins: ReturnType<Plugin>[];
+    plugins: {
+        parsers: Parser<any, any>[];
+        generators: Generator[];
+    }[];
     parsers: Parser[];
     generators: Generator[];
     theme: Theme;

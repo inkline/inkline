@@ -1,6 +1,6 @@
 import { parseSidesValue } from '../parseSidesValue';
-import { defaultConfig as config } from '../../../defaults';
-import { Configuration, Theme } from '../../../types';
+import { defaultConfig as config } from '../../../config/defaults';
+import { Configuration } from '../../../types';
 
 describe('helpers', () => {
     describe('parser', () => {

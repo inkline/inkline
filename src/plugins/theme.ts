@@ -14,7 +14,13 @@ export const theme: Plugin<{}, Theme, GroupToken> = (options) => {
                 }
             ];
 
-            console.log(themes);
+            Object.keys(overrides || {}).forEach((overrideKey) => {
+                themes.push({
+                    type: 'group',
+                    name: overrideKey,
+                    items: applyParsers(config, overrides[overrideKey], [path])
+                });
+            });
 
             return themes;
         }

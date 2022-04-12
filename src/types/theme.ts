@@ -31,9 +31,9 @@ export interface CornersPropertyParts<T> extends Record<string, T | undefined> {
  */
 
 export interface BorderPropertyParts {
-    width: string | number;
-    style: string;
-    color: string
+    width?: string | number;
+    style?: string;
+    color?: string
 }
 
 export type BorderProperty = string | BorderPropertyParts | SidesPropertyParts<string | BorderPropertyParts> | PropertyFn<BorderProperty>;
@@ -48,10 +48,20 @@ export type SpacingProperty = string | string[] | number | number[] | SidesPrope
  * Theme interface
  */
 
-export type ThemeValue = SpacingProperty | BorderProperty | string | number;
+export interface ThemeOverrides<T = {}> {
+    [key: string]: T;
+}
+
+export type ThemeValue =
+    | SpacingProperty
+    | BorderProperty
+    | ThemeOverrides
+    | string
+    | number;
 
 export interface Theme extends Record<string, ThemeValue> {
     margin: SpacingProperty;
     padding: SpacingProperty;
     border: BorderProperty;
+    overrides: ThemeOverrides<Theme>
 }
