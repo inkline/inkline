@@ -29,7 +29,7 @@ describe('generators', () => {
                     }
                 } as Theme;
                 const value = theme.padding;
-                const path = 'padding';
+                const path = ['padding'];
 
                 expect(paddingGenerator.generate({ config, theme, value, path })).toEqual([
                     '/**',

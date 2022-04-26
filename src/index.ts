@@ -1,4 +1,7 @@
-export * from './build';
+import { build } from './build';
+import { defaultConfig } from './defaults';
+
+build(defaultConfig);
 
 //
 // I want all the root variables to be there
