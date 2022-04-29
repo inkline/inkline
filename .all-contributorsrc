@@ -141,6 +141,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "skyroses",
+      "name": "Kamil",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46625964?v=4",
+      "profile": "https://github.com/skyroses",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 10,
