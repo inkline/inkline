@@ -1,5 +1,6 @@
 import { Theme as InternalTheme } from './theme';
 import * as CSS from 'csstype';
+import { Variants } from './variants';
 
 export namespace UserConfiguration {
 
@@ -16,11 +17,18 @@ export namespace UserConfiguration {
 
     export interface Resolver<V = {}, R = unknown> {
         /**
-         * Path test regular expression, should contain replacement groups
+         * Path validation regular expression, should contain replacement groups
          *
          * @example /(.*)margin.(\w+)$/
          */
         test: RegExp;
+
+        /**
+         * Path skipping / blocking regular expression
+         *
+         * @example /^variants/
+         */
+        skip?: RegExp;
 
         /**
          * Set string, should contain replacement groups
@@ -37,13 +45,35 @@ export namespace UserConfiguration {
         resolve(context: ConfigurationContext<V>): R;
     }
 
-    export interface ResolverPlugin<O = {}, V = {}, R = unknown> {
-        (options?: O): Resolver<V, R>[]
+    export interface Generator<V = {}> {
+        /**
+         * Path validation regular expression
+         *
+         * @example /(.*)margin.(\w+)$/
+         */
+        test: RegExp;
+
+        /**
+         * Path skipping / blocking regular expression
+         *
+         * @example /^variants/
+         */
+        skip?: RegExp;
+
+        /**
+         * Generate function, returns generated code strings
+         *
+         * @param context
+         */
+        generate(context: ConfigurationContext<V>): string[];
     }
 
-    export interface Generator<V = {}> {
-        test: RegExp;
-        generate(context: ConfigurationContext<V>): string[];
+    /**
+     * Plugins
+     */
+
+    export interface ResolverPlugin<O = {}, V = {}, R = unknown> {
+        (options?: O): Resolver<V, R>[]
     }
 
     export interface GeneratorPlugin<O = {}, V = {}> {
@@ -51,11 +81,11 @@ export namespace UserConfiguration {
     }
 
     /**
-     * Theme
+     * Theme property types
      */
 
     export interface PropertyFn<T> {
-        (context: { theme: Theme }): T;
+        (context: { theme: Partial<Theme> }): T;
     }
 
     export type SidesProperty<T> = {
@@ -95,6 +125,10 @@ export namespace UserConfiguration {
         };
     }
 
+    /**
+     * User Theme
+     */
+
     export interface Theme {
         color: {
             [key: string]: Property.Color;
@@ -108,11 +142,12 @@ export namespace UserConfiguration {
         components: {
             [key: string]: Partial<UserConfiguration.Theme>;
         };
+        variants: Variants;
     }
 }
 
 export interface Configuration {
-    resolvers: UserConfiguration.Resolver[];
+    resolvers: UserConfiguration.Resolver<any>[];
     generators: UserConfiguration.Generator[];
     theme: Partial<UserConfiguration.Theme>;
     [key: string]: any;

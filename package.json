@@ -2,6 +2,7 @@
   "name": "config",
   "version": "0.9.0",
   "scripts": {
+    "start": "npm run build && node --experimental-specifier-resolution=node lib/index.mjs",
     "dev": "vite",
     "build": "unbuild",
     "postbuild": "ts-node scripts/postbuild.ts",
@@ -18,10 +19,13 @@
   "devDependencies": {
     "@grozav/eslint-config": "1.0.2",
     "@types/color": "3.0.3",
+    "@types/shelljs": "0.8.11",
     "csstype": "3.0.11",
     "eslint": "8.12.0",
     "jsdom": "19.0.0",
     "npm-run-all": "4.1.5",
+    "shelljs": "0.8.5",
+    "ts-node": "10.7.0",
     "typescript": "^4.5.4",
     "unbuild": "0.7.2",
     "vite": "^2.9.0",
@@ -29,7 +33,8 @@
   },
   "dependencies": {
     "@grozav/utils": "1.1.1",
-    "color": "4.2.3"
+    "color": "4.2.3",
+    "micromustache": "8.0.3"
   },
   "main": "index.cjs",
   "module": "index.mjs",

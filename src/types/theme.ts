@@ -1,4 +1,5 @@
 import * as CSS from 'csstype';
+import { Variants } from './variants';
 
 export interface SidesProperty<T> {
     top: T;
@@ -9,9 +10,9 @@ export interface SidesProperty<T> {
 }
 
 export interface ThemeColor {
-    h: number;
-    s: number;
-    l: number;
+    h: number | string;
+    s: number | string;
+    l: number | string;
     a: CSS.Property.Opacity;
     [key: string]: number | string;
 }
@@ -62,5 +63,6 @@ export interface Theme {
     components: {
         [key: string]: Theme;
     };
+    variants: Variants;
     [key: string]: any;
 }

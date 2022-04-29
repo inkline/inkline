@@ -1,5 +1,6 @@
 import { Configuration, ThemeColor, UserConfiguration } from '../../types';
 import color from 'color';
+import { parseValue } from './parseValue';
 
 export function parseColor (
     config: Configuration,
@@ -35,7 +36,8 @@ export function parseColor (
         value = processedColorObject as UserConfiguration.Property.Color;
     }
 
-    const constructedColor = color(value);
+    const parsedValue = parseValue(config, value);
+    const constructedColor = color(parsedValue);
     const hslColor = constructedColor.hsl().object() as ThemeColor;
     const alpha = constructedColor.alpha();
 

@@ -11,9 +11,9 @@ import { Configuration, Theme, UserConfiguration } from '../types';
 export const applyGenerators = (
     config: Configuration,
     source: Theme,
-    target: string[] = [],
+    target: string[][] = [],
     parentPath: string[] = []
-) => {
+): string[][] => {
     Object.entries(source).forEach(([key, value]) => {
         const path = [...parentPath, key];
         const joinedPath = path.join('.');
@@ -28,8 +28,8 @@ export const applyGenerators = (
         config.generators.forEach((generator) => {
             // Check if resolver test path matches and set resolve
             // return value at target path
-            if (generator.test.test(joinedPath)) {
-                target.push(...generator.generate(context));
+            if (generator.test.test(joinedPath) && !generator.skip?.test(joinedPath)) {
+                target.push(generator.generate(context));
                 matches += 1;
             }
         });

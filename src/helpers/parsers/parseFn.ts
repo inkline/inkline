@@ -1,8 +1,9 @@
-import {Configuration, UserConfiguration} from '../../types';
+import { Configuration, UserConfiguration } from '../../types';
+import { parseValue } from './parseValue';
 
 export function parseFn<T = unknown> (
     config: Configuration,
     value: UserConfiguration.PropertyFn<T>
-): T {
-    return value({ theme: config.theme });
+): string {
+    return parseValue(config, value({ theme: config.theme }));
 }
