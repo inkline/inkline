@@ -1,5 +1,5 @@
 import { UserConfiguration } from '../types';
-import { parseColor } from '../helpers';
+import { parseColor, parseRecursive } from '../helpers';
 
 export const colorResolvers: UserConfiguration.ResolverPlugin<{}, UserConfiguration.Property.Color> = () => [
     {
@@ -11,6 +11,8 @@ export const colorResolvers: UserConfiguration.ResolverPlugin<{}, UserConfigurat
     {
         test: /^variants\.color\.(\w+)\.(\w+)$/,
         set: 'variants.color.$1.$2',
-        resolve: ({ config, value }) => typeof value === 'object' ? value : parseColor(config, value)
+        resolve: ({ config, value }) => typeof value === 'object'
+            ? parseRecursive(config, value)
+            : parseColor(config, value)
     }
 ];

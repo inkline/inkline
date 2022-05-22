@@ -36,5 +36,9 @@ export default {
 }
 ~~~
 
+## TODO
+
+[] Allow interpolation inside variants
+
 ## License
 ISC

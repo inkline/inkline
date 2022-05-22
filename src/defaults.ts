@@ -24,38 +24,35 @@ export const defaultConfig: Configuration = {
     theme: {
         color: {
             red: '#f2413d',
-            // orange: '#f98e5a',
-            // yellow: '#ffda76',
-            // green: '#2fb079',
-            // teal: '#48b4a9',
-            // blue: '#178bb2',
-            // purple: '#8268ae',
-            // pink: '#fc778a',
-            // white: '#ffffff',
-            // black: '#000000',
-            // primary: '#178bb2',
-            // secondary: '#8268ae',
-            // info: '<% theme.color.teal %>',
-            // success: '<% theme.color.green %>'
+            orange: '#f98e5a',
+            yellow: '#ffda76',
+            green: '#2fb079',
+            teal: '#48b4a9',
+            blue: '#178bb2',
+            purple: '#8268ae',
+            pink: '#fc778a',
+            white: '#ffffff',
+            black: '#000000',
+            primary: '#178bb2',
+            secondary: '#8268ae',
+            info: '<% theme.color.teal %>',
+            success: '<% theme.color.green %>'
         },
         margin: '1rem',
         padding: '1rem',
         border: '1px solid #c4cdd0',
         elements: {},
         components: {},
-        // Move apply to parsers
-        //
-        // color.red.default
-        // color.red.100
-        //
-        // parse, if not object, process value
-        //
         variants: {
-            // margin: {
-            //     sm: { top: 0.5 },
-            //     md: { multiply: 1.5 },
-            //     lg: { add: 1.5 }
-            // },
+            margin: {
+                sm: { top: '5px' },
+                md: { multiply: 1.5 },
+                lg: { add: 1.5 },
+                xl: {
+                    top: '<% theme.margin %>',
+                    divide: 2
+                }
+            },
             color: {
                 red: {
                     100: { h: 10, s: 10, l: 10, a: 0.5 },
@@ -67,7 +64,7 @@ export const defaultConfig: Configuration = {
                 }
             }
         }
-    },
+    }
     // variants: {
     //
     // //     margin: {
