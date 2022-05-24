@@ -1,5 +1,6 @@
 import { Configuration } from './types';
 import {
+    borderResolvers,
     colorResolvers,
     marginResolvers,
     paddingResolvers
@@ -12,6 +13,7 @@ import {
 
 export const defaultConfig: Configuration = {
     resolvers: [
+        ...borderResolvers(),
         ...colorResolvers(),
         ...marginResolvers(),
         ...paddingResolvers()

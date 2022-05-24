@@ -48,10 +48,11 @@ export const applyResolvers = (
                 if (typeof resolver.set === 'function') {
                     resolver.set(context, targetValue);
                 } else {
-                    // Compute target path by processing the path string
-                    const targetPath = joinedPath.replace(resolver.test, resolver.set);
-
-                    setValueByPath(target, targetPath, targetValue);
+                    (Array.isArray(resolver.set) ? resolver.set : [resolver.set]).forEach((setPath) => {
+                        // Compute target path by processing the path string
+                        const targetPath = joinedPath.replace(resolver.test, setPath);
+                        setValueByPath(target, targetPath, targetValue);
+                    });
                 }
 
                 matches += 1;

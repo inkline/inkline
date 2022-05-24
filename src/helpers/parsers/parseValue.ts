@@ -5,10 +5,12 @@ import { interpolate } from '../interpolate';
 export function parseValue<T = unknown> (
     config: Configuration,
     value: T | UserConfiguration.PropertyFn<T>
-): string {
+): T | string {
     if (typeof value === 'function') {
         return parseFn(config, value as UserConfiguration.PropertyFn<T>);
+    } else if (typeof value === 'string') {
+        return interpolate(value, { theme: config.theme });
     }
 
-    return interpolate(value, { theme: config.theme });
+    return value;
 }

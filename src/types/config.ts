@@ -35,7 +35,7 @@ export namespace UserConfiguration {
          *
          * @example $1margin.$2
          */
-        set: string | ((context: ConfigurationContext<V>, value: R) => void);
+        set: string | string[] | ((context: ConfigurationContext<V>, value: R) => void);
 
         /**
          * Resolve function, returns the value to be set on theme object
@@ -135,7 +135,7 @@ export namespace UserConfiguration {
         };
         margin: Property.Margin | Property.Margin[] | Partial<SidesProperty<Property.Margin>>;
         padding: Property.Padding | Property.Padding[] | Partial<SidesProperty<Property.Padding>>;
-        border: Property.Border | Property.Border[] | Partial<SidesProperty<Property.Border>>;
+        border: Property.Border | Partial<SidesProperty<Property.Border>>;
         elements: {
             [key: string]: Partial<UserConfiguration.Theme>;
         };

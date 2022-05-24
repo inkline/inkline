@@ -5,5 +5,5 @@ export function parseFn<T = unknown> (
     config: Configuration,
     value: UserConfiguration.PropertyFn<T>
 ): string {
-    return parseValue(config, value({ theme: config.theme }));
+    return parseValue(config, value({ theme: config.theme }) as unknown as string);
 }

@@ -1,4 +1,4 @@
-import {Configuration, Theme, Variants} from './types';
+import { Configuration, Theme, Variants } from './types';
 import { applyGenerators, applyResolvers } from './apply';
 
 export function build (config: Configuration) {
