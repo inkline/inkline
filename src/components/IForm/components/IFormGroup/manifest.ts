@@ -1,4 +1,5 @@
 export const manifest = {
+    name: 'form-group',
     slots: [
         {
             description: 'Slot for default form group content',
