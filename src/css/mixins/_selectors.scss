@@ -98,7 +98,7 @@
     }
 }
 
-@mixin i-undefined {
+@mixin i-form-group {
     .form-group {
         @content;
     }
