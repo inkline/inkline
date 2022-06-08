@@ -35,13 +35,15 @@ export function setValueByPath (object: any, path: string, key: string, value: a
  * @returns {T}
  */
 export function setValuesAlongPath (object: any, path: string, values: any): any {
-    path.split('.').reduce((acc, part) => {
-        Object.keys(values).forEach((key) => {
-            acc[part][key] = values[key];
-        });
+    if (path) {
+        path.split('.').reduce((acc, part) => {
+            Object.keys(values).forEach((key) => {
+                acc[part][key] = values[key];
+            });
 
-        return acc && acc[part];
-    }, object);
+            return acc && acc[part];
+        }, object);
+    }
 
     Object.keys(values).forEach((key) => {
         object[key] = values[key];
