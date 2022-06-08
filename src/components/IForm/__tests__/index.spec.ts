@@ -423,7 +423,9 @@ describe('Components', () => {
                                 valid: true
                             },
                             invalid: false,
-                            valid: true
+                            valid: true,
+                            touched: true,
+                            untouched: false
                         }
                     ]);
                 });
