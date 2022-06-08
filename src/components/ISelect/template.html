@@ -40,7 +40,12 @@
         </template>
         <template #suffix>
             <slot name="suffix" />
-            <button class="select-caret" aria-hidden="true" @click="onCaretClick" />
+            <button
+                class="select-caret"
+                aria-hidden="true"
+                role="button"
+                @click="onClickCaret"
+            />
         </template>
         <template v-if="$slots.append" #append>
             <slot name="append" />
