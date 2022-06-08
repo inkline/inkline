@@ -187,7 +187,7 @@ export default defineComponent({
             if (this.modelValue) {
                 let schema = clone(this.modelValue);
 
-                schema = validate(schema);
+                schema = setValuesAlongPath(validate(schema), '', { untouched: false, touched: true });
 
                 this.$emit('update:modelValue', schema);
 
