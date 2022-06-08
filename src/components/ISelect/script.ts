@@ -25,7 +25,7 @@ import IIcon from '@inkline/inkline/components/IIcon/index.vue';
 import IMark from '@inkline/inkline/components/IMark/index.vue';
 import ISelectOption from '@inkline/inkline/components/ISelect/components/ISelectOption/index.vue';
 import { SelectOption } from '@inkline/inkline/components/ISelect/components/ISelectOption/script';
-import { Classes, ElementEvent } from '@inkline/inkline/types';
+import { Classes } from '@inkline/inkline/types';
 
 /**
  * Slot for the select prefix content
