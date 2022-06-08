@@ -1,6 +1,5 @@
-import { parseValue } from '../parseValue';
 import { Configuration, UserConfiguration } from '../../../types';
-import {parseSidesValue} from "../parseSidesValue";
+import { parseSidesValue } from '../parseSidesValue';
 
 describe('helpers', () => {
     describe('parsers', () => {

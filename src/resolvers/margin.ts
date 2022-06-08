@@ -3,7 +3,7 @@ import { parseSidesValue, parseValue, parseRecursive } from '../helpers';
 
 export const marginResolvers: UserConfiguration.ResolverPlugin<{}, UserConfiguration.Theme['margin']> = () => [
     {
-        test: /(.*)margin(\.default)?$/,
+        test: /(.*)margin$/,
         skip: /^variants/,
         set: '$1margin',
         resolve: ({ config, value }) => parseSidesValue(config, value)

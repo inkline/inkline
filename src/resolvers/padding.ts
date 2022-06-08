@@ -3,7 +3,7 @@ import { parseSidesValue, parseValue, parseRecursive } from '../helpers';
 
 export const paddingResolvers: UserConfiguration.ResolverPlugin<{}, UserConfiguration.Theme['padding']> = () => [
     {
-        test: /(.*)padding(\.default)?$/,
+        test: /(.*)padding$/,
         skip: /^variants/,
         set: '$1padding',
         resolve: ({ config, value }) => parseSidesValue(config, value)

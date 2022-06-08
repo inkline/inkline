@@ -1,38 +1,42 @@
 import { UserConfiguration } from '../types';
-import {parseGenericComposedValue, parseValue} from '../helpers';
+import { parseGenericComposedValue, parseValue } from '../helpers';
 
-export const borderResolvers: UserConfiguration.ResolverPlugin<{}, UserConfiguration.Theme['border']> = () => [
-    {
-        test: /(.*)border(\.default)?$/,
-        skip: /^variants/,
-        set: '$1border',
-        resolve: ({ config, value }) => {
-            const border = parseGenericComposedValue(config, value, ['width', 'style', 'color']);
+const setBoxShadowFieldsFn = (target: Record<string, string | boolean>, values: string[]) => {
+    if (values[0] === 'inset') {
+        target.inset = true;
+        values.shift();
+    }
 
-            return {
-                top: border,
-                right: border,
-                bottom: border,
-                left: border
-            };
-        }
+    target.offsetX = values[0];
+    target.offsetY = values[1];
+    target.color = values[values.length - 1];
+
+    if (values.length >= 4) {
+        target.blurRadius = values[2];
+    }
+
+    if (values.length >= 5) {
+        target.spreadRadius = values[3];
+    }
+};
+
+export const boxShadowResolvers: UserConfiguration.ResolverPlugin<{}, UserConfiguration.Theme['boxShadow']> = () => [
+    {
+        test: /(.*)boxShadow$/,
+        skip: /^variants/,
+        set: '$1boxShadow',
+        resolve: ({ config, value }) => parseGenericComposedValue(config, value, setBoxShadowFieldsFn)
     },
     {
-        test: /(.*)border\.(width|style|color)$/,
+        test: /(.*)boxShadow\.default$/,
         skip: /^variants/,
-        set: ['$1border.top.$2', '$1border.right.$2', '$1border.bottom.$2', '$1border.left.$2'],
-        resolve: ({ config, value }) => parseValue(config, value)
+        set: '$1boxShadow',
+        resolve: ({ config, value }) => parseGenericComposedValue(config, value, setBoxShadowFieldsFn)
     },
     {
-        test: /(.*)border\.(\w+)$/,
+        test: /(.*)boxShadow\.(\w+)$/,
         skip: /^variants/,
-        set: '$1border.$2',
-        resolve: ({ config, value }) => parseGenericComposedValue(config, value, ['width', 'style', 'color'])
-    },
-    {
-        test: /(.*)border\.(\w+)\.(\w+)$/,
-        skip: /^variants/,
-        set: '$1border.$2.$3',
+        set: '$1boxShadow.$2',
         resolve: ({ config, value }) => parseValue(config, value)
     }
 ];

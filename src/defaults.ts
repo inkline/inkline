@@ -1,11 +1,16 @@
 import { Configuration } from './types';
 import {
     borderResolvers,
+    boxShadowResolvers,
+    breakpointsResolvers,
     colorResolvers,
     marginResolvers,
     paddingResolvers
 } from './resolvers';
 import {
+    borderGenerators,
+    boxShadowGenerators,
+    breakpointsGenerators,
     colorGenerators,
     marginGenerators,
     paddingGenerators
@@ -14,16 +19,29 @@ import {
 export const defaultConfig: Configuration = {
     resolvers: [
         ...borderResolvers(),
+        ...boxShadowResolvers(),
+        ...breakpointsResolvers(),
         ...colorResolvers(),
         ...marginResolvers(),
         ...paddingResolvers()
     ],
     generators: [
+        ...borderGenerators(),
+        ...boxShadowGenerators(),
+        ...breakpointsGenerators(),
         ...colorGenerators(),
         ...marginGenerators(),
         ...paddingGenerators()
     ],
     theme: {
+        breakpoints: {
+            xs: 0,
+            sm: 576,
+            md: 768,
+            lg: 992,
+            xl: 1200,
+            '2xl': 1400
+        },
         color: {
             red: '#f2413d',
             orange: '#f98e5a',

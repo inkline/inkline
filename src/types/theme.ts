@@ -17,9 +17,20 @@ export interface ThemeColor {
     [key: string]: number | string;
 }
 
+export interface ThemeBorder {
+    width: CSS.Property.BorderWidth;
+    style: CSS.Property.BorderStyle;
+    color: CSS.Property.BorderColor;
+
+    [key: string]: number | string & {};
+}
+
 export interface Theme {
+    breakpoints: {
+        [key: string]: number;
+    };
     color: {
-        [key: string]: ThemeColor
+        [key: string]: ThemeColor;
     };
     margin: {
         top: CSS.Property.MarginTop;
@@ -36,27 +47,20 @@ export interface Theme {
         [key: string]: CSS.Property.Padding;
     };
     border: {
-        top: {
-            width: CSS.Property.BorderWidth;
-            style: CSS.Property.BorderStyle;
-            color: CSS.Property.BorderColor;
-        };
-        right: {
-            width: CSS.Property.BorderWidth;
-            style: CSS.Property.BorderStyle;
-            color: CSS.Property.BorderColor;
-        };
-        bottom: {
-            width: CSS.Property.BorderWidth;
-            style: CSS.Property.BorderStyle;
-            color: CSS.Property.BorderColor;
-        };
-        left: {
-            width: CSS.Property.BorderWidth;
-            style: CSS.Property.BorderStyle;
-            color: CSS.Property.BorderColor;
-        };
+        top: ThemeBorder;
+        right: ThemeBorder;
+        bottom: ThemeBorder;
+        left: ThemeBorder;
+        [key: string]: ThemeBorder;
     };
+    boxShadow: {
+        offsetX: string | number;
+        offsetY: string | number;
+        blurRadius: string | number;
+        spreadRadius: string | number;
+        color: CSS.Property.Color;
+        [key: string]: string | number;
+    }
     elements: {
         [key: string]: Theme;
     };

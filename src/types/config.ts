@@ -123,6 +123,14 @@ export namespace UserConfiguration {
             style: CSS.Property.BorderStyle;
             color: Color;
         };
+        export type BoxShadow = CSS.Property.BoxShadow | {
+            inset?: boolean;
+            offsetX: string | number;
+            offsetY: string | number;
+            blurRadius: string | number;
+            spreadRadius: string | number;
+            color: Color;
+        };
     }
 
     /**
@@ -130,12 +138,16 @@ export namespace UserConfiguration {
      */
 
     export interface Theme {
+        breakpoints: {
+            [key: string]: string | number;
+        };
         color: {
             [key: string]: Property.Color;
         };
         margin: Property.Margin | Property.Margin[] | Partial<SidesProperty<Property.Margin>>;
         padding: Property.Padding | Property.Padding[] | Partial<SidesProperty<Property.Padding>>;
         border: Property.Border | Partial<SidesProperty<Property.Border>>;
+        boxShadow: Property.BoxShadow;
         elements: {
             [key: string]: Partial<UserConfiguration.Theme>;
         };

@@ -1,7 +1,12 @@
 import { marginResolvers } from '../margin';
 import { Configuration, Theme } from '../../types';
 
-const [marginResolver, marginDefaultResolver, marginSideResolver] = marginResolvers();
+const [
+    marginResolver,
+    marginDefaultResolver,
+    marginSideResolver,
+    marginVariantResolver
+] = marginResolvers();
 
 describe('resolvers', () => {
     describe('margin', () => {
@@ -121,6 +126,50 @@ describe('resolvers', () => {
                 const path = ['margin', 'top'];
 
                 expect(marginSideResolver.resolve({ config, theme, value, path })).toEqual(value);
+            });
+        });
+    });
+
+    describe('variants.margin.[variant]', () => {
+        describe('test', () => {
+            it('should match direct path', () => {
+                const path = 'variants.margin.lg';
+                expect(marginVariantResolver.test.test(path)).toEqual(true);
+            });
+        });
+
+        describe('set', () => {
+            it('should replace direct path', () => {
+                const path = 'variants.margin.xl';
+                expect(path.replace(marginVariantResolver.test, marginVariantResolver.set as string)).toEqual('variants.margin.xl');
+            });
+        });
+
+        describe('resolve', () => {
+            it('should return value sides from string', () => {
+                const config = {} as Configuration;
+                const theme = {} as Theme;
+                const value = '1rem';
+                const path = ['variants', 'margin', 'lg'];
+
+                expect(marginVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                    top: value,
+                    right: value,
+                    bottom: value,
+                    left: value
+                });
+            });
+
+            it('should return value sides from object', () => {
+                const config = {} as Configuration;
+                const theme = {} as Theme;
+                const value = { top: '1rem', bottom: '2rem' };
+                const path = ['variants', 'margin', 'lg'];
+
+                expect(marginVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                    top: value.top,
+                    bottom: value.bottom
+                });
             });
         });
     });

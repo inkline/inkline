@@ -1,7 +1,12 @@
 import { paddingResolvers } from '../padding';
 import { Configuration, Theme } from '../../types';
 
-const [paddingResolver, paddingDefaultResolver, paddingSideResolver] = paddingResolvers();
+const [
+    paddingResolver,
+    paddingDefaultResolver,
+    paddingSideResolver,
+    paddingVariantResolver
+] = paddingResolvers();
 
 describe('resolvers', () => {
     describe('padding', () => {
@@ -34,7 +39,7 @@ describe('resolvers', () => {
                 const config = {} as Configuration;
                 const theme = {} as Theme;
                 const value = '1rem';
-                const path = 'padding';
+                const path = ['padding'];
 
                 expect(paddingResolver.resolve({ config, theme, value, path })).toEqual({
                     top: '1rem',
@@ -76,7 +81,7 @@ describe('resolvers', () => {
                 const config = {} as Configuration;
                 const theme = {} as Theme;
                 const value = '1rem';
-                const path = 'padding.default';
+                const path = ['padding', 'default'];
 
                 expect(paddingDefaultResolver.resolve({ config, theme, value, path })).toEqual({
                     top: '1rem',
@@ -118,9 +123,53 @@ describe('resolvers', () => {
                 const config = {} as Configuration;
                 const theme = {} as Theme;
                 const value = '1rem';
-                const path = 'padding.top';
+                const path = ['padding', 'top'];
 
                 expect(paddingSideResolver.resolve({ config, theme, value, path })).toEqual(value);
+            });
+        });
+    });
+
+    describe('variants.padding.[variant]', () => {
+        describe('test', () => {
+            it('should match direct path', () => {
+                const path = 'variants.padding.lg';
+                expect(paddingVariantResolver.test.test(path)).toEqual(true);
+            });
+        });
+
+        describe('set', () => {
+            it('should replace direct path', () => {
+                const path = 'variants.padding.xl';
+                expect(path.replace(paddingVariantResolver.test, paddingVariantResolver.set as string)).toEqual('variants.padding.xl');
+            });
+        });
+
+        describe('resolve', () => {
+            it('should return value sides from string', () => {
+                const config = {} as Configuration;
+                const theme = {} as Theme;
+                const value = '1rem';
+                const path = ['variants', 'padding', 'lg'];
+
+                expect(paddingVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                    top: value,
+                    right: value,
+                    bottom: value,
+                    left: value
+                });
+            });
+
+            it('should return value sides from object', () => {
+                const config = {} as Configuration;
+                const theme = {} as Theme;
+                const value = { top: '1rem', bottom: '2rem' };
+                const path = ['variants', 'padding', 'lg'];
+
+                expect(paddingVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                    top: value.top,
+                    bottom: value.bottom
+                });
             });
         });
     });
