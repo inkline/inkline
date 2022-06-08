@@ -449,7 +449,7 @@ export default defineComponent({
             this.$emit('update:modelValue', null);
             this.$nextTick(() => { this.animating = false; });
         },
-        onFocus (event: ElementEvent) {
+        onFocus (event: MouseEvent) {
             // If there is no value and there are no default options,
             // do not open select
             if (!this.value && this.options.length === 0) {
@@ -467,7 +467,7 @@ export default defineComponent({
                 this.show();
             }
         },
-        onBlur (event: ElementEvent) {
+        onBlur (event: MouseEvent) {
             const blurShouldHideSelect = !event.relatedTarget ||
                 !(this as any).$refs.wrapper.contains(event.relatedTarget);
 
@@ -490,8 +490,16 @@ export default defineComponent({
         onClickOutside () {
             this.hide();
         },
-        onCaretClick () {
-            this.focus();
+        onClickCaret (event: MouseEvent) {
+            if (this.visible) {
+                this.onBlur(event);
+            } else {
+                this.focus();
+                this.onFocus(event);
+            }
+
+            event.preventDefault();
+            event.stopPropagation();
         },
 
         /**
