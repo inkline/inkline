@@ -3,14 +3,17 @@
     *
     * User input typically entered via keyboard
     */
+@use "../../variables/border";
+@use "../../variables/typography";
+
 
 kbd {
-    font-family: font-family-primary(monospace);
+    font-family: typography.font-family-primary(monospace);
     padding: var(--kbd--padding);
     font-size: var(--kbd--font-size);
     color: var(--kbd--color);
     background-color: var(--kbd--background);
-    border-radius: border-radius(sm);
+    border-radius: border.border-radius(sm);
     box-shadow: var(--kbd--box-shadow);
 
     kbd {

@@ -20,6 +20,11 @@
  * 6. Change the default tap highlight to be completely transparent in iOS.
  */
 
+
+@use "../variables/spacing";
+@use "../variables/typography";
+
+
 *,
 *::before,
 *::after {
@@ -195,7 +200,7 @@ ol,
 ul,
 dl {
     margin-top: 0;
-    margin-bottom: spacing();
+    margin-bottom: spacing.spacing();
 }
 
 ol ol,
@@ -206,11 +211,11 @@ ul ol {
 }
 
 dt {
-    font-weight: font-weight('bold');
+    font-weight: typography.font-weight('bold');
 }
 
 dd {
-    margin-bottom: spacing('1/2');
+    margin-bottom: spacing.spacing('1/2');
     margin-left: 0; // Undo browser default
 }
 
@@ -219,7 +224,7 @@ dd {
  */
 
 address {
-    margin-bottom: spacing();
+    margin-bottom: spacing.spacing();
     font-style: normal;
     line-height: inherit;
 }
@@ -234,7 +239,7 @@ pre,
 code,
 kbd,
 samp {
-    font-family: font-family-primary('monospace');
+    font-family: typography.font-family-primary('monospace');
     font-size: 1rem;
 }
 
@@ -301,7 +306,7 @@ template {
 
 pre {
     margin-top: 0;
-    margin-bottom: spacing();
+    margin-bottom: spacing.spacing();
     overflow: auto;
 }
 
@@ -399,7 +404,7 @@ legend {
     width: 100%;
     max-width: 100%;
     padding: 0;
-    margin-bottom: spacing('1/2');
+    margin-bottom: spacing.spacing('1/2');
     font-size: 1.5rem;
     line-height: inherit;
     color: inherit;
@@ -408,7 +413,7 @@ legend {
 
 label {
     display: inline-block;
-    margin-bottom: spacing('1/2');
+    margin-bottom: spacing.spacing('1/2');
 }
 
 textarea {

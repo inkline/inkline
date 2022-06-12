@@ -2,36 +2,41 @@
  * Spacing
  */
 
-@each $breakpoint-key in $breakpoint-prefix-keys {
-    $prefix: breakpoint-prefix($breakpoint-key);
+@use "../functions/string";
+@use "../mixins/breakpoints" as mixins-breakpoints;
+@use "../variables/breakpoints";
+@use "../variables/spacing";
 
-    @include breakpoint-up($breakpoint-key) {
+@each $breakpoint-key in breakpoints.$breakpoint-prefix-keys {
+    $prefix: mixins-breakpoints.breakpoint-prefix($breakpoint-key);
+
+    @include mixins-breakpoints.breakpoint-up($breakpoint-key) {
         @each $property in ('margin', 'padding') {
-            @each $size, $length in $spacings {
-                $size-class: str-replace($size, '/', '\\/');
+            @each $size, $length in spacing.$spacings {
+                $size-class: string.str-replace($size, '/', '\\/');
 
                 ._#{$prefix}#{$property}\:#{$size-class} {
-                    #{$property}: spacing($size) !important;
+                    #{$property}: spacing.spacing($size) !important;
                 }
 
                 ._#{$prefix}#{$property}-top\:#{$size-class},
                 ._#{$prefix}#{$property}-y\:#{$size-class} {
-                    #{$property}-top: spacing($size) !important;
+                    #{$property}-top: spacing.spacing($size) !important;
                 }
 
                 ._#{$prefix}#{$property}-right\:#{$size-class},
                 ._#{$prefix}#{$property}-x\:#{$size-class} {
-                    #{$property}-right: spacing($size) !important;
+                    #{$property}-right: spacing.spacing($size) !important;
                 }
 
                 ._#{$prefix}#{$property}-bottom\:#{$size-class},
                 ._#{$prefix}#{$property}-y\:#{$size-class} {
-                    #{$property}-bottom: spacing($size) !important;
+                    #{$property}-bottom: spacing.spacing($size) !important;
                 }
 
                 ._#{$prefix}#{$property}-left\:#{$size-class},
                 ._#{$prefix}#{$property}-x\:#{$size-class} {
-                    #{$property}-left: spacing($size) !important;
+                    #{$property}-left: spacing.spacing($size) !important;
                 }
             }
         }

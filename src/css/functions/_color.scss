@@ -1,3 +1,4 @@
+@use "sass:string";
 @use 'sass:list';
 @use 'sass:color';
 @use 'sass:math';
@@ -7,19 +8,19 @@
 // opaque(#fff, rgba(0, 0, 0, 0.5)) => #808080
 //
 @function opaque($background, $foreground) {
-    @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100);
+    @return color.mix(rgba($foreground, 1), $background, opacity($foreground) * 100);
 }
 
 // Tint a color (mix with white)
 //
 @function tint-color($color, $weight) {
-    @return change-color($color, $lightness: math.div((100% - $weight), 100%) * lightness($color) + $weight);
+    @return color.change($color, $lightness: math.div((100% - $weight), 100%) * color.lightness($color) + $weight);
 }
 
 // Shade a color (mix with black)
 //
 @function shade-color($color, $weight) {
-    @return change-color($color, $saturation: math.div(saturation($color) * (100% - $weight), 100%), $lightness: math.div(lightness($color) * (100% - $weight), 100%));
+    @return color.change($color, $saturation: math.div(color.saturation($color) * (100% - $weight), 100%), $lightness: math.div(color.lightness($color) * (100% - $weight), 100%));
 }
 
 // Shade the color if the weight is positive, else tint it
@@ -35,7 +36,7 @@
 // @return A gradient color
 //
 @function gradient($colors, $direction: $gradient-direction) {
-    @return linear-gradient($direction, unquote($colors));
+    @return linear-gradient($direction, string.unquote($colors));
 }
 
 // A list of pre-calculated numbers of pow(($value / 255 + .055) / 1.055, 2.4). (from 0 to 255)

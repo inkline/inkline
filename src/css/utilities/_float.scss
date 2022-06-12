@@ -4,10 +4,13 @@
  * Custom styles for additional flex alignment options.
  */
 
-@each $breakpoint-key in $breakpoint-prefix-keys {
-    $prefix: breakpoint-prefix($breakpoint-key);
+@use "../mixins/breakpoints" as mixins-breakpoints;
+@use "../variables/breakpoints";
 
-    @include breakpoint-up($breakpoint-key) {
+@each $breakpoint-key in breakpoints.$breakpoint-prefix-keys {
+    $prefix: mixins-breakpoints.breakpoint-prefix($breakpoint-key);
+
+    @include mixins-breakpoints.breakpoint-up($breakpoint-key) {
         ._#{$prefix}float\:left {
             float: left !important;
         }

@@ -2,5 +2,5 @@
  * Images and Figures
  */
 
-@import 'figure';
-@import 'image';
+@forward 'figure';
+@forward 'image';

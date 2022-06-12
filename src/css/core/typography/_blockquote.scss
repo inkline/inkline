@@ -1,6 +1,9 @@
 /**
  * Blockquote
  */
+
+@use "../../variables/spacing";
+
 .blockquote {
     margin: 0 0 var(--blockquote--margin);
     font-size: var(--blockquote--font-size);
@@ -9,7 +12,7 @@
         text-align: left;
 
         &.-bordered {
-            padding-left: spacing();
+            padding-left: spacing.spacing();
             border-left: var(--blockquote--border);
         }
     }

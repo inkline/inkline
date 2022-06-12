@@ -2,13 +2,17 @@
     * Inline code
     */
 
+@use "../../variables/border";
+@use "../../variables/typography";
+
+
 code {
-    font-family: font-family-primary(monospace);
+    font-family: typography.font-family-primary(monospace);
     padding: var(--code--padding);
     font-size: var(--code--font-size);
     color: var(--code--color);
     background-color: var(--code--background);
-    border-radius: border-radius(md);
+    border-radius: border.border-radius(md);
     transition-property: background-color, color, text-shadow;
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--transition-easing);

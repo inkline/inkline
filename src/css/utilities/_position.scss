@@ -2,6 +2,9 @@
  * Position
  */
 
+@use "../variables/z-index";
+
+
 @each $position in ('static', 'relative', 'absolute', 'fixed', 'sticky') {
     ._position\:#{$position} {
         position: #{$position} !important;
@@ -13,7 +16,7 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: z-index(fixed);
+    z-index: z-index.z-index(fixed);
 }
 
 ._position\:fixed-bottom {
@@ -21,13 +24,13 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: z-index(fixed);
+    z-index: z-index.z-index(fixed);
 }
 
 ._position\:sticky-top {
     @supports (position: sticky) {
         position: sticky;
         top: 0;
-        z-index: z-index(sticky);
+        z-index: z-index.z-index(sticky);
     }
 }

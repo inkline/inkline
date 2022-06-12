@@ -1,12 +1,14 @@
 /**
  * Display
  */
-@import '../mixins/breakpoints';
+@use '../mixins/breakpoints' as mixins-breakpoints;
+@use "../variables/breakpoints";
 
-@each $breakpoint-key in $breakpoint-prefix-keys {
-    $prefix: breakpoint-prefix($breakpoint-key);
 
-    @include breakpoint-up($breakpoint-key) {
+@each $breakpoint-key in breakpoints.$breakpoint-prefix-keys {
+    $prefix: mixins-breakpoints.breakpoint-prefix($breakpoint-key);
+
+    @include mixins-breakpoints.breakpoint-up($breakpoint-key) {
         ._#{$prefix}display\:none { display: none !important; }
         ._#{$prefix}display\:inline { display: inline !important; }
         ._#{$prefix}display\:inline-block { display: inline-block !important; }

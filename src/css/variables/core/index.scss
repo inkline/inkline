@@ -1,15 +1,16 @@
 // Core
 //
+@use "../colors";
 
-$body--background--light: color('white') !default;
-$body--color--light: color('gray-80') !default;
+$body--background--light: colors.color('white') !default;
+$body--color--light: colors.color('gray-80') !default;
 $body-color-variant--light: (
     'background': $body--background--light,
     'color': $body--color--light
 ) !default;
 
-$body--background--dark: color('gray-90') !default;
-$body--color--dark: color('gray-10') !default;
+$body--background--dark: colors.color('gray-90') !default;
+$body--color--dark: colors.color('gray-10') !default;
 $body-color-variant--dark: (
     'background': $body--background--dark,
     'color': $body--color--dark

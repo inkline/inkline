@@ -1,25 +1,28 @@
-@each $breakpoint-key in $breakpoint-prefix-keys {
-    $prefix: breakpoint-prefix($breakpoint-key);
+@use "../mixins/breakpoints" as mixins-breakpoints;
+@use "../variables/breakpoints";
+
+@each $breakpoint-key in breakpoints.$breakpoint-prefix-keys {
+    $prefix: mixins-breakpoints.breakpoint-prefix($breakpoint-key);
 
     [class*="_#{$prefix}visible"] {
         display: none !important;
     }
 
-    @include breakpoint-up($breakpoint-key) {
+    @include mixins-breakpoints.breakpoint-up($breakpoint-key) {
         ._#{$prefix}visible {
             display: block !important;
         }
     }
 
     @each $display in (block, inline-block, inline, flex, inline-flex) {
-        @include breakpoint-up($breakpoint-key) {
+        @include mixins-breakpoints.breakpoint-up($breakpoint-key) {
             ._#{$prefix}visible\:#{$display} {
                 display: $display !important;
             }
         }
     }
 
-    @include breakpoint-up($breakpoint-key) {
+    @include mixins-breakpoints.breakpoint-up($breakpoint-key) {
         ._#{$prefix}hidden {
             display: none !important;
         }

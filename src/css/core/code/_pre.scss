@@ -2,9 +2,11 @@
     * Pre-formatted Text
     */
 
+@use "../../variables/typography";
+
 // Blocks of code
 pre {
-    font-family: font-family-primary('monospace');
+    font-family: typography.font-family-primary('monospace');
     display: block;
     margin-top: 0;
     margin-bottom: 1rem;

@@ -1,4 +1,5 @@
 @use "sass:string";
+@use "../../variables/typography";
 
 /**
  * Document
@@ -12,9 +13,9 @@ html {
 }
 
 body {
-    font-size: font-size('md');
-    font-weight: font-weight('normal');
-    font-family: font-family-primary('base');
+    font-size: typography.font-size('md');
+    font-weight: typography.font-weight('normal');
+    font-family: typography.font-family-primary('base');
     line-height: var(--line-height);
     letter-spacing: var(--letter-spacing);
     text-align: left;

@@ -1,4 +1,4 @@
-@import '../mixins/clearfix';
+@use '../mixins/clearfix';
 
 ._clearfix {
     @extend %clearfix;

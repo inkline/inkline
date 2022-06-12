@@ -2,7 +2,7 @@
  * Code
  */
 
-@import 'code';
-@import 'kbd';
-@import 'pre';
-@import 'samp';
+@forward 'code';
+@forward 'kbd';
+@forward 'pre';
+@forward 'samp';

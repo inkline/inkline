@@ -2,10 +2,14 @@
  * Text
  */
 
-@each $breakpoint-key in $breakpoint-prefix-keys {
-    $prefix: breakpoint-prefix($breakpoint-key);
+@use "../mixins/breakpoints" as mixins-breakpoints;
+@use "../variables/breakpoints";
+@use "../variables/typography";
 
-    @include breakpoint-up($breakpoint-key) {
+@each $breakpoint-key in breakpoints.$breakpoint-prefix-keys {
+    $prefix: mixins-breakpoints.breakpoint-prefix($breakpoint-key);
+
+    @include mixins-breakpoints.breakpoint-up($breakpoint-key) {
         ._#{$prefix}text\:left,
         ._#{$prefix}text-align\:left {
             text-align: left !important;
@@ -63,10 +67,10 @@
 
 // Weight and italics
 //
-@each $font-weight-key, $font-weight-value in $font-weights {
+@each $font-weight-key, $font-weight-value in typography.$font-weights {
     ._text\:#{$font-weight-key},
     ._font-weight\:#{$font-weight-key} {
-        font-weight: font-weight($font-weight-key) !important;
+        font-weight: typography.font-weight($font-weight-key) !important;
     }
 }
 
@@ -77,7 +81,7 @@
 
 ._text\:monospace,
 ._font-family\:monospace {
-    font-family: font-family-primary('monospace');
+    font-family: typography.font-family-primary('monospace');
 }
 
 ._text\:muted,
@@ -104,9 +108,9 @@
 
 // Font size
 //
-@each $size-key, $size in $font-sizes {
+@each $size-key, $size in typography.$font-sizes {
     ._text\:#{$size-key},
     ._font-size\:#{$size-key} {
-        font-size: font-size($size-key);
+        font-size: typography.font-size($size-key);
     }
 }

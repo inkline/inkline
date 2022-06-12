@@ -5,6 +5,8 @@
 // You can add more entries to the --spacings map, should you need more variation.
 //
 
+@use "sass:map";
+
 $spacing: 1rem !default;
 
 $margin-top: var(--spacing) !default;
@@ -55,5 +57,5 @@ $spacings: (
         @return var(--spacing);
     }
 
-    @return map-get($spacings, $spacing-key);
+    @return map.get($spacings, $spacing-key);
 }

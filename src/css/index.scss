@@ -1,7 +1,7 @@
-@import 'functions';
-@import 'mixins';
-@import 'icons';
-@import 'variables';
-@import 'variables/css';
-@import 'utilities';
-@import 'core';
+@forward 'functions';
+@forward 'mixins';
+@forward 'icons';
+@forward 'variables';
+@forward 'variables/css';
+@forward 'utilities';
+@forward 'core';

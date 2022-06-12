@@ -1,20 +1,20 @@
 /**
  * Utilities
  */
-@import 'align';
-@import 'border';
-@import 'clearfix';
-@import 'color';
-@import 'cursor';
-@import 'display';
-@import 'embed';
-@import 'flex';
-@import 'float';
-@import 'overflow';
-@import 'overlay';
-@import 'position';
-@import 'screen-reader';
-@import 'sizing';
-@import 'spacing';
-@import 'text';
-@import 'visibility';
+@forward 'align';
+@forward 'border';
+@forward 'clearfix';
+@forward 'color';
+@forward 'cursor';
+@forward 'display';
+@forward 'embed';
+@forward 'flex';
+@forward 'float';
+@forward 'overflow';
+@forward 'overlay';
+@forward 'position';
+@forward 'screen-reader';
+@forward 'sizing';
+@forward 'spacing';
+@forward 'text';
+@forward 'visibility';

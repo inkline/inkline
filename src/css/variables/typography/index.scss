@@ -1,4 +1,6 @@
 @use "sass:color";
+@use "../colors";
+@use "../spacing";
 
 // Typography
 //
@@ -96,7 +98,7 @@ $line-height: 1.5 !default;
 
 // Muted text color
 //
-$text-muted: color('gray-60') !default;
+$text-muted: colors.color('gray-60') !default;
 
 // Headings
 //
@@ -120,8 +122,8 @@ $heading--font-size: (
     @return var(--#{$heading-font-size-key}--font-size);
 }
 
-$heading--margin-top: calc(#{spacing()} * 2.5) !default;
-$heading--margin-bottom: spacing() !default;
+$heading--margin-top: calc(#{spacing.spacing()} * 2.5) !default;
+$heading--margin-bottom: spacing.spacing() !default;
 $heading--font-family: font-family-secondary('base') !default;
 $heading--font-weight: font-weight('semibold') !default;
 $heading--line-height: 1.1 !default;
@@ -154,8 +156,8 @@ $display--line-height: $heading--line-height !default;
 
 // Links
 //
-$link--color: color('primary') !default;
-$link--color--hover: color('primary-40') !default;
+$link--color: colors.color('primary') !default;
+$link--color--hover: colors.color('primary-40') !default;
 $link--decoration: none !default;
 $link--decoration--hover: underline !default;
 
@@ -166,8 +168,8 @@ $lead--font-weight: font-weight('light') !default;
 
 // Lists
 //
-$list--item--padding--inline: spacing('1') !default;
-$list--item--margin-bottom: spacing('1/2') !default;
+$list--item--padding--inline: spacing.spacing('1') !default;
+$list--item--margin-bottom: spacing.spacing('1/2') !default;
 
 // Description Lists
 //
@@ -180,46 +182,46 @@ $small--font-weight: font-weight('normal') !default;
 
 // Blockquote
 //
-$blockquote--footer--color: color('gray-60') !default;
+$blockquote--footer--color: colors.color('gray-60') !default;
 $blockquote--font-size: font-size('lg') !default;
-$blockquote--border: 3px solid color('gray-30') !default;
-$blockquote--margin: spacing() !default;
-$blockquote--padding--bordered: spacing() !default;
+$blockquote--border: 3px solid colors.color('gray-30') !default;
+$blockquote--margin: spacing.spacing() !default;
+$blockquote--padding--bordered: spacing.spacing() !default;
 
 // Horizontal rule
 //
 $hr--border-color: hsla(var(--color--black--h), var(--color--black--s), var(--color--black--l), 0.1) !default;
 $hr--border-width: var(--border-top-width) !default;
 $hr--border-style: var(--border-style) !default;
-$hr--margin: spacing() !default;
+$hr--margin: spacing.spacing() !default;
 
 // Mark
 //
 $mark--padding: 0.2rem 0.4rem !default;
-$mark--color: color('gray-80') !default;
-$mark--background-color: color('yellow-10') !default;
+$mark--color: colors.color('gray-80') !default;
+$mark--background-color: colors.color('yellow-10') !default;
 
 // Code
 //
 $code--font-size: 90% !default;
 $code--padding: 0.15rem 0.4rem !default;
 $code--color: #bd4147 !default;
-$code--background: color('gray-10') !default;
+$code--background: colors.color('gray-10') !default;
 $code--color--dark: #ff6d6b !default;
-$code--background--dark: color('gray-80') !default;
+$code--background--dark: colors.color('gray-80') !default;
 
 // Kbd
 //
 $kbd--font-size: var(--code--font-size) !default;
 $kbd--box-shadow: inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25) !default;
 $kbd--nested-font-weight: font-weight('bold') !default;
-$kbd--color: color('white') !default;
-$kbd--background: color('gray-90') !default;
+$kbd--color: colors.color('white') !default;
+$kbd--background: colors.color('gray-90') !default;
 $kbd--padding: var(--code--padding) !default;
 
 // Pre
 //
 $pre--font-size: var(--code--font-size) !default;
-$pre--color: color('gray-90') !default;
-$pre--color--dark: color('white') !default;
+$pre--color: colors.color('gray-90') !default;
+$pre--color--dark: colors.color('white') !default;
 $pre--scrollable-max-height: 340px !default;

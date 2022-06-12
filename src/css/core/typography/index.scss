@@ -2,9 +2,9 @@
  * Typography
  */
 
-@import 'blockquote';
-@import 'document';
-@import 'heading';
-@import 'list';
-@import 'other';
-@import 'paragraph';
+@forward 'blockquote';
+@forward 'document';
+@forward 'heading';
+@forward 'list';
+@forward 'other';
+@forward 'paragraph';

@@ -2,6 +2,8 @@
     * Sample
     */
 
+@use "../../variables/typography";
+
 samp {
-    font-family: font-family-primary(monospace);
+    font-family: typography.font-family-primary(monospace);
 }

@@ -1,3 +1,6 @@
+@use "../functions/list" as inkline-list;
+@use "../variables/breakpoints";
+
 /* stylelint-disable scss/media-feature-value-dollar-variable */
 
 @use 'sass:list';
@@ -11,18 +14,18 @@
 //
 @mixin breakpoint-only($media) {
     @if $media == 'xxl' {
-        @media screen and (min-width: breakpoint('xxl')) {
+        @media screen and (min-width: breakpoints.breakpoint('xxl')) {
             @content;
         }
     } @else if $media == 'xs' {
-        @media screen and (max-width: breakpoint('sm') - 1) {
+        @media screen and (max-width: breakpoints.breakpoint('sm') - 1) {
             @content;
         }
-    } @else if contains($breakpoint-keys, $media) {
-        $index: list.index($breakpoint-keys, $media);
-        $next-media: list.nth($breakpoint-keys, $index + 1);
+    } @else if inkline-list.contains(breakpoints.$breakpoint-keys, $media) {
+        $index: list.index(breakpoints.$breakpoint-keys, $media);
+        $next-media: list.nth(breakpoints.$breakpoint-keys, $index + 1);
 
-        @media screen and (min-width: breakpoint($media)) and (max-width: breakpoint($next-media) - 1) {
+        @media screen and (min-width: breakpoints.breakpoint($media)) and (max-width: breakpoints.breakpoint($next-media) - 1) {
             @content;
         }
     } @else {
@@ -37,15 +40,15 @@
 @mixin breakpoint-down($media) {
     @if $media == 'xxl' {
         @content;
-    } @else if contains($breakpoint-keys, $media) {
-        $index: list.index($breakpoint-keys, $media);
+    } @else if inkline-list.contains(breakpoints.$breakpoint-keys, $media) {
+        $index: list.index(breakpoints.$breakpoint-keys, $media);
         $next-media: null;
 
-        @if $index + 1 <= length($breakpoint-keys) {
-            $next-media: list.nth($breakpoint-keys, $index + 1);
+        @if $index + 1 <= list.length(breakpoints.$breakpoint-keys) {
+            $next-media: list.nth(breakpoints.$breakpoint-keys, $index + 1);
         }
 
-        @media screen and (max-width: breakpoint($next-media) - 1) {
+        @media screen and (max-width: breakpoints.breakpoint($next-media) - 1) {
             @content;
         }
     } @else {
@@ -60,8 +63,8 @@
 @mixin breakpoint-up($media) {
     @if $media == 'xs' {
         @content;
-    } @else if contains($breakpoint-keys, $media) {
-        @media screen and (min-width: breakpoint($media)) {
+    } @else if inkline-list.contains(breakpoints.$breakpoint-keys, $media) {
+        @media screen and (min-width: breakpoints.breakpoint($media)) {
             @content;
         }
     } @else {

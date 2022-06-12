@@ -2,13 +2,15 @@
  * Sizing
  */
 
-@each $size, $length in $size-percentages {
+@use "../variables/sizes";
+
+@each $size, $length in sizes.$size-percentages {
     ._width\:#{$size}\% {
-        width: size-percentage($size) !important;
+        width: sizes.size-percentage($size) !important;
     }
 
     ._height\:#{$size}\% {
-        height: size-percentage($size) !important;
+        height: sizes.size-percentage($size) !important;
     }
 }
 
