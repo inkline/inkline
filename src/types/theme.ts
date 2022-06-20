@@ -26,6 +26,11 @@ export interface ThemeBorder {
 }
 
 export interface Theme {
+    animation: {
+        duration: CSS.Property.AnimationDuration;
+        timingFunction: CSS.Property.AnimationTimingFunction;
+        [key: string]: CSS.Property.AnimationDuration | CSS.Property.AnimationTimingFunction;
+    };
     breakpoints: {
         [key: string]: number;
     };
@@ -60,7 +65,30 @@ export interface Theme {
         spreadRadius: string | number;
         color: CSS.Property.Color;
         [key: string]: string | number;
-    }
+    };
+    typography: {
+        fontFamily: {
+            primary: {
+                base: CSS.Property.FontFamily;
+                monospace: CSS.Property.FontFamily;
+                print: CSS.Property.FontFamily;
+            };
+            secondary: {
+                base: CSS.Property.FontFamily;
+                monospace: CSS.Property.FontFamily;
+                print: CSS.Property.FontFamily;
+            };
+        },
+        fontSize: string;
+        fontWeight: {
+            [key: string]: CSS.Property.FontWeight;
+        };
+        lineHeight: number;
+    };
+    scaleRatio: {
+        primary: number;
+        [key: string]: number;
+    };
     elements: {
         [key: string]: Theme;
     };

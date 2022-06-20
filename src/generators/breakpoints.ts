@@ -2,6 +2,7 @@ import { Theme, UserConfiguration } from '../types';
 
 export const breakpointsGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['breakpoints']> = () => [
     {
+        name: 'breakpoints',
         test: /(.*)breakpoints$/,
         skip: /^variants/,
         generate: ({ value }) => {

@@ -29,6 +29,7 @@ const codegenVariant = (config: Configuration, variantName: string, variant: Spa
 
 export const marginGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['margin']> = () => [
     {
+        name: 'margin',
         test: /(.*)margin$/,
         skip: /^variants/,
         generate: ({ value }) => ['/**', ' * Margin variables', ' */']
@@ -44,6 +45,7 @@ export const marginGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['marg
             ])
     },
     {
+        name: 'variants/margin',
         test: /variants.margin\.(.+)$/,
         generate: ({ config, value, path }) => {
             const key = path[path.length - 1];

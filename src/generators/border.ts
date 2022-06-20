@@ -4,6 +4,7 @@ import { codegenGetCSSVariable, codegenSetCSSVariable } from '../helpers';
 
 export const borderGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['border']> = () => [
     {
+        name: 'border',
         test: /(.*)border$/,
         skip: /^variants/,
         generate: ({ value }) => ['/**', ' * Border variables', ' */']

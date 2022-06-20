@@ -27,6 +27,7 @@ const codegenVariant = (config: Configuration, name: string, variantName: string
 
 export const colorGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['color'][string] | ColorVariant> = () => [
     {
+        name: 'color',
         test: /(.*)color\.(\w+)$/,
         skip: /^variants/,
         generate: ({ value, path }) => {
@@ -36,6 +37,7 @@ export const colorGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['color
         }
     },
     {
+        name: 'variants/color',
         test: /variants.color\.(.+)\.(.+)$/,
         generate: ({ config, value, path }) => {
             const [name, key] = path.slice(-2);

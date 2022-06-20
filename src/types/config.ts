@@ -1,6 +1,7 @@
 import { Theme as InternalTheme } from './theme';
 import * as CSS from 'csstype';
 import { Variants } from './variants';
+import {Except, PartialDeep} from 'type-fest';
 
 export namespace UserConfiguration {
 
@@ -46,6 +47,13 @@ export namespace UserConfiguration {
     }
 
     export interface Generator<V = {}> {
+        /**
+         * Generator name
+         *
+         * @example margin
+         */
+        name: string;
+
         /**
          * Path validation regular expression
          *
@@ -131,15 +139,21 @@ export namespace UserConfiguration {
             spreadRadius: string | number;
             color: Color;
         };
+        export type FontFamily = {
+            base: CSS.Property.FontFamily;
+            monospace: CSS.Property.FontFamily;
+            print: CSS.Property.FontFamily;
+        }
     }
 
     /**
      * User Theme
      */
 
-    export interface Theme {
-        breakpoints: {
-            [key: string]: string | number;
+    export interface BaseTheme {
+        animation: string | {
+            duration: CSS.Property.AnimationDuration;
+            timingFunction: CSS.Property.AnimationTimingFunction;
         };
         color: {
             [key: string]: Property.Color;
@@ -148,11 +162,32 @@ export namespace UserConfiguration {
         padding: Property.Padding | Property.Padding[] | Partial<SidesProperty<Property.Padding>>;
         border: Property.Border | Partial<SidesProperty<Property.Border>>;
         boxShadow: Property.BoxShadow;
+        typography: {
+            fontFamily: {
+                primary: Property.FontFamily;
+                secondary: Property.FontFamily;
+            },
+            fontSize: string;
+            fontWeight: {
+                [key: string]: CSS.Property.FontWeight;
+            };
+            lineHeight: number;
+        };
+    }
+
+    export interface Theme extends BaseTheme {
+        breakpoints: {
+            [key: string]: string | number;
+        };
+        scaleRatio: {
+            primary: number;
+            [key: string]: number;
+        };
         elements: {
-            [key: string]: Partial<UserConfiguration.Theme>;
+            [key: string]: BaseTheme;
         };
         components: {
-            [key: string]: Partial<UserConfiguration.Theme>;
+            [key: string]: BaseTheme;
         };
         variants: Variants;
     }
@@ -161,6 +196,6 @@ export namespace UserConfiguration {
 export interface Configuration {
     resolvers: UserConfiguration.Resolver<any>[];
     generators: UserConfiguration.Generator[];
-    theme: Partial<UserConfiguration.Theme>;
+    theme: PartialDeep<UserConfiguration.Theme>;
     [key: string]: any;
 }

@@ -61,6 +61,32 @@ export const defaultConfig: Configuration = {
         margin: '1rem',
         padding: '1rem',
         border: '1px solid #c4cdd0',
+        typography: {
+            fontFamily: {
+                primary: {
+                    base: '',
+                    monospace: '',
+                    print: ''
+                },
+                secondary: {
+                    base: '',
+                    monospace: '',
+                    print: ''
+                }
+            },
+            fontSize: '',
+            fontWeight: {
+                extralight: 200,
+                light: 300,
+                normal: 'normal',
+                semibold: 600,
+                bold: 'bold',
+                black: 900,
+                lighter: 'lighter',
+                bolder: 'bolder'
+            },
+            lineHeight: 1.5
+        },
         elements: {},
         components: {},
         variants: {

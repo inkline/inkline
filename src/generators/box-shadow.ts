@@ -5,6 +5,7 @@ import { toDashCase } from '@grozav/utils';
 
 export const boxShadowGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['boxShadow']> = () => [
     {
+        name: 'box-shadow',
         test: /(.*)boxShadow$/,
         skip: /^variants/,
         generate: ({ value }) => {

@@ -19,7 +19,7 @@ const codegenVariant = (config: Configuration, variantName: string, variant: Spa
     };
 
     Object.keys(variant).forEach((modifier) => {
-        (modifiers[modifier] || modifiers[modifierAliases[modifier]])(variantValue, variant[modifier]);
+        (modifiers[modifier] || modifiers[modifierAliases[modifier]])(variantValue, variant[modifier] as string);
     });
 
     return sidesPropertyKeys.map((side) =>
@@ -29,6 +29,7 @@ const codegenVariant = (config: Configuration, variantName: string, variant: Spa
 
 export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['padding']> = () => [
     {
+        name: 'padding',
         test: /(.*)padding$/,
         generate: ({ value }) => ['/**', ' * Padding variables', ' */']
             .concat(
@@ -43,6 +44,7 @@ export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['pad
             ])
     },
     {
+        name: 'variants/padding',
         test: /variants.padding\.(.+)$/,
         generate: ({ config, value, path }) => {
             const key = path[path.length - 1];

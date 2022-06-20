@@ -1,3 +1,4 @@
+export * from './animation';
 export * from './border';
 export * from './box-shadow';
 export * from './breakpoints';

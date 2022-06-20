@@ -1,4 +1,4 @@
-import { Configuration, Theme, UserConfiguration } from '../types';
+import { CodegenGroup, Configuration, Theme, UserConfiguration } from '../types';
 
 /**
  * Recursively apply resolvers to each key value pair in the source object, setting the value in the target object
@@ -11,9 +11,9 @@ import { Configuration, Theme, UserConfiguration } from '../types';
 export const applyGenerators = (
     config: Configuration,
     source: Theme,
-    target: string[][] = [],
+    target: CodegenGroup[] = [],
     parentPath: string[] = []
-): string[][] => {
+): CodegenGroup[] => {
     Object.entries(source).forEach(([key, value]) => {
         const path = [...parentPath, key];
         const joinedPath = path.join('.');
@@ -29,7 +29,10 @@ export const applyGenerators = (
             // Check if resolver test path matches and set resolve
             // return value at target path
             if (generator.test.test(joinedPath) && !generator.skip?.test(joinedPath)) {
-                target.push(generator.generate(context));
+                target.push({
+                    name: generator.name,
+                    value: generator.generate(context)
+                });
                 matches += 1;
             }
         });

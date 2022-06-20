@@ -17,7 +17,7 @@ export function parseGenericComposedValue<T = unknown> (
         return parseGenericComposedValue(config, parseFn<T>(config, value as unknown as UserConfiguration.PropertyFn<T>), setFn);
     } else {
         setFn(result, interpolate(value, { theme: config.theme })
-            .split(/\s+(\w+\([^(]+\)?|[#\w]+)/).filter((part) => part)
+            .split(/\s+([\w-]+\([^(]+\)?|[#\w-]+)/).filter((part) => part)
         );
     }
 
