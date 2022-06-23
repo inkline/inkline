@@ -4,10 +4,6 @@ export const manifest = {
         {
             description: 'Event emitted for setting the modelValue',
             name: 'update:modelValue'
-        },
-        {
-            description: 'Event emitted for setting the modelValue',
-            name: 'update:modelValue'
         }
     ],
     slots: [
