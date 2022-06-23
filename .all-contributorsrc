@@ -151,6 +151,16 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "FerroEduardo",
+      "name": "Eduardo Cabral",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47820549?v=4",
+      "profile": "https://github.com/FerroEduardo",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 10,
