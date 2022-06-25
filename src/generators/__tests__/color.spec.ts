@@ -4,7 +4,7 @@ import { colorGenerators } from '../color';
 const [colorGenerator] = colorGenerators();
 
 describe('generators', () => {
-    describe('padding', () => {
+    describe('color', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'color.light';
@@ -35,7 +35,7 @@ describe('generators', () => {
 
                 expect(colorGenerator.generate({ config, theme, value, path })).toEqual([
                     '/**',
-                    ' * Color primary variable',
+                    ' * Color primary variables',
                     ' */',
                     `--color-primary-h: ${theme.color.primary.h};`,
                     `--color-primary-s: ${theme.color.primary.s};`,

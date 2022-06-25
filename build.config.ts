@@ -14,7 +14,7 @@ export default {
             ext: 'cjs',
             input: './src',
             outDir: './lib',
-            declaration: true
+            declaration: false
         }
     ]
 };

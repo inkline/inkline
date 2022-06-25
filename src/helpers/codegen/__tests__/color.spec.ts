@@ -5,9 +5,6 @@ describe('helpers', () => {
         describe('codegenColorVariables', () => {
             it('should return array of color variable setters', () => {
                 expect(codegenColorVariables('red-100', { h: 1, s: 2, l: 3, a: 0.5 })).toEqual([
-                    '/**',
-                    ' * Color red-100 variable',
-                    ' */',
                     '--color-red-100-h: 1;',
                     '--color-red-100-s: 2;',
                     '--color-red-100-l: 3;',
