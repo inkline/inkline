@@ -24,7 +24,7 @@ import {
     typographyGenerators
 } from './generators';
 
-const colorShades: Record<string, ColorVariant> = {
+const colorShadeVariants: Record<string, ColorVariant> = {
     100: { lightness: 10 },
     200: { lightness: 20 },
     300: { lightness: 30 },
@@ -36,12 +36,16 @@ const colorShades: Record<string, ColorVariant> = {
     900: { lightness: 90 }
 };
 
-const spacingVariants: Record<string, NumberVariant> = {
+const sizeMultiplierVariants: Record<string, NumberVariant> = {
     xs: { multiply: 'var(--size-multiplier-xs)' },
     sm: { multiply: 'var(--size-multiplier-sm)' },
     md: { multiply: 'var(--size-multiplier-md)' },
     lg: { multiply: 'var(--size-multiplier-lg)' },
-    xl: { multiply: 'var(--size-multiplier-xl)' },
+    xl: { multiply: 'var(--size-multiplier-xl)' }
+};
+
+const spacingVariants: Record<string, NumberVariant> = {
+    ...sizeMultiplierVariants,
     '1-5': { divide: 5 },
     '1-4': { divide: 4 },
     '3-4': { divide: 4, multiply: 3 },
@@ -149,12 +153,12 @@ export const defaultConfig: Configuration = {
         components: {},
         variants: {
             color: {
-                primary: colorShades,
-                secondary: colorShades,
-                info: colorShades,
-                success: colorShades,
-                warning: colorShades,
-                danger: colorShades,
+                primary: colorShadeVariants,
+                secondary: colorShadeVariants,
+                info: colorShadeVariants,
+                success: colorShadeVariants,
+                warning: colorShadeVariants,
+                danger: colorShadeVariants
             },
             margin: spacingVariants,
             padding: spacingVariants,
@@ -168,57 +172,8 @@ export const defaultConfig: Configuration = {
                 }
             },
             typography: {
-                fontSize: {
-                    xs: { multiply: 'var(--size-multiplier-xs)' },
-                    sm: { multiply: 'var(--size-multiplier-sm)' },
-                    md: { multiply: 'var(--size-multiplier-md)' },
-                    lg: { multiply: 'var(--size-multiplier-lg)' },
-                    xl: { multiply: 'var(--size-multiplier-xl)' }
-                }
+                fontSize: sizeMultiplierVariants
             }
         }
     }
-    // variants: {
-    //
-    // //     margin: {
-    // //         xs: ({ apply, variables }) => apply(variable, { multiply: 0.5 }),
-    // //
-    // //         // xs: ({ value, multiply }) => multiply(value, 0.5), // multiply({ top, right, bottom, left }, 0.75) => // { top * 0.75, right * 0.75 .. }
-    // //         // sm: ({ value, multiply }) => multiply(value, 0.75), // multiply({ top, right, bottom, left }, 0.75) => // { top * 0.75, right * 0.75 .. }
-    // //         // md: ({ value, multiply }) => multiply(value, 1),
-    // //         // lg: ({ value, multiply }) => multiply(value, 1.25),
-    // //         // xl: ({ value, multiply }) => multiply(value, 1.5)
-    // //
-    // //         // theme: { margin: { default: { .. }, sm: { .. }, md: { .. } } }
-    // //         // margin-top--sm: calc(var(--margin-top) * 0.75)
-    // //         // margin-right--sm: calc(var(--margin-top) * 0.75)
-    // //         // margin-bottom--sm: calc(var(--margin-top) * 0.75)
-    // //         // margin-left--sm: calc(var(--margin-top) * 0.75)
-    // //         // margin--sm: var(--margin-top--sm) var(--margin-right--sm) var(--margin-bottom--sm) var(--margin-left--sm)
-    // //     },
-    //     color: {
-    //         red: {
-    //             100: { lighten: 80 }
-    //
-    //             // 100: ({ value, lighten }) => lighten(value, 80),
-    //             // 200: ({ value, lighten }) => lighten(value, 60),
-    //             // 300: ({ value, lighten }) => lighten(value, 40),
-    //             // 400: ({ value, lighten }) => lighten(value, 20),
-    //             // 500: ({ value }) => value,
-    //             // 600: ({ value, darken }) => darken(value, 20),
-    //             // 700: ({ value, darken }) => darken(value, 40),
-    //             // 800: ({ value, darken }) => darken(value, 60),
-    //             // 900: ({ value, darken }) => darken(value, 80)
-    //             //
-    //             // --color-red-h--100: var(--color-red-h);
-    //             // --color-red-s--100: var(--color-red-s);
-    //             // --color-red-l--100: var(--color-red-l) * 0.2;
-    //             // --color-red--100: var(--color-red-h) var(--color-red-s) var(--color-red-l);
-    //         }
-    //     }
-    // }
 };
-
-// var(--margin--4)
-// var(--margin-top--4)
-// var(--margin-top--sm)
