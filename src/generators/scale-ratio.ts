@@ -14,13 +14,13 @@ export const scaleRatioGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['
                         .filter((ratioName) => ratioName !== 'primary')
                         .map((ratioName) => codegenSetCSSVariable(`scale-ratio-${toDashCase(ratioName)}`, value[ratioName])),
                     [
-                        `--scale-ratio: ${value.primary};`,
-                        '--scale-ratio--pow-1: var(--scale-ratio);',
-                        '--scale-ratio--pow-2: calc(var(--scale-ratio--pow-1) * var(--scale-ratio));',
-                        '--scale-ratio--pow-3: calc(var(--scale-ratio--pow-2) * var(--scale-ratio));',
-                        '--scale-ratio--pow-4: calc(var(--scale-ratio--pow-3) * var(--scale-ratio));',
-                        '--scale-ratio--pow-5: calc(var(--scale-ratio--pow-4) * var(--scale-ratio));',
-                        '--scale-ratio--pow-6: calc(var(--scale-ratio--pow-5) * var(--scale-ratio));'
+                        codegenSetCSSVariable('scale-ratio', value.primary),
+                        codegenSetCSSVariable('scale-ratio-pow-1', 'var(--scale-ratio)'),
+                        codegenSetCSSVariable('scale-ratio-pow-2', 'calc(var(--scale-ratio-pow-1) * var(--scale-ratio))'),
+                        codegenSetCSSVariable('scale-ratio-pow-3', 'calc(var(--scale-ratio-pow-2) * var(--scale-ratio))'),
+                        codegenSetCSSVariable('scale-ratio-pow-4', 'calc(var(--scale-ratio-pow-3) * var(--scale-ratio))'),
+                        codegenSetCSSVariable('scale-ratio-pow-5', 'calc(var(--scale-ratio-pow-4) * var(--scale-ratio))'),
+                        codegenSetCSSVariable('scale-ratio-pow-6', 'calc(var(--scale-ratio-pow-5) * var(--scale-ratio))')
                     ]
                 );
         }

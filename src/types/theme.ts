@@ -79,16 +79,22 @@ export interface Theme {
                 print: CSS.Property.FontFamily;
             };
         },
-        fontSize: string;
         fontWeight: {
             [key: string]: CSS.Property.FontWeight;
         };
-        lineHeight: number;
+        fontSize: CSS.Property.FontSize;
+        lineHeight: CSS.Property.LineHeight;
+        letterSpacing: CSS.Property.LetterSpacing;
+        [key: string]: string | number | Record<string, any>;
     };
     scaleRatio: {
         primary: number;
         [key: string]: number;
     };
+    sizes: {
+        multiplier: string | number;
+        percentages: Record<string, string>;
+    },
     elements: {
         [key: string]: Theme;
     };

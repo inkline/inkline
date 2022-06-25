@@ -22,7 +22,8 @@ const codegenVariant = (config: Configuration, name: string, variantName: string
         (modifiers[modifier] || modifiers[modifierAliases[modifier]])(variantValue, variant[modifier]);
     });
 
-    return codegenColorVariables(`${name}-${variantName}`, variantValue);
+    return ['/**', ` * Color ${name}-${variantName} variant variables`, ' */']
+        .concat(codegenColorVariables(`${name}-${variantName}`, variantValue));
 };
 
 export const colorGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['color'][string] | ColorVariant> = () => [
@@ -33,11 +34,12 @@ export const colorGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['color
         generate: ({ value, path }) => {
             const name = path[path.length - 1];
 
-            return codegenColorVariables(name, value as Theme['color'][string]);
+            return ['/**', ` * Color ${name} variables`, ' */']
+                .concat(codegenColorVariables(name, value as Theme['color'][string]));
         }
     },
     {
-        name: 'variants/color',
+        name: 'variants.color',
         test: /variants.color\.(.+)\.(.+)$/,
         generate: ({ config, value, path }) => {
             const [name, key] = path.slice(-2);

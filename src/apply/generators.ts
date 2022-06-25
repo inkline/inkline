@@ -1,4 +1,4 @@
-import { CodegenGroup, Configuration, Theme, UserConfiguration } from '../types';
+import {CodegenGroup, Configuration, ResolvedConfiguration, Theme, UserConfiguration} from '../types';
 
 /**
  * Recursively apply resolvers to each key value pair in the source object, setting the value in the target object
@@ -9,7 +9,7 @@ import { CodegenGroup, Configuration, Theme, UserConfiguration } from '../types'
  * @param parentPath
  */
 export const applyGenerators = (
-    config: Configuration,
+    config: ResolvedConfiguration,
     source: Theme,
     target: CodegenGroup[] = [],
     parentPath: string[] = []
@@ -19,7 +19,7 @@ export const applyGenerators = (
         const joinedPath = path.join('.');
         const context: UserConfiguration.ConfigurationContext<typeof value> = {
             config,
-            theme: source,
+            theme: config.theme,
             path,
             value
         };

@@ -1,7 +1,9 @@
-import { build } from './build';
+import { build, toFile } from './build';
 import { defaultConfig } from './defaults';
 
-build(defaultConfig);
+const contents = toFile(build(defaultConfig));
+
+console.log(contents);
 
 //
 // I want all the root variables to be there

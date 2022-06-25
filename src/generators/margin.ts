@@ -1,6 +1,6 @@
 import { Configuration, SpacingVariant, Theme, UserConfiguration } from '../types';
 import { sidesPropertyKeys } from '../constants';
-import { codegenGetCSSVariable, codegenSetCSSVariable } from '../helpers';
+import {codegenGetCSSVariable, codegenSetCSSVariable, codegenSpacingVariant} from '../helpers';
 import { spacingModifiers as modifiers, spacingModifierAliases as modifierAliases } from './modifiers';
 
 /**
@@ -24,7 +24,9 @@ const codegenVariant = (config: Configuration, variantName: string, variant: Spa
 
     return sidesPropertyKeys.map((side) =>
         codegenSetCSSVariable(`margin-${side}-${variantName}`, variantValue[side])
-    );
+    ).concat([
+        codegenSetCSSVariable(`margin-${variantName}`, sidesPropertyKeys.map((side) => codegenGetCSSVariable(`margin-${side}-${variantName}`)).join(' '))
+    ]);
 };
 
 export const marginGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['margin']> = () => [
@@ -45,12 +47,13 @@ export const marginGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['marg
             ])
     },
     {
-        name: 'variants/margin',
-        test: /variants.margin\.(.+)$/,
+        name: 'variants.margin',
+        test: /variants\.margin\.(.+)$/,
         generate: ({ config, value, path }) => {
             const key = path[path.length - 1];
 
-            return codegenVariant(config, key, value as SpacingVariant);
+            return ['/**', ` * Margin ${key} variant variables`, ' */']
+                .concat(codegenSpacingVariant(config, 'margin', key, value as SpacingVariant));
         }
     }
 ];

@@ -6,7 +6,7 @@ const [
 ] = scaleRatioResolvers();
 
 describe('resolvers', () => {
-    describe('ratios.[name]', () => {
+    describe('scaleRatio.[name]', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'scaleRatio.golden';

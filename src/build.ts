@@ -1,7 +1,7 @@
-import { Configuration, Theme, Variants } from './types';
+import { CodegenGroup, Configuration, ResolvedConfiguration, Theme, Variants } from './types';
 import { applyGenerators, applyResolvers } from './apply';
 
-export function build (config: Configuration) {
+export function build (config: Configuration): CodegenGroup[] {
     const theme = applyResolvers(config, config.theme) as Theme;
 
     if (config.theme.variants) {
@@ -11,9 +11,11 @@ export function build (config: Configuration) {
         }).variants as Variants;
     }
 
-    const code = applyGenerators(config, theme);
+    config.theme = theme;
 
-    console.log(theme, code, theme.variants.color);
+    return applyGenerators(config as ResolvedConfiguration, theme);
+}
 
-    return code;
+export function toFile (codegenGroups: CodegenGroup[]): string {
+    return codegenGroups.map(({ value }) => value.join('\n')).join('\n\n');
 }

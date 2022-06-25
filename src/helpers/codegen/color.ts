@@ -3,7 +3,6 @@ import { ThemeColor } from '../../types';
 
 export const codegenColorVariables = (name: string, color: ThemeColor) => {
     return [
-        '/**', ` * Color ${name} variable`, ' */',
         codegenSetCSSVariable(`color-${name}-h`, color.h),
         codegenSetCSSVariable(`color-${name}-s`, color.s),
         codegenSetCSSVariable(`color-${name}-l`, color.l),

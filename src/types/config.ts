@@ -1,7 +1,7 @@
-import { Theme as InternalTheme } from './theme';
+import { Theme, Theme as InternalTheme } from './theme';
 import * as CSS from 'csstype';
 import { Variants } from './variants';
-import {Except, PartialDeep} from 'type-fest';
+import { PartialDeep } from 'type-fest';
 
 export namespace UserConfiguration {
 
@@ -93,7 +93,7 @@ export namespace UserConfiguration {
      */
 
     export interface PropertyFn<T> {
-        (context: { theme: Partial<Theme> }): T;
+        (context: { theme: PartialDeep<Theme> }): T;
     }
 
     export type SidesProperty<T> = {
@@ -167,11 +167,13 @@ export namespace UserConfiguration {
                 primary: Property.FontFamily;
                 secondary: Property.FontFamily;
             },
-            fontSize: string;
             fontWeight: {
                 [key: string]: CSS.Property.FontWeight;
             };
-            lineHeight: number;
+            fontSize: CSS.Property.FontSize;
+            lineHeight: CSS.Property.LineHeight;
+            letterSpacing: CSS.Property.LetterSpacing;
+            [key: string]: any;
         };
     }
 
@@ -180,9 +182,14 @@ export namespace UserConfiguration {
             [key: string]: string | number;
         };
         scaleRatio: {
-            primary: number;
-            [key: string]: number;
+            primary: string | number;
+            [key: string]: string | number;
         };
+        size: {
+            multiplier: string | number;
+            percentages: Record<string, string>;
+            [key: string]: string | number | Record<string, string>;
+        },
         elements: {
             [key: string]: BaseTheme;
         };
@@ -198,4 +205,8 @@ export interface Configuration {
     generators: UserConfiguration.Generator[];
     theme: PartialDeep<UserConfiguration.Theme>;
     [key: string]: any;
+}
+
+export interface ResolvedConfiguration extends Configuration {
+    theme: Theme;
 }

@@ -21,19 +21,19 @@ export interface ColorVariant {
 }
 
 export interface NumberVariant {
-    multiply?: number;
-    divide?: number;
-    add?: number;
-    subtract?: number;
+    multiply?: string | number;
+    divide?: string | number;
+    add?: string | number;
+    subtract?: string | number;
 
     [key: string]: NumberVariant | number | string | undefined;
 }
 
 export interface SpacingVariant extends NumberVariant {
-    top?: string | NumberVariant;
-    right?: string | NumberVariant;
-    bottom?: string | NumberVariant;
-    left?: string | NumberVariant;
+    top?: NumberVariant | string;
+    right?: NumberVariant | string;
+    bottom?: NumberVariant | string;
+    left?: NumberVariant | string;
 
     [key: string]: NumberVariant | number | string | undefined;
 }
@@ -48,4 +48,14 @@ export interface Variants {
     padding?: {
         [key: string]: SpacingVariant | string;
     };
+    typography?: {
+        fontSize?: {
+            [key: string]: NumberVariant | string;
+        }
+    };
+    size?: {
+        multiplier?: {
+            [key: string]: NumberVariant | string;
+        }
+    }
 }

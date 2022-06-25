@@ -1,36 +1,13 @@
 import { Configuration, SpacingVariant, Theme, UserConfiguration } from '../types';
 import { sidesPropertyKeys } from '../constants';
-import { codegenGetCSSVariable, codegenSetCSSVariable } from '../helpers';
+import {codegenGetCSSVariable, codegenSetCSSVariable, codegenSpacingVariant} from '../helpers';
 import { spacingModifierAliases as modifierAliases, spacingModifiers as modifiers } from './modifiers';
-
-/**
- * Generate the code for a specific variant if needed
- *
- * @param config
- * @param variantName
- * @param variant
- */
-const codegenVariant = (config: Configuration, variantName: string, variant: SpacingVariant): string[] => {
-    const variantValue: Theme['padding'] = {
-        top: codegenGetCSSVariable('padding-top'),
-        right: codegenGetCSSVariable('padding-right'),
-        bottom: codegenGetCSSVariable('padding-bottom'),
-        left: codegenGetCSSVariable('padding-left')
-    };
-
-    Object.keys(variant).forEach((modifier) => {
-        (modifiers[modifier] || modifiers[modifierAliases[modifier]])(variantValue, variant[modifier] as string);
-    });
-
-    return sidesPropertyKeys.map((side) =>
-        codegenSetCSSVariable(`padding-${side}-${variantName}`, variantValue[side])
-    );
-};
 
 export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['padding']> = () => [
     {
         name: 'padding',
         test: /(.*)padding$/,
+        skip: /^variants/,
         generate: ({ value }) => ['/**', ' * Padding variables', ' */']
             .concat(
                 sidesPropertyKeys.map((side) =>
@@ -44,12 +21,13 @@ export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['pad
             ])
     },
     {
-        name: 'variants/padding',
-        test: /variants.padding\.(.+)$/,
+        name: 'variants.padding',
+        test: /variants\.padding\.(.+)$/,
         generate: ({ config, value, path }) => {
             const key = path[path.length - 1];
 
-            return codegenVariant(config, key, value as SpacingVariant);
+            return ['/**', ` * Padding ${key} variant variables`, ' */']
+                .concat(codegenSpacingVariant(config, 'padding', key, value as SpacingVariant));
         }
     }
 ];
