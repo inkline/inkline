@@ -1,4 +1,5 @@
 {
-  "yarn": false,
-  "contents": "./lib"
+    "yarn": false,
+    "contents": "./lib",
+    "access": "public"
 }
