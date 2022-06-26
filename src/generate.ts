@@ -70,5 +70,8 @@ export function generate (config: ResolvedConfiguration): CodegenFile[] {
             name: file.name,
             value: generateCodeForLocations(file.value)
         };
+    }).concat({
+        name: 'index',
+        value: locatedGroups.map((file) => `@import "${file.name}.css";`).join('\n')
     });
 }
