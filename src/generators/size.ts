@@ -33,7 +33,7 @@ export const sizeGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['size']
         }
     },
     {
-        name: 'variants.size',
+        name: 'size',
         test: /variants\.size\.multiplier$/,
         priority: GeneratorPriority.High,
         generate: ({ config, value }) => {

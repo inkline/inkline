@@ -53,7 +53,7 @@ export const typographyGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['
         }
     },
     {
-        name: 'variants.typography',
+        name: 'typography',
         test: /variants\.typography\.fontSize$/,
         generate: ({ config, value }) => {
             return ['/**', ' * Typography font size variants variables', ' */']

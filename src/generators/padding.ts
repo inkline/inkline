@@ -5,7 +5,7 @@ import { spacingModifierAliases as modifierAliases, spacingModifiers as modifier
 
 export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['padding']> = () => [
     {
-        name: 'padding',
+        name: 'spacing',
         test: /(.*)padding$/,
         skip: /^variants/,
         generate: ({ value }) => ['/**', ' * Padding variables', ' */']
@@ -21,7 +21,7 @@ export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['pad
             ])
     },
     {
-        name: 'variants.padding',
+        name: 'spacing',
         test: /variants\.padding\.(.+)$/,
         generate: ({ config, value, path }) => {
             const key = path[path.length - 1];

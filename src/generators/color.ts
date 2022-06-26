@@ -39,7 +39,7 @@ export const colorGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['color
         }
     },
     {
-        name: 'variants.color',
+        name: 'color',
         test: /variants.color\.(.+)\.(.+)$/,
         generate: ({ config, value, path }) => {
             const [name, key] = path.slice(-2);

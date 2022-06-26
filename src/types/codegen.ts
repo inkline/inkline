@@ -6,3 +6,8 @@ export interface CodegenGroup {
     location: GeneratorLocation;
     priority: GeneratorPriority;
 }
+
+export interface CodegenFile {
+    name: string;
+    value: string;
+}

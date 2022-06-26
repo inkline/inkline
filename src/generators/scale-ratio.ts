@@ -5,7 +5,7 @@ import { GeneratorPriority } from '../constants';
 
 export const scaleRatioGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['scaleRatio']> = () => [
     {
-        name: 'scaleRatio',
+        name: 'scale-ratio',
         test: /(.*)scaleRatio$/,
         skip: /^variants/,
         priority: GeneratorPriority.High,
