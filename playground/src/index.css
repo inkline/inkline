@@ -1,0 +1,11 @@
+@import '../.inkline/css/breakpoints.css';
+
+body {
+    background: var(--color-red);
+}
+
+@media (--breakpoint-lg-down) {
+    body {
+        background: var(--color-blue) !important;
+    }
+}
