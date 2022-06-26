@@ -38,8 +38,8 @@ describe('generators', () => {
                     ' * Color primary variables',
                     ' */',
                     `--color-primary-h: ${theme.color.primary.h};`,
-                    `--color-primary-s: ${theme.color.primary.s};`,
-                    `--color-primary-l: ${theme.color.primary.l};`,
+                    `--color-primary-s: ${theme.color.primary.s}%;`,
+                    `--color-primary-l: ${theme.color.primary.l}%;`,
                     `--color-primary-a: ${theme.color.primary.a};`,
                     '--color-primary: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), var(--color-primary-a));'
                 ]);
