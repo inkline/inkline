@@ -106,7 +106,9 @@ export const defaultConfig: Configuration = {
             primary: '<% theme.color.blue %>',
             secondary: '<% theme.color.purple %>',
             info: '<% theme.color.teal %>',
-            success: '<% theme.color.green %>'
+            success: '<% theme.color.green %>',
+            warning: '<% theme.color.yellow %>',
+            danger: '<% theme.color.red %>'
         },
         margin: '1rem',
         padding: '1rem',
