@@ -28,7 +28,7 @@ export const breakpointsGenerators: UserConfiguration.GeneratorPlugin<{}, Theme[
                         rules.push(`@custom-media --breakpoint-${key}-up (min-width: ${unitValue});`);
                     }
 
-                    rules.push(`@custom-media --breakpoint-${key} (min-width: ${unitValue}${index !== pairs.length - 1 ? ` and max-width: ${nextUnitValue}` : ''});`);
+                    rules.push(`@custom-media --breakpoint-${key} (min-width: ${unitValue})${index !== pairs.length - 1 ? ` and (max-width: ${nextUnitValue}` : ''});`);
 
                     return rules;
                 }).flat());
