@@ -35,10 +35,10 @@ describe('generators', () => {
                     ' * Breakpoint variables',
                     ' */',
                     '@custom-media --breakpoint-xs-down (max-width: 575.99px);',
-                    '@custom-media --breakpoint-xs (min-width: 0px and max-width: 575.99px);',
+                    '@custom-media --breakpoint-xs (min-width: 0px) and (max-width: 575.99px);',
                     '@custom-media --breakpoint-sm-down (max-width: 991.99px);',
                     '@custom-media --breakpoint-sm-up (min-width: 576px);',
-                    '@custom-media --breakpoint-sm (min-width: 576px and max-width: 991.99px);',
+                    '@custom-media --breakpoint-sm (min-width: 576px) and (max-width: 991.99px);',
                     '@custom-media --breakpoint-md-up (min-width: 992px);',
                     '@custom-media --breakpoint-md (min-width: 992px);'
                 ]);
