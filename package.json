@@ -31,7 +31,7 @@
     "vitest": "0.8.3"
   },
   "dependencies": {
-    "@grozav/utils": "1.1.1",
+    "@grozav/utils": "^1.1.2",
     "@types/color": "3.0.3",
     "c12": "^0.2.7",
     "color": "4.2.3",
