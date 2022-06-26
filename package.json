@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@grozav/utils": "1.1.1",
+    "c12": "^0.2.7",
     "color": "4.2.3",
     "micromustache": "8.0.3"
   },
