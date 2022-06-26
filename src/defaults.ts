@@ -122,6 +122,16 @@ export const defaultConfig: Configuration = {
             golden: 1.618,
             primary: 'var(--scale-ratio-minor-third)'
         },
+        size: {
+            multiplier: 1,
+            percentages: {
+                0: '0%',
+                25: '25%',
+                50: '50%',
+                75: '75%',
+                100: '100%'
+            }
+        },
         typography: {
             fontFamily: {
                 primary: {

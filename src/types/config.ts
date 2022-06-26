@@ -2,6 +2,7 @@ import { Theme, Theme as InternalTheme } from './theme';
 import * as CSS from 'csstype';
 import { Variants } from './variants';
 import { PartialDeep } from 'type-fest';
+import {GeneratorLocation, GeneratorPriority} from "../constants";
 
 export namespace UserConfiguration {
 
@@ -67,6 +68,20 @@ export namespace UserConfiguration {
          * @example /^variants/
          */
         skip?: RegExp;
+
+        /**
+         * The priority of the generated code. High priority means that other generators depend on this one.
+         *
+         * @example GeneratorPriority.High
+         */
+        priority?: GeneratorPriority;
+
+        /**
+         * The location of the generated code. Root means that the generated code is placed inside the :root selector.
+         *
+         * @example GeneratorLocation.Root
+         */
+        location?: GeneratorLocation;
 
         /**
          * Generate function, returns generated code strings

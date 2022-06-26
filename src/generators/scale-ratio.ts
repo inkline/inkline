@@ -1,12 +1,14 @@
 import { Theme, UserConfiguration } from '../types';
 import { codegenSetCSSVariable } from '../helpers';
 import { toDashCase } from '@grozav/utils';
+import { GeneratorPriority } from '../constants';
 
 export const scaleRatioGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['scaleRatio']> = () => [
     {
         name: 'scaleRatio',
         test: /(.*)scaleRatio$/,
         skip: /^variants/,
+        priority: GeneratorPriority.High,
         generate: ({ value }) => {
             return ['/**', ' * Scale ratio variables', ' */']
                 .concat(

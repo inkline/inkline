@@ -2,7 +2,7 @@
   "name": "@inkline/config",
   "version": "1.1.4",
   "scripts": {
-    "start": "npm run build && node --experimental-specifier-resolution=node lib/index.mjs",
+    "start": "npm run build && node --experimental-specifier-resolution=node lib/playground.mjs",
     "dev": "vite",
     "build": "unbuild",
     "postbuild": "ts-node scripts/postbuild.ts",

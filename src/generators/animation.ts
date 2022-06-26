@@ -11,7 +11,7 @@ export const animationGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['a
         generate: ({ value }) => {
             return ['/**', ' * Animation variables', ' */']
                 .concat(
-                    animationProperties.map((property) => codegenSetCSSVariable(`animation-${toDashCase(property)}`, value[property])),
+                    animationProperties.map((property) => codegenSetCSSVariable(`animation-${toDashCase(property)}`, value[property]))
                 );
         }
     }

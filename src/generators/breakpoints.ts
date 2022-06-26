@@ -1,10 +1,12 @@
 import { Theme, UserConfiguration } from '../types';
+import {GeneratorLocation} from "../constants";
 
 export const breakpointsGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['breakpoints']> = () => [
     {
         name: 'breakpoints',
         test: /(.*)breakpoints$/,
         skip: /^variants/,
+        location: GeneratorLocation.None,
         generate: ({ value }) => {
             const pairs = Object.entries(value).sort((a, b) => a[1] - b[1]);
 

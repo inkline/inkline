@@ -1,4 +1,5 @@
-import {CodegenGroup, Configuration, ResolvedConfiguration, Theme, UserConfiguration} from '../types';
+import {CodegenGroup, ResolvedConfiguration, Theme, UserConfiguration} from '../types';
+import {GeneratorLocation, GeneratorPriority} from "../constants";
 
 /**
  * Recursively apply resolvers to each key value pair in the source object, setting the value in the target object
@@ -31,7 +32,9 @@ export const applyGenerators = (
             if (generator.test.test(joinedPath) && !generator.skip?.test(joinedPath)) {
                 target.push({
                     name: generator.name,
-                    value: generator.generate(context)
+                    value: generator.generate(context),
+                    priority: generator.priority ?? GeneratorPriority.Low,
+                    location: generator.location ?? GeneratorLocation.Root
                 });
                 matches += 1;
             }
