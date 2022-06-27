@@ -40,9 +40,9 @@ export async function build (options: BuildOptions = {}) {
         mkdirSync(cssOutputDir, { recursive: true });
     }
 
-    cssConfig.forEach((file) => {
-        writeFile(resolve(cssOutputDir, `${file.name}${outputExtname}`), file.value);
-    });
+    await Promise.all(cssConfig.map(
+        async (file) => writeFile(resolve(cssOutputDir, `${file.name}.css`), file.value)
+    ));
 
     return {
         configDir,
