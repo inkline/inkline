@@ -1,11 +1,14 @@
-import { loadConfig } from './load';
-import { generate } from './generate';
+import { build } from './build';
+
+// (async () => {
+//     const config = await loadConfig({});
+//     const code = generate(config);
+//
+//     console.log(code);
+//
+//     return code;
+// })();
 
 (async () => {
-    const config = await loadConfig({});
-    const code = generate(config);
-
-    console.log(code);
-
-    return code;
+    await build();
 })();

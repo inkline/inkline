@@ -1,4 +1,4 @@
-import {CodegenFile, CodegenGroup, ResolvedConfiguration} from './types';
+import { CodegenFile, CodegenGroup, ResolvedConfiguration } from './types';
 import { applyGenerators } from './apply';
 import { GeneratorLocation } from './constants';
 import { codegenIndent } from './helpers';
@@ -11,13 +11,6 @@ function sortCodegenGroups (groups: CodegenGroup[]) {
 
         return a.priority - b.priority;
     });
-}
-
-function localizeCodegenGroups (groups: CodegenGroup[]): Record<GeneratorLocation, CodegenGroup[]> {
-    return {
-        [GeneratorLocation.None]: groups.filter(({ location }) => location === GeneratorLocation.None),
-        [GeneratorLocation.Root]: groups.filter(({ location }) => location === GeneratorLocation.Root)
-    };
 }
 
 function generateCodeForLocations (locations: Record<GeneratorLocation, CodegenGroup[]>) {
@@ -40,7 +33,10 @@ function generateCodeForLocations (locations: Record<GeneratorLocation, CodegenG
 export function generateSingleFile (config: ResolvedConfiguration): string {
     const codegenGroups = applyGenerators(config as ResolvedConfiguration, config.theme);
     const sortedGroups = sortCodegenGroups(codegenGroups);
-    const locations = localizeCodegenGroups(sortedGroups);
+    const locations = {
+        [GeneratorLocation.None]: sortedGroups.filter(({ location }) => location === GeneratorLocation.None),
+        [GeneratorLocation.Root]: sortedGroups.filter(({ location }) => location === GeneratorLocation.Root)
+    };
 
     return generateCodeForLocations(locations);
 }
