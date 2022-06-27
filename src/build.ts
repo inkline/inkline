@@ -3,7 +3,7 @@ import { dirname, basename, extname, resolve } from 'pathe';
 import { generate } from './generate';
 import { existsSync, mkdirSync } from 'fs';
 import { writeFile } from 'fs/promises';
-import {DEFAULT_OUTPUT_DIR, DEFAULT_OUTPUT_EXTNAME} from './constants';
+import { DEFAULT_OUTPUT_DIR, DEFAULT_OUTPUT_EXTNAME } from './constants';
 
 export interface BuildOptions {
     configFile?: string;
@@ -33,6 +33,7 @@ export async function build (options: BuildOptions = {}) {
     const outputExtname = options.extname || DEFAULT_OUTPUT_EXTNAME;
     const outputDir = options.outputDir || resolve(configDir, DEFAULT_OUTPUT_DIR);
     const cssOutputDir = resolve(outputDir, 'css');
+    const cssOutputFile = resolve(cssOutputDir, `index${outputExtname}`);
     const cssConfig = generate(config);
 
     if (!existsSync(cssOutputDir)) {
@@ -43,5 +44,10 @@ export async function build (options: BuildOptions = {}) {
         writeFile(resolve(cssOutputDir, `${file.name}${outputExtname}`), file.value);
     });
 
-    return `import "${resolve(cssOutputDir, `index${outputExtname}`)}";`;
+    return {
+        configDir,
+        configFile,
+        cssOutputDir,
+        cssOutputFile
+    };
 }
