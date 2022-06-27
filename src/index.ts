@@ -1,4 +1,5 @@
 export * from './apply';
+export * from './build';
 export * from './constants';
 export * from './defaults';
 export * from './generate';
