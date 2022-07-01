@@ -13,10 +13,15 @@ program
     .description(packageJSON.description)
     .version(packageJSON.version);
 
-program.command('generate')
-    .description('Generate core files for your Inkline project')
-    .argument(Commands.Generate.CSS.name, 'Generate CSS based on configuration file.')
+const generate = program.command('generate')
+    .description('Generate core and helper files for Inkline.');
+
+generate
+    .command(Commands.Generate.CSS.name)
+    .description('Generate CSS variables based on configuration file.')
     .option('-c, --config <path>', 'Configuration file to use.')
+    .option('-o, --outputDir <path>', 'Path to output directory.')
+    .option('-e, --extname <ext>', 'File extension to use for output files.')
     .action(async (type: string, options: Commands.Generate.CSS.Options) => {
         if (type === Commands.Generate.CSS.name) {
             await generateCSS(options);

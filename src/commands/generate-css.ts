@@ -4,8 +4,11 @@ import { Logger } from '../logger';
 
 export async function generateCSS (options: Commands.Generate.CSS.Options) {
     try {
+        const { config: configFile, ...configuration } = options;
+
         await build({
-            configFile: options.config
+            configFile,
+            ...configuration
         });
 
         Logger.success(Commands.Generate.CSS.messages.success);

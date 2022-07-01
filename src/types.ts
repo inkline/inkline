@@ -9,6 +9,8 @@ export namespace Commands {
 
             export interface Options {
                 config?: string;
+                outputDir?: string;
+                extname?: string;
             }
         }
     }
