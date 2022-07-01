@@ -18,8 +18,8 @@ const generate = program.command('generate')
 
 generate
     .command(Commands.Generate.CSS.name)
-    .description('Generate CSS variables based on configuration file.')
-    .option('-c, --config <path>', 'Configuration file to use.')
+    .description('Generate CSS variables based on your inkline configuration file.')
+    .option('-c, --config <path>', 'Path to inkline configuration file.')
     .option('-o, --outputDir <path>', 'Path to output directory.')
     .option('-e, --extname <ext>', 'File extension to use for output files.')
     .action(async (type: string, options: Commands.Generate.CSS.Options) => {
