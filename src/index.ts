@@ -3,7 +3,7 @@
 import { program } from 'commander';
 import chalk from 'chalk';
 import { Commands } from './types';
-import { generateCSS } from './commands';
+import { generateCSS, init } from './commands';
 
 // @ts-ignore
 import packageJSON from '../package.json';
@@ -12,6 +12,12 @@ program
     .name(chalk.blue('inkline'))
     .description(packageJSON.description)
     .version(packageJSON.version);
+
+program.command(Commands.Init.name)
+    .description('Initialize Inkline and create a configuration file.')
+    .action(async (type: string, options: Commands.Init.Options) => {
+        await init(options);
+    });
 
 const generate = program.command('generate')
     .description('Generate core and helper files for Inkline.');
@@ -23,9 +29,7 @@ generate
     .option('-o, --outputDir <path>', 'Path to output directory.')
     .option('-e, --extname <ext>', 'File extension to use for output files.')
     .action(async (type: string, options: Commands.Generate.CSS.Options) => {
-        if (type === Commands.Generate.CSS.name) {
-            await generateCSS(options);
-        }
+        await generateCSS(options);
     });
 
 program.parse();

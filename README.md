@@ -42,6 +42,22 @@ inkline help [command]
 
 See a description and available options for a specific command.
 
+### Initialize
+
+```bash
+inkline init
+```
+
+Generate a default `inkline.config.ts` theme configuration file.
+
+[Read more about configuration files.](https://github.com/inkline/config)
+
+
+| Option                 | Description                             |
+|------------------------|-----------------------------------------|
+| -c, --config <path>    | Path to inkline configuration file.     |
+| -o, --outputDir <path> | Path to output directory.               |
+| -e, --extname <ext>    | File extension to use for output files. |
 
 ### Generate CSS
 

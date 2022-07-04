@@ -1,6 +1,6 @@
 import { build } from '@inkline/config';
 import { Commands } from '../types';
-import { Logger } from '../logger';
+import { Logger } from '@grozav/logger';
 
 export async function generateCSS (options: Commands.Generate.CSS.Options) {
     try {
