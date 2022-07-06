@@ -11,7 +11,7 @@ export default {
         {
             builder: 'mkdist',
             format: 'cjs',
-            ext: 'cjs',
+            ext: 'js',
             input: './src',
             outDir: './lib',
             declaration: false
