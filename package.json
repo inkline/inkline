@@ -38,17 +38,17 @@
     "chalk": "^5.0.1",
     "commander": "^9.3.0"
   },
-  "main": "index.cjs",
+  "main": "index.js",
   "module": "index.mjs",
-  "jsdelivr": "index.cjs",
-  "unpkg": "index.cjs",
+  "jsdelivr": "index.js",
+  "unpkg": "index.js",
   "types": "index.d.ts",
   "files": [
     "**/*"
   ],
   "exports": {
     ".": {
-      "require": "./index.cjs",
+      "require": "./index.js",
       "import": "./index.mjs",
       "types": "./index.d.ts"
     },
