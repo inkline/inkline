@@ -1,3 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IContainer > should render correctly 1`] = `"<div class=\\"container\\"></div>"`;
 
 exports[`Components IContainer should render correctly 1`] = `<div class="container"></div>`;

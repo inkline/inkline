@@ -184,8 +184,8 @@ describe('Components', () => {
             describe('modelValue', () => {
                 it('should show modal if true', () => {
                     const wrapper = {
-                        show: jest.fn(),
-                        hide: jest.fn(),
+                        show: vi.fn(),
+                        hide: vi.fn(),
                         fn: (IModal as any).watch.modelValue
                     };
 
@@ -196,8 +196,8 @@ describe('Components', () => {
 
                 it('should hide modal if false', () => {
                     const wrapper = {
-                        show: jest.fn(),
-                        hide: jest.fn(),
+                        show: vi.fn(),
+                        hide: vi.fn(),
                         fn: (IModal as any).watch.modelValue
                     };
 

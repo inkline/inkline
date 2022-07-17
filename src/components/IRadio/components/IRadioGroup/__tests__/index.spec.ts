@@ -156,7 +156,7 @@ describe('Components', () => {
                 });
 
                 it('should call parent form onInput when checking radio', async () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IRadioGroup, {
                         global: {
                             stubs,

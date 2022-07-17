@@ -51,7 +51,7 @@ describe('Components', () => {
         describe('methods', () => {
             describe('onClick()', () => {
                 it('should focus next sibling if for not provided', async () => {
-                    const focus = jest.fn();
+                    const focus = vi.fn();
                     const wrapper = {
                         $el: {
                             nextSibling: {
@@ -69,7 +69,7 @@ describe('Components', () => {
                 });
 
                 it('should not focus next sibling if not focusable', async () => {
-                    const focus = jest.fn();
+                    const focus = vi.fn();
                     const wrapper = {
                         $el: {
                             nextSibling: {
@@ -85,7 +85,7 @@ describe('Components', () => {
                 });
 
                 it('should not focus next sibling if for provided', async () => {
-                    const focus = jest.fn();
+                    const focus = vi.fn();
                     const wrapper = {
                         for: true,
                         $el: {

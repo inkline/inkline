@@ -2,7 +2,7 @@ import { focusFirstDescendant } from '@inkline/inkline/helpers';
 
 describe('Helpers', () => {
     describe('focusFirstDescendant()', () => {
-        const activeElementSpy = jest.spyOn(document, 'activeElement', 'get');
+        const activeElementSpy = vi.spyOn(document, 'activeElement', 'get');
         let element: any;
 
         beforeEach(() => {

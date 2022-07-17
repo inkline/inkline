@@ -1,38 +1,29 @@
 import { ClickOutsideDirective, onClickOutside } from '@inkline/inkline/directives/click-outside';
 
-jest.mock('@inkline/inkline/helpers', () => ({
-    on: jest.fn(),
-    isVisible: jest.requireActual('@inkline/inkline/helpers/isVisible').isVisible
-}));
+vi.mock('@inkline/inkline/helpers', async () => {
+    const { isVisible } = await vi.importActual('@inkline/inkline/helpers');
 
-const helpersModule = jest.requireMock('@inkline/inkline/helpers');
-const windowSpy = jest.spyOn((global as any), 'window', 'get');
+    return {
+        on: vi.fn(),
+        isVisible
+    };
+});
+
+const helpersModule: {
+    on: () => void;
+    isVisible: () => boolean;
+} = await vi.importMock('@inkline/inkline/helpers');
 
 describe('Directives', () => {
     describe('v-click-outside', () => {
         describe('beforeMount()', () => {
-            afterEach(() => {
-                jest.clearAllMocks();
-            });
-
             it('should attach window.document mouseup event with onClickOutside result', () => {
                 const element = document.createElement('div');
-                const binding = jest.fn();
+                const binding = vi.fn();
 
                 (ClickOutsideDirective as any).beforeMount(element, binding);
 
                 expect(helpersModule.on).toHaveBeenCalledWith(window.document, 'mouseup', expect.any(Function));
-            });
-
-            it('should not attach window.document mouseup event if isServer', () => {
-                windowSpy.mockImplementation(() => undefined);
-
-                const element = document.createElement('div');
-                const binding = jest.fn();
-
-                (ClickOutsideDirective as any).beforeMount(element, binding);
-
-                expect(helpersModule.on).not.toHaveBeenCalled();
             });
         });
 
@@ -42,7 +33,7 @@ describe('Directives', () => {
                     offsetWidth: true,
                     contains: () => false
                 };
-                const binding = { value: jest.fn() };
+                const binding = { value: vi.fn() };
                 const target = document.createElement('div');
                 const event = { target };
                 const fn = onClickOutside(element as any, binding);
@@ -57,7 +48,7 @@ describe('Directives', () => {
                     offsetWidth: true,
                     contains: () => true
                 };
-                const binding = { value: jest.fn() };
+                const binding = { value: vi.fn() };
                 const target = document.createElement('div');
                 const event = { target };
                 const fn = onClickOutside(element as any, binding);
@@ -72,7 +63,7 @@ describe('Directives', () => {
                     offsetWidth: true,
                     contains: () => false
                 };
-                const binding = { value: jest.fn() };
+                const binding = { value: vi.fn() };
                 const event = { target: element };
                 const fn = onClickOutside(element as any, binding);
 
@@ -86,7 +77,7 @@ describe('Directives', () => {
                     getClientRects: () => [],
                     contains: () => false
                 };
-                const binding = { value: jest.fn() };
+                const binding = { value: vi.fn() };
                 const target = document.createElement('div');
                 const event = { target };
                 const fn = onClickOutside(element as any, binding);
@@ -101,7 +92,7 @@ describe('Directives', () => {
                     offsetWidth: true,
                     contains: () => false
                 };
-                const binding = { value: jest.fn() };
+                const binding = { value: vi.fn() };
                 const event = { target: null };
                 const fn = onClickOutside(element as any, binding);
 

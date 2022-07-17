@@ -1,7 +1,7 @@
 import { defaultPropValue } from '@inkline/inkline/mixins';
 import { inklineGlobals } from '@inkline/inkline/plugin';
 
-jest.mock('@inkline/inkline/plugin', () => ({
+vi.mock('@inkline/inkline/plugin', () => ({
     inklineGlobals: {
         prototype: {
             options: {}

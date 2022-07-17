@@ -58,7 +58,7 @@ describe('Components', () => {
         describe('methods', () => {
             describe('onClick()', () => {
                 it('should call parent nav onItemClick', async () => {
-                    const onItemClick = jest.fn();
+                    const onItemClick = vi.fn();
                     const wrapper = render(INavItem, {
                         global: {
                             provide: {
@@ -76,7 +76,7 @@ describe('Components', () => {
                 });
 
                 it('should not call parent nav onItemClick if stopPropagation', async () => {
-                    const onItemClick = jest.fn();
+                    const onItemClick = vi.fn();
                     const wrapper = render(INavItem, {
                         global: {
                             provide: {

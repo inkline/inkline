@@ -1,3 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IHamburgerMenu > should render correctly 1`] = `"<div class=\\"hamburger-menu -light -close\\"><span class=\\"hamburger-menu-bars\\"></span></div>"`;
 
 exports[`Components IHamburgerMenu should render correctly 1`] = `<div class="hamburger-menu -light -close"><span class="hamburger-menu-bars"></span></div>`;

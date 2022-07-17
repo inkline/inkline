@@ -130,8 +130,8 @@ describe('Components', () => {
                 it('should hide popover popup', async () => {
                     const wrapper = {
                         visible: true,
-                        $emit: jest.fn(),
-                        onClickOutside: jest.fn(),
+                        $emit: vi.fn(),
+                        onClickOutside: vi.fn(),
                         handleClickOutside: IPopover.methods!.handleClickOutside
                     };
 

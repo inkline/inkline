@@ -1,4 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IAlert > should render correctly 1`] = `
+"<div class=\\"alert -primary -md\\" role=\\"alert\\">
+  <!--v-if-->
+  <div class=\\"content\\"></div>
+  <!--v-if-->
+</div>"
+`;
 
 exports[`Components IAlert should render correctly 1`] = `
 <div class="alert -primary -md" role="alert">

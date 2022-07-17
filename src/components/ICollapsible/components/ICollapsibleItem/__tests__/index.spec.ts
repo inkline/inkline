@@ -79,7 +79,7 @@ describe('Components', () => {
         describe('methods', () => {
             describe('onClick()', () => {
                 it('should call collapsible onItemClick', async () => {
-                    const onItemClick = jest.fn();
+                    const onItemClick = vi.fn();
                     const wrapper = render(ICollapsibleItem, {
                         global: {
                             provide: {

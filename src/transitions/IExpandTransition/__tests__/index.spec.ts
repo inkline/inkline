@@ -17,7 +17,7 @@ describe('transitions', () => {
                     expect(element.style.height).toEqual('0px');
                 });
 
-                it('should set element height after timeout', (done) => {
+                it('should set element height after timeout', async () => {
                     const wrapper = createMockInstance(IExpandTransition, {});
                     const element = document.createElement('div');
 
@@ -26,10 +26,9 @@ describe('transitions', () => {
 
                     wrapper.onEnter(element);
 
-                    setTimeout(() => {
-                        expect(element.style.height).toEqual('auto');
-                        done();
-                    }, 1);
+                    await new Promise((resolve) => setTimeout(resolve, 1));
+
+                    expect(element.style.height).toEqual('auto');
                 });
             });
 
@@ -57,7 +56,7 @@ describe('transitions', () => {
                     expect(element.style.height).toEqual('256px');
                 });
 
-                it('should set height to 0 after timeout', (done) => {
+                it('should set height to 0 after timeout', async () => {
                     const wrapper = createMockInstance(IExpandTransition, {});
                     const element = document.createElement('div');
 
@@ -66,10 +65,9 @@ describe('transitions', () => {
 
                     wrapper.onLeave(element);
 
-                    setTimeout(() => {
-                        expect(element.style.height).toEqual('0px');
-                        done();
-                    }, 1);
+                    await new Promise((resolve) => setTimeout(resolve, 1));
+
+                    expect(element.style.height).toEqual('0px');
                 });
             });
         });

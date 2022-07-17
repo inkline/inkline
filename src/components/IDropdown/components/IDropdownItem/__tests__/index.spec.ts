@@ -57,7 +57,7 @@ describe('Components', () => {
         describe('methods', () => {
             describe('onClick()', () => {
                 it('should call dropdown onItemClick', async () => {
-                    const onItemClick = jest.fn();
+                    const onItemClick = vi.fn();
                     const wrapper = render(IDropdownItem, {
                         global: {
                             provide: {
@@ -74,7 +74,7 @@ describe('Components', () => {
                 });
 
                 it('should not call dropdown onItemClick if not inside dropdown', async () => {
-                    const onItemClick = jest.fn();
+                    const onItemClick = vi.fn();
                     const wrapper = render(IDropdownItem, {
                         global: {
                             provide: {

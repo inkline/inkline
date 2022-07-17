@@ -1,3 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > ILayout > should render correctly 1`] = `"<main class=\\"layout\\" data-v-e991cc94=\\"\\"></main>"`;
 
 exports[`Components ILayout should render correctly 1`] = `<main class="layout"></main>`;

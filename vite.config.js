@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
-import markdown from 'vite-plugin-md';
 
 /**
  * Vite configuration for library build
@@ -15,8 +14,7 @@ export default defineConfig({
                 /\.vue$/,
                 /\.md$/
             ]
-        }),
-        markdown()
+        })
     ],
     resolve: {
         alias: [
@@ -44,6 +42,18 @@ export default defineConfig({
                     vue: 'Vue'
                 }
             }
+        }
+    },
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        setupFiles: [
+            './vitest.setup.js'
+        ],
+        coverage: {
+            exclude: [
+                '**/__mocks__/*'
+            ]
         }
     },
     optimizeDeps: {

@@ -1,3 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IMark > should render correctly 1`] = `"<span>The quick brown <mark>fox</mark> jumps over the lazy dog</span>"`;
 
 exports[`Components IMark should render correctly 1`] = `<span>The quick brown <mark>fox</mark> jumps over the lazy dog</span>`;

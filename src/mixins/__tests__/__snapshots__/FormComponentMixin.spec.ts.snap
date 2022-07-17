@@ -1,3 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`mixins > FormComponentMixin > should render correctly 1`] = `"<input>"`;
 
 exports[`mixins FormComponentMixin should render correctly 1`] = `<input>`;

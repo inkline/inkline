@@ -1,4 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > ILoader > should render correctly 1`] = `
+"<div class=\\"loader -light -md\\" role=\\"img\\" aria-hidden=\\"true\\">
+  <!--v-if--><svg viewBox=\\"25 25 50 50\\">
+    <circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\" stroke-width=\\"4\\" stroke-miterlimit=\\"10\\"></circle>
+  </svg>
+</div>"
+`;
 
 exports[`Components ILoader should render correctly 1`] = `
 <div class="loader -light -md" role="img" aria-hidden="true">

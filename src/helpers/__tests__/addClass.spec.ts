@@ -60,7 +60,7 @@ describe('Helpers', () => {
             });
 
             it('should add a class', () => {
-                const spy = jest.spyOn(element.classList, 'add');
+                const spy = vi.spyOn(element.classList, 'add');
 
                 addClass(element, 'class');
 
@@ -69,7 +69,7 @@ describe('Helpers', () => {
             });
 
             it('should add multiple classes', () => {
-                const spy = jest.spyOn(element.classList, 'add');
+                const spy = vi.spyOn(element.classList, 'add');
 
                 addClass(element, 'class1 class2');
 

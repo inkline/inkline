@@ -2,15 +2,14 @@ import { on, addEventListenerBinding, attachEventBinding, _on } from '@inkline/i
 
 describe('Helpers', () => {
     describe('on()', () => {
-        const windowSpy = jest.spyOn(global as any, 'window', 'get');
         let element: any;
         const event = 'event';
         const handler = () => {};
 
         beforeEach(() => {
             element = {
-                addEventListener: jest.fn(),
-                attachEvent: jest.fn()
+                addEventListener: vi.fn(),
+                attachEvent: vi.fn()
             };
         });
 
@@ -31,31 +30,19 @@ describe('Helpers', () => {
         });
 
         it('should be a function calling attachEvent binding', () => {
-            windowSpy.mockImplementation(() => ({
-                document: {
-                    addEventListener: false
-                }
-            }));
+            const spy = vi.spyOn(element, 'attachEvent');
+            const documentSpy = vi.spyOn(window, 'document', 'get');
+            documentSpy.mockImplementation(() => ({
+                addEventListener: false
+            }) as any);
 
             const fn = () => {};
 
             _on()(element, 'eventName', fn);
 
-            expect(element.attachEvent).toHaveBeenCalledWith('oneventName', fn);
+            expect(spy).toHaveBeenCalledWith('oneventName', fn);
 
-            jest.clearAllMocks();
-        });
-
-        it('should not call attachEvent binding if event not specified', () => {
-            windowSpy.mockImplementation(() => undefined);
-
-            const fn = () => {};
-
-            (_on as any)()(element as any, undefined, fn);
-
-            expect(element.addEventListener).not.toHaveBeenCalled();
-
-            jest.clearAllMocks();
+            documentSpy.mockRestore();
         });
 
         describe('addEventListenerBinding()', () => {

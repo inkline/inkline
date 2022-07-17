@@ -1,3 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > INavItem > should render correctly 1`] = `"<div class=\\"nav-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-disabled=\\"false\\"></div>"`;
 
 exports[`Components INavItem should render correctly 1`] = `<div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false"></div>`;

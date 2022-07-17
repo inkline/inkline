@@ -179,7 +179,7 @@ describe('Components', () => {
 
             describe('onChange()', () => {
                 it('should call parent onInput', () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ICheckbox, {
                         global: {
                             provide: {
@@ -197,7 +197,7 @@ describe('Components', () => {
                 });
 
                 it('should call parent onChange if formGroup', () => {
-                    const onChange = jest.fn();
+                    const onChange = vi.fn();
                     const wrapper = render(ICheckbox, {
                         global: {
                             provide: {
@@ -217,7 +217,7 @@ describe('Components', () => {
 
             describe('onBlur()', () => {
                 it('should call parent onBlur if defined', () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(ICheckbox, {
                         global: {
                             provide: {
@@ -235,7 +235,7 @@ describe('Components', () => {
                 });
 
                 it('should not call parent onBlur if not defined', () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(ICheckbox, {
                         global: {
                             provide: {

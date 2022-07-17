@@ -109,7 +109,7 @@ describe('Components', () => {
 
                 it('should emit update:modelValue and parent.onBlur', () => {
                     const parent = {
-                        onBlur: jest.fn()
+                        onBlur: vi.fn()
                     };
                     const wrapper = createMockInstance(INumberInput, {
                         props: {
@@ -206,7 +206,7 @@ describe('Components', () => {
                 });
 
                 it('should call parent.onInput if defined', async () => {
-                    const parent = { onInput: jest.fn() };
+                    const parent = { onInput: vi.fn() };
                     const wrapper = createMockInstance(INumberInput, {
                         props,
                         mocks: {

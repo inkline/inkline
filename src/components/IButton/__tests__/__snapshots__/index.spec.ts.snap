@@ -1,4 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IButton > should render correctly 1`] = `
+"<button class=\\"button -light -md\\" tag=\\"button\\" role=\\"button\\" tabindex=\\"0\\" aria-disabled=\\"false\\" aria-pressed=\\"false\\" aria-busy=\\"false\\" aria-live=\\"polite\\">
+  <!--v-if-->
+</button>"
+`;
 
 exports[`Components IButton should render correctly 1`] = `
 <button class="button -light -md" tag="button" role="button" tabindex="0" aria-disabled="false" aria-pressed="false" aria-busy="false" aria-live="polite">
