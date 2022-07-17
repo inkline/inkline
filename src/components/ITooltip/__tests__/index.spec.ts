@@ -144,8 +144,8 @@ describe('Components', () => {
                 it('should hide tooltip popup', async () => {
                     const wrapper = {
                         visible: true,
-                        $emit: jest.fn(),
-                        onClickOutside: jest.fn(),
+                        $emit: vi.fn(),
+                        onClickOutside: vi.fn(),
                         handleClickOutside: ITooltip.methods!.handleClickOutside
                     };
 

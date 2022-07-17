@@ -1,7 +1,6 @@
-const path = require('path');
-const webpackConfig = require('../webpack.config');
+const { mergeConfig } = require('vite');
 const postcssConfig = require('../postcss.config');
-const tsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const { resolve } = require("path");
 
 module.exports = {
     stories: [
@@ -20,35 +19,30 @@ module.exports = {
         },
         '@storybook/addon-links',
         '@storybook/addon-essentials',
+        '@storybook/addon-interactions',
         '@storybook/addon-a11y',
         'storybook-dark-mode'
     ],
     staticDirs: ['../public'],
     framework: '@storybook/vue3',
     core: {
-        builder: 'webpack5'
+        builder: '@storybook/builder-vite'
     },
     features: {
-        storyStoreV7: true,
+        storyStoreV7: true
     },
-    webpackFinal: async (config, { configType }) => {
-        config.resolve.alias = webpackConfig.resolve.alias;
-        config.module.rules.push({
-            test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-            include: path.resolve(__dirname, '../'),
+    async viteFinal(config, { configType }) {
+        // return the customized config
+        return mergeConfig(config, {
+            // customize the Vite config here
+            resolve: {
+                alias: [
+                    {
+                        find: /^@inkline\/inkline\//,
+                        replacement: `${resolve(__dirname, '..')}/src/`
+                    }
+                ]
+            },
         });
-
-        config.resolve.plugins = [
-            ...(config.resolve.plugins || []),
-            new tsconfigPathsPlugin({
-                extensions: config.resolve.extensions,
-            }),
-        ];
-
-        return config;
     },
-    managerWebpack: async (config) => {
-        return config;
-    },
-}
+};

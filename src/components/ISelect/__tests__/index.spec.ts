@@ -82,7 +82,7 @@ describe('Components', () => {
                     const wrapper = createMockInstance(ISelect, { props });
 
                     wrapper.visible = true;
-                    wrapper.createPopper = jest.fn();
+                    wrapper.createPopper = vi.fn();
                     wrapper.watchOptions = (ISelect as any).watch.options;
                     wrapper.watchOptions();
 
@@ -93,7 +93,7 @@ describe('Components', () => {
                     const wrapper = createMockInstance(ISelect, { props });
 
                     wrapper.visible = false;
-                    wrapper.createPopper = jest.fn();
+                    wrapper.createPopper = vi.fn();
                     wrapper.watchOptions = (ISelect as any).watch.options;
                     wrapper.watchOptions();
 
@@ -299,7 +299,7 @@ describe('Components', () => {
 
             describe('onBlur()', () => {
                 it('should hide menu, set input value and call parent.onblur', async () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(ISelect, {
                         global: {
                             provide: {
@@ -354,7 +354,7 @@ describe('Components', () => {
                 it('should hide the menu', async () => {
                     const wrapper = createMockInstance(ISelect, { props });
 
-                    wrapper.hide = jest.fn();
+                    wrapper.hide = vi.fn();
                     wrapper.onClickOutside();
 
                     expect(wrapper.hide).toHaveBeenCalled();
@@ -572,7 +572,7 @@ describe('Components', () => {
                     const wrapper = createMockInstance(ISelect, {
                         props,
                         methods: {
-                            hide: jest.fn()
+                            hide: vi.fn()
                         },
                         mocks: {
                             $refs: {
@@ -804,7 +804,7 @@ describe('Components', () => {
                             visible: true
                         },
                         mocks: {
-                            createPopper: jest.fn(() => {})
+                            createPopper: vi.fn(() => {})
                         }
                     });
 

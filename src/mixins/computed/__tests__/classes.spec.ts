@@ -22,7 +22,7 @@ describe('mixins', () => {
             });
 
             it('should return -light if system colorMode and not colorClass', () => {
-                const matchMediaSpy = jest.spyOn(global.window as any, 'matchMedia');
+                const matchMediaSpy = vi.spyOn(global.window as any, 'matchMedia');
                 matchMediaSpy.mockImplementation(() => ({
                     matches: false
                 }));
@@ -39,7 +39,7 @@ describe('mixins', () => {
             });
 
             it('should return -dark if system colorMode and not colorClass', () => {
-                const matchMediaSpy = jest.spyOn(global.window as any, 'matchMedia');
+                const matchMediaSpy = vi.spyOn(global.window as any, 'matchMedia');
                 matchMediaSpy.mockImplementation(() => ({
                     matches: true
                 }));

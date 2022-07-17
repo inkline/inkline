@@ -68,7 +68,7 @@ describe('Components', () => {
         describe('methods', () => {
             describe('onClick()', () => {
                 it('should have call tabs setActive', async () => {
-                    const setActive = jest.fn();
+                    const setActive = vi.fn();
                     const wrapper = render(ITabTitle, {
                         global: {
                             provide: {

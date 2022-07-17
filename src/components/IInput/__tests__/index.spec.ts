@@ -195,7 +195,7 @@ describe('Components', () => {
         describe('methods', () => {
             describe('onBlur()', () => {
                 it('should call parent onBlur if parent.onBlur', async () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(IInput, {
                         global: {
                             provide: {
@@ -214,7 +214,7 @@ describe('Components', () => {
                 });
 
                 it('should not call parent onBlur otherwise', async () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(IInput, {
                         global: {
                             provide: {
@@ -234,7 +234,7 @@ describe('Components', () => {
             describe('onInput()', () => {
                 it('should call parent onInput if parent.onInput', async () => {
                     const value = 'value';
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IInput, {
                         global: {
                             provide: {
@@ -254,7 +254,7 @@ describe('Components', () => {
                 });
 
                 it('should not call parent onInput otherwise', async () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IInput, {
                         global: {
                             provide: {
@@ -291,7 +291,7 @@ describe('Components', () => {
 
             describe('focus()', () => {
                 it('should focus input ref', async () => {
-                    const focus = jest.fn();
+                    const focus = vi.fn();
                     const wrapper = {
                         $refs: {
                             input: {

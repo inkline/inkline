@@ -72,7 +72,7 @@ describe('Helpers', () => {
             });
 
             it('should add a class', () => {
-                const spy = jest.spyOn(element.classList, 'remove');
+                const spy = vi.spyOn(element.classList, 'remove');
 
                 removeClass(element, 'class');
 
@@ -81,7 +81,7 @@ describe('Helpers', () => {
             });
 
             it('should remove multiple classes', () => {
-                const spy = jest.spyOn(element.classList, 'remove');
+                const spy = vi.spyOn(element.classList, 'remove');
 
                 removeClass(element, 'class1 class2');
 

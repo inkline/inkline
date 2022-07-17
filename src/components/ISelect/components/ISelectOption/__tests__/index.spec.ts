@@ -74,7 +74,7 @@ describe('Components', () => {
         describe('methods', () => {
             describe('onClick()', () => {
                 it('should call select onInput', async () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ISelectOption, {
                         global: {
                             provide: {
@@ -91,7 +91,7 @@ describe('Components', () => {
                 });
 
                 it('should not call select onInput if disabled', async () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ISelectOption, {
                         global: {
                             provide: {

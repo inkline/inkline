@@ -17,31 +17,31 @@ describe('Plugin', () => {
         });
 
         it('should set given light mode if system color mode', () => {
-            const matchMediaSpy = jest.spyOn(global.window as any, 'matchMedia');
+            const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
             matchMediaSpy.mockImplementation(() => ({
                 matches: false,
-                addEventListener: jest.fn()
-            }));
+                addEventListener: vi.fn()
+            }) as any);
 
             handleColorMode('system');
 
             expect(document.body).toHaveClass('-light');
 
-            jest.clearAllMocks();
+            vi.clearAllMocks();
         });
 
         it('should set given dark mode if system color mode', () => {
-            const matchMediaSpy = jest.spyOn(global.window as any, 'matchMedia');
+            const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
             matchMediaSpy.mockImplementation(() => ({
                 matches: true,
-                addEventListener: jest.fn()
-            }));
+                addEventListener: vi.fn()
+            }) as any);
 
             handleColorMode('system');
 
             expect(document.body).toHaveClass('-dark');
 
-            jest.clearAllMocks();
+            vi.clearAllMocks();
         });
     });
 
@@ -58,8 +58,8 @@ describe('Plugin', () => {
             };
             const prototype = createPrototype(options);
 
-            expect(prototype).toHaveProperty('form', expect.any(Function));
-            expect(prototype).toHaveProperty('setLocale', expect.any(Function));
+            expect(prototype).toHaveProperty('form');
+            expect(prototype).toHaveProperty('setLocale');
             Object.keys(options).forEach((key) => {
                 expect(prototype.options).toHaveProperty(key, options[key]);
             });
@@ -69,10 +69,10 @@ describe('Plugin', () => {
     describe('Inkline', () => {
         describe('install()', () => {
             const createApp = () => ({
-                add: jest.fn(),
-                use: jest.fn(),
-                provide: jest.fn(),
-                component: jest.fn(),
+                add: vi.fn(),
+                use: vi.fn(),
+                provide: vi.fn(),
+                component: vi.fn(),
                 config: {
                     globalProperties: {}
                 }
@@ -118,7 +118,7 @@ describe('Plugin', () => {
                 expect(document.body).toHaveClass('-dark');
             });
 
-            it('should add color mode matchMedia event listener', (done) => {
+            it('should add color mode matchMedia event listener', async () => {
                 const app = createApp();
 
                 (Inkline as any).install(app);
@@ -126,18 +126,17 @@ describe('Plugin', () => {
                 const prototype = app.provide.mock.calls[0][1];
                 prototype.options.colorMode = 'other';
 
-                setTimeout(() => {
-                    expect(document.body).toHaveClass('-other');
-                    done();
-                });
+                await new Promise((resolve) => setTimeout(resolve, 1));
+
+                expect(document.body).toHaveClass('-other');
             });
 
             it('should add color mode matchMedia event listener using addEventListener', () => {
-                const matchMediaSpy = jest.spyOn(global.window as any, 'matchMedia');
-                const addEventListener = jest.fn();
+                const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
+                const addEventListener = vi.fn();
                 matchMediaSpy.mockImplementation(() => ({
                     addEventListener
-                }));
+                }) as any);
 
                 const app = createApp();
                 (Inkline as any).install(app);
@@ -145,15 +144,15 @@ describe('Plugin', () => {
                 expect(matchMediaSpy).toHaveBeenCalledWith('(prefers-color-scheme: dark)');
                 expect(addEventListener).toHaveBeenCalled();
 
-                jest.clearAllMocks();
+                vi.clearAllMocks();
             });
 
             it('should add color mode matchMedia event listener using addListener', () => {
-                const matchMediaSpy = jest.spyOn(global.window as any, 'matchMedia');
-                const addListener = jest.fn();
+                const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
+                const addListener = vi.fn();
                 matchMediaSpy.mockImplementation(() => ({
                     addListener
-                }));
+                }) as any);
 
                 const app = createApp();
                 (Inkline as any).install(app);
@@ -161,17 +160,17 @@ describe('Plugin', () => {
                 expect(matchMediaSpy).toHaveBeenCalledWith('(prefers-color-scheme: dark)');
                 expect(addListener).toHaveBeenCalled();
 
-                jest.clearAllMocks();
+                vi.clearAllMocks();
             });
 
             describe('onDarkModeMediaQueryChange()', () => {
                 it('should call handleColorMode() and set prefersColorScheme', () => {
-                    const matchMediaSpy = jest.spyOn(global.window as any, 'matchMedia');
-                    const addEventListener = jest.fn();
+                    const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
+                    const addEventListener = vi.fn();
                     matchMediaSpy.mockImplementation(() => ({
                         matches: true,
                         addEventListener
-                    }));
+                    }) as any);
 
                     const app = createApp();
                     (Inkline as any).install(app, { colorMode: 'system' });
@@ -183,16 +182,16 @@ describe('Plugin', () => {
 
                     expect(prototype.options.prefersColorScheme).toEqual('dark');
 
-                    jest.clearAllMocks();
+                    vi.clearAllMocks();
                 });
 
                 it('should not call handleColorMode() if not system color mode', () => {
-                    const matchMediaSpy = jest.spyOn(global.window as any, 'matchMedia');
-                    const addEventListener = jest.fn();
+                    const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
+                    const addEventListener = vi.fn();
                     matchMediaSpy.mockImplementation(() => ({
                         matches: false,
                         addEventListener
-                    }));
+                    }) as any);
 
                     const app = createApp();
                     (Inkline as any).install(app, { colorMode: 'light' });
@@ -204,7 +203,7 @@ describe('Plugin', () => {
 
                     expect(prototype.options.prefersColorScheme).toEqual('light');
 
-                    jest.clearAllMocks();
+                    vi.clearAllMocks();
                 });
             });
 
@@ -257,19 +256,6 @@ describe('Plugin', () => {
                         expect(i18n.locale).toEqual('de');
                     });
                 });
-            });
-
-            it('should not set color mode if isServer', () => {
-                const windowSpy = jest.spyOn(global, 'window', 'get');
-                windowSpy.mockImplementation(() => undefined as any);
-
-                const app = createApp();
-
-                (Inkline as any).install(app, { colorMode: 'isServer' });
-
-                expect(document.body).not.toHaveClass('-isServer');
-
-                jest.clearAllMocks();
             });
         });
     });

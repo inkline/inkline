@@ -20,7 +20,7 @@ describe('Helpers', () => {
         });
 
         it('should focus() element if focusable focusable', () => {
-            const spy = jest.spyOn(element, 'focus');
+            const spy = vi.spyOn(element, 'focus');
 
             expect(focusAttempt(element)).toEqual(false);
             expect(spy).toHaveBeenCalled();

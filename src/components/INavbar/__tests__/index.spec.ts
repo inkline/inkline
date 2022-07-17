@@ -96,7 +96,7 @@ describe('Components', () => {
 
             describe('onClickOutside()', () => {
                 it('should close the navbar if open', () => {
-                    const setOpen = jest.fn();
+                    const setOpen = vi.fn();
                     const wrapper = {
                         collapseOnClickOutside: true,
                         open: true,

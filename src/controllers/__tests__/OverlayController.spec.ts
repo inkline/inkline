@@ -42,7 +42,7 @@ describe('Controllers', () => {
 
         describe('constructor()', () => {
             it('should add keydown event listener', async () => {
-                const spy = jest.spyOn(OverlayController, 'onPressEscape');
+                const spy = vi.spyOn(OverlayController, 'onPressEscape');
 
                 await fireEvent.keyDown(window, { key: keymap.esc[0] });
 
@@ -56,7 +56,7 @@ describe('Controllers', () => {
                     hide: () => OverlayController.close('abc'),
                     $el: modalElement
                 };
-                const spy = jest.spyOn(instance, 'hide');
+                const spy = vi.spyOn(instance, 'hide');
 
                 OverlayController.register(instance);
                 OverlayController.open('abc');
@@ -77,7 +77,7 @@ describe('Controllers', () => {
                     closeOnPressEscape: true,
                     $el: modalElement
                 };
-                const spy = jest.spyOn(instance, 'hide');
+                const spy = vi.spyOn(instance, 'hide');
 
                 OverlayController.register(instance);
                 OverlayController.open('abc');
@@ -94,7 +94,7 @@ describe('Controllers', () => {
                     closeOnPressEscape: false,
                     $el: modalElement
                 };
-                const spy = jest.spyOn(instance, 'close');
+                const spy = vi.spyOn(instance, 'close');
 
                 OverlayController.register(instance);
                 OverlayController.open('abc');

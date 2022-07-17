@@ -157,7 +157,7 @@ describe('Components', () => {
 
             describe('onChange()', () => {
                 it('should call parent onInput', () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IToggle, {
                         global: {
                             provide: {
@@ -178,7 +178,7 @@ describe('Components', () => {
 
             describe('onBlur()', () => {
                 it('should call parent onBlur if defined', () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(IToggle, {
                         global: {
                             provide: {
@@ -196,7 +196,7 @@ describe('Components', () => {
                 });
 
                 it('should not call parent onBlur if not defined', () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(IToggle, {
                         global: {
                             provide: {

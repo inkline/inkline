@@ -1,4 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IMedia > should render correctly 1`] = `
+"<div class=\\"media\\" color=\\"light\\" size=\\"md\\">
+  <div class=\\"media-body\\"></div>
+</div>"
+`;
 
 exports[`Components IMedia should render correctly 1`] = `
 <div class="media" color="light" size="md">

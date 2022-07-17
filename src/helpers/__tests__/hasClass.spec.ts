@@ -48,7 +48,7 @@ describe('Helpers', () => {
             });
 
             it('should call classList contains()', () => {
-                const spy = jest.spyOn(element.classList, 'contains');
+                const spy = vi.spyOn(element.classList, 'contains');
 
                 hasClass(element, 'other');
 

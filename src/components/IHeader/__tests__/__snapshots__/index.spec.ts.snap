@@ -1,4 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IHeader > should render correctly 1`] = `
+"<header class=\\"header -light -md\\">
+  <div class=\\"container\\">
+    <div class=\\"row\\">
+      <div class=\\"column\\"></div>
+    </div>
+  </div>
+</header>"
+`;
 
 exports[`Components IHeader should render correctly 1`] = `
 <header class="header -light -md">

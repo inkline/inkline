@@ -1,4 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IInput > should render correctly 1`] = `
+"<div class=\\"input-wrapper -light -md\\">
+  <!--v-if-->
+  <div class=\\"input\\">
+    <!--v-if--><input name=\\"input\\" type=\\"text\\" tabindex=\\"0\\" aria-disabled=\\"false\\" aria-readonly=\\"false\\">
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+</div>"
+`;
 
 exports[`Components IInput should render correctly 1`] = `
 <div class="input-wrapper -light -md">

@@ -1,4 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > ITable > should render correctly 1`] = `
+"<div class=\\"table-wrapper -light -responsive\\">
+  <table class=\\"table\\"></table>
+</div>"
+`;
 
 exports[`Components ITable should render correctly 1`] = `
 <div class="table-wrapper -light -responsive">

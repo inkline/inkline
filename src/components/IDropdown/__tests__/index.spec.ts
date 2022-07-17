@@ -314,7 +314,7 @@ describe('Components', () => {
             describe('onItemClick()', () => {
                 ['navbar', 'sidebar'].forEach((parent) => {
                     it(`should call parent ${parent} onItemClick`, async () => {
-                        const onItemClick = jest.fn();
+                        const onItemClick = vi.fn();
                         const wrapper = render(IDropdown, {
                             global: {
                                 stubs,

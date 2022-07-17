@@ -1,4 +1,17 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IForm > should render correctly 1`] = `
+"<form class=\\"form -light -md\\" role=\\"form\\" name=\\"form\\" data-v-7688bb10=\\"\\">
+  <div class=\\"input-wrapper -light -md\\">
+    <!--v-if-->
+    <div class=\\"input\\">
+      <!--v-if--><input name=\\"input\\" type=\\"text\\" tabindex=\\"0\\" aria-disabled=\\"false\\" aria-readonly=\\"false\\">
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+</form>"
+`;
 
 exports[`Components IForm should render correctly 1`] = `
 <form class="form -light -md" role="form" name="form">

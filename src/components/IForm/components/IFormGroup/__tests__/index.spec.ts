@@ -67,7 +67,7 @@ describe('Components', () => {
         describe('methods', () => {
             describe('onBlur', () => {
                 it('should not call onBlur if not parent', () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(IFormGroup, {
                         global: {
                             stubs
@@ -83,7 +83,7 @@ describe('Components', () => {
                 });
 
                 it('should not call onBlur if parent without onBlur', () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(IFormGroup, {
                         global: {
                             stubs,
@@ -102,7 +102,7 @@ describe('Components', () => {
                 });
 
                 it('should call onBlur if parent with onBlur', () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(IFormGroup, {
                         global: {
                             stubs,
@@ -125,7 +125,7 @@ describe('Components', () => {
 
             describe('onInput', () => {
                 it('should not call onInput if not parent', () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IFormGroup, {
                         global: {
                             stubs
@@ -141,7 +141,7 @@ describe('Components', () => {
                 });
 
                 it('should not call onInput if parent without onInput', () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IFormGroup, {
                         global: {
                             stubs,
@@ -160,7 +160,7 @@ describe('Components', () => {
                 });
 
                 it('should call onInput if parent with onInput', () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IFormGroup, {
                         global: {
                             stubs,

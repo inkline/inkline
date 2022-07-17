@@ -1,3 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IFormLabel > should render correctly 1`] = `"<label class=\\"form-label -md\\" for=\\"\\"></label>"`;
 
 exports[`Components IFormLabel should render correctly 1`] = `<label class="form-label -md" for=""></label>`;

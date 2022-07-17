@@ -8,7 +8,7 @@ describe('Helpers', () => {
 
         it('should call clearTimeout if returned function is called', () => {
             const debouncedFn = debounce(() => {}, 0);
-            const spy = jest.spyOn(global, 'clearTimeout');
+            const spy = vi.spyOn(global, 'clearTimeout');
 
             debouncedFn();
 
@@ -17,7 +17,7 @@ describe('Helpers', () => {
 
         it('should call setTimeout if returned function is called', () => {
             const debouncedFn = debounce(() => {}, 0);
-            const spy = jest.spyOn(global, 'setTimeout');
+            const spy = vi.spyOn(global, 'setTimeout');
 
             debouncedFn();
 
@@ -25,12 +25,12 @@ describe('Helpers', () => {
         });
 
         it('should call wrapped function after delay', () => {
-            const fn = jest.fn(() => {});
+            const fn = vi.fn(() => {});
             const debouncedFn = debounce(fn, 10);
-            const spy = jest.spyOn(global, 'setTimeout');
+            const spy = vi.spyOn(global, 'setTimeout');
 
             debouncedFn();
-            spy.mock.calls[1][0]();
+            spy.mock.calls[0][0]();
 
             expect(fn).toHaveBeenCalled();
         });

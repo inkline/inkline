@@ -111,7 +111,7 @@ describe('mixins', () => {
                         }
                     });
 
-                    wrapper.setOpen = jest.fn();
+                    wrapper.setOpen = vi.fn();
                     wrapper.onWindowResize();
 
                     expect(wrapper.setOpen).not.toHaveBeenCalled();
@@ -124,7 +124,7 @@ describe('mixins', () => {
                         }
                     });
 
-                    wrapper.setOpen = jest.fn();
+                    wrapper.setOpen = vi.fn();
                     wrapper.onWindowResize();
 
                     expect(wrapper.setOpen).not.toHaveBeenCalled();
@@ -138,7 +138,7 @@ describe('mixins', () => {
                     });
 
                     (global as any).innerWidth = 1024;
-                    wrapper.setOpen = jest.fn();
+                    wrapper.setOpen = vi.fn();
                     wrapper.windowWidth = 800;
                     wrapper.onWindowResize();
 
@@ -153,7 +153,7 @@ describe('mixins', () => {
                     });
 
                     (global as any).innerWidth = 1024;
-                    wrapper.setOpen = jest.fn();
+                    wrapper.setOpen = vi.fn();
                     wrapper.windowWidth = 800;
                     wrapper.onWindowResize();
 

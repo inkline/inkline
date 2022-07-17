@@ -158,7 +158,7 @@ describe('Components', () => {
         describe('methods', () => {
             describe('onBlur()', () => {
                 it('should call parent onBlur if parent', async () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
@@ -180,7 +180,7 @@ describe('Components', () => {
                 });
 
                 it('should call parent onBlur with uid name if parent and name not set', async () => {
-                    const onBlur = jest.fn();
+                    const onBlur = vi.fn();
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
@@ -274,7 +274,7 @@ describe('Components', () => {
 
             describe('onInput()', () => {
                 it('should call parent onInput if parent', async () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
@@ -296,7 +296,7 @@ describe('Components', () => {
                 });
 
                 it('should call parent onInput with uid name if parent and name not set', async () => {
-                    const onInput = jest.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IForm, {
                         global: {
                             stubs,

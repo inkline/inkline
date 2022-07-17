@@ -9,7 +9,7 @@ describe('Helpers', () => {
         });
 
         it('should be a function calling addEventListener on element', () => {
-            const spy = jest.spyOn(element, 'addEventListener');
+            const spy = vi.spyOn(element, 'addEventListener');
             const fn = () => {};
 
             once(element, 'eventName', fn);
@@ -19,7 +19,7 @@ describe('Helpers', () => {
         });
 
         it('should cancel eventListener on element after first trigger', () => {
-            const spy = jest.spyOn(element, 'removeEventListener');
+            const spy = vi.spyOn(element, 'removeEventListener');
             const fn = () => {};
 
             once(element, 'eventName', fn);
@@ -30,7 +30,7 @@ describe('Helpers', () => {
         });
 
         it('should be callable with undefined fn', () => {
-            const spy = jest.spyOn(element, 'removeEventListener');
+            const spy = vi.spyOn(element, 'removeEventListener');
             const fn = undefined;
 
             once(element, 'eventName', fn);

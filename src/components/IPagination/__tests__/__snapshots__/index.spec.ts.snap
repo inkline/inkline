@@ -1,4 +1,20 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IPagination > should render correctly 1`] = `
+"<nav class=\\"pagination -light -md\\" role=\\"navigation\\" aria-label=\\"Pagination\\">
+  <ul class=\\"pagination-items\\">
+    <li class=\\"pagination-item -previous -disabled\\"><span aria-hidden=\\"true\\">&lt;</span></li>
+    <li class=\\"pagination-item -first -active\\"> 1 </li>
+    <!--v-if-->
+    <li class=\\"pagination-item\\" aria-current=\\"false\\">2</li>
+    <li class=\\"pagination-item\\" aria-current=\\"false\\">3</li>
+    <li class=\\"pagination-item\\" aria-current=\\"false\\">4</li>
+    <!--v-if-->
+    <li class=\\"pagination-item -last\\">5</li>
+    <li class=\\"pagination-item -next\\"><span aria-hidden=\\"true\\">&gt;</span></li>
+  </ul>
+</nav>"
+`;
 
 exports[`Components IPagination should render correctly 1`] = `
 <nav class="pagination -light -md" role="navigation" aria-label="Pagination">

@@ -1,3 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > IBreadcrumbItem > should render correctly 1`] = `"<li class=\\"breadcrumb-item\\" data-v-4a65497c=\\"\\"><a is=\\"a\\" tabindex=\\"0\\" data-v-4a65497c=\\"\\"></a></li>"`;
 
 exports[`Components IBreadcrumbItem should render correctly 1`] = `<li class="breadcrumb-item"><a is="a" tabindex="0"></a></li>`;

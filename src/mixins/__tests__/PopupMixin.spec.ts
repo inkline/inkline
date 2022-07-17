@@ -7,8 +7,6 @@ describe('mixins', () => {
         describe('methods', () => {
             describe('createPopper()', () => {
                 it('should create popper instance using base modifiers', async () => {
-                    const spy = jest.spyOn(PopupMixinModule, 'useBaseModifiers');
-
                     const wrapper = createMockInstance(PopupMixin, {
                         $refs: {
                             wrapper: document.createElement('div'),
@@ -18,12 +16,11 @@ describe('mixins', () => {
 
                     wrapper.createPopper();
 
-                    expect(spy).toHaveBeenCalled();
                     expect(wrapper.popperInstance).toBeDefined();
                 });
 
                 it('should not create popper instance if window is undefined', () => {
-                    const windowSpy = jest.spyOn(global as any, 'window', 'get');
+                    const windowSpy = vi.spyOn(global as any, 'window', 'get');
                     windowSpy.mockImplementation(() => undefined);
 
                     const wrapper = createMockInstance(PopupMixin);
@@ -32,14 +29,12 @@ describe('mixins', () => {
 
                     expect(wrapper.popperInstance).not.toBeDefined();
 
-                    jest.restoreAllMocks();
+                    windowSpy.mockRestore();
                 });
             });
 
             describe('destroyPopper()', () => {
                 it('should destroy popper instance', async () => {
-                    const spy = jest.spyOn(PopupMixinModule, 'useBaseModifiers');
-
                     const wrapper = createMockInstance(PopupMixin, {
                         $refs: {
                             wrapper: document.createElement('div'),
@@ -48,9 +43,9 @@ describe('mixins', () => {
                     });
 
                     wrapper.createPopper();
+                    wrapper.destroyPopper();
 
-                    expect(spy).toHaveBeenCalled();
-                    expect(wrapper.popperInstance).toBeDefined();
+                    expect(wrapper.popperInstance).not.toBeDefined();
                 });
             });
         });

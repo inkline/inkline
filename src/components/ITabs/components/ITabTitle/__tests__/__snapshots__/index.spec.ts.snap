@@ -1,3 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > ITabTitle > should render correctly 1`] = `"<div class=\\"tab-title\\" role=\\"tab\\" for=\\"tab\\" active=\\"false\\" aria-expanded=\\"false\\" aria-controls=\\"tab-content-tab\\" aria-describedby=\\"tab-content-tab\\" tabindex=\\"0\\"></div>"`;
 
 exports[`Components ITabTitle should render correctly 1`] = `<div class="tab-title" role="tab" for="tab" active="false" aria-expanded="false" aria-controls="tab-content-tab" aria-describedby="tab-content-tab" tabindex="0"></div>`;

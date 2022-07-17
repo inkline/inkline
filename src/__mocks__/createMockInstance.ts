@@ -18,8 +18,8 @@ interface MockInstanceOptions {
  */
 export const createMockInstance = (component: any, { inject = {}, data = {}, props = {}, computed = {}, methods = {}, mocks = {}, $el = document.createElement('div'), $refs = {} }: MockInstanceOptions = {}) => {
     const instance: any = {
-        $emit: jest.fn(),
-        $nextTick: jest.fn(() => Promise.resolve()),
+        $emit: vi.fn(),
+        $nextTick: vi.fn(() => Promise.resolve()),
         $el,
         $refs
     };
@@ -36,7 +36,7 @@ export const createMockInstance = (component: any, { inject = {}, data = {}, pro
 
     if (component.methods) {
         Object.entries(component.methods).forEach(([key, fn]) => {
-            instance[key] = jest.fn().mockImplementation(methods[key] || fn);
+            instance[key] = vi.fn().mockImplementation(methods[key] || fn);
         });
     }
 

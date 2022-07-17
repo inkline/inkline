@@ -1,4 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > ICard > should render correctly 1`] = `
+"<div class=\\"card -light -md\\">
+  <!--v-if-->
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
 
 exports[`Components ICard should render correctly 1`] = `
 <div class="card -light -md">

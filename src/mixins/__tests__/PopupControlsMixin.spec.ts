@@ -8,7 +8,7 @@ describe('mixins', () => {
             name: 'PopupControls',
             mixins: [PopupControlsMixin],
             methods: {
-                createPopper: jest.fn()
+                createPopper: vi.fn()
             },
             template: `<div>
               <div class="trigger" ref="trigger">
@@ -48,7 +48,7 @@ describe('mixins', () => {
             it('should remove event listeners', () => {
                 const wrapper = {
                     beforeUnmount: PopupControlsMixin.beforeUnmount,
-                    removeEventListeners: jest.fn()
+                    removeEventListeners: vi.fn()
                 };
 
                 (wrapper as any).beforeUnmount();

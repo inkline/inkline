@@ -1,3 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`Components > ILayoutFooter > should render correctly 1`] = `"<footer class=\\"layout-footer\\" data-v-0a309424=\\"\\"></footer>"`;
 
 exports[`Components ILayoutFooter should render correctly 1`] = `<footer class="layout-footer"></footer>`;
