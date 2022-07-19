@@ -21,7 +21,9 @@ export default defineComponent({
     },
     computed: {
         visible () {
-            return (this as any).navbar.open || !(this as any).navbar.collapsible;
+            const isServer = typeof window === 'undefined';
+
+            return (this as any).navbar.open || !(this as any).navbar.collapsible || isServer;
         }
     }
 });
