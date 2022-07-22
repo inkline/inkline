@@ -1,5 +1,3 @@
 // Vitest Snapshot v1
 
 exports[`Components > INavbarBrand > should render correctly 1`] = `"<div class=\\"navbar-brand\\" tag=\\"div\\" translate=\\"no\\"></div>"`;
-
-exports[`Components INavbarBrand should render correctly 1`] = `<div class="navbar-brand" tag="div" translate="yes"></div>`;

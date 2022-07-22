@@ -13,17 +13,3 @@ exports[`Components > IModal > should render correctly 1`] = `
   </div>
 </transition-stub>"
 `;
-
-exports[`Components IModal should render correctly 1`] = `
-<transition-stub>
-  <div class="modal-wrapper -light -md" role="dialog" aria-modal="true" aria-hidden="false" id="modal" name="modal" aria-labelledby="modal-header">
-    <transition-stub>
-      <div class="modal">
-        <div class="modal-header" id="modal-header">Header<button class="close" aria-hidden="true" aria-label="Close"><i class="icon"></i></button></div>
-        <div class="modal-body">Body</div>
-        <div class="modal-footer">Footer</div>
-      </div>
-    </transition-stub>
-  </div>
-</transition-stub>
-`;

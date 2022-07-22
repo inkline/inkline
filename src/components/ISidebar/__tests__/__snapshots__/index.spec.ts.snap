@@ -20,24 +20,3 @@ exports[`Components > ISidebar > should render correctly 1`] = `
   </aside>
 </transition-stub>"
 `;
-
-exports[`Components ISidebar should render correctly 1`] = `
-<transition-stub>
-  <aside role="complementary" class="sidebar-wrapper -collapse-md -light -md -collapse-absolute -placement-left" aria-label="Sidebar">
-    <transition-stub>
-      <div class="sidebar">
-        <div class="sidebar-content">
-          <nav class="nav -light -md" role="menubar">
-            <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 1</div>
-            <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 2</div>
-            <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 3</div>
-          </nav>
-        </div>
-      </div>
-    </transition-stub>
-    <transition-stub>
-      <div class="sidebar-overlay" style="display: none;"></div>
-    </transition-stub>
-  </aside>
-</transition-stub>
-`;

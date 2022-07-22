@@ -1,5 +1,3 @@
 // Vitest Snapshot v1
 
 exports[`Components > IToggle > should render correctly 1`] = `"<div class=\\"toggle -light -md\\"><input type=\\"checkbox\\" aria-checked=\\"false\\" name=\\"toggle\\"><label class=\\"toggle-label\\" aria-checked=\\"false\\" tabindex=\\"0\\"></label></div>"`;
-
-exports[`Components IToggle should render correctly 1`] = `<div class="toggle -light -md"><input type="checkbox" aria-checked="false" name="toggle"><label class="toggle-label" aria-checked="false" tabindex="0"></label></div>`;
