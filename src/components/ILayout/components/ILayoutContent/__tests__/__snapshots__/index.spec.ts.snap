@@ -1,5 +1,3 @@
 // Vitest Snapshot v1
 
 exports[`Components > ILayoutContent > should render correctly 1`] = `"<section class=\\"layout-content\\" data-v-725840e6=\\"\\"></section>"`;
-
-exports[`Components ILayoutContent should render correctly 1`] = `<section class="layout-content"></section>`;

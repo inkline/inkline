@@ -14,18 +14,3 @@ exports[`Components > INumberInput > should render correctly 1`] = `
     </button></div>
 </div>"
 `;
-
-exports[`Components INumberInput should render correctly 1`] = `
-<div class="input-wrapper -prepended -appended -light -md">
-  <div class="input-prepend"><button type="button" class="input-button-decrease button -light -md input-button-decrease" tag="button" role="button" tabindex="0" aria-disabled="false" aria-pressed="false" aria-busy="false" aria-live="polite">
-      <!--v-if--> -
-    </button></div>
-  <div class="input">
-    <!--v-if--><input name="number-input" id="" type="text" tabindex="0" aria-disabled="false" aria-readonly="false">
-    <!--v-if-->
-  </div>
-  <div class="input-append"><button type="button" class="input-button-increase button -light -md input-button-increase" tag="button" role="button" tabindex="0" aria-disabled="false" aria-pressed="false" aria-busy="false" aria-live="polite">
-      <!--v-if--> +
-    </button></div>
-</div>
-`;

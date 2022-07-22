@@ -21,25 +21,3 @@ exports[`Components > INavbar > should render correctly 1`] = `
   </div>
 </nav>"
 `;
-
-exports[`Components INavbar should render correctly 1`] = `
-<nav class="navbar -collapse-md -light -md">
-  <div class="container">
-    <div class="row">
-      <div class="column">
-        <div class="hamburger-menu -light -close collapse-toggle"><span class="hamburger-menu-bars"></span></div>
-        <div class="navbar-brand" tag="div" translate="yes"></div>
-        <transition-stub>
-          <div class="navbar-collapsible" aria-hidden="false" aria-expanded="true">
-            <nav class="nav -light -md" role="menubar">
-              <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 1</div>
-              <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 2</div>
-              <div class="nav-item" role="menuitem" tag="div" tabindex="0" disabled="false" aria-disabled="false">Item 3</div>
-            </nav>
-          </div>
-        </transition-stub>
-      </div>
-    </div>
-  </div>
-</nav>
-`;
