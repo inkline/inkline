@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { ClickOutsideDirective, onClickOutside } from '@inkline/inkline/directives/click-outside';
+import { ClickOutsideDirective } from '@inkline/inkline/directives/click-outside';
 
 vi.mock('@inkline/inkline/helpers', async () => {
     const { isVisible } = await vi.importActual('@inkline/inkline/helpers');

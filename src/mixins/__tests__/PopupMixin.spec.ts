@@ -1,6 +1,5 @@
 import { PopupMixin } from '@inkline/inkline/mixins';
 import { createMockInstance } from '@inkline/inkline/__mocks__/createMockInstance';
-import * as PopupMixinModule from '@inkline/inkline/mixins/PopupMixin';
 
 describe('mixins', () => {
     describe('PopupMixin', () => {

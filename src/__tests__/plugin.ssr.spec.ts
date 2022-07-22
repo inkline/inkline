@@ -3,14 +3,8 @@
  */
 
 import {
-    createPrototype,
-    handleColorMode,
-    Inkline,
-    PrototypeConfig
+    Inkline
 } from '@inkline/inkline/plugin';
-import * as inklineIcons from '@inkline/inkline/icons';
-import { IButton } from '@inkline/inkline/components';
-import { i18n } from '@inkline/inkline/i18n';
 
 describe('SSR', () => {
     describe('Plugin', () => {

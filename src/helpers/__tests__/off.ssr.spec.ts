@@ -2,13 +2,11 @@
  * @jest-environment node
  */
 
-import { off, removeEventListenerBinding, detachEventBinding, _off } from '@inkline/inkline/helpers';
+import { _off } from '@inkline/inkline/helpers';
 
 describe('Helpers', () => {
     describe('off()', () => {
         let element: any;
-        const event = 'event';
-        const handler = () => {};
 
         beforeEach(() => {
             element = {
