@@ -2,14 +2,12 @@
  * @jest-environment node
  */
 
-import { on, addEventListenerBinding, attachEventBinding, _on } from '@inkline/inkline/helpers';
+import { _on } from '@inkline/inkline/helpers';
 
 describe('SSR', () => {
     describe('Helpers', () => {
         describe('on()', () => {
             let element: any;
-            const event = 'event';
-            const handler = () => {};
 
             beforeEach(() => {
                 element = {
