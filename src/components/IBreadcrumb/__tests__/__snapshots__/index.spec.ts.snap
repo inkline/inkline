@@ -5,9 +5,3 @@ exports[`Components > IBreadcrumb > should render correctly 1`] = `
   <ol></ol>
 </nav>"
 `;
-
-exports[`Components IBreadcrumb should render correctly 1`] = `
-<nav class="breadcrumb -light -md" aria-label="Breadcrumbs">
-  <ol></ol>
-</nav>
-`;

@@ -19,23 +19,3 @@ exports[`Components > ICollapsibleItem > should render correctly 1`] = `
   </transition-stub>
 </div>"
 `;
-
-exports[`Components ICollapsibleItem computed active should add -active class when item is active 1`] = `
-<div class="collapsible-item -active" name="collapsible-item"><a class="collapsible-header" role="tab" id="collapsible-item-heading-collapsible-item" aria-expanded="true" aria-controls="collapsible-item-content-collapsible-item" aria-describedby="collapsible-item-content-collapsible-item" tabindex="0"><i class="icon"></i></a>
-  <transition-stub>
-    <div class="collapsible-body" role="tabpanel" id="collapsible-item-content-collapsible-item" aria-hidden="false" aria-labelledby="collapsible-item-heading-collapsible-item">
-      <div class="content"></div>
-    </div>
-  </transition-stub>
-</div>
-`;
-
-exports[`Components ICollapsibleItem should render correctly 1`] = `
-<div class="collapsible-item" name="collapsible-item"><a class="collapsible-header" role="tab" id="collapsible-item-heading-collapsible-item" aria-expanded="false" aria-controls="collapsible-item-content-collapsible-item" aria-describedby="collapsible-item-content-collapsible-item" tabindex="0"><i class="icon"></i></a>
-  <transition-stub>
-    <div class="collapsible-body" role="tabpanel" id="collapsible-item-content-collapsible-item" aria-hidden="true" aria-labelledby="collapsible-item-heading-collapsible-item" style="display: none;">
-      <div class="content"></div>
-    </div>
-  </transition-stub>
-</div>
-`;

@@ -18,22 +18,3 @@ exports[`Components > ITabs > should render correctly 1`] = `
   </div>
 </div>"
 `;
-
-exports[`Components ITabs should render correctly 1`] = `
-<div class="tabs -light -md" role="tablist" aria-multiselectable="true">
-  <div class="tabs-header">
-    <div class="tab-title" role="tab" for="tab-1" active="false" aria-expanded="false" aria-controls="tab-content-tab-1" aria-describedby="tab-content-tab-1" tabindex="0">Tab 1</div>
-    <div class="tab-title" role="tab" for="tab-2" active="false" aria-expanded="false" aria-controls="tab-content-tab-2" aria-describedby="tab-content-tab-2" tabindex="0">Tab 2</div>
-    <div class="tab-title" role="tab" for="tab-3" active="false" aria-expanded="false" aria-controls="tab-content-tab-3" aria-describedby="tab-content-tab-3" tabindex="0">Tab 3</div>
-  </div>
-  <div class="tab" role="tabpanel" name="tab-1" aria-hidden="true" aria-labelledby="tab-heading-tab-1" style="display: none;">
-    <div class="tab-body">Tab 1 content</div>
-  </div>
-  <div class="tab" role="tabpanel" name="tab-2" aria-hidden="true" aria-labelledby="tab-heading-tab-2" style="display: none;">
-    <div class="tab-body">Tab 2 content</div>
-  </div>
-  <div class="tab" role="tabpanel" name="tab-3" aria-hidden="true" aria-labelledby="tab-heading-tab-3" style="display: none;">
-    <div class="tab-body">Tab 3 content</div>
-  </div>
-</div>
-`;

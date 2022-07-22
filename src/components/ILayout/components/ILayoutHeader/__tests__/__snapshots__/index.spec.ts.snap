@@ -1,5 +1,3 @@
 // Vitest Snapshot v1
 
 exports[`Components > ILayoutHeader > should render correctly 1`] = `"<header class=\\"layout-header\\" data-v-0870ba96=\\"\\"></header>"`;
-
-exports[`Components ILayoutHeader should render correctly 1`] = `<header class="layout-header"></header>`;

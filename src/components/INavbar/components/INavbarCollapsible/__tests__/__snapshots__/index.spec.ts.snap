@@ -5,9 +5,3 @@ exports[`Components > INavbarCollapsible > should render correctly 1`] = `
   <div class=\\"navbar-collapsible\\" aria-hidden=\\"false\\" aria-expanded=\\"true\\"></div>
 </transition-stub>"
 `;
-
-exports[`Components INavbarCollapsible should render correctly 1`] = `
-<transition-stub>
-  <div class="navbar-collapsible" aria-hidden="false" aria-expanded="true"></div>
-</transition-stub>
-`;
