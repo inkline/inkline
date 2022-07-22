@@ -55,7 +55,7 @@
                     padding-right: 0;
                 }
 
-                &:not(.-disabled):not(.-plaintext) {
+                &:not(.-disabled, .-plaintext) {
                     &:hover,
                     &:focus {
                         ----option--color: var(----option--color--hover);
