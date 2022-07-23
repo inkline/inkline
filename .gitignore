@@ -2,7 +2,7 @@ node_modules
 dist
 lib
 lib-cjs
-lib-mjs
+lib-esm
 storybook-static
 package
 coverage

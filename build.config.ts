@@ -4,21 +4,17 @@ export default defineBuildConfig({
     entries: [
         {
             builder: 'mkdist',
-            format: 'cjs',
+            format: 'esm',
             input: './src',
             outDir: './lib'
         },
         {
             builder: 'mkdist',
-            format: 'esm',
+            format: 'cjs',
             input: './src',
-            outDir: './lib'
+            outDir: './lib-cjs'
         }
     ],
-    declaration: true,
-    hooks: {
-        'mkdist:entry:options': (ctx, entry, options) =>{
-            options.cleanDist = false;
-        }
-    }
+    clean: false,
+    declaration: true
 });
