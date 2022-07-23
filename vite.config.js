@@ -53,7 +53,8 @@ export default defineConfig({
         coverage: {
             exclude: [
                 '**/__mocks__/*'
-            ]
+            ],
+            reporter: ['text', 'json', 'html', 'lcov']
         }
     },
     optimizeDeps: {
