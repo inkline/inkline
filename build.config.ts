@@ -15,5 +15,10 @@ export default defineBuildConfig({
             outDir: './lib'
         }
     ],
-    declaration: true
+    declaration: true,
+    hooks: {
+        'mkdist:entry:options': (ctx, entry, options) =>{
+            options.cleanDist = false;
+        }
+    }
 });
