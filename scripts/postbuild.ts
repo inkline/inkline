@@ -47,7 +47,7 @@ shell.exec('find lib -name __tests__ -type d -exec rm -rf {} +');
  * Copy dist files
  */
 
-shell.cp('./dist/inkline.umd.js', './lib/inkline.cjs');
+shell.cp('./dist/inkline.umd.js', './lib/inkline.js');
 shell.cp('./dist/style.css', './lib/inkline.css');
 shell.cp('-R', './src/assets', './lib/assets');
 
