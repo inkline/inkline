@@ -95,6 +95,56 @@
       "import": "./inkline.mjs",
       "types": "./inkline.d.ts"
     },
+    "./components": {
+      "require": "./components/index.js",
+      "import": "./components/index.mjs",
+      "types": "./components/index.d.ts"
+    },
+    "./composition-api": {
+      "require": "./composition-api/index.js",
+      "import": "./composition-api/index.mjs",
+      "types": "./composition-api/index.d.ts"
+    },
+    "./constants": {
+      "require": "./constants/index.js",
+      "import": "./constants/index.mjs",
+      "types": "./constants/index.d.ts"
+    },
+    "./controllers": {
+      "require": "./controllers/index.js",
+      "import": "./controllers/index.mjs",
+      "types": "./controllers/index.d.ts"
+    },
+    "./directives": {
+      "require": "./directives/index.js",
+      "import": "./directives/index.mjs",
+      "types": "./directives/index.d.ts"
+    },
+    "./helpers": {
+      "require": "./helpers/index.js",
+      "import": "./helpers/index.mjs",
+      "types": "./helpers/index.d.ts"
+    },
+    "./i18n": {
+      "require": "./i18n/index.js",
+      "import": "./i18n/index.mjs",
+      "types": "./i18n/index.d.ts"
+    },
+    "./mixins": {
+      "require": "./mixins/index.js",
+      "import": "./mixins/index.mjs",
+      "types": "./mixins/index.d.ts"
+    },
+    "./transitions": {
+      "require": "./transitions/index.js",
+      "import": "./transitions/index.mjs",
+      "types": "./transitions/index.d.ts"
+    },
+    "./validation": {
+      "require": "./validation/index.js",
+      "import": "./validation/index.mjs",
+      "types": "./validation/index.d.ts"
+    },
     "./*": "./*"
   },
   "funding": {
