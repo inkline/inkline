@@ -140,6 +140,7 @@ Thanks goes to these wonderful people:
     <td align="center"><a href="https://github.com/agarbutt"><img class="avatar" src="https://avatars.githubusercontent.com/u/734757?v=4" width="50px;" alt="Andrew Garbutt"/></a></td>
     <td align="center"><a href="https://github.com/skyroses"><img class="avatar" src="https://avatars.githubusercontent.com/u/46625964?v=4" width="50px;" alt="Kamil"/></a></td>
     <td align="center"><a href="https://github.com/FerroEduardo"><img class="avatar" src="https://avatars.githubusercontent.com/u/47820549?v=4" width="50px;" alt="Eduardo Cabral"/></a></td>
+    <td align="center"><a href="https://github.com/joewelds"><img class="avatar" src="https://avatars.githubusercontent.com/u/28027932?v=4" width="50px;" alt="Joe"/></a></td>
   </tr>
 </table>
 
