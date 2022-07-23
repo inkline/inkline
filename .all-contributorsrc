@@ -161,6 +161,15 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "joewelds",
+      "name": "Joe",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28027932?v=4",
+      "profile": "https://github.com/joewelds",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 10,
