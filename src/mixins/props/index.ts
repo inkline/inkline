@@ -1,2 +1,2 @@
-export * from '@inkline/inkline/mixins/props/default';
-export * from '@inkline/inkline/mixins/props/size';
+export * from './default';
+export * from './size';

@@ -1,4 +1,4 @@
-import { validators } from '@inkline/inkline/validation/validators';
+import { validators } from './validators';
 import { reservedValidationFields } from '@inkline/inkline/constants';
 import { translate } from '@inkline/inkline/i18n';
 
