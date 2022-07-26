@@ -9,5 +9,7 @@ shell.cd(resolve(__dirname, '..'));
 
 // shell.rm('-r', 'lib/**/__tests__');
 
+shell.sed('-i', '// #!', '#!', 'lib/index.js');
+
 shell.cp('./README.md', 'lib');
 shell.cp('./LICENSE', 'lib');
