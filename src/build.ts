@@ -41,7 +41,7 @@ export async function build (options: BuildOptions = {}) {
     }
 
     await Promise.all(cssConfig.map(
-        async (file) => writeFile(resolve(cssOutputDir, `${file.name}.css`), file.value)
+        async (file) => writeFile(resolve(cssOutputDir, `${file.name}${outputExtname}`), file.value)
     ));
 
     return {
