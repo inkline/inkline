@@ -28,7 +28,7 @@ generate
     .option('-c, --config <path>', 'Path to inkline configuration file.')
     .option('-o, --outputDir <path>', 'Path to output directory.')
     .option('-e, --extname <ext>', 'File extension to use for output files.')
-    .action(async (type: string, options: Commands.Generate.CSS.Options) => {
+    .action(async (options: Commands.Generate.CSS.Options) => {
         await generateCSS(options);
     });
 
