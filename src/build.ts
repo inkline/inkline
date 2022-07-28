@@ -32,7 +32,7 @@ export async function build (options: BuildOptions = {}) {
 
     const outputExtname = options.extname || DEFAULT_OUTPUT_EXTNAME;
     const outputDir = options.outputDir || resolve(configDir, DEFAULT_OUTPUT_DIR);
-    const cssConfig = generate(config);
+    const cssConfig = generate(config, options);
 
     if (!existsSync(outputDir)) {
         mkdirSync(outputDir, { recursive: true });

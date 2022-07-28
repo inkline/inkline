@@ -2,6 +2,7 @@ import { CodegenFile, CodegenGroup, ResolvedConfiguration } from './types';
 import { applyGenerators } from './apply';
 import { GeneratorLocation } from './constants';
 import { codegenIndent } from './helpers';
+import {BuildOptions} from "./build";
 
 function sortCodegenGroups (groups: CodegenGroup[]) {
     return groups.sort((a, b) => {
@@ -41,7 +42,7 @@ export function generateSingleFile (config: ResolvedConfiguration): string {
     return generateCodeForLocations(locations);
 }
 
-export function generate (config: ResolvedConfiguration): CodegenFile[] {
+export function generate (config: ResolvedConfiguration, options: BuildOptions = {}): CodegenFile[] {
     const codegenGroups = applyGenerators(config as ResolvedConfiguration, config.theme);
     const sortedGroups = sortCodegenGroups(codegenGroups);
     const locatedGroups = sortedGroups.reduce((acc: { name: string; value: Record<GeneratorLocation, CodegenGroup[]> }[], codegenGroup) => {
@@ -68,6 +69,8 @@ export function generate (config: ResolvedConfiguration): CodegenFile[] {
         };
     }).concat({
         name: 'index',
-        value: locatedGroups.map((file) => `@import "${file.name}.css";`).join('\n')
+        value: locatedGroups.map((file) =>
+            `@import "${file.name}${options.extname === '.css' ? '.css' : ''}";`
+        ).join('\n')
     });
 }
