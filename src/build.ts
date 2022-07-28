@@ -32,22 +32,19 @@ export async function build (options: BuildOptions = {}) {
 
     const outputExtname = options.extname || DEFAULT_OUTPUT_EXTNAME;
     const outputDir = options.outputDir || resolve(configDir, DEFAULT_OUTPUT_DIR);
-    const cssOutputDir = resolve(outputDir, 'css');
-    const cssOutputFile = resolve(cssOutputDir, `index${outputExtname}`);
     const cssConfig = generate(config);
 
-    if (!existsSync(cssOutputDir)) {
-        mkdirSync(cssOutputDir, { recursive: true });
+    if (!existsSync(outputDir)) {
+        mkdirSync(outputDir, { recursive: true });
     }
 
     await Promise.all(cssConfig.map(
-        async (file) => writeFile(resolve(cssOutputDir, `${file.name}${outputExtname}`), file.value)
+        async (file) => writeFile(resolve(outputDir, `${file.name}${outputExtname}`), file.value)
     ));
 
     return {
         configDir,
         configFile,
-        cssOutputDir,
-        cssOutputFile
+        outputDir
     };
 }
