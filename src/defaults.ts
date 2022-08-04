@@ -1,7 +1,8 @@
-import {ColorVariant, Configuration, NumberVariant} from './types';
+import { ColorVariant, Configuration, NumberVariant } from './types';
 import {
     animationResolvers,
     borderResolvers,
+    borderRadiusResolvers,
     boxShadowResolvers,
     breakpointsResolvers,
     colorResolvers,
@@ -14,6 +15,7 @@ import {
 import {
     animationGenerators,
     borderGenerators,
+    borderRadiusGenerators,
     boxShadowGenerators,
     breakpointsGenerators,
     colorGenerators,
@@ -62,6 +64,7 @@ export const defaultConfig: Configuration = {
     resolvers: [
         ...animationResolvers(),
         ...borderResolvers(),
+        ...borderRadiusResolvers(),
         ...boxShadowResolvers(),
         ...breakpointsResolvers(),
         ...colorResolvers(),
@@ -74,6 +77,7 @@ export const defaultConfig: Configuration = {
     generators: [
         ...animationGenerators(),
         ...borderGenerators(),
+        ...borderRadiusGenerators(),
         ...boxShadowGenerators(),
         ...breakpointsGenerators(),
         ...colorGenerators(),
@@ -84,6 +88,10 @@ export const defaultConfig: Configuration = {
         ...typographyGenerators()
     ],
     theme: {
+        animation: {
+            duration: '300ms',
+            timingFunction: 'ease'
+        },
         breakpoints: {
             xs: 0,
             sm: 576,
@@ -113,6 +121,7 @@ export const defaultConfig: Configuration = {
         margin: '1rem',
         padding: '1rem',
         border: '1px solid #c4cdd0',
+        borderRadius: '4px',
         scaleRatio: {
             minorSecond: 1.067,
             majorSecond: 1.125,
@@ -164,6 +173,7 @@ export const defaultConfig: Configuration = {
         elements: {},
         components: {},
         variants: {
+            borderRadius: sizeMultiplierVariants,
             color: {
                 primary: colorShadeVariants,
                 secondary: colorShadeVariants,

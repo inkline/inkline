@@ -1,7 +1,7 @@
-import { Configuration, SpacingVariant, Theme, UserConfiguration } from '../types';
+import { Configuration, SidesVariant, Theme, UserConfiguration } from '../types';
 import { sidesPropertyKeys } from '../constants';
-import {codegenGetCSSVariable, codegenSetCSSVariable, codegenSpacingVariant} from '../helpers';
-import { spacingModifiers as modifiers, spacingModifierAliases as modifierAliases } from './modifiers';
+import {codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesVariant} from '../helpers';
+import { sidesModifiers as modifiers, sidesModifierAliases as modifierAliases } from './modifiers';
 
 /**
  * Generate the code for a specific variant if needed
@@ -10,7 +10,7 @@ import { spacingModifiers as modifiers, spacingModifierAliases as modifierAliase
  * @param variantName
  * @param variant
  */
-const codegenVariant = (config: Configuration, variantName: string, variant: SpacingVariant): string[] => {
+const codegenVariant = (config: Configuration, variantName: string, variant: SidesVariant): string[] => {
     const variantValue: Theme['margin'] = {
         top: codegenGetCSSVariable('margin-top'),
         right: codegenGetCSSVariable('margin-right'),
@@ -36,8 +36,8 @@ export const marginGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['marg
         skip: /^variants/,
         generate: ({ value }) => ['/**', ' * Margin variables', ' */']
             .concat(
-                sidesPropertyKeys.map((side) =>
-                    codegenSetCSSVariable(`margin-${side}`, value[side])
+                sidesPropertyKeys.map(
+                    (side) => codegenSetCSSVariable(`margin-${side}`, value[side])
                 )
             )
             .concat([
@@ -53,7 +53,7 @@ export const marginGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['marg
             const key = path[path.length - 1];
 
             return ['/**', ` * Margin ${key} variant variables`, ' */']
-                .concat(codegenSpacingVariant(config, 'margin', key, value as SpacingVariant));
+                .concat(codegenSidesVariant(config, 'margin', key, value as SidesVariant));
         }
     }
 ];

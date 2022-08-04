@@ -9,6 +9,14 @@ export interface SidesProperty<T> {
     [key: string]: T;
 }
 
+export interface CornersProperty<T> {
+    topLeft: T;
+    topRight: T;
+    bottomRight: T;
+    bottomLeft: T;
+    [key: string]: T;
+}
+
 export interface ThemeColor {
     h: number | string;
     s: number | string;

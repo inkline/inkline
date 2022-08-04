@@ -1,4 +1,5 @@
 export * from './parseColor';
+export * from './parseCornersValue';
 export * from './parseFn';
 export * from './parseGenericComposedValue';
 export * from './parseRecursive';

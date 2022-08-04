@@ -29,5 +29,7 @@ export async function loadConfigFromFile (
 
     config = resolve(config);
 
+    console.log(config.theme);
+
     return config as ResolvedConfiguration;
 }

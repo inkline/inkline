@@ -1,3 +1,3 @@
-export * from './color';
+export * from './corners';
 export * from './number';
 export * from './sides';

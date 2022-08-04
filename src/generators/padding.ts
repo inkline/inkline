@@ -1,7 +1,7 @@
-import { Configuration, SpacingVariant, Theme, UserConfiguration } from '../types';
+import { Configuration, SidesVariant, Theme, UserConfiguration } from '../types';
 import { sidesPropertyKeys } from '../constants';
-import {codegenGetCSSVariable, codegenSetCSSVariable, codegenSpacingVariant} from '../helpers';
-import { spacingModifierAliases as modifierAliases, spacingModifiers as modifiers } from './modifiers';
+import {codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesVariant} from '../helpers';
+import { sidesModifierAliases as modifierAliases, sidesModifiers as modifiers } from './modifiers';
 
 export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['padding']> = () => [
     {
@@ -10,8 +10,8 @@ export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['pad
         skip: /^variants/,
         generate: ({ value }) => ['/**', ' * Padding variables', ' */']
             .concat(
-                sidesPropertyKeys.map((side) =>
-                    codegenSetCSSVariable(`padding-${side}`, value[side])
+                sidesPropertyKeys.map(
+                    (side) => codegenSetCSSVariable(`padding-${side}`, value[side])
                 )
             )
             .concat([
@@ -27,7 +27,7 @@ export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['pad
             const key = path[path.length - 1];
 
             return ['/**', ` * Padding ${key} variant variables`, ' */']
-                .concat(codegenSpacingVariant(config, 'padding', key, value as SpacingVariant));
+                .concat(codegenSidesVariant(config, 'padding', key, value as SidesVariant));
         }
     }
 ];

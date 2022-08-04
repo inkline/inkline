@@ -119,6 +119,14 @@ export namespace UserConfiguration {
         left: T | PropertyFn<T>;
     };
 
+    export type CornersProperty<T> = {
+        default: T | T[] | PropertyFn<T | T[]>;
+        topLeft: T | PropertyFn<T>;
+        topRight: T | PropertyFn<T>;
+        bottomRight: T | PropertyFn<T>;
+        bottomLeft: T | PropertyFn<T>;
+    };
+
     export namespace ColorType {
         export type RGBA = {
             r: string | number;
@@ -146,6 +154,7 @@ export namespace UserConfiguration {
             style: CSS.Property.BorderStyle;
             color: Color;
         };
+        export type BorderRadius = CSS.Property.BorderRadius;
         export type BoxShadow = CSS.Property.BoxShadow | {
             inset?: boolean;
             offsetX: string | number;
@@ -176,6 +185,7 @@ export namespace UserConfiguration {
         margin: Property.Margin | Property.Margin[] | Partial<SidesProperty<Property.Margin>>;
         padding: Property.Padding | Property.Padding[] | Partial<SidesProperty<Property.Padding>>;
         border: Property.Border | Partial<SidesProperty<Property.Border>>;
+        borderRadius: Property.BorderRadius | Partial<CornersProperty<Property.BorderRadius>>;
         boxShadow: Property.BoxShadow;
         typography: {
             fontFamily: {

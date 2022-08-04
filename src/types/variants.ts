@@ -29,7 +29,7 @@ export interface NumberVariant {
     [key: string]: NumberVariant | number | string | undefined;
 }
 
-export interface SpacingVariant extends NumberVariant {
+export interface SidesVariant extends NumberVariant {
     top?: NumberVariant | string;
     right?: NumberVariant | string;
     bottom?: NumberVariant | string;
@@ -38,15 +38,27 @@ export interface SpacingVariant extends NumberVariant {
     [key: string]: NumberVariant | number | string | undefined;
 }
 
+export interface CornersVariant extends NumberVariant {
+    topLeft?: NumberVariant | string;
+    topRight?: NumberVariant | string;
+    bottomRight?: NumberVariant | string;
+    bottomLeft?: NumberVariant | string;
+
+    [key: string]: NumberVariant | number | string | undefined;
+}
+
 export interface Variants {
+    borderRadius?: {
+        [key: string]: CornersVariant | NumberVariant | string;
+    }
     color?: {
         [key: string]: Record<string, ColorVariant | string>;
     };
     margin?: {
-        [key: string]: SpacingVariant | string;
+        [key: string]: SidesVariant | NumberVariant | string;
     };
     padding?: {
-        [key: string]: SpacingVariant | string;
+        [key: string]: SidesVariant | NumberVariant | string;
     };
     typography?: {
         fontSize?: {

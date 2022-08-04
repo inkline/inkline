@@ -1,5 +1,6 @@
 export * from './animation';
 export * from './border';
+export * from './border-radius';
 export * from './box-shadow';
 export * from './breakpoints';
 export * from './color';
