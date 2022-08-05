@@ -2,7 +2,7 @@ import { cornersPropertyKeys } from '../../constants';
 import { numberModifierAliases, numberModifiers } from './number';
 
 /**
- * Create a new modifier that sets the value of a side
+ * Create a new modifier that sets the value of a corner
  *
  * @param key
  */

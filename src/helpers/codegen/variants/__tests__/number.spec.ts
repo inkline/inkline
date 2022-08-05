@@ -1,5 +1,5 @@
-import { codegenNumberVariant } from '../variant';
-import {Configuration, NumberVariant} from '../../../types';
+import { codegenNumberVariant } from '../number';
+import { Configuration, NumberVariant } from '../../../../types';
 
 describe('helpers', () => {
     describe('codegen', () => {

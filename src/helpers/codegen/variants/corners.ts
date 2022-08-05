@@ -2,7 +2,7 @@ import { Configuration, CornersVariant, Theme } from '../../../types';
 import { codegenGetCSSVariable, codegenSetCSSVariable } from '../variable';
 import { cornersModifierAliases, cornersModifiers } from '../../../generators/modifiers/corners';
 import { cornersPropertyKeys } from '../../../constants';
-import {toDashCase} from "@grozav/utils";
+import { toDashCase } from '@grozav/utils';
 
 /**
  * Generate the code for a specific border radius variant

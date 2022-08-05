@@ -1,5 +1,5 @@
 import { UserConfiguration } from '../types';
-import {parseCornersValue, parseGenericComposedValue, parseRecursive, parseSidesValue, parseValue} from '../helpers';
+import { parseCornersValue, parseRecursive, parseValue } from '../helpers';
 
 const setBorderRadiusFieldsFn = (target: Record<string, string>, [width, style, color]: string[]) => {
     target.width = width;

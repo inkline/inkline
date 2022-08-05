@@ -2,7 +2,7 @@ import { Theme, Theme as InternalTheme } from './theme';
 import * as CSS from 'csstype';
 import { Variants } from './variants';
 import { PartialDeep } from 'type-fest';
-import {GeneratorLocation, GeneratorPriority} from "../constants";
+import { GeneratorLocation, GeneratorPriority } from '../constants';
 
 export namespace UserConfiguration {
 
@@ -220,6 +220,9 @@ export namespace UserConfiguration {
         };
         components: {
             [key: string]: BaseTheme;
+        };
+        schemes: {
+            [key: string]: Theme;
         };
         variants: Variants;
     }

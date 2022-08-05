@@ -1,6 +1,6 @@
 import { Configuration, SidesVariant, Theme, UserConfiguration } from '../types';
 import { sidesPropertyKeys } from '../constants';
-import {codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesVariant} from '../helpers';
+import { codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesVariant } from '../helpers';
 import { sidesModifiers as modifiers, sidesModifierAliases as modifierAliases } from './modifiers';
 
 /**

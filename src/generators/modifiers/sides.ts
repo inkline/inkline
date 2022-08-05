@@ -45,7 +45,7 @@ export const sidesModifiers: {
     add: createApplyModifier('add'),
     subtract: createApplyModifier('subtract'),
     multiply: createApplyModifier('multiply'),
-    divide: createApplyModifier('divide'),
+    divide: createApplyModifier('divide')
 };
 
 /**

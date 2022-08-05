@@ -172,6 +172,16 @@ export const defaultConfig: Configuration = {
         },
         elements: {},
         components: {},
+        schemes: {
+            dark: {
+                color: {
+                    red: '#ff0000'
+                },
+                border: {
+                    color: '#4a4a4c'
+                }
+            }
+        },
         variants: {
             borderRadius: sizeMultiplierVariants,
             color: {

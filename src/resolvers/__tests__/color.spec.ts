@@ -1,5 +1,5 @@
 import { colorResolvers } from '../color';
-import {Configuration, Theme, UserConfiguration} from '../../types';
+import { Configuration, Theme, UserConfiguration } from '../../types';
 
 const [
     colorResolver,

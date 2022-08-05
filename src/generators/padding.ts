@@ -1,7 +1,6 @@
-import { Configuration, SidesVariant, Theme, UserConfiguration } from '../types';
+import { SidesVariant, Theme, UserConfiguration } from '../types';
 import { sidesPropertyKeys } from '../constants';
-import {codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesVariant} from '../helpers';
-import { sidesModifierAliases as modifierAliases, sidesModifiers as modifiers } from './modifiers';
+import { codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesVariant } from '../helpers';
 
 export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['padding']> = () => [
     {
