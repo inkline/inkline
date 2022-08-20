@@ -7,29 +7,23 @@ import { PartialDeep } from 'type-fest';
 export async function loadConfig (
     overrides: PartialDeep<Configuration>
 ): Promise<ResolvedConfiguration> {
-    let { config } = await c12<Configuration>({
+    const { config } = await c12<Configuration>({
         name: undefined,
         defaults: defaultConfig,
         overrides: overrides as Configuration
     });
 
-    config = resolve(config);
-
-    return config as ResolvedConfiguration;
+    return resolve(config);
 }
 
 export async function loadConfigFromFile (
-    options: LoadConfigOptions<ResolvedConfiguration> = {}
+    options: LoadConfigOptions<Configuration> = {}
 ): Promise<ResolvedConfiguration> {
-    let { config } = await c12<Configuration>({
+    const { config } = await c12<Configuration>({
         name: 'inkline',
         defaults: defaultConfig,
         ...options
     });
 
-    config = resolve(config);
-
-    console.log(config.theme);
-
-    return config as ResolvedConfiguration;
+    return resolve(config);
 }

@@ -1,17 +1,12 @@
-import { Configuration, ResolvedConfiguration, Theme, Variants } from './types';
-import { applyResolvers } from './apply';
+import { Configuration, ResolvedConfiguration, Theme } from './types';
+import { applyResolvers } from './applicators';
 
 export function resolve (config: Configuration): ResolvedConfiguration {
-    const theme = applyResolvers(config, config.theme) as Theme;
+    Object.keys(config.theme).forEach((themeName) => {
+        const theme = config.theme[themeName] as Theme;
 
-    if (config.theme.variants) {
-        theme.variants = applyResolvers(config, config.theme.variants, {}, ['variants'], {
-            recurseOn: 'post',
-            stopOnMatch: true
-        }).variants as Variants;
-    }
-
-    config.theme = theme;
+        (config as ResolvedConfiguration).theme[themeName] = applyResolvers(config, theme, theme);
+    });
 
     return config as ResolvedConfiguration;
 }

@@ -6,6 +6,6 @@ import { render } from 'micromustache';
  * @param template
  * @param scope
  */
-export const interpolate = <T = any, S = {}>(template: T, scope: S) => {
+export const interpolate = <TemplateType = any, ScopeType = {}>(template: TemplateType, scope: ScopeType) => {
     return render(`${template}`, scope, { tags: ['<%', '%>'] });
 };

@@ -1,32 +1,38 @@
-import { SidesVariant, Theme, UserConfiguration } from '../types';
+import { Generator, ResolvedTheme, ThemeVariants } from '../types';
 import { sidesPropertyKeys } from '../constants';
-import { codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesVariant } from '../helpers';
+import { codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesPropertyVariant } from '../helpers';
 
-export const paddingGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['padding']> = () => [
-    {
-        name: 'spacing',
-        test: /(.*)padding$/,
-        skip: /^variants/,
-        generate: ({ value }) => ['/**', ' * Padding variables', ' */']
-            .concat(
-                sidesPropertyKeys.map(
-                    (side) => codegenSetCSSVariable(`padding-${side}`, value[side])
-                )
+export const paddingGenerator: Generator<ResolvedTheme['padding']> = {
+    name: 'spacing',
+    location: 'root',
+    test: /(.*)padding$/,
+    skip: /^variants/,
+    apply: ({ value }) => ['/**', ' * Padding variables', ' */']
+        .concat(
+            sidesPropertyKeys.map(
+                (side) => codegenSetCSSVariable(`padding-${side}`, value[side])
             )
-            .concat([
-                codegenSetCSSVariable('padding', sidesPropertyKeys.map(
-                    (side) => codegenGetCSSVariable(`padding-${side}`)
-                ).join(' '))
-            ])
-    },
-    {
-        name: 'spacing',
-        test: /variants\.padding\.(.+)$/,
-        generate: ({ config, value, path }) => {
-            const key = path[path.length - 1];
+        )
+        .concat([
+            codegenSetCSSVariable('padding', sidesPropertyKeys.map(
+                (side) => codegenGetCSSVariable(`padding-${side}`)
+            ).join(' '))
+        ])
+};
 
-            return ['/**', ` * Padding ${key} variant variables`, ' */']
-                .concat(codegenSidesVariant(config, 'padding', key, value as SidesVariant));
-        }
+export const paddingVariantGenerator: Generator<ThemeVariants['padding']> = {
+    name: 'spacing',
+    location: 'root',
+    test: /variants\.padding\.(.+)$/,
+    apply: ({ config, value, path }) => {
+        const key = path[path.length - 1];
+
+        return ['/**', ` * Padding ${key} variant variables`, ' */']
+            .concat(codegenSidesPropertyVariant(config, 'padding', key, value));
     }
+};
+
+export const paddingGenerators = [
+    paddingGenerator,
+    paddingVariantGenerator
 ];

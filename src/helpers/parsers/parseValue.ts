@@ -1,15 +1,16 @@
-import { Configuration, UserConfiguration } from '../../types';
+import { ConfigurationContext, FnProperty, Theme } from '../../types';
 import { parseFn } from './parseFn';
 import { interpolate } from '../interpolate';
 
-export function parseValue<T = unknown> (
-    config: Configuration,
-    value: T | UserConfiguration.PropertyFn<T>
-): T | string {
+export function parseValue<ReturnType = unknown> (
+    context: ConfigurationContext<Theme, ReturnType>
+): ReturnType {
+    const value = context.value;
+
     if (typeof value === 'function') {
-        return parseFn(config, value as UserConfiguration.PropertyFn<T>);
+        return parseFn(context as unknown as ConfigurationContext<Theme, FnProperty<ReturnType>>);
     } else if (typeof value === 'string') {
-        return interpolate(value, { theme: config.theme });
+        return interpolate(value, { theme: context.theme }) as unknown as ReturnType;
     }
 
     return value;

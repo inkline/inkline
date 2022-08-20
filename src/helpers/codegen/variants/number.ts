@@ -1,4 +1,4 @@
-import { Configuration, NumberVariant } from '../../../types';
+import { NumberPropertyVariant, ResolvedConfiguration } from '../../../types';
 import { codegenGetCSSVariable, codegenSetCSSVariable } from '../variable';
 import { numberModifierAliases, numberModifiers } from '../../../generators/modifiers';
 
@@ -10,7 +10,7 @@ import { numberModifierAliases, numberModifiers } from '../../../generators/modi
  * @param variantName
  * @param variant
  */
-export const codegenNumberVariant = (config: Configuration, name: string, variantName: string, variant: NumberVariant): string => {
+export const codegenNumberVariant = (config: ResolvedConfiguration, name: string, variantName: string, variant: NumberPropertyVariant): string => {
     const ctx = {
         [variantName]: codegenGetCSSVariable(name)
     };

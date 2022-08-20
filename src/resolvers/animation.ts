@@ -1,28 +1,39 @@
-import { UserConfiguration } from '../types';
+import { Animation, ResolvedTheme, Resolver } from '../types';
 import { parseGenericComposedValue, parseValue } from '../helpers';
 
-const setAnimationFieldsFn = (target: Record<string, string | boolean>, values: string[]) => {
+export const setAnimationFieldsFn = (target: ResolvedTheme['animation'], values: string[]) => {
     target.duration = values[0];
     target.timingFunction = values[1];
 };
 
-export const animationResolvers: UserConfiguration.ResolverPlugin<{}, UserConfiguration.Theme['animation']> = () => [
-    {
-        test: /(.*)animation$/,
-        skip: /^variants/,
-        set: '$1animation',
-        resolve: ({ config, value }) => parseGenericComposedValue(config, value, setAnimationFieldsFn)
-    },
-    {
-        test: /(.*)animation\.default$/,
-        skip: /^variants/,
-        set: '$1animation',
-        resolve: ({ config, value }) => parseGenericComposedValue(config, value, setAnimationFieldsFn)
-    },
-    {
-        test: /(.*)animation\.(\w+)$/,
-        skip: /^variants/,
-        set: '$1animation.$2',
-        resolve: ({ config, value }) => parseValue(config, value)
-    }
+export const animationResolver: Resolver<string, ResolvedTheme['animation']> = {
+    name: 'animation',
+    test: /(.*)animation$/,
+    skip: /^variants/,
+    set: '$1animation',
+    guard: (context) => typeof context.value === 'string',
+    apply: (context) => parseGenericComposedValue(context, setAnimationFieldsFn)
+};
+
+export const animationDefaultResolver: Resolver<string, ResolvedTheme['animation']> = {
+    name: 'animation',
+    test: /(.*)animation$/,
+    skip: /^variants/,
+    set: '$1animation',
+    guard: (context) => typeof context.value === 'string',
+    apply: (context) => parseGenericComposedValue(context, setAnimationFieldsFn)
+};
+
+export const animationFieldResolver: Resolver<Animation[string], ResolvedTheme['animation'][string]> = {
+    name: 'animation',
+    test: /(.*)animation\.(\w+)$/,
+    skip: /^variants/,
+    set: '$1animation.$2',
+    apply: (context) => parseValue(context)
+};
+
+export const animationResolvers = [
+    animationResolver,
+    animationDefaultResolver,
+    animationFieldResolver
 ];

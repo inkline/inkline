@@ -1,7 +1,7 @@
 import { codegenGetCSSVariable, codegenSetCSSVariable } from './variable';
-import { ThemeColor } from '../../types';
+import { ResolvedColorProperty } from '../../types';
 
-export const codegenColorVariables = (name: string, color: ThemeColor) => {
+export const codegenColorVariables = (name: string, color: ResolvedColorProperty) => {
     return [
         codegenSetCSSVariable(`color-${name}-h`, color.h),
         codegenSetCSSVariable(`color-${name}-s`, typeof color.s === 'string' ? color.s : `${color.s}%`),

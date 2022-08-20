@@ -1,4 +1,4 @@
-import { Configuration, CornersVariant, Theme } from '../../../types';
+import {CornersProperty, CornersPropertyVariant, ResolvedConfiguration, ResolvedTheme, Theme} from '../../../types';
 import { codegenGetCSSVariable, codegenSetCSSVariable } from '../variable';
 import { cornersModifierAliases, cornersModifiers } from '../../../generators/modifiers/corners';
 import { cornersPropertyKeys } from '../../../constants';
@@ -12,8 +12,8 @@ import { toDashCase } from '@grozav/utils';
  * @param variantName
  * @param variant
  */
-export const codegenCornersVariant = (config: Configuration, property: 'border-radius', variantName: string, variant: CornersVariant): string[] => {
-    const variantValue: Theme['borderRadius'] = {
+export const codegenCornersPropertyVariant = (config: ResolvedConfiguration, property: 'border-radius', variantName: string, variant: CornersPropertyVariant): string[] => {
+    const variantValue: CornersProperty<string> = {
         topLeft: codegenGetCSSVariable(`${property}-top-left`),
         topRight: codegenGetCSSVariable(`${property}-top-right`),
         bottomRight: codegenGetCSSVariable(`${property}-bottom-right`),

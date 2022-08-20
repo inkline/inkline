@@ -1,7 +1,7 @@
-import { UserConfiguration } from '../types';
+import { BoxShadow, ResolvedTheme, Resolver } from '../types';
 import { parseGenericComposedValue, parseValue } from '../helpers';
 
-const setBoxShadowFieldsFn = (target: Record<string, string | boolean>, values: string[]) => {
+export const setBoxShadowFieldsFn = (target: ResolvedTheme['boxShadow'], values: string[]) => {
     if (values[0] === 'inset') {
         target.inset = true;
         values.shift();
@@ -20,23 +20,33 @@ const setBoxShadowFieldsFn = (target: Record<string, string | boolean>, values: 
     }
 };
 
-export const boxShadowResolvers: UserConfiguration.ResolverPlugin<{}, UserConfiguration.Theme['boxShadow']> = () => [
-    {
-        test: /(.*)boxShadow$/,
-        skip: /^variants/,
-        set: '$1boxShadow',
-        resolve: ({ config, value }) => parseGenericComposedValue(config, value, setBoxShadowFieldsFn)
-    },
-    {
-        test: /(.*)boxShadow\.default$/,
-        skip: /^variants/,
-        set: '$1boxShadow',
-        resolve: ({ config, value }) => parseGenericComposedValue(config, value, setBoxShadowFieldsFn)
-    },
-    {
-        test: /(.*)boxShadow\.(\w+)$/,
-        skip: /^variants/,
-        set: '$1boxShadow.$2',
-        resolve: ({ config, value }) => parseValue(config, value)
-    }
+export const boxShadowResolver: Resolver<string, ResolvedTheme['boxShadow']> = {
+    name: 'boxShadow',
+    test: /(.*)boxShadow$/,
+    skip: /^variants/,
+    set: '$1boxShadow',
+    guard: (context) => typeof context.value === 'string',
+    apply: (context) => parseGenericComposedValue(context, setBoxShadowFieldsFn)
+};
+
+export const boxShadowDefaultResolver: Resolver<string, ResolvedTheme['boxShadow']> = {
+    name: 'boxShadow',
+    test: /(.*)boxShadow\.default$/,
+    skip: /^variants/,
+    set: '$1boxShadow',
+    apply: (context) => parseGenericComposedValue(context, setBoxShadowFieldsFn)
+};
+
+export const boxShadowFieldResolver: Resolver<BoxShadow[string], ResolvedTheme['boxShadow'][string]> = {
+    name: 'boxShadow',
+    test: /(.*)boxShadow\.(\w+)$/,
+    skip: /^variants/,
+    set: '$1boxShadow.$2',
+    apply: (context) => parseValue(context)
+};
+
+export const boxShadowResolvers = [
+    boxShadowResolver,
+    boxShadowDefaultResolver,
+    boxShadowFieldResolver
 ];

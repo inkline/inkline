@@ -1,114 +1,108 @@
-import * as CSS from 'csstype';
-import { Variants } from './variants';
+import {
+    AnimationProperty,
+    BorderProperty,
+    BorderRadiusProperty, BorderRadiusPropertyVariant,
+    BoxShadowProperty,
+    BreakpointsProperty,
+    ColorProperty, ColorPropertyVariant,
+    FontFamilyProperty,
+    FontSizeProperty,
+    FontSizePropertyVariant,
+    FontWeightProperty,
+    LetterSpacingProperty,
+    LineHeightProperty,
+    MarginProperty,
+    MarginPropertyVariant,
+    PaddingProperty,
+    ResolvedAnimationProperty,
+    ResolvedBorderProperty, ResolvedBorderRadiusProperty,
+    ResolvedBoxShadowProperty,
+    ResolvedBreakpointsProperty,
+    ResolvedColorProperty,
+    ResolvedFontFamilyProperty,
+    ResolvedFontSizeProperty,
+    ResolvedFontWeightProperty,
+    ResolvedLetterSpacingProperty,
+    ResolvedLineHeightProperty,
+    ResolvedMarginProperty,
+    ResolvedPaddingProperty,
+    ResolvedScaleRatioProperty,
+    ResolvedSizeMultiplierProperty,
+    ResolvedSizePercentagesProperty,
+    ScaleRatioProperty,
+    SizeMultiplierProperty,
+    SizeMultiplierPropertyVariant,
+    SizePercentagesProperty
+} from './properties';
+import { PartialDeep } from 'type-fest';
 
-export interface SidesProperty<T> {
-    top: T;
-    right: T;
-    bottom: T;
-    left: T;
-    [key: string]: T;
+/**
+ * Theme variants used to define properties with derived values.
+ */
+export interface ThemeVariants {
+    borderRadius: Record<string, BorderRadiusPropertyVariant>;
+    color: Record<string, Record<string, ColorPropertyVariant>>;
+    margin: Record<string, MarginPropertyVariant>;
+    padding: Record<string, MarginPropertyVariant>;
+    size: {
+        multiplier: Record<string, SizeMultiplierPropertyVariant>;
+    }
+    typography: {
+        fontSize: Record<string, FontSizePropertyVariant>;
+    };
 }
 
-export interface CornersProperty<T> {
-    topLeft: T;
-    topRight: T;
-    bottomRight: T;
-    bottomLeft: T;
-    [key: string]: T;
-}
-
-export interface ThemeColor {
-    h: number | string;
-    s: number | string;
-    l: number | string;
-    a: CSS.Property.Opacity;
-    [key: string]: number | string;
-}
-
-export interface ThemeBorder {
-    width: CSS.Property.BorderWidth;
-    style: CSS.Property.BorderStyle;
-    color: CSS.Property.BorderColor;
-
-    [key: string]: number | string & {};
-}
-
+/**
+ * User provided theme, permissive, to allow for several formatting options.
+ */
 export interface Theme {
-    animation: {
-        duration: CSS.Property.AnimationDuration;
-        timingFunction: CSS.Property.AnimationTimingFunction;
-        [key: string]: CSS.Property.AnimationDuration | CSS.Property.AnimationTimingFunction;
+    animation: AnimationProperty;
+    border: BorderProperty;
+    borderRadius: BorderRadiusProperty;
+    boxShadow: BoxShadowProperty;
+    breakpoints: BreakpointsProperty;
+    color: Record<string, ColorProperty>;
+    margin: MarginProperty;
+    padding: PaddingProperty;
+    scaleRatio: ScaleRatioProperty;
+    size: {
+        multiplier: SizeMultiplierProperty;
+        percentages: SizePercentagesProperty;
+    },
+    typography: {
+        fontFamily: Record<string, FontFamilyProperty>;
+        fontWeight: Record<string, FontWeightProperty>;
+        fontSize: FontSizeProperty;
+        lineHeight: LineHeightProperty;
+        letterSpacing: LetterSpacingProperty;
     };
-    breakpoints: {
-        [key: string]: number;
-    };
-    color: {
-        [key: string]: ThemeColor;
-    };
-    margin: {
-        top: CSS.Property.MarginTop;
-        right: CSS.Property.MarginRight;
-        bottom: CSS.Property.MarginBottom;
-        left: CSS.Property.MarginLeft;
-        [key: string]: CSS.Property.Margin;
-    };
-    padding: {
-        top: CSS.Property.PaddingTop;
-        right: CSS.Property.PaddingRight;
-        bottom: CSS.Property.PaddingBottom;
-        left: CSS.Property.PaddingLeft;
-        [key: string]: CSS.Property.Padding;
-    };
-    border: {
-        top: ThemeBorder;
-        right: ThemeBorder;
-        bottom: ThemeBorder;
-        left: ThemeBorder;
-        [key: string]: ThemeBorder;
-    };
-    boxShadow: {
-        offsetX: string | number;
-        offsetY: string | number;
-        blurRadius: string | number;
-        spreadRadius: string | number;
-        color: CSS.Property.Color;
-        [key: string]: string | number;
+    variants: PartialDeep<ThemeVariants>;
+}
+
+/**
+ * Resolved theme resulting after applying all resolvers.
+ * This is the final shape of the theme, to be used in generators.
+ */
+export interface ResolvedTheme {
+    animation: ResolvedAnimationProperty;
+    border: ResolvedBorderProperty;
+    borderRadius: ResolvedBorderRadiusProperty;
+    boxShadow: ResolvedBoxShadowProperty;
+    breakpoints: ResolvedBreakpointsProperty;
+    color: Record<string, ResolvedColorProperty>;
+    margin: ResolvedMarginProperty;
+    padding: ResolvedPaddingProperty;
+    scaleRatio: ResolvedScaleRatioProperty;
+    size: {
+        multiplier: ResolvedSizeMultiplierProperty;
+        percentages: ResolvedSizePercentagesProperty;
     };
     typography: {
-        fontFamily: {
-            primary: {
-                base: CSS.Property.FontFamily;
-                monospace: CSS.Property.FontFamily;
-                print: CSS.Property.FontFamily;
-            };
-            secondary: {
-                base: CSS.Property.FontFamily;
-                monospace: CSS.Property.FontFamily;
-                print: CSS.Property.FontFamily;
-            };
-        },
-        fontWeight: {
-            [key: string]: CSS.Property.FontWeight;
-        };
-        fontSize: CSS.Property.FontSize;
-        lineHeight: CSS.Property.LineHeight;
-        letterSpacing: CSS.Property.LetterSpacing;
-        [key: string]: string | number | Record<string, any>;
+        fontFamily: Record<string, ResolvedFontFamilyProperty>;
+        fontWeight: Record<string, ResolvedFontWeightProperty>;
+        fontSize: ResolvedFontSizeProperty;
+        lineHeight: ResolvedLineHeightProperty;
+        letterSpacing: ResolvedLetterSpacingProperty;
     };
-    scaleRatio: {
-        primary: number;
-        [key: string]: number;
-    };
-    sizes: {
-        multiplier: string | number;
-        percentages: Record<string, string>;
-    },
-    elements: {
-        [key: string]: Theme;
-    };
-    components: {
-        [key: string]: Theme;
-    };
-    variants: Variants;
-    [key: string]: any;
+    variants: ThemeVariants;
 }

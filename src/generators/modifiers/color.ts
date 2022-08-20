@@ -1,4 +1,4 @@
-import { Theme } from '../../types';
+import { ResolvedTheme } from '../../types';
 
 /**
  * Modifiers that can be applied to color values in order to produce a new variant
@@ -7,7 +7,7 @@ import { Theme } from '../../types';
  * @param value
  */
 export const colorModifiers: {
-    [key: string]: (color: Theme['color'][string], value: number | boolean | undefined) => void;
+    [key: string]: (color: ResolvedTheme['color'][string], value: string | number | boolean | undefined) => void;
 } = {
     hue: (color, value) => {
         color.h = value as string | number;

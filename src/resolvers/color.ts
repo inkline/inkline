@@ -1,18 +1,32 @@
-import { UserConfiguration } from '../types';
+import {
+    ColorProperty,
+    ColorPropertyVariant,
+    ConfigurationContext,
+    ResolvedColorProperty,
+    ResolvedTheme,
+    Resolver,
+    Theme
+} from '../types';
 import { parseColor, parseRecursive } from '../helpers';
 
-export const colorResolvers: UserConfiguration.ResolverPlugin<{}, UserConfiguration.Property.Color> = () => [
-    {
-        test: /(.*)color\.(\w+)$/,
-        skip: /^variants/,
-        set: '$1color.$2',
-        resolve: ({ config, value }) => parseColor(config, value)
-    },
-    {
-        test: /^variants\.color\.(\w+)\.(\w+)$/,
-        set: 'variants.color.$1.$2',
-        resolve: ({ config, value }) => typeof value === 'object'
-            ? parseRecursive(config, value)
-            : parseColor(config, value)
-    }
+export const colorResolver: Resolver<Theme['color'][string], ResolvedTheme['color'][string]> = {
+    name: 'color',
+    test: /(.*)color\.(\w+)$/,
+    skip: /^variants/,
+    set: '$1color.$2',
+    apply: (context) => parseColor(context)
+};
+
+export const colorVariantResolver: Resolver<ColorPropertyVariant, ResolvedColorProperty> = {
+    name: 'color',
+    test: /^variants\.color\.(\w+)\.(\w+)$/,
+    set: 'variants.color.$1.$2',
+    apply: (context) => typeof context.value === 'object'
+        ? parseRecursive(context)
+        : parseColor(context as ConfigurationContext<Theme, ColorProperty>)
+};
+
+export const colorResolvers = [
+    colorResolver,
+    colorVariantResolver
 ];

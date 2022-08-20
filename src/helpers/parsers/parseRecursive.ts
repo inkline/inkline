@@ -1,17 +1,24 @@
-import { Configuration } from '../../types';
+import { ConfigurationContext, Theme } from '../../types';
 import { parseValue } from './parseValue';
 
-export function parseRecursive<T = Record<string, any>> (
-    config: Configuration,
-    value: Record<any, any>
-): T {
+export function parseRecursive<ValueType = Record<string, any>, ReturnType = Record<string, any>> (
+    context: ConfigurationContext<Theme, ValueType>
+): ReturnType {
+    const value = context.value as Record<string, any>;
+
     Object.keys(value).forEach((key) => {
-        if (typeof value[key] === 'object') {
-            value[key] = parseRecursive(config, value[key]);
-        } else if (typeof value[key] === 'string' || typeof value[key] === 'function') {
-            value[key] = parseValue(config, value[key]);
+        if (typeof (value)[key] === 'object') {
+            value[key] = parseRecursive({
+                ...context,
+                value: value[key]
+            });
+        } else {
+            value[key] = parseValue({
+                ...context,
+                value: value[key]
+            });
         }
     });
 
-    return value;
+    return value as ReturnType;
 }

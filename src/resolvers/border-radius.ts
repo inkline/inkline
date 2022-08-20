@@ -1,36 +1,44 @@
-import { UserConfiguration } from '../types';
 import { parseCornersValue, parseRecursive, parseValue } from '../helpers';
+import { BorderRadiusPropertyVariant, ResolvedTheme, Resolver, Theme } from '../types';
+import * as CSS from 'csstype';
 
-const setBorderRadiusFieldsFn = (target: Record<string, string>, [width, style, color]: string[]) => {
-    target.width = width;
-    target.style = style;
-    target.color = color;
+export const borderRadiusResolver: Resolver<string, ResolvedTheme['borderRadius']> = {
+    name: 'borderRadius',
+    test: /(.*)borderRadius$/,
+    skip: /^variants/,
+    set: '$1borderRadius',
+    guard: (context) => typeof context.value === 'string',
+    apply: (context) => parseCornersValue(context)
 };
 
-export const borderRadiusResolvers: UserConfiguration.ResolverPlugin<{}, UserConfiguration.Theme['borderRadius']> = () => [
-    {
-        test: /(.*)borderRadius$/,
-        skip: /^variants/,
-        set: '$1borderRadius',
-        resolve: ({ config, value }) => parseCornersValue(config, value)
-    },
-    {
-        test: /(.*)borderRadius\.default$/,
-        skip: /^variants/,
-        set: '$1borderRadius',
-        resolve: ({ config, value }) => parseCornersValue(config, value)
-    },
-    {
-        test: /(.*)borderRadius\.(\w+)$/,
-        skip: /^variants/,
-        set: '$1borderRadius.$2',
-        resolve: ({ config, value }) => parseValue(config, value)
-    },
-    {
-        test: /^variants\.borderRadius\.(\w+)$/,
-        set: 'variants.borderRadius.$1',
-        resolve: ({ config, value }) => typeof value === 'object'
-            ? parseRecursive(config, value)
-            : parseCornersValue(config, value)
-    }
+export const borderRadiusDefaultResolver: Resolver<Theme['borderRadius'], ResolvedTheme['borderRadius']> = {
+    name: 'borderRadius',
+    test: /(.*)borderRadius\.default$/,
+    skip: /^variants/,
+    set: '$1borderRadius',
+    apply: (context) => parseCornersValue(context)
+};
+
+export const borderRadiusCornerResolver: Resolver<CSS.Property.BorderRadius, ResolvedTheme['borderRadius'][string]> = {
+    name: 'borderRadius',
+    test: /(.*)borderRadius\.(\w+)$/,
+    skip: /^variants/,
+    set: '$1borderRadius.$2',
+    apply: (context) => parseValue(context)
+};
+
+export const borderRadiusVariantResolver: Resolver<BorderRadiusPropertyVariant, ResolvedTheme['variants']['borderRadius'][string]> = {
+    name: 'borderRadius',
+    test: /^variants\.borderRadius\.(\w+)$/,
+    set: 'variants.borderRadius.$1',
+    apply: (context) => typeof context.value === 'object'
+        ? parseRecursive(context)
+        : parseCornersValue(context)
+};
+
+export const borderRadiusResolvers = [
+    borderRadiusResolver,
+    borderRadiusDefaultResolver,
+    borderRadiusCornerResolver,
+    borderRadiusVariantResolver
 ];

@@ -1,16 +1,23 @@
-import { Configuration, ThemeColor, UserConfiguration } from '../../types';
+import {
+    ColorProperty,
+    ColorType,
+    ConfigurationContext,
+    ResolvedColorProperty,
+    Theme
+} from '../../types';
 import color from 'color';
 import { parseValue } from './parseValue';
 
 export function parseColor (
-    config: Configuration,
-    value: UserConfiguration.Property.Color
-): ThemeColor {
+    context: ConfigurationContext<Theme, ColorProperty>
+): ResolvedColorProperty {
+    let value = context.value;
+
     // Color parser does not support strings with units inside of object initialization.
     // Normalize object value by converting strings to numbers and dividing alpha percentage value by 100
     if (typeof value === 'object') {
-        const colorObject = value as Record<string, string | number>;
-        const processedColorObject: Record<string, string | number> = {};
+        const colorObject = value as ColorType.HSLA | ColorType.RGBA;
+        const processedColorObject: Partial<ColorType.HSLA | ColorType.RGBA> = {};
 
         Object.keys(colorObject).forEach((key) => {
             if (typeof colorObject[key] === 'string') {
@@ -33,12 +40,15 @@ export function parseColor (
             }
         });
 
-        value = processedColorObject as UserConfiguration.Property.Color;
+        value = processedColorObject as ColorType.HSLA | ColorType.RGBA;
     }
 
-    const parsedValue = parseValue(config, value);
+    const parsedValue = parseValue({
+        ...context,
+        value
+    });
     const constructedColor = color(parsedValue);
-    const hslColor = constructedColor.hsl().object() as ThemeColor;
+    const hslColor = constructedColor.hsl().object() as ResolvedColorProperty;
     const alpha = constructedColor.alpha();
 
     return {

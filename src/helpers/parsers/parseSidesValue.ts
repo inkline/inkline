@@ -1,17 +1,16 @@
-import { Configuration, SidesProperty, UserConfiguration } from '../../types';
+import { ConfigurationContext, FnProperty, SidesProperty, Theme } from '../../types';
 import { sidesPropertyKeys } from '../../constants';
 import { parseValue } from './parseValue';
-import { parseFn } from './parseFn';
 
-export function parseSidesValue<T = unknown> (
-    config: Configuration,
-    value: T | T[] | UserConfiguration.PropertyFn<T>
-): SidesProperty<string | number> {
-    const sides: SidesProperty<string | number> = {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+export function parseSidesValue<ValueType = unknown, ReturnType = string | number> (
+    context: ConfigurationContext<Theme, ValueType | FnProperty<ValueType>>
+): SidesProperty<ReturnType> {
+    const value = parseValue(context);
+    const sides: SidesProperty<ReturnType> = {
+        top: '' as unknown as ReturnType,
+        right: '' as unknown as ReturnType,
+        bottom: '' as unknown as ReturnType,
+        left: '' as unknown as ReturnType
     };
 
     /**
@@ -20,9 +19,9 @@ export function parseSidesValue<T = unknown> (
      * @param values
      */
 
-    const assignSidesFromArray = (values: Array<string | number>) => sidesPropertyKeys
+    const assignSidesFromArray = (values: Array<ReturnType | string>) => sidesPropertyKeys
         .forEach((side, index) => {
-            sides[side] = parseValue<string | number>(config, values[index % 4] || values[index % 2] || values[0]);
+            sides[side] = (values[index % 4] || values[index % 2] || values[0]) as ReturnType;
         });
 
     /**
@@ -30,13 +29,16 @@ export function parseSidesValue<T = unknown> (
      */
 
     if (Array.isArray(value)) {
-        assignSidesFromArray(value as unknown as Array<string | number>);
-    } else if (typeof value === 'function') {
-        return parseSidesValue(config, parseFn<T>(config, value as UserConfiguration.PropertyFn<T>));
+        assignSidesFromArray(
+            (value as unknown as Array<ReturnType>).map((side) => parseValue({
+                ...context,
+                value: side
+            }))
+        );
     } else if (typeof value === 'string') {
         assignSidesFromArray(value.split(/\s+/));
     } else {
-        assignSidesFromArray([value as unknown as number]);
+        assignSidesFromArray([value as unknown as ReturnType]);
     }
 
     return sides;

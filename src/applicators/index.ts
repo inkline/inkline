@@ -1,2 +1,2 @@
-export * from './resolvers';
 export * from './generators';
+export * from './resolvers';

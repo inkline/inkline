@@ -1,4 +1,10 @@
-import { ColorVariant, Configuration, Theme, UserConfiguration } from '../types';
+import {
+    ColorPropertyObjectVariant,
+    ResolvedConfiguration,
+    Generator,
+    ResolvedTheme,
+    ThemeVariants
+} from '../types';
 import { codegenGetCSSVariable, codegenColorVariables } from '../helpers';
 import { colorModifiers as modifiers, colorModifierAliases as modifierAliases } from './modifiers';
 
@@ -10,8 +16,8 @@ import { colorModifiers as modifiers, colorModifierAliases as modifierAliases } 
  * @param variantName
  * @param variant
  */
-const codegenVariant = (config: Configuration, name: string, variantName: string, variant: ColorVariant): string[] => {
-    const variantValue: Theme['color'][string] = {
+const codegenColorPropertyVariant = (config: ResolvedConfiguration, name: string, variantName: string, variant: ColorPropertyObjectVariant): string[] => {
+    const variantValue: ResolvedTheme['color'][string] = {
         h: codegenGetCSSVariable(`color-${name}-h`),
         s: codegenGetCSSVariable(`color-${name}-s`),
         l: codegenGetCSSVariable(`color-${name}-l`),
@@ -26,25 +32,31 @@ const codegenVariant = (config: Configuration, name: string, variantName: string
         .concat(codegenColorVariables(`${name}-${variantName}`, variantValue));
 };
 
-export const colorGenerators: UserConfiguration.GeneratorPlugin<{}, Theme['color'][string] | ColorVariant> = () => [
-    {
-        name: 'color',
-        test: /(.*)color\.(\w+)$/,
-        skip: /^variants/,
-        generate: ({ value, path }) => {
-            const name = path[path.length - 1];
+export const colorGenerator: Generator<ResolvedTheme['color'][string]> = {
+    name: 'color',
+    location: 'root',
+    test: /(.*)color\.(\w+)$/,
+    skip: /^variants/,
+    apply: ({ value, path }) => {
+        const name = path[path.length - 1];
 
-            return ['/**', ` * Color ${name} variables`, ' */']
-                .concat(codegenColorVariables(name, value as Theme['color'][string]));
-        }
-    },
-    {
-        name: 'color',
-        test: /variants.color\.(.+)\.(.+)$/,
-        generate: ({ config, value, path }) => {
-            const [name, key] = path.slice(-2);
-
-            return codegenVariant(config, name, key, value as ColorVariant);
-        }
+        return ['/**', ` * Color ${name} variables`, ' */']
+            .concat(codegenColorVariables(name, value as ResolvedTheme['color'][string]));
     }
+};
+
+export const colorVariantGenerator: Generator<ThemeVariants['color'][string][string]> = {
+    name: 'color',
+    location: 'root',
+    test: /variants.color\.(.+)\.(.+)$/,
+    apply: ({ config, value, path }) => {
+        const [name, key] = path.slice(-2);
+
+        return codegenColorPropertyVariant(config, name, key, value as ColorPropertyObjectVariant);
+    }
+};
+
+export const colorGenerators = [
+    colorGenerator,
+    colorVariantGenerator
 ];

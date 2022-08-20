@@ -1,11 +1,14 @@
-import { UserConfiguration } from '../types';
+import { ResolvedTheme, Resolver, Theme } from '../types';
 import { parseValue } from '../helpers';
 
-export const scaleRatioResolvers: UserConfiguration.ResolverPlugin<{}, UserConfiguration.Theme['scaleRatio'][string]> = () => [
-    {
-        test: /(.*)scaleRatio\.(\w+)$/,
-        skip: /^variants/,
-        set: '$1scaleRatio.$2',
-        resolve: ({ config, value }) => parseValue(config, value)
-    }
+export const scaleRatioResolver: Resolver<Theme['scaleRatio'][string], ResolvedTheme['scaleRatio'][string]> = {
+    name: 'scaleRatio',
+    test: /(.*)scaleRatio\.(\w+)$/,
+    skip: /^variants/,
+    set: '$1scaleRatio.$2',
+    apply: (context) => parseValue(context)
+};
+
+export const scaleRatioResolvers = [
+    scaleRatioResolver
 ];
