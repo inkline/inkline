@@ -1,7 +1,5 @@
-import { breakpointsGenerators } from '../breakpoints';
-import { Configuration, Theme } from '../../types';
-
-const [breakpointsGenerator] = breakpointsGenerators();
+import { breakpointsGenerator } from '../breakpoints';
+import { ResolvedConfiguration, ResolvedTheme } from '../../types';
 
 describe('generators', () => {
     describe('breakpoints', () => {
@@ -19,18 +17,18 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all breakpoints', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     breakpoints: {
                         xs: 0,
                         sm: 576,
                         md: 992
                     }
-                } as unknown as Theme;
+                } as unknown as ResolvedTheme;
                 const value = theme.breakpoints;
                 const path = ['breakpoints'];
 
-                expect(breakpointsGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(breakpointsGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Breakpoint variables',
                     ' */',

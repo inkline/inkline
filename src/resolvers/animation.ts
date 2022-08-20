@@ -17,7 +17,7 @@ export const animationResolver: Resolver<string, ResolvedTheme['animation']> = {
 
 export const animationDefaultResolver: Resolver<string, ResolvedTheme['animation']> = {
     name: 'animation',
-    test: /(.*)animation$/,
+    test: /(.*)animation.default$/,
     skip: /^variants/,
     set: '$1animation',
     guard: (context) => typeof context.value === 'string',

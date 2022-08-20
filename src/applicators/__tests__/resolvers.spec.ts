@@ -1,23 +1,22 @@
 import { applyResolvers } from '../resolvers';
 import { defaultConfig } from '../../defaults';
-import { Configuration } from '../../types';
+import {Configuration, ResolvedTheme, Theme} from '../../types';
 
 const config = {
     resolvers: defaultConfig.resolvers,
     generators: defaultConfig.generators,
     theme: {
-        margin: '1rem'
+        default: {
+            margin: '1rem'
+        }
     }
 } as Configuration;
 
 describe('applyResolvers()', () => {
     it('should apply resolvers to each key-value pair that is not an object', () => {
-        const source = {
-            margin: '1rem'
-        };
-        const target: Record<string, string> = {};
+        const target: ResolvedTheme = {} as ResolvedTheme;
 
-        applyResolvers(config, config.theme, target);
+        applyResolvers(config, config.theme.default as Theme, config.theme.default as Theme, target);
 
         expect(target).toEqual({
             margin: {
@@ -38,9 +37,9 @@ describe('applyResolvers()', () => {
                     }
                 }
             };
-            const target: Record<string, string> = {};
+            const target: ResolvedTheme = {} as ResolvedTheme;
 
-            applyResolvers(config, source, target);
+            applyResolvers(config, config.theme.default as Theme, source as Theme[keyof Theme], target);
 
             expect(target).toEqual({
                 components: {
@@ -61,16 +60,18 @@ describe('applyResolvers()', () => {
                 resolvers: defaultConfig.resolvers,
                 generators: defaultConfig.generators,
                 theme: {
-                    components: {
-                        'i-button': {
-                            margin: '1rem'
+                    default: {
+                        components: {
+                            'i-button': {
+                                margin: '1rem'
+                            }
                         }
                     }
                 }
             } as Configuration;
-            const target: Record<string, string> = {};
+            const target: ResolvedTheme = {} as ResolvedTheme;
 
-            applyResolvers(config, config.theme, target);
+            applyResolvers(config, config.theme.default as Theme, config.theme.default as Theme, target);
 
             expect(target).toEqual({
                 components: {

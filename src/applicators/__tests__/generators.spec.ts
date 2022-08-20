@@ -1,5 +1,5 @@
 import { defaultConfig } from '../../defaults';
-import { Configuration, ResolvedConfiguration, Theme } from '../../types';
+import { Configuration, ResolvedConfiguration, ResolvedTheme, Theme } from '../../types';
 import { applyGenerators } from '../generators';
 
 describe('applyGenerators()', () => {
@@ -15,22 +15,27 @@ describe('applyGenerators()', () => {
                 {
                     name: '',
                     test: /.*/,
-                    generate: vi.fn(() => [])
+                    apply: vi.fn(() => [])
                 },
                 {
                     name: '',
                     test: /.*/,
-                    generate: vi.fn(() => [])
+                    apply: vi.fn(() => [])
                 }
             ],
-            theme
+            theme: {
+                default: theme
+            }
         } as Configuration;
         const path = ['margin'];
 
-        applyGenerators(config as ResolvedConfiguration, theme);
+        applyGenerators(config as ResolvedConfiguration, config.theme.default as ResolvedTheme, config.theme.default as ResolvedTheme);
 
-        expect(config.generators[0].generate).toHaveBeenCalledWith({ config, theme, path, value: theme[path[0]] });
-        expect(config.generators[1].generate).toHaveBeenCalledWith({ config, theme, path, value: theme[path[0]] });
+        config.generators.forEach((generator) => {
+            expect(generator.apply).toHaveBeenCalledWith({
+                config, theme, path, value: (theme as Record<string, any>)[path[0]]
+            });
+        });
     });
 
     it('should apply all generators from config to nested theme', () => {
@@ -45,15 +50,19 @@ describe('applyGenerators()', () => {
                 {
                     name: '',
                     test: /top$/,
-                    generate: vi.fn(() => [])
+                    apply: vi.fn(() => [])
                 }
             ],
-            theme
+            theme: {
+                default: theme
+            }
         } as Configuration;
         const path = ['margin', 'top'];
 
-        applyGenerators(config as ResolvedConfiguration, theme);
+        applyGenerators(config as ResolvedConfiguration, config.theme.default as ResolvedTheme, config.theme.default as ResolvedTheme);
 
-        expect(config.generators[0].generate).toHaveBeenCalledWith({ config, theme, path, value: theme.margin.top });
+        expect(config.generators[0].apply).toHaveBeenCalledWith({
+            config, theme, path, value: (theme.margin as Record<string, any>).top
+        });
     });
 });

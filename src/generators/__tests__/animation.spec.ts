@@ -1,7 +1,5 @@
-import { animationGenerators } from '../animation';
-import { Configuration, Theme } from '../../types';
-
-const [animationGenerator] = animationGenerators();
+import { animationGenerator } from '../animation';
+import { ResolvedConfiguration, ResolvedTheme } from '../../types';
 
 describe('generators', () => {
     describe('animation', () => {
@@ -19,17 +17,17 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all parts of composed variable', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     animation: {
                         duration: '300ms',
                         timingFunction: 'ease-in-out'
                     }
-                } as Theme;
+                } as ResolvedTheme;
                 const value = theme.animation;
                 const path = ['animation'];
 
-                expect(animationGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(animationGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Animation variables',
                     ' */',

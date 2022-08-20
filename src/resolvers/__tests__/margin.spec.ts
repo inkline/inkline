@@ -1,12 +1,10 @@
-import { marginResolvers } from '../margin';
-import { Configuration, Theme } from '../../types';
-
-const [
+import {
     marginResolver,
     marginDefaultResolver,
     marginSideResolver,
     marginVariantResolver
-] = marginResolvers();
+} from '../margin';
+import { Configuration, Theme } from '../../types';
 
 describe('resolvers', () => {
     describe('margin', () => {
@@ -41,7 +39,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['margin'];
 
-                expect(marginResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(marginResolver.apply({ config, theme, value, path })).toEqual({
                     top: '1rem',
                     right: '1rem',
                     bottom: '1rem',
@@ -83,7 +81,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['margin', 'default'];
 
-                expect(marginDefaultResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(marginDefaultResolver.apply({ config, theme, value, path })).toEqual({
                     top: '1rem',
                     right: '1rem',
                     bottom: '1rem',
@@ -125,7 +123,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['margin', 'top'];
 
-                expect(marginSideResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(marginSideResolver.apply({ config, theme, value, path })).toEqual(value);
             });
         });
     });
@@ -152,7 +150,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['variants', 'margin', 'lg'];
 
-                expect(marginVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(marginVariantResolver.apply({ config, theme, value, path })).toEqual({
                     top: value,
                     right: value,
                     bottom: value,
@@ -166,7 +164,7 @@ describe('resolvers', () => {
                 const value = { top: '1rem', bottom: '2rem' };
                 const path = ['variants', 'margin', 'lg'];
 
-                expect(marginVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(marginVariantResolver.apply({ config, theme, value, path })).toEqual({
                     top: value.top,
                     bottom: value.bottom
                 });

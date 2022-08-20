@@ -1,11 +1,9 @@
 import { Configuration, Theme } from '../../types';
-import { sizeResolvers } from '../size';
-
-const [
+import {
     sizeMultiplierResolver,
-    sizeMultiplierVariantsResolver,
-    sizePercentagesFieldResolver
-] = sizeResolvers();
+    sizeMultiplierVariantResolver,
+    sizePercentagesResolver
+} from '../size';
 
 describe('resolvers', () => {
     describe('size.multiplier', () => {
@@ -40,7 +38,7 @@ describe('resolvers', () => {
                 const value = '1';
                 const path = ['size', 'multiplier'];
 
-                expect(sizeMultiplierResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(sizeMultiplierResolver.apply({ config, theme, value, path })).toEqual(value);
             });
         });
     });
@@ -49,14 +47,14 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'variants.size.multiplier.xs';
-                expect(sizeMultiplierVariantsResolver.test.test(path)).toEqual(true);
+                expect(sizeMultiplierVariantResolver.test.test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'variants.size.multiplier.xs';
-                expect(path.replace(sizeMultiplierVariantsResolver.test, sizeMultiplierVariantsResolver.set as string)).toEqual('variants.size.multiplier.xs');
+                expect(path.replace(sizeMultiplierVariantResolver.test, sizeMultiplierVariantResolver.set as string)).toEqual('variants.size.multiplier.xs');
             });
         });
 
@@ -67,7 +65,7 @@ describe('resolvers', () => {
                 const value = '100%';
                 const path = ['variants', 'size', 'multiplier', 'xs'];
 
-                expect(sizeMultiplierVariantsResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(sizeMultiplierVariantResolver.apply({ config, theme, value, path })).toEqual(value);
             });
         });
     });
@@ -76,24 +74,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'size.percentages.100';
-                expect(sizePercentagesFieldResolver.test.test(path)).toEqual(true);
+                expect(sizePercentagesResolver.test.test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.size.percentages.100';
-                expect(sizePercentagesFieldResolver.test.test(path)).toEqual(true);
+                expect(sizePercentagesResolver.test.test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'size.percentages.100';
-                expect(path.replace(sizePercentagesFieldResolver.test, sizePercentagesFieldResolver.set as string)).toEqual('size.percentages.100');
+                expect(path.replace(sizePercentagesResolver.test, sizePercentagesResolver.set as string)).toEqual('size.percentages.100');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.size.percentages.100';
-                expect(path.replace(sizePercentagesFieldResolver.test, sizePercentagesFieldResolver.set as string)).toEqual('nested.size.percentages.100');
+                expect(path.replace(sizePercentagesResolver.test, sizePercentagesResolver.set as string)).toEqual('nested.size.percentages.100');
             });
         });
 
@@ -104,7 +102,7 @@ describe('resolvers', () => {
                 const value = '100%';
                 const path = ['size', 'percentages', '100'];
 
-                expect(sizePercentagesFieldResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(sizePercentagesResolver.apply({ config, theme, value, path })).toEqual(value);
             });
         });
     });

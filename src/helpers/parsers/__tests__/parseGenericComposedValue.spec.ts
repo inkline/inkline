@@ -1,4 +1,4 @@
-import { Configuration } from '../../../types';
+import {Configuration, ConfigurationContext} from '../../../types';
 import { parseGenericComposedValue, ParseGenericComposedValueSetFn } from '../parseGenericComposedValue';
 
 describe('helpers', () => {
@@ -13,8 +13,9 @@ describe('helpers', () => {
                     target.c = c;
                     target.d = d;
                 };
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseGenericComposedValue(config, value, setFn)).toEqual({
+                expect(parseGenericComposedValue(context, setFn)).toEqual({
                     a: 'a',
                     b: 'b',
                     c: 'c',
@@ -30,8 +31,9 @@ describe('helpers', () => {
                     target.style = style;
                     target.color = color;
                 };
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseGenericComposedValue(config, value, setFn)).toEqual({
+                expect(parseGenericComposedValue(context, setFn)).toEqual({
                     width: '1px',
                     style: 'solid',
                     color: 'rgba(0, 0, 0, 1)'

@@ -1,4 +1,4 @@
-import { Configuration, UserConfiguration } from '../../../types';
+import {Configuration, ConfigurationContext, FnProperty} from '../../../types';
 import { parseSidesValue } from '../parseSidesValue';
 
 describe('helpers', () => {
@@ -7,8 +7,9 @@ describe('helpers', () => {
             it('should return same value for all sides if one value string', () => {
                 const config = {} as Configuration;
                 const value = '1rem';
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseSidesValue(config, value)).toEqual({
+                expect(parseSidesValue(context)).toEqual({
                     top: value,
                     right: value,
                     bottom: value,
@@ -20,8 +21,9 @@ describe('helpers', () => {
                 const config = {} as Configuration;
                 const value = '1rem 2rem';
                 const parts = value.split(' ');
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseSidesValue(config, value)).toEqual({
+                expect(parseSidesValue(context)).toEqual({
                     top: parts[0],
                     right: parts[1],
                     bottom: parts[0],
@@ -33,8 +35,9 @@ describe('helpers', () => {
                 const config = {} as Configuration;
                 const value = '1rem 2rem 3rem';
                 const parts = value.split(' ');
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseSidesValue(config, value)).toEqual({
+                expect(parseSidesValue(context)).toEqual({
                     top: parts[0],
                     right: parts[1],
                     bottom: parts[2],
@@ -46,8 +49,9 @@ describe('helpers', () => {
                 const config = {} as Configuration;
                 const value = '1rem 2rem 3rem 4rem';
                 const parts = value.split(' ');
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseSidesValue(config, value)).toEqual({
+                expect(parseSidesValue(context)).toEqual({
                     top: parts[0],
                     right: parts[1],
                     bottom: parts[2],
@@ -58,8 +62,9 @@ describe('helpers', () => {
             it('should return same value for all sides if one value array', () => {
                 const config = {} as Configuration;
                 const value = ['1rem'];
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseSidesValue(config, value)).toEqual({
+                expect(parseSidesValue(context)).toEqual({
                     top: value[0],
                     right: value[0],
                     bottom: value[0],
@@ -70,8 +75,9 @@ describe('helpers', () => {
             it('should return value for top-bottom, left-right sides if two value array', () => {
                 const config = {} as Configuration;
                 const value = ['1rem', '2rem'];
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseSidesValue(config, value)).toEqual({
+                expect(parseSidesValue(context)).toEqual({
                     top: value[0],
                     right: value[1],
                     bottom: value[0],
@@ -82,8 +88,9 @@ describe('helpers', () => {
             it('should return value for top, left-right, bottom sides if three value array', () => {
                 const config = {} as Configuration;
                 const value = ['1rem', '2rem', '3rem'];
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseSidesValue(config, value)).toEqual({
+                expect(parseSidesValue(context)).toEqual({
                     top: value[0],
                     right: value[1],
                     bottom: value[2],
@@ -94,8 +101,9 @@ describe('helpers', () => {
             it('should return value for top, right, bottom, left sides if four value array', () => {
                 const config = {} as Configuration;
                 const value = ['1rem', '2rem', '3rem', '4rem'];
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseSidesValue(config, value)).toEqual({
+                expect(parseSidesValue(context)).toEqual({
                     top: value[0],
                     right: value[1],
                     bottom: value[2],
@@ -106,8 +114,9 @@ describe('helpers', () => {
             it('should return same value for all sides if number', () => {
                 const config = {} as Configuration;
                 const value = 10;
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseSidesValue(config, value)).toEqual({
+                expect(parseSidesValue(context)).toEqual({
                     top: value,
                     right: value,
                     bottom: value,
@@ -117,12 +126,15 @@ describe('helpers', () => {
 
             it('should call parseFn and parse return value if function', () => {
                 const config = {
+                    resolvers: [],
+                    generators: [],
                     theme: {
-                        margin: '1rem 2rem 3rem 4rem'
+                        default: {
+                            margin: '1rem 2rem 3rem 4rem'
+                        }
                     }
                 } as Configuration;
-
-                const value: UserConfiguration.PropertyFn<string[]> = ({ theme }) => {
+                const value: FnProperty<string[]> = ({ theme }) => {
                     const parts = (theme.margin as string).split(' ');
 
                     return [
@@ -132,8 +144,9 @@ describe('helpers', () => {
                         parts[3]
                     ];
                 };
+                const context: ConfigurationContext<any, any> = { config, value, theme: config.theme.default, path: [] };
 
-                expect(parseSidesValue(config, value)).toEqual({
+                expect(parseSidesValue(context)).toEqual({
                     top: '1rem',
                     right: '2rem',
                     bottom: '3rem',

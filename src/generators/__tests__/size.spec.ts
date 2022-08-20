@@ -1,11 +1,9 @@
-import { sizeGenerators } from '../size';
-import { Configuration, Theme } from '../../types';
-
-const [
+import {
     sizeMultiplierGenerator,
     sizePercentagesGenerator,
     sizeMultiplierVariantsGenerator
-] = sizeGenerators();
+} from '../size';
+import { ResolvedConfiguration, ResolvedTheme } from '../../types';
 
 describe('generators', () => {
     describe('size.multiplier', () => {
@@ -23,16 +21,16 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all parts of composed variable', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     size: {
                         multiplier: 1
                     }
-                } as unknown as Theme;
+                } as unknown as ResolvedTheme;
                 const value = theme.size.multiplier;
                 const path = ['size.multiplier'];
 
-                expect(sizeMultiplierGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(sizeMultiplierGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Size multiplier variable',
                     ' */',
@@ -57,7 +55,7 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all parts of composed variable', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     size: {
                         percentages: {
@@ -68,11 +66,11 @@ describe('generators', () => {
                             100: '100%'
                         }
                     }
-                } as unknown as Theme;
+                } as unknown as ResolvedTheme;
                 const value = theme.size.percentages;
                 const path = ['size.percentages'];
 
-                expect(sizePercentagesGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(sizePercentagesGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Size percentage variables',
                     ' */',
@@ -96,22 +94,24 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all parts of composed variable', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
-                    size: {
-                        multiplier: {
-                            xs: { divide: 'var(--scale-ratio-pow-2)' },
-                            sm: { divide: 'var(--scale-ratio-pow-1)' },
-                            md: {},
-                            lg: { multiply: 'var(--scale-ratio-pow-1)' },
-                            xl: { multiply: 'var(--scale-ratio-pow-2)' }
+                    variants: {
+                        size: {
+                            multiplier: {
+                                xs: { divide: 'var(--scale-ratio-pow-2)' },
+                                sm: { divide: 'var(--scale-ratio-pow-1)' },
+                                md: {},
+                                lg: { multiply: 'var(--scale-ratio-pow-1)' },
+                                xl: { multiply: 'var(--scale-ratio-pow-2)' }
+                            }
                         }
                     }
-                } as unknown as Theme;
-                const value = theme.size.multiplier;
+                } as unknown as ResolvedTheme;
+                const value = theme.variants.size.multiplier;
                 const path = ['variants.size.multiplier'];
 
-                expect(sizeMultiplierVariantsGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(sizeMultiplierVariantsGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Size multiplier variants variables',
                     ' */',

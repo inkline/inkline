@@ -1,9 +1,5 @@
-import { breakpointsResolvers } from '../breakpoints';
+import { breakpointsResolver } from '../breakpoints';
 import { Configuration, Theme } from '../../types';
-
-const [
-    breakpointsResolver
-] = breakpointsResolvers();
 
 describe('resolvers', () => {
     describe('breakpoints.[breakpoint]', () => {
@@ -38,7 +34,7 @@ describe('resolvers', () => {
                 const value = 576;
                 const path = ['breakpoints', 'xs'];
 
-                expect(breakpointsResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(breakpointsResolver.apply({ config, theme, value, path })).toEqual(value);
             });
         });
     });

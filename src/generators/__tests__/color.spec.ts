@@ -1,7 +1,5 @@
-import { Configuration, Theme } from '../../types';
-import { colorGenerators } from '../color';
-
-const [colorGenerator] = colorGenerators();
+import { ResolvedConfiguration, ResolvedTheme } from '../../types';
+import { colorGenerator } from '../color';
 
 describe('generators', () => {
     describe('color', () => {
@@ -19,7 +17,7 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate h, s, l, a, and composed color variables', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     color: {
                         primary: {
@@ -29,11 +27,11 @@ describe('generators', () => {
                             a: 1
                         }
                     }
-                } as unknown as Theme;
+                } as unknown as ResolvedTheme;
                 const value = theme.color.primary;
                 const path = ['color', 'primary'];
 
-                expect(colorGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(colorGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Color primary variables',
                     ' */',

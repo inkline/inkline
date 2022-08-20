@@ -1,7 +1,5 @@
-import { boxShadowGenerators } from '../box-shadow';
-import { Configuration, Theme } from '../../types';
-
-const [boxShadowGenerator] = boxShadowGenerators();
+import { boxShadowGenerator } from '../box-shadow';
+import { ResolvedConfiguration, ResolvedTheme } from '../../types';
 
 describe('generators', () => {
     describe('boxShadow', () => {
@@ -19,7 +17,7 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all parts of composed variable', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     boxShadow: {
                         offsetX: '1rem',
@@ -28,11 +26,11 @@ describe('generators', () => {
                         spreadRadius: '4rem',
                         color: '#000000'
                     }
-                } as Theme;
+                } as ResolvedTheme;
                 const value = theme.boxShadow;
                 const path = ['boxShadow'];
 
-                expect(boxShadowGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(boxShadowGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Box shadow variables',
                     ' */',
@@ -46,7 +44,7 @@ describe('generators', () => {
             });
 
             it('should generate variables with missing spreadRadius', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     boxShadow: {
                         offsetX: '1rem',
@@ -54,11 +52,11 @@ describe('generators', () => {
                         blurRadius: '3rem',
                         color: '#000000'
                     }
-                } as Theme;
+                } as ResolvedTheme;
                 const value = theme.boxShadow;
                 const path = ['boxShadow'];
 
-                expect(boxShadowGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(boxShadowGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Box shadow variables',
                     ' */',
@@ -71,18 +69,18 @@ describe('generators', () => {
             });
 
             it('should generate variables with missing spreadRadius and blurRadius', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     boxShadow: {
                         offsetX: '1rem',
                         offsetY: '2rem',
                         color: '#000000'
                     }
-                } as Theme;
+                } as ResolvedTheme;
                 const value = theme.boxShadow;
                 const path = ['boxShadow'];
 
-                expect(boxShadowGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(boxShadowGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Box shadow variables',
                     ' */',

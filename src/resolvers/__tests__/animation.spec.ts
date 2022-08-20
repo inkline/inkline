@@ -1,11 +1,9 @@
-import { animationResolvers } from '../animation';
-import { Configuration, Theme } from '../../types';
-
-const [
+import {
     animationResolver,
     animationDefaultResolver,
     animationFieldResolver
-] = animationResolvers();
+} from '../animation';
+import { Configuration, Theme } from '../../types';
 
 describe('resolvers', () => {
     describe('animation', () => {
@@ -40,7 +38,7 @@ describe('resolvers', () => {
                 const value = '300ms ease-in-out';
                 const path = ['animation'];
 
-                expect(animationResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(animationResolver.apply({ config, theme, value, path })).toEqual({
                     duration: '300ms',
                     timingFunction: 'ease-in-out'
                 });
@@ -80,7 +78,7 @@ describe('resolvers', () => {
                 const value = '300ms ease-in-out';
                 const path = ['animation', 'default'];
 
-                expect(animationDefaultResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(animationDefaultResolver.apply({ config, theme, value, path })).toEqual({
                     duration: '300ms',
                     timingFunction: 'ease-in-out'
                 });
@@ -120,7 +118,7 @@ describe('resolvers', () => {
                 const value = '300ms';
                 const path = ['animation', 'duration'];
 
-                expect(animationFieldResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(animationFieldResolver.apply({ config, theme, value, path })).toEqual(value);
             });
         });
     });

@@ -29,23 +29,23 @@ export interface ResolvedColorProperty {
 }
 
 export interface ColorPropertyObjectVariant {
-    hue?: number;
-    h?: number;
-    saturation?: number;
-    s?: number;
-    lightness?: number;
-    l?: number;
-    alpha?: number;
-    a?: number;
+    hue?: number | string;
+    h?: number | string;
+    saturation?: number | string;
+    s?: number | string;
+    lightness?: number | string;
+    l?: number | string;
+    alpha?: number | string;
+    a?: number | string;
 
-    lighten?: number;
-    darken?: number;
-    saturate?: number;
-    desaturate?: number;
+    lighten?: number | string;
+    darken?: number | string;
+    saturate?: number | string;
+    desaturate?: number | string;
     grayscale?: true;
-    fade?: number;
-    opaquer?: number;
-    rotate?: number;
+    fade?: number | string;
+    opaquer?: number | string;
+    rotate?: number | string;
 
     [key: string]: string | number | boolean | undefined;
 }

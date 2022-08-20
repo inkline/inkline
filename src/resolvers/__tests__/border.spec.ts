@@ -1,13 +1,11 @@
-import { borderResolvers } from '../border';
-import { Configuration, Theme } from '../../types';
-
-const [
+import {
     borderResolver,
     borderDefaultResolver,
     borderFieldResolver,
     borderSideResolver,
     borderSideFieldResolver
-] = borderResolvers();
+} from '../border';
+import { Configuration, Theme } from '../../types';
 
 describe('resolvers', () => {
     describe('border', () => {
@@ -42,7 +40,7 @@ describe('resolvers', () => {
                 const value = '1px solid #000000';
                 const path = ['border'];
 
-                expect(borderResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(borderResolver.apply({ config, theme, value, path })).toEqual({
                     top: { width: '1px', style: 'solid', color: '#000000' },
                     right: { width: '1px', style: 'solid', color: '#000000' },
                     bottom: { width: '1px', style: 'solid', color: '#000000' },
@@ -84,7 +82,7 @@ describe('resolvers', () => {
                 const value = '1px solid #000000';
                 const path = ['border', 'default'];
 
-                expect(borderDefaultResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(borderDefaultResolver.apply({ config, theme, value, path })).toEqual({
                     top: { width: '1px', style: 'solid', color: '#000000' },
                     right: { width: '1px', style: 'solid', color: '#000000' },
                     bottom: { width: '1px', style: 'solid', color: '#000000' },
@@ -135,7 +133,7 @@ describe('resolvers', () => {
                 const value = '1px';
                 const path = ['border', 'width'];
 
-                expect(borderFieldResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(borderFieldResolver.apply({ config, theme, value, path })).toEqual(value);
             });
 
             it('should return style field value', () => {
@@ -144,7 +142,7 @@ describe('resolvers', () => {
                 const value = 'solid';
                 const path = ['border', 'style'];
 
-                expect(borderFieldResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(borderFieldResolver.apply({ config, theme, value, path })).toEqual(value);
             });
 
             it('should return color field value', () => {
@@ -153,7 +151,7 @@ describe('resolvers', () => {
                 const value = '#000000';
                 const path = ['border', 'color'];
 
-                expect(borderFieldResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(borderFieldResolver.apply({ config, theme, value, path })).toEqual(value);
             });
         });
     });
@@ -190,7 +188,7 @@ describe('resolvers', () => {
                 const value = '1px solid #000000';
                 const path = ['border', 'top'];
 
-                expect(borderSideResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(borderSideResolver.apply({ config, theme, value, path })).toEqual({
                     width: '1px',
                     style: 'solid',
                     color: '#000000'
@@ -231,7 +229,7 @@ describe('resolvers', () => {
                 const value = '1px';
                 const path = ['border', 'top', 'width'];
 
-                expect(borderSideFieldResolver.resolve({ config, theme, value, path })).toEqual('1px');
+                expect(borderSideFieldResolver.apply({ config, theme, value, path })).toEqual('1px');
             });
         });
     });

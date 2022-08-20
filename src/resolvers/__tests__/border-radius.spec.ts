@@ -1,12 +1,10 @@
-import { borderRadiusResolvers } from '../border-radius';
-import { Configuration, Theme } from '../../types';
-
-const [
+import {
     borderRadiusResolver,
     borderRadiusDefaultResolver,
     borderRadiusCornerResolver,
     borderRadiusVariantResolver
-] = borderRadiusResolvers();
+} from '../border-radius';
+import { Configuration, Theme } from '../../types';
 
 describe('resolvers', () => {
     describe('borderRadius', () => {
@@ -41,7 +39,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['borderRadius'];
 
-                expect(borderRadiusResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(borderRadiusResolver.apply({ config, theme, value, path })).toEqual({
                     topLeft: '1rem',
                     topRight: '1rem',
                     bottomRight: '1rem',
@@ -83,7 +81,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['borderRadius', 'default'];
 
-                expect(borderRadiusDefaultResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(borderRadiusDefaultResolver.apply({ config, theme, value, path })).toEqual({
                     topLeft: '1rem',
                     topRight: '1rem',
                     bottomRight: '1rem',
@@ -125,7 +123,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['borderRadius', 'topLeft'];
 
-                expect(borderRadiusCornerResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(borderRadiusCornerResolver.apply({ config, theme, value, path })).toEqual(value);
             });
         });
     });
@@ -152,7 +150,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['variants', 'borderRadius', 'lg'];
 
-                expect(borderRadiusVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(borderRadiusVariantResolver.apply({ config, theme, value, path })).toEqual({
                     topLeft: value,
                     topRight: value,
                     bottomRight: value,
@@ -166,7 +164,7 @@ describe('resolvers', () => {
                 const value = { topLeft: '1rem', bottomLeft: '2rem' };
                 const path = ['variants', 'borderRadius', 'lg'];
 
-                expect(borderRadiusVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(borderRadiusVariantResolver.apply({ config, theme, value, path })).toEqual({
                     topLeft: value.topLeft,
                     bottomLeft: value.bottomLeft
                 });

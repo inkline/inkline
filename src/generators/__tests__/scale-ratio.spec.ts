@@ -1,7 +1,5 @@
-import { scaleRatioGenerators } from '../scale-ratio';
-import { Configuration, Theme } from '../../types';
-
-const [scaleRatioGenerator] = scaleRatioGenerators();
+import { scaleRatioGenerator } from '../scale-ratio';
+import { ResolvedConfiguration, ResolvedTheme } from '../../types';
 
 describe('generators', () => {
     describe('scaleRatio', () => {
@@ -19,7 +17,7 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all parts of composed variable', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     scaleRatio: {
                         primary: 'var(--scale-ratio-minor-third)',
@@ -27,11 +25,11 @@ describe('generators', () => {
                         minorThird: 1.2,
                         perfectFourth: 1.333
                     }
-                } as unknown as Theme;
+                } as unknown as ResolvedTheme;
                 const value = theme.scaleRatio;
                 const path = ['scaleRatio'];
 
-                expect(scaleRatioGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(scaleRatioGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Scale ratio variables',
                     ' */',

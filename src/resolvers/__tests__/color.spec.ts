@@ -1,10 +1,8 @@
-import { colorResolvers } from '../color';
-import { Configuration, Theme, UserConfiguration } from '../../types';
-
-const [
+import {
     colorResolver,
     colorVariantResolver
-] = colorResolvers();
+} from '../color';
+import { ColorPropertyVariant, Configuration, Theme } from '../../types';
 
 describe('resolvers', () => {
     describe('color', () => {
@@ -39,7 +37,7 @@ describe('resolvers', () => {
                 const value = '#ffffff';
                 const path = ['color', 'white'];
 
-                expect(colorResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(colorResolver.apply({ config, theme, value, path })).toEqual({
                     h: 0,
                     s: 0,
                     l: 100,
@@ -53,7 +51,7 @@ describe('resolvers', () => {
                 const value = 'hsla(100, 100%, 100%, 0.5)';
                 const path = ['color', 'other'];
 
-                expect(colorResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(colorResolver.apply({ config, theme, value, path })).toEqual({
                     h: 100,
                     s: 100,
                     l: 100,
@@ -67,7 +65,7 @@ describe('resolvers', () => {
                 const value = 'rgba(255, 255, 255, 50%)';
                 const path = ['color', 'other'];
 
-                expect(colorResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(colorResolver.apply({ config, theme, value, path })).toEqual({
                     h: 0,
                     s: 0,
                     l: 100,
@@ -81,7 +79,7 @@ describe('resolvers', () => {
                 const value = { r: 0, g: 0, b: 0, a: 1 };
                 const path = ['color', 'other'];
 
-                expect(colorResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(colorResolver.apply({ config, theme, value, path })).toEqual({
                     h: 0,
                     s: 0,
                     l: 0,
@@ -95,7 +93,7 @@ describe('resolvers', () => {
                 const value = 'blue';
                 const path = ['color', 'other'];
 
-                expect(colorResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(colorResolver.apply({ config, theme, value, path })).toEqual({
                     h: 240,
                     s: 100,
                     l: 50,
@@ -109,7 +107,7 @@ describe('resolvers', () => {
                 const value = { h: '90deg', s: '25.50%', l: '100%', a: '25%' };
                 const path = ['color', 'other'];
 
-                expect(colorResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(colorResolver.apply({ config, theme, value, path })).toEqual({
                     h: 90,
                     s: 25.5,
                     l: 100,
@@ -141,7 +139,7 @@ describe('resolvers', () => {
                 const value = '#ff0000';
                 const path = ['variants', 'color', 'primary', '500'];
 
-                expect(colorVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(colorVariantResolver.apply({ config, theme, value, path })).toEqual({
                     h: 0,
                     s: 100,
                     l: 50,
@@ -155,7 +153,7 @@ describe('resolvers', () => {
                 const value = 'hsla(100, 100%, 100%, 0.5)';
                 const path = ['variants', 'color', 'primary', '500'];
 
-                expect(colorVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(colorVariantResolver.apply({ config, theme, value, path })).toEqual({
                     h: 100,
                     s: 100,
                     l: 100,
@@ -169,7 +167,7 @@ describe('resolvers', () => {
                 const value = 'rgba(255, 255, 255, 50%)';
                 const path = ['variants', 'color', 'primary', '500'];
 
-                expect(colorVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(colorVariantResolver.apply({ config, theme, value, path })).toEqual({
                     h: 0,
                     s: 0,
                     l: 100,
@@ -183,7 +181,7 @@ describe('resolvers', () => {
                 const value = 'blue';
                 const path = ['variants', 'color', 'primary', '500'];
 
-                expect(colorVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(colorVariantResolver.apply({ config, theme, value, path })).toEqual({
                     h: 240,
                     s: 100,
                     l: 50,
@@ -197,7 +195,7 @@ describe('resolvers', () => {
                 const value = { h: '90deg' };
                 const path = ['variants', 'color', 'primary', '500'];
 
-                expect(colorVariantResolver.resolve({ config, theme, value: value as UserConfiguration.Property.Color, path })).toEqual({
+                expect(colorVariantResolver.apply({ config, theme, value: value as ColorPropertyVariant, path })).toEqual({
                     h: '90deg'
                 });
             });

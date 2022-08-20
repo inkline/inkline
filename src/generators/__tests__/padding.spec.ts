@@ -1,7 +1,5 @@
-import { paddingGenerators } from '../padding';
-import { Configuration, Theme } from '../../types';
-
-const [paddingGenerator] = paddingGenerators();
+import { paddingGenerator } from '../padding';
+import { ResolvedConfiguration, ResolvedTheme } from '../../types';
 
 describe('generators', () => {
     describe('padding', () => {
@@ -19,7 +17,7 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all sides and composed variable', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     padding: {
                         top: '1rem',
@@ -27,11 +25,11 @@ describe('generators', () => {
                         bottom: '1rem',
                         left: '1rem'
                     }
-                } as Theme;
+                } as ResolvedTheme;
                 const value = theme.padding;
                 const path = ['padding'];
 
-                expect(paddingGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(paddingGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Padding variables',
                     ' */',

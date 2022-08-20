@@ -1,11 +1,9 @@
-import { boxShadowResolvers } from '../box-shadow';
-import { Configuration, Theme } from '../../types';
-
-const [
+import {
     boxShadowResolver,
     boxShadowDefaultResolver,
     boxShadowFieldResolver
-] = boxShadowResolvers();
+} from '../box-shadow';
+import { Configuration, Theme } from '../../types';
 
 describe('resolvers', () => {
     describe('boxShadow', () => {
@@ -40,7 +38,7 @@ describe('resolvers', () => {
                 const value = '1px 2px 3rem 4rem rgba(0,0,0,1)';
                 const path = ['boxShadow'];
 
-                expect(boxShadowResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(boxShadowResolver.apply({ config, theme, value, path })).toEqual({
                     offsetX: '1px',
                     offsetY: '2px',
                     blurRadius: '3rem',
@@ -83,7 +81,7 @@ describe('resolvers', () => {
                 const value = '1px 2px 3rem 4rem rgba(0,0,0,1)';
                 const path = ['boxShadow', 'default'];
 
-                expect(boxShadowDefaultResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(boxShadowDefaultResolver.apply({ config, theme, value, path })).toEqual({
                     offsetX: '1px',
                     offsetY: '2px',
                     blurRadius: '3rem',
@@ -126,7 +124,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['boxShadow', 'offsetX'];
 
-                expect(boxShadowFieldResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(boxShadowFieldResolver.apply({ config, theme, value, path })).toEqual(value);
             });
         });
     });

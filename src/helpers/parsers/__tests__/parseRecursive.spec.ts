@@ -1,14 +1,18 @@
 import { parseRecursive } from '../parseRecursive';
-import { Configuration } from '../../../types';
+import {Configuration, ConfigurationContext} from '../../../types';
 
 describe('helpers', () => {
     describe('parsers', () => {
         describe('parseRecursive', () => {
             it('should go through value keys and parse entries', () => {
                 const config = {
+                    resolvers: [],
+                    generators: [],
                     theme: {
-                        value: 'a'
-                    } as any
+                        default: {
+                            value: 'a'
+                        }
+                    }
                 } as Configuration;
                 const value = {
                     value: '<% theme.value %>',
@@ -17,8 +21,9 @@ describe('helpers', () => {
                         fn: () => '<% theme.value %>'
                     }
                 };
+                const context: ConfigurationContext<any, any> = { config, value, theme: config.theme.default, path: [] };
 
-                expect(parseRecursive(config, value)).toEqual({
+                expect(parseRecursive(context)).toEqual({
                     value: 'a',
                     nested: {
                         value: 'a',

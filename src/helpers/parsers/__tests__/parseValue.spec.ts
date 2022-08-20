@@ -1,5 +1,5 @@
 import { parseValue } from '../parseValue';
-import { Configuration, UserConfiguration } from '../../../types';
+import {Configuration, ConfigurationContext, FnProperty} from '../../../types';
 
 describe('helpers', () => {
     describe('parsers', () => {
@@ -7,26 +7,33 @@ describe('helpers', () => {
             it('should return value itself if string', () => {
                 const config = {} as Configuration;
                 const value = 'red';
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseValue(config, value)).toEqual(value);
+                expect(parseValue(context)).toEqual(value);
             });
 
             it('should return value itself if number', () => {
                 const config = {} as Configuration;
                 const value = 10;
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseValue(config, value)).toEqual(value);
+                expect(parseValue(context)).toEqual(value);
             });
 
             it('should call parseFn and parse return value if function', () => {
                 const config = {
+                    resolvers: [],
+                    generators: [],
                     theme: {
-                        margin: '1rem'
+                        default: {
+                            margin: '1rem'
+                        }
                     }
                 } as Configuration;
-                const value: UserConfiguration.PropertyFn<string> = ({ theme }) => theme.margin as string;
+                const value: FnProperty<string> = ({ theme }) => theme.margin as string;
+                const context: ConfigurationContext<any, any> = { config, value, theme: {}, path: [] };
 
-                expect(parseValue(config, value)).toEqual(config.theme.margin);
+                expect(parseValue(context)).toEqual(config.theme.margin);
             });
         });
     });

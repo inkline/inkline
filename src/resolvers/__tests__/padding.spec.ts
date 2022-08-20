@@ -1,12 +1,10 @@
-import { paddingResolvers } from '../padding';
-import { Configuration, Theme } from '../../types';
-
-const [
+import {
     paddingResolver,
     paddingDefaultResolver,
     paddingSideResolver,
     paddingVariantResolver
-] = paddingResolvers();
+} from '../padding';
+import { Configuration, Theme } from '../../types';
 
 describe('resolvers', () => {
     describe('padding', () => {
@@ -41,7 +39,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['padding'];
 
-                expect(paddingResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(paddingResolver.apply({ config, theme, value, path })).toEqual({
                     top: '1rem',
                     right: '1rem',
                     bottom: '1rem',
@@ -83,7 +81,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['padding', 'default'];
 
-                expect(paddingDefaultResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(paddingDefaultResolver.apply({ config, theme, value, path })).toEqual({
                     top: '1rem',
                     right: '1rem',
                     bottom: '1rem',
@@ -125,7 +123,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['padding', 'top'];
 
-                expect(paddingSideResolver.resolve({ config, theme, value, path })).toEqual(value);
+                expect(paddingSideResolver.apply({ config, theme, value, path })).toEqual(value);
             });
         });
     });
@@ -152,7 +150,7 @@ describe('resolvers', () => {
                 const value = '1rem';
                 const path = ['variants', 'padding', 'lg'];
 
-                expect(paddingVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(paddingVariantResolver.apply({ config, theme, value, path })).toEqual({
                     top: value,
                     right: value,
                     bottom: value,
@@ -166,7 +164,7 @@ describe('resolvers', () => {
                 const value = { top: '1rem', bottom: '2rem' };
                 const path = ['variants', 'padding', 'lg'];
 
-                expect(paddingVariantResolver.resolve({ config, theme, value, path })).toEqual({
+                expect(paddingVariantResolver.apply({ config, theme, value, path })).toEqual({
                     top: value.top,
                     bottom: value.bottom
                 });

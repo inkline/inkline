@@ -1,7 +1,5 @@
-import { borderGenerators } from '../border';
-import { Configuration, Theme } from '../../types';
-
-const [borderGenerator] = borderGenerators();
+import { borderGenerator } from '../border';
+import { ResolvedConfiguration, ResolvedTheme } from '../../types';
 
 describe('generators', () => {
     describe('border', () => {
@@ -19,7 +17,7 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all sides and composed variable', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     border: {
                         top: {
@@ -43,11 +41,11 @@ describe('generators', () => {
                             color: '#0000ff'
                         }
                     }
-                } as Theme;
+                } as ResolvedTheme;
                 const value = theme.border;
                 const path = ['border'];
 
-                expect(borderGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(borderGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Border variables',
                     ' */',

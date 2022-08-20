@@ -1,7 +1,5 @@
-import { marginGenerators } from '../margin';
-import { Configuration, Theme } from '../../types';
-
-const [marginGenerator, marginVariantGenerator] = marginGenerators();
+import { marginGenerator } from '../margin';
+import { ResolvedConfiguration, ResolvedTheme } from '../../types';
 
 describe('generators', () => {
     describe('margin', () => {
@@ -19,7 +17,7 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all sides and composed variable', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     margin: {
                         top: '1rem',
@@ -27,11 +25,11 @@ describe('generators', () => {
                         bottom: '1rem',
                         left: '1rem'
                     }
-                } as Theme;
+                } as ResolvedTheme;
                 const value = theme.margin;
                 const path = ['margin'];
 
-                expect(marginGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(marginGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Margin variables',
                     ' */',
@@ -60,7 +58,7 @@ describe('generators', () => {
 
         describe('generator', () => {
             it('should generate variables for all sides and composed variable', () => {
-                const config = {} as Configuration;
+                const config = {} as ResolvedConfiguration;
                 const theme = {
                     margin: {
                         top: '1rem',
@@ -68,11 +66,11 @@ describe('generators', () => {
                         bottom: '1rem',
                         left: '1rem'
                     }
-                } as Theme;
+                } as ResolvedTheme;
                 const value = theme.margin;
                 const path = ['margin'];
 
-                expect(marginGenerator.generate({ config, theme, value, path })).toEqual([
+                expect(marginGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Margin variables',
                     ' */',
