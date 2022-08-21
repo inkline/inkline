@@ -171,6 +171,17 @@ export const defaultConfig: Configuration = {
                 lineHeight: 1.5,
                 letterSpacing: 0
             },
+            // elements: { // @TODO Add support for elements and components
+            //     body: {
+            //         background: 'var(--color-white)' // var(--body--background)
+            //         color: 'var(--color-gray-90)' // var(--body--color)
+            //     }
+            // },
+            // components: {
+            //     alert: {
+            //         info: {}
+            //     }
+            // },
             variants: {
                 borderRadius: sizeMultiplierVariants,
                 color: {
