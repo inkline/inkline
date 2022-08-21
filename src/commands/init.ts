@@ -9,7 +9,12 @@ import { defaultConfig } from '@inkline/config';
 const defaultConfigFileContents = `import { defineConfig } from '@inkline/config';
 
 export default defineConfig(${
-    inspect({ theme: defaultConfig.theme }, { indent: '\t', depth: Infinity })
+    inspect({
+        theme: defaultConfig.theme
+    }, {
+        indent: 4,
+        depth: Infinity
+    }).replace(/(\d+[a-zA-Z]+):/g, '\'$1\':')
 });
 `;
 
