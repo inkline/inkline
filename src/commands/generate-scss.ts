@@ -2,19 +2,19 @@ import { build } from '@inkline/config';
 import { Commands } from '../types';
 import { Logger } from '@grozav/logger';
 
-export async function generateCSS (options: Commands.Generate.CSS.Options) {
+export async function generateSCSS (options: Commands.Generate.SCSS.Options) {
     try {
         const { config: configFile, ...configuration } = options;
 
         await build({
             ...configuration,
             configFile,
-            extName: '.css'
+            extName: '.scss'
         });
 
-        Logger.success(Commands.Generate.CSS.messages.success);
+        Logger.success(Commands.Generate.SCSS.messages.success);
     } catch (error) {
-        Logger.error(Commands.Generate.CSS.messages.error);
+        Logger.error(Commands.Generate.SCSS.messages.error);
         Logger.log(error);
     }
 }

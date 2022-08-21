@@ -20,7 +20,21 @@ export namespace Commands {
             export interface Options {
                 config?: string;
                 outputDir?: string;
-                extname?: string;
+                extName: '.css'
+            }
+        }
+
+        export namespace SCSS {
+            export const name = 'scss';
+            export const messages = {
+                success: 'SCSS generated successfully.',
+                error: 'An unexpected error occurred.'
+            };
+
+            export interface Options {
+                config?: string;
+                outputDir?: string;
+                extName: '.scss'
             }
         }
     }
