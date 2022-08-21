@@ -12,6 +12,8 @@ lib
 dist
 dist-ssr
 *.local
+inkline.config.ts
+.inkline
 
 # Editor directories and files
 .vscode/*
@@ -23,5 +25,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-.inkline
