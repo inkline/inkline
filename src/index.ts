@@ -7,6 +7,7 @@ export * from './types';
 
 export * from './build';
 export * from './defaults';
+export * from './define';
 export * from './generate';
 export * from './load';
 export * from './resolve';
