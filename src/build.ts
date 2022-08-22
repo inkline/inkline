@@ -38,13 +38,16 @@ export async function build (options: BuildOptions = {}) {
     }
 
     await Promise.all(Object.keys(cssConfig).map(async (themeName) => {
-        const themeOutputDir: string = themeName === 'default' ? options.outputDir as string : resolve(options.outputDir as string, themeName);
+        const themeOutputDir: string = themeName === 'default'
+            ? options.outputDir as string
+            : resolve(options.outputDir as string, themeName);
+
         if (!existsSync(themeOutputDir)) {
             mkdirSync(themeOutputDir);
         }
 
         return cssConfig[themeName].map(async (file) =>
-            writeFile(resolve(themeOutputDir as string, `${file.name}${options.extName}`), file.contents)
+            writeFile(resolve(themeOutputDir, `${file.name}${options.extName}`), file.contents)
         );
     }).flat());
 
