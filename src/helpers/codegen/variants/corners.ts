@@ -1,4 +1,4 @@
-import {CornersProperty, CornersPropertyVariant, ResolvedConfiguration, ResolvedTheme, Theme} from '../../../types';
+import { CornersProperty, CornersPropertyVariant, ResolvedConfiguration } from '../../../types';
 import { codegenGetCSSVariable, codegenSetCSSVariable } from '../variable';
 import { cornersModifierAliases, cornersModifiers } from '../../../generators/modifiers/corners';
 import { cornersPropertyKeys } from '../../../constants';
@@ -12,12 +12,13 @@ import { toDashCase } from '@grozav/utils';
  * @param variantName
  * @param variant
  */
-export const codegenCornersPropertyVariant = (config: ResolvedConfiguration, property: 'border-radius', variantName: string, variant: CornersPropertyVariant): string[] => {
+export const codegenCornersPropertyVariant = (config: ResolvedConfiguration, property: string, variantName: string, variant: CornersPropertyVariant): string[] => {
+    const [prefix, suffix] = property.split('-');
     const variantValue: CornersProperty<string> = {
-        topLeft: codegenGetCSSVariable(`${property}-top-left`),
-        topRight: codegenGetCSSVariable(`${property}-top-right`),
-        bottomRight: codegenGetCSSVariable(`${property}-bottom-right`),
-        bottomLeft: codegenGetCSSVariable(`${property}-bottom-left`)
+        topLeft: codegenGetCSSVariable(`${prefix}-top-left-${suffix}`),
+        topRight: codegenGetCSSVariable(`${prefix}-top-right-${suffix}`),
+        bottomRight: codegenGetCSSVariable(`${prefix}-bottom-right-${suffix}`),
+        bottomLeft: codegenGetCSSVariable(`${prefix}-bottom-left-${suffix}`)
     };
 
     Object.keys(variant).forEach((modifierName) => {
@@ -28,14 +29,14 @@ export const codegenCornersPropertyVariant = (config: ResolvedConfiguration, pro
 
     return cornersPropertyKeys.map((side) =>
         codegenSetCSSVariable(
-            `${property}-${toDashCase(side)}-${variantName}`,
+            `${prefix}-${toDashCase(side)}-${suffix}-${variantName}`,
             variantValue[side]
         )
     ).concat([
         codegenSetCSSVariable(
-            `${property}-${variantName}`,
+            `${prefix}-${suffix}-${variantName}`,
             cornersPropertyKeys.map(
-                (side) => codegenGetCSSVariable(`${property}-${toDashCase(side)}-${variantName}`)
+                (side) => codegenGetCSSVariable(`${prefix}-${toDashCase(side)}-${suffix}-${variantName}`)
             ).join(' ')
         )
     ]);

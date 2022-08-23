@@ -16,12 +16,12 @@ export const borderRadiusGenerator: Generator<ResolvedTheme['borderRadius']> = {
     apply: ({ value }) => ['/**', ' * Border radius variables', ' */']
         .concat(
             cornersPropertyKeys.map(
-                (corner) => codegenSetCSSVariable(`border-radius-${toDashCase(corner)}`, value[corner])
+                (corner) => codegenSetCSSVariable(`border-${toDashCase(corner)}-radius`, value[corner])
             )
         )
         .concat([
             codegenSetCSSVariable('border-radius', cornersPropertyKeys.map(
-                (corner) => codegenGetCSSVariable(`border-radius-${toDashCase(corner)}`)
+                (corner) => codegenGetCSSVariable(`border-${toDashCase(corner)}-radius`)
             ).join(' '))
         ])
 };
