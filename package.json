@@ -58,5 +58,18 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/alexgrozav"
+  },
+  "bugs": {
+    "url": "https://github.com/inkline/inkline/issues"
+  },
+  "homepage": "https://inkline.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkline/config.git"
+  },
+  "license": "ISC"
 }
