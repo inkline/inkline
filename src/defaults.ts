@@ -119,7 +119,7 @@ export const defaultConfig: Configuration = {
                 pink: '#f20d61',
                 white: '#ffffff',
                 gray: '#adb5bd',
-                muted: 'var(--color-gray-600)',
+                muted: '#6c757d',
                 black: '#000000',
                 primary: '<% theme.color.blue %>',
                 secondary: '<% theme.color.purple %>',
