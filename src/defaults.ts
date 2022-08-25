@@ -118,6 +118,8 @@ export const defaultConfig: Configuration = {
                 purple: '#7559a6',
                 pink: '#f20d61',
                 white: '#ffffff',
+                gray: '#adb5bd',
+                muted: 'var(--color-gray-600)',
                 black: '#000000',
                 primary: '<% theme.color.blue %>',
                 secondary: '<% theme.color.purple %>',
@@ -197,7 +199,8 @@ export const defaultConfig: Configuration = {
                     info: colorShadeVariants,
                     success: colorShadeVariants,
                     warning: colorShadeVariants,
-                    danger: colorShadeVariants
+                    danger: colorShadeVariants,
+                    gray: colorShadeVariants
                 },
                 margin: spacingVariants,
                 padding: spacingVariants,
