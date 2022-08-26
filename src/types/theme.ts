@@ -75,6 +75,7 @@ export interface Theme {
         fontSize: FontSizeProperty;
         lineHeight: LineHeightProperty;
         letterSpacing: LetterSpacingProperty;
+        color: Record<string, ColorProperty>;
     };
     variants: PartialDeep<ThemeVariants>;
 }
@@ -103,6 +104,7 @@ export interface ResolvedTheme {
         fontSize: ResolvedFontSizeProperty;
         lineHeight: ResolvedLineHeightProperty;
         letterSpacing: ResolvedLetterSpacingProperty;
+        color: Record<string, ResolvedColorProperty>;
     };
     variants: ThemeVariants;
 }

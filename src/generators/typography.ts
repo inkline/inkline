@@ -1,7 +1,15 @@
-import {Generator, NumberPropertyVariant, ResolvedTheme, ThemeVariants} from '../types';
-import { codegenNumberVariant, codegenSetCSSVariable } from '../helpers';
+import {
+    Generator,
+    GeneratorPriority,
+    NumberPropertyVariant,
+    ResolvedColorProperty, ResolvedColorPropertyObject,
+    ResolvedTheme,
+    ThemeVariants
+} from '../types';
+import {codegenColorVariables, codegenGetCSSVariable, codegenNumberVariant, codegenSetCSSVariable} from '../helpers';
 import { toDashCase } from '@grozav/utils';
 import * as CSS from 'csstype';
+import color from 'color';
 
 export const typographyFontFamilyGenerator: Generator<ResolvedTheme['typography']['fontFamily']> = {
     name: 'typography',
@@ -71,9 +79,58 @@ export const typographyFontSizeVariantsGenerator: Generator<ThemeVariants['typog
     }
 };
 
+export const typographyColorGenerator: Generator<ResolvedTheme['color'][string]> = {
+    name: 'color',
+    location: 'root',
+    priority: GeneratorPriority.Low,
+    test: /^typography.color$/,
+    apply: ({ value, theme }) => {
+        const textColors = Object.keys(value).map((colorName) => {
+            return codegenColorVariables(colorName, (value as Record<string, ResolvedColorProperty>)[colorName] as ResolvedTheme['typography']['color'][string], 'text--color');
+        }).flat();
+
+        const contrastColors = Object.keys(theme.color).map((colorName) => {
+            let luma;
+            try {
+                const { h, s, l, a: alpha } = theme.color[colorName] as ResolvedColorPropertyObject;
+                const constructedColor = color({ h, s, l, alpha });
+                const rgb = constructedColor.rgb().object();
+
+                Object.keys(rgb).forEach((key) => {
+                    rgb[key] = rgb[key] / 255;
+
+                    if (rgb[key] <= 0.04045) {
+                        rgb[key] = rgb[key] / 12.92;
+                    } else {
+                        rgb[key] = Math.pow((rgb[key] + 0.055) / 1.055, 2.4);
+                    }
+                });
+
+                luma = 0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b;
+            } catch (error) {
+                console.error('Could not calculate luma for color. Using text-dark as fallback value.', colorName);
+
+                luma = 1;
+            }
+
+            const contrastColor = luma > 0.179 ? codegenGetCSSVariable('text--color-dark') : codegenGetCSSVariable('text--color-light');
+
+            return codegenSetCSSVariable(`contrast-text--color-${toDashCase(colorName)}`, contrastColor);
+        });
+
+        return ['/**', ' * Text color variables', ' */']
+            .concat(textColors)
+            .concat([
+                '', '/**', ' * Contrast text color variables', ' */'
+            ])
+            .concat(contrastColors);
+    }
+};
+
 export const typographyGenerators = [
     typographyFontFamilyGenerator,
     typographyFontWeightGenerator,
     typographyFieldGenerator,
-    typographyFontSizeVariantsGenerator
+    typographyFontSizeVariantsGenerator,
+    typographyColorGenerator
 ];

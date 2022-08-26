@@ -20,13 +20,15 @@ export namespace ColorType {
 
 export type ColorProperty = CSS.Property.Color | ColorType.RGBA | ColorType.HSLA;
 
-export interface ResolvedColorProperty {
+export interface ResolvedColorPropertyObject {
     h: number | string;
     s: number | string;
     l: number | string;
     a: CSS.Property.Opacity;
     [key: string]: number | string | boolean;
 }
+
+export type ResolvedColorProperty = ResolvedColorPropertyObject | string;
 
 export interface ColorPropertyObjectVariant {
     hue?: number | string;

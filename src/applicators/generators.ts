@@ -44,7 +44,7 @@ export function applyGenerators (
                 target.push({
                     name: generator.name,
                     lines: generator.apply(context),
-                    priority: generator.priority ?? GeneratorPriority.Low,
+                    priority: generator.priority ?? GeneratorPriority.Medium,
                     location
                 });
 

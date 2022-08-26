@@ -2,7 +2,7 @@ import {
     ColorProperty,
     ColorType,
     ConfigurationContext,
-    ResolvedColorProperty,
+    ResolvedColorProperty, ResolvedColorPropertyObject,
     Theme
 } from '../../types';
 import color from 'color';
@@ -47,14 +47,19 @@ export function parseColor (
         ...context,
         value
     });
-    const constructedColor = color(parsedValue);
-    const hslColor = constructedColor.hsl().object() as ResolvedColorProperty;
-    const alpha = constructedColor.alpha();
 
-    return {
-        h: hslColor.h,
-        s: hslColor.s,
-        l: hslColor.l,
-        a: alpha
-    };
+    try {
+        const constructedColor = color(parsedValue);
+        const hslColor = constructedColor.hsl().object() as ResolvedColorPropertyObject;
+        const alpha = constructedColor.alpha();
+
+        return {
+            h: hslColor.h,
+            s: hslColor.s,
+            l: hslColor.l,
+            a: alpha
+        };
+    } catch (error) {
+        return parsedValue as string;
+    }
 }

@@ -119,7 +119,6 @@ export const defaultConfig: Configuration = {
                 pink: '#f20d61',
                 white: '#ffffff',
                 gray: '#adb5bd',
-                muted: '#6c757d',
                 black: '#000000',
                 primary: '<% theme.color.blue %>',
                 secondary: '<% theme.color.purple %>',
@@ -178,7 +177,12 @@ export const defaultConfig: Configuration = {
                 },
                 fontSize: '1rem',
                 lineHeight: 1.5,
-                letterSpacing: 0
+                letterSpacing: 0,
+                color: {
+                    dark: 'var(--color-gray-900)',
+                    light: 'var(--color-white)',
+                    muted: 'var(--color-gray-600)'
+                }
             },
             // elements: { // @TODO Add support for elements and components
             //     body: {
@@ -224,6 +228,11 @@ export const defaultConfig: Configuration = {
             },
             border: {
                 color: '#4a4a4c'
+            },
+            typography: {
+                color: {
+                    muted: 'var(--color-gray-400)'
+                }
             }
         }
     },

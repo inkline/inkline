@@ -36,7 +36,7 @@ export const colorGenerator: Generator<ResolvedTheme['color'][string]> = {
     name: 'color',
     location: 'root',
     test: /(.*)color\.(\w+)$/,
-    skip: /^variants/,
+    skip: /^(variants|typography)/,
     apply: ({ value, path }) => {
         const name = path[path.length - 1];
 

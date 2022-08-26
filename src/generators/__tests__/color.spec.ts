@@ -1,4 +1,4 @@
-import { ResolvedConfiguration, ResolvedTheme } from '../../types';
+import {ResolvedColorPropertyObject, ResolvedConfiguration, ResolvedTheme} from '../../types';
 import { colorGenerator } from '../color';
 
 describe('generators', () => {
@@ -28,17 +28,17 @@ describe('generators', () => {
                         }
                     }
                 } as unknown as ResolvedTheme;
-                const value = theme.color.primary;
+                const value = theme.color.primary as ResolvedColorPropertyObject;
                 const path = ['color', 'primary'];
 
                 expect(colorGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Color primary variables',
                     ' */',
-                    `--color-primary-h: ${theme.color.primary.h};`,
-                    `--color-primary-s: ${theme.color.primary.s}%;`,
-                    `--color-primary-l: ${theme.color.primary.l}%;`,
-                    `--color-primary-a: ${theme.color.primary.a};`,
+                    `--color-primary-h: ${value.h};`,
+                    `--color-primary-s: ${value.s}%;`,
+                    `--color-primary-l: ${value.l}%;`,
+                    `--color-primary-a: ${value.a};`,
                     '--color-primary: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), var(--color-primary-a));'
                 ]);
             });
