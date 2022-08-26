@@ -118,7 +118,9 @@ export const defaultConfig: Configuration = {
                 purple: '#7559a6',
                 pink: '#f20d61',
                 white: '#ffffff',
-                gray: '#adb5bd',
+                light: 'var(--color-gray-200)',
+                gray: '#737f8c',
+                dark: 'var(--color-gray-800)',
                 black: '#000000',
                 primary: '<% theme.color.blue %>',
                 secondary: '<% theme.color.purple %>',
@@ -180,7 +182,7 @@ export const defaultConfig: Configuration = {
                 letterSpacing: 0,
                 color: {
                     dark: 'var(--color-gray-900)',
-                    light: 'var(--color-white)',
+                    light: 'var(--color-gray-100)',
                     muted: 'var(--color-gray-600)'
                 }
             },
