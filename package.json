@@ -1,6 +1,6 @@
 {
   "name": "@inkline/config",
-  "version": "1.4.6",
+  "version": "1.5.0",
   "scripts": {
     "start": "npm run build && node --experimental-specifier-resolution=node lib/playground.mjs",
     "dev": "vite",
