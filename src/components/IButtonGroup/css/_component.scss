@@ -1,6 +1,3 @@
-@import '../../css/variables';
-@import '../../css/mixins';
-
 /**
  * Button Group
  */
@@ -16,8 +13,16 @@
         flex: 0 1 auto;
         z-index: 0;
         margin-right: 0;
-        font-size: var(----font-size);
-        padding: var(----padding);
+        font-size: var(--button-group--font-size, var(--button--font-size));
+        padding: var(
+            --button-group--padding,
+            (
+                var(--button-group--padding-top, var(--button--padding-top))
+                var(--button-group--padding-right, var(--button--padding-right))
+                var(--button-group--padding-bottom, var(--button--padding-bottom))
+                var(--button-group--padding-left, var(--button--padding-left))
+            )
+        );
 
         &:hover,
         &:focus,
@@ -28,8 +33,8 @@
 
         &.-circle {
             border-radius: 100%;
-            width: var(----circle--size);
-            height: var(----circle--size);
+            width: var(--button--circle--size);
+            height: var(--button--circle--size);
             padding: 0;
         }
     }
@@ -57,14 +62,14 @@
     &:not(.-vertical) {
         > .button:last-child,
         > [class$="-wrapper"]:last-child > * > .button:last-child {
-            border-top-right-radius: var(----border-top-right-radius);
-            border-bottom-right-radius: var(----border-bottom-right-radius);
+            border-top-right-radius: var(--button-group--border-top-right-radius, var(--button--border-top-right-radius));
+            border-bottom-right-radius: var(--button-group--border-bottom-right-radius, var(--button--border-bottom-right-radius));
         }
 
         > .button:first-child,
         > [class$="-wrapper"]:first-child > * > .button:first-child {
-            border-top-left-radius: var(----border-top-left-radius);
-            border-bottom-left-radius: var(----border-bottom-left-radius);
+            border-top-left-radius: var(--button-group--border-top-left-radius, var(--button--border-top-left-radius));
+            border-bottom-left-radius: var(--button-group--border-bottom-left-radius, var(--button--border-bottom-left-radius));
         }
 
         > .button:not(:last-child),
@@ -98,14 +103,14 @@
 
         > .button:last-child,
         > [class$="-wrapper"]:last-child > * > .button:last-child {
-            border-bottom-left-radius: var(----border-bottom-left-radius);
-            border-bottom-right-radius: var(----border-bottom-right-radius);
+            border-bottom-left-radius: var(--button-group--border-bottom-left-radius, var(--button--border-bottom-left-radius));
+            border-bottom-right-radius: var(--button-group--border-bottom-right-radius, var(--button--border-bottom-right-radius));
         }
 
         > .button:first-child,
         > [class$="-wrapper"]:first-child > * > .button:first-child {
-            border-top-left-radius: var(----border-top-left-radius);
-            border-top-right-radius: var(----border-top-right-radius);
+            border-top-left-radius: var(--button-group--border-top-left-radius, var(--button--border-top-left-radius));
+            border-top-right-radius: var(--button-group--border-top-right-radius, var(--button--border-top-right-radius));
         }
 
         > .button:not(:last-child),

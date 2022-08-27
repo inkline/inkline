@@ -8,6 +8,7 @@ module.exports = {
         '../src/components/IBadge/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IBreadcrumb/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IButton/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/IButtonGroup/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IIcon/**/*.stories.@(js|jsx|ts|tsx)'
     ],
     addons: [

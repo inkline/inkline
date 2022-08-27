@@ -57,6 +57,16 @@ export default defineComponent({
         disabled: {
             type: Boolean,
             default: false
+        },
+        /**
+         * The size of the button group
+         * @type String
+         * @default
+         * @name size
+         */
+        size: {
+            type: String,
+            default: ''
         }
     },
     computed: {

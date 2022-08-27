@@ -11,7 +11,6 @@ import {
     IButtonOutlineExample,
     IButtonRoutingExample,
     IButtonSizeVariantsExample,
-    IButtonSocialColorVariantsExample,
     IButtonStateActiveExample,
     IButtonStateDisabledExample,
     IButtonStateLoadingExample
@@ -51,7 +50,6 @@ export const Link = () => IButtonLinkExample;
 export const Outline = () => IButtonOutlineExample;
 export const Routing = () => IButtonRoutingExample;
 export const SizeVariants = () => IButtonSizeVariantsExample;
-export const SocialColorVariants = () => IButtonSocialColorVariantsExample;
 export const StateActive = () => IButtonStateActiveExample;
 export const StateDisabled = () => IButtonStateDisabledExample;
 export const StateLoading = () => IButtonStateLoadingExample;

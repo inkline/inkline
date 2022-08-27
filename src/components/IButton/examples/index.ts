@@ -9,7 +9,6 @@ export { default as IButtonLinkExample } from './link.vue';
 export { default as IButtonOutlineExample } from './outline.vue';
 export { default as IButtonRoutingExample } from './routing.vue';
 export { default as IButtonSizeVariantsExample } from './size-variants.vue';
-export { default as IButtonSocialColorVariantsExample } from './social-color-variants.vue';
 export { default as IButtonStateActiveExample } from './state-active.vue';
 export { default as IButtonStateDisabledExample } from './state-disabled.vue';
 export { default as IButtonStateLoadingExample } from './state-loading.vue';

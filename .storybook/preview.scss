@@ -28,13 +28,19 @@
 //}
 
 #root {
-    .alert + .alert {
+    > .alert + .alert {
         margin-top: var(--margin-top);
     }
 
-    .badge,
-    .button {
+    > .badge,
+    > .button,
+    .button-group {
         margin-right: var(--margin-right);
         margin-bottom: var(--margin-bottom);
+    }
+
+    .button-group .button {
+        margin-right: 0;
+        margin-bottom: 0;
     }
 }

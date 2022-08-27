@@ -150,7 +150,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size', 'md'),
+            default: defaultPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         }
     },
@@ -179,14 +179,18 @@ export default defineComponent({
         classes (): Classes {
             return {
                 ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.computedSize}`]: true,
                 '-active': this.active,
                 '-block': this.block,
                 '-circle': this.circle,
                 '-disabled': this.isDisabled,
                 '-link': this.link,
-                '-outline': this.outline
+                '-outline': this.outline,
+                '-loading': this.loading
             };
+        },
+        computedSize (): string {
+            return this.size || (this as any).buttonGroup.size || 'md';
         },
         isDisabled (): boolean {
             return this.disabled || (this as any).buttonGroup.disabled || (this as any).form.disabled || (this as any).formGroup.disabled;

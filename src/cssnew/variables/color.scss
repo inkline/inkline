@@ -83,10 +83,10 @@
     /**
      * Color light variables
      */
-    --color-light-h: var(--color-gray-800-h);
-    --color-light-s: var(--color-gray-800-s);
-    --color-light-l: var(--color-gray-800-l);
-    --color-light-a: var(--color-gray-800-a);
+    --color-light-h: var(--color-gray-200-h);
+    --color-light-s: var(--color-gray-200-s);
+    --color-light-l: var(--color-gray-200-l);
+    --color-light-a: var(--color-gray-200-a);
     --color-light: hsla(var(--color-light-h), var(--color-light-s), var(--color-light-l), var(--color-light-a));
 
     /**
@@ -101,10 +101,10 @@
     /**
      * Color dark variables
      */
-    --color-dark-h: var(--color-gray-200-h);
-    --color-dark-s: var(--color-gray-200-s);
-    --color-dark-l: var(--color-gray-200-l);
-    --color-dark-a: var(--color-gray-200-a);
+    --color-dark-h: var(--color-gray-800-h);
+    --color-dark-s: var(--color-gray-800-s);
+    --color-dark-l: var(--color-gray-800-l);
+    --color-dark-a: var(--color-gray-800-a);
     --color-dark: hsla(var(--color-dark-h), var(--color-dark-s), var(--color-dark-l), var(--color-dark-a));
 
     /**
@@ -261,58 +261,58 @@
     --color-primary-900: hsla(var(--color-primary-900-h), var(--color-primary-900-s), var(--color-primary-900-l), var(--color-primary-900-a));
 
     /**
-     * Color primary-darkest variant variables
+     * Color primary-shade-150 variant variables
      */
-    --color-primary-darkest-h: var(--color-primary-h);
-    --color-primary-darkest-s: var(--color-primary-s);
-    --color-primary-darkest-l: calc(var(--color-primary-l) - 15%);
-    --color-primary-darkest-a: var(--color-primary-a);
-    --color-primary-darkest: hsla(var(--color-primary-darkest-h), var(--color-primary-darkest-s), var(--color-primary-darkest-l), var(--color-primary-darkest-a));
+    --color-primary-shade-150-h: var(--color-primary-h);
+    --color-primary-shade-150-s: var(--color-primary-s);
+    --color-primary-shade-150-l: calc(var(--color-primary-l) - 15%);
+    --color-primary-shade-150-a: var(--color-primary-a);
+    --color-primary-shade-150: hsla(var(--color-primary-shade-150-h), var(--color-primary-shade-150-s), var(--color-primary-shade-150-l), var(--color-primary-shade-150-a));
 
     /**
-     * Color primary-darker variant variables
+     * Color primary-shade-100 variant variables
      */
-    --color-primary-darker-h: var(--color-primary-h);
-    --color-primary-darker-s: var(--color-primary-s);
-    --color-primary-darker-l: calc(var(--color-primary-l) - 10%);
-    --color-primary-darker-a: var(--color-primary-a);
-    --color-primary-darker: hsla(var(--color-primary-darker-h), var(--color-primary-darker-s), var(--color-primary-darker-l), var(--color-primary-darker-a));
+    --color-primary-shade-100-h: var(--color-primary-h);
+    --color-primary-shade-100-s: var(--color-primary-s);
+    --color-primary-shade-100-l: calc(var(--color-primary-l) - 10%);
+    --color-primary-shade-100-a: var(--color-primary-a);
+    --color-primary-shade-100: hsla(var(--color-primary-shade-100-h), var(--color-primary-shade-100-s), var(--color-primary-shade-100-l), var(--color-primary-shade-100-a));
 
     /**
-     * Color primary-dark variant variables
+     * Color primary-shade-50 variant variables
      */
-    --color-primary-dark-h: var(--color-primary-h);
-    --color-primary-dark-s: var(--color-primary-s);
-    --color-primary-dark-l: calc(var(--color-primary-l) - 5%);
-    --color-primary-dark-a: var(--color-primary-a);
-    --color-primary-dark: hsla(var(--color-primary-dark-h), var(--color-primary-dark-s), var(--color-primary-dark-l), var(--color-primary-dark-a));
+    --color-primary-shade-50-h: var(--color-primary-h);
+    --color-primary-shade-50-s: var(--color-primary-s);
+    --color-primary-shade-50-l: calc(var(--color-primary-l) - 5%);
+    --color-primary-shade-50-a: var(--color-primary-a);
+    --color-primary-shade-50: hsla(var(--color-primary-shade-50-h), var(--color-primary-shade-50-s), var(--color-primary-shade-50-l), var(--color-primary-shade-50-a));
 
     /**
-     * Color primary-light variant variables
+     * Color primary-tint-50 variant variables
      */
-    --color-primary-light-h: var(--color-primary-h);
-    --color-primary-light-s: var(--color-primary-s);
-    --color-primary-light-l: calc(var(--color-primary-l) + 5%);
-    --color-primary-light-a: var(--color-primary-a);
-    --color-primary-light: hsla(var(--color-primary-light-h), var(--color-primary-light-s), var(--color-primary-light-l), var(--color-primary-light-a));
+    --color-primary-tint-50-h: var(--color-primary-h);
+    --color-primary-tint-50-s: var(--color-primary-s);
+    --color-primary-tint-50-l: calc(var(--color-primary-l) + 5%);
+    --color-primary-tint-50-a: var(--color-primary-a);
+    --color-primary-tint-50: hsla(var(--color-primary-tint-50-h), var(--color-primary-tint-50-s), var(--color-primary-tint-50-l), var(--color-primary-tint-50-a));
 
     /**
-     * Color primary-lighter variant variables
+     * Color primary-tint-100 variant variables
      */
-    --color-primary-lighter-h: var(--color-primary-h);
-    --color-primary-lighter-s: var(--color-primary-s);
-    --color-primary-lighter-l: calc(var(--color-primary-l) + 10%);
-    --color-primary-lighter-a: var(--color-primary-a);
-    --color-primary-lighter: hsla(var(--color-primary-lighter-h), var(--color-primary-lighter-s), var(--color-primary-lighter-l), var(--color-primary-lighter-a));
+    --color-primary-tint-100-h: var(--color-primary-h);
+    --color-primary-tint-100-s: var(--color-primary-s);
+    --color-primary-tint-100-l: calc(var(--color-primary-l) + 10%);
+    --color-primary-tint-100-a: var(--color-primary-a);
+    --color-primary-tint-100: hsla(var(--color-primary-tint-100-h), var(--color-primary-tint-100-s), var(--color-primary-tint-100-l), var(--color-primary-tint-100-a));
 
     /**
-     * Color primary-lightest variant variables
+     * Color primary-tint-150 variant variables
      */
-    --color-primary-lightest-h: var(--color-primary-h);
-    --color-primary-lightest-s: var(--color-primary-s);
-    --color-primary-lightest-l: calc(var(--color-primary-l) + 15%);
-    --color-primary-lightest-a: var(--color-primary-a);
-    --color-primary-lightest: hsla(var(--color-primary-lightest-h), var(--color-primary-lightest-s), var(--color-primary-lightest-l), var(--color-primary-lightest-a));
+    --color-primary-tint-150-h: var(--color-primary-h);
+    --color-primary-tint-150-s: var(--color-primary-s);
+    --color-primary-tint-150-l: calc(var(--color-primary-l) + 15%);
+    --color-primary-tint-150-a: var(--color-primary-a);
+    --color-primary-tint-150: hsla(var(--color-primary-tint-150-h), var(--color-primary-tint-150-s), var(--color-primary-tint-150-l), var(--color-primary-tint-150-a));
 
     /**
      * Color secondary-50 variant variables
@@ -405,58 +405,58 @@
     --color-secondary-900: hsla(var(--color-secondary-900-h), var(--color-secondary-900-s), var(--color-secondary-900-l), var(--color-secondary-900-a));
 
     /**
-     * Color secondary-darkest variant variables
+     * Color secondary-shade-150 variant variables
      */
-    --color-secondary-darkest-h: var(--color-secondary-h);
-    --color-secondary-darkest-s: var(--color-secondary-s);
-    --color-secondary-darkest-l: calc(var(--color-secondary-l) - 15%);
-    --color-secondary-darkest-a: var(--color-secondary-a);
-    --color-secondary-darkest: hsla(var(--color-secondary-darkest-h), var(--color-secondary-darkest-s), var(--color-secondary-darkest-l), var(--color-secondary-darkest-a));
+    --color-secondary-shade-150-h: var(--color-secondary-h);
+    --color-secondary-shade-150-s: var(--color-secondary-s);
+    --color-secondary-shade-150-l: calc(var(--color-secondary-l) - 15%);
+    --color-secondary-shade-150-a: var(--color-secondary-a);
+    --color-secondary-shade-150: hsla(var(--color-secondary-shade-150-h), var(--color-secondary-shade-150-s), var(--color-secondary-shade-150-l), var(--color-secondary-shade-150-a));
 
     /**
-     * Color secondary-darker variant variables
+     * Color secondary-shade-100 variant variables
      */
-    --color-secondary-darker-h: var(--color-secondary-h);
-    --color-secondary-darker-s: var(--color-secondary-s);
-    --color-secondary-darker-l: calc(var(--color-secondary-l) - 10%);
-    --color-secondary-darker-a: var(--color-secondary-a);
-    --color-secondary-darker: hsla(var(--color-secondary-darker-h), var(--color-secondary-darker-s), var(--color-secondary-darker-l), var(--color-secondary-darker-a));
+    --color-secondary-shade-100-h: var(--color-secondary-h);
+    --color-secondary-shade-100-s: var(--color-secondary-s);
+    --color-secondary-shade-100-l: calc(var(--color-secondary-l) - 10%);
+    --color-secondary-shade-100-a: var(--color-secondary-a);
+    --color-secondary-shade-100: hsla(var(--color-secondary-shade-100-h), var(--color-secondary-shade-100-s), var(--color-secondary-shade-100-l), var(--color-secondary-shade-100-a));
 
     /**
-     * Color secondary-dark variant variables
+     * Color secondary-shade-50 variant variables
      */
-    --color-secondary-dark-h: var(--color-secondary-h);
-    --color-secondary-dark-s: var(--color-secondary-s);
-    --color-secondary-dark-l: calc(var(--color-secondary-l) - 5%);
-    --color-secondary-dark-a: var(--color-secondary-a);
-    --color-secondary-dark: hsla(var(--color-secondary-dark-h), var(--color-secondary-dark-s), var(--color-secondary-dark-l), var(--color-secondary-dark-a));
+    --color-secondary-shade-50-h: var(--color-secondary-h);
+    --color-secondary-shade-50-s: var(--color-secondary-s);
+    --color-secondary-shade-50-l: calc(var(--color-secondary-l) - 5%);
+    --color-secondary-shade-50-a: var(--color-secondary-a);
+    --color-secondary-shade-50: hsla(var(--color-secondary-shade-50-h), var(--color-secondary-shade-50-s), var(--color-secondary-shade-50-l), var(--color-secondary-shade-50-a));
 
     /**
-     * Color secondary-light variant variables
+     * Color secondary-tint-50 variant variables
      */
-    --color-secondary-light-h: var(--color-secondary-h);
-    --color-secondary-light-s: var(--color-secondary-s);
-    --color-secondary-light-l: calc(var(--color-secondary-l) + 5%);
-    --color-secondary-light-a: var(--color-secondary-a);
-    --color-secondary-light: hsla(var(--color-secondary-light-h), var(--color-secondary-light-s), var(--color-secondary-light-l), var(--color-secondary-light-a));
+    --color-secondary-tint-50-h: var(--color-secondary-h);
+    --color-secondary-tint-50-s: var(--color-secondary-s);
+    --color-secondary-tint-50-l: calc(var(--color-secondary-l) + 5%);
+    --color-secondary-tint-50-a: var(--color-secondary-a);
+    --color-secondary-tint-50: hsla(var(--color-secondary-tint-50-h), var(--color-secondary-tint-50-s), var(--color-secondary-tint-50-l), var(--color-secondary-tint-50-a));
 
     /**
-     * Color secondary-lighter variant variables
+     * Color secondary-tint-100 variant variables
      */
-    --color-secondary-lighter-h: var(--color-secondary-h);
-    --color-secondary-lighter-s: var(--color-secondary-s);
-    --color-secondary-lighter-l: calc(var(--color-secondary-l) + 10%);
-    --color-secondary-lighter-a: var(--color-secondary-a);
-    --color-secondary-lighter: hsla(var(--color-secondary-lighter-h), var(--color-secondary-lighter-s), var(--color-secondary-lighter-l), var(--color-secondary-lighter-a));
+    --color-secondary-tint-100-h: var(--color-secondary-h);
+    --color-secondary-tint-100-s: var(--color-secondary-s);
+    --color-secondary-tint-100-l: calc(var(--color-secondary-l) + 10%);
+    --color-secondary-tint-100-a: var(--color-secondary-a);
+    --color-secondary-tint-100: hsla(var(--color-secondary-tint-100-h), var(--color-secondary-tint-100-s), var(--color-secondary-tint-100-l), var(--color-secondary-tint-100-a));
 
     /**
-     * Color secondary-lightest variant variables
+     * Color secondary-tint-150 variant variables
      */
-    --color-secondary-lightest-h: var(--color-secondary-h);
-    --color-secondary-lightest-s: var(--color-secondary-s);
-    --color-secondary-lightest-l: calc(var(--color-secondary-l) + 15%);
-    --color-secondary-lightest-a: var(--color-secondary-a);
-    --color-secondary-lightest: hsla(var(--color-secondary-lightest-h), var(--color-secondary-lightest-s), var(--color-secondary-lightest-l), var(--color-secondary-lightest-a));
+    --color-secondary-tint-150-h: var(--color-secondary-h);
+    --color-secondary-tint-150-s: var(--color-secondary-s);
+    --color-secondary-tint-150-l: calc(var(--color-secondary-l) + 15%);
+    --color-secondary-tint-150-a: var(--color-secondary-a);
+    --color-secondary-tint-150: hsla(var(--color-secondary-tint-150-h), var(--color-secondary-tint-150-s), var(--color-secondary-tint-150-l), var(--color-secondary-tint-150-a));
 
     /**
      * Color info-50 variant variables
@@ -549,58 +549,58 @@
     --color-info-900: hsla(var(--color-info-900-h), var(--color-info-900-s), var(--color-info-900-l), var(--color-info-900-a));
 
     /**
-     * Color info-darkest variant variables
+     * Color info-shade-150 variant variables
      */
-    --color-info-darkest-h: var(--color-info-h);
-    --color-info-darkest-s: var(--color-info-s);
-    --color-info-darkest-l: calc(var(--color-info-l) - 15%);
-    --color-info-darkest-a: var(--color-info-a);
-    --color-info-darkest: hsla(var(--color-info-darkest-h), var(--color-info-darkest-s), var(--color-info-darkest-l), var(--color-info-darkest-a));
+    --color-info-shade-150-h: var(--color-info-h);
+    --color-info-shade-150-s: var(--color-info-s);
+    --color-info-shade-150-l: calc(var(--color-info-l) - 15%);
+    --color-info-shade-150-a: var(--color-info-a);
+    --color-info-shade-150: hsla(var(--color-info-shade-150-h), var(--color-info-shade-150-s), var(--color-info-shade-150-l), var(--color-info-shade-150-a));
 
     /**
-     * Color info-darker variant variables
+     * Color info-shade-100 variant variables
      */
-    --color-info-darker-h: var(--color-info-h);
-    --color-info-darker-s: var(--color-info-s);
-    --color-info-darker-l: calc(var(--color-info-l) - 10%);
-    --color-info-darker-a: var(--color-info-a);
-    --color-info-darker: hsla(var(--color-info-darker-h), var(--color-info-darker-s), var(--color-info-darker-l), var(--color-info-darker-a));
+    --color-info-shade-100-h: var(--color-info-h);
+    --color-info-shade-100-s: var(--color-info-s);
+    --color-info-shade-100-l: calc(var(--color-info-l) - 10%);
+    --color-info-shade-100-a: var(--color-info-a);
+    --color-info-shade-100: hsla(var(--color-info-shade-100-h), var(--color-info-shade-100-s), var(--color-info-shade-100-l), var(--color-info-shade-100-a));
 
     /**
-     * Color info-dark variant variables
+     * Color info-shade-50 variant variables
      */
-    --color-info-dark-h: var(--color-info-h);
-    --color-info-dark-s: var(--color-info-s);
-    --color-info-dark-l: calc(var(--color-info-l) - 5%);
-    --color-info-dark-a: var(--color-info-a);
-    --color-info-dark: hsla(var(--color-info-dark-h), var(--color-info-dark-s), var(--color-info-dark-l), var(--color-info-dark-a));
+    --color-info-shade-50-h: var(--color-info-h);
+    --color-info-shade-50-s: var(--color-info-s);
+    --color-info-shade-50-l: calc(var(--color-info-l) - 5%);
+    --color-info-shade-50-a: var(--color-info-a);
+    --color-info-shade-50: hsla(var(--color-info-shade-50-h), var(--color-info-shade-50-s), var(--color-info-shade-50-l), var(--color-info-shade-50-a));
 
     /**
-     * Color info-light variant variables
+     * Color info-tint-50 variant variables
      */
-    --color-info-light-h: var(--color-info-h);
-    --color-info-light-s: var(--color-info-s);
-    --color-info-light-l: calc(var(--color-info-l) + 5%);
-    --color-info-light-a: var(--color-info-a);
-    --color-info-light: hsla(var(--color-info-light-h), var(--color-info-light-s), var(--color-info-light-l), var(--color-info-light-a));
+    --color-info-tint-50-h: var(--color-info-h);
+    --color-info-tint-50-s: var(--color-info-s);
+    --color-info-tint-50-l: calc(var(--color-info-l) + 5%);
+    --color-info-tint-50-a: var(--color-info-a);
+    --color-info-tint-50: hsla(var(--color-info-tint-50-h), var(--color-info-tint-50-s), var(--color-info-tint-50-l), var(--color-info-tint-50-a));
 
     /**
-     * Color info-lighter variant variables
+     * Color info-tint-100 variant variables
      */
-    --color-info-lighter-h: var(--color-info-h);
-    --color-info-lighter-s: var(--color-info-s);
-    --color-info-lighter-l: calc(var(--color-info-l) + 10%);
-    --color-info-lighter-a: var(--color-info-a);
-    --color-info-lighter: hsla(var(--color-info-lighter-h), var(--color-info-lighter-s), var(--color-info-lighter-l), var(--color-info-lighter-a));
+    --color-info-tint-100-h: var(--color-info-h);
+    --color-info-tint-100-s: var(--color-info-s);
+    --color-info-tint-100-l: calc(var(--color-info-l) + 10%);
+    --color-info-tint-100-a: var(--color-info-a);
+    --color-info-tint-100: hsla(var(--color-info-tint-100-h), var(--color-info-tint-100-s), var(--color-info-tint-100-l), var(--color-info-tint-100-a));
 
     /**
-     * Color info-lightest variant variables
+     * Color info-tint-150 variant variables
      */
-    --color-info-lightest-h: var(--color-info-h);
-    --color-info-lightest-s: var(--color-info-s);
-    --color-info-lightest-l: calc(var(--color-info-l) + 15%);
-    --color-info-lightest-a: var(--color-info-a);
-    --color-info-lightest: hsla(var(--color-info-lightest-h), var(--color-info-lightest-s), var(--color-info-lightest-l), var(--color-info-lightest-a));
+    --color-info-tint-150-h: var(--color-info-h);
+    --color-info-tint-150-s: var(--color-info-s);
+    --color-info-tint-150-l: calc(var(--color-info-l) + 15%);
+    --color-info-tint-150-a: var(--color-info-a);
+    --color-info-tint-150: hsla(var(--color-info-tint-150-h), var(--color-info-tint-150-s), var(--color-info-tint-150-l), var(--color-info-tint-150-a));
 
     /**
      * Color success-50 variant variables
@@ -693,58 +693,58 @@
     --color-success-900: hsla(var(--color-success-900-h), var(--color-success-900-s), var(--color-success-900-l), var(--color-success-900-a));
 
     /**
-     * Color success-darkest variant variables
+     * Color success-shade-150 variant variables
      */
-    --color-success-darkest-h: var(--color-success-h);
-    --color-success-darkest-s: var(--color-success-s);
-    --color-success-darkest-l: calc(var(--color-success-l) - 15%);
-    --color-success-darkest-a: var(--color-success-a);
-    --color-success-darkest: hsla(var(--color-success-darkest-h), var(--color-success-darkest-s), var(--color-success-darkest-l), var(--color-success-darkest-a));
+    --color-success-shade-150-h: var(--color-success-h);
+    --color-success-shade-150-s: var(--color-success-s);
+    --color-success-shade-150-l: calc(var(--color-success-l) - 15%);
+    --color-success-shade-150-a: var(--color-success-a);
+    --color-success-shade-150: hsla(var(--color-success-shade-150-h), var(--color-success-shade-150-s), var(--color-success-shade-150-l), var(--color-success-shade-150-a));
 
     /**
-     * Color success-darker variant variables
+     * Color success-shade-100 variant variables
      */
-    --color-success-darker-h: var(--color-success-h);
-    --color-success-darker-s: var(--color-success-s);
-    --color-success-darker-l: calc(var(--color-success-l) - 10%);
-    --color-success-darker-a: var(--color-success-a);
-    --color-success-darker: hsla(var(--color-success-darker-h), var(--color-success-darker-s), var(--color-success-darker-l), var(--color-success-darker-a));
+    --color-success-shade-100-h: var(--color-success-h);
+    --color-success-shade-100-s: var(--color-success-s);
+    --color-success-shade-100-l: calc(var(--color-success-l) - 10%);
+    --color-success-shade-100-a: var(--color-success-a);
+    --color-success-shade-100: hsla(var(--color-success-shade-100-h), var(--color-success-shade-100-s), var(--color-success-shade-100-l), var(--color-success-shade-100-a));
 
     /**
-     * Color success-dark variant variables
+     * Color success-shade-50 variant variables
      */
-    --color-success-dark-h: var(--color-success-h);
-    --color-success-dark-s: var(--color-success-s);
-    --color-success-dark-l: calc(var(--color-success-l) - 5%);
-    --color-success-dark-a: var(--color-success-a);
-    --color-success-dark: hsla(var(--color-success-dark-h), var(--color-success-dark-s), var(--color-success-dark-l), var(--color-success-dark-a));
+    --color-success-shade-50-h: var(--color-success-h);
+    --color-success-shade-50-s: var(--color-success-s);
+    --color-success-shade-50-l: calc(var(--color-success-l) - 5%);
+    --color-success-shade-50-a: var(--color-success-a);
+    --color-success-shade-50: hsla(var(--color-success-shade-50-h), var(--color-success-shade-50-s), var(--color-success-shade-50-l), var(--color-success-shade-50-a));
 
     /**
-     * Color success-light variant variables
+     * Color success-tint-50 variant variables
      */
-    --color-success-light-h: var(--color-success-h);
-    --color-success-light-s: var(--color-success-s);
-    --color-success-light-l: calc(var(--color-success-l) + 5%);
-    --color-success-light-a: var(--color-success-a);
-    --color-success-light: hsla(var(--color-success-light-h), var(--color-success-light-s), var(--color-success-light-l), var(--color-success-light-a));
+    --color-success-tint-50-h: var(--color-success-h);
+    --color-success-tint-50-s: var(--color-success-s);
+    --color-success-tint-50-l: calc(var(--color-success-l) + 5%);
+    --color-success-tint-50-a: var(--color-success-a);
+    --color-success-tint-50: hsla(var(--color-success-tint-50-h), var(--color-success-tint-50-s), var(--color-success-tint-50-l), var(--color-success-tint-50-a));
 
     /**
-     * Color success-lighter variant variables
+     * Color success-tint-100 variant variables
      */
-    --color-success-lighter-h: var(--color-success-h);
-    --color-success-lighter-s: var(--color-success-s);
-    --color-success-lighter-l: calc(var(--color-success-l) + 10%);
-    --color-success-lighter-a: var(--color-success-a);
-    --color-success-lighter: hsla(var(--color-success-lighter-h), var(--color-success-lighter-s), var(--color-success-lighter-l), var(--color-success-lighter-a));
+    --color-success-tint-100-h: var(--color-success-h);
+    --color-success-tint-100-s: var(--color-success-s);
+    --color-success-tint-100-l: calc(var(--color-success-l) + 10%);
+    --color-success-tint-100-a: var(--color-success-a);
+    --color-success-tint-100: hsla(var(--color-success-tint-100-h), var(--color-success-tint-100-s), var(--color-success-tint-100-l), var(--color-success-tint-100-a));
 
     /**
-     * Color success-lightest variant variables
+     * Color success-tint-150 variant variables
      */
-    --color-success-lightest-h: var(--color-success-h);
-    --color-success-lightest-s: var(--color-success-s);
-    --color-success-lightest-l: calc(var(--color-success-l) + 15%);
-    --color-success-lightest-a: var(--color-success-a);
-    --color-success-lightest: hsla(var(--color-success-lightest-h), var(--color-success-lightest-s), var(--color-success-lightest-l), var(--color-success-lightest-a));
+    --color-success-tint-150-h: var(--color-success-h);
+    --color-success-tint-150-s: var(--color-success-s);
+    --color-success-tint-150-l: calc(var(--color-success-l) + 15%);
+    --color-success-tint-150-a: var(--color-success-a);
+    --color-success-tint-150: hsla(var(--color-success-tint-150-h), var(--color-success-tint-150-s), var(--color-success-tint-150-l), var(--color-success-tint-150-a));
 
     /**
      * Color warning-50 variant variables
@@ -837,58 +837,58 @@
     --color-warning-900: hsla(var(--color-warning-900-h), var(--color-warning-900-s), var(--color-warning-900-l), var(--color-warning-900-a));
 
     /**
-     * Color warning-darkest variant variables
+     * Color warning-shade-150 variant variables
      */
-    --color-warning-darkest-h: var(--color-warning-h);
-    --color-warning-darkest-s: var(--color-warning-s);
-    --color-warning-darkest-l: calc(var(--color-warning-l) - 15%);
-    --color-warning-darkest-a: var(--color-warning-a);
-    --color-warning-darkest: hsla(var(--color-warning-darkest-h), var(--color-warning-darkest-s), var(--color-warning-darkest-l), var(--color-warning-darkest-a));
+    --color-warning-shade-150-h: var(--color-warning-h);
+    --color-warning-shade-150-s: var(--color-warning-s);
+    --color-warning-shade-150-l: calc(var(--color-warning-l) - 15%);
+    --color-warning-shade-150-a: var(--color-warning-a);
+    --color-warning-shade-150: hsla(var(--color-warning-shade-150-h), var(--color-warning-shade-150-s), var(--color-warning-shade-150-l), var(--color-warning-shade-150-a));
 
     /**
-     * Color warning-darker variant variables
+     * Color warning-shade-100 variant variables
      */
-    --color-warning-darker-h: var(--color-warning-h);
-    --color-warning-darker-s: var(--color-warning-s);
-    --color-warning-darker-l: calc(var(--color-warning-l) - 10%);
-    --color-warning-darker-a: var(--color-warning-a);
-    --color-warning-darker: hsla(var(--color-warning-darker-h), var(--color-warning-darker-s), var(--color-warning-darker-l), var(--color-warning-darker-a));
+    --color-warning-shade-100-h: var(--color-warning-h);
+    --color-warning-shade-100-s: var(--color-warning-s);
+    --color-warning-shade-100-l: calc(var(--color-warning-l) - 10%);
+    --color-warning-shade-100-a: var(--color-warning-a);
+    --color-warning-shade-100: hsla(var(--color-warning-shade-100-h), var(--color-warning-shade-100-s), var(--color-warning-shade-100-l), var(--color-warning-shade-100-a));
 
     /**
-     * Color warning-dark variant variables
+     * Color warning-shade-50 variant variables
      */
-    --color-warning-dark-h: var(--color-warning-h);
-    --color-warning-dark-s: var(--color-warning-s);
-    --color-warning-dark-l: calc(var(--color-warning-l) - 5%);
-    --color-warning-dark-a: var(--color-warning-a);
-    --color-warning-dark: hsla(var(--color-warning-dark-h), var(--color-warning-dark-s), var(--color-warning-dark-l), var(--color-warning-dark-a));
+    --color-warning-shade-50-h: var(--color-warning-h);
+    --color-warning-shade-50-s: var(--color-warning-s);
+    --color-warning-shade-50-l: calc(var(--color-warning-l) - 5%);
+    --color-warning-shade-50-a: var(--color-warning-a);
+    --color-warning-shade-50: hsla(var(--color-warning-shade-50-h), var(--color-warning-shade-50-s), var(--color-warning-shade-50-l), var(--color-warning-shade-50-a));
 
     /**
-     * Color warning-light variant variables
+     * Color warning-tint-50 variant variables
      */
-    --color-warning-light-h: var(--color-warning-h);
-    --color-warning-light-s: var(--color-warning-s);
-    --color-warning-light-l: calc(var(--color-warning-l) + 5%);
-    --color-warning-light-a: var(--color-warning-a);
-    --color-warning-light: hsla(var(--color-warning-light-h), var(--color-warning-light-s), var(--color-warning-light-l), var(--color-warning-light-a));
+    --color-warning-tint-50-h: var(--color-warning-h);
+    --color-warning-tint-50-s: var(--color-warning-s);
+    --color-warning-tint-50-l: calc(var(--color-warning-l) + 5%);
+    --color-warning-tint-50-a: var(--color-warning-a);
+    --color-warning-tint-50: hsla(var(--color-warning-tint-50-h), var(--color-warning-tint-50-s), var(--color-warning-tint-50-l), var(--color-warning-tint-50-a));
 
     /**
-     * Color warning-lighter variant variables
+     * Color warning-tint-100 variant variables
      */
-    --color-warning-lighter-h: var(--color-warning-h);
-    --color-warning-lighter-s: var(--color-warning-s);
-    --color-warning-lighter-l: calc(var(--color-warning-l) + 10%);
-    --color-warning-lighter-a: var(--color-warning-a);
-    --color-warning-lighter: hsla(var(--color-warning-lighter-h), var(--color-warning-lighter-s), var(--color-warning-lighter-l), var(--color-warning-lighter-a));
+    --color-warning-tint-100-h: var(--color-warning-h);
+    --color-warning-tint-100-s: var(--color-warning-s);
+    --color-warning-tint-100-l: calc(var(--color-warning-l) + 10%);
+    --color-warning-tint-100-a: var(--color-warning-a);
+    --color-warning-tint-100: hsla(var(--color-warning-tint-100-h), var(--color-warning-tint-100-s), var(--color-warning-tint-100-l), var(--color-warning-tint-100-a));
 
     /**
-     * Color warning-lightest variant variables
+     * Color warning-tint-150 variant variables
      */
-    --color-warning-lightest-h: var(--color-warning-h);
-    --color-warning-lightest-s: var(--color-warning-s);
-    --color-warning-lightest-l: calc(var(--color-warning-l) + 15%);
-    --color-warning-lightest-a: var(--color-warning-a);
-    --color-warning-lightest: hsla(var(--color-warning-lightest-h), var(--color-warning-lightest-s), var(--color-warning-lightest-l), var(--color-warning-lightest-a));
+    --color-warning-tint-150-h: var(--color-warning-h);
+    --color-warning-tint-150-s: var(--color-warning-s);
+    --color-warning-tint-150-l: calc(var(--color-warning-l) + 15%);
+    --color-warning-tint-150-a: var(--color-warning-a);
+    --color-warning-tint-150: hsla(var(--color-warning-tint-150-h), var(--color-warning-tint-150-s), var(--color-warning-tint-150-l), var(--color-warning-tint-150-a));
 
     /**
      * Color danger-50 variant variables
@@ -981,58 +981,58 @@
     --color-danger-900: hsla(var(--color-danger-900-h), var(--color-danger-900-s), var(--color-danger-900-l), var(--color-danger-900-a));
 
     /**
-     * Color danger-darkest variant variables
+     * Color danger-shade-150 variant variables
      */
-    --color-danger-darkest-h: var(--color-danger-h);
-    --color-danger-darkest-s: var(--color-danger-s);
-    --color-danger-darkest-l: calc(var(--color-danger-l) - 15%);
-    --color-danger-darkest-a: var(--color-danger-a);
-    --color-danger-darkest: hsla(var(--color-danger-darkest-h), var(--color-danger-darkest-s), var(--color-danger-darkest-l), var(--color-danger-darkest-a));
+    --color-danger-shade-150-h: var(--color-danger-h);
+    --color-danger-shade-150-s: var(--color-danger-s);
+    --color-danger-shade-150-l: calc(var(--color-danger-l) - 15%);
+    --color-danger-shade-150-a: var(--color-danger-a);
+    --color-danger-shade-150: hsla(var(--color-danger-shade-150-h), var(--color-danger-shade-150-s), var(--color-danger-shade-150-l), var(--color-danger-shade-150-a));
 
     /**
-     * Color danger-darker variant variables
+     * Color danger-shade-100 variant variables
      */
-    --color-danger-darker-h: var(--color-danger-h);
-    --color-danger-darker-s: var(--color-danger-s);
-    --color-danger-darker-l: calc(var(--color-danger-l) - 10%);
-    --color-danger-darker-a: var(--color-danger-a);
-    --color-danger-darker: hsla(var(--color-danger-darker-h), var(--color-danger-darker-s), var(--color-danger-darker-l), var(--color-danger-darker-a));
+    --color-danger-shade-100-h: var(--color-danger-h);
+    --color-danger-shade-100-s: var(--color-danger-s);
+    --color-danger-shade-100-l: calc(var(--color-danger-l) - 10%);
+    --color-danger-shade-100-a: var(--color-danger-a);
+    --color-danger-shade-100: hsla(var(--color-danger-shade-100-h), var(--color-danger-shade-100-s), var(--color-danger-shade-100-l), var(--color-danger-shade-100-a));
 
     /**
-     * Color danger-dark variant variables
+     * Color danger-shade-50 variant variables
      */
-    --color-danger-dark-h: var(--color-danger-h);
-    --color-danger-dark-s: var(--color-danger-s);
-    --color-danger-dark-l: calc(var(--color-danger-l) - 5%);
-    --color-danger-dark-a: var(--color-danger-a);
-    --color-danger-dark: hsla(var(--color-danger-dark-h), var(--color-danger-dark-s), var(--color-danger-dark-l), var(--color-danger-dark-a));
+    --color-danger-shade-50-h: var(--color-danger-h);
+    --color-danger-shade-50-s: var(--color-danger-s);
+    --color-danger-shade-50-l: calc(var(--color-danger-l) - 5%);
+    --color-danger-shade-50-a: var(--color-danger-a);
+    --color-danger-shade-50: hsla(var(--color-danger-shade-50-h), var(--color-danger-shade-50-s), var(--color-danger-shade-50-l), var(--color-danger-shade-50-a));
 
     /**
-     * Color danger-light variant variables
+     * Color danger-tint-50 variant variables
      */
-    --color-danger-light-h: var(--color-danger-h);
-    --color-danger-light-s: var(--color-danger-s);
-    --color-danger-light-l: calc(var(--color-danger-l) + 5%);
-    --color-danger-light-a: var(--color-danger-a);
-    --color-danger-light: hsla(var(--color-danger-light-h), var(--color-danger-light-s), var(--color-danger-light-l), var(--color-danger-light-a));
+    --color-danger-tint-50-h: var(--color-danger-h);
+    --color-danger-tint-50-s: var(--color-danger-s);
+    --color-danger-tint-50-l: calc(var(--color-danger-l) + 5%);
+    --color-danger-tint-50-a: var(--color-danger-a);
+    --color-danger-tint-50: hsla(var(--color-danger-tint-50-h), var(--color-danger-tint-50-s), var(--color-danger-tint-50-l), var(--color-danger-tint-50-a));
 
     /**
-     * Color danger-lighter variant variables
+     * Color danger-tint-100 variant variables
      */
-    --color-danger-lighter-h: var(--color-danger-h);
-    --color-danger-lighter-s: var(--color-danger-s);
-    --color-danger-lighter-l: calc(var(--color-danger-l) + 10%);
-    --color-danger-lighter-a: var(--color-danger-a);
-    --color-danger-lighter: hsla(var(--color-danger-lighter-h), var(--color-danger-lighter-s), var(--color-danger-lighter-l), var(--color-danger-lighter-a));
+    --color-danger-tint-100-h: var(--color-danger-h);
+    --color-danger-tint-100-s: var(--color-danger-s);
+    --color-danger-tint-100-l: calc(var(--color-danger-l) + 10%);
+    --color-danger-tint-100-a: var(--color-danger-a);
+    --color-danger-tint-100: hsla(var(--color-danger-tint-100-h), var(--color-danger-tint-100-s), var(--color-danger-tint-100-l), var(--color-danger-tint-100-a));
 
     /**
-     * Color danger-lightest variant variables
+     * Color danger-tint-150 variant variables
      */
-    --color-danger-lightest-h: var(--color-danger-h);
-    --color-danger-lightest-s: var(--color-danger-s);
-    --color-danger-lightest-l: calc(var(--color-danger-l) + 15%);
-    --color-danger-lightest-a: var(--color-danger-a);
-    --color-danger-lightest: hsla(var(--color-danger-lightest-h), var(--color-danger-lightest-s), var(--color-danger-lightest-l), var(--color-danger-lightest-a));
+    --color-danger-tint-150-h: var(--color-danger-h);
+    --color-danger-tint-150-s: var(--color-danger-s);
+    --color-danger-tint-150-l: calc(var(--color-danger-l) + 15%);
+    --color-danger-tint-150-a: var(--color-danger-a);
+    --color-danger-tint-150: hsla(var(--color-danger-tint-150-h), var(--color-danger-tint-150-s), var(--color-danger-tint-150-l), var(--color-danger-tint-150-a));
 
     /**
      * Color gray-50 variant variables
@@ -1125,174 +1125,174 @@
     --color-gray-900: hsla(var(--color-gray-900-h), var(--color-gray-900-s), var(--color-gray-900-l), var(--color-gray-900-a));
 
     /**
-     * Color gray-darkest variant variables
+     * Color gray-shade-150 variant variables
      */
-    --color-gray-darkest-h: var(--color-gray-h);
-    --color-gray-darkest-s: var(--color-gray-s);
-    --color-gray-darkest-l: calc(var(--color-gray-l) - 15%);
-    --color-gray-darkest-a: var(--color-gray-a);
-    --color-gray-darkest: hsla(var(--color-gray-darkest-h), var(--color-gray-darkest-s), var(--color-gray-darkest-l), var(--color-gray-darkest-a));
+    --color-gray-shade-150-h: var(--color-gray-h);
+    --color-gray-shade-150-s: var(--color-gray-s);
+    --color-gray-shade-150-l: calc(var(--color-gray-l) - 15%);
+    --color-gray-shade-150-a: var(--color-gray-a);
+    --color-gray-shade-150: hsla(var(--color-gray-shade-150-h), var(--color-gray-shade-150-s), var(--color-gray-shade-150-l), var(--color-gray-shade-150-a));
 
     /**
-     * Color gray-darker variant variables
+     * Color gray-shade-100 variant variables
      */
-    --color-gray-darker-h: var(--color-gray-h);
-    --color-gray-darker-s: var(--color-gray-s);
-    --color-gray-darker-l: calc(var(--color-gray-l) - 10%);
-    --color-gray-darker-a: var(--color-gray-a);
-    --color-gray-darker: hsla(var(--color-gray-darker-h), var(--color-gray-darker-s), var(--color-gray-darker-l), var(--color-gray-darker-a));
+    --color-gray-shade-100-h: var(--color-gray-h);
+    --color-gray-shade-100-s: var(--color-gray-s);
+    --color-gray-shade-100-l: calc(var(--color-gray-l) - 10%);
+    --color-gray-shade-100-a: var(--color-gray-a);
+    --color-gray-shade-100: hsla(var(--color-gray-shade-100-h), var(--color-gray-shade-100-s), var(--color-gray-shade-100-l), var(--color-gray-shade-100-a));
 
     /**
-     * Color gray-dark variant variables
+     * Color gray-shade-50 variant variables
      */
-    --color-gray-dark-h: var(--color-gray-h);
-    --color-gray-dark-s: var(--color-gray-s);
-    --color-gray-dark-l: calc(var(--color-gray-l) - 5%);
-    --color-gray-dark-a: var(--color-gray-a);
-    --color-gray-dark: hsla(var(--color-gray-dark-h), var(--color-gray-dark-s), var(--color-gray-dark-l), var(--color-gray-dark-a));
+    --color-gray-shade-50-h: var(--color-gray-h);
+    --color-gray-shade-50-s: var(--color-gray-s);
+    --color-gray-shade-50-l: calc(var(--color-gray-l) - 5%);
+    --color-gray-shade-50-a: var(--color-gray-a);
+    --color-gray-shade-50: hsla(var(--color-gray-shade-50-h), var(--color-gray-shade-50-s), var(--color-gray-shade-50-l), var(--color-gray-shade-50-a));
 
     /**
-     * Color gray-light variant variables
+     * Color gray-tint-50 variant variables
      */
-    --color-gray-light-h: var(--color-gray-h);
-    --color-gray-light-s: var(--color-gray-s);
-    --color-gray-light-l: calc(var(--color-gray-l) + 5%);
-    --color-gray-light-a: var(--color-gray-a);
-    --color-gray-light: hsla(var(--color-gray-light-h), var(--color-gray-light-s), var(--color-gray-light-l), var(--color-gray-light-a));
+    --color-gray-tint-50-h: var(--color-gray-h);
+    --color-gray-tint-50-s: var(--color-gray-s);
+    --color-gray-tint-50-l: calc(var(--color-gray-l) + 5%);
+    --color-gray-tint-50-a: var(--color-gray-a);
+    --color-gray-tint-50: hsla(var(--color-gray-tint-50-h), var(--color-gray-tint-50-s), var(--color-gray-tint-50-l), var(--color-gray-tint-50-a));
 
     /**
-     * Color gray-lighter variant variables
+     * Color gray-tint-100 variant variables
      */
-    --color-gray-lighter-h: var(--color-gray-h);
-    --color-gray-lighter-s: var(--color-gray-s);
-    --color-gray-lighter-l: calc(var(--color-gray-l) + 10%);
-    --color-gray-lighter-a: var(--color-gray-a);
-    --color-gray-lighter: hsla(var(--color-gray-lighter-h), var(--color-gray-lighter-s), var(--color-gray-lighter-l), var(--color-gray-lighter-a));
+    --color-gray-tint-100-h: var(--color-gray-h);
+    --color-gray-tint-100-s: var(--color-gray-s);
+    --color-gray-tint-100-l: calc(var(--color-gray-l) + 10%);
+    --color-gray-tint-100-a: var(--color-gray-a);
+    --color-gray-tint-100: hsla(var(--color-gray-tint-100-h), var(--color-gray-tint-100-s), var(--color-gray-tint-100-l), var(--color-gray-tint-100-a));
 
     /**
-     * Color gray-lightest variant variables
+     * Color gray-tint-150 variant variables
      */
-    --color-gray-lightest-h: var(--color-gray-h);
-    --color-gray-lightest-s: var(--color-gray-s);
-    --color-gray-lightest-l: calc(var(--color-gray-l) + 15%);
-    --color-gray-lightest-a: var(--color-gray-a);
-    --color-gray-lightest: hsla(var(--color-gray-lightest-h), var(--color-gray-lightest-s), var(--color-gray-lightest-l), var(--color-gray-lightest-a));
+    --color-gray-tint-150-h: var(--color-gray-h);
+    --color-gray-tint-150-s: var(--color-gray-s);
+    --color-gray-tint-150-l: calc(var(--color-gray-l) + 15%);
+    --color-gray-tint-150-a: var(--color-gray-a);
+    --color-gray-tint-150: hsla(var(--color-gray-tint-150-h), var(--color-gray-tint-150-s), var(--color-gray-tint-150-l), var(--color-gray-tint-150-a));
 
     /**
-     * Color light-darkest variant variables
+     * Color light-shade-150 variant variables
      */
-    --color-light-darkest-h: var(--color-light-h);
-    --color-light-darkest-s: var(--color-light-s);
-    --color-light-darkest-l: calc(var(--color-light-l) - 15%);
-    --color-light-darkest-a: var(--color-light-a);
-    --color-light-darkest: hsla(var(--color-light-darkest-h), var(--color-light-darkest-s), var(--color-light-darkest-l), var(--color-light-darkest-a));
+    --color-light-shade-150-h: var(--color-light-h);
+    --color-light-shade-150-s: var(--color-light-s);
+    --color-light-shade-150-l: calc(var(--color-light-l) - 15%);
+    --color-light-shade-150-a: var(--color-light-a);
+    --color-light-shade-150: hsla(var(--color-light-shade-150-h), var(--color-light-shade-150-s), var(--color-light-shade-150-l), var(--color-light-shade-150-a));
 
     /**
-     * Color light-darker variant variables
+     * Color light-shade-100 variant variables
      */
-    --color-light-darker-h: var(--color-light-h);
-    --color-light-darker-s: var(--color-light-s);
-    --color-light-darker-l: calc(var(--color-light-l) - 10%);
-    --color-light-darker-a: var(--color-light-a);
-    --color-light-darker: hsla(var(--color-light-darker-h), var(--color-light-darker-s), var(--color-light-darker-l), var(--color-light-darker-a));
+    --color-light-shade-100-h: var(--color-light-h);
+    --color-light-shade-100-s: var(--color-light-s);
+    --color-light-shade-100-l: calc(var(--color-light-l) - 10%);
+    --color-light-shade-100-a: var(--color-light-a);
+    --color-light-shade-100: hsla(var(--color-light-shade-100-h), var(--color-light-shade-100-s), var(--color-light-shade-100-l), var(--color-light-shade-100-a));
 
     /**
-     * Color light-dark variant variables
+     * Color light-shade-50 variant variables
      */
-    --color-light-dark-h: var(--color-light-h);
-    --color-light-dark-s: var(--color-light-s);
-    --color-light-dark-l: calc(var(--color-light-l) - 5%);
-    --color-light-dark-a: var(--color-light-a);
-    --color-light-dark: hsla(var(--color-light-dark-h), var(--color-light-dark-s), var(--color-light-dark-l), var(--color-light-dark-a));
+    --color-light-shade-50-h: var(--color-light-h);
+    --color-light-shade-50-s: var(--color-light-s);
+    --color-light-shade-50-l: calc(var(--color-light-l) - 5%);
+    --color-light-shade-50-a: var(--color-light-a);
+    --color-light-shade-50: hsla(var(--color-light-shade-50-h), var(--color-light-shade-50-s), var(--color-light-shade-50-l), var(--color-light-shade-50-a));
 
     /**
-     * Color light-light variant variables
+     * Color light-tint-50 variant variables
      */
-    --color-light-light-h: var(--color-light-h);
-    --color-light-light-s: var(--color-light-s);
-    --color-light-light-l: calc(var(--color-light-l) + 5%);
-    --color-light-light-a: var(--color-light-a);
-    --color-light-light: hsla(var(--color-light-light-h), var(--color-light-light-s), var(--color-light-light-l), var(--color-light-light-a));
+    --color-light-tint-50-h: var(--color-light-h);
+    --color-light-tint-50-s: var(--color-light-s);
+    --color-light-tint-50-l: calc(var(--color-light-l) + 5%);
+    --color-light-tint-50-a: var(--color-light-a);
+    --color-light-tint-50: hsla(var(--color-light-tint-50-h), var(--color-light-tint-50-s), var(--color-light-tint-50-l), var(--color-light-tint-50-a));
 
     /**
-     * Color light-lighter variant variables
+     * Color light-tint-100 variant variables
      */
-    --color-light-lighter-h: var(--color-light-h);
-    --color-light-lighter-s: var(--color-light-s);
-    --color-light-lighter-l: calc(var(--color-light-l) + 10%);
-    --color-light-lighter-a: var(--color-light-a);
-    --color-light-lighter: hsla(var(--color-light-lighter-h), var(--color-light-lighter-s), var(--color-light-lighter-l), var(--color-light-lighter-a));
+    --color-light-tint-100-h: var(--color-light-h);
+    --color-light-tint-100-s: var(--color-light-s);
+    --color-light-tint-100-l: calc(var(--color-light-l) + 10%);
+    --color-light-tint-100-a: var(--color-light-a);
+    --color-light-tint-100: hsla(var(--color-light-tint-100-h), var(--color-light-tint-100-s), var(--color-light-tint-100-l), var(--color-light-tint-100-a));
 
     /**
-     * Color light-lightest variant variables
+     * Color light-tint-150 variant variables
      */
-    --color-light-lightest-h: var(--color-light-h);
-    --color-light-lightest-s: var(--color-light-s);
-    --color-light-lightest-l: calc(var(--color-light-l) + 15%);
-    --color-light-lightest-a: var(--color-light-a);
-    --color-light-lightest: hsla(var(--color-light-lightest-h), var(--color-light-lightest-s), var(--color-light-lightest-l), var(--color-light-lightest-a));
+    --color-light-tint-150-h: var(--color-light-h);
+    --color-light-tint-150-s: var(--color-light-s);
+    --color-light-tint-150-l: calc(var(--color-light-l) + 15%);
+    --color-light-tint-150-a: var(--color-light-a);
+    --color-light-tint-150: hsla(var(--color-light-tint-150-h), var(--color-light-tint-150-s), var(--color-light-tint-150-l), var(--color-light-tint-150-a));
 
     /**
-     * Color dark-darkest variant variables
+     * Color dark-shade-150 variant variables
      */
-    --color-dark-darkest-h: var(--color-dark-h);
-    --color-dark-darkest-s: var(--color-dark-s);
-    --color-dark-darkest-l: calc(var(--color-dark-l) - 15%);
-    --color-dark-darkest-a: var(--color-dark-a);
-    --color-dark-darkest: hsla(var(--color-dark-darkest-h), var(--color-dark-darkest-s), var(--color-dark-darkest-l), var(--color-dark-darkest-a));
+    --color-dark-shade-150-h: var(--color-dark-h);
+    --color-dark-shade-150-s: var(--color-dark-s);
+    --color-dark-shade-150-l: calc(var(--color-dark-l) - 15%);
+    --color-dark-shade-150-a: var(--color-dark-a);
+    --color-dark-shade-150: hsla(var(--color-dark-shade-150-h), var(--color-dark-shade-150-s), var(--color-dark-shade-150-l), var(--color-dark-shade-150-a));
 
     /**
-     * Color dark-darker variant variables
+     * Color dark-shade-100 variant variables
      */
-    --color-dark-darker-h: var(--color-dark-h);
-    --color-dark-darker-s: var(--color-dark-s);
-    --color-dark-darker-l: calc(var(--color-dark-l) - 10%);
-    --color-dark-darker-a: var(--color-dark-a);
-    --color-dark-darker: hsla(var(--color-dark-darker-h), var(--color-dark-darker-s), var(--color-dark-darker-l), var(--color-dark-darker-a));
+    --color-dark-shade-100-h: var(--color-dark-h);
+    --color-dark-shade-100-s: var(--color-dark-s);
+    --color-dark-shade-100-l: calc(var(--color-dark-l) - 10%);
+    --color-dark-shade-100-a: var(--color-dark-a);
+    --color-dark-shade-100: hsla(var(--color-dark-shade-100-h), var(--color-dark-shade-100-s), var(--color-dark-shade-100-l), var(--color-dark-shade-100-a));
 
     /**
-     * Color dark-dark variant variables
+     * Color dark-shade-50 variant variables
      */
-    --color-dark-dark-h: var(--color-dark-h);
-    --color-dark-dark-s: var(--color-dark-s);
-    --color-dark-dark-l: calc(var(--color-dark-l) - 5%);
-    --color-dark-dark-a: var(--color-dark-a);
-    --color-dark-dark: hsla(var(--color-dark-dark-h), var(--color-dark-dark-s), var(--color-dark-dark-l), var(--color-dark-dark-a));
+    --color-dark-shade-50-h: var(--color-dark-h);
+    --color-dark-shade-50-s: var(--color-dark-s);
+    --color-dark-shade-50-l: calc(var(--color-dark-l) - 5%);
+    --color-dark-shade-50-a: var(--color-dark-a);
+    --color-dark-shade-50: hsla(var(--color-dark-shade-50-h), var(--color-dark-shade-50-s), var(--color-dark-shade-50-l), var(--color-dark-shade-50-a));
 
     /**
-     * Color dark-light variant variables
+     * Color dark-tint-50 variant variables
      */
-    --color-dark-light-h: var(--color-dark-h);
-    --color-dark-light-s: var(--color-dark-s);
-    --color-dark-light-l: calc(var(--color-dark-l) + 5%);
-    --color-dark-light-a: var(--color-dark-a);
-    --color-dark-light: hsla(var(--color-dark-light-h), var(--color-dark-light-s), var(--color-dark-light-l), var(--color-dark-light-a));
+    --color-dark-tint-50-h: var(--color-dark-h);
+    --color-dark-tint-50-s: var(--color-dark-s);
+    --color-dark-tint-50-l: calc(var(--color-dark-l) + 5%);
+    --color-dark-tint-50-a: var(--color-dark-a);
+    --color-dark-tint-50: hsla(var(--color-dark-tint-50-h), var(--color-dark-tint-50-s), var(--color-dark-tint-50-l), var(--color-dark-tint-50-a));
 
     /**
-     * Color dark-lighter variant variables
+     * Color dark-tint-100 variant variables
      */
-    --color-dark-lighter-h: var(--color-dark-h);
-    --color-dark-lighter-s: var(--color-dark-s);
-    --color-dark-lighter-l: calc(var(--color-dark-l) + 10%);
-    --color-dark-lighter-a: var(--color-dark-a);
-    --color-dark-lighter: hsla(var(--color-dark-lighter-h), var(--color-dark-lighter-s), var(--color-dark-lighter-l), var(--color-dark-lighter-a));
+    --color-dark-tint-100-h: var(--color-dark-h);
+    --color-dark-tint-100-s: var(--color-dark-s);
+    --color-dark-tint-100-l: calc(var(--color-dark-l) + 10%);
+    --color-dark-tint-100-a: var(--color-dark-a);
+    --color-dark-tint-100: hsla(var(--color-dark-tint-100-h), var(--color-dark-tint-100-s), var(--color-dark-tint-100-l), var(--color-dark-tint-100-a));
 
     /**
-     * Color dark-lightest variant variables
+     * Color dark-tint-150 variant variables
      */
-    --color-dark-lightest-h: var(--color-dark-h);
-    --color-dark-lightest-s: var(--color-dark-s);
-    --color-dark-lightest-l: calc(var(--color-dark-l) + 15%);
-    --color-dark-lightest-a: var(--color-dark-a);
-    --color-dark-lightest: hsla(var(--color-dark-lightest-h), var(--color-dark-lightest-s), var(--color-dark-lightest-l), var(--color-dark-lightest-a));
+    --color-dark-tint-150-h: var(--color-dark-h);
+    --color-dark-tint-150-s: var(--color-dark-s);
+    --color-dark-tint-150-l: calc(var(--color-dark-l) + 15%);
+    --color-dark-tint-150-a: var(--color-dark-a);
+    --color-dark-tint-150: hsla(var(--color-dark-tint-150-h), var(--color-dark-tint-150-s), var(--color-dark-tint-150-l), var(--color-dark-tint-150-a));
 
     /**
      * Text color variables
      */
-    --text--color-dark-h: var(--color-gray-100-h);
-    --text--color-dark-s: var(--color-gray-100-s);
-    --text--color-dark-l: var(--color-gray-100-l);
-    --text--color-dark-a: var(--color-gray-100-a);
+    --text--color-dark-h: var(--color-gray-900-h);
+    --text--color-dark-s: var(--color-gray-900-s);
+    --text--color-dark-l: var(--color-gray-900-l);
+    --text--color-dark-a: var(--color-gray-900-a);
     --text--color-dark: hsla(var(--text--color-dark-h), var(--text--color-dark-s), var(--text--color-dark-l), var(--text--color-dark-a));
     --text--color-muted-h: var(--color-gray-600-h);
     --text--color-muted-s: var(--color-gray-600-s);
@@ -1308,23 +1308,23 @@
     /**
      * Contrast text color variables
      */
-    --contrast-text--color-red: var(--text--color-light);
-    --contrast-text--color-orange: var(--text--color-light);
-    --contrast-text--color-yellow: var(--text--color-light);
-    --contrast-text--color-green: var(--text--color-light);
-    --contrast-text--color-teal: var(--text--color-light);
+    --contrast-text--color-red: var(--text--color-dark);
+    --contrast-text--color-orange: var(--text--color-dark);
+    --contrast-text--color-yellow: var(--text--color-dark);
+    --contrast-text--color-green: var(--text--color-dark);
+    --contrast-text--color-teal: var(--text--color-dark);
     --contrast-text--color-blue: var(--text--color-light);
-    --contrast-text--color-purple: var(--text--color-dark);
-    --contrast-text--color-pink: var(--text--color-light);
-    --contrast-text--color-white: var(--text--color-light);
+    --contrast-text--color-purple: var(--text--color-light);
+    --contrast-text--color-pink: var(--text--color-dark);
+    --contrast-text--color-white: var(--text--color-dark);
     --contrast-text--color-light: var(--text--color-dark);
-    --contrast-text--color-gray: var(--text--color-light);
+    --contrast-text--color-gray: var(--text--color-dark);
     --contrast-text--color-dark: var(--text--color-light);
-    --contrast-text--color-black: var(--text--color-dark);
+    --contrast-text--color-black: var(--text--color-light);
     --contrast-text--color-primary: var(--text--color-light);
-    --contrast-text--color-secondary: var(--text--color-dark);
-    --contrast-text--color-info: var(--text--color-light);
-    --contrast-text--color-success: var(--text--color-light);
-    --contrast-text--color-warning: var(--text--color-light);
-    --contrast-text--color-danger: var(--text--color-light);
+    --contrast-text--color-secondary: var(--text--color-light);
+    --contrast-text--color-info: var(--text--color-dark);
+    --contrast-text--color-success: var(--text--color-dark);
+    --contrast-text--color-warning: var(--text--color-dark);
+    --contrast-text--color-danger: var(--text--color-dark);
 }

@@ -205,6 +205,7 @@
     &:disabled {
         opacity: var(--button--disabled--opacity, 0.8);
         box-shadow: none;
+        cursor: not-allowed;
     }
 
     // Block buttons
@@ -222,7 +223,7 @@
     // Link buttons
     // Make a button look and behave like a link
     &.-link {
-        --button--color: var(--button--link--color);
+        color: var(--button--link--color, var(--button--color));
         box-shadow: none;
         background-color: transparent;
         border-color: transparent;
@@ -234,7 +235,7 @@
             &.-hovered,
             &.-focused,
             &.-active {
-                --button--color: var(--button--link--active--color);
+                color: var(--button--link--active--color, var(--button--color));
                 background-color: transparent;
                 border-color: transparent;
                 box-shadow: none;
@@ -278,9 +279,14 @@
         padding: 0;
     }
 
+    &.-loading {
+        pointer-events: none;
+        cursor: default;
+    }
+
     .loader {
-        margin-top: spacing('1/4');
-        margin-bottom: spacing('1/4');
+        margin-top: calc(var(--button--padding-top) * 0.5);
+        margin-bottom: calc(var(--button--padding-bottom) * 0.5);
         width: var(--button--font-size);
         height: var(--button--font-size);
 
