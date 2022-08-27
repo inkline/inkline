@@ -90,6 +90,10 @@ export const typographyColorGenerator: Generator<ResolvedTheme['color'][string]>
         }).flat();
 
         const contrastColors = Object.keys(theme.color).map((colorName) => {
+            if (theme.typography.contrastColor?.[colorName]) {
+                return codegenSetCSSVariable(`contrast-text--color-${toDashCase(colorName)}`, theme.typography.contrastColor[colorName]);
+            }
+
             let luma;
             try {
                 const { h, s, l, a: alpha } = theme.color[colorName] as ResolvedColorPropertyObject;
@@ -113,7 +117,9 @@ export const typographyColorGenerator: Generator<ResolvedTheme['color'][string]>
                 luma = 1;
             }
 
-            const contrastColor = luma > 0.179 ? codegenGetCSSVariable('text--color-dark') : codegenGetCSSVariable('text--color-light');
+            const contrastColor = luma > 0.179
+                ? codegenGetCSSVariable('text--color-white')
+                : codegenGetCSSVariable('text--color-black');
 
             return codegenSetCSSVariable(`contrast-text--color-${toDashCase(colorName)}`, contrastColor);
         });

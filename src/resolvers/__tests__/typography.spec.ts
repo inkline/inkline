@@ -7,6 +7,7 @@ import {
     // typographyFontFamilyResolver, // @TODO Write tests
     // typographyFontFamilyGroupResolver, // @TODO Write tests
     // typographyFontFamilyGroupTypeResolver // @TODO Write tests
+    // typographyContrastColorResolver // @TODO Write tests
 } from '../typography';
 import { Configuration, Theme } from '../../types';
 

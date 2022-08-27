@@ -118,9 +118,9 @@ export const defaultConfig: Configuration = {
                 purple: '#7559a6',
                 pink: '#f20d61',
                 white: '#ffffff',
-                light: 'var(--color-gray-200)',
+                light: 'var(--color-gray-800)',
                 gray: '#737f8c',
-                dark: 'var(--color-gray-800)',
+                dark: 'var(--color-gray-200)',
                 black: '#000000',
                 primary: '<% theme.color.blue %>',
                 secondary: '<% theme.color.purple %>',
@@ -181,16 +181,22 @@ export const defaultConfig: Configuration = {
                 lineHeight: 1.5,
                 letterSpacing: 0,
                 color: {
-                    dark: 'var(--color-gray-900)',
-                    light: 'var(--color-gray-100)',
-                    muted: 'var(--color-gray-600)'
+                    black: 'var(--color-black)',
+                    dark: 'var(--color-gray-100)',
+                    muted: 'var(--color-gray-600)',
+                    light: 'var(--color-white)',
+                    white: 'var(--color-white)'
+                },
+                contrastColor: {
+                    light: 'var(--color-black)',
+                    dark: 'var(--color-white)'
                 }
             },
-            // elements: { // @TODO Add support for elements and components
-            //     body: {
-            //         background: 'var(--color-white)' // var(--body--background)
-            //         color: 'var(--color-gray-90)' // var(--body--color)
-            //     }
+            // elements: {
+            // body: {
+            //     background: 'var(--color-white)' // var(--body--background)
+            //     color: 'var(--color-gray-90)' // var(--body--color)
+            // }
             // },
             // components: {
             //     alert: {

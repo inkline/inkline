@@ -19,8 +19,8 @@ export const colorResolver: Resolver<Theme['color'][string], ResolvedTheme['colo
 
 export const colorVariantResolver: Resolver<ColorPropertyVariant, ResolvedColorProperty> = {
     name: 'color',
-    test: /^variants\.color\.(\w+)\.(\w+)$/,
-    set: 'variants.color.$1.$2',
+    test: /^variants\.(.*)color\.(\w+)\.(\w+)$/,
+    set: 'variants.$1color.$2.$3',
     apply: (context) => typeof context.value === 'object'
         ? parseRecursive(context)
         : parseColor(context as ConfigurationContext<Theme, ColorProperty>)

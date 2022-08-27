@@ -1,5 +1,5 @@
 import { ResolvedTheme, Resolver, Theme, ThemeVariants } from '../types';
-import { parseRecursive, parseValue } from '../helpers';
+import {parseColor, parseRecursive, parseValue} from '../helpers';
 
 export const typographyLineHeightResolver: Resolver<Theme['typography']['lineHeight'], ResolvedTheme['typography']['lineHeight']> = {
     name: 'typography',
@@ -71,6 +71,14 @@ export const typographyFontFamilyTypeResolver: Resolver<Theme['typography']['fon
     apply: (context) => parseValue(context)
 };
 
+export const typographyContrastColorResolver: Resolver<Theme['color'][string], ResolvedTheme['color'][string]> = {
+    name: 'color',
+    test: /(.*)contrastColor\.(\w+)$/,
+    skip: /^variants/,
+    set: '$1contrastColor.$2',
+    apply: (context) => parseColor(context)
+};
+
 export const typographyResolvers = [
     typographyLineHeightResolver,
     typographyLetterSpacingResolver,
@@ -79,5 +87,6 @@ export const typographyResolvers = [
     typographyFontWeightResolver,
     typographyFontFamilyResolver,
     typographyFontFamilyGroupResolver,
-    typographyFontFamilyTypeResolver
+    typographyFontFamilyTypeResolver,
+    typographyContrastColorResolver
 ];
