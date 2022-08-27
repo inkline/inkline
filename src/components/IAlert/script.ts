@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
+import { defaultPropValue } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
 /**
@@ -20,7 +20,18 @@ import { Classes } from '@inkline/inkline/types';
  * @kind slot
  */
 
-const componentName = 'IAlert';
+export const componentName = 'IAlert';
+export const componentSizes = [
+    'sm',
+    'md',
+    'lg'
+];
+export const componentColors = [
+    'info',
+    'success',
+    'warning',
+    'danger'
+];
 
 export default defineComponent({
     name: componentName,
@@ -33,8 +44,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: defaultPropValue<string>(componentName, 'size', 'md')
         },
         /**
          * The color variant of the alert
@@ -44,7 +54,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: defaultPropValue<string>(componentName, 'color', 'info')
         },
         /**
          * Used to show or hide a dismissible alert

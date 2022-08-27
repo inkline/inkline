@@ -8,13 +8,13 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('light')};
+    ----background: var(--color-light);
     ////
     /// The color of the header component
     /// @name color
     /// @type color
     ////
-    ----color: #{contrast-color($color-light)};
+    ----color: var(--contrast-text--color-light);
     ////
     /// The padding top of the header component
     /// @name padding-top

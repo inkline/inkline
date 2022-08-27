@@ -8,13 +8,13 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('white')};
+    ----background: var(--color-white);
     ////
     /// The background of the dropdown component when active
     /// @name background--active
     /// @type color
     ////
-    ----background--active: #{color('light-25')};
+    ----background--active: var(--color-light-250);
     ////
     /// The background of the dropdown component when disabled
     /// @name background--disabled
@@ -26,31 +26,31 @@
     /// @name background--hover
     /// @type color
     ////
-    ----background--hover: #{color('light-25')};
+    ----background--hover: var(--color-light-250);
     ////
     /// The border top color of the dropdown component
     /// @name border-top-color
     /// @type color
     ////
-    ----border-top-color: #{color('light')};
+    ----border-top-color: var(--color-light);
     ////
     /// The border right color of the dropdown component
     /// @name border-right-color
     /// @type color
     ////
-    ----border-right-color: #{color('light')};
+    ----border-right-color: var(--color-light);
     ////
     /// The border bottom color of the dropdown component
     /// @name border-bottom-color
     /// @type color
     ////
-    ----border-bottom-color: #{color('light')};
+    ----border-bottom-color: var(--color-light);
     ////
     /// The border left color of the dropdown component
     /// @name border-left-color
     /// @type color
     ////
-    ----border-left-color: #{color('light')};
+    ----border-left-color: var(--color-light);
     ////
     /// The border color of the dropdown component
     /// @name border-color
@@ -150,7 +150,7 @@
     /// @name color
     /// @type color
     ////
-    ----color: #{contrast-color($color-white)};
+    ----color: var(--contrast-text--color-white);
     ////
     /// The color of the dropdown component item when active
     /// @name color--active
@@ -162,7 +162,7 @@
     /// @name color--disabled
     /// @type color
     ////
-    ----color--disabled: #{color('light-65')};
+    ----color--disabled: var(--color-light-650);
     ////
     /// The color of the dropdown component item when hovered or focused
     /// @name color--hover
@@ -273,7 +273,7 @@
     /// @name header--background
     /// @type color
     ////
-    ----header--background: #{color('gray-05')};
+    ----header--background: var(--color-gray-050);
     ////
     /// The padding top of the dropdown component header
     /// @name header--padding-top
@@ -337,7 +337,7 @@
     /// @name footer--background
     /// @type color
     ////
-    ----footer--background: #{color('gray-05')};
+    ----footer--background: var(--color-gray-050);
     ////
     /// The padding top of the dropdown component footer
     /// @name footer--padding-top

@@ -8,49 +8,49 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('white')};
+    ----background: var(--color-white);
     ////
     /// The background of the checkbox component indicator when checked
     /// @name background--checked
     /// @type color
     ////
-    ----background--checked: #{color('primary')};
+    ----background--checked: var(--color-primary);
     ////
     /// The background of the checkbox component indicator when disabled
     /// @name background--disabled
     /// @type color
     ////
-    ----background--disabled: #{color('light-25')};
+    ----background--disabled: var(--color-light-250);
     ////
     /// The background of the checkbox component indicator when checked and disabled
     /// @name background--checked-disabled
     /// @type color
     ////
-    ----background--checked-disabled: #{color('primary-25')};
+    ----background--checked-disabled: var(--color-primary-250);
     ////
     /// The border-color of the checkbox component indicator
     /// @name border-color
     /// @type color
     ////
-    ----border-color: #{color('light-55')};
+    ----border-color: var(--color-light-550);
     ////
     /// The border-color of the checkbox component indicator when checked
     /// @name border-color--checked
     /// @type color
     ////
-    ----border-color--checked: #{color('primary-55')};
+    ----border-color--checked: var(--color-primary-550);
     ////
     /// The border-color of the checkbox component indicator when disabled
     /// @name border-color--disabled
     /// @type color
     ////
-    ----border-color--disabled: #{color('light')};
+    ----border-color--disabled: var(--color-light);
     ////
     /// The border-color of the checkbox component indicator when checked and disabled
     /// @name border-color--checked-disabled
     /// @type color
     ////
-    ----border-color--checked-disabled: #{color('primary-30')};
+    ----border-color--checked-disabled: var(--color-primary-300);
     ////
     /// The border style of the checkbox component indicator
     /// @name border-style
@@ -145,13 +145,13 @@
     /// @name color
     /// @type color
     ////
-    ----color: #{color('white')};
+    ----color: var(--color-white);
     ////
     /// The color of the checkbox component indicator icon when disabled
     /// @name color--disabled
     /// @type color
     ////
-    ----color--disabled: #{color('light-25')};
+    ----color--disabled: var(--color-light-250);
     ////
     /// The right margin of the checkbox component indicator
     /// @name margin-right
@@ -180,11 +180,11 @@
     /// @name label--color
     /// @type color
     ////
-    ----label--color: #{contrast-color($color-light)};
+    ----label--color: var(--contrast-text--color-light);
     ////
     /// The label color of the checkbox component when disabled
     /// @name label--color--disabled
     /// @type color
     ////
-    ----label--color--disabled: #{color('light-70')};
+    ----label--color--disabled: var(--color-light-700);
 }

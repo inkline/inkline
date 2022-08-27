@@ -8,31 +8,31 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('white')};
+    ----background: var(--color-white);
     ////
     /// The border top color of the tabs component
     /// @name border-top-color
     /// @type color
     ////
-    ----border-top-color: #{color('light')};
+    ----border-top-color: var(--color-light);
     ////
     /// The border right color of the tabs component
     /// @name border-right-color
     /// @type color
     ////
-    ----border-right-color: #{color('light')};
+    ----border-right-color: var(--color-light);
     ////
     /// The border bottom color of the tabs component
     /// @name border-bottom-color
     /// @type color
     ////
-    ----border-bottom-color: #{color('light')};
+    ----border-bottom-color: var(--color-light);
     ////
     /// The border left color of the tabs component
     /// @name border-left-color
     /// @type color
     ////
-    ----border-left-color: #{color('light')};
+    ----border-left-color: var(--color-light);
     ////
     /// The border color of the tabs component
     /// @name border-color
@@ -132,7 +132,7 @@
     /// @name color
     /// @type color
     ////
-    ----color: #{contrast-color($color-white)};
+    ----color: var(--contrast-text--color-white);
     ////
     /// The font size of the tabs component
     /// @name font-size
@@ -173,19 +173,19 @@
     /// @name header--background
     /// @type color
     ////
-    ----header--background: #{color('white')};
+    ----header--background: var(--color-white);
     ////
     /// The background of the tabs component header when active
     /// @name header--background--active
     /// @type color
     ////
-    ----header--background--active: #{color('white')};
+    ----header--background--active: var(--color-white);
     ////
     /// The background of the tabs component header when hovered or focused
     /// @name header--background--hover
     /// @type color
     ////
-    ----header--background--hover: #{color('gray-05')};
+    ----header--background--hover: var(--color-gray-050);
     ////
     /// The border color of the tabs component header
     /// @name header--border-color
@@ -196,7 +196,7 @@
     /// The border color of the tabs component header when active
     /// @name header--border-color--active
     ////
-    ----header--border-color--active: #{color('primary')};
+    ----header--border-color--active: var(--color-primary);
     ////
     /// The color of the tabs component header when active
     /// @name header--color--active

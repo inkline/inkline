@@ -8,37 +8,37 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('white')};
+    ----background: var(--color-white);
     ////
     /// The background of the list group component when active
     /// @name background--active
     /// @type color
     ////
-    ----background--active: #{color('primary')};
+    ----background--active: var(--color-primary);
     ////
     /// The border top color of the list group component
     /// @name border-top-color
     /// @type color
     ////
-    ----border-top-color: #{color('light')};
+    ----border-top-color: var(--color-light);
     ////
     /// The border right color of the list group component
     /// @name border-right-color
     /// @type color
     ////
-    ----border-right-color: #{color('light')};
+    ----border-right-color: var(--color-light);
     ////
     /// The border bottom color of the list group component
     /// @name border-bottom-color
     /// @type color
     ////
-    ----border-bottom-color: #{color('light')};
+    ----border-bottom-color: var(--color-light);
     ////
     /// The border left color of the list group component
     /// @name border-left-color
     /// @type color
     ////
-    ----border-left-color: #{color('light')};
+    ----border-left-color: var(--color-light);
     ////
     /// The border color of the list group component
     /// @name border-color
@@ -49,7 +49,7 @@
     /// @name border-color--active
     /// @type color
     ////
-    ----border-color--active: #{color('primary-55')};
+    ----border-color--active: var(--color-primary-550);
     ////
     /// The border style of the list group component
     /// @name border-style
@@ -114,13 +114,13 @@
     /// @name color
     /// @type color
     ////
-    ----color: #{contrast-color($color-light)};
+    ----color: var(--contrast-text--color-light);
     ////
     /// The color of the list group component item when active
     /// @name color--active
     /// @type color
     ////
-    ----color--active: #{contrast-color($color-primary)};
+    ----color--active: var(--contrast-text--color-primary);
     ////
     /// The color of the list group component item when disabled
     /// @name color--disabled

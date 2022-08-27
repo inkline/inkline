@@ -8,31 +8,31 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('white')};
+    ----background: var(--color-white);
     ////
     /// The border top color of the popover component
     /// @name border-top-color
     /// @type color
     ////
-    ----border-top-color: #{color('light')};
+    ----border-top-color: var(--color-light);
     ////
     /// The border right color of the popover component
     /// @name border-right-color
     /// @type color
     ////
-    ----border-right-color: #{color('light')};
+    ----border-right-color: var(--color-light);
     ////
     /// The border bottom color of the popover component
     /// @name border-bottom-color
     /// @type color
     ////
-    ----border-bottom-color: #{color('light')};
+    ----border-bottom-color: var(--color-light);
     ////
     /// The border left color of the popover component
     /// @name border-left-color
     /// @type color
     ////
-    ----border-left-color: #{color('light')};
+    ----border-left-color: var(--color-light);
     ////
     /// The border color of the popover component
     /// @name border-color
@@ -132,7 +132,7 @@
     /// @name color
     /// @type color
     ////
-    ----color: #{contrast-color($color-white)};
+    ----color: var(--contrast-text--color-white);
     ////
     /// The font size of the popover component
     /// @name font-size
@@ -227,7 +227,7 @@
     /// @name header--background
     /// @type color
     ////
-    ----header--background: #{color('gray-05')};
+    ----header--background: var(--color-gray-050);
     ////
     /// The border color of the popover component header
     /// @name header--border-color
@@ -372,7 +372,7 @@
     /// @name footer--background
     /// @type color
     ////
-    ----footer--background: #{color('gray-05')};
+    ----footer--background: var(--color-gray-050);
     ////
     /// The border color of the popover component footer
     /// @name footer--border-color

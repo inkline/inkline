@@ -8,113 +8,113 @@
     /// @name light
     /// @type variant
     ////
-    @include variant('light') {
+    &.-light {
         ////
         /// The background of the pagination component item, for the light color variant
         /// @name background
         ////
-        ----background: #{color('light')};
+        ----background: var(--color-light);
         ////
         /// The background of the pagination component item when hovered or focused, for the light color variant
         /// @name background--hover
         ////
-        ----background--hover: #{color('light-55')};
+        ----background--hover: var(--color-light-550);
         ////
         /// The background of the pagination component item when active, for the light color variant
         /// @name background--active
         ////
-        ----background--active: #{color('primary')};
+        ----background--active: var(--color-primary);
         ////
         /// The border top color of the pagination component item, for the light color variant
         /// @name border-top-color
         ////
-        ----border-top-color: #{color('light-55')};
+        ----border-top-color: var(--color-light-550);
         ////
         /// The border right color of the pagination component item, for the light color variant
         /// @name border-right-color
         ////
-        ----border-right-color: #{color('light-55')};
+        ----border-right-color: var(--color-light-550);
         ////
         /// The border bottom color of the pagination component item, for the light color variant
         /// @name border-bottom-color
         ////
-        ----border-bottom-color: #{color('light-55')};
+        ----border-bottom-color: var(--color-light-550);
         ////
         /// The border left color of the pagination component item, for the light color variant
         /// @name border-left-color
         ////
-        ----border-left-color: #{color('light-55')};
+        ----border-left-color: var(--color-light-550);
         ////
         /// The border color of the pagination component item when active, for the light color variant
         /// @name border-color--active
         ////
-        ----border-color--active: #{color('primary-55')};
+        ----border-color--active: var(--color-primary-550);
         ////
         /// The border color of the pagination component item when active, for the light color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-light)};
+        ----color: var(--contrast-text--color-light);
         ////
         /// The border color of the pagination component item when active, for the light color variant
         /// @name color--active
         ////
-        ----color--active: #{contrast-color($color-primary)};
+        ----color--active: var(--contrast-text--color-primary);
     }
     ////
     /// Variables for the dark color variant
     /// @name dark
     /// @type variant
     ////
-    @include variant('dark') {
+    &.-dark {
         ////
         /// The background of the pagination component item, for the dark color variant
         /// @name background
         ////
-        ----background: #{color('dark')};
+        ----background: var(--color-dark);
         ////
         /// The background of the pagination component item when hovered or focused, for the dark color variant
         /// @name background--hover
         ////
-        ----background--hover: #{color('dark-45')};
+        ----background--hover: var(--color-dark-450);
         ////
         /// The background of the pagination component item when active, for the dark color variant
         /// @name background--active
         ////
-        ----background--active: #{color('primary')};
+        ----background--active: var(--color-primary);
         ////
         /// The border top color of the pagination component item, for the dark color variant
         /// @name border-top-color
         ////
-        ----border-top-color: #{color('dark-45')};
+        ----border-top-color: var(--color-dark-450);
         ////
         /// The border right color of the pagination component item, for the dark color variant
         /// @name border-right-color
         ////
-        ----border-right-color: #{color('dark-45')};
+        ----border-right-color: var(--color-dark-450);
         ////
         /// The border bottom color of the pagination component item, for the dark color variant
         /// @name border-bottom-color
         ////
-        ----border-bottom-color: #{color('dark-45')};
+        ----border-bottom-color: var(--color-dark-450);
         ////
         /// The border left color of the pagination component item, for the dark color variant
         /// @name border-left-color
         ////
-        ----border-left-color: #{color('dark-45')};
+        ----border-left-color: var(--color-dark-450);
         ////
         /// The border color of the pagination component item when active, for the dark color variant
         /// @name border-color--active
         ////
-        ----border-color--active: #{color('primary-55')};
+        ----border-color--active: var(--color-primary-550);
         ////
         /// The border color of the pagination component item when active, for the dark color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-dark)};
+        ----color: var(--contrast-text--color-dark);
         ////
         /// The border color of the pagination component item when active, for the dark color variant
         /// @name color--active
         ////
-        ----color--active: #{contrast-color($color-primary)};
+        ----color--active: var(--contrast-text--color-primary);
     }
 }

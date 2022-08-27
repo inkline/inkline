@@ -8,7 +8,7 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('dark')};
+    ----background: var(--color-dark);
     ////
     /// The opacity of the hamburger-menu component
     /// @name opacity

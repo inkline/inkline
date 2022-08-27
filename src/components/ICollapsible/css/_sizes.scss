@@ -8,275 +8,275 @@
     /// @name sm
     /// @type variant
     ////
-    @include variant('sm') {
+    &.-sm {
         ////
         /// The border top left radius of the collapsible component, for the sm size variant
         /// @name border-top-left-radius
         ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')});
+        ----border-top-left-radius: var(--border-top-left-radius-sm);
         ////
         /// The border top right radius of the collapsible component, for the sm size variant
         /// @name border-top-right-radius
         ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')});
+        ----border-top-right-radius: var(--border-top-right-radius-sm);
         ////
         /// The border bottom right radius of the collapsible component, for the sm size variant
         /// @name border-bottom-right-radius
         ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')});
+        ----border-bottom-right-radius: var(--border-bottom-right-radius-sm);
         ////
         /// The border bottom left radius of the collapsible component, for the sm size variant
         /// @name border-bottom-left-radius
         ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')});
+        ----border-bottom-left-radius: var(--border-bottom-left-radius-sm);
         ////
         /// The font size of the collapsible component, for the sm size variant
         /// @name font-size
         ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
+        ----font-size: var(--font-size-sm);
         ////
         /// The padding top of the collapsible component, for the sm size variant
         /// @name padding-top
         ////
-        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('sm')});
+        ----padding-top: var(--padding-top-sm);
         ////
         /// The padding right of the collapsible component, for the sm size variant
         /// @name padding-right
         ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
+        ----padding-right: var(--padding-right-sm);
         ////
         /// The padding bottom of the collapsible component, for the sm size variant
         /// @name padding-bottom
         ////
-        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('sm')});
+        ----padding-bottom: var(--padding-bottom-sm);
         ////
         /// The padding left of the collapsible component, for the sm size variant
         /// @name padding-left
         ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
+        ----padding-left: var(--padding-left-sm);
         ////
         /// The padding top of the collapsible component header, for the sm size variant
         /// @name header--padding-top
         ////
-        ----header--padding-top: calc(#{var(----padding-top)} * #{size-multiplier('sm')});
+        ----header--padding-top: var(----padding-top-sm);
         ////
         /// The padding right of the collapsible component header, for the sm size variant
         /// @name header--padding-right
         ////
-        ----header--padding-right: calc(#{var(----padding-right)} * #{size-multiplier('sm')});
+        ----header--padding-right: var(----padding-right-sm);
         ////
         /// The padding bottom of the collapsible component header, for the sm size variant
         /// @name header--padding-bottom
         ////
-        ----header--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('sm')});
+        ----header--padding-bottom: var(----padding-bottom-sm);
         ////
         /// The padding left of the collapsible component header, for the sm size variant
         /// @name header--padding-left
         ////
-        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('sm')});
+        ----header--padding-left: var(----padding-left-sm);
         ////
         /// The padding top of the collapsible component body, for the sm size variant
         /// @name body--padding-top
         ////
-        ----body--padding-top: calc(#{var(----padding-top)} * #{size-multiplier('sm')});
+        ----body--padding-top: var(----padding-top-sm);
         ////
         /// The padding right of the collapsible component body, for the sm size variant
         /// @name body--padding-right
         ////
-        ----body--padding-right: calc(#{var(----padding-right)} * #{size-multiplier('sm')});
+        ----body--padding-right: var(----padding-right-sm);
         ////
         /// The padding bottom of the collapsible component body, for the sm size variant
         /// @name body--padding-bottom
         ////
-        ----body--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('sm')});
+        ----body--padding-bottom: var(----padding-bottom-sm);
         ////
         /// The padding left of the collapsible component body, for the sm size variant
         /// @name body--padding-left
         ////
-        ----body--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('sm')});
+        ----body--padding-left: var(----padding-left-sm);
     }
     ////
     /// Variables for the md size variant
     /// @name md
     /// @type variant
     ////
-    @include variant('md') {
+    &.-md {
         ////
         /// The border top left radius of the collapsible component, for the md size variant
         /// @name border-top-left-radius
         ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')});
+        ----border-top-left-radius: var(--border-top-left-radius-md);
         ////
         /// The border top right radius of the collapsible component, for the md size variant
         /// @name border-top-right-radius
         ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')});
+        ----border-top-right-radius: var(--border-top-right-radius-md);
         ////
         /// The border bottom right radius of the collapsible component, for the md size variant
         /// @name border-bottom-right-radius
         ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')});
+        ----border-bottom-right-radius: var(--border-bottom-right-radius-md);
         ////
         /// The border bottom left radius of the collapsible component, for the md size variant
         /// @name border-bottom-left-radius
         ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')});
+        ----border-bottom-left-radius: var(--border-bottom-left-radius-md);
         ////
         /// The font size of the collapsible component, for the md size variant
         /// @name font-size
         ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
+        ----font-size: var(--font-size-md);
         ////
         /// The padding top of the collapsible component, for the md size variant
         /// @name padding-top
         ////
-        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('md')});
+        ----padding-top: var(--padding-top-md);
         ////
         /// The padding right of the collapsible component, for the md size variant
         /// @name padding-right
         ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
+        ----padding-right: var(--padding-right-md);
         ////
         /// The padding bottom of the collapsible component, for the md size variant
         /// @name padding-bottom
         ////
-        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('md')});
+        ----padding-bottom: var(--padding-bottom-md);
         ////
         /// The padding left of the collapsible component, for the md size variant
         /// @name padding-left
         ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
+        ----padding-left: var(--padding-left-md);
         ////
         /// The padding top of the collapsible component header, for the md size variant
         /// @name header--padding-top
         ////
-        ----header--padding-top: calc(#{var(----padding-top)} * #{size-multiplier('md')});
+        ----header--padding-top: var(----padding-top-md);
         ////
         /// The padding right of the collapsible component header, for the md size variant
         /// @name header--padding-right
         ////
-        ----header--padding-right: calc(#{var(----padding-right)} * #{size-multiplier('md')});
+        ----header--padding-right: var(----padding-right-md);
         ////
         /// The padding bottom of the collapsible component header, for the md size variant
         /// @name header--padding-bottom
         ////
-        ----header--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('md')});
+        ----header--padding-bottom: var(----padding-bottom-md);
         ////
         /// The padding left of the collapsible component header, for the md size variant
         /// @name header--padding-left
         ////
-        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('md')});
+        ----header--padding-left: var(----padding-left-md);
         ////
         /// The padding top of the collapsible component body, for the md size variant
         /// @name body--padding-top
         ////
-        ----body--padding-top: calc(#{var(----padding-top)} * #{size-multiplier('md')});
+        ----body--padding-top: var(----padding-top-md);
         ////
         /// The padding right of the collapsible component body, for the md size variant
         /// @name body--padding-right
         ////
-        ----body--padding-right: calc(#{var(----padding-right)} * #{size-multiplier('md')});
+        ----body--padding-right: var(----padding-right-md);
         ////
         /// The padding bottom of the collapsible component body, for the md size variant
         /// @name body--padding-bottom
         ////
-        ----body--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('md')});
+        ----body--padding-bottom: var(----padding-bottom-md);
         ////
         /// The padding left of the collapsible component body, for the md size variant
         /// @name body--padding-left
         ////
-        ----body--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('md')});
+        ----body--padding-left: var(----padding-left-md);
     }
     ////
     /// Variables for the lg size variant
     /// @name lg
     /// @type variant
     ////
-    @include variant('lg') {
+    &.-lg {
         ////
         /// The border top left radius of the collapsible component, for the lg size variant
         /// @name border-top-left-radius
         ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')});
+        ----border-top-left-radius: var(--border-top-left-radius-lg);
         ////
         /// The border top right radius of the collapsible component, for the lg size variant
         /// @name border-top-right-radius
         ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')});
+        ----border-top-right-radius: var(--border-top-right-radius-lg);
         ////
         /// The border bottom right radius of the collapsible component, for the lg size variant
         /// @name border-bottom-right-radius
         ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')});
+        ----border-bottom-right-radius: var(--border-bottom-right-radius-lg);
         ////
         /// The border bottom left radius of the collapsible component, for the lg size variant
         /// @name border-bottom-left-radius
         ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')});
+        ----border-bottom-left-radius: var(--border-bottom-left-radius-lg);
         ////
         /// The font size of the collapsible component, for the lg size variant
         /// @name font-size
         ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
+        ----font-size: var(--font-size-lg);
         ////
         /// The padding top of the collapsible component, for the lg size variant
         /// @name padding-top
         ////
-        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('lg')});
+        ----padding-top: var(--padding-top-lg);
         ////
         /// The padding right of the collapsible component, for the lg size variant
         /// @name padding-right
         ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
+        ----padding-right: var(--padding-right-lg);
         ////
         /// The padding bottom of the collapsible component, for the lg size variant
         /// @name padding-bottom
         ////
-        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('lg')});
+        ----padding-bottom: var(--padding-bottom-lg);
         ////
         /// The padding left of the collapsible component, for the lg size variant
         /// @name padding-left
         ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
+        ----padding-left: var(--padding-left-lg);
         ////
         /// The padding top of the collapsible component header, for the lg size variant
         /// @name header--padding-top
         ////
-        ----header--padding-top: calc(#{var(----padding-top)} * #{size-multiplier('lg')});
+        ----header--padding-top: var(----padding-top-lg);
         ////
         /// The padding right of the collapsible component header, for the lg size variant
         /// @name header--padding-right
         ////
-        ----header--padding-right: calc(#{var(----padding-right)} * #{size-multiplier('lg')});
+        ----header--padding-right: var(----padding-right-lg);
         ////
         /// The padding bottom of the collapsible component header, for the lg size variant
         /// @name header--padding-bottom
         ////
-        ----header--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('lg')});
+        ----header--padding-bottom: var(----padding-bottom-lg);
         ////
         /// The padding left of the collapsible component header, for the lg size variant
         /// @name header--padding-left
         ////
-        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('lg')});
+        ----header--padding-left: var(----padding-left-lg);
         ////
         /// The padding top of the collapsible component body, for the lg size variant
         /// @name body--padding-top
         ////
-        ----body--padding-top: calc(#{var(----padding-top)} * #{size-multiplier('lg')});
+        ----body--padding-top: var(----padding-top-lg);
         ////
         /// The padding right of the collapsible component body, for the lg size variant
         /// @name body--padding-right
         ////
-        ----body--padding-right: calc(#{var(----padding-right)} * #{size-multiplier('lg')});
+        ----body--padding-right: var(----padding-right-lg);
         ////
         /// The padding bottom of the collapsible component body, for the lg size variant
         /// @name body--padding-bottom
         ////
-        ----body--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('lg')});
+        ----body--padding-bottom: var(----padding-bottom-lg);
         ////
         /// The padding left of the collapsible component body, for the lg size variant
         /// @name body--padding-left
         ////
-        ----body--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('lg')});
+        ----body--padding-left: var(----padding-left-lg);
     }
 }

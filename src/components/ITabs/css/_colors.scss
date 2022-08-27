@@ -8,52 +8,52 @@
     /// @name light
     /// @type variant
     ////
-    @include variant('light') {
+    &.-light {
         ////
         /// The background of the tabs component, for the light color variant
         /// @name background
         ////
-        ----background: #{color('white')};
+        ----background: var(--color-white);
         ////
         /// The border top color of the tabs component, for the light color variant
         /// @name border-top-color
         ////
-        ----border-top-color: #{color('light')};
+        ----border-top-color: var(--color-light);
         ////
         /// The border right color of the tabs component, for the light color variant
         /// @name border-right-color
         ////
-        ----border-right-color: #{color('light')};
+        ----border-right-color: var(--color-light);
         ////
         /// The border bottom color of the tabs component, for the light color variant
         /// @name border-bottom-color
         ////
-        ----border-bottom-color: #{color('light')};
+        ----border-bottom-color: var(--color-light);
         ////
         /// The border left color of the tabs component, for the light color variant
         /// @name border-left-color
         ////
-        ----border-left-color: #{color('light')};
+        ----border-left-color: var(--color-light);
         ////
         /// The color of the tabs component item, for the light color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-white)};
+        ----color: var(--contrast-text--color-white);
         ////
         /// The background of the tabs component header, for the light color variant
         /// @name header--background
         ////
-        ----header--background: #{color('white')};
+        ----header--background: var(--color-white);
         ////
         /// The background of the tabs component header when active, for the light color variant
         /// @name header--background--active
         ////
-        ----header--background--active: #{color('white')};
+        ----header--background--active: var(--color-white);
         ////
         /// The background of the tabs component header when hovered or focused, for the light color variant
         /// @name header--background--hover
         ////
-        ----header--background--hover: #{color('gray-05')};
+        ----header--background--hover: var(--color-gray-050);
         ////
         /// The border color of the tabs component header, for the light color variant
         /// @name header--border-color
@@ -65,52 +65,52 @@
     /// @name dark
     /// @type variant
     ////
-    @include variant('dark') {
+    &.-dark {
         ////
         /// The background of the tabs component, for the dark color variant
         /// @name background
         ////
-        ----background: #{color('dark')};
+        ----background: var(--color-dark);
         ////
         /// The border top color of the tabs component, for the dark color variant
         /// @name border-top-color
         ////
-        ----border-top-color: #{color('dark-60')};
+        ----border-top-color: var(--color-dark-600);
         ////
         /// The border right color of the tabs component, for the dark color variant
         /// @name border-right-color
         ////
-        ----border-right-color: #{color('dark-60')};
+        ----border-right-color: var(--color-dark-600);
         ////
         /// The border bottom color of the tabs component, for the dark color variant
         /// @name border-bottom-color
         ////
-        ----border-bottom-color: #{color('dark-60')};
+        ----border-bottom-color: var(--color-dark-600);
         ////
         /// The border left color of the tabs component, for the dark color variant
         /// @name border-left-color
         ////
-        ----border-left-color: #{color('dark-60')};
+        ----border-left-color: var(--color-dark-600);
         ////
         /// The color of the tabs component item, for the dark color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-dark)};
+        ----color: var(--contrast-text--color-dark);
         ////
         /// The background of the tabs component header, for the dark color variant
         /// @name header--background
         ////
-        ----header--background: #{color('dark')};
+        ----header--background: var(--color-dark);
         ////
         /// The background of the tabs component header when active, for the dark color variant
         /// @name header--background--active
         ////
-        ----header--background--active: #{color('dark')};
+        ----header--background--active: var(--color-dark);
         ////
         /// The background of the tabs component header when hovered or focused, for the dark color variant
         /// @name header--background--hover
         ////
-        ----header--background--hover: #{color('dark-45')};
+        ----header--background--hover: var(--color-dark-450);
         ////
         /// The border color of the tabs component header, for the dark color variant
         /// @name header--border-color

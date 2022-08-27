@@ -1,28 +1,40 @@
-@import "../src/css/variables";
-@import "../src/css/mixins";
-@import "../src/css/preview";
+//@import "../src/css/variables";
+//@import "../src/css/mixins";
+//@import "../src/css/preview";
+//
+//#root {
+//    min-height: calc(100vh - 2rem);
+//
+//    > * {
+//        margin: 0.5rem;
+//    }
+//
+//    @extend %border-utilities-preview;
+//    @extend %color-utilities-preview;
+//    @extend %flex-utilities-preview;
+//    @extend %spacing-utilities-preview;
+//    @extend %sizing-utilities-preview;
+//    @extend %card-preview;
+//
+//    .storybook-example {
+//        @extend %card-preview;
+//        @extend %layout-preview;
+//        @extend %grid-preview;
+//
+//        .layout-content {
+//            min-height: 300px;
+//        }
+//    }
+//}
 
 #root {
-    min-height: calc(100vh - 2rem);
-
-    > * {
-        margin: 0.5rem;
+    .alert + .alert {
+        margin-top: var(--margin-top);
     }
 
-    @extend %border-utilities-preview;
-    @extend %color-utilities-preview;
-    @extend %flex-utilities-preview;
-    @extend %spacing-utilities-preview;
-    @extend %sizing-utilities-preview;
-    @extend %card-preview;
-
-    .storybook-example {
-        @extend %card-preview;
-        @extend %layout-preview;
-        @extend %grid-preview;
-
-        .layout-content {
-            min-height: 300px;
-        }
+    .badge,
+    .button {
+        margin-right: var(--margin-right);
+        margin-bottom: var(--margin-bottom);
     }
 }

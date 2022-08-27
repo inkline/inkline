@@ -1,0 +1,9 @@
+/**
+ * Horizontal rule
+ */
+hr {
+    margin: var(--hr--margin, (var(--margin-top) 0 var(--margin-bottom)));
+    color: var(--hr--color, inherit);
+    border: 0;
+    border-top: var(--hr--border-width, var(--border-top-width)) solid var(--hr--border-color, var(--border-top-color));
+}

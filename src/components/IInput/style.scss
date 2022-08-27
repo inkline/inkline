@@ -221,7 +221,7 @@
 
     &.-error {
         > .input {
-            ----border-color: #{color('danger')};
+            ----border-color: var(--color-danger);
         }
     }
 

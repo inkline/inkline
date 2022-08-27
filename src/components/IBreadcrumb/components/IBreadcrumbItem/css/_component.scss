@@ -1,29 +1,28 @@
 /**
- * Breadcrumb
+ * Breadcrumb Item
  */
-@import '../../../../css/variables';
-@import '../../../../css/mixins';
 
 .breadcrumb-item {
     margin-bottom: 0;
-    padding-left: var(----padding-left);
+    padding-left: var(--breadcrumb--padding-left);
+    color: var(--breadcrumb--color);
 
     a {
-        color: var(----color);
+        color: var(--breadcrumb--color);
 
         &[href],
         &[to] {
-            ----color: var(----color--link);
+            --breadcrumb--color: var(--breadcrumb--link--color);
         }
     }
 
-    &.-active a {
-        ----color: var(----color--active);
+    &.-active {
+        --breadcrumb--color: var(--breadcrumb--active--color);
     }
 
     + .breadcrumb-item {
         &::before {
-            padding-right: var(----padding-right);
+            padding-right: var(--breadcrumb--padding-right);
         }
     }
 

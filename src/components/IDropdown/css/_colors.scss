@@ -8,17 +8,17 @@
     /// @name light
     /// @type variant
     ////
-    @include variant('light') {
+    &.-light {
         ////
         /// The background of the dropdown component, for the light color variant
         /// @name background
         ////
-        ----background: #{color('white')};
+        ----background: var(--color-white);
         ////
         /// The background of the dropdown component when active, for the light color variant
         /// @name background--active
         ////
-        ----background--active: #{color('light-25')};
+        ----background--active: var(--color-light-250);
         ////
         /// The background of the dropdown component when disabled, for the light color variant
         /// @name background--disabled
@@ -28,32 +28,32 @@
         /// The background of the dropdown component when hovered or focused, for the light color variant
         /// @name background--hover
         ////
-        ----background--hover: #{color('light-25')};
+        ----background--hover: var(--color-light-250);
         ////
         /// The border top color of the dropdown component, for the light color variant
         /// @name border-top-color
         ////
-        ----border-top-color: #{color('light')};
+        ----border-top-color: var(--color-light);
         ////
         /// The border right color of the dropdown component, for the light color variant
         /// @name border-right-color
         ////
-        ----border-right-color: #{color('light')};
+        ----border-right-color: var(--color-light);
         ////
         /// The border bottom color of the dropdown component, for the light color variant
         /// @name border-bottom-color
         ////
-        ----border-bottom-color: #{color('light')};
+        ----border-bottom-color: var(--color-light);
         ////
         /// The border left color of the dropdown component, for the light color variant
         /// @name border-left-color
         ////
-        ----border-left-color: #{color('light')};
+        ----border-left-color: var(--color-light);
         ////
         /// The color of the dropdown component item, for the light color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-white)};
+        ----color: var(--contrast-text--color-white);
         ////
         /// The color of the dropdown component item when active, for the light color variant
         /// @name color--active
@@ -63,7 +63,7 @@
         /// The color of the dropdown component item when disabled, for the light color variant
         /// @name color--disabled
         ////
-        ----color--disabled: #{color('light-65')};
+        ----color--disabled: var(--color-light-650);
         ////
         /// The color of the dropdown component item when hovered or focused, for the light color variant
         /// @name color--hover
@@ -73,29 +73,29 @@
         /// The background of the dropdown component header, for the light color variant
         /// @name header--background
         ////
-        ----header--background: #{color('gray-05')};
+        ----header--background: var(--color-gray-050);
         ////
         /// The background of the dropdown component footer, for the light color variant
         /// @name footer--background
         ////
-        ----footer--background: #{color('gray-05')};
+        ----footer--background: var(--color-gray-050);
     }
     ////
     /// Variables for the dark color variant
     /// @name dark
     /// @type variant
     ////
-    @include variant('dark') {
+    &.-dark {
         ////
         /// The background of the dropdown component, for the dark color variant
         /// @name background
         ////
-        ----background: #{color('dark')};
+        ----background: var(--color-dark);
         ////
         /// The background of the dropdown component when active, for the dark color variant
         /// @name background--active
         ////
-        ----background--active: #{color('dark-45')};
+        ----background--active: var(--color-dark-450);
         ////
         /// The background of the dropdown component when disabled, for the dark color variant
         /// @name background--disabled
@@ -105,32 +105,32 @@
         /// The background of the dropdown component when hovered or focused, for the dark color variant
         /// @name background--hover
         ////
-        ----background--hover: #{color('dark-45')};
+        ----background--hover: var(--color-dark-450);
         ////
         /// The border top color of the dropdown component, for the dark color variant
         /// @name border-top-color
         ////
-        ----border-top-color: #{color('dark-60')};
+        ----border-top-color: var(--color-dark-600);
         ////
         /// The border right color of the dropdown component, for the dark color variant
         /// @name border-right-color
         ////
-        ----border-right-color: #{color('dark-60')};
+        ----border-right-color: var(--color-dark-600);
         ////
         /// The border bottom color of the dropdown component, for the dark color variant
         /// @name border-bottom-color
         ////
-        ----border-bottom-color: #{color('dark-60')};
+        ----border-bottom-color: var(--color-dark-600);
         ////
         /// The border left color of the dropdown component, for the dark color variant
         /// @name border-left-color
         ////
-        ----border-left-color: #{color('dark-60')};
+        ----border-left-color: var(--color-dark-600);
         ////
         /// The color of the dropdown component item, for the dark color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-dark)};
+        ----color: var(--contrast-text--color-dark);
         ////
         /// The color of the dropdown component item when active, for the dark color variant
         /// @name color--active
@@ -140,7 +140,7 @@
         /// The color of the dropdown component item when disabled, for the dark color variant
         /// @name color--disabled
         ////
-        ----color--disabled: #{color('dark-25')};
+        ----color--disabled: var(--color-dark-250);
         ////
         /// The color of the dropdown component item when hovered or focused, for the dark color variant
         /// @name color--hover
@@ -150,11 +150,11 @@
         /// The background of the dropdown component header, for the dark color variant
         /// @name header--background
         ////
-        ----header--background: #{color('dark-55')};
+        ----header--background: var(--color-dark-550);
         ////
         /// The background of the dropdown component footer, for the dark color variant
         /// @name footer--background
         ////
-        ----footer--background: #{color('dark-55')};
+        ----footer--background: var(--color-dark-550);
     }
 }

@@ -19,5 +19,5 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('primary')};
+    ----background: var(--color-primary);
 }

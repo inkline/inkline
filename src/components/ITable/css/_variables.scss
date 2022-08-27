@@ -8,19 +8,19 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('white')};
+    ----background: var(--color-white);
     ////
     /// The background of the table component when hovered
     /// @name background--hover
     /// @type color
     ////
-    ----background--hover: #{color('light-30')};
+    ----background--hover: var(--color-light-300);
     ////
     /// The background of the table component when striped
     /// @name background--striped
     /// @type color
     ////
-    ----background--striped: #{color('light-25')};
+    ----background--striped: var(--color-light-250);
     ////
     /// The border style of the table component
     /// @name border-style
@@ -56,13 +56,13 @@
     /// @name border-color
     /// @type color
     ////
-    ----border-color: #{color('light-25')};
+    ----border-color: var(--color-light-250);
     ////
     /// The color of the table component
     /// @name color
     /// @type color
     ////
-    ----color: #{contrast-color($color-light)};
+    ----color: var(--contrast-text--color-light);
     ////
     /// The bottom margin of the table component
     /// @name margin-bottom

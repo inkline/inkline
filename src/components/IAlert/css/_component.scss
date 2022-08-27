@@ -1,0 +1,202 @@
+/**
+ * Alert
+ */
+
+////
+/// The border style of the alert component
+/// @name alert--border-style
+/// @type border-style
+////
+
+////
+/// The border width of the alert component
+/// @name alert--border-width
+/// @type border-width
+////
+
+////
+/// The border color of the alert component
+/// @name alert--border-color
+/// @type border-color
+/// @variant
+////
+
+////
+/// The border radius of the alert component
+/// @name alert--border-radius
+/// @type border-radius
+////
+
+////
+/// The border radius of the alert component
+/// @name alert--font-size
+/// @type font-size
+////
+
+////
+/// The box shadow of the alert component
+/// @name alert--box-shadow
+/// @type box-shadow
+////
+
+
+////
+/// The background of the alert component
+/// @name alert--background
+/// @type background
+////
+
+////
+/// The color of the alert component
+/// @name alert--color
+/// @type color
+////
+
+////
+/// The transition duration of the alert component
+/// @name alert--transition-duration
+/// @type transition-duration
+////
+
+////
+/// The transition timing function of the alert component
+/// @name alert--transition-timing-function
+/// @type transition-timing-function
+////
+
+////
+/// The padding of the alert component
+/// @name alert--padding
+/// @type padding
+////
+
+.alert {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    min-width: 0;
+    word-wrap: break-word;
+    border-style: var(
+        --alert--border-style,
+        (
+            var(--alert--border-top-style, var(--border-top-style))
+            var(--alert--border-right-style, var(--border-right-style))
+            var(--alert--border-bottom-style, var(--border-bottom-style))
+            var(--alert--border-left-style, var(--border-left-style))
+        )
+    );
+    border-width: var(
+        --alert--border-width,
+        (
+            var(--alert--border-top-width, var(--border-top-width))
+            var(--alert--border-right-width, var(--border-right-width))
+            var(--alert--border-bottom-width, var(--border-bottom-width))
+            var(--alert--border-left-width, var(--border-left-width))
+        )
+    );
+    border-color: var(
+        --alert--border-color,
+        (
+            var(--alert--border-top-color, var(--border-top-color))
+            var(--alert--border-right-color, var(--border-right-color))
+            var(--alert--border-bottom-color, var(--border-bottom-color))
+            var(--alert--border-left-color, var(--border-left-color))
+        )
+    );
+    border-radius: var(
+        --alert--border-radius,
+        (
+            var(--alert--border-top-left-radius, var(--border-top-left-radius))
+            var(--alert--border-top-right-radius, var(--border-top-right-radius))
+            var(--alert--border-bottom-right-radius, var(--border-bottom-right-radius))
+            var(--alert--border-bottom-left-radius, var(--border-bottom-left-radius))
+        )
+    );
+    font-size: var(--alert--font-size, var(--font-size));
+    box-shadow: var(
+        --alert--box-shadow,
+        (
+            var(--alert--box-shadow-x-offset, var(--box-shadow-offset-x))
+            var(--alert--box-shadow-y-offset, var(--box-shadow-offset-y))
+            var(--alert--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+            var(--alert--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+            var(--alert--box-shadow-color, var(--box-shadow-color))
+        )
+    );
+    background: var(--alert--background);
+    color: var(--alert--color);
+    background-clip: border-box;
+    transition-property: var(--alert--transition-property, (background-color, color, border-color));
+    transition-duration: var(--alert--transition-duration, var(--transition-duration));
+    transition-timing-function: var(--alert--transition-timing-function, var(--transition-timing-function));
+
+    // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+    // as much space as possible, ensuring footers are aligned to the bottom.
+    align-items: center;
+
+    a {
+        color: var(--alert--link--color, var(--alert--color));
+        font-weight: 600;
+        transition-property: color;
+        transition-duration: var(--alert--transition-duration, var(--transition-duration));
+        transition-timing-function: var(--alert--transition-timing-function, var(--transition-timing-function));
+
+        &:hover,
+        &:focus {
+            color: var(--alert--link-color, var(--color));
+        }
+    }
+
+    code {
+        background: var(--alert--code--background);
+        color: var(--alert--code--color);
+    }
+
+    > .content {
+        padding: var(
+            --alert--padding,
+            (
+                var(--alert--padding-top, var(--padding-top))
+                var(--alert--padding-right, var(--padding-right))
+                var(--alert--padding-bottom, var(--padding-bottom))
+                var(--alert--padding-left, var(--padding-left))
+            )
+        );
+    }
+
+    > .icon {
+        padding-left: var(--alert--padding-left, var(--padding-left));
+        border-color: var(----border-color);
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    > .dismiss {
+        flex: 0 0 auto;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        margin-right: var(--alert--padding-left, var(--padding-left));
+    }
+
+    &,
+    > .content {
+        flex: 0 1 100%;
+
+        > hr {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

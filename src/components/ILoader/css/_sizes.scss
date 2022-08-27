@@ -8,35 +8,35 @@
     /// @name sm
     /// @type variant
     ////
-    @include variant('sm') {
+    &.-sm {
         ////
         /// The size of the loader component, for the sm size variant
         /// @name size
         ////
-        ----size: calc(#{64px} * #{size-multiplier('sm')});
+        ----size: calc(#{64px} * var(--size-multiplier-sm));
     }
     ////
     /// Variables for the md size variant
     /// @name md
     /// @type variant
     ////
-    @include variant('md') {
+    &.-md {
         ////
         /// The size of the loader component, for the md size variant
         /// @name size
         ////
-        ----size: calc(#{64px} * #{size-multiplier('md')});
+        ----size: calc(#{64px} * var(--size-multiplier-md));
     }
     ////
     /// Variables for the lg size variant
     /// @name lg
     /// @type variant
     ////
-    @include variant('lg') {
+    &.-lg {
         ////
         /// The size of the loader component, for the lg size variant
         /// @name size
         ////
-        ----size: calc(#{64px} * #{size-multiplier('lg')});
+        ----size: calc(#{64px} * var(--size-multiplier-lg));
     }
 }

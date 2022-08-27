@@ -4,8 +4,11 @@ const { resolve } = require("path");
 
 module.exports = {
     stories: [
-        '../src/**/*.stories.mdx',
-        '../src/**/*.stories.@(js|jsx|ts|tsx)'
+        '../src/components/IAlert/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/IBadge/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/IBreadcrumb/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/IButton/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/IIcon/**/*.stories.@(js|jsx|ts|tsx)'
     ],
     addons: [
         {
@@ -29,7 +32,7 @@ module.exports = {
         builder: '@storybook/builder-vite'
     },
     features: {
-        storyStoreV7: true
+        // storyStoreV7: true
     },
     async viteFinal(config, { configType }) {
         // return the customized config

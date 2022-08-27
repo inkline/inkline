@@ -8,43 +8,43 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('light')};
+    ----background: var(--color-light);
     ////
     /// The background of the pagination component item when hovered or focused
     /// @name background--hover
     /// @type color
     ////
-    ----background--hover: #{color('light-55')};
+    ----background--hover: var(--color-light-550);
     ////
     /// The background of the pagination component item when active
     /// @name background--active
     /// @type color
     ////
-    ----background--active: #{color('primary')};
+    ----background--active: var(--color-primary);
     ////
     /// The border top color of the pagination component item
     /// @name border-top-color
     /// @type color
     ////
-    ----border-top-color: #{color('light-55')};
+    ----border-top-color: var(--color-light-550);
     ////
     /// The border right color of the pagination component item
     /// @name border-right-color
     /// @type color
     ////
-    ----border-right-color: #{color('light-55')};
+    ----border-right-color: var(--color-light-550);
     ////
     /// The border bottom color of the pagination component item
     /// @name border-bottom-color
     /// @type color
     ////
-    ----border-bottom-color: #{color('light-55')};
+    ----border-bottom-color: var(--color-light-550);
     ////
     /// The border left color of the pagination component item
     /// @name border-left-color
     /// @type color
     ////
-    ----border-left-color: #{color('light-55')};
+    ----border-left-color: var(--color-light-550);
     ////
     /// The border color of the pagination component item
     /// @name border-color
@@ -55,7 +55,7 @@
     /// @name border-color--active
     /// @type color
     ////
-    ----border-color--active: #{color('primary-55')};
+    ----border-color--active: var(--color-primary-550);
     ////
     /// The border style of the pagination component
     /// @name border-style
@@ -150,13 +150,13 @@
     /// @name color
     /// @type color
     ////
-    ----color: #{contrast-color($color-light)};
+    ----color: var(--contrast-text--color-light);
     ////
     /// The border color of the pagination component item when active
     /// @name color--active
     /// @type color
     ////
-    ----color--active: #{contrast-color($color-primary)};
+    ----color--active: var(--contrast-text--color-primary);
     ////
     /// The font size of the pagination component
     /// @name font-size

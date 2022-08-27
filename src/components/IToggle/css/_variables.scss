@@ -8,49 +8,49 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('light')};
+    ----background: var(--color-light);
     ////
     /// The background of the toggle component when checked
     /// @name background--checked
     /// @type color
     ////
-    ----background--checked: #{color('primary')};
+    ----background--checked: var(--color-primary);
     ////
     /// The background of the toggle component when disabled
     /// @name background--disabled
     /// @type color
     ////
-    ----background--disabled: #{color('light-40')};
+    ----background--disabled: var(--color-light-400);
     ////
     /// The background of the toggle component when checked and disabled
     /// @name background--checked-disabled
     /// @type color
     ////
-    ----background--checked-disabled: #{color('primary-25')};
+    ----background--checked-disabled: var(--color-primary-250);
     ////
     /// The border-color of the toggle component
     /// @name border-color
     /// @type color
     ////
-    ----border-color: #{color('light-55')};
+    ----border-color: var(--color-light-550);
     ////
     /// The border-color of the toggle component when checked
     /// @name border-color--checked
     /// @type color
     ////
-    ----border-color--checked: #{color('primary-55')};
+    ----border-color--checked: var(--color-primary-550);
     ////
     /// The border-color of the toggle component when disabled
     /// @name border-color--disabled
     /// @type color
     ////
-    ----border-color--disabled: #{color('light')};
+    ----border-color--disabled: var(--color-light);
     ////
     /// The border-color of the toggle component when checked and disabled
     /// @name border-color--checked-disabled
     /// @type color
     ////
-    ----border-color--checked-disabled: #{color('primary-30')};
+    ----border-color--checked-disabled: var(--color-primary-300);
     ////
     /// The border style of the toggle component
     /// @name border-style
@@ -168,7 +168,7 @@
     /// @name indicator--background
     /// @type color
     ////
-    ----indicator--background: #{color('white')};
+    ----indicator--background: var(--color-white);
     ////
     /// The background of the toggle component indicator when checked
     /// @name indicator--background--checked
@@ -179,13 +179,13 @@
     /// @name indicator--background--disabled
     /// @type color
     ////
-    ----indicator--background--disabled: #{color('gray-05')};
+    ----indicator--background--disabled: var(--color-gray-050);
     ////
     /// The background of the toggle component indicator when checked and disabled
     /// @name indicator--background--checked-disabled
     /// @type color
     ////
-    ----indicator--background--checked-disabled: #{color('gray-10')};
+    ----indicator--background--checked-disabled: var(--color-gray-100);
     ////
     /// The border top left radius of the toggle component indicator
     /// @name indicator--border-top-left-radius
@@ -232,13 +232,13 @@
     /// @name label--color
     /// @type color
     ////
-    ----label--color: #{contrast-color($color-light)};
+    ----label--color: var(--contrast-text--color-light);
     ////
     /// The color of the toggle component label when disabled
     /// @name label--color--disabled
     /// @type color
     ////
-    ----label--color--disabled: #{color('light-70')};
+    ----label--color--disabled: var(--color-light-700);
     ////
     /// The font size of the toggle component label
     /// @name label--font-size

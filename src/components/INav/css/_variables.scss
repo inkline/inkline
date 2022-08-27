@@ -50,7 +50,7 @@
     /// @group light
     /// @type color
     ////
-    ----color--active: #{color('primary')};
+    ----color--active: var(--color-primary);
     ////
     /// The color of the nav component item when disabled
     /// @name color-disabled

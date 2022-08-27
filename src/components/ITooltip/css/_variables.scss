@@ -8,31 +8,31 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('white')};
+    ----background: var(--color-white);
     ////
     /// The border top color of the tooltip component
     /// @name border-top-color
     /// @type color
     ////
-    ----border-top-color: #{color('light')};
+    ----border-top-color: var(--color-light);
     ////
     /// The border right color of the tooltip component
     /// @name border-right-color
     /// @type color
     ////
-    ----border-right-color: #{color('light')};
+    ----border-right-color: var(--color-light);
     ////
     /// The border bottom color of the tooltip component
     /// @name border-bottom-color
     /// @type color
     ////
-    ----border-bottom-color: #{color('light')};
+    ----border-bottom-color: var(--color-light);
     ////
     /// The border left color of the tooltip component
     /// @name border-left-color
     /// @type color
     ////
-    ----border-left-color: #{color('light')};
+    ----border-left-color: var(--color-light);
     ////
     /// The border color of the tooltip component
     /// @name border-color
@@ -132,7 +132,7 @@
     /// @name color
     /// @type color
     ////
-    ----color: #{contrast-color($color-white)};
+    ----color: var(--contrast-text--color-white);
     ////
     /// The font size of the tooltip component
     /// @name font-size

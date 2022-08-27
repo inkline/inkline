@@ -37,5 +37,5 @@
     /// The color of the form error component
     /// @name color
     ////
-    ----color: #{color('danger')};
+    ----color: var(--color-danger);
 }

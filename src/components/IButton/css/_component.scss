@@ -1,0 +1,318 @@
+/**
+ * Button
+ */
+
+////
+/// The background of the button component
+/// @name button--background
+/// @type color
+////
+
+////
+/// The background of the button component when hovered or focused
+/// @name button--hover--background
+/// @type color
+////
+
+////
+/// The background of the button component when active
+/// @name button--active--background
+/// @type color
+////
+
+////
+/// The border color of the button component
+/// @name button--border-color
+////
+
+////
+/// The border color of the button component when hovered or focused
+/// @name button--hover--border-color
+////
+
+////
+/// The border style of the button component
+/// @name button--border-style
+////
+
+////
+/// The border width of the button component
+/// @name button--border-width
+////
+
+////
+/// The border radius of the button component
+/// @name button--border-radius
+/// @type border-radius
+////
+
+////
+/// The box shadow of the button component
+/// @name button--box-shadow
+/// @type box-shadow
+////
+
+////
+/// The color of the button component
+/// @name button--color
+/// @type color
+////
+
+////
+/// The font size of the button component
+/// @name button--font-size
+/// @type size
+////
+
+////
+/// The font weight of the button component
+/// @name button--font-weight
+////
+
+////
+/// The line height of the button component
+/// @name button--line-height
+////
+
+////
+/// The padding of the button component
+/// @name button--padding
+/// @type padding
+////
+
+////
+/// The margin of the button component when block
+/// @name button--block--margin
+/// @type margin
+////
+
+////
+/// The size of the button component circle variant
+/// @name button--circle--size
+/// @type size
+////
+
+////
+/// The color of the button component link variant
+/// @name button--link--color
+/// @type color
+////
+
+////
+/// The color of the button component link variant when active
+/// @name button--link--active--color
+/// @type color
+////
+
+.button {
+    display: inline-flex;
+    font-weight: var(--button--font-weight, var(--font-weight-normal));
+    font-size: var(--button--font-size, var(--font-size));
+    line-height: var(--button--line-height, var(--line-height));
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    color: var(--button--color);
+    background: var(--button--background);
+    border-style: var(
+        --button--border-style,
+        (
+            var(--button--border-top-style, var(--border-top-style))
+            var(--button--border-right-style, var(--border-right-style))
+            var(--button--border-bottom-style, var(--border-bottom-style))
+            var(--button--border-left-style, var(--border-left-style))
+        )
+    );
+    border-width: var(
+        --button--border-width,
+        (
+            var(--button--border-top-width, var(--border-top-width))
+            var(--button--border-right-width, var(--border-right-width))
+            var(--button--border-bottom-width, var(--border-bottom-width))
+            var(--button--border-left-width, var(--border-left-width))
+        )
+    );
+    border-color: var(
+        --button--border-color,
+        (
+            var(--button--border-top-color, var(--border-top-color))
+            var(--button--border-right-color, var(--border-right-color))
+            var(--button--border-bottom-color, var(--border-bottom-color))
+            var(--button--border-left-color, var(--border-left-color))
+        )
+    );
+    border-radius: var(
+        --button--border-radius,
+        (
+            var(--button--border-top-left-radius, var(--border-top-left-radius))
+            var(--button--border-top-right-radius, var(--border-top-right-radius))
+            var(--button--border-bottom-right-radius, var(--border-bottom-right-radius))
+            var(--button--border-bottom-left-radius, var(--border-bottom-left-radius))
+        )
+    );
+    box-shadow: var(
+        --button--box-shadow,
+        (
+            var(--button--box-shadow-x-offset, var(--box-shadow-offset-x))
+            var(--button--box-shadow-y-offset, var(--box-shadow-offset-y))
+            var(--button--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+            var(--button--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+            var(--button--box-shadow-color, var(--box-shadow-color))
+        )
+    );
+    padding: var(
+        --button--padding,
+        (
+            var(--button--padding-top, var(--padding-top))
+            var(--button--padding-right, var(--padding-right))
+            var(--button--padding-bottom, var(--padding-bottom))
+            var(--button--padding-left, var(--padding-left))
+        )
+    );
+    justify-content: center;
+    align-items: center;
+    transition-property: var(--button--transition-property, (background-color, color, border-color));
+    transition-duration: var(--button--transition-duration, var(--transition-duration));
+    transition-timing-function: var(--button--transition-timing-function, var(--transition-timing-function));
+
+    // Target non disabled buttons
+    &:not(:disabled):not(.-disabled) {
+        // Add "hand" cursor to non-disabled .button elements
+        cursor: pointer;
+
+        // Focus and hover state
+        &:hover,
+        &:focus,
+        &.-hovered,
+        &.-focused {
+            --button--background: var(--button--hover--background);
+            --button--border-color: var(--button--hover--border-color);
+            text-decoration: none;
+            color: var(--button--color);
+            outline: 0;
+        }
+
+        &:active,
+        &.-active {
+            --button--background: var(--button--active--background);
+        }
+    }
+
+    // Disabled state
+    // Disabled state comes first so active can properly restyle
+    &.-disabled,
+    &:disabled {
+        opacity: var(--button--disabled--opacity, 0.8);
+        box-shadow: none;
+    }
+
+    // Block buttons
+    // Make buttons span the whole parent width
+    &.-block {
+        display: block;
+        width: 100%;
+
+        + .button.-block {
+            margin-left: 0;
+            margin-top: var(--button--block--margin-top, var(--margin-top));
+        }
+    }
+
+    // Link buttons
+    // Make a button look and behave like a link
+    &.-link {
+        --button--color: var(--button--link--color);
+        box-shadow: none;
+        background-color: transparent;
+        border-color: transparent;
+
+        &:not(:disabled):not(.-disabled) {
+            &:hover,
+            &:focus,
+            &:active,
+            &.-hovered,
+            &.-focused,
+            &.-active {
+                --button--color: var(--button--link--active--color);
+                background-color: transparent;
+                border-color: transparent;
+                box-shadow: none;
+                text-decoration: underline;
+            }
+        }
+
+        &:disabled,
+        &.-disabled {
+            pointer-events: none;
+        }
+    }
+
+    // Outline buttons
+    // Remove button background and add a beautiful transition on hover
+    &.-outline {
+        background: transparent;
+        color: var(--button--background);
+        border-color: var(--button--background);
+        --button--box-shadow: none;
+
+        &:not(:disabled):not(.-disabled) {
+            &:hover,
+            &:focus,
+            &:active,
+            &.-hovered,
+            &.-focused,
+            &.-active {
+                --button--border-color: var(--button--hover--border-color);
+                background: var(--button--background);
+                color: var(--button--color);
+            }
+        }
+    }
+
+    // Circle button
+    &.-circle {
+        --button--border-radius: 100%;
+        width: var(--button--circle--size);
+        height: var(--button--circle--size);
+        padding: 0;
+    }
+
+    .loader {
+        margin-top: spacing('1/4');
+        margin-bottom: spacing('1/4');
+        width: var(--button--font-size);
+        height: var(--button--font-size);
+
+        > svg > circle {
+            stroke: var(--button--color) !important;
+        }
+    }
+
+    //
+    // Button group border accent
+    //
+
+    .button-group:not(.-vertical) > &:not(:first-child) {
+        --button--border-left-color: var(--button--hover--background);
+    }
+
+    .button-group.-vertical > &:not(:first-child) {
+        --button--border-top-color: var(--button--hover--background);
+    }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.button.-disabled,
+*:disabled a.button {
+    pointer-events: none;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    &.-block {
+        width: 100%;
+    }
+}

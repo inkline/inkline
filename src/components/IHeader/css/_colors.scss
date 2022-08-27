@@ -8,50 +8,50 @@
     /// @name primary
     /// @type variant
     ////
-    @include variant('primary') {
+    &.-primary {
         ////
         /// The background of the header component, for the primary color variant
         /// @name background
         ////
-        ----background: #{color('primary')};
+        ----background: var(--color-primary);
         ////
         /// The color of the header component, for the primary color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-primary)};
+        ----color: var(--contrast-text--color-primary);
     }
     ////
     /// Variables for the light color variant
     /// @name light
     /// @type variant
     ////
-    @include variant('light') {
+    &.-light {
         ////
         /// The background of the header component, for the light color variant
         /// @name background
         ////
-        ----background: #{color('light')};
+        ----background: var(--color-light);
         ////
         /// The color of the header component, for the light color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-light)};
+        ----color: var(--contrast-text--color-light);
     }
     ////
     /// Variables for the dark color variant
     /// @name dark
     /// @type variant
     ////
-    @include variant('dark') {
+    &.-dark {
         ////
         /// The background of the header component, for the dark color variant
         /// @name background
         ////
-        ----background: #{color('dark')};
+        ----background: var(--color-dark);
         ////
         /// The color of the header component, for the dark color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-dark)};
+        ----color: var(--contrast-text--color-dark);
     }
 }

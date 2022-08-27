@@ -8,31 +8,31 @@
     /// @name background
     /// @type color
     ////
-    ----background: #{color('white')};
+    ----background: var(--color-white);
     ////
     /// The background of the input component when disabled
     /// @name background--disabled
     /// @type color
     ////
-    ----background--disabled: #{color('light-25')};
+    ----background--disabled: var(--color-light-250);
     ////
     /// The border color of the input component
     /// @name border-color
     /// @type color
     ////
-    ----border-color: #{color('light-55')};
+    ----border-color: var(--color-light-550);
     ////
     /// The border color of the input component when hovered
     /// @name border-color--hover
     /// @type color
     ////
-    ----border-color--hover: #{color('light-60')};
+    ----border-color--hover: var(--color-light-600);
     ////
     /// The border color of the input component when focused
     /// @name border-color--focus
     /// @type color
     ////
-    ----border-color--focus: #{color('primary')};
+    ----border-color--focus: var(--color-primary);
     ////
     /// The border style of the input component
     /// @name border-style
@@ -127,13 +127,13 @@
     /// @name color
     /// @type color
     ////
-    ----color: #{contrast-color($color-white)};
+    ----color: var(--contrast-text--color-white);
     ////
     /// The color of the input component when disabled
     /// @name color--disabled
     /// @type color
     ////
-    ----color--disabled: #{color('light-75')};
+    ----color--disabled: var(--color-light-750);
     ////
     /// The font size of the input component
     /// @name font-size
@@ -185,19 +185,19 @@
     /// @name clear--background--hover
     /// @type color
     ////
-    ----clear--background--hover: #{color('light-30')};
+    ----clear--background--hover: var(--color-light-300);
     ////
     /// The background of the input component clear button
     /// @name clear--background--active
     /// @type color
     ////
-    ----clear--background--active: #{color('light-40')};
+    ----clear--background--active: var(--color-light-400);
     ////
     /// The color of the input component clear button
     /// @name clear--color
     /// @type color
     ////
-    ----clear--color: #{color('light-70')};
+    ----clear--color: var(--color-light-700);
     ////
     /// The size of the input component clear button
     /// @name clear--size
@@ -208,7 +208,7 @@
     /// @name placeholder--color
     /// @type color
     ////
-    ----placeholder--color: #{color('light-60')};
+    ----placeholder--color: var(--color-light-600);
     ////
     /// The border width of the input component prefix
     /// @name prefix--border-width
@@ -229,7 +229,7 @@
     /// @name prefix-suffix--color
     /// @type color
     ////
-    ----prefix-suffix--color: #{color('light-70')};
+    ----prefix-suffix--color: var(--color-light-700);
     ////
     /// The padding right of the input component prefix and suffix
     /// @name prefix-suffix--padding-right
@@ -245,5 +245,5 @@
     /// @name prepend-append--background
     /// @type color
     ////
-    ----prepend-append--background: #{color('light')};
+    ----prepend-append--background: var(--color-light);
 }

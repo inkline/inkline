@@ -8,305 +8,305 @@
     /// @name sm
     /// @type variant
     ////
-    @include variant('sm') {
+    &.-sm {
         ////
         /// The border top left radius of the popover component, for the sm size variant
         /// @name border-top-left-radius
         ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')});
+        ----border-top-left-radius: var(--border-top-left-radius-sm);
         ////
         /// The border top right radius of the popover component, for the sm size variant
         /// @name border-top-right-radius
         ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')});
+        ----border-top-right-radius: var(--border-top-right-radius-sm);
         ////
         /// The border bottom right radius of the popover component, for the sm size variant
         /// @name border-bottom-right-radius
         ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')});
+        ----border-bottom-right-radius: var(--border-bottom-right-radius-sm);
         ////
         /// The border bottom left radius of the popover component, for the sm size variant
         /// @name border-bottom-left-radius
         ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')});
+        ----border-bottom-left-radius: var(--border-bottom-left-radius-sm);
         ////
         /// The font size of the popover component, for the sm size variant
         /// @name font-size
         ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
+        ----font-size: var(--font-size-sm);
         ////
         /// The margin top of the popover component, for the sm size variant
         /// @name margin-top
         ////
-        ----margin-top: calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier('sm')});
+        ----margin-top: calc(#{calc(var(--margin-top) / 2)} * var(--size-multiplier-sm));
         ////
         /// The margin right of the popover component, for the sm size variant
         /// @name margin-right
         ////
-        ----margin-right: calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier('sm')});
+        ----margin-right: calc(#{calc(var(--margin-right) / 2)} * var(--size-multiplier-sm));
         ////
         /// The margin bottom of the popover component, for the sm size variant
         /// @name margin-bottom
         ////
-        ----margin-bottom: calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier('sm')});
+        ----margin-bottom: calc(#{calc(var(--margin-bottom) / 2)} * var(--size-multiplier-sm));
         ////
         /// The margin left of the popover component, for the sm size variant
         /// @name margin-left
         ////
-        ----margin-left: calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier('sm')});
+        ----margin-left: calc(#{calc(var(--margin-left) / 2)} * var(--size-multiplier-sm));
         ////
         /// The padding top of the popover component, for the sm size variant
         /// @name padding-top
         ////
-        ----padding-top: calc(#{calc(var(--padding-top) * 3 / 4)} * #{size-multiplier('sm')});
+        ----padding-top: calc(#{calc(var(--padding-top) * 3 / 4)} * var(--size-multiplier-sm));
         ////
         /// The padding right of the popover component, for the sm size variant
         /// @name padding-right
         ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
+        ----padding-right: var(--padding-right-sm);
         ////
         /// The padding bottom of the popover component, for the sm size variant
         /// @name padding-bottom
         ////
-        ----padding-bottom: calc(#{calc(var(--padding-bottom) * 3 / 4)} * #{size-multiplier('sm')});
+        ----padding-bottom: calc(#{calc(var(--padding-bottom) * 3 / 4)} * var(--size-multiplier-sm));
         ////
         /// The padding left of the popover component, for the sm size variant
         /// @name padding-left
         ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
+        ----padding-left: var(--padding-left-sm);
         ////
         /// The padding bottom of the popover component header, for the sm size variant
         /// @name header--padding-bottom
         ////
-        ----header--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('sm')});
+        ----header--padding-bottom: var(----padding-bottom-sm);
         ////
         /// The padding left of the popover component header, for the sm size variant
         /// @name header--padding-left
         ////
-        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('sm')});
+        ----header--padding-left: var(----padding-left-sm);
         ////
         /// The padding bottom of the popover component body, for the sm size variant
         /// @name body--padding-bottom
         ////
-        ----body--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('sm')});
+        ----body--padding-bottom: var(----padding-bottom-sm);
         ////
         /// The padding left of the popover component body, for the sm size variant
         /// @name body--padding-left
         ////
-        ----body--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('sm')});
+        ----body--padding-left: var(----padding-left-sm);
         ////
         /// The padding bottom of the popover component footer, for the sm size variant
         /// @name footer--padding-bottom
         ////
-        ----footer--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('sm')});
+        ----footer--padding-bottom: var(----padding-bottom-sm);
         ////
         /// The padding left of the popover component footer, for the sm size variant
         /// @name footer--padding-left
         ////
-        ----footer--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('sm')});
+        ----footer--padding-left: var(----padding-left-sm);
     }
     ////
     /// Variables for the md size variant
     /// @name md
     /// @type variant
     ////
-    @include variant('md') {
+    &.-md {
         ////
         /// The border top left radius of the popover component, for the md size variant
         /// @name border-top-left-radius
         ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')});
+        ----border-top-left-radius: var(--border-top-left-radius-md);
         ////
         /// The border top right radius of the popover component, for the md size variant
         /// @name border-top-right-radius
         ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')});
+        ----border-top-right-radius: var(--border-top-right-radius-md);
         ////
         /// The border bottom right radius of the popover component, for the md size variant
         /// @name border-bottom-right-radius
         ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')});
+        ----border-bottom-right-radius: var(--border-bottom-right-radius-md);
         ////
         /// The border bottom left radius of the popover component, for the md size variant
         /// @name border-bottom-left-radius
         ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')});
+        ----border-bottom-left-radius: var(--border-bottom-left-radius-md);
         ////
         /// The font size of the popover component, for the md size variant
         /// @name font-size
         ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
+        ----font-size: var(--font-size-md);
         ////
         /// The margin top of the popover component, for the md size variant
         /// @name margin-top
         ////
-        ----margin-top: calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier('md')});
+        ----margin-top: calc(#{calc(var(--margin-top) / 2)} * var(--size-multiplier-md));
         ////
         /// The margin right of the popover component, for the md size variant
         /// @name margin-right
         ////
-        ----margin-right: calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier('md')});
+        ----margin-right: calc(#{calc(var(--margin-right) / 2)} * var(--size-multiplier-md));
         ////
         /// The margin bottom of the popover component, for the md size variant
         /// @name margin-bottom
         ////
-        ----margin-bottom: calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier('md')});
+        ----margin-bottom: calc(#{calc(var(--margin-bottom) / 2)} * var(--size-multiplier-md));
         ////
         /// The margin left of the popover component, for the md size variant
         /// @name margin-left
         ////
-        ----margin-left: calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier('md')});
+        ----margin-left: calc(#{calc(var(--margin-left) / 2)} * var(--size-multiplier-md));
         ////
         /// The padding top of the popover component, for the md size variant
         /// @name padding-top
         ////
-        ----padding-top: calc(#{calc(var(--padding-top) * 3 / 4)} * #{size-multiplier('md')});
+        ----padding-top: calc(#{calc(var(--padding-top) * 3 / 4)} * var(--size-multiplier-md));
         ////
         /// The padding right of the popover component, for the md size variant
         /// @name padding-right
         ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
+        ----padding-right: var(--padding-right-md);
         ////
         /// The padding bottom of the popover component, for the md size variant
         /// @name padding-bottom
         ////
-        ----padding-bottom: calc(#{calc(var(--padding-bottom) * 3 / 4)} * #{size-multiplier('md')});
+        ----padding-bottom: calc(#{calc(var(--padding-bottom) * 3 / 4)} * var(--size-multiplier-md));
         ////
         /// The padding left of the popover component, for the md size variant
         /// @name padding-left
         ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
+        ----padding-left: var(--padding-left-md);
         ////
         /// The padding bottom of the popover component header, for the md size variant
         /// @name header--padding-bottom
         ////
-        ----header--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('md')});
+        ----header--padding-bottom: var(----padding-bottom-md);
         ////
         /// The padding left of the popover component header, for the md size variant
         /// @name header--padding-left
         ////
-        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('md')});
+        ----header--padding-left: var(----padding-left-md);
         ////
         /// The padding bottom of the popover component body, for the md size variant
         /// @name body--padding-bottom
         ////
-        ----body--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('md')});
+        ----body--padding-bottom: var(----padding-bottom-md);
         ////
         /// The padding left of the popover component body, for the md size variant
         /// @name body--padding-left
         ////
-        ----body--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('md')});
+        ----body--padding-left: var(----padding-left-md);
         ////
         /// The padding bottom of the popover component footer, for the md size variant
         /// @name footer--padding-bottom
         ////
-        ----footer--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('md')});
+        ----footer--padding-bottom: var(----padding-bottom-md);
         ////
         /// The padding left of the popover component footer, for the md size variant
         /// @name footer--padding-left
         ////
-        ----footer--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('md')});
+        ----footer--padding-left: var(----padding-left-md);
     }
     ////
     /// Variables for the lg size variant
     /// @name lg
     /// @type variant
     ////
-    @include variant('lg') {
+    &.-lg {
         ////
         /// The border top left radius of the popover component, for the lg size variant
         /// @name border-top-left-radius
         ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')});
+        ----border-top-left-radius: var(--border-top-left-radius-lg);
         ////
         /// The border top right radius of the popover component, for the lg size variant
         /// @name border-top-right-radius
         ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')});
+        ----border-top-right-radius: var(--border-top-right-radius-lg);
         ////
         /// The border bottom right radius of the popover component, for the lg size variant
         /// @name border-bottom-right-radius
         ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')});
+        ----border-bottom-right-radius: var(--border-bottom-right-radius-lg);
         ////
         /// The border bottom left radius of the popover component, for the lg size variant
         /// @name border-bottom-left-radius
         ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')});
+        ----border-bottom-left-radius: var(--border-bottom-left-radius-lg);
         ////
         /// The font size of the popover component, for the lg size variant
         /// @name font-size
         ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
+        ----font-size: var(--font-size-lg);
         ////
         /// The margin top of the popover component, for the lg size variant
         /// @name margin-top
         ////
-        ----margin-top: calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier('lg')});
+        ----margin-top: calc(#{calc(var(--margin-top) / 2)} * var(--size-multiplier-lg));
         ////
         /// The margin right of the popover component, for the lg size variant
         /// @name margin-right
         ////
-        ----margin-right: calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier('lg')});
+        ----margin-right: calc(#{calc(var(--margin-right) / 2)} * var(--size-multiplier-lg));
         ////
         /// The margin bottom of the popover component, for the lg size variant
         /// @name margin-bottom
         ////
-        ----margin-bottom: calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier('lg')});
+        ----margin-bottom: calc(#{calc(var(--margin-bottom) / 2)} * var(--size-multiplier-lg));
         ////
         /// The margin left of the popover component, for the lg size variant
         /// @name margin-left
         ////
-        ----margin-left: calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier('lg')});
+        ----margin-left: calc(#{calc(var(--margin-left) / 2)} * var(--size-multiplier-lg));
         ////
         /// The padding top of the popover component, for the lg size variant
         /// @name padding-top
         ////
-        ----padding-top: calc(#{calc(var(--padding-top) * 3 / 4)} * #{size-multiplier('lg')});
+        ----padding-top: calc(#{calc(var(--padding-top) * 3 / 4)} * var(--size-multiplier-lg));
         ////
         /// The padding right of the popover component, for the lg size variant
         /// @name padding-right
         ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
+        ----padding-right: var(--padding-right-lg);
         ////
         /// The padding bottom of the popover component, for the lg size variant
         /// @name padding-bottom
         ////
-        ----padding-bottom: calc(#{calc(var(--padding-bottom) * 3 / 4)} * #{size-multiplier('lg')});
+        ----padding-bottom: calc(#{calc(var(--padding-bottom) * 3 / 4)} * var(--size-multiplier-lg));
         ////
         /// The padding left of the popover component, for the lg size variant
         /// @name padding-left
         ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
+        ----padding-left: var(--padding-left-lg);
         ////
         /// The padding bottom of the popover component header, for the lg size variant
         /// @name header--padding-bottom
         ////
-        ----header--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('lg')});
+        ----header--padding-bottom: var(----padding-bottom-lg);
         ////
         /// The padding left of the popover component header, for the lg size variant
         /// @name header--padding-left
         ////
-        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('lg')});
+        ----header--padding-left: var(----padding-left-lg);
         ////
         /// The padding bottom of the popover component body, for the lg size variant
         /// @name body--padding-bottom
         ////
-        ----body--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('lg')});
+        ----body--padding-bottom: var(----padding-bottom-lg);
         ////
         /// The padding left of the popover component body, for the lg size variant
         /// @name body--padding-left
         ////
-        ----body--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('lg')});
+        ----body--padding-left: var(----padding-left-lg);
         ////
         /// The padding bottom of the popover component footer, for the lg size variant
         /// @name footer--padding-bottom
         ////
-        ----footer--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('lg')});
+        ----footer--padding-bottom: var(----padding-bottom-lg);
         ////
         /// The padding left of the popover component footer, for the lg size variant
         /// @name footer--padding-left
         ////
-        ----footer--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('lg')});
+        ----footer--padding-left: var(----padding-left-lg);
     }
 }

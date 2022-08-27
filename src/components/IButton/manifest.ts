@@ -128,13 +128,13 @@ export const manifest = {
                 description: 'The background of the button component'
             },
             {
-                name: 'background--hover',
+                name: 'hover--background',
                 type: 'color',
                 value: 'color(\'light-55\')',
                 description: 'The background of the button component when hovered or focused'
             },
             {
-                name: 'background--active',
+                name: 'active--background',
                 type: 'color',
                 value: 'color(\'light-60\')',
                 description: 'The background of the button component when active'
@@ -170,7 +170,7 @@ export const manifest = {
                 description: 'The border color of the button component'
             },
             {
-                name: 'border-color--hover',
+                name: 'hover--border-color',
                 type: '',
                 value: 'var(----border-top-color) var(----border-right-color) var(----border-bottom-color) var(----border-left-color)',
                 description: 'The border color of the button component when hovered or focused'
@@ -350,7 +350,7 @@ export const manifest = {
                 description: 'The color of the button component link variant'
             },
             {
-                name: 'link--color--active',
+                name: 'link--active--color',
                 type: 'color',
                 value: 'color(\'light-55\')',
                 description: 'The color of the button component link variant when active'
@@ -369,13 +369,13 @@ export const manifest = {
                         description: 'The background of the button component, for the primary color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'primary-55\')',
                         description: 'The background of the button component when hovered or focused, for the primary color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'primary-60\')',
                         description: 'The background of the button component when active, for the primary color variant'
@@ -417,7 +417,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the primary color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'primary-55\')',
                         description: 'The color of the button component link variant when active, for the primary color variant'
@@ -436,13 +436,13 @@ export const manifest = {
                         description: 'The background of the button component, for the secondary color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'secondary-55\')',
                         description: 'The background of the button component when hovered or focused, for the secondary color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'secondary-60\')',
                         description: 'The background of the button component when active, for the secondary color variant'
@@ -484,7 +484,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the secondary color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'secondary-55\')',
                         description: 'The color of the button component link variant when active, for the secondary color variant'
@@ -503,13 +503,13 @@ export const manifest = {
                         description: 'The background of the button component, for the light color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'light-55\')',
                         description: 'The background of the button component when hovered or focused, for the light color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'light-60\')',
                         description: 'The background of the button component when active, for the light color variant'
@@ -551,7 +551,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the light color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'light-55\')',
                         description: 'The color of the button component link variant when active, for the light color variant'
@@ -570,13 +570,13 @@ export const manifest = {
                         description: 'The background of the button component, for the dark color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'dark-45\')',
                         description: 'The background of the button component when hovered or focused, for the dark color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'dark-40\')',
                         description: 'The background of the button component when active, for the dark color variant'
@@ -618,7 +618,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the dark color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'dark-45\')',
                         description: 'The color of the button component link variant when active, for the dark color variant'
@@ -637,13 +637,13 @@ export const manifest = {
                         description: 'The background of the button component, for the info color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'info-55\')',
                         description: 'The background of the button component when hovered or focused, for the info color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'info-60\')',
                         description: 'The background of the button component when active, for the info color variant'
@@ -685,7 +685,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the info color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'info-55\')',
                         description: 'The color of the button component link variant when active, for the info color variant'
@@ -704,13 +704,13 @@ export const manifest = {
                         description: 'The background of the button component, for the success color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'success-55\')',
                         description: 'The background of the button component when hovered or focused, for the success color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'success-60\')',
                         description: 'The background of the button component when active, for the success color variant'
@@ -752,7 +752,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the success color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'success-55\')',
                         description: 'The color of the button component link variant when active, for the success color variant'
@@ -771,13 +771,13 @@ export const manifest = {
                         description: 'The background of the button component, for the warning color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'warning-55\')',
                         description: 'The background of the button component when hovered or focused, for the warning color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'warning-60\')',
                         description: 'The background of the button component when active, for the warning color variant'
@@ -819,7 +819,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the warning color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'warning-55\')',
                         description: 'The color of the button component link variant when active, for the warning color variant'
@@ -838,13 +838,13 @@ export const manifest = {
                         description: 'The background of the button component, for the danger color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'danger-55\')',
                         description: 'The background of the button component when hovered or focused, for the danger color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'danger-60\')',
                         description: 'The background of the button component when active, for the danger color variant'
@@ -886,7 +886,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the danger color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'danger-55\')',
                         description: 'The color of the button component link variant when active, for the danger color variant'
@@ -905,13 +905,13 @@ export const manifest = {
                         description: 'The background of the button component, for the facebook color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'facebook-55\')',
                         description: 'The background of the button component when hovered or focused, for the facebook color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'facebook-60\')',
                         description: 'The background of the button component when active, for the facebook color variant'
@@ -953,7 +953,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the facebook color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'facebook-55\')',
                         description: 'The color of the button component link variant when active, for the facebook color variant'
@@ -972,13 +972,13 @@ export const manifest = {
                         description: 'The background of the button component, for the google color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'google-55\')',
                         description: 'The background of the button component when hovered or focused, for the google color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'google-60\')',
                         description: 'The background of the button component when active, for the google color variant'
@@ -1020,7 +1020,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the google color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'google-55\')',
                         description: 'The color of the button component link variant when active, for the google color variant'
@@ -1039,13 +1039,13 @@ export const manifest = {
                         description: 'The background of the button component, for the twitter color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'twitter-55\')',
                         description: 'The background of the button component when hovered or focused, for the twitter color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'twitter-60\')',
                         description: 'The background of the button component when active, for the twitter color variant'
@@ -1087,7 +1087,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the twitter color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'twitter-55\')',
                         description: 'The color of the button component link variant when active, for the twitter color variant'
@@ -1106,13 +1106,13 @@ export const manifest = {
                         description: 'The background of the button component, for the github color variant'
                     },
                     {
-                        name: 'background--hover',
+                        name: 'hover--background',
                         type: '',
                         value: 'color(\'github-55\')',
                         description: 'The background of the button component when hovered or focused, for the github color variant'
                     },
                     {
-                        name: 'background--active',
+                        name: 'active--background',
                         type: '',
                         value: 'color(\'github-60\')',
                         description: 'The background of the button component when active, for the github color variant'
@@ -1154,7 +1154,7 @@ export const manifest = {
                         description: 'The color of the button component link variant, for the github color variant'
                     },
                     {
-                        name: 'link--color--active',
+                        name: 'link--active--color',
                         type: '',
                         value: 'color(\'github-55\')',
                         description: 'The color of the button component link variant when active, for the github color variant'

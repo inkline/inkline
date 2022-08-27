@@ -13,7 +13,7 @@
         /// The font size of the form label component, for the sm size variant
         /// @name font-size
         ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
+        ----font-size: var(--font-size-sm);
     }
     ////
     /// Variables for the md size variant
@@ -25,7 +25,7 @@
         /// The font size of the form label component, for the md size variant
         /// @name font-size
         ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
+        ----font-size: var(--font-size-md);
     }
     ////
     /// Variables for the lg size variant
@@ -37,6 +37,6 @@
         /// The font size of the form label component, for the lg size variant
         /// @name font-size
         ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
+        ----font-size: var(--font-size-lg);
     }
 }

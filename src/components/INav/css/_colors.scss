@@ -8,17 +8,17 @@
     /// @name light
     /// @type variant
     ////
-    @include variant('light') {
+    &.-light {
         ////
         /// The color of the nav component item, for the light color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-light)};
+        ----color: var(--contrast-text--color-light);
         ////
         /// The color of the nav component item when active, for the light color variant
         /// @name color--active
         ////
-        ----color--active: #{contrast-color($color-primary)};
+        ----color--active: var(--contrast-text--color-primary);
         ////
         /// The color of the nav component item when disabled, for the light color variant
         /// @name color--disabled
@@ -30,17 +30,17 @@
     /// @name dark
     /// @type variant
     ////
-    @include variant('dark') {
+    &.-dark {
         ////
         /// The color of the nav component item, for the dark color variant
         /// @name color
         ////
-        ----color: #{contrast-color($color-dark)};
+        ----color: var(--contrast-text--color-dark);
         ////
         /// The color of the nav component item when active, for the dark color variant
         /// @name color--active
         ////
-        ----color--active: #{contrast-color($color-primary)};
+        ----color--active: var(--contrast-text--color-primary);
         ////
         /// The color of the nav component item when disabled, for the dark color variant
         /// @name color--disabled

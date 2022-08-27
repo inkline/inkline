@@ -1,0 +1,56 @@
+/**
+ * Code
+ */
+
+pre,
+code,
+kbd,
+samp {
+    font-family: var(--font-family-primary-monospace);
+    font-size: var(--font-size);
+}
+
+pre {
+    display: block;
+    margin-top: 0;
+    margin-bottom: var(--pre--margin-bottom, var(--margin-bottom));
+    font-size: var(--pre--font-size, var(--code--font-size, var(--font-size-sm)));
+    overflow: auto;
+
+    // Account for some code outputs that place code tags in pre tags
+    // @credit https://github.com/twbs/bootstrap
+    code {
+        font-size: inherit;
+        color: inherit;
+        word-break: normal;
+    }
+}
+
+code {
+    font-size: var(--code--font-size, var(--font-size-sm));
+    color: var(--color-pink);
+    word-wrap: break-word;
+
+    // Streamline the style when inside anchors to avoid broken underline and more
+    a > & {
+        color: inherit;
+    }
+}
+
+kbd {
+    padding: var(--kbd-padding, (0.1875rem 0.375rem));
+    font-size: var(--kbd--font-size, var(--code--font-size, var(--font-size-sm)));
+    color: var(--kbd--color, var(--body--background));
+    background: var(--kbd--background, var(--body--color));
+    border-radius: var(--kbd--border-radius, var(--border-radius-sm));
+
+    kbd {
+        padding: 0;
+        font-size: var(--kbd--font-size, var(--font-size-sm));
+    }
+}
+
+// Correct element displays
+output {
+    display: inline-block;
+}

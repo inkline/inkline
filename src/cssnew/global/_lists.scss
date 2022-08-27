@@ -1,0 +1,36 @@
+/**
+ * Lists
+ */
+
+ol {
+    padding-left: var(--ol--padding-left, var(--padding-left-lg));
+    margin-top: var(--ol--margin-top, 0);
+    margin-bottom: var(--ol--margin-bottom, var(--margin-bottom));
+}
+
+ul {
+    padding-left: var(--ul--padding-left, var(--padding-left-lg));
+    margin-top: var(--ul--margin-top, 0);
+    margin-bottom: var(--ul--margin-bottom, var(--margin-bottom));
+}
+
+dl {
+    margin-top: var(--dl--margin-top, 0);
+    margin-bottom: var(--dl--margin-bottom, var(--margin-bottom));
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+    margin-bottom: 0;
+}
+
+dt {
+    font-weight: var(--dl--dt--font-weight, var(--font-weight-bold));
+}
+
+dd {
+    margin-bottom: var(--dl--dd--margin-bottom, var(--margin-bottom-sm));
+    margin-left: var(--dl--dd--margin-left, 0); // Undo browser default
+}

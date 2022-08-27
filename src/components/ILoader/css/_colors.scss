@@ -8,35 +8,35 @@
     /// @name primary
     /// @type variant
     ////
-    @include variant('primary') {
+    &.-primary {
         ////
         /// The background of the loader component, for the primary color variant
         /// @name background
         ////
-        ----background: #{color('primary')};
+        ----background: var(--color-primary);
     }
     ////
     /// Variables for the light color variant
     /// @name light
     /// @type variant
     ////
-    @include variant('light') {
+    &.-light {
         ////
         /// The background of the loader component, for the light color variant
         /// @name background
         ////
-        ----background: #{color('light')};
+        ----background: var(--color-light);
     }
     ////
     /// Variables for the dark color variant
     /// @name dark
     /// @type variant
     ////
-    @include variant('dark') {
+    &.-dark {
         ////
         /// The background of the loader component, for the dark color variant
         /// @name background
         ////
-        ----background: #{color('dark')};
+        ----background: var(--color-dark);
     }
 }
