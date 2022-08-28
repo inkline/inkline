@@ -33,7 +33,8 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size', 'md')
+            default: defaultPropValue<string>(componentName, 'size', 'md'),
+            validator: sizePropValidator
         }
     },
     setup (props) {

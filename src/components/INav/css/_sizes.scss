@@ -3,100 +3,25 @@
  */
 
 .nav {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    &.-sm {
-        ////
-        /// The font size of the nav component, for the sm size variant
-        /// @name font-size
-        ////
-        ----font-size: var(--font-size-sm);
-        ////
-        /// The padding top of the nav component, for the sm size variant
-        /// @name padding-top
-        ////
-        ----padding-top: var(--padding-top-sm);
-        ////
-        /// The padding right of the nav component, for the sm size variant
-        /// @name padding-right
-        ////
-        ----padding-right: var(--padding-right-sm);
-        ////
-        /// The padding bottom of the nav component, for the sm size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: var(--padding-bottom-sm);
-        ////
-        /// The padding left of the nav component, for the sm size variant
-        /// @name padding-left
-        ////
-        ----padding-left: var(--padding-left-sm);
+                        &.-sm {
+                                        --nav--font-size: var(--nav--sm--font-size, var(--font-size-sm));
+                                        --nav--padding-top: var(--nav--sm--padding-top, var(--padding-top-sm));
+                                        --nav--padding-right: var(--nav--sm--padding-right, var(--padding-right-sm));
+                                        --nav--padding-bottom: var(--nav--sm--padding-bottom, var(--padding-bottom-sm));
+                                        --nav--padding-left: var(--nav--sm--padding-left, var(--padding-left-sm));
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    &.-md {
-        ////
-        /// The font size of the nav component, for the md size variant
-        /// @name font-size
-        ////
-        ----font-size: var(--font-size-md);
-        ////
-        /// The padding top of the nav component, for the md size variant
-        /// @name padding-top
-        ////
-        ----padding-top: var(--padding-top-md);
-        ////
-        /// The padding right of the nav component, for the md size variant
-        /// @name padding-right
-        ////
-        ----padding-right: var(--padding-right-md);
-        ////
-        /// The padding bottom of the nav component, for the md size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: var(--padding-bottom-md);
-        ////
-        /// The padding left of the nav component, for the md size variant
-        /// @name padding-left
-        ////
-        ----padding-left: var(--padding-left-md);
+                        &.-md {
+                                        --nav--font-size: var(--nav--md--font-size, var(--font-size-md));
+                                        --nav--padding-top: var(--nav--md--padding-top, var(--padding-top-md));
+                                        --nav--padding-right: var(--nav--md--padding-right, var(--padding-right-md));
+                                        --nav--padding-bottom: var(--nav--md--padding-bottom, var(--padding-bottom-md));
+                                        --nav--padding-left: var(--nav--md--padding-left, var(--padding-left-md));
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    &.-lg {
-        ////
-        /// The font size of the nav component, for the lg size variant
-        /// @name font-size
-        ////
-        ----font-size: var(--font-size-lg);
-        ////
-        /// The padding top of the nav component, for the lg size variant
-        /// @name padding-top
-        ////
-        ----padding-top: var(--padding-top-lg);
-        ////
-        /// The padding right of the nav component, for the lg size variant
-        /// @name padding-right
-        ////
-        ----padding-right: var(--padding-right-lg);
-        ////
-        /// The padding bottom of the nav component, for the lg size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: var(--padding-bottom-lg);
-        ////
-        /// The padding left of the nav component, for the lg size variant
-        /// @name padding-left
-        ////
-        ----padding-left: var(--padding-left-lg);
+                        &.-lg {
+                                        --nav--font-size: var(--nav--lg--font-size, var(--font-size-lg));
+                                        --nav--padding-top: var(--nav--lg--padding-top, var(--padding-top-lg));
+                                        --nav--padding-right: var(--nav--lg--padding-right, var(--padding-right-lg));
+                                        --nav--padding-bottom: var(--nav--lg--padding-bottom, var(--padding-bottom-lg));
+                                        --nav--padding-left: var(--nav--lg--padding-left, var(--padding-left-lg));
     }
 }

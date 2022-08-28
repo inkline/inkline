@@ -3,88 +3,22 @@
  */
 
 .collapsible {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    &.-light {
-        ////
-        /// The background of the collapsible component, for the light color variant
-        /// @name background
-        ////
-        ----background: var(--color-light);
-        ////
-        /// The border top color of the collapsible component, for the light color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-light-600);
-        ////
-        /// The border right color of the collapsible component, for the light color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-light-600);
-        ////
-        /// The border bottom color of the collapsible component, for the light color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-light-600);
-        ////
-        /// The border left color of the collapsible component, for the light color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-light-600);
-        ////
-        /// The color of the collapsible component, for the light color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-light);
-        ////
-        /// The background of the collapsible component body, for the light color variant
-        /// @name body--background
-        ////
-        ----body--background: var(--color-white);
+                        &.-light {
+                                        --collapsible--background: var(--collapsible--light--background, var(--color-light));
+                                        --collapsible--border-top-color: var(--collapsible--light--border-top-color, var(--color-light-600));
+                                        --collapsible--border-right-color: var(--collapsible--light--border-right-color, var(--color-light-600));
+                                        --collapsible--border-bottom-color: var(--collapsible--light--border-bottom-color, var(--color-light-600));
+                                        --collapsible--border-left-color: var(--collapsible--light--border-left-color, var(--color-light-600));
+                                        --collapsible--color: var(--collapsible--light--color, var(--contrast-text--color-light));
+                                        --collapsible--body--background: var(--collapsible--white--body--background, var(--color-white));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    &.-dark {
-        ////
-        /// The background of the collapsible component, for the dark color variant
-        /// @name background
-        ////
-        ----background: var(--color-dark);
-        ////
-        /// The border top color of the collapsible component, for the dark color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-dark-400);
-        ////
-        /// The border right color of the collapsible component, for the dark color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-dark-400);
-        ////
-        /// The border bottom color of the collapsible component, for the dark color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-dark-400);
-        ////
-        /// The border left color of the collapsible component, for the dark color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-dark-400);
-        ////
-        /// The color of the collapsible component, for the dark color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-dark);
-        ////
-        /// The background of the collapsible component body, for the dark color variant
-        /// @name body--background
-        ////
-        ----body--background: var(--color-dark-450);
+                        &.-dark {
+                                        --collapsible--background: var(--collapsible--dark--background, var(--color-dark));
+                                        --collapsible--border-top-color: var(--collapsible--dark--border-top-color, var(--color-dark-400));
+                                        --collapsible--border-right-color: var(--collapsible--dark--border-right-color, var(--color-dark-400));
+                                        --collapsible--border-bottom-color: var(--collapsible--dark--border-bottom-color, var(--color-dark-400));
+                                        --collapsible--border-left-color: var(--collapsible--dark--border-left-color, var(--color-dark-400));
+                                        --collapsible--color: var(--collapsible--dark--color, var(--contrast-text--color-dark));
+                                        --collapsible--body--background: var(--collapsible--dark--body--background, var(--color-dark-450));
     }
 }

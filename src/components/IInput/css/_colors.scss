@@ -3,158 +3,36 @@
  */
 
 .input-wrapper {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light', 'form') {
-        ////
-        /// The background of the input component, for the light color variant
-        /// @name background
-        ////
-        ----background: var(--color-white);
-        ////
-        /// The background of the input component when disabled, for the light color variant
-        /// @name background--disabled
-        ////
-        ----background--disabled: var(--color-light-250);
-        ////
-        /// The border color of the input component, for the light color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-light-550);
-        ////
-        /// The border color of the input component when hovered, for the light color variant
-        /// @name border-color--hover
-        ////
-        ----border-color--hover: var(--color-light-600);
-        ////
-        /// The border color of the input component when focused, for the light color variant
-        /// @name border-color--focus
-        ////
-        ----border-color--focus: var(--color-primary);
-        ////
-        /// The color of the input component, for the light color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-white);
-        ////
-        /// The color of the input component when disabled, for the light color variant
-        /// @name color--disabled
-        ////
-        ----color--disabled: var(--color-light-750);
-        ////
-        /// The background of the input component clear button, for the light color variant
-        /// @name clear--background
-        ////
-        ----clear--background: #{transparent};
-        ////
-        /// The background of the input component clear button, for the light color variant
-        /// @name clear--background--hover
-        ////
-        ----clear--background--hover: var(--color-light-300);
-        ////
-        /// The background of the input component clear button, for the light color variant
-        /// @name clear--background--active
-        ////
-        ----clear--background--active: var(--color-light-400);
-        ////
-        /// The color of the input component clear button, for the light color variant
-        /// @name clear--color
-        ////
-        ----clear--color: var(--color-light-700);
-        ////
-        /// The color of the input component placeholder, for the light color variant
-        /// @name placeholder--color
-        ////
-        ----placeholder--color: var(--color-light-600);
-        ////
-        /// The color of the input component prefix and suffix, for the light color variant
-        /// @name prefix-suffix--color
-        ////
-        ----prefix-suffix--color: var(--color-light-700);
-        ////
-        /// The background of the input component prepend and append, for the light color variant
-        /// @name prepend-append--background
-        ////
-        ----prepend-append--background: var(--color-light);
+                        @include variant('light', 'form') {
+                                        --input--background: var(--input--white--background, var(--color-white));
+                                        --input--background--disabled: var(--input--light--background--disabled, var(--color-light-250));
+                                        --input--border-color: var(--input--light--border-color, var(--color-light-550));
+                                        --input--border-color--hover: var(--input--light--border-color--hover, var(--color-light-600));
+                                        --input--border-color--focus: var(--input--primary--border-color--focus, var(--color-primary));
+                                        --input--color: var(--input--white--color, var(--contrast-text--color-white));
+                                        --input--color--disabled: var(--input--light--color--disabled, var(--color-light-750));
+                                        --input--clear--background: var(--input--clear--background, #{transparent});
+                                        --input--clear--background--hover: var(--input--light--clear--background--hover, var(--color-light-300));
+                                        --input--clear--background--active: var(--input--light--clear--background--active, var(--color-light-400));
+                                        --input--clear--color: var(--input--light--clear--color, var(--color-light-700));
+                                        --input--placeholder--color: var(--input--light--placeholder--color, var(--color-light-600));
+                                        --input--prefix-suffix--color: var(--input--light--prefix-suffix--color, var(--color-light-700));
+                                        --input--prepend-append--background: var(--input--light--prepend-append--background, var(--color-light));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark', 'form') {
-        ////
-        /// The background of the input component, for the dark color variant
-        /// @name background
-        ////
-        ----background: var(--color-dark);
-        ////
-        /// The background of the input component when disabled, for the dark color variant
-        /// @name background--disabled
-        ////
-        ----background--disabled: var(--color-dark-400);
-        ////
-        /// The border color of the input component, for the dark color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-dark-450);
-        ////
-        /// The border color of the input component when hovered, for the dark color variant
-        /// @name border-color--hover
-        ////
-        ----border-color--hover: var(--color-dark-400);
-        ////
-        /// The border color of the input component when focused, for the dark color variant
-        /// @name border-color--focus
-        ////
-        ----border-color--focus: var(--color-primary);
-        ////
-        /// The color of the input component, for the dark color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-dark);
-        ////
-        /// The color of the input component when disabled, for the dark color variant
-        /// @name color--disabled
-        ////
-        ----color--disabled: var(--color-gray-350);
-        ////
-        /// The background of the input component clear button, for the dark color variant
-        /// @name clear--background
-        ////
-        ----clear--background: #{transparent};
-        ////
-        /// The background of the input component clear button, for the dark color variant
-        /// @name clear--background--hover
-        ////
-        ----clear--background--hover: var(--color-dark-350);
-        ////
-        /// The background of the input component clear button, for the dark color variant
-        /// @name clear--background--active
-        ////
-        ----clear--background--active: var(--color-dark-300);
-        ////
-        /// The color of the input component clear button, for the dark color variant
-        /// @name clear--color
-        ////
-        ----clear--color: var(--color-dark-300);
-        ////
-        /// The color of the input component placeholder, for the dark color variant
-        /// @name placeholder--color
-        ////
-        ----placeholder--color: var(--color-dark-250);
-        ////
-        /// The color of the input component prefix and suffix, for the dark color variant
-        /// @name prefix-suffix--color
-        ////
-        ----prefix-suffix--color: var(--color-dark-250);
-        ////
-        /// The background of the input component prepend and append, for the dark color variant
-        /// @name prepend-append--background
-        ////
-        ----prepend-append--background: var(--color-dark);
+                        @include variant('dark', 'form') {
+                                        --input--background: var(--input--dark--background, var(--color-dark));
+                                        --input--background--disabled: var(--input--dark--background--disabled, var(--color-dark-400));
+                                        --input--border-color: var(--input--dark--border-color, var(--color-dark-450));
+                                        --input--border-color--hover: var(--input--dark--border-color--hover, var(--color-dark-400));
+                                        --input--border-color--focus: var(--input--primary--border-color--focus, var(--color-primary));
+                                        --input--color: var(--input--dark--color, var(--contrast-text--color-dark));
+                                        --input--color--disabled: var(--input--gray--color--disabled, var(--color-gray-350));
+                                        --input--clear--background: var(--input--clear--background, #{transparent});
+                                        --input--clear--background--hover: var(--input--dark--clear--background--hover, var(--color-dark-350));
+                                        --input--clear--background--active: var(--input--dark--clear--background--active, var(--color-dark-300));
+                                        --input--clear--color: var(--input--dark--clear--color, var(--color-dark-300));
+                                        --input--placeholder--color: var(--input--dark--placeholder--color, var(--color-dark-250));
+                                        --input--prefix-suffix--color: var(--input--dark--prefix-suffix--color, var(--color-dark-250));
+                                        --input--prepend-append--background: var(--input--dark--prepend-append--background, var(--color-dark));
     }
 }

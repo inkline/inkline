@@ -3,118 +3,28 @@
  */
 
 .tabs {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    &.-light {
-        ////
-        /// The background of the tabs component, for the light color variant
-        /// @name background
-        ////
-        ----background: var(--color-white);
-        ////
-        /// The border top color of the tabs component, for the light color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-light);
-        ////
-        /// The border right color of the tabs component, for the light color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-light);
-        ////
-        /// The border bottom color of the tabs component, for the light color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-light);
-        ////
-        /// The border left color of the tabs component, for the light color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-light);
-        ////
-        /// The color of the tabs component item, for the light color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-white);
-        ////
-        /// The background of the tabs component header, for the light color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-white);
-        ////
-        /// The background of the tabs component header when active, for the light color variant
-        /// @name header--background--active
-        ////
-        ----header--background--active: var(--color-white);
-        ////
-        /// The background of the tabs component header when hovered or focused, for the light color variant
-        /// @name header--background--hover
-        ////
-        ----header--background--hover: var(--color-gray-050);
-        ////
-        /// The border color of the tabs component header, for the light color variant
-        /// @name header--border-color
-        ////
-        ----header--border-color: #{transparent};
+                        &.-light {
+                                        --tabs--background: var(--tabs--white--background, var(--color-white));
+                                        --tabs--border-top-color: var(--tabs--light--border-top-color, var(--color-light));
+                                        --tabs--border-right-color: var(--tabs--light--border-right-color, var(--color-light));
+                                        --tabs--border-bottom-color: var(--tabs--light--border-bottom-color, var(--color-light));
+                                        --tabs--border-left-color: var(--tabs--light--border-left-color, var(--color-light));
+                                        --tabs--color: var(--tabs--white--color, var(--contrast-text--color-white));
+                                        --tabs--header--background: var(--tabs--white--header--background, var(--color-white));
+                                        --tabs--header--background--active: var(--tabs--white--header--background--active, var(--color-white));
+                                        --tabs--header--background--hover: var(--tabs--gray--header--background--hover, var(--color-gray-050));
+                                        --tabs--header--border-color: var(--tabs--header--border-color, #{transparent});
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    &.-dark {
-        ////
-        /// The background of the tabs component, for the dark color variant
-        /// @name background
-        ////
-        ----background: var(--color-dark);
-        ////
-        /// The border top color of the tabs component, for the dark color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-dark-600);
-        ////
-        /// The border right color of the tabs component, for the dark color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-dark-600);
-        ////
-        /// The border bottom color of the tabs component, for the dark color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-dark-600);
-        ////
-        /// The border left color of the tabs component, for the dark color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-dark-600);
-        ////
-        /// The color of the tabs component item, for the dark color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-dark);
-        ////
-        /// The background of the tabs component header, for the dark color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-dark);
-        ////
-        /// The background of the tabs component header when active, for the dark color variant
-        /// @name header--background--active
-        ////
-        ----header--background--active: var(--color-dark);
-        ////
-        /// The background of the tabs component header when hovered or focused, for the dark color variant
-        /// @name header--background--hover
-        ////
-        ----header--background--hover: var(--color-dark-450);
-        ////
-        /// The border color of the tabs component header, for the dark color variant
-        /// @name header--border-color
-        ////
-        ----header--border-color: #{transparent};
+                        &.-dark {
+                                        --tabs--background: var(--tabs--dark--background, var(--color-dark));
+                                        --tabs--border-top-color: var(--tabs--dark--border-top-color, var(--color-dark-600));
+                                        --tabs--border-right-color: var(--tabs--dark--border-right-color, var(--color-dark-600));
+                                        --tabs--border-bottom-color: var(--tabs--dark--border-bottom-color, var(--color-dark-600));
+                                        --tabs--border-left-color: var(--tabs--dark--border-left-color, var(--color-dark-600));
+                                        --tabs--color: var(--tabs--dark--color, var(--contrast-text--color-dark));
+                                        --tabs--header--background: var(--tabs--dark--header--background, var(--color-dark));
+                                        --tabs--header--background--active: var(--tabs--dark--header--background--active, var(--color-dark));
+                                        --tabs--header--background--hover: var(--tabs--dark--header--background--hover, var(--color-dark-450));
+                                        --tabs--header--border-color: var(--tabs--header--border-color, #{transparent});
     }
 }

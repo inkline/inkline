@@ -3,140 +3,36 @@
  */
 
 .progress-bar {
-    ////
-    /// Variables for the primary color variant
-    /// @name primary
-    /// @type variant
-    ////
-    &.-primary {
-        ////
-        /// The color of the progress-bar component, for the primary color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-primary);
-        ////
-        /// The background of the progress-bar component, for the primary color variant
-        /// @name background
-        ////
-        ----background: var(--color-primary);
+                        &.-primary {
+                                        --progress-bar--color: var(--progress-bar--primary--color, var(--contrast-text--color-primary));
+                                        --progress-bar--background: var(--progress-bar--primary--background, var(--color-primary));
     }
-    ////
-    /// Variables for the secondary color variant
-    /// @name secondary
-    /// @type variant
-    ////
-    &.-secondary {
-        ////
-        /// The color of the progress-bar component, for the secondary color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-secondary);
-        ////
-        /// The background of the progress-bar component, for the secondary color variant
-        /// @name background
-        ////
-        ----background: var(--color-secondary);
+                        &.-secondary {
+                                        --progress-bar--color: var(--progress-bar--secondary--color, var(--contrast-text--color-secondary));
+                                        --progress-bar--background: var(--progress-bar--secondary--background, var(--color-secondary));
     }
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    &.-light {
-        ////
-        /// The color of the progress-bar component, for the light color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-light);
-        ////
-        /// The background of the progress-bar component, for the light color variant
-        /// @name background
-        ////
-        ----background: var(--color-white);
+                        &.-light {
+                                        --progress-bar--color: var(--progress-bar--light--color, var(--contrast-text--color-light));
+                                        --progress-bar--background: var(--progress-bar--white--background, var(--color-white));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    &.-dark {
-        ////
-        /// The color of the progress-bar component, for the dark color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-dark);
-        ////
-        /// The background of the progress-bar component, for the dark color variant
-        /// @name background
-        ////
-        ----background: var(--color-dark);
+                        &.-dark {
+                                        --progress-bar--color: var(--progress-bar--dark--color, var(--contrast-text--color-dark));
+                                        --progress-bar--background: var(--progress-bar--dark--background, var(--color-dark));
     }
-    ////
-    /// Variables for the info color variant
-    /// @name info
-    /// @type variant
-    ////
-    &.-info {
-        ////
-        /// The color of the progress-bar component, for the info color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-info);
-        ////
-        /// The background of the progress-bar component, for the info color variant
-        /// @name background
-        ////
-        ----background: var(--color-info);
+                        &.-info {
+                                        --progress-bar--color: var(--progress-bar--info--color, var(--contrast-text--color-info));
+                                        --progress-bar--background: var(--progress-bar--info--background, var(--color-info));
     }
-    ////
-    /// Variables for the success color variant
-    /// @name success
-    /// @type variant
-    ////
-    &.-success {
-        ////
-        /// The color of the progress-bar component, for the success color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-success);
-        ////
-        /// The background of the progress-bar component, for the success color variant
-        /// @name background
-        ////
-        ----background: var(--color-success);
+                        &.-success {
+                                        --progress-bar--color: var(--progress-bar--success--color, var(--contrast-text--color-success));
+                                        --progress-bar--background: var(--progress-bar--success--background, var(--color-success));
     }
-    ////
-    /// Variables for the warning color variant
-    /// @name warning
-    /// @type variant
-    ////
-    &.-warning {
-        ////
-        /// The color of the progress-bar component, for the warning color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-warning);
-        ////
-        /// The background of the progress-bar component, for the warning color variant
-        /// @name background
-        ////
-        ----background: var(--color-warning);
+                        &.-warning {
+                                        --progress-bar--color: var(--progress-bar--warning--color, var(--contrast-text--color-warning));
+                                        --progress-bar--background: var(--progress-bar--warning--background, var(--color-warning));
     }
-    ////
-    /// Variables for the danger color variant
-    /// @name danger
-    /// @type variant
-    ////
-    &.-danger {
-        ////
-        /// The color of the progress-bar component, for the danger color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-danger);
-        ////
-        /// The background of the progress-bar component, for the danger color variant
-        /// @name background
-        ////
-        ----background: var(--color-danger);
+                        &.-danger {
+                                        --progress-bar--color: var(--progress-bar--danger--color, var(--contrast-text--color-danger));
+                                        --progress-bar--background: var(--progress-bar--danger--background, var(--color-danger));
     }
 }

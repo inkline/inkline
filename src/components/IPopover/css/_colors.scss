@@ -3,98 +3,24 @@
  */
 
 .popover-wrapper {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    &.-light {
-        ////
-        /// The background of the popover component, for the light color variant
-        /// @name background
-        ////
-        ----background: var(--color-white);
-        ////
-        /// The border top color of the popover component, for the light color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-light);
-        ////
-        /// The border right color of the popover component, for the light color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-light);
-        ////
-        /// The border bottom color of the popover component, for the light color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-light);
-        ////
-        /// The border left color of the popover component, for the light color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-light);
-        ////
-        /// The color of the popover component item, for the light color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-white);
-        ////
-        /// The background of the popover component header, for the light color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-gray-050);
-        ////
-        /// The background of the popover component footer, for the light color variant
-        /// @name footer--background
-        ////
-        ----footer--background: var(--color-gray-050);
+                        &.-light {
+                                        --popover--background: var(--popover--white--background, var(--color-white));
+                                        --popover--border-top-color: var(--popover--light--border-top-color, var(--color-light));
+                                        --popover--border-right-color: var(--popover--light--border-right-color, var(--color-light));
+                                        --popover--border-bottom-color: var(--popover--light--border-bottom-color, var(--color-light));
+                                        --popover--border-left-color: var(--popover--light--border-left-color, var(--color-light));
+                                        --popover--color: var(--popover--white--color, var(--contrast-text--color-white));
+                                        --popover--header--background: var(--popover--gray--header--background, var(--color-gray-050));
+                                        --popover--footer--background: var(--popover--gray--footer--background, var(--color-gray-050));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    &.-dark {
-        ////
-        /// The background of the popover component, for the dark color variant
-        /// @name background
-        ////
-        ----background: var(--color-dark);
-        ////
-        /// The border top color of the popover component, for the dark color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-dark-600);
-        ////
-        /// The border right color of the popover component, for the dark color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-dark-600);
-        ////
-        /// The border bottom color of the popover component, for the dark color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-dark-600);
-        ////
-        /// The border left color of the popover component, for the dark color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-dark-600);
-        ////
-        /// The color of the popover component item, for the dark color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-dark);
-        ////
-        /// The background of the popover component header, for the dark color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-dark-550);
-        ////
-        /// The background of the popover component footer, for the dark color variant
-        /// @name footer--background
-        ////
-        ----footer--background: var(--color-dark-550);
+                        &.-dark {
+                                        --popover--background: var(--popover--dark--background, var(--color-dark));
+                                        --popover--border-top-color: var(--popover--dark--border-top-color, var(--color-dark-600));
+                                        --popover--border-right-color: var(--popover--dark--border-right-color, var(--color-dark-600));
+                                        --popover--border-bottom-color: var(--popover--dark--border-bottom-color, var(--color-dark-600));
+                                        --popover--border-left-color: var(--popover--dark--border-left-color, var(--color-dark-600));
+                                        --popover--color: var(--popover--dark--color, var(--contrast-text--color-dark));
+                                        --popover--header--background: var(--popover--dark--header--background, var(--color-dark-550));
+                                        --popover--footer--background: var(--popover--dark--footer--background, var(--color-dark-550));
     }
 }

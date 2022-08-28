@@ -3,380 +3,84 @@
  */
 
 .card {
-    ////
-    /// Variables for the primary color variant
-    /// @name primary
-    /// @type variant
-    ////
-    &.-primary {
-        ////
-        /// The background of the card component, for the primary color variant
-        /// @name background
-        ////
-        ----background: var(--color-primary);
-        ////
-        /// The border top color of the card component, for the primary color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-primary-600);
-        ////
-        /// The border right color of the card component, for the primary color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-primary-600);
-        ////
-        /// The border bottom color of the card component, for the primary color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-primary-600);
-        ////
-        /// The border left color of the card component, for the primary color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-primary-600);
-        ////
-        /// The color of the card component, for the primary color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-primary);
-        ////
-        /// The background of the modal component header, for the primary color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-primary-550);
-        ////
-        /// The background of the modal component footer, for the primary color variant
-        /// @name footer--background
-        ////
-        ----footer--background: var(--color-primary-550);
+                        &.-primary {
+                                        --card--background: var(--card--primary--background, var(--color-primary));
+                                        --card--border-top-color: var(--card--primary--border-top-color, var(--color-primary-600));
+                                        --card--border-right-color: var(--card--primary--border-right-color, var(--color-primary-600));
+                                        --card--border-bottom-color: var(--card--primary--border-bottom-color, var(--color-primary-600));
+                                        --card--border-left-color: var(--card--primary--border-left-color, var(--color-primary-600));
+                                        --card--color: var(--card--primary--color, var(--contrast-text--color-primary));
+                                        --card--header--background: var(--card--primary--header--background, var(--color-primary-550));
+                                        --card--footer--background: var(--card--primary--footer--background, var(--color-primary-550));
     }
-    ////
-    /// Variables for the secondary color variant
-    /// @name secondary
-    /// @type variant
-    ////
-    &.-secondary {
-        ////
-        /// The background of the card component, for the secondary color variant
-        /// @name background
-        ////
-        ----background: var(--color-secondary);
-        ////
-        /// The border top color of the card component, for the secondary color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-secondary-600);
-        ////
-        /// The border right color of the card component, for the secondary color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-secondary-600);
-        ////
-        /// The border bottom color of the card component, for the secondary color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-secondary-600);
-        ////
-        /// The border left color of the card component, for the secondary color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-secondary-600);
-        ////
-        /// The color of the card component, for the secondary color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-secondary);
-        ////
-        /// The background of the modal component header, for the secondary color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-secondary-550);
-        ////
-        /// The background of the modal component footer, for the secondary color variant
-        /// @name footer--background
-        ////
-        ----footer--background: var(--color-secondary-550);
+                        &.-secondary {
+                                        --card--background: var(--card--secondary--background, var(--color-secondary));
+                                        --card--border-top-color: var(--card--secondary--border-top-color, var(--color-secondary-600));
+                                        --card--border-right-color: var(--card--secondary--border-right-color, var(--color-secondary-600));
+                                        --card--border-bottom-color: var(--card--secondary--border-bottom-color, var(--color-secondary-600));
+                                        --card--border-left-color: var(--card--secondary--border-left-color, var(--color-secondary-600));
+                                        --card--color: var(--card--secondary--color, var(--contrast-text--color-secondary));
+                                        --card--header--background: var(--card--secondary--header--background, var(--color-secondary-550));
+                                        --card--footer--background: var(--card--secondary--footer--background, var(--color-secondary-550));
     }
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    &.-light {
-        ////
-        /// The background of the card component, for the light color variant
-        /// @name background
-        ////
-        ----background: var(--color-white);
-        ////
-        /// The border top color of the card component, for the light color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-light);
-        ////
-        /// The border right color of the card component, for the light color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-light);
-        ////
-        /// The border bottom color of the card component, for the light color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-light);
-        ////
-        /// The border left color of the card component, for the light color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-light);
-        ////
-        /// The color of the card component, for the light color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-light);
-        ////
-        /// The background of the modal component header, for the light color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-light-250);
-        ////
-        /// The background of the modal component footer, for the light color variant
-        /// @name footer--background
-        ////
-        ----footer--background: var(--color-light-250);
+                        &.-light {
+                                        --card--background: var(--card--white--background, var(--color-white));
+                                        --card--border-top-color: var(--card--light--border-top-color, var(--color-light));
+                                        --card--border-right-color: var(--card--light--border-right-color, var(--color-light));
+                                        --card--border-bottom-color: var(--card--light--border-bottom-color, var(--color-light));
+                                        --card--border-left-color: var(--card--light--border-left-color, var(--color-light));
+                                        --card--color: var(--card--light--color, var(--contrast-text--color-light));
+                                        --card--header--background: var(--card--light--header--background, var(--color-light-250));
+                                        --card--footer--background: var(--card--light--footer--background, var(--color-light-250));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    &.-dark {
-        ////
-        /// The background of the card component, for the dark color variant
-        /// @name background
-        ////
-        ----background: var(--color-dark);
-        ////
-        /// The border top color of the card component, for the dark color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-dark-600);
-        ////
-        /// The border right color of the card component, for the dark color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-dark-600);
-        ////
-        /// The border bottom color of the card component, for the dark color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-dark-600);
-        ////
-        /// The border left color of the card component, for the dark color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-dark-600);
-        ////
-        /// The color of the card component, for the dark color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-dark);
-        ////
-        /// The background of the modal component header, for the dark color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-dark-550);
-        ////
-        /// The background of the modal component footer, for the dark color variant
-        /// @name footer--background
-        ////
-        ----footer--background: var(--color-dark-550);
+                        &.-dark {
+                                        --card--background: var(--card--dark--background, var(--color-dark));
+                                        --card--border-top-color: var(--card--dark--border-top-color, var(--color-dark-600));
+                                        --card--border-right-color: var(--card--dark--border-right-color, var(--color-dark-600));
+                                        --card--border-bottom-color: var(--card--dark--border-bottom-color, var(--color-dark-600));
+                                        --card--border-left-color: var(--card--dark--border-left-color, var(--color-dark-600));
+                                        --card--color: var(--card--dark--color, var(--contrast-text--color-dark));
+                                        --card--header--background: var(--card--dark--header--background, var(--color-dark-550));
+                                        --card--footer--background: var(--card--dark--footer--background, var(--color-dark-550));
     }
-    ////
-    /// Variables for the info color variant
-    /// @name info
-    /// @type variant
-    ////
-    &.-info {
-        ////
-        /// The background of the card component, for the info color variant
-        /// @name background
-        ////
-        ----background: var(--color-info);
-        ////
-        /// The border top color of the card component, for the info color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-info-600);
-        ////
-        /// The border right color of the card component, for the info color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-info-600);
-        ////
-        /// The border bottom color of the card component, for the info color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-info-600);
-        ////
-        /// The border left color of the card component, for the info color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-info-600);
-        ////
-        /// The color of the card component, for the info color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-info);
-        ////
-        /// The background of the modal component header, for the info color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-info-550);
-        ////
-        /// The background of the modal component footer, for the info color variant
-        /// @name footer--background
-        ////
-        ----footer--background: var(--color-info-550);
+                        &.-info {
+                                        --card--background: var(--card--info--background, var(--color-info));
+                                        --card--border-top-color: var(--card--info--border-top-color, var(--color-info-600));
+                                        --card--border-right-color: var(--card--info--border-right-color, var(--color-info-600));
+                                        --card--border-bottom-color: var(--card--info--border-bottom-color, var(--color-info-600));
+                                        --card--border-left-color: var(--card--info--border-left-color, var(--color-info-600));
+                                        --card--color: var(--card--info--color, var(--contrast-text--color-info));
+                                        --card--header--background: var(--card--info--header--background, var(--color-info-550));
+                                        --card--footer--background: var(--card--info--footer--background, var(--color-info-550));
     }
-    ////
-    /// Variables for the success color variant
-    /// @name success
-    /// @type variant
-    ////
-    &.-success {
-        ////
-        /// The background of the card component, for the success color variant
-        /// @name background
-        ////
-        ----background: var(--color-success);
-        ////
-        /// The border top color of the card component, for the success color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-success-600);
-        ////
-        /// The border right color of the card component, for the success color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-success-600);
-        ////
-        /// The border bottom color of the card component, for the success color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-success-600);
-        ////
-        /// The border left color of the card component, for the success color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-success-600);
-        ////
-        /// The color of the card component, for the success color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-success);
-        ////
-        /// The background of the modal component header, for the success color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-success-550);
-        ////
-        /// The background of the modal component footer, for the success color variant
-        /// @name footer--background
-        ////
-        ----footer--background: var(--color-success-550);
+                        &.-success {
+                                        --card--background: var(--card--success--background, var(--color-success));
+                                        --card--border-top-color: var(--card--success--border-top-color, var(--color-success-600));
+                                        --card--border-right-color: var(--card--success--border-right-color, var(--color-success-600));
+                                        --card--border-bottom-color: var(--card--success--border-bottom-color, var(--color-success-600));
+                                        --card--border-left-color: var(--card--success--border-left-color, var(--color-success-600));
+                                        --card--color: var(--card--success--color, var(--contrast-text--color-success));
+                                        --card--header--background: var(--card--success--header--background, var(--color-success-550));
+                                        --card--footer--background: var(--card--success--footer--background, var(--color-success-550));
     }
-    ////
-    /// Variables for the warning color variant
-    /// @name warning
-    /// @type variant
-    ////
-    &.-warning {
-        ////
-        /// The background of the card component, for the warning color variant
-        /// @name background
-        ////
-        ----background: var(--color-warning);
-        ////
-        /// The border top color of the card component, for the warning color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-warning-600);
-        ////
-        /// The border right color of the card component, for the warning color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-warning-600);
-        ////
-        /// The border bottom color of the card component, for the warning color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-warning-600);
-        ////
-        /// The border left color of the card component, for the warning color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-warning-600);
-        ////
-        /// The color of the card component, for the warning color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-warning);
-        ////
-        /// The background of the modal component header, for the warning color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-warning-550);
-        ////
-        /// The background of the modal component footer, for the warning color variant
-        /// @name footer--background
-        ////
-        ----footer--background: var(--color-warning-550);
+                        &.-warning {
+                                        --card--background: var(--card--warning--background, var(--color-warning));
+                                        --card--border-top-color: var(--card--warning--border-top-color, var(--color-warning-600));
+                                        --card--border-right-color: var(--card--warning--border-right-color, var(--color-warning-600));
+                                        --card--border-bottom-color: var(--card--warning--border-bottom-color, var(--color-warning-600));
+                                        --card--border-left-color: var(--card--warning--border-left-color, var(--color-warning-600));
+                                        --card--color: var(--card--warning--color, var(--contrast-text--color-warning));
+                                        --card--header--background: var(--card--warning--header--background, var(--color-warning-550));
+                                        --card--footer--background: var(--card--warning--footer--background, var(--color-warning-550));
     }
-    ////
-    /// Variables for the danger color variant
-    /// @name danger
-    /// @type variant
-    ////
-    &.-danger {
-        ////
-        /// The background of the card component, for the danger color variant
-        /// @name background
-        ////
-        ----background: var(--color-danger);
-        ////
-        /// The border top color of the card component, for the danger color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-danger-600);
-        ////
-        /// The border right color of the card component, for the danger color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-danger-600);
-        ////
-        /// The border bottom color of the card component, for the danger color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-danger-600);
-        ////
-        /// The border left color of the card component, for the danger color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-danger-600);
-        ////
-        /// The color of the card component, for the danger color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-danger);
-        ////
-        /// The background of the modal component header, for the danger color variant
-        /// @name header--background
-        ////
-        ----header--background: var(--color-danger-550);
-        ////
-        /// The background of the modal component footer, for the danger color variant
-        /// @name footer--background
-        ////
-        ----footer--background: var(--color-danger-550);
+                        &.-danger {
+                                        --card--background: var(--card--danger--background, var(--color-danger));
+                                        --card--border-top-color: var(--card--danger--border-top-color, var(--color-danger-600));
+                                        --card--border-right-color: var(--card--danger--border-right-color, var(--color-danger-600));
+                                        --card--border-bottom-color: var(--card--danger--border-bottom-color, var(--color-danger-600));
+                                        --card--border-left-color: var(--card--danger--border-left-color, var(--color-danger-600));
+                                        --card--color: var(--card--danger--color, var(--contrast-text--color-danger));
+                                        --card--header--background: var(--card--danger--header--background, var(--color-danger-550));
+                                        --card--footer--background: var(--card--danger--footer--background, var(--color-danger-550));
     }
 }

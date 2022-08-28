@@ -1,3 +1,441 @@
+////
+/// The background of the popover component
+/// @name popover--background
+/// @type color
+////
+    
+////
+/// The border top color of the popover component
+/// @name popover--border-top-color
+/// @type color
+////
+    
+////
+/// The border right color of the popover component
+/// @name popover--border-right-color
+/// @type color
+////
+    
+////
+/// The border bottom color of the popover component
+/// @name popover--border-bottom-color
+/// @type color
+////
+    
+////
+/// The border left color of the popover component
+/// @name popover--border-left-color
+/// @type color
+////
+    
+////
+/// The border color of the popover component
+/// @name popover--border-color
+////
+    
+////
+/// The border style of the popover component
+/// @name popover--border-style
+////
+    
+////
+/// The border top width of the popover component
+/// @name popover--border-top-width
+////
+    
+////
+/// The border right width of the popover component
+/// @name popover--border-right-width
+////
+    
+////
+/// The border bottom width of the popover component
+/// @name popover--border-bottom-width
+////
+    
+////
+/// The border left width of the popover component
+/// @name popover--border-left-width
+////
+    
+////
+/// The border width of the popover component
+/// @name popover--border-width
+////
+    
+////
+/// The border top left radius of the popover component
+/// @name popover--border-top-left-radius
+/// @type size
+////
+    
+////
+/// The border top right radius of the popover component
+/// @name popover--border-top-right-radius
+/// @type size
+////
+    
+////
+/// The border bottom right radius of the popover component
+/// @name popover--border-bottom-right-radius
+/// @type size
+////
+    
+////
+/// The border bottom left radius of the popover component
+/// @name popover--border-bottom-left-radius
+/// @type size
+////
+    
+////
+/// The border radius of the popover component
+/// @name popover--border-radius
+////
+    
+////
+/// The box shadow horizontal offset of the popover component
+/// @name popover--box-shadow-offset-x
+////
+    
+////
+/// The box shadow vertical offset of the popover component
+/// @name popover--box-shadow-offset-y
+////
+    
+////
+/// The box shadow blur radius of the popover component
+/// @name popover--box-shadow-blur-radius
+////
+    
+////
+/// The box shadow spread radius of the popover component
+/// @name popover--box-shadow-spread-radius
+////
+    
+////
+/// The box shadow spread radius of the popover component
+/// @name popover--box-shadow-color
+////
+    
+////
+/// The box shadow of the popover component
+/// @name popover--box-shadow
+////
+    
+////
+/// The color of the popover component item
+/// @name popover--color
+/// @type color
+////
+    
+////
+/// The font size of the popover component
+/// @name popover--font-size
+/// @type size
+////
+    
+////
+/// The font weight of the popover component
+/// @name popover--font-weight
+////
+    
+////
+/// The line height of the popover component
+/// @name popover--line-height
+////
+    
+////
+/// The margin top of the popover component
+/// @name popover--margin-top
+/// @type size
+////
+    
+////
+/// The margin right of the popover component
+/// @name popover--margin-right
+/// @type size
+////
+    
+////
+/// The margin bottom of the popover component
+/// @name popover--margin-bottom
+/// @type size
+////
+    
+////
+/// The margin left of the popover component
+/// @name popover--margin-left
+/// @type size
+////
+    
+////
+/// The margin of the popover component
+/// @name popover--margin
+////
+    
+////
+/// The padding top of the popover component
+/// @name popover--padding-top
+/// @type size
+////
+    
+////
+/// The padding right of the popover component
+/// @name popover--padding-right
+/// @type size
+////
+    
+////
+/// The padding bottom of the popover component
+/// @name popover--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the popover component
+/// @name popover--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the popover component
+/// @name popover--padding
+////
+    
+////
+/// The maximum width of the popover component
+/// @name popover--max-width
+////
+    
+////
+/// The width of the popover component
+/// @name popover--width
+////
+    
+////
+/// The z-index of the popover component
+/// @name popover--z-index
+////
+    
+////
+/// The background of the popover component header
+/// @name popover--header--background
+/// @type color
+////
+    
+////
+/// The border color of the popover component header
+/// @name popover--header--border-color
+////
+    
+////
+/// The border style of the popover component header
+/// @name popover--header--border-style
+////
+    
+////
+/// The border top width of the popover component header
+/// @name popover--header--border-top-width
+////
+    
+////
+/// The border right width of the popover component header
+/// @name popover--header--border-right-width
+////
+    
+////
+/// The border bottom width of the popover component header
+/// @name popover--header--border-bottom-width
+////
+    
+////
+/// The border left width of the popover component header
+/// @name popover--header--border-left-width
+////
+    
+////
+/// The border width of the popover component header
+/// @name popover--header--border-width
+////
+    
+////
+/// The color of the popover component header
+/// @name popover--header--color
+////
+    
+////
+/// The padding top of the popover component header
+/// @name popover--header--padding-top
+////
+    
+////
+/// The padding right of the popover component header
+/// @name popover--header--padding-right
+////
+    
+////
+/// The padding bottom of the popover component header
+/// @name popover--header--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the popover component header
+/// @name popover--header--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the popover component header
+/// @name popover--header--padding
+////
+    
+////
+/// The background of the popover component body
+/// @name popover--body--background
+////
+    
+////
+/// The border color of the popover component body
+/// @name popover--body--border-color
+////
+    
+////
+/// The border style of the popover component body
+/// @name popover--body--border-style
+////
+    
+////
+/// The border top width of the popover component body
+/// @name popover--body--border-top-width
+////
+    
+////
+/// The border right width of the popover component body
+/// @name popover--body--border-right-width
+////
+    
+////
+/// The border bottom width of the popover component body
+/// @name popover--body--border-bottom-width
+////
+    
+////
+/// The border left width of the popover component body
+/// @name popover--body--border-left-width
+////
+    
+////
+/// The border width of the popover component body
+/// @name popover--body--border-width
+////
+    
+////
+/// The color of the popover component body
+/// @name popover--body--color
+////
+    
+////
+/// The padding top of the popover component body
+/// @name popover--body--padding-top
+////
+    
+////
+/// The padding right of the popover component body
+/// @name popover--body--padding-right
+////
+    
+////
+/// The padding bottom of the popover component body
+/// @name popover--body--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the popover component body
+/// @name popover--body--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the popover component body
+/// @name popover--body--padding
+////
+    
+////
+/// The background of the popover component footer
+/// @name popover--footer--background
+/// @type color
+////
+    
+////
+/// The border color of the popover component footer
+/// @name popover--footer--border-color
+////
+    
+////
+/// The border style of the popover component footer
+/// @name popover--footer--border-style
+////
+    
+////
+/// The border top width of the popover component footer
+/// @name popover--footer--border-top-width
+////
+    
+////
+/// The border right width of the popover component footer
+/// @name popover--footer--border-right-width
+////
+    
+////
+/// The border bottom width of the popover component footer
+/// @name popover--footer--border-bottom-width
+////
+    
+////
+/// The border left width of the popover component footer
+/// @name popover--footer--border-left-width
+////
+    
+////
+/// The border width of the popover component footer
+/// @name popover--footer--border-width
+////
+    
+////
+/// The color of the popover component footer
+/// @name popover--footer--color
+////
+    
+////
+/// The padding top of the popover component footer
+/// @name popover--footer--padding-top
+////
+    
+////
+/// The padding right of the popover component footer
+/// @name popover--footer--padding-right
+////
+    
+////
+/// The padding bottom of the popover component footer
+/// @name popover--footer--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the popover component footer
+/// @name popover--footer--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the popover component footer
+/// @name popover--footer--padding
+////
+    
+
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';

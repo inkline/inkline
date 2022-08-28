@@ -1,3 +1,437 @@
+////
+/// The background of the modal component
+/// @name modal--background
+/// @type color
+////
+    
+////
+/// The border top color of the modal component
+/// @name modal--border-top-color
+/// @type color
+////
+    
+////
+/// The border right color of the modal component
+/// @name modal--border-right-color
+/// @type color
+////
+    
+////
+/// The border bottom color of the modal component
+/// @name modal--border-bottom-color
+/// @type color
+////
+    
+////
+/// The border left color of the modal component
+/// @name modal--border-left-color
+/// @type color
+////
+    
+////
+/// The border color of the modal component
+/// @name modal--border-color
+////
+    
+////
+/// The border style of the modal component
+/// @name modal--border-style
+////
+    
+////
+/// The border top width of the modal component
+/// @name modal--border-top-width
+////
+    
+////
+/// The border right width of the modal component
+/// @name modal--border-right-width
+////
+    
+////
+/// The border bottom width of the modal component
+/// @name modal--border-bottom-width
+////
+    
+////
+/// The border left width of the modal component
+/// @name modal--border-left-width
+////
+    
+////
+/// The border width of the modal component
+/// @name modal--border-width
+////
+    
+////
+/// The border top left radius of the modal component
+/// @name modal--border-top-left-radius
+/// @type size
+////
+    
+////
+/// The border top right radius of the modal component
+/// @name modal--border-top-right-radius
+/// @type size
+////
+    
+////
+/// The border bottom right radius of the modal component
+/// @name modal--border-bottom-right-radius
+/// @type size
+////
+    
+////
+/// The border bottom left radius of the modal component
+/// @name modal--border-bottom-left-radius
+/// @type size
+////
+    
+////
+/// The border radius of the modal component
+/// @name modal--border-radius
+////
+    
+////
+/// The box shadow horizontal offset of the modal component
+/// @name modal--box-shadow-offset-x
+////
+    
+////
+/// The box shadow vertical offset of the modal component
+/// @name modal--box-shadow-offset-y
+////
+    
+////
+/// The box shadow blur radius of the modal component
+/// @name modal--box-shadow-blur-radius
+////
+    
+////
+/// The box shadow spread radius of the modal component
+/// @name modal--box-shadow-spread-radius
+////
+    
+////
+/// The box shadow spread radius of the modal component
+/// @name modal--box-shadow-color
+////
+    
+////
+/// The box shadow of the modal component
+/// @name modal--box-shadow
+////
+    
+////
+/// The color of the modal component
+/// @name modal--color
+/// @type color
+////
+    
+////
+/// The font size of the modal component
+/// @name modal--font-size
+/// @type size
+////
+    
+////
+/// The font weight of the modal component
+/// @name modal--font-weight
+////
+    
+////
+/// The line height of the modal component
+/// @name modal--line-height
+////
+    
+////
+/// The margin top of the modal component
+/// @name modal--margin-top
+/// @type size
+////
+    
+////
+/// The margin right of the modal component
+/// @name modal--margin-right
+/// @type size
+////
+    
+////
+/// The margin bottom of the modal component
+/// @name modal--margin-bottom
+/// @type size
+////
+    
+////
+/// The margin left of the modal component
+/// @name modal--margin-left
+/// @type size
+////
+    
+////
+/// The margin of the modal component
+/// @name modal--margin
+////
+    
+////
+/// The padding top of the modal component
+/// @name modal--padding-top
+/// @type size
+////
+    
+////
+/// The padding right of the modal component
+/// @name modal--padding-right
+/// @type size
+////
+    
+////
+/// The padding bottom of the modal component
+/// @name modal--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the modal component
+/// @name modal--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the modal component
+/// @name modal--padding
+////
+    
+////
+/// The width of the modal component
+/// @name modal--width
+/// @type size
+////
+    
+////
+/// The background of the modal component header
+/// @name modal--header--background
+/// @type color
+////
+    
+////
+/// The border color of the modal component header
+/// @name modal--header--border-color
+////
+    
+////
+/// The border style of the modal component header
+/// @name modal--header--border-style
+////
+    
+////
+/// The border top width of the modal component header
+/// @name modal--header--border-top-width
+////
+    
+////
+/// The border right width of the modal component header
+/// @name modal--header--border-right-width
+////
+    
+////
+/// The border bottom width of the modal component header
+/// @name modal--header--border-bottom-width
+////
+    
+////
+/// The border left width of the modal component header
+/// @name modal--header--border-left-width
+////
+    
+////
+/// The border width of the modal component header
+/// @name modal--header--border-width
+////
+    
+////
+/// The color of the modal component header
+/// @name modal--header--color
+////
+    
+////
+/// The padding top of the modal component header
+/// @name modal--header--padding-top
+////
+    
+////
+/// The padding right of the modal component header
+/// @name modal--header--padding-right
+////
+    
+////
+/// The padding bottom of the modal component header
+/// @name modal--header--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the modal component header
+/// @name modal--header--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the modal component header
+/// @name modal--header--padding
+////
+    
+////
+/// The background of the modal component body
+/// @name modal--body--background
+////
+    
+////
+/// The border color of the modal component body
+/// @name modal--body--border-color
+////
+    
+////
+/// The border style of the modal component body
+/// @name modal--body--border-style
+////
+    
+////
+/// The border top width of the modal component body
+/// @name modal--body--border-top-width
+////
+    
+////
+/// The border right width of the modal component body
+/// @name modal--body--border-right-width
+////
+    
+////
+/// The border bottom width of the modal component body
+/// @name modal--body--border-bottom-width
+////
+    
+////
+/// The border left width of the modal component body
+/// @name modal--body--border-left-width
+////
+    
+////
+/// The border width of the modal component body
+/// @name modal--body--border-width
+////
+    
+////
+/// The color of the modal component body
+/// @name modal--body--color
+////
+    
+////
+/// The padding top of the modal component body
+/// @name modal--body--padding-top
+////
+    
+////
+/// The padding right of the modal component body
+/// @name modal--body--padding-right
+////
+    
+////
+/// The padding bottom of the modal component body
+/// @name modal--body--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the modal component body
+/// @name modal--body--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the modal component body
+/// @name modal--body--padding
+////
+    
+////
+/// The background of the modal component footer
+/// @name modal--footer--background
+/// @type color
+////
+    
+////
+/// The border color of the modal component footer
+/// @name modal--footer--border-color
+////
+    
+////
+/// The border style of the modal component footer
+/// @name modal--footer--border-style
+////
+    
+////
+/// The border top width of the modal component footer
+/// @name modal--footer--border-top-width
+////
+    
+////
+/// The border right width of the modal component footer
+/// @name modal--footer--border-right-width
+////
+    
+////
+/// The border bottom width of the modal component footer
+/// @name modal--footer--border-bottom-width
+////
+    
+////
+/// The border left width of the modal component footer
+/// @name modal--footer--border-left-width
+////
+    
+////
+/// The border width of the modal component footer
+/// @name modal--footer--border-width
+////
+    
+////
+/// The color of the modal component footer
+/// @name modal--footer--color
+////
+    
+////
+/// The padding top of the modal component footer
+/// @name modal--footer--padding-top
+////
+    
+////
+/// The padding right of the modal component footer
+/// @name modal--footer--padding-right
+////
+    
+////
+/// The padding bottom of the modal component footer
+/// @name modal--footer--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the modal component footer
+/// @name modal--footer--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the modal component footer
+/// @name modal--footer--padding
+////
+    
+////
+/// The overlay background of the modal component wrapper
+/// @name modal--wrapper--background
+////
+    
+
 @import '../../css/variables';
 @import '../../css/mixins';
 @import '../../css/icons';

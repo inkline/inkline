@@ -3,190 +3,43 @@
  */
 
 .navbar {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    &.-sm {
-        ////
-        /// The border top left radius of the navbar component, for the sm size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: var(--border-top-left-radius-sm);
-        ////
-        /// The border top right radius of the navbar component, for the sm size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: var(--border-top-right-radius-sm);
-        ////
-        /// The border bottom right radius of the navbar component, for the sm size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: var(--border-bottom-right-radius-sm);
-        ////
-        /// The border bottom left radius of the navbar component, for the sm size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: var(--border-bottom-left-radius-sm);
-        ////
-        /// The font size of the navbar component, for the sm size variant
-        /// @name font-size
-        ////
-        ----font-size: var(--font-size-sm);
-        ////
-        /// The padding top of the navbar component, for the sm size variant
-        /// @name padding-top
-        ////
-        ----padding-top: var(--padding-top-sm);
-        ////
-        /// The padding bottom of the navbar component, for the sm size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: var(--padding-bottom-sm);
-        ////
-        /// The padding top of the navbar component, for the sm size variant
-        /// @name item--padding-top
-        ////
-        ----item--padding-top: calc(#{calc(var(--padding-top) / 2)} * var(--size-multiplier-sm));
-        ////
-        /// The padding right of the navbar component, for the sm size variant
-        /// @name item--padding-right
-        ////
-        ----item--padding-right: var(--padding-right-sm);
-        ////
-        /// The padding bottom of the navbar component, for the sm size variant
-        /// @name item--padding-bottom
-        ////
-        ----item--padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * var(--size-multiplier-sm));
-        ////
-        /// The padding left of the navbar component, for the sm size variant
-        /// @name item--padding-left
-        ////
-        ----item--padding-left: var(--padding-left-sm);
+                        &.-sm {
+                                        --navbar--border-top-left-radius: var(--navbar--sm--border-top-left-radius, var(--border-top-left-radius-sm));
+                                        --navbar--border-top-right-radius: var(--navbar--sm--border-top-right-radius, var(--border-top-right-radius-sm));
+                                        --navbar--border-bottom-right-radius: var(--navbar--sm--border-bottom-right-radius, var(--border-bottom-right-radius-sm));
+                                        --navbar--border-bottom-left-radius: var(--navbar--sm--border-bottom-left-radius, var(--border-bottom-left-radius-sm));
+                                        --navbar--font-size: var(--navbar--sm--font-size, var(--font-size-sm));
+                                        --navbar--padding-top: var(--navbar--sm--padding-top, var(--padding-top-sm));
+                                        --navbar--padding-bottom: var(--navbar--sm--padding-bottom, var(--padding-bottom-sm));
+                                        --navbar--item--padding-top: var(--navbar--sm--item--padding-top, calc(#{calc(var(--padding-top) / 2)} * var(--size-multiplier-sm)));
+                                        --navbar--item--padding-right: var(--navbar--sm--item--padding-right, var(--padding-right-sm));
+                                        --navbar--item--padding-bottom: var(--navbar--sm--item--padding-bottom, calc(#{calc(var(--padding-bottom) / 2)} * var(--size-multiplier-sm)));
+                                        --navbar--item--padding-left: var(--navbar--sm--item--padding-left, var(--padding-left-sm));
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    &.-md {
-        ////
-        /// The border top left radius of the navbar component, for the md size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: var(--border-top-left-radius-md);
-        ////
-        /// The border top right radius of the navbar component, for the md size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: var(--border-top-right-radius-md);
-        ////
-        /// The border bottom right radius of the navbar component, for the md size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: var(--border-bottom-right-radius-md);
-        ////
-        /// The border bottom left radius of the navbar component, for the md size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: var(--border-bottom-left-radius-md);
-        ////
-        /// The font size of the navbar component, for the md size variant
-        /// @name font-size
-        ////
-        ----font-size: var(--font-size-md);
-        ////
-        /// The padding top of the navbar component, for the md size variant
-        /// @name padding-top
-        ////
-        ----padding-top: var(--padding-top-md);
-        ////
-        /// The padding bottom of the navbar component, for the md size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: var(--padding-bottom-md);
-        ////
-        /// The padding top of the navbar component, for the md size variant
-        /// @name item--padding-top
-        ////
-        ----item--padding-top: calc(#{calc(var(--padding-top) / 2)} * var(--size-multiplier-md));
-        ////
-        /// The padding right of the navbar component, for the md size variant
-        /// @name item--padding-right
-        ////
-        ----item--padding-right: var(--padding-right-md);
-        ////
-        /// The padding bottom of the navbar component, for the md size variant
-        /// @name item--padding-bottom
-        ////
-        ----item--padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * var(--size-multiplier-md));
-        ////
-        /// The padding left of the navbar component, for the md size variant
-        /// @name item--padding-left
-        ////
-        ----item--padding-left: var(--padding-left-md);
+                        &.-md {
+                                        --navbar--border-top-left-radius: var(--navbar--md--border-top-left-radius, var(--border-top-left-radius-md));
+                                        --navbar--border-top-right-radius: var(--navbar--md--border-top-right-radius, var(--border-top-right-radius-md));
+                                        --navbar--border-bottom-right-radius: var(--navbar--md--border-bottom-right-radius, var(--border-bottom-right-radius-md));
+                                        --navbar--border-bottom-left-radius: var(--navbar--md--border-bottom-left-radius, var(--border-bottom-left-radius-md));
+                                        --navbar--font-size: var(--navbar--md--font-size, var(--font-size-md));
+                                        --navbar--padding-top: var(--navbar--md--padding-top, var(--padding-top-md));
+                                        --navbar--padding-bottom: var(--navbar--md--padding-bottom, var(--padding-bottom-md));
+                                        --navbar--item--padding-top: var(--navbar--md--item--padding-top, calc(#{calc(var(--padding-top) / 2)} * var(--size-multiplier-md)));
+                                        --navbar--item--padding-right: var(--navbar--md--item--padding-right, var(--padding-right-md));
+                                        --navbar--item--padding-bottom: var(--navbar--md--item--padding-bottom, calc(#{calc(var(--padding-bottom) / 2)} * var(--size-multiplier-md)));
+                                        --navbar--item--padding-left: var(--navbar--md--item--padding-left, var(--padding-left-md));
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    &.-lg {
-        ////
-        /// The border top left radius of the navbar component, for the lg size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: var(--border-top-left-radius-lg);
-        ////
-        /// The border top right radius of the navbar component, for the lg size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: var(--border-top-right-radius-lg);
-        ////
-        /// The border bottom right radius of the navbar component, for the lg size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: var(--border-bottom-right-radius-lg);
-        ////
-        /// The border bottom left radius of the navbar component, for the lg size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: var(--border-bottom-left-radius-lg);
-        ////
-        /// The font size of the navbar component, for the lg size variant
-        /// @name font-size
-        ////
-        ----font-size: var(--font-size-lg);
-        ////
-        /// The padding top of the navbar component, for the lg size variant
-        /// @name padding-top
-        ////
-        ----padding-top: var(--padding-top-lg);
-        ////
-        /// The padding bottom of the navbar component, for the lg size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: var(--padding-bottom-lg);
-        ////
-        /// The padding top of the navbar component, for the lg size variant
-        /// @name item--padding-top
-        ////
-        ----item--padding-top: calc(#{calc(var(--padding-top) / 2)} * var(--size-multiplier-lg));
-        ////
-        /// The padding right of the navbar component, for the lg size variant
-        /// @name item--padding-right
-        ////
-        ----item--padding-right: var(--padding-right-lg);
-        ////
-        /// The padding bottom of the navbar component, for the lg size variant
-        /// @name item--padding-bottom
-        ////
-        ----item--padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * var(--size-multiplier-lg));
-        ////
-        /// The padding left of the navbar component, for the lg size variant
-        /// @name item--padding-left
-        ////
-        ----item--padding-left: var(--padding-left-lg);
+                        &.-lg {
+                                        --navbar--border-top-left-radius: var(--navbar--lg--border-top-left-radius, var(--border-top-left-radius-lg));
+                                        --navbar--border-top-right-radius: var(--navbar--lg--border-top-right-radius, var(--border-top-right-radius-lg));
+                                        --navbar--border-bottom-right-radius: var(--navbar--lg--border-bottom-right-radius, var(--border-bottom-right-radius-lg));
+                                        --navbar--border-bottom-left-radius: var(--navbar--lg--border-bottom-left-radius, var(--border-bottom-left-radius-lg));
+                                        --navbar--font-size: var(--navbar--lg--font-size, var(--font-size-lg));
+                                        --navbar--padding-top: var(--navbar--lg--padding-top, var(--padding-top-lg));
+                                        --navbar--padding-bottom: var(--navbar--lg--padding-bottom, var(--padding-bottom-lg));
+                                        --navbar--item--padding-top: var(--navbar--lg--item--padding-top, calc(#{calc(var(--padding-top) / 2)} * var(--size-multiplier-lg)));
+                                        --navbar--item--padding-right: var(--navbar--lg--item--padding-right, var(--padding-right-lg));
+                                        --navbar--item--padding-bottom: var(--navbar--lg--item--padding-bottom, calc(#{calc(var(--padding-bottom) / 2)} * var(--size-multiplier-lg)));
+                                        --navbar--item--padding-left: var(--navbar--lg--item--padding-left, var(--padding-left-lg));
     }
 }

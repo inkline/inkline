@@ -3,118 +3,28 @@
  */
 
 .sidebar-wrapper {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    &.-light {
-        ////
-        /// The background of the sidebar component, for the light color variant
-        /// @name background
-        ////
-        ----background: var(--color-light);
-        ////
-        /// The border top color of the sidebar component, for the light color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-light-600);
-        ////
-        /// The border right color of the sidebar component, for the light color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-light-600);
-        ////
-        /// The border bottom color of the sidebar component, for the light color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-light-600);
-        ////
-        /// The border left color of the sidebar component, for the light color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-light-600);
-        ////
-        /// The color of the sidebar component, for the light color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-light);
-        ////
-        /// The color of the sidebar component item, for the light color variant
-        /// @name item--color
-        ////
-        ----item--color: var(--contrast-text--color-light);
-        ////
-        /// The color of the sidebar component item when hovered, for the light color variant
-        /// @name item--color--hover
-        ////
-        ----item--color--hover: var(--contrast-text--color-light);
-        ////
-        /// The background of the sidebar component item, for the light color variant
-        /// @name item--background
-        ////
-        ----item--background: var(--color-light);
-        ////
-        /// The background of the sidebar component item when hovered or focused, for the light color variant
-        /// @name item--background--hover
-        ////
-        ----item--background--hover: var(--color-light-550);
+                        &.-light {
+                                        --sidebar--background: var(--sidebar--light--background, var(--color-light));
+                                        --sidebar--border-top-color: var(--sidebar--light--border-top-color, var(--color-light-600));
+                                        --sidebar--border-right-color: var(--sidebar--light--border-right-color, var(--color-light-600));
+                                        --sidebar--border-bottom-color: var(--sidebar--light--border-bottom-color, var(--color-light-600));
+                                        --sidebar--border-left-color: var(--sidebar--light--border-left-color, var(--color-light-600));
+                                        --sidebar--color: var(--sidebar--light--color, var(--contrast-text--color-light));
+                                        --sidebar--item--color: var(--sidebar--light--item--color, var(--contrast-text--color-light));
+                                        --sidebar--item--color--hover: var(--sidebar--light--item--color--hover, var(--contrast-text--color-light));
+                                        --sidebar--item--background: var(--sidebar--light--item--background, var(--color-light));
+                                        --sidebar--item--background--hover: var(--sidebar--light--item--background--hover, var(--color-light-550));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    &.-dark {
-        ////
-        /// The background of the sidebar component, for the dark color variant
-        /// @name background
-        ////
-        ----background: var(--color-dark);
-        ////
-        /// The border top color of the sidebar component, for the dark color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: var(--color-dark-400);
-        ////
-        /// The border right color of the sidebar component, for the dark color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: var(--color-dark-400);
-        ////
-        /// The border bottom color of the sidebar component, for the dark color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: var(--color-dark-400);
-        ////
-        /// The border left color of the sidebar component, for the dark color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: var(--color-dark-400);
-        ////
-        /// The color of the sidebar component, for the dark color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-dark);
-        ////
-        /// The color of the sidebar component item, for the dark color variant
-        /// @name item--color
-        ////
-        ----item--color: var(--contrast-text--color-dark);
-        ////
-        /// The color of the sidebar component item when hovered, for the dark color variant
-        /// @name item--color--hover
-        ////
-        ----item--color--hover: var(--contrast-text--color-dark);
-        ////
-        /// The background of the sidebar component item, for the dark color variant
-        /// @name item--background
-        ////
-        ----item--background: var(--color-dark);
-        ////
-        /// The background of the sidebar component item when hovered or focused, for the dark color variant
-        /// @name item--background--hover
-        ////
-        ----item--background--hover: var(--color-dark-450);
+                        &.-dark {
+                                        --sidebar--background: var(--sidebar--dark--background, var(--color-dark));
+                                        --sidebar--border-top-color: var(--sidebar--dark--border-top-color, var(--color-dark-400));
+                                        --sidebar--border-right-color: var(--sidebar--dark--border-right-color, var(--color-dark-400));
+                                        --sidebar--border-bottom-color: var(--sidebar--dark--border-bottom-color, var(--color-dark-400));
+                                        --sidebar--border-left-color: var(--sidebar--dark--border-left-color, var(--color-dark-400));
+                                        --sidebar--color: var(--sidebar--dark--color, var(--contrast-text--color-dark));
+                                        --sidebar--item--color: var(--sidebar--dark--item--color, var(--contrast-text--color-dark));
+                                        --sidebar--item--color--hover: var(--sidebar--dark--item--color--hover, var(--contrast-text--color-dark));
+                                        --sidebar--item--background: var(--sidebar--dark--item--background, var(--color-dark));
+                                        --sidebar--item--background--hover: var(--sidebar--dark--item--background--hover, var(--color-dark-450));
     }
 }

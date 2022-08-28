@@ -3,138 +3,32 @@
  */
 
 .checkbox {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light', 'form') {
-        ////
-        /// The background of the checkbox component indicator, for the light color variant
-        /// @name background
-        ////
-        ----background: var(--color-white);
-        ////
-        /// The background of the checkbox component indicator when checked, for the light color variant
-        /// @name background--checked
-        ////
-        ----background--checked: var(--color-primary);
-        ////
-        /// The background of the checkbox component indicator when disabled, for the light color variant
-        /// @name background--disabled
-        ////
-        ----background--disabled: var(--color-light-250);
-        ////
-        /// The background of the checkbox component indicator when checked and disabled, for the light color variant
-        /// @name background--checked-disabled
-        ////
-        ----background--checked-disabled: var(--color-primary-250);
-        ////
-        /// The border-color of the checkbox component indicator, for the light color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-light-550);
-        ////
-        /// The border-color of the checkbox component indicator when checked, for the light color variant
-        /// @name border-color--checked
-        ////
-        ----border-color--checked: var(--color-primary-550);
-        ////
-        /// The border-color of the checkbox component indicator when disabled, for the light color variant
-        /// @name border-color--disabled
-        ////
-        ----border-color--disabled: var(--color-light);
-        ////
-        /// The border-color of the checkbox component indicator when checked and disabled, for the light color variant
-        /// @name border-color--checked-disabled
-        ////
-        ----border-color--checked-disabled: var(--color-primary-300);
-        ////
-        /// The color of the checkbox component indicator icon, for the light color variant
-        /// @name color
-        ////
-        ----color: var(--color-white);
-        ////
-        /// The color of the checkbox component indicator icon when disabled, for the light color variant
-        /// @name color--disabled
-        ////
-        ----color--disabled: var(--color-light-250);
-        ////
-        /// The label color of the checkbox component label, for the light color variant
-        /// @name label--color
-        ////
-        ----label--color: var(--contrast-text--color-light);
-        ////
-        /// The label color of the checkbox component when disabled, for the light color variant
-        /// @name label--color--disabled
-        ////
-        ----label--color--disabled: var(--color-light-700);
+                        @include variant('light', 'form') {
+                                        --checkbox--background: var(--checkbox--white--background, var(--color-white));
+                                        --checkbox--background--checked: var(--checkbox--primary--background--checked, var(--color-primary));
+                                        --checkbox--background--disabled: var(--checkbox--light--background--disabled, var(--color-light-250));
+                                        --checkbox--background--checked-disabled: var(--checkbox--primary--background--checked-disabled, var(--color-primary-250));
+                                        --checkbox--border-color: var(--checkbox--light--border-color, var(--color-light-550));
+                                        --checkbox--border-color--checked: var(--checkbox--primary--border-color--checked, var(--color-primary-550));
+                                        --checkbox--border-color--disabled: var(--checkbox--light--border-color--disabled, var(--color-light));
+                                        --checkbox--border-color--checked-disabled: var(--checkbox--primary--border-color--checked-disabled, var(--color-primary-300));
+                                        --checkbox--color: var(--checkbox--white--color, var(--color-white));
+                                        --checkbox--color--disabled: var(--checkbox--light--color--disabled, var(--color-light-250));
+                                        --checkbox--label--color: var(--checkbox--light--label--color, var(--contrast-text--color-light));
+                                        --checkbox--label--color--disabled: var(--checkbox--light--label--color--disabled, var(--color-light-700));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark', 'form') {
-        ////
-        /// The background of the checkbox component indicator, for the dark color variant
-        /// @name background
-        ////
-        ----background: var(--color-dark);
-        ////
-        /// The background of the checkbox component indicator when checked, for the dark color variant
-        /// @name background--checked
-        ////
-        ----background--checked: var(--color-primary);
-        ////
-        /// The background of the checkbox component indicator when disabled, for the dark color variant
-        /// @name background--disabled
-        ////
-        ----background--disabled: var(--color-dark-250);
-        ////
-        /// The background of the checkbox component indicator when checked and disabled, for the dark color variant
-        /// @name background--checked-disabled
-        ////
-        ----background--checked-disabled: var(--color-primary-750);
-        ////
-        /// The border-color of the checkbox component indicator, for the dark color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-dark);
-        ////
-        /// The border-color of the checkbox component indicator when checked, for the dark color variant
-        /// @name border-color--checked
-        ////
-        ----border-color--checked: var(--color-primary-550);
-        ////
-        /// The border-color of the checkbox component indicator when disabled, for the dark color variant
-        /// @name border-color--disabled
-        ////
-        ----border-color--disabled: var(--color-dark);
-        ////
-        /// The border-color of the checkbox component indicator when checked and disabled, for the dark color variant
-        /// @name border-color--checked-disabled
-        ////
-        ----border-color--checked-disabled: var(--color-primary-700);
-        ////
-        /// The color of the checkbox component indicator icon, for the dark color variant
-        /// @name color
-        ////
-        ----color: var(--color-white);
-        ////
-        /// The color of the checkbox component indicator icon when disabled, for the dark color variant
-        /// @name color--disabled
-        ////
-        ----color--disabled: var(--color-dark-250);
-        ////
-        /// The label color of the checkbox component label, for the dark color variant
-        /// @name label--color
-        ////
-        ----label--color: var(--contrast-text--color-dark);
-        ////
-        /// The label color of the checkbox component when disabled, for the dark color variant
-        /// @name label--color--disabled
-        ////
-        ----label--color--disabled: var(--color-dark-300);
+                        @include variant('dark', 'form') {
+                                        --checkbox--background: var(--checkbox--dark--background, var(--color-dark));
+                                        --checkbox--background--checked: var(--checkbox--primary--background--checked, var(--color-primary));
+                                        --checkbox--background--disabled: var(--checkbox--dark--background--disabled, var(--color-dark-250));
+                                        --checkbox--background--checked-disabled: var(--checkbox--primary--background--checked-disabled, var(--color-primary-750));
+                                        --checkbox--border-color: var(--checkbox--dark--border-color, var(--color-dark));
+                                        --checkbox--border-color--checked: var(--checkbox--primary--border-color--checked, var(--color-primary-550));
+                                        --checkbox--border-color--disabled: var(--checkbox--dark--border-color--disabled, var(--color-dark));
+                                        --checkbox--border-color--checked-disabled: var(--checkbox--primary--border-color--checked-disabled, var(--color-primary-700));
+                                        --checkbox--color: var(--checkbox--white--color, var(--color-white));
+                                        --checkbox--color--disabled: var(--checkbox--dark--color--disabled, var(--color-dark-250));
+                                        --checkbox--label--color: var(--checkbox--dark--label--color, var(--contrast-text--color-dark));
+                                        --checkbox--label--color--disabled: var(--checkbox--dark--label--color--disabled, var(--color-dark-300));
     }
 }

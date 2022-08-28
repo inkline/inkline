@@ -1,3 +1,368 @@
+////
+/// The background of the dropdown component
+/// @name dropdown--background
+/// @type color
+////
+    
+////
+/// The background of the dropdown component when active
+/// @name dropdown--background--active
+/// @type color
+////
+    
+////
+/// The background of the dropdown component when disabled
+/// @name dropdown--background--disabled
+/// @type color
+////
+    
+////
+/// The background of the dropdown component when hovered or focused
+/// @name dropdown--background--hover
+/// @type color
+////
+    
+////
+/// The border top color of the dropdown component
+/// @name dropdown--border-top-color
+/// @type color
+////
+    
+////
+/// The border right color of the dropdown component
+/// @name dropdown--border-right-color
+/// @type color
+////
+    
+////
+/// The border bottom color of the dropdown component
+/// @name dropdown--border-bottom-color
+/// @type color
+////
+    
+////
+/// The border left color of the dropdown component
+/// @name dropdown--border-left-color
+/// @type color
+////
+    
+////
+/// The border color of the dropdown component
+/// @name dropdown--border-color
+////
+    
+////
+/// The border style of the dropdown component
+/// @name dropdown--border-style
+////
+    
+////
+/// The border top width of the dropdown component
+/// @name dropdown--border-top-width
+////
+    
+////
+/// The border right width of the dropdown component
+/// @name dropdown--border-right-width
+////
+    
+////
+/// The border bottom width of the dropdown component
+/// @name dropdown--border-bottom-width
+////
+    
+////
+/// The border left width of the dropdown component
+/// @name dropdown--border-left-width
+////
+    
+////
+/// The border width of the dropdown component
+/// @name dropdown--border-width
+////
+    
+////
+/// The border top left radius of the dropdown component
+/// @name dropdown--border-top-left-radius
+/// @type size
+////
+    
+////
+/// The border top right radius of the dropdown component
+/// @name dropdown--border-top-right-radius
+/// @type size
+////
+    
+////
+/// The border bottom right radius of the dropdown component
+/// @name dropdown--border-bottom-right-radius
+/// @type size
+////
+    
+////
+/// The border bottom left radius of the dropdown component
+/// @name dropdown--border-bottom-left-radius
+/// @type size
+////
+    
+////
+/// The border radius of the dropdown component
+/// @name dropdown--border-radius
+////
+    
+////
+/// The box shadow horizontal offset of the dropdown component
+/// @name dropdown--box-shadow-offset-x
+////
+    
+////
+/// The box shadow vertical offset of the dropdown component
+/// @name dropdown--box-shadow-offset-y
+////
+    
+////
+/// The box shadow blur radius of the dropdown component
+/// @name dropdown--box-shadow-blur-radius
+////
+    
+////
+/// The box shadow spread radius of the dropdown component
+/// @name dropdown--box-shadow-spread-radius
+////
+    
+////
+/// The box shadow spread radius of the dropdown component
+/// @name dropdown--box-shadow-color
+////
+    
+////
+/// The box shadow of the dropdown component
+/// @name dropdown--box-shadow
+////
+    
+////
+/// The color of the dropdown component item
+/// @name dropdown--color
+/// @type color
+////
+    
+////
+/// The color of the dropdown component item when active
+/// @name dropdown--color--active
+/// @type color
+////
+    
+////
+/// The color of the dropdown component item when disabled
+/// @name dropdown--color--disabled
+/// @type color
+////
+    
+////
+/// The color of the dropdown component item when hovered or focused
+/// @name dropdown--color--hover
+/// @type color
+////
+    
+////
+/// The font weight of the dropdown component
+/// @name dropdown--font-weight
+////
+    
+////
+/// The font size of the dropdown component
+/// @name dropdown--font-size
+/// @type size
+////
+    
+////
+/// The line height of the dropdown component
+/// @name dropdown--line-height
+////
+    
+////
+/// The minimum width of the dropdown component
+/// @name dropdown--min-width
+////
+    
+////
+/// The maximum width of the dropdown component
+/// @name dropdown--max-width
+////
+    
+////
+/// The padding top of the dropdown component items
+/// @name dropdown--padding-top
+/// @type size
+////
+    
+////
+/// The padding right of the dropdown component items
+/// @name dropdown--padding-right
+/// @type size
+////
+    
+////
+/// The padding bottom of the dropdown component items
+/// @name dropdown--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the dropdown component items
+/// @name dropdown--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the dropdown component items
+/// @name dropdown--padding
+////
+    
+////
+/// The z-index of the dropdown component
+/// @name dropdown--z-index
+////
+    
+////
+/// The margin top of the dropdown component divider
+/// @name dropdown--divider--margin-top
+////
+    
+////
+/// The margin bottom of the dropdown component divider
+/// @name dropdown--divider--margin-bottom
+////
+    
+////
+/// The padding top of the dropdown component item
+/// @name dropdown--item--padding-top
+/// @type size
+////
+    
+////
+/// The padding right of the dropdown component item
+/// @name dropdown--item--padding-right
+/// @type size
+////
+    
+////
+/// The padding bottom of the dropdown component item
+/// @name dropdown--item--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the dropdown component item
+/// @name dropdown--item--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the dropdown component item
+/// @name dropdown--item--padding
+////
+    
+////
+/// The background of the dropdown component header
+/// @name dropdown--header--background
+/// @type color
+////
+    
+////
+/// The padding top of the dropdown component header
+/// @name dropdown--header--padding-top
+/// @type size
+////
+    
+////
+/// The padding right of the dropdown component header
+/// @name dropdown--header--padding-right
+/// @type size
+////
+    
+////
+/// The padding bottom of the dropdown component header
+/// @name dropdown--header--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the dropdown component header
+/// @name dropdown--header--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the dropdown component header
+/// @name dropdown--header--padding
+////
+    
+////
+/// The padding top of the dropdown component body
+/// @name dropdown--body--padding-top
+/// @type size
+////
+    
+////
+/// The padding right of the dropdown component body
+/// @name dropdown--body--padding-right
+/// @type size
+////
+    
+////
+/// The padding bottom of the dropdown component body
+/// @name dropdown--body--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the dropdown component body
+/// @name dropdown--body--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the dropdown component body
+/// @name dropdown--body--padding
+////
+    
+////
+/// The background of the dropdown component footer
+/// @name dropdown--footer--background
+/// @type color
+////
+    
+////
+/// The padding top of the dropdown component footer
+/// @name dropdown--footer--padding-top
+/// @type size
+////
+    
+////
+/// The padding right of the dropdown component footer
+/// @name dropdown--footer--padding-right
+/// @type size
+////
+    
+////
+/// The padding bottom of the dropdown component footer
+/// @name dropdown--footer--padding-bottom
+/// @type size
+////
+    
+////
+/// The padding left of the dropdown component footer
+/// @name dropdown--footer--padding-left
+/// @type size
+////
+    
+////
+/// The padding of the dropdown component footer
+/// @name dropdown--footer--padding
+////
+    
+
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';

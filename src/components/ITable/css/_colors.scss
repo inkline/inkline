@@ -3,260 +3,60 @@
  */
 
 .table-wrapper {
-    ////
-    /// Variables for the primary color variant
-    /// @name primary
-    /// @type variant
-    ////
-    &.-primary {
-        ////
-        /// The background of the table component, for the primary color variant
-        /// @name background
-        ////
-        ----background: var(--color-primary);
-        ////
-        /// The background of the table component when hovered, for the primary color variant
-        /// @name background--hover
-        ////
-        ----background--hover: var(--color-primary-600);
-        ////
-        /// The background of the table component when striped, for the primary color variant
-        /// @name background--striped
-        ////
-        ----background--striped: var(--color-primary-550);
-        ////
-        /// The border color of the table component, for the primary color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-primary-550);
-        ////
-        /// The color of the table component, for the primary color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-primary);
+                        &.-primary {
+                                        --table--background: var(--table--primary--background, var(--color-primary));
+                                        --table--background--hover: var(--table--primary--background--hover, var(--color-primary-600));
+                                        --table--background--striped: var(--table--primary--background--striped, var(--color-primary-550));
+                                        --table--border-color: var(--table--primary--border-color, var(--color-primary-550));
+                                        --table--color: var(--table--primary--color, var(--contrast-text--color-primary));
     }
-    ////
-    /// Variables for the secondary color variant
-    /// @name secondary
-    /// @type variant
-    ////
-    &.-secondary {
-        ////
-        /// The background of the table component, for the secondary color variant
-        /// @name background
-        ////
-        ----background: var(--color-secondary);
-        ////
-        /// The background of the table component when hovered, for the secondary color variant
-        /// @name background--hover
-        ////
-        ----background--hover: var(--color-secondary-600);
-        ////
-        /// The background of the table component when striped, for the secondary color variant
-        /// @name background--striped
-        ////
-        ----background--striped: var(--color-secondary-550);
-        ////
-        /// The border color of the table component, for the secondary color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-secondary-550);
-        ////
-        /// The color of the table component, for the secondary color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-secondary);
+                        &.-secondary {
+                                        --table--background: var(--table--secondary--background, var(--color-secondary));
+                                        --table--background--hover: var(--table--secondary--background--hover, var(--color-secondary-600));
+                                        --table--background--striped: var(--table--secondary--background--striped, var(--color-secondary-550));
+                                        --table--border-color: var(--table--secondary--border-color, var(--color-secondary-550));
+                                        --table--color: var(--table--secondary--color, var(--contrast-text--color-secondary));
     }
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    &.-light {
-        ////
-        /// The background of the table component, for the light color variant
-        /// @name background
-        ////
-        ----background: var(--color-white);
-        ////
-        /// The background of the table component when hovered, for the light color variant
-        /// @name background--hover
-        ////
-        ----background--hover: var(--color-light-300);
-        ////
-        /// The background of the table component when striped, for the light color variant
-        /// @name background--striped
-        ////
-        ----background--striped: var(--color-light-250);
-        ////
-        /// The border color of the table component, for the light color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-light-250);
-        ////
-        /// The color of the table component, for the light color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-light);
+                        &.-light {
+                                        --table--background: var(--table--white--background, var(--color-white));
+                                        --table--background--hover: var(--table--light--background--hover, var(--color-light-300));
+                                        --table--background--striped: var(--table--light--background--striped, var(--color-light-250));
+                                        --table--border-color: var(--table--light--border-color, var(--color-light-250));
+                                        --table--color: var(--table--light--color, var(--contrast-text--color-light));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    &.-dark {
-        ////
-        /// The background of the table component, for the dark color variant
-        /// @name background
-        ////
-        ----background: var(--color-dark);
-        ////
-        /// The background of the table component when hovered, for the dark color variant
-        /// @name background--hover
-        ////
-        ----background--hover: var(--color-gray-400);
-        ////
-        /// The background of the table component when striped, for the dark color variant
-        /// @name background--striped
-        ////
-        ----background--striped: var(--color-dark-450);
-        ////
-        /// The border color of the table component, for the dark color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-dark-450);
-        ////
-        /// The color of the table component, for the dark color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-dark);
+                        &.-dark {
+                                        --table--background: var(--table--dark--background, var(--color-dark));
+                                        --table--background--hover: var(--table--gray--background--hover, var(--color-gray-400));
+                                        --table--background--striped: var(--table--dark--background--striped, var(--color-dark-450));
+                                        --table--border-color: var(--table--dark--border-color, var(--color-dark-450));
+                                        --table--color: var(--table--dark--color, var(--contrast-text--color-dark));
     }
-    ////
-    /// Variables for the info color variant
-    /// @name info
-    /// @type variant
-    ////
-    &.-info {
-        ////
-        /// The background of the table component, for the info color variant
-        /// @name background
-        ////
-        ----background: var(--color-info);
-        ////
-        /// The background of the table component when hovered, for the info color variant
-        /// @name background--hover
-        ////
-        ----background--hover: var(--color-info-600);
-        ////
-        /// The background of the table component when striped, for the info color variant
-        /// @name background--striped
-        ////
-        ----background--striped: var(--color-info-550);
-        ////
-        /// The border color of the table component, for the info color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-info-550);
-        ////
-        /// The color of the table component, for the info color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-info);
+                        &.-info {
+                                        --table--background: var(--table--info--background, var(--color-info));
+                                        --table--background--hover: var(--table--info--background--hover, var(--color-info-600));
+                                        --table--background--striped: var(--table--info--background--striped, var(--color-info-550));
+                                        --table--border-color: var(--table--info--border-color, var(--color-info-550));
+                                        --table--color: var(--table--info--color, var(--contrast-text--color-info));
     }
-    ////
-    /// Variables for the success color variant
-    /// @name success
-    /// @type variant
-    ////
-    &.-success {
-        ////
-        /// The background of the table component, for the success color variant
-        /// @name background
-        ////
-        ----background: var(--color-success);
-        ////
-        /// The background of the table component when hovered, for the success color variant
-        /// @name background--hover
-        ////
-        ----background--hover: var(--color-success-600);
-        ////
-        /// The background of the table component when striped, for the success color variant
-        /// @name background--striped
-        ////
-        ----background--striped: var(--color-success-550);
-        ////
-        /// The border color of the table component, for the success color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-success-550);
-        ////
-        /// The color of the table component, for the success color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-success);
+                        &.-success {
+                                        --table--background: var(--table--success--background, var(--color-success));
+                                        --table--background--hover: var(--table--success--background--hover, var(--color-success-600));
+                                        --table--background--striped: var(--table--success--background--striped, var(--color-success-550));
+                                        --table--border-color: var(--table--success--border-color, var(--color-success-550));
+                                        --table--color: var(--table--success--color, var(--contrast-text--color-success));
     }
-    ////
-    /// Variables for the warning color variant
-    /// @name warning
-    /// @type variant
-    ////
-    &.-warning {
-        ////
-        /// The background of the table component, for the warning color variant
-        /// @name background
-        ////
-        ----background: var(--color-warning);
-        ////
-        /// The background of the table component when hovered, for the warning color variant
-        /// @name background--hover
-        ////
-        ----background--hover: var(--color-warning-600);
-        ////
-        /// The background of the table component when striped, for the warning color variant
-        /// @name background--striped
-        ////
-        ----background--striped: var(--color-warning-550);
-        ////
-        /// The border color of the table component, for the warning color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-warning-550);
-        ////
-        /// The color of the table component, for the warning color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-warning);
+                        &.-warning {
+                                        --table--background: var(--table--warning--background, var(--color-warning));
+                                        --table--background--hover: var(--table--warning--background--hover, var(--color-warning-600));
+                                        --table--background--striped: var(--table--warning--background--striped, var(--color-warning-550));
+                                        --table--border-color: var(--table--warning--border-color, var(--color-warning-550));
+                                        --table--color: var(--table--warning--color, var(--contrast-text--color-warning));
     }
-    ////
-    /// Variables for the danger color variant
-    /// @name danger
-    /// @type variant
-    ////
-    &.-danger {
-        ////
-        /// The background of the table component, for the danger color variant
-        /// @name background
-        ////
-        ----background: var(--color-danger);
-        ////
-        /// The background of the table component when hovered, for the danger color variant
-        /// @name background--hover
-        ////
-        ----background--hover: var(--color-danger-600);
-        ////
-        /// The background of the table component when striped, for the danger color variant
-        /// @name background--striped
-        ////
-        ----background--striped: var(--color-danger-550);
-        ////
-        /// The border color of the table component, for the danger color variant
-        /// @name border-color
-        ////
-        ----border-color: var(--color-danger-550);
-        ////
-        /// The color of the table component, for the danger color variant
-        /// @name color
-        ////
-        ----color: var(--contrast-text--color-danger);
+                        &.-danger {
+                                        --table--background: var(--table--danger--background, var(--color-danger));
+                                        --table--background--hover: var(--table--danger--background--hover, var(--color-danger-600));
+                                        --table--background--striped: var(--table--danger--background--striped, var(--color-danger-550));
+                                        --table--border-color: var(--table--danger--border-color, var(--color-danger-550));
+                                        --table--color: var(--table--danger--color, var(--contrast-text--color-danger));
     }
 }
