@@ -26,16 +26,26 @@ import {
     typographyGenerators
 } from './generators';
 
-const colorShadeVariants: Record<string, ColorPropertyVariant> = {
-    100: { lightness: 10 },
-    200: { lightness: 20 },
-    300: { lightness: 30 },
-    400: { lightness: 40 },
+const colorShadeAndTintVariants: Record<string, ColorPropertyVariant> = {
+    'shade-150': { darken: 15 },
+    'shade-100': { darken: 10 },
+    'shade-50': { darken: 5 },
+    'tint-50': { lighten: 5 },
+    'tint-100': { lighten: 10 },
+    'tint-150': { lighten: 15 }
+};
+
+const colorLightnessVariants: Record<string, ColorPropertyVariant> = {
+    50: { lightness: 95 },
+    100: { lightness: 90 },
+    200: { lightness: 80 },
+    300: { lightness: 70 },
+    400: { lightness: 60 },
     500: { lightness: 50 },
-    600: { lightness: 60 },
-    700: { lightness: 70 },
-    800: { lightness: 80 },
-    900: { lightness: 90 }
+    600: { lightness: 40 },
+    700: { lightness: 30 },
+    800: { lightness: 20 },
+    900: { lightness: 10 }
 };
 
 const sizeMultiplierVariants: Record<string, NumberPropertyVariant> = {
@@ -109,18 +119,18 @@ export const defaultConfig: Configuration = {
                 '2xl': 1400
             },
             color: {
-                red: '#ee1411',
-                orange: '#f65809',
-                yellow: '#ffbb00',
-                green: '#36c989',
-                teal: '#49b6ab',
-                blue: '#1db1e2',
-                purple: '#7559a6',
-                pink: '#f20d61',
+                red: '#f2413d',
+                orange: '#f98e5a',
+                yellow: '#ffda77',
+                green: '#2fb079',
+                teal: '#48b4a9',
+                blue: '#178bb2',
+                purple: '#8268ae',
+                pink: '#fc778a',
                 white: '#ffffff',
-                light: 'var(--color-gray-800)',
-                gray: '#737f8c',
-                dark: 'var(--color-gray-200)',
+                light: 'var(--color-gray-100)',
+                gray: '#8e9fa4',
+                dark: 'var(--color-gray-800)',
                 black: '#000000',
                 primary: '<% theme.color.blue %>',
                 secondary: '<% theme.color.purple %>',
@@ -181,14 +191,12 @@ export const defaultConfig: Configuration = {
                 lineHeight: 1.5,
                 letterSpacing: 0,
                 color: {
-                    black: 'var(--color-black)',
-                    dark: 'var(--color-gray-100)',
+                    dark: 'var(--color-gray-900)',
                     muted: 'var(--color-gray-600)',
-                    light: 'var(--color-white)',
-                    white: 'var(--color-white)'
+                    light: 'var(--color-gray-100)'
                 },
                 contrastColor: {
-                    light: 'var(--color-black)',
+                    light: 'var(--color-gray-900)',
                     dark: 'var(--color-white)'
                 }
             },
@@ -206,13 +214,36 @@ export const defaultConfig: Configuration = {
             variants: {
                 borderRadius: sizeMultiplierVariants,
                 color: {
-                    primary: colorShadeVariants,
-                    secondary: colorShadeVariants,
-                    info: colorShadeVariants,
-                    success: colorShadeVariants,
-                    warning: colorShadeVariants,
-                    danger: colorShadeVariants,
-                    gray: colorShadeVariants
+                    primary: {
+                        ...colorShadeAndTintVariants,
+                        ...colorLightnessVariants
+                    },
+                    secondary: {
+                        ...colorShadeAndTintVariants,
+                        ...colorLightnessVariants
+                    },
+                    info: {
+                        ...colorShadeAndTintVariants,
+                        ...colorLightnessVariants
+                    },
+                    success: {
+                        ...colorShadeAndTintVariants,
+                        ...colorLightnessVariants
+                    },
+                    warning: {
+                        ...colorShadeAndTintVariants,
+                        ...colorLightnessVariants
+                    },
+                    danger: {
+                        ...colorShadeAndTintVariants,
+                        ...colorLightnessVariants
+                    },
+                    gray: {
+                        ...colorShadeAndTintVariants,
+                        ...colorLightnessVariants
+                    },
+                    light: colorShadeAndTintVariants,
+                    dark: colorShadeAndTintVariants
                 },
                 margin: spacingVariants,
                 padding: spacingVariants,
@@ -231,9 +262,6 @@ export const defaultConfig: Configuration = {
             }
         },
         dark: {
-            color: {
-                red: '#ff0000'
-            },
             border: {
                 color: '#4a4a4c'
             },

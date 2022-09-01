@@ -36,7 +36,7 @@ export const typographyFontSizeVariantResolver: Resolver<ThemeVariants['typograp
 
 export const typographyFontWeightResolver: Resolver<Theme['typography']['fontWeight'][string], ResolvedTheme['typography']['fontWeight'][string]> = {
     name: 'typography',
-    test: /(.*)typography.fontWeight\.(\w+)$/,
+    test: /(.*)typography.fontWeight\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1typography.fontWeight.$2',
     apply: (context) => parseValue(context)
@@ -65,7 +65,7 @@ export const typographyFontFamilyGroupResolver: Resolver<Theme['typography']['fo
 
 export const typographyFontFamilyTypeResolver: Resolver<Theme['typography']['fontFamily'][string][string], ResolvedTheme['typography']['fontFamily'][string][string]> = {
     name: 'typography',
-    test: /(.*)typography.fontFamily\.(primary|secondary)\.(\w+)$/,
+    test: /(.*)typography.fontFamily\.(primary|secondary)\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1typography.fontFamily.$2.$3',
     apply: (context) => parseValue(context)
@@ -73,7 +73,7 @@ export const typographyFontFamilyTypeResolver: Resolver<Theme['typography']['fon
 
 export const typographyContrastColorResolver: Resolver<Theme['color'][string], ResolvedTheme['color'][string]> = {
     name: 'color',
-    test: /(.*)contrastColor\.(\w+)$/,
+    test: /(.*)contrastColor\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1contrastColor.$2',
     apply: (context) => parseColor(context)

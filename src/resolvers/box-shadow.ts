@@ -39,7 +39,7 @@ export const boxShadowDefaultResolver: Resolver<string, ResolvedTheme['boxShadow
 
 export const boxShadowFieldResolver: Resolver<BoxShadow[string], ResolvedTheme['boxShadow'][string]> = {
     name: 'boxShadow',
-    test: /(.*)boxShadow\.(\w+)$/,
+    test: /(.*)boxShadow\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1boxShadow.$2',
     apply: (context) => parseValue(context)

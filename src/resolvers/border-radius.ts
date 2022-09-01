@@ -21,7 +21,7 @@ export const borderRadiusDefaultResolver: Resolver<Theme['borderRadius'], Resolv
 
 export const borderRadiusCornerResolver: Resolver<CSS.Property.BorderRadius, ResolvedTheme['borderRadius'][string]> = {
     name: 'borderRadius',
-    test: /(.*)borderRadius\.(\w+)$/,
+    test: /(.*)borderRadius\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1borderRadius.$2',
     apply: (context) => parseValue(context)
@@ -29,7 +29,7 @@ export const borderRadiusCornerResolver: Resolver<CSS.Property.BorderRadius, Res
 
 export const borderRadiusVariantResolver: Resolver<BorderRadiusPropertyVariant, ResolvedTheme['variants']['borderRadius'][string]> = {
     name: 'borderRadius',
-    test: /^variants\.borderRadius\.(\w+)$/,
+    test: /^variants\.borderRadius\.([\w-]+)$/,
     set: 'variants.borderRadius.$1',
     apply: (context) => typeof context.value === 'object'
         ? parseRecursive(context)

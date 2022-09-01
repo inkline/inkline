@@ -1,4 +1,4 @@
-import { ResolvedTheme } from '../../types';
+import {ResolvedColorPropertyObject, ResolvedTheme} from '../../types';
 
 /**
  * Modifiers that can be applied to color values in order to produce a new variant
@@ -7,7 +7,7 @@ import { ResolvedTheme } from '../../types';
  * @param value
  */
 export const colorModifiers: {
-    [key: string]: (color: ResolvedTheme['color'][string], value: string | number | boolean | undefined) => void;
+    [key: string]: (color: ResolvedColorPropertyObject, value: string | number | boolean | undefined) => void;
 } = {
     hue: (color, value) => {
         color.h = value as string | number;
@@ -22,10 +22,10 @@ export const colorModifiers: {
         color.a = value as string | number;
     },
     lighten: (color, value) => {
-        color.l = `calc(${color.l} + ${color.l} * ${value})`;
+        color.l = `calc(${color.l} + ${typeof value === 'number' && value > 1 ? `${value}%` : `${color.l} * ${value}`})`;
     },
     darken: (color, value) => {
-        color.l = `calc(${color.l} - ${color.l} * ${value})`;
+        color.l = `calc(${color.l} - ${typeof value === 'number' && value > 1 ? `${value}%` : `${color.l} * ${value}`})`;
     },
     saturate: (color, value) => {
         color.s = `calc(${color.s} + ${color.s} * ${value})`;

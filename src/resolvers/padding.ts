@@ -21,7 +21,7 @@ export const paddingDefaultResolver: Resolver<Theme['padding'], ResolvedTheme['p
 
 export const paddingSideResolver: Resolver<CSS.Property.Padding, ResolvedTheme['padding'][string]> = {
     name: 'padding',
-    test: /(.*)padding\.(\w+)$/,
+    test: /(.*)padding\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1padding.$2',
     apply: (context) => parseValue(context)
@@ -29,7 +29,7 @@ export const paddingSideResolver: Resolver<CSS.Property.Padding, ResolvedTheme['
 
 export const paddingVariantResolver: Resolver<PaddingPropertyVariant, ResolvedTheme['variants']['padding'][string]> = {
     name: 'padding',
-    test: /^variants\.padding\.(\w+)$/,
+    test: /^variants\.padding\.([\w-]+)$/,
     set: 'variants.padding.$1',
     apply: (context) => typeof context.value === 'object'
         ? parseRecursive(context)

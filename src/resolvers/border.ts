@@ -53,7 +53,7 @@ export const borderFieldResolver: Resolver<Border[string], ResolvedTheme['border
 
 export const borderSideResolver: Resolver<string, ResolvedTheme['border'][string]> = {
     name: 'border',
-    test: /(.*)border\.(\w+)$/,
+    test: /(.*)border\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1border.$2',
     guard: (context) => typeof context.value === 'string',
@@ -62,7 +62,7 @@ export const borderSideResolver: Resolver<string, ResolvedTheme['border'][string
 
 export const borderSideFieldResolver: Resolver<string, ResolvedTheme['border'][string][string]> = {
     name: 'border',
-    test: /(.*)border\.(\w+)\.(\w+)$/,
+    test: /(.*)border\.([\w-]+)\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1border.$2.$3',
     apply: (context) => parseValue(context)

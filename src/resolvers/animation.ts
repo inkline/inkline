@@ -26,7 +26,7 @@ export const animationDefaultResolver: Resolver<string, ResolvedTheme['animation
 
 export const animationFieldResolver: Resolver<Animation[string], ResolvedTheme['animation'][string]> = {
     name: 'animation',
-    test: /(.*)animation\.(\w+)$/,
+    test: /(.*)animation\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1animation.$2',
     apply: (context) => parseValue(context)

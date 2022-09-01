@@ -10,5 +10,5 @@ import { build } from './build';
 // })();
 
 (async () => {
-    await build();
+    await build({ extName: '.scss' });
 })();

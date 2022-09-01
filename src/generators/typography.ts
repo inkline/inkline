@@ -89,47 +89,46 @@ export const typographyColorGenerator: Generator<ResolvedTheme['color'][string]>
             return codegenColorVariables(colorName, (value as Record<string, ResolvedColorProperty>)[colorName] as ResolvedTheme['typography']['color'][string], 'text--color');
         }).flat();
 
-        const contrastColors = Object.keys(theme.color).map((colorName) => {
-            if (theme.typography.contrastColor?.[colorName]) {
-                return codegenSetCSSVariable(`contrast-text--color-${toDashCase(colorName)}`, theme.typography.contrastColor[colorName]);
-            }
+        const contrastColors = Object.keys(theme.color || {})
+            .sort((a) => ['dark', 'light'].includes(a) ? -1 : 1)
+            .map((colorName) => {
+                if (theme.typography.contrastColor?.[colorName]) {
+                    return codegenSetCSSVariable(`contrast-text--color-${toDashCase(colorName)}`, theme.typography.contrastColor[colorName]);
+                }
 
-            let luma;
-            try {
-                const { h, s, l, a: alpha } = theme.color[colorName] as ResolvedColorPropertyObject;
-                const constructedColor = color({ h, s, l, alpha });
-                const rgb = constructedColor.rgb().object();
+                let brightness;
+                try {
+                    const { h, s, l, a: alpha } = theme.color[colorName] as ResolvedColorPropertyObject;
+                    const constructedColor = color({ h, s, l, alpha });
+                    const rgb = constructedColor.rgb().object();
 
-                Object.keys(rgb).forEach((key) => {
-                    rgb[key] = rgb[key] / 255;
+                    brightness = Math.sqrt(rgb.r * rgb.r * 0.241 + rgb.g * rgb.g * 0.691 + rgb.b * rgb.b * 0.068);
+                } catch (error) {
+                    console.error('Could not calculate luma for color. Using text-dark as fallback value.', colorName);
 
-                    if (rgb[key] <= 0.04045) {
-                        rgb[key] = rgb[key] / 12.92;
-                    } else {
-                        rgb[key] = Math.pow((rgb[key] + 0.055) / 1.055, 2.4);
-                    }
-                });
+                    brightness = 128;
+                }
 
-                luma = 0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b;
-            } catch (error) {
-                console.error('Could not calculate luma for color. Using text-dark as fallback value.', colorName);
+                const contrastColor = brightness < 128
+                    ? codegenGetCSSVariable('contrast-text--color-dark')
+                    : codegenGetCSSVariable('contrast-text--color-light');
 
-                luma = 1;
-            }
+                return codegenSetCSSVariable(`contrast-text--color-${toDashCase(colorName)}`, contrastColor);
+            });
 
-            const contrastColor = luma > 0.179
-                ? codegenGetCSSVariable('text--color-white')
-                : codegenGetCSSVariable('text--color-black');
+        const result = [];
 
-            return codegenSetCSSVariable(`contrast-text--color-${toDashCase(colorName)}`, contrastColor);
-        });
+        if (textColors.length > 0) {
+            result.push('/**', ' * Text color variables', ' */');
+            result.push(...textColors);
+        }
 
-        return ['/**', ' * Text color variables', ' */']
-            .concat(textColors)
-            .concat([
-                '', '/**', ' * Contrast text color variables', ' */'
-            ])
-            .concat(contrastColors);
+        if (contrastColors.length > 0) {
+            result.push('', '/**', ' * Contrast text color variables', ' */');
+            result.push(...contrastColors);
+        }
+
+        return result;
     }
 };
 

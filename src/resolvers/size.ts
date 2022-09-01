@@ -11,14 +11,14 @@ export const sizeMultiplierResolver: Resolver<Theme['size']['multiplier'], Resol
 
 export const sizeMultiplierVariantResolver: Resolver<SizeMultiplierPropertyVariant, SizeMultiplierPropertyVariant> = {
     name: 'sizes',
-    test: /variants\.size\.multiplier\.(\w+)$/,
+    test: /variants\.size\.multiplier\.([\w-]+)$/,
     set: 'variants.size.multiplier.$1',
     apply: (context) => parseValue(context)
 };
 
 export const sizePercentagesResolver: Resolver<Theme['size']['percentages'][string], Theme['size']['percentages'][string]> = {
     name: 'sizes',
-    test: /(.*)size\.percentages\.(\w+)$/,
+    test: /(.*)size\.percentages\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1size.percentages.$2',
     apply: (context) => parseValue(context)

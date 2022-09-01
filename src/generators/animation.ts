@@ -11,7 +11,7 @@ export const animationGenerator: Generator<ResolvedTheme['animation']> = {
     apply: ({ value }) => {
         return ['/**', ' * Animation variables', ' */']
             .concat(
-                animationProperties.map((property) => codegenSetCSSVariable(`animation-${toDashCase(property)}`, value[property]))
+                animationProperties.map((property) => codegenSetCSSVariable(`transition-${toDashCase(property)}`, value[property]))
             );
     }
 };

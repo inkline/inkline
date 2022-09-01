@@ -21,7 +21,7 @@ export const marginDefaultResolver: Resolver<Theme['margin'], ResolvedTheme['mar
 
 export const marginSideResolver: Resolver<CSS.Property.Margin, ResolvedTheme['margin'][string]> = {
     name: 'margin',
-    test: /(.*)margin\.(\w+)$/,
+    test: /(.*)margin\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1margin.$2',
     apply: (context) => parseValue(context)
@@ -29,7 +29,7 @@ export const marginSideResolver: Resolver<CSS.Property.Margin, ResolvedTheme['ma
 
 export const marginVariantResolver: Resolver<MarginPropertyVariant, ResolvedTheme['variants']['margin'][string]> = {
     name: 'margin',
-    test: /^variants\.margin\.(\w+)$/,
+    test: /^variants\.margin\.([\w-]+)$/,
     set: 'variants.margin.$1',
     apply: (context) => typeof context.value === 'object'
         ? parseRecursive(context)
