@@ -1,5 +1,5 @@
 import { parseRecursive } from '../parseRecursive';
-import {Configuration, ConfigurationContext} from '../../../types';
+import { Configuration, ConfigurationContext } from '../../../types';
 
 describe('helpers', () => {
     describe('parsers', () => {

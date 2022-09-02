@@ -1,4 +1,4 @@
-import {Configuration, ConfigurationContext, FnProperty} from '../../../types';
+import { Configuration, ConfigurationContext, FnProperty } from '../../../types';
 import { parseSidesValue } from '../parseSidesValue';
 
 describe('helpers', () => {

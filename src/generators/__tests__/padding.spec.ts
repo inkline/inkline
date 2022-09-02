@@ -6,12 +6,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'padding';
-                expect(paddingGenerator.test.test(path)).toEqual(true);
+                expect((paddingGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.padding';
-                expect(paddingGenerator.test.test(path)).toEqual(true);
+                expect((paddingGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 

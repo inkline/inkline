@@ -1,4 +1,4 @@
-import {ResolvedColorPropertyObject, ResolvedTheme} from '../../types';
+import { ResolvedColorPropertyObject, ResolvedTheme } from '../../types';
 
 /**
  * Modifiers that can be applied to color values in order to produce a new variant

@@ -6,12 +6,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'scaleRatio';
-                expect(scaleRatioGenerator.test.test(path)).toEqual(true);
+                expect((scaleRatioGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.scaleRatio';
-                expect(scaleRatioGenerator.test.test(path)).toEqual(true);
+                expect((scaleRatioGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 

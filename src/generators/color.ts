@@ -7,6 +7,7 @@ import {
 } from '../types';
 import { codegenGetCSSVariable, codegenColorVariables } from '../helpers';
 import { colorModifiers as modifiers, colorModifierAliases as modifierAliases } from './modifiers';
+import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX, MATCH_TYPOGRAPHY_REGEX } from '../constants';
 
 /**
  * Generate the code for a specific variant if needed
@@ -36,7 +37,7 @@ export const colorGenerator: Generator<ResolvedTheme['color'][string]> = {
     name: 'color',
     location: 'root',
     test: /(.*)color\.(\w+)$/,
-    skip: /^(variants|typography)/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX, MATCH_TYPOGRAPHY_REGEX],
     apply: ({ value, path }) => {
         const name = path[path.length - 1];
 

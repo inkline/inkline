@@ -10,12 +10,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'size.multiplier';
-                expect(sizeMultiplierGenerator.test.test(path)).toEqual(true);
+                expect((sizeMultiplierGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.size.multiplier';
-                expect(sizeMultiplierGenerator.test.test(path)).toEqual(true);
+                expect((sizeMultiplierGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 
@@ -44,12 +44,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'size.percentages';
-                expect(sizePercentagesGenerator.test.test(path)).toEqual(true);
+                expect((sizePercentagesGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.size.percentages';
-                expect(sizePercentagesGenerator.test.test(path)).toEqual(true);
+                expect((sizePercentagesGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 
@@ -88,7 +88,7 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'variants.size.multiplier';
-                expect(sizeMultiplierVariantsGenerator.test.test(path)).toEqual(true);
+                expect((sizeMultiplierVariantsGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 

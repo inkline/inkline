@@ -6,12 +6,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'breakpoints';
-                expect(breakpointsGenerator.test.test(path)).toEqual(true);
+                expect((breakpointsGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.breakpoints';
-                expect(breakpointsGenerator.test.test(path)).toEqual(true);
+                expect((breakpointsGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 

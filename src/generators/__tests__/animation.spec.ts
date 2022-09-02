@@ -6,12 +6,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'animation';
-                expect(animationGenerator.test.test(path)).toEqual(true);
+                expect((animationGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.animation';
-                expect(animationGenerator.test.test(path)).toEqual(true);
+                expect((animationGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 

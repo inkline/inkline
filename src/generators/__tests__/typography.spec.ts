@@ -6,12 +6,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'typography.fontFamily';
-                expect(typographyFontFamilyGenerator.test.test(path)).toEqual(true);
+                expect((typographyFontFamilyGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.typography.fontFamily';
-                expect(typographyFontFamilyGenerator.test.test(path)).toEqual(true);
+                expect((typographyFontFamilyGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 

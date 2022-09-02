@@ -1,4 +1,4 @@
-import {Configuration, ConfigurationContext} from '../../../types';
+import { Configuration, ConfigurationContext } from '../../../types';
 import { parseGenericComposedValue, ParseGenericComposedValueSetFn } from '../parseGenericComposedValue';
 
 describe('helpers', () => {

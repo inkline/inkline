@@ -1,6 +1,6 @@
-import {Border, ResolvedBorderProperty, ResolvedTheme, Resolver, Theme} from '../types';
+import { Border, ResolvedBorderProperty, ResolvedTheme, Resolver, Theme } from '../types';
 import { parseGenericComposedValue, parseValue } from '../helpers';
-import * as CSS from "csstype";
+import * as CSS from 'csstype';
 
 export const setBorderFieldsFn = (target: Border, [width, style, color]: string[]) => {
     target.width = width;

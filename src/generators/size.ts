@@ -1,11 +1,12 @@
-import {Generator, GeneratorPriority, NumberPropertyVariant, ResolvedTheme, ThemeVariants} from '../types';
+import { Generator, GeneratorPriority, NumberPropertyVariant, ResolvedTheme, ThemeVariants } from '../types';
 import { codegenNumberVariant, codegenSetCSSVariable } from '../helpers';
 import { toDashCase } from '@grozav/utils';
+import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
 
 export const sizeMultiplierGenerator: Generator<ResolvedTheme['size']['multiplier']> = {
     name: 'size',
     test: /(.*)size\.multiplier$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     priority: GeneratorPriority.High,
     apply: ({ value }) => {
         return ['/**', ' * Size multiplier variable', ' */']
@@ -33,7 +34,7 @@ export const sizePercentagesGenerator: Generator<ResolvedTheme['size']['percenta
     name: 'size',
     location: 'root',
     test: /(.*)size\.percentages$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     priority: GeneratorPriority.High,
     apply: ({ value }) => {
         return ['/**', ' * Size percentage variables', ' */']

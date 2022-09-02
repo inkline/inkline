@@ -1,7 +1,7 @@
 import { loadConfigFromFile } from './load';
 import { dirname, basename, extname, resolve } from 'pathe';
 import { generate } from './generate';
-import {DEFAULT_CONFIG_FILE, DEFAULT_OUTPUT_DIR, DEFAULT_OUTPUT_EXTNAME, DEFAULT_THEME_SELECTOR} from './constants';
+import { DEFAULT_CONFIG_FILE, DEFAULT_OUTPUT_DIR, DEFAULT_OUTPUT_EXTNAME, DEFAULT_THEME_SELECTOR } from './constants';
 import { BuildOptions } from './types/build';
 import { existsSync, mkdirSync } from 'fs';
 import { writeFile } from 'fs/promises';

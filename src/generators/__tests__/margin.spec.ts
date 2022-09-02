@@ -6,12 +6,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'margin';
-                expect(marginGenerator.test.test(path)).toEqual(true);
+                expect((marginGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.margin';
-                expect(marginGenerator.test.test(path)).toEqual(true);
+                expect((marginGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 
@@ -47,12 +47,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'variants.margin';
-                expect(marginGenerator.test.test(path)).toEqual(true);
+                expect((marginGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'variants.nested.margin';
-                expect(marginGenerator.test.test(path)).toEqual(true);
+                expect((marginGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 

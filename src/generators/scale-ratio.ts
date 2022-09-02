@@ -1,12 +1,13 @@
 import { Generator, GeneratorPriority, ResolvedTheme } from '../types';
 import { codegenSetCSSVariable } from '../helpers';
 import { toDashCase } from '@grozav/utils';
+import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
 
 export const scaleRatioGenerator: Generator<ResolvedTheme['scaleRatio']> = {
     name: 'scale-ratio',
     location: 'root',
     test: /(.*)scaleRatio$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     priority: GeneratorPriority.High,
     apply: ({ value }) => {
         return ['/**', ' * Scale ratio variables', ' */']

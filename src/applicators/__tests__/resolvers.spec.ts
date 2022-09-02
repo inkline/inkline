@@ -1,6 +1,6 @@
 import { applyResolvers } from '../resolvers';
 import { defaultConfig } from '../../defaults';
-import {Configuration, ResolvedTheme, Theme} from '../../types';
+import { Configuration, ResolvedTheme, Theme } from '../../types';
 
 const config = {
     resolvers: defaultConfig.resolvers,

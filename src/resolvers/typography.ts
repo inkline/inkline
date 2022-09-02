@@ -1,5 +1,5 @@
 import { ResolvedTheme, Resolver, Theme, ThemeVariants } from '../types';
-import {parseColor, parseRecursive, parseValue} from '../helpers';
+import { parseColor, parseRecursive, parseValue } from '../helpers';
 
 export const typographyLineHeightResolver: Resolver<Theme['typography']['lineHeight'], ResolvedTheme['typography']['lineHeight']> = {
     name: 'typography',

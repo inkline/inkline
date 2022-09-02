@@ -1,4 +1,4 @@
-import {ResolvedConfiguration, SidesProperty, SidesPropertyVariant} from '../../../types';
+import { ResolvedConfiguration, SidesProperty, SidesPropertyVariant } from '../../../types';
 import { codegenGetCSSVariable, codegenSetCSSVariable } from '../variable';
 import { sidesModifierAliases, sidesModifiers } from '../../../generators/modifiers';
 import { sidesPropertyKeys } from '../../../constants';

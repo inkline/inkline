@@ -1,12 +1,12 @@
 import { Generator, ResolvedTheme, ThemeVariants } from '../types';
-import { sidesPropertyKeys } from '../constants';
+import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX, sidesPropertyKeys } from '../constants';
 import { codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesPropertyVariant } from '../helpers';
 
 export const paddingGenerator: Generator<ResolvedTheme['padding']> = {
     name: 'spacing',
     location: 'root',
     test: /(.*)padding$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value }) => ['/**', ' * Padding variables', ' */']
         .concat(
             sidesPropertyKeys.map(

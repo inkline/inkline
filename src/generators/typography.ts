@@ -6,16 +6,17 @@ import {
     ResolvedTheme,
     ThemeVariants
 } from '../types';
-import {codegenColorVariables, codegenGetCSSVariable, codegenNumberVariant, codegenSetCSSVariable} from '../helpers';
+import { codegenColorVariables, codegenGetCSSVariable, codegenNumberVariant, codegenSetCSSVariable } from '../helpers';
 import { toDashCase } from '@grozav/utils';
 import * as CSS from 'csstype';
 import color from 'color';
+import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
 
 export const typographyFontFamilyGenerator: Generator<ResolvedTheme['typography']['fontFamily']> = {
     name: 'typography',
     location: 'root',
     test: /(.*)typography\.fontFamily$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value }) => {
         const groups = value as Record<string, Record<string, CSS.Property.FontFamily>>;
         const groupNames = Object.keys(groups).sort();
@@ -36,7 +37,7 @@ export const typographyFontWeightGenerator: Generator<ResolvedTheme['typography'
     name: 'typography',
     location: 'root',
     test: /(.*)typography\.fontWeight$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value }) => {
         const fontWeights = value as Record<string, CSS.Property.FontWeight>;
 
@@ -54,7 +55,7 @@ export const typographyFieldGenerator: Generator<ResolvedTheme['typography']['le
     name: 'typography',
     location: 'root',
     test: /(.*)typography\.(lineHeight|letterSpacing|fontSize)$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value, path }) => {
         const name = toDashCase(path[path.length - 1]);
 

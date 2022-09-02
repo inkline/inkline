@@ -1,7 +1,8 @@
 import {
     AnimationProperty,
     BorderProperty,
-    BorderRadiusProperty, BorderRadiusPropertyVariant,
+    BorderRadiusProperty,
+    BorderRadiusPropertyVariant,
     BoxShadowProperty,
     BreakpointsProperty,
     ColorProperty, ColorPropertyVariant,
@@ -15,7 +16,8 @@ import {
     MarginPropertyVariant,
     PaddingProperty,
     ResolvedAnimationProperty,
-    ResolvedBorderProperty, ResolvedBorderRadiusProperty,
+    ResolvedBorderProperty,
+    ResolvedBorderRadiusProperty,
     ResolvedBoxShadowProperty,
     ResolvedBreakpointsProperty,
     ResolvedColorProperty,
@@ -79,6 +81,7 @@ export interface Theme {
         contrastColor: Record<string, ColorProperty>;
     };
     variants: PartialDeep<ThemeVariants>;
+    elements: Record<string, Record<string, any>>;
 }
 
 /**
@@ -109,4 +112,5 @@ export interface ResolvedTheme {
         contrastColor: Record<string, ResolvedColorProperty>;
     };
     variants: ThemeVariants;
+    elements: Record<string, Record<string, any>>;
 }

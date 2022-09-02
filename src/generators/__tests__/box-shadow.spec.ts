@@ -6,12 +6,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'boxShadow';
-                expect(boxShadowGenerator.test.test(path)).toEqual(true);
+                expect((boxShadowGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.boxShadow';
-                expect(boxShadowGenerator.test.test(path)).toEqual(true);
+                expect((boxShadowGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 

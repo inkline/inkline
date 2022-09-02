@@ -1,12 +1,12 @@
 import { Generator, ResolvedTheme, ThemeVariants } from '../types';
-import { sidesPropertyKeys } from '../constants';
+import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX, sidesPropertyKeys } from '../constants';
 import { codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesPropertyVariant } from '../helpers';
 
 export const marginGenerator: Generator<ResolvedTheme['margin']> = {
     name: 'spacing',
     location: 'root',
     test: /(.*)margin$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value }) => ['/**', ' * Margin variables', ' */']
         .concat(
             sidesPropertyKeys.map(

@@ -6,6 +6,7 @@ import {
     boxShadowResolvers,
     breakpointsResolvers,
     colorResolvers,
+    elementsResolvers,
     marginResolvers,
     paddingResolvers,
     scaleRatioResolvers,
@@ -19,6 +20,7 @@ import {
     boxShadowGenerators,
     breakpointsGenerators,
     colorGenerators,
+    elementsGenerators,
     marginGenerators,
     paddingGenerators,
     scaleRatioGenerators,
@@ -82,7 +84,8 @@ export const defaultConfig: Configuration = {
         ...paddingResolvers,
         ...scaleRatioResolvers,
         ...sizeResolvers,
-        ...typographyResolvers
+        ...typographyResolvers,
+        ...elementsResolvers
     ],
     generators: [
         ...animationGenerators,
@@ -95,7 +98,8 @@ export const defaultConfig: Configuration = {
         ...paddingGenerators,
         ...scaleRatioGenerators,
         ...sizeGenerators,
-        ...typographyGenerators
+        ...typographyGenerators,
+        ...elementsGenerators
     ],
     theme: {
         default: {
@@ -200,17 +204,12 @@ export const defaultConfig: Configuration = {
                     dark: 'var(--color-white)'
                 }
             },
-            // elements: {
-            // body: {
-            //     background: 'var(--color-white)' // var(--body--background)
-            //     color: 'var(--color-gray-90)' // var(--body--color)
-            // }
-            // },
-            // components: {
-            //     alert: {
-            //         info: {}
-            //     }
-            // },
+            elements: {
+                body: {
+                    background: 'var(--color-white)',
+                    color: 'var(--color-gray-90)'
+                }
+            },
             variants: {
                 borderRadius: sizeMultiplierVariants,
                 color: {
@@ -268,6 +267,12 @@ export const defaultConfig: Configuration = {
             typography: {
                 color: {
                     muted: 'var(--color-gray-400)'
+                }
+            },
+            elements: {
+                body: {
+                    background: 'var(--color-gray-90)',
+                    color: 'var(--color-gray-10)'
                 }
             }
         }

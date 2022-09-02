@@ -1,5 +1,5 @@
 import { Generator, ResolvedTheme } from '../types';
-import { boxShadowProperties } from '../constants';
+import { boxShadowProperties, MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
 import { codegenGetCSSVariable, codegenSetCSSVariable } from '../helpers';
 import { toDashCase } from '@grozav/utils';
 
@@ -7,7 +7,7 @@ export const boxShadowGenerator: Generator<ResolvedTheme['boxShadow']> = {
     name: 'box-shadow',
     location: 'root',
     test: /(.*)boxShadow$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value }) => {
         const properties = boxShadowProperties
             .filter((property) => typeof value[property] !== 'undefined');

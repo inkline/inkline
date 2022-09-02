@@ -1,12 +1,12 @@
 import { Generator, ResolvedTheme } from '../types';
-import { borderProperties, sidesPropertyKeys } from '../constants';
+import { borderProperties, MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX, sidesPropertyKeys } from '../constants';
 import { codegenGetCSSVariable, codegenSetCSSVariable } from '../helpers';
 
 export const borderGenerator: Generator<ResolvedTheme['border']> = {
     name: 'border',
     location: 'root',
     test: /(.*)border$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value }) => ['/**', ' * Border variables', ' */']
         .concat(
             borderProperties.map((property) => {

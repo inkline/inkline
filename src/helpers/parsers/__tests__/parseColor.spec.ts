@@ -1,4 +1,4 @@
-import {Configuration, ConfigurationContext} from '../../../types';
+import { Configuration, ConfigurationContext } from '../../../types';
 import { parseColor } from '../parseColor';
 
 describe('helpers', () => {

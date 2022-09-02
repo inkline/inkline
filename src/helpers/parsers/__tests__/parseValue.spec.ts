@@ -1,5 +1,5 @@
 import { parseValue } from '../parseValue';
-import {Configuration, ConfigurationContext, FnProperty} from '../../../types';
+import { Configuration, ConfigurationContext, FnProperty } from '../../../types';
 
 describe('helpers', () => {
     describe('parsers', () => {

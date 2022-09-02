@@ -1,4 +1,4 @@
-import {ResolvedColorPropertyObject, ResolvedConfiguration, ResolvedTheme} from '../../types';
+import { ResolvedColorPropertyObject, ResolvedConfiguration, ResolvedTheme } from '../../types';
 import { colorGenerator } from '../color';
 
 describe('generators', () => {
@@ -6,12 +6,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'color.light';
-                expect(colorGenerator.test.test(path)).toEqual(true);
+                expect((colorGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.color.light';
-                expect(colorGenerator.test.test(path)).toEqual(true);
+                expect((colorGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 

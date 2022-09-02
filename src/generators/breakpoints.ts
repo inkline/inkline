@@ -1,10 +1,11 @@
 import { Generator, ResolvedTheme } from '../types';
+import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
 
 export const breakpointsGenerator: Generator<ResolvedTheme['breakpoints']> = {
     name: 'breakpoints',
     location: 'default',
     test: /(.*)breakpoints$/,
-    skip: /^variants/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value }) => {
         const pairs = Object.entries(value).sort((a, b) => a[1] - b[1]);
 

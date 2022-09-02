@@ -6,12 +6,12 @@ describe('generators', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'border';
-                expect(borderGenerator.test.test(path)).toEqual(true);
+                expect((borderGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.border';
-                expect(borderGenerator.test.test(path)).toEqual(true);
+                expect((borderGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 

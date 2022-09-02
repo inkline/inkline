@@ -36,9 +36,16 @@ export function applyGenerators (
 
         let matches = 0;
         config.generators.forEach((generator) => {
+            const tests = Array.isArray(generator.test) ? generator.test : [generator.test];
+            const skips = Array.isArray(generator.skip) ? generator.skip : (generator.skip ? [generator.skip] : []);
+
             // Check if generator test path matches and type guard passes,
             // then set resolved value at target path
-            if (generator.test.test(joinedPath) && !generator.skip?.test(joinedPath) && (generator.guard ? generator.guard(context) : true)) {
+            if (
+                tests.some((test) => test.test(joinedPath)) &&
+                skips.every((skip) => !skip.test(joinedPath)) &&
+                (generator.guard ? generator.guard(context) : true)
+            ) {
                 const location: GeneratorLocation = generator.location ?? 'root';
 
                 target.push({

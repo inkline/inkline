@@ -13,14 +13,14 @@ export interface Plugin<ThemeType = any, ValueType = any, ReturnType = any> {
      *
      * @example /(.*)margin.(\w+)$/
      */
-    test: RegExp;
+    test: RegExp | RegExp[];
 
     /**
      * Path skipping / blocking regular expression
      *
      * @example /^variants/
      */
-    skip?: RegExp;
+    skip?: RegExp | RegExp[];
 
     /**
      * Validate value function, returns true if plugin should be applied
