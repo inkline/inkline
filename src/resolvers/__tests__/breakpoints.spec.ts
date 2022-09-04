@@ -6,24 +6,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'breakpoints.xs';
-                expect(breakpointsResolver.test.test(path)).toEqual(true);
+                expect((breakpointsResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.breakpoints.xs';
-                expect(breakpointsResolver.test.test(path)).toEqual(true);
+                expect((breakpointsResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'breakpoints.xs';
-                expect(path.replace(breakpointsResolver.test, breakpointsResolver.set as string)).toEqual('breakpoints.xs');
+                expect(path.replace(breakpointsResolver.test as RegExp, breakpointsResolver.set as string)).toEqual('breakpoints.xs');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.breakpoints.xs';
-                expect(path.replace(breakpointsResolver.test, breakpointsResolver.set as string)).toEqual('nested.breakpoints.xs');
+                expect(path.replace(breakpointsResolver.test as RegExp, breakpointsResolver.set as string)).toEqual('nested.breakpoints.xs');
             });
         });
 

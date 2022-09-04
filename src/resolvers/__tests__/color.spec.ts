@@ -9,24 +9,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'color.primary';
-                expect(colorResolver.test.test(path)).toEqual(true);
+                expect((colorResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.color.primary';
-                expect(colorResolver.test.test(path)).toEqual(true);
+                expect((colorResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'color.primary';
-                expect(path.replace(colorResolver.test, colorResolver.set as string)).toEqual('color.primary');
+                expect(path.replace(colorResolver.test as RegExp, colorResolver.set as string)).toEqual('color.primary');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.color.primary';
-                expect(path.replace(colorResolver.test, colorResolver.set as string)).toEqual('nested.color.primary');
+                expect(path.replace(colorResolver.test as RegExp, colorResolver.set as string)).toEqual('nested.color.primary');
             });
         });
 
@@ -121,14 +121,14 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'variants.color.primary.600';
-                expect(colorVariantResolver.test.test(path)).toEqual(true);
+                expect((colorVariantResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'variants.color.primary.600';
-                expect(path.replace(colorVariantResolver.test, colorVariantResolver.set as string)).toEqual('variants.color.primary.600');
+                expect(path.replace(colorVariantResolver.test as RegExp, colorVariantResolver.set as string)).toEqual('variants.color.primary.600');
             });
         });
 

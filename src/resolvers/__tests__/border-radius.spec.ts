@@ -11,24 +11,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'borderRadius';
-                expect(borderRadiusResolver.test.test(path)).toEqual(true);
+                expect((borderRadiusResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.borderRadius';
-                expect(borderRadiusResolver.test.test(path)).toEqual(true);
+                expect((borderRadiusResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'borderRadius';
-                expect(path.replace(borderRadiusResolver.test, borderRadiusResolver.set as string)).toEqual('borderRadius');
+                expect(path.replace(borderRadiusResolver.test as RegExp, borderRadiusResolver.set as string)).toEqual('borderRadius');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.borderRadius';
-                expect(path.replace(borderRadiusResolver.test, borderRadiusResolver.set as string)).toEqual('nested.borderRadius');
+                expect(path.replace(borderRadiusResolver.test as RegExp, borderRadiusResolver.set as string)).toEqual('nested.borderRadius');
             });
         });
 
@@ -53,24 +53,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'borderRadius.default';
-                expect(borderRadiusDefaultResolver.test.test(path)).toEqual(true);
+                expect((borderRadiusDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.borderRadius.default';
-                expect(borderRadiusDefaultResolver.test.test(path)).toEqual(true);
+                expect((borderRadiusDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'borderRadius.default';
-                expect(path.replace(borderRadiusDefaultResolver.test, borderRadiusDefaultResolver.set as string)).toEqual('borderRadius');
+                expect(path.replace(borderRadiusDefaultResolver.test as RegExp, borderRadiusDefaultResolver.set as string)).toEqual('borderRadius');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.borderRadius.default';
-                expect(path.replace(borderRadiusDefaultResolver.test, borderRadiusDefaultResolver.set as string)).toEqual('nested.borderRadius');
+                expect(path.replace(borderRadiusDefaultResolver.test as RegExp, borderRadiusDefaultResolver.set as string)).toEqual('nested.borderRadius');
             });
         });
 
@@ -95,24 +95,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'borderRadius.topLeft';
-                expect(borderRadiusCornerResolver.test.test(path)).toEqual(true);
+                expect((borderRadiusCornerResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.borderRadius.topLeft';
-                expect(borderRadiusCornerResolver.test.test(path)).toEqual(true);
+                expect((borderRadiusCornerResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'borderRadius.topLeft';
-                expect(path.replace(borderRadiusCornerResolver.test, borderRadiusCornerResolver.set as string)).toEqual('borderRadius.topLeft');
+                expect(path.replace(borderRadiusCornerResolver.test as RegExp, borderRadiusCornerResolver.set as string)).toEqual('borderRadius.topLeft');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.borderRadius.topLeft';
-                expect(path.replace(borderRadiusCornerResolver.test, borderRadiusCornerResolver.set as string)).toEqual('nested.borderRadius.topLeft');
+                expect(path.replace(borderRadiusCornerResolver.test as RegExp, borderRadiusCornerResolver.set as string)).toEqual('nested.borderRadius.topLeft');
             });
         });
 
@@ -132,14 +132,14 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'variants.borderRadius.lg';
-                expect(borderRadiusVariantResolver.test.test(path)).toEqual(true);
+                expect((borderRadiusVariantResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'variants.borderRadius.xl';
-                expect(path.replace(borderRadiusVariantResolver.test, borderRadiusVariantResolver.set as string)).toEqual('variants.borderRadius.xl');
+                expect(path.replace(borderRadiusVariantResolver.test as RegExp, borderRadiusVariantResolver.set as string)).toEqual('variants.borderRadius.xl');
             });
         });
 

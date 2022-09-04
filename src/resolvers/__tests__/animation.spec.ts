@@ -10,24 +10,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'animation';
-                expect(animationResolver.test.test(path)).toEqual(true);
+                expect((animationResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.animation';
-                expect(animationResolver.test.test(path)).toEqual(true);
+                expect((animationResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'animation';
-                expect(path.replace(animationResolver.test, animationResolver.set as string)).toEqual('animation');
+                expect(path.replace(animationResolver.test as RegExp, animationResolver.set as string)).toEqual('animation');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.animation';
-                expect(path.replace(animationResolver.test, animationResolver.set as string)).toEqual('nested.animation');
+                expect(path.replace(animationResolver.test as RegExp, animationResolver.set as string)).toEqual('nested.animation');
             });
         });
 
@@ -50,24 +50,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'animation.default';
-                expect(animationDefaultResolver.test.test(path)).toEqual(true);
+                expect((animationDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.animation.default';
-                expect(animationDefaultResolver.test.test(path)).toEqual(true);
+                expect((animationDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'animation.default';
-                expect(path.replace(animationDefaultResolver.test, animationDefaultResolver.set as string)).toEqual('animation');
+                expect(path.replace(animationDefaultResolver.test as RegExp, animationDefaultResolver.set as string)).toEqual('animation');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.animation.default';
-                expect(path.replace(animationDefaultResolver.test, animationDefaultResolver.set as string)).toEqual('nested.animation');
+                expect(path.replace(animationDefaultResolver.test as RegExp, animationDefaultResolver.set as string)).toEqual('nested.animation');
             });
         });
 
@@ -90,24 +90,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'animation.duration';
-                expect(animationFieldResolver.test.test(path)).toEqual(true);
+                expect((animationFieldResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.animation.duration';
-                expect(animationFieldResolver.test.test(path)).toEqual(true);
+                expect((animationFieldResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'animation.duration';
-                expect(path.replace(animationFieldResolver.test, animationFieldResolver.set as string)).toEqual('animation.duration');
+                expect(path.replace(animationFieldResolver.test as RegExp, animationFieldResolver.set as string)).toEqual('animation.duration');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.animation.duration';
-                expect(path.replace(animationFieldResolver.test, animationFieldResolver.set as string)).toEqual('nested.animation.duration');
+                expect(path.replace(animationFieldResolver.test as RegExp, animationFieldResolver.set as string)).toEqual('nested.animation.duration');
             });
         });
 

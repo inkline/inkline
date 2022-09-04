@@ -11,24 +11,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'margin';
-                expect(marginResolver.test.test(path)).toEqual(true);
+                expect((marginResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.margin';
-                expect(marginResolver.test.test(path)).toEqual(true);
+                expect((marginResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'margin';
-                expect(path.replace(marginResolver.test, marginResolver.set as string)).toEqual('margin');
+                expect(path.replace(marginResolver.test as RegExp, marginResolver.set as string)).toEqual('margin');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.margin';
-                expect(path.replace(marginResolver.test, marginResolver.set as string)).toEqual('nested.margin');
+                expect(path.replace(marginResolver.test as RegExp, marginResolver.set as string)).toEqual('nested.margin');
             });
         });
 
@@ -53,24 +53,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'margin.default';
-                expect(marginDefaultResolver.test.test(path)).toEqual(true);
+                expect((marginDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.margin.default';
-                expect(marginDefaultResolver.test.test(path)).toEqual(true);
+                expect((marginDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'margin.default';
-                expect(path.replace(marginDefaultResolver.test, marginDefaultResolver.set as string)).toEqual('margin');
+                expect(path.replace(marginDefaultResolver.test as RegExp, marginDefaultResolver.set as string)).toEqual('margin');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.margin.default';
-                expect(path.replace(marginDefaultResolver.test, marginDefaultResolver.set as string)).toEqual('nested.margin');
+                expect(path.replace(marginDefaultResolver.test as RegExp, marginDefaultResolver.set as string)).toEqual('nested.margin');
             });
         });
 
@@ -95,24 +95,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'margin.top';
-                expect(marginSideResolver.test.test(path)).toEqual(true);
+                expect((marginSideResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.margin.top';
-                expect(marginSideResolver.test.test(path)).toEqual(true);
+                expect((marginSideResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'margin.top';
-                expect(path.replace(marginSideResolver.test, marginSideResolver.set as string)).toEqual('margin.top');
+                expect(path.replace(marginSideResolver.test as RegExp, marginSideResolver.set as string)).toEqual('margin.top');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.margin.top';
-                expect(path.replace(marginSideResolver.test, marginSideResolver.set as string)).toEqual('nested.margin.top');
+                expect(path.replace(marginSideResolver.test as RegExp, marginSideResolver.set as string)).toEqual('nested.margin.top');
             });
         });
 
@@ -132,14 +132,14 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'variants.margin.lg';
-                expect(marginVariantResolver.test.test(path)).toEqual(true);
+                expect((marginVariantResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'variants.margin.xl';
-                expect(path.replace(marginVariantResolver.test, marginVariantResolver.set as string)).toEqual('variants.margin.xl');
+                expect(path.replace(marginVariantResolver.test as RegExp, marginVariantResolver.set as string)).toEqual('variants.margin.xl');
             });
         });
 

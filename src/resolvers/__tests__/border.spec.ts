@@ -12,24 +12,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'border';
-                expect(borderResolver.test.test(path)).toEqual(true);
+                expect((borderResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.border';
-                expect(borderResolver.test.test(path)).toEqual(true);
+                expect((borderResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'border';
-                expect(path.replace(borderResolver.test, borderResolver.set as string)).toEqual('border');
+                expect(path.replace(borderResolver.test as RegExp, borderResolver.set as string)).toEqual('border');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.border';
-                expect(path.replace(borderResolver.test, borderResolver.set as string)).toEqual('nested.border');
+                expect(path.replace(borderResolver.test as RegExp, borderResolver.set as string)).toEqual('nested.border');
             });
         });
 
@@ -54,24 +54,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'border.default';
-                expect(borderDefaultResolver.test.test(path)).toEqual(true);
+                expect((borderDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.border.default';
-                expect(borderDefaultResolver.test.test(path)).toEqual(true);
+                expect((borderDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'border.default';
-                expect(path.replace(borderDefaultResolver.test, borderDefaultResolver.set as string)).toEqual('border');
+                expect(path.replace(borderDefaultResolver.test as RegExp, borderDefaultResolver.set as string)).toEqual('border');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.border.default';
-                expect(path.replace(borderDefaultResolver.test, borderDefaultResolver.set as string)).toEqual('nested.border');
+                expect(path.replace(borderDefaultResolver.test as RegExp, borderDefaultResolver.set as string)).toEqual('nested.border');
             });
         });
 
@@ -95,15 +95,15 @@ describe('resolvers', () => {
     describe('border.[field]', () => {
         describe('test', () => {
             it('should match direct path', () => {
-                expect(borderFieldResolver.test.test('border.width')).toEqual(true);
-                expect(borderFieldResolver.test.test('border.style')).toEqual(true);
-                expect(borderFieldResolver.test.test('border.color')).toEqual(true);
+                expect((borderFieldResolver.test as RegExp).test('border.width')).toEqual(true);
+                expect((borderFieldResolver.test as RegExp).test('border.style')).toEqual(true);
+                expect((borderFieldResolver.test as RegExp).test('border.color')).toEqual(true);
             });
 
             it('should match nested path', () => {
-                expect(borderFieldResolver.test.test('nested.border.width')).toEqual(true);
-                expect(borderFieldResolver.test.test('nested.border.style')).toEqual(true);
-                expect(borderFieldResolver.test.test('nested.border.color')).toEqual(true);
+                expect((borderFieldResolver.test as RegExp).test('nested.border.width')).toEqual(true);
+                expect((borderFieldResolver.test as RegExp).test('nested.border.style')).toEqual(true);
+                expect((borderFieldResolver.test as RegExp).test('nested.border.color')).toEqual(true);
             });
         });
 
@@ -111,18 +111,18 @@ describe('resolvers', () => {
             it('should replace direct path', () => {
                 const path = 'border.width';
 
-                expect(path.replace(borderFieldResolver.test, (borderFieldResolver.set as string[])[0])).toEqual('border.top.width');
-                expect(path.replace(borderFieldResolver.test, (borderFieldResolver.set as string[])[1])).toEqual('border.right.width');
-                expect(path.replace(borderFieldResolver.test, (borderFieldResolver.set as string[])[2])).toEqual('border.bottom.width');
-                expect(path.replace(borderFieldResolver.test, (borderFieldResolver.set as string[])[3])).toEqual('border.left.width');
+                expect(path.replace(borderFieldResolver.test as RegExp, (borderFieldResolver.set as string[])[0])).toEqual('border.top.width');
+                expect(path.replace(borderFieldResolver.test as RegExp, (borderFieldResolver.set as string[])[1])).toEqual('border.right.width');
+                expect(path.replace(borderFieldResolver.test as RegExp, (borderFieldResolver.set as string[])[2])).toEqual('border.bottom.width');
+                expect(path.replace(borderFieldResolver.test as RegExp, (borderFieldResolver.set as string[])[3])).toEqual('border.left.width');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.border.width';
-                expect(path.replace(borderFieldResolver.test, (borderFieldResolver.set as string[])[0])).toEqual('nested.border.top.width');
-                expect(path.replace(borderFieldResolver.test, (borderFieldResolver.set as string[])[1])).toEqual('nested.border.right.width');
-                expect(path.replace(borderFieldResolver.test, (borderFieldResolver.set as string[])[2])).toEqual('nested.border.bottom.width');
-                expect(path.replace(borderFieldResolver.test, (borderFieldResolver.set as string[])[3])).toEqual('nested.border.left.width');
+                expect(path.replace(borderFieldResolver.test as RegExp, (borderFieldResolver.set as string[])[0])).toEqual('nested.border.top.width');
+                expect(path.replace(borderFieldResolver.test as RegExp, (borderFieldResolver.set as string[])[1])).toEqual('nested.border.right.width');
+                expect(path.replace(borderFieldResolver.test as RegExp, (borderFieldResolver.set as string[])[2])).toEqual('nested.border.bottom.width');
+                expect(path.replace(borderFieldResolver.test as RegExp, (borderFieldResolver.set as string[])[3])).toEqual('nested.border.left.width');
             });
         });
 
@@ -160,24 +160,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'border.top';
-                expect(borderSideResolver.test.test(path)).toEqual(true);
+                expect((borderSideResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.border.top';
-                expect(borderSideResolver.test.test(path)).toEqual(true);
+                expect((borderSideResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'border.top';
-                expect(path.replace(borderSideResolver.test, borderSideResolver.set as string)).toEqual('border.top');
+                expect(path.replace(borderSideResolver.test as RegExp, borderSideResolver.set as string)).toEqual('border.top');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.border.top';
-                expect(path.replace(borderSideResolver.test, borderSideResolver.set as string)).toEqual('nested.border.top');
+                expect(path.replace(borderSideResolver.test as RegExp, borderSideResolver.set as string)).toEqual('nested.border.top');
             });
         });
 
@@ -201,24 +201,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'border.top.width';
-                expect(borderSideFieldResolver.test.test(path)).toEqual(true);
+                expect((borderSideFieldResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.border.top.width';
-                expect(borderSideFieldResolver.test.test(path)).toEqual(true);
+                expect((borderSideFieldResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'border.top.width';
-                expect(path.replace(borderSideFieldResolver.test, borderSideFieldResolver.set as string)).toEqual('border.top.width');
+                expect(path.replace(borderSideFieldResolver.test as RegExp, borderSideFieldResolver.set as string)).toEqual('border.top.width');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.border.top.width';
-                expect(path.replace(borderSideFieldResolver.test, borderSideFieldResolver.set as string)).toEqual('nested.border.top.width');
+                expect(path.replace(borderSideFieldResolver.test as RegExp, borderSideFieldResolver.set as string)).toEqual('nested.border.top.width');
             });
         });
 

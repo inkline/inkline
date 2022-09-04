@@ -2,6 +2,7 @@ import { Generator, ResolvedTheme } from '../types';
 import { animationProperties, MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
 import { codegenSetCSSVariable } from '../helpers';
 import {capitalizeFirst, toDashCase} from '@grozav/utils';
+import {join} from "pathe";
 
 export const elementsGenerator: Generator<ResolvedTheme['elements'][string]> = {
     name: 'elements',
@@ -14,12 +15,30 @@ export const elementsGenerator: Generator<ResolvedTheme['elements'][string]> = {
 
         const process = (target: Record<string, any>, path: string[] = [], acc: Record<string, string> = {}) => {
             Object.keys(target).forEach((key) => {
-                const currentPath = [...path, key];
+                const currentPath = [...path, key].map((part) => toDashCase(part));
 
                 if (typeof target[key] === 'object') {
                     process(target[key] as Record<string, string>, currentPath, acc);
                 } else {
-                    acc[currentPath.join('--')] = target[key];
+                    const propertiesList = [
+                        'animation',
+                        'border',
+                        'borderRadius',
+                        'boxShadow',
+                        'color',
+                        'margin',
+                        'padding'
+                    ];
+
+                    let joinedPath = '';
+                    const propertyIndex = path.findIndex((part) => propertiesList.includes(part));
+                    if (propertyIndex !== -1) {
+                        joinedPath = `${currentPath.slice(0, propertyIndex).join('--')}--${currentPath.slice(propertyIndex).join('-')}`;
+                    } else {
+                        joinedPath = currentPath.join('--');
+                    }
+
+                    acc[joinedPath] = target[key];
                 }
             });
 

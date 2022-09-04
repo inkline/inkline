@@ -16,24 +16,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'typography.lineHeight';
-                expect(typographyLineHeightResolver.test.test(path)).toEqual(true);
+                expect((typographyLineHeightResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.typography.lineHeight';
-                expect(typographyLineHeightResolver.test.test(path)).toEqual(true);
+                expect((typographyLineHeightResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'typography.lineHeight';
-                expect(path.replace(typographyLineHeightResolver.test, typographyLineHeightResolver.set as string)).toEqual('typography.lineHeight');
+                expect(path.replace(typographyLineHeightResolver.test as RegExp, typographyLineHeightResolver.set as string)).toEqual('typography.lineHeight');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.typography.lineHeight';
-                expect(path.replace(typographyLineHeightResolver.test, typographyLineHeightResolver.set as string)).toEqual('nested.typography.lineHeight');
+                expect(path.replace(typographyLineHeightResolver.test as RegExp, typographyLineHeightResolver.set as string)).toEqual('nested.typography.lineHeight');
             });
         });
 
@@ -53,24 +53,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'typography.letterSpacing';
-                expect(typographyLetterSpacingResolver.test.test(path)).toEqual(true);
+                expect((typographyLetterSpacingResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.typography.letterSpacing';
-                expect(typographyLetterSpacingResolver.test.test(path)).toEqual(true);
+                expect((typographyLetterSpacingResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'typography.letterSpacing';
-                expect(path.replace(typographyLetterSpacingResolver.test, typographyLetterSpacingResolver.set as string)).toEqual('typography.letterSpacing');
+                expect(path.replace(typographyLetterSpacingResolver.test as RegExp, typographyLetterSpacingResolver.set as string)).toEqual('typography.letterSpacing');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.typography.letterSpacing';
-                expect(path.replace(typographyLetterSpacingResolver.test, typographyLetterSpacingResolver.set as string)).toEqual('nested.typography.letterSpacing');
+                expect(path.replace(typographyLetterSpacingResolver.test as RegExp, typographyLetterSpacingResolver.set as string)).toEqual('nested.typography.letterSpacing');
             });
         });
 
@@ -90,24 +90,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'typography.fontSize';
-                expect(typographyFontSizeResolver.test.test(path)).toEqual(true);
+                expect((typographyFontSizeResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.typography.fontSize';
-                expect(typographyFontSizeResolver.test.test(path)).toEqual(true);
+                expect((typographyFontSizeResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'typography.fontSize';
-                expect(path.replace(typographyFontSizeResolver.test, typographyFontSizeResolver.set as string)).toEqual('typography.fontSize');
+                expect(path.replace(typographyFontSizeResolver.test as RegExp, typographyFontSizeResolver.set as string)).toEqual('typography.fontSize');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.typography.fontSize';
-                expect(path.replace(typographyFontSizeResolver.test, typographyFontSizeResolver.set as string)).toEqual('nested.typography.fontSize');
+                expect(path.replace(typographyFontSizeResolver.test as RegExp, typographyFontSizeResolver.set as string)).toEqual('nested.typography.fontSize');
             });
         });
 

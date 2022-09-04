@@ -31,8 +31,8 @@ describe('generators', () => {
                     '/**',
                     ' * Animation variables',
                     ' */',
-                    `--animation-duration: ${theme.animation.duration};`,
-                    `--animation-timing-function: ${theme.animation.timingFunction};`
+                    `--transition-duration: ${theme.animation.duration};`,
+                    `--transition-timing-function: ${theme.animation.timingFunction};`
                 ]);
             });
         });

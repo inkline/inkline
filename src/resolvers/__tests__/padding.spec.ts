@@ -11,24 +11,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'padding';
-                expect(paddingResolver.test.test(path)).toEqual(true);
+                expect((paddingResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.padding';
-                expect(paddingResolver.test.test(path)).toEqual(true);
+                expect((paddingResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'padding';
-                expect(path.replace(paddingResolver.test, paddingResolver.set as string)).toEqual('padding');
+                expect(path.replace(paddingResolver.test as RegExp, paddingResolver.set as string)).toEqual('padding');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.padding';
-                expect(path.replace(paddingResolver.test, paddingResolver.set as string)).toEqual('nested.padding');
+                expect(path.replace(paddingResolver.test as RegExp, paddingResolver.set as string)).toEqual('nested.padding');
             });
         });
 
@@ -53,24 +53,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'padding.default';
-                expect(paddingDefaultResolver.test.test(path)).toEqual(true);
+                expect((paddingDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.padding.default';
-                expect(paddingDefaultResolver.test.test(path)).toEqual(true);
+                expect((paddingDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'padding.default';
-                expect(path.replace(paddingDefaultResolver.test, paddingDefaultResolver.set as string)).toEqual('padding');
+                expect(path.replace(paddingDefaultResolver.test as RegExp, paddingDefaultResolver.set as string)).toEqual('padding');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.padding.default';
-                expect(path.replace(paddingDefaultResolver.test, paddingDefaultResolver.set as string)).toEqual('nested.padding');
+                expect(path.replace(paddingDefaultResolver.test as RegExp, paddingDefaultResolver.set as string)).toEqual('nested.padding');
             });
         });
 
@@ -95,24 +95,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'padding.top';
-                expect(paddingSideResolver.test.test(path)).toEqual(true);
+                expect((paddingSideResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.padding.top';
-                expect(paddingSideResolver.test.test(path)).toEqual(true);
+                expect((paddingSideResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'padding.top';
-                expect(path.replace(paddingSideResolver.test, paddingSideResolver.set as string)).toEqual('padding.top');
+                expect(path.replace(paddingSideResolver.test as RegExp, paddingSideResolver.set as string)).toEqual('padding.top');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.padding.top';
-                expect(path.replace(paddingSideResolver.test, paddingSideResolver.set as string)).toEqual('nested.padding.top');
+                expect(path.replace(paddingSideResolver.test as RegExp, paddingSideResolver.set as string)).toEqual('nested.padding.top');
             });
         });
 
@@ -132,14 +132,14 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'variants.padding.lg';
-                expect(paddingVariantResolver.test.test(path)).toEqual(true);
+                expect((paddingVariantResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'variants.padding.xl';
-                expect(path.replace(paddingVariantResolver.test, paddingVariantResolver.set as string)).toEqual('variants.padding.xl');
+                expect(path.replace(paddingVariantResolver.test as RegExp, paddingVariantResolver.set as string)).toEqual('variants.padding.xl');
             });
         });
 

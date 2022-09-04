@@ -10,24 +10,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'size.multiplier';
-                expect(sizeMultiplierResolver.test.test(path)).toEqual(true);
+                expect((sizeMultiplierResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.size.multiplier';
-                expect(sizeMultiplierResolver.test.test(path)).toEqual(true);
+                expect((sizeMultiplierResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'size.multiplier';
-                expect(path.replace(sizeMultiplierResolver.test, sizeMultiplierResolver.set as string)).toEqual('size.multiplier');
+                expect(path.replace(sizeMultiplierResolver.test as RegExp, sizeMultiplierResolver.set as string)).toEqual('size.multiplier');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.size.multiplier';
-                expect(path.replace(sizeMultiplierResolver.test, sizeMultiplierResolver.set as string)).toEqual('nested.size.multiplier');
+                expect(path.replace(sizeMultiplierResolver.test as RegExp, sizeMultiplierResolver.set as string)).toEqual('nested.size.multiplier');
             });
         });
 
@@ -47,14 +47,14 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'variants.size.multiplier.xs';
-                expect(sizeMultiplierVariantResolver.test.test(path)).toEqual(true);
+                expect((sizeMultiplierVariantResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'variants.size.multiplier.xs';
-                expect(path.replace(sizeMultiplierVariantResolver.test, sizeMultiplierVariantResolver.set as string)).toEqual('variants.size.multiplier.xs');
+                expect(path.replace(sizeMultiplierVariantResolver.test as RegExp, sizeMultiplierVariantResolver.set as string)).toEqual('variants.size.multiplier.xs');
             });
         });
 
@@ -74,24 +74,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'size.percentages.100';
-                expect(sizePercentagesResolver.test.test(path)).toEqual(true);
+                expect((sizePercentagesResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.size.percentages.100';
-                expect(sizePercentagesResolver.test.test(path)).toEqual(true);
+                expect((sizePercentagesResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'size.percentages.100';
-                expect(path.replace(sizePercentagesResolver.test, sizePercentagesResolver.set as string)).toEqual('size.percentages.100');
+                expect(path.replace(sizePercentagesResolver.test as RegExp, sizePercentagesResolver.set as string)).toEqual('size.percentages.100');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.size.percentages.100';
-                expect(path.replace(sizePercentagesResolver.test, sizePercentagesResolver.set as string)).toEqual('nested.size.percentages.100');
+                expect(path.replace(sizePercentagesResolver.test as RegExp, sizePercentagesResolver.set as string)).toEqual('nested.size.percentages.100');
             });
         });
 

@@ -207,7 +207,7 @@ export const defaultConfig: Configuration = {
             elements: {
                 body: {
                     background: 'var(--color-white)',
-                    color: 'var(--color-gray-90)'
+                    color: 'var(--color-gray-900)'
                 }
             },
             variants: {
@@ -271,8 +271,8 @@ export const defaultConfig: Configuration = {
             },
             elements: {
                 body: {
-                    background: 'var(--color-gray-90)',
-                    color: 'var(--color-gray-10)'
+                    background: 'var(--color-gray-900)',
+                    color: 'var(--color-gray-100)'
                 }
             }
         }

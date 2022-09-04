@@ -10,24 +10,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'boxShadow';
-                expect(boxShadowResolver.test.test(path)).toEqual(true);
+                expect((boxShadowResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.boxShadow';
-                expect(boxShadowResolver.test.test(path)).toEqual(true);
+                expect((boxShadowResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'boxShadow';
-                expect(path.replace(boxShadowResolver.test, boxShadowResolver.set as string)).toEqual('boxShadow');
+                expect(path.replace(boxShadowResolver.test as RegExp, boxShadowResolver.set as string)).toEqual('boxShadow');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.boxShadow';
-                expect(path.replace(boxShadowResolver.test, boxShadowResolver.set as string)).toEqual('nested.boxShadow');
+                expect(path.replace(boxShadowResolver.test as RegExp, boxShadowResolver.set as string)).toEqual('nested.boxShadow');
             });
         });
 
@@ -53,24 +53,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'boxShadow.default';
-                expect(boxShadowDefaultResolver.test.test(path)).toEqual(true);
+                expect((boxShadowDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.boxShadow.default';
-                expect(boxShadowDefaultResolver.test.test(path)).toEqual(true);
+                expect((boxShadowDefaultResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'boxShadow.default';
-                expect(path.replace(boxShadowDefaultResolver.test, boxShadowDefaultResolver.set as string)).toEqual('boxShadow');
+                expect(path.replace(boxShadowDefaultResolver.test as RegExp, boxShadowDefaultResolver.set as string)).toEqual('boxShadow');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.boxShadow.default';
-                expect(path.replace(boxShadowDefaultResolver.test, boxShadowDefaultResolver.set as string)).toEqual('nested.boxShadow');
+                expect(path.replace(boxShadowDefaultResolver.test as RegExp, boxShadowDefaultResolver.set as string)).toEqual('nested.boxShadow');
             });
         });
 
@@ -96,24 +96,24 @@ describe('resolvers', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'boxShadow.offsetX';
-                expect(boxShadowFieldResolver.test.test(path)).toEqual(true);
+                expect((boxShadowFieldResolver.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.boxShadow.offsetX';
-                expect(boxShadowFieldResolver.test.test(path)).toEqual(true);
+                expect((boxShadowFieldResolver.test as RegExp).test(path)).toEqual(true);
             });
         });
 
         describe('set', () => {
             it('should replace direct path', () => {
                 const path = 'boxShadow.offsetX';
-                expect(path.replace(boxShadowFieldResolver.test, boxShadowFieldResolver.set as string)).toEqual('boxShadow.offsetX');
+                expect(path.replace(boxShadowFieldResolver.test as RegExp, boxShadowFieldResolver.set as string)).toEqual('boxShadow.offsetX');
             });
 
             it('should replace nested path', () => {
                 const path = 'nested.boxShadow.offsetX';
-                expect(path.replace(boxShadowFieldResolver.test, boxShadowFieldResolver.set as string)).toEqual('nested.boxShadow.offsetX');
+                expect(path.replace(boxShadowFieldResolver.test as RegExp, boxShadowFieldResolver.set as string)).toEqual('nested.boxShadow.offsetX');
             });
         });
 
