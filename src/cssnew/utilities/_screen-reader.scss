@@ -1,0 +1,9 @@
+._visually-hidden {
+    @extend %visually-hidden;
+}
+
+._visually-hidden\:focusable {
+    &:not(:focus) {
+        @extend %visually-hidden;
+    }
+}

@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { colorVariantClass, defaultPropValue } from '@inkline/inkline/mixins';
+import { computedColorValue, computedPropValue } from '@inkline/inkline/mixins';
 import { Classes, Styles } from '@inkline/inkline/types';
 
 /**
@@ -26,7 +26,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color', 'primary')
+            default: computedPropValue<string>(componentName, 'color', 'primary')
         },
         /**
          * The value of the progress bar
@@ -60,7 +60,7 @@ export default defineComponent({
         },
         classes (): Classes {
             return {
-                ...colorVariantClass(this)
+                [`-${computedColorValue(componentName, this.color)}`]: true
             };
         }
     }

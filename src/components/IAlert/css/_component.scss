@@ -138,7 +138,7 @@
     a {
         color: var(--alert--link--color, var(--alert--color));
         font-weight: 600;
-        transition-property: color;
+        transition-property: var(--alert--link--transition-property, color);
         transition-duration: var(--alert--transition-duration, var(--transition-duration));
         transition-timing-function: var(--alert--transition-timing-function, var(--transition-timing-function));
 
@@ -167,7 +167,15 @@
 
     > .icon {
         padding-left: var(--alert--padding-left, var(--padding-left));
-        border-color: var(----border-color);
+        border-color: var(
+                --alert--border-color,
+                (
+                        var(--alert--border-top-color, var(--border-top-color))
+                        var(--alert--border-right-color, var(--border-right-color))
+                        var(--alert--border-bottom-color, var(--border-bottom-color))
+                        var(--alert--border-left-color, var(--border-left-color))
+                )
+        );
         flex: 1;
         display: inline-flex;
         align-items: center;

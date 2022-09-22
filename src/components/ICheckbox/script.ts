@@ -1,10 +1,10 @@
 import { defineComponent } from 'vue';
 import { uid } from '@inkline/inkline/helpers';
 import {
-    colorVariantClass,
+    computedColorValue,
     sizePropValidator,
     FormComponentMixin,
-    defaultPropValue
+    computedPropValue, computedSizeValue
 } from '@inkline/inkline/mixins';
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
@@ -30,7 +30,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * The disabled state of the checkbox
@@ -108,7 +108,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: '',
             validator: sizePropValidator
         },
         /**
@@ -130,10 +130,16 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size || (this as any).formGroup.size || (this as any).form.size);
+        },
         classes (): Classes {
             return {
-                ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
                 '-native': this.native

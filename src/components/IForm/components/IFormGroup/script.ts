@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import {
-    colorVariantClass,
-    defaultPropValue,
+    computedColorValue,
+    computedPropValue,
     sizePropValidator,
     FormComponentMixin
 } from '@inkline/inkline/mixins';
@@ -34,7 +34,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * The disabled state of the form group
@@ -94,14 +94,14 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         }
     },
     computed: {
         classes (): Classes {
             return {
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,

@@ -1,0 +1,50 @@
+@use 'sass:math';
+
+/**
+ * Embed
+ *
+ * Credit: Nicolas Gallagher and SUIT CSS.
+ */
+
+[class^="_embed"] {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+
+    &::before {
+        display: block;
+        content: '';
+    }
+
+    > ._embed-item,
+    iframe,
+    embed,
+    object,
+    video {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+}
+
+._embed\:21\:9 {
+    &::before { padding-top: math.percentage(math.div(9, 21)); }
+}
+
+._embed\:16\:9 {
+    &::before { padding-top: math.percentage(math.div(9, 16)); }
+}
+
+._embed\:4\:3 {
+    &::before { padding-top: math.percentage(math.div(3, 4)); }
+}
+
+._embed\:1\:1 {
+    &::before { padding-top: math.percentage(math.div(1, 1)); }
+}

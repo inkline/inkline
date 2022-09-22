@@ -1,0 +1,70 @@
+%grid-preview {
+    > .container {
+        max-width: 100%;
+        background: var(--color-gray-50);
+        border: 1px solid var(--color-gray-100);
+        border-radius: var(--border-radius);
+        padding-top: var(--padding-top);
+        padding-bottom: var(--padding-bottom);
+
+        .theme-dark & {
+            background: var(--color-gray-850);
+            border-color: var(--color-gray-800);
+        }
+
+        .row {
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--border-radius);
+            padding-top: var(--padding-top);
+            padding-bottom: var(--padding-bottom);
+
+            &.-top,
+            &.-middle,
+            &.-bottom {
+                height: 150px;
+            }
+
+            .theme-dark & {
+                background: var(--color-gray-800);
+                border-color: var(--color-gray-700);
+            }
+
+            + .row {
+                margin-top: var(--margin-top);
+            }
+
+            .column {
+                background: var(--color-gray-200);
+                border: 1px solid var(--color-gray-400);
+                border-radius: var(--border-radius);
+                padding-top: var(--padding-top);
+                padding-bottom: var(--padding-bottom);
+
+                .theme-dark & {
+                    background: var(--color-gray-700);
+                    border-color: var(--color-gray-500);
+                }
+
+                .row {
+                    background: var(--color-gray-250);
+                    border: 1px solid var(--color-gray-500);
+
+                    .theme-dark & {
+                        background: var(--color-gray-650);
+                    }
+                }
+
+                .column {
+                    background: var(--color-gray-300);
+                    border: 1px solid var(--color-gray-600);
+
+                    .theme-dark & {
+                        background: var(--color-gray-600);
+                        border-color: var(--color-gray-400);
+                    }
+                }
+            }
+        }
+    }
+}

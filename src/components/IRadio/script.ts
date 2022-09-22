@@ -1,10 +1,10 @@
 import { defineComponent } from 'vue';
 import { uid } from '@inkline/inkline/helpers';
 import {
-    colorVariantClass,
+    computedColorValue,
     sizePropValidator,
     FormComponentMixin,
-    defaultPropValue
+    computedPropValue
 } from '@inkline/inkline/mixins';
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
@@ -30,7 +30,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * The disabled state of the radio
@@ -108,7 +108,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         },
         /**
@@ -132,7 +132,7 @@ export default defineComponent({
     computed: {
         classes (): Classes {
             return {
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,

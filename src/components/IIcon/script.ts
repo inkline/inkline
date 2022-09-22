@@ -1,5 +1,5 @@
 import { h, computed, defineComponent, onMounted, inject } from 'vue';
-import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
+import { computedPropValue, sizePropValidator } from '@inkline/inkline/mixins';
 import { renderSvg, toCamelCase } from '@inkline/inkline/helpers';
 import { SvgNode } from '@inkline/inkline/types';
 
@@ -33,7 +33,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size', 'md'),
+            default: computedPropValue<string>(componentName, 'size', 'md'),
             validator: sizePropValidator
         }
     },

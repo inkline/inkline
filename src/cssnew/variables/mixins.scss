@@ -1,0 +1,54 @@
+/**
+ * Breakpoint mixins
+ */
+@mixin breakpoint-xs-down { @media screen and (max-width: 575.99px) { @content; } }
+@mixin breakpoint-xs-up { @content; }
+@mixin breakpoint-xs { @media screen and (min-width: 0px) and (max-width: 575.99px) { @content; }}
+@mixin breakpoint-sm-down { @media screen and (max-width: 767.99px) { @content; } }
+@mixin breakpoint-sm-up { @media screen and (min-width: 576px) { @content; } }
+@mixin breakpoint-sm { @media screen and (min-width: 576px) and (max-width: 767.99px) { @content; }}
+@mixin breakpoint-md-down { @media screen and (max-width: 991.99px) { @content; } }
+@mixin breakpoint-md-up { @media screen and (min-width: 768px) { @content; } }
+@mixin breakpoint-md { @media screen and (min-width: 768px) and (max-width: 991.99px) { @content; }}
+@mixin breakpoint-lg-down { @media screen and (max-width: 1199.99px) { @content; } }
+@mixin breakpoint-lg-up { @media screen and (min-width: 992px) { @content; } }
+@mixin breakpoint-lg { @media screen and (min-width: 992px) and (max-width: 1199.99px) { @content; }}
+@mixin breakpoint-xl-down { @media screen and (max-width: 1399.99px) { @content; } }
+@mixin breakpoint-xl-up { @media screen and (min-width: 1200px) { @content; } }
+@mixin breakpoint-xl { @media screen and (min-width: 1200px) and (max-width: 1399.99px) { @content; }}
+@mixin breakpoint-2xl-down { @content; }
+@mixin breakpoint-2xl-up { @media screen and (min-width: 1400px) { @content; } }
+@mixin breakpoint-2xl { @media screen and (min-width: 1400px) { @content; }}
+
+$columns: 12 !default;
+$breakpoint-keys: ('xs', 'sm', 'md', 'lg', 'xl', '2xl') !default;
+
+@mixin breakpoint-down($key) {
+    @if $key == 'xs' { @include breakpoint-xs-down { @content; } }
+    @else if $key == 'sm' { @include breakpoint-sm-down { @content; } }
+    @else if $key == 'md' { @include breakpoint-md-down { @content; } }
+    @else if $key == 'lg' { @include breakpoint-lg-down { @content; } }
+    @else if $key == 'xl' { @include breakpoint-xl-down { @content; } }
+    @else if $key == '2xl' { @include breakpoint-2xl-down { @content; } }
+    @else { @content; }
+}
+
+@mixin breakpoint-up($key) {
+    @if $key == 'xs' { @include breakpoint-xs-up { @content; } }
+    @else if $key == 'sm' { @include breakpoint-sm-up { @content; } }
+    @else if $key == 'md' { @include breakpoint-md-up { @content; } }
+    @else if $key == 'lg' { @include breakpoint-lg-up { @content; } }
+    @else if $key == 'xl' { @include breakpoint-xl-up { @content; } }
+    @else if $key == '2xl' { @include breakpoint-2xl-up { @content; } }
+    @else { @content; }
+}
+
+@mixin breakpoint($key) {
+    @if $key == 'xs' { @include breakpoint-xs { @content; } }
+    @else if $key == 'sm' { @include breakpoint-sm { @content; } }
+    @else if $key == 'md' { @include breakpoint-md { @content; } }
+    @else if $key == 'lg' { @include breakpoint-lg { @content; } }
+    @else if $key == 'xl' { @include breakpoint-xl { @content; } }
+    @else if $key == '2xl' { @include breakpoint-2xl { @content; } }
+    @else { @content; }
+}

@@ -1,7 +1,8 @@
 export default {
     data () {
         return {
-            checked: false
+            unchecked: false,
+            checked: true
         };
     }
 };

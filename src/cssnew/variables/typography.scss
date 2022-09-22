@@ -37,6 +37,12 @@
     --letter-spacing: 0;
 
     /**
+     * Contrast color variables
+     */
+    --contrast-color--light: var(--color-gray-900);
+    --contrast-color--dark: var(--color-white);
+
+    /**
      * Typography font size variants variables
      */
     --font-size-xs: calc(var(--font-size) * var(--size-multiplier-xs));

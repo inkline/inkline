@@ -193,7 +193,7 @@
     white-space: nowrap;
     outline: none;
     cursor: pointer;
-    margin-right: var(----margin-right);
+    margin-right: var(--radio--margin-right, var(--margin-right));
 
     &:last-child {
         margin-right: 0;
@@ -216,8 +216,8 @@
         &:checked {
             ~ .radio-label {
                 &::before {
-                    ----border-color: var(----border-color--checked);
-                    ----background: var(----background--checked);
+                    --radio--border-color: var(----border-color--checked);
+                    --radio--background: var(----background--checked);
                 }
 
                 &::after {
@@ -238,12 +238,12 @@
             &:checked {
                 ~ .radio-label {
                     &::before {
-                        ----border-color: var(----border-color--checked-disabled);
-                        ----background: var(----background--checked-disabled);
+                        --radio--border-color: var(----border-color--checked-disabled);
+                        --radio--background: var(----background--checked-disabled);
                     }
 
                     &::after {
-                        ----background: var(----color--disabled);
+                        --radio--background: var(--radio--disabled--color);
                     }
                 }
             }
@@ -255,9 +255,9 @@
         display: inline-flex;
         align-items: center;
         position: relative;
-        transition-property: color;
-        transition-duration: var(--transition-duration);
-        transition-timing-function: var(--transition-easing);
+        transition-property: var(--radio--transition-property, (color));
+        transition-duration: var(--radio--transition-duration, var(--transition-duration));
+        transition-timing-function: var(--radio--transition-timing-function, var(--transition-timing-function));
         color: var(----label--color);
         font-size: var(----label--font-size);
 
@@ -267,22 +267,46 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            width: var(----size);
-            height: var(----size);
+            width: var(--radio--size);
+            height: var(--radio--size);
         }
 
         &::before {
             border-radius: 100%;
             content: "";
             user-select: none;
-            transition-property: background-color, border-color;
-            transition-duration: var(--transition-duration);
-            transition-timing-function: var(--transition-easing);
-            margin-right: var(----margin-right);
-            border-color: var(----border-color);
-            border-style: var(----border-style);
-            border-width: var(----border-width);
-            background-color: var(----background);
+            transition-property: var(--radio--transition-property, (background-color, border-color));
+            transition-duration: var(--radio--transition-duration, var(--transition-duration));
+            transition-timing-function: var(--radio--transition-timing-function, var(--transition-timing-function));
+            margin-right: var(--radio--margin-right, var(--margin-right));
+            border-color: var(
+                        --radio--border-color,
+                        (
+                                    var(--radio--border-top-color, var(--border-top-color))
+                                    var(--radio--border-right-color, var(--border-right-color))
+                                    var(--radio--border-bottom-color, var(--border-bottom-color))
+                                    var(--radio--border-left-color, var(--border-left-color))
+                        )
+            );
+            border-style: var(
+                        --radio--border-style,
+                        (
+                                    var(--radio--border-top-style, var(--border-top-style))
+                                    var(--radio--border-right-style, var(--border-right-style))
+                                    var(--radio--border-bottom-style, var(--border-bottom-style))
+                                    var(--radio--border-left-style, var(--border-left-style))
+                        )
+            );
+            border-width: var(
+                        --radio--border-width,
+                        (
+                                    var(--radio--border-top-width, var(--border-top-width))
+                                    var(--radio--border-right-width, var(--border-right-width))
+                                    var(--radio--border-bottom-width, var(--border-bottom-width))
+                                    var(--radio--border-left-width, var(--border-left-width))
+                        )
+            );
+            background-color: var(--radio--background);
         }
 
         &::after {
@@ -291,8 +315,8 @@
             left: 0;
             z-index: 1;
             text-align: center;
-            background-color: var(----color);
-            margin-top: calc(#{var(----size)} / -2);
+            background-color: var(--radio--color);
+            margin-top: calc(#{var(--radio--size)} / -2);
             mask-size: var(----checkmark--size) var(----checkmark--size);
         }
     }
@@ -316,7 +340,7 @@
             opacity: 1;
             height: auto;
             width: auto;
-            margin-right: var(----margin-right);
+            margin-right: var(--radio--margin-right, var(--margin-right));
         }
 
         .radio-label {

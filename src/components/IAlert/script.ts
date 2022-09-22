@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { defaultPropValue } from '@inkline/inkline/mixins';
+import { computedColorValue, computedSizeValue } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
 /**
@@ -44,7 +44,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size', 'md')
+            default: ''
         },
         /**
          * The color variant of the alert
@@ -54,7 +54,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color', 'info')
+            default: 'info'
         },
         /**
          * Used to show or hide a dismissible alert
@@ -100,10 +100,16 @@ export default defineComponent({
         };
     },
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
         classes (): Classes {
             return {
-                [`-${this.color}`]: Boolean(this.color),
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize),
                 '-dismissible': this.dismissible,
                 '-with-icon': Boolean(this.$slots.icon)
             };

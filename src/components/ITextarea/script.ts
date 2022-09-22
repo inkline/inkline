@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import { uid } from '@inkline/inkline/helpers';
 import {
-    defaultPropValue,
+    computedPropValue,
     sizePropValidator
 } from '@inkline/inkline/mixins';
 import IInput from '@inkline/inkline/components/IInput/index.vue';
@@ -51,7 +51,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * Display the textarea as clearable
@@ -123,7 +123,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         },
         /**

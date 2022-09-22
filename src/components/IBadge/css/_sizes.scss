@@ -4,38 +4,38 @@
 
 .badge {
     &.-sm {
-        --badge--border-top-left-radius: var(--badge--sm--border-top-left-radius, var(--border-top-right-radius-sm));
-        --badge--border-top-right-radius: var(--badge--sm--border-top-right-radius, var(--border-top-right-radius-sm));
-        --badge--border-bottom-right-radius: var(--badge--sm--border-bottom-right-radius, var(--border-bottom-right-radius-sm));
-        --badge--border-bottom-left-radius: var(--badge--sm--border-bottom-left-radius, var(--border-bottom-left-radius-sm));
-        --badge--font-size: var(--badge--sm--font-size, calc(var(--font-size-sm) * 0.8));
-        --badge--padding-top: var(--badge--sm--padding-top, calc(var(--padding-top-sm) * 0.25));
-        --badge--padding-right: var(--badge--sm--padding-right, calc(var(--padding-right-sm) * 0.5));
-        --badge--padding-bottom: var(--badge--sm--padding-bottom, calc(var(--padding-bottom-sm) * 0.25));
-        --badge--padding-left: var(--badge--sm--padding-left, calc(var(--padding-left-sm) * 0.5));
+        --badge--border-top-left-radius: var(--badge--sm--border-top-left-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-sm)));
+        --badge--border-top-right-radius: var(--badge--sm--border-top-right-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-sm)));
+        --badge--border-bottom-right-radius: var(--badge--sm--border-bottom-right-radius, calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm)));
+        --badge--border-bottom-left-radius: var(--badge--sm--border-bottom-left-radius, calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm)));
+        --badge--font-size: var(--badge--sm--font-size, calc(calc(var(--font-size) * var(--size-multiplier-sm)) * 0.8));
+        --badge--padding-top: var(--badge--sm--padding-top, calc(calc(var(--padding-top) * var(--size-multiplier-sm)) * 0.25));
+        --badge--padding-right: var(--badge--sm--padding-right, calc(calc(var(--padding-right) * var(--size-multiplier-sm)) * 0.5));
+        --badge--padding-bottom: var(--badge--sm--padding-bottom, calc(calc(var(--padding-bottom) * var(--size-multiplier-sm)) * 0.25));
+        --badge--padding-left: var(--badge--sm--padding-left, calc(calc(var(--padding-left) * var(--size-multiplier-sm)) * 0.5));
     }
 
     &.-md {
-        --badge--border-top-left-radius: var(--badge--md--border-top-left-radius, var(--border-top-right-radius-md));
-        --badge--border-top-right-radius: var(--badge--md--border-top-right-radius, var(--border-top-right-radius-md));
-        --badge--border-bottom-right-radius: var(--badge--md--border-bottom-right-radius, var(--border-bottom-right-radius-md));
-        --badge--border-bottom-left-radius: var(--badge--md--border-bottom-left-radius, var(--border-bottom-left-radius-md));
-        --badge--font-size: var(--badge--md--font-size, calc(var(--font-size-md) * 0.8));
-        --badge--padding-top: var(--badge--md--padding-top, calc(var(--padding-top-md) * 0.25));
-        --badge--padding-right: var(--badge--md--padding-right, calc(var(--padding-right-md) * 0.5));
-        --badge--padding-bottom: var(--badge--md--padding-bottom, calc(var(--padding-bottom-md) * 0.25));
-        --badge--padding-left: var(--badge--md--padding-left, calc(var(--padding-left-md) * 0.5));
+        --badge--border-top-left-radius: var(--badge--md--border-top-left-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-md)));
+        --badge--border-top-right-radius: var(--badge--md--border-top-right-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-md)));
+        --badge--border-bottom-right-radius: var(--badge--md--border-bottom-right-radius, calc(var(--border-bottom-right-radius) * var(--size-multiplier-md)));
+        --badge--border-bottom-left-radius: var(--badge--md--border-bottom-left-radius, calc(var(--border-bottom-left-radius) * var(--size-multiplier-md)));
+        --badge--font-size: var(--badge--md--font-size, calc(calc(var(--font-size) * var(--size-multiplier-md)) * 0.8));
+        --badge--padding-top: var(--badge--md--padding-top, calc(calc(var(--padding-top) * var(--size-multiplier-md)) * 0.25));
+        --badge--padding-right: var(--badge--md--padding-right, calc(calc(var(--padding-right) * var(--size-multiplier-md)) * 0.5));
+        --badge--padding-bottom: var(--badge--md--padding-bottom, calc(calc(var(--padding-bottom) * var(--size-multiplier-md)) * 0.25));
+        --badge--padding-left: var(--badge--md--padding-left, calc(calc(var(--padding-left) * var(--size-multiplier-md)) * 0.5));
     }
 
     &.-lg {
-        --badge--border-top-left-radius: var(--badge--lg--border-top-left-radius, var(--border-top-right-radius-lg));
-        --badge--border-top-right-radius: var(--badge--lg--border-top-right-radius, var(--border-top-right-radius-lg));
-        --badge--border-bottom-right-radius: var(--badge--lg--border-bottom-right-radius, var(--border-bottom-right-radius-lg));
-        --badge--border-bottom-left-radius: var(--badge--lg--border-bottom-left-radius, var(--border-bottom-left-radius-lg));
-        --badge--font-size: var(--badge--lg--font-size, calc(var(--font-size-lg) * 0.8));
-        --badge--padding-top: var(--badge--lg--padding-top, calc(var(--padding-top-lg) * 0.25));
-        --badge--padding-right: var(--badge--lg--padding-right, calc(var(--padding-right-lg) * 0.5));
-        --badge--padding-bottom: var(--badge--lg--padding-bottom, calc(var(--padding-bottom-lg) * 0.25));
-        --badge--padding-left: var(--badge--lg--padding-left, calc(var(--padding-left-lg) * 0.5));
+        --badge--border-top-left-radius: var(--badge--lg--border-top-left-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-lg)));
+        --badge--border-top-right-radius: var(--badge--lg--border-top-right-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-lg)));
+        --badge--border-bottom-right-radius: var(--badge--lg--border-bottom-right-radius, calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg)));
+        --badge--border-bottom-left-radius: var(--badge--lg--border-bottom-left-radius, calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg)));
+        --badge--font-size: var(--badge--lg--font-size, calc(calc(var(--font-size) * var(--size-multiplier-lg)) * 0.8));
+        --badge--padding-top: var(--badge--lg--padding-top, calc(calc(var(--padding-top) * var(--size-multiplier-lg)) * 0.25));
+        --badge--padding-right: var(--badge--lg--padding-right, calc(calc(var(--padding-right) * var(--size-multiplier-lg)) * 0.5));
+        --badge--padding-bottom: var(--badge--lg--padding-bottom, calc(calc(var(--padding-bottom) * var(--size-multiplier-lg)) * 0.25));
+        --badge--padding-left: var(--badge--lg--padding-left, calc(calc(var(--padding-left) * var(--size-multiplier-lg)) * 0.5));
     }
 }

@@ -1,37 +1,34 @@
+@use '../../../cssnew/mixins' as mixins;
+
 ////
 /// The width of the container component on extrasmall screens
 /// @name container--width--xs
 ////
-    
+
 ////
 /// The width of the container component on small screens
 /// @name container--width--sm
 ////
-    
+
 ////
 /// The width of the container component on medium screens
 /// @name container--width--md
 ////
-    
+
 ////
 /// The width of the container component on large screens
 /// @name container--width--lg
 ////
-    
+
 ////
 /// The width of the container component on extralarge screens
 /// @name container--width--xl
 ////
-    
+
 ////
 /// The width of the container component on extralarge screens
 /// @name container--width--xxl
 ////
-    
-
-@import '../../css/variables';
-@import '../../css/mixins';
-@import 'css/variables';
 
 /**
  * Container
@@ -40,15 +37,13 @@
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
-    width: var(----width--xs);
+    width: var(--grid--xs--width);
 
-    @each $breakpoint-name, $breakpoint in $breakpoints {
-        $_container-width: var(----width--#{$breakpoint-name});
-
-        @include breakpoint-up($breakpoint-name) {
-            max-width: $_container-width;
-            padding-left: calc(#{gutter($breakpoint-name)} / 2);
-            padding-right: calc(#{gutter($breakpoint-name)} / 2);
+    @each $breakpoint-name in mixins.$breakpoint-keys {
+        @include mixins.breakpoint-up($breakpoint-name) {
+            max-width: var(--grid--#{$breakpoint-name}--width);
+            padding-left: calc(var(--grid--#{$breakpoint-name}--gutter) / 2);
+            padding-right: calc(var(--grid--#{$breakpoint-name}--gutter) / 2);
         }
     }
 

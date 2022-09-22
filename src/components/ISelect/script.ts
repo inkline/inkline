@@ -9,8 +9,8 @@ import {
     getValueByPath
 } from '@inkline/inkline/helpers';
 import {
-    colorVariantClass,
-    defaultPropValue,
+    computedColorValue,
+    computedPropValue,
     sizePropValidator,
     FormComponentMixin,
     PopupMixin
@@ -119,7 +119,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * Display the select as clearable
@@ -314,7 +314,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         },
         /**
@@ -375,7 +375,7 @@ export default defineComponent({
     computed: {
         wrapperClasses (): Classes {
             return {
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${this.size}`]: Boolean(this.size)
             };
         },

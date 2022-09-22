@@ -53,12 +53,20 @@
     display: flex;
     box-sizing: border-box;
     width: 100%;
-    transition-property: background-color;
-    transition-duration: var(--transition-duration);
-    transition-timing-function: var(--transition-easing);
-    color: var(----color);
-    background: var(----background);
-    padding: var(----padding);
+    transition-property: var(--header--transition-property, (background-color));
+    transition-duration: var(--header--transition-duration, var(--transition-duration));
+    transition-timing-function: var(--header--transition-timing-function, var(--transition-timing-function));
+    color: var(--header--color);
+    background: var(--header--background);
+    padding: var(
+        --header--padding,
+        (
+            var(--header--padding-top, var(--padding-top))
+            var(--header--padding-right, var(--padding-right))
+            var(--header--padding-bottom, var(--padding-bottom))
+            var(--header--padding-left, var(--padding-left))
+        )
+    );
 
     /* stylelint-disable selector-list-comma-newline-after */
     > .container,

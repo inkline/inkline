@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue';
 import { Classes } from '@inkline/inkline/types';
+import {computedColorValue, computedSizeValue} from "@inkline/inkline/mixins";
 
 /**
  * Slot for default button group content
@@ -70,8 +71,12 @@ export default defineComponent({
         }
     },
     computed: {
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size || (this as any).buttonGroup.size);
+        },
         classes (): Classes {
             return {
+                [`-${this.computedSize}`]: Boolean(this.computedSize),
                 '-vertical': this.vertical,
                 '-block': this.block,
                 '-disabled': this.isDisabled

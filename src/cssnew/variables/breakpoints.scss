@@ -1,19 +1,11 @@
-/**
- * Breakpoint variables
- */
-@custom-media --breakpoint-xs-down (max-width: 575.99px);
-@custom-media --breakpoint-xs (min-width: 0px) and (max-width: 575.99px);
-@custom-media --breakpoint-sm-down (max-width: 767.99px);
-@custom-media --breakpoint-sm-up (min-width: 576px);
-@custom-media --breakpoint-sm (min-width: 576px) and (max-width: 767.99px);
-@custom-media --breakpoint-md-down (max-width: 991.99px);
-@custom-media --breakpoint-md-up (min-width: 768px);
-@custom-media --breakpoint-md (min-width: 768px) and (max-width: 991.99px);
-@custom-media --breakpoint-lg-down (max-width: 1199.99px);
-@custom-media --breakpoint-lg-up (min-width: 992px);
-@custom-media --breakpoint-lg (min-width: 992px) and (max-width: 1199.99px);
-@custom-media --breakpoint-xl-down (max-width: 1399.99px);
-@custom-media --breakpoint-xl-up (min-width: 1200px);
-@custom-media --breakpoint-xl (min-width: 1200px) and (max-width: 1399.99px);
-@custom-media --breakpoint-2xl-up (min-width: 1400px);
-@custom-media --breakpoint-2xl (min-width: 1400px);
+:root {
+    /**
+     * Breakpoint variables
+     */
+    --breakpoints-xs: 0px;
+    --breakpoints-sm: 576px;
+    --breakpoints-md: 768px;
+    --breakpoints-lg: 992px;
+    --breakpoints-xl: 1200px;
+    --breakpoints-2xl: 1400px;
+}

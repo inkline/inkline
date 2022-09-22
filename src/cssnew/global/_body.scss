@@ -36,14 +36,4 @@ body {
     transition-timing-function: var(--body--transition-timing-function, var(--transition-timing-function));
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: var(--body--tap-highlight-color, rgba(0, 0, 0, 0));
-
-    .theme-light & {
-        --body--color: var(--text--color-dark);
-        --body--background: var(--color-white);
-    }
-
-    .theme-dark & {
-        --body--color: var(--text--color-light);
-        --body--background: var(--color-gray-900);
-    }
 }

@@ -3,32 +3,39 @@
  */
 
 .checkbox {
-                        @include variant('light', 'form') {
-                                        --checkbox--background: var(--checkbox--white--background, var(--color-white));
-                                        --checkbox--background--checked: var(--checkbox--primary--background--checked, var(--color-primary));
-                                        --checkbox--background--disabled: var(--checkbox--light--background--disabled, var(--color-light-250));
-                                        --checkbox--background--checked-disabled: var(--checkbox--primary--background--checked-disabled, var(--color-primary-250));
-                                        --checkbox--border-color: var(--checkbox--light--border-color, var(--color-light-550));
-                                        --checkbox--border-color--checked: var(--checkbox--primary--border-color--checked, var(--color-primary-550));
-                                        --checkbox--border-color--disabled: var(--checkbox--light--border-color--disabled, var(--color-light));
-                                        --checkbox--border-color--checked-disabled: var(--checkbox--primary--border-color--checked-disabled, var(--color-primary-300));
-                                        --checkbox--color: var(--checkbox--white--color, var(--color-white));
-                                        --checkbox--color--disabled: var(--checkbox--light--color--disabled, var(--color-light-250));
-                                        --checkbox--label--color: var(--checkbox--light--label--color, var(--contrast-text--color-light));
-                                        --checkbox--label--color--disabled: var(--checkbox--light--label--color--disabled, var(--color-light-700));
+    &.-light {
+        --checkbox--background: var(--checkbox--light--background, var(--color-white));
+        --checkbox--border-color: var(--checkbox--light--border-color, var(--color-light-shade-100));
+        --checkbox--color: var(--checkbox--light--color, var(--color-white));
+        --checkbox--label--color: var(--checkbox--light--label--color, var(--contrast-text--color-light));
+
+        --checkbox--disabled--background: var(--checkbox--light--disabled--background, var(--color-gray-50));
+        --checkbox--disabled--border-color: var(--checkbox--light--disabled--border-color, var(--color-light));
+        --checkbox--disabled--color: var(--checkbox--light--disabled--color, var(--color-white));
+        --checkbox--disabled--label--color: var(--checkbox--light--disabled--label--color, var(--text--color-muted));
+
+        --checkbox--checked--background: var(--checkbox--light--checked--background, var(--color-primary));
+        --checkbox--checked--border-color: var(--checkbox--light--checked--border-color, var(--color-primary-shade-50));
+
+        --checkbox--checked--disabled--background: var(--checkbox--light--checked--disabled--background, var(--color-primary-300));
+        --checkbox--checked--disabled--border-color: var(--checkbox--light--checked--disabled--border-color, var(--color-primary-400));
     }
-                        @include variant('dark', 'form') {
-                                        --checkbox--background: var(--checkbox--dark--background, var(--color-dark));
-                                        --checkbox--background--checked: var(--checkbox--primary--background--checked, var(--color-primary));
-                                        --checkbox--background--disabled: var(--checkbox--dark--background--disabled, var(--color-dark-250));
-                                        --checkbox--background--checked-disabled: var(--checkbox--primary--background--checked-disabled, var(--color-primary-750));
-                                        --checkbox--border-color: var(--checkbox--dark--border-color, var(--color-dark));
-                                        --checkbox--border-color--checked: var(--checkbox--primary--border-color--checked, var(--color-primary-550));
-                                        --checkbox--border-color--disabled: var(--checkbox--dark--border-color--disabled, var(--color-dark));
-                                        --checkbox--border-color--checked-disabled: var(--checkbox--primary--border-color--checked-disabled, var(--color-primary-700));
-                                        --checkbox--color: var(--checkbox--white--color, var(--color-white));
-                                        --checkbox--color--disabled: var(--checkbox--dark--color--disabled, var(--color-dark-250));
-                                        --checkbox--label--color: var(--checkbox--dark--label--color, var(--contrast-text--color-dark));
-                                        --checkbox--label--color--disabled: var(--checkbox--dark--label--color--disabled, var(--color-dark-300));
+
+    &.-dark {
+        --checkbox--background: var(--checkbox--dark--background, var(--color-dark));
+        --checkbox--border-color: var(--checkbox--dark--border-color, var(--color-dark));
+        --checkbox--color: var(--checkbox--dark--color, var(--color-white));
+        --checkbox--label--color: var(--checkbox--dark--label--color, var(--contrast-text--color-dark));
+
+        --checkbox--disabled--background: var(--checkbox--dark--disabled--background, var(--color-dark-tint-100));
+        --checkbox--disabled--border-color: var(--checkbox--dark--disabled--border-color, var(--color-dark-tint-50));
+        --checkbox--disabled--color: var(--checkbox--dark--disabled--color, var(--color-white));
+        --checkbox--disabled--label--color: var(--checkbox--dark--disabled--label--color, var(--text--color-muted));
+
+        --checkbox--checked--background: var(--checkbox--dark--checked--background, var(--color-primary));
+        --checkbox--checked--border-color: var(--checkbox--dark--checked--border-color, var(--color-primary-tint-50));
+
+        --checkbox--checked--disabled--background: var(--checkbox--dark--checked--disabled--background, var(--color-primary-800));
+        --checkbox--checked--disabled--border-color: var(--checkbox--dark--checked--disabled--border-color, var(--color-primary-700));
     }
 }

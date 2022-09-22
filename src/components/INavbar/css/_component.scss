@@ -266,9 +266,9 @@
 
             .nav-item {
                 width: 100%;
-                transition-property: background-color, color;
-                transition-timing-function: var(--transition-easing);
-                transition-duration: var(--transition-duration);
+                transition-property: var(--navbar-collapsible--transition-property, (background-color, color));
+                transition-timing-function: var(--navbar-collapsible--transition-timing-function, var(--transition-timing-function));
+                transition-duration: var(--navbar-collapsible--transition-duration, var(--transition-duration));
             }
 
             .dropdown-wrapper {
@@ -299,20 +299,69 @@
 }
 
 .navbar {
-    color: var(----color);
-    background: var(----background);
-    padding: var(----padding);
-    font-size: var(----font-size);
-    box-shadow: var(----box-shadow);
+    color: var(--navbar-collapsible--color);
+    background: var(--navbar-collapsible--background);
+    padding: var(
+        --navbar-collapsible--padding,
+        (
+            var(--navbar-collapsible--padding-top, var(--padding-top))
+            var(--navbar-collapsible--padding-right, var(--padding-right))
+            var(--navbar-collapsible--padding-bottom, var(--padding-bottom))
+            var(--navbar-collapsible--padding-left, var(--padding-left))
+        )
+    );
+    font-size: var(--navbar-collapsible--font-size, var(--font-size));
+    box-shadow: var(
+        --navbar-collapsible--box-shadow,
+        (
+            var(--navbar-collapsible--box-shadow-x-offset, var(--box-shadow-offset-x))
+            var(--navbar-collapsible--box-shadow-y-offset, var(--box-shadow-offset-y))
+            var(--navbar-collapsible--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+            var(--navbar-collapsible--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+            var(--navbar-collapsible--box-shadow-color, var(--box-shadow-color))
+        )
+    );
     position: relative;
     display: flex;
     flex-wrap: wrap; // allow us to do the line break for collapsing content
     align-items: center;
     justify-content: space-between;
-    border-width: var(----border-width);
-    border-style: var(----border-style);
-    border-color: var(----border-color);
-    border-radius: var(----border-radius);
+    border-width: var(
+        --navbar-collapsible--border-width,
+        (
+            var(--navbar-collapsible--border-top-width, var(--border-top-width))
+            var(--navbar-collapsible--border-right-width, var(--border-right-width))
+            var(--navbar-collapsible--border-bottom-width, var(--border-bottom-width))
+            var(--navbar-collapsible--border-left-width, var(--border-left-width))
+        )
+    );
+    border-style: var(
+        --navbar-collapsible--border-style,
+        (
+            var(--navbar-collapsible--border-top-style, var(--border-top-style))
+            var(--navbar-collapsible--border-right-style, var(--border-right-style))
+            var(--navbar-collapsible--border-bottom-style, var(--border-bottom-style))
+            var(--navbar-collapsible--border-left-style, var(--border-left-style))
+        )
+    );
+    border-color: var(
+        --navbar-collapsible--border-color,
+        (
+            var(--navbar-collapsible--border-top-color, var(--border-top-color))
+            var(--navbar-collapsible--border-right-color, var(--border-right-color))
+            var(--navbar-collapsible--border-bottom-color, var(--border-bottom-color))
+            var(--navbar-collapsible--border-left-color, var(--border-left-color))
+        )
+    );
+    border-radius: var(
+        --navbar-collapsible--border-radius,
+        (
+            var(--navbar-collapsible--border-top-left-radius, var(--border-top-left-radius))
+            var(--navbar-collapsible--border-top-right-radius, var(--border-top-right-radius))
+            var(--navbar-collapsible--border-bottom-right-radius, var(--border-bottom-right-radius))
+            var(--navbar-collapsible--border-bottom-left-radius, var(--border-bottom-left-radius))
+        )
+    );
 
     > .container > .row > .column {
         display: flex;
@@ -323,20 +372,28 @@
 
     .navbar-collapsible {
         .nav-item {
-            ----color: var(----item--color);
+            --navbar-collapsible--color: var(----item--color);
             ----padding: var(----item--padding);
-            ----font-size: var(----font-size);
-            ----background: var(----item--background);
+            ----font-size: var(--navbar-collapsible--font-size, var(--font-size));
+            --navbar-collapsible--background: var(----item--background);
 
-            border-radius: var(----border-radius);
-            background: var(----background);
+            border-radius: var(
+                        --navbar-collapsible--border-radius,
+                        (
+                                    var(--navbar-collapsible--border-top-left-radius, var(--border-top-left-radius))
+                                    var(--navbar-collapsible--border-top-right-radius, var(--border-top-right-radius))
+                                    var(--navbar-collapsible--border-bottom-right-radius, var(--border-bottom-right-radius))
+                                    var(--navbar-collapsible--border-bottom-left-radius, var(--border-bottom-left-radius))
+                        )
+            );
+            background: var(--navbar-collapsible--background);
 
             &.-focused,
             &.-hovered,
             &:focus,
             &:hover {
-                ----color: var(----item--color--hover);
-                ----background: var(----item--background--hover);
+                --navbar-collapsible--color: var(----item--color--hover);
+                --navbar-collapsible--background: var(----item--background--hover);
             }
         }
     }
@@ -346,12 +403,12 @@
             background: var(----collapsed--background);
 
             .nav-item {
-                ----background: var(----collapsed--item--background);
-                ----color: var(----collapsed--item--color);
+                --navbar-collapsible--background: var(----collapsed--item--background);
+                --navbar-collapsible--color: var(----collapsed--item--color);
 
                 &:hover {
-                    ----color: var(----collapsed--item--color--hover);
-                    ----background: var(----collapsed--item--background--hover);
+                    --navbar-collapsible--color: var(----collapsed--item--color--hover);
+                    --navbar-collapsible--background: var(----collapsed--item--background--hover);
                 }
             }
         }
@@ -367,8 +424,16 @@
                 @include navbar-collapse();
 
                 .navbar-collapsible {
-                    margin-top: var(----padding-top);
-                    border-radius: var(----border-radius);
+                    margin-top: var(--navbar-collapsible--padding-top, var(--padding-top));
+                    border-radius: var(
+                                        --navbar-collapsible--border-radius,
+                                        (
+                                                            var(--navbar-collapsible--border-top-left-radius, var(--border-top-left-radius))
+                                                            var(--navbar-collapsible--border-top-right-radius, var(--border-top-right-radius))
+                                                            var(--navbar-collapsible--border-bottom-right-radius, var(--border-bottom-right-radius))
+                                                            var(--navbar-collapsible--border-bottom-left-radius, var(--border-bottom-left-radius))
+                                        )
+                    );
                 }
             }
         }

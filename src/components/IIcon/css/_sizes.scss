@@ -4,14 +4,14 @@
 
 .inkline-icon {
     &.-sm {
-        --icon--size: var(--icon--sm--size, var(--font-size-sm));
+        --icon--size: var(--icon--sm--size, calc(var(--font-size) * var(--size-multiplier-sm)));
     }
 
     &.-md {
-        --icon--size: var(--icon--md--size, var(--font-size-md));
+        --icon--size: var(--icon--md--size, calc(var(--font-size) * var(--size-multiplier-md)));
     }
 
     &.-lg {
-        --icon--size: var(--icon--lg--size, var(--font-size-lg));
+        --icon--size: var(--icon--lg--size, calc(var(--font-size) * var(--size-multiplier-lg)));
     }
 }

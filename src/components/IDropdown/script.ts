@@ -5,8 +5,8 @@ import {
     PopupMixin,
     PopupControlsMixin,
     sizePropValidator,
-    colorVariantClass,
-    defaultPropValue
+    computedColorValue,
+    computedPropValue
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
 import { on, off, isFocusable, isKey } from '@inkline/inkline/helpers';
@@ -83,7 +83,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * The disabled state of the dropdown
@@ -193,7 +193,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         }
     },
@@ -207,7 +207,7 @@ export default defineComponent({
     computed: {
         classes (): Classes {
             return {
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${this.size}`]: Boolean(this.size)
             };
         }

@@ -17,7 +17,7 @@
     position: relative;
 
     + .form-group {
-        margin-top: var(----margin-top);
+        margin-top: var(--form-group--margin-top, var(--margin-top));
     }
 
     &.-inline {

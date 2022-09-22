@@ -439,9 +439,33 @@
 @import 'css/sizes';
 @import 'css/colors';
 
-$_border-radius: var(----border-radius);
-$_border-width: var(----border-width);
-$_border-color: var(----border-color);
+$_border-radius: var(
+--modal--border-radius,
+(
+var(--modal--border-top-left-radius, var(--border-top-left-radius))
+var(--modal--border-top-right-radius, var(--border-top-right-radius))
+var(--modal--border-bottom-right-radius, var(--border-bottom-right-radius))
+var(--modal--border-bottom-left-radius, var(--border-bottom-left-radius))
+)
+);
+$_border-width: var(
+--modal--border-width,
+(
+var(--modal--border-top-width, var(--border-top-width))
+var(--modal--border-right-width, var(--border-right-width))
+var(--modal--border-bottom-width, var(--border-bottom-width))
+var(--modal--border-left-width, var(--border-left-width))
+)
+);
+$_border-color: var(
+--modal--border-color,
+(
+var(--modal--border-top-color, var(--border-top-color))
+var(--modal--border-right-color, var(--border-right-color))
+var(--modal--border-bottom-color, var(--border-bottom-color))
+var(--modal--border-left-color, var(--border-left-color))
+)
+);
 
 .modal-wrapper {
     background: var(----wrapper--background);
@@ -459,23 +483,40 @@ $_border-color: var(----border-color);
 .modal {
     text-align: left; // Ensures proper alignment if parent has it changed
     list-style: none;
-    line-height: var(----line-height);
+    line-height: var(--modal--line-height, var(--line-height));
     display: block;
-    width: calc(100% - var(----margin-left) - var(----margin-right));
-    max-width: var(----width);
-    border-radius: var(----border-radius);
-    box-shadow: var(----box-shadow);
+    width: calc(100% - var(--modal--margin-left, var(--margin-left)) - var(--modal--margin-right, var(--margin-right)));
+    max-width: var(--modal--width);
+    border-radius: var(
+        --modal--border-radius,
+        (
+            var(--modal--border-top-left-radius, var(--border-top-left-radius))
+            var(--modal--border-top-right-radius, var(--border-top-right-radius))
+            var(--modal--border-bottom-right-radius, var(--border-bottom-right-radius))
+            var(--modal--border-bottom-left-radius, var(--border-bottom-left-radius))
+        )
+    );
+    box-shadow: var(
+        --modal--box-shadow,
+        (
+            var(--modal--box-shadow-x-offset, var(--box-shadow-offset-x))
+            var(--modal--box-shadow-y-offset, var(--box-shadow-offset-y))
+            var(--modal--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+            var(--modal--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+            var(--modal--box-shadow-color, var(--box-shadow-color))
+        )
+    );
 
     > .modal-header {
         display: flex;
         justify-content: space-between;
-        background: var(----header--background);
+        background: var(--modal--header--background, var(--modal--background));
         border-color: var(----header--border-color);
         border-style: var(----header--border-style);
         border-width: var(----header--border-width);
-        border-top-left-radius: var(----border-top-left-radius);
-        border-top-right-radius: var(----border-top-right-radius);
-        color: var(----header--color);
+        border-top-left-radius: var(--modal--border-top-left-radius, var(--border-top-left-radius));
+        border-top-right-radius: var(--modal--border-top-right-radius, var(--border-top-right-radius));
+        color: var(--modal--header--color, var(--modal--color));
         padding: var(----header--padding);
 
         > .close {
@@ -491,16 +532,24 @@ $_border-color: var(----border-color);
             border: 0;
             transition: background-color 0.3s ease;
             background-color: transparent;
-            border-radius: var(----border-radius);
+            border-radius: var(
+                        --modal--border-radius,
+                        (
+                                    var(--modal--border-top-left-radius, var(--border-top-left-radius))
+                                    var(--modal--border-top-right-radius, var(--border-top-right-radius))
+                                    var(--modal--border-bottom-right-radius, var(--border-bottom-right-radius))
+                                    var(--modal--border-bottom-left-radius, var(--border-bottom-left-radius))
+                        )
+            );
 
             > .icon {
                 mask-image: url($ink-times);
                 mask-position: center center;
                 mask-repeat: no-repeat;
-                background-color: var(----header--color);
-                width: var(----font-size);
-                height: var(----font-size);
-                mask-size: calc(var(----font-size) / 2) calc(var(----font-size) / 2);
+                background-color: var(--modal--header--color, var(--modal--color));
+                width: var(--modal--font-size, var(--font-size));
+                height: var(--modal--font-size, var(--font-size));
+                mask-size: calc(var(--modal--font-size, var(--font-size)) / 2) calc(var(----font-size) / 2);
             }
 
             &:hover,
@@ -516,22 +565,22 @@ $_border-color: var(----border-color);
     }
 
     > .modal-body {
-        background: var(----body--background);
+        background: var(--modal--body--background, var(--modal--background));
         border-color: var(----body--border-color);
         border-style: var(----body--border-style);
         border-width: var(----body--border-width);
-        color: var(----body--color);
+        color: var(--modal--body--color, var(--modal--color));
         padding: var(----body--padding);
     }
 
     > .modal-footer {
-        background: var(----footer--background);
+        background: var(--modal--footer--background, var(--modal--background));
         border-color: var(----footer--border-color);
         border-style: var(----footer--border-style);
         border-width: var(----footer--border-width);
-        border-bottom-left-radius: var(----border-bottom-left-radius);
-        border-bottom-right-radius: var(----border-bottom-right-radius);
-        color: var(----footer--color);
+        border-bottom-left-radius: var(--modal--border-bottom-left-radius, var(--border-bottom-left-radius));
+        border-bottom-right-radius: var(--modal--border-bottom-right-radius, var(--border-bottom-right-radius));
+        color: var(--modal--footer--color, var(--modal--color));
         padding: var(----footer--padding);
     }
 

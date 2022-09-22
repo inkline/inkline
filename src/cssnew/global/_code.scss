@@ -23,12 +23,33 @@ pre {
         font-size: inherit;
         color: inherit;
         word-break: normal;
+        background: transparent;
+        padding: 0;
     }
 }
 
 code {
     font-size: var(--code--font-size, var(--font-size-sm));
-    color: var(--color-pink);
+    color: var(--code--color, var(--color-pink));
+    background: var(--code--background, var(--color-light));
+    padding: var(
+        --code--padding,
+        (
+            var(--code--padding-top, 0.15rem)
+            var(--code--padding-right, 0.45rem)
+            var(--code--padding-bottom, 0.15rem)
+            var(--code--padding-left, 0.45rem)
+        )
+    );
+    border-radius: var(
+        --code--border-radius,
+        (
+            var(--code--border-top-left-radius, var(--border-top-left-radius))
+            var(--code--border-top-right-radius, var(--border-top-right-radius))
+            var(--code--border-bottom-right-radius, var(--border-bottom-right-radius))
+            var(--code--border-bottom-left-radius, var(--border-bottom-left-radius))
+        )
+    );
     word-wrap: break-word;
 
     // Streamline the style when inside anchors to avoid broken underline and more
@@ -38,7 +59,15 @@ code {
 }
 
 kbd {
-    padding: var(--kbd-padding, (0.1875rem 0.375rem));
+    padding: var(
+        --kbd--padding,
+        (
+            var(--kbd--padding-top, 0.1875rem)
+            var(--kbd--padding-right, 0.375rem)
+            var(--kbd--padding-bottom, 0.1875rem)
+            var(--kbd--padding-left, 0.375rem)
+        )
+    );
     font-size: var(--kbd--font-size, var(--code--font-size, var(--font-size-sm)));
     color: var(--kbd--color, var(--body--background));
     background: var(--kbd--background, var(--body--color));

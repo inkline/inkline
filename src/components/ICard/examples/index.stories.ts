@@ -15,9 +15,6 @@ export default {
     argTypes: {
         ...colorArgType(),
         ...sizeArgType()
-    },
-    parameters: {
-        layout: 'custom-card'
     }
 };
 

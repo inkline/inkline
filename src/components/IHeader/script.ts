@@ -1,8 +1,8 @@
 import { defineComponent } from 'vue';
 import {
-    defaultPropValue,
+    computedPropValue,
     sizePropValidator,
-    colorVariantClass
+    computedColorValue
 } from '@inkline/inkline/mixins';
 
 import IContainer from '@inkline/inkline/components/IContainer/index.vue';
@@ -34,7 +34,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * Display the header background as cover, always covering the whole header width or height
@@ -74,14 +74,14 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         }
     },
     computed: {
         classes (): Classes {
             return {
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${this.size}`]: Boolean(this.size),
                 '-cover': this.cover,
                 '-fullscreen': this.fullscreen

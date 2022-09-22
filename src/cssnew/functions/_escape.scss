@@ -1,0 +1,70 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+
+$-number-map: (
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+);
+
+// https://mathiasbynens.be/notes/css-escapes
+$-escape-chars: (
+    "!",
+    "\"",
+    "#",
+    "$",
+    "%",
+    "&",
+    "'",
+    "(",
+    ")",
+    "*",
+    "+",
+    ",",
+    "-",
+    ".",
+    "/",
+    ":",
+    ";",
+    "<",
+    "=",
+    ">",
+    "?",
+    "@",
+    "[",
+    "\\",
+    "]",
+    "^",
+    "`",
+    "{",
+    "|",
+    "}",
+    "~",
+);
+
+@function -escape-impl($str) {
+    $output: "";
+    @for $str-index from 1 through string.length($str) {
+        $ch: string.slice($str, $str-index, $str-index);
+        @if $str-index == 1 and map.has-key($-number-map, $ch) {
+            $output: $output + "\\3" + $ch + " ";
+        } @else if list.index($-escape-chars, $ch) != null {
+            $output: $output + "\\" + $ch;
+        } @else {
+            $output: $output + $ch;
+        }
+    }
+    @return $output;
+}
+
+@function escape($value) {
+    @return -escape-impl("" + $value);
+}

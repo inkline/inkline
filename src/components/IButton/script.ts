@@ -3,8 +3,8 @@ import ILoader from '@inkline/inkline/components/ILoader/index.vue';
 import {
     LinkableMixin,
     sizePropValidator,
-    colorVariantClass,
-    defaultPropValue
+    computedColorValue,
+    computedPropValue, computedSizeValue
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -80,7 +80,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * The disabled state of the button
@@ -150,7 +150,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: '',
             validator: sizePropValidator
         }
     },
@@ -176,10 +176,16 @@ export default defineComponent({
 
             return this.active ? 'true' : 'false';
         },
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size || (this as any).buttonGroup.size);
+        },
         classes (): Classes {
             return {
-                ...colorVariantClass(this),
-                [`-${this.computedSize}`]: true,
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize),
                 '-active': this.active,
                 '-block': this.block,
                 '-circle': this.circle,
@@ -188,9 +194,6 @@ export default defineComponent({
                 '-outline': this.outline,
                 '-loading': this.loading
             };
-        },
-        computedSize (): string {
-            return this.size || (this as any).buttonGroup.size || 'md';
         },
         isDisabled (): boolean {
             return this.disabled || (this as any).buttonGroup.disabled || (this as any).form.disabled || (this as any).formGroup.disabled;

@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue';
 import {
-    colorVariantClass,
+    computedColorValue,
     sizePropValidator,
     FormComponentMixin,
-    defaultPropValue
+    computedPropValue
 } from '@inkline/inkline/mixins';
 import { uid } from '@inkline/inkline/helpers';
 import { Classes } from '@inkline/inkline/types';
@@ -35,7 +35,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * The disabled state of the checkbox group
@@ -105,7 +105,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         }
     },
@@ -119,7 +119,7 @@ export default defineComponent({
     computed: {
         classes (): Classes {
             return {
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,

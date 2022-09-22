@@ -7,8 +7,8 @@ import {
     uid
 } from '@inkline/inkline/helpers';
 import {
-    colorVariantClass,
-    defaultPropValue,
+    computedColorValue,
+    computedPropValue,
     sizePropValidator,
     FormComponentMixin
 } from '@inkline/inkline/mixins';
@@ -115,7 +115,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         }
     },
@@ -134,7 +134,7 @@ export default defineComponent({
     computed: {
         classes (): Classes {
             return {
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,

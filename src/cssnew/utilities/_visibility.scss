@@ -1,0 +1,35 @@
+@each $breakpoint-key in $breakpoint-prefix-keys {
+    $prefix: breakpoint-prefix($breakpoint-key);
+
+    [class*="_#{$prefix}visible"] {
+        display: none !important;
+    }
+
+    @include breakpoint-up($breakpoint-key) {
+        ._#{$prefix}visible {
+            display: block !important;
+        }
+    }
+
+    @each $display in (block, inline-block, inline, flex, inline-flex) {
+        @include breakpoint-up($breakpoint-key) {
+            ._#{$prefix}visible\:#{$display} {
+                display: $display !important;
+            }
+        }
+    }
+
+    @include breakpoint-up($breakpoint-key) {
+        ._#{$prefix}hidden {
+            display: none !important;
+        }
+    }
+}
+
+._visibility\:visible {
+    visibility: visible !important;
+}
+
+._visibility\:hidden {
+    visibility: hidden !important;
+}

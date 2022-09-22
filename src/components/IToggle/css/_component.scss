@@ -266,14 +266,14 @@
 
         &:checked + .toggle-label {
             &::before {
-                ----background: var(----background--checked);
-                ----border-color: var(----border-color--checked);
+                --toggle--background: var(----background--checked);
+                --toggle--border-color: var(----border-color--checked);
             }
 
             &::after {
                 ----indicator--background: var(----indicator--background--checked);
 
-                transform: translate(calc(#{var(----width)} / 2), 0);
+                transform: translate(calc(#{var(--toggle--width)} / 2), 0);
             }
         }
 
@@ -287,8 +287,8 @@
             color: var(----label--color--disabled);
 
             &::before {
-                ----background: var(----background--disabled);
-                ----border-color: var(----border-color--disabled);
+                --toggle--background: var(--toggle--disabled--background);
+                --toggle--border-color: var(--toggle--disabled--border-color);
             }
 
             &::after {
@@ -299,8 +299,8 @@
         &:disabled:checked + .toggle-label,
         &[readonly]:checked + .toggle-label {
             &::before {
-                ----background: var(----background--checked-disabled);
-                ----border-color: var(----border-color--checked-disabled);
+                --toggle--background: var(----background--checked-disabled);
+                --toggle--border-color: var(----border-color--checked-disabled);
             }
 
             &::after {
@@ -323,16 +323,48 @@
             display: inline-block;
             cursor: pointer;
             transition: var(----transition-duration);
-            border-width: var(----border-width);
-            border-style: var(----border-style);
-            border-color: var(----border-color);
-            margin-right: var(----margin-right);
+            border-width: var(
+                        --toggle--border-width,
+                        (
+                                    var(--toggle--border-top-width, var(--border-top-width))
+                                    var(--toggle--border-right-width, var(--border-right-width))
+                                    var(--toggle--border-bottom-width, var(--border-bottom-width))
+                                    var(--toggle--border-left-width, var(--border-left-width))
+                        )
+            );
+            border-style: var(
+                        --toggle--border-style,
+                        (
+                                    var(--toggle--border-top-style, var(--border-top-style))
+                                    var(--toggle--border-right-style, var(--border-right-style))
+                                    var(--toggle--border-bottom-style, var(--border-bottom-style))
+                                    var(--toggle--border-left-style, var(--border-left-style))
+                        )
+            );
+            border-color: var(
+                        --toggle--border-color,
+                        (
+                                    var(--toggle--border-top-color, var(--border-top-color))
+                                    var(--toggle--border-right-color, var(--border-right-color))
+                                    var(--toggle--border-bottom-color, var(--border-bottom-color))
+                                    var(--toggle--border-left-color, var(--border-left-color))
+                        )
+            );
+            margin-right: var(--toggle--margin-right, var(--margin-right));
             flex-shrink: 0;
             flex-grow: 0;
-            background-color: var(----background);
-            width: var(----width);
-            height: var(----height);
-            border-radius: var(----border-radius);
+            background-color: var(--toggle--background);
+            width: var(--toggle--width);
+            height: var(--toggle--height);
+            border-radius: var(
+                        --toggle--border-radius,
+                        (
+                                    var(--toggle--border-top-left-radius, var(--border-top-left-radius))
+                                    var(--toggle--border-top-right-radius, var(--border-top-right-radius))
+                                    var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
+                                    var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
+                        )
+            );
         }
 
         &::after {
@@ -347,9 +379,17 @@
             background-color: var(----indicator--background);
             height: var(----indicator--width);
             width: var(----indicator--height);
-            border-radius: var(----border-radius);
+            border-radius: var(
+                        --toggle--border-radius,
+                        (
+                                    var(--toggle--border-top-left-radius, var(--border-top-left-radius))
+                                    var(--toggle--border-top-right-radius, var(--border-top-right-radius))
+                                    var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
+                                    var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
+                        )
+            );
             margin-top: calc(var(----indicator--height) / -2);
-            margin-left: calc(var(----height) / 2 - var(----indicator--height) / 2);
+            margin-left: calc(var(--toggle--height) / 2 - var(----indicator--height) / 2);
         }
     }
 }

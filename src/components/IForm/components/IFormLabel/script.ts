@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import {
     FormComponentMixin,
-    defaultPropValue,
+    computedPropValue,
     sizePropValidator
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
@@ -48,7 +48,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         }
     },

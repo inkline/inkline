@@ -6,16 +6,16 @@
                         @include variant('sm', 'form') {
                                         --radio--size: var(--radio--sm--size, calc(#{1rem} * var(--size-multiplier-sm)));
                                         --radio--checkmark--size: var(--radio--sm--checkmark--size, calc(#{8px} * var(--size-multiplier-sm)));
-                                        --radio--label--font-size: var(--radio--sm--label--font-size, var(--font-size-sm));
+                                        --radio--label--font-size: var(--radio--sm--label--font-size, calc(var(--font-size) * var(--size-multiplier-sm)));
     }
                         @include variant('md', 'form') {
                                         --radio--size: var(--radio--md--size, calc(#{1rem} * var(--size-multiplier-md)));
                                         --radio--checkmark--size: var(--radio--md--checkmark--size, calc(#{8px} * var(--size-multiplier-md)));
-                                        --radio--label--font-size: var(--radio--md--label--font-size, var(--font-size-md));
+                                        --radio--label--font-size: var(--radio--md--label--font-size, calc(var(--font-size) * var(--size-multiplier-md)));
     }
                         @include variant('lg', 'form') {
                                         --radio--size: var(--radio--lg--size, calc(#{1rem} * var(--size-multiplier-lg)));
                                         --radio--checkmark--size: var(--radio--lg--checkmark--size, calc(#{8px} * var(--size-multiplier-lg)));
-                                        --radio--label--font-size: var(--radio--lg--label--font-size, var(--font-size-lg));
+                                        --radio--label--font-size: var(--radio--lg--label--font-size, calc(var(--font-size) * var(--size-multiplier-lg)));
     }
 }

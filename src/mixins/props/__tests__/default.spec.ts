@@ -1,4 +1,4 @@
-import { defaultPropValue } from '@inkline/inkline/mixins';
+import { computedPropValue } from '@inkline/inkline/mixins';
 import { inklineGlobals } from '@inkline/inkline/plugin';
 
 vi.mock('@inkline/inkline/plugin', () => ({
@@ -18,13 +18,13 @@ describe('mixins', () => {
             const propertyValueOption = 'lg';
 
             it('should return a function', () => {
-                expect(defaultPropValue(componentName, propertyName, propertyValue)).toEqual(expect.any(Function));
+                expect(computedPropValue(componentName, propertyName, propertyValue)).toEqual(expect.any(Function));
             });
 
             it('should return fallback property value if inkline prototype not defined', () => {
                 inklineGlobals.prototype = undefined;
 
-                const defaultValue = defaultPropValue(componentName, propertyName, propertyValue)();
+                const defaultValue = computedPropValue(componentName, propertyName, propertyValue)();
                 expect(defaultValue).toEqual(propertyValue);
             });
 
@@ -36,7 +36,7 @@ describe('mixins', () => {
                     }
                 } as any;
 
-                const defaultValue = defaultPropValue(componentName, propertyName, propertyValue)();
+                const defaultValue = computedPropValue(componentName, propertyName, propertyValue)();
                 expect(defaultValue).toEqual(propertyValueOption);
             });
 
@@ -51,7 +51,7 @@ describe('mixins', () => {
                     }
                 } as any;
 
-                const defaultValue = defaultPropValue(componentName, propertyName, propertyValue)();
+                const defaultValue = computedPropValue(componentName, propertyName, propertyValue)();
                 expect(defaultValue).toEqual(propertyValueOption);
             });
         });

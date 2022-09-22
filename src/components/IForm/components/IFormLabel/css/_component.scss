@@ -37,10 +37,10 @@
 .form-label {
     position: relative;
     flex-basis: 100%;
-    transition: color var(--transition-easing) var(--transition-duration);
-    font-size: var(----font-size);
-    margin-top: var(----margin-top);
-    margin-bottom: var(----margin-bottom);
+    transition: color var(--form-label--transition-timing-function, var(--transition-timing-function)) var(--form-label--transition-duration, var(--transition-duration));
+    font-size: var(--form-label--font-size, var(--font-size));
+    margin-top: var(--form-label--margin-top, var(--margin-top));
+    margin-bottom: var(--form-label--margin-bottom, var(--margin-bottom));
 
     &.-right {
         margin-right: 0;
@@ -59,10 +59,10 @@
     }
 
     .form-group.-inline > & {
-        margin-right: var(----margin-right);
+        margin-right: var(--form-label--margin-right, var(--margin-right));
 
         &.-right {
-            margin-left: var(----margin-left);
+            margin-left: var(--form-label--margin-left, var(--margin-left));
         }
     }
 }

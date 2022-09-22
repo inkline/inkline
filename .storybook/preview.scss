@@ -1,3 +1,14 @@
+@import "../src/cssnew/global/preview";
+@import "../src/components/IAlert/css/preview";
+@import "../src/components/IBadge/css/preview";
+@import "../src/components/IButton/css/preview";
+@import "../src/components/IButtonGroup/css/preview";
+@import "../src/components/ICard/css/preview";
+@import "../src/components/ICard/css/preview";
+@import "../src/components/IContainer/css/preview";
+@import "../src/components/ICollapsible/css/preview";
+@import "../src/components/IDropdown/css/preview";
+
 //@import "../src/css/variables";
 //@import "../src/css/mixins";
 //@import "../src/css/preview";
@@ -27,20 +38,12 @@
 //    }
 //}
 
-#root {
-    > .alert + .alert {
-        margin-top: var(--margin-top);
-    }
-
-    > .badge,
-    > .button,
-    .button-group {
-        margin-right: var(--margin-right);
-        margin-bottom: var(--margin-bottom);
-    }
-
-    .button-group .button {
-        margin-right: 0;
-        margin-bottom: 0;
-    }
+#root,
+.storybook-example {
+    @extend %alert-preview;
+    @extend %badge-preview;
+    @extend %button-preview;
+    @extend %button-group-preview;
+    @extend %card-preview;
+    @extend %grid-preview;
 }

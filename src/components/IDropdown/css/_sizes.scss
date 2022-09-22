@@ -3,85 +3,39 @@
  */
 
 .dropdown {
-                        &.-sm {
-                                        --dropdown--border-top-left-radius: var(--dropdown--sm--border-top-left-radius, var(--border-top-left-radius-sm));
-                                        --dropdown--border-top-right-radius: var(--dropdown--sm--border-top-right-radius, var(--border-top-right-radius-sm));
-                                        --dropdown--border-bottom-right-radius: var(--dropdown--sm--border-bottom-right-radius, var(--border-bottom-right-radius-sm));
-                                        --dropdown--border-bottom-left-radius: var(--dropdown--sm--border-bottom-left-radius, var(--border-bottom-left-radius-sm));
-                                        --dropdown--font-size: var(--dropdown--sm--font-size, var(--font-size-sm));
-                                        --dropdown--padding-top: var(--dropdown--sm--padding-top, var(--padding-top-sm));
-                                        --dropdown--padding-right: var(--dropdown--sm--padding-right, var(--padding-right-sm));
-                                        --dropdown--padding-bottom: var(--dropdown--sm--padding-bottom, var(--padding-bottom-sm));
-                                        --dropdown--padding-left: var(--dropdown--sm--padding-left, var(--padding-left-sm));
-                                        --dropdown--item--padding-top: var(--dropdown--sm--item--padding-top, calc(#{calc(var(----padding-top) / 2)} * var(--size-multiplier-sm)));
-                                        --dropdown--item--padding-right: var(--dropdown--sm--item--padding-right, var(----padding-right-sm));
-                                        --dropdown--item--padding-bottom: var(--dropdown--sm--item--padding-bottom, calc(#{calc(var(----padding-bottom) / 2)} * var(--size-multiplier-sm)));
-                                        --dropdown--item--padding-left: var(--dropdown--sm--item--padding-left, var(----padding-left-sm));
-                                        --dropdown--header--padding-top: var(--dropdown--sm--header--padding-top, var(----padding-top-sm));
-                                        --dropdown--header--padding-right: var(--dropdown--sm--header--padding-right, var(----padding-right-sm));
-                                        --dropdown--header--padding-bottom: var(--dropdown--sm--header--padding-bottom, var(----padding-bottom-sm));
-                                        --dropdown--header--padding-left: var(--dropdown--sm--header--padding-left, var(----padding-left-sm));
-                                        --dropdown--body--padding-top: var(--dropdown--sm--body--padding-top, var(----padding-top-sm));
-                                        --dropdown--body--padding-right: var(--dropdown--sm--body--padding-right, calc(#{0} * var(--size-multiplier-sm)));
-                                        --dropdown--body--padding-bottom: var(--dropdown--sm--body--padding-bottom, var(----padding-bottom-sm));
-                                        --dropdown--body--padding-left: var(--dropdown--sm--body--padding-left, calc(#{0} * var(--size-multiplier-sm)));
-                                        --dropdown--footer--padding-top: var(--dropdown--sm--footer--padding-top, var(----padding-top-sm));
-                                        --dropdown--footer--padding-right: var(--dropdown--sm--footer--padding-right, var(----padding-right-sm));
-                                        --dropdown--footer--padding-bottom: var(--dropdown--sm--footer--padding-bottom, var(----padding-bottom-sm));
-                                        --dropdown--footer--padding-left: var(--dropdown--sm--footer--padding-left, var(----padding-left-sm));
+    &.-sm {
+        --dropdown--border-top-left-radius: var(--dropdown--sm--border-top-left-radius, calc(var(--border-top-left-radius) * var(--size-multiplier-sm)));
+        --dropdown--border-top-right-radius: var(--dropdown--sm--border-top-right-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-sm)));
+        --dropdown--border-bottom-right-radius: var(--dropdown--sm--border-bottom-right-radius, calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm)));
+        --dropdown--border-bottom-left-radius: var(--dropdown--sm--border-bottom-left-radius, calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm)));
+        --dropdown--font-size: var(--dropdown--sm--font-size, calc(var(--font-size) * var(--size-multiplier-sm)));
+        --dropdown--padding-top: var(--dropdown--sm--padding-top, calc(var(--padding-top) * var(--size-multiplier-sm)));
+        --dropdown--padding-right: var(--dropdown--sm--padding-right, calc(var(--padding-right) * var(--size-multiplier-sm)));
+        --dropdown--padding-bottom: var(--dropdown--sm--padding-bottom, calc(var(--padding-bottom) * var(--size-multiplier-sm)));
+        --dropdown--padding-left: var(--dropdown--sm--padding-left, calc(var(--padding-left) * var(--size-multiplier-sm)));
     }
-                        &.-md {
-                                        --dropdown--border-top-left-radius: var(--dropdown--md--border-top-left-radius, var(--border-top-left-radius-md));
-                                        --dropdown--border-top-right-radius: var(--dropdown--md--border-top-right-radius, var(--border-top-right-radius-md));
-                                        --dropdown--border-bottom-right-radius: var(--dropdown--md--border-bottom-right-radius, var(--border-bottom-right-radius-md));
-                                        --dropdown--border-bottom-left-radius: var(--dropdown--md--border-bottom-left-radius, var(--border-bottom-left-radius-md));
-                                        --dropdown--font-size: var(--dropdown--md--font-size, var(--font-size-md));
-                                        --dropdown--padding-top: var(--dropdown--md--padding-top, var(--padding-top-md));
-                                        --dropdown--padding-right: var(--dropdown--md--padding-right, var(--padding-right-md));
-                                        --dropdown--padding-bottom: var(--dropdown--md--padding-bottom, var(--padding-bottom-md));
-                                        --dropdown--padding-left: var(--dropdown--md--padding-left, var(--padding-left-md));
-                                        --dropdown--item--padding-top: var(--dropdown--md--item--padding-top, calc(#{calc(var(----padding-top) / 2)} * var(--size-multiplier-md)));
-                                        --dropdown--item--padding-right: var(--dropdown--md--item--padding-right, var(----padding-right-md));
-                                        --dropdown--item--padding-bottom: var(--dropdown--md--item--padding-bottom, calc(#{calc(var(----padding-bottom) / 2)} * var(--size-multiplier-md)));
-                                        --dropdown--item--padding-left: var(--dropdown--md--item--padding-left, var(----padding-left-md));
-                                        --dropdown--header--padding-top: var(--dropdown--md--header--padding-top, var(----padding-top-md));
-                                        --dropdown--header--padding-right: var(--dropdown--md--header--padding-right, var(----padding-right-md));
-                                        --dropdown--header--padding-bottom: var(--dropdown--md--header--padding-bottom, var(----padding-bottom-md));
-                                        --dropdown--header--padding-left: var(--dropdown--md--header--padding-left, var(----padding-left-md));
-                                        --dropdown--body--padding-top: var(--dropdown--md--body--padding-top, var(----padding-top-md));
-                                        --dropdown--body--padding-right: var(--dropdown--md--body--padding-right, calc(#{0} * var(--size-multiplier-md)));
-                                        --dropdown--body--padding-bottom: var(--dropdown--md--body--padding-bottom, var(----padding-bottom-md));
-                                        --dropdown--body--padding-left: var(--dropdown--md--body--padding-left, calc(#{0} * var(--size-multiplier-md)));
-                                        --dropdown--footer--padding-top: var(--dropdown--md--footer--padding-top, var(----padding-top-md));
-                                        --dropdown--footer--padding-right: var(--dropdown--md--footer--padding-right, var(----padding-right-md));
-                                        --dropdown--footer--padding-bottom: var(--dropdown--md--footer--padding-bottom, var(----padding-bottom-md));
-                                        --dropdown--footer--padding-left: var(--dropdown--md--footer--padding-left, var(----padding-left-md));
+
+    &.-md {
+        --dropdown--border-top-left-radius: var(--dropdown--md--border-top-left-radius, calc(var(--border-top-left-radius) * var(--size-multiplier-md)));
+        --dropdown--border-top-right-radius: var(--dropdown--md--border-top-right-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-md)));
+        --dropdown--border-bottom-right-radius: var(--dropdown--md--border-bottom-right-radius, calc(var(--border-bottom-right-radius) * var(--size-multiplier-md)));
+        --dropdown--border-bottom-left-radius: var(--dropdown--md--border-bottom-left-radius, calc(var(--border-bottom-left-radius) * var(--size-multiplier-md)));
+        --dropdown--font-size: var(--dropdown--md--font-size, calc(var(--font-size) * var(--size-multiplier-md)));
+        --dropdown--padding-top: var(--dropdown--md--padding-top, calc(var(--padding-top) * var(--size-multiplier-md)));
+        --dropdown--padding-right: var(--dropdown--md--padding-right, calc(var(--padding-right) * var(--size-multiplier-md)));
+        --dropdown--padding-bottom: var(--dropdown--md--padding-bottom, calc(var(--padding-bottom) * var(--size-multiplier-md)));
+        --dropdown--padding-left: var(--dropdown--md--padding-left, calc(var(--padding-left) * var(--size-multiplier-md)));
     }
-                        &.-lg {
-                                        --dropdown--border-top-left-radius: var(--dropdown--lg--border-top-left-radius, var(--border-top-left-radius-lg));
-                                        --dropdown--border-top-right-radius: var(--dropdown--lg--border-top-right-radius, var(--border-top-right-radius-lg));
-                                        --dropdown--border-bottom-right-radius: var(--dropdown--lg--border-bottom-right-radius, var(--border-bottom-right-radius-lg));
-                                        --dropdown--border-bottom-left-radius: var(--dropdown--lg--border-bottom-left-radius, var(--border-bottom-left-radius-lg));
-                                        --dropdown--font-size: var(--dropdown--lg--font-size, var(--font-size-lg));
-                                        --dropdown--padding-top: var(--dropdown--lg--padding-top, var(--padding-top-lg));
-                                        --dropdown--padding-right: var(--dropdown--lg--padding-right, var(--padding-right-lg));
-                                        --dropdown--padding-bottom: var(--dropdown--lg--padding-bottom, var(--padding-bottom-lg));
-                                        --dropdown--padding-left: var(--dropdown--lg--padding-left, var(--padding-left-lg));
-                                        --dropdown--item--padding-top: var(--dropdown--lg--item--padding-top, calc(#{calc(var(----padding-top) / 2)} * var(--size-multiplier-lg)));
-                                        --dropdown--item--padding-right: var(--dropdown--lg--item--padding-right, var(----padding-right-lg));
-                                        --dropdown--item--padding-bottom: var(--dropdown--lg--item--padding-bottom, calc(#{calc(var(----padding-bottom) / 2)} * var(--size-multiplier-lg)));
-                                        --dropdown--item--padding-left: var(--dropdown--lg--item--padding-left, var(----padding-left-lg));
-                                        --dropdown--header--padding-top: var(--dropdown--lg--header--padding-top, var(----padding-top-lg));
-                                        --dropdown--header--padding-right: var(--dropdown--lg--header--padding-right, var(----padding-right-lg));
-                                        --dropdown--header--padding-bottom: var(--dropdown--lg--header--padding-bottom, var(----padding-bottom-lg));
-                                        --dropdown--header--padding-left: var(--dropdown--lg--header--padding-left, var(----padding-left-lg));
-                                        --dropdown--body--padding-top: var(--dropdown--lg--body--padding-top, var(----padding-top-lg));
-                                        --dropdown--body--padding-right: var(--dropdown--lg--body--padding-right, calc(#{0} * var(--size-multiplier-lg)));
-                                        --dropdown--body--padding-bottom: var(--dropdown--lg--body--padding-bottom, var(----padding-bottom-lg));
-                                        --dropdown--body--padding-left: var(--dropdown--lg--body--padding-left, calc(#{0} * var(--size-multiplier-lg)));
-                                        --dropdown--footer--padding-top: var(--dropdown--lg--footer--padding-top, var(----padding-top-lg));
-                                        --dropdown--footer--padding-right: var(--dropdown--lg--footer--padding-right, var(----padding-right-lg));
-                                        --dropdown--footer--padding-bottom: var(--dropdown--lg--footer--padding-bottom, var(----padding-bottom-lg));
-                                        --dropdown--footer--padding-left: var(--dropdown--lg--footer--padding-left, var(----padding-left-lg));
+
+    &.-lg {
+        --dropdown--border-top-left-radius: var(--dropdown--lg--border-top-left-radius, calc(var(--border-top-left-radius) * var(--size-multiplier-lg)));
+        --dropdown--border-top-right-radius: var(--dropdown--lg--border-top-right-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-lg)));
+        --dropdown--border-bottom-right-radius: var(--dropdown--lg--border-bottom-right-radius, calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg)));
+        --dropdown--border-bottom-left-radius: var(--dropdown--lg--border-bottom-left-radius, calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg)));
+        --dropdown--font-size: var(--dropdown--lg--font-size, calc(var(--font-size) * var(--size-multiplier-lg)));
+        --dropdown--padding-top: var(--dropdown--lg--padding-top, calc(var(--padding-top) * var(--size-multiplier-lg)));
+        --dropdown--padding-right: var(--dropdown--lg--padding-right, calc(var(--padding-right) * var(--size-multiplier-lg)));
+        --dropdown--padding-bottom: var(--dropdown--lg--padding-bottom, calc(var(--padding-bottom) * var(--size-multiplier-lg)));
+        --dropdown--padding-left: var(--dropdown--lg--padding-left, calc(var(--padding-left) * var(--size-multiplier-lg)));
     }
 }

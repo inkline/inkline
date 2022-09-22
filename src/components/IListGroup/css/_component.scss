@@ -171,17 +171,49 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    transition-property: background-color, border-color;
-    transition-duration: var(--transition-duration);
-    transition-timing-function: var(--transition-easing);
-    background-color: var(----background);
-    color: var(----color);
-    font-size: var(----font-size);
-    border-radius: var(----border-radius);
+    transition-property: var(--list-group--transition-property, (background-color, border-color));
+    transition-duration: var(--list-group--transition-duration, var(--transition-duration));
+    transition-timing-function: var(--list-group--transition-timing-function, var(--transition-timing-function));
+    background-color: var(--list-group--background);
+    color: var(--list-group--color);
+    font-size: var(--list-group--font-size, var(--font-size));
+    border-radius: var(
+        --list-group--border-radius,
+        (
+            var(--list-group--border-top-left-radius, var(--border-top-left-radius))
+            var(--list-group--border-top-right-radius, var(--border-top-right-radius))
+            var(--list-group--border-bottom-right-radius, var(--border-bottom-right-radius))
+            var(--list-group--border-bottom-left-radius, var(--border-bottom-left-radius))
+        )
+    );
 
     &.-border {
-        border-width: var(----border-width);
-        border-style: var(----border-style);
-        border-color: var(----border-color);
+        border-width: var(
+                --list-group--border-width,
+                (
+                        var(--list-group--border-top-width, var(--border-top-width))
+                        var(--list-group--border-right-width, var(--border-right-width))
+                        var(--list-group--border-bottom-width, var(--border-bottom-width))
+                        var(--list-group--border-left-width, var(--border-left-width))
+                )
+        );
+        border-style: var(
+                --list-group--border-style,
+                (
+                        var(--list-group--border-top-style, var(--border-top-style))
+                        var(--list-group--border-right-style, var(--border-right-style))
+                        var(--list-group--border-bottom-style, var(--border-bottom-style))
+                        var(--list-group--border-left-style, var(--border-left-style))
+                )
+        );
+        border-color: var(
+                --list-group--border-color,
+                (
+                        var(--list-group--border-top-color, var(--border-top-color))
+                        var(--list-group--border-right-color, var(--border-right-color))
+                        var(--list-group--border-bottom-color, var(--border-bottom-color))
+                        var(--list-group--border-left-color, var(--border-left-color))
+                )
+        );
     }
 }

@@ -83,10 +83,10 @@
     /**
      * Color light variables
      */
-    --color-light-h: var(--color-gray-200-h);
-    --color-light-s: var(--color-gray-200-s);
-    --color-light-l: var(--color-gray-200-l);
-    --color-light-a: var(--color-gray-200-a);
+    --color-light-h: var(--color-gray-100-h);
+    --color-light-s: var(--color-gray-100-s);
+    --color-light-l: var(--color-gray-100-l);
+    --color-light-a: var(--color-gray-100-a);
     --color-light: hsla(var(--color-light-h), var(--color-light-s), var(--color-light-l), var(--color-light-a));
 
     /**
@@ -1299,32 +1299,32 @@
     --text--color-muted-l: var(--color-gray-600-l);
     --text--color-muted-a: var(--color-gray-600-a);
     --text--color-muted: hsla(var(--text--color-muted-h), var(--text--color-muted-s), var(--text--color-muted-l), var(--text--color-muted-a));
-    --text--color-light-h: var(--color-white-h);
-    --text--color-light-s: var(--color-white-s);
-    --text--color-light-l: var(--color-white-l);
-    --text--color-light-a: var(--color-white-a);
+    --text--color-light-h: var(--color-gray-100-h);
+    --text--color-light-s: var(--color-gray-100-s);
+    --text--color-light-l: var(--color-gray-100-l);
+    --text--color-light-a: var(--color-gray-100-a);
     --text--color-light: hsla(var(--text--color-light-h), var(--text--color-light-s), var(--text--color-light-l), var(--text--color-light-a));
     
     /**
      * Contrast text color variables
      */
-    --contrast-text--color-red: var(--text--color-dark);
-    --contrast-text--color-orange: var(--text--color-dark);
-    --contrast-text--color-yellow: var(--text--color-dark);
-    --contrast-text--color-green: var(--text--color-dark);
-    --contrast-text--color-teal: var(--text--color-dark);
-    --contrast-text--color-blue: var(--text--color-light);
-    --contrast-text--color-purple: var(--text--color-light);
-    --contrast-text--color-pink: var(--text--color-dark);
-    --contrast-text--color-white: var(--text--color-dark);
-    --contrast-text--color-light: var(--text--color-dark);
-    --contrast-text--color-gray: var(--text--color-dark);
-    --contrast-text--color-dark: var(--text--color-light);
-    --contrast-text--color-black: var(--text--color-light);
-    --contrast-text--color-primary: var(--text--color-light);
-    --contrast-text--color-secondary: var(--text--color-light);
-    --contrast-text--color-info: var(--text--color-dark);
-    --contrast-text--color-success: var(--text--color-dark);
-    --contrast-text--color-warning: var(--text--color-dark);
-    --contrast-text--color-danger: var(--text--color-dark);
+    --contrast-text--color-dark: var(--color-white);
+    --contrast-text--color-light: var(--color-gray-900);
+    --contrast-text--color-red: var(--contrast-text--color-light);
+    --contrast-text--color-orange: var(--contrast-text--color-light);
+    --contrast-text--color-yellow: var(--contrast-text--color-light);
+    --contrast-text--color-green: var(--contrast-text--color-light);
+    --contrast-text--color-teal: var(--contrast-text--color-light);
+    --contrast-text--color-blue: var(--contrast-text--color-dark);
+    --contrast-text--color-purple: var(--contrast-text--color-dark);
+    --contrast-text--color-pink: var(--contrast-text--color-light);
+    --contrast-text--color-white: var(--contrast-text--color-light);
+    --contrast-text--color-gray: var(--contrast-text--color-light);
+    --contrast-text--color-black: var(--contrast-text--color-dark);
+    --contrast-text--color-primary: var(--contrast-text--color-dark);
+    --contrast-text--color-secondary: var(--contrast-text--color-dark);
+    --contrast-text--color-info: var(--contrast-text--color-light);
+    --contrast-text--color-success: var(--contrast-text--color-light);
+    --contrast-text--color-warning: var(--contrast-text--color-light);
+    --contrast-text--color-danger: var(--contrast-text--color-light);
 }

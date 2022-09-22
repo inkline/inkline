@@ -1,4 +1,10 @@
 @import 'normalize.css';
 @import 'variables';
+@import 'variables/dark';
+
+@import 'functions';
+@import 'mixins';
+@import 'utilities';
+@import 'icons';
 @import 'global';
 @import 'components';

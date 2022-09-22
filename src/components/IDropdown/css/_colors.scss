@@ -3,36 +3,45 @@
  */
 
 .dropdown {
-                        &.-light {
-                                        --dropdown--background: var(--dropdown--white--background, var(--color-white));
-                                        --dropdown--background--active: var(--dropdown--light--background--active, var(--color-light-250));
-                                        --dropdown--background--disabled: var(--dropdown--background--disabled, #{transparent});
-                                        --dropdown--background--hover: var(--dropdown--light--background--hover, var(--color-light-250));
-                                        --dropdown--border-top-color: var(--dropdown--light--border-top-color, var(--color-light));
-                                        --dropdown--border-right-color: var(--dropdown--light--border-right-color, var(--color-light));
-                                        --dropdown--border-bottom-color: var(--dropdown--light--border-bottom-color, var(--color-light));
-                                        --dropdown--border-left-color: var(--dropdown--light--border-left-color, var(--color-light));
-                                        --dropdown--color: var(--dropdown--white--color, var(--contrast-text--color-white));
-                                        --dropdown--color--active: var(--dropdown--color--active, #{var(--dropdown-color-variant-light-color)});
-                                        --dropdown--color--disabled: var(--dropdown--light--color--disabled, var(--color-light-650));
-                                        --dropdown--color--hover: var(--dropdown--color--hover, #{var(--dropdown-color-variant-light-color)});
-                                        --dropdown--header--background: var(--dropdown--gray--header--background, var(--color-gray-050));
-                                        --dropdown--footer--background: var(--dropdown--gray--footer--background, var(--color-gray-050));
+    &.-light {
+        --dropdown--background: var(--dropdown--light--background, var(--color-white));
+        --dropdown--color: var(--dropdown--light--color, var(--contrast-text--color-white));
+        --dropdown--border-top-color: var(--dropdown--light--border-top-color, var(--color-light));
+        --dropdown--border-right-color: var(--dropdown--light--border-right-color, var(--color-light));
+        --dropdown--border-bottom-color: var(--dropdown--light--border-bottom-color, var(--color-light));
+        --dropdown--border-left-color: var(--dropdown--light--border-left-color, var(--color-light));
+
+        --dropdown--item--hover--background: var(--dropdown--light--item--hover--background, var(--color-light-250));
+        --dropdown--item--hover--color: var(--dropdown--light--item--hover--color, #{var(--dropdown-color-variant-light-color)});
+
+        --dropdown--item--active--background: var(--dropdown--light--item--active--background, var(--color-light-250));
+        --dropdown--item--active--color: var(--dropdown--light--item--active--color, #{var(--dropdown-color-variant-light-color)});
+
+        --dropdown--item--disabled--background: var(--dropdown--light--item--disabled--background, transparent);
+        --dropdown--item--disabled--color: var(--dropdown--light--item--disabled--color, var(--color-light-650));
+
+        --dropdown--header--background: var(--dropdown--light--header--background, var(--color-gray-050));
+        --dropdown--footer--background: var(--dropdown--light--footer--background, var(--color-gray-050));
     }
-                        &.-dark {
-                                        --dropdown--background: var(--dropdown--dark--background, var(--color-dark));
-                                        --dropdown--background--active: var(--dropdown--dark--background--active, var(--color-dark-450));
-                                        --dropdown--background--disabled: var(--dropdown--background--disabled, #{transparent});
-                                        --dropdown--background--hover: var(--dropdown--dark--background--hover, var(--color-dark-450));
-                                        --dropdown--border-top-color: var(--dropdown--dark--border-top-color, var(--color-dark-600));
-                                        --dropdown--border-right-color: var(--dropdown--dark--border-right-color, var(--color-dark-600));
-                                        --dropdown--border-bottom-color: var(--dropdown--dark--border-bottom-color, var(--color-dark-600));
-                                        --dropdown--border-left-color: var(--dropdown--dark--border-left-color, var(--color-dark-600));
-                                        --dropdown--color: var(--dropdown--dark--color, var(--contrast-text--color-dark));
-                                        --dropdown--color--active: var(--dropdown--color--active, #{var(--dropdown-color-variant-dark-color)});
-                                        --dropdown--color--disabled: var(--dropdown--dark--color--disabled, var(--color-dark-250));
-                                        --dropdown--color--hover: var(--dropdown--color--hover, #{var(--dropdown-color-variant-dark-color)});
-                                        --dropdown--header--background: var(--dropdown--dark--header--background, var(--color-dark-550));
-                                        --dropdown--footer--background: var(--dropdown--dark--footer--background, var(--color-dark-550));
+
+    &.-dark {
+        --dropdown--background: var(--dropdown--dark--background, var(--color-dark));
+        --dropdown--color: var(--dropdown--dark--color, var(--contrast-text--color-dark));
+        --dropdown--border-top-color: var(--dropdown--dark--border-top-color, var(--color-dark-tint-50));
+        --dropdown--border-right-color: var(--dropdown--dark--border-right-color, var(--color-dark-tint-50));
+        --dropdown--border-bottom-color: var(--dropdown--dark--border-bottom-color, var(--color-dark-tint-50));
+        --dropdown--border-left-color: var(--dropdown--dark--border-left-color, var(--color-dark-tint-50));
+
+        --dropdown--item--hover--background: var(--dropdown--dark--item--hover--background, var(--color-dark-tint-50));
+        --dropdown--item--hover--color: var(--dropdown--dark--item--hover--color, var(--dropdown--color));
+
+        --dropdown--item--active--background: var(--dropdown--dark--item--active--background, var(--color-dark-tint-50));
+        --dropdown--item--active--color: var(--dropdown--dark--item--active--color, var(--dropdown--color));
+
+        --dropdown--item--disabled--background: var(--dropdown--dark--item--disabled--background, transparent);
+        --dropdown--item--disabled--color: var(--dropdown--dark--item--disabled--color, var(--color-dark-250));
+
+        --dropdown--header--background: var(--dropdown--dark--header--background, var(--color-dark-550));
+        --dropdown--footer--background: var(--dropdown--dark--footer--background, var(--color-dark-550));
     }
 }

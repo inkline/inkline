@@ -2,8 +2,8 @@ import { defineComponent } from 'vue';
 import { addClass, removeClass, uid } from '@inkline/inkline/helpers';
 import { OverlayController } from '@inkline/inkline/controllers';
 import {
-    defaultPropValue,
-    colorVariantClass,
+    computedPropValue,
+    computedColorValue,
     sizePropValidator
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
@@ -68,7 +68,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * The disabled state of the modal
@@ -120,7 +120,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         },
         /**
@@ -160,7 +160,7 @@ export default defineComponent({
         classes (): Classes {
             return {
                 '-disabled': (this as any).disabled,
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${(this as any).size}`]: Boolean((this as any).size)
             };
         }

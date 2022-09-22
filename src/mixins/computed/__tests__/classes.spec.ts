@@ -1,4 +1,4 @@
-import { colorVariantClass } from '@inkline/inkline/mixins';
+import { computedColorValue } from '@inkline/inkline/mixins';
 
 describe('mixins', () => {
     describe('classes', () => {
@@ -6,7 +6,7 @@ describe('mixins', () => {
             it('should return -{color} if colorClass', () => {
                 const component = { color: 'primary' };
 
-                expect(colorVariantClass(component)).toHaveProperty(`-${component.color}`, true);
+                expect(computedColorValue(component)).toHaveProperty(`-${component.color}`, true);
             });
 
             it('should return -{colorMode} if not colorClass', () => {
@@ -18,7 +18,7 @@ describe('mixins', () => {
                     }
                 };
 
-                expect(colorVariantClass(component)).toHaveProperty(`-${component.$inkline.options.colorMode}`, true);
+                expect(computedColorValue(component)).toHaveProperty(`-${component.$inkline.options.colorMode}`, true);
             });
 
             it('should return -light if system colorMode and not colorClass', () => {
@@ -35,7 +35,7 @@ describe('mixins', () => {
                     }
                 };
 
-                expect(colorVariantClass(component)).toHaveProperty('-light', true);
+                expect(computedColorValue(component)).toHaveProperty('-light', true);
             });
 
             it('should return -dark if system colorMode and not colorClass', () => {
@@ -52,7 +52,7 @@ describe('mixins', () => {
                     }
                 };
 
-                expect(colorVariantClass(component)).toHaveProperty('-dark', true);
+                expect(computedColorValue(component)).toHaveProperty('-dark', true);
             });
         });
     });

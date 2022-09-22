@@ -28,8 +28,8 @@
 .loader {
     display: inline-block;
     position: relative;
-    width: var(----size);
-    height: var(----size);
+    width: var(--loader--size);
+    height: var(--loader--size);
 
     &::before {
         content: '';
@@ -60,7 +60,7 @@
         transform-origin: center center;
 
         > circle {
-            stroke: var(----background);
+            stroke: var(--loader--background);
             stroke-dasharray: 89, 200;
             stroke-dashoffset: -35px;
             animation: loader-dash var(----animation-duration) ease-in-out infinite;

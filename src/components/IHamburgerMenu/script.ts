@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import {
-    defaultPropValue,
-    colorVariantClass
+    computedPropValue,
+    computedColorValue
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -28,7 +28,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * Used to set the hamburger menu as opened or closed
@@ -51,7 +51,7 @@ export default defineComponent({
     computed: {
         classes (): Classes {
             return {
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 '-active': this.modelValue,
                 [`-${this.animation}`]: true
             };

@@ -261,11 +261,11 @@
         align-items: stretch;
         padding: 0;
         line-height: var(--input-line-height);
-        transition-property: background-color;
-        transition-duration: var(--transition-duration);
-        transition-timing-function: var(--transition-easing);
+        transition-property: var(--input--transition-property, (background-color));
+        transition-duration: var(--input--transition-duration, var(--transition-duration));
+        transition-timing-function: var(--input--transition-timing-function, var(--transition-timing-function));
         background-color: var(----prepend-append--background);
-        font-size: var(----font-size);
+        font-size: var(--input--font-size, var(--font-size));
 
         > * {
             display: flex;
@@ -285,14 +285,14 @@
 
     .input-prepend,
     .input-prepend > *:first-child {
-        border-top-left-radius: var(----border-top-left-radius);
-        border-bottom-left-radius: var(----border-bottom-left-radius);
+        border-top-left-radius: var(--input--border-top-left-radius, var(--border-top-left-radius));
+        border-bottom-left-radius: var(--input--border-bottom-left-radius, var(--border-bottom-left-radius));
     }
 
     .input-append,
     .input-append > *:last-child {
-        border-top-right-radius: var(----border-top-right-radius);
-        border-bottom-right-radius: var(----border-bottom-right-radius);
+        border-top-right-radius: var(--input--border-top-right-radius, var(--border-top-right-radius));
+        border-bottom-right-radius: var(--input--border-bottom-right-radius, var(--border-bottom-right-radius));
     }
 
     .input {
@@ -302,27 +302,77 @@
         align-items: center;
         flex-direction: row;
         background-clip: padding-box;
-        border-width: var(----border-width);
-        border-style: var(----border-style);
-        border-color: var(----border-color);
-        border-radius: var(----border-radius);
-        box-shadow: var(----box-shadow);
-        transition-property: background-color, color, border-color, box-shadow;
-        transition-duration: var(--transition-duration);
-        transition-timing-function: var(--transition-easing);
-        color: var(----color);
-        background-color: var(----background);
-        font-size: var(----font-size);
+        border-width: var(
+                --input--border-width,
+                (
+                        var(--input--border-top-width, var(--border-top-width))
+                        var(--input--border-right-width, var(--border-right-width))
+                        var(--input--border-bottom-width, var(--border-bottom-width))
+                        var(--input--border-left-width, var(--border-left-width))
+                )
+        );
+        border-style: var(
+                --input--border-style,
+                (
+                        var(--input--border-top-style, var(--border-top-style))
+                        var(--input--border-right-style, var(--border-right-style))
+                        var(--input--border-bottom-style, var(--border-bottom-style))
+                        var(--input--border-left-style, var(--border-left-style))
+                )
+        );
+        border-color: var(
+                --input--border-color,
+                (
+                        var(--input--border-top-color, var(--border-top-color))
+                        var(--input--border-right-color, var(--border-right-color))
+                        var(--input--border-bottom-color, var(--border-bottom-color))
+                        var(--input--border-left-color, var(--border-left-color))
+                )
+        );
+        border-radius: var(
+                --input--border-radius,
+                (
+                        var(--input--border-top-left-radius, var(--border-top-left-radius))
+                        var(--input--border-top-right-radius, var(--border-top-right-radius))
+                        var(--input--border-bottom-right-radius, var(--border-bottom-right-radius))
+                        var(--input--border-bottom-left-radius, var(--border-bottom-left-radius))
+                )
+        );
+        box-shadow: var(
+                --input--box-shadow,
+                (
+                        var(--input--box-shadow-x-offset, var(--box-shadow-offset-x))
+                        var(--input--box-shadow-y-offset, var(--box-shadow-offset-y))
+                        var(--input--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                        var(--input--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                        var(--input--box-shadow-color, var(--box-shadow-color))
+                )
+        );
+        transition-property: var(--input--transition-property, (background-color, color, border-color, box-shadow));
+        transition-duration: var(--input--transition-duration, var(--transition-duration));
+        transition-timing-function: var(--input--transition-timing-function, var(--transition-timing-function));
+        color: var(--input--color);
+        background-color: var(--input--background);
+        font-size: var(--input--font-size, var(--font-size));
 
         &:hover {
-            ----border-color: var(----border-color--hover);
+            --input--border-color: var(----border-color--hover);
         }
 
         // Customize the `:focus` state to imitate native WebKit styles.
         &:focus-within {
             outline: 0;
-            box-shadow: var(----box-shadow);
-            ----border-color: var(----border-color--focus);
+            box-shadow: var(
+                        --input--box-shadow,
+                        (
+                                    var(--input--box-shadow-x-offset, var(--box-shadow-offset-x))
+                                    var(--input--box-shadow-y-offset, var(--box-shadow-offset-y))
+                                    var(--input--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                                    var(--input--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                                    var(--input--box-shadow-color, var(--box-shadow-color))
+                        )
+            );
+            --input--border-color: var(----border-color--focus);
         }
 
         > input,
@@ -335,9 +385,17 @@
             border: 0;
             margin: 0;
             outline: 0;
-            line-height: var(----line-height);
-            color: var(----color);
-            padding: var(----padding);
+            line-height: var(--input--line-height, var(--line-height));
+            color: var(--input--color);
+            padding: var(
+                        --input--padding,
+                        (
+                                    var(--input--padding-top, var(--padding-top))
+                                    var(--input--padding-right, var(--padding-right))
+                                    var(--input--padding-bottom, var(--padding-bottom))
+                                    var(--input--padding-left, var(--padding-left))
+                        )
+            );
 
             // Remove style for the caret on `<select>`s in IE10+.
             &::-ms-expand {
@@ -377,10 +435,18 @@
             align-items: center;
             z-index: 1;
             font-style: normal;
-            transition-property: border-color;
-            transition-duration: var(--transition-duration);
-            transition-timing-function: var(--transition-easing);
-            border-color: var(----border-color);
+            transition-property: var(--input--transition-property, (border-color));
+            transition-duration: var(--input--transition-duration, var(--transition-duration));
+            transition-timing-function: var(--input--transition-timing-function, var(--transition-timing-function));
+            border-color: var(
+                        --input--border-color,
+                        (
+                                    var(--input--border-top-color, var(--border-top-color))
+                                    var(--input--border-right-color, var(--border-right-color))
+                                    var(--input--border-bottom-color, var(--border-bottom-color))
+                                    var(--input--border-left-color, var(--border-left-color))
+                        )
+            );
             color: var(----prefix-suffix--color);
             padding-right: var(----prefix-suffix--padding-right);
             padding-left: var(----prefix-suffix--padding-left);
@@ -403,9 +469,9 @@
         }
 
         .input-clear {
-            transition-property: background-color;
-            transition-duration: var(--transition-duration);
-            transition-timing-function: var(--transition-easing);
+            transition-property: var(--input--transition-property, (background-color));
+            transition-duration: var(--input--transition-duration, var(--transition-duration));
+            transition-timing-function: var(--input--transition-timing-function, var(--transition-timing-function));
             display: flex;
             justify-content: center;
             align-items: center;
@@ -465,18 +531,26 @@
 
     &.-error {
         > .input {
-            ----border-color: var(--color-danger);
+            --input--border-color: var(--color-danger);
         }
     }
 
     &.-disabled,
     &.-readonly {
         > .input {
-            ----color: var(----color--disabled);
-            ----background: var(----background--disabled);
+            --input--color: var(--input--disabled--color);
+            --input--background: var(--input--disabled--background);
 
             &:hover {
-                border-color: var(----border-color);
+                border-color: var(
+                                --input--border-color,
+                                (
+                                                var(--input--border-top-color, var(--border-top-color))
+                                                var(--input--border-right-color, var(--border-right-color))
+                                                var(--input--border-bottom-color, var(--border-bottom-color))
+                                                var(--input--border-left-color, var(--border-left-color))
+                                )
+                );
             }
 
             > input,
@@ -484,7 +558,7 @@
             > textarea {
                 &:disabled,
                 &[readonly] {
-                    ----color: var(----color--disabled);
+                    --input--color: var(--input--disabled--color);
                 }
             }
         }
@@ -494,7 +568,7 @@
         > .input {
             &:focus-within {
                 outline: 0;
-                ----border-color: var(----border-color--focus);
+                --input--border-color: var(----border-color--focus);
             }
         }
     }

@@ -1,7 +1,7 @@
+@use '../../../cssnew/mixins';
+@use '../../../cssnew/functions';
 @use 'sass:math';
-
-@import '../../css/variables';
-@import '../../css/mixins';
+@use 'sass:list';
 
 // Prevent columns from becoming too narrow when at smaller grid tiers by
 // always setting `width: 100%`. This works because we use `flex` values
@@ -27,8 +27,8 @@
 //
 @mixin column-fixed-width($columns, $columns-count) {
     flex-grow: 1;
-    flex-basis: math.percentage(math.div($columns-count, $columns));
-    max-width: math.percentage(math.div($columns-count, $columns));
+    flex-basis: calc(#{$columns-count} * 100% / #{$columns});
+    max-width: calc(#{$columns-count} * 100% / #{$columns});
 }
 
 /**
@@ -42,27 +42,27 @@
     min-height: 1px;
     position: relative;
 
-    @each $breakpoint-key, $gutter-value in $gutters {
-        @include breakpoint-up($breakpoint-key) {
-            padding-left: calc(#{gutter($breakpoint-key)} / 2);
-            padding-right: calc(#{gutter($breakpoint-key)} / 2);
+    @each $breakpoint-key in mixins.$breakpoint-keys {
+        @include mixins.breakpoint-up($breakpoint-key) {
+            padding-left: calc(var(--grid--#{$breakpoint-key}--gutter) / 2);
+            padding-right: calc(var(--grid--#{$breakpoint-key}--gutter) / 2);
         }
     }
 
     // Column Responsive Sizes
     //
-    @each $breakpoint-key in $breakpoint-prefix-keys {
-        $breakpoint: breakpoint-infix($breakpoint-key);
+    @each $breakpoint-key in list.append(mixins.$breakpoint-keys, '') {
+        $breakpoint: functions.escape(mixins.breakpoint-infix($breakpoint-key));
 
-        @if $breakpoint-key != '_' {
+        @if $breakpoint-key != '' {
             &.#{$breakpoint},
             &.#{$breakpoint}-auto {
                 @include column-full-width();
             }
         }
 
-        @include breakpoint-up($breakpoint-key) {
-            @if $breakpoint-key != '_' {
+        @include mixins.breakpoint-up($breakpoint-key) {
+            @if $breakpoint-key != '' {
                 &.#{$breakpoint} {
                     @include column-flexible();
                 }
@@ -82,39 +82,38 @@
             }
         }
 
-        @for $column-count from 1 through $columns {
-            @if $breakpoint-key != '_' {
+        @for $column-count from 1 through mixins.$columns {
+            @if $breakpoint-key != '' {
                 &.#{$breakpoint}-#{$column-count} {
                     @include column-full-width();
                 }
             }
 
-            @include breakpoint-up($breakpoint-key) {
-
+            @include mixins.breakpoint-up($breakpoint-key) {
                 // Column width
                 //
-                @if $breakpoint-key != '_' {
+                @if $breakpoint-key != '' {
                     &.#{$breakpoint}-#{$column-count} {
-                        @include column-fixed-width($columns, $column-count);
+                        @include column-fixed-width(var(--grid--columns), $column-count);
                     }
                 }
 
                 // Column offset
                 //
                 &.-offset#{$breakpoint}-#{$column-count} {
-                    margin-left: math.percentage(math.div($column-count, $columns));
+                    margin-left: calc(#{$column-count} * 100% / var(--grid--columns));
                 }
 
                 // Column push
                 //
                 &.-push#{$breakpoint}-#{$column-count} {
-                    left: math.percentage(math.div($column-count, $columns));
+                    left: calc(#{$column-count} * 100% / var(--grid--columns));
                 }
 
                 // Column pull
                 //
                 &.-pull#{$breakpoint}-#{$column-count} {
-                    right: math.percentage(math.div($column-count, $columns));
+                    right: calc(#{$column-count} * 100% / var(--grid--columns));
                 }
             }
         }

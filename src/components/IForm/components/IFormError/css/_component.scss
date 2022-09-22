@@ -40,10 +40,18 @@
 
 .form-error {
     position: relative;
-    margin: var(----margin);
+    margin: var(
+        --form-error--margin,
+        (
+            var(--form-error--margin-top, var(--margin-top))
+            var(--form-error--margin-right, var(--margin-right))
+            var(--form-error--margin-bottom, var(--margin-bottom))
+            var(--form-error--margin-left, var(--margin-left))
+        )
+    );
     padding: 0;
     list-style: none;
-    color: var(----color);
+    color: var(--form-error--color);
     font-size: font-size('sm');
 
     li {

@@ -1,0 +1,11 @@
+@function border-style($component) {
+    @return var(
+        --#{$component}--border-style,
+        (
+            var(--#{$component}--border-top-style, var(--border-top-style))
+            var(--#{$component}--border-right-style, var(--border-right-style))
+            var(--#{$component}--border-bottom-style, var(--border-bottom-style))
+            var(--#{$component}--border-left-style, var(--border-left-style))
+        )
+    );
+}

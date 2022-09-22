@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import {
-    defaultPropValue,
-    colorVariantClass,
+    computedPropValue,
+    computedColorValue,
     sizePropValidator
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
@@ -30,7 +30,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * The value to consider as the 0% starting point
@@ -60,14 +60,14 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         }
     },
     computed: {
         classes (): Classes {
             return {
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${this.size}`]: Boolean(this.size)
             };
         }

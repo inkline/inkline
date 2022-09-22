@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import IButton from '@inkline/inkline/components/IButton/index.vue';
 import IInput from '@inkline/inkline/components/IInput/index.vue';
 import { uid } from '@inkline/inkline/helpers';
-import { defaultPropValue, sizePropValidator } from '@inkline/inkline/mixins';
+import { computedPropValue, sizePropValidator } from '@inkline/inkline/mixins';
 import { InputElementEvent } from '@inkline/inkline/types';
 
 const componentName = 'INumberInput';
@@ -22,7 +22,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * Display the input as clearable
@@ -94,7 +94,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         },
         /**

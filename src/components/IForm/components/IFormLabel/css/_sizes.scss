@@ -4,12 +4,12 @@
 
 .form-label {
                         @include variant('sm', 'form') {
-                                        --form-label--font-size: var(--form-label--sm--font-size, var(--font-size-sm));
+                                        --form-label--font-size: var(--form-label--sm--font-size, calc(var(--font-size) * var(--size-multiplier-sm)));
     }
                         @include variant('md', 'form') {
-                                        --form-label--font-size: var(--form-label--md--font-size, var(--font-size-md));
+                                        --form-label--font-size: var(--form-label--md--font-size, calc(var(--font-size) * var(--size-multiplier-md)));
     }
                         @include variant('lg', 'form') {
-                                        --form-label--font-size: var(--form-label--lg--font-size, var(--font-size-lg));
+                                        --form-label--font-size: var(--form-label--lg--font-size, calc(var(--font-size) * var(--size-multiplier-lg)));
     }
 }

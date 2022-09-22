@@ -5,8 +5,8 @@ import IColumn from '@inkline/inkline/components/IColumn/index.vue';
 import IHamburgerMenu from '@inkline/inkline/components/IHamburgerMenu/index.vue';
 import {
     CollapsibleMixin,
-    defaultPropValue,
-    colorVariantClass,
+    computedPropValue,
+    computedColorValue,
     sizePropValidator
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
@@ -68,7 +68,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: computedPropValue<string>(componentName, 'color')
         },
         /**
          * Display the inner container as fluid, spanning 100% width
@@ -88,7 +88,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
+            default: computedPropValue<string>(componentName, 'size'),
             validator: sizePropValidator
         },
         /**
@@ -113,7 +113,7 @@ export default defineComponent({
         classes (): Classes {
             return {
                 ...this.collapsibleClasses,
-                ...colorVariantClass(this),
+                [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${this.size}`]: Boolean(this.size)
             };
         }

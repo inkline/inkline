@@ -50,8 +50,8 @@ export const handleColorMode = (colorMode: string) => {
         color = colorMode;
     }
 
-    removeClass(document.body, '-light -dark');
-    addClass(document.body, `-${color}`);
+    removeClass(document.body, 'light-theme dark-theme');
+    addClass(document.body, `${color}-theme`);
 };
 
 /**

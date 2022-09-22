@@ -1,14 +1,5 @@
 .dark-theme {
     /**
-     * Color red variables
-     */
-    --color-red-h: 0;
-    --color-red-s: 100%;
-    --color-red-l: 50%;
-    --color-red-a: 1;
-    --color-red: hsla(var(--color-red-h), var(--color-red-s), var(--color-red-l), var(--color-red-a));
-
-    /**
      * Text color variables
      */
     --text--color-muted-h: var(--color-gray-400-h);
@@ -16,9 +7,4 @@
     --text--color-muted-l: var(--color-gray-400-l);
     --text--color-muted-a: var(--color-gray-400-a);
     --text--color-muted: hsla(var(--text--color-muted-h), var(--text--color-muted-s), var(--text--color-muted-l), var(--text--color-muted-a));
-    
-    /**
-     * Contrast text color variables
-     */
-    --contrast-text--color-red: var(--text--color-light);
 }

@@ -70,7 +70,15 @@
 
 .hamburger-menu {
     opacity: var(----opacity);
-    padding: var(----padding);
+    padding: var(
+        --hamburger-menu--padding,
+        (
+            var(--hamburger-menu--padding-top, var(--padding-top))
+            var(--hamburger-menu--padding-right, var(--padding-right))
+            var(--hamburger-menu--padding-bottom, var(--padding-bottom))
+            var(--hamburger-menu--padding-left, var(--padding-left))
+        )
+    );
     width: var(----bar--width);
     height: calc(var(----bar--height) * 3 + var(----bar--spacing) * 2);
     display: inline-block;
@@ -94,9 +102,9 @@
             width: var(----bar--width);
             height: var(----bar--height);
             border-radius: var(----bar--border-radius);
-            background: var(----background);
+            background: var(--hamburger-menu--background);
             position: absolute;
-            transition-property: transform;
+            transition-property: var(--hamburger-menu--transition-property, (transform));
             transition-duration: 0.15s;
             transition-timing-function: ease;
         }

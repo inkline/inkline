@@ -99,6 +99,60 @@
     --margin-xl: var(--margin-top-xl) var(--margin-right-xl) var(--margin-bottom-xl) var(--margin-left-xl);
 
     /**
+     * Margin 1-5 variant variables
+     */
+    --margin-top-1-5: calc(var(--margin-top) / 5);
+    --margin-right-1-5: calc(var(--margin-right) / 5);
+    --margin-bottom-1-5: calc(var(--margin-bottom) / 5);
+    --margin-left-1-5: calc(var(--margin-left) / 5);
+    --margin-1-5: var(--margin-top-1-5) var(--margin-right-1-5) var(--margin-bottom-1-5) var(--margin-left-1-5);
+
+    /**
+     * Margin 1-4 variant variables
+     */
+    --margin-top-1-4: calc(var(--margin-top) / 4);
+    --margin-right-1-4: calc(var(--margin-right) / 4);
+    --margin-bottom-1-4: calc(var(--margin-bottom) / 4);
+    --margin-left-1-4: calc(var(--margin-left) / 4);
+    --margin-1-4: var(--margin-top-1-4) var(--margin-right-1-4) var(--margin-bottom-1-4) var(--margin-left-1-4);
+
+    /**
+     * Margin 3-4 variant variables
+     */
+    --margin-top-3-4: calc(calc(var(--margin-top) / 4) * 3);
+    --margin-right-3-4: calc(calc(var(--margin-right) / 4) * 3);
+    --margin-bottom-3-4: calc(calc(var(--margin-bottom) / 4) * 3);
+    --margin-left-3-4: calc(calc(var(--margin-left) / 4) * 3);
+    --margin-3-4: var(--margin-top-3-4) var(--margin-right-3-4) var(--margin-bottom-3-4) var(--margin-left-3-4);
+
+    /**
+     * Margin 1-3 variant variables
+     */
+    --margin-top-1-3: calc(var(--margin-top) / 3);
+    --margin-right-1-3: calc(var(--margin-right) / 3);
+    --margin-bottom-1-3: calc(var(--margin-bottom) / 3);
+    --margin-left-1-3: calc(var(--margin-left) / 3);
+    --margin-1-3: var(--margin-top-1-3) var(--margin-right-1-3) var(--margin-bottom-1-3) var(--margin-left-1-3);
+
+    /**
+     * Margin 2-3 variant variables
+     */
+    --margin-top-2-3: calc(calc(var(--margin-top) / 3) * 2);
+    --margin-right-2-3: calc(calc(var(--margin-right) / 3) * 2);
+    --margin-bottom-2-3: calc(calc(var(--margin-bottom) / 3) * 2);
+    --margin-left-2-3: calc(calc(var(--margin-left) / 3) * 2);
+    --margin-2-3: var(--margin-top-2-3) var(--margin-right-2-3) var(--margin-bottom-2-3) var(--margin-left-2-3);
+
+    /**
+     * Margin 1-2 variant variables
+     */
+    --margin-top-1-2: calc(var(--margin-top) / 2);
+    --margin-right-1-2: calc(var(--margin-right) / 2);
+    --margin-bottom-1-2: calc(var(--margin-bottom) / 2);
+    --margin-left-1-2: calc(var(--margin-left) / 2);
+    --margin-1-2: var(--margin-top-1-2) var(--margin-right-1-2) var(--margin-bottom-1-2) var(--margin-left-1-2);
+
+    /**
      * Padding 2 variant variables
      */
     --padding-top-2: calc(var(--padding-top) * 2);
@@ -178,4 +232,58 @@
     --padding-bottom-xl: calc(var(--padding-bottom) * var(--size-multiplier-xl));
     --padding-left-xl: calc(var(--padding-left) * var(--size-multiplier-xl));
     --padding-xl: var(--padding-top-xl) var(--padding-right-xl) var(--padding-bottom-xl) var(--padding-left-xl);
+
+    /**
+     * Padding 1-5 variant variables
+     */
+    --padding-top-1-5: calc(var(--padding-top) / 5);
+    --padding-right-1-5: calc(var(--padding-right) / 5);
+    --padding-bottom-1-5: calc(var(--padding-bottom) / 5);
+    --padding-left-1-5: calc(var(--padding-left) / 5);
+    --padding-1-5: var(--padding-top-1-5) var(--padding-right-1-5) var(--padding-bottom-1-5) var(--padding-left-1-5);
+
+    /**
+     * Padding 1-4 variant variables
+     */
+    --padding-top-1-4: calc(var(--padding-top) / 4);
+    --padding-right-1-4: calc(var(--padding-right) / 4);
+    --padding-bottom-1-4: calc(var(--padding-bottom) / 4);
+    --padding-left-1-4: calc(var(--padding-left) / 4);
+    --padding-1-4: var(--padding-top-1-4) var(--padding-right-1-4) var(--padding-bottom-1-4) var(--padding-left-1-4);
+
+    /**
+     * Padding 3-4 variant variables
+     */
+    --padding-top-3-4: calc(calc(var(--padding-top) / 4) * 3);
+    --padding-right-3-4: calc(calc(var(--padding-right) / 4) * 3);
+    --padding-bottom-3-4: calc(calc(var(--padding-bottom) / 4) * 3);
+    --padding-left-3-4: calc(calc(var(--padding-left) / 4) * 3);
+    --padding-3-4: var(--padding-top-3-4) var(--padding-right-3-4) var(--padding-bottom-3-4) var(--padding-left-3-4);
+
+    /**
+     * Padding 1-3 variant variables
+     */
+    --padding-top-1-3: calc(var(--padding-top) / 3);
+    --padding-right-1-3: calc(var(--padding-right) / 3);
+    --padding-bottom-1-3: calc(var(--padding-bottom) / 3);
+    --padding-left-1-3: calc(var(--padding-left) / 3);
+    --padding-1-3: var(--padding-top-1-3) var(--padding-right-1-3) var(--padding-bottom-1-3) var(--padding-left-1-3);
+
+    /**
+     * Padding 2-3 variant variables
+     */
+    --padding-top-2-3: calc(calc(var(--padding-top) / 3) * 2);
+    --padding-right-2-3: calc(calc(var(--padding-right) / 3) * 2);
+    --padding-bottom-2-3: calc(calc(var(--padding-bottom) / 3) * 2);
+    --padding-left-2-3: calc(calc(var(--padding-left) / 3) * 2);
+    --padding-2-3: var(--padding-top-2-3) var(--padding-right-2-3) var(--padding-bottom-2-3) var(--padding-left-2-3);
+
+    /**
+     * Padding 1-2 variant variables
+     */
+    --padding-top-1-2: calc(var(--padding-top) / 2);
+    --padding-right-1-2: calc(var(--padding-right) / 2);
+    --padding-bottom-1-2: calc(var(--padding-bottom) / 2);
+    --padding-left-1-2: calc(var(--padding-left) / 2);
+    --padding-1-2: var(--padding-top-1-2) var(--padding-right-1-2) var(--padding-bottom-1-2) var(--padding-left-1-2);
 }
