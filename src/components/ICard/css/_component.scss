@@ -480,6 +480,10 @@
         border-bottom-width: 0;
         margin-bottom: 0;
 
+        transition-property: var(--card--header--transition-property, (var(--card--transition-property, (border-color))));
+        transition-duration: var(--card--header--transition-duration, var(--card--transition-duration, var(--transition-duration)));
+        transition-timing-function: var(--card--header--transition-timing-function, var(--card--transition-timing-function, var(--transition-timing-function)));
+
         > h1,
         > h2,
         > h3,
@@ -582,9 +586,9 @@
             )
         );
         color: var(--card--body--color, var(--card--color));
-        transition-property: var(--card--transition-property, (var(--card--body--transition-property, var(--card--transition-property, border-color))));
-        transition-duration: var(--card--body--transition-duration, var(--card--transition-duration, var(--card--transition-duration, var(--transition-duration))));
-        transition-timing-function: var(--card--body--transition-timing-function, var(--card--transition-timing-function, var(--card--transition-duration, var(--transition-duration))));
+        transition-property: var(--card--body--transition-property, (var(--card--transition-property, (border-color))));
+        transition-duration: var(--card--body--transition-duration, var(--card--transition-duration, var(--transition-duration)));
+        transition-timing-function: var(--card--body--transition-timing-function, var(--card--transition-timing-function, var(--transition-timing-function)));
 
         &:not(:first-child) {
             border-top-left-radius: 0;
@@ -657,9 +661,10 @@
         );
         color: var(--card--footer--color, var(--card--color));
         border-top-width: 0;
-        transition-property: var(--card--transition-property, (var(--card--footer--transition-property, var(--card--transition-property, border-color))));
-        transition-duration: var(--card--footer--transition-duration, var(--card--transition-duration, var(--card--transition-duration, var(--transition-duration))));
-        transition-timing-function: var(--card--footer--transition-timing-function, var(--card--transition-timing-function, var(--card--transition-duration, var(--transition-duration))));
+
+        transition-property: var(--card--footer--transition-property, (var(--card--transition-property, (border-color))));
+        transition-duration: var(--card--footer--transition-duration, var(--card--transition-duration, var(--transition-duration)));
+        transition-timing-function: var(--card--footer--transition-timing-function, var(--card--transition-timing-function, var(--transition-timing-function)));
 
         &:last-child {
             border-bottom-left-radius: var(--card--footer--border-bottom-left-radius, var(--card--border-bottom-left-radius));

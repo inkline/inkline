@@ -5,7 +5,10 @@
 .checkbox {
     &.-light {
         --checkbox--background: var(--checkbox--light--background, var(--color-white));
-        --checkbox--border-color: var(--checkbox--light--border-color, var(--color-light-shade-100));
+        --checkbox--border-top-color: var(--checkbox--light--border-top-color, var(--color-light-shade-50));
+        --checkbox--border-right-color: var(--checkbox--light--border-right-color, var(--color-light-shade-50));
+        --checkbox--border-bottom-color: var(--checkbox--light--border-bottom-color, var(--color-light-shade-50));
+        --checkbox--border-left-color: var(--checkbox--light--border-left-color, var(--color-light-shade-50));
         --checkbox--color: var(--checkbox--light--color, var(--color-white));
         --checkbox--label--color: var(--checkbox--light--label--color, var(--contrast-text--color-light));
 
@@ -23,7 +26,10 @@
 
     &.-dark {
         --checkbox--background: var(--checkbox--dark--background, var(--color-dark));
-        --checkbox--border-color: var(--checkbox--dark--border-color, var(--color-dark));
+        --checkbox--border-top-color: var(--checkbox--dark--border-top-color, var(--color-dark-tint-50));
+        --checkbox--border-right-color: var(--checkbox--dark--border-right-color, var(--color-dark-tint-50));
+        --checkbox--border-bottom-color: var(--checkbox--dark--border-bottom-color, var(--color-dark-tint-50));
+        --checkbox--border-left-color: var(--checkbox--dark--border-left-color, var(--color-dark-tint-50));
         --checkbox--color: var(--checkbox--dark--color, var(--color-white));
         --checkbox--label--color: var(--checkbox--dark--label--color, var(--contrast-text--color-dark));
 

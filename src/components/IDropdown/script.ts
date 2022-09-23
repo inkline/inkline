@@ -6,7 +6,7 @@ import {
     PopupControlsMixin,
     sizePropValidator,
     computedColorValue,
-    computedPropValue
+    computedPropValue, computedSizeValue
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
 import { on, off, isFocusable, isKey } from '@inkline/inkline/helpers';
@@ -83,7 +83,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * The disabled state of the dropdown
@@ -193,7 +193,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size'),
+            default: '',
             validator: sizePropValidator
         }
     },
@@ -202,13 +202,24 @@ export default defineComponent({
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
-        'update:modelValue'
+        'update:modelValue',
+        /**
+         * Event emitted when clicking outside the dropdown, used for manual control
+         * @event click-outside
+         */
+        'click-outside'
     ],
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
         classes (): Classes {
             return {
-                [`-${computedColorValue(componentName, this.color)}`]: true,
-                [`-${this.size}`]: Boolean(this.size)
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize)
             };
         }
     },

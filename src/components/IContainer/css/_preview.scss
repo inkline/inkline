@@ -7,7 +7,7 @@
         padding-top: var(--padding-top);
         padding-bottom: var(--padding-bottom);
 
-        .theme-dark & {
+        .dark-theme & {
             background: var(--color-gray-850);
             border-color: var(--color-gray-800);
         }
@@ -25,7 +25,7 @@
                 height: 150px;
             }
 
-            .theme-dark & {
+            .dark-theme & {
                 background: var(--color-gray-800);
                 border-color: var(--color-gray-700);
             }
@@ -41,7 +41,7 @@
                 padding-top: var(--padding-top);
                 padding-bottom: var(--padding-bottom);
 
-                .theme-dark & {
+                .dark-theme & {
                     background: var(--color-gray-700);
                     border-color: var(--color-gray-500);
                 }
@@ -50,7 +50,7 @@
                     background: var(--color-gray-250);
                     border: 1px solid var(--color-gray-500);
 
-                    .theme-dark & {
+                    .dark-theme & {
                         background: var(--color-gray-650);
                     }
                 }
@@ -59,7 +59,7 @@
                     background: var(--color-gray-300);
                     border: 1px solid var(--color-gray-600);
 
-                    .theme-dark & {
+                    .dark-theme & {
                         background: var(--color-gray-600);
                         border-color: var(--color-gray-400);
                     }

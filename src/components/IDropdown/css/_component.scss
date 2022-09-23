@@ -415,14 +415,11 @@
         );
         border-width: var(
             --dropdown--header--border-width,
-            var(
-                --dropdown--border-width,
-                (
-                    var(--dropdown--header--border-top-width, var(--dropdown--border-top-width, var(--border-top-width)))
-                    var(--dropdown--header--border-right-width, var(--dropdown--border-right-width, var(--border-right-width)))
-                    var(--dropdown--header--border-bottom-width, var(--dropdown--border-bottom-width, var(--border-bottom-width)))
-                    var(--dropdown--header--border-left-width, var(--dropdown--border-left-width, var(--border-left-width)))
-                )
+            (
+                var(--dropdown--header--border-top-width, var(--dropdown--border-top-width, var(--border-top-width)))
+                var(--dropdown--header--border-right-width, var(--dropdown--border-right-width, var(--border-right-width)))
+                var(--dropdown--header--border-bottom-width, var(--dropdown--border-bottom-width, 0))
+                var(--dropdown--header--border-left-width, var(--dropdown--border-left-width, var(--border-left-width)))
             )
         );
         border-color: var(
@@ -450,9 +447,14 @@
                 )
             )
         );
+        transition-property: var(--dropdown--header--transition-property, (var(--dropdown--transition-property, (border-color))));
+        transition-duration: var(--dropdown--header--transition-duration, var(--dropdown--transition-duration, var(--transition-duration)));
+        transition-timing-function: var(--dropdown--header--transition-timing-function, var(--dropdown--transition-timing-function, var(--transition-timing-function)));
     }
 
     > .dropdown-body {
+        display: flex;
+        flex-direction: column;
         border-width: var(
                 --dropdown--border-width,
                 (
@@ -493,6 +495,9 @@
                 )
             )
         );
+        transition-property: var(--dropdown--body--transition-property, (var(--dropdown--transition-property, (border-color))));
+        transition-duration: var(--dropdown--body--transition-duration, var(--dropdown--transition-duration, var(--transition-duration)));
+        transition-timing-function: var(--dropdown--body--transition-timing-function, var(--dropdown--transition-timing-function, var(--transition-timing-function)));
 
         .dropdown-wrapper {
             width: 100%;
@@ -520,14 +525,11 @@
         );
         border-width: var(
             --dropdown--footer--border-width,
-            var(
-                --dropdown--border-width,
-                (
-                    var(--dropdown--footer--border-top-width, var(--dropdown--border-top-width, var(--border-top-width)))
-                    var(--dropdown--footer--border-right-width, var(--dropdown--border-right-width, var(--border-right-width)))
-                    var(--dropdown--footer--border-bottom-width, var(--dropdown--border-bottom-width, var(--border-bottom-width)))
-                    var(--dropdown--footer--border-left-width, var(--dropdown--border-left-width, var(--border-left-width)))
-                )
+            (
+                var(--dropdown--footer--border-top-width, var(--dropdown--border-top-width, 0))
+                var(--dropdown--footer--border-right-width, var(--dropdown--border-right-width, var(--border-right-width)))
+                var(--dropdown--footer--border-bottom-width, var(--dropdown--border-bottom-width, var(--border-bottom-width)))
+                var(--dropdown--footer--border-left-width, var(--dropdown--border-left-width, var(--border-left-width)))
             )
         );
         border-color: var(
@@ -555,6 +557,9 @@
                 )
             )
         );
+        transition-property: var(--dropdown--footer--transition-property, (var(--dropdown--transition-property, (border-color))));
+        transition-duration: var(--dropdown--footer--transition-duration, var(--dropdown--transition-duration, var(--transition-duration)));
+        transition-timing-function: var(--dropdown--footer--transition-timing-function, var(--dropdown--transition-timing-function, var(--transition-timing-function)));
     }
 
     > *:nth-child(2) {

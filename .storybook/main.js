@@ -15,6 +15,7 @@ module.exports = {
         '../src/components/IContainer/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ICollapsible/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IDropdown/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/IForm/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IIcon/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IRow/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/stories/core/**/*.stories.@(js|jsx|ts|tsx)',

@@ -6,10 +6,16 @@
  * Dropdown Item
  */
 .dropdown .dropdown-item {
-    display: block;
-    width: 100%;
-    clear: both;
-    margin-bottom: 0;
+    display: flex;
+    margin: var(
+        --dropdown--item--margin,
+        (
+            var(--dropdown--item--margin-top, 0)
+            var(--dropdown--item--margin-right, var(--dropdown--body--padding-right, calc(var(--dropdown--padding-right) * -1)))
+            var(--dropdown--item--margin-bottom, 0)
+            var(--dropdown--item--margin-left, var(--dropdown--body--padding-left, calc(var(--dropdown--padding-left) * -1)))
+        )
+    );
     text-align: inherit; // For `<button>`s
     white-space: nowrap; // prevent links from randomly breaking onto new lines
     background-color: transparent; // For `<button>`s
@@ -18,6 +24,7 @@
     transition-timing-function: var(--dropdown--item--transition-timing-function, var(--transition-timing-function));
     transition-duration: var(--dropdown--item--transition-duration, var(--transition-duration));
     color: var(--dropdown--item--color, var(--dropdown--color));
+
     border-style: var(
         --dropdown--item--border-style,
         var(
@@ -74,13 +81,13 @@
     }
 
     &.-disabled {
-        color: var(--dropdown--item--color--disabled, var(--dropdown--item--color));
-        background: var(--dropdown--item--background--disabled, var(--dropdown--item--background));
+        color: var(--dropdown--item--disabled--color, var(--dropdown--item--color));
+        background: var(--dropdown--item--disabled--background, var(--dropdown--item--background));
     }
 
     &.-active {
-        color: var(--dropdown--item--color--active, var(--dropdown--item--color));
-        background: var(--dropdown--item--background--active, var(--dropdown--item--background));
+        color: var(--dropdown--item--active--color, var(--dropdown--item--color));
+        background: var(--dropdown--item--active--background, var(--dropdown--item--background));
     }
 
     &:hover,
@@ -99,6 +106,6 @@
     }
 
     &.-active {
-        font-weight: bold;
+        font-weight: var(--font-weight-semibold);
     }
 }

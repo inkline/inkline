@@ -5,23 +5,23 @@
 .dropdown {
     &.-light {
         --dropdown--background: var(--dropdown--light--background, var(--color-white));
-        --dropdown--color: var(--dropdown--light--color, var(--contrast-text--color-white));
-        --dropdown--border-top-color: var(--dropdown--light--border-top-color, var(--color-light));
-        --dropdown--border-right-color: var(--dropdown--light--border-right-color, var(--color-light));
-        --dropdown--border-bottom-color: var(--dropdown--light--border-bottom-color, var(--color-light));
-        --dropdown--border-left-color: var(--dropdown--light--border-left-color, var(--color-light));
+        --dropdown--color: var(--dropdown--light--color, var(--contrast-text--color-light));
+        --dropdown--border-top-color: var(--dropdown--light--border-top-color, var(--color-light-shade-50));
+        --dropdown--border-right-color: var(--dropdown--light--border-right-color, var(--color-light-shade-50));
+        --dropdown--border-bottom-color: var(--dropdown--light--border-bottom-color, var(--color-light-shade-50));
+        --dropdown--border-left-color: var(--dropdown--light--border-left-color, var(--color-light-shade-50));
 
-        --dropdown--item--hover--background: var(--dropdown--light--item--hover--background, var(--color-light-250));
-        --dropdown--item--hover--color: var(--dropdown--light--item--hover--color, #{var(--dropdown-color-variant-light-color)});
+        --dropdown--item--hover--background: var(--dropdown--light--item--hover--background, var(--color-gray-50));
+        --dropdown--item--hover--color: var(--dropdown--light--item--hover--color, var(--dropdown--color));
 
-        --dropdown--item--active--background: var(--dropdown--light--item--active--background, var(--color-light-250));
-        --dropdown--item--active--color: var(--dropdown--light--item--active--color, #{var(--dropdown-color-variant-light-color)});
+        --dropdown--item--active--background: var(--dropdown--light--item--active--background, var(--color-gray-50));
+        --dropdown--item--active--color: var(--dropdown--light--item--active--color, var(--dropdown--color));
 
         --dropdown--item--disabled--background: var(--dropdown--light--item--disabled--background, transparent);
-        --dropdown--item--disabled--color: var(--dropdown--light--item--disabled--color, var(--color-light-650));
+        --dropdown--item--disabled--color: var(--dropdown--light--item--disabled--color, var(--text--color-muted));
 
-        --dropdown--header--background: var(--dropdown--light--header--background, var(--color-gray-050));
-        --dropdown--footer--background: var(--dropdown--light--footer--background, var(--color-gray-050));
+        --dropdown--header--background: var(--dropdown--light--header--background, var(--color-gray-50));
+        --dropdown--footer--background: var(--dropdown--light--footer--background, var(--color-gray-50));
     }
 
     &.-dark {
@@ -39,9 +39,9 @@
         --dropdown--item--active--color: var(--dropdown--dark--item--active--color, var(--dropdown--color));
 
         --dropdown--item--disabled--background: var(--dropdown--dark--item--disabled--background, transparent);
-        --dropdown--item--disabled--color: var(--dropdown--dark--item--disabled--color, var(--color-dark-250));
+        --dropdown--item--disabled--color: var(--dropdown--dark--item--disabled--color, var(--text--color-muted));
 
-        --dropdown--header--background: var(--dropdown--dark--header--background, var(--color-dark-550));
-        --dropdown--footer--background: var(--dropdown--dark--footer--background, var(--color-dark-550));
+        --dropdown--header--background: var(--dropdown--dark--header--background, var(--color-dark-tint-50));
+        --dropdown--footer--background: var(--dropdown--dark--footer--background, var(--color-dark-tint-50));
     }
 }

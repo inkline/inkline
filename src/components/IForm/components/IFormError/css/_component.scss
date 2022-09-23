@@ -2,57 +2,52 @@
 /// The font size of the form error component
 /// @name form-error--font-size
 ////
-    
+
 ////
 /// The margin top of the form error component
 /// @name form-error--margin-top
 ////
-    
+
 ////
 /// The margin right of the form error component
 /// @name form-error--margin-right
 ////
-    
+
 ////
 /// The margin bottom of the form error component
 /// @name form-error--margin-bottom
 ////
-    
+
 ////
 /// The margin left of the form error component
 /// @name form-error--margin-left
 ////
-    
+
 ////
 /// The margin of the form error component
 /// @name form-error--margin
 ////
-    
+
 ////
 /// The color of the form error component
 /// @name form-error--color
 ////
-    
-
-@import '../../../../css/variables';
-@import '../../../../css/mixins';
-@import 'css/variables';
 
 .form-error {
     position: relative;
     margin: var(
         --form-error--margin,
         (
-            var(--form-error--margin-top, var(--margin-top))
-            var(--form-error--margin-right, var(--margin-right))
-            var(--form-error--margin-bottom, var(--margin-bottom))
-            var(--form-error--margin-left, var(--margin-left))
+            var(--form-error--margin-top, var(--margin-top-1-4))
+            var(--form-error--margin-right, 0)
+            var(--form-error--margin-bottom, 0)
+            var(--form-error--margin-left, 0)
         )
     );
     padding: 0;
     list-style: none;
-    color: var(--form-error--color);
-    font-size: font-size('sm');
+    color: var(--form-error--color, var(--color-danger));
+    font-size: var(--form-error-font-size, var(--font-size-sm));
 
     li {
         margin: 0;
