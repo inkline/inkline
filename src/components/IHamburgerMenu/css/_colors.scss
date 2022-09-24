@@ -3,10 +3,11 @@
  */
 
 .hamburger-menu {
-                        &.-light {
-                                        --hamburger-menu--background: var(--hamburger-menu--dark--background, var(--color-dark));
+    &.-light {
+        --hamburger-menu--background: var(--hamburger-menu--light--background, var(--color-dark));
     }
-                        &.-dark {
-                                        --hamburger-menu--background: var(--hamburger-menu--light--background, var(--color-light));
+
+    &.-dark {
+        --hamburger-menu--background: var(--hamburger-menu--dark--background, var(--color-light));
     }
 }

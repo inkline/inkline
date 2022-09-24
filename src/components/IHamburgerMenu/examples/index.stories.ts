@@ -2,7 +2,8 @@ import IHamburgerMenu from '../index.vue';
 import {
     IHamburgerMenuAnimationExample,
     IHamburgerMenuBasicExample,
-    IHamburgerMenuColorVariantsExample
+    IHamburgerMenuColorVariantsExample,
+    IHamburgerMenuSizeVariantsExample
 } from './index';
 import { colorArgType, createStory } from '@inkline/inkline/__storybook__';
 
@@ -17,3 +18,4 @@ export default {
 export const Basic = createStory(IHamburgerMenuBasicExample);
 export const Animation = () => IHamburgerMenuAnimationExample;
 export const ColorVariants = () => IHamburgerMenuColorVariantsExample;
+export const SizeVariants = () => IHamburgerMenuSizeVariantsExample;
