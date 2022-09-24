@@ -4,7 +4,7 @@ import {
     PopupControlsMixin,
     sizePropValidator,
     computedColorValue,
-    computedPropValue
+    computedPropValue, computedSizeValue
 } from '@inkline/inkline/mixins';
 import ClickOutside from '@inkline/inkline/directives/click-outside';
 import { Classes } from '@inkline/inkline/types';
@@ -54,7 +54,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * The disabled state of the popover
@@ -146,8 +146,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: ''
         }
     },
     emits: [
@@ -158,10 +157,16 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
         classes (): Classes {
             return {
-                [`-${computedColorValue(componentName, this.color)}`]: true,
-                [`-${this.size}`]: Boolean(this.size)
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize)
             };
         }
     },

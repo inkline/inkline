@@ -4,7 +4,7 @@ import {
     computedPropValue,
     computedColorValue,
     sizePropValidator,
-    FormComponentMixin
+    FormComponentMixin, computedSizeValue
 } from '@inkline/inkline/mixins';
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
@@ -56,7 +56,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * Display the input as clearable
@@ -149,8 +149,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: ''
         },
         /**
          * The tabindex of the input
@@ -196,10 +195,16 @@ export default defineComponent({
         'clear'
     ],
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
         classes (): Classes {
             return {
-                [`-${computedColorValue(componentName, this.color)}`]: true,
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize),
                 '-disabled': this.isDisabled,
                 '-error': this.hasError,
                 '-readonly': this.isReadonly,

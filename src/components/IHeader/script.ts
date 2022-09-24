@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import {
     computedPropValue,
     sizePropValidator,
-    computedColorValue
+    computedColorValue, computedSizeValue
 } from '@inkline/inkline/mixins';
 
 import IContainer from '@inkline/inkline/components/IContainer/index.vue';
@@ -34,7 +34,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * Display the header background as cover, always covering the whole header width or height
@@ -74,15 +74,21 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size'),
+            default: '',
             validator: sizePropValidator
         }
     },
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
         classes (): Classes {
             return {
-                [`-${computedColorValue(componentName, this.color)}`]: true,
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize),
                 '-cover': this.cover,
                 '-fullscreen': this.fullscreen
             };

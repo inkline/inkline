@@ -51,7 +51,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * Display the textarea as clearable
@@ -123,8 +123,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: ''
         },
         /**
          * The tabindex of the textarea

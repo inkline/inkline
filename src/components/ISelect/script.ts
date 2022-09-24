@@ -13,7 +13,7 @@ import {
     computedPropValue,
     sizePropValidator,
     FormComponentMixin,
-    PopupMixin
+    PopupMixin, computedSizeValue
 } from '@inkline/inkline/mixins';
 import {
     useBaseModifiers,
@@ -119,7 +119,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * Display the select as clearable
@@ -314,8 +314,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: ''
         },
         /**
          * The tabindex of the select
@@ -373,10 +372,16 @@ export default defineComponent({
         };
     },
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
         wrapperClasses (): Classes {
             return {
-                [`-${computedColorValue(componentName, this.color)}`]: true,
-                [`-${this.size}`]: Boolean(this.size)
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize)
             };
         },
         popupClasses (): Classes {

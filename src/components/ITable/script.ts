@@ -81,13 +81,16 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         }
     },
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
         classes (): Classes {
             return {
-                [`-${computedColorValue(componentName, this.color)}`]: true,
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
                 '-border': this.border,
                 '-condensed': this.condensed,
                 '-striped': this.striped,

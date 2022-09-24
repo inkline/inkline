@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
 import { Classes } from '@inkline/inkline/types';
-import {computedColorValue, computedSizeValue} from "@inkline/inkline/mixins";
+import { computedSizeValue } from "@inkline/inkline/mixins";
 
 /**
  * Slot for default button group content

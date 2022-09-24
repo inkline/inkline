@@ -2,9 +2,8 @@ import { defineComponent } from 'vue';
 import { addClass, removeClass, uid } from '@inkline/inkline/helpers';
 import { OverlayController } from '@inkline/inkline/controllers';
 import {
-    computedPropValue,
     computedColorValue,
-    sizePropValidator
+    computedSizeValue
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
 import { Classes } from '@inkline/inkline/types';
@@ -68,7 +67,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * The disabled state of the modal
@@ -120,8 +119,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: ''
         },
         /**
          * Used to determine if modal is visible or not
@@ -157,11 +155,17 @@ export default defineComponent({
         };
     },
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
         classes (): Classes {
             return {
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize),
                 '-disabled': (this as any).disabled,
-                [`-${computedColorValue(componentName, this.color)}`]: true,
-                [`-${(this as any).size}`]: Boolean((this as any).size)
             };
         }
     },

@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { computedColorValue, computedPropValue } from '@inkline/inkline/mixins';
+import {computedColorValue, computedPropValue, computedSizeValue} from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
 /**
@@ -21,7 +21,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * The size variant of the loader
@@ -31,14 +31,20 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size')
+            default: ''
         }
     },
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
         classes (): Classes {
             return {
-                [`-${computedColorValue(componentName, this.color)}`]: true,
-                [`-${this.size}`]: Boolean(this.size)
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize),
             };
         }
     }

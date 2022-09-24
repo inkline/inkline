@@ -1,8 +1,7 @@
 import { defineComponent } from 'vue';
 import {
     computedColorValue,
-    computedPropValue, computedSizeValue,
-    sizePropValidator
+    computedSizeValue
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -25,7 +24,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * The size variant of the badge
@@ -35,8 +34,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size', 'md'),
-            validator: sizePropValidator
+            default: ''
         }
     },
     computed: {

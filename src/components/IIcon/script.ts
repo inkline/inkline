@@ -1,5 +1,5 @@
 import { h, computed, defineComponent, onMounted, inject } from 'vue';
-import { computedPropValue, sizePropValidator } from '@inkline/inkline/mixins';
+import { computedSizeValue } from '@inkline/inkline/mixins';
 import { renderSvg, toCamelCase } from '@inkline/inkline/helpers';
 import { SvgNode } from '@inkline/inkline/types';
 
@@ -33,17 +33,18 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size', 'md'),
-            validator: sizePropValidator
+            default: ''
         }
     },
     setup (props) {
         const icons = inject('inklineIcons') as Record<string, SvgNode>;
         const iconName = computed(() => toCamelCase(props.name));
         const icon = computed(() => icons[iconName.value]);
+        const size = computed(() => computedSizeValue(componentName, props.size));
+
         const classes = computed(() => ({
             'inkline-icon': true,
-            [`-${props.size}`]: Boolean(props.size)
+            [`-${size.value}`]: Boolean(size.value)
         }));
 
         onMounted(() => {

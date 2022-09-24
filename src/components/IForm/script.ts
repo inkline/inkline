@@ -7,9 +7,7 @@ import {
     uid
 } from '@inkline/inkline/helpers';
 import {
-    computedColorValue,
-    computedPropValue,
-    sizePropValidator,
+    computedColorValue, computedSizeValue,
     FormComponentMixin
 } from '@inkline/inkline/mixins';
 import { validate } from '@inkline/inkline/validation';
@@ -115,8 +113,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: ''
         }
     },
     emits: [
@@ -132,10 +129,16 @@ export default defineComponent({
         'submit'
     ],
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
         classes (): Classes {
             return {
-                [`-${computedColorValue(componentName, this.color)}`]: true,
-                [`-${this.size}`]: Boolean(this.size),
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
                 '-inline': this.inline

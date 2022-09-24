@@ -2,9 +2,8 @@ import { defineComponent } from 'vue';
 import ILoader from '@inkline/inkline/components/ILoader/index.vue';
 import {
     LinkableMixin,
-    sizePropValidator,
     computedColorValue,
-    computedPropValue, computedSizeValue
+    computedSizeValue
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
@@ -150,8 +149,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: '',
-            validator: sizePropValidator
+            default: ''
         }
     },
     computed: {

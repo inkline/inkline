@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import {
     computedPropValue,
     computedColorValue,
-    sizePropValidator
+    sizePropValidator, computedSizeValue
 } from '@inkline/inkline/mixins';
 import { breakpointKeys, breakpoints } from '@inkline/inkline/constants';
 import { debounce } from '@inkline/inkline/helpers';
@@ -43,7 +43,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: computedPropValue<string>(componentName, 'color')
+            default: ''
         },
         /**
          * The number of items per page to be displayed
@@ -108,8 +108,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: computedPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
+            default: ''
         }
     },
     emits: [
@@ -125,10 +124,16 @@ export default defineComponent({
         };
     },
     computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
         classes (): Classes {
             return {
-                [`-${computedColorValue(componentName, this.color)}`]: true,
-                [`-${(this as any).size}`]: Boolean((this as any).size)
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize)
             };
         },
         pageCount (): number {

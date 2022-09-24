@@ -4,9 +4,8 @@ import { defineComponent } from 'vue';
 import {
     PopupMixin,
     PopupControlsMixin,
-    sizePropValidator,
     computedColorValue,
-    computedPropValue, computedSizeValue
+    computedSizeValue
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
 import { on, off, isFocusable, isKey } from '@inkline/inkline/helpers';
@@ -193,8 +192,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: '',
-            validator: sizePropValidator
+            default: ''
         }
     },
     emits: [

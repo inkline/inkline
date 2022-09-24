@@ -2,9 +2,8 @@ import { defineComponent } from 'vue';
 import { uid } from '@inkline/inkline/helpers';
 import {
     computedColorValue,
-    sizePropValidator,
     FormComponentMixin,
-    computedPropValue, computedSizeValue
+    computedSizeValue
 } from '@inkline/inkline/mixins';
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
@@ -108,8 +107,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: '',
-            validator: sizePropValidator
+            default: ''
         },
         /**
          * The tabindex of the checkbox

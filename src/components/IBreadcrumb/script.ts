@@ -1,8 +1,7 @@
 import { defineComponent } from 'vue';
 import {
     computedColorValue,
-    computedPropValue, computedSizeValue,
-    sizePropValidator
+    computedSizeValue
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
