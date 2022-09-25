@@ -2,14 +2,6 @@ import { defineComponent } from 'vue';
 import { getValueByPath } from '@inkline/inkline/helpers';
 
 export default defineComponent({
-    inject: {
-        formGroup: {
-            default: (): any => ({})
-        },
-        form: {
-            default: (): any => ({})
-        }
-    },
     computed: {
         isDisabled (): boolean {
             return (this as any).disabled || (this as any).form.isDisabled || (this as any).formGroup.isDisabled;

@@ -1,6 +1,7 @@
 import { defineComponent } from 'vue';
 import {
-    computedColorValue, computedSizeValue,
+    computedColorValue,
+    computedSizeValue,
     FormComponentMixin
 } from '@inkline/inkline/mixins';
 import { uid } from '@inkline/inkline/helpers';
@@ -19,6 +20,14 @@ export default defineComponent({
     mixins: [
         FormComponentMixin
     ],
+    inject: {
+        formGroup: {
+            default: (): any => ({})
+        },
+        form: {
+            default: (): any => ({})
+        }
+    },
     provide () {
         return {
             formGroup: this

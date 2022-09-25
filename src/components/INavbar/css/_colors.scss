@@ -11,7 +11,7 @@
                                         --navbar--border-left-color: var(--navbar--light--border-left-color, var(--color-light-600));
                                         --navbar--color: var(--navbar--light--color, var(--contrast-text--color-light));
                                         --navbar--item--background: var(--navbar--light--item--background, var(--color-light));
-                                        --navbar--item--background--hover: var(--navbar--light--item--background--hover, var(--color-light-550));
+                                        --navbar--hover--item--background: var(--navbar--light--hover--item--background, var(--color-light-550));
                                         --navbar--collapsed--background: var(--navbar--light--collapsed--background, var(--color-light));
     }
                         &.-dark {
@@ -22,7 +22,7 @@
                                         --navbar--border-left-color: var(--navbar--dark--border-left-color, var(--color-dark-400));
                                         --navbar--color: var(--navbar--dark--color, var(--contrast-text--color-dark));
                                         --navbar--item--background: var(--navbar--dark--item--background, var(--color-dark));
-                                        --navbar--item--background--hover: var(--navbar--dark--item--background--hover, var(--color-dark-450));
+                                        --navbar--hover--item--background: var(--navbar--dark--hover--item--background, var(--color-dark-450));
                                         --navbar--collapsed--background: var(--navbar--dark--collapsed--background, var(--color-dark));
     }
 }

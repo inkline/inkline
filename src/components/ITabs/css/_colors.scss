@@ -12,7 +12,7 @@
                                         --tabs--color: var(--tabs--white--color, var(--contrast-text--color-white));
                                         --tabs--header--background: var(--tabs--white--header--background, var(--color-white));
                                         --tabs--header--background--active: var(--tabs--white--header--background--active, var(--color-white));
-                                        --tabs--header--background--hover: var(--tabs--gray--header--background--hover, var(--color-gray-050));
+                                        --tabs--hover--header--background: var(--tabs--hover--gray--header--background, var(--color-gray-050));
                                         --tabs--header--border-color: var(--tabs--header--border-color, #{transparent});
     }
                         &.-dark {
@@ -24,7 +24,7 @@
                                         --tabs--color: var(--tabs--dark--color, var(--contrast-text--color-dark));
                                         --tabs--header--background: var(--tabs--dark--header--background, var(--color-dark));
                                         --tabs--header--background--active: var(--tabs--dark--header--background--active, var(--color-dark));
-                                        --tabs--header--background--hover: var(--tabs--dark--header--background--hover, var(--color-dark-450));
+                                        --tabs--hover--header--background: var(--tabs--dark--hover--header--background, var(--color-dark-450));
                                         --tabs--header--border-color: var(--tabs--header--border-color, #{transparent});
     }
 }

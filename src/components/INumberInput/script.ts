@@ -2,7 +2,6 @@ import { defineComponent } from 'vue';
 import IButton from '@inkline/inkline/components/IButton/index.vue';
 import IInput from '@inkline/inkline/components/IInput/index.vue';
 import { uid } from '@inkline/inkline/helpers';
-import { computedPropValue, sizePropValidator } from '@inkline/inkline/mixins';
 import { InputElementEvent } from '@inkline/inkline/types';
 
 const componentName = 'INumberInput';
@@ -179,9 +178,17 @@ export default defineComponent({
     },
     methods: {
         decrease () {
+            if (this.disabled || this.readonly) {
+                return;
+            }
+
             this.$emit('update:modelValue', this.formatPrecision((Number(this.modelValue) - this.step).toString()));
         },
         increase () {
+            if (this.disabled || this.readonly) {
+                return;
+            }
+
             this.$emit('update:modelValue', this.formatPrecision((Number(this.modelValue) + this.step).toString()));
         },
         formatPrecision (value: string) {
@@ -195,6 +202,10 @@ export default defineComponent({
             return this.precision > 0 ? `${parts[0]}.${decimals}` : parts[0];
         },
         onBlurFormatPrecision (event: InputElementEvent) {
+            if (this.disabled || this.readonly) {
+                return;
+            }
+
             this.$emit('update:modelValue', this.formatPrecision(Number(this.modelValue).toString()));
 
             (this.parent as any).onBlur?.(this.name, event);

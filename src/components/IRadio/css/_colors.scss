@@ -5,30 +5,30 @@
 .radio {
                         @include variant('light', 'form') {
                                         --radio--background: var(--radio--white--background, var(--color-white));
-                                        --radio--background--checked: var(--radio--primary--background--checked, var(--color-primary));
-                                        --radio--background--disabled: var(--radio--light--background--disabled, var(--color-light-250));
-                                        --radio--background--checked-disabled: var(--radio--primary--background--checked-disabled, var(--color-primary-250));
+                                        --radio--checked--background: var(--radio--primary--checked--background, var(--color-primary));
+                                        --radio--disabled--background: var(--radio--light--disabled--background, var(--color-light-250));
+                                        --radio--checked--background-disabled: var(--radio--primary--checked--background-disabled, var(--color-primary-250));
                                         --radio--border-color: var(--radio--light--border-color, var(--color-light-550));
-                                        --radio--border-color--checked: var(--radio--primary--border-color--checked, var(--color-primary-550));
-                                        --radio--border-color--disabled: var(--radio--light--border-color--disabled, var(--color-light));
-                                        --radio--border-color--checked-disabled: var(--radio--primary--border-color--checked-disabled, var(--color-primary-300));
+                                        --radio--checked--border-color: var(--radio--primary--checked--border-color, var(--color-primary-550));
+                                        --radio--disabled--border-color: var(--radio--light--disabled--border-color, var(--color-light));
+                                        --radio--checked--border-color-disabled: var(--radio--primary--checked--border-color-disabled, var(--color-primary-300));
                                         --radio--color: var(--radio--white--color, var(--color-white));
-                                        --radio--color--disabled: var(--radio--light--color--disabled, var(--color-light-250));
+                                        --radio--disabled--color: var(--radio--light--disabled--color, var(--color-light-250));
                                         --radio--label--color: var(--radio--light--label--color, var(--contrast-text--color-light));
-                                        --radio--label--color--disabled: var(--radio--light--label--color--disabled, var(--color-light-700));
+                                        --radio--disabled--label--color: var(--radio--light--disabled--label--color, var(--color-light-700));
     }
                         @include variant('dark', 'form') {
                                         --radio--background: var(--radio--dark--background, var(--color-dark));
-                                        --radio--background--checked: var(--radio--primary--background--checked, var(--color-primary));
-                                        --radio--background--disabled: var(--radio--dark--background--disabled, var(--color-dark-250));
-                                        --radio--background--checked-disabled: var(--radio--primary--background--checked-disabled, var(--color-primary-750));
+                                        --radio--checked--background: var(--radio--primary--checked--background, var(--color-primary));
+                                        --radio--disabled--background: var(--radio--dark--disabled--background, var(--color-dark-250));
+                                        --radio--checked--background-disabled: var(--radio--primary--checked--background-disabled, var(--color-primary-750));
                                         --radio--border-color: var(--radio--dark--border-color, var(--color-dark));
-                                        --radio--border-color--checked: var(--radio--primary--border-color--checked, var(--color-primary-550));
-                                        --radio--border-color--disabled: var(--radio--dark--border-color--disabled, var(--color-dark));
-                                        --radio--border-color--checked-disabled: var(--radio--primary--border-color--checked-disabled, var(--color-primary-700));
+                                        --radio--checked--border-color: var(--radio--primary--checked--border-color, var(--color-primary-550));
+                                        --radio--disabled--border-color: var(--radio--dark--disabled--border-color, var(--color-dark));
+                                        --radio--checked--border-color-disabled: var(--radio--primary--checked--border-color-disabled, var(--color-primary-700));
                                         --radio--color: var(--radio--white--color, var(--color-white));
-                                        --radio--color--disabled: var(--radio--dark--color--disabled, var(--color-dark-250));
+                                        --radio--disabled--color: var(--radio--dark--disabled--color, var(--color-dark-250));
                                         --radio--label--color: var(--radio--dark--label--color, var(--contrast-text--color-dark));
-                                        --radio--label--color--disabled: var(--radio--dark--label--color--disabled, var(--color-dark-300));
+                                        --radio--disabled--label--color: var(--radio--dark--label--color--disabled, var(--color-dark-300));
     }
 }

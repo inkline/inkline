@@ -103,7 +103,7 @@
             background: var(--hamburger-menu--background);
             position: absolute;
             transition-property: var(--hamburger-menu--bar--transition-property, (background-color, transform));
-            transition-duration: var(--hamburger-menu--bar--transition-duration, (calc(var(--transition-duration) * 0.5)));
+            transition-duration: var(--hamburger-menu--bar--transition-duration, 175ms);
             transition-timing-function: var(--hamburger-menu--bar--transition-timing-function, var(--transition-timing-function));
         }
 
@@ -124,23 +124,21 @@
 
     &.-close {
         > .hamburger-menu-bars {
-            transition-duration: 0.22s;
-            transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            transition: transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19), background var(--hamburger-menu--bar--transition-duration, (175ms)) var(--hamburger-menu--bar--transition-timing-function, var(--transition-timing-function));
 
             &::before {
-                transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+                transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in, background var(--hamburger-menu--bar--transition-duration, (175ms)) var(--hamburger-menu--bar--transition-timing-function, var(--transition-timing-function));
             }
 
             &::after {
-                transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+                transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19), background var(--hamburger-menu--bar--transition-duration, (175ms)) var(--hamburger-menu--bar--transition-timing-function, var(--transition-timing-function));
             }
         }
 
         &.-active {
             > .hamburger-menu-bars {
                 transform: rotate(225deg);
-                transition-delay: 0.12s;
-                transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+                transition: transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
 
                 &::before {
                     top: 0;

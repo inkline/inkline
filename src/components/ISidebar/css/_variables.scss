@@ -190,7 +190,7 @@
     /// @name item--color--hover
     /// @type color
     ////
-    ----item--color--hover: var(--contrast-text--color-light);
+    ----item--hover--color: var(--contrast-text--color-light);
     ////
     /// The background of the sidebar component item
     /// @name item--background
@@ -202,7 +202,7 @@
     /// @name item--background--hover
     /// @type color
     ////
-    ----item--background--hover: var(--color-light-550);
+    ----item--hover--background: var(--color-light-550);
     ////
     /// The border top left radius of the sidebar component item
     /// @name item--border-top-left-radius

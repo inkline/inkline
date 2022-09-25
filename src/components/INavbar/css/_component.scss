@@ -3,246 +3,246 @@
 /// @name navbar-collapsible--background
 /// @type color
 ////
-    
+
 ////
 /// The border top color of the navbar component
 /// @name navbar-collapsible--border-top-color
 /// @type color
 ////
-    
+
 ////
 /// The border right color of the navbar component
 /// @name navbar-collapsible--border-right-color
 /// @type color
 ////
-    
+
 ////
 /// The border bottom color of the navbar component
 /// @name navbar-collapsible--border-bottom-color
 /// @type color
 ////
-    
+
 ////
 /// The border left color of the navbar component
 /// @name navbar-collapsible--border-left-color
 /// @type color
 ////
-    
+
 ////
 /// The border color of the navbar component
 /// @name navbar-collapsible--border-color
 ////
-    
+
 ////
 /// The border style of the navbar component
 /// @name navbar-collapsible--border-style
 ////
-    
+
 ////
 /// The border top width of the navbar component
 /// @name navbar-collapsible--border-top-width
 ////
-    
+
 ////
 /// The border right width of the navbar component
 /// @name navbar-collapsible--border-right-width
 ////
-    
+
 ////
 /// The border bottom width of the navbar component
 /// @name navbar-collapsible--border-bottom-width
 ////
-    
+
 ////
 /// The border left width of the navbar component
 /// @name navbar-collapsible--border-left-width
 ////
-    
+
 ////
 /// The border width of the navbar component
 /// @name navbar-collapsible--border-width
 ////
-    
+
 ////
 /// The border top left radius of the navbar component
 /// @name navbar-collapsible--border-top-left-radius
 /// @type size
 ////
-    
+
 ////
 /// The border top right radius of the navbar component
 /// @name navbar-collapsible--border-top-right-radius
 /// @type size
 ////
-    
+
 ////
 /// The border bottom right radius of the navbar component
 /// @name navbar-collapsible--border-bottom-right-radius
 /// @type size
 ////
-    
+
 ////
 /// The border bottom left radius of the navbar component
 /// @name navbar-collapsible--border-bottom-left-radius
 /// @type size
 ////
-    
+
 ////
 /// The border radius of the navbar component
 /// @name navbar-collapsible--border-radius
 ////
-    
+
 ////
 /// The box shadow horizontal offset of the navbar component
 /// @name navbar-collapsible--box-shadow-offset-x
 ////
-    
+
 ////
 /// The box shadow vertical offset of the navbar component
 /// @name navbar-collapsible--box-shadow-offset-y
 ////
-    
+
 ////
 /// The box shadow blur radius of the navbar component
 /// @name navbar-collapsible--box-shadow-blur-radius
 ////
-    
+
 ////
 /// The box shadow spread radius of the navbar component
 /// @name navbar-collapsible--box-shadow-spread-radius
 ////
-    
+
 ////
 /// The box shadow spread radius of the navbar component
 /// @name navbar-collapsible--box-shadow-color
 ////
-    
+
 ////
 /// The box shadow of the navbar component
 /// @name navbar-collapsible--box-shadow
 ////
-    
+
 ////
 /// The font size of the navbar component
 /// @name navbar-collapsible--font-size
 /// @type size
 ////
-    
+
 ////
 /// The padding top of the navbar component
 /// @name navbar-collapsible--padding-top
 /// @type size
 ////
-    
+
 ////
 /// The padding right of the navbar component
 /// @name navbar-collapsible--padding-right
 ////
-    
+
 ////
 /// The padding bottom of the navbar component
 /// @name navbar-collapsible--padding-bottom
 /// @type size
 ////
-    
+
 ////
 /// The padding left of the navbar component
 /// @name navbar-collapsible--padding-left
 ////
-    
+
 ////
 /// The padding of the navbar component
 /// @name navbar-collapsible--padding
 ////
-    
+
 ////
 /// The color of the navbar component
 /// @name navbar-collapsible--color
 /// @type color
 ////
-    
+
 ////
 /// The background of the navbar component item
 /// @name navbar-collapsible--item--background
 /// @type color
 ////
-    
+
 ////
 /// The background of the navbar component item when hovered or focused
-/// @name navbar-collapsible--item--background--hover
+/// @name navbar-collapsible--item--hover--background
 /// @type color
 ////
-    
+
 ////
 /// The color of the navbar component item
 /// @name navbar-collapsible--item--color
 ////
-    
+
 ////
 /// The color of the navbar component item when hovered
-/// @name navbar-collapsible--item--color--hover
+/// @name navbar-collapsible--item--hover--color
 ////
-    
+
 ////
 /// The padding top of the navbar component
 /// @name navbar-collapsible--item--padding-top
 /// @type size
 ////
-    
+
 ////
 /// The padding right of the navbar component
 /// @name navbar-collapsible--item--padding-right
 /// @type size
 ////
-    
+
 ////
 /// The padding bottom of the navbar component
 /// @name navbar-collapsible--item--padding-bottom
 /// @type size
 ////
-    
+
 ////
 /// The padding left of the navbar component
 /// @name navbar-collapsible--item--padding-left
 /// @type size
 ////
-    
+
 ////
 /// The padding of the navbar component
 /// @name navbar-collapsible--item--padding
 ////
-    
+
 ////
 /// The background of the collapsed navbar component
 /// @name navbar-collapsible--collapsed--background
 /// @type color
 ////
-    
+
 ////
 /// The color of the collapsed navbar component item
 /// @name navbar-collapsible--collapsed--item--color
 ////
-    
+
 ////
 /// The color of the collapsed navbar component item when hovered
-/// @name navbar-collapsible--collapsed--item--color--hover
+/// @name navbar-collapsible--collapsed--hover--item--color
 ////
-    
+
 ////
 /// The background of the collapsed navbar component item
 /// @name navbar-collapsible--collapsed--item--background
 ////
-    
+
 ////
 /// The background of the collapsed navbar component item when hovered or focused
-/// @name navbar-collapsible--collapsed--item--background--hover
+/// @name navbar-collapsible--collapsed--hover--item--background
 ////
-    
+
 ////
 /// The margin right of the navbar component brand
 /// @name navbar-collapsible--brand--margin-right
 ////
-    
+
 
 /**
  * Navbar
@@ -392,8 +392,8 @@
             &.-hovered,
             &:focus,
             &:hover {
-                --navbar-collapsible--color: var(----item--color--hover);
-                --navbar-collapsible--background: var(----item--background--hover);
+                --navbar-collapsible--color: var(----item--hover--color);
+                --navbar-collapsible--background: var(----item--hover--background);
             }
         }
     }
@@ -407,8 +407,8 @@
                 --navbar-collapsible--color: var(----collapsed--item--color);
 
                 &:hover {
-                    --navbar-collapsible--color: var(----collapsed--item--color--hover);
-                    --navbar-collapsible--background: var(----collapsed--item--background--hover);
+                    --navbar-collapsible--color: var(----collapsed--hover--item--color);
+                    --navbar-collapsible--background: var(----collapsed--hover--item--background);
                 }
             }
         }

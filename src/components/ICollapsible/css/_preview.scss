@@ -1,3 +1,5 @@
-.collapsible + .collapsible {
-  margin-top: var(--margin-top);
+%collapsible-preview {
+    > .collapsible + .collapsible {
+        margin-top: var(--margin-top);
+    }
 }

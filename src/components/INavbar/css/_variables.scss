@@ -177,7 +177,7 @@
     /// @name item--background--hover
     /// @type color
     ////
-    ----item--background--hover: var(--color-light-550);
+    ----item--hover--background: var(--color-light-550);
     ////
     /// The color of the navbar component item
     /// @name item--color
@@ -187,7 +187,7 @@
     /// The color of the navbar component item when hovered
     /// @name item--color--hover
     ////
-    ----item--color--hover: #{var(----color)};
+    ----item--hover--color: #{var(----color)};
     ////
     /// The padding top of the navbar component
     /// @name item--padding-top
@@ -230,9 +230,9 @@
     ----collapsed--item--color: #{var(----color)};
     ////
     /// The color of the collapsed navbar component item when hovered
-    /// @name collapsed--item--color--hover
+    /// @name collapsed--item--hover--color
     ////
-    ----collapsed--item--color--hover: #{var(----color)};
+    ----collapsed--hover--item--color: #{var(----color)};
     ////
     /// The background of the collapsed navbar component item
     /// @name collapsed--item--background
@@ -240,9 +240,9 @@
     ----collapsed--item--background: #{var(----item--background)};
     ////
     /// The background of the collapsed navbar component item when hovered or focused
-    /// @name collapsed--item--background--hover
+    /// @name collapsed--item--hover--background
     ////
-    ----collapsed--item--background--hover: #{var(----item--background--hover)};
+    ----collapsed--hover--item--background: #{var(----item--hover--background)};
     ////
     /// The margin right of the navbar component brand
     /// @name brand--margin-right

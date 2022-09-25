@@ -4,9 +4,9 @@
 
 .header {
     &.-sm {
-        --header--padding-top: var(--header--sm--padding-top, calc(10rem * var(--size-multiplier-sm)));
+        --header--padding-top: var(--header--sm--padding-top, calc(10rem * var(--size-multiplier-xs)));
         --header--padding-right: var(--header--sm--padding-right, 0);
-        --header--padding-bottom: var(--header--sm--padding-bottom, calc(10rem * var(--size-multiplier-sm)));
+        --header--padding-bottom: var(--header--sm--padding-bottom, calc(10rem * var(--size-multiplier-xs)));
         --header--padding-left: var(--header--sm--padding-left, 0);
     }
 
@@ -18,9 +18,9 @@
     }
 
     &.-lg {
-        --header--padding-top: var(--header--lg--padding-top, calc(10rem * var(--size-multiplier-lg)));
+        --header--padding-top: var(--header--lg--padding-top, calc(10rem * var(--size-multiplier-xl)));
         --header--padding-right: var(--header--lg--padding-right, 0);
-        --header--padding-bottom: var(--header--lg--padding-bottom, calc(10rem * var(--size-multiplier-lg)));
+        --header--padding-bottom: var(--header--lg--padding-bottom, calc(10rem * var(--size-multiplier-xl)));
         --header--padding-left: var(--header--lg--padding-left, 0);
     }
 }

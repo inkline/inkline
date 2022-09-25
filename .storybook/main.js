@@ -19,7 +19,11 @@ module.exports = {
         '../src/components/IHamburgerMenu/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IHeader/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IIcon/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/IInput/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/ILayout/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/INumberInput/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IRow/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/ITextarea/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/stories/core/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/stories/utilities/**/*.stories.@(js|jsx|ts|tsx)'
     ],

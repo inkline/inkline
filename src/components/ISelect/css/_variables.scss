@@ -237,7 +237,7 @@
     /// @name option--background--hover
     /// @type color
     ////
-    ----option--background--hover: var(--color-light-250);
+    ----option--hover--background: var(--color-light-250);
     ////
     /// The background of the select component option when active
     /// @name option--background--active
@@ -248,7 +248,7 @@
     /// @name option--background--disabled
     /// @type color
     ////
-    ----option--background--disabled: #{transparent};
+    ----option--disabled--background: #{transparent};
     ////
     /// The border top left radius of the modal component
     /// @name option--border-top-left-radius
@@ -283,7 +283,7 @@
     /// The color of the select component option when hovered or focused
     /// @name option--color--hover
     ////
-    ----option--color--hover: #{var(----option--color)};
+    ----option--hover--color: #{var(----option--color)};
     ////
     /// The color of the select component option when active
     /// @name option--color--active
@@ -294,7 +294,7 @@
     /// @name option--color--disabled
     /// @type color
     ////
-    ----option--color--disabled: var(--color-light-650);
+    ----option--disabled--color: var(--color-light-650);
     ////
     /// The padding top of the select component option
     /// @name option--padding-top

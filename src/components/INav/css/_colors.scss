@@ -6,11 +6,11 @@
                         &.-light {
                                         --nav--color: var(--nav--light--color, var(--contrast-text--color-light));
                                         --nav--color--active: var(--nav--primary--color--active, var(--contrast-text--color-primary));
-                                        --nav--color--disabled: var(--nav--color--disabled, #{var(--text-muted)});
+                                        --nav--disabled--color: var(--nav--disabled--color, #{var(--text-muted)});
     }
                         &.-dark {
                                         --nav--color: var(--nav--dark--color, var(--contrast-text--color-dark));
                                         --nav--color--active: var(--nav--primary--color--active, var(--contrast-text--color-primary));
-                                        --nav--color--disabled: var(--nav--color--disabled, #{var(--text-muted)});
+                                        --nav--disabled--color: var(--nav--disabled--color, #{var(--text-muted)});
     }
 }

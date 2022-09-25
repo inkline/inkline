@@ -1,0 +1,19 @@
+/*
+ * Dropdown Divider
+ */
+
+.dropdown-divider {
+    display: block;
+    height: 1px;
+    clear: both;
+    margin: var(
+        --dropdown--divider--margin,
+        (
+            var(--dropdown--margin--margin-top, calc(var(--margin-top) * 0.5))
+            var(--dropdown--margin--margin-right, var(--dropdown--body--padding-right, calc(var(--dropdown--padding-right) * -1)))
+            var(--dropdown--margin--margin-bottom, calc(var(--margin-top) * 0.5))
+            var(--dropdown--margin--margin-left, var(--dropdown--body--padding-left, calc(var(--dropdown--padding-left) * -1)))
+        )
+    );
+    background-color: var(--dropdown--divider--background, var(--dropdown--border-top-color, var(--border-top-color)));
+}

@@ -1,4 +1,6 @@
-.dropdown-wrapper {
-    margin-right: var(--margin-right);
-    margin-bottom: var(--margin-bottom);
+%dropdown-preview {
+    > .dropdown-wrapper {
+        margin-right: var(--margin-right);
+        margin-bottom: var(--margin-bottom);
+    }
 }

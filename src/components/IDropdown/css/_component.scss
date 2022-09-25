@@ -502,12 +502,6 @@
         .dropdown-wrapper {
             width: 100%;
         }
-
-        .dropdown-divider {
-            margin-top: var(----divider--margin-top, (calc(var(--margin-top) * 0.5)));
-            margin-bottom: var(----divider--margin-bottom, (calc(var(--margin-bottom) * 0.5)));
-            background-color: var(--dropdown--divider--background, var(--dropdown--border-top-color, var(--border-top-color)));
-        }
     }
 
     > .dropdown-footer {

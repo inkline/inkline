@@ -20,6 +20,14 @@ export default defineComponent({
     mixins: [
         FormComponentMixin
     ],
+    inject: {
+        formGroup: {
+            default: (): any => ({})
+        },
+        form: {
+            default: (): any => ({})
+        }
+    },
     props: {
         /**
          * The color variant of the checkbox

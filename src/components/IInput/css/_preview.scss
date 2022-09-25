@@ -1,0 +1,7 @@
+%input-preview {
+    > .input-wrapper {
+        + .input-wrapper {
+            margin-top: var(--margin-top);
+        }
+    }
+}

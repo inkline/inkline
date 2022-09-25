@@ -1,10 +1,9 @@
 import { defineComponent } from 'vue';
 import { uid } from '@inkline/inkline/helpers';
 import {
-    computedPropValue,
     computedColorValue,
-    sizePropValidator,
-    FormComponentMixin, computedSizeValue
+    computedSizeValue,
+    FormComponentMixin
 } from '@inkline/inkline/mixins';
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
@@ -46,6 +45,14 @@ export default defineComponent({
     mixins: [
         FormComponentMixin
     ],
+    inject: {
+        formGroup: {
+            default: (): any => ({})
+        },
+        form: {
+            default: (): any => ({})
+        }
+    },
     inheritAttrs: false,
     props: {
         /**
@@ -199,7 +206,7 @@ export default defineComponent({
             return computedColorValue(componentName, this.color);
         },
         computedSize (): string | undefined {
-            return computedSizeValue(componentName, this.size);
+            return computedSizeValue(componentName, this.size || (this as any).formGroup.size || (this as any).form.size);
         },
         classes (): Classes {
             return {

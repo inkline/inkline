@@ -19,6 +19,14 @@ export default defineComponent({
     mixins: [
         FormComponentMixin
     ],
+    inject: {
+        formGroup: {
+            default: (): any => ({})
+        },
+        form: {
+            default: (): any => ({})
+        }
+    },
     props: {
         /**
          * The id of the target input to be focused by the form label. If left empty, clicking the form label will focus the next sibling input

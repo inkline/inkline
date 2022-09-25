@@ -173,19 +173,19 @@
     /// The background of the toggle component indicator when checked
     /// @name indicator--background--checked
     ////
-    ----indicator--background--checked: #{var(----indicator--background)};
+    ----indicator--checked--background: #{var(----indicator--background)};
     ////
     /// The background of the toggle component indicator when disabled
     /// @name indicator--background--disabled
     /// @type color
     ////
-    ----indicator--background--disabled: var(--color-gray-050);
+    ----indicator--disabled--background: var(--color-gray-050);
     ////
     /// The background of the toggle component indicator when checked and disabled
     /// @name indicator--background--checked-disabled
     /// @type color
     ////
-    ----indicator--background--checked-disabled: var(--color-gray-100);
+    ----indicator--checked--background-disabled: var(--color-gray-100);
     ////
     /// The border top left radius of the toggle component indicator
     /// @name indicator--border-top-left-radius
@@ -238,7 +238,7 @@
     /// @name label--color--disabled
     /// @type color
     ////
-    ----label--color--disabled: var(--color-light-700);
+    ----label--disabled--color: var(--color-light-700);
     ////
     /// The font size of the toggle component label
     /// @name label--font-size

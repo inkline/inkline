@@ -7,7 +7,8 @@ import {
     uid
 } from '@inkline/inkline/helpers';
 import {
-    computedColorValue, computedSizeValue,
+    computedColorValue,
+    computedSizeValue,
     FormComponentMixin
 } from '@inkline/inkline/mixins';
 import { validate } from '@inkline/inkline/validation';
@@ -26,6 +27,14 @@ export default defineComponent({
     mixins: [
         FormComponentMixin
     ],
+    inject: {
+        formGroup: {
+            default: (): any => ({})
+        },
+        form: {
+            default: (): any => ({})
+        }
+    },
     provide () {
         return {
             form: this

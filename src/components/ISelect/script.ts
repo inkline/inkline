@@ -75,6 +75,14 @@ export default defineComponent({
         FormComponentMixin,
         PopupMixin
     ],
+    inject: {
+        formGroup: {
+            default: (): any => ({})
+        },
+        form: {
+            default: (): any => ({})
+        }
+    },
     provide () {
         return {
             select: this
