@@ -1,4 +1,4 @@
-<div class="input-wrapper -prepended -appended" :class="classes">
+<div class="input-wrapper -prepended -appended" :class="classes" v-bind="wrapperAttrs">
     <div class="input-prepend">
         <slot name="prepend" />
         <i-button
@@ -17,7 +17,7 @@
             <slot name="prefix" />
         </span>
         <input
-            v-bind="$attrs"
+            v-bind="inputAttrs"
             :value="value"
             ref="input"
             :name="name"

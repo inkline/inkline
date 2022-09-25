@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { uid } from '@grozav/utils';
+import {filterKeys, uid} from '@grozav/utils';
 import {
     computedColorValue,
     computedSizeValue,
@@ -39,6 +39,8 @@ import { Classes, InputElementEvent } from '@inkline/inkline/types';
  */
 
 const componentName = 'IInput';
+
+const wrapperAttrs = ['id', 'class', 'className', /^data-/];
 
 export default defineComponent({
     name: componentName,
@@ -202,6 +204,12 @@ export default defineComponent({
         'clear'
     ],
     computed: {
+        wrapperAttrs (): Record<string, unknown> {
+            return filterKeys(this.$attrs, { allowlist: wrapperAttrs });
+        },
+        inputAttrs (): Record<string, unknown> {
+            return filterKeys(this.$attrs, { denylist: wrapperAttrs });
+        },
         computedColor (): string | undefined {
             return computedColorValue(componentName, this.color);
         },

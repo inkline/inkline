@@ -1,4 +1,4 @@
-<div class="input-wrapper" :class="classes">
+<div class="input-wrapper" :class="classes" v-bind="wrapperAttrs">
     <div class="input-prepend" v-if="$slots.prepend">
         <slot name="prepend" />
     </div>
@@ -7,7 +7,7 @@
             <slot name="prefix" />
         </span>
         <textarea
-            v-bind="$attrs"
+            v-bind="inputAttrs"
             :value="value"
             ref="input"
             role="textbox"
