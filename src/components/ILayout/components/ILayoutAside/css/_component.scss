@@ -2,18 +2,16 @@
 /// The width of the layout aside component
 /// @name layout-aside--width
 ////
-    
-
-@import 'css/variables';
 
 /**
  * Layout Aside
  */
+
 .layout-aside {
     transition: all 0.2s;
     position: relative;
-    width: var(--layout-aside--width);
-    flex: 0 0 var(--layout-aside--width);
+    width: var(--layout-aside--width, 320px);
+    flex: 0 0 var(--layout-aside--width, (320px));
 
     /* Fix firefox can't set width smaller than content on flex item */
     min-width: 0;
