@@ -1,6 +1,7 @@
 import { h, computed, defineComponent, onMounted, inject } from 'vue';
 import { computedSizeValue } from '@inkline/inkline/mixins';
-import { renderSvg, toCamelCase } from '@inkline/inkline/helpers';
+import { toCamelCase } from '@grozav/utils';
+import { renderSvg } from '@inkline/inkline/utils';
 import { SvgNode } from '@inkline/inkline/types';
 
 /**

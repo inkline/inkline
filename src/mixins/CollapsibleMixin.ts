@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { on, off } from '@inkline/inkline/helpers';
+import { on, off } from '@grozav/utils';
 import { breakpoints } from '@inkline/inkline/constants';
 import { Classes } from '@inkline/inkline/types';
 

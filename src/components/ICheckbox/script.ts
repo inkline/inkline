@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { uid } from '@inkline/inkline/helpers';
+import { uid } from '@grozav/utils';
 import {
     computedColorValue,
     FormComponentMixin,

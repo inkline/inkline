@@ -5,7 +5,7 @@ import {
     sizePropValidator, computedSizeValue
 } from '@inkline/inkline/mixins';
 import { breakpointKeys, breakpoints } from '@inkline/inkline/constants';
-import { debounce } from '@inkline/inkline/helpers';
+import { debounce } from '@grozav/utils';
 import { Classes } from '@inkline/inkline/types';
 
 /**

@@ -1,5 +1,5 @@
 import { Directive } from 'vue';
-import { on, isVisible } from '@inkline/inkline/helpers';
+import { on, isVisible } from '@grozav/utils';
 
 export const onClickOutside = (element: HTMLElement, binding: any) => (e: { target: HTMLElement }) => {
     if (!isVisible(element) || !e.target) {

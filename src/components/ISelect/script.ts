@@ -7,7 +7,7 @@ import {
     isKey,
     uid,
     getValueByPath
-} from '@inkline/inkline/helpers';
+} from '@grozav/utils';
 import {
     computedColorValue,
     computedPropValue,

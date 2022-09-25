@@ -1,4 +1,4 @@
-import { getValueByPath, isFunction } from '@inkline/inkline/helpers';
+import { getValueByPath, isFunction } from '@grozav/utils';
 import { i18n } from '@inkline/inkline/i18n';
 
 /**

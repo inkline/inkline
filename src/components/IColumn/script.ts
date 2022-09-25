@@ -1,6 +1,6 @@
 import { defineComponent, Prop } from 'vue';
 import { breakpointKeys } from '@inkline/inkline/constants';
-import { breakpointClass, capitalizeFirst } from '@inkline/inkline/helpers';
+import { breakpointClass, capitalizeFirst } from '@grozav/utils';
 
 /**
  * Slot for default column content

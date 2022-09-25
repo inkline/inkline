@@ -8,7 +8,7 @@ import {
 } from '@inkline/inkline/mixins';
 import ClickOutside from '@inkline/inkline/directives/click-outside';
 import { Classes } from '@inkline/inkline/types';
-import { uid } from '@inkline/inkline/helpers';
+import { uid } from '@grozav/utils';
 
 /**
  * Slot for tooltip trigger

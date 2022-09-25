@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { getStyleProperty } from '@inkline/inkline/helpers';
+import { getStyleProperty } from '@grozav/utils';
 
 export default defineComponent({
     name: 'IExpandTransition',

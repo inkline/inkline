@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { getValueByPath } from '@inkline/inkline/helpers';
+import { getValueByPath } from '@grozav/utils';
 
 /**
  * Slot for default form error content

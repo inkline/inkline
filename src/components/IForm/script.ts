@@ -5,7 +5,7 @@ import {
     setValuesAlongPath,
     clone,
     uid
-} from '@inkline/inkline/helpers';
+} from '@grozav/utils';
 import {
     computedColorValue,
     computedSizeValue,

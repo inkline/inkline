@@ -8,7 +8,7 @@ import {
     computedSizeValue
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
-import { on, off, isFocusable, isKey } from '@inkline/inkline/helpers';
+import { on, off, isFocusable, isKey } from '@grozav/utils';
 import { Classes } from '@inkline/inkline/types';
 
 /**

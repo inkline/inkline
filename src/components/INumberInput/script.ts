@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import IButton from '@inkline/inkline/components/IButton/index.vue';
 import IInput from '@inkline/inkline/components/IInput/index.vue';
-import { uid } from '@inkline/inkline/helpers';
+import { uid } from '@grozav/utils';
 import { InputElementEvent } from '@inkline/inkline/types';
 
 const componentName = 'INumberInput';

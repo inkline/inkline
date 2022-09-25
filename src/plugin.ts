@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Plugin, reactive, watch } from 'vue';
-import { addClass, removeClass } from '@inkline/inkline/helpers';
+import { addClass, removeClass } from '@grozav/utils';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
 import * as inklineIcons from '@inkline/inkline/icons';

@@ -4,8 +4,8 @@
 
 import { ClickOutsideDirective } from '@inkline/inkline/directives/click-outside';
 
-vi.mock('@inkline/inkline/helpers', async () => {
-    const { isVisible } = await vi.importActual('@inkline/inkline/helpers');
+vi.mock('@grozav/utils', async () => {
+    const { isVisible } = await vi.importActual('@grozav/utils');
 
     return {
         on: vi.fn(),
@@ -16,7 +16,7 @@ vi.mock('@inkline/inkline/helpers', async () => {
 const helpersModule: {
     on: () => void;
     isVisible: () => boolean;
-} = await vi.importMock('@inkline/inkline/helpers');
+} = await vi.importMock('@grozav/utils');
 
 describe('Directives', () => {
     describe('v-click-outside', () => {

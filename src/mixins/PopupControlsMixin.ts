@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { on, off, focusFirstDescendant } from '@inkline/inkline/helpers';
+import { on, off, focusFirstDescendant } from '@grozav/utils';
 
 export default defineComponent({
     props: {

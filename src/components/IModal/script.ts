@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { addClass, removeClass, uid } from '@inkline/inkline/helpers';
+import { addClass, removeClass, uid } from '@grozav/utils';
 import { OverlayController } from '@inkline/inkline/controllers';
 import {
     computedColorValue,

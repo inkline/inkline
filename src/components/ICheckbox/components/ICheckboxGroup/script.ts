@@ -4,7 +4,7 @@ import {
     computedSizeValue,
     FormComponentMixin
 } from '@inkline/inkline/mixins';
-import { uid } from '@inkline/inkline/helpers';
+import { uid } from '@grozav/utils';
 import { Classes } from '@inkline/inkline/types';
 
 /**
