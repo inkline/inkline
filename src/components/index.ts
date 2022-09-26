@@ -24,8 +24,8 @@ export { default as ILayoutAside } from './ILayout/components/ILayoutAside/index
 export { default as ILayoutContent } from './ILayout/components/ILayoutContent/index.vue';
 export { default as ILayoutFooter } from './ILayout/components/ILayoutFooter/index.vue';
 export { default as ILayoutHeader } from './ILayout/components/ILayoutHeader/index.vue';
-// export { default as IListGroup } from './IListGroup/index.vue';
-// export * from './IListGroup/components';
+export { default as IListGroup } from './IListGroup/index.vue';
+export * from './IListGroup/components';
 // export { default as ILoader } from './ILoader/index.vue';
 // export { default as IMark } from './IMark/index.vue';
 // export { default as IMedia } from './IMedia/index.vue';

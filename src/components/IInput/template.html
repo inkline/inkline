@@ -1,4 +1,4 @@
-<div class="input-wrapper" :class="classes" v-bind="wrapperAttrs">
+<div class="input-wrapper" :id="id && `${id}-wrapper`" :class="classes" v-bind="wrapperAttrs">
     <div class="input-prepend" v-if="$slots.prepend">
         <slot name="prepend" />
     </div>

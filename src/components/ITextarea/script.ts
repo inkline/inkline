@@ -1,9 +1,5 @@
 import { defineComponent } from 'vue';
 import { uid } from '@grozav/utils';
-import {
-    computedPropValue,
-    sizePropValidator
-} from '@inkline/inkline/mixins';
 import IInput from '@inkline/inkline/components/IInput/index.vue';
 
 /**

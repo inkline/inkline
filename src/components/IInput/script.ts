@@ -40,7 +40,7 @@ import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 const componentName = 'IInput';
 
-const wrapperAttrs = ['id', 'class', 'className', /^data-/];
+const wrapperAttrs = ['class', 'className', /^data-/];
 
 export default defineComponent({
     name: componentName,
@@ -105,6 +105,16 @@ export default defineComponent({
          * @name id
          */
         id: {
+            type: String,
+            default: undefined
+        },
+        /**
+         * The id of the input wrapper element
+         * @type String
+         * @default
+         * @name wrapperId
+         */
+        wrapperId: {
             type: String,
             default: undefined
         },

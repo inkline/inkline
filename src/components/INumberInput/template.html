@@ -1,4 +1,4 @@
-<div class="input-wrapper -prepended -appended" :class="classes" v-bind="wrapperAttrs">
+<div class="input-wrapper -prepended -appended" :id="id && `${id}-wrapper`" :class="classes" v-bind="wrapperAttrs">
     <div class="input-prepend">
         <slot name="prepend" />
         <i-button
