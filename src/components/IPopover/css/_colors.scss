@@ -3,24 +3,25 @@
  */
 
 .popover-wrapper {
-                        &.-light {
-                                        --popover--background: var(--popover--white--background, var(--color-white));
-                                        --popover--border-top-color: var(--popover--light--border-top-color, var(--color-light));
-                                        --popover--border-right-color: var(--popover--light--border-right-color, var(--color-light));
-                                        --popover--border-bottom-color: var(--popover--light--border-bottom-color, var(--color-light));
-                                        --popover--border-left-color: var(--popover--light--border-left-color, var(--color-light));
-                                        --popover--color: var(--popover--white--color, var(--contrast-text--color-white));
-                                        --popover--header--background: var(--popover--gray--header--background, var(--color-gray-050));
-                                        --popover--footer--background: var(--popover--gray--footer--background, var(--color-gray-050));
+    &.-light {
+        --popover--background: var(--popover--white--background, var(--color-white));
+        --popover--border-top-color: var(--popover--light--border-top-color, var(--color-light));
+        --popover--border-right-color: var(--popover--light--border-right-color, var(--color-light));
+        --popover--border-bottom-color: var(--popover--light--border-bottom-color, var(--color-light));
+        --popover--border-left-color: var(--popover--light--border-left-color, var(--color-light));
+        --popover--color: var(--popover--white--color, var(--contrast-text--color-white));
+        --popover--header--background: var(--popover--gray--header--background, var(--color-gray-050));
+        --popover--footer--background: var(--popover--gray--footer--background, var(--color-gray-050));
     }
-                        &.-dark {
-                                        --popover--background: var(--popover--dark--background, var(--color-dark));
-                                        --popover--border-top-color: var(--popover--dark--border-top-color, var(--color-dark-600));
-                                        --popover--border-right-color: var(--popover--dark--border-right-color, var(--color-dark-600));
-                                        --popover--border-bottom-color: var(--popover--dark--border-bottom-color, var(--color-dark-600));
-                                        --popover--border-left-color: var(--popover--dark--border-left-color, var(--color-dark-600));
-                                        --popover--color: var(--popover--dark--color, var(--contrast-text--color-dark));
-                                        --popover--header--background: var(--popover--dark--header--background, var(--color-dark-550));
-                                        --popover--footer--background: var(--popover--dark--footer--background, var(--color-dark-550));
+
+    &.-dark {
+        --popover--background: var(--popover--dark--background, var(--color-dark));
+        --popover--border-top-color: var(--popover--dark--border-top-color, var(--color-dark-600));
+        --popover--border-right-color: var(--popover--dark--border-right-color, var(--color-dark-600));
+        --popover--border-bottom-color: var(--popover--dark--border-bottom-color, var(--color-dark-600));
+        --popover--border-left-color: var(--popover--dark--border-left-color, var(--color-dark-600));
+        --popover--color: var(--popover--dark--color, var(--contrast-text--color-dark));
+        --popover--header--background: var(--popover--dark--header--background, var(--color-dark-550));
+        --popover--footer--background: var(--popover--dark--footer--background, var(--color-dark-550));
     }
 }

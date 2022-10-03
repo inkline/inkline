@@ -36,7 +36,7 @@ export { default as INavbar } from './INavbar/index.vue';
 export * from './INavbar/components';
 export { default as INumberInput } from './INumberInput/index.vue';
 export { default as IPagination } from './IPagination/index.vue';
-// export { default as IPopover } from './IPopover/index.vue';
+export { default as IPopover } from './IPopover/index.vue';
 // export { default as IProgress } from './IProgress/index.vue';
 // export * from './IProgress/components';
 // export { default as IRadio } from './IRadio/index.vue';
