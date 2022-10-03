@@ -1,6 +1,6 @@
 {
   "name": "@inkline/inkline",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "description": "Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
