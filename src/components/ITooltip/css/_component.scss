@@ -3,221 +3,216 @@
 /// @name tooltip--background
 /// @type color
 ////
-    
+
 ////
 /// The border top color of the tooltip component
 /// @name tooltip--border-top-color
 /// @type color
 ////
-    
+
 ////
 /// The border right color of the tooltip component
 /// @name tooltip--border-right-color
 /// @type color
 ////
-    
+
 ////
 /// The border bottom color of the tooltip component
 /// @name tooltip--border-bottom-color
 /// @type color
 ////
-    
+
 ////
 /// The border left color of the tooltip component
 /// @name tooltip--border-left-color
 /// @type color
 ////
-    
+
 ////
 /// The border color of the tooltip component
 /// @name tooltip--border-color
 ////
-    
+
 ////
 /// The border style of the tooltip component
 /// @name tooltip--border-style
 ////
-    
+
 ////
 /// The border top width of the tooltip component
 /// @name tooltip--border-top-width
 ////
-    
+
 ////
 /// The border right width of the tooltip component
 /// @name tooltip--border-right-width
 ////
-    
+
 ////
 /// The border bottom width of the tooltip component
 /// @name tooltip--border-bottom-width
 ////
-    
+
 ////
 /// The border left width of the tooltip component
 /// @name tooltip--border-left-width
 ////
-    
+
 ////
 /// The border width of the tooltip component
 /// @name tooltip--border-width
 ////
-    
+
 ////
 /// The border top left radius of the tooltip component
 /// @name tooltip--border-top-left-radius
 /// @type size
 ////
-    
+
 ////
 /// The border top right radius of the tooltip component
 /// @name tooltip--border-top-right-radius
 /// @type size
 ////
-    
+
 ////
 /// The border bottom right radius of the tooltip component
 /// @name tooltip--border-bottom-right-radius
 /// @type size
 ////
-    
+
 ////
 /// The border bottom left radius of the tooltip component
 /// @name tooltip--border-bottom-left-radius
 /// @type size
 ////
-    
+
 ////
 /// The border radius of the tooltip component
 /// @name tooltip--border-radius
 ////
-    
+
 ////
 /// The box shadow horizontal offset of the tooltip component
 /// @name tooltip--box-shadow-offset-x
 ////
-    
+
 ////
 /// The box shadow vertical offset of the tooltip component
 /// @name tooltip--box-shadow-offset-y
 ////
-    
+
 ////
 /// The box shadow blur radius of the tooltip component
 /// @name tooltip--box-shadow-blur-radius
 ////
-    
+
 ////
 /// The box shadow spread radius of the tooltip component
 /// @name tooltip--box-shadow-spread-radius
 ////
-    
+
 ////
 /// The box shadow spread radius of the tooltip component
 /// @name tooltip--box-shadow-color
 ////
-    
+
 ////
 /// The box shadow of the tooltip component
 /// @name tooltip--box-shadow
 ////
-    
+
 ////
 /// The color of the tooltip component item
 /// @name tooltip--color
 /// @type color
 ////
-    
+
 ////
 /// The font size of the tooltip component
 /// @name tooltip--font-size
 /// @type size
 ////
-    
+
 ////
 /// The font weight of the tooltip component
 /// @name tooltip--font-weight
 ////
-    
+
 ////
 /// The line height of the tooltip component
 /// @name tooltip--line-height
 ////
-    
+
 ////
 /// The margin top of the tooltip component
 /// @name tooltip--margin-top
 /// @type size
 ////
-    
+
 ////
 /// The margin right of the tooltip component
 /// @name tooltip--margin-right
 /// @type size
 ////
-    
+
 ////
 /// The margin bottom of the tooltip component
 /// @name tooltip--margin-bottom
 /// @type size
 ////
-    
+
 ////
 /// The margin left of the tooltip component
 /// @name tooltip--margin-left
 /// @type size
 ////
-    
+
 ////
 /// The margin of the tooltip component
 /// @name tooltip--margin
 ////
-    
+
 ////
 /// The padding top of the tooltip component
 /// @name tooltip--padding-top
 /// @type size
 ////
-    
+
 ////
 /// The padding right of the tooltip component
 /// @name tooltip--padding-right
 /// @type size
 ////
-    
+
 ////
 /// The padding bottom of the tooltip component
 /// @name tooltip--padding-bottom
 /// @type size
 ////
-    
+
 ////
 /// The padding left of the tooltip component
 /// @name tooltip--padding-left
 /// @type size
 ////
-    
+
 ////
 /// The padding of the tooltip component
 /// @name tooltip--padding
 ////
-    
+
 ////
 /// The width of the tooltip component
 /// @name tooltip--width
 ////
-    
+
 ////
 /// The z-index of the tooltip component
 /// @name tooltip--z-index
 ////
-    
 
-@import '../../css/variables';
-@import '../../css/mixins';
-@import 'css/variables';
-@import 'css/sizes';
-@import 'css/colors';
+@import '../../../cssnew/mixins';
 
 .tooltip-wrapper {
     display: inline-block;
@@ -226,82 +221,85 @@
     .tooltip-trigger {
         display: contents;
     }
+}
 
-    .tooltip {
-        @include popup(('z-index': var(--tooltip--z-index)));
-        @include popup-arrow();
-        @include popup-arrow-size-variant();
+.tooltip {
+    @include popup(var(--tooltip--z-index, 2000));
+    @include popup-arrow();
+    @include popup-arrow-size-variant(var(--tooltip--arrow--size, 6px));
 
-        text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
-        list-style: none;
-        background-clip: padding-box;
-        display: inline-block;
-        white-space: nowrap;
-        line-height: var(--tooltip--line-height, var(--line-height));
-        border-width: var(
-                --tooltip--border-width,
-                (
-                        var(--tooltip--border-top-width, var(--border-top-width))
-                        var(--tooltip--border-right-width, var(--border-right-width))
-                        var(--tooltip--border-bottom-width, var(--border-bottom-width))
-                        var(--tooltip--border-left-width, var(--border-left-width))
-                )
-        );
-        border-style: var(
-                --tooltip--border-style,
-                (
-                        var(--tooltip--border-top-style, var(--border-top-style))
-                        var(--tooltip--border-right-style, var(--border-right-style))
-                        var(--tooltip--border-bottom-style, var(--border-bottom-style))
-                        var(--tooltip--border-left-style, var(--border-left-style))
-                )
-        );
-        color: var(--tooltip--color);
-        background-color: var(--tooltip--background);
-        border-color: var(
-                --tooltip--border-color,
-                (
-                        var(--tooltip--border-top-color, var(--border-top-color))
-                        var(--tooltip--border-right-color, var(--border-right-color))
-                        var(--tooltip--border-bottom-color, var(--border-bottom-color))
-                        var(--tooltip--border-left-color, var(--border-left-color))
-                )
-        );
-        border-radius: var(
-                --tooltip--border-radius,
-                (
-                        var(--tooltip--border-top-left-radius, var(--border-top-left-radius))
-                        var(--tooltip--border-top-right-radius, var(--border-top-right-radius))
-                        var(--tooltip--border-bottom-right-radius, var(--border-bottom-right-radius))
-                        var(--tooltip--border-bottom-left-radius, var(--border-bottom-left-radius))
-                )
-        );
-        font-size: var(--tooltip--font-size, var(--font-size));
-        padding: var(
-                --tooltip--padding,
-                (
-                        var(--tooltip--padding-top, var(--padding-top))
-                        var(--tooltip--padding-right, var(--padding-right))
-                        var(--tooltip--padding-bottom, var(--padding-bottom))
-                        var(--tooltip--padding-left, var(--padding-left))
-                )
-        );
-        box-shadow: var(
-                --tooltip--box-shadow,
-                (
-                        var(--tooltip--box-shadow-x-offset, var(--box-shadow-offset-x))
-                        var(--tooltip--box-shadow-y-offset, var(--box-shadow-offset-y))
-                        var(--tooltip--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                        var(--tooltip--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                        var(--tooltip--box-shadow-color, var(--box-shadow-color))
-                )
-        );
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    background-clip: padding-box;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: var(--tooltip--line-height, var(--line-height));
+    border-width: var(
+        --tooltip--border-width,
+        (
+            var(--tooltip--border-top-width, var(--border-top-width))
+            var(--tooltip--border-right-width, var(--border-right-width))
+            var(--tooltip--border-bottom-width, var(--border-bottom-width))
+            var(--tooltip--border-left-width, var(--border-left-width))
+        )
+    );
+    border-style: var(
+        --tooltip--border-style,
+        (
+            var(--tooltip--border-top-style, var(--border-top-style))
+            var(--tooltip--border-right-style, var(--border-right-style))
+            var(--tooltip--border-bottom-style, var(--border-bottom-style))
+            var(--tooltip--border-left-style, var(--border-left-style))
+        )
+    );
+    color: var(--tooltip--color);
+    background-color: var(--tooltip--background);
+    border-color: var(
+        --tooltip--border-color,
+        (
+            var(--tooltip--border-top-color, var(--border-top-color))
+            var(--tooltip--border-right-color, var(--border-right-color))
+            var(--tooltip--border-bottom-color, var(--border-bottom-color))
+            var(--tooltip--border-left-color, var(--border-left-color))
+        )
+    );
+    border-radius: var(
+        --tooltip--border-radius,
+        (
+            var(--tooltip--border-top-left-radius, var(--border-top-left-radius))
+            var(--tooltip--border-top-right-radius, var(--border-top-right-radius))
+            var(--tooltip--border-bottom-right-radius, var(--border-bottom-right-radius))
+            var(--tooltip--border-bottom-left-radius, var(--border-bottom-left-radius))
+        )
+    );
+    font-size: var(--tooltip--font-size, var(--font-size));
+    padding: var(
+        --tooltip--padding,
+        (
+            var(--tooltip--padding-top, var(--padding-top))
+            var(--tooltip--padding-right, var(--padding-right))
+            var(--tooltip--padding-bottom, var(--padding-bottom))
+            var(--tooltip--padding-left, var(--padding-left))
+        )
+    );
+    box-shadow: var(
+        --tooltip--box-shadow,
+        (
+                var(--tooltip--box-shadow-x-offset, var(--box-shadow-offset-x))
+                var(--tooltip--box-shadow-y-offset, var(--box-shadow-offset-y))
+                var(--tooltip--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                var(--tooltip--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                var(--tooltip--box-shadow-color, var(--box-shadow-color))
+        )
+    );
 
-        @include popup-arrow-color-variant(('background': var(--tooltip--background), 'border-color': (
+    @include popup-arrow-color-variant((
+        'background': var(--tooltip--background),
+        'border-color': (
             'top': var(--tooltip--border-top-color, var(--border-top-color)),
             'right': var(--tooltip--border-right-color, var(--border-right-color)),
             'bottom': var(--tooltip--border-bottom-color, var(--border-bottom-color)),
             'left': var(--tooltip--border-left-color, var(--border-left-color)),
-        )));
-    }
+        )
+    ));
 }

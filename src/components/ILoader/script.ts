@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import {computedColorValue, computedPropValue, computedSizeValue} from '@inkline/inkline/mixins';
+import { computedColorValue, computedSizeValue } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
 
 /**
@@ -44,7 +44,7 @@ export default defineComponent({
         classes (): Classes {
             return {
                 [`-${this.computedColor}`]: Boolean(this.computedColor),
-                [`-${this.computedSize}`]: Boolean(this.computedSize),
+                [`-${this.computedSize}`]: Boolean(this.computedSize)
             };
         }
     }

@@ -12,6 +12,9 @@
 @import "../src/components/IInput/css/preview";
 @import "../src/components/ILayout/css/preview";
 @import "../src/components/IListGroup/css/preview";
+@import "../src/components/INav/css/preview";
+@import "../src/components/INavbar/css/preview";
+@import "../src/components/IPagination/css/preview";
 
 //@import "../src/css/variables";
 //@import "../src/css/mixins";
@@ -56,4 +59,6 @@
     @extend %input-preview;
     @extend %layout-preview;
     @extend %list-group-preview;
+    @extend %nav-preview;
+    @extend %navbar-preview;
 }

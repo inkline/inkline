@@ -1,0 +1,17 @@
+.slide-in-right-transition-enter-active,
+.slide-in-right-transition-leave-active {
+    transition-property: var(--slide-in-right-transition--transition-property, transform);
+    transition-duration: var(--slide-in-right-transition--transition-duration, var(--transition-duration));
+    transition-timing-function: var(--slide-in-right-transition--transition-timing-function, ease);
+    transform-origin: left;
+}
+
+.slide-in-right-transition-enter-from,
+.slide-in-right-transition-leave-to {
+    transform: translateX(-100%);
+}
+
+.slide-in-right-transition-enter-to,
+.slide-in-right-transition-leave-from {
+    transform: translateX(0);
+}

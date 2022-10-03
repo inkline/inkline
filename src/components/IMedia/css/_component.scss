@@ -2,15 +2,11 @@
 /// The margin right of the media component image
 /// @name media--image--margin-right
 ////
-    
-
-@import '../../css/variables';
-@import '../../css/mixins';
-@import 'css/variables';
 
 /**
  * Media
  */
+
 .media {
     position: relative;
     display: flex;
@@ -34,6 +30,6 @@
         align-self: flex-start;
         height: auto;
         flex: 0 0 auto;
-        margin-right: var(----image--margin-right);
+        margin-right: var(--media--image--margin-right, var(--margin-right));
     }
 }

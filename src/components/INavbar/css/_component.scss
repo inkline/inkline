@@ -243,22 +243,27 @@
 /// @name navbar-collapsible--brand--margin-right
 ////
 
-
 /**
  * Navbar
  */
 
-@import '../../css/variables';
-@import '../../css/mixins';
-@import 'css/variables';
-@import 'css/colors';
-@import 'css/sizes';
+@import "../../../cssnew/mixins";
 
 @mixin navbar-collapse {
     .navbar-collapsible {
         position: relative;
         display: block;
         width: 100%;
+        margin-top: var(--navbar--padding-top, var(--margin-top));
+        border-radius: var(
+            --navbar--border-radius,
+            (
+                var(--navbar--border-top-left-radius, var(--border-top-left-radius))
+                var(--navbar--border-top-right-radius, var(--border-top-right-radius))
+                var(--navbar--border-bottom-right-radius, var(--border-bottom-right-radius))
+                var(--navbar--border-bottom-left-radius, var(--border-bottom-left-radius))
+            )
+        );
 
         .nav {
             flex-direction: column;
@@ -266,9 +271,9 @@
 
             .nav-item {
                 width: 100%;
-                transition-property: var(--navbar-collapsible--transition-property, (background-color, color));
-                transition-timing-function: var(--navbar-collapsible--transition-timing-function, var(--transition-timing-function));
-                transition-duration: var(--navbar-collapsible--transition-duration, var(--transition-duration));
+                transition-property: var(--navbar--transition-property, (background-color, color));
+                transition-timing-function: var(--navbar--transition-timing-function, var(--transition-timing-function));
+                transition-duration: var(--navbar--transition-duration, var(--transition-duration));
             }
 
             .dropdown-wrapper {
@@ -299,26 +304,26 @@
 }
 
 .navbar {
-    color: var(--navbar-collapsible--color);
-    background: var(--navbar-collapsible--background);
+    color: var(--navbar--color);
+    background: var(--navbar--background);
     padding: var(
-        --navbar-collapsible--padding,
+        --navbar--padding,
         (
-            var(--navbar-collapsible--padding-top, var(--padding-top))
-            var(--navbar-collapsible--padding-right, var(--padding-right))
-            var(--navbar-collapsible--padding-bottom, var(--padding-bottom))
-            var(--navbar-collapsible--padding-left, var(--padding-left))
+            var(--navbar--padding-top, var(--padding-top))
+            var(--navbar--padding-right, var(--padding-right))
+            var(--navbar--padding-bottom, var(--padding-bottom))
+            var(--navbar--padding-left, var(--padding-left))
         )
     );
-    font-size: var(--navbar-collapsible--font-size, var(--font-size));
+    font-size: var(--navbar--font-size, var(--font-size));
     box-shadow: var(
-        --navbar-collapsible--box-shadow,
+        --navbar--box-shadow,
         (
-            var(--navbar-collapsible--box-shadow-x-offset, var(--box-shadow-offset-x))
-            var(--navbar-collapsible--box-shadow-y-offset, var(--box-shadow-offset-y))
-            var(--navbar-collapsible--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-            var(--navbar-collapsible--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-            var(--navbar-collapsible--box-shadow-color, var(--box-shadow-color))
+            var(--navbar--box-shadow-x-offset, var(--box-shadow-offset-x))
+            var(--navbar--box-shadow-y-offset, var(--box-shadow-offset-y))
+            var(--navbar--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+            var(--navbar--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+            var(--navbar--box-shadow-color, var(--box-shadow-color))
         )
     );
     position: relative;
@@ -327,39 +332,39 @@
     align-items: center;
     justify-content: space-between;
     border-width: var(
-        --navbar-collapsible--border-width,
+        --navbar--border-width,
         (
-            var(--navbar-collapsible--border-top-width, var(--border-top-width))
-            var(--navbar-collapsible--border-right-width, var(--border-right-width))
-            var(--navbar-collapsible--border-bottom-width, var(--border-bottom-width))
-            var(--navbar-collapsible--border-left-width, var(--border-left-width))
+            var(--navbar--border-top-width, var(--border-top-width))
+            var(--navbar--border-right-width, var(--border-right-width))
+            var(--navbar--border-bottom-width, var(--border-bottom-width))
+            var(--navbar--border-left-width, var(--border-left-width))
         )
     );
     border-style: var(
-        --navbar-collapsible--border-style,
+        --navbar--border-style,
         (
-            var(--navbar-collapsible--border-top-style, var(--border-top-style))
-            var(--navbar-collapsible--border-right-style, var(--border-right-style))
-            var(--navbar-collapsible--border-bottom-style, var(--border-bottom-style))
-            var(--navbar-collapsible--border-left-style, var(--border-left-style))
+            var(--navbar--border-top-style, var(--border-top-style))
+            var(--navbar--border-right-style, var(--border-right-style))
+            var(--navbar--border-bottom-style, var(--border-bottom-style))
+            var(--navbar--border-left-style, var(--border-left-style))
         )
     );
     border-color: var(
-        --navbar-collapsible--border-color,
+        --navbar--border-color,
         (
-            var(--navbar-collapsible--border-top-color, var(--border-top-color))
-            var(--navbar-collapsible--border-right-color, var(--border-right-color))
-            var(--navbar-collapsible--border-bottom-color, var(--border-bottom-color))
-            var(--navbar-collapsible--border-left-color, var(--border-left-color))
+            var(--navbar--border-top-color, var(--border-top-color))
+            var(--navbar--border-right-color, var(--border-right-color))
+            var(--navbar--border-bottom-color, var(--border-bottom-color))
+            var(--navbar--border-left-color, var(--border-left-color))
         )
     );
     border-radius: var(
-        --navbar-collapsible--border-radius,
+        --navbar--border-radius,
         (
-            var(--navbar-collapsible--border-top-left-radius, var(--border-top-left-radius))
-            var(--navbar-collapsible--border-top-right-radius, var(--border-top-right-radius))
-            var(--navbar-collapsible--border-bottom-right-radius, var(--border-bottom-right-radius))
-            var(--navbar-collapsible--border-bottom-left-radius, var(--border-bottom-left-radius))
+            var(--navbar--border-top-left-radius, var(--border-top-left-radius))
+            var(--navbar--border-top-right-radius, var(--border-top-right-radius))
+            var(--navbar--border-bottom-right-radius, var(--border-bottom-right-radius))
+            var(--navbar--border-bottom-left-radius, var(--border-bottom-left-radius))
         )
     );
 
@@ -372,43 +377,54 @@
 
     .navbar-collapsible {
         .nav-item {
-            --navbar-collapsible--color: var(----item--color);
-            ----padding: var(----item--padding);
-            ----font-size: var(--navbar-collapsible--font-size, var(--font-size));
-            --navbar-collapsible--background: var(----item--background);
-
-            border-radius: var(
-                        --navbar-collapsible--border-radius,
-                        (
-                                    var(--navbar-collapsible--border-top-left-radius, var(--border-top-left-radius))
-                                    var(--navbar-collapsible--border-top-right-radius, var(--border-top-right-radius))
-                                    var(--navbar-collapsible--border-bottom-right-radius, var(--border-bottom-right-radius))
-                                    var(--navbar-collapsible--border-bottom-left-radius, var(--border-bottom-left-radius))
-                        )
+            color: var(--navbar--item--color);
+            padding: var(
+                --navbar--item--padding,
+                (
+                    var(--navbar--item--padding-top, var(--navbar--padding-top, var(--padding-top)))
+                    var(--navbar--item--padding-right, var(--navbar--padding-right, var(--padding-right)))
+                    var(--navbar--item--padding-bottom, var(--navbar--padding-bottom, var(--padding-bottom)))
+                    var(--navbar--item--padding-left, var(--navbar--padding-left, var(--padding-left)))
+                )
             );
-            background: var(--navbar-collapsible--background);
+            font-size: var(--navbar--item--font-size, var(--navbar--font-size, var(--font-size)));
+            background: var(--navbar--item--background, var(--navbar--background));
+            border-radius: var(
+                --navbar--item--border-radius,
+                (
+                    var(--navbar--item--border-top-left-radius, var(--navbar--border-top-left-radius, var(--border-top-left-radius)))
+                    var(--navbar--item--border-top-right-radius, var(--navbar--border-top-right-radius, var(--border-top-right-radius)))
+                    var(--navbar--item--border-bottom-right-radius, var(--navbar--border-bottom-right-radius, var(--border-bottom-right-radius)))
+                    var(--navbar--item--border-bottom-left-radius, var(--navbar--border-bottom-left-radius, var(--border-bottom-left-radius)))
+                )
+            );
+            background: var(--navbar--background);
 
             &.-focused,
             &.-hovered,
             &:focus,
             &:hover {
-                --navbar-collapsible--color: var(----item--hover--color);
-                --navbar-collapsible--background: var(----item--hover--background);
+                color: var(--navbar--item--hover--color, var(--navbar--item--color));
+                background: var(--navbar--item--hover--background, var(--navbar--item--background));
+            }
+
+            &.-active {
+                cursor: pointer;
             }
         }
     }
 
     &.-collapsible {
         .navbar-collapsible {
-            background: var(----collapsed--background);
+            background: var(--navbar--collapsed--background);
 
             .nav-item {
-                --navbar-collapsible--background: var(----collapsed--item--background);
-                --navbar-collapsible--color: var(----collapsed--item--color);
+                background: var(--navbar--collapsed--item--background, var(--navbar--item--background));
+                color: var(--navbar--collapsed--item--color, var(--navbar--item--color));
 
                 &:hover {
-                    --navbar-collapsible--color: var(----collapsed--hover--item--color);
-                    --navbar-collapsible--background: var(----collapsed--hover--item--background);
+                    color: var(--navbar--collapsed--item--hover--color, var(--navbar--item--hover--color));
+                    background: var(--navbar--collapsed--item--hover--background, var(--navbar--item--hover--background));
                 }
             }
         }
@@ -422,19 +438,6 @@
         &.-collapse-#{$breakpoint} {
             @include breakpoint-down($breakpoint) {
                 @include navbar-collapse();
-
-                .navbar-collapsible {
-                    margin-top: var(--navbar-collapsible--padding-top, var(--padding-top));
-                    border-radius: var(
-                                        --navbar-collapsible--border-radius,
-                                        (
-                                                            var(--navbar-collapsible--border-top-left-radius, var(--border-top-left-radius))
-                                                            var(--navbar-collapsible--border-top-right-radius, var(--border-top-right-radius))
-                                                            var(--navbar-collapsible--border-bottom-right-radius, var(--border-bottom-right-radius))
-                                                            var(--navbar-collapsible--border-bottom-left-radius, var(--border-bottom-left-radius))
-                                        )
-                    );
-                }
             }
         }
     }

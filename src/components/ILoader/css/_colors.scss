@@ -3,13 +3,15 @@
  */
 
 .loader {
-                        &.-primary {
-                                        --loader--background: var(--loader--primary--background, var(--color-primary));
+    &.-primary {
+        --loader--background: var(--loader--primary--background, var(--color-primary));
     }
-                        &.-light {
-                                        --loader--background: var(--loader--light--background, var(--color-light));
+
+    &.-light {
+        --loader--background: var(--loader--light--background, var(--color-dark));
     }
-                        &.-dark {
-                                        --loader--background: var(--loader--dark--background, var(--color-dark));
+
+    &.-dark {
+        --loader--background: var(--loader--dark--background, var(--color-light));
     }
 }

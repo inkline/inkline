@@ -3,235 +3,229 @@
 /// @name pagination--background
 /// @type color
 ////
-    
+
 ////
 /// The background of the pagination component item when hovered or focused
 /// @name pagination--background--hover
 /// @type color
 ////
-    
+
 ////
 /// The background of the pagination component item when active
 /// @name pagination--background--active
 /// @type color
 ////
-    
+
 ////
 /// The border top color of the pagination component item
 /// @name pagination--border-top-color
 /// @type color
 ////
-    
+
 ////
 /// The border right color of the pagination component item
 /// @name pagination--border-right-color
 /// @type color
 ////
-    
+
 ////
 /// The border bottom color of the pagination component item
 /// @name pagination--border-bottom-color
 /// @type color
 ////
-    
+
 ////
 /// The border left color of the pagination component item
 /// @name pagination--border-left-color
 /// @type color
 ////
-    
+
 ////
 /// The border color of the pagination component item
 /// @name pagination--border-color
 ////
-    
+
 ////
 /// The border color of the pagination component item when active
 /// @name pagination--border-color--active
 /// @type color
 ////
-    
+
 ////
 /// The border style of the pagination component
 /// @name pagination--border-style
 ////
-    
+
 ////
 /// The border top width of the pagination component
 /// @name pagination--border-top-width
 ////
-    
+
 ////
 /// The border right width of the pagination component
 /// @name pagination--border-right-width
 ////
-    
+
 ////
 /// The border bottom width of the pagination component
 /// @name pagination--border-bottom-width
 ////
-    
+
 ////
 /// The border left width of the pagination component
 /// @name pagination--border-left-width
 ////
-    
+
 ////
 /// The border width of the pagination component
 /// @name pagination--border-width
 ////
-    
+
 ////
 /// The border top left radius of the pagination component
 /// @name pagination--border-top-left-radius
 /// @type size
 ////
-    
+
 ////
 /// The border top right radius of the pagination component
 /// @name pagination--border-top-right-radius
 /// @type size
 ////
-    
+
 ////
 /// The border bottom right radius of the pagination component
 /// @name pagination--border-bottom-right-radius
 /// @type size
 ////
-    
+
 ////
 /// The border bottom left radius of the pagination component
 /// @name pagination--border-bottom-left-radius
 /// @type size
 ////
-    
+
 ////
 /// The border radius of the pagination component
 /// @name pagination--border-radius
 ////
-    
+
 ////
 /// The box shadow horizontal offset of the pagination component
 /// @name pagination--box-shadow-offset-x
 ////
-    
+
 ////
 /// The box shadow vertical offset of the pagination component
 /// @name pagination--box-shadow-offset-y
 ////
-    
+
 ////
 /// The box shadow blur radius of the pagination component
 /// @name pagination--box-shadow-blur-radius
 ////
-    
+
 ////
 /// The box shadow spread radius of the pagination component
 /// @name pagination--box-shadow-spread-radius
 ////
-    
+
 ////
 /// The box shadow spread radius of the pagination component
 /// @name pagination--box-shadow-color
 ////
-    
+
 ////
 /// The box shadow of the pagination component
 /// @name pagination--box-shadow
 ////
-    
+
 ////
 /// The border color of the pagination component item when active
 /// @name pagination--color
 /// @type color
 ////
-    
+
 ////
 /// The border color of the pagination component item when active
 /// @name pagination--color--active
 /// @type color
 ////
-    
+
 ////
 /// The font size of the pagination component
 /// @name pagination--font-size
 /// @type size
 ////
-    
+
 ////
 /// The margin top of the pagination component
 /// @name pagination--margin-top
 ////
-    
+
 ////
 /// The margin right of the pagination component
 /// @name pagination--margin-right
 /// @type size
 ////
-    
+
 ////
 /// The margin bottom of the pagination component
 /// @name pagination--margin-bottom
 ////
-    
+
 ////
 /// The margin left of the pagination component
 /// @name pagination--margin-left
 /// @type size
 ////
-    
+
 ////
 /// The margin of the pagination component
 /// @name pagination--margin
 ////
-    
+
 ////
 /// The minimum width of the pagination component items
 /// @name pagination--min-width
 /// @type size
 ////
-    
+
 ////
 /// The opacity of the pagination component when disabled
 /// @name pagination--opacity--disabled
 ////
-    
+
 ////
 /// The padding top of the pagination component
 /// @name pagination--padding-top
 ////
-    
+
 ////
 /// The padding right of the pagination component
 /// @name pagination--padding-right
 /// @type size
 ////
-    
+
 ////
 /// The padding bottom of the pagination component
 /// @name pagination--padding-bottom
 ////
-    
+
 ////
 /// The padding left of the pagination component
 /// @name pagination--padding-left
 /// @type size
 ////
-    
+
 ////
 /// The padding of the pagination component
 /// @name pagination--padding
 ////
-    
 
 /**
- * Nav
+ * Pagination
  */
-@import '../../css/variables';
-@import '../../css/mixins';
-@import 'css/variables';
-@import 'css/sizes';
-@import 'css/colors';
 
 .pagination {
     display: flex;
@@ -249,71 +243,71 @@
     .pagination-item {
         display: inline-flex;
         border-color: var(
-                --pagination--border-color,
-                (
-                        var(--pagination--border-top-color, var(--border-top-color))
-                        var(--pagination--border-right-color, var(--border-right-color))
-                        var(--pagination--border-bottom-color, var(--border-bottom-color))
-                        var(--pagination--border-left-color, var(--border-left-color))
-                )
+            --pagination--border-color,
+            (
+                var(--pagination--border-top-color, var(--border-top-color))
+                var(--pagination--border-right-color, var(--border-right-color))
+                var(--pagination--border-bottom-color, var(--border-bottom-color))
+                var(--pagination--border-left-color, var(--border-left-color))
+            )
         );
         border-width: var(
-                --pagination--border-width,
-                (
-                        var(--pagination--border-top-width, var(--border-top-width))
-                        var(--pagination--border-right-width, var(--border-right-width))
-                        var(--pagination--border-bottom-width, var(--border-bottom-width))
-                        var(--pagination--border-left-width, var(--border-left-width))
-                )
+            --pagination--border-width,
+            (
+                var(--pagination--border-top-width, var(--border-top-width))
+                var(--pagination--border-right-width, var(--border-right-width))
+                var(--pagination--border-bottom-width, var(--border-bottom-width))
+                var(--pagination--border-left-width, var(--border-left-width))
+            )
         );
         border-style: var(
-                --pagination--border-style,
-                (
-                        var(--pagination--border-top-style, var(--border-top-style))
-                        var(--pagination--border-right-style, var(--border-right-style))
-                        var(--pagination--border-bottom-style, var(--border-bottom-style))
-                        var(--pagination--border-left-style, var(--border-left-style))
-                )
+            --pagination--border-style,
+            (
+                var(--pagination--border-top-style, var(--border-top-style))
+                var(--pagination--border-right-style, var(--border-right-style))
+                var(--pagination--border-bottom-style, var(--border-bottom-style))
+                var(--pagination--border-left-style, var(--border-left-style))
+            )
         );
         border-radius: var(
-                --pagination--border-radius,
-                (
-                        var(--pagination--border-top-left-radius, var(--border-top-left-radius))
-                        var(--pagination--border-top-right-radius, var(--border-top-right-radius))
-                        var(--pagination--border-bottom-right-radius, var(--border-bottom-right-radius))
-                        var(--pagination--border-bottom-left-radius, var(--border-bottom-left-radius))
-                )
+            --pagination--border-radius,
+            (
+                var(--pagination--border-top-left-radius, var(--border-top-left-radius))
+                var(--pagination--border-top-right-radius, var(--border-top-right-radius))
+                var(--pagination--border-bottom-right-radius, var(--border-bottom-right-radius))
+                var(--pagination--border-bottom-left-radius, var(--border-bottom-left-radius))
+            )
         );
         box-shadow: var(
-                --pagination--box-shadow,
-                (
-                        var(--pagination--box-shadow-x-offset, var(--box-shadow-offset-x))
-                        var(--pagination--box-shadow-y-offset, var(--box-shadow-offset-y))
-                        var(--pagination--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                        var(--pagination--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                        var(--pagination--box-shadow-color, var(--box-shadow-color))
-                )
+            --pagination--box-shadow,
+            (
+                var(--pagination--box-shadow-x-offset, var(--box-shadow-offset-x))
+                var(--pagination--box-shadow-y-offset, var(--box-shadow-offset-y))
+                var(--pagination--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                var(--pagination--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                var(--pagination--box-shadow-color, var(--box-shadow-color))
+            )
         );
         padding: var(
-                --pagination--padding,
-                (
-                        var(--pagination--padding-top, var(--padding-top))
-                        var(--pagination--padding-right, var(--padding-right))
-                        var(--pagination--padding-bottom, var(--padding-bottom))
-                        var(--pagination--padding-left, var(--padding-left))
-                )
+            --pagination--padding,
+            (
+                var(--pagination--padding-top, var(--padding-top))
+                var(--pagination--padding-right, var(--padding-right))
+                var(--pagination--padding-bottom, var(--padding-bottom))
+                var(--pagination--padding-left, var(--padding-left))
+            )
         );
-        min-width: var(----min-width);
+        min-width: var(--pagination--min-width, 40px);
         color: var(--pagination--color);
         background-color: var(--pagination--background);
         margin: var(
-                --pagination--margin,
-                (
-                        var(--pagination--margin-top, var(--margin-top))
-                        var(--pagination--margin-right, var(--margin-right))
-                        var(--pagination--margin-bottom, var(--margin-bottom))
-                        var(--pagination--margin-left, var(--margin-left))
-                )
+            --pagination--margin,
+            (
+                var(--pagination--margin-top, var(--margin-top))
+                var(--pagination--margin-right, var(--margin-right))
+                var(--pagination--margin-bottom, var(--margin-bottom))
+                var(--pagination--margin-left, var(--margin-left))
+            )
         );
         text-align: center;
         justify-content: center;
@@ -324,33 +318,41 @@
 
         &:hover:not(.-disabled),
         &:focus:not(.-disabled) {
-            --pagination--background: var(----background--hover);
+            background: var(--pagination--hover--background);
         }
 
         &.-active {
-            --pagination--background: var(----background--active);
-            --pagination--border-color: var(----border-color--active);
-            --pagination--color: var(----color--active);
-
+            background: var(--pagination--active--background, var(--pagination--background));
+            border-color: var(
+                    --pagination--active--border-color,
+                        (
+                            var(--pagination--active--border-top-color, var(--pagination--border-top-color, var(--border-top-color)))
+                            var(--pagination--active--border-right-color, var(--pagination--border-right-color, var(--border-right-color)))
+                            var(--pagination--active--border-bottom-color, var(--pagination--border-bottom-color, var(--border-bottom-color)))
+                            var(--pagination--active--border-left-color, var(--pagination--border-left-color, var(--border-left-color)))
+                        )
+            );
+            color: var(--pagination--active--color, var(--pagination--color));
             font-weight: bold;
 
             &:hover,
             &:focus {
-                --pagination--background: var(----background--active);
+                background: var(--pagination--active--background, var(--pagination--background));
             }
         }
 
         &.-disabled {
             cursor: default;
-            opacity: var(----opacity--disabled);
+            color: var(--pagination--disabled--color, var(--pagination--color));
+            opacity: var(--pagination--disabled--opacity, 0.75);
         }
 
         &.-quick-next,
         &.-quick-previous {
             &.-disabled {
-                --pagination--border-color: var(--pagination--background);
-
-                opacity: var(----opacity--disabled);
+                color: var(--pagination--quick--disabled--border-color, var(--pagination--disabled--color));
+                border-color: var(--pagination--quick--disabled--border-color, var(--pagination--background));
+                opacity: var(--pagination--quick--disabled--opacity, var(--pagination--disabled--opacity, 0.75));
             }
         }
     }

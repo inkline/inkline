@@ -3,65 +3,59 @@
 /// @name nav--font-size
 /// @type size
 ////
-    
+
 ////
 /// The padding top of the nav component
 /// @name nav--padding-top
 /// @type size
 ////
-    
+
 ////
 /// The padding right of the nav component
 /// @name nav--padding-right
 /// @type size
 ////
-    
+
 ////
 /// The padding bottom of the nav component
 /// @name nav--padding-bottom
 /// @type size
 ////
-    
+
 ////
 /// The padding left of the nav component
 /// @name nav--padding-left
 /// @type size
 ////
-    
+
 ////
 /// The padding of the nav component
 /// @name nav--padding
 ////
-    
+
 ////
 /// @name nav--color
 /// @group light
 /// @type color
 ////
-    
+
 ////
 /// The color of the nav component item when active
 /// @name nav--color-active
 /// @group light
 /// @type color
 ////
-    
+
 ////
 /// The color of the nav component item when disabled
 /// @name nav--color-disabled
 /// @group light
 /// @type color
 ////
-    
 
 /**
  * Nav
  */
-@import '../../css/variables';
-@import '../../css/mixins';
-@import 'css/variables';
-@import 'css/colors';
-@import 'css/sizes';
 
 .nav {
     display: flex;

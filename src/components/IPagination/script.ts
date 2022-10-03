@@ -1,8 +1,7 @@
 import { defineComponent } from 'vue';
 import {
-    computedPropValue,
     computedColorValue,
-    sizePropValidator, computedSizeValue
+    computedSizeValue
 } from '@inkline/inkline/mixins';
 import { breakpointKeys, breakpoints } from '@inkline/inkline/constants';
 import { debounce } from '@grozav/utils';
@@ -109,6 +108,16 @@ export default defineComponent({
         size: {
             type: String,
             default: ''
+        },
+        /**
+         * Show or hide navigation buttons for first or last page
+         * @type boolean
+         * @default true
+         * @name showNavigationWhenDisabled
+         */
+        showNavigationWhenDisabled: {
+            type: Boolean,
+            default: true
         }
     },
     emits: [
@@ -146,6 +155,12 @@ export default defineComponent({
         showQuickNext (): boolean {
             return this.pageCount > this.pageLimit && // Has more pages than limit
                 (this as any).modelValue < this.pageCount - (this.pageLimit - 1) / 2; // Active page is before pageCount - (limit - 1) / 2
+        },
+        showPrevious (): boolean {
+            return this.pageCount > 0 && (this.showNavigationWhenDisabled ? true : this.modelValue !== 1);
+        },
+        showNext (): boolean {
+            return this.pageCount > 0 && (this.showNavigationWhenDisabled ? true : this.modelValue !== this.pageCount);
         },
         pages (): number[] {
             const pages = [];

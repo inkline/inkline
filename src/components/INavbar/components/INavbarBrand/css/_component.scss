@@ -1,0 +1,49 @@
+/**
+ * Navbar Brand
+ */
+.navbar {
+    .navbar-brand {
+        display: inline-flex;
+        color: var(--navbar--color);
+        padding: var(
+            --navbar--item--padding,
+            (
+                var(--navbar--item--padding-top, var(--navbar--padding-top, var(--padding-top)))
+                var(--navbar--item--padding-right, var(--navbar--padding-right, var(--padding-right)))
+                var(--navbar--item--padding-bottom, var(--navbar--padding-bottom, var(--padding-bottom)))
+                var(--navbar--item--padding-left, var(--navbar--padding-left, var(--padding-left)))
+            )
+        );
+        font-size: var(--navbar--brand--font-size, var(--navbar--font-size, var(--font-size)));
+        margin-right: var(--navbar--brand--margin-right, var(--margin-right));
+        line-height: inherit;
+        white-space: nowrap;
+        align-items: center;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+
+        &[to],
+        &[href] {
+            cursor: pointer;
+        }
+
+        > .h1,
+        > .h2,
+        > .h3,
+        > .h4,
+        > .h5,
+        > .h6,
+        > h1,
+        > h2,
+        > h3,
+        > h4,
+        > h5,
+        > h6 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+}

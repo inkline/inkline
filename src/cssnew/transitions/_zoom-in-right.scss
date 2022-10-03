@@ -1,0 +1,15 @@
+.zoom-in-right-transition-enter-active,
+.zoom-in-right-transition-leave-active {
+    transition-property: var(--zoom-in-right-transition--transition-property, transform, opacity);
+    transition-duration: var(--zoom-in-right-transition--transition-duration, var(--transition-duration));
+    transition-timing-function: var(--zoom-in-right-transition--transition-timing-function, cubic-bezier(0.23, 1, 0.32, 1));
+    opacity: 1;
+    transform: scale(1, 1);
+    transform-origin: top right;
+}
+
+.zoom-in-right-transition-enter-from,
+.zoom-in-right-transition-leave-active {
+    opacity: 0;
+    transform: scale(0.45, 0.45);
+}

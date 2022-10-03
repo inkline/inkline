@@ -3,13 +3,15 @@
  */
 
 .loader {
-                        &.-sm {
-                                        --loader--size: var(--loader--sm--size, calc(#{64px} * var(--size-multiplier-sm)));
+    &.-sm {
+        --loader--size: var(--loader--sm--size, calc(64px * var(--size-multiplier-sm)));
     }
-                        &.-md {
-                                        --loader--size: var(--loader--md--size, calc(#{64px} * var(--size-multiplier-md)));
+
+    &.-md {
+        --loader--size: var(--loader--md--size, calc(64px * var(--size-multiplier-md)));
     }
-                        &.-lg {
-                                        --loader--size: var(--loader--lg--size, calc(#{64px} * var(--size-multiplier-lg)));
+
+    &.-lg {
+        --loader--size: var(--loader--lg--size, calc(64px * var(--size-multiplier-lg)));
     }
 }

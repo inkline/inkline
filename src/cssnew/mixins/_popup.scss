@@ -161,20 +161,8 @@
     $background: map.get($arrow, 'background');
     $border-color: map.get($arrow, 'border-color');
 
-    @include popup-arrow-color-variant-for-side('top', (
-        'background': $background,
-        'border-color': map.get($border-color, 'top')
-    ));
-    @include popup-arrow-color-variant-for-side('bottom', (
-        'background': $background,
-        'border-color': map.get($border-color, 'bottom')
-    ));
-    @include popup-arrow-color-variant-for-side('left', (
-        'background': $background,
-        'border-color': map.get($border-color, 'left')
-    ));
-    @include popup-arrow-color-variant-for-side('right', (
-        'background': $background,
-        'border-color': map.get($border-color, 'right')
-    ));
+    @include popup-arrow-color-variant-for-side('top', $background, map.get($border-color, 'top'));
+    @include popup-arrow-color-variant-for-side('right', $background, map.get($border-color, 'right'));
+    @include popup-arrow-color-variant-for-side('bottom', $background, map.get($border-color, 'bottom'));
+    @include popup-arrow-color-variant-for-side('left', $background, map.get($border-color, 'left'));
 }

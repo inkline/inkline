@@ -2,28 +2,22 @@
 /// The animation duration of the loader component
 /// @name loader--animation-duration
 ////
-    
+
 ////
 /// The size of the loader component
 /// @name loader--size
 /// @type size
 ////
-    
+
 ////
 /// The background of the loader component
 /// @name loader--background
 /// @type color
 ////
-    
 
 /**
  * Loader
  */
-@import '../../css/variables';
-@import '../../css/mixins';
-@import 'css/variables';
-@import 'css/colors';
-@import 'css/sizes';
 
 .loader {
     display: inline-block;
@@ -56,14 +50,14 @@
     }
 
     > svg {
-        animation: loader-rotate var(----animation-duration) linear infinite;
+        animation: loader-rotate var(--loader--animation-duration, 1.2s) linear infinite;
         transform-origin: center center;
 
         > circle {
             stroke: var(--loader--background);
             stroke-dasharray: 89, 200;
             stroke-dashoffset: -35px;
-            animation: loader-dash var(----animation-duration) ease-in-out infinite;
+            animation: loader-dash var(--loader--animation-duration, 1.2s) ease-in-out infinite;
             stroke-linecap: round;
         }
     }
