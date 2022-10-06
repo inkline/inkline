@@ -1,12 +1,6 @@
 module.exports = {
-    extends: [
-        '@grozav',
-        '@vue/typescript/recommended',
-        'plugin:vue/vue3-recommended'
-    ],
-    plugins: [
-        'vue'
-    ],
+    extends: ['@grozav', '@vue/typescript/recommended', 'plugin:vue/vue3-recommended', 'prettier'],
+    plugins: ['vue'],
     rules: {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-empty-function': 'off',

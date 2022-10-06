@@ -1,23 +1,25 @@
 ---
 processors:
+    # ideally this can be removed once all components are converted to SFC as this prevents auto fix from functioning
     - stylelint-processor-html
 plugins:
     - stylelint-scss
 extends:
     - stylelint-config-standard
     - stylelint-config-recommended-scss
+    - stylelint-config-prettier
 rules:
-    alpha-value-notation: null
     at-rule-empty-line-before:
-        -   always
-        -   ignore:
-                -   after-comment
-                -   first-nested
-                -   blockless-after-blockless
-            ignoreAtRules:
-                -   else
-                -   else if
-                -   each
+        - always
+        - ignore:
+              - after-comment
+              - first-nested
+              - blockless-after-blockless
+          ignoreAtRules:
+              - else
+              - else if
+              - each
+    alpha-value-notation: null
     at-rule-no-vendor-prefix: null
     block-closing-brace-newline-after: null
     color-function-notation: null
@@ -27,7 +29,6 @@ rules:
     custom-property-pattern: null
     declaration-block-no-redundant-longhand-properties: null
     function-calc-no-unspaced-operator: null
-    indentation: 4
     max-line-length: null
     no-descending-specificity: null
     no-empty-source: null
@@ -38,3 +39,8 @@ rules:
     string-quotes: null
     value-keyword-case: null
     value-list-max-empty-lines: null
+    scss/operator-no-newline-after: null
+    annotation-no-unknown:
+        - true
+        - ignoreAnnotations:
+              - 'default'
