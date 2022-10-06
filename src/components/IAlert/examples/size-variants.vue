@@ -1,1 +1,16 @@
-<template src="./size-variants.html" />
+<template>
+    <i-alert size="sm">
+        Some quick example text to build on the alert title and make up the bulk of the alert's
+        content.
+    </i-alert>
+
+    <i-alert size="md">
+        Some quick example text to build on the alert title and make up the bulk of the alert's
+        content.
+    </i-alert>
+
+    <i-alert size="lg">
+        Some quick example text to build on the alert title and make up the bulk of the alert's
+        content.
+    </i-alert>
+</template>

@@ -1,1 +1,8 @@
-<template src="./basic.html" />
+<template>
+    <i-alert>
+        <template #icon>
+            <i-icon name="ink-circle" />
+        </template>
+        <p>Heads up! This alert needs your attention, and it might be <a href="">important</a>.</p>
+    </i-alert>
+</template>
