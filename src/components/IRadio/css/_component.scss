@@ -178,13 +178,6 @@
 /// @type color
 ////
 
-@import '../../css/variables';
-@import '../../css/mixins';
-@import '../../css/icons';
-@import 'css/variables';
-@import 'css/colors';
-@import 'css/sizes';
-
 .radio {
     position: relative;
     display: inline-flex;
@@ -198,53 +191,13 @@
         margin-right: 0;
     }
 
-    input {
-        top: 0;
-        left: 0;
-        position: absolute;
-        z-index: 0; // Put the input behind the label so it doesn't overlay text
-        opacity: 0;
-        height: 0;
-        width: 0;
+    &.-disabled {
+        cursor: default;
 
-        &:focus,
-        &:active {
-            outline: none;
-        }
-
-        &:checked {
-            ~ .radio-label {
-                &::before {
-                    --radio--border-color: var(----border-color--checked);
-                    --radio--background: var(----background--checked);
-                }
-
-                &::after {
-                    content: '';
-                    mask-image: url($ink-circle);
-                    mask-position: center center;
-                    mask-repeat: no-repeat;
-                }
-            }
-        }
-
-        &:disabled,
-        &[readonly] {
-            ~ .radio-label {
-                ----label--color: var(----label--disabled--color);
-            }
-
-            &:checked {
-                ~ .radio-label {
-                    &::before {
-                        --radio--border-color: var(----border-color--checked-disabled);
-                        --radio--background: var(----background--checked-disabled);
-                    }
-
-                    &::after {
-                        --radio--background: var(--radio--disabled--color);
-                    }
-                }
+        .radio-label {
+            &::before,
+            &::after {
+                cursor: default;
             }
         }
     }
@@ -254,14 +207,14 @@
         display: inline-flex;
         align-items: center;
         position: relative;
-        transition-property: var(--radio--transition-property, (color));
+        transition-property: var(--radio--transition-property, color);
         transition-duration: var(--radio--transition-duration, var(--transition-duration));
         transition-timing-function: var(
             --radio--transition-timing-function,
             var(--transition-timing-function)
         );
-        color: var(----label--color);
-        font-size: var(----label--font-size);
+        color: var(--radio--label--color);
+        font-size: var(--radio--label--font-size);
 
         &::before,
         &::after {
@@ -325,17 +278,60 @@
             text-align: center;
             background-color: var(--radio--color);
             margin-top: calc(#{var(--radio--size)} / -2);
-            mask-size: var(----checkmark--size) var(----checkmark--size);
+            mask-size: var(--radio--checkmark--size) var(--radio--checkmark--size);
         }
     }
 
-    &.-disabled {
-        cursor: default;
+    input {
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 0; // Put the input behind the label so it doesn't overlay text
+        opacity: 0;
+        height: 0;
+        width: 0;
 
-        .radio-label {
-            &::before,
-            &::after {
-                cursor: default;
+        &:focus,
+        &:active {
+            outline: none;
+        }
+
+        &:checked {
+            ~ .radio-label {
+                &::before {
+                    border-color: var(--radio--border-color--checked);
+                    background: var(--radio--background--checked);
+                }
+
+                &::after {
+                    content: '';
+                    mask-image: url($ink-circle);
+                    -webkit-mask-image: url($ink-circle);
+                    mask-position: center center;
+                    -webkit-mask-position: center center;
+                    mask-repeat: no-repeat;
+                    -webkit-mask-repeat: no-repeat;
+                }
+            }
+        }
+
+        &:disabled,
+        &[readonly] {
+            ~ .radio-label {
+                --radio--label--color: var(--radio--disabled--label--color);
+            }
+
+            &:checked {
+                ~ .radio-label {
+                    &::before {
+                        --radio--border-color: var(--radio--checked-disabled--border-color);
+                        --radio--background: var(--radio--checked-disabled--background);
+                    }
+
+                    &::after {
+                        --radio--background: var(--radio--disabled--color);
+                    }
+                }
             }
         }
     }

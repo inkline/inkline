@@ -3,7 +3,7 @@
  */
 
 .radio {
-    @include variant('light', 'form') {
+    &.-light {
         --radio--background: var(--radio--white--background, var(--color-white));
         --radio--checked--background: var(
             --radio--primary--checked--background,
@@ -39,7 +39,7 @@
         );
     }
 
-    @include variant('dark', 'form') {
+    &.-dark {
         --radio--background: var(--radio--dark--background, var(--color-dark));
         --radio--checked--background: var(
             --radio--primary--checked--background,

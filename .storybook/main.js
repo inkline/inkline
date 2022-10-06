@@ -29,6 +29,8 @@ module.exports = {
         '../src/components/INumberInput/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/INavbar/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IPagination/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/IPopover/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/IProgress/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IRow/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITextarea/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITextarea/**/*.stories.@(js|jsx|ts|tsx)',

@@ -15,6 +15,8 @@
 @import '../src/components/INav/css/preview';
 @import '../src/components/INavbar/css/preview';
 @import '../src/components/IPagination/css/preview';
+@import '../src/components/IPopover/css/preview';
+@import '../src/components/IProgress/css/preview';
 
 //@import "../src/css/variables";
 //@import "../src/css/mixins";
@@ -62,4 +64,6 @@
     @extend %nav-preview;
     @extend %navbar-preview;
     @extend %pagination-preview;
+    @extend %popover-preview;
+    @extend %progress-preview;
 }
