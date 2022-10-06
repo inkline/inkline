@@ -7,6 +7,12 @@ describe('mixins', () => {
         const Component = {
             name: 'PopupControls',
             mixins: [PopupControlsMixin],
+            props: {
+                interactable: {
+                    type: Boolean,
+                    default: false
+                }
+            },
             methods: {
                 createPopper: vi.fn()
             },
@@ -68,12 +74,17 @@ describe('mixins', () => {
                             const wrapper = render(Component, {
                                 slots
                             });
-                            const trigger = wrapper.container.querySelector(triggerName);
+                            const trigger =
+                                wrapper.container.querySelector(triggerName);
 
-                            await (fireEvent as any)[eventName](trigger as Element);
+                            await (fireEvent as any)[eventName](
+                                trigger as Element
+                            );
 
                             expect(wrapper.getByRole('tooltip')).toBeVisible();
-                            expect(wrapper.emitted()['update:modelValue'][0]).toEqual([true]);
+                            expect(
+                                wrapper.emitted()['update:modelValue'][0]
+                            ).toEqual([true]);
                         });
 
                         it('should not show popup if disabled', async () => {
@@ -83,11 +94,16 @@ describe('mixins', () => {
                                     disabled: true
                                 }
                             });
-                            const trigger = wrapper.container.querySelector(triggerName);
+                            const trigger =
+                                wrapper.container.querySelector(triggerName);
 
-                            await (fireEvent as any)[eventName](trigger as Element);
+                            await (fireEvent as any)[eventName](
+                                trigger as Element
+                            );
 
-                            expect(wrapper.emitted()['update:modelValue']).not.toBeDefined();
+                            expect(
+                                wrapper.emitted()['update:modelValue']
+                            ).not.toBeDefined();
                         });
 
                         it('should not show popup if already visible', async () => {
@@ -97,11 +113,16 @@ describe('mixins', () => {
                                     modelValue: true
                                 }
                             });
-                            const trigger = wrapper.container.querySelector(triggerName);
+                            const trigger =
+                                wrapper.container.querySelector(triggerName);
 
-                            await (fireEvent as any)[eventName](trigger as Element);
+                            await (fireEvent as any)[eventName](
+                                trigger as Element
+                            );
 
-                            expect(wrapper.emitted()['update:modelValue']).not.toEqual([[true]]);
+                            expect(
+                                wrapper.emitted()['update:modelValue']
+                            ).not.toEqual([[true]]);
                         });
                     });
                 });
@@ -121,13 +142,18 @@ describe('mixins', () => {
                                     modelValue: true
                                 }
                             });
-                            const trigger = wrapper.container.querySelector(triggerName);
+                            const trigger =
+                                wrapper.container.querySelector(triggerName);
                             const popup = await wrapper.getByRole('tooltip');
 
-                            await (fireEvent as any)[eventName](trigger as Element);
+                            await (fireEvent as any)[eventName](
+                                trigger as Element
+                            );
 
                             expect(popup).not.toBeVisible();
-                            expect(wrapper.emitted()['update:modelValue'][0]).toEqual([false]);
+                            expect(
+                                wrapper.emitted()['update:modelValue'][0]
+                            ).toEqual([false]);
                         });
 
                         it('should not hide popup if disabled', async () => {
@@ -138,11 +164,16 @@ describe('mixins', () => {
                                     disabled: true
                                 }
                             });
-                            const trigger = wrapper.container.querySelector(triggerName);
+                            const trigger =
+                                wrapper.container.querySelector(triggerName);
 
-                            await (fireEvent as any)[eventName](trigger as Element);
+                            await (fireEvent as any)[eventName](
+                                trigger as Element
+                            );
 
-                            expect(wrapper.emitted()['update:modelValue']).not.toBeDefined();
+                            expect(
+                                wrapper.emitted()['update:modelValue']
+                            ).not.toBeDefined();
                         });
 
                         it('should not hide popup if already hidden', async () => {
@@ -152,11 +183,16 @@ describe('mixins', () => {
                                     modelValue: false
                                 }
                             });
-                            const trigger = wrapper.container.querySelector(triggerName);
+                            const trigger =
+                                wrapper.container.querySelector(triggerName);
 
-                            await (fireEvent as any)[eventName](trigger as Element);
+                            await (fireEvent as any)[eventName](
+                                trigger as Element
+                            );
 
-                            expect(wrapper.emitted()['update:modelValue']).not.toEqual([[false]]);
+                            expect(
+                                wrapper.emitted()['update:modelValue']
+                            ).not.toEqual([[false]]);
                         });
                     });
                 });
