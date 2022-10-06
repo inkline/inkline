@@ -23,7 +23,7 @@ export const onClickOutside =
  */
 
 export const ClickOutsideDirective: Directive = {
-    beforeMount(element: HTMLElement, binding: any) {
+    beforeMount (element: HTMLElement, binding: any) {
         if (typeof window !== 'undefined') {
             on(window.document as any, 'mousedown', onClickOutside(element, binding));
         }
