@@ -37,10 +37,8 @@
     position: relative;
     margin: var(
         --form-error--margin,
-        (
-            var(--form-error--margin-top, var(--margin-top-1-4)) var(--form-error--margin-right, 0)
-                var(--form-error--margin-bottom, 0) var(--form-error--margin-left, 0)
-        )
+        var(--form-error--margin-top, var(--margin-top-1-4)) var(--form-error--margin-right, 0)
+            var(--form-error--margin-bottom, 0) var(--form-error--margin-left, 0)
     );
     padding: 0;
     list-style: none;

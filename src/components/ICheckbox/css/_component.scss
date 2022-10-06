@@ -286,7 +286,8 @@
             margin-right: var(--checkbox--margin-right, var(--margin-right-1-2));
             transition-property: var(
                 --checkbox--transition-property,
-                (background-color, border-color)
+                background-color,
+                border-color
             );
             transition-duration: var(--checkbox--transition-duration, var(--transition-duration));
             transition-timing-function: var(

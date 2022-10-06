@@ -391,113 +391,91 @@
     color: var(--dropdown--color);
     box-shadow: var(
         --dropdown--box-shadow,
-        (
-            var(--dropdown--box-shadow-x-offset, var(--box-shadow-offset-x))
-                var(--dropdown--box-shadow-y-offset, var(--box-shadow-offset-y))
-                var(--dropdown--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                var(--dropdown--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                var(--dropdown--box-shadow-color, var(--box-shadow-color))
-        )
+        var(--dropdown--box-shadow-x-offset, var(--box-shadow-offset-x))
+            var(--dropdown--box-shadow-y-offset, var(--box-shadow-offset-y))
+            var(--dropdown--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+            var(--dropdown--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+            var(--dropdown--box-shadow-color, var(--box-shadow-color))
     );
 
     > .dropdown-header {
         border-style: var(
             --dropdown--header--border-style,
             var(
-                --dropdown--border-style,
-                (
-                    var(
-                            --dropdown--header--border-top-style,
-                            var(--dropdown--border-top-style, var(--border-top-style))
-                        )
-                        var(
-                            --dropdown--header--border-right-style,
-                            var(--dropdown--border-right-style, var(--border-right-style))
-                        )
-                        var(
-                            --dropdown--header--border-bottom-style,
-                            var(--dropdown--border-bottom-style, var(--border-bottom-style))
-                        )
-                        var(
-                            --dropdown--header--border-left-style,
-                            var(--dropdown--border-left-style, var(--border-left-style))
-                        )
+                    --dropdown--header--border-top-style,
+                    var(--dropdown--border-top-style, var(--border-top-style))
                 )
-            )
+                var(
+                    --dropdown--header--border-right-style,
+                    var(--dropdown--border-right-style, var(--border-right-style))
+                )
+                var(
+                    --dropdown--header--border-bottom-style,
+                    var(--dropdown--border-bottom-style, var(--border-bottom-style))
+                )
+                var(
+                    --dropdown--header--border-left-style,
+                    var(--dropdown--border-left-style, var(--border-left-style))
+                )
         );
         border-width: var(
             --dropdown--header--border-width,
-            (
+            var(
+                    --dropdown--header--border-top-width,
+                    var(--dropdown--border-top-width, var(--border-top-width))
+                )
                 var(
-                        --dropdown--header--border-top-width,
-                        var(--dropdown--border-top-width, var(--border-top-width))
-                    )
-                    var(
-                        --dropdown--header--border-right-width,
-                        var(--dropdown--border-right-width, var(--border-right-width))
-                    )
-                    var(
-                        --dropdown--header--border-bottom-width,
-                        var(--dropdown--border-bottom-width, 0)
-                    )
-                    var(
-                        --dropdown--header--border-left-width,
-                        var(--dropdown--border-left-width, var(--border-left-width))
-                    )
-            )
+                    --dropdown--header--border-right-width,
+                    var(--dropdown--border-right-width, var(--border-right-width))
+                )
+                var(
+                    --dropdown--header--border-bottom-width,
+                    var(--dropdown--border-bottom-width, 0)
+                )
+                var(
+                    --dropdown--header--border-left-width,
+                    var(--dropdown--border-left-width, var(--border-left-width))
+                )
         );
         border-color: var(
             --dropdown--header--border-color,
             var(
-                --dropdown--border-color,
-                (
-                    var(
-                            --dropdown--header--border-top-color,
-                            var(--dropdown--border-top-color, var(--border-top-color))
-                        )
-                        var(
-                            --dropdown--header--border-right-color,
-                            var(--dropdown--border-right-color, var(--border-right-color))
-                        )
-                        var(
-                            --dropdown--header--border-bottom-color,
-                            var(--dropdown--border-bottom-color, var(--border-bottom-color))
-                        )
-                        var(
-                            --dropdown--header--border-left-color,
-                            var(--dropdown--border-left-color, var(--border-left-color))
-                        )
+                    --dropdown--header--border-top-color,
+                    var(--dropdown--border-top-color, var(--border-top-color))
                 )
-            )
+                var(
+                    --dropdown--header--border-right-color,
+                    var(--dropdown--border-right-color, var(--border-right-color))
+                )
+                var(
+                    --dropdown--header--border-bottom-color,
+                    var(--dropdown--border-bottom-color, var(--border-bottom-color))
+                )
+                var(
+                    --dropdown--header--border-left-color,
+                    var(--dropdown--border-left-color, var(--border-left-color))
+                )
         );
         background-color: var(--dropdown--header--background, var(--dropdown--background));
         padding: var(
             --dropdown--header--padding,
-            var(
-                --dropdown--padding,
-                (
-                    var(
-                            --dropdown--header--padding-top,
-                            var(--dropdown--padding-top, var(--padding-top))
-                        )
-                        var(
-                            --dropdown--header--padding-right,
-                            var(--dropdown--padding-right, var(--padding-right))
-                        )
-                        var(
-                            --dropdown--header--padding-bottom,
-                            var(--dropdown--padding-bottom, var(--padding-bottom))
-                        )
-                        var(
-                            --dropdown--header--padding-left,
-                            var(--dropdown--padding-left, var(--padding-left))
-                        )
+            var(--dropdown--header--padding-top, var(--dropdown--padding-top, var(--padding-top)))
+                var(
+                    --dropdown--header--padding-right,
+                    var(--dropdown--padding-right, var(--padding-right))
                 )
-            )
+                var(
+                    --dropdown--header--padding-bottom,
+                    var(--dropdown--padding-bottom, var(--padding-bottom))
+                )
+                var(
+                    --dropdown--header--padding-left,
+                    var(--dropdown--padding-left, var(--padding-left))
+                )
         );
         transition-property: var(
             --dropdown--header--transition-property,
-            (var(--dropdown--transition-property, (border-color)))
+            var(--dropdown--transition-property, border-color)
         );
         transition-duration: var(
             --dropdown--header--transition-duration,
@@ -512,61 +490,80 @@
     > .dropdown-body {
         display: flex;
         flex-direction: column;
-        border-width: var(
-            --dropdown--border-width,
-            (
-                var(--dropdown--border-top-width, var(--border-top-width))
-                    var(--dropdown--border-right-width, var(--border-right-width))
-                    var(--dropdown--border-bottom-width, var(--border-bottom-width))
-                    var(--dropdown--border-left-width, var(--border-left-width))
-            )
-        );
         border-style: var(
-            --dropdown--border-style,
-            (
-                var(--dropdown--border-top-style, var(--border-top-style))
+            --dropdown--body--border-style,
+            var(
+                    --dropdown--body--border-top-style,
+                    var(--dropdown--border-top-style, var(--border-top-style))
+                )
+                var(
+                    --dropdown--body--border-right-style,
                     var(--dropdown--border-right-style, var(--border-right-style))
+                )
+                var(
+                    --dropdown--body--border-bottom-style,
                     var(--dropdown--border-bottom-style, var(--border-bottom-style))
+                )
+                var(
+                    --dropdown--body--border-left-style,
                     var(--dropdown--border-left-style, var(--border-left-style))
-            )
+                )
+        );
+        border-width: var(
+            --dropdown--body--border-width,
+            var(
+                    --dropdown--body--border-top-width,
+                    var(--dropdown--border-top-width, var(--border-top-width))
+                )
+                var(
+                    --dropdown--body--border-right-width,
+                    var(--dropdown--border-right-width, var(--border-right-width))
+                )
+                var(--dropdown--body--border-bottom-width, var(--dropdown--border-bottom-width, 0))
+                var(
+                    --dropdown--body--border-left-width,
+                    var(--dropdown--border-left-width, var(--border-left-width))
+                )
         );
         border-color: var(
-            --dropdown--border-color,
-            (
-                var(--dropdown--border-top-color, var(--border-top-color))
+            --dropdown--body--border-color,
+            var(
+                    --dropdown--body--border-top-color,
+                    var(--dropdown--border-top-color, var(--border-top-color))
+                )
+                var(
+                    --dropdown--body--border-right-color,
                     var(--dropdown--border-right-color, var(--border-right-color))
+                )
+                var(
+                    --dropdown--body--border-bottom-color,
                     var(--dropdown--border-bottom-color, var(--border-bottom-color))
+                )
+                var(
+                    --dropdown--body--border-left-color,
                     var(--dropdown--border-left-color, var(--border-left-color))
-            )
+                )
         );
         background-color: var(--dropdown--body--background, var(--dropdown--background));
         padding: var(
             --dropdown--body--padding,
-            var(
-                --dropdown--padding,
-                (
-                    var(
-                            --dropdown--body--padding-top,
-                            var(--dropdown--padding-top, var(--padding-top))
-                        )
-                        var(
-                            --dropdown--body--padding-right,
-                            var(--dropdown--padding-right, var(--padding-right))
-                        )
-                        var(
-                            --dropdown--body--padding-bottom,
-                            var(--dropdown--padding-bottom, var(--padding-bottom))
-                        )
-                        var(
-                            --dropdown--body--padding-left,
-                            var(--dropdown--padding-left, var(--padding-left))
-                        )
+            var(--dropdown--body--padding-top, var(--dropdown--padding-top, var(--padding-top)))
+                var(
+                    --dropdown--body--padding-right,
+                    var(--dropdown--padding-right, var(--padding-right))
                 )
-            )
+                var(
+                    --dropdown--body--padding-bottom,
+                    var(--dropdown--padding-bottom, var(--padding-bottom))
+                )
+                var(
+                    --dropdown--body--padding-left,
+                    var(--dropdown--padding-left, var(--padding-left))
+                )
         );
         transition-property: var(
             --dropdown--body--transition-property,
-            (var(--dropdown--transition-property, (border-color)))
+            var(--dropdown--transition-property, border-color)
         );
         transition-duration: var(
             --dropdown--body--transition-duration,
@@ -586,93 +583,73 @@
         border-style: var(
             --dropdown--footer--border-style,
             var(
-                --dropdown--border-style,
-                (
-                    var(
-                            --dropdown--footer--border-top-style,
-                            var(--dropdown--border-top-style, var(--border-top-style))
-                        )
-                        var(
-                            --dropdown--footer--border-right-style,
-                            var(--dropdown--border-right-style, var(--border-right-style))
-                        )
-                        var(
-                            --dropdown--footer--border-bottom-style,
-                            var(--dropdown--border-bottom-style, var(--border-bottom-style))
-                        )
-                        var(
-                            --dropdown--footer--border-left-style,
-                            var(--dropdown--border-left-style, var(--border-left-style))
-                        )
+                    --dropdown--footer--border-top-style,
+                    var(--dropdown--border-top-style, var(--border-top-style))
                 )
-            )
+                var(
+                    --dropdown--footer--border-right-style,
+                    var(--dropdown--border-right-style, var(--border-right-style))
+                )
+                var(
+                    --dropdown--footer--border-bottom-style,
+                    var(--dropdown--border-bottom-style, var(--border-bottom-style))
+                )
+                var(
+                    --dropdown--footer--border-left-style,
+                    var(--dropdown--border-left-style, var(--border-left-style))
+                )
         );
         border-width: var(
             --dropdown--footer--border-width,
-            (
-                var(--dropdown--footer--border-top-width, var(--dropdown--border-top-width, 0))
-                    var(
-                        --dropdown--footer--border-right-width,
-                        var(--dropdown--border-right-width, var(--border-right-width))
-                    )
-                    var(
-                        --dropdown--footer--border-bottom-width,
-                        var(--dropdown--border-bottom-width, var(--border-bottom-width))
-                    )
-                    var(
-                        --dropdown--footer--border-left-width,
-                        var(--dropdown--border-left-width, var(--border-left-width))
-                    )
-            )
+            var(--dropdown--footer--border-top-width, var(--dropdown--border-top-width, 0))
+                var(
+                    --dropdown--footer--border-right-width,
+                    var(--dropdown--border-right-width, var(--border-right-width))
+                )
+                var(
+                    --dropdown--footer--border-bottom-width,
+                    var(--dropdown--border-bottom-width, var(--border-bottom-width))
+                )
+                var(
+                    --dropdown--footer--border-left-width,
+                    var(--dropdown--border-left-width, var(--border-left-width))
+                )
         );
         border-color: var(
             --dropdown--footer--border-color,
             var(
-                --dropdown--border-color,
-                (
-                    var(
-                            --dropdown--footer--border-top-color,
-                            var(--dropdown--border-top-color, var(--border-top-color))
-                        )
-                        var(
-                            --dropdown--footer--border-right-color,
-                            var(--dropdown--border-right-color, var(--border-right-color))
-                        )
-                        var(
-                            --dropdown--footer--border-bottom-color,
-                            var(--dropdown--border-bottom-color, var(--border-bottom-color))
-                        )
-                        var(
-                            --dropdown--footer--border-left-color,
-                            var(--dropdown--border-left-color, var(--border-left-color))
-                        )
+                    --dropdown--footer--border-top-color,
+                    var(--dropdown--border-top-color, var(--border-top-color))
                 )
-            )
+                var(
+                    --dropdown--footer--border-right-color,
+                    var(--dropdown--border-right-color, var(--border-right-color))
+                )
+                var(
+                    --dropdown--footer--border-bottom-color,
+                    var(--dropdown--border-bottom-color, var(--border-bottom-color))
+                )
+                var(
+                    --dropdown--footer--border-left-color,
+                    var(--dropdown--border-left-color, var(--border-left-color))
+                )
         );
         background-color: var(--dropdown--footer--background, var(--dropdown--background));
         padding: var(
             --dropdown--footer--padding,
-            var(
-                --dropdown--padding,
-                (
-                    var(
-                            --dropdown--footer--padding-top,
-                            var(--dropdown--padding-top, var(--padding-top))
-                        )
-                        var(
-                            --dropdown--footer--padding-right,
-                            var(--dropdown--padding-right, var(--padding-right))
-                        )
-                        var(
-                            --dropdown--footer--padding-bottom,
-                            var(--dropdown--padding-bottom, var(--padding-bottom))
-                        )
-                        var(
-                            --dropdown--footer--padding-left,
-                            var(--dropdown--padding-left, var(--padding-left))
-                        )
+            var(--dropdown--footer--padding-top, var(--dropdown--padding-top, var(--padding-top)))
+                var(
+                    --dropdown--footer--padding-right,
+                    var(--dropdown--padding-right, var(--padding-right))
                 )
-            )
+                var(
+                    --dropdown--footer--padding-bottom,
+                    var(--dropdown--padding-bottom, var(--padding-bottom))
+                )
+                var(
+                    --dropdown--footer--padding-left,
+                    var(--dropdown--padding-left, var(--padding-left))
+                )
         );
         transition-property: var(
             --dropdown--footer--transition-property,

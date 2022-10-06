@@ -16,12 +16,10 @@
         font-size: var(--button-group--font-size, var(--button--font-size));
         padding: var(
             --button-group--padding,
-            (
-                var(--button-group--padding-top, var(--button--padding-top))
-                    var(--button-group--padding-right, var(--button--padding-right))
-                    var(--button-group--padding-bottom, var(--button--padding-bottom))
-                    var(--button-group--padding-left, var(--button--padding-left))
-            )
+            var(--button-group--padding-top, var(--button--padding-top))
+                var(--button-group--padding-right, var(--button--padding-right))
+                var(--button-group--padding-bottom, var(--button--padding-bottom))
+                var(--button-group--padding-left, var(--button--padding-left))
         );
 
         &:hover,

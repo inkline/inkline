@@ -46,7 +46,7 @@
     display: flex;
     box-sizing: border-box;
     width: 100%;
-    transition-property: var(--header--transition-property, (background-color));
+    transition-property: var(--header--transition-property, background-color);
     transition-duration: var(--header--transition-duration, var(--transition-duration));
     transition-timing-function: var(
         --header--transition-timing-function,

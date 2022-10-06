@@ -7,21 +7,16 @@
         color: var(--navbar--color);
         padding: var(
             --navbar--item--padding,
-            (
-                var(--navbar--item--padding-top, var(--navbar--padding-top, var(--padding-top)))
-                    var(
-                        --navbar--item--padding-right,
-                        var(--navbar--padding-right, var(--padding-right))
-                    )
-                    var(
-                        --navbar--item--padding-bottom,
-                        var(--navbar--padding-bottom, var(--padding-bottom))
-                    )
-                    var(
-                        --navbar--item--padding-left,
-                        var(--navbar--padding-left, var(--padding-left))
-                    )
-            )
+            var(--navbar--item--padding-top, var(--navbar--padding-top, var(--padding-top)))
+                var(
+                    --navbar--item--padding-right,
+                    var(--navbar--padding-right, var(--padding-right))
+                )
+                var(
+                    --navbar--item--padding-bottom,
+                    var(--navbar--padding-bottom, var(--padding-bottom))
+                )
+                var(--navbar--item--padding-left, var(--navbar--padding-left, var(--padding-left)))
         );
         font-size: var(--navbar--brand--font-size, var(--navbar--font-size, var(--font-size)));
         margin-right: var(--navbar--brand--margin-right, var(--margin-right));

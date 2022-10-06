@@ -12,12 +12,9 @@
     transition-duration: var(--nav--transition-duration, var(--transition-duration));
     padding: var(
         --nav--padding,
-        (
-            var(--nav--padding-top, var(--padding-top))
-                var(--nav--padding-right, var(--padding-right))
-                var(--nav--padding-bottom, var(--padding-bottom))
-                var(--nav--padding-left, var(--padding-left))
-        )
+        var(--nav--padding-top, var(--padding-top)) var(--nav--padding-right, var(--padding-right))
+            var(--nav--padding-bottom, var(--padding-bottom))
+            var(--nav--padding-left, var(--padding-left))
     );
     color: var(--nav--color);
     font-size: var(--nav--font-size, var(--font-size));

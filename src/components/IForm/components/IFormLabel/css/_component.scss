@@ -40,11 +40,9 @@
     font-size: var(--form-label--font-size, var(--font-size));
     margin: var(
         --form-label--margin,
-        (
-            var(--form-label--margin-top, 0) var(--form-label--margin-right, 0)
-                var(--form-label--margin-bottom, var(--margin-bottom-1-4))
-                var(--form-label--margin-left, 0)
-        )
+        var(--form-label--margin-top, 0) var(--form-label--margin-right, 0)
+            var(--form-label--margin-bottom, var(--margin-bottom-1-4))
+            var(--form-label--margin-left, 0)
     );
 
     &.-right {

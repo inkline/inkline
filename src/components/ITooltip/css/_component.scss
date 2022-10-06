@@ -284,13 +284,11 @@
     );
     box-shadow: var(
         --tooltip--box-shadow,
-        (
-            var(--tooltip--box-shadow-x-offset, var(--box-shadow-offset-x))
-                var(--tooltip--box-shadow-y-offset, var(--box-shadow-offset-y))
-                var(--tooltip--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                var(--tooltip--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                var(--tooltip--box-shadow-color, var(--box-shadow-color))
-        )
+        var(--tooltip--box-shadow-x-offset, var(--box-shadow-offset-x))
+        var(--tooltip--box-shadow-y-offset, var(--box-shadow-offset-y))
+        var(--tooltip--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+        var(--tooltip--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+        var(--tooltip--box-shadow-color, var(--box-shadow-color))
     );
 
     @include popup-arrow-color-variant(

@@ -456,22 +456,18 @@
     max-width: var(--modal--width, 480px);
     border-radius: var(
         --modal--border-radius,
-        (
-            var(--modal--border-top-left-radius, var(--border-top-left-radius))
-                var(--modal--border-top-right-radius, var(--border-top-right-radius))
-                var(--modal--border-bottom-right-radius, var(--border-bottom-right-radius))
-                var(--modal--border-bottom-left-radius, var(--border-bottom-left-radius))
-        )
+        var(--modal--border-top-left-radius, var(--border-top-left-radius))
+            var(--modal--border-top-right-radius, var(--border-top-right-radius))
+            var(--modal--border-bottom-right-radius, var(--border-bottom-right-radius))
+            var(--modal--border-bottom-left-radius, var(--border-bottom-left-radius))
     );
     box-shadow: var(
         --modal--box-shadow,
-        (
-            var(--modal--box-shadow-x-offset, var(--box-shadow-offset-x))
-                var(--modal--box-shadow-y-offset, var(--box-shadow-offset-y))
-                var(--modal--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                var(--modal--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                var(--modal--box-shadow-color, var(--box-shadow-color))
-        )
+        var(--modal--box-shadow-x-offset, var(--box-shadow-offset-x))
+            var(--modal--box-shadow-y-offset, var(--box-shadow-offset-y))
+            var(--modal--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+            var(--modal--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+            var(--modal--box-shadow-color, var(--box-shadow-color))
     );
 
     > .modal-header {
@@ -481,93 +477,72 @@
         border-style: var(
             --modal--header--border-style,
             var(
-                --modal--border-style,
+                    --modal--header--border-top-style,
+                    var(--modal--border-top-style, var(--border-top-style))
+                )
                 var(
-                        --modal--header--border-top-style,
-                        var(--modal--border-top-style, var(--border-top-style))
-                    )
-                    var(
-                        --modal--header--border-right-style,
-                        var(--modal--border-right-style, var(--border-right-style))
-                    )
-                    var(
-                        --modal--header--border-bottom-style,
-                        var(--modal--border-bottom-style, var(--border-bottom-style))
-                    )
-                    var(
-                        --modal--header--border-left-style,
-                        var(--modal--border-left-style, var(--border-left-style))
-                    )
-            )
+                    --modal--header--border-right-style,
+                    var(--modal--border-right-style, var(--border-right-style))
+                )
+                var(
+                    --modal--header--border-bottom-style,
+                    var(--modal--border-bottom-style, var(--border-bottom-style))
+                )
+                var(
+                    --modal--header--border-left-style,
+                    var(--modal--border-left-style, var(--border-left-style))
+                )
         );
         border-width: var(
             --modal--header--border-width,
             var(
-                --modal--border-width,
-                (
-                    var(
-                            --modal--header--border-top-width,
-                            var(--modal--border-top-width, var(--border-top-width))
-                        )
-                        var(
-                            --modal--header--border-right-width,
-                            var(--modal--border-right-width, var(--border-right-width))
-                        )
-                        var(
-                            --modal--header--border-bottom-width,
-                            var(--modal--border-bottom-width, var(--border-bottom-width))
-                        )
-                        var(
-                            --modal--header--border-left-width,
-                            var(--modal--border-left-width, var(--border-left-width))
-                        )
+                    --modal--header--border-top-width,
+                    var(--modal--border-top-width, var(--border-top-width))
                 )
-            )
+                var(
+                    --modal--header--border-right-width,
+                    var(--modal--border-right-width, var(--border-right-width))
+                )
+                var(
+                    --modal--header--border-bottom-width,
+                    var(--modal--border-bottom-width, var(--border-bottom-width))
+                )
+                var(
+                    --modal--header--border-left-width,
+                    var(--modal--border-left-width, var(--border-left-width))
+                )
         );
         border-color: var(
             --modal--header--border-color,
             var(
-                --modal--border-color,
-                (
-                    var(
-                            --modal--header--border-top-color,
-                            var(--modal--border-top-color, var(--border-top-color))
-                        )
-                        var(
-                            --modal--header--border-right-color,
-                            var(--modal--border-right-color, var(--border-right-color))
-                        )
-                        var(
-                            --modal--header--border-bottom-color,
-                            var(--modal--border-bottom-color, var(--border-bottom-color))
-                        )
-                        var(
-                            --modal--header--border-left-color,
-                            var(--modal--border-left-color, var(--border-left-color))
-                        )
+                    --modal--header--border-top-color,
+                    var(--modal--border-top-color, var(--border-top-color))
                 )
-            )
+                var(
+                    --modal--header--border-right-color,
+                    var(--modal--border-right-color, var(--border-right-color))
+                )
+                var(
+                    --modal--header--border-bottom-color,
+                    var(--modal--border-bottom-color, var(--border-bottom-color))
+                )
+                var(
+                    --modal--header--border-left-color,
+                    var(--modal--border-left-color, var(--border-left-color))
+                )
         );
         padding: var(
             --modal--header--padding,
-            var(
-                --modal--padding,
-                (
-                    var(--modal--header--padding-top, var(--modal--padding-top, var(--padding-top)))
-                        var(
-                            --modal--header--padding-right,
-                            var(--modal--padding-right, var(--padding-right))
-                        )
-                        var(
-                            --modal--header--padding-bottom,
-                            var(--modal--padding-bottom, var(--padding-bottom))
-                        )
-                        var(
-                            --modal--header--padding-left,
-                            var(--modal--padding-left, var(--padding-left))
-                        )
+            var(--modal--header--padding-top, var(--modal--padding-top, var(--padding-top)))
+                var(
+                    --modal--header--padding-right,
+                    var(--modal--padding-right, var(--padding-right))
                 )
-            )
+                var(
+                    --modal--header--padding-bottom,
+                    var(--modal--padding-bottom, var(--padding-bottom))
+                )
+                var(--modal--header--padding-left, var(--modal--padding-left, var(--padding-left)))
         );
         border-top-left-radius: var(--modal--border-top-left-radius, var(--border-top-left-radius));
         border-top-right-radius: var(
@@ -591,12 +566,10 @@
             background-color: transparent;
             border-radius: var(
                 --modal--border-radius,
-                (
-                    var(--modal--border-top-left-radius, var(--border-top-left-radius))
-                        var(--modal--border-top-right-radius, var(--border-top-right-radius))
-                        var(--modal--border-bottom-right-radius, var(--border-bottom-right-radius))
-                        var(--modal--border-bottom-left-radius, var(--border-bottom-left-radius))
-                )
+                var(--modal--border-top-left-radius, var(--border-top-left-radius))
+                    var(--modal--border-top-right-radius, var(--border-top-right-radius))
+                    var(--modal--border-bottom-right-radius, var(--border-bottom-right-radius))
+                    var(--modal--border-bottom-left-radius, var(--border-bottom-left-radius))
             );
 
             > .icon {
@@ -631,93 +604,69 @@
         border-style: var(
             --modal--body--border-style,
             var(
-                --modal--border-style,
+                    --modal--body--border-top-style,
+                    var(--modal--border-top-style, var(--border-top-style))
+                )
                 var(
-                        --modal--body--border-top-style,
-                        var(--modal--border-top-style, var(--border-top-style))
-                    )
-                    var(
-                        --modal--body--border-right-style,
-                        var(--modal--border-right-style, var(--border-right-style))
-                    )
-                    var(
-                        --modal--body--border-bottom-style,
-                        var(--modal--border-bottom-style, var(--border-bottom-style))
-                    )
-                    var(
-                        --modal--body--border-left-style,
-                        var(--modal--border-left-style, var(--border-left-style))
-                    )
-            )
+                    --modal--body--border-right-style,
+                    var(--modal--border-right-style, var(--border-right-style))
+                )
+                var(
+                    --modal--body--border-bottom-style,
+                    var(--modal--border-bottom-style, var(--border-bottom-style))
+                )
+                var(
+                    --modal--body--border-left-style,
+                    var(--modal--border-left-style, var(--border-left-style))
+                )
         );
         border-width: var(
             --modal--body--border-width,
             var(
-                --modal--border-width,
-                (
-                    var(
-                            --modal--body--border-top-width,
-                            var(--modal--border-top-width, var(--border-top-width))
-                        )
-                        var(
-                            --modal--body--border-right-width,
-                            var(--modal--border-right-width, var(--border-right-width))
-                        )
-                        var(
-                            --modal--body--border-bottom-width,
-                            var(--modal--border-bottom-width, var(--border-bottom-width))
-                        )
-                        var(
-                            --modal--body--border-left-width,
-                            var(--modal--border-left-width, var(--border-left-width))
-                        )
+                    --modal--body--border-top-width,
+                    var(--modal--border-top-width, var(--border-top-width))
                 )
-            )
+                var(
+                    --modal--body--border-right-width,
+                    var(--modal--border-right-width, var(--border-right-width))
+                )
+                var(
+                    --modal--body--border-bottom-width,
+                    var(--modal--border-bottom-width, var(--border-bottom-width))
+                )
+                var(
+                    --modal--body--border-left-width,
+                    var(--modal--border-left-width, var(--border-left-width))
+                )
         );
         border-color: var(
             --modal--body--border-color,
             var(
-                --modal--border-color,
-                (
-                    var(
-                            --modal--body--border-top-color,
-                            var(--modal--border-top-color, var(--border-top-color))
-                        )
-                        var(
-                            --modal--body--border-right-color,
-                            var(--modal--border-right-color, var(--border-right-color))
-                        )
-                        var(
-                            --modal--body--border-bottom-color,
-                            var(--modal--border-bottom-color, var(--border-bottom-color))
-                        )
-                        var(
-                            --modal--body--border-left-color,
-                            var(--modal--border-left-color, var(--border-left-color))
-                        )
+                    --modal--body--border-top-color,
+                    var(--modal--border-top-color, var(--border-top-color))
                 )
-            )
+                var(
+                    --modal--body--border-right-color,
+                    var(--modal--border-right-color, var(--border-right-color))
+                )
+                var(
+                    --modal--body--border-bottom-color,
+                    var(--modal--border-bottom-color, var(--border-bottom-color))
+                )
+                var(
+                    --modal--body--border-left-color,
+                    var(--modal--border-left-color, var(--border-left-color))
+                )
         );
         padding: var(
             --modal--body--padding,
-            var(
-                --modal--padding,
-                (
-                    var(--modal--body--padding-top, var(--modal--padding-top, var(--padding-top)))
-                        var(
-                            --modal--body--padding-right,
-                            var(--modal--padding-right, var(--padding-right))
-                        )
-                        var(
-                            --modal--body--padding-bottom,
-                            var(--modal--padding-bottom, var(--padding-bottom))
-                        )
-                        var(
-                            --modal--body--padding-left,
-                            var(--modal--padding-left, var(--padding-left))
-                        )
+            var(--modal--body--padding-top, var(--modal--padding-top, var(--padding-top)))
+                var(--modal--body--padding-right, var(--modal--padding-right, var(--padding-right)))
+                var(
+                    --modal--body--padding-bottom,
+                    var(--modal--padding-bottom, var(--padding-bottom))
                 )
-            )
+                var(--modal--body--padding-left, var(--modal--padding-left, var(--padding-left)))
         );
     }
 
@@ -735,93 +684,72 @@
         border-style: var(
             --modal--footer--border-style,
             var(
-                --modal--border-style,
+                    --modal--footer--border-top-style,
+                    var(--modal--border-top-style, var(--border-top-style))
+                )
                 var(
-                        --modal--footer--border-top-style,
-                        var(--modal--border-top-style, var(--border-top-style))
-                    )
-                    var(
-                        --modal--footer--border-right-style,
-                        var(--modal--border-right-style, var(--border-right-style))
-                    )
-                    var(
-                        --modal--footer--border-bottom-style,
-                        var(--modal--border-bottom-style, var(--border-bottom-style))
-                    )
-                    var(
-                        --modal--footer--border-left-style,
-                        var(--modal--border-left-style, var(--border-left-style))
-                    )
-            )
+                    --modal--footer--border-right-style,
+                    var(--modal--border-right-style, var(--border-right-style))
+                )
+                var(
+                    --modal--footer--border-bottom-style,
+                    var(--modal--border-bottom-style, var(--border-bottom-style))
+                )
+                var(
+                    --modal--footer--border-left-style,
+                    var(--modal--border-left-style, var(--border-left-style))
+                )
         );
         border-width: var(
             --modal--footer--border-width,
             var(
-                --modal--border-width,
-                (
-                    var(
-                            --modal--footer--border-top-width,
-                            var(--modal--border-top-width, var(--border-top-width))
-                        )
-                        var(
-                            --modal--footer--border-right-width,
-                            var(--modal--border-right-width, var(--border-right-width))
-                        )
-                        var(
-                            --modal--footer--border-bottom-width,
-                            var(--modal--border-bottom-width, var(--border-bottom-width))
-                        )
-                        var(
-                            --modal--footer--border-left-width,
-                            var(--modal--border-left-width, var(--border-left-width))
-                        )
+                    --modal--footer--border-top-width,
+                    var(--modal--border-top-width, var(--border-top-width))
                 )
-            )
+                var(
+                    --modal--footer--border-right-width,
+                    var(--modal--border-right-width, var(--border-right-width))
+                )
+                var(
+                    --modal--footer--border-bottom-width,
+                    var(--modal--border-bottom-width, var(--border-bottom-width))
+                )
+                var(
+                    --modal--footer--border-left-width,
+                    var(--modal--border-left-width, var(--border-left-width))
+                )
         );
         border-color: var(
             --modal--footer--border-color,
             var(
-                --modal--border-color,
-                (
-                    var(
-                            --modal--footer--border-top-color,
-                            var(--modal--border-top-color, var(--border-top-color))
-                        )
-                        var(
-                            --modal--footer--border-right-color,
-                            var(--modal--border-right-color, var(--border-right-color))
-                        )
-                        var(
-                            --modal--footer--border-bottom-color,
-                            var(--modal--border-bottom-color, var(--border-bottom-color))
-                        )
-                        var(
-                            --modal--footer--border-left-color,
-                            var(--modal--border-left-color, var(--border-left-color))
-                        )
+                    --modal--footer--border-top-color,
+                    var(--modal--border-top-color, var(--border-top-color))
                 )
-            )
+                var(
+                    --modal--footer--border-right-color,
+                    var(--modal--border-right-color, var(--border-right-color))
+                )
+                var(
+                    --modal--footer--border-bottom-color,
+                    var(--modal--border-bottom-color, var(--border-bottom-color))
+                )
+                var(
+                    --modal--footer--border-left-color,
+                    var(--modal--border-left-color, var(--border-left-color))
+                )
         );
         padding: var(
             --modal--footer--padding,
-            var(
-                --modal--padding,
-                (
-                    var(--modal--footer--padding-top, var(--modal--padding-top, var(--padding-top)))
-                        var(
-                            --modal--footer--padding-right,
-                            var(--modal--padding-right, var(--padding-right))
-                        )
-                        var(
-                            --modal--footer--padding-bottom,
-                            var(--modal--padding-bottom, var(--padding-bottom))
-                        )
-                        var(
-                            --modal--footer--padding-left,
-                            var(--modal--padding-left, var(--padding-left))
-                        )
+            var(--modal--footer--padding-top, var(--modal--padding-top, var(--padding-top)))
+                var(
+                    --modal--footer--padding-right,
+                    var(--modal--padding-right, var(--padding-right))
                 )
-            )
+                var(
+                    --modal--footer--padding-bottom,
+                    var(--modal--padding-bottom, var(--padding-bottom))
+                )
+                var(--modal--footer--padding-left, var(--modal--padding-left, var(--padding-left)))
         );
     }
 

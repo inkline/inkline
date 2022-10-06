@@ -67,12 +67,10 @@
     opacity: var(--hamburger-menu--opacity, 0.75);
     padding: var(
         --hamburger-menu--padding,
-        (
-            var(--hamburger-menu--padding-top, var(--padding-top-1-2))
-                var(--hamburger-menu--padding-right, var(--padding-right-1-2))
-                var(--hamburger-menu--padding-bottom, var(--padding-bottom-1-2))
-                var(--hamburger-menu--padding-left, var(--padding-left-1-2))
-        )
+        var(--hamburger-menu--padding-top, var(--padding-top-1-2))
+            var(--hamburger-menu--padding-right, var(--padding-right-1-2))
+            var(--hamburger-menu--padding-bottom, var(--padding-bottom-1-2))
+            var(--hamburger-menu--padding-left, var(--padding-left-1-2))
     );
     width: var(--hamburger-menu--bar--width);
     height: calc(var(--hamburger-menu--bar--height) * 3 + var(--hamburger-menu--bar--spacing) * 2);
@@ -82,7 +80,9 @@
     cursor: pointer;
     transition-property: var(
         --hamburger-menu--transition-property,
-        (background-color, color, border-color)
+        background-color,
+        color,
+        border-color
     );
     transition-duration: var(--hamburger-menu--transition-duration, var(--transition-duration));
     transition-timing-function: var(
@@ -109,7 +109,8 @@
             position: absolute;
             transition-property: var(
                 --hamburger-menu--bar--transition-property,
-                (background-color, transform)
+                background-color,
+                transform
             );
             transition-duration: var(--hamburger-menu--bar--transition-duration, 175ms);
             transition-timing-function: var(
@@ -140,7 +141,7 @@
     &.-close {
         > .hamburger-menu-bars {
             transition: transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19),
-                background var(--hamburger-menu--bar--transition-duration, (175ms))
+                background var(--hamburger-menu--bar--transition-duration, 175ms)
                     var(
                         --hamburger-menu--bar--transition-timing-function,
                         var(--transition-timing-function)
@@ -148,7 +149,7 @@
 
             &::before {
                 transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in,
-                    background var(--hamburger-menu--bar--transition-duration, (175ms))
+                    background var(--hamburger-menu--bar--transition-duration, 175ms)
                         var(
                             --hamburger-menu--bar--transition-timing-function,
                             var(--transition-timing-function)
@@ -158,7 +159,7 @@
             &::after {
                 transition: bottom 0.1s 0.25s ease-in,
                     transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19),
-                    background var(--hamburger-menu--bar--transition-duration, (175ms))
+                    background var(--hamburger-menu--bar--transition-duration, 175ms)
                         var(
                             --hamburger-menu--bar--transition-timing-function,
                             var(--transition-timing-function)
