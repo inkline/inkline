@@ -1,11 +1,9 @@
 export default {
-    data () {
+    data() {
         return {
             schema: this.$inkline.form({
                 input: {
-                    validators: [
-                        { name: 'required', message: 'This field is required' }
-                    ]
+                    validators: [{ name: 'required', message: 'This field is required' }]
                 }
             })
         };

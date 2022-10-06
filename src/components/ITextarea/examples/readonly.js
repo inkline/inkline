@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             value: 'This input is readonly.'
         };

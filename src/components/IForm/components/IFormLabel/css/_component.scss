@@ -33,15 +33,17 @@
     flex-basis: 100%;
     transition-property: var(--form-label--transition-property, color);
     transition-duration: var(--form-label--transition-duration, var(--transition-duration));
-    transition-timing-function: var(--form-label--transition-timing-function, var(--transition-timing-function));
+    transition-timing-function: var(
+        --form-label--transition-timing-function,
+        var(--transition-timing-function)
+    );
     font-size: var(--form-label--font-size, var(--font-size));
     margin: var(
         --form-label--margin,
         (
-            var(--form-label--margin-top, 0)
-            var(--form-label--margin-right, 0)
-            var(--form-label--margin-bottom, var(--margin-bottom-1-4))
-            var(--form-label--margin-left, 0)
+            var(--form-label--margin-top, 0) var(--form-label--margin-right, 0)
+                var(--form-label--margin-bottom, var(--margin-bottom-1-4))
+                var(--form-label--margin-left, 0)
         )
     );
 

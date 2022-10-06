@@ -448,7 +448,7 @@ $colors: (
     'tumblr': $color-tumblr,
     'twitch': $color-twitch,
     'envato': $color-envato,
-    'vine': $color-vine,
+    'vine': $color-vine
 ) !default;
 
 $shades: (
@@ -783,7 +783,7 @@ $shades: (
     'google-55': $color-google-55,
     'google-60': $color-google-60,
     'github-55': $color-github-55,
-    'github-60': $color-github-60,
+    'github-60': $color-github-60
 ) !default;
 
 @function color($color-key) {

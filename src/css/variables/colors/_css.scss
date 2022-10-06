@@ -1,13 +1,13 @@
-@use "sass:color";
-@use "sass:string";
-@use "sass:map";
+@use 'sass:color';
+@use 'sass:string';
+@use 'sass:map';
 
 // Colors
 //
 
 :root {
     @each $color-key, $color-value in $colors {
-        @if not (str-index($color-key, '0')) {
+        @if not(str-index($color-key, '0')) {
             $h: color.hue($color-value);
             $s: color.saturation($color-value);
             $l: color.lightness($color-value);
@@ -15,7 +15,11 @@
             --color--#{$color-key}--h: #{$h};
             --color--#{$color-key}--s: #{$s};
             --color--#{$color-key}--l: #{$l};
-            --color--#{$color-key}: hsl(var(--color--#{$color-key}--h), var(--color--#{$color-key}--s), var(--color--#{$color-key}--l));
+            --color--#{$color-key}: hsl(
+                var(--color--#{$color-key}--h),
+                var(--color--#{$color-key}--s),
+                var(--color--#{$color-key}--l)
+            );
         }
     }
 
@@ -33,7 +37,11 @@
         --color--#{$shade-key}-h: var(--color--#{$color-key}--h);
         --color--#{$shade-key}-s: var(--color--#{$color-key}--s);
         --color--#{$shade-key}-l: calc(var(--color--#{$color-key}--l) + #{$shade-l - $color-l});
-        --color--#{$shade-key}: hsl(var(--color--#{$shade-key}-h) var(--color--#{$shade-key}-s) var(--color--#{$shade-key}-l));
+        --color--#{$shade-key}: hsl(
+            var(--color--#{$shade-key}-h)
+                var(--color--#{$shade-key}-s)
+                var(--color--#{$shade-key}-l)
+        );
     }
 
     --contrast-color-for-light-background: #{$contrast-color-for-light-background};

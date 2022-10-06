@@ -1,6 +1,6 @@
 const { mergeConfig } = require('vite');
 const postcssConfig = require('../postcss.config');
-const { resolve } = require("path");
+const { resolve } = require('path');
 
 module.exports = {
     stories: [
@@ -71,7 +71,7 @@ module.exports = {
                         replacement: `${resolve(__dirname, '..')}/src/`
                     }
                 ]
-            },
+            }
         });
-    },
+    }
 };

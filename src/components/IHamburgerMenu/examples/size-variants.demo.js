@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             smActive: false,
             mdActive: false,

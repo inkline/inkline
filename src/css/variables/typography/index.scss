@@ -1,18 +1,20 @@
-@use "sass:color";
+@use 'sass:color';
 
 // Typography
 //
 
 // Font families
 //
-$font-family-primary--base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !default;
-$font-family-primary--monospace: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+$font-family-primary--base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
+    Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !default;
+$font-family-primary--monospace: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace !default;
 $font-family-primary--print: 'Georgia', 'Times New Roman', 'Times', serif !default;
 
 $font-families-primary: (
     'base': $font-family-primary--base,
     'monospace': $font-family-primary--monospace,
-    'print': $font-family-primary--print,
+    'print': $font-family-primary--print
 ) !default;
 
 @function font-family-primary($font-family-key) {
@@ -26,7 +28,7 @@ $font-family-secondary--print: $font-family-primary--print !default;
 $font-families-secondary: (
     'base': $font-family-secondary--base,
     'monospace': $font-family-secondary--monospace,
-    'print': $font-family-secondary--print,
+    'print': $font-family-secondary--print
 ) !default;
 
 @function font-family-secondary($font-family-key) {
@@ -53,11 +55,11 @@ $font-sizes: (
     'sm': $font-size--sm,
     'md': $font-size--md,
     'lg': $font-size--lg,
-    'xl': $font-size--xl,
+    'xl': $font-size--xl
 ) !default;
 
 @function font-size($font-size-key: null) {
-    @if not ($font-size-key) {
+    @if not($font-size-key) {
         @return var(--font-size);
     }
 
@@ -83,7 +85,7 @@ $font-weights: (
     'semibold': $font-weight--semibold,
     'bold': $font-weight--bold,
     'bolder': $font-weight--bolder,
-    'black': $font-weight--black,
+    'black': $font-weight--black
 ) !default;
 
 @function font-weight($font-weight-key: 'normal') {
@@ -113,7 +115,7 @@ $heading--font-size: (
     'h3': $h3--font-size,
     'h4': $h4--font-size,
     'h5': $h5--font-size,
-    'h6': $h6--font-size,
+    'h6': $h6--font-size
 ) !default;
 
 @function heading-font-size($heading-font-size-key) {
@@ -142,7 +144,7 @@ $display--font-size: (
     'd3': $d3--font-size,
     'd4': $d4--font-size,
     'd5': $d5--font-size,
-    'd6': $d6--font-size,
+    'd6': $d6--font-size
 ) !default;
 
 @function display-font-size($display-font-size-key) {
@@ -188,7 +190,12 @@ $blockquote--padding--bordered: spacing() !default;
 
 // Horizontal rule
 //
-$hr--border-color: hsla(var(--color--black--h), var(--color--black--s), var(--color--black--l), 0.1) !default;
+$hr--border-color: hsla(
+    var(--color--black--h),
+    var(--color--black--s),
+    var(--color--black--l),
+    0.1
+) !default;
 $hr--border-width: var(--border-top-width) !default;
 $hr--border-style: var(--border-style) !default;
 $hr--margin: spacing() !default;

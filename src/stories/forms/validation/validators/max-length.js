@@ -1,11 +1,9 @@
 export default {
-    data () {
+    data() {
         return {
             form: this.$inkline.form({
                 input: {
-                    validators: [
-                        { name: 'maxLength', value: 12 }
-                    ]
+                    validators: [{ name: 'maxLength', value: 12 }]
                 }
             })
         };

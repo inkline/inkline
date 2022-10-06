@@ -10,10 +10,7 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
     plugins: [
         vue({
-            include: [
-                /\.vue$/,
-                /\.md$/
-            ]
+            include: [/\.vue$/, /\.md$/]
         })
     ],
     resolve: {
@@ -47,23 +44,13 @@ export default defineConfig({
     test: {
         globals: true,
         environment: 'jsdom',
-        setupFiles: [
-            './vitest.setup.js'
-        ],
+        setupFiles: ['./vitest.setup.js'],
         coverage: {
-            exclude: [
-                '**/__mocks__/*'
-            ],
+            exclude: ['**/__mocks__/*'],
             reporter: ['text', 'json', 'html', 'lcov']
         }
     },
     optimizeDeps: {
-        exclude: [
-            'coverage',
-            'dist',
-            'lib',
-            'package',
-            'scripts'
-        ]
+        exclude: ['coverage', 'dist', 'lib', 'package', 'scripts']
     }
 });

@@ -445,7 +445,11 @@
 }
 
 .popover {
-    @include popup(('z-index': var(--popover--z-index)));
+    @include popup(
+        (
+            'z-index': var(--popover--z-index)
+        )
+    );
     @include popup-arrow();
     @include popup-arrow-size-variant();
 
@@ -456,10 +460,10 @@
         --popover--box-shadow,
         (
             var(--popover--box-shadow-x-offset, var(--box-shadow-offset-x))
-            var(--popover--box-shadow-y-offset, var(--box-shadow-offset-y))
-            var(--popover--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-            var(--popover--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-            var(--popover--box-shadow-color, var(--box-shadow-color))
+                var(--popover--box-shadow-y-offset, var(--box-shadow-offset-y))
+                var(--popover--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                var(--popover--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                var(--popover--box-shadow-color, var(--box-shadow-color))
         )
     );
     background-clip: padding-box;
@@ -497,32 +501,56 @@
     }
 
     > *:nth-child(2) {
-        border-top-left-radius: var(--popover--border-top-left-radius, var(--border-top-left-radius));
-        border-top-right-radius: var(--popover--border-top-right-radius, var(--border-top-right-radius));
+        border-top-left-radius: var(
+            --popover--border-top-left-radius,
+            var(--border-top-left-radius)
+        );
+        border-top-right-radius: var(
+            --popover--border-top-right-radius,
+            var(--border-top-right-radius)
+        );
     }
 
     > *:last-child {
-        border-bottom-left-radius: var(--popover--border-bottom-left-radius, var(--border-bottom-left-radius));
-        border-bottom-right-radius: var(--popover--border-bottom-right-radius, var(--border-bottom-right-radius));
+        border-bottom-left-radius: var(
+            --popover--border-bottom-left-radius,
+            var(--border-bottom-left-radius)
+        );
+        border-bottom-right-radius: var(
+            --popover--border-bottom-right-radius,
+            var(--border-bottom-right-radius)
+        );
     }
 
-    @include popup-arrow-color-variant-for-side('top', (
-        'background': var(--popover--body--background, var(--popover--background)),
-        'border-color': var(--popover--border-top-color, var(--border-top-color))
-    ));
+    @include popup-arrow-color-variant-for-side(
+        'top',
+        (
+            'background': var(--popover--body--background, var(--popover--background)),
+            'border-color': var(--popover--border-top-color, var(--border-top-color))
+        )
+    );
 
-    @include popup-arrow-color-variant-for-side('bottom', (
-        'background': var(--popover--body--background, var(--popover--background)),
-        'border-color': var(--popover--border-bottom-color, var(--border-bottom-color))
-    ));
+    @include popup-arrow-color-variant-for-side(
+        'bottom',
+        (
+            'background': var(--popover--body--background, var(--popover--background)),
+            'border-color': var(--popover--border-bottom-color, var(--border-bottom-color))
+        )
+    );
 
-    @include popup-arrow-color-variant-for-side('left', (
-        'background': var(--popover--body--background, var(--popover--background)),
-        'border-color': var(--popover--border-left-color, var(--border-left-color))
-    ));
+    @include popup-arrow-color-variant-for-side(
+        'left',
+        (
+            'background': var(--popover--body--background, var(--popover--background)),
+            'border-color': var(--popover--border-left-color, var(--border-left-color))
+        )
+    );
 
-    @include popup-arrow-color-variant-for-side('right', (
-        'background': var(--popover--body--background, var(--popover--background)),
-        'border-color': var(--popover--border-right-color, var(--border-right-color))
-    ));
+    @include popup-arrow-color-variant-for-side(
+        'right',
+        (
+            'background': var(--popover--body--background, var(--popover--background)),
+            'border-color': var(--popover--border-right-color, var(--border-right-color))
+        )
+    );
 }

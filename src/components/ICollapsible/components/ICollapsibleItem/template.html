@@ -1,8 +1,4 @@
-<div
-    class="collapsible-item"
-    :class="classes"
-    :name="name"
->
+<div class="collapsible-item" :class="classes" :name="name">
     <a
         class="collapsible-header"
         role="tab"
@@ -13,9 +9,7 @@
         tabindex="0"
         @click="onClick"
     >
-        <slot name="header">
-            {{ title }}
-        </slot>
+        <slot name="header"> {{ title }} </slot>
         <i class="icon" />
     </a>
     <i-expand-transition>

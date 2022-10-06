@@ -16,10 +16,7 @@
         <slot />
     </div>
 
-    <transition
-        name="zoom-in-top-transition"
-        @after-leave="destroyPopper"
-    >
+    <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
         <div
             class="popover"
             ref="popup"

@@ -1,12 +1,10 @@
 export default {
-    data () {
+    data() {
         return {
             schema: this.$inkline.form({
                 group: {
                     firstName: {
-                        validators: [
-                            { name: 'required' }
-                        ]
+                        validators: [{ name: 'required' }]
                     },
                     lastName: {
                         validators: ['required']
@@ -16,14 +14,12 @@ export default {
         };
     },
     methods: {
-        setEmail () {
+        setEmail() {
             this.schema.group.email = this.$inkline.form({
-                validators: [
-                    { name: 'email' }
-                ]
+                validators: [{ name: 'email' }]
             });
         },
-        setAddress () {
+        setAddress() {
             this.schema.group.address = this.$inkline.form({
                 value: '32 Inkline St.'
             });

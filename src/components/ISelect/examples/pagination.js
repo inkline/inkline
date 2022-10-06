@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             selected: null,
             loading: false,
@@ -13,7 +13,7 @@ export default {
         };
     },
     methods: {
-        async fetchOptions () {
+        async fetchOptions() {
             this.loading = true;
 
             const query = new URLSearchParams(this.params).toString();
@@ -29,16 +29,16 @@ export default {
             this.total = total;
             this.loading = false;
         },
-        async onPagination () {
+        async onPagination() {
             this.params.page += 1;
 
             await this.fetchOptions();
         },
-        renderLabel (option) {
+        renderLabel(option) {
             return option ? `${option.firstName} ${option.lastName}` : '';
         }
     },
-    mounted () {
+    mounted() {
         this.fetchOptions();
     }
 };

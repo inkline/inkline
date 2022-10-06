@@ -50,7 +50,8 @@
     /// The border width of the table component
     /// @name border-width
     ////
-    ----border-width: #{var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)};
+    ----border-width: #{var(----border-top-width) var(----border-right-width)
+        var(----border-bottom-width) var(----border-left-width)};
     ////
     /// The border color of the table component
     /// @name border-color
@@ -92,7 +93,8 @@
     /// The padding of the table component
     /// @name padding
     ////
-    ----padding: #{var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)};
+    ----padding: #{var(----padding-top) var(----padding-right) var(----padding-bottom)
+        var(----padding-left)};
     ////
     /// The padding top of the table component
     /// @name padding-top--condensed
@@ -117,5 +119,6 @@
     /// The padding of the table component
     /// @name padding--condensed
     ////
-    ----padding--condensed: #{var(----padding-top) var(----padding-right) var(----padding-bottom) var(----padding-left)};
+    ----padding--condensed: #{var(----padding-top) var(----padding-right) var(----padding-bottom)
+        var(----padding-left)};
 }

@@ -1,11 +1,9 @@
 export default {
-    data () {
+    data() {
         return {
             schema: this.$inkline.form({
                 input: {
-                    validators: [
-                        { name: 'minLength', value: 5 }
-                    ]
+                    validators: [{ name: 'minLength', value: 5 }]
                 }
             })
         };

@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         const options = [
             { id: 1, label: 'Richard Hendricks' },
             { id: 2, label: 'Bertram Gilfoyle' },

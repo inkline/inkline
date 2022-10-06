@@ -20,7 +20,8 @@
             :aria-readonly="isReadonly ? 'true' : false"
             aria-multiline="true"
             @input="onInput"
-            @blur="onBlur" />
+            @blur="onBlur"
+        />
         <span class="input-suffix" v-if="$slots.suffix || clearable && isClearable">
             <slot name="clearable" :clear="onClear">
                 <i class="input-clear" aria-label="Clear" v-show="isClearable" @click="onClear"></i>

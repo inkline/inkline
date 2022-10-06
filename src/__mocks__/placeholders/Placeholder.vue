@@ -5,7 +5,5 @@ export default defineComponent({});
 </script>
 
 <template>
-    <div>
-        Placeholder
-    </div>
+    <div>Placeholder</div>
 </template>

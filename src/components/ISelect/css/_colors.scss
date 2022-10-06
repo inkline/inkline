@@ -3,30 +3,76 @@
  */
 
 .select-wrapper {
-                        @include variant('light', 'form') {
-                                        --select--background: var(--select--white--background, var(--color-white));
-                                        --select--border-top-color: var(--select--light--border-top-color, var(--color-light-550));
-                                        --select--border-right-color: var(--select--light--border-right-color, var(--color-light-550));
-                                        --select--border-bottom-color: var(--select--light--border-bottom-color, var(--color-light-550));
-                                        --select--border-left-color: var(--select--light--border-left-color, var(--color-light-550));
-                                        --select--color: var(--select--white--color, var(--contrast-text--color-white));
-                                        --select--hover--option--background: var(--select--light--hover--option--background, var(--color-light-250));
-                                        --select--disabled--option--background: var(--select--disabled--option--background, #{transparent});
-                                        --select--disabled--option--color: var(--select--light--disabled--option--color, var(--color-light-650));
-                                        --select--header--background: var(--select--gray--header--background, var(--color-gray-050));
-                                        --select--footer--background: var(--select--gray--footer--background, var(--color-gray-050));
+    @include variant('light', 'form') {
+        --select--background: var(--select--white--background, var(--color-white));
+        --select--border-top-color: var(--select--light--border-top-color, var(--color-light-550));
+        --select--border-right-color: var(
+            --select--light--border-right-color,
+            var(--color-light-550)
+        );
+        --select--border-bottom-color: var(
+            --select--light--border-bottom-color,
+            var(--color-light-550)
+        );
+        --select--border-left-color: var(
+            --select--light--border-left-color,
+            var(--color-light-550)
+        );
+        --select--color: var(--select--white--color, var(--contrast-text--color-white));
+        --select--hover--option--background: var(
+            --select--light--hover--option--background,
+            var(--color-light-250)
+        );
+        --select--disabled--option--background: var(
+            --select--disabled--option--background,
+            #{transparent}
+        );
+        --select--disabled--option--color: var(
+            --select--light--disabled--option--color,
+            var(--color-light-650)
+        );
+        --select--header--background: var(
+            --select--gray--header--background,
+            var(--color-gray-050)
+        );
+        --select--footer--background: var(
+            --select--gray--footer--background,
+            var(--color-gray-050)
+        );
     }
-                        @include variant('dark', 'form') {
-                                        --select--background: var(--select--dark--background, var(--color-dark));
-                                        --select--border-top-color: var(--select--dark--border-top-color, var(--color-dark-450));
-                                        --select--border-right-color: var(--select--dark--border-right-color, var(--color-dark-450));
-                                        --select--border-bottom-color: var(--select--dark--border-bottom-color, var(--color-dark-450));
-                                        --select--border-left-color: var(--select--dark--border-left-color, var(--color-dark-450));
-                                        --select--color: var(--select--dark--color, var(--contrast-text--color-dark));
-                                        --select--hover--option--background: var(--select--dark--hover--option--background, var(--color-dark-450));
-                                        --select--disabled--option--background: var(--select--disabled--option--background, #{transparent});
-                                        --select--disabled--option--color: var(--select--dark--disabled--option--color, var(--color-dark-250));
-                                        --select--header--background: var(--select--dark--header--background, var(--color-dark-550));
-                                        --select--footer--background: var(--select--dark--footer--background, var(--color-dark-550));
+
+    @include variant('dark', 'form') {
+        --select--background: var(--select--dark--background, var(--color-dark));
+        --select--border-top-color: var(--select--dark--border-top-color, var(--color-dark-450));
+        --select--border-right-color: var(
+            --select--dark--border-right-color,
+            var(--color-dark-450)
+        );
+        --select--border-bottom-color: var(
+            --select--dark--border-bottom-color,
+            var(--color-dark-450)
+        );
+        --select--border-left-color: var(--select--dark--border-left-color, var(--color-dark-450));
+        --select--color: var(--select--dark--color, var(--contrast-text--color-dark));
+        --select--hover--option--background: var(
+            --select--dark--hover--option--background,
+            var(--color-dark-450)
+        );
+        --select--disabled--option--background: var(
+            --select--disabled--option--background,
+            #{transparent}
+        );
+        --select--disabled--option--color: var(
+            --select--dark--disabled--option--color,
+            var(--color-dark-250)
+        );
+        --select--header--background: var(
+            --select--dark--header--background,
+            var(--color-dark-550)
+        );
+        --select--footer--background: var(
+            --select--dark--footer--background,
+            var(--color-dark-550)
+        );
     }
 }

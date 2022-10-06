@@ -240,7 +240,6 @@
 /// @type size
 ////
 
-
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
@@ -318,37 +317,37 @@
         font-size: var(----label--font-size);
 
         &::before {
-            content: "";
+            content: '';
             position: relative;
             display: inline-block;
             cursor: pointer;
             transition: var(----transition-duration);
             border-width: var(
-                        --toggle--border-width,
-                        (
-                                    var(--toggle--border-top-width, var(--border-top-width))
-                                    var(--toggle--border-right-width, var(--border-right-width))
-                                    var(--toggle--border-bottom-width, var(--border-bottom-width))
-                                    var(--toggle--border-left-width, var(--border-left-width))
-                        )
+                --toggle--border-width,
+                (
+                    var(--toggle--border-top-width, var(--border-top-width))
+                        var(--toggle--border-right-width, var(--border-right-width))
+                        var(--toggle--border-bottom-width, var(--border-bottom-width))
+                        var(--toggle--border-left-width, var(--border-left-width))
+                )
             );
             border-style: var(
-                        --toggle--border-style,
-                        (
-                                    var(--toggle--border-top-style, var(--border-top-style))
-                                    var(--toggle--border-right-style, var(--border-right-style))
-                                    var(--toggle--border-bottom-style, var(--border-bottom-style))
-                                    var(--toggle--border-left-style, var(--border-left-style))
-                        )
+                --toggle--border-style,
+                (
+                    var(--toggle--border-top-style, var(--border-top-style))
+                        var(--toggle--border-right-style, var(--border-right-style))
+                        var(--toggle--border-bottom-style, var(--border-bottom-style))
+                        var(--toggle--border-left-style, var(--border-left-style))
+                )
             );
             border-color: var(
-                        --toggle--border-color,
-                        (
-                                    var(--toggle--border-top-color, var(--border-top-color))
-                                    var(--toggle--border-right-color, var(--border-right-color))
-                                    var(--toggle--border-bottom-color, var(--border-bottom-color))
-                                    var(--toggle--border-left-color, var(--border-left-color))
-                        )
+                --toggle--border-color,
+                (
+                    var(--toggle--border-top-color, var(--border-top-color))
+                        var(--toggle--border-right-color, var(--border-right-color))
+                        var(--toggle--border-bottom-color, var(--border-bottom-color))
+                        var(--toggle--border-left-color, var(--border-left-color))
+                )
             );
             margin-right: var(--toggle--margin-right, var(--margin-right));
             flex-shrink: 0;
@@ -357,18 +356,18 @@
             width: var(--toggle--width);
             height: var(--toggle--height);
             border-radius: var(
-                        --toggle--border-radius,
-                        (
-                                    var(--toggle--border-top-left-radius, var(--border-top-left-radius))
-                                    var(--toggle--border-top-right-radius, var(--border-top-right-radius))
-                                    var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
-                                    var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
-                        )
+                --toggle--border-radius,
+                (
+                    var(--toggle--border-top-left-radius, var(--border-top-left-radius))
+                        var(--toggle--border-top-right-radius, var(--border-top-right-radius))
+                        var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
+                        var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
+                )
             );
         }
 
         &::after {
-            content: "";
+            content: '';
             position: absolute;
             display: block;
             top: 50%;
@@ -380,13 +379,13 @@
             height: var(----indicator--width);
             width: var(----indicator--height);
             border-radius: var(
-                        --toggle--border-radius,
-                        (
-                                    var(--toggle--border-top-left-radius, var(--border-top-left-radius))
-                                    var(--toggle--border-top-right-radius, var(--border-top-right-radius))
-                                    var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
-                                    var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
-                        )
+                --toggle--border-radius,
+                (
+                    var(--toggle--border-top-left-radius, var(--border-top-left-radius))
+                        var(--toggle--border-top-right-radius, var(--border-top-right-radius))
+                        var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
+                        var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
+                )
             );
             margin-top: calc(var(----indicator--height) / -2);
             margin-left: calc(var(--toggle--height) / 2 - var(----indicator--height) / 2);

@@ -4,41 +4,131 @@
 
 .button {
     &.-sm {
-        --button--border-top-left-radius: var(--button--sm--border-top-left-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-sm)));
-        --button--border-top-right-radius: var(--button--sm--border-top-right-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-sm)));
-        --button--border-bottom-right-radius: var(--button--sm--border-bottom-right-radius, calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm)));
-        --button--border-bottom-left-radius: var(--button--sm--border-bottom-left-radius, calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm)));
-        --button--font-size: var(--button--sm--font-size, calc(var(--font-size) * var(--size-multiplier-sm)));
-        --button--padding-top: var(--button--sm--padding-top, calc(calc(var(--padding-top) * var(--size-multiplier-sm)) * 0.5));
-        --button--padding-right: var(--button--sm--padding-right, calc(var(--padding-right) * var(--size-multiplier-sm)));
-        --button--padding-bottom: var(--button--sm--padding-bottom, calc(calc(var(--padding-bottom) * var(--size-multiplier-sm)) * 0.5));
-        --button--padding-left: var(--button--sm--padding-left, calc(var(--padding-left) * var(--size-multiplier-sm)));
-        --button--circle--size: var(--button--sm--circle--size, calc(34px * var(--size-multiplier-sm)));
+        --button--border-top-left-radius: var(
+            --button--sm--border-top-left-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-sm))
+        );
+        --button--border-top-right-radius: var(
+            --button--sm--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-sm))
+        );
+        --button--border-bottom-right-radius: var(
+            --button--sm--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))
+        );
+        --button--border-bottom-left-radius: var(
+            --button--sm--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))
+        );
+        --button--font-size: var(
+            --button--sm--font-size,
+            calc(var(--font-size) * var(--size-multiplier-sm))
+        );
+        --button--padding-top: var(
+            --button--sm--padding-top,
+            calc(calc(var(--padding-top) * var(--size-multiplier-sm)) * 0.5)
+        );
+        --button--padding-right: var(
+            --button--sm--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-sm))
+        );
+        --button--padding-bottom: var(
+            --button--sm--padding-bottom,
+            calc(calc(var(--padding-bottom) * var(--size-multiplier-sm)) * 0.5)
+        );
+        --button--padding-left: var(
+            --button--sm--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-sm))
+        );
+        --button--circle--size: var(
+            --button--sm--circle--size,
+            calc(34px * var(--size-multiplier-sm))
+        );
     }
 
     &.-md {
-        --button--border-top-left-radius: var(--button--md--border-top-left-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-md)));
-        --button--border-top-right-radius: var(--button--md--border-top-right-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-md)));
-        --button--border-bottom-right-radius: var(--button--md--border-bottom-right-radius, calc(var(--border-bottom-right-radius) * var(--size-multiplier-md)));
-        --button--border-bottom-left-radius: var(--button--md--border-bottom-left-radius, calc(var(--border-bottom-left-radius) * var(--size-multiplier-md)));
-        --button--font-size: var(--button--md--font-size, calc(var(--font-size) * var(--size-multiplier-md)));
-        --button--padding-top: var(--button--md--padding-top, calc(calc(var(--padding-top) * var(--size-multiplier-md)) * 0.5));
-        --button--padding-right: var(--button--md--padding-right, calc(var(--padding-right) * var(--size-multiplier-md)));
-        --button--padding-bottom: var(--button--md--padding-bottom, calc(calc(var(--padding-bottom) * var(--size-multiplier-md)) * 0.5));
-        --button--padding-left: var(--button--md--padding-left, calc(var(--padding-left) * var(--size-multiplier-md)));
-        --button--circle--size: var(--button--md--circle--size, calc(42px * var(--size-multiplier-md)));
+        --button--border-top-left-radius: var(
+            --button--md--border-top-left-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-md))
+        );
+        --button--border-top-right-radius: var(
+            --button--md--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-md))
+        );
+        --button--border-bottom-right-radius: var(
+            --button--md--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))
+        );
+        --button--border-bottom-left-radius: var(
+            --button--md--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))
+        );
+        --button--font-size: var(
+            --button--md--font-size,
+            calc(var(--font-size) * var(--size-multiplier-md))
+        );
+        --button--padding-top: var(
+            --button--md--padding-top,
+            calc(calc(var(--padding-top) * var(--size-multiplier-md)) * 0.5)
+        );
+        --button--padding-right: var(
+            --button--md--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-md))
+        );
+        --button--padding-bottom: var(
+            --button--md--padding-bottom,
+            calc(calc(var(--padding-bottom) * var(--size-multiplier-md)) * 0.5)
+        );
+        --button--padding-left: var(
+            --button--md--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-md))
+        );
+        --button--circle--size: var(
+            --button--md--circle--size,
+            calc(42px * var(--size-multiplier-md))
+        );
     }
 
     &.-lg {
-        --button--border-top-left-radius: var(--button--lg--border-top-left-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-lg)));
-        --button--border-top-right-radius: var(--button--lg--border-top-right-radius, calc(var(--border-top-right-radius) * var(--size-multiplier-lg)));
-        --button--border-bottom-right-radius: var(--button--lg--border-bottom-right-radius, calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg)));
-        --button--border-bottom-left-radius: var(--button--lg--border-bottom-left-radius, calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg)));
-        --button--font-size: var(--button--lg--font-size, calc(var(--font-size) * var(--size-multiplier-lg)));
-        --button--padding-top: var(--button--lg--padding-top, calc(calc(var(--padding-top) * var(--size-multiplier-lg)) * 0.5));
-        --button--padding-right: var(--button--lg--padding-right, calc(var(--padding-right) * var(--size-multiplier-lg)));
-        --button--padding-bottom: var(--button--lg--padding-bottom, calc(calc(var(--padding-bottom) * var(--size-multiplier-lg)) * 0.5));
-        --button--padding-left: var(--button--lg--padding-left, calc(var(--padding-left) * var(--size-multiplier-lg)));
-        --button--circle--size: var(--button--lg--circle--size, calc(49px * var(--size-multiplier-lg)));
+        --button--border-top-left-radius: var(
+            --button--lg--border-top-left-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-lg))
+        );
+        --button--border-top-right-radius: var(
+            --button--lg--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-lg))
+        );
+        --button--border-bottom-right-radius: var(
+            --button--lg--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))
+        );
+        --button--border-bottom-left-radius: var(
+            --button--lg--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))
+        );
+        --button--font-size: var(
+            --button--lg--font-size,
+            calc(var(--font-size) * var(--size-multiplier-lg))
+        );
+        --button--padding-top: var(
+            --button--lg--padding-top,
+            calc(calc(var(--padding-top) * var(--size-multiplier-lg)) * 0.5)
+        );
+        --button--padding-right: var(
+            --button--lg--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-lg))
+        );
+        --button--padding-bottom: var(
+            --button--lg--padding-bottom,
+            calc(calc(var(--padding-bottom) * var(--size-multiplier-lg)) * 0.5)
+        );
+        --button--padding-left: var(
+            --button--lg--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-lg))
+        );
+        --button--circle--size: var(
+            --button--lg--circle--size,
+            calc(49px * var(--size-multiplier-lg))
+        );
     }
 }

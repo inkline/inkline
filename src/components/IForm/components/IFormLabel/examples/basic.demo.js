@@ -1,6 +1,6 @@
 export default {
     inheritAttrs: false,
-    data () {
+    data() {
         return {
             value: ''
         };

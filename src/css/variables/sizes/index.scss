@@ -19,7 +19,7 @@ $size-percentages: (
     '25': 25%,
     '50': 50%,
     '75': 75%,
-    '100': 100%,
+    '100': 100%
 ) !default;
 
 @function size-percentage($size-percentage-key) {
@@ -42,7 +42,7 @@ $size-multipliers: (
     'sm': $size-multiplier--sm,
     'md': $size-multiplier--md,
     'lg': $size-multiplier--lg,
-    'xl': $size-multiplier--xl,
+    'xl': $size-multiplier--xl
 ) !default;
 
 @function size-multiplier($size-multiplier-key) {

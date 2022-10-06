@@ -23,7 +23,9 @@
      */
 
     @each $select-size-variant-key, $select-size-variant-value in $select-size-variants {
-        @each $select-size-variant-field-key, $select-size-variant-field-value in $select-size-variant-value {
+        @each $select-size-variant-field-key,
+            $select-size-variant-field-value in $select-size-variant-value
+        {
             --select-size-variant-#{$select-size-variant-key}-#{$select-size-variant-field-key}: #{$select-size-variant-field-value};
         }
     }
@@ -33,7 +35,9 @@
      */
 
     @each $select-color-variant-key, $select-color-variant-value in $select-color-variants {
-        @each $select-color-variant-field-key, $select-color-variant-field-value in $select-color-variant-value {
+        @each $select-color-variant-field-key,
+            $select-color-variant-field-value in $select-color-variant-value
+        {
             --select-color-variant-#{$select-color-variant-key}-#{$select-color-variant-field-key}: #{$select-color-variant-field-value};
         }
     }

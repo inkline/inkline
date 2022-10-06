@@ -1,21 +1,15 @@
 export default {
-    data () {
+    data() {
         return {
             form: this.$inkline.form({
                 input: {
-                    validators: [
-                        { name: 'number' }
-                    ]
+                    validators: [{ name: 'number' }]
                 },
                 inputNegative: {
-                    validators: [
-                        { name: 'number', allowNegative: true }
-                    ]
+                    validators: [{ name: 'number', allowNegative: true }]
                 },
                 inputNegativeDecimal: {
-                    validators: [
-                        { name: 'number', allowNegative: true, allowDecimal: true }
-                    ]
+                    validators: [{ name: 'number', allowNegative: true, allowDecimal: true }]
                 }
             })
         };

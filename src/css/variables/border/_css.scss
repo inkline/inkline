@@ -24,15 +24,20 @@
         --border-top-left-radius-#{$border-top-left-radius-key}: #{$border-top-left-radius-value};
     }
 
-    @each $border-top-right-radius-key, $border-top-right-radius-value in $border-top-right-radiuses {
+    @each $border-top-right-radius-key, $border-top-right-radius-value in $border-top-right-radiuses
+    {
         --border-top-right-radius-#{$border-top-right-radius-key}: #{$border-top-right-radius-value};
     }
 
-    @each $border-bottom-right-radius-key, $border-bottom-right-radius-value in $border-bottom-right-radiuses {
+    @each $border-bottom-right-radius-key,
+        $border-bottom-right-radius-value in $border-bottom-right-radiuses
+    {
         --border-bottom-right-radius-#{$border-bottom-right-radius-key}: #{$border-bottom-right-radius-value};
     }
 
-    @each $border-bottom-left-radius-key, $border-bottom-left-radius-value in $border-bottom-left-radiuses {
+    @each $border-bottom-left-radius-key,
+        $border-bottom-left-radius-value in $border-bottom-left-radiuses
+    {
         --border-bottom-left-radius-#{$border-bottom-left-radius-key}: #{$border-bottom-left-radius-value};
     }
 

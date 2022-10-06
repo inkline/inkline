@@ -1,10 +1,11 @@
-<form class="form"
-      :class="classes"
-      role="form"
-      :name="name"
-      :readonly="isReadonly"
-      :disabled="isDisabled"
-      @submit="onSubmit"
+<form
+    class="form"
+    :class="classes"
+    role="form"
+    :name="name"
+    :readonly="isReadonly"
+    :disabled="isDisabled"
+    @submit="onSubmit"
 >
     <slot />
 </form>

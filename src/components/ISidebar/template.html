@@ -8,10 +8,7 @@
         v-show="open || !collapsible"
     >
         <transition :name="sidebarTransition">
-            <div
-                class="sidebar"
-                v-show="collapsePosition === 'relative' || open || !collapsible"
-            >
+            <div class="sidebar" v-show="collapsePosition === 'relative' || open || !collapsible">
                 <div class="sidebar-content">
                     <slot />
                 </div>

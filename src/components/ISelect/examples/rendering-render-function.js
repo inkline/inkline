@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             selected: null,
             options: [
@@ -49,7 +49,7 @@ export default {
         };
     },
     methods: {
-        renderLabel (option) {
+        renderLabel(option) {
             return option ? `${option.address.city}, ${option.address.country}` : '';
         }
     }

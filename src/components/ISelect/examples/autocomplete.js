@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         const defaultOptions = [
             { id: 1, label: 'Richard Hendricks' },
             { id: 2, label: 'Bertram Gilfoyle' },
@@ -15,11 +15,10 @@ export default {
         };
     },
     methods: {
-        onSearch (query) {
-            this.options = this.defaultOptions
-                .filter((option) => {
-                    return option.label.toLowerCase().includes((query || '').toLowerCase());
-                });
+        onSearch(query) {
+            this.options = this.defaultOptions.filter((option) => {
+                return option.label.toLowerCase().includes((query || '').toLowerCase());
+            });
         }
     }
 };

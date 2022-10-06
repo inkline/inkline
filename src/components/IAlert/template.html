@@ -1,16 +1,5 @@
-<div
-    class="alert"
-    role="alert"
-    :class="classes"
-    v-bind="$attrs"
-    v-show="!dismissed"
->
-    <span
-        class="icon"
-        role="img"
-        aria-hidden="true"
-        v-if="$slots.icon"
-    >
+<div class="alert" role="alert" :class="classes" v-bind="$attrs" v-show="!dismissed">
+    <span class="icon" role="img" aria-hidden="true" v-if="$slots.icon">
         <slot name="icon" />
     </span>
     <div class="content">

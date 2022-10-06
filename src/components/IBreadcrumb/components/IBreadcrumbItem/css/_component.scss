@@ -53,11 +53,12 @@
     }
 
     // Check the above for duplication
-    + .breadcrumb-item:hover::before { /* stylelint-disable-line no-duplicate-selectors */
+    + .breadcrumb-item:hover::before {
+        /* stylelint-disable-line no-duplicate-selectors */
         text-decoration: none;
     }
 
-    :not([href]):not([to]) {
+    :not([href], [to]) {
         text-decoration: none;
     }
 

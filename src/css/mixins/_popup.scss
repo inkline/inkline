@@ -1,6 +1,10 @@
 @use 'sass:map';
 
-@mixin popup($popup: ( 'z-index': 2000 )) {
+@mixin popup(
+    $popup: (
+        'z-index': 2000
+    )
+) {
     $_z-index: map.get($popup, 'z-index');
 
     position: fixed;
@@ -11,19 +15,19 @@
         outline-width: 0;
     }
 
-    &[data-popper-placement^="top"] {
+    &[data-popper-placement^='top'] {
         transform-origin: center bottom;
     }
 
-    &[data-popper-placement^="bottom"] {
+    &[data-popper-placement^='bottom'] {
         transform-origin: center top;
     }
 
-    &[data-popper-placement^="right"] {
+    &[data-popper-placement^='right'] {
         transform-origin: left center;
     }
 
-    &[data-popper-placement^="left"] {
+    &[data-popper-placement^='left'] {
         transform-origin: right center;
     }
 }
@@ -40,10 +44,10 @@
     }
 
     > [data-popper-arrow]::after {
-        content: "";
+        content: '';
     }
 
-    &[data-popper-placement^="top"] > [data-popper-arrow] {
+    &[data-popper-placement^='top'] > [data-popper-arrow] {
         border-bottom-width: 0;
 
         &::after {
@@ -51,7 +55,7 @@
         }
     }
 
-    &[data-popper-placement^="bottom"] > [data-popper-arrow] {
+    &[data-popper-placement^='bottom'] > [data-popper-arrow] {
         border-top-width: 0;
 
         &::after {
@@ -59,7 +63,7 @@
         }
     }
 
-    &[data-popper-placement^="right"] > [data-popper-arrow] {
+    &[data-popper-placement^='right'] > [data-popper-arrow] {
         border-left-width: 0;
 
         &::after {
@@ -67,7 +71,7 @@
         }
     }
 
-    &[data-popper-placement^="left"] > [data-popper-arrow] {
+    &[data-popper-placement^='left'] > [data-popper-arrow] {
         border-right-width: 0;
 
         &::after {
@@ -76,7 +80,12 @@
     }
 }
 
-@mixin popup-arrow-size-variant($arrow: ( 'size': 6px, 'margin': 6px )) {
+@mixin popup-arrow-size-variant(
+    $arrow: (
+        'size': 6px,
+        'margin': 6px
+    )
+) {
     $_size: map.get($arrow, 'size');
     $_margin: map.get($arrow, 'margin');
 
@@ -87,8 +96,8 @@
         }
     }
 
-    &[data-popper-placement^="top"],
-    &[data-popper-placement^="bottom"] {
+    &[data-popper-placement^='top'],
+    &[data-popper-placement^='bottom'] {
         > [data-popper-arrow] {
             &::after {
                 margin-left: -$_size;
@@ -96,8 +105,8 @@
         }
     }
 
-    &[data-popper-placement^="left"],
-    &[data-popper-placement^="right"] {
+    &[data-popper-placement^='left'],
+    &[data-popper-placement^='right'] {
         > [data-popper-arrow] {
             &::after {
                 margin-top: -$_size;
@@ -105,7 +114,7 @@
         }
     }
 
-    &[data-popper-placement^="top"] {
+    &[data-popper-placement^='top'] {
         > [data-popper-arrow] {
             bottom: -($_size);
 
@@ -115,7 +124,7 @@
         }
     }
 
-    &[data-popper-placement^="bottom"] {
+    &[data-popper-placement^='bottom'] {
         > [data-popper-arrow] {
             top: -($_size);
 
@@ -125,7 +134,7 @@
         }
     }
 
-    &[data-popper-placement^="left"] {
+    &[data-popper-placement^='left'] {
         > [data-popper-arrow] {
             right: -($_size);
 
@@ -135,7 +144,7 @@
         }
     }
 
-    &[data-popper-placement^="right"] {
+    &[data-popper-placement^='right'] {
         > [data-popper-arrow] {
             left: -($_size);
 
@@ -150,7 +159,7 @@
     $_background: map.get($arrow, 'background');
     $_border-color: map.get($arrow, 'border-color');
 
-    &[data-popper-placement^="#{$side}"] > [data-popper-arrow] {
+    &[data-popper-placement^='#{$side}'] > [data-popper-arrow] {
         border-#{$side}-color: $_border-color;
 
         &::after {
@@ -159,29 +168,46 @@
     }
 }
 
-@mixin popup-arrow-color-variant($arrow: ('background': #ffffff, 'border-color': (
-    'top': #bcbcbc,
-    'right': #bcbcbc,
-    'bottom': #bcbcbc,
-    'left': #bcbcbc
-))) {
+@mixin popup-arrow-color-variant(
+    $arrow: (
+        'background': #ffffff,
+        'border-color': (
+            'top': #bcbcbc,
+            'right': #bcbcbc,
+            'bottom': #bcbcbc,
+            'left': #bcbcbc
+        )
+    )
+) {
     $background: map.get($arrow, 'background');
     $border-color: map.get($arrow, 'border-color');
 
-    @include popup-arrow-color-variant-for-side('top', (
-        'background': $background,
-        'border-color': map.get($border-color, 'top')
-    ));
-    @include popup-arrow-color-variant-for-side('bottom', (
-        'background': $background,
-        'border-color': map.get($border-color, 'bottom')
-    ));
-    @include popup-arrow-color-variant-for-side('left', (
-        'background': $background,
-        'border-color': map.get($border-color, 'left')
-    ));
-    @include popup-arrow-color-variant-for-side('right', (
-        'background': $background,
-        'border-color': map.get($border-color, 'right')
-    ));
+    @include popup-arrow-color-variant-for-side(
+        'top',
+        (
+            'background': $background,
+            'border-color': map.get($border-color, 'top')
+        )
+    );
+    @include popup-arrow-color-variant-for-side(
+        'bottom',
+        (
+            'background': $background,
+            'border-color': map.get($border-color, 'bottom')
+        )
+    );
+    @include popup-arrow-color-variant-for-side(
+        'left',
+        (
+            'background': $background,
+            'border-color': map.get($border-color, 'left')
+        )
+    );
+    @include popup-arrow-color-variant-for-side(
+        'right',
+        (
+            'background': $background,
+            'border-color': map.get($border-color, 'right')
+        )
+    );
 }

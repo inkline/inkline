@@ -1,30 +1,22 @@
 export default {
-    data () {
+    data() {
         return {
             schema: this.$inkline.form({
                 group1: {
                     input1: {
                         value: 'G1 example 1',
-                        validators: [
-                            { name: 'required' }
-                        ]
+                        validators: [{ name: 'required' }]
                     }
                 },
                 group2: {
                     input1: {
                         value: 'alex@grozav.com',
-                        validators: [
-                            { name: 'required' },
-                            { name: 'email' }
-                        ]
+                        validators: [{ name: 'required' }, { name: 'email' }]
                     },
                     group1: {
                         input1: {
                             value: 'G2 G1',
-                            validators: [
-                                'required',
-                                { name: 'maxLength', value: 5 }
-                            ]
+                            validators: ['required', { name: 'maxLength', value: 5 }]
                         }
                     }
                 },
@@ -57,15 +49,17 @@ export default {
         };
     },
     methods: {
-        onSubmit () {
+        onSubmit() {
             alert('Submitted!');
         },
-        addRow () {
-            this.schema.group3.push(this.$inkline.form({
-                value: `G3 example ${this.schema.group3.length}`
-            }));
+        addRow() {
+            this.schema.group3.push(
+                this.$inkline.form({
+                    value: `G3 example ${this.schema.group3.length}`
+                })
+            );
         },
-        setRow () {
+        setRow() {
             this.schema.group5.example = this.$inkline.form({});
         }
     }

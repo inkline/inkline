@@ -7,7 +7,8 @@ $border-top-width: 1px !default;
 $border-right-width: 1px !default;
 $border-bottom-width: 1px !default;
 $border-left-width: 1px !default;
-$border-width: var(--border-top-width) var(--border-right-width) var(--border-bottom-width) var(--border-left-width) !default;
+$border-width: var(--border-top-width) var(--border-right-width) var(--border-bottom-width)
+    var(--border-left-width) !default;
 
 $border-color--light: color('gray-30') !default;
 $border-color--dark: color('gray-70') !default;
@@ -17,7 +18,8 @@ $border-top-left-radius: 0.25rem !default;
 $border-top-right-radius: 0.25rem !default;
 $border-bottom-right-radius: 0.25rem !default;
 $border-bottom-left-radius: 0.25rem !default;
-$border-radius: var(--border-top-left-radius) var(--border-top-right-radius) var(--border-bottom-right-radius) var(--border-bottom-left-radius) !default;
+$border-radius: var(--border-top-left-radius) var(--border-top-right-radius)
+    var(--border-bottom-right-radius) var(--border-bottom-left-radius) !default;
 
 $border-top-left-radius-xs: calc(var(--border-top-left-radius) * #{size-multiplier('xs')}) !default;
 $border-top-left-radius-sm: calc(var(--border-top-left-radius) * #{size-multiplier('sm')}) !default;
@@ -25,36 +27,71 @@ $border-top-left-radius-md: calc(var(--border-top-left-radius) * #{size-multipli
 $border-top-left-radius-lg: calc(var(--border-top-left-radius) * #{size-multiplier('lg')}) !default;
 $border-top-left-radius-xl: calc(var(--border-top-left-radius) * #{size-multiplier('xl')}) !default;
 
-$border-top-right-radius-xs: calc(var(--border-top-right-radius) * #{size-multiplier('xs')}) !default;
-$border-top-right-radius-sm: calc(var(--border-top-right-radius) * #{size-multiplier('sm')}) !default;
-$border-top-right-radius-md: calc(var(--border-top-right-radius) * #{size-multiplier('md')}) !default;
-$border-top-right-radius-lg: calc(var(--border-top-right-radius) * #{size-multiplier('lg')}) !default;
-$border-top-right-radius-xl: calc(var(--border-top-right-radius) * #{size-multiplier('xl')}) !default;
+$border-top-right-radius-xs: calc(
+    var(--border-top-right-radius) * #{size-multiplier('xs')}
+) !default;
+$border-top-right-radius-sm: calc(
+    var(--border-top-right-radius) * #{size-multiplier('sm')}
+) !default;
+$border-top-right-radius-md: calc(
+    var(--border-top-right-radius) * #{size-multiplier('md')}
+) !default;
+$border-top-right-radius-lg: calc(
+    var(--border-top-right-radius) * #{size-multiplier('lg')}
+) !default;
+$border-top-right-radius-xl: calc(
+    var(--border-top-right-radius) * #{size-multiplier('xl')}
+) !default;
 
-$border-bottom-right-radius-xs: calc(var(--border-bottom-right-radius) * #{size-multiplier('xs')}) !default;
-$border-bottom-right-radius-sm: calc(var(--border-bottom-right-radius) * #{size-multiplier('sm')}) !default;
-$border-bottom-right-radius-md: calc(var(--border-bottom-right-radius) * #{size-multiplier('md')}) !default;
-$border-bottom-right-radius-lg: calc(var(--border-bottom-right-radius) * #{size-multiplier('lg')}) !default;
-$border-bottom-right-radius-xl: calc(var(--border-bottom-right-radius) * #{size-multiplier('xl')}) !default;
+$border-bottom-right-radius-xs: calc(
+    var(--border-bottom-right-radius) * #{size-multiplier('xs')}
+) !default;
+$border-bottom-right-radius-sm: calc(
+    var(--border-bottom-right-radius) * #{size-multiplier('sm')}
+) !default;
+$border-bottom-right-radius-md: calc(
+    var(--border-bottom-right-radius) * #{size-multiplier('md')}
+) !default;
+$border-bottom-right-radius-lg: calc(
+    var(--border-bottom-right-radius) * #{size-multiplier('lg')}
+) !default;
+$border-bottom-right-radius-xl: calc(
+    var(--border-bottom-right-radius) * #{size-multiplier('xl')}
+) !default;
 
-$border-bottom-left-radius-xs: calc(var(--border-bottom-left-radius) * #{size-multiplier('xs')}) !default;
-$border-bottom-left-radius-sm: calc(var(--border-bottom-left-radius) * #{size-multiplier('sm')}) !default;
-$border-bottom-left-radius-md: calc(var(--border-bottom-left-radius) * #{size-multiplier('md')}) !default;
-$border-bottom-left-radius-lg: calc(var(--border-bottom-left-radius) * #{size-multiplier('lg')}) !default;
-$border-bottom-left-radius-xl: calc(var(--border-bottom-left-radius) * #{size-multiplier('xl')}) !default;
+$border-bottom-left-radius-xs: calc(
+    var(--border-bottom-left-radius) * #{size-multiplier('xs')}
+) !default;
+$border-bottom-left-radius-sm: calc(
+    var(--border-bottom-left-radius) * #{size-multiplier('sm')}
+) !default;
+$border-bottom-left-radius-md: calc(
+    var(--border-bottom-left-radius) * #{size-multiplier('md')}
+) !default;
+$border-bottom-left-radius-lg: calc(
+    var(--border-bottom-left-radius) * #{size-multiplier('lg')}
+) !default;
+$border-bottom-left-radius-xl: calc(
+    var(--border-bottom-left-radius) * #{size-multiplier('xl')}
+) !default;
 
-$border-radius-xs: #{$border-top-left-radius-xs} #{$border-top-right-radius-xs} #{$border-bottom-right-radius-xs} #{$border-bottom-left-radius-xs} !default;
-$border-radius-sm: #{$border-top-left-radius-sm} #{$border-top-right-radius-sm} #{$border-bottom-right-radius-sm} #{$border-bottom-left-radius-sm} !default;
-$border-radius-md: #{$border-top-left-radius-md} #{$border-top-right-radius-md} #{$border-bottom-right-radius-md} #{$border-bottom-left-radius-md} !default;
-$border-radius-lg: #{$border-top-left-radius-lg} #{$border-top-right-radius-lg} #{$border-bottom-right-radius-lg} #{$border-bottom-left-radius-lg} !default;
-$border-radius-xl: #{$border-top-left-radius-xl} #{$border-top-right-radius-xl} #{$border-bottom-right-radius-xl} #{$border-bottom-left-radius-xl} !default;
+$border-radius-xs: #{$border-top-left-radius-xs} #{$border-top-right-radius-xs} #{$border-bottom-right-radius-xs}
+    #{$border-bottom-left-radius-xs} !default;
+$border-radius-sm: #{$border-top-left-radius-sm} #{$border-top-right-radius-sm} #{$border-bottom-right-radius-sm}
+    #{$border-bottom-left-radius-sm} !default;
+$border-radius-md: #{$border-top-left-radius-md} #{$border-top-right-radius-md} #{$border-bottom-right-radius-md}
+    #{$border-bottom-left-radius-md} !default;
+$border-radius-lg: #{$border-top-left-radius-lg} #{$border-top-right-radius-lg} #{$border-bottom-right-radius-lg}
+    #{$border-bottom-left-radius-lg} !default;
+$border-radius-xl: #{$border-top-left-radius-xl} #{$border-top-right-radius-xl} #{$border-bottom-right-radius-xl}
+    #{$border-bottom-left-radius-xl} !default;
 
 $border-top-left-radiuses: (
     'xs': $border-top-left-radius-xs,
     'sm': $border-top-left-radius-sm,
     'md': $border-top-left-radius-md,
     'lg': $border-top-left-radius-lg,
-    'xl': $border-top-left-radius-xl,
+    'xl': $border-top-left-radius-xl
 ) !default;
 
 $border-top-right-radiuses: (
@@ -62,7 +99,7 @@ $border-top-right-radiuses: (
     'sm': $border-top-right-radius-sm,
     'md': $border-top-right-radius-md,
     'lg': $border-top-right-radius-lg,
-    'xl': $border-top-right-radius-xl,
+    'xl': $border-top-right-radius-xl
 ) !default;
 
 $border-bottom-right-radiuses: (
@@ -70,7 +107,7 @@ $border-bottom-right-radiuses: (
     'sm': $border-bottom-right-radius-sm,
     'md': $border-bottom-right-radius-md,
     'lg': $border-bottom-right-radius-lg,
-    'xl': $border-bottom-right-radius-xl,
+    'xl': $border-bottom-right-radius-xl
 ) !default;
 
 $border-bottom-left-radiuses: (
@@ -78,7 +115,7 @@ $border-bottom-left-radiuses: (
     'sm': $border-bottom-left-radius-sm,
     'md': $border-bottom-left-radius-md,
     'lg': $border-bottom-left-radius-lg,
-    'xl': $border-bottom-left-radius-xl,
+    'xl': $border-bottom-left-radius-xl
 ) !default;
 
 $border-radiuses: (
@@ -86,11 +123,11 @@ $border-radiuses: (
     'sm': $border-radius-sm,
     'md': $border-radius-md,
     'lg': $border-radius-lg,
-    'xl': $border-radius-xl,
+    'xl': $border-radius-xl
 ) !default;
 
 @function border-top-left-radius($border-top-left-radius-key: null) {
-    @if not ($border-top-left-radius-key) {
+    @if not($border-top-left-radius-key) {
         @return var(--border-top-left-radius);
     }
 
@@ -98,7 +135,7 @@ $border-radiuses: (
 }
 
 @function border-top-right-radius($border-top-right-radius-key: null) {
-    @if not ($border-top-right-radius-key) {
+    @if not($border-top-right-radius-key) {
         @return var(--border-top-right-radius);
     }
 
@@ -106,7 +143,7 @@ $border-radiuses: (
 }
 
 @function border-bottom-left-radius($border-bottom-left-radius-key: null) {
-    @if not ($border-bottom-left-radius-key) {
+    @if not($border-bottom-left-radius-key) {
         @return var(--border-bottom-left-radius);
     }
 
@@ -114,7 +151,7 @@ $border-radiuses: (
 }
 
 @function border-bottom-right-radius($border-bottom-right-radius-key: null) {
-    @if not ($border-bottom-right-radius-key) {
+    @if not($border-bottom-right-radius-key) {
         @return var(--border-bottom-right-radius);
     }
 
@@ -122,7 +159,7 @@ $border-radiuses: (
 }
 
 @function border-radius($border-radius-key: null) {
-    @if not ($border-radius-key) {
+    @if not($border-radius-key) {
         @return var(--border-radius);
     }
 
@@ -148,7 +185,7 @@ $border-variants: (
     'info',
     'success',
     'warning',
-    'danger',
+    'danger'
 ) !default;
 
 $border-positions: ('top', 'right', 'bottom', 'left') !default;

@@ -1,8 +1,4 @@
-<div
-    class="radio"
-    :class="classes"
-    role="radio"
->
+<div class="radio" :class="classes" role="radio">
     <input
         :checked="checked"
         ref="input"
@@ -13,16 +9,16 @@
         :readonly="isReadonly"
         :indeterminate.prop="indeterminate"
         @change="onChange"
-    >
+    />
     <label
-       class="radio-label"
-       :aria-checked="checked"
-       :aria-disabled="isDisabled"
-       :aria-readonly="isReadonly"
-       :tabindex="tabIndex"
-       @blur="onBlur"
-       @click="clickInputRef"
-       @keydown.space.stop.prevent="clickInputRef"
+        class="radio-label"
+        :aria-checked="checked"
+        :aria-disabled="isDisabled"
+        :aria-readonly="isReadonly"
+        :tabindex="tabIndex"
+        @blur="onBlur"
+        @click="clickInputRef"
+        @keydown.space.stop.prevent="clickInputRef"
     >
         <slot />
     </label>

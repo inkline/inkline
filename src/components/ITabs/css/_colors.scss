@@ -3,28 +3,41 @@
  */
 
 .tabs {
-                        &.-light {
-                                        --tabs--background: var(--tabs--white--background, var(--color-white));
-                                        --tabs--border-top-color: var(--tabs--light--border-top-color, var(--color-light));
-                                        --tabs--border-right-color: var(--tabs--light--border-right-color, var(--color-light));
-                                        --tabs--border-bottom-color: var(--tabs--light--border-bottom-color, var(--color-light));
-                                        --tabs--border-left-color: var(--tabs--light--border-left-color, var(--color-light));
-                                        --tabs--color: var(--tabs--white--color, var(--contrast-text--color-white));
-                                        --tabs--header--background: var(--tabs--white--header--background, var(--color-white));
-                                        --tabs--header--background--active: var(--tabs--white--header--background--active, var(--color-white));
-                                        --tabs--hover--header--background: var(--tabs--hover--gray--header--background, var(--color-gray-050));
-                                        --tabs--header--border-color: var(--tabs--header--border-color, #{transparent});
+    &.-light {
+        --tabs--background: var(--tabs--white--background, var(--color-white));
+        --tabs--border-top-color: var(--tabs--light--border-top-color, var(--color-light));
+        --tabs--border-right-color: var(--tabs--light--border-right-color, var(--color-light));
+        --tabs--border-bottom-color: var(--tabs--light--border-bottom-color, var(--color-light));
+        --tabs--border-left-color: var(--tabs--light--border-left-color, var(--color-light));
+        --tabs--color: var(--tabs--white--color, var(--contrast-text--color-white));
+        --tabs--header--background: var(--tabs--white--header--background, var(--color-white));
+        --tabs--header--background--active: var(
+            --tabs--white--header--background--active,
+            var(--color-white)
+        );
+        --tabs--hover--header--background: var(
+            --tabs--hover--gray--header--background,
+            var(--color-gray-050)
+        );
+        --tabs--header--border-color: var(--tabs--header--border-color, #{transparent});
     }
-                        &.-dark {
-                                        --tabs--background: var(--tabs--dark--background, var(--color-dark));
-                                        --tabs--border-top-color: var(--tabs--dark--border-top-color, var(--color-dark-600));
-                                        --tabs--border-right-color: var(--tabs--dark--border-right-color, var(--color-dark-600));
-                                        --tabs--border-bottom-color: var(--tabs--dark--border-bottom-color, var(--color-dark-600));
-                                        --tabs--border-left-color: var(--tabs--dark--border-left-color, var(--color-dark-600));
-                                        --tabs--color: var(--tabs--dark--color, var(--contrast-text--color-dark));
-                                        --tabs--header--background: var(--tabs--dark--header--background, var(--color-dark));
-                                        --tabs--header--background--active: var(--tabs--dark--header--background--active, var(--color-dark));
-                                        --tabs--hover--header--background: var(--tabs--dark--hover--header--background, var(--color-dark-450));
-                                        --tabs--header--border-color: var(--tabs--header--border-color, #{transparent});
+
+    &.-dark {
+        --tabs--background: var(--tabs--dark--background, var(--color-dark));
+        --tabs--border-top-color: var(--tabs--dark--border-top-color, var(--color-dark-600));
+        --tabs--border-right-color: var(--tabs--dark--border-right-color, var(--color-dark-600));
+        --tabs--border-bottom-color: var(--tabs--dark--border-bottom-color, var(--color-dark-600));
+        --tabs--border-left-color: var(--tabs--dark--border-left-color, var(--color-dark-600));
+        --tabs--color: var(--tabs--dark--color, var(--contrast-text--color-dark));
+        --tabs--header--background: var(--tabs--dark--header--background, var(--color-dark));
+        --tabs--header--background--active: var(
+            --tabs--dark--header--background--active,
+            var(--color-dark)
+        );
+        --tabs--hover--header--background: var(
+            --tabs--dark--hover--header--background,
+            var(--color-dark-450)
+        );
+        --tabs--header--border-color: var(--tabs--header--border-color, #{transparent});
     }
 }

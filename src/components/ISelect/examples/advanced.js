@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             selected: null,
             loading: false,
@@ -13,7 +13,7 @@ export default {
         };
     },
     methods: {
-        async fetchOptions () {
+        async fetchOptions() {
             this.loading = true;
 
             const query = new URLSearchParams(this.params).toString();
@@ -29,7 +29,7 @@ export default {
             this.total = total;
             this.loading = false;
         },
-        async onSearch (query) {
+        async onSearch(query) {
             if (query === '' || query === this.renderLabel(this.selected)) {
                 return;
             }
@@ -39,16 +39,16 @@ export default {
 
             await this.fetchOptions();
         },
-        async onPagination () {
+        async onPagination() {
             this.params.page += 1;
 
             await this.fetchOptions();
         },
-        renderLabel (option) {
+        renderLabel(option) {
             return option ? `${option.firstName} ${option.lastName}` : '';
         }
     },
-    mounted () {
+    mounted() {
         this.fetchOptions();
     }
 };

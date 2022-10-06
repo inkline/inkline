@@ -40,22 +40,14 @@
         </template>
         <template #suffix>
             <slot name="suffix" />
-            <button
-                class="select-caret"
-                aria-hidden="true"
-                role="button"
-                @click="onClickCaret"
-            />
+            <button class="select-caret" aria-hidden="true" role="button" @click="onClickCaret" />
         </template>
         <template v-if="$slots.append" #append>
             <slot name="append" />
         </template>
     </i-input>
 
-    <transition
-        name="zoom-in-top-transition"
-        @after-leave="destroyPopper"
-    >
+    <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
         <div
             class="select"
             :class="popupClasses"
@@ -71,9 +63,7 @@
             </div>
             <div class="select-body" ref="body" @scroll="onScroll">
                 <div class="select-no-results" v-if="!$slots.default && options.length === 0">
-                    <slot name="no-results">
-                        There are no results for your query.
-                    </slot>
+                    <slot name="no-results"> There are no results for your query. </slot>
                 </div>
                 <div class="select-options" ref="options">
                     <slot />
@@ -91,9 +81,7 @@
                                 :text="computeLabel(option)"
                                 :query="inputValue"
                             />
-                            <template v-else>
-                                {{ computeLabel(option) }}
-                            </template>
+                            <template v-else> {{ computeLabel(option) }} </template>
                         </slot>
                     </i-select-option>
                 </div>

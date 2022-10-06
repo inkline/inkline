@@ -16,9 +16,9 @@
             --list-group--padding,
             (
                 var(--list-group--padding-top, var(--padding-top))
-                var(--list-group--padding-right, var(--padding-right))
-                var(--list-group--padding-bottom, var(--padding-bottom))
-                var(--list-group--padding-left, var(--padding-left))
+                    var(--list-group--padding-right, var(--padding-right))
+                    var(--list-group--padding-bottom, var(--padding-bottom))
+                    var(--list-group--padding-left, var(--padding-left))
             )
         );
 

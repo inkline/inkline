@@ -540,7 +540,6 @@
 /// @name select--footer--padding
 ////
 
-
 @import '../../css/variables';
 @import '../../css/mixins';
 @import '../../css/icons';
@@ -553,7 +552,11 @@
     position: relative;
 
     .select {
-        @include popup(('z-index': var(--select--z-index)));
+        @include popup(
+            (
+                'z-index': var(--select--z-index)
+            )
+        );
         @include popup-arrow();
         @include popup-arrow-size-variant();
 
@@ -568,14 +571,14 @@
         color: var(--select--color);
         font-size: var(--select--font-size, var(--font-size));
         box-shadow: var(
-                --select--box-shadow,
-                (
-                        var(--select--box-shadow-x-offset, var(--box-shadow-offset-x))
-                        var(--select--box-shadow-y-offset, var(--box-shadow-offset-y))
-                        var(--select--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                        var(--select--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                        var(--select--box-shadow-color, var(--box-shadow-color))
-                )
+            --select--box-shadow,
+            (
+                var(--select--box-shadow-x-offset, var(--box-shadow-offset-x))
+                    var(--select--box-shadow-y-offset, var(--box-shadow-offset-y))
+                    var(--select--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                    var(--select--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                    var(--select--box-shadow-color, var(--box-shadow-color))
+            )
         );
 
         > .select-header {
@@ -644,34 +647,58 @@
         }
 
         > *:nth-child(2) {
-            border-top-left-radius: var(--select--border-top-left-radius, var(--border-top-left-radius));
-            border-top-right-radius: var(--select--border-top-right-radius, var(--border-top-right-radius));
+            border-top-left-radius: var(
+                --select--border-top-left-radius,
+                var(--border-top-left-radius)
+            );
+            border-top-right-radius: var(
+                --select--border-top-right-radius,
+                var(--border-top-right-radius)
+            );
         }
 
         > *:last-child {
-            border-bottom-left-radius: var(--select--border-bottom-left-radius, var(--border-bottom-left-radius));
-            border-bottom-right-radius: var(--select--border-bottom-right-radius, var(--border-bottom-right-radius));
+            border-bottom-left-radius: var(
+                --select--border-bottom-left-radius,
+                var(--border-bottom-left-radius)
+            );
+            border-bottom-right-radius: var(
+                --select--border-bottom-right-radius,
+                var(--border-bottom-right-radius)
+            );
         }
 
-        @include popup-arrow-color-variant-for-side('top', (
-            'background': var(--select--body--background, var(--select--background)),
-            'border-color': var(----body--border-bottom-color)
-        ));
+        @include popup-arrow-color-variant-for-side(
+            'top',
+            (
+                'background': var(--select--body--background, var(--select--background)),
+                'border-color': var(----body--border-bottom-color)
+            )
+        );
 
-        @include popup-arrow-color-variant-for-side('bottom', (
-            'background': var(--select--body--background, var(--select--background)),
-            'border-color': var(--select--border-top-color, var(--border-top-color))
-        ));
+        @include popup-arrow-color-variant-for-side(
+            'bottom',
+            (
+                'background': var(--select--body--background, var(--select--background)),
+                'border-color': var(--select--border-top-color, var(--border-top-color))
+            )
+        );
 
-        @include popup-arrow-color-variant-for-side('left', (
-            'background': var(--select--body--background, var(--select--background)),
-            'border-color': var(--select--border-right-color, var(--border-right-color))
-        ));
+        @include popup-arrow-color-variant-for-side(
+            'left',
+            (
+                'background': var(--select--body--background, var(--select--background)),
+                'border-color': var(--select--border-right-color, var(--border-right-color))
+            )
+        );
 
-        @include popup-arrow-color-variant-for-side('right', (
-            'background': var(--select--body--background, var(--select--background)),
-            'border-color': var(--select--border-left-color, var(--border-left-color))
-        ));
+        @include popup-arrow-color-variant-for-side(
+            'right',
+            (
+                'background': var(--select--body--background, var(--select--background)),
+                'border-color': var(--select--border-left-color, var(--border-left-color))
+            )
+        );
     }
 
     .input-wrapper {

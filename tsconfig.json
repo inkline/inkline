@@ -17,12 +17,7 @@
         "paths": {
             "@inkline/inkline/*": ["./src/*"]
         },
-        "lib": [
-            "esnext",
-            "dom",
-            "dom.iterable",
-            "scripthost"
-        ],
+        "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
         "types": [
             "vite/client",
             "vitest/globals",
@@ -32,16 +27,6 @@
             "@types/shelljs"
         ]
     },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.tsx",
-        "src/**/*.vue"
-    ],
-    "exclude": [
-        "dist",
-        "lib",
-        "package",
-        "node_modules"
-    ]
+    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+    "exclude": ["dist", "lib", "package", "node_modules"]
 }

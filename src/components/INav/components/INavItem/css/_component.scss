@@ -5,15 +5,18 @@
     display: block;
     margin-bottom: 0;
     transition-property: var(--nav--transition-property, background-color, border-color, color);
-    transition-timing-function: var(--nav--transition-timing-function, var(--transition-timing-function));
+    transition-timing-function: var(
+        --nav--transition-timing-function,
+        var(--transition-timing-function)
+    );
     transition-duration: var(--nav--transition-duration, var(--transition-duration));
     padding: var(
         --nav--padding,
         (
             var(--nav--padding-top, var(--padding-top))
-            var(--nav--padding-right, var(--padding-right))
-            var(--nav--padding-bottom, var(--padding-bottom))
-            var(--nav--padding-left, var(--padding-left))
+                var(--nav--padding-right, var(--padding-right))
+                var(--nav--padding-bottom, var(--padding-bottom))
+                var(--nav--padding-left, var(--padding-left))
         )
     );
     color: var(--nav--color);

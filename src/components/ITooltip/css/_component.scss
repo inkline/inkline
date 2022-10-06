@@ -238,18 +238,18 @@
         --tooltip--border-width,
         (
             var(--tooltip--border-top-width, var(--border-top-width))
-            var(--tooltip--border-right-width, var(--border-right-width))
-            var(--tooltip--border-bottom-width, var(--border-bottom-width))
-            var(--tooltip--border-left-width, var(--border-left-width))
+                var(--tooltip--border-right-width, var(--border-right-width))
+                var(--tooltip--border-bottom-width, var(--border-bottom-width))
+                var(--tooltip--border-left-width, var(--border-left-width))
         )
     );
     border-style: var(
         --tooltip--border-style,
         (
             var(--tooltip--border-top-style, var(--border-top-style))
-            var(--tooltip--border-right-style, var(--border-right-style))
-            var(--tooltip--border-bottom-style, var(--border-bottom-style))
-            var(--tooltip--border-left-style, var(--border-left-style))
+                var(--tooltip--border-right-style, var(--border-right-style))
+                var(--tooltip--border-bottom-style, var(--border-bottom-style))
+                var(--tooltip--border-left-style, var(--border-left-style))
         )
     );
     color: var(--tooltip--color);
@@ -258,18 +258,18 @@
         --tooltip--border-color,
         (
             var(--tooltip--border-top-color, var(--border-top-color))
-            var(--tooltip--border-right-color, var(--border-right-color))
-            var(--tooltip--border-bottom-color, var(--border-bottom-color))
-            var(--tooltip--border-left-color, var(--border-left-color))
+                var(--tooltip--border-right-color, var(--border-right-color))
+                var(--tooltip--border-bottom-color, var(--border-bottom-color))
+                var(--tooltip--border-left-color, var(--border-left-color))
         )
     );
     border-radius: var(
         --tooltip--border-radius,
         (
             var(--tooltip--border-top-left-radius, var(--border-top-left-radius))
-            var(--tooltip--border-top-right-radius, var(--border-top-right-radius))
-            var(--tooltip--border-bottom-right-radius, var(--border-bottom-right-radius))
-            var(--tooltip--border-bottom-left-radius, var(--border-bottom-left-radius))
+                var(--tooltip--border-top-right-radius, var(--border-top-right-radius))
+                var(--tooltip--border-bottom-right-radius, var(--border-bottom-right-radius))
+                var(--tooltip--border-bottom-left-radius, var(--border-bottom-left-radius))
         )
     );
     font-size: var(--tooltip--font-size, var(--font-size));
@@ -277,15 +277,15 @@
         --tooltip--padding,
         (
             var(--tooltip--padding-top, var(--padding-top))
-            var(--tooltip--padding-right, var(--padding-right))
-            var(--tooltip--padding-bottom, var(--padding-bottom))
-            var(--tooltip--padding-left, var(--padding-left))
+                var(--tooltip--padding-right, var(--padding-right))
+                var(--tooltip--padding-bottom, var(--padding-bottom))
+                var(--tooltip--padding-left, var(--padding-left))
         )
     );
     box-shadow: var(
         --tooltip--box-shadow,
         (
-                var(--tooltip--box-shadow-x-offset, var(--box-shadow-offset-x))
+            var(--tooltip--box-shadow-x-offset, var(--box-shadow-offset-x))
                 var(--tooltip--box-shadow-y-offset, var(--box-shadow-offset-y))
                 var(--tooltip--box-shadow-blur-radius, var(--box-shadow-blur-radius))
                 var(--tooltip--box-shadow-spread-radius, var(--box-shadow-spread-radius))
@@ -293,13 +293,15 @@
         )
     );
 
-    @include popup-arrow-color-variant((
-        'background': var(--tooltip--background),
-        'border-color': (
-            'top': var(--tooltip--border-top-color, var(--border-top-color)),
-            'right': var(--tooltip--border-right-color, var(--border-right-color)),
-            'bottom': var(--tooltip--border-bottom-color, var(--border-bottom-color)),
-            'left': var(--tooltip--border-left-color, var(--border-left-color)),
+    @include popup-arrow-color-variant(
+        (
+            'background': var(--tooltip--background),
+            'border-color': (
+                'top': var(--tooltip--border-top-color, var(--border-top-color)),
+                'right': var(--tooltip--border-right-color, var(--border-right-color)),
+                'bottom': var(--tooltip--border-bottom-color, var(--border-bottom-color)),
+                'left': var(--tooltip--border-left-color, var(--border-left-color))
+            )
         )
-    ));
+    );
 }

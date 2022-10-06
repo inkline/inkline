@@ -1,9 +1,4 @@
-<div
-    class="checkbox"
-    :class="classes"
-    :aria-checked="checked ? 'true' : 'false'"
-    role="checkbox"
->
+<div class="checkbox" :class="classes" :aria-checked="checked ? 'true' : 'false'" role="checkbox">
     <input
         ref="input"
         type="checkbox"
@@ -15,16 +10,16 @@
         :indeterminate.prop="indeterminate"
         aria-hidden="true"
         @change="onChange"
-    >
+    />
     <label
-       class="checkbox-label"
-       :aria-checked="checked"
-       :aria-disabled="isDisabled"
-       :aria-readonly="isReadonly"
-       :tabindex="tabIndex"
-       @blur="onBlur"
-       @click="clickInputRef"
-       @keydown.space.stop.prevent="clickInputRef"
+        class="checkbox-label"
+        :aria-checked="checked"
+        :aria-disabled="isDisabled"
+        :aria-readonly="isReadonly"
+        :tabindex="tabIndex"
+        @blur="onBlur"
+        @click="clickInputRef"
+        @keydown.space.stop.prevent="clickInputRef"
     >
         <slot />
     </label>

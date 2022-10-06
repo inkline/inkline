@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             page: 1,
             itemsPerPage: 20,

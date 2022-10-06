@@ -11,16 +11,8 @@
         :aria-labelledby="`${name}-header`"
     >
         <transition :name="transition">
-            <div
-                class="modal"
-                v-click-outside="onClickOutside"
-                v-show="visible"
-            >
-                <div
-                    class="modal-header"
-                    :id="`${name}-header`"
-                    v-if="$slots.header"
-                >
+            <div class="modal" v-click-outside="onClickOutside" v-show="visible">
+                <div class="modal-header" :id="`${name}-header`" v-if="$slots.header">
                     <slot name="header" />
                     <button
                         class="close"

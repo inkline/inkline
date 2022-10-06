@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             form: this.$inkline.form({
                 username: {
@@ -12,7 +12,7 @@ export default {
         };
     },
     methods: {
-        onSubmit () {
+        onSubmit() {
             alert('Form submitted');
         }
     }

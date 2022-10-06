@@ -17,7 +17,7 @@ a {
 // It would be more straightforward to just use a[href] in previous block, but that
 // causes specificity issues in many other styles that are too complex to fix.
 
-a:not([href]):not([class]):not([to]) {
+a:not([href], [class], [to]) {
     &,
     &:hover {
         color: inherit;

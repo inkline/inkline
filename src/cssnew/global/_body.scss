@@ -33,7 +33,10 @@ body {
     text-align: var(--body--text-align, left);
     transition-property: var(--body--transition-property, (background-color, color));
     transition-duration: var(--body--transition-duration, var(--transition-duration));
-    transition-timing-function: var(--body--transition-timing-function, var(--transition-timing-function));
+    transition-timing-function: var(
+        --body--transition-timing-function,
+        var(--transition-timing-function)
+    );
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: var(--body--tap-highlight-color, rgba(0, 0, 0, 0));
 }

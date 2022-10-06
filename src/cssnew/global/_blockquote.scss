@@ -14,7 +14,10 @@ blockquote {
 
         &.-bordered {
             padding-left: var(--blockquote--padding-left, var(--padding-left));
-            border-left: var(--blockquote--border-left, 5px var(--border-left-style) var(--border-left-color));
+            border-left: var(
+                --blockquote--border-left,
+                5px var(--border-left-style) var(--border-left-color)
+            );
         }
     }
 
@@ -27,7 +30,10 @@ blockquote {
 
         &.-bordered {
             padding-right: var(--blockquote--padding-right, var(--padding-right));
-            border-right: var(--blockquote--border-right, 5px var(--border-right-style) var(--border-right-color));
+            border-right: var(
+                --blockquote--border-right,
+                5px var(--border-right-style) var(--border-right-color)
+            );
         }
     }
 

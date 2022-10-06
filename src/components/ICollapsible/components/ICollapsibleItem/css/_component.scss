@@ -12,10 +12,10 @@
             --collapsible--box-shadow,
             (
                 var(--collapsible--box-shadow-x-offset, var(--box-shadow-offset-x))
-                var(--collapsible--box-shadow-y-offset, var(--box-shadow-offset-y))
-                var(--collapsible--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                var(--collapsible--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                var(--collapsible--box-shadow-color, var(--box-shadow-color))
+                    var(--collapsible--box-shadow-y-offset, var(--box-shadow-offset-y))
+                    var(--collapsible--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                    var(--collapsible--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                    var(--collapsible--box-shadow-color, var(--box-shadow-color))
             )
         );
 
@@ -25,10 +25,22 @@
                 var(
                     --collapsible--border-style,
                     (
-                        var(--collapsible--header--border-top-style, var(--collapsible--border-top-style, var(--border-top-style)))
-                        var(--collapsible--header--border-right-style, var(--collapsible--border-right-style, var(--border-right-style)))
-                        var(--collapsible--header--border-bottom-style, var(--collapsible--border-bottom-style, var(--border-bottom-style)))
-                        var(--collapsible--header--border-left-style, var(--collapsible--border-left-style, var(--border-left-style)))
+                        var(
+                                --collapsible--header--border-top-style,
+                                var(--collapsible--border-top-style, var(--border-top-style))
+                            )
+                            var(
+                                --collapsible--header--border-right-style,
+                                var(--collapsible--border-right-style, var(--border-right-style))
+                            )
+                            var(
+                                --collapsible--header--border-bottom-style,
+                                var(--collapsible--border-bottom-style, var(--border-bottom-style))
+                            )
+                            var(
+                                --collapsible--header--border-left-style,
+                                var(--collapsible--border-left-style, var(--border-left-style))
+                            )
                     )
                 )
             );
@@ -37,10 +49,22 @@
                 var(
                     --collapsible--border-width,
                     (
-                        var(--collapsible--header--border-top-width, var(--collapsible--border-top-width, var(--border-top-width)))
-                        var(--collapsible--header--border-right-width, var(--collapsible--border-right-width, var(--border-right-width)))
-                        var(--collapsible--header--border-bottom-width, var(--collapsible--border-bottom-width, var(--border-bottom-width)))
-                        var(--collapsible--header--border-left-width, var(--collapsible--border-left-width, var(--border-left-width)))
+                        var(
+                                --collapsible--header--border-top-width,
+                                var(--collapsible--border-top-width, var(--border-top-width))
+                            )
+                            var(
+                                --collapsible--header--border-right-width,
+                                var(--collapsible--border-right-width, var(--border-right-width))
+                            )
+                            var(
+                                --collapsible--header--border-bottom-width,
+                                var(--collapsible--border-bottom-width, var(--border-bottom-width))
+                            )
+                            var(
+                                --collapsible--header--border-left-width,
+                                var(--collapsible--border-left-width, var(--border-left-width))
+                            )
                     )
                 )
             );
@@ -49,24 +73,51 @@
                 var(
                     --collapsible--border-color,
                     (
-                        var(--collapsible--header--border-top-color, var(--collapsible--border-top-color, var(--border-top-color)))
-                        var(--collapsible--header--border-right-color, var(--collapsible--border-right-color, var(--border-right-color)))
-                        var(--collapsible--header--border-bottom-color, var(--collapsible--border-bottom-color, var(--border-bottom-color)))
-                        var(--collapsible--header--border-left-color, var(--collapsible--border-left-color, var(--border-left-color)))
+                        var(
+                                --collapsible--header--border-top-color,
+                                var(--collapsible--border-top-color, var(--border-top-color))
+                            )
+                            var(
+                                --collapsible--header--border-right-color,
+                                var(--collapsible--border-right-color, var(--border-right-color))
+                            )
+                            var(
+                                --collapsible--header--border-bottom-color,
+                                var(--collapsible--border-bottom-color, var(--border-bottom-color))
+                            )
+                            var(
+                                --collapsible--header--border-left-color,
+                                var(--collapsible--border-left-color, var(--border-left-color))
+                            )
                     )
                 )
             );
             color: var(--collapsible--header--color, var(--collapsible--color));
-            background-color: var(--collapsible--header--background, var(--collapsible--background));
+            background-color: var(
+                --collapsible--header--background,
+                var(--collapsible--background)
+            );
             padding: var(
                 --collapsible--header--padding,
                 var(
                     --collapsible--padding,
                     (
-                        var(--collapsible--header--padding-top, var(--collapsible--padding-top, var(--padding-top)))
-                        var(--collapsible--header--padding-right, var(--collapsible--padding-right, var(--padding-right)))
-                        var(--collapsible--header--padding-bottom, var(--collapsible--padding-bottom, var(--padding-bottom)))
-                        var(--collapsible--header--padding-left, var(--collapsible--padding-left, var(--padding-left)))
+                        var(
+                                --collapsible--header--padding-top,
+                                var(--collapsible--padding-top, var(--padding-top))
+                            )
+                            var(
+                                --collapsible--header--padding-right,
+                                var(--collapsible--padding-right, var(--padding-right))
+                            )
+                            var(
+                                --collapsible--header--padding-bottom,
+                                var(--collapsible--padding-bottom, var(--padding-bottom))
+                            )
+                            var(
+                                --collapsible--header--padding-left,
+                                var(--collapsible--padding-left, var(--padding-left))
+                            )
                     )
                 )
             );
@@ -76,20 +127,39 @@
             justify-content: space-between;
             text-decoration: none;
             outline: 0;
-            transition-property: var(--collapsible--transition-property, (var(--collapsible--transition-property, (background-color, border-radius))));
-            transition-duration: var(--collapsible--transition-duration, var(--collapsible--transition-duration, var(--transition-duration)));
-            transition-timing-function: var(--collapsible--transition-timing-function, var(--transition-timing-function));
+            transition-property: var(
+                --collapsible--transition-property,
+                (var(--collapsible--transition-property, (background-color, border-radius)))
+            );
+            transition-duration: var(
+                --collapsible--transition-duration,
+                var(--collapsible--transition-duration, var(--transition-duration))
+            );
+            transition-timing-function: var(
+                --collapsible--transition-timing-function,
+                var(--transition-timing-function)
+            );
 
             > .icon {
                 background-color: var(--collapsible--header--color, var(--collapsible--color));
                 width: var(--collapsible--font-size, var(--font-size));
                 height: var(--collapsible--font-size, var(--font-size));
-                mask-size: var(--collapsible--font-size, var(--font-size)) var(--collapsible--font-size, var(--font-size));
+                mask-size: var(--collapsible--font-size, var(--font-size))
+                    var(--collapsible--font-size, var(--font-size));
                 display: inline-block;
                 position: relative;
-                transition-property: var(--collapsible--transition-property, (var(--collapsible--transition-property, (background-color, transform))));
-                transition-duration: var(--collapsible--transition-duration, var(--collapsible--transition-duration, var(--transition-duration)));
-                transition-timing-function: var(--collapsible--transition-timing-function, var(--transition-timing-function));
+                transition-property: var(
+                    --collapsible--transition-property,
+                    (var(--collapsible--transition-property, (background-color, transform)))
+                );
+                transition-duration: var(
+                    --collapsible--transition-duration,
+                    var(--collapsible--transition-duration, var(--transition-duration))
+                );
+                transition-timing-function: var(
+                    --collapsible--transition-timing-function,
+                    var(--transition-timing-function)
+                );
                 mask-image: url($ink-chevron-down);
                 -webkit-mask-image: url($ink-chevron-down);
                 mask-position: center center;
@@ -107,10 +177,22 @@
                 var(
                     --collapsible--border-style,
                     (
-                        var(--collapsible--body--border-top-style, var(--collapsible--border-top-style, var(--border-top-style)))
-                        var(--collapsible--body--border-right-style, var(--collapsible--border-right-style, var(--border-right-style)))
-                        var(--collapsible--body--border-bottom-style, var(--collapsible--border-bottom-style, var(--border-bottom-style)))
-                        var(--collapsible--body--border-left-style, var(--collapsible--border-left-style, var(--border-left-style)))
+                        var(
+                                --collapsible--body--border-top-style,
+                                var(--collapsible--border-top-style, var(--border-top-style))
+                            )
+                            var(
+                                --collapsible--body--border-right-style,
+                                var(--collapsible--border-right-style, var(--border-right-style))
+                            )
+                            var(
+                                --collapsible--body--border-bottom-style,
+                                var(--collapsible--border-bottom-style, var(--border-bottom-style))
+                            )
+                            var(
+                                --collapsible--body--border-left-style,
+                                var(--collapsible--border-left-style, var(--border-left-style))
+                            )
                     )
                 )
             );
@@ -119,10 +201,22 @@
                 var(
                     --collapsible--border-width,
                     (
-                        var(--collapsible--body--border-top-width, var(--collapsible--border-top-width, var(--border-top-width)))
-                        var(--collapsible--body--border-right-width, var(--collapsible--border-right-width, var(--border-right-width)))
-                        var(--collapsible--body--border-bottom-width, var(--collapsible--border-bottom-width, var(--border-bottom-width)))
-                        var(--collapsible--body--border-left-width, var(--collapsible--border-left-width, var(--border-left-width)))
+                        var(
+                                --collapsible--body--border-top-width,
+                                var(--collapsible--border-top-width, var(--border-top-width))
+                            )
+                            var(
+                                --collapsible--body--border-right-width,
+                                var(--collapsible--border-right-width, var(--border-right-width))
+                            )
+                            var(
+                                --collapsible--body--border-bottom-width,
+                                var(--collapsible--border-bottom-width, var(--border-bottom-width))
+                            )
+                            var(
+                                --collapsible--body--border-left-width,
+                                var(--collapsible--border-left-width, var(--border-left-width))
+                            )
                     )
                 )
             );
@@ -131,10 +225,22 @@
                 var(
                     --collapsible--border-color,
                     (
-                        var(--collapsible--body--border-top-color, var(--collapsible--border-top-color, var(--border-top-color)))
-                        var(--collapsible--body--border-right-color, var(--collapsible--border-right-color, var(--border-right-color)))
-                        var(--collapsible--body--border-bottom-color, var(--collapsible--border-bottom-color, var(--border-bottom-color)))
-                        var(--collapsible--body--border-left-color, var(--collapsible--border-left-color, var(--border-left-color)))
+                        var(
+                                --collapsible--body--border-top-color,
+                                var(--collapsible--border-top-color, var(--border-top-color))
+                            )
+                            var(
+                                --collapsible--body--border-right-color,
+                                var(--collapsible--border-right-color, var(--border-right-color))
+                            )
+                            var(
+                                --collapsible--body--border-bottom-color,
+                                var(--collapsible--border-bottom-color, var(--border-bottom-color))
+                            )
+                            var(
+                                --collapsible--body--border-left-color,
+                                var(--collapsible--border-left-color, var(--border-left-color))
+                            )
                     )
                 )
             );
@@ -147,10 +253,22 @@
                     var(
                         --collapsible--padding,
                         (
-                            var(--collapsible--body--padding-top, var(--collapsible--padding-top, var(--padding-top)))
-                            var(--collapsible--body--padding-right, var(--collapsible--padding-right, var(--padding-right)))
-                            var(--collapsible--body--padding-bottom, var(--collapsible--padding-bottom, var(--padding-bottom)))
-                            var(--collapsible--body--padding-left, var(--collapsible--padding-left, var(--padding-left)))
+                            var(
+                                    --collapsible--body--padding-top,
+                                    var(--collapsible--padding-top, var(--padding-top))
+                                )
+                                var(
+                                    --collapsible--body--padding-right,
+                                    var(--collapsible--padding-right, var(--padding-right))
+                                )
+                                var(
+                                    --collapsible--body--padding-bottom,
+                                    var(--collapsible--padding-bottom, var(--padding-bottom))
+                                )
+                                var(
+                                    --collapsible--body--padding-left,
+                                    var(--collapsible--padding-left, var(--padding-left))
+                                )
                         )
                     )
                 );
@@ -159,20 +277,44 @@
 
         &:first-child {
             > .collapsible-header {
-                border-top-left-radius: var(--collapsible--header--border-top-left-radius, var(--collapsible--border-top-left-radius, var(--border-top-left-radius)));
-                border-top-right-radius: var(--collapsible--header--border-top-right-radius, var(--collapsible--border-top-right-radius, var(--border-top-right-radius)));
+                border-top-left-radius: var(
+                    --collapsible--header--border-top-left-radius,
+                    var(--collapsible--border-top-left-radius, var(--border-top-left-radius))
+                );
+                border-top-right-radius: var(
+                    --collapsible--header--border-top-right-radius,
+                    var(--collapsible--border-top-right-radius, var(--border-top-right-radius))
+                );
             }
         }
 
         &:last-child {
             > .collapsible-header {
-                border-bottom-left-radius: var(--collapsible--header--border-bottom-left-radius, var(--collapsible--border-bottom-left-radius, var(--border-bottom-left-radius)));
-                border-bottom-right-radius: var(--collapsible--header--border-bottom-right-radius, var(--collapsible--border-bottom-right-radius, var(--border-bottom-right-radius)));
+                border-bottom-left-radius: var(
+                    --collapsible--header--border-bottom-left-radius,
+                    var(--collapsible--border-bottom-left-radius, var(--border-bottom-left-radius))
+                );
+                border-bottom-right-radius: var(
+                    --collapsible--header--border-bottom-right-radius,
+                    var(
+                        --collapsible--border-bottom-right-radius,
+                        var(--border-bottom-right-radius)
+                    )
+                );
             }
 
             > .collapsible-body {
-                border-bottom-left-radius: var(--collapsible--body--border-bottom-left-radius, var(--collapsible--border-bottom-left-radius, var(--border-bottom-left-radius)));
-                border-bottom-right-radius: var(--collapsible--body--border-bottom-right-radius, var(--collapsible--border-bottom-right-radius, var(--border-bottom-right-radius)));
+                border-bottom-left-radius: var(
+                    --collapsible--body--border-bottom-left-radius,
+                    var(--collapsible--border-bottom-left-radius, var(--border-bottom-left-radius))
+                );
+                border-bottom-right-radius: var(
+                    --collapsible--body--border-bottom-right-radius,
+                    var(
+                        --collapsible--border-bottom-right-radius,
+                        var(--border-bottom-right-radius)
+                    )
+                );
             }
         }
 

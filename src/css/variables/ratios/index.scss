@@ -21,7 +21,7 @@ $scale-ratios: (
     'perfect-fourth': $scale-ratio--perfect-fourth,
     'augmented-fourth': $scale-ratio--augmented-fourth,
     'perfect-fifth': $scale-ratio--perfect-fifth,
-    'golden': $scale-ratio--golden,
+    'golden': $scale-ratio--golden
 ) !default;
 
 @function scale-ratio($scale-ratio-key) {

@@ -18,9 +18,9 @@
             --button-group--padding,
             (
                 var(--button-group--padding-top, var(--button--padding-top))
-                var(--button-group--padding-right, var(--button--padding-right))
-                var(--button-group--padding-bottom, var(--button--padding-bottom))
-                var(--button-group--padding-left, var(--button--padding-left))
+                    var(--button-group--padding-right, var(--button--padding-right))
+                    var(--button-group--padding-bottom, var(--button--padding-bottom))
+                    var(--button-group--padding-left, var(--button--padding-left))
             )
         );
 
@@ -54,28 +54,40 @@
 
     > .button,
     > .button-group > .button,
-    > [class$="-wrapper"] .button {
+    > [class$='-wrapper'] .button {
         border-radius: 0;
     }
 
     // Reset rounded corners
     &:not(.-vertical) {
         > .button:last-child,
-        > [class$="-wrapper"]:last-child > * > .button:last-child {
-            border-top-right-radius: var(--button-group--border-top-right-radius, var(--button--border-top-right-radius));
-            border-bottom-right-radius: var(--button-group--border-bottom-right-radius, var(--button--border-bottom-right-radius));
+        > [class$='-wrapper']:last-child > * > .button:last-child {
+            border-top-right-radius: var(
+                --button-group--border-top-right-radius,
+                var(--button--border-top-right-radius)
+            );
+            border-bottom-right-radius: var(
+                --button-group--border-bottom-right-radius,
+                var(--button--border-bottom-right-radius)
+            );
         }
 
         > .button:first-child,
-        > [class$="-wrapper"]:first-child > * > .button:first-child {
-            border-top-left-radius: var(--button-group--border-top-left-radius, var(--button--border-top-left-radius));
-            border-bottom-left-radius: var(--button-group--border-bottom-left-radius, var(--button--border-bottom-left-radius));
+        > [class$='-wrapper']:first-child > * > .button:first-child {
+            border-top-left-radius: var(
+                --button-group--border-top-left-radius,
+                var(--button--border-top-left-radius)
+            );
+            border-bottom-left-radius: var(
+                --button-group--border-bottom-left-radius,
+                var(--button--border-bottom-left-radius)
+            );
         }
 
         > .button:not(:last-child),
         > .button-group:not(:last-child) .button,
-        > [class$="-wrapper"]:not(:last-child) > * > .button,
-        > .button-group:not(:last-child) [class$="-wrapper"] > * > .button {
+        > [class$='-wrapper']:not(:last-child) > * > .button,
+        > .button-group:not(:last-child) [class$='-wrapper'] > * > .button {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
             border-right: 0;
@@ -83,8 +95,8 @@
 
         > .button:not(:first-child),
         > .button-group:not(:first-child) .button,
-        > [class$="-wrapper"]:not(:first-child) > * > .button,
-        > .button-group:not(:first-child) [class$="-wrapper"] > * > .button {
+        > [class$='-wrapper']:not(:first-child) > * > .button,
+        > .button-group:not(:first-child) [class$='-wrapper'] > * > .button {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
@@ -97,26 +109,38 @@
 
         .button,
         .button-group,
-        [class$="-wrapper"] {
+        [class$='-wrapper'] {
             width: 100%;
         }
 
         > .button:last-child,
-        > [class$="-wrapper"]:last-child > * > .button:last-child {
-            border-bottom-left-radius: var(--button-group--border-bottom-left-radius, var(--button--border-bottom-left-radius));
-            border-bottom-right-radius: var(--button-group--border-bottom-right-radius, var(--button--border-bottom-right-radius));
+        > [class$='-wrapper']:last-child > * > .button:last-child {
+            border-bottom-left-radius: var(
+                --button-group--border-bottom-left-radius,
+                var(--button--border-bottom-left-radius)
+            );
+            border-bottom-right-radius: var(
+                --button-group--border-bottom-right-radius,
+                var(--button--border-bottom-right-radius)
+            );
         }
 
         > .button:first-child,
-        > [class$="-wrapper"]:first-child > * > .button:first-child {
-            border-top-left-radius: var(--button-group--border-top-left-radius, var(--button--border-top-left-radius));
-            border-top-right-radius: var(--button-group--border-top-right-radius, var(--button--border-top-right-radius));
+        > [class$='-wrapper']:first-child > * > .button:first-child {
+            border-top-left-radius: var(
+                --button-group--border-top-left-radius,
+                var(--button--border-top-left-radius)
+            );
+            border-top-right-radius: var(
+                --button-group--border-top-right-radius,
+                var(--button--border-top-right-radius)
+            );
         }
 
         > .button:not(:last-child),
         > .button-group:not(:last-child) .button,
-        > [class$="-wrapper"]:not(:last-child) > * > .button,
-        > .button-group:not(:last-child) [class$="-wrapper"] > * > .button {
+        > [class$='-wrapper']:not(:last-child) > * > .button,
+        > .button-group:not(:last-child) [class$='-wrapper'] > * > .button {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             border-bottom: 0;
@@ -124,8 +148,8 @@
 
         > .button:not(:first-child),
         > .button-group:not(:first-child) .button,
-        > [class$="-wrapper"]:not(:first-child) > * > .button,
-        > .button-group:not(:first-child) [class$="-wrapper"] > * > .button {
+        > [class$='-wrapper']:not(:first-child) > * > .button,
+        > .button-group:not(:first-child) [class$='-wrapper'] > * > .button {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }

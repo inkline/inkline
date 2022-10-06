@@ -257,7 +257,6 @@
 /// @name -collapse-fixed--overlay--background
 ////
 
-
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
@@ -299,59 +298,68 @@
         background: var(---collapse-fixed--background);
         width: var(---collapse-fixed--width);
         box-shadow: var(
-                ---collapse-fixed--box-shadow,
-                (
-                        var(---collapse-fixed--box-shadow-x-offset, var(--box-shadow-offset-x))
-                        var(---collapse-fixed--box-shadow-y-offset, var(--box-shadow-offset-y))
-                        var(---collapse-fixed--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                        var(---collapse-fixed--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                        var(---collapse-fixed--box-shadow-color, var(--box-shadow-color))
-                )
+            ---collapse-fixed--box-shadow,
+            (
+                var(---collapse-fixed--box-shadow-x-offset, var(--box-shadow-offset-x))
+                    var(---collapse-fixed--box-shadow-y-offset, var(--box-shadow-offset-y))
+                    var(---collapse-fixed--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                    var(
+                        ---collapse-fixed--box-shadow-spread-radius,
+                        var(--box-shadow-spread-radius)
+                    )
+                    var(---collapse-fixed--box-shadow-color, var(--box-shadow-color))
+            )
         );
         border-width: var(
-                ---collapse-fixed--border-width,
-                (
-                        var(---collapse-fixed--border-top-width, var(--border-top-width))
-                        var(---collapse-fixed--border-right-width, var(--border-right-width))
-                        var(---collapse-fixed--border-bottom-width, var(--border-bottom-width))
-                        var(---collapse-fixed--border-left-width, var(--border-left-width))
-                )
+            ---collapse-fixed--border-width,
+            (
+                var(---collapse-fixed--border-top-width, var(--border-top-width))
+                    var(---collapse-fixed--border-right-width, var(--border-right-width))
+                    var(---collapse-fixed--border-bottom-width, var(--border-bottom-width))
+                    var(---collapse-fixed--border-left-width, var(--border-left-width))
+            )
         );
         border-style: var(
-                ---collapse-fixed--border-style,
-                (
-                        var(---collapse-fixed--border-top-style, var(--border-top-style))
-                        var(---collapse-fixed--border-right-style, var(--border-right-style))
-                        var(---collapse-fixed--border-bottom-style, var(--border-bottom-style))
-                        var(---collapse-fixed--border-left-style, var(--border-left-style))
-                )
+            ---collapse-fixed--border-style,
+            (
+                var(---collapse-fixed--border-top-style, var(--border-top-style))
+                    var(---collapse-fixed--border-right-style, var(--border-right-style))
+                    var(---collapse-fixed--border-bottom-style, var(--border-bottom-style))
+                    var(---collapse-fixed--border-left-style, var(--border-left-style))
+            )
         );
         border-color: var(
-                ---collapse-fixed--border-color,
-                (
-                        var(---collapse-fixed--border-top-color, var(--border-top-color))
-                        var(---collapse-fixed--border-right-color, var(--border-right-color))
-                        var(---collapse-fixed--border-bottom-color, var(--border-bottom-color))
-                        var(---collapse-fixed--border-left-color, var(--border-left-color))
-                )
+            ---collapse-fixed--border-color,
+            (
+                var(---collapse-fixed--border-top-color, var(--border-top-color))
+                    var(---collapse-fixed--border-right-color, var(--border-right-color))
+                    var(---collapse-fixed--border-bottom-color, var(--border-bottom-color))
+                    var(---collapse-fixed--border-left-color, var(--border-left-color))
+            )
         );
         border-radius: var(
-                ---collapse-fixed--border-radius,
-                (
-                        var(---collapse-fixed--border-top-left-radius, var(--border-top-left-radius))
-                        var(---collapse-fixed--border-top-right-radius, var(--border-top-right-radius))
-                        var(---collapse-fixed--border-bottom-right-radius, var(--border-bottom-right-radius))
-                        var(---collapse-fixed--border-bottom-left-radius, var(--border-bottom-left-radius))
-                )
+            ---collapse-fixed--border-radius,
+            (
+                var(---collapse-fixed--border-top-left-radius, var(--border-top-left-radius))
+                    var(---collapse-fixed--border-top-right-radius, var(--border-top-right-radius))
+                    var(
+                        ---collapse-fixed--border-bottom-right-radius,
+                        var(--border-bottom-right-radius)
+                    )
+                    var(
+                        ---collapse-fixed--border-bottom-left-radius,
+                        var(--border-bottom-left-radius)
+                    )
+            )
         );
         padding: var(
-                ---collapse-fixed--padding,
-                (
-                        var(---collapse-fixed--padding-top, var(--padding-top))
-                        var(---collapse-fixed--padding-right, var(--padding-right))
-                        var(---collapse-fixed--padding-bottom, var(--padding-bottom))
-                        var(---collapse-fixed--padding-left, var(--padding-left))
-                )
+            ---collapse-fixed--padding,
+            (
+                var(---collapse-fixed--padding-top, var(--padding-top))
+                    var(---collapse-fixed--padding-right, var(--padding-right))
+                    var(---collapse-fixed--padding-bottom, var(--padding-bottom))
+                    var(---collapse-fixed--padding-left, var(--padding-left))
+            )
         );
 
         .sidebar-content {
@@ -394,9 +402,18 @@
 
                 .collapsible-header {
                     border-width: 0;
-                    transition-property: var(---collapse-fixed--transition-property, (background, color));
-                    transition-duration: var(---collapse-fixed--transition-duration, var(--transition-duration));
-                    transition-timing-function: var(---collapse-fixed--transition-timing-function, var(--transition-timing-function));
+                    transition-property: var(
+                        ---collapse-fixed--transition-property,
+                        (background, color)
+                    );
+                    transition-duration: var(
+                        ---collapse-fixed--transition-duration,
+                        var(--transition-duration)
+                    );
+                    transition-timing-function: var(
+                        ---collapse-fixed--transition-timing-function,
+                        var(--transition-timing-function)
+                    );
                     border-radius: var(----item--border-radius);
                     padding: var(----item--padding);
                 }
@@ -453,8 +470,14 @@
         height: 100%;
         z-index: 0;
         background: var(----overlay--background);
-        border-top-left-radius: var(---collapse-fixed--border-top-left-radius, var(--border-top-left-radius));
-        border-bottom-left-radius: var(---collapse-fixed--border-bottom-left-radius, var(--border-bottom-left-radius));
+        border-top-left-radius: var(
+            ---collapse-fixed--border-top-left-radius,
+            var(--border-top-left-radius)
+        );
+        border-bottom-left-radius: var(
+            ---collapse-fixed--border-bottom-left-radius,
+            var(--border-bottom-left-radius)
+        );
     }
 
     @each $breakpoint in $breakpoint-keys {
@@ -484,12 +507,14 @@
 //
 .sidebar-wrapper-transition-enter-active,
 .sidebar-wrapper-transition-leave-active {
-    transition: width var(---collapse-fixed--transition-duration, var(--transition-duration)) var(---collapse-fixed--transition-timing-function, var(--transition-timing-function));
+    transition: width var(---collapse-fixed--transition-duration, var(--transition-duration))
+        var(---collapse-fixed--transition-timing-function, var(--transition-timing-function));
 }
 
 .sidebar-wrapper-none-transition-enter-active,
 .sidebar-wrapper-none-transition-leave-active {
-    transition: none var(---collapse-fixed--transition-duration, var(--transition-duration)) var(---collapse-fixed--transition-timing-function, var(--transition-timing-function));
+    transition: none var(---collapse-fixed--transition-duration, var(--transition-duration))
+        var(---collapse-fixed--transition-timing-function, var(--transition-timing-function));
 }
 
 .sidebar-wrapper-transition-enter-from,
@@ -502,7 +527,8 @@
 //
 .sidebar-transition-enter-active,
 .sidebar-transition-leave-active {
-    transition: transform var(---collapse-fixed--transition-duration, var(--transition-duration)) var(---collapse-fixed--transition-timing-function, var(--transition-timing-function));
+    transition: transform var(---collapse-fixed--transition-duration, var(--transition-duration))
+        var(---collapse-fixed--transition-timing-function, var(--transition-timing-function));
     transform-origin: left;
 }
 
@@ -533,7 +559,8 @@
 //
 .sidebar-overlay-transition-enter-active,
 .sidebar-overlay-transition-leave-active {
-    transition: opacity var(---collapse-fixed--transition-duration, var(--transition-duration)) var(---collapse-fixed--transition-timing-function, var(--transition-timing-function));
+    transition: opacity var(---collapse-fixed--transition-duration, var(--transition-duration))
+        var(---collapse-fixed--transition-timing-function, var(--transition-timing-function));
 }
 
 .sidebar-overlay-transition-enter-from,

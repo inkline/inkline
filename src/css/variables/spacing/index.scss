@@ -47,11 +47,11 @@ $spacings: (
     '5': $spacing--5,
     '6': $spacing--6,
     '7': $spacing--7,
-    '8': $spacing--8,
+    '8': $spacing--8
 ) !default;
 
 @function spacing($spacing-key: null) {
-    @if not ($spacing-key) {
+    @if not($spacing-key) {
         @return var(--spacing);
     }
 

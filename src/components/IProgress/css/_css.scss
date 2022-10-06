@@ -11,7 +11,9 @@
      */
 
     @each $progress-size-variant-key, $progress-size-variant-value in $progress-size-variants {
-        @each $progress-size-variant-field-key, $progress-size-variant-field-value in $progress-size-variant-value {
+        @each $progress-size-variant-field-key,
+            $progress-size-variant-field-value in $progress-size-variant-value
+        {
             --progress-size-variant-#{$progress-size-variant-key}-#{$progress-size-variant-field-key}: #{$progress-size-variant-field-value};
         }
     }
@@ -21,7 +23,9 @@
      */
 
     @each $progress-color-variant-key, $progress-color-variant-value in $progress-color-variants {
-        @each $progress-color-variant-field-key, $progress-color-variant-field-value in $progress-color-variant-value {
+        @each $progress-color-variant-field-key,
+            $progress-color-variant-field-value in $progress-color-variant-value
+        {
             --progress-color-variant-#{$progress-color-variant-key}-#{$progress-color-variant-field-key}: #{$progress-color-variant-field-value};
         }
     }

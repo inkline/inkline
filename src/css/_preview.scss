@@ -2,7 +2,7 @@
 // Border Utilities
 ///
 %border-utilities-preview {
-    > div[class^="_border"] {
+    > div[class^='_border'] {
         height: 100px;
         width: 100px;
         border-width: 1px;
@@ -10,12 +10,12 @@
         border-color: transparent;
     }
 
-    > div[class="_border"],
-    > div[class^="_border-"] {
+    > div[class='_border'],
+    > div[class^='_border-'] {
         border-color: color('gray-40');
     }
 
-    > div[class="_border-top"] {
+    > div[class='_border-top'] {
         border-color: color('gray-10');
         border-top-color: color('gray-50');
 
@@ -25,7 +25,7 @@
         }
     }
 
-    > div[class="_border-right"] {
+    > div[class='_border-right'] {
         border-color: color('gray-10');
         border-right-color: color('gray-50');
 
@@ -35,7 +35,7 @@
         }
     }
 
-    > div[class="_border-bottom"] {
+    > div[class='_border-bottom'] {
         border-color: color('gray-10');
         border-bottom-color: color('gray-50');
 
@@ -45,7 +45,7 @@
         }
     }
 
-    > div[class="_border-left"] {
+    > div[class='_border-left'] {
         border-color: color('gray-10');
         border-left-color: color('gray-50');
 
@@ -60,8 +60,8 @@
 // Color Utilities
 ///
 %color-utilities-preview {
-    > div[class^="_background"],
-    > div[class^="_color"] {
+    > div[class^='_background'],
+    > div[class^='_color'] {
         height: 80px;
         width: 228px;
         display: inline-flex;
@@ -75,8 +75,8 @@
 // Flex Utilities
 ///
 %flex-utilities-preview {
-    > div[class*="_display:flex"],
-    > div[class*="_display:flex"] div {
+    > div[class*='_display:flex'],
+    > div[class*='_display:flex'] div {
         padding: spacing('1/2');
         background: color('gray-10');
         border: 1px solid color('gray-30');
@@ -87,14 +87,14 @@
         }
     }
 
-    > div[class*="_align-content"],
-    > div[class*="_flex-direction-column"],
-    > div[class*="_align-items"] {
+    > div[class*='_align-content'],
+    > div[class*='_flex-direction-column'],
+    > div[class*='_align-items'] {
         min-height: 180px;
     }
 
-    > div[class*="_display:flex"] {
-        > div[class^="_align-self"] {
+    > div[class*='_display:flex'] {
+        > div[class^='_align-self'] {
             + div {
                 height: 180px;
             }
@@ -106,7 +106,7 @@
 // Spacing Utilities
 ///
 %spacing-utilities-preview {
-    > div[class*="_margin"] {
+    > div[class*='_margin'] {
         padding: spacing('1/2');
         background: color('gray-10');
         border: 1px solid color('gray-30');
@@ -119,22 +119,22 @@
 // Sizing Utilities
 ///
 %sizing-utilities-preview {
-    > div[class*="_max-height"],
-    > div[class*="_max-width"],
-    > div[class*="_height"],
-    > div[class*="_width"] {
+    > div[class*='_max-height'],
+    > div[class*='_max-width'],
+    > div[class*='_height'],
+    > div[class*='_width'] {
         padding: spacing('1/2');
         background: color('gray-10');
         border: 1px solid color('gray-30');
     }
 
-    > div[class*="_max-width"],
-    > div[class*="_width"] {
+    > div[class*='_max-width'],
+    > div[class*='_width'] {
         display: flex;
     }
 
-    > div[class*="_max-height"],
-    > div[class*="_height"] {
+    > div[class*='_max-height'],
+    > div[class*='_height'] {
         display: inline-flex;
     }
 

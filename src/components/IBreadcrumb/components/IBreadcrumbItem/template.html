@@ -1,13 +1,5 @@
-<li
-    class="breadcrumb-item"
-    :class="classes"
->
-    <a
-        :is="isTag"
-        v-bind="$attrs"
-        :tabindex="tabIndex"
-        :aria-current="active ? 'location' : null"
-    >
+<li class="breadcrumb-item" :class="classes">
+    <a :is="isTag" v-bind="$attrs" :tabindex="tabIndex" :aria-current="active ? 'location' : null">
         <slot />
     </a>
 </li>

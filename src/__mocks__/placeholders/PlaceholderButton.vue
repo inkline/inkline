@@ -5,7 +5,5 @@ export default defineComponent({});
 </script>
 
 <template>
-    <button>
-        Button
-    </button>
+    <button>Button</button>
 </template>

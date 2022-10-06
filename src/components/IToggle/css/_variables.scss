@@ -80,7 +80,8 @@
     /// The border width of the toggle component
     /// @name border-width
     ////
-    ----border-width: #{var(----border-top-width) var(----border-right-width) var(----border-bottom-width) var(----border-left-width)};
+    ----border-width: #{var(----border-top-width) var(----border-right-width)
+        var(----border-bottom-width) var(----border-left-width)};
     ////
     /// The border top left radius of the toggle component
     /// @name border-top-left-radius
@@ -105,7 +106,8 @@
     /// The border radius of the toggle component
     /// @name border-radius
     ////
-    ----border-radius: #{var(----border-top-left-radius) var(----border-top-right-radius) var(----border-bottom-right-radius) var(----border-bottom-left-radius)};
+    ----border-radius: #{var(----border-top-left-radius) var(----border-top-right-radius)
+        var(----border-bottom-right-radius) var(----border-bottom-left-radius)};
     ////
     /// The box shadow horizontal offset of the toggle component
     /// @name box-shadow-offset-x
@@ -135,7 +137,8 @@
     /// The box shadow of the toggle component
     /// @name box-shadow
     ////
-    ----box-shadow: #{var(----box-shadow-offset-x) var(----box-shadow-offset-y) var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)};
+    ----box-shadow: #{var(----box-shadow-offset-x) var(----box-shadow-offset-y)
+        var(----box-shadow-blur-radius) var(----box-shadow-spread-radius) var(----box-shadow-color)};
     ////
     /// The right margin of the toggle component
     /// @name margin-right
@@ -214,7 +217,9 @@
     /// The border radius of the toggle component indicator
     /// @name indicator--border-radius
     ////
-    ----indicator--border-radius: #{var(----indicator--border-top-left-radius) var(----indicator--border-top-right-radius) var(----indicator--border-bottom-right-radius) var(----indicator--border-bottom-left-radius)};
+    ----indicator--border-radius: #{var(----indicator--border-top-left-radius)
+        var(----indicator--border-top-right-radius) var(----indicator--border-bottom-right-radius)
+        var(----indicator--border-bottom-left-radius)};
     ////
     /// The width of the toggle component indicator
     /// @name indicator--width

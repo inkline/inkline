@@ -1,7 +1,7 @@
 @each $breakpoint-key in $breakpoint-prefix-keys {
     $prefix: breakpoint-prefix($breakpoint-key);
 
-    [class*="_#{$prefix}visible"] {
+    [class*='_#{$prefix}visible'] {
         display: none !important;
     }
 

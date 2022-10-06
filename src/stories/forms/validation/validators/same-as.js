@@ -1,16 +1,12 @@
 export default {
-    data () {
+    data() {
         return {
             form: this.$inkline.form({
                 password: {
-                    validators: [
-                        { name: 'required' }
-                    ]
+                    validators: [{ name: 'required' }]
                 },
                 passwordConfirmation: {
-                    validators: [
-                        { name: 'sameAs', target: 'password', schema: () => this.form }
-                    ]
+                    validators: [{ name: 'sameAs', target: 'password', schema: () => this.form }]
                 }
             })
         };

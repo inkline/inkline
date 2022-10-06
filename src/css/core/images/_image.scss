@@ -25,7 +25,6 @@
 
 .img,
 .image {
-
     // Responsive images
     //
     // Ensure images don't scale beyond their parents. This is purposefully opt-in
@@ -38,7 +37,6 @@
     }
 
     &.-fluid {
-
         // Set the width to always be container width
         width: 100%;
 
@@ -50,7 +48,7 @@
     // In Internet Explorer 10, SVG images with .-responsive are
     // disproportionately sized. This fix improperly sizes other image formats,
     // so Inkline will only apply it to svg extensions
-    &[src$=".svg"] {
+    &[src$='.svg'] {
         width: 100% \9;
     }
 

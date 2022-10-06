@@ -1,4 +1,4 @@
-@use "sass:list";
+@use 'sass:list';
 
 // Breakpoints
 //
@@ -19,7 +19,7 @@ $breakpoints: (
     'md': $breakpoints-md,
     'lg': $breakpoints-lg,
     'xl': $breakpoints-xl,
-    'xxl': $breakpoints-xxl,
+    'xxl': $breakpoints-xxl
 ) !default;
 
 $breakpoint-keys: ('xs', 'sm', 'md', 'lg', 'xl', 'xxl') !default;

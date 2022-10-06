@@ -1,5 +1,5 @@
-@use "sass:list";
-@use "sass:math";
+@use 'sass:list';
+@use 'sass:math';
 
 @function contains($list, $var) {
     @return (null != index($list, $var));

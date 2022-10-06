@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             active: 'tab-1'
         };

@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             schema: this.$inkline.form({
                 input: {

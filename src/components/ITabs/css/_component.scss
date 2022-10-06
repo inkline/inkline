@@ -259,7 +259,6 @@
 /// @name tabs--header--padding
 ////
 
-
 @import '../../css/variables';
 @import '../../css/mixins';
 @import 'css/variables';
@@ -276,33 +275,36 @@
         flex-wrap: nowrap;
         align-items: center;
         border-width: var(
-                --tabs--border-width,
-                (
-                        var(--tabs--border-top-width, var(--border-top-width))
-                        var(--tabs--border-right-width, var(--border-right-width))
-                        var(--tabs--border-bottom-width, var(--border-bottom-width))
-                        var(--tabs--border-left-width, var(--border-left-width))
-                )
+            --tabs--border-width,
+            (
+                var(--tabs--border-top-width, var(--border-top-width))
+                    var(--tabs--border-right-width, var(--border-right-width))
+                    var(--tabs--border-bottom-width, var(--border-bottom-width))
+                    var(--tabs--border-left-width, var(--border-left-width))
+            )
         );
         border-style: var(
-                --tabs--border-style,
-                (
-                        var(--tabs--border-top-style, var(--border-top-style))
-                        var(--tabs--border-right-style, var(--border-right-style))
-                        var(--tabs--border-bottom-style, var(--border-bottom-style))
-                        var(--tabs--border-left-style, var(--border-left-style))
-                )
+            --tabs--border-style,
+            (
+                var(--tabs--border-top-style, var(--border-top-style))
+                    var(--tabs--border-right-style, var(--border-right-style))
+                    var(--tabs--border-bottom-style, var(--border-bottom-style))
+                    var(--tabs--border-left-style, var(--border-left-style))
+            )
         );
         border-color: var(
-                --tabs--border-color,
-                (
-                        var(--tabs--border-top-color, var(--border-top-color))
-                        var(--tabs--border-right-color, var(--border-right-color))
-                        var(--tabs--border-bottom-color, var(--border-bottom-color))
-                        var(--tabs--border-left-color, var(--border-left-color))
-                )
+            --tabs--border-color,
+            (
+                var(--tabs--border-top-color, var(--border-top-color))
+                    var(--tabs--border-right-color, var(--border-right-color))
+                    var(--tabs--border-bottom-color, var(--border-bottom-color))
+                    var(--tabs--border-left-color, var(--border-left-color))
+            )
         );
-        margin-bottom: var(--tabs--header--margin-bottom, var(--tabs--margin-bottom, var(--margin-bottom)));
+        margin-bottom: var(
+            --tabs--header--margin-bottom,
+            var(--tabs--margin-bottom, var(--margin-bottom))
+        );
         overflow: auto;
         color: var(--tabs--header--color, var(--tabs--color));
         background: var(--tabs--header--background, var(--tabs--background));

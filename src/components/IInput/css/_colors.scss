@@ -8,20 +8,41 @@
         --input--color: var(--input--light--color, var(--contrast-text--color-white));
         --input--border-color: var(--input--light--border-color, var(--color-light-shade-50));
 
-        --input--disabled--background: var(--input--light--disabled--background, var(--color-light));
+        --input--disabled--background: var(
+            --input--light--disabled--background,
+            var(--color-light)
+        );
         --input--disabled--color: var(--input--light--disabled--color, var(--text--color-muted));
 
-        --input--hover--border-color: var(--input--light--hover--border-color, var(--color-light-shade-100));
-        --input--focus--border-color: var(--input--light--focus--border-color, var(--color-primary));
+        --input--hover--border-color: var(
+            --input--light--hover--border-color,
+            var(--color-light-shade-100)
+        );
+        --input--focus--border-color: var(
+            --input--light--focus--border-color,
+            var(--color-primary)
+        );
 
         --input--clear--background: var(--input--light--clear--background, transparent);
-        --input--clear--hover--background: var(--input--light--clear--hover--background, var(--color-light));
-        --input--clear--active--background: var(--input--light--clear--background--active, var(--color-light-shade-50));
+        --input--clear--hover--background: var(
+            --input--light--clear--hover--background,
+            var(--color-light)
+        );
+        --input--clear--active--background: var(
+            --input--light--clear--background--active,
+            var(--color-light-shade-50)
+        );
         --input--clear--color: var(--input--light--clear--color, var(--contrast-text--color-white));
 
         --input--placeholder--color: var(--input--light--placeholder--color, var(--color-gray-300));
-        --input--prefix-suffix--color: var(--input--light--prefix-suffix--color, var(--color-gray-700));
-        --input--prepend-append--background: var(--input--light--prepend-append--background, var(--color-light));
+        --input--prefix-suffix--color: var(
+            --input--light--prefix-suffix--color,
+            var(--color-gray-700)
+        );
+        --input--prepend-append--background: var(
+            --input--light--prepend-append--background,
+            var(--color-light)
+        );
     }
 
     &.-dark {
@@ -29,19 +50,37 @@
         --input--color: var(--input--dark--color, var(--contrast-text--color-dark));
         --input--border-color: var(--input--dark--border-color, var(--color-dark-tint-50));
 
-        --input--disabled--background: var(--input--dark--disabled--background, var(--color-dark-300));
+        --input--disabled--background: var(
+            --input--dark--disabled--background,
+            var(--color-dark-300)
+        );
         --input--disabled--color: var(--input--dark--disabled--color, var(--text--color-muted));
 
-        --input--hover--border-color: var(--input--dark--hover--border-color, var(--color-dark-tint-100));
+        --input--hover--border-color: var(
+            --input--dark--hover--border-color,
+            var(--color-dark-tint-100)
+        );
         --input--focus--border-color: var(--input--dark--focus--border-color, var(--color-primary));
 
         --input--clear--background: var(--input--dark--clear--background, #{transparent});
-        --input--clear--hover--background: var(--input--dark--clear--hover--background, var(--color-dark-tint-50));
-        --input--clear--active--background: var(--input--dark--clear--background--active, var(--color-dark-tint-100));
+        --input--clear--hover--background: var(
+            --input--dark--clear--hover--background,
+            var(--color-dark-tint-50)
+        );
+        --input--clear--active--background: var(
+            --input--dark--clear--background--active,
+            var(--color-dark-tint-100)
+        );
         --input--clear--color: var(--input--dark--clear--color, var(--contrast-text--color-dark));
 
         --input--placeholder--color: var(--input--dark--placeholder--color, var(--color-gray-600));
-        --input--prefix-suffix--color: var(--input--dark--prefix-suffix--color, var(--color-dark-250));
-        --input--prepend-append--background: var(--input--dark--prepend-append--background, var(--color-dark));
+        --input--prefix-suffix--color: var(
+            --input--dark--prefix-suffix--color,
+            var(--color-dark-250)
+        );
+        --input--prepend-append--background: var(
+            --input--dark--prepend-append--background,
+            var(--color-dark)
+        );
     }
 }

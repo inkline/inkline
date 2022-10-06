@@ -3,35 +3,69 @@
  */
 
 @for $i from 1 through 6 {
-    h#{$i}, .h#{$i} {
+    h#{$i},
+    .h#{$i} {
         margin-top: 0;
-        margin-bottom: var(--d#{$i}--margin-bottom, var(--display--margin-bottom, var(--heading--margin-bottom, var(--margin-bottom-sm))));
-        font-family: var(--d#{$i}--font-family, var(--display--font-family, var(--heading--font-family, var(--font-family-secondary-base))));
-        font-style: var(--d#{$i}--font-style, var(--display--font-style, var(--heading--font-style, normal)));
-        font-weight: var(--d#{$i}--font-weight, var(--display--font-weight, var(--heading--font-weight, var(--font-weight-semibold))));
-        line-height: var(--d#{$i}--line-height, var(--display--line-height, var(--heading--line-height, 1.2)));
+        margin-bottom: var(
+            --d#{$i}--margin-bottom,
+            var(--display--margin-bottom, var(--heading--margin-bottom, var(--margin-bottom-sm)))
+        );
+        font-family: var(
+            --d#{$i}--font-family,
+            var(
+                --display--font-family,
+                var(--heading--font-family, var(--font-family-secondary-base))
+            )
+        );
+        font-style: var(
+            --d#{$i}--font-style,
+            var(--display--font-style, var(--heading--font-style, normal))
+        );
+        font-weight: var(
+            --d#{$i}--font-weight,
+            var(--display--font-weight, var(--heading--font-weight, var(--font-weight-semibold)))
+        );
+        line-height: var(
+            --d#{$i}--line-height,
+            var(--display--line-height, var(--heading--line-height, 1.2))
+        );
         color: var(--d#{$i}--color, var(--display--color, var(--heading--color, inherit)));
     }
 }
 
 .d1 {
-    font-size: var(--d1--font-size, (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-5))));
+    font-size: var(
+        --d1--font-size,
+        (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-5)))
+    );
 }
 
 .d2 {
-    font-size: var(--d2--font-size, (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-4))));
+    font-size: var(
+        --d2--font-size,
+        (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-4)))
+    );
 }
 
 .d3 {
-    font-size: var(--d3--font-size, (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-3))));
+    font-size: var(
+        --d3--font-size,
+        (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-3)))
+    );
 }
 
 .d4 {
-    font-size: var(--d4--font-size, (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-2))));
+    font-size: var(
+        --d4--font-size,
+        (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-2)))
+    );
 }
 
 .d5 {
-    font-size: var(--d5--font-size, (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-1))));
+    font-size: var(
+        --d5--font-size,
+        (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-1)))
+    );
 }
 
 .d6 {

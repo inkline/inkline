@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             input: '',
             textarea: '',
@@ -17,7 +17,7 @@ export default {
         };
     },
     methods: {
-        onSubmit () {
+        onSubmit() {
             this.loading = true;
 
             setTimeout(() => {

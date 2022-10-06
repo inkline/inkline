@@ -1,21 +1,15 @@
 export default {
-    data () {
+    data() {
         return {
             form: this.$inkline.form({
                 input: {
-                    validators: [
-                        { name: 'alpha' }
-                    ]
+                    validators: [{ name: 'alpha' }]
                 },
                 inputSpaces: {
-                    validators: [
-                        { name: 'alpha', allowSpaces: true }
-                    ]
+                    validators: [{ name: 'alpha', allowSpaces: true }]
                 },
                 inputDashes: {
-                    validators: [
-                        { name: 'alpha', allowDashes: true }
-                    ]
+                    validators: [{ name: 'alpha', allowDashes: true }]
                 }
             })
         };

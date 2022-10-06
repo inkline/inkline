@@ -178,7 +178,6 @@
 /// @type color
 ////
 
-
 @import '../../css/variables';
 @import '../../css/mixins';
 @import '../../css/icons';
@@ -257,7 +256,10 @@
         position: relative;
         transition-property: var(--radio--transition-property, (color));
         transition-duration: var(--radio--transition-duration, var(--transition-duration));
-        transition-timing-function: var(--radio--transition-timing-function, var(--transition-timing-function));
+        transition-timing-function: var(
+            --radio--transition-timing-function,
+            var(--transition-timing-function)
+        );
         color: var(----label--color);
         font-size: var(----label--font-size);
 
@@ -273,38 +275,44 @@
 
         &::before {
             border-radius: 100%;
-            content: "";
+            content: '';
             user-select: none;
-            transition-property: var(--radio--transition-property, (background-color, border-color));
+            transition-property: var(
+                --radio--transition-property,
+                (background-color, border-color)
+            );
             transition-duration: var(--radio--transition-duration, var(--transition-duration));
-            transition-timing-function: var(--radio--transition-timing-function, var(--transition-timing-function));
+            transition-timing-function: var(
+                --radio--transition-timing-function,
+                var(--transition-timing-function)
+            );
             margin-right: var(--radio--margin-right, var(--margin-right));
             border-color: var(
-                        --radio--border-color,
-                        (
-                                    var(--radio--border-top-color, var(--border-top-color))
-                                    var(--radio--border-right-color, var(--border-right-color))
-                                    var(--radio--border-bottom-color, var(--border-bottom-color))
-                                    var(--radio--border-left-color, var(--border-left-color))
-                        )
+                --radio--border-color,
+                (
+                    var(--radio--border-top-color, var(--border-top-color))
+                        var(--radio--border-right-color, var(--border-right-color))
+                        var(--radio--border-bottom-color, var(--border-bottom-color))
+                        var(--radio--border-left-color, var(--border-left-color))
+                )
             );
             border-style: var(
-                        --radio--border-style,
-                        (
-                                    var(--radio--border-top-style, var(--border-top-style))
-                                    var(--radio--border-right-style, var(--border-right-style))
-                                    var(--radio--border-bottom-style, var(--border-bottom-style))
-                                    var(--radio--border-left-style, var(--border-left-style))
-                        )
+                --radio--border-style,
+                (
+                    var(--radio--border-top-style, var(--border-top-style))
+                        var(--radio--border-right-style, var(--border-right-style))
+                        var(--radio--border-bottom-style, var(--border-bottom-style))
+                        var(--radio--border-left-style, var(--border-left-style))
+                )
             );
             border-width: var(
-                        --radio--border-width,
-                        (
-                                    var(--radio--border-top-width, var(--border-top-width))
-                                    var(--radio--border-right-width, var(--border-right-width))
-                                    var(--radio--border-bottom-width, var(--border-bottom-width))
-                                    var(--radio--border-left-width, var(--border-left-width))
-                        )
+                --radio--border-width,
+                (
+                    var(--radio--border-top-width, var(--border-top-width))
+                        var(--radio--border-right-width, var(--border-right-width))
+                        var(--radio--border-bottom-width, var(--border-bottom-width))
+                        var(--radio--border-left-width, var(--border-left-width))
+                )
             );
             background-color: var(--radio--background);
         }

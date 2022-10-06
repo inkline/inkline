@@ -19,7 +19,7 @@ $gutters: (
 ) !default;
 
 @function gutter($gutter-key: null) {
-    @if not ($gutter-key) {
+    @if not($gutter-key) {
         @return var(--gutter);
     }
 
