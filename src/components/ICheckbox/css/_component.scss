@@ -212,7 +212,7 @@
         display: inline-flex;
         align-items: center;
         position: relative;
-        transition-property: var(--checkbox--transition-property, (color));
+        transition-property: var(--checkbox--transition-property, color);
         transition-duration: var(--checkbox--transition-duration, var(--transition-duration));
         transition-timing-function: var(
             --checkbox--transition-timing-function,
@@ -275,13 +275,11 @@
             );
             box-shadow: var(
                 --checkbox--box-shadow,
-                (
-                    var(--checkbox--box-shadow-x-offset, var(--box-shadow-offset-x))
-                        var(--checkbox--box-shadow-y-offset, var(--box-shadow-offset-y))
-                        var(--checkbox--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                        var(--checkbox--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                        var(--checkbox--box-shadow-color, var(--box-shadow-color))
-                )
+                var(--checkbox--box-shadow-x-offset, var(--box-shadow-offset-x))
+                    var(--checkbox--box-shadow-y-offset, var(--box-shadow-offset-y))
+                    var(--checkbox--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                    var(--checkbox--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                    var(--checkbox--box-shadow-color, var(--box-shadow-color))
             );
             margin-right: var(--checkbox--margin-right, var(--margin-right-1-2));
             transition-property: var(
@@ -329,6 +327,11 @@
         width: 0;
         outline: 0;
 
+        &:focus,
+        &:active {
+            outline: none;
+        }
+
         &:checked ~ .checkbox-label,
         &[type='checkbox']:indeterminate ~ .checkbox-label {
             &::before {
@@ -339,7 +342,9 @@
             &::after {
                 content: '';
                 mask-position: center center;
+                -webkit-mask-position: center center;
                 mask-repeat: no-repeat;
+                -webkit-mask-repeat: no-repeat;
                 transform: scale(1);
             }
         }
@@ -373,7 +378,7 @@
 
                 &::after {
                     cursor: not-allowed;
-                    background: var(--checkbox--disabled--color);
+                    background: var(--checkbox--disabled--color, var(--checkbox--color));
                 }
             }
         }
@@ -381,11 +386,6 @@
         &:indeterminate ~ .checkbox-label::after {
             mask-image: url($ink-minus);
             -webkit-mask-image: url($ink-minus);
-        }
-
-        &:focus,
-        &:active {
-            outline: none;
         }
     }
 

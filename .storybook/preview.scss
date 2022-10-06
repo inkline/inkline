@@ -17,6 +17,7 @@
 @import '../src/components/IPagination/css/preview';
 @import '../src/components/IPopover/css/preview';
 @import '../src/components/IProgress/css/preview';
+@import '../src/components/ITooltip/css/preview';
 
 //@import "../src/css/variables";
 //@import "../src/css/mixins";
@@ -66,4 +67,5 @@
     @extend %pagination-preview;
     @extend %popover-preview;
     @extend %progress-preview;
+    @extend %tooltip-preview;
 }

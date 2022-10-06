@@ -3,7 +3,7 @@
  */
 
 .radio {
-    @include variant('sm', 'form') {
+    &.-sm {
         --radio--size: var(--radio--sm--size, calc(#{1rem} * var(--size-multiplier-sm)));
         --radio--checkmark--size: var(
             --radio--sm--checkmark--size,
@@ -15,7 +15,7 @@
         );
     }
 
-    @include variant('md', 'form') {
+    &.-md {
         --radio--size: var(--radio--md--size, calc(#{1rem} * var(--size-multiplier-md)));
         --radio--checkmark--size: var(
             --radio--md--checkmark--size,
@@ -27,7 +27,7 @@
         );
     }
 
-    @include variant('lg', 'form') {
+    &.-lg {
         --radio--size: var(--radio--lg--size, calc(#{1rem} * var(--size-multiplier-lg)));
         --radio--checkmark--size: var(
             --radio--lg--checkmark--size,
