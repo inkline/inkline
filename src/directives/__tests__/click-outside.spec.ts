@@ -1,4 +1,7 @@
-import { ClickOutsideDirective, onClickOutside } from '@inkline/inkline/directives/click-outside';
+import {
+    ClickOutsideDirective,
+    onClickOutside
+} from '@inkline/inkline/directives/click-outside';
 
 vi.mock('@inkline/inkline/helpers', async () => {
     const { isVisible } = await vi.importActual('@inkline/inkline/helpers');
@@ -17,13 +20,17 @@ const helpersModule: {
 describe('Directives', () => {
     describe('v-click-outside', () => {
         describe('beforeMount()', () => {
-            it('should attach window.document mouseup event with onClickOutside result', () => {
+            it('should attach window.document mousedown event with onClickOutside result', () => {
                 const element = document.createElement('div');
                 const binding = vi.fn();
 
                 (ClickOutsideDirective as any).beforeMount(element, binding);
 
-                expect(helpersModule.on).toHaveBeenCalledWith(window.document, 'mouseup', expect.any(Function));
+                expect(helpersModule.on).toHaveBeenCalledWith(
+                    window.document,
+                    'mousedown',
+                    expect.any(Function)
+                );
             });
         });
 
