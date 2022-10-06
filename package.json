@@ -1,190 +1,189 @@
 {
-  "name": "@inkline/inkline",
-  "version": "3.1.4",
-  "description": "Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
-  "author": "Alex Grozav <alex@grozav.com>",
-  "scripts": {
-    "dev": "npm run storybook",
-    "build": "rimraf lib lib-cjs dist && npm-run-all --parallel build:*",
-    "build:unbuild": "unbuild",
-    "build:vite": "vite build",
-    "postbuild": "ts-node ./scripts/postbuild.ts",
-    "lint": "npm-run-all --parallel lint:*",
-    "lint:script": "eslint --ext .vue,.js,.ts src",
-    "lint:style": "stylelint \"src/**/*.scss\"",
-    "prerelease": "npm run lint && npm run test && npm run build",
-    "release": "np",
-    "postrelease": "ts-node scripts/postrelease.ts",
-    "postversion": "ts-node scripts/postversion.ts",
-    "test": "vitest run --coverage",
-    "test:dev": "vitest",
-    "coveralls": "cat coverage/lcov.info | coveralls",
-    "generate:config": "inkline generate scss --outputDir ./src/cssnew/variables",
-    "generate:manifest": "ts-node ./scripts/manifest.ts",
-    "generate:manifest:sass": "ts-node ./scripts/manifest-sass.ts",
-    "storybook": "start-storybook -p 6006",
-    "storybook:build": "build-storybook"
-  },
-  "main": "inkline.js",
-  "module": "inkline.mjs",
-  "jsdelivr": "inkline.js",
-  "unpkg": "inkline.js",
-  "types": "inkline.d.ts",
-  "dependencies": {
-    "@grozav/utils": "^1.1.4",
-    "@popperjs/core": "2.11.5",
-    "normalize.css": "^8.0.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.18.6",
-    "@grozav/eslint-config": "latest",
-    "@inkline/cli": "^1.2.1",
-    "@inkline/config": "^1.5.2",
-    "@rushstack/eslint-patch": "^1.1.0",
-    "@storybook/addon-a11y": "^6.5.9",
-    "@storybook/addon-actions": "^6.5.9",
-    "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/addon-interactions": "^6.5.9",
-    "@storybook/addon-links": "^6.5.9",
-    "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/builder-vite": "^0.1.41",
-    "@storybook/testing-library": "^0.0.13",
-    "@storybook/vue3": "^6.5.9",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/vue": "^6.6.0",
-    "@types/jsdom": "^16.2.14",
-    "@types/node": "^16.11.43",
-    "@types/shelljs": "^0.8.11",
-    "@vitejs/plugin-vue": "^2.3.3",
-    "@vue/eslint-config-typescript": "^11.0.0",
-    "@vue/test-utils": "^2.0.2",
-    "@vue/tsconfig": "^0.1.3",
-    "babel-loader": "^8.2.5",
-    "c8": "^7.11.3",
-    "eslint": "^8.5.0",
-    "eslint-plugin-vue": "^9.0.0",
-    "fast-glob": "^3.2.11",
-    "jsdom": "^20.0.0",
-    "miragejs": "^0.1.45",
-    "np": "^7.6.2",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.14",
-    "postcss-preset-env": "^7.7.2",
-    "sass": "^1.53.0",
-    "shelljs": "^0.8.5",
-    "storybook-dark-mode": "^1.1.0",
-    "stylelint": "^14.9.1",
-    "stylelint-config-recommended": "^8.0.0",
-    "stylelint-config-recommended-scss": "^7.0.0",
-    "stylelint-config-standard": "^26.0.0",
-    "stylelint-config-standard-scss": "^5.0.0",
-    "stylelint-processor-html": "^1.0.0",
-    "ts-node": "^10.9.1",
-    "typescript": "~4.7.4",
-    "unbuild": "^0.7.6",
-    "vite": "3.0.9",
-    "vitest": "0.22.1",
-    "vue": "^3.2.37",
-    "vue-loader": "^16.8.3",
-    "vue-tsc": "^0.38.4"
-  },
-  "peerDependencies": {
-    "vue": ">=3.0.0"
-  },
-  "files": [
-    "**/*"
-  ],
-  "exports": {
-    ".": {
-      "require": "./inkline.js",
-      "import": "./inkline.mjs",
-      "types": "./inkline.d.ts"
+    "name": "@inkline/inkline",
+    "version": "3.1.4",
+    "description": "Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
+    "author": "Alex Grozav <alex@grozav.com>",
+    "scripts": {
+        "dev": "npm run storybook",
+        "build": "rimraf lib lib-cjs dist && npm-run-all --parallel build:*",
+        "build:unbuild": "unbuild",
+        "build:vite": "vite build",
+        "postbuild": "ts-node ./scripts/postbuild.ts",
+        "lint": "npm-run-all --parallel lint:*",
+        "lint:script": "eslint --ext .vue,.js,.ts src",
+        "lint:style": "stylelint \"src/**/*.scss\"",
+        "prerelease": "npm run lint && npm run test && npm run build",
+        "release": "np",
+        "postrelease": "ts-node scripts/postrelease.ts",
+        "postversion": "ts-node scripts/postversion.ts",
+        "test": "vitest run --coverage",
+        "test:dev": "vitest",
+        "coveralls": "cat coverage/lcov.info | coveralls",
+        "generate:config": "inkline generate scss --outputDir ./src/cssnew/variables",
+        "generate:manifest": "ts-node ./scripts/manifest.ts",
+        "generate:manifest:sass": "ts-node ./scripts/manifest-sass.ts",
+        "storybook": "start-storybook -p 6006",
+        "storybook:build": "build-storybook"
     },
-    "./components": {
-      "require": "./components/index.js",
-      "import": "./components/index.mjs",
-      "types": "./components/index.d.ts"
+    "main": "inkline.js",
+    "module": "inkline.mjs",
+    "jsdelivr": "inkline.js",
+    "unpkg": "inkline.js",
+    "types": "inkline.d.ts",
+    "dependencies": {
+        "@grozav/utils": "^1.1.4",
+        "@popperjs/core": "2.11.6",
+        "normalize.css": "^8.0.1"
     },
-    "./composition-api": {
-      "require": "./composition-api/index.js",
-      "import": "./composition-api/index.mjs",
-      "types": "./composition-api/index.d.ts"
+    "devDependencies": {
+        "@babel/core": "^7.19.3",
+        "@grozav/eslint-config": "^1.0.3",
+        "@inkline/cli": "^1.2.1",
+        "@inkline/config": "^1.5.2",
+        "@storybook/addon-a11y": "^6.5.12",
+        "@storybook/addon-actions": "^6.5.12",
+        "@storybook/addon-essentials": "^6.5.12",
+        "@storybook/addon-interactions": "^6.5.12",
+        "@storybook/addon-links": "^6.5.12",
+        "@storybook/addon-postcss": "^2.0.0",
+        "@storybook/builder-vite": "^0.2.3",
+        "@storybook/testing-library": "^0.0.13",
+        "@storybook/vue3": "^6.5.12",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/vue": "^6.6.1",
+        "@types/jsdom": "^20.0.0",
+        "@types/node": "^18.8.2",
+        "@types/shelljs": "^0.8.11",
+        "@vitejs/plugin-vue": "^3.1.2",
+        "@vue/eslint-config-typescript": "^11.0.2",
+        "@vue/test-utils": "^2.1.0",
+        "@vue/tsconfig": "^0.1.3",
+        "babel-loader": "^8.2.5",
+        "c8": "^7.12.0",
+        "eslint": "^8.24.0",
+        "eslint-plugin-vue": "^9.6.0",
+        "fast-glob": "^3.2.12",
+        "jsdom": "^20.0.1",
+        "miragejs": "^0.1.45",
+        "np": "^7.6.2",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.4.17",
+        "postcss-preset-env": "^7.8.2",
+        "sass": "^1.55.0",
+        "shelljs": "^0.8.5",
+        "storybook-dark-mode": "^1.1.2",
+        "stylelint": "^14.13.0",
+        "stylelint-config-recommended": "^9.0.0",
+        "stylelint-config-recommended-scss": "^7.0.0",
+        "stylelint-config-standard": "^28.0.0",
+        "stylelint-config-standard-scss": "^5.0.0",
+        "stylelint-processor-html": "^1.0.0",
+        "ts-node": "^10.9.1",
+        "typescript": "~4.8.4",
+        "unbuild": "^0.8.11",
+        "vite": "3.1.4",
+        "vitest": "0.23.4",
+        "vue": "^3.2.40",
+        "vue-loader": "^17.0.0",
+        "vue-tsc": "^0.40.13"
     },
-    "./constants": {
-      "require": "./constants/index.js",
-      "import": "./constants/index.mjs",
-      "types": "./constants/index.d.ts"
+    "peerDependencies": {
+        "vue": ">=3.0.0"
     },
-    "./controllers": {
-      "require": "./controllers/index.js",
-      "import": "./controllers/index.mjs",
-      "types": "./controllers/index.d.ts"
+    "files": [
+        "**/*"
+    ],
+    "exports": {
+        ".": {
+            "require": "./inkline.js",
+            "import": "./inkline.mjs",
+            "types": "./inkline.d.ts"
+        },
+        "./components": {
+            "require": "./components/index.js",
+            "import": "./components/index.mjs",
+            "types": "./components/index.d.ts"
+        },
+        "./composition-api": {
+            "require": "./composition-api/index.js",
+            "import": "./composition-api/index.mjs",
+            "types": "./composition-api/index.d.ts"
+        },
+        "./constants": {
+            "require": "./constants/index.js",
+            "import": "./constants/index.mjs",
+            "types": "./constants/index.d.ts"
+        },
+        "./controllers": {
+            "require": "./controllers/index.js",
+            "import": "./controllers/index.mjs",
+            "types": "./controllers/index.d.ts"
+        },
+        "./directives": {
+            "require": "./directives/index.js",
+            "import": "./directives/index.mjs",
+            "types": "./directives/index.d.ts"
+        },
+        "./helpers": {
+            "require": "./helpers/index.js",
+            "import": "./helpers/index.mjs",
+            "types": "./helpers/index.d.ts"
+        },
+        "./i18n": {
+            "require": "./i18n/index.js",
+            "import": "./i18n/index.mjs",
+            "types": "./i18n/index.d.ts"
+        },
+        "./mixins": {
+            "require": "./mixins/index.js",
+            "import": "./mixins/index.mjs",
+            "types": "./mixins/index.d.ts"
+        },
+        "./transitions": {
+            "require": "./transitions/index.js",
+            "import": "./transitions/index.mjs",
+            "types": "./transitions/index.d.ts"
+        },
+        "./validation": {
+            "require": "./validation/index.js",
+            "import": "./validation/index.mjs",
+            "types": "./validation/index.d.ts"
+        },
+        "./*": "./*"
     },
-    "./directives": {
-      "require": "./directives/index.js",
-      "import": "./directives/index.mjs",
-      "types": "./directives/index.d.ts"
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
     },
-    "./helpers": {
-      "require": "./helpers/index.js",
-      "import": "./helpers/index.mjs",
-      "types": "./helpers/index.d.ts"
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ],
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
     },
-    "./i18n": {
-      "require": "./i18n/index.js",
-      "import": "./i18n/index.mjs",
-      "types": "./i18n/index.d.ts"
-    },
-    "./mixins": {
-      "require": "./mixins/index.js",
-      "import": "./mixins/index.mjs",
-      "types": "./mixins/index.d.ts"
-    },
-    "./transitions": {
-      "require": "./transitions/index.js",
-      "import": "./transitions/index.mjs",
-      "types": "./transitions/index.d.ts"
-    },
-    "./validation": {
-      "require": "./validation/index.js",
-      "import": "./validation/index.mjs",
-      "types": "./validation/index.d.ts"
-    },
-    "./*": "./*"
-  },
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/alexgrozav"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
-  "bugs": {
-    "url": "https://github.com/inkline/inkline/issues"
-  },
-  "homepage": "https://inkline.io",
-  "keywords": [
-    "inkline",
-    "vue",
-    "vuejs",
-    "ui",
-    "ux",
-    "dx",
-    "components",
-    "library",
-    "framework",
-    "typescript",
-    "javascript",
-    "scss",
-    "responsive",
-    "front end",
-    "validation"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/inkline/inkline.git"
-  }
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "vue",
+        "vuejs",
+        "ui",
+        "ux",
+        "dx",
+        "components",
+        "library",
+        "framework",
+        "typescript",
+        "javascript",
+        "scss",
+        "responsive",
+        "front end",
+        "validation"
+    ],
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
 }
