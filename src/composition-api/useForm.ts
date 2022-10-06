@@ -1,4 +1,5 @@
-import { reactive } from 'vue';
+import { ref, Ref } from 'vue';
+
 import { initialize } from '@inkline/inkline/validation';
 
 export interface FormFieldValidator {
@@ -25,11 +26,6 @@ export interface FormGroup extends FormState {
     [key: string]: FormField | FormField[] | FormGroup | boolean;
 }
 
-export function useForm<T> (rawSchema: T): { form: FormGroup } {
-    const schema = initialize(rawSchema);
-    const form = reactive(schema);
-
-    return {
-        form
-    };
+export function useForm<T> (schema: T): Ref<FormGroup> {
+    return ref(initialize(schema));
 }

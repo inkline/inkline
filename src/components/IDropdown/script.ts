@@ -42,10 +42,7 @@ export default defineComponent({
     directives: {
         ClickOutside
     },
-    mixins: [
-        PopupMixin,
-        PopupControlsMixin
-    ],
+    mixins: [PopupMixin, PopupControlsMixin],
     provide () {
         return {
             dropdown: this
@@ -112,7 +109,14 @@ export default defineComponent({
          */
         keydownTrigger: {
             type: Array,
-            default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+            default: (): string[] => [
+                'up',
+                'down',
+                'enter',
+                'space',
+                'tab',
+                'esc'
+            ]
         },
         /**
          * The keydown events bound to the dropdown item elements
@@ -122,7 +126,14 @@ export default defineComponent({
          */
         keydownItem: {
             type: Array,
-            default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+            default: (): string[] => [
+                'up',
+                'down',
+                'enter',
+                'space',
+                'tab',
+                'esc'
+            ]
         },
         /**
          * Used to manually control the visibility of the dropdown
@@ -173,6 +184,16 @@ export default defineComponent({
         offset: {
             type: Number,
             default: 6
+        },
+        /**
+         * Determines whether hover state should be transferred from trigger to popup
+         * @type Boolean
+         * @default true
+         * @name interactable
+         */
+        interactable: {
+            type: Boolean,
+            default: true
         },
         /**
          * Used to override the popper.js options used for creating the dropdown
@@ -262,25 +283,33 @@ export default defineComponent({
             }
 
             const focusableItems = this.getFocusableItems();
-            const activeIndex = focusableItems.findIndex((item: any) => item.active);
+            const activeIndex = focusableItems.findIndex(
+                (item: any) => item.active
+            );
             const initialIndex = activeIndex > -1 ? activeIndex : 0;
             const focusTarget = focusableItems[initialIndex];
 
             switch (true) {
             case isKey('up', event) && this.keydownTrigger.includes('up'):
-            case isKey('down', event) && this.keydownTrigger.includes('down'):
+            case isKey('down', event) &&
+                    this.keydownTrigger.includes('down'):
                 this.show();
 
-                setTimeout(() => {
-                    focusTarget.focus();
-                }, this.visible ? 0 : this.animationDuration);
+                setTimeout(
+                    () => {
+                        focusTarget.focus();
+                    },
+                    this.visible ? 0 : this.animationDuration
+                );
 
                 event.preventDefault();
                 event.stopPropagation();
                 break;
 
-            case isKey('enter', event) && this.keydownTrigger.includes('enter'):
-            case isKey('space', event) && this.keydownTrigger.includes('space'):
+            case isKey('enter', event) &&
+                    this.keydownTrigger.includes('enter'):
+            case isKey('space', event) &&
+                    this.keydownTrigger.includes('space'):
                 this.onClick();
 
                 if (!this.visible) {
@@ -308,14 +337,19 @@ export default defineComponent({
             case isKey('down', event) && this.keydownItem.includes('down'):
                 const focusableItems = this.getFocusableItems();
 
-                const currentIndex = focusableItems.findIndex((item) => item === event.target);
+                const currentIndex = focusableItems.findIndex(
+                    (item) => item === event.target
+                );
                 const maxIndex = focusableItems.length - 1;
                 let nextIndex;
 
                 if (isKey('up', event)) {
                     nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
                 } else {
-                    nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
+                    nextIndex =
+                            currentIndex < maxIndex
+                                ? currentIndex + 1
+                                : maxIndex;
                 }
 
                 focusableItems[nextIndex].focus();
@@ -324,8 +358,10 @@ export default defineComponent({
                 event.stopPropagation();
                 break;
 
-            case isKey('enter', event) && this.keydownItem.includes('enter'):
-            case isKey('space', event) && this.keydownItem.includes('space'):
+            case isKey('enter', event) &&
+                    this.keydownItem.includes('enter'):
+            case isKey('space', event) &&
+                    this.keydownItem.includes('space'):
                 (event as any).target.click();
 
                 if (this.hideOnItemClick) {

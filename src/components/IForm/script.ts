@@ -181,7 +181,7 @@ export default defineComponent({
             this.parent.onInput?.(this.name ? `${this.name}.${name}` : name, value);
 
             if (this.modelValue) {
-                let schema = this.modelValue;
+                let schema = clone(this.modelValue);
 
                 schema = setValueByPath(schema, name, 'value', value);
                 schema = setValuesAlongPath(schema, name, { pristine: false, dirty: true });

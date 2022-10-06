@@ -14,13 +14,22 @@ export default defineComponent({
         trigger: {
             type: Array,
             default: () => ['hover', 'click', 'focus']
+        },
+        interactable: {
+            type: Boolean,
+            default: true
+        },
+        hoverHideDelay: {
+            type: Number,
+            default: 300
         }
     },
     emits: ['update:modelValue', 'click-outside'],
     data () {
         return {
             visible: this.modelValue,
-            triggerStack: 0
+            triggerStack: 0,
+            hoverHideTransition: false
         };
     },
     watch: {
@@ -34,7 +43,9 @@ export default defineComponent({
     },
     mounted () {
         if (!(this as any).$slots.default) {
-            throw new Error('Popup components require one child element to be used as trigger.');
+            throw new Error(
+                'Popup components require one child element to be used as trigger.'
+            );
         }
 
         this.addEventListeners();
@@ -70,6 +81,18 @@ export default defineComponent({
                 this.$emit('update:modelValue', false);
             }
         },
+        hoverShow () {
+            this.hoverHideTransition = false;
+            this.show();
+        },
+        hoverHide () {
+            this.hoverHideTransition = true;
+            setTimeout(() => {
+                if (this.hoverHideTransition) {
+                    this.hide();
+                }
+            }, this.hoverHideDelay);
+        },
         onClick () {
             if (this.visible) {
                 this.hide();
@@ -87,14 +110,40 @@ export default defineComponent({
             [].concat((this as any).trigger).forEach((trigger) => {
                 switch (trigger) {
                 case 'hover':
-                    on(this.$refs.trigger as HTMLElement, 'mouseenter', this.show);
-                    on(this.$refs.trigger as HTMLElement, 'mouseleave', this.hide);
+                    on(
+                            this.$refs.trigger as HTMLElement,
+                            'mouseenter',
+                            this.interactable ? this.hoverShow : this.show
+                    );
+                    on(
+                            this.$refs.trigger as HTMLElement,
+                            'mouseleave',
+                            this.interactable ? this.hoverHide : this.hide
+                    );
+
+                    if (this.interactable) {
+                        on(
+                                this.$refs.popup as HTMLElement,
+                                'mouseenter',
+                                this.hoverShow
+                        );
+                        on(
+                                this.$refs.popup as HTMLElement,
+                                'mouseleave',
+                                this.hoverHide
+                        );
+                    }
                     break;
                 case 'click':
-                    on(this.$refs.trigger as HTMLElement, 'click', this.onClick);
+                    on(
+                            this.$refs.trigger as HTMLElement,
+                            'click',
+                            this.onClick
+                    );
                     break;
                 case 'focus':
-                    for (const child of (this as any).$refs.trigger.children) {
+                    for (const child of (this as any).$refs.trigger
+                        .children) {
                         on(child, 'focus', this.show);
                         on(child, 'blur', this.hide);
                     }
@@ -108,14 +157,40 @@ export default defineComponent({
             [].concat((this as any).trigger).forEach((trigger) => {
                 switch (trigger) {
                 case 'hover':
-                    off(this.$refs.trigger as HTMLElement, 'mouseenter', this.show);
-                    off(this.$refs.trigger as HTMLElement, 'mouseleave', this.hide);
+                    off(
+                            this.$refs.trigger as HTMLElement,
+                            'mouseenter',
+                            this.interactable ? this.hoverShow : this.show
+                    );
+                    off(
+                            this.$refs.trigger as HTMLElement,
+                            'mouseleave',
+                            this.interactable ? this.hoverHide : this.hide
+                    );
+
+                    if (this.interactable) {
+                        off(
+                                this.$refs.popup as HTMLElement,
+                                'mouseenter',
+                                this.hoverShow
+                        );
+                        off(
+                                this.$refs.popup as HTMLElement,
+                                'mouseleave',
+                                this.hoverHide
+                        );
+                    }
                     break;
                 case 'click':
-                    off(this.$refs.trigger as HTMLElement, 'click', this.onClick);
+                    off(
+                            this.$refs.trigger as HTMLElement,
+                            'click',
+                            this.onClick
+                    );
                     break;
                 case 'focus':
-                    for (const child of (this as any).$refs.trigger.children) {
+                    for (const child of (this as any).$refs.trigger
+                        .children) {
                         off(child, 'focus', this.show);
                         off(child, 'blur', this.hide);
                     }

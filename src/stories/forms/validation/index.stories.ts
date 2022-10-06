@@ -1,7 +1,8 @@
 import {
     IFormValidationBasicExample,
     IFormValidationBasicBindingExample,
-    IFormValidationBasicValidatorsExample
+    IFormValidationBasicValidatorsExample,
+    IFormValidationCompositionAPIExample
 } from './index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 import { IForm } from '@inkline/inkline/components';
@@ -18,3 +19,4 @@ export default {
 export const Basic = createStory(IFormValidationBasicExample);
 export const BasicBinding = () => IFormValidationBasicBindingExample;
 export const BasicValidators = () => IFormValidationBasicValidatorsExample;
+export const CompositionApi = () => IFormValidationCompositionAPIExample;

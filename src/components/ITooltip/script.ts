@@ -30,10 +30,7 @@ export default defineComponent({
     directives: {
         ClickOutside
     },
-    mixins: [
-        PopupMixin,
-        PopupControlsMixin
-    ],
+    mixins: [PopupMixin, PopupControlsMixin],
     props: {
         /**
          * The color variant of the tooltip
@@ -116,6 +113,16 @@ export default defineComponent({
         offset: {
             type: Number,
             default: 6
+        },
+        /**
+         * Determines whether hover state should be transferred from trigger to popup
+         * @type Boolean
+         * @default false
+         * @name interactable
+         */
+        interactable: {
+            type: Boolean,
+            default: false
         },
         /**
          * Used to override the popper.js options used for creating the tooltip
